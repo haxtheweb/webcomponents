@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ukuqhathanisa izithombe",
+    "description": "Swayipha isithombe esisodwa phezu kwesinye ukuze uziqhathanise."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Isithombe esiphezulu",
+        "description": "Isithombe esiphezulu esizoswayiphwa phezu kwesithombe esingezansi."
+      },
+      {
+        "property": "topAlt",
+        "title": "Umbhalo ongenye wesithombe esiphezulu",
+        "description": "Umbhalo ongenye odingekayo ukuze kufinyeleleke."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Isithombe esingezansi",
+        "description": "Isithombe esingezansi esiboniswa ngaphansi kwesithombe esiphezulu."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Umbhalo ongenye wesithombe esingezansi",
+        "description": "Umbhalo ongenye odingekayo ukuze kufinyeleleke."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Ukuziphatha",
+        "description": "Khetha imodi yokusula (okuzenzakalelayo) noma imodi yokubonakala kwesithombe esiphezulu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Wokugcizelela",
+        "description": "Umbala webha yesislayida."
+      },
+      {
+        "property": "dark",
+        "title": "Okumnyama",
+        "description": "Phendula umbala webha yesislayida."
+      },
+      {
+        "property": "position",
+        "title": "Indawo Yokuqala",
+        "description": "Indawo yokuqala kusuka ku-0 kuya ku-100."
+      }
+    ]
+  }
+}

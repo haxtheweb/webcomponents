@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR-kóði",
+    "description": "Kóði til að skanna með snjallsíma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR-gögn",
+        "description": "Uppruni gagnanna fyrir QR-kóðann."
+      },
+      {
+        "property": "title",
+        "title": "Annar titill",
+        "description": "Annar titill tengdur uppruna QR-kóðans."
+      },
+      {
+        "property": "modulesize",
+        "title": "Stærð",
+        "description": "Stærð QR-kóðans."
+      },
+      {
+        "property": "margin",
+        "title": "Spássía",
+        "description": "Umgjörð kóðans."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Úttakssnið",
+        "description": "Snið úttaksins.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

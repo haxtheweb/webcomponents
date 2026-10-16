@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Matunzio ya Picha",
+    "description": "Matunzio yanayowasilisha picha kwa mpangilio wa gridi, ukuta wa matofali au onyesho la slaidi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Hali ya kuonyesha",
+        "description": "Jinsi ya kuwasilisha picha kwenye matunzio.",
+        "options": {
+          "grid": "Gridi",
+          "masonry": "Ukuta wa matofali",
+          "gallery": "Matunzio"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Faharasa amilifu",
+        "description": "Faharasa ya picha amilifu ya kuanzia katika hali ya matunzio."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Àncora de pàgina",
+    "description": "Enllaça a punts concrets del contingut multimèdia de la pàgina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Destinació a la pàgina",
+        "description": "ID o recurs al qual apunta aquesta àncora."
+      },
+      {
+        "property": "value",
+        "title": "Valor d'enllaç profund",
+        "description": "Valor d'enllaç profund (per exemple, una marca de temps o l'ID d'una diapositiva)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entitat del lloc",
+        "description": "Entitat del lloc opcional per controlar la presentació de conceptes relacionats."
+      }
+    ]
+  }
+}

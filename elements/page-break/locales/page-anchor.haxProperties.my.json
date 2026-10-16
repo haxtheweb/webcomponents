@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "စာမျက်နှာ Anchor",
+    "description": "စာမျက်နှာပေါ်ရှိ မီဒီယာ၏ သတ်မှတ်နေရာများသို့ လင့်ခ်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "စာမျက်နှာ ပစ်မှတ်",
+        "description": "ဤ anchor ညွှန်ပြသော ID သို့မဟုတ် အရင်းအမြစ်။"
+      },
+      {
+        "property": "value",
+        "title": "Deep link တန်ဖိုး",
+        "description": "Deep link တန်ဖိုး (ဥပမာ အချိန်မှတ် သို့မဟုတ် ဆလိုက် ID)။"
+      },
+      {
+        "property": "entityId",
+        "title": "ဆိုက် entity",
+        "description": "ဆက်စပ် သဘောတရား တင်ပြမှုကို ထိန်းချုပ်ရန် ရွေးချယ်နိုင်သော ဆိုက် entity။"
+      }
+    ]
+  }
+}

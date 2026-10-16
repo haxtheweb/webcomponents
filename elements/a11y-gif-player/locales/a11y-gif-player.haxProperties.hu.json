@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Tegye akadálymentessé az animált GIF-eket."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Animált GIF",
+        "description": "Az animált GIF URL-je."
+      },
+      {
+        "property": "alt",
+        "title": "Helyettesítő szöveg",
+        "description": "A kép helyettesítő szövege."
+      },
+      {
+        "property": "longdesc",
+        "title": "Hosszú leírás",
+        "description": "A GIF hosszú leírása az akadálymentesség érdekében."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Állókép",
+        "description": "A GIF állóképes változatának URL-je."
+      }
+    ]
+  }
+}

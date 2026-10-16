@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "显示带主题个 Polaris 行动号召按钮。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "按钮文字",
+        "description": "行动号召按钮里显示个文字。"
+      },
+      {
+        "property": "link",
+        "title": "链接",
+        "description": "按钮个目标 URL。"
+      },
+      {
+        "property": "type",
+        "title": "变体",
+        "description": "视觉样式变体。",
+        "options": {
+          "primary": "主要",
+          "tinted": "淡色",
+          "light": "浅色"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "描边样式",
+        "description": "开启描边处理。"
+      },
+      {
+        "property": "filled",
+        "title": "填充样式",
+        "description": "开启填充处理。"
+      }
+    ]
+  }
+}

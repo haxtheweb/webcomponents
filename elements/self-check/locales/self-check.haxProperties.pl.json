@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Samosprawdzenie",
+    "description": "Użytkownicy mogą wykonać samosprawdzenie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Obraz",
+        "description": "Obraz do samosprawdzenia."
+      },
+      {
+        "property": "title",
+        "title": "Tytuł",
+        "description": "Tytuł samosprawdzenia."
+      },
+      {
+        "property": "alt",
+        "title": "Tekst alternatywny",
+        "description": "Tekst alternatywny obrazu."
+      },
+      {
+        "slot": "question",
+        "title": "Pytanie"
+      },
+      {
+        "slot": "",
+        "title": "Odpowiedź"
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor motywu",
+        "description": "Wybierz kolor motywu z systemu projektowego.",
+        "options": {
+          "primary": "Główny",
+          "accent": "Akcent",
+          "success": "Sukces",
+          "warning": "Ostrzeżenie",
+          "error": "Błąd",
+          "info": "Informacja"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cel uczenia się",
+        "description": "Odwołanie do celu uczenia się emitowane jako oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Oceniane",
+        "description": "Odwołanie do aktywności emitowane jako oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Link „więcej”",
+        "description": "Link do dodatkowych informacji."
+      }
+    ]
+  }
+}

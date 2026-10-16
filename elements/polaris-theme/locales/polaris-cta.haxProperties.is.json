@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Birta þemaðan Polaris-hnapp með ákalli til aðgerða."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Texti hnapps",
+        "description": "Texti sem birtist í hnappinum með ákalli til aðgerða."
+      },
+      {
+        "property": "link",
+        "title": "Tengill",
+        "description": "Áfangastaðar-URL fyrir hnappinn."
+      },
+      {
+        "property": "type",
+        "title": "Afbrigði",
+        "description": "Sjónrænt stílafbrigði.",
+        "options": {
+          "primary": "Aðal",
+          "tinted": "Litað",
+          "light": "Ljóst"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Útlínustíll",
+        "description": "Virkja útlínumeðferð."
+      },
+      {
+        "property": "filled",
+        "title": "Fylltur stíll",
+        "description": "Virkja fyllta meðferð."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Helu Piʻi",
+    "description": "E hoʻoneʻe i kekahi helu e helu piʻi ana a hiki i ka waiwai i manaʻo ʻia ke ʻike ʻia ma ka pākaukau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Waiwai hope",
+        "description": "Ka helu e helu piʻi ai a hiki i laila."
+      },
+      {
+        "property": "start",
+        "title": "Waiwai hoʻomaka",
+        "description": "Ka helu e hoʻomaka ai ka helu ʻana."
+      },
+      {
+        "property": "duration",
+        "title": "Lōʻihi o ka manawa",
+        "description": "Nā kekona e lawe ai ka hoʻoneʻe helu."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Kikokikona mua",
+        "description": "Kikokikona i hōʻike ʻia ma mua o ka helu (e laʻa me '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Kikokikona hope",
+        "description": "Kikokikona i hōʻike ʻia ma hope o ka helu (e laʻa me '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Wahi mua",
+        "description": "ʻIkepili koho i hoʻokomo ʻia ma mua o ka helu."
+      },
+      {
+        "slot": "suffix",
+        "title": "Wahi hope",
+        "description": "ʻIkepili koho i hoʻokomo ʻia ma hope o ka helu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Nā wahi kekimala",
+        "description": "Ka nui o nā wahi kekimala e hōʻike ai."
+      },
+      {
+        "property": "separator",
+        "title": "Mea hoʻokaʻawale kaukani",
+        "description": "Ka hua e hoʻokaʻawale ana i nā pūʻulu kaukani."
+      },
+      {
+        "property": "decimal",
+        "title": "Hua kekimala",
+        "description": "Ka hua i hoʻohana ʻia no ke kiko kekimala."
+      },
+      {
+        "property": "noeasing",
+        "title": "ʻAʻohe hoʻomāmā",
+        "description": "E hoʻopio i ka hoʻomāmā i laina pololei ka helu ʻana."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn-inbedding",
+    "description": "Bed 'n LinkedIn-profielkaart in."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Persoonlike naam",
+        "description": "LinkedIn se persoonlike gebruikersnaamsegment."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokaal",
+        "description": "Lokaal-metadatawaarde soos en_US."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Агляд прадукту",
+    "description": "Блок кароткага агляду прадукту."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Значок",
+        "description": "Значок, які прадстаўляе паняцце."
+      },
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Галоўнае паняцце з першага погляду."
+      },
+      {
+        "property": "subtitle",
+        "title": "Падзагаловак",
+        "description": "Дадатковая падрабязнасць."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Акцэнтны колер значка."
+      }
+    ]
+  }
+}

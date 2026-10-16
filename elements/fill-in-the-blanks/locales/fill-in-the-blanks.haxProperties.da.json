@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Udfyld de tomme felter",
+    "description": "Vurderingsaktivitet, hvor eleverne udfylder manglende ord i en sætning."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spørgsmål",
+        "description": "Spørgsmål, som brugerne skal besvare."
+      },
+      {
+        "property": "statement",
+        "title": "Udsagn",
+        "description": "Udsagn, der omdannes til interaktionen \"markér ordene\"."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bedømmelsesformat",
+        "description": "OER Schema: bedømmelsesformat for denne vurdering (f.eks. point, bogstav, procent, gennemførelse)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurdering."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus, som denne vurdering er beregnet til."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Quizzens navn",
+        "description": "Quiznavn, der videregives til brug i xAPI-drevne miljøer til identifikation af dette element"
+      }
+    ]
+  }
+}

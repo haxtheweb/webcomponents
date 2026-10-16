@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Ukuqhuma Okumangalisayo",
+    "description": "Isithombe esinyakazayo sokuqhuma esisebenzisanayo esinemisindo ongayikhetha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Usayizi",
+        "description": "Setha usayizi wokuqhuma.",
+        "options": {
+          "tiny": "Kuncane kakhulu",
+          "small": "Kuncane",
+          "medium": "Maphakathi",
+          "large": "Kukhulu",
+          "epic": "Okukhulukazi"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Umbala",
+        "description": "Setha itimu yombala wokuqhuma.",
+        "options": {
+          "": "Okuzenzakalelayo",
+          "red": "Okubomvu",
+          "blue": "Okuluhlaza okwesibhakabhaka",
+          "purple": "Okunsomi",
+          "orange": "Okuwolintshi",
+          "yellow": "Okuphuzi"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Imisindo",
+        "description": "Vula imisindo."
+      },
+      {
+        "property": "resetSound",
+        "title": "Setha Kabusha Umsindo",
+        "description": "Qala kabusha umsindo kusukela ekuqaleni njalo."
+      },
+      {
+        "property": "image",
+        "title": "Isithombe Sangokwezifiso",
+        "description": "I-URL ongayikhetha yesithombe sokuqhuma sangokwezifiso."
+      },
+      {
+        "property": "sound",
+        "title": "Umsindo Wangokwezifiso",
+        "description": "I-URL ongayikhetha yomsindo wangokwezifiso."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Kukhutshaziwe",
+        "description": "Khubaza konke ukusebenzisana."
+      }
+    ]
+  }
+}

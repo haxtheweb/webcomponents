@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Cilj održivog razvoja Ujedinjenih naroda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Cilj",
+        "description": "Broj UN SDG cilja."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Samo boja",
+        "description": "Prikaži samo boju cilja."
+      }
+    ]
+  }
+}

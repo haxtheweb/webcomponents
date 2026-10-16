@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ngā Ripa",
+    "description": "He huinga ripa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Tapanga (mō te wātea ki te katoa)",
+        "description": "Tapanga wātea mō te huinga ripa."
+      },
+      {
+        "property": "disabled",
+        "title": "Kua monokia",
+        "description": "Monokia ngā ripa katoa."
+      },
+      {
+        "property": "hidden",
+        "title": "Kua huna",
+        "description": "Hunaia te huinga ripa."
+      },
+      {
+        "property": "sticky",
+        "title": "Piri",
+        "description": "Kia noho tonu ngā ripa whakapae ki runga i te panuku."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Pito Wehenga Tahora",
+        "description": "Pito wehenga mō ngā ripa whakapae; whakamahia te -1 mō te poutū anake."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Pito Wehenga Ata Tohu",
+        "description": "Pito wehenga mō te whakaatu kupu me ngā ata tohu. Ko te 0 te taunoa; whakamahia te -1 mō te aratau ata tohu anake."
+      },
+      {
+        "slot": "",
+        "title": "Ngā Ripa",
+        "description": "He raupapa huānga <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Ahurei",
+        "description": "ID ahurei mō tēnei huinga ripa."
+      }
+    ]
+  }
+}

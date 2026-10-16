@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Табууд",
+    "description": "Табуудын багц."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Шошго (хүртээмжид зориулсан)",
+        "description": "Табын багцын хүртээмжтэй шошго."
+      },
+      {
+        "property": "disabled",
+        "title": "Идэвхгүй",
+        "description": "Бүх табыг идэвхгүй болгох."
+      },
+      {
+        "property": "hidden",
+        "title": "Нуусан",
+        "description": "Табын багцыг нуух."
+      },
+      {
+        "property": "sticky",
+        "title": "Наалддаг",
+        "description": "Гүйлгэх үед хэвтээ табуудыг дээд хэсэгт байлгах."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Байршлын зааг цэг",
+        "description": "Хэвтээ табын зааг цэг; зөвхөн босоо бол -1 ашиглана уу."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Дүрс тэмдгийн зааг цэг",
+        "description": "Дүрс тэмдэгтэй хамт текст харуулах зааг цэг. Анхдагч нь 0; зөвхөн дүрс тэмдгийн горимд -1 ашиглана уу."
+      },
+      {
+        "slot": "",
+        "title": "Табууд",
+        "description": "<a11y-tab/> элементүүдийн цуваа."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Цорын ганц ID",
+        "description": "Энэ табын багцын цорын ганц ID."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ਛਾਂਟੀ ਸਵਾਲ",
+    "description": "ਆਈਟਮਾਂ ਨੂੰ ਸਹੀ ਕ੍ਰਮ ਵਿੱਚ ਲਗਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ਸਵਾਲ",
+        "description": "ਸਵਾਲ ਦਾ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ਗ੍ਰੇਡਿੰਗ ਫਾਰਮੈਟ",
+        "description": "OER Schema: ਇਸ ਮੁਲਾਂਕਣ ਲਈ ਗ੍ਰੇਡਿੰਗ ਫਾਰਮੈਟ (ਜਿਵੇਂ ਅੰਕ, ਅੱਖਰ, ਪ੍ਰਤੀਸ਼ਤ, ਪੂਰਤੀ)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼",
+        "description": "OER Schema: ਇਸ ਮੁਲਾਂਕਣ ਨਾਲ ਜੁੜਿਆ ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼।"
+      },
+      {
+        "property": "forCourse",
+        "title": "ਕੋਰਸ",
+        "description": "OER Schema: ਉਹ ਕੋਰਸ ਜਿਸ ਲਈ ਇਹ ਮੁਲਾਂਕਣ ਹੈ।"
+      },
+      {
+        "property": "answers",
+        "title": "ਜਵਾਬ",
+        "description": "ਜਵਾਬਾਂ ਦਾ ਕ੍ਰਮ ਸਹੀ ਤਰਤੀਬ ਨਿਰਧਾਰਤ ਕਰਦਾ ਹੈ।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ਕੁਇਜ਼ ਦਾ ਨਾਮ",
+        "description": "ਵਿਸ਼ਲੇਸ਼ਣ ਪ੍ਰਣਾਲੀਆਂ ਵਿੱਚ xAPI ਪਛਾਣ ਲਈ ਵਰਤਿਆ ਕੁਇਜ਼ ਨਾਮ।"
+      }
+    ]
+  }
+}

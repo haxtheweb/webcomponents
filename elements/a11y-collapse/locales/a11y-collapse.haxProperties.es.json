@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Contenedor contraíble",
+    "description": "Contenedor individual expandible y contraíble."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Encabezado",
+        "description": "Texto del elemento contraíble."
+      },
+      {
+        "property": "expanded",
+        "title": "Expandido",
+        "description": "Expandir de forma predeterminada."
+      },
+      {
+        "property": "headingButton",
+        "title": "Botón en el encabezado",
+        "description": "Hacer clic en todo el encabezado en lugar de solo en el icono."
+      },
+      {
+        "property": "icon",
+        "title": "Icono",
+        "description": "Icono del botón para expandir/contraer."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Icono (expandido)",
+        "description": "Icono opcional para el estado expandido."
+      },
+      {
+        "slot": "",
+        "title": "Contenido",
+        "description": "Contenido del elemento contraíble."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Información sobre herramientas",
+        "description": "Información sobre herramientas del botón para expandir/contraer."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Información sobre herramientas (expandido)",
+        "description": "Información sobre herramientas del botón para expandir/contraer cuando está expandido."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn ներկառուցում",
+    "description": "Ներկառուցել LinkedIn պրոֆիլի քարտ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Անհատական անուն",
+        "description": "LinkedIn-ի անհատական օգտանվան հատվածը։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Տեղայնացում",
+        "description": "Տեղայնացման մետատվյալի արժեք, օրինակ՝ en_US։"
+      }
+    ]
+  }
+}

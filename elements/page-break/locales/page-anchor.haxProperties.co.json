@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ancura di pagina",
+    "description": "Ligame versu punti precisi di i media in a pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Destinazione in a pagina",
+        "description": "ID o risorsa versu a quale punta st'ancura."
+      },
+      {
+        "property": "value",
+        "title": "Valore di ligame prufondu",
+        "description": "Valore di ligame prufondu (per esempiu un marcatempu o l'ID d'una diapusitiva)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entità di u situ",
+        "description": "Entità di u situ facultativa per cuntrullà a prisentazione di i cuncetti cunnessi."
+      }
+    ]
+  }
+}

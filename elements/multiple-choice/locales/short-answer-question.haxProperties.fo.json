@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Spurningur við stuttum svari",
+    "description": "Lat brúkaran svara einum einføldum spurningi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spurningur",
+        "description": "Spurningur, sum brúkarar skulu svara."
+      },
+      {
+        "property": "answers",
+        "title": "Møgulig svar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn á spurnakappingini",
+        "description": "Navn á spurnakappingini, sum verður latið inn til brúks í xAPI-stýrdum umhvørvum at eyðmerkja henda lutin"
+      }
+    ]
+  }
+}

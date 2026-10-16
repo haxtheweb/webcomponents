@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Porovnanie obrázkov",
+    "description": "Posúvanie jedného obrázka cez druhý na porovnanie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Horný obrázok",
+        "description": "Horný obrázok, ktorý sa posúva cez spodný obrázok."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alternatívny text horného obrázka",
+        "description": "Povinný alternatívny text kvôli prístupnosti."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Spodný obrázok",
+        "description": "Spodný obrázok zobrazený pod horným obrázkom."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alternatívny text spodného obrázka",
+        "description": "Povinný alternatívny text kvôli prístupnosti."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Správanie",
+        "description": "Vyberte režim stierania (predvolený) alebo režim priehľadnosti horného obrázka."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Farba posuvníka."
+      },
+      {
+        "property": "dark",
+        "title": "Tmavý",
+        "description": "Invertovať farbu posuvníka."
+      },
+      {
+        "property": "position",
+        "title": "Počiatočná pozícia",
+        "description": "Počiatočná pozícia od 0 do 100."
+      }
+    ]
+  }
+}

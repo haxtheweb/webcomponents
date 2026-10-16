@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "የLinkedIn መክተቻ",
+    "description": "የLinkedIn የመገለጫ ካርድ ክተት።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "የግል ስም",
+        "description": "የLinkedIn የግል የተጠቃሚ ስም ክፍል።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "አካባቢ",
+        "description": "እንደ en_US ያለ የአካባቢ ሜታዳታ እሴት።"
+      }
+    ]
+  }
+}

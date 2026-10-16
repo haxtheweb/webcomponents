@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Chinthu cha gulu",
+    "description": "Chinthu chooneka ngati khadi chogwiritsidwa ntchito mkati mwa mndandanda wa gulu, chokhala ndi mawu, ulalo, ndi zofalitsa zosankha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Ulalo",
+        "description": "URL yopitako ya khadi ili."
+      },
+      {
+        "property": "image",
+        "title": "Chithunzi",
+        "description": "Chithunzi chakumbuyo."
+      },
+      {
+        "property": "line1",
+        "title": "Mzere 1",
+        "description": "Mzere woyamba wa mawu."
+      },
+      {
+        "property": "line2",
+        "title": "Mzere 2",
+        "description": "Mzere wachiwiri wa mawu."
+      },
+      {
+        "property": "line3",
+        "title": "Mzere 3",
+        "description": "Mzere wachitatu wa mawu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Chizindikiro",
+        "description": "Chizindikiro choyimira khadilo."
+      },
+      {
+        "property": "saturate",
+        "title": "Mphamvu ya mitundu",
+        "description": "Sinthani kuwala kwa mitundu ya chithunzi wogwiritsa ntchito akaika chidwi."
+      },
+      {
+        "property": "tags",
+        "title": "Ma Tagi",
+        "description": "Mndandanda wa ma tagi olekanitsidwa ndi koma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu",
+        "description": "Mtundu wogwiritsidwa ntchito pa ma tagi."
+      },
+      {
+        "property": "alt",
+        "title": "Mawu ofotokoza",
+        "description": "Mawu ena ofotokoza ulalowo."
+      }
+    ]
+  }
+}

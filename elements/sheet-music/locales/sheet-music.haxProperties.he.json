@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "תווים",
+    "description": "מציג ומנגן תווים, טאבים לגיטרה ופרטיטורות באמצעות alphaTex או MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "סימון AlphaTex",
+        "description": "סימון alphaTex מוטבע עבור התווים. ערכו ישירות כדי לכתוב את הסימון; הוא נשמר בתבנית כך שהריווח נשמר."
+      },
+      {
+        "property": "source",
+        "title": "קובץ פרטיטורה",
+        "description": "העלו או קשרו לקובץ MusicXML ‏(.xml/.musicxml/.mxl) או Guitar Pro ‏(.gp3/.gp4/.gp5/.gpx/.gp). גובר על alphaTex המוטבע כאשר הוא מוגדר."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "השמעת שמע",
+        "description": "מופעל כברירת מחדל - האזינו לתווים המנוגנים באמצעות הסינתיסייזר המובנה. כבו למצב צפייה בלבד (ללא שמע)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "הצגת אפשרויות תצוגה",
+        "description": "הצגת כפתורי זום, מתיחה ופריסה בסרגל הנגן."
+      },
+      {
+        "property": "showExport",
+        "title": "הצגת כפתורי ייצוא",
+        "description": "הצגת כפתורי הורדת MIDI והדפסה/PDF בסרגל הנגן."
+      }
+    ]
+  }
+}

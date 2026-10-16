@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "ধাপ আইটেম",
+    "description": "ধাপের তালিকার অংশ এমন আইটেম"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "শিরোনাম"
+      }
+    ]
+  }
+}

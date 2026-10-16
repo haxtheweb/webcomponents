@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub یوگدان کاراں دی لسٹ",
+    "description": "GitHub API ورت کے RPG کرداراں دی شکل وچ وکھایا جاندا اے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ادارہ",
+        "description": "github.com/ORG/REPO توں ادارے دا ناں۔"
+      },
+      {
+        "property": "repo",
+        "title": "ریپوزٹری",
+        "description": "github.com/ORG/REPO توں ریپوزٹری دا ناں۔"
+      },
+      {
+        "property": "limit",
+        "title": "حد",
+        "description": "وکھائے جاوݨ والے یوگدان کاراں دی گنتی محدود کرو۔"
+      }
+    ]
+  }
+}

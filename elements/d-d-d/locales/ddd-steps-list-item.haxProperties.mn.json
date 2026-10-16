@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Алхмын зүйл",
+    "description": "Алхмын жагсаалтын нэг хэсэг болох зүйл"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Гарчиг"
+      }
+    ]
+  }
+}

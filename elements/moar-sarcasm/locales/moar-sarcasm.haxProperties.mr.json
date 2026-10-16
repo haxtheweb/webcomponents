@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "उपहास",
+    "description": "मजकूर खोडकर पद्धतीने सादर करणे"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "मजकूर",
+        "description": "उपहासात्मक करायचा मजकूर"
+      }
+    ]
+  }
+}

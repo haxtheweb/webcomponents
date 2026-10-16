@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS-Container"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Editor ausblenden",
+        "description": "Die Dateibearbeitungsoberfläche ausblenden."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Terminal ausblenden",
+        "description": "Das Terminal für automatisch laufende Programme ausblenden."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Fenster ausblenden",
+        "description": "Das Ausgabefenster bei reiner Terminalnutzung ausblenden."
+      },
+      {
+        "slot": "",
+        "title": "Befehle",
+        "description": "Befehle (einer pro Zeile), die vor dem Laden ausgeführt werden."
+      }
+    ]
+  }
+}

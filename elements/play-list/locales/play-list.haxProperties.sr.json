@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Плејлиста",
+    "description": "Прикажите било коју врсту садржаја у плејлисти."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Извор",
+        "description": "Садржај приказан у плејлисти."
+      },
+      {
+        "property": "edit",
+        "title": "Режим уређивања",
+        "description": "Пребацуј између режима уређивања и прегледа плејлисте."
+      },
+      {
+        "property": "navigation",
+        "title": "Навигација",
+        "description": "Прикажи дугмад за навигацију напред и назад."
+      },
+      {
+        "property": "pagination",
+        "title": "Пагинација",
+        "description": "Прикажи тачке пагинације."
+      },
+      {
+        "property": "orientation",
+        "title": "Оријентација",
+        "description": "Оријентација слајдова.",
+        "options": {
+          "horizontal": "Хоризонтално",
+          "vertical": "Вертикално"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Почетни слајд",
+        "description": "Индекс слајда који је иницијално у фокусу."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Однос ширине и висине",
+        "description": "Однос ширине и висине слајдова.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

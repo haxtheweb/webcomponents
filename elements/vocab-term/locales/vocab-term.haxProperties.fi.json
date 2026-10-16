@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Sanasto",
+    "description": "Sanaston termi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termi"
+      },
+      {
+        "property": "information",
+        "title": "Määritelmä",
+        "description": "Määritelmä, joka näytetään, kun termiä napsautetaan."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Ponnahdusikkuna",
+        "description": "Näytä määritelmä ponnahdusikkunassa tekstin sijaan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Linkit",
+        "description": "Luettelo tähän termiin liittyvistä lisälinkeistä."
+      }
+    ]
+  }
+}

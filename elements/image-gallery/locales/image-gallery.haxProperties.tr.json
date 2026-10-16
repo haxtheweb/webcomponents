@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Görsel Galerisi",
+    "description": "Görselleri ızgara, duvar örgüsü veya slayt gösterisi düzenlerinde sunan bir galeri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Görüntüleme modu",
+        "description": "Görsellerin galeride nasıl sunulacağı.",
+        "options": {
+          "grid": "Izgara",
+          "masonry": "Duvar örgüsü",
+          "gallery": "Galeri"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Etkin dizin",
+        "description": "Galeri modunda başlanacak etkin görselin dizini."
+      }
+    ]
+  }
+}

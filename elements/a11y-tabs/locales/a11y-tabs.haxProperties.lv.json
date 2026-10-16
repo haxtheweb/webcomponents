@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Cilnes",
+    "description": "Ciļņu kopa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etiķete (piekļūstamībai)",
+        "description": "Piekļūstama ciļņu kopas etiķete."
+      },
+      {
+        "property": "disabled",
+        "title": "Atspējots",
+        "description": "Atspējot visas cilnes."
+      },
+      {
+        "property": "hidden",
+        "title": "Paslēpts",
+        "description": "Paslēpt ciļņu kopu."
+      },
+      {
+        "property": "sticky",
+        "title": "Piesprausts",
+        "description": "Ritinot paturēt horizontālās cilnes augšā."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Izkārtojuma pārtraukumpunkts",
+        "description": "Horizontālo ciļņu pārtraukumpunkts; -1 — tikai vertikālas."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Ikonu pārtraukumpunkts",
+        "description": "Pārtraukumpunkts teksta rādīšanai kopā ar ikonām. Noklusējums ir 0; -1 — tikai ikonu režīms."
+      },
+      {
+        "slot": "",
+        "title": "Cilnes",
+        "description": "<a11y-tab/> elementu virkne."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unikāls ID",
+        "description": "Šīs ciļņu kopas unikālais ID."
+      }
+    ]
+  }
+}

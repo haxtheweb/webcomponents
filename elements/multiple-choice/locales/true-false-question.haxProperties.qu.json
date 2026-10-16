@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Chiqap / Llulla tapukuy",
+    "description": "Chiqap llulla tapukuy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tapukuy",
+        "description": "Ruraqkuna kutichinanpaq tapukuy."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Allin kutichiy"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tapukuykunapa sutin",
+        "description": "xAPI pachakunapi kay itemta riqsichinapaq apachisqa tapukuy suti"
+      }
+    ]
+  }
+}

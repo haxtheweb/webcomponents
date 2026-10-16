@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Tarree taphaa",
+    "description": "Qabiyyee gosa kamiyyuu tarree taphaa keessatti agarsiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Madda",
+        "description": "Qabiyyee tarree taphaa keessatti mul'atu."
+      },
+      {
+        "property": "edit",
+        "title": "Haala gulaalchaa",
+        "description": "Tarree taphaatiif haala gulaalchaa fi dursa ilaaluu gidduu jijjiiri."
+      },
+      {
+        "property": "navigation",
+        "title": "Naannessa",
+        "description": "Qabduuwwan naannessa fuula duraa fi duubaa agarsiisi."
+      },
+      {
+        "property": "pagination",
+        "title": "Lakkoofsa fuulaa",
+        "description": "Tuqaalee lakkoofsa fuulaa agarsiisi."
+      },
+      {
+        "property": "orientation",
+        "title": "Kallattii",
+        "description": "Kallattii saliidiiwwanii.",
+        "options": {
+          "horizontal": "Dalgaa",
+          "vertical": "Dhaabbataa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Saliidii jalqabaa",
+        "description": "Lakkoofsa saliidii jalqaba irratti xiyyeeffatamu."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Walmadaalina Bal'inaa fi Dheerinaa",
+        "description": "Walmadaalina bal'inaa fi dheerinaa saliidiiwwanii.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

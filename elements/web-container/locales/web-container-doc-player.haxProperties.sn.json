@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Mutambi wegwaro rewebhu kombonendi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Viga hwindo",
+        "description": "Viga hwindo rezvinobuda, zvinobatsira kana chinangwa chiri terminal chete"
+      }
+    ]
+  }
+}

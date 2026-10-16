@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Прагляд PDF у браўзеры",
+    "description": "Убудаваць файл PDF з неабавязковым макетам карткі і кнопкай спампоўвання."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Размяшчэнне файла PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Загаловак",
+        "description": "Тэкст загалоўка карткі."
+      },
+      {
+        "property": "card",
+        "title": "Макет карткі",
+        "description": "Паказваць PDF у картцы з кнопкай спампоўвання."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Метка спампоўвання",
+        "description": "Метка кнопкі спампоўвання."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Паведамленне аб непадтрымцы",
+        "description": "Паведамленне, калі браўзер не можа паказаць файлы PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Тэкст спасылкі пры непадтрымцы",
+        "description": "Тэкст спасылкі, калі браўзер не можа паказаць файлы PDF."
+      },
+      {
+        "property": "width",
+        "title": "Шырыня",
+        "description": "Шырыня праглядальніка PDF."
+      },
+      {
+        "property": "height",
+        "title": "Вышыня",
+        "description": "Вышыня праглядальніка PDF."
+      }
+    ]
+  }
+}

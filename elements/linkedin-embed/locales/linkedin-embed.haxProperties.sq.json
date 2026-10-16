@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Ngulitje LinkedIn",
+    "description": "Ngulit një kartë profili LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Emri personal",
+        "description": "Segmenti i emrit personal të përdoruesit në LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokalizimi",
+        "description": "Vlera e meta të dhënave të lokalizimit, si en_US."
+      }
+    ]
+  }
+}

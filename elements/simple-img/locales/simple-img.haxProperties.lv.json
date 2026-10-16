@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Vienkāršs attēls",
+    "description": "Apstrādājiet attēlus ar vienkāršiem parametriem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Avots",
+        "description": "Attēla avota URL."
+      },
+      {
+        "property": "height",
+        "title": "Augstums",
+        "description": "Neobligāts attēla augstums."
+      },
+      {
+        "property": "width",
+        "title": "Platums",
+        "description": "Neobligāts attēla platums."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatīvais teksts",
+        "description": "Noderīgs ekrāna lasītājiem un labākam SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kvalitāte",
+        "description": "Attēla kvalitāte ģenerēšanas laikā (tikai JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Ielādes prioritāte",
+        "description": "Veiktspējas norāde mūsdienu pārlūkiem.",
+        "options": {
+          "auto": "Automātiski",
+          "high": "Augsta",
+          "low": "Zema"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dekodēšanas metode",
+        "description": "Attēlu renderēšanas veiktspējas norāde mūsdienu pārlūkiem.",
+        "options": {
+          "auto": "Automātiski",
+          "async": "Asinhroni"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ఈవెంట్ బ్యాడ్జ్",
+    "description": "ఈవెంట్ బ్యాడ్జ్ కాంపోనెంట్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV చిత్రం",
+        "description": "TV‌పై చూపబడే చిత్రం."
+      },
+      {
+        "property": "logo",
+        "title": "లోగో",
+        "description": "బ్యాడ్జ్ మూలలో చూపబడే లోగో."
+      },
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "బ్యాడ్జ్ పైభాగంలో చూపబడే శీర్షిక."
+      },
+      {
+        "property": "name",
+        "title": "పేరు",
+        "description": "బ్యాడ్జ్‌పై చూపబడే పేరు."
+      },
+      {
+        "property": "position",
+        "title": "హోదా",
+        "description": "వ్యక్తి పాత్ర లేదా హోదా."
+      },
+      {
+        "property": "organization",
+        "title": "సంస్థ",
+        "description": "వ్యక్తి పనిచేసే సంస్థ."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV రంగు",
+        "description": "TV కోసం రంగును ఎంచుకోండి."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "ప్రాథమిక నేపథ్యం లేదా వచన రంగు."
+      },
+      {
+        "property": "knobcolor",
+        "title": "నాబ్ రంగు",
+        "description": "TV నాబ్‌ల రంగు."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "సెపియా",
+        "description": "సెపియా ప్రభావాన్ని వర్తింపజేయండి."
+      },
+      {
+        "property": "blackwhite",
+        "title": "నలుపు తెలుపు",
+        "description": "నలుపు-తెలుపు ప్రభావాన్ని వర్తింపజేయండి."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tambayar Tag",
+    "description": "Zaɓi tag-tag don amsa tambayar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tambaya",
+        "description": "Tambayar da masu amfani za su amsa."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Tsarin maki",
+        "description": "OER Schema: tsarin maki na wannan tantancewa (misali maki, harafi, kashi, kammalawa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Manufar koyo",
+        "description": "OER Schema: manufar koyo da ke da alaƙa da wannan tantancewa."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kwas",
+        "description": "OER Schema: kwas ɗin da aka yi wannan tantancewa domin sa."
+      },
+      {
+        "property": "answers",
+        "title": "Amsoshi"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Sunan jarrabawa",
+        "description": "Sunan jarrabawa da ake amfani da shi don gano xAPI a tsarin nazari."
+      }
+    ]
+  }
+}

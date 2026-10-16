@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P გარსი .h5p ფაილების ჩასატვირთად და საჩვენებლად"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe-ის ჩასმის კოდი"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity lejátszó",
+    "description": "Unity WebGL lejátszó."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cél",
+        "description": "A játék buildjének elérési útja."
+      },
+      {
+        "property": "compression",
+        "title": "Tömörítési módszer",
+        "description": "A játékeszközök tömörítési fájlkiterjesztése."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Streamelési URL",
+        "description": "A streamelt eszközök URL-je."
+      },
+      {
+        "property": "companyname",
+        "title": "Cégnév",
+        "description": "A cég neve."
+      },
+      {
+        "property": "productname",
+        "title": "Terméknév",
+        "description": "A játék címe."
+      },
+      {
+        "property": "productversion",
+        "title": "Termékverzió",
+        "description": "Kiadási verzió."
+      },
+      {
+        "property": "width",
+        "title": "Vászon szélessége",
+        "description": "A vászon CSS-szélessége (például px vagy em)."
+      },
+      {
+        "property": "height",
+        "title": "Vászon magassága",
+        "description": "A vászon CSS-magassága (például px vagy em)."
+      },
+      {
+        "property": "background",
+        "title": "Vászon háttere",
+        "description": "A vászon CSS-háttere."
+      }
+    ]
+  }
+}

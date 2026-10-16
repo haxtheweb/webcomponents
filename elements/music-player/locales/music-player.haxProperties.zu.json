@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Isibonisi se-MIDI",
+    "description": "Dlala i-MIDI ngokubonakalisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Umthombo",
+        "description": "I-URL yefayela ezodlalwa."
+      },
+      {
+        "property": "visualizer",
+        "title": "Ukubonakalisa",
+        "description": "Isitayela sokubonakalisa sefayela lomculo.",
+        "options": {
+          "staff": "Isitafu",
+          "piano-roll": "Umqulu wepiyano",
+          "waterfall": "Ipiyano + impophoma"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Fihla impophoma",
+        "description": "Fihla amanothi empophoma ekubonakaliseni kwepiyano."
+      }
+    ]
+  }
+}

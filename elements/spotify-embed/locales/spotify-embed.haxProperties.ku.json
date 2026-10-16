@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Pêçek ji bo bicihkirina lîstikvana Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çavkanî",
+        "description": "Girêdana bicihkirin an parvekirinê ji Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Mijar",
+        "description": "Mijara rengê paşxanê ji bo lîstikvanê.",
+        "options": {
+          "": "Xwerû",
+          "0": "Reş"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Mezinahî",
+        "description": "Mezinahiya lîstikvanê.",
+        "options": {
+          "normal": "Xwerû",
+          "compact": "Tengezî"
+        }
+      }
+    ]
+  }
+}

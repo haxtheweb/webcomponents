@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus rimarisqakuna",
+    "description": "Disqus rimarisqa web serviciowan tinkuchiy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Pisi suti",
+        "description": "Disqus-pi propiedadpa pisi sutin"
+      }
+    ]
+  }
+}

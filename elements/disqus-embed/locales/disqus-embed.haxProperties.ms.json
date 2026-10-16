@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Benamkan ulasan Disqus pada halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Nama pendek",
+        "description": "Nama pendek laman, yang menentukan hos skrip Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL Halaman",
+        "description": "URL halaman yang dilampirkan bebenang ulasan."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Pengecam halaman",
+        "description": "Pengecam unik untuk bebenang ulasan halaman."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Tajuk halaman",
+        "description": "Tajuk halaman yang dilampirkan bebenang ulasan."
+      },
+      {
+        "property": "loadingText",
+        "title": "Teks memuatkan",
+        "description": "Teks yang diumumkan semasa ulasan sedang dimuatkan."
+      },
+      {
+        "property": "lang",
+        "title": "Bahasa",
+        "description": "Kod bahasa untuk antara muka Disqus, cth. en."
+      }
+    ]
+  }
+}

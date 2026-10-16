@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Étiquettes",
+    "description": "Liste d'étiquettes simple à afficher sur la page."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Étiquettes",
+        "description": "Liste d'étiquettes séparées par des virgules."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Couleur d'accent automatique",
+        "description": "Définir automatiquement la couleur d'accent selon le libellé."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur",
+        "description": "Couleur des étiquettes."
+      }
+    ]
+  }
+}

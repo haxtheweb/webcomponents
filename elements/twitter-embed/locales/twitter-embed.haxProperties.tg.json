@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Ҷойгиркунии Twitter (X)",
+    "description": "Твитро аз X дар контекст ҷойгир кунед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL-и твит",
+        "description": "URL-и твит барои ҷойгиркунӣ."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Мавзӯъ",
+        "description": "Мавзӯи равшан ё торик барои твитҳои X.",
+        "options": {
+          "light": "Равшан",
+          "dark": "Торик"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Пешгирии равзанаи пайдошаванда ҳангоми клик",
+        "description": "Аз кушодани твит дар x.com аз ҷониби корбарон пешгирӣ кунед."
+      }
+    ]
+  }
+}

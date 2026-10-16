@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Ҷойгиркунии LinkedIn",
+    "description": "Корти профили LinkedIn-ро ҷойгир кунед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Номи шахсӣ",
+        "description": "Қисми номи корбари шахсии LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Маҳаллӣ",
+        "description": "Қимати метамаълумоти маҳаллӣ, масалан en_US."
+      }
+    ]
+  }
+}

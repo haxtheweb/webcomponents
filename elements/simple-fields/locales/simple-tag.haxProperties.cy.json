@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tag / Pilsen",
+    "description": "Label cryno ar ffurf pilsen gyda lliw acen, botwm canslo neu doglo dewisol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Label",
+        "description": "Testun a ddangosir y tu mewn i'r bilsen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw acen",
+        "description": "Enw acen SimpleColors ar gyfer cefndir y bilsen.",
+        "options": {
+          "": "-- rhagosodiad --",
+          "red": "Coch",
+          "pink": "Pinc",
+          "purple": "Porffor",
+          "deep-purple": "Porffor Tywyll",
+          "indigo": "Indigo",
+          "blue": "Glas",
+          "light-blue": "Glas Golau",
+          "cyan": "Gwyrddlas",
+          "teal": "Corhwyaden",
+          "green": "Gwyrdd",
+          "light-green": "Gwyrdd Golau",
+          "lime": "Leim",
+          "yellow": "Melyn",
+          "amber": "Ambr",
+          "orange": "Oren",
+          "deep-orange": "Oren Tywyll",
+          "brown": "Brown",
+          "blue-grey": "Glaslwyd",
+          "grey": "Llwyd"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Lliw acen awtomatig",
+        "description": "Pennu'r lliw acen o destun y label yn awtomatig."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Botwm canslo",
+        "description": "Dangos botwm eicon tynnu/canslo y tu mewn i'r bilsen."
+      },
+      {
+        "property": "readonly",
+        "title": "Darllen yn unig",
+        "description": "Cuddio'r botwm canslo fel mai i'w dangos yn unig y mae'r bilsen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Toglo",
+        "description": "Gwneud i'r bilsen doglo ymlaen/i ffwrdd pan gaiff y botwm ei glicio."
+      },
+      {
+        "property": "toggled",
+        "title": "Wedi'i doglo",
+        "description": "A yw'r bilsen wedi'i toglo ymlaen ar hyn o bryd."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Eicon wedi'i doglo",
+        "description": "Eicon i'w ddangos pan fydd y bilsen wedi'i toglo ymlaen."
+      },
+      {
+        "property": "disabled",
+        "title": "Wedi'i analluogi",
+        "description": "Analluogi rhyngweithio â'r bilsen."
+      }
+    ]
+  }
+}

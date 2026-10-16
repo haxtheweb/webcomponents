@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "ວັນທີ",
+    "description": "ສະແດງວັນທີປະຕິທິນພ້ອມລາຍລະອຽດ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "ເດືອນ",
+        "description": "ເດືອນທີ່ສະແດງໃນບັດ."
+      },
+      {
+        "property": "date",
+        "title": "ວັນທີຂອງເດືອນ",
+        "description": "ວັນທີຂອງເດືອນເປັນຕົວເລກ."
+      },
+      {
+        "property": "day",
+        "title": "ວັນໃນອາທິດ",
+        "description": "ວັນໃນອາທິດເປັນຂໍ້ຄວາມ."
+      },
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຊື່ຂອງງານ."
+      },
+      {
+        "property": "location",
+        "title": "ສະຖານທີ່",
+        "description": "ສະຖານທີ່ຂອງງານ."
+      },
+      {
+        "property": "startTime",
+        "title": "ເລີ່ມ",
+        "description": "ເວລາເລີ່ມ."
+      },
+      {
+        "property": "endTime",
+        "title": "ສິ້ນສຸດ",
+        "description": "ເວລາສິ້ນສຸດ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນທາງເລືອກ."
+      },
+      {
+        "property": "dark",
+        "title": "ຊຸດຮູບແບບມືດ",
+        "description": "ເປີດໃຊ້ຊຸດຮູບແບບມືດ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris കഥ കാർഡ്",
+    "description": "പശ്ചാത്തല ചിത്രം, സ്തംഭ ലേബൽ, തലക്കെട്ട് വാചകം എന്നിവയോടെ ഒരു Polaris കഥ കാർഡ് പ്രദർശിപ്പിക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "പശ്ചാത്തല ചിത്രം",
+        "description": "കാർഡിന്റെ പശ്ചാത്തലമായി കാണിക്കുന്ന ചിത്ര URL."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "പശ്ചാത്തല വലുപ്പം",
+        "description": "പശ്ചാത്തല ചിത്രം കാർഡ് എങ്ങനെ നിറയ്ക്കുന്നു (CSS background-size).",
+        "options": {
+          "cover": "മൂടുക (cover)",
+          "contain": "ഉൾക്കൊള്ളുക (contain)",
+          "auto": "സ്വയമേവ (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "പശ്ചാത്തല ബന്ധനം",
+        "description": "സ്ക്രോൾ ചെയ്യുമ്പോൾ പശ്ചാത്തല ചിത്രം എങ്ങനെ പെരുമാറുന്നു (CSS background-attachment).",
+        "options": {
+          "scroll": "സ്ക്രോൾ (scroll)",
+          "fixed": "സ്ഥിരം (fixed)",
+          "local": "പ്രാദേശികം (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "സ്തംഭ ലേബൽ",
+        "description": "കാർഡിന്റെ മുകളിൽ കാണിക്കുന്ന ചെറിയ വലിയക്ഷര ലേബൽ. മറയ്ക്കാൻ ശൂന്യമായി വിടുക."
+      },
+      {
+        "property": "label",
+        "title": "കാർഡ് വാചകം",
+        "description": "താഴത്തെ പാനലിൽ പ്രദർശിപ്പിക്കുന്ന പ്രാഥമിക വാചകം."
+      },
+      {
+        "property": "link",
+        "title": "ലിങ്ക്",
+        "description": "കാർഡ് മുഴുവനും ഉൾക്കൊള്ളുന്ന ഐച്ഛിക ലക്ഷ്യസ്ഥാന URL."
+      }
+    ]
+  }
+}

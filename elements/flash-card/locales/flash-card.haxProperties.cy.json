@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Cerdyn fflach",
+    "description": "Ymarfer cysyniadau gyda chardiau fflach blaen-a-chefn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Blaen y Cerdyn",
+        "description": "Testun neu gwestiwn y blaen."
+      },
+      {
+        "slot": "back",
+        "title": "Cefn y Cerdyn",
+        "description": "Yr ateb disgwyliedig."
+      },
+      {
+        "property": "imgSource",
+        "title": "Ffynhonnell y Ddelwedd",
+        "description": "Ffeil delwedd a ddefnyddir ar gyfer y cerdyn. Yn diystyru Allweddair y Ddelwedd."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Math o Weithred",
+        "description": "OER Schema: y math o weithred y mae'r ymarfer hwn yn ei gynnwys (e.e. Darllen, Ysgrifennu, Gwneud, Ymchwilio, Gwrando, Gwylio, Myfyrio, Trafod, Arsylwi, Cyflwyno, Asesu)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Amcan Dysgu",
+        "description": "OER Schema: ID neu URL yr amcan dysgu y mae'r ymarfer hwn yn ei gefnogi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tywyll",
+        "description": "Defnyddio modd tywyll."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw Acen",
+        "description": "Lliw acen y cerdyn."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Allweddair y Ddelwedd",
+        "description": "Allweddair ar gyfer delwedd ar hap. Caiff ei ddiystyru gan Ffynhonnell y Ddelwedd."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub салым кошуучулар тизмеси",
+    "description": "GitHub API аркылуу RPG каармандары катары көрсөтүлөт."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Уюм",
+        "description": "github.com/ORG/REPO ичиндеги уюмдун аталышы."
+      },
+      {
+        "property": "repo",
+        "title": "Репозиторий",
+        "description": "github.com/ORG/REPO ичиндеги репозиторийдин аталышы."
+      },
+      {
+        "property": "limit",
+        "title": "Чек",
+        "description": "Көрсөтүлгөн салым кошуучулардын санын чектөө."
+      }
+    ]
+  }
+}

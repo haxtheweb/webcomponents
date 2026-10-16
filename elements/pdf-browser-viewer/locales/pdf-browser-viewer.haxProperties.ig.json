@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ihe Nlele PDF na Ihe Nchọgharị",
+    "description": "Tinye faịlụ PDF n'ahịrị nwere nhazi kaadị nhọrọ na bọtịnụ nbudata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Ebe faịlụ PDF ahụ dị."
+      },
+      {
+        "property": "heading",
+        "title": "Isiokwu",
+        "description": "Ederede isiokwu kaadị."
+      },
+      {
+        "property": "card",
+        "title": "Nhazi kaadị",
+        "description": "Gosi PDF ahụ na kaadị nwere bọtịnụ nbudata."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Akara aha nbudata",
+        "description": "Akara aha maka bọtịnụ nbudata."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Ozi a naghị akwado",
+        "description": "Ozi mgbe ihe nchọgharị enweghị ike igosi faịlụ PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Ozi njikọ a naghị akwado",
+        "description": "Ederede njikọ mgbe ihe nchọgharị enweghị ike igosi faịlụ PDF."
+      },
+      {
+        "property": "width",
+        "title": "Obosara",
+        "description": "Obosara ihe nlele PDF."
+      },
+      {
+        "property": "height",
+        "title": "Ogo",
+        "description": "Ogo ihe nlele PDF."
+      }
+    ]
+  }
+}

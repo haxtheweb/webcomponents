@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Visualiseur MIDI",
+    "description": "Lire du MIDI en contexte avec une visualisation."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "URL du fichier à lire."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualisation",
+        "description": "Style de visualisation du fichier musical.",
+        "options": {
+          "staff": "Portée",
+          "piano-roll": "Piano roll",
+          "waterfall": "Piano + cascade"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Masquer la cascade",
+        "description": "Masquer les notes en cascade dans la visualisation au piano."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "د PDF براوزر لیدونکی",
+    "description": "PDF فایل په کرښه کې ځای پر ځای کړئ، له اختیاري کارت ترتیب او د ډاونلوډ تڼۍ سره."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "د PDF URL",
+        "description": "د PDF فایل ځای."
+      },
+      {
+        "property": "heading",
+        "title": "سرلیک",
+        "description": "د کارت د سرلیک متن."
+      },
+      {
+        "property": "card",
+        "title": "د کارت ترتیب",
+        "description": "PDF په کارت کې له ډاونلوډ تڼۍ سره وښایئ."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "د ډاونلوډ لیبل",
+        "description": "د ډاونلوډ تڼۍ لیبل."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "د نه ملاتړ پیغام",
+        "description": "هغه پیغام چې کله براوزر PDF فایلونه نشي ښودلی."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "د نه ملاتړ د لینک پیغام",
+        "description": "د لینک متن کله چې براوزر PDF فایلونه نشي ښودلی."
+      },
+      {
+        "property": "width",
+        "title": "پلنوالی",
+        "description": "د PDF لیدونکي پلنوالی."
+      },
+      {
+        "property": "height",
+        "title": "لوړوالی",
+        "description": "د PDF لیدونکي لوړوالی."
+      }
+    ]
+  }
+}

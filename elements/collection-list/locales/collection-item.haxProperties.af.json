@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Versamelingsitem",
+    "description": "Kaart-styl-item vir gebruik binne 'n versamelingslys, met teks, skakel en opsionele media."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Skakel",
+        "description": "Bestemmings-URL vir hierdie kaart."
+      },
+      {
+        "property": "image",
+        "title": "Prent",
+        "description": "Agtergrondprent."
+      },
+      {
+        "property": "line1",
+        "title": "Reël 1",
+        "description": "Eerste teksreël."
+      },
+      {
+        "property": "line2",
+        "title": "Reël 2",
+        "description": "Tweede teksreël."
+      },
+      {
+        "property": "line3",
+        "title": "Reël 3",
+        "description": "Derde teksreël."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Ikoon wat die kaart voorstel."
+      },
+      {
+        "property": "saturate",
+        "title": "Versadigingseffek",
+        "description": "Verander prentversadiging wanneer die gebruiker fokus."
+      },
+      {
+        "property": "tags",
+        "title": "Etikette",
+        "description": "Kommageskeide lys van etikette."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kleur",
+        "description": "Kleur gebruik vir etikette."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternatiewe teks wat die skakel beskryf."
+      }
+    ]
+  }
+}

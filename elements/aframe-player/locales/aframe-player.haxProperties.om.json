@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Taphataa 3D",
+    "description": "Taphataa faayilii 3D / dhugaa dabalamaa (AR)."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Madda",
+        "description": "URL faayilii AR kanaa."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Bakka X wantichaa AR keessatti."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Bakka Y wantichaa AR keessatti."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Bakka Z wantichaa AR keessatti."
+      },
+      {
+        "property": "skyColor",
+        "title": "Halluu samii",
+        "description": "Halluu samii mul'ata keessaa filadhu."
+      }
+    ]
+  }
+}

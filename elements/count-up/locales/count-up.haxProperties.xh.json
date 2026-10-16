@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Ukubala Kunyuka",
+    "description": "Bonisa inani libalwa linyuka ukuya kwixabiso ekujoliswe kulo xa lingena emehlweni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Ixabiso lokugqibela",
+        "description": "Inani ekubalwa ukuya kulo."
+      },
+      {
+        "property": "start",
+        "title": "Ixabiso lokuqala",
+        "description": "Inani ekuqalwa ukubala ngalo."
+      },
+      {
+        "property": "duration",
+        "title": "Ixesha",
+        "description": "Imizuzwana ekufuneka ithathwe kukubala."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Umbhalo wangaphambili",
+        "description": "Umbhalo oboniswa phambi kwenani (umz. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Umbhalo wasemva",
+        "description": "Umbhalo oboniswa emva kwenani (umz. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Isithuba sangaphambili",
+        "description": "Umxholo okhethwayo ofakwe phambi kwenani."
+      },
+      {
+        "slot": "suffix",
+        "title": "Isithuba sasemva",
+        "description": "Umxholo okhethwayo ofakwe emva kwenani."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Iindawo zedesimali",
+        "description": "Inani leendawo zedesimali eziza kuboniswa."
+      },
+      {
+        "property": "separator",
+        "title": "Isahluli samawaka",
+        "description": "Uphawu olwahlula amaqela amawaka."
+      },
+      {
+        "property": "decimal",
+        "title": "Uphawu lwedesimali",
+        "description": "Uphawu olusetyenziselwa ichaphaza ledesimali."
+      },
+      {
+        "property": "noeasing",
+        "title": "Akukho kuthambisa",
+        "description": "Cima ukuthambisa ukuze ukubala kuhambe ngokulinganayo."
+      }
+    ]
+  }
+}

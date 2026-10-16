@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kertu",
+    "description": "Komponen kertu kanthi gaya sistem desain DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Gambar",
+        "description": "Gambar opsional."
+      },
+      {
+        "property": "alt",
+        "title": "Alt gambar",
+        "description": "Teks alternatif sing njlentrehake gambar."
+      },
+      {
+        "property": "title",
+        "title": "Judhul",
+        "description": "Judhul kertu."
+      },
+      {
+        "slot": "",
+        "title": "Isi",
+        "description": "Area isi kertu."
+      },
+      {
+        "property": "href",
+        "title": "Pranala",
+        "description": "URL pranala tombol."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label tombol."
+      },
+      {
+        "property": "noArrow",
+        "title": "Tanpa Panah",
+        "description": "Dhelikake panah tombol."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Pranala: target",
+        "description": "Ing ngendi pranala dibukak.",
+        "options": {
+          "": "Jendhela padha",
+          "_blank": "Jendhela anyar - _blank",
+          "_top": "Jendhela paling ndhuwur - _top",
+          "_parent": "Jendhela induk - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Pranala: rel",
+        "description": "Sesambungan antarane sumber daya sing dipranalani lan dokumen saiki."
+      }
+    ]
+  }
+}

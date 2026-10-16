@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Önüme gysga syn",
+    "description": "Önüme çalt syn bloky."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Nyşan",
+        "description": "Düşünjäni aňladýan nyşan."
+      },
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Esasy düşünje bir bakyşda."
+      },
+      {
+        "property": "subtitle",
+        "title": "Kiçi ady",
+        "description": "Goşmaça jikme-jiklik."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Nyşan üçin aksent reňki."
+      }
+    ]
+  }
+}

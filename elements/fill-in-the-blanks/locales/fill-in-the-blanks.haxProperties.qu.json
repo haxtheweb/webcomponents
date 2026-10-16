@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ch'usaqkunata hunt'achiy",
+    "description": "Yachakuqkuna huk rimaypi pisiq simikunata hunt'achinku, chay chaninchay ruray."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tapukuy",
+        "description": "Ruraqkuna kutichinanpaq tapukuy."
+      },
+      {
+        "property": "statement",
+        "title": "Rimay",
+        "description": "Simikunata chimpuy ruraymanm tikrakunqa kay rimay."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Chaninchay laya",
+        "description": "OER Schema: kay chaninchaypa chaninchay layan (kayhina chimpukuna, letra, porcentaje, tukusqa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Yachana munay",
+        "description": "OER Schema: kay chaninchaywan t'inkisqa yachana munay."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursu",
+        "description": "OER Schema: kay chaninchay mayqin kursupaq kasqan."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tapukuykunapa sutin",
+        "description": "xAPI pachakunapi kay itemta riqsichinapaq apachisqa tapukuy suti"
+      }
+    ]
+  }
+}

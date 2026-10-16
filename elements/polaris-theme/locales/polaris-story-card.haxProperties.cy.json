@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Cerdyn stori Polaris",
+    "description": "Dangos cerdyn stori Polaris gyda delwedd gefndir, label colofn a thestun pennawd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Delwedd gefndir",
+        "description": "URL y ddelwedd a ddangosir fel cefndir y cerdyn."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Maint y cefndir",
+        "description": "Sut mae'r ddelwedd gefndir yn llenwi'r cerdyn (CSS background-size).",
+        "options": {
+          "cover": "cover (gorchuddio) (cover)",
+          "contain": "contain (cynnwys) (contain)",
+          "auto": "auto (awtomatig) (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Atodiad y cefndir",
+        "description": "Sut mae'r ddelwedd gefndir yn ymddwyn wrth sgrolio (CSS background-attachment).",
+        "options": {
+          "scroll": "scroll (sgrolio) (scroll)",
+          "fixed": "fixed (sefydlog) (fixed)",
+          "local": "local (lleol) (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Label colofn",
+        "description": "Label byr mewn priflythrennau a ddangosir ar frig y cerdyn. Gadewch yn wag i'w guddio."
+      },
+      {
+        "property": "label",
+        "title": "Testun y cerdyn",
+        "description": "Prif destun a ddangosir yn y panel isaf."
+      },
+      {
+        "property": "link",
+        "title": "Dolen",
+        "description": "URL cyrchfan dewisol sy'n amgáu'r cerdyn cyfan."
+      }
+    ]
+  }
+}

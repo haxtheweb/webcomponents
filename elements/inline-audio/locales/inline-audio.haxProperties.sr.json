@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Уметнути аудио",
+    "description": "Пуштајте аудио унутар текста као допуну садржају странице."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Извор",
+        "description": "MP3 датотека или URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Акцентна боја картице."
+      },
+      {
+        "property": "shiny",
+        "title": "Сјајно",
+        "description": "Користи светлију акцентну позадину уместо сиве."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Тамно",
+        "description": "Користи тамни режим."
+      }
+    ]
+  }
+}

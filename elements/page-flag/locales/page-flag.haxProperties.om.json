@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Alaabaa fuulaa",
+    "description": "Yaadannoo gulaalaa barreessitoota fuulaatiif."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Halluu Calaqqee",
+        "description": "Halluu calaqqee alaabaa fuulaa."
+      },
+      {
+        "property": "label",
+        "title": "Maqaa",
+        "description": "Barreeffama maqaa alaabaa fuulaa."
+      }
+    ]
+  }
+}

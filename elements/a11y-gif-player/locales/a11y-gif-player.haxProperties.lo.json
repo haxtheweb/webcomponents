@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "ເຮັດໃຫ້ GIF ເຄື່ອນໄຫວເຂົ້າເຖິງໄດ້."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF ເຄື່ອນໄຫວ",
+        "description": "URL ຂອງ GIF ເຄື່ອນໄຫວ."
+      },
+      {
+        "property": "alt",
+        "title": "ຂໍ້ຄວາມທົດແທນ",
+        "description": "ຂໍ້ຄວາມທົດແທນສຳລັບຮູບພາບ."
+      },
+      {
+        "property": "longdesc",
+        "title": "ຄຳອະທິບາຍແບບຍາວ",
+        "description": "ຄຳອະທິບາຍແບບຍາວຂອງ GIF ເພື່ອການເຂົ້າເຖິງ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "ຮູບພາບນິ່ງ",
+        "description": "URL ຂອງຮູບພາບນິ່ງຂອງ GIF."
+      }
+    ]
+  }
+}

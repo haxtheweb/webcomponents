@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Çalakiya bikarhêner",
+    "description": "Çalakiyên bikarhêner bişopîne û daneyan bişîne depoyên xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Bûyera ji bo şopandinê",
+        "description": "Çalakiya bikarhêner a ku vê bûyerê dide destpêkirin.",
+        "options": {
+          "visibility": "Dikare vê bibîne",
+          "keydown": "Li vir bişkokekê bitikîne",
+          "click": "Li vê bitikîne",
+          "hover": "Nîşanderê bibe ser vê"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Her carê bişopîne",
+        "description": "Ji xwerû ve, tenê cara yekem tê şopandin."
+      }
+    ]
+  }
+}

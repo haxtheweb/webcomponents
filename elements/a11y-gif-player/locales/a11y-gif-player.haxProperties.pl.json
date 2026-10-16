@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Udostępnij animowane GIF-y w sposób dostępny."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Animowany GIF",
+        "description": "URL animowanego GIF-a."
+      },
+      {
+        "property": "alt",
+        "title": "Tekst alternatywny",
+        "description": "Tekst alternatywny obrazu."
+      },
+      {
+        "property": "longdesc",
+        "title": "Długi opis",
+        "description": "Długi opis GIF-a na potrzeby dostępności."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Obraz statyczny",
+        "description": "URL statycznej wersji GIF-a."
+      }
+    ]
+  }
+}

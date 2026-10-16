@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Onglets",
+    "description": "Ensemble d'onglets."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Libellé (pour l'accessibilité)",
+        "description": "Libellé accessible de l'ensemble d'onglets."
+      },
+      {
+        "property": "disabled",
+        "title": "Désactivé",
+        "description": "Désactiver tous les onglets."
+      },
+      {
+        "property": "hidden",
+        "title": "Masqué",
+        "description": "Masquer l'ensemble d'onglets."
+      },
+      {
+        "property": "sticky",
+        "title": "Fixe",
+        "description": "Garder les onglets horizontaux en haut pendant le défilement."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Point de rupture de la mise en page",
+        "description": "Point de rupture pour les onglets horizontaux ; utilisez -1 pour un affichage uniquement vertical."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Point de rupture des icônes",
+        "description": "Point de rupture pour afficher le texte avec les icônes. La valeur par défaut est 0 ; utilisez -1 pour le mode icônes seules."
+      },
+      {
+        "slot": "",
+        "title": "Onglets",
+        "description": "Série d'éléments <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID unique",
+        "description": "ID unique de cet ensemble d'onglets."
+      }
+    ]
+  }
+}

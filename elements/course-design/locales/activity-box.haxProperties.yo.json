@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Àpótí Iṣẹ́",
+    "description": "Búlọ́ọ̀kù àkọlé kékeré tí a ṣe lọ́ṣọ̀ọ́."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Àmì",
+        "description": "Àmì tí a fi hàn lẹ́gbẹ̀ẹ́ àpótí iṣẹ́."
+      },
+      {
+        "property": "tag",
+        "title": "Tágì àpótí iṣẹ́",
+        "description": "Tágì tí a fi hàn nínú àpótí iṣẹ́."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Láìsí àwọ̀",
+        "description": "Má ṣe jẹ́ kí a fi àwọ̀ sí àmì náà."
+      }
+    ]
+  }
+}

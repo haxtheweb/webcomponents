@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Mutambi weUnity",
+    "description": "Mutambi weUnity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Chinangwa",
+        "description": "Nzira yekuenda kubuild yemutambo."
+      },
+      {
+        "property": "compression",
+        "title": "Nzira yekumanikidza",
+        "description": "Mugumo wefaira wekumanikidza wezvinhu zvemutambo."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL yeKutepfenyura",
+        "description": "URL yezvinhu zvekutepfenyura."
+      },
+      {
+        "property": "companyname",
+        "title": "Zita reKambani",
+        "description": "Zita rekambani."
+      },
+      {
+        "property": "productname",
+        "title": "Zita reChigadzirwa",
+        "description": "Zita remutambo."
+      },
+      {
+        "property": "productversion",
+        "title": "Vhezheni yeChigadzirwa",
+        "description": "Vhezheni yakaburitswa."
+      },
+      {
+        "property": "width",
+        "title": "Upamhi hweCanvas",
+        "description": "Upamhi hweCSS hwecanvas (semuenzaniso px kana em)."
+      },
+      {
+        "property": "height",
+        "title": "Kureba kweCanvas",
+        "description": "Kureba kweCSS kwecanvas (semuenzaniso px kana em)."
+      },
+      {
+        "property": "background",
+        "title": "Kumashure kweCanvas",
+        "description": "Kumashure kweCSS kwecanvas."
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Tarix",
+    "description": "Təqvim tarixini təfərrüatlarla göstər."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Ay",
+        "description": "Kartda göstərilən ay."
+      },
+      {
+        "property": "date",
+        "title": "Ayın günü",
+        "description": "Ayın günü rəqəmlə."
+      },
+      {
+        "property": "day",
+        "title": "Həftənin günü",
+        "description": "Həftənin günü mətnlə."
+      },
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Tədbirin adı."
+      },
+      {
+        "property": "location",
+        "title": "Məkan",
+        "description": "Tədbirin keçiriləcəyi məkan."
+      },
+      {
+        "property": "startTime",
+        "title": "Başlanğıc",
+        "description": "Başlama vaxtı."
+      },
+      {
+        "property": "endTime",
+        "title": "Son",
+        "description": "Bitmə vaxtı."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "İxtiyari vurğu rəngi."
+      },
+      {
+        "property": "dark",
+        "title": "Tünd tema",
+        "description": "Tünd temanı aktivləşdir."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Note de page",
+    "description": "Note éditoriale pour les auteurs de la page."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Couleur d'accent de la note de page."
+      },
+      {
+        "property": "label",
+        "title": "Libellé",
+        "description": "Texte du libellé de la note de page."
+      }
+    ]
+  }
+}

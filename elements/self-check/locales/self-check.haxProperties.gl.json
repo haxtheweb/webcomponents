@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Autoavaliación",
+    "description": "Os usuarios poden completar unha autoavaliación."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imaxe",
+        "description": "Imaxe para a autoavaliación."
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título da autoavaliación."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo",
+        "description": "Texto alternativo para a imaxe."
+      },
+      {
+        "slot": "question",
+        "title": "Pregunta"
+      },
+      {
+        "slot": "",
+        "title": "Resposta"
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor do tema",
+        "description": "Escolle unha cor de tema do sistema de deseño.",
+        "options": {
+          "primary": "Principal",
+          "accent": "Realce",
+          "success": "Éxito",
+          "warning": "Aviso",
+          "error": "Erro",
+          "info": "Información"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obxectivo de aprendizaxe",
+        "description": "Referencia ao obxectivo de aprendizaxe emitida como oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Avalía",
+        "description": "Referencia á actividade emitida como oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Ligazón para saber máis",
+        "description": "Ligazón a información adicional."
+      }
+    ]
+  }
+}

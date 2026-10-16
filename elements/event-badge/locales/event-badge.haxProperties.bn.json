@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ইভেন্ট ব্যাজ",
+    "description": "ইভেন্ট ব্যাজ উপাদান।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV ছবি",
+        "description": "TV-তে দেখানো ছবি।"
+      },
+      {
+        "property": "logo",
+        "title": "লোগো",
+        "description": "ব্যাজের কোণে দেখানো লোগো।"
+      },
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "ব্যাজের উপরে দেখানো শিরোনাম।"
+      },
+      {
+        "property": "name",
+        "title": "নাম",
+        "description": "ব্যাজে দেখানো নাম।"
+      },
+      {
+        "property": "position",
+        "title": "পদ",
+        "description": "ব্যক্তির ভূমিকা বা পদবি।"
+      },
+      {
+        "property": "organization",
+        "title": "প্রতিষ্ঠান",
+        "description": "ব্যক্তি যে প্রতিষ্ঠানে কাজ করেন।"
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV-র রং",
+        "description": "TV-র রং নির্বাচন করুন।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "প্রধান পটভূমি বা টেক্সটের রং।"
+      },
+      {
+        "property": "knobcolor",
+        "title": "নবের রং",
+        "description": "TV-র নবগুলোর রং।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "সেপিয়া",
+        "description": "সেপিয়া ইফেক্ট প্রয়োগ করুন।"
+      },
+      {
+        "property": "blackwhite",
+        "title": "সাদা-কালো",
+        "description": "সাদা-কালো ইফেক্ট প্রয়োগ করুন।"
+      }
+    ]
+  }
+}

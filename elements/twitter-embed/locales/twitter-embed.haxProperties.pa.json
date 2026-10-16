@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) ਏਮਬੈਡ",
+    "description": "X ਤੋਂ ਟਵੀਟ ਨੂੰ ਸੰਦਰਭ ਵਿੱਚ ਏਮਬੈਡ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ਟਵੀਟ URL",
+        "description": "ਏਮਬੈਡ ਕਰਨ ਲਈ ਟਵੀਟ ਦਾ URL।"
+      },
+      {
+        "attribute": "data-theme",
+        "title": "ਥੀਮ",
+        "description": "X ਟਵੀਟਾਂ ਲਈ ਹਲਕੀ ਜਾਂ ਗੂੜ੍ਹੀ ਥੀਮ।",
+        "options": {
+          "light": "ਹਲਕਾ",
+          "dark": "ਗੂੜ੍ਹਾ"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "ਕਲਿੱਕ 'ਤੇ ਪੌਪਅੱਪ ਰੋਕੋ",
+        "description": "ਉਪਭੋਗਤਾਵਾਂ ਨੂੰ x.com 'ਤੇ ਟਵੀਟ ਖੋਲ੍ਹਣ ਤੋਂ ਰੋਕੋ।"
+      }
+    ]
+  }
+}

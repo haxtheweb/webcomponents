@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "ບັດ",
+    "description": "ອົງປະກອບບັດທີ່ອອກແບບດ້ວຍລະບົບອອກແບບ DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ຮູບພາບ",
+        "description": "ຮູບພາບທາງເລືອກ."
+      },
+      {
+        "property": "alt",
+        "title": "Alt ຂອງຮູບພາບ",
+        "description": "ຂໍ້ຄວາມທົດແທນທີ່ອະທິບາຍຮູບພາບ."
+      },
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ບັດ."
+      },
+      {
+        "slot": "",
+        "title": "ເນື້ອຫາ",
+        "description": "ພື້ນທີ່ເນື້ອຫາຂອງບັດ."
+      },
+      {
+        "property": "href",
+        "title": "ລິ້ງ",
+        "description": "URL ລິ້ງຂອງປຸ່ມ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "ປ້າຍກຳກັບ",
+        "description": "ປ້າຍກຳກັບຂອງປຸ່ມ."
+      },
+      {
+        "property": "noArrow",
+        "title": "ບໍ່ມີລູກສອນ",
+        "description": "ເຊື່ອງລູກສອນຂອງປຸ່ມ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "ລິ້ງ: ເປົ້າໝາຍ",
+        "description": "ບ່ອນທີ່ຈະເປີດລິ້ງ.",
+        "options": {
+          "": "ໜ້າຕ່າງດຽວກັນ",
+          "_blank": "ໜ້າຕ່າງໃໝ່ - _blank",
+          "_top": "ໜ້າຕ່າງເທິງສຸດ - _top",
+          "_parent": "ໜ້າຕ່າງແມ່ - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "ລິ້ງ: rel",
+        "description": "ຄວາມສຳພັນລະຫວ່າງຊັບພະຍາກອນທີ່ລິ້ງ ແລະ ເອກະສານປັດຈຸບັນ."
+      }
+    ]
+  }
+}

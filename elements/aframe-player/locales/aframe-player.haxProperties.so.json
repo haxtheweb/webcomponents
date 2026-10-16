@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ciyaaraha 3D",
+    "description": "Ciyaare fayl 3D / xaqiiqo la kordhiyay (AR)."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isha",
+        "description": "URL-ka faylkan AR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Booska X ee walaxda gudaha AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Booska Y ee walaxda gudaha AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Booska Z ee walaxda gudaha AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Midabka cirka",
+        "description": "Dooro midabka cirka ee muuqaalka."
+      }
+    ]
+  }
+}

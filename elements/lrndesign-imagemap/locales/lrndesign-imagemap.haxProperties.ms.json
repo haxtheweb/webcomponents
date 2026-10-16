@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Peta imej",
+    "description": "Peta imej boleh diakses dengan titik panas interaktif."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label untuk peta imej."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Butiran titik panas",
+        "description": "Titik panas interaktif pada peta imej."
+      }
+    ]
+  }
+}

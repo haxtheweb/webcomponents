@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Цитата блогы",
+    "description": "Бизәлгән цитата блогы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Чыганак",
+        "description": "Чыганак тексты."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Рәсем өчен альтернатив текст."
+      },
+      {
+        "property": "image",
+        "title": "Рәсем",
+        "description": "Цитата белән күрсәтелә торган рәсем."
+      }
+    ]
+  }
+}

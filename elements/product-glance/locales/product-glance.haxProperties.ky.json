@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Продукцияга кыскача сереп",
+    "description": "Продукцияга тез сереп салуу блогу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Сөлөкөт",
+        "description": "Түшүнүктү билдирген сөлөкөт."
+      },
+      {
+        "property": "title",
+        "title": "Аталыш",
+        "description": "Негизги түшүнүк кыскача."
+      },
+      {
+        "property": "subtitle",
+        "title": "Кошумча аталыш",
+        "description": "Кошумча маалымат."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Сөлөкөттүн акцент түсү."
+      }
+    ]
+  }
+}

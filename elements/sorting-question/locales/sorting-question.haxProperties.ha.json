@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Tambayar Jerawa",
+    "description": "Jera abubuwa a tsarin da ya dace."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tambaya",
+        "description": "Kanun Tambaya."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Tsarin maki",
+        "description": "OER Schema: tsarin maki na wannan tantancewa (misali maki, harafi, kashi, kammalawa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Manufar koyo",
+        "description": "OER Schema: manufar koyo da ke da alaƙa da wannan tantancewa."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kwas",
+        "description": "OER Schema: kwas ɗin da aka yi wannan tantancewa domin sa."
+      },
+      {
+        "property": "answers",
+        "title": "Amsoshi",
+        "description": "Tsarin amsoshi yana ayyana jerin da ya dace."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Sunan jarrabawa",
+        "description": "Sunan jarrabawa da ake amfani da shi don gano xAPI a tsarin nazari."
+      }
+    ]
+  }
+}

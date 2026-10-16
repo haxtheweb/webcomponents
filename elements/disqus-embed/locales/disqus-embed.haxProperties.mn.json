@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Хуудсанд Disqus сэтгэгдлийг суулгах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Богино нэр",
+        "description": "Disqus скриптийн хостыг тодорхойлох сайтын богино нэр."
+      },
+      {
+        "property": "pageURL",
+        "title": "Хуудасны URL",
+        "description": "Сэтгэгдлийн урсгал хавсаргасан хуудасны URL."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Хуудасны танигч",
+        "description": "Хуудасны сэтгэгдлийн урсгалын цорын ганц танигч."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Хуудасны гарчиг",
+        "description": "Сэтгэгдлийн урсгал хавсаргасан хуудасны гарчиг."
+      },
+      {
+        "property": "loadingText",
+        "title": "Ачаалах үеийн текст",
+        "description": "Сэтгэгдэл ачаалж байх үед зарлах текст."
+      },
+      {
+        "property": "lang",
+        "title": "Хэл",
+        "description": "Disqus интерфейсийн хэлний код, жишээ нь en."
+      }
+    ]
+  }
+}

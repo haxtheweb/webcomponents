@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "د HAX کلمه هنر",
+    "description": "د HAX لوګو عنصر، چې البته پخپله د HAX وړ عنصر دی."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "د ځای پر ځای کېدونکي HAX لوګو اندازه",
+        "options": {
+          "mini": "کوچنی",
+          "small": "کوچنی",
+          "normal": "عادي",
+          "large": "لوی"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "ایا لوګو په لویو تورو بدل شي"
+      }
+    ]
+  }
+}

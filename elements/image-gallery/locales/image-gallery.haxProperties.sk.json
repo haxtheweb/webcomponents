@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galéria obrázkov",
+    "description": "Galéria, ktorá zobrazuje obrázky v mriežke, mozaike alebo ako prezentáciu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Režim zobrazenia",
+        "description": "Ako zobraziť obrázky v galérii.",
+        "options": {
+          "grid": "Mriežka",
+          "masonry": "Mozaika",
+          "gallery": "Galéria"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktívny index",
+        "description": "Index aktívneho obrázka, ktorým sa začína v režime galérie."
+      }
+    ]
+  }
+}

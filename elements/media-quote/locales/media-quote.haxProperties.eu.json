@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Multimedia aipua",
+    "description": "Aipua, aipamena eta aukerako irudi-oina dituen irudia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Aipua",
+        "description": "Aipuaren testua."
+      },
+      {
+        "slot": "author",
+        "title": "Egilea",
+        "description": "Aipuaren egilea."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Egilearen xehetasunak",
+        "description": "Egilearen xehetasunak."
+      },
+      {
+        "slot": "caption",
+        "title": "Irudi-oina",
+        "description": "Irudiaren oina."
+      },
+      {
+        "property": "src",
+        "title": "Irudiaren iturburua",
+        "description": "Multimedia aipurako erabilitako irudi fitxategia."
+      },
+      {
+        "property": "alt",
+        "title": "Testu alternatiboa",
+        "description": "Irudiaren testu alternatiboa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Txartelaren nabarmentze kolorea."
+      }
+    ]
+  }
+}

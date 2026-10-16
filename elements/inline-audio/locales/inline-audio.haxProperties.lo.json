@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ສຽງໃນແຖວ",
+    "description": "ຫຼິ້ນສຽງໃນແຖວເພື່ອເສີມເນື້ອຫາຂອງໜ້າ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "ໄຟລ໌ MP3 ຫຼື URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນຂອງບັດ."
+      },
+      {
+        "property": "shiny",
+        "title": "ເຫຼື້ອມ",
+        "description": "ໃຊ້ພື້ນຫຼັງສີເນັ້ນທີ່ອ່ອນກວ່າ ແທນສີເທົາ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ມືດ",
+        "description": "ໃຊ້ໂໝດມືດ."
+      }
+    ]
+  }
+}

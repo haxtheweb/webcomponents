@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI विज़ुअलाइज़र",
+    "description": "विज़ुअलाइज़ेशन के साथ संदर्भ में MIDI चलाएँ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "चलाने के लिए फ़ाइल URL।"
+      },
+      {
+        "property": "visualizer",
+        "title": "विज़ुअलाइज़ेशन",
+        "description": "संगीत फ़ाइल के लिए विज़ुअलाइज़ेशन शैली।",
+        "options": {
+          "staff": "स्टाफ़ (स्वरलिपि)",
+          "piano-roll": "पियानो रोल",
+          "waterfall": "पियानो + झरना"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "झरना छिपाएँ",
+        "description": "पियानो विज़ुअलाइज़ेशन में झरने वाले स्वर छिपाएँ।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Ingxenye yekhasi",
+    "description": "Isiqukathi sengxenye sokuqukethwe kwekhasi nezakhiwo ezisekelwe esikrinini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Ukwakheka kokuklama",
+        "description": "Isitayela esisethwe ngaphambili esibuyekeza izilungiselelo ezihlobene."
+      },
+      {
+        "property": "image",
+        "title": "Isithombe",
+        "description": "Imidiya yangemuva yengxenye."
+      },
+      {
+        "property": "bg",
+        "title": "Umbala wangemuva",
+        "description": "Umbala wangemuva uma singekho isithombe esisethiwe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Inkinobho yokuskrola",
+        "description": "Bonisa inkinobho eskrolela engxenyeni elandelayo."
+      },
+      {
+        "property": "fold",
+        "title": "Bonisa ukugoqeka",
+        "description": "Bonisa ukugoqeka okubonakalayo ezansi kwengxenye."
+      },
+      {
+        "property": "full",
+        "title": "Usayizi wesikrini esigcwele",
+        "description": "Gcwalisa ubude besikrini sombukeli."
+      },
+      {
+        "property": "filter",
+        "title": "Faka Isihlungi",
+        "description": "Faka isihlungi esibonakalayo esithombeni sangemuva."
+      },
+      {
+        "slot": "",
+        "title": "Okuqukethwe",
+        "description": "Okuqukethwe kwengxenye."
+      },
+      {
+        "slot": "entice",
+        "title": "Okuhehayo",
+        "description": "Okuqukethwe okuhehayo ongakukhetha."
+      },
+      {
+        "slot": "buttons",
+        "title": "Izinkinobho",
+        "description": "Iqembu lezinkinobho eliboniswa ngaphansi kombhalo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Umbhalo wehange",
+        "description": "Ilebula yehange eboniswa ekuzulazuleni."
+      }
+    ]
+  }
+}

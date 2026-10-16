@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Nota de alto",
+    "description": "Unha mensaxe para alertar os lectores sobre indicacións específicas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Introduce o título da nota de alto."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Introduce un URL externo."
+      },
+      {
+        "property": "status",
+        "title": "Estado",
+        "description": "Definir o estado cambia as cores e as iconas para que coincidan",
+        "options": {
+          "stop": "Alto",
+          "warning": "Aviso",
+          "success": "Confirmación",
+          "info": "Aviso"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Texto da nota",
+        "description": "Texto para a nota de alto."
+      }
+    ]
+  }
+}

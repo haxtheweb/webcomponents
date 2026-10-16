@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Jadikan GIF beranimasi boleh diakses."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF Beranimasi",
+        "description": "URL untuk GIF beranimasi."
+      },
+      {
+        "property": "alt",
+        "title": "Teks Alt",
+        "description": "Teks alternatif untuk imej."
+      },
+      {
+        "property": "longdesc",
+        "title": "Penerangan Panjang",
+        "description": "Penerangan panjang GIF untuk kebolehcapaian."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Imej Pegun",
+        "description": "URL untuk versi imej pegun GIF."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris պատմության քարտ",
+    "description": "Ցուցադրել Polaris պատմության քարտ՝ ֆոնային պատկերով, սյան պիտակով և վերնագրի տեքստով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Ֆոնային պատկեր",
+        "description": "Պատկերի URL, որը ցուցադրվում է որպես քարտի ֆոն։"
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Ֆոնի չափ",
+        "description": "Ինչպես է ֆոնային պատկերը լրացնում քարտը (CSS background-size)։",
+        "options": {
+          "cover": "Ծածկել (cover)",
+          "contain": "Տեղավորել (contain)",
+          "auto": "Ավտոմատ (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Ֆոնի ամրացում",
+        "description": "Ինչպես է ֆոնային պատկերն իրեն պահում ոլորելիս (CSS background-attachment)։",
+        "options": {
+          "scroll": "Ոլորվող (scroll)",
+          "fixed": "Ֆիքսված (fixed)",
+          "local": "Տեղային (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Սյան պիտակ",
+        "description": "Քարտի վերևում ցուցադրվող կարճ մեծատառ պիտակ։ Թողեք դատարկ՝ թաքցնելու համար։"
+      },
+      {
+        "property": "label",
+        "title": "Քարտի տեքստ",
+        "description": "Ներքևի վահանակում ցուցադրվող հիմնական տեքստը։"
+      },
+      {
+        "property": "link",
+        "title": "Հղում",
+        "description": "Ըստ ցանկության նպատակակետի URL, որը ընդգրկում է ամբողջ քարտը։"
+      }
+    ]
+  }
+}

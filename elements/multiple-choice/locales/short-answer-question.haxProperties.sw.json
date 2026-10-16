@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Swali la Jibu Fupi",
+    "description": "Mwache mtumiaji ajibu swali la msingi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Swali",
+        "description": "Swali ambalo watumiaji watajibu."
+      },
+      {
+        "property": "answers",
+        "title": "Majibu Yanayowezekana"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jina la jaribio",
+        "description": "Jina la jaribio linalopitishwa kwa matumizi katika mazingira yanayoendeshwa na xAPI ili kutambulisha kipengee hiki"
+      }
+    ]
+  }
+}

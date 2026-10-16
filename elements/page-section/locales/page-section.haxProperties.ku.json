@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Beşa rûpelê",
+    "description": "Konteynera beşê ji bo naveroka rûpelê û rûpelsazkirinên li ser bingeha ekranê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Şêwaza sêwiranê",
+        "description": "Şêweya amadekirî ku mîhengên têkildar nû dike."
+      },
+      {
+        "property": "image",
+        "title": "Wêne",
+        "description": "Medyaya paşxanê ji bo beşê."
+      },
+      {
+        "property": "bg",
+        "title": "Rengê paşxanê",
+        "description": "Rengê paşxanê dema wêne nehatibe danîn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Bişkoka gerandinê",
+        "description": "Bişkokekê nîşan bide ku digerîne bo beşa din."
+      },
+      {
+        "property": "fold",
+        "title": "Qatkirinê nîşan bide",
+        "description": "Li binê beşê qatkirineke dîtbarî nîşan bide."
+      },
+      {
+        "property": "full",
+        "title": "Mezinahiya ekrana tevahî",
+        "description": "Bilindahiya ekrana temaşevan tije bike."
+      },
+      {
+        "property": "filter",
+        "title": "Parzûnê Bisepîne",
+        "description": "Parzûneke dîtbarî li wêneyê paşxanê bisepîne."
+      },
+      {
+        "slot": "",
+        "title": "Naverok",
+        "description": "Naveroka beşê."
+      },
+      {
+        "slot": "entice",
+        "title": "Kişandin",
+        "description": "Naveroka balkişandinê ya vebijarkî."
+      },
+      {
+        "slot": "buttons",
+        "title": "Bişkok",
+        "description": "Koma bişkokan ku li binê nivîsê tê nîşandan."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Nivîsa lengerê",
+        "description": "Etîketa lengerê ku di navîgasyonê de tê nîşandan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ပလေးလစ်",
+    "description": "မည်သည့် အကြောင်းအရာကိုမဆို ပလေးလစ်တွင် ပြသရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ရင်းမြစ်",
+        "description": "ပလေးလစ်တွင် ပြသော အကြောင်းအရာ။"
+      },
+      {
+        "property": "edit",
+        "title": "တည်းဖြတ် မုဒ်",
+        "description": "ပလေးလစ်အတွက် တည်းဖြတ် မုဒ်နှင့် အစမ်းကြည့် မုဒ်ကြား ပြောင်းရန်။"
+      },
+      {
+        "property": "navigation",
+        "title": "လမ်းညွှန်",
+        "description": "ရှေ့နှင့် နောက်သို့ သွားသော ခလုတ်များကို ပြရန်။"
+      },
+      {
+        "property": "pagination",
+        "title": "စာမျက်နှာခွဲခြင်း",
+        "description": "စာမျက်နှာခွဲ အစက်များကို ပြရန်။"
+      },
+      {
+        "property": "orientation",
+        "title": "လားရာ",
+        "description": "ဆလိုက်များ၏ လားရာ။",
+        "options": {
+          "horizontal": "အလျားလိုက်",
+          "vertical": "ဒေါင်လိုက်"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "စတင်မည့် ဆလိုက်",
+        "description": "ကနဦး focus လုပ်မည့် ဆလိုက် index။"
+      },
+      {
+        "property": "aspectRatio",
+        "title": "အချိုး",
+        "description": "ဆလိုက်များ၏ အချိုး။",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

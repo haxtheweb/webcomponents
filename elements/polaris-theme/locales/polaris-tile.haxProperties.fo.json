@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris-flís",
+    "description": "Vís eina Polaris-flís við heiti, valfríum stuðulsteksti og valfríum leinki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Høvuðstekstur",
+        "description": "Høvuðstekstur á flísini."
+      },
+      {
+        "property": "line2",
+        "title": "Annar tekstur",
+        "description": "Valfríur stuðulstekstur."
+      },
+      {
+        "property": "type",
+        "title": "Flísasnið",
+        "description": "Fyrisett sjónligt snið á flísini.",
+        "options": {
+          "1": "Snið 1",
+          "2": "Snið 2",
+          "3": "Snið 3",
+          "4": "Snið 4",
+          "5": "Snið 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Bakgrundsmynd",
+        "description": "URL til bakgrundsmynd, nýtt av flísasniðum, sum kunnu vísa myndir."
+      },
+      {
+        "property": "link",
+        "title": "Leinki",
+        "description": "Valfrí mál-URL til flísagerðina."
+      }
+    ]
+  }
+}

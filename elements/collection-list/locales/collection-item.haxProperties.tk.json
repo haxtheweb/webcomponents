@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Ýygyndy elementi",
+    "description": "Ýygyndy sanawynyň içinde ulanmak üçin tekstli, baglanyşykly we goşmaça medialy kartoçka görnüşli element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Baglanyşyk",
+        "description": "Bu kartoçka üçin barmaly URL."
+      },
+      {
+        "property": "image",
+        "title": "Surat",
+        "description": "Fon suraty."
+      },
+      {
+        "property": "line1",
+        "title": "1-nji setir",
+        "description": "Tekstiň birinji setiri."
+      },
+      {
+        "property": "line2",
+        "title": "2-nji setir",
+        "description": "Tekstiň ikinji setiri."
+      },
+      {
+        "property": "line3",
+        "title": "3-nji setir",
+        "description": "Tekstiň üçünji setiri."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Nyşan",
+        "description": "Kartoçkany aňladýan nyşan."
+      },
+      {
+        "property": "saturate",
+        "title": "Doýgunlyk effekti",
+        "description": "Ulanyjy üns berende suratyň doýgunlygyny üýtget."
+      },
+      {
+        "property": "tags",
+        "title": "Bellikler",
+        "description": "Otur bilen aýrylan bellikler sanawy."
+      },
+      {
+        "property": "accentColor",
+        "title": "Reňk",
+        "description": "Bellikler üçin ulanylýan reňk."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Baglanyşygy beýan edýän alternatiw tekst."
+      }
+    ]
+  }
+}

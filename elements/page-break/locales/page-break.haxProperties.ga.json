@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Sonraí an leathanaigh",
+    "description": "Sainmhínigh scoilt amhairc idir leathanaigh ar féidir le CMSanna í a úsáid chun leathanaigh a chruthú."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Teideal a thaispeántar sa téama agus sa chéad cheannteideal."
+      },
+      {
+        "property": "pageType",
+        "title": "Cineál",
+        "description": "Lipéad comhthéacs amhairc an leathanaigh.",
+        "options": {
+          "": "-- dada --",
+          "content": "Ábhar",
+          "assessment": "Measúnú",
+          "quiz": "Tráth na gceist",
+          "submission": "Aighneacht",
+          "lesson": "Ceacht",
+          "module": "Modúl",
+          "task": "Tasc",
+          "activity": "Gníomhaíocht",
+          "project": "Tionscadal",
+          "practice": "Cleachtadh",
+          "unit": "Aonad",
+          "objectives": "Cuspóirí Foghlama",
+          "connection": "Nasc",
+          "knowledge": "An Raibh a Fhios Agat?",
+          "strategy": "Straitéis Foghlama",
+          "discuss": "Pléigh",
+          "listen": "Éist",
+          "make": "Déan",
+          "observe": "Breathnaigh",
+          "present": "Cuir i láthair",
+          "reading": "Léamh",
+          "reflect": "Déan machnamh",
+          "research": "Taighde",
+          "watch": "Féach",
+          "write": "Scríobh"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Clibeanna",
+        "description": "Liosta clibeanna scartha le camóga."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL an naisc",
+        "description": "URL atreoraithe a thaispeántar in ionad ábhar an leathanaigh."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Sprioc an Naisc",
+        "description": "Oscail naisc san fhuinneog chéanna nó i bhfuinneog nua.",
+        "options": {
+          "_self": "An fhuinneog chéanna",
+          "_blank": "Fuinneog nua"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Foilsithe",
+        "description": "Bíonn leathanaigh neamhfhoilsithe i bhfolach ar úsáideoirí deiridh."
+      },
+      {
+        "property": "locked",
+        "title": "Cuir glas ar an leathanach",
+        "description": "Cuir glas ar gach eilimint ar an leathanach seo nó bain an glas díobh."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Sáraigh an sluga uathoibríoch",
+        "description": "Cuir glas ar an sluga ionas nach nuashonrófar go huathoibríoch é bunaithe ar an teideal nó ar an tuismitheoir."
+      },
+      {
+        "property": "slug",
+        "title": "Cosán",
+        "description": "Sluga URL don leathanach seo."
+      },
+      {
+        "property": "image",
+        "title": "Meáin",
+        "description": "Meáin a léiríonn an leathanach, a úsáidtear i roinnt téamaí agus amharc."
+      },
+      {
+        "property": "parent",
+        "title": "Tuismitheoir",
+        "description": "Cosán an leathanaigh tuismitheora."
+      },
+      {
+        "property": "noderefs",
+        "title": "Ábhar gaolmhar",
+        "description": "Leathanaigh a bhaineann leis an leathanach seo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Cur síos",
+        "description": "Cur síos a úsáidtear i mbailiúcháin agus d'optamú inneall cuardaigh."
+      },
+      {
+        "property": "entityType",
+        "title": "Cineál Aonáin",
+        "description": "Leathanach is réamhshocrú ann mura socraítear a mhalairt.",
+        "options": {
+          "page": "Leathanach (réamhshocrú)",
+          "taxonomy": "Tacsanomaíocht",
+          "taxonomyTerm": "Téarma Tacsanomaíochta",
+          "region": "Réigiún"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Deilbhín",
+        "description": "Deilbhín a bhaineann leis an leathanach seo sa suíomh."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath aibhsithe",
+        "description": "Dath a bhaineann leis an leathanach seo sa suíomh."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Folaigh sa roghchlár",
+        "description": "Folaigh an leathanach seo ó roghchláir agus a URL á choinneáil."
+      },
+      {
+        "property": "order",
+        "title": "Ord",
+        "description": "Ord i gcoibhneas le leathanaigh deirfiúracha."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Téama an leathanaigh",
+        "description": "Sáraigh an téama don leathanach seo amháin."
+      },
+      {
+        "property": "author",
+        "title": "Údar",
+        "description": "Ainm úsáideora an duine deireanaigh a d'athraigh an leathanach seo."
+      }
+    ]
+  }
+}

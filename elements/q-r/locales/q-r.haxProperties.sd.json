@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR ڪوڊ",
+    "description": "سمارٽ فون سان اسڪين ڪرڻ لاءِ ڪوڊ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR ڊيٽا",
+        "description": "QR ڪوڊ لاءِ ڊيٽا جو ذريعو."
+      },
+      {
+        "property": "title",
+        "title": "متبادل عنوان",
+        "description": "QR ڪوڊ جي ذريعي سان ڳنڍيل متبادل عنوان."
+      },
+      {
+        "property": "modulesize",
+        "title": "سائيز",
+        "description": "QR ڪوڊ جي سائيز."
+      },
+      {
+        "property": "margin",
+        "title": "مارجن",
+        "description": "ڪوڊ جي چوڌاري ريپر."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "آئوٽ پٽ فارميٽ",
+        "description": "آئوٽ پٽ ڏيڻ جو فارميٽ.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

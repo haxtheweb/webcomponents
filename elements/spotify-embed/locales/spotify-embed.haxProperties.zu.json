@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Isisongo sokushumeka kwesidlali se-Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Umthombo",
+        "description": "Isixhumanisi sokushumeka noma sokwabelana esivela ku-Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Itimu",
+        "description": "Itimu yombala wangemuva wesidlali.",
+        "options": {
+          "": "Okuzenzakalelayo",
+          "0": "Okumnyama"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Usayizi",
+        "description": "Usayizi wesidlali.",
+        "options": {
+          "normal": "Okuzenzakalelayo",
+          "compact": "Okuhlangene"
+        }
+      }
+    ]
+  }
+}

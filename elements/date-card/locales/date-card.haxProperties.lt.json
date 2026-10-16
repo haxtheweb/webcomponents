@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Data",
+    "description": "Rodyti kalendoriaus datą su informacija."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mėnuo",
+        "description": "Kortelėje rodomas mėnuo."
+      },
+      {
+        "property": "date",
+        "title": "Mėnesio diena",
+        "description": "Mėnesio dienos skaičius."
+      },
+      {
+        "property": "day",
+        "title": "Savaitės diena",
+        "description": "Savaitės diena žodžiu."
+      },
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Renginio pavadinimas."
+      },
+      {
+        "property": "location",
+        "title": "Vieta",
+        "description": "Renginio vieta."
+      },
+      {
+        "property": "startTime",
+        "title": "Pradžia",
+        "description": "Pradžios laikas."
+      },
+      {
+        "property": "endTime",
+        "title": "Pabaiga",
+        "description": "Pabaigos laikas."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Pasirenkama akcento spalva."
+      },
+      {
+        "property": "dark",
+        "title": "Tamsi tema",
+        "description": "Įjungti tamsią temą."
+      }
+    ]
+  }
+}

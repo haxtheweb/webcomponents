@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Yenza ii-GIF ezishukumayo zifikeleleke."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "I-GIF eshukumayo",
+        "description": "I-URL ye-GIF eshukumayo."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo Ongenayo",
+        "description": "Umbhalo ongenayo womfanekiso."
+      },
+      {
+        "property": "longdesc",
+        "title": "Inkcazelo Ende",
+        "description": "Inkcazelo ende ye-GIF yokufikeleleka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Umfanekiso Ongashukumiyo",
+        "description": "I-URL yenguqulelo engashukumiyo ye-GIF."
+      }
+    ]
+  }
+}

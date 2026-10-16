@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Koda QR",
+    "description": "Koda za skeniranje s pametnim telefonom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Podatki QR",
+        "description": "Vir podatkov za kodo QR."
+      },
+      {
+        "property": "title",
+        "title": "Nadomestni naslov",
+        "description": "Nadomestni naslov, povezan z virom kode QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Velikost",
+        "description": "Velikost kode QR."
+      },
+      {
+        "property": "margin",
+        "title": "Rob",
+        "description": "Rob okoli kode."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Izhodna oblika",
+        "description": "Oblika izhoda.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

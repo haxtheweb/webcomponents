@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "בדיקה עצמית",
+    "description": "המשתמשים יכולים לבצע בדיקה עצמית."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "תמונה",
+        "description": "תמונה עבור הבדיקה העצמית."
+      },
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "כותרת הבדיקה העצמית."
+      },
+      {
+        "property": "alt",
+        "title": "טקסט חלופי",
+        "description": "טקסט חלופי לתמונה."
+      },
+      {
+        "slot": "question",
+        "title": "שאלה"
+      },
+      {
+        "slot": "",
+        "title": "תשובה"
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע ערכת הנושא",
+        "description": "בחרו צבע ערכת נושא ממערכת העיצוב.",
+        "options": {
+          "primary": "ראשי",
+          "accent": "הדגשה",
+          "success": "הצלחה",
+          "warning": "אזהרה",
+          "error": "שגיאה",
+          "info": "מידע"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "מטרת למידה",
+        "description": "הפניה למטרת למידה המופקת כ-oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "מעריך",
+        "description": "הפניה לפעילות המופקת כ-oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "קישור למידע נוסף",
+        "description": "קישור למידע נוסף."
+      }
+    ]
+  }
+}

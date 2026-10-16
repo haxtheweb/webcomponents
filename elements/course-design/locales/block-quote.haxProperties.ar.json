@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "اقتباس كتلي",
+    "description": "كتلة اقتباس منسَّقة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "الاستشهاد",
+        "description": "نص الاستشهاد."
+      },
+      {
+        "property": "alt",
+        "title": "النص البديل",
+        "description": "نص بديل للصورة."
+      },
+      {
+        "property": "image",
+        "title": "الصورة",
+        "description": "صورة تُعرض مع الاقتباس."
+      }
+    ]
+  }
+}

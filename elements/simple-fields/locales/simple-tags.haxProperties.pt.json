@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tags",
+    "description": "Lista simples de tags para exibir na página."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Lista de tags separadas por vírgula."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Cor de destaque automática",
+        "description": "Definir automaticamente a cor de destaque com base no rótulo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor",
+        "description": "Cor das tags."
+      }
+    ]
+  }
+}

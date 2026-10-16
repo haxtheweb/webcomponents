@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Waraabbii miidiyaa",
+    "description": "Suuraa waraabbii, wabii fi ibsa filannoo qabu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Waraabbii",
+        "description": "Barreeffama waraabbii."
+      },
+      {
+        "slot": "author",
+        "title": "Barreessaa",
+        "description": "Barreessaa waraabbii."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Bal'ina barreessaa",
+        "description": "Bal'ina barreessaa."
+      },
+      {
+        "slot": "caption",
+        "title": "Ibsa suuraa",
+        "description": "Ibsa suuraa."
+      },
+      {
+        "property": "src",
+        "title": "Madda Suuraa",
+        "description": "Faayilii suuraa waraabbii miidiyaatiif fayyadamu."
+      },
+      {
+        "property": "alt",
+        "title": "Barreeffama Bakka Bu'aa",
+        "description": "Barreeffama bakka bu'aa suuraa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Halluu Calaqqee",
+        "description": "Halluu calaqqee kaardii."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Визуализатор MIDI",
+    "description": "Воспроизведение MIDI в контексте с визуализацией."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Источник",
+        "description": "URL воспроизводимого файла."
+      },
+      {
+        "property": "visualizer",
+        "title": "Визуализация",
+        "description": "Стиль визуализации музыкального файла.",
+        "options": {
+          "staff": "Нотный стан",
+          "piano-roll": "Пианоролл",
+          "waterfall": "Пианино + водопад"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Скрыть водопад",
+        "description": "Скрыть падающие ноты в визуализации пианино."
+      }
+    ]
+  }
+}

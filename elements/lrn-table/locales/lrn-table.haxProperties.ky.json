@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV таблица",
+    "description": "Бул CSV файлы кайда жайгашпасын, андан таблица түзө алат."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Булак",
+        "description": "Бул CSV файлынын URL дареги."
+      },
+      {
+        "property": "title",
+        "title": "Аталыш",
+        "description": "Түзүлө турган таблицанын аталышы."
+      },
+      {
+        "property": "description",
+        "title": "Сүрөттөмө",
+        "description": "Таблица маалыматтарынын жеткиликтүүлүгүн жакшыртуу үчүн кеңирээк сүрөттөмө."
+      }
+    ]
+  }
+}

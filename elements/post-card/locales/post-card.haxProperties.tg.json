@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Корти почтавӣ",
+    "description": "Унсури медиавии шӯх, ки ба корти почтавии воқеӣ аз ягон ҷо монанд аст"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Ба",
+        "description": "Ин ба кӣ фиристода мешавад?"
+      },
+      {
+        "property": "from",
+        "title": "Аз",
+        "description": "Шумо кистед?"
+      },
+      {
+        "property": "message",
+        "title": "Паём",
+        "description": "Шумо чӣ гуфтан мехоҳед?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Мӯҳри почта аз",
+        "description": "Ин корт аз куҷо фиристода шудааст?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Манбаи акси асосӣ",
+        "description": "Акси шумо дар куҷо ҷойгир аст?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Манбаи акси марка",
+        "description": "Акси шумо дар куҷо ҷойгир аст?"
+      }
+    ]
+  }
+}

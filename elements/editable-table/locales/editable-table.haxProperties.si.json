@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "වගුව",
+    "description": "වෙබය සඳහා වගු-පාදක දත්ත."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "පේළි ශීර්ෂය",
+        "description": "පළමු පේළිය ශීර්ෂයක් ලෙස සලකන්න."
+      },
+      {
+        "property": "columnHeader",
+        "title": "තීරු ශීර්ෂය",
+        "description": "පළමු තීරුව ශීර්ෂයක් ලෙස සලකන්න."
+      },
+      {
+        "property": "footer",
+        "title": "පාදකය",
+        "description": "අවසාන පේළිය පාදකයක් ලෙස සලකන්න."
+      },
+      {
+        "property": "sort",
+        "title": "වර්ග කළ හැකි",
+        "description": "තීරු අගයන් අනුව වර්ග කිරීමට ඉඩ දෙන්න."
+      },
+      {
+        "property": "filter",
+        "title": "පෙරහනට ඉඩ දෙන්න",
+        "description": "තීරු අගයන් අනුව පෙරීමට ඉඩ දෙන්න."
+      },
+      {
+        "property": "numericStyles",
+        "title": "සංඛ්‍යාත්මක හැඩගැන්වීම",
+        "description": "සංඛ්‍යාත්මක තීරුවලට සංඛ්‍යාත්මක හැඩගැන්වීම යොදන්න."
+      },
+      {
+        "property": "responsive",
+        "title": "ප්‍රතිචාරාත්මක",
+        "description": "කුඩා තිර මත වගු පිරිසැලසුම සකසන්න."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubric ප්‍රකාරය",
+        "description": "Rubric, RubricScale, RubricCriterion සහ RubricLevel පාරදත්ත නිකුත් වන පරිදි මෙම වගුව OER Schema Rubric එකක් ලෙස අර්ථ නිරූපණය කරන්න."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubric වර්ගය",
+        "description": "oer:rubricType ලෙස නිකුත් වන rubric ශෛලිය (Rubric ප්‍රකාරය සක්‍රිය විට පමණක් අර්ථවත් වේ).",
+        "options": {
+          "": "(කිසිවක් නැත)",
+          "analytic": "විශ්ලේෂණාත්මක",
+          "holistic": "සමස්ත",
+          "single-point": "තනි ලක්ෂ්‍ය",
+          "checklist": "පිරික්සුම් ලැයිස්තුව"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "මායිම් සහිත"
+      },
+      {
+        "property": "condensed",
+        "title": "පේළි සංක්ෂිප්ත කරන්න",
+        "description": "පේළි උස අඩු කරන්න."
+      },
+      {
+        "property": "striped",
+        "title": "ඉරි සහිත පේළි",
+        "description": "එකක් හැර එකක් පේළි සෙවන කරන්න."
+      },
+      {
+        "property": "downloadable",
+        "title": "බාගැනීමේ බොත්තම",
+        "description": "වගුව බාගැනීමට බොත්තමක් එක් කරන්න."
+      },
+      {
+        "property": "copyable",
+        "title": "පිටපත් බොත්තම",
+        "description": "වගුවේ CSV දත්ත පිටපත් කිරීමට බොත්තමක් එක් කරන්න."
+      },
+      {
+        "property": "printable",
+        "title": "මුද්‍රණ බොත්තම",
+        "description": "වගුව පමණක් මුද්‍රණය කිරීමට බොත්තමක් එක් කරන්න."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV දත්ත",
+        "description": "උඩුගත කළ CSV ගොනුවකින් වගුවක් සාදන්න."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Insereix comunitats de Discord a partir d'un URL per compartir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL del recurs",
+        "description": "URL del recurs."
+      },
+      {
+        "property": "height",
+        "title": "Alçada",
+        "description": "Alçada del marc de contingut."
+      },
+      {
+        "property": "width",
+        "title": "Amplada",
+        "description": "Amplada del marc de contingut."
+      }
+    ]
+  }
+}

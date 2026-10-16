@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Kíka sókè",
+    "description": "Fi ìgbéérí hàn bí nọ́mbà ṣe ń ka sókè dé iye àfojúsùn nígbà tí ó bá wọ ojú ìwò."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Iye ìparí",
+        "description": "Nọ́mbà tí a ó kà dé."
+      },
+      {
+        "property": "start",
+        "title": "Iye ìbẹ̀rẹ̀",
+        "description": "Nọ́mbà tí a ó ti bẹ̀rẹ̀ kíkà."
+      },
+      {
+        "property": "duration",
+        "title": "Àkókò",
+        "description": "Ìṣẹ́jú-àáyá tí ìgbéérí kíkà yóò gbà."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Ọ̀rọ̀ ìṣáájú",
+        "description": "Ọ̀rọ̀ tí a fi hàn ṣáájú nọ́mbà (fún àpẹẹrẹ '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Ọ̀rọ̀ ìkẹ́yìn",
+        "description": "Ọ̀rọ̀ tí a fi hàn lẹ́yìn nọ́mbà (fún àpẹẹrẹ '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Àyè ìṣáájú",
+        "description": "Àkóónú àṣàyàn ṣáájú nọ́mbà."
+      },
+      {
+        "slot": "suffix",
+        "title": "Àyè ìkẹ́yìn",
+        "description": "Àkóónú àṣàyàn lẹ́yìn nọ́mbà."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Àwọn ibi ẹ̀sẹ́-ìdá",
+        "description": "Iye àwọn ibi ẹ̀sẹ́-ìdá tí a ó fi hàn."
+      },
+      {
+        "property": "separator",
+        "title": "Ìyàsọ́tọ̀ ẹgbẹ̀rún",
+        "description": "Àmì tí ó ya àwọn ẹgbẹ́ ẹgbẹ̀rún sọ́tọ̀."
+      },
+      {
+        "property": "decimal",
+        "title": "Àmì ẹ̀sẹ́-ìdá",
+        "description": "Àmì tí a lò fún kókó ẹ̀sẹ́-ìdá."
+      },
+      {
+        "property": "noeasing",
+        "title": "Láìsí ìrọ̀rùn",
+        "description": "Mú ìrọ̀rùn kúrò kí kíkà lè jẹ́ déédé."
+      }
+    ]
+  }
+}

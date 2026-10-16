@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "তারিখ",
+    "description": "বিস্তারিতসহ একটি ক্যালেন্ডার তারিখ দেখান।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "মাস",
+        "description": "কার্ডে দেখানো মাস।"
+      },
+      {
+        "property": "date",
+        "title": "মাসের দিন",
+        "description": "মাসের দিনের সংখ্যা।"
+      },
+      {
+        "property": "day",
+        "title": "সপ্তাহের দিন",
+        "description": "সপ্তাহের দিনের নাম।"
+      },
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "ইভেন্টের নাম।"
+      },
+      {
+        "property": "location",
+        "title": "অবস্থান",
+        "description": "ইভেন্টের অবস্থান।"
+      },
+      {
+        "property": "startTime",
+        "title": "শুরু",
+        "description": "শুরুর সময়।"
+      },
+      {
+        "property": "endTime",
+        "title": "শেষ",
+        "description": "শেষের সময়।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "একটি ঐচ্ছিক অ্যাকসেন্ট রং।"
+      },
+      {
+        "property": "dark",
+        "title": "ডার্ক থিম",
+        "description": "ডার্ক থিম চালু করুন।"
+      }
+    ]
+  }
+}

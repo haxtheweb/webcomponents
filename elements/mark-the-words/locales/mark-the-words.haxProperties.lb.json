@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Wierder markéieren",
+    "description": "Konzepter iwwer Wierder identifizéieren, andeems een an engem Text klickt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fro",
+        "description": "Fro, op déi d'Benotzer äntwere sollen."
+      },
+      {
+        "property": "statement",
+        "title": "Ausso",
+        "description": "Ausso, déi an eng Interaktioun zum Markéiere vu Wierder ëmgewandelt gëtt."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bewäertungsformat",
+        "description": "OER Schema: Bewäertungsformat fir dës Bewäertung (z. B. Punkten, Buschtaf, Prozent, Ofschloss)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Léierzil",
+        "description": "OER Schema: Léierzil, dat mat dëser Bewäertung verbonnen ass."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cours",
+        "description": "OER Schema: Cours, fir deen dës Bewäertung geduecht ass."
+      },
+      {
+        "property": "answers",
+        "title": "Äntwerten"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Numm vum Quiz",
+        "description": "Quiznumm, deen an xAPI-gesteierten Ëmfelder fir d'Identifikatioun vun dësem Element weiderginn gëtt"
+      }
+    ]
+  }
+}

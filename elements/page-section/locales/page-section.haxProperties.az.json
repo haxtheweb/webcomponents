@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Səhifə bölməsi",
+    "description": "Səhifə məzmunu və ekrana əsaslanan düzənlər üçün bölmə konteyneri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Dizayn tərtibatı",
+        "description": "Əlaqəli parametrləri yeniləyən hazır üslub."
+      },
+      {
+        "property": "image",
+        "title": "Şəkil",
+        "description": "Bölmə üçün fon mediası."
+      },
+      {
+        "property": "bg",
+        "title": "Fon rəngi",
+        "description": "Şəkil təyin edilmədikdə fon rəngi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Sürüşdürmə düyməsi",
+        "description": "Növbəti bölməyə sürüşdürən düymə göstər."
+      },
+      {
+        "property": "fold",
+        "title": "Qatlamanı göstər",
+        "description": "Bölmənin altında vizual qatlama göstər."
+      },
+      {
+        "property": "full",
+        "title": "Tam ekran ölçüsü",
+        "description": "İzləyicinin ekran hündürlüyünü doldur."
+      },
+      {
+        "property": "filter",
+        "title": "Filtr tətbiq et",
+        "description": "Fon şəklinə vizual filtr tətbiq et."
+      },
+      {
+        "slot": "",
+        "title": "Məzmun",
+        "description": "Bölmənin məzmunu."
+      },
+      {
+        "slot": "entice",
+        "title": "Cəlbedici",
+        "description": "İxtiyari cəlbedici məzmun."
+      },
+      {
+        "slot": "buttons",
+        "title": "Düymələr",
+        "description": "Mətnin altında göstərilən düymə qrupu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Lövbər mətni",
+        "description": "Naviqasiyada göstərilən lövbər etiketi."
+      }
+    ]
+  }
+}

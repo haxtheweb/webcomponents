@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Redak zbirke",
+    "description": "Stavka u obliku retka za upotrebu unutar popisa zbirke, s tekstom, poveznicom, ikonom, oznakama i neobaveznom slikom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Poveznica",
+        "description": "Odredišni URL ovog retka."
+      },
+      {
+        "property": "image",
+        "title": "Slika",
+        "description": "Slika za redak."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativni tekst koji opisuje sliku."
+      },
+      {
+        "property": "line1",
+        "title": "Redak 1",
+        "description": "Prvi redak teksta."
+      },
+      {
+        "property": "line2",
+        "title": "Redak 2",
+        "description": "Drugi redak teksta."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona koja predstavlja redak."
+      },
+      {
+        "property": "saturate",
+        "title": "Efekt zasićenosti",
+        "description": "Promijeni zasićenost slike kada je korisnik fokusira."
+      },
+      {
+        "property": "tags",
+        "title": "Oznake",
+        "description": "Popis oznaka odvojenih zarezima."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja",
+        "description": "Boja za ikonu i oznake."
+      }
+    ]
+  }
+}

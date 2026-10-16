@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Flash card",
+    "description": "Magsanay ng mga konsepto gamit ang mga flash card na may harap at likod."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Harap ng Card",
+        "description": "Teksto o tanong sa harap."
+      },
+      {
+        "slot": "back",
+        "title": "Likod ng Card",
+        "description": "Inaasahang sagot."
+      },
+      {
+        "property": "imgSource",
+        "title": "Pinagmulan ng Larawan",
+        "description": "Image file na ginagamit para sa card. Nangingibabaw sa Keyword ng Larawan."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Uri ng Aksyon",
+        "description": "OER Schema: ang uri ng aksyon na kasama sa pagsasanay na ito (hal. Pagbasa, Pagsulat, Paggawa, Pananaliksik, Pakikinig, Panonood, Pagninilay, Pagtalakay, Pagmamasid, Paglalahad, Pagtatasa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Layunin sa Pagkatuto",
+        "description": "OER Schema: ID o URL ng layunin sa pagkatuto na sinusuportahan ng pagsasanay na ito."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Madilim",
+        "description": "Gamitin ang dark mode."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na Kulay",
+        "description": "Accent na kulay ng card."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Keyword ng Larawan",
+        "description": "Keyword para sa random na larawan. Nangingibabaw dito ang Pinagmulan ng Larawan."
+      }
+    ]
+  }
+}

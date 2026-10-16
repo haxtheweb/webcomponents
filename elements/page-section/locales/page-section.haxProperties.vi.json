@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Phần trang",
+    "description": "Khung chứa phần dành cho nội dung trang và bố cục theo màn hình."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Kiểu thiết kế",
+        "description": "Kiểu đặt sẵn giúp cập nhật các cài đặt liên quan."
+      },
+      {
+        "property": "image",
+        "title": "Hình ảnh",
+        "description": "Phương tiện nền cho phần này."
+      },
+      {
+        "property": "bg",
+        "title": "Màu nền",
+        "description": "Màu nền khi không có hình ảnh."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Nút cuộn",
+        "description": "Hiển thị nút cuộn đến phần tiếp theo."
+      },
+      {
+        "property": "fold",
+        "title": "Hiển thị nếp gấp",
+        "description": "Hiển thị nếp gấp trực quan ở cuối phần."
+      },
+      {
+        "property": "full",
+        "title": "Kích thước toàn màn hình",
+        "description": "Lấp đầy chiều cao màn hình của người xem."
+      },
+      {
+        "property": "filter",
+        "title": "Áp dụng bộ lọc",
+        "description": "Áp dụng bộ lọc trực quan cho hình nền."
+      },
+      {
+        "slot": "",
+        "title": "Nội dung",
+        "description": "Nội dung phần."
+      },
+      {
+        "slot": "entice",
+        "title": "Thu hút",
+        "description": "Nội dung thu hút tùy chọn."
+      },
+      {
+        "slot": "buttons",
+        "title": "Nút",
+        "description": "Nhóm nút hiển thị bên dưới văn bản."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Văn bản neo",
+        "description": "Nhãn neo hiển thị trong thanh điều hướng."
+      }
+    ]
+  }
+}

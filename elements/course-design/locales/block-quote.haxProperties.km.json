@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ប្លុកសម្រង់",
+    "description": "ប្លុកសម្រង់មានរចនាប័ទ្ម។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "ឯកសារយោង",
+        "description": "អត្ថបទឯកសារយោង។"
+      },
+      {
+        "property": "alt",
+        "title": "អត្ថបទជំនួស",
+        "description": "អត្ថបទជំនួសសម្រាប់រូបភាព។"
+      },
+      {
+        "property": "image",
+        "title": "រូបភាព",
+        "description": "រូបភាពបង្ហាញជាមួយសម្រង់។"
+      }
+    ]
+  }
+}

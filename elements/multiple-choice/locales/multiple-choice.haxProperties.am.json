@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "ምርጫ",
+    "description": "የምርጫ ራስን መፈተሻ ጥያቄ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ጥያቄ",
+        "description": "ተጠቃሚዎች የሚመልሱት ጥያቄ።"
+      },
+      {
+        "property": "randomize",
+        "title": "በዘፈቀደ አደራጅ",
+        "description": "መልሶችን በተለዋዋጭ ሁኔታ በዘፈቀደ አደራጅ።"
+      },
+      {
+        "property": "singleOption",
+        "title": "ነጠላ መልስ",
+        "description": "አንድ መልስ ብቻ ፍቀድ።"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "የውጤት አሰጣጥ ቅርጸት",
+        "description": "OER Schema፦ ለዚህ ምዘና የውጤት አሰጣጥ ቅርጸት (ለምሳሌ ነጥቦች፣ ፊደል፣ መቶኛ፣ ማጠናቀቅ)።"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "የመማር ዓላማ",
+        "description": "OER Schema፦ ከዚህ ምዘና ጋር የተያያዘ የመማር ዓላማ።"
+      },
+      {
+        "property": "forCourse",
+        "title": "ኮርስ",
+        "description": "OER Schema፦ ይህ ምዘና የታሰበለት ኮርስ።"
+      },
+      {
+        "property": "answers",
+        "title": "መልሶች"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "የፈተናው ስም",
+        "description": "በትንታኔ ሥርዓቶች ውስጥ ለxAPI መለያ የሚውል የፈተና ስም።"
+      }
+    ]
+  }
+}

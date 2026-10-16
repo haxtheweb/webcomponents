@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "બાહ્ય વેબ સામગ્રીને iframe માં એમ્બેડ કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "સંસાધન URL",
+        "description": "સંસાધન URL."
+      },
+      {
+        "property": "height",
+        "title": "ઊંચાઈ",
+        "description": "Iframe ની ઊંચાઈ."
+      },
+      {
+        "property": "width",
+        "title": "પહોળાઈ",
+        "description": "Iframe ની પહોળાઈ."
+      }
+    ]
+  }
+}

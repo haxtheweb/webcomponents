@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Mattunella Polaris",
+    "description": "Affissà una mattunella Polaris cù titulu, testu cumplementariu facultativu è ligame facultativu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Testu principale",
+        "description": "Testu principale di a mattunella."
+      },
+      {
+        "property": "line2",
+        "title": "Testu secundariu",
+        "description": "Testu cumplementariu facultativu."
+      },
+      {
+        "property": "type",
+        "title": "Stile di a mattunella",
+        "description": "Stile visuale predefinitu di a mattunella.",
+        "options": {
+          "1": "Stile 1",
+          "2": "Stile 2",
+          "3": "Stile 3",
+          "4": "Stile 4",
+          "5": "Stile 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Imagine di fondu",
+        "description": "URL di l'imagine di fondu aduprata da i stili di mattunella chì accettanu l'imagine."
+      },
+      {
+        "property": "link",
+        "title": "Ligame",
+        "description": "URL di destinazione facultativu per l'azzione di a mattunella."
+      }
+    ]
+  }
+}

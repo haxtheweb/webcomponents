@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX वर्ड आर्ट",
+    "description": "HAX के लिए लोगो तत्व, ज़ाहिर है HAX-सक्षम तत्व के रूप में।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "लगाए जाने वाले HAX लोगो का आकार",
+        "options": {
+          "mini": "मिनी",
+          "small": "छोटा",
+          "normal": "सामान्य",
+          "large": "बड़ा"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "क्या लोगो को बड़े अक्षरों में बदलना है"
+      }
+    ]
+  }
+}

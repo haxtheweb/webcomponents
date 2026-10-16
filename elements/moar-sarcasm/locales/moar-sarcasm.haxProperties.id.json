@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkasme",
+    "description": "Menyajikan teks dengan gaya usil"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Teks",
+        "description": "Teks yang akan dibuat sarkastis"
+      }
+    ]
+  }
+}

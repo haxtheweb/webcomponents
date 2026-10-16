@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Listi yvir GitHub-luttakarar",
+    "description": "Víst sum RPG-figurar við GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Felagsskapur",
+        "description": "Navn á felagsskapinum frá github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Goymsla",
+        "description": "Navn á goymsluni frá github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Mark",
+        "description": "Avmarka talið av víst luttakarum."
+      }
+    ]
+  }
+}

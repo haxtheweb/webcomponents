@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS-ujo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Kaŝi redaktilon",
+        "description": "Kaŝi la dosier-redaktan interfacon."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Kaŝi terminalon",
+        "description": "Kaŝi la terminalon por aŭtomate rulataj programoj."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Kaŝi fenestron",
+        "description": "Kaŝi la eligan fenestron por nur-terminala uzo."
+      },
+      {
+        "slot": "",
+        "title": "Komandoj",
+        "description": "Komandoj (po unu por linio) rulotaj antaŭ ŝargado."
+      }
+    ]
+  }
+}

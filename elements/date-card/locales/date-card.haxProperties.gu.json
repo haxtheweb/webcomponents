@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "તારીખ",
+    "description": "વિગતો સાથે કૅલેન્ડર તારીખ બતાવો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "મહિનો",
+        "description": "કાર્ડ પર બતાવાતો મહિનો."
+      },
+      {
+        "property": "date",
+        "title": "મહિનાનો દિવસ",
+        "description": "મહિનાનો આંકડાકીય દિવસ."
+      },
+      {
+        "property": "day",
+        "title": "અઠવાડિયાનો દિવસ",
+        "description": "અઠવાડિયાના દિવસનું નામ."
+      },
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "કાર્યક્રમનું નામ."
+      },
+      {
+        "property": "location",
+        "title": "સ્થાન",
+        "description": "કાર્યક્રમનું સ્થાન."
+      },
+      {
+        "property": "startTime",
+        "title": "શરૂઆત",
+        "description": "શરૂઆતનો સમય."
+      },
+      {
+        "property": "endTime",
+        "title": "અંત",
+        "description": "અંતનો સમય."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "વૈકલ્પિક ઍક્સેન્ટ રંગ."
+      },
+      {
+        "property": "dark",
+        "title": "ડાર્ક થીમ",
+        "description": "ડાર્ક થીમ સક્ષમ કરો."
+      }
+    ]
+  }
+}

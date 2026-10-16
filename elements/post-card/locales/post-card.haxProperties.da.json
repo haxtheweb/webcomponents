@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Postkort",
+    "description": "Et legende medieelement, der skal ligne et rigtigt postkort fra et sted"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Til",
+        "description": "Hvem skal det sendes til?"
+      },
+      {
+        "property": "from",
+        "title": "Fra",
+        "description": "Hvem er du?"
+      },
+      {
+        "property": "message",
+        "title": "Besked",
+        "description": "Hvad vil du sige?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Poststemplet fra",
+        "description": "Hvor blev dette kort sendt fra?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Kilde til hovedfoto",
+        "description": "Hvor ligger dit foto?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Kilde til frimærkefoto",
+        "description": "Hvor ligger dit foto?"
+      }
+    ]
+  }
+}

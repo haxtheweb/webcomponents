@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P-ĉirkaŭaĵo por ŝargi kaj prezenti .h5p-dosierojn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P-enkorpiga kodo por iframe"
+      }
+    ]
+  }
+}

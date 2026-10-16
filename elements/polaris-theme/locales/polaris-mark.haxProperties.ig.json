@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Akara Polaris",
+    "description": "Gosi akara njirimara PSU nwere aha kọleji nhọrọ na URL ebe a na-aga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Aha kọleji",
+        "description": "Aha a na-egosi n'akụkụ akara ahụ."
+      },
+      {
+        "property": "name2",
+        "title": "Aha kọleji 2",
+        "description": "Aha nke abụọ a na-egosi n'okpuru aha kọleji mbụ."
+      },
+      {
+        "property": "name3",
+        "title": "Aha kọleji 3",
+        "description": "Aha nke atọ a na-egosi n'okpuru aha kọleji nke abụọ."
+      },
+      {
+        "property": "url",
+        "title": "Njikọ",
+        "description": "URL ebe a na-aga mgbe a pịrị akara ahụ."
+      },
+      {
+        "property": "type",
+        "title": "Ụdị dị iche",
+        "description": "Ụdị anya akara ahụ.",
+        "options": {
+          "default": "Ndabara",
+          "light": "Nchara nchara",
+          "dark": "Ọchịchịrị"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Nhazi kwụ ọtọ",
+        "description": "Gosi aha nke atọ n'okpuru aha nke abụọ ya na ahịrị kwụ ọnọdụ."
+      }
+    ]
+  }
+}

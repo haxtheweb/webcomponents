@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tilvitnunarreitur",
+    "description": "Stílaður tilvitnunarreitur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Heimild",
+        "description": "Heimildartexti."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Annar texti fyrir myndina."
+      },
+      {
+        "property": "image",
+        "title": "Mynd",
+        "description": "Mynd sem birtist með tilvitnuninni."
+      }
+    ]
+  }
+}

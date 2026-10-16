@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "گنتی",
+    "description": "منظر میں آنے پر کسی عدد کو ہدف قدر تک گنتے ہوئے متحرک کریں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "آخری قدر",
+        "description": "وہ عدد جس تک گنتی کرنی ہے۔"
+      },
+      {
+        "property": "start",
+        "title": "ابتدائی قدر",
+        "description": "وہ عدد جس سے گنتی شروع کرنی ہے۔"
+      },
+      {
+        "property": "duration",
+        "title": "دورانیہ",
+        "description": "گنتی کی اینیمیشن کتنے سیکنڈ لے۔"
+      },
+      {
+        "property": "prefixtext",
+        "title": "سابقہ متن",
+        "description": "عدد سے پہلے دکھایا جانے والا متن (مثلاً '$')۔"
+      },
+      {
+        "property": "suffixtext",
+        "title": "لاحقہ متن",
+        "description": "عدد کے بعد دکھایا جانے والا متن (مثلاً '%')۔"
+      },
+      {
+        "slot": "prefix",
+        "title": "سابقہ سلاٹ",
+        "description": "عدد سے پہلے اختیاری سلاٹ مواد۔"
+      },
+      {
+        "slot": "suffix",
+        "title": "لاحقہ سلاٹ",
+        "description": "عدد کے بعد اختیاری سلاٹ مواد۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "اعشاری مقامات",
+        "description": "دکھائے جانے والے اعشاری مقامات کی تعداد۔"
+      },
+      {
+        "property": "separator",
+        "title": "ہزار کا فاصل",
+        "description": "ہزاروں کے گروپس کو الگ کرنے والا حرف۔"
+      },
+      {
+        "property": "decimal",
+        "title": "اعشاری علامت",
+        "description": "اعشاریہ کے لیے استعمال ہونے والا حرف۔"
+      },
+      {
+        "property": "noeasing",
+        "title": "ایزنگ کے بغیر",
+        "description": "ایزنگ غیر فعال کریں تاکہ گنتی یکساں رفتار سے ہو۔"
+      }
+    ]
+  }
+}

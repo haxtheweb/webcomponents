@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Monivalinta",
+    "description": "Monivalintainen itsearviointikysymys."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Kysymys",
+        "description": "Kysymys, johon käyttäjät vastaavat."
+      },
+      {
+        "property": "randomize",
+        "title": "Satunnaista",
+        "description": "Satunnaista vastausten järjestys dynaamisesti."
+      },
+      {
+        "property": "singleOption",
+        "title": "Yksi vastaus",
+        "description": "Salli vain yksi vastaus."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Arvostelumuoto",
+        "description": "OER Schema: tämän arvioinnin arvostelumuoto (esim. pisteet, kirjain, prosentti, suoritus)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oppimistavoite",
+        "description": "OER Schema: tähän arviointiin liittyvä oppimistavoite."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurssi",
+        "description": "OER Schema: kurssi, jolle tämä arviointi on tarkoitettu."
+      },
+      {
+        "property": "answers",
+        "title": "Vastaukset"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tietovisan nimi",
+        "description": "Tietovisan nimi, jota käytetään xAPI-tunnistukseen analytiikkajärjestelmissä."
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Stopp-märkus",
+    "description": "Sõnum, mis juhib lugejate tähelepanu konkreetsetele juhistele."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Sisesta stopp-märkuse pealkiri."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Sisesta väline URL."
+      },
+      {
+        "property": "status",
+        "title": "Olek",
+        "description": "Oleku määramine muudab vastavalt värve ja ikoone",
+        "options": {
+          "stop": "Stopp",
+          "warning": "Hoiatus",
+          "success": "Kinnitus",
+          "info": "Teade"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Märkuse tekst",
+        "description": "Stopp-märkuse tekst."
+      }
+    ]
+  }
+}

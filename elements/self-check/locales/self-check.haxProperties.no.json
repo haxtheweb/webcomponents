@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Egenkontroll",
+    "description": "Brukere kan gjennomføre en egenkontroll."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bilde",
+        "description": "Bilde for egenkontrollen."
+      },
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Tittel på egenkontrollen."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ tekst",
+        "description": "Alternativ tekst for bildet."
+      },
+      {
+        "slot": "question",
+        "title": "Spørsmål"
+      },
+      {
+        "slot": "",
+        "title": "Svar"
+      },
+      {
+        "property": "accentColor",
+        "title": "Temafarge",
+        "description": "Velg en temafarge fra designsystemet.",
+        "options": {
+          "primary": "Primær",
+          "accent": "Aksent",
+          "success": "Suksess",
+          "warning": "Advarsel",
+          "error": "Feil",
+          "info": "Info"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "Referanse til læringsmål som sendes ut som oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Vurderer",
+        "description": "Referanse til aktivitet som sendes ut som oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Mer-lenke",
+        "description": "Lenke til mer informasjon."
+      }
+    ]
+  }
+}

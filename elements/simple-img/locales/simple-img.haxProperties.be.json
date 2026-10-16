@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Простая выява",
+    "description": "Апрацоўка выяў з дапамогай простых параметраў."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Крыніца",
+        "description": "URL крыніцы выявы."
+      },
+      {
+        "property": "height",
+        "title": "Вышыня",
+        "description": "Неабавязковая вышыня выявы."
+      },
+      {
+        "property": "width",
+        "title": "Шырыня",
+        "description": "Неабавязковая шырыня выявы."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-тэкст",
+        "description": "Карысна для чытачоў экрана і лепшага SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Якасць",
+        "description": "Якасць выявы пры генерацыі (толькі JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Прыярытэт загрузкі",
+        "description": "Падказка для прадукцыйнасці ў сучасных браўзерах.",
+        "options": {
+          "auto": "Аўтаматычна",
+          "high": "Высокі",
+          "low": "Нізкі"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Спосаб дэкадавання",
+        "description": "Падказка для прадукцыйнасці адлюстравання выяў у сучасных браўзерах.",
+        "options": {
+          "auto": "Аўтаматычна",
+          "async": "Асінхронна"
+        }
+      }
+    ]
+  }
+}

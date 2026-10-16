@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Självkontroll",
+    "description": "Användare kan genomföra en självkontroll."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Bild för självkontrollen."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Självkontrollens titel."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativtext",
+        "description": "Alt-text för bilden."
+      },
+      {
+        "slot": "question",
+        "title": "Fråga"
+      },
+      {
+        "slot": "",
+        "title": "Svar"
+      },
+      {
+        "property": "accentColor",
+        "title": "Temafärg",
+        "description": "Välj en temafärg från designsystemet.",
+        "options": {
+          "primary": "Primär",
+          "accent": "Accent",
+          "success": "Lyckat",
+          "warning": "Varning",
+          "error": "Fel",
+          "info": "Info"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lärandemål",
+        "description": "Referens till lärandemål som genereras som oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Bedömer",
+        "description": "Aktivitetsreferens som genereras som oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Läs mer-länk",
+        "description": "Länk till ytterligare information."
+      }
+    ]
+  }
+}

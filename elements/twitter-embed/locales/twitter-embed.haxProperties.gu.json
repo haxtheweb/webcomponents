@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) એમ્બેડ",
+    "description": "X પરથી ટ્વીટ સંદર્ભમાં એમ્બેડ કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ટ્વીટ URL",
+        "description": "એમ્બેડ કરવાની ટ્વીટનું URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "થીમ",
+        "description": "X ટ્વીટ્સ માટે લાઇટ અથવા ડાર્ક થીમ.",
+        "options": {
+          "light": "હળવું",
+          "dark": "ડાર્ક"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "ક્લિક પર પૉપઅપ અટકાવો",
+        "description": "વપરાશકર્તાઓને x.com પર ટ્વીટ ખોલતા અટકાવો."
+      }
+    ]
+  }
+}

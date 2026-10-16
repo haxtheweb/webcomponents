@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ກ່ອງກິດຈະກຳ",
+    "description": "ບລັອກຫົວຂໍ້ນ້ອຍທີ່ມີຮູບແບບ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ໄອຄອນ",
+        "description": "ໄອຄອນທີ່ສະແດງຂ້າງກ່ອງກິດຈະກຳ."
+      },
+      {
+        "property": "tag",
+        "title": "ແທັກກ່ອງກິດຈະກຳ",
+        "description": "ແທັກທີ່ສະແດງໃນກ່ອງກິດຈະກຳ."
+      },
+      {
+        "property": "nocolourize",
+        "title": "ບໍ່ໃສ່ສີ",
+        "description": "ປ້ອງກັນບໍ່ໃຫ້ໃສ່ສີໃຫ້ໄອຄອນ."
+      }
+    ]
+  }
+}

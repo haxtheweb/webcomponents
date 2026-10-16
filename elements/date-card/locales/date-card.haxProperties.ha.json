@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Kwanan wata",
+    "description": "Nuna kwanan wata na kalanda tare da bayanai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Wata",
+        "description": "Watan da ake nunawa a kan katin."
+      },
+      {
+        "property": "date",
+        "title": "Ranar wata",
+        "description": "Ranar wata a lamba."
+      },
+      {
+        "property": "day",
+        "title": "Ranar mako",
+        "description": "Ranar mako a rubutu."
+      },
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Sunan taron."
+      },
+      {
+        "property": "location",
+        "title": "Wuri",
+        "description": "Wurin taron."
+      },
+      {
+        "property": "startTime",
+        "title": "Farawa",
+        "description": "Lokacin farawa."
+      },
+      {
+        "property": "endTime",
+        "title": "Ƙarshe",
+        "description": "Lokacin ƙarshe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin Ƙawa",
+        "description": "Launin ƙawa na zaɓi."
+      },
+      {
+        "property": "dark",
+        "title": "Jigo Mai Duhu",
+        "description": "Kunna jigo mai duhu."
+      }
+    ]
+  }
+}

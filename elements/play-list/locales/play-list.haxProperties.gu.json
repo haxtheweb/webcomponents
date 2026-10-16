@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "પ્લેલિસ્ટ",
+    "description": "પ્લેલિસ્ટમાં કોઈ પણ પ્રકારની સામગ્રી બતાવો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "સ્રોત",
+        "description": "પ્લેલિસ્ટમાં બતાવાતી સામગ્રી."
+      },
+      {
+        "property": "edit",
+        "title": "સંપાદન મોડ",
+        "description": "પ્લેલિસ્ટ માટે સંપાદન અને પૂર્વાવલોકન મોડ વચ્ચે ટૉગલ કરો."
+      },
+      {
+        "property": "navigation",
+        "title": "નેવિગેશન",
+        "description": "આગળ અને પાછળ નેવિગેશન બટનો બતાવો."
+      },
+      {
+        "property": "pagination",
+        "title": "પૃષ્ઠ ક્રમાંકન",
+        "description": "પૃષ્ઠ ક્રમાંકન બિંદુઓ બતાવો."
+      },
+      {
+        "property": "orientation",
+        "title": "દિશા",
+        "description": "સ્લાઇડ્સની દિશા.",
+        "options": {
+          "horizontal": "આડું",
+          "vertical": "ઊભું"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "શરૂઆતની સ્લાઇડ",
+        "description": "શરૂઆતમાં ફોકસ કરવાની સ્લાઇડનો ક્રમાંક."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "પાસા ગુણોત્તર",
+        "description": "સ્લાઇડ્સનો પાસા ગુણોત્તર.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

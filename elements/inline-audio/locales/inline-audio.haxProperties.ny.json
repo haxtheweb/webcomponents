@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Mawu mkati mwa tsamba",
+    "description": "Imbani mawu mkati mwa tsamba kuti muwonjezere zomwe zili patsamba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Gwero",
+        "description": "Fayilo ya MP3 kapena URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera wa khadi."
+      },
+      {
+        "property": "shiny",
+        "title": "Yonyezimira",
+        "description": "Gwiritsani ntchito mtundu wowala wakumbuyo m'malo mwa imvi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Mdima",
+        "description": "Gwiritsani ntchito mawonekedwe amdima."
+      }
+    ]
+  }
+}

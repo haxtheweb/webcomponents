@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Léarscáil íomhá",
+    "description": "Léarscáil íomhá inrochtana le spotaí te idirghníomhacha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Lipéad",
+        "description": "Lipéad don léarscáil íomhá."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Sonraí na spotaí te",
+        "description": "Na spotaí te idirghníomhacha ar an léarscáil íomhá."
+      }
+    ]
+  }
+}

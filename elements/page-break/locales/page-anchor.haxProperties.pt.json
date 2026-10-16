@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Âncora de página",
+    "description": "Link para pontos específicos de mídias na página."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Alvo na página",
+        "description": "ID ou recurso para o qual esta âncora aponta."
+      },
+      {
+        "property": "value",
+        "title": "Valor do link direto",
+        "description": "Valor do link direto (por exemplo, marca de tempo ou ID do slide)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entidade do site",
+        "description": "Entidade do site opcional para controlar a apresentação de conceitos relacionados."
+      }
+    ]
+  }
+}

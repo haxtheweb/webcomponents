@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ټګونه",
+    "description": "په پاڼه کې د ښودلو لپاره د ټګونو ساده لېست."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ټګونه",
+        "description": "د کامې په واسطه جلا شوو ټګونو لېست."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "اتومات تاکیدي رنګ",
+        "description": "تاکیدي رنګ د لیبل پر بنسټ په اتومات ډول وټاکئ."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنګ",
+        "description": "د ټګونو رنګ."
+      }
+    ]
+  }
+}

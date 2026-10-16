@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kumpulan Kembang Kuncup",
+    "description": "Sekumpulan elemen kembang kuncup."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Kembangkan satu sahaja",
+        "description": "Hanya satu item boleh dikembangkan."
+      },
+      {
+        "slot": "",
+        "title": "Item Kuncup",
+        "description": "Item yang boleh dikuncupkan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Enkorpigi eksteran retenhavon en iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL de rimedo",
+        "description": "URL de rimedo."
+      },
+      {
+        "property": "height",
+        "title": "Alteco",
+        "description": "Alteco de iframe."
+      },
+      {
+        "property": "width",
+        "title": "Larĝo",
+        "description": "Larĝo de iframe."
+      }
+    ]
+  }
+}

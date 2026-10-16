@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "מעדיע־ציטאַט",
+    "description": "בילד מיט אַ ציטאַט, מראה־מקום און אָפּציאָנעלער אונטערשריפֿט."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "ציטאַט",
+        "description": "טעקסט פֿונעם ציטאַט."
+      },
+      {
+        "slot": "author",
+        "title": "מחבר",
+        "description": "מחבר פֿונעם ציטאַט."
+      },
+      {
+        "slot": "author-detail",
+        "title": "פּרטים וועגן מחבר",
+        "description": "פּרטים וועגן מחבר."
+      },
+      {
+        "slot": "caption",
+        "title": "אונטערשריפֿט",
+        "description": "אונטערשריפֿט פֿון בילד."
+      },
+      {
+        "property": "src",
+        "title": "בילד־מקור",
+        "description": "בילד־טעקע פֿאַרן מעדיע־ציטאַט."
+      },
+      {
+        "property": "alt",
+        "title": "אַלטערנאַטיווער טעקסט",
+        "description": "אַלטערנאַטיווער טעקסט פֿאַר דעם בילד."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "אַקצענט־קאָליר פֿון קאַרטל."
+      }
+    ]
+  }
+}

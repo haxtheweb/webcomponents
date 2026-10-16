@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ወደ ላይ ቆጠራ",
+    "description": "ወደ እይታ ሲሸበለል ቁጥርን እስከ ዒላማ እሴት ድረስ እየቆጠረ እንዲጨምር አንቀሳቅስ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "የመጨረሻ እሴት",
+        "description": "እስከሚቆጠርበት ድረስ ያለው ቁጥር።"
+      },
+      {
+        "property": "start",
+        "title": "የመነሻ እሴት",
+        "description": "ቆጠራው የሚጀምርበት ቁጥር።"
+      },
+      {
+        "property": "duration",
+        "title": "የቆይታ ጊዜ",
+        "description": "የቆጠራ እነማው የሚወስደው ሰከንድ።"
+      },
+      {
+        "property": "prefixtext",
+        "title": "የቅድመ-ቅጥያ ጽሑፍ",
+        "description": "ከቁጥሩ በፊት የሚታይ ጽሑፍ (ለምሳሌ '$')።"
+      },
+      {
+        "property": "suffixtext",
+        "title": "የድህረ-ቅጥያ ጽሑፍ",
+        "description": "ከቁጥሩ በኋላ የሚታይ ጽሑፍ (ለምሳሌ '%')።"
+      },
+      {
+        "slot": "prefix",
+        "title": "የቅድመ-ቅጥያ ቦታ",
+        "description": "ከቁጥሩ በፊት የሚገባ አማራጭ ይዘት።"
+      },
+      {
+        "slot": "suffix",
+        "title": "የድህረ-ቅጥያ ቦታ",
+        "description": "ከቁጥሩ በኋላ የሚገባ አማራጭ ይዘት።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "የአስርዮሽ ቦታዎች",
+        "description": "የሚታዩ የአስርዮሽ ቦታዎች ብዛት።"
+      },
+      {
+        "property": "separator",
+        "title": "የሺዎች መለያ",
+        "description": "የሺዎች ቡድኖችን የሚለይ ቁምፊ።"
+      },
+      {
+        "property": "decimal",
+        "title": "የአስርዮሽ ቁምፊ",
+        "description": "ለአስርዮሽ ነጥብ የሚውል ቁምፊ።"
+      },
+      {
+        "property": "noeasing",
+        "title": "ማቅለል የለም",
+        "description": "ቆጠራው ቀጥተኛ እንዲሆን ማቅለልን አሰናክል።"
+      }
+    ]
+  }
+}

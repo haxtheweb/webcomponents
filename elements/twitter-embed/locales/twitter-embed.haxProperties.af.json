@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X)-inbedding",
+    "description": "Bed 'n tweet van X in konteks in."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Tweet-URL",
+        "description": "URL van die tweet om in te bed."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Ligte of donker tema vir X-tweets.",
+        "options": {
+          "light": "Lig",
+          "dark": "Donker"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Verhoed opspringer by klik",
+        "description": "Verhoed dat gebruikers die tweet op x.com oopmaak."
+      }
+    ]
+  }
+}

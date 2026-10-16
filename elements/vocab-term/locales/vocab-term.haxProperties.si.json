@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "වචන මාලාව",
+    "description": "වචන මාලා පදය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "පදය"
+      },
+      {
+        "property": "information",
+        "title": "නිර්වචනය",
+        "description": "පදය ක්ලික් කළ විට පෙන්වන නිර්වචනය."
+      },
+      {
+        "property": "popoverMode",
+        "title": "උත්පතන කවුළුව",
+        "description": "නිර්වචනය පේළිගතව නොව උත්පතන කවුළුවක පෙන්වන්න."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "සබැඳි",
+        "description": "මෙම පදයට සම්බන්ධ අතිරේක සබැඳි ලැයිස්තුව."
+      }
+    ]
+  }
+}

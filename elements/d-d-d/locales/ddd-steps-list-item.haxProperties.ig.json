@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Ihe nzọụkwụ",
+    "description": "Ihe bụ akụkụ nke ndepụta nzọụkwụ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Aha"
+      }
+    ]
+  }
+}

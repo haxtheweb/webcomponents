@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "شارة الحدث",
+    "description": "مكوّن شارة الحدث."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "صورة التلفاز",
+        "description": "الصورة المعروضة على التلفاز."
+      },
+      {
+        "property": "logo",
+        "title": "الشعار",
+        "description": "الشعار المعروض في زاوية الشارة."
+      },
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "العنوان المعروض أعلى الشارة."
+      },
+      {
+        "property": "name",
+        "title": "الاسم",
+        "description": "الاسم المعروض على الشارة."
+      },
+      {
+        "property": "position",
+        "title": "المنصب",
+        "description": "دور الشخص أو مسماه الوظيفي."
+      },
+      {
+        "property": "organization",
+        "title": "المؤسسة",
+        "description": "المؤسسة التي يعمل لديها الشخص."
+      },
+      {
+        "property": "tvcolor",
+        "title": "لون التلفاز",
+        "description": "اختر لون التلفاز."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون الخلفية أو النص الأساسي."
+      },
+      {
+        "property": "knobcolor",
+        "title": "لون المقابض",
+        "description": "لون مقابض التلفاز."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "بني داكن (سيبيا)",
+        "description": "تطبيق تأثير السيبيا."
+      },
+      {
+        "property": "blackwhite",
+        "title": "أبيض وأسود",
+        "description": "تطبيق تأثير الأبيض والأسود."
+      }
+    ]
+  }
+}

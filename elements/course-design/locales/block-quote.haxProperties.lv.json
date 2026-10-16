@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Citāta bloks",
+    "description": "Stilizēts citāta bloks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Atsauce",
+        "description": "Atsauces teksts."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatīvais teksts",
+        "description": "Attēla alternatīvais teksts."
+      },
+      {
+        "property": "image",
+        "title": "Attēls",
+        "description": "Attēls, kas tiek rādīts kopā ar citātu."
+      }
+    ]
+  }
+}

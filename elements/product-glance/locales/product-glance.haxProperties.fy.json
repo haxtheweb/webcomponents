@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Produktoersjoch",
+    "description": "Blok foar in fluch produktoersjoch."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikoan",
+        "description": "Ikoan dat it begryp foarstelt."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Haadbegryp yn ien eachopslach."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undertitel",
+        "description": "Oanfoljend detail."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Aksintkleur foar it ikoan."
+      }
+    ]
+  }
+}

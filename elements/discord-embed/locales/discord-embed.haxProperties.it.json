@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Incorpora community Discord da un URL di condivisione."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL della risorsa",
+        "description": "URL della risorsa."
+      },
+      {
+        "property": "height",
+        "title": "Altezza",
+        "description": "Altezza del riquadro del contenuto."
+      },
+      {
+        "property": "width",
+        "title": "Larghezza",
+        "description": "Larghezza del riquadro del contenuto."
+      }
+    ]
+  }
+}

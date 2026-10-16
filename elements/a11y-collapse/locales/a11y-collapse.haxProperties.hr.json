@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Sklopivi spremnik",
+    "description": "Jedan spremnik koji se može proširiti i sažeti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Naslov",
+        "description": "Tekst za sažimajući element."
+      },
+      {
+        "property": "expanded",
+        "title": "Prošireno",
+        "description": "Prošireno prema zadanim postavkama."
+      },
+      {
+        "property": "headingButton",
+        "title": "Gumb naslova",
+        "description": "Neka cijeli naslov bude klikabilan, a ne samo ikona."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona za gumb za proširivanje/sažimanje."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikona (kada je prošireno)",
+        "description": "Neobavezna ikona za prošireno stanje gumba."
+      },
+      {
+        "slot": "",
+        "title": "Sadržaj",
+        "description": "Sadržaj sažimajućeg elementa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Opis alata",
+        "description": "Opis alata za gumb za proširivanje/sažimanje."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Opis alata (kada je prošireno)",
+        "description": "Opis alata za gumb za proširivanje/sažimanje kada je prošireno."
+      }
+    ]
+  }
+}

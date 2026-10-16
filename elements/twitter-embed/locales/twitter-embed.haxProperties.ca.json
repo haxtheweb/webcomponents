@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Inserció de Twitter (X)",
+    "description": "Insereix un tuit d'X en context."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL del tuit",
+        "description": "URL del tuit que es vol inserir."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Tema clar o fosc per als tuits d'X.",
+        "options": {
+          "light": "Clara",
+          "dark": "Fosc"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Evita la finestra emergent en fer clic",
+        "description": "Impedeix que els usuaris obrin el tuit a x.com."
+      }
+    ]
+  }
+}

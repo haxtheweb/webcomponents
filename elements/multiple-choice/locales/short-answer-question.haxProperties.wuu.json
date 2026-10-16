@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "简答题",
+    "description": "让用户回答一只基本问题"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "问题",
+        "description": "让用户回答个问题。"
+      },
+      {
+        "property": "answers",
+        "title": "可能个答案"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "测验名称",
+        "description": "传拨 xAPI 环境、用来识别搿只项目个测验名称"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Bildvergläich",
+    "description": "Ee Bild iwwer en anert wëschen fir ze vergläichen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Iewescht Bild",
+        "description": "Iewescht Bild, dat iwwer dat ënnescht Bild gewëscht gëtt."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alternativtext vum iewesche Bild",
+        "description": "Néidegen Alternativtext fir d'Accessibilitéit."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Ënnescht Bild",
+        "description": "Ënnescht Bild, dat ënner dem iewesche Bild ugewise gëtt."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alternativtext vum ënneschte Bild",
+        "description": "Néidegen Alternativtext fir d'Accessibilitéit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Verhalen",
+        "description": "Wëschmodus (Standard) oder Transparenzmodus fir dat iewescht Bild wielen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Faarf vun der Schiibläischt."
+      },
+      {
+        "property": "dark",
+        "title": "Däischter",
+        "description": "D'Faarf vun der Schiibläischt invertéieren."
+      },
+      {
+        "property": "position",
+        "title": "Startpositioun",
+        "description": "Startpositioun vun 0 bis 100."
+      }
+    ]
+  }
+}

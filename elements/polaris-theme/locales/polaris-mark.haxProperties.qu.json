@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris unancha",
+    "description": "PSU riqsichiq unanchata rikuchiy, akllanalla college sutiwan chayana URL-wanpas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "College suti",
+        "description": "Unanchapa kinrayninpi rikukuq suti."
+      },
+      {
+        "property": "name2",
+        "title": "College suti 2",
+        "description": "Ñawpaq college sutipa urayninpi rikukuq iskay ñiqin suti."
+      },
+      {
+        "property": "name3",
+        "title": "College suti 3",
+        "description": "Iskay ñiqin college sutipa urayninpi rikukuq kimsa ñiqin suti."
+      },
+      {
+        "property": "url",
+        "title": "T'inki",
+        "description": "Unanchata ñit'iqtin chayana URL."
+      },
+      {
+        "property": "type",
+        "title": "Laya",
+        "description": "Unanchapa rikukuq layan.",
+        "options": {
+          "default": "Kikinmanta",
+          "light": "K'anchaq",
+          "dark": "Tutayaq"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Sayaq layout",
+        "description": "Kimsa ñiqin sutita iskay ñiqinpa urayninpi siriq siqiwan rikuchiy."
+      }
+    ]
+  }
+}

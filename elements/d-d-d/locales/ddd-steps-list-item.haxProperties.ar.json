@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "عنصر خطوات",
+    "description": "عنصر ضمن قائمة خطوات"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "العنوان"
+      }
+    ]
+  }
+}

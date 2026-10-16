@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "画像付き引用",
+    "description": "任意の画像付きのスタイル化された引用。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "画像",
+        "description": "推薦の言葉に画像を追加します。"
+      },
+      {
+        "property": "name",
+        "title": "氏名",
+        "description": "推薦の言葉を述べる人の名前。"
+      },
+      {
+        "property": "position",
+        "title": "役職または肩書き",
+        "description": "その人の役職または肩書き。"
+      },
+      {
+        "slot": "",
+        "title": "引用",
+        "description": "推薦者による引用。"
+      }
+    ]
+  }
+}

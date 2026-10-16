@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI vizualizatori",
+    "description": "MIDI ni kontekstda vizualizatsiya bilan ijro etish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manba",
+        "description": "Ijro etiladigan fayl URL manzili."
+      },
+      {
+        "property": "visualizer",
+        "title": "Vizualizatsiya",
+        "description": "Musiqa fayli uchun vizualizatsiya uslubi.",
+        "options": {
+          "staff": "Nota yoʻli",
+          "piano-roll": "Piano rulon",
+          "waterfall": "Piano + sharshara"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Sharsharani yashirish",
+        "description": "Piano vizualizatsiyasida sharshara notalarini yashirish."
+      }
+    ]
+  }
+}

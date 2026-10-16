@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Koodhka QR",
+    "description": "Koodh laga iskaanko taleefan casri ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Xogta QR",
+        "description": "Isha xogta koodhka QR."
+      },
+      {
+        "property": "title",
+        "title": "Cinwaan kale",
+        "description": "Cinwaan kale oo ku xiran isha koodhka QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Cabbir",
+        "description": "Cabbirka koodhka QR."
+      },
+      {
+        "property": "margin",
+        "title": "Qarka bannaan",
+        "description": "Duubka koodhka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Qaabka soo saarka",
+        "description": "Qaabka lagu soo saarayo.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

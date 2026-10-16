@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikoon",
+    "description": "Ikoon täielikust ikooniteegist."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Kuvatav ikoon."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Ikooni rõhuvärv."
+      },
+      {
+        "property": "dark",
+        "title": "Tume",
+        "description": "Kasuta tumedat režiimi (pööratud värvid)."
+      }
+    ]
+  }
+}

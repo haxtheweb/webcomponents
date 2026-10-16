@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "સંકુચિત કન્ટેનર",
+    "description": "એક વિસ્તૃત અને સંકુચિત થઈ શકે તેવું કન્ટેનર."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "મથાળું",
+        "description": "સંકુચિત વિભાગ માટેનું લખાણ."
+      },
+      {
+        "property": "expanded",
+        "title": "વિસ્તૃત",
+        "description": "ડિફૉલ્ટ રૂપે વિસ્તૃત કરો."
+      },
+      {
+        "property": "headingButton",
+        "title": "મથાળું બટન",
+        "description": "ફક્ત આઇકનને બદલે આખું મથાળું ક્લિક કરી શકાય તેવું બનાવો."
+      },
+      {
+        "property": "icon",
+        "title": "આઇકન",
+        "description": "વિસ્તૃત/સંકુચિત ટૉગલ બટન માટેનું આઇકન."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "આઇકન (વિસ્તૃત હોય ત્યારે)",
+        "description": "વિસ્તૃત ટૉગલ સ્થિતિ માટે વૈકલ્પિક આઇકન."
+      },
+      {
+        "slot": "",
+        "title": "સામગ્રી",
+        "description": "સંકુચિત વિભાગ માટેની સામગ્રી."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "ટૂલટિપ",
+        "description": "વિસ્તૃત/સંકુચિત ટૉગલ બટન માટેની ટૂલટિપ."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "ટૂલટિપ (વિસ્તૃત હોય ત્યારે)",
+        "description": "વિસ્તૃત હોય ત્યારે વિસ્તૃત/સંકુચિત બટન માટેની ટૂલટિપ."
+      }
+    ]
+  }
+}

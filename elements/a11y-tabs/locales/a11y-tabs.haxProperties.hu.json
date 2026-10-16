@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Lapok",
+    "description": "Lapok csoportja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Címke (akadálymentességhez)",
+        "description": "A lapcsoport akadálymentes címkéje."
+      },
+      {
+        "property": "disabled",
+        "title": "Letiltva",
+        "description": "Az összes lap letiltása."
+      },
+      {
+        "property": "hidden",
+        "title": "Rejtett",
+        "description": "A lapcsoport elrejtése."
+      },
+      {
+        "property": "sticky",
+        "title": "Rögzített",
+        "description": "A vízszintes lapok görgetéskor a tetején maradnak."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Elrendezési töréspont",
+        "description": "Töréspont a vízszintes lapokhoz; a -1 csak függőleges elrendezést jelent."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Ikon töréspontja",
+        "description": "Töréspont a szöveg ikonokkal együtt való megjelenítéséhez. Az alapérték 0; a -1 csak ikonos módot jelent."
+      },
+      {
+        "slot": "",
+        "title": "Lapok",
+        "description": "<a11y-tab/> elemek sorozata."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Egyedi azonosító",
+        "description": "A lapcsoport egyedi azonosítója."
+      }
+    ]
+  }
+}

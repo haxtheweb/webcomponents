@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Primerjava slik",
+    "description": "Povlecite eno sliko čez drugo za primerjavo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Zgornja slika",
+        "description": "Zgornja slika, ki se povleče čez spodnjo sliko."
+      },
+      {
+        "property": "topAlt",
+        "title": "Nadomestno besedilo zgornje slike",
+        "description": "Obvezno nadomestno besedilo za dostopnost."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Spodnja slika",
+        "description": "Spodnja slika, prikazana pod zgornjo sliko."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Nadomestno besedilo spodnje slike",
+        "description": "Obvezno nadomestno besedilo za dostopnost."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Vedenje",
+        "description": "Izberite način brisanja (privzeto) ali način prosojnosti zgornje slike."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Barva drsnika."
+      },
+      {
+        "property": "dark",
+        "title": "Temno",
+        "description": "Obrni barvo drsnika."
+      },
+      {
+        "property": "position",
+        "title": "Začetni položaj",
+        "description": "Začetni položaj od 0 do 100."
+      }
+    ]
+  }
+}

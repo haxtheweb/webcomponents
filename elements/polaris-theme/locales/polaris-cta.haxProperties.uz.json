@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Mavzuga mos Polaris harakatga chaqiruv tugmasini koʻrsatish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Tugma matni",
+        "description": "Harakatga chaqiruv tugmasida koʻrsatiladigan matn."
+      },
+      {
+        "property": "link",
+        "title": "Havola",
+        "description": "Tugma uchun manzil URL."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Vizual uslub varianti.",
+        "options": {
+          "primary": "Asosiy",
+          "tinted": "Tusli",
+          "light": "Yorugʻ"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Hoshiyali uslub",
+        "description": "Hoshiyali koʻrinishni yoqish."
+      },
+      {
+        "property": "filled",
+        "title": "Toʻldirilgan uslub",
+        "description": "Toʻldirilgan koʻrinishni yoqish."
+      }
+    ]
+  }
+}

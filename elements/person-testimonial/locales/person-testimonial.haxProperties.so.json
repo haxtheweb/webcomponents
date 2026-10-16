@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Xigasho Sawir leh",
+    "description": "Xigasho qurxin leh oo leh sawir ikhtiyaari ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Sawir",
+        "description": "Ku dar sawir markhaatiga."
+      },
+      {
+        "property": "name",
+        "title": "Magaca Buuxa",
+        "description": "Magaca qofka bixinaya markhaatiga."
+      },
+      {
+        "property": "position",
+        "title": "Jago ama Magaca Shaqada",
+        "description": "Jagada ama magaca shaqada qofka."
+      },
+      {
+        "slot": "",
+        "title": "Xigasho",
+        "description": "Xigasho ka timid qoraaga markhaatiga."
+      }
+    ]
+  }
+}

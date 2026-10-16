@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) ჩასმა",
+    "description": "X-ის ტვიტის ჩასმა კონტექსტში."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ტვიტის URL",
+        "description": "ჩასასმელი ტვიტის URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "თემა",
+        "description": "ღია ან მუქი თემა X-ის ტვიტებისთვის.",
+        "options": {
+          "light": "ღია",
+          "dark": "მუქი"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "დაწკაპუნებისას ამომხტარი ფანჯრის აკრძალვა",
+        "description": "მომხმარებლებისთვის ტვიტის x.com-ზე გახსნის აკრძალვა."
+      }
+    ]
+  }
+}

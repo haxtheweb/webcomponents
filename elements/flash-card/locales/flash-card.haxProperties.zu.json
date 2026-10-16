@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ikhadi lokufunda",
+    "description": "Zijwayeze imiqondo ngamakhadi okufunda anengaphambili nengemuva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Ingaphambili Lekhadi",
+        "description": "Umbhalo wangaphambili noma umbuzo."
+      },
+      {
+        "slot": "back",
+        "title": "Ingemuva Lekhadi",
+        "description": "Impendulo elindelekile."
+      },
+      {
+        "property": "imgSource",
+        "title": "Umthombo Wesithombe",
+        "description": "Ifayela lesithombe elisetshenziselwa ikhadi. Lidlula Igama Elingukhiye Lesithombe."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Uhlobo Lwesenzo",
+        "description": "OER Schema: uhlobo lwesenzo oluhilelekile kulokhu kuzijwayeza (isb. Ukufunda, Ukubhala, Ukwenza, Ukucwaninga, Ukulalela, Ukubuka, Ukuzindla, Ukuxoxisana, Ukuqaphela, Ukwethula, Ukuhlola)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Inhloso Yokufunda",
+        "description": "OER Schema: i-ID noma i-URL yenhloso yokufunda esekelwa yilokhu kuzijwayeza."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Okumnyama",
+        "description": "Sebenzisa imodi emnyama."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Wokugcizelela",
+        "description": "Umbala wokugcizelela wekhadi."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Igama Elingukhiye Lesithombe",
+        "description": "Igama elingukhiye lesithombe esingahleliwe. Lidlulwa nguMthombo Wesithombe."
+      }
+    ]
+  }
+}

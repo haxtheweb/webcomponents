@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Oldalszakasz",
+    "description": "Szakasztároló az oldal tartalmához és képernyőalapú elrendezésekhez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Dizájnkezelés",
+        "description": "Előre beállított stílus, amely frissíti a kapcsolódó beállításokat."
+      },
+      {
+        "property": "image",
+        "title": "Kép",
+        "description": "A szakasz háttérmédiája."
+      },
+      {
+        "property": "bg",
+        "title": "Háttérszín",
+        "description": "Háttérszín, ha nincs kép beállítva."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Görgetőgomb",
+        "description": "A következő szakaszhoz görgető gomb megjelenítése."
+      },
+      {
+        "property": "fold",
+        "title": "Hajtás megjelenítése",
+        "description": "Vizuális hajtás megjelenítése a szakasz alján."
+      },
+      {
+        "property": "full",
+        "title": "Teljes képernyős méret",
+        "description": "A néző képernyőmagasságának kitöltése."
+      },
+      {
+        "property": "filter",
+        "title": "Szűrő alkalmazása",
+        "description": "Vizuális szűrő alkalmazása a háttérképre."
+      },
+      {
+        "slot": "",
+        "title": "Tartalom",
+        "description": "A szakasz tartalma."
+      },
+      {
+        "slot": "entice",
+        "title": "Csalogató",
+        "description": "Opcionális csalogató tartalom."
+      },
+      {
+        "slot": "buttons",
+        "title": "Gombok",
+        "description": "A szöveg alatt megjelenő gombcsoport."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Horgonyszöveg",
+        "description": "A navigációban megjelenő horgonycímke."
+      }
+    ]
+  }
+}

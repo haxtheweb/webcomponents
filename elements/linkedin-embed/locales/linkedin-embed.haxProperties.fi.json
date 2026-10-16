@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn-upotus",
+    "description": "Upota LinkedIn-profiilikortti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Mukautettu nimi",
+        "description": "LinkedIn-profiilin mukautettu käyttäjänimiosa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Kieliasetus",
+        "description": "Kieliasetuksen metatietoarvo, kuten en_US."
+      }
+    ]
+  }
+}

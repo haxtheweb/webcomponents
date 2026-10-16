@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Alamar Polaris",
+    "description": "Nuna alamar tantancewa ta PSU tare da sunan kwaleji na zaɓi da URL na inda za a kai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Sunan kwaleji",
+        "description": "Sunan da ake nunawa kusa da alamar."
+      },
+      {
+        "property": "name2",
+        "title": "Sunan kwaleji 2",
+        "description": "Suna na biyu da ake nunawa ƙarƙashin sunan kwaleji na farko."
+      },
+      {
+        "property": "name3",
+        "title": "Sunan kwaleji 3",
+        "description": "Suna na uku da ake nunawa ƙarƙashin sunan kwaleji na biyu."
+      },
+      {
+        "property": "url",
+        "title": "Mahaɗi",
+        "description": "URL na inda za a kai idan an danna alamar."
+      },
+      {
+        "property": "type",
+        "title": "Bambanci",
+        "description": "Bambancin alamar gani.",
+        "options": {
+          "default": "Tsoho",
+          "light": "Haske",
+          "dark": "Duhu"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Tsari a tsaye",
+        "description": "Nuna suna na uku ƙarƙashin suna na biyu tare da layi a kwance."
+      }
+    ]
+  }
+}

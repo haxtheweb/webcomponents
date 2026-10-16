@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Mga Tab",
+    "description": "Hanay ng mga tab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Label (para sa accessibility)",
+        "description": "Accessible na label para sa hanay ng tab."
+      },
+      {
+        "property": "disabled",
+        "title": "Naka-disable",
+        "description": "I-disable ang lahat ng tab."
+      },
+      {
+        "property": "hidden",
+        "title": "Nakatago",
+        "description": "Itago ang hanay ng tab."
+      },
+      {
+        "property": "sticky",
+        "title": "Sticky",
+        "description": "Panatilihin sa itaas ang mga pahalang na tab habang nag-i-scroll."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Breakpoint ng Layout",
+        "description": "Breakpoint para sa mga pahalang na tab; gamitin ang -1 para patayo lamang."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Breakpoint ng Icon",
+        "description": "Breakpoint para sa pagpapakita ng teksto kasama ng mga icon. Ang default ay 0; gamitin ang -1 para sa mode na icon lamang."
+      },
+      {
+        "slot": "",
+        "title": "Mga Tab",
+        "description": "Serye ng mga elementong <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Natatanging ID",
+        "description": "Natatanging ID para sa hanay ng tab na ito."
+      }
+    ]
+  }
+}

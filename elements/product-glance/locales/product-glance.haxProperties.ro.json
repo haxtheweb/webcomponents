@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Produs dintr-o privire",
+    "description": "Bloc de prezentare rapidă a produsului."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Pictogramă",
+        "description": "Pictograma care reprezintă conceptul."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Conceptul principal dintr-o privire."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtitlu",
+        "description": "Detalii suplimentare."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Culoarea de accent pentru pictogramă."
+      }
+    ]
+  }
+}

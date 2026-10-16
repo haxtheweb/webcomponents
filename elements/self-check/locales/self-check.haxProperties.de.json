@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Selbsttest",
+    "description": "Benutzer können einen Selbsttest absolvieren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Bild für den Selbsttest."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel des Selbsttests."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativtext",
+        "description": "Alternativtext für das Bild."
+      },
+      {
+        "slot": "question",
+        "title": "Frage"
+      },
+      {
+        "slot": "",
+        "title": "Antwort"
+      },
+      {
+        "property": "accentColor",
+        "title": "Designfarbe",
+        "description": "Eine Designfarbe aus dem Designsystem auswählen.",
+        "options": {
+          "primary": "Primär",
+          "accent": "Akzent",
+          "success": "Erfolg",
+          "warning": "Warnung",
+          "error": "Fehler",
+          "info": "Info"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lernziel",
+        "description": "Lernziel-Referenz, ausgegeben als oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Bewertet",
+        "description": "Aktivitätsreferenz, ausgegeben als oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Weiterführender Link",
+        "description": "Link zu weiteren Informationen."
+      }
+    ]
+  }
+}

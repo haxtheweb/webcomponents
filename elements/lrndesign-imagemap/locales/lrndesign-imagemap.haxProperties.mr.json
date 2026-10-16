@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "प्रतिमा नकाशा",
+    "description": "परस्परसंवादी हॉटस्पॉटसह सुलभ प्रतिमा नकाशा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "लेबल",
+        "description": "प्रतिमा नकाशासाठी लेबल."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "हॉटस्पॉट तपशील",
+        "description": "प्रतिमा नकाशावरील परस्परसंवादी हॉटस्पॉट."
+      }
+    ]
+  }
+}

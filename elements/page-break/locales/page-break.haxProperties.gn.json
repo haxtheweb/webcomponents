@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Kuatiarogue mba'emimi",
+    "description": "Emoĩ ñemboja'o ojehecháva kuatiarogue apytépe, CMS oipurukuaáva ojapo hag̃ua kuatiarogue."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teratee",
+        "description": "Teratee ojehechaukáva ñemohendápe ha moakãha peteĩhápe."
+      },
+      {
+        "property": "pageType",
+        "title": "Rekoichagua",
+        "description": "Kuatiarogue rekoichagua teramoĩ ojehecháva.",
+        "options": {
+          "": "-- mba'eve --",
+          "content": "Tetepy",
+          "assessment": "Jehechakuaa",
+          "quiz": "Ñeha'ã",
+          "submission": "Ñemondo",
+          "lesson": "Mbo'epy",
+          "module": "Mbo'esyry pehẽ",
+          "task": "Tembiaporã",
+          "activity": "Tembiapo",
+          "project": "Tembiapo guasu",
+          "practice": "Jehekombo'e",
+          "unit": "Peteĩha",
+          "objectives": "Ñembo'e jehupytyrã",
+          "connection": "Ñembojoaju",
+          "knowledge": "¿Reikuaápa?",
+          "strategy": "Ñembo'e rape",
+          "discuss": "Eñomongeta",
+          "listen": "Ehendu",
+          "make": "Ejapo",
+          "observe": "Ehecha",
+          "present": "Ehechauka",
+          "reading": "Moñe'ẽ",
+          "reflect": "Ejepy'amongeta",
+          "research": "Jeheka",
+          "watch": "Ema'ẽ",
+          "write": "Ehai"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Teramoĩ",
+        "description": "Teramoĩ rysýi ojei'ãva kóma rupive."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL joajuha",
+        "description": "URL ojeguerohoha ojehechaukáva kuatiarogue tetepy rangue."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Joajuha ohohápe",
+        "description": "Embojuruja joajuha ovetã peteĩchaguápe térã ovetã pyahúpe.",
+        "options": {
+          "_self": "Ovetã peteĩchagua",
+          "_blank": "Ovetã pyahu"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Oñemoherakuãma",
+        "description": "Kuatiarogue oñemoherakuã'ỹva okañy puruhára pahaguágui."
+      },
+      {
+        "property": "locked",
+        "title": "Emboty kuatiarogue",
+        "description": "Emboty térã embojuruja opaite mba'e ko kuatiaroguépe."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Emyengovia slug ijeheguíva",
+        "description": "Emboty slug ani hag̃ua oñembopyahu ijeheguiete teratee térã ru rehe."
+      },
+      {
+        "property": "slug",
+        "title": "Tape",
+        "description": "URL slug ko kuatiaroguépe g̃uarã."
+      },
+      {
+        "property": "image",
+        "title": "Mba'erechapyrã",
+        "description": "Mba'erechapyrã ohechaukáva kuatiarogue, ojeporúva oĩ ñemohenda ha jehechaukápe."
+      },
+      {
+        "property": "parent",
+        "title": "Ru",
+        "description": "Kuatiarogue ru rape."
+      },
+      {
+        "property": "noderefs",
+        "title": "Tetepy ojoajúva",
+        "description": "Kuatiarogue ojoajúva ko kuatiarogue ndive."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Ñemombe'u",
+        "description": "Ñemombe'u ojeporúva ñembyatýpe ha jeheka mbojojaha (SEO) ñemoporãme."
+      },
+      {
+        "property": "entityType",
+        "title": "Mba'e rekoichagua",
+        "description": "Ijypykuévape kuatiarogue, ndojemoĩriramo ambuéicha.",
+        "options": {
+          "page": "Kuatiarogue (ijypykuéva)",
+          "taxonomy": "Ñemohenda'aty",
+          "taxonomyTerm": "Ñemohenda'aty ñe'ẽ",
+          "region": "Tendaguasu"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ta'ãnga'i",
+        "description": "Ta'ãnga'i ojoajúva ko kuatiarogue ndive tendápe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Sa'y ojoajúva ko kuatiarogue ndive tendápe."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Emokañy poravorãme",
+        "description": "Emokañy ko kuatiarogue poravorãgui ha eñongatu URL."
+      },
+      {
+        "property": "order",
+        "title": "Ñemohenda",
+        "description": "Ñemohenda kuatiarogue ryvy ndive."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Kuatiarogue ñemohenda",
+        "description": "Emyengovia ñemohenda ko kuatiaroguépe añoite."
+      },
+      {
+        "property": "author",
+        "title": "Apohára",
+        "description": "Tapicha omoambue ipaháme ko kuatiarogue puruhára réra."
+      }
+    ]
+  }
+}

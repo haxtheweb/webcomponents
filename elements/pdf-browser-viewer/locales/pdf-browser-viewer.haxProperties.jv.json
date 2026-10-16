@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Pamirsa PDF Browser",
+    "description": "Lebokake berkas PDF sebaris kanthi tata letak kertu lan tombol undhuh opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Lokasi berkas PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Irah-irahan",
+        "description": "Teks irah-irahan kertu."
+      },
+      {
+        "property": "card",
+        "title": "Tata letak kertu",
+        "description": "Tampilake PDF ing kertu kanthi tombol undhuh."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Label undhuh",
+        "description": "Label kanggo tombol undhuh."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Pesen ora didhukung",
+        "description": "Pesen nalika browser ora bisa nampilake berkas PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Pesen pranala ora didhukung",
+        "description": "Teks pranala nalika browser ora bisa nampilake berkas PDF."
+      },
+      {
+        "property": "width",
+        "title": "Amba",
+        "description": "Ambane pamirsa PDF."
+      },
+      {
+        "property": "height",
+        "title": "Dhuwur",
+        "description": "Dhuwure pamirsa PDF."
+      }
+    ]
+  }
+}

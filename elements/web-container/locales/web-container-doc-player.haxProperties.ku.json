@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Lîstikvana belgeyên pêkhateya webê"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Pencereyê veşêre",
+        "description": "Pencereya derketinê veşêre, bikêr e dema armanc tenê termînal be"
+      }
+    ]
+  }
+}

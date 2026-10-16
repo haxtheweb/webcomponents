@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity уйнаткычы",
+    "description": "Unity WebGL уйнаткычы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Максат",
+        "description": "Уен җыелмасына юл."
+      },
+      {
+        "property": "compression",
+        "title": "Кысу ысулы",
+        "description": "Уен ресурслары өчен кысу файлы киңәйтмәсе."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Агым URL адресы",
+        "description": "Агым ресурсларының URL адресы."
+      },
+      {
+        "property": "companyname",
+        "title": "Компания исеме",
+        "description": "Компания исеме."
+      },
+      {
+        "property": "productname",
+        "title": "Продукт исеме",
+        "description": "Уен исеме."
+      },
+      {
+        "property": "productversion",
+        "title": "Продукт версиясе",
+        "description": "Чыгарылыш версиясе."
+      },
+      {
+        "property": "width",
+        "title": "Киндер киңлеге",
+        "description": "Киндернең CSS киңлеге (мәсәлән, px яки em)."
+      },
+      {
+        "property": "height",
+        "title": "Киндер биеклеге",
+        "description": "Киндернең CSS биеклеге (мәсәлән, px яки em)."
+      },
+      {
+        "property": "background",
+        "title": "Киндер фоны",
+        "description": "Киндернең CSS фоны."
+      }
+    ]
+  }
+}

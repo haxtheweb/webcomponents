@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "දිනය",
+    "description": "විස්තර සහිතව දින දර්ශන දිනයක් පෙන්වන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "මාසය",
+        "description": "කාඩ්පතේ පෙන්වන මාසය."
+      },
+      {
+        "property": "date",
+        "title": "මාසයේ දිනය",
+        "description": "මාසයේ දිනය අංකයෙන්."
+      },
+      {
+        "property": "day",
+        "title": "සතියේ දිනය",
+        "description": "සතියේ දිනය පෙළෙන්."
+      },
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "සිදුවීමේ නම."
+      },
+      {
+        "property": "location",
+        "title": "ස්ථානය",
+        "description": "සිදුවීමේ ස්ථානය."
+      },
+      {
+        "property": "startTime",
+        "title": "ආරම්භය",
+        "description": "ආරම්භක වේලාව."
+      },
+      {
+        "property": "endTime",
+        "title": "අවසානය",
+        "description": "අවසන් වේලාව."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "විකල්ප උච්චාරණ වර්ණයක්."
+      },
+      {
+        "property": "dark",
+        "title": "අඳුරු තේමාව",
+        "description": "අඳුරු තේමාව සබල කරන්න."
+      }
+    ]
+  }
+}

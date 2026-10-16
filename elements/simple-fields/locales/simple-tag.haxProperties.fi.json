@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tunniste / pilleri",
+    "description": "Tiivis pillerinmuotoinen nimike valinnaisella korostusvärillä, peruutuspainikkeella tai vaihtokytkimellä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Nimike",
+        "description": "Pillerin sisällä näytettävä teksti."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "SimpleColors-korostusvärin nimi pillerin taustalle.",
+        "options": {
+          "": "-- oletus --",
+          "red": "Punainen",
+          "pink": "Vaaleanpunainen",
+          "purple": "Violetti",
+          "deep-purple": "Syvä violetti",
+          "indigo": "Indigo",
+          "blue": "Sininen",
+          "light-blue": "Vaaleansininen",
+          "cyan": "Syaani",
+          "teal": "Sinivihreä",
+          "green": "Vihreä",
+          "light-green": "Vaaleanvihreä",
+          "lime": "Limetti",
+          "yellow": "Keltainen",
+          "amber": "Meripihka",
+          "orange": "Oranssi",
+          "deep-orange": "Syvä oranssi",
+          "brown": "Ruskea",
+          "blue-grey": "Siniharmaa",
+          "grey": "Harmaa"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automaattinen korostusväri",
+        "description": "Johda korostusväri automaattisesti nimiketekstistä."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Peruutuspainike",
+        "description": "Näytä poisto/peruutus-kuvakepainike pillerin sisällä."
+      },
+      {
+        "property": "readonly",
+        "title": "Vain luku",
+        "description": "Piilota peruutuspainike, jolloin pilleri on vain näyttöä varten."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Vaihdettava",
+        "description": "Tee pilleristä päälle/pois-kytkin, kun painiketta napsautetaan."
+      },
+      {
+        "property": "toggled",
+        "title": "Päällä",
+        "description": "Onko pilleri tällä hetkellä päällä."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Päällä-tilan kuvake",
+        "description": "Kuvake, joka näytetään, kun pilleri on päällä."
+      },
+      {
+        "property": "disabled",
+        "title": "Pois käytöstä",
+        "description": "Poista vuorovaikutus pillerin kanssa käytöstä."
+      }
+    ]
+  }
+}

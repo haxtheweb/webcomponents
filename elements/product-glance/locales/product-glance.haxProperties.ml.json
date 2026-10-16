@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ഉൽപ്പന്ന ഒറ്റനോട്ടം",
+    "description": "ദ്രുത ഉൽപ്പന്ന അവലോകന ബ്ലോക്ക്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ഐക്കൺ",
+        "description": "ആശയത്തെ പ്രതിനിധീകരിക്കുന്ന ഐക്കൺ."
+      },
+      {
+        "property": "title",
+        "title": "ശീർഷകം",
+        "description": "ഒറ്റനോട്ടത്തിൽ പ്രധാന ആശയം."
+      },
+      {
+        "property": "subtitle",
+        "title": "ഉപശീർഷകം",
+        "description": "അധിക വിശദാംശം."
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "ഐക്കണിനുള്ള ആക്സന്റ് നിറം."
+      }
+    ]
+  }
+}

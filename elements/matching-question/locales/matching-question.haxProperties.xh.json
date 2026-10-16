@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Umbuzo wokuDibanisa",
+    "description": "Umsebenzi wokudibanisa ngokurhuqa nokulahla odibanisa izikhuthazi neempendulo ezichanekileyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Umbuzo",
+        "description": "Umbuzo wabasebenzisi. Phawula iindawo zokulahla, emva koko udwelise iimpendulo de kufike kwindawo elandelayo."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ifomathi yokumakisha",
+        "description": "OER Schema: ifomathi yokumakisha yolu vavanyo (umz. amanqaku, unobumba, ipesenti, ukugqitywa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Injongo yokufunda",
+        "description": "OER Schema: injongo yokufunda enxulumene nolu vavanyo."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikhosi",
+        "description": "OER Schema: ikhosi olu vavanyo lwenzelwe yona."
+      },
+      {
+        "property": "answers",
+        "title": "Iimpendulo"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Igama lekwizi",
+        "description": "Igama lekwizi elisetyenziselwa ukuchonga kwe-xAPI kwiinkqubo zohlalutyo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Ruwakuy unancha",
+    "description": "Ruwakuy unancha componente."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV rikch'a",
+        "description": "TV-pi rikukuq rikch'a."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Unanchapa k'uchunpi rikukuq logo."
+      },
+      {
+        "property": "title",
+        "title": "Sutichay",
+        "description": "Unanchapa hanaqninpi rikukuq sutichay."
+      },
+      {
+        "property": "name",
+        "title": "Suti",
+        "description": "Unanchapi rikukuq suti."
+      },
+      {
+        "property": "position",
+        "title": "Kargu",
+        "description": "Runapa ruraynin utaq kargun."
+      },
+      {
+        "property": "organization",
+        "title": "Organización",
+        "description": "Runa llamk'asqan organización."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV llimpi",
+        "description": "TV-paq llimpita akllay."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Qhipa utaq qillqapa ñawpaq llimpin."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Muyuq ñit'ina llimpi",
+        "description": "TV-pa muyuq ñit'inankunapa llimpin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Sepia efectota churay."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Yana yuraq",
+        "description": "Yana yuraq efectota churay."
+      }
+    ]
+  }
+}

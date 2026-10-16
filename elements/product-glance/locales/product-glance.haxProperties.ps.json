@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "د محصول لنډه کتنه",
+    "description": "د محصول د چټکې کتنې بلاک."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "آیکن",
+        "description": "هغه آیکن چې د مفهوم استازیتوب کوي."
+      },
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "اصلي مفهوم په یوه کتنه کې."
+      },
+      {
+        "property": "subtitle",
+        "title": "فرعي سرلیک",
+        "description": "اضافي جزییات."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د آیکن تاکیدي رنګ."
+      }
+    ]
+  }
+}

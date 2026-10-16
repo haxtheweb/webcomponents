@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "تصویری اقتباس",
+    "description": "اختیاری تصویر نال سجایا اقتباس۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "گواہی وچ تصویر جوڑو۔"
+      },
+      {
+        "property": "name",
+        "title": "پورا ناں",
+        "description": "گواہی دین والے بندے دا ناں۔"
+      },
+      {
+        "property": "position",
+        "title": "عہدہ یا نوکری دا عنوان",
+        "description": "بندے دا عہدہ یا نوکری دا عنوان۔"
+      },
+      {
+        "slot": "",
+        "title": "اقتباس",
+        "description": "گواہی دین والے دا اقتباس۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Enkorpigi Discord-komunumojn per kunhaviga URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL de rimedo",
+        "description": "URL de rimedo."
+      },
+      {
+        "property": "height",
+        "title": "Alteco",
+        "description": "Alteco de la enhava kadro."
+      },
+      {
+        "property": "width",
+        "title": "Larĝo",
+        "description": "Larĝo de la enhava kadro."
+      }
+    ]
+  }
+}

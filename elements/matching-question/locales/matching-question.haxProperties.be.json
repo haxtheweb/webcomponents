@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Пытанне на супастаўленне",
+    "description": "Заданне на супастаўленне перацягваннем, якое злучае падказкі з правільнымі адказамі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Пытанне",
+        "description": "Пытанне для карыстальнікаў. Пазначце мэты для перацягвання, затым пералічыце адказы да наступнай мэты."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Фармат ацэньвання",
+        "description": "OER Schema: фармат ацэньвання для гэтага задання (напр. балы, літара, працэнт, выкананне)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Вучэбная мэта",
+        "description": "OER Schema: вучэбная мэта, звязаная з гэтым заданнем."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, для якога прызначана гэта заданне."
+      },
+      {
+        "property": "answers",
+        "title": "Адказы"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Назва тэста",
+        "description": "Назва тэста для ідэнтыфікацыі xAPI у сістэмах аналітыкі."
+      }
+    ]
+  }
+}

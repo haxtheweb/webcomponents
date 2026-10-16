@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Seitenabschnitt",
+    "description": "Abschnittscontainer für Seiteninhalte und bildschirmbasierte Layouts."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Gestaltung",
+        "description": "Voreingestellter Stil, der zugehörige Einstellungen aktualisiert."
+      },
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Hintergrundmedien für den Abschnitt."
+      },
+      {
+        "property": "bg",
+        "title": "Hintergrundfarbe",
+        "description": "Hintergrundfarbe, wenn kein Bild festgelegt ist."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Scroll-Schaltfläche",
+        "description": "Eine Schaltfläche anzeigen, die zum nächsten Abschnitt scrollt."
+      },
+      {
+        "property": "fold",
+        "title": "Falz anzeigen",
+        "description": "Einen visuellen Falz am unteren Rand des Abschnitts anzeigen."
+      },
+      {
+        "property": "full",
+        "title": "Vollbildgröße",
+        "description": "Die Bildschirmhöhe des Betrachters ausfüllen."
+      },
+      {
+        "property": "filter",
+        "title": "Filter anwenden",
+        "description": "Einen visuellen Filter auf das Hintergrundbild anwenden."
+      },
+      {
+        "slot": "",
+        "title": "Inhalt",
+        "description": "Inhalt des Abschnitts."
+      },
+      {
+        "slot": "entice",
+        "title": "Anreiz",
+        "description": "Optionaler Anreiz-Inhalt."
+      },
+      {
+        "slot": "buttons",
+        "title": "Schaltflächen",
+        "description": "Schaltflächengruppe unterhalb des Textes."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ankertext",
+        "description": "In der Navigation angezeigte Ankerbeschriftung."
+      }
+    ]
+  }
+}

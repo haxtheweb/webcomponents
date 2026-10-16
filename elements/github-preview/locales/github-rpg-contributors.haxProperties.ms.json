@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Senarai penyumbang GitHub",
+    "description": "Dipaparkan sebagai watak RPG menggunakan GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisasi",
+        "description": "Nama organisasi daripada github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repositori",
+        "description": "Nama repositori daripada github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Had",
+        "description": "Hadkan bilangan penyumbang yang dipaparkan."
+      }
+    ]
+  }
+}

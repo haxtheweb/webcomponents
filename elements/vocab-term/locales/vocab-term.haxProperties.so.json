@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Erayo",
+    "description": "Erey qaamuus."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Erey"
+      },
+      {
+        "property": "information",
+        "title": "Qeexid",
+        "description": "Qeexidda muuqata marka ereyga la gujiyo."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "Ku muuji qeexidda popover halkii gudaha qoraalka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Xiriiriyeyaal",
+        "description": "Liis xiriiriyeyaal dheeraad ah oo la xiriira ereygan."
+      }
+    ]
+  }
+}

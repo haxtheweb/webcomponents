@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Sorteringsspørsmål",
+    "description": "Sorter elementer i riktig rekkefølge."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spørsmål",
+        "description": "Spørsmålsoverskrift."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vurderingsformat",
+        "description": "OER Schema: vurderingsformat for denne vurderingen (f.eks. poeng, bokstav, prosent, fullført)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurderingen."
+      },
+      {
+        "property": "forCourse",
+        "title": "Emne",
+        "description": "OER Schema: emnet denne vurderingen er beregnet for."
+      },
+      {
+        "property": "answers",
+        "title": "Svar",
+        "description": "Rekkefølgen på svarene definerer riktig sekvens."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn på quizen",
+        "description": "Quiznavn brukt til xAPI-identifikasjon i analysesystemer."
+      }
+    ]
+  }
+}

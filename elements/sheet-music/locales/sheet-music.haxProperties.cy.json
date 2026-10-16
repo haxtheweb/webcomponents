@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Cerddoriaeth ddalen",
+    "description": "Yn dangos ac yn chwarae cerddoriaeth ddalen, tabiau gitâr a nodiant sgôr drwy alphaTex neu MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Nodiant AlphaTex",
+        "description": "Marcio alphaTex mewnol ar gyfer y gerddoriaeth ddalen. Golygwch yn uniongyrchol i ysgrifennu nodiant; caiff ei storio mewn templed fel bod y bylchau'n cael eu cadw."
+      },
+      {
+        "property": "source",
+        "title": "Ffeil sgôr",
+        "description": "Uwchlwythwch neu ddolennwch at ffeil MusicXML (.xml/.musicxml/.mxl) neu Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Yn diystyru alphaTex mewnol pan fydd wedi'i gosod."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Chwarae sain",
+        "description": "Ymlaen yn ddiofyn - gwrandewch ar y gerddoriaeth ddalen yn cael ei chwarae drwy'r syntheseinydd mewnol. Diffoddwch ar gyfer modd gwylio yn unig (heb sain)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Dangos opsiynau dangos",
+        "description": "Dangos botymau chwyddo, ymestyn a chynllun ar far y chwaraewr."
+      },
+      {
+        "property": "showExport",
+        "title": "Dangos botymau allforio",
+        "description": "Dangos botymau llwytho MIDI i lawr ac argraffu/PDF ar far y chwaraewr."
+      }
+    ]
+  }
+}

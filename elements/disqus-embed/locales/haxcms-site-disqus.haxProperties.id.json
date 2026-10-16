@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Komentar Disqus",
+    "description": "Integrasi dengan layanan web komentar Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Nama pendek",
+        "description": "Nama pendek properti di Disqus"
+      }
+    ]
+  }
+}

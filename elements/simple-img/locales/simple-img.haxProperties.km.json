@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "រូបភាពសាមញ្ញ",
+    "description": "កែច្នៃរូបភាពដោយប៉ារ៉ាម៉ែត្រសាមញ្ញ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ប្រភព",
+        "description": "URL ប្រភពរូបភាព។"
+      },
+      {
+        "property": "height",
+        "title": "កម្ពស់",
+        "description": "កម្ពស់រូបភាពជាជម្រើស។"
+      },
+      {
+        "property": "width",
+        "title": "ទទឹង",
+        "description": "ទទឹងរូបភាពជាជម្រើស។"
+      },
+      {
+        "property": "alt",
+        "title": "អត្ថបទជំនួស",
+        "description": "មានប្រយោជន៍សម្រាប់កម្មវិធីអានអេក្រង់ និង SEO ប្រសើរជាងមុន។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "គុណភាព",
+        "description": "គុណភាពរូបភាពពេលបង្កើត (តែ JPEG)។"
+      },
+      {
+        "property": "fetchpriority",
+        "title": "អាទិភាពទាញយក",
+        "description": "ការណែនាំដំណើរការសម្រាប់កម្មវិធីរុករកទំនើប។",
+        "options": {
+          "auto": "ស្វ័យប្រវត្តិ",
+          "high": "ខ្ពស់",
+          "low": "ទាប"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "វិធីឌិកូដ",
+        "description": "ការណែនាំដំណើរការសម្រាប់ការបង្ហាញរូបភាពក្នុងកម្មវិធីរុករកទំនើប។",
+        "options": {
+          "auto": "ស្វ័យប្រវត្តិ",
+          "async": "អសមកាល"
+        }
+      }
+    ]
+  }
+}

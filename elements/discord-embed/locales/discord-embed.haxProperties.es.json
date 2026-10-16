@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Inserta comunidades de Discord a partir de una URL para compartir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL del recurso",
+        "description": "URL del recurso."
+      },
+      {
+        "property": "height",
+        "title": "Altura",
+        "description": "Altura del marco de contenido."
+      },
+      {
+        "property": "width",
+        "title": "Ancho",
+        "description": "Ancho del marco de contenido."
+      }
+    ]
+  }
+}

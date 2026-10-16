@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Luajtës 3D",
+    "description": "Luajtës skedarësh 3D / realiteti i shtuar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Burimi",
+        "description": "URL-ja për këtë skedar AR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Pozicioni X i elementit në AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Pozicioni Y i elementit në AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Pozicioni Z i elementit në AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Ngjyra e qiellit",
+        "description": "Zgjidh ngjyrën e qiellit në skenë."
+      }
+    ]
+  }
+}

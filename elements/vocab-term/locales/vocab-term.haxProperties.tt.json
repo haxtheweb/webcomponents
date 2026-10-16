@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Сүзлек",
+    "description": "Сүзлек термины."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Термин"
+      },
+      {
+        "property": "information",
+        "title": "Билгеләмә",
+        "description": "Терминга басканда күрсәтелә торган билгеләмә."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Калкып чыга торган тәрәзә",
+        "description": "Билгеләмәне текст эчендә түгел, калкып чыга торган тәрәзәдә күрсәтергә."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Сылтамалар",
+        "description": "Бу термин белән бәйле өстәмә сылтамалар исемлеге."
+      }
+    ]
+  }
+}

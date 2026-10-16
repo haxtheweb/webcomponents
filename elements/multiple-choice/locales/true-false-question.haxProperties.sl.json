@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Vprašanje drži / ne drži",
+    "description": "Vprašanje drži ali ne drži"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vprašanje",
+        "description": "Vprašanje, na katerega naj odgovorijo uporabniki."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Pravilni odgovor"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ime kviza",
+        "description": "Ime kviza, posredovano za identifikacijo tega elementa v okoljih, ki jih poganja xAPI"
+      }
+    ]
+  }
+}

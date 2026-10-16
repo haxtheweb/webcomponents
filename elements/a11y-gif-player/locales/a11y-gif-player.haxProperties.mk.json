@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Направете ги анимираните GIF-слики пристапни."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Анимиран GIF",
+        "description": "URL на анимираниот GIF."
+      },
+      {
+        "property": "alt",
+        "title": "Алтернативен текст",
+        "description": "Алтернативен текст за сликата."
+      },
+      {
+        "property": "longdesc",
+        "title": "Долг опис",
+        "description": "Долг опис на GIF-от за пристапност."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Статична слика",
+        "description": "URL на статична верзија на GIF-от."
+      }
+    ]
+  }
+}

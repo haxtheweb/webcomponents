@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "بیرونی ویب مواد کو iframe میں ایمبیڈ کریں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "وسیلے کا URL",
+        "description": "وسیلے کا URL۔"
+      },
+      {
+        "property": "height",
+        "title": "اونچائی",
+        "description": "Iframe کی اونچائی۔"
+      },
+      {
+        "property": "width",
+        "title": "چوڑائی",
+        "description": "Iframe کی چوڑائی۔"
+      }
+    ]
+  }
+}

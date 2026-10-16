@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Rând de colecție",
+    "description": "Element de tip rând pentru o listă de colecție, cu text, link, pictogramă, etichete și imagine opțională."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "URL-ul de destinație pentru acest rând."
+      },
+      {
+        "property": "image",
+        "title": "Imagine",
+        "description": "Imaginea rândului."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Text alternativ care descrie imaginea."
+      },
+      {
+        "property": "line1",
+        "title": "Linia 1",
+        "description": "Prima linie de text."
+      },
+      {
+        "property": "line2",
+        "title": "Linia 2",
+        "description": "A doua linie de text."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Pictogramă",
+        "description": "Pictograma care reprezintă rândul."
+      },
+      {
+        "property": "saturate",
+        "title": "Efect de saturație",
+        "description": "Modifică saturația imaginii la focalizare."
+      },
+      {
+        "property": "tags",
+        "title": "Etichete",
+        "description": "Listă de etichete separate prin virgulă."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare",
+        "description": "Culoarea folosită pentru pictogramă și etichete."
+      }
+    ]
+  }
+}

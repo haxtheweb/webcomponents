@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "එකතු පේළිය",
+    "description": "පෙළ, සබැඳිය, නිරූපකය, ටැග සහ විකල්ප රූපයක් සහිත, එකතු ලැයිස්තුවක් තුළ භාවිතයට පේළි-ශෛලියේ අයිතමයක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "සබැඳිය",
+        "description": "මෙම පේළිය සඳහා ගමනාන්ත URL."
+      },
+      {
+        "property": "image",
+        "title": "රූපය",
+        "description": "පේළිය සඳහා රූපය."
+      },
+      {
+        "property": "alt",
+        "title": "විකල්ප පෙළ",
+        "description": "රූපය විස්තර කරන විකල්ප පෙළ."
+      },
+      {
+        "property": "line1",
+        "title": "පේළිය 1",
+        "description": "පෙළෙහි පළමු පේළිය."
+      },
+      {
+        "property": "line2",
+        "title": "පේළිය 2",
+        "description": "පෙළෙහි දෙවන පේළිය."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "නිරූපකය",
+        "description": "පේළිය නියෝජනය කරන නිරූපකය."
+      },
+      {
+        "property": "saturate",
+        "title": "සංතෘප්ති ප්‍රයෝගය",
+        "description": "පරිශීලක නාභිගත කිරීමේදී රූපයේ සංතෘප්තිය වෙනස් කරන්න."
+      },
+      {
+        "property": "tags",
+        "title": "ටැග",
+        "description": "කොමා වලින් වෙන් කළ ටැග ලැයිස්තුව."
+      },
+      {
+        "property": "accentColor",
+        "title": "වර්ණය",
+        "description": "නිරූපකය සහ ටැග සඳහා භාවිත වර්ණය."
+      }
+    ]
+  }
+}

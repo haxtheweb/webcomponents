@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX పద కళ",
+    "description": "HAX కోసం లోగో అంశం, సహజంగానే HAX-సామర్థ్యం గల అంశం."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "ఉంచాల్సిన HAX లోగో పరిమాణం",
+        "options": {
+          "mini": "మినీ",
+          "small": "చిన్నది",
+          "normal": "సాధారణ",
+          "large": "పెద్దది"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "లోగోను పెద్ద అక్షరాలకు మార్చాలా వద్దా"
+      }
+    ]
+  }
+}

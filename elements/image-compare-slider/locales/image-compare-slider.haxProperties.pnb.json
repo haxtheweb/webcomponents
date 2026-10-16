@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "تصویر موازنہ",
+    "description": "موازنے لئی اک تصویر نوں دوجی اُتے سرکاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "اُتلی تصویر",
+        "description": "ہیٹھلی تصویر اُتے سرکاوݨ والی اُتلی تصویر۔"
+      },
+      {
+        "property": "topAlt",
+        "title": "اُتلی تصویر دا متبادل متن",
+        "description": "رسائی لئی لازمی متبادل متن۔"
+      },
+      {
+        "property": "bottomSrc",
+        "title": "ہیٹھلی تصویر",
+        "description": "اُتلی تصویر دے ہیٹھاں وکھائی جاوݨ والی ہیٹھلی تصویر۔"
+      },
+      {
+        "property": "bottomAlt",
+        "title": "ہیٹھلی تصویر دا متبادل متن",
+        "description": "رسائی لئی لازمی متبادل متن۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "رویہ",
+        "description": "وائپ موڈ (ڈیفالٹ) یا اُتلی تصویر دی شفافیت والا موڈ چݨو۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "سلائیڈر بار دا رنگ۔"
+      },
+      {
+        "property": "dark",
+        "title": "گوڑھا",
+        "description": "سلائیڈر بار دا رنگ اُلٹا کرو۔"
+      },
+      {
+        "property": "position",
+        "title": "شروعاتی پوزیشن",
+        "description": "0 توں 100 تک شروعاتی پوزیشن۔"
+      }
+    ]
+  }
+}

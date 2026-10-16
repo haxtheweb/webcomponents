@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "गिनती बढ़ाएँ",
+    "description": "दृश्य में स्क्रॉल होने पर लक्ष्य मान तक बढ़ती संख्या को एनिमेट करें।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "अंतिम मान",
+        "description": "वह संख्या जिस तक गिनती करनी है।"
+      },
+      {
+        "property": "start",
+        "title": "प्रारंभिक मान",
+        "description": "वह संख्या जिससे गिनती शुरू करनी है।"
+      },
+      {
+        "property": "duration",
+        "title": "अवधि",
+        "description": "गिनती एनिमेशन में लगने वाले सेकंड।"
+      },
+      {
+        "property": "prefixtext",
+        "title": "उपसर्ग टेक्स्ट",
+        "description": "संख्या से पहले दिखाया जाने वाला टेक्स्ट (जैसे '$')।"
+      },
+      {
+        "property": "suffixtext",
+        "title": "प्रत्यय टेक्स्ट",
+        "description": "संख्या के बाद दिखाया जाने वाला टेक्स्ट (जैसे '%')।"
+      },
+      {
+        "slot": "prefix",
+        "title": "उपसर्ग स्लॉट",
+        "description": "संख्या से पहले वैकल्पिक स्लॉट सामग्री।"
+      },
+      {
+        "slot": "suffix",
+        "title": "प्रत्यय स्लॉट",
+        "description": "संख्या के बाद वैकल्पिक स्लॉट सामग्री।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "दशमलव स्थान",
+        "description": "प्रदर्शित किए जाने वाले दशमलव स्थानों की संख्या।"
+      },
+      {
+        "property": "separator",
+        "title": "हज़ार विभाजक",
+        "description": "हज़ारों के समूहों को अलग करने वाला वर्ण।"
+      },
+      {
+        "property": "decimal",
+        "title": "दशमलव वर्ण",
+        "description": "दशमलव बिंदु के लिए प्रयुक्त वर्ण।"
+      },
+      {
+        "property": "noeasing",
+        "title": "कोई ईज़िंग नहीं",
+        "description": "ईज़िंग अक्षम करें ताकि गिनती रैखिक हो।"
+      }
+    ]
+  }
+}

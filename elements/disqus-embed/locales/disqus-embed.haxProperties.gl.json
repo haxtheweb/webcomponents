@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Incrusta comentarios de Disqus nunha páxina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Nome curto",
+        "description": "O nome curto do sitio, que determina o servidor do script de Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL da páxina",
+        "description": "O URL da páxina á que está asociado o fío de comentarios."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Identificador da páxina",
+        "description": "O identificador único do fío de comentarios da páxina."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Título da páxina",
+        "description": "O título da páxina á que está asociado o fío de comentarios."
+      },
+      {
+        "property": "loadingText",
+        "title": "Texto de carga",
+        "description": "Texto que se anuncia mentres se cargan os comentarios."
+      },
+      {
+        "property": "lang",
+        "title": "Idioma",
+        "description": "Código de idioma para a interface de Disqus, p. ex. en."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Bandhingake gambar",
+    "description": "Geser siji gambar ing ndhuwur gambar liyane kanggo mbandhingake."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Gambar ndhuwur",
+        "description": "Gambar ndhuwur sing digeser ing sadhuwure gambar ngisor."
+      },
+      {
+        "property": "topAlt",
+        "title": "Teks alt gambar ndhuwur",
+        "description": "Teks alt wajib kanggo aksesibilitas."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Gambar ngisor",
+        "description": "Gambar ngisor sing katon ing sangisore gambar ndhuwur."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Teks alt gambar ngisor",
+        "description": "Teks alt wajib kanggo aksesibilitas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Prilaku",
+        "description": "Pilih mode usap (gawan) utawa mode opasitas gambar ndhuwur."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna Aksen",
+        "description": "Werna bilah geser."
+      },
+      {
+        "property": "dark",
+        "title": "Peteng",
+        "description": "Walik werna bilah geser."
+      },
+      {
+        "property": "position",
+        "title": "Posisi Wiwitan",
+        "description": "Posisi wiwitan saka 0 nganti 100."
+      }
+    ]
+  }
+}

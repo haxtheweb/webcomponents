@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Pregunta de relacionar",
+    "description": "Actividade de relacionar arrastrando e soltando que emparella enunciados coas súas respostas correctas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Pregunta para os usuarios. Marca os destinos onde soltar e despois enumera as respostas ata o seguinte destino."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de cualificación",
+        "description": "OER Schema: formato de cualificación desta avaliación (p. ex. puntos, letra, porcentaxe, completado)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obxectivo de aprendizaxe",
+        "description": "OER Schema: obxectivo de aprendizaxe asociado a esta avaliación."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso ao que se destina esta avaliación."
+      },
+      {
+        "property": "answers",
+        "title": "Respostas"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome do cuestionario",
+        "description": "Nome do cuestionario usado para a identificación xAPI en sistemas de analítica."
+      }
+    ]
+  }
+}

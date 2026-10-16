@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ofbyldingsferliking",
+    "description": "Skow ien ôfbylding oer in oare hinne om se te fergelykjen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Boppeste ôfbylding",
+        "description": "Boppeste ôfbylding om oer de ûnderste ôfbylding te skowen."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alt-tekst boppeste ôfbylding",
+        "description": "Ferplichte alt-tekst foar tagonklikens."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Underste ôfbylding",
+        "description": "Underste ôfbylding dy't ûnder de boppeste ôfbylding toand wurdt."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alt-tekst ûnderste ôfbylding",
+        "description": "Ferplichte alt-tekst foar tagonklikens."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Gedrach",
+        "description": "Kies feemodus (standert) of trochsichtigensmodus foar de boppeste ôfbylding."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Kleur fan de skowbalke."
+      },
+      {
+        "property": "dark",
+        "title": "Tsjuster",
+        "description": "De kleur fan de skowbalke omkeare."
+      },
+      {
+        "property": "position",
+        "title": "Begjinposysje",
+        "description": "Begjinposysje fan 0 oant 100."
+      }
+    ]
+  }
+}

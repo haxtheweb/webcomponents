@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Basit Görsel",
+    "description": "Görselleri basit parametrelerle düzenleyin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Kaynak",
+        "description": "Görsel kaynağı URL'si."
+      },
+      {
+        "property": "height",
+        "title": "Yükseklik",
+        "description": "İsteğe bağlı görsel yüksekliği."
+      },
+      {
+        "property": "width",
+        "title": "Genişlik",
+        "description": "İsteğe bağlı görsel genişliği."
+      },
+      {
+        "property": "alt",
+        "title": "Alt metin",
+        "description": "Ekran okuyucular ve daha iyi SEO için yararlıdır."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kalite",
+        "description": "Oluşturulurken görsel kalitesi (yalnızca JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Getirme Önceliği",
+        "description": "Modern tarayıcılar için performans ipucu.",
+        "options": {
+          "auto": "Otomatik",
+          "high": "Yüksek",
+          "low": "Düşük"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Kod çözme yöntemi",
+        "description": "Modern tarayıcılarda görsel işleme için performans ipucu.",
+        "options": {
+          "auto": "Otomatik",
+          "async": "Eşzamansız"
+        }
+      }
+    ]
+  }
+}

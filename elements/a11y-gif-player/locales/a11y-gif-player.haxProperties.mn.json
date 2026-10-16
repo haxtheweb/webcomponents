@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Хөдөлгөөнт GIF-ийг хүртээмжтэй болгох."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Хөдөлгөөнт GIF",
+        "description": "Хөдөлгөөнт GIF-ийн URL."
+      },
+      {
+        "property": "alt",
+        "title": "Орлуулах текст",
+        "description": "Зургийн орлуулах текст."
+      },
+      {
+        "property": "longdesc",
+        "title": "Дэлгэрэнгүй тайлбар",
+        "description": "Хүртээмжид зориулсан GIF-ийн дэлгэрэнгүй тайлбар."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Хөдөлгөөнгүй зураг",
+        "description": "GIF-ийн хөдөлгөөнгүй хувилбарын URL."
+      }
+    ]
+  }
+}

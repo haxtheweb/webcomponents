@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Ümbris Spotify mängija manustamiseks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Allikas",
+        "description": "Spotify manustamis- või jagamislink."
+      },
+      {
+        "property": "theme",
+        "title": "Teema",
+        "description": "Mängija taustavärvi teema.",
+        "options": {
+          "": "Vaikimisi",
+          "0": "Must"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Suurus",
+        "description": "Mängija suurus.",
+        "options": {
+          "normal": "Vaikimisi",
+          "compact": "Kompaktne"
+        }
+      }
+    ]
+  }
+}

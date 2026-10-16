@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "ټګ / ګولۍ",
+    "description": "د ګولۍ په بڼه یو کوچنی لیبل له اختیاري تاکیدي رنګ، لغوه تڼۍ یا بدلوونکي سره."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "لیبل",
+        "description": "هغه متن چې د ګولۍ دننه ښودل کېږي."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د ګولۍ د شالید لپاره د SimpleColors تاکیدي رنګ نوم.",
+        "options": {
+          "": "-- ډیفالټ --",
+          "red": "سور",
+          "pink": "ګلابي",
+          "purple": "ارغواني",
+          "deep-purple": "تیاره ارغواني",
+          "indigo": "نیلي",
+          "blue": "آبي",
+          "light-blue": "روښانه آبي",
+          "cyan": "فیروزه‌يي",
+          "teal": "تور شین",
+          "green": "شین",
+          "light-green": "روښانه شین",
+          "lime": "لیمویي",
+          "yellow": "ژېړ",
+          "amber": "کهربايي",
+          "orange": "نارنجي",
+          "deep-orange": "تیاره نارنجي",
+          "brown": "نسواري",
+          "blue-grey": "آبي خړ",
+          "grey": "خړ"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "اتومات تاکیدي رنګ",
+        "description": "تاکیدي رنګ په اتومات ډول د لیبل له متن څخه واخلئ."
+      },
+      {
+        "property": "cancelButton",
+        "title": "د لغوه تڼۍ",
+        "description": "د ګولۍ دننه د لرې کولو/لغوه کولو آیکن تڼۍ وښایئ."
+      },
+      {
+        "property": "readonly",
+        "title": "یوازې د لوستلو",
+        "description": "د لغوه تڼۍ پټه کړئ ترڅو ګولۍ یوازې د ښودلو لپاره وي."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "بدلېږي",
+        "description": "کله چې پر تڼۍ کلیک وشي ګولۍ فعاله/غیر فعاله کړئ."
+      },
+      {
+        "property": "toggled",
+        "title": "فعال شوی",
+        "description": "ایا ګولۍ اوس فعاله ده."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "د فعال حالت آیکن",
+        "description": "هغه آیکن چې کله ګولۍ فعاله وي ښودل کېږي."
+      },
+      {
+        "property": "disabled",
+        "title": "غیر فعال",
+        "description": "له ګولۍ سره تعامل غیر فعال کړئ."
+      }
+    ]
+  }
+}

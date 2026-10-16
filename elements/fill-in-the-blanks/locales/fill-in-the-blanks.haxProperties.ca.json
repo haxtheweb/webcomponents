@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Omple els buits",
+    "description": "Activitat d'avaluació en què l'alumnat completa les paraules que falten en un enunciat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Pregunta a la qual han de respondre els usuaris."
+      },
+      {
+        "property": "statement",
+        "title": "Enunciat",
+        "description": "Enunciat que es convertirà en la interacció de marcar les paraules."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de qualificació",
+        "description": "OER Schema: format de qualificació d'aquesta avaluació (p. ex. punts, lletra, percentatge, compleció)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objectiu d'aprenentatge",
+        "description": "OER Schema: objectiu d'aprenentatge associat a aquesta avaluació."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curs",
+        "description": "OER Schema: curs al qual s'adreça aquesta avaluació."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nom del qüestionari",
+        "description": "Nom del qüestionari que es passa per identificar aquest element en entorns basats en xAPI"
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Znak Polaris",
+    "description": "Wyświetl znak identyfikacyjny PSU z opcjonalną nazwą kolegium i docelowym URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Nazwa kolegium",
+        "description": "Nazwa wyświetlana obok znaku."
+      },
+      {
+        "property": "name2",
+        "title": "Nazwa kolegium 2",
+        "description": "Druga nazwa wyświetlana pod pierwszą nazwą kolegium."
+      },
+      {
+        "property": "name3",
+        "title": "Nazwa kolegium 3",
+        "description": "Trzecia nazwa wyświetlana pod drugą nazwą kolegium."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Docelowy URL po kliknięciu znaku."
+      },
+      {
+        "property": "type",
+        "title": "Wariant",
+        "description": "Wariant wizualny znaku.",
+        "options": {
+          "default": "Domyślny",
+          "light": "Jasny",
+          "dark": "Ciemny"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Układ pionowy",
+        "description": "Wyświetl trzecią nazwę pod drugą, oddzieloną poziomą linią."
+      }
+    ]
+  }
+}

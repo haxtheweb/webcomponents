@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Orriaren xehetasunak",
+    "description": "Definitu orrien arteko zatiketa bisual bat, CMSek orriak sortzeko erabil dezaketena."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Gaian eta lehen izenburuan erakusten den izenburua."
+      },
+      {
+        "property": "pageType",
+        "title": "Mota",
+        "description": "Orriaren testuinguruaren etiketa bisuala.",
+        "options": {
+          "": "-- bat ere ez --",
+          "content": "Edukia",
+          "assessment": "Ebaluazioa",
+          "quiz": "Galdetegia",
+          "submission": "Bidalketa",
+          "lesson": "Ikasgaia",
+          "module": "Modulua",
+          "task": "Zeregina",
+          "activity": "Jarduera",
+          "project": "Proiektua",
+          "practice": "Praktika",
+          "unit": "Unitatea",
+          "objectives": "Ikaskuntza helburuak",
+          "connection": "Lotura",
+          "knowledge": "Ba al zenekien?",
+          "strategy": "Ikaskuntza estrategia",
+          "discuss": "Eztabaidatu",
+          "listen": "Entzun",
+          "make": "Egin",
+          "observe": "Behatu",
+          "present": "Aurkeztu",
+          "reading": "Irakurketa",
+          "reflect": "Hausnartu",
+          "research": "Ikertu",
+          "watch": "Ikusi",
+          "write": "Idatzi"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Etiketak",
+        "description": "Komaz bereizitako etiketen zerrenda."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Estekaren URLa",
+        "description": "Orriaren edukiaren ordez erakusten den birbideratze URLa."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Estekaren helburua",
+        "description": "Ireki estekak leiho berean edo leiho berri batean.",
+        "options": {
+          "_self": "Leiho berean",
+          "_blank": "Leiho berria"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Argitaratuta",
+        "description": "Argitaratu gabeko orriak ezkutatuta daude azken erabiltzaileentzat."
+      },
+      {
+        "property": "locked",
+        "title": "Blokeatu orria",
+        "description": "Blokeatu edo desblokeatu orri honetako elementu guztiak."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Gainidatzi slug automatikoa",
+        "description": "Blokeatu slug-a izenburuan edo gurasoan oinarritutako eguneratze automatikoetatik."
+      },
+      {
+        "property": "slug",
+        "title": "Bidea",
+        "description": "Orri honen URL slug-a."
+      },
+      {
+        "property": "image",
+        "title": "Multimedia",
+        "description": "Orria adierazten duen multimedia, gai eta ikuspegi batzuetan erabilia."
+      },
+      {
+        "property": "parent",
+        "title": "Gurasoa",
+        "description": "Orri gurasoaren bidea."
+      },
+      {
+        "property": "noderefs",
+        "title": "Lotutako edukia",
+        "description": "Orri honekin lotutako orriak."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Deskribapena",
+        "description": "Bildumetan eta bilatzaileetarako optimizazioan (SEO) erabiltzen den deskribapena."
+      },
+      {
+        "property": "entityType",
+        "title": "Entitate mota",
+        "description": "Lehenespenez orria da, bestela ezarri ezean.",
+        "options": {
+          "page": "Orria (lehenetsia)",
+          "taxonomy": "Taxonomia",
+          "taxonomyTerm": "Taxonomiako terminoa",
+          "region": "Eskualdea"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikonoa",
+        "description": "Gunean orri honi lotutako ikonoa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Gunean orri honi lotutako kolorea."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Ezkutatu menuan",
+        "description": "Ezkutatu orri hau menuetatik, bere URLa mantenduz."
+      },
+      {
+        "property": "order",
+        "title": "Ordena",
+        "description": "Orri anai-arreben araberako ordena."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Orriaren gaia",
+        "description": "Gainidatzi gaia orri honetarako soilik."
+      },
+      {
+        "property": "author",
+        "title": "Egilea",
+        "description": "Orri hau azkena aldatu zuen pertsonaren erabiltzaile-izena."
+      }
+    ]
+  }
+}

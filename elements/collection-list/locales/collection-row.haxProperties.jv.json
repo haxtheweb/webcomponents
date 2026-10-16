@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Baris koleksi",
+    "description": "Item gaya baris kanggo ing njero dhaptar koleksi, kanthi teks, pranala, ikon, tag, lan gambar opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Pranala",
+        "description": "URL tujuan kanggo baris iki."
+      },
+      {
+        "property": "image",
+        "title": "Gambar",
+        "description": "Gambar kanggo baris."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Teks alternatif sing njlentrehake gambar."
+      },
+      {
+        "property": "line1",
+        "title": "Baris 1",
+        "description": "Baris teks kapisan."
+      },
+      {
+        "property": "line2",
+        "title": "Baris 2",
+        "description": "Baris teks kapindho."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon sing makili baris."
+      },
+      {
+        "property": "saturate",
+        "title": "Efek saturasi",
+        "description": "Owahi saturasi gambar nalika fokus pangguna."
+      },
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Dhaptar tag sing dipisah koma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna",
+        "description": "Werna kanggo ikon lan tag."
+      }
+    ]
+  }
+}

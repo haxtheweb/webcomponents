@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "باہرلا ویب مواد iframe وچ ایمبیڈ کرو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "وسیلے دا URL",
+        "description": "وسیلے دا URL۔"
+      },
+      {
+        "property": "height",
+        "title": "اُچائی",
+        "description": "iframe دی اُچائی۔"
+      },
+      {
+        "property": "width",
+        "title": "چوڑائی",
+        "description": "iframe دی چوڑائی۔"
+      }
+    ]
+  }
+}

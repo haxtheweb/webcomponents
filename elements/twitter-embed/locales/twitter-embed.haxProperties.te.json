@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) ఎంబెడ్",
+    "description": "X నుండి ఒక ట్వీట్‌ను సందర్భంలో పొందుపరచండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ట్వీట్ URL",
+        "description": "పొందుపరచాల్సిన ట్వీట్ యొక్క URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "థీమ్",
+        "description": "X ట్వీట్‌ల కోసం లేత లేదా డార్క్ థీమ్.",
+        "options": {
+          "light": "లేత",
+          "dark": "డార్క్"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "క్లిక్ చేసినప్పుడు పాప్‌అప్‌ను నిరోధించు",
+        "description": "వినియోగదారులు x.com‌లో ట్వీట్‌ను తెరవకుండా నిరోధించండి."
+      }
+    ]
+  }
+}

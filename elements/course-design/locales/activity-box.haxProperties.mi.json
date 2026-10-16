@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pouaka Ngohe",
+    "description": "He poraka upoko iti kua whakarākeitia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ata tohu",
+        "description": "Ata tohu ka whakaaturia i te taha o te pouaka ngohe."
+      },
+      {
+        "property": "tag",
+        "title": "Tūtohu pouaka ngohe",
+        "description": "Tūtohu ka whakaaturia i te pouaka ngohe."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Kaua e Tae",
+        "description": "Kaua e tukuna kia whakataetia te ata tohu."
+      }
+    ]
+  }
+}

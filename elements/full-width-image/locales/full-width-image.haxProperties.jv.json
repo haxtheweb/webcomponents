@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bagean gambar",
+    "description": "Gambar amba kebak sing misahake bagean kaca."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Gambar latar mburi."
+      },
+      {
+        "property": "caption",
+        "description": "Irah-irahan teks."
+      }
+    ]
+  }
+}

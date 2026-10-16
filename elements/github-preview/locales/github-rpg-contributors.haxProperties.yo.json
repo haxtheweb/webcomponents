@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Àtòjọ àwọn olùkópa GitHub",
+    "description": "A fi hàn bí àwọn ẹ̀dá RPG nípasẹ̀ GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Àjọ",
+        "description": "Orúkọ àjọ láti github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Ibi-ìpamọ́",
+        "description": "Orúkọ ibi-ìpamọ́ láti github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Òdiwọ̀n",
+        "description": "Dín iye àwọn olùkópa tí a fi hàn kù."
+      }
+    ]
+  }
+}

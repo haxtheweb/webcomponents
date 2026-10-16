@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Incorpore conteúdo web externo em um iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL do recurso",
+        "description": "URL do recurso."
+      },
+      {
+        "property": "height",
+        "title": "Altura",
+        "description": "Altura do iframe."
+      },
+      {
+        "property": "width",
+        "title": "Largura",
+        "description": "Largura do iframe."
+      }
+    ]
+  }
+}

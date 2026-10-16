@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "ຕາຕະລາງ",
+    "description": "ຂໍ້ມູນແບບຕາຕະລາງສຳລັບເວັບ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "ຫົວແຖວ",
+        "description": "ຖືແຖວທຳອິດເປັນຫົວ."
+      },
+      {
+        "property": "columnHeader",
+        "title": "ຫົວຖັນ",
+        "description": "ຖືຖັນທຳອິດເປັນຫົວ."
+      },
+      {
+        "property": "footer",
+        "title": "ສ່ວນທ້າຍ",
+        "description": "ຖືແຖວສຸດທ້າຍເປັນສ່ວນທ້າຍ."
+      },
+      {
+        "property": "sort",
+        "title": "ຈັດລຽງໄດ້",
+        "description": "ອະນຸຍາດໃຫ້ຈັດລຽງຕາມຄ່າໃນຖັນ."
+      },
+      {
+        "property": "filter",
+        "title": "ອະນຸຍາດໃຫ້ກັ່ນຕອງ",
+        "description": "ອະນຸຍາດໃຫ້ກັ່ນຕອງຕາມຄ່າໃນຖັນ."
+      },
+      {
+        "property": "numericStyles",
+        "title": "ຮູບແບບຕົວເລກ",
+        "description": "ນຳໃຊ້ຮູບແບບຕົວເລກກັບຖັນທີ່ເປັນຕົວເລກ."
+      },
+      {
+        "property": "responsive",
+        "title": "ຕອບສະໜອງຂະໜາດໜ້າຈໍ",
+        "description": "ປັບໂຄງຮ່າງຕາຕະລາງໃນໜ້າຈໍນ້ອຍ."
+      },
+      {
+        "property": "rubricMode",
+        "title": "ໂໝດເກນການໃຫ້ຄະແນນ",
+        "description": "ຕີຄວາມໝາຍຕາຕະລາງນີ້ເປັນ OER Schema Rubric ເພື່ອໃຫ້ສົ່ງອອກ metadata ຂອງ Rubric, RubricScale, RubricCriterion ແລະ RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "ປະເພດເກນການໃຫ້ຄະແນນ",
+        "description": "ຮູບແບບເກນການໃຫ້ຄະແນນທີ່ສົ່ງອອກເປັນ oer:rubricType (ມີຄວາມໝາຍສະເພາະເມື່ອເປີດໂໝດເກນການໃຫ້ຄະແນນ).",
+        "options": {
+          "": "(ບໍ່ມີ)",
+          "analytic": "ແບບວິເຄາະ",
+          "holistic": "ແບບອົງລວມ",
+          "single-point": "ແບບຈຸດດຽວ",
+          "checklist": "ລາຍການກວດສອບ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "ມີຂອບ"
+      },
+      {
+        "property": "condensed",
+        "title": "ຫຍໍ້ແຖວ",
+        "description": "ຫຼຸດຄວາມສູງຂອງແຖວ."
+      },
+      {
+        "property": "striped",
+        "title": "ແຖວສະຫຼັບສີ",
+        "description": "ແຮເງົາແຖວເວັ້ນແຖວ."
+      },
+      {
+        "property": "downloadable",
+        "title": "ປຸ່ມດາວໂຫຼດ",
+        "description": "ເພີ່ມປຸ່ມເພື່ອດາວໂຫຼດຕາຕະລາງ."
+      },
+      {
+        "property": "copyable",
+        "title": "ປຸ່ມສຳເນົາ",
+        "description": "ເພີ່ມປຸ່ມເພື່ອສຳເນົາຂໍ້ມູນ CSV ຂອງຕາຕະລາງ."
+      },
+      {
+        "property": "printable",
+        "title": "ປຸ່ມພິມ",
+        "description": "ເພີ່ມປຸ່ມເພື່ອພິມສະເພາະຕາຕະລາງ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "ຂໍ້ມູນ CSV",
+        "description": "ສ້າງຕາຕະລາງຈາກໄຟລ໌ CSV ທີ່ອັບໂຫຼດ."
+      }
+    ]
+  }
+}

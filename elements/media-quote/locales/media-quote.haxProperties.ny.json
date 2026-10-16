@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Mawu ogwidwa ndi chithunzi",
+    "description": "Chithunzi chokhala ndi mawu ogwidwa, gwero, ndi mawu ofotokoza osankha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Mawu ogwidwa",
+        "description": "Mawu a mawu ogwidwa."
+      },
+      {
+        "slot": "author",
+        "title": "Wolemba",
+        "description": "Wolemba mawu ogwidwa."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Zambiri za wolemba",
+        "description": "Zambiri za wolemba."
+      },
+      {
+        "slot": "caption",
+        "title": "Mawu ofotokoza",
+        "description": "Mawu ofotokoza chithunzi."
+      },
+      {
+        "property": "src",
+        "title": "Gwero la Chithunzi",
+        "description": "Fayilo ya chithunzi yogwiritsidwa ntchito pa mawu ogwidwa."
+      },
+      {
+        "property": "alt",
+        "title": "Mawu Ofotokoza Chithunzi",
+        "description": "Mawu ena ofotokoza chithunzi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera wa khadi."
+      }
+    ]
+  }
+}

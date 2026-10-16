@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D pleyer",
+    "description": "3D fayl / artırılmış reallıq pleyeri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Mənbə",
+        "description": "Bu AR faylının URL-i."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Elementin AR-də X mövqeyi."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Elementin AR-də Y mövqeyi."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Elementin AR-də Z mövqeyi."
+      },
+      {
+        "property": "skyColor",
+        "title": "Səmanın rəngi",
+        "description": "Səhnədəki səmanın rəngini seçin."
+      }
+    ]
+  }
+}

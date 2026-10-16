@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX ñe'ẽ arte",
+    "description": "Logo HAX-pe g̃uarã, mba'e HAX ikatúva ramo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "HAX logo tuichakue oñemoĩtava",
+        "options": {
+          "mini": "Michĩ",
+          "small": "Michĩ",
+          "normal": "Jepiguáva",
+          "large": "Tuicha"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Oñemoambuétapa logo tai tuichápe"
+      }
+    ]
+  }
+}

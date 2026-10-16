@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Qoraalka muusigga",
+    "description": "Muujiya oo shida qoraalka muusigga, tabab gitaar, iyo qoraalka heesaha iyadoo loo marayo alphaTex ama MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Qoraalka AlphaTex",
+        "description": "Calaamadeynta alphaTex ee gudaha ah ee qoraalka muusigga. Si toos ah wax uga beddel si aad u qorto; waxaa lagu kaydiyaa template si meelaha bannaan loo ilaaliyo."
+      },
+      {
+        "property": "source",
+        "title": "Faylka heesta",
+        "description": "Soo geli ama ku xiri fayl MusicXML (.xml/.musicxml/.mxl) ama Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Wuxuu ka mudnaan badan yahay alphaTex gudaha marka la dejiyo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Ciyaarista maqalka",
+        "description": "Caadi ahaan waa daaran yahay - dhegayso qoraalka muusigga oo lagu shiday synthesizer-ka ku dhex dhisan. Dami si aad u daawato oo keliya (maqal la'aan)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Muuji doorashooyinka muujinta",
+        "description": "Muuji badhamada weynaynta, kala-bixinta, iyo qaabka ee bar-ka ciyaaraha."
+      },
+      {
+        "property": "showExport",
+        "title": "Muuji badhamada dhoofinta",
+        "description": "Muuji badhamada soo-dejinta MIDI iyo daabacaadda/PDF ee bar-ka ciyaaraha."
+      }
+    ]
+  }
+}

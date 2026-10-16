@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI vizualizatorius",
+    "description": "Leisti MIDI kontekste su vizualizacija."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Šaltinis",
+        "description": "Leidžiamo failo URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "Vizualizacija",
+        "description": "Muzikos failo vizualizacijos stilius.",
+        "options": {
+          "staff": "Penklinė",
+          "piano-roll": "Fortepijono ritinys",
+          "waterfall": "Fortepijonas + krioklys"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Slėpti krioklį",
+        "description": "Slėpti krintančias natas fortepijono vizualizacijoje."
+      }
+    ]
+  }
+}

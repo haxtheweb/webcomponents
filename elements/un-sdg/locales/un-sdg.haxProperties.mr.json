@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "संयुक्त राष्ट्रांचे शाश्वत विकास ध्येय."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "ध्येय",
+        "description": "UN SDG क्रमांक."
+      },
+      {
+        "property": "colorOnly",
+        "title": "फक्त रंग",
+        "description": "फक्त ध्येयाचा रंग दाखवा."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Kile Polaris",
+    "description": "E hōʻike i kekahi kile Polaris me ka poʻo inoa, ka kikokikona kākoʻo koho, a me ka loulou koho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Kikokikona mua",
+        "description": "Kikokikona nui o ke kile."
+      },
+      {
+        "property": "line2",
+        "title": "Kikokikona lua",
+        "description": "Kikokikona kākoʻo koho."
+      },
+      {
+        "property": "type",
+        "title": "Kaila kile",
+        "description": "Kaila ʻike ʻia o ke kile i hoʻomākaukau mua ʻia.",
+        "options": {
+          "1": "Kaila 1",
+          "2": "Kaila 2",
+          "3": "Kaila 3",
+          "4": "Kaila 4",
+          "5": "Kaila 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Kiʻi kāʻei hope",
+        "description": "URL kiʻi kāʻei hope i hoʻohana ʻia e nā kaila kile hiki ke kiʻi."
+      },
+      {
+        "property": "link",
+        "title": "Loulou",
+        "description": "URL koho e hele ai ka hana o ke kile."
+      }
+    ]
+  }
+}

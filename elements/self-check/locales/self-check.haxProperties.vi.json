@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Tự kiểm tra",
+    "description": "Người dùng có thể hoàn thành bài tự kiểm tra."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Hình ảnh",
+        "description": "Hình ảnh cho bài tự kiểm tra."
+      },
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề của bài tự kiểm tra."
+      },
+      {
+        "property": "alt",
+        "title": "Văn bản thay thế",
+        "description": "Văn bản thay thế cho hình ảnh."
+      },
+      {
+        "slot": "question",
+        "title": "Câu hỏi"
+      },
+      {
+        "slot": "",
+        "title": "Đáp án"
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu chủ đề",
+        "description": "Chọn màu chủ đề từ hệ thống thiết kế.",
+        "options": {
+          "primary": "Chính",
+          "accent": "Nhấn",
+          "success": "Thành công",
+          "warning": "Cảnh báo",
+          "error": "Lỗi",
+          "info": "Thông tin"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mục tiêu học tập",
+        "description": "Tham chiếu mục tiêu học tập được xuất dưới dạng oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Đánh giá",
+        "description": "Tham chiếu hoạt động được xuất dưới dạng oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Liên kết thêm",
+        "description": "Liên kết đến thông tin bổ sung."
+      }
+    ]
+  }
+}

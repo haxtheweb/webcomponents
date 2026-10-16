@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG personajı",
+    "description": "HAX-dan əyləncəli personaj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Ad",
+        "description": "Təsadüfi personaj yaratmaq üçün istifadə olunan söz."
+      },
+      {
+        "property": "hat",
+        "title": "Papaq",
+        "description": "Papaq üslubu.",
+        "options": {
+          "none": "Defolt",
+          "random": "Təsadüfi",
+          "bunny": "Dovşan",
+          "cowboy": "Kovboy",
+          "education": "Təhsil",
+          "construction": "Tikinti",
+          "warning": "Xəbərdarlıq",
+          "watermelon": "Qarpız",
+          "coffee": "Qəhvə",
+          "knight": "Cəngavər",
+          "ninja": "Ninja",
+          "party": "Əyləncə",
+          "error": "Xəta",
+          "edit": "Redaktə"
+        }
+      },
+      {
+        "property": "width",
+        "title": "En",
+        "description": "Personajın piksellə eni."
+      },
+      {
+        "property": "height",
+        "title": "Hündürlük",
+        "description": "Personajın piksellə hündürlüyü."
+      },
+      {
+        "property": "fire",
+        "title": "Alovlanır?",
+        "description": "Personajın alovlanıb-alovlanmadığı."
+      },
+      {
+        "property": "walking",
+        "title": "Yeriyir?",
+        "description": "Yeriş animasiyası; alovlandıqda qaçır."
+      }
+    ]
+  }
+}

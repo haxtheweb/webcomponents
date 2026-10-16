@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Frábær sprenging",
+    "description": "Gagnvirk sprengingarhreyfimynd með valfrjálsum hljóðáhrifum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Stærð",
+        "description": "Stilla stærð sprengingarinnar.",
+        "options": {
+          "tiny": "Örsmá",
+          "small": "Lítil",
+          "medium": "Miðlungs",
+          "large": "Stór",
+          "epic": "Risavaxin"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Litur",
+        "description": "Stilla litaþema sprengingarinnar.",
+        "options": {
+          "": "Sjálfgefið",
+          "red": "Rauður",
+          "blue": "Blár",
+          "purple": "Fjólublár",
+          "orange": "Appelsínugulur",
+          "yellow": "Gulur"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Hljóðáhrif",
+        "description": "Virkja hljóðáhrif."
+      },
+      {
+        "property": "resetSound",
+        "title": "Endurstilla hljóð",
+        "description": "Spila hljóðið frá byrjun í hvert skipti."
+      },
+      {
+        "property": "image",
+        "title": "Sérsniðin mynd",
+        "description": "Valfrjálst URL fyrir sérsniðna sprengingarmynd."
+      },
+      {
+        "property": "sound",
+        "title": "Sérsniðið hljóð",
+        "description": "Valfrjálst URL fyrir sérsniðin hljóðáhrif."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Óvirkt",
+        "description": "Gera öll samskipti óvirk."
+      }
+    ]
+  }
+}

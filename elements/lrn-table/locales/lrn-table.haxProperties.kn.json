@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV ಕೋಷ್ಟಕ",
+    "description": "CSV ಫೈಲ್ ಎಲ್ಲೇ ಇದ್ದರೂ ಅದರಿಂದ ಕೋಷ್ಟಕವನ್ನು ರಚಿಸಬಹುದು."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "ಮೂಲ",
+        "description": "ಈ CSV ಫೈಲ್‌ನ URL."
+      },
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ರಚಿಸಬೇಕಾದ ಕೋಷ್ಟಕದ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "description",
+        "title": "ವಿವರಣೆ",
+        "description": "ಕೋಷ್ಟಕದ ಡೇಟಾದ ಉತ್ತಮ ಪ್ರವೇಶಯೋಗ್ಯತೆಗಾಗಿ ಹೆಚ್ಚು ವಿವರವಾದ ವಿವರಣೆ."
+      }
+    ]
+  }
+}

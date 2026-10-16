@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Thẻ",
+    "description": "Danh sách thẻ đơn giản để hiển thị trên trang."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Thẻ",
+        "description": "Danh sách thẻ phân tách bằng dấu phẩy."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Màu nhấn tự động",
+        "description": "Tự động đặt màu nhấn dựa trên nhãn."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu sắc",
+        "description": "Màu cho các thẻ."
+      }
+    ]
+  }
+}

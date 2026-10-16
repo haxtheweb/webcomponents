@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "અવતરણ બ્લૉક",
+    "description": "શૈલીયુક્ત અવતરણ બ્લૉક."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "સંદર્ભ",
+        "description": "સંદર્ભ લખાણ."
+      },
+      {
+        "property": "alt",
+        "title": "વૈકલ્પિક લખાણ",
+        "description": "છબી માટેનું વૈકલ્પિક લખાણ."
+      },
+      {
+        "property": "image",
+        "title": "છબી",
+        "description": "અવતરણ સાથે બતાવાતી છબી."
+      }
+    ]
+  }
+}

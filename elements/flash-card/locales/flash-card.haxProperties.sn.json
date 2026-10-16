@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kadhi rekudzidza",
+    "description": "Dzidzira pfungwa nemakadhi ekudzidza ane kumberi nekumashure."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Kumberi kweKadhi",
+        "description": "Mavara ekumberi kana mubvunzo."
+      },
+      {
+        "slot": "back",
+        "title": "Kumashure kweKadhi",
+        "description": "Mhinduro inotarisirwa."
+      },
+      {
+        "property": "imgSource",
+        "title": "Kwakabva Mufananidzo",
+        "description": "Faira remufananidzo rinoshandiswa pakadhi. Rinotsiva Shoko reMufananidzo."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Mhando yeChiito",
+        "description": "OER Schema: mhando yechiito chinosanganisirwa mukudzidzira uku (semuenzaniso Kuverenga, Kunyora, Kugadzira, Kutsvakurudza, Kuteerera, Kutarisa, Kufungisisa, Kukurukura, Kucherechedza, Kuratidza, Kuongorora)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Chinangwa cheKudzidza",
+        "description": "OER Schema: ID kana URL yechinangwa chekudzidza chinotsigirwa nekudzidzira uku."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Rima",
+        "description": "Shandisa mamiriro erima."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rwekusimbisa rwekadhi."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Shoko reMufananidzo",
+        "description": "Shoko remufananidzo usina kurongwa. Rinotsiviwa neKwakabva Mufananidzo."
+      }
+    ]
+  }
+}

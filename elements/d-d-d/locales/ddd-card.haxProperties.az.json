@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kart",
+    "description": "DDD dizayn sistemi ilə üslublanmış kart komponenti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Şəkil",
+        "description": "İxtiyari şəkil."
+      },
+      {
+        "property": "alt",
+        "title": "Şəklin alt mətni",
+        "description": "Şəkli təsvir edən alternativ mətn."
+      },
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Kartın başlığı."
+      },
+      {
+        "slot": "",
+        "title": "Məzmun",
+        "description": "Kartın məzmun sahəsi."
+      },
+      {
+        "property": "href",
+        "title": "Keçid",
+        "description": "Düymə keçidinin URL-i."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Düymənin etiketi."
+      },
+      {
+        "property": "noArrow",
+        "title": "Oxsuz",
+        "description": "Düymənin oxunu gizlət."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Keçid: hədəf",
+        "description": "Keçidin harada açılacağı.",
+        "options": {
+          "": "Eyni pəncərə",
+          "_blank": "Yeni pəncərə - _blank",
+          "_top": "Üst pəncərə - _top",
+          "_parent": "Ana pəncərə - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Keçid: rel",
+        "description": "Keçid verilən resurs ilə cari sənəd arasındakı əlaqə."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus комментарийлери",
+    "description": "Disqus комментарий веб-кызматы менен интеграция"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Кыска аталыш",
+        "description": "Disqus'тагы касиеттин кыска аталышы"
+      }
+    ]
+  }
+}

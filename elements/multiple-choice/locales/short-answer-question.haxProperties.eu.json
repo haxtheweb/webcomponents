@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Erantzun laburreko galdera",
+    "description": "Eskatu erabiltzaileari oinarrizko galdera bati erantzuteko"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Galdera",
+        "description": "Erabiltzaileek erantzun beharreko galdera."
+      },
+      {
+        "property": "answers",
+        "title": "Erantzun posibleak"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Galdetegiaren izena",
+        "description": "xAPI bidezko inguruneetan elementu hau identifikatzeko pasatzen den galdetegiaren izena"
+      }
+    ]
+  }
+}

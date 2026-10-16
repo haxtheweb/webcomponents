@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Kutaa suuraa",
+    "description": "Suuraa bal'ina guutuu kan kutaa fuulaa addaan qoodu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Suuraa duubaa."
+      },
+      {
+        "property": "caption",
+        "description": "Mata-duree barreeffamaa."
+      }
+    ]
+  }
+}

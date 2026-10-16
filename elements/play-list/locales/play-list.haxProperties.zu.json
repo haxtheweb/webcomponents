@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Uhlu lokudlala",
+    "description": "Bonisa noma yiluphi uhlobo lokuqukethwe ohlwini lokudlala."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Umthombo",
+        "description": "Okuqukethwe okuboniswa ohlwini lokudlala."
+      },
+      {
+        "property": "edit",
+        "title": "Imodi yokuhlela",
+        "description": "Shintsha phakathi kwemodi yokuhlela neyokubuka kuqala yohlu lokudlala."
+      },
+      {
+        "property": "navigation",
+        "title": "Ukuzulazula",
+        "description": "Bonisa izinkinobho zokuzulazula phambili nangemuva."
+      },
+      {
+        "property": "pagination",
+        "title": "Ukwahlukanisa amakhasi",
+        "description": "Bonisa amachashazi okwahlukanisa amakhasi."
+      },
+      {
+        "property": "orientation",
+        "title": "Ukuma",
+        "description": "Ukuma kwezilayidi.",
+        "options": {
+          "horizontal": "Okuvundlile",
+          "vertical": "Okuqondile"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Isilayidi sokuqala",
+        "description": "Inkomba yesilayidi okuzogxilwa kuso ekuqaleni."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Isilinganiso Sobubanzi Nobude",
+        "description": "Isilinganiso sobubanzi nobude bezilayidi.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

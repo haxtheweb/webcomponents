@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D-afspiller",
+    "description": "En afspiller til 3D-filer/augmented reality."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "URL'en til denne AR-fil."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Elementets X-position i AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Elementets Y-position i AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Elementets Z-position i AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Himmelfarve",
+        "description": "Vælg farven på himlen i scenen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "شيئر URL ذريعي Discord برادريون شامل ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "وسيلي جو URL",
+        "description": "وسيلي جو URL."
+      },
+      {
+        "property": "height",
+        "title": "اوچائي",
+        "description": "مواد فريم جي اوچائي."
+      },
+      {
+        "property": "width",
+        "title": "ويڪر",
+        "description": "مواد فريم جي ويڪر."
+      }
+    ]
+  }
+}

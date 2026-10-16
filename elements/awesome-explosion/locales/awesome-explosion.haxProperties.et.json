@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Vinge plahvatus",
+    "description": "Interaktiivne plahvatuse animatsioon valikuliste heliefektidega."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Suurus",
+        "description": "Määra plahvatuse suurus.",
+        "options": {
+          "tiny": "Tilluke",
+          "small": "Väike",
+          "medium": "Keskmine",
+          "large": "Suur",
+          "epic": "Eepiline"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Värv",
+        "description": "Määra plahvatuse värviteema.",
+        "options": {
+          "": "Vaikimisi",
+          "red": "Punane",
+          "blue": "Sinine",
+          "purple": "Lilla",
+          "orange": "Oranž",
+          "yellow": "Kollane"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Heliefektid",
+        "description": "Luba heliefektid."
+      },
+      {
+        "property": "resetSound",
+        "title": "Lähtesta heli",
+        "description": "Alusta heli iga kord algusest."
+      },
+      {
+        "property": "image",
+        "title": "Kohandatud pilt",
+        "description": "Valikuline kohandatud plahvatuspildi URL."
+      },
+      {
+        "property": "sound",
+        "title": "Kohandatud heli",
+        "description": "Valikuline kohandatud heliefekti URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Keelatud",
+        "description": "Keela kõik interaktsioonid."
+      }
+    ]
+  }
+}

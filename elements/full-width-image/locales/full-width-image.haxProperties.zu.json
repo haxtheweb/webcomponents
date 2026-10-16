@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Ingxenye yesithombe",
+    "description": "Isithombe esigcwele ububanzi esihlukanisa ingxenye yekhasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Isithombe sangemuva."
+      },
+      {
+        "property": "caption",
+        "description": "Isihloko sombhalo."
+      }
+    ]
+  }
+}

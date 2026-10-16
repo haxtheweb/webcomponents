@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Hartë imazhi",
+    "description": "Hartë imazhi e aksesueshme me pika interaktive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiketa",
+        "description": "Etiketa për hartën e imazhit."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Detajet e pikave interaktive",
+        "description": "Pikat interaktive në hartën e imazhit."
+      }
+    ]
+  }
+}

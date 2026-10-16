@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ট্যাগ",
+    "description": "পৃষ্ঠায় প্রদর্শনের জন্য সাধারণ ট্যাগ তালিকা।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ট্যাগ",
+        "description": "কমা দিয়ে আলাদা করা ট্যাগের তালিকা।"
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "স্বয়ংক্রিয় অ্যাকসেন্ট রং",
+        "description": "লেবেলের ভিত্তিতে স্বয়ংক্রিয়ভাবে অ্যাকসেন্ট রং নির্ধারণ করুন।"
+      },
+      {
+        "property": "accentColor",
+        "title": "রং",
+        "description": "ট্যাগের রং।"
+      }
+    ]
+  }
+}

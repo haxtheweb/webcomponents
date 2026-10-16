@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ແທັກ",
+    "description": "ລາຍການແທັກແບບງ່າຍສຳລັບສະແດງໃນໜ້າ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ແທັກ",
+        "description": "ລາຍການແທັກທີ່ຂັ້ນດ້ວຍຈຸດ."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ສີເນັ້ນອັດຕະໂນມັດ",
+        "description": "ຕັ້ງສີເນັ້ນອັດຕະໂນມັດຕາມປ້າຍກຳກັບ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີ",
+        "description": "ສີສຳລັບແທັກ."
+      }
+    ]
+  }
+}

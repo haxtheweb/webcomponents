@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Hành động người dùng",
+    "description": "Theo dõi hành động người dùng và gửi dữ liệu đến kho xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Sự kiện cần theo dõi",
+        "description": "Hành động người dùng kích hoạt sự kiện này.",
+        "options": {
+          "visibility": "Có thể nhìn thấy mục này",
+          "keydown": "Nhấn một phím tại đây",
+          "click": "Nhấp vào mục này",
+          "hover": "Di chuột qua mục này"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Theo dõi mọi lần",
+        "description": "Theo mặc định, chỉ lần xuất hiện đầu tiên được theo dõi."
+      }
+    ]
+  }
+}

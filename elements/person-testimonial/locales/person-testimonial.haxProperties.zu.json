@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ingcaphuno Enesithombe",
+    "description": "Ingcaphuno enesitayela enesithombe ongasikhetha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Isithombe",
+        "description": "Engeza isithombe ebufakazini."
+      },
+      {
+        "property": "name",
+        "title": "Igama Eliphelele",
+        "description": "Igama lomuntu onikeza ubufakazi."
+      },
+      {
+        "property": "position",
+        "title": "Isikhundla noma Isihloko Somsebenzi",
+        "description": "Isikhundla noma isihloko somsebenzi somuntu."
+      },
+      {
+        "slot": "",
+        "title": "Ingcaphuno",
+        "description": "Ingcaphuno evela kumbhali wobufakazi."
+      }
+    ]
+  }
+}

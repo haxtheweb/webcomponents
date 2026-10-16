@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify ойнатқышын енгізуге арналған қабықша."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Дереккөз",
+        "description": "Spotify-дан енгізу немесе бөлісу сілтемесі."
+      },
+      {
+        "property": "theme",
+        "title": "Тақырып",
+        "description": "Ойнатқыштың фон түсі тақырыбы.",
+        "options": {
+          "": "Әдепкі",
+          "0": "Қара"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Өлшемі",
+        "description": "Ойнатқыш өлшемі.",
+        "options": {
+          "normal": "Әдепкі",
+          "compact": "Ықшам"
+        }
+      }
+    ]
+  }
+}

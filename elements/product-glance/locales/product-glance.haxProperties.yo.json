@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ọjà ní ìwòfìrí",
+    "description": "Búlọ́ọ̀kù àkópọ̀ ọjà kíákíá."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Àmì",
+        "description": "Àmì tí ó dúró fún èrò náà."
+      },
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Èrò àkọ́kọ́ ní ìwòfìrí."
+      },
+      {
+        "property": "subtitle",
+        "title": "Àkọlé kékeré",
+        "description": "Àlàyé àfikún."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Àwọ̀ ìtẹnumọ́ fún àmì náà."
+      }
+    ]
+  }
+}

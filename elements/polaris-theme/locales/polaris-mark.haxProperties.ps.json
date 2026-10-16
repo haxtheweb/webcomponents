@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "د Polaris نښه",
+    "description": "د PSU د پېژندنې نښه له اختیاري کالج نوم او منزل URL سره وښایئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "د کالج نوم",
+        "description": "هغه نوم چې د نښې تر څنګ ښودل کېږي."
+      },
+      {
+        "property": "name2",
+        "title": "د کالج نوم 2",
+        "description": "دویم نوم چې د کالج د لومړي نوم لاندې ښودل کېږي."
+      },
+      {
+        "property": "name3",
+        "title": "د کالج نوم 3",
+        "description": "درېیم نوم چې د کالج د دویم نوم لاندې ښودل کېږي."
+      },
+      {
+        "property": "url",
+        "title": "لینک",
+        "description": "د منزل URL کله چې پر نښه کلیک وشي."
+      },
+      {
+        "property": "type",
+        "title": "ډول",
+        "description": "د نښې لیدنیز ډول.",
+        "options": {
+          "default": "ډیفالټ",
+          "light": "روښانه",
+          "dark": "تیاره"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "عمودي ترتیب",
+        "description": "درېیم نوم د دویم نوم لاندې له یوې افقي کرښې سره وښایئ."
+      }
+    ]
+  }
+}

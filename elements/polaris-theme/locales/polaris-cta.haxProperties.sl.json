@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Prikaz tematskega gumba za poziv k dejanju Polaris."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Besedilo gumba",
+        "description": "Besedilo, prikazano v gumbu za poziv k dejanju."
+      },
+      {
+        "property": "link",
+        "title": "Povezava",
+        "description": "Ciljni URL gumba."
+      },
+      {
+        "property": "type",
+        "title": "Različica",
+        "description": "Različica vizualnega sloga.",
+        "options": {
+          "primary": "Primarna",
+          "tinted": "Obarvana",
+          "light": "Svetla"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Obrobljen slog",
+        "description": "Omogoči obrobljeno obdelavo."
+      },
+      {
+        "property": "filled",
+        "title": "Zapolnjen slog",
+        "description": "Omogoči zapolnjeno obdelavo."
+      }
+    ]
+  }
+}

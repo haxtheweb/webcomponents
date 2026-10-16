@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn txertaketa",
+    "description": "Txertatu LinkedIn profil txartel bat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Izen pertsonalizatua",
+        "description": "LinkedIn erabiltzaile-izen pertsonalizatuaren segmentua."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Eskualde-ezarpena",
+        "description": "Eskualde-ezarpenaren metadatu balioa, adib. en_US."
+      }
+    ]
+  }
+}

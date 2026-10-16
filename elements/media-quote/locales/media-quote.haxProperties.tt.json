@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Медиа цитата",
+    "description": "Цитата, чыганак һәм өстәмә имза белән рәсем."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Цитата",
+        "description": "Цитата тексты."
+      },
+      {
+        "slot": "author",
+        "title": "Автор",
+        "description": "Цитата авторы."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Автор турында",
+        "description": "Автор турында мәгълүмат."
+      },
+      {
+        "slot": "caption",
+        "title": "Имза",
+        "description": "Рәсем имзасы."
+      },
+      {
+        "property": "src",
+        "title": "Рәсем чыганагы",
+        "description": "Медиа цитата өчен кулланыла торган рәсем файлы."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернатив текст",
+        "description": "Рәсем өчен альтернатив текст."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Карточканың ассызык төсе."
+      }
+    ]
+  }
+}

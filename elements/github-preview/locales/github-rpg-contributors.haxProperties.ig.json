@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ndepụta ndị nyere aka na GitHub",
+    "description": "E gosiri dịka agwa RPG site na GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Nzukọ",
+        "description": "Aha nzukọ site na github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Ebe nchekwa",
+        "description": "Aha ebe nchekwa site na github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Oke",
+        "description": "Kpachie ọnụ ọgụgụ ndị nyere aka a na-egosi."
+      }
+    ]
+  }
+}

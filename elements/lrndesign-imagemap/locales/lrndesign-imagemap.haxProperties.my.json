@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ပုံ မြေပုံ",
+    "description": "အပြန်အလှန် hotspot များပါသည့် အသုံးပြုရလွယ်ကူသော ပုံ မြေပုံ။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "အညွှန်း",
+        "description": "ပုံ မြေပုံအတွက် အညွှန်း။"
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Hotspot အသေးစိတ်များ",
+        "description": "ပုံ မြေပုံပေါ်ရှိ အပြန်အလှန် hotspot များ။"
+      }
+    ]
+  }
+}

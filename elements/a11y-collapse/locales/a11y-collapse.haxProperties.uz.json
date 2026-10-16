@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Yigʻiladigan konteyner",
+    "description": "Yoyiladigan va yigʻiladigan yagona konteyner."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Sarlavha",
+        "description": "Yigʻiladigan blok matni."
+      },
+      {
+        "property": "expanded",
+        "title": "Yoyilgan",
+        "description": "Standart holatda yoyilgan."
+      },
+      {
+        "property": "headingButton",
+        "title": "Sarlavha tugmasi",
+        "description": "Faqat belgini emas, butun sarlavhani bosiladigan qilish."
+      },
+      {
+        "property": "icon",
+        "title": "Belgi",
+        "description": "Yoyish/yigʻish tugmasi uchun belgi."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Belgi (yoyilganda)",
+        "description": "Yoyilgan holat uchun ixtiyoriy belgi."
+      },
+      {
+        "slot": "",
+        "title": "Kontent",
+        "description": "Yigʻiladigan blok kontenti."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Maslahat matni",
+        "description": "Yoyish/yigʻish tugmasi uchun maslahat matni."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Maslahat matni (yoyilganda)",
+        "description": "Yoyilgan holatdagi yoyish/yigʻish tugmasi uchun maslahat matni."
+      }
+    ]
+  }
+}

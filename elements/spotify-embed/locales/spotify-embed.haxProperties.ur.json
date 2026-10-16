@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify پلیئر ایمبیڈز کے لیے ریپر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ماخذ",
+        "description": "Spotify سے ایمبیڈ یا شیئر لنک۔"
+      },
+      {
+        "property": "theme",
+        "title": "تھیم",
+        "description": "پلیئر کے پس منظر کی رنگ تھیم۔",
+        "options": {
+          "": "طے شدہ",
+          "0": "سیاہ"
+        }
+      },
+      {
+        "property": "size",
+        "title": "سائز",
+        "description": "پلیئر کا سائز۔",
+        "options": {
+          "normal": "طے شدہ",
+          "compact": "مختصر"
+        }
+      }
+    ]
+  }
+}

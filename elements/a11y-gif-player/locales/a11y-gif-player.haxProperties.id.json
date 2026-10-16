@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Jadikan GIF animasi aksesibel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF Animasi",
+        "description": "URL untuk GIF animasi."
+      },
+      {
+        "property": "alt",
+        "title": "Teks Alt",
+        "description": "Teks alternatif untuk gambar."
+      },
+      {
+        "property": "longdesc",
+        "title": "Deskripsi Panjang",
+        "description": "Deskripsi panjang GIF untuk aksesibilitas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Gambar Diam",
+        "description": "URL untuk versi gambar diam dari GIF."
+      }
+    ]
+  }
+}

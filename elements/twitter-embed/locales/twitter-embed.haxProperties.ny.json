@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Kuyika kwa Twitter (X)",
+    "description": "Ikani tweet yochokera ku X mkati mwa tsamba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL ya Tweet",
+        "description": "URL ya tweet yoti iyikidwe."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Mawonekedwe",
+        "description": "Mawonekedwe owala kapena amdima a ma tweet a X.",
+        "options": {
+          "light": "Chowala",
+          "dark": "Mdima"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Letsani zenera lotuluka podina",
+        "description": "Letsani ogwiritsa ntchito kutsegula tweet pa x.com."
+      }
+    ]
+  }
+}

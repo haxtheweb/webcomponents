@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Cholinga cha Chitukuko Chokhazikika cha Bungwe la Mgwirizano wa Maiko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Cholinga",
+        "description": "Nambala ya UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Mtundu wokha",
+        "description": "Onetsani mtundu wa cholingacho wokha."
+      }
+    ]
+  }
+}

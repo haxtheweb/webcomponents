@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "תגית / גלולה",
+    "description": "תווית קומפקטית בצורת גלולה עם צבע הדגשה, כפתור ביטול או מתג אופציונליים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "תווית",
+        "description": "הטקסט המוצג בתוך הגלולה."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "שם צבע ההדגשה של SimpleColors עבור רקע הגלולה.",
+        "options": {
+          "": "-- ברירת מחדל --",
+          "red": "אדום",
+          "pink": "ורוד",
+          "purple": "סגול",
+          "deep-purple": "סגול כהה",
+          "indigo": "אינדיגו",
+          "blue": "כחול",
+          "light-blue": "תכלת",
+          "cyan": "ציאן",
+          "teal": "כחלחל",
+          "green": "ירוק",
+          "light-green": "ירוק בהיר",
+          "lime": "ליים",
+          "yellow": "צהוב",
+          "amber": "ענבר",
+          "orange": "כתום",
+          "deep-orange": "כתום כהה",
+          "brown": "חום",
+          "blue-grey": "אפור־כחול",
+          "grey": "אפור"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "צבע הדגשה אוטומטי",
+        "description": "גזירת צבע ההדגשה מטקסט התווית באופן אוטומטי."
+      },
+      {
+        "property": "cancelButton",
+        "title": "כפתור ביטול",
+        "description": "הצגת כפתור סמל להסרה/ביטול בתוך הגלולה."
+      },
+      {
+        "property": "readonly",
+        "title": "לקריאה בלבד",
+        "description": "הסתרת כפתור הביטול כך שהגלולה תשמש לתצוגה בלבד."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "מתג",
+        "description": "הפיכת הגלולה למתג הפעלה/כיבוי בלחיצה על הכפתור."
+      },
+      {
+        "property": "toggled",
+        "title": "מופעל",
+        "description": "האם הגלולה מופעלת כעת."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "סמל במצב מופעל",
+        "description": "הסמל המוצג כאשר הגלולה מופעלת."
+      },
+      {
+        "property": "disabled",
+        "title": "מושבת",
+        "description": "השבתת האינטראקציה עם הגלולה."
+      }
+    ]
+  }
+}

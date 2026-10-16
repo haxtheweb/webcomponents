@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Намоишгари PDF дар браузер",
+    "description": "Файли PDF-ро дар дохили сатр бо тарҳи кортии ихтиёрӣ ва тугмаи боргирӣ ҷойгир кунед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL-и PDF",
+        "description": "Ҷойгиршавии файли PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Сарлавҳа",
+        "description": "Матни сарлавҳаи корт."
+      },
+      {
+        "property": "card",
+        "title": "Тарҳи корт",
+        "description": "PDF-ро дар корт бо тугмаи боргирӣ нишон диҳед."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Нишонгаи боргирӣ",
+        "description": "Нишонга барои тугмаи боргирӣ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Паём дар бораи дастгирӣ нашудан",
+        "description": "Паём, вақте ки браузер файлҳои PDF-ро нишон дода наметавонад."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Паёми пайванд дар бораи дастгирӣ нашудан",
+        "description": "Матни пайванд, вақте ки браузер файлҳои PDF-ро нишон дода наметавонад."
+      },
+      {
+        "property": "width",
+        "title": "Паҳноӣ",
+        "description": "Паҳноии намоишгари PDF."
+      },
+      {
+        "property": "height",
+        "title": "Баландӣ",
+        "description": "Баландии намоишгари PDF."
+      }
+    ]
+  }
+}

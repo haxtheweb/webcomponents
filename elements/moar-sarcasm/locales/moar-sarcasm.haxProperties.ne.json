@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "व्यङ्ग्य",
+    "description": "पाठलाई जिस्क्याउने शैलीमा प्रस्तुत गर्ने"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "पाठ",
+        "description": "व्यङ्ग्यात्मक बनाउने पाठ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Jẹ́ kí àwọn GIF onígbèérí ṣeé ráyè sí."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF onígbèérí",
+        "description": "URL fún GIF onígbèérí náà."
+      },
+      {
+        "property": "alt",
+        "title": "Ọ̀rọ̀ àfirọ́pò",
+        "description": "Ọ̀rọ̀ àfirọ́pò fún àwòrán náà."
+      },
+      {
+        "property": "longdesc",
+        "title": "Àpèjúwe gígùn",
+        "description": "Àpèjúwe gígùn GIF náà fún ìráyèsí."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Àwòrán aláìgbéra",
+        "description": "URL fún ẹ̀dà àwòrán aláìgbéra ti GIF náà."
+      }
+    ]
+  }
+}

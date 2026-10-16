@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris znak",
+    "description": "Prikažite PSU znak identiteta s opcionalnim nazivom koledža i odredišnim URL-om."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Naziv koledža",
+        "description": "Naziv prikazan pored znaka."
+      },
+      {
+        "property": "name2",
+        "title": "Naziv koledža 2",
+        "description": "Drugi naziv prikazan ispod prvog naziva koledža."
+      },
+      {
+        "property": "name3",
+        "title": "Naziv koledža 3",
+        "description": "Treći naziv prikazan ispod drugog naziva koledža."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Odredišni URL kada se klikne na znak."
+      },
+      {
+        "property": "type",
+        "title": "Varijanta",
+        "description": "Vizuelna varijanta znaka.",
+        "options": {
+          "default": "Zadano",
+          "light": "Svijetlo",
+          "dark": "Tamno"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Uspravni raspored",
+        "description": "Prikaži treći naziv ispod drugog naziva s vodoravnom linijom."
+      }
+    ]
+  }
+}

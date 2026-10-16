@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Etîket",
+    "description": "Lîsteya etîketan a hêsan ji bo nîşandanê li ser rûpelê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Etîket",
+        "description": "Lîsteya etîketan a bi bêhnokan veqetandî."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Rengê Balkêş ê Otomatîk",
+        "description": "Rengê balkêş bi otomatîkî li gorî etîketê diyar bike."
+      },
+      {
+        "property": "accentColor",
+        "title": "Reng",
+        "description": "Rengê etîketan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "ໂນດເພງ",
+    "description": "ສະແດງ ແລະ ຫຼິ້ນໂນດເພງ, ແທັບກີຕ້າ ແລະ ໂນດດົນຕີ ຜ່ານ alphaTex ຫຼື MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ສັນຍາລັກ AlphaTex",
+        "description": "ມາກອັບ alphaTex ໃນແຖວສຳລັບໂນດເພງ. ແກ້ໄຂໂດຍກົງເພື່ອຂຽນໂນດ; ມັນຖືກເກັບໄວ້ໃນແມ່ແບບ ເພື່ອຮັກສາໄລຍະຫ່າງ."
+      },
+      {
+        "property": "source",
+        "title": "ໄຟລ໌ໂນດດົນຕີ",
+        "description": "ອັບໂຫຼດ ຫຼື ລິ້ງໄປຫາໄຟລ໌ MusicXML (.xml/.musicxml/.mxl) ຫຼື Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). ໃຊ້ແທນ alphaTex ໃນແຖວເມື່ອຕັ້ງຄ່າ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "ການຫຼິ້ນສຽງ",
+        "description": "ເປີດໂດຍຄ່າເລີ່ມຕົ້ນ - ຟັງໂນດເພງທີ່ຫຼິ້ນຜ່ານເຄື່ອງສັງເຄາະສຽງໃນຕົວ. ປິດເພື່ອໃຊ້ໂໝດເບິ່ງຢ່າງດຽວ (ບໍ່ມີສຽງ)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "ສະແດງຕົວເລືອກການສະແດງຜົນ",
+        "description": "ສະແດງປຸ່ມຊູມ, ຢືດ ແລະ ໂຄງຮ່າງໃນແຖບເຄື່ອງຫຼິ້ນ."
+      },
+      {
+        "property": "showExport",
+        "title": "ສະແດງປຸ່ມສົ່ງອອກ",
+        "description": "ສະແດງປຸ່ມດາວໂຫຼດ MIDI ແລະ ພິມ/PDF ໃນແຖບເຄື່ອງຫຼິ້ນ."
+      }
+    ]
+  }
+}

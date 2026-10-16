@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Trình hiển thị MIDI",
+    "description": "Phát MIDI trong ngữ cảnh kèm hình ảnh trực quan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Nguồn",
+        "description": "URL tệp cần phát."
+      },
+      {
+        "property": "visualizer",
+        "title": "Hình ảnh trực quan",
+        "description": "Kiểu hiển thị trực quan cho tệp nhạc.",
+        "options": {
+          "staff": "Khuông nhạc",
+          "piano-roll": "Cuộn piano",
+          "waterfall": "Piano + thác nốt"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Ẩn thác nốt",
+        "description": "Ẩn các nốt dạng thác trong hiển thị piano."
+      }
+    ]
+  }
+}

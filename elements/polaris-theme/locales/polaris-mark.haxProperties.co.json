@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Marca Polaris",
+    "description": "Affissà a marca d'identità PSU cù u nome facultativu di l'istitutu è un URL di destinazione."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Nome di l'istitutu",
+        "description": "Nome affissatu accantu à a marca."
+      },
+      {
+        "property": "name2",
+        "title": "Nome di l'istitutu 2",
+        "description": "Secondu nome affissatu sottu à u primu nome di l'istitutu."
+      },
+      {
+        "property": "name3",
+        "title": "Nome di l'istitutu 3",
+        "description": "Terzu nome affissatu sottu à u secondu nome di l'istitutu."
+      },
+      {
+        "property": "url",
+        "title": "Ligame",
+        "description": "URL di destinazione quandu si clicca nant'à a marca."
+      },
+      {
+        "property": "type",
+        "title": "Variante",
+        "description": "Variante visuale di a marca.",
+        "options": {
+          "default": "Predefinitu",
+          "light": "Chjara",
+          "dark": "Scuru"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Dispusizione verticale",
+        "description": "Affissà u terzu nome sottu à u secondu cù una linea orizontale."
+      }
+    ]
+  }
+}

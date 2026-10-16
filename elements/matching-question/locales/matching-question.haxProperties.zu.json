@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Umbuzo Wokufanisa",
+    "description": "Umsebenzi wokufanisa ngokudonsa nokulahla ohlanganisa imiyalo nezimpendulo zayo ezilungile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Umbuzo",
+        "description": "Umbuzo wabasebenzisi. Maka izindawo zokulahla, bese ubhala izimpendulo kuze kufike indawo elandelayo."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ifomethi yokumaka",
+        "description": "OER Schema: ifomethi yokumaka yalokhu kuhlola (isb. amaphuzu, uhlamvu, iphesenti, ukuphothula)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Inhloso yokufunda",
+        "description": "OER Schema: inhloso yokufunda ehlobene nalokhu kuhlola."
+      },
+      {
+        "property": "forCourse",
+        "title": "Isifundo",
+        "description": "OER Schema: isifundo lokhu kuhlola okuhloselwe sona."
+      },
+      {
+        "property": "answers",
+        "title": "Izimpendulo"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Igama lemibuzo",
+        "description": "Igama lemibuzo elisetshenziselwa ukuhlonza kwe-xAPI ezinhlelweni zokuhlaziya."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Detajet e faqes",
+    "description": "Përcakto një ndarje vizuale midis faqeve që CMS-të mund ta përdorin për të krijuar faqe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Titulli i shfaqur në temë dhe si titulli i parë."
+      },
+      {
+        "property": "pageType",
+        "title": "Lloji",
+        "description": "Etiketë vizuale e kontekstit të faqes.",
+        "options": {
+          "": "-- asnjë --",
+          "content": "Përmbajtja",
+          "assessment": "Vlerësim",
+          "quiz": "Kuiz",
+          "submission": "Dorëzim",
+          "lesson": "Mësim",
+          "module": "Modul",
+          "task": "Detyrë",
+          "activity": "Aktivitet",
+          "project": "Projekt",
+          "practice": "Praktikë",
+          "unit": "Njësi",
+          "objectives": "Objektivat mësimore",
+          "connection": "Lidhje",
+          "knowledge": "A e dini?",
+          "strategy": "Strategji mësimi",
+          "discuss": "Diskuto",
+          "listen": "Dëgjo",
+          "make": "Krijo",
+          "observe": "Vëzhgo",
+          "present": "Prezanto",
+          "reading": "Lexim",
+          "reflect": "Reflekto",
+          "research": "Kërko",
+          "watch": "Shiko",
+          "write": "Shkruaj"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Etiketat",
+        "description": "Listë etiketash të ndara me presje."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL-ja e lidhjes",
+        "description": "URL ridrejtimi që shfaqet në vend të përmbajtjes së faqes."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Objektivi i lidhjes",
+        "description": "Hap lidhjet në të njëjtën dritare ose në një dritare të re.",
+        "options": {
+          "_self": "E njëjta dritare",
+          "_blank": "Dritare e re"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "I publikuar",
+        "description": "Faqet e papublikuara janë të fshehura për përdoruesit fundorë."
+      },
+      {
+        "property": "locked",
+        "title": "Kyç faqen",
+        "description": "Kyç ose shkyç të gjitha elementet në këtë faqe."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Anashkalo slug-un automatik",
+        "description": "Kyç slug-un nga përditësimet automatike bazuar në titull ose prind."
+      },
+      {
+        "property": "slug",
+        "title": "Shtegu",
+        "description": "Slug-u URL për këtë faqe."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Media që përfaqëson faqen, e përdorur në disa tema dhe pamje."
+      },
+      {
+        "property": "parent",
+        "title": "Prindi",
+        "description": "Shtegu i faqes prind."
+      },
+      {
+        "property": "noderefs",
+        "title": "Përmbajtje e lidhur",
+        "description": "Faqet e lidhura me këtë faqe."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Përshkrimi",
+        "description": "Përshkrimi i përdorur në koleksione dhe për optimizimin për motorët e kërkimit."
+      },
+      {
+        "property": "entityType",
+        "title": "Lloji i entitetit",
+        "description": "Si parazgjedhje është faqe, përveç nëse caktohet ndryshe.",
+        "options": {
+          "page": "Faqe (parazgjedhje)",
+          "taxonomy": "Taksonomi",
+          "taxonomyTerm": "Term taksonomie",
+          "region": "Rajon"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona e lidhur me këtë faqe në sajt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra e lidhur me këtë faqe në sajt."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Fshih në menu",
+        "description": "Fshihe këtë faqe nga menutë duke ruajtur URL-në e saj."
+      },
+      {
+        "property": "order",
+        "title": "Renditja",
+        "description": "Renditja në raport me faqet motra."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Tema e faqes",
+        "description": "Mbishkruaj temën vetëm për këtë faqe."
+      },
+      {
+        "property": "author",
+        "title": "Autori",
+        "description": "Emri i përdoruesit të personit të fundit që ndryshoi këtë faqe."
+      }
+    ]
+  }
+}

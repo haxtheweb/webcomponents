@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sharhohin Disqus",
+    "description": "Haɗawa da sabis ɗin sharhi na yanar gizo na Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Gajeren suna",
+        "description": "Gajeren sunan kadara a kan disqus"
+      }
+    ]
+  }
+}

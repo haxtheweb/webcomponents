@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Isi sing kosong",
+    "description": "Kagiyatan penilaian ing ngendi siswa nglengkapi tembung sing ilang ing sawijining pernyataan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pitakonan",
+        "description": "Pitakonan sing kudu diwangsuli pangguna."
+      },
+      {
+        "property": "statement",
+        "title": "Pernyataan",
+        "description": "Pernyataan sing bakal diowahi dadi interaksi tandhani tembung."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format biji",
+        "description": "OER Schema: format biji kanggo penilaian iki (contone poin, huruf, persen, rampung)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan sinau",
+        "description": "OER Schema: tujuan sinau sing ana gandhengane karo penilaian iki."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus sing dituju penilaian iki."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jeneng kuis",
+        "description": "Jeneng kuis sing dikirim kanggo digunakake ing lingkungan adhedhasar xAPI kanggo ngenali item iki"
+      }
+    ]
+  }
+}

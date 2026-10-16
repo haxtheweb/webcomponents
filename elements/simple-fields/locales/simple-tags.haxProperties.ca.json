@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Etiquetes",
+    "description": "Llista d'etiquetes senzilla per mostrar a la pàgina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Etiquetes",
+        "description": "Llista d'etiquetes separades per comes."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Color d'accent automàtic",
+        "description": "Defineix automàticament el color d'accent segons l'etiqueta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color",
+        "description": "Color de les etiquetes."
+      }
+    ]
+  }
+}

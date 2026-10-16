@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "മൾട്ടിപ്പിൾ ചോയ്സ്",
+    "description": "മൾട്ടിപ്പിൾ ചോയ്സ് സ്വയം പരിശോധനാ ചോദ്യം."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ചോദ്യം",
+        "description": "ഉപയോക്താക്കൾ പ്രതികരിക്കേണ്ട ചോദ്യം."
+      },
+      {
+        "property": "randomize",
+        "title": "ക്രമരഹിതമാക്കുക",
+        "description": "ഉത്തരങ്ങൾ ചലനാത്മകമായി ക്രമരഹിതമാക്കുക."
+      },
+      {
+        "property": "singleOption",
+        "title": "ഒറ്റ ഉത്തരം",
+        "description": "ഒരു ഉത്തരം മാത്രം അനുവദിക്കുക."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ഗ്രേഡിംഗ് ഫോർമാറ്റ്",
+        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയത്തിനുള്ള ഗ്രേഡിംഗ് ഫോർമാറ്റ് (ഉദാ. പോയിന്റുകൾ, അക്ഷരം, ശതമാനം, പൂർത്തീകരണം)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "പഠന ലക്ഷ്യം",
+        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയവുമായി ബന്ധപ്പെട്ട പഠന ലക്ഷ്യം."
+      },
+      {
+        "property": "forCourse",
+        "title": "കോഴ്സ്",
+        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയം ഉദ്ദേശിച്ചിരിക്കുന്ന കോഴ്സ്."
+      },
+      {
+        "property": "answers",
+        "title": "ഉത്തരങ്ങൾ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ക്വിസിന്റെ പേര്",
+        "description": "അനലിറ്റിക്സ് സിസ്റ്റങ്ങളിൽ xAPI തിരിച്ചറിയലിനായി ഉപയോഗിക്കുന്ന ക്വിസ് പേര്."
+      }
+    ]
+  }
+}

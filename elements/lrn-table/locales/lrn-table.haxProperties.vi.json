@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Bảng CSV",
+    "description": "Có thể tạo bảng từ tệp CSV bất kể tệp nằm ở đâu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Nguồn",
+        "description": "URL của tệp CSV này."
+      },
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề cho bảng sẽ được tạo."
+      },
+      {
+        "property": "description",
+        "title": "Mô tả",
+        "description": "Mô tả chi tiết hơn để cải thiện khả năng tiếp cận dữ liệu bảng."
+      }
+    ]
+  }
+}

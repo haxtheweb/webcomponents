@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "छवि ब्लॉक उद्धरण",
+    "description": "वैकल्पिक छवि के साथ शैलीबद्ध उद्धरण।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "छवि",
+        "description": "प्रशंसापत्र में छवि जोड़ें।"
+      },
+      {
+        "property": "name",
+        "title": "पूरा नाम",
+        "description": "प्रशंसापत्र देने वाले व्यक्ति का नाम।"
+      },
+      {
+        "property": "position",
+        "title": "पद या नौकरी का शीर्षक",
+        "description": "व्यक्ति का पद या नौकरी का शीर्षक।"
+      },
+      {
+        "slot": "",
+        "title": "उद्धरण",
+        "description": "प्रशंसापत्र लेखक का उद्धरण।"
+      }
+    ]
+  }
+}

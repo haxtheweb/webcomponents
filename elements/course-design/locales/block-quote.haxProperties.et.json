@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Plokktsitaat",
+    "description": "Kujundatud tsitaadiplokk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Viide",
+        "description": "Viite tekst."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Pildi alternatiivtekst."
+      },
+      {
+        "property": "image",
+        "title": "Pilt",
+        "description": "Tsitaadiga koos kuvatav pilt."
+      }
+    ]
+  }
+}

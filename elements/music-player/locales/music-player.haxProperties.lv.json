@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI vizualizētājs",
+    "description": "Atskaņot MIDI kontekstā ar vizualizāciju."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Avots",
+        "description": "Atskaņojamā faila URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "Vizualizācija",
+        "description": "Mūzikas faila vizualizācijas stils.",
+        "options": {
+          "staff": "Nošu līnijas",
+          "piano-roll": "Klavieru rullis",
+          "waterfall": "Klavieres + ūdenskritums"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Paslēpt ūdenskritumu",
+        "description": "Paslēpt krītošās notis klavieru vizualizācijā."
+      }
+    ]
+  }
+}

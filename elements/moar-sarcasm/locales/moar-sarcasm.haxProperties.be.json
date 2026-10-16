@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Сарказм",
+    "description": "Паказ тэксту ў тралінгавым стылі"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Тэкст",
+        "description": "Тэкст, які трэба зрабіць саркастычным"
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "علامة Polaris",
+    "description": "عرض علامة هوية PSU مع اسم كلية وURL وجهة اختياريين."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "اسم الكلية",
+        "description": "الاسم المعروض بجانب العلامة."
+      },
+      {
+        "property": "name2",
+        "title": "اسم الكلية 2",
+        "description": "اسم ثانٍ يُعرض أسفل اسم الكلية الأول."
+      },
+      {
+        "property": "name3",
+        "title": "اسم الكلية 3",
+        "description": "اسم ثالث يُعرض أسفل اسم الكلية الثاني."
+      },
+      {
+        "property": "url",
+        "title": "الرابط",
+        "description": "URL الوجهة عند النقر على العلامة."
+      },
+      {
+        "property": "type",
+        "title": "الشكل",
+        "description": "الشكل المرئي للعلامة.",
+        "options": {
+          "default": "افتراضي",
+          "light": "فاتح",
+          "dark": "داكن"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "تخطيط عمودي",
+        "description": "عرض الاسم الثالث أسفل الاسم الثاني مع خط أفقي."
+      }
+    ]
+  }
+}

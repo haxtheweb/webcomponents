@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Теги",
+    "description": "Простий список тегів для показу на сторінці."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Теги",
+        "description": "Список тегів через кому."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Автоматичний акцентний колір",
+        "description": "Автоматично задавати акцентний колір на основі мітки."
+      },
+      {
+        "property": "accentColor",
+        "title": "Колір",
+        "description": "Колір тегів."
+      }
+    ]
+  }
+}

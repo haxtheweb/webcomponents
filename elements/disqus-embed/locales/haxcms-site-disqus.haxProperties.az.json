@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus şərhləri",
+    "description": "Disqus şərh veb xidməti ilə inteqrasiya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Qısa ad",
+        "description": "Disqus-da saytın qısa adı"
+      }
+    ]
+  }
+}

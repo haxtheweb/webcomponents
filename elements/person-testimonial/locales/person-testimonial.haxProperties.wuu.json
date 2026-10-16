@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "图片引用块",
+    "description": "带可选图片个样式化引用。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "图片",
+        "description": "拨推荐语加一张图片。"
+      },
+      {
+        "property": "name",
+        "title": "全名",
+        "description": "讲推荐语个人个名字。"
+      },
+      {
+        "property": "position",
+        "title": "职位或者头衔",
+        "description": "搿个人个职位或者头衔。"
+      },
+      {
+        "slot": "",
+        "title": "引用",
+        "description": "推荐语作者个引用。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "展开收起组",
+    "description": "一组展开收起元素。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "只展开一个",
+        "description": "一趟只好展开一项。"
+      },
+      {
+        "slot": "",
+        "title": "收起项目",
+        "description": "收起个项目。"
+      }
+    ]
+  }
+}

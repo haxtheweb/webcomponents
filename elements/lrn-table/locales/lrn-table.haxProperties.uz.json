@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV jadvali",
+    "description": "Bu CSV fayli qayerda joylashganidan qatʼi nazar, undan jadval yarata oladi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Manba",
+        "description": "Ushbu CSV faylining URL manzili."
+      },
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Yaratiladigan jadval sarlavhasi."
+      },
+      {
+        "property": "description",
+        "title": "Tavsif",
+        "description": "Jadval maʼlumotlarining qulayligini oshirish uchun batafsilroq tavsif."
+      }
+    ]
+  }
+}

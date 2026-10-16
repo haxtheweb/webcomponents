@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Tāmau LinkedIn",
+    "description": "Tāmau i tētahi kāri kōtaha LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Ingoa whakaingoa",
+        "description": "Te wāhanga ingoa kaiwhakamahi whakaingoa o LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Rohe reo",
+        "description": "Uara raraunga tāhuhu rohe reo, pērā i te en_US."
+      }
+    ]
+  }
+}

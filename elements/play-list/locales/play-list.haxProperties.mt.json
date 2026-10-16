@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Playlist",
+    "description": "Uri kull tip ta' kontenut f'playlist."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Sors",
+        "description": "Kontenut muri fil-playlist."
+      },
+      {
+        "property": "edit",
+        "title": "Modalità ta' editjar",
+        "description": "Aqleb bejn il-modalità ta' editjar u ta' previżjoni għall-playlist."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigazzjoni",
+        "description": "Uri l-buttuni tan-navigazzjoni 'il quddiem u lura."
+      },
+      {
+        "property": "pagination",
+        "title": "Paġinazzjoni",
+        "description": "Uri t-tikek tal-paġinazzjoni."
+      },
+      {
+        "property": "orientation",
+        "title": "Orjentazzjoni",
+        "description": "Orjentazzjoni tas-slides.",
+        "options": {
+          "horizontal": "Orizzontali",
+          "vertical": "Vertikali"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Slide tal-bidu",
+        "description": "Indiċi tas-slide li fuqha jiffoka inizjalment."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Proporzjon",
+        "description": "Il-proporzjon tas-slides.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

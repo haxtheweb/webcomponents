@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Sana",
+    "description": "Kalendar sanasini tafsilotlari bilan koʻrsatish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Oy",
+        "description": "Kartada koʻrsatiladigan oy."
+      },
+      {
+        "property": "date",
+        "title": "Oy kuni",
+        "description": "Oyning raqamli kuni."
+      },
+      {
+        "property": "day",
+        "title": "Hafta kuni",
+        "description": "Hafta kunining matn shakli."
+      },
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Tadbir nomi."
+      },
+      {
+        "property": "location",
+        "title": "Joylashuv",
+        "description": "Tadbir joylashuvi."
+      },
+      {
+        "property": "startTime",
+        "title": "Boshlanish",
+        "description": "Boshlanish vaqti."
+      },
+      {
+        "property": "endTime",
+        "title": "Tugash",
+        "description": "Tugash vaqti."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Ixtiyoriy urgʻu rangi."
+      },
+      {
+        "property": "dark",
+        "title": "Qorongʻi mavzu",
+        "description": "Qorongʻi mavzuni yoqish."
+      }
+    ]
+  }
+}

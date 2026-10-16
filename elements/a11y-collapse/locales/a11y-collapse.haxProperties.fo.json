@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Samanfaldandi kassi",
+    "description": "Stakur kassi, sum kann faldast út og saman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Yvirskrift",
+        "description": "Tekstur til samanfaldingina."
+      },
+      {
+        "property": "expanded",
+        "title": "Útfaldaður",
+        "description": "Fald út sum standard."
+      },
+      {
+        "property": "headingButton",
+        "title": "Yvirskriftarknøttur",
+        "description": "Ger alla yvirskriftina klikkiliga í staðin fyri bert ímyndina."
+      },
+      {
+        "property": "icon",
+        "title": "Ímynd",
+        "description": "Ímynd til út/saman-knøttin."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ímynd (tá útfaldað)",
+        "description": "Valfrí ímynd til útfaldaða støðu."
+      },
+      {
+        "slot": "",
+        "title": "Innihald",
+        "description": "Innihald til samanfaldingina."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Vegleiðingartekstur",
+        "description": "Vegleiðingartekstur til út/saman-knøttin."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Vegleiðingartekstur (tá útfaldað)",
+        "description": "Vegleiðingartekstur til út/saman-knøttin, tá útfaldað."
+      }
+    ]
+  }
+}

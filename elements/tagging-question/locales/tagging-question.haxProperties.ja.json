@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "タグ付け問題",
+    "description": "タグを選択して問題に答えます。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "問題",
+        "description": "ユーザーが回答する問題。"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "採点形式",
+        "description": "OER Schema: この評価の採点形式（例: 点数、レター評価、パーセント、完了）。"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学習目標",
+        "description": "OER Schema: この評価に関連付けられた学習目標。"
+      },
+      {
+        "property": "forCourse",
+        "title": "コース",
+        "description": "OER Schema: この評価の対象となるコース。"
+      },
+      {
+        "property": "answers",
+        "title": "答え"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "クイズ名",
+        "description": "分析システムでxAPIの識別に使うクイズ名。"
+      }
+    ]
+  }
+}

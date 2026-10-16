@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "გარე ვებ-შიგთავსის ჩასმა iframe-ში."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "რესურსის URL",
+        "description": "რესურსის URL."
+      },
+      {
+        "property": "height",
+        "title": "სიმაღლე",
+        "description": "Iframe-ის სიმაღლე."
+      },
+      {
+        "property": "width",
+        "title": "სიგანე",
+        "description": "Iframe-ის სიგანე."
+      }
+    ]
+  }
+}

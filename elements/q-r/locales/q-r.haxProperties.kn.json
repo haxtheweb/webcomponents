@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR ಕೋಡ್",
+    "description": "ಸ್ಮಾರ್ಟ್‌ಫೋನ್‌ನಿಂದ ಸ್ಕ್ಯಾನ್ ಮಾಡುವ ಕೋಡ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR ಡೇಟಾ",
+        "description": "QR ಕೋಡ್‌ಗಾಗಿ ಡೇಟಾದ ಮೂಲ."
+      },
+      {
+        "property": "title",
+        "title": "ಪರ್ಯಾಯ ಶೀರ್ಷಿಕೆ",
+        "description": "QR ಕೋಡ್ ಮೂಲಕ್ಕೆ ಲಿಂಕ್ ಮಾಡಿದ ಪರ್ಯಾಯ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "modulesize",
+        "title": "ಗಾತ್ರ",
+        "description": "QR ಕೋಡ್‌ನ ಗಾತ್ರ."
+      },
+      {
+        "property": "margin",
+        "title": "ಅಂಚು",
+        "description": "ಕೋಡ್‌ನ ಸುತ್ತಲಿನ ಅಂಚು."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "ಔಟ್‌ಪುಟ್ ಸ್ವರೂಪ",
+        "description": "ಔಟ್‌ಪುಟ್ ನೀಡಬೇಕಾದ ಸ್ವರೂಪ.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

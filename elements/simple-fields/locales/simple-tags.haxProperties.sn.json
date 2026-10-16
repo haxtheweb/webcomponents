@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Matagi",
+    "description": "Rondedzero yematagi yakareruka yekuratidza papeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Matagi",
+        "description": "Rondedzero yematagi akapatsanurwa nemakoma."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Ruvara Rwekusimbisa Rwega",
+        "description": "Seta ruvara rwekusimbisa zvega zvichienderana nezita."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara",
+        "description": "Ruvara rwematagi."
+      }
+    ]
+  }
+}

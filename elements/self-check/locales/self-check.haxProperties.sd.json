@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "خود جانچ",
+    "description": "يوزر خود جانچ مڪمل ڪري سگهن ٿا."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "تصوير",
+        "description": "خود جانچ لاءِ تصوير."
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "خود جانچ جو عنوان."
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "تصوير لاءِ متبادل متن."
+      },
+      {
+        "slot": "question",
+        "title": "سوال"
+      },
+      {
+        "slot": "",
+        "title": "جواب"
+      },
+      {
+        "property": "accentColor",
+        "title": "ٿيم جو رنگ",
+        "description": "ڊيزائن سسٽم مان ٿيم جو رنگ چونڊيو.",
+        "options": {
+          "primary": "بنيادي",
+          "accent": "نمايان",
+          "success": "ڪاميابي",
+          "warning": "خبرداري",
+          "error": "غلطي",
+          "info": "معلومات"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "سکيا جو مقصد",
+        "description": "oer:hasLearningObjective طور جاري ٿيندڙ سکيا جي مقصد جو حوالو."
+      },
+      {
+        "property": "assessing",
+        "title": "جانچ هيٺ",
+        "description": "oer:assessing طور جاري ٿيندڙ سرگرمي جو حوالو."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "وڌيڪ لنڪ",
+        "description": "اضافي معلومات جي لنڪ."
+      }
+    ]
+  }
+}

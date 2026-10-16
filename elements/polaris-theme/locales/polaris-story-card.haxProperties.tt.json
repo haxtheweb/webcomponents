@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris хикәя карточкасы",
+    "description": "Фон рәсеме, багана тамгасы һәм башлык тексты белән Polaris хикәя карточкасын күрсәтергә."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Фон рәсеме",
+        "description": "Карточка фоны итеп күрсәтелә торган рәсем URL адресы."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Фон зурлыгы",
+        "description": "Фон рәсеме карточканы ничек тутыра (CSS background-size).",
+        "options": {
+          "cover": "Каплау (cover)",
+          "contain": "Сыйдыру (contain)",
+          "auto": "Автоматик (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Фонның беркетелеше",
+        "description": "Әйләндергәндә фон рәсеме үзен ничек тота (CSS background-attachment).",
+        "options": {
+          "scroll": "Әйләнә (scroll)",
+          "fixed": "Беркетелгән (fixed)",
+          "local": "Җирле (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Багана тамгасы",
+        "description": "Карточка өстендә күрсәтелә торган кыска, баш хәрефле тамга. Яшерү өчен буш калдырыгыз."
+      },
+      {
+        "property": "label",
+        "title": "Карточка тексты",
+        "description": "Аскы панельдә күрсәтелә торган төп текст."
+      },
+      {
+        "property": "link",
+        "title": "Сылтама",
+        "description": "Бөтен карточканы үз эченә алучы өстәмә максат URL."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Pregunta d'ordenació",
+    "description": "Ordena els elements en l'ordre correcte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Encapçalament de la pregunta."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de qualificació",
+        "description": "OER Schema: format de qualificació d'aquesta avaluació (p. ex. punts, lletra, percentatge, compleció)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objectiu d'aprenentatge",
+        "description": "OER Schema: objectiu d'aprenentatge associat a aquesta avaluació."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curs",
+        "description": "OER Schema: curs al qual s'adreça aquesta avaluació."
+      },
+      {
+        "property": "answers",
+        "title": "Respostes",
+        "description": "L'ordre de les respostes defineix la seqüència correcta."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nom del qüestionari",
+        "description": "Nom del qüestionari utilitzat per a la identificació xAPI en sistemes d'analítica."
+      }
+    ]
+  }
+}

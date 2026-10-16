@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Seni tembung HAX",
+    "description": "Unsur logo kanggo HAX, mesthi wae minangka unsur sing bisa digunakake ing HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Ukuran logo HAX sing arep dipasang",
+        "options": {
+          "mini": "Mini",
+          "small": "Cilik",
+          "normal": "Normal",
+          "large": "Gedhe"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Apa logo diowahi dadi huruf gedhe"
+      }
+    ]
+  }
+}

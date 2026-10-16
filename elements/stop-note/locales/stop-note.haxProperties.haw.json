@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Hōʻike Kū",
+    "description": "He leka e hoʻāla ai i ka poʻe heluhelu i nā kuhikuhina kikoʻī."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Poʻo Inoa",
+        "description": "E kākau i ka poʻo inoa no ka stop-note."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "E kākau i kekahi url o waho."
+      },
+      {
+        "property": "status",
+        "title": "Kūlana",
+        "description": "Ke hoʻonoho ʻia ke kūlana, hoʻololi ʻia nā waihoʻoluʻu a me nā hōʻailona e like",
+        "options": {
+          "stop": "Kū",
+          "warning": "Kaʻao aʻo",
+          "success": "Hōʻoia",
+          "info": "Hoʻolaha"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Kikokikona Hōʻike",
+        "description": "Kikokikona no ka stop-note."
+      }
+    ]
+  }
+}

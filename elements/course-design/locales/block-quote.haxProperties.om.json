@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Waraabbii",
+    "description": "Saanduqa waraabbii miidhagfame."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Wabii",
+        "description": "Barreeffama wabii."
+      },
+      {
+        "property": "alt",
+        "title": "Ibsa suuraa",
+        "description": "Barreeffama bakka bu'aa suuraa."
+      },
+      {
+        "property": "image",
+        "title": "Suuraa",
+        "description": "Suuraa waraabbii wajjin mul'atu."
+      }
+    ]
+  }
+}

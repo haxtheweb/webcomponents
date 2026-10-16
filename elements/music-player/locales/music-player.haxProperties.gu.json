@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI વિઝ્યુલાઇઝર",
+    "description": "વિઝ્યુલાઇઝેશન સાથે સંદર્ભમાં MIDI વગાડો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "સ્રોત",
+        "description": "વગાડવાની ફાઇલનું URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "વિઝ્યુલાઇઝેશન",
+        "description": "સંગીત ફાઇલ માટે વિઝ્યુલાઇઝેશન શૈલી.",
+        "options": {
+          "staff": "સ્વરલિપિ",
+          "piano-roll": "પિયાનો રોલ",
+          "waterfall": "પિયાનો + ધોધ"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "ધોધ છુપાવો",
+        "description": "પિયાનો વિઝ્યુલાઇઝેશનમાં ધોધ સ્વરો છુપાવો."
+      }
+    ]
+  }
+}

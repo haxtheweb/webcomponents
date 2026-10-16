@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "แผนที่รูปภาพ",
+    "description": "แผนที่รูปภาพที่เข้าถึงได้พร้อมจุดโต้ตอบ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "ป้ายกำกับ",
+        "description": "ป้ายกำกับสำหรับแผนที่รูปภาพ"
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "รายละเอียดจุดโต้ตอบ",
+        "description": "จุดโต้ตอบบนแผนที่รูปภาพ"
+      }
+    ]
+  }
+}

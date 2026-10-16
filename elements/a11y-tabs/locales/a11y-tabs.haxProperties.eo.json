@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Langetoj",
+    "description": "Aro de langetoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etikedo (por alirebleco)",
+        "description": "Alirebla etikedo por la langetaro."
+      },
+      {
+        "property": "disabled",
+        "title": "Malŝaltita",
+        "description": "Malŝalti ĉiujn langetojn."
+      },
+      {
+        "property": "hidden",
+        "title": "Kaŝita",
+        "description": "Kaŝi la langetaron."
+      },
+      {
+        "property": "sticky",
+        "title": "Fiksita",
+        "description": "Teni horizontalajn langetojn supre dum rulumado."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Aranĝa rompopunkto",
+        "description": "Rompopunkto por horizontalaj langetoj; uzu -1 por nur vertikalaj."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Piktograma rompopunkto",
+        "description": "Rompopunkto por montri tekston kun piktogramoj. Defaŭlte 0; uzu -1 por nur-piktograma reĝimo."
+      },
+      {
+        "slot": "",
+        "title": "Langetoj",
+        "description": "Serio de <a11y-tab/>-elementoj."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unika ID",
+        "description": "Unika ID por ĉi tiu langetaro."
+      }
+    ]
+  }
+}

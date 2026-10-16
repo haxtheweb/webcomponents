@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lainauslohko",
+    "description": "Muotoiltu lainauslohko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Lähdeviite",
+        "description": "Lähdeviitteen teksti."
+      },
+      {
+        "property": "alt",
+        "title": "Vaihtoehtoinen teksti",
+        "description": "Kuvan vaihtoehtoinen teksti."
+      },
+      {
+        "property": "image",
+        "title": "Kuva",
+        "description": "Lainauksen kanssa näytettävä kuva."
+      }
+    ]
+  }
+}

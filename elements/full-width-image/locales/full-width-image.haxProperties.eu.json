@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Irudi atala",
+    "description": "Orriaren atal bat zatitzen duen zabalera osoko irudia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Atzeko irudia."
+      },
+      {
+        "property": "caption",
+        "description": "Izenburuaren testua."
+      }
+    ]
+  }
+}

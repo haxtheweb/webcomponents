@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Gawo la tsamba",
+    "description": "Bokosi la gawo la zomwe zili patsamba ndi makonzedwe ozikidwa pazenera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Kakongoletsedwe",
+        "description": "Kalembedwe kokonzedweratu kamene kamasintha makonda okhudzana."
+      },
+      {
+        "property": "image",
+        "title": "Chithunzi",
+        "description": "Zofalitsa zakumbuyo za gawoli."
+      },
+      {
+        "property": "bg",
+        "title": "Mtundu wakumbuyo",
+        "description": "Mtundu wakumbuyo ngati palibe chithunzi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Batani lopukusa",
+        "description": "Onetsani batani lopukusira ku gawo lotsatira."
+      },
+      {
+        "property": "fold",
+        "title": "Onetsani khola",
+        "description": "Onetsani khola lowoneka pansi pa gawoli."
+      },
+      {
+        "property": "full",
+        "title": "Kukula kwa zenera lonse",
+        "description": "Dzazani kutalika kwa zenera la wowonera."
+      },
+      {
+        "property": "filter",
+        "title": "Ikani Fyuluta",
+        "description": "Ikani fyuluta yowoneka pa chithunzi chakumbuyo."
+      },
+      {
+        "slot": "",
+        "title": "Zomwe zili mkati",
+        "description": "Zomwe zili m'gawoli."
+      },
+      {
+        "slot": "entice",
+        "title": "Kokerani",
+        "description": "Zokopa zosankha."
+      },
+      {
+        "slot": "buttons",
+        "title": "Mabatani",
+        "description": "Gulu la mabatani lowonetsedwa pansi pa mawu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Mawu a nangula",
+        "description": "Dzina la nangula lowonetsedwa poyenda."
+      }
+    ]
+  }
+}

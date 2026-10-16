@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "تصویری گیلری",
+    "description": "ایک گیلری جو تصاویر کو گرڈ، میسنری یا سلائیڈ شو لے آؤٹ میں پیش کرتی ہے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "ڈسپلے موڈ",
+        "description": "گیلری میں تصاویر کیسے پیش کی جائیں۔",
+        "options": {
+          "grid": "گرڈ",
+          "masonry": "میسنری",
+          "gallery": "گیلری"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "فعال انڈیکس",
+        "description": "گیلری موڈ میں شروع ہونے والی فعال تصویر کا انڈیکس۔"
+      }
+    ]
+  }
+}

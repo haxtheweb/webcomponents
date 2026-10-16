@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Porównanie obrazów",
+    "description": "Przesuwaj jeden obraz nad drugim, aby je porównać."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Górny obraz",
+        "description": "Górny obraz przesuwany nad dolnym obrazem."
+      },
+      {
+        "property": "topAlt",
+        "title": "Tekst alternatywny górnego obrazu",
+        "description": "Wymagany tekst alternatywny dla dostępności."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Dolny obraz",
+        "description": "Dolny obraz wyświetlany pod górnym obrazem."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Tekst alternatywny dolnego obrazu",
+        "description": "Wymagany tekst alternatywny dla dostępności."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Zachowanie",
+        "description": "Wybierz tryb przesuwania (domyślny) lub tryb przezroczystości górnego obrazu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Kolor paska suwaka."
+      },
+      {
+        "property": "dark",
+        "title": "Ciemny",
+        "description": "Odwróć kolor paska suwaka."
+      },
+      {
+        "property": "position",
+        "title": "Pozycja początkowa",
+        "description": "Pozycja początkowa od 0 do 100."
+      }
+    ]
+  }
+}

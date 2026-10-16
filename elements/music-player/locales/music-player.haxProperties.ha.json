@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Mai nuna MIDI",
+    "description": "Kunna MIDI a cikin mahallin tare da hoto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Tushe",
+        "description": "URL na fayil ɗin da za a kunna."
+      },
+      {
+        "property": "visualizer",
+        "title": "Hoton nuni",
+        "description": "Salon hoton nuni na fayil ɗin kiɗa.",
+        "options": {
+          "staff": "Layukan rubutun kiɗa",
+          "piano-roll": "Naɗin fiyano",
+          "waterfall": "Fiyano + magudanar ruwa"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Ɓoye magudanar ruwa",
+        "description": "Ɓoye bayanan magudanar ruwa a hoton fiyano."
+      }
+    ]
+  }
+}

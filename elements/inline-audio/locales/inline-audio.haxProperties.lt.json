@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Įterptas garsas",
+    "description": "Leisti garsą tekste kaip puslapio turinio papildymą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Šaltinis",
+        "description": "MP3 failas arba URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Kortelės akcento spalva."
+      },
+      {
+        "property": "shiny",
+        "title": "Blizgus",
+        "description": "Naudoti šviesesnį akcento foną vietoj pilko."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tamsus",
+        "description": "Naudoti tamsųjį režimą."
+      }
+    ]
+  }
+}

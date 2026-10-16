@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Optelle",
+    "description": "Animearje in getal dat oant in doelwearde optelt as it yn byld komt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Einwearde",
+        "description": "It getal om oant op te tellen."
+      },
+      {
+        "property": "start",
+        "title": "Startwearde",
+        "description": "It getal om fan ôf te tellen."
+      },
+      {
+        "property": "duration",
+        "title": "Doer",
+        "description": "Oantal sekonden dat de telanimaasje duorje moat."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Foarheaksel",
+        "description": "Tekst foar it getal (bgl. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Efterheaksel",
+        "description": "Tekst nei it getal (bgl. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot foarheaksel",
+        "description": "Opsjonele ynhâld yn it slot foar it getal."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot efterheaksel",
+        "description": "Opsjonele ynhâld yn it slot nei it getal."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Desimalen",
+        "description": "Oantal desimalen om te toanen."
+      },
+      {
+        "property": "separator",
+        "title": "Tûzentallenskieder",
+        "description": "Teken dat groepen fan tûzen skiedt."
+      },
+      {
+        "property": "decimal",
+        "title": "Desimaalteken",
+        "description": "Teken foar de desimale komma."
+      },
+      {
+        "property": "noeasing",
+        "title": "Gjin fersnelling",
+        "description": "Fersnelling útskeakelje, sadat it tellen lineêr is."
+      }
+    ]
+  }
+}

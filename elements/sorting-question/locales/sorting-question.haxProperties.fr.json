@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Question de classement",
+    "description": "Remettre des éléments dans le bon ordre."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "En-tête de la question."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de notation",
+        "description": "OER Schema : format de notation de cette évaluation (p. ex. points, lettre, pourcentage, achèvement)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objectif d'apprentissage",
+        "description": "OER Schema : objectif d'apprentissage associé à cette évaluation."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cours",
+        "description": "OER Schema : cours auquel cette évaluation est destinée."
+      },
+      {
+        "property": "answers",
+        "title": "Réponses",
+        "description": "L'ordre des réponses définit la séquence correcte."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nom du quiz",
+        "description": "Nom du quiz utilisé pour l'identification xAPI dans les systèmes d'analyse."
+      }
+    ]
+  }
+}

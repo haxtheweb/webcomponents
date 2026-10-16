@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "उपक्रम बॉक्स",
+    "description": "लहान शैलीबद्ध शीर्षक ब्लॉक."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "आयकॉन",
+        "description": "उपक्रम बॉक्ससोबत दाखवलेला आयकॉन."
+      },
+      {
+        "property": "tag",
+        "title": "उपक्रम बॉक्स टॅग",
+        "description": "उपक्रम बॉक्समध्ये दाखवलेला टॅग."
+      },
+      {
+        "property": "nocolourize",
+        "title": "रंग लावू नका",
+        "description": "आयकॉनवर रंग लागू होण्यापासून रोखा."
+      }
+    ]
+  }
+}

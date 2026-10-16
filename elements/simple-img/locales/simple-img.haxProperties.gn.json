@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Ta'ãnga hasy'ỹva",
+    "description": "Emoambue ta'ãnga mba'epytyvõ hasy'ỹva rupive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Ypykue",
+        "description": "URL ta'ãnga ypykue."
+      },
+      {
+        "property": "height",
+        "title": "Yvatekue",
+        "description": "Ta'ãnga yvatekue ikatúramo."
+      },
+      {
+        "property": "width",
+        "title": "Pekue",
+        "description": "Ta'ãnga pekue ikatúramo."
+      },
+      {
+        "property": "alt",
+        "title": "Moñe'ẽrã mokõiha",
+        "description": "Ipy'aporã mba'erechaha moñe'ẽhárape g̃uarã ha SEO iporãve hag̃ua."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Iporãngue",
+        "description": "Ta'ãnga iporãngue ojejapo jave (JPEG añoite)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Jegueru tenondegua",
+        "description": "Ñemomarandu tembiapo rehegua kundahára ko'ag̃aguápe g̃uarã.",
+        "options": {
+          "auto": "Ijeheguíva",
+          "high": "Yvate",
+          "low": "Yvy"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Ñekuaa reko",
+        "description": "Ñemomarandu tembiapo rehegua ta'ãnga jehechaukápe kundahára ko'ag̃aguápe.",
+        "options": {
+          "auto": "Ijeheguíva",
+          "async": "Asíncrono"
+        }
+      }
+    ]
+  }
+}

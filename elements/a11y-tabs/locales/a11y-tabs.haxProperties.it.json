@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Schede",
+    "description": "Insieme di schede."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etichetta (per l'accessibilità)",
+        "description": "Etichetta accessibile per l'insieme di schede."
+      },
+      {
+        "property": "disabled",
+        "title": "Disattivato",
+        "description": "Disattiva tutte le schede."
+      },
+      {
+        "property": "hidden",
+        "title": "Nascosto",
+        "description": "Nascondi l'insieme di schede."
+      },
+      {
+        "property": "sticky",
+        "title": "Fisso",
+        "description": "Mantieni le schede orizzontali in alto durante lo scorrimento."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Breakpoint del layout",
+        "description": "Breakpoint per le schede orizzontali; usa -1 per solo verticale."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Breakpoint delle icone",
+        "description": "Breakpoint per mostrare il testo con le icone. Il valore predefinito è 0; usa -1 per la modalità solo icone."
+      },
+      {
+        "slot": "",
+        "title": "Schede",
+        "description": "Serie di elementi <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID univoco",
+        "description": "ID univoco per questo insieme di schede."
+      }
+    ]
+  }
+}

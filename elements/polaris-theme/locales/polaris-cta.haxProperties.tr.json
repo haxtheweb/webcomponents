@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Temalı bir Polaris eylem çağrısı düğmesi gösterin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Düğme metni",
+        "description": "Eylem çağrısı düğmesinde gösterilen metin."
+      },
+      {
+        "property": "link",
+        "title": "Bağlantı",
+        "description": "Düğmenin hedef URL'si."
+      },
+      {
+        "property": "type",
+        "title": "Varyant",
+        "description": "Görsel stil varyantı.",
+        "options": {
+          "primary": "Birincil",
+          "tinted": "Renkli tonlu",
+          "light": "Açık"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Çerçeveli stil",
+        "description": "Çerçeveli görünümü etkinleştir."
+      },
+      {
+        "property": "filled",
+        "title": "Dolgulu stil",
+        "description": "Dolgulu görünümü etkinleştir."
+      }
+    ]
+  }
+}

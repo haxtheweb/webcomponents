@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kortelės",
+    "description": "Kortelių rinkinys."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etiketė (prieinamumui)",
+        "description": "Prieinama kortelių rinkinio etiketė."
+      },
+      {
+        "property": "disabled",
+        "title": "Išjungta",
+        "description": "Išjungti visas korteles."
+      },
+      {
+        "property": "hidden",
+        "title": "Paslėpta",
+        "description": "Paslėpti kortelių rinkinį."
+      },
+      {
+        "property": "sticky",
+        "title": "Prisegta",
+        "description": "Slenkant laikyti horizontalias korteles viršuje."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Išdėstymo lūžio taškas",
+        "description": "Horizontalių kortelių lūžio taškas; -1 – tik vertikalios."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Piktogramų lūžio taškas",
+        "description": "Lūžio taškas, nuo kurio rodomas tekstas su piktogramomis. Numatytasis – 0; -1 – tik piktogramos."
+      },
+      {
+        "slot": "",
+        "title": "Kortelės",
+        "description": "<a11y-tab/> elementų seka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unikalus ID",
+        "description": "Unikalus šio kortelių rinkinio ID."
+      }
+    ]
+  }
+}

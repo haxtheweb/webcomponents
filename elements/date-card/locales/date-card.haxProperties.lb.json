@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Datum",
+    "description": "E Kalennerdatum mat Detailer uweisen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mount",
+        "description": "Mount, deen op der Kaart ugewise gëtt."
+      },
+      {
+        "property": "date",
+        "title": "Dag vum Mount",
+        "description": "Numeresche Dag vum Mount."
+      },
+      {
+        "property": "day",
+        "title": "Dag vun der Woch",
+        "description": "Wochendag als Text."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Numm vum Evenement."
+      },
+      {
+        "property": "location",
+        "title": "Plaz",
+        "description": "Plaz vum Evenement."
+      },
+      {
+        "property": "startTime",
+        "title": "Ufank",
+        "description": "Ufankszäit."
+      },
+      {
+        "property": "endTime",
+        "title": "Enn",
+        "description": "Ennzäit."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Eng optional Akzentfaarf."
+      },
+      {
+        "property": "dark",
+        "title": "Däischtert Thema",
+        "description": "Däischtert Thema aktivéieren."
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Ngày",
+    "description": "Hiển thị một ngày trên lịch kèm chi tiết."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Tháng",
+        "description": "Tháng hiển thị trên thẻ."
+      },
+      {
+        "property": "date",
+        "title": "Ngày trong tháng",
+        "description": "Ngày trong tháng dạng số."
+      },
+      {
+        "property": "day",
+        "title": "Thứ trong tuần",
+        "description": "Thứ trong tuần dạng chữ."
+      },
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tên sự kiện."
+      },
+      {
+        "property": "location",
+        "title": "Địa điểm",
+        "description": "Địa điểm của sự kiện."
+      },
+      {
+        "property": "startTime",
+        "title": "Bắt đầu",
+        "description": "Thời gian bắt đầu."
+      },
+      {
+        "property": "endTime",
+        "title": "Kết thúc",
+        "description": "Thời gian kết thúc."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nhấn tùy chọn."
+      },
+      {
+        "property": "dark",
+        "title": "Giao diện tối",
+        "description": "Bật giao diện tối."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Labelfraach",
+    "description": "Selektearje labels om de fraach te beäntwurdzjen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fraach",
+        "description": "Fraach dêr't brûkers op reagearje moatte."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Beoardielingsformaat",
+        "description": "OER Schema: beoardielingsformaat foar dizze toets (bgl. punten, letter, persintaazje, foltôging)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leardoel",
+        "description": "OER Schema: leardoel dat by dizze toets heart."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus dêr't dizze toets foar bedoeld is."
+      },
+      {
+        "property": "answers",
+        "title": "Antwurden"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Namme fan de kwis",
+        "description": "Kwisnamme foar xAPI-identifikaasje yn analysesystemen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lista tal-kontributuri ta' GitHub",
+    "description": "Murija bħala karattri RPG bl-użu tal-API ta' GitHub."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizzazzjoni",
+        "description": "Isem l-organizzazzjoni minn github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repożitorju",
+        "description": "Isem ir-repożitorju minn github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Limitu",
+        "description": "Illimita n-numru ta' kontributuri murija."
+      }
+    ]
+  }
+}

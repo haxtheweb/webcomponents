@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ябыла торган контейнер",
+    "description": "Ачыла һәм ябыла торган бер контейнер."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Башлык",
+        "description": "Ябыла торган блок тексты."
+      },
+      {
+        "property": "expanded",
+        "title": "Ачык",
+        "description": "Килешү буенча ачык булсын."
+      },
+      {
+        "property": "headingButton",
+        "title": "Башлык төймәсе",
+        "description": "Иконка гына түгел, бөтен башлыкны басыла торган итәргә."
+      },
+      {
+        "property": "icon",
+        "title": "Иконка",
+        "description": "Ачу/ябу төймәсе иконкасы."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Иконка (ачык булганда)",
+        "description": "Ачык хәл өчен өстәмә иконка."
+      },
+      {
+        "slot": "",
+        "title": "Эчтәлек",
+        "description": "Ябыла торган блок эчтәлеге."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Киңәш",
+        "description": "Ачу/ябу төймәсе өчен киңәш."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Киңәш (ачык булганда)",
+        "description": "Ачык булганда ачу/ябу төймәсе өчен киңәш."
+      }
+    ]
+  }
+}

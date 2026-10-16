@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Searbhas",
+    "description": "Téacs a chur i láthair ar bhealach magúil"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Téacs",
+        "description": "Téacs le déanamh searbhasach"
+      }
+    ]
+  }
+}

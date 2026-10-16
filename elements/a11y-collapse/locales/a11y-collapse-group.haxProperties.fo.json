@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bólkur at fálda út/saman",
+    "description": "Ein bólkur av eindum, sum kunnu faldast út og saman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Fald bert eina út",
+        "description": "Bert ein lutur kann vera faldaður út."
+      },
+      {
+        "slot": "",
+        "title": "Samanfaldandi lutir",
+        "description": "Teir samanfaldandi lutirnir."
+      }
+    ]
+  }
+}

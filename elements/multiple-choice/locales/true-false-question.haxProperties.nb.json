@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Riktig / galt-spørsmål",
+    "description": "Riktig eller galt-spørsmål"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spørsmål",
+        "description": "Spørsmål brukerne skal svare på."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Riktig svar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn på quizen",
+        "description": "Quiznavn som sendes inn for å identifisere dette elementet i xAPI-baserte miljøer"
+      }
+    ]
+  }
+}

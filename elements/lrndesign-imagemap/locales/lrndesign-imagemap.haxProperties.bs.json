@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mapa slike",
+    "description": "Pristupačna mapa slike s interaktivnim žarišnim tačkama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Oznaka",
+        "description": "Oznaka mape slike."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Detalji žarišnih tačaka",
+        "description": "Interaktivne žarišne tačke na mapi slike."
+      }
+    ]
+  }
+}

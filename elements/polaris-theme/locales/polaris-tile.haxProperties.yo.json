@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Táìlì Polaris",
+    "description": "Fi táìlì Polaris hàn pẹ̀lú àkọlé, ọ̀rọ̀ àtìlẹ́yìn àṣàyàn, àti ìjápọ̀ àṣàyàn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Ọ̀rọ̀ àkọ́kọ́",
+        "description": "Ọ̀rọ̀ pàtàkì táìlì."
+      },
+      {
+        "property": "line2",
+        "title": "Ọ̀rọ̀ kejì",
+        "description": "Ọ̀rọ̀ àtìlẹ́yìn àṣàyàn."
+      },
+      {
+        "property": "type",
+        "title": "Ìrísí táìlì",
+        "description": "Ìrísí táìlì tí a ti ṣètò tẹ́lẹ̀.",
+        "options": {
+          "1": "Ìrísí 1",
+          "2": "Ìrísí 2",
+          "3": "Ìrísí 3",
+          "4": "Ìrísí 4",
+          "5": "Ìrísí 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Àwòrán ẹ̀yìn",
+        "description": "URL àwòrán ẹ̀yìn tí àwọn ìrísí táìlì tí ó gba àwòrán ń lò."
+      },
+      {
+        "property": "link",
+        "title": "Ìjápọ̀",
+        "description": "URL ibi-àfojúsùn àṣàyàn fún ìṣe táìlì náà."
+      }
+    ]
+  }
+}

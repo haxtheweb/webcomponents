@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kártya",
+    "description": "A DDD tervezési rendszerrel formázott kártyakomponens."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Kép",
+        "description": "Opcionális kép."
+      },
+      {
+        "property": "alt",
+        "title": "Kép helyettesítő szövege",
+        "description": "A képet leíró helyettesítő szöveg."
+      },
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "A kártya címe."
+      },
+      {
+        "slot": "",
+        "title": "Tartalom",
+        "description": "A kártya tartalomterülete."
+      },
+      {
+        "property": "href",
+        "title": "Hivatkozás",
+        "description": "A gomb hivatkozásának URL-je."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Címke",
+        "description": "A gomb felirata."
+      },
+      {
+        "property": "noArrow",
+        "title": "Nyíl nélkül",
+        "description": "A gomb nyilának elrejtése."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Hivatkozás: cél",
+        "description": "Hol nyíljon meg a hivatkozás.",
+        "options": {
+          "": "Ugyanaz az ablak",
+          "_blank": "Új ablak - _blank",
+          "_top": "Legfelső ablak - _top",
+          "_parent": "Szülőablak - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Hivatkozás: rel",
+        "description": "A hivatkozott erőforrás és az aktuális dokumentum közötti kapcsolat."
+      }
+    ]
+  }
+}

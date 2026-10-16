@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "ಅನಿಮೇಟೆಡ್ GIF ಗಳನ್ನು ಪ್ರವೇಶಯೋಗ್ಯವಾಗಿಸಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ಅನಿಮೇಟೆಡ್ GIF",
+        "description": "ಅನಿಮೇಟೆಡ್ GIF ನ URL."
+      },
+      {
+        "property": "alt",
+        "title": "ಪರ್ಯಾಯ ಪಠ್ಯ",
+        "description": "ಚಿತ್ರದ ಪರ್ಯಾಯ ಪಠ್ಯ."
+      },
+      {
+        "property": "longdesc",
+        "title": "ದೀರ್ಘ ವಿವರಣೆ",
+        "description": "ಪ್ರವೇಶಯೋಗ್ಯತೆಗಾಗಿ GIF ನ ದೀರ್ಘ ವಿವರಣೆ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "ಸ್ಥಿರ ಚಿತ್ರ",
+        "description": "GIF ನ ಸ್ಥಿರ ಚಿತ್ರ ಆವೃತ್ತಿಯ URL."
+      }
+    ]
+  }
+}

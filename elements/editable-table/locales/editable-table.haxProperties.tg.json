@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Ҷадвал",
+    "description": "Маълумоти ҷадвалӣ барои веб."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Сарлавҳаи сатр",
+        "description": "Сатри якумро ҳамчун сарлавҳа ҳисоб кунед."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Сарлавҳаи сутун",
+        "description": "Сутуни якумро ҳамчун сарлавҳа ҳисоб кунед."
+      },
+      {
+        "property": "footer",
+        "title": "Поёнхат",
+        "description": "Сатри охиринро ҳамчун поёнхат ҳисоб кунед."
+      },
+      {
+        "property": "sort",
+        "title": "Мураттабшаванда",
+        "description": "Иҷозаи мураттабсозӣ аз рӯи қиматҳои сутун."
+      },
+      {
+        "property": "filter",
+        "title": "Иҷозаи филтр",
+        "description": "Иҷозаи филтркунӣ аз рӯи қиматҳои сутун."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Ороиши рақамӣ",
+        "description": "Ба сутунҳои рақамӣ ороиши рақамӣ татбиқ кунед."
+      },
+      {
+        "property": "responsive",
+        "title": "Мутобиқшаванда",
+        "description": "Тарҳи ҷадвалро дар экранҳои хурд мутобиқ кунед."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Реҷаи рубрика",
+        "description": "Ин ҷадвалро ҳамчун Rubric-и OER Schema тафсир кунед, то метамаълумоти Rubric, RubricScale, RubricCriterion ва RubricLevel тавлид шавад."
+      },
+      {
+        "property": "rubricType",
+        "title": "Навъи рубрика",
+        "description": "Услуби рубрика, ки ҳамчун oer:rubricType тавлид мешавад (танҳо ҳангоми фаъол будани Реҷаи рубрика маъно дорад).",
+        "options": {
+          "": "(ҳеҷ)",
+          "analytic": "Таҳлилӣ",
+          "holistic": "Ҳамаҷониба",
+          "single-point": "Як нуқта",
+          "checklist": "Рӯйхати санҷишӣ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Ҳошиядор"
+      },
+      {
+        "property": "condensed",
+        "title": "Фишурдани сатрҳо",
+        "description": "Баландии сатрро кам кунед."
+      },
+      {
+        "property": "striped",
+        "title": "Сатрҳои рахдор",
+        "description": "Ҳар сатри дигарро соя диҳед."
+      },
+      {
+        "property": "downloadable",
+        "title": "Тугмаи боргирӣ",
+        "description": "Тугмаеро барои боргирии ҷадвал илова кунед."
+      },
+      {
+        "property": "copyable",
+        "title": "Тугмаи нусхабардорӣ",
+        "description": "Тугмаеро барои нусхабардории маълумоти CSV-и ҷадвал илова кунед."
+      },
+      {
+        "property": "printable",
+        "title": "Тугмаи чоп",
+        "description": "Тугмаеро барои чопи танҳо ҷадвал илова кунед."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Маълумоти CSV",
+        "description": "Аз файли CSV-и боркардашуда ҷадвал созед."
+      }
+    ]
+  }
+}

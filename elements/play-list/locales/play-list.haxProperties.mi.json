@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Rārangi pāho",
+    "description": "Whakaaturia ngā momo ihirangi katoa ki tētahi rārangi pāho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Pūtake",
+        "description": "Ihirangi ka whakaaturia i te rārangi pāho."
+      },
+      {
+        "property": "edit",
+        "title": "Aratau whakatika",
+        "description": "Whakawhiti i waenga i te aratau whakatika me te arokite mō te rārangi pāho."
+      },
+      {
+        "property": "navigation",
+        "title": "Whakaterenga",
+        "description": "Whakaaturia ngā pātene whakatere whakamua, whakamuri hoki."
+      },
+      {
+        "property": "pagination",
+        "title": "Whakawhārangi",
+        "description": "Whakaaturia ngā ira whakawhārangi."
+      },
+      {
+        "property": "orientation",
+        "title": "Ahunga",
+        "description": "Te ahunga o ngā kiriata.",
+        "options": {
+          "horizontal": "Whakapae",
+          "vertical": "Poutū"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Kiriata hei tīmatanga",
+        "description": "Taupū o te kiriata hei arotahi i te tīmatanga."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Ōwehenga Āhua",
+        "description": "Te ōwehenga āhua o ngā kiriata.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

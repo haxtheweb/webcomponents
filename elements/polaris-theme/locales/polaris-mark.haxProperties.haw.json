@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Hōʻailona Polaris",
+    "description": "E hōʻike i ka hōʻailona ʻike PSU me ka inoa kulanui koho a me ka URL e hele ai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Inoa kulanui",
+        "description": "Inoa i hōʻike ʻia ma ka ʻaoʻao o ka hōʻailona."
+      },
+      {
+        "property": "name2",
+        "title": "Inoa kulanui 2",
+        "description": "Inoa ʻelua i hōʻike ʻia ma lalo o ka inoa kulanui mua."
+      },
+      {
+        "property": "name3",
+        "title": "Inoa kulanui 3",
+        "description": "Inoa ʻekolu i hōʻike ʻia ma lalo o ka inoa kulanui ʻelua."
+      },
+      {
+        "property": "url",
+        "title": "Loulou",
+        "description": "URL e hele ai ke kōmi ʻia ka hōʻailona."
+      },
+      {
+        "property": "type",
+        "title": "Mana",
+        "description": "Mana ʻike ʻia o ka hōʻailona.",
+        "options": {
+          "default": "Paʻamau",
+          "light": "Māmā",
+          "dark": "Pōuliuli"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Hoʻonohonoho kū pololei",
+        "description": "E hōʻike i ka inoa ʻekolu ma lalo o ka inoa ʻelua me kekahi laina ākea."
+      }
+    ]
+  }
+}

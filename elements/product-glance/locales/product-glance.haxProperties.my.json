@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ထုတ်ကုန် အကျဉ်းချုပ်",
+    "description": "ထုတ်ကုန်ကို အမြန် ခြုံငုံပြသော ဘလော့။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "အိုင်ကွန်",
+        "description": "သဘောတရားကို ကိုယ်စားပြုသော အိုင်ကွန်။"
+      },
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်",
+        "description": "အဓိက သဘောတရား တစ်ချက်ကြည့်။"
+      },
+      {
+        "property": "subtitle",
+        "title": "ခေါင်းစဉ်ခွဲ",
+        "description": "ထပ်ဆောင်း အသေးစိတ်။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "အိုင်ကွန်အတွက် အထူးပြု အရောင်။"
+      }
+    ]
+  }
+}

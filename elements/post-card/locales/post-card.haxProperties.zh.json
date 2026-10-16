@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "明信片",
+    "description": "趣味媒体组件，外观类似从某地寄出的实体明信片"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "收件人",
+        "description": "寄给谁？"
+      },
+      {
+        "property": "from",
+        "title": "寄件人",
+        "description": "你是谁？"
+      },
+      {
+        "property": "message",
+        "title": "留言",
+        "description": "你想说什么？"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "邮戳地点",
+        "description": "这张明信片从哪里寄出？"
+      },
+      {
+        "property": "photoSrc",
+        "title": "主照片来源",
+        "description": "你的照片在哪里？"
+      },
+      {
+        "property": "stampSrc",
+        "title": "邮票图片来源",
+        "description": "你的照片在哪里？"
+      }
+    ]
+  }
+}

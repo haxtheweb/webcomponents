@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Contenidor H5P per carregar i presentar fitxers .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Codi d'inserció iframe d'H5P"
+      }
+    ]
+  }
+}

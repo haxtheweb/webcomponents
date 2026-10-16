@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "កម្មវិធីរុំសម្រាប់បង្កប់កម្មវិធីចាក់ Spotify។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ប្រភព",
+        "description": "តំណបង្កប់ ឬចែករំលែកពី Spotify។"
+      },
+      {
+        "property": "theme",
+        "title": "រចនាប័ទ្ម",
+        "description": "រចនាប័ទ្មពណ៌ផ្ទៃខាងក្រោយសម្រាប់កម្មវិធីចាក់។",
+        "options": {
+          "": "លំនាំដើម",
+          "0": "ខ្មៅ"
+        }
+      },
+      {
+        "property": "size",
+        "title": "ទំហំ",
+        "description": "ទំហំកម្មវិធីចាក់។",
+        "options": {
+          "normal": "លំនាំដើម",
+          "compact": "បង្រួម"
+        }
+      }
+    ]
+  }
+}

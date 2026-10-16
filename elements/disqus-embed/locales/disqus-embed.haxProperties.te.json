@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "పేజీలో Disqus వ్యాఖ్యలను పొందుపరచండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "చిన్న పేరు",
+        "description": "Disqus స్క్రిప్ట్ హోస్ట్‌ను నిర్ణయించే సైట్ చిన్న పేరు."
+      },
+      {
+        "property": "pageURL",
+        "title": "పేజీ URL",
+        "description": "వ్యాఖ్యల థ్రెడ్ జోడించబడిన పేజీ యొక్క URL."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "పేజీ ఐడెంటిఫైయర్",
+        "description": "పేజీ వ్యాఖ్యల థ్రెడ్ కోసం ప్రత్యేక ఐడెంటిఫైయర్."
+      },
+      {
+        "property": "pageTitle",
+        "title": "పేజీ శీర్షిక",
+        "description": "వ్యాఖ్యల థ్రెడ్ జోడించబడిన పేజీ యొక్క శీర్షిక."
+      },
+      {
+        "property": "loadingText",
+        "title": "లోడింగ్ వచనం",
+        "description": "వ్యాఖ్యలు లోడ్ అవుతున్నప్పుడు ప్రకటించబడే వచనం."
+      },
+      {
+        "property": "lang",
+        "title": "భాష",
+        "description": "Disqus ఇంటర్‌ఫేస్ కోసం భాషా కోడ్, ఉదా. en."
+      }
+    ]
+  }
+}

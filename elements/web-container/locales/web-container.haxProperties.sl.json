@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Vsebnik NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Skrij urejevalnik",
+        "description": "Skrij vmesnik za urejanje datotek."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Skrij terminal",
+        "description": "Skrij terminal za samodejno zagnane programe."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Skrij okno",
+        "description": "Skrij izhodno okno za uporabo samo s terminalom."
+      },
+      {
+        "slot": "",
+        "title": "Ukazi",
+        "description": "Ukazi (eden na vrstico), ki se zaženejo pred nalaganjem."
+      }
+    ]
+  }
+}

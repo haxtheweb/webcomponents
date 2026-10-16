@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Karte",
+    "description": "Kartenkomponente im DDD-Designsystem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Bild",
+        "description": "Optionales Bild."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativtext des Bildes",
+        "description": "Alternativtext, der das Bild beschreibt."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Kartentitel."
+      },
+      {
+        "slot": "",
+        "title": "Inhalt",
+        "description": "Inhaltsbereich der Karte."
+      },
+      {
+        "property": "href",
+        "title": "Link",
+        "description": "Link-URL der Schaltfläche."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Beschriftung",
+        "description": "Beschriftung der Schaltfläche."
+      },
+      {
+        "property": "noArrow",
+        "title": "Kein Pfeil",
+        "description": "Pfeil der Schaltfläche ausblenden."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Link: Ziel",
+        "description": "Wo der Link geöffnet werden soll.",
+        "options": {
+          "": "Gleiches Fenster",
+          "_blank": "Neues Fenster - _blank",
+          "_top": "Oberstes Fenster - _top",
+          "_parent": "Übergeordnetes Fenster - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Link: rel",
+        "description": "Beziehung zwischen der verlinkten Ressource und dem aktuellen Dokument."
+      }
+    ]
+  }
+}

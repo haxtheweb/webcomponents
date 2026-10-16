@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Παράθεμα με πολυμέσα",
+    "description": "Εικόνα με παράθεμα, παραπομπή και προαιρετική λεζάντα."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Παράθεμα",
+        "description": "Κείμενο παραθέματος."
+      },
+      {
+        "slot": "author",
+        "title": "Συγγραφέας",
+        "description": "Συγγραφέας του παραθέματος."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Στοιχεία συγγραφέα",
+        "description": "Στοιχεία συγγραφέα."
+      },
+      {
+        "slot": "caption",
+        "title": "Λεζάντα",
+        "description": "Λεζάντα εικόνας."
+      },
+      {
+        "property": "src",
+        "title": "Πηγή εικόνας",
+        "description": "Αρχείο εικόνας για το παράθεμα με πολυμέσα."
+      },
+      {
+        "property": "alt",
+        "title": "Εναλλακτικό κείμενο",
+        "description": "Εναλλακτικό κείμενο για την εικόνα."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Χρώμα έμφασης",
+        "description": "Χρώμα έμφασης κάρτας."
+      }
+    ]
+  }
+}

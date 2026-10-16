@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Тукталыш искәрмәсе",
+    "description": "Укучыларга билгеле күрсәтмәләр турында кисәтә торган хәбәр."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Тукталыш искәрмәсе өчен исем кертегез."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Тышкы URL кертегез."
+      },
+      {
+        "property": "status",
+        "title": "Халәт",
+        "description": "Халәтне билгеләү төсләрне һәм иконкаларны аңа туры китереп үзгәртә",
+        "options": {
+          "stop": "Тукта",
+          "warning": "Кисәтү",
+          "success": "Раслау",
+          "info": "Игълан"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Искәрмә тексты",
+        "description": "Тукталыш искәрмәсе тексты."
+      }
+    ]
+  }
+}

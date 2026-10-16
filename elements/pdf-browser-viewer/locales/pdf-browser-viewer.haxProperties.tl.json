@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF Browser Viewer",
+    "description": "Mag-embed ng PDF file nang inline na may opsyonal na card layout at button sa pag-download."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL ng PDF",
+        "description": "Lokasyon ng PDF file."
+      },
+      {
+        "property": "heading",
+        "title": "Heading",
+        "description": "Teksto ng heading ng card."
+      },
+      {
+        "property": "card",
+        "title": "Card layout",
+        "description": "Ipakita ang PDF sa isang card na may button sa pag-download."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Label ng pag-download",
+        "description": "Label para sa button sa pag-download."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mensaheng hindi suportado",
+        "description": "Mensahe kapag hindi maipakita ng browser ang mga PDF file."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mensahe ng link na hindi suportado",
+        "description": "Teksto ng link kapag hindi maipakita ng browser ang mga PDF file."
+      },
+      {
+        "property": "width",
+        "title": "Lapad",
+        "description": "Lapad ng PDF viewer."
+      },
+      {
+        "property": "height",
+        "title": "Taas",
+        "description": "Taas ng PDF viewer."
+      }
+    ]
+  }
+}

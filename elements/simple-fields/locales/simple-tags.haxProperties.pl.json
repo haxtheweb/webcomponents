@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tagi",
+    "description": "Prosta lista tagów do wyświetlania na stronie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tagi",
+        "description": "Lista tagów oddzielonych przecinkami."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatyczny kolor akcentu",
+        "description": "Automatycznie ustawiaj kolor akcentu na podstawie etykiety."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor",
+        "description": "Kolor tagów."
+      }
+    ]
+  }
+}

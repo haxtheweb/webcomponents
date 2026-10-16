@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Explozie grozavă",
+    "description": "Animație interactivă de explozie cu efecte sonore opționale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Dimensiune",
+        "description": "Setați dimensiunea exploziei.",
+        "options": {
+          "tiny": "Minusculă",
+          "small": "Mică",
+          "medium": "Medie",
+          "large": "Mare",
+          "epic": "Epică"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Culoare",
+        "description": "Setați tema de culoare a exploziei.",
+        "options": {
+          "": "Implicit",
+          "red": "Roșu",
+          "blue": "Albastru",
+          "purple": "Violet",
+          "orange": "Portocaliu",
+          "yellow": "Galben"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Efecte sonore",
+        "description": "Activează efectele sonore."
+      },
+      {
+        "property": "resetSound",
+        "title": "Resetare sunet",
+        "description": "Repornește sunetul de la început de fiecare dată."
+      },
+      {
+        "property": "image",
+        "title": "Imagine personalizată",
+        "description": "URL opțional pentru o imagine de explozie personalizată."
+      },
+      {
+        "property": "sound",
+        "title": "Sunet personalizat",
+        "description": "URL opțional pentru un efect sonor personalizat."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Dezactivat",
+        "description": "Dezactivează toate interacțiunile."
+      }
+    ]
+  }
+}

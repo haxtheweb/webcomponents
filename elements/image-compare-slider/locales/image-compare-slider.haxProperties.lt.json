@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Vaizdų palyginimas",
+    "description": "Perbraukite vieną vaizdą per kitą, kad palygintumėte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Viršutinis vaizdas",
+        "description": "Viršutinis vaizdas, perbraukiamas per apatinį."
+      },
+      {
+        "property": "topAlt",
+        "title": "Viršutinio vaizdo alternatyvusis tekstas",
+        "description": "Privalomas alternatyvusis tekstas prieinamumui užtikrinti."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Apatinis vaizdas",
+        "description": "Apatinis vaizdas, rodomas po viršutiniu."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Apatinio vaizdo alternatyvusis tekstas",
+        "description": "Privalomas alternatyvusis tekstas prieinamumui užtikrinti."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Elgsena",
+        "description": "Pasirinkite perbraukimo režimą (numatytasis) arba viršutinio vaizdo skaidrumo režimą."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Slankiklio juostos spalva."
+      },
+      {
+        "property": "dark",
+        "title": "Tamsus",
+        "description": "Invertuoti slankiklio juostos spalvą."
+      },
+      {
+        "property": "position",
+        "title": "Pradinė padėtis",
+        "description": "Pradinė padėtis nuo 0 iki 100."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Player 3D",
+    "description": "Un player pentru fișiere 3D / realitate augmentată."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sursă",
+        "description": "URL-ul acestui fișier AR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Poziția X a elementului în AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Poziția Y a elementului în AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Poziția Z a elementului în AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Culoarea cerului",
+        "description": "Selectați culoarea cerului din scenă."
+      }
+    ]
+  }
+}

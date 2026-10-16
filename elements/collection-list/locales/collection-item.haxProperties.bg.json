@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Елемент от колекция",
+    "description": "Елемент тип карта за списък на колекция, с текст, връзка и незадължителна медия."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Връзка",
+        "description": "Целеви URL за тази карта."
+      },
+      {
+        "property": "image",
+        "title": "Изображение",
+        "description": "Фоново изображение."
+      },
+      {
+        "property": "line1",
+        "title": "Ред 1",
+        "description": "Първи ред текст."
+      },
+      {
+        "property": "line2",
+        "title": "Ред 2",
+        "description": "Втори ред текст."
+      },
+      {
+        "property": "line3",
+        "title": "Ред 3",
+        "description": "Трети ред текст."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона, представяща картата."
+      },
+      {
+        "property": "saturate",
+        "title": "Ефект на наситеност",
+        "description": "Промяна на наситеността на изображението при фокус."
+      },
+      {
+        "property": "tags",
+        "title": "Етикети",
+        "description": "Списък с етикети, разделени със запетая."
+      },
+      {
+        "property": "accentColor",
+        "title": "Цвят",
+        "description": "Цвят за етикетите."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Алтернативен текст, описващ връзката."
+      }
+    ]
+  }
+}

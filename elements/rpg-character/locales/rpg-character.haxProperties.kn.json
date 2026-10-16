@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG ಪಾತ್ರ",
+    "description": "HAX ನ ಮೋಜಿನ ಪಾತ್ರ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "ಹೆಸರು",
+        "description": "ಯಾದೃಚ್ಛಿಕ ಪಾತ್ರವನ್ನು ರಚಿಸಲು ಬಳಸುವ ಪದ."
+      },
+      {
+        "property": "hat",
+        "title": "ಟೋಪಿ",
+        "description": "ಟೋಪಿಯ ಶೈಲಿ.",
+        "options": {
+          "none": "ಪೂರ್ವನಿಯೋಜಿತ",
+          "random": "ಯಾದೃಚ್ಛಿಕ",
+          "bunny": "ಮೊಲ",
+          "cowboy": "ಕೌಬಾಯ್",
+          "education": "ಶಿಕ್ಷಣ",
+          "construction": "ನಿರ್ಮಾಣ",
+          "warning": "ಎಚ್ಚರಿಕೆ",
+          "watermelon": "ಕಲ್ಲಂಗಡಿ",
+          "coffee": "ಕಾಫಿ",
+          "knight": "ಯೋಧ",
+          "ninja": "ನಿಂಜಾ",
+          "party": "ಪಾರ್ಟಿ",
+          "error": "ದೋಷ",
+          "edit": "ಸಂಪಾದಿಸು"
+        }
+      },
+      {
+        "property": "width",
+        "title": "ಅಗಲ",
+        "description": "ಪಿಕ್ಸೆಲ್‌ಗಳಲ್ಲಿ ಪಾತ್ರದ ಅಗಲ."
+      },
+      {
+        "property": "height",
+        "title": "ಎತ್ತರ",
+        "description": "ಪಿಕ್ಸೆಲ್‌ಗಳಲ್ಲಿ ಪಾತ್ರದ ಎತ್ತರ."
+      },
+      {
+        "property": "fire",
+        "title": "ಬೆಂಕಿ ಹತ್ತಿದೆಯೇ?",
+        "description": "ಪಾತ್ರಕ್ಕೆ ಬೆಂಕಿ ಹತ್ತಿದೆಯೇ ಎಂಬುದು."
+      },
+      {
+        "property": "walking",
+        "title": "ನಡೆಯುತ್ತಿದೆಯೇ?",
+        "description": "ನಡಿಗೆಯ ಅನಿಮೇಷನ್; ಬೆಂಕಿ ಹತ್ತಿದಾಗ ಓಡುತ್ತದೆ."
+      }
+    ]
+  }
+}

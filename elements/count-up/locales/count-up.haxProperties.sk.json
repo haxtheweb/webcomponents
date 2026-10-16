@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Počítadlo",
+    "description": "Animované počítanie čísla až po cieľovú hodnotu, keď sa posunie do zobrazenia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Koncová hodnota",
+        "description": "Číslo, po ktoré sa počíta."
+      },
+      {
+        "property": "start",
+        "title": "Počiatočná hodnota",
+        "description": "Číslo, od ktorého sa počíta."
+      },
+      {
+        "property": "duration",
+        "title": "Trvanie",
+        "description": "Počet sekúnd, koľko má animácia počítania trvať."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Text predpony",
+        "description": "Text zobrazený pred číslom (napr. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Text prípony",
+        "description": "Text zobrazený za číslom (napr. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot predpony",
+        "description": "Voliteľný vložený obsah pred číslom."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot prípony",
+        "description": "Voliteľný vložený obsah za číslom."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Desatinné miesta",
+        "description": "Počet zobrazených desatinných miest."
+      },
+      {
+        "property": "separator",
+        "title": "Oddeľovač tisícov",
+        "description": "Znak oddeľujúci skupiny tisícov."
+      },
+      {
+        "property": "decimal",
+        "title": "Desatinný znak",
+        "description": "Znak použitý ako desatinná čiarka."
+      },
+      {
+        "property": "noeasing",
+        "title": "Bez zjemnenia",
+        "description": "Vypnúť zjemnenie, aby bolo počítanie lineárne."
+      }
+    ]
+  }
+}

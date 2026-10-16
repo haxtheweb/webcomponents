@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ma Tabu",
+    "description": "Gulu la ma tabu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Dzina (lothandiza kufikika)",
+        "description": "Dzina lofikika la gulu la ma tabu."
+      },
+      {
+        "property": "disabled",
+        "title": "Zoletsedwa",
+        "description": "Letsani ma tabu onse."
+      },
+      {
+        "property": "hidden",
+        "title": "Zobisika",
+        "description": "Bisani gulu la ma tabu."
+      },
+      {
+        "property": "sticky",
+        "title": "Zokhazikika",
+        "description": "Sungani ma tabu opingasa pamwamba popukusa."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Malire a Kapangidwe",
+        "description": "Malire a ma tabu opingasa; gwiritsani ntchito -1 kuti akhale oima okha."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Malire a Zizindikiro",
+        "description": "Malire owonetsera mawu pamodzi ndi zizindikiro. Mwachisawawa ndi 0; gwiritsani ntchito -1 kuti muwonetse zizindikiro zokha."
+      },
+      {
+        "slot": "",
+        "title": "Ma Tabu",
+        "description": "Mndandanda wa zinthu za <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Yapadera",
+        "description": "ID yapadera ya gulu la ma tabu ili."
+      }
+    ]
+  }
+}

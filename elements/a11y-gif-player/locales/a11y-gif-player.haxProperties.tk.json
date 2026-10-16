@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Animasiýaly GIF-leri elýeterli ediň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Animasiýaly GIF",
+        "description": "Animasiýaly GIF-iň URL-i."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatiw tekst",
+        "description": "Surat üçin alternatiw tekst."
+      },
+      {
+        "property": "longdesc",
+        "title": "Giňişleýin düşündiriş",
+        "description": "Elýeterlilik üçin GIF-iň giňişleýin düşündirişi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Hereketsiz surat",
+        "description": "GIF-iň hereketsiz wersiýasynyň URL-i."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Citace s obrázkem",
+    "description": "Stylizovaná citace s volitelným obrázkem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Obrázek",
+        "description": "Přidejte k referenci obrázek."
+      },
+      {
+        "property": "name",
+        "title": "Celé jméno",
+        "description": "Jméno osoby, která referenci poskytuje."
+      },
+      {
+        "property": "position",
+        "title": "Pozice nebo pracovní funkce",
+        "description": "Pozice nebo pracovní funkce osoby."
+      },
+      {
+        "slot": "",
+        "title": "Citace",
+        "description": "Citace autora reference."
+      }
+    ]
+  }
+}

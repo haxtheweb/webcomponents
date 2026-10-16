@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter(X) 삽입",
+    "description": "X의 트윗을 맥락에 맞게 삽입합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "트윗 URL",
+        "description": "삽입할 트윗의 URL입니다."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "테마",
+        "description": "X 트윗의 밝은 테마 또는 어두운 테마입니다.",
+        "options": {
+          "light": "밝게",
+          "dark": "어둡게"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "클릭 시 팝업 방지",
+        "description": "사용자가 x.com에서 트윗을 열지 못하게 합니다."
+      }
+    ]
+  }
+}

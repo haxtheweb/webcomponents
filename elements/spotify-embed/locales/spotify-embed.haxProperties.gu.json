@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify પ્લેયર એમ્બેડ માટે રૅપર."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "સ્રોત",
+        "description": "Spotify માંથી એમ્બેડ અથવા શેર લિંક."
+      },
+      {
+        "property": "theme",
+        "title": "થીમ",
+        "description": "પ્લેયર માટે પૃષ્ઠભૂમિ રંગ થીમ.",
+        "options": {
+          "": "ડિફૉલ્ટ",
+          "0": "કાળો"
+        }
+      },
+      {
+        "property": "size",
+        "title": "કદ",
+        "description": "પ્લેયરનું કદ.",
+        "options": {
+          "normal": "ડિફૉલ્ટ",
+          "compact": "સઘન"
+        }
+      }
+    ]
+  }
+}

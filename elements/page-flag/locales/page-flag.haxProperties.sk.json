@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Príznak stránky",
+    "description": "Redakčná poznámka pre autorov stránky."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Zvýrazňujúca farba príznaku stránky."
+      },
+      {
+        "property": "label",
+        "title": "Označenie",
+        "description": "Text označenia príznaku stránky."
+      }
+    ]
+  }
+}

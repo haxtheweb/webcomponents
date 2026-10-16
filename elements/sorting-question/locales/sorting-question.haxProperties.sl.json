@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Vprašanje z razvrščanjem",
+    "description": "Razvrstite elemente v pravilni vrstni red."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vprašanje",
+        "description": "Glava vprašanja."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Oblika ocenjevanja",
+        "description": "OER Schema: oblika ocenjevanja za to preverjanje (npr. točke, ocena, odstotki, dokončanje)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Učni cilj",
+        "description": "OER Schema: učni cilj, povezan s tem preverjanjem."
+      },
+      {
+        "property": "forCourse",
+        "title": "Tečaj",
+        "description": "OER Schema: tečaj, za katerega je to preverjanje namenjeno."
+      },
+      {
+        "property": "answers",
+        "title": "Odgovori",
+        "description": "Vrstni red odgovorov določa pravilno zaporedje."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ime kviza",
+        "description": "Ime kviza, uporabljeno za identifikacijo xAPI v analitičnih sistemih."
+      }
+    ]
+  }
+}

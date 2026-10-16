@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kummenti ta' Disqus",
+    "description": "Integrazzjoni mas-servizz web tal-kummenti Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Isem qasir",
+        "description": "Isem qasir tal-proprjetà fuq Disqus"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Flashcard",
+    "description": "Oefen begrippen met flashcards met een voor- en achterkant."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Voorkant van de kaart",
+        "description": "Tekst of vraag op de voorkant."
+      },
+      {
+        "slot": "back",
+        "title": "Achterkant van de kaart",
+        "description": "Verwacht antwoord."
+      },
+      {
+        "property": "imgSource",
+        "title": "Afbeeldingsbron",
+        "description": "Afbeeldingsbestand voor de kaart. Heeft voorrang op het afbeeldingstrefwoord."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Type actie",
+        "description": "OER Schema: het type actie bij deze oefening (bijv. lezen, schrijven, maken, onderzoeken, luisteren, kijken, reflecteren, bespreken, observeren, presenteren, beoordelen)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leerdoel",
+        "description": "OER Schema: ID of URL van het leerdoel dat deze oefening ondersteunt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Donker",
+        "description": "Donkere modus gebruiken."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Accentkleur van de kaart."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Afbeeldingstrefwoord",
+        "description": "Trefwoord voor een willekeurige afbeelding. Afbeeldingsbron heeft voorrang."
+      }
+    ]
+  }
+}

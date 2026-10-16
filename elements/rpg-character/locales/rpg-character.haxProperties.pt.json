@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Personagem de RPG",
+    "description": "Personagem divertido do HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Nome",
+        "description": "Palavra usada para gerar um personagem aleatório."
+      },
+      {
+        "property": "hat",
+        "title": "Chapéu",
+        "description": "Estilo do chapéu.",
+        "options": {
+          "none": "Padrão",
+          "random": "Aleatório",
+          "bunny": "Coelho",
+          "cowboy": "Caubói",
+          "education": "Educação",
+          "construction": "Construção",
+          "warning": "Aviso",
+          "watermelon": "Melancia",
+          "coffee": "Café",
+          "knight": "Cavaleiro",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "error": "Erro",
+          "edit": "Editar"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Largura",
+        "description": "Largura do personagem em pixels."
+      },
+      {
+        "property": "height",
+        "title": "Altura",
+        "description": "Altura do personagem em pixels."
+      },
+      {
+        "property": "fire",
+        "title": "Pegando fogo?",
+        "description": "Se o personagem está pegando fogo."
+      },
+      {
+        "property": "walking",
+        "title": "Andando?",
+        "description": "Animação de caminhada; corre quando está pegando fogo."
+      }
+    ]
+  }
+}

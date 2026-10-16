@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ٹیب",
+    "description": "ٹیباں دا مجموعہ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "لیبل (رسائی لئی)",
+        "description": "ٹیباں دے مجموعے لئی قابل رسائی لیبل۔"
+      },
+      {
+        "property": "disabled",
+        "title": "غیر فعال",
+        "description": "سارے ٹیب غیر فعال کرو۔"
+      },
+      {
+        "property": "hidden",
+        "title": "لکیا ہویا",
+        "description": "ٹیباں دا مجموعہ لکاؤ۔"
+      },
+      {
+        "property": "sticky",
+        "title": "چپکیا ہویا",
+        "description": "سکرول کردیاں ہوئیاں افقی ٹیب اُتے رکھو۔"
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "ترتیب دا بریک پوائنٹ",
+        "description": "افقی ٹیباں لئی بریک پوائنٹ؛ صرف عمودی لئی -1 ورتو۔"
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "آئیکن بریک پوائنٹ",
+        "description": "آئیکناں نال متن وکھاوݨ لئی بریک پوائنٹ۔ ڈیفالٹ 0 اے؛ صرف آئیکن والے موڈ لئی -1 ورتو۔"
+      },
+      {
+        "slot": "",
+        "title": "ٹیب",
+        "description": "<a11y-tab/> عنصراں دی لڑی۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "منفرد ID",
+        "description": "ایس ٹیب مجموعے لئی منفرد ID۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris znak",
+    "description": "Prikažite PSU znak identiteta s neobaveznim nazivom fakulteta i odredišnim URL-om."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Naziv fakulteta",
+        "description": "Naziv prikazan uz znak."
+      },
+      {
+        "property": "name2",
+        "title": "Naziv fakulteta 2",
+        "description": "Drugi naziv prikazan ispod prvog naziva fakulteta."
+      },
+      {
+        "property": "name3",
+        "title": "Naziv fakulteta 3",
+        "description": "Treći naziv prikazan ispod drugog naziva fakulteta."
+      },
+      {
+        "property": "url",
+        "title": "Poveznica",
+        "description": "Odredišni URL kada se klikne znak."
+      },
+      {
+        "property": "type",
+        "title": "Varijanta",
+        "description": "Vizualna varijanta znaka.",
+        "options": {
+          "default": "Zadano",
+          "light": "Svijetla",
+          "dark": "Tamno"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Okomiti raspored",
+        "description": "Prikaži treći naziv ispod drugog naziva s vodoravnom crtom."
+      }
+    ]
+  }
+}

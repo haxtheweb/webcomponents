@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D նվագարկիչ",
+    "description": "3D ֆայլերի / լրացված իրականության նվագարկիչ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Աղբյուր",
+        "description": "Այս AR ֆայլի URL-ը։"
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Տարրի X դիրքը AR-ում։"
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Տարրի Y դիրքը AR-ում։"
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Տարրի Z դիրքը AR-ում։"
+      },
+      {
+        "property": "skyColor",
+        "title": "Երկնքի գույն",
+        "description": "Ընտրեք տեսարանում երկնքի գույնը։"
+      }
+    ]
+  }
+}

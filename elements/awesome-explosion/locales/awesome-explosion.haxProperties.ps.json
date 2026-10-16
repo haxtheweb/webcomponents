@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "زبردسته چاودنه",
+    "description": "د چاودنې تعاملي انیمېشن له اختیاري غږیزو اغېزو سره."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "اندازه",
+        "description": "د چاودنې اندازه وټاکئ.",
+        "options": {
+          "tiny": "ډېر کوچنی",
+          "small": "کوچنی",
+          "medium": "منځنی",
+          "large": "لوی",
+          "epic": "حماسي"
+        }
+      },
+      {
+        "property": "color",
+        "title": "رنګ",
+        "description": "د چاودنې د رنګ بڼه وټاکئ.",
+        "options": {
+          "": "ډیفالټ",
+          "red": "سور",
+          "blue": "آبي",
+          "purple": "ارغواني",
+          "orange": "نارنجي",
+          "yellow": "ژېړ"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "غږیزې اغېزې",
+        "description": "غږیزې اغېزې فعالې کړئ."
+      },
+      {
+        "property": "resetSound",
+        "title": "غږ بیا پیلول",
+        "description": "هر ځل غږ له پیله بیا پیل کړئ."
+      },
+      {
+        "property": "image",
+        "title": "دودیز انځور",
+        "description": "د چاودنې د دودیز انځور لپاره اختیاري URL."
+      },
+      {
+        "property": "sound",
+        "title": "دودیز غږ",
+        "description": "د دودیزې غږیزې اغېزې لپاره اختیاري URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "غیر فعال",
+        "description": "ټول تعاملات غیر فعال کړئ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Kaadị Post",
+    "description": "Ihe mgbasa ozi egwuregwu e mere ka ọ dị ka kaadị post e zitere site n'ebe ụfọdụ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Nye",
+        "description": "Onye ka nke a na-aga?"
+      },
+      {
+        "property": "from",
+        "title": "Site n'aka",
+        "description": "Ị bụ onye?"
+      },
+      {
+        "property": "message",
+        "title": "Ozi",
+        "description": "Gịnị ka ị chọrọ ikwu?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Akara Post Sitere",
+        "description": "Ebee ka e si zipụ kaadị a?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Isi Mmalite Foto Bụ Isi",
+        "description": "Ebee ka foto gị dị?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Isi Mmalite Foto Stampụ",
+        "description": "Ebee ka foto gị dị?"
+      }
+    ]
+  }
+}

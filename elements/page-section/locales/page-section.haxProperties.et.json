@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Lehe sektsioon",
+    "description": "Sektsiooni konteiner lehe sisu ja ekraanipõhiste paigutuste jaoks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Kujunduslahendus",
+        "description": "Eelseadistatud stiil, mis uuendab seotud sätteid."
+      },
+      {
+        "property": "image",
+        "title": "Pilt",
+        "description": "Sektsiooni taustameedia."
+      },
+      {
+        "property": "bg",
+        "title": "Taustavärv",
+        "description": "Taustavärv, kui pilti pole määratud."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Kerimisnupp",
+        "description": "Kuva nupp, mis kerib järgmisse sektsiooni."
+      },
+      {
+        "property": "fold",
+        "title": "Kuva voldijoon",
+        "description": "Kuva sektsiooni allservas visuaalne voldijoon."
+      },
+      {
+        "property": "full",
+        "title": "Täisekraani suurus",
+        "description": "Täida vaataja ekraani kõrgus."
+      },
+      {
+        "property": "filter",
+        "title": "Rakenda filter",
+        "description": "Rakenda taustapildile visuaalne filter."
+      },
+      {
+        "slot": "",
+        "title": "Sisu",
+        "description": "Sektsiooni sisu."
+      },
+      {
+        "slot": "entice",
+        "title": "Ahvatlus",
+        "description": "Valikuline tähelepanu püüdev sisu."
+      },
+      {
+        "slot": "buttons",
+        "title": "Nupud",
+        "description": "Teksti all kuvatav nuppude rühm."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ankrutekst",
+        "description": "Navigeerimises kuvatav ankru silt."
+      }
+    ]
+  }
+}

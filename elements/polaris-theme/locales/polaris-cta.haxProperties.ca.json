@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Mostra un botó de crida a l'acció Polaris amb tema."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Text del botó",
+        "description": "Text que es mostra al botó de crida a l'acció."
+      },
+      {
+        "property": "link",
+        "title": "Enllaç",
+        "description": "URL de destinació del botó."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Variant d'estil visual.",
+        "options": {
+          "primary": "Principal",
+          "tinted": "Tenyit",
+          "light": "Clara"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Estil amb contorn",
+        "description": "Activa l'estil amb contorn."
+      },
+      {
+        "property": "filled",
+        "title": "Estil emplenat",
+        "description": "Activa l'estil emplenat."
+      }
+    ]
+  }
+}

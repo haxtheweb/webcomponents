@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Produkto per unu rigardo",
+    "description": "Bloko de rapida produkta superrigardo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Piktogramo",
+        "description": "Piktogramo reprezentanta la koncepton."
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Ĉefa koncepto per unu rigardo."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtitolo",
+        "description": "Plia detalo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Akcenta koloro por la piktogramo."
+      }
+    ]
+  }
+}

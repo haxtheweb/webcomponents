@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Tindakan pengguna",
+    "description": "Lacak tindakan pengguna dan kirim data ke penyimpanan xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Peristiwa yang dilacak",
+        "description": "Tindakan pengguna yang memicu peristiwa ini.",
+        "options": {
+          "visibility": "Dapat melihat ini",
+          "keydown": "Tekan tombol di sini",
+          "click": "Klik ini",
+          "hover": "Arahkan kursor ke sini"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Lacak setiap kali",
+        "description": "Secara bawaan, hanya kemunculan pertama yang dilacak."
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify 플레이어 삽입용 래퍼입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "소스",
+        "description": "Spotify의 삽입 또는 공유 링크입니다."
+      },
+      {
+        "property": "theme",
+        "title": "테마",
+        "description": "플레이어의 배경 색상 테마입니다.",
+        "options": {
+          "": "기본값",
+          "0": "검정"
+        }
+      },
+      {
+        "property": "size",
+        "title": "크기",
+        "description": "플레이어 크기입니다.",
+        "options": {
+          "normal": "기본값",
+          "compact": "간단히"
+        }
+      }
+    ]
+  }
+}

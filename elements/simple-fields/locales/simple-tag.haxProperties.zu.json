@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Umaka / Iphilisi",
+    "description": "Ilebula ehlangene emise okwephilisi enombala wokugcizelela, inkinobho yokukhansela, noma isishintshi ongakukhetha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Ilebula",
+        "description": "Umbhalo oboniswa ngaphakathi kwephilisi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala wokugcizelela",
+        "description": "Igama lombala wokugcizelela we-SimpleColors wangemuva wephilisi.",
+        "options": {
+          "": "-- okuzenzakalelayo --",
+          "red": "Okubomvu",
+          "pink": "Okupinki",
+          "purple": "Okunsomi",
+          "deep-purple": "Okunsomi okujulile",
+          "indigo": "I-Indigo",
+          "blue": "Okuluhlaza okwesibhakabhaka",
+          "light-blue": "Okuluhlaza okwesibhakabhaka okukhanyayo",
+          "cyan": "I-Cyan",
+          "teal": "I-Teal",
+          "green": "Okuluhlaza okotshani",
+          "light-green": "Okuluhlaza okotshani okukhanyayo",
+          "lime": "Okuluhlaza okwelamula",
+          "yellow": "Okuphuzi",
+          "amber": "I-Amber",
+          "orange": "Okuwolintshi",
+          "deep-orange": "Okuwolintshi okujulile",
+          "brown": "Okunsundu",
+          "blue-grey": "Ompunga oluhlaza okwesibhakabhaka",
+          "grey": "Ompunga"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Umbala wokugcizelela ozenzakalelayo",
+        "description": "Thola umbala wokugcizelela embhalweni welebula ngokuzenzakalelayo."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Inkinobho yokukhansela",
+        "description": "Bonisa inkinobho yesithonjana sokususa/ukukhansela ngaphakathi kwephilisi."
+      },
+      {
+        "property": "readonly",
+        "title": "Ukufunda kuphela",
+        "description": "Fihla inkinobho yokukhansela ukuze iphilisi libe ngelokubonisa kuphela."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Iyashintsha",
+        "description": "Yenza iphilisi lishintshe livuleke/livaleke lapho inkinobho ichofozwa."
+      },
+      {
+        "property": "toggled",
+        "title": "Kushintshiwe",
+        "description": "Ukuthi iphilisi livuliwe yini njengamanje."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Isithonjana sokushintshiwe",
+        "description": "Isithonjana esizoboniswa lapho iphilisi livuliwe."
+      },
+      {
+        "property": "disabled",
+        "title": "Kukhutshaziwe",
+        "description": "Khubaza ukusebenzisana nephilisi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV तालिका",
+    "description": "यसले CSV फाइल जहाँसुकै भए पनि त्यसबाट तालिका बनाउन सक्छ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "स्रोत",
+        "description": "यस CSV फाइलको URL।"
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "बनाइने तालिकाको शीर्षक।"
+      },
+      {
+        "property": "description",
+        "title": "विवरण",
+        "description": "तालिकाको डेटाको पहुँचयोग्यता सुधार्न थप विस्तृत विवरण।"
+      }
+    ]
+  }
+}

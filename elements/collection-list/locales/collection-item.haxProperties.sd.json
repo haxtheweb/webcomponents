@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "ڪليڪشن شيءِ",
+    "description": "ڪليڪشن لسٽ اندر استعمال لاءِ ڪارڊ جي انداز واري شيءِ، جنهن ۾ متن، لنڪ ۽ اختياري ميڊيا هجي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "لنڪ",
+        "description": "هن ڪارڊ لاءِ منزل جو URL."
+      },
+      {
+        "property": "image",
+        "title": "تصوير",
+        "description": "پس منظر جي تصوير."
+      },
+      {
+        "property": "line1",
+        "title": "سٽ 1",
+        "description": "متن جي پهرين سٽ."
+      },
+      {
+        "property": "line2",
+        "title": "سٽ 2",
+        "description": "متن جي ٻي سٽ."
+      },
+      {
+        "property": "line3",
+        "title": "سٽ 3",
+        "description": "متن جي ٽين سٽ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "آئڪن",
+        "description": "ڪارڊ جي نمائندگي ڪندڙ آئڪن."
+      },
+      {
+        "property": "saturate",
+        "title": "سيچوريشن اثر",
+        "description": "يوزر فوڪس تي تصوير جي سيچوريشن بدلايو."
+      },
+      {
+        "property": "tags",
+        "title": "ٽيگ",
+        "description": "ڪاما سان ڌار ٽيگن جي لسٽ."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ",
+        "description": "ٽيگن لاءِ استعمال ٿيندڙ رنگ."
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "لنڪ کي بيان ڪندڙ متبادل متن."
+      }
+    ]
+  }
+}

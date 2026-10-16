@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Shaxda CSV",
+    "description": "Tani waxay shax ka samayn kartaa fayl CSV meel kasta oo uu ku yaal."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Isha",
+        "description": "URL-ka faylkan CSV."
+      },
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Cinwaanka shaxda la samaynayo."
+      },
+      {
+        "property": "description",
+        "title": "Sharaxaad",
+        "description": "Sharaxaad faahfaahsan si xogta shaxda si fiican loo helo."
+      }
+    ]
+  }
+}

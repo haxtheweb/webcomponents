@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Pahuhopu Hoʻomohala Hoʻomau o nā Aupuni Hui Pū ʻIa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Pahuhopu",
+        "description": "Helu UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Waihoʻoluʻu wale nō",
+        "description": "E hōʻike i ka waihoʻoluʻu o ka pahuhopu wale nō."
+      }
+    ]
+  }
+}

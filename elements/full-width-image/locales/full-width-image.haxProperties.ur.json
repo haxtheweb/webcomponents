@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "تصویری سیکشن",
+    "description": "پوری چوڑائی کی تصویر جو صفحے کے حصوں کو الگ کرتی ہے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "پس منظر کی تصویر۔"
+      },
+      {
+        "property": "caption",
+        "description": "متن کی سرخی۔"
+      }
+    ]
+  }
+}

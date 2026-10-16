@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Cuadro de actividad",
+    "description": "Pequeño bloque de encabezado con estilo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icono",
+        "description": "Icono que se muestra junto al cuadro de actividad."
+      },
+      {
+        "property": "tag",
+        "title": "Etiqueta del cuadro de actividad",
+        "description": "Etiqueta que se muestra en el cuadro de actividad."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Sin color",
+        "description": "Evitar que se apliquen colores al icono."
+      }
+    ]
+  }
+}

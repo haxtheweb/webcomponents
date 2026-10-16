@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Involucru H5P per caricà è prisentà schedarii .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Codice d'incrustazione iframe H5P"
+      }
+    ]
+  }
+}

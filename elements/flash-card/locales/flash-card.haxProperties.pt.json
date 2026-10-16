@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Flashcard",
+    "description": "Pratique conceitos com flashcards de frente e verso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Frente do cartão",
+        "description": "Texto ou pergunta da frente."
+      },
+      {
+        "slot": "back",
+        "title": "Verso do cartão",
+        "description": "Resposta esperada."
+      },
+      {
+        "property": "imgSource",
+        "title": "Origem da imagem",
+        "description": "Arquivo de imagem usado no cartão. Substitui a palavra-chave da imagem."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tipo de ação",
+        "description": "OER Schema: o tipo de ação envolvido nesta prática (ex.: Ler, Escrever, Fazer, Pesquisar, Ouvir, Assistir, Refletir, Discutir, Observar, Apresentar, Avaliar)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objetivo de aprendizagem",
+        "description": "OER Schema: ID ou URL do objetivo de aprendizagem que esta prática apoia."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Escuro",
+        "description": "Usar o modo escuro."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Cor de destaque do cartão."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Palavra-chave da imagem",
+        "description": "Palavra-chave para imagem aleatória. Substituída pela origem da imagem."
+      }
+    ]
+  }
+}

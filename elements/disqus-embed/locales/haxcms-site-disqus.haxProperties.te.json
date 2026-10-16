@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus వ్యాఖ్యలు",
+    "description": "Disqus వ్యాఖ్యల వెబ్ సేవతో అనుసంధానం"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "చిన్న పేరు",
+        "description": "Disqus‌లో ప్రాపర్టీ చిన్న పేరు"
+      }
+    ]
+  }
+}

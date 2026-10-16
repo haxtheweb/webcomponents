@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "ストップノート",
+    "description": "読者に特定の指示を知らせるメッセージ。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "ストップノートのタイトルを入力します。"
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "外部URLを入力します。"
+      },
+      {
+        "property": "status",
+        "title": "ステータス",
+        "description": "ステータスを設定すると、色とアイコンがそれに合わせて変わります",
+        "options": {
+          "stop": "停止",
+          "warning": "警告",
+          "success": "確認",
+          "info": "お知らせ"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "ノートのテキスト",
+        "description": "ストップノートのテキスト。"
+      }
+    ]
+  }
+}

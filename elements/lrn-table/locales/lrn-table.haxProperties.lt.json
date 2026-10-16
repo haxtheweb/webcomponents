@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV lentelė",
+    "description": "Sugeneruoja lentelę iš CSV failo, kad ir kur jis būtų."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Šaltinis",
+        "description": "Šio CSV failo URL."
+      },
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Generuojamos lentelės pavadinimas."
+      },
+      {
+        "property": "description",
+        "title": "Aprašymas",
+        "description": "Išsamesnis aprašymas, gerinantis lentelės duomenų prieinamumą."
+      }
+    ]
+  }
+}

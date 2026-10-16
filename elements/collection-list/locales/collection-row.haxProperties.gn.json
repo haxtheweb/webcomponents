@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Tysýi ñembyaty",
+    "description": "Mba'e tysýi ojeporúva ñembyaty rysýipe, oguerekóva moñe'ẽrã, joajuha, ta'ãnga'i, teramoĩ ha ta'ãnga ikatúramo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Joajuha",
+        "description": "URL ohohápe ko tysýi."
+      },
+      {
+        "property": "image",
+        "title": "Ta'ãnga",
+        "description": "Ta'ãnga tysýipe g̃uarã."
+      },
+      {
+        "property": "alt",
+        "title": "Moñe'ẽrã mokõiha",
+        "description": "Moñe'ẽrã mokõiha omombe'úva ta'ãnga."
+      },
+      {
+        "property": "line1",
+        "title": "Tysýi 1",
+        "description": "Moñe'ẽrã tysýi peteĩha."
+      },
+      {
+        "property": "line2",
+        "title": "Tysýi 2",
+        "description": "Moñe'ẽrã tysýi mokõiha."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ta'ãnga'i",
+        "description": "Ta'ãnga'i ohechaukáva tysýi."
+      },
+      {
+        "property": "saturate",
+        "title": "Sa'y mbarete",
+        "description": "Emoambue ta'ãnga sa'y mbarete puruhára ohechakuaa jave."
+      },
+      {
+        "property": "tags",
+        "title": "Teramoĩ",
+        "description": "Teramoĩ rysýi ojei'ãva kóma rupive."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y",
+        "description": "Sa'y ojeporúva ta'ãnga'i ha teramoĩme g̃uarã."
+      }
+    ]
+  }
+}

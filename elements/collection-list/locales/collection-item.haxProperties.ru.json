@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Элемент коллекции",
+    "description": "Элемент в виде карточки для списка коллекции: текст, ссылка и необязательные медиа."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Ссылка",
+        "description": "URL назначения для этой карточки."
+      },
+      {
+        "property": "image",
+        "title": "Изображение",
+        "description": "Фоновое изображение."
+      },
+      {
+        "property": "line1",
+        "title": "Строка 1",
+        "description": "Первая строка текста."
+      },
+      {
+        "property": "line2",
+        "title": "Строка 2",
+        "description": "Вторая строка текста."
+      },
+      {
+        "property": "line3",
+        "title": "Строка 3",
+        "description": "Третья строка текста."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Значок",
+        "description": "Значок, представляющий карточку."
+      },
+      {
+        "property": "saturate",
+        "title": "Эффект насыщенности",
+        "description": "Изменять насыщенность изображения при фокусе."
+      },
+      {
+        "property": "tags",
+        "title": "Теги",
+        "description": "Список тегов через запятую."
+      },
+      {
+        "property": "accentColor",
+        "title": "Цвет",
+        "description": "Цвет тегов."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Альтернативный текст, описывающий ссылку."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX söz sənəti",
+    "description": "HAX üçün loqo elementi, təbii ki, HAX-uyğun element kimi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Yerləşdiriləcək HAX loqosunun ölçüsü",
+        "options": {
+          "mini": "Mini",
+          "small": "Kiçik",
+          "normal": "Normal",
+          "large": "Böyük"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Loqonun böyük hərflərə çevrilib-çevrilməməsi"
+      }
+    ]
+  }
+}

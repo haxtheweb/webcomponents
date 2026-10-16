@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR කේතය",
+    "description": "ස්මාර්ට් ජංගම දුරකථනයකින් ස්කෑන් කිරීමට කේතය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR දත්ත",
+        "description": "QR කේතය සඳහා දත්ත මූලාශ්‍රය."
+      },
+      {
+        "property": "title",
+        "title": "විකල්ප මාතෘකාව",
+        "description": "QR කේත මූලාශ්‍රයට සබැඳි විකල්ප මාතෘකාව."
+      },
+      {
+        "property": "modulesize",
+        "title": "ප්‍රමාණය",
+        "description": "QR කේතයේ ප්‍රමාණය."
+      },
+      {
+        "property": "margin",
+        "title": "මායිම",
+        "description": "කේතය වටා ඇති ආවරණය."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "ප්‍රතිදාන ආකෘතිය",
+        "description": "ප්‍රතිදානය කළ යුතු ආකෘතිය.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

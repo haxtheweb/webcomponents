@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) txertaketa",
+    "description": "Txertatu X-ko txio bat testuinguruan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Txioaren URLa",
+        "description": "Txertatu beharreko txioaren URLa."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Gaia",
+        "description": "X-ko txioetarako gai argia edo iluna.",
+        "options": {
+          "light": "Argia",
+          "dark": "Iluna"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Eragotzi leiho gainerakorra klik egitean",
+        "description": "Eragotzi erabiltzaileek txioa x.com-en irekitzea."
+      }
+    ]
+  }
+}

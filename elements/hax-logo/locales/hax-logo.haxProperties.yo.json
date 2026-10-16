@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Iṣẹ́-ọnà ọ̀rọ̀ HAX",
+    "description": "Èròjà àmì-ìdánimọ̀ fún HAX, dájúdájú gẹ́gẹ́ bí èròjà tí ó ṣiṣẹ́ pẹ̀lú HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Ìwọ̀n àmì-ìdánimọ̀ HAX tí a ó gbé kalẹ̀",
+        "options": {
+          "mini": "Kékeré",
+          "small": "Kékeré",
+          "normal": "Déédé",
+          "large": "Ńlá"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Bóyá kí a yí àmì-ìdánimọ̀ padà sí lẹ́tà ńlá"
+      }
+    ]
+  }
+}

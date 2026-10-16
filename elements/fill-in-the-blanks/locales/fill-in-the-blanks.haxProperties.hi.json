@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "रिक्त स्थान भरें",
+    "description": "मूल्यांकन गतिविधि जिसमें शिक्षार्थी किसी कथन में छूटे हुए शब्द पूरे करते हैं।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "प्रश्न",
+        "description": "उपयोगकर्ताओं के उत्तर देने के लिए प्रश्न।"
+      },
+      {
+        "property": "statement",
+        "title": "कथन",
+        "description": "वह कथन जिसे शब्द चिह्नित करने वाले इंटरैक्शन में बदला जाएगा।"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ग्रेडिंग प्रारूप",
+        "description": "OER Schema: इस मूल्यांकन का ग्रेडिंग प्रारूप (जैसे अंक, अक्षर ग्रेड, प्रतिशत, पूर्णता)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "अधिगम उद्देश्य",
+        "description": "OER Schema: इस मूल्यांकन से जुड़ा अधिगम उद्देश्य।"
+      },
+      {
+        "property": "forCourse",
+        "title": "पाठ्यक्रम",
+        "description": "OER Schema: वह पाठ्यक्रम जिसके लिए यह मूल्यांकन है।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "क्विज़ का नाम",
+        "description": "इस आइटम की पहचान के लिए xAPI-आधारित परिवेशों में उपयोग हेतु भेजा गया क्विज़ नाम"
+      }
+    ]
+  }
+}

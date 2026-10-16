@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris-CTA",
+    "description": "E Polaris-Call-to-Action-Knäppchen am Thema uweisen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Knäppchentext",
+        "description": "Text am Call-to-Action-Knäppchen."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Zil-URL fir de Knäppchen."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Visuell Stilvariant.",
+        "options": {
+          "primary": "Primär",
+          "tinted": "Getéint",
+          "light": "Hell"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Konturstil",
+        "description": "Konturdarstellung aktivéieren."
+      },
+      {
+        "property": "filled",
+        "title": "Gefëllte Stil",
+        "description": "Gefëllt Darstellung aktivéieren."
+      }
+    ]
+  }
+}

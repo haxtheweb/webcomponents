@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kotta",
+    "description": "Kottát, gitártabulatúrát és partitúrát jelenít meg és játszik le alphaTex vagy MusicXML segítségével."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex jelölés",
+        "description": "A kotta beágyazott alphaTex jelölése. A jelölés szerkesztéséhez közvetlenül módosítsa; sablonban tárolódik, így a térközök megmaradnak."
+      },
+      {
+        "property": "source",
+        "title": "Partitúrafájl",
+        "description": "MusicXML (.xml/.musicxml/.mxl) vagy Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) fájl feltöltése vagy hivatkozása. Beállítva felülírja a beágyazott alphaTexet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Hanglejátszás",
+        "description": "Alapértelmezés szerint bekapcsolva - hallgassa meg a kottát a beépített szintetizátoron. Kapcsolja ki a csak megtekintési (hang nélküli) módhoz."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Megjelenítési beállítások mutatása",
+        "description": "Nagyítás, nyújtás és elrendezés gombok megjelenítése a lejátszósávon."
+      },
+      {
+        "property": "showExport",
+        "title": "Exportálás gombok mutatása",
+        "description": "MIDI-letöltés és nyomtatás/PDF gombok megjelenítése a lejátszósávon."
+      }
+    ]
+  }
+}

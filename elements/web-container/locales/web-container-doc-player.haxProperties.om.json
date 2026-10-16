@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Taphataa galmee web component"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Foddaa dhoksi",
+        "description": "Foddaa bu'aa dhoksi, yeroo kaayyoon terminal qofa ta'e gargaara"
+      }
+    ]
+  }
+}

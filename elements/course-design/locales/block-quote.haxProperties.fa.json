@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "نقل‌قول بلوکی",
+    "description": "بلوک نقل‌قول با سبک ویژه."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "ارجاع",
+        "description": "متن ارجاع."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "متن جایگزین تصویر."
+      },
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "تصویری که همراه نقل‌قول نمایش داده می‌شود."
+      }
+    ]
+  }
+}

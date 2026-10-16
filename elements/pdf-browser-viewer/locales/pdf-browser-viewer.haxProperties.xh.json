@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Umboniseli we-PDF kwiBhrawuza",
+    "description": "Faka ifayile ye-PDF phakathi kombhalo nolwakhiwo lwekhadi olukhethwayo neqhosha lokukhuphela."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "I-URL ye-PDF",
+        "description": "Indawo yefayile ye-PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Isihloko",
+        "description": "Umbhalo wesihloko sekhadi."
+      },
+      {
+        "property": "card",
+        "title": "Ulwakhiwo lwekhadi",
+        "description": "Bonisa i-PDF ekhadini elineqhosha lokukhuphela."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Ileyibhile yokukhuphela",
+        "description": "Ileyibhile yeqhosha lokukhuphela."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Umyalezo wokungaxhaswa",
+        "description": "Umyalezo xa ibhrawuza ingakwazi ukubonisa iifayile ze-PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Umyalezo wekhonkco wokungaxhaswa",
+        "description": "Umbhalo wekhonkco xa ibhrawuza ingakwazi ukubonisa iifayile ze-PDF."
+      },
+      {
+        "property": "width",
+        "title": "Ububanzi",
+        "description": "Ububanzi bomboniseli we-PDF."
+      },
+      {
+        "property": "height",
+        "title": "Ubude",
+        "description": "Ubude bomboniseli we-PDF."
+      }
+    ]
+  }
+}

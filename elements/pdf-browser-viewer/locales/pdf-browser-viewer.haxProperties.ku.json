@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Dîtera PDF ya Gerokê",
+    "description": "Pelek PDF di nav rûpelê de bi rûpelsazkirina kartê ya vebijarkî û bişkoka daxistinê bi cih bike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL ya PDF",
+        "description": "Cihê pela PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Sernivîs",
+        "description": "Nivîsa sernivîsa kartê."
+      },
+      {
+        "property": "card",
+        "title": "Rûpelsazkirina kartê",
+        "description": "PDF di kartekê de bi bişkoka daxistinê nîşan bide."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Etîketa daxistinê",
+        "description": "Etîketa bişkoka daxistinê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Peyama nayê piştgirîkirin",
+        "description": "Peyama dema ku gerok nikare pelên PDF nîşan bide."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Peyama girêdanê ya nayê piştgirîkirin",
+        "description": "Nivîsa girêdanê dema ku gerok nikare pelên PDF nîşan bide."
+      },
+      {
+        "property": "width",
+        "title": "Firehî",
+        "description": "Firehiya dîtera PDF."
+      },
+      {
+        "property": "height",
+        "title": "Bilindahî",
+        "description": "Bilindahiya dîtera PDF."
+      }
+    ]
+  }
+}

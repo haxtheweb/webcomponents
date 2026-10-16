@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Stegobjekt",
+    "description": "Objekt som ingår i en steglista"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel"
+      }
+    ]
+  }
+}

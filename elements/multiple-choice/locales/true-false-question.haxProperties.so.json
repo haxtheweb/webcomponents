@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Su'aal Run / Been",
+    "description": "Su'aal run ama been ah"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Su'aal",
+        "description": "Su'aasha ay isticmaalayaashu ka jawaabayaan."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Jawaabta Saxda ah"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Magaca imtixaanka",
+        "description": "Magaca imtixaanka loo gudbiyo deegaannada xAPI si loo aqoonsado walaxdan"
+      }
+    ]
+  }
+}

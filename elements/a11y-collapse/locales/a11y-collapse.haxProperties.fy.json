@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ynklapbere kontener",
+    "description": "Inkele út- en ynklapbere kontener."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Kop",
+        "description": "Tekst foar de ynklapbere seksje."
+      },
+      {
+        "property": "expanded",
+        "title": "Útklapt",
+        "description": "Standert útklapt."
+      },
+      {
+        "property": "headingButton",
+        "title": "Kopknop",
+        "description": "Meitsje de hiele kop klikber yn stee fan allinnich it ikoan."
+      },
+      {
+        "property": "icon",
+        "title": "Ikoan",
+        "description": "Ikoan foar de knop om út/yn te klappen."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikoan (as útklapt)",
+        "description": "Opsjoneel ikoan foar de útklapte steat fan de knop."
+      },
+      {
+        "slot": "",
+        "title": "Ynhâld",
+        "description": "Ynhâld foar de ynklapbere seksje."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Arktip",
+        "description": "Arktip foar de knop om út/yn te klappen."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Arktip (as útklapt)",
+        "description": "Arktip foar de út-/ynklapknop as er útklapt is."
+      }
+    ]
+  }
+}

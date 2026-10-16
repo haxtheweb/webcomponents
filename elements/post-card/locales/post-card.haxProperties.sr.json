@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Разгледница",
+    "description": "Разигран медијски елемент који изгледа као права разгледница послата однекуд"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "За",
+        "description": "Коме је намењено?"
+      },
+      {
+        "property": "from",
+        "title": "Од",
+        "description": "Ко сте ви?"
+      },
+      {
+        "property": "message",
+        "title": "Порука",
+        "description": "Шта желите да кажете?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Поштански жиг из",
+        "description": "Одакле је ова разгледница послата?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Извор главне фотографије",
+        "description": "Где се налази ваша фотографија?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Извор фотографије марке",
+        "description": "Где се налази ваша фотографија?"
+      }
+    ]
+  }
+}

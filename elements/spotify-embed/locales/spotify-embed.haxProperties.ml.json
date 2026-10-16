@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify പ്ലെയർ ഉൾച്ചേർക്കലുകൾക്കുള്ള റാപ്പർ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ഉറവിടം",
+        "description": "Spotify-ൽ നിന്നുള്ള ഉൾച്ചേർക്കൽ അല്ലെങ്കിൽ പങ്കിടൽ ലിങ്ക്."
+      },
+      {
+        "property": "theme",
+        "title": "തീം",
+        "description": "പ്ലെയറിനുള്ള പശ്ചാത്തല നിറ തീം.",
+        "options": {
+          "": "സ്ഥിരം",
+          "0": "കറുപ്പ്"
+        }
+      },
+      {
+        "property": "size",
+        "title": "വലുപ്പം",
+        "description": "പ്ലെയർ വലുപ്പം.",
+        "options": {
+          "normal": "സ്ഥിരം",
+          "compact": "ഒതുക്കമുള്ളത്"
+        }
+      }
+    ]
+  }
+}

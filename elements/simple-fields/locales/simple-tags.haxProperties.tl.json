@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Mga Tag",
+    "description": "Simpleng listahan ng tag para ipakita sa pahina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Mga Tag",
+        "description": "Listahan ng mga tag na pinaghihiwalay ng kuwit."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Awtomatikong Accent na Kulay",
+        "description": "Awtomatikong itakda ang accent na kulay batay sa label."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulay",
+        "description": "Kulay para sa mga tag."
+      }
+    ]
+  }
+}

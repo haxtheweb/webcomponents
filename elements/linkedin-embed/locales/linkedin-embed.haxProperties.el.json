@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Ενσωμάτωση LinkedIn",
+    "description": "Ενσωμάτωση κάρτας προφίλ LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Προσωπικό όνομα URL",
+        "description": "Τμήμα προσωπικού ονόματος χρήστη LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Τοπικές ρυθμίσεις",
+        "description": "Τιμή μεταδεδομένων τοπικών ρυθμίσεων, όπως en_US."
+      }
+    ]
+  }
+}

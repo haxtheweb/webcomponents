@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "بند ہوݨ والا کنٹینر",
+    "description": "اک کلا کھلݨ تے بند ہوݨ والا کنٹینر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "سرخی",
+        "description": "بند ہوݨ والے حصے دا متن۔"
+      },
+      {
+        "property": "expanded",
+        "title": "کھلیا ہویا",
+        "description": "ڈیفالٹ طور تے کھولو۔"
+      },
+      {
+        "property": "headingButton",
+        "title": "سرخی بٹن",
+        "description": "صرف آئیکن دی تھاں پوری سرخی نوں کلک کرن جوگا بناؤ۔"
+      },
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "کھولݨ/بند کرن والے بٹن دا آئیکن۔"
+      },
+      {
+        "property": "iconExpanded",
+        "title": "آئیکن (کھلیا ہوݨ تے)",
+        "description": "کھلی حالت لئی اختیاری آئیکن۔"
+      },
+      {
+        "slot": "",
+        "title": "مواد",
+        "description": "بند ہوݨ والے حصے دا مواد۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "ٹول ٹپ",
+        "description": "کھولݨ/بند کرن والے بٹن دا ٹول ٹپ۔"
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "ٹول ٹپ (کھلیا ہوݨ تے)",
+        "description": "کھلیا ہوݨ تے کھولݨ/بند کرن والے بٹن دا ٹول ٹپ۔"
+      }
+    ]
+  }
+}

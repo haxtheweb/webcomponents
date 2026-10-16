@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "បង្ហាញប៊ូតុងអំពាវនាវឱ្យធ្វើសកម្មភាព Polaris តាមរចនាប័ទ្ម។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "អត្ថបទប៊ូតុង",
+        "description": "អត្ថបទបង្ហាញក្នុងប៊ូតុងអំពាវនាវឱ្យធ្វើសកម្មភាព។"
+      },
+      {
+        "property": "link",
+        "title": "តំណ",
+        "description": "URL គោលដៅសម្រាប់ប៊ូតុង។"
+      },
+      {
+        "property": "type",
+        "title": "បំរែបំរួល",
+        "description": "បំរែបំរួលរចនាប័ទ្មមើលឃើញ។",
+        "options": {
+          "primary": "ចម្បង",
+          "tinted": "មានពណ៌ស្រាល",
+          "light": "ភ្លឺ"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "រចនាប័ទ្មមានគែម",
+        "description": "បើករចនាប័ទ្មមានគែម។"
+      },
+      {
+        "property": "filled",
+        "title": "រចនាប័ទ្មពេញពណ៌",
+        "description": "បើករចនាប័ទ្មពេញពណ៌។"
+      }
+    ]
+  }
+}

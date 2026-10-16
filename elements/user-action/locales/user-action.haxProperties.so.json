@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Falka isticmaalaha",
+    "description": "La soco falalka isticmaalaha oo xogta u dir kaydadka xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Dhacdada lala socdo",
+        "description": "Falka isticmaalaha ee kiciya dhacdadan.",
+        "options": {
+          "visibility": "Arki kara tan",
+          "keydown": "Halkan ku riix fure",
+          "click": "Guji tan",
+          "hover": "Dul mari tan"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "La soco mar kasta",
+        "description": "Caadi ahaan, dhacdada koowaad oo keliya ayaa lala socdaa."
+      }
+    ]
+  }
+}

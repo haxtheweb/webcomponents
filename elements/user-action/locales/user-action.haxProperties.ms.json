@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Tindakan pengguna",
+    "description": "Jejak tindakan pengguna dan hantar data ke stor xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Peristiwa untuk dijejak",
+        "description": "Tindakan pengguna yang mencetuskan peristiwa ini.",
+        "options": {
+          "visibility": "Boleh melihat ini",
+          "keydown": "Tekan kekunci di sini",
+          "click": "Klik ini",
+          "hover": "Tuding pada ini"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Jejak setiap kali",
+        "description": "Secara lalai, hanya kejadian pertama dijejak."
+      }
+    ]
+  }
+}

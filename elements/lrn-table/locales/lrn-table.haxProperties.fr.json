@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tableau CSV",
+    "description": "Permet de générer un tableau à partir d'un fichier CSV, où qu'il se trouve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Source",
+        "description": "URL de ce fichier CSV."
+      },
+      {
+        "property": "title",
+        "title": "Titre",
+        "description": "Titre du tableau à générer."
+      },
+      {
+        "property": "description",
+        "title": "Description",
+        "description": "Description plus détaillée pour améliorer l'accessibilité des données du tableau."
+      }
+    ]
+  }
+}

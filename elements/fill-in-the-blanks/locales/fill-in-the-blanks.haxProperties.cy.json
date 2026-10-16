@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Llenwi'r bylchau",
+    "description": "Gweithgaredd asesu lle mae dysgwyr yn cwblhau geiriau coll mewn datganiad."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Cwestiwn",
+        "description": "Cwestiwn i ddefnyddwyr ymateb iddo."
+      },
+      {
+        "property": "statement",
+        "title": "Datganiad",
+        "description": "Datganiad a fydd yn cael ei drosi'n rhyngweithiad marcio'r geiriau."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Fformat graddio",
+        "description": "OER Schema: fformat graddio ar gyfer yr asesiad hwn (e.e. pwyntiau, llythyren, canran, cwblhau)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Amcan dysgu",
+        "description": "OER Schema: amcan dysgu sy'n gysylltiedig â'r asesiad hwn."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cwrs",
+        "description": "OER Schema: y cwrs y bwriedir yr asesiad hwn ar ei gyfer."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Enw'r cwis",
+        "description": "Enw'r cwis a drosglwyddir i'w ddefnyddio mewn amgylcheddau a yrrir gan xAPI i adnabod yr eitem hon"
+      }
+    ]
+  }
+}

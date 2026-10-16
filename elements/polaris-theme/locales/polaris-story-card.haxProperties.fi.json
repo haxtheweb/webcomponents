@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris-tarinakortti",
+    "description": "Näytä Polaris-tarinakortti, jossa on taustakuva, pilarinimike ja otsikkoteksti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Taustakuva",
+        "description": "Kortin taustana näytettävän kuvan URL."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Taustan koko",
+        "description": "Miten taustakuva täyttää kortin (CSS background-size).",
+        "options": {
+          "cover": "peitä (cover)",
+          "contain": "sovita (contain)",
+          "auto": "automaattinen (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Taustan kiinnitys",
+        "description": "Miten taustakuva käyttäytyy vieritettäessä (CSS background-attachment).",
+        "options": {
+          "scroll": "vierittyvä (scroll)",
+          "fixed": "kiinteä (fixed)",
+          "local": "paikallinen (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Pilarin nimike",
+        "description": "Lyhyt isoilla kirjaimilla kirjoitettu nimike kortin yläreunassa. Jätä tyhjäksi piilottaaksesi."
+      },
+      {
+        "property": "label",
+        "title": "Kortin teksti",
+        "description": "Alapaneelissa näytettävä ensisijainen teksti."
+      },
+      {
+        "property": "link",
+        "title": "Linkki",
+        "description": "Valinnainen kohde-URL, joka kattaa koko kortin."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "ฝังชุมชน Discord จาก URL สำหรับแชร์"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ทรัพยากร",
+        "description": "URL ทรัพยากร"
+      },
+      {
+        "property": "height",
+        "title": "ความสูง",
+        "description": "ความสูงของเฟรมเนื้อหา"
+      },
+      {
+        "property": "width",
+        "title": "ความกว้าง",
+        "description": "ความกว้างของเฟรมเนื้อหา"
+      }
+    ]
+  }
+}

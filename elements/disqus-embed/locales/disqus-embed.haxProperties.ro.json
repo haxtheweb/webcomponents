@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Încorporează comentarii Disqus într-o pagină."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Nume scurt",
+        "description": "Numele scurt al site-ului, care determină gazda scriptului Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL pagină",
+        "description": "URL-ul paginii de care este atașat firul de comentarii."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Identificator pagină",
+        "description": "Identificatorul unic al firului de comentarii al paginii."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Titlu pagină",
+        "description": "Titlul paginii de care este atașat firul de comentarii."
+      },
+      {
+        "property": "loadingText",
+        "title": "Text de încărcare",
+        "description": "Text anunțat în timp ce se încarcă comentariile."
+      },
+      {
+        "property": "lang",
+        "title": "Limbă",
+        "description": "Codul limbii pentru interfața Disqus, de ex. en."
+      }
+    ]
+  }
+}

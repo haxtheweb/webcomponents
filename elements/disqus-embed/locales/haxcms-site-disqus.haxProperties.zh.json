@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus 评论",
+    "description": "与 Disqus 评论网络服务的集成"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "短名称",
+        "description": "Disqus 上的站点短名称"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Zastavica stranice",
+    "description": "Urednička bilješka za autore stranice."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Boja naglaska zastavice stranice."
+      },
+      {
+        "property": "label",
+        "title": "Oznaka",
+        "description": "Tekst oznake zastavice stranice."
+      }
+    ]
+  }
+}

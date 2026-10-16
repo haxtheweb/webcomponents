@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "शब्दहरू चिन्ह लगाउनुहोस्",
+    "description": "पाठभित्र शब्दहरूमा क्लिक गरेर अवधारणाहरू पहिचान गर्नुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "प्रश्न",
+        "description": "प्रयोगकर्ताहरूले जवाफ दिने प्रश्न।"
+      },
+      {
+        "property": "statement",
+        "title": "कथन",
+        "description": "\"शब्दहरू चिन्ह लगाउनुहोस्\" अन्तरक्रियामा रूपान्तरण गरिने कथन।"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ग्रेडिङ ढाँचा",
+        "description": "OER Schema: यस मूल्याङ्कनको ग्रेडिङ ढाँचा (जस्तै अङ्क, अक्षर, प्रतिशत, पूर्णता)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "सिकाइ उद्देश्य",
+        "description": "OER Schema: यस मूल्याङ्कनसँग सम्बन्धित सिकाइ उद्देश्य।"
+      },
+      {
+        "property": "forCourse",
+        "title": "पाठ्यक्रम",
+        "description": "OER Schema: यो मूल्याङ्कन लक्षित पाठ्यक्रम।"
+      },
+      {
+        "property": "answers",
+        "title": "उत्तरहरू"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "क्विजको नाम",
+        "description": "xAPI-सञ्चालित वातावरणमा यस वस्तुको पहिचानका लागि पठाइने क्विजको नाम"
+      }
+    ]
+  }
+}

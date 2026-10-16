@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) ഉൾച്ചേർക്കൽ",
+    "description": "X-ൽ നിന്നുള്ള ഒരു ട്വീറ്റ് സന്ദർഭത്തിൽ ഉൾച്ചേർക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ട്വീറ്റ് URL",
+        "description": "ഉൾച്ചേർക്കേണ്ട ട്വീറ്റിന്റെ URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "തീം",
+        "description": "X ട്വീറ്റുകൾക്കുള്ള ഇളം അല്ലെങ്കിൽ ഇരുണ്ട തീം.",
+        "options": {
+          "light": "ഇളം",
+          "dark": "ഇരുണ്ടത്"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "ക്ലിക്കിൽ പോപ്പ്അപ്പ് തടയുക",
+        "description": "ഉപയോക്താക്കൾ x.com-ൽ ട്വീറ്റ് തുറക്കുന്നത് തടയുക."
+      }
+    ]
+  }
+}

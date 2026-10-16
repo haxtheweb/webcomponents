@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "画像比較",
+    "description": "画像を別の画像の上にスワイプして比較します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "上の画像",
+        "description": "下の画像の上にスワイプする上の画像。"
+      },
+      {
+        "property": "topAlt",
+        "title": "上の画像の代替テキスト",
+        "description": "アクセシビリティのために必須の代替テキスト。"
+      },
+      {
+        "property": "bottomSrc",
+        "title": "下の画像",
+        "description": "上の画像の下に表示される下の画像。"
+      },
+      {
+        "property": "bottomAlt",
+        "title": "下の画像の代替テキスト",
+        "description": "アクセシビリティのために必須の代替テキスト。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "動作",
+        "description": "ワイプモード（既定）または上の画像の不透明度モードを選択します。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "スライダーバーの色。"
+      },
+      {
+        "property": "dark",
+        "title": "ダーク",
+        "description": "スライダーバーの色を反転します。"
+      },
+      {
+        "property": "position",
+        "title": "初期位置",
+        "description": "0〜100の開始位置。"
+      }
+    ]
+  }
+}

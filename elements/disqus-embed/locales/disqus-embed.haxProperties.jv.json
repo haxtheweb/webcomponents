@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Lebokake komentar Disqus ing kaca."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Jeneng cekak",
+        "description": "Jeneng cekak situs, sing nemtokake host skrip Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL Kaca",
+        "description": "URL kaca sing digandheng karo utas komentar."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Pangenal kaca",
+        "description": "Pangenal unik kanggo utas komentar kaca."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Judhul kaca",
+        "description": "Judhul kaca sing digandheng karo utas komentar."
+      },
+      {
+        "property": "loadingText",
+        "title": "Teks ngemot",
+        "description": "Teks sing diumumake nalika komentar lagi diemot."
+      },
+      {
+        "property": "lang",
+        "title": "Basa",
+        "description": "Kode basa kanggo antarmuka Disqus, contone en."
+      }
+    ]
+  }
+}

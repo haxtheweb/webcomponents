@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) embed",
+    "description": "X မှ tweet ကို နေရာတွင် ထည့်သွင်းရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Tweet URL",
+        "description": "ထည့်သွင်းမည့် tweet ၏ URL။"
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Theme",
+        "description": "X tweet များအတွက် အလင်း သို့မဟုတ် အမှောင် theme။",
+        "options": {
+          "light": "အလင်း",
+          "dark": "အမှောင်"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "နှိပ်သောအခါ popup မပေါ်စေရန်",
+        "description": "အသုံးပြုသူများ tweet ကို x.com တွင် မဖွင့်နိုင်စေရန်။"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bản đồ hình ảnh",
+    "description": "Bản đồ hình ảnh dễ tiếp cận với các điểm nóng tương tác."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Nhãn",
+        "description": "Nhãn cho bản đồ hình ảnh."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Chi tiết điểm nóng",
+        "description": "Các điểm nóng tương tác trên bản đồ hình ảnh."
+      }
+    ]
+  }
+}

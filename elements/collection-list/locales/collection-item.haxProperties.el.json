@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Στοιχείο συλλογής",
+    "description": "Στοιχείο τύπου κάρτας για χρήση μέσα σε λίστα συλλογής, με κείμενο, σύνδεσμο και προαιρετικά πολυμέσα."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Σύνδεσμος",
+        "description": "URL προορισμού για αυτή την κάρτα."
+      },
+      {
+        "property": "image",
+        "title": "Εικόνα",
+        "description": "Εικόνα φόντου."
+      },
+      {
+        "property": "line1",
+        "title": "Γραμμή 1",
+        "description": "Πρώτη γραμμή κειμένου."
+      },
+      {
+        "property": "line2",
+        "title": "Γραμμή 2",
+        "description": "Δεύτερη γραμμή κειμένου."
+      },
+      {
+        "property": "line3",
+        "title": "Γραμμή 3",
+        "description": "Τρίτη γραμμή κειμένου."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Εικονίδιο",
+        "description": "Εικονίδιο που αντιπροσωπεύει την κάρτα."
+      },
+      {
+        "property": "saturate",
+        "title": "Εφέ κορεσμού",
+        "description": "Αλλαγή του κορεσμού της εικόνας όταν ο χρήστης εστιάζει."
+      },
+      {
+        "property": "tags",
+        "title": "Ετικέτες",
+        "description": "Λίστα ετικετών διαχωρισμένων με κόμμα."
+      },
+      {
+        "property": "accentColor",
+        "title": "Χρώμα",
+        "description": "Χρώμα για τις ετικέτες."
+      },
+      {
+        "property": "alt",
+        "title": "Εναλλακτικό",
+        "description": "Εναλλακτικό κείμενο που περιγράφει τον σύνδεσμο."
+      }
+    ]
+  }
+}

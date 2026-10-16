@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "تصويري نقشو",
+    "description": "انٽرايڪٽو هاٽ اسپاٽن سان رسائي لائق تصويري نقشو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "ليبل",
+        "description": "تصويري نقشي لاءِ ليبل."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "هاٽ اسپاٽ تفصيل",
+        "description": "تصويري نقشي تي انٽرايڪٽو هاٽ اسپاٽ."
+      }
+    ]
+  }
+}

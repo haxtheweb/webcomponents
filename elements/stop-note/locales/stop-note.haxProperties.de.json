@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Stopp-Hinweis",
+    "description": "Eine Meldung, die Lesende auf bestimmte Anweisungen aufmerksam macht."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel für den Stopp-Hinweis eingeben."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Eine externe URL eingeben."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Der Status passt Farben und Symbole entsprechend an",
+        "options": {
+          "stop": "Stopp",
+          "warning": "Warnung",
+          "success": "Bestätigung",
+          "info": "Hinweis"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Hinweistext",
+        "description": "Text für den Stopp-Hinweis."
+      }
+    ]
+  }
+}

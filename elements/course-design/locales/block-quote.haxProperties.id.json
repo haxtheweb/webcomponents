@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kutipan blok",
+    "description": "Blok kutipan bergaya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Sitasi",
+        "description": "Teks sitasi."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Teks alternatif untuk gambar."
+      },
+      {
+        "property": "image",
+        "title": "Gambar",
+        "description": "Gambar yang ditampilkan bersama kutipan."
+      }
+    ]
+  }
+}

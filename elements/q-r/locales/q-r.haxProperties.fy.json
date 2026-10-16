@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR-koade",
+    "description": "Koade om mei in smartphone te scannen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR-gegevens",
+        "description": "Boarne fan de gegevens foar de QR-koade."
+      },
+      {
+        "property": "title",
+        "title": "Alternative titel",
+        "description": "Alternative titel keppele oan de boarne fan de QR-koade."
+      },
+      {
+        "property": "modulesize",
+        "title": "Grutte",
+        "description": "Grutte fan de QR-koade."
+      },
+      {
+        "property": "margin",
+        "title": "Marzje",
+        "description": "Romte om de koade hinne."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Utfierformaat",
+        "description": "Formaat om it yn út te fieren.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ilaalcha oomishaa",
+    "description": "Saanduqa gabaabsa oomishaa saffisaa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Mallattoo",
+        "description": "Mallattoo yaada sana bakka bu'u."
+      },
+      {
+        "property": "title",
+        "title": "Mata-duree",
+        "description": "Yaada ijoo gabaabinaan."
+      },
+      {
+        "property": "subtitle",
+        "title": "Mata-duree xiqqaa",
+        "description": "Bal'ina dabalataa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu calaqqee",
+        "description": "Halluu calaqqee mallattoo."
+      }
+    ]
+  }
+}

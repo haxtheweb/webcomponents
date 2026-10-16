@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Рӯйхати саҳмгузорони GitHub",
+    "description": "Бо истифода аз GitHub API ҳамчун қаҳрамонҳои RPG намоиш дода мешавад."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Ташкилот",
+        "description": "Номи ташкилот аз github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Анбор",
+        "description": "Номи анбор аз github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Маҳдудият",
+        "description": "Шумораи саҳмгузорони нишондодашавандаро маҳдуд кунед."
+      }
+    ]
+  }
+}

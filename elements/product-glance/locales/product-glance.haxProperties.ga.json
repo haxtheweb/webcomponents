@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Sracfhéachaint ar tháirge",
+    "description": "Bloc forléargais thapa ar tháirge."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Deilbhín",
+        "description": "Deilbhín a léiríonn an coincheap."
+      },
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "An príomhchoincheap ar an bpointe boise."
+      },
+      {
+        "property": "subtitle",
+        "title": "Fotheideal",
+        "description": "Mionsonra breise."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath aibhsithe",
+        "description": "Dath aibhsithe don deilbhín."
+      }
+    ]
+  }
+}

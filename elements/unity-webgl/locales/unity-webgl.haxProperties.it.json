@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Lettore Unity",
+    "description": "Lettore Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Destinazione",
+        "description": "Percorso della build del gioco."
+      },
+      {
+        "property": "compression",
+        "title": "Metodo di compressione",
+        "description": "Estensione dei file compressi per le risorse del gioco."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL di streaming",
+        "description": "URL delle risorse in streaming."
+      },
+      {
+        "property": "companyname",
+        "title": "Nome dell'azienda",
+        "description": "Nome dell'azienda."
+      },
+      {
+        "property": "productname",
+        "title": "Nome del prodotto",
+        "description": "Titolo del gioco."
+      },
+      {
+        "property": "productversion",
+        "title": "Versione del prodotto",
+        "description": "Versione di rilascio."
+      },
+      {
+        "property": "width",
+        "title": "Larghezza del canvas",
+        "description": "Larghezza CSS del canvas (ad esempio px o em)."
+      },
+      {
+        "property": "height",
+        "title": "Altezza del canvas",
+        "description": "Altezza CSS del canvas (ad esempio px o em)."
+      },
+      {
+        "property": "background",
+        "title": "Sfondo del canvas",
+        "description": "Sfondo CSS del canvas."
+      }
+    ]
+  }
+}

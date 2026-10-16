@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Vykort",
+    "description": "Ett lekfullt medieinslag som ska se ut som ett riktigt vykort från någonstans"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Till",
+        "description": "Vem ska det till?"
+      },
+      {
+        "property": "from",
+        "title": "Från",
+        "description": "Vem är du?"
+      },
+      {
+        "property": "message",
+        "title": "Meddelande",
+        "description": "Vad vill du säga?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Poststämplat i",
+        "description": "Varifrån skickades kortet?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Källa för huvudfoto",
+        "description": "Var finns ditt foto?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Källa för frimärksfoto",
+        "description": "Var finns ditt foto?"
+      }
+    ]
+  }
+}

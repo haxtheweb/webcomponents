@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "ವಿಶ್ವಸಂಸ್ಥೆಯ ಸುಸ್ಥಿರ ಅಭಿವೃದ್ಧಿ ಗುರಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "ಗುರಿ",
+        "description": "UN SDG ಸಂಖ್ಯೆ."
+      },
+      {
+        "property": "colorOnly",
+        "title": "ಬಣ್ಣ ಮಾತ್ರ",
+        "description": "ಗುರಿಯ ಬಣ್ಣವನ್ನು ಮಾತ್ರ ತೋರಿಸಿ."
+      }
+    ]
+  }
+}

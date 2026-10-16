@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Qoosaa",
+    "description": "Barreeffama akkaataa qoosaatiin dhiyeessuu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Barreeffama",
+        "description": "Barreeffama qoosaa gochuuf"
+      }
+    ]
+  }
+}

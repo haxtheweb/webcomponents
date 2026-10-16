@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR ayvu",
+    "description": "Ayvu ojehecha hag̃ua pumbyry iñarandúva rupive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR mba'ekuaarã",
+        "description": "Mba'ekuaarã ypykue QR ayvúpe g̃uarã."
+      },
+      {
+        "property": "title",
+        "title": "Teratee mokõiha",
+        "description": "Teratee mokõiha ojoajúva QR ayvu ypykue ndive."
+      },
+      {
+        "property": "modulesize",
+        "title": "Tuichakue",
+        "description": "QR ayvu tuichakue."
+      },
+      {
+        "property": "margin",
+        "title": "Hembe'y",
+        "description": "Ayvu jerekuéra."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Ñenohẽ reko",
+        "description": "Reko ojeguenohẽ hag̃ua.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "শেয়ার URL থেকে Discord কমিউনিটি এমবেড করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "রিসোর্স URL",
+        "description": "রিসোর্স URL।"
+      },
+      {
+        "property": "height",
+        "title": "উচ্চতা",
+        "description": "বিষয়বস্তুর ফ্রেমের উচ্চতা।"
+      },
+      {
+        "property": "width",
+        "title": "প্রস্থ",
+        "description": "বিষয়বস্তুর ফ্রেমের প্রস্থ।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "የስብስብ ንጥል",
+    "description": "በስብስብ ዝርዝር ውስጥ የሚጠቀም የካርድ ዓይነት ንጥል፣ ጽሑፍ፣ አገናኝ እና አማራጭ ሚዲያ ያለው።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "አገናኝ",
+        "description": "ለዚህ ካርድ የመድረሻ URL።"
+      },
+      {
+        "property": "image",
+        "title": "ምስል",
+        "description": "የጀርባ ምስል።"
+      },
+      {
+        "property": "line1",
+        "title": "መስመር 1",
+        "description": "የመጀመሪያው የጽሑፍ መስመር።"
+      },
+      {
+        "property": "line2",
+        "title": "መስመር 2",
+        "description": "ሁለተኛው የጽሑፍ መስመር።"
+      },
+      {
+        "property": "line3",
+        "title": "መስመር 3",
+        "description": "ሦስተኛው የጽሑፍ መስመር።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "አዶ",
+        "description": "ካርዱን የሚወክል አዶ።"
+      },
+      {
+        "property": "saturate",
+        "title": "የሙሌት ውጤት",
+        "description": "ተጠቃሚው ትኩረት ሲሰጥ የምስሉን ሙሌት ቀይር።"
+      },
+      {
+        "property": "tags",
+        "title": "መለያዎች",
+        "description": "በኮማ የተለዩ መለያዎች ዝርዝር።"
+      },
+      {
+        "property": "accentColor",
+        "title": "ቀለም",
+        "description": "ለመለያዎች የሚውል ቀለም።"
+      },
+      {
+        "property": "alt",
+        "title": "አማራጭ ጽሑፍ",
+        "description": "አገናኙን የሚገልጽ አማራጭ ጽሑፍ።"
+      }
+    ]
+  }
+}

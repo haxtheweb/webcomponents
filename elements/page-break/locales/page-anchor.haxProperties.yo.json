@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ìdákọ̀ró Ojú-ìwé",
+    "description": "Jápọ̀ mọ́ àwọn kókó pàtó nínú mídíà lórí ojú-ìwé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Ibi-àfojúsùn ojú-ìwé",
+        "description": "ID tàbí ohun-èlò tí ìdákọ̀ró yìí ń tọ́ka sí."
+      },
+      {
+        "property": "value",
+        "title": "Iye ìjápọ̀ jíjìn",
+        "description": "Iye ìjápọ̀ jíjìn (fún àpẹẹrẹ àmì àkókò tàbí ID sílàìdì)."
+      },
+      {
+        "property": "entityId",
+        "title": "Ẹ̀ka ojú-òpó",
+        "description": "Ẹ̀ka ojú-òpó àṣàyàn fún ṣíṣàkóso ìgbékalẹ̀ èrò tí ó jẹmọ́ ọn."
+      }
+    ]
+  }
+}

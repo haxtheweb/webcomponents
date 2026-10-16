@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Жиналмалы контейнер",
+    "description": "Ашылатын және жабылатын жеке контейнер."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Тақырып",
+        "description": "Жиналмалы бөлімнің мәтіні."
+      },
+      {
+        "property": "expanded",
+        "title": "Ашық",
+        "description": "Әдепкі бойынша ашу."
+      },
+      {
+        "property": "headingButton",
+        "title": "Тақырып түймесі",
+        "description": "Тек белгіше емес, бүкіл тақырыпты басылатын ету."
+      },
+      {
+        "property": "icon",
+        "title": "Белгіше",
+        "description": "Ашу/жабу түймесінің белгішесі."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Белгіше (ашық кезде)",
+        "description": "Ашық күйге арналған қосымша белгіше."
+      },
+      {
+        "slot": "",
+        "title": "Мазмұн",
+        "description": "Жиналмалы бөлімнің мазмұны."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Кеңес",
+        "description": "Ашу/жабу түймесіне арналған кеңес."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Кеңес (ашық кезде)",
+        "description": "Ашық күйдегі ашу/жабу түймесіне арналған кеңес."
+      }
+    ]
+  }
+}

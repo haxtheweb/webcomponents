@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Ọjọ́",
+    "description": "Fi ọjọ́ kàlẹ́ńdà hàn pẹ̀lú àwọn àlàyé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Oṣù",
+        "description": "Oṣù tí a fi hàn lórí káàdì."
+      },
+      {
+        "property": "date",
+        "title": "Ọjọ́ oṣù",
+        "description": "Nọ́mbà ọjọ́ nínú oṣù."
+      },
+      {
+        "property": "day",
+        "title": "Ọjọ́ ọ̀sẹ̀",
+        "description": "Orúkọ ọjọ́ ọ̀sẹ̀."
+      },
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Orúkọ ìṣẹ̀lẹ̀ náà."
+      },
+      {
+        "property": "location",
+        "title": "Ibùdó",
+        "description": "Ibùdó ìṣẹ̀lẹ̀ náà."
+      },
+      {
+        "property": "startTime",
+        "title": "Ìbẹ̀rẹ̀",
+        "description": "Àkókò ìbẹ̀rẹ̀."
+      },
+      {
+        "property": "endTime",
+        "title": "Ìparí",
+        "description": "Àkókò ìparí."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ Ìtẹnumọ́",
+        "description": "Àwọ̀ ìtẹnumọ́ àṣàyàn."
+      },
+      {
+        "property": "dark",
+        "title": "Àkòrí Dúdú",
+        "description": "Mú àkòrí dúdú ṣiṣẹ́."
+      }
+    ]
+  }
+}

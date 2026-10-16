@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Oġġett tal-passi",
+    "description": "Oġġett li huwa parti minn lista ta' passi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Brugerhandling",
+    "description": "Spor brugerhandlinger, og send data til xAPI-lagre."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Hændelse, der skal spores",
+        "description": "Brugerhandling, der udløser denne hændelse.",
+        "options": {
+          "visibility": "Kan se dette",
+          "keydown": "Tryk på en tast her",
+          "click": "Klik på dette",
+          "hover": "Hold markøren over dette"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Spor hver gang",
+        "description": "Som standard spores kun første forekomst."
+      }
+    ]
+  }
+}

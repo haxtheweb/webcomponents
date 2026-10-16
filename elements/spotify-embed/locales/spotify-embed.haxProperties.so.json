@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Duub loogu talagalay ku dhex darka ciyaaraha Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isha",
+        "description": "Xiriiriye ku dhex dar ama wadaag oo ka yimid Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Mawduuc",
+        "description": "Mawduuca midabka asalka ciyaaraha.",
+        "options": {
+          "": "Caadi",
+          "0": "Madow"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Cabbir",
+        "description": "Cabbirka ciyaaraha.",
+        "options": {
+          "normal": "Caadi",
+          "compact": "Cidhiidhi"
+        }
+      }
+    ]
+  }
+}

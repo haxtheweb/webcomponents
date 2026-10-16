@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity plejer",
+    "description": "Unity WebGL plejer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cilj",
+        "description": "Putanja do builda igre."
+      },
+      {
+        "property": "compression",
+        "title": "Metod kompresije",
+        "description": "Ekstenzija datoteke kompresije za resurse igre."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL za strimovanje",
+        "description": "URL resursa za strimovanje."
+      },
+      {
+        "property": "companyname",
+        "title": "Naziv kompanije",
+        "description": "Naziv kompanije."
+      },
+      {
+        "property": "productname",
+        "title": "Naziv proizvoda",
+        "description": "Naslov igre."
+      },
+      {
+        "property": "productversion",
+        "title": "Verzija proizvoda",
+        "description": "Verzija izdanja."
+      },
+      {
+        "property": "width",
+        "title": "Širina platna",
+        "description": "CSS širina platna (npr. px ili em)."
+      },
+      {
+        "property": "height",
+        "title": "Visina platna",
+        "description": "CSS visina platna (npr. px ili em)."
+      },
+      {
+        "property": "background",
+        "title": "Pozadina platna",
+        "description": "CSS pozadina platna."
+      }
+    ]
+  }
+}

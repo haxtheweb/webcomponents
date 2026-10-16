@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Görselli Alıntı Bloğu",
+    "description": "İsteğe bağlı görselle biçimlendirilmiş alıntı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Görsel",
+        "description": "Referansa bir görsel ekleyin."
+      },
+      {
+        "property": "name",
+        "title": "Ad Soyad",
+        "description": "Referansı veren kişinin adı."
+      },
+      {
+        "property": "position",
+        "title": "Pozisyon veya Unvan",
+        "description": "Kişinin pozisyonu veya unvanı."
+      },
+      {
+        "slot": "",
+        "title": "Alıntı",
+        "description": "Referans sahibinden alıntı."
+      }
+    ]
+  }
+}

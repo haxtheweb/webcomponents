@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "مشغّل ثلاثي الأبعاد",
+    "description": "مشغّل ملفات ثلاثية الأبعاد / واقع معزَّز."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "المصدر",
+        "description": "URL ملف AR هذا."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "موضع X للعنصر في AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "موضع Y للعنصر في AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "موضع Z للعنصر في AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "لون السماء",
+        "description": "اختر لون السماء في المشهد."
+      }
+    ]
+  }
+}

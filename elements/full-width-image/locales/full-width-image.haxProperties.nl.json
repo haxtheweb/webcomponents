@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Afbeeldingssectie",
+    "description": "Afbeelding over de volle breedte die een paginasectie onderbreekt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Achtergrondafbeelding."
+      },
+      {
+        "property": "caption",
+        "description": "Tekstkop."
+      }
+    ]
+  }
+}

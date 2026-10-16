@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR 码",
+    "description": "用手机扫个码。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR 数据",
+        "description": "QR 码个数据来源。"
+      },
+      {
+        "property": "title",
+        "title": "替代标题",
+        "description": "链接到 QR 码来源个替代标题。"
+      },
+      {
+        "property": "modulesize",
+        "title": "尺寸",
+        "description": "QR 码个尺寸。"
+      },
+      {
+        "property": "margin",
+        "title": "边距",
+        "description": "码外头个留白。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "输出格式",
+        "description": "输出个格式。",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

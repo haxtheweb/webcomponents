@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "संग्रह आयटम",
+    "description": "संग्रह सूचीमध्ये वापरण्यासाठी कार्ड-शैलीचा आयटम, मजकूर, लिंक आणि पर्यायी माध्यमासह."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "लिंक",
+        "description": "या कार्डसाठी गंतव्य URL."
+      },
+      {
+        "property": "image",
+        "title": "प्रतिमा",
+        "description": "पार्श्वभूमी प्रतिमा."
+      },
+      {
+        "property": "line1",
+        "title": "ओळ 1",
+        "description": "मजकुराची पहिली ओळ."
+      },
+      {
+        "property": "line2",
+        "title": "ओळ 2",
+        "description": "मजकुराची दुसरी ओळ."
+      },
+      {
+        "property": "line3",
+        "title": "ओळ 3",
+        "description": "मजकुराची तिसरी ओळ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "आयकॉन",
+        "description": "कार्ड दर्शवणारा आयकॉन."
+      },
+      {
+        "property": "saturate",
+        "title": "संपृक्तता प्रभाव",
+        "description": "वापरकर्ता फोकस केल्यावर प्रतिमेची संपृक्तता बदला."
+      },
+      {
+        "property": "tags",
+        "title": "टॅग",
+        "description": "स्वल्पविरामाने विभक्त टॅगची सूची."
+      },
+      {
+        "property": "accentColor",
+        "title": "रंग",
+        "description": "टॅगसाठी वापरलेला रंग."
+      },
+      {
+        "property": "alt",
+        "title": "पर्यायी मजकूर",
+        "description": "लिंकचे वर्णन करणारा पर्यायी मजकूर."
+      }
+    ]
+  }
+}

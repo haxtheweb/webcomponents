@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "ស្លាក / គ្រាប់",
+    "description": "ស្លាកតូចរាងគ្រាប់ ជាមួយពណ៌សង្កត់ ប៊ូតុងបោះបង់ ឬកុងតាក់បិទបើកជាជម្រើស។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ស្លាក",
+        "description": "អត្ថបទបង្ហាញក្នុងគ្រាប់។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ឈ្មោះពណ៌សង្កត់ SimpleColors សម្រាប់ផ្ទៃខាងក្រោយគ្រាប់។",
+        "options": {
+          "": "-- លំនាំដើម --",
+          "red": "ក្រហម",
+          "pink": "ផ្កាឈូក",
+          "purple": "ស្វាយ",
+          "deep-purple": "ស្វាយចាស់",
+          "indigo": "ខៀវចាស់ (Indigo)",
+          "blue": "ខៀវ",
+          "light-blue": "ខៀវខ្ចី",
+          "cyan": "ខៀវផ្ទៃមេឃ",
+          "teal": "ខៀវបៃតង",
+          "green": "បៃតង",
+          "light-green": "បៃតងខ្ចី",
+          "lime": "ក្រូចឆ្មា",
+          "yellow": "លឿង",
+          "amber": "លឿងទុំ",
+          "orange": "ទឹកក្រូច",
+          "deep-orange": "ទឹកក្រូចចាស់",
+          "brown": "ត្នោត",
+          "blue-grey": "ប្រផេះខៀវ",
+          "grey": "ប្រផេះ"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ពណ៌សង្កត់ស្វ័យប្រវត្តិ",
+        "description": "យកពណ៌សង្កត់ពីអត្ថបទស្លាកដោយស្វ័យប្រវត្តិ។"
+      },
+      {
+        "property": "cancelButton",
+        "title": "ប៊ូតុងបោះបង់",
+        "description": "បង្ហាញប៊ូតុងរូបតំណាងលុប/បោះបង់ក្នុងគ្រាប់។"
+      },
+      {
+        "property": "readonly",
+        "title": "អានតែប៉ុណ្ណោះ",
+        "description": "លាក់ប៊ូតុងបោះបង់ ដើម្បីឱ្យគ្រាប់សម្រាប់តែបង្ហាញ។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "បិទបើក",
+        "description": "ធ្វើឱ្យគ្រាប់បិទ/បើកពេលចុចប៊ូតុង។"
+      },
+      {
+        "property": "toggled",
+        "title": "បានបើក",
+        "description": "ថាតើគ្រាប់កំពុងបើកឬអត់។"
+      },
+      {
+        "property": "toggledIcon",
+        "title": "រូបតំណាងពេលបើក",
+        "description": "រូបតំណាងដែលត្រូវបង្ហាញពេលគ្រាប់បើក។"
+      },
+      {
+        "property": "disabled",
+        "title": "បានបិទ",
+        "description": "បិទអន្តរកម្មជាមួយគ្រាប់។"
+      }
+    ]
+  }
+}

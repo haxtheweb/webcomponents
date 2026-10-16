@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Dhaptar kontributor GitHub",
+    "description": "Ditampilake minangka karakter RPG nganggo GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisasi",
+        "description": "Jeneng organisasi saka github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repositori",
+        "description": "Jeneng repositori saka github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Watesan",
+        "description": "Watesi cacahe kontributor sing ditampilake."
+      }
+    ]
+  }
+}

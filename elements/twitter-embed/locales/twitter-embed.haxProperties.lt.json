@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) įterpinys",
+    "description": "Įterpti įrašą iš X kontekste."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Įrašo URL",
+        "description": "Įterpiamo įrašo URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Šviesi arba tamsi X įrašų tema.",
+        "options": {
+          "light": "Šviesus",
+          "dark": "Tamsus"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Neleisti iškylančiojo lango spustelėjus",
+        "description": "Neleisti naudotojams atverti įrašo svetainėje x.com."
+      }
+    ]
+  }
+}

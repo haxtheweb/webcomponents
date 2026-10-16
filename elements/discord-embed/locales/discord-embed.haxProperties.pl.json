@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Osadzaj społeczności Discord z linku udostępniania."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL zasobu",
+        "description": "URL zasobu."
+      },
+      {
+        "property": "height",
+        "title": "Wysokość",
+        "description": "Wysokość ramki zawartości."
+      },
+      {
+        "property": "width",
+        "title": "Szerokość",
+        "description": "Szerokość ramki zawartości."
+      }
+    ]
+  }
+}

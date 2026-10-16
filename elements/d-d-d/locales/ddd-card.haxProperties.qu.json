@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Tarjeta",
+    "description": "DDD diseño sistemawan sumaqchasqa tarjeta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Rikch'a",
+        "description": "Akllanalla rikch'a."
+      },
+      {
+        "property": "alt",
+        "title": "Rikch'a alt",
+        "description": "Rikch'ata willakuq hukniray qillqa."
+      },
+      {
+        "property": "title",
+        "title": "Sutichay",
+        "description": "Tarjetapa sutichaynin."
+      },
+      {
+        "slot": "",
+        "title": "Ukhunpi kaq",
+        "description": "Tarjetapa ukhunpi kaq."
+      },
+      {
+        "property": "href",
+        "title": "T'inki",
+        "description": "Ñit'inapa t'inki URL-nin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Sutichay",
+        "description": "Ñit'inapa sutichaynin."
+      },
+      {
+        "property": "noArrow",
+        "title": "Mana wach'iyuq",
+        "description": "Ñit'inapa wach'inta pakay."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "T'inki: maypi",
+        "description": "Maypi t'inkita kichanapaq.",
+        "options": {
+          "": "Kikin ventana",
+          "_blank": "Musuq ventana - _blank",
+          "_top": "Hanaq ventana - _top",
+          "_parent": "Tayta ventana - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "T'inki: rel",
+        "description": "T'inkisqa pukyuwan kunan qillqawan imayna tupasqanku."
+      }
+    ]
+  }
+}

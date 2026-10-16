@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "可折叠容器",
+    "description": "单个可展开和折叠的容器。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "标题",
+        "description": "折叠区的文本。"
+      },
+      {
+        "property": "expanded",
+        "title": "已展开",
+        "description": "默认展开。"
+      },
+      {
+        "property": "headingButton",
+        "title": "标题按钮",
+        "description": "使整个标题可点击，而不仅是图标。"
+      },
+      {
+        "property": "icon",
+        "title": "图标",
+        "description": "展开/折叠切换按钮的图标。"
+      },
+      {
+        "property": "iconExpanded",
+        "title": "图标（展开时）",
+        "description": "展开状态下切换按钮的可选图标。"
+      },
+      {
+        "slot": "",
+        "title": "内容",
+        "description": "折叠区的内容。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "工具提示",
+        "description": "展开/折叠切换按钮的工具提示。"
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "工具提示（展开时）",
+        "description": "展开时展开/折叠按钮的工具提示。"
+      }
+    ]
+  }
+}

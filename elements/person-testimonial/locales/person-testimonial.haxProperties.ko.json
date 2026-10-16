@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "이미지 인용 블록",
+    "description": "선택적 이미지가 있는 스타일 인용문입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "이미지",
+        "description": "추천사에 이미지를 추가합니다."
+      },
+      {
+        "property": "name",
+        "title": "성명",
+        "description": "추천사를 남긴 사람의 이름입니다."
+      },
+      {
+        "property": "position",
+        "title": "직위 또는 직함",
+        "description": "그 사람의 직위 또는 직함입니다."
+      },
+      {
+        "slot": "",
+        "title": "인용문",
+        "description": "추천사 작성자의 인용문입니다."
+      }
+    ]
+  }
+}

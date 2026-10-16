@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Ofspyllist",
+    "description": "Elke soarte ynhâld yn in ôfspyllist toane."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Boarne",
+        "description": "Ynhâld yn de ôfspyllist."
+      },
+      {
+        "property": "edit",
+        "title": "Bewurkingsmodus",
+        "description": "Wikselje tusken bewurkings- en foarbyldmodus foar de ôfspyllist."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigaasje",
+        "description": "Navigaasjeknoppen foar foarút en efterút toane."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginearring",
+        "description": "Paginearringsstippen toane."
+      },
+      {
+        "property": "orientation",
+        "title": "Oriïntaasje",
+        "description": "Oriïntaasje fan de dia's.",
+        "options": {
+          "horizontal": "Horizontaal",
+          "vertical": "Fertikaal"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Begjindia",
+        "description": "Yndeks fan de dia dy't earst toand wurdt."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Aspektferhâlding",
+        "description": "Aspektferhâlding fan de dia's.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

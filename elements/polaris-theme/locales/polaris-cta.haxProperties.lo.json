@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "ສະແດງປຸ່ມຮຽກຮ້ອງໃຫ້ດຳເນີນການ Polaris ຕາມຊຸດຮູບແບບ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "ຂໍ້ຄວາມປຸ່ມ",
+        "description": "ຂໍ້ຄວາມທີ່ສະແດງໃນປຸ່ມຮຽກຮ້ອງໃຫ້ດຳເນີນການ."
+      },
+      {
+        "property": "link",
+        "title": "ລິ້ງ",
+        "description": "URL ປາຍທາງສຳລັບປຸ່ມ."
+      },
+      {
+        "property": "type",
+        "title": "ແບບຍ່ອຍ",
+        "description": "ແບບຍ່ອຍຂອງຮູບແບບພາບ.",
+        "options": {
+          "primary": "ຫຼັກ",
+          "tinted": "ແຕ້ມສີອ່ອນ",
+          "light": "ແຈ້ງ"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "ຮູບແບບມີເສັ້ນຂອບ",
+        "description": "ເປີດໃຊ້ຮູບແບບມີເສັ້ນຂອບ."
+      },
+      {
+        "property": "filled",
+        "title": "ຮູບແບບເຕັມສີ",
+        "description": "ເປີດໃຊ້ຮູບແບບເຕັມສີ."
+      }
+    ]
+  }
+}

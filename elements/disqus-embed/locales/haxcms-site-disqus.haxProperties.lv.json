@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus komentāri",
+    "description": "Integrācija ar Disqus komentēšanas tīmekļa pakalpojumu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Īsais nosaukums",
+        "description": "Īpašuma īsais nosaukums Disqus"
+      }
+    ]
+  }
+}

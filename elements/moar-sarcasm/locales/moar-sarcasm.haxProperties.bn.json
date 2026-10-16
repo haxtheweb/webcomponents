@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ব্যঙ্গ",
+    "description": "টেক্সটকে ঠাট্টার ভঙ্গিতে উপস্থাপন"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "টেক্সট",
+        "description": "যে টেক্সটকে ব্যঙ্গাত্মক করা হবে"
+      }
+    ]
+  }
+}

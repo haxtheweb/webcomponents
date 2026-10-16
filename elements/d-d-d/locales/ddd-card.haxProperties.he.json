@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "כרטיס",
+    "description": "רכיב כרטיס המעוצב במערכת העיצוב DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "תמונה",
+        "description": "תמונה אופציונלית."
+      },
+      {
+        "property": "alt",
+        "title": "טקסט חלופי לתמונה",
+        "description": "טקסט חלופי המתאר את התמונה."
+      },
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "כותרת הכרטיס."
+      },
+      {
+        "slot": "",
+        "title": "תוכן",
+        "description": "אזור התוכן של הכרטיס."
+      },
+      {
+        "property": "href",
+        "title": "קישור",
+        "description": "URL של קישור הכפתור."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "תווית",
+        "description": "תווית הכפתור."
+      },
+      {
+        "property": "noArrow",
+        "title": "ללא חץ",
+        "description": "הסתרת החץ של הכפתור."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "קישור: יעד",
+        "description": "היכן לפתוח את הקישור.",
+        "options": {
+          "": "אותו חלון",
+          "_blank": "חלון חדש - _blank",
+          "_top": "חלון עליון - _top",
+          "_parent": "חלון הורה - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "קישור: rel",
+        "description": "הקשר בין המשאב המקושר למסמך הנוכחי."
+      }
+    ]
+  }
+}

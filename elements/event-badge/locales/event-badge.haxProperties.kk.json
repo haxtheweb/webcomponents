@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Іс-шара бейджі",
+    "description": "Іс-шара бейджі компоненті."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV суреті",
+        "description": "Теледидарда көрсетілетін сурет."
+      },
+      {
+        "property": "logo",
+        "title": "Логотип",
+        "description": "Бейдж бұрышында көрсетілетін логотип."
+      },
+      {
+        "property": "title",
+        "title": "Атауы",
+        "description": "Бейджтің жоғарғы жағында көрсетілетін атау."
+      },
+      {
+        "property": "name",
+        "title": "Аты",
+        "description": "Бейджде көрсетілетін аты."
+      },
+      {
+        "property": "position",
+        "title": "Лауазымы",
+        "description": "Адамның рөлі немесе лауазымы."
+      },
+      {
+        "property": "organization",
+        "title": "Ұйым",
+        "description": "Адам жұмыс істейтін ұйым."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV түсі",
+        "description": "Теледидардың түсін таңдаңыз."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Негізгі фон немесе мәтін түсі."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Тұтқа түсі",
+        "description": "Теледидар тұтқаларының түсі."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Сепия",
+        "description": "Сепия әсерін қолдану."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Ақ-қара",
+        "description": "Ақ-қара әсерін қолдану."
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Mediecitat",
+    "description": "Billede med et citat, en kildehenvisning og valgfri billedtekst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Citat",
+        "description": "Citattekst."
+      },
+      {
+        "slot": "author",
+        "title": "Forfatter",
+        "description": "Citatets forfatter."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Forfatteroplysninger",
+        "description": "Forfatteroplysninger."
+      },
+      {
+        "slot": "caption",
+        "title": "Billedtekst",
+        "description": "Billedtekst."
+      },
+      {
+        "property": "src",
+        "title": "Billedkilde",
+        "description": "Billedfil brugt til mediecitatet."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ tekst",
+        "description": "Alternativ tekst til billedet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Accentfarve",
+        "description": "Kortets accentfarve."
+      }
+    ]
+  }
+}

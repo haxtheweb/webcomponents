@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Clibeanna",
+    "description": "Liosta simplí clibeanna le taispeáint ar an leathanach."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Clibeanna",
+        "description": "Liosta clibeanna scartha le camóga."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Dath Aibhsithe Uathoibríoch",
+        "description": "Socraigh an dath aibhsithe go huathoibríoch bunaithe ar an lipéad."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath",
+        "description": "Dath do na clibeanna."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Cyfrif i Fyny",
+    "description": "Animeiddio rhif yn cyfrif i fyny at werth targed pan fydd yn sgrolio i'r golwg."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Gwerth terfynol",
+        "description": "Y rhif i gyfrif i fyny ato."
+      },
+      {
+        "property": "start",
+        "title": "Gwerth cychwyn",
+        "description": "Y rhif i gyfrif i fyny ohono."
+      },
+      {
+        "property": "duration",
+        "title": "Hyd",
+        "description": "Nifer yr eiliadau y dylai'r animeiddiad cyfrif ei gymryd."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Testun rhagddodiad",
+        "description": "Testun a ddangosir cyn y rhif (e.e. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Testun ôl-ddodiad",
+        "description": "Testun a ddangosir ar ôl y rhif (e.e. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot rhagddodiad",
+        "description": "Cynnwys dewisol mewn slot cyn y rhif."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot ôl-ddodiad",
+        "description": "Cynnwys dewisol mewn slot ar ôl y rhif."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Lleoedd degol",
+        "description": "Nifer y lleoedd degol i'w dangos."
+      },
+      {
+        "property": "separator",
+        "title": "Gwahanydd miloedd",
+        "description": "Nod sy'n gwahanu grwpiau miloedd."
+      },
+      {
+        "property": "decimal",
+        "title": "Nod degol",
+        "description": "Nod a ddefnyddir ar gyfer y pwynt degol."
+      },
+      {
+        "property": "noeasing",
+        "title": "Dim llyfnhau",
+        "description": "Analluogi llyfnhau fel bod y cyfrif yn llinol."
+      }
+    ]
+  }
+}

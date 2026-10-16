@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Иш-чара бейджи",
+    "description": "Иш-чара бейджинин компоненти."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV сүрөтү",
+        "description": "TV экранында көрсөтүлгөн сүрөт."
+      },
+      {
+        "property": "logo",
+        "title": "Логотип",
+        "description": "Бейджинин бурчунда көрсөтүлгөн логотип."
+      },
+      {
+        "property": "title",
+        "title": "Аталыш",
+        "description": "Бейджинин жогору жагында көрсөтүлгөн аталыш."
+      },
+      {
+        "property": "name",
+        "title": "Аты",
+        "description": "Бейджиде көрсөтүлгөн аты."
+      },
+      {
+        "property": "position",
+        "title": "Кызматы",
+        "description": "Адамдын ролу же кызмат орду."
+      },
+      {
+        "property": "organization",
+        "title": "Уюм",
+        "description": "Адам иштеген уюм."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV түсү",
+        "description": "TV түсүн тандаңыз."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Негизги фон же текст түсү."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Тегерек баскычтын түсү",
+        "description": "TV тегерек баскычтарынын түсү."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Сепия",
+        "description": "Сепия эффектин колдонуу."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Ак-кара",
+        "description": "Ак-кара эффектин колдонуу."
+      }
+    ]
+  }
+}

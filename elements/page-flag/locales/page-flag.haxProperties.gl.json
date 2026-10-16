@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Marca de páxina",
+    "description": "Nota editorial para os autores da páxina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Cor de realce da marca de páxina."
+      },
+      {
+        "property": "label",
+        "title": "Etiqueta",
+        "description": "Texto da etiqueta da marca de páxina."
+      }
+    ]
+  }
+}

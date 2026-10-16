@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Rikch'a t'aqa",
+    "description": "Rapipa t'aqanta p'akiq llapan kinrayniyuq rikch'a."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Qhipa rikch'a."
+      },
+      {
+        "property": "caption",
+        "description": "Qillqapa uman."
+      }
+    ]
+  }
+}

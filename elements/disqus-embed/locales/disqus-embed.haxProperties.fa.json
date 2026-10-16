@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "جاسازی دیدگاه‌های Disqus در صفحه."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "نام کوتاه",
+        "description": "نام کوتاه سایت که میزبان اسکریپت Disqus را تعیین می‌کند."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL صفحه",
+        "description": "URL صفحه‌ای که رشتهٔ دیدگاه‌ها به آن پیوست است."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "شناسهٔ صفحه",
+        "description": "شناسهٔ یکتای رشتهٔ دیدگاه‌های صفحه."
+      },
+      {
+        "property": "pageTitle",
+        "title": "عنوان صفحه",
+        "description": "عنوان صفحه‌ای که رشتهٔ دیدگاه‌ها به آن پیوست است."
+      },
+      {
+        "property": "loadingText",
+        "title": "متن بارگذاری",
+        "description": "متنی که هنگام بارگذاری دیدگاه‌ها اعلام می‌شود."
+      },
+      {
+        "property": "lang",
+        "title": "زبان",
+        "description": "کد زبان رابط Disqus، مثلاً en."
+      }
+    ]
+  }
+}

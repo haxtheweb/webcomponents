@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Hareketli GIF'leri erişilebilir hale getirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Hareketli GIF",
+        "description": "Hareketli GIF'in URL'si."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatif Metin",
+        "description": "Görselin alternatif metni."
+      },
+      {
+        "property": "longdesc",
+        "title": "Uzun Açıklama",
+        "description": "Erişilebilirlik için GIF'in uzun açıklaması."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Durağan Görsel",
+        "description": "GIF'in durağan görsel sürümünün URL'si."
+      }
+    ]
+  }
+}

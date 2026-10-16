@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI vizualizatoru",
+    "description": "MIDI-ni kontekstdə vizuallaşdırma ilə oxut."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Mənbə",
+        "description": "Oxudulacaq faylın URL-i."
+      },
+      {
+        "property": "visualizer",
+        "title": "Vizuallaşdırma",
+        "description": "Musiqi faylı üçün vizuallaşdırma üslubu.",
+        "options": {
+          "staff": "Not xətti",
+          "piano-roll": "Piano rulonu",
+          "waterfall": "Piano + şəlalə"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Şəlaləni gizlət",
+        "description": "Piano vizuallaşdırmasında şəlalə notlarını gizlət."
+      }
+    ]
+  }
+}

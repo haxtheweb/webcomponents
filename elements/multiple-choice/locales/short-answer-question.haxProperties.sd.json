@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "مختصر جواب وارو سوال",
+    "description": "يوزر کان بنيادي سوال جو جواب وٺو"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "سوال",
+        "description": "يوزرن لاءِ جواب ڏيڻ وارو سوال."
+      },
+      {
+        "property": "answers",
+        "title": "ممڪن جواب"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ڪوئز جو نالو",
+        "description": "xAPI تي ٻڌل ماحول ۾ هن شيءِ جي سڃاڻپ لاءِ موڪليل ڪوئز جو نالو"
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Autoverificare",
+    "description": "Utilizatorii pot completa o autoverificare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagine",
+        "description": "Imaginea pentru autoverificare."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlul autoverificării."
+      },
+      {
+        "property": "alt",
+        "title": "Text alternativ",
+        "description": "Text alternativ pentru imagine."
+      },
+      {
+        "slot": "question",
+        "title": "Întrebare"
+      },
+      {
+        "slot": "",
+        "title": "Răspuns"
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoarea temei",
+        "description": "Alegeți o culoare a temei din sistemul de design.",
+        "options": {
+          "primary": "Principal",
+          "accent": "Accent",
+          "success": "Succes",
+          "warning": "Avertisment",
+          "error": "Eroare",
+          "info": "Informații"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiectiv de învățare",
+        "description": "Referință la obiectivul de învățare emisă ca oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Evaluează",
+        "description": "Referință la activitate emisă ca oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Link pentru mai multe",
+        "description": "Link către informații suplimentare."
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "מכל NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "הסתרת העורך",
+        "description": "הסתרת ממשק עריכת הקבצים."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "הסתרת המסוף",
+        "description": "הסתרת המסוף עבור תוכניות שרצות אוטומטית."
+      },
+      {
+        "property": "hideWindow",
+        "title": "הסתרת החלון",
+        "description": "הסתרת חלון הפלט לשימוש במסוף בלבד."
+      },
+      {
+        "slot": "",
+        "title": "פקודות",
+        "description": "פקודות (אחת בכל שורה) להרצה לפני הטעינה."
+      }
+    ]
+  }
+}

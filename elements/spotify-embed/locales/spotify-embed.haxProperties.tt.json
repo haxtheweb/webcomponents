@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify уйнаткычын урнаштыру өчен төргәк."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Чыганак",
+        "description": "Spotify-дан урнаштыру яки уртаклашу сылтамасы."
+      },
+      {
+        "property": "theme",
+        "title": "Тема",
+        "description": "Уйнаткычның фон төсе темасы.",
+        "options": {
+          "": "Килешү буенча",
+          "0": "Кара"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Зурлык",
+        "description": "Уйнаткыч зурлыгы.",
+        "options": {
+          "normal": "Килешү буенча",
+          "compact": "Компакт"
+        }
+      }
+    ]
+  }
+}

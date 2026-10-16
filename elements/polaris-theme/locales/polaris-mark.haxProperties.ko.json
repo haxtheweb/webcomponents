@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris 마크",
+    "description": "선택적 단과대학 이름과 대상 URL이 있는 PSU 아이덴티티 마크를 표시합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "단과대학 이름",
+        "description": "마크 옆에 표시되는 이름입니다."
+      },
+      {
+        "property": "name2",
+        "title": "단과대학 이름 2",
+        "description": "첫 번째 단과대학 이름 아래에 표시되는 두 번째 이름입니다."
+      },
+      {
+        "property": "name3",
+        "title": "단과대학 이름 3",
+        "description": "두 번째 단과대학 이름 아래에 표시되는 세 번째 이름입니다."
+      },
+      {
+        "property": "url",
+        "title": "링크",
+        "description": "마크를 클릭했을 때의 대상 URL입니다."
+      },
+      {
+        "property": "type",
+        "title": "변형",
+        "description": "마크의 시각적 변형입니다.",
+        "options": {
+          "default": "기본값",
+          "light": "밝게",
+          "dark": "어둡게"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "세로 레이아웃",
+        "description": "세 번째 이름을 가로선과 함께 두 번째 이름 아래에 표시합니다."
+      }
+    ]
+  }
+}

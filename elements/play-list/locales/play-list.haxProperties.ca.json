@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Llista de reproducció",
+    "description": "Mostra qualsevol tipus de contingut en una llista de reproducció."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Font",
+        "description": "Contingut que es mostra a la llista de reproducció."
+      },
+      {
+        "property": "edit",
+        "title": "Mode d'edició",
+        "description": "Alterna entre el mode d'edició i el de previsualització de la llista de reproducció."
+      },
+      {
+        "property": "navigation",
+        "title": "Navegació",
+        "description": "Mostra els botons de navegació endavant i enrere."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginació",
+        "description": "Mostra els punts de paginació."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientació",
+        "description": "Orientació de les diapositives.",
+        "options": {
+          "horizontal": "Horitzontal",
+          "vertical": "Vertical"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Diapositiva inicial",
+        "description": "Índex de la diapositiva que rep el focus inicialment."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Relació d'aspecte",
+        "description": "Relació d'aspecte de les diapositives.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

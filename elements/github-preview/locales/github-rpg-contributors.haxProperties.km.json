@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "បញ្ជីអ្នករួមចំណែក GitHub",
+    "description": "បង្ហាញជាតួអង្គ RPG ដោយប្រើ GitHub API។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "អង្គភាព",
+        "description": "ឈ្មោះអង្គភាពពី github.com/ORG/REPO។"
+      },
+      {
+        "property": "repo",
+        "title": "ឃ្លាំង",
+        "description": "ឈ្មោះឃ្លាំងពី github.com/ORG/REPO។"
+      },
+      {
+        "property": "limit",
+        "title": "ដែនកំណត់",
+        "description": "កំណត់ចំនួនអ្នករួមចំណែកដែលបង្ហាញ។"
+      }
+    ]
+  }
+}

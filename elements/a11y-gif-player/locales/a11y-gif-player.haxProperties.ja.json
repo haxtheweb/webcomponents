@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "アニメーションGIFをアクセシブルにします。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "アニメーションGIF",
+        "description": "アニメーションGIFのURL。"
+      },
+      {
+        "property": "alt",
+        "title": "代替テキスト",
+        "description": "画像の代替テキスト。"
+      },
+      {
+        "property": "longdesc",
+        "title": "詳細説明",
+        "description": "アクセシビリティのためのGIFの詳細説明。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "静止画像",
+        "description": "GIFの静止画像版のURL。"
+      }
+    ]
+  }
+}

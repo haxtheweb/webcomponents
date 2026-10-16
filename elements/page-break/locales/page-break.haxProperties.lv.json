@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Lapas informācija",
+    "description": "Definējiet vizuālu lapu sadalījumu, ko satura pārvaldības sistēmas var izmantot lapu izveidei."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Motīvā un pirmajā virsrakstā rādītais nosaukums."
+      },
+      {
+        "property": "pageType",
+        "title": "Veids",
+        "description": "Vizuāla lapas konteksta etiķete.",
+        "options": {
+          "": "-- nav --",
+          "content": "Saturs",
+          "assessment": "Vērtējums",
+          "quiz": "Tests",
+          "submission": "Iesniegums",
+          "lesson": "Nodarbība",
+          "module": "Modulis",
+          "task": "Uzdevums",
+          "activity": "Aktivitāte",
+          "project": "Projekts",
+          "practice": "Prakse",
+          "unit": "Temats",
+          "objectives": "Mācību mērķi",
+          "connection": "Saikne",
+          "knowledge": "Vai zinājāt?",
+          "strategy": "Mācīšanās stratēģija",
+          "discuss": "Apspriediet",
+          "listen": "Klausieties",
+          "make": "Veidojiet",
+          "observe": "Novērojiet",
+          "present": "Prezentējiet",
+          "reading": "Lasīšana",
+          "reflect": "Pārdomājiet",
+          "research": "Pētiet",
+          "watch": "Skatieties",
+          "write": "Rakstiet"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Birkas",
+        "description": "Ar komatiem atdalīts birku saraksts."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Saites URL",
+        "description": "Novirzīšanas URL, kas tiek rādīts lapas satura vietā."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Saites mērķis",
+        "description": "Atvērt saites tajā pašā vai jaunā logā.",
+        "options": {
+          "_self": "Tas pats logs",
+          "_blank": "Jauns logs"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Publicēts",
+        "description": "Nepublicētās lapas ir paslēptas no galalietotājiem."
+      },
+      {
+        "property": "locked",
+        "title": "Bloķēt lapu",
+        "description": "Bloķēt vai atbloķēt visus šīs lapas elementus."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Ignorēt automātisko slug",
+        "description": "Neļaut automātiski atjaunināt slug, pamatojoties uz nosaukumu vai vecāklapu."
+      },
+      {
+        "property": "slug",
+        "title": "Ceļš",
+        "description": "Šīs lapas URL slug."
+      },
+      {
+        "property": "image",
+        "title": "Multivide",
+        "description": "Lapu raksturojoša multivide, ko izmanto dažos motīvos un skatos."
+      },
+      {
+        "property": "parent",
+        "title": "Vecāklapa",
+        "description": "Vecāklapas ceļš."
+      },
+      {
+        "property": "noderefs",
+        "title": "Saistītais saturs",
+        "description": "Ar šo lapu saistītās lapas."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Apraksts",
+        "description": "Apraksts, ko izmanto kolekcijās un meklētājprogrammu optimizācijai."
+      },
+      {
+        "property": "entityType",
+        "title": "Entītijas veids",
+        "description": "Noklusējums ir lapa, ja nav iestatīts citādi.",
+        "options": {
+          "page": "Lapa (noklusējums)",
+          "taxonomy": "Taksonomija",
+          "taxonomyTerm": "Taksonomijas termins",
+          "region": "Reģions"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ar šo lapu vietnē saistītā ikona."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Ar šo lapu vietnē saistītā krāsa."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Paslēpt izvēlnē",
+        "description": "Paslēpt šo lapu izvēlnēs, saglabājot tās URL."
+      },
+      {
+        "property": "order",
+        "title": "Secība",
+        "description": "Secība attiecībā pret blakus esošajām lapām."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Lapas motīvs",
+        "description": "Mainīt motīvu tikai šai lapai."
+      },
+      {
+        "property": "author",
+        "title": "Autors",
+        "description": "Tās personas lietotājvārds, kas pēdējā mainīja šo lapu."
+      }
+    ]
+  }
+}

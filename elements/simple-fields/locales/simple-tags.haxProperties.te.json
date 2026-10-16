@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ట్యాగ్‌లు",
+    "description": "పేజీలో ప్రదర్శన కోసం సాధారణ ట్యాగ్ జాబితా."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ట్యాగ్‌లు",
+        "description": "కామాతో వేరు చేసిన ట్యాగ్‌ల జాబితా."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ఆటో యాక్సెంట్ రంగు",
+        "description": "లేబుల్ ఆధారంగా యాక్సెంట్ రంగును స్వయంచాలకంగా సెట్ చేయండి."
+      },
+      {
+        "property": "accentColor",
+        "title": "రంగు",
+        "description": "ట్యాగ్‌ల కోసం రంగు."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Mokymosi kortelė",
+    "description": "Mokykitės sąvokų naudodami dvipuses mokymosi korteles."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Kortelės priekis",
+        "description": "Priekinės pusės tekstas arba klausimas."
+      },
+      {
+        "slot": "back",
+        "title": "Kortelės nugarėlė",
+        "description": "Laukiamas atsakymas."
+      },
+      {
+        "property": "imgSource",
+        "title": "Vaizdo šaltinis",
+        "description": "Kortelei naudojamas vaizdo failas. Turi pirmenybę prieš vaizdo raktažodį."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Veiksmo tipas",
+        "description": "OER Schema: šios praktikos veiksmo tipas (pvz., skaitymas, rašymas, kūrimas, tyrinėjimas, klausymas, žiūrėjimas, apmąstymas, diskusija, stebėjimas, pristatymas, vertinimas)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mokymosi tikslas",
+        "description": "OER Schema: mokymosi tikslo, kurį palaiko ši praktika, ID arba URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tamsus",
+        "description": "Naudoti tamsųjį režimą."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Kortelės akcento spalva."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Vaizdo raktažodis",
+        "description": "Atsitiktinio vaizdo raktažodis. Vaizdo šaltinis turi pirmenybę."
+      }
+    ]
+  }
+}

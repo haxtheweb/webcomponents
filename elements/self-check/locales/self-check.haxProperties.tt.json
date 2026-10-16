@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Үз-үзеңне тикшерү",
+    "description": "Кулланучылар үз-үзләрен тикшерә ала."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Рәсем",
+        "description": "Үз-үзеңне тикшерү өчен рәсем."
+      },
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Үз-үзеңне тикшерүнең исеме."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернатив текст",
+        "description": "Рәсем өчен alt текст."
+      },
+      {
+        "slot": "question",
+        "title": "Сорау"
+      },
+      {
+        "slot": "",
+        "title": "Җавап"
+      },
+      {
+        "property": "accentColor",
+        "title": "Тема төсе",
+        "description": "Дизайн системасыннан тема төсен сайлагыз.",
+        "options": {
+          "primary": "Төп",
+          "accent": "Ассызык",
+          "success": "Уңыш",
+          "warning": "Кисәтү",
+          "error": "Хата",
+          "info": "Мәгълүмат"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Уку максаты",
+        "description": "oer:hasLearningObjective итеп чыгарыла торган уку максатына сылтама."
+      },
+      {
+        "property": "assessing",
+        "title": "Бәяләнә",
+        "description": "oer:assessing итеп чыгарыла торган эшчәнлеккә сылтама."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Тулырак сылтамасы",
+        "description": "Өстәмә мәгълүматка сылтама."
+      }
+    ]
+  }
+}

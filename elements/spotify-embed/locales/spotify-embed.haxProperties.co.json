@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Involucru per i lettori Spotify incrustati."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonte",
+        "description": "Ligame d'incrustazione o di spartera da Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Tema di culore di fondu di u lettore.",
+        "options": {
+          "": "Predefinitu",
+          "0": "Neru"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Dimensione",
+        "description": "Dimensione di u lettore.",
+        "options": {
+          "normal": "Predefinitu",
+          "compact": "Cumpattu"
+        }
+      }
+    ]
+  }
+}

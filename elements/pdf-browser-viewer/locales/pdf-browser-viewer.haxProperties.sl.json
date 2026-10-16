@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Pregledovalnik PDF",
+    "description": "Vdelava datoteke PDF v stran z neobvezno postavitvijo kartice in gumbom za prenos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Lokacija datoteke PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Naslov",
+        "description": "Besedilo naslova kartice."
+      },
+      {
+        "property": "card",
+        "title": "Postavitev kartice",
+        "description": "Prikaži PDF v kartici z gumbom za prenos."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Oznaka prenosa",
+        "description": "Oznaka gumba za prenos."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Sporočilo o nepodprtosti",
+        "description": "Sporočilo, ko brskalnik ne more prikazati datotek PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Besedilo povezave ob nepodprtosti",
+        "description": "Besedilo povezave, ko brskalnik ne more prikazati datotek PDF."
+      },
+      {
+        "property": "width",
+        "title": "Širina",
+        "description": "Širina pregledovalnika PDF."
+      },
+      {
+        "property": "height",
+        "title": "Višina",
+        "description": "Višina pregledovalnika PDF."
+      }
+    ]
+  }
+}

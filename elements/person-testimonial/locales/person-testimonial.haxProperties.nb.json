@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Bildesitat",
+    "description": "Stilisert sitat med valgfritt bilde."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bilde",
+        "description": "Legg til et bilde i uttalelsen."
+      },
+      {
+        "property": "name",
+        "title": "Fullt navn",
+        "description": "Navnet på personen som gir uttalelsen."
+      },
+      {
+        "property": "position",
+        "title": "Stilling eller jobbtittel",
+        "description": "Personens stilling eller jobbtittel."
+      },
+      {
+        "slot": "",
+        "title": "Sitat",
+        "description": "Sitat fra personen bak uttalelsen."
+      }
+    ]
+  }
+}

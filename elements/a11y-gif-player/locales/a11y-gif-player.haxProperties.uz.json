@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Animatsiyali GIF-larni qulay qilish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Animatsiyali GIF",
+        "description": "Animatsiyali GIF URL manzili."
+      },
+      {
+        "property": "alt",
+        "title": "Muqobil matn",
+        "description": "Rasm uchun muqobil matn."
+      },
+      {
+        "property": "longdesc",
+        "title": "Batafsil tavsif",
+        "description": "Qulaylik uchun GIF-ning batafsil tavsifi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Statik rasm",
+        "description": "GIF-ning statik rasm versiyasi URL manzili."
+      }
+    ]
+  }
+}

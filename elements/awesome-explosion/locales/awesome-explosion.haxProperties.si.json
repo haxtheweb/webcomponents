@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "අපූරු පිපිරීම",
+    "description": "විකල්ප ශබ්ද ප්‍රයෝග සහිත අන්තර්ක්‍රියාකාරී පිපිරුම් සජීවිකරණය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "ප්‍රමාණය",
+        "description": "පිපිරුමේ ප්‍රමාණය සකසන්න.",
+        "options": {
+          "tiny": "ඉතා කුඩා",
+          "small": "කුඩා",
+          "medium": "මධ්‍යම",
+          "large": "විශාල",
+          "epic": "අතිවිශාල"
+        }
+      },
+      {
+        "property": "color",
+        "title": "වර්ණය",
+        "description": "පිපිරුමේ වර්ණ තේමාව සකසන්න.",
+        "options": {
+          "": "පෙරනිමි",
+          "red": "රතු",
+          "blue": "නිල්",
+          "purple": "දම්",
+          "orange": "තැඹිලි",
+          "yellow": "කහ"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "ශබ්ද ප්‍රයෝග",
+        "description": "ශබ්ද ප්‍රයෝග සබල කරන්න."
+      },
+      {
+        "property": "resetSound",
+        "title": "ශබ්දය යළි සකසන්න",
+        "description": "සෑම විටම ශබ්දය මුල සිට නැවත ආරම්භ කරන්න."
+      },
+      {
+        "property": "image",
+        "title": "අභිරුචි රූපය",
+        "description": "අභිරුචි පිපිරුම් රූපයක් සඳහා විකල්ප URL."
+      },
+      {
+        "property": "sound",
+        "title": "අභිරුචි ශබ්දය",
+        "description": "අභිරුචි ශබ්ද ප්‍රයෝගයක් සඳහා විකල්ප URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "අබල කර ඇත",
+        "description": "සියලු අන්තර්ක්‍රියා අබල කරන්න."
+      }
+    ]
+  }
+}

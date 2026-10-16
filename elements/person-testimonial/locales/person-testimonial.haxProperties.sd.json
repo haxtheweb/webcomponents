@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "تصويري اقتباس",
+    "description": "اختياري تصوير سان سينگاريل اقتباس."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "تصوير",
+        "description": "شاهدي ۾ تصوير شامل ڪريو."
+      },
+      {
+        "property": "name",
+        "title": "پورو نالو",
+        "description": "شاهدي ڏيندڙ شخص جو نالو."
+      },
+      {
+        "property": "position",
+        "title": "عهدو يا نوڪري جو عنوان",
+        "description": "شخص جو عهدو يا نوڪري جو عنوان."
+      },
+      {
+        "slot": "",
+        "title": "اقتباس",
+        "description": "شاهدي جي ليکڪ جو اقتباس."
+      }
+    ]
+  }
+}

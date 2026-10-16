@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Pachika maudhui ya nje ya wavuti ndani ya iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ya Rasilimali",
+        "description": "URL ya rasilimali."
+      },
+      {
+        "property": "height",
+        "title": "Urefu",
+        "description": "Urefu wa iframe."
+      },
+      {
+        "property": "width",
+        "title": "Upana",
+        "description": "Upana wa iframe."
+      }
+    ]
+  }
+}

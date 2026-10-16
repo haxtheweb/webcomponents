@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify pleýer ýerleşdirmeleri üçin örtük."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çeşme",
+        "description": "Spotify-dan ýerleşdiriş ýa-da paýlaşma baglanyşygy."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Pleýer üçin fon reňk temasy.",
+        "options": {
+          "": "Deslapky",
+          "0": "Gara"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Ölçeg",
+        "description": "Pleýeriň ölçegi.",
+        "options": {
+          "normal": "Deslapky",
+          "compact": "Ykjam"
+        }
+      }
+    ]
+  }
+}

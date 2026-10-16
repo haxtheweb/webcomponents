@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Tíl Polaris",
+    "description": "Taispeáin tíl Polaris le teideal, téacs tacaíochta roghnach agus nasc roghnach."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Príomhthéacs",
+        "description": "Príomhthéacs na tíle."
+      },
+      {
+        "property": "line2",
+        "title": "Téacs tánaisteach",
+        "description": "Téacs tacaíochta roghnach."
+      },
+      {
+        "property": "type",
+        "title": "Stíl na tíle",
+        "description": "Stíl amhairc réamhshocraithe na tíle.",
+        "options": {
+          "1": "Stíl 1",
+          "2": "Stíl 2",
+          "3": "Stíl 3",
+          "4": "Stíl 4",
+          "5": "Stíl 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Íomhá chúlra",
+        "description": "URL na híomhá cúlra a úsáideann stíleanna tíle a thacaíonn le híomhánna."
+      },
+      {
+        "property": "link",
+        "title": "Nasc",
+        "description": "URL cinn scríbe roghnach do ghníomh na tíle."
+      }
+    ]
+  }
+}

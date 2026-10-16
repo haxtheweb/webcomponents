@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "પૃષ્ઠ વિગતો",
+    "description": "પૃષ્ઠો વચ્ચે દૃશ્ય વિભાજન નિર્ધારિત કરો જેનો CMS પૃષ્ઠો બનાવવા ઉપયોગ કરી શકે."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "થીમ અને પહેલા મથાળામાં બતાવાતું શીર્ષક."
+      },
+      {
+        "property": "pageType",
+        "title": "પ્રકાર",
+        "description": "દૃશ્ય પૃષ્ઠ સંદર્ભ લેબલ.",
+        "options": {
+          "": "-- કંઈ નહીં --",
+          "content": "સામગ્રી",
+          "assessment": "મૂલ્યાંકન",
+          "quiz": "ક્વિઝ",
+          "submission": "સબમિશન",
+          "lesson": "પાઠ",
+          "module": "મોડ્યુલ",
+          "task": "કાર્ય",
+          "activity": "પ્રવૃત્તિ",
+          "project": "પ્રોજેક્ટ",
+          "practice": "અભ્યાસ",
+          "unit": "એકમ",
+          "objectives": "શીખવાના ઉદ્દેશો",
+          "connection": "જોડાણ",
+          "knowledge": "શું તમે જાણો છો?",
+          "strategy": "શીખવાની વ્યૂહરચના",
+          "discuss": "ચર્ચા કરો",
+          "listen": "સાંભળો",
+          "make": "બનાવો",
+          "observe": "નિરીક્ષણ કરો",
+          "present": "પ્રસ્તુત કરો",
+          "reading": "વાંચન",
+          "reflect": "ચિંતન કરો",
+          "research": "સંશોધન",
+          "watch": "જુઓ",
+          "write": "લખો"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ટૅગ્સ",
+        "description": "અલ્પવિરામથી અલગ કરેલી ટૅગ્સની સૂચિ."
+      },
+      {
+        "property": "linkUrl",
+        "title": "લિંક URL",
+        "description": "પૃષ્ઠ સામગ્રીને બદલે બતાવાતું રીડાયરેક્ટ URL."
+      },
+      {
+        "property": "linkTarget",
+        "title": "લિંક લક્ષ્ય",
+        "description": "લિંક એ જ વિન્ડોમાં અથવા નવી વિન્ડોમાં ખોલો.",
+        "options": {
+          "_self": "એ જ વિન્ડો",
+          "_blank": "નવી વિન્ડો"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "પ્રકાશિત",
+        "description": "અપ્રકાશિત પૃષ્ઠો અંતિમ વપરાશકર્તાઓથી છુપાયેલા રહે છે."
+      },
+      {
+        "property": "locked",
+        "title": "પૃષ્ઠ લૉક કરો",
+        "description": "આ પૃષ્ઠ પરના બધા ઘટકો લૉક અથવા અનલૉક કરો."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "સ્વચાલિત સ્લગ ઓવરરાઇડ કરો",
+        "description": "શીર્ષક અથવા પેરેન્ટના આધારે સ્વચાલિત અપડેટથી સ્લગને લૉક કરો."
+      },
+      {
+        "property": "slug",
+        "title": "પાથ",
+        "description": "આ પૃષ્ઠ માટે URL સ્લગ."
+      },
+      {
+        "property": "image",
+        "title": "મીડિયા",
+        "description": "પૃષ્ઠને દર્શાવતું મીડિયા, જે કેટલીક થીમ્સ અને દૃશ્યોમાં વપરાય છે."
+      },
+      {
+        "property": "parent",
+        "title": "પેરેન્ટ",
+        "description": "પેરેન્ટ પૃષ્ઠનો પાથ."
+      },
+      {
+        "property": "noderefs",
+        "title": "સંબંધિત સામગ્રી",
+        "description": "આ પૃષ્ઠ સાથે સંબંધિત પૃષ્ઠો."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "વર્ણન",
+        "description": "સંગ્રહો અને સર્ચ એન્જિન ઑપ્ટિમાઇઝેશન (SEO) માં વપરાતું વર્ણન."
+      },
+      {
+        "property": "entityType",
+        "title": "એન્ટિટી પ્રકાર",
+        "description": "અન્યથા સેટ ન કરાય ત્યાં સુધી ડિફૉલ્ટ પૃષ્ઠ રહે છે.",
+        "options": {
+          "page": "પૃષ્ઠ (ડિફૉલ્ટ)",
+          "taxonomy": "વર્ગીકરણ",
+          "taxonomyTerm": "વર્ગીકરણ શબ્દ",
+          "region": "પ્રદેશ"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "આઇકન",
+        "description": "સાઇટમાં આ પૃષ્ઠ સાથે સંકળાયેલ આઇકન."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "સાઇટમાં આ પૃષ્ઠ સાથે સંકળાયેલ રંગ."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "મેનૂમાં છુપાવો",
+        "description": "આ પૃષ્ઠનું URL જાળવી રાખીને તેને મેનૂમાંથી છુપાવો."
+      },
+      {
+        "property": "order",
+        "title": "ક્રમ",
+        "description": "સહોદર પૃષ્ઠોની સાપેક્ષે ક્રમ."
+      },
+      {
+        "property": "developerTheme",
+        "title": "પૃષ્ઠ થીમ",
+        "description": "ફક્ત આ પૃષ્ઠ માટે થીમ ઓવરરાઇડ કરો."
+      },
+      {
+        "property": "author",
+        "title": "લેખક",
+        "description": "આ પૃષ્ઠમાં છેલ્લે ફેરફાર કરનાર વ્યક્તિનું વપરાશકર્તાનામ."
+      }
+    ]
+  }
+}

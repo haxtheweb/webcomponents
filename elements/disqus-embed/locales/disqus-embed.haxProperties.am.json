@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "የDisqus አስተያየቶችን በገጽ ላይ ክተት።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "አጭር ስም",
+        "description": "የDisqus ስክሪፕት አስተናጋጅን የሚወስነው የጣቢያው አጭር ስም።"
+      },
+      {
+        "property": "pageURL",
+        "title": "የገጽ URL",
+        "description": "የአስተያየት ክሩ የተያያዘበት ገጽ URL።"
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "የገጽ መለያ",
+        "description": "ለገጹ የአስተያየት ክር ልዩ መለያ።"
+      },
+      {
+        "property": "pageTitle",
+        "title": "የገጽ ርዕስ",
+        "description": "የአስተያየት ክሩ የተያያዘበት ገጽ ርዕስ።"
+      },
+      {
+        "property": "loadingText",
+        "title": "የመጫኛ ጽሑፍ",
+        "description": "አስተያየቶቹ በሚጫኑበት ጊዜ የሚነገር ጽሑፍ።"
+      },
+      {
+        "property": "lang",
+        "title": "ቋንቋ",
+        "description": "ለDisqus በይነገጽ የቋንቋ ኮድ፣ ለምሳሌ en።"
+      }
+    ]
+  }
+}

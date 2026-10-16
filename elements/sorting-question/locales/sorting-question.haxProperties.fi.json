@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Järjestämistehtävä",
+    "description": "Järjestä kohteet oikeaan järjestykseen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Kysymys",
+        "description": "Kysymyksen otsikko."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Arvostelumuoto",
+        "description": "OER Schema: tämän arvioinnin arvostelumuoto (esim. pisteet, kirjain, prosentti, suoritus)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oppimistavoite",
+        "description": "OER Schema: tähän arviointiin liittyvä oppimistavoite."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurssi",
+        "description": "OER Schema: kurssi, jolle tämä arviointi on tarkoitettu."
+      },
+      {
+        "property": "answers",
+        "title": "Vastaukset",
+        "description": "Vastausten järjestys määrittää oikean järjestyksen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tietovisan nimi",
+        "description": "Tietovisan nimi, jota käytetään xAPI-tunnistukseen analytiikkajärjestelmissä."
+      }
+    ]
+  }
+}

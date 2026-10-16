@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Opozorilna opomba",
+    "description": "Sporočilo, ki bralce opozori na posebna navodila."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Vnesite naslov opozorilne opombe."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Vnesite zunanji URL."
+      },
+      {
+        "property": "status",
+        "title": "Stanje",
+        "description": "Nastavitev stanja ustrezno spremeni barve in ikone",
+        "options": {
+          "stop": "Stop",
+          "warning": "Opozorilo",
+          "success": "Potrditev",
+          "info": "Obvestilo"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Besedilo opombe",
+        "description": "Besedilo opozorilne opombe."
+      }
+    ]
+  }
+}

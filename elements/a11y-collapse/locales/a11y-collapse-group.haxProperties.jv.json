@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grup Bukak Tutup",
+    "description": "Klompok unsur sing bisa dibukak lan ditutup."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Bukak mung siji",
+        "description": "Mung siji item sing bisa dibukak."
+      },
+      {
+        "slot": "",
+        "title": "Item Lempitan",
+        "description": "Item-item lempitan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "படி உருப்படி",
+    "description": "படிகள் பட்டியலின் ஒரு பகுதியான உருப்படி"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "தலைப்பு"
+      }
+    ]
+  }
+}

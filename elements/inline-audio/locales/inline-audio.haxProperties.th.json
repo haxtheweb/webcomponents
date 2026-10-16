@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "เสียงแบบอินไลน์",
+    "description": "เล่นเสียงแบบอินไลน์เพื่อเสริมเนื้อหาของหน้า"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "แหล่งที่มา",
+        "description": "ไฟล์ MP3 หรือ URL"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีเน้นของการ์ด"
+      },
+      {
+        "property": "shiny",
+        "title": "เงางาม",
+        "description": "ใช้พื้นหลังสีเน้นที่อ่อนกว่าแทนสีเทา"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "มืด",
+        "description": "ใช้โหมดมืด"
+      }
+    ]
+  }
+}

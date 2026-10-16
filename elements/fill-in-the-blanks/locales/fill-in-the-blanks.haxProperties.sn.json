@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Zadza pakashaikwa",
+    "description": "Chiitwa chekuongorora apo vadzidzi vanozadza mazwi akashaikwa muchirevo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Mubvunzo",
+        "description": "Mubvunzo unopindurwa nevashandisi."
+      },
+      {
+        "property": "statement",
+        "title": "Chirevo",
+        "description": "Chirevo chichashandurwa kuita chiitwa chekumaka mazwi."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Nzira yekupa mamaki",
+        "description": "OER Schema: nzira yekupa mamaki yeongororo iyi (semuenzaniso mapoinzi, tsamba, chikamu muzana, kupedzisa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Chinangwa chekudzidza",
+        "description": "OER Schema: chinangwa chekudzidza chakabatanidzwa neongororo iyi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kosi",
+        "description": "OER Schema: kosi yakagadzirirwa ongororo iyi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Zita rekuedzwa",
+        "description": "Zita rekuedzwa rinoshandiswa munzvimbo dzinoshandisa xAPI kuziva chinhu ichi"
+      }
+    ]
+  }
+}

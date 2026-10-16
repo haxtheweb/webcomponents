@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Visualisator MIDI",
+    "description": "Putar MIDI dalam konteks dengan visualisasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "URL file yang akan diputar."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualisasi",
+        "description": "Gaya visualisasi untuk file musik.",
+        "options": {
+          "staff": "Paranada",
+          "piano-roll": "Gulungan piano",
+          "waterfall": "Piano + air terjun"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Sembunyikan air terjun",
+        "description": "Sembunyikan not air terjun dalam visualisasi piano."
+      }
+    ]
+  }
+}

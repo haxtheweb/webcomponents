@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Մեջբերման բլոկ",
+    "description": "Ձևավորված մեջբերման բլոկ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Մեջբերման աղբյուր",
+        "description": "Մեջբերման աղբյուրի տեքստը։"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Պատկերի այլընտրանքային տեքստը։"
+      },
+      {
+        "property": "image",
+        "title": "Պատկեր",
+        "description": "Մեջբերման հետ ցուցադրվող պատկեր։"
+      }
+    ]
+  }
+}

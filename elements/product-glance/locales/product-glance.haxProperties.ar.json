@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "لمحة عن المنتج",
+    "description": "كتلة نظرة عامة سريعة على المنتج."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "الأيقونة",
+        "description": "أيقونة تمثل المفهوم."
+      },
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "المفهوم الأساسي في لمحة."
+      },
+      {
+        "property": "subtitle",
+        "title": "العنوان الفرعي",
+        "description": "تفاصيل إضافية."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون تمييز الأيقونة."
+      }
+    ]
+  }
+}

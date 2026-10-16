@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Rapi unancha",
+    "description": "Rapi qillqaqkunapaq editorial willay."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Rapi unanchapaq rikchachiq llimpi."
+      },
+      {
+        "property": "label",
+        "title": "Sutichay",
+        "description": "Rapi unanchapa sutichay qillqan."
+      }
+    ]
+  }
+}

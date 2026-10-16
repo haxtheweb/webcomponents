@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kaart",
+    "description": "Kaartkomponent gestileer met die DDD-ontwerpstelsel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Prent",
+        "description": "Opsionele prent."
+      },
+      {
+        "property": "alt",
+        "title": "Prent-alt",
+        "description": "Alternatiewe teks wat die prent beskryf."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Kaarttitel."
+      },
+      {
+        "slot": "",
+        "title": "Inhoud",
+        "description": "Kaartinhoudarea."
+      },
+      {
+        "property": "href",
+        "title": "Skakel",
+        "description": "Knoppie se skakel-URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Knoppie-etiket."
+      },
+      {
+        "property": "noArrow",
+        "title": "Geen pyl",
+        "description": "Versteek die knoppie se pyl."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Skakel: teiken",
+        "description": "Waar om die skakel oop te maak.",
+        "options": {
+          "": "Dieselfde venster",
+          "_blank": "Nuwe venster - _blank",
+          "_top": "Boonste venster - _top",
+          "_parent": "Ouervenster - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Skakel: rel",
+        "description": "Verhouding tussen die geskakelde hulpbron en die huidige dokument."
+      }
+    ]
+  }
+}

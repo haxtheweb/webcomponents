@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Umculo obhaliweyo",
+    "description": "Ibonisa ize idlale umculo obhaliweyo, iithebhu zegitare kunye nemiqondiso yomculo nge-alphaTex okanye i-MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Imiqondiso ye-AlphaTex",
+        "description": "Uphawu lwe-alphaTex olungaphakathi lomculo obhaliweyo. Luhlele ngqo ukuze ubhale imiqondiso; lugcinwa kwitemplate ukuze izithuba zigcinwe."
+      },
+      {
+        "property": "source",
+        "title": "Ifayile yomculo",
+        "description": "Faka okanye uqhagamshele kwifayile ye-MusicXML (.xml/.musicxml/.mxl) okanye ye-Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Ithatha indawo ye-alphaTex engaphakathi xa isetiwe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Ukudlalwa kwesandi",
+        "description": "Kuvuliwe ngokungagqibekanga - mamela umculo obhaliweyo udlalwa ngesidibanisi-sandi esakhelwe ngaphakathi. Cima ukuze ube kwimowudi yokujonga kuphela (akukho sandi)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Bonisa iinketho zomboniso",
+        "description": "Bonisa amaqhosha okusondeza, okolula nolwakhiwo kwibha yesidlali."
+      },
+      {
+        "property": "showExport",
+        "title": "Bonisa amaqhosha okuthumela ngaphandle",
+        "description": "Bonisa amaqhosha okukhuphela i-MIDI nokuprinta/i-PDF kwibha yesidlali."
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Oʻz-oʻzini tekshirish",
+    "description": "Foydalanuvchilar oʻz-oʻzini tekshirishni bajarishlari mumkin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Rasm",
+        "description": "Oʻz-oʻzini tekshirish uchun rasm."
+      },
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Oʻz-oʻzini tekshirish sarlavhasi."
+      },
+      {
+        "property": "alt",
+        "title": "Muqobil matn",
+        "description": "Rasm uchun muqobil matn."
+      },
+      {
+        "slot": "question",
+        "title": "Savol"
+      },
+      {
+        "slot": "",
+        "title": "Javob"
+      },
+      {
+        "property": "accentColor",
+        "title": "Mavzu rangi",
+        "description": "Dizayn tizimidan mavzu rangini tanlang.",
+        "options": {
+          "primary": "Asosiy",
+          "accent": "Urgʻu",
+          "success": "Muvaffaqiyat",
+          "warning": "Ogohlantirish",
+          "error": "Xato",
+          "info": "Maʼlumot"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oʻquv maqsadi",
+        "description": "oer:hasLearningObjective sifatida chiqariladigan oʻquv maqsadi havolasi."
+      },
+      {
+        "property": "assessing",
+        "title": "Baholanadigan",
+        "description": "oer:assessing sifatida chiqariladigan faoliyat havolasi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Batafsil havola",
+        "description": "Qoʻshimcha maʼlumotga havola."
+      }
+    ]
+  }
+}

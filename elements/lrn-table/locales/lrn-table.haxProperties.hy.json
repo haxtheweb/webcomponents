@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV աղյուսակ",
+    "description": "Կարող է ստեղծել աղյուսակ CSV ֆայլից՝ անկախ դրա գտնվելու վայրից։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Աղբյուր",
+        "description": "Այս CSV ֆայլի URL-ը։"
+      },
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Ստեղծվող աղյուսակի վերնագիրը։"
+      },
+      {
+        "property": "description",
+        "title": "Նկարագրություն",
+        "description": "Ավելի մանրամասն նկարագրություն՝ աղյուսակի տվյալների մատչելիությունը բարելավելու համար։"
+      }
+    ]
+  }
+}

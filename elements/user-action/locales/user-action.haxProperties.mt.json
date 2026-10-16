@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Azzjoni tal-utent",
+    "description": "Segwi l-azzjonijiet tal-utent u ibgħat id-data lil repożitorji xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Avveniment li għandu jiġi segwit",
+        "description": "Azzjoni tal-utent li tqanqal dan l-avveniment.",
+        "options": {
+          "visibility": "Jista' jara dan",
+          "keydown": "Agħfas buttuna hawn",
+          "click": "Ikklikkja dan",
+          "hover": "Poġġi l-maws fuq dan"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Segwi kull darba",
+        "description": "B'mod awtomatiku, l-ewwel okkorrenza biss tiġi segwita."
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bildabschnitt",
+    "description": "Bild in voller Breite, das einen Seitenabschnitt unterteilt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Hintergrundbild."
+      },
+      {
+        "property": "caption",
+        "description": "Überschriftentext."
+      }
+    ]
+  }
+}

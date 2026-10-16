@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "คำถามเรียงลำดับ",
+    "description": "เรียงรายการตามลำดับที่ถูกต้อง"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "คำถาม",
+        "description": "หัวข้อคำถาม"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "รูปแบบการให้คะแนน",
+        "description": "OER Schema: รูปแบบการให้คะแนนสำหรับการประเมินนี้ (เช่น คะแนน เกรดตัวอักษร เปอร์เซ็นต์ การทำเสร็จ)"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "วัตถุประสงค์การเรียนรู้",
+        "description": "OER Schema: วัตถุประสงค์การเรียนรู้ที่เชื่อมโยงกับการประเมินนี้"
+      },
+      {
+        "property": "forCourse",
+        "title": "รายวิชา",
+        "description": "OER Schema: รายวิชาที่การประเมินนี้มีไว้สำหรับ"
+      },
+      {
+        "property": "answers",
+        "title": "คำตอบ",
+        "description": "ลำดับของคำตอบกำหนดลำดับที่ถูกต้อง"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ชื่อแบบทดสอบ",
+        "description": "ชื่อแบบทดสอบที่ใช้ระบุ xAPI ในระบบวิเคราะห์"
+      }
+    ]
+  }
+}

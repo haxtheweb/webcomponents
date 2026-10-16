@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kichana wichq'ana t'aqa",
+    "description": "Kichakuq wichq'akuq elementokunapa t'aqan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Hukllata kichay",
+        "description": "Huk itemllatam kichayta atikun."
+      },
+      {
+        "slot": "",
+        "title": "Wichq'ana itemkuna",
+        "description": "Wichq'ana itemkuna."
+      }
+    ]
+  }
+}

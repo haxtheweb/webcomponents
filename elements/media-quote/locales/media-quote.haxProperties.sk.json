@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Mediálny citát",
+    "description": "Obrázok s citátom, citáciou a voliteľným popiskom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Citát",
+        "description": "Text citátu."
+      },
+      {
+        "slot": "author",
+        "title": "Autor",
+        "description": "Autor citátu."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Podrobnosti o autorovi",
+        "description": "Podrobnosti o autorovi."
+      },
+      {
+        "slot": "caption",
+        "title": "Popisok",
+        "description": "Popisok obrázka."
+      },
+      {
+        "property": "src",
+        "title": "Zdroj obrázka",
+        "description": "Súbor obrázka použitý pre mediálny citát."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatívny text",
+        "description": "Alternatívny text pre obrázok."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Zvýrazňujúca farba kartičky."
+      }
+    ]
+  }
+}

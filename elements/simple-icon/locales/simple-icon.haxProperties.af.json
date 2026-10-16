@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikoon",
+    "description": "Ikoon uit die volledige ikoonbiblioteek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Ikoon om weer te gee."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "Aksentkleur vir die ikoon."
+      },
+      {
+        "property": "dark",
+        "title": "Donker",
+        "description": "Gebruik donker modus (omgekeerde kleurstel)."
+      }
+    ]
+  }
+}

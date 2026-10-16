@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Hêmana berhevokê",
+    "description": "Hêmaneke bi şêweya kartê ji bo nav lîsteya berhevokê, bi nivîs, girêdan û medyaya vebijarkî."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Girêdan",
+        "description": "URL ya armanc ji bo vê kartê."
+      },
+      {
+        "property": "image",
+        "title": "Wêne",
+        "description": "Wêneyê paşxanê."
+      },
+      {
+        "property": "line1",
+        "title": "Rêz 1",
+        "description": "Rêza yekem a nivîsê."
+      },
+      {
+        "property": "line2",
+        "title": "Rêz 2",
+        "description": "Rêza duyem a nivîsê."
+      },
+      {
+        "property": "line3",
+        "title": "Rêz 3",
+        "description": "Rêza sêyem a nivîsê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Îkon",
+        "description": "Îkona ku kartê temsîl dike."
+      },
+      {
+        "property": "saturate",
+        "title": "Efekta têrbûna rengan",
+        "description": "Dema bikarhêner fokus dike têrbûna rengê wêneyê biguherîne."
+      },
+      {
+        "property": "tags",
+        "title": "Etîket",
+        "description": "Lîsteya etîketan a bi bêhnokan veqetandî."
+      },
+      {
+        "property": "accentColor",
+        "title": "Reng",
+        "description": "Rengê ji bo etîketan."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Nivîsa alternatîf a ku girêdanê dide nasîn."
+      }
+    ]
+  }
+}

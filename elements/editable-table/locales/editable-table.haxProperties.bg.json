@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Таблица",
+    "description": "Таблични данни за уеб."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Заглавен ред",
+        "description": "Първият ред да се третира като заглавие."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Заглавна колона",
+        "description": "Първата колона да се третира като заглавие."
+      },
+      {
+        "property": "footer",
+        "title": "Долен колонтитул",
+        "description": "Последният ред да се третира като долен колонтитул."
+      },
+      {
+        "property": "sort",
+        "title": "Сортиране",
+        "description": "Разрешаване на сортиране по стойностите в колоната."
+      },
+      {
+        "property": "filter",
+        "title": "Разрешаване на филтър",
+        "description": "Разрешаване на филтриране по стойностите в колоната."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Числов стил",
+        "description": "Прилагане на числов стил към числовите колони."
+      },
+      {
+        "property": "responsive",
+        "title": "Адаптивна",
+        "description": "Пренареждане на таблицата на малки екрани."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Режим рубрика",
+        "description": "Таблицата да се интерпретира като Rubric от OER Schema, така че да се генерират метаданни Rubric, RubricScale, RubricCriterion и RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Тип рубрика",
+        "description": "Стил на рубриката, генериран като oer:rubricType (има смисъл само когато режимът рубрика е включен).",
+        "options": {
+          "": "(няма)",
+          "analytic": "Аналитична",
+          "holistic": "Холистична",
+          "single-point": "С една точка",
+          "checklist": "Контролен списък"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "С рамки"
+      },
+      {
+        "property": "condensed",
+        "title": "Сбити редове",
+        "description": "Намаляване на височината на редовете."
+      },
+      {
+        "property": "striped",
+        "title": "Редуващи се редове",
+        "description": "Засенчване на всеки втори ред."
+      },
+      {
+        "property": "downloadable",
+        "title": "Бутон за изтегляне",
+        "description": "Добавяне на бутон за изтегляне на таблицата."
+      },
+      {
+        "property": "copyable",
+        "title": "Бутон за копиране",
+        "description": "Добавяне на бутон за копиране на данните от таблицата като CSV."
+      },
+      {
+        "property": "printable",
+        "title": "Бутон за печат",
+        "description": "Добавяне на бутон за отпечатване само на таблицата."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV данни",
+        "description": "Създаване на таблица от качен CSV файл."
+      }
+    ]
+  }
+}

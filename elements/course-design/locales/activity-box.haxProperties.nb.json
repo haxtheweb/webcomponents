@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Aktivitetsboks",
+    "description": "Liten stilisert overskriftsblokk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon som vises ved siden av aktivitetsboksen."
+      },
+      {
+        "property": "tag",
+        "title": "Merkelapp for aktivitetsboks",
+        "description": "Merkelapp som vises i aktivitetsboksen."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Ingen fargelegging",
+        "description": "Hindre at farger brukes på ikonet."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Zieler",
+    "description": "Eng Zuel animéiert bis op en Zilwäert eropzielen, wann se an d'Bild scrollt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Ennwäert",
+        "description": "D'Zuel, bis op déi gezielt gëtt."
+      },
+      {
+        "property": "start",
+        "title": "Startwäert",
+        "description": "D'Zuel, vun där un gezielt gëtt."
+      },
+      {
+        "property": "duration",
+        "title": "Dauer",
+        "description": "Sekonnen, déi d'Zielanimatioun daure soll."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Prefix-Text",
+        "description": "Text virun der Zuel (z. B. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Suffix-Text",
+        "description": "Text no der Zuel (z. B. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefix-Slot",
+        "description": "Optionalen Inhalt virun der Zuel."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffix-Slot",
+        "description": "Optionalen Inhalt no der Zuel."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Dezimalstellen",
+        "description": "Zuel vun Dezimalstellen, déi ugewise ginn."
+      },
+      {
+        "property": "separator",
+        "title": "Dausendertrennzeechen",
+        "description": "Zeechen, dat Dausendergruppen trennt."
+      },
+      {
+        "property": "decimal",
+        "title": "Dezimalzeechen",
+        "description": "Zeechen fir den Dezimalpunkt."
+      },
+      {
+        "property": "noeasing",
+        "title": "Keng Beschleunegung",
+        "description": "Beschleunegung desaktivéieren, sou datt d'Zielen linear ass."
+      }
+    ]
+  }
+}

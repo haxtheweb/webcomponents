@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Ìbéèrè Ìdáhùn Kúkúrú",
+    "description": "Jẹ́ kí olùlò dáhùn ìbéèrè ìpìlẹ̀ kan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ìbéèrè",
+        "description": "Ìbéèrè tí àwọn olùlò yóò dáhùn."
+      },
+      {
+        "property": "answers",
+        "title": "Àwọn Ìdáhùn Tí Ó Ṣeé Ṣe"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Orúkọ ìdánwò kékeré náà",
+        "description": "Orúkọ ìdánwò kékeré tí a fi ránṣẹ́ fún lílò ní àwọn àyíká tí xAPI ń darí láti dá ẹyọ yìí mọ̀"
+      }
+    ]
+  }
+}

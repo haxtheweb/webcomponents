@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "ส่วนรูปภาพ",
+    "description": "รูปภาพเต็มความกว้างที่ใช้แบ่งส่วนของหน้า"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "รูปภาพพื้นหลัง"
+      },
+      {
+        "property": "caption",
+        "description": "หัวข้อข้อความ"
+      }
+    ]
+  }
+}

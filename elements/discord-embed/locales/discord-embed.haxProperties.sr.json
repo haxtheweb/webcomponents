@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Уградите Discord заједнице помоћу URL-а за дељење."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ресурса",
+        "description": "URL ресурса."
+      },
+      {
+        "property": "height",
+        "title": "Висина",
+        "description": "Висина оквира садржаја."
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина оквира садржаја."
+      }
+    ]
+  }
+}

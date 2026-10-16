@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Шарҳҳои Disqus",
+    "description": "Ҳамгироӣ бо хидмати веби шарҳдиҳии Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Номи кӯтоҳ",
+        "description": "Номи кӯтоҳи моликият дар Disqus"
+      }
+    ]
+  }
+}

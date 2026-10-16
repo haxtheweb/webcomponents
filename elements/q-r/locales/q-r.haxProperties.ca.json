@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Codi QR",
+    "description": "Codi per escanejar des d'un telèfon intel·ligent."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Dades del QR",
+        "description": "Origen de les dades del codi QR."
+      },
+      {
+        "property": "title",
+        "title": "Títol alternatiu",
+        "description": "Títol alternatiu enllaçat a l'origen del codi QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Mida",
+        "description": "Mida del codi QR."
+      },
+      {
+        "property": "margin",
+        "title": "Marge",
+        "description": "Espai al voltant del codi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Format de sortida",
+        "description": "Format en què es genera.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

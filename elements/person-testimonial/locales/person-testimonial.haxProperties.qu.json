@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Rikch'ayuq rimasqa",
+    "description": "Akllanalla rikch'ayuq sumaqchasqa rimasqa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Rikch'a",
+        "description": "Willakuyman rikch'ata yapay."
+      },
+      {
+        "property": "name",
+        "title": "Hunt'asqa suti",
+        "description": "Willakuqpa sutin."
+      },
+      {
+        "property": "position",
+        "title": "Kargu utaq llamk'ay",
+        "description": "Runapa kargun utaq llamk'aynin."
+      },
+      {
+        "slot": "",
+        "title": "Rimasqa",
+        "description": "Willakuqpa rimasqan."
+      }
+    ]
+  }
+}

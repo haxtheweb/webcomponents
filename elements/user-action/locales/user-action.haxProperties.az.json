@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "İstifadəçi əməliyyatı",
+    "description": "İstifadəçi əməliyyatlarını izlə və məlumatları xAPI anbarlarına göndər."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "İzləniləcək hadisə",
+        "description": "Bu hadisəni işə salan istifadəçi əməliyyatı.",
+        "options": {
+          "visibility": "Bunu görə bilir",
+          "keydown": "Burada düyməyə basın",
+          "click": "Bunu klikləyin",
+          "hover": "Kursoru bunun üzərinə gətirin"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Hər dəfə izlə",
+        "description": "Defolt olaraq yalnız ilk hal izlənilir."
+      }
+    ]
+  }
+}

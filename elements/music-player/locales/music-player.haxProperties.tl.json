@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI visualizer",
+    "description": "Mag-play ng MIDI sa konteksto kasama ang visualization."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pinagmulan",
+        "description": "URL ng file na ipe-play."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualization",
+        "description": "Istilo ng visualization para sa music file.",
+        "options": {
+          "staff": "Staff",
+          "piano-roll": "Piano roll",
+          "waterfall": "Piano + waterfall"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Itago ang waterfall",
+        "description": "Itago ang mga waterfall note sa piano visualization."
+      }
+    ]
+  }
+}

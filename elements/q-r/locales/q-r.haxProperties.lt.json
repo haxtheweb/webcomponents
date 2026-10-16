@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR kodas",
+    "description": "Išmaniuoju telefonu nuskaitomas kodas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR duomenys",
+        "description": "QR kodo duomenų šaltinis."
+      },
+      {
+        "property": "title",
+        "title": "Alternatyvus pavadinimas",
+        "description": "Alternatyvus pavadinimas, susietas su QR kodo šaltiniu."
+      },
+      {
+        "property": "modulesize",
+        "title": "Dydis",
+        "description": "QR kodo dydis."
+      },
+      {
+        "property": "margin",
+        "title": "Paraštė",
+        "description": "Tarpas aplink kodą."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Išvesties formatas",
+        "description": "Formatas, kuriuo išvesti.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Funso la Yankho Lalifupi",
+    "description": "Lolani wogwiritsa ntchito ayankhe funso losavuta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Funso",
+        "description": "Funso loti ogwiritsa ntchito ayankhe."
+      },
+      {
+        "property": "answers",
+        "title": "Mayankho Otheka"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Dzina la mayeso",
+        "description": "Dzina la mayeso loperekedwa kuti ligwiritsidwe ntchito m'malo oyendetsedwa ndi xAPI pozindikira chinthuchi"
+      }
+    ]
+  }
+}

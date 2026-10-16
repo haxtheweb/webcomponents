@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "पृष्ठ झन्डा",
+    "description": "पृष्ठ लेखकहरूका लागि सम्पादकीय टिप्पणी।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "पृष्ठ झन्डाको एक्सेन्ट रङ।"
+      },
+      {
+        "property": "label",
+        "title": "लेबल",
+        "description": "पृष्ठ झन्डाको लेबल पाठ।"
+      }
+    ]
+  }
+}

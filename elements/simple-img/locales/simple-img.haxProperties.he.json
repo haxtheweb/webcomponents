@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "תמונה פשוטה",
+    "description": "עריכת תמונות באמצעות פרמטרים פשוטים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "מקור",
+        "description": "URL של מקור התמונה."
+      },
+      {
+        "property": "height",
+        "title": "גובה",
+        "description": "גובה תמונה אופציונלי."
+      },
+      {
+        "property": "width",
+        "title": "רוחב",
+        "description": "רוחב תמונה אופציונלי."
+      },
+      {
+        "property": "alt",
+        "title": "טקסט חלופי",
+        "description": "שימושי לקוראי מסך ולשיפור ה-SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "איכות",
+        "description": "איכות התמונה בעת היצירה (JPEG בלבד)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "עדיפות טעינה",
+        "description": "רמז ביצועים לדפדפנים מודרניים.",
+        "options": {
+          "auto": "אוטומטי",
+          "high": "גבוהה",
+          "low": "נמוכה"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "שיטת פענוח",
+        "description": "רמז ביצועים לעיבוד תמונות בדפדפנים מודרניים.",
+        "options": {
+          "auto": "אוטומטי",
+          "async": "אסינכרוני"
+        }
+      }
+    ]
+  }
+}

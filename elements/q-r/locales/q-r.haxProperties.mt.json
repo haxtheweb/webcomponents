@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Kodiċi QR",
+    "description": "Kodiċi biex jiġi skennjat minn smartphone."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Data tal-QR",
+        "description": "Sors tad-data għall-kodiċi QR."
+      },
+      {
+        "property": "title",
+        "title": "Titlu alternattiv",
+        "description": "Titlu alternattiv marbut mas-sors tal-kodiċi QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Daqs",
+        "description": "Id-daqs tal-kodiċi QR."
+      },
+      {
+        "property": "margin",
+        "title": "Marġni",
+        "description": "Spazju madwar il-kodiċi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Format tal-output",
+        "description": "Il-format li fih joħroġ.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

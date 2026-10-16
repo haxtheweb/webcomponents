@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Rikch'a",
+    "description": "Rikch'akunata pisi parámetrokunawan allichay."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Pukyu",
+        "description": "Rikch'apa pukyu URL-nin."
+      },
+      {
+        "property": "height",
+        "title": "Sayaynin",
+        "description": "Rikch'apa akllanalla sayaynin."
+      },
+      {
+        "property": "width",
+        "title": "Kinraynin",
+        "description": "Rikch'apa akllanalla kinraynin."
+      },
+      {
+        "property": "alt",
+        "title": "Hukniray qillqa",
+        "description": "Pantalla ñawiriqkunapaq, SEO allinchanapaqpas allin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Allin kaynin",
+        "description": "Rurachkaspa rikch'apa allin kaynin (JPEG-lla)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Apamuy ñawpaqchay",
+        "description": "Musuq navegadorkunapaq allin llamk'ay yuyarichiy.",
+        "options": {
+          "auto": "Kikinmanta",
+          "high": "Hatun",
+          "low": "Uray"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Decodificay ñan",
+        "description": "Musuq navegadorkunapi rikch'a rikuchinapaq allin llamk'ay yuyarichiy.",
+        "options": {
+          "auto": "Kikinmanta",
+          "async": "Mana suyaspa"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ಅಂಚೆ ಕಾರ್ಡ್",
+    "description": "ಎಲ್ಲಿಂದಲೋ ಬಂದ ನಿಜವಾದ ಅಂಚೆ ಕಾರ್ಡ್‌ನಂತೆ ಕಾಣುವ ತಮಾಷೆಯ ಮಾಧ್ಯಮ ಅಂಶ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "ಗೆ",
+        "description": "ಇದು ಯಾರಿಗೆ ಹೋಗುತ್ತಿದೆ?"
+      },
+      {
+        "property": "from",
+        "title": "ಇಂದ",
+        "description": "ನೀವು ಯಾರು?"
+      },
+      {
+        "property": "message",
+        "title": "ಸಂದೇಶ",
+        "description": "ನೀವು ಏನು ಹೇಳಲು ಬಯಸುತ್ತೀರಿ?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "ಅಂಚೆ ಮುದ್ರೆಯ ಸ್ಥಳ",
+        "description": "ಈ ಕಾರ್ಡ್ ಎಲ್ಲಿಂದ ಕಳುಹಿಸಲಾಗಿದೆ?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "ಮುಖ್ಯ ಫೋಟೋದ ಮೂಲ",
+        "description": "ನಿಮ್ಮ ಫೋಟೋ ಎಲ್ಲಿದೆ?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "ಅಂಚೆಚೀಟಿ ಫೋಟೋದ ಮೂಲ",
+        "description": "ನಿಮ್ಮ ಫೋಟೋ ಎಲ್ಲಿದೆ?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Ýönekeý surat",
+    "description": "Suratlary ýönekeý parametrler bilen üýtgediň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Çeşme",
+        "description": "Suratyň çeşme URL-i."
+      },
+      {
+        "property": "height",
+        "title": "Beýiklik",
+        "description": "Suratyň goşmaça beýikligi."
+      },
+      {
+        "property": "width",
+        "title": "Giňlik",
+        "description": "Suratyň goşmaça giňligi."
+      },
+      {
+        "property": "alt",
+        "title": "Alt tekst",
+        "description": "Ekran okaýjylar we gowulandyrylan SEO üçin peýdaly."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Hil",
+        "description": "Döredilende suratyň hili (diňe JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Ýükleme ileriligi",
+        "description": "Häzirki zaman brauzerleri üçin öndürijilik maslahaty.",
+        "options": {
+          "auto": "Awtomatik",
+          "high": "Ýokary",
+          "low": "Pes"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dekodlama usuly",
+        "description": "Häzirki zaman brauzerlerinde surat görkezmek üçin öndürijilik maslahaty.",
+        "options": {
+          "auto": "Awtomatik",
+          "async": "Asinhron"
+        }
+      }
+    ]
+  }
+}

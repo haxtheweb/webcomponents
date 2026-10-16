@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ਗਤੀਵਿਧੀ ਬਾਕਸ",
+    "description": "ਛੋਟਾ ਸਜਾਇਆ ਸਿਰਲੇਖ ਬਲੌਕ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ਆਈਕਨ",
+        "description": "ਗਤੀਵਿਧੀ ਬਾਕਸ ਦੇ ਨਾਲ ਦਿਖਾਇਆ ਆਈਕਨ।"
+      },
+      {
+        "property": "tag",
+        "title": "ਗਤੀਵਿਧੀ ਬਾਕਸ ਟੈਗ",
+        "description": "ਗਤੀਵਿਧੀ ਬਾਕਸ ਵਿੱਚ ਦਿਖਾਇਆ ਟੈਗ।"
+      },
+      {
+        "property": "nocolourize",
+        "title": "ਰੰਗ ਨਾ ਲਗਾਓ",
+        "description": "ਆਈਕਨ 'ਤੇ ਰੰਗ ਲਾਗੂ ਹੋਣ ਤੋਂ ਰੋਕੋ।"
+      }
+    ]
+  }
+}

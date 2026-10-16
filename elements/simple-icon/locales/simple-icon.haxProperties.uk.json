@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Значок",
+    "description": "Значок із повної бібліотеки значків."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Значок",
+        "description": "Значок для показу."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "Акцентний колір значка."
+      },
+      {
+        "property": "dark",
+        "title": "Темна",
+        "description": "Використовувати темний режим (інвертовані кольори)."
+      }
+    ]
+  }
+}

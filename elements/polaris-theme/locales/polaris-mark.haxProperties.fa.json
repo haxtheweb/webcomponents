@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "نشانهٔ Polaris",
+    "description": "نمایش نشانهٔ هویتی PSU با نام دانشکده و URL مقصد اختیاری."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "نام دانشکده",
+        "description": "نامی که کنار نشانه نمایش داده می‌شود."
+      },
+      {
+        "property": "name2",
+        "title": "نام دانشکده ۲",
+        "description": "نام دوم که زیر نام نخست دانشکده نمایش داده می‌شود."
+      },
+      {
+        "property": "name3",
+        "title": "نام دانشکده ۳",
+        "description": "نام سوم که زیر نام دوم دانشکده نمایش داده می‌شود."
+      },
+      {
+        "property": "url",
+        "title": "پیوند",
+        "description": "URL مقصد هنگام کلیک روی نشانه."
+      },
+      {
+        "property": "type",
+        "title": "گونه",
+        "description": "گونهٔ دیداری نشانه.",
+        "options": {
+          "default": "پیش‌فرض",
+          "light": "روشن",
+          "dark": "تیره"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "چیدمان عمودی",
+        "description": "نمایش نام سوم زیر نام دوم همراه با یک خط افقی."
+      }
+    ]
+  }
+}

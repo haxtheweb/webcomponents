@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "ทำให้ GIF แบบเคลื่อนไหวเข้าถึงได้"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF แบบเคลื่อนไหว",
+        "description": "URL ของ GIF แบบเคลื่อนไหว"
+      },
+      {
+        "property": "alt",
+        "title": "ข้อความแสดงแทน",
+        "description": "ข้อความแสดงแทนสำหรับรูปภาพ"
+      },
+      {
+        "property": "longdesc",
+        "title": "คำอธิบายแบบยาว",
+        "description": "คำอธิบายแบบยาวของ GIF เพื่อการเข้าถึง"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "ภาพนิ่ง",
+        "description": "URL ของ GIF ในรูปแบบภาพนิ่ง"
+      }
+    ]
+  }
+}

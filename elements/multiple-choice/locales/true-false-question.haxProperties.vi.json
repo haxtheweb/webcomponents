@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Câu hỏi Đúng / Sai",
+    "description": "Câu hỏi đúng sai"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Câu hỏi",
+        "description": "Câu hỏi để người dùng trả lời."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Đáp án đúng"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tên bài kiểm tra",
+        "description": "Tên bài kiểm tra được truyền vào để nhận dạng mục này trong các môi trường dựa trên xAPI"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bilda sekcio",
+    "description": "Plenlarĝa bildo, kiu dividas paĝan sekcion."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Fona bildo."
+      },
+      {
+        "property": "caption",
+        "description": "Teksta titolo."
+      }
+    ]
+  }
+}

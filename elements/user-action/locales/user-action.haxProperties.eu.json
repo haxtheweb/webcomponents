@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Erabiltzailearen ekintza",
+    "description": "Jarraitu erabiltzaileen ekintzak eta bidali datuak xAPI biltegietara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Jarraitu beharreko gertaera",
+        "description": "Gertaera hau abiarazten duen erabiltzailearen ekintza.",
+        "options": {
+          "visibility": "Hau ikus dezake",
+          "keydown": "Sakatu tekla bat hemen",
+          "click": "Egin klik honetan",
+          "hover": "Pasatu sagua honen gainetik"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Jarraitu aldi bakoitzean",
+        "description": "Lehenespenez, lehen agerraldia soilik jarraitzen da."
+      }
+    ]
+  }
+}

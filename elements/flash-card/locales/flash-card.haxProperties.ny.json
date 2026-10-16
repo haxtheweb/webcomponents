@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Khadi lophunzirira",
+    "description": "Yesererani mfundo ndi makadi ophunzirira a mbali ziwiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Kutsogolo kwa Khadi",
+        "description": "Mawu akutsogolo kapena funso."
+      },
+      {
+        "slot": "back",
+        "title": "Kumbuyo kwa Khadi",
+        "description": "Yankho loyembekezeka."
+      },
+      {
+        "property": "imgSource",
+        "title": "Gwero la Chithunzi",
+        "description": "Fayilo ya chithunzi yogwiritsidwa ntchito pa khadi. Imaposa Mawu Ofunika a Chithunzi."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Mtundu wa Ntchito",
+        "description": "OER Schema: mtundu wa ntchito yomwe kuyeserera uku kukukhudza (mwachitsanzo Kuwerenga, Kulemba, Kupanga, Kufufuza, Kumvetsera, Kuonera, Kulingalira, Kukambirana, Kuyang'anitsitsa, Kufotokoza, Kuyesa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cholinga cha Maphunziro",
+        "description": "OER Schema: ID kapena URL ya cholinga cha maphunziro chomwe kuyeserera uku kukuthandizira."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Mdima",
+        "description": "Gwiritsani ntchito mawonekedwe amdima."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera wa khadi."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Mawu Ofunika a Chithunzi",
+        "description": "Mawu ofunika a chithunzi chachisawawa. Amapitilizidwa ndi Gwero la Chithunzi."
+      }
+    ]
+  }
+}

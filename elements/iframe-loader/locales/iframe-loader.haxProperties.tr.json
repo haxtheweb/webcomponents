@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Harici web içeriğini bir iframe içine yerleştirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kaynak URL'si",
+        "description": "Kaynak URL'si."
+      },
+      {
+        "property": "height",
+        "title": "Yükseklik",
+        "description": "Iframe yüksekliği."
+      },
+      {
+        "property": "width",
+        "title": "Genişlik",
+        "description": "Iframe genişliği."
+      }
+    ]
+  }
+}

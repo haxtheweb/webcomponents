@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Citazione con immagine",
+    "description": "Citazione stilizzata con immagine facoltativa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Immagine",
+        "description": "Aggiungi un'immagine alla testimonianza."
+      },
+      {
+        "property": "name",
+        "title": "Nome completo",
+        "description": "Nome della persona che rilascia la testimonianza."
+      },
+      {
+        "property": "position",
+        "title": "Ruolo o qualifica",
+        "description": "Ruolo o qualifica della persona."
+      },
+      {
+        "slot": "",
+        "title": "Citazione",
+        "description": "Citazione dell'autore della testimonianza."
+      }
+    ]
+  }
+}

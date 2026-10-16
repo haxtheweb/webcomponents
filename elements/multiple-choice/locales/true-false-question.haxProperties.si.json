@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "සත්‍ය / අසත්‍ය ප්‍රශ්නය",
+    "description": "සත්‍ය අසත්‍ය ප්‍රශ්නය"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ප්‍රශ්නය",
+        "description": "පරිශීලකයින් පිළිතුරු දිය යුතු ප්‍රශ්නය."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "නිවැරදි පිළිතුර"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ප්‍රශ්නාවලියේ නම",
+        "description": "මෙම අයිතමය හඳුනා ගැනීම සඳහා xAPI පදනම් වූ පරිසරවල භාවිතයට ලබා දෙන ප්‍රශ්නාවලි නම"
+      }
+    ]
+  }
+}

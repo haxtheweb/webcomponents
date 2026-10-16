@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Teg / Tabletka",
+    "description": "Ixtiyoriy urgʻu rangi, bekor qilish tugmasi yoki almashtirgichli ixcham tabletka shaklidagi yorliq."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Yorliq",
+        "description": "Tabletka ichida koʻrsatiladigan matn."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Tabletka foni uchun SimpleColors urgʻu rangi nomi.",
+        "options": {
+          "": "-- standart --",
+          "red": "Qizil",
+          "pink": "Pushti",
+          "purple": "Binafsha",
+          "deep-purple": "Toʻq binafsha",
+          "indigo": "Indigo",
+          "blue": "Koʻk",
+          "light-blue": "Och koʻk",
+          "cyan": "Moviy",
+          "teal": "Yashil-koʻk",
+          "green": "Yashil",
+          "light-green": "Och yashil",
+          "lime": "Laym",
+          "yellow": "Sariq",
+          "amber": "Qahrabo",
+          "orange": "Toʻq sariq",
+          "deep-orange": "Toʻq zargʻaldoq",
+          "brown": "Jigarrang",
+          "blue-grey": "Koʻkimtir kulrang",
+          "grey": "Kulrang"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Avtomatik urgʻu rangi",
+        "description": "Urgʻu rangini yorliq matnidan avtomatik aniqlash."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Bekor qilish tugmasi",
+        "description": "Tabletka ichida olib tashlash/bekor qilish belgi tugmasini koʻrsatish."
+      },
+      {
+        "property": "readonly",
+        "title": "Faqat oʻqish uchun",
+        "description": "Tabletka faqat koʻrsatish uchun boʻlishi uchun bekor qilish tugmasini yashirish."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Almashtiriladi",
+        "description": "Tugma bosilganda tabletkani yoqiladigan/oʻchiriladigan qilish."
+      },
+      {
+        "property": "toggled",
+        "title": "Yoqilgan",
+        "description": "Tabletka hozir yoqilganmi yoki yoʻqmi."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Yoqilgan holat belgisi",
+        "description": "Tabletka yoqilganda koʻrsatiladigan belgi."
+      },
+      {
+        "property": "disabled",
+        "title": "Oʻchirilgan",
+        "description": "Tabletka bilan oʻzaro taʼsirni oʻchirish."
+      }
+    ]
+  }
+}

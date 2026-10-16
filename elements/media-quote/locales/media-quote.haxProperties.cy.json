@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Dyfyniad cyfryngau",
+    "description": "Delwedd gyda dyfyniad, cyfeiriad a chapsiwn dewisol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Dyfyniad",
+        "description": "Testun y dyfyniad."
+      },
+      {
+        "slot": "author",
+        "title": "Awdur",
+        "description": "Awdur y dyfyniad."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Manylion yr awdur",
+        "description": "Manylion yr awdur."
+      },
+      {
+        "slot": "caption",
+        "title": "Capsiwn",
+        "description": "Capsiwn y ddelwedd."
+      },
+      {
+        "property": "src",
+        "title": "Ffynhonnell y Ddelwedd",
+        "description": "Ffeil delwedd a ddefnyddir ar gyfer y dyfyniad cyfryngau."
+      },
+      {
+        "property": "alt",
+        "title": "Testun Amgen",
+        "description": "Testun amgen ar gyfer y ddelwedd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Lliw Acen",
+        "description": "Lliw acen y cerdyn."
+      }
+    ]
+  }
+}

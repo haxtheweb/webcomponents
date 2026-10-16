@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D ფლეერი",
+    "description": "3D ფაილების / გაფართოებული რეალობის ფლეერი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "წყარო",
+        "description": "ამ AR ფაილის URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "ელემენტის X პოზიცია AR-ში."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "ელემენტის Y პოზიცია AR-ში."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "ელემენტის Z პოზიცია AR-ში."
+      },
+      {
+        "property": "skyColor",
+        "title": "ცის ფერი",
+        "description": "აირჩიეთ ცის ფერი სცენაში."
+      }
+    ]
+  }
+}

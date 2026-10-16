@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Richtig-/Falsch-Frage",
+    "description": "Richtig-/Falsch-Frage"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Frage",
+        "description": "Frage, auf die Benutzer antworten sollen."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Richtige Antwort"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Name des Quiz",
+        "description": "Quizname, der in xAPI-gesteuerten Umgebungen zur Identifizierung dieses Elements übergeben wird"
+      }
+    ]
+  }
+}

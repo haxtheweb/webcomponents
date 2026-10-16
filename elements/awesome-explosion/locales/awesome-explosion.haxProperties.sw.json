@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Mlipuko wa Ajabu",
+    "description": "Uhuishaji shirikishi wa mlipuko wenye sauti za hiari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Ukubwa",
+        "description": "Weka ukubwa wa mlipuko.",
+        "options": {
+          "tiny": "Kidogo sana",
+          "small": "Ndogo",
+          "medium": "Wastani",
+          "large": "Kubwa",
+          "epic": "Kubwa mno"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Rangi",
+        "description": "Weka mandhari ya rangi ya mlipuko.",
+        "options": {
+          "": "Chaguo-msingi",
+          "red": "Nyekundu",
+          "blue": "Bluu",
+          "purple": "Zambarau",
+          "orange": "Machungwa",
+          "yellow": "Njano"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Sauti",
+        "description": "Washa sauti."
+      },
+      {
+        "property": "resetSound",
+        "title": "Anzisha Sauti Upya",
+        "description": "Anzisha sauti upya kutoka mwanzo kila mara."
+      },
+      {
+        "property": "image",
+        "title": "Picha Maalum",
+        "description": "URL ya hiari ya picha maalum ya mlipuko."
+      },
+      {
+        "property": "sound",
+        "title": "Sauti Maalum",
+        "description": "URL ya hiari ya sauti maalum."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Imezimwa",
+        "description": "Zima mwingiliano wote."
+      }
+    ]
+  }
+}

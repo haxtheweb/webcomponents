@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tags",
+    "description": "Eenvoudige taglijst voor weergave op de pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Door komma's gescheiden lijst met tags."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatische accentkleur",
+        "description": "Stel de accentkleur automatisch in op basis van het label."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kleur",
+        "description": "Kleur voor tags."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "தீம் கொண்ட Polaris செயலழைப்புப் பொத்தானைக் காட்டவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "பொத்தான் உரை",
+        "description": "செயலழைப்புப் பொத்தானில் காட்டப்படும் உரை."
+      },
+      {
+        "property": "link",
+        "title": "இணைப்பு",
+        "description": "பொத்தானுக்கான இலக்கு URL."
+      },
+      {
+        "property": "type",
+        "title": "மாறுபாடு",
+        "description": "காட்சிப் பாணி மாறுபாடு.",
+        "options": {
+          "primary": "முதன்மை",
+          "tinted": "சாயலிட்ட",
+          "light": "வெளிர்"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "வெளிக்கோட்டுப் பாணி",
+        "description": "வெளிக்கோட்டு வடிவமைப்பை இயக்கவும்."
+      },
+      {
+        "property": "filled",
+        "title": "நிரப்பப்பட்ட பாணி",
+        "description": "நிரப்பப்பட்ட வடிவமைப்பை இயக்கவும்."
+      }
+    ]
+  }
+}

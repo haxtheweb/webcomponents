@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Carta di storia Polaris",
+    "description": "Affissà una carta di storia Polaris cù una imagine di fondu, un'etichetta di pilastru è un titulu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagine di fondu",
+        "description": "URL di l'imagine affissata cum'è fondu di a carta."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Dimensione di u fondu",
+        "description": "Cumu l'imagine di fondu empie a carta (CSS background-size).",
+        "options": {
+          "cover": "copre (cover)",
+          "contain": "cuntene (contain)",
+          "auto": "autumaticu (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Fissazione di u fondu",
+        "description": "Cumu si cumporta l'imagine di fondu quandu si sfila (CSS background-attachment).",
+        "options": {
+          "scroll": "sfilevule (scroll)",
+          "fixed": "fissu (fixed)",
+          "local": "lucale (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Etichetta di pilastru",
+        "description": "Etichetta corta in maiuscule affissata in cima di a carta. Lascià viota per piattalla."
+      },
+      {
+        "property": "label",
+        "title": "Testu di a carta",
+        "description": "Testu principale affissatu in u pannellu di sottu."
+      },
+      {
+        "property": "link",
+        "title": "Ligame",
+        "description": "URL di destinazione facultativu chì inguleghja tutta a carta."
+      }
+    ]
+  }
+}

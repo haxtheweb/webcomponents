@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "标签",
+    "description": "用于在页面上显示的简单标签列表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "标签",
+        "description": "以逗号分隔的标签列表。"
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "自动强调色",
+        "description": "根据标签自动设置强调色。"
+      },
+      {
+        "property": "accentColor",
+        "title": "颜色",
+        "description": "标签的颜色。"
+      }
+    ]
+  }
+}

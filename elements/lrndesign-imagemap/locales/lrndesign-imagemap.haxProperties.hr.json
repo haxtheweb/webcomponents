@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Slikovna karta",
+    "description": "Pristupačna slikovna karta s interaktivnim žarišnim točkama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Oznaka",
+        "description": "Oznaka slikovne karte."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Pojedinosti žarišnih točaka",
+        "description": "Interaktivne žarišne točke na slikovnoj karti."
+      }
+    ]
+  }
+}

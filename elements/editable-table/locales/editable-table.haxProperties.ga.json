@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tábla",
+    "description": "Sonraí i dtábla don ghréasán."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Ceanntásc Ró",
+        "description": "Láimhseáil an chéad ró mar cheanntásc."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Ceanntásc Colúin",
+        "description": "Láimhseáil an chéad cholún mar cheanntásc."
+      },
+      {
+        "property": "footer",
+        "title": "Buntásc",
+        "description": "Láimhseáil an ró deireanach mar bhuntásc."
+      },
+      {
+        "property": "sort",
+        "title": "In-sórtáilte",
+        "description": "Ceadaigh sórtáil de réir luachanna colúin."
+      },
+      {
+        "property": "filter",
+        "title": "Ceadaigh Scagadh",
+        "description": "Ceadaigh scagadh de réir luachanna colúin."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Stíliú Uimhriúil",
+        "description": "Cuir stíliú uimhriúil i bhfeidhm ar cholúin uimhriúla."
+      },
+      {
+        "property": "responsive",
+        "title": "Freagrúil",
+        "description": "Coigeartaigh leagan amach an tábla ar scáileáin bheaga."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mód Rúibrice",
+        "description": "Léirigh an tábla seo mar Rubric de chuid OER Schema ionas go n-astaítear meiteashonraí Rubric, RubricScale, RubricCriterion agus RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Cineál Rúibrice",
+        "description": "Stíl rúibrice a astaítear mar oer:rubricType (níl brí leis ach nuair atá Mód Rúibrice ar siúl).",
+        "options": {
+          "": "(dada)",
+          "analytic": "Anailíseach",
+          "holistic": "Iomlánaíoch",
+          "single-point": "Pointe Aonair",
+          "checklist": "Seicliosta"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Le himlíne"
+      },
+      {
+        "property": "condensed",
+        "title": "Rónna Dlúite",
+        "description": "Laghdaigh airde na rónna."
+      },
+      {
+        "property": "striped",
+        "title": "Rónna Stríocacha",
+        "description": "Scáthaigh gach dara ró."
+      },
+      {
+        "property": "downloadable",
+        "title": "Cnaipe Íoslódála",
+        "description": "Cuir cnaipe leis chun an tábla a íoslódáil."
+      },
+      {
+        "property": "copyable",
+        "title": "Cnaipe Cóipeála",
+        "description": "Cuir cnaipe leis chun sonraí CSV an tábla a chóipeáil."
+      },
+      {
+        "property": "printable",
+        "title": "Cnaipe Priontála",
+        "description": "Cuir cnaipe leis chun an tábla amháin a phriontáil."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Sonraí CSV",
+        "description": "Cruthaigh tábla ó chomhad CSV uaslódáilte."
+      }
+    ]
+  }
+}

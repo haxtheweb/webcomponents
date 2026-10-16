@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Ýygyndy setiri",
+    "description": "Ýygyndy sanawynyň içinde ulanmak üçin tekstli, baglanyşykly, nyşanly, bellikli we goşmaça suratly setir görnüşli element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Baglanyşyk",
+        "description": "Bu setir üçin barmaly URL."
+      },
+      {
+        "property": "image",
+        "title": "Surat",
+        "description": "Setir üçin surat."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Suraty beýan edýän alternatiw tekst."
+      },
+      {
+        "property": "line1",
+        "title": "1-nji setir",
+        "description": "Tekstiň birinji setiri."
+      },
+      {
+        "property": "line2",
+        "title": "2-nji setir",
+        "description": "Tekstiň ikinji setiri."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Nyşan",
+        "description": "Setiri aňladýan nyşan."
+      },
+      {
+        "property": "saturate",
+        "title": "Doýgunlyk effekti",
+        "description": "Ulanyjy üns berende suratyň doýgunlygyny üýtget."
+      },
+      {
+        "property": "tags",
+        "title": "Bellikler",
+        "description": "Otur bilen aýrylan bellikler sanawy."
+      },
+      {
+        "property": "accentColor",
+        "title": "Reňk",
+        "description": "Nyşan we bellikler üçin ulanylýan reňk."
+      }
+    ]
+  }
+}

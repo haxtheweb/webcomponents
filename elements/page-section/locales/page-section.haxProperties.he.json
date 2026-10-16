@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "מקטע עמוד",
+    "description": "מכל מקטע לתוכן עמוד ולפריסות מבוססות מסך."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "עיצוב",
+        "description": "סגנון מוגדר מראש שמעדכן הגדרות קשורות."
+      },
+      {
+        "property": "image",
+        "title": "תמונה",
+        "description": "מדיית רקע למקטע."
+      },
+      {
+        "property": "bg",
+        "title": "צבע רקע",
+        "description": "צבע הרקע כאשר לא הוגדרה תמונה."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "כפתור גלילה",
+        "description": "הצגת כפתור שגולל למקטע הבא."
+      },
+      {
+        "property": "fold",
+        "title": "הצגת קפל",
+        "description": "הצגת קפל חזותי בתחתית המקטע."
+      },
+      {
+        "property": "full",
+        "title": "גודל מסך מלא",
+        "description": "מילוי גובה המסך של הצופה."
+      },
+      {
+        "property": "filter",
+        "title": "החלת מסנן",
+        "description": "החלת מסנן חזותי על תמונת הרקע."
+      },
+      {
+        "slot": "",
+        "title": "תוכן",
+        "description": "תוכן המקטע."
+      },
+      {
+        "slot": "entice",
+        "title": "פיתיון",
+        "description": "תוכן פיתוי אופציונלי."
+      },
+      {
+        "slot": "buttons",
+        "title": "כפתורים",
+        "description": "קבוצת כפתורים המוצגת מתחת לטקסט."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "טקסט עוגן",
+        "description": "תווית העוגן המוצגת בניווט."
+      }
+    ]
+  }
+}

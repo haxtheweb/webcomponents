@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Zance",
+    "description": "Akwatin zance mai salo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Ambato",
+        "description": "Rubutun ambato."
+      },
+      {
+        "property": "alt",
+        "title": "Madadi",
+        "description": "Rubutun madadi na hoton."
+      },
+      {
+        "property": "image",
+        "title": "Hoto",
+        "description": "Hoton da ake nunawa tare da zancen."
+      }
+    ]
+  }
+}

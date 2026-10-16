@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ටැබ",
+    "description": "ටැබ කට්ටලයක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "ලේබලය (ප්‍රවේශ්‍යතාව සඳහා)",
+        "description": "ටැබ කට්ටලය සඳහා ප්‍රවේශ්‍ය ලේබලය."
+      },
+      {
+        "property": "disabled",
+        "title": "අබල කර ඇත",
+        "description": "සියලු ටැබ අබල කරන්න."
+      },
+      {
+        "property": "hidden",
+        "title": "සඟවා ඇත",
+        "description": "ටැබ කට්ටලය සඟවන්න."
+      },
+      {
+        "property": "sticky",
+        "title": "ඇලෙන",
+        "description": "අනුචලනය කරන අතරතුර තිරස් ටැබ ඉහළින් තබා ගන්න."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "පිරිසැලසුම් බිඳුම් ලක්ෂ්‍යය",
+        "description": "තිරස් ටැබ සඳහා බිඳුම් ලක්ෂ්‍යය; සිරස් පමණක් සඳහා -1 භාවිත කරන්න."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "නිරූපක බිඳුම් ලක්ෂ්‍යය",
+        "description": "නිරූපක සමඟ පෙළ පෙන්වීම සඳහා බිඳුම් ලක්ෂ්‍යය. පෙරනිමිය 0 වේ; නිරූපක පමණක් ප්‍රකාරය සඳහා -1 භාවිත කරන්න."
+      },
+      {
+        "slot": "",
+        "title": "ටැබ",
+        "description": "<a11y-tab/> මූලද්‍රව්‍ය මාලාවක්."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "අනන්‍ය ID",
+        "description": "මෙම ටැබ කට්ටලය සඳහා අනන්‍ය ID."
+      }
+    ]
+  }
+}

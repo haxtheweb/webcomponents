@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Medienzitat",
+    "description": "Bild mat Zitat, Quellenugab an optionaler Beschrëftung."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Zitat",
+        "description": "Zitattext."
+      },
+      {
+        "slot": "author",
+        "title": "Auteur",
+        "description": "Auteur vum Zitat."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Detailer zum Auteur",
+        "description": "Detailer zum Auteur."
+      },
+      {
+        "slot": "caption",
+        "title": "Beschrëftung",
+        "description": "Bildbeschrëftung."
+      },
+      {
+        "property": "src",
+        "title": "Bildquell",
+        "description": "Bildfichier fir d'Medienzitat."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativtext",
+        "description": "Alternativen Text fir d'Bild."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Akzentfaarf vun der Kaart."
+      }
+    ]
+  }
+}

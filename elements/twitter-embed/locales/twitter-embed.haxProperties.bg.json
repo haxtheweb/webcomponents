@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Вграждане от Twitter (X)",
+    "description": "Вграждане на публикация от X в контекста."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL на публикацията",
+        "description": "URL на публикацията за вграждане."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Тема",
+        "description": "Светла или тъмна тема за публикациите в X.",
+        "options": {
+          "light": "Светъл",
+          "dark": "Тъмен"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Без изскачащ прозорец при щракване",
+        "description": "Потребителите да не могат да отварят публикацията в x.com."
+      }
+    ]
+  }
+}

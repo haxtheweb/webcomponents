@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ページアンカー",
+    "description": "ページ上のメディアの特定の位置にリンクします。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "ページのターゲット",
+        "description": "このアンカーが指すIDまたはリソース。"
+      },
+      {
+        "property": "value",
+        "title": "ディープリンクの値",
+        "description": "ディープリンクの値（例: タイムスタンプやスライドID）。"
+      },
+      {
+        "property": "entityId",
+        "title": "サイトエンティティ",
+        "description": "関連する概念の表示を制御するための任意のサイトエンティティ。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Įterpti Discord bendruomenes pagal bendrinimo URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ištekliaus URL",
+        "description": "Ištekliaus URL."
+      },
+      {
+        "property": "height",
+        "title": "Aukštis",
+        "description": "Turinio rėmelio aukštis."
+      },
+      {
+        "property": "width",
+        "title": "Plotis",
+        "description": "Turinio rėmelio plotis."
+      }
+    ]
+  }
+}

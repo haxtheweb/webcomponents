@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Marcă Polaris",
+    "description": "Afișează marca de identitate PSU cu numele opțional al colegiului și URL de destinație."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Numele colegiului",
+        "description": "Numele afișat lângă marcă."
+      },
+      {
+        "property": "name2",
+        "title": "Numele colegiului 2",
+        "description": "Al doilea nume, afișat sub primul nume al colegiului."
+      },
+      {
+        "property": "name3",
+        "title": "Numele colegiului 3",
+        "description": "Al treilea nume, afișat sub al doilea nume al colegiului."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "URL-ul de destinație la clic pe marcă."
+      },
+      {
+        "property": "type",
+        "title": "Variantă",
+        "description": "Varianta vizuală a mărcii.",
+        "options": {
+          "default": "Implicit",
+          "light": "Deschis",
+          "dark": "Întunecat"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Aspect vertical",
+        "description": "Afișează al treilea nume sub al doilea, cu o linie orizontală."
+      }
+    ]
+  }
+}

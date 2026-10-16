@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Osadź komentarze Disqus na stronie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Krótka nazwa",
+        "description": "Krótka nazwa witryny, która określa hosta skryptu Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL strony",
+        "description": "URL strony, do której przypisany jest wątek komentarzy."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Identyfikator strony",
+        "description": "Unikalny identyfikator wątku komentarzy strony."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Tytuł strony",
+        "description": "Tytuł strony, do której przypisany jest wątek komentarzy."
+      },
+      {
+        "property": "loadingText",
+        "title": "Tekst ładowania",
+        "description": "Tekst odczytywany podczas ładowania komentarzy."
+      },
+      {
+        "property": "lang",
+        "title": "Język",
+        "description": "Kod języka interfejsu Disqus, np. en."
+      }
+    ]
+  }
+}

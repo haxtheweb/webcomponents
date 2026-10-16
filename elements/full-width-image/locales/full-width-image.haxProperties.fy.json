@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Ofbyldingsseksje",
+    "description": "Ofbylding oer de folsleine breedte dy't in sideseksje ûnderbrekt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Eftergrûnôfbylding."
+      },
+      {
+        "property": "caption",
+        "description": "Tekstkop."
+      }
+    ]
+  }
+}

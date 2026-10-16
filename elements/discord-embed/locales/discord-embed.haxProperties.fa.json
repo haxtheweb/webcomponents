@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "جاسازی انجمن‌های Discord از طریق URL اشتراک‌گذاری."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL منبع",
+        "description": "URL منبع."
+      },
+      {
+        "property": "height",
+        "title": "ارتفاع",
+        "description": "ارتفاع قاب محتوا."
+      },
+      {
+        "property": "width",
+        "title": "عرض",
+        "description": "عرض قاب محتوا."
+      }
+    ]
+  }
+}

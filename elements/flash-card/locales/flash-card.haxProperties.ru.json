@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Карточка для запоминания",
+    "description": "Отрабатывайте понятия с помощью двусторонних карточек."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Лицевая сторона карточки",
+        "description": "Текст или вопрос на лицевой стороне."
+      },
+      {
+        "slot": "back",
+        "title": "Оборотная сторона карточки",
+        "description": "Ожидаемый ответ."
+      },
+      {
+        "property": "imgSource",
+        "title": "Источник изображения",
+        "description": "Файл изображения для карточки. Имеет приоритет над ключевым словом изображения."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Тип действия",
+        "description": "OER Schema: тип действия в этой практике (например, Reading, Writing, Making, Researching, Listening, Watching, Reflecting, Discussing, Observing, Presenting, Assess)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Учебная цель",
+        "description": "OER Schema: ID или URL учебной цели, которую поддерживает эта практика."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Тёмный",
+        "description": "Использовать тёмный режим."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентный цвет",
+        "description": "Акцентный цвет карточки."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Ключевое слово изображения",
+        "description": "Ключевое слово для случайного изображения. Перекрывается источником изображения."
+      }
+    ]
+  }
+}

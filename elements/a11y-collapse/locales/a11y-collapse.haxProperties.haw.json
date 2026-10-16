@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Pahu hoʻopiliki",
+    "description": "He pahu hoʻokahi e hiki ke hoʻonui a hoʻopiliki ʻia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Poʻo",
+        "description": "Ka kikokikona o ka mea hoʻopiliki."
+      },
+      {
+        "property": "expanded",
+        "title": "Hoʻonui ʻia",
+        "description": "Hoʻonui ma ke ʻano paʻamau."
+      },
+      {
+        "property": "headingButton",
+        "title": "Pihi Poʻo",
+        "description": "E hoʻolilo i ke poʻo holoʻokoʻa i mea kōmi ma kahi o ka hōʻailona wale nō."
+      },
+      {
+        "property": "icon",
+        "title": "Hōʻailona",
+        "description": "Ka hōʻailona no ke pihi hoʻonui/hoʻopiliki."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Hōʻailona (ke hoʻonui ʻia)",
+        "description": "He hōʻailona koho no ke kūlana hoʻonui ʻia."
+      },
+      {
+        "slot": "",
+        "title": "Ka ʻIkepili",
+        "description": "Ka ʻikepili no ka mea hoʻopiliki."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Hōʻike kōkua",
+        "description": "Hōʻike kōkua no ke pihi hoʻonui/hoʻopiliki."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Hōʻike kōkua (ke hoʻonui ʻia)",
+        "description": "Hōʻike kōkua no ke pihi hoʻonui/hoʻopiliki ke hoʻonui ʻia."
+      }
+    ]
+  }
+}

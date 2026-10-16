@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Tapahtumamerkki",
+    "description": "Tapahtumamerkkikomponentti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV-kuva",
+        "description": "Televisiossa näytettävä kuva."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Merkin kulmassa näytettävä logo."
+      },
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Merkin yläreunassa näytettävä otsikko."
+      },
+      {
+        "property": "name",
+        "title": "Nimi",
+        "description": "Merkissä näytettävä nimi."
+      },
+      {
+        "property": "position",
+        "title": "Asema",
+        "description": "Henkilön rooli tai titteli."
+      },
+      {
+        "property": "organization",
+        "title": "Organisaatio",
+        "description": "Organisaatio, jossa henkilö työskentelee."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV:n väri",
+        "description": "Valitse television väri."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Ensisijainen tausta- tai tekstiväri."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Nuppien väri",
+        "description": "Television nuppien väri."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Seepia",
+        "description": "Käytä seepiatehostetta."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Mustavalkoinen",
+        "description": "Käytä mustavalkotehostetta."
+      }
+    ]
+  }
+}

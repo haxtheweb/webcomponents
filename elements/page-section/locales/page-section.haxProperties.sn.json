@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Chikamu chepeji",
+    "description": "Mudziyo wechikamu wezvirimo zvepeji nemarongerwo anoenderana nechiratidziro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Dhizaini",
+        "description": "Mhando yakagadzirwa kare inogadziridza zvimwe zvakabatana."
+      },
+      {
+        "property": "image",
+        "title": "Mufananidzo",
+        "description": "Midhiya yekumashure yechikamu."
+      },
+      {
+        "property": "bg",
+        "title": "Ruvara rwekumashure",
+        "description": "Ruvara rwekumashure kana pasina mufananidzo wakasetwa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Bhatani rekukwesha",
+        "description": "Ratidza bhatani rinokwesha kuenda kuchikamu chinotevera."
+      },
+      {
+        "property": "fold",
+        "title": "Ratidza mupetso",
+        "description": "Ratidza mupetso unooneka pasi pechikamu."
+      },
+      {
+        "property": "full",
+        "title": "Saizi yechiratidziro chizere",
+        "description": "Zadza kureba kwechiratidziro chemuoni."
+      },
+      {
+        "property": "filter",
+        "title": "Isa Sefa",
+        "description": "Isa sefa inooneka pamufananidzo wekumashure."
+      },
+      {
+        "slot": "",
+        "title": "Zvirimo",
+        "description": "Zvirimo zvechikamu."
+      },
+      {
+        "slot": "entice",
+        "title": "Kukwezva",
+        "description": "Zvirimo zvisingamanikidzwi zvekukwezva."
+      },
+      {
+        "slot": "buttons",
+        "title": "Mabhatani",
+        "description": "Boka remabhatani rinoratidzwa pasi pemavara."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Mavara echisungo",
+        "description": "Zita rechisungo rinoratidzwa mukufamba."
+      }
+    ]
+  }
+}

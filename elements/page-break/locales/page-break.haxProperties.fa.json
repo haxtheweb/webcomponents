@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "جزئیات صفحه",
+    "description": "تعریف یک جداکنندهٔ دیداری میان صفحه‌ها که سامانه‌های مدیریت محتوا می‌توانند برای ساخت صفحه‌ها از آن استفاده کنند."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنوانی که در پوسته و نخستین سرعنوان نمایش داده می‌شود."
+      },
+      {
+        "property": "pageType",
+        "title": "نوع",
+        "description": "برچسب دیداری بافت صفحه.",
+        "options": {
+          "": "-- هیچ --",
+          "content": "محتوا",
+          "assessment": "ارزشیابی",
+          "quiz": "آزمونک",
+          "submission": "ارسال تکلیف",
+          "lesson": "درس",
+          "module": "پودمان",
+          "task": "تکلیف",
+          "activity": "فعالیت",
+          "project": "پروژه",
+          "practice": "تمرین",
+          "unit": "واحد",
+          "objectives": "اهداف یادگیری",
+          "connection": "ارتباط",
+          "knowledge": "آیا می‌دانستید؟",
+          "strategy": "راهبرد یادگیری",
+          "discuss": "گفت‌وگو کنید",
+          "listen": "گوش دهید",
+          "make": "بسازید",
+          "observe": "مشاهده کنید",
+          "present": "ارائه دهید",
+          "reading": "خواندن",
+          "reflect": "تأمل کنید",
+          "research": "پژوهش کنید",
+          "watch": "تماشا کنید",
+          "write": "بنویسید"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "برچسب‌ها",
+        "description": "فهرست برچسب‌ها جداشده با ویرگول."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL پیوند",
+        "description": "URL تغییر مسیر که به‌جای محتوای صفحه نمایش داده می‌شود."
+      },
+      {
+        "property": "linkTarget",
+        "title": "مقصد پیوند",
+        "description": "باز کردن پیوندها در همان پنجره یا پنجرهٔ جدید.",
+        "options": {
+          "_self": "همان پنجره",
+          "_blank": "پنجرهٔ جدید"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "منتشرشده",
+        "description": "صفحه‌های منتشرنشده از کاربران نهایی پنهان هستند."
+      },
+      {
+        "property": "locked",
+        "title": "قفل صفحه",
+        "description": "قفل کردن یا باز کردن قفل همهٔ عناصر این صفحه."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "جایگزینی نامک خودکار",
+        "description": "نامک از به‌روزرسانی خودکار بر اساس عنوان یا والد قفل شود."
+      },
+      {
+        "property": "slug",
+        "title": "مسیر",
+        "description": "نامک URL این صفحه."
+      },
+      {
+        "property": "image",
+        "title": "رسانه",
+        "description": "رسانه‌ای که نمایانگر صفحه است و در برخی پوسته‌ها و نماها استفاده می‌شود."
+      },
+      {
+        "property": "parent",
+        "title": "والد",
+        "description": "مسیر صفحهٔ والد."
+      },
+      {
+        "property": "noderefs",
+        "title": "محتوای مرتبط",
+        "description": "صفحه‌های مرتبط با این صفحه."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "توضیحات",
+        "description": "توضیحی که در مجموعه‌ها و بهینه‌سازی برای موتورهای جست‌وجو (SEO) استفاده می‌شود."
+      },
+      {
+        "property": "entityType",
+        "title": "نوع موجودیت",
+        "description": "پیش‌فرض صفحه است مگر خلاف آن تنظیم شود.",
+        "options": {
+          "page": "صفحه (پیش‌فرض)",
+          "taxonomy": "رده‌بندی",
+          "taxonomyTerm": "اصطلاح رده‌بندی",
+          "region": "ناحیه"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "نماد",
+        "description": "نماد مرتبط با این صفحه در سایت."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ مرتبط با این صفحه در سایت."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "پنهان در منو",
+        "description": "این صفحه از منوها پنهان شود ولی URL آن حفظ شود."
+      },
+      {
+        "property": "order",
+        "title": "ترتیب",
+        "description": "ترتیب نسبت به صفحه‌های هم‌سطح."
+      },
+      {
+        "property": "developerTheme",
+        "title": "پوستهٔ صفحه",
+        "description": "جایگزینی پوسته فقط برای این صفحه."
+      },
+      {
+        "property": "author",
+        "title": "نویسنده",
+        "description": "نام کاربری آخرین فردی که این صفحه را ویرایش کرده است."
+      }
+    ]
+  }
+}

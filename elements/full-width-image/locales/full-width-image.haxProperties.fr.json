@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Section d'image",
+    "description": "Image pleine largeur qui sépare une section de page."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Image d'arrière-plan."
+      },
+      {
+        "property": "caption",
+        "description": "Titre textuel."
+      }
+    ]
+  }
+}

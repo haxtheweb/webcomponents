@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Chwaraewr dogfennaeth cydrannau gwe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Cuddio'r ffenestr",
+        "description": "Cuddio'r ffenestr allbwn, defnyddiol pan mai'r derfynell yn unig yw'r diben"
+      }
+    ]
+  }
+}

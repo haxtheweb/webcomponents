@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Dyddiad",
+    "description": "Dangos dyddiad calendr gyda manylion."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mis",
+        "description": "Mis a ddangosir ar y cerdyn."
+      },
+      {
+        "property": "date",
+        "title": "Dydd o'r mis",
+        "description": "Rhif dydd y mis."
+      },
+      {
+        "property": "day",
+        "title": "Dydd o'r wythnos",
+        "description": "Dydd yr wythnos fel testun."
+      },
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Enw'r digwyddiad."
+      },
+      {
+        "property": "location",
+        "title": "Lleoliad",
+        "description": "Lleoliad y digwyddiad."
+      },
+      {
+        "property": "startTime",
+        "title": "Dechrau",
+        "description": "Amser dechrau."
+      },
+      {
+        "property": "endTime",
+        "title": "Diwedd",
+        "description": "Amser gorffen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw Acen",
+        "description": "Lliw acen dewisol."
+      },
+      {
+        "property": "dark",
+        "title": "Thema Dywyll",
+        "description": "Galluogi thema dywyll."
+      }
+    ]
+  }
+}

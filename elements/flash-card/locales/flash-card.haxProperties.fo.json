@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Minniskort",
+    "description": "Æva hugtøk við tvísíðaðum minniskortum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Framsíðan á kortinum",
+        "description": "Tekstur ella spurningur á framsíðuni."
+      },
+      {
+        "slot": "back",
+        "title": "Baksíðan á kortinum",
+        "description": "Væntað svar."
+      },
+      {
+        "property": "imgSource",
+        "title": "Myndakelda",
+        "description": "Myndafíla, sum verður nýtt á kortinum. Gongur fram um myndaleitorð."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Slag av virksemi",
+        "description": "OER Schema: slagið av virksemi, sum hendan venjingin fevnir um (t.d. lesa, skriva, gera, granska, lurta, hyggja, hugleiða, kjakast, eygleiða, leggja fram, meta)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lærumál",
+        "description": "OER Schema: ID ella URL til lærumálið, sum henda venjingin stuðlar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Myrkt",
+        "description": "Nýt myrkan stilling."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Dámlitur á kortinum."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Myndaleitorð",
+        "description": "Leitorð til tilvildarliga mynd. Myndakelda gongur fram um hetta."
+      }
+    ]
+  }
+}

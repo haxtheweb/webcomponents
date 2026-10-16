@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "ცხრილი",
+    "description": "ცხრილური მონაცემები ვებისთვის."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "მწკრივის სათაური",
+        "description": "პირველი მწკრივი ჩაითვალოს სათაურად."
+      },
+      {
+        "property": "columnHeader",
+        "title": "სვეტის სათაური",
+        "description": "პირველი სვეტი ჩაითვალოს სათაურად."
+      },
+      {
+        "property": "footer",
+        "title": "ქვედა კოლონტიტული",
+        "description": "ბოლო მწკრივი ჩაითვალოს ქვედა კოლონტიტულად."
+      },
+      {
+        "property": "sort",
+        "title": "დახარისხებადი",
+        "description": "სვეტის მნიშვნელობებით დახარისხების დაშვება."
+      },
+      {
+        "property": "filter",
+        "title": "ფილტრის დაშვება",
+        "description": "სვეტის მნიშვნელობებით გაფილტვრის დაშვება."
+      },
+      {
+        "property": "numericStyles",
+        "title": "რიცხვითი სტილი",
+        "description": "რიცხვითი სვეტებისთვის რიცხვითი სტილის გამოყენება."
+      },
+      {
+        "property": "responsive",
+        "title": "ადაპტური",
+        "description": "ცხრილის განლაგების მორგება პატარა ეკრანებზე."
+      },
+      {
+        "property": "rubricMode",
+        "title": "რუბრიკის რეჟიმი",
+        "description": "ამ ცხრილის OER Schema Rubric-ად ინტერპრეტაცია, რათა გამოიცეს Rubric, RubricScale, RubricCriterion და RubricLevel მეტამონაცემები."
+      },
+      {
+        "property": "rubricType",
+        "title": "რუბრიკის ტიპი",
+        "description": "რუბრიკის სტილი, რომელიც გამოიცემა როგორც oer:rubricType (აზრი აქვს მხოლოდ რუბრიკის რეჟიმის ჩართვისას).",
+        "options": {
+          "": "(არცერთი)",
+          "analytic": "ანალიტიკური",
+          "holistic": "ჰოლისტიკური",
+          "single-point": "ერთქულიანი",
+          "checklist": "საკონტროლო სია"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "ჩარჩოთი"
+      },
+      {
+        "property": "condensed",
+        "title": "მწკრივების შემჭიდროება",
+        "description": "მწკრივის სიმაღლის შემცირება."
+      },
+      {
+        "property": "striped",
+        "title": "ზოლიანი მწკრივები",
+        "description": "ყოველი მეორე მწკრივის დაჩრდილვა."
+      },
+      {
+        "property": "downloadable",
+        "title": "ჩამოტვირთვის ღილაკი",
+        "description": "ცხრილის ჩამოსატვირთი ღილაკის დამატება."
+      },
+      {
+        "property": "copyable",
+        "title": "კოპირების ღილაკი",
+        "description": "ცხრილის CSV მონაცემების კოპირების ღილაკის დამატება."
+      },
+      {
+        "property": "printable",
+        "title": "ბეჭდვის ღილაკი",
+        "description": "მხოლოდ ცხრილის დასაბეჭდი ღილაკის დამატება."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV მონაცემები",
+        "description": "ცხრილის შექმნა ატვირთული CSV ფაილიდან."
+      }
+    ]
+  }
+}

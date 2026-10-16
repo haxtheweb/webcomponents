@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Icono",
+    "description": "Icono de la biblioteca completa de iconos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icono",
+        "description": "Icono que se mostrará."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Color de acento del icono."
+      },
+      {
+        "property": "dark",
+        "title": "Oscuro",
+        "description": "Usar el modo oscuro (colores invertidos)."
+      }
+    ]
+  }
+}

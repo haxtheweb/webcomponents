@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Lugʻat",
+    "description": "Lugʻat atamasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Atama"
+      },
+      {
+        "property": "information",
+        "title": "Taʼrif",
+        "description": "Atama bosilganda koʻrsatiladigan taʼrif."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Qalqib chiquvchi oyna",
+        "description": "Taʼrifni matn ichida emas, qalqib chiquvchi oynada koʻrsatish."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Havolalar",
+        "description": "Ushbu atama bilan bogʻliq qoʻshimcha havolalar roʻyxati."
+      }
+    ]
+  }
+}

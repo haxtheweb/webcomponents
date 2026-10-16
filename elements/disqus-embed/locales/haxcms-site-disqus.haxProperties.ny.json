@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ndemanga za Disqus",
+    "description": "Kulumikizana ndi ntchito ya ndemanga ya Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Dzina lalifupi",
+        "description": "Dzina lalifupi la katundu pa Disqus"
+      }
+    ]
+  }
+}

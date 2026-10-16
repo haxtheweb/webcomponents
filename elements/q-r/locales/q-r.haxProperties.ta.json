@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR குறியீடு",
+    "description": "திறன்பேசியிலிருந்து ஸ்கேன் செய்ய வேண்டிய குறியீடு."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR தரவு",
+        "description": "QR குறியீட்டிற்கான தரவின் மூலம்."
+      },
+      {
+        "property": "title",
+        "title": "மாற்றுத் தலைப்பு",
+        "description": "QR குறியீட்டு மூலத்துடன் இணைக்கப்பட்ட மாற்றுத் தலைப்பு."
+      },
+      {
+        "property": "modulesize",
+        "title": "அளவு",
+        "description": "QR குறியீட்டின் அளவு."
+      },
+      {
+        "property": "margin",
+        "title": "ஓரம்",
+        "description": "குறியீட்டைச் சுற்றியுள்ள இடைவெளி."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "வெளியீட்டு வடிவம்",
+        "description": "வெளியிட வேண்டிய வடிவம்.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

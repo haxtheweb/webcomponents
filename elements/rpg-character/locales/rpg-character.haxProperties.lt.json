@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG personažas",
+    "description": "Smagus HAX personažas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Vardas",
+        "description": "Žodis, naudojamas atsitiktiniam personažui sugeneruoti."
+      },
+      {
+        "property": "hat",
+        "title": "Kepurė",
+        "description": "Kepurės stilius.",
+        "options": {
+          "none": "Numatytoji",
+          "random": "Atsitiktinė",
+          "bunny": "Kiškis",
+          "cowboy": "Kaubojus",
+          "education": "Švietimas",
+          "construction": "Statybos",
+          "warning": "Įspėjimas",
+          "watermelon": "Arbūzas",
+          "coffee": "Kava",
+          "knight": "Riteris",
+          "ninja": "Nindzė",
+          "party": "Vakarėlis",
+          "error": "Klaida",
+          "edit": "Redagavimas"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Plotis",
+        "description": "Personažo plotis pikseliais."
+      },
+      {
+        "property": "height",
+        "title": "Aukštis",
+        "description": "Personažo aukštis pikseliais."
+      },
+      {
+        "property": "fire",
+        "title": "Dega?",
+        "description": "Ar personažas dega."
+      },
+      {
+        "property": "walking",
+        "title": "Eina?",
+        "description": "Ėjimo animacija; veikia, kai dega."
+      }
+    ]
+  }
+}

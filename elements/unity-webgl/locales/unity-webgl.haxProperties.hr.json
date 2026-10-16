@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity reproduktor",
+    "description": "Unity WebGL reproduktor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cilj",
+        "description": "Putanja do builda igre."
+      },
+      {
+        "property": "compression",
+        "title": "Način sažimanja",
+        "description": "Datotečni nastavak sažimanja za resurse igre."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL za strujanje",
+        "description": "URL resursa za strujanje."
+      },
+      {
+        "property": "companyname",
+        "title": "Naziv tvrtke",
+        "description": "Naziv tvrtke."
+      },
+      {
+        "property": "productname",
+        "title": "Naziv proizvoda",
+        "description": "Naslov igre."
+      },
+      {
+        "property": "productversion",
+        "title": "Verzija proizvoda",
+        "description": "Verzija izdanja."
+      },
+      {
+        "property": "width",
+        "title": "Širina platna",
+        "description": "CSS širina platna (na primjer px ili em)."
+      },
+      {
+        "property": "height",
+        "title": "Visina platna",
+        "description": "CSS visina platna (na primjer px ili em)."
+      },
+      {
+        "property": "background",
+        "title": "Pozadina platna",
+        "description": "CSS pozadina platna."
+      }
+    ]
+  }
+}

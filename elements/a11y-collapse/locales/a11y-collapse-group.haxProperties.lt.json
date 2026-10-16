@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Išskleidžiamų elementų grupė",
+    "description": "Išskleidžiamų ir suskleidžiamų elementų grupė."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Išskleisti tik vieną",
+        "description": "Išskleisti galima tik vieną elementą."
+      },
+      {
+        "slot": "",
+        "title": "Suskleidžiami elementai",
+        "description": "Suskleidžiami elementai."
+      }
+    ]
+  }
+}

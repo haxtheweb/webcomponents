@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "የሚዲያ ጥቅስ",
+    "description": "ጥቅስ፣ ዋቢ እና አማራጭ የምስል መግለጫ ያለው ምስል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "ጥቅስ",
+        "description": "የጥቅስ ጽሑፍ።"
+      },
+      {
+        "slot": "author",
+        "title": "ደራሲ",
+        "description": "የጥቅሱ ደራሲ።"
+      },
+      {
+        "slot": "author-detail",
+        "title": "የደራሲ ዝርዝሮች",
+        "description": "የደራሲ ዝርዝሮች።"
+      },
+      {
+        "slot": "caption",
+        "title": "የምስል መግለጫ",
+        "description": "የምስል መግለጫ ጽሑፍ።"
+      },
+      {
+        "property": "src",
+        "title": "የምስል ምንጭ",
+        "description": "ለሚዲያ ጥቅሱ የሚውል የምስል ፋይል።"
+      },
+      {
+        "property": "alt",
+        "title": "አማራጭ ጽሑፍ",
+        "description": "ለምስሉ አማራጭ ጽሑፍ።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "የካርድ አጽንዖት ቀለም።"
+      }
+    ]
+  }
+}

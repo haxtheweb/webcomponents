@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Myndasamanburður",
+    "description": "Strjúka einni mynd yfir aðra til samanburðar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Efri mynd",
+        "description": "Efri mynd sem strokin er yfir neðri myndina."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alt-texti efri myndar",
+        "description": "Nauðsynlegur alt-texti fyrir aðgengi."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Neðri mynd",
+        "description": "Neðri mynd sem birtist undir efri myndinni."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alt-texti neðri myndar",
+        "description": "Nauðsynlegur alt-texti fyrir aðgengi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Hegðun",
+        "description": "Veldu strokham (sjálfgefið) eða gegnsæisham efri myndar."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Litur sleðastikunnar."
+      },
+      {
+        "property": "dark",
+        "title": "Dökkt",
+        "description": "Snúa við lit sleðastikunnar."
+      },
+      {
+        "property": "position",
+        "title": "Upphafsstaða",
+        "description": "Upphafsstaða frá 0 til 100."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Daraltılabilir kapsayıcı",
+    "description": "Tek bir genişletilebilir ve daraltılabilir kapsayıcı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Başlık",
+        "description": "Daraltılabilir alanın metni."
+      },
+      {
+        "property": "expanded",
+        "title": "Genişletilmiş",
+        "description": "Varsayılan olarak genişlet."
+      },
+      {
+        "property": "headingButton",
+        "title": "Başlık Düğmesi",
+        "description": "Yalnızca simgeyi değil, tüm başlığı tıklanabilir yap."
+      },
+      {
+        "property": "icon",
+        "title": "Simge",
+        "description": "Genişlet/daralt düğmesinin simgesi."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Simge (genişletildiğinde)",
+        "description": "Genişletilmiş durum için isteğe bağlı simge."
+      },
+      {
+        "slot": "",
+        "title": "İçerik",
+        "description": "Daraltılabilir alanın içeriği."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "İpucu",
+        "description": "Genişlet/daralt düğmesinin ipucu."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "İpucu (genişletildiğinde)",
+        "description": "Genişletildiğinde genişlet/daralt düğmesinin ipucu."
+      }
+    ]
+  }
+}

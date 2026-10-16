@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Aktivitetsruta",
+    "description": "Litet formaterat rubrikblock."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon som visas bredvid aktivitetsrutan."
+      },
+      {
+        "property": "tag",
+        "title": "Tagg för aktivitetsruta",
+        "description": "Tagg som visas i aktivitetsrutan."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Ingen färgläggning",
+        "description": "Förhindra att färger tillämpas på ikonen."
+      }
+    ]
+  }
+}

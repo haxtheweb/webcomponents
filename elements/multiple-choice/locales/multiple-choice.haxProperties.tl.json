@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Multiple choice",
+    "description": "Tanong na multiple choice para sa sariling pagsusuri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tanong",
+        "description": "Tanong na sasagutin ng mga user."
+      },
+      {
+        "property": "randomize",
+        "title": "I-randomize",
+        "description": "I-randomize nang dynamic ang mga sagot."
+      },
+      {
+        "property": "singleOption",
+        "title": "Iisang sagot",
+        "description": "Payagan lamang ang isang sagot."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format ng pagmamarka",
+        "description": "OER Schema: format ng pagmamarka para sa pagtatasang ito (hal. puntos, letra, porsyento, pagkumpleto)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Layunin sa pagkatuto",
+        "description": "OER Schema: layunin sa pagkatuto na kaugnay ng pagtatasang ito."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurso",
+        "description": "OER Schema: kursong pinaglalaanan ng pagtatasang ito."
+      },
+      {
+        "property": "answers",
+        "title": "Mga Sagot"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Pangalan ng quiz",
+        "description": "Pangalan ng quiz na ginagamit para sa pagkakakilanlan sa xAPI sa mga analytics system."
+      }
+    ]
+  }
+}

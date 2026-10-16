@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Shikues PDF në shfletues",
+    "description": "Ngulit një skedar PDF brenda faqes me paraqitje opsionale karte dhe buton shkarkimi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL-ja e PDF-së",
+        "description": "Vendndodhja e skedarit PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Titulli",
+        "description": "Teksti i titullit të kartës."
+      },
+      {
+        "property": "card",
+        "title": "Paraqitja si kartë",
+        "description": "Shfaq PDF-në në një kartë me buton shkarkimi."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Etiketa e shkarkimit",
+        "description": "Etiketa për butonin e shkarkimit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mesazhi i mosmbështetjes",
+        "description": "Mesazhi kur shfletuesi nuk mund të shfaqë skedarë PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mesazhi i lidhjes së mosmbështetjes",
+        "description": "Teksti i lidhjes kur shfletuesi nuk mund të shfaqë skedarë PDF."
+      },
+      {
+        "property": "width",
+        "title": "Gjerësia",
+        "description": "Gjerësia e shikuesit PDF."
+      },
+      {
+        "property": "height",
+        "title": "Lartësia",
+        "description": "Lartësia e shikuesit PDF."
+      }
+    ]
+  }
+}

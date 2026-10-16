@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn embed",
+    "description": "LinkedIn ပရိုဖိုင် ကတ်ကို ထည့်သွင်းရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Vanity အမည်",
+        "description": "LinkedIn vanity အသုံးပြုသူအမည် အပိုင်း။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Locale",
+        "description": "en_US ကဲ့သို့ locale metadata တန်ဖိုး။"
+      }
+    ]
+  }
+}

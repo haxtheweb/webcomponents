@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Skaitiklis",
+    "description": "Animuoti skaičiaus didėjimą iki tikslinės reikšmės, kai jis pasirodo ekrane."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Galutinė reikšmė",
+        "description": "Skaičius, iki kurio skaičiuojama."
+      },
+      {
+        "property": "start",
+        "title": "Pradinė reikšmė",
+        "description": "Skaičius, nuo kurio pradedama skaičiuoti."
+      },
+      {
+        "property": "duration",
+        "title": "Trukmė",
+        "description": "Kiek sekundžių turi trukti skaičiavimo animacija."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Priešdėlio tekstas",
+        "description": "Tekstas prieš skaičių (pvz., '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Priesagos tekstas",
+        "description": "Tekstas po skaičiaus (pvz., '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Priešdėlio lizdas",
+        "description": "Pasirenkamas lizdo turinys prieš skaičių."
+      },
+      {
+        "slot": "suffix",
+        "title": "Priesagos lizdas",
+        "description": "Pasirenkamas lizdo turinys po skaičiaus."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Dešimtainiai skaitmenys",
+        "description": "Rodomų skaitmenų po kablelio skaičius."
+      },
+      {
+        "property": "separator",
+        "title": "Tūkstančių skyriklis",
+        "description": "Tūkstančių grupes skiriantis simbolis."
+      },
+      {
+        "property": "decimal",
+        "title": "Dešimtainis skyriklis",
+        "description": "Dešimtainio kablelio simbolis."
+      },
+      {
+        "property": "noeasing",
+        "title": "Be glotninimo",
+        "description": "Išjungti glotninimą, kad skaičiavimas būtų tolygus."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Karty",
+    "description": "Zestaw kart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etykieta (dla dostępności)",
+        "description": "Dostępna etykieta zestawu kart."
+      },
+      {
+        "property": "disabled",
+        "title": "Wyłączone",
+        "description": "Wyłącz wszystkie karty."
+      },
+      {
+        "property": "hidden",
+        "title": "Ukryte",
+        "description": "Ukryj zestaw kart."
+      },
+      {
+        "property": "sticky",
+        "title": "Przyklejone",
+        "description": "Utrzymuj poziome karty u góry podczas przewijania."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Punkt przełamania układu",
+        "description": "Punkt przełamania dla kart poziomych; użyj -1, aby mieć tylko pionowe."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Punkt przełamania ikon",
+        "description": "Punkt przełamania dla wyświetlania tekstu z ikonami. Domyślnie 0; użyj -1 dla trybu tylko ikon."
+      },
+      {
+        "slot": "",
+        "title": "Karty",
+        "description": "Seria elementów <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unikalny ID",
+        "description": "Unikalny ID tego zestawu kart."
+      }
+    ]
+  }
+}

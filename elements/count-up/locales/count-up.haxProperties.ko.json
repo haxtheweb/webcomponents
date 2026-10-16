@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "카운트 업",
+    "description": "화면에 보이면 숫자가 목표값까지 올라가는 애니메이션을 재생합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "종료값",
+        "description": "카운트가 도달할 숫자입니다."
+      },
+      {
+        "property": "start",
+        "title": "시작값",
+        "description": "카운트를 시작할 숫자입니다."
+      },
+      {
+        "property": "duration",
+        "title": "지속 시간",
+        "description": "카운트 애니메이션에 걸리는 시간(초)입니다."
+      },
+      {
+        "property": "prefixtext",
+        "title": "접두 텍스트",
+        "description": "숫자 앞에 표시되는 텍스트입니다(예: '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "접미 텍스트",
+        "description": "숫자 뒤에 표시되는 텍스트입니다(예: '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "접두 슬롯",
+        "description": "숫자 앞에 들어갈 선택적 슬롯 콘텐츠입니다."
+      },
+      {
+        "slot": "suffix",
+        "title": "접미 슬롯",
+        "description": "숫자 뒤에 들어갈 선택적 슬롯 콘텐츠입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "소수 자릿수",
+        "description": "표시할 소수 자릿수입니다."
+      },
+      {
+        "property": "separator",
+        "title": "천 단위 구분 기호",
+        "description": "천 단위 그룹을 구분하는 문자입니다."
+      },
+      {
+        "property": "decimal",
+        "title": "소수점 문자",
+        "description": "소수점으로 사용되는 문자입니다."
+      },
+      {
+        "property": "noeasing",
+        "title": "이징 없음",
+        "description": "이징을 끄고 카운트를 일정한 속도로 진행합니다."
+      }
+    ]
+  }
+}

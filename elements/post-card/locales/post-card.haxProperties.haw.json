@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Kāleka Leka",
+    "description": "He mea media leʻaleʻa i hana ʻia e like me kekahi kāleka leka maoli mai kekahi wahi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Iā",
+        "description": "Iā wai kēia e hele ai?"
+      },
+      {
+        "property": "from",
+        "title": "Mai",
+        "description": "ʻO wai ʻoe?"
+      },
+      {
+        "property": "message",
+        "title": "Leka",
+        "description": "He aha kāu e makemake ai e ʻōlelo?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Kaha Leka Mai",
+        "description": "Mai hea mai i hoʻouna ʻia ai kēia kāleka?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Kumu Kiʻi Nui",
+        "description": "Aia i hea kāu kiʻi?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Kumu Kiʻi Pōʻoleka",
+        "description": "Aia i hea kāu kiʻi?"
+      }
+    ]
+  }
+}

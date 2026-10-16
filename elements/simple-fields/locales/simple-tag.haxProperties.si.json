@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "ටැගය / පෙත්ත",
+    "description": "විකල්ප උච්චාරණ වර්ණයක්, අවලංගු බොත්තමක් හෝ ටොගලයක් සහිත සංයුක්ත පෙති හැඩැති ලේබලයක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ලේබලය",
+        "description": "පෙත්ත තුළ පෙන්වන පෙළ."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "පෙත්තේ පසුබිම සඳහා SimpleColors උච්චාරණ නාමය.",
+        "options": {
+          "": "-- පෙරනිමි --",
+          "red": "රතු",
+          "pink": "රෝස",
+          "purple": "දම්",
+          "deep-purple": "තද දම්",
+          "indigo": "ඉන්ඩිගෝ",
+          "blue": "නිල්",
+          "light-blue": "ලා නිල්",
+          "cyan": "සියන්",
+          "teal": "නිල්-කොළ",
+          "green": "කොළ",
+          "light-green": "ලා කොළ",
+          "lime": "දෙහි කොළ",
+          "yellow": "කහ",
+          "amber": "ඇම්බර්",
+          "orange": "තැඹිලි",
+          "deep-orange": "තද තැඹිලි",
+          "brown": "දුඹුරු",
+          "blue-grey": "නිල් අළු",
+          "grey": "අළු"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ස්වයංක්‍රීය උච්චාරණ වර්ණය",
+        "description": "ලේබල පෙළෙන් උච්චාරණ වර්ණය ස්වයංක්‍රීයව ව්‍යුත්පන්න කරන්න."
+      },
+      {
+        "property": "cancelButton",
+        "title": "අවලංගු බොත්තම",
+        "description": "පෙත්ත තුළ ඉවත් කිරීමේ/අවලංගු කිරීමේ නිරූපක බොත්තමක් පෙන්වන්න."
+      },
+      {
+        "property": "readonly",
+        "title": "කියවීමට පමණි",
+        "description": "පෙත්ත පෙන්වීමට පමණක් වන පරිදි අවලංගු බොත්තම සඟවන්න."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "ටොගල කරයි",
+        "description": "බොත්තම ක්ලික් කළ විට පෙත්ත සක්‍රිය/අක්‍රිය ලෙස ටොගල කරන්න."
+      },
+      {
+        "property": "toggled",
+        "title": "ටොගල කර ඇත",
+        "description": "පෙත්ත දැනට සක්‍රිය ලෙස ටොගල කර ඇත්ද යන්න."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "ටොගල කළ නිරූපකය",
+        "description": "පෙත්ත සක්‍රිය ලෙස ටොගල කළ විට පෙන්වන නිරූපකය."
+      },
+      {
+        "property": "disabled",
+        "title": "අබල කර ඇත",
+        "description": "පෙත්ත සමඟ අන්තර්ක්‍රියා අබල කරන්න."
+      }
+    ]
+  }
+}

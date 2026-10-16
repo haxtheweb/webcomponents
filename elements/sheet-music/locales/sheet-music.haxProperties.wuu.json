@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "乐谱",
+    "description": "通过 alphaTex 或者 MusicXML 渲染并播放乐谱、吉他谱搭总谱记号。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex 记号",
+        "description": "乐谱个内嵌 alphaTex 标记。直接编辑来写记号；伊保存勒模板里，空格会保留。"
+      },
+      {
+        "property": "source",
+        "title": "乐谱文件",
+        "description": "上传或者链接 MusicXML（.xml/.musicxml/.mxl）或者 Guitar Pro（.gp3/.gp4/.gp5/.gpx/.gp）文件。设定之后会盖脱内嵌 alphaTex。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "音频播放",
+        "description": "默认开启 - 用内置合成器听乐谱。关脱就是只看（无声音）模式。"
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "显示显示选项",
+        "description": "勒播放条浪显示缩放、拉伸搭布局按钮。"
+      },
+      {
+        "property": "showExport",
+        "title": "显示导出按钮",
+        "description": "勒播放条浪显示下载 MIDI 搭打印/PDF 按钮。"
+      }
+    ]
+  }
+}

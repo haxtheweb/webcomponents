@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikon",
+    "description": "Ikon daripada pustaka ikon penuh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon untuk dipaparkan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Warna aksen untuk ikon."
+      },
+      {
+        "property": "dark",
+        "title": "Gelap",
+        "description": "Gunakan mod gelap (set warna disongsangkan)."
+      }
+    ]
+  }
+}

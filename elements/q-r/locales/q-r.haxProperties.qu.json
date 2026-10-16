@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR código",
+    "description": "Smartphonewan qhawanapaq código."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR willakuykuna",
+        "description": "QR códigopaq willakuykunapa pukyun."
+      },
+      {
+        "property": "title",
+        "title": "Hukniray sutichay",
+        "description": "QR código pukyuwan t'inkisqa hukniray sutichay."
+      },
+      {
+        "property": "modulesize",
+        "title": "Sayay",
+        "description": "QR códigopa sayaynin."
+      },
+      {
+        "property": "margin",
+        "title": "Pata",
+        "description": "Códigopa muyuriqnin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Lluqsiy laya",
+        "description": "Ima layapi lluqsichinapaq.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

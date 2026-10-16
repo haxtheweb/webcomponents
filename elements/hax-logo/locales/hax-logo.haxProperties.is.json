@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX-orðlist",
+    "description": "Lógóeining fyrir HAX, að sjálfsögðu sem HAX-hæf eining."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Stærð HAX-lógósins sem á að setja inn",
+        "options": {
+          "mini": "Smátt",
+          "small": "Lítil",
+          "normal": "Venjulegt",
+          "large": "Stór"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Hvort breyta eigi lógóinu í hástafi"
+      }
+    ]
+  }
+}

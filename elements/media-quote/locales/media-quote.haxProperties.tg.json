@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Иқтибоси медиавӣ",
+    "description": "Тасвир бо иқтибос, манбаъ ва тавзеҳи ихтиёрӣ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Иқтибос",
+        "description": "Матни иқтибос."
+      },
+      {
+        "slot": "author",
+        "title": "Муаллиф",
+        "description": "Муаллифи иқтибос."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Тафсилоти муаллиф",
+        "description": "Тафсилоти муаллиф."
+      },
+      {
+        "slot": "caption",
+        "title": "Тавзеҳ",
+        "description": "Тавзеҳи тасвир."
+      },
+      {
+        "property": "src",
+        "title": "Манбаи тасвир",
+        "description": "Файли тасвире, ки барои иқтибоси медиавӣ истифода мешавад."
+      },
+      {
+        "property": "alt",
+        "title": "Матни алтернативӣ",
+        "description": "Матни алтернативӣ барои тасвир."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидии корт."
+      }
+    ]
+  }
+}

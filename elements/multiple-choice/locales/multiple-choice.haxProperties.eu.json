@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Aukera anitzekoa",
+    "description": "Aukera anitzeko autoebaluazio galdera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Galdera",
+        "description": "Erabiltzaileek erantzun beharreko galdera."
+      },
+      {
+        "property": "randomize",
+        "title": "Ausazkoa",
+        "description": "Nahastu erantzunak dinamikoki."
+      },
+      {
+        "property": "singleOption",
+        "title": "Erantzun bakarra",
+        "description": "Baimendu erantzun bakarra."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Kalifikazio formatua",
+        "description": "OER Schema: ebaluazio honen kalifikazio formatua (adib. puntuak, letra, ehunekoa, osatzea)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ikaskuntza helburua",
+        "description": "OER Schema: ebaluazio honi lotutako ikaskuntza helburua."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikastaroa",
+        "description": "OER Schema: ebaluazio hau zein ikastarorako den."
+      },
+      {
+        "property": "answers",
+        "title": "Erantzunak"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Galdetegiaren izena",
+        "description": "Analitika sistemetan xAPI bidez identifikatzeko erabiltzen den galdetegiaren izena."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tabuľka CSV",
+    "description": "Dokáže vygenerovať tabuľku zo súboru CSV bez ohľadu na to, kde sa nachádza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Zdroj",
+        "description": "URL tohto súboru CSV."
+      },
+      {
+        "property": "title",
+        "title": "Názov",
+        "description": "Názov generovanej tabuľky."
+      },
+      {
+        "property": "description",
+        "title": "Popis",
+        "description": "Podrobnejší popis na lepšiu prístupnosť údajov tabuľky."
+      }
+    ]
+  }
+}

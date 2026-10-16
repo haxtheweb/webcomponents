@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity mbopu'aha",
+    "description": "Unity WebGL mbopu'aha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Ohohápe",
+        "description": "Ñembosarái ñemopu'ã rape."
+      },
+      {
+        "property": "compression",
+        "title": "Ñembopiko reko",
+        "description": "Marandurenda ñembopiko pukukue ñembosarái mba'erepýpe g̃uarã."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL ñembosyryry",
+        "description": "URL mba'erepy ñembosyryry."
+      },
+      {
+        "property": "companyname",
+        "title": "Atyguasu réra",
+        "description": "Atyguasu réra."
+      },
+      {
+        "property": "productname",
+        "title": "Mba'e réra",
+        "description": "Ñembosarái teratee."
+      },
+      {
+        "property": "productversion",
+        "title": "Mba'e jehai",
+        "description": "Ñemosarambi jehai."
+      },
+      {
+        "property": "width",
+        "title": "Canvas pekue",
+        "description": "Canvas pekue CSS (techapyrã px térã em)."
+      },
+      {
+        "property": "height",
+        "title": "Canvas yvatekue",
+        "description": "Canvas yvatekue CSS (techapyrã px térã em)."
+      },
+      {
+        "property": "background",
+        "title": "Canvas hapykuegua",
+        "description": "Canvas hapykuegua CSS."
+      }
+    ]
+  }
+}

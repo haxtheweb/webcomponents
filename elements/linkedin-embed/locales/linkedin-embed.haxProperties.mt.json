@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Embed ta' LinkedIn",
+    "description": "Daħħal karta tal-profil ta' LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Isem personalizzat",
+        "description": "Is-segment tal-isem tal-utent personalizzat ta' LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokal",
+        "description": "Valur tal-metadata tal-lokal bħal en_US."
+      }
+    ]
+  }
+}

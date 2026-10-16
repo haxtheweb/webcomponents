@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Էջի մանրամասներ",
+    "description": "Սահմանել էջերի միջև տեսողական բաժանում, որը CMS-ները կարող են օգտագործել էջեր ստեղծելու համար։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Թեմայում և առաջին վերնագրում ցուցադրվող վերնագիր։"
+      },
+      {
+        "property": "pageType",
+        "title": "Տեսակ",
+        "description": "Էջի տեսողական համատեքստի պիտակ։",
+        "options": {
+          "": "-- ոչ մեկը --",
+          "content": "Բովանդակություն",
+          "assessment": "Գնահատում",
+          "quiz": "Թեստ",
+          "submission": "Հանձնում",
+          "lesson": "Դաս",
+          "module": "Մոդուլ",
+          "task": "Առաջադրանք",
+          "activity": "Գործունեություն",
+          "project": "Նախագիծ",
+          "practice": "Վարժություն",
+          "unit": "Միավոր",
+          "objectives": "Ուսումնական նպատակներ",
+          "connection": "Կապ",
+          "knowledge": "Գիտե՞ք արդյոք",
+          "strategy": "Ուսուցման ռազմավարություն",
+          "discuss": "Քննարկել",
+          "listen": "Լսել",
+          "make": "Ստեղծել",
+          "observe": "Դիտարկել",
+          "present": "Ներկայացնել",
+          "reading": "Ընթերցանություն",
+          "reflect": "Մտորել",
+          "research": "Հետազոտել",
+          "watch": "Դիտել",
+          "write": "Գրել"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Պիտակներ",
+        "description": "Ստորակետերով բաժանված պիտակների ցանկ։"
+      },
+      {
+        "property": "linkUrl",
+        "title": "Հղման URL",
+        "description": "Վերահղման URL, որը ցուցադրվում է էջի բովանդակության փոխարեն։"
+      },
+      {
+        "property": "linkTarget",
+        "title": "Հղման թիրախ",
+        "description": "Բացել հղումները նույն պատուհանում կամ նոր պատուհանում։",
+        "options": {
+          "_self": "Նույն պատուհանում",
+          "_blank": "Նոր պատուհան"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Հրապարակված",
+        "description": "Չհրապարակված էջերը թաքցված են վերջնական օգտատերերից։"
+      },
+      {
+        "property": "locked",
+        "title": "Կողպել էջը",
+        "description": "Կողպել կամ ապակողպել այս էջի բոլոր տարրերը։"
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Վերասահմանել ավտոմատ slug-ը",
+        "description": "Արգելափակել slug-ի ավտոմատ թարմացումները՝ ըստ վերնագրի կամ ծնողի։"
+      },
+      {
+        "property": "slug",
+        "title": "Ուղի",
+        "description": "Այս էջի URL slug-ը։"
+      },
+      {
+        "property": "image",
+        "title": "Մեդիա",
+        "description": "Էջը ներկայացնող մեդիա, որն օգտագործվում է որոշ թեմաներում և դիտումներում։"
+      },
+      {
+        "property": "parent",
+        "title": "Ծնող",
+        "description": "Ծնող էջի ուղին։"
+      },
+      {
+        "property": "noderefs",
+        "title": "Հարակից բովանդակություն",
+        "description": "Այս էջի հետ կապված էջեր։"
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Նկարագրություն",
+        "description": "Նկարագրություն, որն օգտագործվում է հավաքածուներում և որոնողական համակարգերի օպտիմալացման համար։"
+      },
+      {
+        "property": "entityType",
+        "title": "Էության տեսակ",
+        "description": "Լռելյայն էջ է, եթե այլ կերպ սահմանված չէ։",
+        "options": {
+          "page": "Էջ (լռելյայն)",
+          "taxonomy": "Տաքսոնոմիա",
+          "taxonomyTerm": "Տաքսոնոմիայի տերմին",
+          "region": "Տարածաշրջան"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Պատկերակ",
+        "description": "Կայքում այս էջի հետ կապված պատկերակ։"
+      },
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Կայքում այս էջի հետ կապված գույն։"
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Թաքցնել ընտրացանկում",
+        "description": "Թաքցնել այս էջը ընտրացանկերից՝ պահպանելով դրա URL-ը։"
+      },
+      {
+        "property": "order",
+        "title": "Հերթականություն",
+        "description": "Հերթականությունը քույր էջերի նկատմամբ։"
+      },
+      {
+        "property": "developerTheme",
+        "title": "Էջի թեմա",
+        "description": "Վերասահմանել թեման միայն այս էջի համար։"
+      },
+      {
+        "property": "author",
+        "title": "Հեղինակ",
+        "description": "Այս էջը վերջին անգամ փոփոխած անձի օգտանունը։"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Prehrávač Unity",
+    "description": "Prehrávač Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cieľ",
+        "description": "Cesta k zostaveniu hry."
+      },
+      {
+        "property": "compression",
+        "title": "Metóda kompresie",
+        "description": "Prípona súboru kompresie pre herné prostriedky."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL streamovania",
+        "description": "URL streamovaných prostriedkov."
+      },
+      {
+        "property": "companyname",
+        "title": "Názov spoločnosti",
+        "description": "Názov spoločnosti."
+      },
+      {
+        "property": "productname",
+        "title": "Názov produktu",
+        "description": "Názov hry."
+      },
+      {
+        "property": "productversion",
+        "title": "Verzia produktu",
+        "description": "Verzia vydania."
+      },
+      {
+        "property": "width",
+        "title": "Šírka plátna",
+        "description": "CSS šírka plátna (napríklad px alebo em)."
+      },
+      {
+        "property": "height",
+        "title": "Výška plátna",
+        "description": "CSS výška plátna (napríklad px alebo em)."
+      },
+      {
+        "property": "background",
+        "title": "Pozadie plátna",
+        "description": "CSS pozadie plátna."
+      }
+    ]
+  }
+}

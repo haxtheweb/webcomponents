@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "แถวคอลเลกชัน",
+    "description": "รายการแบบแถวสำหรับใช้ในรายการคอลเลกชัน พร้อมข้อความ ลิงก์ ไอคอน แท็ก และรูปภาพเสริม"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "ลิงก์",
+        "description": "URL ปลายทางสำหรับแถวนี้"
+      },
+      {
+        "property": "image",
+        "title": "รูปภาพ",
+        "description": "รูปภาพสำหรับแถว"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "ข้อความแสดงแทนที่อธิบายรูปภาพ"
+      },
+      {
+        "property": "line1",
+        "title": "บรรทัดที่ 1",
+        "description": "ข้อความบรรทัดแรก"
+      },
+      {
+        "property": "line2",
+        "title": "บรรทัดที่ 2",
+        "description": "ข้อความบรรทัดที่สอง"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ไอคอน",
+        "description": "ไอคอนที่แสดงถึงแถว"
+      },
+      {
+        "property": "saturate",
+        "title": "เอฟเฟกต์ความอิ่มตัว",
+        "description": "เปลี่ยนความอิ่มตัวของรูปภาพเมื่อผู้ใช้โฟกัส"
+      },
+      {
+        "property": "tags",
+        "title": "แท็ก",
+        "description": "รายการแท็กที่คั่นด้วยเครื่องหมายจุลภาค"
+      },
+      {
+        "property": "accentColor",
+        "title": "สี",
+        "description": "สีที่ใช้สำหรับไอคอนและแท็ก"
+      }
+    ]
+  }
+}

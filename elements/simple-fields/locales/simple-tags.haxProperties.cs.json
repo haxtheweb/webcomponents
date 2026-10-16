@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Štítky",
+    "description": "Jednoduchý seznam štítků pro zobrazení na stránce."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Štítky",
+        "description": "Seznam štítků oddělených čárkami."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatická zvýrazňující barva",
+        "description": "Automaticky nastavit zvýrazňující barvu podle popisku."
+      },
+      {
+        "property": "accentColor",
+        "title": "Barva",
+        "description": "Barva štítků."
+      }
+    ]
+  }
+}

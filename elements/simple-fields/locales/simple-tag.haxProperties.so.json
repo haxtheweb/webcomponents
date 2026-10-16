@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Summad / Kiniin",
+    "description": "Calaamad yar oo kiniin u eg oo leh midab xoojin ikhtiyaari ah, badhan joojin, ama beddele."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Calaamad",
+        "description": "Qoraalka ka muuqda kiniinka gudihiisa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka xoojinta",
+        "description": "Magaca midabka xoojinta SimpleColors ee asalka kiniinka.",
+        "options": {
+          "": "-- caadi --",
+          "red": "Cas",
+          "pink": "Casaan khafiif ah",
+          "purple": "Basali",
+          "deep-purple": "Basali Madow",
+          "indigo": "Indigo",
+          "blue": "Buluug",
+          "light-blue": "Buluug Khafiif ah",
+          "cyan": "Siyaan",
+          "teal": "Cagaar-buluug",
+          "green": "Cagaar",
+          "light-green": "Cagaar Khafiif ah",
+          "lime": "Liin",
+          "yellow": "Jaalle",
+          "amber": "Cambar",
+          "orange": "Oranji",
+          "deep-orange": "Oranji Madow",
+          "brown": "Bunni",
+          "blue-grey": "Cawl-buluug",
+          "grey": "Cawl"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Midab xoojin toos ah",
+        "description": "Si toos ah uga soo saar midabka xoojinta qoraalka calaamadda."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Badhanka joojinta",
+        "description": "Muuji badhan astaan ka saar/joojin ah gudaha kiniinka."
+      },
+      {
+        "property": "readonly",
+        "title": "Akhris keliya",
+        "description": "Qari badhanka joojinta si kiniinku u noqdo muujin keliya."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Beddele",
+        "description": "Ka dhig kiniinka mid daar/dami ah marka badhanka la gujiyo."
+      },
+      {
+        "property": "toggled",
+        "title": "La daaray",
+        "description": "In kiniinku hadda daaran yahay."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Astaanta daarnaanta",
+        "description": "Astaanta la muujinayo marka kiniinku daaran yahay."
+      },
+      {
+        "property": "disabled",
+        "title": "La damiyay",
+        "description": "Dami is-dhexgalka kiniinka."
+      }
+    ]
+  }
+}

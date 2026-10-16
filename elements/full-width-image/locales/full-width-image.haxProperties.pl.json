@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Sekcja obrazu",
+    "description": "Obraz na pełną szerokość rozdzielający sekcję strony."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Obraz tła."
+      },
+      {
+        "property": "caption",
+        "description": "Nagłówek tekstowy."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Domanda di ordinamento",
+    "description": "Disponi gli elementi nell'ordine corretto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Domanda",
+        "description": "Intestazione della domanda."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato di valutazione",
+        "description": "OER Schema: formato di valutazione per questa verifica (es. punti, lettera, percentuale, completamento)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiettivo di apprendimento",
+        "description": "OER Schema: obiettivo di apprendimento associato a questa verifica."
+      },
+      {
+        "property": "forCourse",
+        "title": "Corso",
+        "description": "OER Schema: corso a cui è destinata questa verifica."
+      },
+      {
+        "property": "answers",
+        "title": "Risposte",
+        "description": "L'ordine delle risposte definisce la sequenza corretta."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome del quiz",
+        "description": "Nome del quiz usato per l'identificazione xAPI nei sistemi di analisi."
+      }
+    ]
+  }
+}

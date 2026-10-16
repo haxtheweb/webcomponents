@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn-ívefjun",
+    "description": "Ívefja LinkedIn-prófílspjald."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Sérsniðið heiti",
+        "description": "Sérsniðinn notandanafnshluti á LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Staðfærsla",
+        "description": "Gildi staðfærslulýsigagna, t.d. en_US."
+      }
+    ]
+  }
+}

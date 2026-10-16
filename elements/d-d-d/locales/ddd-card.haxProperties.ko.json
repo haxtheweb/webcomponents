@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "카드",
+    "description": "DDD 디자인 시스템으로 스타일이 적용된 카드 컴포넌트입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "이미지",
+        "description": "선택적 이미지입니다."
+      },
+      {
+        "property": "alt",
+        "title": "이미지 대체 텍스트",
+        "description": "이미지를 설명하는 대체 텍스트입니다."
+      },
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "카드 제목입니다."
+      },
+      {
+        "slot": "",
+        "title": "콘텐츠",
+        "description": "카드 콘텐츠 영역입니다."
+      },
+      {
+        "property": "href",
+        "title": "링크",
+        "description": "버튼 링크 URL입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "레이블",
+        "description": "버튼 레이블입니다."
+      },
+      {
+        "property": "noArrow",
+        "title": "화살표 없음",
+        "description": "버튼 화살표를 숨깁니다."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "링크: 대상",
+        "description": "링크를 열 위치입니다.",
+        "options": {
+          "": "같은 창",
+          "_blank": "새 창 - _blank",
+          "_top": "최상위 창 - _top",
+          "_parent": "상위 창 - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "링크: rel",
+        "description": "연결된 리소스와 현재 문서 간의 관계입니다."
+      }
+    ]
+  }
+}

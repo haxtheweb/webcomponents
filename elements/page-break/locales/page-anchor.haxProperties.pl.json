@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kotwica strony",
+    "description": "Linkuj do konkretnych miejsc w multimediach na stronie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cel na stronie",
+        "description": "ID lub zasób, na który wskazuje ta kotwica."
+      },
+      {
+        "property": "value",
+        "title": "Wartość głębokiego linku",
+        "description": "Wartość głębokiego linku (np. znacznik czasu lub ID slajdu)."
+      },
+      {
+        "property": "entityId",
+        "title": "Encja witryny",
+        "description": "Opcjonalna encja witryny do sterowania prezentacją powiązanych pojęć."
+      }
+    ]
+  }
+}

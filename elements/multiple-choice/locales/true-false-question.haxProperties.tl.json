@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Tanong na Tama / Mali",
+    "description": "Tanong na tama o mali"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tanong",
+        "description": "Tanong na sasagutin ng mga user."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Tamang Sagot"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Pangalan ng quiz",
+        "description": "Pangalan ng quiz na ipinapasa para gamitin sa mga environment na pinapatakbo ng xAPI upang matukoy ang item na ito"
+      }
+    ]
+  }
+}

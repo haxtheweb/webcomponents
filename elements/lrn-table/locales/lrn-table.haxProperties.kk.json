@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV кестесі",
+    "description": "Бұл CSV файлы қай жерде орналасқанына қарамастан одан кесте жасай алады."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Дереккөз",
+        "description": "Осы CSV файлының URL-і."
+      },
+      {
+        "property": "title",
+        "title": "Атауы",
+        "description": "Жасалатын кестенің атауы."
+      },
+      {
+        "property": "description",
+        "title": "Сипаттама",
+        "description": "Кесте деректерінің қолжетімділігін жақсарту үшін толығырақ сипаттама."
+      }
+    ]
+  }
+}

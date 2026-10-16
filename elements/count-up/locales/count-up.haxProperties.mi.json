@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Tatau Whakarunga",
+    "description": "Hākorihia tētahi tau e tatau whakarunga ana ki tētahi uara whāinga ina puta mai ki te mata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Uara mutunga",
+        "description": "Te tau hei tatau whakarunga atu."
+      },
+      {
+        "property": "start",
+        "title": "Uara tīmatanga",
+        "description": "Te tau hei tīmatanga mō te tatau."
+      },
+      {
+        "property": "duration",
+        "title": "Roanga",
+        "description": "Te maha o ngā hēkona mō te hākoritanga tatau."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Kupu i mua",
+        "description": "Kupu ka whakaaturia i mua i te tau (hei tauira '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Kupu i muri",
+        "description": "Kupu ka whakaaturia i muri i te tau (hei tauira '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Mokamoka i mua",
+        "description": "He ihirangi mokamoka kōwhiri i mua i te tau."
+      },
+      {
+        "slot": "suffix",
+        "title": "Mokamoka i muri",
+        "description": "He ihirangi mokamoka kōwhiri i muri i te tau."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Ngā tūnga ā-ira",
+        "description": "Te maha o ngā tūnga ā-ira hei whakaatu."
+      },
+      {
+        "property": "separator",
+        "title": "Kaiwehe mano",
+        "description": "Te pūāhua e wehe ana i ngā rōpū mano."
+      },
+      {
+        "property": "decimal",
+        "title": "Pūāhua ā-ira",
+        "description": "Te pūāhua mō te ira ā-ira."
+      },
+      {
+        "property": "noeasing",
+        "title": "Kāore he whakangāwari",
+        "description": "Monokia te whakangāwari kia rārangi tōtika te tatau."
+      }
+    ]
+  }
+}

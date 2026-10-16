@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Maelezo ya ukurasa",
+    "description": "Bainisha mgawanyiko unaoonekana kati ya kurasa ambao CMS zinaweza kutumia kuunda kurasa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Kichwa kinachoonyeshwa kwenye mandhari na kama kichwa cha kwanza."
+      },
+      {
+        "property": "pageType",
+        "title": "Aina",
+        "description": "Lebo inayoonekana ya muktadha wa ukurasa.",
+        "options": {
+          "": "-- hakuna --",
+          "content": "Maudhui",
+          "assessment": "Tathmini",
+          "quiz": "Jaribio",
+          "submission": "Uwasilishaji",
+          "lesson": "Somo",
+          "module": "Moduli",
+          "task": "Kazi",
+          "activity": "Shughuli",
+          "project": "Mradi",
+          "practice": "Mazoezi",
+          "unit": "Kitengo",
+          "objectives": "Malengo ya Kujifunza",
+          "connection": "Muunganiko",
+          "knowledge": "Je, Wajua?",
+          "strategy": "Mkakati wa Kujifunza",
+          "discuss": "Jadili",
+          "listen": "Sikiliza",
+          "make": "Tengeneza",
+          "observe": "Chunguza",
+          "present": "Wasilisha",
+          "reading": "Usomaji",
+          "reflect": "Tafakari",
+          "research": "Tafiti",
+          "watch": "Tazama",
+          "write": "Andika"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Lebo",
+        "description": "Orodha ya lebo zilizotenganishwa kwa koma."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL ya Kiungo",
+        "description": "URL ya kuelekeza upya inayoonyeshwa badala ya maudhui ya ukurasa."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Lengo la Kiungo",
+        "description": "Fungua viungo katika dirisha lile lile au dirisha jipya.",
+        "options": {
+          "_self": "Dirisha lile lile",
+          "_blank": "Dirisha jipya"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Imechapishwa",
+        "description": "Kurasa ambazo hazijachapishwa zimefichwa kwa watumiaji wa mwisho."
+      },
+      {
+        "property": "locked",
+        "title": "Funga ukurasa",
+        "description": "Funga au fungua vipengele vyote kwenye ukurasa huu."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Batilisha slug ya kiotomatiki",
+        "description": "Funga slug isisasishwe kiotomatiki kulingana na kichwa au mzazi."
+      },
+      {
+        "property": "slug",
+        "title": "Njia",
+        "description": "Slug ya URL ya ukurasa huu."
+      },
+      {
+        "property": "image",
+        "title": "Midia",
+        "description": "Midia inayowakilisha ukurasa, inayotumika katika baadhi ya mandhari na mionekano."
+      },
+      {
+        "property": "parent",
+        "title": "Mzazi",
+        "description": "Njia ya ukurasa mzazi."
+      },
+      {
+        "property": "noderefs",
+        "title": "Maudhui yanayohusiana",
+        "description": "Kurasa zinazohusiana na ukurasa huu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Maelezo",
+        "description": "Maelezo yanayotumika katika mikusanyiko na uboreshaji wa injini za utafutaji."
+      },
+      {
+        "property": "entityType",
+        "title": "Aina ya Huluki",
+        "description": "Chaguo-msingi ni ukurasa isipowekwa vinginevyo.",
+        "options": {
+          "page": "Ukurasa (chaguo-msingi)",
+          "taxonomy": "Uainishaji",
+          "taxonomyTerm": "Istilahi ya Uainishaji",
+          "region": "Eneo"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni inayohusishwa na ukurasa huu kwenye tovuti."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya msisitizo",
+        "description": "Rangi inayohusishwa na ukurasa huu kwenye tovuti."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Ficha kwenye menyu",
+        "description": "Ficha ukurasa huu kwenye menyu huku URL yake ikibaki."
+      },
+      {
+        "property": "order",
+        "title": "Mpangilio",
+        "description": "Mpangilio ukilinganishwa na kurasa ndugu."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Mandhari ya ukurasa",
+        "description": "Batilisha mandhari kwa ukurasa huu pekee."
+      },
+      {
+        "property": "author",
+        "title": "Mwandishi",
+        "description": "Jina la mtumiaji wa mtu wa mwisho kubadilisha ukurasa huu."
+      }
+    ]
+  }
+}

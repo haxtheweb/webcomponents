@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Chiito chemushandisi",
+    "description": "Tevera zviito zvevashandisi wotumira dhata kuzvitoro zvexAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Chiitiko chekutevera",
+        "description": "Chiito chemushandisi chinotanga chiitiko ichi.",
+        "options": {
+          "visibility": "Anogona kuona izvi",
+          "keydown": "Dzvanya kiyi pano",
+          "click": "Dzvanya izvi",
+          "hover": "Isa mbeva pamusoro peizvi"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Tevera nguva dzose",
+        "description": "Nekujairwa, kuitika kwekutanga chete ndiko kunoteverwa."
+      }
+    ]
+  }
+}

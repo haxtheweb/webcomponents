@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "ตรวจสอบตนเอง",
+    "description": "ผู้ใช้สามารถทำแบบตรวจสอบตนเองได้"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "รูปภาพ",
+        "description": "รูปภาพสำหรับแบบตรวจสอบตนเอง"
+      },
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อของแบบตรวจสอบตนเอง"
+      },
+      {
+        "property": "alt",
+        "title": "ข้อความแสดงแทน",
+        "description": "ข้อความแสดงแทนสำหรับรูปภาพ"
+      },
+      {
+        "slot": "question",
+        "title": "คำถาม"
+      },
+      {
+        "slot": "",
+        "title": "คำตอบ"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีธีม",
+        "description": "เลือกสีธีมจากระบบการออกแบบ",
+        "options": {
+          "primary": "หลัก",
+          "accent": "สีเน้น",
+          "success": "สำเร็จ",
+          "warning": "คำเตือน",
+          "error": "ข้อผิดพลาด",
+          "info": "ข้อมูล"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "วัตถุประสงค์การเรียนรู้",
+        "description": "การอ้างอิงวัตถุประสงค์การเรียนรู้ที่สร้างเป็น oer:hasLearningObjective"
+      },
+      {
+        "property": "assessing",
+        "title": "สิ่งที่ประเมิน",
+        "description": "การอ้างอิงกิจกรรมที่สร้างเป็น oer:assessing"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "ลิงก์เพิ่มเติม",
+        "description": "ลิงก์ไปยังข้อมูลเพิ่มเติม"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ポストカード",
+    "description": "どこかから届いた本物のポストカードのように見える遊び心のあるメディア"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "宛先",
+        "description": "誰に送りますか？"
+      },
+      {
+        "property": "from",
+        "title": "差出人",
+        "description": "あなたは誰ですか？"
+      },
+      {
+        "property": "message",
+        "title": "メッセージ",
+        "description": "何を伝えたいですか？"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "消印の場所",
+        "description": "このカードはどこから送られましたか？"
+      },
+      {
+        "property": "photoSrc",
+        "title": "メイン写真のソース",
+        "description": "写真はどこにありますか？"
+      },
+      {
+        "property": "stampSrc",
+        "title": "切手写真のソース",
+        "description": "写真はどこにありますか？"
+      }
+    ]
+  }
+}

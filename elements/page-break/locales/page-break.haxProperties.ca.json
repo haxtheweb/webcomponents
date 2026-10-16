@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Detalls de la pàgina",
+    "description": "Defineix una separació visual entre pàgines que els CMS poden utilitzar per crear pàgines."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "Títol que es mostra al tema i com a primer encapçalament."
+      },
+      {
+        "property": "pageType",
+        "title": "Tipus",
+        "description": "Etiqueta visual del context de la pàgina.",
+        "options": {
+          "": "-- cap --",
+          "content": "Contingut",
+          "assessment": "Avaluació",
+          "quiz": "Qüestionari",
+          "submission": "Lliurament",
+          "lesson": "Lliçó",
+          "module": "Mòdul",
+          "task": "Tasca",
+          "activity": "Activitat",
+          "project": "Projecte",
+          "practice": "Pràctica",
+          "unit": "Unitat",
+          "objectives": "Objectius d'aprenentatge",
+          "connection": "Connexió",
+          "knowledge": "Ho sabies?",
+          "strategy": "Estratègia d'aprenentatge",
+          "discuss": "Debat",
+          "listen": "Escolta",
+          "make": "Crea",
+          "observe": "Observa",
+          "present": "Presenta",
+          "reading": "Lectura",
+          "reflect": "Reflexiona",
+          "research": "Investiga",
+          "watch": "Mira",
+          "write": "Escriu"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Etiquetes",
+        "description": "Llista d'etiquetes separades per comes."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL de l'enllaç",
+        "description": "URL de redirecció que es mostra en lloc del contingut de la pàgina."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Destinació de l'enllaç",
+        "description": "Obre els enllaços a la mateixa finestra o en una finestra nova.",
+        "options": {
+          "_self": "Mateixa finestra",
+          "_blank": "Finestra nova"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Publicada",
+        "description": "Les pàgines no publicades s'amaguen als usuaris finals."
+      },
+      {
+        "property": "locked",
+        "title": "Bloqueja la pàgina",
+        "description": "Bloqueja o desbloqueja tots els elements d'aquesta pàgina."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Substitueix el slug automàtic",
+        "description": "Evita que el slug s'actualitzi automàticament segons el títol o la pàgina pare."
+      },
+      {
+        "property": "slug",
+        "title": "Ruta",
+        "description": "Slug de l'URL d'aquesta pàgina."
+      },
+      {
+        "property": "image",
+        "title": "Multimèdia",
+        "description": "Contingut multimèdia que representa la pàgina, utilitzat en alguns temes i vistes."
+      },
+      {
+        "property": "parent",
+        "title": "Pàgina pare",
+        "description": "Ruta de la pàgina pare."
+      },
+      {
+        "property": "noderefs",
+        "title": "Contingut relacionat",
+        "description": "Pàgines relacionades amb aquesta pàgina."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Descripció",
+        "description": "Descripció utilitzada a les col·leccions i per a l'optimització en cercadors."
+      },
+      {
+        "property": "entityType",
+        "title": "Tipus d'entitat",
+        "description": "Per defecte és una pàgina si no s'indica el contrari.",
+        "options": {
+          "page": "Pàgina (per defecte)",
+          "taxonomy": "Taxonomia",
+          "taxonomyTerm": "Terme de taxonomia",
+          "region": "Regió"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona associada a aquesta pàgina al lloc."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Color associat a aquesta pàgina al lloc."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Amaga al menú",
+        "description": "Amaga aquesta pàgina dels menús però en conserva l'URL."
+      },
+      {
+        "property": "order",
+        "title": "Ordre",
+        "description": "Ordre respecte a les pàgines germanes."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Tema de la pàgina",
+        "description": "Substitueix el tema només per a aquesta pàgina."
+      },
+      {
+        "property": "author",
+        "title": "Autor",
+        "description": "Nom d'usuari de l'última persona que ha modificat aquesta pàgina."
+      }
+    ]
+  }
+}

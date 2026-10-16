@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Ներկառուցել Discord համայնքներ՝ կիսման URL-ից։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ռեսուրսի URL",
+        "description": "Ռեսուրսի URL-ը։"
+      },
+      {
+        "property": "height",
+        "title": "Բարձրություն",
+        "description": "Բովանդակության շրջանակի բարձրությունը։"
+      },
+      {
+        "property": "width",
+        "title": "Լայնություն",
+        "description": "Բովանդակության շրջանակի լայնությունը։"
+      }
+    ]
+  }
+}

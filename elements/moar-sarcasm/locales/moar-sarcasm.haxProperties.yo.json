@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ẹ̀gàn",
+    "description": "Fífi ọ̀rọ̀ hàn ní ọ̀nà yẹ̀yẹ́"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Ọ̀rọ̀",
+        "description": "Ọ̀rọ̀ tí a ó sọ di ẹ̀gàn"
+      }
+    ]
+  }
+}

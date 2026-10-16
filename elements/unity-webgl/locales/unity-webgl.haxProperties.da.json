@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity-afspiller",
+    "description": "Unity WebGL-afspiller."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Mål",
+        "description": "Sti til spillets build."
+      },
+      {
+        "property": "compression",
+        "title": "Komprimeringsmetode",
+        "description": "Filtypenavn for komprimering af spillets ressourcer."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Streaming-URL",
+        "description": "URL til streamingressourcer."
+      },
+      {
+        "property": "companyname",
+        "title": "Virksomhedsnavn",
+        "description": "Virksomhedens navn."
+      },
+      {
+        "property": "productname",
+        "title": "Produktnavn",
+        "description": "Spillets titel."
+      },
+      {
+        "property": "productversion",
+        "title": "Produktversion",
+        "description": "Udgivelsesversion."
+      },
+      {
+        "property": "width",
+        "title": "Lærredsbredde",
+        "description": "Lærredets CSS-bredde (f.eks. px eller em)."
+      },
+      {
+        "property": "height",
+        "title": "Lærredshøjde",
+        "description": "Lærredets CSS-højde (f.eks. px eller em)."
+      },
+      {
+        "property": "background",
+        "title": "Lærredsbaggrund",
+        "description": "Lærredets CSS-baggrund."
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Odjeljak stranice",
+    "description": "Spremnik odjeljka za sadržaj stranice i rasporede prema zaslonu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Dizajnerska obrada",
+        "description": "Unaprijed postavljeni stil koji ažurira povezane postavke."
+      },
+      {
+        "property": "image",
+        "title": "Slika",
+        "description": "Pozadinski mediji za odjeljak."
+      },
+      {
+        "property": "bg",
+        "title": "Boja pozadine",
+        "description": "Boja pozadine kada slika nije postavljena."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Gumb za pomicanje",
+        "description": "Prikaži gumb koji se pomiče na sljedeći odjeljak."
+      },
+      {
+        "property": "fold",
+        "title": "Prikaži pregib",
+        "description": "Prikaži vizualni pregib na dnu odjeljka."
+      },
+      {
+        "property": "full",
+        "title": "Veličina cijelog zaslona",
+        "description": "Ispuni visinu zaslona gledatelja."
+      },
+      {
+        "property": "filter",
+        "title": "Primijeni filtar",
+        "description": "Primijeni vizualni filtar na pozadinsku sliku."
+      },
+      {
+        "slot": "",
+        "title": "Sadržaj",
+        "description": "Sadržaj odjeljka."
+      },
+      {
+        "slot": "entice",
+        "title": "Mamac",
+        "description": "Neobavezni privlačni sadržaj."
+      },
+      {
+        "slot": "buttons",
+        "title": "Gumbi",
+        "description": "Grupa gumba prikazana ispod teksta."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Tekst sidra",
+        "description": "Oznaka sidra prikazana u navigaciji."
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Marsaa taphataa Spotify galchamuu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Madda",
+        "description": "Hidhoo galchuu ykn qooduu Spotify irraa."
+      },
+      {
+        "property": "theme",
+        "title": "Dhiyeessa",
+        "description": "Halluu duubaa taphataa.",
+        "options": {
+          "": "Durtii",
+          "0": "Gurraacha"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Hamma",
+        "description": "Hamma taphataa.",
+        "options": {
+          "normal": "Durtii",
+          "compact": "Kan qindaa'e"
+        }
+      }
+    ]
+  }
+}

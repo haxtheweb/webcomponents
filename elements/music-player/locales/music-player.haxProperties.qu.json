@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI rikuchiq",
+    "description": "MIDI-ta rikuchiywan puklliy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pukyu",
+        "description": "Pukllanapaq willañiqi URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "Rikuchiy",
+        "description": "Taki willañiqipaq rikuchiy laya.",
+        "options": {
+          "staff": "Pentagrama",
+          "piano-roll": "Piano rollo",
+          "waterfall": "Piano + paqcha"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Paqchata pakay",
+        "description": "Piano rikuchiypi paqcha notakunata pakay."
+      }
+    ]
+  }
+}

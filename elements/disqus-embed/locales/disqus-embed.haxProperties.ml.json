@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "ഒരു പേജിൽ Disqus അഭിപ്രായങ്ങൾ ഉൾച്ചേർക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "ചുരുക്കപ്പേര്",
+        "description": "Disqus സ്ക്രിപ്റ്റ് ഹോസ്റ്റ് നിർണ്ണയിക്കുന്ന സൈറ്റിന്റെ ചുരുക്കപ്പേര്."
+      },
+      {
+        "property": "pageURL",
+        "title": "പേജ് URL",
+        "description": "അഭിപ്രായ ത്രെഡ് ഘടിപ്പിച്ചിരിക്കുന്ന പേജിന്റെ URL."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "പേജ് ഐഡന്റിഫയർ",
+        "description": "പേജിന്റെ അഭിപ്രായ ത്രെഡിനുള്ള അദ്വിതീയ ഐഡന്റിഫയർ."
+      },
+      {
+        "property": "pageTitle",
+        "title": "പേജ് ശീർഷകം",
+        "description": "അഭിപ്രായ ത്രെഡ് ഘടിപ്പിച്ചിരിക്കുന്ന പേജിന്റെ ശീർഷകം."
+      },
+      {
+        "property": "loadingText",
+        "title": "ലോഡിംഗ് വാചകം",
+        "description": "അഭിപ്രായങ്ങൾ ലോഡ് ചെയ്യുമ്പോൾ അറിയിക്കുന്ന വാചകം."
+      },
+      {
+        "property": "lang",
+        "title": "ഭാഷ",
+        "description": "Disqus ഇന്റർഫേസിനുള്ള ഭാഷാ കോഡ്, ഉദാ. en."
+      }
+    ]
+  }
+}

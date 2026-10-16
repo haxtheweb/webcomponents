@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Vloženie Twitter (X)",
+    "description": "Vloženie príspevku z X do kontextu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL príspevku",
+        "description": "URL príspevku na vloženie."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Téma",
+        "description": "Svetlá alebo tmavá téma pre príspevky X.",
+        "options": {
+          "light": "Svetlý",
+          "dark": "Tmavý"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Zabrániť vyskakovaciemu oknu po kliknutí",
+        "description": "Zabrániť používateľom otvoriť príspevok na x.com."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG ဇာတ်ကောင်",
+    "description": "HAX မှ ပျော်စရာ ဇာတ်ကောင်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "အမည်",
+        "description": "ကျပန်း ဇာတ်ကောင် ဖန်တီးရန် အသုံးပြုသော စကားလုံး။"
+      },
+      {
+        "property": "hat",
+        "title": "ဦးထုပ်",
+        "description": "ဦးထုပ် ပုံစံ။",
+        "options": {
+          "none": "မူလ",
+          "random": "ကျပန်း",
+          "bunny": "ယုန်",
+          "cowboy": "နွားကျောင်းသား",
+          "education": "ပညာရေး",
+          "construction": "ဆောက်လုပ်ရေး",
+          "warning": "သတိပေးချက်",
+          "watermelon": "ဖရဲသီး",
+          "coffee": "ကော်ဖီ",
+          "knight": "သူရဲကောင်း",
+          "ninja": "နင်ဂျာ",
+          "party": "ပါတီ",
+          "error": "အမှား",
+          "edit": "တည်းဖြတ်"
+        }
+      },
+      {
+        "property": "width",
+        "title": "အကျယ်",
+        "description": "ဇာတ်ကောင်၏ အကျယ် (pixel)။"
+      },
+      {
+        "property": "height",
+        "title": "အမြင့်",
+        "description": "ဇာတ်ကောင်၏ အမြင့် (pixel)။"
+      },
+      {
+        "property": "fire",
+        "title": "မီးလောင်နေသလား?",
+        "description": "ဇာတ်ကောင် မီးလောင်နေမနေ။"
+      },
+      {
+        "property": "walking",
+        "title": "လမ်းလျှောက်နေသလား?",
+        "description": "လမ်းလျှောက် ကာတွန်း; မီးလောင်နေချိန်တွင် ပြေးသည်။"
+      }
+    ]
+  }
+}

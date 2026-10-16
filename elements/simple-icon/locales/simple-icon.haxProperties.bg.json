@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Икона",
+    "description": "Икона от пълната библиотека с икони."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона за показване."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентен цвят",
+        "description": "Акцентен цвят за иконата."
+      },
+      {
+        "property": "dark",
+        "title": "Тъмен",
+        "description": "Използване на тъмен режим (обърната цветова гама)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Discord җәмгыятьләрен уртаклашу URL адресыннан урнаштырырга."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ресурс URL адресы",
+        "description": "Ресурс URL адресы."
+      },
+      {
+        "property": "height",
+        "title": "Биеклек",
+        "description": "Эчтәлек рамкасының биеклеге."
+      },
+      {
+        "property": "width",
+        "title": "Киңлек",
+        "description": "Эчтәлек рамкасының киңлеге."
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Secțiune cu imagine",
+    "description": "Imagine pe toată lățimea care separă o secțiune a paginii."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Imagine de fundal."
+      },
+      {
+        "property": "caption",
+        "description": "Titlul textului."
+      }
+    ]
+  }
+}

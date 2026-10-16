@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Mga komento sa Disqus",
+    "description": "Integrasyon sa web service ng pagkomento na Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Maikling pangalan",
+        "description": "Maikling pangalan ng property sa disqus"
+      }
+    ]
+  }
+}

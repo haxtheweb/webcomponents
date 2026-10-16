@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR kod",
+    "description": "Smartfon orqali skanerlanadigan kod."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR maʼlumotlari",
+        "description": "QR kod uchun maʼlumotlar manbasi."
+      },
+      {
+        "property": "title",
+        "title": "Muqobil sarlavha",
+        "description": "QR kod manbasiga bogʻlangan muqobil sarlavha."
+      },
+      {
+        "property": "modulesize",
+        "title": "Oʻlcham",
+        "description": "QR kod oʻlchami."
+      },
+      {
+        "property": "margin",
+        "title": "Chekka",
+        "description": "Kod atrofidagi qobiq."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Chiqish formati",
+        "description": "Chiqarish formati.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

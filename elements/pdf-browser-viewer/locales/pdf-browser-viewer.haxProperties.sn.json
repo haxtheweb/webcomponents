@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Muoni wePDF muBrowser",
+    "description": "Isa faira rePDF mukati nemarongerwo ekadhi asingamanikidzwi nebhatani rekudhaunirodha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL yePDF",
+        "description": "Nzvimbo yefaira rePDF."
+      },
+      {
+        "property": "heading",
+        "title": "Musoro",
+        "description": "Mavara emusoro wekadhi."
+      },
+      {
+        "property": "card",
+        "title": "Marongerwo ekadhi",
+        "description": "Ratidza PDF mukadhi rine bhatani rekudhaunirodha."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Zita rekudhaunirodha",
+        "description": "Zita rebhatani rekudhaunirodha."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Meseji yekusatsigirwa",
+        "description": "Meseji kana browser isingakwanise kuratidza mafaira ePDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Meseji yechinongedzo chekusatsigirwa",
+        "description": "Mavara echinongedzo kana browser isingakwanise kuratidza mafaira ePDF."
+      },
+      {
+        "property": "width",
+        "title": "Upamhi",
+        "description": "Upamhi hwemuoni wePDF."
+      },
+      {
+        "property": "height",
+        "title": "Kureba",
+        "description": "Kureba kwemuoni wePDF."
+      }
+    ]
+  }
+}

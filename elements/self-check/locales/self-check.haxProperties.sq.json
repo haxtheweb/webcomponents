@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Vetëkontroll",
+    "description": "Përdoruesit mund të kryejnë një vetëkontroll."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imazhi",
+        "description": "Imazhi për vetëkontrollin."
+      },
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Titulli i vetëkontrollit."
+      },
+      {
+        "property": "alt",
+        "title": "Teksti alternativ",
+        "description": "Teksti alt për imazhin."
+      },
+      {
+        "slot": "question",
+        "title": "Pyetja"
+      },
+      {
+        "slot": "",
+        "title": "Përgjigjja"
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra e temës",
+        "description": "Zgjidh një ngjyrë teme nga sistemi i dizajnit.",
+        "options": {
+          "primary": "Kryesor",
+          "accent": "Theksuese",
+          "success": "Sukses",
+          "warning": "Paralajmërim",
+          "error": "Gabim",
+          "info": "Info"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objektivi mësimor",
+        "description": "Referenca e objektivit mësimor e emetuar si oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Vlerëson",
+        "description": "Referenca e aktivitetit e emetuar si oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Lidhje për më shumë",
+        "description": "Lidhje me informacion shtesë."
+      }
+    ]
+  }
+}

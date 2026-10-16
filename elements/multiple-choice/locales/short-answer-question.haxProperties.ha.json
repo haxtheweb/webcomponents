@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Tambaya Mai Gajeren Amsa",
+    "description": "Sa mai amfani ya amsa tambaya mai sauƙi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tambaya",
+        "description": "Tambayar da masu amfani za su amsa."
+      },
+      {
+        "property": "answers",
+        "title": "Amsoshi Masu Yiwuwa"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Sunan jarrabawa",
+        "description": "Sunan jarrabawa da ake turawa don amfani a muhallin xAPI don gano wannan abu"
+      }
+    ]
+  }
+}

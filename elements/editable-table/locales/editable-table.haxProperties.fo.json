@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Talva",
+    "description": "Talvubygd dáta til netið."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Raðyvirskrift",
+        "description": "Viðger fyrstu røð sum yvirskrift."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Teigayvirskrift",
+        "description": "Viðger fyrsta teig sum yvirskrift."
+      },
+      {
+        "property": "footer",
+        "title": "Fótur",
+        "description": "Viðger seinastu røð sum fót."
+      },
+      {
+        "property": "sort",
+        "title": "Kann raðast",
+        "description": "Loyv at raða eftir virðum í teigum."
+      },
+      {
+        "property": "filter",
+        "title": "Loyv filtur",
+        "description": "Loyv at filtrera eftir virðum í teigum."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Talsnið",
+        "description": "Nýt talsnið á teigar við tølum."
+      },
+      {
+        "property": "responsive",
+        "title": "Lagaligt",
+        "description": "Laga talvusniðið á smáum skermum."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Metingarstigastillingur",
+        "description": "Tulka hesa talvuna sum eina OER Schema Rubric, so at Rubric-, RubricScale-, RubricCriterion- og RubricLevel-metadáta verður útgivið."
+      },
+      {
+        "property": "rubricType",
+        "title": "Slag av metingarstiga",
+        "description": "Metingarstigasnið útgivið sum oer:rubricType (hevur bert týdning, tá metingarstigastillingur er virkin).",
+        "options": {
+          "": "(einki)",
+          "analytic": "Greinandi",
+          "holistic": "Heildarligt",
+          "single-point": "Einstakt punkt",
+          "checklist": "Eftirkannarlisti"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Við kanti"
+      },
+      {
+        "property": "condensed",
+        "title": "Tætta raðir",
+        "description": "Minka um hæddina á røðunum."
+      },
+      {
+        "property": "striped",
+        "title": "Strípaðar raðir",
+        "description": "Skugga hvørja aðru røð."
+      },
+      {
+        "property": "downloadable",
+        "title": "Niðurtøkuknøttur",
+        "description": "Legg ein knøtt afturat at taka talvuna niður."
+      },
+      {
+        "property": "copyable",
+        "title": "Avritsknøttur",
+        "description": "Legg ein knøtt afturat at avrita CSV-dáta úr talvuni."
+      },
+      {
+        "property": "printable",
+        "title": "Prentknøttur",
+        "description": "Legg ein knøtt afturat at prenta bert talvuna."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV-dáta",
+        "description": "Ger eina talvu úr eini uppsendari CSV-fílu."
+      }
+    ]
+  }
+}

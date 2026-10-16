@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Petsa",
+    "description": "Magpakita ng petsa sa kalendaryo kasama ang mga detalye."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Buwan",
+        "description": "Buwang ipinapakita sa card."
+      },
+      {
+        "property": "date",
+        "title": "Araw ng buwan",
+        "description": "Numero ng araw ng buwan."
+      },
+      {
+        "property": "day",
+        "title": "Araw ng linggo",
+        "description": "Araw ng linggo sa teksto."
+      },
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Pangalan ng event."
+      },
+      {
+        "property": "location",
+        "title": "Lokasyon",
+        "description": "Lokasyon ng event."
+      },
+      {
+        "property": "startTime",
+        "title": "Simula",
+        "description": "Oras ng simula."
+      },
+      {
+        "property": "endTime",
+        "title": "Wakas",
+        "description": "Oras ng pagtatapos."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na Kulay",
+        "description": "Opsyonal na accent na kulay."
+      },
+      {
+        "property": "dark",
+        "title": "Madilim na Tema",
+        "description": "I-enable ang madilim na tema."
+      }
+    ]
+  }
+}

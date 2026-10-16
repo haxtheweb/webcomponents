@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Tarjeta de historia de Polaris",
+    "description": "Muestra una tarjeta de historia de Polaris con imagen de fondo, etiqueta de pilar y titular."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagen de fondo",
+        "description": "URL de la imagen que se muestra como fondo de la tarjeta."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Tamaño del fondo",
+        "description": "Cómo rellena la imagen de fondo la tarjeta (background-size de CSS).",
+        "options": {
+          "cover": "cover",
+          "contain": "contain",
+          "auto": "auto",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Fijación del fondo",
+        "description": "Cómo se comporta la imagen de fondo al desplazarse (background-attachment de CSS).",
+        "options": {
+          "scroll": "scroll",
+          "fixed": "fixed",
+          "local": "local"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Etiqueta de pilar",
+        "description": "Etiqueta corta en mayúsculas que se muestra en la parte superior de la tarjeta. Déjala vacía para ocultarla."
+      },
+      {
+        "property": "label",
+        "title": "Texto de la tarjeta",
+        "description": "Texto principal que se muestra en el panel inferior."
+      },
+      {
+        "property": "link",
+        "title": "Enlace",
+        "description": "URL de destino opcional que envuelve toda la tarjeta."
+      }
+    ]
+  }
+}

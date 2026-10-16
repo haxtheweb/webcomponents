@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub үлес қосушылар тізімі",
+    "description": "GitHub API арқылы RPG кейіпкерлері ретінде көрсетіледі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Ұйым",
+        "description": "github.com/ORG/REPO ішіндегі ұйым атауы."
+      },
+      {
+        "property": "repo",
+        "title": "Репозиторий",
+        "description": "github.com/ORG/REPO ішіндегі репозиторий атауы."
+      },
+      {
+        "property": "limit",
+        "title": "Шектеу",
+        "description": "Көрсетілетін үлес қосушылар санын шектеу."
+      }
+    ]
+  }
+}

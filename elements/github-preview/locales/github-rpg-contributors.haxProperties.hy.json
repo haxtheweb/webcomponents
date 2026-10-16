@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub-ի ներդրողների ցանկ",
+    "description": "Ցուցադրվում են որպես RPG կերպարներ՝ GitHub API-ի միջոցով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Կազմակերպություն",
+        "description": "Կազմակերպության անունը github.com/ORG/REPO-ից։"
+      },
+      {
+        "property": "repo",
+        "title": "Պահոց",
+        "description": "Պահոցի անունը github.com/ORG/REPO-ից։"
+      },
+      {
+        "property": "limit",
+        "title": "Սահմանաչափ",
+        "description": "Սահմանափակել ցուցադրվող ներդրողների քանակը։"
+      }
+    ]
+  }
+}

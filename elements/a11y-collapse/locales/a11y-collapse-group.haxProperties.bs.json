@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grupa za proširivanje i sažimanje",
+    "description": "Grupa elemenata koji se mogu proširiti i sažeti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Proširi samo jedan",
+        "description": "Samo jedna stavka može biti proširena."
+      },
+      {
+        "slot": "",
+        "title": "Stavke za sažimanje",
+        "description": "Stavke koje se mogu sažeti."
+      }
+    ]
+  }
+}

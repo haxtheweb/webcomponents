@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Bayanin Tsayawa",
+    "description": "Saƙo don faɗakar da masu karatu game da takamaiman umarni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Shigar da take na stop-note."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Shigar da url na waje."
+      },
+      {
+        "property": "status",
+        "title": "Matsayi",
+        "description": "Saita matsayi yana canza launuka da alamomi don su dace",
+        "options": {
+          "stop": "Tsaya",
+          "warning": "Gargaɗi",
+          "success": "Tabbatarwa",
+          "info": "Sanarwa"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Rubutun Bayani",
+        "description": "Rubutun stop-note."
+      }
+    ]
+  }
+}

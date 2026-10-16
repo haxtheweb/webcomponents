@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Contêiner NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Ocultar editor",
+        "description": "Ocultar a interface de edição de arquivos."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Ocultar terminal",
+        "description": "Ocultar o terminal para programas executados automaticamente."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Ocultar janela",
+        "description": "Ocultar a janela de saída para uso apenas do terminal."
+      },
+      {
+        "slot": "",
+        "title": "Comandos",
+        "description": "Comandos (um por linha) a executar antes do carregamento."
+      }
+    ]
+  }
+}

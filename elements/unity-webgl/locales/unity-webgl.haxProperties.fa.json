@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "پخش‌کنندهٔ Unity",
+    "description": "پخش‌کنندهٔ Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "مقصد",
+        "description": "مسیر بیلد بازی."
+      },
+      {
+        "property": "compression",
+        "title": "روش فشرده‌سازی",
+        "description": "پسوند فایل فشرده‌سازی برای دارایی‌های بازی."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL جریان‌سازی",
+        "description": "URL دارایی‌های جریانی."
+      },
+      {
+        "property": "companyname",
+        "title": "نام شرکت",
+        "description": "نام شرکت."
+      },
+      {
+        "property": "productname",
+        "title": "نام محصول",
+        "description": "عنوان بازی."
+      },
+      {
+        "property": "productversion",
+        "title": "نسخهٔ محصول",
+        "description": "نسخهٔ انتشار."
+      },
+      {
+        "property": "width",
+        "title": "عرض بوم",
+        "description": "عرض CSS بوم (برای نمونه px یا em)."
+      },
+      {
+        "property": "height",
+        "title": "ارتفاع بوم",
+        "description": "ارتفاع CSS بوم (برای نمونه px یا em)."
+      },
+      {
+        "property": "background",
+        "title": "پس‌زمینهٔ بوم",
+        "description": "پس‌زمینهٔ CSS بوم."
+      }
+    ]
+  }
+}

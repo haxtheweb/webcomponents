@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "အစီအစဉ် Badge",
+    "description": "အစီအစဉ် badge component။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV ပုံ",
+        "description": "TV ပေါ်တွင် ပြသော ပုံ။"
+      },
+      {
+        "property": "logo",
+        "title": "လိုဂို",
+        "description": "Badge ထောင့်တွင် ပြသော လိုဂို။"
+      },
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်",
+        "description": "Badge ၏ အပေါ်ဆုံးတွင် ပြသော ခေါင်းစဉ်။"
+      },
+      {
+        "property": "name",
+        "title": "အမည်",
+        "description": "Badge ပေါ်တွင် ပြသော အမည်။"
+      },
+      {
+        "property": "position",
+        "title": "ရာထူး",
+        "description": "ပုဂ္ဂိုလ်၏ အခန်းကဏ္ဍ သို့မဟုတ် ရာထူး။"
+      },
+      {
+        "property": "organization",
+        "title": "အဖွဲ့အစည်း",
+        "description": "ပုဂ္ဂိုလ် အလုပ်လုပ်သော အဖွဲ့အစည်း။"
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV အရောင်",
+        "description": "TV အတွက် အရောင်ကို ရွေးပါ။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "အဓိက နောက်ခံ သို့မဟုတ် စာသား အရောင်။"
+      },
+      {
+        "property": "knobcolor",
+        "title": "ခလုတ်ဘု အရောင်",
+        "description": "TV ခလုတ်ဘုများ၏ အရောင်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Sepia အကျိုးသက်ရောက်မှု ထည့်ရန်။"
+      },
+      {
+        "property": "blackwhite",
+        "title": "အဖြူအမည်း",
+        "description": "အဖြူအမည်း အကျိုးသက်ရောက်မှု ထည့်ရန်။"
+      }
+    ]
+  }
+}

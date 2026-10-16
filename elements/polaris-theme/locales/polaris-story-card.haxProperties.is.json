@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris-sögukort",
+    "description": "Birta Polaris-sögukort með bakgrunnsmynd, stoðarmerki og fyrirsagnartexta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bakgrunnsmynd",
+        "description": "URL myndar sem birtist sem bakgrunnur spjaldsins."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Bakgrunnsstærð",
+        "description": "Hvernig bakgrunnsmyndin fyllir spjaldið (CSS background-size).",
+        "options": {
+          "cover": "Þekja (cover)",
+          "contain": "Innihalda (contain)",
+          "auto": "Sjálfvirkt (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Festing bakgrunns",
+        "description": "Hvernig bakgrunnsmyndin hegðar sér við skrun (CSS background-attachment).",
+        "options": {
+          "scroll": "Skruna (scroll)",
+          "fixed": "Fast (fixed)",
+          "local": "Staðbundið (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Stoðarmerki",
+        "description": "Stutt merki í hástöfum sem birtist efst á spjaldinu. Skildu eftir autt til að fela."
+      },
+      {
+        "property": "label",
+        "title": "Texti spjalds",
+        "description": "Aðaltexti sem birtist í neðri reitnum."
+      },
+      {
+        "property": "link",
+        "title": "Tengill",
+        "description": "Valfrjálst áfangastaðar-URL sem umlykur allt spjaldið."
+      }
+    ]
+  }
+}

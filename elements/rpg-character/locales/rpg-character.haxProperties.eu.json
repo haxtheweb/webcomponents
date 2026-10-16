@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG pertsonaia",
+    "description": "HAXeko pertsonaia dibertigarria."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Izena",
+        "description": "Ausazko pertsonaia bat sortzeko erabiltzen den hitza."
+      },
+      {
+        "property": "hat",
+        "title": "Txapela",
+        "description": "Txapelaren estiloa.",
+        "options": {
+          "none": "Lehenetsia",
+          "random": "Ausazkoa",
+          "bunny": "Untxia",
+          "cowboy": "Cowboya",
+          "education": "Hezkuntza",
+          "construction": "Eraikuntza",
+          "warning": "Abisua",
+          "watermelon": "Angurria",
+          "coffee": "Kafea",
+          "knight": "Zalduna",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "error": "Errorea",
+          "edit": "Editatu"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Zabalera",
+        "description": "Pertsonaiaren zabalera pixeletan."
+      },
+      {
+        "property": "height",
+        "title": "Altuera",
+        "description": "Pertsonaiaren altuera pixeletan."
+      },
+      {
+        "property": "fire",
+        "title": "Su hartuta?",
+        "description": "Pertsonaiak su hartuta dagoen ala ez."
+      },
+      {
+        "property": "walking",
+        "title": "Ibiltzen?",
+        "description": "Ibiltzeko animazioa; su hartuta dagoenean korrika egiten du."
+      }
+    ]
+  }
+}

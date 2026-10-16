@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "פרטי העמוד",
+    "description": "הגדרת חלוקה חזותית בין עמודים, שמערכות ניהול תוכן יכולות להשתמש בה ליצירת עמודים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "הכותרת המוצגת בערכת הנושא ובכותרת הראשונה."
+      },
+      {
+        "property": "pageType",
+        "title": "סוג",
+        "description": "תווית חזותית להקשר העמוד.",
+        "options": {
+          "": "-- ללא --",
+          "content": "תוכן",
+          "assessment": "הערכה",
+          "quiz": "בוחן",
+          "submission": "הגשה",
+          "lesson": "שיעור",
+          "module": "מודול",
+          "task": "משימה",
+          "activity": "פעילות",
+          "project": "פרויקט",
+          "practice": "תרגול",
+          "unit": "יחידה",
+          "objectives": "מטרות למידה",
+          "connection": "קישור לנושא",
+          "knowledge": "הידעת?",
+          "strategy": "אסטרטגיית למידה",
+          "discuss": "דיון",
+          "listen": "האזנה",
+          "make": "יצירה",
+          "observe": "תצפית",
+          "present": "הצגה",
+          "reading": "קריאה",
+          "reflect": "רפלקציה",
+          "research": "מחקר",
+          "watch": "צפייה",
+          "write": "כתיבה"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "תגיות",
+        "description": "רשימת תגיות מופרדות בפסיקים."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL של קישור",
+        "description": "URL להפניה המוצג במקום תוכן העמוד."
+      },
+      {
+        "property": "linkTarget",
+        "title": "יעד הקישור",
+        "description": "פתיחת קישורים באותו חלון או בחלון חדש.",
+        "options": {
+          "_self": "אותו חלון",
+          "_blank": "חלון חדש"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "פורסם",
+        "description": "עמודים שלא פורסמו מוסתרים ממשתמשי הקצה."
+      },
+      {
+        "property": "locked",
+        "title": "נעילת העמוד",
+        "description": "נעילה או ביטול נעילה של כל הרכיבים בעמוד זה."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "עקיפת כתובת אוטומטית",
+        "description": "נעילת הכתובת מפני עדכונים אוטומטיים על סמך הכותרת או עמוד ההורה."
+      },
+      {
+        "property": "slug",
+        "title": "נתיב",
+        "description": "כתובת ה-URL המקוצרת של עמוד זה."
+      },
+      {
+        "property": "image",
+        "title": "מדיה",
+        "description": "מדיה המייצגת את העמוד, המשמשת בחלק מערכות הנושא והתצוגות."
+      },
+      {
+        "property": "parent",
+        "title": "הורה",
+        "description": "הנתיב של עמוד ההורה."
+      },
+      {
+        "property": "noderefs",
+        "title": "תוכן קשור",
+        "description": "עמודים הקשורים לעמוד זה."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "תיאור",
+        "description": "תיאור המשמש באוספים ובקידום אתרים במנועי חיפוש."
+      },
+      {
+        "property": "entityType",
+        "title": "סוג ישות",
+        "description": "ברירת המחדל היא עמוד, אלא אם הוגדר אחרת.",
+        "options": {
+          "page": "עמוד (ברירת מחדל)",
+          "taxonomy": "טקסונומיה",
+          "taxonomyTerm": "מונח טקסונומיה",
+          "region": "אזור"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "סמל",
+        "description": "הסמל המשויך לעמוד זה באתר."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "הצבע המשויך לעמוד זה באתר."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "הסתרה בתפריט",
+        "description": "הסתרת עמוד זה מהתפריטים תוך שמירה על כתובת ה-URL שלו."
+      },
+      {
+        "property": "order",
+        "title": "סדר",
+        "description": "הסדר ביחס לעמודים אחים."
+      },
+      {
+        "property": "developerTheme",
+        "title": "ערכת נושא לעמוד",
+        "description": "עקיפת ערכת הנושא עבור עמוד זה בלבד."
+      },
+      {
+        "property": "author",
+        "title": "מחבר",
+        "description": "שם המשתמש של האדם האחרון ששינה את העמוד."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Produto dunha ollada",
+    "description": "Bloque de resumo rápido do produto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona que representa o concepto."
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Concepto principal dunha ollada."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtítulo",
+        "description": "Detalle adicional."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Cor de realce da icona."
+      }
+    ]
+  }
+}

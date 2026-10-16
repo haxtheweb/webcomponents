@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "شخصية RPG",
+    "description": "شخصية مرحة من HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "الاسم",
+        "description": "كلمة تُستخدم لتوليد شخصية عشوائية."
+      },
+      {
+        "property": "hat",
+        "title": "القبعة",
+        "description": "نمط القبعة.",
+        "options": {
+          "none": "افتراضي",
+          "random": "عشوائي",
+          "bunny": "أرنب",
+          "cowboy": "رعاة البقر",
+          "education": "تعليم",
+          "construction": "بناء",
+          "warning": "تحذير",
+          "watermelon": "بطيخ",
+          "coffee": "قهوة",
+          "knight": "فارس",
+          "ninja": "نينجا",
+          "party": "حفلة",
+          "error": "خطأ",
+          "edit": "تحرير"
+        }
+      },
+      {
+        "property": "width",
+        "title": "العرض",
+        "description": "عرض الشخصية بالبكسل."
+      },
+      {
+        "property": "height",
+        "title": "الارتفاع",
+        "description": "ارتفاع الشخصية بالبكسل."
+      },
+      {
+        "property": "fire",
+        "title": "مشتعلة؟",
+        "description": "ما إذا كانت الشخصية مشتعلة."
+      },
+      {
+        "property": "walking",
+        "title": "تمشي؟",
+        "description": "حركة المشي؛ تعمل عندما تكون الشخصية مشتعلة."
+      }
+    ]
+  }
+}

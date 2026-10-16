@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Geirfa",
+    "description": "Term geirfa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Term"
+      },
+      {
+        "property": "information",
+        "title": "Diffiniad",
+        "description": "Diffiniad a ddangosir pan gaiff y term ei glicio."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Naidlen",
+        "description": "Dangos y diffiniad mewn naidlen yn hytrach nag o fewn y testun."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Dolenni",
+        "description": "Rhestr o ddolenni atodol sy'n gysylltiedig â'r term hwn."
+      }
+    ]
+  }
+}

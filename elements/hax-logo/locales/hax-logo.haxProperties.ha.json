@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Rubutun ƙawa na HAX",
+    "description": "Abin tambarin HAX, a fili abu ne mai iya aiki da HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Girman tambarin HAX da za a sanya",
+        "options": {
+          "mini": "Ƙarami sosai",
+          "small": "Ƙarami",
+          "normal": "Na al'ada",
+          "large": "Babba"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Ko za a mayar da tambarin zuwa manyan haruffa"
+      }
+    ]
+  }
+}

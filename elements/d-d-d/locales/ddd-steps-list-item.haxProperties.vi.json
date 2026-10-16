@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Mục bước",
+    "description": "Mục thuộc danh sách các bước"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tiêu đề"
+      }
+    ]
+  }
+}

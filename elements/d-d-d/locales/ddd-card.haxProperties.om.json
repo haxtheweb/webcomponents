@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kaardii",
+    "description": "Kaardii sirna dizaayinii DDD tiin miidhagfame."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Suuraa",
+        "description": "Suuraa filannoo."
+      },
+      {
+        "property": "alt",
+        "title": "Ibsa suuraa",
+        "description": "Barreeffama bakka bu'aa suuraa ibsu."
+      },
+      {
+        "property": "title",
+        "title": "Mata-duree",
+        "description": "Mata-duree kaardii."
+      },
+      {
+        "slot": "",
+        "title": "Qabiyyee",
+        "description": "Bakka qabiyyee kaardii."
+      },
+      {
+        "property": "href",
+        "title": "Hidhoo",
+        "description": "URL hidhoo qabduu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Maqaa",
+        "description": "Maqaa qabduu."
+      },
+      {
+        "property": "noArrow",
+        "title": "Xiyya Malee",
+        "description": "Xiyya qabduu dhoksi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Hidhoo: bakka banamu",
+        "description": "Bakka hidhoon itti banamu.",
+        "options": {
+          "": "Foddaa wal fakkaataa",
+          "_blank": "Foddaa haaraa - _blank",
+          "_top": "Foddaa olii - _top",
+          "_parent": "Foddaa maatii - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Hidhoo: rel",
+        "description": "Walitti dhufeenya qabeenya hidhamee fi galmee ammaa gidduu jiru."
+      }
+    ]
+  }
+}

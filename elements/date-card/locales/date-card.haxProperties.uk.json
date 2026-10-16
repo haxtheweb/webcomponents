@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Дата",
+    "description": "Показати календарну дату з подробицями."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Місяць",
+        "description": "Місяць, показаний на картці."
+      },
+      {
+        "property": "date",
+        "title": "День місяця",
+        "description": "Числовий день місяця."
+      },
+      {
+        "property": "day",
+        "title": "День тижня",
+        "description": "День тижня текстом."
+      },
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Назва події."
+      },
+      {
+        "property": "location",
+        "title": "Місце",
+        "description": "Місце проведення події."
+      },
+      {
+        "property": "startTime",
+        "title": "Початок",
+        "description": "Час початку."
+      },
+      {
+        "property": "endTime",
+        "title": "Кінець",
+        "description": "Час завершення."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "Необов'язковий акцентний колір."
+      },
+      {
+        "property": "dark",
+        "title": "Темна тема",
+        "description": "Увімкнути темну тему."
+      }
+    ]
+  }
+}

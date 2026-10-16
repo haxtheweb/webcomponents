@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF ব্রাউজার ভিউয়ার",
+    "description": "ঐচ্ছিক কার্ড লেআউট ও ডাউনলোড বোতামসহ PDF ফাইল ইনলাইনে এমবেড করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF ফাইলের অবস্থান।"
+      },
+      {
+        "property": "heading",
+        "title": "শিরোনাম",
+        "description": "কার্ডের শিরোনাম টেক্সট।"
+      },
+      {
+        "property": "card",
+        "title": "কার্ড লেআউট",
+        "description": "ডাউনলোড বোতামসহ কার্ডে PDF দেখান।"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ডাউনলোড লেবেল",
+        "description": "ডাউনলোড বোতামের লেবেল।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "অসমর্থিত বার্তা",
+        "description": "ব্রাউজার PDF ফাইল দেখাতে না পারলে প্রদর্শিত বার্তা।"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "অসমর্থিত লিংক বার্তা",
+        "description": "ব্রাউজার PDF ফাইল দেখাতে না পারলে লিংক টেক্সট।"
+      },
+      {
+        "property": "width",
+        "title": "প্রস্থ",
+        "description": "PDF ভিউয়ারের প্রস্থ।"
+      },
+      {
+        "property": "height",
+        "title": "উচ্চতা",
+        "description": "PDF ভিউয়ারের উচ্চতা।"
+      }
+    ]
+  }
+}

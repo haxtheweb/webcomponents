@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "لغات",
+    "description": "د لغت اصطلاح."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "اصطلاح"
+      },
+      {
+        "property": "information",
+        "title": "تعریف",
+        "description": "هغه تعریف چې پر اصطلاح د کلیک پر مهال ښودل کېږي."
+      },
+      {
+        "property": "popoverMode",
+        "title": "پاپ اوور",
+        "description": "تعریف د کرښې پر ځای په پاپ اوور کې وښایئ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "لینکونه",
+        "description": "د دې اصطلاح پورې تړلو ضمیمه لینکونو لېست."
+      }
+    ]
+  }
+}

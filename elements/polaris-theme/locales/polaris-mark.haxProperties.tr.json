@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris işareti",
+    "description": "PSU kimlik işaretini isteğe bağlı kolej adı ve hedef URL ile gösterin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Kolej adı",
+        "description": "İşaretin yanında gösterilen ad."
+      },
+      {
+        "property": "name2",
+        "title": "Kolej adı 2",
+        "description": "Birinci kolej adının altında gösterilen ikinci ad."
+      },
+      {
+        "property": "name3",
+        "title": "Kolej adı 3",
+        "description": "İkinci kolej adının altında gösterilen üçüncü ad."
+      },
+      {
+        "property": "url",
+        "title": "Bağlantı",
+        "description": "İşarete tıklandığında gidilecek hedef URL."
+      },
+      {
+        "property": "type",
+        "title": "Varyant",
+        "description": "Görsel işaret varyantı.",
+        "options": {
+          "default": "Varsayılan",
+          "light": "Açık",
+          "dark": "Koyu"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Dikey düzen",
+        "description": "Üçüncü adı ikinci adın altında yatay bir çizgiyle göster."
+      }
+    ]
+  }
+}

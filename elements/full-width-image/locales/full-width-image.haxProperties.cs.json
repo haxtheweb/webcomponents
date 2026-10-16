@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Obrázková sekce",
+    "description": "Obrázek na celou šířku, který odděluje části stránky."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Obrázek pozadí."
+      },
+      {
+        "property": "caption",
+        "description": "Textový nadpis."
+      }
+    ]
+  }
+}

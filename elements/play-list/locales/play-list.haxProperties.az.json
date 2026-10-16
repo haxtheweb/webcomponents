@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Pleylist",
+    "description": "İstənilən növ məzmunu pleylistdə göstər."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Mənbə",
+        "description": "Pleylistdə göstərilən məzmun."
+      },
+      {
+        "property": "edit",
+        "title": "Redaktə rejimi",
+        "description": "Pleylist üçün redaktə və önizləmə rejimləri arasında keçid et."
+      },
+      {
+        "property": "navigation",
+        "title": "Naviqasiya",
+        "description": "İrəli və geri naviqasiya düymələrini göstər."
+      },
+      {
+        "property": "pagination",
+        "title": "Səhifələmə",
+        "description": "Səhifələmə nöqtələrini göstər."
+      },
+      {
+        "property": "orientation",
+        "title": "İstiqamət",
+        "description": "Slaydların istiqaməti.",
+        "options": {
+          "horizontal": "Üfüqi",
+          "vertical": "Şaquli"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Başlanğıc slayd",
+        "description": "İlkin olaraq fokuslanacaq slaydın indeksi."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Tərəflər nisbəti",
+        "description": "Slaydların tərəflər nisbəti.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

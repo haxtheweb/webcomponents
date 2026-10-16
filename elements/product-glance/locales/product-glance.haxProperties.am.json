@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "የምርት ቅጽበታዊ እይታ",
+    "description": "ፈጣን የምርት አጠቃላይ እይታ ብሎክ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "አዶ",
+        "description": "ጽንሰ-ሐሳቡን የሚወክል አዶ።"
+      },
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "በአጭር እይታ ዋናው ጽንሰ-ሐሳብ።"
+      },
+      {
+        "property": "subtitle",
+        "title": "ንዑስ ርዕስ",
+        "description": "ተጨማሪ ዝርዝር።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "ለአዶው የአጽንዖት ቀለም።"
+      }
+    ]
+  }
+}

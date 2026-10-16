@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Ìwé orin",
+    "description": "Ń fi ìwé orin, táàbù gìtá, àti àkọsílẹ̀ orin hàn tí ó sì ń ṣe wọ́n nípasẹ̀ alphaTex tàbí MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Àkọsílẹ̀ AlphaTex",
+        "description": "Àmì alphaTex inú ọ̀rọ̀ fún ìwé orin náà. Ṣàtúnṣe tààrà láti kọ àkọsílẹ̀; a tọ́jú rẹ̀ sínú àwòṣe kí àlàfo lè wà bí ó ti wà."
+      },
+      {
+        "property": "source",
+        "title": "Fáìlì orin",
+        "description": "Gbé sókè tàbí jápọ̀ mọ́ fáìlì MusicXML (.xml/.musicxml/.mxl) tàbí Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Ó borí alphaTex inú ọ̀rọ̀ nígbà tí a bá ṣètò rẹ̀."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Ṣíṣe ohùn",
+        "description": "Ó wà ní títàn gẹ́gẹ́ bí àtilẹ̀wá - gbọ́ ìwé orin tí a ń ṣe nípasẹ̀ ẹ̀rọ olùṣẹ̀dá-ohùn inú. Pa á fún ipò wíwò nìkan (láìsí ohùn)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Fi àwọn àṣàyàn ìfihàn hàn",
+        "description": "Fi àwọn bọ́tìnnì ìsúnmọ́, nínà, àti ìtò hàn lórí ọ̀pá ẹ̀rọ ìṣeré."
+      },
+      {
+        "property": "showExport",
+        "title": "Fi àwọn bọ́tìnnì ìkójáde hàn",
+        "description": "Fi àwọn bọ́tìnnì ìgbàsílẹ̀ MIDI àti ìtẹ̀jáde/PDF hàn lórí ọ̀pá ẹ̀rọ ìṣeré."
+      }
+    ]
+  }
+}

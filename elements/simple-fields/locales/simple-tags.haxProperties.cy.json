@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tagiau",
+    "description": "Rhestr tagiau syml i'w dangos ar y dudalen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tagiau",
+        "description": "Rhestr o dagiau wedi'u gwahanu gan atalnodau."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Lliw Acen Awtomatig",
+        "description": "Gosod y lliw acen yn awtomatig yn seiliedig ar y label."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw",
+        "description": "Lliw ar gyfer tagiau."
+      }
+    ]
+  }
+}

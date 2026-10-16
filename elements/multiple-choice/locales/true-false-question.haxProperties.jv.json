@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Pitakonan Bener / Salah",
+    "description": "Pitakonan bener salah"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pitakonan",
+        "description": "Pitakonan sing kudu diwangsuli pangguna."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Wangsulan sing Bener"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jeneng kuis",
+        "description": "Jeneng kuis sing dikirim kanggo digunakake ing lingkungan adhedhasar xAPI kanggo ngenali item iki"
+      }
+    ]
+  }
+}

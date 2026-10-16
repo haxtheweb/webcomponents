@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Ofbyldingsgalery",
+    "description": "In galery dy't ôfbyldings toant yn in roaster, mitselwurk- of diafoarstellingsopmaak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Werjeftemodus",
+        "description": "Hoe't de ôfbyldings yn de galery toand wurde.",
+        "options": {
+          "grid": "Roaster",
+          "masonry": "Mitselwurk",
+          "gallery": "Galery"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktive yndeks",
+        "description": "Yndeks fan de aktive ôfbylding dêr't yn galerymodus mei begûn wurdt."
+      }
+    ]
+  }
+}

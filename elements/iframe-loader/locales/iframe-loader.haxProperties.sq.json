@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Ngulit përmbajtje web të jashtme në një iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL-ja e burimit",
+        "description": "URL-ja e burimit."
+      },
+      {
+        "property": "height",
+        "title": "Lartësia",
+        "description": "Lartësia e iframe-it."
+      },
+      {
+        "property": "width",
+        "title": "Gjerësia",
+        "description": "Gjerësia e iframe-it."
+      }
+    ]
+  }
+}

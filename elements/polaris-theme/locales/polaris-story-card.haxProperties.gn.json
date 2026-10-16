@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris kuatia'atã mombe'urã",
+    "description": "Ehechauka Polaris kuatia'atã mombe'urã ta'ãnga hapykuegua, okyta teramoĩ ha moakãha moñe'ẽrã ndive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Ta'ãnga hapykuegua",
+        "description": "URL ta'ãnga ojehechaukáva kuatia'atã hapykuegua ramo."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Hapykuegua tuichakue",
+        "description": "Mba'éichapa ta'ãnga hapykuegua omyenyhẽ kuatia'atã (CSS background-size).",
+        "options": {
+          "cover": "Ojaho'íva (cover)",
+          "contain": "Oguerekóva (contain)",
+          "auto": "Ijeheguíva (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Hapykuegua ñembojoaju",
+        "description": "Mba'éichapa ta'ãnga hapykuegua oiko ojeguerova aja (CSS background-attachment).",
+        "options": {
+          "scroll": "Ojeguerováva (scroll)",
+          "fixed": "Opytáva (fixed)",
+          "local": "Ko'ãgua (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Okyta teramoĩ",
+        "description": "Teramoĩ mbyky tai tuichápe ojehechaukáva kuatia'atã yvatépe. Eheja nandi emokañy hag̃ua."
+      },
+      {
+        "property": "label",
+        "title": "Kuatia'atã moñe'ẽrã",
+        "description": "Moñe'ẽrã tenondegua ojehechaukáva pehẽ yvyguápe."
+      },
+      {
+        "property": "link",
+        "title": "Joajuha",
+        "description": "URL ohohápe ikatúva ojaho'íva kuatia'atã pukukue."
+      }
+    ]
+  }
+}

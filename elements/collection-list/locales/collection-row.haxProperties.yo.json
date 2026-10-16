@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Ìlà àkójọpọ̀",
+    "description": "Ẹyọ oníla fún lílò nínú àtòjọ àkójọpọ̀, pẹ̀lú ọ̀rọ̀, ìjápọ̀, àmì, tágì, àti àwòrán àṣàyàn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Ìjápọ̀",
+        "description": "URL ibi-àfojúsùn fún ìlà yìí."
+      },
+      {
+        "property": "image",
+        "title": "Àwòrán",
+        "description": "Àwòrán fún ìlà náà."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Ọ̀rọ̀ àfirọ́pò tí ó ṣàpèjúwe àwòrán náà."
+      },
+      {
+        "property": "line1",
+        "title": "Ìlà 1",
+        "description": "Ìlà ọ̀rọ̀ àkọ́kọ́."
+      },
+      {
+        "property": "line2",
+        "title": "Ìlà 2",
+        "description": "Ìlà ọ̀rọ̀ kejì."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Àmì",
+        "description": "Àmì tí ó dúró fún ìlà náà."
+      },
+      {
+        "property": "saturate",
+        "title": "Ipa ìkún àwọ̀",
+        "description": "Yí ìkún àwọ̀ àwòrán padà nígbà tí olùlò bá fojú sí i."
+      },
+      {
+        "property": "tags",
+        "title": "Tágì",
+        "description": "Àtòjọ tágì tí a fi kọ́mà yà sọ́tọ̀."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀",
+        "description": "Àwọ̀ tí a lò fún àmì àti tágì."
+      }
+    ]
+  }
+}

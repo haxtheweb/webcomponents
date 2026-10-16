@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris 磁贴",
+    "description": "显示 Polaris 磁贴，有标题、可选辅助文字搭可选链接。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "主要文字",
+        "description": "磁贴主文字。"
+      },
+      {
+        "property": "line2",
+        "title": "次要文字",
+        "description": "可选辅助文字。"
+      },
+      {
+        "property": "type",
+        "title": "磁贴样式",
+        "description": "预设个磁贴视觉样式。",
+        "options": {
+          "1": "样式 1",
+          "2": "样式 2",
+          "3": "样式 3",
+          "4": "样式 4",
+          "5": "样式 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "背景图片",
+        "description": "支持图片个磁贴样式用个背景图片 URL。"
+      },
+      {
+        "property": "link",
+        "title": "链接",
+        "description": "磁贴操作个可选目标 URL。"
+      }
+    ]
+  }
+}

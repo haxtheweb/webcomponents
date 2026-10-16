@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Explosion géniale",
+    "description": "Animation d'explosion interactive avec effets sonores facultatifs."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Taille",
+        "description": "Définir la taille de l'explosion.",
+        "options": {
+          "tiny": "Minuscule",
+          "small": "Petite",
+          "medium": "Moyenne",
+          "large": "Grande",
+          "epic": "Épique"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Couleur",
+        "description": "Définir le thème de couleur de l'explosion.",
+        "options": {
+          "": "Par défaut",
+          "red": "Rouge",
+          "blue": "Bleu",
+          "purple": "Violet",
+          "orange": "Orange",
+          "yellow": "Jaune"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Effets sonores",
+        "description": "Activer les effets sonores."
+      },
+      {
+        "property": "resetSound",
+        "title": "Réinitialiser le son",
+        "description": "Redémarrer le son depuis le début à chaque fois."
+      },
+      {
+        "property": "image",
+        "title": "Image personnalisée",
+        "description": "URL facultative d'une image d'explosion personnalisée."
+      },
+      {
+        "property": "sound",
+        "title": "Son personnalisé",
+        "description": "URL facultative d'un effet sonore personnalisé."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Désactivé",
+        "description": "Désactiver toutes les interactions."
+      }
+    ]
+  }
+}

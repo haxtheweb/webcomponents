@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kad cerita Polaris",
+    "description": "Paparkan kad cerita Polaris dengan imej latar belakang, label tunjang dan teks tajuk utama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imej latar belakang",
+        "description": "URL imej yang dipaparkan sebagai latar belakang kad."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Saiz latar belakang",
+        "description": "Cara imej latar belakang memenuhi kad (CSS background-size).",
+        "options": {
+          "cover": "Liputi (cover)",
+          "contain": "Muatkan (contain)",
+          "auto": "Automatik (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Lampiran latar belakang",
+        "description": "Kelakuan imej latar belakang semasa menatal (CSS background-attachment).",
+        "options": {
+          "scroll": "Tatal (scroll)",
+          "fixed": "Tetap (fixed)",
+          "local": "Setempat (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Label tunjang",
+        "description": "Label pendek huruf besar yang dipaparkan di bahagian atas kad. Biarkan kosong untuk menyembunyikan."
+      },
+      {
+        "property": "label",
+        "title": "Teks kad",
+        "description": "Teks utama yang dipaparkan dalam panel bawah."
+      },
+      {
+        "property": "link",
+        "title": "Pautan",
+        "description": "URL destinasi pilihan yang membalut seluruh kad."
+      }
+    ]
+  }
+}

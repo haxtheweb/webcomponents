@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Кыска җаваплы сорау",
+    "description": "Кулланучы гади сорауга җавап бирсен"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Сорау",
+        "description": "Кулланучылар җавап бирәсе сорау."
+      },
+      {
+        "property": "answers",
+        "title": "Мөмкин җаваплар"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Тест исеме",
+        "description": "Бу элементны танып белү өчен xAPI нигезендәге мохитләрдә кулланыла торган тест исеме"
+      }
+    ]
+  }
+}

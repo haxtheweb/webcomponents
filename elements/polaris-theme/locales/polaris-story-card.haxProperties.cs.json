@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Příběhová karta Polaris",
+    "description": "Zobrazte příběhovou kartu Polaris s obrázkem pozadí, popiskem pilíře a textem titulku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Obrázek pozadí",
+        "description": "URL obrázku zobrazeného jako pozadí karty."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Velikost pozadí",
+        "description": "Jak obrázek pozadí vyplní kartu (CSS background-size).",
+        "options": {
+          "cover": "cover (vyplnit) (cover)",
+          "contain": "contain (přizpůsobit) (contain)",
+          "auto": "auto (automaticky) (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Ukotvení pozadí",
+        "description": "Jak se obrázek pozadí chová při posouvání (CSS background-attachment).",
+        "options": {
+          "scroll": "scroll (posouvat) (scroll)",
+          "fixed": "fixed (pevné) (fixed)",
+          "local": "local (místní) (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Popisek pilíře",
+        "description": "Krátký popisek velkými písmeny zobrazený v horní části karty. Ponechte prázdné pro skrytí."
+      },
+      {
+        "property": "label",
+        "title": "Text karty",
+        "description": "Hlavní text zobrazený ve spodním panelu."
+      },
+      {
+        "property": "link",
+        "title": "Odkaz",
+        "description": "Volitelná cílová URL, která obaluje celou kartu."
+      }
+    ]
+  }
+}

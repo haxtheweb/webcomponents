@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Етикети",
+    "description": "Прост списък с етикети за показване на страницата."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Етикети",
+        "description": "Списък с етикети, разделени със запетая."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Автоматичен акцентен цвят",
+        "description": "Автоматично задаване на акцентния цвят според етикета."
+      },
+      {
+        "property": "accentColor",
+        "title": "Цвят",
+        "description": "Цвят за етикетите."
+      }
+    ]
+  }
+}

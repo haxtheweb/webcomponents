@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub-közreműködők listája",
+    "description": "RPG-karakterekként megjelenítve a GitHub API segítségével."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Szervezet",
+        "description": "A szervezet neve a github.com/ORG/REPO címből."
+      },
+      {
+        "property": "repo",
+        "title": "Tároló",
+        "description": "A tároló neve a github.com/ORG/REPO címből."
+      },
+      {
+        "property": "limit",
+        "title": "Korlát",
+        "description": "A megjelenített közreműködők számának korlátozása."
+      }
+    ]
+  }
+}

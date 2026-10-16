@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Maak geanimeerde GIF's toeganklik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Geanimeerde GIF",
+        "description": "URL vir die geanimeerde GIF."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-teks",
+        "description": "Alternatiewe teks vir die prent."
+      },
+      {
+        "property": "longdesc",
+        "title": "Lang beskrywing",
+        "description": "Lang beskrywing van die GIF vir toeganklikheid."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Stilstaande prent",
+        "description": "URL vir 'n stilstaande weergawe van die GIF."
+      }
+    ]
+  }
+}

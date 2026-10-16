@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "ជួរបណ្តុំ",
+    "description": "ធាតុបែបជួរសម្រាប់ប្រើក្នុងបញ្ជីបណ្តុំ ដែលមានអត្ថបទ តំណ រូបតំណាង ស្លាក និងរូបភាពជាជម្រើស។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "តំណ",
+        "description": "URL គោលដៅសម្រាប់ជួរនេះ។"
+      },
+      {
+        "property": "image",
+        "title": "រូបភាព",
+        "description": "រូបភាពសម្រាប់ជួរ។"
+      },
+      {
+        "property": "alt",
+        "title": "អត្ថបទជំនួស",
+        "description": "អត្ថបទជំនួសដែលពិពណ៌នារូបភាព។"
+      },
+      {
+        "property": "line1",
+        "title": "បន្ទាត់ទី 1",
+        "description": "បន្ទាត់អត្ថបទទីមួយ។"
+      },
+      {
+        "property": "line2",
+        "title": "បន្ទាត់ទី 2",
+        "description": "បន្ទាត់អត្ថបទទីពីរ។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "រូបតំណាង",
+        "description": "រូបតំណាងតំណាងឱ្យជួរ។"
+      },
+      {
+        "property": "saturate",
+        "title": "បែបផែនកម្រិតពណ៌",
+        "description": "ប្តូរកម្រិតពណ៌រូបភាពពេលអ្នកប្រើផ្តោត។"
+      },
+      {
+        "property": "tags",
+        "title": "ស្លាក",
+        "description": "បញ្ជីស្លាកបំបែកដោយក្បៀស។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌",
+        "description": "ពណ៌ដែលប្រើសម្រាប់រូបតំណាង និងស្លាក។"
+      }
+    ]
+  }
+}

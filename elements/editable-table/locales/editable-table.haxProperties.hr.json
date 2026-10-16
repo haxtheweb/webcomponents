@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tablica",
+    "description": "Tablični podaci za web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Zaglavlje retka",
+        "description": "Prvi redak smatraj zaglavljem."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Zaglavlje stupca",
+        "description": "Prvi stupac smatraj zaglavljem."
+      },
+      {
+        "property": "footer",
+        "title": "Podnožje",
+        "description": "Zadnji redak smatraj podnožjem."
+      },
+      {
+        "property": "sort",
+        "title": "Mogućnost sortiranja",
+        "description": "Dopusti sortiranje prema vrijednostima stupaca."
+      },
+      {
+        "property": "filter",
+        "title": "Dopusti filtriranje",
+        "description": "Dopusti filtriranje prema vrijednostima stupaca."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Brojčano oblikovanje",
+        "description": "Primijeni brojčano oblikovanje na brojčane stupce."
+      },
+      {
+        "property": "responsive",
+        "title": "Prilagodljivo",
+        "description": "Prilagodi raspored tablice na malim zaslonima."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Način rubrike",
+        "description": "Tumači ovu tablicu kao OER Schema Rubric kako bi se emitirali metapodaci Rubric, RubricScale, RubricCriterion i RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Vrsta rubrike",
+        "description": "Stil rubrike emitiran kao oer:rubricType (ima smisla samo kada je način rubrike uključen).",
+        "options": {
+          "": "(nijedno)",
+          "analytic": "Analitička",
+          "holistic": "Holistička",
+          "single-point": "Jednostruka",
+          "checklist": "Kontrolni popis"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "S obrubom"
+      },
+      {
+        "property": "condensed",
+        "title": "Zbijeni retci",
+        "description": "Smanji visinu redaka."
+      },
+      {
+        "property": "striped",
+        "title": "Prugasti retci",
+        "description": "Zasjenči svaki drugi redak."
+      },
+      {
+        "property": "downloadable",
+        "title": "Gumb za preuzimanje",
+        "description": "Dodaj gumb za preuzimanje tablice."
+      },
+      {
+        "property": "copyable",
+        "title": "Gumb za kopiranje",
+        "description": "Dodaj gumb za kopiranje CSV podataka tablice."
+      },
+      {
+        "property": "printable",
+        "title": "Gumb za ispis",
+        "description": "Dodaj gumb za ispis samo tablice."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV podaci",
+        "description": "Stvorite tablicu iz prenesene CSV datoteke."
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Conteneur NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Masquer l'éditeur",
+        "description": "Masquer l'interface d'édition des fichiers."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Masquer le terminal",
+        "description": "Masquer le terminal pour les programmes à exécution automatique."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Masquer la fenêtre",
+        "description": "Masquer la fenêtre de sortie pour une utilisation du terminal seul."
+      },
+      {
+        "slot": "",
+        "title": "Commandes",
+        "description": "Commandes (une par ligne) à exécuter avant le chargement."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "متحرک GIF د لاسرسي وړ کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "متحرک GIF",
+        "description": "د متحرک GIF لپاره URL."
+      },
+      {
+        "property": "alt",
+        "title": "بدیل متن",
+        "description": "د انځور لپاره بدیل متن."
+      },
+      {
+        "property": "longdesc",
+        "title": "اوږده تشریح",
+        "description": "د لاسرسي لپاره د GIF اوږده تشریح."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "ثابت انځور",
+        "description": "د GIF د ثابت انځور نسخې لپاره URL."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG პერსონაჟი",
+    "description": "სახალისო პერსონაჟი HAX-ისგან."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "სახელი",
+        "description": "სიტყვა, რომლითაც შემთხვევითი პერსონაჟი იქმნება."
+      },
+      {
+        "property": "hat",
+        "title": "ქუდი",
+        "description": "ქუდის სტილი.",
+        "options": {
+          "none": "ნაგულისხმევი",
+          "random": "შემთხვევითი",
+          "bunny": "კურდღელი",
+          "cowboy": "კოვბოი",
+          "education": "განათლება",
+          "construction": "მშენებლობა",
+          "warning": "გაფრთხილება",
+          "watermelon": "საზამთრო",
+          "coffee": "ყავა",
+          "knight": "რაინდი",
+          "ninja": "ნინძა",
+          "party": "წვეულება",
+          "error": "შეცდომა",
+          "edit": "რედაქტირება"
+        }
+      },
+      {
+        "property": "width",
+        "title": "სიგანე",
+        "description": "პერსონაჟის სიგანე პიქსელებში."
+      },
+      {
+        "property": "height",
+        "title": "სიმაღლე",
+        "description": "პერსონაჟის სიმაღლე პიქსელებში."
+      },
+      {
+        "property": "fire",
+        "title": "იწვის?",
+        "description": "იწვის თუ არა პერსონაჟი."
+      },
+      {
+        "property": "walking",
+        "title": "დადის?",
+        "description": "სიარულის ანიმაცია; აქტიურდება წვისას."
+      }
+    ]
+  }
+}

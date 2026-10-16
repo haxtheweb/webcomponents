@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI ويزولائيزر",
+    "description": "ويزولائيزيشن سان گڏ حوالي ۾ MIDI هلايو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ذريعو",
+        "description": "هلائڻ لاءِ فائل جو URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "ويزولائيزيشن",
+        "description": "موسيقي فائل لاءِ ويزولائيزيشن جو انداز.",
+        "options": {
+          "staff": "اسٽاف",
+          "piano-roll": "پيانو رول",
+          "waterfall": "پيانو + آبشار"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "آبشار لڪايو",
+        "description": "پيانو ويزولائيزيشن ۾ آبشار وارا نوٽ لڪايو."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ёжлол",
+    "description": "Текстийг шоглосон байдлаар харуулах"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Текст",
+        "description": "Ёжтой болгох текст"
+      }
+    ]
+  }
+}

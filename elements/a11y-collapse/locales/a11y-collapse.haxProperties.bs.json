@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Sklopivi kontejner",
+    "description": "Pojedinačni kontejner koji se može proširiti i sažeti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Naslov",
+        "description": "Tekst za sklopivi dio."
+      },
+      {
+        "property": "expanded",
+        "title": "Prošireno",
+        "description": "Prošireno po zadanim postavkama."
+      },
+      {
+        "property": "headingButton",
+        "title": "Dugme naslova",
+        "description": "Učinite cijeli naslov klikabilnim umjesto samo ikone."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona za dugme za proširivanje/sažimanje."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikona (kada je prošireno)",
+        "description": "Opcionalna ikona za prošireno stanje."
+      },
+      {
+        "slot": "",
+        "title": "Sadržaj",
+        "description": "Sadržaj sklopivog dijela."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Opis alata",
+        "description": "Opis alata za dugme za proširivanje/sažimanje."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Opis alata (kada je prošireno)",
+        "description": "Opis alata za dugme za proširivanje/sažimanje kada je prošireno."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIni manus",
+    "description": "Manusta LinkedIni profiilikaart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Kohandatud nimi",
+        "description": "LinkedIni kohandatud kasutajanime osa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokaat",
+        "description": "Lokaadi metaandmete väärtus, näiteks en_US."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX բառարվեստ",
+    "description": "HAX-ի լոգոյի տարր, իհարկե, որպես HAX-ին համատեղելի տարր։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Տեղադրվող HAX լոգոյի չափը",
+        "options": {
+          "mini": "Մինի",
+          "small": "Փոքր",
+          "normal": "Սովորական",
+          "large": "Մեծ"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Արդյոք լոգոն փոխարկել մեծատառի"
+      }
+    ]
+  }
+}

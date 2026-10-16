@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ಮಡಚಬಹುದಾದ ಕಂಟೇನರ್",
+    "description": "ವಿಸ್ತರಿಸಬಹುದಾದ ಮತ್ತು ಮಡಚಬಹುದಾದ ಏಕ ಕಂಟೇನರ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಮಡಚುವ ಭಾಗದ ಪಠ್ಯ."
+      },
+      {
+        "property": "expanded",
+        "title": "ವಿಸ್ತರಿಸಲಾಗಿದೆ",
+        "description": "ಪೂರ್ವನಿಯೋಜಿತವಾಗಿ ವಿಸ್ತರಿಸಿ."
+      },
+      {
+        "property": "headingButton",
+        "title": "ಶೀರ್ಷಿಕೆ ಬಟನ್",
+        "description": "ಐಕಾನ್ ಮಾತ್ರವಲ್ಲದೆ ಸಂಪೂರ್ಣ ಶೀರ್ಷಿಕೆಯನ್ನು ಕ್ಲಿಕ್ ಮಾಡಬಹುದಾದಂತೆ ಮಾಡಿ."
+      },
+      {
+        "property": "icon",
+        "title": "ಐಕಾನ್",
+        "description": "ವಿಸ್ತರಿಸು/ಮಡಚು ಟಾಗಲ್ ಬಟನ್‌ನ ಐಕಾನ್."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "ಐಕಾನ್ (ವಿಸ್ತರಿಸಿದಾಗ)",
+        "description": "ವಿಸ್ತರಿಸಿದ ಟಾಗಲ್ ಸ್ಥಿತಿಗೆ ಐಚ್ಛಿಕ ಐಕಾನ್."
+      },
+      {
+        "slot": "",
+        "title": "ವಿಷಯ",
+        "description": "ಮಡಚುವ ಭಾಗದ ವಿಷಯ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "ಟೂಲ್‌ಟಿಪ್",
+        "description": "ವಿಸ್ತರಿಸು/ಮಡಚು ಟಾಗಲ್ ಬಟನ್‌ನ ಟೂಲ್‌ಟಿಪ್."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "ಟೂಲ್‌ಟಿಪ್ (ವಿಸ್ತರಿಸಿದಾಗ)",
+        "description": "ವಿಸ್ತರಿಸಿದಾಗ ವಿಸ್ತರಿಸು/ಮಡಚು ಬಟನ್‌ನ ಟೂಲ್‌ಟಿಪ್."
+      }
+    ]
+  }
+}

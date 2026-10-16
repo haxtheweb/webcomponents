@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "ቀን",
+    "description": "የቀን መቁጠሪያ ቀንን ከዝርዝሮች ጋር አሳይ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "ወር",
+        "description": "በካርዱ ላይ የሚታይ ወር።"
+      },
+      {
+        "property": "date",
+        "title": "የወሩ ቀን",
+        "description": "የወሩ ቀን በቁጥር።"
+      },
+      {
+        "property": "day",
+        "title": "የሳምንቱ ቀን",
+        "description": "የሳምንቱ ቀን በጽሑፍ።"
+      },
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "የዝግጅቱ ስም።"
+      },
+      {
+        "property": "location",
+        "title": "ቦታ",
+        "description": "የዝግጅቱ ቦታ።"
+      },
+      {
+        "property": "startTime",
+        "title": "መጀመሪያ",
+        "description": "የመጀመሪያ ሰዓት።"
+      },
+      {
+        "property": "endTime",
+        "title": "መጨረሻ",
+        "description": "የመጨረሻ ሰዓት።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "አማራጭ የአጽንዖት ቀለም።"
+      },
+      {
+        "property": "dark",
+        "title": "ጨለማ ገጽታ",
+        "description": "ጨለማ ገጽታን አንቃ።"
+      }
+    ]
+  }
+}

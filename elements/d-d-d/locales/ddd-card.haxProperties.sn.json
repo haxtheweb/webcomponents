@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kadhi",
+    "description": "Kadhi rakashongedzwa nesisitimu yedhizaini yeDDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Mufananidzo",
+        "description": "Mufananidzo usingamanikidzwi."
+      },
+      {
+        "property": "alt",
+        "title": "Alt yemufananidzo",
+        "description": "Mavara anotsiva anotsanangura mufananidzo."
+      },
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Musoro wekadhi."
+      },
+      {
+        "slot": "",
+        "title": "Zvirimo",
+        "description": "Nzvimbo yezvirimo zvekadhi."
+      },
+      {
+        "property": "href",
+        "title": "Chinongedzo",
+        "description": "URL yechinongedzo chebhatani."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Zita",
+        "description": "Zita rebhatani."
+      },
+      {
+        "property": "noArrow",
+        "title": "Pasina Museve",
+        "description": "Viga museve webhatani."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Chinongedzo: target",
+        "description": "Pekuvhurira chinongedzo.",
+        "options": {
+          "": "Hwindo rimwe chete",
+          "_blank": "Hwindo idzva - _blank",
+          "_top": "Hwindo repamusoro - _top",
+          "_parent": "Hwindo remubereki - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Chinongedzo: rel",
+        "description": "Hukama pakati pechinhu chakabatanidzwa negwaro razvino."
+      }
+    ]
+  }
+}

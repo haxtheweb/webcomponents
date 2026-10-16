@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tag / Pëll",
+    "description": "E kompakt pëllefërmegt Etikett mat optionaler Akzentfaarf, Ofbriechknäppchen oder Ëmschalter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etikett",
+        "description": "Text an der Pëll."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "SimpleColors-Akzentnumm fir den Hannergrond vun der Pëll.",
+        "options": {
+          "": "-- Standard --",
+          "red": "Rout",
+          "pink": "Rosa",
+          "purple": "Mof",
+          "deep-purple": "Déifmof",
+          "indigo": "Indigo",
+          "blue": "Blo",
+          "light-blue": "Hellblo",
+          "cyan": "Cyan",
+          "teal": "Petrol",
+          "green": "Gréng",
+          "light-green": "Hellgréng",
+          "lime": "Limett",
+          "yellow": "Giel",
+          "amber": "Bernstengfaarf",
+          "orange": "Orange",
+          "deep-orange": "Déiforange",
+          "brown": "Brong",
+          "blue-grey": "Bloogro",
+          "grey": "Gro"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatesch Akzentfaarf",
+        "description": "D'Akzentfaarf automatesch aus dem Etiketttext ofleeden."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Ofbriechknäppchen",
+        "description": "En Ikon-Knäppchen zum Ewechhuelen/Ofbriechen an der Pëll weisen."
+      },
+      {
+        "property": "readonly",
+        "title": "Nëmme liesen",
+        "description": "Den Ofbriechknäppchen verstoppen, sou datt d'Pëll nëmmen ugewise gëtt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Ëmschalten",
+        "description": "D'Pëll beim Klick op de Knäppchen un- an ausschalten."
+      },
+      {
+        "property": "toggled",
+        "title": "Ageschalt",
+        "description": "Ob d'Pëll grad ageschalt ass."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ikon wann ageschalt",
+        "description": "Ikon, deen ugewise gëtt, wann d'Pëll ageschalt ass."
+      },
+      {
+        "property": "disabled",
+        "title": "Desaktivéiert",
+        "description": "Interaktioun mat der Pëll desaktivéieren."
+      }
+    ]
+  }
+}

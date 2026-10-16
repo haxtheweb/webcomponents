@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Evenemangsbricka",
+    "description": "Komponent för evenemangsbricka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV-bild",
+        "description": "Bild som visas på TV:n."
+      },
+      {
+        "property": "logo",
+        "title": "Logotyp",
+        "description": "Logotyp som visas i brickans hörn."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel som visas högst upp på brickan."
+      },
+      {
+        "property": "name",
+        "title": "Namn",
+        "description": "Namn som visas på brickan."
+      },
+      {
+        "property": "position",
+        "title": "Befattning",
+        "description": "Personens roll eller titel."
+      },
+      {
+        "property": "organization",
+        "title": "Organisation",
+        "description": "Organisationen som personen arbetar för."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV-färg",
+        "description": "Välj färg för TV:n."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "Primär bakgrunds- eller textfärg."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Rattfärg",
+        "description": "Färg på TV:ns rattar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Tillämpa en sepiaeffekt."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Svartvit",
+        "description": "Tillämpa en svartvit effekt."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Ívefja Disqus-athugasemdir á síðu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Stutt heiti",
+        "description": "Stutta heiti vefsvæðisins, sem stýrir hýsli Disqus-skriftunnar."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL síðu",
+        "description": "URL síðunnar sem athugasemdaþráðurinn tengist."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Auðkenni síðu",
+        "description": "Einkvæmt auðkenni athugasemdaþráðar síðunnar."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Titill síðu",
+        "description": "Titill síðunnar sem athugasemdaþráðurinn tengist."
+      },
+      {
+        "property": "loadingText",
+        "title": "Hleðslutexti",
+        "description": "Texti sem tilkynntur er meðan athugasemdir hlaðast."
+      },
+      {
+        "property": "lang",
+        "title": "Tungumál",
+        "description": "Tungumálskóði fyrir Disqus-viðmótið, t.d. en."
+      }
+    ]
+  }
+}

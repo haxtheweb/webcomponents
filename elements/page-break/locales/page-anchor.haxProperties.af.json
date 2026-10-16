@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Bladsyanker",
+    "description": "Skakel na spesifieke punte in media op die bladsy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Bladsyteiken",
+        "description": "ID of hulpbron waarna hierdie anker wys."
+      },
+      {
+        "property": "value",
+        "title": "Diepskakelwaarde",
+        "description": "Diepskakelwaarde (byvoorbeeld tydstempel of skyfie-ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Werf-entiteit",
+        "description": "Opsionele werf-entiteit om die aanbieding van verwante begrippe te beheer."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tabs",
+    "description": "Gruppe von Tabs."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Beschriftung (für Barrierefreiheit)",
+        "description": "Barrierefreie Beschriftung für die Tab-Gruppe."
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktiviert",
+        "description": "Alle Tabs deaktivieren."
+      },
+      {
+        "property": "hidden",
+        "title": "Ausgeblendet",
+        "description": "Die Tab-Gruppe ausblenden."
+      },
+      {
+        "property": "sticky",
+        "title": "Fixiert",
+        "description": "Horizontale Tabs beim Scrollen oben halten."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Layout-Breakpoint",
+        "description": "Breakpoint für horizontale Tabs; -1 für nur vertikal verwenden."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Symbol-Breakpoint",
+        "description": "Breakpoint für die Anzeige von Text mit Symbolen. Standard ist 0; -1 für reinen Symbolmodus verwenden."
+      },
+      {
+        "slot": "",
+        "title": "Tabs",
+        "description": "Folge von <a11y-tab/>-Elementen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Eindeutige ID",
+        "description": "Eindeutige ID für diese Tab-Gruppe."
+      }
+    ]
+  }
+}

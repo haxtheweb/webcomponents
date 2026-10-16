@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Inqaku lokuMisa",
+    "description": "Umyalezo wokwazisa abafundi ngemiyalelo ethile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Faka isihloko senqaku lokumisa."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Faka i-URL yangaphandle."
+      },
+      {
+        "property": "status",
+        "title": "Imeko",
+        "description": "Ukuseta imeko kutshintsha imibala nee-icon ukuze zihambelane",
+        "options": {
+          "stop": "Misa",
+          "warning": "Isilumkiso",
+          "success": "Isiqinisekiso",
+          "info": "Isaziso"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Umbhalo weNqaku",
+        "description": "Umbhalo wenqaku lokumisa."
+      }
+    ]
+  }
+}

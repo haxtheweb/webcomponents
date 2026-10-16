@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Szarkazmus",
+    "description": "Szöveg trollkodó stílusú megjelenítése"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Szöveg",
+        "description": "Szarkasztikussá alakítandó szöveg"
+      }
+    ]
+  }
+}

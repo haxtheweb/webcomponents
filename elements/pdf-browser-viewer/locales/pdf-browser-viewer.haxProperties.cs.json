@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Prohlížeč PDF",
+    "description": "Vložte soubor PDF přímo do stránky s volitelným rozvržením karty a tlačítkem stažení."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Umístění souboru PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Nadpis",
+        "description": "Text nadpisu karty."
+      },
+      {
+        "property": "card",
+        "title": "Rozvržení karty",
+        "description": "Zobrazit PDF na kartě s tlačítkem stažení."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Popisek stažení",
+        "description": "Popisek tlačítka stažení."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Zpráva o nepodporování",
+        "description": "Zpráva, když prohlížeč nedokáže zobrazit soubory PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Text odkazu při nepodporování",
+        "description": "Text odkazu, když prohlížeč nedokáže zobrazit soubory PDF."
+      },
+      {
+        "property": "width",
+        "title": "Šířka",
+        "description": "Šířka prohlížeče PDF."
+      },
+      {
+        "property": "height",
+        "title": "Výška",
+        "description": "Výška prohlížeče PDF."
+      }
+    ]
+  }
+}

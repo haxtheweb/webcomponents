@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Immaġni Sempliċi",
+    "description": "Immanipula l-immaġni b'parametri sempliċi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Sors",
+        "description": "URL tas-sors tal-immaġni."
+      },
+      {
+        "property": "height",
+        "title": "Għoli",
+        "description": "L-għoli tal-immaġni (fakultattiv)."
+      },
+      {
+        "property": "width",
+        "title": "Wisa'",
+        "description": "Il-wisa' tal-immaġni (fakultattiv)."
+      },
+      {
+        "property": "alt",
+        "title": "Test alternattiv",
+        "description": "Utli għall-qarrejja tal-iskrin u għal SEO aħjar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kwalità",
+        "description": "Il-kwalità tal-immaġni meta tiġi ġġenerata (JPEG biss)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Prijorità tal-ġbid",
+        "description": "Ħjiel tal-prestazzjoni għall-browsers moderni.",
+        "options": {
+          "auto": "Awtomatiku",
+          "high": "Għolja",
+          "low": "Baxxa"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Metodu tad-dekodifikazzjoni",
+        "description": "Ħjiel tal-prestazzjoni għar-rendering tal-immaġni fil-browsers moderni.",
+        "options": {
+          "auto": "Awtomatiku",
+          "async": "Asinkronu"
+        }
+      }
+    ]
+  }
+}

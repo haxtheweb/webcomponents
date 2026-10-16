@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Isenzo somsebenzisi",
+    "description": "Landelela izenzo zabasebenzisi futhi uthumele idatha ezitolo ze-xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Umcimbi ozolandelelwa",
+        "description": "Isenzo somsebenzisi esiqalisa lo mcimbi.",
+        "options": {
+          "visibility": "Uyakwazi ukubona lokhu",
+          "keydown": "Cindezela ukhiye lapha",
+          "click": "Chofoza lokhu",
+          "hover": "Hambisa phezu kwalokhu"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Landelela njalo",
+        "description": "Ngokuzenzakalelayo, kulandelelwa ukwenzeka kokuqala kuphela."
+      }
+    ]
+  }
+}

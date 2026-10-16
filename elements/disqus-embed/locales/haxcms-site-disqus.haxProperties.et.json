@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqusi kommentaarid",
+    "description": "Integratsioon Disqusi kommenteerimise veebiteenusega"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Lühinimi",
+        "description": "Atribuudi lühinimi Disqusis"
+      }
+    ]
+  }
+}

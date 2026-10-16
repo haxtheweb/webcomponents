@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Tanggal",
+    "description": "Tampilkan tanggal kalender beserta detailnya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Bulan",
+        "description": "Bulan yang ditampilkan pada kartu."
+      },
+      {
+        "property": "date",
+        "title": "Tanggal",
+        "description": "Tanggal dalam angka."
+      },
+      {
+        "property": "day",
+        "title": "Hari",
+        "description": "Nama hari dalam seminggu."
+      },
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Nama acara."
+      },
+      {
+        "property": "location",
+        "title": "Lokasi",
+        "description": "Lokasi acara."
+      },
+      {
+        "property": "startTime",
+        "title": "Mulai",
+        "description": "Waktu mulai."
+      },
+      {
+        "property": "endTime",
+        "title": "Selesai",
+        "description": "Waktu selesai."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen opsional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema Gelap",
+        "description": "Aktifkan tema gelap."
+      }
+    ]
+  }
+}

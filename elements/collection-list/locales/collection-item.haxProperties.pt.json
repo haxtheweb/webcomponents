@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Item de coleção",
+    "description": "Item em formato de cartão para uso dentro de uma lista de coleção, com texto, link e mídia opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "URL de destino deste cartão."
+      },
+      {
+        "property": "image",
+        "title": "Imagem",
+        "description": "Imagem de fundo."
+      },
+      {
+        "property": "line1",
+        "title": "Linha 1",
+        "description": "Primeira linha de texto."
+      },
+      {
+        "property": "line2",
+        "title": "Linha 2",
+        "description": "Segunda linha de texto."
+      },
+      {
+        "property": "line3",
+        "title": "Linha 3",
+        "description": "Terceira linha de texto."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ícone",
+        "description": "Ícone que representa o cartão."
+      },
+      {
+        "property": "saturate",
+        "title": "Efeito de saturação",
+        "description": "Alterar a saturação da imagem quando o usuário dá foco."
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Lista de tags separadas por vírgula."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor",
+        "description": "Cor usada nas tags."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Texto alternativo que descreve o link."
+      }
+    ]
+  }
+}

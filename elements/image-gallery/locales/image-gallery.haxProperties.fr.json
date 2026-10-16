@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galerie d'images",
+    "description": "Une galerie qui présente des images en grille, en mosaïque ou en diaporama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Mode d'affichage",
+        "description": "Comment présenter les images dans la galerie.",
+        "options": {
+          "grid": "Grille",
+          "masonry": "Mosaïque",
+          "gallery": "Galerie"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Index actif",
+        "description": "Index de l'image active par laquelle commencer en mode galerie."
+      }
+    ]
+  }
+}

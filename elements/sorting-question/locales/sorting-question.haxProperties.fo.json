@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Raðingarspurningur",
+    "description": "Raða lutir í rætta raðfylgju."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spurningur",
+        "description": "Spurningsyvirskrift."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Einkunnasnið",
+        "description": "OER Schema: einkunnasnið til hesa metingina (t.d. stig, bókstavur, prosent, fullførd)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lærumál",
+        "description": "OER Schema: lærumál knýtt at hesi metingini."
+      },
+      {
+        "property": "forCourse",
+        "title": "Skeið",
+        "description": "OER Schema: skeið, sum henda metingin er ætlað til."
+      },
+      {
+        "property": "answers",
+        "title": "Svar",
+        "description": "Raðfylgjan á svarunum ásetur røttu raðfylgjuna."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn á spurnakappingini",
+        "description": "Navn á spurnakappingini, nýtt til xAPI-eyðmerking í greiningarskipanum."
+      }
+    ]
+  }
+}

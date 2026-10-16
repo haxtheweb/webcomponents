@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Rikch'akunata tupachiy",
+    "description": "Tupachinapaq huk rikch'ata hukpa hawanpi suchuchiy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Hanaq rikch'a",
+        "description": "Uray rikch'apa hawanpi suchuq hanaq rikch'a."
+      },
+      {
+        "property": "topAlt",
+        "title": "Hanaq rikch'apa hukniray qillqan",
+        "description": "Aypanallapaq hukniray qillqa mañakun."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Uray rikch'a",
+        "description": "Hanaq rikch'apa urayninpi rikukuq uray rikch'a."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Uray rikch'apa hukniray qillqan",
+        "description": "Aypanallapaq hukniray qillqa mañakun."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Imayna kay",
+        "description": "Pichay modota (kikinmanta) utaq hanaq rikch'apa ch'uyay modonta akllay."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Suchuq barrapa llimpin."
+      },
+      {
+        "property": "dark",
+        "title": "Tutayaq",
+        "description": "Suchuq barrapa llimpinta tikray."
+      },
+      {
+        "property": "position",
+        "title": "Qallariy kaq",
+        "description": "0-manta 100-kama qallariy kaq."
+      }
+    ]
+  }
+}

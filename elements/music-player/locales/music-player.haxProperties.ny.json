@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Chowonetsa MIDI",
+    "description": "Imbani MIDI pamodzi ndi zithunzi zowonetsa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Gwero",
+        "description": "URL ya fayilo yoti iimbidwe."
+      },
+      {
+        "property": "visualizer",
+        "title": "Kuwonetsa",
+        "description": "Kalembedwe kowonetsera fayilo ya nyimbo.",
+        "options": {
+          "staff": "Mizere ya nyimbo",
+          "piano-roll": "Mpukutu wa piyano",
+          "waterfall": "Piyano + mathithi"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Bisani mathithi",
+        "description": "Bisani manotsi a mathithi pakuwonetsa kwa piyano."
+      }
+    ]
+  }
+}

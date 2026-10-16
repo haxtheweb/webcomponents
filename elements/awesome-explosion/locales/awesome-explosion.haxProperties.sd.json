@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "شاندار ڌماڪو",
+    "description": "اختياري آواز اثرن سان گڏ انٽرايڪٽو ڌماڪي جي اينيميشن."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "سائيز",
+        "description": "ڌماڪي جي سائيز مقرر ڪريو.",
+        "options": {
+          "tiny": "تمام ننڍو",
+          "small": "ننڍو",
+          "medium": "وچولو",
+          "large": "وڏو",
+          "epic": "زبردست"
+        }
+      },
+      {
+        "property": "color",
+        "title": "رنگ",
+        "description": "ڌماڪي جي رنگ جو ٿيم مقرر ڪريو.",
+        "options": {
+          "": "ڊفالٽ",
+          "red": "ڳاڙهو",
+          "blue": "نيرو",
+          "purple": "واڱڻائي",
+          "orange": "نارنگي",
+          "yellow": "پيلو"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "آواز اثر",
+        "description": "آواز اثر فعال ڪريو."
+      },
+      {
+        "property": "resetSound",
+        "title": "آواز ري سيٽ ڪريو",
+        "description": "هر ڀيري آواز شروع کان ٻيهر هلايو."
+      },
+      {
+        "property": "image",
+        "title": "ڪسٽم تصوير",
+        "description": "ڪسٽم ڌماڪي جي تصوير لاءِ اختياري URL."
+      },
+      {
+        "property": "sound",
+        "title": "ڪسٽم آواز",
+        "description": "ڪسٽم آواز اثر لاءِ اختياري URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "غير فعال",
+        "description": "سڀ انٽرايڪشن غير فعال ڪريو."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Krok",
+    "description": "Element będący częścią listy kroków"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tytuł"
+      }
+    ]
+  }
+}

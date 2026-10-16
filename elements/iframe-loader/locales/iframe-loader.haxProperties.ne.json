@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "बाह्य वेब सामग्रीलाई iframe मा इम्बेड गर्नुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत URL",
+        "description": "स्रोत URL।"
+      },
+      {
+        "property": "height",
+        "title": "उचाइ",
+        "description": "iframe को उचाइ।"
+      },
+      {
+        "property": "width",
+        "title": "चौडाइ",
+        "description": "iframe को चौडाइ।"
+      }
+    ]
+  }
+}

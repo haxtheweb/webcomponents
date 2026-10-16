@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Cita amb imatge",
+    "description": "Imatge amb una cita, una referència i un peu opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Cita",
+        "description": "Text de la cita."
+      },
+      {
+        "slot": "author",
+        "title": "Autor",
+        "description": "Autor de la cita."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Detalls de l'autor",
+        "description": "Detalls de l'autor."
+      },
+      {
+        "slot": "caption",
+        "title": "Peu de foto",
+        "description": "Peu de la imatge."
+      },
+      {
+        "property": "src",
+        "title": "Font de la imatge",
+        "description": "Fitxer d'imatge utilitzat per a la cita amb imatge."
+      },
+      {
+        "property": "alt",
+        "title": "Text alternatiu",
+        "description": "Text alternatiu per a la imatge."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Color d'accent de la targeta."
+      }
+    ]
+  }
+}

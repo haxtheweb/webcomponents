@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Gruppe zum Op- an Zouklappen",
+    "description": "Eng Grupp vun Elementer zum Op- an Zouklappen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Nëmmen een opklappen",
+        "description": "Nëmmen een Element ka gläichzäiteg opgeklappt sinn."
+      },
+      {
+        "slot": "",
+        "title": "Klappelementer",
+        "description": "D'Klappelementer."
+      }
+    ]
+  }
+}

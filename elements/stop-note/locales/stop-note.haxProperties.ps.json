@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "د ودرېدو یادښت",
+    "description": "یو پیغام چې لوستونکي ځانګړو لارښوونو ته خبروي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "د ودرېدو یادښت لپاره سرلیک ولیکئ."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "بهرنی url ولیکئ."
+      },
+      {
+        "property": "status",
+        "title": "حالت",
+        "description": "د حالت ټاکل رنګونه او آیکنونه ورسره سم بدلوي",
+        "options": {
+          "stop": "ودرېدل",
+          "warning": "خبرداری",
+          "success": "تایید",
+          "info": "خبرتیا"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "د یادښت متن",
+        "description": "د ودرېدو یادښت متن."
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "He wahī no nā mea hoʻokani Spotify i hoʻokomo ʻia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kumu",
+        "description": "Loulou hoʻokomo a kaʻana like paha mai Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Kumuhana",
+        "description": "Kumuhana waihoʻoluʻu kāʻei hope no ka mea hoʻokani.",
+        "options": {
+          "": "Paʻamau",
+          "0": "ʻEleʻele"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Nui",
+        "description": "Nui o ka mea hoʻokani.",
+        "options": {
+          "normal": "Paʻamau",
+          "compact": "Paʻa"
+        }
+      }
+    ]
+  }
+}

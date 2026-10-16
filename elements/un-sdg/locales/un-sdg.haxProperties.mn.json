@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "НҮБ-ын Тогтвортой хөгжлийн зорилт."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Зорилт",
+        "description": "UN SDG дугаар."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Зөвхөн өнгө",
+        "description": "Зөвхөн зорилтын өнгийг харуулах."
+      }
+    ]
+  }
+}

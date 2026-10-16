@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV таблицасы",
+    "description": "Кайда гына урнашса да, CSV файлыннан таблица ясый ала."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Чыганак",
+        "description": "Бу CSV файлының URL адресы."
+      },
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Ясалачак таблицаның исеме."
+      },
+      {
+        "property": "description",
+        "title": "Тасвирлама",
+        "description": "Таблица мәгълүматларының үтемлелеген яхшырту өчен тулырак тасвирлама."
+      }
+    ]
+  }
+}

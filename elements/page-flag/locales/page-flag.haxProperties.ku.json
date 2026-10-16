@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ala rûpelê",
+    "description": "Nota edîtoriyal ji bo nivîskarên rûpelê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Rengê Balkêş",
+        "description": "Rengê balkêş ê ala rûpelê."
+      },
+      {
+        "property": "label",
+        "title": "Etîket",
+        "description": "Nivîsa etîketê ya ala rûpelê."
+      }
+    ]
+  }
+}

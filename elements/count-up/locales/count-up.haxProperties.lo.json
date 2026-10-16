@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ນັບຂຶ້ນ",
+    "description": "ສະແດງພາບເຄື່ອນໄຫວຕົວເລກນັບຂຶ້ນຫາຄ່າເປົ້າໝາຍ ເມື່ອເລື່ອນມາເຫັນ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "ຄ່າສຸດທ້າຍ",
+        "description": "ຕົວເລກທີ່ຈະນັບຂຶ້ນຫາ."
+      },
+      {
+        "property": "start",
+        "title": "ຄ່າເລີ່ມຕົ້ນ",
+        "description": "ຕົວເລກທີ່ເລີ່ມນັບ."
+      },
+      {
+        "property": "duration",
+        "title": "ໄລຍະເວລາ",
+        "description": "ຈຳນວນວິນາທີທີ່ພາບເຄື່ອນໄຫວການນັບຄວນໃຊ້."
+      },
+      {
+        "property": "prefixtext",
+        "title": "ຂໍ້ຄວາມນຳໜ້າ",
+        "description": "ຂໍ້ຄວາມທີ່ສະແດງກ່ອນຕົວເລກ (ເຊັ່ນ: '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "ຂໍ້ຄວາມຕໍ່ທ້າຍ",
+        "description": "ຂໍ້ຄວາມທີ່ສະແດງຫຼັງຕົວເລກ (ເຊັ່ນ: '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "ຊ່ອງນຳໜ້າ",
+        "description": "ເນື້ອຫາທາງເລືອກກ່ອນຕົວເລກ."
+      },
+      {
+        "slot": "suffix",
+        "title": "ຊ່ອງຕໍ່ທ້າຍ",
+        "description": "ເນື້ອຫາທາງເລືອກຫຼັງຕົວເລກ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "ຕຳແໜ່ງທົດສະນິຍົມ",
+        "description": "ຈຳນວນຕຳແໜ່ງທົດສະນິຍົມທີ່ຈະສະແດງ."
+      },
+      {
+        "property": "separator",
+        "title": "ຕົວຂັ້ນຫຼັກພັນ",
+        "description": "ຕົວອັກສອນທີ່ຂັ້ນກຸ່ມຫຼັກພັນ."
+      },
+      {
+        "property": "decimal",
+        "title": "ຕົວອັກສອນທົດສະນິຍົມ",
+        "description": "ຕົວອັກສອນທີ່ໃຊ້ເປັນຈຸດທົດສະນິຍົມ."
+      },
+      {
+        "property": "noeasing",
+        "title": "ບໍ່ມີການຜ່ອນຄວາມໄວ",
+        "description": "ປິດການຜ່ອນຄວາມໄວ ເພື່ອໃຫ້ການນັບເປັນແບບເສັ້ນຊື່."
+      }
+    ]
+  }
+}

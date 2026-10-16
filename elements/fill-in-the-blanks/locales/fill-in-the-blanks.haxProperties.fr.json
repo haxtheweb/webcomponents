@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Texte à trous",
+    "description": "Activité d'évaluation où les apprenants complètent les mots manquants d'un énoncé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "Question à laquelle les utilisateurs doivent répondre."
+      },
+      {
+        "property": "statement",
+        "title": "Énoncé",
+        "description": "Énoncé qui sera converti en interaction de marquage des mots."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de notation",
+        "description": "OER Schema : format de notation de cette évaluation (p. ex. points, lettre, pourcentage, achèvement)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objectif d'apprentissage",
+        "description": "OER Schema : objectif d'apprentissage associé à cette évaluation."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cours",
+        "description": "OER Schema : cours auquel cette évaluation est destinée."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nom du quiz",
+        "description": "Nom du quiz transmis pour identifier cet élément dans les environnements basés sur xAPI"
+      }
+    ]
+  }
+}

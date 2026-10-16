@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Hali na RPG",
+    "description": "Hali mai nishaɗi daga HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Suna",
+        "description": "Kalmar da ake amfani da ita don ƙirƙirar hali na bazuwar."
+      },
+      {
+        "property": "hat",
+        "title": "Hula",
+        "description": "Salon hula.",
+        "options": {
+          "none": "Tsoho",
+          "random": "Bazuwar",
+          "bunny": "Zomo",
+          "cowboy": "Makiyayi",
+          "education": "Ilimi",
+          "construction": "Gini",
+          "warning": "Gargaɗi",
+          "watermelon": "Kankana",
+          "coffee": "Kofi",
+          "knight": "Jarumi",
+          "ninja": "Ninja",
+          "party": "Biki",
+          "error": "Kuskure",
+          "edit": "Gyara"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Faɗi",
+        "description": "Faɗin hali a pixels."
+      },
+      {
+        "property": "height",
+        "title": "Tsawo",
+        "description": "Tsawon hali a pixels."
+      },
+      {
+        "property": "fire",
+        "title": "Yana cin wuta?",
+        "description": "Ko halin yana cin wuta."
+      },
+      {
+        "property": "walking",
+        "title": "Yana tafiya?",
+        "description": "Motsin tafiya; yana gudu idan yana cin wuta."
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify प्लेअर एम्बेडसाठी आवरण."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "Spotify वरील एम्बेड किंवा शेअर लिंक."
+      },
+      {
+        "property": "theme",
+        "title": "थीम",
+        "description": "प्लेअरसाठी पार्श्वभूमी रंग थीम.",
+        "options": {
+          "": "डीफॉल्ट",
+          "0": "काळा"
+        }
+      },
+      {
+        "property": "size",
+        "title": "आकार",
+        "description": "प्लेअरचा आकार.",
+        "options": {
+          "normal": "डीफॉल्ट",
+          "compact": "संक्षिप्त"
+        }
+      }
+    ]
+  }
+}

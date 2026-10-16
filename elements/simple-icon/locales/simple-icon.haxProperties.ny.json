@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Chizindikiro",
+    "description": "Chizindikiro kuchokera ku laibulale yonse ya zizindikiro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Chizindikiro",
+        "description": "Chizindikiro choti chiwonetsedwe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu wowonjezera",
+        "description": "Mtundu wowonjezera wa chizindikiro."
+      },
+      {
+        "property": "dark",
+        "title": "Mdima",
+        "description": "Gwiritsani ntchito mawonekedwe amdima (mitundu yotembenuzidwa)."
+      }
+    ]
+  }
+}

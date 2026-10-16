@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Встраивание Twitter (X)",
+    "description": "Встраивание твита из X в контекст."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL твита",
+        "description": "URL встраиваемого твита."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Тема",
+        "description": "Светлая или тёмная тема для твитов X.",
+        "options": {
+          "light": "Светлый",
+          "dark": "Тёмный"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Запретить всплывающее окно по нажатию",
+        "description": "Не давать пользователям открывать твит на x.com."
+      }
+    ]
+  }
+}

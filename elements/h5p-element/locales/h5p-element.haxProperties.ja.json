@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": ".h5p ファイルを読み込んで表示するH5Pラッパー"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5Pのiframe埋め込みコード"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sildid",
+    "description": "Lihtne siltide loend lehel kuvamiseks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Sildid",
+        "description": "Komadega eraldatud siltide loend."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automaatne rõhuvärv",
+        "description": "Määra rõhuvärv automaatselt sildi põhjal."
+      },
+      {
+        "property": "accentColor",
+        "title": "Värv",
+        "description": "Siltide värv."
+      }
+    ]
+  }
+}

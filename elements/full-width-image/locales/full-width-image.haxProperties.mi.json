@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Wāhanga whakaahua",
+    "description": "He whakaahua whānui-katoa e wawahi ana i tētahi wāhanga o te whārangi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Whakaahua papamuri."
+      },
+      {
+        "property": "caption",
+        "description": "Kupu upoko."
+      }
+    ]
+  }
+}

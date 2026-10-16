@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Vrstica zbirke",
+    "description": "Element v obliki vrstice za uporabo v seznamu zbirke, z besedilom, povezavo, ikono, oznakami in neobvezno sliko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Povezava",
+        "description": "Ciljni URL te vrstice."
+      },
+      {
+        "property": "image",
+        "title": "Slika",
+        "description": "Slika vrstice."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Nadomestno besedilo, ki opisuje sliko."
+      },
+      {
+        "property": "line1",
+        "title": "Vrstica 1",
+        "description": "Prva vrstica besedila."
+      },
+      {
+        "property": "line2",
+        "title": "Vrstica 2",
+        "description": "Druga vrstica besedila."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona, ki predstavlja vrstico."
+      },
+      {
+        "property": "saturate",
+        "title": "Učinek nasičenosti",
+        "description": "Spremeni nasičenost slike, ko jo uporabnik izbere."
+      },
+      {
+        "property": "tags",
+        "title": "Oznake",
+        "description": "Seznam oznak, ločenih z vejicami."
+      },
+      {
+        "property": "accentColor",
+        "title": "Barva",
+        "description": "Barva ikone in oznak."
+      }
+    ]
+  }
+}

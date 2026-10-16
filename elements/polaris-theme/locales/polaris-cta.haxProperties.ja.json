@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "テーマ付きのPolarisコールトゥアクションボタンを表示します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "ボタンのテキスト",
+        "description": "コールトゥアクションボタンに表示するテキスト。"
+      },
+      {
+        "property": "link",
+        "title": "リンク",
+        "description": "ボタンのリンク先URL。"
+      },
+      {
+        "property": "type",
+        "title": "バリエーション",
+        "description": "表示スタイルのバリエーション。",
+        "options": {
+          "primary": "プライマリ",
+          "tinted": "淡色",
+          "light": "ライト"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "アウトラインスタイル",
+        "description": "アウトライン表示を有効にします。"
+      },
+      {
+        "property": "filled",
+        "title": "塗りつぶしスタイル",
+        "description": "塗りつぶし表示を有効にします。"
+      }
+    ]
+  }
+}

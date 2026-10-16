@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "ကုလသမဂ္ဂ ရေရှည်တည်တံ့သော ဖွံ့ဖြိုးတိုးတက်ရေး ပန်းတိုင်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "ပန်းတိုင်",
+        "description": "UN SDG နံပါတ်။"
+      },
+      {
+        "property": "colorOnly",
+        "title": "အရောင်သာ",
+        "description": "ပန်းတိုင်၏ အရောင်ကိုသာ ပြရန်။"
+      }
+    ]
+  }
+}

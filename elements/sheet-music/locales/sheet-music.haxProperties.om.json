@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Barreeffama muuziqaa",
+    "description": "Barreeffama muuziqaa, tabii gitaaraa fi nootii muuziqaa alphaTex ykn MusicXML tiin agarsiisa, taphachiisas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Barreeffama AlphaTex",
+        "description": "Barreeffama alphaTex barreeffama muuziqaa keessaa. Nootii barreessuuf kallattiin gulaali; akka iddoon eeggamuuf template keessatti kuufama."
+      },
+      {
+        "property": "source",
+        "title": "Faayilii muuziqaa",
+        "description": "Faayilii MusicXML (.xml/.musicxml/.mxl) ykn Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) ol fe'i ykn itti hidhi. Yoo kaa'ame alphaTex keessaa ni bakka bu'a."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Sagalee taphachiisuu",
+        "description": "Akka durtiitti banaa dha - barreeffama muuziqaa sinteesaayzarii keessatti ijaarameen taphatu dhaggeeffadhu. Haala ilaaluu qofaa (sagalee malee) tiif cufi."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Filannoowwan agarsiisaa agarsiisi",
+        "description": "Qabduuwwan guddisuu, diriirsuu fi qindaa'inaa sarara taphataa irratti agarsiisi."
+      },
+      {
+        "property": "showExport",
+        "title": "Qabduuwwan erguu agarsiisi",
+        "description": "Qabduuwwan MIDI buufachuu fi maxxansuu/PDF sarara taphataa irratti agarsiisi."
+      }
+    ]
+  }
+}

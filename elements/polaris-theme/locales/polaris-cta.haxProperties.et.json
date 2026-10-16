@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polarise CTA",
+    "description": "Kuva teemakohane Polarise tegevusele kutsuv nupp."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Nupu tekst",
+        "description": "Tegevusele kutsuval nupul kuvatav tekst."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Nupu siht-URL."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Visuaalse stiili variant.",
+        "options": {
+          "primary": "Esmane",
+          "tinted": "Toonitud",
+          "light": "Hele"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Kontuurstiil",
+        "description": "Luba kontuuriga kujundus."
+      },
+      {
+        "property": "filled",
+        "title": "Täidetud stiil",
+        "description": "Luba täidetud kujundus."
+      }
+    ]
+  }
+}

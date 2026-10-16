@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Akcja użytkownika",
+    "description": "Śledź działania użytkowników i wysyłaj dane do magazynów xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Zdarzenie do śledzenia",
+        "description": "Działanie użytkownika, które wyzwala to zdarzenie.",
+        "options": {
+          "visibility": "Widzi to",
+          "keydown": "Naciśnięcie klawisza tutaj",
+          "click": "Kliknięcie tego",
+          "hover": "Najechanie na to"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Śledź za każdym razem",
+        "description": "Domyślnie śledzone jest tylko pierwsze wystąpienie."
+      }
+    ]
+  }
+}

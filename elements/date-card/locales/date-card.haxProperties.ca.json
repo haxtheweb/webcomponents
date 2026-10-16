@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Data",
+    "description": "Mostra una data del calendari amb detalls."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mes",
+        "description": "Mes que es mostra a la targeta."
+      },
+      {
+        "property": "date",
+        "title": "Dia del mes",
+        "description": "Dia del mes en número."
+      },
+      {
+        "property": "day",
+        "title": "Dia de la setmana",
+        "description": "Dia de la setmana en text."
+      },
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "Nom de l'esdeveniment."
+      },
+      {
+        "property": "location",
+        "title": "Ubicació",
+        "description": "Ubicació de l'esdeveniment."
+      },
+      {
+        "property": "startTime",
+        "title": "Inici",
+        "description": "Hora d'inici."
+      },
+      {
+        "property": "endTime",
+        "title": "Final",
+        "description": "Hora de finalització."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Un color d'accent opcional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema fosc",
+        "description": "Activa el tema fosc."
+      }
+    ]
+  }
+}

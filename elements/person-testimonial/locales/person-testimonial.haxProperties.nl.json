@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Citaat met afbeelding",
+    "description": "Opgemaakt citaat met een optionele afbeelding."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Afbeelding",
+        "description": "Voeg een afbeelding toe aan de getuigenis."
+      },
+      {
+        "property": "name",
+        "title": "Volledige naam",
+        "description": "Naam van de persoon die de getuigenis geeft."
+      },
+      {
+        "property": "position",
+        "title": "Functie of functietitel",
+        "description": "Functie of functietitel van de persoon."
+      },
+      {
+        "slot": "",
+        "title": "Citaat",
+        "description": "Citaat van de auteur van de getuigenis."
+      }
+    ]
+  }
+}

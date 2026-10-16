@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Miðilssitat",
+    "description": "Mynd við sitati, keldutilvísing og valfríum myndateksti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Sitat",
+        "description": "Sitattekstur."
+      },
+      {
+        "slot": "author",
+        "title": "Høvundur",
+        "description": "Høvundur at sitatinum."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Upplýsingar um høvund",
+        "description": "Upplýsingar um høvund."
+      },
+      {
+        "slot": "caption",
+        "title": "Myndatekstur",
+        "description": "Myndatekstur."
+      },
+      {
+        "property": "src",
+        "title": "Myndakelda",
+        "description": "Myndafíla, sum verður nýtt til miðilssitatið."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativur tekstur",
+        "description": "Alternativur tekstur til myndina."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Dámlitur á kortinum."
+      }
+    ]
+  }
+}

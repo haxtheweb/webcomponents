@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ባዶ ቦታዎችን ሙላ",
+    "description": "ተማሪዎች በዓረፍተ ነገር ውስጥ የጎደሉ ቃላትን የሚያሟሉበት የምዘና እንቅስቃሴ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ጥያቄ",
+        "description": "ተጠቃሚዎች የሚመልሱት ጥያቄ።"
+      },
+      {
+        "property": "statement",
+        "title": "ዓረፍተ ነገር",
+        "description": "ወደ ቃላትን ምልክት አድርግ መስተጋብር የሚቀየር ዓረፍተ ነገር።"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "የውጤት አሰጣጥ ቅርጸት",
+        "description": "OER Schema፦ ለዚህ ምዘና የውጤት አሰጣጥ ቅርጸት (ለምሳሌ ነጥቦች፣ ፊደል፣ መቶኛ፣ ማጠናቀቅ)።"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "የመማር ዓላማ",
+        "description": "OER Schema፦ ከዚህ ምዘና ጋር የተያያዘ የመማር ዓላማ።"
+      },
+      {
+        "property": "forCourse",
+        "title": "ኮርስ",
+        "description": "OER Schema፦ ይህ ምዘና የታሰበለት ኮርስ።"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "የፈተናው ስም",
+        "description": "ይህን ንጥል ለመለየት በxAPI የሚመሩ አካባቢዎች ውስጥ ጥቅም ላይ የሚውል የፈተና ስም"
+      }
+    ]
+  }
+}

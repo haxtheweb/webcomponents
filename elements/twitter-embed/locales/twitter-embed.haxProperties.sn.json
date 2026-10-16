@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Kuisa Twitter (X)",
+    "description": "Isa tweet kubva kuX munyaya yayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL yeTweet",
+        "description": "URL yetweet yekuisa."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Dingindira",
+        "description": "Dingindira rakajeka kana rerima rematweet eX.",
+        "options": {
+          "light": "Yakajeka",
+          "dark": "Rima"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Dzivirira popup pakudzvanya",
+        "description": "Dzivirira vashandisi kuvhura tweet pax.com."
+      }
+    ]
+  }
+}

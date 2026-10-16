@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Ger livandi GIF-myndir atkomuligar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Livandi GIF",
+        "description": "URL til livandi GIF-myndina."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativur tekstur",
+        "description": "Alternativur tekstur til myndina."
+      },
+      {
+        "property": "longdesc",
+        "title": "Long lýsing",
+        "description": "Long lýsing av GIF-myndini fyri atkomuleika."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Kyrrmynd",
+        "description": "URL til eina kyrrmyndarútgávu av GIF-myndini."
+      }
+    ]
+  }
+}

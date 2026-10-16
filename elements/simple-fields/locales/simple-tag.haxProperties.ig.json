@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Mkpado / Pill",
+    "description": "Akara aha mkpụmkpụ dị ka pill nwere agba mkpụrụ nhọrọ, bọtịnụ kagbuo, ma ọ bụ ngbanwe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Akara aha",
+        "description": "Ederede a na-egosi n'ime pill ahụ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba mkpụrụ",
+        "description": "Aha agba mkpụrụ SimpleColors maka azụ pill ahụ.",
+        "options": {
+          "": "-- ndabara --",
+          "red": "Uhie",
+          "pink": "Pinki",
+          "purple": "Odo odo",
+          "deep-purple": "Odo odo miri emi",
+          "indigo": "Indigo",
+          "blue": "Anụnụ anụnụ",
+          "light-blue": "Anụnụ anụnụ nchara nchara",
+          "cyan": "Cyan",
+          "teal": "Teal",
+          "green": "Akwụkwọ ndụ",
+          "light-green": "Akwụkwọ ndụ nchara nchara",
+          "lime": "Lime",
+          "yellow": "Edo edo",
+          "amber": "Amber",
+          "orange": "Oroma",
+          "deep-orange": "Oroma miri emi",
+          "brown": "Agba aja aja",
+          "blue-grey": "Isi awọ anụnụ anụnụ",
+          "grey": "Isi awọ"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Agba mkpụrụ akpaaka",
+        "description": "Wepụta agba mkpụrụ site n'ederede akara aha na-akpaghị aka."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Bọtịnụ kagbuo",
+        "description": "Gosi bọtịnụ akara ngosi wepụ/kagbuo n'ime pill ahụ."
+      },
+      {
+        "property": "readonly",
+        "title": "Naanị ịgụ",
+        "description": "Zoo bọtịnụ kagbuo ka pill ahụ bụrụ naanị maka ngosi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Na-agbanwe",
+        "description": "Mee ka pill ahụ gbanwee gbanye/gbanyụọ mgbe a pịrị bọtịnụ ahụ."
+      },
+      {
+        "property": "toggled",
+        "title": "Agbanwere",
+        "description": "Ma pill ahụ gbanyere ugbu a."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Akara ngosi agbanwere",
+        "description": "Akara ngosi a ga-egosi mgbe pill ahụ gbanyere."
+      },
+      {
+        "property": "disabled",
+        "title": "Agbanyụrụ",
+        "description": "Gbanyụọ mmekọrịta ya na pill ahụ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Абалонка для ўбудаваных прайгравальнікаў Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Крыніца",
+        "description": "Спасылка для ўбудавання або абмену са Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Тэма",
+        "description": "Тэма колеру фону прайгравальніка.",
+        "options": {
+          "": "Па змаўчанні",
+          "0": "Чорная"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Памер",
+        "description": "Памер прайгравальніка.",
+        "options": {
+          "normal": "Па змаўчанні",
+          "compact": "Кампактны"
+        }
+      }
+    ]
+  }
+}

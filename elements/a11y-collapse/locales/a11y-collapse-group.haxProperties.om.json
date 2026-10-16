@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Garee Babal'isuu fi Cuqaasuu",
+    "description": "Garee wantoota babal'atanii fi cuqaatan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Tokko qofa babal'isi",
+        "description": "Wanti tokko qofti babal'achuu danda'a."
+      },
+      {
+        "slot": "",
+        "title": "Wantoota Cuqaatan",
+        "description": "Wantoota cuqaatan."
+      }
+    ]
+  }
+}

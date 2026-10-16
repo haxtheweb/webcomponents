@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Şəkil xəritəsi",
+    "description": "İnteraktiv aktiv nöqtələri olan əlçatan şəkil xəritəsi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Şəkil xəritəsi üçün etiket."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Aktiv nöqtə təfərrüatları",
+        "description": "Şəkil xəritəsindəki interaktiv aktiv nöqtələr."
+      }
+    ]
+  }
+}

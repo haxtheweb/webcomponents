@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Oznake",
+    "description": "Preprost seznam oznak za prikaz na strani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Oznake",
+        "description": "Seznam oznak, ločenih z vejicami."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Samodejna poudarna barva",
+        "description": "Samodejno nastavi poudarno barvo glede na oznako."
+      },
+      {
+        "property": "accentColor",
+        "title": "Barva",
+        "description": "Barva oznak."
+      }
+    ]
+  }
+}

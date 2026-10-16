@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tag",
+    "description": "Dhaptar tag prasaja kanggo ditampilake ing kaca."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Dhaptar tag sing dipisah koma."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Werna Aksen Otomatis",
+        "description": "Setel werna aksen kanthi otomatis miturut label."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna",
+        "description": "Werna kanggo tag."
+      }
+    ]
+  }
+}

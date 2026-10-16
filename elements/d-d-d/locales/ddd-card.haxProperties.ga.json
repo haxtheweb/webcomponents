@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Cárta",
+    "description": "Comhpháirt chárta le stíl ó chóras dearaidh DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Íomhá",
+        "description": "Íomhá roghnach."
+      },
+      {
+        "property": "alt",
+        "title": "Téacs malartach na híomhá",
+        "description": "Téacs malartach a chuireann síos ar an íomhá."
+      },
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Teideal an chárta."
+      },
+      {
+        "slot": "",
+        "title": "Ábhar",
+        "description": "Limistéar ábhair an chárta."
+      },
+      {
+        "property": "href",
+        "title": "Nasc",
+        "description": "URL nasc an chnaipe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Lipéad",
+        "description": "Lipéad an chnaipe."
+      },
+      {
+        "property": "noArrow",
+        "title": "Gan Saighead",
+        "description": "Folaigh saighead an chnaipe."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Nasc: sprioc",
+        "description": "Cá háit a n-osclófar an nasc.",
+        "options": {
+          "": "An fhuinneog chéanna",
+          "_blank": "Fuinneog nua - _blank",
+          "_top": "An fhuinneog uachtarach - _top",
+          "_parent": "An máthairfhuinneog - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Nasc: rel",
+        "description": "An gaol idir an acmhainn nasctha agus an doiciméad reatha."
+      }
+    ]
+  }
+}

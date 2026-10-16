@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kāleka moʻolelo Polaris",
+    "description": "E hōʻike i kekahi kāleka moʻolelo Polaris me ke kiʻi kāʻei hope, ka lepili kia, a me ke poʻo kikokikona."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Kiʻi kāʻei hope",
+        "description": "URL kiʻi i hōʻike ʻia ma ke ʻano he kāʻei hope o ke kāleka."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Nui kāʻei hope",
+        "description": "Pehea e hoʻopiha ai ke kiʻi kāʻei hope i ke kāleka (CSS background-size).",
+        "options": {
+          "cover": "uhi (cover)",
+          "contain": "paʻa i loko (contain)",
+          "auto": "ʻakomi (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Hoʻopili kāʻei hope",
+        "description": "Pehea e hana ai ke kiʻi kāʻei hope i ka wā e kaʻa ai (CSS background-attachment).",
+        "options": {
+          "scroll": "kaʻa (scroll)",
+          "fixed": "paʻa (fixed)",
+          "local": "kūloko (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Lepili kia",
+        "description": "Lepili pōkole hua nui i hōʻike ʻia ma luna o ke kāleka. E waiho hakahaka e hūnā ai."
+      },
+      {
+        "property": "label",
+        "title": "Kikokikona kāleka",
+        "description": "Kikokikona nui i hōʻike ʻia ma ka papa lalo."
+      },
+      {
+        "property": "link",
+        "title": "Loulou",
+        "description": "URL koho e hele ai e wahī ana i ke kāleka holoʻokoʻa."
+      }
+    ]
+  }
+}

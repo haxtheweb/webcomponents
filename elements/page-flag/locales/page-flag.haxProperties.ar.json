@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "علامة الصفحة",
+    "description": "ملاحظة تحريرية لمؤلفي الصفحة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون تمييز علامة الصفحة."
+      },
+      {
+        "property": "label",
+        "title": "التسمية",
+        "description": "نص تسمية علامة الصفحة."
+      }
+    ]
+  }
+}

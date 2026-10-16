@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Trình bao bọc cho trình phát Spotify được nhúng."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Nguồn",
+        "description": "Liên kết nhúng hoặc chia sẻ từ Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Chủ đề",
+        "description": "Chủ đề màu nền cho trình phát.",
+        "options": {
+          "": "Mặc định",
+          "0": "Đen"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Kích thước",
+        "description": "Kích thước trình phát.",
+        "options": {
+          "normal": "Mặc định",
+          "compact": "Thu gọn"
+        }
+      }
+    ]
+  }
+}

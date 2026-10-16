@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG ڪردار",
+    "description": "HAX جو مزيدار ڪردار."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "نالو",
+        "description": "بي ترتيب ڪردار ٺاهڻ لاءِ استعمال ٿيندڙ لفظ."
+      },
+      {
+        "property": "hat",
+        "title": "ٽوپي",
+        "description": "ٽوپي جو انداز.",
+        "options": {
+          "none": "ڊفالٽ",
+          "random": "بي ترتيب",
+          "bunny": "سهو",
+          "cowboy": "ڪائوبواءِ",
+          "education": "تعليم",
+          "construction": "تعمير",
+          "warning": "خبرداري",
+          "watermelon": "هدوانو",
+          "coffee": "ڪافي",
+          "knight": "سورمو",
+          "ninja": "ننجا",
+          "party": "پارٽي",
+          "error": "غلطي",
+          "edit": "ايڊٽ"
+        }
+      },
+      {
+        "property": "width",
+        "title": "ويڪر",
+        "description": "ڪردار جي ويڪر پڪسلن ۾."
+      },
+      {
+        "property": "height",
+        "title": "اوچائي",
+        "description": "ڪردار جي اوچائي پڪسلن ۾."
+      },
+      {
+        "property": "fire",
+        "title": "باهه ۾؟",
+        "description": "ڇا ڪردار کي باهه لڳل آهي."
+      },
+      {
+        "property": "walking",
+        "title": "هلندڙ؟",
+        "description": "هلڻ جي اينيميشن؛ باهه لڳڻ وقت هلي ٿي."
+      }
+    ]
+  }
+}

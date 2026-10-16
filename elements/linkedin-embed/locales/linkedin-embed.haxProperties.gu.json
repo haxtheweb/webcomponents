@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn એમ્બેડ",
+    "description": "LinkedIn પ્રોફાઇલ કાર્ડ એમ્બેડ કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "વૅનિટી નામ",
+        "description": "LinkedIn વૅનિટી વપરાશકર્તાનામ ભાગ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "લોકેલ",
+        "description": "લોકેલ મેટાડેટા મૂલ્ય જેમ કે en_US."
+      }
+    ]
+  }
+}

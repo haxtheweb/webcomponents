@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Web component willay puklliq"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Ventanata pakay",
+        "description": "Lluqsiy ventanata pakay, terminallapaq kaqtin allin"
+      }
+    ]
+  }
+}

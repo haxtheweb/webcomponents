@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Acțiune utilizator",
+    "description": "Urmărește acțiunile utilizatorilor și trimite datele către depozite xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Eveniment de urmărit",
+        "description": "Acțiunea utilizatorului care declanșează acest eveniment.",
+        "options": {
+          "visibility": "Poate vedea acest element",
+          "keydown": "Apasă o tastă aici",
+          "click": "Clic pe acest element",
+          "hover": "Trece cu cursorul peste acest element"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Urmărește de fiecare dată",
+        "description": "Implicit, este urmărită doar prima apariție."
+      }
+    ]
+  }
+}

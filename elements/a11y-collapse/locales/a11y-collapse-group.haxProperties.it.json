@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Gruppo espandi/comprimi",
+    "description": "Un gruppo di elementi espandibili e comprimibili."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Espandi solo uno",
+        "description": "Si può espandere un solo elemento."
+      },
+      {
+        "slot": "",
+        "title": "Elementi comprimibili",
+        "description": "Gli elementi comprimibili."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Sekilas produk",
+    "description": "Blok ringkesan produk kanthi cepet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon sing makili konsep."
+      },
+      {
+        "property": "title",
+        "title": "Judhul",
+        "description": "Konsep utama sakilas."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subjudhul",
+        "description": "Rincian tambahan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna aksen",
+        "description": "Werna aksen kanggo ikon."
+      }
+    ]
+  }
+}

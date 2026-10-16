@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "کثیر انتخابی",
+    "description": "کثیر انتخابی خود جانچ کا سوال۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "سوال",
+        "description": "وہ سوال جس کا صارفین جواب دیں۔"
+      },
+      {
+        "property": "randomize",
+        "title": "بے ترتیب کریں",
+        "description": "جوابات کو متحرک طور پر بے ترتیب کریں۔"
+      },
+      {
+        "property": "singleOption",
+        "title": "واحد جواب",
+        "description": "صرف ایک جواب کی اجازت دیں۔"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "درجہ بندی کا فارمیٹ",
+        "description": "OER Schema: اس جانچ کا درجہ بندی فارمیٹ (مثلاً پوائنٹس، حرفی گریڈ، فیصد، تکمیل)۔"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "تعلیمی مقصد",
+        "description": "OER Schema: اس جانچ سے وابستہ تعلیمی مقصد۔"
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "OER Schema: وہ کورس جس کے لیے یہ جانچ ہے۔"
+      },
+      {
+        "property": "answers",
+        "title": "جوابات"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "کوئز کا نام",
+        "description": "تجزیاتی نظاموں میں xAPI شناخت کے لیے استعمال ہونے والا کوئز کا نام۔"
+      }
+    ]
+  }
+}

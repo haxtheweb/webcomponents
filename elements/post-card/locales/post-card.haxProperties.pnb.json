@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "پوسٹ کارڈ",
+    "description": "اک کھیڈ ورگا میڈیا ٹکڑا جیہڑا کسے تھاں توں آئے اصلی پوسٹ کارڈ ورگا لگدا اے"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "ول",
+        "description": "ایہہ کیہدے ول جا رہیا اے؟"
+      },
+      {
+        "property": "from",
+        "title": "ولوں",
+        "description": "تسیں کون او؟"
+      },
+      {
+        "property": "message",
+        "title": "سنیہا",
+        "description": "تسیں کیہ کہݨا چاہندے او؟"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "ڈاک مہر دی تھاں",
+        "description": "ایہہ کارڈ کتھوں گھلیا گیا؟"
+      },
+      {
+        "property": "photoSrc",
+        "title": "مکھ فوٹو دا سرچشمہ",
+        "description": "تہاڈی فوٹو کتھے اے؟"
+      },
+      {
+        "property": "stampSrc",
+        "title": "ٹکٹ فوٹو دا سرچشمہ",
+        "description": "تہاڈی فوٹو کتھے اے؟"
+      }
+    ]
+  }
+}

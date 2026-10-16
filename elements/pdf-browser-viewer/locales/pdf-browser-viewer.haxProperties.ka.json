@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF ბრაუზერის მნახველი",
+    "description": "PDF ფაილის ჩასმა გვერდში არასავალდებულო ბარათის განლაგებითა და ჩამოტვირთვის ღილაკით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF-ის URL",
+        "description": "PDF ფაილის მდებარეობა."
+      },
+      {
+        "property": "heading",
+        "title": "სათაური",
+        "description": "ბარათის სათაურის ტექსტი."
+      },
+      {
+        "property": "card",
+        "title": "ბარათის განლაგება",
+        "description": "PDF-ის ჩვენება ბარათში ჩამოტვირთვის ღილაკით."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ჩამოტვირთვის იარლიყი",
+        "description": "ჩამოტვირთვის ღილაკის იარლიყი."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "შეტყობინება მხარდაუჭერლობის შესახებ",
+        "description": "შეტყობინება, როცა ბრაუზერს PDF ფაილების ჩვენება არ შეუძლია."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "ბმულის შეტყობინება მხარდაუჭერლობის შესახებ",
+        "description": "ბმულის ტექსტი, როცა ბრაუზერს PDF ფაილების ჩვენება არ შეუძლია."
+      },
+      {
+        "property": "width",
+        "title": "სიგანე",
+        "description": "PDF მნახველის სიგანე."
+      },
+      {
+        "property": "height",
+        "title": "სიმაღლე",
+        "description": "PDF მნახველის სიმაღლე."
+      }
+    ]
+  }
+}

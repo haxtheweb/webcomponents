@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Etiqueta / Píldora",
+    "description": "Una etiqueta compacta en forma de píldora con color de acento opcional, botón de cancelar o alternancia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etiqueta",
+        "description": "Texto que se muestra dentro de la píldora."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Nombre del color de acento de SimpleColors para el fondo de la píldora.",
+        "options": {
+          "": "-- predeterminado --",
+          "red": "Rojo",
+          "pink": "Rosa",
+          "purple": "Morado",
+          "deep-purple": "Morado oscuro",
+          "indigo": "Índigo",
+          "blue": "Azul",
+          "light-blue": "Azul claro",
+          "cyan": "Cian",
+          "teal": "Verde azulado",
+          "green": "Verde",
+          "light-green": "Verde claro",
+          "lime": "Lima",
+          "yellow": "Amarillo",
+          "amber": "Ámbar",
+          "orange": "Naranja",
+          "deep-orange": "Naranja oscuro",
+          "brown": "Marrón",
+          "blue-grey": "Gris azulado",
+          "grey": "Gris"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Color de acento automático",
+        "description": "Derivar automáticamente el color de acento a partir del texto de la etiqueta."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Botón de cancelar",
+        "description": "Mostrar un botón de icono para quitar/cancelar dentro de la píldora."
+      },
+      {
+        "property": "readonly",
+        "title": "Solo lectura",
+        "description": "Ocultar el botón de cancelar para que la píldora sea solo de visualización."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Alternable",
+        "description": "Hacer que la píldora se active o desactive al hacer clic en el botón."
+      },
+      {
+        "property": "toggled",
+        "title": "Activada",
+        "description": "Si la píldora está activada actualmente."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Icono de activada",
+        "description": "Icono que se muestra cuando la píldora está activada."
+      },
+      {
+        "property": "disabled",
+        "title": "Desactivado",
+        "description": "Desactivar la interacción con la píldora."
+      }
+    ]
+  }
+}

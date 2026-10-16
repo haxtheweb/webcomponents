@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Gotina medyayê",
+    "description": "Wêne bi gotin, jêgirtin û binnivîsa vebijarkî."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Gotin",
+        "description": "Nivîsa gotinê."
+      },
+      {
+        "slot": "author",
+        "title": "Nivîskar",
+        "description": "Nivîskarê gotinê."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Hûrguliyên nivîskar",
+        "description": "Hûrguliyên nivîskar."
+      },
+      {
+        "slot": "caption",
+        "title": "Binnivîs",
+        "description": "Binnivîsa wêneyê."
+      },
+      {
+        "property": "src",
+        "title": "Çavkaniya Wêneyê",
+        "description": "Pela wêneyê ku ji bo gotina medyayê tê bikaranîn."
+      },
+      {
+        "property": "alt",
+        "title": "Nivîsa Alternatîf",
+        "description": "Nivîsa alternatîf ji bo wêneyê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Rengê Balkêş",
+        "description": "Rengê balkêş ê kartê."
+      }
+    ]
+  }
+}

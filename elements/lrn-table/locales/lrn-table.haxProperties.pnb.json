@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV ٹیبل",
+    "description": "ایہہ CSV فائل توں ٹیبل بنا سکدا اے، فائل بھاویں کتھے وی ہووے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "سرچشمہ",
+        "description": "ایس CSV فائل دا URL۔"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "بنائے جاوݨ والے ٹیبل دا عنوان۔"
+      },
+      {
+        "property": "description",
+        "title": "وضاحت",
+        "description": "ٹیبل دے ڈیٹا تک بہتر رسائی لئی ہور تفصیلی وضاحت۔"
+      }
+    ]
+  }
+}

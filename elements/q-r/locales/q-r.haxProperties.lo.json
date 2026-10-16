@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ລະຫັດ QR",
+    "description": "ລະຫັດສຳລັບສະແກນດ້ວຍສະມາດໂຟນ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "ຂໍ້ມູນ QR",
+        "description": "ແຫຼ່ງຂໍ້ມູນສຳລັບລະຫັດ QR."
+      },
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້ທາງເລືອກ",
+        "description": "ຫົວຂໍ້ທາງເລືອກທີ່ລິ້ງກັບແຫຼ່ງລະຫັດ QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "ຂະໜາດ",
+        "description": "ຂະໜາດຂອງລະຫັດ QR."
+      },
+      {
+        "property": "margin",
+        "title": "ຂອບ",
+        "description": "ຂອບອ້ອມລະຫັດ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "ຮູບແບບຜົນອອກ",
+        "description": "ຮູບແບບທີ່ຈະສົ່ງອອກ.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

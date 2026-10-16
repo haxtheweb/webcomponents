@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikona",
+    "description": "Ikona mil-librerija sħiħa tal-ikoni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona li għandha tintwera."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-enfasi għall-ikona."
+      },
+      {
+        "property": "dark",
+        "title": "Skur",
+        "description": "Uża l-modalità skura (sett ta' kuluri maqlub)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "জাতিসংঘের টেকসই উন্নয়ন লক্ষ্য।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "লক্ষ্য",
+        "description": "UN SDG নম্বর।"
+      },
+      {
+        "property": "colorOnly",
+        "title": "শুধু রং",
+        "description": "শুধু লক্ষ্যের রং দেখান।"
+      }
+    ]
+  }
+}

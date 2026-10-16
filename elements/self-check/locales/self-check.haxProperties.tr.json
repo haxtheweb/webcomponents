@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Öz Değerlendirme",
+    "description": "Kullanıcılar bir öz değerlendirme tamamlayabilir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Görsel",
+        "description": "Öz değerlendirme için görsel."
+      },
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Öz değerlendirmenin başlığı."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatif Metin",
+        "description": "Görselin alt metni."
+      },
+      {
+        "slot": "question",
+        "title": "Soru"
+      },
+      {
+        "slot": "",
+        "title": "Yanıt"
+      },
+      {
+        "property": "accentColor",
+        "title": "Tema Rengi",
+        "description": "Tasarım sisteminden bir tema rengi seçin.",
+        "options": {
+          "primary": "Birincil",
+          "accent": "Vurgu",
+          "success": "Başarılı",
+          "warning": "Uyarı",
+          "error": "Hata",
+          "info": "Bilgi"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Öğrenme Hedefi",
+        "description": "oer:hasLearningObjective olarak üretilen öğrenme hedefi referansı."
+      },
+      {
+        "property": "assessing",
+        "title": "Değerlendirilen",
+        "description": "oer:assessing olarak üretilen etkinlik referansı."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Daha fazla bağlantısı",
+        "description": "Ek bilgi bağlantısı."
+      }
+    ]
+  }
+}

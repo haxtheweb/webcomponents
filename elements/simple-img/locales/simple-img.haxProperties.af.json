@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Eenvoudige prent",
+    "description": "Manipuleer prente met eenvoudige parameters."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Bron",
+        "description": "Prentbron-URL."
+      },
+      {
+        "property": "height",
+        "title": "Hoogte",
+        "description": "Opsionele prenthoogte."
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Opsionele prentbreedte."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-teks",
+        "description": "Nuttig vir skermlesers en beter SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kwaliteit",
+        "description": "Prentkwaliteit tydens generering (slegs JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Haalprioriteit",
+        "description": "Prestasiewenk vir moderne blaaiers.",
+        "options": {
+          "auto": "Outomaties",
+          "high": "Hoog",
+          "low": "Laag"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dekoderingsmetode",
+        "description": "Prestasiewenk vir prentweergawe in moderne blaaiers.",
+        "options": {
+          "auto": "Outomaties",
+          "async": "Asinkroon"
+        }
+      }
+    ]
+  }
+}

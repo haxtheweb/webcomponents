@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub hissa qoʻshuvchilar roʻyxati",
+    "description": "GitHub API yordamida RPG qahramonlari sifatida koʻrsatiladi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Tashkilot",
+        "description": "github.com/ORG/REPO dagi tashkilot nomi."
+      },
+      {
+        "property": "repo",
+        "title": "Repozitoriy",
+        "description": "github.com/ORG/REPO dagi repozitoriy nomi."
+      },
+      {
+        "property": "limit",
+        "title": "Cheklov",
+        "description": "Koʻrsatiladigan hissa qoʻshuvchilar sonini cheklash."
+      }
+    ]
+  }
+}

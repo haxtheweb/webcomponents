@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D වාදකය",
+    "description": "3D ගොනු / විස්තාරිත යථාර්ථ (AR) වාදකයක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "මූලාශ්‍රය",
+        "description": "මෙම AR ගොනුව සඳහා URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR හි මූලද්‍රව්‍යයේ X පිහිටීම."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR හි මූලද්‍රව්‍යයේ Y පිහිටීම."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR හි මූලද්‍රව්‍යයේ Z පිහිටීම."
+      },
+      {
+        "property": "skyColor",
+        "title": "අහසේ වර්ණය",
+        "description": "දර්ශනයේ අහසේ වර්ණය තෝරන්න."
+      }
+    ]
+  }
+}

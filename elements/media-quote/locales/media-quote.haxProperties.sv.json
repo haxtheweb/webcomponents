@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Mediecitat",
+    "description": "Bild med citat, källhänvisning och valfri bildtext."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Citat",
+        "description": "Citattext."
+      },
+      {
+        "slot": "author",
+        "title": "Författare",
+        "description": "Citatets författare."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Författaruppgifter",
+        "description": "Författaruppgifter."
+      },
+      {
+        "slot": "caption",
+        "title": "Bildtext",
+        "description": "Bildtext."
+      },
+      {
+        "property": "src",
+        "title": "Bildkälla",
+        "description": "Bildfil som används för mediecitatet."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativtext",
+        "description": "Alternativ text för bilden."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "Kortets accentfärg."
+      }
+    ]
+  }
+}

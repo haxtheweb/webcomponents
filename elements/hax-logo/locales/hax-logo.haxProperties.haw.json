@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Kiʻi hua HAX",
+    "description": "He mea lōkō no HAX, he mea hiki ke hana me HAX, ʻoiaʻiʻo nō."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Ka nui o ka lōkō HAX e kau ai",
+        "options": {
+          "mini": "Liʻiliʻi loa",
+          "small": "Liʻiliʻi",
+          "normal": "Maʻamau",
+          "large": "Nui"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Inā e hoʻololi i ka lōkō i nā hua nui"
+      }
+    ]
+  }
+}

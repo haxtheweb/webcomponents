@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Карточка",
+    "description": "Компонент карточки, оформленный в дизайн-системе DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Изображение",
+        "description": "Необязательное изображение."
+      },
+      {
+        "property": "alt",
+        "title": "Alt изображения",
+        "description": "Альтернативный текст, описывающий изображение."
+      },
+      {
+        "property": "title",
+        "title": "Заголовок",
+        "description": "Заголовок карточки."
+      },
+      {
+        "slot": "",
+        "title": "Содержимое",
+        "description": "Область содержимого карточки."
+      },
+      {
+        "property": "href",
+        "title": "Ссылка",
+        "description": "URL ссылки кнопки."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Метка",
+        "description": "Текст кнопки."
+      },
+      {
+        "property": "noArrow",
+        "title": "Без стрелки",
+        "description": "Скрыть стрелку кнопки."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Ссылка: target",
+        "description": "Где открывать ссылку.",
+        "options": {
+          "": "То же окно",
+          "_blank": "Новое окно - _blank",
+          "_top": "Окно верхнего уровня - _top",
+          "_parent": "Родительское окно - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Ссылка: rel",
+        "description": "Связь между ресурсом по ссылке и текущим документом."
+      }
+    ]
+  }
+}

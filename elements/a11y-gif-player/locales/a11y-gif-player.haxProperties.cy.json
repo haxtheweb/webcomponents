@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Gwneud GIFs animeiddiedig yn hygyrch."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF animeiddiedig",
+        "description": "URL ar gyfer y GIF animeiddiedig."
+      },
+      {
+        "property": "alt",
+        "title": "Testun Amgen",
+        "description": "Testun amgen ar gyfer y ddelwedd."
+      },
+      {
+        "property": "longdesc",
+        "title": "Disgrifiad Hir",
+        "description": "Disgrifiad hir o'r GIF er hygyrchedd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Delwedd Lonydd",
+        "description": "URL ar gyfer fersiwn llonydd o'r GIF."
+      }
+    ]
+  }
+}

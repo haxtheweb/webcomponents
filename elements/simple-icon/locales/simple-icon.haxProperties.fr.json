@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Icône",
+    "description": "Icône issue de la bibliothèque complète d'icônes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icône",
+        "description": "Icône à afficher."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Couleur d'accent de l'icône."
+      },
+      {
+        "property": "dark",
+        "title": "Sombre",
+        "description": "Utiliser le mode sombre (jeu de couleurs inversé)."
+      }
+    ]
+  }
+}

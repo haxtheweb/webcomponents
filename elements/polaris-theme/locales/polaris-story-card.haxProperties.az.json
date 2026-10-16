@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris hekayə kartı",
+    "description": "Fon şəkli, sütun etiketi və başlıq mətni olan Polaris hekayə kartı göstər."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Fon şəkli",
+        "description": "Kartın fonu kimi göstərilən şəklin URL-i."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Fon ölçüsü",
+        "description": "Fon şəklinin kartı necə doldurduğu (CSS background-size).",
+        "options": {
+          "cover": "örtmək (cover)",
+          "contain": "sığdırmaq (contain)",
+          "auto": "avtomatik (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Fonun bağlanması",
+        "description": "Sürüşdürmə zamanı fon şəklinin davranışı (CSS background-attachment).",
+        "options": {
+          "scroll": "sürüşən (scroll)",
+          "fixed": "sabit (fixed)",
+          "local": "lokal (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Sütun etiketi",
+        "description": "Kartın yuxarısında göstərilən qısa böyük hərfli etiket. Gizlətmək üçün boş buraxın."
+      },
+      {
+        "property": "label",
+        "title": "Kart mətni",
+        "description": "Aşağı paneldə göstərilən əsas mətn."
+      },
+      {
+        "property": "link",
+        "title": "Keçid",
+        "description": "Bütün kartı əhatə edən ixtiyari hədəf URL."
+      }
+    ]
+  }
+}

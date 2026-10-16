@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI vizualizator",
+    "description": "Reproducirajte MIDI u kontekstu s vizualizacijom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Izvor",
+        "description": "URL datoteke za reprodukciju."
+      },
+      {
+        "property": "visualizer",
+        "title": "Vizualizacija",
+        "description": "Stil vizualizacije muzičke datoteke.",
+        "options": {
+          "staff": "Notno crtovlje",
+          "piano-roll": "Klavirska rola",
+          "waterfall": "Klavir + vodopad"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Sakrij vodopad",
+        "description": "Sakrij note vodopada u vizualizaciji klavira."
+      }
+    ]
+  }
+}

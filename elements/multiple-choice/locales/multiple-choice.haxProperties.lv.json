@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Atbilžu izvēle",
+    "description": "Pašpārbaudes jautājums ar atbilžu variantiem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Jautājums",
+        "description": "Jautājums, uz kuru lietotājiem jāatbild."
+      },
+      {
+        "property": "randomize",
+        "title": "Nejauša secība",
+        "description": "Dinamiski sajaukt atbildes."
+      },
+      {
+        "property": "singleOption",
+        "title": "Viena atbilde",
+        "description": "Atļaut tikai vienu atbildi."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vērtēšanas formāts",
+        "description": "OER Schema: šī vērtējuma formāts (piem., punkti, burts, procenti, izpilde)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mācību mērķis",
+        "description": "OER Schema: ar šo vērtējumu saistītais mācību mērķis."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurss",
+        "description": "OER Schema: kurss, kuram paredzēts šis vērtējums."
+      },
+      {
+        "property": "answers",
+        "title": "Atbildes"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testa nosaukums",
+        "description": "Testa nosaukums, ko izmanto xAPI identifikācijai analītikas sistēmās."
+      }
+    ]
+  }
+}

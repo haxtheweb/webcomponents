@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "صفحے دیاں تفصیلاں",
+    "description": "صفحیاں وچکار بصری وکھریواں مقرر کرو جیہنوں CMS صفحے بناوݨ لئی ورت سکدے نیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "تھیم تے پہلی سرخی وچ وکھایا جاوݨ والا عنوان۔"
+      },
+      {
+        "property": "pageType",
+        "title": "قسم",
+        "description": "صفحے دے بصری سیاق دا لیبل۔",
+        "options": {
+          "": "-- کوئی نہیں --",
+          "content": "مواد",
+          "assessment": "جائزہ",
+          "quiz": "کوئز",
+          "submission": "جمع کراوݨا",
+          "lesson": "سبق",
+          "module": "ماڈیول",
+          "task": "کم",
+          "activity": "سرگرمی",
+          "project": "پراجیکٹ",
+          "practice": "مشق",
+          "unit": "یونٹ",
+          "objectives": "سکھݨ دے مقصد",
+          "connection": "تعلق",
+          "knowledge": "کیہ تسیں جاݨدے او؟",
+          "strategy": "سکھݨ دی حکمت عملی",
+          "discuss": "گل بات",
+          "listen": "سنو",
+          "make": "بناؤ",
+          "observe": "مشاہدہ کرو",
+          "present": "پیش کرو",
+          "reading": "پڑھائی",
+          "reflect": "غور کرو",
+          "research": "تحقیق",
+          "watch": "ویکھو",
+          "write": "لکھو"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ٹیگ",
+        "description": "کامے نال وکھرے کیتے ٹیگاں دی لسٹ۔"
+      },
+      {
+        "property": "linkUrl",
+        "title": "لنک URL",
+        "description": "صفحے دے مواد دی تھاں وکھایا جاوݨ والا ری ڈائریکٹ URL۔"
+      },
+      {
+        "property": "linkTarget",
+        "title": "لنک ٹارگٹ",
+        "description": "لنک ایسے ونڈو یا نویں ونڈو وچ کھولو۔",
+        "options": {
+          "_self": "ایہو ونڈو",
+          "_blank": "نویں ونڈو"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "شائع شدہ",
+        "description": "غیر شائع صفحے آخری صارفاں توں لکے رہندے نیں۔"
+      },
+      {
+        "property": "locked",
+        "title": "صفحہ لاک کرو",
+        "description": "ایس صفحے دے سارے عنصر لاک یا ان لاک کرو۔"
+      },
+      {
+        "property": "overridePathauto",
+        "title": "خودکار سلگ بدلو",
+        "description": "عنوان یا پیرنٹ دی بنیاد تے خودکار اپڈیٹاں توں سلگ لاک کرو۔"
+      },
+      {
+        "property": "slug",
+        "title": "راہ",
+        "description": "ایس صفحے دا URL سلگ۔"
+      },
+      {
+        "property": "image",
+        "title": "میڈیا",
+        "description": "صفحے دی نمائندگی کرن والا میڈیا، کجھ تھیماں تے ویوز وچ ورتیا جاندا اے۔"
+      },
+      {
+        "property": "parent",
+        "title": "پیرنٹ",
+        "description": "پیرنٹ صفحے دا راہ۔"
+      },
+      {
+        "property": "noderefs",
+        "title": "متعلقہ مواد",
+        "description": "ایس صفحے نال متعلقہ صفحے۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "وضاحت",
+        "description": "مجموعیاں تے سرچ انجن آپٹیمائزیشن (SEO) وچ ورتی جاوݨ والی وضاحت۔"
+      },
+      {
+        "property": "entityType",
+        "title": "اکائی دی قسم",
+        "description": "جے ہور کجھ مقرر نہ ہووے تے صفحہ ہوندا اے۔",
+        "options": {
+          "page": "صفحہ (ڈیفالٹ)",
+          "taxonomy": "درجہ بندی",
+          "taxonomyTerm": "درجہ بندی دی اصطلاح",
+          "region": "علاقہ"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "سائٹ وچ ایس صفحے نال جڑیا آئیکن۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "سائٹ وچ ایس صفحے نال جڑیا رنگ۔"
+      },
+      {
+        "property": "hideInMenu",
+        "title": "مینیو وچ لکاؤ",
+        "description": "ایہہ صفحہ مینیواں توں لکاؤ پر اوہدا URL رکھو۔"
+      },
+      {
+        "property": "order",
+        "title": "ترتیب",
+        "description": "بھین بھرا صفحیاں دے مقابلے وچ ترتیب۔"
+      },
+      {
+        "property": "developerTheme",
+        "title": "صفحے دا تھیم",
+        "description": "صرف ایس صفحے لئی تھیم بدلو۔"
+      },
+      {
+        "property": "author",
+        "title": "لکھاری",
+        "description": "ایس صفحے نوں آخری واری بدلن والے بندے دا یوزر ناں۔"
+      }
+    ]
+  }
+}

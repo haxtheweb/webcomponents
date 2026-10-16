@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Pilihan ganda",
+    "description": "Soal cek mandiri pilihan ganda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pertanyaan",
+        "description": "Pertanyaan yang harus dijawab pengguna."
+      },
+      {
+        "property": "randomize",
+        "title": "Acak",
+        "description": "Acak jawaban secara dinamis."
+      },
+      {
+        "property": "singleOption",
+        "title": "Jawaban tunggal",
+        "description": "Izinkan hanya satu jawaban."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format penilaian",
+        "description": "OER Schema: format penilaian untuk asesmen ini (mis. poin, huruf, persen, penyelesaian)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan pembelajaran",
+        "description": "OER Schema: tujuan pembelajaran yang terkait dengan asesmen ini."
+      },
+      {
+        "property": "forCourse",
+        "title": "Mata kuliah",
+        "description": "OER Schema: mata kuliah yang dituju oleh asesmen ini."
+      },
+      {
+        "property": "answers",
+        "title": "Jawaban"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nama kuis",
+        "description": "Nama kuis yang digunakan untuk identifikasi xAPI dalam sistem analitik."
+      }
+    ]
+  }
+}

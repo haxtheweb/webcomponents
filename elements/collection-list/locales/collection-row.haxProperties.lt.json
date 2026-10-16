@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Kolekcijos eilutė",
+    "description": "Eilutės tipo elementas kolekcijos sąraše su tekstu, nuoroda, piktograma, žymėmis ir pasirenkamu vaizdu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Nuoroda",
+        "description": "Šios eilutės paskirties URL."
+      },
+      {
+        "property": "image",
+        "title": "Vaizdas",
+        "description": "Eilutės vaizdas."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatyvusis tekstas",
+        "description": "Vaizdą apibūdinantis alternatyvusis tekstas."
+      },
+      {
+        "property": "line1",
+        "title": "1 eilutė",
+        "description": "Pirmoji teksto eilutė."
+      },
+      {
+        "property": "line2",
+        "title": "2 eilutė",
+        "description": "Antroji teksto eilutė."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Piktograma",
+        "description": "Eilutę vaizduojanti piktograma."
+      },
+      {
+        "property": "saturate",
+        "title": "Sodrumo efektas",
+        "description": "Keisti vaizdo sodrumą, kai naudotojas sufokusuoja."
+      },
+      {
+        "property": "tags",
+        "title": "Žymės",
+        "description": "Kableliais atskirtas žymių sąrašas."
+      },
+      {
+        "property": "accentColor",
+        "title": "Spalva",
+        "description": "Piktogramos ir žymių spalva."
+      }
+    ]
+  }
+}

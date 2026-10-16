@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Amharcán PDF Brabhsálaí",
+    "description": "Leabaigh comhad PDF inlíne le leagan amach cárta roghnach agus cnaipe íoslódála."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL an PDF",
+        "description": "Suíomh an chomhaid PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Ceannteideal",
+        "description": "Téacs ceannteidil an chárta."
+      },
+      {
+        "property": "card",
+        "title": "Leagan amach cárta",
+        "description": "Taispeáin an PDF i gcárta le cnaipe íoslódála."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Lipéad íoslódála",
+        "description": "Lipéad don chnaipe íoslódála."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Teachtaireacht nach dtacaítear leis",
+        "description": "Teachtaireacht nuair nach féidir leis an mbrabhsálaí comhaid PDF a thaispeáint."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Teachtaireacht naisc nach dtacaítear leis",
+        "description": "Téacs naisc nuair nach féidir leis an mbrabhsálaí comhaid PDF a thaispeáint."
+      },
+      {
+        "property": "width",
+        "title": "Leithead",
+        "description": "Leithead an amharcáin PDF."
+      },
+      {
+        "property": "height",
+        "title": "Airde",
+        "description": "Airde an amharcáin PDF."
+      }
+    ]
+  }
+}

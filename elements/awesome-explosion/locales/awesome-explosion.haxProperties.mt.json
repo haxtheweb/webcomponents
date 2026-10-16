@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Splużjoni Mill-Aqwa",
+    "description": "Animazzjoni interattiva ta' splużjoni b'effetti tal-ħoss fakultattivi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Daqs",
+        "description": "Issettja d-daqs tal-isplużjoni.",
+        "options": {
+          "tiny": "Ċkejken ħafna",
+          "small": "Żgħir",
+          "medium": "Medju",
+          "large": "Kbir",
+          "epic": "Epiku"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Kulur",
+        "description": "Issettja t-tema tal-kulur tal-isplużjoni.",
+        "options": {
+          "": "Awtomatiku",
+          "red": "Aħmar",
+          "blue": "Blu",
+          "purple": "Vjola",
+          "orange": "Oranġjo",
+          "yellow": "Isfar"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Effetti tal-ħoss",
+        "description": "Attiva l-effetti tal-ħoss."
+      },
+      {
+        "property": "resetSound",
+        "title": "Erġa' ibda l-ħoss",
+        "description": "Erġa' ibda l-ħoss mill-bidu kull darba."
+      },
+      {
+        "property": "image",
+        "title": "Immaġni personalizzata",
+        "description": "URL fakultattiv għal immaġni personalizzata tal-isplużjoni."
+      },
+      {
+        "property": "sound",
+        "title": "Ħoss personalizzat",
+        "description": "URL fakultattiv għal effett tal-ħoss personalizzat."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Diżattivat",
+        "description": "Iddiżattiva l-interazzjonijiet kollha."
+      }
+    ]
+  }
+}

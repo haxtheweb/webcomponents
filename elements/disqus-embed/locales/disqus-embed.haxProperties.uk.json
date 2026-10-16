@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Вбудовування коментарів Disqus на сторінку."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Коротка назва",
+        "description": "Коротка назва сайту, що визначає хост скрипта Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL сторінки",
+        "description": "URL сторінки, до якої прив'язано гілку коментарів."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Ідентифікатор сторінки",
+        "description": "Унікальний ідентифікатор гілки коментарів сторінки."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Назва сторінки",
+        "description": "Назва сторінки, до якої прив'язано гілку коментарів."
+      },
+      {
+        "property": "loadingText",
+        "title": "Текст завантаження",
+        "description": "Текст, що оголошується під час завантаження коментарів."
+      },
+      {
+        "property": "lang",
+        "title": "Мова",
+        "description": "Код мови інтерфейсу Disqus, напр. en."
+      }
+    ]
+  }
+}

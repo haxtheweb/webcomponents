@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "సేకరణ వరుస",
+    "description": "సేకరణ జాబితాలో ఉపయోగించే వరుస-శైలి అంశం; వచనం, లింక్, ఐకాన్, ట్యాగ్‌లు మరియు ఐచ్ఛిక చిత్రంతో."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "లింక్",
+        "description": "ఈ వరుస కోసం గమ్యస్థాన URL."
+      },
+      {
+        "property": "image",
+        "title": "చిత్రం",
+        "description": "వరుస కోసం చిత్రం."
+      },
+      {
+        "property": "alt",
+        "title": "ప్రత్యామ్నాయ వచనం",
+        "description": "చిత్రాన్ని వివరించే ప్రత్యామ్నాయ వచనం."
+      },
+      {
+        "property": "line1",
+        "title": "పంక్తి 1",
+        "description": "వచనం యొక్క మొదటి పంక్తి."
+      },
+      {
+        "property": "line2",
+        "title": "పంక్తి 2",
+        "description": "వచనం యొక్క రెండవ పంక్తి."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ఐకాన్",
+        "description": "వరుసను సూచించే ఐకాన్."
+      },
+      {
+        "property": "saturate",
+        "title": "సంతృప్త ప్రభావం",
+        "description": "వినియోగదారు ఫోకస్ చేసినప్పుడు చిత్ర సంతృప్తతను మార్చండి."
+      },
+      {
+        "property": "tags",
+        "title": "ట్యాగ్‌లు",
+        "description": "కామాతో వేరు చేసిన ట్యాగ్‌ల జాబితా."
+      },
+      {
+        "property": "accentColor",
+        "title": "రంగు",
+        "description": "ఐకాన్ మరియు ట్యాగ్‌ల కోసం ఉపయోగించే రంగు."
+      }
+    ]
+  }
+}

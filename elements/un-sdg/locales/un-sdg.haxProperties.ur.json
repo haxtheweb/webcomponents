@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "اقوامِ متحدہ کا پائیدار ترقی کا ہدف۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "ہدف",
+        "description": "UN SDG نمبر۔"
+      },
+      {
+        "property": "colorOnly",
+        "title": "صرف رنگ",
+        "description": "صرف ہدف کا رنگ دکھائیں۔"
+      }
+    ]
+  }
+}

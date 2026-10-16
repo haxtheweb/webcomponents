@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Vārdnīca",
+    "description": "Vārdnīcas termins."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termins"
+      },
+      {
+        "property": "information",
+        "title": "Definīcija",
+        "description": "Definīcija, kas tiek rādīta, noklikšķinot uz termina."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Uznirstošais logs",
+        "description": "Rādīt definīciju uznirstošajā logā, nevis tekstā."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Saites",
+        "description": "Ar šo terminu saistīto papildu saišu saraksts."
+      }
+    ]
+  }
+}

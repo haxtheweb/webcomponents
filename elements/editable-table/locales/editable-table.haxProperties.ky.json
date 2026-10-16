@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Таблица",
+    "description": "Веб үчүн таблица түрүндөгү маалыматтар."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Сап аталышы",
+        "description": "Биринчи сапты аталыш катары кароо."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Мамыча аталышы",
+        "description": "Биринчи мамычаны аталыш катары кароо."
+      },
+      {
+        "property": "footer",
+        "title": "Төмөнкү колонтитул",
+        "description": "Акыркы сапты төмөнкү колонтитул катары кароо."
+      },
+      {
+        "property": "sort",
+        "title": "Иреттелүүчү",
+        "description": "Мамычалардын маанилери боюнча иреттөөгө уруксат берүү."
+      },
+      {
+        "property": "filter",
+        "title": "Чыпкалоого уруксат",
+        "description": "Мамычалардын маанилери боюнча чыпкалоого уруксат берүү."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Сандык стиль",
+        "description": "Сандык мамычаларга сандык стиль колдонуу."
+      },
+      {
+        "property": "responsive",
+        "title": "Ыңгайлашуучу",
+        "description": "Кичине экрандарда таблицанын макетин ыңгайлаштыруу."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Рубрика режими",
+        "description": "Rubric, RubricScale, RubricCriterion жана RubricLevel метамаалыматтары чыгарылышы үчүн бул таблицаны OER Schema Rubric катары чечмелөө."
+      },
+      {
+        "property": "rubricType",
+        "title": "Рубрика түрү",
+        "description": "oer:rubricType катары чыгарылган рубрика стили (Рубрика режими күйгүзүлгөндө гана мааниси бар).",
+        "options": {
+          "": "(жок)",
+          "analytic": "Аналитикалык",
+          "holistic": "Холистикалык",
+          "single-point": "Бир упай",
+          "checklist": "Текшерүү тизмеси"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Чектелген"
+      },
+      {
+        "property": "condensed",
+        "title": "Саптарды кысуу",
+        "description": "Саптын бийиктигин азайтуу."
+      },
+      {
+        "property": "striped",
+        "title": "Тилкелүү саптар",
+        "description": "Ар бир экинчи сапты көлөкөлөө."
+      },
+      {
+        "property": "downloadable",
+        "title": "Жүктөп алуу баскычы",
+        "description": "Таблицаны жүктөп алуу баскычын кошуу."
+      },
+      {
+        "property": "copyable",
+        "title": "Көчүрүү баскычы",
+        "description": "Таблицанын CSV маалыматтарын көчүрүү баскычын кошуу."
+      },
+      {
+        "property": "printable",
+        "title": "Басып чыгаруу баскычы",
+        "description": "Таблицаны гана басып чыгаруу баскычын кошуу."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV маалыматтары",
+        "description": "Жүктөлгөн CSV файлынан таблица түзүү."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Vloženie LinkedIn",
+    "description": "Vloženie profilovej karty LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Vlastné meno",
+        "description": "Časť vlastného používateľského mena LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokalita",
+        "description": "Hodnota metaúdajov lokality, napríklad en_US."
+      }
+    ]
+  }
+}

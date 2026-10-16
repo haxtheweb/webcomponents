@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "پلي لسٽ",
+    "description": "ڪنهن به قسم جو مواد پلي لسٽ ۾ ڏيکاريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ذريعو",
+        "description": "پلي لسٽ ۾ ڏيکاريل مواد."
+      },
+      {
+        "property": "edit",
+        "title": "ايڊٽ موڊ",
+        "description": "پلي لسٽ لاءِ ايڊٽ ۽ پريويو موڊ جي وچ ۾ ٽوگل ڪريو."
+      },
+      {
+        "property": "navigation",
+        "title": "نيويگيشن",
+        "description": "اڳتي ۽ پوئتي نيويگيشن بٽڻ ڏيکاريو."
+      },
+      {
+        "property": "pagination",
+        "title": "صفحه بندي",
+        "description": "صفحه بندي جا نقطا ڏيکاريو."
+      },
+      {
+        "property": "orientation",
+        "title": "رخ",
+        "description": "سلائيڊن جو رخ.",
+        "options": {
+          "horizontal": "افقي",
+          "vertical": "عمودي"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "شروع ڪرڻ واري سلائيڊ",
+        "description": "شروعات ۾ فوڪس ڪرڻ لاءِ سلائيڊ جو انڊيڪس."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "تناسب",
+        "description": "سلائيڊن جو تناسب.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

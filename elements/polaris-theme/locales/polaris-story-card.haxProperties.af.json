@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris-storiekaart",
+    "description": "Vertoon 'n Polaris-storiekaart met 'n agtergrondprent, pilaaretiket en opskrifteks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Agtergrondprent",
+        "description": "Prent-URL wat as die kaart se agtergrond gewys word."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Agtergrondgrootte",
+        "description": "Hoe die agtergrondprent die kaart vul (CSS background-size).",
+        "options": {
+          "cover": "bedek (cover)",
+          "contain": "bevat (contain)",
+          "auto": "outomaties (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Agtergrondaanhegting",
+        "description": "Hoe die agtergrondprent hom gedra tydens rol (CSS background-attachment).",
+        "options": {
+          "scroll": "rol (scroll)",
+          "fixed": "vas (fixed)",
+          "local": "plaaslik (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Pilaaretiket",
+        "description": "Kort etiket in hoofletters wat bo-aan die kaart gewys word. Laat leeg om te versteek."
+      },
+      {
+        "property": "label",
+        "title": "Kaartteks",
+        "description": "Primêre teks wat in die onderste paneel vertoon word."
+      },
+      {
+        "property": "link",
+        "title": "Skakel",
+        "description": "Opsionele bestemmings-URL wat die hele kaart omvou."
+      }
+    ]
+  }
+}

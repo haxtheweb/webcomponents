@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Сөздүк",
+    "description": "Сөздүк термини."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Термин"
+      },
+      {
+        "property": "information",
+        "title": "Аныктама",
+        "description": "Термин басылганда көрсөтүлгөн аныктама."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Калкыма терезе",
+        "description": "Аныктаманы сап ичинде эмес, калкыма терезеде көрсөтүү."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Шилтемелер",
+        "description": "Бул терминге байланыштуу кошумча шилтемелердин тизмеси."
+      }
+    ]
+  }
+}

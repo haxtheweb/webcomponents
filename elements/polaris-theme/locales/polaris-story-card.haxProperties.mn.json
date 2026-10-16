@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris түүхийн карт",
+    "description": "Арын зураг, тулгуурын шошго болон гарчгийн тексттэй Polaris түүхийн карт харуулах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Арын зураг",
+        "description": "Картын арын дэвсгэр болгон харуулах зургийн URL."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Арын хэмжээ",
+        "description": "Арын зураг картыг хэрхэн дүүргэх (CSS background-size).",
+        "options": {
+          "cover": "Бүрхэх (cover)",
+          "contain": "Багтаах (contain)",
+          "auto": "Автомат (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Арын бэхэлгээ",
+        "description": "Гүйлгэх үед арын зураг хэрхэн ажиллах (CSS background-attachment).",
+        "options": {
+          "scroll": "Гүйлгэх (scroll)",
+          "fixed": "Тогтмол (fixed)",
+          "local": "Орон нутгийн (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Тулгуурын шошго",
+        "description": "Картын дээд хэсэгт харуулах том үсгээр бичсэн богино шошго. Нуух бол хоосон үлдээнэ үү."
+      },
+      {
+        "property": "label",
+        "title": "Картын текст",
+        "description": "Доод самбарт харуулах үндсэн текст."
+      },
+      {
+        "property": "link",
+        "title": "Холбоос",
+        "description": "Картыг бүхэлд нь хамарсан нэмэлт очих URL."
+      }
+    ]
+  }
+}

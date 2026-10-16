@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "برچسب / قرصی",
+    "description": "برچسب فشردهٔ قرصی‌شکل با رنگ تأکیدی، دکمهٔ لغو یا کلید روشن/خاموش اختیاری."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "برچسب",
+        "description": "متنی که درون قرص نمایش داده می‌شود."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "نام رنگ تأکیدی SimpleColors برای پس‌زمینهٔ قرص.",
+        "options": {
+          "": "-- پیش‌فرض --",
+          "red": "قرمز",
+          "pink": "صورتی",
+          "purple": "بنفش",
+          "deep-purple": "بنفش تیره",
+          "indigo": "نیلی",
+          "blue": "آبی",
+          "light-blue": "آبی روشن",
+          "cyan": "فیروزه‌ای",
+          "teal": "سبزآبی",
+          "green": "سبز",
+          "light-green": "سبز روشن",
+          "lime": "لیمویی",
+          "yellow": "زرد",
+          "amber": "کهربایی",
+          "orange": "نارنجی",
+          "deep-orange": "نارنجی تیره",
+          "brown": "قهوه‌ای",
+          "blue-grey": "خاکستری آبی",
+          "grey": "خاکستری"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "رنگ تأکیدی خودکار",
+        "description": "رنگ تأکیدی به‌طور خودکار از متن برچسب به دست آید."
+      },
+      {
+        "property": "cancelButton",
+        "title": "دکمهٔ لغو",
+        "description": "نمایش دکمهٔ نماد حذف/لغو درون قرص."
+      },
+      {
+        "property": "readonly",
+        "title": "فقط خواندنی",
+        "description": "دکمهٔ لغو پنهان شود تا قرص فقط برای نمایش باشد."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "قابل روشن/خاموش",
+        "description": "با کلیک روی دکمه، قرص روشن/خاموش شود."
+      },
+      {
+        "property": "toggled",
+        "title": "روشن",
+        "description": "آیا قرص در حال حاضر روشن است."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "نماد حالت روشن",
+        "description": "نمادی که وقتی قرص روشن است نمایش داده می‌شود."
+      },
+      {
+        "property": "disabled",
+        "title": "غیرفعال",
+        "description": "غیرفعال کردن تعامل با قرص."
+      }
+    ]
+  }
+}

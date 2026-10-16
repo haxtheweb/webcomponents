@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "用于加载和展示 .h5p 文件的 h5p 封装"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe 嵌入代码"
+      }
+    ]
+  }
+}

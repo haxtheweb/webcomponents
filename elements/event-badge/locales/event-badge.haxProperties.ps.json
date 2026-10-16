@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "د پېښې بیج",
+    "description": "د پېښې د بیج برخه."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "د TV انځور",
+        "description": "هغه انځور چې په TV کې ښودل کېږي."
+      },
+      {
+        "property": "logo",
+        "title": "لوګو",
+        "description": "هغه لوګو چې د بیج په ګوټ کې ښودل کېږي."
+      },
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "هغه سرلیک چې د بیج په سر کې ښودل کېږي."
+      },
+      {
+        "property": "name",
+        "title": "نوم",
+        "description": "هغه نوم چې په بیج کې ښودل کېږي."
+      },
+      {
+        "property": "position",
+        "title": "منصب",
+        "description": "د کس رول یا دنده."
+      },
+      {
+        "property": "organization",
+        "title": "سازمان",
+        "description": "هغه سازمان چې کس پکې کار کوي."
+      },
+      {
+        "property": "tvcolor",
+        "title": "د TV رنګ",
+        "description": "د TV لپاره رنګ وټاکئ."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د شالید یا متن لومړنی رنګ."
+      },
+      {
+        "property": "knobcolor",
+        "title": "د تڼیو رنګ",
+        "description": "د TV د تڼیو رنګ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "سیپیا",
+        "description": "د سیپیا اغېز پلی کړئ."
+      },
+      {
+        "property": "blackwhite",
+        "title": "تور او سپین",
+        "description": "د تور او سپین اغېز پلی کړئ."
+      }
+    ]
+  }
+}

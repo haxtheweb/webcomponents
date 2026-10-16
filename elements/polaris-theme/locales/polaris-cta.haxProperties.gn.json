@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Ehechauka Polaris votõ ñehenói tembiapópe ñemohenda ndive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Votõ moñe'ẽrã",
+        "description": "Moñe'ẽrã ojehechaukáva votõ ñehenói tembiapópe."
+      },
+      {
+        "property": "link",
+        "title": "Joajuha",
+        "description": "URL ohohápe votõme g̃uarã."
+      },
+      {
+        "property": "type",
+        "title": "Ambuéva",
+        "description": "Reko ojehecháva ambuéva.",
+        "options": {
+          "primary": "Tenondegua",
+          "tinted": "Isa'ýva",
+          "light": "Hesakã"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Reko ijembe'ýva",
+        "description": "Emyandy reko ijembe'ýva."
+      },
+      {
+        "property": "filled",
+        "title": "Reko henyhẽva",
+        "description": "Emyandy reko henyhẽva."
+      }
+    ]
+  }
+}

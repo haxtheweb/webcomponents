@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D ప్లేయర్",
+    "description": "3D ఫైల్ / ఆగ్మెంటెడ్ రియాలిటీ ప్లేయర్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "మూలం",
+        "description": "ఈ AR ఫైల్ కోసం URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR‌లో అంశం యొక్క X స్థానం."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR‌లో అంశం యొక్క Y స్థానం."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR‌లో అంశం యొక్క Z స్థానం."
+      },
+      {
+        "property": "skyColor",
+        "title": "ఆకాశం రంగు",
+        "description": "దృశ్యంలో ఆకాశం రంగును ఎంచుకోండి."
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "එකතු අයිතමය",
+    "description": "පෙළ, සබැඳිය සහ විකල්ප මාධ්‍ය සහිත, එකතු ලැයිස්තුවක් තුළ භාවිතයට කාඩ්-ශෛලියේ අයිතමයක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "සබැඳිය",
+        "description": "මෙම කාඩ්පත සඳහා ගමනාන්ත URL."
+      },
+      {
+        "property": "image",
+        "title": "රූපය",
+        "description": "පසුබිම් රූපය."
+      },
+      {
+        "property": "line1",
+        "title": "පේළිය 1",
+        "description": "පෙළෙහි පළමු පේළිය."
+      },
+      {
+        "property": "line2",
+        "title": "පේළිය 2",
+        "description": "පෙළෙහි දෙවන පේළිය."
+      },
+      {
+        "property": "line3",
+        "title": "පේළිය 3",
+        "description": "පෙළෙහි තෙවන පේළිය."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "නිරූපකය",
+        "description": "කාඩ්පත නියෝජනය කරන නිරූපකය."
+      },
+      {
+        "property": "saturate",
+        "title": "සංතෘප්ති ප්‍රයෝගය",
+        "description": "පරිශීලක නාභිගත කිරීමේදී රූපයේ සංතෘප්තිය වෙනස් කරන්න."
+      },
+      {
+        "property": "tags",
+        "title": "ටැග",
+        "description": "කොමා වලින් වෙන් කළ ටැග ලැයිස්තුව."
+      },
+      {
+        "property": "accentColor",
+        "title": "වර්ණය",
+        "description": "ටැග සඳහා භාවිත වර්ණය."
+      },
+      {
+        "property": "alt",
+        "title": "විකල්ප පෙළ",
+        "description": "සබැඳිය විස්තර කරන විකල්ප පෙළ."
+      }
+    ]
+  }
+}

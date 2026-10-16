@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Savitikra",
+    "description": "Naudotojai gali atlikti savitikrą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Vaizdas",
+        "description": "Savitikros vaizdas."
+      },
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Savitikros pavadinimas."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatyvusis tekstas",
+        "description": "Vaizdo alternatyvusis tekstas."
+      },
+      {
+        "slot": "question",
+        "title": "Klausimas"
+      },
+      {
+        "slot": "",
+        "title": "Atsakymas"
+      },
+      {
+        "property": "accentColor",
+        "title": "Temos spalva",
+        "description": "Pasirinkite temos spalvą iš dizaino sistemos.",
+        "options": {
+          "primary": "Pagrindinis",
+          "accent": "Akcentas",
+          "success": "Sėkmė",
+          "warning": "Įspėjimas",
+          "error": "Klaida",
+          "info": "Informacija"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mokymosi tikslas",
+        "description": "Mokymosi tikslo nuoroda, pateikiama kaip oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Vertinama",
+        "description": "Veiklos nuoroda, pateikiama kaip oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Daugiau informacijos nuoroda",
+        "description": "Nuoroda į papildomą informaciją."
+      }
+    ]
+  }
+}

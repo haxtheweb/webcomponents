@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Képszakasz",
+    "description": "Teljes szélességű kép, amely tagolja az oldal szakaszait."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Háttérkép."
+      },
+      {
+        "property": "caption",
+        "description": "Szöveges címsor."
+      }
+    ]
+  }
+}

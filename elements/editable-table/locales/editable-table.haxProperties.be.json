@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Табліца",
+    "description": "Таблічныя даныя для вэба."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Загаловак радкоў",
+        "description": "Лічыць першы радок загалоўкам."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Загаловак слупкоў",
+        "description": "Лічыць першы слупок загалоўкам."
+      },
+      {
+        "property": "footer",
+        "title": "Ніжні калантытул",
+        "description": "Лічыць апошні радок ніжнім калантытулам."
+      },
+      {
+        "property": "sort",
+        "title": "Сартаванне",
+        "description": "Дазволіць сартаванне па значэннях слупка."
+      },
+      {
+        "property": "filter",
+        "title": "Дазволіць фільтр",
+        "description": "Дазволіць фільтраванне па значэннях слупка."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Лікавае афармленне",
+        "description": "Прымяняць лікавае афармленне да лікавых слупкоў."
+      },
+      {
+        "property": "responsive",
+        "title": "Адаптыўная",
+        "description": "Падладжваць макет табліцы на малых экранах."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Рэжым рубрыкі",
+        "description": "Інтэрпрэтаваць гэту табліцу як Rubric з OER Schema, каб выводзіліся метаданыя Rubric, RubricScale, RubricCriterion і RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Тып рубрыкі",
+        "description": "Стыль рубрыкі, які выводзіцца як oer:rubricType (мае сэнс толькі пры ўключаным рэжыме рубрыкі).",
+        "options": {
+          "": "(няма)",
+          "analytic": "Аналітычная",
+          "holistic": "Цэласная",
+          "single-point": "Адна кропка",
+          "checklist": "Чэк-ліст"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "З рамкамі"
+      },
+      {
+        "property": "condensed",
+        "title": "Шчыльныя радкі",
+        "description": "Паменшыць вышыню радкоў."
+      },
+      {
+        "property": "striped",
+        "title": "Палосатыя радкі",
+        "description": "Зацяняць кожны другі радок."
+      },
+      {
+        "property": "downloadable",
+        "title": "Кнопка спампоўвання",
+        "description": "Дадаць кнопку для спампоўвання табліцы."
+      },
+      {
+        "property": "copyable",
+        "title": "Кнопка капіявання",
+        "description": "Дадаць кнопку для капіявання даных табліцы ў CSV."
+      },
+      {
+        "property": "printable",
+        "title": "Кнопка друку",
+        "description": "Дадаць кнопку для друку толькі табліцы."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Даныя CSV",
+        "description": "Стварыць табліцу з запампаванага файла CSV."
+      }
+    ]
+  }
+}

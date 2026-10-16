@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "စုစည်းမှု အရာ",
+    "description": "စုစည်းမှုစာရင်းအတွင်း အသုံးပြုရန် စာသား၊ လင့်ခ်နှင့် ရွေးချယ်နိုင်သော မီဒီယာပါသည့် ကတ်ပုံစံ အရာ။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "လင့်ခ်",
+        "description": "ဤကတ်အတွက် ဦးတည်ရာ URL။"
+      },
+      {
+        "property": "image",
+        "title": "ပုံ",
+        "description": "နောက်ခံ ပုံ။"
+      },
+      {
+        "property": "line1",
+        "title": "စာကြောင်း 1",
+        "description": "ပထမ စာကြောင်း။"
+      },
+      {
+        "property": "line2",
+        "title": "စာကြောင်း 2",
+        "description": "ဒုတိယ စာကြောင်း။"
+      },
+      {
+        "property": "line3",
+        "title": "စာကြောင်း 3",
+        "description": "တတိယ စာကြောင်း။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "အိုင်ကွန်",
+        "description": "ကတ်ကို ကိုယ်စားပြုသော အိုင်ကွန်။"
+      },
+      {
+        "property": "saturate",
+        "title": "အရောင်ပြင်းအား အကျိုးသက်ရောက်မှု",
+        "description": "အသုံးပြုသူ focus လုပ်သောအခါ ပုံ၏ အရောင်ပြင်းအားကို ပြောင်းရန်။"
+      },
+      {
+        "property": "tags",
+        "title": "တဂ်များ",
+        "description": "ကော်မာဖြင့် ခွဲထားသော တဂ်စာရင်း။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အရောင်",
+        "description": "တဂ်များအတွက် အသုံးပြုသော အရောင်။"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "လင့်ခ်ကို ဖော်ပြသော အစားထိုး စာသား။"
+      }
+    ]
+  }
+}

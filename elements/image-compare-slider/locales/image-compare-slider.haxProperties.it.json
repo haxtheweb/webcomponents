@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Confronto immagini",
+    "description": "Scorri un'immagine sopra un'altra per confrontarle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Immagine superiore",
+        "description": "Immagine superiore da scorrere sopra quella inferiore."
+      },
+      {
+        "property": "topAlt",
+        "title": "Testo alternativo immagine superiore",
+        "description": "Testo alternativo obbligatorio per l'accessibilità."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Immagine inferiore",
+        "description": "Immagine inferiore mostrata sotto quella superiore."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Testo alternativo immagine inferiore",
+        "description": "Testo alternativo obbligatorio per l'accessibilità."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Comportamento",
+        "description": "Scegli la modalità a tendina (predefinita) o la modalità opacità dell'immagine superiore."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Colore della barra di scorrimento."
+      },
+      {
+        "property": "dark",
+        "title": "Scuro",
+        "description": "Inverti il colore della barra di scorrimento."
+      },
+      {
+        "property": "position",
+        "title": "Posizione iniziale",
+        "description": "Posizione di partenza da 0 a 100."
+      }
+    ]
+  }
+}

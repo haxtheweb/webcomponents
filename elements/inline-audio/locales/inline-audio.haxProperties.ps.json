@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "کرښه‌یز غږ",
+    "description": "د پاڼې د منځپانګې د بشپړولو لپاره غږ په کرښه کې غږوئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "سرچینه",
+        "description": "MP3 فایل یا URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د کارت تاکیدي رنګ."
+      },
+      {
+        "property": "shiny",
+        "title": "ځلانده",
+        "description": "د خړ پر ځای روښانه تاکیدي شالید وکاروئ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "تیاره",
+        "description": "تیاره حالت وکاروئ."
+      }
+    ]
+  }
+}

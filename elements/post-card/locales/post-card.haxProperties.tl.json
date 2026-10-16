@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Post Card",
+    "description": "Isang mapaglarong media na mukhang totoong post card mula sa kung saan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Para kay",
+        "description": "Para kanino ito?"
+      },
+      {
+        "property": "from",
+        "title": "Mula kay",
+        "description": "Sino ka?"
+      },
+      {
+        "property": "message",
+        "title": "Mensahe",
+        "description": "Ano ang gusto mong sabihin?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Postmark Mula Sa",
+        "description": "Saan ipinadala ang card na ito?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Pinagmulan ng Pangunahing Larawan",
+        "description": "Saan matatagpuan ang iyong larawan?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Pinagmulan ng Larawan ng Selyo",
+        "description": "Saan matatagpuan ang iyong larawan?"
+      }
+    ]
+  }
+}

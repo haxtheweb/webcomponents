@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Utvidbar gruppe",
+    "description": "En gruppe elementer som kan utvides og skjules."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Utvid bare én",
+        "description": "Bare ett element kan være utvidet om gangen."
+      },
+      {
+        "slot": "",
+        "title": "Sammenleggbare elementer",
+        "description": "De sammenleggbare elementene."
+      }
+    ]
+  }
+}

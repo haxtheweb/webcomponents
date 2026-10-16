@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Fleş-kartoçka",
+    "description": "Öň we arka tarapy bolan fleş-kartoçkalar bilen düşünjeleri türgenleşdiriň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Kartoçkanyň öň tarapy",
+        "description": "Öň tarapdaky tekst ýa-da sorag."
+      },
+      {
+        "slot": "back",
+        "title": "Kartoçkanyň arka tarapy",
+        "description": "Garaşylýan jogap."
+      },
+      {
+        "property": "imgSource",
+        "title": "Suratyň çeşmesi",
+        "description": "Kartoçka üçin ulanylýan surat faýly. Surat açar sözüniň ýerine geçýär."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Hereketiň görnüşi",
+        "description": "OER Schema: bu türgenleşigiň öz içine alýan hereket görnüşi (meselem, Okamak, Ýazmak, Ýasamak, Gözleg geçirmek, Diňlemek, Tomaşa etmek, Oýlanmak, Ara alyp maslahatlaşmak, Synlamak, Görkezmek, Baha bermek)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Okuw maksady",
+        "description": "OER Schema: bu türgenleşigiň goldaýan okuw maksadynyň ID-si ýa-da URL-i."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Garaňky",
+        "description": "Garaňky tertibi ulan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Kartoçkanyň aksent reňki."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Suratyň açar sözi",
+        "description": "Tötänleýin surat üçin açar söz. Suratyň çeşmesi muňa garanyňda ileri tutulýar."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Speellys",
+    "description": "Vertoon enige soort inhoud in 'n speellys."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Bron",
+        "description": "Inhoud wat in die speellys gewys word."
+      },
+      {
+        "property": "edit",
+        "title": "Wysigmodus",
+        "description": "Wissel tussen wysig- en voorskoumodus vir die speellys."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigasie",
+        "description": "Wys vorentoe- en agtertoe-navigasieknoppies."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginering",
+        "description": "Wys pagineringskolletjies."
+      },
+      {
+        "property": "orientation",
+        "title": "Oriëntasie",
+        "description": "Oriëntasie van die skyfies.",
+        "options": {
+          "horizontal": "Horisontaal",
+          "vertical": "Vertikaal"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Skyfie om mee te begin",
+        "description": "Skyfie-indeks om aanvanklik op te fokus."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Aspekverhouding",
+        "description": "Aspekverhouding van die skyfies.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Žymėjimo klausimas",
+    "description": "Pasirinkite žymes, kad atsakytumėte į klausimą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Klausimas",
+        "description": "Klausimas, į kurį turi atsakyti naudotojai."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vertinimo formatas",
+        "description": "OER Schema: šio vertinimo formatas (pvz., taškai, raidė, procentai, atlikimas)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mokymosi tikslas",
+        "description": "OER Schema: su šiuo vertinimu susijęs mokymosi tikslas."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursas",
+        "description": "OER Schema: kursas, kuriam skirtas šis vertinimas."
+      },
+      {
+        "property": "answers",
+        "title": "Atsakymai"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testo pavadinimas",
+        "description": "Testo pavadinimas, naudojamas xAPI identifikavimui analitikos sistemose."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Kreskanta nombrilo",
+    "description": "Animacii nombron kalkulantan supren ĝis cela valoro kiam ĝi aperas sur la ekrano."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Fina valoro",
+        "description": "La nombro ĝis kiu kalkuli."
+      },
+      {
+        "property": "start",
+        "title": "Komenca valoro",
+        "description": "La nombro de kiu ekkalkuli."
+      },
+      {
+        "property": "duration",
+        "title": "Daŭro",
+        "description": "Sekundoj, kiujn la kalkula animacio daŭru."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Prefiksa teksto",
+        "description": "Teksto montrata antaŭ la nombro (ekz. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Sufiksa teksto",
+        "description": "Teksto montrata post la nombro (ekz. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefiksa ingo",
+        "description": "Nedeviga enigita enhavo antaŭ la nombro."
+      },
+      {
+        "slot": "suffix",
+        "title": "Sufiksa ingo",
+        "description": "Nedeviga enigita enhavo post la nombro."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Decimalaj lokoj",
+        "description": "Nombro de montrotaj decimalaj lokoj."
+      },
+      {
+        "property": "separator",
+        "title": "Milo-apartigilo",
+        "description": "Signo apartiganta milojn."
+      },
+      {
+        "property": "decimal",
+        "title": "Decimala signo",
+        "description": "Signo uzata kiel decimala punkto."
+      },
+      {
+        "property": "noeasing",
+        "title": "Sen glatigo",
+        "description": "Malŝalti glatigon por ke la kalkulado estu lineara."
+      }
+    ]
+  }
+}

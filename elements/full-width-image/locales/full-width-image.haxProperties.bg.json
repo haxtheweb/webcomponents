@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Раздел с изображение",
+    "description": "Изображение на цялата ширина, което разделя секциите на страницата."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Фоново изображение."
+      },
+      {
+        "property": "caption",
+        "description": "Текстово заглавие."
+      }
+    ]
+  }
+}

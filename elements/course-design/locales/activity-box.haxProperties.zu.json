@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ibhokisi Lomsebenzi",
+    "description": "Ibhulokhi encane yesihloko enesitayela."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Isithonjana",
+        "description": "Isithonjana esiboniswa eduze kwebhokisi lomsebenzi."
+      },
+      {
+        "property": "tag",
+        "title": "Umaka webhokisi lomsebenzi",
+        "description": "Umaka oboniswa ebhokisini lomsebenzi."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Ungafaki Umbala",
+        "description": "Vimbela imibala ukuthi ingafakwa esithonjaneni."
+      }
+    ]
+  }
+}

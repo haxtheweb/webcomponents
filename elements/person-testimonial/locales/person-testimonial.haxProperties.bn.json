@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ছবিসহ উদ্ধৃতি",
+    "description": "ঐচ্ছিক ছবিসহ স্টাইল করা উদ্ধৃতি।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ছবি",
+        "description": "প্রশংসাপত্রে একটি ছবি যোগ করুন।"
+      },
+      {
+        "property": "name",
+        "title": "পূর্ণ নাম",
+        "description": "প্রশংসাপত্র প্রদানকারী ব্যক্তির নাম।"
+      },
+      {
+        "property": "position",
+        "title": "পদ বা পদবি",
+        "description": "ব্যক্তির পদ বা পদবি।"
+      },
+      {
+        "slot": "",
+        "title": "উদ্ধৃতি",
+        "description": "প্রশংসাপত্র লেখকের উদ্ধৃতি।"
+      }
+    ]
+  }
+}

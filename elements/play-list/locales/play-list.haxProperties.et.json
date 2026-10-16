@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Esitusloend",
+    "description": "Kuva mis tahes sisu esitusloendina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Allikas",
+        "description": "Esitusloendis kuvatav sisu."
+      },
+      {
+        "property": "edit",
+        "title": "Muutmisrežiim",
+        "description": "Lülita esitusloendi muutmis- ja eelvaaterežiimi vahel."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigeerimine",
+        "description": "Kuva edasi- ja tagasiliikumise nupud."
+      },
+      {
+        "property": "pagination",
+        "title": "Lehekülgedeks jaotus",
+        "description": "Kuva lehekülje täpid."
+      },
+      {
+        "property": "orientation",
+        "title": "Suund",
+        "description": "Slaidide suund.",
+        "options": {
+          "horizontal": "Horisontaalne",
+          "vertical": "Vertikaalne"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Algslaid",
+        "description": "Algselt fookusesse viidava slaidi indeks."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Kuvasuhe",
+        "description": "Slaidide kuvasuhe.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

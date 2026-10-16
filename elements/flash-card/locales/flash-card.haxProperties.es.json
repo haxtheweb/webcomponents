@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tarjeta de memoria",
+    "description": "Practica conceptos con tarjetas de memoria de anverso y reverso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Anverso de la tarjeta",
+        "description": "Texto o pregunta del anverso."
+      },
+      {
+        "slot": "back",
+        "title": "Reverso de la tarjeta",
+        "description": "Respuesta esperada."
+      },
+      {
+        "property": "imgSource",
+        "title": "Origen de la imagen",
+        "description": "Archivo de imagen usado para la tarjeta. Tiene prioridad sobre la palabra clave de imagen."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tipo de acción",
+        "description": "OER Schema: el tipo de acción que implica esta práctica (p. ej., leer, escribir, crear, investigar, escuchar, ver, reflexionar, debatir, observar, presentar, evaluar)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objetivo de aprendizaje",
+        "description": "OER Schema: ID o URL del objetivo de aprendizaje que apoya esta práctica."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Oscuro",
+        "description": "Usar el modo oscuro."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Color de acento de la tarjeta."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Palabra clave de imagen",
+        "description": "Palabra clave para una imagen aleatoria. El origen de la imagen tiene prioridad."
+      }
+    ]
+  }
+}

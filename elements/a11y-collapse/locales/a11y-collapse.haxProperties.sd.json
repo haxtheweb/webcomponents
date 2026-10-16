@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "بند ٿيندڙ ڪنٽينر",
+    "description": "هڪ اڪيلو کلندڙ ۽ بند ٿيندڙ ڪنٽينر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "سرخي",
+        "description": "بند ٿيندڙ حصي لاءِ متن."
+      },
+      {
+        "property": "expanded",
+        "title": "کليل",
+        "description": "ڊفالٽ طور کليل رکو."
+      },
+      {
+        "property": "headingButton",
+        "title": "سرخي بٽڻ",
+        "description": "صرف آئڪن بدران پوري سرخي کي ڪلڪ لائق بڻايو."
+      },
+      {
+        "property": "icon",
+        "title": "آئڪن",
+        "description": "کولڻ/بند ڪرڻ ٽوگل بٽڻ لاءِ آئڪن."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "آئڪن (کليل حالت ۾)",
+        "description": "کليل ٽوگل حالت لاءِ اختياري آئڪن."
+      },
+      {
+        "slot": "",
+        "title": "مواد",
+        "description": "بند ٿيندڙ حصي لاءِ مواد."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "ٽول ٽپ",
+        "description": "کولڻ/بند ڪرڻ ٽوگل بٽڻ لاءِ ٽول ٽپ."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "ٽول ٽپ (کليل حالت ۾)",
+        "description": "کليل هجڻ وقت کولڻ/بند ڪرڻ بٽڻ لاءِ ٽول ٽپ."
+      }
+    ]
+  }
+}

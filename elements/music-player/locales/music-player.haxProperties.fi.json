@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI-visualisoija",
+    "description": "Toista MIDI-tiedostoja visualisoinnin kanssa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Lähde",
+        "description": "Toistettavan tiedoston URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualisointi",
+        "description": "Musiikkitiedoston visualisointityyli.",
+        "options": {
+          "staff": "Nuottiviivasto",
+          "piano-roll": "Pianorulla",
+          "waterfall": "Piano + vesiputous"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Piilota vesiputous",
+        "description": "Piilota vesiputousnuotit pianovisualisoinnissa."
+      }
+    ]
+  }
+}

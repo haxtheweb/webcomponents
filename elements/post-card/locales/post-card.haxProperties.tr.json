@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Kartpostal",
+    "description": "Bir yerden gönderilmiş gerçek bir kartpostal gibi görünen eğlenceli bir medya öğesi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Alıcı",
+        "description": "Bu kime gidiyor?"
+      },
+      {
+        "property": "from",
+        "title": "Gönderen",
+        "description": "Siz kimsiniz?"
+      },
+      {
+        "property": "message",
+        "title": "Mesaj",
+        "description": "Ne söylemek istiyorsunuz?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Posta Damgası Yeri",
+        "description": "Bu kart nereden gönderildi?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Ana Fotoğraf Kaynağı",
+        "description": "Fotoğrafınız nerede bulunuyor?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Pul Fotoğrafı Kaynağı",
+        "description": "Fotoğrafınız nerede bulunuyor?"
+      }
+    ]
+  }
+}

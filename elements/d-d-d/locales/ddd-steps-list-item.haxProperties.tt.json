@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Адым элементы",
+    "description": "Адымнар исемлегенә керүче элемент"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Исем"
+      }
+    ]
+  }
+}

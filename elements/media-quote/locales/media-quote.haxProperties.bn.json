@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "মিডিয়া উদ্ধৃতি",
+    "description": "উদ্ধৃতি, উৎসনির্দেশ ও ঐচ্ছিক ক্যাপশনসহ ছবি।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "উদ্ধৃতি",
+        "description": "উদ্ধৃতির টেক্সট।"
+      },
+      {
+        "slot": "author",
+        "title": "লেখক",
+        "description": "উদ্ধৃতির লেখক।"
+      },
+      {
+        "slot": "author-detail",
+        "title": "লেখকের বিবরণ",
+        "description": "লেখকের বিবরণ।"
+      },
+      {
+        "slot": "caption",
+        "title": "ক্যাপশন",
+        "description": "ছবির ক্যাপশন।"
+      },
+      {
+        "property": "src",
+        "title": "ছবির উৎস",
+        "description": "মিডিয়া উদ্ধৃতিতে ব্যবহৃত ছবির ফাইল।"
+      },
+      {
+        "property": "alt",
+        "title": "বিকল্প টেক্সট",
+        "description": "ছবির বিকল্প টেক্সট।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "কার্ডের অ্যাকসেন্ট রং।"
+      }
+    ]
+  }
+}

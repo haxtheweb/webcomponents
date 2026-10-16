@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Mai naɗe saka mai kunnawa na Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Tushe",
+        "description": "Mahaɗin saka ko rabawa daga Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Jigo",
+        "description": "Jigon launin bango na mai kunnawa.",
+        "options": {
+          "": "Tsoho",
+          "0": "Baƙi"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Girma",
+        "description": "Girman mai kunnawa.",
+        "options": {
+          "normal": "Tsoho",
+          "compact": "Matsattse"
+        }
+      }
+    ]
+  }
+}

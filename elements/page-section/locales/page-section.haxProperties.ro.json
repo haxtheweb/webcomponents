@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Secțiune de pagină",
+    "description": "Container de secțiune pentru conținutul paginii și aspecte pe ecran întreg."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Tratament de design",
+        "description": "Stil predefinit care actualizează setările asociate."
+      },
+      {
+        "property": "image",
+        "title": "Imagine",
+        "description": "Media de fundal pentru secțiune."
+      },
+      {
+        "property": "bg",
+        "title": "Culoare de fundal",
+        "description": "Culoarea de fundal când nu este setată nicio imagine."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Buton de derulare",
+        "description": "Afișează un buton care derulează la secțiunea următoare."
+      },
+      {
+        "property": "fold",
+        "title": "Afișează pliul",
+        "description": "Afișează un pliu vizual în partea de jos a secțiunii."
+      },
+      {
+        "property": "full",
+        "title": "Dimensiune ecran complet",
+        "description": "Umple înălțimea ecranului utilizatorului."
+      },
+      {
+        "property": "filter",
+        "title": "Aplică filtru",
+        "description": "Aplică un filtru vizual imaginii de fundal."
+      },
+      {
+        "slot": "",
+        "title": "Conținut",
+        "description": "Conținutul secțiunii."
+      },
+      {
+        "slot": "entice",
+        "title": "Atracție",
+        "description": "Conținut opțional de atragere."
+      },
+      {
+        "slot": "buttons",
+        "title": "Butoane",
+        "description": "Grup de butoane afișat sub text."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Text ancoră",
+        "description": "Eticheta ancorei afișată în navigare."
+      }
+    ]
+  }
+}

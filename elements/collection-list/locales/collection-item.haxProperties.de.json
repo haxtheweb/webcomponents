@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Sammlungselement",
+    "description": "Kartenelement zur Verwendung in einer Sammlungsliste, mit Text, Link und optionalen Medien."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Ziel-URL für diese Karte."
+      },
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Hintergrundbild."
+      },
+      {
+        "property": "line1",
+        "title": "Zeile 1",
+        "description": "Erste Textzeile."
+      },
+      {
+        "property": "line2",
+        "title": "Zeile 2",
+        "description": "Zweite Textzeile."
+      },
+      {
+        "property": "line3",
+        "title": "Zeile 3",
+        "description": "Dritte Textzeile."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Symbol",
+        "description": "Symbol, das die Karte darstellt."
+      },
+      {
+        "property": "saturate",
+        "title": "Sättigungseffekt",
+        "description": "Bildsättigung bei Fokus durch den Benutzer ändern."
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Kommagetrennte Liste von Tags."
+      },
+      {
+        "property": "accentColor",
+        "title": "Farbe",
+        "description": "Farbe für Tags."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativtext, der den Link beschreibt."
+      }
+    ]
+  }
+}

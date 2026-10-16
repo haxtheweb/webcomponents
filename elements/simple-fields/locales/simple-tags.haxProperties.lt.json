@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Žymės",
+    "description": "Paprastas žymių sąrašas, rodomas puslapyje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Žymės",
+        "description": "Kableliais atskirtas žymių sąrašas."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatinė akcento spalva",
+        "description": "Automatiškai nustatyti akcento spalvą pagal etiketę."
+      },
+      {
+        "property": "accentColor",
+        "title": "Spalva",
+        "description": "Žymių spalva."
+      }
+    ]
+  }
+}

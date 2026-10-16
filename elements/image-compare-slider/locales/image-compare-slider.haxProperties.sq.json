@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Krahasim imazhesh",
+    "description": "Rrëshqit një imazh mbi një tjetër për krahasim."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Imazhi i sipërm",
+        "description": "Imazhi i sipërm që rrëshqet mbi imazhin e poshtëm."
+      },
+      {
+        "property": "topAlt",
+        "title": "Teksti alt i imazhit të sipërm",
+        "description": "Tekst alt i detyrueshëm për aksesueshmëri."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Imazhi i poshtëm",
+        "description": "Imazhi i poshtëm që shfaqet nën imazhin e sipërm."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Teksti alt i imazhit të poshtëm",
+        "description": "Tekst alt i detyrueshëm për aksesueshmëri."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Sjellja",
+        "description": "Zgjidh modalitetin e fshirjes (parazgjedhje) ose modalitetin e tejdukshmërisë së imazhit të sipërm."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra e shiritit rrëshqitës."
+      },
+      {
+        "property": "dark",
+        "title": "E errët",
+        "description": "Përmbys ngjyrën e shiritit rrëshqitës."
+      },
+      {
+        "property": "position",
+        "title": "Pozicioni fillestar",
+        "description": "Pozicioni fillestar nga 0 deri në 100."
+      }
+    ]
+  }
+}

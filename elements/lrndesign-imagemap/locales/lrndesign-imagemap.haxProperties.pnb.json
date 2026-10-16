@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "تصویر نقشہ",
+    "description": "انٹرایکٹو ہاٹ سپاٹاں والا قابل رسائی تصویر نقشہ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "لیبل",
+        "description": "تصویر نقشے دا لیبل۔"
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "ہاٹ سپاٹ تفصیلاں",
+        "description": "تصویر نقشے اُتے انٹرایکٹو ہاٹ سپاٹ۔"
+      }
+    ]
+  }
+}

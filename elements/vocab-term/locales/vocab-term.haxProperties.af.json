@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Woordeskat",
+    "description": "Woordeskatterm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Term"
+      },
+      {
+        "property": "information",
+        "title": "Definisie",
+        "description": "Definisie wat gewys word wanneer op die term geklik word."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Opspringer",
+        "description": "Vertoon die definisie in 'n opspringer in plaas van inlyn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Skakels",
+        "description": "Lys van aanvullende skakels wat met hierdie term verband hou."
+      }
+    ]
+  }
+}

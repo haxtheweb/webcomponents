@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Jednostavna slika",
+    "description": "Obrađujte slike pomoću jednostavnih parametara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Izvor",
+        "description": "URL izvora slike."
+      },
+      {
+        "property": "height",
+        "title": "Visina",
+        "description": "Neobavezna visina slike."
+      },
+      {
+        "property": "width",
+        "title": "Širina",
+        "description": "Neobavezna širina slike."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativni tekst",
+        "description": "Korisno za čitače zaslona i bolji SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kvaliteta",
+        "description": "Kvaliteta slike pri generiranju (samo JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Prioritet dohvaćanja",
+        "description": "Savjet o performansama za moderne preglednike.",
+        "options": {
+          "auto": "Automatski",
+          "high": "Visok",
+          "low": "Nizak"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Način dekodiranja",
+        "description": "Savjet o performansama za prikaz slika u modernim preglednicima.",
+        "options": {
+          "auto": "Automatski",
+          "async": "Asinkrono"
+        }
+      }
+    ]
+  }
+}

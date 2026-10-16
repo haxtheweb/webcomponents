@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "فلیش کارڈ",
+    "description": "دو رخی فلیش کارڈز کے ذریعے تصورات کی مشق کریں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "کارڈ کا سامنے والا رخ",
+        "description": "سامنے کا متن یا سوال۔"
+      },
+      {
+        "slot": "back",
+        "title": "کارڈ کا پچھلا رخ",
+        "description": "متوقع جواب۔"
+      },
+      {
+        "property": "imgSource",
+        "title": "تصویر کا ماخذ",
+        "description": "کارڈ کے لیے استعمال ہونے والی تصویری فائل۔ تصویری کلیدی لفظ پر فوقیت رکھتی ہے۔"
+      },
+      {
+        "property": "typeOfAction",
+        "title": "عمل کی قسم",
+        "description": "OER Schema: اس مشق میں شامل عمل کی قسم (مثلاً پڑھنا، لکھنا، بنانا، تحقیق، سننا، دیکھنا، غور و فکر، گفتگو، مشاہدہ، پیشکش، جانچ)۔"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "تعلیمی مقصد",
+        "description": "OER Schema: اس تعلیمی مقصد کی ID یا URL جس کی یہ مشق معاونت کرتی ہے۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "گہرا",
+        "description": "گہرا موڈ استعمال کریں۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "کارڈ کا نمایاں رنگ۔"
+      },
+      {
+        "property": "imgKeyword",
+        "title": "تصویری کلیدی لفظ",
+        "description": "بے ترتیب تصویر کا کلیدی لفظ۔ تصویر کا ماخذ اس پر فوقیت رکھتا ہے۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Iespaidīgs sprādziens",
+    "description": "Interaktīva sprādziena animācija ar neobligātiem skaņas efektiem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Izmērs",
+        "description": "Iestatiet sprādziena izmēru.",
+        "options": {
+          "tiny": "Sīks",
+          "small": "Mazs",
+          "medium": "Vidējs",
+          "large": "Liels",
+          "epic": "Episks"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Krāsa",
+        "description": "Iestatiet sprādziena krāsu motīvu.",
+        "options": {
+          "": "Noklusējums",
+          "red": "Sarkana",
+          "blue": "Zila",
+          "purple": "Violeta",
+          "orange": "Oranža",
+          "yellow": "Dzeltena"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Skaņas efekti",
+        "description": "Iespējot skaņas efektus."
+      },
+      {
+        "property": "resetSound",
+        "title": "Atiestatīt skaņu",
+        "description": "Katru reizi atskaņot skaņu no sākuma."
+      },
+      {
+        "property": "image",
+        "title": "Pielāgots attēls",
+        "description": "Neobligāts pielāgota sprādziena attēla URL."
+      },
+      {
+        "property": "sound",
+        "title": "Pielāgota skaņa",
+        "description": "Neobligāts pielāgota skaņas efekta URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Atspējots",
+        "description": "Atspējot visu mijiedarbību."
+      }
+    ]
+  }
+}

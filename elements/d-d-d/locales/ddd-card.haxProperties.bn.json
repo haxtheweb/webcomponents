@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "কার্ড",
+    "description": "DDD ডিজাইন সিস্টেমে স্টাইল করা কার্ড উপাদান।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ছবি",
+        "description": "ঐচ্ছিক ছবি।"
+      },
+      {
+        "property": "alt",
+        "title": "ছবির বিকল্প টেক্সট",
+        "description": "ছবির বর্ণনামূলক বিকল্প টেক্সট।"
+      },
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "কার্ডের শিরোনাম।"
+      },
+      {
+        "slot": "",
+        "title": "বিষয়বস্তু",
+        "description": "কার্ডের বিষয়বস্তুর এলাকা।"
+      },
+      {
+        "property": "href",
+        "title": "লিংক",
+        "description": "বোতামের লিংক URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "লেবেল",
+        "description": "বোতামের লেবেল।"
+      },
+      {
+        "property": "noArrow",
+        "title": "তীরচিহ্ন নেই",
+        "description": "বোতামের তীরচিহ্ন লুকান।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "লিংক: টার্গেট",
+        "description": "লিংকটি কোথায় খুলবে।",
+        "options": {
+          "": "একই উইন্ডো",
+          "_blank": "নতুন উইন্ডো - _blank",
+          "_top": "শীর্ষ উইন্ডো - _top",
+          "_parent": "প্যারেন্ট উইন্ডো - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "লিংক: rel",
+        "description": "লিংক করা রিসোর্স ও বর্তমান ডকুমেন্টের মধ্যে সম্পর্ক।"
+      }
+    ]
+  }
+}

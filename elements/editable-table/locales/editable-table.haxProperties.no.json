@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabell",
+    "description": "Tabellbaserte data for nettet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Radoverskrift",
+        "description": "Behandle første rad som overskrift."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Kolonneoverskrift",
+        "description": "Behandle første kolonne som overskrift."
+      },
+      {
+        "property": "footer",
+        "title": "Bunntekst",
+        "description": "Behandle siste rad som bunntekst."
+      },
+      {
+        "property": "sort",
+        "title": "Sorterbar",
+        "description": "Tillat sortering etter kolonneverdier."
+      },
+      {
+        "property": "filter",
+        "title": "Tillat filtrering",
+        "description": "Tillat filtrering etter kolonneverdier."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numerisk stil",
+        "description": "Bruk numerisk stil på numeriske kolonner."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsiv",
+        "description": "Tilpass tabelloppsettet på små skjermer."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubric-modus",
+        "description": "Tolk denne tabellen som en OER Schema Rubric slik at metadata for Rubric, RubricScale, RubricCriterion og RubricLevel sendes ut."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubric-type",
+        "description": "Rubric-stil som sendes ut som oer:rubricType (gjelder bare når Rubric-modus er på).",
+        "options": {
+          "": "(ingen)",
+          "analytic": "Analytisk",
+          "holistic": "Helhetlig",
+          "single-point": "Enkeltpunkt",
+          "checklist": "Sjekkliste"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Med kantlinjer"
+      },
+      {
+        "property": "condensed",
+        "title": "Kompakte rader",
+        "description": "Reduser radhøyden."
+      },
+      {
+        "property": "striped",
+        "title": "Stripete rader",
+        "description": "Skyggelegg annenhver rad."
+      },
+      {
+        "property": "downloadable",
+        "title": "Nedlastingsknapp",
+        "description": "Legg til en knapp for å laste ned tabellen."
+      },
+      {
+        "property": "copyable",
+        "title": "Kopieringsknapp",
+        "description": "Legg til en knapp for å kopiere tabellens CSV-data."
+      },
+      {
+        "property": "printable",
+        "title": "Utskriftsknapp",
+        "description": "Legg til en knapp for å skrive ut bare tabellen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV-data",
+        "description": "Lag en tabell fra en opplastet CSV-fil."
+      }
+    ]
+  }
+}

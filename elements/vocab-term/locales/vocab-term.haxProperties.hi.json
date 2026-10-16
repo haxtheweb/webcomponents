@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "शब्दावली",
+    "description": "शब्दावली पद।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "पद"
+      },
+      {
+        "property": "information",
+        "title": "परिभाषा",
+        "description": "पद पर क्लिक करने पर दिखाई जाने वाली परिभाषा।"
+      },
+      {
+        "property": "popoverMode",
+        "title": "पॉपओवर",
+        "description": "परिभाषा को इनलाइन के बजाय पॉपओवर में प्रदर्शित करें।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "लिंक",
+        "description": "इस पद से जुड़े पूरक लिंक की सूची।"
+      }
+    ]
+  }
+}

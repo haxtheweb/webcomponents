@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D-spiler",
+    "description": "In spiler foar 3D-bestannen / augmented reality."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Boarne",
+        "description": "De URL foar dit AR-bestân."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "X-posysje fan it elemint yn AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Y-posysje fan it elemint yn AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Z-posysje fan it elemint yn AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Loftkleur",
+        "description": "Kies de kleur fan de loft yn de sêne."
+      }
+    ]
+  }
+}

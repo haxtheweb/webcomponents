@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Visualizatore MIDI",
+    "description": "Leghje u MIDI in cuntestu cù una visualizazione."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonte",
+        "description": "URL di u schedariu à leghje."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualizazione",
+        "description": "Stile di visualizazione di u schedariu musicale.",
+        "options": {
+          "staff": "Purtata",
+          "piano-roll": "Rotulu di pianoforte",
+          "waterfall": "Pianoforte + cascata"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Piattà a cascata",
+        "description": "Piattà e note in cascata in a visualizazione di pianoforte."
+      }
+    ]
+  }
+}

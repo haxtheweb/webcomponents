@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Κάντε τα κινούμενα GIF προσβάσιμα."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Κινούμενο GIF",
+        "description": "URL για το κινούμενο GIF."
+      },
+      {
+        "property": "alt",
+        "title": "Εναλλακτικό κείμενο",
+        "description": "Εναλλακτικό κείμενο για την εικόνα."
+      },
+      {
+        "property": "longdesc",
+        "title": "Εκτενής περιγραφή",
+        "description": "Εκτενής περιγραφή του GIF για προσβασιμότητα."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Στατική εικόνα",
+        "description": "URL για μια στατική εκδοχή του GIF."
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "التاريخ",
+    "description": "عرض تاريخ تقويمي مع التفاصيل."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "الشهر",
+        "description": "الشهر المعروض على البطاقة."
+      },
+      {
+        "property": "date",
+        "title": "يوم الشهر",
+        "description": "رقم اليوم من الشهر."
+      },
+      {
+        "property": "day",
+        "title": "يوم الأسبوع",
+        "description": "اسم يوم الأسبوع."
+      },
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "اسم الحدث."
+      },
+      {
+        "property": "location",
+        "title": "المكان",
+        "description": "مكان الحدث."
+      },
+      {
+        "property": "startTime",
+        "title": "البداية",
+        "description": "وقت البداية."
+      },
+      {
+        "property": "endTime",
+        "title": "النهاية",
+        "description": "وقت النهاية."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون تمييز اختياري."
+      },
+      {
+        "property": "dark",
+        "title": "السمة الداكنة",
+        "description": "تفعيل السمة الداكنة."
+      }
+    ]
+  }
+}

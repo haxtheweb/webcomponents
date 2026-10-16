@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Ruray item",
+    "description": "Ruray listapa huk itemnin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sutichay"
+      }
+    ]
+  }
+}

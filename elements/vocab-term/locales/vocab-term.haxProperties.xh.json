@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Isigama",
+    "description": "Igama lesigama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Igama"
+      },
+      {
+        "property": "information",
+        "title": "Inkcazo",
+        "description": "Inkcazo eboniswa xa igama licofwa."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Ibhokisi ephumayo",
+        "description": "Bonisa inkcazo kwibhokisi ephumayo endaweni yaphakathi kombhalo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Amakhonkco",
+        "description": "Uluhlu lwamakhonkco ongezelelweyo anxulunyaniswe neli gama."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Chi tiết trang",
+    "description": "Xác định điểm phân chia trực quan giữa các trang mà CMS có thể dùng để tạo trang."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề hiển thị trong giao diện và tiêu đề đầu tiên."
+      },
+      {
+        "property": "pageType",
+        "title": "Loại",
+        "description": "Nhãn ngữ cảnh trực quan của trang.",
+        "options": {
+          "": "-- không có --",
+          "content": "Nội dung",
+          "assessment": "Đánh giá",
+          "quiz": "Bài kiểm tra",
+          "submission": "Bài nộp",
+          "lesson": "Bài học",
+          "module": "Mô-đun",
+          "task": "Nhiệm vụ",
+          "activity": "Hoạt động",
+          "project": "Dự án",
+          "practice": "Luyện tập",
+          "unit": "Đơn vị",
+          "objectives": "Mục tiêu học tập",
+          "connection": "Liên hệ",
+          "knowledge": "Bạn có biết?",
+          "strategy": "Chiến lược học tập",
+          "discuss": "Thảo luận",
+          "listen": "Nghe",
+          "make": "Làm",
+          "observe": "Quan sát",
+          "present": "Trình bày",
+          "reading": "Đọc",
+          "reflect": "Suy ngẫm",
+          "research": "Nghiên cứu",
+          "watch": "Xem",
+          "write": "Viết"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Thẻ",
+        "description": "Danh sách thẻ phân tách bằng dấu phẩy."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL liên kết",
+        "description": "URL chuyển hướng hiển thị thay cho nội dung trang."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Đích liên kết",
+        "description": "Mở liên kết trong cùng cửa sổ hoặc cửa sổ mới.",
+        "options": {
+          "_self": "Cùng cửa sổ",
+          "_blank": "Cửa sổ mới"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Đã xuất bản",
+        "description": "Các trang chưa xuất bản bị ẩn với người dùng cuối."
+      },
+      {
+        "property": "locked",
+        "title": "Khóa trang",
+        "description": "Khóa hoặc mở khóa tất cả phần tử trên trang này."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Ghi đè đường dẫn tự động",
+        "description": "Khóa đường dẫn để không tự động cập nhật theo tiêu đề hoặc trang cha."
+      },
+      {
+        "property": "slug",
+        "title": "Đường dẫn",
+        "description": "Đường dẫn URL cho trang này."
+      },
+      {
+        "property": "image",
+        "title": "Phương tiện",
+        "description": "Phương tiện đại diện cho trang, được dùng trong một số giao diện và chế độ xem."
+      },
+      {
+        "property": "parent",
+        "title": "Trang cha",
+        "description": "Đường dẫn của trang cha."
+      },
+      {
+        "property": "noderefs",
+        "title": "Nội dung liên quan",
+        "description": "Các trang liên quan đến trang này."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Mô tả",
+        "description": "Mô tả dùng trong bộ sưu tập và tối ưu hóa công cụ tìm kiếm."
+      },
+      {
+        "property": "entityType",
+        "title": "Loại thực thể",
+        "description": "Mặc định là trang trừ khi được đặt khác.",
+        "options": {
+          "page": "Trang (mặc định)",
+          "taxonomy": "Phân loại",
+          "taxonomyTerm": "Thuật ngữ phân loại",
+          "region": "Vùng"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Biểu tượng",
+        "description": "Biểu tượng gắn với trang này trên trang web."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu gắn với trang này trên trang web."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Ẩn trong menu",
+        "description": "Ẩn trang này khỏi menu nhưng vẫn giữ URL."
+      },
+      {
+        "property": "order",
+        "title": "Thứ tự",
+        "description": "Thứ tự so với các trang cùng cấp."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Giao diện trang",
+        "description": "Ghi đè giao diện chỉ cho trang này."
+      },
+      {
+        "property": "author",
+        "title": "Tác giả",
+        "description": "Tên người dùng của người sửa đổi trang này gần nhất."
+      }
+    ]
+  }
+}

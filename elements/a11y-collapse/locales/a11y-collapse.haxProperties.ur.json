@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "سمٹنے والا کنٹینر",
+    "description": "پھیلنے اور سمٹنے والا واحد کنٹینر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "سرخی",
+        "description": "سمٹنے والے حصے کا متن۔"
+      },
+      {
+        "property": "expanded",
+        "title": "پھیلا ہوا",
+        "description": "بطور طے شدہ پھیلا ہوا رکھیں۔"
+      },
+      {
+        "property": "headingButton",
+        "title": "سرخی بٹن",
+        "description": "صرف آئیکن کے بجائے پوری سرخی کو قابلِ کلک بنائیں۔"
+      },
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "پھیلانے/سمیٹنے کے ٹوگل بٹن کا آئیکن۔"
+      },
+      {
+        "property": "iconExpanded",
+        "title": "آئیکن (پھیلی ہوئی حالت میں)",
+        "description": "پھیلی ہوئی ٹوگل حالت کے لیے اختیاری آئیکن۔"
+      },
+      {
+        "slot": "",
+        "title": "مواد",
+        "description": "سمٹنے والے حصے کا مواد۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "ٹول ٹپ",
+        "description": "پھیلانے/سمیٹنے کے ٹوگل بٹن کی ٹول ٹپ۔"
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "ٹول ٹپ (پھیلی ہوئی حالت میں)",
+        "description": "پھیلی ہوئی حالت میں پھیلانے/سمیٹنے کے بٹن کی ٹول ٹپ۔"
+      }
+    ]
+  }
+}

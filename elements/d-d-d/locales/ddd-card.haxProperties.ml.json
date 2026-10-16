@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "കാർഡ്",
+    "description": "DDD ഡിസൈൻ സിസ്റ്റം ഉപയോഗിച്ച് ശൈലീകരിച്ച കാർഡ് ഘടകം."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ചിത്രം",
+        "description": "ഐച്ഛിക ചിത്രം."
+      },
+      {
+        "property": "alt",
+        "title": "ചിത്ര ആൾട്ട്",
+        "description": "ചിത്രം വിവരിക്കുന്ന പകരം വാചകം."
+      },
+      {
+        "property": "title",
+        "title": "ശീർഷകം",
+        "description": "കാർഡ് ശീർഷകം."
+      },
+      {
+        "slot": "",
+        "title": "ഉള്ളടക്കം",
+        "description": "കാർഡ് ഉള്ളടക്ക ഭാഗം."
+      },
+      {
+        "property": "href",
+        "title": "ലിങ്ക്",
+        "description": "ബട്ടൺ ലിങ്ക് URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "ലേബൽ",
+        "description": "ബട്ടൺ ലേബൽ."
+      },
+      {
+        "property": "noArrow",
+        "title": "അമ്പടയാളം ഇല്ല",
+        "description": "ബട്ടൺ അമ്പടയാളം മറയ്ക്കുക."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "ലിങ്ക്: ലക്ഷ്യം",
+        "description": "ലിങ്ക് എവിടെ തുറക്കണം.",
+        "options": {
+          "": "അതേ വിൻഡോ",
+          "_blank": "പുതിയ വിൻഡോ - _blank",
+          "_top": "മുകളിലെ വിൻഡോ - _top",
+          "_parent": "പാരന്റ് വിൻഡോ - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "ലിങ്ക്: rel",
+        "description": "ലിങ്ക് ചെയ്ത ഉറവിടവും നിലവിലെ ഡോക്യുമെന്റും തമ്മിലുള്ള ബന്ധം."
+      }
+    ]
+  }
+}

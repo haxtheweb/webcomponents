@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "واژه‌آرایی HAX",
+    "description": "عنصر لوگوی HAX، که البته خودش عنصری سازگار با HAX است."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "اندازهٔ لوگوی HAX برای قرار دادن",
+        "options": {
+          "mini": "کوچک",
+          "small": "کوچک",
+          "normal": "عادی",
+          "large": "بزرگ"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "آیا لوگو به حروف بزرگ تبدیل شود"
+      }
+    ]
+  }
+}

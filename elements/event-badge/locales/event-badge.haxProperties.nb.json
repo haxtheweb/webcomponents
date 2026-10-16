@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Arrangementsmerke",
+    "description": "Komponent for arrangementsmerke."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV-bilde",
+        "description": "Bilde som vises på TV-en."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo som vises i hjørnet av merket."
+      },
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Tittel som vises øverst på merket."
+      },
+      {
+        "property": "name",
+        "title": "Navn",
+        "description": "Navn som vises på merket."
+      },
+      {
+        "property": "position",
+        "title": "Stilling",
+        "description": "Personens rolle eller tittel."
+      },
+      {
+        "property": "organization",
+        "title": "Organisasjon",
+        "description": "Organisasjonen personen jobber for."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV-farge",
+        "description": "Velg fargen på TV-en."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Primær bakgrunns- eller tekstfarge."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Knappefarge",
+        "description": "Fargen på TV-knappene."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Bruk en sepiaeffekt."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Svart-hvitt",
+        "description": "Bruk en svart-hvitt-effekt."
+      }
+    ]
+  }
+}

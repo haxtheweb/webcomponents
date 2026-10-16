@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Noodid",
+    "description": "Kuvab ja esitab noote, kitarritabulatuure ja partituure alphaTexi või MusicXML-i abil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTexi notatsioon",
+        "description": "Nootide tekstisisene alphaTexi märgistus. Muuda seda otse notatsiooni kirjutamiseks; see salvestatakse malli, et tühikud säiliksid."
+      },
+      {
+        "property": "source",
+        "title": "Partituurifail",
+        "description": "Laadi üles või lingi MusicXML-i (.xml/.musicxml/.mxl) või Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) fail. Määramisel alistab tekstisisese alphaTexi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Heli taasesitus",
+        "description": "Vaikimisi sees – kuula noote sisseehitatud süntesaatori esituses. Lülita välja ainult vaatamise (helita) režiimi jaoks."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Kuva kuvasuvandid",
+        "description": "Kuva mängijaribal suumi-, venitus- ja paigutusnupud."
+      },
+      {
+        "property": "showExport",
+        "title": "Kuva eksportimisnupud",
+        "description": "Kuva mängijaribal MIDI allalaadimise ja printimise/PDF-i nupud."
+      }
+    ]
+  }
+}

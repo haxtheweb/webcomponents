@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "اقوام متحدہ دا پائیدار ترقی دا مقصد۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "مقصد",
+        "description": "UN SDG نمبر۔"
+      },
+      {
+        "property": "colorOnly",
+        "title": "صرف رنگ",
+        "description": "صرف مقصد دا رنگ وکھاؤ۔"
+      }
+    ]
+  }
+}

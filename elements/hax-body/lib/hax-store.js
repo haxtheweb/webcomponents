@@ -6455,8 +6455,41 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       ? fields[index]
       : null;
   }
+  /**
+   * Register `<tag>.haxProperties` with the i18n manager for blocks whose
+   * haxProperties point at <package>/lib/<tag>.haxProperties.json, so their
+   * editor labels translate from <package>/locales without a per-element
+   * gizmoRegistration hook. Blocks that already registered are left alone.
+   */
+  _registerHaxPropertiesLocales(tag) {
+    const namespace = `${tag}.haxProperties`;
+    const definition = globalThis.customElements.get(tag);
+    if (
+      !definition ||
+      I18NManagerStore.elements.find((el) => el.namespace === namespace)
+    ) {
+      return;
+    }
+    let source;
+    try {
+      source = definition.haxProperties;
+    } catch (e) {
+      return;
+    }
+    if (
+      typeof source !== "string" ||
+      !source.split("?")[0].endsWith(`/lib/${tag}.haxProperties.json`)
+    ) {
+      return;
+    }
+    I18NManagerStore.registerLocalization({
+      namespace: namespace,
+      localesPath: new URL("../locales", source).href,
+    });
+  }
   async attemptGizmoTranslation(tag, properties) {
     let translationMap = null;
+    this._registerHaxPropertiesLocales(tag);
     // support locales if available and not default lang
     try {
       translationMap = await I18NManagerStore.loadNamespaceFile(

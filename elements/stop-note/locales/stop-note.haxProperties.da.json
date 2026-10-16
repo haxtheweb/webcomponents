@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Stopnote",
+    "description": "En besked, der gør læserne opmærksomme på bestemte anvisninger."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Angiv en titel til stopnoten."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Angiv en ekstern URL."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Når status angives, ændres farver og ikoner tilsvarende",
+        "options": {
+          "stop": "Stop",
+          "warning": "Advarsel",
+          "success": "Bekræftelse",
+          "info": "Meddelelse"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Notetekst",
+        "description": "Tekst til stopnoten."
+      }
+    ]
+  }
+}

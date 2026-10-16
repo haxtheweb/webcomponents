@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "アイコン",
+    "description": "アイコンライブラリ全体から選ぶアイコン。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "アイコン",
+        "description": "表示するアイコン。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "アイコンのアクセントカラー。"
+      },
+      {
+        "property": "dark",
+        "title": "ダーク",
+        "description": "ダークモード（反転した配色）を使用します。"
+      }
+    ]
+  }
+}

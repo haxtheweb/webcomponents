@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sección de página",
+    "description": "Contenedor de sección para el contenido de la página y diseños basados en pantallas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Tratamiento de diseño",
+        "description": "Estilo predefinido que actualiza los ajustes relacionados."
+      },
+      {
+        "property": "image",
+        "title": "Imagen",
+        "description": "Multimedia de fondo de la sección."
+      },
+      {
+        "property": "bg",
+        "title": "Color de fondo",
+        "description": "Color de fondo cuando no hay imagen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Botón de desplazamiento",
+        "description": "Mostrar un botón que desplaza a la siguiente sección."
+      },
+      {
+        "property": "fold",
+        "title": "Mostrar pliegue",
+        "description": "Mostrar un pliegue visual en la parte inferior de la sección."
+      },
+      {
+        "property": "full",
+        "title": "Pantalla completa",
+        "description": "Ocupar toda la altura de la pantalla del usuario."
+      },
+      {
+        "property": "filter",
+        "title": "Aplicar filtro",
+        "description": "Aplicar un filtro visual a la imagen de fondo."
+      },
+      {
+        "slot": "",
+        "title": "Contenido",
+        "description": "Contenido de la sección."
+      },
+      {
+        "slot": "entice",
+        "title": "Gancho",
+        "description": "Contenido opcional para captar la atención."
+      },
+      {
+        "slot": "buttons",
+        "title": "Botones",
+        "description": "Grupo de botones que se muestra debajo del texto."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Texto del ancla",
+        "description": "Etiqueta del ancla que se muestra en la navegación."
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sehemu ya ukurasa",
+    "description": "Kisanduku cha sehemu kwa maudhui ya ukurasa na mipangilio inayotegemea skrini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Muundo wa usanifu",
+        "description": "Mtindo uliowekwa awali unaosasisha mipangilio inayohusiana."
+      },
+      {
+        "property": "image",
+        "title": "Picha",
+        "description": "Midia ya usuli ya sehemu."
+      },
+      {
+        "property": "bg",
+        "title": "Rangi ya usuli",
+        "description": "Rangi ya usuli wakati hakuna picha iliyowekwa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Kitufe cha kusogeza",
+        "description": "Onyesha kitufe kinachosogeza hadi sehemu inayofuata."
+      },
+      {
+        "property": "fold",
+        "title": "Onyesha mkunjo",
+        "description": "Onyesha mkunjo unaoonekana chini ya sehemu."
+      },
+      {
+        "property": "full",
+        "title": "Ukubwa wa skrini nzima",
+        "description": "Jaza urefu wa skrini ya mtazamaji."
+      },
+      {
+        "property": "filter",
+        "title": "Tumia Kichujio",
+        "description": "Tumia kichujio cha kuona kwenye picha ya usuli."
+      },
+      {
+        "slot": "",
+        "title": "Maudhui",
+        "description": "Maudhui ya sehemu."
+      },
+      {
+        "slot": "entice",
+        "title": "Kivutio",
+        "description": "Maudhui ya hiari ya kuvutia."
+      },
+      {
+        "slot": "buttons",
+        "title": "Vitufe",
+        "description": "Kikundi cha vitufe kinachoonyeshwa chini ya maandishi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Maandishi ya nanga",
+        "description": "Lebo ya nanga inayoonyeshwa kwenye urambazaji."
+      }
+    ]
+  }
+}

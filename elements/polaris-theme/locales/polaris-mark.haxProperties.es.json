@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Marca de Polaris",
+    "description": "Muestra la marca de identidad de PSU con el nombre opcional de la facultad y una URL de destino."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Nombre de la facultad",
+        "description": "Nombre que se muestra junto a la marca."
+      },
+      {
+        "property": "name2",
+        "title": "Nombre de la facultad 2",
+        "description": "Segundo nombre que se muestra debajo del primer nombre de la facultad."
+      },
+      {
+        "property": "name3",
+        "title": "Nombre de la facultad 3",
+        "description": "Tercer nombre que se muestra debajo del segundo nombre de la facultad."
+      },
+      {
+        "property": "url",
+        "title": "Enlace",
+        "description": "URL de destino al hacer clic en la marca."
+      },
+      {
+        "property": "type",
+        "title": "Variante",
+        "description": "Variante visual de la marca.",
+        "options": {
+          "default": "Predeterminado",
+          "light": "Claro",
+          "dark": "Oscuro"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Diseño vertical",
+        "description": "Mostrar el tercer nombre debajo del segundo con una línea horizontal."
+      }
+    ]
+  }
+}

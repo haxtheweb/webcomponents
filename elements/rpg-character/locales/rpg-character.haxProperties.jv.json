@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Karakter RPG",
+    "description": "Karakter lucu saka HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Jeneng",
+        "description": "Tembung sing digunakake kanggo nggawe karakter acak."
+      },
+      {
+        "property": "hat",
+        "title": "Topi",
+        "description": "Gaya topi.",
+        "options": {
+          "none": "Gawan",
+          "random": "Acak",
+          "bunny": "Terwelu",
+          "cowboy": "Koboi",
+          "education": "Pendhidhikan",
+          "construction": "Konstruksi",
+          "warning": "Pènget",
+          "watermelon": "Semangka",
+          "coffee": "Kopi",
+          "knight": "Ksatria",
+          "ninja": "Ninja",
+          "party": "Pesta",
+          "error": "Kasalahan",
+          "edit": "Sunting"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Amba",
+        "description": "Ambane karakter ing piksel."
+      },
+      {
+        "property": "height",
+        "title": "Dhuwur",
+        "description": "Dhuwure karakter ing piksel."
+      },
+      {
+        "property": "fire",
+        "title": "Kobong?",
+        "description": "Apa karakter lagi kobong."
+      },
+      {
+        "property": "walking",
+        "title": "Mlaku?",
+        "description": "Animasi mlaku; mlaku nalika kobong."
+      }
+    ]
+  }
+}

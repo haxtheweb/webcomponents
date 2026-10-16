@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "ಕಾರ್ಡ್",
+    "description": "DDD ವಿನ್ಯಾಸ ವ್ಯವಸ್ಥೆಯೊಂದಿಗೆ ಶೈಲಿಗೊಳಿಸಿದ ಕಾರ್ಡ್ ಘಟಕ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ಚಿತ್ರ",
+        "description": "ಐಚ್ಛಿಕ ಚಿತ್ರ."
+      },
+      {
+        "property": "alt",
+        "title": "ಚಿತ್ರದ ಪರ್ಯಾಯ ಪಠ್ಯ",
+        "description": "ಚಿತ್ರವನ್ನು ವಿವರಿಸುವ ಪರ್ಯಾಯ ಪಠ್ಯ."
+      },
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಕಾರ್ಡ್ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "slot": "",
+        "title": "ವಿಷಯ",
+        "description": "ಕಾರ್ಡ್ ವಿಷಯ ಪ್ರದೇಶ."
+      },
+      {
+        "property": "href",
+        "title": "ಲಿಂಕ್",
+        "description": "ಬಟನ್ ಲಿಂಕ್ URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "ಲೇಬಲ್",
+        "description": "ಬಟನ್ ಲೇಬಲ್."
+      },
+      {
+        "property": "noArrow",
+        "title": "ಬಾಣ ಇಲ್ಲ",
+        "description": "ಬಟನ್ ಬಾಣವನ್ನು ಮರೆಮಾಡಿ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "ಲಿಂಕ್: ಗುರಿ",
+        "description": "ಲಿಂಕ್ ಅನ್ನು ಎಲ್ಲಿ ತೆರೆಯಬೇಕು.",
+        "options": {
+          "": "ಅದೇ ವಿಂಡೋ",
+          "_blank": "ಹೊಸ ವಿಂಡೋ - _blank",
+          "_top": "ಮೇಲಿನ ವಿಂಡೋ - _top",
+          "_parent": "ಮೂಲ ವಿಂಡೋ - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "ಲಿಂಕ್: rel",
+        "description": "ಲಿಂಕ್ ಮಾಡಿದ ಸಂಪನ್ಮೂಲ ಮತ್ತು ಪ್ರಸ್ತುತ ದಾಖಲೆಯ ನಡುವಿನ ಸಂಬಂಧ."
+      }
+    ]
+  }
+}

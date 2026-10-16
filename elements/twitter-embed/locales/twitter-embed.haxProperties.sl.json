@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Vdelava Twitter (X)",
+    "description": "Vdelava objave iz X v kontekst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL objave",
+        "description": "URL objave za vdelavo."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Svetla ali temna tema za objave X.",
+        "options": {
+          "light": "Svetla",
+          "dark": "Temno"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Prepreči pojavno okno ob kliku",
+        "description": "Uporabnikom prepreči odpiranje objave na x.com."
+      }
+    ]
+  }
+}

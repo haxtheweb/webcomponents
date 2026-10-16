@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Liste der GitHub-Mitwirkenden",
+    "description": "Als RPG-Figuren über die GitHub-API dargestellt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisation",
+        "description": "Organisationsname aus github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repository",
+        "description": "Repository-Name aus github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Limit",
+        "description": "Anzahl der angezeigten Mitwirkenden begrenzen."
+      }
+    ]
+  }
+}

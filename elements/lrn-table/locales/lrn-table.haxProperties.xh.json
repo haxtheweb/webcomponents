@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Itheyibhile ye-CSV",
+    "description": "Oku kunokwenza itheyibhile ukusuka kwifayile ye-CSV nokuba ikweyiphi na indawo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Umthombo",
+        "description": "I-URL yale fayile ye-CSV."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko setheyibhile eza kwenziwa."
+      },
+      {
+        "property": "description",
+        "title": "Inkcazelo",
+        "description": "Inkcazelo eneenkcukacha ezingakumbi ukuphucula ukufikeleleka kwedatha yetheyibhile."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris اسٹوری کارڈ",
+    "description": "پس منظر کی تصویر، ستون لیبل اور سرخی متن کے ساتھ Polaris اسٹوری کارڈ دکھائیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "پس منظر کی تصویر",
+        "description": "کارڈ کے پس منظر کے طور پر دکھائی جانے والی تصویر کا URL۔"
+      },
+      {
+        "property": "backgroundSize",
+        "title": "پس منظر کا سائز",
+        "description": "پس منظر کی تصویر کارڈ کو کیسے بھرتی ہے (CSS background-size)۔",
+        "options": {
+          "cover": "ڈھانپیں (cover)",
+          "contain": "سمائیں (contain)",
+          "auto": "خودکار (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "پس منظر کا انسلاک",
+        "description": "اسکرول کرتے وقت پس منظر کی تصویر کا رویہ (CSS background-attachment)۔",
+        "options": {
+          "scroll": "اسکرول (scroll)",
+          "fixed": "مقررہ (fixed)",
+          "local": "مقامی (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "ستون لیبل",
+        "description": "کارڈ کے اوپر دکھایا جانے والا بڑے حروف میں مختصر لیبل۔ چھپانے کے لیے خالی چھوڑ دیں۔"
+      },
+      {
+        "property": "label",
+        "title": "کارڈ کا متن",
+        "description": "نچلے پینل میں دکھایا جانے والا بنیادی متن۔"
+      },
+      {
+        "property": "link",
+        "title": "لنک",
+        "description": "اختیاری منزل URL جو پورے کارڈ کو لپیٹتا ہے۔"
+      }
+    ]
+  }
+}

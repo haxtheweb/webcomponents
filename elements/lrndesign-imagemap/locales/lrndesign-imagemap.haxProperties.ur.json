@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "تصویری نقشہ",
+    "description": "انٹرایکٹو ہاٹ اسپاٹس کے ساتھ قابلِ رسائی تصویری نقشہ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "لیبل",
+        "description": "تصویری نقشے کا لیبل۔"
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "ہاٹ اسپاٹ کی تفصیلات",
+        "description": "تصویری نقشے پر انٹرایکٹو ہاٹ اسپاٹس۔"
+      }
+    ]
+  }
+}

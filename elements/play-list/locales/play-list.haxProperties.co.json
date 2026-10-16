@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Lista di lettura",
+    "description": "Affissà ogni tipu di cuntenutu in una lista di lettura."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Fonte",
+        "description": "Cuntenutu affissatu in a lista di lettura."
+      },
+      {
+        "property": "edit",
+        "title": "Modu d'edizione",
+        "description": "Passà trà u modu d'edizione è u modu d'anteprima di a lista di lettura."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigazione",
+        "description": "Affissà i buttoni di navigazione in avanti è in daretu."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginazione",
+        "description": "Affissà i punti di paginazione."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientazione",
+        "description": "Orientazione di e diapusitive.",
+        "options": {
+          "horizontal": "Orizontale",
+          "vertical": "Verticale"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Diapusitiva di partenza",
+        "description": "Indice di a diapusitiva chì riceve u focus à u principiu."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Raportu d'aspettu",
+        "description": "Raportu d'aspettu di e diapusitive.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

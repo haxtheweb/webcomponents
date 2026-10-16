@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "صفحے کی تفصیلات",
+    "description": "صفحات کے درمیان بصری تقسیم مقرر کریں جسے CMS صفحات بنانے کے لیے استعمال کر سکتے ہیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "تھیم اور پہلی سرخی میں دکھایا جانے والا عنوان۔"
+      },
+      {
+        "property": "pageType",
+        "title": "قسم",
+        "description": "صفحے کے سیاق کا بصری لیبل۔",
+        "options": {
+          "": "-- کوئی نہیں --",
+          "content": "مواد",
+          "assessment": "جانچ",
+          "quiz": "کوئز",
+          "submission": "جمع کروانا",
+          "lesson": "سبق",
+          "module": "ماڈیول",
+          "task": "کام",
+          "activity": "سرگرمی",
+          "project": "پروجیکٹ",
+          "practice": "مشق",
+          "unit": "یونٹ",
+          "objectives": "تعلیمی مقاصد",
+          "connection": "ربط",
+          "knowledge": "کیا آپ جانتے ہیں؟",
+          "strategy": "سیکھنے کی حکمتِ عملی",
+          "discuss": "گفتگو کریں",
+          "listen": "سنیں",
+          "make": "بنائیں",
+          "observe": "مشاہدہ کریں",
+          "present": "پیش کریں",
+          "reading": "مطالعہ",
+          "reflect": "غور کریں",
+          "research": "تحقیق کریں",
+          "watch": "دیکھیں",
+          "write": "لکھیں"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ٹیگز",
+        "description": "کوما سے الگ ٹیگز کی فہرست۔"
+      },
+      {
+        "property": "linkUrl",
+        "title": "لنک URL",
+        "description": "صفحے کے مواد کے بجائے دکھایا جانے والا ری ڈائریکٹ URL۔"
+      },
+      {
+        "property": "linkTarget",
+        "title": "لنک کا ہدف",
+        "description": "لنکس اسی ونڈو یا نئی ونڈو میں کھولیں۔",
+        "options": {
+          "_self": "وہی ونڈو",
+          "_blank": "نئی ونڈو"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "شائع شدہ",
+        "description": "غیر شائع شدہ صفحات آخری صارفین سے پوشیدہ رہتے ہیں۔"
+      },
+      {
+        "property": "locked",
+        "title": "صفحہ مقفل کریں",
+        "description": "اس صفحے کے تمام عناصر کو مقفل یا غیر مقفل کریں۔"
+      },
+      {
+        "property": "overridePathauto",
+        "title": "خودکار slug کو اوور رائیڈ کریں",
+        "description": "عنوان یا والد صفحے کی بنیاد پر slug کی خودکار تبدیلی روکیں۔"
+      },
+      {
+        "property": "slug",
+        "title": "پاتھ",
+        "description": "اس صفحے کا URL slug۔"
+      },
+      {
+        "property": "image",
+        "title": "میڈیا",
+        "description": "صفحے کی نمائندگی کرنے والا میڈیا، جو کچھ تھیمز اور ویوز میں استعمال ہوتا ہے۔"
+      },
+      {
+        "property": "parent",
+        "title": "والد",
+        "description": "والد صفحے کا پاتھ۔"
+      },
+      {
+        "property": "noderefs",
+        "title": "متعلقہ مواد",
+        "description": "اس صفحے سے متعلقہ صفحات۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "تفصیل",
+        "description": "کلیکشنز اور سرچ انجن آپٹیمائزیشن (SEO) میں استعمال ہونے والی تفصیل۔"
+      },
+      {
+        "property": "entityType",
+        "title": "اینٹیٹی کی قسم",
+        "description": "جب تک کچھ اور مقرر نہ ہو، طے شدہ قدر صفحہ ہے۔",
+        "options": {
+          "page": "صفحہ (طے شدہ)",
+          "taxonomy": "درجہ بندی",
+          "taxonomyTerm": "درجہ بندی کی اصطلاح",
+          "region": "علاقہ"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "سائٹ میں اس صفحے سے وابستہ آئیکن۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "سائٹ میں اس صفحے سے وابستہ رنگ۔"
+      },
+      {
+        "property": "hideInMenu",
+        "title": "مینو میں چھپائیں",
+        "description": "URL برقرار رکھتے ہوئے اس صفحے کو مینوز سے چھپائیں۔"
+      },
+      {
+        "property": "order",
+        "title": "ترتیب",
+        "description": "ہم سطح صفحات کے لحاظ سے ترتیب۔"
+      },
+      {
+        "property": "developerTheme",
+        "title": "صفحے کی تھیم",
+        "description": "صرف اس صفحے کے لیے تھیم اوور رائیڈ کریں۔"
+      },
+      {
+        "property": "author",
+        "title": "مصنف",
+        "description": "اس صفحے میں آخری تبدیلی کرنے والے شخص کا صارف نام۔"
+      }
+    ]
+  }
+}

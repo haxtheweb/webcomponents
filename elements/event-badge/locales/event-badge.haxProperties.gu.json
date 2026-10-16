@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ઇવેન્ટ બૅજ",
+    "description": "ઇવેન્ટ બૅજ ઘટક."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV છબી",
+        "description": "TV પર બતાવાતી છબી."
+      },
+      {
+        "property": "logo",
+        "title": "લોગો",
+        "description": "બૅજના ખૂણામાં બતાવાતો લોગો."
+      },
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "બૅજની ટોચ પર બતાવાતું શીર્ષક."
+      },
+      {
+        "property": "name",
+        "title": "નામ",
+        "description": "બૅજ પર બતાવાતું નામ."
+      },
+      {
+        "property": "position",
+        "title": "હોદ્દો",
+        "description": "વ્યક્તિની ભૂમિકા અથવા હોદ્દો."
+      },
+      {
+        "property": "organization",
+        "title": "સંસ્થા",
+        "description": "વ્યક્તિ જે સંસ્થા માટે કામ કરે છે."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV નો રંગ",
+        "description": "TV માટે રંગ પસંદ કરો."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "મુખ્ય પૃષ્ઠભૂમિ અથવા લખાણનો રંગ."
+      },
+      {
+        "property": "knobcolor",
+        "title": "નૉબનો રંગ",
+        "description": "TV ના નૉબનો રંગ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "સેપિયા",
+        "description": "સેપિયા અસર લાગુ કરો."
+      },
+      {
+        "property": "blackwhite",
+        "title": "કાળું અને સફેદ",
+        "description": "કાળી-સફેદ અસર લાગુ કરો."
+      }
+    ]
+  }
+}

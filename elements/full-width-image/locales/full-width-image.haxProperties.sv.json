@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bildsektion",
+    "description": "Bild i full bredd som delar upp en sidsektion."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Bakgrundsbild."
+      },
+      {
+        "property": "caption",
+        "description": "Textrubrik."
+      }
+    ]
+  }
+}

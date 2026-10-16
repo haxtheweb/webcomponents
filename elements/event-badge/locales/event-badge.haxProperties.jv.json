@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Lencana Acara",
+    "description": "Komponen lencana acara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Gambar TV",
+        "description": "Gambar sing katon ing TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo sing katon ing pojok lencana."
+      },
+      {
+        "property": "title",
+        "title": "Judhul",
+        "description": "Judhul sing katon ing ndhuwur lencana."
+      },
+      {
+        "property": "name",
+        "title": "Jeneng",
+        "description": "Jeneng sing katon ing lencana."
+      },
+      {
+        "property": "position",
+        "title": "Jabatan",
+        "description": "Peran utawa jabatan wong kasebut."
+      },
+      {
+        "property": "organization",
+        "title": "Organisasi",
+        "description": "Organisasi panggonane wong kasebut nyambut gawe."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Werna TV",
+        "description": "Pilih werna kanggo TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna aksen",
+        "description": "Werna latar mburi utawa teks utama."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Werna tombol puter",
+        "description": "Werna tombol puter TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Trapake efek sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Ireng putih",
+        "description": "Trapake efek ireng-putih."
+      }
+    ]
+  }
+}

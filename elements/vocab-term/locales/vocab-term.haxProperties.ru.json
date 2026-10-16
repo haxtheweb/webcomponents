@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Словарь",
+    "description": "Словарный термин."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Термин"
+      },
+      {
+        "property": "information",
+        "title": "Определение",
+        "description": "Определение, показываемое при нажатии на термин."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Всплывающее окно",
+        "description": "Показывать определение во всплывающем окне, а не в тексте."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Ссылки",
+        "description": "Список дополнительных ссылок, связанных с этим термином."
+      }
+    ]
+  }
+}

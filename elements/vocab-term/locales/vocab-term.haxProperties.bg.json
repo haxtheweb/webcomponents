@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Речник",
+    "description": "Речников термин."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Термин"
+      },
+      {
+        "property": "information",
+        "title": "Определение",
+        "description": "Определение, показвано при щракване върху термина."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Изскачащ прозорец",
+        "description": "Показване на определението в изскачащ прозорец вместо в текста."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Връзки",
+        "description": "Списък с допълнителни връзки, свързани с този термин."
+      }
+    ]
+  }
+}

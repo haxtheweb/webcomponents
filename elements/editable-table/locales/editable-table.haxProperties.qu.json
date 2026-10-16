@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabla",
+    "description": "Webpaq tablapi willakuykuna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Siqi uma",
+        "description": "Ñawpaq siqita uma hina hap'iy."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Kulumna uma",
+        "description": "Ñawpaq kulumnata uma hina hap'iy."
+      },
+      {
+        "property": "footer",
+        "title": "Chaki",
+        "description": "Qhipa siqita chaki hina hap'iy."
+      },
+      {
+        "property": "sort",
+        "title": "Allichanalla",
+        "description": "Kulumna chaninkunawan allichayta atichiy."
+      },
+      {
+        "property": "filter",
+        "title": "Suysuyta atichiy",
+        "description": "Kulumna chaninkunawan suysuyta atichiy."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Yupay sumaqchay",
+        "description": "Yupay kulumnakunaman yupay sumaqchayta churay."
+      },
+      {
+        "property": "responsive",
+        "title": "Tupachikuq",
+        "description": "Huch'uy pantallakunapi tablapa layoutninta tupachiy."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rúbrica modo",
+        "description": "Kay tablata OER Schema Rubric hina hap'iy, Rubric, RubricScale, RubricCriterion, RubricLevel metadatakuna lluqsinanpaq."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rúbrica laya",
+        "description": "oer:rubricType hina lluqsiq rúbrica laya (Rúbrica modo kawsachisqa kaqtinlla).",
+        "options": {
+          "": "(mana imapas)",
+          "analytic": "T'aqwiq",
+          "holistic": "Llapanmanta",
+          "single-point": "Huk chimpulla",
+          "checklist": "Qhawana lista"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Patayuq"
+      },
+      {
+        "property": "condensed",
+        "title": "Siqikunata k'iskichay",
+        "description": "Siqikunapa sayayninta pisiyachiy."
+      },
+      {
+        "property": "striped",
+        "title": "Ch'uruyuq siqikuna",
+        "description": "Huk siqi hukmanta llanthuyachiy."
+      },
+      {
+        "property": "downloadable",
+        "title": "Uraykachiy ñit'ina",
+        "description": "Tablata uraykachinapaq ñit'inata yapay."
+      },
+      {
+        "property": "copyable",
+        "title": "Qhawachiy ñit'ina",
+        "description": "Tablapa CSV willakuyninkunata qhawachinapaq ñit'inata yapay."
+      },
+      {
+        "property": "printable",
+        "title": "Imprimiy ñit'ina",
+        "description": "Tablallata imprimiypaq ñit'inata yapay."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV willakuykuna",
+        "description": "Wicharichisqa CSV willañiqimanta tablata ruray."
+      }
+    ]
+  }
+}

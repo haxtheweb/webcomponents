@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "کارت داستان Polaris",
+    "description": "نمایش کارت داستان Polaris با تصویر پس‌زمینه، برچسب محور و متن تیتر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "تصویر پس‌زمینه",
+        "description": "URL تصویری که به‌عنوان پس‌زمینهٔ کارت نمایش داده می‌شود."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "اندازهٔ پس‌زمینه",
+        "description": "تصویر پس‌زمینه چگونه کارت را پر کند (CSS background-size).",
+        "options": {
+          "cover": "پوشاندن (cover)",
+          "contain": "دربرگرفتن (contain)",
+          "auto": "خودکار (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "پیوست پس‌زمینه",
+        "description": "رفتار تصویر پس‌زمینه هنگام پیمایش (CSS background-attachment).",
+        "options": {
+          "scroll": "پیمایشی (scroll)",
+          "fixed": "ثابت (fixed)",
+          "local": "محلی (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "برچسب محور",
+        "description": "برچسب کوتاه با حروف بزرگ که بالای کارت نمایش داده می‌شود. برای پنهان کردن خالی بگذارید."
+      },
+      {
+        "property": "label",
+        "title": "متن کارت",
+        "description": "متن اصلی که در پنل پایینی نمایش داده می‌شود."
+      },
+      {
+        "property": "link",
+        "title": "پیوند",
+        "description": "URL مقصد اختیاری که کل کارت را دربر می‌گیرد."
+      }
+    ]
+  }
+}

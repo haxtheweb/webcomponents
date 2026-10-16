@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Gyűjteménysor",
+    "description": "Soros elem gyűjteménylistán belüli használatra, szöveggel, hivatkozással, ikonnal, címkékkel és opcionális képpel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Hivatkozás",
+        "description": "A sor cél-URL-je."
+      },
+      {
+        "property": "image",
+        "title": "Kép",
+        "description": "A sor képe."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "A képet leíró helyettesítő szöveg."
+      },
+      {
+        "property": "line1",
+        "title": "1. sor",
+        "description": "A szöveg első sora."
+      },
+      {
+        "property": "line2",
+        "title": "2. sor",
+        "description": "A szöveg második sora."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "A sort jelölő ikon."
+      },
+      {
+        "property": "saturate",
+        "title": "Telítettségi effektus",
+        "description": "A kép telítettségének módosítása, amikor a felhasználó fókuszba helyezi."
+      },
+      {
+        "property": "tags",
+        "title": "Címkék",
+        "description": "Címkék vesszővel elválasztott listája."
+      },
+      {
+        "property": "accentColor",
+        "title": "Szín",
+        "description": "Az ikon és a címkék színe."
+      }
+    ]
+  }
+}

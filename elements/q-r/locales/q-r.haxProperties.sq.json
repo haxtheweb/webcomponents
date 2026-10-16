@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Kod QR",
+    "description": "Kod për t'u skanuar me telefon inteligjent."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Të dhënat QR",
+        "description": "Burimi i të dhënave për kodin QR."
+      },
+      {
+        "property": "title",
+        "title": "Titull alternativ",
+        "description": "Titull alternativ i lidhur me burimin e kodit QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Madhësia",
+        "description": "Madhësia e kodit QR."
+      },
+      {
+        "property": "margin",
+        "title": "Hapësira anësore",
+        "description": "Mbështjellësi i kodit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Formati i daljes",
+        "description": "Formati në të cilin nxirret.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

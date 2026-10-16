@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub معاونین کی فہرست",
+    "description": "GitHub API کے ذریعے RPG کرداروں کی صورت میں دکھائے جاتے ہیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ادارہ",
+        "description": "github.com/ORG/REPO سے ادارے کا نام۔"
+      },
+      {
+        "property": "repo",
+        "title": "ریپوزیٹری",
+        "description": "github.com/ORG/REPO سے ریپوزیٹری کا نام۔"
+      },
+      {
+        "property": "limit",
+        "title": "حد",
+        "description": "دکھائے جانے والے معاونین کی تعداد محدود کریں۔"
+      }
+    ]
+  }
+}

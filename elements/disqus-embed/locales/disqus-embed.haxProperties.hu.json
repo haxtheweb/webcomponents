@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Disqus-hozzászólások beágyazása egy oldalba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Rövid név",
+        "description": "A webhely rövid neve, amely a Disqus-szkript gazdagépét határozza meg."
+      },
+      {
+        "property": "pageURL",
+        "title": "Oldal URL-je",
+        "description": "Annak az oldalnak az URL-je, amelyhez a hozzászólásszál tartozik."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Oldalazonosító",
+        "description": "Az oldal hozzászólásszálának egyedi azonosítója."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Oldal címe",
+        "description": "Annak az oldalnak a címe, amelyhez a hozzászólásszál tartozik."
+      },
+      {
+        "property": "loadingText",
+        "title": "Betöltési szöveg",
+        "description": "A hozzászólások betöltése közben felolvasott szöveg."
+      },
+      {
+        "property": "lang",
+        "title": "Nyelv",
+        "description": "A Disqus felületének nyelvkódja, pl. en."
+      }
+    ]
+  }
+}

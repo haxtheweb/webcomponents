@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX-Wortkunst",
+    "description": "Logo-Element für HAX, natürlich als HAX-fähiges Element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Größe des einzufügenden HAX-Logos",
+        "options": {
+          "mini": "Mini",
+          "small": "Klein",
+          "normal": "Normal",
+          "large": "Groß"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Ob das Logo in Großbuchstaben umgewandelt werden soll"
+      }
+    ]
+  }
+}

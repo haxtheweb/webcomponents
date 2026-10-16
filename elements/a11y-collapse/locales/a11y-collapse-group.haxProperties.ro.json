@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grup extindere/restrângere",
+    "description": "Un grup de elemente care se pot extinde și restrânge."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Extinde doar unul",
+        "description": "Doar un singur element poate fi extins."
+      },
+      {
+        "slot": "",
+        "title": "Elemente restrângibile",
+        "description": "Elementele restrângibile."
+      }
+    ]
+  }
+}

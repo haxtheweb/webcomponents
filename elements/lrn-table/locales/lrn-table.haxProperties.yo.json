@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tábìlì CSV",
+    "description": "Èyí lè ṣẹ̀dá tábìlì láti fáìlì CSV níbikíbi tí ó wà."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Orísun",
+        "description": "URL fún fáìlì CSV yìí."
+      },
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Àkọlé fún tábìlì tí a ó ṣẹ̀dá."
+      },
+      {
+        "property": "description",
+        "title": "Àpèjúwe",
+        "description": "Àpèjúwe tí ó kún jù fún ìráyèsí tí ó dára jù sí dátà tábìlì."
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kadi",
+    "description": "Kijenzi cha kadi chenye mtindo wa mfumo wa usanifu wa DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Picha",
+        "description": "Picha ya hiari."
+      },
+      {
+        "property": "alt",
+        "title": "Maandishi mbadala ya picha",
+        "description": "Maandishi mbadala yanayoelezea picha."
+      },
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Kichwa cha kadi."
+      },
+      {
+        "slot": "",
+        "title": "Maudhui",
+        "description": "Eneo la maudhui ya kadi."
+      },
+      {
+        "property": "href",
+        "title": "Kiungo",
+        "description": "URL ya kiungo cha kitufe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Lebo",
+        "description": "Lebo ya kitufe."
+      },
+      {
+        "property": "noArrow",
+        "title": "Bila Mshale",
+        "description": "Ficha mshale wa kitufe."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Kiungo: lengo",
+        "description": "Mahali pa kufungua kiungo.",
+        "options": {
+          "": "Dirisha lile lile",
+          "_blank": "Dirisha jipya - _blank",
+          "_top": "Dirisha la juu - _top",
+          "_parent": "Dirisha mzazi - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Kiungo: rel",
+        "description": "Uhusiano kati ya rasilimali iliyounganishwa na hati ya sasa."
+      }
+    ]
+  }
+}

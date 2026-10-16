@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Waehere QR",
+    "description": "He waehere hei matawai mā te waea atamai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Raraunga QR",
+        "description": "Te pūtake o ngā raraunga mō te waehere QR."
+      },
+      {
+        "property": "title",
+        "title": "Taitara kē",
+        "description": "He taitara kē e hono ana ki te pūtake o te waehere QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Rahi",
+        "description": "Te rahi o te waehere QR."
+      },
+      {
+        "property": "margin",
+        "title": "Tawhē",
+        "description": "Takai mō te waehere."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Hōputu putanga",
+        "description": "Te hōputu hei whakaputa.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

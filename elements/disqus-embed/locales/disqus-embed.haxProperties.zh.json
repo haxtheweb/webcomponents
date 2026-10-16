@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "在页面中嵌入 Disqus 评论。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "短名称",
+        "description": "站点短名称，用于确定 Disqus 脚本主机。"
+      },
+      {
+        "property": "pageURL",
+        "title": "页面 URL",
+        "description": "评论串所关联页面的 URL。"
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "页面标识符",
+        "description": "页面评论串的唯一标识符。"
+      },
+      {
+        "property": "pageTitle",
+        "title": "页面标题",
+        "description": "评论串所关联页面的标题。"
+      },
+      {
+        "property": "loadingText",
+        "title": "加载文本",
+        "description": "评论加载时播报的文本。"
+      },
+      {
+        "property": "lang",
+        "title": "语言",
+        "description": "Disqus 界面的语言代码，例如 en。"
+      }
+    ]
+  }
+}

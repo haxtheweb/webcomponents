@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "ശരി / തെറ്റ് ചോദ്യം",
+    "description": "ശരി തെറ്റ് ചോദ്യം"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ചോദ്യം",
+        "description": "ഉപയോക്താക്കൾ പ്രതികരിക്കേണ്ട ചോദ്യം."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "ശരിയായ ഉത്തരം"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ക്വിസിന്റെ പേര്",
+        "description": "ഈ ഇനം തിരിച്ചറിയാൻ xAPI അധിഷ്ഠിത പരിതസ്ഥിതികളിൽ ഉപയോഗിക്കാൻ കൈമാറുന്ന ക്വിസ് പേര്"
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Enkelt billede",
+    "description": "Bearbejd billeder med enkle parametre."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Kilde",
+        "description": "Billedets kilde-URL."
+      },
+      {
+        "property": "height",
+        "title": "Højde",
+        "description": "Valgfri billedhøjde."
+      },
+      {
+        "property": "width",
+        "title": "Bredde",
+        "description": "Valgfri billedbredde."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-tekst",
+        "description": "Nyttig for skærmlæsere og bedre SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kvalitet",
+        "description": "Billedkvalitet ved generering (kun JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Hentningsprioritet",
+        "description": "Ydelsestip til moderne browsere.",
+        "options": {
+          "auto": "Automatisk",
+          "high": "Høj",
+          "low": "Lav"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Afkodningsmetode",
+        "description": "Ydelsestip til billedgengivelse i moderne browsere.",
+        "options": {
+          "auto": "Automatisk",
+          "async": "Asynkron"
+        }
+      }
+    ]
+  }
+}

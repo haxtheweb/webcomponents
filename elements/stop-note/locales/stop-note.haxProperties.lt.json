@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Stabdymo pastaba",
+    "description": "Pranešimas, atkreipiantis skaitytojų dėmesį į konkrečius nurodymus."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Įveskite stabdymo pastabos pavadinimą."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Įveskite išorinį URL."
+      },
+      {
+        "property": "status",
+        "title": "Būsena",
+        "description": "Nustačius būseną atitinkamai pasikeičia spalvos ir piktogramos",
+        "options": {
+          "stop": "Stop",
+          "warning": "Įspėjimas",
+          "success": "Patvirtinimas",
+          "info": "Pranešimas"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Pastabos tekstas",
+        "description": "Stabdymo pastabos tekstas."
+      }
+    ]
+  }
+}

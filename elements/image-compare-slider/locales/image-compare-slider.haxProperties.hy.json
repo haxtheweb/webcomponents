@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Պատկերների համեմատում",
+    "description": "Սահեցնել մի պատկերը մյուսի վրայով՝ համեմատելու համար։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Վերին պատկեր",
+        "description": "Վերին պատկեր, որը սահում է ներքևի պատկերի վրայով։"
+      },
+      {
+        "property": "topAlt",
+        "title": "Վերին պատկերի alt տեքստ",
+        "description": "Պարտադիր alt տեքստ մատչելիության համար։"
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Ներքևի պատկեր",
+        "description": "Վերին պատկերի տակ ցուցադրվող ներքևի պատկերը։"
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Ներքևի պատկերի alt տեքստ",
+        "description": "Պարտադիր alt տեքստ մատչելիության համար։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Վարքագիծ",
+        "description": "Ընտրեք սահեցման ռեժիմը (լռելյայն) կամ վերին պատկերի թափանցիկության ռեժիմը։"
+      },
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Սահիչի գծի գույնը։"
+      },
+      {
+        "property": "dark",
+        "title": "Մուգ",
+        "description": "Շրջել սահիչի գծի գույնը։"
+      },
+      {
+        "property": "position",
+        "title": "Սկզբնական դիրք",
+        "description": "Սկզբնական դիրքը 0-ից 100։"
+      }
+    ]
+  }
+}

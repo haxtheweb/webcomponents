@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Brojač",
+    "description": "Animirajte broj koji se povećava do ciljne vrijednosti kada se pojavi na ekranu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Krajnja vrijednost",
+        "description": "Broj do kojeg se broji."
+      },
+      {
+        "property": "start",
+        "title": "Početna vrijednost",
+        "description": "Broj od kojeg se počinje brojati."
+      },
+      {
+        "property": "duration",
+        "title": "Trajanje",
+        "description": "Broj sekundi koliko traje animacija brojanja."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Tekst prefiksa",
+        "description": "Tekst prikazan prije broja (npr. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Tekst sufiksa",
+        "description": "Tekst prikazan nakon broja (npr. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot prefiksa",
+        "description": "Opcionalni umetnuti sadržaj prije broja."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot sufiksa",
+        "description": "Opcionalni umetnuti sadržaj nakon broja."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Decimalna mjesta",
+        "description": "Broj decimalnih mjesta za prikaz."
+      },
+      {
+        "property": "separator",
+        "title": "Separator hiljada",
+        "description": "Znak koji razdvaja grupe hiljada."
+      },
+      {
+        "property": "decimal",
+        "title": "Decimalni znak",
+        "description": "Znak koji se koristi za decimalni zarez."
+      },
+      {
+        "property": "noeasing",
+        "title": "Bez ublažavanja",
+        "description": "Isključite ublažavanje tako da brojanje bude linearno."
+      }
+    ]
+  }
+}

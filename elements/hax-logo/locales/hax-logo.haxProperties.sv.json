@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX-ordkonst",
+    "description": "Logotypelement för HAX, givetvis som ett HAX-kompatibelt element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Storlek på HAX-logotypen som ska placeras",
+        "options": {
+          "mini": "Mini",
+          "small": "Liten",
+          "normal": "Normal",
+          "large": "Stor"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Om logotypen ska omvandlas till versaler"
+      }
+    ]
+  }
+}

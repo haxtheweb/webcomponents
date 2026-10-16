@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Komentar Disqus",
+    "description": "Integrasi karo layanan web komentar Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Jeneng cekak",
+        "description": "Jeneng cekak properti ing Disqus"
+      }
+    ]
+  }
+}

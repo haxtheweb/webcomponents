@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Chinhu chenhanho",
+    "description": "Chinhu chiri chikamu cherondedzero yenhanho"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Musoro"
+      }
+    ]
+  }
+}

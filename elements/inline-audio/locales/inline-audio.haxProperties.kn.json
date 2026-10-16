@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ಇನ್‌ಲೈನ್ ಆಡಿಯೋ",
+    "description": "ಪುಟದ ವಿಷಯಕ್ಕೆ ಪೂರಕವಾಗಿ ಆಡಿಯೋವನ್ನು ಇನ್‌ಲೈನ್ ಆಗಿ ಪ್ಲೇ ಮಾಡಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ಮೂಲ",
+        "description": "MP3 ಫೈಲ್ ಅಥವಾ URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಕಾರ್ಡ್‌ನ ಒತ್ತು ಬಣ್ಣ."
+      },
+      {
+        "property": "shiny",
+        "title": "ಹೊಳಪು",
+        "description": "ಬೂದು ಬಣ್ಣದ ಬದಲು ತಿಳಿ ಒತ್ತು ಹಿನ್ನೆಲೆಯನ್ನು ಬಳಸಿ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ಡಾರ್ಕ್",
+        "description": "ಡಾರ್ಕ್ ಮೋಡ್ ಬಳಸಿ."
+      }
+    ]
+  }
+}

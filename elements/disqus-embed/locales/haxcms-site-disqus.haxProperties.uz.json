@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus izohlari",
+    "description": "Disqus izoh veb-xizmati bilan integratsiya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Qisqa nom",
+        "description": "Disqus dagi qisqa nom xususiyati"
+      }
+    ]
+  }
+}

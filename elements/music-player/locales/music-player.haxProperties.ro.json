@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Vizualizator MIDI",
+    "description": "Redă MIDI în context, cu vizualizare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sursă",
+        "description": "URL-ul fișierului de redat."
+      },
+      {
+        "property": "visualizer",
+        "title": "Vizualizare",
+        "description": "Stilul de vizualizare pentru fișierul muzical.",
+        "options": {
+          "staff": "Portativ",
+          "piano-roll": "Rulou de pian",
+          "waterfall": "Pian + cascadă"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Ascunde cascada",
+        "description": "Ascunde notele în cascadă din vizualizarea de pian."
+      }
+    ]
+  }
+}

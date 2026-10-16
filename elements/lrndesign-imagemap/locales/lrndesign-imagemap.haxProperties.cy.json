@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Map delwedd",
+    "description": "Map delwedd hygyrch gyda mannau poeth rhyngweithiol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label ar gyfer y map delwedd."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Manylion y mannau poeth",
+        "description": "Y mannau poeth rhyngweithiol ar y map delwedd."
+      }
+    ]
+  }
+}

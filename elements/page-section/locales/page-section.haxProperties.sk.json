@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sekcia stránky",
+    "description": "Kontajner sekcie pre obsah stránky a rozloženia na celú obrazovku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Dizajnové spracovanie",
+        "description": "Predvolený štýl, ktorý aktualizuje súvisiace nastavenia."
+      },
+      {
+        "property": "image",
+        "title": "Obrázok",
+        "description": "Médiá na pozadí sekcie."
+      },
+      {
+        "property": "bg",
+        "title": "Farba pozadia",
+        "description": "Farba pozadia, keď nie je nastavený obrázok."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Tlačidlo posunu",
+        "description": "Zobraziť tlačidlo, ktoré posunie na ďalšiu sekciu."
+      },
+      {
+        "property": "fold",
+        "title": "Zobraziť záhyb",
+        "description": "Zobraziť vizuálny záhyb v spodnej časti sekcie."
+      },
+      {
+        "property": "full",
+        "title": "Celá obrazovka",
+        "description": "Vyplniť výšku obrazovky diváka."
+      },
+      {
+        "property": "filter",
+        "title": "Použiť filter",
+        "description": "Použiť vizuálny filter na obrázok na pozadí."
+      },
+      {
+        "slot": "",
+        "title": "Obsah",
+        "description": "Obsah sekcie."
+      },
+      {
+        "slot": "entice",
+        "title": "Lákadlo",
+        "description": "Voliteľný lákavý obsah."
+      },
+      {
+        "slot": "buttons",
+        "title": "Tlačidlá",
+        "description": "Skupina tlačidiel zobrazená pod textom."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Text kotvy",
+        "description": "Označenie kotvy zobrazené v navigácii."
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Ikhadi",
+    "description": "Ingxenye yekhadi enesitayela sohlelo lokuklama lwe-DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Isithombe",
+        "description": "Isithombe ongasikhetha."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo ongenye wesithombe",
+        "description": "Umbhalo ongenye ochaza isithombe."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko sekhadi."
+      },
+      {
+        "slot": "",
+        "title": "Okuqukethwe",
+        "description": "Indawo yokuqukethwe kwekhadi."
+      },
+      {
+        "property": "href",
+        "title": "Isixhumanisi",
+        "description": "I-URL yesixhumanisi senkinobho."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Ilebula",
+        "description": "Ilebula yenkinobho."
+      },
+      {
+        "property": "noArrow",
+        "title": "Awukho Umcibisholo",
+        "description": "Fihla umcibisholo wenkinobho."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Isixhumanisi: target",
+        "description": "Lapho isixhumanisi sizovulelwa khona.",
+        "options": {
+          "": "Iwindi elifanayo",
+          "_blank": "Iwindi elisha - _blank",
+          "_top": "Iwindi eliphezulu - _top",
+          "_parent": "Iwindi elingumzali - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Isixhumanisi: rel",
+        "description": "Ubudlelwano phakathi kwensiza exhunyiwe nombhalo wamanje."
+      }
+    ]
+  }
+}

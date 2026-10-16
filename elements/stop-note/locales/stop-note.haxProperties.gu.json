@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "રોકો નોંધ",
+    "description": "વાચકોને ચોક્કસ સૂચનાઓ વિશે સાવચેત કરતો સંદેશ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "રોકો નોંધ માટે શીર્ષક દાખલ કરો."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "બાહ્ય URL દાખલ કરો."
+      },
+      {
+        "property": "status",
+        "title": "સ્થિતિ",
+        "description": "સ્થિતિ સેટ કરવાથી રંગો અને આઇકન તેને અનુરૂપ બદલાય છે",
+        "options": {
+          "stop": "રોકો",
+          "warning": "ચેતવણી",
+          "success": "પુષ્ટિ",
+          "info": "સૂચના"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "નોંધ લખાણ",
+        "description": "રોકો નોંધ માટેનું લખાણ."
+      }
+    ]
+  }
+}

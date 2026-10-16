@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Birleşen Milletler Guramasynyň Durnukly ösüş maksady."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Maksat",
+        "description": "UN SDG belgisi."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Diňe reňk",
+        "description": "Diňe maksadyň reňkini görkez."
+      }
+    ]
+  }
+}

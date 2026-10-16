@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "پوسٽ ڪارڊ",
+    "description": "مزيدار ميڊيا حصو جيڪو ڪنهن جاءِ تان موڪليل حقيقي پوسٽ ڪارڊ جهڙو لڳي"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "ڏانهن",
+        "description": "هي ڪنهن ڏانهن وڃي رهيو آهي؟"
+      },
+      {
+        "property": "from",
+        "title": "کان",
+        "description": "توهان ڪير آهيو؟"
+      },
+      {
+        "property": "message",
+        "title": "پيغام",
+        "description": "توهان ڇا چوڻ چاهيو ٿا؟"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "پوسٽ مارڪ جي جاءِ",
+        "description": "هي ڪارڊ ڪٿان موڪليو ويو؟"
+      },
+      {
+        "property": "photoSrc",
+        "title": "مکيه فوٽو جو ذريعو",
+        "description": "توهان جو فوٽو ڪٿي آهي؟"
+      },
+      {
+        "property": "stampSrc",
+        "title": "اسٽامپ فوٽو جو ذريعو",
+        "description": "توهان جو فوٽو ڪٿي آهي؟"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Duurzaam ontwikkelingsdoel van de Verenigde Naties."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Doel",
+        "description": "Nummer van het UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Alleen kleur",
+        "description": "Toon alleen de kleur van het doel."
+      }
+    ]
+  }
+}

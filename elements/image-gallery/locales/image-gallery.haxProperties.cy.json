@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Oriel Delweddau",
+    "description": "Oriel sy'n cyflwyno delweddau mewn cynlluniau grid, gwaith maen neu sioe sleidiau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Modd dangos",
+        "description": "Sut i gyflwyno'r delweddau yn yr oriel.",
+        "options": {
+          "grid": "Grid",
+          "masonry": "Gwaith maen",
+          "gallery": "Oriel"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Mynegai gweithredol",
+        "description": "Mynegai'r ddelwedd weithredol i ddechrau arni ym modd oriel."
+      }
+    ]
+  }
+}

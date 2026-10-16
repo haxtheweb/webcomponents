@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Медиа ишлэл",
+    "description": "Ишлэл, эш татлага болон нэмэлт тайлбартай зураг."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Ишлэл",
+        "description": "Ишлэлийн текст."
+      },
+      {
+        "slot": "author",
+        "title": "Зохиогч",
+        "description": "Ишлэлийн зохиогч."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Зохиогчийн дэлгэрэнгүй",
+        "description": "Зохиогчийн дэлгэрэнгүй."
+      },
+      {
+        "slot": "caption",
+        "title": "Тайлбар",
+        "description": "Зургийн тайлбар."
+      },
+      {
+        "property": "src",
+        "title": "Зургийн эх сурвалж",
+        "description": "Медиа ишлэлд ашиглах зургийн файл."
+      },
+      {
+        "property": "alt",
+        "title": "Орлуулах текст",
+        "description": "Зургийн орлуулах текст."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Картын онцлох өнгө."
+      }
+    ]
+  }
+}

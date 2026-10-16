@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI-візуалізатар",
+    "description": "Прайграванне MIDI ў кантэксце з візуалізацыяй."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Крыніца",
+        "description": "URL файла для прайгравання."
+      },
+      {
+        "property": "visualizer",
+        "title": "Візуалізацыя",
+        "description": "Стыль візуалізацыі музычнага файла.",
+        "options": {
+          "staff": "Нотны стан",
+          "piano-roll": "Піяна-рол",
+          "waterfall": "Піяніна + вадаспад"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Схаваць вадаспад",
+        "description": "Схаваць ноты-вадаспад у візуалізацыі піяніна."
+      }
+    ]
+  }
+}

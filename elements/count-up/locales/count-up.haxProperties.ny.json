@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Kuwerenga Mmwamba",
+    "description": "Onetsani nambala ikuwerengedwa mmwamba mpaka kufika pa nambala yofunidwa ikaonekera pazenera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Nambala yomaliza",
+        "description": "Nambala yowerengera mpaka."
+      },
+      {
+        "property": "start",
+        "title": "Nambala yoyambira",
+        "description": "Nambala yoyambira kuwerengera."
+      },
+      {
+        "property": "duration",
+        "title": "Nthawi",
+        "description": "Masekondi omwe kuwerenga kukuyenera kutenga."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Mawu oyambirira",
+        "description": "Mawu owonetsedwa nambala isanachitike (mwachitsanzo '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Mawu omaliza",
+        "description": "Mawu owonetsedwa nambala itatha (mwachitsanzo '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Malo oyambirira",
+        "description": "Zomwe zili mkati zosankha nambala isanachitike."
+      },
+      {
+        "slot": "suffix",
+        "title": "Malo omaliza",
+        "description": "Zomwe zili mkati zosankha nambala itatha."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Malo a desimali",
+        "description": "Chiwerengero cha malo a desimali owonetsedwa."
+      },
+      {
+        "property": "separator",
+        "title": "Cholekanitsa zikwi",
+        "description": "Chilembo cholekanitsa magulu a zikwi."
+      },
+      {
+        "property": "decimal",
+        "title": "Chilembo cha desimali",
+        "description": "Chilembo chogwiritsidwa ntchito ngati kadontho ka desimali."
+      },
+      {
+        "property": "noeasing",
+        "title": "Popanda kuchepetsa liwiro",
+        "description": "Letsani kuchepetsa liwiro kuti kuwerenga kukhale kofanana."
+      }
+    ]
+  }
+}

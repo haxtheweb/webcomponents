@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Autovalutazione",
+    "description": "L'utilizatori ponu compie un'autovalutazione."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagine",
+        "description": "Imagine di l'autovalutazione."
+      },
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Titulu di l'autovalutazione."
+      },
+      {
+        "property": "alt",
+        "title": "Testu alternativu",
+        "description": "Testu alternativu di l'imagine."
+      },
+      {
+        "slot": "question",
+        "title": "Dumanda"
+      },
+      {
+        "slot": "",
+        "title": "Risposta"
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore di u tema",
+        "description": "Sceglie un culore di tema da u sistema di cuncezzione.",
+        "options": {
+          "primary": "Principale",
+          "accent": "Accentu",
+          "success": "Successu",
+          "warning": "Avertimentu",
+          "error": "Errore",
+          "info": "Infurmazione"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ughjettivu d'amparera",
+        "description": "Riferimentu à l'ughjettivu d'amparera emessu cum'è oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Valuta",
+        "description": "Riferimentu à l'attività emessu cum'è oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Ligame per sapene di più",
+        "description": "Ligame versu infurmazioni addiziunali."
+      }
+    ]
+  }
+}
