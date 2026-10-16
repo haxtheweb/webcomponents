@@ -5,5 +5,6 @@
   "systemAudio": "Vključi sistemski zvok",
   "microphoneAudio": "Vključi mikrofon",
   "recordingStarted": "Snemanje se je začelo",
-  "recordingStopped": "Snemanje je bilo ustavljeno"
+  "recordingStopped": "Snemanje je bilo ustavljeno",
+  "audioOptions": "Možnosti zvoka"
 }

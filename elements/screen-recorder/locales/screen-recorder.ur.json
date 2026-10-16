@@ -5,5 +5,6 @@
   "systemAudio": "سسٹم آڈیو شامل کریں",
   "microphoneAudio": "مائیکروفون شامل کریں",
   "recordingStarted": "ریکارڈنگ شروع ہو گئی",
-  "recordingStopped": "ریکارڈنگ روک دی گئی"
+  "recordingStopped": "ریکارڈنگ روک دی گئی",
+  "audioOptions": "آڈیو کے اختیارات"
 }

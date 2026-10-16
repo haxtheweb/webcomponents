@@ -5,5 +5,6 @@
   "systemAudio": "E hoʻokomo i ka leo o ka pūnaha",
   "microphoneAudio": "E hoʻokomo i ka mike",
   "recordingStarted": "Ua hoʻomaka ka hoʻopaʻa ana",
-  "recordingStopped": "Ua hoʻopau ka hoʻopaʻa ʻana"
+  "recordingStopped": "Ua hoʻopau ka hoʻopaʻa ʻana",
+  "audioOptions": "Nā koho leo"
 }

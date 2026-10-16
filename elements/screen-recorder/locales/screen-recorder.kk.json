@@ -5,5 +5,6 @@
   "systemAudio": "Жүйелік дыбысты қосу",
   "microphoneAudio": "Микрофонды қосу",
   "recordingStarted": "Жазба басталды",
-  "recordingStopped": "Жазба тоқтатылды"
+  "recordingStopped": "Жазба тоқтатылды",
+  "audioOptions": "Аудио параметрлері"
 }
