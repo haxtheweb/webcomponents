@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Bokosi la NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Bisani chosinthira",
+        "description": "Bisani mawonekedwe osinthira mafayilo."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Bisani terminal",
+        "description": "Bisani terminal ya mapulogalamu odziyendetsa okha."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Bisani zenera",
+        "description": "Bisani zenera lotulutsa pogwiritsa ntchito terminal yokha."
+      },
+      {
+        "slot": "",
+        "title": "Malamulo",
+        "description": "Malamulo (limodzi pa mzere uliwonse) oti ayendetsedwe musanatsegule."
+      }
+    ]
+  }
+}

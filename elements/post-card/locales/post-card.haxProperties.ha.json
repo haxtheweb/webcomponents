@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Katin Gaisuwa",
+    "description": "Wani abin kafofi na wasa da aka yi don ya yi kama da katin gaisuwa na zahiri daga wani wuri"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Zuwa",
+        "description": "Zuwa ga wa wannan zai tafi?"
+      },
+      {
+        "property": "from",
+        "title": "Daga",
+        "description": "Kai wane ne?"
+      },
+      {
+        "property": "message",
+        "title": "Saƙo",
+        "description": "Me kake so ka faɗa?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "An Buga Hatimi Daga",
+        "description": "Daga ina aka aiko wannan katin?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Tushen Babban Hoto",
+        "description": "Ina hotonka yake?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Tushen Hoton Kan Sarki",
+        "description": "Ina hotonka yake?"
+      }
+    ]
+  }
+}

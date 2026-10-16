@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "সংকোচনযোগ্য কন্টেইনার",
+    "description": "একক প্রসারণযোগ্য ও সংকোচনযোগ্য কন্টেইনার।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "শিরোনাম",
+        "description": "সংকোচনযোগ্য অংশের টেক্সট।"
+      },
+      {
+        "property": "expanded",
+        "title": "প্রসারিত",
+        "description": "ডিফল্টভাবে প্রসারিত রাখুন।"
+      },
+      {
+        "property": "headingButton",
+        "title": "শিরোনাম বোতাম",
+        "description": "শুধু আইকন নয়, পুরো শিরোনামটিকে ক্লিকযোগ্য করুন।"
+      },
+      {
+        "property": "icon",
+        "title": "আইকন",
+        "description": "প্রসারণ/সংকোচন টগল বোতামের আইকন।"
+      },
+      {
+        "property": "iconExpanded",
+        "title": "আইকন (প্রসারিত অবস্থায়)",
+        "description": "প্রসারিত টগল অবস্থার জন্য ঐচ্ছিক আইকন।"
+      },
+      {
+        "slot": "",
+        "title": "বিষয়বস্তু",
+        "description": "সংকোচনযোগ্য অংশের বিষয়বস্তু।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "টুলটিপ",
+        "description": "প্রসারণ/সংকোচন টগল বোতামের টুলটিপ।"
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "টুলটিপ (প্রসারিত অবস্থায়)",
+        "description": "প্রসারিত অবস্থায় প্রসারণ/সংকোচন বোতামের টুলটিপ।"
+      }
+    ]
+  }
+}

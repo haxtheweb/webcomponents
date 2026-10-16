@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "اپݨی جانچ",
+    "description": "صارف اپݨی جانچ پوری کر سکدے نیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "اپݨی جانچ لئی تصویر۔"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "اپݨی جانچ دا عنوان۔"
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "تصویر لئی متبادل متن۔"
+      },
+      {
+        "slot": "question",
+        "title": "سوال"
+      },
+      {
+        "slot": "",
+        "title": "جواب"
+      },
+      {
+        "property": "accentColor",
+        "title": "تھیم رنگ",
+        "description": "ڈیزائن سسٹم وچوں تھیم رنگ چݨو۔",
+        "options": {
+          "primary": "مڈھلا",
+          "accent": "نمایاں",
+          "success": "کامیابی",
+          "warning": "خبرداری",
+          "error": "غلطی",
+          "info": "معلومات"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "سکھݨ دا مقصد",
+        "description": "سکھݨ دے مقصد دا حوالہ جیہڑا oer:hasLearningObjective وجوں جاری ہوندا اے۔"
+      },
+      {
+        "property": "assessing",
+        "title": "جائزہ لیندا",
+        "description": "سرگرمی دا حوالہ جیہڑا oer:assessing وجوں جاری ہوندا اے۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "ہور لنک",
+        "description": "ہور معلومات دا لنک۔"
+      }
+    ]
+  }
+}

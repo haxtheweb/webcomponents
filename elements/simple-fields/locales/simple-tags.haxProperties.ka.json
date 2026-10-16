@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ტეგები",
+    "description": "ტეგების მარტივი სია გვერდზე საჩვენებლად."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ტეგები",
+        "description": "მძიმით გამოყოფილი ტეგების სია."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ავტომატური აქცენტის ფერი",
+        "description": "აქცენტის ფერის ავტომატური დაყენება იარლიყის მიხედვით."
+      },
+      {
+        "property": "accentColor",
+        "title": "ფერი",
+        "description": "ტეგების ფერი."
+      }
+    ]
+  }
+}

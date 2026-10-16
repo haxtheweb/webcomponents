@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "स्वरलिपी",
+    "description": "alphaTex किंवा MusicXML द्वारे स्वरलिपी, गिटार टॅब आणि स्कोअर संकेतन दाखवते आणि वाजवते."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex संकेतन",
+        "description": "स्वरलिपीसाठी ओळीतील alphaTex मार्कअप. संकेतन लिहिण्यासाठी थेट संपादित करा; ते टेम्पलेटमध्ये साठवले जाते त्यामुळे अंतर जपले जाते."
+      },
+      {
+        "property": "source",
+        "title": "स्कोअर फाइल",
+        "description": "MusicXML (.xml/.musicxml/.mxl) किंवा Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) फाइल अपलोड किंवा लिंक करा. सेट केल्यास ओळीतील alphaTex अधिलिखित करते."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "ऑडिओ प्लेबॅक",
+        "description": "डीफॉल्टनुसार चालू - अंगभूत सिंथेसायझरद्वारे वाजवलेली स्वरलिपी ऐका. फक्त-पाहणे (ऑडिओ नाही) मोडसाठी बंद करा."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "प्रदर्शन पर्याय दाखवा",
+        "description": "प्लेअर पट्टीवर झूम, ताण आणि लेआउट बटणे दाखवा."
+      },
+      {
+        "property": "showExport",
+        "title": "निर्यात बटणे दाखवा",
+        "description": "प्लेअर पट्टीवर MIDI डाउनलोड आणि प्रिंट/PDF बटणे दाखवा."
+      }
+    ]
+  }
+}

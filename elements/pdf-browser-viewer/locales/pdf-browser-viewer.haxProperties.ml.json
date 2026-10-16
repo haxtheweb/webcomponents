@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF ബ്രൗസർ വ്യൂവർ",
+    "description": "ഐച്ഛിക കാർഡ് ലേഔട്ടും ഡൗൺലോഡ് ബട്ടണും സഹിതം ഒരു PDF ഫയൽ ഇൻലൈനായി ഉൾച്ചേർക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF ഫയലിന്റെ സ്ഥാനം."
+      },
+      {
+        "property": "heading",
+        "title": "തലക്കെട്ട്",
+        "description": "കാർഡ് തലക്കെട്ട് വാചകം."
+      },
+      {
+        "property": "card",
+        "title": "കാർഡ് ലേഔട്ട്",
+        "description": "ഡൗൺലോഡ് ബട്ടണുള്ള ഒരു കാർഡിൽ PDF പ്രദർശിപ്പിക്കുക."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ഡൗൺലോഡ് ലേബൽ",
+        "description": "ഡൗൺലോഡ് ബട്ടണിനുള്ള ലേബൽ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "പിന്തുണയില്ലാത്തപ്പോഴുള്ള സന്ദേശം",
+        "description": "ബ്രൗസറിന് PDF ഫയലുകൾ പ്രദർശിപ്പിക്കാൻ കഴിയാത്തപ്പോഴുള്ള സന്ദേശം."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "പിന്തുണയില്ലാത്തപ്പോഴുള്ള ലിങ്ക് സന്ദേശം",
+        "description": "ബ്രൗസറിന് PDF ഫയലുകൾ പ്രദർശിപ്പിക്കാൻ കഴിയാത്തപ്പോഴുള്ള ലിങ്ക് വാചകം."
+      },
+      {
+        "property": "width",
+        "title": "വീതി",
+        "description": "PDF വ്യൂവറിന്റെ വീതി."
+      },
+      {
+        "property": "height",
+        "title": "ഉയരം",
+        "description": "PDF വ്യൂവറിന്റെ ഉയരം."
+      }
+    ]
+  }
+}

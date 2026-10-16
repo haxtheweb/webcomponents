@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ụda n'ahịrị",
+    "description": "Kpọọ ụda n'ahịrị iji gbakwunye ọdịnaya peeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isi mmalite",
+        "description": "Faịlụ MP3 ma ọ bụ URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba Mkpụrụ",
+        "description": "Agba mkpụrụ kaadị."
+      },
+      {
+        "property": "shiny",
+        "title": "Na-enwu enwu",
+        "description": "Jiri azụ mkpụrụ agba dị nchara nchara kama isi awọ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Ọchịchịrị",
+        "description": "Jiri ọnọdụ ọchịchịrị."
+      }
+    ]
+  }
+}

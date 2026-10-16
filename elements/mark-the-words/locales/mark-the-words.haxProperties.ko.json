@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "단어 표시하기",
+    "description": "본문 안에서 단어를 클릭하여 개념을 찾아냅니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "질문",
+        "description": "사용자가 답할 질문입니다."
+      },
+      {
+        "property": "statement",
+        "title": "문장",
+        "description": "단어 표시하기 상호작용으로 변환될 문장입니다."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "채점 형식",
+        "description": "OER Schema: 이 평가의 채점 형식입니다(예: 점수, 등급, 백분율, 이수 여부)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "학습 목표",
+        "description": "OER Schema: 이 평가와 연결된 학습 목표입니다."
+      },
+      {
+        "property": "forCourse",
+        "title": "강좌",
+        "description": "OER Schema: 이 평가가 대상으로 하는 강좌입니다."
+      },
+      {
+        "property": "answers",
+        "title": "정답"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "퀴즈 이름",
+        "description": "xAPI 기반 환경에서 이 항목을 식별하는 데 사용되는 퀴즈 이름"
+      }
+    ]
+  }
+}

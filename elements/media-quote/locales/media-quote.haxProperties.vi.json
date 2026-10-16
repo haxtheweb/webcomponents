@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Trích dẫn kèm phương tiện",
+    "description": "Hình ảnh kèm trích dẫn, nguồn trích dẫn và chú thích tùy chọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Trích dẫn",
+        "description": "Văn bản trích dẫn."
+      },
+      {
+        "slot": "author",
+        "title": "Tác giả",
+        "description": "Tác giả trích dẫn."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Chi tiết tác giả",
+        "description": "Chi tiết tác giả."
+      },
+      {
+        "slot": "caption",
+        "title": "Chú thích",
+        "description": "Chú thích hình ảnh."
+      },
+      {
+        "property": "src",
+        "title": "Nguồn hình ảnh",
+        "description": "Tệp hình ảnh dùng cho trích dẫn kèm phương tiện."
+      },
+      {
+        "property": "alt",
+        "title": "Văn bản thay thế",
+        "description": "Văn bản thay thế cho hình ảnh."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nhấn của thẻ."
+      }
+    ]
+  }
+}

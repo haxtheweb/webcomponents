@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ხატულა",
+    "description": "ხატულა ხატულების სრული ბიბლიოთეკიდან."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ხატულა",
+        "description": "საჩვენებელი ხატულა."
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "ხატულის აქცენტის ფერი."
+      },
+      {
+        "property": "dark",
+        "title": "მუქი",
+        "description": "მუქი რეჟიმის გამოყენება (ინვერსიული ფერები)."
+      }
+    ]
+  }
+}

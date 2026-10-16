@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Беџ догађаја",
+    "description": "Компонента беџа догађаја."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Слика на TV",
+        "description": "Слика приказана на TV."
+      },
+      {
+        "property": "logo",
+        "title": "Лого",
+        "description": "Лого приказан у углу беџа."
+      },
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов приказан на врху беџа."
+      },
+      {
+        "property": "name",
+        "title": "Име",
+        "description": "Име приказано на беџу."
+      },
+      {
+        "property": "position",
+        "title": "Позиција",
+        "description": "Улога или звање особе."
+      },
+      {
+        "property": "organization",
+        "title": "Организација",
+        "description": "Организација у којој особа ради."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Боја TV",
+        "description": "Изаберите боју за TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Примарна боја позадине или текста."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Боја дугмади",
+        "description": "Боја дугмади на TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Сепија",
+        "description": "Примени сепија ефекат."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Црно-бело",
+        "description": "Примени црно-бели ефекат."
+      }
+    ]
+  }
+}

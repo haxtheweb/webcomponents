@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D ойнатқыш",
+    "description": "3D файл / толықтырылған шындық ойнатқышы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Дереккөз",
+        "description": "Осы AR файлының URL мекенжайы."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Элементтің AR-дағы X орны."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Элементтің AR-дағы Y орны."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Элементтің AR-дағы Z орны."
+      },
+      {
+        "property": "skyColor",
+        "title": "Аспан түсі",
+        "description": "Сахнадағы аспанның түсін таңдаңыз."
+      }
+    ]
+  }
+}

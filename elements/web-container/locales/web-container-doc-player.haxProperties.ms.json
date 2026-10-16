@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Pemain dokumen komponen web"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Sembunyikan tetingkap",
+        "description": "Sembunyikan tetingkap output, berguna apabila tujuannya terminal sahaja"
+      }
+    ]
+  }
+}

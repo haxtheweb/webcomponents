@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn ಎಂಬೆಡ್",
+    "description": "LinkedIn ಪ್ರೊಫೈಲ್ ಕಾರ್ಡ್ ಎಂಬೆಡ್ ಮಾಡಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "ವ್ಯಾನಿಟಿ ಹೆಸರು",
+        "description": "LinkedIn ವ್ಯಾನಿಟಿ ಬಳಕೆದಾರಹೆಸರಿನ ಭಾಗ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "ಸ್ಥಳೀಯ ಸೆಟ್ಟಿಂಗ್",
+        "description": "en_US ನಂತಹ ಸ್ಥಳೀಯ ಸೆಟ್ಟಿಂಗ್ ಮೆಟಾಡೇಟಾ ಮೌಲ್ಯ."
+      }
+    ]
+  }
+}

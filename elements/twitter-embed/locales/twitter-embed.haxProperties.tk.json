@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) ýerleşdirmesi",
+    "description": "X-dan tweeti kontekstde ýerleşdiriň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Tweetiň URL-i",
+        "description": "Ýerleşdiriljek tweetiň URL-i."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "X tweetleri üçin açyk ýa-da garaňky tema.",
+        "options": {
+          "light": "Açyk",
+          "dark": "Garaňky"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Basylanda açylýan penjiräniň öňüni al",
+        "description": "Ulanyjylaryň tweeti x.com-da açmagynyň öňüni al."
+      }
+    ]
+  }
+}

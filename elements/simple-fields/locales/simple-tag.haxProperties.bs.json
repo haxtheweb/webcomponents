@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Oznaka / pilula",
+    "description": "Kompaktna oznaka u obliku pilule s opcionalnom bojom naglaska, dugmetom za otkazivanje ili prekidačem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Oznaka",
+        "description": "Tekst prikazan unutar pilule."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Naziv SimpleColors naglaska za pozadinu pilule.",
+        "options": {
+          "": "-- zadano --",
+          "red": "Crvena",
+          "pink": "Ružičasta",
+          "purple": "Ljubičasta",
+          "deep-purple": "Tamnoljubičasta",
+          "indigo": "Indigo",
+          "blue": "Plava",
+          "light-blue": "Svijetloplava",
+          "cyan": "Cijan",
+          "teal": "Tirkizna",
+          "green": "Zelena",
+          "light-green": "Svijetlozelena",
+          "lime": "Limeta",
+          "yellow": "Žuta",
+          "amber": "Jantarna",
+          "orange": "Narandžasta",
+          "deep-orange": "Tamnonarandžasta",
+          "brown": "Smeđa",
+          "blue-grey": "Plavosiva",
+          "grey": "Siva"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatska boja naglaska",
+        "description": "Automatski izvedi boju naglaska iz teksta oznake."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Dugme za otkazivanje",
+        "description": "Prikaži dugme s ikonom za uklanjanje/otkazivanje unutar pilule."
+      },
+      {
+        "property": "readonly",
+        "title": "Samo za čitanje",
+        "description": "Sakrij dugme za otkazivanje tako da pilula služi samo za prikaz."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Prebacivanje",
+        "description": "Neka se pilula uključuje/isključuje klikom na dugme."
+      },
+      {
+        "property": "toggled",
+        "title": "Uključeno",
+        "description": "Da li je pilula trenutno uključena."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ikona uključenog stanja",
+        "description": "Ikona koja se prikazuje kada je pilula uključena."
+      },
+      {
+        "property": "disabled",
+        "title": "Onemogućeno",
+        "description": "Onemogući interakciju s pilulom."
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Àyọkà mídíà",
+    "description": "Àwòrán pẹ̀lú àyọkà, ìtọ́kasí, àti àkọlé àṣàyàn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Àyọkà",
+        "description": "Ọ̀rọ̀ àyọkà."
+      },
+      {
+        "slot": "author",
+        "title": "Òǹkọ̀wé",
+        "description": "Òǹkọ̀wé àyọkà."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Àlàyé òǹkọ̀wé",
+        "description": "Àlàyé òǹkọ̀wé."
+      },
+      {
+        "slot": "caption",
+        "title": "Àkọlé àwòrán",
+        "description": "Àkọlé àwòrán."
+      },
+      {
+        "property": "src",
+        "title": "Orísun àwòrán",
+        "description": "Fáìlì àwòrán tí a lò fún àyọkà mídíà."
+      },
+      {
+        "property": "alt",
+        "title": "Ọ̀rọ̀ àfirọ́pò",
+        "description": "Ọ̀rọ̀ àfirọ́pò fún àwòrán náà."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ Ìtẹnumọ́",
+        "description": "Àwọ̀ ìtẹnumọ́ káàdì."
+      }
+    ]
+  }
+}

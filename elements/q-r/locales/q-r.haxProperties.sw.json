@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Msimbo wa QR",
+    "description": "Msimbo wa kuchanganua kwa simu janja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Data ya QR",
+        "description": "Chanzo cha data ya msimbo wa QR."
+      },
+      {
+        "property": "title",
+        "title": "Kichwa mbadala",
+        "description": "Kichwa mbadala kilichounganishwa na chanzo cha msimbo wa QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Ukubwa",
+        "description": "Ukubwa wa msimbo wa QR."
+      },
+      {
+        "property": "margin",
+        "title": "Pambizo",
+        "description": "Nafasi inayozunguka msimbo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Muundo wa matokeo",
+        "description": "Muundo wa kutoa.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

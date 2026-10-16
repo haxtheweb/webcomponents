@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Fi bọ́tìnnì ìpè-sí-ìṣe Polaris tí ó bá àkòrí mu hàn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Ọ̀rọ̀ bọ́tìnnì",
+        "description": "Ọ̀rọ̀ tí a fi hàn nínú bọ́tìnnì ìpè-sí-ìṣe."
+      },
+      {
+        "property": "link",
+        "title": "Ìjápọ̀",
+        "description": "URL ibi-àfojúsùn fún bọ́tìnnì náà."
+      },
+      {
+        "property": "type",
+        "title": "Oríṣi",
+        "description": "Oríṣi ìrísí.",
+        "options": {
+          "primary": "Àkọ́kọ́",
+          "tinted": "Aláwọ̀-fẹ́ẹ́rẹ́",
+          "light": "Ìmọ́lẹ̀"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Ìrísí oní-ìlà-ìta",
+        "description": "Mú ìrísí oní-ìlà-ìta ṣiṣẹ́."
+      },
+      {
+        "property": "filled",
+        "title": "Ìrísí kíkún",
+        "description": "Mú ìrísí kíkún ṣiṣẹ́."
+      }
+    ]
+  }
+}

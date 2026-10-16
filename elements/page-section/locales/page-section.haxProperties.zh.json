@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "页面区块",
+    "description": "用于页面内容和整屏布局的区块容器。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "设计处理",
+        "description": "会同步更新相关设置的预设样式。"
+      },
+      {
+        "property": "image",
+        "title": "图像",
+        "description": "区块的背景媒体。"
+      },
+      {
+        "property": "bg",
+        "title": "背景颜色",
+        "description": "未设置图像时的背景颜色。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "滚动按钮",
+        "description": "显示滚动到下一区块的按钮。"
+      },
+      {
+        "property": "fold",
+        "title": "显示折页",
+        "description": "在区块底部显示视觉折页。"
+      },
+      {
+        "property": "full",
+        "title": "全屏尺寸",
+        "description": "填满观看者的屏幕高度。"
+      },
+      {
+        "property": "filter",
+        "title": "应用滤镜",
+        "description": "对背景图像应用视觉滤镜。"
+      },
+      {
+        "slot": "",
+        "title": "内容",
+        "description": "区块内容。"
+      },
+      {
+        "slot": "entice",
+        "title": "吸引元素",
+        "description": "可选的吸引性内容。"
+      },
+      {
+        "slot": "buttons",
+        "title": "按钮",
+        "description": "显示在文本下方的按钮组。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "锚点文本",
+        "description": "导航中显示的锚点标签。"
+      }
+    ]
+  }
+}

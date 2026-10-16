@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "የማቆሚያ ማስታወሻ",
+    "description": "አንባቢዎችን ስለ ተወሰኑ መመሪያዎች ለማስጠንቀቅ የሚያገለግል መልእክት።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "ለማቆሚያ ማስታወሻው ርዕስ አስገባ።"
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "ውጫዊ URL አስገባ።"
+      },
+      {
+        "property": "status",
+        "title": "ሁኔታ",
+        "description": "ሁኔታን ማዘጋጀት ቀለሞቹን እና አዶዎቹን እንዲስማሙ ይቀይራል",
+        "options": {
+          "stop": "አቁም",
+          "warning": "ማስጠንቀቂያ",
+          "success": "ማረጋገጫ",
+          "info": "ማሳሰቢያ"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "የማስታወሻ ጽሑፍ",
+        "description": "ለማቆሚያ ማስታወሻው ጽሑፍ።"
+      }
+    ]
+  }
+}

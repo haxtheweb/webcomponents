@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kuvakartta",
+    "description": "Saavutettava kuvakartta interaktiivisilla kohdepisteillä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Nimike",
+        "description": "Kuvakartan nimike."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Kohdepisteiden tiedot",
+        "description": "Kuvakartan interaktiiviset kohdepisteet."
+      }
+    ]
+  }
+}

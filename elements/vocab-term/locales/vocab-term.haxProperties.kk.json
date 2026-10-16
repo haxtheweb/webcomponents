@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Сөздік",
+    "description": "Сөздік термині."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Термин"
+      },
+      {
+        "property": "information",
+        "title": "Анықтама",
+        "description": "Терминді басқанда көрсетілетін анықтама."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Қалқымалы терезе",
+        "description": "Анықтаманы мәтін ішінде емес, қалқымалы терезеде көрсету."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Сілтемелер",
+        "description": "Осы терминге байланысты қосымша сілтемелер тізімі."
+      }
+    ]
+  }
+}

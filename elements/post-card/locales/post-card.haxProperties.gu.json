@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "પોસ્ટકાર્ડ",
+    "description": "ક્યાંકથી આવેલા વાસ્તવિક પોસ્ટકાર્ડ જેવો દેખાતો રમતિયાળ મીડિયા ભાગ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "પ્રતિ",
+        "description": "આ કોને મોકલવાનું છે?"
+      },
+      {
+        "property": "from",
+        "title": "તરફથી",
+        "description": "તમે કોણ છો?"
+      },
+      {
+        "property": "message",
+        "title": "સંદેશ",
+        "description": "તમે શું કહેવા માંગો છો?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "ટપાલ મુદ્રા સ્થાન",
+        "description": "આ કાર્ડ ક્યાંથી મોકલવામાં આવ્યું હતું?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "મુખ્ય ફોટો સ્રોત",
+        "description": "તમારો ફોટો ક્યાં છે?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "ટિકિટ ફોટો સ્રોત",
+        "description": "તમારો ફોટો ક્યાં છે?"
+      }
+    ]
+  }
+}

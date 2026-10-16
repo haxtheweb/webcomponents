@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "გაეროს მდგრადი განვითარების მიზანი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "მიზანი",
+        "description": "UN SDG-ის ნომერი."
+      },
+      {
+        "property": "colorOnly",
+        "title": "მხოლოდ ფერი",
+        "description": "მხოლოდ მიზნის ფერის ჩვენება."
+      }
+    ]
+  }
+}

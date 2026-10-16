@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG-Figur",
+    "description": "Lustige Figur von HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Name",
+        "description": "Wort, aus dem eine zufällige Figur erzeugt wird."
+      },
+      {
+        "property": "hat",
+        "title": "Hut",
+        "description": "Hutstil.",
+        "options": {
+          "none": "Standard",
+          "random": "Zufällig",
+          "bunny": "Hase",
+          "cowboy": "Cowboy",
+          "education": "Bildung",
+          "construction": "Baustelle",
+          "warning": "Warnung",
+          "watermelon": "Wassermelone",
+          "coffee": "Kaffee",
+          "knight": "Ritter",
+          "ninja": "Ninja",
+          "party": "Party",
+          "error": "Fehler",
+          "edit": "Bearbeiten"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Breite",
+        "description": "Breite der Figur in Pixeln."
+      },
+      {
+        "property": "height",
+        "title": "Höhe",
+        "description": "Höhe der Figur in Pixeln."
+      },
+      {
+        "property": "fire",
+        "title": "Brennt?",
+        "description": "Ob die Figur brennt."
+      },
+      {
+        "property": "walking",
+        "title": "Geht?",
+        "description": "Gehanimation; rennt, wenn sie brennt."
+      }
+    ]
+  }
+}

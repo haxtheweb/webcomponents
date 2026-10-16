@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity ფლეერი",
+    "description": "Unity WebGL ფლეერი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "სამიზნე",
+        "description": "თამაშის აწყობის მისამართი."
+      },
+      {
+        "property": "compression",
+        "title": "შეკუმშვის მეთოდი",
+        "description": "თამაშის რესურსების შეკუმშვის ფაილის გაფართოება."
+      },
+      {
+        "property": "streamingurl",
+        "title": "სტრიმინგის URL",
+        "description": "სტრიმინგის რესურსების URL."
+      },
+      {
+        "property": "companyname",
+        "title": "კომპანიის სახელი",
+        "description": "კომპანიის სახელი."
+      },
+      {
+        "property": "productname",
+        "title": "პროდუქტის სახელი",
+        "description": "თამაშის სათაური."
+      },
+      {
+        "property": "productversion",
+        "title": "პროდუქტის ვერსია",
+        "description": "გამოშვების ვერსია."
+      },
+      {
+        "property": "width",
+        "title": "ტილოს სიგანე",
+        "description": "ტილოს CSS სიგანე (მაგალითად px ან em)."
+      },
+      {
+        "property": "height",
+        "title": "ტილოს სიმაღლე",
+        "description": "ტილოს CSS სიმაღლე (მაგალითად px ან em)."
+      },
+      {
+        "property": "background",
+        "title": "ტილოს ფონი",
+        "description": "ტილოს CSS ფონი."
+      }
+    ]
+  }
+}

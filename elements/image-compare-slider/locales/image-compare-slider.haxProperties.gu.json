@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "છબી સરખામણી",
+    "description": "સરખામણી માટે એક છબીને બીજી પર સ્વાઇપ કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "ઉપરની છબી",
+        "description": "નીચેની છબી પર સ્વાઇપ કરવાની ઉપરની છબી."
+      },
+      {
+        "property": "topAlt",
+        "title": "ઉપરની છબીનું વૈકલ્પિક લખાણ",
+        "description": "સુલભતા માટે જરૂરી વૈકલ્પિક લખાણ."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "નીચેની છબી",
+        "description": "ઉપરની છબીની નીચે બતાવાતી છબી."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "નીચેની છબીનું વૈકલ્પિક લખાણ",
+        "description": "સુલભતા માટે જરૂરી વૈકલ્પિક લખાણ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "વર્તન",
+        "description": "વાઇપ મોડ (ડિફૉલ્ટ) અથવા ઉપરની છબીની અપારદર્શકતા મોડ પસંદ કરો."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "સ્લાઇડર બારનો રંગ."
+      },
+      {
+        "property": "dark",
+        "title": "ડાર્ક",
+        "description": "સ્લાઇડર બારનો રંગ ઊલટાવો."
+      },
+      {
+        "property": "position",
+        "title": "પ્રારંભિક સ્થાન",
+        "description": "0 થી 100 સુધીનું પ્રારંભિક સ્થાન."
+      }
+    ]
+  }
+}

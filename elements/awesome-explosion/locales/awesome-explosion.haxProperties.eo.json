@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Mojosa eksplodo",
+    "description": "Interaga eksploda animacio kun nedevigaj sonefektoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Grandeco",
+        "description": "Agordi la grandecon de la eksplodo.",
+        "options": {
+          "tiny": "Eta",
+          "small": "Malgranda",
+          "medium": "Meza",
+          "large": "Granda",
+          "epic": "Epopea"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Koloro",
+        "description": "Agordi la koloran temon de la eksplodo.",
+        "options": {
+          "": "Defaŭlta",
+          "red": "Ruĝa",
+          "blue": "Blua",
+          "purple": "Purpura",
+          "orange": "Oranĝa",
+          "yellow": "Flava"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Sonefektoj",
+        "description": "Ŝalti sonefektojn."
+      },
+      {
+        "property": "resetSound",
+        "title": "Restarigi sonon",
+        "description": "Rekomenci la sonon de la komenco ĉiufoje."
+      },
+      {
+        "property": "image",
+        "title": "Propra bildo",
+        "description": "Nedeviga URL por propra eksploda bildo."
+      },
+      {
+        "property": "sound",
+        "title": "Propra sono",
+        "description": "Nedeviga URL por propra sonefekto."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Malŝaltita",
+        "description": "Malŝalti ĉiujn interagojn."
+      }
+    ]
+  }
+}

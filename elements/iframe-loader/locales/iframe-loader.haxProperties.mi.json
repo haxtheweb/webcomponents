@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Tāmau i ngā ihirangi tukutuku o waho ki tētahi iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL Rauemi",
+        "description": "URL rauemi."
+      },
+      {
+        "property": "height",
+        "title": "Teitei",
+        "description": "Teitei o te iframe."
+      },
+      {
+        "property": "width",
+        "title": "Whānui",
+        "description": "Whānui o te iframe."
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Talahanayan",
+    "description": "Datos na nakatalahanayan para sa web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Header ng Row",
+        "description": "Ituring ang unang row bilang header."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Header ng Column",
+        "description": "Ituring ang unang column bilang header."
+      },
+      {
+        "property": "footer",
+        "title": "Footer",
+        "description": "Ituring ang huling row bilang footer."
+      },
+      {
+        "property": "sort",
+        "title": "Maaaring Pagsunud-sunurin",
+        "description": "Payagan ang pagsasaayos ayon sa mga halaga ng column."
+      },
+      {
+        "property": "filter",
+        "title": "Payagan ang Filter",
+        "description": "Payagan ang pag-filter ayon sa mga halaga ng column."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numerikong Istilo",
+        "description": "Ilapat ang numerikong istilo sa mga numerikong column."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsive",
+        "description": "Iangkop ang layout ng talahanayan sa maliliit na screen."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubric Mode",
+        "description": "Ituring ang talahanayang ito bilang OER Schema Rubric para mailabas ang metadata na Rubric, RubricScale, RubricCriterion, at RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Uri ng Rubric",
+        "description": "Istilo ng rubric na inilalabas bilang oer:rubricType (may saysay lamang kapag naka-on ang Rubric Mode).",
+        "options": {
+          "": "(wala)",
+          "analytic": "Analitiko",
+          "holistic": "Holistiko",
+          "single-point": "Iisang Punto",
+          "checklist": "Checklist"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "May Border"
+      },
+      {
+        "property": "condensed",
+        "title": "Paliitin ang mga Row",
+        "description": "Bawasan ang taas ng row."
+      },
+      {
+        "property": "striped",
+        "title": "May Guhit na mga Row",
+        "description": "Lagyan ng lilim ang bawat ikalawang row."
+      },
+      {
+        "property": "downloadable",
+        "title": "Button sa Pag-download",
+        "description": "Magdagdag ng button para i-download ang talahanayan."
+      },
+      {
+        "property": "copyable",
+        "title": "Button sa Pagkopya",
+        "description": "Magdagdag ng button para kopyahin ang CSV data ng talahanayan."
+      },
+      {
+        "property": "printable",
+        "title": "Button sa Pag-print",
+        "description": "Magdagdag ng button para i-print ang talahanayan lamang."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV Data",
+        "description": "Gumawa ng talahanayan mula sa na-upload na CSV file."
+      }
+    ]
+  }
+}

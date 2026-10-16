@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "步骤项",
+    "description": "步骤列表中的一项"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题"
+      }
+    ]
+  }
+}

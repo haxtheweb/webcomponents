@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Zambiri za tsamba",
+    "description": "Fotokozani kugawikana kowoneka pakati pa masamba komwe ma CMS angagwiritse ntchito kupanga masamba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mutu wowonetsedwa mu mawonekedwe ndi mutu woyamba."
+      },
+      {
+        "property": "pageType",
+        "title": "Mtundu",
+        "description": "Dzina lowonetsa nkhani ya tsamba.",
+        "options": {
+          "": "-- palibe --",
+          "content": "Zomwe zili mkati",
+          "assessment": "Kuyesa",
+          "quiz": "Mayeso",
+          "submission": "Kutumiza",
+          "lesson": "Phunziro",
+          "module": "Gawo",
+          "task": "Ntchito",
+          "activity": "Zochita",
+          "project": "Pulojekiti",
+          "practice": "Kuyeserera",
+          "unit": "Mutu wa maphunziro",
+          "objectives": "Zolinga za Maphunziro",
+          "connection": "Kulumikizana",
+          "knowledge": "Kodi Mumadziwa?",
+          "strategy": "Njira Yophunzirira",
+          "discuss": "Kambiranani",
+          "listen": "Mverani",
+          "make": "Pangani",
+          "observe": "Yang'anitsitsani",
+          "present": "Fotokozani",
+          "reading": "Kuwerenga",
+          "reflect": "Lingalirani",
+          "research": "Fufuzani",
+          "watch": "Onerani",
+          "write": "Lembani"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Ma Tagi",
+        "description": "Mndandanda wa ma tagi olekanitsidwa ndi koma."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL ya Ulalo",
+        "description": "URL yopatutsira yowonetsedwa m'malo mwa zomwe zili patsamba."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Komwe Ulalo Ukutsegukira",
+        "description": "Tsegulani maulalo pazenera lomwelo kapena pazenera latsopano.",
+        "options": {
+          "_self": "Zenera lomwelo",
+          "_blank": "Zenera latsopano"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Zosindikizidwa",
+        "description": "Masamba osasindikizidwa amabisika kwa ogwiritsa ntchito."
+      },
+      {
+        "property": "locked",
+        "title": "Tsekani tsamba",
+        "description": "Tsekani kapena tsegulani zinthu zonse patsambali."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Pitirirani slug yokha",
+        "description": "Tsekani slug kuti isasinthidwe yokha potsatira mutu kapena kholo."
+      },
+      {
+        "property": "slug",
+        "title": "Njira",
+        "description": "Slug ya URL ya tsamba ili."
+      },
+      {
+        "property": "image",
+        "title": "Zofalitsa",
+        "description": "Zofalitsa zoyimira tsamba, zogwiritsidwa ntchito m'mawonekedwe ena."
+      },
+      {
+        "property": "parent",
+        "title": "Kholo",
+        "description": "Njira ya tsamba la kholo."
+      },
+      {
+        "property": "noderefs",
+        "title": "Zokhudzana",
+        "description": "Masamba okhudzana ndi tsamba ili."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Kufotokoza",
+        "description": "Kufotokoza kogwiritsidwa ntchito m'magulu ndi pakukonza kusaka (SEO)."
+      },
+      {
+        "property": "entityType",
+        "title": "Mtundu wa Chinthu",
+        "description": "Mwachisawawa ndi tsamba pokhapokha mutasankha zina.",
+        "options": {
+          "page": "Tsamba (mwachisawawa)",
+          "taxonomy": "Kagawidwe",
+          "taxonomyTerm": "Liwu la Kagawidwe",
+          "region": "Dera"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Chizindikiro",
+        "description": "Chizindikiro chokhudzana ndi tsamba ili patsambalo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu wowonjezera",
+        "description": "Mtundu wokhudzana ndi tsamba ili patsambalo."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Bisani mu menyu",
+        "description": "Bisani tsamba ili m'mamenyu koma sungani URL yake."
+      },
+      {
+        "property": "order",
+        "title": "Ndondomeko",
+        "description": "Ndondomeko poyerekeza ndi masamba ena a mlingo umodzi."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Mawonekedwe a tsamba",
+        "description": "Sinthani mawonekedwe a tsamba ili lokha."
+      },
+      {
+        "property": "author",
+        "title": "Wolemba",
+        "description": "Dzina la wogwiritsa ntchito wa munthu womaliza kusintha tsamba ili."
+      }
+    ]
+  }
+}

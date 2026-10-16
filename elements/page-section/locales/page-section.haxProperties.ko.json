@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "페이지 섹션",
+    "description": "페이지 콘텐츠와 화면 기반 레이아웃을 위한 섹션 컨테이너입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "디자인 처리",
+        "description": "관련 설정을 함께 업데이트하는 사전 설정 스타일입니다."
+      },
+      {
+        "property": "image",
+        "title": "이미지",
+        "description": "섹션의 배경 미디어입니다."
+      },
+      {
+        "property": "bg",
+        "title": "배경 색상",
+        "description": "이미지가 설정되지 않았을 때의 배경 색상입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "스크롤 버튼",
+        "description": "다음 섹션으로 스크롤하는 버튼을 표시합니다."
+      },
+      {
+        "property": "fold",
+        "title": "접힘 표시",
+        "description": "섹션 하단에 시각적 접힘을 표시합니다."
+      },
+      {
+        "property": "full",
+        "title": "전체 화면 크기",
+        "description": "사용자 화면 높이를 가득 채웁니다."
+      },
+      {
+        "property": "filter",
+        "title": "필터 적용",
+        "description": "배경 이미지에 시각적 필터를 적용합니다."
+      },
+      {
+        "slot": "",
+        "title": "콘텐츠",
+        "description": "섹션 콘텐츠입니다."
+      },
+      {
+        "slot": "entice",
+        "title": "유도 문구",
+        "description": "선택적 유도 콘텐츠입니다."
+      },
+      {
+        "slot": "buttons",
+        "title": "버튼",
+        "description": "텍스트 아래에 표시되는 버튼 그룹입니다."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "앵커 텍스트",
+        "description": "탐색에 표시되는 앵커 레이블입니다."
+      }
+    ]
+  }
+}

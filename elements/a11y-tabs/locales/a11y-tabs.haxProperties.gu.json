@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ટૅબ્સ",
+    "description": "ટૅબ્સનો સમૂહ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "લેબલ (સુલભતા માટે)",
+        "description": "ટૅબ સમૂહ માટે સુલભ લેબલ."
+      },
+      {
+        "property": "disabled",
+        "title": "નિષ્ક્રિય",
+        "description": "બધા ટૅબ્સ નિષ્ક્રિય કરો."
+      },
+      {
+        "property": "hidden",
+        "title": "છુપાયેલું",
+        "description": "ટૅબ સમૂહ છુપાવો."
+      },
+      {
+        "property": "sticky",
+        "title": "સ્થિર (સ્ટીકી)",
+        "description": "સ્ક્રોલ કરતી વખતે આડા ટૅબ્સને ટોચ પર રાખો."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "લેઆઉટ બ્રેકપૉઇન્ટ",
+        "description": "આડા ટૅબ્સ માટે બ્રેકપૉઇન્ટ; ફક્ત ઊભા ટૅબ્સ માટે -1 વાપરો."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "આઇકન બ્રેકપૉઇન્ટ",
+        "description": "આઇકન સાથે લખાણ બતાવવા માટેનો બ્રેકપૉઇન્ટ. ડિફૉલ્ટ 0 છે; ફક્ત-આઇકન મોડ માટે -1 વાપરો."
+      },
+      {
+        "slot": "",
+        "title": "ટૅબ્સ",
+        "description": "<a11y-tab/> ઘટકોની શ્રેણી."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "અનન્ય ID",
+        "description": "આ ટૅબ સમૂહ માટે અનન્ય ID."
+      }
+    ]
+  }
+}

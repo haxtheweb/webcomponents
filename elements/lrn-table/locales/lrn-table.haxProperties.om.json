@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Gabatee CSV",
+    "description": "Kun faayilii CSV bakka kamiyyuu jiru irraa gabatee uumuu danda'a."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Madda",
+        "description": "URL faayilii CSV kanaa."
+      },
+      {
+        "property": "title",
+        "title": "Mata-duree",
+        "description": "Mata-duree gabatee uumamuuf."
+      },
+      {
+        "property": "description",
+        "title": "Ibsa",
+        "description": "Dhaqqabummaa daataa gabatee fooyyessuuf ibsa bal'aa."
+      }
+    ]
+  }
+}

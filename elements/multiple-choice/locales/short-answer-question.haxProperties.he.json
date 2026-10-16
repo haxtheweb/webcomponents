@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "שאלת תשובה קצרה",
+    "description": "המשתמש עונה על שאלה בסיסית"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "שאלה",
+        "description": "שאלה שהמשתמשים יגיבו עליה."
+      },
+      {
+        "property": "answers",
+        "title": "תשובות אפשריות"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "שם הבוחן",
+        "description": "שם הבוחן המועבר לשימוש בסביבות מבוססות xAPI לצורך זיהוי פריט זה"
+      }
+    ]
+  }
+}

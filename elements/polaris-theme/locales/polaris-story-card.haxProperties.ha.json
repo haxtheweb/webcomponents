@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Katin labari na Polaris",
+    "description": "Nuna katin labari na Polaris tare da hoton bango, lakabin ginshiƙi, da rubutun kanun labari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Hoton bango",
+        "description": "URL na hoton da ake nunawa a matsayin bangon katin."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Girman bango",
+        "description": "Yadda hoton bango ke cika katin (CSS background-size).",
+        "options": {
+          "cover": "rufe (cover)",
+          "contain": "ƙunsa (contain)",
+          "auto": "atomatik (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Haɗin bango",
+        "description": "Yadda hoton bango ke yi yayin gungurawa (CSS background-attachment).",
+        "options": {
+          "scroll": "gungura (scroll)",
+          "fixed": "tsayayye (fixed)",
+          "local": "na gida (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Lakabin ginshiƙi",
+        "description": "Gajeren lakabi da manyan haruffa da ake nunawa a saman katin. Bar shi babu komai don ɓoyewa."
+      },
+      {
+        "property": "label",
+        "title": "Rubutun kati",
+        "description": "Babban rubutun da ake nunawa a ƙasan faifan."
+      },
+      {
+        "property": "link",
+        "title": "Mahaɗi",
+        "description": "URL na zaɓi na inda za a kai wanda ke naɗe dukan katin."
+      }
+    ]
+  }
+}

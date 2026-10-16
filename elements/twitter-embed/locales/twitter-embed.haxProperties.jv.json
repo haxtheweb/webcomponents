@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Sematan Twitter (X)",
+    "description": "Lebokake tweet saka X ing konteks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL Tweet",
+        "description": "URL tweet sing arep dilebokake."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Tema padhang utawa peteng kanggo tweet X.",
+        "options": {
+          "light": "Padhang",
+          "dark": "Peteng"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Cegah popup nalika diklik",
+        "description": "Cegah pangguna mbukak tweet ing x.com."
+      }
+    ]
+  }
+}

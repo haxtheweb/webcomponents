@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "فهرست پخش",
+    "description": "نمایش هر نوع محتوایی در فهرست پخش."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "منبع",
+        "description": "محتوایی که در فهرست پخش نمایش داده می‌شود."
+      },
+      {
+        "property": "edit",
+        "title": "حالت ویرایش",
+        "description": "جابه‌جایی میان حالت ویرایش و پیش‌نمایش فهرست پخش."
+      },
+      {
+        "property": "navigation",
+        "title": "ناوبری",
+        "description": "نمایش دکمه‌های ناوبری جلو و عقب."
+      },
+      {
+        "property": "pagination",
+        "title": "صفحه‌بندی",
+        "description": "نمایش نقطه‌های صفحه‌بندی."
+      },
+      {
+        "property": "orientation",
+        "title": "جهت",
+        "description": "جهت اسلایدها.",
+        "options": {
+          "horizontal": "افقی",
+          "vertical": "عمودی"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "اسلاید آغازین",
+        "description": "شاخص اسلایدی که در آغاز روی آن تمرکز می‌شود."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "نسبت ابعاد",
+        "description": "نسبت ابعاد اسلایدها.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

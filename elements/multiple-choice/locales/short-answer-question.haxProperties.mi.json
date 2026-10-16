@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Pātai Whakautu Poto",
+    "description": "Mā te kaiwhakamahi e whakautu tētahi pātai māmā"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pātai",
+        "description": "Pātai hei whakautu mā ngā kaiwhakamahi."
+      },
+      {
+        "property": "answers",
+        "title": "Ngā Whakautu Pea"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ingoa o te pātaitai",
+        "description": "Ingoa pātaitai ka tukuna atu hei whakamahi i ngā taiao e ārahina ana e xAPI, hei tautuhi i tēnei tūemi"
+      }
+    ]
+  }
+}

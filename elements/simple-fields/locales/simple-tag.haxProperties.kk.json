@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Тег / Белгі",
+    "description": "Қосымша екпін түсі, болдырмау түймесі немесе ауыстырғышы бар ықшам сопақ пішінді белгі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Белгі",
+        "description": "Белгі ішінде көрсетілетін мәтін."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Белгі фонына арналған SimpleColors екпін атауы.",
+        "options": {
+          "": "-- әдепкі --",
+          "red": "Қызыл",
+          "pink": "Қызғылт",
+          "purple": "Күлгін",
+          "deep-purple": "Қою күлгін",
+          "indigo": "Индиго",
+          "blue": "Көк",
+          "light-blue": "Ашық көк",
+          "cyan": "Көгілдір",
+          "teal": "Көкшіл жасыл",
+          "green": "Жасыл",
+          "light-green": "Ашық жасыл",
+          "lime": "Лайм",
+          "yellow": "Сары",
+          "amber": "Янтарь",
+          "orange": "Қызғылт сары",
+          "deep-orange": "Қою қызғылт сары",
+          "brown": "Қоңыр",
+          "blue-grey": "Көкшіл сұр",
+          "grey": "Сұр"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Автоматты екпін түсі",
+        "description": "Екпін түсін белгі мәтінінен автоматты түрде анықтау."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Болдырмау түймесі",
+        "description": "Белгі ішінде жою/болдырмау белгіше түймесін көрсету."
+      },
+      {
+        "property": "readonly",
+        "title": "Тек оқу үшін",
+        "description": "Белгі тек көрсету үшін болуы үшін болдырмау түймесін жасыру."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Ауыстырылады",
+        "description": "Түйме басылғанда белгіні қосу/өшіру."
+      },
+      {
+        "property": "toggled",
+        "title": "Қосулы",
+        "description": "Белгі қазір қосулы ма."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Қосулы белгіше",
+        "description": "Белгі қосулы болғанда көрсетілетін белгіше."
+      },
+      {
+        "property": "disabled",
+        "title": "Өшірулі",
+        "description": "Белгімен әрекеттесуді өшіру."
+      }
+    ]
+  }
+}

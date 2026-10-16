@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Fantastisk eksplosjon",
+    "description": "Interaktiv eksplosjonsanimasjon med valgfrie lydeffekter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Størrelse",
+        "description": "Angi størrelsen på eksplosjonen.",
+        "options": {
+          "tiny": "Bitteliten",
+          "small": "Liten",
+          "medium": "Middels",
+          "large": "Stor",
+          "epic": "Episk"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Farge",
+        "description": "Angi fargetemaet for eksplosjonen.",
+        "options": {
+          "": "Standard",
+          "red": "Rød",
+          "blue": "Blå",
+          "purple": "Lilla",
+          "orange": "Oransje",
+          "yellow": "Gul"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Lydeffekter",
+        "description": "Slå på lydeffekter."
+      },
+      {
+        "property": "resetSound",
+        "title": "Tilbakestill lyd",
+        "description": "Start lyden fra begynnelsen hver gang."
+      },
+      {
+        "property": "image",
+        "title": "Egendefinert bilde",
+        "description": "Valgfri URL til et egendefinert eksplosjonsbilde."
+      },
+      {
+        "property": "sound",
+        "title": "Egendefinert lyd",
+        "description": "Valgfri URL til en egendefinert lydeffekt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Deaktivert",
+        "description": "Deaktiver all interaksjon."
+      }
+    ]
+  }
+}

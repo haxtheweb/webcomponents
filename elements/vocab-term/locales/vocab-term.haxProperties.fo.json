@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Orðfeingi",
+    "description": "Orðfeingisheiti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Heiti"
+      },
+      {
+        "property": "information",
+        "title": "Allýsing",
+        "description": "Allýsing, sum verður víst, tá klikt verður á heitið."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Sprettigluggi",
+        "description": "Vís allýsingina í einum sprettiglugga í staðin fyri í tekstinum."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Leinki",
+        "description": "Listi av viðbótarleinkjum knýttum at hesum heitinum."
+      }
+    ]
+  }
+}

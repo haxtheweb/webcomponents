@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Кадам элементи",
+    "description": "Кадамдар тизмесинин бир бөлүгү болгон элемент"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Аталыш"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kisanduku kinachokunjwa",
+    "description": "Kisanduku kimoja kinachoweza kupanuliwa na kukunjwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Kichwa",
+        "description": "Maandishi ya sehemu inayokunjwa."
+      },
+      {
+        "property": "expanded",
+        "title": "Imepanuliwa",
+        "description": "Panua kwa chaguo-msingi."
+      },
+      {
+        "property": "headingButton",
+        "title": "Kitufe cha Kichwa",
+        "description": "Fanya kichwa chote kibofyeke badala ya aikoni pekee."
+      },
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni ya kitufe cha kupanua/kukunja."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Aikoni (ikiwa imepanuliwa)",
+        "description": "Aikoni ya hiari kwa hali ya kupanuliwa."
+      },
+      {
+        "slot": "",
+        "title": "Maudhui",
+        "description": "Maudhui ya sehemu inayokunjwa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Kidokezo",
+        "description": "Kidokezo cha kitufe cha kupanua/kukunja."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Kidokezo (ikiwa imepanuliwa)",
+        "description": "Kidokezo cha kitufe cha kupanua/kukunja kikiwa kimepanuliwa."
+      }
+    ]
+  }
+}

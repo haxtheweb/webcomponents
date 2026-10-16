@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "د غږونو لېست",
+    "description": "هر ډول منځپانګه په لړلیک کې وښایئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "سرچینه",
+        "description": "هغه منځپانګه چې په لړلیک کې ښودل کېږي."
+      },
+      {
+        "property": "edit",
+        "title": "د سمون حالت",
+        "description": "د لړلیک لپاره د سمون او مخکتنې حالت ترمنځ بدلون."
+      },
+      {
+        "property": "navigation",
+        "title": "ناوبري",
+        "description": "د مخکې او شا تګ تڼۍ وښایئ."
+      },
+      {
+        "property": "pagination",
+        "title": "مخ‌پاڼه کول",
+        "description": "د مخ‌پاڼه کولو ټکي وښایئ."
+      },
+      {
+        "property": "orientation",
+        "title": "لوری",
+        "description": "د سلایډونو لوری.",
+        "options": {
+          "horizontal": "افقي",
+          "vertical": "عمودي"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "د پیل سلایډ",
+        "description": "د سلایډ شمېره چې په پیل کې پرې تمرکز کېږي."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "د اړخونو تناسب",
+        "description": "د سلایډونو د اړخونو تناسب.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

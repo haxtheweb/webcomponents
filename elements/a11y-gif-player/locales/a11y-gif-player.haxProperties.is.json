@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Gera hreyfimyndir á GIF-sniði aðgengilegar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF-hreyfimynd",
+        "description": "URL fyrir GIF-hreyfimyndina."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-texti",
+        "description": "Annar texti fyrir myndina."
+      },
+      {
+        "property": "longdesc",
+        "title": "Löng lýsing",
+        "description": "Löng lýsing á GIF-myndinni til að auka aðgengi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Kyrrmynd",
+        "description": "URL fyrir kyrrmyndarútgáfu af GIF-myndinni."
+      }
+    ]
+  }
+}

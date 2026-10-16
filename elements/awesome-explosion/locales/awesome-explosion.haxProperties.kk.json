@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Керемет жарылыс",
+    "description": "Қосымша дыбыстық әсерлері бар интерактивті жарылыс анимациясы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Өлшемі",
+        "description": "Жарылыс өлшемін орнату.",
+        "options": {
+          "tiny": "Өте кішкентай",
+          "small": "Кішкентай",
+          "medium": "Орташа",
+          "large": "Үлкен",
+          "epic": "Алып"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Түс",
+        "description": "Жарылыстың түс тақырыбын орнату.",
+        "options": {
+          "": "Әдепкі",
+          "red": "Қызыл",
+          "blue": "Көк",
+          "purple": "Күлгін",
+          "orange": "Қызғылт сары",
+          "yellow": "Сары"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Дыбыстық әсерлер",
+        "description": "Дыбыстық әсерлерді қосу."
+      },
+      {
+        "property": "resetSound",
+        "title": "Дыбысты қайта бастау",
+        "description": "Дыбысты әр жолы басынан бастап ойнату."
+      },
+      {
+        "property": "image",
+        "title": "Өз суретіңіз",
+        "description": "Жарылыстың өз суретінің қосымша URL мекенжайы."
+      },
+      {
+        "property": "sound",
+        "title": "Өз дыбысыңыз",
+        "description": "Өз дыбыстық әсеріңіздің қосымша URL мекенжайы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Өшірулі",
+        "description": "Барлық әрекеттесулерді өшіру."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Olùfihàn MIDI",
+    "description": "Ṣe MIDI ní àyíká rẹ̀ pẹ̀lú àwòrán-ìfihàn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orísun",
+        "description": "URL fáìlì tí a ó ṣe."
+      },
+      {
+        "property": "visualizer",
+        "title": "Àwòrán-ìfihàn",
+        "description": "Ìrísí àwòrán-ìfihàn fún fáìlì orin náà.",
+        "options": {
+          "staff": "Ìlà orin",
+          "piano-roll": "Ìyípo dùrù",
+          "waterfall": "Dùrù + ìṣàn omi"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Fi ìṣàn omi pamọ́",
+        "description": "Fi àwọn nóòtì ìṣàn omi pamọ́ nínú àwòrán-ìfihàn dùrù."
+      }
+    ]
+  }
+}

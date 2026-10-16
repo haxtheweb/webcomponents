@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn ایمبیڈ",
+    "description": "LinkedIn پروفائل کارڈ ایمبیڈ کریں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "وینیٹی نام",
+        "description": "LinkedIn وینیٹی صارف نام کا حصہ۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "لوکیل",
+        "description": "لوکیل میٹا ڈیٹا کی قدر جیسے en_US۔"
+      }
+    ]
+  }
+}

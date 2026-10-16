@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ሽሙጥ",
+    "description": "ጽሑፍን በሚያሾፍ መንገድ ማቅረብ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "ጽሑፍ",
+        "description": "ሽሙጣዊ የሚደረግ ጽሑፍ"
+      }
+    ]
+  }
+}

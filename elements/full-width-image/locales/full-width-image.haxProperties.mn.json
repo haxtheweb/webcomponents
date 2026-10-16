@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Зургийн хэсэг",
+    "description": "Хуудасны хэсгийг тусгаарлах бүтэн өргөнтэй зураг."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Арын зураг."
+      },
+      {
+        "property": "caption",
+        "description": "Текстийн гарчиг."
+      }
+    ]
+  }
+}

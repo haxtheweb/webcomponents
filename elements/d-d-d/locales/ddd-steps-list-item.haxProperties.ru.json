@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Шаг",
+    "description": "Элемент списка шагов"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Заголовок"
+      }
+    ]
+  }
+}

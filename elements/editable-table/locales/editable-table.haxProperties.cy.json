@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabl",
+    "description": "Data mewn tabl ar gyfer y we."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Pennyn Rhes",
+        "description": "Trin y rhes gyntaf fel pennyn."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Pennyn Colofn",
+        "description": "Trin y golofn gyntaf fel pennyn."
+      },
+      {
+        "property": "footer",
+        "title": "Troedyn",
+        "description": "Trin y rhes olaf fel troedyn."
+      },
+      {
+        "property": "sort",
+        "title": "Trefnadwy",
+        "description": "Caniatáu trefnu yn ôl gwerthoedd colofn."
+      },
+      {
+        "property": "filter",
+        "title": "Caniatáu Hidlo",
+        "description": "Caniatáu hidlo yn ôl gwerthoedd colofn."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Steilio Rhifol",
+        "description": "Rhoi steilio rhifol ar golofnau rhifol."
+      },
+      {
+        "property": "responsive",
+        "title": "Ymatebol",
+        "description": "Addasu cynllun y tabl ar sgriniau bach."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Modd Cyfarwyddyd Sgorio",
+        "description": "Dehongli'r tabl hwn fel OER Schema Rubric fel bod metadata Rubric, RubricScale, RubricCriterion a RubricLevel yn cael ei allyrru."
+      },
+      {
+        "property": "rubricType",
+        "title": "Math o Gyfarwyddyd Sgorio",
+        "description": "Arddull y cyfarwyddyd sgorio a allyrrir fel oer:rubricType (dim ond yn ystyrlon pan fydd Modd Cyfarwyddyd Sgorio ymlaen).",
+        "options": {
+          "": "(dim)",
+          "analytic": "Dadansoddol",
+          "holistic": "Cyfannol",
+          "single-point": "Pwynt Sengl",
+          "checklist": "Rhestr wirio"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Ag ymylon"
+      },
+      {
+        "property": "condensed",
+        "title": "Cywasgu Rhesi",
+        "description": "Lleihau uchder rhesi."
+      },
+      {
+        "property": "striped",
+        "title": "Rhesi Streipiog",
+        "description": "Tywyllu pob yn ail rhes."
+      },
+      {
+        "property": "downloadable",
+        "title": "Botwm Llwytho i Lawr",
+        "description": "Ychwanegu botwm i lwytho'r tabl i lawr."
+      },
+      {
+        "property": "copyable",
+        "title": "Botwm Copïo",
+        "description": "Ychwanegu botwm i gopïo data CSV y tabl."
+      },
+      {
+        "property": "printable",
+        "title": "Botwm Argraffu",
+        "description": "Ychwanegu botwm i argraffu'r tabl yn unig."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Data CSV",
+        "description": "Creu tabl o ffeil CSV wedi'i huwchlwytho."
+      }
+    ]
+  }
+}

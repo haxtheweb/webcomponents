@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR kody",
+    "description": "Smartfondan skanirlemek üçin kod."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR maglumatlary",
+        "description": "QR kody üçin maglumatlaryň çeşmesi."
+      },
+      {
+        "property": "title",
+        "title": "Alternatiw at",
+        "description": "QR kodunyň çeşmesine baglanan alternatiw at."
+      },
+      {
+        "property": "modulesize",
+        "title": "Ölçeg",
+        "description": "QR kodunyň ölçegi."
+      },
+      {
+        "property": "margin",
+        "title": "Gyra boşlugy",
+        "description": "Koduň daşyndaky boşluk."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Çykyş formaty",
+        "description": "Çykarmaly format.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

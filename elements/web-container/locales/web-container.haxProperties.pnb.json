@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS کنٹینر"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "ایڈیٹر لکاؤ",
+        "description": "فائل ترمیم والا انٹرفیس لکاؤ۔"
+      },
+      {
+        "property": "hideTerminal",
+        "title": "ٹرمینل لکاؤ",
+        "description": "آپوں چلن والے پروگراماں لئی ٹرمینل لکاؤ۔"
+      },
+      {
+        "property": "hideWindow",
+        "title": "ونڈو لکاؤ",
+        "description": "صرف ٹرمینل ورتݨ لئی آؤٹ پٹ ونڈو لکاؤ۔"
+      },
+      {
+        "slot": "",
+        "title": "کمانڈاں",
+        "description": "لوڈ ہوݨ توں پہلاں چلاوݨ والیاں کمانڈاں (ہر لائن وچ اک)۔"
+      }
+    ]
+  }
+}

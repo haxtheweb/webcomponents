@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Watak RPG",
+    "description": "Watak menyeronokkan daripada HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Nama",
+        "description": "Perkataan yang digunakan untuk menjana watak rawak."
+      },
+      {
+        "property": "hat",
+        "title": "Topi",
+        "description": "Gaya topi.",
+        "options": {
+          "none": "Lalai",
+          "random": "Rawak",
+          "bunny": "Arnab",
+          "cowboy": "Koboi",
+          "education": "Pendidikan",
+          "construction": "Pembinaan",
+          "warning": "Amaran",
+          "watermelon": "Tembikai",
+          "coffee": "Kopi",
+          "knight": "Kesatria",
+          "ninja": "Ninja",
+          "party": "Parti",
+          "error": "Ralat",
+          "edit": "Sunting"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Lebar",
+        "description": "Lebar watak dalam piksel."
+      },
+      {
+        "property": "height",
+        "title": "Ketinggian",
+        "description": "Ketinggian watak dalam piksel."
+      },
+      {
+        "property": "fire",
+        "title": "Terbakar?",
+        "description": "Sama ada watak sedang terbakar."
+      },
+      {
+        "property": "walking",
+        "title": "Berjalan?",
+        "description": "Animasi berjalan; berlari apabila terbakar."
+      }
+    ]
+  }
+}

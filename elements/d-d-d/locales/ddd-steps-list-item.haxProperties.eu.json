@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Urratsen elementua",
+    "description": "Urrats zerrenda baten parte den elementua"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Izenburua"
+      }
+    ]
+  }
+}

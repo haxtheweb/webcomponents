@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "చిత్ర విభాగం",
+    "description": "పేజీ విభాగాన్ని విభజించే పూర్తి-వెడల్పు చిత్రం."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "నేపథ్య చిత్రం."
+      },
+      {
+        "property": "caption",
+        "description": "వచన శీర్షిక."
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Gallery ng Larawan",
+    "description": "Gallery na nagpapakita ng mga larawan sa grid, masonry, o slideshow na layout."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Display mode",
+        "description": "Paano ipapakita ang mga larawan sa gallery.",
+        "options": {
+          "grid": "Grid",
+          "masonry": "Masonry",
+          "gallery": "Gallery"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktibong index",
+        "description": "Index ng aktibong larawang sisimulan sa gallery mode."
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS ryru"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Emokañy mbosako'iha",
+        "description": "Emokañy marandurenda ñembosako'i ñemboherapy."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Emokañy terminal",
+        "description": "Emokañy terminal mba'eporu'i oñemboguata ijeheguívape g̃uarã."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Emokañy ovetã",
+        "description": "Emokañy ovetã ñenohẽ terminal añoite jeporúpe g̃uarã."
+      },
+      {
+        "slot": "",
+        "title": "Ñe'ẽpoty",
+        "description": "Ñe'ẽpoty (peteĩ tysýi rehe) oñemboguatava'erã henyhẽ mboyve."
+      }
+    ]
+  }
+}

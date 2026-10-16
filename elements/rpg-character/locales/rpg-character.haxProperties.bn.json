@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG চরিত্র",
+    "description": "HAX-এর মজার চরিত্র।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "নাম",
+        "description": "এলোমেলো চরিত্র তৈরিতে ব্যবহৃত শব্দ।"
+      },
+      {
+        "property": "hat",
+        "title": "টুপি",
+        "description": "টুপির স্টাইল।",
+        "options": {
+          "none": "ডিফল্ট",
+          "random": "এলোমেলো",
+          "bunny": "খরগোশ",
+          "cowboy": "কাউবয়",
+          "education": "শিক্ষা",
+          "construction": "নির্মাণ",
+          "warning": "সতর্কতা",
+          "watermelon": "তরমুজ",
+          "coffee": "কফি",
+          "knight": "নাইট",
+          "ninja": "নিনজা",
+          "party": "পার্টি",
+          "error": "ত্রুটি",
+          "edit": "সম্পাদনা"
+        }
+      },
+      {
+        "property": "width",
+        "title": "প্রস্থ",
+        "description": "পিক্সেলে চরিত্রের প্রস্থ।"
+      },
+      {
+        "property": "height",
+        "title": "উচ্চতা",
+        "description": "পিক্সেলে চরিত্রের উচ্চতা।"
+      },
+      {
+        "property": "fire",
+        "title": "আগুন লেগেছে?",
+        "description": "চরিত্রটিতে আগুন লেগেছে কিনা।"
+      },
+      {
+        "property": "walking",
+        "title": "হাঁটছে?",
+        "description": "হাঁটার অ্যানিমেশন; আগুন লাগলে দৌড়ায়।"
+      }
+    ]
+  }
+}

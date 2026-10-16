@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI व्हिज्युअलायझर",
+    "description": "दृश्यीकरणासह संदर्भात MIDI वाजवा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "वाजवायच्या फाइलची URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "दृश्यीकरण",
+        "description": "संगीत फाइलसाठी दृश्यीकरण शैली.",
+        "options": {
+          "staff": "स्वरलिपी",
+          "piano-roll": "पियानो रोल",
+          "waterfall": "पियानो + धबधबा"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "धबधबा लपवा",
+        "description": "पियानो दृश्यीकरणात धबधबा स्वर लपवा."
+      }
+    ]
+  }
+}

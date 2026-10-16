@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX-i sõnakunst",
+    "description": "HAX-i logoelement, loomulikult HAX-iga ühilduva elemendina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Lisatava HAX-i logo suurus",
+        "options": {
+          "mini": "Mini",
+          "small": "Väike",
+          "normal": "Tavaline",
+          "large": "Suur"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Kas logo teisendada suurtähtedeks"
+      }
+    ]
+  }
+}

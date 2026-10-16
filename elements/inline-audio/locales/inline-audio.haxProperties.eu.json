@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Lerroko audioa",
+    "description": "Erreproduzitu audioa lerroan, orriaren edukia osatzeko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Iturburua",
+        "description": "MP3 fitxategia edo URLa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Txartelaren nabarmentze kolorea."
+      },
+      {
+        "property": "shiny",
+        "title": "Distiratsua",
+        "description": "Erabili nabarmentze atzealde argiagoa grisaren ordez."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Iluna",
+        "description": "Erabili modu iluna."
+      }
+    ]
+  }
+}

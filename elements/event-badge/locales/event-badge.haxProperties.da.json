@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Eventbadge",
+    "description": "Komponent til eventbadge."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV-billede",
+        "description": "Billede vist på TV'et."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo vist i badgets hjørne."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel vist øverst på badget."
+      },
+      {
+        "property": "name",
+        "title": "Navn",
+        "description": "Navn vist på badget."
+      },
+      {
+        "property": "position",
+        "title": "Stilling",
+        "description": "Personens rolle eller titel."
+      },
+      {
+        "property": "organization",
+        "title": "Organisation",
+        "description": "Organisationen, personen arbejder for."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV-farve",
+        "description": "Vælg farven til TV'et."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfarve",
+        "description": "Primær baggrunds- eller tekstfarve."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Knapfarve",
+        "description": "Farven på TV'ets drejeknapper."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Anvend en sepiaeffekt."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Sort-hvid",
+        "description": "Anvend en sort-hvid-effekt."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Vocabular",
+    "description": "Termen de vocabular."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termen"
+      },
+      {
+        "property": "information",
+        "title": "Definiție",
+        "description": "Definiția afișată la clic pe termen."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Fereastră pop-over",
+        "description": "Afișează definiția într-o fereastră pop-over în loc de în text."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Linkuri",
+        "description": "Listă de linkuri suplimentare asociate acestui termen."
+      }
+    ]
+  }
+}

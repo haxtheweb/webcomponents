@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Zpřístupněte animované GIFy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Animovaný GIF",
+        "description": "URL animovaného GIFu."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativní text",
+        "description": "Alternativní text obrázku."
+      },
+      {
+        "property": "longdesc",
+        "title": "Dlouhý popis",
+        "description": "Dlouhý popis GIFu pro přístupnost."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Statický obrázek",
+        "description": "URL statické verze GIFu."
+      }
+    ]
+  }
+}

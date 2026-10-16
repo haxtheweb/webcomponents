@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Slikovni razdelek",
+    "description": "Slika čez celo širino, ki razdeli razdelek strani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Slika ozadja."
+      },
+      {
+        "property": "caption",
+        "description": "Besedilni naslov."
+      }
+    ]
+  }
+}

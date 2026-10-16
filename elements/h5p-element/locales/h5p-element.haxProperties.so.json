@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Duub h5p ah oo lagu soo dejiyo laguna soo bandhigo faylasha .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Koodhka iframe ee H5P"
+      }
+    ]
+  }
+}

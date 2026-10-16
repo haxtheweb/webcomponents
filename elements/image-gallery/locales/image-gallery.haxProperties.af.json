@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Prentgalery",
+    "description": "'n Galery wat prente in rooster-, messelwerk- of skyfievertoning-uitlegte aanbied."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Vertoonmodus",
+        "description": "Hoe om die prente in die galery aan te bied.",
+        "options": {
+          "grid": "Rooster",
+          "masonry": "Messelwerk",
+          "gallery": "Galery"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktiewe indeks",
+        "description": "Indeks van die aktiewe prent om mee te begin in galerymodus."
+      }
+    ]
+  }
+}

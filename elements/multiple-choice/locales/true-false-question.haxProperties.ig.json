@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Ajụjụ Eziokwu / Ụgha",
+    "description": "Ajụjụ eziokwu ma ọ bụ ụgha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ajụjụ",
+        "description": "Ajụjụ ndị ọrụ ga-aza."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Azịza Ziri Ezi"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Aha ule",
+        "description": "Aha ule e zigara maka iji na gburugburu xAPI iji mata ihe a"
+      }
+    ]
+  }
+}

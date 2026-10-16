@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Görsel bölümü",
+    "description": "Bir sayfa bölümünü ayıran tam genişlikte görsel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Arka plan görseli."
+      },
+      {
+        "property": "caption",
+        "description": "Metin başlığı."
+      }
+    ]
+  }
+}

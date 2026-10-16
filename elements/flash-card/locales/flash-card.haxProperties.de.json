@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Lernkarte",
+    "description": "Begriffe mit Lernkarten mit Vorder- und Rückseite üben."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Vorderseite der Karte",
+        "description": "Text oder Frage auf der Vorderseite."
+      },
+      {
+        "slot": "back",
+        "title": "Rückseite der Karte",
+        "description": "Erwartete Antwort."
+      },
+      {
+        "property": "imgSource",
+        "title": "Bildquelle",
+        "description": "Für die Karte verwendete Bilddatei. Überschreibt das Bild-Stichwort."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Art der Aktivität",
+        "description": "OER Schema: die Art der Aktivität bei dieser Übung (z. B. Lesen, Schreiben, Gestalten, Recherchieren, Zuhören, Ansehen, Reflektieren, Diskutieren, Beobachten, Präsentieren, Bewerten)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lernziel",
+        "description": "OER Schema: ID oder URL des Lernziels, das diese Übung unterstützt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Dunkel",
+        "description": "Dunkelmodus verwenden."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Akzentfarbe der Karte."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Bild-Stichwort",
+        "description": "Stichwort für ein zufälliges Bild. Wird durch die Bildquelle überschrieben."
+      }
+    ]
+  }
+}

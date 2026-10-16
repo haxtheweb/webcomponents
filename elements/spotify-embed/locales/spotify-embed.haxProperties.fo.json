@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Umbúgv til innsettar Spotify-spælarar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kelda",
+        "description": "Innsetingar- ella deilingarleinki frá Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Evni",
+        "description": "Evni fyri bakgrundslit á spælaranum.",
+        "options": {
+          "": "Standard",
+          "0": "Svartur"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Stødd",
+        "description": "Stødd á spælaranum.",
+        "options": {
+          "normal": "Standard",
+          "compact": "Tætt"
+        }
+      }
+    ]
+  }
+}

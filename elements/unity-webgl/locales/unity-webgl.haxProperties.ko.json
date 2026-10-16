@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity 플레이어",
+    "description": "Unity WebGL 플레이어입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "대상",
+        "description": "게임 빌드 경로입니다."
+      },
+      {
+        "property": "compression",
+        "title": "압축 방식",
+        "description": "게임 에셋의 압축 파일 확장자입니다."
+      },
+      {
+        "property": "streamingurl",
+        "title": "스트리밍 URL",
+        "description": "스트리밍 에셋 URL입니다."
+      },
+      {
+        "property": "companyname",
+        "title": "회사 이름",
+        "description": "회사 이름입니다."
+      },
+      {
+        "property": "productname",
+        "title": "제품 이름",
+        "description": "게임 제목입니다."
+      },
+      {
+        "property": "productversion",
+        "title": "제품 버전",
+        "description": "출시 버전입니다."
+      },
+      {
+        "property": "width",
+        "title": "캔버스 너비",
+        "description": "캔버스 CSS 너비입니다(예: px 또는 em)."
+      },
+      {
+        "property": "height",
+        "title": "캔버스 높이",
+        "description": "캔버스 CSS 높이입니다(예: px 또는 em)."
+      },
+      {
+        "property": "background",
+        "title": "캔버스 배경",
+        "description": "캔버스 CSS 배경입니다."
+      }
+    ]
+  }
+}

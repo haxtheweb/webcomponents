@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ಟ್ಯಾಬ್‌ಗಳು",
+    "description": "ಟ್ಯಾಬ್‌ಗಳ ಗುಂಪು."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "ಲೇಬಲ್ (ಪ್ರವೇಶಯೋಗ್ಯತೆಗಾಗಿ)",
+        "description": "ಟ್ಯಾಬ್ ಗುಂಪಿನ ಪ್ರವೇಶಯೋಗ್ಯ ಲೇಬಲ್."
+      },
+      {
+        "property": "disabled",
+        "title": "ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ",
+        "description": "ಎಲ್ಲಾ ಟ್ಯಾಬ್‌ಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ."
+      },
+      {
+        "property": "hidden",
+        "title": "ಮರೆಮಾಡಲಾಗಿದೆ",
+        "description": "ಟ್ಯಾಬ್ ಗುಂಪನ್ನು ಮರೆಮಾಡಿ."
+      },
+      {
+        "property": "sticky",
+        "title": "ಸ್ಥಿರವಾಗಿ ಅಂಟಿಸಿ",
+        "description": "ಸ್ಕ್ರೋಲ್ ಮಾಡುವಾಗ ಅಡ್ಡ ಟ್ಯಾಬ್‌ಗಳನ್ನು ಮೇಲ್ಭಾಗದಲ್ಲಿ ಇರಿಸಿ."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "ಲೇಔಟ್ ಬ್ರೇಕ್‌ಪಾಯಿಂಟ್",
+        "description": "ಅಡ್ಡ ಟ್ಯಾಬ್‌ಗಳ ಬ್ರೇಕ್‌ಪಾಯಿಂಟ್; ಲಂಬ ಮಾತ್ರಕ್ಕಾಗಿ -1 ಬಳಸಿ."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "ಐಕಾನ್ ಬ್ರೇಕ್‌ಪಾಯಿಂಟ್",
+        "description": "ಐಕಾನ್‌ಗಳೊಂದಿಗೆ ಪಠ್ಯ ತೋರಿಸುವ ಬ್ರೇಕ್‌ಪಾಯಿಂಟ್. ಪೂರ್ವನಿಯೋಜಿತ 0; ಐಕಾನ್ ಮಾತ್ರ ಮೋಡ್‌ಗಾಗಿ -1 ಬಳಸಿ."
+      },
+      {
+        "slot": "",
+        "title": "ಟ್ಯಾಬ್‌ಗಳು",
+        "description": "<a11y-tab/> ಅಂಶಗಳ ಸರಣಿ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ಅನನ್ಯ ID",
+        "description": "ಈ ಟ್ಯಾಬ್ ಗುಂಪಿನ ಅನನ್ಯ ID."
+      }
+    ]
+  }
+}

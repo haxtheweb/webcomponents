@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "ಪುಟದಲ್ಲಿ Disqus ಕಾಮೆಂಟ್‌ಗಳನ್ನು ಎಂಬೆಡ್ ಮಾಡಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "ಸಂಕ್ಷಿಪ್ತ ಹೆಸರು",
+        "description": "Disqus ಸ್ಕ್ರಿಪ್ಟ್ ಹೋಸ್ಟ್ ಅನ್ನು ನಿರ್ಧರಿಸುವ ಸೈಟ್‌ನ ಸಂಕ್ಷಿಪ್ತ ಹೆಸರು."
+      },
+      {
+        "property": "pageURL",
+        "title": "ಪುಟದ URL",
+        "description": "ಕಾಮೆಂಟ್ ಥ್ರೆಡ್ ಲಗತ್ತಿಸಲಾದ ಪುಟದ URL."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "ಪುಟ ಗುರುತಿಸುವಿಕೆ",
+        "description": "ಪುಟದ ಕಾಮೆಂಟ್ ಥ್ರೆಡ್‌ನ ಅನನ್ಯ ಗುರುತಿಸುವಿಕೆ."
+      },
+      {
+        "property": "pageTitle",
+        "title": "ಪುಟದ ಶೀರ್ಷಿಕೆ",
+        "description": "ಕಾಮೆಂಟ್ ಥ್ರೆಡ್ ಲಗತ್ತಿಸಲಾದ ಪುಟದ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "loadingText",
+        "title": "ಲೋಡ್ ಆಗುತ್ತಿರುವ ಪಠ್ಯ",
+        "description": "ಕಾಮೆಂಟ್‌ಗಳು ಲೋಡ್ ಆಗುತ್ತಿರುವಾಗ ಘೋಷಿಸುವ ಪಠ್ಯ."
+      },
+      {
+        "property": "lang",
+        "title": "ಭಾಷೆ",
+        "description": "Disqus ಇಂಟರ್‌ಫೇಸ್‌ನ ಭಾಷಾ ಕೋಡ್, ಉದಾ. en."
+      }
+    ]
+  }
+}

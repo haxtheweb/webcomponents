@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Doorashooyin badan",
+    "description": "Su'aal is-hubin oo doorashooyin badan leh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Su'aal",
+        "description": "Su'aasha ay isticmaalayaashu ka jawaabayaan."
+      },
+      {
+        "property": "randomize",
+        "title": "Isku qas",
+        "description": "Isku qas jawaabaha si firfircoon."
+      },
+      {
+        "property": "singleOption",
+        "title": "Hal jawaab",
+        "description": "Oggolow hal jawaab oo keliya."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Qaabka dhibcaha",
+        "description": "OER Schema: qaabka dhibcaha qiimayntan (tusaale dhibco, xaraf, boqolkiiba, dhammaystir)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ujeeddada waxbarasho",
+        "description": "OER Schema: ujeeddada waxbarasho ee la xiriirta qiimayntan."
+      },
+      {
+        "property": "forCourse",
+        "title": "Koorso",
+        "description": "OER Schema: koorsada loogu talagalay qiimayntan."
+      },
+      {
+        "property": "answers",
+        "title": "Jawaabaha"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Magaca imtixaanka",
+        "description": "Magaca imtixaanka loo isticmaalo aqoonsiga xAPI ee nidaamyada falanqaynta."
+      }
+    ]
+  }
+}

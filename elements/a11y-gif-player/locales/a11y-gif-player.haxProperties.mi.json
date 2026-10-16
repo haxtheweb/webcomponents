@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Kia wātea ngā GIF nekeneke ki te katoa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF Nekeneke",
+        "description": "URL mō te GIF nekeneke."
+      },
+      {
+        "property": "alt",
+        "title": "Kupu Kē",
+        "description": "Kupu kē mō te whakaahua."
+      },
+      {
+        "property": "longdesc",
+        "title": "Whakaahuatanga Roa",
+        "description": "He whakaahuatanga roa o te GIF hei āwhina i te hunga hauā."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Whakaahua Pūmau",
+        "description": "URL mō tētahi putanga pūmau o te GIF."
+      }
+    ]
+  }
+}

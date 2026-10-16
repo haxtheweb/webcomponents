@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Poŝtkarto",
+    "description": "Ludema aŭdvida elemento, kiu aspektas kiel vera poŝtkarto el ie"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Al",
+        "description": "Al kiu ĝi estas sendata?"
+      },
+      {
+        "property": "from",
+        "title": "De",
+        "description": "Kiu vi estas?"
+      },
+      {
+        "property": "message",
+        "title": "Mesaĝo",
+        "description": "Kion vi volas diri?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Poŝtstampita en",
+        "description": "De kie ĉi tiu karto estis sendita?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Fonto de la ĉefa foto",
+        "description": "Kie troviĝas via foto?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Fonto de la poŝtmarka foto",
+        "description": "Kie troviĝas via foto?"
+      }
+    ]
+  }
+}

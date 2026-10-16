@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX וואָרט־קונסט",
+    "description": "לאָגאָ־עלעמענט פֿאַר HAX, פֿאַרשטייט זיך אַן עלעמענט וואָס אַרבעט מיט HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "גרייס פֿונעם HAX־לאָגאָ",
+        "options": {
+          "mini": "מיני",
+          "small": "קליין",
+          "normal": "נאָרמאַל",
+          "large": "גרויס"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "צי צו פֿאַרוואַנדלען דעם לאָגאָ אין גרויסע אותיות"
+      }
+    ]
+  }
+}

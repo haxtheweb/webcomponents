@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ulasan Disqus",
+    "description": "Integrasi dengan perkhidmatan web ulasan Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Nama pendek",
+        "description": "Nama pendek hartanah di disqus"
+      }
+    ]
+  }
+}

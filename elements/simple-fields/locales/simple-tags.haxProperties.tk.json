@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Bellikler",
+    "description": "Sahypada görkezmek üçin ýönekeý bellikler sanawy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Bellikler",
+        "description": "Otur bilen aýrylan bellikler sanawy."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Awtomatik aksent reňki",
+        "description": "Aksent reňkini belgä esaslanyp awtomatik belle."
+      },
+      {
+        "property": "accentColor",
+        "title": "Reňk",
+        "description": "Bellikler üçin reňk."
+      }
+    ]
+  }
+}

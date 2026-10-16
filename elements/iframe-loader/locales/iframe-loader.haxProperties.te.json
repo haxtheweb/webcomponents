@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "బాహ్య వెబ్ కంటెంట్‌ను iframe‌లో పొందుపరచండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "వనరు URL",
+        "description": "వనరు URL."
+      },
+      {
+        "property": "height",
+        "title": "ఎత్తు",
+        "description": "Iframe ఎత్తు."
+      },
+      {
+        "property": "width",
+        "title": "వెడల్పు",
+        "description": "Iframe వెడల్పు."
+      }
+    ]
+  }
+}

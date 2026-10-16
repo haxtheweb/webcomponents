@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "تضمين مجتمعات Discord من URL مشاركة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL المورد",
+        "description": "URL المورد."
+      },
+      {
+        "property": "height",
+        "title": "الارتفاع",
+        "description": "ارتفاع إطار المحتوى."
+      },
+      {
+        "property": "width",
+        "title": "العرض",
+        "description": "عرض إطار المحتوى."
+      }
+    ]
+  }
+}

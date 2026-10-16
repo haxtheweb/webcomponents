@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Tanda Polaris",
+    "description": "Paparkan tanda identiti PSU dengan nama kolej dan URL destinasi pilihan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Nama kolej",
+        "description": "Nama yang dipaparkan di sebelah tanda."
+      },
+      {
+        "property": "name2",
+        "title": "Nama kolej 2",
+        "description": "Nama kedua yang dipaparkan di bawah nama kolej pertama."
+      },
+      {
+        "property": "name3",
+        "title": "Nama kolej 3",
+        "description": "Nama ketiga yang dipaparkan di bawah nama kolej kedua."
+      },
+      {
+        "property": "url",
+        "title": "Pautan",
+        "description": "URL destinasi apabila tanda diklik."
+      },
+      {
+        "property": "type",
+        "title": "Varian",
+        "description": "Varian tanda visual.",
+        "options": {
+          "default": "Lalai",
+          "light": "Cerah",
+          "dark": "Gelap"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Susun atur menegak",
+        "description": "Paparkan nama ketiga di bawah nama kedua dengan garisan mendatar."
+      }
+    ]
+  }
+}

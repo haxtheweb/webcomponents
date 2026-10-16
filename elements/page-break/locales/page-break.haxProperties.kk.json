@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Бет мәліметтері",
+    "description": "CMS жүйелері беттер жасау үшін қолдана алатын беттер арасындағы көрнекі бөлуді анықтау."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Атауы",
+        "description": "Тақырыпта және бірінші тақырыпшада көрсетілетін атау."
+      },
+      {
+        "property": "pageType",
+        "title": "Түрі",
+        "description": "Беттің көрнекі мәтінмәндік белгісі.",
+        "options": {
+          "": "-- жоқ --",
+          "content": "Мазмұн",
+          "assessment": "Бағалау",
+          "quiz": "Тест",
+          "submission": "Тапсыру",
+          "lesson": "Сабақ",
+          "module": "Модуль",
+          "task": "Тапсырма",
+          "activity": "Әрекет",
+          "project": "Жоба",
+          "practice": "Жаттығу",
+          "unit": "Бөлім",
+          "objectives": "Оқу мақсаттары",
+          "connection": "Байланыс",
+          "knowledge": "Білесіз бе?",
+          "strategy": "Оқу стратегиясы",
+          "discuss": "Талқылау",
+          "listen": "Тыңдау",
+          "make": "Жасау",
+          "observe": "Бақылау",
+          "present": "Таныстыру",
+          "reading": "Оқу",
+          "reflect": "Ой толғау",
+          "research": "Зерттеу",
+          "watch": "Көру",
+          "write": "Жазу"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Тегтер",
+        "description": "Үтірмен бөлінген тегтер тізімі."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Сілтеме URL-і",
+        "description": "Бет мазмұнының орнына көрсетілетін қайта бағыттау URL-і."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Сілтеме нысаны",
+        "description": "Сілтемелерді сол терезеде немесе жаңа терезеде ашу.",
+        "options": {
+          "_self": "Сол терезе",
+          "_blank": "Жаңа терезе"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Жарияланған",
+        "description": "Жарияланбаған беттер соңғы пайдаланушылардан жасырылады."
+      },
+      {
+        "property": "locked",
+        "title": "Бетті құлыптау",
+        "description": "Осы беттегі барлық элементтерді құлыптау немесе құлыптан шығару."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Автоматты slug-ты қайта анықтау",
+        "description": "Slug-ты атау немесе аталық бет негізіндегі автоматты жаңартулардан құлыптау."
+      },
+      {
+        "property": "slug",
+        "title": "Жол",
+        "description": "Осы беттің URL slug-ы."
+      },
+      {
+        "property": "image",
+        "title": "Медиа",
+        "description": "Кейбір тақырыптар мен көріністерде қолданылатын бетті бейнелейтін медиа."
+      },
+      {
+        "property": "parent",
+        "title": "Аталық",
+        "description": "Аталық беттің жолы."
+      },
+      {
+        "property": "noderefs",
+        "title": "Байланысты мазмұн",
+        "description": "Осы бетке байланысты беттер."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Сипаттама",
+        "description": "Жинақтарда және іздеу жүйесін оңтайландыруда (SEO) қолданылатын сипаттама."
+      },
+      {
+        "property": "entityType",
+        "title": "Нысан түрі",
+        "description": "Басқаша орнатылмаса, әдепкі бойынша бет.",
+        "options": {
+          "page": "Бет (әдепкі)",
+          "taxonomy": "Таксономия",
+          "taxonomyTerm": "Таксономия термині",
+          "region": "Аймақ"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Белгіше",
+        "description": "Сайттағы осы бетпен байланысты белгіше."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Сайттағы осы бетпен байланысты түс."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Мәзірде жасыру",
+        "description": "URL-ін сақтай отырып, бұл бетті мәзірлерден жасыру."
+      },
+      {
+        "property": "order",
+        "title": "Реті",
+        "description": "Көршілес беттерге қатысты реті."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Бет тақырыбы",
+        "description": "Тек осы бет үшін тақырыпты қайта анықтау."
+      },
+      {
+        "property": "author",
+        "title": "Автор",
+        "description": "Осы бетті соңғы өзгерткен адамның пайдаланушы аты."
+      }
+    ]
+  }
+}

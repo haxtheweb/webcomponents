@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Dato",
+    "description": "Montri kalendaran daton kun detaloj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Monato",
+        "description": "Monato montrata sur la karto."
+      },
+      {
+        "property": "date",
+        "title": "Tago de la monato",
+        "description": "Numera tago de la monato."
+      },
+      {
+        "property": "day",
+        "title": "Tago de la semajno",
+        "description": "Tago de la semajno kiel teksto."
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Nomo de la evento."
+      },
+      {
+        "property": "location",
+        "title": "Loko",
+        "description": "Loko de la evento."
+      },
+      {
+        "property": "startTime",
+        "title": "Komenco",
+        "description": "Komenca horo."
+      },
+      {
+        "property": "endTime",
+        "title": "Fino",
+        "description": "Fina horo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Nedeviga akcenta koloro."
+      },
+      {
+        "property": "dark",
+        "title": "Malhela temo",
+        "description": "Ŝalti malhelan temon."
+      }
+    ]
+  }
+}

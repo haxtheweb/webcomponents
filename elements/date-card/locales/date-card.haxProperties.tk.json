@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Sene",
+    "description": "Senenama senesini jikme-jiklikler bilen görkeziň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Aý",
+        "description": "Kartoçkada görkezilýän aý."
+      },
+      {
+        "property": "date",
+        "title": "Aýyň güni",
+        "description": "Aýyň gününiň sany."
+      },
+      {
+        "property": "day",
+        "title": "Hepdäniň güni",
+        "description": "Hepdäniň güni tekst görnüşinde."
+      },
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Çäräniň ady."
+      },
+      {
+        "property": "location",
+        "title": "Ýerleşýän ýeri",
+        "description": "Çäräniň geçirilýän ýeri."
+      },
+      {
+        "property": "startTime",
+        "title": "Başlangyç",
+        "description": "Başlanýan wagty."
+      },
+      {
+        "property": "endTime",
+        "title": "Soňy",
+        "description": "Gutarýan wagty."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Goşmaça aksent reňki."
+      },
+      {
+        "property": "dark",
+        "title": "Garaňky tema",
+        "description": "Garaňky temany işlet."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Paragun tal-immaġni",
+    "description": "Żerżaq immaġni fuq oħra biex tqabbilhom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Immaġni ta' fuq",
+        "description": "Immaġni ta' fuq li tiżżerżaq fuq l-immaġni ta' taħt."
+      },
+      {
+        "property": "topAlt",
+        "title": "Test alternattiv tal-immaġni ta' fuq",
+        "description": "Test alternattiv meħtieġ għall-aċċessibbiltà."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Immaġni ta' taħt",
+        "description": "Immaġni ta' taħt murija taħt l-immaġni ta' fuq."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Test alternattiv tal-immaġni ta' taħt",
+        "description": "Test alternattiv meħtieġ għall-aċċessibbiltà."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Imġiba",
+        "description": "Agħżel il-modalità ta' tindif (awtomatika) jew il-modalità tal-opaċità tal-immaġni ta' fuq."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-virga tas-slider."
+      },
+      {
+        "property": "dark",
+        "title": "Skur",
+        "description": "Aqleb il-kulur tal-virga tas-slider."
+      },
+      {
+        "property": "position",
+        "title": "Pożizzjoni inizjali",
+        "description": "Pożizzjoni tal-bidu minn 0 sa 100."
+      }
+    ]
+  }
+}

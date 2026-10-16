@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Burðardygdarmál hjá Sameindu Tjóðunum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Mál",
+        "description": "UN SDG-nummar."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Bert litur",
+        "description": "Vís bert litin á málinum."
+      }
+    ]
+  }
+}

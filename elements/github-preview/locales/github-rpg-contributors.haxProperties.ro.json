@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Listă de contribuitori GitHub",
+    "description": "Afișați ca personaje RPG folosind API-ul GitHub."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizație",
+        "description": "Numele organizației din github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Depozit",
+        "description": "Numele depozitului din github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Limită",
+        "description": "Limitează numărul de contribuitori afișați."
+      }
+    ]
+  }
+}

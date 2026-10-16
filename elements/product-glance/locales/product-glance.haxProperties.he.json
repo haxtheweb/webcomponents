@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "המוצר במבט חטוף",
+    "description": "בלוק סקירה מהירה של מוצר."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "סמל",
+        "description": "סמל המייצג את המושג."
+      },
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "המושג המרכזי במבט חטוף."
+      },
+      {
+        "property": "subtitle",
+        "title": "כותרת משנה",
+        "description": "פרט נוסף."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע ההדגשה של הסמל."
+      }
+    ]
+  }
+}

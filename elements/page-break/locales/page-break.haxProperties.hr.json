@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Pojedinosti stranice",
+    "description": "Definirajte vizualnu podjelu između stranica koju CMS-ovi mogu koristiti za stvaranje stranica."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov prikazan u temi i kao prvi naslov."
+      },
+      {
+        "property": "pageType",
+        "title": "Vrsta",
+        "description": "Vizualna oznaka konteksta stranice.",
+        "options": {
+          "": "-- nijedno --",
+          "content": "Sadržaj",
+          "assessment": "Procjena",
+          "quiz": "Kviz",
+          "submission": "Predaja",
+          "lesson": "Lekcija",
+          "module": "Modul",
+          "task": "Zadatak",
+          "activity": "Aktivnost",
+          "project": "Projekt",
+          "practice": "Vježba",
+          "unit": "Cjelina",
+          "objectives": "Ishodi učenja",
+          "connection": "Povezanost",
+          "knowledge": "Jeste li znali?",
+          "strategy": "Strategija učenja",
+          "discuss": "Raspravite",
+          "listen": "Slušajte",
+          "make": "Izradite",
+          "observe": "Promatrajte",
+          "present": "Predstavite",
+          "reading": "Čitanje",
+          "reflect": "Promislite",
+          "research": "Istraživanje",
+          "watch": "Gledajte",
+          "write": "Pišite"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Oznake",
+        "description": "Popis oznaka odvojenih zarezima."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL poveznice",
+        "description": "URL preusmjeravanja prikazan umjesto sadržaja stranice."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Cilj poveznice",
+        "description": "Otvori poveznice u istom ili novom prozoru.",
+        "options": {
+          "_self": "Isti prozor",
+          "_blank": "Novi prozor"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Objavljeno",
+        "description": "Neobjavljene stranice skrivene su od krajnjih korisnika."
+      },
+      {
+        "property": "locked",
+        "title": "Zaključaj stranicu",
+        "description": "Zaključaj ili otključaj sve elemente na ovoj stranici."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Nadjačaj automatski slug",
+        "description": "Zaštiti slug od automatskih ažuriranja na temelju naslova ili nadređene stranice."
+      },
+      {
+        "property": "slug",
+        "title": "Putanja",
+        "description": "URL slug ove stranice."
+      },
+      {
+        "property": "image",
+        "title": "Mediji",
+        "description": "Mediji koji predstavljaju stranicu, koriste se u nekim temama i prikazima."
+      },
+      {
+        "property": "parent",
+        "title": "Nadređena stranica",
+        "description": "Putanja nadređene stranice."
+      },
+      {
+        "property": "noderefs",
+        "title": "Povezani sadržaj",
+        "description": "Stranice povezane s ovom stranicom."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Opis",
+        "description": "Opis koji se koristi u zbirkama i za optimizaciju za tražilice."
+      },
+      {
+        "property": "entityType",
+        "title": "Vrsta entiteta",
+        "description": "Zadano je stranica, osim ako nije drukčije postavljeno.",
+        "options": {
+          "page": "Stranica (zadano)",
+          "taxonomy": "Taksonomija",
+          "taxonomyTerm": "Pojam taksonomije",
+          "region": "Regija"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona povezana s ovom stranicom na web-mjestu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja isticanja",
+        "description": "Boja povezana s ovom stranicom na web-mjestu."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Sakrij u izborniku",
+        "description": "Sakrij ovu stranicu iz izbornika, a zadrži njezin URL."
+      },
+      {
+        "property": "order",
+        "title": "Redoslijed",
+        "description": "Redoslijed u odnosu na susjedne stranice."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Tema stranice",
+        "description": "Nadjačaj temu samo za ovu stranicu."
+      },
+      {
+        "property": "author",
+        "title": "Autor",
+        "description": "Korisničko ime osobe koja je zadnja izmijenila ovu stranicu."
+      }
+    ]
+  }
+}

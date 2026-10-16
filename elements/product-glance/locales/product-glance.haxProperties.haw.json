@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Nānā pōkole huahana",
+    "description": "Poloka hōʻuluʻulu huahana wikiwiki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Hōʻailona",
+        "description": "Hōʻailona e hōʻike ana i ka manaʻo."
+      },
+      {
+        "property": "title",
+        "title": "Poʻo Inoa",
+        "description": "Ka manaʻo nui ma ka nānā pōkole."
+      },
+      {
+        "property": "subtitle",
+        "title": "Poʻo inoa lua",
+        "description": "Kikoʻī hou."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu kiko",
+        "description": "Waihoʻoluʻu kiko no ka hōʻailona."
+      }
+    ]
+  }
+}

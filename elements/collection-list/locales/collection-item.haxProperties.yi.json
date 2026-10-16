@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "זאַמלונג־עלעמענט",
+    "description": "קאַרטל־עלעמענט פֿאַר אַ זאַמלונג־רשימה, מיט טעקסט, לינק און אָפּציאָנעלע מעדיע."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "לינק",
+        "description": "ציל־URL פֿאַר דעם קאַרטל."
+      },
+      {
+        "property": "image",
+        "title": "בילד",
+        "description": "הינטערגרונט־בילד."
+      },
+      {
+        "property": "line1",
+        "title": "שורה 1",
+        "description": "ערשטע שורה טעקסט."
+      },
+      {
+        "property": "line2",
+        "title": "שורה 2",
+        "description": "צווייטע שורה טעקסט."
+      },
+      {
+        "property": "line3",
+        "title": "שורה 3",
+        "description": "דריטע שורה טעקסט."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "איקאָן",
+        "description": "איקאָן וואָס פֿאַרטרעט דאָס קאַרטל."
+      },
+      {
+        "property": "saturate",
+        "title": "זעטיקונג־עפֿעקט",
+        "description": "ענדערן די בילד־זעטיקונג ווען דער באַניצער פֿאָקוסירט."
+      },
+      {
+        "property": "tags",
+        "title": "טעגן",
+        "description": "רשימה פֿון טעגן, אָפּגעטיילט מיט קאָמעס."
+      },
+      {
+        "property": "accentColor",
+        "title": "קאָליר",
+        "description": "קאָליר פֿאַר טעגן."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "אַלטערנאַטיווער טעקסט וואָס באַשרײַבט דעם לינק."
+      }
+    ]
+  }
+}

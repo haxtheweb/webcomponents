@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Прашање за поврзување",
+    "description": "Активност за поврзување со влечење и пуштање што ги спарува барањата со точните одговори."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Прашање",
+        "description": "Прашање за корисниците. Означете ги целните полиња, па наведете ги одговорите до следното поле."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат на оценување",
+        "description": "OER Schema: формат на оценување за оваа проценка (на пр. поени, буква, процент, завршеност)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Цел на учење",
+        "description": "OER Schema: цел на учење поврзана со оваа проценка."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс за кој е наменета оваа проценка."
+      },
+      {
+        "property": "answers",
+        "title": "Одговори"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Име на квизот",
+        "description": "Име на квизот што се користи за xAPI идентификација во аналитичките системи."
+      }
+    ]
+  }
+}

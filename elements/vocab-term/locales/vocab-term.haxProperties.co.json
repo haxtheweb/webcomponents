@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Vucabulariu",
+    "description": "Termine di vucabulariu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termine"
+      },
+      {
+        "property": "information",
+        "title": "Definizione",
+        "description": "Definizione affissata quandu si clicca nant'à u termine."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Finestra pop-up",
+        "description": "Affissà a definizione in una finestra pop-up invece d'integrata in u testu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Ligami",
+        "description": "Lista di ligami cumplementarii assuciati à stu termine."
+      }
+    ]
+  }
+}

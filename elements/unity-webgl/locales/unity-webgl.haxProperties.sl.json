@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Predvajalnik Unity",
+    "description": "Predvajalnik Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cilj",
+        "description": "Pot do gradnje igre."
+      },
+      {
+        "property": "compression",
+        "title": "Način stiskanja",
+        "description": "Pripona datoteke stiskanja za sredstva igre."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL pretakanja",
+        "description": "URL pretočnih sredstev."
+      },
+      {
+        "property": "companyname",
+        "title": "Ime podjetja",
+        "description": "Ime podjetja."
+      },
+      {
+        "property": "productname",
+        "title": "Ime izdelka",
+        "description": "Naslov igre."
+      },
+      {
+        "property": "productversion",
+        "title": "Različica izdelka",
+        "description": "Različica izdaje."
+      },
+      {
+        "property": "width",
+        "title": "Širina platna",
+        "description": "CSS širina platna (na primer px ali em)."
+      },
+      {
+        "property": "height",
+        "title": "Višina platna",
+        "description": "CSS višina platna (na primer px ali em)."
+      },
+      {
+        "property": "background",
+        "title": "Ozadje platna",
+        "description": "CSS ozadje platna."
+      }
+    ]
+  }
+}

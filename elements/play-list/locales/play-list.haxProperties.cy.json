@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Rhestr chwarae",
+    "description": "Dangos unrhyw fath o gynnwys mewn rhestr chwarae."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Ffynhonnell",
+        "description": "Cynnwys a ddangosir yn y rhestr chwarae."
+      },
+      {
+        "property": "edit",
+        "title": "Modd golygu",
+        "description": "Newid rhwng modd golygu a modd rhagolwg ar gyfer y rhestr chwarae."
+      },
+      {
+        "property": "navigation",
+        "title": "Llywio",
+        "description": "Dangos botymau llywio ymlaen ac yn ôl."
+      },
+      {
+        "property": "pagination",
+        "title": "Tudalennu",
+        "description": "Dangos dotiau tudalennu."
+      },
+      {
+        "property": "orientation",
+        "title": "Cyfeiriadedd",
+        "description": "Cyfeiriadedd y sleidiau.",
+        "options": {
+          "horizontal": "Llorweddol",
+          "vertical": "Fertigol"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Sleid i ddechrau arni",
+        "description": "Mynegai'r sleid i ganolbwyntio arni i ddechrau."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Cymhareb Agwedd",
+        "description": "Cymhareb agwedd y sleidiau.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

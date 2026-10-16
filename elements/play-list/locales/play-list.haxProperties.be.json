@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Плэй-ліст",
+    "description": "Паказваць любы тып змесціва ў плэй-лісце."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Крыніца",
+        "description": "Змесціва, якое паказваецца ў плэй-лісце."
+      },
+      {
+        "property": "edit",
+        "title": "Рэжым рэдагавання",
+        "description": "Пераключэнне паміж рэжымамі рэдагавання і прагляду плэй-ліста."
+      },
+      {
+        "property": "navigation",
+        "title": "Навігацыя",
+        "description": "Паказваць кнопкі навігацыі наперад і назад."
+      },
+      {
+        "property": "pagination",
+        "title": "Пагінацыя",
+        "description": "Паказваць кропкі пагінацыі."
+      },
+      {
+        "property": "orientation",
+        "title": "Арыентацыя",
+        "description": "Арыентацыя слайдаў.",
+        "options": {
+          "horizontal": "Гарызантальная",
+          "vertical": "Вертыкальная"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Пачатковы слайд",
+        "description": "Індэкс слайда, на якім фокус спачатку."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Суадносіны бакоў",
+        "description": "Суадносіны бакоў слайдаў.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

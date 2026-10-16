@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Ludlisto",
+    "description": "Montri ajnan specon de enhavo en ludlisto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Fonto",
+        "description": "Enhavo montrata en la ludlisto."
+      },
+      {
+        "property": "edit",
+        "title": "Redakta reĝimo",
+        "description": "Baskuli inter redakta kaj antaŭrigarda reĝimo por la ludlisto."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigado",
+        "description": "Montri navigajn butonojn antaŭen kaj malantaŭen."
+      },
+      {
+        "property": "pagination",
+        "title": "Paĝigo",
+        "description": "Montri paĝigajn punktojn."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientiĝo",
+        "description": "Orientiĝo de la lumbildoj.",
+        "options": {
+          "horizontal": "Horizontala",
+          "vertical": "Vertikala"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Komenca lumbildo",
+        "description": "Indekso de la lumbildo komence fokusota."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Bildproporcio",
+        "description": "Bildproporcio de la lumbildoj.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

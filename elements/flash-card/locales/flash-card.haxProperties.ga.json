@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Splancchárta",
+    "description": "Cleachtaigh coincheapa le splancchártaí tosaigh agus cúil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Tosach an Chárta",
+        "description": "Téacs nó ceist tosaigh."
+      },
+      {
+        "slot": "back",
+        "title": "Cúl an Chárta",
+        "description": "An freagra a bhfuiltear ag súil leis."
+      },
+      {
+        "property": "imgSource",
+        "title": "Foinse na hÍomhá",
+        "description": "Comhad íomhá a úsáidtear don chárta. Sáraíonn sé Eochairfhocal Íomhá."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Cineál Gnímh",
+        "description": "OER Schema: an cineál gnímh a bhaineann leis an gcleachtadh seo (m.sh. Léamh, Scríobh, Déanamh, Taighde, Éisteacht, Féachaint, Machnamh, Plé, Breathnú, Cur i Láthair, Measúnú)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cuspóir Foghlama",
+        "description": "OER Schema: ID nó URL an chuspóra foghlama a dtacaíonn an cleachtadh seo leis."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Dorcha",
+        "description": "Úsáid an mód dorcha."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath Aibhsithe",
+        "description": "Dath aibhsithe an chárta."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Eochairfhocal Íomhá",
+        "description": "Eochairfhocal d'íomhá randamach. Sáraítear é le Foinse na hÍomhá."
+      }
+    ]
+  }
+}

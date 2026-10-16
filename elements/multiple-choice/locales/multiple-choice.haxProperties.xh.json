@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Ukhetho oluninzi",
+    "description": "Umbuzo wokuzihlola onokhetho oluninzi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Umbuzo",
+        "description": "Umbuzo abasebenzisi abaza kuwuphendula."
+      },
+      {
+        "property": "randomize",
+        "title": "Xuba",
+        "description": "Xuba iimpendulo ngokungacwangciswanga."
+      },
+      {
+        "property": "singleOption",
+        "title": "Impendulo enye",
+        "description": "Vumela impendulo enye kuphela."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ifomathi yokumakisha",
+        "description": "OER Schema: ifomathi yokumakisha yolu vavanyo (umz. amanqaku, unobumba, ipesenti, ukugqitywa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Injongo yokufunda",
+        "description": "OER Schema: injongo yokufunda enxulumene nolu vavanyo."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikhosi",
+        "description": "OER Schema: ikhosi olu vavanyo lwenzelwe yona."
+      },
+      {
+        "property": "answers",
+        "title": "Iimpendulo"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Igama lekwizi",
+        "description": "Igama lekwizi elisetyenziselwa ukuchonga kwe-xAPI kwiinkqubo zohlalutyo."
+      }
+    ]
+  }
+}

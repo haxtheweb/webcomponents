@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Шугам доторх аудио",
+    "description": "Хуудасны агуулгыг нөхөх аудиог шугам дотор тоглуулах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Эх сурвалж",
+        "description": "MP3 файл эсвэл URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Картын онцлох өнгө."
+      },
+      {
+        "property": "shiny",
+        "title": "Гялалзсан",
+        "description": "Саарлын оронд цайвар онцлох арын өнгө ашиглах."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Бараан",
+        "description": "Бараан горим ашиглах."
+      }
+    ]
+  }
+}

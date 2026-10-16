@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG персонаж",
+    "description": "Забавен персонаж от HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Име",
+        "description": "Дума, използвана за генериране на случаен персонаж."
+      },
+      {
+        "property": "hat",
+        "title": "Шапка",
+        "description": "Стил на шапката.",
+        "options": {
+          "none": "По подразбиране",
+          "random": "Случайна",
+          "bunny": "Зайче",
+          "cowboy": "Каубойска",
+          "education": "Образование",
+          "construction": "Строителна каска",
+          "warning": "Предупреждение",
+          "watermelon": "Диня",
+          "coffee": "Кафе",
+          "knight": "Рицар",
+          "ninja": "Нинджа",
+          "party": "Парти",
+          "error": "Грешка",
+          "edit": "Редактиране"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина на персонажа в пиксели."
+      },
+      {
+        "property": "height",
+        "title": "Височина",
+        "description": "Височина на персонажа в пиксели."
+      },
+      {
+        "property": "fire",
+        "title": "Гори ли?",
+        "description": "Дали персонажът гори."
+      },
+      {
+        "property": "walking",
+        "title": "Върви ли?",
+        "description": "Анимация на ходене; изпълнява се, когато гори."
+      }
+    ]
+  }
+}

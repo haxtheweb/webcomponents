@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Картичка",
+    "description": "Компонента картичка стилизирана со дизајн-системот DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Слика",
+        "description": "Изборна слика."
+      },
+      {
+        "property": "alt",
+        "title": "Алт на сликата",
+        "description": "Алтернативен текст што ја опишува сликата."
+      },
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов на картичката."
+      },
+      {
+        "slot": "",
+        "title": "Содржина",
+        "description": "Простор за содржина на картичката."
+      },
+      {
+        "property": "href",
+        "title": "Врска",
+        "description": "URL на врската на копчето."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Ознака",
+        "description": "Ознака на копчето."
+      },
+      {
+        "property": "noArrow",
+        "title": "Без стрелка",
+        "description": "Скриј ја стрелката на копчето."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Врска: цел",
+        "description": "Каде да се отвори врската.",
+        "options": {
+          "": "Истиот прозорец",
+          "_blank": "Нов прозорец - _blank",
+          "_top": "Највисок прозорец - _top",
+          "_parent": "Матичен прозорец - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Врска: rel",
+        "description": "Однос меѓу поврзаниот ресурс и тековниот документ."
+      }
+    ]
+  }
+}

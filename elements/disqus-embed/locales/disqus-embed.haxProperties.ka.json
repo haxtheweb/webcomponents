@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Disqus-ის კომენტარების ჩასმა გვერდზე."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "მოკლე სახელი",
+        "description": "საიტის მოკლე სახელი, რომელიც განსაზღვრავს Disqus-ის სკრიპტის ჰოსტს."
+      },
+      {
+        "property": "pageURL",
+        "title": "გვერდის URL",
+        "description": "იმ გვერდის URL, რომელსაც კომენტარების თემა ეკუთვნის."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "გვერდის იდენტიფიკატორი",
+        "description": "გვერდის კომენტარების თემის უნიკალური იდენტიფიკატორი."
+      },
+      {
+        "property": "pageTitle",
+        "title": "გვერდის სათაური",
+        "description": "იმ გვერდის სათაური, რომელსაც კომენტარების თემა ეკუთვნის."
+      },
+      {
+        "property": "loadingText",
+        "title": "ჩატვირთვის ტექსტი",
+        "description": "ტექსტი, რომელიც ცხადდება კომენტარების ჩატვირთვისას."
+      },
+      {
+        "property": "lang",
+        "title": "ენა",
+        "description": "Disqus-ის ინტერფეისის ენის კოდი, მაგ. en."
+      }
+    ]
+  }
+}

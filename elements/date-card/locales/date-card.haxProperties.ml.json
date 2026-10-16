@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "തീയതി",
+    "description": "വിശദാംശങ്ങളോടെ ഒരു കലണ്ടർ തീയതി പ്രദർശിപ്പിക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "മാസം",
+        "description": "കാർഡിൽ കാണിക്കുന്ന മാസം."
+      },
+      {
+        "property": "date",
+        "title": "മാസത്തിലെ ദിവസം",
+        "description": "മാസത്തിലെ ദിവസത്തിന്റെ സംഖ്യ."
+      },
+      {
+        "property": "day",
+        "title": "ആഴ്ചയിലെ ദിവസം",
+        "description": "ആഴ്ചയിലെ ദിവസം വാചകമായി."
+      },
+      {
+        "property": "title",
+        "title": "ശീർഷകം",
+        "description": "പരിപാടിയുടെ പേര്."
+      },
+      {
+        "property": "location",
+        "title": "സ്ഥലം",
+        "description": "പരിപാടിയുടെ സ്ഥലം."
+      },
+      {
+        "property": "startTime",
+        "title": "ആരംഭം",
+        "description": "ആരംഭ സമയം."
+      },
+      {
+        "property": "endTime",
+        "title": "അവസാനം",
+        "description": "അവസാന സമയം."
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "ഒരു ഐച്ഛിക ആക്സന്റ് നിറം."
+      },
+      {
+        "property": "dark",
+        "title": "ഇരുണ്ട തീം",
+        "description": "ഇരുണ്ട തീം പ്രവർത്തനക്ഷമമാക്കുക."
+      }
+    ]
+  }
+}

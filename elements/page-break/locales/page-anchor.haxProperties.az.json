@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Səhifə lövbəri",
+    "description": "Səhifədəki mediada müəyyən nöqtələrə keçid."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Səhifə hədəfi",
+        "description": "Bu lövbərin göstərdiyi ID və ya resurs."
+      },
+      {
+        "property": "value",
+        "title": "Dərin keçid dəyəri",
+        "description": "Dərin keçid dəyəri (məsələn, vaxt nişanı və ya slayd ID-si)."
+      },
+      {
+        "property": "entityId",
+        "title": "Sayt obyekti",
+        "description": "Əlaqəli anlayışların təqdimatını idarə etmək üçün ixtiyari sayt obyekti."
+      }
+    ]
+  }
+}

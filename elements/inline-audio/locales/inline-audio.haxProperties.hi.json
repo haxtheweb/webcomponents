@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "इनलाइन ऑडियो",
+    "description": "पृष्ठ सामग्री के पूरक के रूप में इनलाइन ऑडियो चलाएँ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "MP3 फ़ाइल या URL।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "कार्ड का एक्सेंट रंग।"
+      },
+      {
+        "property": "shiny",
+        "title": "चमकदार",
+        "description": "धूसर के बजाय हल्की एक्सेंट पृष्ठभूमि का उपयोग करें।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "डार्क",
+        "description": "डार्क मोड का उपयोग करें।"
+      }
+    ]
+  }
+}

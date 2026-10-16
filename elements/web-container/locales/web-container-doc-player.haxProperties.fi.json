@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Verkkokomponenttien dokumentaatiosoitin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Piilota ikkuna",
+        "description": "Piilota tulosteikkuna, hyödyllinen kun käytetään vain päätettä"
+      }
+    ]
+  }
+}

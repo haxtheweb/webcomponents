@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "ಹಂಚಿಕೆ URL ನಿಂದ Discord ಸಮುದಾಯಗಳನ್ನು ಎಂಬೆಡ್ ಮಾಡಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ಸಂಪನ್ಮೂಲ URL",
+        "description": "ಸಂಪನ್ಮೂಲ URL."
+      },
+      {
+        "property": "height",
+        "title": "ಎತ್ತರ",
+        "description": "ವಿಷಯ ಫ್ರೇಮ್‌ನ ಎತ್ತರ."
+      },
+      {
+        "property": "width",
+        "title": "ಅಗಲ",
+        "description": "ವಿಷಯ ಫ್ರೇಮ್‌ನ ಅಗಲ."
+      }
+    ]
+  }
+}

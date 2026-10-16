@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Kolekcijas rinda",
+    "description": "Rindas tipa elements kolekcijas sarakstā ar tekstu, saiti, ikonu, birkām un neobligātu attēlu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Saite",
+        "description": "Šīs rindas mērķa URL."
+      },
+      {
+        "property": "image",
+        "title": "Attēls",
+        "description": "Rindas attēls."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatīvais teksts",
+        "description": "Attēlu aprakstošs alternatīvais teksts."
+      },
+      {
+        "property": "line1",
+        "title": "1. rinda",
+        "description": "Pirmā teksta rinda."
+      },
+      {
+        "property": "line2",
+        "title": "2. rinda",
+        "description": "Otrā teksta rinda."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Rindu attēlojoša ikona."
+      },
+      {
+        "property": "saturate",
+        "title": "Piesātinājuma efekts",
+        "description": "Mainīt attēla piesātinājumu, kad lietotājs to fokusē."
+      },
+      {
+        "property": "tags",
+        "title": "Birkas",
+        "description": "Ar komatiem atdalīts birku saraksts."
+      },
+      {
+        "property": "accentColor",
+        "title": "Krāsa",
+        "description": "Ikonas un birku krāsa."
+      }
+    ]
+  }
+}

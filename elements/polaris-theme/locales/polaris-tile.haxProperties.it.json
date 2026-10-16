@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Riquadro Polaris",
+    "description": "Mostra un riquadro Polaris con titolo, testo di supporto facoltativo e link facoltativo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Testo principale",
+        "description": "Testo principale del riquadro."
+      },
+      {
+        "property": "line2",
+        "title": "Testo secondario",
+        "description": "Testo di supporto facoltativo."
+      },
+      {
+        "property": "type",
+        "title": "Stile del riquadro",
+        "description": "Stile visivo predefinito del riquadro.",
+        "options": {
+          "1": "Stile 1",
+          "2": "Stile 2",
+          "3": "Stile 3",
+          "4": "Stile 4",
+          "5": "Stile 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Immagine di sfondo",
+        "description": "URL dell'immagine di sfondo usata dagli stili di riquadro che supportano le immagini."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "URL di destinazione facoltativo per l'azione del riquadro."
+      }
+    ]
+  }
+}

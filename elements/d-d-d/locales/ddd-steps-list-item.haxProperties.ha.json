@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Abun matakai",
+    "description": "Abin da ke cikin jerin matakai"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Take"
+      }
+    ]
+  }
+}

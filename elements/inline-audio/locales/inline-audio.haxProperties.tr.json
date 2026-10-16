@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Satır içi ses",
+    "description": "Sayfa içeriğini desteklemek için sesi satır içinde oynatın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kaynak",
+        "description": "MP3 dosyası veya URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu Rengi",
+        "description": "Kart vurgu rengi."
+      },
+      {
+        "property": "shiny",
+        "title": "Parlak",
+        "description": "Gri yerine daha açık bir vurgu arka planı kullan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Koyu",
+        "description": "Koyu modu kullan."
+      }
+    ]
+  }
+}

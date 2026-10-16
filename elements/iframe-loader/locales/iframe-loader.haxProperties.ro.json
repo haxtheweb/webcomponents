@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Încorporează conținut web extern într-un iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL resursă",
+        "description": "URL-ul resursei."
+      },
+      {
+        "property": "height",
+        "title": "Înălțime",
+        "description": "Înălțimea iframe-ului."
+      },
+      {
+        "property": "width",
+        "title": "Lățime",
+        "description": "Lățimea iframe-ului."
+      }
+    ]
+  }
+}

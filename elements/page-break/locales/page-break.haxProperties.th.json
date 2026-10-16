@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "รายละเอียดหน้า",
+    "description": "กำหนดการแบ่งหน้าด้วยภาพ ซึ่ง CMS สามารถใช้เพื่อสร้างหน้าได้"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อที่แสดงในธีมและหัวข้อแรก"
+      },
+      {
+        "property": "pageType",
+        "title": "ประเภท",
+        "description": "ป้ายกำกับบริบทของหน้าแบบภาพ",
+        "options": {
+          "": "-- ไม่มี --",
+          "content": "เนื้อหา",
+          "assessment": "การประเมิน",
+          "quiz": "แบบทดสอบ",
+          "submission": "การส่งงาน",
+          "lesson": "บทเรียน",
+          "module": "โมดูล",
+          "task": "งาน",
+          "activity": "กิจกรรม",
+          "project": "โครงงาน",
+          "practice": "การฝึกฝน",
+          "unit": "หน่วย",
+          "objectives": "วัตถุประสงค์การเรียนรู้",
+          "connection": "การเชื่อมโยง",
+          "knowledge": "คุณรู้หรือไม่?",
+          "strategy": "กลยุทธ์การเรียนรู้",
+          "discuss": "อภิปราย",
+          "listen": "ฟัง",
+          "make": "สร้าง",
+          "observe": "สังเกต",
+          "present": "นำเสนอ",
+          "reading": "การอ่าน",
+          "reflect": "สะท้อนคิด",
+          "research": "ค้นคว้า",
+          "watch": "ดู",
+          "write": "เขียน"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "แท็ก",
+        "description": "รายการแท็กที่คั่นด้วยเครื่องหมายจุลภาค"
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL ของลิงก์",
+        "description": "URL เปลี่ยนเส้นทางที่แสดงแทนเนื้อหาของหน้า"
+      },
+      {
+        "property": "linkTarget",
+        "title": "เป้าหมายของลิงก์",
+        "description": "เปิดลิงก์ในหน้าต่างเดียวกันหรือหน้าต่างใหม่",
+        "options": {
+          "_self": "หน้าต่างเดียวกัน",
+          "_blank": "หน้าต่างใหม่"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "เผยแพร่แล้ว",
+        "description": "หน้าที่ยังไม่เผยแพร่จะถูกซ่อนจากผู้ใช้ปลายทาง"
+      },
+      {
+        "property": "locked",
+        "title": "ล็อกหน้า",
+        "description": "ล็อกหรือปลดล็อกองค์ประกอบทั้งหมดในหน้านี้"
+      },
+      {
+        "property": "overridePathauto",
+        "title": "แทนที่ slug อัตโนมัติ",
+        "description": "ล็อก slug ไม่ให้อัปเดตอัตโนมัติตามชื่อหรือหน้าหลัก"
+      },
+      {
+        "property": "slug",
+        "title": "เส้นทาง",
+        "description": "slug ของ URL สำหรับหน้านี้"
+      },
+      {
+        "property": "image",
+        "title": "สื่อ",
+        "description": "สื่อที่เป็นตัวแทนของหน้า ใช้ในบางธีมและมุมมอง"
+      },
+      {
+        "property": "parent",
+        "title": "หน้าหลัก",
+        "description": "เส้นทางของหน้าหลัก"
+      },
+      {
+        "property": "noderefs",
+        "title": "เนื้อหาที่เกี่ยวข้อง",
+        "description": "หน้าที่เกี่ยวข้องกับหน้านี้"
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "คำอธิบาย",
+        "description": "คำอธิบายที่ใช้ในคอลเลกชันและการปรับแต่งเว็บไซต์ให้ติดอันดับการค้นหา"
+      },
+      {
+        "property": "entityType",
+        "title": "ประเภทเอนทิตี",
+        "description": "ค่าเริ่มต้นเป็นหน้า เว้นแต่จะกำหนดเป็นอย่างอื่น",
+        "options": {
+          "page": "หน้า (ค่าเริ่มต้น)",
+          "taxonomy": "อนุกรมวิธาน",
+          "taxonomyTerm": "คำในอนุกรมวิธาน",
+          "region": "ภูมิภาค"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "ไอคอน",
+        "description": "ไอคอนที่เชื่อมโยงกับหน้านี้ในเว็บไซต์"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีที่เชื่อมโยงกับหน้านี้ในเว็บไซต์"
+      },
+      {
+        "property": "hideInMenu",
+        "title": "ซ่อนในเมนู",
+        "description": "ซ่อนหน้านี้จากเมนูโดยยังคง URL ไว้"
+      },
+      {
+        "property": "order",
+        "title": "ลำดับ",
+        "description": "ลำดับเมื่อเทียบกับหน้าระดับเดียวกัน"
+      },
+      {
+        "property": "developerTheme",
+        "title": "ธีมของหน้า",
+        "description": "แทนที่ธีมสำหรับหน้านี้เท่านั้น"
+      },
+      {
+        "property": "author",
+        "title": "ผู้เขียน",
+        "description": "ชื่อผู้ใช้ของบุคคลล่าสุดที่แก้ไขหน้านี้"
+      }
+    ]
+  }
+}

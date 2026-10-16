@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "عنصر المجموعة",
+    "description": "عنصر بنمط البطاقة للاستخدام داخل قائمة مجموعة، يتضمن نصًا ورابطًا ووسائط اختيارية."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "الرابط",
+        "description": "URL الوجهة لهذه البطاقة."
+      },
+      {
+        "property": "image",
+        "title": "الصورة",
+        "description": "صورة الخلفية."
+      },
+      {
+        "property": "line1",
+        "title": "السطر 1",
+        "description": "السطر الأول من النص."
+      },
+      {
+        "property": "line2",
+        "title": "السطر 2",
+        "description": "السطر الثاني من النص."
+      },
+      {
+        "property": "line3",
+        "title": "السطر 3",
+        "description": "السطر الثالث من النص."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "الأيقونة",
+        "description": "أيقونة تمثل البطاقة."
+      },
+      {
+        "property": "saturate",
+        "title": "تأثير التشبع",
+        "description": "تغيير تشبع الصورة عند تركيز المستخدم."
+      },
+      {
+        "property": "tags",
+        "title": "الوسوم",
+        "description": "قائمة وسوم مفصولة بفواصل."
+      },
+      {
+        "property": "accentColor",
+        "title": "اللون",
+        "description": "اللون المستخدم للوسوم."
+      },
+      {
+        "property": "alt",
+        "title": "النص البديل",
+        "description": "نص بديل يصف الرابط."
+      }
+    ]
+  }
+}

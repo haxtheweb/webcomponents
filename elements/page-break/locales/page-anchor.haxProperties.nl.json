@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Paginaanker",
+    "description": "Link naar specifieke punten in media op de pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Paginadoel",
+        "description": "ID of bron waarnaar dit anker verwijst."
+      },
+      {
+        "property": "value",
+        "title": "Waarde voor deeplink",
+        "description": "Deeplinkwaarde (bijvoorbeeld tijdstempel of dia-ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Site-entiteit",
+        "description": "Optionele site-entiteit voor het aansturen van de weergave van verwante concepten."
+      }
+    ]
+  }
+}

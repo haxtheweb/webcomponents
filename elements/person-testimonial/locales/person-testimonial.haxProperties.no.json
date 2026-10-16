@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Sitat med bilde",
+    "description": "Stilisert sitat med valgfritt bilde."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bilde",
+        "description": "Legg til et bilde i attesten."
+      },
+      {
+        "property": "name",
+        "title": "Fullt navn",
+        "description": "Navnet på personen som gir attesten."
+      },
+      {
+        "property": "position",
+        "title": "Stilling eller tittel",
+        "description": "Personens stilling eller tittel."
+      },
+      {
+        "slot": "",
+        "title": "Sitat",
+        "description": "Sitat fra forfatteren av attesten."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Spjøld",
+    "description": "Savn av spjøldum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Heiti (fyri atkomuleika)",
+        "description": "Atkomuligt heiti til spjaldsavnið."
+      },
+      {
+        "property": "disabled",
+        "title": "Óvirkið",
+        "description": "Ger øll spjøld óvirkin."
+      },
+      {
+        "property": "hidden",
+        "title": "Fjalt",
+        "description": "Fjal spjaldsavnið."
+      },
+      {
+        "property": "sticky",
+        "title": "Fastkleint",
+        "description": "Halt vatnrøttu spjøldini ovast, meðan rult verður."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Skipanarmark",
+        "description": "Mark fyri vatnrøtt spjøld; nýt -1 fyri bert loddrætt."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Ímyndarmark",
+        "description": "Mark fyri at vísa tekst við ímyndum. Standard er 0; nýt -1 fyri bert ímyndir."
+      },
+      {
+        "slot": "",
+        "title": "Spjøld",
+        "description": "Røð av <a11y-tab/>-eindum."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Eintýtt ID",
+        "description": "Eintýtt ID til hetta spjaldsavnið."
+      }
+    ]
+  }
+}

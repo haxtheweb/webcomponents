@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kupu Taputapu",
+    "description": "Kīanga kupu taputapu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Kīanga"
+      },
+      {
+        "property": "information",
+        "title": "Tikanga",
+        "description": "Tikanga ka whakaaturia ina pāwhiritia te kīanga."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Matapihi puta ake",
+        "description": "Whakaaturia te tikanga ki tētahi matapihi puta ake, kaua i roto i te kōrero."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Ngā Hono",
+        "description": "Rārangi hono tāpiri e hono ana ki tēnei kīanga."
+      }
+    ]
+  }
+}

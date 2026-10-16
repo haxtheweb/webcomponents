@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Datum",
+    "description": "Prikaz koledarskega datuma s podrobnostmi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mesec",
+        "description": "Mesec, prikazan na kartici."
+      },
+      {
+        "property": "date",
+        "title": "Dan v mesecu",
+        "description": "Številčni dan v mesecu."
+      },
+      {
+        "property": "day",
+        "title": "Dan v tednu",
+        "description": "Dan v tednu z besedo."
+      },
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Ime dogodka."
+      },
+      {
+        "property": "location",
+        "title": "Lokacija",
+        "description": "Lokacija dogodka."
+      },
+      {
+        "property": "startTime",
+        "title": "Začetek",
+        "description": "Čas začetka."
+      },
+      {
+        "property": "endTime",
+        "title": "Konec",
+        "description": "Čas konca."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Neobvezna poudarna barva."
+      },
+      {
+        "property": "dark",
+        "title": "Temna tema",
+        "description": "Omogoči temno temo."
+      }
+    ]
+  }
+}

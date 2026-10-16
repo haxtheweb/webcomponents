@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Ինքնաստուգում",
+    "description": "Օգտատերերը կարող են անցնել ինքնաստուգում։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Պատկեր",
+        "description": "Ինքնաստուգման պատկերը։"
+      },
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Ինքնաստուգման վերնագիրը։"
+      },
+      {
+        "property": "alt",
+        "title": "Alt տեքստ",
+        "description": "Պատկերի alt տեքստը։"
+      },
+      {
+        "slot": "question",
+        "title": "Հարց"
+      },
+      {
+        "slot": "",
+        "title": "Պատասխան"
+      },
+      {
+        "property": "accentColor",
+        "title": "Թեմայի գույն",
+        "description": "Ընտրեք թեմայի գույն դիզայն համակարգից։",
+        "options": {
+          "primary": "Հիմնական",
+          "accent": "Շեշտադրում",
+          "success": "Հաջողություն",
+          "warning": "Զգուշացում",
+          "error": "Սխալ",
+          "info": "Տեղեկություն"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ուսումնական նպատակ",
+        "description": "Ուսումնական նպատակի հղում, որը ստեղծվում է որպես oer:hasLearningObjective։"
+      },
+      {
+        "property": "assessing",
+        "title": "Գնահատվող",
+        "description": "Գործունեության հղում, որը ստեղծվում է որպես oer:assessing։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Լրացուցիչ հղում",
+        "description": "Հղում լրացուցիչ տեղեկատվության։"
+      }
+    ]
+  }
+}

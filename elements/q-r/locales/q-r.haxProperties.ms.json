@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Kod QR",
+    "description": "Kod untuk diimbas daripada telefon pintar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Data QR",
+        "description": "Sumber data untuk kod QR."
+      },
+      {
+        "property": "title",
+        "title": "Tajuk alternatif",
+        "description": "Tajuk alternatif yang dipautkan ke sumber kod QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Saiz",
+        "description": "Saiz kod QR."
+      },
+      {
+        "property": "margin",
+        "title": "Jidar",
+        "description": "Pembalut kod."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Format output",
+        "description": "Format untuk dikeluarkan.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

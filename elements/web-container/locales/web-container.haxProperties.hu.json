@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS-tároló"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Szerkesztő elrejtése",
+        "description": "A fájlszerkesztő felület elrejtése."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Terminál elrejtése",
+        "description": "A terminál elrejtése automatikusan futó programok esetén."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Ablak elrejtése",
+        "description": "A kimeneti ablak elrejtése csak terminálos használathoz."
+      },
+      {
+        "slot": "",
+        "title": "Parancsok",
+        "description": "Betöltés előtt futtatandó parancsok (soronként egy)."
+      }
+    ]
+  }
+}

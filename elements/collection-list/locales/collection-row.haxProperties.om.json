@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Tarree kuusaa",
+    "description": "Wanta akka tarreetti mul'atu kan tarree kuusaa keessatti fayyadamu, barreeffama, hidhoo, mallattoo, mallattoolee fi suuraa filannoo qabu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Hidhoo",
+        "description": "URL gahiinsaa tarree kanaa."
+      },
+      {
+        "property": "image",
+        "title": "Suuraa",
+        "description": "Suuraa tarree kanaa."
+      },
+      {
+        "property": "alt",
+        "title": "Ibsa suuraa",
+        "description": "Barreeffama bakka bu'aa suuraa ibsu."
+      },
+      {
+        "property": "line1",
+        "title": "Sarara 1",
+        "description": "Sarara barreeffamaa jalqabaa."
+      },
+      {
+        "property": "line2",
+        "title": "Sarara 2",
+        "description": "Sarara barreeffamaa lammaffaa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Mallattoo",
+        "description": "Mallattoo tarree bakka bu'u."
+      },
+      {
+        "property": "saturate",
+        "title": "Bu'aa cimina halluu",
+        "description": "Yeroo fayyadamaan xiyyeeffatu cimina halluu suuraa jijjiiri."
+      },
+      {
+        "property": "tags",
+        "title": "Mallattoolee",
+        "description": "Tarree mallattoolee qooduu (,) n addaan baafaman."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu",
+        "description": "Halluu mallattoo fi mallattooleef fayyadamu."
+      }
+    ]
+  }
+}

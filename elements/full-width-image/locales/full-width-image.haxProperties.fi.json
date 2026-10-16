@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Kuvaosio",
+    "description": "Koko leveyden kuva, joka jakaa sivun osioihin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Taustakuva."
+      },
+      {
+        "property": "caption",
+        "description": "Tekstiotsikko."
+      }
+    ]
+  }
+}

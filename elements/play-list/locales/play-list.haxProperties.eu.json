@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Erreprodukzio zerrenda",
+    "description": "Bistaratu edozein eduki mota erreprodukzio zerrenda batean."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Iturburua",
+        "description": "Erreprodukzio zerrendan erakusten den edukia."
+      },
+      {
+        "property": "edit",
+        "title": "Edizio modua",
+        "description": "Txandakatu erreprodukzio zerrendaren edizio eta aurrebista moduen artean."
+      },
+      {
+        "property": "navigation",
+        "title": "Nabigazioa",
+        "description": "Erakutsi aurrera eta atzera nabigatzeko botoiak."
+      },
+      {
+        "property": "pagination",
+        "title": "Orrikatzea",
+        "description": "Erakutsi orrikatze puntuak."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientazioa",
+        "description": "Diapositiben orientazioa.",
+        "options": {
+          "horizontal": "Horizontala",
+          "vertical": "Bertikala"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Hasierako diapositiba",
+        "description": "Hasieran fokua jartzeko diapositibaren indizea."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Aspektu-erlazioa",
+        "description": "Diapositiben aspektu-erlazioa.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "សំណួរ ត្រូវ / ខុស",
+    "description": "សំណួរត្រូវខុស"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "សំណួរ",
+        "description": "សំណួរសម្រាប់អ្នកប្រើឆ្លើយ។"
+      },
+      {
+        "property": "_tfanswer",
+        "title": "ចម្លើយត្រឹមត្រូវ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ឈ្មោះកម្រងសំណួរ",
+        "description": "ឈ្មោះកម្រងសំណួរបញ្ជូនចូលសម្រាប់ប្រើក្នុងបរិស្ថានដំណើរការដោយ xAPI ដើម្បីកំណត់អត្តសញ្ញាណធាតុនេះ"
+      }
+    ]
+  }
+}

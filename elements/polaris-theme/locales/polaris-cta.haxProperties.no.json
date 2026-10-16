@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Vis en tematisert Polaris-handlingsknapp."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Knappetekst",
+        "description": "Tekst som vises i handlingsknappen."
+      },
+      {
+        "property": "link",
+        "title": "Lenke",
+        "description": "Mål-URL for knappen."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Variant av visuell stil.",
+        "options": {
+          "primary": "Primær",
+          "tinted": "Tonet",
+          "light": "Lys"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Omrisset stil",
+        "description": "Slå på omrisset utseende."
+      },
+      {
+        "property": "filled",
+        "title": "Fylt stil",
+        "description": "Slå på fylt utseende."
+      }
+    ]
+  }
+}

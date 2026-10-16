@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kaarka xasuusta",
+    "description": "Ku celceli fikradaha kaararka xasuusta oo hore iyo gadaal leh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Wejiga Hore ee Kaarka",
+        "description": "Qoraalka hore ama su'aasha."
+      },
+      {
+        "slot": "back",
+        "title": "Wejiga Dambe ee Kaarka",
+        "description": "Jawaabta la filayo."
+      },
+      {
+        "property": "imgSource",
+        "title": "Isha Sawirka",
+        "description": "Faylka sawirka loo isticmaalo kaarka. Wuxuu ka mudnaan badan yahay Ereyga Sawirka."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Nooca Falka",
+        "description": "OER Schema: nooca falka ee ku jira tababarkan (tusaale Akhris, Qoris, Samayn, Cilmi-baadhis, Dhegeysi, Daawasho, Ka-fiirsasho, Dood, Indha-indhayn, Soo-bandhigid, Qiimayn)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ujeeddada Waxbarasho",
+        "description": "OER Schema: ID ama URL-ka ujeeddada waxbarasho ee tababarkani taageerayo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Madow",
+        "description": "Isticmaal habka madow."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka Xoojinta",
+        "description": "Midabka xoojinta kaarka."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Ereyga Sawirka",
+        "description": "Erey sawir aan kala horrayn. Waxaa ka mudnaan badan Isha Sawirka."
+      }
+    ]
+  }
+}

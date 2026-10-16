@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Дата",
+    "description": "Календарь датасын тулырак мәгълүмат белән күрсәтергә."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Ай",
+        "description": "Карточкада күрсәтелә торган ай."
+      },
+      {
+        "property": "date",
+        "title": "Айның көне",
+        "description": "Айның көне (сан белән)."
+      },
+      {
+        "property": "day",
+        "title": "Атна көне",
+        "description": "Атна көне (текст белән)."
+      },
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Чараның исеме."
+      },
+      {
+        "property": "location",
+        "title": "Урын",
+        "description": "Чараның урыны."
+      },
+      {
+        "property": "startTime",
+        "title": "Башлану",
+        "description": "Башлану вакыты."
+      },
+      {
+        "property": "endTime",
+        "title": "Тәмамлану",
+        "description": "Тәмамлану вакыты."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Өстәмә ассызык төсе."
+      },
+      {
+        "property": "dark",
+        "title": "Караңгы тема",
+        "description": "Караңгы теманы кабызырга."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF ब्राउजर दर्शक",
+    "description": "वैकल्पिक कार्ड लेआउट र डाउनलोड बटनसहित PDF फाइललाई इनलाइन इम्बेड गर्नुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF फाइलको स्थान।"
+      },
+      {
+        "property": "heading",
+        "title": "शीर्षक",
+        "description": "कार्डको शीर्षक पाठ।"
+      },
+      {
+        "property": "card",
+        "title": "कार्ड लेआउट",
+        "description": "PDF लाई डाउनलोड बटनसहित कार्डमा देखाउनुहोस्।"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "डाउनलोड लेबल",
+        "description": "डाउनलोड बटनको लेबल।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "समर्थन नभएको सन्देश",
+        "description": "ब्राउजरले PDF फाइलहरू देखाउन नसक्दाको सन्देश।"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "समर्थन नभएको लिङ्क सन्देश",
+        "description": "ब्राउजरले PDF फाइलहरू देखाउन नसक्दाको लिङ्क पाठ।"
+      },
+      {
+        "property": "width",
+        "title": "चौडाइ",
+        "description": "PDF दर्शकको चौडाइ।"
+      },
+      {
+        "property": "height",
+        "title": "उचाइ",
+        "description": "PDF दर्शकको उचाइ।"
+      }
+    ]
+  }
+}

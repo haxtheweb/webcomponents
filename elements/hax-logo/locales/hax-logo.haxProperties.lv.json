@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX vārdu māksla",
+    "description": "HAX logotipa elements, protams, ar HAX atbalstu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Ievietojamā HAX logotipa izmērs",
+        "options": {
+          "mini": "Mini",
+          "small": "Mazs",
+          "normal": "Parasts",
+          "large": "Liels"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Vai pārveidot logotipu lielajos burtos"
+      }
+    ]
+  }
+}

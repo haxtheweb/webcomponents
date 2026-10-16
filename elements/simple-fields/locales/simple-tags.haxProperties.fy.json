@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Labels",
+    "description": "Ienfâldige list fan labels om op de side te toanen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Labels",
+        "description": "Mei komma's skieden list fan labels."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatyske aksintkleur",
+        "description": "Aksintkleur automatysk ynstelle op basis fan it label."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kleur",
+        "description": "Kleur foar labels."
+      }
+    ]
+  }
+}

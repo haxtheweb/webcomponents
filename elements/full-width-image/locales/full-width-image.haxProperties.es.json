@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Sección de imagen",
+    "description": "Imagen a todo el ancho que separa una sección de la página."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Imagen de fondo."
+      },
+      {
+        "property": "caption",
+        "description": "Encabezado de texto."
+      }
+    ]
+  }
+}

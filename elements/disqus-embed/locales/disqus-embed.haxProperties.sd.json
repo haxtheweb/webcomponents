@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "صفحي تي Disqus تبصرا شامل ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "مختصر نالو",
+        "description": "سائيٽ جو مختصر نالو، جيڪو Disqus اسڪرپٽ ميزبان طئي ڪري ٿو."
+      },
+      {
+        "property": "pageURL",
+        "title": "صفحي جو URL",
+        "description": "ان صفحي جو URL جنهن سان تبصرن جو سلسلو ڳنڍيل آهي."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "صفحي جي سڃاڻپ",
+        "description": "صفحي جي تبصرن جي سلسلي لاءِ منفرد سڃاڻپ."
+      },
+      {
+        "property": "pageTitle",
+        "title": "صفحي جو عنوان",
+        "description": "ان صفحي جو عنوان جنهن سان تبصرن جو سلسلو ڳنڍيل آهي."
+      },
+      {
+        "property": "loadingText",
+        "title": "لوڊنگ متن",
+        "description": "تبصرا لوڊ ٿيڻ دوران اعلان ڪيل متن."
+      },
+      {
+        "property": "lang",
+        "title": "ٻولي",
+        "description": "Disqus انٽرفيس لاءِ ٻولي ڪوڊ، مثال طور en."
+      }
+    ]
+  }
+}

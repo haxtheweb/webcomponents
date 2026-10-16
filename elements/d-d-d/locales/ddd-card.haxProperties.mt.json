@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Karta",
+    "description": "Komponent ta' karta bl-istil tas-sistema tad-disinn DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Immaġni",
+        "description": "Immaġni fakultattiva."
+      },
+      {
+        "property": "alt",
+        "title": "Alt tal-immaġni",
+        "description": "Test alternattiv li jiddeskrivi l-immaġni."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlu tal-karta."
+      },
+      {
+        "slot": "",
+        "title": "Kontenut",
+        "description": "Żona tal-kontenut tal-karta."
+      },
+      {
+        "property": "href",
+        "title": "Link",
+        "description": "URL tal-link tal-buttuna."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Tikketta",
+        "description": "Tikketta tal-buttuna."
+      },
+      {
+        "property": "noArrow",
+        "title": "Mingħajr vleġġa",
+        "description": "Aħbi l-vleġġa tal-buttuna."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Link: target",
+        "description": "Fejn għandu jinfetaħ il-link.",
+        "options": {
+          "": "L-istess tieqa",
+          "_blank": "Tieqa ġdida - _blank",
+          "_top": "Tieqa ta' fuq nett - _top",
+          "_parent": "Tieqa ġenitur - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Link: rel",
+        "description": "Ir-relazzjoni bejn ir-riżorsa marbuta u d-dokument attwali."
+      }
+    ]
+  }
+}

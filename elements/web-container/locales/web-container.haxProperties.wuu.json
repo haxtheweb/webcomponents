@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS 容器"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "隐藏编辑器",
+        "description": "隐藏文件编辑界面。"
+      },
+      {
+        "property": "hideTerminal",
+        "title": "隐藏终端",
+        "description": "自动运行程序辰光隐藏终端。"
+      },
+      {
+        "property": "hideWindow",
+        "title": "隐藏窗口",
+        "description": "只用终端辰光隐藏输出窗口。"
+      },
+      {
+        "slot": "",
+        "title": "命令",
+        "description": "加载前头要运行个命令（一行一条）。"
+      }
+    ]
+  }
+}

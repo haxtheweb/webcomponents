@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Għan ta' Żvilupp Sostenibbli tan-Nazzjonijiet Magħquda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Għan",
+        "description": "Numru tal-UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Kulur biss",
+        "description": "Uri l-kulur tal-għan biss."
+      }
+    ]
+  }
+}

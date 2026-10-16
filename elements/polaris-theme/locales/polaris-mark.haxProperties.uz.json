@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris belgisi",
+    "description": "PSU identifikatsiya belgisini ixtiyoriy kollej nomi va manzil URL bilan koʻrsatish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Kollej nomi",
+        "description": "Belgi yonida koʻrsatiladigan nom."
+      },
+      {
+        "property": "name2",
+        "title": "Kollej nomi 2",
+        "description": "Birinchi kollej nomi ostida koʻrsatiladigan ikkinchi nom."
+      },
+      {
+        "property": "name3",
+        "title": "Kollej nomi 3",
+        "description": "Ikkinchi kollej nomi ostida koʻrsatiladigan uchinchi nom."
+      },
+      {
+        "property": "url",
+        "title": "Havola",
+        "description": "Belgi bosilganda oʻtiladigan manzil URL."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Belgining vizual varianti.",
+        "options": {
+          "default": "Standart",
+          "light": "Yorugʻ",
+          "dark": "Qorongʻi"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Vertikal maket",
+        "description": "Uchinchi nomni ikkinchi nom ostida gorizontal chiziq bilan koʻrsatish."
+      }
+    ]
+  }
+}

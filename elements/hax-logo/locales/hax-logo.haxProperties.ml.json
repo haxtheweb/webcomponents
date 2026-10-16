@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX വേഡ് ആർട്ട്",
+    "description": "HAX-നുള്ള ലോഗോ ഘടകം, തീർച്ചയായും HAX-ന് അനുയോജ്യമായ ഘടകമായി."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "സ്ഥാപിക്കേണ്ട HAX ലോഗോയുടെ വലുപ്പം",
+        "options": {
+          "mini": "മിനി",
+          "small": "ചെറുത്",
+          "normal": "സാധാരണം",
+          "large": "വലുത്"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "ലോഗോ വലിയക്ഷരത്തിലേക്ക് മാറ്റണോ എന്ന്"
+      }
+    ]
+  }
+}

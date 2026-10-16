@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Lüğət",
+    "description": "Lüğət termini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termin"
+      },
+      {
+        "property": "information",
+        "title": "Tərif",
+        "description": "Terminə kliklədikdə göstərilən tərif."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Açılan pəncərə",
+        "description": "Tərifi sətirdaxili deyil, açılan pəncərədə göstər."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Keçidlər",
+        "description": "Bu terminlə əlaqəli əlavə keçidlərin siyahısı."
+      }
+    ]
+  }
+}

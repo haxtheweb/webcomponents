@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Značka događaja",
+    "description": "Komponenta značke događaja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Slika na TV-u",
+        "description": "Slika prikazana na TV-u."
+      },
+      {
+        "property": "logo",
+        "title": "Logotip",
+        "description": "Logotip prikazan u kutu značke."
+      },
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov prikazan na vrhu značke."
+      },
+      {
+        "property": "name",
+        "title": "Ime",
+        "description": "Ime prikazano na znački."
+      },
+      {
+        "property": "position",
+        "title": "Položaj",
+        "description": "Uloga ili titula osobe."
+      },
+      {
+        "property": "organization",
+        "title": "Organizacija",
+        "description": "Organizacija za koju osoba radi."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Boja TV-a",
+        "description": "Odaberite boju TV-a."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja isticanja",
+        "description": "Primarna boja pozadine ili teksta."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Boja gumba",
+        "description": "Boja okretnih gumba TV-a."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepija",
+        "description": "Primijeni efekt sepije."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Crno-bijelo",
+        "description": "Primijeni crno-bijeli efekt."
+      }
+    ]
+  }
+}

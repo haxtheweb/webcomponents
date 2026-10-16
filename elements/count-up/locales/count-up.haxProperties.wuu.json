@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "数字递增",
+    "description": "滚到眼面前辰光，数字动画递增到目标值。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "结束值",
+        "description": "数到个数字。"
+      },
+      {
+        "property": "start",
+        "title": "起始值",
+        "description": "从哪只数字开始数。"
+      },
+      {
+        "property": "duration",
+        "title": "时长",
+        "description": "计数动画用个秒数。"
+      },
+      {
+        "property": "prefixtext",
+        "title": "前缀文字",
+        "description": "数字前头显示个文字（譬如 '$'）。"
+      },
+      {
+        "property": "suffixtext",
+        "title": "后缀文字",
+        "description": "数字后头显示个文字（譬如 '%'）。"
+      },
+      {
+        "slot": "prefix",
+        "title": "前缀插槽",
+        "description": "数字前头个可选插槽内容。"
+      },
+      {
+        "slot": "suffix",
+        "title": "后缀插槽",
+        "description": "数字后头个可选插槽内容。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "小数位数",
+        "description": "要显示个小数位数。"
+      },
+      {
+        "property": "separator",
+        "title": "千位分隔符",
+        "description": "分隔千位个字符。"
+      },
+      {
+        "property": "decimal",
+        "title": "小数点字符",
+        "description": "当小数点用个字符。"
+      },
+      {
+        "property": "noeasing",
+        "title": "勿用缓动",
+        "description": "关脱缓动，让计数匀速。"
+      }
+    ]
+  }
+}

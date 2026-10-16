@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "પૃષ્ઠ ધ્વજ",
+    "description": "પૃષ્ઠ લેખકો માટે સંપાદકીય નોંધ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "પૃષ્ઠ ધ્વજ માટે ઍક્સેન્ટ રંગ."
+      },
+      {
+        "property": "label",
+        "title": "લેબલ",
+        "description": "પૃષ્ઠ ધ્વજ માટે લેબલ લખાણ."
+      }
+    ]
+  }
+}

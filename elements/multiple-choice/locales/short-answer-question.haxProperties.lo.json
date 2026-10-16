@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "ຄຳຖາມຕອບສັ້ນ",
+    "description": "ໃຫ້ຜູ້ໃຊ້ຕອບຄຳຖາມພື້ນຖານ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ຄຳຖາມ",
+        "description": "ຄຳຖາມໃຫ້ຜູ້ໃຊ້ຕອບ."
+      },
+      {
+        "property": "answers",
+        "title": "ຄຳຕອບທີ່ເປັນໄປໄດ້"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ຊື່ແບບທົດສອບ",
+        "description": "ຊື່ແບບທົດສອບທີ່ສົ່ງເຂົ້າມາເພື່ອໃຊ້ໃນສະພາບແວດລ້ອມທີ່ຂັບເຄື່ອນດ້ວຍ xAPI ເພື່ອລະບຸລາຍການນີ້"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Pengvisual MIDI",
+    "description": "Mainkan MIDI dalam konteks dengan visualisasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "URL fail untuk dimainkan."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualisasi",
+        "description": "Gaya visualisasi untuk fail muzik.",
+        "options": {
+          "staff": "Baluk",
+          "piano-roll": "Gulungan piano",
+          "waterfall": "Piano + air terjun"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Sembunyikan air terjun",
+        "description": "Sembunyikan not air terjun dalam visualisasi piano."
+      }
+    ]
+  }
+}

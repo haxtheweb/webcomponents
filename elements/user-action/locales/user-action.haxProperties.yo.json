@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Ìṣe olùlò",
+    "description": "Tọpa àwọn ìṣe olùlò kí o sì fi dátà ránṣẹ́ sí àwọn ibi-ìpamọ́ xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Ìṣẹ̀lẹ̀ láti tọpa",
+        "description": "Ìṣe olùlò tí ó ń mú ìṣẹ̀lẹ̀ yìí ṣẹlẹ̀.",
+        "options": {
+          "visibility": "Ó lè rí èyí",
+          "keydown": "Tẹ bọ́tìnnì kan níbí",
+          "click": "Tẹ èyí",
+          "hover": "Rá kọjá lórí èyí"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Tọpa ní gbogbo ìgbà",
+        "description": "Gẹ́gẹ́ bí àtilẹ̀wá, ìṣẹ̀lẹ̀ àkọ́kọ́ nìkan ni a ń tọpa."
+      }
+    ]
+  }
+}

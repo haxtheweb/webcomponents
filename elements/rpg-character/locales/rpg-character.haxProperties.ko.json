@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG 캐릭터",
+    "description": "HAX의 재미있는 캐릭터입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "이름",
+        "description": "임의 캐릭터를 생성하는 데 사용되는 단어입니다."
+      },
+      {
+        "property": "hat",
+        "title": "모자",
+        "description": "모자 스타일입니다.",
+        "options": {
+          "none": "기본값",
+          "random": "무작위",
+          "bunny": "토끼",
+          "cowboy": "카우보이",
+          "education": "교육",
+          "construction": "공사",
+          "warning": "경고",
+          "watermelon": "수박",
+          "coffee": "커피",
+          "knight": "기사",
+          "ninja": "닌자",
+          "party": "파티",
+          "error": "오류",
+          "edit": "편집"
+        }
+      },
+      {
+        "property": "width",
+        "title": "너비",
+        "description": "캐릭터 너비(픽셀)입니다."
+      },
+      {
+        "property": "height",
+        "title": "높이",
+        "description": "캐릭터 높이(픽셀)입니다."
+      },
+      {
+        "property": "fire",
+        "title": "불타는 중?",
+        "description": "캐릭터가 불타고 있는지 여부입니다."
+      },
+      {
+        "property": "walking",
+        "title": "걷는 중?",
+        "description": "걷기 애니메이션입니다. 불타고 있을 때는 달립니다."
+      }
+    ]
+  }
+}

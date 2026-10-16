@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Hacer accesibles los GIF animados."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF animado",
+        "description": "URL del GIF animado."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo",
+        "description": "Texto alternativo de la imagen."
+      },
+      {
+        "property": "longdesc",
+        "title": "Descripción larga",
+        "description": "Descripción larga del GIF para la accesibilidad."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Imagen fija",
+        "description": "URL de una versión estática del GIF."
+      }
+    ]
+  }
+}

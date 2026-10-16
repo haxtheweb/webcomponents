@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tag / Ƙwaya",
+    "description": "Ƙaramin lakabi mai siffar ƙwaya tare da launin ƙawa na zaɓi, maɓallin soke, ko sauyawa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Lakabi",
+        "description": "Rubutun da ake nunawa a cikin ƙwayar."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin ƙawa",
+        "description": "Sunan ƙawa na SimpleColors don bangon ƙwayar.",
+        "options": {
+          "": "-- tsoho --",
+          "red": "Ja",
+          "pink": "Ruwan hoda",
+          "purple": "Shunayya",
+          "deep-purple": "Shunayya Mai Duhu",
+          "indigo": "Shuɗi mai duhu (indigo)",
+          "blue": "Shuɗi",
+          "light-blue": "Shuɗi Mai Haske",
+          "cyan": "Shuɗin sama",
+          "teal": "Kore-shuɗi",
+          "green": "Kore",
+          "light-green": "Kore Mai Haske",
+          "lime": "Koren lemun tsami",
+          "yellow": "Rawaya",
+          "amber": "Ruwan zuma",
+          "orange": "Lemu",
+          "deep-orange": "Lemu Mai Duhu",
+          "brown": "Ruwan kasa",
+          "blue-grey": "Toka-shuɗi",
+          "grey": "Toka"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Launin ƙawa na atomatik",
+        "description": "Samo launin ƙawa daga rubutun lakabi ta atomatik."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Maɓallin soke",
+        "description": "Nuna maɓallin alamar cirewa/soke a cikin ƙwayar."
+      },
+      {
+        "property": "readonly",
+        "title": "Karatu kawai",
+        "description": "Ɓoye maɓallin soke domin ƙwayar ta zama don nuni kawai."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Masu sauyawa",
+        "description": "Sa ƙwayar ta kunna/kashe idan an danna maɓallin."
+      },
+      {
+        "property": "toggled",
+        "title": "An sauya",
+        "description": "Ko ƙwayar tana kunne a yanzu."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Alamar sauyawa",
+        "description": "Alamar da za a nuna idan ƙwayar tana kunne."
+      },
+      {
+        "property": "disabled",
+        "title": "An kashe",
+        "description": "Kashe mu'amala da ƙwayar."
+      }
+    ]
+  }
+}

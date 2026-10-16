@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kaart",
+    "description": "Kaartkomponint opmakke mei it DDD-ûntwerpsysteem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Ofbylding",
+        "description": "Opsjonele ôfbylding."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-tekst ôfbylding",
+        "description": "Alternative tekst dy't de ôfbylding beskriuwt."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Kaarttitel."
+      },
+      {
+        "slot": "",
+        "title": "Ynhâld",
+        "description": "Ynhâldsgebiet fan de kaart."
+      },
+      {
+        "property": "href",
+        "title": "Keppeling",
+        "description": "Keppelings-URL fan de knop."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Knoplabel."
+      },
+      {
+        "property": "noArrow",
+        "title": "Gjin pylk",
+        "description": "De pylk fan de knop ferbergje."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Keppeling: doel",
+        "description": "Wêr't de keppeling iepene wurdt.",
+        "options": {
+          "": "Itselde finster",
+          "_blank": "Nij finster - _blank",
+          "_top": "Boppeste finster - _top",
+          "_parent": "Aldersfinster - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Keppeling: rel",
+        "description": "Relaasje tusken de keppele boarne en it hjoeddeistige dokumint."
+      }
+    ]
+  }
+}

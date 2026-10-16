@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG-hahmo",
+    "description": "Hauska hahmo HAXilta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Nimi",
+        "description": "Sana, jonka avulla luodaan satunnainen hahmo."
+      },
+      {
+        "property": "hat",
+        "title": "Hattu",
+        "description": "Hatun tyyli.",
+        "options": {
+          "none": "Oletus",
+          "random": "Satunnainen",
+          "bunny": "Pupu",
+          "cowboy": "Cowboy",
+          "education": "Koulutus",
+          "construction": "Rakennus",
+          "warning": "Varoitus",
+          "watermelon": "Vesimeloni",
+          "coffee": "Kahvi",
+          "knight": "Ritari",
+          "ninja": "Ninja",
+          "party": "Juhlat",
+          "error": "Virhe",
+          "edit": "Muokkaus"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Leveys",
+        "description": "Hahmon leveys pikseleinä."
+      },
+      {
+        "property": "height",
+        "title": "Korkeus",
+        "description": "Hahmon korkeus pikseleinä."
+      },
+      {
+        "property": "fire",
+        "title": "Tulessa?",
+        "description": "Onko hahmo tulessa."
+      },
+      {
+        "property": "walking",
+        "title": "Kävelee?",
+        "description": "Kävelyanimaatio; juoksee, kun hahmo on tulessa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ประชดประชัน",
+    "description": "นำเสนอข้อความแบบกวนๆ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "ข้อความ",
+        "description": "ข้อความที่จะทำให้ประชดประชัน"
+      }
+    ]
+  }
+}

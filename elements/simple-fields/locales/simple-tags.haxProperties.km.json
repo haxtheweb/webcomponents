@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ស្លាក",
+    "description": "បញ្ជីស្លាកសាមញ្ញសម្រាប់បង្ហាញលើទំព័រ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ស្លាក",
+        "description": "បញ្ជីស្លាកបំបែកដោយក្បៀស។"
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ពណ៌សង្កត់ស្វ័យប្រវត្តិ",
+        "description": "កំណត់ពណ៌សង្កត់ដោយស្វ័យប្រវត្តិផ្អែកលើស្លាក។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌",
+        "description": "ពណ៌សម្រាប់ស្លាក។"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "तारीख",
+    "description": "विवरण के साथ कैलेंडर तारीख प्रदर्शित करें।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "महीना",
+        "description": "कार्ड पर दिखाया गया महीना।"
+      },
+      {
+        "property": "date",
+        "title": "महीने का दिन",
+        "description": "महीने का दिन (संख्या में)।"
+      },
+      {
+        "property": "day",
+        "title": "सप्ताह का दिन",
+        "description": "सप्ताह का दिन (टेक्स्ट में)।"
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "कार्यक्रम का नाम।"
+      },
+      {
+        "property": "location",
+        "title": "स्थान",
+        "description": "कार्यक्रम का स्थान।"
+      },
+      {
+        "property": "startTime",
+        "title": "प्रारंभ",
+        "description": "प्रारंभ समय।"
+      },
+      {
+        "property": "endTime",
+        "title": "समाप्ति",
+        "description": "समाप्ति समय।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "एक वैकल्पिक एक्सेंट रंग।"
+      },
+      {
+        "property": "dark",
+        "title": "डार्क थीम",
+        "description": "डार्क थीम सक्षम करें।"
+      }
+    ]
+  }
+}

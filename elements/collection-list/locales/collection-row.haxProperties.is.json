@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Safnlína",
+    "description": "Línueining til notkunar í safnlista, með texta, tengli, tákni, merkjum og valfrjálsri mynd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Tengill",
+        "description": "Áfangastaðar-URL fyrir þessa línu."
+      },
+      {
+        "property": "image",
+        "title": "Mynd",
+        "description": "Mynd fyrir línuna."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Annar texti sem lýsir myndinni."
+      },
+      {
+        "property": "line1",
+        "title": "Lína 1",
+        "description": "Fyrsta textalína."
+      },
+      {
+        "property": "line2",
+        "title": "Lína 2",
+        "description": "Önnur textalína."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Tákn",
+        "description": "Tákn sem táknar línuna."
+      },
+      {
+        "property": "saturate",
+        "title": "Mettunaráhrif",
+        "description": "Breyta mettun myndar þegar notandi beinir fókus að henni."
+      },
+      {
+        "property": "tags",
+        "title": "Merki",
+        "description": "Kommuaðgreindur listi af merkjum."
+      },
+      {
+        "property": "accentColor",
+        "title": "Litur",
+        "description": "Litur fyrir tákn og merki."
+      }
+    ]
+  }
+}

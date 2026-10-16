@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Ajụjụ Azịza Mkpụmkpụ",
+    "description": "Mee ka onye ọrụ zaa ajụjụ dị mfe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ajụjụ",
+        "description": "Ajụjụ ndị ọrụ ga-aza."
+      },
+      {
+        "property": "answers",
+        "title": "Azịza Ndị Nwere Ike Ịbụ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Aha ule",
+        "description": "Aha ule e zigara maka iji na gburugburu xAPI iji mata ihe a"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Innset Disqus-viðmerkingar á eina síðu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Stutt navn",
+        "description": "Stutta navnið á heimasíðuni, sum ger av vertin fyri Disqus-skriptið."
+      },
+      {
+        "property": "pageURL",
+        "title": "Síðu-URL",
+        "description": "URL til síðuna, sum viðmerkingartráðurin hoyrir til."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Síðueyðkenni",
+        "description": "Eintýtt eyðkenni til viðmerkingartráðin á síðuni."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Síðuheiti",
+        "description": "Heitið á síðuni, sum viðmerkingartráðurin hoyrir til."
+      },
+      {
+        "property": "loadingText",
+        "title": "Innlesingartekstur",
+        "description": "Tekstur, sum verður kunngjørdur, meðan viðmerkingarnar verða innlisnar."
+      },
+      {
+        "property": "lang",
+        "title": "Mál",
+        "description": "Málkota til Disqus-markamótið, t.d. en."
+      }
+    ]
+  }
+}

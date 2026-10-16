@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Множественный выбор",
+    "description": "Вопрос для самопроверки с множественным выбором."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Вопрос",
+        "description": "Вопрос, на который отвечают пользователи."
+      },
+      {
+        "property": "randomize",
+        "title": "Перемешать",
+        "description": "Динамически перемешивать ответы."
+      },
+      {
+        "property": "singleOption",
+        "title": "Один ответ",
+        "description": "Разрешить только один ответ."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат оценивания",
+        "description": "OER Schema: формат оценивания для этого задания (например, баллы, буква, процент, выполнение)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Учебная цель",
+        "description": "OER Schema: учебная цель, связанная с этим заданием."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, для которого предназначено это задание."
+      },
+      {
+        "property": "answers",
+        "title": "Ответы"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Название теста",
+        "description": "Название теста для идентификации xAPI в системах аналитики."
+      }
+    ]
+  }
+}

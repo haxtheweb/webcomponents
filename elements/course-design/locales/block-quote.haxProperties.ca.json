@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Cita destacada",
+    "description": "Bloc de cita amb estil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Cita bibliogràfica",
+        "description": "Text de la cita bibliogràfica."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Text alternatiu per a la imatge."
+      },
+      {
+        "property": "image",
+        "title": "Imatge",
+        "description": "Imatge que es mostra amb la cita."
+      }
+    ]
+  }
+}

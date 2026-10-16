@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "ڪارڊ",
+    "description": "DDD ڊيزائن سسٽم سان سينگاريل ڪارڊ جزو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "تصوير",
+        "description": "اختياري تصوير."
+      },
+      {
+        "property": "alt",
+        "title": "تصوير جو متبادل متن",
+        "description": "تصوير کي بيان ڪندڙ متبادل متن."
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "ڪارڊ جو عنوان."
+      },
+      {
+        "slot": "",
+        "title": "مواد",
+        "description": "ڪارڊ جي مواد واري جاءِ."
+      },
+      {
+        "property": "href",
+        "title": "لنڪ",
+        "description": "بٽڻ جي لنڪ جو URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "ليبل",
+        "description": "بٽڻ جو ليبل."
+      },
+      {
+        "property": "noArrow",
+        "title": "تير ناهي",
+        "description": "بٽڻ جو تير لڪايو."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "لنڪ: ٽارگيٽ",
+        "description": "لنڪ ڪٿي کولڻي آهي.",
+        "options": {
+          "": "ساڳي ونڊو",
+          "_blank": "نئين ونڊو - _blank",
+          "_top": "مٿين ونڊو - _top",
+          "_parent": "پيرنٽ ونڊو - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "لنڪ: rel",
+        "description": "لنڪ ٿيل وسيلي ۽ موجوده دستاويز جو لاڳاپو."
+      }
+    ]
+  }
+}

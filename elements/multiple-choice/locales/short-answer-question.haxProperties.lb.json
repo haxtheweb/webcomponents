@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Fro mat kuerzer Äntwert",
+    "description": "De Benotzer eng einfach Fro beäntwere loossen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fro",
+        "description": "Fro, op déi d'Benotzer äntwere sollen."
+      },
+      {
+        "property": "answers",
+        "title": "Méiglech Äntwerten"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Numm vum Quiz",
+        "description": "Quiznumm, deen an xAPI-gesteierten Ëmfelder fir d'Identifikatioun vun dësem Element weiderginn gëtt"
+      }
+    ]
+  }
+}

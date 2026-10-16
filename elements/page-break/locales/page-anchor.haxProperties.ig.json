@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Arịlịka Peeji",
+    "description": "Jikọọ n'ebe akọwapụtara na mgbasa ozi dị na peeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Ebe ebumnuche peeji",
+        "description": "ID ma ọ bụ akụrụngwa arịlịka a na-atụ aka na ya."
+      },
+      {
+        "property": "value",
+        "title": "Uru njikọ miri emi",
+        "description": "Uru njikọ miri emi (dịka akara oge ma ọ bụ ID slide)."
+      },
+      {
+        "property": "entityId",
+        "title": "Ihe saịtị",
+        "description": "Ihe saịtị nhọrọ maka ijikwa ngosi echiche metụtara."
+      }
+    ]
+  }
+}

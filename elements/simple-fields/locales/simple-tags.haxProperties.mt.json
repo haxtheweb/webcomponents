@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tikketti",
+    "description": "Lista sempliċi ta' tikketti biex jintwerew fuq il-paġna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tikketti",
+        "description": "Lista ta' tikketti separati b'virgoli."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Kulur tal-enfasi awtomatiku",
+        "description": "Issettja l-kulur tal-enfasi awtomatikament skont it-tikketta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur",
+        "description": "Kulur għat-tikketti."
+      }
+    ]
+  }
+}

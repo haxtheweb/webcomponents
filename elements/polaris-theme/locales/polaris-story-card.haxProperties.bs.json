@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris kartica priče",
+    "description": "Prikažite Polaris karticu priče s pozadinskom slikom, oznakom stuba i naslovnim tekstom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Pozadinska slika",
+        "description": "URL slike prikazane kao pozadina kartice."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Veličina pozadine",
+        "description": "Kako pozadinska slika ispunjava karticu (CSS background-size).",
+        "options": {
+          "cover": "prekrij (cover)",
+          "contain": "sadrži (contain)",
+          "auto": "automatski (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Pričvršćenost pozadine",
+        "description": "Kako se pozadinska slika ponaša pri pomicanju (CSS background-attachment).",
+        "options": {
+          "scroll": "pomiče se (scroll)",
+          "fixed": "fiksno (fixed)",
+          "local": "lokalno (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Oznaka stuba",
+        "description": "Kratka oznaka velikim slovima prikazana na vrhu kartice. Ostavite prazno da biste je sakrili."
+      },
+      {
+        "property": "label",
+        "title": "Tekst kartice",
+        "description": "Primarni tekst prikazan u donjem panelu."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Opcionalni odredišni URL koji obuhvata cijelu karticu."
+      }
+    ]
+  }
+}

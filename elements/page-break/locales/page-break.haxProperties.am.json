@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "የገጽ ዝርዝሮች",
+    "description": "CMSዎች ገጾችን ለመፍጠር ሊጠቀሙበት የሚችሉትን በገጾች መካከል ምስላዊ ክፍፍል ግለጽ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "በገጽታው እና በመጀመሪያው ርዕስ ውስጥ የሚታይ ርዕስ።"
+      },
+      {
+        "property": "pageType",
+        "title": "ዓይነት",
+        "description": "ምስላዊ የገጽ ዐውድ መለያ።",
+        "options": {
+          "": "-- ምንም --",
+          "content": "ይዘት",
+          "assessment": "ምዘና",
+          "quiz": "ፈተና",
+          "submission": "ማስረከቢያ",
+          "lesson": "ትምህርት",
+          "module": "ሞጁል",
+          "task": "ተግባር",
+          "activity": "እንቅስቃሴ",
+          "project": "ፕሮጀክት",
+          "practice": "ልምምድ",
+          "unit": "ክፍል",
+          "objectives": "የመማር ዓላማዎች",
+          "connection": "ትስስር",
+          "knowledge": "ያውቁ ኖሯል?",
+          "strategy": "የመማር ስልት",
+          "discuss": "ተወያዩ",
+          "listen": "አዳምጡ",
+          "make": "ሥሩ",
+          "observe": "ታዘቡ",
+          "present": "አቅርቡ",
+          "reading": "ንባብ",
+          "reflect": "አሰላስሉ",
+          "research": "ምርምር",
+          "watch": "ተመልከቱ",
+          "write": "ጻፉ"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "መለያዎች",
+        "description": "በኮማ የተለዩ መለያዎች ዝርዝር።"
+      },
+      {
+        "property": "linkUrl",
+        "title": "የአገናኝ URL",
+        "description": "በገጹ ይዘት ፋንታ የሚታይ የማዘዋወሪያ URL።"
+      },
+      {
+        "property": "linkTarget",
+        "title": "የአገናኝ ዒላማ",
+        "description": "አገናኞችን በተመሳሳይ መስኮት ወይም በአዲስ መስኮት ክፈት።",
+        "options": {
+          "_self": "ተመሳሳይ መስኮት",
+          "_blank": "አዲስ መስኮት"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "የታተመ",
+        "description": "ያልታተሙ ገጾች ከመጨረሻ ተጠቃሚዎች ተደብቀዋል።"
+      },
+      {
+        "property": "locked",
+        "title": "ገጽ ቆልፍ",
+        "description": "በዚህ ገጽ ላይ ያሉትን ሁሉንም አካላት ቆልፍ ወይም ክፈት።"
+      },
+      {
+        "property": "overridePathauto",
+        "title": "ራስ-ሰር slugን ሻር",
+        "description": "slugን በርዕስ ወይም በወላጅ ላይ ተመሥርቶ ከሚደረጉ ራስ-ሰር ዝማኔዎች ቆልፍ።"
+      },
+      {
+        "property": "slug",
+        "title": "መንገድ",
+        "description": "ለዚህ ገጽ የURL slug።"
+      },
+      {
+        "property": "image",
+        "title": "ሚዲያ",
+        "description": "ገጹን የሚወክል ሚዲያ፣ በአንዳንድ ገጽታዎች እና እይታዎች ውስጥ ጥቅም ላይ ይውላል።"
+      },
+      {
+        "property": "parent",
+        "title": "ወላጅ",
+        "description": "የወላጅ ገጹ መንገድ።"
+      },
+      {
+        "property": "noderefs",
+        "title": "ተዛማጅ ይዘት",
+        "description": "ከዚህ ገጽ ጋር የተያያዙ ገጾች።"
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "መግለጫ",
+        "description": "በስብስቦች እና በፍለጋ ሞተር ማመቻቸት ውስጥ የሚውል መግለጫ።"
+      },
+      {
+        "property": "entityType",
+        "title": "የአካል ዓይነት",
+        "description": "ሌላ ካልተዘጋጀ በነባሪ ገጽ ነው።",
+        "options": {
+          "page": "ገጽ (ነባሪ)",
+          "taxonomy": "ምድብ ሥርዓት",
+          "taxonomyTerm": "የምድብ ቃል",
+          "region": "ክልል"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "አዶ",
+        "description": "በጣቢያው ውስጥ ከዚህ ገጽ ጋር የተያያዘ አዶ።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "በጣቢያው ውስጥ ከዚህ ገጽ ጋር የተያያዘ ቀለም።"
+      },
+      {
+        "property": "hideInMenu",
+        "title": "በምናሌ ውስጥ ደብቅ",
+        "description": "URLውን እየጠበቅክ ይህን ገጽ ከምናሌዎች ደብቅ።"
+      },
+      {
+        "property": "order",
+        "title": "ቅደም ተከተል",
+        "description": "ከወንድም እህት ገጾች አንጻር ቅደም ተከተል።"
+      },
+      {
+        "property": "developerTheme",
+        "title": "የገጽ ገጽታ",
+        "description": "ለዚህ ገጽ ብቻ ገጽታውን ሻር።"
+      },
+      {
+        "property": "author",
+        "title": "ደራሲ",
+        "description": "ይህን ገጽ ለመጨረሻ ጊዜ ያሻሻለው ሰው የተጠቃሚ ስም።"
+      }
+    ]
+  }
+}

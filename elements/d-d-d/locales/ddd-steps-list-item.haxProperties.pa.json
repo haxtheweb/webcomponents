@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "ਕਦਮ ਆਈਟਮ",
+    "description": "ਕਦਮਾਂ ਦੀ ਸੂਚੀ ਦਾ ਹਿੱਸਾ ਆਈਟਮ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Mba'e jehecha pya'e",
+    "description": "Mba'e ñemombe'u pya'e."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ta'ãnga'i",
+        "description": "Ta'ãnga'i ohechaukáva ñe'ẽmbykyrã."
+      },
+      {
+        "property": "title",
+        "title": "Teratee",
+        "description": "Ñe'ẽmbykyrã tenondegua pya'e jehechápe."
+      },
+      {
+        "property": "subtitle",
+        "title": "Teratee mokõiha",
+        "description": "Mba'emimi ojoapýva."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Sa'y ojehechaukavéva ta'ãnga'ípe g̃uarã."
+      }
+    ]
+  }
+}

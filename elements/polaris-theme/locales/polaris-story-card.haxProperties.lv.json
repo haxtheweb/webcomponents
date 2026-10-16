@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris stāsta kartīte",
+    "description": "Rādīt Polaris stāsta kartīti ar fona attēlu, pīlāra etiķeti un virsraksta tekstu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Fona attēls",
+        "description": "Attēla URL, kas tiek rādīts kā kartītes fons."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Fona izmērs",
+        "description": "Kā fona attēls aizpilda kartīti (CSS background-size).",
+        "options": {
+          "cover": "Pārklāt (cover)",
+          "contain": "Ietilpināt (contain)",
+          "auto": "Automātiski (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Fona piesaiste",
+        "description": "Kā fona attēls uzvedas ritinot (CSS background-attachment).",
+        "options": {
+          "scroll": "Ritināms (scroll)",
+          "fixed": "Fiksēts (fixed)",
+          "local": "Lokāls (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Pīlāra etiķete",
+        "description": "Īsa etiķete lielajiem burtiem kartītes augšdaļā. Atstājiet tukšu, lai paslēptu."
+      },
+      {
+        "property": "label",
+        "title": "Kartītes teksts",
+        "description": "Galvenais teksts, kas tiek rādīts apakšējā panelī."
+      },
+      {
+        "property": "link",
+        "title": "Saite",
+        "description": "Neobligāts mērķa URL, kas aptver visu kartīti."
+      }
+    ]
+  }
+}

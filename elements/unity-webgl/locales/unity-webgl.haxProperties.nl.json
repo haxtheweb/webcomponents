@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity-speler",
+    "description": "Unity WebGL-speler."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Doel",
+        "description": "Pad naar de game-build."
+      },
+      {
+        "property": "compression",
+        "title": "Compressiemethode",
+        "description": "Bestandsextensie van de compressie voor game-assets."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Streaming-URL",
+        "description": "URL van streaming-assets."
+      },
+      {
+        "property": "companyname",
+        "title": "Bedrijfsnaam",
+        "description": "Bedrijfsnaam."
+      },
+      {
+        "property": "productname",
+        "title": "Productnaam",
+        "description": "Titel van de game."
+      },
+      {
+        "property": "productversion",
+        "title": "Productversie",
+        "description": "Releaseversie."
+      },
+      {
+        "property": "width",
+        "title": "Canvasbreedte",
+        "description": "CSS-breedte van het canvas (bijvoorbeeld px of em)."
+      },
+      {
+        "property": "height",
+        "title": "Canvashoogte",
+        "description": "CSS-hoogte van het canvas (bijvoorbeeld px of em)."
+      },
+      {
+        "property": "background",
+        "title": "Canvasachtergrond",
+        "description": "CSS-achtergrond van het canvas."
+      }
+    ]
+  }
+}

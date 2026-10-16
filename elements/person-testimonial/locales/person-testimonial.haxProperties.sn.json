@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Chirevo neMufananidzo",
+    "description": "Chirevo chakashongedzwa chine mufananidzo usingamanikidzwi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Mufananidzo",
+        "description": "Wedzera mufananidzo kuuchapupu."
+      },
+      {
+        "property": "name",
+        "title": "Zita Rizere",
+        "description": "Zita remunhu ari kupa uchapupu."
+      },
+      {
+        "property": "position",
+        "title": "Chinzvimbo kana Basa",
+        "description": "Chinzvimbo kana basa remunhu."
+      },
+      {
+        "slot": "",
+        "title": "Chirevo",
+        "description": "Chirevo chemunyori weuchapupu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tagvraag",
+    "description": "Kies tags om de vraag te beantwoorden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vraag",
+        "description": "Vraag waarop gebruikers antwoorden."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Beoordelingsformaat",
+        "description": "OER Schema: beoordelingsformaat voor deze toets (bijv. punten, letter, percentage, voltooiing)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leerdoel",
+        "description": "OER Schema: leerdoel dat bij deze toets hoort."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cursus",
+        "description": "OER Schema: cursus waarvoor deze toets bedoeld is."
+      },
+      {
+        "property": "answers",
+        "title": "Antwoorden"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naam van de quiz",
+        "description": "Quiznaam voor xAPI-identificatie in analysesystemen."
+      }
+    ]
+  }
+}

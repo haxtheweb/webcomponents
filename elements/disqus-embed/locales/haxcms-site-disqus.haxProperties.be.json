@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Каментарыі Disqus",
+    "description": "Інтэграцыя з сэрвісам каментарыяў Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Кароткае імя",
+        "description": "Кароткае імя ўласцівасці ў Disqus"
+      }
+    ]
+  }
+}

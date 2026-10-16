@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Txertatu kanpoko web edukia iframe batean."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Baliabidearen URLa",
+        "description": "Baliabidearen URLa."
+      },
+      {
+        "property": "height",
+        "title": "Altuera",
+        "description": "Iframearen altuera."
+      },
+      {
+        "property": "width",
+        "title": "Zabalera",
+        "description": "Iframearen zabalera."
+      }
+    ]
+  }
+}

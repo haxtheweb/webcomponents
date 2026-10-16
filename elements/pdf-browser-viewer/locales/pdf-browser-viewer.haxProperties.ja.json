@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ブラウザーPDFビューアー",
+    "description": "PDFファイルをインラインで埋め込みます。カードレイアウトとダウンロードボタンは任意です。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDFのURL",
+        "description": "PDFファイルの場所。"
+      },
+      {
+        "property": "heading",
+        "title": "見出し",
+        "description": "カードの見出しテキスト。"
+      },
+      {
+        "property": "card",
+        "title": "カードレイアウト",
+        "description": "ダウンロードボタン付きのカードにPDFを表示します。"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ダウンロードのラベル",
+        "description": "ダウンロードボタンのラベル。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "非対応メッセージ",
+        "description": "ブラウザーがPDFファイルを表示できないときのメッセージ。"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "非対応リンクのメッセージ",
+        "description": "ブラウザーがPDFファイルを表示できないときのリンクテキスト。"
+      },
+      {
+        "property": "width",
+        "title": "幅",
+        "description": "PDFビューアーの幅。"
+      },
+      {
+        "property": "height",
+        "title": "高さ",
+        "description": "PDFビューアーの高さ。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Parsunaghju RPG",
+    "description": "Parsunaghju divertente di HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Nome",
+        "description": "Parolla aduprata per generà un parsunaghju à l'azardu."
+      },
+      {
+        "property": "hat",
+        "title": "Cappellu",
+        "description": "Stile di u cappellu.",
+        "options": {
+          "none": "Predefinitu",
+          "random": "À l'azardu",
+          "bunny": "Cunigliulu",
+          "cowboy": "Cowboy",
+          "education": "Educazione",
+          "construction": "Cantiere",
+          "warning": "Avertimentu",
+          "watermelon": "Zatta",
+          "coffee": "Caffè",
+          "knight": "Cavaliere",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "error": "Errore",
+          "edit": "Edizione"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Larghezza",
+        "description": "Larghezza di u parsunaghju in pixel."
+      },
+      {
+        "property": "height",
+        "title": "Altezza",
+        "description": "Altezza di u parsunaghju in pixel."
+      },
+      {
+        "property": "fire",
+        "title": "In fiamme?",
+        "description": "S'ellu u parsunaghju hè in fiamme."
+      },
+      {
+        "property": "walking",
+        "title": "Cammina?",
+        "description": "Animazione di camminata; corre quandu hè in fiamme."
+      }
+    ]
+  }
+}

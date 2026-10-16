@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Heimsmarkmið Sameinuðu þjóðanna um sjálfbæra þróun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Markmið",
+        "description": "Númer UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Aðeins litur",
+        "description": "Sýna aðeins lit markmiðsins."
+      }
+    ]
+  }
+}

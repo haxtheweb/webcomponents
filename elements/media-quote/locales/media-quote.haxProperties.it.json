@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Citazione con immagine",
+    "description": "Immagine con citazione, fonte e didascalia facoltativa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Citazione",
+        "description": "Testo della citazione."
+      },
+      {
+        "slot": "author",
+        "title": "Autore",
+        "description": "Autore della citazione."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Dettagli dell'autore",
+        "description": "Dettagli dell'autore."
+      },
+      {
+        "slot": "caption",
+        "title": "Didascalia",
+        "description": "Didascalia dell'immagine."
+      },
+      {
+        "property": "src",
+        "title": "Origine dell'immagine",
+        "description": "File immagine usato per la citazione con immagine."
+      },
+      {
+        "property": "alt",
+        "title": "Testo alternativo",
+        "description": "Testo alternativo per l'immagine."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Colore di accento della carta."
+      }
+    ]
+  }
+}

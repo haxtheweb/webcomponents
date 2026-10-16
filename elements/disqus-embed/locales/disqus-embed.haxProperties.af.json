@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Bed Disqus-kommentaar op 'n bladsy in."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Kort naam",
+        "description": "Die werf se kort naam, wat die Disqus-skrifgasheer bepaal."
+      },
+      {
+        "property": "pageURL",
+        "title": "Bladsy-URL",
+        "description": "Die URL van die bladsy waaraan die kommentaardraad gekoppel is."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Bladsy-identifiseerder",
+        "description": "Die unieke identifiseerder vir die bladsy se kommentaardraad."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Bladsytitel",
+        "description": "Die titel van die bladsy waaraan die kommentaardraad gekoppel is."
+      },
+      {
+        "property": "loadingText",
+        "title": "Laaiteks",
+        "description": "Teks wat aangekondig word terwyl die kommentaar laai."
+      },
+      {
+        "property": "lang",
+        "title": "Taal",
+        "description": "Taalkode vir die Disqus-koppelvlak, bv. en."
+      }
+    ]
+  }
+}

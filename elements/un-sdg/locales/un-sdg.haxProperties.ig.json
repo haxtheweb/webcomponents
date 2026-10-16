@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Ebumnuche Mmepe Na-adigide nke Mba Ndị Jikọrọ Ọnụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Ebumnuche",
+        "description": "Nọmba UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Naanị agba",
+        "description": "Gosi naanị agba ebumnuche ahụ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Multivides citāts",
+    "description": "Attēls ar citātu, atsauci un neobligātu parakstu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Citāts",
+        "description": "Citāta teksts."
+      },
+      {
+        "slot": "author",
+        "title": "Autors",
+        "description": "Citāta autors."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Informācija par autoru",
+        "description": "Informācija par autoru."
+      },
+      {
+        "slot": "caption",
+        "title": "Paraksts",
+        "description": "Attēla paraksts."
+      },
+      {
+        "property": "src",
+        "title": "Attēla avots",
+        "description": "Multivides citātam izmantotais attēla fails."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatīvais teksts",
+        "description": "Attēla alternatīvais teksts."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Kartītes akcenta krāsa."
+      }
+    ]
+  }
+}

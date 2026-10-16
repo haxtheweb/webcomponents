@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Бетке Disqus пікірлерін енгізу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Қысқа атау",
+        "description": "Disqus скрипт хостын анықтайтын сайттың қысқа атауы."
+      },
+      {
+        "property": "pageURL",
+        "title": "Бет URL-і",
+        "description": "Пікірлер тізбегі тіркелген беттің URL-і."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Бет идентификаторы",
+        "description": "Беттің пікірлер тізбегінің бірегей идентификаторы."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Бет атауы",
+        "description": "Пікірлер тізбегі тіркелген беттің атауы."
+      },
+      {
+        "property": "loadingText",
+        "title": "Жүктелу мәтіні",
+        "description": "Пікірлер жүктеліп жатқанда хабарланатын мәтін."
+      },
+      {
+        "property": "lang",
+        "title": "Тіл",
+        "description": "Disqus интерфейсінің тіл коды, мысалы en."
+      }
+    ]
+  }
+}

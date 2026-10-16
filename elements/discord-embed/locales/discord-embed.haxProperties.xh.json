@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Faka iindawo zoluntu ze-Discord ukusuka kwi-URL yokwabelana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "I-URL yesixhobo",
+        "description": "I-URL yesixhobo."
+      },
+      {
+        "property": "height",
+        "title": "Ubude",
+        "description": "Ubude besakhelo somxholo."
+      },
+      {
+        "property": "width",
+        "title": "Ububanzi",
+        "description": "Ububanzi besakhelo somxholo."
+      }
+    ]
+  }
+}

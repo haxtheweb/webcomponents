@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Ku dhex darka Twitter (X)",
+    "description": "Ku dhex dar tweet ka yimid X macnihiisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL-ka Tweet-ka",
+        "description": "URL-ka tweet-ka la dhex gelinayo."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Mawduuc",
+        "description": "Mawduuc iftiin ama madow oo tweet-yada X.",
+        "options": {
+          "light": "Iftiin",
+          "dark": "Madow"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Ka hortag daaqad soo boodda marka la gujiyo",
+        "description": "Ka hortag isticmaalayaasha inay tweet-ka ka furaan x.com."
+      }
+    ]
+  }
+}

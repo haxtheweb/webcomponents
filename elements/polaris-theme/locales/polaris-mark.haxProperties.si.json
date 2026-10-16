@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris සලකුණ",
+    "description": "විකල්ප විද්‍යාල නාමයක් සහ ගමනාන්ත URL එකක් සමඟ PSU අනන්‍යතා සලකුණ පෙන්වන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "විද්‍යාලයේ නම",
+        "description": "සලකුණ අසලින් පෙන්වන නම."
+      },
+      {
+        "property": "name2",
+        "title": "විද්‍යාලයේ නම 2",
+        "description": "පළමු විද්‍යාල නාමයට පහළින් පෙන්වන දෙවන නම."
+      },
+      {
+        "property": "name3",
+        "title": "විද්‍යාලයේ නම 3",
+        "description": "දෙවන විද්‍යාල නාමයට පහළින් පෙන්වන තෙවන නම."
+      },
+      {
+        "property": "url",
+        "title": "සබැඳිය",
+        "description": "සලකුණ ක්ලික් කළ විට ගමනාන්ත URL."
+      },
+      {
+        "property": "type",
+        "title": "ප්‍රභේදය",
+        "description": "දෘශ්‍ය සලකුණු ප්‍රභේදය.",
+        "options": {
+          "default": "පෙරනිමි",
+          "light": "ලා",
+          "dark": "අඳුරු"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "සිරස් පිරිසැලසුම",
+        "description": "තිරස් රේඛාවක් සමඟ තෙවන නම දෙවන නමට පහළින් පෙන්වන්න."
+      }
+    ]
+  }
+}

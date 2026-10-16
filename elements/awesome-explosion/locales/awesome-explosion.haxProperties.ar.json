@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "انفجار رائع",
+    "description": "رسوم متحركة تفاعلية لانفجار مع مؤثرات صوتية اختيارية."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "الحجم",
+        "description": "تعيين حجم الانفجار.",
+        "options": {
+          "tiny": "صغير جدًا",
+          "small": "صغير",
+          "medium": "متوسط",
+          "large": "كبير",
+          "epic": "هائل"
+        }
+      },
+      {
+        "property": "color",
+        "title": "اللون",
+        "description": "تعيين سمة ألوان الانفجار.",
+        "options": {
+          "": "افتراضي",
+          "red": "أحمر",
+          "blue": "أزرق",
+          "purple": "بنفسجي",
+          "orange": "برتقالي",
+          "yellow": "أصفر"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "المؤثرات الصوتية",
+        "description": "تفعيل المؤثرات الصوتية."
+      },
+      {
+        "property": "resetSound",
+        "title": "إعادة تعيين الصوت",
+        "description": "إعادة تشغيل الصوت من البداية في كل مرة."
+      },
+      {
+        "property": "image",
+        "title": "صورة مخصصة",
+        "description": "URL اختياري لصورة انفجار مخصصة."
+      },
+      {
+        "property": "sound",
+        "title": "صوت مخصص",
+        "description": "URL اختياري لمؤثر صوتي مخصص."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "معطَّل",
+        "description": "تعطيل جميع التفاعلات."
+      }
+    ]
+  }
+}

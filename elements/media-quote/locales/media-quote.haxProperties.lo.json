@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "ຄຳອ້າງອີງພ້ອມສື່",
+    "description": "ຮູບພາບພ້ອມຄຳອ້າງອີງ, ແຫຼ່ງອ້າງອີງ ແລະ ຄຳບັນຍາຍທາງເລືອກ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "ຄຳອ້າງອີງ",
+        "description": "ຂໍ້ຄວາມຄຳອ້າງອີງ."
+      },
+      {
+        "slot": "author",
+        "title": "ຜູ້ຂຽນ",
+        "description": "ຜູ້ຂຽນຄຳອ້າງອີງ."
+      },
+      {
+        "slot": "author-detail",
+        "title": "ລາຍລະອຽດຜູ້ຂຽນ",
+        "description": "ລາຍລະອຽດຜູ້ຂຽນ."
+      },
+      {
+        "slot": "caption",
+        "title": "ຄຳບັນຍາຍ",
+        "description": "ຄຳບັນຍາຍຮູບພາບ."
+      },
+      {
+        "property": "src",
+        "title": "ແຫຼ່ງຮູບພາບ",
+        "description": "ໄຟລ໌ຮູບພາບທີ່ໃຊ້ສຳລັບຄຳອ້າງອີງພ້ອມສື່."
+      },
+      {
+        "property": "alt",
+        "title": "ຂໍ້ຄວາມທົດແທນ",
+        "description": "ຂໍ້ຄວາມທົດແທນສຳລັບຮູບພາບ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນຂອງບັດ."
+      }
+    ]
+  }
+}

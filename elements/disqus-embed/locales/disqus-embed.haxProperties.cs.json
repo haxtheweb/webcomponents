@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Vložte komentáře Disqus na stránku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Krátký název",
+        "description": "Krátký název webu, který určuje hostitele skriptu Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL stránky",
+        "description": "URL stránky, ke které je vlákno komentářů připojeno."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Identifikátor stránky",
+        "description": "Jedinečný identifikátor vlákna komentářů stránky."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Název stránky",
+        "description": "Název stránky, ke které je vlákno komentářů připojeno."
+      },
+      {
+        "property": "loadingText",
+        "title": "Text načítání",
+        "description": "Text oznamovaný během načítání komentářů."
+      },
+      {
+        "property": "lang",
+        "title": "Jazyk",
+        "description": "Kód jazyka rozhraní Disqus, např. en."
+      }
+    ]
+  }
+}

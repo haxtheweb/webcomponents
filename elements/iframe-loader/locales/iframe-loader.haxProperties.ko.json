@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "외부 웹 콘텐츠를 iframe으로 삽입합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "리소스 URL",
+        "description": "리소스 URL입니다."
+      },
+      {
+        "property": "height",
+        "title": "높이",
+        "description": "Iframe 높이입니다."
+      },
+      {
+        "property": "width",
+        "title": "너비",
+        "description": "Iframe 너비입니다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D уйнаткыч",
+    "description": "3D файл / өстәлгән чынбарлык уйнаткычы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Чыганак",
+        "description": "Бу AR файлының URL адресы."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Элементның AR-дагы X позициясе."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Элементның AR-дагы Y позициясе."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Элементның AR-дагы Z позициясе."
+      },
+      {
+        "property": "skyColor",
+        "title": "Күк төсе",
+        "description": "Сәхнәдәге күк төсен сайлагыз."
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabel",
+    "description": "Tabelgegevens voor het web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Rijkop",
+        "description": "Behandel de eerste rij als kop."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Kolomkop",
+        "description": "Behandel de eerste kolom als kop."
+      },
+      {
+        "property": "footer",
+        "title": "Voettekst",
+        "description": "Behandel de laatste rij als voettekst."
+      },
+      {
+        "property": "sort",
+        "title": "Sorteerbaar",
+        "description": "Sorteren op kolomwaarden toestaan."
+      },
+      {
+        "property": "filter",
+        "title": "Filteren toestaan",
+        "description": "Filteren op kolomwaarden toestaan."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numerieke opmaak",
+        "description": "Pas numerieke opmaak toe op numerieke kolommen."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsief",
+        "description": "Pas de tabelindeling aan op kleine schermen."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubric-modus",
+        "description": "Interpreteer deze tabel als een OER Schema Rubric zodat metadata voor Rubric, RubricScale, RubricCriterion en RubricLevel wordt uitgevoerd."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubric-type",
+        "description": "Rubric-stijl die wordt uitgevoerd als oer:rubricType (alleen relevant als Rubric-modus aan staat).",
+        "options": {
+          "": "(geen)",
+          "analytic": "Analytisch",
+          "holistic": "Holistisch",
+          "single-point": "Eén punt",
+          "checklist": "Checklist"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Met randen"
+      },
+      {
+        "property": "condensed",
+        "title": "Compacte rijen",
+        "description": "Verlaag de rijhoogte."
+      },
+      {
+        "property": "striped",
+        "title": "Gestreepte rijen",
+        "description": "Kleur om de andere rij in."
+      },
+      {
+        "property": "downloadable",
+        "title": "Downloadknop",
+        "description": "Voeg een knop toe om de tabel te downloaden."
+      },
+      {
+        "property": "copyable",
+        "title": "Kopieerknop",
+        "description": "Voeg een knop toe om de CSV-gegevens van de tabel te kopiëren."
+      },
+      {
+        "property": "printable",
+        "title": "Afdrukknop",
+        "description": "Voeg een knop toe om alleen de tabel af te drukken."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV-gegevens",
+        "description": "Maak een tabel van een geüpload CSV-bestand."
+      }
+    ]
+  }
+}

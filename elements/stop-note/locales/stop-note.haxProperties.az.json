@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Dayanma qeydi",
+    "description": "Oxucuları xüsusi göstərişlərə diqqət yetirməyə çağıran mesaj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Dayanma qeydi üçün başlıq daxil edin."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Xarici URL daxil edin."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Statusun təyin edilməsi rəngləri və ikonları ona uyğun dəyişir",
+        "options": {
+          "stop": "Dayan",
+          "warning": "Xəbərdarlıq",
+          "success": "Təsdiq",
+          "info": "Bildiriş"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Qeyd mətni",
+        "description": "Dayanma qeydinin mətni."
+      }
+    ]
+  }
+}

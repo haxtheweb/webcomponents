@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Comparáid íomhánna",
+    "description": "Svaidhpeáil íomhá amháin thar íomhá eile chun iad a chur i gcomparáid."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Íomhá uachtarach",
+        "description": "An íomhá uachtarach le svaidhpeáil thar an íomhá íochtarach."
+      },
+      {
+        "property": "topAlt",
+        "title": "Téacs malartach na híomhá uachtaraí",
+        "description": "Téacs malartach riachtanach don inrochtaineacht."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Íomhá íochtarach",
+        "description": "An íomhá íochtarach a thaispeántar faoin íomhá uachtarach."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Téacs malartach na híomhá íochtaraí",
+        "description": "Téacs malartach riachtanach don inrochtaineacht."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Iompar",
+        "description": "Roghnaigh mód glanta (réamhshocrú) nó mód teimhneachta na híomhá uachtaraí."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath Aibhsithe",
+        "description": "Dath an bharra sleamhnáin."
+      },
+      {
+        "property": "dark",
+        "title": "Dorcha",
+        "description": "Inbhéartaigh dath an bharra sleamhnáin."
+      },
+      {
+        "property": "position",
+        "title": "Suíomh Tosaigh",
+        "description": "Suíomh tosaigh ó 0 go 100."
+      }
+    ]
+  }
+}

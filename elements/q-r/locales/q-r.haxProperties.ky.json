@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR код",
+    "description": "Смартфон менен скандоо үчүн код."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR маалыматтары",
+        "description": "QR коддун маалымат булагы."
+      },
+      {
+        "property": "title",
+        "title": "Альтернативдик аталыш",
+        "description": "QR код булагына байланган альтернативдик аталыш."
+      },
+      {
+        "property": "modulesize",
+        "title": "Өлчөм",
+        "description": "QR коддун өлчөмү."
+      },
+      {
+        "property": "margin",
+        "title": "Чет",
+        "description": "Коддун айланасындагы боштук."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Чыгаруу форматы",
+        "description": "Чыгарыла турган формат.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

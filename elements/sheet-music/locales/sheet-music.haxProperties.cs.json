@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Notový zápis",
+    "description": "Vykresluje a přehrává notový zápis, kytarové taby a partitury pomocí alphaTex nebo MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Notace AlphaTex",
+        "description": "Vložený zápis alphaTex pro notový zápis. Notaci upravujte přímo; je uložena v šabloně, takže se zachovají mezery."
+      },
+      {
+        "property": "source",
+        "title": "Soubor partitury",
+        "description": "Nahrajte nebo odkažte na soubor MusicXML (.xml/.musicxml/.mxl) nebo Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Pokud je nastaven, má přednost před vloženým alphaTex."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Přehrávání zvuku",
+        "description": "Ve výchozím stavu zapnuto – poslechněte si notový zápis přehrávaný vestavěným syntezátorem. Vypněte pro režim pouze zobrazení (bez zvuku)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Zobrazit možnosti zobrazení",
+        "description": "Zobrazit tlačítka přiblížení, roztažení a rozvržení na liště přehrávače."
+      },
+      {
+        "property": "showExport",
+        "title": "Zobrazit tlačítka exportu",
+        "description": "Zobrazit tlačítka stažení MIDI a tisku/PDF na liště přehrávače."
+      }
+    ]
+  }
+}

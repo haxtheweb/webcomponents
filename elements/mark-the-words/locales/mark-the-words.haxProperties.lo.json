@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "ໝາຍຄຳ",
+    "description": "ລະບຸແນວຄິດຜ່ານຄຳສັບ ໂດຍການຄລິກໃນເນື້ອຄວາມ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ຄຳຖາມ",
+        "description": "ຄຳຖາມໃຫ້ຜູ້ໃຊ້ຕອບ."
+      },
+      {
+        "property": "statement",
+        "title": "ຂໍ້ຄວາມ",
+        "description": "ຂໍ້ຄວາມທີ່ຈະຖືກປ່ຽນເປັນການໂຕ້ຕອບແບບໝາຍຄຳ."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ຮູບແບບການໃຫ້ຄະແນນ",
+        "description": "OER Schema: ຮູບແບບການໃຫ້ຄະແນນສຳລັບການປະເມີນນີ້ (ເຊັ່ນ: ຄະແນນ, ເກຣດຕົວອັກສອນ, ເປີເຊັນ, ການສຳເລັດ)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ຈຸດປະສົງການຮຽນຮູ້",
+        "description": "OER Schema: ຈຸດປະສົງການຮຽນຮູ້ທີ່ກ່ຽວຂ້ອງກັບການປະເມີນນີ້."
+      },
+      {
+        "property": "forCourse",
+        "title": "ວິຊາຮຽນ",
+        "description": "OER Schema: ວິຊາຮຽນທີ່ການປະເມີນນີ້ມີໄວ້ສຳລັບ."
+      },
+      {
+        "property": "answers",
+        "title": "ຄຳຕອບ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ຊື່ແບບທົດສອບ",
+        "description": "ຊື່ແບບທົດສອບທີ່ສົ່ງເຂົ້າມາເພື່ອໃຊ້ໃນສະພາບແວດລ້ອມທີ່ຂັບເຄື່ອນດ້ວຍ xAPI ເພື່ອລະບຸລາຍການນີ້"
+      }
+    ]
+  }
+}

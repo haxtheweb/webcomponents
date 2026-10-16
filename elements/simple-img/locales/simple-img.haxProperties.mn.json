@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Энгийн зураг",
+    "description": "Энгийн параметрээр зургийг боловсруулах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Эх сурвалж",
+        "description": "Зургийн эх сурвалжийн URL."
+      },
+      {
+        "property": "height",
+        "title": "Өндөр",
+        "description": "Нэмэлт зургийн өндөр."
+      },
+      {
+        "property": "width",
+        "title": "Өргөн",
+        "description": "Нэмэлт зургийн өргөн."
+      },
+      {
+        "property": "alt",
+        "title": "Орлуулах текст",
+        "description": "Дэлгэц уншигч болон SEO-г сайжруулахад хэрэгтэй."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Чанар",
+        "description": "Үүсгэх үеийн зургийн чанар (зөвхөн JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Татах тэргүүлэх ач холбогдол",
+        "description": "Орчин үеийн хөтчүүдэд зориулсан гүйцэтгэлийн зөвлөмж.",
+        "options": {
+          "auto": "Автомат",
+          "high": "Өндөр",
+          "low": "Бага"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Тайлах арга",
+        "description": "Орчин үеийн хөтчүүдэд зураг дүрслэх гүйцэтгэлийн зөвлөмж.",
+        "options": {
+          "auto": "Автомат",
+          "async": "Асинхрон"
+        }
+      }
+    ]
+  }
+}

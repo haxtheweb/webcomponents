@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF браузер караучысы",
+    "description": "PDF файлны өстәмә карточка макеты һәм йөкләп алу төймәсе белән текст эчендә урнаштырырга."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL адресы",
+        "description": "PDF файлның урыны."
+      },
+      {
+        "property": "heading",
+        "title": "Башлык",
+        "description": "Карточка башлыгы тексты."
+      },
+      {
+        "property": "card",
+        "title": "Карточка макеты",
+        "description": "PDF-ны йөкләп алу төймәле карточкада күрсәтергә."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Йөкләп алу тамгасы",
+        "description": "Йөкләп алу төймәсенең тамгасы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Хупланмау хәбәре",
+        "description": "Браузер PDF файлларны күрсәтә алмаганда чыга торган хәбәр."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Хупланмау сылтамасы хәбәре",
+        "description": "Браузер PDF файлларны күрсәтә алмаганда чыга торган сылтама тексты."
+      },
+      {
+        "property": "width",
+        "title": "Киңлек",
+        "description": "PDF караучысының киңлеге."
+      },
+      {
+        "property": "height",
+        "title": "Биеклек",
+        "description": "PDF караучысының биеклеге."
+      }
+    ]
+  }
+}

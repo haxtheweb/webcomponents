@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Icandelo lekhasi",
+    "description": "Isikhongozeli secandelo somxholo wekhasi nolwakhiwo olusekwe kwisikrini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Unyango loyilo",
+        "description": "Isitayile esimiselweyo esihlaziya iisetingi ezinxulumeneyo."
+      },
+      {
+        "property": "image",
+        "title": "Umfanekiso",
+        "description": "Imidiya engasemva yecandelo."
+      },
+      {
+        "property": "bg",
+        "title": "Umbala ongasemva",
+        "description": "Umbala ongasemva xa kungekho mfanekiso usetiweyo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Iqhosha lokuskrola",
+        "description": "Bonisa iqhosha eliskrolela kwicandelo elilandelayo."
+      },
+      {
+        "property": "fold",
+        "title": "Bonisa umsongo",
+        "description": "Bonisa umsongo obonakalayo ezantsi kwecandelo."
+      },
+      {
+        "property": "full",
+        "title": "Ubungakanani besikrini esipheleleyo",
+        "description": "Gcwalisa ubude besikrini sombukeli."
+      },
+      {
+        "property": "filter",
+        "title": "Sebenzisa isiHluzi",
+        "description": "Sebenzisa isihluzi esibonakalayo kumfanekiso ongasemva."
+      },
+      {
+        "slot": "",
+        "title": "Umxholo",
+        "description": "Umxholo wecandelo."
+      },
+      {
+        "slot": "entice",
+        "title": "Tsala umdla",
+        "description": "Umxholo okhethwayo wokutsala umdla."
+      },
+      {
+        "slot": "buttons",
+        "title": "Amaqhosha",
+        "description": "Iqela lamaqhosha eliboniswa phantsi kombhalo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Umbhalo we-ankile",
+        "description": "Ileyibhile ye-ankile eboniswa kukhangelo."
+      }
+    ]
+  }
+}

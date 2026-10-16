@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Rā",
+    "description": "Whakaaturia tētahi rā maramataka me ōna taipitopito."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Marama",
+        "description": "Te marama ka whakaaturia ki te kāri."
+      },
+      {
+        "property": "date",
+        "title": "Rā o te marama",
+        "description": "Te rā o te marama hei tau."
+      },
+      {
+        "property": "day",
+        "title": "Rā o te wiki",
+        "description": "Te rā o te wiki hei kupu."
+      },
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Ingoa o te takahanga."
+      },
+      {
+        "property": "location",
+        "title": "Wāhi",
+        "description": "Te wāhi o te takahanga."
+      },
+      {
+        "property": "startTime",
+        "title": "Tīmatanga",
+        "description": "Wā tīmata."
+      },
+      {
+        "property": "endTime",
+        "title": "Mutunga",
+        "description": "Wā mutu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae Arotahi",
+        "description": "He tae arotahi kōwhiri."
+      },
+      {
+        "property": "dark",
+        "title": "Kaupapa Pōuri",
+        "description": "Whakahohea te kaupapa pōuri."
+      }
+    ]
+  }
+}

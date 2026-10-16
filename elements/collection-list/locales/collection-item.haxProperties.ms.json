@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Item koleksi",
+    "description": "Item gaya kad untuk digunakan dalam senarai koleksi, dengan teks, pautan dan media pilihan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Pautan",
+        "description": "URL destinasi untuk kad ini."
+      },
+      {
+        "property": "image",
+        "title": "Imej",
+        "description": "Imej latar belakang."
+      },
+      {
+        "property": "line1",
+        "title": "Baris 1",
+        "description": "Baris pertama teks."
+      },
+      {
+        "property": "line2",
+        "title": "Baris 2",
+        "description": "Baris kedua teks."
+      },
+      {
+        "property": "line3",
+        "title": "Baris 3",
+        "description": "Baris ketiga teks."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon yang mewakili kad."
+      },
+      {
+        "property": "saturate",
+        "title": "Kesan ketepuan",
+        "description": "Ubah ketepuan imej apabila pengguna memfokus."
+      },
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Senarai tag dipisahkan koma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna",
+        "description": "Warna yang digunakan untuk tag."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Teks alternatif yang menerangkan pautan."
+      }
+    ]
+  }
+}

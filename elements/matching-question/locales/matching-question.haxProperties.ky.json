@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Дал келтирүү суроосу",
+    "description": "Суроолорду туура жооптору менен жупташтырган сүйрөп таштоо иш-аракети."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Суроо",
+        "description": "Колдонуучулар үчүн суроо. Таштоо максаттарын белгилеп, андан соң кийинки максатка чейин жоопторду тизмелеңиз."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Баалоо форматы",
+        "description": "OER Schema: бул баалоонун баалоо форматы (мисалы, упайлар, тамга, пайыз, аткаруу)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Окуу максаты",
+        "description": "OER Schema: бул баалоого байланыштуу окуу максаты."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: бул баалоо арналган курс."
+      },
+      {
+        "property": "answers",
+        "title": "Жооптор"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Тесттин аталышы",
+        "description": "Аналитика системаларында xAPI идентификациясы үчүн колдонулган тест аталышы."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Blok petikan",
+    "description": "Blok petikan bergaya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Petikan sumber",
+        "description": "Teks petikan sumber."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Teks alternatif untuk imej."
+      },
+      {
+        "property": "image",
+        "title": "Imej",
+        "description": "Imej yang dipaparkan bersama petikan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Txartela",
+    "description": "DDD diseinu-sistemarekin estilatutako txartel osagaia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Irudia",
+        "description": "Aukerako irudia."
+      },
+      {
+        "property": "alt",
+        "title": "Irudiaren alt testua",
+        "description": "Irudia deskribatzen duen testu alternatiboa."
+      },
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Txartelaren izenburua."
+      },
+      {
+        "slot": "",
+        "title": "Edukia",
+        "description": "Txartelaren eduki eremua."
+      },
+      {
+        "property": "href",
+        "title": "Esteka",
+        "description": "Botoiaren estekaren URLa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etiketa",
+        "description": "Botoiaren etiketa."
+      },
+      {
+        "property": "noArrow",
+        "title": "Geziarik ez",
+        "description": "Ezkutatu botoiaren gezia."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Esteka: helburua",
+        "description": "Non ireki esteka.",
+        "options": {
+          "": "Leiho berean",
+          "_blank": "Leiho berria - _blank",
+          "_top": "Goiko leihoa - _top",
+          "_parent": "Leiho gurasoa - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Esteka: rel",
+        "description": "Estekatutako baliabidearen eta uneko dokumentuaren arteko erlazioa."
+      }
+    ]
+  }
+}

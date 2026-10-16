@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "페이지 앵커",
+    "description": "페이지의 미디어 내 특정 지점으로 연결합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "페이지 대상",
+        "description": "이 앵커가 가리키는 ID 또는 리소스입니다."
+      },
+      {
+        "property": "value",
+        "title": "딥 링크 값",
+        "description": "딥 링크 값입니다(예: 타임스탬프 또는 슬라이드 ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "사이트 엔터티",
+        "description": "관련 개념 표시를 제어하기 위한 선택적 사이트 엔터티입니다."
+      }
+    ]
+  }
+}

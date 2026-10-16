@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Medijos citata",
+    "description": "Vaizdas su citata, šaltinio nuoroda ir pasirenkamu paveikslėlio aprašu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Citata",
+        "description": "Citatos tekstas."
+      },
+      {
+        "slot": "author",
+        "title": "Autorius",
+        "description": "Citatos autorius."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Informacija apie autorių",
+        "description": "Informacija apie autorių."
+      },
+      {
+        "slot": "caption",
+        "title": "Paveikslėlio aprašas",
+        "description": "Vaizdo aprašas."
+      },
+      {
+        "property": "src",
+        "title": "Vaizdo šaltinis",
+        "description": "Medijos citatai naudojamas vaizdo failas."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatyvusis tekstas",
+        "description": "Alternatyvusis vaizdo tekstas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Kortelės akcento spalva."
+      }
+    ]
+  }
+}

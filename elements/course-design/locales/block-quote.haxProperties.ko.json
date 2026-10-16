@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "인용 블록",
+    "description": "스타일이 적용된 인용 블록입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "출처",
+        "description": "출처 텍스트입니다."
+      },
+      {
+        "property": "alt",
+        "title": "대체 텍스트",
+        "description": "이미지의 대체 텍스트입니다."
+      },
+      {
+        "property": "image",
+        "title": "이미지",
+        "description": "인용과 함께 표시되는 이미지입니다."
+      }
+    ]
+  }
+}

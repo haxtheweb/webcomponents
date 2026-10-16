@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Karta Postê",
+    "description": "Parçeyeke medyayê ya kêfxweş ku mîna karta postê ya fizîkî ji cihekî xuya dike"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Ji bo",
+        "description": "Ev ji bo kê diçe?"
+      },
+      {
+        "property": "from",
+        "title": "Ji",
+        "description": "Tu kî yî?"
+      },
+      {
+        "property": "message",
+        "title": "Peyam",
+        "description": "Tu dixwazî çi bibêjî?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Mohra Postê Ji",
+        "description": "Ev kart ji ku hate şandin?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Çavkaniya Wêneyê Sereke",
+        "description": "Wêneyê te li ku ye?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Çavkaniya Wêneyê Pûlê",
+        "description": "Wêneyê te li ku ye?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Попълнете празните места",
+    "description": "Дейност за оценяване, в която учащите попълват липсващи думи в твърдение."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Въпрос",
+        "description": "Въпрос, на който потребителите да отговорят."
+      },
+      {
+        "property": "statement",
+        "title": "Твърдение",
+        "description": "Твърдение, което ще бъде превърнато във взаимодействие за маркиране на думи."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат на оценяване",
+        "description": "OER Schema: формат на оценяване за това задание (напр. точки, буква, процент, изпълнение)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Учебна цел",
+        "description": "OER Schema: учебна цел, свързана с това задание."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, за който е предназначено това задание."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Име на теста",
+        "description": "Име на теста, подавано за идентифициране на този елемент в среди, базирани на xAPI"
+      }
+    ]
+  }
+}

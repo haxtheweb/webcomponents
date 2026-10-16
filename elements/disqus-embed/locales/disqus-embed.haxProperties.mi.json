@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Tāmau i ngā tākupu Disqus ki tētahi whārangi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Ingoa poto",
+        "description": "Te ingoa poto o te pae, e whakatau ana i te kaihautū o te hōtuhi Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL whārangi",
+        "description": "Te URL o te whārangi e tāpiri ana te aho tākupu."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Pūtautuhi whārangi",
+        "description": "Te pūtautuhi ahurei mō te aho tākupu o te whārangi."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Taitara whārangi",
+        "description": "Te taitara o te whārangi e tāpiri ana te aho tākupu."
+      },
+      {
+        "property": "loadingText",
+        "title": "Kupu uta",
+        "description": "Kupu ka pānuitia i te wā e uta ana ngā tākupu."
+      },
+      {
+        "property": "lang",
+        "title": "Reo",
+        "description": "Waehere reo mō te atanga Disqus, hei tauira en."
+      }
+    ]
+  }
+}

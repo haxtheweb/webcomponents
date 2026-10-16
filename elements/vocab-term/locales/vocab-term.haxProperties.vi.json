@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Từ vựng",
+    "description": "Thuật ngữ từ vựng."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Thuật ngữ"
+      },
+      {
+        "property": "information",
+        "title": "Định nghĩa",
+        "description": "Định nghĩa hiển thị khi nhấp vào thuật ngữ."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Hộp bật lên",
+        "description": "Hiển thị định nghĩa trong hộp bật lên thay vì nội tuyến."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Liên kết",
+        "description": "Danh sách các liên kết bổ sung gắn với thuật ngữ này."
+      }
+    ]
+  }
+}

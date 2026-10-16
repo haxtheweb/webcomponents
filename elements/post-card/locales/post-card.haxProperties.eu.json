@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Posta txartela",
+    "description": "Nonbaitetik bidalitako benetako posta txartel baten itxura duen multimedia pieza jostagarria"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Nori",
+        "description": "Nori bidaltzen zaio?"
+      },
+      {
+        "property": "from",
+        "title": "Nork",
+        "description": "Nor zara?"
+      },
+      {
+        "property": "message",
+        "title": "Mezua",
+        "description": "Zer esan nahi duzu?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Posta-zigiluaren jatorria",
+        "description": "Nondik bidali zen txartel hau?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Argazki nagusiaren iturburua",
+        "description": "Non dago zure argazkia?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Zigiluaren argazkiaren iturburua",
+        "description": "Non dago zure argazkia?"
+      }
+    ]
+  }
+}

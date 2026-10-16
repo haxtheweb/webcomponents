@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "フラッシュカード",
+    "description": "表裏のあるフラッシュカードで概念を練習します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "カードの表",
+        "description": "表面のテキストまたは問題。"
+      },
+      {
+        "slot": "back",
+        "title": "カードの裏",
+        "description": "期待される答え。"
+      },
+      {
+        "property": "imgSource",
+        "title": "画像ソース",
+        "description": "カードに使う画像ファイル。画像キーワードより優先されます。"
+      },
+      {
+        "property": "typeOfAction",
+        "title": "アクションの種類",
+        "description": "OER Schema: この練習に含まれるアクションの種類（例: 読む、書く、作る、調べる、聞く、見る、振り返る、話し合う、観察する、発表する、評価する）。"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学習目標",
+        "description": "OER Schema: この練習が支える学習目標のIDまたはURL。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ダーク",
+        "description": "ダークモードを使用します。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "カードのアクセントカラー。"
+      },
+      {
+        "property": "imgKeyword",
+        "title": "画像キーワード",
+        "description": "ランダム画像のキーワード。画像ソースが優先されます。"
+      }
+    ]
+  }
+}

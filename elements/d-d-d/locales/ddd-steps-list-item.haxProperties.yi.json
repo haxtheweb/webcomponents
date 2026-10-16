@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "שריט־עלעמענט",
+    "description": "עלעמענט וואָס איז אַ טייל פֿון אַ שריט־רשימה"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "טיטל"
+      }
+    ]
+  }
+}

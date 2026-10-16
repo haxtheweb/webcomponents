@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Delweddydd MIDI",
+    "description": "Chwarae MIDI yn ei gyd-destun gyda delweddu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ffynhonnell",
+        "description": "URL y ffeil i'w chwarae."
+      },
+      {
+        "property": "visualizer",
+        "title": "Delweddu",
+        "description": "Arddull delweddu ar gyfer y ffeil gerddoriaeth.",
+        "options": {
+          "staff": "Erwydd",
+          "piano-roll": "Rholyn piano",
+          "waterfall": "Piano + rhaeadr"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Cuddio'r rhaeadr",
+        "description": "Cuddio nodau'r rhaeadr yn y delweddu piano."
+      }
+    ]
+  }
+}

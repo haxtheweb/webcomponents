@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS-beholder"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Skjul redigeringsprogram",
+        "description": "Skjul grensesnittet for filredigering."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Skjul terminal",
+        "description": "Skjul terminalen for programmer som kjøres automatisk."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Skjul vindu",
+        "description": "Skjul utdatavinduet ved bruk av bare terminal."
+      },
+      {
+        "slot": "",
+        "title": "Kommandoer",
+        "description": "Kommandoer (én per linje) som kjøres før innlasting."
+      }
+    ]
+  }
+}

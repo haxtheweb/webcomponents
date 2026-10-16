@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Ikani magulu a Discord kuchokera ku URL yogawana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ya Gwero",
+        "description": "URL ya gwero."
+      },
+      {
+        "property": "height",
+        "title": "Kutalika",
+        "description": "Kutalika kwa chimango cha zomwe zili mkati."
+      },
+      {
+        "property": "width",
+        "title": "M'lifupi",
+        "description": "M'lifupi mwa chimango cha zomwe zili mkati."
+      }
+    ]
+  }
+}

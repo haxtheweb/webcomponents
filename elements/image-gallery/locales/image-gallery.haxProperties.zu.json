@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Igalari Yezithombe",
+    "description": "Igalari ethula izithombe ngesakhiwo segridi, sezitini, noma sombukiso wezithombe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Imodi yokubonisa",
+        "description": "Indlela yokwethula izithombe egalari.",
+        "options": {
+          "grid": "Igridi",
+          "masonry": "Izitini",
+          "gallery": "Igalari"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Inkomba esebenzayo",
+        "description": "Inkomba yesithombe esisebenzayo okuzoqalwa ngaso kumodi yegalari."
+      }
+    ]
+  }
+}

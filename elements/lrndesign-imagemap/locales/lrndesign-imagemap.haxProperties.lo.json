@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ແຜນທີ່ຮູບພາບ",
+    "description": "ແຜນທີ່ຮູບພາບທີ່ເຂົ້າເຖິງໄດ້ ພ້ອມຈຸດໂຕ້ຕອບ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "ປ້າຍກຳກັບ",
+        "description": "ປ້າຍກຳກັບສຳລັບແຜນທີ່ຮູບພາບ."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "ລາຍລະອຽດຈຸດໂຕ້ຕອບ",
+        "description": "ຈຸດໂຕ້ຕອບໃນແຜນທີ່ຮູບພາບ."
+      }
+    ]
+  }
+}

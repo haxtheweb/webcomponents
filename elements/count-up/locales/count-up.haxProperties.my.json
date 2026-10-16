@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "အပေါ်သို့ ရေတွက်ခြင်း",
+    "description": "မြင်ကွင်းထဲ လှိမ့်ဝင်လာသောအခါ နံပါတ်တစ်ခုကို ပစ်မှတ်တန်ဖိုးအထိ ရေတွက်သည့် ကာတွန်း။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "အဆုံး တန်ဖိုး",
+        "description": "ရေတွက်ရမည့် အဆုံးနံပါတ်။"
+      },
+      {
+        "property": "start",
+        "title": "အစ တန်ဖိုး",
+        "description": "ရေတွက်ခြင်း စတင်မည့် နံပါတ်။"
+      },
+      {
+        "property": "duration",
+        "title": "ကြာချိန်",
+        "description": "ရေတွက်ခြင်း ကာတွန်း ကြာရမည့် စက္ကန့်။"
+      },
+      {
+        "property": "prefixtext",
+        "title": "ရှေ့ စာသား",
+        "description": "နံပါတ်ရှေ့တွင် ပြသော စာသား (ဥပမာ '$')။"
+      },
+      {
+        "property": "suffixtext",
+        "title": "နောက် စာသား",
+        "description": "နံပါတ်နောက်တွင် ပြသော စာသား (ဥပမာ '%')။"
+      },
+      {
+        "slot": "prefix",
+        "title": "ရှေ့ slot",
+        "description": "နံပါတ်ရှေ့ရှိ ရွေးချယ်နိုင်သော slot အကြောင်းအရာ။"
+      },
+      {
+        "slot": "suffix",
+        "title": "နောက် slot",
+        "description": "နံပါတ်နောက်ရှိ ရွေးချယ်နိုင်သော slot အကြောင်းအရာ။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "ဒဿမ နေရာများ",
+        "description": "ပြသရမည့် ဒဿမ နေရာ အရေအတွက်။"
+      },
+      {
+        "property": "separator",
+        "title": "ထောင်ဂဏန်း ခွဲခြားသင်္ကေတ",
+        "description": "ထောင်ဂဏန်း အုပ်စုများကို ခွဲခြားသော စာလုံး။"
+      },
+      {
+        "property": "decimal",
+        "title": "ဒဿမ စာလုံး",
+        "description": "ဒဿမ အမှတ်အတွက် အသုံးပြုသော စာလုံး။"
+      },
+      {
+        "property": "noeasing",
+        "title": "Easing မပါ",
+        "description": "ရေတွက်ခြင်း တစ်ပြေးညီဖြစ်စေရန် easing ကို ပိတ်ပါ။"
+      }
+    ]
+  }
+}

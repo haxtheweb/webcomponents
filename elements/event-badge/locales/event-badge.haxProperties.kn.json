@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ಕಾರ್ಯಕ್ರಮ ಬ್ಯಾಡ್ಜ್",
+    "description": "ಕಾರ್ಯಕ್ರಮ ಬ್ಯಾಡ್ಜ್ ಘಟಕ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV ಚಿತ್ರ",
+        "description": "TV ಯಲ್ಲಿ ತೋರಿಸುವ ಚಿತ್ರ."
+      },
+      {
+        "property": "logo",
+        "title": "ಲೋಗೋ",
+        "description": "ಬ್ಯಾಡ್ಜ್‌ನ ಮೂಲೆಯಲ್ಲಿ ತೋರಿಸುವ ಲೋಗೋ."
+      },
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಬ್ಯಾಡ್ಜ್‌ನ ಮೇಲ್ಭಾಗದಲ್ಲಿ ತೋರಿಸುವ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "name",
+        "title": "ಹೆಸರು",
+        "description": "ಬ್ಯಾಡ್ಜ್‌ನಲ್ಲಿ ತೋರಿಸುವ ಹೆಸರು."
+      },
+      {
+        "property": "position",
+        "title": "ಹುದ್ದೆ",
+        "description": "ವ್ಯಕ್ತಿಯ ಪಾತ್ರ ಅಥವಾ ಹುದ್ದೆ."
+      },
+      {
+        "property": "organization",
+        "title": "ಸಂಸ್ಥೆ",
+        "description": "ವ್ಯಕ್ತಿ ಕೆಲಸ ಮಾಡುವ ಸಂಸ್ಥೆ."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV ಬಣ್ಣ",
+        "description": "TV ಗಾಗಿ ಬಣ್ಣವನ್ನು ಆಯ್ಕೆಮಾಡಿ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಪ್ರಾಥಮಿಕ ಹಿನ್ನೆಲೆ ಅಥವಾ ಪಠ್ಯದ ಬಣ್ಣ."
+      },
+      {
+        "property": "knobcolor",
+        "title": "ಗುಬ್ಬಿಯ ಬಣ್ಣ",
+        "description": "TV ಗುಬ್ಬಿಗಳ ಬಣ್ಣ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "ಸೆಪಿಯಾ",
+        "description": "ಸೆಪಿಯಾ ಪರಿಣಾಮವನ್ನು ಅನ್ವಯಿಸಿ."
+      },
+      {
+        "property": "blackwhite",
+        "title": "ಕಪ್ಪು ಬಿಳುಪು",
+        "description": "ಕಪ್ಪು ಬಿಳುಪು ಪರಿಣಾಮವನ್ನು ಅನ್ವಯಿಸಿ."
+      }
+    ]
+  }
+}

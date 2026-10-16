@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Myndaparti",
+    "description": "Mynd í fullari breidd, sum býtir eitt síðuparti sundur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Bakgrundsmynd."
+      },
+      {
+        "property": "caption",
+        "description": "Tekstyvirskrift."
+      }
+    ]
+  }
+}

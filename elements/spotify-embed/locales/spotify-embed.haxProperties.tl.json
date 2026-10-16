@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Wrapper para sa mga embed ng Spotify player."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pinagmulan",
+        "description": "Embed o share link mula sa Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Tema ng kulay ng background para sa player.",
+        "options": {
+          "": "Default",
+          "0": "Itim"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Laki",
+        "description": "Laki ng player.",
+        "options": {
+          "normal": "Default",
+          "compact": "Compact"
+        }
+      }
+    ]
+  }
+}

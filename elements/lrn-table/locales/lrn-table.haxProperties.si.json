@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV වගුව",
+    "description": "CSV ගොනුවක් කොතැනක තිබුණත් එයින් වගුවක් ජනනය කළ හැක."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "මූලාශ්‍රය",
+        "description": "මෙම CSV ගොනුව සඳහා URL."
+      },
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "ජනනය කළ යුතු වගුවේ මාතෘකාව."
+      },
+      {
+        "property": "description",
+        "title": "විස්තරය",
+        "description": "වගු දත්තවල ප්‍රවේශ්‍යතාව වැඩි දියුණු කිරීමට වඩාත් සවිස්තරාත්මක විස්තරය."
+      }
+    ]
+  }
+}

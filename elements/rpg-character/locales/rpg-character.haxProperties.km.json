@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "តួអង្គ RPG",
+    "description": "តួអង្គកំសាន្តពី HAX។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "ឈ្មោះ",
+        "description": "ពាក្យដែលប្រើដើម្បីបង្កើតតួអង្គចៃដន្យ។"
+      },
+      {
+        "property": "hat",
+        "title": "មួក",
+        "description": "រចនាប័ទ្មមួក។",
+        "options": {
+          "none": "លំនាំដើម",
+          "random": "ចៃដន្យ",
+          "bunny": "ទន្សាយ",
+          "cowboy": "ខោវប៊យ",
+          "education": "ការអប់រំ",
+          "construction": "សំណង់",
+          "warning": "ការព្រមាន",
+          "watermelon": "ឪឡឹក",
+          "coffee": "កាហ្វេ",
+          "knight": "អ្នកចម្បាំង",
+          "ninja": "និនចា",
+          "party": "ពិធីជប់លៀង",
+          "error": "កំហុស",
+          "edit": "កែសម្រួល"
+        }
+      },
+      {
+        "property": "width",
+        "title": "ទទឹង",
+        "description": "ទទឹងតួអង្គគិតជាភីកសែល។"
+      },
+      {
+        "property": "height",
+        "title": "កម្ពស់",
+        "description": "កម្ពស់តួអង្គគិតជាភីកសែល។"
+      },
+      {
+        "property": "fire",
+        "title": "កំពុងឆេះ?",
+        "description": "ថាតើតួអង្គកំពុងឆេះឬអត់។"
+      },
+      {
+        "property": "walking",
+        "title": "កំពុងដើរ?",
+        "description": "ចលនាដើរ; រត់ពេលកំពុងឆេះ។"
+      }
+    ]
+  }
+}

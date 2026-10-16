@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF браузер қарау құралы",
+    "description": "PDF файлын қосымша карта макеті және жүктеп алу түймесімен бетке енгізу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL-і",
+        "description": "PDF файлының орны."
+      },
+      {
+        "property": "heading",
+        "title": "Тақырып",
+        "description": "Карта тақырыбының мәтіні."
+      },
+      {
+        "property": "card",
+        "title": "Карта макеті",
+        "description": "PDF-ті жүктеп алу түймесі бар картада көрсету."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Жүктеп алу белгісі",
+        "description": "Жүктеп алу түймесінің белгісі."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Қолдау көрсетілмейді хабары",
+        "description": "Браузер PDF файлдарын көрсете алмаған кездегі хабар."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Қолдау көрсетілмейді сілтеме хабары",
+        "description": "Браузер PDF файлдарын көрсете алмаған кездегі сілтеме мәтіні."
+      },
+      {
+        "property": "width",
+        "title": "Ені",
+        "description": "PDF қарау құралының ені."
+      },
+      {
+        "property": "height",
+        "title": "Биіктігі",
+        "description": "PDF қарау құралының биіктігі."
+      }
+    ]
+  }
+}

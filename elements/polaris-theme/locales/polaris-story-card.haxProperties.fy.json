@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris-ferhaalkaart",
+    "description": "Toan in Polaris-ferhaalkaart mei in eftergrûnôfbylding, pylderlabel en koptekst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Eftergrûnôfbylding",
+        "description": "Ofbyldings-URL dy't as eftergrûn fan de kaart toand wurdt."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Eftergrûngrutte",
+        "description": "Hoe't de eftergrûnôfbylding de kaart follet (CSS background-size).",
+        "options": {
+          "cover": "bedekke (cover)",
+          "contain": "befetsje (contain)",
+          "auto": "automatysk (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Eftergrûnbefestiging",
+        "description": "Hoe't de eftergrûnôfbylding him hâldt by it skowen (CSS background-attachment).",
+        "options": {
+          "scroll": "skowe (scroll)",
+          "fixed": "fêst (fixed)",
+          "local": "lokaal (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Pylderlabel",
+        "description": "Koart label yn haadletters boppe-oan de kaart. Lit leech om it te ferbergjen."
+      },
+      {
+        "property": "label",
+        "title": "Kaarttekst",
+        "description": "Haadtekst yn it ûnderste paniel."
+      },
+      {
+        "property": "link",
+        "title": "Keppeling",
+        "description": "Opsjonele bestimmings-URL om de hiele kaart hinne."
+      }
+    ]
+  }
+}

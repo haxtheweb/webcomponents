@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Billedgalleri",
+    "description": "Et galleri, der viser billeder i gitter-, murværks- eller diasshowlayout."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Visningstilstand",
+        "description": "Hvordan billederne skal vises i galleriet.",
+        "options": {
+          "grid": "Gitter",
+          "masonry": "Murværk",
+          "gallery": "Galleri"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktivt indeks",
+        "description": "Indeks for det aktive billede, der startes på i gallerivisning."
+      }
+    ]
+  }
+}

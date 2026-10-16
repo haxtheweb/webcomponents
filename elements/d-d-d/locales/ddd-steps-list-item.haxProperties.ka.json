@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "ნაბიჯის ელემენტი",
+    "description": "ელემენტი, რომელიც ნაბიჯების სიის ნაწილია"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "სათაური"
+      }
+    ]
+  }
+}

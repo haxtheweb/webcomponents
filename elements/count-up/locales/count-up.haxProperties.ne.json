@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "गणना बढाउने",
+    "description": "दृश्यमा स्क्रोल हुँदा लक्ष्य मानसम्म गन्दै बढ्ने सङ्ख्याको एनिमेसन।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "अन्तिम मान",
+        "description": "गन्दै पुग्ने सङ्ख्या।"
+      },
+      {
+        "property": "start",
+        "title": "सुरुको मान",
+        "description": "गन्ती सुरु हुने सङ्ख्या।"
+      },
+      {
+        "property": "duration",
+        "title": "अवधि",
+        "description": "गन्ती एनिमेसनले लिने सेकेन्ड।"
+      },
+      {
+        "property": "prefixtext",
+        "title": "उपसर्ग पाठ",
+        "description": "सङ्ख्याअघि देखाइने पाठ (जस्तै '$')।"
+      },
+      {
+        "property": "suffixtext",
+        "title": "प्रत्यय पाठ",
+        "description": "सङ्ख्यापछि देखाइने पाठ (जस्तै '%')।"
+      },
+      {
+        "slot": "prefix",
+        "title": "उपसर्ग स्लट",
+        "description": "सङ्ख्याअघि राखिने वैकल्पिक सामग्री।"
+      },
+      {
+        "slot": "suffix",
+        "title": "प्रत्यय स्लट",
+        "description": "सङ्ख्यापछि राखिने वैकल्पिक सामग्री।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "दशमलव स्थानहरू",
+        "description": "देखाउने दशमलव स्थानहरूको सङ्ख्या।"
+      },
+      {
+        "property": "separator",
+        "title": "हजार विभाजक",
+        "description": "हजारका समूहहरू छुट्याउने वर्ण।"
+      },
+      {
+        "property": "decimal",
+        "title": "दशमलव वर्ण",
+        "description": "दशमलव बिन्दुका लागि प्रयोग हुने वर्ण।"
+      },
+      {
+        "property": "noeasing",
+        "title": "इजिङ छैन",
+        "description": "गन्ती रेखीय होस् भनेर इजिङ निष्क्रिय गर्नुहोस्।"
+      }
+    ]
+  }
+}

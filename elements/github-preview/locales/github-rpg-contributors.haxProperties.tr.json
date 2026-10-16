@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub katkıda bulunanlar listesi",
+    "description": "GitHub API kullanılarak RPG karakterleri olarak gösterilir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Kurum",
+        "description": "github.com/ORG/REPO adresindeki kuruluş adı."
+      },
+      {
+        "property": "repo",
+        "title": "Depo",
+        "description": "github.com/ORG/REPO adresindeki depo adı."
+      },
+      {
+        "property": "limit",
+        "title": "Sınır",
+        "description": "Gösterilen katkıda bulunan sayısını sınırla."
+      }
+    ]
+  }
+}

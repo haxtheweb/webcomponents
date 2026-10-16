@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Címkék",
+    "description": "Egyszerű címkelista az oldalon való megjelenítéshez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Címkék",
+        "description": "Címkék vesszővel elválasztott listája."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatikus kiemelőszín",
+        "description": "A kiemelőszín automatikus beállítása a címke alapján."
+      },
+      {
+        "property": "accentColor",
+        "title": "Szín",
+        "description": "A címkék színe."
+      }
+    ]
+  }
+}

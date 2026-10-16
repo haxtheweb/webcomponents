@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Saka al'ummomin Discord daga URL na rabawa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL na Albarkatu",
+        "description": "URL na albarkatu."
+      },
+      {
+        "property": "height",
+        "title": "Tsawo",
+        "description": "Tsawon firam ɗin abun ciki."
+      },
+      {
+        "property": "width",
+        "title": "Faɗi",
+        "description": "Faɗin firam ɗin abun ciki."
+      }
+    ]
+  }
+}

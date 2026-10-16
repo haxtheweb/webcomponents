@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Stapitem",
+    "description": "Item dat deel uitmaakt van een stappenlijst"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel"
+      }
+    ]
+  }
+}

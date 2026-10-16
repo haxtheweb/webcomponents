@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub 기여자 목록",
+    "description": "GitHub API를 사용해 RPG 캐릭터로 표시됩니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "소속 기관",
+        "description": "github.com/ORG/REPO의 조직 이름입니다."
+      },
+      {
+        "property": "repo",
+        "title": "저장소",
+        "description": "github.com/ORG/REPO의 저장소 이름입니다."
+      },
+      {
+        "property": "limit",
+        "title": "제한",
+        "description": "표시되는 기여자 수를 제한합니다."
+      }
+    ]
+  }
+}

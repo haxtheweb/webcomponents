@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "پروڈکٹ پر ایک نظر",
+    "description": "پروڈکٹ کے فوری جائزے کا بلاک۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "تصور کی نمائندگی کرنے والا آئیکن۔"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "ایک نظر میں بنیادی تصور۔"
+      },
+      {
+        "property": "subtitle",
+        "title": "ذیلی عنوان",
+        "description": "اضافی تفصیل۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "آئیکن کا نمایاں رنگ۔"
+      }
+    ]
+  }
+}

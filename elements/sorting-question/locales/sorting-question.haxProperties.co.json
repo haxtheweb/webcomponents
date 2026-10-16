@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Dumanda d'urdinamentu",
+    "description": "Mette l'elementi in l'ordine ghjustu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Dumanda",
+        "description": "Intestatura di a dumanda."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Furmatu di nutazione",
+        "description": "OER Schema: furmatu di nutazione di sta valutazione (per esempiu punti, lettera, percentuale, cumpimentu)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ughjettivu d'amparera",
+        "description": "OER Schema: ughjettivu d'amparera assuciatu à sta valutazione."
+      },
+      {
+        "property": "forCourse",
+        "title": "Corsu",
+        "description": "OER Schema: corsu per u quale hè destinata sta valutazione."
+      },
+      {
+        "property": "answers",
+        "title": "Risposte",
+        "description": "L'ordine di e risposte definisce a sequenza ghjusta."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome di u quiz",
+        "description": "Nome di u quiz adupratu per l'identificazione xAPI in i sistemi d'analitica."
+      }
+    ]
+  }
+}

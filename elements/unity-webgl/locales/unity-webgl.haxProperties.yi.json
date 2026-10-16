@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity־שפּילער",
+    "description": "Unity WebGL־שפּילער."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "ציל",
+        "description": "וועג צום שפּיל־בויונג."
+      },
+      {
+        "property": "compression",
+        "title": "קאָמפּרעסיע־מעטאָד",
+        "description": "טעקע־פֿאַרלענגערונג פֿון קאָמפּרעסיע פֿאַר שפּיל־רעסורסן."
+      },
+      {
+        "property": "streamingurl",
+        "title": "סטרים־URL",
+        "description": "URL פֿון סטרים־רעסורסן."
+      },
+      {
+        "property": "companyname",
+        "title": "פֿירמע־נאָמען",
+        "description": "נאָמען פֿון דער פֿירמע."
+      },
+      {
+        "property": "productname",
+        "title": "פּראָדוקט־נאָמען",
+        "description": "טיטל פֿונעם שפּיל."
+      },
+      {
+        "property": "productversion",
+        "title": "פּראָדוקט־ווערסיע",
+        "description": "ווערסיע פֿון דער אַרויסגאַבע."
+      },
+      {
+        "property": "width",
+        "title": "ברייט פֿון לײַוונט",
+        "description": "CSS־ברייט פֿון דער לײַוונט (למשל px אָדער em)."
+      },
+      {
+        "property": "height",
+        "title": "הייך פֿון לײַוונט",
+        "description": "CSS־הייך פֿון דער לײַוונט (למשל px אָדער em)."
+      },
+      {
+        "property": "background",
+        "title": "הינטערגרונט פֿון לײַוונט",
+        "description": "CSS־הינטערגרונט פֿון דער לײַוונט."
+      }
+    ]
+  }
+}

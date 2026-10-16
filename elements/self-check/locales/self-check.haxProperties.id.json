@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Cek Mandiri",
+    "description": "Pengguna dapat menyelesaikan cek mandiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Gambar",
+        "description": "Gambar untuk cek mandiri."
+      },
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Judul cek mandiri."
+      },
+      {
+        "property": "alt",
+        "title": "Teks Alt",
+        "description": "Teks alt untuk gambar."
+      },
+      {
+        "slot": "question",
+        "title": "Pertanyaan"
+      },
+      {
+        "slot": "",
+        "title": "Jawaban"
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Tema",
+        "description": "Pilih warna tema dari sistem desain.",
+        "options": {
+          "primary": "Utama",
+          "accent": "Aksen",
+          "success": "Berhasil",
+          "warning": "Peringatan",
+          "error": "Galat",
+          "info": "Info"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan Pembelajaran",
+        "description": "Referensi tujuan pembelajaran yang dihasilkan sebagai oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Menilai",
+        "description": "Referensi aktivitas yang dihasilkan sebagai oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Tautan selengkapnya",
+        "description": "Tautan ke informasi tambahan."
+      }
+    ]
+  }
+}

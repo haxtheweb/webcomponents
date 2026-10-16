@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Vdelava LinkedIn",
+    "description": "Vdelava profilne kartice LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Prilagojeno ime",
+        "description": "Del prilagojenega uporabniškega imena LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Področna nastavitev",
+        "description": "Vrednost metapodatkov področne nastavitve, na primer en_US."
+      }
+    ]
+  }
+}

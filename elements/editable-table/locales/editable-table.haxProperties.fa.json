@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "جدول",
+    "description": "داده‌های جدولی برای وب."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "سرعنوان ردیف",
+        "description": "ردیف اول به‌عنوان سرعنوان در نظر گرفته شود."
+      },
+      {
+        "property": "columnHeader",
+        "title": "سرعنوان ستون",
+        "description": "ستون اول به‌عنوان سرعنوان در نظر گرفته شود."
+      },
+      {
+        "property": "footer",
+        "title": "پانویس",
+        "description": "ردیف آخر به‌عنوان پانویس در نظر گرفته شود."
+      },
+      {
+        "property": "sort",
+        "title": "قابل مرتب‌سازی",
+        "description": "امکان مرتب‌سازی بر اساس مقادیر ستون."
+      },
+      {
+        "property": "filter",
+        "title": "امکان پالایش",
+        "description": "امکان پالایش بر اساس مقادیر ستون."
+      },
+      {
+        "property": "numericStyles",
+        "title": "سبک عددی",
+        "description": "سبک عددی روی ستون‌های عددی اعمال شود."
+      },
+      {
+        "property": "responsive",
+        "title": "واکنش‌گرا",
+        "description": "چیدمان جدول در صفحه‌نمایش‌های کوچک تنظیم شود."
+      },
+      {
+        "property": "rubricMode",
+        "title": "حالت روبریک",
+        "description": "این جدول به‌عنوان یک Rubric در OER Schema تفسیر شود تا فراداده‌های Rubric، RubricScale، RubricCriterion و RubricLevel تولید شوند."
+      },
+      {
+        "property": "rubricType",
+        "title": "نوع روبریک",
+        "description": "سبک روبریک که به‌صورت oer:rubricType تولید می‌شود (فقط وقتی حالت روبریک روشن است معنا دارد).",
+        "options": {
+          "": "(هیچ)",
+          "analytic": "تحلیلی",
+          "holistic": "کل‌نگر",
+          "single-point": "تک‌نقطه‌ای",
+          "checklist": "چک‌لیست"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "حاشیه‌دار"
+      },
+      {
+        "property": "condensed",
+        "title": "ردیف‌های فشرده",
+        "description": "ارتفاع ردیف‌ها کاهش یابد."
+      },
+      {
+        "property": "striped",
+        "title": "ردیف‌های راه‌راه",
+        "description": "ردیف‌ها یک‌در‌میان سایه بخورند."
+      },
+      {
+        "property": "downloadable",
+        "title": "دکمهٔ بارگیری",
+        "description": "افزودن دکمه‌ای برای بارگیری جدول."
+      },
+      {
+        "property": "copyable",
+        "title": "دکمهٔ رونوشت",
+        "description": "افزودن دکمه‌ای برای رونوشت داده‌های CSV جدول."
+      },
+      {
+        "property": "printable",
+        "title": "دکمهٔ چاپ",
+        "description": "افزودن دکمه‌ای برای چاپ فقط جدول."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "داده‌های CSV",
+        "description": "ساخت جدول از فایل CSV بارگذاری‌شده."
+      }
+    ]
+  }
+}

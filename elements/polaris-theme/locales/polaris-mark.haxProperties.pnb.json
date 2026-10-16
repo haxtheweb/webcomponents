@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris نشان",
+    "description": "اختیاری کالج ناں تے منزل URL نال PSU شناختی نشان وکھاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "کالج دا ناں",
+        "description": "نشان دے نال وکھایا جاوݨ والا ناں۔"
+      },
+      {
+        "property": "name2",
+        "title": "کالج دا ناں 2",
+        "description": "کالج دے پہلے ناں دے ہیٹھاں وکھایا جاوݨ والا دوجا ناں۔"
+      },
+      {
+        "property": "name3",
+        "title": "کالج دا ناں 3",
+        "description": "کالج دے دوجے ناں دے ہیٹھاں وکھایا جاوݨ والا تیجا ناں۔"
+      },
+      {
+        "property": "url",
+        "title": "لنک",
+        "description": "نشان اُتے کلک ہوݨ تے منزل URL۔"
+      },
+      {
+        "property": "type",
+        "title": "قسم",
+        "description": "نشان دی بصری قسم۔",
+        "options": {
+          "default": "ڈیفالٹ",
+          "light": "ہلکا",
+          "dark": "گوڑھا"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "عمودی ترتیب",
+        "description": "تیجا ناں دوجے ناں دے ہیٹھاں اک افقی لکیر نال وکھاؤ۔"
+      }
+    ]
+  }
+}

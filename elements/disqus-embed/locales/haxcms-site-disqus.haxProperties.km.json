@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "មតិយោបល់ Disqus",
+    "description": "ការរួមបញ្ចូលជាមួយសេវាបណ្តាញមតិយោបល់ Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "ឈ្មោះខ្លី",
+        "description": "ឈ្មោះខ្លីរបស់គេហទំព័រលើ Disqus"
+      }
+    ]
+  }
+}

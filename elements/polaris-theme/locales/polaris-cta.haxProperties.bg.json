@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Показване на тематичен бутон за призив към действие на Polaris."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Текст на бутона",
+        "description": "Текст, показан в бутона за призив към действие."
+      },
+      {
+        "property": "link",
+        "title": "Връзка",
+        "description": "Целеви URL за бутона."
+      },
+      {
+        "property": "type",
+        "title": "Вариант",
+        "description": "Вариант на визуалния стил.",
+        "options": {
+          "primary": "Основен",
+          "tinted": "Оцветен",
+          "light": "Светъл"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Контурен стил",
+        "description": "Включване на контурно оформление."
+      },
+      {
+        "property": "filled",
+        "title": "Запълнен стил",
+        "description": "Включване на запълнено оформление."
+      }
+    ]
+  }
+}

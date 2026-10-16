@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Ingcaphuno yemidiya",
+    "description": "Isithombe esinengcaphuno, umthombo, nencazelo ongayikhetha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Ingcaphuno",
+        "description": "Umbhalo wengcaphuno."
+      },
+      {
+        "slot": "author",
+        "title": "Umbhali",
+        "description": "Umbhali wengcaphuno."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Imininingwane yombhali",
+        "description": "Imininingwane yombhali."
+      },
+      {
+        "slot": "caption",
+        "title": "Incazelo yesithombe",
+        "description": "Incazelo yesithombe."
+      },
+      {
+        "property": "src",
+        "title": "Umthombo Wesithombe",
+        "description": "Ifayela lesithombe elisetshenziselwa ingcaphuno yemidiya."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo Ongenye",
+        "description": "Umbhalo ongenye wesithombe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Umbala Wokugcizelela",
+        "description": "Umbala wokugcizelela wekhadi."
+      }
+    ]
+  }
+}

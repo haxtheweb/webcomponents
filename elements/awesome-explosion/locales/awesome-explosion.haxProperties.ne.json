@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "अद्भुत विस्फोट",
+    "description": "वैकल्पिक ध्वनि प्रभावसहितको अन्तरक्रियात्मक विस्फोट एनिमेसन।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "आकार",
+        "description": "विस्फोटको आकार सेट गर्नुहोस्।",
+        "options": {
+          "tiny": "धेरै सानो",
+          "small": "सानो",
+          "medium": "मध्यम",
+          "large": "ठूलो",
+          "epic": "महाकाव्यीय"
+        }
+      },
+      {
+        "property": "color",
+        "title": "रङ",
+        "description": "विस्फोटको रङ थिम सेट गर्नुहोस्।",
+        "options": {
+          "": "पूर्वनिर्धारित",
+          "red": "रातो",
+          "blue": "नीलो",
+          "purple": "बैजनी",
+          "orange": "सुन्तला",
+          "yellow": "पहेँलो"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "ध्वनि प्रभावहरू",
+        "description": "ध्वनि प्रभावहरू सक्षम गर्नुहोस्।"
+      },
+      {
+        "property": "resetSound",
+        "title": "ध्वनि रिसेट",
+        "description": "हरेक पटक ध्वनि सुरुदेखि पुनः बजाउनुहोस्।"
+      },
+      {
+        "property": "image",
+        "title": "अनुकूल तस्बिर",
+        "description": "अनुकूल विस्फोट तस्बिरको वैकल्पिक URL।"
+      },
+      {
+        "property": "sound",
+        "title": "अनुकूल ध्वनि",
+        "description": "अनुकूल ध्वनि प्रभावको वैकल्पिक URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "निष्क्रिय",
+        "description": "सबै अन्तरक्रियाहरू निष्क्रिय गर्नुहोस्।"
+      }
+    ]
+  }
+}

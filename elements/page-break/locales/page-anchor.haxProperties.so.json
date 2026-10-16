@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Barroosinka Bogga",
+    "description": "Ku xiri meelo gaar ah oo warbaahinta bogga ku jirta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Bartilmaameedka bogga",
+        "description": "ID ama kheyraadka uu barroosinkani tilmaamayo."
+      },
+      {
+        "property": "value",
+        "title": "Qiimaha xiriiriyaha qoto dheer",
+        "description": "Qiimaha xiriiriyaha qoto dheer (tusaale waqti ama ID silaydh)."
+      },
+      {
+        "property": "entityId",
+        "title": "Hay'adda goobta",
+        "description": "Hay'ad goob oo ikhtiyaari ah oo lagu maamulo soo bandhigidda fikradaha la xiriira."
+      }
+    ]
+  }
+}

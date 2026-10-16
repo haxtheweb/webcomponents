@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Shënim ndalimi",
+    "description": "Një mesazh për t'i tërhequr vëmendjen lexuesve për udhëzime specifike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Shkruaj titullin për shënimin e ndalimit."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Shkruaj një URL të jashtme."
+      },
+      {
+        "property": "status",
+        "title": "Statusi",
+        "description": "Caktimi i statusit ndryshon ngjyrat dhe ikonat në përputhje",
+        "options": {
+          "stop": "Ndalo",
+          "warning": "Paralajmërim",
+          "success": "Konfirmim",
+          "info": "Njoftim"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Teksti i shënimit",
+        "description": "Teksti për shënimin e ndalimit."
+      }
+    ]
+  }
+}

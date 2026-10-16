@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Manusta lehele Disqusi kommentaarid."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Lühinimi",
+        "description": "Saidi lühinimi, mis määrab Disqusi skripti hosti."
+      },
+      {
+        "property": "pageURL",
+        "title": "Lehe URL",
+        "description": "Selle lehe URL, millega kommentaarilõim on seotud."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Lehe identifikaator",
+        "description": "Lehe kommentaarilõime unikaalne identifikaator."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Lehe pealkiri",
+        "description": "Selle lehe pealkiri, millega kommentaarilõim on seotud."
+      },
+      {
+        "property": "loadingText",
+        "title": "Laadimistekst",
+        "description": "Tekst, mis loetakse ette kommentaaride laadimise ajal."
+      },
+      {
+        "property": "lang",
+        "title": "Keel",
+        "description": "Disqusi liidese keelekood, nt en."
+      }
+    ]
+  }
+}

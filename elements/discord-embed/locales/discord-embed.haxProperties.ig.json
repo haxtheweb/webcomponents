@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Tinye obodo Discord site na URL nkekọrịta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL Akụrụngwa",
+        "description": "URL akụrụngwa."
+      },
+      {
+        "property": "height",
+        "title": "Ogo",
+        "description": "Ogo okpokolo ọdịnaya."
+      },
+      {
+        "property": "width",
+        "title": "Obosara",
+        "description": "Obosara okpokolo ọdịnaya."
+      }
+    ]
+  }
+}

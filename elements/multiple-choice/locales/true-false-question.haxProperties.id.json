@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Soal Benar / Salah",
+    "description": "Soal benar salah"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pertanyaan",
+        "description": "Pertanyaan yang harus dijawab pengguna."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Jawaban Benar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nama kuis",
+        "description": "Nama kuis yang diteruskan untuk digunakan di lingkungan berbasis xAPI guna mengidentifikasi item ini"
+      }
+    ]
+  }
+}

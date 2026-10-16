@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Vložení LinkedIn",
+    "description": "Vložte kartu profilu LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Vlastní název",
+        "description": "Část vlastní adresy uživatele LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Národní prostředí",
+        "description": "Hodnota metadat národního prostředí, např. en_US."
+      }
+    ]
+  }
+}

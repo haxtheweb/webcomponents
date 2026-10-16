@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "自测",
+    "description": "用户好完成自测。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "图片",
+        "description": "自测个图片。"
+      },
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "自测个标题。"
+      },
+      {
+        "property": "alt",
+        "title": "替代文字",
+        "description": "图片个替代文字。"
+      },
+      {
+        "slot": "question",
+        "title": "问题"
+      },
+      {
+        "slot": "",
+        "title": "答案"
+      },
+      {
+        "property": "accentColor",
+        "title": "主题色",
+        "description": "从设计系统里选主题色。",
+        "options": {
+          "primary": "主要",
+          "accent": "强调",
+          "success": "成功",
+          "warning": "警告",
+          "error": "错误",
+          "info": "信息"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学习目标",
+        "description": "以 oer:hasLearningObjective 输出个学习目标引用。"
+      },
+      {
+        "property": "assessing",
+        "title": "评估对象",
+        "description": "以 oer:assessing 输出个活动引用。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "更多链接",
+        "description": "链接到更多信息。"
+      }
+    ]
+  }
+}

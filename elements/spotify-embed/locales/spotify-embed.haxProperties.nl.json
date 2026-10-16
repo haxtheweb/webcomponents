@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Wrapper voor ingesloten Spotify-spelers."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Bron",
+        "description": "Insluit- of deellink van Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Thema",
+        "description": "Achtergrondkleurthema voor de speler.",
+        "options": {
+          "": "Standaard",
+          "0": "Zwart"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Grootte",
+        "description": "Grootte van de speler.",
+        "options": {
+          "normal": "Standaard",
+          "compact": "Compact"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "अवतरण ब्लॉक",
+    "description": "शैलीबद्ध अवतरण ब्लॉक."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "संदर्भ",
+        "description": "संदर्भ मजकूर."
+      },
+      {
+        "property": "alt",
+        "title": "पर्यायी मजकूर",
+        "description": "प्रतिमेसाठी पर्यायी मजकूर."
+      },
+      {
+        "property": "image",
+        "title": "प्रतिमा",
+        "description": "अवतरणासोबत दाखवलेली प्रतिमा."
+      }
+    ]
+  }
+}

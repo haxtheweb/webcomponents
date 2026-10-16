@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Flervalg",
+    "description": "Flervalgsspørsmål for egenkontroll."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spørsmål",
+        "description": "Spørsmål som brukerne skal svare på."
+      },
+      {
+        "property": "randomize",
+        "title": "Tilfeldig rekkefølge",
+        "description": "Stokk svarene dynamisk."
+      },
+      {
+        "property": "singleOption",
+        "title": "Ett svar",
+        "description": "Tillat bare ett svar."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vurderingsformat",
+        "description": "OER Schema: vurderingsformat for denne vurderingen (f.eks. poeng, bokstav, prosent, fullført)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurderingen."
+      },
+      {
+        "property": "forCourse",
+        "title": "Emne",
+        "description": "OER Schema: emnet denne vurderingen er beregnet for."
+      },
+      {
+        "property": "answers",
+        "title": "Svar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn på quizen",
+        "description": "Quiznavn brukt til xAPI-identifikasjon i analysesystemer."
+      }
+    ]
+  }
+}

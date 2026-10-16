@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS wiñay"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Allichanata pakay",
+        "description": "Willañiqi allichana interfazta pakay."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Terminalta pakay",
+        "description": "Kikinmanta puriq programakunapaq terminalta pakay."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Ventanata pakay",
+        "description": "Terminallapaq llamk'anapaq lluqsiy ventanata pakay."
+      },
+      {
+        "slot": "",
+        "title": "Kamachikuykuna",
+        "description": "Manaraq cargachkaspa purichinapaq kamachikuykuna (sapa siqipi huk)."
+      }
+    ]
+  }
+}

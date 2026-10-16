@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Player de documentação de web component"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Ocultar janela",
+        "description": "Ocultar a janela de saída, útil quando o objetivo é usar apenas o terminal"
+      }
+    ]
+  }
+}

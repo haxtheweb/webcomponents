@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Taariikh",
+    "description": "Muuji taariikh jadwal leh faahfaahin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Bil",
+        "description": "Bisha ka muuqata kaarka."
+      },
+      {
+        "property": "date",
+        "title": "Maalinta bisha",
+        "description": "Lambarka maalinta bisha."
+      },
+      {
+        "property": "day",
+        "title": "Maalinta toddobaadka",
+        "description": "Magaca maalinta toddobaadka."
+      },
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Magaca dhacdada."
+      },
+      {
+        "property": "location",
+        "title": "Goob",
+        "description": "Goobta dhacdada."
+      },
+      {
+        "property": "startTime",
+        "title": "Bilow",
+        "description": "Waqtiga bilowga."
+      },
+      {
+        "property": "endTime",
+        "title": "Dhammaad",
+        "description": "Waqtiga dhammaadka."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka Xoojinta",
+        "description": "Midab xoojin oo ikhtiyaari ah."
+      },
+      {
+        "property": "dark",
+        "title": "Mawduuc Madow",
+        "description": "Daar mawduuca madow."
+      }
+    ]
+  }
+}

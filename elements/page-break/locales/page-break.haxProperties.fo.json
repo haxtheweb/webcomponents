@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Upplýsingar um síðu",
+    "description": "Ásetur eitt sjónligt skil millum síður, sum CMS-skipanir kunnu nýta at gera síður."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Heiti, sum verður víst í evninum og sum fyrsta yvirskrift."
+      },
+      {
+        "property": "pageType",
+        "title": "Slag",
+        "description": "Sjónligt samanhangsheiti fyri síðuna.",
+        "options": {
+          "": "-- einki --",
+          "content": "Innihald",
+          "assessment": "Meting",
+          "quiz": "Spurnakapping",
+          "submission": "Innlevering",
+          "lesson": "Lestur",
+          "module": "Modul",
+          "task": "Uppgáva",
+          "activity": "Virksemi",
+          "project": "Verkætlan",
+          "practice": "Venjing",
+          "unit": "Eind",
+          "objectives": "Lærumál",
+          "connection": "Samband",
+          "knowledge": "Visti tú?",
+          "strategy": "Lærutøkni",
+          "discuss": "Kjakast",
+          "listen": "Lurta",
+          "make": "Ger",
+          "observe": "Eygleið",
+          "present": "Legg fram",
+          "reading": "Lesing",
+          "reflect": "Hugleið",
+          "research": "Granska",
+          "watch": "Hygg",
+          "write": "Skriva"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Frámerki",
+        "description": "Listi av frámerkjum, skilt sundur við komma."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Leinki-URL",
+        "description": "Víðaristillingar-URL, sum verður víst í staðin fyri síðuinnihald."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Leinkjumál",
+        "description": "Lat leinki upp í sama vindeyga ella í nýggjum vindeyga.",
+        "options": {
+          "_self": "Sama vindeyga",
+          "_blank": "Nýtt vindeyga"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Útgivið",
+        "description": "Óútgivnar síður eru fjaldar fyri endabrúkarum."
+      },
+      {
+        "property": "locked",
+        "title": "Læs síðu",
+        "description": "Læs ella lat upp allar eindir á hesi síðuni."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Ger sjálvvirkna slóðnavnið ógildugt",
+        "description": "Læs slóðnavnið, so tað ikki verður sjálvvirkið dagført eftir heiti ella yvirsíðu."
+      },
+      {
+        "property": "slug",
+        "title": "Slóð",
+        "description": "URL-slóðnavn til hesa síðuna."
+      },
+      {
+        "property": "image",
+        "title": "Miðil",
+        "description": "Miðil, sum umboðar síðuna, nýttur í summum evnum og vísingum."
+      },
+      {
+        "property": "parent",
+        "title": "Yvirsíða",
+        "description": "Slóð til yvirsíðuna."
+      },
+      {
+        "property": "noderefs",
+        "title": "Skylt innihald",
+        "description": "Síður, sum eru skyldar hesi síðuni."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Lýsing",
+        "description": "Lýsing, sum verður nýtt í søvnum og til leitimotoroptimering."
+      },
+      {
+        "property": "entityType",
+        "title": "Eindarslag",
+        "description": "Er síða, um einki annað er ásett.",
+        "options": {
+          "page": "Síða (standard)",
+          "taxonomy": "Flokking",
+          "taxonomyTerm": "Flokkingarheiti",
+          "region": "Øki"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ímynd",
+        "description": "Ímynd knýtt at hesi síðuni á heimasíðuni."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Litur knýttur at hesi síðuni á heimasíðuni."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Fjal í valmynd",
+        "description": "Fjal hesa síðuna í valmyndum, men varðveit URL hennara."
+      },
+      {
+        "property": "order",
+        "title": "Raðfylgja",
+        "description": "Raðfylgja í mun til systkinsíður."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Síðuevni",
+        "description": "Nýt annað evni bert á hesi síðuni."
+      },
+      {
+        "property": "author",
+        "title": "Høvundur",
+        "description": "Brúkaranavn hjá tí seinasta, sum broytti hesa síðuna."
+      }
+    ]
+  }
+}

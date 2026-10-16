@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ಪ್ಲೇ ಪಟ್ಟಿ",
+    "description": "ಯಾವುದೇ ರೀತಿಯ ವಿಷಯವನ್ನು ಪ್ಲೇಪಟ್ಟಿಯಲ್ಲಿ ಪ್ರದರ್ಶಿಸಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ಮೂಲ",
+        "description": "ಪ್ಲೇಪಟ್ಟಿಯಲ್ಲಿ ತೋರಿಸುವ ವಿಷಯ."
+      },
+      {
+        "property": "edit",
+        "title": "ಸಂಪಾದನೆ ಮೋಡ್",
+        "description": "ಪ್ಲೇಪಟ್ಟಿಗಾಗಿ ಸಂಪಾದನೆ ಮತ್ತು ಪೂರ್ವವೀಕ್ಷಣೆ ಮೋಡ್ ನಡುವೆ ಬದಲಿಸಿ."
+      },
+      {
+        "property": "navigation",
+        "title": "ನ್ಯಾವಿಗೇಷನ್",
+        "description": "ಮುಂದೆ ಮತ್ತು ಹಿಂದೆ ನ್ಯಾವಿಗೇಷನ್ ಬಟನ್‌ಗಳನ್ನು ತೋರಿಸಿ."
+      },
+      {
+        "property": "pagination",
+        "title": "ಪುಟ ವಿಂಗಡಣೆ",
+        "description": "ಪುಟ ವಿಂಗಡಣೆ ಚುಕ್ಕೆಗಳನ್ನು ತೋರಿಸಿ."
+      },
+      {
+        "property": "orientation",
+        "title": "ದಿಕ್ಕು",
+        "description": "ಸ್ಲೈಡ್‌ಗಳ ದಿಕ್ಕು.",
+        "options": {
+          "horizontal": "ಅಡ್ಡ",
+          "vertical": "ಲಂಬ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "ಪ್ರಾರಂಭಿಸುವ ಸ್ಲೈಡ್",
+        "description": "ಆರಂಭದಲ್ಲಿ ಫೋಕಸ್ ಮಾಡಬೇಕಾದ ಸ್ಲೈಡ್ ಸೂಚ್ಯಂಕ."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "ಆಕಾರ ಅನುಪಾತ",
+        "description": "ಸ್ಲೈಡ್‌ಗಳ ಆಕಾರ ಅನುಪಾತ.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

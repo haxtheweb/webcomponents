@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV tablosu",
+    "description": "Nerede bulunursa bulunsun bir CSV dosyasından tablo oluşturabilir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Kaynak",
+        "description": "Bu CSV dosyasının URL'si."
+      },
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Oluşturulacak tablonun başlığı."
+      },
+      {
+        "property": "description",
+        "title": "Açıklama",
+        "description": "Tablo verilerinin erişilebilirliğini artırmak için daha ayrıntılı açıklama."
+      }
+    ]
+  }
+}

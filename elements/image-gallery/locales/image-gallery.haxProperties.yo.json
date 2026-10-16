@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Àkójọ Àwòrán",
+    "description": "Àkójọ tí ó ń fi àwọn àwòrán hàn ní ìtò àwọ̀n, ògiri, tàbí àfihàn-sílàìdì."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Ipò ìfihàn",
+        "description": "Bí a ó ṣe fi àwọn àwòrán hàn nínú àkójọ náà.",
+        "options": {
+          "grid": "Àwọ̀n",
+          "masonry": "Ògiri",
+          "gallery": "Àkójọ àwòrán"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Atọ́ka tí ń ṣiṣẹ́",
+        "description": "Atọ́ka àwòrán tí a ó fi bẹ̀rẹ̀ ní ipò àkójọ àwòrán."
+      }
+    ]
+  }
+}

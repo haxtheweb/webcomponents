@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX hitz-artea",
+    "description": "HAXen logo elementua, noski HAX gaitasuna duen elementu gisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Jarri beharreko HAX logoaren tamaina",
+        "options": {
+          "mini": "Mini",
+          "small": "Txikia",
+          "normal": "Normala",
+          "large": "Handia"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Logoa letra larrietara bihurtu ala ez"
+      }
+    ]
+  }
+}

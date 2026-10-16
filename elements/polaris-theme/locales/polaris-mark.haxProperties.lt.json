@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris ženklas",
+    "description": "Rodyti PSU identiteto ženklą su pasirenkamu koledžo pavadinimu ir paskirties URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Koledžo pavadinimas",
+        "description": "Šalia ženklo rodomas pavadinimas."
+      },
+      {
+        "property": "name2",
+        "title": "Koledžo pavadinimas 2",
+        "description": "Antrasis pavadinimas, rodomas po pirmuoju koledžo pavadinimu."
+      },
+      {
+        "property": "name3",
+        "title": "Koledžo pavadinimas 3",
+        "description": "Trečiasis pavadinimas, rodomas po antruoju koledžo pavadinimu."
+      },
+      {
+        "property": "url",
+        "title": "Nuoroda",
+        "description": "Paskirties URL spustelėjus ženklą."
+      },
+      {
+        "property": "type",
+        "title": "Variantas",
+        "description": "Vizualinis ženklo variantas.",
+        "options": {
+          "default": "Numatytoji",
+          "light": "Šviesus",
+          "dark": "Tamsus"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Vertikalus išdėstymas",
+        "description": "Rodyti trečiąjį pavadinimą po antruoju, atskiriant horizontalia linija."
+      }
+    ]
+  }
+}

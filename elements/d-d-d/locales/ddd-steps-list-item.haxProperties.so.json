@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Walax tallaabo",
+    "description": "Walax ka mid ah liiska tallaabooyinka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cinwaan"
+      }
+    ]
+  }
+}

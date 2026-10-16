@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Ngulitje Twitter (X)",
+    "description": "Ngulit një postim nga X në kontekst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL-ja e postimit",
+        "description": "URL-ja e postimit për t'u ngulitur."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Temë e çelët ose e errët për postimet në X.",
+        "options": {
+          "light": "E çelët",
+          "dark": "E errët"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Parandalo dritaren që hapet me klikim",
+        "description": "Parandalo përdoruesit të hapin postimin në x.com."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Seni kata HAX",
+    "description": "Elemen logo untuk HAX, tentu saja sebagai elemen yang mendukung HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Ukuran logo HAX yang akan ditempatkan",
+        "options": {
+          "mini": "Mini",
+          "small": "Kecil",
+          "normal": "Normal",
+          "large": "Besar"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Apakah logo diubah menjadi huruf kapital"
+      }
+    ]
+  }
+}

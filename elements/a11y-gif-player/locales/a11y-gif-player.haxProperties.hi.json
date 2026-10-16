@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "एनिमेटेड GIF को सुलभ बनाएँ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "एनिमेटेड GIF",
+        "description": "एनिमेटेड GIF का URL।"
+      },
+      {
+        "property": "alt",
+        "title": "वैकल्पिक टेक्स्ट",
+        "description": "छवि के लिए वैकल्पिक टेक्स्ट।"
+      },
+      {
+        "property": "longdesc",
+        "title": "विस्तृत विवरण",
+        "description": "सुलभता के लिए GIF का विस्तृत विवरण।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "स्थिर छवि",
+        "description": "GIF के स्थिर छवि संस्करण का URL।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Întrebare Adevărat / Fals",
+    "description": "Întrebare adevărat-fals"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Întrebare",
+        "description": "Întrebarea la care răspund utilizatorii."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Răspuns corect"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Numele testului",
+        "description": "Numele testului transmis pentru identificarea acestui element în medii bazate pe xAPI"
+      }
+    ]
+  }
+}

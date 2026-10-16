@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Korisnička radnja",
+    "description": "Pratite korisničke radnje i šaljite podatke u xAPI spremišta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Događaj za praćenje",
+        "description": "Korisnička radnja koja pokreće ovaj događaj.",
+        "options": {
+          "visibility": "Vidi ovo",
+          "keydown": "Pritisne tipku ovdje",
+          "click": "Klikne ovo",
+          "hover": "Zadrži pokazivač iznad ovoga"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Prati svaki put",
+        "description": "Prema zadanim postavkama prati se samo prva pojava."
+      }
+    ]
+  }
+}

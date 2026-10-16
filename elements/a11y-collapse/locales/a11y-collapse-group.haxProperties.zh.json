@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "展开折叠组",
+    "description": "一组可展开/折叠的元素。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "仅展开一项",
+        "description": "一次只能展开一项。"
+      },
+      {
+        "slot": "",
+        "title": "折叠项",
+        "description": "折叠项目。"
+      }
+    ]
+  }
+}

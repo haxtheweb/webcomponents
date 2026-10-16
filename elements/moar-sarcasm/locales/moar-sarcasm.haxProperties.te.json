@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "వ్యంగ్యం",
+    "description": "వచనాన్ని ఆటపట్టించే విధంగా ప్రదర్శించడం"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "వచనం",
+        "description": "వ్యంగ్యంగా మార్చాల్సిన వచనం"
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Cytat z multimediami",
+    "description": "Obraz z cytatem, źródłem i opcjonalnym podpisem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Cytat",
+        "description": "Tekst cytatu."
+      },
+      {
+        "slot": "author",
+        "title": "Autor",
+        "description": "Autor cytatu."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Informacje o autorze",
+        "description": "Informacje o autorze."
+      },
+      {
+        "slot": "caption",
+        "title": "Podpis",
+        "description": "Podpis obrazu."
+      },
+      {
+        "property": "src",
+        "title": "Źródło obrazu",
+        "description": "Plik obrazu używany w cytacie z multimediami."
+      },
+      {
+        "property": "alt",
+        "title": "Tekst alternatywny",
+        "description": "Tekst alternatywny obrazu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Kolor akcentu karty."
+      }
+    ]
+  }
+}

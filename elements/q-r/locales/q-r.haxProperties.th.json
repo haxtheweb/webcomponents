@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "รหัส QR",
+    "description": "รหัสสำหรับสแกนจากสมาร์ทโฟน"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "ข้อมูล QR",
+        "description": "แหล่งที่มาของข้อมูลสำหรับรหัส QR"
+      },
+      {
+        "property": "title",
+        "title": "ชื่อทางเลือก",
+        "description": "ชื่อทางเลือกที่ลิงก์กับแหล่งที่มาของรหัส QR"
+      },
+      {
+        "property": "modulesize",
+        "title": "ขนาด",
+        "description": "ขนาดของรหัส QR"
+      },
+      {
+        "property": "margin",
+        "title": "ระยะขอบ",
+        "description": "ระยะห่างรอบรหัส"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "รูปแบบเอาต์พุต",
+        "description": "รูปแบบที่จะส่งออก",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

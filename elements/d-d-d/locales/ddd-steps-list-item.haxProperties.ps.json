@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "د ګامونو توکی",
+    "description": "هغه توکی چې د ګامونو د لېست برخه ده"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرلیک"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Pytanie z krótką odpowiedzią",
+    "description": "Poproś użytkownika o odpowiedź na proste pytanie"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pytanie",
+        "description": "Pytanie, na które użytkownicy mają odpowiedzieć."
+      },
+      {
+        "property": "answers",
+        "title": "Możliwe odpowiedzi"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nazwa quizu",
+        "description": "Nazwa quizu przekazywana do środowisk opartych na xAPI w celu identyfikacji tego elementu"
+      }
+    ]
+  }
+}

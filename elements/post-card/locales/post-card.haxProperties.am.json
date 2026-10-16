@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "የፖስታ ካርድ",
+    "description": "ከአንድ ቦታ የተላከ እውነተኛ የፖስታ ካርድ እንዲመስል የተሠራ ተጫዋች የሚዲያ ክፍል"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "ለ",
+        "description": "ይህ ለማን ነው የሚሄደው?"
+      },
+      {
+        "property": "from",
+        "title": "ከ",
+        "description": "አንተ ማን ነህ?"
+      },
+      {
+        "property": "message",
+        "title": "መልእክት",
+        "description": "ምን ማለት ትፈልጋለህ?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "የተላከበት ማህተም",
+        "description": "ይህ ካርድ ከየት ነው የተላከው?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "የዋና ፎቶ ምንጭ",
+        "description": "ፎቶህ የት ነው የሚገኘው?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "የቴምብር ፎቶ ምንጭ",
+        "description": "ፎቶህ የት ነው የሚገኘው?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "क्रमबद्ध करने वाला प्रश्न",
+    "description": "आइटम को सही क्रम में लगाएँ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "प्रश्न",
+        "description": "प्रश्न शीर्षक।"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ग्रेडिंग प्रारूप",
+        "description": "OER Schema: इस मूल्यांकन का ग्रेडिंग प्रारूप (जैसे अंक, अक्षर ग्रेड, प्रतिशत, पूर्णता)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "अधिगम उद्देश्य",
+        "description": "OER Schema: इस मूल्यांकन से जुड़ा अधिगम उद्देश्य।"
+      },
+      {
+        "property": "forCourse",
+        "title": "पाठ्यक्रम",
+        "description": "OER Schema: वह पाठ्यक्रम जिसके लिए यह मूल्यांकन है।"
+      },
+      {
+        "property": "answers",
+        "title": "उत्तर",
+        "description": "उत्तरों का क्रम सही अनुक्रम निर्धारित करता है।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "क्विज़ का नाम",
+        "description": "एनालिटिक्स प्रणालियों में xAPI पहचान के लिए प्रयुक्त क्विज़ नाम।"
+      }
+    ]
+  }
+}

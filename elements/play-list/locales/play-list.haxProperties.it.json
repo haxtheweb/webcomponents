@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Playlist",
+    "description": "Mostra qualsiasi tipo di contenuto in una playlist."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Origine",
+        "description": "Contenuto mostrato nella playlist."
+      },
+      {
+        "property": "edit",
+        "title": "Modalità modifica",
+        "description": "Passa dalla modalità modifica all'anteprima della playlist e viceversa."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigazione",
+        "description": "Mostra i pulsanti di navigazione avanti e indietro."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginazione",
+        "description": "Mostra i punti di paginazione."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientamento",
+        "description": "Orientamento delle diapositive.",
+        "options": {
+          "horizontal": "Orizzontale",
+          "vertical": "Verticale"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Diapositiva iniziale",
+        "description": "Indice della diapositiva da mostrare inizialmente."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Proporzioni",
+        "description": "Proporzioni delle diapositive.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

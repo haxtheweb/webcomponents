@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "השוואת תמונות",
+    "description": "החלקת תמונה אחת מעל אחרת לצורך השוואה."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "תמונה עליונה",
+        "description": "התמונה העליונה שמוחלקת מעל התמונה התחתונה."
+      },
+      {
+        "property": "topAlt",
+        "title": "טקסט חלופי לתמונה העליונה",
+        "description": "טקסט חלופי נדרש לצורכי נגישות."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "תמונה תחתונה",
+        "description": "התמונה התחתונה המוצגת מתחת לתמונה העליונה."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "טקסט חלופי לתמונה התחתונה",
+        "description": "טקסט חלופי נדרש לצורכי נגישות."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "התנהגות",
+        "description": "בחרו מצב מחיקה (ברירת מחדל) או מצב שקיפות של התמונה העליונה."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע פס המחוון."
+      },
+      {
+        "property": "dark",
+        "title": "כהה",
+        "description": "היפוך צבע פס המחוון."
+      },
+      {
+        "property": "position",
+        "title": "מיקום התחלתי",
+        "description": "מיקום התחלתי בין 0 ל-100."
+      }
+    ]
+  }
+}

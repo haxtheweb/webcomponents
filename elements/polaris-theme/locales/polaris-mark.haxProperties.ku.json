@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Nîşana Polaris",
+    "description": "Nîşana nasnameyê ya PSU bi navê kolejê û URL ya armanc a vebijarkî nîşan bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Navê kolejê",
+        "description": "Navê ku li kêleka nîşanê tê nîşandan."
+      },
+      {
+        "property": "name2",
+        "title": "Navê kolejê 2",
+        "description": "Navê duyem ku li binê navê kolejê yê yekem tê nîşandan."
+      },
+      {
+        "property": "name3",
+        "title": "Navê kolejê 3",
+        "description": "Navê sêyem ku li binê navê kolejê yê duyem tê nîşandan."
+      },
+      {
+        "property": "url",
+        "title": "Girêdan",
+        "description": "URL ya armanc dema ku li nîşanê tê tikandin."
+      },
+      {
+        "property": "type",
+        "title": "Guhertox",
+        "description": "Guhertoxa dîtbarî ya nîşanê.",
+        "options": {
+          "default": "Xwerû",
+          "light": "Ronî",
+          "dark": "Tarî"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Rûpelsazkirina vertîkal",
+        "description": "Navê sêyem li binê navê duyem bi xêzeke horîzontal nîşan bide."
+      }
+    ]
+  }
+}

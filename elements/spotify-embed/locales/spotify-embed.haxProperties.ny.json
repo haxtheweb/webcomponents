@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Chokulunga cha zoseweretsa za Spotify zoyikidwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Gwero",
+        "description": "Ulalo woyika kapena wogawana kuchokera ku Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Mawonekedwe",
+        "description": "Mtundu wakumbuyo wa choseweretsa.",
+        "options": {
+          "": "Mwachisawawa",
+          "0": "Wakuda"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Kukula",
+        "description": "Kukula kwa choseweretsa.",
+        "options": {
+          "normal": "Mwachisawawa",
+          "compact": "Chophatikizika"
+        }
+      }
+    ]
+  }
+}

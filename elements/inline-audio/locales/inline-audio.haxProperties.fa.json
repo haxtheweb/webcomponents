@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "صدای درون‌خطی",
+    "description": "پخش درون‌خطی صدا برای تکمیل محتوای صفحه."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "منبع",
+        "description": "فایل MP3 یا URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی کارت."
+      },
+      {
+        "property": "shiny",
+        "title": "درخشان",
+        "description": "استفاده از پس‌زمینهٔ تأکیدی روشن‌تر به‌جای خاکستری."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "تیره",
+        "description": "استفاده از حالت تیره."
+      }
+    ]
+  }
+}

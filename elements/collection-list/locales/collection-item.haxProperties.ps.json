@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "د ټولګې توکی",
+    "description": "د ټولګې په لېست کې د کارونې لپاره د کارت په بڼه توکی، له متن، لینک او اختیاري رسنۍ سره."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "لینک",
+        "description": "د دې کارت لپاره د منزل URL."
+      },
+      {
+        "property": "image",
+        "title": "انځور",
+        "description": "د شالید انځور."
+      },
+      {
+        "property": "line1",
+        "title": "لومړۍ کرښه",
+        "description": "د متن لومړۍ کرښه."
+      },
+      {
+        "property": "line2",
+        "title": "دویمه کرښه",
+        "description": "د متن دویمه کرښه."
+      },
+      {
+        "property": "line3",
+        "title": "درېیمه کرښه",
+        "description": "د متن درېیمه کرښه."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "آیکن",
+        "description": "هغه آیکن چې د کارت استازیتوب کوي."
+      },
+      {
+        "property": "saturate",
+        "title": "د رنګ د اشباع اغېز",
+        "description": "د کارن د تمرکز پر مهال د انځور د رنګ اشباع بدله کړئ."
+      },
+      {
+        "property": "tags",
+        "title": "ټګونه",
+        "description": "د کامې په واسطه جلا شوو ټګونو لېست."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنګ",
+        "description": "د ټګونو لپاره کارول شوی رنګ."
+      },
+      {
+        "property": "alt",
+        "title": "بدیل متن",
+        "description": "بدیل متن چې لینک تشریح کوي."
+      }
+    ]
+  }
+}

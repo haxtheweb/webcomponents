@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Саптагы аудио",
+    "description": "Беттин мазмунун толуктоо үчүн аудиону сап ичинде ойнотуу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Булак",
+        "description": "MP3 файлы же URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Картанын акцент түсү."
+      },
+      {
+        "property": "shiny",
+        "title": "Жалтырак",
+        "description": "Боз түстүн ордуна ачыгыраак акцент фонун колдонуу."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Караңгы",
+        "description": "Караңгы режимди колдонуу."
+      }
+    ]
+  }
+}

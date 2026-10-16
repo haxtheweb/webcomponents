@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "E hoʻokomo i ka ʻikepili pūnaewele o waho i loko o kekahi iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL Kumuwaiwai",
+        "description": "URL kumuwaiwai."
+      },
+      {
+        "property": "height",
+        "title": "Kiʻekiʻe",
+        "description": "Kiʻekiʻe iframe."
+      },
+      {
+        "property": "width",
+        "title": "Ākea",
+        "description": "Ākea iframe."
+      }
+    ]
+  }
+}

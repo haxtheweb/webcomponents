@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "පිටු ධජය",
+    "description": "පිටු කතුවරුන් සඳහා සංස්කරණ සටහන."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "පිටු ධජය සඳහා උච්චාරණ වර්ණය."
+      },
+      {
+        "property": "label",
+        "title": "ලේබලය",
+        "description": "පිටු ධජය සඳහා ලේබල පෙළ."
+      }
+    ]
+  }
+}

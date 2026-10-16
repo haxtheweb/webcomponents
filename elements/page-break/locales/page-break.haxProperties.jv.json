@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Rincian kaca",
+    "description": "Temtokake pamisah visual antarane kaca sing bisa digunakake CMS kanggo nggawe kaca."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Judhul",
+        "description": "Judhul sing katon ing tema lan irah-irahan kapisan."
+      },
+      {
+        "property": "pageType",
+        "title": "Jinis",
+        "description": "Label konteks kaca visual.",
+        "options": {
+          "": "-- ora ana --",
+          "content": "Isi",
+          "assessment": "Penilaian",
+          "quiz": "Kuis",
+          "submission": "Pangiriman",
+          "lesson": "Piwulang",
+          "module": "Modul",
+          "task": "Tugas",
+          "activity": "Kagiyatan",
+          "project": "Proyek",
+          "practice": "Latihan",
+          "unit": "Unit",
+          "objectives": "Tujuan Sinau",
+          "connection": "Sesambungan",
+          "knowledge": "Apa Sampeyan Ngerti?",
+          "strategy": "Strategi Sinau",
+          "discuss": "Diskusi",
+          "listen": "Rungokna",
+          "make": "Gawe",
+          "observe": "Amati",
+          "present": "Presentasi",
+          "reading": "Maca",
+          "reflect": "Refleksi",
+          "research": "Riset",
+          "watch": "Tonton",
+          "write": "Nulis"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Dhaptar tag sing dipisah koma."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL Pranala",
+        "description": "URL pangalihan sing katon tinimbang isi kaca."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Target Pranala",
+        "description": "Bukak pranala ing jendhela sing padha utawa jendhela anyar.",
+        "options": {
+          "_self": "Jendhela padha",
+          "_blank": "Jendhela anyar"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Diterbitake",
+        "description": "Kaca sing durung diterbitake didhelikake saka pangguna pungkasan."
+      },
+      {
+        "property": "locked",
+        "title": "Kunci kaca",
+        "description": "Kunci utawa bukak kunci kabeh unsur ing kaca iki."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Ganti slug otomatis",
+        "description": "Kunci slug supaya ora dianyari otomatis miturut judhul utawa induk."
+      },
+      {
+        "property": "slug",
+        "title": "Path",
+        "description": "Slug URL kanggo kaca iki."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Media sing makili kaca, digunakake ing sawetara tema lan tampilan."
+      },
+      {
+        "property": "parent",
+        "title": "Induk",
+        "description": "Path kaca induk."
+      },
+      {
+        "property": "noderefs",
+        "title": "Isi sing gegandhengan",
+        "description": "Kaca-kaca sing gegandhengan karo kaca iki."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Katrangan",
+        "description": "Katrangan sing digunakake ing koleksi lan optimasi mesin telusur."
+      },
+      {
+        "property": "entityType",
+        "title": "Jinis Entitas",
+        "description": "Gawane kaca kajaba disetel liya.",
+        "options": {
+          "page": "Kaca (gawan)",
+          "taxonomy": "Taksonomi",
+          "taxonomyTerm": "Istilah Taksonomi",
+          "region": "Wilayah"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon sing digandhengake karo kaca iki ing situs."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna aksen",
+        "description": "Werna sing digandhengake karo kaca iki ing situs."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Dhelikake ing menu",
+        "description": "Dhelikake kaca iki saka menu nanging URL-e tetep ana."
+      },
+      {
+        "property": "order",
+        "title": "Urutan",
+        "description": "Urutan relatif marang kaca sadulur."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Tema kaca",
+        "description": "Ganti tema mung kanggo kaca iki."
+      },
+      {
+        "property": "author",
+        "title": "Panganggit",
+        "description": "Jeneng pangguna wong pungkasan sing ngowahi kaca iki."
+      }
+    ]
+  }
+}

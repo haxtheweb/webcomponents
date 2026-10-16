@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Citazione cù imagine",
+    "description": "Imagine cù una citazione, un riferimentu è una legenda facultativa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Citazione",
+        "description": "Testu di a citazione."
+      },
+      {
+        "slot": "author",
+        "title": "Autore",
+        "description": "Autore di a citazione."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Detagli di l'autore",
+        "description": "Detagli di l'autore."
+      },
+      {
+        "slot": "caption",
+        "title": "Legenda",
+        "description": "Legenda di l'imagine."
+      },
+      {
+        "property": "src",
+        "title": "Fonte di l'imagine",
+        "description": "Schedariu d'imagine adupratu per a citazione cù imagine."
+      },
+      {
+        "property": "alt",
+        "title": "Testu alternativu",
+        "description": "Testu alternativu per l'imagine."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Culore d'accentu di a carta."
+      }
+    ]
+  }
+}

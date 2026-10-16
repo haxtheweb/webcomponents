@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Skupina rozbalovacích panelů",
+    "description": "Skupina rozbalovacích a sbalovacích prvků."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Rozbalit jen jeden",
+        "description": "Rozbalená může být jen jedna položka."
+      },
+      {
+        "slot": "",
+        "title": "Sbalitelné položky",
+        "description": "Sbalitelné položky."
+      }
+    ]
+  }
+}

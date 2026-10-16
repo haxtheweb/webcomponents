@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "دیدگاه‌های Disqus",
+    "description": "یکپارچه‌سازی با سرویس وب دیدگاه‌گذاری Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "نام کوتاه",
+        "description": "نام کوتاه ویژگی در Disqus"
+      }
+    ]
+  }
+}

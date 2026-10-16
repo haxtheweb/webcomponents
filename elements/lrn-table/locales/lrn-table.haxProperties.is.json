@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV-tafla",
+    "description": "Þetta getur búið til töflu úr CSV-skrá óháð því hvar hún er staðsett."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Uppruni",
+        "description": "URL fyrir þessa CSV-skrá."
+      },
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Titill töflunnar sem á að búa til."
+      },
+      {
+        "property": "description",
+        "title": "Lýsing",
+        "description": "Ítarlegri lýsing til að bæta aðgengi að gögnum töflunnar."
+      }
+    ]
+  }
+}

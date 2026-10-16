@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Сарказм",
+    "description": "Текстны төрттереп күрсәтү"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Текст",
+        "description": "Сарказмлы итәсе текст"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Chwaraewr Unity",
+    "description": "Chwaraewr Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Targed",
+        "description": "Llwybr at adeiliad y gêm."
+      },
+      {
+        "property": "compression",
+        "title": "Dull cywasgu",
+        "description": "Estyniad ffeil cywasgu ar gyfer asedau'r gêm."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL ffrydio",
+        "description": "URL asedau ffrydio."
+      },
+      {
+        "property": "companyname",
+        "title": "Enw'r Cwmni",
+        "description": "Enw'r cwmni."
+      },
+      {
+        "property": "productname",
+        "title": "Enw'r Cynnyrch",
+        "description": "Teitl y gêm."
+      },
+      {
+        "property": "productversion",
+        "title": "Fersiwn y Cynnyrch",
+        "description": "Fersiwn y rhyddhad."
+      },
+      {
+        "property": "width",
+        "title": "Lled y Cynfas",
+        "description": "Lled CSS y cynfas (er enghraifft px neu em)."
+      },
+      {
+        "property": "height",
+        "title": "Uchder y Cynfas",
+        "description": "Uchder CSS y cynfas (er enghraifft px neu em)."
+      },
+      {
+        "property": "background",
+        "title": "Cefndir y Cynfas",
+        "description": "Cefndir CSS y cynfas."
+      }
+    ]
+  }
+}

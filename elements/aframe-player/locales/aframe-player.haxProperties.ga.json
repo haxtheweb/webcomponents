@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Seinnteoir 3D",
+    "description": "Seinnteoir comhad 3D / réaltachta méadaithe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Foinse",
+        "description": "An URL don chomhad AR seo."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Suíomh X na heiliminte in AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Suíomh Y na heiliminte in AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Suíomh Z na heiliminte in AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Dath na spéire",
+        "description": "Roghnaigh dath na spéire sa radharc."
+      }
+    ]
+  }
+}

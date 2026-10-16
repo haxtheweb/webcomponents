@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Wax soo saar jaleeco",
+    "description": "Qayb dulmar degdeg ah oo wax soo saarka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Astaan",
+        "description": "Astaanta matalaysa fikradda."
+      },
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Fikradda ugu muhiimsan jaleeco keliya."
+      },
+      {
+        "property": "subtitle",
+        "title": "Cinwaan hoosaad",
+        "description": "Faahfaahin dheeraad ah."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka xoojinta",
+        "description": "Midabka xoojinta astaanta."
+      }
+    ]
+  }
+}

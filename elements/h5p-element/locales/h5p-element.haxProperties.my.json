@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": ".h5p ဖိုင်များကို ဖွင့်ပြီး တင်ပြရန် H5P wrapper"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe embed ကုဒ်"
+      }
+    ]
+  }
+}

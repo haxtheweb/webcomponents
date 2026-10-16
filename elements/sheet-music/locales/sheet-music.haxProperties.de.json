@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Noten",
+    "description": "Stellt Noten, Gitarrentabulaturen und Partituren über alphaTex oder MusicXML dar und spielt sie ab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex-Notation",
+        "description": "Inline-alphaTex-Markup für die Noten. Direkt bearbeiten, um Notation zu verfassen; sie wird in einem Template gespeichert, damit Abstände erhalten bleiben."
+      },
+      {
+        "property": "source",
+        "title": "Partiturdatei",
+        "description": "Eine MusicXML-Datei (.xml/.musicxml/.mxl) oder Guitar-Pro-Datei (.gp3/.gp4/.gp5/.gpx/.gp) hochladen oder verlinken. Überschreibt das Inline-alphaTex, wenn festgelegt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Audiowiedergabe",
+        "description": "Standardmäßig aktiviert – die Noten über den integrierten Synthesizer anhören. Für den reinen Ansichtsmodus (ohne Audio) deaktivieren."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Anzeigeoptionen einblenden",
+        "description": "Schaltflächen für Zoom, Strecken und Layout in der Player-Leiste anzeigen."
+      },
+      {
+        "property": "showExport",
+        "title": "Export-Schaltflächen einblenden",
+        "description": "Schaltflächen für MIDI-Download und Drucken/PDF in der Player-Leiste anzeigen."
+      }
+    ]
+  }
+}

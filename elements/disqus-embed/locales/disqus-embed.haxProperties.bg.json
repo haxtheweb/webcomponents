@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Вграждане на коментари от Disqus в страница."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Кратко име",
+        "description": "Краткото име на сайта, което определя хоста на скрипта на Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL на страницата",
+        "description": "URL на страницата, към която е прикрепена нишката с коментари."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Идентификатор на страницата",
+        "description": "Уникалният идентификатор на нишката с коментари на страницата."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Заглавие на страницата",
+        "description": "Заглавието на страницата, към която е прикрепена нишката с коментари."
+      },
+      {
+        "property": "loadingText",
+        "title": "Текст при зареждане",
+        "description": "Текст, който се обявява, докато коментарите се зареждат."
+      },
+      {
+        "property": "lang",
+        "title": "Език",
+        "description": "Код на езика за интерфейса на Disqus, напр. en."
+      }
+    ]
+  }
+}

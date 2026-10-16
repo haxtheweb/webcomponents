@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Coimeádán NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Folaigh an t-eagarthóir",
+        "description": "Folaigh an comhéadan eagarthóireachta comhad."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Folaigh an teirminéal",
+        "description": "Folaigh an teirminéal do chláir a ritheann go huathoibríoch."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Folaigh an fhuinneog",
+        "description": "Folaigh an fhuinneog aschuir le haghaidh úsáide teirminéil amháin."
+      },
+      {
+        "slot": "",
+        "title": "Orduithe",
+        "description": "Orduithe (ceann in aghaidh na líne) le rith roimh lódáil."
+      }
+    ]
+  }
+}

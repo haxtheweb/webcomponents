@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Склоплив контејнер",
+    "description": "Единечен контејнер што може да се проширува и собира."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Наслов",
+        "description": "Текст за склопливиот дел."
+      },
+      {
+        "property": "expanded",
+        "title": "Проширено",
+        "description": "Проширено по основно."
+      },
+      {
+        "property": "headingButton",
+        "title": "Копче-наслов",
+        "description": "Целиот наслов да може да се кликне, а не само иконата."
+      },
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона за копчето за проширување/собирање."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Икона (кога е проширено)",
+        "description": "Изборна икона за проширената состојба на копчето."
+      },
+      {
+        "slot": "",
+        "title": "Содржина",
+        "description": "Содржина за склопливиот дел."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Совет",
+        "description": "Совет за копчето за проширување/собирање."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Совет (кога е проширено)",
+        "description": "Совет за копчето за проширување/собирање кога е проширено."
+      }
+    ]
+  }
+}

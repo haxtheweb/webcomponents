@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Sayaç",
+    "description": "Görünür alana kaydırıldığında bir sayıyı hedef değere kadar sayan animasyon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Bitiş değeri",
+        "description": "Sayılacak hedef sayı."
+      },
+      {
+        "property": "start",
+        "title": "Başlangıç değeri",
+        "description": "Saymaya başlanacak sayı."
+      },
+      {
+        "property": "duration",
+        "title": "Süre",
+        "description": "Sayma animasyonunun saniye cinsinden süresi."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Ön ek metni",
+        "description": "Sayıdan önce gösterilen metin (ör. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Son ek metni",
+        "description": "Sayıdan sonra gösterilen metin (ör. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Ön ek yuvası",
+        "description": "Sayıdan önce isteğe bağlı yuva içeriği."
+      },
+      {
+        "slot": "suffix",
+        "title": "Son ek yuvası",
+        "description": "Sayıdan sonra isteğe bağlı yuva içeriği."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Ondalık basamaklar",
+        "description": "Gösterilecek ondalık basamak sayısı."
+      },
+      {
+        "property": "separator",
+        "title": "Binlik ayırıcı",
+        "description": "Binlik grupları ayıran karakter."
+      },
+      {
+        "property": "decimal",
+        "title": "Ondalık karakteri",
+        "description": "Ondalık nokta için kullanılan karakter."
+      },
+      {
+        "property": "noeasing",
+        "title": "Yumuşatma yok",
+        "description": "Sayma doğrusal olsun diye yumuşatmayı devre dışı bırak."
+      }
+    ]
+  }
+}

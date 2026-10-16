@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "停止提示",
+    "description": "提醒读者注意特定说明个消息。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "输入停止提示个标题。"
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "输入外部 URL。"
+      },
+      {
+        "property": "status",
+        "title": "状态",
+        "description": "设定状态会改变颜色搭图标来对应",
+        "options": {
+          "stop": "停止",
+          "warning": "警告",
+          "success": "确认",
+          "info": "通知"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "提示文字",
+        "description": "停止提示个文字。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Waar / onwaar-vraag",
+    "description": "Waar-onwaarvraag"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vraag",
+        "description": "Vraag waarop gebruikers antwoorden."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Juiste antwoord"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naam van de quiz",
+        "description": "Quiznaam die wordt doorgegeven in xAPI-omgevingen om dit item te identificeren"
+      }
+    ]
+  }
+}

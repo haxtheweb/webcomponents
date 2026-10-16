@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity پليئر",
+    "description": "Unity WebGL پليئر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "ٽارگيٽ",
+        "description": "گيم بلڊ جو رستو."
+      },
+      {
+        "property": "compression",
+        "title": "ڪمپريشن جو طريقو",
+        "description": "گيم اثاثن لاءِ ڪمپريشن فائل ايڪسٽينشن."
+      },
+      {
+        "property": "streamingurl",
+        "title": "اسٽريمنگ URL",
+        "description": "اسٽريمنگ اثاثن جو URL."
+      },
+      {
+        "property": "companyname",
+        "title": "ڪمپني جو نالو",
+        "description": "ڪمپني جو نالو."
+      },
+      {
+        "property": "productname",
+        "title": "پراڊڪٽ جو نالو",
+        "description": "گيم جو عنوان."
+      },
+      {
+        "property": "productversion",
+        "title": "پراڊڪٽ جو ورزن",
+        "description": "رليز ورزن."
+      },
+      {
+        "property": "width",
+        "title": "ڪينوس جي ويڪر",
+        "description": "ڪينوس جي CSS ويڪر (مثال طور px يا em)."
+      },
+      {
+        "property": "height",
+        "title": "ڪينوس جي اوچائي",
+        "description": "ڪينوس جي CSS اوچائي (مثال طور px يا em)."
+      },
+      {
+        "property": "background",
+        "title": "ڪينوس جو پس منظر",
+        "description": "ڪينوس جو CSS پس منظر."
+      }
+    ]
+  }
+}

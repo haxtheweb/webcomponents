@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Data",
+    "description": "Bistaratu egutegiko data bat xehetasunekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Hilabetea",
+        "description": "Txartelean erakusten den hilabetea."
+      },
+      {
+        "property": "date",
+        "title": "Hilabeteko eguna",
+        "description": "Hilabeteko eguna zenbakiz."
+      },
+      {
+        "property": "day",
+        "title": "Asteko eguna",
+        "description": "Asteko eguna testuz."
+      },
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Ekitaldiaren izena."
+      },
+      {
+        "property": "location",
+        "title": "Kokapena",
+        "description": "Ekitaldiaren kokapena."
+      },
+      {
+        "property": "startTime",
+        "title": "Hasiera",
+        "description": "Hasiera ordua."
+      },
+      {
+        "property": "endTime",
+        "title": "Amaiera",
+        "description": "Amaiera ordua."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Aukerako nabarmentze kolorea."
+      },
+      {
+        "property": "dark",
+        "title": "Gai iluna",
+        "description": "Gaitu gai iluna."
+      }
+    ]
+  }
+}

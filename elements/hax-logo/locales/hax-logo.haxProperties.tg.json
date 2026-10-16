@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Ҳарфороии HAX",
+    "description": "Унсури логотип барои HAX, албатта ҳамчун унсури бо HAX мутобиқ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Андозаи логотипи HAX барои ҷойгиркунӣ",
+        "options": {
+          "mini": "Хурдакак",
+          "small": "Хурд",
+          "normal": "Муқаррарӣ",
+          "large": "Калон"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Оё логотип бо ҳарфҳои калон табдил дода шавад"
+      }
+    ]
+  }
+}

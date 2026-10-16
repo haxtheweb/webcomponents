@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub பங்களிப்பாளர் பட்டியல்",
+    "description": "GitHub API-ஐப் பயன்படுத்தி RPG கதாபாத்திரங்களாகக் காட்டப்படும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "நிறுவனம்",
+        "description": "github.com/ORG/REPO இலிருந்து நிறுவனப் பெயர்."
+      },
+      {
+        "property": "repo",
+        "title": "களஞ்சியம்",
+        "description": "github.com/ORG/REPO இலிருந்து களஞ்சியப் பெயர்."
+      },
+      {
+        "property": "limit",
+        "title": "வரம்பு",
+        "description": "காட்டப்படும் பங்களிப்பாளர்களின் எண்ணிக்கையைக் கட்டுப்படுத்தவும்."
+      }
+    ]
+  }
+}

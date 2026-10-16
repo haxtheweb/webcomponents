@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "So sánh hình ảnh",
+    "description": "Vuốt một hình ảnh lên trên hình ảnh khác để so sánh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Hình ảnh trên",
+        "description": "Hình ảnh trên để vuốt phủ lên hình ảnh dưới."
+      },
+      {
+        "property": "topAlt",
+        "title": "Văn bản thay thế hình ảnh trên",
+        "description": "Văn bản thay thế bắt buộc để hỗ trợ khả năng tiếp cận."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Hình ảnh dưới",
+        "description": "Hình ảnh dưới hiển thị bên dưới hình ảnh trên."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Văn bản thay thế hình ảnh dưới",
+        "description": "Văn bản thay thế bắt buộc để hỗ trợ khả năng tiếp cận."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Hành vi",
+        "description": "Chọn chế độ quét (mặc định) hoặc chế độ độ mờ của hình ảnh trên."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu thanh trượt."
+      },
+      {
+        "property": "dark",
+        "title": "Tối",
+        "description": "Đảo ngược màu thanh trượt."
+      },
+      {
+        "property": "position",
+        "title": "Vị trí ban đầu",
+        "description": "Vị trí bắt đầu từ 0 đến 100."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn埋め込み",
+    "description": "LinkedInのプロフィールカードを埋め込みます。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "カスタムURL名",
+        "description": "LinkedInのカスタムURLのユーザー名部分。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "ロケール",
+        "description": "en_US などのロケールのメタデータ値。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Akwatin NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Ɓoye edita",
+        "description": "Ɓoye fuskar gyaran fayil."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Ɓoye tasha",
+        "description": "Ɓoye tasha don shirye-shiryen da ke gudana kai tsaye."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Ɓoye taga",
+        "description": "Ɓoye tagar fitarwa don amfani da tasha kawai."
+      },
+      {
+        "slot": "",
+        "title": "Umarni",
+        "description": "Umarni (ɗaya a kowane layi) da za a gudanar kafin lodawa."
+      }
+    ]
+  }
+}

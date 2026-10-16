@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Ụbọchị",
+    "description": "Gosi ụbọchị kalenda nwere nkọwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Ọnwa",
+        "description": "Ọnwa a na-egosi na kaadị ahụ."
+      },
+      {
+        "property": "date",
+        "title": "Ụbọchị nke ọnwa",
+        "description": "Ụbọchị ọnwa dịka nọmba."
+      },
+      {
+        "property": "day",
+        "title": "Ụbọchị izu",
+        "description": "Ụbọchị izu dịka ederede."
+      },
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Aha mmemme ahụ."
+      },
+      {
+        "property": "location",
+        "title": "Ebe",
+        "description": "Ebe mmemme ahụ."
+      },
+      {
+        "property": "startTime",
+        "title": "Mmalite",
+        "description": "Oge mmalite."
+      },
+      {
+        "property": "endTime",
+        "title": "Njedebe",
+        "description": "Oge njedebe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba Mkpụrụ",
+        "description": "Agba mkpụrụ nhọrọ."
+      },
+      {
+        "property": "dark",
+        "title": "Isiokwu Gbara Ọchịchịrị",
+        "description": "Gbanye isiokwu gbara ọchịchịrị."
+      }
+    ]
+  }
+}

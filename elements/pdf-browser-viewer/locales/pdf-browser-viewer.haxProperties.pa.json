@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF ਬ੍ਰਾਊਜ਼ਰ ਵਿਊਅਰ",
+    "description": "ਵਿਕਲਪਿਕ ਕਾਰਡ ਲੇਆਉਟ ਅਤੇ ਡਾਊਨਲੋਡ ਬਟਨ ਨਾਲ PDF ਫ਼ਾਈਲ ਇਨਲਾਈਨ ਏਮਬੈਡ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF ਫ਼ਾਈਲ ਦਾ ਟਿਕਾਣਾ।"
+      },
+      {
+        "property": "heading",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਕਾਰਡ ਸਿਰਲੇਖ ਲਿਖਤ।"
+      },
+      {
+        "property": "card",
+        "title": "ਕਾਰਡ ਲੇਆਉਟ",
+        "description": "PDF ਨੂੰ ਡਾਊਨਲੋਡ ਬਟਨ ਵਾਲੇ ਕਾਰਡ ਵਿੱਚ ਦਿਖਾਓ।"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ਡਾਊਨਲੋਡ ਲੇਬਲ",
+        "description": "ਡਾਊਨਲੋਡ ਬਟਨ ਲਈ ਲੇਬਲ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "ਸਮਰਥਿਤ ਨਹੀਂ ਸੁਨੇਹਾ",
+        "description": "ਜਦੋਂ ਬ੍ਰਾਊਜ਼ਰ PDF ਫ਼ਾਈਲਾਂ ਨਹੀਂ ਦਿਖਾ ਸਕਦਾ ਤਾਂ ਸੁਨੇਹਾ।"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "ਸਮਰਥਿਤ ਨਹੀਂ ਲਿੰਕ ਸੁਨੇਹਾ",
+        "description": "ਜਦੋਂ ਬ੍ਰਾਊਜ਼ਰ PDF ਫ਼ਾਈਲਾਂ ਨਹੀਂ ਦਿਖਾ ਸਕਦਾ ਤਾਂ ਲਿੰਕ ਲਿਖਤ।"
+      },
+      {
+        "property": "width",
+        "title": "ਚੌੜਾਈ",
+        "description": "PDF ਵਿਊਅਰ ਦੀ ਚੌੜਾਈ।"
+      },
+      {
+        "property": "height",
+        "title": "ਉਚਾਈ",
+        "description": "PDF ਵਿਊਅਰ ਦੀ ਉਚਾਈ।"
+      }
+    ]
+  }
+}

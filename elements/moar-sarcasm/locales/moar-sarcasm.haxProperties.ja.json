@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "皮肉",
+    "description": "テキストを茶化して表示します"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "テキスト",
+        "description": "皮肉っぽくするテキスト"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Pachika maoni ya Disqus kwenye ukurasa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Jina fupi",
+        "description": "Jina fupi la tovuti, linaloamua seva ya hati ya Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL ya ukurasa",
+        "description": "URL ya ukurasa ambao mfululizo wa maoni umeambatishwa."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Kitambulisho cha ukurasa",
+        "description": "Kitambulisho cha kipekee cha mfululizo wa maoni wa ukurasa."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Kichwa cha ukurasa",
+        "description": "Kichwa cha ukurasa ambao mfululizo wa maoni umeambatishwa."
+      },
+      {
+        "property": "loadingText",
+        "title": "Maandishi ya kupakia",
+        "description": "Maandishi yanayotangazwa wakati maoni yanapakiwa."
+      },
+      {
+        "property": "lang",
+        "title": "Lugha",
+        "description": "Msimbo wa lugha wa kiolesura cha Disqus, k.m. en."
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Odjeljak stranice",
+    "description": "Kontejner odjeljka za sadržaj stranice i rasporede zasnovane na ekranima."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Dizajnerski tretman",
+        "description": "Unaprijed postavljeni stil koji ažurira povezane postavke."
+      },
+      {
+        "property": "image",
+        "title": "Slika",
+        "description": "Pozadinski medij odjeljka."
+      },
+      {
+        "property": "bg",
+        "title": "Boja pozadine",
+        "description": "Boja pozadine kada slika nije postavljena."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Dugme za pomicanje",
+        "description": "Prikaži dugme koje pomiče na sljedeći odjeljak."
+      },
+      {
+        "property": "fold",
+        "title": "Prikaži pregib",
+        "description": "Prikaži vizuelni pregib na dnu odjeljka."
+      },
+      {
+        "property": "full",
+        "title": "Veličina punog ekrana",
+        "description": "Ispuni visinu ekrana gledatelja."
+      },
+      {
+        "property": "filter",
+        "title": "Primijeni filter",
+        "description": "Primijeni vizuelni filter na pozadinsku sliku."
+      },
+      {
+        "slot": "",
+        "title": "Sadržaj",
+        "description": "Sadržaj odjeljka."
+      },
+      {
+        "slot": "entice",
+        "title": "Mamac",
+        "description": "Opcionalni sadržaj za privlačenje pažnje."
+      },
+      {
+        "slot": "buttons",
+        "title": "Dugmad",
+        "description": "Grupa dugmadi prikazana ispod teksta."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Tekst sidra",
+        "description": "Oznaka sidra prikazana u navigaciji."
+      }
+    ]
+  }
+}

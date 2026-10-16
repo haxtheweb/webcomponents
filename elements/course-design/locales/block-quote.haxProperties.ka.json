@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ბლოკური ციტატა",
+    "description": "სტილიზებული ციტატის ბლოკი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "წყაროს მითითება",
+        "description": "წყაროს მითითების ტექსტი."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "სურათის ალტერნატიული ტექსტი."
+      },
+      {
+        "property": "image",
+        "title": "სურათი",
+        "description": "ციტატასთან ერთად ნაჩვენები სურათი."
+      }
+    ]
+  }
+}

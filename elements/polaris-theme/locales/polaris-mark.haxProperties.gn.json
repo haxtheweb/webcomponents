@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris techaukaha",
+    "description": "Ehechauka PSU techaukaha, mbo'ehaovusu réra ha URL ohohápe ikatúramo ndive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Mbo'ehaovusu réra",
+        "description": "Téra ojehechaukáva techaukaha ykére."
+      },
+      {
+        "property": "name2",
+        "title": "Mbo'ehaovusu réra 2",
+        "description": "Téra mokõiha ojehechaukáva mbo'ehaovusu réra peteĩha guýpe."
+      },
+      {
+        "property": "name3",
+        "title": "Mbo'ehaovusu réra 3",
+        "description": "Téra mbohapyha ojehechaukáva mbo'ehaovusu réra mokõiha guýpe."
+      },
+      {
+        "property": "url",
+        "title": "Joajuha",
+        "description": "URL ohohápe ojejopy jave techaukaha."
+      },
+      {
+        "property": "type",
+        "title": "Ambuéva",
+        "description": "Techaukaha ambuéva ojehecháva.",
+        "options": {
+          "default": "Ijypykuéva",
+          "light": "Hesakã",
+          "dark": "Pytũ"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Ñemohenda oñembo'ýva",
+        "description": "Ehechauka téra mbohapyha téra mokõiha guýpe peteĩ tysýi atãvõ ndive."
+      }
+    ]
+  }
+}

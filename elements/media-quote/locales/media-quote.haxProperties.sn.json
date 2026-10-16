@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Chirevo nemidhiya",
+    "description": "Mufananidzo une chirevo, kwakatorwa, netsananguro isingamanikidzwi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Chirevo",
+        "description": "Mavara echirevo."
+      },
+      {
+        "slot": "author",
+        "title": "Munyori",
+        "description": "Munyori wechirevo."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Ruzivo rwemunyori",
+        "description": "Ruzivo rwemunyori."
+      },
+      {
+        "slot": "caption",
+        "title": "Tsananguro yemufananidzo",
+        "description": "Tsananguro yemufananidzo."
+      },
+      {
+        "property": "src",
+        "title": "Kwakabva Mufananidzo",
+        "description": "Faira remufananidzo rinoshandiswa pachirevo nemidhiya."
+      },
+      {
+        "property": "alt",
+        "title": "Mavara Anotsiva Mufananidzo",
+        "description": "Mavara anotsiva mufananidzo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rwekusimbisa rwekadhi."
+      }
+    ]
+  }
+}

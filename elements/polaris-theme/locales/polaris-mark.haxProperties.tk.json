@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris belgisi",
+    "description": "PSU şahsyýet belgisini goşmaça kollej ady we barmaly URL bilen görkeziň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Kollejiň ady",
+        "description": "Belginiň ýanynda görkezilýän at."
+      },
+      {
+        "property": "name2",
+        "title": "Kollejiň ady 2",
+        "description": "Birinji kollej adynyň aşagynda görkezilýän ikinji at."
+      },
+      {
+        "property": "name3",
+        "title": "Kollejiň ady 3",
+        "description": "Ikinji kollej adynyň aşagynda görkezilýän üçünji at."
+      },
+      {
+        "property": "url",
+        "title": "Baglanyşyk",
+        "description": "Belgä basylanda barmaly URL."
+      },
+      {
+        "property": "type",
+        "title": "Wariant",
+        "description": "Belginiň wizual warianty.",
+        "options": {
+          "default": "Deslapky",
+          "light": "Açyk",
+          "dark": "Garaňky"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Dik ýerleşiş",
+        "description": "Üçünji ady ikinji adyň aşagynda keseligine çyzyk bilen görkez."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "כרטיסיית זיכרון",
+    "description": "תרגול מושגים בעזרת כרטיסיות זיכרון דו־צדדיות."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "צד קדמי של הכרטיס",
+        "description": "טקסט או שאלה בצד הקדמי."
+      },
+      {
+        "slot": "back",
+        "title": "צד אחורי של הכרטיס",
+        "description": "התשובה הצפויה."
+      },
+      {
+        "property": "imgSource",
+        "title": "מקור התמונה",
+        "description": "קובץ התמונה המשמש לכרטיס. גובר על מילת המפתח לתמונה."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "סוג הפעולה",
+        "description": "OER Schema: סוג הפעולה שתרגול זה כולל (למשל קריאה, כתיבה, יצירה, מחקר, האזנה, צפייה, רפלקציה, דיון, תצפית, הצגה, הערכה)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "מטרת למידה",
+        "description": "OER Schema: מזהה או URL של מטרת הלמידה שתרגול זה תומך בה."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "כהה",
+        "description": "שימוש במצב כהה."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע ההדגשה של הכרטיס."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "מילת מפתח לתמונה",
+        "description": "מילת מפתח לתמונה אקראית. מקור התמונה גובר עליה."
+      }
+    ]
+  }
+}

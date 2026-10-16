@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Katin tunatarwa",
+    "description": "Yi atisayen ra'ayoyi da katunan tunatarwa masu gaba da baya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Gaban Katin",
+        "description": "Rubutu ko tambaya ta gaba."
+      },
+      {
+        "slot": "back",
+        "title": "Bayan Katin",
+        "description": "Amsar da ake sa ran samu."
+      },
+      {
+        "property": "imgSource",
+        "title": "Tushen Hoto",
+        "description": "Fayil ɗin hoton da ake amfani da shi don katin. Yana maye gurbin Kalmar Hoto."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Nau'in Aiki",
+        "description": "OER Schema: nau'in aikin da wannan atisaye ya ƙunsa (misali Karatu, Rubutu, Ƙirƙira, Bincike, Saurare, Kallo, Tunani, Tattaunawa, Lura, Gabatarwa, Tantancewa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Manufar Koyo",
+        "description": "OER Schema: ID ko URL na manufar koyo da wannan atisaye ke tallafawa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Duhu",
+        "description": "Yi amfani da yanayin duhu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin Ƙawa",
+        "description": "Launin ƙawa na katin."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Kalmar Hoto",
+        "description": "Kalmar hoto ta bazuwar. Tushen Hoto yana maye gurbinta."
+      }
+    ]
+  }
+}

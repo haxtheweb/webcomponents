@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Logo HAX stylisé",
+    "description": "Élément de logo pour HAX, évidemment compatible HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Taille du logo HAX à insérer",
+        "options": {
+          "mini": "Mini",
+          "small": "Petite",
+          "normal": "Normal",
+          "large": "Grande"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Mettre ou non le logo en majuscules"
+      }
+    ]
+  }
+}

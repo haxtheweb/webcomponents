@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "געשעעניש־באַדזש",
+    "description": "קאָמפּאָנענט פֿאַר אַ געשעעניש־באַדזש."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV־בילד",
+        "description": "בילד געוויזן אויפֿן TV."
+      },
+      {
+        "property": "logo",
+        "title": "לאָגאָ",
+        "description": "לאָגאָ געוויזן אינעם ווינקל פֿונעם באַדזש."
+      },
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "טיטל געוויזן אויבן אויפֿן באַדזש."
+      },
+      {
+        "property": "name",
+        "title": "נאָמען",
+        "description": "נאָמען געוויזן אויפֿן באַדזש."
+      },
+      {
+        "property": "position",
+        "title": "פּאָזיציע",
+        "description": "ראָלע אָדער טיטל פֿון דער פּערזאָן."
+      },
+      {
+        "property": "organization",
+        "title": "אָרגאַניזאַציע",
+        "description": "אָרגאַניזאַציע פֿאַר וועלכער די פּערזאָן אַרבעט."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV־קאָליר",
+        "description": "קלײַבט אויס דעם קאָליר פֿונעם TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "הויפּט־קאָליר פֿון הינטערגרונט אָדער טעקסט."
+      },
+      {
+        "property": "knobcolor",
+        "title": "קנויפּ־קאָליר",
+        "description": "קאָליר פֿון די TV־קנויפּן."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "סעפּיע",
+        "description": "אָנווענדן אַ סעפּיע־עפֿעקט."
+      },
+      {
+        "property": "blackwhite",
+        "title": "שוואַרץ־ווײַס",
+        "description": "אָנווענדן אַ שוואַרץ־ווײַס־עפֿעקט."
+      }
+    ]
+  }
+}

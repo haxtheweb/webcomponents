@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Wrapper H5P per caricare e presentare file .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Codice di incorporamento iframe H5P"
+      }
+    ]
+  }
+}

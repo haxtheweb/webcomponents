@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "సేకరణ అంశం",
+    "description": "సేకరణ జాబితాలో ఉపయోగించే కార్డ్-శైలి అంశం; వచనం, లింక్ మరియు ఐచ్ఛిక మీడియాతో."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "లింక్",
+        "description": "ఈ కార్డ్ కోసం గమ్యస్థాన URL."
+      },
+      {
+        "property": "image",
+        "title": "చిత్రం",
+        "description": "నేపథ్య చిత్రం."
+      },
+      {
+        "property": "line1",
+        "title": "పంక్తి 1",
+        "description": "వచనం యొక్క మొదటి పంక్తి."
+      },
+      {
+        "property": "line2",
+        "title": "పంక్తి 2",
+        "description": "వచనం యొక్క రెండవ పంక్తి."
+      },
+      {
+        "property": "line3",
+        "title": "పంక్తి 3",
+        "description": "వచనం యొక్క మూడవ పంక్తి."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ఐకాన్",
+        "description": "కార్డ్‌ను సూచించే ఐకాన్."
+      },
+      {
+        "property": "saturate",
+        "title": "సంతృప్త ప్రభావం",
+        "description": "వినియోగదారు ఫోకస్ చేసినప్పుడు చిత్ర సంతృప్తతను మార్చండి."
+      },
+      {
+        "property": "tags",
+        "title": "ట్యాగ్‌లు",
+        "description": "కామాతో వేరు చేసిన ట్యాగ్‌ల జాబితా."
+      },
+      {
+        "property": "accentColor",
+        "title": "రంగు",
+        "description": "ట్యాగ్‌ల కోసం ఉపయోగించే రంగు."
+      },
+      {
+        "property": "alt",
+        "title": "ప్రత్యామ్నాయ వచనం",
+        "description": "లింక్‌ను వివరించే ప్రత్యామ్నాయ వచనం."
+      }
+    ]
+  }
+}

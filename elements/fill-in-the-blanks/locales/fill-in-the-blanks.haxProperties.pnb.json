@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "خالی تھاواں بھرو",
+    "description": "جائزہ سرگرمی جیہدے وچ سکھݨ والے اک بیان دے غائب لفظ پورے کردے نیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "سوال",
+        "description": "صارفاں دے جواب دین لئی سوال۔"
+      },
+      {
+        "property": "statement",
+        "title": "بیان",
+        "description": "اوہ بیان جیہڑا لفظاں تے نشان لاوݨ والے تعامل وچ بدلیا جاوے گا۔"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "گریڈنگ فارمیٹ",
+        "description": "OER Schema: ایس جائزے دا گریڈنگ فارمیٹ (جیویں پوائنٹ، حرف، فیصد، تکمیل)۔"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "سکھݨ دا مقصد",
+        "description": "OER Schema: ایس جائزے نال جڑیا سکھݨ دا مقصد۔"
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "OER Schema: اوہ کورس جیہدے لئی ایہہ جائزہ اے۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "کوئز دا ناں",
+        "description": "xAPI والے ماحول وچ ایس آئٹم دی شناخت لئی بھیجیا جاوݨ والا کوئز دا ناں"
+      }
+    ]
+  }
+}

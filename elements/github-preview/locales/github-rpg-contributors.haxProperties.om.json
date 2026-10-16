@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tarree gumaachitoota GitHub",
+    "description": "GitHub API fayyadamuun akka taphattoota RPG tti agarsiifama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Dhaabbata",
+        "description": "Maqaa dhaabbataa github.com/ORG/REPO irraa."
+      },
+      {
+        "property": "repo",
+        "title": "Kuusaa (repository)",
+        "description": "Maqaa kuusaa github.com/ORG/REPO irraa."
+      },
+      {
+        "property": "limit",
+        "title": "Daangaa",
+        "description": "Baay'ina gumaachitoota mul'atanii daangessi."
+      }
+    ]
+  }
+}

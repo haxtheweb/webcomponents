@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Web component စာတမ်း ပလေယာ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "ဝင်းဒိုး ဝှက်ရန်",
+        "description": "Output ဝင်းဒိုးကို ဝှက်ရန်၊ terminal သာ ရည်ရွယ်သောအခါ အသုံးဝင်သည်"
+      }
+    ]
+  }
+}

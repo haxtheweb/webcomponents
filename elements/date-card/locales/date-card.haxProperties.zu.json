@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Usuku",
+    "description": "Bonisa usuku lwekhalenda nemininingwane."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Inyanga",
+        "description": "Inyanga eboniswa ekhadini."
+      },
+      {
+        "property": "date",
+        "title": "Usuku lwenyanga",
+        "description": "Inombolo yosuku lwenyanga."
+      },
+      {
+        "property": "day",
+        "title": "Usuku lwesonto",
+        "description": "Usuku lwesonto ngombhalo."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Igama lomcimbi."
+      },
+      {
+        "property": "location",
+        "title": "Indawo",
+        "description": "Indawo yomcimbi."
+      },
+      {
+        "property": "startTime",
+        "title": "Ukuqala",
+        "description": "Isikhathi sokuqala."
+      },
+      {
+        "property": "endTime",
+        "title": "Ukuphela",
+        "description": "Isikhathi sokuphela."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Wokugcizelela",
+        "description": "Umbala wokugcizelela ongawukhetha."
+      },
+      {
+        "property": "dark",
+        "title": "Itimu Emnyama",
+        "description": "Vula itimu emnyama."
+      }
+    ]
+  }
+}

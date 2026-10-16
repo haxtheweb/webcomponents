@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Бөлісу URL-і арқылы Discord қауымдастықтарын енгізу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ресурс URL-і",
+        "description": "Ресурс URL-і."
+      },
+      {
+        "property": "height",
+        "title": "Биіктігі",
+        "description": "Мазмұн фреймінің биіктігі."
+      },
+      {
+        "property": "width",
+        "title": "Ені",
+        "description": "Мазмұн фреймінің ені."
+      }
+    ]
+  }
+}

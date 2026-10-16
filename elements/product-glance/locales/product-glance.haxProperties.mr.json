@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "उत्पादन झलक",
+    "description": "उत्पादनाचा झटपट आढावा देणारा ब्लॉक."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "आयकॉन",
+        "description": "संकल्पना दर्शवणारा आयकॉन."
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "एका दृष्टिक्षेपात मुख्य संकल्पना."
+      },
+      {
+        "property": "subtitle",
+        "title": "उपशीर्षक",
+        "description": "अतिरिक्त तपशील."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "आयकॉनसाठी उठाव रंग."
+      }
+    ]
+  }
+}

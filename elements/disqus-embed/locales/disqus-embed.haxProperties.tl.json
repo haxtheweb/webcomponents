@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Mag-embed ng mga komento ng Disqus sa isang pahina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Maikling pangalan",
+        "description": "Ang maikling pangalan ng site, na nagtatakda sa host ng Disqus script."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL ng pahina",
+        "description": "Ang URL ng pahinang kinakabitan ng thread ng komento."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Identifier ng pahina",
+        "description": "Ang natatanging identifier para sa thread ng komento ng pahina."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Pamagat ng pahina",
+        "description": "Ang pamagat ng pahinang kinakabitan ng thread ng komento."
+      },
+      {
+        "property": "loadingText",
+        "title": "Teksto habang naglo-load",
+        "description": "Tekstong inaanunsyo habang naglo-load ang mga komento."
+      },
+      {
+        "property": "lang",
+        "title": "Wika",
+        "description": "Code ng wika para sa interface ng Disqus, hal. en."
+      }
+    ]
+  }
+}

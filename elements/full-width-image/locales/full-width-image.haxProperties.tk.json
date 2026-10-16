@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Surat bölümi",
+    "description": "Sahypanyň bölümini aýyrýan doly giňlikli surat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Fon suraty."
+      },
+      {
+        "property": "caption",
+        "description": "Tekst sözbaşysy."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX уметност речи",
+    "description": "Елемент логотипа за HAX, наравно као елемент подржан у HAX-у."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Величина HAX логотипа који се поставља",
+        "options": {
+          "mini": "Мини",
+          "small": "Мала",
+          "normal": "Нормална",
+          "large": "Велика"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Да ли претворити логотип у велика слова"
+      }
+    ]
+  }
+}

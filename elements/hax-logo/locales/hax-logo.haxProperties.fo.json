@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX-orðlist",
+    "description": "Logoeind til HAX, sjálvsagt sum ein HAX-før eind."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Stødd á HAX-logoinum, sum skal setast inn",
+        "options": {
+          "mini": "Mini",
+          "small": "Lítil",
+          "normal": "Vanligt",
+          "large": "Stór"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Um logoið skal umskapast til stórar bókstavir"
+      }
+    ]
+  }
+}

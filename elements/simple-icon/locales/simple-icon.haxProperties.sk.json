@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikona",
+    "description": "Ikona z úplnej knižnice ikon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona na vykreslenie."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Zvýrazňujúca farba ikony."
+      },
+      {
+        "property": "dark",
+        "title": "Tmavý",
+        "description": "Použiť tmavý režim (invertovaná sada farieb)."
+      }
+    ]
+  }
+}

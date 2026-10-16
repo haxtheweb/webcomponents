@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "明信片",
+    "description": "看起来像从某地寄来个实体明信片个趣味媒体"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "收件人",
+        "description": "寄拨啥人？"
+      },
+      {
+        "property": "from",
+        "title": "寄件人",
+        "description": "侬是啥人？"
+      },
+      {
+        "property": "message",
+        "title": "留言",
+        "description": "侬想讲点啥？"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "邮戳地点",
+        "description": "搿张卡片从啥地方寄出来个？"
+      },
+      {
+        "property": "photoSrc",
+        "title": "主照片来源",
+        "description": "侬个照片勒啥地方？"
+      },
+      {
+        "property": "stampSrc",
+        "title": "邮票照片来源",
+        "description": "侬个照片勒啥地方？"
+      }
+    ]
+  }
+}

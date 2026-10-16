@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Mea Nānā PDF Polokalamu Kele",
+    "description": "E hoʻokomo i kekahi faila PDF ma ka laina me ka hoʻonohonoho kāleka koho a me ke pihi hoʻoiho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Wahi o ka faila PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Poʻo",
+        "description": "Kikokikona poʻo kāleka."
+      },
+      {
+        "property": "card",
+        "title": "Hoʻonohonoho kāleka",
+        "description": "E hōʻike i ka PDF i loko o kekahi kāleka me ke pihi hoʻoiho."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Lepili hoʻoiho",
+        "description": "Lepili no ke pihi hoʻoiho."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Leka kākoʻo ʻole ʻia",
+        "description": "Leka ke hiki ʻole i ka polokalamu kele ke hōʻike i nā faila PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Leka loulou kākoʻo ʻole ʻia",
+        "description": "Kikokikona loulou ke hiki ʻole i ka polokalamu kele ke hōʻike i nā faila PDF."
+      },
+      {
+        "property": "width",
+        "title": "Ākea",
+        "description": "Ākea o ka mea nānā PDF."
+      },
+      {
+        "property": "height",
+        "title": "Kiʻekiʻe",
+        "description": "Kiʻekiʻe o ka mea nānā PDF."
+      }
+    ]
+  }
+}

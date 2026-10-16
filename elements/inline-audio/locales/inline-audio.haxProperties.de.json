@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Inline-Audio",
+    "description": "Audio inline abspielen, um den Seiteninhalt zu ergänzen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quelle",
+        "description": "MP3-Datei oder URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Akzentfarbe der Karte."
+      },
+      {
+        "property": "shiny",
+        "title": "Glänzend",
+        "description": "Einen helleren Akzenthintergrund statt Grau verwenden."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Dunkel",
+        "description": "Dunkelmodus verwenden."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Póstkort",
+    "description": "Glaðlegt miðlaatriði sem á að líta út eins og raunverulegt póstkort einhvers staðar frá"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Til",
+        "description": "Til hvers fer þetta?"
+      },
+      {
+        "property": "from",
+        "title": "Frá",
+        "description": "Hver ert þú?"
+      },
+      {
+        "property": "message",
+        "title": "Skilaboð",
+        "description": "Hvað viltu segja?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Póststimplað frá",
+        "description": "Hvaðan var þetta kort sent?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Uppruni aðalmyndar",
+        "description": "Hvar er myndin þín staðsett?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Uppruni frímerkjamyndar",
+        "description": "Hvar er myndin þín staðsett?"
+      }
+    ]
+  }
+}

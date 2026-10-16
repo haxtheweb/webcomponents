@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ഐക്കൺ",
+    "description": "പൂർണ്ണ ഐക്കൺ ലൈബ്രറിയിൽ നിന്നുള്ള ഐക്കൺ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ഐക്കൺ",
+        "description": "പ്രദർശിപ്പിക്കേണ്ട ഐക്കൺ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "ഐക്കണിനുള്ള ആക്സന്റ് നിറം."
+      },
+      {
+        "property": "dark",
+        "title": "ഇരുണ്ടത്",
+        "description": "ഇരുണ്ട മോഡ് ഉപയോഗിക്കുക (വിപരീത നിറക്കൂട്ട്)."
+      }
+    ]
+  }
+}

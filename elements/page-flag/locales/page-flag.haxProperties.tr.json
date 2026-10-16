@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Sayfa işareti",
+    "description": "Sayfa yazarları için editoryal not."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Vurgu Rengi",
+        "description": "Sayfa işaretinin vurgu rengi."
+      },
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Sayfa işaretinin etiket metni."
+      }
+    ]
+  }
+}

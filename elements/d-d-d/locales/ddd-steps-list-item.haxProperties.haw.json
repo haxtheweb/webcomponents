@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Mea papa hana",
+    "description": "He mea no ka papa kaʻina hana"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Poʻo Inoa"
+      }
+    ]
+  }
+}

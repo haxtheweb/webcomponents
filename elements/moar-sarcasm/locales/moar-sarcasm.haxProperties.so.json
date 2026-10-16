@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Jees-jees",
+    "description": "Qoraal loo soo bandhigo si kaftan ah"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Qoraal",
+        "description": "Qoraalka laga dhigayo jees-jees"
+      }
+    ]
+  }
+}

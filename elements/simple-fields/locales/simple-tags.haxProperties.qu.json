@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tagkuna",
+    "description": "Rapipi rikuchinapaq tag lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tagkuna",
+        "description": "Comawan t'aqasqa tagkunapa listan."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Kikinmanta rikchachiq llimpi",
+        "description": "Sutichaymanta rikchachiq llimpita kikinmanta churay."
+      },
+      {
+        "property": "accentColor",
+        "title": "Llimpi",
+        "description": "Tagkunapaq llimpi."
+      }
+    ]
+  }
+}

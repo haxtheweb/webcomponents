@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "எளிய படம்",
+    "description": "எளிய அளவுருக்களுடன் படங்களைக் கையாளவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "மூலம்",
+        "description": "பட மூல URL."
+      },
+      {
+        "property": "height",
+        "title": "உயரம்",
+        "description": "விருப்பப் பட உயரம்."
+      },
+      {
+        "property": "width",
+        "title": "அகலம்",
+        "description": "விருப்பப் பட அகலம்."
+      },
+      {
+        "property": "alt",
+        "title": "மாற்று உரை",
+        "description": "திரை வாசிப்பான்களுக்கும் மேம்பட்ட SEO-க்கும் பயனுள்ளது."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "தரம்",
+        "description": "உருவாக்கும்போது படத் தரம் (JPEG மட்டும்)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "பெறும் முன்னுரிமை",
+        "description": "நவீன உலாவிகளுக்கான செயல்திறன் குறிப்பு.",
+        "options": {
+          "auto": "தானியங்கி",
+          "high": "உயர்",
+          "low": "குறைந்த"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "குறிவிலக்கு முறை",
+        "description": "நவீன உலாவிகளில் படக் காட்சிக்கான செயல்திறன் குறிப்பு.",
+        "options": {
+          "auto": "தானியங்கி",
+          "async": "ஒத்திசைவற்ற"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Saka sharhin Disqus a shafi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Gajeren suna",
+        "description": "Gajeren sunan shafin yanar gizo, wanda ke tantance mai masaukin rubutun Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL na shafi",
+        "description": "URL na shafin da aka haɗa zaren sharhin da shi."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Mai gano shafi",
+        "description": "Mai gano na musamman na zaren sharhin shafin."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Taken shafi",
+        "description": "Taken shafin da aka haɗa zaren sharhin da shi."
+      },
+      {
+        "property": "loadingText",
+        "title": "Rubutun lodawa",
+        "description": "Rubutun da ake sanarwa yayin da sharhohi ke lodawa."
+      },
+      {
+        "property": "lang",
+        "title": "Harshe",
+        "description": "Lambar harshe don fuskar Disqus, misali en."
+      }
+    ]
+  }
+}

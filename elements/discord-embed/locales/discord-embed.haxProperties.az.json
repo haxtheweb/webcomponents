@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Paylaşım URL-i vasitəsilə Discord icmalarını yerləşdir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Resurs URL-i",
+        "description": "Resurs URL-i."
+      },
+      {
+        "property": "height",
+        "title": "Hündürlük",
+        "description": "Məzmun çərçivəsinin hündürlüyü."
+      },
+      {
+        "property": "width",
+        "title": "En",
+        "description": "Məzmun çərçivəsinin eni."
+      }
+    ]
+  }
+}

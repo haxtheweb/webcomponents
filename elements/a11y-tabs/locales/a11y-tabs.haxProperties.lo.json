@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ແຖບ",
+    "description": "ຊຸດຂອງແຖບ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "ປ້າຍກຳກັບ (ເພື່ອການເຂົ້າເຖິງ)",
+        "description": "ປ້າຍກຳກັບທີ່ເຂົ້າເຖິງໄດ້ສຳລັບຊຸດແຖບ."
+      },
+      {
+        "property": "disabled",
+        "title": "ປິດໃຊ້ງານ",
+        "description": "ປິດໃຊ້ງານແຖບທັງໝົດ."
+      },
+      {
+        "property": "hidden",
+        "title": "ເຊື່ອງໄວ້",
+        "description": "ເຊື່ອງຊຸດແຖບ."
+      },
+      {
+        "property": "sticky",
+        "title": "ຕິດຢູ່",
+        "description": "ໃຫ້ແຖບແນວນອນຢູ່ດ້ານເທິງຂະນະເລື່ອນ."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "ຈຸດປ່ຽນໂຄງຮ່າງ",
+        "description": "ຈຸດປ່ຽນສຳລັບແຖບແນວນອນ; ໃຊ້ -1 ສຳລັບແນວຕັ້ງເທົ່ານັ້ນ."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "ຈຸດປ່ຽນໄອຄອນ",
+        "description": "ຈຸດປ່ຽນສຳລັບສະແດງຂໍ້ຄວາມພ້ອມໄອຄອນ. ຄ່າເລີ່ມຕົ້ນແມ່ນ 0; ໃຊ້ -1 ສຳລັບໂໝດໄອຄອນເທົ່ານັ້ນ."
+      },
+      {
+        "slot": "",
+        "title": "ແຖບ",
+        "description": "ຊຸດຂອງອົງປະກອບ <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID ທີ່ບໍ່ຊ້ຳກັນ",
+        "description": "ID ທີ່ບໍ່ຊ້ຳກັນສຳລັບຊຸດແຖບນີ້."
+      }
+    ]
+  }
+}

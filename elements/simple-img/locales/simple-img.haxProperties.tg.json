@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Тасвири оддӣ",
+    "description": "Тасвирҳоро бо параметрҳои оддӣ тағйир диҳед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Манбаъ",
+        "description": "URL-и манбаи тасвир."
+      },
+      {
+        "property": "height",
+        "title": "Баландӣ",
+        "description": "Баландии ихтиёрии тасвир."
+      },
+      {
+        "property": "width",
+        "title": "Паҳноӣ",
+        "description": "Паҳноии ихтиёрии тасвир."
+      },
+      {
+        "property": "alt",
+        "title": "Матни алтернативӣ",
+        "description": "Барои хонандагони экран ва беҳтар кардани SEO муфид аст."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Сифат",
+        "description": "Сифати тасвир ҳангоми тавлид (танҳо JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Афзалияти боргирӣ",
+        "description": "Ишораи иҷроиш барои браузерҳои муосир.",
+        "options": {
+          "auto": "Худкор",
+          "high": "Баланд",
+          "low": "Паст"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Усули рамзкушоӣ",
+        "description": "Ишораи иҷроиш барои намоиши тасвир дар браузерҳои муосир.",
+        "options": {
+          "auto": "Худкор",
+          "async": "Асинхронӣ"
+        }
+      }
+    ]
+  }
+}

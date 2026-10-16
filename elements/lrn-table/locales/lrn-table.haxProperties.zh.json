@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV 表格",
+    "description": "无论 CSV 文件位于何处，都可以据此生成表格。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "来源",
+        "description": "此 CSV 文件的 URL。"
+      },
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "要生成的表格的标题。"
+      },
+      {
+        "property": "description",
+        "title": "描述",
+        "description": "更详细的描述，以提高表格数据的无障碍性。"
+      }
+    ]
+  }
+}

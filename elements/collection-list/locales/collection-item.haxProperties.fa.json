@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "مورد مجموعه",
+    "description": "مورد کارتی برای استفاده در فهرست مجموعه، با متن، پیوند و رسانهٔ اختیاری."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "پیوند",
+        "description": "URL مقصد این کارت."
+      },
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "تصویر پس‌زمینه."
+      },
+      {
+        "property": "line1",
+        "title": "خط ۱",
+        "description": "خط اول متن."
+      },
+      {
+        "property": "line2",
+        "title": "خط ۲",
+        "description": "خط دوم متن."
+      },
+      {
+        "property": "line3",
+        "title": "خط ۳",
+        "description": "خط سوم متن."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "نماد",
+        "description": "نمادی که کارت را نشان می‌دهد."
+      },
+      {
+        "property": "saturate",
+        "title": "جلوهٔ اشباع رنگ",
+        "description": "اشباع رنگ تصویر هنگام تمرکز کاربر تغییر کند."
+      },
+      {
+        "property": "tags",
+        "title": "برچسب‌ها",
+        "description": "فهرست برچسب‌ها جداشده با ویرگول."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ",
+        "description": "رنگ مورد استفاده برای برچسب‌ها."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "متن جایگزینی که پیوند را توصیف می‌کند."
+      }
+    ]
+  }
+}

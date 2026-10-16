@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Myndhluti",
+    "description": "Mynd í fullri breidd sem skiptir upp hluta síðu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Bakgrunnsmynd."
+      },
+      {
+        "property": "caption",
+        "description": "Textafyrirsögn."
+      }
+    ]
+  }
+}

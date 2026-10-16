@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Schrëtt-Element",
+    "description": "Element, dat Deel vun enger Schrëttlëscht ass"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel"
+      }
+    ]
+  }
+}

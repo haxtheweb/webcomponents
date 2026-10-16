@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Razdelek strani",
+    "description": "Vsebnik razdelka za vsebino strani in postavitve na celem zaslonu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Oblikovna obdelava",
+        "description": "Prednastavljeni slog, ki posodobi povezane nastavitve."
+      },
+      {
+        "property": "image",
+        "title": "Slika",
+        "description": "Mediji ozadja razdelka."
+      },
+      {
+        "property": "bg",
+        "title": "Barva ozadja",
+        "description": "Barva ozadja, ko slika ni nastavljena."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Gumb za pomik",
+        "description": "Prikaži gumb, ki se pomakne na naslednji razdelek."
+      },
+      {
+        "property": "fold",
+        "title": "Prikaži pregib",
+        "description": "Prikaži vizualni pregib na dnu razdelka."
+      },
+      {
+        "property": "full",
+        "title": "Celozaslonska velikost",
+        "description": "Zapolni višino zaslona gledalca."
+      },
+      {
+        "property": "filter",
+        "title": "Uporabi filter",
+        "description": "Uporabi vizualni filter na sliki ozadja."
+      },
+      {
+        "slot": "",
+        "title": "Vsebina",
+        "description": "Vsebina razdelka."
+      },
+      {
+        "slot": "entice",
+        "title": "Vaba",
+        "description": "Neobvezna vabljiva vsebina."
+      },
+      {
+        "slot": "buttons",
+        "title": "Gumbi",
+        "description": "Skupina gumbov, prikazana pod besedilom."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Besedilo sidra",
+        "description": "Oznaka sidra, prikazana v navigaciji."
+      }
+    ]
+  }
+}

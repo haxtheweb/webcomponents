@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI-fisualisearder",
+    "description": "MIDI yn kontekst ôfspylje mei fisualisaasje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Boarne",
+        "description": "Bestâns-URL om ôf te spyljen."
+      },
+      {
+        "property": "visualizer",
+        "title": "Fisualisaasje",
+        "description": "Fisualisaasjestyl foar it muzykbestân.",
+        "options": {
+          "staff": "Notebalke",
+          "piano-roll": "Pianorol",
+          "waterfall": "Piano + wetterfal"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Wetterfal ferbergje",
+        "description": "Wetterfalnoaten yn de pianofisualisaasje ferbergje."
+      }
+    ]
+  }
+}

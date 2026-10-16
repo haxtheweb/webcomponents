@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Kipengee cha mkusanyiko",
+    "description": "Kipengee cha mtindo wa kadi cha kutumia ndani ya orodha ya mkusanyiko, chenye maandishi, kiungo na midia ya hiari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Kiungo",
+        "description": "URL lengwa ya kadi hii."
+      },
+      {
+        "property": "image",
+        "title": "Picha",
+        "description": "Picha ya usuli."
+      },
+      {
+        "property": "line1",
+        "title": "Mstari 1",
+        "description": "Mstari wa kwanza wa maandishi."
+      },
+      {
+        "property": "line2",
+        "title": "Mstari 2",
+        "description": "Mstari wa pili wa maandishi."
+      },
+      {
+        "property": "line3",
+        "title": "Mstari 3",
+        "description": "Mstari wa tatu wa maandishi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni inayowakilisha kadi."
+      },
+      {
+        "property": "saturate",
+        "title": "Athari ya ukolezaji",
+        "description": "Badilisha ukolezaji wa picha mtumiaji anapolenga."
+      },
+      {
+        "property": "tags",
+        "title": "Lebo",
+        "description": "Orodha ya lebo zilizotenganishwa kwa koma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi",
+        "description": "Rangi inayotumika kwa lebo."
+      },
+      {
+        "property": "alt",
+        "title": "Mbadala",
+        "description": "Maandishi mbadala yanayoelezea kiungo."
+      }
+    ]
+  }
+}

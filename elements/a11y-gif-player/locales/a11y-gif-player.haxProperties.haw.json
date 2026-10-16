@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "E hoʻolilo i nā GIF neʻe i mea hiki ke komo ʻia e nā mea a pau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF Neʻe",
+        "description": "URL no ka GIF neʻe."
+      },
+      {
+        "property": "alt",
+        "title": "Kikokikona Pani",
+        "description": "Kikokikona pani no ke kiʻi."
+      },
+      {
+        "property": "longdesc",
+        "title": "Wehewehe Lōʻihi",
+        "description": "He wehewehe lōʻihi o ka GIF no ka hiki ke komo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Kiʻi Paʻa",
+        "description": "URL no kekahi mana kiʻi paʻa o ka GIF."
+      }
+    ]
+  }
+}

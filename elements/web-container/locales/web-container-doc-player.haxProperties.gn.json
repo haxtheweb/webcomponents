@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Ñanduti mba'eporu kuatia mbopu'aha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Emokañy ovetã",
+        "description": "Emokañy ovetã ñenohẽ, oipytyvõ terminal añoite ojeporúramo"
+      }
+    ]
+  }
+}

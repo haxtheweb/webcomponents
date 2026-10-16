@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS Container"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Itago ang editor",
+        "description": "Itago ang interface sa pag-edit ng file."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Itago ang terminal",
+        "description": "Itago ang terminal para sa mga programang awtomatikong tumatakbo."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Itago ang window",
+        "description": "Itago ang output window para sa paggamit na terminal lamang."
+      },
+      {
+        "slot": "",
+        "title": "Mga Command",
+        "description": "Mga command (isa bawat linya) na patatakbuhin bago mag-load."
+      }
+    ]
+  }
+}

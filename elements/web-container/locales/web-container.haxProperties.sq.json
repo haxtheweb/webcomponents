@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Kontejner NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Fshih redaktuesin",
+        "description": "Fshih ndërfaqen e redaktimit të skedarëve."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Fshih terminalin",
+        "description": "Fshih terminalin për programet që ekzekutohen automatikisht."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Fshih dritaren",
+        "description": "Fshih dritaren e daljes për përdorim vetëm me terminal."
+      },
+      {
+        "slot": "",
+        "title": "Komandat",
+        "description": "Komandat (një për rresht) që ekzekutohen para ngarkimit."
+      }
+    ]
+  }
+}

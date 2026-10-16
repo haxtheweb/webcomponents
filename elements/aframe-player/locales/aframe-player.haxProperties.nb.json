@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D-spiller",
+    "description": "En spiller for 3D-filer / utvidet virkelighet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "URL-en til denne AR-filen."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "X-posisjonen til elementet i AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Y-posisjonen til elementet i AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Z-posisjonen til elementet i AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Himmelfarge",
+        "description": "Velg fargen på himmelen i scenen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus கருத்துகள்",
+    "description": "Disqus கருத்துரை இணையச் சேவையுடன் ஒருங்கிணைப்பு"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "குறும்பெயர்",
+        "description": "Disqus-இல் உள்ள குறும்பெயர்"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity પ્લેયર",
+    "description": "Unity WebGL પ્લેયર."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "લક્ષ્ય",
+        "description": "ગેમ બિલ્ડનો પાથ."
+      },
+      {
+        "property": "compression",
+        "title": "સંકોચન પદ્ધતિ",
+        "description": "ગેમ એસેટ્સ માટે સંકોચન ફાઇલ એક્સ્ટેંશન."
+      },
+      {
+        "property": "streamingurl",
+        "title": "સ્ટ્રીમિંગ URL",
+        "description": "સ્ટ્રીમિંગ એસેટ્સ URL."
+      },
+      {
+        "property": "companyname",
+        "title": "કંપનીનું નામ",
+        "description": "કંપનીનું નામ."
+      },
+      {
+        "property": "productname",
+        "title": "ઉત્પાદનનું નામ",
+        "description": "ગેમનું શીર્ષક."
+      },
+      {
+        "property": "productversion",
+        "title": "ઉત્પાદન સંસ્કરણ",
+        "description": "પ્રકાશન સંસ્કરણ."
+      },
+      {
+        "property": "width",
+        "title": "કૅનવાસ પહોળાઈ",
+        "description": "કૅનવાસની CSS પહોળાઈ (ઉદાહરણ તરીકે px અથવા em)."
+      },
+      {
+        "property": "height",
+        "title": "કૅનવાસ ઊંચાઈ",
+        "description": "કૅનવાસની CSS ઊંચાઈ (ઉદાહરણ તરીકે px અથવા em)."
+      },
+      {
+        "property": "background",
+        "title": "કૅનવાસ પૃષ્ઠભૂમિ",
+        "description": "કૅનવાસની CSS પૃષ્ઠભૂમિ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Aikin mai amfani",
+    "description": "Bibiyar ayyukan mai amfani da aika bayanai zuwa ma'ajiyar xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Abin da za a bibiya",
+        "description": "Aikin mai amfani da ke jawo wannan abu.",
+        "options": {
+          "visibility": "Yana iya ganin wannan",
+          "keydown": "Danna maɓalli a nan",
+          "click": "Danna wannan",
+          "hover": "Shawagi a kan wannan"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Bibiya kowane lokaci",
+        "description": "A tsoho, abin da ya faru na farko kawai ake bibiya."
+      }
+    ]
+  }
+}

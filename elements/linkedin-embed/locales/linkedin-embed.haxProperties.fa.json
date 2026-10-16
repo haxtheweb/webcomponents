@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "جاسازی LinkedIn",
+    "description": "جاسازی کارت نمایهٔ LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "نام سفارشی",
+        "description": "بخش نام کاربری سفارشی LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "محلی‌سازی",
+        "description": "مقدار فرادادهٔ محلی‌سازی، مانند en_US."
+      }
+    ]
+  }
+}

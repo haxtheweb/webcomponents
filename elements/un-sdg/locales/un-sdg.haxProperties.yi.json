@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "ציל פֿון באַשטענדיקער אַנטוויקלונג פֿון די פֿאַראייניקטע פֿעלקער."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "ציל",
+        "description": "נומער פֿון UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "נאָר קאָליר",
+        "description": "ווײַזן נאָר דעם קאָליר פֿונעם ציל."
+      }
+    ]
+  }
+}

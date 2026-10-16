@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Tashqi veb-kontentni iframe ichida joylashtirish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Resurs URL",
+        "description": "Resurs URL."
+      },
+      {
+        "property": "height",
+        "title": "Balandlik",
+        "description": "Iframe balandligi."
+      },
+      {
+        "property": "width",
+        "title": "Kenglik",
+        "description": "Iframe kengligi."
+      }
+    ]
+  }
+}

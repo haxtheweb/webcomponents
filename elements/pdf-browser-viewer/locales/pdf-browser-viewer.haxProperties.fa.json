@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "نمایشگر PDF مرورگر",
+    "description": "جاسازی درون‌خطی فایل PDF با چیدمان کارتی و دکمهٔ بارگیری اختیاری."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL فایل PDF",
+        "description": "محل فایل PDF."
+      },
+      {
+        "property": "heading",
+        "title": "سرعنوان",
+        "description": "متن سرعنوان کارت."
+      },
+      {
+        "property": "card",
+        "title": "چیدمان کارتی",
+        "description": "نمایش PDF در یک کارت با دکمهٔ بارگیری."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "برچسب بارگیری",
+        "description": "برچسب دکمهٔ بارگیری."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "پیام عدم پشتیبانی",
+        "description": "پیامی که وقتی مرورگر نمی‌تواند فایل PDF را نمایش دهد نشان داده می‌شود."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "پیام پیوند عدم پشتیبانی",
+        "description": "متن پیوند وقتی مرورگر نمی‌تواند فایل PDF را نمایش دهد."
+      },
+      {
+        "property": "width",
+        "title": "عرض",
+        "description": "عرض نمایشگر PDF."
+      },
+      {
+        "property": "height",
+        "title": "ارتفاع",
+        "description": "ارتفاع نمایشگر PDF."
+      }
+    ]
+  }
+}

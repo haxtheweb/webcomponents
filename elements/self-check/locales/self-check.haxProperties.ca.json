@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Autoavaluació",
+    "description": "Els usuaris poden completar una autoavaluació."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imatge",
+        "description": "Imatge de l'autoavaluació."
+      },
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "Títol de l'autoavaluació."
+      },
+      {
+        "property": "alt",
+        "title": "Text alternatiu",
+        "description": "Text alternatiu de la imatge."
+      },
+      {
+        "slot": "question",
+        "title": "Pregunta"
+      },
+      {
+        "slot": "",
+        "title": "Resposta"
+      },
+      {
+        "property": "accentColor",
+        "title": "Color del tema",
+        "description": "Tria un color del tema del sistema de disseny.",
+        "options": {
+          "primary": "Principal",
+          "accent": "Accent",
+          "success": "Èxit",
+          "warning": "Advertència",
+          "error": "Error",
+          "info": "Informació"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objectiu d'aprenentatge",
+        "description": "Referència a l'objectiu d'aprenentatge emesa com a oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Avalua",
+        "description": "Referència a l'activitat emesa com a oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Enllaç per saber-ne més",
+        "description": "Enllaç a informació addicional."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Bajin Taro",
+    "description": "Ɓangaren bajin taro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Hoton TV",
+        "description": "Hoton da ake nunawa a kan TV."
+      },
+      {
+        "property": "logo",
+        "title": "Tambari",
+        "description": "Tambarin da ake nunawa a kusurwar bajin."
+      },
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Taken da ake nunawa a saman bajin."
+      },
+      {
+        "property": "name",
+        "title": "Suna",
+        "description": "Sunan da ake nunawa a kan bajin."
+      },
+      {
+        "property": "position",
+        "title": "Matsayi",
+        "description": "Rawar mutum ko muƙaminsa."
+      },
+      {
+        "property": "organization",
+        "title": "Ƙungiya",
+        "description": "Ƙungiyar da mutumin ke yi wa aiki."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Launin TV",
+        "description": "Zaɓi launin TV ɗin."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin ƙawa",
+        "description": "Babban launin bango ko na rubutu."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Launin maƙulli",
+        "description": "Launin maƙullan TV ɗin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Sanya tasirin sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Baƙi da fari",
+        "description": "Sanya tasirin baƙi da fari."
+      }
+    ]
+  }
+}

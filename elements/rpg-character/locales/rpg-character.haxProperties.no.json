@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG-figur",
+    "description": "Morsom figur fra HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Navn",
+        "description": "Ord som brukes til å generere en tilfeldig figur."
+      },
+      {
+        "property": "hat",
+        "title": "Hatt",
+        "description": "Hattestil.",
+        "options": {
+          "none": "Standard",
+          "random": "Tilfeldig",
+          "bunny": "Kanin",
+          "cowboy": "Cowboy",
+          "education": "Utdanning",
+          "construction": "Bygg",
+          "warning": "Advarsel",
+          "watermelon": "Vannmelon",
+          "coffee": "Kaffe",
+          "knight": "Ridder",
+          "ninja": "Ninja",
+          "party": "Fest",
+          "error": "Feil",
+          "edit": "Rediger"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Bredde",
+        "description": "Figurens bredde i piksler."
+      },
+      {
+        "property": "height",
+        "title": "Høyde",
+        "description": "Figurens høyde i piksler."
+      },
+      {
+        "property": "fire",
+        "title": "I brann?",
+        "description": "Om figuren står i brann."
+      },
+      {
+        "property": "walking",
+        "title": "Går?",
+        "description": "Gåanimasjon; kjøres når figuren står i brann."
+      }
+    ]
+  }
+}

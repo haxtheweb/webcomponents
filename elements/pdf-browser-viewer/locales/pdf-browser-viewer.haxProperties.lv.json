@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF pārlūka skatītājs",
+    "description": "Iegult PDF failu tekstā ar neobligātu kartītes izkārtojumu un lejupielādes pogu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF faila atrašanās vieta."
+      },
+      {
+        "property": "heading",
+        "title": "Virsraksts",
+        "description": "Kartītes virsraksta teksts."
+      },
+      {
+        "property": "card",
+        "title": "Kartītes izkārtojums",
+        "description": "Rādīt PDF kartītē ar lejupielādes pogu."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Lejupielādes etiķete",
+        "description": "Lejupielādes pogas etiķete."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Ziņojums par neatbalstīšanu",
+        "description": "Ziņojums, ja pārlūks nevar attēlot PDF failus."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Saites ziņojums par neatbalstīšanu",
+        "description": "Saites teksts, ja pārlūks nevar attēlot PDF failus."
+      },
+      {
+        "property": "width",
+        "title": "Platums",
+        "description": "PDF skatītāja platums."
+      },
+      {
+        "property": "height",
+        "title": "Augstums",
+        "description": "PDF skatītāja augstums."
+      }
+    ]
+  }
+}

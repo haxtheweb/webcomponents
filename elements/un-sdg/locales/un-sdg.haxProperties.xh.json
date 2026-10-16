@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Injongo yoPhuhliso oluZinzileyo lweZizwe eziManyeneyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Injongo",
+        "description": "Inombolo ye-UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Umbala kuphela",
+        "description": "Bonisa umbala wenjongo kuphela."
+      }
+    ]
+  }
+}

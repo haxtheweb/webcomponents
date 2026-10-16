@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kutipan Blok Gambar",
+    "description": "Kutipan kanthi gaya karo gambar opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Gambar",
+        "description": "Tambahake gambar marang testimoni."
+      },
+      {
+        "property": "name",
+        "title": "Jeneng Lengkap",
+        "description": "Jeneng wong sing menehi testimoni."
+      },
+      {
+        "property": "position",
+        "title": "Jabatan utawa Pagawean",
+        "description": "Jabatan utawa pagawean wong kasebut."
+      },
+      {
+        "slot": "",
+        "title": "Kutipan",
+        "description": "Kutipan saka panganggit testimoni."
+      }
+    ]
+  }
+}

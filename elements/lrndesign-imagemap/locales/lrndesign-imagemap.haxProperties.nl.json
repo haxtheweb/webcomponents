@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Image map",
+    "description": "Een toegankelijke image map met interactieve hotspots."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label voor de image map."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Details van hotspots",
+        "description": "De interactieve hotspots op de image map."
+      }
+    ]
+  }
+}

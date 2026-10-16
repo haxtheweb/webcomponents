@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "이미지 비교",
+    "description": "한 이미지를 다른 이미지 위로 밀어 비교합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "위쪽 이미지",
+        "description": "아래쪽 이미지 위로 밀어 넘길 위쪽 이미지입니다."
+      },
+      {
+        "property": "topAlt",
+        "title": "위쪽 이미지 대체 텍스트",
+        "description": "접근성을 위해 필요한 대체 텍스트입니다."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "아래쪽 이미지",
+        "description": "위쪽 이미지 아래에 표시되는 아래쪽 이미지입니다."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "아래쪽 이미지 대체 텍스트",
+        "description": "접근성을 위해 필요한 대체 텍스트입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "동작",
+        "description": "닦아내기 모드(기본값) 또는 위쪽 이미지 불투명도 모드를 선택합니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "슬라이더 막대 색상입니다."
+      },
+      {
+        "property": "dark",
+        "title": "어둡게",
+        "description": "슬라이더 막대 색상을 반전합니다."
+      },
+      {
+        "property": "position",
+        "title": "초기 위치",
+        "description": "0에서 100 사이의 시작 위치입니다."
+      }
+    ]
+  }
+}

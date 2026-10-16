@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Cárta scéil Polaris",
+    "description": "Taispeáin cárta scéil Polaris le híomhá chúlra, lipéad colúin agus téacs ceannlíne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Íomhá chúlra",
+        "description": "URL na híomhá a thaispeántar mar chúlra an chárta."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Méid an chúlra",
+        "description": "Conas a líonann an íomhá chúlra an cárta (CSS background-size).",
+        "options": {
+          "cover": "clúdaigh (cover)",
+          "contain": "coinnigh istigh (contain)",
+          "auto": "uathoibríoch (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Ceangal an chúlra",
+        "description": "Conas a iompraíonn an íomhá chúlra agus tú ag scrollú (CSS background-attachment).",
+        "options": {
+          "scroll": "scrollaigh (scroll)",
+          "fixed": "socraithe (fixed)",
+          "local": "áitiúil (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Lipéad colúin",
+        "description": "Lipéad gearr i gceannlitreacha a thaispeántar ag barr an chárta. Fág folamh é chun é a fholú."
+      },
+      {
+        "property": "label",
+        "title": "Téacs an chárta",
+        "description": "Príomhthéacs a thaispeántar sa phainéal íochtarach."
+      },
+      {
+        "property": "link",
+        "title": "Nasc",
+        "description": "URL cinn scríbe roghnach a chuimsíonn an cárta ar fad."
+      }
+    ]
+  }
+}

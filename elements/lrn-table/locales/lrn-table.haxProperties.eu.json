@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV taula",
+    "description": "CSV fitxategi batetik taula bat sor dezake, edonon dagoela ere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Iturburua",
+        "description": "CSV fitxategi honen URLa."
+      },
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Sortuko den taularen izenburua."
+      },
+      {
+        "property": "description",
+        "title": "Deskribapena",
+        "description": "Deskribapen zehatzagoa, taularen datuen irisgarritasuna hobetzeko."
+      }
+    ]
+  }
+}

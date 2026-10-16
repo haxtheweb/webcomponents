@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Àwọn àsọyé Disqus",
+    "description": "Ìsopọ̀ pẹ̀lú iṣẹ́ wẹ́ẹ̀bù àsọyé Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Orúkọ kúkúrú",
+        "description": "Orúkọ kúkúrú ohun-ìní lórí Disqus"
+      }
+    ]
+  }
+}

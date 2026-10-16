@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Question d'association",
+    "description": "Activité d'association par glisser-déposer qui relie des énoncés à leurs réponses correctes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "Question pour les utilisateurs. Marquez les zones de dépôt, puis listez les réponses jusqu'à la zone suivante."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de notation",
+        "description": "OER Schema : format de notation de cette évaluation (p. ex. points, lettre, pourcentage, achèvement)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objectif d'apprentissage",
+        "description": "OER Schema : objectif d'apprentissage associé à cette évaluation."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cours",
+        "description": "OER Schema : cours auquel cette évaluation est destinée."
+      },
+      {
+        "property": "answers",
+        "title": "Réponses"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nom du quiz",
+        "description": "Nom du quiz utilisé pour l'identification xAPI dans les systèmes d'analyse."
+      }
+    ]
+  }
+}

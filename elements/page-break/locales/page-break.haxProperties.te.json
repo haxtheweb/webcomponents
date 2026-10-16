@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "పేజీ వివరాలు",
+    "description": "పేజీలను సృష్టించడానికి CMS‌లు ఉపయోగించగల పేజీల మధ్య దృశ్య విభజనను నిర్వచించండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "థీమ్‌లో మరియు మొదటి శీర్షికలో చూపబడే శీర్షిక."
+      },
+      {
+        "property": "pageType",
+        "title": "రకం",
+        "description": "దృశ్య పేజీ సందర్భ లేబుల్.",
+        "options": {
+          "": "-- ఏదీ లేదు --",
+          "content": "కంటెంట్",
+          "assessment": "మూల్యాంకనం",
+          "quiz": "క్విజ్",
+          "submission": "సమర్పణ",
+          "lesson": "పాఠం",
+          "module": "మాడ్యూల్",
+          "task": "పని",
+          "activity": "కార్యాచరణ",
+          "project": "ప్రాజెక్ట్",
+          "practice": "సాధన",
+          "unit": "యూనిట్",
+          "objectives": "అభ్యాస లక్ష్యాలు",
+          "connection": "అనుసంధానం",
+          "knowledge": "మీకు తెలుసా?",
+          "strategy": "అభ్యాస వ్యూహం",
+          "discuss": "చర్చించు",
+          "listen": "విను",
+          "make": "తయారు చేయి",
+          "observe": "గమనించు",
+          "present": "ప్రదర్శించు",
+          "reading": "పఠనం",
+          "reflect": "ఆలోచించు",
+          "research": "పరిశోధన",
+          "watch": "చూడు",
+          "write": "వ్రాయి"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ట్యాగ్‌లు",
+        "description": "కామాతో వేరు చేసిన ట్యాగ్‌ల జాబితా."
+      },
+      {
+        "property": "linkUrl",
+        "title": "లింక్ URL",
+        "description": "పేజీ కంటెంట్‌కు బదులుగా చూపబడే దారి మళ్లింపు URL."
+      },
+      {
+        "property": "linkTarget",
+        "title": "లింక్ లక్ష్యం",
+        "description": "లింక్‌లను అదే విండోలో లేదా కొత్త విండోలో తెరవండి.",
+        "options": {
+          "_self": "అదే విండో",
+          "_blank": "కొత్త విండో"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "ప్రచురించబడింది",
+        "description": "ప్రచురించని పేజీలు తుది వినియోగదారుల నుండి దాచబడతాయి."
+      },
+      {
+        "property": "locked",
+        "title": "పేజీని లాక్ చేయి",
+        "description": "ఈ పేజీలోని అన్ని అంశాలను లాక్ లేదా అన్‌లాక్ చేయండి."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "ఆటోమేటిక్ స్లగ్‌ను భర్తీ చేయి",
+        "description": "శీర్షిక లేదా పేరెంట్ ఆధారంగా ఆటోమేటిక్ నవీకరణల నుండి స్లగ్‌ను లాక్ చేయండి."
+      },
+      {
+        "property": "slug",
+        "title": "మార్గం",
+        "description": "ఈ పేజీ కోసం URL స్లగ్."
+      },
+      {
+        "property": "image",
+        "title": "మీడియా",
+        "description": "పేజీని సూచించే మీడియా, కొన్ని థీమ్‌లు మరియు వీక్షణలలో ఉపయోగించబడుతుంది."
+      },
+      {
+        "property": "parent",
+        "title": "పేరెంట్",
+        "description": "పేరెంట్ పేజీ యొక్క మార్గం."
+      },
+      {
+        "property": "noderefs",
+        "title": "సంబంధిత కంటెంట్",
+        "description": "ఈ పేజీకి సంబంధించిన పేజీలు."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "వివరణ",
+        "description": "సేకరణలు మరియు సెర్చ్ ఇంజిన్ ఆప్టిమైజేషన్‌లో ఉపయోగించే వివరణ."
+      },
+      {
+        "property": "entityType",
+        "title": "ఎంటిటీ రకం",
+        "description": "వేరేగా సెట్ చేయకపోతే డిఫాల్ట్‌గా పేజీ.",
+        "options": {
+          "page": "పేజీ (డిఫాల్ట్)",
+          "taxonomy": "వర్గీకరణ",
+          "taxonomyTerm": "వర్గీకరణ పదం",
+          "region": "ప్రాంతం"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "ఐకాన్",
+        "description": "సైట్‌లో ఈ పేజీతో అనుబంధించిన ఐకాన్."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "సైట్‌లో ఈ పేజీతో అనుబంధించిన రంగు."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "మెనూలో దాచు",
+        "description": "URL‌ను ఉంచుతూ ఈ పేజీని మెనూల నుండి దాచండి."
+      },
+      {
+        "property": "order",
+        "title": "క్రమం",
+        "description": "సహోదర పేజీలకు సంబంధించి క్రమం."
+      },
+      {
+        "property": "developerTheme",
+        "title": "పేజీ థీమ్",
+        "description": "ఈ పేజీకి మాత్రమే థీమ్‌ను భర్తీ చేయండి."
+      },
+      {
+        "property": "author",
+        "title": "రచయిత",
+        "description": "ఈ పేజీని చివరిగా సవరించిన వ్యక్తి వినియోగదారు పేరు."
+      }
+    ]
+  }
+}

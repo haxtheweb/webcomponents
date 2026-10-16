@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV-tabel",
+    "description": "Hiermee kun je een tabel maken van een CSV-bestand, waar het zich ook bevindt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Bron",
+        "description": "URL van dit CSV-bestand."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel van de te genereren tabel."
+      },
+      {
+        "property": "description",
+        "title": "Beschrijving",
+        "description": "Uitgebreidere beschrijving voor betere toegankelijkheid van de tabelgegevens."
+      }
+    ]
+  }
+}

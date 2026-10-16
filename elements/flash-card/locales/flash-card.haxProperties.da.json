@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Flashcard",
+    "description": "Øv begreber med flashcards med for- og bagside."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Kortets forside",
+        "description": "Tekst eller spørgsmål på forsiden."
+      },
+      {
+        "slot": "back",
+        "title": "Kortets bagside",
+        "description": "Forventet svar."
+      },
+      {
+        "property": "imgSource",
+        "title": "Billedkilde",
+        "description": "Billedfil brugt til kortet. Tilsidesætter Billednøgleord."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Handlingstype",
+        "description": "OER Schema: den type handling, denne øvelse indebærer (f.eks. læsning, skrivning, fremstilling, research, lytning, se, refleksion, diskussion, observation, præsentation, vurdering)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: ID eller URL for det læringsmål, som denne øvelse understøtter."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Mørk",
+        "description": "Brug mørk tilstand."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfarve",
+        "description": "Kortets accentfarve."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Billednøgleord",
+        "description": "Nøgleord til tilfældigt billede. Tilsidesættes af Billedkilde."
+      }
+    ]
+  }
+}

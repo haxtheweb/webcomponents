@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galleria d'imagine",
+    "description": "Una galleria chì prisenta l'imagine in griglia, in muraglia o in diaporama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Modu d'affissera",
+        "description": "Cumu prisentà l'imagine in a galleria.",
+        "options": {
+          "grid": "Griglia",
+          "masonry": "Muraglia",
+          "gallery": "Galleria"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Indice attivu",
+        "description": "Indice di l'imagine attiva di partenza in modu galleria."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kaitiro PDF Pūtirotiro",
+    "description": "Tāmau i tētahi kōnae PDF ki roto i te whārangi me tētahi tahora kāri kōwhiri me te pātene tikiake."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Te wāhi o te kōnae PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Upoko",
+        "description": "Kupu upoko o te kāri."
+      },
+      {
+        "property": "card",
+        "title": "Tahora kāri",
+        "description": "Whakaaturia te PDF ki tētahi kāri me te pātene tikiake."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Tapanga tikiake",
+        "description": "Tapanga mō te pātene tikiake."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Karere kāore e tautokona",
+        "description": "Karere ina kāore e taea e te pūtirotiro te whakaatu kōnae PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Karere hono kāore e tautokona",
+        "description": "Kupu hono ina kāore e taea e te pūtirotiro te whakaatu kōnae PDF."
+      },
+      {
+        "property": "width",
+        "title": "Whānui",
+        "description": "Whānui o te kaitiro PDF."
+      },
+      {
+        "property": "height",
+        "title": "Teitei",
+        "description": "Teitei o te kaitiro PDF."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Ҳадафи рушди устувори Созмони Милали Муттаҳид."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Ҳадаф",
+        "description": "Рақами UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Танҳо ранг",
+        "description": "Танҳо ранги ҳадафро нишон диҳед."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "块引用",
+    "description": "带样式的引用块。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "引文出处",
+        "description": "引文出处文本。"
+      },
+      {
+        "property": "alt",
+        "title": "替代文本",
+        "description": "图像的替代文本。"
+      },
+      {
+        "property": "image",
+        "title": "图像",
+        "description": "与引文一同显示的图像。"
+      }
+    ]
+  }
+}

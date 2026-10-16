@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Fillteán H5P chun comhaid .h5p a lódáil agus a chur i láthair"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Cód leabaithe iframe H5P"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "កម្មវិធីចាក់ Unity",
+    "description": "កម្មវិធីចាក់ Unity WebGL។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "គោលដៅ",
+        "description": "ផ្លូវទៅកាន់កំណែស្ថាបនាហ្គេម។"
+      },
+      {
+        "property": "compression",
+        "title": "វិធីបង្ហាប់",
+        "description": "កន្ទុយឯកសារបង្ហាប់សម្រាប់ធនធានហ្គេម។"
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL ស្ទ្រីម",
+        "description": "URL ធនធានស្ទ្រីម។"
+      },
+      {
+        "property": "companyname",
+        "title": "ឈ្មោះក្រុមហ៊ុន",
+        "description": "ឈ្មោះក្រុមហ៊ុន។"
+      },
+      {
+        "property": "productname",
+        "title": "ឈ្មោះផលិតផល",
+        "description": "ចំណងជើងហ្គេម។"
+      },
+      {
+        "property": "productversion",
+        "title": "កំណែផលិតផល",
+        "description": "កំណែចេញផ្សាយ។"
+      },
+      {
+        "property": "width",
+        "title": "ទទឹងផ្ទាំងគំនូរ",
+        "description": "ទទឹង CSS នៃផ្ទាំងគំនូរ (ឧទាហរណ៍ px ឬ em)។"
+      },
+      {
+        "property": "height",
+        "title": "កម្ពស់ផ្ទាំងគំនូរ",
+        "description": "កម្ពស់ CSS នៃផ្ទាំងគំនូរ (ឧទាហរណ៍ px ឬ em)។"
+      },
+      {
+        "property": "background",
+        "title": "ផ្ទៃខាងក្រោយផ្ទាំងគំនូរ",
+        "description": "ផ្ទៃខាងក្រោយ CSS នៃផ្ទាំងគំនូរ។"
+      }
+    ]
+  }
+}

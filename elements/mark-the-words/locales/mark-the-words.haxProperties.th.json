@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "ทำเครื่องหมายคำ",
+    "description": "ระบุแนวคิดผ่านคำโดยคลิกภายในเนื้อความ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "คำถาม",
+        "description": "คำถามให้ผู้ใช้ตอบ"
+      },
+      {
+        "property": "statement",
+        "title": "ข้อความ",
+        "description": "ข้อความที่จะถูกแปลงเป็นการโต้ตอบแบบทำเครื่องหมายคำ"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "รูปแบบการให้คะแนน",
+        "description": "OER Schema: รูปแบบการให้คะแนนสำหรับการประเมินนี้ (เช่น คะแนน เกรดตัวอักษร เปอร์เซ็นต์ การทำเสร็จ)"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "วัตถุประสงค์การเรียนรู้",
+        "description": "OER Schema: วัตถุประสงค์การเรียนรู้ที่เชื่อมโยงกับการประเมินนี้"
+      },
+      {
+        "property": "forCourse",
+        "title": "รายวิชา",
+        "description": "OER Schema: รายวิชาที่การประเมินนี้มีไว้สำหรับ"
+      },
+      {
+        "property": "answers",
+        "title": "คำตอบ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ชื่อแบบทดสอบ",
+        "description": "ชื่อแบบทดสอบที่ส่งเข้าไปเพื่อใช้ระบุรายการนี้ในสภาพแวดล้อมที่ขับเคลื่อนด้วย xAPI"
+      }
+    ]
+  }
+}

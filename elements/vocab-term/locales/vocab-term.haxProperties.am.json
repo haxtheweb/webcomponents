@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ቃላት",
+    "description": "የቃላት ቃል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "ቃል"
+      },
+      {
+        "property": "information",
+        "title": "ትርጉም",
+        "description": "ቃሉ ጠቅ ሲደረግ የሚታይ ትርጉም።"
+      },
+      {
+        "property": "popoverMode",
+        "title": "ብቅ-ባይ",
+        "description": "ትርጉሙን በመስመር ውስጥ ሳይሆን በብቅ-ባይ ውስጥ አሳይ።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "አገናኞች",
+        "description": "ከዚህ ቃል ጋር የተያያዙ ተጨማሪ አገናኞች ዝርዝር።"
+      }
+    ]
+  }
+}

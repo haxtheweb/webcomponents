@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR код",
+    "description": "Код за скенирање паметним телефоном."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR подаци",
+        "description": "Извор података за QR код."
+      },
+      {
+        "property": "title",
+        "title": "Алтернативни наслов",
+        "description": "Алтернативни наслов повезан са извором QR кода."
+      },
+      {
+        "property": "modulesize",
+        "title": "Величина",
+        "description": "Величина QR кода."
+      },
+      {
+        "property": "margin",
+        "title": "Маргина",
+        "description": "Омотач кода."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Излазни формат",
+        "description": "Формат у којем се приказује.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

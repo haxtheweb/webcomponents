@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "I-icon",
+    "description": "I-icon evela kwithala elipheleleyo lee-icon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "I-icon",
+        "description": "I-icon eza kuboniswa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala ogqamisayo",
+        "description": "Umbala ogqamisayo we-icon."
+      },
+      {
+        "property": "dark",
+        "title": "Mnyama",
+        "description": "Sebenzisa imowudi emnyama (iseti yemibala eguquliweyo)."
+      }
+    ]
+  }
+}

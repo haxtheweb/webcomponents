@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Chiputiro chemitambi yeSpotify yakaiswa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kwakabva",
+        "description": "Chinongedzo chekuisa kana chekugovana kubva kuSpotify."
+      },
+      {
+        "property": "theme",
+        "title": "Dingindira",
+        "description": "Dingindira reruvara rwekumashure rwemutambi.",
+        "options": {
+          "": "Zvakajairwa",
+          "0": "Dema"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Saizi",
+        "description": "Saizi yemutambi.",
+        "options": {
+          "normal": "Zvakajairwa",
+          "compact": "Yakatsikiswa"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Etiket / Pil",
+    "description": "'n Kompakte pilvormige etiket met opsionele aksentkleur, kanselleerknoppie of wissel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etiket",
+        "description": "Teks wat binne die pil gewys word."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "SimpleColors-aksentnaam vir die pil se agtergrond.",
+        "options": {
+          "": "-- standaard --",
+          "red": "Rooi",
+          "pink": "Pienk",
+          "purple": "Pers",
+          "deep-purple": "Donkerpers",
+          "indigo": "Indigo",
+          "blue": "Blou",
+          "light-blue": "Ligblou",
+          "cyan": "Siaan",
+          "teal": "Blougroen",
+          "green": "Groen",
+          "light-green": "Liggroen",
+          "lime": "Lemmetjiegroen",
+          "yellow": "Geel",
+          "amber": "Amber",
+          "orange": "Oranje",
+          "deep-orange": "Donkeroranje",
+          "brown": "Bruin",
+          "blue-grey": "Blougrys",
+          "grey": "Grys"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Outomatiese aksentkleur",
+        "description": "Lei die aksentkleur outomaties van die etiketteks af."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Kanselleerknoppie",
+        "description": "Wys 'n verwyder-/kanselleer-ikoonknoppie binne die pil."
+      },
+      {
+        "property": "readonly",
+        "title": "Slegs lees",
+        "description": "Versteek die kanselleerknoppie sodat die pil slegs vir vertoon is."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Wissel",
+        "description": "Laat die pil aan/af wissel wanneer op die knoppie geklik word."
+      },
+      {
+        "property": "toggled",
+        "title": "Aangeskakel",
+        "description": "Of die pil tans aangeskakel is."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Aangeskakelde ikoon",
+        "description": "Ikoon om te wys wanneer die pil aangeskakel is."
+      },
+      {
+        "property": "disabled",
+        "title": "Gedeaktiveer",
+        "description": "Deaktiveer interaksie met die pil."
+      }
+    ]
+  }
+}

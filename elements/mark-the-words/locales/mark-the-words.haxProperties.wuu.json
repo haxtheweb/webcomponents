@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "标记词语",
+    "description": "勒一段文字里点词语来识别概念。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "问题",
+        "description": "让用户回答个问题。"
+      },
+      {
+        "property": "statement",
+        "title": "陈述",
+        "description": "会转成“标记词语”互动个陈述。"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "评分格式",
+        "description": "OER Schema：搿只测评个评分格式（譬如分数、等级、百分比、完成度）。"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学习目标",
+        "description": "OER Schema：搭搿只测评相关个学习目标。"
+      },
+      {
+        "property": "forCourse",
+        "title": "课程",
+        "description": "OER Schema：搿只测评面向个课程。"
+      },
+      {
+        "property": "answers",
+        "title": "答案"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "测验名称",
+        "description": "传拨 xAPI 环境、用来识别搿只项目个测验名称"
+      }
+    ]
+  }
+}

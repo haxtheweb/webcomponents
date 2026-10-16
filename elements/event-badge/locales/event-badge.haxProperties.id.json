@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Lencana Acara",
+    "description": "Komponen lencana acara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Gambar TV",
+        "description": "Gambar yang ditampilkan di TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo yang ditampilkan di sudut lencana."
+      },
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Judul yang ditampilkan di bagian atas lencana."
+      },
+      {
+        "property": "name",
+        "title": "Nama",
+        "description": "Nama yang ditampilkan pada lencana."
+      },
+      {
+        "property": "position",
+        "title": "Jabatan",
+        "description": "Peran atau jabatan orang tersebut."
+      },
+      {
+        "property": "organization",
+        "title": "Organisasi",
+        "description": "Organisasi tempat orang tersebut bekerja."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Warna TV",
+        "description": "Pilih warna untuk TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Warna latar belakang atau teks utama."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Warna kenop",
+        "description": "Warna kenop TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Terapkan efek sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Hitam putih",
+        "description": "Terapkan efek hitam-putih."
+      }
+    ]
+  }
+}

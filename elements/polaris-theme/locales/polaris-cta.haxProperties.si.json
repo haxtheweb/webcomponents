@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "තේමාගත Polaris ක්‍රියාවට ඇරයුම් (CTA) බොත්තමක් පෙන්වන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "බොත්තම් පෙළ",
+        "description": "ක්‍රියාවට ඇරයුම් බොත්තමේ පෙන්වන පෙළ."
+      },
+      {
+        "property": "link",
+        "title": "සබැඳිය",
+        "description": "බොත්තම සඳහා ගමනාන්ත URL."
+      },
+      {
+        "property": "type",
+        "title": "ප්‍රභේදය",
+        "description": "දෘශ්‍ය ශෛලී ප්‍රභේදය.",
+        "options": {
+          "primary": "ප්‍රාථමික",
+          "tinted": "වර්ණ ගැන්වූ",
+          "light": "ලා"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "දළ රේඛා ශෛලිය",
+        "description": "දළ රේඛා ප්‍රතිකාරය සබල කරන්න."
+      },
+      {
+        "property": "filled",
+        "title": "පිරවූ ශෛලිය",
+        "description": "පිරවූ ප්‍රතිකාරය සබල කරන්න."
+      }
+    ]
+  }
+}

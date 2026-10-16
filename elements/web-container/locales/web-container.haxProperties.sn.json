@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Mudziyo weNodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Viga mupepeti",
+        "description": "Viga chiratidziro chekugadzirisa mafaira."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Viga terminal",
+        "description": "Viga terminal yezvirongwa zvinozvimhanyira zvega."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Viga hwindo",
+        "description": "Viga hwindo rezvinobuda kana uchishandisa terminal chete."
+      },
+      {
+        "slot": "",
+        "title": "Mirairo",
+        "description": "Mirairo (mumwe pamutsara) yekumhanyisa usati warodha."
+      }
+    ]
+  }
+}

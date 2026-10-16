@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Xwe-kontrol",
+    "description": "Bikarhêner dikarin xwe-kontrolekê temam bikin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Wêne",
+        "description": "Wêne ji bo xwe-kontrolê."
+      },
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê xwe-kontrolê."
+      },
+      {
+        "property": "alt",
+        "title": "Nivîsa Alternatîf",
+        "description": "Nivîsa alt ji bo wêneyê."
+      },
+      {
+        "slot": "question",
+        "title": "Pirs"
+      },
+      {
+        "slot": "",
+        "title": "Bersiv"
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê Mijarê",
+        "description": "Ji pergala sêwiranê rengekî mijarê hilbijêre.",
+        "options": {
+          "primary": "Sereke",
+          "accent": "Balkêş",
+          "success": "Serkeftin",
+          "warning": "Hişyarî",
+          "error": "Çewtî",
+          "info": "Agahî"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Armanca Fêrbûnê",
+        "description": "Referansa armanca fêrbûnê ku wekî oer:hasLearningObjective tê derxistin."
+      },
+      {
+        "property": "assessing",
+        "title": "Tê nirxandin",
+        "description": "Referansa çalakiyê ku wekî oer:assessing tê derxistin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Girêdana zêdetir",
+        "description": "Girêdan bi agahiyên zêde."
+      }
+    ]
+  }
+}

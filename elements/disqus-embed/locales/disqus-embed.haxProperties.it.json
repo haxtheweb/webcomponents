@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Incorpora i commenti Disqus in una pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Nome breve",
+        "description": "Il nome breve del sito, che determina l'host dello script Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL della pagina",
+        "description": "L'URL della pagina a cui è collegata la discussione."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Identificativo della pagina",
+        "description": "L'identificativo univoco della discussione della pagina."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Titolo della pagina",
+        "description": "Il titolo della pagina a cui è collegata la discussione."
+      },
+      {
+        "property": "loadingText",
+        "title": "Testo di caricamento",
+        "description": "Testo annunciato durante il caricamento dei commenti."
+      },
+      {
+        "property": "lang",
+        "title": "Lingua",
+        "description": "Codice della lingua per l'interfaccia Disqus, es. en."
+      }
+    ]
+  }
+}

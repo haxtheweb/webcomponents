@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Samlingsobjekt",
+    "description": "Kortobjekt för användning i en samlingslista, med text, länk och valfri media."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Länk",
+        "description": "Mål-URL för det här kortet."
+      },
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Bakgrundsbild."
+      },
+      {
+        "property": "line1",
+        "title": "Rad 1",
+        "description": "Första textraden."
+      },
+      {
+        "property": "line2",
+        "title": "Rad 2",
+        "description": "Andra textraden."
+      },
+      {
+        "property": "line3",
+        "title": "Rad 3",
+        "description": "Tredje textraden."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon som representerar kortet."
+      },
+      {
+        "property": "saturate",
+        "title": "Mättnadseffekt",
+        "description": "Ändra bildens mättnad när användaren fokuserar."
+      },
+      {
+        "property": "tags",
+        "title": "Taggar",
+        "description": "Kommaseparerad lista med taggar."
+      },
+      {
+        "property": "accentColor",
+        "title": "Färg",
+        "description": "Färg för taggar."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativ text som beskriver länken."
+      }
+    ]
+  }
+}

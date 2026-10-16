@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Nakładka na osadzenia odtwarzacza Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Źródło",
+        "description": "Link do osadzenia lub udostępnienia ze Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Motyw",
+        "description": "Motyw kolorystyczny tła odtwarzacza.",
+        "options": {
+          "": "Domyślny",
+          "0": "Czarny"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Rozmiar",
+        "description": "Rozmiar odtwarzacza.",
+        "options": {
+          "normal": "Domyślny",
+          "compact": "Kompaktowy"
+        }
+      }
+    ]
+  }
+}

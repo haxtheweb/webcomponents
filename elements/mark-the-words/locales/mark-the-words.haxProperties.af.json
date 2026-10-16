@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Merk die woorde",
+    "description": "Identifiseer begrippe deur woorde in 'n teks te klik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vraag",
+        "description": "Vraag waarop gebruikers moet antwoord."
+      },
+      {
+        "property": "statement",
+        "title": "Stelling",
+        "description": "Stelling wat omgeskakel sal word in die merk-die-woorde-interaksie."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Nasienformaat",
+        "description": "OER Schema: nasienformaat vir hierdie assessering (bv. punte, letter, persentasie, voltooiing)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leeruitkoms",
+        "description": "OER Schema: leeruitkoms wat met hierdie assessering verband hou."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus waarvoor hierdie assessering bedoel is."
+      },
+      {
+        "property": "answers",
+        "title": "Antwoorde"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naam van die vasvra",
+        "description": "Vasvranaam wat deurgegee word vir gebruik in xAPI-gedrewe omgewings om hierdie item te identifiseer"
+      }
+    ]
+  }
+}

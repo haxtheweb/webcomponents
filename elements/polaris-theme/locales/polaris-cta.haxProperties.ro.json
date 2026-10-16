@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Afișează un buton de îndemn la acțiune Polaris tematic."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Textul butonului",
+        "description": "Textul afișat în butonul de îndemn la acțiune."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "URL-ul de destinație al butonului."
+      },
+      {
+        "property": "type",
+        "title": "Variantă",
+        "description": "Varianta de stil vizual.",
+        "options": {
+          "primary": "Principal",
+          "tinted": "Nuanțat",
+          "light": "Deschis"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Stil conturat",
+        "description": "Activează aspectul conturat."
+      },
+      {
+        "property": "filled",
+        "title": "Stil umplut",
+        "description": "Activează aspectul umplut."
+      }
+    ]
+  }
+}

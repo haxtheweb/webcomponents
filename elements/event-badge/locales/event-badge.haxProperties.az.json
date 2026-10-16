@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Tədbir nişanı",
+    "description": "Tədbir nişanı komponenti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV şəkli",
+        "description": "TV-də göstərilən şəkil."
+      },
+      {
+        "property": "logo",
+        "title": "Loqo",
+        "description": "Nişanın küncündə göstərilən loqo."
+      },
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Nişanın yuxarısında göstərilən başlıq."
+      },
+      {
+        "property": "name",
+        "title": "Ad",
+        "description": "Nişanda göstərilən ad."
+      },
+      {
+        "property": "position",
+        "title": "Vəzifə",
+        "description": "Şəxsin rolu və ya vəzifəsi."
+      },
+      {
+        "property": "organization",
+        "title": "Təşkilat",
+        "description": "Şəxsin işlədiyi təşkilat."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV rəngi",
+        "description": "TV üçün rəng seçin."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Əsas fon və ya mətn rəngi."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Düymə rəngi",
+        "description": "TV düymələrinin rəngi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepiya",
+        "description": "Sepiya effekti tətbiq et."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Ağ-qara",
+        "description": "Ağ-qara effekti tətbiq et."
+      }
+    ]
+  }
+}

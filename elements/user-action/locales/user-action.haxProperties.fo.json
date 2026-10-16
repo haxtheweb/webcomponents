@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Brúkarahandling",
+    "description": "Fylg við brúkarahandlingum og send dáta til xAPI-goymslur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Hending at fylgja við",
+        "description": "Brúkarahandling, sum setir hesa hendingina í gongd.",
+        "options": {
+          "visibility": "Kann síggja hetta",
+          "keydown": "Trýst á ein knapp her",
+          "click": "Klikk á hetta",
+          "hover": "Svev yvir hetta"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Fylg við hvørja ferð",
+        "description": "Sum standard verður bert fyrsta ferð fylgd við."
+      }
+    ]
+  }
+}

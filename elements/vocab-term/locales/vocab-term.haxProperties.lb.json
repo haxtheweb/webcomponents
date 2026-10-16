@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Vokabel",
+    "description": "Vokabelbegrëff."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Begrëff"
+      },
+      {
+        "property": "information",
+        "title": "Definitioun",
+        "description": "Definitioun, déi ugewise gëtt, wann op de Begrëff geklickt gëtt."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "D'Definitioun an engem Popover amplaz am Text uweisen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Linken",
+        "description": "Lëscht vun zousätzleche Linken, déi mat dësem Begrëff verbonne sinn."
+      }
+    ]
+  }
+}

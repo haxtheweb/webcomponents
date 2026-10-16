@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Mavara eunyanzvi eHAX",
+    "description": "chinhu cherogo yeHAX, chiri chinhu chinoshanda neHAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Saizi yerogo yeHAX yekuisa",
+        "options": {
+          "mini": "Diki kwazvo",
+          "small": "Diki",
+          "normal": "Zvakajairwa",
+          "large": "Hombe"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Kana rogo ichishandurwa kuita mavara makuru"
+      }
+    ]
+  }
+}

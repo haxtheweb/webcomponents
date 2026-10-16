@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Eseményjelvény",
+    "description": "Eseményjelvény-komponens."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV-kép",
+        "description": "A tévén megjelenő kép."
+      },
+      {
+        "property": "logo",
+        "title": "Logó",
+        "description": "A jelvény sarkában megjelenő logó."
+      },
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "A jelvény tetején megjelenő cím."
+      },
+      {
+        "property": "name",
+        "title": "Név",
+        "description": "A jelvényen megjelenő név."
+      },
+      {
+        "property": "position",
+        "title": "Beosztás",
+        "description": "A személy szerepe vagy titulusa."
+      },
+      {
+        "property": "organization",
+        "title": "Szervezet",
+        "description": "A szervezet, ahol a személy dolgozik."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV színe",
+        "description": "Válassza ki a tévé színét."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "Elsődleges háttér- vagy szövegszín."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Gomb színe",
+        "description": "A tévé forgatógombjainak színe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Szépia",
+        "description": "Szépia effektus alkalmazása."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Fekete-fehér",
+        "description": "Fekete-fehér effektus alkalmazása."
+      }
+    ]
+  }
+}

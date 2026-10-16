@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Самаправерка",
+    "description": "Карыстальнікі могуць прайсці самаправерку."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Выява",
+        "description": "Выява для самаправеркі."
+      },
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Назва самаправеркі."
+      },
+      {
+        "property": "alt",
+        "title": "Альтэрнатыўны тэкст",
+        "description": "Alt-тэкст для выявы."
+      },
+      {
+        "slot": "question",
+        "title": "Пытанне"
+      },
+      {
+        "slot": "",
+        "title": "Адказ"
+      },
+      {
+        "property": "accentColor",
+        "title": "Колер тэмы",
+        "description": "Выберыце колер тэмы з дызайн-сістэмы.",
+        "options": {
+          "primary": "Асноўны",
+          "accent": "Акцэнт",
+          "success": "Поспех",
+          "warning": "Папярэджанне",
+          "error": "Памылка",
+          "info": "Інфармацыя"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Вучэбная мэта",
+        "description": "Спасылка на вучэбную мэту, якая выводзіцца як oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Ацэньвае",
+        "description": "Спасылка на заданне, якая выводзіцца як oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Спасылка «Больш»",
+        "description": "Спасылка на дадатковую інфармацыю."
+      }
+    ]
+  }
+}

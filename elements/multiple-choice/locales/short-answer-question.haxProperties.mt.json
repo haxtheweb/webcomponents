@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Mistoqsija ta' Tweġiba Qasira",
+    "description": "Ħalli lill-utent iwieġeb mistoqsija bażika"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Mistoqsija",
+        "description": "Mistoqsija biex l-utenti jwieġbu għaliha."
+      },
+      {
+        "property": "answers",
+        "title": "Tweġibiet possibbli"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Isem il-kwizz",
+        "description": "Isem il-kwizz mgħoddi għall-użu f'ambjenti mmexxija minn xAPI għall-identifikazzjoni ta' dan l-oġġett"
+      }
+    ]
+  }
+}

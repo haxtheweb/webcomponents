@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Tuile Polaris",
+    "description": "Afficher une tuile Polaris avec un titre, un texte d'appui facultatif et un lien facultatif."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Texte principal",
+        "description": "Texte principal de la tuile."
+      },
+      {
+        "property": "line2",
+        "title": "Texte secondaire",
+        "description": "Texte d'appui facultatif."
+      },
+      {
+        "property": "type",
+        "title": "Style de la tuile",
+        "description": "Style visuel prédéfini de la tuile.",
+        "options": {
+          "1": "Style 1",
+          "2": "Style 2",
+          "3": "Style 3",
+          "4": "Style 4",
+          "5": "Style 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Image d'arrière-plan",
+        "description": "URL de l'image d'arrière-plan utilisée par les styles de tuile compatibles avec les images."
+      },
+      {
+        "property": "link",
+        "title": "Lien",
+        "description": "URL de destination facultative pour l'action de la tuile."
+      }
+    ]
+  }
+}

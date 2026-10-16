@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sayfa bölümü",
+    "description": "Sayfa içeriği ve ekran tabanlı düzenler için bölüm kapsayıcısı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Tasarım uygulaması",
+        "description": "İlgili ayarları güncelleyen hazır stil."
+      },
+      {
+        "property": "image",
+        "title": "Görsel",
+        "description": "Bölümün arka plan medyası."
+      },
+      {
+        "property": "bg",
+        "title": "Arka plan rengi",
+        "description": "Görsel ayarlanmadığında arka plan rengi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Kaydırma düğmesi",
+        "description": "Sonraki bölüme kaydıran bir düğme göster."
+      },
+      {
+        "property": "fold",
+        "title": "Kıvrımı göster",
+        "description": "Bölümün altında görsel bir kıvrım göster."
+      },
+      {
+        "property": "full",
+        "title": "Tam ekran boyutu",
+        "description": "İzleyicinin ekran yüksekliğini doldur."
+      },
+      {
+        "property": "filter",
+        "title": "Filtre Uygula",
+        "description": "Arka plan görseline görsel bir filtre uygula."
+      },
+      {
+        "slot": "",
+        "title": "İçerik",
+        "description": "Bölüm içeriği."
+      },
+      {
+        "slot": "entice",
+        "title": "Cezbet",
+        "description": "İsteğe bağlı ilgi çekici içerik."
+      },
+      {
+        "slot": "buttons",
+        "title": "Düğmeler",
+        "description": "Metnin altında gösterilen düğme grubu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Çapa metni",
+        "description": "Gezinmede gösterilen çapa etiketi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Fi àkóónú wẹ́ẹ̀bù ìta sínú iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ohun-èlò",
+        "description": "URL ohun-èlò."
+      },
+      {
+        "property": "height",
+        "title": "Gíga",
+        "description": "Gíga iframe."
+      },
+      {
+        "property": "width",
+        "title": "Ìbú",
+        "description": "Ìbú iframe."
+      }
+    ]
+  }
+}

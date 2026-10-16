@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Ovoj za vdelane predvajalnike Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Vir",
+        "description": "Povezava za vdelavo ali deljenje iz Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Barvna tema ozadja predvajalnika.",
+        "options": {
+          "": "Privzeto",
+          "0": "Črna"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Velikost",
+        "description": "Velikost predvajalnika.",
+        "options": {
+          "normal": "Privzeto",
+          "compact": "Kompaktna"
+        }
+      }
+    ]
+  }
+}

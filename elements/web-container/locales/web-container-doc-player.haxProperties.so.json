@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Ciyaaraha dukumentiga qaybta webka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Qari daaqadda",
+        "description": "Qari daaqadda soo saarka, waxtar leh marka ujeeddadu tahay terminal oo keliya"
+      }
+    ]
+  }
+}

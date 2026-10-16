@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Igbe NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Zoo ihe ndezi",
+        "description": "Zoo ihu ndezi faịlụ."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Zoo ọnụ ọdụ",
+        "description": "Zoo ọnụ ọdụ maka mmemme na-agba onwe ha."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Zoo windo",
+        "description": "Zoo windo mmepụta maka iji naanị ọnụ ọdụ."
+      },
+      {
+        "slot": "",
+        "title": "Iwu",
+        "description": "Iwu (otu n'ahịrị ọ bụla) a ga-agba tupu ibudata."
+      }
+    ]
+  }
+}

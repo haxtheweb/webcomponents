@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sivun osio",
+    "description": "Osiosäilö sivun sisällölle ja näyttöpohjaisille asetteluille."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Ulkoasu",
+        "description": "Esiasetettu tyyli, joka päivittää liittyvät asetukset."
+      },
+      {
+        "property": "image",
+        "title": "Kuva",
+        "description": "Osion taustamedia."
+      },
+      {
+        "property": "bg",
+        "title": "Taustaväri",
+        "description": "Taustaväri, kun kuvaa ei ole asetettu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Vierityspainike",
+        "description": "Näytä painike, joka vierittää seuraavaan osioon."
+      },
+      {
+        "property": "fold",
+        "title": "Näytä taite",
+        "description": "Näytä visuaalinen taite osion alareunassa."
+      },
+      {
+        "property": "full",
+        "title": "Koko näytön koko",
+        "description": "Täytä katsojan näytön korkeus."
+      },
+      {
+        "property": "filter",
+        "title": "Käytä suodatinta",
+        "description": "Käytä visuaalista suodatinta taustakuvaan."
+      },
+      {
+        "slot": "",
+        "title": "Sisältö",
+        "description": "Osion sisältö."
+      },
+      {
+        "slot": "entice",
+        "title": "Houkutin",
+        "description": "Valinnainen houkutteleva sisältö."
+      },
+      {
+        "slot": "buttons",
+        "title": "Painikkeet",
+        "description": "Tekstin alla näytettävä painikeryhmä."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ankkuriteksti",
+        "description": "Navigaatiossa näytettävä ankkurin nimike."
+      }
+    ]
+  }
+}

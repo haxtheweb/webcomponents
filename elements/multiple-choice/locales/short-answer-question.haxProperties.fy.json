@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Koart-antwurdfraach",
+    "description": "Lit de brûker in ienfâldige fraach beäntwurdzje"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fraach",
+        "description": "Fraach dêr't brûkers op reagearje moatte."
+      },
+      {
+        "property": "answers",
+        "title": "Mooglike antwurden"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Namme fan de kwis",
+        "description": "Kwisnamme dy't trochjûn wurdt foar identifikaasje fan dit item yn xAPI-basearre omjouwings"
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Mediacitaat",
+    "description": "Afbeelding met een citaat, bronvermelding en optioneel bijschrift."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Citaat",
+        "description": "Tekst van het citaat."
+      },
+      {
+        "slot": "author",
+        "title": "Auteur",
+        "description": "Auteur van het citaat."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Details van de auteur",
+        "description": "Details van de auteur."
+      },
+      {
+        "slot": "caption",
+        "title": "Bijschrift",
+        "description": "Bijschrift van de afbeelding."
+      },
+      {
+        "property": "src",
+        "title": "Afbeeldingsbron",
+        "description": "Afbeeldingsbestand voor het mediacitaat."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-tekst",
+        "description": "Alternatieve tekst voor de afbeelding."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Accentkleur van de kaart."
+      }
+    ]
+  }
+}

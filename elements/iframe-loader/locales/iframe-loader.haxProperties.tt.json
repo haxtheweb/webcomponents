@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Тышкы веб-эчтәлекне iframe эчендә урнаштырырга."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ресурс URL адресы",
+        "description": "Ресурс URL адресы."
+      },
+      {
+        "property": "height",
+        "title": "Биеклек",
+        "description": "Iframe биеклеге."
+      },
+      {
+        "property": "width",
+        "title": "Киңлек",
+        "description": "Iframe киңлеге."
+      }
+    ]
+  }
+}

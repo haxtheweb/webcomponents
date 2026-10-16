@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Nhúng Twitter (X)",
+    "description": "Nhúng một tweet từ X trong ngữ cảnh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL tweet",
+        "description": "URL của tweet cần nhúng."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Chủ đề",
+        "description": "Giao diện sáng hoặc tối cho tweet trên X.",
+        "options": {
+          "light": "Sáng",
+          "dark": "Tối"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Ngăn cửa sổ bật lên khi nhấp",
+        "description": "Ngăn người dùng mở tweet trên x.com."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "የገጽ መልህቅ",
+    "description": "በገጹ ላይ ባለ ሚዲያ ውስጥ ወደ ተወሰኑ ነጥቦች አገናኝ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "የገጽ ዒላማ",
+        "description": "ይህ መልህቅ የሚያመለክተው ID ወይም ሀብት።"
+      },
+      {
+        "property": "value",
+        "title": "የጥልቅ አገናኝ እሴት",
+        "description": "የጥልቅ አገናኝ እሴት (ለምሳሌ የጊዜ ማህተም ወይም የተንሸራታች ID)።"
+      },
+      {
+        "property": "entityId",
+        "title": "የጣቢያ አካል",
+        "description": "ተዛማጅ ጽንሰ-ሐሳቦችን አቀራረብ ለመቆጣጠር አማራጭ የጣቢያ አካል።"
+      }
+    ]
+  }
+}

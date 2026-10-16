@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "ಪುಟದ ವಿವರಗಳು",
+    "description": "CMS ಗಳು ಪುಟಗಳನ್ನು ರಚಿಸಲು ಬಳಸಬಹುದಾದ ಪುಟಗಳ ನಡುವಿನ ದೃಶ್ಯ ವಿಭಜನೆಯನ್ನು ವ್ಯಾಖ್ಯಾನಿಸಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಥೀಮ್ ಮತ್ತು ಮೊದಲ ಶೀರ್ಷಿಕೆಯಲ್ಲಿ ತೋರಿಸುವ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "pageType",
+        "title": "ಪ್ರಕಾರ",
+        "description": "ದೃಶ್ಯ ಪುಟ ಸಂದರ್ಭದ ಲೇಬಲ್.",
+        "options": {
+          "": "-- ಯಾವುದೂ ಇಲ್ಲ --",
+          "content": "ವಿಷಯ",
+          "assessment": "ಮೌಲ್ಯಮಾಪನ",
+          "quiz": "ರಸಪ್ರಶ್ನೆ",
+          "submission": "ಸಲ್ಲಿಕೆ",
+          "lesson": "ಪಾಠ",
+          "module": "ಮಾಡ್ಯೂಲ್",
+          "task": "ಕಾರ್ಯ",
+          "activity": "ಚಟುವಟಿಕೆ",
+          "project": "ಯೋಜನೆ",
+          "practice": "ಅಭ್ಯಾಸ",
+          "unit": "ಘಟಕ",
+          "objectives": "ಕಲಿಕಾ ಉದ್ದೇಶಗಳು",
+          "connection": "ಸಂಪರ್ಕ",
+          "knowledge": "ನಿಮಗೆ ಗೊತ್ತೇ?",
+          "strategy": "ಕಲಿಕಾ ತಂತ್ರ",
+          "discuss": "ಚರ್ಚಿಸಿ",
+          "listen": "ಆಲಿಸಿ",
+          "make": "ತಯಾರಿಸಿ",
+          "observe": "ಗಮನಿಸಿ",
+          "present": "ಪ್ರಸ್ತುತಪಡಿಸಿ",
+          "reading": "ಓದುವಿಕೆ",
+          "reflect": "ಚಿಂತಿಸಿ",
+          "research": "ಸಂಶೋಧನೆ",
+          "watch": "ವೀಕ್ಷಿಸಿ",
+          "write": "ಬರೆಯಿರಿ"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ಟ್ಯಾಗ್‌ಗಳು",
+        "description": "ಅಲ್ಪವಿರಾಮದಿಂದ ಬೇರ್ಪಡಿಸಿದ ಟ್ಯಾಗ್‌ಗಳ ಪಟ್ಟಿ."
+      },
+      {
+        "property": "linkUrl",
+        "title": "ಲಿಂಕ್ URL",
+        "description": "ಪುಟದ ವಿಷಯದ ಬದಲು ತೋರಿಸುವ ಮರುನಿರ್ದೇಶನ URL."
+      },
+      {
+        "property": "linkTarget",
+        "title": "ಲಿಂಕ್ ಗುರಿ",
+        "description": "ಲಿಂಕ್‌ಗಳನ್ನು ಅದೇ ವಿಂಡೋದಲ್ಲಿ ಅಥವಾ ಹೊಸ ವಿಂಡೋದಲ್ಲಿ ತೆರೆಯಿರಿ.",
+        "options": {
+          "_self": "ಅದೇ ವಿಂಡೋ",
+          "_blank": "ಹೊಸ ವಿಂಡೋ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "ಪ್ರಕಟಿಸಲಾಗಿದೆ",
+        "description": "ಪ್ರಕಟಿಸದ ಪುಟಗಳು ಅಂತಿಮ ಬಳಕೆದಾರರಿಗೆ ಮರೆಯಾಗಿರುತ್ತವೆ."
+      },
+      {
+        "property": "locked",
+        "title": "ಪುಟ ಲಾಕ್ ಮಾಡಿ",
+        "description": "ಈ ಪುಟದ ಎಲ್ಲಾ ಅಂಶಗಳನ್ನು ಲಾಕ್ ಅಥವಾ ಅನ್‌ಲಾಕ್ ಮಾಡಿ."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "ಸ್ವಯಂಚಾಲಿತ ಸ್ಲಗ್ ಅತಿಕ್ರಮಿಸಿ",
+        "description": "ಶೀರ್ಷಿಕೆ ಅಥವಾ ಮೂಲ ಪುಟದ ಆಧಾರದ ಸ್ವಯಂಚಾಲಿತ ನವೀಕರಣಗಳಿಂದ ಸ್ಲಗ್ ಅನ್ನು ಲಾಕ್ ಮಾಡಿ."
+      },
+      {
+        "property": "slug",
+        "title": "ಮಾರ್ಗ",
+        "description": "ಈ ಪುಟದ URL ಸ್ಲಗ್."
+      },
+      {
+        "property": "image",
+        "title": "ಮಾಧ್ಯಮ",
+        "description": "ಪುಟವನ್ನು ಪ್ರತಿನಿಧಿಸುವ ಮಾಧ್ಯಮ, ಕೆಲವು ಥೀಮ್‌ಗಳು ಮತ್ತು ವೀಕ್ಷಣೆಗಳಲ್ಲಿ ಬಳಸಲಾಗುತ್ತದೆ."
+      },
+      {
+        "property": "parent",
+        "title": "ಮೂಲ ಪುಟ",
+        "description": "ಮೂಲ ಪುಟದ ಮಾರ್ಗ."
+      },
+      {
+        "property": "noderefs",
+        "title": "ಸಂಬಂಧಿತ ವಿಷಯ",
+        "description": "ಈ ಪುಟಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಪುಟಗಳು."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "ವಿವರಣೆ",
+        "description": "ಸಂಗ್ರಹಗಳು ಮತ್ತು ಸರ್ಚ್ ಇಂಜಿನ್ ಆಪ್ಟಿಮೈಸೇಶನ್‌ನಲ್ಲಿ ಬಳಸುವ ವಿವರಣೆ."
+      },
+      {
+        "property": "entityType",
+        "title": "ಘಟಕದ ಪ್ರಕಾರ",
+        "description": "ಬೇರೆ ಹೊಂದಿಸದಿದ್ದರೆ ಪೂರ್ವನಿಯೋಜಿತವಾಗಿ ಪುಟ.",
+        "options": {
+          "page": "ಪುಟ (ಪೂರ್ವನಿಯೋಜಿತ)",
+          "taxonomy": "ವರ್ಗೀಕರಣ",
+          "taxonomyTerm": "ವರ್ಗೀಕರಣ ಪದ",
+          "region": "ಪ್ರದೇಶ"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "ಐಕಾನ್",
+        "description": "ಸೈಟ್‌ನಲ್ಲಿ ಈ ಪುಟಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಐಕಾನ್."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಸೈಟ್‌ನಲ್ಲಿ ಈ ಪುಟಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಬಣ್ಣ."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "ಮೆನುವಿನಲ್ಲಿ ಮರೆಮಾಡಿ",
+        "description": "URL ಅನ್ನು ಉಳಿಸಿಕೊಂಡು ಈ ಪುಟವನ್ನು ಮೆನುಗಳಿಂದ ಮರೆಮಾಡಿ."
+      },
+      {
+        "property": "order",
+        "title": "ಕ್ರಮ",
+        "description": "ಸಹೋದರ ಪುಟಗಳಿಗೆ ಸಂಬಂಧಿಸಿದ ಕ್ರಮ."
+      },
+      {
+        "property": "developerTheme",
+        "title": "ಪುಟದ ಥೀಮ್",
+        "description": "ಈ ಪುಟಕ್ಕೆ ಮಾತ್ರ ಥೀಮ್ ಅತಿಕ್ರಮಿಸಿ."
+      },
+      {
+        "property": "author",
+        "title": "ಲೇಖಕ",
+        "description": "ಈ ಪುಟವನ್ನು ಕೊನೆಯದಾಗಿ ಮಾರ್ಪಡಿಸಿದ ವ್ಯಕ್ತಿಯ ಬಳಕೆದಾರಹೆಸರು."
+      }
+    ]
+  }
+}

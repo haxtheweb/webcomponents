@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Şîroveyên Disqus li ser rûpelekê bi cih bike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Navê kurt",
+        "description": "Navê kurt ê malperê, ku mêvandarê skrîpta Disqus diyar dike."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL ya Rûpelê",
+        "description": "URL ya rûpela ku xeta şîroveyan pê ve girêdayî ye."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Nasnameya rûpelê",
+        "description": "Nasnameya yekta ji bo xeta şîroveyan a rûpelê."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Sernavê rûpelê",
+        "description": "Sernavê rûpela ku xeta şîroveyan pê ve girêdayî ye."
+      },
+      {
+        "property": "loadingText",
+        "title": "Nivîsa barkirinê",
+        "description": "Nivîsa ku dema şîrove tên barkirin tê ragihandin."
+      },
+      {
+        "property": "lang",
+        "title": "Ziman",
+        "description": "Koda zimanê ji bo navrûya Disqus, mînak en."
+      }
+    ]
+  }
+}

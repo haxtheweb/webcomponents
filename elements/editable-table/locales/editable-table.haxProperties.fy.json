@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabel",
+    "description": "Tabelgegevens foar it web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Rigekop",
+        "description": "Behannelje de earste rige as kop."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Kolomkop",
+        "description": "Behannelje de earste kolom as kop."
+      },
+      {
+        "property": "footer",
+        "title": "Foettekst",
+        "description": "Behannelje de lêste rige as foettekst."
+      },
+      {
+        "property": "sort",
+        "title": "Sortearber",
+        "description": "Sortearjen op kolomwearden tastean."
+      },
+      {
+        "property": "filter",
+        "title": "Filterjen tastean",
+        "description": "Filterjen op kolomwearden tastean."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numerike opmaak",
+        "description": "Numerike opmaak tapasse op numerike kolommen."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsyf",
+        "description": "Tabelopmaak oanpasse op lytse skermen."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubrykmodus",
+        "description": "Ynterpretearje dizze tabel as in OER Schema Rubric, sadat Rubric-, RubricScale-, RubricCriterion- en RubricLevel-metadata útjûn wurde."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubryktype",
+        "description": "Rubrykstyl útjûn as oer:rubricType (allinnich sinfol as Rubrykmodus oan stiet).",
+        "options": {
+          "": "(gjin)",
+          "analytic": "Analytysk",
+          "holistic": "Holistysk",
+          "single-point": "Ien punt",
+          "checklist": "Kontrôlelist"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Mei râne"
+      },
+      {
+        "property": "condensed",
+        "title": "Rigen kompakt meitsje",
+        "description": "Rigehichte ferleegje."
+      },
+      {
+        "property": "striped",
+        "title": "Stripe rigen",
+        "description": "Elke oare rige skaadzje."
+      },
+      {
+        "property": "downloadable",
+        "title": "Downloadknop",
+        "description": "In knop tafoegje om de tabel te downloaden."
+      },
+      {
+        "property": "copyable",
+        "title": "Kopiearknop",
+        "description": "In knop tafoegje om de CSV-gegevens fan de tabel te kopiearjen."
+      },
+      {
+        "property": "printable",
+        "title": "Printknop",
+        "description": "In knop tafoegje om allinnich de tabel te printsjen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV-gegevens",
+        "description": "In tabel meitsje fan in opladen CSV-bestân."
+      }
+    ]
+  }
+}

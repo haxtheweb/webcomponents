@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mbendera ya tsamba",
+    "description": "Cholemba cha akonzi kwa olemba tsamba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera wa mbendera ya tsamba."
+      },
+      {
+        "property": "label",
+        "title": "Dzina",
+        "description": "Mawu a dzina la mbendera ya tsamba."
+      }
+    ]
+  }
+}

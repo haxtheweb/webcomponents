@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Karta",
+    "description": "DDD dizayn tizimi asosida bezatilgan karta komponenti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Rasm",
+        "description": "Ixtiyoriy rasm."
+      },
+      {
+        "property": "alt",
+        "title": "Rasm muqobil matni",
+        "description": "Rasmni tavsiflovchi muqobil matn."
+      },
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Karta sarlavhasi."
+      },
+      {
+        "slot": "",
+        "title": "Kontent",
+        "description": "Karta kontent maydoni."
+      },
+      {
+        "property": "href",
+        "title": "Havola",
+        "description": "Tugma havolasi URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Yorliq",
+        "description": "Tugma yorligʻi."
+      },
+      {
+        "property": "noArrow",
+        "title": "Strelkasiz",
+        "description": "Tugma strelkasini yashirish."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Havola: target",
+        "description": "Havolani qayerda ochish.",
+        "options": {
+          "": "Shu oyna",
+          "_blank": "Yangi oyna - _blank",
+          "_top": "Yuqori oyna - _top",
+          "_parent": "Ota oyna - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Havola: rel",
+        "description": "Bogʻlangan resurs va joriy hujjat oʻrtasidagi munosabat."
+      }
+    ]
+  }
+}

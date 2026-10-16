@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ħarsa lejn il-prodott",
+    "description": "Blokk ta' ħarsa ġenerali ħafifa lejn prodott."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona li tirrappreżenta l-kunċett."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Il-kunċett ewlieni f'daqqa t'għajn."
+      },
+      {
+        "property": "subtitle",
+        "title": "Sottotitlu",
+        "description": "Dettall addizzjonali."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-enfasi għall-ikona."
+      }
+    ]
+  }
+}

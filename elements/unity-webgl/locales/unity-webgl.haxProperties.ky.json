@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity ойноткучу",
+    "description": "Unity WebGL ойноткучу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Максат",
+        "description": "Оюндун жыйнагына жол."
+      },
+      {
+        "property": "compression",
+        "title": "Кысуу ыкмасы",
+        "description": "Оюн ресурстары үчүн кысуу файлынын кеңейтүүсү."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Агым URL дареги",
+        "description": "Агым ресурстарынын URL дареги."
+      },
+      {
+        "property": "companyname",
+        "title": "Компаниянын аталышы",
+        "description": "Компаниянын аталышы."
+      },
+      {
+        "property": "productname",
+        "title": "Продукциянын аталышы",
+        "description": "Оюндун аталышы."
+      },
+      {
+        "property": "productversion",
+        "title": "Продукциянын версиясы",
+        "description": "Чыгаруу версиясы."
+      },
+      {
+        "property": "width",
+        "title": "Канвастын туурасы",
+        "description": "Канвастын CSS туурасы (мисалы, px же em)."
+      },
+      {
+        "property": "height",
+        "title": "Канвастын бийиктиги",
+        "description": "Канвастын CSS бийиктиги (мисалы, px же em)."
+      },
+      {
+        "property": "background",
+        "title": "Канвастын фону",
+        "description": "Канвастын CSS фону."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "페이지 세부 정보",
+    "description": "CMS가 페이지를 만드는 데 사용할 수 있는 페이지 간 시각적 구분을 정의합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "테마와 첫 번째 제목에 표시되는 제목입니다."
+      },
+      {
+        "property": "pageType",
+        "title": "유형",
+        "description": "시각적 페이지 맥락 레이블입니다.",
+        "options": {
+          "": "-- 없음 --",
+          "content": "콘텐츠",
+          "assessment": "평가",
+          "quiz": "퀴즈",
+          "submission": "제출",
+          "lesson": "레슨",
+          "module": "모듈",
+          "task": "과제",
+          "activity": "활동",
+          "project": "프로젝트",
+          "practice": "연습",
+          "unit": "단원",
+          "objectives": "학습 목표",
+          "connection": "연결",
+          "knowledge": "알고 계셨나요?",
+          "strategy": "학습 전략",
+          "discuss": "토론하기",
+          "listen": "듣기",
+          "make": "만들기",
+          "observe": "관찰하기",
+          "present": "발표하기",
+          "reading": "읽기",
+          "reflect": "성찰하기",
+          "research": "조사하기",
+          "watch": "시청하기",
+          "write": "쓰기"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "태그",
+        "description": "쉼표로 구분된 태그 목록입니다."
+      },
+      {
+        "property": "linkUrl",
+        "title": "링크 URL",
+        "description": "페이지 콘텐츠 대신 표시되는 리디렉션 URL입니다."
+      },
+      {
+        "property": "linkTarget",
+        "title": "링크 대상",
+        "description": "링크를 같은 창 또는 새 창에서 엽니다.",
+        "options": {
+          "_self": "같은 창",
+          "_blank": "새 창"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "게시됨",
+        "description": "게시되지 않은 페이지는 최종 사용자에게 숨겨집니다."
+      },
+      {
+        "property": "locked",
+        "title": "페이지 잠금",
+        "description": "이 페이지의 모든 요소를 잠그거나 잠금 해제합니다."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "자동 슬러그 재정의",
+        "description": "제목이나 상위 페이지에 따른 자동 업데이트로부터 슬러그를 고정합니다."
+      },
+      {
+        "property": "slug",
+        "title": "경로",
+        "description": "이 페이지의 URL 슬러그입니다."
+      },
+      {
+        "property": "image",
+        "title": "미디어",
+        "description": "페이지를 대표하는 미디어로, 일부 테마와 보기에서 사용됩니다."
+      },
+      {
+        "property": "parent",
+        "title": "상위 페이지",
+        "description": "상위 페이지의 경로입니다."
+      },
+      {
+        "property": "noderefs",
+        "title": "관련 콘텐츠",
+        "description": "이 페이지와 관련된 페이지입니다."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "설명",
+        "description": "컬렉션과 검색 엔진 최적화에 사용되는 설명입니다."
+      },
+      {
+        "property": "entityType",
+        "title": "엔터티 유형",
+        "description": "따로 설정하지 않으면 페이지가 기본값입니다.",
+        "options": {
+          "page": "페이지(기본값)",
+          "taxonomy": "분류 체계",
+          "taxonomyTerm": "분류 용어",
+          "region": "영역"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "아이콘",
+        "description": "사이트에서 이 페이지와 연결된 아이콘입니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "사이트에서 이 페이지와 연결된 색상입니다."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "메뉴에서 숨기기",
+        "description": "URL은 유지하면서 이 페이지를 메뉴에서 숨깁니다."
+      },
+      {
+        "property": "order",
+        "title": "순서",
+        "description": "형제 페이지 간의 순서입니다."
+      },
+      {
+        "property": "developerTheme",
+        "title": "페이지 테마",
+        "description": "이 페이지에만 테마를 재정의합니다."
+      },
+      {
+        "property": "author",
+        "title": "저자",
+        "description": "이 페이지를 마지막으로 수정한 사람의 사용자 이름입니다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Blockzitat",
+    "description": "Gestalteter Zitatblock."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Quellenangabe",
+        "description": "Text der Quellenangabe."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativtext für das Bild."
+      },
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Bild, das mit dem Zitat angezeigt wird."
+      }
+    ]
+  }
+}

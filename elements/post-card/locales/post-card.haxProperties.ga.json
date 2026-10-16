@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Cárta Poist",
+    "description": "Píosa meán spraíúil atá cosúil le cárta poist fisiciúil ó áit éigin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Chuig",
+        "description": "Cé chuige a bhfuil sé seo ag dul?"
+      },
+      {
+        "property": "from",
+        "title": "Ó",
+        "description": "Cé thusa?"
+      },
+      {
+        "property": "message",
+        "title": "Teachtaireacht",
+        "description": "Cad ba mhaith leat a rá?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Postmharc Ó",
+        "description": "Cén áit ar seoladh an cárta seo uaithi?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Foinse an Phríomhghrianghraif",
+        "description": "Cá bhfuil do ghrianghraf?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Foinse Grianghraif an Stampa",
+        "description": "Cá bhfuil do ghrianghraf?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub-ის კონტრიბუტორების სია",
+    "description": "ნაჩვენებია RPG პერსონაჟებად GitHub API-ის გამოყენებით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ორგანიზაცია",
+        "description": "ორგანიზაციის სახელი github.com/ORG/REPO-დან."
+      },
+      {
+        "property": "repo",
+        "title": "რეპოზიტორია",
+        "description": "რეპოზიტორიის სახელი github.com/ORG/REPO-დან."
+      },
+      {
+        "property": "limit",
+        "title": "ლიმიტი",
+        "description": "ნაჩვენები კონტრიბუტორების რაოდენობის შეზღუდვა."
+      }
+    ]
+  }
+}

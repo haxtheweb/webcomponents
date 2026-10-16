@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Qoraal Joojin",
+    "description": "Fariin lagu digo akhristayaasha tilmaamo gaar ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Geli cinwaanka qoraalka joojinta."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Geli URL dibadeed."
+      },
+      {
+        "property": "status",
+        "title": "Xaalad",
+        "description": "Dejinta xaaladda waxay beddeshaa midabada iyo astaamaha si ay u waafaqaan",
+        "options": {
+          "stop": "Jooji",
+          "warning": "Digniin",
+          "success": "Xaqiijin",
+          "info": "Ogeysiis"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Qoraalka Ogeysiiska",
+        "description": "Qoraalka qoraalka joojinta."
+      }
+    ]
+  }
+}

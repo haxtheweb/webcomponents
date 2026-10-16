@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Mea hoʻokani palapala mea pūnaewele"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Hūnā i ka puka aniani",
+        "description": "E hūnā i ka puka aniani puka, he mea pono ke kāhuna wale nō ka pahuhopu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Ceol scríofa",
+    "description": "Léiríonn agus seinneann sé ceol scríofa, táblaí giotáir agus nodaireacht scóir trí alphaTex nó MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Nodaireacht AlphaTex",
+        "description": "Marcáil inlíne alphaTex don cheol scríofa. Cuir in eagar go díreach í chun nodaireacht a scríobh; stóráiltear í i dteimpléad ionas go gcaomhnaítear an spásáil."
+      },
+      {
+        "property": "source",
+        "title": "Comhad scóir",
+        "description": "Uaslódáil comhad MusicXML (.xml/.musicxml/.mxl) nó Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) nó nasc chuige. Sáraíonn sé an alphaTex inlíne nuair atá sé socraithe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Athsheinm fuaime",
+        "description": "Ar siúl de réir réamhshocraithe - éist leis an gceol scríofa á sheinm tríd an sintéiseoir ionsuite. Múch é do mhód amhairc amháin (gan fuaim)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Taispeáin roghanna taispeána",
+        "description": "Taispeáin cnaipí súmála, sínte agus leagain amach ar bharra an tseinnteora."
+      },
+      {
+        "property": "showExport",
+        "title": "Taispeáin cnaipí easpórtála",
+        "description": "Taispeáin cnaipí chun MIDI a íoslódáil agus chun priontáil/PDF ar bharra an tseinnteora."
+      }
+    ]
+  }
+}

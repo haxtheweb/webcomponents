@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "حرکت والے GIF نوں قابل رسائی بناؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "حرکت والا GIF",
+        "description": "حرکت والے GIF دا URL۔"
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "تصویر لئی متبادل متن۔"
+      },
+      {
+        "property": "longdesc",
+        "title": "لمی وضاحت",
+        "description": "رسائی لئی GIF دی لمی وضاحت۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "ساکن تصویر",
+        "description": "GIF دے ساکن تصویر والے نسخے دا URL۔"
+      }
+    ]
+  }
+}

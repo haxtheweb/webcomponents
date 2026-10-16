@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris pločica",
+    "description": "Prikažite Polaris pločicu s naslovom, opcionalnim pratećim tekstom i opcionalnim linkom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Primarni tekst",
+        "description": "Glavni tekst pločice."
+      },
+      {
+        "property": "line2",
+        "title": "Sekundarni tekst",
+        "description": "Opcionalni prateći tekst."
+      },
+      {
+        "property": "type",
+        "title": "Stil pločice",
+        "description": "Unaprijed postavljeni vizuelni stil pločice.",
+        "options": {
+          "1": "Stil 1",
+          "2": "Stil 2",
+          "3": "Stil 3",
+          "4": "Stil 4",
+          "5": "Stil 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Pozadinska slika",
+        "description": "URL pozadinske slike koji koriste stilovi pločica sa slikom."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Opcionalni odredišni URL za akciju pločice."
+      }
+    ]
+  }
+}

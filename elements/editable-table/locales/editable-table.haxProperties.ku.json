@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tablo",
+    "description": "Daneyên li ser bingeha tabloyê ji bo webê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Sernivîsa Rêzê",
+        "description": "Rêza yekem wekî sernivîs bihesibîne."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Sernivîsa Stûnê",
+        "description": "Stûna yekem wekî sernivîs bihesibîne."
+      },
+      {
+        "property": "footer",
+        "title": "Binnivîs",
+        "description": "Rêza dawî wekî binnivîs bihesibîne."
+      },
+      {
+        "property": "sort",
+        "title": "Rêzkirinbar",
+        "description": "Destûrê bide rêzkirinê li gorî nirxên stûnan."
+      },
+      {
+        "property": "filter",
+        "title": "Destûra Parzûnê",
+        "description": "Destûrê bide parzûnkirinê li gorî nirxên stûnan."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Şêweya Hejmarî",
+        "description": "Şêweya hejmarî li stûnên hejmarî bisepîne."
+      },
+      {
+        "property": "responsive",
+        "title": "Bersivdar",
+        "description": "Rûpelsazkirina tabloyê li ser ekranên piçûk eyar bike."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Moda Rubrîkê",
+        "description": "Vê tabloyê wekî OER Schema Rubric şîrove bike da ku metadaneyên Rubric, RubricScale, RubricCriterion û RubricLevel werin derxistin."
+      },
+      {
+        "property": "rubricType",
+        "title": "Cureyê Rubrîkê",
+        "description": "Şêweya rubrîkê ku wekî oer:rubricType tê derxistin (tenê dema Moda Rubrîkê vekirî be wate heye).",
+        "options": {
+          "": "(tune)",
+          "analytic": "Analîtîk",
+          "holistic": "Gelemperî",
+          "single-point": "Yek Xal",
+          "checklist": "Lîsteya kontrolê"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Bi sînor"
+      },
+      {
+        "property": "condensed",
+        "title": "Rêzan Teng Bike",
+        "description": "Bilindahiya rêzan kêm bike."
+      },
+      {
+        "property": "striped",
+        "title": "Rêzên Xêzkirî",
+        "description": "Rêzan yek bi yek tarî bike."
+      },
+      {
+        "property": "downloadable",
+        "title": "Bişkoka Daxistinê",
+        "description": "Bişkokekê ji bo daxistina tabloyê lê zêde bike."
+      },
+      {
+        "property": "copyable",
+        "title": "Bişkoka Kopîkirinê",
+        "description": "Bişkokekê ji bo kopîkirina daneyên CSV yên tabloyê lê zêde bike."
+      },
+      {
+        "property": "printable",
+        "title": "Bişkoka Çapkirinê",
+        "description": "Bişkokekê ji bo çapkirina tenê tabloyê lê zêde bike."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Daneyên CSV",
+        "description": "Ji pela CSV ya barkirî tabloyekê çêke."
+      }
+    ]
+  }
+}

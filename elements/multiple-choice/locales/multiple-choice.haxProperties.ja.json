@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "多肢選択",
+    "description": "多肢選択の自己チェック問題。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "問題",
+        "description": "ユーザーが回答する問題。"
+      },
+      {
+        "property": "randomize",
+        "title": "ランダム化",
+        "description": "答えを動的にシャッフルします。"
+      },
+      {
+        "property": "singleOption",
+        "title": "単一回答",
+        "description": "回答を1つだけ許可します。"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "採点形式",
+        "description": "OER Schema: この評価の採点形式（例: 点数、レター評価、パーセント、完了）。"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学習目標",
+        "description": "OER Schema: この評価に関連付けられた学習目標。"
+      },
+      {
+        "property": "forCourse",
+        "title": "コース",
+        "description": "OER Schema: この評価の対象となるコース。"
+      },
+      {
+        "property": "answers",
+        "title": "答え"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "クイズ名",
+        "description": "分析システムでxAPIの識別に使うクイズ名。"
+      }
+    ]
+  }
+}

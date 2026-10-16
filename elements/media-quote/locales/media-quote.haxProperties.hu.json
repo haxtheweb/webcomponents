@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Médiaidézet",
+    "description": "Kép idézettel, forrásmegjelöléssel és opcionális képaláírással."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Idézet",
+        "description": "Az idézet szövege."
+      },
+      {
+        "slot": "author",
+        "title": "Szerző",
+        "description": "Az idézet szerzője."
+      },
+      {
+        "slot": "author-detail",
+        "title": "A szerző adatai",
+        "description": "A szerző adatai."
+      },
+      {
+        "slot": "caption",
+        "title": "Képaláírás",
+        "description": "A kép aláírása."
+      },
+      {
+        "property": "src",
+        "title": "Kép forrása",
+        "description": "A médiaidézethez használt képfájl."
+      },
+      {
+        "property": "alt",
+        "title": "Helyettesítő szöveg",
+        "description": "A kép helyettesítő szövege."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "A kártya kiemelőszíne."
+      }
+    ]
+  }
+}

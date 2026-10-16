@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tablisa",
+    "description": "Web üçin tablisa görnüşli maglumatlar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Setir sözbaşysy",
+        "description": "Birinji setiri sözbaşy hökmünde kabul et."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Sütün sözbaşysy",
+        "description": "Birinji sütüni sözbaşy hökmünde kabul et."
+      },
+      {
+        "property": "footer",
+        "title": "Aşaky bölüm",
+        "description": "Soňky setiri aşaky bölüm hökmünde kabul et."
+      },
+      {
+        "property": "sort",
+        "title": "Tertipläp bolýan",
+        "description": "Sütün bahalary boýunça tertiplemäge rugsat ber."
+      },
+      {
+        "property": "filter",
+        "title": "Süzgüje rugsat ber",
+        "description": "Sütün bahalary boýunça süzmäge rugsat ber."
+      },
+      {
+        "property": "numericStyles",
+        "title": "San bezegi",
+        "description": "San sütünlerine san bezegini ulan."
+      },
+      {
+        "property": "responsive",
+        "title": "Uýgunlaşýan",
+        "description": "Kiçi ekranlarda tablisanyň ýerleşişini sazla."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubrika tertibi",
+        "description": "Rubric, RubricScale, RubricCriterion we RubricLevel metamaglumatlary çykarylar ýaly, bu tablisany OER Schema Rubric hökmünde düşündir."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubrikanyň görnüşi",
+        "description": "oer:rubricType hökmünde çykarylýan rubrika stili (diňe Rubrika tertibi açyk bolanda manyly).",
+        "options": {
+          "": "(ýok)",
+          "analytic": "Analitik",
+          "holistic": "Bitewi",
+          "single-point": "Bir nokatly",
+          "checklist": "Barlag sanawy"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Serhetli"
+      },
+      {
+        "property": "condensed",
+        "title": "Setirleri gysyp ýerleşdir",
+        "description": "Setiriň beýikligini azalt."
+      },
+      {
+        "property": "striped",
+        "title": "Zolakly setirler",
+        "description": "Her ikinji setiri kölegele."
+      },
+      {
+        "property": "downloadable",
+        "title": "Ýükläp almak düwmesi",
+        "description": "Tablisany ýükläp almak üçin düwme goş."
+      },
+      {
+        "property": "copyable",
+        "title": "Göçürmek düwmesi",
+        "description": "Tablisanyň CSV maglumatlaryny göçürmek üçin düwme goş."
+      },
+      {
+        "property": "printable",
+        "title": "Çap etmek düwmesi",
+        "description": "Diňe tablisany çap etmek üçin düwme goş."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV maglumatlary",
+        "description": "Ýüklenen CSV faýlyndan tablisa dörediň."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "ਬਾਹਰੀ ਵੈੱਬ ਸਮੱਗਰੀ ਨੂੰ iframe ਵਿੱਚ ਏਮਬੈਡ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ URL",
+        "description": "ਸਰੋਤ URL।"
+      },
+      {
+        "property": "height",
+        "title": "ਉਚਾਈ",
+        "description": "Iframe ਦੀ ਉਚਾਈ।"
+      },
+      {
+        "property": "width",
+        "title": "ਚੌੜਾਈ",
+        "description": "Iframe ਦੀ ਚੌੜਾਈ।"
+      }
+    ]
+  }
+}

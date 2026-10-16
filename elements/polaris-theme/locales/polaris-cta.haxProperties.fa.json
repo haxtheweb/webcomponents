@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "نمایش دکمهٔ فراخوان به اقدام با پوستهٔ Polaris."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "متن دکمه",
+        "description": "متنی که در دکمهٔ فراخوان به اقدام نمایش داده می‌شود."
+      },
+      {
+        "property": "link",
+        "title": "پیوند",
+        "description": "URL مقصد دکمه."
+      },
+      {
+        "property": "type",
+        "title": "گونه",
+        "description": "گونهٔ سبک دیداری.",
+        "options": {
+          "primary": "اصلی",
+          "tinted": "رنگ‌خورده",
+          "light": "روشن"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "سبک دورخط‌دار",
+        "description": "فعال کردن حالت دورخط‌دار."
+      },
+      {
+        "property": "filled",
+        "title": "سبک توپر",
+        "description": "فعال کردن حالت توپر."
+      }
+    ]
+  }
+}

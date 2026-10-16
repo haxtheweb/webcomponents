@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ploščica Polaris",
+    "description": "Prikaz ploščice Polaris z naslovom, neobveznim dodatnim besedilom in neobvezno povezavo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Glavno besedilo",
+        "description": "Glavno besedilo ploščice."
+      },
+      {
+        "property": "line2",
+        "title": "Dodatno besedilo",
+        "description": "Neobvezno dodatno besedilo."
+      },
+      {
+        "property": "type",
+        "title": "Slog ploščice",
+        "description": "Prednastavljeni vizualni slog ploščice.",
+        "options": {
+          "1": "Slog 1",
+          "2": "Slog 2",
+          "3": "Slog 3",
+          "4": "Slog 4",
+          "5": "Slog 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Slika ozadja",
+        "description": "URL slike ozadja, ki ga uporabljajo slogi ploščic s podporo za slike."
+      },
+      {
+        "property": "link",
+        "title": "Povezava",
+        "description": "Neobvezen ciljni URL za dejanje ploščice."
+      }
+    ]
+  }
+}

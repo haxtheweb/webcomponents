@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG лик",
+    "description": "Забавни лик из HAX-а."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Име",
+        "description": "Реч која се користи за генерисање насумичног лика."
+      },
+      {
+        "property": "hat",
+        "title": "Шешир",
+        "description": "Стил шешира.",
+        "options": {
+          "none": "Подразумевано",
+          "random": "Насумично",
+          "bunny": "Зека",
+          "cowboy": "Каубој",
+          "education": "Образовање",
+          "construction": "Градилиште",
+          "warning": "Упозорење",
+          "watermelon": "Лубеница",
+          "coffee": "Кафа",
+          "knight": "Витез",
+          "ninja": "Нинџа",
+          "party": "Журка",
+          "error": "Грешка",
+          "edit": "Уређивање"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина лика у пикселима."
+      },
+      {
+        "property": "height",
+        "title": "Висина",
+        "description": "Висина лика у пикселима."
+      },
+      {
+        "property": "fire",
+        "title": "Гори?",
+        "description": "Да ли лик гори."
+      },
+      {
+        "property": "walking",
+        "title": "Хода?",
+        "description": "Анимација хода; трчи када гори."
+      }
+    ]
+  }
+}

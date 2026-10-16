@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D پلیر",
+    "description": "د 3D فایل / پراخ شوي واقعیت پلیر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "سرچینه",
+        "description": "د دې AR فایل URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "په AR کې د عنصر X موقعیت."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "په AR کې د عنصر Y موقعیت."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "په AR کې د عنصر Z موقعیت."
+      },
+      {
+        "property": "skyColor",
+        "title": "د اسمان رنګ",
+        "description": "په صحنه کې د اسمان رنګ وټاکئ."
+      }
+    ]
+  }
+}

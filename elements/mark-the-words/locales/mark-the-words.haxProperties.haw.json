@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Kaha i nā hua ʻōlelo",
+    "description": "E ʻike i nā manaʻo ma ke kōmi ʻana i nā hua ʻōlelo i loko o kekahi kikokikona."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Nīnau",
+        "description": "Nīnau e pane ai nā mea hoʻohana."
+      },
+      {
+        "property": "statement",
+        "title": "ʻŌlelo",
+        "description": "Ka ʻōlelo e hoʻololi ʻia i ka hana kaha hua ʻōlelo."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ʻAno helu kaha",
+        "description": "OER Schema: ke ʻano helu kaha no kēia loiloi (e laʻa me nā kiko, ka hua, ka pākēneka, ka hoʻopau)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Pahuhopu aʻo",
+        "description": "OER Schema: ka pahuhopu aʻo e pili ana i kēia loiloi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Papa",
+        "description": "OER Schema: ka papa i manaʻo ʻia ai kēia loiloi."
+      },
+      {
+        "property": "answers",
+        "title": "Nā Pane"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Inoa o ka hōʻike",
+        "description": "Inoa hōʻike i hoʻouna ʻia no ka hoʻohana ʻana ma nā kaiapuni xAPI no ka ʻike ʻana i kēia mea"
+      }
+    ]
+  }
+}

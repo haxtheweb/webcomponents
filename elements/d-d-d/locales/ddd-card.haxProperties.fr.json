@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Carte",
+    "description": "Composant carte stylisé avec le système de design DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Image",
+        "description": "Image facultative."
+      },
+      {
+        "property": "alt",
+        "title": "Texte alternatif de l'image",
+        "description": "Texte alternatif décrivant l'image."
+      },
+      {
+        "property": "title",
+        "title": "Titre",
+        "description": "Titre de la carte."
+      },
+      {
+        "slot": "",
+        "title": "Contenu",
+        "description": "Zone de contenu de la carte."
+      },
+      {
+        "property": "href",
+        "title": "Lien",
+        "description": "URL du lien du bouton."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Libellé",
+        "description": "Libellé du bouton."
+      },
+      {
+        "property": "noArrow",
+        "title": "Sans flèche",
+        "description": "Masquer la flèche du bouton."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Lien : cible",
+        "description": "Où ouvrir le lien.",
+        "options": {
+          "": "Même fenêtre",
+          "_blank": "Nouvelle fenêtre - _blank",
+          "_top": "Fenêtre principale - _top",
+          "_parent": "Fenêtre parente - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Lien : rel",
+        "description": "Relation entre la ressource liée et le document actuel."
+      }
+    ]
+  }
+}

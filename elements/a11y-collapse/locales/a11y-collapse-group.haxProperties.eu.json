@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Zabaldu/tolestu taldea",
+    "description": "Zabaldu eta tolestu daitezkeen elementuen taldea."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Zabaldu bakarra",
+        "description": "Elementu bakarra zabal daiteke."
+      },
+      {
+        "slot": "",
+        "title": "Tolesteko elementuak",
+        "description": "Tolesteko elementuak."
+      }
+    ]
+  }
+}

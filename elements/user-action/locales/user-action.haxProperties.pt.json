@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Ação do usuário",
+    "description": "Rastreie ações do usuário e envie dados para repositórios xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Evento a rastrear",
+        "description": "Ação do usuário que dispara este evento.",
+        "options": {
+          "visibility": "Consegue ver isto",
+          "keydown": "Pressiona uma tecla aqui",
+          "click": "Clica nisto",
+          "hover": "Passa o mouse sobre isto"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Rastrear sempre",
+        "description": "Por padrão, apenas a primeira ocorrência é rastreada."
+      }
+    ]
+  }
+}

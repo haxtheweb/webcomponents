@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Item ng hakbang",
+    "description": "Item na bahagi ng listahan ng mga hakbang"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pamagat"
+      }
+    ]
+  }
+}

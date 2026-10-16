@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "הנגשת קובצי GIF מונפשים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF מונפש",
+        "description": "URL של ה-GIF המונפש."
+      },
+      {
+        "property": "alt",
+        "title": "טקסט חלופי",
+        "description": "טקסט חלופי לתמונה."
+      },
+      {
+        "property": "longdesc",
+        "title": "תיאור מורחב",
+        "description": "תיאור מורחב של ה-GIF לצורכי נגישות."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "תמונת סטילס",
+        "description": "URL של גרסת תמונה סטטית של ה-GIF."
+      }
+    ]
+  }
+}

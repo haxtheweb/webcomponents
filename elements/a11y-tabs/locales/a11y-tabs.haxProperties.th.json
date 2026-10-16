@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "แท็บ",
+    "description": "ชุดแท็บ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "ป้ายกำกับ (เพื่อการเข้าถึง)",
+        "description": "ป้ายกำกับที่เข้าถึงได้สำหรับชุดแท็บ"
+      },
+      {
+        "property": "disabled",
+        "title": "ปิดใช้งาน",
+        "description": "ปิดใช้งานแท็บทั้งหมด"
+      },
+      {
+        "property": "hidden",
+        "title": "ซ่อน",
+        "description": "ซ่อนชุดแท็บ"
+      },
+      {
+        "property": "sticky",
+        "title": "ติดหนึบ",
+        "description": "ให้แท็บแนวนอนอยู่ด้านบนขณะเลื่อน"
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "เบรกพอยต์ของเลย์เอาต์",
+        "description": "เบรกพอยต์สำหรับแท็บแนวนอน ใช้ -1 สำหรับแนวตั้งเท่านั้น"
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "เบรกพอยต์ของไอคอน",
+        "description": "เบรกพอยต์สำหรับแสดงข้อความพร้อมไอคอน ค่าเริ่มต้นคือ 0 ใช้ -1 สำหรับโหมดไอคอนเท่านั้น"
+      },
+      {
+        "slot": "",
+        "title": "แท็บ",
+        "description": "ชุดขององค์ประกอบ <a11y-tab/>"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID เฉพาะ",
+        "description": "ID เฉพาะสำหรับชุดแท็บนี้"
+      }
+    ]
+  }
+}

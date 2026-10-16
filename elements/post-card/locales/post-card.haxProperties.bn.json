@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "পোস্টকার্ড",
+    "description": "কোনো জায়গা থেকে পাঠানো আসল পোস্টকার্ডের মতো দেখতে একটি মজার মিডিয়া অংশ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "প্রাপক",
+        "description": "এটি কার কাছে যাচ্ছে?"
+      },
+      {
+        "property": "from",
+        "title": "প্রেরক",
+        "description": "আপনি কে?"
+      },
+      {
+        "property": "message",
+        "title": "বার্তা",
+        "description": "আপনি কী বলতে চান?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "ডাকছাপের স্থান",
+        "description": "এই কার্ডটি কোথা থেকে পাঠানো হয়েছে?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "প্রধান ছবির উৎস",
+        "description": "আপনার ছবিটি কোথায় আছে?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "স্ট্যাম্পের ছবির উৎস",
+        "description": "আপনার ছবিটি কোথায় আছে?"
+      }
+    ]
+  }
+}

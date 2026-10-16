@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Cwestiwn Trefnu",
+    "description": "Trefnu eitemau yn y drefn gywir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Cwestiwn",
+        "description": "Pennyn y Cwestiwn."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Fformat graddio",
+        "description": "OER Schema: fformat graddio ar gyfer yr asesiad hwn (e.e. pwyntiau, llythyren, canran, cwblhau)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Amcan dysgu",
+        "description": "OER Schema: amcan dysgu sy'n gysylltiedig â'r asesiad hwn."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cwrs",
+        "description": "OER Schema: y cwrs y bwriedir yr asesiad hwn ar ei gyfer."
+      },
+      {
+        "property": "answers",
+        "title": "Atebion",
+        "description": "Mae trefn yr atebion yn diffinio'r dilyniant cywir."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Enw'r cwis",
+        "description": "Enw'r cwis a ddefnyddir i'w adnabod drwy xAPI mewn systemau dadansoddeg."
+      }
+    ]
+  }
+}

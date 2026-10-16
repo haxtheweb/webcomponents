@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ljud i texten",
+    "description": "Spela upp ljud i texten som komplement till sidans innehåll."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Källa",
+        "description": "MP3-fil eller URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "Kortets accentfärg."
+      },
+      {
+        "property": "shiny",
+        "title": "Glansig",
+        "description": "Använd en ljusare accentbakgrund i stället för grå."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Mörk",
+        "description": "Använd mörkt läge."
+      }
+    ]
+  }
+}

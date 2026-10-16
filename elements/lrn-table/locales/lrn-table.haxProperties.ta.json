@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV அட்டவணை",
+    "description": "CSV கோப்பு எங்கிருந்தாலும் அதிலிருந்து அட்டவணையை உருவாக்க முடியும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "மூலம்",
+        "description": "இந்த CSV கோப்பிற்கான URL."
+      },
+      {
+        "property": "title",
+        "title": "தலைப்பு",
+        "description": "உருவாக்கப்படும் அட்டவணைக்கான தலைப்பு."
+      },
+      {
+        "property": "description",
+        "title": "விளக்கம்",
+        "description": "அட்டவணைத் தரவின் அணுகல்தன்மையை மேம்படுத்த விரிவான விளக்கம்."
+      }
+    ]
+  }
+}

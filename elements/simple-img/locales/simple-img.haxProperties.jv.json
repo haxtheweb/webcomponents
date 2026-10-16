@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Gambar Prasaja",
+    "description": "Olah gambar nganggo parameter prasaja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Sumber",
+        "description": "URL sumber gambar."
+      },
+      {
+        "property": "height",
+        "title": "Dhuwur",
+        "description": "Dhuwure gambar opsional."
+      },
+      {
+        "property": "width",
+        "title": "Amba",
+        "description": "Ambane gambar opsional."
+      },
+      {
+        "property": "alt",
+        "title": "Teks alt",
+        "description": "Migunani kanggo pamaca layar lan SEO sing luwih apik."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kualitas",
+        "description": "Kualitas gambar nalika digawe (JPEG wae)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Prioritas Njupuk",
+        "description": "Pitunjuk kinerja kanggo browser modern.",
+        "options": {
+          "auto": "Otomatis",
+          "high": "Dhuwur",
+          "low": "Endhek"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Cara dekoding",
+        "description": "Pitunjuk kinerja kanggo rendering gambar ing browser modern.",
+        "options": {
+          "auto": "Otomatis",
+          "async": "Asinkron"
+        }
+      }
+    ]
+  }
+}

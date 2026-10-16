@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tag / Pille",
+    "description": "Eine kompakte pillenförmige Beschriftung mit optionaler Akzentfarbe, Abbrechen-Schaltfläche oder Umschaltfunktion."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Beschriftung",
+        "description": "In der Pille angezeigter Text."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "SimpleColors-Akzentname für den Hintergrund der Pille.",
+        "options": {
+          "": "-- Standard --",
+          "red": "Rot",
+          "pink": "Pink",
+          "purple": "Lila",
+          "deep-purple": "Dunkellila",
+          "indigo": "Indigo",
+          "blue": "Blau",
+          "light-blue": "Hellblau",
+          "cyan": "Cyan",
+          "teal": "Blaugrün",
+          "green": "Grün",
+          "light-green": "Hellgrün",
+          "lime": "Limettengrün",
+          "yellow": "Gelb",
+          "amber": "Bernstein",
+          "orange": "Orange",
+          "deep-orange": "Dunkelorange",
+          "brown": "Braun",
+          "blue-grey": "Blaugrau",
+          "grey": "Grau"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatische Akzentfarbe",
+        "description": "Die Akzentfarbe automatisch aus dem Beschriftungstext ableiten."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Abbrechen-Schaltfläche",
+        "description": "Eine Symbolschaltfläche zum Entfernen/Abbrechen in der Pille anzeigen."
+      },
+      {
+        "property": "readonly",
+        "title": "Schreibgeschützt",
+        "description": "Die Abbrechen-Schaltfläche ausblenden, sodass die Pille nur zur Anzeige dient."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Umschaltbar",
+        "description": "Die Pille beim Klicken auf die Schaltfläche ein- und ausschalten lassen."
+      },
+      {
+        "property": "toggled",
+        "title": "Eingeschaltet",
+        "description": "Ob die Pille gerade eingeschaltet ist."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Symbol im eingeschalteten Zustand",
+        "description": "Symbol, das angezeigt wird, wenn die Pille eingeschaltet ist."
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktiviert",
+        "description": "Interaktion mit der Pille deaktivieren."
+      }
+    ]
+  }
+}

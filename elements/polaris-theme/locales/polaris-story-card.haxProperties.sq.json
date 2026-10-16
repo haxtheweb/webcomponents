@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kartë historie Polaris",
+    "description": "Shfaq një kartë historie Polaris me imazh sfondi, etiketë shtylle dhe tekst titulli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imazhi i sfondit",
+        "description": "URL-ja e imazhit të shfaqur si sfond i kartës."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Madhësia e sfondit",
+        "description": "Si e mbush imazhi i sfondit kartën (CSS background-size).",
+        "options": {
+          "cover": "Mbulo (cover)",
+          "contain": "Përmbaj (contain)",
+          "auto": "Automatike (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Fiksimi i sfondit",
+        "description": "Si sillet imazhi i sfondit gjatë rrëshqitjes (CSS background-attachment).",
+        "options": {
+          "scroll": "Rrëshqitës (scroll)",
+          "fixed": "I fiksuar (fixed)",
+          "local": "Lokal (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Etiketa e shtyllës",
+        "description": "Etiketë e shkurtër me shkronja të mëdha e shfaqur në krye të kartës. Lëre bosh për ta fshehur."
+      },
+      {
+        "property": "label",
+        "title": "Teksti i kartës",
+        "description": "Teksti kryesor i shfaqur në panelin e poshtëm."
+      },
+      {
+        "property": "link",
+        "title": "Lidhja",
+        "description": "URL opsionale e destinacionit që mbështjell gjithë kartën."
+      }
+    ]
+  }
+}

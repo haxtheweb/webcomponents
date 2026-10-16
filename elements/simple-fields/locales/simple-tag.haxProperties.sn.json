@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tagi / Piritsi",
+    "description": "Zita diki rakaita sepiritsi rine ruvara rwekusimbisa rusingamanikidzwi, bhatani rekudzima, kana chinjo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Zita",
+        "description": "Mavara anoratidzwa mukati mepiritsi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara rwekusimbisa",
+        "description": "Zita reruvara rwekusimbisa reSimpleColors rekumashure kwepiritsi.",
+        "options": {
+          "": "-- zvakajairwa --",
+          "red": "Tsvuku",
+          "pink": "Pinki",
+          "purple": "Pepuru",
+          "deep-purple": "Pepuru Yakasviba",
+          "indigo": "Indigo",
+          "blue": "Bhuruu",
+          "light-blue": "Bhuruu Yakajeka",
+          "cyan": "Siyani",
+          "teal": "Bhuruu-girinhi",
+          "green": "Girinhi",
+          "light-green": "Girinhi Yakajeka",
+          "lime": "Raimu",
+          "yellow": "Yero",
+          "amber": "Ambha",
+          "orange": "Orenji",
+          "deep-orange": "Orenji Yakasviba",
+          "brown": "Shava",
+          "blue-grey": "Gireyi-bhuruu",
+          "grey": "Gireyi"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Ruvara rwekusimbisa rwega",
+        "description": "Tora ruvara rwekusimbisa kubva kumavara ezita zvega."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Bhatani rekudzima",
+        "description": "Ratidza bhatani reaikoni rekubvisa/kudzima mukati mepiritsi."
+      },
+      {
+        "property": "readonly",
+        "title": "Kuverenga chete",
+        "description": "Viga bhatani rekudzima kuitira kuti piritsi rive rekuratidza chete."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Inochinja",
+        "description": "Ita kuti piritsi richinje pakati pekubatidzwa nekudzimwa kana bhatani radzvanywa."
+      },
+      {
+        "property": "toggled",
+        "title": "Yakabatidzwa",
+        "description": "Kana piritsi riri parizvino rakabatidzwa."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Aikoni yakabatidzwa",
+        "description": "Aikoni yekuratidza kana piritsi rakabatidzwa."
+      },
+      {
+        "property": "disabled",
+        "title": "Zvakadzimwa",
+        "description": "Dzima kudyidzana nepiritsi."
+      }
+    ]
+  }
+}

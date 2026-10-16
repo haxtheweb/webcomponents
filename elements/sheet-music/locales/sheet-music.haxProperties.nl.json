@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Bladmuziek",
+    "description": "Toont en speelt bladmuziek, gitaartabulatuur en partituurnotatie af via alphaTex of MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex-notatie",
+        "description": "Inline alphaTex-opmaak voor de bladmuziek. Bewerk direct om notatie te schrijven; deze wordt in een template opgeslagen zodat de witruimte behouden blijft."
+      },
+      {
+        "property": "source",
+        "title": "Partituurbestand",
+        "description": "Upload of link naar een MusicXML-bestand (.xml/.musicxml/.mxl) of Guitar Pro-bestand (.gp3/.gp4/.gp5/.gpx/.gp). Heeft voorrang op inline alphaTex als dit is ingesteld."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Audioweergave",
+        "description": "Standaard aan - luister naar de bladmuziek via de ingebouwde synthesizer. Zet uit voor alleen weergeven (zonder audio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Weergaveopties tonen",
+        "description": "Toon knoppen voor zoomen, uitrekken en indeling op de spelerbalk."
+      },
+      {
+        "property": "showExport",
+        "title": "Exportknoppen tonen",
+        "description": "Toon knoppen voor MIDI-download en afdrukken/PDF op de spelerbalk."
+      }
+    ]
+  }
+}

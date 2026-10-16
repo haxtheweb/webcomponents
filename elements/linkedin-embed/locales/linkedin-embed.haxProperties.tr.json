@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn yerleştirme",
+    "description": "Bir LinkedIn profil kartı yerleştirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Özel ad",
+        "description": "LinkedIn özel kullanıcı adı bölümü."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Yerel ayar",
+        "description": "en_US gibi yerel ayar meta veri değeri."
+      }
+    ]
+  }
+}

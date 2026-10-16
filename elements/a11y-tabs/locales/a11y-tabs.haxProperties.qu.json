@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Pestañakuna",
+    "description": "Pestañakunapa t'aqan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Sutichay (aypanallapaq)",
+        "description": "Pestaña t'aqapaq aypanalla sutichay."
+      },
+      {
+        "property": "disabled",
+        "title": "Hark'asqa",
+        "description": "Llapan pestañakunata hark'ay."
+      },
+      {
+        "property": "hidden",
+        "title": "Pakasqa",
+        "description": "Pestaña t'aqata pakay."
+      },
+      {
+        "property": "sticky",
+        "title": "K'askasqa",
+        "description": "Siriq pestañakunata hanaqpi hap'iy, uraykuchkaspa."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Layout p'akiy chimpu",
+        "description": "Siriq pestañakunapaq p'akiy chimpu; sayaqllapaq -1 churay."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Unancha p'akiy chimpu",
+        "description": "Unanchakunawan qillqata rikuchinapaq p'akiy chimpu. Qallariypi 0; unanchallapaq -1 churay."
+      },
+      {
+        "slot": "",
+        "title": "Pestañakuna",
+        "description": "<a11y-tab/> elementokunapa siqin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Sapalla ID",
+        "description": "Kay pestaña t'aqapaq sapalla ID."
+      }
+    ]
+  }
+}

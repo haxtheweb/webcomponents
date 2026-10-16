@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "ശേഖരണ ഇനം",
+    "description": "ശേഖരണ ലിസ്റ്റിനുള്ളിൽ ഉപയോഗിക്കാനുള്ള കാർഡ്-ശൈലി ഇനം; വാചകം, ലിങ്ക്, ഐച്ഛിക മീഡിയ എന്നിവയോടെ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "ലിങ്ക്",
+        "description": "ഈ കാർഡിന്റെ ലക്ഷ്യസ്ഥാന URL."
+      },
+      {
+        "property": "image",
+        "title": "ചിത്രം",
+        "description": "പശ്ചാത്തല ചിത്രം."
+      },
+      {
+        "property": "line1",
+        "title": "വരി 1",
+        "description": "വാചകത്തിന്റെ ആദ്യ വരി."
+      },
+      {
+        "property": "line2",
+        "title": "വരി 2",
+        "description": "വാചകത്തിന്റെ രണ്ടാം വരി."
+      },
+      {
+        "property": "line3",
+        "title": "വരി 3",
+        "description": "വാചകത്തിന്റെ മൂന്നാം വരി."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ഐക്കൺ",
+        "description": "കാർഡിനെ പ്രതിനിധീകരിക്കുന്ന ഐക്കൺ."
+      },
+      {
+        "property": "saturate",
+        "title": "സാച്ചുറേഷൻ ഇഫക്റ്റ്",
+        "description": "ഉപയോക്താവ് ഫോക്കസ് ചെയ്യുമ്പോൾ ചിത്രത്തിന്റെ സാച്ചുറേഷൻ മാറ്റുക."
+      },
+      {
+        "property": "tags",
+        "title": "ടാഗുകൾ",
+        "description": "കോമ കൊണ്ട് വേർതിരിച്ച ടാഗുകളുടെ ലിസ്റ്റ്."
+      },
+      {
+        "property": "accentColor",
+        "title": "നിറം",
+        "description": "ടാഗുകൾക്ക് ഉപയോഗിക്കുന്ന നിറം."
+      },
+      {
+        "property": "alt",
+        "title": "ആൾട്ട്",
+        "description": "ലിങ്ക് വിവരിക്കുന്ന പകരം വാചകം."
+      }
+    ]
+  }
+}

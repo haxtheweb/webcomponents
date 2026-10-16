@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "애니메이션 GIF를 접근 가능하게 만듭니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "애니메이션 GIF",
+        "description": "애니메이션 GIF의 URL입니다."
+      },
+      {
+        "property": "alt",
+        "title": "대체 텍스트",
+        "description": "이미지의 대체 텍스트입니다."
+      },
+      {
+        "property": "longdesc",
+        "title": "상세 설명",
+        "description": "접근성을 위한 GIF의 상세 설명입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "정지 이미지",
+        "description": "GIF의 정지 이미지 버전 URL입니다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D ပလေယာ",
+    "description": "3D ဖိုင် / augmented reality ပလေယာ။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ရင်းမြစ်",
+        "description": "ဤ AR ဖိုင်၏ URL။"
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR တွင် အစိတ်အပိုင်း၏ X နေရာ။"
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR တွင် အစိတ်အပိုင်း၏ Y နေရာ။"
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR တွင် အစိတ်အပိုင်း၏ Z နေရာ။"
+      },
+      {
+        "property": "skyColor",
+        "title": "ကောင်းကင် အရောင်",
+        "description": "မြင်ကွင်းရှိ ကောင်းကင်၏ အရောင်ကို ရွေးပါ။"
+      }
+    ]
+  }
+}

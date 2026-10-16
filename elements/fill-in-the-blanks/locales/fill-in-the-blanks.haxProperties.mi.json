@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Whakakīia ngā āputa",
+    "description": "He ngohe aromatawai e whakaoti ai ngā ākonga i ngā kupu ngaro i tētahi kōrero."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pātai",
+        "description": "Pātai hei whakautu mā ngā kaiwhakamahi."
+      },
+      {
+        "property": "statement",
+        "title": "Kōrero",
+        "description": "Kōrero ka hurihia hei tauwhitiwhitinga tohu kupu."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Hōputu kōeke",
+        "description": "OER Schema: hōputu kōeke mō tēnei aromatawai (hei tauira, piro, reta, ōrau, whakaotinga)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Whāinga ako",
+        "description": "OER Schema: te whāinga ako e hono ana ki tēnei aromatawai."
+      },
+      {
+        "property": "forCourse",
+        "title": "Akoranga",
+        "description": "OER Schema: te akoranga i hangaia ai tēnei aromatawai."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ingoa o te pātaitai",
+        "description": "Ingoa pātaitai ka tukuna atu hei whakamahi i ngā taiao e ārahina ana e xAPI, hei tautuhi i tēnei tūemi"
+      }
+    ]
+  }
+}

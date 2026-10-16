@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Убудаванае аўдыя",
+    "description": "Прайграваць аўдыя ў тэксце ў дадатак да змесціва старонкі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Крыніца",
+        "description": "Файл MP3 або URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Акцэнтны колер карткі."
+      },
+      {
+        "property": "shiny",
+        "title": "Бліскучы",
+        "description": "Выкарыстоўваць больш светлы акцэнтны фон замест шэрага."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Цёмная",
+        "description": "Выкарыстоўваць цёмны рэжым."
+      }
+    ]
+  }
+}

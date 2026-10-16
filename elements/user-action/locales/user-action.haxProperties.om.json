@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Gocha fayyadamaa",
+    "description": "Gochaawwan fayyadamaa hordofii daataa gara kuusaa xAPI ergi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Taatee hordofamu",
+        "description": "Gocha fayyadamaa kan taatee kana kakaasu.",
+        "options": {
+          "visibility": "Kana arguu danda'a",
+          "keydown": "Asitti furtuu tuqi",
+          "click": "Kana tuqi",
+          "hover": "Kana irra naanneessi"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Yeroo hunda hordofi",
+        "description": "Akka durtiitti, kan jalqabaa qofatu hordofama."
+      }
+    ]
+  }
+}

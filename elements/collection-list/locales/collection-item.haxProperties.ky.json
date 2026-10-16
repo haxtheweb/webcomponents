@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Коллекция элементи",
+    "description": "Коллекция тизмесинин ичинде колдонулуучу карта түрүндөгү элемент: текст, шилтеме жана кошумча медиа."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Шилтеме",
+        "description": "Бул картанын бара турган URL дареги."
+      },
+      {
+        "property": "image",
+        "title": "Сүрөт",
+        "description": "Фон сүрөтү."
+      },
+      {
+        "property": "line1",
+        "title": "1-сап",
+        "description": "Тексттин биринчи сабы."
+      },
+      {
+        "property": "line2",
+        "title": "2-сап",
+        "description": "Тексттин экинчи сабы."
+      },
+      {
+        "property": "line3",
+        "title": "3-сап",
+        "description": "Тексттин үчүнчү сабы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Сөлөкөт",
+        "description": "Картаны билдирген сөлөкөт."
+      },
+      {
+        "property": "saturate",
+        "title": "Каныктык эффекти",
+        "description": "Колдонуучу фокустаганда сүрөттүн каныктыгын өзгөртүү."
+      },
+      {
+        "property": "tags",
+        "title": "Тегдер",
+        "description": "Үтүр менен бөлүнгөн тегдердин тизмеси."
+      },
+      {
+        "property": "accentColor",
+        "title": "Түс",
+        "description": "Тегдер үчүн түс."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Шилтемени сүрөттөгөн альтернативдик текст."
+      }
+    ]
+  }
+}

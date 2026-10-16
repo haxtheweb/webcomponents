@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Bedž događaja",
+    "description": "Komponenta bedža događaja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Slika na TV-u",
+        "description": "Slika prikazana na TV-u."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo prikazan u uglu bedža."
+      },
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov prikazan na vrhu bedža."
+      },
+      {
+        "property": "name",
+        "title": "Ime",
+        "description": "Ime prikazano na bedžu."
+      },
+      {
+        "property": "position",
+        "title": "Pozicija",
+        "description": "Uloga ili zvanje osobe."
+      },
+      {
+        "property": "organization",
+        "title": "Organizacija",
+        "description": "Organizacija za koju osoba radi."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Boja TV-a",
+        "description": "Odaberite boju TV-a."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Primarna boja pozadine ili teksta."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Boja dugmadi",
+        "description": "Boja dugmadi na TV-u."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepija",
+        "description": "Primijeni efekat sepije."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Crno-bijelo",
+        "description": "Primijeni crno-bijeli efekat."
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabel",
+    "description": "Date tabelare pentru web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Antet de rând",
+        "description": "Tratează primul rând ca antet."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Antet de coloană",
+        "description": "Tratează prima coloană ca antet."
+      },
+      {
+        "property": "footer",
+        "title": "Subsol",
+        "description": "Tratează ultimul rând ca subsol."
+      },
+      {
+        "property": "sort",
+        "title": "Sortabil",
+        "description": "Permite sortarea după valorile coloanelor."
+      },
+      {
+        "property": "filter",
+        "title": "Permite filtrarea",
+        "description": "Permite filtrarea după valorile coloanelor."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Stil numeric",
+        "description": "Aplică stil numeric coloanelor numerice."
+      },
+      {
+        "property": "responsive",
+        "title": "Adaptiv",
+        "description": "Ajustează aspectul tabelului pe ecrane mici."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mod rubrică",
+        "description": "Interpretează acest tabel ca Rubric OER Schema, astfel încât să fie emise metadatele Rubric, RubricScale, RubricCriterion și RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Tip de rubrică",
+        "description": "Stilul rubricii emis ca oer:rubricType (are sens doar când Modul rubrică este activ).",
+        "options": {
+          "": "(niciunul)",
+          "analytic": "Analitică",
+          "holistic": "Holistică",
+          "single-point": "Cu un singur punct",
+          "checklist": "Listă de verificare"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Cu chenar"
+      },
+      {
+        "property": "condensed",
+        "title": "Rânduri condensate",
+        "description": "Reduce înălțimea rândurilor."
+      },
+      {
+        "property": "striped",
+        "title": "Rânduri alternate",
+        "description": "Umbrește un rând din două."
+      },
+      {
+        "property": "downloadable",
+        "title": "Buton de descărcare",
+        "description": "Adaugă un buton pentru descărcarea tabelului."
+      },
+      {
+        "property": "copyable",
+        "title": "Buton de copiere",
+        "description": "Adaugă un buton pentru copierea datelor CSV ale tabelului."
+      },
+      {
+        "property": "printable",
+        "title": "Buton de imprimare",
+        "description": "Adaugă un buton pentru imprimarea doar a tabelului."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Date CSV",
+        "description": "Creează un tabel dintr-un fișier CSV încărcat."
+      }
+    ]
+  }
+}

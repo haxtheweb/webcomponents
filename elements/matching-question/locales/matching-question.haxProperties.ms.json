@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Soalan Padanan",
+    "description": "Aktiviti padanan seret dan lepas yang memasangkan gesaan dengan jawapan yang betul."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Soalan",
+        "description": "Soalan untuk pengguna. Tandakan sasaran lepas, kemudian senaraikan jawapan sehingga sasaran seterusnya."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format penggredan",
+        "description": "OER Schema: format penggredan untuk pentaksiran ini (cth. mata, huruf, peratus, penyiapan)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objektif pembelajaran",
+        "description": "OER Schema: objektif pembelajaran yang berkaitan dengan pentaksiran ini."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus yang dimaksudkan untuk pentaksiran ini."
+      },
+      {
+        "property": "answers",
+        "title": "Jawapan"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nama kuiz",
+        "description": "Nama kuiz yang digunakan untuk pengenalan xAPI dalam sistem analitik."
+      }
+    ]
+  }
+}

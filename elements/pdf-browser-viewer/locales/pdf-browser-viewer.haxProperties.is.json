@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF-skoðari í vafra",
+    "description": "Ívefja PDF-skrá innfellt með valfrjálsu spjaldútliti og niðurhalshnappi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF-skrár",
+        "description": "Staðsetning PDF-skrárinnar."
+      },
+      {
+        "property": "heading",
+        "title": "Fyrirsögn",
+        "description": "Fyrirsagnartexti spjalds."
+      },
+      {
+        "property": "card",
+        "title": "Spjaldútlit",
+        "description": "Birta PDF-skrána í spjaldi með niðurhalshnappi."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Niðurhalsmerki",
+        "description": "Merki fyrir niðurhalshnappinn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Skilaboð um að ekki sé stutt",
+        "description": "Skilaboð þegar vafrinn getur ekki birt PDF-skrár."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Tengilskilaboð um að ekki sé stutt",
+        "description": "Tengiltexti þegar vafrinn getur ekki birt PDF-skrár."
+      },
+      {
+        "property": "width",
+        "title": "Breidd",
+        "description": "Breidd PDF-skoðarans."
+      },
+      {
+        "property": "height",
+        "title": "Hæð",
+        "description": "Hæð PDF-skoðarans."
+      }
+    ]
+  }
+}

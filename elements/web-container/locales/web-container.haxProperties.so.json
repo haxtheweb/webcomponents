@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Weelka NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Qari tifaftiraha",
+        "description": "Qari interface-ka tifaftirka faylasha."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Qari terminal-ka",
+        "description": "Qari terminal-ka barnaamijyada si toos ah u shaqeeya."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Qari daaqadda",
+        "description": "Qari daaqadda soo saarka marka la isticmaalayo terminal oo keliya."
+      },
+      {
+        "slot": "",
+        "title": "Amarro",
+        "description": "Amarro (mid sadar kasta) la fulinayo ka hor soo-dejinta."
+      }
+    ]
+  }
+}

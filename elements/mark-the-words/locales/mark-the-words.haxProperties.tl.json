@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Markahan ang mga salita",
+    "description": "Tukuyin ang mga konsepto sa pamamagitan ng mga salita sa pag-click sa loob ng teksto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tanong",
+        "description": "Tanong na sasagutin ng mga user."
+      },
+      {
+        "property": "statement",
+        "title": "Pahayag",
+        "description": "Pahayag na gagawing interaksyong markahan-ang-mga-salita."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format ng pagmamarka",
+        "description": "OER Schema: format ng pagmamarka para sa pagtatasang ito (hal. puntos, letra, porsyento, pagkumpleto)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Layunin sa pagkatuto",
+        "description": "OER Schema: layunin sa pagkatuto na kaugnay ng pagtatasang ito."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurso",
+        "description": "OER Schema: kursong pinaglalaanan ng pagtatasang ito."
+      },
+      {
+        "property": "answers",
+        "title": "Mga Sagot"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Pangalan ng quiz",
+        "description": "Pangalan ng quiz na ipinapasa para gamitin sa mga environment na pinapatakbo ng xAPI upang matukoy ang item na ito"
+      }
+    ]
+  }
+}

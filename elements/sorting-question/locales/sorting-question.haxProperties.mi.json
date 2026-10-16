@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Pātai Kōmaka",
+    "description": "Kōmakahia ngā tūemi ki te raupapa tika."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pātai",
+        "description": "Pane Pātai."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Hōputu kōeke",
+        "description": "OER Schema: hōputu kōeke mō tēnei aromatawai (hei tauira, piro, reta, ōrau, whakaotinga)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Whāinga ako",
+        "description": "OER Schema: te whāinga ako e hono ana ki tēnei aromatawai."
+      },
+      {
+        "property": "forCourse",
+        "title": "Akoranga",
+        "description": "OER Schema: te akoranga i hangaia ai tēnei aromatawai."
+      },
+      {
+        "property": "answers",
+        "title": "Ngā Whakautu",
+        "description": "Mā te raupapa whakautu e tautuhi te raupapa tika."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ingoa o te pātaitai",
+        "description": "Ingoa pātaitai hei tautuhi xAPI i ngā pūnaha tātari."
+      }
+    ]
+  }
+}

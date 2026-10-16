@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "कार्ड",
+    "description": "DDD डिजाइन प्रणालीले शैलीबद्ध गरिएको कार्ड कम्पोनेन्ट।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "तस्बिर",
+        "description": "वैकल्पिक तस्बिर।"
+      },
+      {
+        "property": "alt",
+        "title": "तस्बिरको वैकल्पिक पाठ",
+        "description": "तस्बिरको वर्णन गर्ने वैकल्पिक पाठ।"
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "कार्डको शीर्षक।"
+      },
+      {
+        "slot": "",
+        "title": "सामग्री",
+        "description": "कार्डको सामग्री क्षेत्र।"
+      },
+      {
+        "property": "href",
+        "title": "लिङ्क",
+        "description": "बटन लिङ्कको URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "लेबल",
+        "description": "बटनको लेबल।"
+      },
+      {
+        "property": "noArrow",
+        "title": "तीर छैन",
+        "description": "बटनको तीर लुकाउनुहोस्।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "लिङ्क: लक्ष्य",
+        "description": "लिङ्क कहाँ खोल्ने।",
+        "options": {
+          "": "उही विन्डो",
+          "_blank": "नयाँ विन्डो - _blank",
+          "_top": "शीर्ष विन्डो - _top",
+          "_parent": "मूल विन्डो - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "लिङ्क: rel",
+        "description": "लिङ्क गरिएको स्रोत र हालको कागजातबीचको सम्बन्ध।"
+      }
+    ]
+  }
+}

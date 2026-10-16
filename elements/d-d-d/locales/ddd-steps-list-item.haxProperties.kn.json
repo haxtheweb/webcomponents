@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "ಹಂತ ಐಟಂ",
+    "description": "ಹಂತಗಳ ಪಟ್ಟಿಯ ಭಾಗವಾಗಿರುವ ಐಟಂ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Yoyish/yigʻish guruhi",
+    "description": "Yoyiladigan va yigʻiladigan elementlar guruhi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Faqat bittasini yoyish",
+        "description": "Faqat bitta element yoyilishi mumkin."
+      },
+      {
+        "slot": "",
+        "title": "Yigʻiladigan elementlar",
+        "description": "Yigʻiladigan elementlar."
+      }
+    ]
+  }
+}

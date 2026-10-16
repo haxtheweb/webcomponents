@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn 嵌入",
+    "description": "嵌入 LinkedIn 个人资料卡片。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "个性化名称",
+        "description": "LinkedIn 个性化用户名片段。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "区域设置",
+        "description": "区域设置元数据值，例如 en_US。"
+      }
+    ]
+  }
+}

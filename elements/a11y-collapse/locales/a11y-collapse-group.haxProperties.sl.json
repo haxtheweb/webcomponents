@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Skupina razširljivih elementov",
+    "description": "Skupina razširljivih in strnljivih elementov."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Razširi samo enega",
+        "description": "Razširjen je lahko samo en element."
+      },
+      {
+        "slot": "",
+        "title": "Strnljivi elementi",
+        "description": "Strnljivi elementi."
+      }
+    ]
+  }
+}

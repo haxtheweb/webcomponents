@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Umbuzo Oyinyani / Ongeyonyani",
+    "description": "Umbuzo oyinyani okanye ongeyonyani"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Umbuzo",
+        "description": "Umbuzo abasebenzisi abaza kuwuphendula."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Impendulo eChanekileyo"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Igama lekwizi",
+        "description": "Igama lekwizi elidluliselwa kwiindawo eziqhutywa yi-xAPI ukuze kuchongwe le nto"
+      }
+    ]
+  }
+}

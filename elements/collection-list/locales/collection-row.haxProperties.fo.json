@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Savnsraðir",
+    "description": "Lutur í raðsniði til brúks í einum savnslista, við teksti, leinki, ímynd, frámerkjum og valfríari mynd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Leinki",
+        "description": "Mál-URL til hesa røðina."
+      },
+      {
+        "property": "image",
+        "title": "Mynd",
+        "description": "Mynd til røðina."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativur tekstur, sum lýsir myndina."
+      },
+      {
+        "property": "line1",
+        "title": "Linja 1",
+        "description": "Fyrsta tekstlinja."
+      },
+      {
+        "property": "line2",
+        "title": "Linja 2",
+        "description": "Onnur tekstlinja."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ímynd",
+        "description": "Ímynd, sum umboðar røðina."
+      },
+      {
+        "property": "saturate",
+        "title": "Mettingareffektur",
+        "description": "Broyt litmetting á myndini, tá brúkarin fokuserar."
+      },
+      {
+        "property": "tags",
+        "title": "Frámerki",
+        "description": "Listi av frámerkjum, skilt sundur við komma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Litur",
+        "description": "Litur til ímynd og frámerki."
+      }
+    ]
+  }
+}

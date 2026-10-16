@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ป้ายงานอีเวนต์",
+    "description": "คอมโพเนนต์ป้ายงานอีเวนต์"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "รูปภาพ TV",
+        "description": "รูปภาพที่แสดงบน TV"
+      },
+      {
+        "property": "logo",
+        "title": "โลโก้",
+        "description": "โลโก้ที่แสดงที่มุมป้าย"
+      },
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อที่แสดงที่ด้านบนของป้าย"
+      },
+      {
+        "property": "name",
+        "title": "ชื่อ",
+        "description": "ชื่อที่แสดงบนป้าย"
+      },
+      {
+        "property": "position",
+        "title": "ตำแหน่ง",
+        "description": "บทบาทหรือตำแหน่งของบุคคล"
+      },
+      {
+        "property": "organization",
+        "title": "องค์กร",
+        "description": "องค์กรที่บุคคลนั้นทำงานอยู่"
+      },
+      {
+        "property": "tvcolor",
+        "title": "สี TV",
+        "description": "เลือกสีสำหรับ TV"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีพื้นหลังหรือสีข้อความหลัก"
+      },
+      {
+        "property": "knobcolor",
+        "title": "สีปุ่มหมุน",
+        "description": "สีของปุ่มหมุนบน TV"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "ซีเปีย",
+        "description": "ใช้เอฟเฟกต์ซีเปีย"
+      },
+      {
+        "property": "blackwhite",
+        "title": "ขาวดำ",
+        "description": "ใช้เอฟเฟกต์ขาวดำ"
+      }
+    ]
+  }
+}

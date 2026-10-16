@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Icandelo lomfanekiso",
+    "description": "Umfanekiso wobubanzi obupheleleyo owahlula icandelo lekhasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Umfanekiso ongasemva."
+      },
+      {
+        "property": "caption",
+        "description": "Isihloko sombhalo."
+      }
+    ]
+  }
+}

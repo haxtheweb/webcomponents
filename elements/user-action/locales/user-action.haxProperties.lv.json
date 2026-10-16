@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Lietotāja darbība",
+    "description": "Izsekot lietotāju darbības un sūtīt datus uz xAPI krātuvēm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Izsekojamais notikums",
+        "description": "Lietotāja darbība, kas izraisa šo notikumu.",
+        "options": {
+          "visibility": "Redz šo",
+          "keydown": "Nospiež taustiņu šeit",
+          "click": "Noklikšķina uz šī",
+          "hover": "Novieto kursoru virs šī"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Izsekot katru reizi",
+        "description": "Pēc noklusējuma tiek izsekots tikai pirmais gadījums."
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Conteneur pour les lecteurs Spotify intégrés."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "Lien d'intégration ou de partage Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Thème",
+        "description": "Thème de couleur d'arrière-plan du lecteur.",
+        "options": {
+          "": "Par défaut",
+          "0": "Noir"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Taille",
+        "description": "Taille du lecteur.",
+        "options": {
+          "normal": "Par défaut",
+          "compact": "Compact"
+        }
+      }
+    ]
+  }
+}

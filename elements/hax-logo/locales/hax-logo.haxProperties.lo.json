@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "ສິລະປະຕົວອັກສອນ HAX",
+    "description": "ອົງປະກອບໂລໂກ້ສຳລັບ HAX, ແນ່ນອນວ່າເປັນອົງປະກອບທີ່ຮອງຮັບ HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "ຂະໜາດຂອງໂລໂກ້ HAX ທີ່ຈະວາງ",
+        "options": {
+          "mini": "ນ້ອຍສຸດ",
+          "small": "ນ້ອຍ",
+          "normal": "ປົກກະຕິ",
+          "large": "ໃຫຍ່"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "ຈະປ່ຽນໂລໂກ້ເປັນຕົວພິມໃຫຍ່ຫຼືບໍ່"
+      }
+    ]
+  }
+}

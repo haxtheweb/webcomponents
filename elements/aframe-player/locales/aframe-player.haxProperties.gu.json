@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D પ્લેયર",
+    "description": "3D ફાઇલ / ઑગમેન્ટેડ રિયાલિટી પ્લેયર."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "સ્રોત",
+        "description": "આ AR ફાઇલ માટેનું URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR માં ઘટકનું X સ્થાન."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR માં ઘટકનું Y સ્થાન."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR માં ઘટકનું Z સ્થાન."
+      },
+      {
+        "property": "skyColor",
+        "title": "આકાશનો રંગ",
+        "description": "દૃશ્યમાં આકાશનો રંગ પસંદ કરો."
+      }
+    ]
+  }
+}

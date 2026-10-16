@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Pažymėkite žodžius",
+    "description": "Atpažinkite sąvokas spustelėdami žodžius tekste."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Klausimas",
+        "description": "Klausimas, į kurį turi atsakyti naudotojai."
+      },
+      {
+        "property": "statement",
+        "title": "Teiginys",
+        "description": "Teiginys, kuris bus paverstas žodžių žymėjimo užduotimi."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vertinimo formatas",
+        "description": "OER Schema: šio vertinimo formatas (pvz., taškai, raidė, procentai, atlikimas)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mokymosi tikslas",
+        "description": "OER Schema: su šiuo vertinimu susijęs mokymosi tikslas."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursas",
+        "description": "OER Schema: kursas, kuriam skirtas šis vertinimas."
+      },
+      {
+        "property": "answers",
+        "title": "Atsakymai"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testo pavadinimas",
+        "description": "Testo pavadinimas, perduodamas xAPI pagrįstoms aplinkoms šiam elementui identifikuoti"
+      }
+    ]
+  }
+}

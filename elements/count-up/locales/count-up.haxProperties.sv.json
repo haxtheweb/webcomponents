@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Uppräkning",
+    "description": "Animera ett tal som räknas upp till ett målvärde när det rullas in i vyn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Slutvärde",
+        "description": "Talet att räkna upp till."
+      },
+      {
+        "property": "start",
+        "title": "Startvärde",
+        "description": "Talet att räkna upp från."
+      },
+      {
+        "property": "duration",
+        "title": "Varaktighet",
+        "description": "Antal sekunder som räkneanimationen ska ta."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Prefixtext",
+        "description": "Text som visas före talet (t.ex. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Suffixtext",
+        "description": "Text som visas efter talet (t.ex. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefixplats",
+        "description": "Valfritt infogat innehåll före talet."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffixplats",
+        "description": "Valfritt infogat innehåll efter talet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Decimaler",
+        "description": "Antal decimaler som ska visas."
+      },
+      {
+        "property": "separator",
+        "title": "Tusentalsavgränsare",
+        "description": "Tecken som skiljer tusentalsgrupper åt."
+      },
+      {
+        "property": "decimal",
+        "title": "Decimaltecken",
+        "description": "Tecken som används som decimaltecken."
+      },
+      {
+        "property": "noeasing",
+        "title": "Ingen utjämning",
+        "description": "Inaktivera utjämning så att räkningen blir linjär."
+      }
+    ]
+  }
+}

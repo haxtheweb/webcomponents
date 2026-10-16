@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Àfiwé àwòrán",
+    "description": "Fa àwòrán kan kọjá òmíràn fún àfiwé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Àwòrán òkè",
+        "description": "Àwòrán òkè tí a ó fà kọjá àwòrán ìsàlẹ̀."
+      },
+      {
+        "property": "topAlt",
+        "title": "Ọ̀rọ̀ alt àwòrán òkè",
+        "description": "Ọ̀rọ̀ alt tí ó pọndandan fún ìráyèsí."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Àwòrán ìsàlẹ̀",
+        "description": "Àwòrán ìsàlẹ̀ tí a fi hàn lábẹ́ àwòrán òkè."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Ọ̀rọ̀ alt àwòrán ìsàlẹ̀",
+        "description": "Ọ̀rọ̀ alt tí ó pọndandan fún ìráyèsí."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Ìhùwàsí",
+        "description": "Yan ipò ìnù (àtilẹ̀wá) tàbí ipò ìfojúhàn àwòrán òkè."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ Ìtẹnumọ́",
+        "description": "Àwọ̀ ọ̀pá ìfà."
+      },
+      {
+        "property": "dark",
+        "title": "Dúdú",
+        "description": "Yí àwọ̀ ọ̀pá ìfà padà."
+      },
+      {
+        "property": "position",
+        "title": "Ipò Ìbẹ̀rẹ̀",
+        "description": "Ipò ìbẹ̀rẹ̀ láti 0 sí 100."
+      }
+    ]
+  }
+}

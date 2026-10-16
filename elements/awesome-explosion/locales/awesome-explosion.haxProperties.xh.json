@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Uqhushumbo Olumangalisayo",
+    "description": "Oopopayi bokuqhushumba abasebenzisanayo abanezandi ezikhethwayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Ubungakanani",
+        "description": "Seta ubungakanani boqhushumbo.",
+        "options": {
+          "tiny": "Encinci kakhulu",
+          "small": "Encinci",
+          "medium": "Ephakathi",
+          "large": "Enkulu",
+          "epic": "Enkulu kakhulu"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Umbala",
+        "description": "Seta umxholo wombala woqhushumbo.",
+        "options": {
+          "": "Okungagqibekanga",
+          "red": "Bomvu",
+          "blue": "Luhlaza okwesibhakabhaka",
+          "purple": "Mfusa",
+          "orange": "Orenji",
+          "yellow": "Mthubi"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Iziphumo zeSandi",
+        "description": "Vula iziphumo zesandi."
+      },
+      {
+        "property": "resetSound",
+        "title": "Qalisa kwakhona iSandi",
+        "description": "Qalisa isandi ekuqaleni rhoqo."
+      },
+      {
+        "property": "image",
+        "title": "Umfanekiso Owenziwe Ngokwakho",
+        "description": "I-URL ekhethwayo yomfanekiso woqhushumbo owenziwe ngokwakho."
+      },
+      {
+        "property": "sound",
+        "title": "Isandi Esenziwe Ngokwakho",
+        "description": "I-URL ekhethwayo yesiphumo sesandi esenziwe ngokwakho."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Kuvaliwe",
+        "description": "Vala konke ukusebenzisana."
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "日期",
+    "description": "显示带详细信息的日历日期。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "月份",
+        "description": "卡片上显示的月份。"
+      },
+      {
+        "property": "date",
+        "title": "日期（日）",
+        "description": "月份中的日期数字。"
+      },
+      {
+        "property": "day",
+        "title": "星期",
+        "description": "以文本表示的星期几。"
+      },
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "活动名称。"
+      },
+      {
+        "property": "location",
+        "title": "地点",
+        "description": "活动地点。"
+      },
+      {
+        "property": "startTime",
+        "title": "开始",
+        "description": "开始时间。"
+      },
+      {
+        "property": "endTime",
+        "title": "结束",
+        "description": "结束时间。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "可选的强调色。"
+      },
+      {
+        "property": "dark",
+        "title": "深色主题",
+        "description": "启用深色主题。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Темалы Polaris гамәлгә чакыру төймәсен күрсәтергә."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Төймә тексты",
+        "description": "Гамәлгә чакыру төймәсендә күрсәтелә торган текст."
+      },
+      {
+        "property": "link",
+        "title": "Сылтама",
+        "description": "Төймә өчен максат URL."
+      },
+      {
+        "property": "type",
+        "title": "Вариант",
+        "description": "Визуаль стиль варианты.",
+        "options": {
+          "primary": "Төп",
+          "tinted": "Төсле",
+          "light": "Якты"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Контурлы стиль",
+        "description": "Контурлы рәвешне кабызырга."
+      },
+      {
+        "property": "filled",
+        "title": "Тутырылган стиль",
+        "description": "Тутырылган рәвешне кабызырга."
+      }
+    ]
+  }
+}

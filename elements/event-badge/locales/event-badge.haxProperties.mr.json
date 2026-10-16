@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "कार्यक्रम बॅज",
+    "description": "कार्यक्रम बॅज घटक."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV प्रतिमा",
+        "description": "TV वर दाखवलेली प्रतिमा."
+      },
+      {
+        "property": "logo",
+        "title": "लोगो",
+        "description": "बॅजच्या कोपऱ्यात दाखवलेला लोगो."
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "बॅजच्या वरच्या बाजूला दाखवलेले शीर्षक."
+      },
+      {
+        "property": "name",
+        "title": "नाव",
+        "description": "बॅजवर दाखवलेले नाव."
+      },
+      {
+        "property": "position",
+        "title": "पद",
+        "description": "व्यक्तीची भूमिका किंवा पदनाम."
+      },
+      {
+        "property": "organization",
+        "title": "संस्था",
+        "description": "व्यक्ती ज्या संस्थेसाठी काम करते ती."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV रंग",
+        "description": "TV साठी रंग निवडा."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "प्राथमिक पार्श्वभूमी किंवा मजकूर रंग."
+      },
+      {
+        "property": "knobcolor",
+        "title": "नॉबचा रंग",
+        "description": "TV नॉबचा रंग."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "सेपिया",
+        "description": "सेपिया प्रभाव लागू करा."
+      },
+      {
+        "property": "blackwhite",
+        "title": "कृष्णधवल",
+        "description": "कृष्णधवल प्रभाव लागू करा."
+      }
+    ]
+  }
+}

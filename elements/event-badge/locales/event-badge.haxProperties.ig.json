@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Baajị Mmemme",
+    "description": "Akụrụngwa baajị mmemme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Onyonyo TV",
+        "description": "Onyonyo a na-egosi na TV ahụ."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo a na-egosi na nkuku baajị ahụ."
+      },
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Aha a na-egosi n'elu baajị ahụ."
+      },
+      {
+        "property": "name",
+        "title": "Aha",
+        "description": "Aha a na-egosi na baajị ahụ."
+      },
+      {
+        "property": "position",
+        "title": "Ọkwa",
+        "description": "Ọrụ ma ọ bụ aha ọkwa onye ahụ."
+      },
+      {
+        "property": "organization",
+        "title": "Nzukọ",
+        "description": "Nzukọ onye ahụ na-arụrụ ọrụ."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Agba TV",
+        "description": "Họrọ agba maka TV ahụ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba mkpụrụ",
+        "description": "Agba azụ ma ọ bụ agba ederede bụ isi."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Agba bọtịnụ ntụgharị",
+        "description": "Agba bọtịnụ ntụgharị nke TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Tinye mmetụta sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Oji na ọcha",
+        "description": "Tinye mmetụta oji na ọcha."
+      }
+    ]
+  }
+}

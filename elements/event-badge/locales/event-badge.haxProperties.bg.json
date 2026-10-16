@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Бадж за събитие",
+    "description": "Компонент бадж за събитие."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Изображение за TV",
+        "description": "Изображение, показано на телевизора."
+      },
+      {
+        "property": "logo",
+        "title": "Лого",
+        "description": "Лого в ъгъла на баджа."
+      },
+      {
+        "property": "title",
+        "title": "Заглавие",
+        "description": "Заглавие, показано в горната част на баджа."
+      },
+      {
+        "property": "name",
+        "title": "Име",
+        "description": "Име, показано на баджа."
+      },
+      {
+        "property": "position",
+        "title": "Длъжност",
+        "description": "Роля или длъжност на човека."
+      },
+      {
+        "property": "organization",
+        "title": "Организация",
+        "description": "Организацията, в която работи човекът."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Цвят на TV",
+        "description": "Изберете цвета на телевизора."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентен цвят",
+        "description": "Основен цвят на фона или текста."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Цвят на копчетата",
+        "description": "Цвят на копчетата на телевизора."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Сепия",
+        "description": "Прилагане на ефект сепия."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Черно-бяло",
+        "description": "Прилагане на черно-бял ефект."
+      }
+    ]
+  }
+}

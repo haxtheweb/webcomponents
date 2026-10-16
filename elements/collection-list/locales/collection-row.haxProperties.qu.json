@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Huñu siqi",
+    "description": "Huñu listapi siqi hina item: qillqawan, t'inkiwan, unanchawan, tagkunawan, akllanalla rikch'awanpas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "T'inki",
+        "description": "Kay siqipa chayana URL-nin."
+      },
+      {
+        "property": "image",
+        "title": "Rikch'a",
+        "description": "Siqipa rikch'an."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Rikch'ata willakuq hukniray qillqa."
+      },
+      {
+        "property": "line1",
+        "title": "1 siqi",
+        "description": "Ñawpaq qillqa siqi."
+      },
+      {
+        "property": "line2",
+        "title": "2 siqi",
+        "description": "Iskay ñiqin qillqa siqi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Unancha",
+        "description": "Siqita rikuchiq unancha."
+      },
+      {
+        "property": "saturate",
+        "title": "Llimpi sinchiyay",
+        "description": "Ruraq qhawaykuptin rikch'apa llimpi sinchiynin tikray."
+      },
+      {
+        "property": "tags",
+        "title": "Tagkuna",
+        "description": "Comawan t'aqasqa tagkunapa listan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Llimpi",
+        "description": "Unanchapaq tagkunapaqpas llimpi."
+      }
+    ]
+  }
+}

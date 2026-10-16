@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris lauza",
+    "description": "Bistaratu Polaris lauza bat izenburuarekin, aukerako testu osagarriarekin eta aukerako estekarekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Testu nagusia",
+        "description": "Lauzaren testu nagusia."
+      },
+      {
+        "property": "line2",
+        "title": "Bigarren mailako testua",
+        "description": "Aukerako testu osagarria."
+      },
+      {
+        "property": "type",
+        "title": "Lauzaren estiloa",
+        "description": "Lauzaren aurrezarritako estilo bisuala.",
+        "options": {
+          "1": "1. estiloa",
+          "2": "2. estiloa",
+          "3": "3. estiloa",
+          "4": "4. estiloa",
+          "5": "5. estiloa"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Atzeko irudia",
+        "description": "Irudiak onartzen dituzten lauza estiloek erabiltzen duten atzeko irudiaren URLa."
+      },
+      {
+        "property": "link",
+        "title": "Esteka",
+        "description": "Lauzaren ekintzaren aukerako helburuko URLa."
+      }
+    ]
+  }
+}

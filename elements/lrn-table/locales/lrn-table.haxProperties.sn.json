@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tafura yeCSV",
+    "description": "Izvi zvinogona kugadzira tafura kubva kufaira reCSV kunyangwe riri kupi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Kwakabva",
+        "description": "URL yefaira iri reCSV."
+      },
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Musoro wetafura ichagadzirwa."
+      },
+      {
+        "property": "description",
+        "title": "Tsananguro",
+        "description": "Tsananguro yakadzama kuti dhata yetafura iwanikwe zviri nani nevose."
+      }
+    ]
+  }
+}

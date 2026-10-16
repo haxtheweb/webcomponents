@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Riquadro attività",
+    "description": "Piccolo blocco di intestazione con stile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona mostrata accanto al riquadro attività."
+      },
+      {
+        "property": "tag",
+        "title": "Tag del riquadro attività",
+        "description": "Tag mostrato nel riquadro attività."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Non colorare",
+        "description": "Impedisci l'applicazione dei colori all'icona."
+      }
+    ]
+  }
+}

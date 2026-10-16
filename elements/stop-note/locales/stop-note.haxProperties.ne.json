@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "रोक्ने टिप्पणी",
+    "description": "पाठकहरूलाई विशेष निर्देशनबारे सचेत गराउने सन्देश।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "रोक्ने टिप्पणीको शीर्षक लेख्नुहोस्।"
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "बाह्य URL लेख्नुहोस्।"
+      },
+      {
+        "property": "status",
+        "title": "स्थिति",
+        "description": "स्थिति सेट गर्दा रङ र आइकनहरू त्यसैअनुसार बदलिन्छन्",
+        "options": {
+          "stop": "रोक्नुहोस्",
+          "warning": "चेतावनी",
+          "success": "पुष्टि",
+          "info": "सूचना"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "टिप्पणीको पाठ",
+        "description": "रोक्ने टिप्पणीको पाठ।"
+      }
+    ]
+  }
+}

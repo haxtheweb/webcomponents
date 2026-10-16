@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Bicihkirina LinkedIn",
+    "description": "Karta profîla LinkedIn bi cih bike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Navê taybet",
+        "description": "Beşa navê bikarhêner ê taybet a LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Herêm",
+        "description": "Nirxa metadaneya herêmê wekî en_US."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ýygnalýan konteýner",
+    "description": "Açylýan we ýygnalýan ýeke konteýner."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Sözbaşy",
+        "description": "Ýygnalýan blok üçin tekst."
+      },
+      {
+        "property": "expanded",
+        "title": "Açyk",
+        "description": "Deslapky ýagdaýda açyk bolsun."
+      },
+      {
+        "property": "headingButton",
+        "title": "Sözbaşy düwmesi",
+        "description": "Diňe nyşany däl-de, tutuş sözbaşyny basylýan et."
+      },
+      {
+        "property": "icon",
+        "title": "Nyşan",
+        "description": "Açmak/ýygnamak düwmesiniň nyşany."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Nyşan (açyk wagty)",
+        "description": "Açyk ýagdaý üçin goşmaça nyşan."
+      },
+      {
+        "slot": "",
+        "title": "Mazmun",
+        "description": "Ýygnalýan blokuň mazmuny."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Maslahat ýazgysy",
+        "description": "Açmak/ýygnamak düwmesiniň maslahat ýazgysy."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Maslahat ýazgysy (açyk wagty)",
+        "description": "Açyk wagty açmak/ýygnamak düwmesiniň maslahat ýazgysy."
+      }
+    ]
+  }
+}

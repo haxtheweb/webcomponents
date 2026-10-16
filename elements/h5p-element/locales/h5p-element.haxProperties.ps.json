@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "د .h5p فایلونو د بارولو او وړاندې کولو لپاره H5P پوښ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "د H5P iframe ځای پر ځای کولو کوډ"
+      }
+    ]
+  }
+}

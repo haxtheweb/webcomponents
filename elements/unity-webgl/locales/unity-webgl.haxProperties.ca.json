@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Reproductor Unity",
+    "description": "Reproductor WebGL de Unity."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Destinació",
+        "description": "Ruta a la compilació del joc."
+      },
+      {
+        "property": "compression",
+        "title": "Mètode de compressió",
+        "description": "Extensió de fitxer de compressió per als recursos del joc."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL de streaming",
+        "description": "URL dels recursos de streaming."
+      },
+      {
+        "property": "companyname",
+        "title": "Nom de l'empresa",
+        "description": "Nom de l'empresa."
+      },
+      {
+        "property": "productname",
+        "title": "Nom del producte",
+        "description": "Títol del joc."
+      },
+      {
+        "property": "productversion",
+        "title": "Versió del producte",
+        "description": "Versió de llançament."
+      },
+      {
+        "property": "width",
+        "title": "Amplada del llenç",
+        "description": "Amplada CSS del llenç (per exemple, px o em)."
+      },
+      {
+        "property": "height",
+        "title": "Alçada del llenç",
+        "description": "Alçada CSS del llenç (per exemple, px o em)."
+      },
+      {
+        "property": "background",
+        "title": "Fons del llenç",
+        "description": "Fons CSS del llenç."
+      }
+    ]
+  }
+}

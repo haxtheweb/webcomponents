@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "یادداشت توقف",
+    "description": "پیامی برای آگاه کردن خوانندگان از دستورالعمل‌های مشخص."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنوان یادداشت توقف را وارد کنید."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "یک URL خارجی وارد کنید."
+      },
+      {
+        "property": "status",
+        "title": "وضعیت",
+        "description": "تنظیم وضعیت، رنگ‌ها و نمادها را متناسب با آن تغییر می‌دهد",
+        "options": {
+          "stop": "توقف",
+          "warning": "هشدار",
+          "success": "تأیید",
+          "info": "اطلاعیه"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "متن یادداشت",
+        "description": "متن یادداشت توقف."
+      }
+    ]
+  }
+}

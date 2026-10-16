@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Kuphulika Kodabwitsa",
+    "description": "Kanema wa kuphulika wokhudzana ndi wogwiritsa ntchito, wokhala ndi mawu osankha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Kukula",
+        "description": "Ikani kukula kwa kuphulika.",
+        "options": {
+          "tiny": "Kakang'ono kwambiri",
+          "small": "Kakang'ono",
+          "medium": "Kapakati",
+          "large": "Kakakulu",
+          "epic": "Kwakukulu kwambiri"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Mtundu",
+        "description": "Ikani mitundu ya kuphulika.",
+        "options": {
+          "": "Mwachisawawa",
+          "red": "Wofiira",
+          "blue": "Wabuluu",
+          "purple": "Wofiirira",
+          "orange": "Walalanje",
+          "yellow": "Wachikasu"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Mawu Owonjezera",
+        "description": "Yatsani mawu owonjezera."
+      },
+      {
+        "property": "resetSound",
+        "title": "Bwezeretsani Mawu",
+        "description": "Yambitsaninso mawu kuchokera pachiyambi nthawi iliyonse."
+      },
+      {
+        "property": "image",
+        "title": "Chithunzi Chanu",
+        "description": "URL yosankha ya chithunzi chanu cha kuphulika."
+      },
+      {
+        "property": "sound",
+        "title": "Mawu Anu",
+        "description": "URL yosankha ya mawu anu owonjezera."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Zoletsedwa",
+        "description": "Letsani zochita zonse."
+      }
+    ]
+  }
+}

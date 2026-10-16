@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "مفردات",
+    "description": "مصطلح من المفردات."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "المصطلح"
+      },
+      {
+        "property": "information",
+        "title": "التعريف",
+        "description": "التعريف المعروض عند النقر على المصطلح."
+      },
+      {
+        "property": "popoverMode",
+        "title": "نافذة منبثقة",
+        "description": "عرض التعريف في نافذة منبثقة بدلًا من عرضه ضمن النص."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "الروابط",
+        "description": "قائمة روابط إضافية مرتبطة بهذا المصطلح."
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polarisマーク",
+    "description": "PSUのアイデンティティマークを、任意のカレッジ名とリンク先URLとともに表示します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "カレッジ名",
+        "description": "マークの横に表示する名前。"
+      },
+      {
+        "property": "name2",
+        "title": "カレッジ名2",
+        "description": "最初のカレッジ名の下に表示する2つ目の名前。"
+      },
+      {
+        "property": "name3",
+        "title": "カレッジ名3",
+        "description": "2つ目のカレッジ名の下に表示する3つ目の名前。"
+      },
+      {
+        "property": "url",
+        "title": "リンク",
+        "description": "マークをクリックしたときのリンク先URL。"
+      },
+      {
+        "property": "type",
+        "title": "バリエーション",
+        "description": "マークの表示バリエーション。",
+        "options": {
+          "default": "既定",
+          "light": "ライト",
+          "dark": "ダーク"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "縦レイアウト",
+        "description": "3つ目の名前を2つ目の名前の下に横線付きで表示します。"
+      }
+    ]
+  }
+}

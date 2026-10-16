@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) moinge",
+    "description": "Emoinge peteĩ tweet X-gui hendaitépe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL tweet",
+        "description": "URL tweet ojemoingetava."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Ñemohenda",
+        "description": "Ñemohenda hesakã térã pytũ X tweet-pe g̃uarã.",
+        "options": {
+          "light": "Hesakã",
+          "dark": "Pytũ"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Ani ejepe'a ovetã'i ojejopy jave",
+        "description": "Ani puruhára ojepe'a tweet x.com-pe."
+      }
+    ]
+  }
+}

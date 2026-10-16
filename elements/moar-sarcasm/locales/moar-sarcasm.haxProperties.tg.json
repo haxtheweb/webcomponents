@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Киноя",
+    "description": "Пешниҳоди матн бо тарзи масхаромез"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Матн",
+        "description": "Матн барои кинояомез кардан"
+      }
+    ]
+  }
+}

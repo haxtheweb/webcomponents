@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Chowonera PDF mu Msakatuli",
+    "description": "Ikani fayilo ya PDF mkati mwa tsamba ndi kapangidwe ka khadi ndi batani lotsitsa zosankha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL ya PDF",
+        "description": "Malo a fayilo ya PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Mutu",
+        "description": "Mawu a mutu wa khadi."
+      },
+      {
+        "property": "card",
+        "title": "Kapangidwe ka khadi",
+        "description": "Onetsani PDF mu khadi lokhala ndi batani lotsitsa."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Dzina lotsitsa",
+        "description": "Dzina la batani lotsitsa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Uthenga wosathandizidwa",
+        "description": "Uthenga pamene msakatuli sungathe kuwonetsa mafayilo a PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Uthenga wa ulalo wosathandizidwa",
+        "description": "Mawu a ulalo pamene msakatuli sungathe kuwonetsa mafayilo a PDF."
+      },
+      {
+        "property": "width",
+        "title": "M'lifupi",
+        "description": "M'lifupi mwa chowonera PDF."
+      },
+      {
+        "property": "height",
+        "title": "Kutalika",
+        "description": "Kutalika kwa chowonera PDF."
+      }
+    ]
+  }
+}

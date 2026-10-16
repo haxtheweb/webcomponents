@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Partitura",
+    "description": "Affissa è sona partiture, tablature di chitarra è nutazione musicale via alphaTex o MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Nutazione alphaTex",
+        "description": "Marcatura alphaTex integrata per a partitura. Mudificà la direttamente per scrive a nutazione; hè guardata in un mudellu per chì i spazii sianu cunservati."
+      },
+      {
+        "property": "source",
+        "title": "Schedariu di partitura",
+        "description": "Caricà o ligà un schedariu MusicXML (.xml/.musicxml/.mxl) o Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Quandu hè definitu, rimpiazza l'alphaTex integratu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Lettura audio",
+        "description": "Attivu per difettu: ascultà a partitura sunata da u sintetizatore integratu. Disattivà per u modu solu visualizazione (senza audio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Affissà l'ozzioni d'affissera",
+        "description": "Affissà i buttoni di zoom, d'allungamentu è di dispusizione nant'à a barra di u lettore."
+      },
+      {
+        "property": "showExport",
+        "title": "Affissà i buttoni d'esportazione",
+        "description": "Affissà i buttoni per scaricà u MIDI è stampà/PDF nant'à a barra di u lettore."
+      }
+    ]
+  }
+}

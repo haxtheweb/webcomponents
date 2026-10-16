@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Yaadannoo Dhaabii",
+    "description": "Ergaa dubbistoota qajeelfama murtaa'eef akeekkachiisu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mata-duree",
+        "description": "Mata-duree yaadannoo dhaabii galchi."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "URL alaa galchi."
+      },
+      {
+        "property": "status",
+        "title": "Haala",
+        "description": "Haala murteessuun halluu fi mallattoolee akka walsiman jijjiira",
+        "options": {
+          "stop": "Dhaabi",
+          "warning": "Akeekkachiisa",
+          "success": "Mirkaneessa",
+          "info": "Beeksisa"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Barreeffama Yaadannoo",
+        "description": "Barreeffama yaadannoo dhaabii."
+      }
+    ]
+  }
+}

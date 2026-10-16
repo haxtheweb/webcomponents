@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Ku dhex dar nuxur web dibadeed iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL-ka Kheyraadka",
+        "description": "URL-ka kheyraadka."
+      },
+      {
+        "property": "height",
+        "title": "Dherer",
+        "description": "Dhererka iframe-ka."
+      },
+      {
+        "property": "width",
+        "title": "Ballac",
+        "description": "Ballaca iframe-ka."
+      }
+    ]
+  }
+}

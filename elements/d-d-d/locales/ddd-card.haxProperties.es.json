@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Tarjeta",
+    "description": "Componente de tarjeta con el estilo del sistema de diseño DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Imagen",
+        "description": "Imagen opcional."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo de la imagen",
+        "description": "Texto alternativo que describe la imagen."
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título de la tarjeta."
+      },
+      {
+        "slot": "",
+        "title": "Contenido",
+        "description": "Área de contenido de la tarjeta."
+      },
+      {
+        "property": "href",
+        "title": "Enlace",
+        "description": "URL del enlace del botón."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etiqueta",
+        "description": "Etiqueta del botón."
+      },
+      {
+        "property": "noArrow",
+        "title": "Sin flecha",
+        "description": "Ocultar la flecha del botón."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Enlace: destino",
+        "description": "Dónde abrir el enlace.",
+        "options": {
+          "": "Misma ventana",
+          "_blank": "Nueva ventana - _blank",
+          "_top": "Ventana superior - _top",
+          "_parent": "Ventana principal - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Enlace: rel",
+        "description": "Relación entre el recurso enlazado y el documento actual."
+      }
+    ]
+  }
+}

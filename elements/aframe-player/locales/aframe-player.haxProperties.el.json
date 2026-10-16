@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Πρόγραμμα αναπαραγωγής 3D",
+    "description": "Πρόγραμμα αναπαραγωγής αρχείων 3D / επαυξημένης πραγματικότητας."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Πηγή",
+        "description": "Το URL για αυτό το αρχείο AR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Θέση X του στοιχείου στο AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Θέση Y του στοιχείου στο AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Θέση Z του στοιχείου στο AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Χρώμα ουρανού",
+        "description": "Επιλέξτε το χρώμα του ουρανού στη σκηνή."
+      }
+    ]
+  }
+}

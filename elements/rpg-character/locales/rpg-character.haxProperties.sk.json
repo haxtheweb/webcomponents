@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG postava",
+    "description": "Zábavná postava od HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Meno",
+        "description": "Slovo použité na vygenerovanie náhodnej postavy."
+      },
+      {
+        "property": "hat",
+        "title": "Klobúk",
+        "description": "Štýl klobúka.",
+        "options": {
+          "none": "Predvolená",
+          "random": "Náhodný",
+          "bunny": "Zajačik",
+          "cowboy": "Kovboj",
+          "education": "Vzdelávanie",
+          "construction": "Stavebná prilba",
+          "warning": "Varovanie",
+          "watermelon": "Melón",
+          "coffee": "Káva",
+          "knight": "Rytier",
+          "ninja": "Nindža",
+          "party": "Párty",
+          "error": "Chyba",
+          "edit": "Úprava"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Šírka",
+        "description": "Šírka postavy v pixeloch."
+      },
+      {
+        "property": "height",
+        "title": "Výška",
+        "description": "Výška postavy v pixeloch."
+      },
+      {
+        "property": "fire",
+        "title": "V plameňoch?",
+        "description": "Či postava horí."
+      },
+      {
+        "property": "walking",
+        "title": "Kráča?",
+        "description": "Animácia chôdze; pri horení beží."
+      }
+    ]
+  }
+}

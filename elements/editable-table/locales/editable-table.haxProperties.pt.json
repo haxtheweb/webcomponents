@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabela",
+    "description": "Dados em tabela para a web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Cabeçalho de linha",
+        "description": "Tratar a primeira linha como cabeçalho."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Cabeçalho de coluna",
+        "description": "Tratar a primeira coluna como cabeçalho."
+      },
+      {
+        "property": "footer",
+        "title": "Rodapé",
+        "description": "Tratar a última linha como rodapé."
+      },
+      {
+        "property": "sort",
+        "title": "Ordenável",
+        "description": "Permitir ordenar pelos valores das colunas."
+      },
+      {
+        "property": "filter",
+        "title": "Permitir filtro",
+        "description": "Permitir filtrar pelos valores das colunas."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Estilo numérico",
+        "description": "Aplicar estilo numérico às colunas numéricas."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsiva",
+        "description": "Ajustar o layout da tabela em telas pequenas."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Modo rubrica",
+        "description": "Interpretar esta tabela como uma Rubric do OER Schema, para que sejam emitidos os metadados Rubric, RubricScale, RubricCriterion e RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Tipo de rubrica",
+        "description": "Estilo de rubrica emitido como oer:rubricType (só tem efeito quando o Modo rubrica está ativado).",
+        "options": {
+          "": "(nenhum)",
+          "analytic": "Analítica",
+          "holistic": "Holística",
+          "single-point": "Ponto único",
+          "checklist": "Lista de verificação"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Com bordas"
+      },
+      {
+        "property": "condensed",
+        "title": "Condensar linhas",
+        "description": "Reduzir a altura das linhas."
+      },
+      {
+        "property": "striped",
+        "title": "Linhas alternadas",
+        "description": "Sombrear linhas alternadas."
+      },
+      {
+        "property": "downloadable",
+        "title": "Botão de download",
+        "description": "Adicionar um botão para baixar a tabela."
+      },
+      {
+        "property": "copyable",
+        "title": "Botão de copiar",
+        "description": "Adicionar um botão para copiar os dados da tabela em CSV."
+      },
+      {
+        "property": "printable",
+        "title": "Botão de imprimir",
+        "description": "Adicionar um botão para imprimir apenas a tabela."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Dados CSV",
+        "description": "Criar uma tabela a partir de um arquivo CSV enviado."
+      }
+    ]
+  }
+}

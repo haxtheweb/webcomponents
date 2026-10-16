@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "छवि अनुभाग",
+    "description": "पूर्ण-चौड़ाई वाली छवि जो पृष्ठ के अनुभागों को अलग करती है।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "पृष्ठभूमि छवि।"
+      },
+      {
+        "property": "caption",
+        "description": "टेक्स्ट शीर्षक।"
+      }
+    ]
+  }
+}

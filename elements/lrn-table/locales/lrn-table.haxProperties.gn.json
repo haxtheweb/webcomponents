@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV tabla",
+    "description": "Ikatu ojapo tabla marandurenda CSV-gui, oĩramo jepe oimeraẽ tendápe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Ypykue",
+        "description": "URL ko marandurenda CSV rehegua."
+      },
+      {
+        "property": "title",
+        "title": "Teratee",
+        "description": "Teratee tabla ojejapótavape g̃uarã."
+      },
+      {
+        "property": "description",
+        "title": "Ñemombe'u",
+        "description": "Ñemombe'u ipukuvéva tabla mba'ekuaarã ojeikuaave hag̃ua opavavépe."
+      }
+    ]
+  }
+}

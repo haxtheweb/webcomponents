@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "इवेंट बैज",
+    "description": "इवेंट बैज घटक।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV छवि",
+        "description": "TV पर दिखाई जाने वाली छवि।"
+      },
+      {
+        "property": "logo",
+        "title": "लोगो",
+        "description": "बैज के कोने में दिखाया गया लोगो।"
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "बैज के शीर्ष पर दिखाया गया शीर्षक।"
+      },
+      {
+        "property": "name",
+        "title": "नाम",
+        "description": "बैज पर दिखाया गया नाम।"
+      },
+      {
+        "property": "position",
+        "title": "पद",
+        "description": "व्यक्ति की भूमिका या पदनाम।"
+      },
+      {
+        "property": "organization",
+        "title": "संगठन",
+        "description": "वह संगठन जिसके लिए व्यक्ति काम करता है।"
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV का रंग",
+        "description": "TV का रंग चुनें।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "प्राथमिक पृष्ठभूमि या टेक्स्ट रंग।"
+      },
+      {
+        "property": "knobcolor",
+        "title": "नॉब का रंग",
+        "description": "TV के नॉब का रंग।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "सीपिया",
+        "description": "सीपिया प्रभाव लागू करें।"
+      },
+      {
+        "property": "blackwhite",
+        "title": "श्वेत-श्याम",
+        "description": "श्वेत-श्याम प्रभाव लागू करें।"
+      }
+    ]
+  }
+}

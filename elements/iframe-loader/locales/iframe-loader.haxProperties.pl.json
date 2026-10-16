@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Osadź zewnętrzną zawartość internetową w ramce iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL zasobu",
+        "description": "URL zasobu."
+      },
+      {
+        "property": "height",
+        "title": "Wysokość",
+        "description": "Wysokość ramki iframe."
+      },
+      {
+        "property": "width",
+        "title": "Szerokość",
+        "description": "Szerokość ramki iframe."
+      }
+    ]
+  }
+}

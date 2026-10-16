@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity puklliq",
+    "description": "Unity WebGL puklliq."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Maypi",
+        "description": "Pukllay buildman ñan."
+      },
+      {
+        "property": "compression",
+        "title": "K'iskichay ñan",
+        "description": "Pukllay kaqkunapaq k'iskichay willañiqi extensión."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Streaming URL",
+        "description": "Streaming kaqkunapa URL-nin."
+      },
+      {
+        "property": "companyname",
+        "title": "Empresapa sutin",
+        "description": "Empresapa sutin."
+      },
+      {
+        "property": "productname",
+        "title": "Productopa sutin",
+        "description": "Pukllaypa sutichaynin."
+      },
+      {
+        "property": "productversion",
+        "title": "Productopa versiónnin",
+        "description": "Lluqsichisqa versión."
+      },
+      {
+        "property": "width",
+        "title": "Canvas kinray",
+        "description": "Canvaspa CSS kinraynin (kayhina px utaq em)."
+      },
+      {
+        "property": "height",
+        "title": "Canvas sayay",
+        "description": "Canvaspa CSS sayaynin (kayhina px utaq em)."
+      },
+      {
+        "property": "background",
+        "title": "Canvas qhipa",
+        "description": "Canvaspa CSS qhipan."
+      }
+    ]
+  }
+}

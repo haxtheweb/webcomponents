@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Sideflagge",
+    "description": "Redaksjonele notysje foar auteurs fan de side."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Aksintkleur foar de sideflagge."
+      },
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Labeltekst foar de sideflagge."
+      }
+    ]
+  }
+}

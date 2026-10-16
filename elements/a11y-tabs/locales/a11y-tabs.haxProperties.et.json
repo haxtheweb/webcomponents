@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Vahekaardid",
+    "description": "Vahekaartide komplekt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Silt (ligipääsetavuse jaoks)",
+        "description": "Vahekaartide komplekti ligipääsetav silt."
+      },
+      {
+        "property": "disabled",
+        "title": "Keelatud",
+        "description": "Keela kõik vahekaardid."
+      },
+      {
+        "property": "hidden",
+        "title": "Peidetud",
+        "description": "Peida vahekaartide komplekt."
+      },
+      {
+        "property": "sticky",
+        "title": "Kinnitatud",
+        "description": "Hoia horisontaalsed vahekaardid kerimisel üleval."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Paigutuse murdepunkt",
+        "description": "Horisontaalsete vahekaartide murdepunkt; kasuta -1 ainult vertikaalse paigutuse jaoks."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Ikoonide murdepunkt",
+        "description": "Murdepunkt teksti kuvamiseks koos ikoonidega. Vaikimisi 0; kasuta -1 ainult ikoonide režiimi jaoks."
+      },
+      {
+        "slot": "",
+        "title": "Vahekaardid",
+        "description": "<a11y-tab/> elementide jada."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unikaalne ID",
+        "description": "Selle vahekaartide komplekti unikaalne ID."
+      }
+    ]
+  }
+}

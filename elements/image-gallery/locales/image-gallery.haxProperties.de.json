@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Bildergalerie",
+    "description": "Eine Galerie, die Bilder als Raster, Mauerwerk oder Diashow darstellt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Anzeigemodus",
+        "description": "Wie die Bilder in der Galerie dargestellt werden.",
+        "options": {
+          "grid": "Raster",
+          "masonry": "Mauerwerk",
+          "gallery": "Galerie"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktiver Index",
+        "description": "Index des aktiven Bildes, mit dem im Galeriemodus begonnen wird."
+      }
+    ]
+  }
+}

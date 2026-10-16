@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Kokoelman kohde",
+    "description": "Korttityylinen kohde kokoelmaluetteloon, jossa on tekstiä, linkki ja valinnainen media."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Linkki",
+        "description": "Tämän kortin kohde-URL."
+      },
+      {
+        "property": "image",
+        "title": "Kuva",
+        "description": "Taustakuva."
+      },
+      {
+        "property": "line1",
+        "title": "Rivi 1",
+        "description": "Ensimmäinen tekstirivi."
+      },
+      {
+        "property": "line2",
+        "title": "Rivi 2",
+        "description": "Toinen tekstirivi."
+      },
+      {
+        "property": "line3",
+        "title": "Rivi 3",
+        "description": "Kolmas tekstirivi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Kuvake",
+        "description": "Korttia edustava kuvake."
+      },
+      {
+        "property": "saturate",
+        "title": "Kylläisyystehoste",
+        "description": "Muuta kuvan värikylläisyyttä, kun käyttäjä kohdistaa siihen."
+      },
+      {
+        "property": "tags",
+        "title": "Tunnisteet",
+        "description": "Pilkuilla eroteltu luettelo tunnisteista."
+      },
+      {
+        "property": "accentColor",
+        "title": "Väri",
+        "description": "Tunnisteiden väri."
+      },
+      {
+        "property": "alt",
+        "title": "Vaihtoehtoinen teksti",
+        "description": "Linkkiä kuvaava vaihtoehtoinen teksti."
+      }
+    ]
+  }
+}

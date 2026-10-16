@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Oortjies",
+    "description": "'n Stel oortjies."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etiket (vir toeganklikheid)",
+        "description": "Toeganklike etiket vir die oortjiestel."
+      },
+      {
+        "property": "disabled",
+        "title": "Gedeaktiveer",
+        "description": "Deaktiveer alle oortjies."
+      },
+      {
+        "property": "hidden",
+        "title": "Versteek",
+        "description": "Versteek die oortjiestel."
+      },
+      {
+        "property": "sticky",
+        "title": "Vaspen",
+        "description": "Hou horisontale oortjies bo-aan tydens rol."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Uitlegbreekpunt",
+        "description": "Breekpunt vir horisontale oortjies; gebruik -1 vir slegs vertikaal."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Ikoonbreekpunt",
+        "description": "Breekpunt om teks met ikone te wys. Standaard is 0; gebruik -1 vir slegs-ikoon-modus."
+      },
+      {
+        "slot": "",
+        "title": "Oortjies",
+        "description": "Reeks <a11y-tab/>-elemente."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unieke ID",
+        "description": "Unieke ID vir hierdie oortjiestel."
+      }
+    ]
+  }
+}

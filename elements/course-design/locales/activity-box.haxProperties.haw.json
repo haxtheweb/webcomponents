@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pahu Hana",
+    "description": "He poloka poʻo liʻiliʻi me ke kaila."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Hōʻailona",
+        "description": "Hōʻailona i hōʻike ʻia me ka pahu hana."
+      },
+      {
+        "property": "tag",
+        "title": "Lepili pahu hana",
+        "description": "Lepili i hōʻike ʻia ma ka pahu hana."
+      },
+      {
+        "property": "nocolourize",
+        "title": "ʻAʻohe Hoʻoluʻu",
+        "description": "E pale i ka hoʻopili ʻia ʻana o nā waihoʻoluʻu i ka hōʻailona."
+      }
+    ]
+  }
+}

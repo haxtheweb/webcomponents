@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Kupachika LinkedIn",
+    "description": "Pachika kadi ya wasifu wa LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Jina maalum",
+        "description": "Sehemu ya jina maalum la mtumiaji la LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lugha na eneo",
+        "description": "Thamani ya metadata ya lugha na eneo kama en_US."
+      }
+    ]
+  }
+}

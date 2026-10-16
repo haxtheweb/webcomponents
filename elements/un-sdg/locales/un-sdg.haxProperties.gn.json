@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Tetã Joaju Jehupytyrã Okakuaa Hekopýva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Jehupytyrã",
+        "description": "UN SDG papapy."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Sa'y añoite",
+        "description": "Ehechauka jehupytyrã sa'y añoite."
+      }
+    ]
+  }
+}

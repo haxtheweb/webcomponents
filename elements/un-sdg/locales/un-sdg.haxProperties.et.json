@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "ÜRO säästva arengu eesmärk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Eesmärk",
+        "description": "UN SDG number."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Ainult värv",
+        "description": "Kuva ainult eesmärgi värv."
+      }
+    ]
+  }
+}

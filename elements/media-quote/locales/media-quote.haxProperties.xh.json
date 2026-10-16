@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Isicatshulwa semidiya",
+    "description": "Umfanekiso onesicatshulwa, umthombo kunye nombhalo ochazayo okhethwayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Isicatshulwa",
+        "description": "Umbhalo wesicatshulwa."
+      },
+      {
+        "slot": "author",
+        "title": "Umbhali",
+        "description": "Umbhali wesicatshulwa."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Iinkcukacha zombhali",
+        "description": "Iinkcukacha zombhali."
+      },
+      {
+        "slot": "caption",
+        "title": "Umbhalo ochazayo",
+        "description": "Umbhalo ochaza umfanekiso."
+      },
+      {
+        "property": "src",
+        "title": "Umthombo woMfanekiso",
+        "description": "Ifayile yomfanekiso esetyenziselwa isicatshulwa semidiya."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo Ongenayo",
+        "description": "Umbhalo ongenayo womfanekiso."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Umbala Ogqamisayo",
+        "description": "Umbala ogqamisayo wekhadi."
+      }
+    ]
+  }
+}

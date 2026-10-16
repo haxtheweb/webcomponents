@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "የGitHub አስተዋጽዖ አድራጊዎች ዝርዝር",
+    "description": "GitHub APIን በመጠቀም እንደ RPG ገጸ-ባህሪያት ይታያል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ድርጅት",
+        "description": "ከgithub.com/ORG/REPO የድርጅት ስም።"
+      },
+      {
+        "property": "repo",
+        "title": "ማከማቻ",
+        "description": "ከgithub.com/ORG/REPO የማከማቻ ስም።"
+      },
+      {
+        "property": "limit",
+        "title": "ገደብ",
+        "description": "የሚታዩትን አስተዋጽዖ አድራጊዎች ብዛት ገድብ።"
+      }
+    ]
+  }
+}

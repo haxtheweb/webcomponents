@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Gambar Sederhana",
+    "description": "Manipulasi gambar dengan parameter sederhana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Sumber",
+        "description": "URL sumber gambar."
+      },
+      {
+        "property": "height",
+        "title": "Tinggi",
+        "description": "Tinggi gambar opsional."
+      },
+      {
+        "property": "width",
+        "title": "Lebar",
+        "description": "Lebar gambar opsional."
+      },
+      {
+        "property": "alt",
+        "title": "Teks alt",
+        "description": "Berguna untuk pembaca layar dan SEO yang lebih baik."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kualitas",
+        "description": "Kualitas gambar saat dibuat (hanya JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Prioritas Pengambilan",
+        "description": "Petunjuk performa untuk browser modern.",
+        "options": {
+          "auto": "Otomatis",
+          "high": "Tinggi",
+          "low": "Rendah"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Metode dekode",
+        "description": "Petunjuk performa untuk perenderan gambar di browser modern.",
+        "options": {
+          "auto": "Otomatis",
+          "async": "Asinkron"
+        }
+      }
+    ]
+  }
+}

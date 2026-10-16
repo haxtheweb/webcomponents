@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV-taulukko",
+    "description": "Luo taulukon CSV-tiedostosta riippumatta sen sijainnista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Lähde",
+        "description": "Tämän CSV-tiedoston URL."
+      },
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Luotavan taulukon otsikko."
+      },
+      {
+        "property": "description",
+        "title": "Kuvaus",
+        "description": "Tarkempi kuvaus taulukon tietojen saavutettavuuden parantamiseksi."
+      }
+    ]
+  }
+}

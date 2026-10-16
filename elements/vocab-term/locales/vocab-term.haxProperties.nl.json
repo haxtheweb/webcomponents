@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Woordenschat",
+    "description": "Woordenschatterm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Term"
+      },
+      {
+        "property": "information",
+        "title": "Definitie",
+        "description": "Definitie die wordt getoond als op de term wordt geklikt."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Pop-over",
+        "description": "Toon de definitie in een pop-over in plaats van inline."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Links",
+        "description": "Lijst met aanvullende links bij deze term."
+      }
+    ]
+  }
+}

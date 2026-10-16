@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Fi àwọn àwùjọ Discord sínú ojú-ìwé láti URL pínpín."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ohun-èlò",
+        "description": "URL ohun-èlò."
+      },
+      {
+        "property": "height",
+        "title": "Gíga",
+        "description": "Gíga férémù àkóónú."
+      },
+      {
+        "property": "width",
+        "title": "Ìbú",
+        "description": "Ìbú férémù àkóónú."
+      }
+    ]
+  }
+}

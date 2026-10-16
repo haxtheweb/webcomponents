@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn ఎంబెడ్",
+    "description": "LinkedIn ప్రొఫైల్ కార్డ్‌ను పొందుపరచండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "వ్యానిటీ పేరు",
+        "description": "LinkedIn వ్యానిటీ వినియోగదారు పేరు భాగం."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "లొకేల్",
+        "description": "en_US వంటి లొకేల్ మెటాడేటా విలువ."
+      }
+    ]
+  }
+}

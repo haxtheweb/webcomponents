@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "ટૅગ / પિલ",
+    "description": "વૈકલ્પિક ઍક્સેન્ટ રંગ, રદ બટન અથવા ટૉગલ સાથેનું નાનું ગોળી-આકારનું લેબલ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "લેબલ",
+        "description": "પિલની અંદર બતાવાતું લખાણ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "પિલની પૃષ્ઠભૂમિ માટે SimpleColors ઍક્સેન્ટ નામ.",
+        "options": {
+          "": "-- ડિફૉલ્ટ --",
+          "red": "લાલ",
+          "pink": "ગુલાબી",
+          "purple": "જાંબલી",
+          "deep-purple": "ઘેરો જાંબલી",
+          "indigo": "ઈન્ડિગો",
+          "blue": "વાદળી",
+          "light-blue": "આછો વાદળી",
+          "cyan": "આસમાની",
+          "teal": "મોરપીંછ",
+          "green": "લીલો",
+          "light-green": "આછો લીલો",
+          "lime": "લીંબુ લીલો",
+          "yellow": "પીળો",
+          "amber": "એમ્બર",
+          "orange": "નારંગી",
+          "deep-orange": "ઘેરો નારંગી",
+          "brown": "ભૂરો",
+          "blue-grey": "વાદળી રાખોડી",
+          "grey": "રાખોડી"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "સ્વચાલિત ઍક્સેન્ટ રંગ",
+        "description": "લેબલ લખાણમાંથી ઍક્સેન્ટ રંગ આપમેળે નક્કી કરો."
+      },
+      {
+        "property": "cancelButton",
+        "title": "રદ બટન",
+        "description": "પિલની અંદર દૂર કરો/રદ કરો આઇકન બટન બતાવો."
+      },
+      {
+        "property": "readonly",
+        "title": "ફક્ત વાંચવા માટે",
+        "description": "રદ બટન છુપાવો જેથી પિલ ફક્ત પ્રદર્શન માટે રહે."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "ટૉગલ થાય છે",
+        "description": "બટન પર ક્લિક કરવામાં આવે ત્યારે પિલને ચાલુ/બંધ ટૉગલ કરો."
+      },
+      {
+        "property": "toggled",
+        "title": "ટૉગલ થયેલું",
+        "description": "પિલ હાલમાં ચાલુ છે કે નહીં."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "ટૉગલ આઇકન",
+        "description": "પિલ ચાલુ હોય ત્યારે બતાવવાનું આઇકન."
+      },
+      {
+        "property": "disabled",
+        "title": "નિષ્ક્રિય",
+        "description": "પિલ સાથેની ક્રિયાપ્રતિક્રિયા નિષ્ક્રિય કરો."
+      }
+    ]
+  }
+}

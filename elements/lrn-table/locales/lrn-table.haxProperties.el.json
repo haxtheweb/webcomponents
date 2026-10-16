@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Πίνακας CSV",
+    "description": "Δημιουργεί πίνακα από αρχείο CSV, όπου κι αν βρίσκεται."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Πηγή",
+        "description": "URL για αυτό το αρχείο CSV."
+      },
+      {
+        "property": "title",
+        "title": "Τίτλος",
+        "description": "Τίτλος για τον πίνακα που θα δημιουργηθεί."
+      },
+      {
+        "property": "description",
+        "title": "Περιγραφή",
+        "description": "Πιο αναλυτική περιγραφή για καλύτερη προσβασιμότητα των δεδομένων του πίνακα."
+      }
+    ]
+  }
+}

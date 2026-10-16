@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Noter",
+    "description": "Återger och spelar upp noter, gitarrtabulatur och partitur via alphaTex eller MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex-notation",
+        "description": "Infogad alphaTex-kod för noterna. Redigera direkt för att skriva notation; den lagras i en mall så att mellanrum bevaras."
+      },
+      {
+        "property": "source",
+        "title": "Partiturfil",
+        "description": "Ladda upp eller länka till en MusicXML-fil (.xml/.musicxml/.mxl) eller Guitar Pro-fil (.gp3/.gp4/.gp5/.gpx/.gp). Åsidosätter infogad alphaTex när den anges."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Ljuduppspelning",
+        "description": "På som standard – lyssna på noterna uppspelade via den inbyggda synten. Stäng av för endast visning (utan ljud)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Visa visningsalternativ",
+        "description": "Visa knappar för zoom, utsträckning och layout i spelarfältet."
+      },
+      {
+        "property": "showExport",
+        "title": "Visa exportknappar",
+        "description": "Visa knappar för MIDI-nedladdning och utskrift/PDF i spelarfältet."
+      }
+    ]
+  }
+}

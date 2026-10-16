@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Saanduqa NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Gulaalaa dhoksi",
+        "description": "Fuula gulaalcha faayilii dhoksi."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Terminal dhoksi",
+        "description": "Sagantaalee ofumaan hojjetaniif terminal dhoksi."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Foddaa dhoksi",
+        "description": "Itti fayyadama terminal qofaatiif foddaa bu'aa dhoksi."
+      },
+      {
+        "slot": "",
+        "title": "Ajajoota",
+        "description": "Ajajoota (sarara tokkotti tokko) fe'iinsa dura hojjetan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "پوسٹ کارڈ",
+    "description": "ایک دلچسپ میڈیا ٹکڑا جو کہیں سے آئے حقیقی پوسٹ کارڈ جیسا دکھائی دیتا ہے"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "بنام",
+        "description": "یہ کس کو جا رہا ہے؟"
+      },
+      {
+        "property": "from",
+        "title": "منجانب",
+        "description": "آپ کون ہیں؟"
+      },
+      {
+        "property": "message",
+        "title": "پیغام",
+        "description": "آپ کیا کہنا چاہتے ہیں؟"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "ڈاک مہر کا مقام",
+        "description": "یہ کارڈ کہاں سے بھیجا گیا؟"
+      },
+      {
+        "property": "photoSrc",
+        "title": "مرکزی تصویر کا ماخذ",
+        "description": "آپ کی تصویر کہاں موجود ہے؟"
+      },
+      {
+        "property": "stampSrc",
+        "title": "ٹکٹ کی تصویر کا ماخذ",
+        "description": "آپ کی تصویر کہاں موجود ہے؟"
+      }
+    ]
+  }
+}

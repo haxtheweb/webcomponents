@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Einføld mynd",
+    "description": "Viðger myndir við einføldum stigum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Kelda",
+        "description": "Kelda-URL til myndina."
+      },
+      {
+        "property": "height",
+        "title": "Hædd",
+        "description": "Valfrí hædd á myndini."
+      },
+      {
+        "property": "width",
+        "title": "Breidd",
+        "description": "Valfrí breidd á myndini."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativur tekstur",
+        "description": "Gagnligt fyri skíggjalesarar og betri SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Góðska",
+        "description": "Myndagóðska, tá hon verður gjørd (bert JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Heintingarforgongd",
+        "description": "Avrikstilmæli til nútímans kagar.",
+        "options": {
+          "auto": "Sjálvvirkið",
+          "high": "Høg",
+          "low": "Lág"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Avkotingarháttur",
+        "description": "Avrikstilmæli til myndavísing í nútímans kagum.",
+        "options": {
+          "auto": "Sjálvvirkið",
+          "async": "Ósamtíðar"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub مددگارن جي لسٽ",
+    "description": "GitHub API استعمال ڪندي RPG ڪردارن طور ڏيکاريل."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ادارو",
+        "description": "github.com/ORG/REPO مان اداري جو نالو."
+      },
+      {
+        "property": "repo",
+        "title": "ريپوزٽري",
+        "description": "github.com/ORG/REPO مان ريپوزٽري جو نالو."
+      },
+      {
+        "property": "limit",
+        "title": "حد",
+        "description": "ڏيکاريل مددگارن جو تعداد محدود ڪريو."
+      }
+    ]
+  }
+}

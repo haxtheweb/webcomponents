@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub bendraautorių sąrašas",
+    "description": "Rodomi kaip RPG personažai naudojant GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizacija",
+        "description": "Organizacijos pavadinimas iš github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Saugykla",
+        "description": "Saugyklos pavadinimas iš github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Riba",
+        "description": "Riboti rodomų bendraautorių skaičių."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tabab",
+    "description": "Koox tabab ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Calaamad (helitaanka)",
+        "description": "Calaamad la heli karo oo kooxda tababka."
+      },
+      {
+        "property": "disabled",
+        "title": "La damiyay",
+        "description": "Dami dhammaan tababka."
+      },
+      {
+        "property": "hidden",
+        "title": "La qariyay",
+        "description": "Qari kooxda tababka."
+      },
+      {
+        "property": "sticky",
+        "title": "Dhegdheg",
+        "description": "Ku hay tababka jiifa xagga sare marka la rogrogayo."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Barta Kala-goynta Qaabka",
+        "description": "Barta kala-goynta tababka jiifa; isticmaal -1 si ay u noqdaan kuwo taagan oo keliya."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Barta Kala-goynta Astaanta",
+        "description": "Barta kala-goynta muujinta qoraalka iyo astaamaha. Caadi ahaan waa 0; isticmaal -1 si ay u noqdaan astaamo keliya."
+      },
+      {
+        "slot": "",
+        "title": "Tabab",
+        "description": "Taxane walxo <a11y-tab/> ah."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Gaar ah",
+        "description": "ID gaar ah oo kooxdan tababka ah."
+      }
+    ]
+  }
+}

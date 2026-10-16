@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Eventa insigno",
+    "description": "Komponanto de eventa insigno."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV-bildo",
+        "description": "Bildo montrata sur la televidilo."
+      },
+      {
+        "property": "logo",
+        "title": "Emblemo",
+        "description": "Emblemo montrata en la angulo de la insigno."
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo montrata supre de la insigno."
+      },
+      {
+        "property": "name",
+        "title": "Nomo",
+        "description": "Nomo montrata sur la insigno."
+      },
+      {
+        "property": "position",
+        "title": "Posteno",
+        "description": "Rolo aŭ titolo de la persono."
+      },
+      {
+        "property": "organization",
+        "title": "Organizaĵo",
+        "description": "Organizaĵo, por kiu la persono laboras."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV-koloro",
+        "description": "Elektu la koloron de la televidilo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Ĉefa fona aŭ teksta koloro."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Koloro de turniloj",
+        "description": "Koloro de la turniloj de la televidilo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepio",
+        "description": "Apliki sepian efekton."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Nigra-blanka",
+        "description": "Apliki nigra-blankan efekton."
+      }
+    ]
+  }
+}

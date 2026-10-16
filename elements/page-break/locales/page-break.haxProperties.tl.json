@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Mga detalye ng pahina",
+    "description": "Magtakda ng biswal na paghahati sa pagitan ng mga pahina na magagamit ng mga CMS para gumawa ng mga pahina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Pamagat na ipinapakita sa tema at sa unang heading."
+      },
+      {
+        "property": "pageType",
+        "title": "Uri",
+        "description": "Biswal na label ng konteksto ng pahina.",
+        "options": {
+          "": "-- wala --",
+          "content": "Nilalaman",
+          "assessment": "Pagtatasa",
+          "quiz": "Quiz",
+          "submission": "Pagpapasa",
+          "lesson": "Aralin",
+          "module": "Module",
+          "task": "Gawain",
+          "activity": "Aktibidad",
+          "project": "Proyekto",
+          "practice": "Pagsasanay",
+          "unit": "Yunit",
+          "objectives": "Mga Layunin sa Pagkatuto",
+          "connection": "Koneksyon",
+          "knowledge": "Alam Mo Ba?",
+          "strategy": "Estratehiya sa Pagkatuto",
+          "discuss": "Talakayin",
+          "listen": "Makinig",
+          "make": "Gumawa",
+          "observe": "Magmasid",
+          "present": "Maglahad",
+          "reading": "Pagbasa",
+          "reflect": "Magnilay",
+          "research": "Magsaliksik",
+          "watch": "Manood",
+          "write": "Sumulat"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Mga Tag",
+        "description": "Listahan ng mga tag na pinaghihiwalay ng kuwit."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL ng Link",
+        "description": "Redirect URL na ipinapakita sa halip na nilalaman ng pahina."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Target ng Link",
+        "description": "Buksan ang mga link sa parehong window o sa bagong window.",
+        "options": {
+          "_self": "Parehong window",
+          "_blank": "Bagong window"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Nai-publish",
+        "description": "Nakatago sa mga end user ang mga hindi nai-publish na pahina."
+      },
+      {
+        "property": "locked",
+        "title": "I-lock ang pahina",
+        "description": "I-lock o i-unlock ang lahat ng elemento sa pahinang ito."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "I-override ang awtomatikong slug",
+        "description": "I-lock ang slug laban sa awtomatikong pag-update batay sa pamagat o parent."
+      },
+      {
+        "property": "slug",
+        "title": "Path",
+        "description": "URL slug para sa pahinang ito."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Media na kumakatawan sa pahina, ginagamit sa ilang tema at view."
+      },
+      {
+        "property": "parent",
+        "title": "Parent",
+        "description": "Path ng parent na pahina."
+      },
+      {
+        "property": "noderefs",
+        "title": "Kaugnay na nilalaman",
+        "description": "Mga pahinang kaugnay ng pahinang ito."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Paglalarawan",
+        "description": "Paglalarawang ginagamit sa mga koleksyon at sa search engine optimization."
+      },
+      {
+        "property": "entityType",
+        "title": "Uri ng Entity",
+        "description": "Pahina ang default maliban kung itinakda nang iba.",
+        "options": {
+          "page": "Pahina (default)",
+          "taxonomy": "Taxonomy",
+          "taxonomyTerm": "Termino ng Taxonomy",
+          "region": "Rehiyon"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Icon na nauugnay sa pahinang ito sa site."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na kulay",
+        "description": "Kulay na nauugnay sa pahinang ito sa site."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Itago sa menu",
+        "description": "Itago ang pahinang ito sa mga menu habang pinapanatili ang URL nito."
+      },
+      {
+        "property": "order",
+        "title": "Pagkakasunod",
+        "description": "Pagkakasunod kaugnay ng mga kapatid na pahina."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Tema ng pahina",
+        "description": "I-override ang tema para sa pahinang ito lamang."
+      },
+      {
+        "property": "author",
+        "title": "May-akda",
+        "description": "Username ng huling taong nagbago sa pahinang ito."
+      }
+    ]
+  }
+}

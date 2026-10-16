@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "အစီအစဉ်စီ မေးခွန်း",
+    "description": "အရာများကို မှန်ကန်သော အစီအစဉ်အတိုင်း စီပါ။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "မေးခွန်း",
+        "description": "မေးခွန်း ခေါင်းစီး။"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "အမှတ်ပေး ပုံစံ",
+        "description": "OER Schema: ဤအကဲဖြတ်မှုအတွက် အမှတ်ပေး ပုံစံ (ဥပမာ အမှတ်၊ အက္ခရာ၊ ရာခိုင်နှုန်း၊ ပြီးမြောက်မှု)။"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "သင်ယူမှု ရည်မှန်းချက်",
+        "description": "OER Schema: ဤအကဲဖြတ်မှုနှင့် ဆက်စပ်သော သင်ယူမှု ရည်မှန်းချက်။"
+      },
+      {
+        "property": "forCourse",
+        "title": "သင်တန်း",
+        "description": "OER Schema: ဤအကဲဖြတ်မှု ရည်ရွယ်ထားသော သင်တန်း။"
+      },
+      {
+        "property": "answers",
+        "title": "အဖြေများ",
+        "description": "အဖြေများ၏ အစီအစဉ်က မှန်ကန်သော အစဉ်ကို သတ်မှတ်သည်။"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "စာမေးပွဲငယ် အမည်",
+        "description": "Analytics စနစ်များတွင် xAPI ခွဲခြားသိရှိရန် အသုံးပြုသော စာမေးပွဲငယ် အမည်။"
+      }
+    ]
+  }
+}

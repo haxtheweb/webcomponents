@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS কন্টেইনার"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "এডিটর লুকান",
+        "description": "ফাইল সম্পাদনার ইন্টারফেস লুকান।"
+      },
+      {
+        "property": "hideTerminal",
+        "title": "টার্মিনাল লুকান",
+        "description": "স্বয়ংক্রিয়ভাবে চলা প্রোগ্রামের জন্য টার্মিনাল লুকান।"
+      },
+      {
+        "property": "hideWindow",
+        "title": "উইন্ডো লুকান",
+        "description": "শুধু টার্মিনাল ব্যবহারের জন্য আউটপুট উইন্ডো লুকান।"
+      },
+      {
+        "slot": "",
+        "title": "কমান্ড",
+        "description": "লোড করার আগে চালানোর কমান্ড (প্রতি লাইনে একটি)।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Кірістірілген аудио",
+    "description": "Бет мазмұнын толықтыру үшін аудионы мәтін ішінде ойнату."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Дереккөз",
+        "description": "MP3 файлы немесе URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Картаның екпін түсі."
+      },
+      {
+        "property": "shiny",
+        "title": "Жылтыр",
+        "description": "Сұр түстің орнына ашығырақ екпін фонын қолдану."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Қараңғы",
+        "description": "Қараңғы режимді қолдану."
+      }
+    ]
+  }
+}

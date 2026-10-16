@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF-Browser-Viewer",
+    "description": "E PDF-Fichier direkt abannen, mat optionalem Kaartlayout an Download-Knäppchen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF-URL",
+        "description": "Plaz vum PDF-Fichier."
+      },
+      {
+        "property": "heading",
+        "title": "Iwwerschrëft",
+        "description": "Iwwerschrëft vun der Kaart."
+      },
+      {
+        "property": "card",
+        "title": "Kaartlayout",
+        "description": "De PDF an enger Kaart mat Download-Knäppchen uweisen."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Download-Etikett",
+        "description": "Etikett fir den Download-Knäppchen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Message fir net ënnerstëtzt",
+        "description": "Message, wann de Browser keng PDF-Fichieren uweise kann."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Link-Message fir net ënnerstëtzt",
+        "description": "Linktext, wann de Browser keng PDF-Fichieren uweise kann."
+      },
+      {
+        "property": "width",
+        "title": "Breet",
+        "description": "Breet vum PDF-Viewer."
+      },
+      {
+        "property": "height",
+        "title": "Héicht",
+        "description": "Héicht vum PDF-Viewer."
+      }
+    ]
+  }
+}

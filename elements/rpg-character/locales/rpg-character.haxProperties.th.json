@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ตัวละคร RPG",
+    "description": "ตัวละครแสนสนุกจาก HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "ชื่อ",
+        "description": "คำที่ใช้สร้างตัวละครแบบสุ่ม"
+      },
+      {
+        "property": "hat",
+        "title": "หมวก",
+        "description": "สไตล์หมวก",
+        "options": {
+          "none": "ค่าเริ่มต้น",
+          "random": "สุ่ม",
+          "bunny": "กระต่าย",
+          "cowboy": "คาวบอย",
+          "education": "การศึกษา",
+          "construction": "ก่อสร้าง",
+          "warning": "คำเตือน",
+          "watermelon": "แตงโม",
+          "coffee": "กาแฟ",
+          "knight": "อัศวิน",
+          "ninja": "นินจา",
+          "party": "ปาร์ตี้",
+          "error": "ข้อผิดพลาด",
+          "edit": "แก้ไข"
+        }
+      },
+      {
+        "property": "width",
+        "title": "ความกว้าง",
+        "description": "ความกว้างของตัวละครเป็นพิกเซล"
+      },
+      {
+        "property": "height",
+        "title": "ความสูง",
+        "description": "ความสูงของตัวละครเป็นพิกเซล"
+      },
+      {
+        "property": "fire",
+        "title": "ไฟลุก?",
+        "description": "ตัวละครกำลังไฟลุกอยู่หรือไม่"
+      },
+      {
+        "property": "walking",
+        "title": "กำลังเดิน?",
+        "description": "แอนิเมชันการเดิน จะวิ่งเมื่อไฟลุก"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Žiniatinklio komponentų dokumentacijos grotuvas"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Slėpti langą",
+        "description": "Slėpti išvesties langą; naudinga, kai reikia tik terminalo"
+      }
+    ]
+  }
+}

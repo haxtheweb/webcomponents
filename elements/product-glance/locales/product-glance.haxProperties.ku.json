@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Berçavkirina berhemê",
+    "description": "Bloka kurte-nêrîna berhemê ya bilez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Îkon",
+        "description": "Îkona ku têgehê temsîl dike."
+      },
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Têgeha sereke bi kurtî."
+      },
+      {
+        "property": "subtitle",
+        "title": "Binsernav",
+        "description": "Hûrguliya zêde."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê balkêş",
+        "description": "Rengê balkêş ê îkonê."
+      }
+    ]
+  }
+}

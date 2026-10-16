@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Чара значогы",
+    "description": "Чара значогы компоненты."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV рәсеме",
+        "description": "Телевизорда күрсәтелә торган рәсем."
+      },
+      {
+        "property": "logo",
+        "title": "Логотип",
+        "description": "Значок почмагында күрсәтелә торган логотип."
+      },
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Значок өстендә күрсәтелә торган исем."
+      },
+      {
+        "property": "name",
+        "title": "Исем",
+        "description": "Значокта күрсәтелә торган исем."
+      },
+      {
+        "property": "position",
+        "title": "Вазыйфа",
+        "description": "Кешенең роле яки вазыйфасы."
+      },
+      {
+        "property": "organization",
+        "title": "Оешма",
+        "description": "Кеше эшли торган оешма."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV төсе",
+        "description": "Телевизор төсен сайлагыз."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Төп фон яки текст төсе."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Тотка төсе",
+        "description": "Телевизор тоткаларының төсе."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Сепия",
+        "description": "Сепия эффектын кулланырга."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Ак-кара",
+        "description": "Ак-кара эффектны кулланырга."
+      }
+    ]
+  }
+}

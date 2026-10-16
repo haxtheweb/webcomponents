@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Fecha",
+    "description": "Muestra una fecha del calendario con detalles."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mes",
+        "description": "Mes que se muestra en la tarjeta."
+      },
+      {
+        "property": "date",
+        "title": "Día del mes",
+        "description": "Día numérico del mes."
+      },
+      {
+        "property": "day",
+        "title": "Día de la semana",
+        "description": "Día de la semana en texto."
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Nombre del evento."
+      },
+      {
+        "property": "location",
+        "title": "Ubicación",
+        "description": "Ubicación del evento."
+      },
+      {
+        "property": "startTime",
+        "title": "Inicio",
+        "description": "Hora de inicio."
+      },
+      {
+        "property": "endTime",
+        "title": "Fin",
+        "description": "Hora de finalización."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Un color de acento opcional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema oscuro",
+        "description": "Activar el tema oscuro."
+      }
+    ]
+  }
+}

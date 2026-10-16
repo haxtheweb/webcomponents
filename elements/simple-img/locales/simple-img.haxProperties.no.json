@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Enkelt bilde",
+    "description": "Bearbeid bilder med enkle parametere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Kilde",
+        "description": "Kilde-URL for bildet."
+      },
+      {
+        "property": "height",
+        "title": "Høyde",
+        "description": "Valgfri bildehøyde."
+      },
+      {
+        "property": "width",
+        "title": "Bredde",
+        "description": "Valgfri bildebredde."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ tekst",
+        "description": "Nyttig for skjermlesere og bedre SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kvalitet",
+        "description": "Bildekvalitet ved generering (bare JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Hentingsprioritet",
+        "description": "Ytelseshint for moderne nettlesere.",
+        "options": {
+          "auto": "Automatisk",
+          "high": "Høy",
+          "low": "Lav"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dekodingsmetode",
+        "description": "Ytelseshint for bildegjengivelse i moderne nettlesere.",
+        "options": {
+          "auto": "Automatisk",
+          "async": "Asynkron"
+        }
+      }
+    ]
+  }
+}

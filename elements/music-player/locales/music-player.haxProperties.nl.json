@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI-visualisatie",
+    "description": "Speel MIDI af in context met visualisatie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Bron",
+        "description": "URL van het af te spelen bestand."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualisatie",
+        "description": "Visualisatiestijl voor het muziekbestand.",
+        "options": {
+          "staff": "Notenbalk",
+          "piano-roll": "Pianorol",
+          "waterfall": "Piano + waterval"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Waterval verbergen",
+        "description": "Verberg vallende noten in de pianovisualisatie."
+      }
+    ]
+  }
+}

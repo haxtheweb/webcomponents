@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bildsektioun",
+    "description": "Bild iwwer déi ganz Breet, dat eng Säitesektioun ënnerbrécht."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Hannergrondbild."
+      },
+      {
+        "property": "caption",
+        "description": "Textiwwerschrëft."
+      }
+    ]
+  }
+}

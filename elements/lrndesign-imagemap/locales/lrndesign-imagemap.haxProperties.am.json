@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "የምስል ካርታ",
+    "description": "በይነተገናኝ ትኩስ ቦታዎች ያሉት ተደራሽ የምስል ካርታ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "መለያ",
+        "description": "ለምስል ካርታው መለያ።"
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "የትኩስ ቦታ ዝርዝሮች",
+        "description": "በምስል ካርታው ላይ ያሉት በይነተገናኝ ትኩስ ቦታዎች።"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "तस्बिर नक्सा",
+    "description": "अन्तरक्रियात्मक हटस्पटसहितको पहुँचयोग्य तस्बिर नक्सा।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "लेबल",
+        "description": "तस्बिर नक्साको लेबल।"
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "हटस्पट विवरण",
+        "description": "तस्बिर नक्सामा भएका अन्तरक्रियात्मक हटस्पटहरू।"
+      }
+    ]
+  }
+}

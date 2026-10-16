@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "ನಿಲುಗಡೆ ಟಿಪ್ಪಣಿ",
+    "description": "ನಿರ್ದಿಷ್ಟ ಸೂಚನೆಗಳ ಬಗ್ಗೆ ಓದುಗರನ್ನು ಎಚ್ಚರಿಸುವ ಸಂದೇಶ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ನಿಲುಗಡೆ ಟಿಪ್ಪಣಿಗೆ ಶೀರ್ಷಿಕೆ ನಮೂದಿಸಿ."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "ಬಾಹ್ಯ URL ನಮೂದಿಸಿ."
+      },
+      {
+        "property": "status",
+        "title": "ಸ್ಥಿತಿ",
+        "description": "ಸ್ಥಿತಿಯನ್ನು ಹೊಂದಿಸಿದರೆ ಬಣ್ಣಗಳು ಮತ್ತು ಐಕಾನ್‌ಗಳು ಅದಕ್ಕೆ ತಕ್ಕಂತೆ ಬದಲಾಗುತ್ತವೆ",
+        "options": {
+          "stop": "ನಿಲ್ಲಿಸಿ",
+          "warning": "ಎಚ್ಚರಿಕೆ",
+          "success": "ದೃಢೀಕರಣ",
+          "info": "ಸೂಚನೆ"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "ಟಿಪ್ಪಣಿ ಪಠ್ಯ",
+        "description": "ನಿಲುಗಡೆ ಟಿಪ್ಪಣಿಯ ಪಠ್ಯ."
+      }
+    ]
+  }
+}

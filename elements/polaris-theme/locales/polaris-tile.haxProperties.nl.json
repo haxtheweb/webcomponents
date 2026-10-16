@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris-tegel",
+    "description": "Toon een Polaris-tegel met titel, optionele ondersteunende tekst en optionele link."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Primaire tekst",
+        "description": "Hoofdtekst van de tegel."
+      },
+      {
+        "property": "line2",
+        "title": "Secundaire tekst",
+        "description": "Optionele ondersteunende tekst."
+      },
+      {
+        "property": "type",
+        "title": "Tegelstijl",
+        "description": "Vooraf ingestelde visuele stijl van de tegel.",
+        "options": {
+          "1": "Stijl 1",
+          "2": "Stijl 2",
+          "3": "Stijl 3",
+          "4": "Stijl 4",
+          "5": "Stijl 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Achtergrondafbeelding",
+        "description": "URL van de achtergrondafbeelding voor tegelstijlen die afbeeldingen ondersteunen."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Optionele doel-URL voor de tegelactie."
+      }
+    ]
+  }
+}

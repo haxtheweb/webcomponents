@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus মন্তব্য",
+    "description": "Disqus মন্তব্য ওয়েব সেবার সাথে ইন্টিগ্রেশন"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "সংক্ষিপ্ত নাম",
+        "description": "Disqus-এ প্রপার্টির সংক্ষিপ্ত নাম"
+      }
+    ]
+  }
+}

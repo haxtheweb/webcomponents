@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Обёртка для встраиваемых проигрывателей Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Источник",
+        "description": "Ссылка для встраивания или публикации из Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Тема",
+        "description": "Цветовая тема фона проигрывателя.",
+        "options": {
+          "": "По умолчанию",
+          "0": "Чёрная"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Размер",
+        "description": "Размер проигрывателя.",
+        "options": {
+          "normal": "По умолчанию",
+          "compact": "Компактный"
+        }
+      }
+    ]
+  }
+}

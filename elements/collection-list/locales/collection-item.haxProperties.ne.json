@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "सङ्ग्रह वस्तु",
+    "description": "सङ्ग्रह सूचीभित्र प्रयोग गर्ने कार्ड-शैलीको वस्तु, पाठ, लिङ्क र वैकल्पिक मिडियासहित।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "लिङ्क",
+        "description": "यस कार्डको गन्तव्य URL।"
+      },
+      {
+        "property": "image",
+        "title": "तस्बिर",
+        "description": "पृष्ठभूमि तस्बिर।"
+      },
+      {
+        "property": "line1",
+        "title": "पङ्क्ति 1",
+        "description": "पाठको पहिलो पङ्क्ति।"
+      },
+      {
+        "property": "line2",
+        "title": "पङ्क्ति 2",
+        "description": "पाठको दोस्रो पङ्क्ति।"
+      },
+      {
+        "property": "line3",
+        "title": "पङ्क्ति 3",
+        "description": "पाठको तेस्रो पङ्क्ति।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "कार्डलाई प्रतिनिधित्व गर्ने आइकन।"
+      },
+      {
+        "property": "saturate",
+        "title": "संतृप्ति प्रभाव",
+        "description": "प्रयोगकर्ताले फोकस गर्दा तस्बिरको संतृप्ति परिवर्तन गर्नुहोस्।"
+      },
+      {
+        "property": "tags",
+        "title": "ट्यागहरू",
+        "description": "अल्पविरामले छुट्याइएको ट्यागहरूको सूची।"
+      },
+      {
+        "property": "accentColor",
+        "title": "रङ",
+        "description": "ट्यागहरूका लागि प्रयोग हुने रङ।"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "लिङ्कको वर्णन गर्ने वैकल्पिक पाठ।"
+      }
+    ]
+  }
+}

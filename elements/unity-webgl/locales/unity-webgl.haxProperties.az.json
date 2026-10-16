@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity pleyeri",
+    "description": "Unity WebGL pleyeri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Hədəf",
+        "description": "Oyun quruluşunun yolu."
+      },
+      {
+        "property": "compression",
+        "title": "Sıxışdırma üsulu",
+        "description": "Oyun resursları üçün sıxışdırma fayl uzantısı."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Yayım URL-i",
+        "description": "Yayım resurslarının URL-i."
+      },
+      {
+        "property": "companyname",
+        "title": "Şirkətin adı",
+        "description": "Şirkətin adı."
+      },
+      {
+        "property": "productname",
+        "title": "Məhsulun adı",
+        "description": "Oyunun adı."
+      },
+      {
+        "property": "productversion",
+        "title": "Məhsulun versiyası",
+        "description": "Buraxılış versiyası."
+      },
+      {
+        "property": "width",
+        "title": "Kətanın eni",
+        "description": "Kətanın CSS eni (məsələn, px və ya em)."
+      },
+      {
+        "property": "height",
+        "title": "Kətanın hündürlüyü",
+        "description": "Kətanın CSS hündürlüyü (məsələn, px və ya em)."
+      },
+      {
+        "property": "background",
+        "title": "Kətanın fonu",
+        "description": "Kətanın CSS fonu."
+      }
+    ]
+  }
+}

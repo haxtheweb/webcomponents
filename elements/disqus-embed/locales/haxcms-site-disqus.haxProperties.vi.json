@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Bình luận Disqus",
+    "description": "Tích hợp với dịch vụ bình luận web Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Tên ngắn",
+        "description": "Tên ngắn của thuộc tính trên Disqus"
+      }
+    ]
+  }
+}

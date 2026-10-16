@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "کوليو بند ڪريو گروپ",
+    "description": "کولڻ ۽ بند ڪرڻ واري عنصرن جو گروپ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "صرف هڪ کوليو",
+        "description": "صرف هڪ شيءِ کولي سگهجي ٿي."
+      },
+      {
+        "slot": "",
+        "title": "بند ٿيندڙ شيون",
+        "description": "بند ٿيندڙ شيون."
+      }
+    ]
+  }
+}

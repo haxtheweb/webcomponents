@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "ಥೀಮ್ ಅನ್ವಯಿಸಿದ Polaris ಕ್ರಿಯೆಗೆ ಕರೆ ಬಟನ್ ಪ್ರದರ್ಶಿಸಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "ಬಟನ್ ಪಠ್ಯ",
+        "description": "ಕ್ರಿಯೆಗೆ ಕರೆ ಬಟನ್‌ನಲ್ಲಿ ತೋರಿಸುವ ಪಠ್ಯ."
+      },
+      {
+        "property": "link",
+        "title": "ಲಿಂಕ್",
+        "description": "ಬಟನ್‌ನ ಗಮ್ಯಸ್ಥಾನ URL."
+      },
+      {
+        "property": "type",
+        "title": "ರೂಪಾಂತರ",
+        "description": "ದೃಶ್ಯ ಶೈಲಿಯ ರೂಪಾಂತರ.",
+        "options": {
+          "primary": "ಪ್ರಾಥಮಿಕ",
+          "tinted": "ಛಾಯೆಯುಕ್ತ",
+          "light": "ತಿಳಿ"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "ಹೊರರೇಖೆ ಶೈಲಿ",
+        "description": "ಹೊರರೇಖೆ ಶೈಲಿಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ."
+      },
+      {
+        "property": "filled",
+        "title": "ತುಂಬಿದ ಶೈಲಿ",
+        "description": "ತುಂಬಿದ ಶೈಲಿಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ."
+      }
+    ]
+  }
+}

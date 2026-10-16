@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ציטוט בלוק",
+    "description": "בלוק ציטוט מעוצב."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "מקור הציטוט",
+        "description": "טקסט מקור הציטוט."
+      },
+      {
+        "property": "alt",
+        "title": "טקסט חלופי",
+        "description": "טקסט חלופי לתמונה."
+      },
+      {
+        "property": "image",
+        "title": "תמונה",
+        "description": "תמונה המוצגת עם הציטוט."
+      }
+    ]
+  }
+}

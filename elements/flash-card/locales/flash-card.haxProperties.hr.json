@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kartica za učenje",
+    "description": "Vježbajte pojmove pomoću kartica s prednjom i stražnjom stranom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Prednja strana kartice",
+        "description": "Tekst ili pitanje na prednjoj strani."
+      },
+      {
+        "slot": "back",
+        "title": "Stražnja strana kartice",
+        "description": "Očekivani odgovor."
+      },
+      {
+        "property": "imgSource",
+        "title": "Izvor slike",
+        "description": "Slikovna datoteka korištena za karticu. Nadjačava ključnu riječ slike."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Vrsta radnje",
+        "description": "OER Schema: vrsta radnje koju ova vježba uključuje (npr. čitanje, pisanje, izrada, istraživanje, slušanje, gledanje, promišljanje, raspravljanje, promatranje, predstavljanje, procjena)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ishod učenja",
+        "description": "OER Schema: ID ili URL ishoda učenja koji ova vježba podržava."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tamno",
+        "description": "Koristi tamni način."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja isticanja",
+        "description": "Boja isticanja kartice."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Ključna riječ slike",
+        "description": "Ključna riječ za nasumičnu sliku. Nadjačava je izvor slike."
+      }
+    ]
+  }
+}

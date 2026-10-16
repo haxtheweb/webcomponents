@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Paghambing ng larawan",
+    "description": "I-swipe ang isang larawan sa ibabaw ng isa pa para paghambingin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Larawan sa itaas",
+        "description": "Larawan sa itaas na isa-swipe sa ibabaw ng larawan sa ibaba."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alt text ng larawan sa itaas",
+        "description": "Kinakailangang alt text para sa accessibility."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Larawan sa ibaba",
+        "description": "Larawan sa ibaba na ipinapakita sa ilalim ng larawan sa itaas."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alt text ng larawan sa ibaba",
+        "description": "Kinakailangang alt text para sa accessibility."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Pag-uugali",
+        "description": "Piliin ang wipe mode (default) o ang opacity mode ng larawan sa itaas."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na Kulay",
+        "description": "Kulay ng slider bar."
+      },
+      {
+        "property": "dark",
+        "title": "Madilim",
+        "description": "Baligtarin ang kulay ng slider bar."
+      },
+      {
+        "property": "position",
+        "title": "Panimulang Posisyon",
+        "description": "Panimulang posisyon mula 0 hanggang 100."
+      }
+    ]
+  }
+}

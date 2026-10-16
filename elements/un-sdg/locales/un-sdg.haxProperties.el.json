@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Στόχος Βιώσιμης Ανάπτυξης των Ηνωμένων Εθνών."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Στόχος",
+        "description": "Αριθμός UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Μόνο χρώμα",
+        "description": "Εμφάνιση μόνο του χρώματος του στόχου."
+      }
+    ]
+  }
+}

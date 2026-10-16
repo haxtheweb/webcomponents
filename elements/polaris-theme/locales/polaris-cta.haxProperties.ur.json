@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "تھیم والا Polaris کال ٹو ایکشن بٹن دکھائیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "بٹن کا متن",
+        "description": "کال ٹو ایکشن بٹن میں دکھایا جانے والا متن۔"
+      },
+      {
+        "property": "link",
+        "title": "لنک",
+        "description": "بٹن کا منزل URL۔"
+      },
+      {
+        "property": "type",
+        "title": "قسم",
+        "description": "بصری انداز کی قسم۔",
+        "options": {
+          "primary": "بنیادی",
+          "tinted": "رنگت دار",
+          "light": "ہلکا"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "خاکہ دار انداز",
+        "description": "خاکہ دار انداز فعال کریں۔"
+      },
+      {
+        "property": "filled",
+        "title": "بھرا ہوا انداز",
+        "description": "بھرا ہوا انداز فعال کریں۔"
+      }
+    ]
+  }
+}

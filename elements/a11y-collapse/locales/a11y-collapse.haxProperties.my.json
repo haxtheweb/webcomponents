@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ခေါက်နိုင်သော ကွန်တိန်နာ",
+    "description": "ချဲ့နိုင်၊ ခေါက်နိုင်သော ကွန်တိန်နာ တစ်ခု။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "ခေါင်းစီး",
+        "description": "ခေါက်နိုင်သော အပိုင်းအတွက် စာသား။"
+      },
+      {
+        "property": "expanded",
+        "title": "ချဲ့ထားသည်",
+        "description": "မူလအနေဖြင့် ချဲ့ထားရန်။"
+      },
+      {
+        "property": "headingButton",
+        "title": "ခေါင်းစီး ခလုတ်",
+        "description": "အိုင်ကွန်သာမက ခေါင်းစီးတစ်ခုလုံးကို နှိပ်နိုင်အောင် ပြုလုပ်ရန်။"
+      },
+      {
+        "property": "icon",
+        "title": "အိုင်ကွန်",
+        "description": "ချဲ့/ခေါက် ခလုတ်အတွက် အိုင်ကွန်။"
+      },
+      {
+        "property": "iconExpanded",
+        "title": "အိုင်ကွန် (ချဲ့ထားချိန်)",
+        "description": "ချဲ့ထားသော အခြေအနေအတွက် ရွေးချယ်နိုင်သော အိုင်ကွန်။"
+      },
+      {
+        "slot": "",
+        "title": "အကြောင်းအရာ",
+        "description": "ခေါက်နိုင်သော အပိုင်းအတွက် အကြောင်းအရာ။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Tooltip",
+        "description": "ချဲ့/ခေါက် ခလုတ်အတွက် tooltip။"
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Tooltip (ချဲ့ထားချိန်)",
+        "description": "ချဲ့ထားချိန်တွင် ချဲ့/ခေါက် ခလုတ်အတွက် tooltip။"
+      }
+    ]
+  }
+}

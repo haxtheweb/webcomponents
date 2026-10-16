@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Tarxeta de historia Polaris",
+    "description": "Mostra unha tarxeta de historia Polaris cunha imaxe de fondo, etiqueta de eixe e texto de titular."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imaxe de fondo",
+        "description": "URL da imaxe que se mostra como fondo da tarxeta."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Tamaño do fondo",
+        "description": "Como enche a imaxe de fondo a tarxeta (CSS background-size).",
+        "options": {
+          "cover": "cubrir (cover)",
+          "contain": "conter (contain)",
+          "auto": "automático (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Fixación do fondo",
+        "description": "Como se comporta a imaxe de fondo ao desprazarse (CSS background-attachment).",
+        "options": {
+          "scroll": "desprazar (scroll)",
+          "fixed": "fixo (fixed)",
+          "local": "local"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Etiqueta de eixe",
+        "description": "Etiqueta curta en maiúsculas que se mostra na parte superior da tarxeta. Déixaa baleira para ocultala."
+      },
+      {
+        "property": "label",
+        "title": "Texto da tarxeta",
+        "description": "Texto principal que se mostra no panel inferior."
+      },
+      {
+        "property": "link",
+        "title": "Ligazón",
+        "description": "URL de destino opcional que envolve toda a tarxeta."
+      }
+    ]
+  }
+}

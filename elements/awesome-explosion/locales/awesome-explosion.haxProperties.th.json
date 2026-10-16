@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "การระเบิดสุดเจ๋ง",
+    "description": "แอนิเมชันการระเบิดแบบโต้ตอบพร้อมเอฟเฟกต์เสียงเสริม"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "ขนาด",
+        "description": "กำหนดขนาดการระเบิด",
+        "options": {
+          "tiny": "เล็กมาก",
+          "small": "เล็ก",
+          "medium": "กลาง",
+          "large": "ใหญ่",
+          "epic": "มหึมา"
+        }
+      },
+      {
+        "property": "color",
+        "title": "สี",
+        "description": "กำหนดธีมสีของการระเบิด",
+        "options": {
+          "": "ค่าเริ่มต้น",
+          "red": "แดง",
+          "blue": "น้ำเงิน",
+          "purple": "ม่วง",
+          "orange": "ส้ม",
+          "yellow": "เหลือง"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "เอฟเฟกต์เสียง",
+        "description": "เปิดใช้งานเอฟเฟกต์เสียง"
+      },
+      {
+        "property": "resetSound",
+        "title": "รีเซ็ตเสียง",
+        "description": "เริ่มเสียงใหม่ตั้งแต่ต้นทุกครั้ง"
+      },
+      {
+        "property": "image",
+        "title": "รูปภาพที่กำหนดเอง",
+        "description": "URL เสริมสำหรับรูปภาพการระเบิดที่กำหนดเอง"
+      },
+      {
+        "property": "sound",
+        "title": "เสียงที่กำหนดเอง",
+        "description": "URL เสริมสำหรับเอฟเฟกต์เสียงที่กำหนดเอง"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "ปิดใช้งาน",
+        "description": "ปิดใช้งานการโต้ตอบทั้งหมด"
+      }
+    ]
+  }
+}

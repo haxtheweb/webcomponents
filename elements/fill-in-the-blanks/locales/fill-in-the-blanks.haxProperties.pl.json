@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Uzupełnij luki",
+    "description": "Ćwiczenie sprawdzające, w którym uczący się uzupełniają brakujące słowa w zdaniu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pytanie",
+        "description": "Pytanie, na które użytkownicy mają odpowiedzieć."
+      },
+      {
+        "property": "statement",
+        "title": "Zdanie",
+        "description": "Zdanie, które zostanie przekształcone w interakcję zaznaczania słów."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format oceniania",
+        "description": "OER Schema: format oceniania tego sprawdzianu (np. punkty, litera, procent, ukończenie)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cel uczenia się",
+        "description": "OER Schema: cel uczenia się powiązany z tym sprawdzianem."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kurs, dla którego przeznaczony jest ten sprawdzian."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nazwa quizu",
+        "description": "Nazwa quizu przekazywana do środowisk opartych na xAPI w celu identyfikacji tego elementu"
+      }
+    ]
+  }
+}

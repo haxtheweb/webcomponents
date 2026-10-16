@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "ആനിമേറ്റഡ് GIF-കൾ പ്രാപ്യമാക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ആനിമേറ്റഡ് GIF",
+        "description": "ആനിമേറ്റഡ് GIF-ന്റെ URL."
+      },
+      {
+        "property": "alt",
+        "title": "ആൾട്ട് ടെക്സ്റ്റ്",
+        "description": "ചിത്രത്തിനുള്ള പകരം വാചകം."
+      },
+      {
+        "property": "longdesc",
+        "title": "ദീർഘ വിവരണം",
+        "description": "പ്രാപ്യതയ്ക്കായി GIF-ന്റെ ദീർഘ വിവരണം."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "നിശ്ചല ചിത്രം",
+        "description": "GIF-ന്റെ നിശ്ചല ചിത്ര പതിപ്പിന്റെ URL."
+      }
+    ]
+  }
+}

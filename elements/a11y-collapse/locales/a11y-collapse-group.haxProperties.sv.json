@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Expandera/fäll ihop-grupp",
+    "description": "En grupp med element som kan expanderas och fällas ihop."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Expandera endast en",
+        "description": "Endast ett objekt kan vara expanderat."
+      },
+      {
+        "slot": "",
+        "title": "Hopfällbara objekt",
+        "description": "De hopfällbara objekten."
+      }
+    ]
+  }
+}

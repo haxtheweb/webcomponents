@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Wiedergabeliste",
+    "description": "Beliebige Inhalte in einer Wiedergabeliste anzeigen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Quelle",
+        "description": "In der Wiedergabeliste angezeigte Inhalte."
+      },
+      {
+        "property": "edit",
+        "title": "Bearbeitungsmodus",
+        "description": "Zwischen Bearbeitungs- und Vorschaumodus der Wiedergabeliste wechseln."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigation",
+        "description": "Schaltflächen zum Vor- und Zurücknavigieren anzeigen."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginierung",
+        "description": "Paginierungspunkte anzeigen."
+      },
+      {
+        "property": "orientation",
+        "title": "Ausrichtung",
+        "description": "Ausrichtung der Folien.",
+        "options": {
+          "horizontal": "Horizontal",
+          "vertical": "Vertikal"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Startfolie",
+        "description": "Index der Folie, die zuerst fokussiert wird."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Seitenverhältnis",
+        "description": "Seitenverhältnis der Folien.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

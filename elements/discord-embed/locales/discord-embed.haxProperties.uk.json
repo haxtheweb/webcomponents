@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Вбудовування спільнот Discord за URL для поширення."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ресурсу",
+        "description": "URL ресурсу."
+      },
+      {
+        "property": "height",
+        "title": "Висота",
+        "description": "Висота фрейму вмісту."
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина фрейму вмісту."
+      }
+    ]
+  }
+}

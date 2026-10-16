@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Nlele ngwaahịa",
+    "description": "Ngọngọ nchịkọta ngwaahịa ngwa ngwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Akara ngosi",
+        "description": "Akara ngosi na-anọchi anya echiche ahụ."
+      },
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Echiche bụ isi n'otu nlele."
+      },
+      {
+        "property": "subtitle",
+        "title": "Aha nke abụọ",
+        "description": "Nkọwa ọzọ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba mkpụrụ",
+        "description": "Agba mkpụrụ maka akara ngosi."
+      }
+    ]
+  }
+}

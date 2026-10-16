@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDIビジュアライザー",
+    "description": "MIDIを視覚化とともに再生します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ソース",
+        "description": "再生するファイルのURL。"
+      },
+      {
+        "property": "visualizer",
+        "title": "視覚化",
+        "description": "音楽ファイルの視覚化スタイル。",
+        "options": {
+          "staff": "五線譜",
+          "piano-roll": "ピアノロール",
+          "waterfall": "ピアノ＋ウォーターフォール"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "ウォーターフォールを非表示",
+        "description": "ピアノの視覚化でウォーターフォールの音符を非表示にします。"
+      }
+    ]
+  }
+}

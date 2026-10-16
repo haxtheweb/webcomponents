@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Choseweretsa cha 3D",
+    "description": "Choseweretsa mafayilo a 3D / zenizeni zowonjezereka (AR)."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Gwero",
+        "description": "URL ya fayilo ya AR iyi."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Malo a X a chinthucho mu AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Malo a Y a chinthucho mu AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Malo a Z a chinthucho mu AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Mtundu wa thambo",
+        "description": "Sankhani mtundu wa thambo pachithunzichi."
+      }
+    ]
+  }
+}

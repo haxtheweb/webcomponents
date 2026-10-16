@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) ugradnja",
+    "description": "Ugradite objavu s X-a u kontekstu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL objave",
+        "description": "URL objave koju treba ugraditi."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Svijetla ili tamna tema za objave na X-u.",
+        "options": {
+          "light": "Svijetla",
+          "dark": "Tamno"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Spriječi skočni prozor pri kliku",
+        "description": "Spriječi korisnike da otvore objavu na x.com."
+      }
+    ]
+  }
+}

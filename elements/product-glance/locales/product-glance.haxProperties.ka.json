@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "პროდუქტი მოკლედ",
+    "description": "პროდუქტის სწრაფი მიმოხილვის ბლოკი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ხატულა",
+        "description": "ცნების ამსახველი ხატულა."
+      },
+      {
+        "property": "title",
+        "title": "სათაური",
+        "description": "მთავარი ცნება მოკლედ."
+      },
+      {
+        "property": "subtitle",
+        "title": "ქვესათაური",
+        "description": "დამატებითი დეტალი."
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "ხატულის აქცენტის ფერი."
+      }
+    ]
+  }
+}

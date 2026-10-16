@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Isidlali se-Unity",
+    "description": "Isidlali se-Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Okuhlosiwe",
+        "description": "Indlela eya ekwakhiweni kwegeyimu."
+      },
+      {
+        "property": "compression",
+        "title": "Indlela yokucindezela",
+        "description": "Isandiso sefayela lokucindezela lezinsiza zegeyimu."
+      },
+      {
+        "property": "streamingurl",
+        "title": "I-URL yokusakaza",
+        "description": "I-URL yezinsiza zokusakaza."
+      },
+      {
+        "property": "companyname",
+        "title": "Igama Lenkampani",
+        "description": "Igama lenkampani."
+      },
+      {
+        "property": "productname",
+        "title": "Igama Lomkhiqizo",
+        "description": "Isihloko segeyimu."
+      },
+      {
+        "property": "productversion",
+        "title": "Inguqulo Yomkhiqizo",
+        "description": "Inguqulo yokukhishwa."
+      },
+      {
+        "property": "width",
+        "title": "Ububanzi Bekhanvasi",
+        "description": "Ububanzi be-CSS bekhanvasi (isibonelo px noma em)."
+      },
+      {
+        "property": "height",
+        "title": "Ubude Bekhanvasi",
+        "description": "Ubude be-CSS bekhanvasi (isibonelo px noma em)."
+      },
+      {
+        "property": "background",
+        "title": "Ingemuva Lekhanvasi",
+        "description": "Ingemuva le-CSS lekhanvasi."
+      }
+    ]
+  }
+}

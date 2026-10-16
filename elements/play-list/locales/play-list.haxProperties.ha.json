@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Jerin kunnawa",
+    "description": "Nuna kowane irin abun ciki a cikin jerin kunnawa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Tushe",
+        "description": "Abun cikin da ake nunawa a jerin kunnawa."
+      },
+      {
+        "property": "edit",
+        "title": "Yanayin gyara",
+        "description": "Sauya tsakanin yanayin gyara da na samfoti na jerin kunnawa."
+      },
+      {
+        "property": "navigation",
+        "title": "Kewayawa",
+        "description": "Nuna maɓallan kewayawa gaba da baya."
+      },
+      {
+        "property": "pagination",
+        "title": "Shafantarwa",
+        "description": "Nuna ɗigogin shafantarwa."
+      },
+      {
+        "property": "orientation",
+        "title": "Fuskantarwa",
+        "description": "Fuskantarwar faifai.",
+        "options": {
+          "horizontal": "A kwance",
+          "vertical": "A tsaye"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Faifan farawa",
+        "description": "Fihirisar faifan da za a mai da hankali a kai da farko."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Rabon Faɗi da Tsawo",
+        "description": "Rabon faɗi da tsawon faifai.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

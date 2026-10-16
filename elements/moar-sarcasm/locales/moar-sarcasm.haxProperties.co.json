@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarcasmu",
+    "description": "Prisentà u testu di manera canzunatoria"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Testu",
+        "description": "Testu da rende sarcasticu"
+      }
+    ]
+  }
+}

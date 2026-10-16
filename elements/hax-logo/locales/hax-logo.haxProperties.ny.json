@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Zilembo zaluso za HAX",
+    "description": "Chizindikiro cha HAX, mwachiwonekere ngati chinthu chogwira ntchito ndi HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Kukula kwa chizindikiro cha HAX choti chiikidwe",
+        "options": {
+          "mini": "Kakang'ono",
+          "small": "Kakang'ono",
+          "normal": "Wamba",
+          "large": "Kakakulu"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Kaya chizindikirocho chisinthidwe kukhala zilembo zazikulu"
+      }
+    ]
+  }
+}

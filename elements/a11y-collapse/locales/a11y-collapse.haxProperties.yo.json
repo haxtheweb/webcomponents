@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Àpótí tí a lè pa",
+    "description": "Àpótí kan tí a lè ṣí àti pa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Àkọlé",
+        "description": "Ọ̀rọ̀ fún àpótí tí a lè pa."
+      },
+      {
+        "property": "expanded",
+        "title": "Ṣíṣí",
+        "description": "Ṣí i gẹ́gẹ́ bí àtilẹ̀wá."
+      },
+      {
+        "property": "headingButton",
+        "title": "Bọ́tìnnì àkọlé",
+        "description": "Jẹ́ kí gbogbo àkọlé ṣeé tẹ̀ dípò àmì nìkan."
+      },
+      {
+        "property": "icon",
+        "title": "Àmì",
+        "description": "Àmì fún bọ́tìnnì ṣí/pa."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Àmì (nígbà tí ó ṣí)",
+        "description": "Àmì àṣàyàn fún ipò ṣíṣí."
+      },
+      {
+        "slot": "",
+        "title": "Àkóónú",
+        "description": "Àkóónú fún àpótí tí a lè pa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Àlàyé kúkúrú",
+        "description": "Àlàyé kúkúrú fún bọ́tìnnì ṣí/pa."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Àlàyé kúkúrú (nígbà tí ó ṣí)",
+        "description": "Àlàyé kúkúrú fún bọ́tìnnì ṣí/pa nígbà tí ó ṣí."
+      }
+    ]
+  }
+}

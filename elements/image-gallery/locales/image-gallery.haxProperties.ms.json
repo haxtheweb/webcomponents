@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galeri Imej",
+    "description": "Galeri yang mempersembahkan imej dalam susun atur grid, masonri atau tayangan slaid."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Mod paparan",
+        "description": "Cara mempersembahkan imej dalam galeri.",
+        "options": {
+          "grid": "Grid",
+          "masonry": "Masonri",
+          "gallery": "Galeri"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Indeks aktif",
+        "description": "Indeks imej aktif untuk dimulakan dalam mod galeri."
+      }
+    ]
+  }
+}

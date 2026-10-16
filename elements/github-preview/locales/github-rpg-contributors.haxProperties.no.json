@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Liste over GitHub-bidragsytere",
+    "description": "Vist som RPG-figurer ved hjelp av GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisasjon",
+        "description": "Organisasjonsnavn fra github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repository",
+        "description": "Repositorynavn fra github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Grense",
+        "description": "Begrens antall bidragsytere som vises."
+      }
+    ]
+  }
+}

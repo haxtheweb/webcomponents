@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tag",
+    "description": "Daftar tag sederhana untuk ditampilkan di halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Daftar tag yang dipisahkan koma."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Warna Aksen Otomatis",
+        "description": "Atur warna aksen secara otomatis berdasarkan label."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna",
+        "description": "Warna untuk tag."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Koma Vekirin û Girtinê",
+    "description": "Komek ji hêmanên vekirin û girtinê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Tenê yekê veke",
+        "description": "Tenê yek hêman dikare were vekirin."
+      },
+      {
+        "slot": "",
+        "title": "Hêmanên Girtinê",
+        "description": "Hêmanên girtinê."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "उत्पाद एक नज़र में",
+    "description": "त्वरित उत्पाद अवलोकन ब्लॉक।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "अवधारणा को दर्शाने वाला आइकन।"
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "एक नज़र में मुख्य अवधारणा।"
+      },
+      {
+        "property": "subtitle",
+        "title": "उपशीर्षक",
+        "description": "अतिरिक्त विवरण।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "आइकन का एक्सेंट रंग।"
+      }
+    ]
+  }
+}

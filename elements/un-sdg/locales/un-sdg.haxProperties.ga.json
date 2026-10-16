@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Sprioc Forbartha Inbhuanaithe na Náisiún Aontaithe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Sprioc",
+        "description": "Uimhir UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Dath amháin",
+        "description": "Taispeáin dath na sprice amháin."
+      }
+    ]
+  }
+}

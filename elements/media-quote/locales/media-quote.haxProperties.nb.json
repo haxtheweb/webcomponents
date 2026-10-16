@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Mediesitat",
+    "description": "Bilde med et sitat, kildehenvisning og valgfri bildetekst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Sitat",
+        "description": "Sitattekst."
+      },
+      {
+        "slot": "author",
+        "title": "Forfatter",
+        "description": "Forfatteren av sitatet."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Detaljer om forfatter",
+        "description": "Detaljer om forfatteren."
+      },
+      {
+        "slot": "caption",
+        "title": "Bildetekst",
+        "description": "Bildetekst."
+      },
+      {
+        "property": "src",
+        "title": "Bildekilde",
+        "description": "Bildefil brukt for mediesitatet."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ tekst",
+        "description": "Alternativ tekst for bildet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Aksentfarge for kortet."
+      }
+    ]
+  }
+}

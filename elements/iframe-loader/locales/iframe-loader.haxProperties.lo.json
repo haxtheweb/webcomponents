@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "ຝັງເນື້ອຫາເວັບພາຍນອກໃນ iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ຊັບພະຍາກອນ",
+        "description": "URL ຊັບພະຍາກອນ."
+      },
+      {
+        "property": "height",
+        "title": "ຄວາມສູງ",
+        "description": "ຄວາມສູງຂອງ iframe."
+      },
+      {
+        "property": "width",
+        "title": "ຄວາມກວ້າງ",
+        "description": "ຄວາມກວ້າງຂອງ iframe."
+      }
+    ]
+  }
+}

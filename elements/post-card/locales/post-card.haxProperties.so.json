@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Kaarka Boostada",
+    "description": "Walax warbaahin xiiso leh oo loogu talagalay inay u ekaato kaar boosto dhab ah oo meel ka yimid"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Loo dirayo",
+        "description": "Yaa loo dirayaa?"
+      },
+      {
+        "property": "from",
+        "title": "Ka yimid",
+        "description": "Yaad tahay?"
+      },
+      {
+        "property": "message",
+        "title": "Fariin",
+        "description": "Maxaad rabtaa inaad tiraahdo?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Shaambada Laga Diray",
+        "description": "Xaggee laga soo diray kaarkan?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Isha Sawirka Ugu Weyn",
+        "description": "Xaggee ku yaal sawirkaagu?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Isha Sawirka Tigidhka",
+        "description": "Xaggee ku yaal sawirkaagu?"
+      }
+    ]
+  }
+}

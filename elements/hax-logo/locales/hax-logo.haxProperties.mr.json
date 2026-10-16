@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX शब्दकला",
+    "description": "hax साठी लोगो घटक, अर्थातच hax-सक्षम घटक म्हणून."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "ठेवायच्या HAX लोगोचा आकार",
+        "options": {
+          "mini": "अतिलहान",
+          "small": "लहान",
+          "normal": "सामान्य",
+          "large": "मोठा"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "लोगो मोठ्या अक्षरांत रूपांतरित करायचा की नाही"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris-Kachel",
+    "description": "Eine Polaris-Kachel mit Titel, optionalem Zusatztext und optionalem Link anzeigen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Haupttext",
+        "description": "Haupttext der Kachel."
+      },
+      {
+        "property": "line2",
+        "title": "Zusatztext",
+        "description": "Optionaler Zusatztext."
+      },
+      {
+        "property": "type",
+        "title": "Kachelstil",
+        "description": "Voreingestellter visueller Stil der Kachel.",
+        "options": {
+          "1": "Stil 1",
+          "2": "Stil 2",
+          "3": "Stil 3",
+          "4": "Stil 4",
+          "5": "Stil 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Hintergrundbild",
+        "description": "URL des Hintergrundbilds für Kachelstile mit Bild."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Optionale Ziel-URL für die Aktion der Kachel."
+      }
+    ]
+  }
+}

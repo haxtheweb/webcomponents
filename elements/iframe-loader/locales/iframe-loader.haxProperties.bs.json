@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Ugradite vanjski web sadržaj u iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL resursa",
+        "description": "URL resursa."
+      },
+      {
+        "property": "height",
+        "title": "Visina",
+        "description": "Visina iframe-a."
+      },
+      {
+        "property": "width",
+        "title": "Širina",
+        "description": "Širina iframe-a."
+      }
+    ]
+  }
+}

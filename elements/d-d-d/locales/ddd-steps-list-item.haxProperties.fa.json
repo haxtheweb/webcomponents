@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "مورد گام‌ها",
+    "description": "موردی که بخشی از فهرست گام‌ها است"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان"
+      }
+    ]
+  }
+}

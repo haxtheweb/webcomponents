@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "සරල රූපය",
+    "description": "සරල පරාමිතීන් සමඟ රූප හසුරුවන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "මූලාශ්‍රය",
+        "description": "රූප මූලාශ්‍ර URL."
+      },
+      {
+        "property": "height",
+        "title": "උස",
+        "description": "විකල්ප රූප උස."
+      },
+      {
+        "property": "width",
+        "title": "පළල",
+        "description": "විකල්ප රූප පළල."
+      },
+      {
+        "property": "alt",
+        "title": "විකල්ප පෙළ",
+        "description": "තිර කියවන සඳහා සහ වැඩිදියුණු කළ SEO සඳහා ප්‍රයෝජනවත් වේ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "ගුණාත්මකභාවය",
+        "description": "ජනනය කිරීමේදී රූපයේ ගුණාත්මකභාවය (JPEG පමණි)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "ලබා ගැනීමේ ප්‍රමුඛතාව",
+        "description": "නවීන බ්‍රවුසර සඳහා කාර්ය සාධන ඉඟියක්.",
+        "options": {
+          "auto": "ස්වයංක්‍රීය",
+          "high": "ඉහළ",
+          "low": "අඩු"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "විකේතන ක්‍රමය",
+        "description": "නවීන බ්‍රවුසරවල රූප විදහා දැක්වීම සඳහා කාර්ය සාධන ඉඟියක්.",
+        "options": {
+          "auto": "ස්වයංක්‍රීය",
+          "async": "අසමමුහුර්ත"
+        }
+      }
+    ]
+  }
+}

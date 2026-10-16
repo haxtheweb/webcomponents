@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Pašpārbaude",
+    "description": "Lietotāji var veikt pašpārbaudi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Attēls",
+        "description": "Pašpārbaudes attēls."
+      },
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Pašpārbaudes nosaukums."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatīvais teksts",
+        "description": "Attēla alternatīvais teksts."
+      },
+      {
+        "slot": "question",
+        "title": "Jautājums"
+      },
+      {
+        "slot": "",
+        "title": "Atbilde"
+      },
+      {
+        "property": "accentColor",
+        "title": "Motīva krāsa",
+        "description": "Izvēlieties motīva krāsu no dizaina sistēmas.",
+        "options": {
+          "primary": "Primārais",
+          "accent": "Akcents",
+          "success": "Veiksme",
+          "warning": "Brīdinājums",
+          "error": "Kļūda",
+          "info": "Informācija"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mācību mērķis",
+        "description": "Mācību mērķa atsauce, kas tiek izvadīta kā oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Tiek vērtēts",
+        "description": "Aktivitātes atsauce, kas tiek izvadīta kā oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Saite uz vairāk",
+        "description": "Saite uz papildu informāciju."
+      }
+    ]
+  }
+}

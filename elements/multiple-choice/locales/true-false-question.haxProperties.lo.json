@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "ຄຳຖາມຖືກ / ຜິດ",
+    "description": "ຄຳຖາມຖືກຜິດ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ຄຳຖາມ",
+        "description": "ຄຳຖາມໃຫ້ຜູ້ໃຊ້ຕອບ."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "ຄຳຕອບທີ່ຖືກຕ້ອງ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ຊື່ແບບທົດສອບ",
+        "description": "ຊື່ແບບທົດສອບທີ່ສົ່ງເຂົ້າມາເພື່ອໃຊ້ໃນສະພາບແວດລ້ອມທີ່ຂັບເຄື່ອນດ້ວຍ xAPI ເພື່ອລະບຸລາຍການນີ້"
+      }
+    ]
+  }
+}

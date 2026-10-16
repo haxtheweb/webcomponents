@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kuvallinen lainaus",
+    "description": "Tyylitelty lainaus valinnaisella kuvalla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Kuva",
+        "description": "Lisää suositteluun kuva."
+      },
+      {
+        "property": "name",
+        "title": "Koko nimi",
+        "description": "Suosittelun antavan henkilön nimi."
+      },
+      {
+        "property": "position",
+        "title": "Asema tai ammattinimike",
+        "description": "Henkilön asema tai ammattinimike."
+      },
+      {
+        "slot": "",
+        "title": "Lainaus",
+        "description": "Lainaus suosittelun antajalta."
+      }
+    ]
+  }
+}

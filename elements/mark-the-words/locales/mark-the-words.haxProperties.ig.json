@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Kaa okwu ndị ahụ akara",
+    "description": "Chọpụta echiche site n'ịpị okwu n'ime ederede."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ajụjụ",
+        "description": "Ajụjụ ndị ọrụ ga-aza."
+      },
+      {
+        "property": "statement",
+        "title": "Okwu",
+        "description": "Okwu a ga-atụgharị ka ọ bụrụ mmekọrịta \"kaa okwu ndị ahụ akara\"."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Usoro akara",
+        "description": "OER Schema: usoro akara maka nyocha a (dịka akara, mkpụrụedemede, pasentị, mmecha)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ebumnuche mmụta",
+        "description": "OER Schema: ebumnuche mmụta jikọtara na nyocha a."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kọọsị",
+        "description": "OER Schema: kọọsị e mere nyocha a maka ya."
+      },
+      {
+        "property": "answers",
+        "title": "Azịza"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Aha ule",
+        "description": "Aha ule e zigara maka iji na gburugburu xAPI iji mata ihe a"
+      }
+    ]
+  }
+}

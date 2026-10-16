@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Audio në rresht",
+    "description": "Luaj audio brenda tekstit për të plotësuar përmbajtjen e faqes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Burimi",
+        "description": "Skedar MP3 ose URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra theksuese e kartës."
+      },
+      {
+        "property": "shiny",
+        "title": "I shndritshëm",
+        "description": "Përdor një sfond theksues më të çelur në vend të grisë."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "E errët",
+        "description": "Përdor modalitetin e errët."
+      }
+    ]
+  }
+}

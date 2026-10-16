@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Seinnteoir Unity",
+    "description": "Seinnteoir Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Sprioc",
+        "description": "Cosán chuig tógáil an chluiche."
+      },
+      {
+        "property": "compression",
+        "title": "Modh comhbhrúite",
+        "description": "Iarmhír comhaid chomhbhrúite do shócmhainní an chluiche."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL sruthaithe",
+        "description": "URL na sócmhainní sruthaithe."
+      },
+      {
+        "property": "companyname",
+        "title": "Ainm na Cuideachta",
+        "description": "Ainm na cuideachta."
+      },
+      {
+        "property": "productname",
+        "title": "Ainm an Táirge",
+        "description": "Teideal an chluiche."
+      },
+      {
+        "property": "productversion",
+        "title": "Leagan an Táirge",
+        "description": "Leagan an eisiúna."
+      },
+      {
+        "property": "width",
+        "title": "Leithead an Chanbháis",
+        "description": "Leithead CSS an chanbháis (mar shampla px nó em)."
+      },
+      {
+        "property": "height",
+        "title": "Airde an Chanbháis",
+        "description": "Airde CSS an chanbháis (mar shampla px nó em)."
+      },
+      {
+        "property": "background",
+        "title": "Cúlra an Chanbháis",
+        "description": "Cúlra CSS an chanbháis."
+      }
+    ]
+  }
+}

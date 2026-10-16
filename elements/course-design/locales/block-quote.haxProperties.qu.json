@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Rimasqa t'aqa",
+    "description": "Sumaqchasqa rimasqa t'aqa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Pukyu willay",
+        "description": "Pukyu willaypa qillqan."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Rikch'apaq hukniray qillqa."
+      },
+      {
+        "property": "image",
+        "title": "Rikch'a",
+        "description": "Rimasqawan rikukuq rikch'a."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Detalles da páxina",
+    "description": "Define unha división visual entre páxinas que os CMS poden usar para crear páxinas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título que se mostra no tema e no primeiro título."
+      },
+      {
+        "property": "pageType",
+        "title": "Tipo",
+        "description": "Etiqueta visual do contexto da páxina.",
+        "options": {
+          "": "-- ningún --",
+          "content": "Contido",
+          "assessment": "Avaliación",
+          "quiz": "Cuestionario",
+          "submission": "Entrega",
+          "lesson": "Lección",
+          "module": "Módulo",
+          "task": "Tarefa",
+          "activity": "Actividade",
+          "project": "Proxecto",
+          "practice": "Práctica",
+          "unit": "Unidade",
+          "objectives": "Obxectivos de aprendizaxe",
+          "connection": "Conexión",
+          "knowledge": "Sabías que...?",
+          "strategy": "Estratexia de aprendizaxe",
+          "discuss": "Debater",
+          "listen": "Escoitar",
+          "make": "Facer",
+          "observe": "Observar",
+          "present": "Presentar",
+          "reading": "Lectura",
+          "reflect": "Reflexionar",
+          "research": "Investigar",
+          "watch": "Ver",
+          "write": "Escribir"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Etiquetas",
+        "description": "Lista de etiquetas separadas por comas."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL da ligazón",
+        "description": "URL de redirección que se mostra en lugar do contido da páxina."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Destino da ligazón",
+        "description": "Abrir as ligazóns na mesma xanela ou nunha nova.",
+        "options": {
+          "_self": "Mesma xanela",
+          "_blank": "Nova xanela"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Publicada",
+        "description": "As páxinas non publicadas ocúltanse aos usuarios finais."
+      },
+      {
+        "property": "locked",
+        "title": "Bloquear a páxina",
+        "description": "Bloquear ou desbloquear todos os elementos desta páxina."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Substituír o slug automático",
+        "description": "Bloquear o slug para que non se actualice automaticamente a partir do título ou da páxina nai."
+      },
+      {
+        "property": "slug",
+        "title": "Ruta",
+        "description": "Slug do URL desta páxina."
+      },
+      {
+        "property": "image",
+        "title": "Multimedia",
+        "description": "Contido multimedia que representa a páxina, usado nalgúns temas e vistas."
+      },
+      {
+        "property": "parent",
+        "title": "Páxina nai",
+        "description": "Ruta da páxina nai."
+      },
+      {
+        "property": "noderefs",
+        "title": "Contido relacionado",
+        "description": "Páxinas relacionadas con esta páxina."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Descrición",
+        "description": "Descrición usada en coleccións e na optimización para motores de busca."
+      },
+      {
+        "property": "entityType",
+        "title": "Tipo de entidade",
+        "description": "Por defecto é páxina, salvo que se indique outra cousa.",
+        "options": {
+          "page": "Páxina (predeterminado)",
+          "taxonomy": "Taxonomía",
+          "taxonomyTerm": "Termo de taxonomía",
+          "region": "Rexión"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona asociada a esta páxina no sitio."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Cor asociada a esta páxina no sitio."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Ocultar no menú",
+        "description": "Ocultar esta páxina dos menús mantendo o seu URL."
+      },
+      {
+        "property": "order",
+        "title": "Orde",
+        "description": "Orde con respecto ás páxinas irmás."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Tema da páxina",
+        "description": "Substituír o tema só para esta páxina."
+      },
+      {
+        "property": "author",
+        "title": "Autor",
+        "description": "Nome de usuario da última persoa que modificou esta páxina."
+      }
+    ]
+  }
+}

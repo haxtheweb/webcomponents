@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Bathodyn Digwyddiad",
+    "description": "Cydran bathodyn digwyddiad."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Delwedd TV",
+        "description": "Delwedd a ddangosir ar y TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo a ddangosir yng nghornel y bathodyn."
+      },
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Teitl a ddangosir ar frig y bathodyn."
+      },
+      {
+        "property": "name",
+        "title": "Enw",
+        "description": "Enw a ddangosir ar y bathodyn."
+      },
+      {
+        "property": "position",
+        "title": "Swydd",
+        "description": "Rôl neu deitl yr unigolyn."
+      },
+      {
+        "property": "organization",
+        "title": "Sefydliad",
+        "description": "Y sefydliad y mae'r unigolyn yn gweithio iddo."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Lliw'r TV",
+        "description": "Dewiswch y lliw ar gyfer y TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw acen",
+        "description": "Prif liw'r cefndir neu'r testun."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Lliw'r bwlynau",
+        "description": "Lliw bwlynau'r TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Rhoi effaith sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Du a gwyn",
+        "description": "Rhoi effaith du a gwyn."
+      }
+    ]
+  }
+}

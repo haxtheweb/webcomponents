@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF-visning i nettleseren",
+    "description": "Bygg inn en PDF-fil i siden med valgfritt kortoppsett og nedlastingsknapp."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF-URL",
+        "description": "Plasseringen til PDF-filen."
+      },
+      {
+        "property": "heading",
+        "title": "Overskrift",
+        "description": "Overskriftstekst for kortet."
+      },
+      {
+        "property": "card",
+        "title": "Kortoppsett",
+        "description": "Vis PDF-en i et kort med nedlastingsknapp."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Nedlastingsetikett",
+        "description": "Etikett for nedlastingsknappen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Melding om manglende støtte",
+        "description": "Melding når nettleseren ikke kan vise PDF-filer."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Lenketekst ved manglende støtte",
+        "description": "Lenketekst når nettleseren ikke kan vise PDF-filer."
+      },
+      {
+        "property": "width",
+        "title": "Bredde",
+        "description": "Bredden på PDF-visningen."
+      },
+      {
+        "property": "height",
+        "title": "Høyde",
+        "description": "Høyden på PDF-visningen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Назари мухтасар ба маҳсулот",
+    "description": "Блоки шарҳи мухтасари маҳсулот."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Нишона",
+        "description": "Нишонае, ки мафҳумро ифода мекунад."
+      },
+      {
+        "property": "title",
+        "title": "Унвон",
+        "description": "Мафҳуми асосӣ дар як назар."
+      },
+      {
+        "property": "subtitle",
+        "title": "Зерсарлавҳа",
+        "description": "Тафсилоти иловагӣ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидӣ барои нишона."
+      }
+    ]
+  }
+}

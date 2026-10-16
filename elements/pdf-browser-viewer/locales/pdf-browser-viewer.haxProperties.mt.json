@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Viewer tal-PDF fil-Browser",
+    "description": "Daħħal fajl PDF inline b'tqassim ta' karta u buttuna tat-tniżżil fakultattivi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL tal-PDF",
+        "description": "Il-post tal-fajl PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Intestatura",
+        "description": "Test tal-intestatura tal-karta."
+      },
+      {
+        "property": "card",
+        "title": "Tqassim ta' karta",
+        "description": "Uri l-PDF f'karta b'buttuna tat-tniżżil."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Tikketta tat-tniżżil",
+        "description": "Tikketta għall-buttuna tat-tniżżil."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Messaġġ ta' mhux appoġġjat",
+        "description": "Messaġġ meta l-browser ma jistax juri fajls PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Messaġġ tal-link ta' mhux appoġġjat",
+        "description": "Test tal-link meta l-browser ma jistax juri fajls PDF."
+      },
+      {
+        "property": "width",
+        "title": "Wisa'",
+        "description": "Il-wisa' tal-viewer tal-PDF."
+      },
+      {
+        "property": "height",
+        "title": "Għoli",
+        "description": "L-għoli tal-viewer tal-PDF."
+      }
+    ]
+  }
+}

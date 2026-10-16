@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "标签题",
+    "description": "选择标签来回答问题。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "问题",
+        "description": "供用户作答的问题。"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "评分格式",
+        "description": "OER Schema：此测评的评分格式（例如分数、等级、百分比、完成度）。"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学习目标",
+        "description": "OER Schema：与此测评关联的学习目标。"
+      },
+      {
+        "property": "forCourse",
+        "title": "课程",
+        "description": "OER Schema：此测评所面向的课程。"
+      },
+      {
+        "property": "answers",
+        "title": "答案"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "测验名称",
+        "description": "用于在分析系统中进行 xAPI 识别的测验名称。"
+      }
+    ]
+  }
+}

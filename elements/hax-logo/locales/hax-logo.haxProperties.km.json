@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "សិល្បៈពាក្យ HAX",
+    "description": "ធាតុឡូហ្គោសម្រាប់ HAX ជាការពិតណាស់ជាធាតុដែលអាចប្រើជាមួយ HAX។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "ទំហំឡូហ្គោ HAX ដែលត្រូវដាក់",
+        "options": {
+          "mini": "តូច",
+          "small": "តូច",
+          "normal": "ធម្មតា",
+          "large": "ធំ"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "ថាតើត្រូវបំប្លែងឡូហ្គោទៅជាអក្សរធំឬអត់"
+      }
+    ]
+  }
+}

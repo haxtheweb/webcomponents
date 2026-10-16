@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Тохируулах асуулт",
+    "description": "Даалгаврыг зөв хариулттай нь хослуулах чирж буулгах тохируулах үйл ажиллагаа."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Асуулт",
+        "description": "Хэрэглэгчдэд зориулсан асуулт. Буулгах байруудыг тэмдэглээд, дараагийн байр хүртэл хариултуудыг жагсаана уу."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Дүгнэх хэлбэр",
+        "description": "OER Schema: энэ үнэлгээний дүгнэх хэлбэр (жишээ нь оноо, үсэг, хувь, гүйцэтгэл)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Сургалтын зорилт",
+        "description": "OER Schema: энэ үнэлгээтэй холбоотой сургалтын зорилт."
+      },
+      {
+        "property": "forCourse",
+        "title": "Хичээл",
+        "description": "OER Schema: энэ үнэлгээг зориулсан хичээл."
+      },
+      {
+        "property": "answers",
+        "title": "Хариултууд"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Шалгалтын нэр",
+        "description": "Аналитикийн системд xAPI таних зорилгоор ашиглах шалгалтын нэр."
+      }
+    ]
+  }
+}

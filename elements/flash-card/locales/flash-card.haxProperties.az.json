@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Fləş kart",
+    "description": "Ön və arxa tərəfli fləş kartlarla anlayışları məşq edin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Kartın ön tərəfi",
+        "description": "Ön tərəfdəki mətn və ya sual."
+      },
+      {
+        "slot": "back",
+        "title": "Kartın arxa tərəfi",
+        "description": "Gözlənilən cavab."
+      },
+      {
+        "property": "imgSource",
+        "title": "Şəkil mənbəyi",
+        "description": "Kart üçün istifadə olunan şəkil faylı. Şəkil açar sözünü əvəz edir."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Fəaliyyət növü",
+        "description": "OER Schema: bu məşqin əhatə etdiyi fəaliyyət növü (məs. Oxuma, Yazma, Yaratma, Araşdırma, Dinləmə, İzləmə, Düşünmə, Müzakirə, Müşahidə, Təqdimat, Qiymətləndirmə)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Öyrənmə məqsədi",
+        "description": "OER Schema: bu məşqin dəstəklədiyi öyrənmə məqsədinin ID-si və ya URL-i."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tünd",
+        "description": "Tünd rejimdən istifadə et."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Kartın vurğu rəngi."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Şəkil açar sözü",
+        "description": "Təsadüfi şəkil açar sözü. Şəkil mənbəyi tərəfindən əvəz olunur."
+      }
+    ]
+  }
+}

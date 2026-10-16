@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "กล่องกิจกรรม",
+    "description": "บล็อกหัวข้อขนาดเล็กที่จัดรูปแบบ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ไอคอน",
+        "description": "ไอคอนที่แสดงข้างกล่องกิจกรรม"
+      },
+      {
+        "property": "tag",
+        "title": "แท็กกล่องกิจกรรม",
+        "description": "แท็กที่แสดงในกล่องกิจกรรม"
+      },
+      {
+        "property": "nocolourize",
+        "title": "ไม่ใส่สี",
+        "description": "ป้องกันไม่ให้ใส่สีกับไอคอน"
+      }
+    ]
+  }
+}

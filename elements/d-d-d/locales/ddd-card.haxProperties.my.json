@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "ကတ်",
+    "description": "DDD ဒီဇိုင်းစနစ်ဖြင့် ပုံစံချထားသော ကတ် component။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ပုံ",
+        "description": "ရွေးချယ်နိုင်သော ပုံ။"
+      },
+      {
+        "property": "alt",
+        "title": "ပုံ alt",
+        "description": "ပုံကို ဖော်ပြသော အစားထိုး စာသား။"
+      },
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်",
+        "description": "ကတ် ခေါင်းစဉ်။"
+      },
+      {
+        "slot": "",
+        "title": "အကြောင်းအရာ",
+        "description": "ကတ် အကြောင်းအရာ နေရာ။"
+      },
+      {
+        "property": "href",
+        "title": "လင့်ခ်",
+        "description": "ခလုတ် လင့်ခ် URL။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "အညွှန်း",
+        "description": "ခလုတ် အညွှန်း။"
+      },
+      {
+        "property": "noArrow",
+        "title": "မြှား မပါ",
+        "description": "ခလုတ် မြှားကို ဝှက်ရန်။"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "လင့်ခ်: target",
+        "description": "လင့်ခ်ကို ဖွင့်မည့်နေရာ။",
+        "options": {
+          "": "တူညီသော ဝင်းဒိုး",
+          "_blank": "ဝင်းဒိုး အသစ် - _blank",
+          "_top": "အပေါ်ဆုံး ဝင်းဒိုး - _top",
+          "_parent": "မိခင် ဝင်းဒိုး - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "လင့်ခ်: rel",
+        "description": "ချိတ်ဆက်ထားသော အရင်းအမြစ်နှင့် လက်ရှိ စာရွက်စာတမ်းကြား ဆက်နွယ်မှု။"
+      }
+    ]
+  }
+}

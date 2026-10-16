@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Māhele kiʻi",
+    "description": "He kiʻi ākea piha e hoʻokaʻawale ana i kekahi māhele o ka ʻaoʻao."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Kiʻi kāʻei hope."
+      },
+      {
+        "property": "caption",
+        "description": "Poʻo kikokikona."
+      }
+    ]
+  }
+}

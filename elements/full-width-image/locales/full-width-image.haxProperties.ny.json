@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Gawo la chithunzi",
+    "description": "Chithunzi chodzaza m'lifupi chomwe chimagawa gawo la tsamba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Chithunzi chakumbuyo."
+      },
+      {
+        "property": "caption",
+        "description": "Mutu wa mawu."
+      }
+    ]
+  }
+}

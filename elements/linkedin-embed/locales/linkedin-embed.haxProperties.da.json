@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn-indlejring",
+    "description": "Indlejr et LinkedIn-profilkort."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Personligt navn",
+        "description": "Den personlige brugernavnsdel af LinkedIn-URL'en."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Landestandard",
+        "description": "Metadataværdi for landestandard, såsom en_US."
+      }
+    ]
+  }
+}

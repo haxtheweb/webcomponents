@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Envoltorio para reprodutores incrustados de Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orixe",
+        "description": "Ligazón de inserción ou para compartir de Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Tema de cor de fondo para o reprodutor.",
+        "options": {
+          "": "Predeterminado",
+          "0": "Negro"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Tamaño",
+        "description": "Tamaño do reprodutor.",
+        "options": {
+          "normal": "Predeterminado",
+          "compact": "Compacto"
+        }
+      }
+    ]
+  }
+}

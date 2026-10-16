@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Переглядач PDF у браузері",
+    "description": "Вбудувати PDF-файл на сторінку з необов'язковим макетом картки та кнопкою завантаження."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Розташування PDF-файлу."
+      },
+      {
+        "property": "heading",
+        "title": "Заголовок",
+        "description": "Текст заголовка картки."
+      },
+      {
+        "property": "card",
+        "title": "Макет картки",
+        "description": "Показати PDF у картці з кнопкою завантаження."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Мітка завантаження",
+        "description": "Мітка кнопки завантаження."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Повідомлення про непідтримку",
+        "description": "Повідомлення, коли браузер не може показати PDF-файли."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Текст посилання про непідтримку",
+        "description": "Текст посилання, коли браузер не може показати PDF-файли."
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина переглядача PDF."
+      },
+      {
+        "property": "height",
+        "title": "Висота",
+        "description": "Висота переглядача PDF."
+      }
+    ]
+  }
+}

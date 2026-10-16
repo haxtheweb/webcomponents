@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Postal",
+    "description": "Un elemento multimedia divertido que imita una postal física enviada desde algún lugar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Para",
+        "description": "¿A quién va dirigida?"
+      },
+      {
+        "property": "from",
+        "title": "De",
+        "description": "¿Quién eres?"
+      },
+      {
+        "property": "message",
+        "title": "Mensaje",
+        "description": "¿Qué quieres decir?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Matasellos de",
+        "description": "¿Desde dónde se envió esta postal?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Origen de la foto principal",
+        "description": "¿Dónde se encuentra tu foto?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Origen de la foto del sello",
+        "description": "¿Dónde se encuentra tu foto?"
+      }
+    ]
+  }
+}

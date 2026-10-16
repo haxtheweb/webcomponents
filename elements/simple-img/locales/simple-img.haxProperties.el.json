@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Απλή εικόνα",
+    "description": "Επεξεργασία εικόνων με απλές παραμέτρους."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Πηγή",
+        "description": "URL πηγής εικόνας."
+      },
+      {
+        "property": "height",
+        "title": "Ύψος",
+        "description": "Προαιρετικό ύψος εικόνας."
+      },
+      {
+        "property": "width",
+        "title": "Πλάτος",
+        "description": "Προαιρετικό πλάτος εικόνας."
+      },
+      {
+        "property": "alt",
+        "title": "Εναλλακτικό κείμενο",
+        "description": "Χρήσιμο για αναγνώστες οθόνης και καλύτερο SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Ποιότητα",
+        "description": "Ποιότητα εικόνας κατά τη δημιουργία (μόνο JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Προτεραιότητα λήψης",
+        "description": "Υπόδειξη απόδοσης για σύγχρονα προγράμματα περιήγησης.",
+        "options": {
+          "auto": "Αυτόματη",
+          "high": "Υψηλή",
+          "low": "Χαμηλή"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Μέθοδος αποκωδικοποίησης",
+        "description": "Υπόδειξη απόδοσης για την απόδοση εικόνων σε σύγχρονα προγράμματα περιήγησης.",
+        "options": {
+          "auto": "Αυτόματη",
+          "async": "Ασύγχρονη"
+        }
+      }
+    ]
+  }
+}

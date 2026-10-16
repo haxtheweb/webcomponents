@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris-tunnus",
+    "description": "Näytä PSU-tunnus valinnaisella korkeakoulun nimellä ja kohde-URL:lla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Korkeakoulun nimi",
+        "description": "Tunnuksen viereen näytettävä nimi."
+      },
+      {
+        "property": "name2",
+        "title": "Korkeakoulun nimi 2",
+        "description": "Toinen nimi, joka näytetään ensimmäisen korkeakoulun nimen alla."
+      },
+      {
+        "property": "name3",
+        "title": "Korkeakoulun nimi 3",
+        "description": "Kolmas nimi, joka näytetään toisen korkeakoulun nimen alla."
+      },
+      {
+        "property": "url",
+        "title": "Linkki",
+        "description": "Kohde-URL, kun tunnusta napsautetaan."
+      },
+      {
+        "property": "type",
+        "title": "Muunnelma",
+        "description": "Tunnuksen visuaalinen muunnelma.",
+        "options": {
+          "default": "Oletus",
+          "light": "Vaalea",
+          "dark": "Tumma"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Pystyasettelu",
+        "description": "Näytä kolmas nimi toisen nimen alla vaakaviivan kanssa."
+      }
+    ]
+  }
+}

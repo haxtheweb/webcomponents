@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Etung Munggah",
+    "description": "Animasikake angka sing ngetung munggah tekan nilai target nalika digulung katon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Nilai pungkasan",
+        "description": "Angka tujuan etungan."
+      },
+      {
+        "property": "start",
+        "title": "Nilai wiwitan",
+        "description": "Angka wiwitan etungan."
+      },
+      {
+        "property": "duration",
+        "title": "Suwene",
+        "description": "Pira detik animasi etungan mlaku."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Teks ater-ater",
+        "description": "Teks sing katon sadurunge angka (contone '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Teks panambang",
+        "description": "Teks sing katon sawise angka (contone '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot ater-ater",
+        "description": "Isi slot opsional sadurunge angka."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot panambang",
+        "description": "Isi slot opsional sawise angka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Panggonan desimal",
+        "description": "Cacahe panggonan desimal sing ditampilake."
+      },
+      {
+        "property": "separator",
+        "title": "Pamisah ewonan",
+        "description": "Karakter sing misahake klompok ewonan."
+      },
+      {
+        "property": "decimal",
+        "title": "Karakter desimal",
+        "description": "Karakter sing digunakake kanggo titik desimal."
+      },
+      {
+        "property": "noeasing",
+        "title": "Tanpa easing",
+        "description": "Pateni easing supaya etungane linier."
+      }
+    ]
+  }
+}

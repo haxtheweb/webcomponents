@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Tekstinsisäinen ääni",
+    "description": "Toista ääntä tekstin seassa sivun sisällön tueksi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Lähde",
+        "description": "MP3-tiedosto tai URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Kortin korostusväri."
+      },
+      {
+        "property": "shiny",
+        "title": "Kiiltävä",
+        "description": "Käytä harmaan sijaan vaaleampaa korostustaustaa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tumma",
+        "description": "Käytä tummaa tilaa."
+      }
+    ]
+  }
+}

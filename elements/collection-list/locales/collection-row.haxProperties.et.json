@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Kogumiku rida",
+    "description": "Kogumiku loendis kasutatav reakujuline element teksti, lingi, ikooni, siltide ja valikulise pildiga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Selle rea siht-URL."
+      },
+      {
+        "property": "image",
+        "title": "Pilt",
+        "description": "Rea pilt."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Pilti kirjeldav alternatiivtekst."
+      },
+      {
+        "property": "line1",
+        "title": "Rida 1",
+        "description": "Esimene tekstirida."
+      },
+      {
+        "property": "line2",
+        "title": "Rida 2",
+        "description": "Teine tekstirida."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Rida esindav ikoon."
+      },
+      {
+        "property": "saturate",
+        "title": "Küllastusefekt",
+        "description": "Muuda pildi küllastust, kui kasutaja selle fookusesse viib."
+      },
+      {
+        "property": "tags",
+        "title": "Sildid",
+        "description": "Komadega eraldatud siltide loend."
+      },
+      {
+        "property": "accentColor",
+        "title": "Värv",
+        "description": "Ikooni ja siltide värv."
+      }
+    ]
+  }
+}

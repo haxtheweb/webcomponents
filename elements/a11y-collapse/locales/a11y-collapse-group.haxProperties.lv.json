@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Izvēršamo elementu grupa",
+    "description": "Izvēršamu un sakļaujamu elementu grupa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Izvērst tikai vienu",
+        "description": "Izvērst var tikai vienu elementu."
+      },
+      {
+        "slot": "",
+        "title": "Sakļaujamie elementi",
+        "description": "Sakļaujamie elementi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Optellen",
+    "description": "Animeer een getal dat optelt tot een doelwaarde wanneer het in beeld scrolt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Eindwaarde",
+        "description": "Het getal waartoe wordt opgeteld."
+      },
+      {
+        "property": "start",
+        "title": "Beginwaarde",
+        "description": "Het getal waarvandaan wordt opgeteld."
+      },
+      {
+        "property": "duration",
+        "title": "Duur",
+        "description": "Aantal seconden dat de telanimatie duurt."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Voorvoegseltekst",
+        "description": "Tekst vóór het getal (bijv. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Achtervoegseltekst",
+        "description": "Tekst na het getal (bijv. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Voorvoegselslot",
+        "description": "Optionele slot-inhoud vóór het getal."
+      },
+      {
+        "slot": "suffix",
+        "title": "Achtervoegselslot",
+        "description": "Optionele slot-inhoud na het getal."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Decimalen",
+        "description": "Aantal weer te geven decimalen."
+      },
+      {
+        "property": "separator",
+        "title": "Scheidingsteken voor duizendtallen",
+        "description": "Teken dat groepen duizendtallen scheidt."
+      },
+      {
+        "property": "decimal",
+        "title": "Decimaalteken",
+        "description": "Teken voor de decimale komma."
+      },
+      {
+        "property": "noeasing",
+        "title": "Geen easing",
+        "description": "Schakel easing uit zodat het tellen lineair verloopt."
+      }
+    ]
+  }
+}

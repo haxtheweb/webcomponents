@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "የምስል ንጽጽር",
+    "description": "ለማነጻጸር አንድን ምስል በሌላው ላይ አንሸራት።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "የላይኛው ምስል",
+        "description": "በታችኛው ምስል ላይ የሚንሸራተት የላይኛው ምስል።"
+      },
+      {
+        "property": "topAlt",
+        "title": "የላይኛው ምስል አማራጭ ጽሑፍ",
+        "description": "ለተደራሽነት የሚያስፈልግ አማራጭ ጽሑፍ።"
+      },
+      {
+        "property": "bottomSrc",
+        "title": "የታችኛው ምስል",
+        "description": "ከላይኛው ምስል ስር የሚታይ የታችኛው ምስል።"
+      },
+      {
+        "property": "bottomAlt",
+        "title": "የታችኛው ምስል አማራጭ ጽሑፍ",
+        "description": "ለተደራሽነት የሚያስፈልግ አማራጭ ጽሑፍ።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "ባህሪ",
+        "description": "የማጽጃ ሁነታ (ነባሪ) ወይም የላይኛው ምስል ግልጽነት ሁነታ ምረጥ።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "የተንሸራታች አሞሌ ቀለም።"
+      },
+      {
+        "property": "dark",
+        "title": "ጨለማ",
+        "description": "የተንሸራታች አሞሌውን ቀለም ገልብጥ።"
+      },
+      {
+        "property": "position",
+        "title": "የመነሻ አቀማመጥ",
+        "description": "ከ0 እስከ 100 ያለ የመነሻ አቀማመጥ።"
+      }
+    ]
+  }
+}

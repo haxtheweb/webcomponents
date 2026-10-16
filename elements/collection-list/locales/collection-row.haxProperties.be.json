@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Радок калекцыі",
+    "description": "Элемент у выглядзе радка для спіса калекцыі з тэкстам, спасылкай, значком, тэгамі і неабавязковай выявай."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Спасылка",
+        "description": "URL прызначэння для гэтага радка."
+      },
+      {
+        "property": "image",
+        "title": "Выява",
+        "description": "Выява для радка."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Альтэрнатыўны тэкст, які апісвае выяву."
+      },
+      {
+        "property": "line1",
+        "title": "Радок 1",
+        "description": "Першы радок тэксту."
+      },
+      {
+        "property": "line2",
+        "title": "Радок 2",
+        "description": "Другі радок тэксту."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Значок",
+        "description": "Значок, які прадстаўляе радок."
+      },
+      {
+        "property": "saturate",
+        "title": "Эфект насычанасці",
+        "description": "Змяняць насычанасць выявы пры фокусе."
+      },
+      {
+        "property": "tags",
+        "title": "Тэгі",
+        "description": "Спіс тэгаў праз коску."
+      },
+      {
+        "property": "accentColor",
+        "title": "Колер",
+        "description": "Колер для значка і тэгаў."
+      }
+    ]
+  }
+}

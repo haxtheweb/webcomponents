@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Evenementbadge",
+    "description": "Component voor een evenementbadge."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV-afbeelding",
+        "description": "Afbeelding die op de tv wordt getoond."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo in de hoek van de badge."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel bovenaan de badge."
+      },
+      {
+        "property": "name",
+        "title": "Naam",
+        "description": "Naam op de badge."
+      },
+      {
+        "property": "position",
+        "title": "Functie",
+        "description": "Rol of functietitel van de persoon."
+      },
+      {
+        "property": "organization",
+        "title": "Organisatie",
+        "description": "Organisatie waar de persoon werkt."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV-kleur",
+        "description": "Kies de kleur van de tv."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Primaire achtergrond- of tekstkleur."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Knopkleur",
+        "description": "Kleur van de draaiknoppen van de tv."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Pas een sepia-effect toe."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Zwart-wit",
+        "description": "Pas een zwart-witeffect toe."
+      }
+    ]
+  }
+}

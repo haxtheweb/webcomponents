@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR-koodi",
+    "description": "Älypuhelimella skannattava koodi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR-data",
+        "description": "QR-koodin datan lähde."
+      },
+      {
+        "property": "title",
+        "title": "Vaihtoehtoinen otsikko",
+        "description": "QR-koodin lähteeseen linkitetty vaihtoehtoinen otsikko."
+      },
+      {
+        "property": "modulesize",
+        "title": "Koko",
+        "description": "QR-koodin koko."
+      },
+      {
+        "property": "margin",
+        "title": "Marginaali",
+        "description": "Koodia ympäröivä reunus."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Tulostusmuoto",
+        "description": "Muoto, jossa koodi tuotetaan.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "折りたたみコンテナ",
+    "description": "展開・折りたたみ可能な単一のコンテナ。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "見出し",
+        "description": "折りたたみのテキスト。"
+      },
+      {
+        "property": "expanded",
+        "title": "展開済み",
+        "description": "既定で展開します。"
+      },
+      {
+        "property": "headingButton",
+        "title": "見出しボタン",
+        "description": "アイコンだけでなく見出し全体をクリック可能にします。"
+      },
+      {
+        "property": "icon",
+        "title": "アイコン",
+        "description": "展開/折りたたみ切り替えボタンのアイコン。"
+      },
+      {
+        "property": "iconExpanded",
+        "title": "アイコン（展開時）",
+        "description": "展開状態の切り替えボタン用の任意のアイコン。"
+      },
+      {
+        "slot": "",
+        "title": "コンテンツ",
+        "description": "折りたたみのコンテンツ。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "ツールチップ",
+        "description": "展開/折りたたみ切り替えボタンのツールチップ。"
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "ツールチップ（展開時）",
+        "description": "展開時の展開/折りたたみボタンのツールチップ。"
+      }
+    ]
+  }
+}

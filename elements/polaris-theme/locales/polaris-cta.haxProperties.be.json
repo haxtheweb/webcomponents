@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Паказаць тэматычную кнопку закліку да дзеяння Polaris."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Тэкст кнопкі",
+        "description": "Тэкст на кнопцы закліку да дзеяння."
+      },
+      {
+        "property": "link",
+        "title": "Спасылка",
+        "description": "URL прызначэння для кнопкі."
+      },
+      {
+        "property": "type",
+        "title": "Варыянт",
+        "description": "Варыянт візуальнага стылю.",
+        "options": {
+          "primary": "Асноўны",
+          "tinted": "Адценены",
+          "light": "Светлы"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Контурны стыль",
+        "description": "Уключыць контурнае афармленне."
+      },
+      {
+        "property": "filled",
+        "title": "Запоўнены стыль",
+        "description": "Уключыць запоўненае афармленне."
+      }
+    ]
+  }
+}

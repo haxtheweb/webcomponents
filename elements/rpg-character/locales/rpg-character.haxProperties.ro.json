@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Personaj RPG",
+    "description": "Personaj amuzant de la HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Nume",
+        "description": "Cuvânt folosit pentru generarea unui personaj aleatoriu."
+      },
+      {
+        "property": "hat",
+        "title": "Pălărie",
+        "description": "Stilul pălăriei.",
+        "options": {
+          "none": "Implicit",
+          "random": "Aleatoriu",
+          "bunny": "Iepuraș",
+          "cowboy": "Cowboy",
+          "education": "Educație",
+          "construction": "Construcții",
+          "warning": "Avertisment",
+          "watermelon": "Pepene verde",
+          "coffee": "Cafea",
+          "knight": "Cavaler",
+          "ninja": "Ninja",
+          "party": "Petrecere",
+          "error": "Eroare",
+          "edit": "Editare"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Lățime",
+        "description": "Lățimea personajului în pixeli."
+      },
+      {
+        "property": "height",
+        "title": "Înălțime",
+        "description": "Înălțimea personajului în pixeli."
+      },
+      {
+        "property": "fire",
+        "title": "În flăcări?",
+        "description": "Dacă personajul este în flăcări."
+      },
+      {
+        "property": "walking",
+        "title": "Merge?",
+        "description": "Animație de mers; rulează când personajul este în flăcări."
+      }
+    ]
+  }
+}

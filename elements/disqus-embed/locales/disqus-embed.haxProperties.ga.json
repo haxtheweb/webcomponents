@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Leabaigh tráchtanna Disqus ar leathanach."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Ainm gearr",
+        "description": "Ainm gearr an tsuímh, a chinneann óstach scripte Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL an leathanaigh",
+        "description": "URL an leathanaigh a bhfuil an snáithe tráchtanna ceangailte leis."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Aitheantóir an leathanaigh",
+        "description": "An t-aitheantóir uathúil do shnáithe tráchtanna an leathanaigh."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Teideal an leathanaigh",
+        "description": "Teideal an leathanaigh a bhfuil an snáithe tráchtanna ceangailte leis."
+      },
+      {
+        "property": "loadingText",
+        "title": "Téacs lódála",
+        "description": "Téacs a fhógraítear fad atá na tráchtanna á lódáil."
+      },
+      {
+        "property": "lang",
+        "title": "Teanga",
+        "description": "Cód teanga do chomhéadan Disqus, m.sh. en."
+      }
+    ]
+  }
+}

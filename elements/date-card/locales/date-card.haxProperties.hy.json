@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Ամսաթիվ",
+    "description": "Ցուցադրել օրացուցային ամսաթիվ՝ մանրամասներով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Ամիս",
+        "description": "Քարտի վրա ցուցադրվող ամիսը։"
+      },
+      {
+        "property": "date",
+        "title": "Ամսվա օր",
+        "description": "Ամսվա օրը թվով։"
+      },
+      {
+        "property": "day",
+        "title": "Շաբաթվա օր",
+        "description": "Շաբաթվա օրը տեքստով։"
+      },
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Միջոցառման անվանումը։"
+      },
+      {
+        "property": "location",
+        "title": "Վայր",
+        "description": "Միջոցառման վայրը։"
+      },
+      {
+        "property": "startTime",
+        "title": "Սկիզբ",
+        "description": "Սկսման ժամը։"
+      },
+      {
+        "property": "endTime",
+        "title": "Ավարտ",
+        "description": "Ավարտի ժամը։"
+      },
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Ըստ ցանկության շեշտադրման գույն։"
+      },
+      {
+        "property": "dark",
+        "title": "Մուգ թեմա",
+        "description": "Միացնել մուգ թեման։"
+      }
+    ]
+  }
+}

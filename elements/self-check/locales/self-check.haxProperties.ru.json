@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Самопроверка",
+    "description": "Пользователи могут пройти самопроверку."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Изображение",
+        "description": "Изображение для самопроверки."
+      },
+      {
+        "property": "title",
+        "title": "Заголовок",
+        "description": "Заголовок самопроверки."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернативный текст",
+        "description": "Альтернативный текст для изображения."
+      },
+      {
+        "slot": "question",
+        "title": "Вопрос"
+      },
+      {
+        "slot": "",
+        "title": "Ответ"
+      },
+      {
+        "property": "accentColor",
+        "title": "Цвет темы",
+        "description": "Выберите цвет темы из дизайн-системы.",
+        "options": {
+          "primary": "Основной",
+          "accent": "Акцент",
+          "success": "Успех",
+          "warning": "Предупреждение",
+          "error": "Ошибка",
+          "info": "Информация"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Учебная цель",
+        "description": "Ссылка на учебную цель, выводимая как oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Оценивает",
+        "description": "Ссылка на активность, выводимая как oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Ссылка «Подробнее»",
+        "description": "Ссылка на дополнительную информацию."
+      }
+    ]
+  }
+}

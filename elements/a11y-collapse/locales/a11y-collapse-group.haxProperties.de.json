@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Auf-/Zuklapp-Gruppe",
+    "description": "Eine Gruppe von auf- und zuklappbaren Elementen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Nur eines aufklappen",
+        "description": "Nur ein Element kann aufgeklappt sein."
+      },
+      {
+        "slot": "",
+        "title": "Klappelemente",
+        "description": "Die Klappelemente."
+      }
+    ]
+  }
+}

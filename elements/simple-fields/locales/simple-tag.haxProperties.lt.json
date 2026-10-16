@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Žymė / piliulė",
+    "description": "Kompaktiška piliulės formos etiketė su pasirenkama akcento spalva, atšaukimo mygtuku arba perjungikliu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etiketė",
+        "description": "Piliulės viduje rodomas tekstas."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "SimpleColors akcento pavadinimas piliulės fonui.",
+        "options": {
+          "": "-- numatytoji --",
+          "red": "Raudona",
+          "pink": "Rožinė",
+          "purple": "Violetinė",
+          "deep-purple": "Tamsiai violetinė",
+          "indigo": "Indigo",
+          "blue": "Mėlyna",
+          "light-blue": "Šviesiai mėlyna",
+          "cyan": "Žydra",
+          "teal": "Žalsvai mėlyna",
+          "green": "Žalia",
+          "light-green": "Šviesiai žalia",
+          "lime": "Laimo",
+          "yellow": "Geltona",
+          "amber": "Gintarinė",
+          "orange": "Oranžinė",
+          "deep-orange": "Tamsiai oranžinė",
+          "brown": "Ruda",
+          "blue-grey": "Melsvai pilka",
+          "grey": "Pilka"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatinė akcento spalva",
+        "description": "Automatiškai nustatyti akcento spalvą pagal etiketės tekstą."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Atšaukimo mygtukas",
+        "description": "Rodyti šalinimo / atšaukimo piktogramos mygtuką piliulėje."
+      },
+      {
+        "property": "readonly",
+        "title": "Tik skaitymui",
+        "description": "Slėpti atšaukimo mygtuką, kad piliulė būtų tik rodoma."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Perjungiama",
+        "description": "Spustelėjus mygtuką piliulė įjungiama / išjungiama."
+      },
+      {
+        "property": "toggled",
+        "title": "Įjungta",
+        "description": "Ar piliulė šiuo metu įjungta."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Įjungimo piktograma",
+        "description": "Piktograma, rodoma, kai piliulė įjungta."
+      },
+      {
+        "property": "disabled",
+        "title": "Išjungta",
+        "description": "Išjungti sąveiką su piliule."
+      }
+    ]
+  }
+}

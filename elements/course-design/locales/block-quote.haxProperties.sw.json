@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Nukuu ya kizuizi",
+    "description": "Kizuizi cha nukuu chenye mtindo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Marejeleo",
+        "description": "Maandishi ya marejeleo."
+      },
+      {
+        "property": "alt",
+        "title": "Mbadala",
+        "description": "Maandishi mbadala ya picha."
+      },
+      {
+        "property": "image",
+        "title": "Picha",
+        "description": "Picha inayoonyeshwa pamoja na nukuu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Ред од колекција",
+    "description": "Ставка во облик на ред за употреба во список на колекција, со текст, врска, икона, ознаки и изборна слика."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Врска",
+        "description": "Одредишен URL за овој ред."
+      },
+      {
+        "property": "image",
+        "title": "Слика",
+        "description": "Слика за редот."
+      },
+      {
+        "property": "alt",
+        "title": "Алт",
+        "description": "Алтернативен текст што ја опишува сликата."
+      },
+      {
+        "property": "line1",
+        "title": "Ред 1",
+        "description": "Прв ред текст."
+      },
+      {
+        "property": "line2",
+        "title": "Ред 2",
+        "description": "Втор ред текст."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона што го претставува редот."
+      },
+      {
+        "property": "saturate",
+        "title": "Ефект на заситеност",
+        "description": "Промена на заситеноста на сликата при фокус."
+      },
+      {
+        "property": "tags",
+        "title": "Ознаки",
+        "description": "Список ознаки одделени со запирка."
+      },
+      {
+        "property": "accentColor",
+        "title": "Боја",
+        "description": "Боја за иконата и ознаките."
+      }
+    ]
+  }
+}

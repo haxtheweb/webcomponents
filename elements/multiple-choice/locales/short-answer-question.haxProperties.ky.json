@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Кыска жооптуу суроо",
+    "description": "Колдонуучу жөнөкөй суроого жооп берсин"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Суроо",
+        "description": "Колдонуучулар жооп бере турган суроо."
+      },
+      {
+        "property": "answers",
+        "title": "Мүмкүн болгон жооптор"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Тесттин аталышы",
+        "description": "xAPI негизиндеги чөйрөлөрдө бул элементти аныктоо үчүн берилген тест аталышы"
+      }
+    ]
+  }
+}

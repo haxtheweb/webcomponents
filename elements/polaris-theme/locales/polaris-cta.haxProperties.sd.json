@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "ٿيم ٿيل Polaris عمل جي سڏ (CTA) وارو بٽڻ ڏيکاريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "بٽڻ جو متن",
+        "description": "عمل جي سڏ واري بٽڻ ۾ ڏيکاريل متن."
+      },
+      {
+        "property": "link",
+        "title": "لنڪ",
+        "description": "بٽڻ لاءِ منزل جو URL."
+      },
+      {
+        "property": "type",
+        "title": "قسم",
+        "description": "بصري انداز جو قسم.",
+        "options": {
+          "primary": "بنيادي",
+          "tinted": "رنگين",
+          "light": "هلڪو"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "آئوٽ لائن انداز",
+        "description": "آئوٽ لائن انداز فعال ڪريو."
+      },
+      {
+        "property": "filled",
+        "title": "ڀريل انداز",
+        "description": "ڀريل انداز فعال ڪريو."
+      }
+    ]
+  }
+}

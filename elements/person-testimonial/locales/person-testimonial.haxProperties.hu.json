@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Képes idézetblokk",
+    "description": "Formázott idézet opcionális képpel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Kép",
+        "description": "Kép hozzáadása a véleményhez."
+      },
+      {
+        "property": "name",
+        "title": "Teljes név",
+        "description": "A véleményt adó személy neve."
+      },
+      {
+        "property": "position",
+        "title": "Beosztás vagy munkakör",
+        "description": "A személy beosztása vagy munkaköre."
+      },
+      {
+        "slot": "",
+        "title": "Idézet",
+        "description": "A vélemény szerzőjének idézete."
+      }
+    ]
+  }
+}

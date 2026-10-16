@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Máàpù àwòrán",
+    "description": "Máàpù àwòrán tí ó ṣeé ráyè sí pẹ̀lú àwọn ibi-gbígbóná aláṣepọ̀."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Àmì-orúkọ",
+        "description": "Àmì-orúkọ fún máàpù àwòrán."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Àlàyé ibi-gbígbóná",
+        "description": "Àwọn ibi-gbígbóná aláṣepọ̀ lórí máàpù àwòrán."
+      }
+    ]
+  }
+}

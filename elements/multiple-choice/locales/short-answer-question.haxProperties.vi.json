@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Câu hỏi trả lời ngắn",
+    "description": "Để người dùng trả lời một câu hỏi cơ bản"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Câu hỏi",
+        "description": "Câu hỏi để người dùng trả lời."
+      },
+      {
+        "property": "answers",
+        "title": "Các đáp án có thể"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tên bài kiểm tra",
+        "description": "Tên bài kiểm tra được truyền vào để nhận dạng mục này trong các môi trường dựa trên xAPI"
+      }
+    ]
+  }
+}

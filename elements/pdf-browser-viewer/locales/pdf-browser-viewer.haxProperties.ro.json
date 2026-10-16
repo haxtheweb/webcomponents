@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Vizualizator PDF în browser",
+    "description": "Încorporează un fișier PDF în pagină, cu aspect opțional de card și buton de descărcare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Locația fișierului PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Titlu",
+        "description": "Textul titlului cardului."
+      },
+      {
+        "property": "card",
+        "title": "Aspect de card",
+        "description": "Afișează PDF-ul într-un card cu buton de descărcare."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Etichetă de descărcare",
+        "description": "Eticheta butonului de descărcare."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mesaj de incompatibilitate",
+        "description": "Mesajul afișat când browserul nu poate afișa fișiere PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mesaj link de incompatibilitate",
+        "description": "Textul linkului când browserul nu poate afișa fișiere PDF."
+      },
+      {
+        "property": "width",
+        "title": "Lățime",
+        "description": "Lățimea vizualizatorului PDF."
+      },
+      {
+        "property": "height",
+        "title": "Înălțime",
+        "description": "Înălțimea vizualizatorului PDF."
+      }
+    ]
+  }
+}

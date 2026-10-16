@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Wrapper fir agebonne Spotify-Player."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quell",
+        "description": "Abannungs- oder Deelen-Link vu Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Thema",
+        "description": "Hannergrondfaarfthema fir de Player.",
+        "options": {
+          "": "Standard",
+          "0": "Schwaarz"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Gréisst",
+        "description": "Gréisst vum Player.",
+        "options": {
+          "normal": "Standard",
+          "compact": "Kompakt"
+        }
+      }
+    ]
+  }
+}

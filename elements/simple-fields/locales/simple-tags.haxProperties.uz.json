@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Teglar",
+    "description": "Sahifada koʻrsatish uchun oddiy teglar roʻyxati."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Teglar",
+        "description": "Vergul bilan ajratilgan teglar roʻyxati."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Avtomatik urgʻu rangi",
+        "description": "Yorliq asosida urgʻu rangini avtomatik belgilash."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rang",
+        "description": "Teglar uchun rang."
+      }
+    ]
+  }
+}

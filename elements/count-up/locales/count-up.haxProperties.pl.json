@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Licznik",
+    "description": "Animuj liczbę rosnącą do wartości docelowej, gdy pojawi się w widoku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Wartość końcowa",
+        "description": "Liczba, do której ma liczyć."
+      },
+      {
+        "property": "start",
+        "title": "Wartość początkowa",
+        "description": "Liczba, od której ma liczyć."
+      },
+      {
+        "property": "duration",
+        "title": "Czas trwania",
+        "description": "Liczba sekund trwania animacji liczenia."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Tekst przedrostka",
+        "description": "Tekst wyświetlany przed liczbą (np. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Tekst przyrostka",
+        "description": "Tekst wyświetlany po liczbie (np. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot przedrostka",
+        "description": "Opcjonalna zawartość w slocie przed liczbą."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot przyrostka",
+        "description": "Opcjonalna zawartość w slocie po liczbie."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Miejsca dziesiętne",
+        "description": "Liczba wyświetlanych miejsc dziesiętnych."
+      },
+      {
+        "property": "separator",
+        "title": "Separator tysięcy",
+        "description": "Znak oddzielający grupy tysięcy."
+      },
+      {
+        "property": "decimal",
+        "title": "Znak dziesiętny",
+        "description": "Znak używany jako separator dziesiętny."
+      },
+      {
+        "property": "noeasing",
+        "title": "Bez wygładzania",
+        "description": "Wyłącz wygładzanie, aby liczenie było liniowe."
+      }
+    ]
+  }
+}

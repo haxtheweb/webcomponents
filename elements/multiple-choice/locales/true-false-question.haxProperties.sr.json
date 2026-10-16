@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Питање тачно / нетачно",
+    "description": "Питање тачно или нетачно"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Питање",
+        "description": "Питање на које корисници одговарају."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Тачан одговор"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Назив квиза",
+        "description": "Назив квиза који се прослеђује за употребу у окружењима заснованим на xAPI ради идентификације ове ставке"
+      }
+    ]
+  }
+}

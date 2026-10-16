@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX-vortarto",
+    "description": "Emblema elemento por HAX, kompreneble kiel HAX-kapabla elemento."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Grandeco de la metota HAX-emblemo",
+        "options": {
+          "mini": "Mini",
+          "small": "Malgranda",
+          "normal": "Normala",
+          "large": "Granda"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Ĉu konverti la emblemon al majuskloj"
+      }
+    ]
+  }
+}

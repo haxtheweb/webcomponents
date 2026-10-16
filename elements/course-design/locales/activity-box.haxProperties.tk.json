@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Işjeňlik gutusy",
+    "description": "Kiçi bezelen sözbaşy bloky."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Nyşan",
+        "description": "Işjeňlik gutusynyň ýanynda görkezilýän nyşan."
+      },
+      {
+        "property": "tag",
+        "title": "Işjeňlik gutusynyň belligi",
+        "description": "Işjeňlik gutusynda görkezilýän bellik."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Reňklemesiz",
+        "description": "Nyşana reňkleriň ulanylmagynyň öňüni al."
+      }
+    ]
+  }
+}

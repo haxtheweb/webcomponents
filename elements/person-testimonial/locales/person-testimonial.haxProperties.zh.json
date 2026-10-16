@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "图像引用块",
+    "description": "带可选图像的风格化引语。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "图像",
+        "description": "为推荐语添加图像。"
+      },
+      {
+        "property": "name",
+        "title": "全名",
+        "description": "提供推荐语的人的姓名。"
+      },
+      {
+        "property": "position",
+        "title": "职位或职称",
+        "description": "此人的职位或职称。"
+      },
+      {
+        "slot": "",
+        "title": "引语",
+        "description": "推荐语作者的引语。"
+      }
+    ]
+  }
+}

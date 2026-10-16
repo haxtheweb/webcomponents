@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "జత చేసే ప్రశ్న",
+    "description": "ప్రాంప్ట్‌లను వాటి సరైన సమాధానాలతో జత చేసే డ్రాగ్-అండ్-డ్రాప్ జత కార్యాచరణ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ప్రశ్న",
+        "description": "వినియోగదారుల కోసం ప్రశ్న. డ్రాప్ లక్ష్యాలను గుర్తించండి, ఆపై తదుపరి లక్ష్యం వరకు సమాధానాలను జాబితా చేయండి."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "గ్రేడింగ్ ఫార్మాట్",
+        "description": "OER Schema: ఈ మూల్యాంకనం కోసం గ్రేడింగ్ ఫార్మాట్ (ఉదా. పాయింట్లు, అక్షర గ్రేడ్, శాతం, పూర్తి)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "అభ్యాస లక్ష్యం",
+        "description": "OER Schema: ఈ మూల్యాంకనంతో అనుబంధించిన అభ్యాస లక్ష్యం."
+      },
+      {
+        "property": "forCourse",
+        "title": "కోర్సు",
+        "description": "OER Schema: ఈ మూల్యాంకనం ఉద్దేశించిన కోర్సు."
+      },
+      {
+        "property": "answers",
+        "title": "సమాధానాలు"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "క్విజ్ పేరు",
+        "description": "విశ్లేషణ వ్యవస్థలలో xAPI గుర్తింపు కోసం ఉపయోగించే క్విజ్ పేరు."
+      }
+    ]
+  }
+}

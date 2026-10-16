@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Akcia používateľa",
+    "description": "Sledovanie akcií používateľa a odosielanie údajov do úložísk xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Sledovaná udalosť",
+        "description": "Akcia používateľa, ktorá spúšťa túto udalosť.",
+        "options": {
+          "visibility": "Vidí toto",
+          "keydown": "Stlačí tu kláves",
+          "click": "Klikne sem",
+          "hover": "Prejde sem myšou"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Sledovať zakaždým",
+        "description": "Predvolene sa sleduje iba prvý výskyt."
+      }
+    ]
+  }
+}

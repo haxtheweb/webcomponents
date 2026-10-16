@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "判断题",
+    "description": "判断对错题"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "问题",
+        "description": "供用户作答的问题。"
+      },
+      {
+        "property": "_tfanswer",
+        "title": "正确答案"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "测验名称",
+        "description": "传入的测验名称，用于在 xAPI 驱动的环境中识别此项目"
+      }
+    ]
+  }
+}

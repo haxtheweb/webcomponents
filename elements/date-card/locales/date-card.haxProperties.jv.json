@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Tanggal",
+    "description": "Tampilake tanggal tanggalan kanthi rincian."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Sasi",
+        "description": "Sasi sing katon ing kertu."
+      },
+      {
+        "property": "date",
+        "title": "Tanggal sasi",
+        "description": "Angka dina ing sasi."
+      },
+      {
+        "property": "day",
+        "title": "Dina ing minggu",
+        "description": "Jeneng dina ing minggu."
+      },
+      {
+        "property": "title",
+        "title": "Judhul",
+        "description": "Jeneng acara."
+      },
+      {
+        "property": "location",
+        "title": "Lokasi",
+        "description": "Lokasi acara."
+      },
+      {
+        "property": "startTime",
+        "title": "Wiwit",
+        "description": "Wektu wiwit."
+      },
+      {
+        "property": "endTime",
+        "title": "Rampung",
+        "description": "Wektu rampung."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna Aksen",
+        "description": "Werna aksen opsional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema Peteng",
+        "description": "Aktifake tema peteng."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Blockquote na may Larawan",
+    "description": "Naka-istilong sipi na may opsyonal na larawan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Larawan",
+        "description": "Magdagdag ng larawan sa testimonial."
+      },
+      {
+        "property": "name",
+        "title": "Buong Pangalan",
+        "description": "Pangalan ng taong nagbibigay ng testimonial."
+      },
+      {
+        "property": "position",
+        "title": "Posisyon o Titulo sa Trabaho",
+        "description": "Posisyon o titulo sa trabaho ng tao."
+      },
+      {
+        "slot": "",
+        "title": "Sipi",
+        "description": "Sipi mula sa may-akda ng testimonial."
+      }
+    ]
+  }
+}

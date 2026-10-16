@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "וואָקאַבולאַר",
+    "description": "וואָקאַבולאַר־טערמין."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "טערמין"
+      },
+      {
+        "property": "information",
+        "title": "דעפֿיניציע",
+        "description": "דעפֿיניציע געוויזן ווען מע דריקט אויפֿן טערמין."
+      },
+      {
+        "property": "popoverMode",
+        "title": "אויפֿשפּרינג־פֿענצטער",
+        "description": "ווײַזן די דעפֿיניציע אין אַן אויפֿשפּרינג־פֿענצטער אַנשטאָט אין טעקסט."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "לינקען",
+        "description": "רשימה פֿון נאָך לינקען פֿאַרבונדן מיטן טערמין."
+      }
+    ]
+  }
+}

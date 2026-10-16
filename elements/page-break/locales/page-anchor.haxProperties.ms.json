@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sauh Halaman",
+    "description": "Pautkan ke titik tertentu dalam media pada halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Sasaran halaman",
+        "description": "ID atau sumber yang ditunjuk oleh sauh ini."
+      },
+      {
+        "property": "value",
+        "title": "Nilai pautan dalam",
+        "description": "Nilai pautan dalam (contohnya cap masa atau ID slaid)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entiti laman",
+        "description": "Entiti laman pilihan untuk mengawal persembahan konsep berkaitan."
+      }
+    ]
+  }
+}

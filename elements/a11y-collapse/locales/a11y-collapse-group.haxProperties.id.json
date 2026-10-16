@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grup Bentang Ciutkan",
+    "description": "Sekelompok elemen bentang-ciutkan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Bentangkan hanya satu",
+        "description": "Hanya satu item yang dapat dibentangkan."
+      },
+      {
+        "slot": "",
+        "title": "Item Ciutkan",
+        "description": "Item-item yang dapat diciutkan."
+      }
+    ]
+  }
+}

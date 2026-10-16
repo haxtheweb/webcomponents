@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "სწორია / მცდარია კითხვა",
+    "description": "სწორია თუ მცდარი კითხვა"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "კითხვა",
+        "description": "კითხვა, რომელსაც მომხმარებლები პასუხობენ."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "სწორი პასუხი"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ქვიზის სახელი",
+        "description": "ქვიზის სახელი, რომელიც გადაეცემა xAPI-ზე დაფუძნებულ გარემოებს ამ ელემენტის იდენტიფიკაციისთვის"
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris zīme",
+    "description": "Rādīt PSU identitātes zīmi ar neobligātu koledžas nosaukumu un mērķa URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Koledžas nosaukums",
+        "description": "Blakus zīmei rādītais nosaukums."
+      },
+      {
+        "property": "name2",
+        "title": "Koledžas nosaukums 2",
+        "description": "Otrais nosaukums, kas tiek rādīts zem pirmā koledžas nosaukuma."
+      },
+      {
+        "property": "name3",
+        "title": "Koledžas nosaukums 3",
+        "description": "Trešais nosaukums, kas tiek rādīts zem otrā koledžas nosaukuma."
+      },
+      {
+        "property": "url",
+        "title": "Saite",
+        "description": "Mērķa URL, noklikšķinot uz zīmes."
+      },
+      {
+        "property": "type",
+        "title": "Variants",
+        "description": "Zīmes vizuālais variants.",
+        "options": {
+          "default": "Noklusējums",
+          "light": "Gaišs",
+          "dark": "Tumšs"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Vertikāls izkārtojums",
+        "description": "Rādīt trešo nosaukumu zem otrā, atdalot ar horizontālu līniju."
+      }
+    ]
+  }
+}

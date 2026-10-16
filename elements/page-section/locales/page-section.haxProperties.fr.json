@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Section de page",
+    "description": "Conteneur de section pour le contenu de la page et les mises en page plein écran."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Traitement graphique",
+        "description": "Style prédéfini qui met à jour les paramètres associés."
+      },
+      {
+        "property": "image",
+        "title": "Image",
+        "description": "Média d'arrière-plan de la section."
+      },
+      {
+        "property": "bg",
+        "title": "Couleur d'arrière-plan",
+        "description": "Couleur d'arrière-plan lorsqu'aucune image n'est définie."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Bouton de défilement",
+        "description": "Afficher un bouton qui fait défiler jusqu'à la section suivante."
+      },
+      {
+        "property": "fold",
+        "title": "Afficher le pli",
+        "description": "Afficher un pli visuel en bas de la section."
+      },
+      {
+        "property": "full",
+        "title": "Plein écran",
+        "description": "Occuper toute la hauteur de l'écran."
+      },
+      {
+        "property": "filter",
+        "title": "Appliquer un filtre",
+        "description": "Appliquer un filtre visuel à l'image d'arrière-plan."
+      },
+      {
+        "slot": "",
+        "title": "Contenu",
+        "description": "Contenu de la section."
+      },
+      {
+        "slot": "entice",
+        "title": "Accroche",
+        "description": "Contenu d'accroche facultatif."
+      },
+      {
+        "slot": "buttons",
+        "title": "Boutons",
+        "description": "Groupe de boutons affiché sous le texte."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Texte de l'ancre",
+        "description": "Libellé de l'ancre affiché dans la navigation."
+      }
+    ]
+  }
+}

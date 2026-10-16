@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Collectie-item",
+    "description": "Kaartvormig item voor gebruik in een collectielijst, met tekst, link en optionele media."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Doel-URL voor deze kaart."
+      },
+      {
+        "property": "image",
+        "title": "Afbeelding",
+        "description": "Achtergrondafbeelding."
+      },
+      {
+        "property": "line1",
+        "title": "Regel 1",
+        "description": "Eerste tekstregel."
+      },
+      {
+        "property": "line2",
+        "title": "Regel 2",
+        "description": "Tweede tekstregel."
+      },
+      {
+        "property": "line3",
+        "title": "Regel 3",
+        "description": "Derde tekstregel."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Pictogram",
+        "description": "Pictogram dat de kaart vertegenwoordigt."
+      },
+      {
+        "property": "saturate",
+        "title": "Verzadigingseffect",
+        "description": "Verander de verzadiging van de afbeelding bij focus."
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Door komma's gescheiden lijst met tags."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kleur",
+        "description": "Kleur voor tags."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternatieve tekst die de link beschrijft."
+      }
+    ]
+  }
+}

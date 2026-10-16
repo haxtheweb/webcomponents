@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kad imbas",
+    "description": "Latih konsep dengan kad imbas depan dan belakang."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Bahagian Depan Kad",
+        "description": "Teks atau soalan bahagian depan."
+      },
+      {
+        "slot": "back",
+        "title": "Bahagian Belakang Kad",
+        "description": "Jawapan yang dijangka."
+      },
+      {
+        "property": "imgSource",
+        "title": "Sumber Imej",
+        "description": "Fail imej yang digunakan untuk kad. Mengatasi Kata Kunci Imej."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Jenis Tindakan",
+        "description": "OER Schema: jenis tindakan yang terlibat dalam latihan ini (cth. Membaca, Menulis, Membuat, Menyelidik, Mendengar, Menonton, Merenung, Berbincang, Memerhati, Membentang, Mentaksir)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objektif Pembelajaran",
+        "description": "OER Schema: ID atau URL objektif pembelajaran yang disokong oleh latihan ini."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Gelap",
+        "description": "Gunakan mod gelap."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen kad."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Kata Kunci Imej",
+        "description": "Kata kunci imej rawak. Diatasi oleh Sumber Imej."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Leabaigh pobail Discord ó URL comhroinnte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL na hAcmhainne",
+        "description": "URL na hacmhainne."
+      },
+      {
+        "property": "height",
+        "title": "Airde",
+        "description": "Airde fhráma an ábhair."
+      },
+      {
+        "property": "width",
+        "title": "Leithead",
+        "description": "Leithead fhráma an ábhair."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bildkaart",
+    "description": "Eng accessibel Bildkaart mat interaktive Hotspots."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etikett",
+        "description": "Etikett fir d'Bildkaart."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Hotspot-Detailer",
+        "description": "Déi interaktiv Hotspots op der Bildkaart."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Блок-цитат",
+    "description": "Стилизиран блок за цитат."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Навод",
+        "description": "Текст на наводот."
+      },
+      {
+        "property": "alt",
+        "title": "Алт",
+        "description": "Алтернативен текст за сликата."
+      },
+      {
+        "property": "image",
+        "title": "Слика",
+        "description": "Слика прикажана со цитатот."
+      }
+    ]
+  }
+}

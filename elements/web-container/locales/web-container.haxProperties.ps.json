@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS کانټېنر"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "سمونګر پټ کړئ",
+        "description": "د فایل د سمون انټرفېس پټ کړئ."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "ټرمینل پټ کړئ",
+        "description": "د اتومات چلېدونکو پروګرامونو لپاره ټرمینل پټ کړئ."
+      },
+      {
+        "property": "hideWindow",
+        "title": "کړکۍ پټه کړئ",
+        "description": "یوازې د ټرمینل د کارونې لپاره د وتو کړکۍ پټه کړئ."
+      },
+      {
+        "slot": "",
+        "title": "قوماندې",
+        "description": "هغه قوماندې (په هره کرښه کې یوه) چې له بارولو مخکې چلېږي."
+      }
+    ]
+  }
+}

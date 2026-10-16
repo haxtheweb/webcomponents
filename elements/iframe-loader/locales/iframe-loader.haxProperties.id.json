@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Sematkan konten web eksternal dalam iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL Sumber Daya",
+        "description": "URL sumber daya."
+      },
+      {
+        "property": "height",
+        "title": "Tinggi",
+        "description": "Tinggi iframe."
+      },
+      {
+        "property": "width",
+        "title": "Lebar",
+        "description": "Lebar iframe."
+      }
+    ]
+  }
+}

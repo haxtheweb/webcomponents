@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Samlingsrad",
+    "description": "Radobjekt för användning i en samlingslista, med text, länk, ikon, taggar och valfri bild."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Länk",
+        "description": "Mål-URL för den här raden."
+      },
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Bild för raden."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativ text som beskriver bilden."
+      },
+      {
+        "property": "line1",
+        "title": "Rad 1",
+        "description": "Första textraden."
+      },
+      {
+        "property": "line2",
+        "title": "Rad 2",
+        "description": "Andra textraden."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon som representerar raden."
+      },
+      {
+        "property": "saturate",
+        "title": "Mättnadseffekt",
+        "description": "Ändra bildens mättnad när användaren fokuserar."
+      },
+      {
+        "property": "tags",
+        "title": "Taggar",
+        "description": "Kommaseparerad lista med taggar."
+      },
+      {
+        "property": "accentColor",
+        "title": "Färg",
+        "description": "Färg för ikon och taggar."
+      }
+    ]
+  }
+}

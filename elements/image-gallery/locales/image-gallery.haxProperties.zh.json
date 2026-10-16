@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "图库",
+    "description": "以网格、瀑布流或幻灯片布局展示图像的图库。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "显示模式",
+        "description": "图库中图像的展示方式。",
+        "options": {
+          "grid": "网格",
+          "masonry": "瀑布流",
+          "gallery": "图库"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "活动索引",
+        "description": "图库模式下起始显示的图像索引。"
+      }
+    ]
+  }
+}

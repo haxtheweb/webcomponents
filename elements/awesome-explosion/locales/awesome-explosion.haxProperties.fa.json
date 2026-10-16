@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "انفجار شگفت‌انگیز",
+    "description": "پویانمایی تعاملی انفجار با جلوه‌های صوتی اختیاری."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "اندازه",
+        "description": "اندازهٔ انفجار را تنظیم کنید.",
+        "options": {
+          "tiny": "خیلی کوچک",
+          "small": "کوچک",
+          "medium": "متوسط",
+          "large": "بزرگ",
+          "epic": "حماسی"
+        }
+      },
+      {
+        "property": "color",
+        "title": "رنگ",
+        "description": "پوستهٔ رنگی انفجار را تنظیم کنید.",
+        "options": {
+          "": "پیش‌فرض",
+          "red": "قرمز",
+          "blue": "آبی",
+          "purple": "بنفش",
+          "orange": "نارنجی",
+          "yellow": "زرد"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "جلوه‌های صوتی",
+        "description": "جلوه‌های صوتی فعال شوند."
+      },
+      {
+        "property": "resetSound",
+        "title": "بازنشانی صدا",
+        "description": "صدا هر بار از ابتدا پخش شود."
+      },
+      {
+        "property": "image",
+        "title": "تصویر سفارشی",
+        "description": "URL اختیاری برای تصویر سفارشی انفجار."
+      },
+      {
+        "property": "sound",
+        "title": "صدای سفارشی",
+        "description": "URL اختیاری برای جلوهٔ صوتی سفارشی."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "غیرفعال",
+        "description": "همهٔ تعامل‌ها غیرفعال شوند."
+      }
+    ]
+  }
+}

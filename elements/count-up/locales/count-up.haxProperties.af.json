@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Optelling",
+    "description": "Animeer 'n getal wat tot 'n teikenwaarde optel wanneer dit in sig rol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Eindwaarde",
+        "description": "Die getal om tot op te tel."
+      },
+      {
+        "property": "start",
+        "title": "Beginwaarde",
+        "description": "Die getal om van af op te tel."
+      },
+      {
+        "property": "duration",
+        "title": "Duur",
+        "description": "Sekondes wat die telanimasie moet neem."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Voorvoegselteks",
+        "description": "Teks wat voor die getal gewys word (bv. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Agtervoegselteks",
+        "description": "Teks wat na die getal gewys word (bv. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Voorvoegselgleuf",
+        "description": "Opsionele ingegleufde inhoud voor die getal."
+      },
+      {
+        "slot": "suffix",
+        "title": "Agtervoegselgleuf",
+        "description": "Opsionele ingegleufde inhoud na die getal."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Desimale plekke",
+        "description": "Aantal desimale plekke om te vertoon."
+      },
+      {
+        "property": "separator",
+        "title": "Duisendtalskeier",
+        "description": "Karakter wat duisendtalgroepe skei."
+      },
+      {
+        "property": "decimal",
+        "title": "Desimale karakter",
+        "description": "Karakter gebruik vir die desimale punt."
+      },
+      {
+        "property": "noeasing",
+        "title": "Geen versagting",
+        "description": "Deaktiveer versagting sodat die telling lineêr is."
+      }
+    ]
+  }
+}

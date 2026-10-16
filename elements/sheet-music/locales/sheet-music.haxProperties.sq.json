@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Partiturë muzikore",
+    "description": "Shfaq dhe luan partitura, tabulatura kitare dhe shënime muzikore përmes alphaTex ose MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Shënimi alphaTex",
+        "description": "Shënim alphaTex brenda faqes për partiturën. Redaktoje drejtpërdrejt për të shkruar notat; ruhet në një shabllon që hapësirat të ruhen."
+      },
+      {
+        "property": "source",
+        "title": "Skedari i partiturës",
+        "description": "Ngarko ose lidh një skedar MusicXML (.xml/.musicxml/.mxl) ose Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Kur caktohet, mbishkruan alphaTex brenda faqes."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Luajtja e audios",
+        "description": "Aktive si parazgjedhje - dëgjo partiturën e luajtur nga sintetizuesi i integruar. Çaktivizoje për modalitetin vetëm për shikim (pa audio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Shfaq opsionet e shfaqjes",
+        "description": "Shfaq butonat e zmadhimit, shtrirjes dhe paraqitjes në shiritin e luajtësit."
+      },
+      {
+        "property": "showExport",
+        "title": "Shfaq butonat e eksportit",
+        "description": "Shfaq butonat e shkarkimit MIDI dhe të printimit/PDF në shiritin e luajtësit."
+      }
+    ]
+  }
+}

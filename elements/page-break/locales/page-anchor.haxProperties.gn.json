@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kuatiarogue jokoha",
+    "description": "Ejoaju mba'erechapyrã tenda oñeñandúvape kuatiaroguépe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Kuatiarogue ohohápe",
+        "description": "ID térã mba'erepy ko jokoha ohechaukáva."
+      },
+      {
+        "property": "value",
+        "title": "Joajuha pypuku repykue",
+        "description": "Joajuha pypuku repykue (techapyrã aravo kuatia térã jehechauka ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Tenda mba'e",
+        "description": "Tenda mba'e ikatúva oñangareko hag̃ua ñe'ẽmbykyrã ojoajúva jehechaukáre."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Bheji reChiitiko",
+    "description": "Chikamu chebheji rechiitiko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Mufananidzo weTV",
+        "description": "Mufananidzo unoratidzwa paTV."
+      },
+      {
+        "property": "logo",
+        "title": "Rogo",
+        "description": "Rogo inoratidzwa mukona mebheji."
+      },
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Musoro unoratidzwa kumusoro kwebheji."
+      },
+      {
+        "property": "name",
+        "title": "Zita",
+        "description": "Zita rinoratidzwa pabheji."
+      },
+      {
+        "property": "position",
+        "title": "Chinzvimbo",
+        "description": "Basa kana chinzvimbo chemunhu."
+      },
+      {
+        "property": "organization",
+        "title": "Sangano",
+        "description": "Sangano rinoshanda munhu."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Ruvara rweTV",
+        "description": "Sarudza ruvara rweTV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara rwekusimbisa",
+        "description": "Ruvara rukuru rwekumashure kana rwemavara."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Ruvara rwemabhatani ekutenderedza",
+        "description": "Ruvara rwemabhatani ekutenderedza eTV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Isa ruvara rwesepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Dema nechena",
+        "description": "Isa ruvara rwedema nechena."
+      }
+    ]
+  }
+}

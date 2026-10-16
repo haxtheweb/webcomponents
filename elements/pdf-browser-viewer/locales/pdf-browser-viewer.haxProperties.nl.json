@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF-viewer in browser",
+    "description": "Sluit een PDF-bestand inline in met optionele kaartindeling en downloadknop."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF-URL",
+        "description": "Locatie van het PDF-bestand."
+      },
+      {
+        "property": "heading",
+        "title": "Kop",
+        "description": "Koptekst van de kaart."
+      },
+      {
+        "property": "card",
+        "title": "Kaartindeling",
+        "description": "Toon de PDF in een kaart met een downloadknop."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Downloadlabel",
+        "description": "Label voor de downloadknop."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Melding 'niet ondersteund'",
+        "description": "Melding als de browser geen PDF-bestanden kan weergeven."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Linktekst 'niet ondersteund'",
+        "description": "Linktekst als de browser geen PDF-bestanden kan weergeven."
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Breedte van de PDF-viewer."
+      },
+      {
+        "property": "height",
+        "title": "Hoogte",
+        "description": "Hoogte van de PDF-viewer."
+      }
+    ]
+  }
+}

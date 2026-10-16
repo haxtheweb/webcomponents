@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X)-inniseting",
+    "description": "Innset eitt tweet frá X í samanhangi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Tweet-URL",
+        "description": "URL til tweetið, sum skal innsetast."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Evni",
+        "description": "Ljóst ella myrkt evni til tweet á X.",
+        "options": {
+          "light": "Ljóst",
+          "dark": "Myrkt"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Forða fyri sprettiglugga við klikk",
+        "description": "Forða brúkarum í at lata tweetið upp á x.com."
+      }
+    ]
+  }
+}

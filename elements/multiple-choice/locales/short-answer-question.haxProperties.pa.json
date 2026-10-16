@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "ਛੋਟੇ ਜਵਾਬ ਵਾਲਾ ਸਵਾਲ",
+    "description": "ਉਪਭੋਗਤਾ ਤੋਂ ਇੱਕ ਸਧਾਰਨ ਸਵਾਲ ਦਾ ਜਵਾਬ ਲਓ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ਸਵਾਲ",
+        "description": "ਉਪਭੋਗਤਾਵਾਂ ਦੇ ਜਵਾਬ ਦੇਣ ਲਈ ਸਵਾਲ।"
+      },
+      {
+        "property": "answers",
+        "title": "ਸੰਭਾਵਿਤ ਜਵਾਬ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ਕੁਇਜ਼ ਦਾ ਨਾਮ",
+        "description": "xAPI-ਆਧਾਰਿਤ ਵਾਤਾਵਰਣਾਂ ਵਿੱਚ ਇਸ ਆਈਟਮ ਦੀ ਪਛਾਣ ਲਈ ਭੇਜਿਆ ਕੁਇਜ਼ ਨਾਮ"
+      }
+    ]
+  }
+}

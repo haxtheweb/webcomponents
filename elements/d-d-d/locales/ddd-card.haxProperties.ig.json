@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kaadị",
+    "description": "Akụrụngwa kaadị ahaziri site na usoro imewe DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Onyonyo",
+        "description": "Onyonyo nhọrọ."
+      },
+      {
+        "property": "alt",
+        "title": "Alt onyonyo",
+        "description": "Ederede ọzọ na-akọwa onyonyo ahụ."
+      },
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Aha kaadị."
+      },
+      {
+        "slot": "",
+        "title": "Ọdịnaya",
+        "description": "Mpaghara ọdịnaya kaadị."
+      },
+      {
+        "property": "href",
+        "title": "Njikọ",
+        "description": "URL njikọ bọtịnụ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Akara aha",
+        "description": "Akara aha bọtịnụ."
+      },
+      {
+        "property": "noArrow",
+        "title": "Enweghị Akụ",
+        "description": "Zoo akụ bọtịnụ ahụ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Njikọ: ebe ọ ga-emepe",
+        "description": "Ebe a ga-emepe njikọ ahụ.",
+        "options": {
+          "": "Otu windo ahụ",
+          "_blank": "Windo ọhụrụ - _blank",
+          "_top": "Windo kachasị elu - _top",
+          "_parent": "Windo nne - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Njikọ: rel",
+        "description": "Mmekọrịta dị n'etiti akụrụngwa ejikọrọ na akwụkwọ dị ugbu a."
+      }
+    ]
+  }
+}

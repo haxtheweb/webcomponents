@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Note d'arrêt",
+    "description": "Un message pour attirer l'attention des lecteurs sur des consignes précises."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titre",
+        "description": "Saisissez le titre de la note d'arrêt."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Saisissez une URL externe."
+      },
+      {
+        "property": "status",
+        "title": "Statut",
+        "description": "Le statut modifie les couleurs et les icônes en conséquence",
+        "options": {
+          "stop": "Arrêt",
+          "warning": "Avertissement",
+          "success": "Confirmation",
+          "info": "Avis"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Texte de la note",
+        "description": "Texte de la note d'arrêt."
+      }
+    ]
+  }
+}

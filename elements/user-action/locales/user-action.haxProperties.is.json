@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Aðgerð notanda",
+    "description": "Rekja aðgerðir notenda og senda gögn í xAPI-geymslur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Atburður til að rekja",
+        "description": "Aðgerð notanda sem kveikir á þessum atburði.",
+        "options": {
+          "visibility": "Getur séð þetta",
+          "keydown": "Ýttu á lykil hér",
+          "click": "Smelltu á þetta",
+          "hover": "Sveima yfir þessu"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Rekja í hvert skipti",
+        "description": "Sjálfgefið er aðeins fyrsta tilvikið rakið."
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotifyプレーヤー埋め込み用のラッパー。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ソース",
+        "description": "Spotifyの埋め込みリンクまたは共有リンク。"
+      },
+      {
+        "property": "theme",
+        "title": "テーマ",
+        "description": "プレーヤーの背景色テーマ。",
+        "options": {
+          "": "既定",
+          "0": "黒"
+        }
+      },
+      {
+        "property": "size",
+        "title": "サイズ",
+        "description": "プレーヤーのサイズ。",
+        "options": {
+          "normal": "既定",
+          "compact": "コンパクト"
+        }
+      }
+    ]
+  }
+}

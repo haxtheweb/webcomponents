@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Rasmli iqtibos",
+    "description": "Ixtiyoriy rasmli bezatilgan iqtibos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Rasm",
+        "description": "Fikr-mulohazaga rasm qoʻshish."
+      },
+      {
+        "property": "name",
+        "title": "Toʻliq ism",
+        "description": "Fikr-mulohaza bildirgan shaxsning ismi."
+      },
+      {
+        "property": "position",
+        "title": "Lavozim yoki kasb",
+        "description": "Shaxsning lavozimi yoki kasbi."
+      },
+      {
+        "slot": "",
+        "title": "Iqtibos",
+        "description": "Fikr-mulohaza muallifidan iqtibos."
+      }
+    ]
+  }
+}

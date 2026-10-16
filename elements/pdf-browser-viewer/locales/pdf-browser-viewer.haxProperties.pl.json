@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Przeglądarka PDF",
+    "description": "Osadź plik PDF w treści z opcjonalnym układem karty i przyciskiem pobierania."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL pliku PDF",
+        "description": "Lokalizacja pliku PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Nagłówek",
+        "description": "Tekst nagłówka karty."
+      },
+      {
+        "property": "card",
+        "title": "Układ karty",
+        "description": "Wyświetl PDF na karcie z przyciskiem pobierania."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Etykieta pobierania",
+        "description": "Etykieta przycisku pobierania."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Komunikat o braku obsługi",
+        "description": "Komunikat, gdy przeglądarka nie może wyświetlać plików PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Tekst linku przy braku obsługi",
+        "description": "Tekst linku, gdy przeglądarka nie może wyświetlać plików PDF."
+      },
+      {
+        "property": "width",
+        "title": "Szerokość",
+        "description": "Szerokość przeglądarki PDF."
+      },
+      {
+        "property": "height",
+        "title": "Wysokość",
+        "description": "Wysokość przeglądarki PDF."
+      }
+    ]
+  }
+}

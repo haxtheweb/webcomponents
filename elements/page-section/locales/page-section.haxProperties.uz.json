@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sahifa boʻlimi",
+    "description": "Sahifa kontenti va ekranga asoslangan maketlar uchun boʻlim konteyneri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Dizayn uslubi",
+        "description": "Tegishli sozlamalarni yangilaydigan oldindan belgilangan uslub."
+      },
+      {
+        "property": "image",
+        "title": "Rasm",
+        "description": "Boʻlim uchun fon mediasi."
+      },
+      {
+        "property": "bg",
+        "title": "Fon rangi",
+        "description": "Rasm oʻrnatilmaganda fon rangi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Aylantirish tugmasi",
+        "description": "Keyingi boʻlimga aylantiradigan tugmani koʻrsatish."
+      },
+      {
+        "property": "fold",
+        "title": "Bukilishni koʻrsatish",
+        "description": "Boʻlim pastida vizual bukilishni koʻrsatish."
+      },
+      {
+        "property": "full",
+        "title": "Toʻliq ekran oʻlchami",
+        "description": "Tomoshabin ekrani balandligini toʻldirish."
+      },
+      {
+        "property": "filter",
+        "title": "Filtr qoʻllash",
+        "description": "Fon rasmiga vizual filtr qoʻllash."
+      },
+      {
+        "slot": "",
+        "title": "Kontent",
+        "description": "Boʻlim kontenti."
+      },
+      {
+        "slot": "entice",
+        "title": "Jalb qilish",
+        "description": "Ixtiyoriy jalb qiluvchi kontent."
+      },
+      {
+        "slot": "buttons",
+        "title": "Tugmalar",
+        "description": "Matn ostida koʻrsatiladigan tugmalar guruhi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Langar matni",
+        "description": "Navigatsiyada koʻrsatiladigan langar yorligʻi."
+      }
+    ]
+  }
+}

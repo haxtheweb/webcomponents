@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Zance Mai Hoto",
+    "description": "Zance mai salo tare da hoton zaɓi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Hoto",
+        "description": "Ƙara hoto ga shaidar."
+      },
+      {
+        "property": "name",
+        "title": "Cikakken Suna",
+        "description": "Sunan mutumin da ke ba da shaidar."
+      },
+      {
+        "property": "position",
+        "title": "Matsayi ko Taken Aiki",
+        "description": "Matsayi ko taken aikin mutumin."
+      },
+      {
+        "slot": "",
+        "title": "Zance",
+        "description": "Zance daga mai ba da shaidar."
+      }
+    ]
+  }
+}

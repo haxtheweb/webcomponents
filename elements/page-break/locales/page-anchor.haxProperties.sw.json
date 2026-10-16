@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Nanga ya Ukurasa",
+    "description": "Unganisha kwenye sehemu mahususi za midia kwenye ukurasa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Lengo la ukurasa",
+        "description": "ID au rasilimali ambayo nanga hii inaelekeza."
+      },
+      {
+        "property": "value",
+        "title": "Thamani ya kiungo kirefu",
+        "description": "Thamani ya kiungo kirefu (kwa mfano muhuri wa wakati au ID ya slaidi)."
+      },
+      {
+        "property": "entityId",
+        "title": "Huluki ya tovuti",
+        "description": "Huluki ya hiari ya tovuti ya kudhibiti uwasilishaji wa dhana zinazohusiana."
+      }
+    ]
+  }
+}

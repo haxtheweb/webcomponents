@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) -upotus",
+    "description": "Upota X-twiitti sisältöön."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Twiitin URL",
+        "description": "Upotettavan twiitin URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Teema",
+        "description": "Vaalea tai tumma teema X-twiiteille.",
+        "options": {
+          "light": "Vaalea",
+          "dark": "Tumma"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Estä ponnahdusikkuna napsautettaessa",
+        "description": "Estä käyttäjiä avaamasta twiittiä x.com-sivustolla."
+      }
+    ]
+  }
+}

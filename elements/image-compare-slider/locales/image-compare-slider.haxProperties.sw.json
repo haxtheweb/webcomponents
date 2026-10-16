@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Linganisha picha",
+    "description": "Telezesha picha moja juu ya nyingine ili kulinganisha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Picha ya juu",
+        "description": "Picha ya juu ya kutelezesha juu ya picha ya chini."
+      },
+      {
+        "property": "topAlt",
+        "title": "Maandishi mbadala ya picha ya juu",
+        "description": "Maandishi mbadala yanayohitajika kwa ajili ya ufikivu."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Picha ya chini",
+        "description": "Picha ya chini inayoonyeshwa chini ya picha ya juu."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Maandishi mbadala ya picha ya chini",
+        "description": "Maandishi mbadala yanayohitajika kwa ajili ya ufikivu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Tabia",
+        "description": "Chagua hali ya kufuta (chaguo-msingi) au hali ya uangavu wa picha ya juu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya Msisitizo",
+        "description": "Rangi ya upau wa kitelezi."
+      },
+      {
+        "property": "dark",
+        "title": "Meusi",
+        "description": "Geuza rangi ya upau wa kitelezi."
+      },
+      {
+        "property": "position",
+        "title": "Nafasi ya Mwanzo",
+        "description": "Nafasi ya kuanzia kutoka 0 hadi 100."
+      }
+    ]
+  }
+}

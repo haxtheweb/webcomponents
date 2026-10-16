@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF ဘရောက်ဇာ ကြည့်ရှုစနစ်",
+    "description": "ရွေးချယ်နိုင်သော ကတ်အပြင်အဆင်နှင့် ဒေါင်းလုဒ် ခလုတ်ဖြင့် PDF ဖိုင်ကို inline ထည့်သွင်းရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF ဖိုင်၏ တည်နေရာ။"
+      },
+      {
+        "property": "heading",
+        "title": "ခေါင်းစီး",
+        "description": "ကတ် ခေါင်းစီး စာသား။"
+      },
+      {
+        "property": "card",
+        "title": "ကတ် အပြင်အဆင်",
+        "description": "PDF ကို ဒေါင်းလုဒ် ခလုတ်ပါသော ကတ်တွင် ပြသရန်။"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ဒေါင်းလုဒ် အညွှန်း",
+        "description": "ဒေါင်းလုဒ် ခလုတ်အတွက် အညွှန်း။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "မပံ့ပိုးပါ မက်ဆေ့ချ်",
+        "description": "ဘရောက်ဇာက PDF ဖိုင်များကို မပြသနိုင်သောအခါ မက်ဆေ့ချ်။"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "မပံ့ပိုးပါ လင့်ခ် မက်ဆေ့ချ်",
+        "description": "ဘရောက်ဇာက PDF ဖိုင်များကို မပြသနိုင်သောအခါ လင့်ခ် စာသား။"
+      },
+      {
+        "property": "width",
+        "title": "အကျယ်",
+        "description": "PDF ကြည့်ရှုစနစ်၏ အကျယ်။"
+      },
+      {
+        "property": "height",
+        "title": "အမြင့်",
+        "description": "PDF ကြည့်ရှုစနစ်၏ အမြင့်။"
+      }
+    ]
+  }
+}

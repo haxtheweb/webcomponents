@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Rellenar los espacios en blanco",
+    "description": "Actividad de evaluación en la que los estudiantes completan las palabras que faltan en un enunciado."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Pregunta a la que deben responder los usuarios."
+      },
+      {
+        "property": "statement",
+        "title": "Enunciado",
+        "description": "Enunciado que se convertirá en la interacción de marcar las palabras."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de calificación",
+        "description": "OER Schema: formato de calificación de esta evaluación (p. ej., puntos, letra, porcentaje, finalización)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objetivo de aprendizaje",
+        "description": "OER Schema: objetivo de aprendizaje asociado a esta evaluación."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso al que está destinada esta evaluación."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nombre del cuestionario",
+        "description": "Nombre del cuestionario que se usa en entornos basados en xAPI para identificar este elemento"
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Paginasectie",
+    "description": "Sectiecontainer voor pagina-inhoud en schermvullende indelingen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Vormgeving",
+        "description": "Vooraf ingestelde stijl die bijbehorende instellingen bijwerkt."
+      },
+      {
+        "property": "image",
+        "title": "Afbeelding",
+        "description": "Achtergrondmedia voor de sectie."
+      },
+      {
+        "property": "bg",
+        "title": "Achtergrondkleur",
+        "description": "Achtergrondkleur als er geen afbeelding is ingesteld."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Scrollknop",
+        "description": "Toon een knop die naar de volgende sectie scrolt."
+      },
+      {
+        "property": "fold",
+        "title": "Vouw tonen",
+        "description": "Toon een visuele vouw onderaan de sectie."
+      },
+      {
+        "property": "full",
+        "title": "Volledig scherm",
+        "description": "Vul de schermhoogte van de kijker."
+      },
+      {
+        "property": "filter",
+        "title": "Filter toepassen",
+        "description": "Pas een visueel filter toe op de achtergrondafbeelding."
+      },
+      {
+        "slot": "",
+        "title": "Inhoud",
+        "description": "Inhoud van de sectie."
+      },
+      {
+        "slot": "entice",
+        "title": "Lokker",
+        "description": "Optionele lokkende inhoud."
+      },
+      {
+        "slot": "buttons",
+        "title": "Knoppen",
+        "description": "Knoppengroep onder de tekst."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ankertekst",
+        "description": "Ankerlabel in de navigatie."
+      }
+    ]
+  }
+}

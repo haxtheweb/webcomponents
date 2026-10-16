@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "اقتباس كتلي بصورة",
+    "description": "اقتباس منسَّق مع صورة اختيارية."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "الصورة",
+        "description": "إضافة صورة إلى الشهادة."
+      },
+      {
+        "property": "name",
+        "title": "الاسم الكامل",
+        "description": "اسم الشخص صاحب الشهادة."
+      },
+      {
+        "property": "position",
+        "title": "المنصب أو المسمى الوظيفي",
+        "description": "منصب الشخص أو مسماه الوظيفي."
+      },
+      {
+        "slot": "",
+        "title": "الاقتباس",
+        "description": "اقتباس من صاحب الشهادة."
+      }
+    ]
+  }
+}

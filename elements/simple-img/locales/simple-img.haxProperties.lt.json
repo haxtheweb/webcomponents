@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Paprastas vaizdas",
+    "description": "Keiskite vaizdus paprastais parametrais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Šaltinis",
+        "description": "Vaizdo šaltinio URL."
+      },
+      {
+        "property": "height",
+        "title": "Aukštis",
+        "description": "Pasirenkamas vaizdo aukštis."
+      },
+      {
+        "property": "width",
+        "title": "Plotis",
+        "description": "Pasirenkamas vaizdo plotis."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatyvusis tekstas",
+        "description": "Naudinga ekrano skaitytuvams ir geresniam SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kokybė",
+        "description": "Vaizdo kokybė generuojant (tik JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Įkėlimo prioritetas",
+        "description": "Našumo užuomina šiuolaikinėms naršyklėms.",
+        "options": {
+          "auto": "Automatinis",
+          "high": "Aukštas",
+          "low": "Žemas"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dekodavimo būdas",
+        "description": "Vaizdų atvaizdavimo našumo užuomina šiuolaikinėms naršyklėms.",
+        "options": {
+          "auto": "Automatinis",
+          "async": "Asinchroninis"
+        }
+      }
+    ]
+  }
+}

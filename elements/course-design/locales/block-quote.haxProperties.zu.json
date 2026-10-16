@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ingcaphuno",
+    "description": "Ibhulokhi yengcaphuno enesitayela."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Umthombo wengcaphuno",
+        "description": "Umbhalo womthombo wengcaphuno."
+      },
+      {
+        "property": "alt",
+        "title": "Okungenye",
+        "description": "Umbhalo ongenye wesithombe."
+      },
+      {
+        "property": "image",
+        "title": "Isithombe",
+        "description": "Isithombe esiboniswa nengcaphuno."
+      }
+    ]
+  }
+}

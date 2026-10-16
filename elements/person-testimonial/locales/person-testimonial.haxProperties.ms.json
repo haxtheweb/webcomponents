@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Petikan Blok Imej",
+    "description": "Petikan bergaya dengan imej pilihan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imej",
+        "description": "Tambah imej pada testimoni."
+      },
+      {
+        "property": "name",
+        "title": "Nama Penuh",
+        "description": "Nama individu yang memberikan testimoni."
+      },
+      {
+        "property": "position",
+        "title": "Jawatan atau Gelaran Kerja",
+        "description": "Jawatan atau gelaran kerja individu."
+      },
+      {
+        "slot": "",
+        "title": "Petikan",
+        "description": "Petikan daripada pemberi testimoni."
+      }
+    ]
+  }
+}

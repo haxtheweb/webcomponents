@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Заповніть пропуски",
+    "description": "Оцінювальна вправа, де учні вписують пропущені слова в твердження."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Запитання",
+        "description": "Запитання, на яке мають відповісти користувачі."
+      },
+      {
+        "property": "statement",
+        "title": "Твердження",
+        "description": "Твердження, яке буде перетворено на вправу з позначенням слів."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат оцінювання",
+        "description": "OER Schema: формат оцінювання для цього завдання (напр. бали, літера, відсоток, виконання)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Навчальна мета",
+        "description": "OER Schema: навчальна мета, пов'язана з цим завданням."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, для якого призначене це завдання."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Назва тесту",
+        "description": "Назва тесту, що передається для ідентифікації цього елемента в середовищах на основі xAPI"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "图片对比",
+    "description": "拿一张图片滑过另一张来比较。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "上层图片",
+        "description": "滑过下层图片个上层图片。"
+      },
+      {
+        "property": "topAlt",
+        "title": "上层图片替代文字",
+        "description": "无障碍必需个替代文字。"
+      },
+      {
+        "property": "bottomSrc",
+        "title": "下层图片",
+        "description": "上层图片下头显示个图片。"
+      },
+      {
+        "property": "bottomAlt",
+        "title": "下层图片替代文字",
+        "description": "无障碍必需个替代文字。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "行为",
+        "description": "选擦除模式（默认）或者上层图片透明度模式。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "滑杆颜色。"
+      },
+      {
+        "property": "dark",
+        "title": "深色",
+        "description": "反转滑杆颜色。"
+      },
+      {
+        "property": "position",
+        "title": "初始位置",
+        "description": "起始位置，0 到 100。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Papa inoa o nā mea kōkua GitHub",
+    "description": "Hōʻike ʻia ma ke ʻano he mau kanaka RPG me ka hoʻohana ʻana i ka GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Hui",
+        "description": "Inoa hui mai github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Waihona",
+        "description": "Inoa waihona mai github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Palena",
+        "description": "E kaupalena i ka nui o nā mea kōkua i hōʻike ʻia."
+      }
+    ]
+  }
+}

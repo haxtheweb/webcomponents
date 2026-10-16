@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG-figur",
+    "description": "Sjov figur fra HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Navn",
+        "description": "Ord, der bruges til at generere en tilfældig figur."
+      },
+      {
+        "property": "hat",
+        "title": "Hat",
+        "description": "Hattestil.",
+        "options": {
+          "none": "Standard",
+          "random": "Tilfældig",
+          "bunny": "Kanin",
+          "cowboy": "Cowboy",
+          "education": "Uddannelse",
+          "construction": "Byggeri",
+          "warning": "Advarsel",
+          "watermelon": "Vandmelon",
+          "coffee": "Kaffe",
+          "knight": "Ridder",
+          "ninja": "Ninja",
+          "party": "Fest",
+          "error": "Fejl",
+          "edit": "Rediger"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Bredde",
+        "description": "Figurens bredde i pixels."
+      },
+      {
+        "property": "height",
+        "title": "Højde",
+        "description": "Figurens højde i pixels."
+      },
+      {
+        "property": "fire",
+        "title": "I brand?",
+        "description": "Om figuren står i brand."
+      },
+      {
+        "property": "walking",
+        "title": "Går?",
+        "description": "Gåanimation; løber, når den står i brand."
+      }
+    ]
+  }
+}

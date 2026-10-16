@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Sagalee fuula keessaa",
+    "description": "Qabiyyee fuulaa deeggaruuf sagalee fuula keessatti taphachiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Madda",
+        "description": "Faayilii MP3 ykn URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu Calaqqee",
+        "description": "Halluu calaqqee kaardii."
+      },
+      {
+        "property": "shiny",
+        "title": "Kan calaqqisu",
+        "description": "Bakka daalachaa duubaa halluu calaqqee ifaa fayyadami."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Dukkana",
+        "description": "Haala dukkanaa fayyadami."
+      }
+    ]
+  }
+}

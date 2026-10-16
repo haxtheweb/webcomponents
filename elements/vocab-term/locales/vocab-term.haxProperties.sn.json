@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Mazwi",
+    "description": "Izwi remazwi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Izwi"
+      },
+      {
+        "property": "information",
+        "title": "Tsanangudzo",
+        "description": "Tsanangudzo inoratidzwa kana izwi radzvanywa."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "Ratidza tsanangudzo mupopover pachinzvimbo chekuiisa mukati."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Zvinongedzo",
+        "description": "Rondedzero yezvinongedzo zvekuwedzera zvakabatanidzwa neizwi iri."
+      }
+    ]
+  }
+}

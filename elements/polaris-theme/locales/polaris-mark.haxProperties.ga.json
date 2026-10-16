@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Marc Polaris",
+    "description": "Taispeáin marc aitheantais PSU le hainm coláiste roghnach agus URL cinn scríbe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Ainm an choláiste",
+        "description": "Ainm a thaispeántar in aice leis an marc."
+      },
+      {
+        "property": "name2",
+        "title": "Ainm an choláiste 2",
+        "description": "An dara hainm a thaispeántar faoin gcéad ainm coláiste."
+      },
+      {
+        "property": "name3",
+        "title": "Ainm an choláiste 3",
+        "description": "An tríú hainm a thaispeántar faoin dara hainm coláiste."
+      },
+      {
+        "property": "url",
+        "title": "Nasc",
+        "description": "URL cinn scríbe nuair a chliceáiltear ar an marc."
+      },
+      {
+        "property": "type",
+        "title": "Leagan",
+        "description": "Leagan amhairc an mhairc.",
+        "options": {
+          "default": "Réamhshocrú",
+          "light": "Éadrom",
+          "dark": "Dorcha"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Leagan amach ingearach",
+        "description": "Taispeáin an tríú hainm faoin dara hainm le líne chothrománach."
+      }
+    ]
+  }
+}

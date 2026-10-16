@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify ပလေယာ embed များအတွက် wrapper။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ရင်းမြစ်",
+        "description": "Spotify မှ embed သို့မဟုတ် မျှဝေ လင့်ခ်။"
+      },
+      {
+        "property": "theme",
+        "title": "Theme",
+        "description": "ပလေယာအတွက် နောက်ခံ အရောင် theme။",
+        "options": {
+          "": "မူလ",
+          "0": "အနက်"
+        }
+      },
+      {
+        "property": "size",
+        "title": "အရွယ်အစား",
+        "description": "ပလေယာ အရွယ်အစား။",
+        "options": {
+          "normal": "မူလ",
+          "compact": "ကျစ်လျစ်"
+        }
+      }
+    ]
+  }
+}

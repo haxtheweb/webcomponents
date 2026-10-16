@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) yerləşdirməsi",
+    "description": "X-dan tviti kontekstdə yerləşdir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Tvit URL-i",
+        "description": "Yerləşdiriləcək tvitin URL-i."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "X tvitləri üçün açıq və ya tünd tema.",
+        "options": {
+          "light": "Açıq",
+          "dark": "Tünd"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Klikləmədə açılan pəncərənin qarşısını al",
+        "description": "İstifadəçilərin tviti x.com-da açmasının qarşısını al."
+      }
+    ]
+  }
+}

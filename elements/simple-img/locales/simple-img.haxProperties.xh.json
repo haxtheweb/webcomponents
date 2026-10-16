@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Umfanekiso oLula",
+    "description": "Lungisa imifanekiso ngeeparamitha ezilula."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Umthombo",
+        "description": "I-URL yomthombo womfanekiso."
+      },
+      {
+        "property": "height",
+        "title": "Ubude",
+        "description": "Ubude bomfanekiso obukhethwayo."
+      },
+      {
+        "property": "width",
+        "title": "Ububanzi",
+        "description": "Ububanzi bomfanekiso obukhethwayo."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo ongenayo",
+        "description": "Uluncedo kubafundi besikrini nakwi-SEO ephuculweyo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Umgangatho",
+        "description": "Umgangatho womfanekiso xa usenziwa (JPEG kuphela)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Okuza Kuqala ekuLandeni",
+        "description": "Ingcebiso yokusebenza kweebhrawuza zanamhlanje.",
+        "options": {
+          "auto": "Ngokuzenzekelayo",
+          "high": "Phezulu",
+          "low": "Phantsi"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Indlela yokuguqula ikhowudi",
+        "description": "Ingcebiso yokusebenza yokubonisa imifanekiso kwiibhrawuza zanamhlanje.",
+        "options": {
+          "auto": "Ngokuzenzekelayo",
+          "async": "Ngaxeshanye"
+        }
+      }
+    ]
+  }
+}

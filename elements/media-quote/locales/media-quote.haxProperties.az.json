@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Media sitatı",
+    "description": "Sitat, istinad və ixtiyari başlıq olan şəkil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Sitat",
+        "description": "Sitat mətni."
+      },
+      {
+        "slot": "author",
+        "title": "Müəllif",
+        "description": "Sitatın müəllifi."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Müəllif haqqında",
+        "description": "Müəllif haqqında məlumat."
+      },
+      {
+        "slot": "caption",
+        "title": "Başlıq yazısı",
+        "description": "Şəklin başlıq yazısı."
+      },
+      {
+        "property": "src",
+        "title": "Şəkil mənbəyi",
+        "description": "Media sitatı üçün istifadə olunan şəkil faylı."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ mətn",
+        "description": "Şəkil üçün alternativ mətn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Kartın vurğu rəngi."
+      }
+    ]
+  }
+}

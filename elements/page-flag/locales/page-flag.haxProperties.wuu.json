@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "页面标记",
+    "description": "拨页面作者个编辑备注。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "页面标记个强调色。"
+      },
+      {
+        "property": "label",
+        "title": "标签",
+        "description": "页面标记个标签文字。"
+      }
+    ]
+  }
+}

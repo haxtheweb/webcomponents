@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Lotze galdera",
+    "description": "Arrastatu eta jareguteko lotze jarduera, enuntziatuak haien erantzun zuzenekin parekatzen dituena."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Galdera",
+        "description": "Erabiltzaileentzako galdera. Markatu jaregite helburuak, eta zerrendatu erantzunak hurrengo helburura arte."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Kalifikazio formatua",
+        "description": "OER Schema: ebaluazio honen kalifikazio formatua (adib. puntuak, letra, ehunekoa, osatzea)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ikaskuntza helburua",
+        "description": "OER Schema: ebaluazio honi lotutako ikaskuntza helburua."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikastaroa",
+        "description": "OER Schema: ebaluazio hau zein ikastarorako den."
+      },
+      {
+        "property": "answers",
+        "title": "Erantzunak"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Galdetegiaren izena",
+        "description": "Analitika sistemetan xAPI bidez identifikatzeko erabiltzen den galdetegiaren izena."
+      }
+    ]
+  }
+}

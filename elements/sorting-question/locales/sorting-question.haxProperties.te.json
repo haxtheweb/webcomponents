@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "క్రమపరిచే ప్రశ్న",
+    "description": "అంశాలను సరైన క్రమంలో అమర్చండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ప్రశ్న",
+        "description": "ప్రశ్న శీర్షిక."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "గ్రేడింగ్ ఫార్మాట్",
+        "description": "OER Schema: ఈ మూల్యాంకనం కోసం గ్రేడింగ్ ఫార్మాట్ (ఉదా. పాయింట్లు, అక్షర గ్రేడ్, శాతం, పూర్తి)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "అభ్యాస లక్ష్యం",
+        "description": "OER Schema: ఈ మూల్యాంకనంతో అనుబంధించిన అభ్యాస లక్ష్యం."
+      },
+      {
+        "property": "forCourse",
+        "title": "కోర్సు",
+        "description": "OER Schema: ఈ మూల్యాంకనం ఉద్దేశించిన కోర్సు."
+      },
+      {
+        "property": "answers",
+        "title": "సమాధానాలు",
+        "description": "సమాధానాల క్రమమే సరైన క్రమాన్ని నిర్వచిస్తుంది."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "క్విజ్ పేరు",
+        "description": "విశ్లేషణ వ్యవస్థలలో xAPI గుర్తింపు కోసం ఉపయోగించే క్విజ్ పేరు."
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Հիանալի պայթյուն",
+    "description": "Ինտերակտիվ պայթյունի անիմացիա՝ ըստ ցանկության ձայնային էֆեկտներով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Չափ",
+        "description": "Սահմանել պայթյունի չափը։",
+        "options": {
+          "tiny": "Շատ փոքր",
+          "small": "Փոքր",
+          "medium": "Միջին",
+          "large": "Մեծ",
+          "epic": "Էպիկական"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Գույն",
+        "description": "Սահմանել պայթյունի գունային թեման։",
+        "options": {
+          "": "Լռելյայն",
+          "red": "Կարմիր",
+          "blue": "Կապույտ",
+          "purple": "Մանուշակագույն",
+          "orange": "Նարնջագույն",
+          "yellow": "Դեղին"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Ձայնային էֆեկտներ",
+        "description": "Միացնել ձայնային էֆեկտները։"
+      },
+      {
+        "property": "resetSound",
+        "title": "Վերակայել ձայնը",
+        "description": "Ամեն անգամ ձայնը վերսկսել սկզբից։"
+      },
+      {
+        "property": "image",
+        "title": "Հատուկ պատկեր",
+        "description": "Ըստ ցանկության URL՝ պայթյունի հատուկ պատկերի համար։"
+      },
+      {
+        "property": "sound",
+        "title": "Հատուկ ձայն",
+        "description": "Ըստ ցանկության URL՝ հատուկ ձայնային էֆեկտի համար։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Անջատված",
+        "description": "Անջատել բոլոր փոխազդեցությունները։"
+      }
+    ]
+  }
+}

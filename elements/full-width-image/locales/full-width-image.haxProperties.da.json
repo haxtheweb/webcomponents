@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Billedsektion",
+    "description": "Billede i fuld bredde, der opdeler en sidesektion."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Baggrundsbillede."
+      },
+      {
+        "property": "caption",
+        "description": "Overskriftstekst."
+      }
+    ]
+  }
+}

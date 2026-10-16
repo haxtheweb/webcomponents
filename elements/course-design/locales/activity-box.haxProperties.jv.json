@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kothak Kagiyatan",
+    "description": "Blok irah-irahan cilik kanthi gaya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon sing katon ing sandhinge kothak kagiyatan."
+      },
+      {
+        "property": "tag",
+        "title": "Tag kothak kagiyatan",
+        "description": "Tag sing katon ing kothak kagiyatan."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Tanpa Pewarnaan",
+        "description": "Cegah werna ditrapake marang ikon."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "نقل‌قول تصویری",
+    "description": "نقل‌قول با سبک ویژه و تصویر اختیاری."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "افزودن تصویر به گواهی."
+      },
+      {
+        "property": "name",
+        "title": "نام کامل",
+        "description": "نام فردی که گواهی را می‌دهد."
+      },
+      {
+        "property": "position",
+        "title": "سمت یا عنوان شغلی",
+        "description": "سمت یا عنوان شغلی فرد."
+      },
+      {
+        "slot": "",
+        "title": "نقل‌قول",
+        "description": "نقل‌قول از صاحب گواهی."
+      }
+    ]
+  }
+}

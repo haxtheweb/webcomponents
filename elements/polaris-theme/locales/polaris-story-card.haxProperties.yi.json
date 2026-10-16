@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris־געשיכטע־קאַרטל",
+    "description": "ווײַזן אַ Polaris־געשיכטע־קאַרטל מיט אַ הינטערגרונט־בילד, זײַל־באַצייכענונג און הויפּט־שורה."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "הינטערגרונט־בילד",
+        "description": "URL פֿון בילד געוויזן ווי הינטערגרונט פֿונעם קאַרטל."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "הינטערגרונט־גרייס",
+        "description": "ווי אַזוי דאָס הינטערגרונט־בילד פֿילט אָן דאָס קאַרטל (CSS background-size).",
+        "options": {
+          "cover": "צודעקן (cover)",
+          "contain": "אַרײַנפּאַסן (contain)",
+          "auto": "אויטאָמאַטיש (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "הינטערגרונט־באַפֿעסטיקונג",
+        "description": "ווי אַזוי דאָס הינטערגרונט־בילד פֿירט זיך בעתן סקראָלירן (CSS background-attachment).",
+        "options": {
+          "scroll": "סקראָלירן (scroll)",
+          "fixed": "פֿאַרפֿעסטיקט (fixed)",
+          "local": "לאָקאַל (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "זײַל־באַצייכענונג",
+        "description": "קורצע באַצייכענונג אין גרויסע אותיות געוויזן אויבן אויפֿן קאַרטל. לאָזט ליידיק צו באַהאַלטן."
+      },
+      {
+        "property": "label",
+        "title": "קאַרטל־טעקסט",
+        "description": "הויפּט־טעקסט געוויזן אינעם אונטערשטן פּאַנעל."
+      },
+      {
+        "property": "link",
+        "title": "לינק",
+        "description": "אָפּציאָנעלער ציל־URL וואָס נעמט אַרום דאָס גאַנצע קאַרטל."
+      }
+    ]
+  }
+}

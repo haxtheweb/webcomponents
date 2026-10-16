@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "මාධ්‍ය උපුටා දැක්වීම",
+    "description": "උපුටා දැක්වීමක්, මූලාශ්‍ර දැක්වීමක් සහ විකල්ප ශීර්ෂ පාඨයක් සහිත රූපය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "උපුටා දැක්වීම",
+        "description": "උපුටා දැක්වීමේ පෙළ."
+      },
+      {
+        "slot": "author",
+        "title": "කර්තෘ",
+        "description": "උපුටා දැක්වීමේ කර්තෘ."
+      },
+      {
+        "slot": "author-detail",
+        "title": "කර්තෘ විස්තර",
+        "description": "කර්තෘ විස්තර."
+      },
+      {
+        "slot": "caption",
+        "title": "ශීර්ෂ පාඨය",
+        "description": "රූපයේ ශීර්ෂ පාඨය."
+      },
+      {
+        "property": "src",
+        "title": "රූප මූලාශ්‍රය",
+        "description": "මාධ්‍ය උපුටා දැක්වීම සඳහා භාවිත රූප ගොනුව."
+      },
+      {
+        "property": "alt",
+        "title": "විකල්ප පෙළ",
+        "description": "රූපය සඳහා විකල්ප පෙළ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "කාඩ්පතේ උච්චාරණ වර්ණය."
+      }
+    ]
+  }
+}

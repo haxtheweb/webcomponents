@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Выбітны выбух",
+    "description": "Інтэрактыўная анімацыя выбуху з неабавязковымі гукавымі эфектамі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Памер",
+        "description": "Задаць памер выбуху.",
+        "options": {
+          "tiny": "Малюсенькі",
+          "small": "Малы",
+          "medium": "Сярэдні",
+          "large": "Вялікі",
+          "epic": "Эпічны"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Колер",
+        "description": "Задаць каляровую тэму выбуху.",
+        "options": {
+          "": "Па змаўчанні",
+          "red": "Чырвоны",
+          "blue": "Сіні",
+          "purple": "Фіялетавы",
+          "orange": "Аранжавы",
+          "yellow": "Жоўты"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Гукавыя эфекты",
+        "description": "Уключыць гукавыя эфекты."
+      },
+      {
+        "property": "resetSound",
+        "title": "Скід гуку",
+        "description": "Кожны раз пачынаць гук з пачатку."
+      },
+      {
+        "property": "image",
+        "title": "Уласная выява",
+        "description": "Неабавязковы URL уласнай выявы выбуху."
+      },
+      {
+        "property": "sound",
+        "title": "Уласны гук",
+        "description": "Неабавязковы URL уласнага гукавога эфекту."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Адключана",
+        "description": "Адключыць усе ўзаемадзеянні."
+      }
+    ]
+  }
+}

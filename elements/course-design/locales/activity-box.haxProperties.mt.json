@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kaxxa tal-Attività",
+    "description": "Blokk żgħir ta' intestatura bi stil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona murija ħdejn il-kaxxa tal-attività."
+      },
+      {
+        "property": "tag",
+        "title": "Tikketta tal-kaxxa tal-attività",
+        "description": "Tikketta murija fil-kaxxa tal-attività."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Mingħajr kulur",
+        "description": "Evita li jiġu applikati kuluri fuq l-ikona."
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tablo",
+    "description": "Web için tablo tabanlı veriler."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Satır Başlığı",
+        "description": "İlk satırı başlık olarak kullan."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Sütun Başlığı",
+        "description": "İlk sütunu başlık olarak kullan."
+      },
+      {
+        "property": "footer",
+        "title": "Alt Bilgi",
+        "description": "Son satırı alt bilgi olarak kullan."
+      },
+      {
+        "property": "sort",
+        "title": "Sıralanabilir",
+        "description": "Sütun değerlerine göre sıralamaya izin ver."
+      },
+      {
+        "property": "filter",
+        "title": "Filtrelemeye İzin Ver",
+        "description": "Sütun değerlerine göre filtrelemeye izin ver."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Sayısal Biçimlendirme",
+        "description": "Sayısal sütunlara sayısal biçimlendirme uygula."
+      },
+      {
+        "property": "responsive",
+        "title": "Duyarlı",
+        "description": "Küçük ekranlarda tablo düzenini uyarla."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubrik Modu",
+        "description": "Bu tabloyu OER Schema Rubric olarak yorumla; böylece Rubric, RubricScale, RubricCriterion ve RubricLevel meta verileri üretilir."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubrik Türü",
+        "description": "oer:rubricType olarak üretilen rubrik stili (yalnızca Rubrik Modu açıkken anlamlıdır).",
+        "options": {
+          "": "(yok)",
+          "analytic": "Analitik",
+          "holistic": "Bütüncül",
+          "single-point": "Tek Noktalı",
+          "checklist": "Kontrol Listesi"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Kenarlıklı"
+      },
+      {
+        "property": "condensed",
+        "title": "Satırları Sıkıştır",
+        "description": "Satır yüksekliğini azalt."
+      },
+      {
+        "property": "striped",
+        "title": "Çizgili Satırlar",
+        "description": "Satırları birer atlayarak gölgelendir."
+      },
+      {
+        "property": "downloadable",
+        "title": "İndirme Düğmesi",
+        "description": "Tabloyu indirmek için bir düğme ekle."
+      },
+      {
+        "property": "copyable",
+        "title": "Kopyalama Düğmesi",
+        "description": "Tablonun CSV verilerini kopyalamak için bir düğme ekle."
+      },
+      {
+        "property": "printable",
+        "title": "Yazdırma Düğmesi",
+        "description": "Yalnızca tabloyu yazdırmak için bir düğme ekle."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV Verisi",
+        "description": "Yüklenen bir CSV dosyasından tablo oluştur."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Ka dhig GIF-yada dhaqdhaqaaqa leh kuwo qof walba heli karo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF dhaqdhaqaaq leh",
+        "description": "URL-ka GIF-ka dhaqdhaqaaqa leh."
+      },
+      {
+        "property": "alt",
+        "title": "Qoraalka Beddelka",
+        "description": "Qoraal beddel u ah sawirka."
+      },
+      {
+        "property": "longdesc",
+        "title": "Sharaxaad Dheer",
+        "description": "Sharaxaad dheer oo GIF-ka si qof walba u fahmo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Sawir Taagan",
+        "description": "URL-ka nooc sawir taagan ah oo GIF-ka."
+      }
+    ]
+  }
+}

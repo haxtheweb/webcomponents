@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Toon een Polaris-call-to-actionknop in themastijl."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Knoptekst",
+        "description": "Tekst in de call-to-actionknop."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Doel-URL voor de knop."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Variant van de visuele stijl.",
+        "options": {
+          "primary": "Primair",
+          "tinted": "Getint",
+          "light": "Licht"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Omlijnde stijl",
+        "description": "Omlijnde weergave inschakelen."
+      },
+      {
+        "property": "filled",
+        "title": "Gevulde stijl",
+        "description": "Gevulde weergave inschakelen."
+      }
+    ]
+  }
+}

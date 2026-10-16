@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Sezzjoni tal-immaġni",
+    "description": "Immaġni b'wisa' sħiħa li taqsam sezzjoni tal-paġna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Immaġni tal-isfond."
+      },
+      {
+        "property": "caption",
+        "description": "Intestatura tat-test."
+      }
+    ]
+  }
+}

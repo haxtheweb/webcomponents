@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Bagean kaca",
+    "description": "Wadhah bagean kanggo isi kaca lan tata letak adhedhasar layar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Perlakuan desain",
+        "description": "Gaya prasetel sing nganyari setelan sing gegandhengan."
+      },
+      {
+        "property": "image",
+        "title": "Gambar",
+        "description": "Media latar mburi kanggo bagean."
+      },
+      {
+        "property": "bg",
+        "title": "Werna latar mburi",
+        "description": "Werna latar mburi nalika ora ana gambar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Tombol gulung",
+        "description": "Tampilake tombol sing nggulung menyang bagean sabanjure."
+      },
+      {
+        "property": "fold",
+        "title": "Tampilake lipatan",
+        "description": "Tampilake lipatan visual ing sisih ngisor bagean."
+      },
+      {
+        "property": "full",
+        "title": "Ukuran layar kebak",
+        "description": "Kebaki dhuwure layar pamirsa."
+      },
+      {
+        "property": "filter",
+        "title": "Trapake Saringan",
+        "description": "Trapake saringan visual marang gambar latar mburi."
+      },
+      {
+        "slot": "",
+        "title": "Isi",
+        "description": "Isi bagean."
+      },
+      {
+        "slot": "entice",
+        "title": "Pangiming-iming",
+        "description": "Isi pangiming-iming opsional."
+      },
+      {
+        "slot": "buttons",
+        "title": "Tombol-tombol",
+        "description": "Klompok tombol sing katon ing sangisore teks."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Teks jangkar",
+        "description": "Label jangkar sing katon ing navigasi."
+      }
+    ]
+  }
+}

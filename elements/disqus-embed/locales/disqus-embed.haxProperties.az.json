@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Səhifəyə Disqus şərhlərini yerləşdir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Qısa ad",
+        "description": "Saytın qısa adı; Disqus skriptinin hostunu müəyyən edir."
+      },
+      {
+        "property": "pageURL",
+        "title": "Səhifə URL-i",
+        "description": "Şərh mövzusunun bağlı olduğu səhifənin URL-i."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Səhifə identifikatoru",
+        "description": "Səhifə şərh mövzusu üçün unikal identifikator."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Səhifə başlığı",
+        "description": "Şərh mövzusunun bağlı olduğu səhifənin başlığı."
+      },
+      {
+        "property": "loadingText",
+        "title": "Yüklənmə mətni",
+        "description": "Şərhlər yüklənərkən elan edilən mətn."
+      },
+      {
+        "property": "lang",
+        "title": "Dil",
+        "description": "Disqus interfeysi üçün dil kodu, məs. en."
+      }
+    ]
+  }
+}

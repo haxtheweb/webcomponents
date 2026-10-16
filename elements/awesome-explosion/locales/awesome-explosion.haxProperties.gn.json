@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Ñepererĩ hechapyrãva",
+    "description": "Ñepererĩ omýiva ojeporúva ryapu ndive ikatúramo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Tuichakue",
+        "description": "Emoĩ ñepererĩ tuichakue.",
+        "options": {
+          "tiny": "Michĩeterei",
+          "small": "Michĩ",
+          "medium": "Mbytegua",
+          "large": "Tuicha",
+          "epic": "Tuichaitereíva"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Sa'y",
+        "description": "Emoĩ ñepererĩ sa'y.",
+        "options": {
+          "": "Ijypykuéva",
+          "red": "Pytã",
+          "blue": "Hovy",
+          "purple": "Pytãhovy",
+          "orange": "Narã sa'y",
+          "yellow": "Sa'yju"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Ryapu",
+        "description": "Emyandy ryapu."
+      },
+      {
+        "property": "resetSound",
+        "title": "Ñemoñepyrũjey ryapu",
+        "description": "Emoñepyrũjey ryapu iñepyrũgui jey."
+      },
+      {
+        "property": "image",
+        "title": "Ta'ãnga ñemomba'epyre",
+        "description": "URL ojeiporavokuaáva ta'ãnga ñepererĩ ñemomba'epyrépe g̃uarã."
+      },
+      {
+        "property": "sound",
+        "title": "Ryapu ñemomba'epyre",
+        "description": "URL ojeiporavokuaáva ryapu ñemomba'epyrépe g̃uarã."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Ojepe'apyre",
+        "description": "Embogue opaite jeporu."
+      }
+    ]
+  }
+}

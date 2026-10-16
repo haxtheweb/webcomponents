@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Stavka koraka",
+    "description": "Stavka koja je dio liste koraka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov"
+      }
+    ]
+  }
+}

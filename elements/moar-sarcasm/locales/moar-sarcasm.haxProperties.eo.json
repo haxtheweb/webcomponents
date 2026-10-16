@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkasmo",
+    "description": "Prezenti tekston trolece"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Teksto",
+        "description": "Teksto sarkasmigota"
+      }
+    ]
+  }
+}

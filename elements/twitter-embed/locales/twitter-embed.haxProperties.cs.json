@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Vložení Twitter (X)",
+    "description": "Vložte tweet z X v kontextu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL tweetu",
+        "description": "URL tweetu k vložení."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Motiv",
+        "description": "Světlý nebo tmavý motiv pro tweety z X.",
+        "options": {
+          "light": "Světlá",
+          "dark": "Tmavý"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Zabránit vyskakovacímu oknu po kliknutí",
+        "description": "Zabránit uživatelům otevřít tweet na x.com."
+      }
+    ]
+  }
+}

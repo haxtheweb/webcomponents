@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "කාඩ්පත",
+    "description": "DDD නිර්මාණ පද්ධතියෙන් හැඩගැන්වූ කාඩ්පත් සංරචකය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "රූපය",
+        "description": "විකල්ප රූපය."
+      },
+      {
+        "property": "alt",
+        "title": "රූපයේ විකල්ප පෙළ",
+        "description": "රූපය විස්තර කරන විකල්ප පෙළ."
+      },
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "කාඩ්පතේ මාතෘකාව."
+      },
+      {
+        "slot": "",
+        "title": "අන්තර්ගතය",
+        "description": "කාඩ්පතේ අන්තර්ගත ප්‍රදේශය."
+      },
+      {
+        "property": "href",
+        "title": "සබැඳිය",
+        "description": "බොත්තමේ සබැඳි URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "ලේබලය",
+        "description": "බොත්තමේ ලේබලය."
+      },
+      {
+        "property": "noArrow",
+        "title": "ඊතලයක් නැත",
+        "description": "බොත්තමේ ඊතලය සඟවන්න."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "සබැඳිය: ඉලක්කය",
+        "description": "සබැඳිය විවෘත කළ යුතු ස්ථානය.",
+        "options": {
+          "": "එම කවුළුවම",
+          "_blank": "නව කවුළුව - _blank",
+          "_top": "ඉහළම කවුළුව - _top",
+          "_parent": "මාපිය කවුළුව - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "සබැඳිය: rel",
+        "description": "සබැඳි සම්පත සහ වත්මන් ලේඛනය අතර සම්බන්ධය."
+      }
+    ]
+  }
+}

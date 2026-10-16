@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Discord ayllukunata rakinakuy URL-manta churay."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pukyu URL",
+        "description": "Pukyupa URL-nin."
+      },
+      {
+        "property": "height",
+        "title": "Sayaynin",
+        "description": "Ukhunpi kaq marcopa sayaynin."
+      },
+      {
+        "property": "width",
+        "title": "Kinraynin",
+        "description": "Ukhunpi kaq marcopa kinraynin."
+      }
+    ]
+  }
+}

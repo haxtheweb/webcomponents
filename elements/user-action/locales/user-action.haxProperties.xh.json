@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Isenzo somsebenzisi",
+    "description": "Landela izenzo zomsebenzisi uthumele idatha kwiivenkile ze-xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Umsitho oza kulandelwa",
+        "description": "Isenzo somsebenzisi esiqalisa lo msitho.",
+        "options": {
+          "visibility": "Uyakwazi ukubona oku",
+          "keydown": "Cofa iqhosha apha",
+          "click": "Cofa oku",
+          "hover": "Hambisa ngaphezu koku"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Landela rhoqo",
+        "description": "Ngokungagqibekanga, kulandelwa okwenzeka okokuqala kuphela."
+      }
+    ]
+  }
+}

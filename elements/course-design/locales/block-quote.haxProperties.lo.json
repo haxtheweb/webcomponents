@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ບລັອກຄຳອ້າງອີງ",
+    "description": "ບລັອກຄຳອ້າງອີງທີ່ມີຮູບແບບ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "ການອ້າງອີງ",
+        "description": "ຂໍ້ຄວາມການອ້າງອີງ."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "ຂໍ້ຄວາມທົດແທນສຳລັບຮູບພາບ."
+      },
+      {
+        "property": "image",
+        "title": "ຮູບພາບ",
+        "description": "ຮູບພາບທີ່ສະແດງພ້ອມຄຳອ້າງອີງ."
+      }
+    ]
+  }
+}

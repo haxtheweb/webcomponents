@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Skedat",
+    "description": "Grup skedash."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etiketa (për aksesueshmëri)",
+        "description": "Etiketë e aksesueshme për grupin e skedave."
+      },
+      {
+        "property": "disabled",
+        "title": "I çaktivizuar",
+        "description": "Çaktivizo të gjitha skedat."
+      },
+      {
+        "property": "hidden",
+        "title": "I fshehur",
+        "description": "Fshih grupin e skedave."
+      },
+      {
+        "property": "sticky",
+        "title": "Ngjitës",
+        "description": "Mbaji skedat horizontale në krye gjatë rrëshqitjes."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Pika e ndërprerjes së paraqitjes",
+        "description": "Pika e ndërprerjes për skedat horizontale; përdor -1 vetëm për vertikale."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Pika e ndërprerjes së ikonave",
+        "description": "Pika e ndërprerjes për shfaqjen e tekstit me ikona. Parazgjedhja është 0; përdor -1 për modalitetin vetëm me ikona."
+      },
+      {
+        "slot": "",
+        "title": "Skedat",
+        "description": "Seri elementesh <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID unike",
+        "description": "ID unike për këtë grup skedash."
+      }
+    ]
+  }
+}

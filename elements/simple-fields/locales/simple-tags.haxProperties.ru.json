@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Теги",
+    "description": "Простой список тегов для показа на странице."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Теги",
+        "description": "Список тегов через запятую."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Автоматический акцентный цвет",
+        "description": "Автоматически задавать акцентный цвет на основе метки."
+      },
+      {
+        "property": "accentColor",
+        "title": "Цвет",
+        "description": "Цвет тегов."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG കഥാപാത്രം",
+    "description": "HAX-ൽ നിന്നുള്ള രസകരമായ കഥാപാത്രം."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "പേര്",
+        "description": "ക്രമരഹിതമായ ഒരു കഥാപാത്രം സൃഷ്ടിക്കാൻ ഉപയോഗിക്കുന്ന വാക്ക്."
+      },
+      {
+        "property": "hat",
+        "title": "തൊപ്പി",
+        "description": "തൊപ്പിയുടെ ശൈലി.",
+        "options": {
+          "none": "സ്ഥിരം",
+          "random": "ക്രമരഹിതം",
+          "bunny": "മുയൽ",
+          "cowboy": "കൗബോയ്",
+          "education": "വിദ്യാഭ്യാസം",
+          "construction": "നിർമ്മാണം",
+          "warning": "മുന്നറിയിപ്പ്",
+          "watermelon": "തണ്ണിമത്തൻ",
+          "coffee": "കാപ്പി",
+          "knight": "യോദ്ധാവ്",
+          "ninja": "നിൻജ",
+          "party": "പാർട്ടി",
+          "error": "പിശക്",
+          "edit": "എഡിറ്റ്"
+        }
+      },
+      {
+        "property": "width",
+        "title": "വീതി",
+        "description": "പിക്സലുകളിൽ കഥാപാത്രത്തിന്റെ വീതി."
+      },
+      {
+        "property": "height",
+        "title": "ഉയരം",
+        "description": "പിക്സലുകളിൽ കഥാപാത്രത്തിന്റെ ഉയരം."
+      },
+      {
+        "property": "fire",
+        "title": "തീപിടിച്ചോ?",
+        "description": "കഥാപാത്രത്തിന് തീപിടിച്ചിട്ടുണ്ടോ എന്ന്."
+      },
+      {
+        "property": "walking",
+        "title": "നടക്കുന്നുണ്ടോ?",
+        "description": "നടത്ത ആനിമേഷൻ; തീപിടിച്ചിരിക്കുമ്പോൾ ഓടുന്നു."
+      }
+    ]
+  }
+}

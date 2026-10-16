@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "فن كتابة HAX",
+    "description": "عنصر شعار HAX، وهو بطبيعة الحال عنصر متوافق مع HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "حجم شعار HAX المراد وضعه",
+        "options": {
+          "mini": "مصغَّر",
+          "small": "صغير",
+          "normal": "عادي",
+          "large": "كبير"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "تحويل الشعار إلى أحرف كبيرة أم لا"
+      }
+    ]
+  }
+}

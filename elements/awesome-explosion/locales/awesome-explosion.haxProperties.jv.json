@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Bledosan Apik Tenan",
+    "description": "Animasi bledosan interaktif kanthi efek swara opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Ukuran",
+        "description": "Setel ukuran bledosan.",
+        "options": {
+          "tiny": "Cilik banget",
+          "small": "Cilik",
+          "medium": "Sedheng",
+          "large": "Gedhe",
+          "epic": "Epik"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Werna",
+        "description": "Setel tema werna bledosan.",
+        "options": {
+          "": "Gawan",
+          "red": "Abang",
+          "blue": "Biru",
+          "purple": "Wungu",
+          "orange": "Oranye",
+          "yellow": "Kuning"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Efek Swara",
+        "description": "Aktifake efek swara."
+      },
+      {
+        "property": "resetSound",
+        "title": "Reset Swara",
+        "description": "Wiwiti swara saka wiwitan saben wektu."
+      },
+      {
+        "property": "image",
+        "title": "Gambar Kustom",
+        "description": "URL opsional kanggo gambar bledosan kustom."
+      },
+      {
+        "property": "sound",
+        "title": "Swara Kustom",
+        "description": "URL opsional kanggo efek swara kustom."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Dipateni",
+        "description": "Pateni kabeh interaksi."
+      }
+    ]
+  }
+}

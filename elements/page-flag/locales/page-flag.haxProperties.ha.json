@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Tutar shafi",
+    "description": "Bayanin edita ga marubutan shafi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Launin Ƙawa",
+        "description": "Launin ƙawa na tutar shafin."
+      },
+      {
+        "property": "label",
+        "title": "Lakabi",
+        "description": "Rubutun lakabin tutar shafin."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ljepblêden",
+    "description": "Set ljepblêden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Label (foar tagonklikens)",
+        "description": "Tagonklik label foar de set ljepblêden."
+      },
+      {
+        "property": "disabled",
+        "title": "Utskeakele",
+        "description": "Alle ljepblêden útskeakelje."
+      },
+      {
+        "property": "hidden",
+        "title": "Ferburgen",
+        "description": "De set ljepblêden ferbergje."
+      },
+      {
+        "property": "sticky",
+        "title": "Fêstsette",
+        "description": "Hâld horizontale ljepblêden boppe-oan by it skowen."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Opmaakbrekpunt",
+        "description": "Brekpunt foar horizontale ljepblêden; brûk -1 foar allinnich fertikaal."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Ikoanbrekpunt",
+        "description": "Brekpunt foar it toanen fan tekst mei ikoanen. Standert is 0; brûk -1 foar allinnich ikoanen."
+      },
+      {
+        "slot": "",
+        "title": "Ljepblêden",
+        "description": "Searje <a11y-tab/>-eleminten."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unike ID",
+        "description": "Unike ID foar dizze set ljepblêden."
+      }
+    ]
+  }
+}

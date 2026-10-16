@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Tarih",
+    "description": "Ayrıntılarıyla bir takvim tarihi gösterin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Ay",
+        "description": "Kartta gösterilen ay."
+      },
+      {
+        "property": "date",
+        "title": "Ayın günü",
+        "description": "Ayın günü (sayı)."
+      },
+      {
+        "property": "day",
+        "title": "Haftanın günü",
+        "description": "Haftanın günü (metin)."
+      },
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Etkinliğin adı."
+      },
+      {
+        "property": "location",
+        "title": "Konum",
+        "description": "Etkinliğin konumu."
+      },
+      {
+        "property": "startTime",
+        "title": "Başlangıç",
+        "description": "Başlangıç saati."
+      },
+      {
+        "property": "endTime",
+        "title": "Bitiş",
+        "description": "Bitiş saati."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu Rengi",
+        "description": "İsteğe bağlı vurgu rengi."
+      },
+      {
+        "property": "dark",
+        "title": "Koyu Tema",
+        "description": "Koyu temayı etkinleştir."
+      }
+    ]
+  }
+}

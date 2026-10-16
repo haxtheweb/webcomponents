@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Ngụgharị Elu",
+    "description": "Mee ka nọmba na-agụ elu ruo n'uru ebumnuche mgbe ọ batara n'ihu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Uru ngwụcha",
+        "description": "Nọmba a ga-agụ ruo."
+      },
+      {
+        "property": "start",
+        "title": "Uru mmalite",
+        "description": "Nọmba a ga-esi malite ịgụ."
+      },
+      {
+        "property": "duration",
+        "title": "Oge ọ ga-ewe",
+        "description": "Sekọnd ole ngụgharị ahụ ga-ewe."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Ederede mbido",
+        "description": "Ederede a na-egosi tupu nọmba ahụ (dịka '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Ederede njedebe",
+        "description": "Ederede a na-egosi mgbe nọmba ahụ gasịrị (dịka '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Oghere mbido",
+        "description": "Ọdịnaya oghere nhọrọ tupu nọmba ahụ."
+      },
+      {
+        "slot": "suffix",
+        "title": "Oghere njedebe",
+        "description": "Ọdịnaya oghere nhọrọ mgbe nọmba ahụ gasịrị."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Ọnọdụ ntụpọ",
+        "description": "Ọnụ ọgụgụ ọnọdụ ntụpọ a ga-egosi."
+      },
+      {
+        "property": "separator",
+        "title": "Nkewa puku",
+        "description": "Mkpụrụedemede na-ekewa otu puku."
+      },
+      {
+        "property": "decimal",
+        "title": "Mkpụrụedemede ntụpọ",
+        "description": "Mkpụrụedemede eji maka ntụpọ ntụpọ."
+      },
+      {
+        "property": "noeasing",
+        "title": "Enweghị nwayọọ",
+        "description": "Gbanyụọ nwayọọ ka ngụgharị ahụ bụrụ nke ahịrị."
+      }
+    ]
+  }
+}

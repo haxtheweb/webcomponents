@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Səhifə təfərrüatları",
+    "description": "CMS-lərin səhifə yaratmaq üçün istifadə edə biləcəyi səhifələr arasında vizual ayırıcı müəyyən edin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Temada və birinci başlıqda göstərilən başlıq."
+      },
+      {
+        "property": "pageType",
+        "title": "Növ",
+        "description": "Vizual səhifə konteksti etiketi.",
+        "options": {
+          "": "-- heç biri --",
+          "content": "Məzmun",
+          "assessment": "Qiymətləndirmə",
+          "quiz": "Test",
+          "submission": "Təhvil",
+          "lesson": "Dərs",
+          "module": "Modul",
+          "task": "Tapşırıq",
+          "activity": "Fəaliyyət",
+          "project": "Layihə",
+          "practice": "Məşq",
+          "unit": "Bölmə",
+          "objectives": "Öyrənmə məqsədləri",
+          "connection": "Əlaqə",
+          "knowledge": "Bilirdinizmi?",
+          "strategy": "Öyrənmə strategiyası",
+          "discuss": "Müzakirə edin",
+          "listen": "Dinləyin",
+          "make": "Yaradın",
+          "observe": "Müşahidə edin",
+          "present": "Təqdim edin",
+          "reading": "Oxu",
+          "reflect": "Düşünün",
+          "research": "Araşdırın",
+          "watch": "İzləyin",
+          "write": "Yazın"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Teqlər",
+        "description": "Vergüllə ayrılmış teqlər siyahısı."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Keçid URL-i",
+        "description": "Səhifə məzmunu əvəzinə göstərilən yönləndirmə URL-i."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Keçid hədəfi",
+        "description": "Keçidləri eyni pəncərədə və ya yeni pəncərədə aç.",
+        "options": {
+          "_self": "Eyni pəncərə",
+          "_blank": "Yeni pəncərə"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Dərc edilib",
+        "description": "Dərc edilməmiş səhifələr son istifadəçilərdən gizlədilir."
+      },
+      {
+        "property": "locked",
+        "title": "Səhifəni kilidlə",
+        "description": "Bu səhifədəki bütün elementləri kilidlə və ya kilidi aç."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Avtomatik slug-ı ləğv et",
+        "description": "Slug-ı başlıq və ya ana səhifəyə əsaslanan avtomatik yeniləmələrdən kilidlə."
+      },
+      {
+        "property": "slug",
+        "title": "Yol",
+        "description": "Bu səhifə üçün URL slug-ı."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Səhifəni təmsil edən media; bəzi temalarda və görünüşlərdə istifadə olunur."
+      },
+      {
+        "property": "parent",
+        "title": "Ana səhifə",
+        "description": "Ana səhifənin yolu."
+      },
+      {
+        "property": "noderefs",
+        "title": "Əlaqəli məzmun",
+        "description": "Bu səhifə ilə əlaqəli səhifələr."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Təsvir",
+        "description": "Kolleksiyalarda və axtarış sistemi optimallaşdırmasında istifadə olunan təsvir."
+      },
+      {
+        "property": "entityType",
+        "title": "Obyekt növü",
+        "description": "Başqa cür təyin edilmədikdə defolt olaraq səhifədir.",
+        "options": {
+          "page": "Səhifə (defolt)",
+          "taxonomy": "Taksonomiya",
+          "taxonomyTerm": "Taksonomiya termini",
+          "region": "Region"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "İkon",
+        "description": "Saytda bu səhifə ilə əlaqələndirilən ikon."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Saytda bu səhifə ilə əlaqələndirilən rəng."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Menyuda gizlət",
+        "description": "URL-i saxlamaqla bu səhifəni menyulardan gizlət."
+      },
+      {
+        "property": "order",
+        "title": "Sıra",
+        "description": "Qonşu səhifələrə nisbətən sıra."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Səhifə teması",
+        "description": "Yalnız bu səhifə üçün temanı əvəz et."
+      },
+      {
+        "property": "author",
+        "title": "Müəllif",
+        "description": "Bu səhifəni sonuncu dəyişdirən şəxsin istifadəçi adı."
+      }
+    ]
+  }
+}

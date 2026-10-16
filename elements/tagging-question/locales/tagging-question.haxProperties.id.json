@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Soal Penandaan",
+    "description": "Pilih tag untuk menjawab pertanyaan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pertanyaan",
+        "description": "Pertanyaan yang harus dijawab pengguna."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format penilaian",
+        "description": "OER Schema: format penilaian untuk asesmen ini (mis. poin, huruf, persen, penyelesaian)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan pembelajaran",
+        "description": "OER Schema: tujuan pembelajaran yang terkait dengan asesmen ini."
+      },
+      {
+        "property": "forCourse",
+        "title": "Mata kuliah",
+        "description": "OER Schema: mata kuliah yang dituju oleh asesmen ini."
+      },
+      {
+        "property": "answers",
+        "title": "Jawaban"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nama kuis",
+        "description": "Nama kuis yang digunakan untuk identifikasi xAPI dalam sistem analitik."
+      }
+    ]
+  }
+}

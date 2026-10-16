@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Notis",
+    "description": "Attēlo un atskaņo notis, ģitāras tabulatūras un partitūras, izmantojot alphaTex vai MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex notācija",
+        "description": "Iekļauts nošu alphaTex marķējums. Rediģējiet tieši, lai veidotu notāciju; tas tiek glabāts veidnē, tāpēc atstarpes saglabājas."
+      },
+      {
+        "property": "source",
+        "title": "Partitūras fails",
+        "description": "Augšupielādējiet vai piesaistiet MusicXML (.xml/.musicxml/.mxl) vai Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) failu. Ja iestatīts, ignorē iekļauto alphaTex."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Audio atskaņošana",
+        "description": "Ieslēgts pēc noklusējuma — klausieties notis, ko atskaņo iebūvētais sintezators. Izslēdziet, lai izmantotu tikai skatīšanās (bez audio) režīmu."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Rādīt attēlošanas opcijas",
+        "description": "Rādīt tālummaiņas, izstiepšanas un izkārtojuma pogas atskaņotāja joslā."
+      },
+      {
+        "property": "showExport",
+        "title": "Rādīt eksporta pogas",
+        "description": "Rādīt MIDI lejupielādes un drukāšanas/PDF pogas atskaņotāja joslā."
+      }
+    ]
+  }
+}

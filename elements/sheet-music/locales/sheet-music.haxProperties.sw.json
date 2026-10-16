@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Noti za muziki",
+    "description": "Huonyesha na kucheza noti za muziki, vichupo vya gitaa na alama za muziki kupitia alphaTex au MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Nukuu ya AlphaTex",
+        "description": "Msimbo wa alphaTex ndani ya ukurasa kwa noti za muziki. Hariri moja kwa moja ili kuandika nukuu; huhifadhiwa katika kiolezo ili nafasi zihifadhiwe."
+      },
+      {
+        "property": "source",
+        "title": "Faili ya alama za muziki",
+        "description": "Pakia au unganisha faili ya MusicXML (.xml/.musicxml/.mxl) au Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Inabatilisha alphaTex ya ndani ikiwekwa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Uchezaji wa sauti",
+        "description": "Imewashwa kwa chaguo-msingi - sikiliza noti za muziki zikichezwa kupitia sinthesaiza iliyojengewa ndani. Zima kwa hali ya kutazama pekee (bila sauti)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Onyesha chaguo za kuonyesha",
+        "description": "Onyesha vitufe vya kukuza, kunyoosha na mpangilio kwenye upau wa kicheza."
+      },
+      {
+        "property": "showExport",
+        "title": "Onyesha vitufe vya kuhamisha",
+        "description": "Onyesha vitufe vya kupakua MIDI na kuchapisha/PDF kwenye upau wa kicheza."
+      }
+    ]
+  }
+}

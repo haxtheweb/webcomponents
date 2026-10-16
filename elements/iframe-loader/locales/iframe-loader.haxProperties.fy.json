@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Eksterne webynhâld yn in iframe ynslute."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Boarne-URL",
+        "description": "Boarne-URL."
+      },
+      {
+        "property": "height",
+        "title": "Hichte",
+        "description": "Hichte fan de iframe."
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Breedte fan de iframe."
+      }
+    ]
+  }
+}

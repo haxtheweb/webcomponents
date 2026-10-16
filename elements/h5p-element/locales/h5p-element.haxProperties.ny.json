@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Chokulunga cha H5P chotsegula ndi kuwonetsa mafayilo a .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Khodi yoyika iframe ya H5P"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "โน้ตหยุด",
+    "description": "ข้อความเพื่อแจ้งเตือนผู้อ่านเกี่ยวกับคำแนะนำเฉพาะ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "ป้อนชื่อสำหรับโน้ตหยุด"
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "ป้อน URL ภายนอก"
+      },
+      {
+        "property": "status",
+        "title": "สถานะ",
+        "description": "การตั้งค่าสถานะจะเปลี่ยนสีและไอคอนให้สอดคล้องกัน",
+        "options": {
+          "stop": "หยุด",
+          "warning": "คำเตือน",
+          "success": "การยืนยัน",
+          "info": "ประกาศ"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "ข้อความโน้ต",
+        "description": "ข้อความสำหรับโน้ตหยุด"
+      }
+    ]
+  }
+}

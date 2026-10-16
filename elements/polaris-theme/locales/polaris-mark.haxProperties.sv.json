@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris-märke",
+    "description": "Visa PSU:s identitetsmärke med valfritt college-namn och mål-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "College-namn",
+        "description": "Namn som visas bredvid märket."
+      },
+      {
+        "property": "name2",
+        "title": "College-namn 2",
+        "description": "Andra namn som visas under det första college-namnet."
+      },
+      {
+        "property": "name3",
+        "title": "College-namn 3",
+        "description": "Tredje namn som visas under det andra college-namnet."
+      },
+      {
+        "property": "url",
+        "title": "Länk",
+        "description": "Mål-URL när man klickar på märket."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Märkets visuella variant.",
+        "options": {
+          "default": "Standard",
+          "light": "Ljus",
+          "dark": "Mörk"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Lodrät layout",
+        "description": "Visa det tredje namnet under det andra namnet med en vågrät linje."
+      }
+    ]
+  }
+}

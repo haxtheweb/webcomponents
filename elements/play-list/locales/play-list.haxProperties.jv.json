@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Dhaptar puter",
+    "description": "Tampilake isi apa wae ing dhaptar puter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Sumber",
+        "description": "Isi sing katon ing dhaptar puter."
+      },
+      {
+        "property": "edit",
+        "title": "Mode sunting",
+        "description": "Ganti antarane mode sunting lan pratinjau kanggo dhaptar puter."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigasi",
+        "description": "Tampilake tombol navigasi maju lan mundur."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginasi",
+        "description": "Tampilake titik paginasi."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientasi",
+        "description": "Orientasi slide.",
+        "options": {
+          "horizontal": "Horisontal",
+          "vertical": "Vertikal"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Slide wiwitan",
+        "description": "Indeks slide sing difokusake ing wiwitan."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Rasio Aspek",
+        "description": "Rasio aspek slide.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

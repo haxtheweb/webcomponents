@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "اُتے ول گنتی",
+    "description": "جدوں نمبر نظر وچ آوے تے اوہنوں مقررہ قدر تک گنتی کردیاں اینیمیٹ کرو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "آخری قدر",
+        "description": "اوہ نمبر جیہڑے تک گنتی کرنی اے۔"
+      },
+      {
+        "property": "start",
+        "title": "شروعاتی قدر",
+        "description": "اوہ نمبر جیہڑے توں گنتی شروع ہووے۔"
+      },
+      {
+        "property": "duration",
+        "title": "دورانیہ",
+        "description": "گنتی دی اینیمیشن نوں کنے سیکنڈ لگݨے چاہیدے نیں۔"
+      },
+      {
+        "property": "prefixtext",
+        "title": "اگیتر متن",
+        "description": "نمبر توں پہلاں وکھایا جاوݨ والا متن (جیویں '$')۔"
+      },
+      {
+        "property": "suffixtext",
+        "title": "پچھیتر متن",
+        "description": "نمبر توں بعد وکھایا جاوݨ والا متن (جیویں '%')۔"
+      },
+      {
+        "slot": "prefix",
+        "title": "اگیتر سلاٹ",
+        "description": "نمبر توں پہلاں اختیاری سلاٹ کیتا مواد۔"
+      },
+      {
+        "slot": "suffix",
+        "title": "پچھیتر سلاٹ",
+        "description": "نمبر توں بعد اختیاری سلاٹ کیتا مواد۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "اعشاری تھاواں",
+        "description": "وکھاوݨ لئی اعشاری تھاواں دی گنتی۔"
+      },
+      {
+        "property": "separator",
+        "title": "ہزاراں دا وکھریواں",
+        "description": "ہزاراں دے گروپاں نوں وکھرا کرن والا حرف۔"
+      },
+      {
+        "property": "decimal",
+        "title": "اعشاری حرف",
+        "description": "اعشاری نقطے لئی ورتیا جاوݨ والا حرف۔"
+      },
+      {
+        "property": "noeasing",
+        "title": "نرمی توں بغیر",
+        "description": "نرمی بند کرو تاں جے گنتی سدھی لکیر وچ ہووے۔"
+      }
+    ]
+  }
+}

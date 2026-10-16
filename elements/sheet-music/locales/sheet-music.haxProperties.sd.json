@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "موسيقي جا نوٽس",
+    "description": "alphaTex يا MusicXML ذريعي موسيقي جا نوٽس، گٽار ٽيبس ۽ اسڪور نوٽيشن ڏيکاري ۽ هلائي ٿو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex نوٽيشن",
+        "description": "موسيقي جي نوٽس لاءِ ان لائن alphaTex مارڪ اپ. نوٽيشن لکڻ لاءِ سڌو ايڊٽ ڪريو؛ اهو ٽيمپليٽ ۾ محفوظ ٿئي ٿو ان ڪري خال برقرار رهن ٿا."
+      },
+      {
+        "property": "source",
+        "title": "اسڪور فائل",
+        "description": "MusicXML (.xml/.musicxml/.mxl) يا Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) فائل اپلوڊ يا لنڪ ڪريو. مقرر هجڻ تي ان لائن alphaTex کي اوور رائيڊ ڪري ٿي."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "آڊيو پلي بيڪ",
+        "description": "ڊفالٽ طور آن - اندروني سنٿيسائيزر ذريعي هلندڙ موسيقي جا نوٽس ٻڌو. صرف ڏسڻ (آڊيو کان سواءِ) موڊ لاءِ بند ڪريو."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "ڊسپلي آپشن ڏيکاريو",
+        "description": "پليئر بار تي زوم، اسٽريچ ۽ ترتيب جا بٽڻ ڏيکاريو."
+      },
+      {
+        "property": "showExport",
+        "title": "ايڪسپورٽ بٽڻ ڏيکاريو",
+        "description": "پليئر بار تي MIDI ڊائون لوڊ ۽ پرنٽ/PDF بٽڻ ڏيکاريو."
+      }
+    ]
+  }
+}

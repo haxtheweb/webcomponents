@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Ajaýyp partlama",
+    "description": "Goşmaça ses effektli interaktiw partlama animasiýasy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Ölçeg",
+        "description": "Partlamanyň ölçegini belläň.",
+        "options": {
+          "tiny": "Örän kiçi",
+          "small": "Kiçi",
+          "medium": "Orta",
+          "large": "Uly",
+          "epic": "Epiki"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Reňk",
+        "description": "Partlamanyň reňk temasyny belläň.",
+        "options": {
+          "": "Deslapky",
+          "red": "Gyzyl",
+          "blue": "Gök",
+          "purple": "Melewşe",
+          "orange": "Mämişi",
+          "yellow": "Sary"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Ses effektleri",
+        "description": "Ses effektlerini işlet."
+      },
+      {
+        "property": "resetSound",
+        "title": "Sesi täzeden başla",
+        "description": "Sesi her gezek başyndan başla."
+      },
+      {
+        "property": "image",
+        "title": "Ýörite surat",
+        "description": "Ýörite partlama suraty üçin goşmaça URL."
+      },
+      {
+        "property": "sound",
+        "title": "Ýörite ses",
+        "description": "Ýörite ses effekti üçin goşmaça URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Öçürilen",
+        "description": "Ähli täsirleşmeleri öçür."
+      }
+    ]
+  }
+}

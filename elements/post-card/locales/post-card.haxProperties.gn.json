@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Kuatia'atã ñemondo",
+    "description": "Mba'erechapyrã ñembosarái ojogua kuatia'atã ñemondo añetegua ou va'ekue oĩ hendágui"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Mávape",
+        "description": "¿Mávapepa oho ko'ã?"
+      },
+      {
+        "property": "from",
+        "title": "Mávagui",
+        "description": "¿Mávapa nde?"
+      },
+      {
+        "property": "message",
+        "title": "Marandu",
+        "description": "¿Mba'épa reipota ere?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Moõgui oñemondo",
+        "description": "¿Moõguipa oñemondo ko kuatia'atã?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Ta'ãnga tenondegua ypykue",
+        "description": "¿Moõpa oĩ nde ta'ãnga?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Sello ta'ãnga ypykue",
+        "description": "¿Moõpa oĩ nde ta'ãnga?"
+      }
+    ]
+  }
+}

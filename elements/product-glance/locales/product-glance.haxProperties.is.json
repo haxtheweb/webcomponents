@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Vöruyfirlit",
+    "description": "Reitur fyrir stutt vöruyfirlit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Tákn",
+        "description": "Tákn sem táknar hugtakið."
+      },
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Aðalhugtak í fljótu bragði."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undirtitill",
+        "description": "Viðbótarupplýsingar."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Áherslulitur táknsins."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR код",
+    "description": "Ухаалаг утсаар уншуулах код."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR өгөгдөл",
+        "description": "QR кодын өгөгдлийн эх сурвалж."
+      },
+      {
+        "property": "title",
+        "title": "Өөр гарчиг",
+        "description": "QR кодын эх сурвалжтай холбосон өөр гарчиг."
+      },
+      {
+        "property": "modulesize",
+        "title": "Хэмжээ",
+        "description": "QR кодын хэмжээ."
+      },
+      {
+        "property": "margin",
+        "title": "Захын зай",
+        "description": "Кодыг тойрсон зай."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Гаралтын формат",
+        "description": "Гаргах формат.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Напис HAX",
+    "description": "Елемент логотипа HAX, звісно ж, сумісний із HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Розмір логотипа HAX для розміщення",
+        "options": {
+          "mini": "Міні",
+          "small": "Малий",
+          "normal": "Звичайний",
+          "large": "Великий"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Чи перетворювати логотип на великі літери"
+      }
+    ]
+  }
+}

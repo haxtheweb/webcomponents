@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "אײַנבעטן דרויסנדיקן וועב־אינהאַלט אין אַן iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "רעסורס־URL",
+        "description": "רעסורס־URL."
+      },
+      {
+        "property": "height",
+        "title": "הייך",
+        "description": "הייך פֿונעם iframe."
+      },
+      {
+        "property": "width",
+        "title": "ברייט",
+        "description": "ברייט פֿונעם iframe."
+      }
+    ]
+  }
+}

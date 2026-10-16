@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Spirancë faqeje",
+    "description": "Lidhje me pika specifike në median e faqes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Objektivi në faqe",
+        "description": "ID ose burimi te i cili tregon kjo spirancë."
+      },
+      {
+        "property": "value",
+        "title": "Vlera e lidhjes së thellë",
+        "description": "Vlera e lidhjes së thellë (për shembull vulë kohore ose ID e diapozitivit)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entiteti i sajtit",
+        "description": "Entitet opsional i sajtit për të kontrolluar paraqitjen e koncepteve të lidhura."
+      }
+    ]
+  }
+}

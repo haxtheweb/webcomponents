@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris கதை அட்டை",
+    "description": "பின்னணிப் படம், தூண் லேபிள் மற்றும் தலைப்பு உரையுடன் Polaris கதை அட்டையைக் காட்டவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "பின்னணிப் படம்",
+        "description": "அட்டையின் பின்னணியாகக் காட்டப்படும் பட URL."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "பின்னணி அளவு",
+        "description": "பின்னணிப் படம் அட்டையை எவ்வாறு நிரப்புகிறது (CSS background-size).",
+        "options": {
+          "cover": "மூடு (cover)",
+          "contain": "உள்ளடக்கு (contain)",
+          "auto": "தானியங்கி (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "பின்னணி இணைப்பு",
+        "description": "உருட்டும்போது பின்னணிப் படம் எவ்வாறு நடந்துகொள்கிறது (CSS background-attachment).",
+        "options": {
+          "scroll": "உருட்டு (scroll)",
+          "fixed": "நிலையானது (fixed)",
+          "local": "உள்ளூர் (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "தூண் லேபிள்",
+        "description": "அட்டையின் மேலே காட்டப்படும் பெரிய எழுத்துக் குறு லேபிள். மறைக்க வெறுமையாக விடவும்."
+      },
+      {
+        "property": "label",
+        "title": "அட்டை உரை",
+        "description": "கீழ்ப் பலகத்தில் காட்டப்படும் முதன்மை உரை."
+      },
+      {
+        "property": "link",
+        "title": "இணைப்பு",
+        "description": "முழு அட்டையையும் உள்ளடக்கும் விருப்ப இலக்கு URL."
+      }
+    ]
+  }
+}

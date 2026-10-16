@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) इम्बेड",
+    "description": "X को ट्विटलाई सन्दर्भमा इम्बेड गर्नुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ट्विट URL",
+        "description": "इम्बेड गर्ने ट्विटको URL।"
+      },
+      {
+        "attribute": "data-theme",
+        "title": "थिम",
+        "description": "X ट्विटहरूका लागि हल्का वा गाढा थिम।",
+        "options": {
+          "light": "हल्का",
+          "dark": "गाढा"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "क्लिक गर्दा पपअप रोक्नुहोस्",
+        "description": "प्रयोगकर्ताहरूलाई x.com मा ट्विट खोल्नबाट रोक्नुहोस्।"
+      }
+    ]
+  }
+}

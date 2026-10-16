@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabelë",
+    "description": "Të dhëna në tabelë për uebin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Titulli i rreshtit",
+        "description": "Trajto rreshtin e parë si titull."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Titulli i kolonës",
+        "description": "Trajto kolonën e parë si titull."
+      },
+      {
+        "property": "footer",
+        "title": "Fundfaqja",
+        "description": "Trajto rreshtin e fundit si fundfaqe."
+      },
+      {
+        "property": "sort",
+        "title": "E renditshme",
+        "description": "Lejo renditjen sipas vlerave të kolonës."
+      },
+      {
+        "property": "filter",
+        "title": "Lejo filtrimin",
+        "description": "Lejo filtrimin sipas vlerave të kolonës."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Stil numerik",
+        "description": "Apliko stil numerik te kolonat numerike."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsive",
+        "description": "Përshtat paraqitjen e tabelës në ekranet e vogla."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Modaliteti i rubrikës",
+        "description": "Interpretoje këtë tabelë si një Rubric të OER Schema që të emetohen meta të dhënat Rubric, RubricScale, RubricCriterion dhe RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Lloji i rubrikës",
+        "description": "Stili i rubrikës i emetuar si oer:rubricType (ka kuptim vetëm kur Modaliteti i rubrikës është aktiv).",
+        "options": {
+          "": "(asnjë)",
+          "analytic": "Analitike",
+          "holistic": "Holistike",
+          "single-point": "Me një pikë",
+          "checklist": "Listë kontrolli"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Me kufij"
+      },
+      {
+        "property": "condensed",
+        "title": "Ngjeshi rreshtat",
+        "description": "Zvogëlo lartësinë e rreshtave."
+      },
+      {
+        "property": "striped",
+        "title": "Rreshta me vija",
+        "description": "Hijezo çdo rresht të dytë."
+      },
+      {
+        "property": "downloadable",
+        "title": "Butoni i shkarkimit",
+        "description": "Shto një buton për të shkarkuar tabelën."
+      },
+      {
+        "property": "copyable",
+        "title": "Butoni i kopjimit",
+        "description": "Shto një buton për të kopjuar të dhënat CSV të tabelës."
+      },
+      {
+        "property": "printable",
+        "title": "Butoni i printimit",
+        "description": "Shto një buton për të printuar vetëm tabelën."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Të dhënat CSV",
+        "description": "Krijo një tabelë nga një skedar CSV i ngarkuar."
+      }
+    ]
+  }
+}

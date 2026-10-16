@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Pembalut untuk benaman pemain Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "Pautan benam atau kongsi daripada Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Tema warna latar belakang untuk pemain.",
+        "options": {
+          "": "Lalai",
+          "0": "Hitam"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Saiz",
+        "description": "Saiz pemain.",
+        "options": {
+          "normal": "Lalai",
+          "compact": "Padat"
+        }
+      }
+    ]
+  }
+}

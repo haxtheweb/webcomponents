@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Bladmusiek",
+    "description": "Gee bladmusiek, kitaartabulatuur en partituurnotasie weer en speel dit via alphaTex of MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex-notasie",
+        "description": "Inlyn-alphaTex-opmaak vir die bladmusiek. Wysig direk om notasie te skryf; dit word in 'n sjabloon gestoor sodat spasiëring behou word."
+      },
+      {
+        "property": "source",
+        "title": "Partituurlêer",
+        "description": "Laai op of skakel na 'n MusicXML-lêer (.xml/.musicxml/.mxl) of Guitar Pro-lêer (.gp3/.gp4/.gp5/.gpx/.gp). Oorheers inlyn-alphaTex wanneer gestel."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Oudioweergawe",
+        "description": "Standaard aan - luister na die bladmusiek wat deur die ingeboude sintetiseerder gespeel word. Skakel af vir slegs-kyk-modus (geen oudio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Wys vertoonopsies",
+        "description": "Wys zoem-, rek- en uitlegknoppies op die spelerbalk."
+      },
+      {
+        "property": "showExport",
+        "title": "Wys uitvoerknoppies",
+        "description": "Wys knoppies om MIDI af te laai en te druk/PDF op die spelerbalk."
+      }
+    ]
+  }
+}

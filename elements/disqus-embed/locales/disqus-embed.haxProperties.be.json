@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Убудаваць каментарыі Disqus на старонку."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Кароткае імя",
+        "description": "Кароткае імя сайта, якое вызначае хост скрыпту Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL старонкі",
+        "description": "URL старонкі, да якой прывязаны ланцужок каментарыяў."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Ідэнтыфікатар старонкі",
+        "description": "Унікальны ідэнтыфікатар ланцужка каментарыяў старонкі."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Назва старонкі",
+        "description": "Назва старонкі, да якой прывязаны ланцужок каментарыяў."
+      },
+      {
+        "property": "loadingText",
+        "title": "Тэкст загрузкі",
+        "description": "Тэкст, які агучваецца падчас загрузкі каментарыяў."
+      },
+      {
+        "property": "lang",
+        "title": "Мова",
+        "description": "Код мовы для інтэрфейсу Disqus, напр. en."
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Ẹyọ àkójọpọ̀",
+    "description": "Ẹyọ bí káàdì fún lílò nínú àtòjọ àkójọpọ̀, pẹ̀lú ọ̀rọ̀, ìjápọ̀, àti mídíà àṣàyàn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Ìjápọ̀",
+        "description": "URL ibi-àfojúsùn fún káàdì yìí."
+      },
+      {
+        "property": "image",
+        "title": "Àwòrán",
+        "description": "Àwòrán ẹ̀yìn."
+      },
+      {
+        "property": "line1",
+        "title": "Ìlà 1",
+        "description": "Ìlà ọ̀rọ̀ àkọ́kọ́."
+      },
+      {
+        "property": "line2",
+        "title": "Ìlà 2",
+        "description": "Ìlà ọ̀rọ̀ kejì."
+      },
+      {
+        "property": "line3",
+        "title": "Ìlà 3",
+        "description": "Ìlà ọ̀rọ̀ kẹta."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Àmì",
+        "description": "Àmì tí ó dúró fún káàdì náà."
+      },
+      {
+        "property": "saturate",
+        "title": "Ipa ìkún àwọ̀",
+        "description": "Yí ìkún àwọ̀ àwòrán padà nígbà tí olùlò bá fojú sí i."
+      },
+      {
+        "property": "tags",
+        "title": "Tágì",
+        "description": "Àtòjọ tágì tí a fi kọ́mà yà sọ́tọ̀."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀",
+        "description": "Àwọ̀ tí a lò fún tágì."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Ọ̀rọ̀ àfirọ́pò tí ó ṣàpèjúwe ìjápọ̀ náà."
+      }
+    ]
+  }
+}

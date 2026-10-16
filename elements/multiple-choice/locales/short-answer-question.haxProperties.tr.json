@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Kısa Yanıtlı Soru",
+    "description": "Kullanıcının basit bir soruyu yanıtlamasını sağlayın"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Soru",
+        "description": "Kullanıcıların yanıtlayacağı soru."
+      },
+      {
+        "property": "answers",
+        "title": "Olası Yanıtlar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Sınavın adı",
+        "description": "Bu öğenin tanımlanması için xAPI tabanlı ortamlarda kullanılan sınav adı"
+      }
+    ]
+  }
+}

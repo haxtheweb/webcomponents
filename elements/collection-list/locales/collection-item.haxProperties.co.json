@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Elementu di cullezzione",
+    "description": "Elementu in forma di carta per una lista di cullezzione, cù testu, ligame è media facultativu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Ligame",
+        "description": "URL di destinazione di sta carta."
+      },
+      {
+        "property": "image",
+        "title": "Imagine",
+        "description": "Imagine di fondu."
+      },
+      {
+        "property": "line1",
+        "title": "Linea 1",
+        "description": "Prima linea di testu."
+      },
+      {
+        "property": "line2",
+        "title": "Linea 2",
+        "description": "Seconda linea di testu."
+      },
+      {
+        "property": "line3",
+        "title": "Linea 3",
+        "description": "Terza linea di testu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona chì riprisenta a carta."
+      },
+      {
+        "property": "saturate",
+        "title": "Effettu di saturazione",
+        "description": "Cambià a saturazione di l'imagine quandu riceve u focus."
+      },
+      {
+        "property": "tags",
+        "title": "Etichette",
+        "description": "Lista d'etichette spiccate da virgule."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore",
+        "description": "Culore di l'etichette."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Testu alternativu chì discrive u ligame."
+      }
+    ]
+  }
+}

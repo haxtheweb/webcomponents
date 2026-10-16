@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "مجموعہ آئٹم",
+    "description": "مجموعے دی لسٹ وچ ورتݨ لئی کارڈ ورگا آئٹم، متن، لنک تے اختیاری میڈیا نال۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "لنک",
+        "description": "ایس کارڈ لئی منزل URL۔"
+      },
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "پچھوکڑ دی تصویر۔"
+      },
+      {
+        "property": "line1",
+        "title": "لائن 1",
+        "description": "متن دی پہلی لائن۔"
+      },
+      {
+        "property": "line2",
+        "title": "لائن 2",
+        "description": "متن دی دوجی لائن۔"
+      },
+      {
+        "property": "line3",
+        "title": "لائن 3",
+        "description": "متن دی تیجی لائن۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "کارڈ دی نمائندگی کرن والا آئیکن۔"
+      },
+      {
+        "property": "saturate",
+        "title": "رنگ گوڑھا کرن دا اثر",
+        "description": "صارف دے فوکس تے تصویر دے رنگ دی گوڑھائی بدلو۔"
+      },
+      {
+        "property": "tags",
+        "title": "ٹیگ",
+        "description": "کامے نال وکھرے کیتے ٹیگاں دی لسٹ۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ",
+        "description": "ٹیگاں لئی ورتیا گیا رنگ۔"
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "لنک بیان کرن والا متبادل متن۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "पृष्ठ ध्वज",
+    "description": "पृष्ठ लेखकांसाठी संपादकीय टीप."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "पृष्ठ ध्वजासाठी उठाव रंग."
+      },
+      {
+        "property": "label",
+        "title": "लेबल",
+        "description": "पृष्ठ ध्वजासाठी लेबल मजकूर."
+      }
+    ]
+  }
+}

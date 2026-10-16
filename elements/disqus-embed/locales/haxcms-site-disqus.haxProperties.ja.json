@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqusコメント",
+    "description": "Disqusコメントウェブサービスとの連携"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "ショートネーム",
+        "description": "Disqus上のプロパティのショートネーム"
+      }
+    ]
+  }
+}

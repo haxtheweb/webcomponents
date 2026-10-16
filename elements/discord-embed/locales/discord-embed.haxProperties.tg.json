@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Ҷамоаҳои Discord-ро аз URL-и мубодила ҷойгир кунед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL-и манбаъ",
+        "description": "URL-и манбаъ."
+      },
+      {
+        "property": "height",
+        "title": "Баландӣ",
+        "description": "Баландии чаҳорчӯбаи мундариҷа."
+      },
+      {
+        "property": "width",
+        "title": "Паҳноӣ",
+        "description": "Паҳноии чаҳорчӯбаи мундариҷа."
+      }
+    ]
+  }
+}

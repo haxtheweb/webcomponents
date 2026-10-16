@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Lapas sadaļa",
+    "description": "Sadaļas konteiners lapas saturam un ekrāna izkārtojumiem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Dizaina risinājums",
+        "description": "Iepriekš iestatīts stils, kas atjaunina saistītos iestatījumus."
+      },
+      {
+        "property": "image",
+        "title": "Attēls",
+        "description": "Sadaļas fona multivide."
+      },
+      {
+        "property": "bg",
+        "title": "Fona krāsa",
+        "description": "Fona krāsa, ja attēls nav iestatīts."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Ritināšanas poga",
+        "description": "Rādīt pogu, kas ritina uz nākamo sadaļu."
+      },
+      {
+        "property": "fold",
+        "title": "Rādīt locījumu",
+        "description": "Rādīt vizuālu locījumu sadaļas apakšā."
+      },
+      {
+        "property": "full",
+        "title": "Pilnekrāna izmērs",
+        "description": "Aizpildīt visu skatītāja ekrāna augstumu."
+      },
+      {
+        "property": "filter",
+        "title": "Lietot filtru",
+        "description": "Lietot vizuālu filtru fona attēlam."
+      },
+      {
+        "slot": "",
+        "title": "Saturs",
+        "description": "Sadaļas saturs."
+      },
+      {
+        "slot": "entice",
+        "title": "Vilinājums",
+        "description": "Neobligāts uzmanību piesaistošs saturs."
+      },
+      {
+        "slot": "buttons",
+        "title": "Pogas",
+        "description": "Zem teksta rādītā pogu grupa."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Enkura teksts",
+        "description": "Navigācijā rādītā enkura etiķete."
+      }
+    ]
+  }
+}

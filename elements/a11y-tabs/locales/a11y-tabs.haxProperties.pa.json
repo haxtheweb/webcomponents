@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ਟੈਬਾਂ",
+    "description": "ਟੈਬਾਂ ਦਾ ਸੈੱਟ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "ਲੇਬਲ (ਪਹੁੰਚਯੋਗਤਾ ਲਈ)",
+        "description": "ਟੈਬ ਸੈੱਟ ਲਈ ਪਹੁੰਚਯੋਗ ਲੇਬਲ।"
+      },
+      {
+        "property": "disabled",
+        "title": "ਅਯੋਗ",
+        "description": "ਸਾਰੀਆਂ ਟੈਬਾਂ ਅਯੋਗ ਕਰੋ।"
+      },
+      {
+        "property": "hidden",
+        "title": "ਲੁਕਿਆ ਹੋਇਆ",
+        "description": "ਟੈਬ ਸੈੱਟ ਲੁਕਾਓ।"
+      },
+      {
+        "property": "sticky",
+        "title": "ਸਥਿਰ (ਚਿਪਕਿਆ)",
+        "description": "ਸਕ੍ਰੋਲ ਕਰਦੇ ਸਮੇਂ ਲੇਟਵੀਆਂ ਟੈਬਾਂ ਨੂੰ ਉੱਪਰ ਰੱਖੋ।"
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "ਲੇਆਉਟ ਬ੍ਰੇਕਪੁਆਇੰਟ",
+        "description": "ਲੇਟਵੀਆਂ ਟੈਬਾਂ ਲਈ ਬ੍ਰੇਕਪੁਆਇੰਟ; ਸਿਰਫ਼ ਖੜ੍ਹਵੀਆਂ ਲਈ -1 ਵਰਤੋ।"
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "ਆਈਕਨ ਬ੍ਰੇਕਪੁਆਇੰਟ",
+        "description": "ਆਈਕਨਾਂ ਨਾਲ ਲਿਖਤ ਦਿਖਾਉਣ ਲਈ ਬ੍ਰੇਕਪੁਆਇੰਟ। ਮੂਲ ਮੁੱਲ 0 ਹੈ; ਸਿਰਫ਼-ਆਈਕਨ ਮੋਡ ਲਈ -1 ਵਰਤੋ।"
+      },
+      {
+        "slot": "",
+        "title": "ਟੈਬਾਂ",
+        "description": "<a11y-tab/> ਤੱਤਾਂ ਦੀ ਲੜੀ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ਵਿਲੱਖਣ ID",
+        "description": "ਇਸ ਟੈਬ ਸੈੱਟ ਲਈ ਵਿਲੱਖਣ ID।"
+      }
+    ]
+  }
+}

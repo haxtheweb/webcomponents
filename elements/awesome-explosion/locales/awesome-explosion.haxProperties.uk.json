@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Чудовий вибух",
+    "description": "Інтерактивна анімація вибуху з необов'язковими звуковими ефектами."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Розмір",
+        "description": "Задайте розмір вибуху.",
+        "options": {
+          "tiny": "Крихітний",
+          "small": "Малий",
+          "medium": "Середній",
+          "large": "Великий",
+          "epic": "Епічний"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Колір",
+        "description": "Задайте колірну тему вибуху.",
+        "options": {
+          "": "За замовчуванням",
+          "red": "Червоний",
+          "blue": "Синій",
+          "purple": "Фіолетовий",
+          "orange": "Помаранчевий",
+          "yellow": "Жовтий"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Звукові ефекти",
+        "description": "Увімкнути звукові ефекти."
+      },
+      {
+        "property": "resetSound",
+        "title": "Скидати звук",
+        "description": "Щоразу відтворювати звук спочатку."
+      },
+      {
+        "property": "image",
+        "title": "Власне зображення",
+        "description": "Необов'язковий URL власного зображення вибуху."
+      },
+      {
+        "property": "sound",
+        "title": "Власний звук",
+        "description": "Необов'язковий URL власного звукового ефекту."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Вимкнено",
+        "description": "Вимкнути всі взаємодії."
+      }
+    ]
+  }
+}

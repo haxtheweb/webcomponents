@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Prehliadač PDF",
+    "description": "Vloženie súboru PDF priamo do stránky s voliteľným rozložením karty a tlačidlom stiahnutia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Umiestnenie súboru PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Nadpis",
+        "description": "Text nadpisu karty."
+      },
+      {
+        "property": "card",
+        "title": "Rozloženie karty",
+        "description": "Zobraziť PDF v karte s tlačidlom stiahnutia."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Označenie stiahnutia",
+        "description": "Označenie tlačidla stiahnutia."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Správa o nepodporovaní",
+        "description": "Správa, keď prehliadač nedokáže zobraziť súbory PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Text odkazu pri nepodporovaní",
+        "description": "Text odkazu, keď prehliadač nedokáže zobraziť súbory PDF."
+      },
+      {
+        "property": "width",
+        "title": "Šírka",
+        "description": "Šírka prehliadača PDF."
+      },
+      {
+        "property": "height",
+        "title": "Výška",
+        "description": "Výška prehliadača PDF."
+      }
+    ]
+  }
+}

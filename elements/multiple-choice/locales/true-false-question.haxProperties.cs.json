@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Otázka pravda / nepravda",
+    "description": "Otázka pravda/nepravda"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Otázka",
+        "description": "Otázka, na kterou mají uživatelé odpovědět."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Správná odpověď"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Název kvízu",
+        "description": "Název kvízu předávaný pro identifikaci této položky v prostředích řízených xAPI"
+      }
+    ]
+  }
+}

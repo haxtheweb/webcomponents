@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "చిత్ర పోలిక",
+    "description": "పోల్చడానికి ఒక చిత్రాన్ని మరొకదానిపై స్వైప్ చేయండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "పై చిత్రం",
+        "description": "కింది చిత్రంపై స్వైప్ చేయబడే పై చిత్రం."
+      },
+      {
+        "property": "topAlt",
+        "title": "పై చిత్ర ప్రత్యామ్నాయ వచనం",
+        "description": "ప్రాప్యత కోసం అవసరమైన ప్రత్యామ్నాయ వచనం."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "కింది చిత్రం",
+        "description": "పై చిత్రం కింద చూపబడే కింది చిత్రం."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "కింది చిత్ర ప్రత్యామ్నాయ వచనం",
+        "description": "ప్రాప్యత కోసం అవసరమైన ప్రత్యామ్నాయ వచనం."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "ప్రవర్తన",
+        "description": "వైప్ మోడ్ (డిఫాల్ట్) లేదా పై-చిత్ర అపారదర్శకత మోడ్‌ను ఎంచుకోండి."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "స్లైడర్ బార్ రంగు."
+      },
+      {
+        "property": "dark",
+        "title": "డార్క్",
+        "description": "స్లైడర్ బార్ రంగును విలోమం చేయండి."
+      },
+      {
+        "property": "position",
+        "title": "ప్రారంభ స్థానం",
+        "description": "0 నుండి 100 వరకు ప్రారంభ స్థానం."
+      }
+    ]
+  }
+}

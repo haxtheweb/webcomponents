@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "ເປົ້າໝາຍການພັດທະນາແບບຍືນຍົງຂອງສະຫະປະຊາຊາດ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "ເປົ້າໝາຍ",
+        "description": "ໝາຍເລກ UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "ສີເທົ່ານັ້ນ",
+        "description": "ສະແດງສະເພາະສີຂອງເປົ້າໝາຍ."
+      }
+    ]
+  }
+}

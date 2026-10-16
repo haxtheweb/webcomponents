@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Su'aal Jawaab Gaaban",
+    "description": "Ka dhig isticmaalaha inuu ka jawaabo su'aal fudud"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Su'aal",
+        "description": "Su'aasha ay isticmaalayaashu ka jawaabayaan."
+      },
+      {
+        "property": "answers",
+        "title": "Jawaabaha Suurtagalka ah"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Magaca imtixaanka",
+        "description": "Magaca imtixaanka loo gudbiyo deegaannada xAPI si loo aqoonsado walaxdan"
+      }
+    ]
+  }
+}

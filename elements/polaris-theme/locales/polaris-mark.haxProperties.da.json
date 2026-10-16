@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris-mærke",
+    "description": "Vis PSU-identitetsmærket med valgfrit kollegienavn og destinations-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Kollegienavn",
+        "description": "Navn vist ved siden af mærket."
+      },
+      {
+        "property": "name2",
+        "title": "Kollegienavn 2",
+        "description": "Andet navn vist under det første kollegienavn."
+      },
+      {
+        "property": "name3",
+        "title": "Kollegienavn 3",
+        "description": "Tredje navn vist under det andet kollegienavn."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Destinations-URL, når der klikkes på mærket."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Visuel variant af mærket.",
+        "options": {
+          "default": "Standard",
+          "light": "Lys",
+          "dark": "Mørk"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Lodret layout",
+        "description": "Vis det tredje navn under det andet navn med en vandret linje."
+      }
+    ]
+  }
+}

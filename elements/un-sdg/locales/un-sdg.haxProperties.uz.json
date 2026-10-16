@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Birlashgan Millatlar Tashkilotining Barqaror rivojlanish maqsadi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Maqsad",
+        "description": "UN SDG raqami."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Faqat rang",
+        "description": "Faqat maqsad rangini koʻrsatish."
+      }
+    ]
+  }
+}

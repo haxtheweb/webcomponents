@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Funso la Zoona / Zabodza",
+    "description": "Funso la zoona kapena zabodza"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Funso",
+        "description": "Funso loti ogwiritsa ntchito ayankhe."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Yankho Lolondola"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Dzina la mayeso",
+        "description": "Dzina la mayeso loperekedwa kuti ligwiritsidwe ntchito m'malo oyendetsedwa ndi xAPI pozindikira chinthuchi"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Προϊόν με μια ματιά",
+    "description": "Μπλοκ γρήγορης επισκόπησης προϊόντος."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Εικονίδιο",
+        "description": "Εικονίδιο που αντιπροσωπεύει την έννοια."
+      },
+      {
+        "property": "title",
+        "title": "Τίτλος",
+        "description": "Κύρια έννοια με μια ματιά."
+      },
+      {
+        "property": "subtitle",
+        "title": "Υπότιτλος",
+        "description": "Πρόσθετη λεπτομέρεια."
+      },
+      {
+        "property": "accentColor",
+        "title": "Χρώμα έμφασης",
+        "description": "Χρώμα έμφασης για το εικονίδιο."
+      }
+    ]
+  }
+}

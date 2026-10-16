@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity Oynatıcı",
+    "description": "Unity WebGL oynatıcısı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Hedef",
+        "description": "Oyun derlemesinin yolu."
+      },
+      {
+        "property": "compression",
+        "title": "Sıkıştırma yöntemi",
+        "description": "Oyun varlıkları için sıkıştırma dosya uzantısı."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Akış URL'si",
+        "description": "Akış varlıkları URL'si."
+      },
+      {
+        "property": "companyname",
+        "title": "Şirket Adı",
+        "description": "Şirket adı."
+      },
+      {
+        "property": "productname",
+        "title": "Ürün Adı",
+        "description": "Oyun adı."
+      },
+      {
+        "property": "productversion",
+        "title": "Ürün Sürümü",
+        "description": "Yayın sürümü."
+      },
+      {
+        "property": "width",
+        "title": "Tuval Genişliği",
+        "description": "Tuvalin CSS genişliği (örneğin px veya em)."
+      },
+      {
+        "property": "height",
+        "title": "Tuval Yüksekliği",
+        "description": "Tuvalin CSS yüksekliği (örneğin px veya em)."
+      },
+      {
+        "property": "background",
+        "title": "Tuval Arka Planı",
+        "description": "Tuvalin CSS arka planı."
+      }
+    ]
+  }
+}

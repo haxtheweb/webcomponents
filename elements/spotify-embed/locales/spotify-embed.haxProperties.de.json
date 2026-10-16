@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Wrapper für eingebettete Spotify-Player."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quelle",
+        "description": "Einbettungs- oder Freigabelink von Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Design",
+        "description": "Farbdesign des Player-Hintergrunds.",
+        "options": {
+          "": "Standard",
+          "0": "Schwarz"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Größe",
+        "description": "Größe des Players.",
+        "options": {
+          "normal": "Standard",
+          "compact": "Kompakt"
+        }
+      }
+    ]
+  }
+}

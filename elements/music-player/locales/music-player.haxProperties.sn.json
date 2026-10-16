@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Muratidziri weMIDI",
+    "description": "Ridza MIDI nemuratidziro wayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kwakabva",
+        "description": "URL yefaira rekuridza."
+      },
+      {
+        "property": "visualizer",
+        "title": "Muratidziro",
+        "description": "Mhando yemuratidziro wefaira remimhanzi.",
+        "options": {
+          "staff": "Mitsetse yemimhanzi",
+          "piano-roll": "Piano roll",
+          "waterfall": "Piyano + mapopoma"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Viga mapopoma",
+        "description": "Viga manotsi emapopoma mumuratidziro wepiyano."
+      }
+    ]
+  }
+}

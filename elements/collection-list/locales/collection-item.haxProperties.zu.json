@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Into yeqoqo",
+    "description": "Into enesitayela sekhadi ezosetshenziswa ohlwini lweqoqo, enombhalo, isixhumanisi, nemidiya ongayikhetha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Isixhumanisi",
+        "description": "I-URL okuyiwa kuyo yaleli khadi."
+      },
+      {
+        "property": "image",
+        "title": "Isithombe",
+        "description": "Isithombe sangemuva."
+      },
+      {
+        "property": "line1",
+        "title": "Umugqa 1",
+        "description": "Umugqa wokuqala wombhalo."
+      },
+      {
+        "property": "line2",
+        "title": "Umugqa 2",
+        "description": "Umugqa wesibili wombhalo."
+      },
+      {
+        "property": "line3",
+        "title": "Umugqa 3",
+        "description": "Umugqa wesithathu wombhalo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Isithonjana",
+        "description": "Isithonjana esimele ikhadi."
+      },
+      {
+        "property": "saturate",
+        "title": "Umphumela wokugcwala kombala",
+        "description": "Shintsha ukugcwala kombala wesithombe lapho umsebenzisi egxila kuso."
+      },
+      {
+        "property": "tags",
+        "title": "Omaka",
+        "description": "Uhlu lomaka oluhlukaniswe ngokhefana."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala",
+        "description": "Umbala osetshenziselwa omaka."
+      },
+      {
+        "property": "alt",
+        "title": "Okungenye",
+        "description": "Umbhalo ongenye ochaza isixhumanisi."
+      }
+    ]
+  }
+}

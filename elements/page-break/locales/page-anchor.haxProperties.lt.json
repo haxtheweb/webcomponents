@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Puslapio inkaras",
+    "description": "Nuorodos į konkrečias medijos vietas puslapyje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Puslapio tikslas",
+        "description": "ID arba išteklius, į kurį rodo šis inkaras."
+      },
+      {
+        "property": "value",
+        "title": "Gilioji nuorodos reikšmė",
+        "description": "Giliosios nuorodos reikšmė (pvz., laiko žyma arba skaidrės ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Svetainės objektas",
+        "description": "Pasirenkamas svetainės objektas susijusios sąvokos pateikimui valdyti."
+      }
+    ]
+  }
+}

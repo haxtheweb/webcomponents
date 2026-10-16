@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity ойнатқышы",
+    "description": "Unity WebGL ойнатқышы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Нысана",
+        "description": "Ойын жинағына апаратын жол."
+      },
+      {
+        "property": "compression",
+        "title": "Сығу әдісі",
+        "description": "Ойын ресурстарына арналған сығу файлының кеңейтімі."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Ағындық URL",
+        "description": "Ағындық ресурстардың URL-і."
+      },
+      {
+        "property": "companyname",
+        "title": "Компания атауы",
+        "description": "Компания атауы."
+      },
+      {
+        "property": "productname",
+        "title": "Өнім атауы",
+        "description": "Ойын атауы."
+      },
+      {
+        "property": "productversion",
+        "title": "Өнім нұсқасы",
+        "description": "Шығарылым нұсқасы."
+      },
+      {
+        "property": "width",
+        "title": "Кенеп ені",
+        "description": "Кенептің CSS ені (мысалы, px немесе em)."
+      },
+      {
+        "property": "height",
+        "title": "Кенеп биіктігі",
+        "description": "Кенептің CSS биіктігі (мысалы, px немесе em)."
+      },
+      {
+        "property": "background",
+        "title": "Кенеп фоны",
+        "description": "Кенептің CSS фоны."
+      }
+    ]
+  }
+}

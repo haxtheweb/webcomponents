@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Reproductor de documentació de components web"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Amaga la finestra",
+        "description": "Amaga la finestra de sortida, útil quan només cal el terminal"
+      }
+    ]
+  }
+}

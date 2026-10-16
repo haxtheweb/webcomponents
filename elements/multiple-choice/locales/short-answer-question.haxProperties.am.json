@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "የአጭር መልስ ጥያቄ",
+    "description": "ተጠቃሚው መሠረታዊ ጥያቄ እንዲመልስ አድርግ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ጥያቄ",
+        "description": "ተጠቃሚዎች የሚመልሱት ጥያቄ።"
+      },
+      {
+        "property": "answers",
+        "title": "ሊሆኑ የሚችሉ መልሶች"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "የፈተናው ስም",
+        "description": "ይህን ንጥል ለመለየት በxAPI የሚመሩ አካባቢዎች ውስጥ ጥቅም ላይ የሚውል የፈተና ስም"
+      }
+    ]
+  }
+}

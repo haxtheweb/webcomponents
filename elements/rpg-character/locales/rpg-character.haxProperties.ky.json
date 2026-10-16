@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG каарманы",
+    "description": "HAX'тан кызыктуу каарман."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Аты",
+        "description": "Кокус каарман түзүү үчүн колдонулган сөз."
+      },
+      {
+        "property": "hat",
+        "title": "Баш кийим",
+        "description": "Баш кийимдин стили.",
+        "options": {
+          "none": "Демейки",
+          "random": "Кокус",
+          "bunny": "Коён",
+          "cowboy": "Ковбой",
+          "education": "Билим берүү",
+          "construction": "Курулуш",
+          "warning": "Эскертүү",
+          "watermelon": "Дарбыз",
+          "coffee": "Кофе",
+          "knight": "Рыцарь",
+          "ninja": "Ниндзя",
+          "party": "Майрам",
+          "error": "Ката",
+          "edit": "Түзөтүү"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Туурасы",
+        "description": "Каармандын пикселдеги туурасы."
+      },
+      {
+        "property": "height",
+        "title": "Бийиктиги",
+        "description": "Каармандын пикселдеги бийиктиги."
+      },
+      {
+        "property": "fire",
+        "title": "Күйүп жатабы?",
+        "description": "Каарман күйүп жатабы."
+      },
+      {
+        "property": "walking",
+        "title": "Басып жатабы?",
+        "description": "Басуу анимациясы; күйүп жатканда чуркайт."
+      }
+    ]
+  }
+}

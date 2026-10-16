@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "אמת / פֿאַלש פֿראַגע",
+    "description": "אמת־פֿאַלש פֿראַגע"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "פֿראַגע",
+        "description": "פֿראַגע אויף וועלכער די באַניצער זאָלן ענטפֿערן."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "ריכטיקער ענטפֿער"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "נאָמען פֿון דעם קוויז",
+        "description": "קוויז־נאָמען איבערגעגעבן פֿאַר ניצן אין xAPI־סבֿיבֿות צו אידענטיפֿיצירן דעם עלעמענט"
+      }
+    ]
+  }
+}

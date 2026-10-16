@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "شاندار دھماکا",
+    "description": "اختیاری صوتی اثرات کے ساتھ انٹرایکٹو دھماکے کی اینیمیشن۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "سائز",
+        "description": "دھماکے کا سائز مقرر کریں۔",
+        "options": {
+          "tiny": "ننھا",
+          "small": "چھوٹا",
+          "medium": "درمیانہ",
+          "large": "بڑا",
+          "epic": "زبردست"
+        }
+      },
+      {
+        "property": "color",
+        "title": "رنگ",
+        "description": "دھماکے کی رنگ تھیم مقرر کریں۔",
+        "options": {
+          "": "طے شدہ",
+          "red": "سرخ",
+          "blue": "نیلا",
+          "purple": "جامنی",
+          "orange": "نارنجی",
+          "yellow": "پیلا"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "صوتی اثرات",
+        "description": "صوتی اثرات فعال کریں۔"
+      },
+      {
+        "property": "resetSound",
+        "title": "آواز ری سیٹ کریں",
+        "description": "ہر بار آواز شروع سے چلائیں۔"
+      },
+      {
+        "property": "image",
+        "title": "حسبِ ضرورت تصویر",
+        "description": "دھماکے کی حسبِ ضرورت تصویر کا اختیاری URL۔"
+      },
+      {
+        "property": "sound",
+        "title": "حسبِ ضرورت آواز",
+        "description": "حسبِ ضرورت صوتی اثر کا اختیاری URL۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "غیر فعال",
+        "description": "تمام تعاملات غیر فعال کریں۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Сгъваем контейнер",
+    "description": "Единичен разгъващ се и сгъващ се контейнер."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Заглавие",
+        "description": "Текст за сгъваемия блок."
+      },
+      {
+        "property": "expanded",
+        "title": "Разгънат",
+        "description": "Разгъване по подразбиране."
+      },
+      {
+        "property": "headingButton",
+        "title": "Бутон-заглавие",
+        "description": "Цялото заглавие да е кликаемо, а не само иконата."
+      },
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона за бутона за разгъване/сгъване."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Икона (при разгънат)",
+        "description": "Незадължителна икона за разгънатото състояние на бутона."
+      },
+      {
+        "slot": "",
+        "title": "Съдържание",
+        "description": "Съдържание на сгъваемия блок."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Подсказка",
+        "description": "Подсказка за бутона за разгъване/сгъване."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Подсказка (при разгънат)",
+        "description": "Подсказка за бутона за разгъване/сгъване в разгънато състояние."
+      }
+    ]
+  }
+}

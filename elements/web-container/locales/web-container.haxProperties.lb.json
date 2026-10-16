@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS-Container"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Editor verstoppen",
+        "description": "D'Interface fir d'Beaarbechte vu Fichieren verstoppen."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Terminal verstoppen",
+        "description": "Den Terminal fir automatesch lafend Programmer verstoppen."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Fënster verstoppen",
+        "description": "D'Ausgabfënster fir reng Terminal-Notzung verstoppen."
+      },
+      {
+        "slot": "",
+        "title": "Befeeler",
+        "description": "Befeeler (ee pro Zeil), déi virum Lueden ausgefouert ginn."
+      }
+    ]
+  }
+}

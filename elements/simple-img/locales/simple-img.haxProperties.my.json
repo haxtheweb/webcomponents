@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ရိုးရှင်းသော ပုံ",
+    "description": "ရိုးရှင်းသော parameter များဖြင့် ပုံများကို ပြုပြင်ရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ရင်းမြစ်",
+        "description": "ပုံ ရင်းမြစ် URL။"
+      },
+      {
+        "property": "height",
+        "title": "အမြင့်",
+        "description": "ရွေးချယ်နိုင်သော ပုံ အမြင့်။"
+      },
+      {
+        "property": "width",
+        "title": "အကျယ်",
+        "description": "ရွေးချယ်နိုင်သော ပုံ အကျယ်။"
+      },
+      {
+        "property": "alt",
+        "title": "အစားထိုး စာသား",
+        "description": "မျက်နှာပြင်ဖတ်စနစ်များနှင့် ပိုကောင်းသော SEO အတွက် အသုံးဝင်သည်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "အရည်အသွေး",
+        "description": "ထုတ်ပေးချိန် ပုံ အရည်အသွေး (JPEG သာ)။"
+      },
+      {
+        "property": "fetchpriority",
+        "title": "ရယူမှု ဦးစားပေး",
+        "description": "ခေတ်မီ ဘရောက်ဇာများအတွက် စွမ်းဆောင်ရည် အရိပ်အမြွက်။",
+        "options": {
+          "auto": "အလိုအလျောက်",
+          "high": "မြင့်",
+          "low": "နိမ့်"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Decoding နည်းလမ်း",
+        "description": "ခေတ်မီ ဘရောက်ဇာများတွင် ပုံ rendering အတွက် စွမ်းဆောင်ရည် အရိပ်အမြွက်။",
+        "options": {
+          "auto": "အလိုအလျောက်",
+          "async": "Async"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Autoebaluazioa",
+    "description": "Erabiltzaileek autoebaluazio bat egin dezakete."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Irudia",
+        "description": "Autoebaluazioaren irudia."
+      },
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Autoebaluazioaren izenburua."
+      },
+      {
+        "property": "alt",
+        "title": "Testu alternatiboa",
+        "description": "Irudiaren alt testua."
+      },
+      {
+        "slot": "question",
+        "title": "Galdera"
+      },
+      {
+        "slot": "",
+        "title": "Erantzuna"
+      },
+      {
+        "property": "accentColor",
+        "title": "Gaiaren kolorea",
+        "description": "Aukeratu diseinu-sistemako gai kolore bat.",
+        "options": {
+          "primary": "Nagusia",
+          "accent": "Nabarmentzea",
+          "success": "Arrakasta",
+          "warning": "Abisua",
+          "error": "Errorea",
+          "info": "Informazioa"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ikaskuntza helburua",
+        "description": "oer:hasLearningObjective gisa sortzen den ikaskuntza helburuaren erreferentzia."
+      },
+      {
+        "property": "assessing",
+        "title": "Ebaluatzen",
+        "description": "oer:assessing gisa sortzen den jardueraren erreferentzia."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Esteka gehiago",
+        "description": "Informazio gehigarrirako esteka."
+      }
+    ]
+  }
+}

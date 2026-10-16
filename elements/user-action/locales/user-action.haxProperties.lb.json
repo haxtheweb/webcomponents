@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Benotzeraktioun",
+    "description": "Benotzeraktiounen verfollegen an Daten un xAPI-Späicher schécken."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Evenement fir ze verfollegen",
+        "description": "Benotzeraktioun, déi dëst Evenement ausléist.",
+        "options": {
+          "visibility": "Kann dat gesinn",
+          "keydown": "Hei eng Tast drécken",
+          "click": "Op dat klicken",
+          "hover": "Mat der Maus iwwer dat fueren"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "All Kéier verfollegen",
+        "description": "Standardméisseg gëtt nëmmen dat éischt Optrieden verfollegt."
+      }
+    ]
+  }
+}

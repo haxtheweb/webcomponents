@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Bekas NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Sembunyikan editor",
+        "description": "Sembunyikan antara muka penyuntingan fail."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Sembunyikan terminal",
+        "description": "Sembunyikan terminal untuk program yang berjalan secara automatik."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Sembunyikan tetingkap",
+        "description": "Sembunyikan tetingkap output untuk kegunaan terminal sahaja."
+      },
+      {
+        "slot": "",
+        "title": "Arahan",
+        "description": "Arahan (satu setiap baris) untuk dijalankan sebelum memuatkan."
+      }
+    ]
+  }
+}

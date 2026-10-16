@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "صفحہ جھنڈا",
+    "description": "صفحہ لکھاریاں لئی ادارتی نوٹ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "صفحہ جھنڈے دا نمایاں رنگ۔"
+      },
+      {
+        "property": "label",
+        "title": "لیبل",
+        "description": "صفحہ جھنڈے دا لیبل متن۔"
+      }
+    ]
+  }
+}

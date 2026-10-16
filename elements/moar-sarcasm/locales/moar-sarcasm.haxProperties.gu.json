@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "કટાક્ષ",
+    "description": "લખાણને મજાકિયા રીતે રજૂ કરવું"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "લખાણ",
+        "description": "કટાક્ષમય બનાવવાનું લખાણ"
+      }
+    ]
+  }
+}

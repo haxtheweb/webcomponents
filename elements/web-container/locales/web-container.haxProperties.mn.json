@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS контейнер"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Засварлагчийг нуух",
+        "description": "Файл засварлах интерфейсийг нуух."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Терминалыг нуух",
+        "description": "Автоматаар ажилладаг программд терминалыг нуух."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Цонхыг нуух",
+        "description": "Зөвхөн терминал ашиглахад гаралтын цонхыг нуух."
+      },
+      {
+        "slot": "",
+        "title": "Тушаалууд",
+        "description": "Ачаалахаас өмнө ажиллуулах тушаалууд (мөр бүрт нэг)."
+      }
+    ]
+  }
+}

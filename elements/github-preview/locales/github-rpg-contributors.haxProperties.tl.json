@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Listahan ng mga contributor sa GitHub",
+    "description": "Ipinapakita bilang mga karakter sa RPG gamit ang GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisasyon",
+        "description": "Pangalan ng organisasyon mula sa github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repository",
+        "description": "Pangalan ng repository mula sa github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Limitasyon",
+        "description": "Limitahan ang bilang ng mga contributor na ipinapakita."
+      }
+    ]
+  }
+}

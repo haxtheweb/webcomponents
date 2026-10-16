@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Príbehová karta Polaris",
+    "description": "Zobrazenie príbehovej karty Polaris s obrázkom na pozadí, označením piliera a textom titulku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Obrázok na pozadí",
+        "description": "URL obrázka zobrazeného ako pozadie karty."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Veľkosť pozadia",
+        "description": "Ako obrázok na pozadí vyplní kartu (CSS background-size).",
+        "options": {
+          "cover": "Pokryť (cover)",
+          "contain": "Obsiahnuť (contain)",
+          "auto": "Automaticky (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Ukotvenie pozadia",
+        "description": "Ako sa obrázok na pozadí správa pri posúvaní (CSS background-attachment).",
+        "options": {
+          "scroll": "Posúvať (scroll)",
+          "fixed": "Pevné (fixed)",
+          "local": "Lokálne (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Označenie piliera",
+        "description": "Krátke označenie veľkými písmenami zobrazené v hornej časti karty. Ak ho chcete skryť, nechajte prázdne."
+      },
+      {
+        "property": "label",
+        "title": "Text karty",
+        "description": "Hlavný text zobrazený v spodnom paneli."
+      },
+      {
+        "property": "link",
+        "title": "Odkaz",
+        "description": "Voliteľná cieľová URL, ktorá obalí celú kartu."
+      }
+    ]
+  }
+}

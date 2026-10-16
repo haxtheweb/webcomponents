@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Eine Polaris-Handlungsaufforderung als gestaltete Schaltfläche anzeigen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Schaltflächentext",
+        "description": "Text auf der Schaltfläche der Handlungsaufforderung."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Ziel-URL der Schaltfläche."
+      },
+      {
+        "property": "type",
+        "title": "Variante",
+        "description": "Variante des visuellen Stils.",
+        "options": {
+          "primary": "Primär",
+          "tinted": "Getönt",
+          "light": "Hell"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Umrandeter Stil",
+        "description": "Umrandete Darstellung aktivieren."
+      },
+      {
+        "property": "filled",
+        "title": "Gefüllter Stil",
+        "description": "Gefüllte Darstellung aktivieren."
+      }
+    ]
+  }
+}

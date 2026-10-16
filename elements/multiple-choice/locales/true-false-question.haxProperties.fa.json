@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "پرسش درست / نادرست",
+    "description": "پرسش درست یا نادرست"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "پرسش",
+        "description": "پرسشی که کاربران باید به آن پاسخ دهند."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "پاسخ درست"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "نام آزمونک",
+        "description": "نام آزمونک که در محیط‌های مبتنی بر xAPI برای شناسایی این مورد ارسال می‌شود"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Stikkord",
+    "description": "Enkel liste med stikkord for visning på siden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Stikkord",
+        "description": "Kommaseparert liste med stikkord."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatisk aksentfarge",
+        "description": "Angi aksentfarge automatisk basert på etiketten."
+      },
+      {
+        "property": "accentColor",
+        "title": "Farge",
+        "description": "Farge for stikkord."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ಟ್ಯಾಗ್‌ಗಳು",
+    "description": "ಪುಟದಲ್ಲಿ ಪ್ರದರ್ಶಿಸಲು ಸರಳ ಟ್ಯಾಗ್ ಪಟ್ಟಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ಟ್ಯಾಗ್‌ಗಳು",
+        "description": "ಅಲ್ಪವಿರಾಮದಿಂದ ಬೇರ್ಪಡಿಸಿದ ಟ್ಯಾಗ್‌ಗಳ ಪಟ್ಟಿ."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ಸ್ವಯಂ ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಲೇಬಲ್ ಆಧಾರದ ಮೇಲೆ ಒತ್ತು ಬಣ್ಣವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಹೊಂದಿಸಿ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಬಣ್ಣ",
+        "description": "ಟ್ಯಾಗ್‌ಗಳ ಬಣ್ಣ."
+      }
+    ]
+  }
+}

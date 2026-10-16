@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Umugqa weqoqo",
+    "description": "Into enesitayela somugqa ezosetshenziswa ohlwini lweqoqo, enombhalo, isixhumanisi, isithonjana, omaka, nesithombe ongasikhetha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Isixhumanisi",
+        "description": "I-URL okuyiwa kuyo yalo mugqa."
+      },
+      {
+        "property": "image",
+        "title": "Isithombe",
+        "description": "Isithombe somugqa."
+      },
+      {
+        "property": "alt",
+        "title": "Okungenye",
+        "description": "Umbhalo ongenye ochaza isithombe."
+      },
+      {
+        "property": "line1",
+        "title": "Umugqa 1",
+        "description": "Umugqa wokuqala wombhalo."
+      },
+      {
+        "property": "line2",
+        "title": "Umugqa 2",
+        "description": "Umugqa wesibili wombhalo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Isithonjana",
+        "description": "Isithonjana esimele umugqa."
+      },
+      {
+        "property": "saturate",
+        "title": "Umphumela wokugcwala kombala",
+        "description": "Shintsha ukugcwala kombala wesithombe lapho umsebenzisi egxila kuso."
+      },
+      {
+        "property": "tags",
+        "title": "Omaka",
+        "description": "Uhlu lomaka oluhlukaniswe ngokhefana."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala",
+        "description": "Umbala osetshenziselwa isithonjana nomaka."
+      }
+    ]
+  }
+}

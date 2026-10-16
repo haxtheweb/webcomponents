@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Egyszerű kép",
+    "description": "Képek módosítása egyszerű paraméterekkel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Forrás",
+        "description": "A kép forrás-URL-je."
+      },
+      {
+        "property": "height",
+        "title": "Magasság",
+        "description": "Opcionális képmagasság."
+      },
+      {
+        "property": "width",
+        "title": "Szélesség",
+        "description": "Opcionális képszélesség."
+      },
+      {
+        "property": "alt",
+        "title": "Helyettesítő szöveg",
+        "description": "Hasznos a képernyőolvasók számára és a jobb SEO érdekében."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Minőség",
+        "description": "Képminőség generáláskor (csak JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Lekérési prioritás",
+        "description": "Teljesítménytipp a modern böngészők számára.",
+        "options": {
+          "auto": "Automatikus",
+          "high": "Magas",
+          "low": "Alacsony"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dekódolási mód",
+        "description": "Teljesítménytipp a képek megjelenítéséhez modern böngészőkben.",
+        "options": {
+          "auto": "Automatikus",
+          "async": "Aszinkron"
+        }
+      }
+    ]
+  }
+}

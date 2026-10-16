@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kadi ya kukariri",
+    "description": "Fanya mazoezi ya dhana kwa kadi za kukariri zenye mbele na nyuma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Mbele ya Kadi",
+        "description": "Maandishi ya mbele au swali."
+      },
+      {
+        "slot": "back",
+        "title": "Nyuma ya Kadi",
+        "description": "Jibu linalotarajiwa."
+      },
+      {
+        "property": "imgSource",
+        "title": "Chanzo cha Picha",
+        "description": "Faili ya picha inayotumika kwa kadi. Inabatilisha Neno Kuu la Picha."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Aina ya Kitendo",
+        "description": "OER Schema: aina ya kitendo kinachohusika katika mazoezi haya (k.m. Kusoma, Kuandika, Kutengeneza, Kutafiti, Kusikiliza, Kutazama, Kutafakari, Kujadili, Kuchunguza, Kuwasilisha, Kutathmini)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lengo la Kujifunza",
+        "description": "OER Schema: ID au URL ya lengo la kujifunza ambalo mazoezi haya yanaunga mkono."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Meusi",
+        "description": "Tumia hali ya giza."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya Msisitizo",
+        "description": "Rangi ya msisitizo ya kadi."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Neno Kuu la Picha",
+        "description": "Neno kuu la picha nasibu. Linabatilishwa na Chanzo cha Picha."
+      }
+    ]
+  }
+}

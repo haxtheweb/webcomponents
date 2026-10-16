@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Nyşan",
+    "description": "Doly nyşan kitaphanasyndan nyşan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Nyşan",
+        "description": "Görkezilmeli nyşan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Nyşan üçin aksent reňki."
+      },
+      {
+        "property": "dark",
+        "title": "Garaňky",
+        "description": "Garaňky tertibi ulan (tersine öwrülen reňkler)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "سرگرمی ڈبا",
+    "description": "نکا سجایا ہویا سرخی بلاک۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "سرگرمی ڈبے دے نال وکھایا جاوݨ والا آئیکن۔"
+      },
+      {
+        "property": "tag",
+        "title": "سرگرمی ڈبے دا ٹیگ",
+        "description": "سرگرمی ڈبے وچ وکھایا جاوݨ والا ٹیگ۔"
+      },
+      {
+        "property": "nocolourize",
+        "title": "رنگ نہ کرو",
+        "description": "آئیکن تے رنگ لگݨ توں روکو۔"
+      }
+    ]
+  }
+}

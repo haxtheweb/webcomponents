@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris hikâye kartı",
+    "description": "Arka plan görseli, sütun etiketi ve başlık metni içeren bir Polaris hikâye kartı gösterin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Arka plan görseli",
+        "description": "Kart arka planı olarak gösterilen görsel URL'si."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Arka plan boyutu",
+        "description": "Arka plan görselinin kartı nasıl doldurduğu (CSS background-size).",
+        "options": {
+          "cover": "Kapla (cover)",
+          "contain": "Sığdır (contain)",
+          "auto": "Otomatik (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Arka plan sabitlemesi",
+        "description": "Kaydırma sırasında arka plan görselinin nasıl davrandığı (CSS background-attachment).",
+        "options": {
+          "scroll": "Kaydır (scroll)",
+          "fixed": "Sabit (fixed)",
+          "local": "Yerel (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Sütun etiketi",
+        "description": "Kartın üstünde gösterilen kısa, büyük harfli etiket. Gizlemek için boş bırakın."
+      },
+      {
+        "property": "label",
+        "title": "Kart metni",
+        "description": "Alt panelde gösterilen birincil metin."
+      },
+      {
+        "property": "link",
+        "title": "Bağlantı",
+        "description": "Kartın tamamını saran isteğe bağlı hedef URL."
+      }
+    ]
+  }
+}

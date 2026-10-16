@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Identyfikator wydarzenia",
+    "description": "Komponent identyfikatora wydarzenia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Obraz na TV",
+        "description": "Obraz wyświetlany na telewizorze."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo wyświetlane w rogu identyfikatora."
+      },
+      {
+        "property": "title",
+        "title": "Tytuł",
+        "description": "Tytuł wyświetlany u góry identyfikatora."
+      },
+      {
+        "property": "name",
+        "title": "Imię i nazwisko",
+        "description": "Imię i nazwisko wyświetlane na identyfikatorze."
+      },
+      {
+        "property": "position",
+        "title": "Stanowisko",
+        "description": "Rola lub stanowisko osoby."
+      },
+      {
+        "property": "organization",
+        "title": "Organizacja",
+        "description": "Organizacja, w której pracuje osoba."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Kolor TV",
+        "description": "Wybierz kolor telewizora."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Główny kolor tła lub tekstu."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Kolor pokręteł",
+        "description": "Kolor pokręteł telewizora."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Zastosuj efekt sepii."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Czarno-białe",
+        "description": "Zastosuj efekt czarno-biały."
+      }
+    ]
+  }
+}

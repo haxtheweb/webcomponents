@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Mai Duba PDF a Burauza",
+    "description": "Saka fayil ɗin PDF a layi tare da tsarin kati na zaɓi da maɓallin saukewa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL na PDF",
+        "description": "Wurin fayil ɗin PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Kanu",
+        "description": "Rubutun kanun kati."
+      },
+      {
+        "property": "card",
+        "title": "Tsarin kati",
+        "description": "Nuna PDF ɗin a cikin kati tare da maɓallin saukewa."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Lakabin saukewa",
+        "description": "Lakabin maɓallin saukewa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Saƙon rashin tallafi",
+        "description": "Saƙo idan burauza ba ta iya nuna fayilolin PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Saƙon mahaɗin rashin tallafi",
+        "description": "Rubutun mahaɗi idan burauza ba ta iya nuna fayilolin PDF."
+      },
+      {
+        "property": "width",
+        "title": "Faɗi",
+        "description": "Faɗin mai duba PDF."
+      },
+      {
+        "property": "height",
+        "title": "Tsawo",
+        "description": "Tsawon mai duba PDF."
+      }
+    ]
+  }
+}

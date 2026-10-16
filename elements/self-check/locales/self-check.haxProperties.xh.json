@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Ukuzihlola",
+    "description": "Abasebenzisi banokugqiba ukuzihlola."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Umfanekiso",
+        "description": "Umfanekiso wokuzihlola."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko sokuzihlola."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo Ongenayo",
+        "description": "Umbhalo ongenayo womfanekiso."
+      },
+      {
+        "slot": "question",
+        "title": "Umbuzo"
+      },
+      {
+        "slot": "",
+        "title": "Impendulo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala woMxholo",
+        "description": "Khetha umbala womxholo kwinkqubo yoyilo.",
+        "options": {
+          "primary": "Ephambili",
+          "accent": "Ogqamisayo",
+          "success": "Impumelelo",
+          "warning": "Isilumkiso",
+          "error": "Impazamo",
+          "info": "Ulwazi"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Injongo yokuFunda",
+        "description": "Isalathiso senjongo yokufunda esikhutshwa njenge-oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Okuvavanywayo",
+        "description": "Isalathiso somsebenzi esikhutshwa njenge-oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Ikhonkco elingakumbi",
+        "description": "Ikhonkco lolwazi olongezelelweyo."
+      }
+    ]
+  }
+}

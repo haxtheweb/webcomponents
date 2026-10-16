@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Produktoversikt",
+    "description": "Blokk med rask produktoversikt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon som representerer konseptet."
+      },
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Hovedkonsept i korte trekk."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undertittel",
+        "description": "Tilleggsdetaljer."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Aksentfarge for ikonet."
+      }
+    ]
+  }
+}

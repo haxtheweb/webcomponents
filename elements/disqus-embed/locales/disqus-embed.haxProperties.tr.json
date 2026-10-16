@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Bir sayfaya Disqus yorumlarını yerleştirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Kısa ad",
+        "description": "Disqus betik sunucusunu belirleyen site kısa adı."
+      },
+      {
+        "property": "pageURL",
+        "title": "Sayfa URL'si",
+        "description": "Yorum dizisinin bağlı olduğu sayfanın URL'si."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Sayfa tanımlayıcısı",
+        "description": "Sayfa yorum dizisinin benzersiz tanımlayıcısı."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Sayfa başlığı",
+        "description": "Yorum dizisinin bağlı olduğu sayfanın başlığı."
+      },
+      {
+        "property": "loadingText",
+        "title": "Yükleme metni",
+        "description": "Yorumlar yüklenirken duyurulan metin."
+      },
+      {
+        "property": "lang",
+        "title": "Dil",
+        "description": "Disqus arayüzünün dil kodu, ör. en."
+      }
+    ]
+  }
+}

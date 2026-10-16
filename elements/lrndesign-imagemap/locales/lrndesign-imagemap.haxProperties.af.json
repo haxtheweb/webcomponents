@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Prentkaart",
+    "description": "'n Toeganklike prentkaart met interaktiewe kolle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Etiket vir die prentkaart."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Besonderhede van kolle",
+        "description": "Die interaktiewe kolle op die prentkaart."
+      }
+    ]
+  }
+}

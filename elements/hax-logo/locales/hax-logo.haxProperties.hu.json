@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX szövegművészet",
+    "description": "Logóelem a HAX-hoz, természetesen HAX-kompatibilis elemként."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Az elhelyezendő HAX-logó mérete",
+        "options": {
+          "mini": "Mini",
+          "small": "Kicsi",
+          "normal": "Normál",
+          "large": "Nagy"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "A logó nagybetűssé alakítása"
+      }
+    ]
+  }
+}

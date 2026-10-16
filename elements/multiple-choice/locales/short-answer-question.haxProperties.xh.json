@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Umbuzo weMpendulo eMfutshane",
+    "description": "Yenza umsebenzisi aphendule umbuzo osisiseko"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Umbuzo",
+        "description": "Umbuzo abasebenzisi abaza kuwuphendula."
+      },
+      {
+        "property": "answers",
+        "title": "Iimpendulo eziNokwenzeka"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Igama lekwizi",
+        "description": "Igama lekwizi elidluliselwa kwiindawo eziqhutywa yi-xAPI ukuze kuchongwe le nto"
+      }
+    ]
+  }
+}

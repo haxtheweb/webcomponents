@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tendayke",
+    "description": "Tendayke aty."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Teramoĩ (opavavépe g̃uarã)",
+        "description": "Teramoĩ ojeikuaapyréva tendayke atýpe g̃uarã."
+      },
+      {
+        "property": "disabled",
+        "title": "Ojepe'apyre",
+        "description": "Embogue opaite tendayke."
+      },
+      {
+        "property": "hidden",
+        "title": "Kañymby",
+        "description": "Emokañy tendayke aty."
+      },
+      {
+        "property": "sticky",
+        "title": "Opytáva yvate",
+        "description": "Eñongatu tendayke atãvõ yvate ojeguerova aja."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Oñemohendaha ñepysãirã",
+        "description": "Ñepysãirã tendayke atãvõme g̃uarã; eipuru -1 oñembo'ýva añoitépe g̃uarã."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Ta'ãnga'i ñepysãirã",
+        "description": "Ñepysãirã ojehechauka hag̃ua moñe'ẽrã ta'ãnga'i ndive. Ijypykuéva ha'e 0; eipuru -1 ta'ãnga'i añoitépe g̃uarã."
+      },
+      {
+        "slot": "",
+        "title": "Tendayke",
+        "description": "<a11y-tab/> mba'e aty."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID peteĩchagua",
+        "description": "ID peteĩchagua ko tendayke atýpe g̃uarã."
+      }
+    ]
+  }
+}

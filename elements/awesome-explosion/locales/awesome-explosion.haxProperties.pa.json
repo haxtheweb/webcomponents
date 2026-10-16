@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "ਸ਼ਾਨਦਾਰ ਧਮਾਕਾ",
+    "description": "ਵਿਕਲਪਿਕ ਧੁਨੀ ਪ੍ਰਭਾਵਾਂ ਨਾਲ ਇੰਟਰਐਕਟਿਵ ਧਮਾਕਾ ਐਨੀਮੇਸ਼ਨ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "ਆਕਾਰ",
+        "description": "ਧਮਾਕੇ ਦਾ ਆਕਾਰ ਸੈੱਟ ਕਰੋ।",
+        "options": {
+          "tiny": "ਬਹੁਤ ਛੋਟਾ",
+          "small": "ਛੋਟਾ",
+          "medium": "ਦਰਮਿਆਨਾ",
+          "large": "ਵੱਡਾ",
+          "epic": "ਮਹਾਨ"
+        }
+      },
+      {
+        "property": "color",
+        "title": "ਰੰਗ",
+        "description": "ਧਮਾਕੇ ਦੀ ਰੰਗ ਥੀਮ ਸੈੱਟ ਕਰੋ।",
+        "options": {
+          "": "ਮੂਲ",
+          "red": "ਲਾਲ",
+          "blue": "ਨੀਲਾ",
+          "purple": "ਜਾਮਨੀ",
+          "orange": "ਸੰਤਰੀ",
+          "yellow": "ਪੀਲਾ"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "ਧੁਨੀ ਪ੍ਰਭਾਵ",
+        "description": "ਧੁਨੀ ਪ੍ਰਭਾਵ ਚਾਲੂ ਕਰੋ।"
+      },
+      {
+        "property": "resetSound",
+        "title": "ਧੁਨੀ ਰੀਸੈੱਟ ਕਰੋ",
+        "description": "ਹਰ ਵਾਰ ਧੁਨੀ ਸ਼ੁਰੂ ਤੋਂ ਚਲਾਓ।"
+      },
+      {
+        "property": "image",
+        "title": "ਕਸਟਮ ਚਿੱਤਰ",
+        "description": "ਕਸਟਮ ਧਮਾਕਾ ਚਿੱਤਰ ਲਈ ਵਿਕਲਪਿਕ URL।"
+      },
+      {
+        "property": "sound",
+        "title": "ਕਸਟਮ ਧੁਨੀ",
+        "description": "ਕਸਟਮ ਧੁਨੀ ਪ੍ਰਭਾਵ ਲਈ ਵਿਕਲਪਿਕ URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "ਅਯੋਗ",
+        "description": "ਸਾਰੀਆਂ ਪਰਸਪਰ ਕਿਰਿਆਵਾਂ ਅਯੋਗ ਕਰੋ।"
+      }
+    ]
+  }
+}

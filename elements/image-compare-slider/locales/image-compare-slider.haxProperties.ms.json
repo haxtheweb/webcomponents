@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Perbandingan imej",
+    "description": "Leret satu imej di atas imej lain untuk perbandingan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Imej atas",
+        "description": "Imej atas untuk dileret di atas imej bawah."
+      },
+      {
+        "property": "topAlt",
+        "title": "Teks alt imej atas",
+        "description": "Teks alt wajib untuk kebolehcapaian."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Imej bawah",
+        "description": "Imej bawah yang dipaparkan di bawah imej atas."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Teks alt imej bawah",
+        "description": "Teks alt wajib untuk kebolehcapaian."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Kelakuan",
+        "description": "Pilih mod sapuan (lalai) atau mod kelegapan imej atas."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna bar gelangsar."
+      },
+      {
+        "property": "dark",
+        "title": "Gelap",
+        "description": "Songsangkan warna bar gelangsar."
+      },
+      {
+        "property": "position",
+        "title": "Kedudukan Awal",
+        "description": "Kedudukan permulaan dari 0 hingga 100."
+      }
+    ]
+  }
+}

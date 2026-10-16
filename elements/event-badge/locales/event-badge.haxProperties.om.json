@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Baajii Taateewwanii",
+    "description": "Baajii taateewwanii."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Suuraa TV",
+        "description": "Suuraa TV irratti mul'atu."
+      },
+      {
+        "property": "logo",
+        "title": "Asxaa",
+        "description": "Asxaa golee baajii irratti mul'atu."
+      },
+      {
+        "property": "title",
+        "title": "Mata-duree",
+        "description": "Mata-duree gubbaa baajii irratti mul'atu."
+      },
+      {
+        "property": "name",
+        "title": "Maqaa",
+        "description": "Maqaa baajii irratti mul'atu."
+      },
+      {
+        "property": "position",
+        "title": "Gahee",
+        "description": "Gahee ykn mata-duree hojii namichaa."
+      },
+      {
+        "property": "organization",
+        "title": "Dhaabbata",
+        "description": "Dhaabbata namichi itti hojjetu."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Halluu TV",
+        "description": "Halluu TV filadhu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu calaqqee",
+        "description": "Halluu duubaa ykn barreeffamaa ijoo."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Halluu furtuu",
+        "description": "Halluu furtuuwwan TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Bu'aa sepia dibi."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Gurraacha fi adii",
+        "description": "Bu'aa gurraacha fi adii dibi."
+      }
+    ]
+  }
+}

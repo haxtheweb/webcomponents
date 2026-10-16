@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Civakên Discord ji URL-eke parvekirinê bi cih bike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ya Çavkaniyê",
+        "description": "URL ya çavkaniyê."
+      },
+      {
+        "property": "height",
+        "title": "Bilindahî",
+        "description": "Bilindahiya çarçoveya naverokê."
+      },
+      {
+        "property": "width",
+        "title": "Firehî",
+        "description": "Firehiya çarçoveya naverokê."
+      }
+    ]
+  }
+}

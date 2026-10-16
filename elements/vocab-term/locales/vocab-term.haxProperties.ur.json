@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ذخیرۂ الفاظ",
+    "description": "لغوی اصطلاح۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "اصطلاح"
+      },
+      {
+        "property": "information",
+        "title": "تعریف",
+        "description": "اصطلاح پر کلک کرنے پر دکھائی جانے والی تعریف۔"
+      },
+      {
+        "property": "popoverMode",
+        "title": "پاپ اوور",
+        "description": "تعریف کو ان لائن کے بجائے پاپ اوور میں دکھائیں۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "لنکس",
+        "description": "اس اصطلاح سے وابستہ اضافی لنکس کی فہرست۔"
+      }
+    ]
+  }
+}

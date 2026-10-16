@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ngọngọ nhota",
+    "description": "Ngọngọ nhota ahaziri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Ntụaka",
+        "description": "Ederede ntụaka."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Ederede ọzọ maka onyonyo ahụ."
+      },
+      {
+        "property": "image",
+        "title": "Onyonyo",
+        "description": "Onyonyo a na-egosi ya na nhota ahụ."
+      }
+    ]
+  }
+}

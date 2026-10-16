@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Биткә Disqus аңлатмаларын урнаштырырга."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Кыска исем",
+        "description": "Disqus скрипт хостын билгели торган сайтның кыска исеме."
+      },
+      {
+        "property": "pageURL",
+        "title": "Бит URL адресы",
+        "description": "Аңлатмалар җебе беркетелгән битнең URL адресы."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Бит идентификаторы",
+        "description": "Бит аңлатмалары җебенең уникаль идентификаторы."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Бит исеме",
+        "description": "Аңлатмалар җебе беркетелгән битнең исеме."
+      },
+      {
+        "property": "loadingText",
+        "title": "Йөкләнү тексты",
+        "description": "Аңлатмалар йөкләнгәндә белдерелә торган текст."
+      },
+      {
+        "property": "lang",
+        "title": "Тел",
+        "description": "Disqus интерфейсының тел коды, мәс., en."
+      }
+    ]
+  }
+}

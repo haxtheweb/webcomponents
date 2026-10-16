@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Obiectiv de dezvoltare durabilă al Națiunilor Unite."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Obiectiv",
+        "description": "Numărul UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Doar culoare",
+        "description": "Afișează doar culoarea obiectivului."
+      }
+    ]
+  }
+}

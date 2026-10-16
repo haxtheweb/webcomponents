@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Foydalanuvchi harakati",
+    "description": "Foydalanuvchi harakatlarini kuzatish va maʼlumotlarni xAPI omborlariga yuborish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Kuzatiladigan hodisa",
+        "description": "Ushbu hodisani ishga tushiradigan foydalanuvchi harakati.",
+        "options": {
+          "visibility": "Buni koʻra oladi",
+          "keydown": "Bu yerda tugmani bosish",
+          "click": "Buni bosish",
+          "hover": "Buning ustiga sichqonchani olib borish"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Har safar kuzatish",
+        "description": "Standart holatda faqat birinchi holat kuzatiladi."
+      }
+    ]
+  }
+}

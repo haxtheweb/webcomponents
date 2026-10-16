@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "页面锚点",
+    "description": "链接到页面中媒体的特定位置。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "页面目标",
+        "description": "此锚点指向的 ID 或资源。"
+      },
+      {
+        "property": "value",
+        "title": "深层链接值",
+        "description": "深层链接值（例如时间戳或幻灯片 ID）。"
+      },
+      {
+        "property": "entityId",
+        "title": "站点实体",
+        "description": "用于控制相关概念呈现的可选站点实体。"
+      }
+    ]
+  }
+}

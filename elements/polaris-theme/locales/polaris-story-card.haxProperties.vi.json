@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Thẻ câu chuyện Polaris",
+    "description": "Hiển thị thẻ câu chuyện Polaris với hình nền, nhãn trụ cột và văn bản tiêu đề."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Hình nền",
+        "description": "URL hình ảnh hiển thị làm nền thẻ."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Kích thước nền",
+        "description": "Cách hình nền lấp đầy thẻ (CSS background-size).",
+        "options": {
+          "cover": "Phủ kín (cover)",
+          "contain": "Vừa khít (contain)",
+          "auto": "Tự động (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Gắn nền",
+        "description": "Cách hình nền hoạt động khi cuộn (CSS background-attachment).",
+        "options": {
+          "scroll": "Cuộn (scroll)",
+          "fixed": "Cố định (fixed)",
+          "local": "Cục bộ (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Nhãn trụ cột",
+        "description": "Nhãn viết hoa ngắn hiển thị ở đầu thẻ. Để trống để ẩn."
+      },
+      {
+        "property": "label",
+        "title": "Văn bản thẻ",
+        "description": "Văn bản chính hiển thị ở khung dưới."
+      },
+      {
+        "property": "link",
+        "title": "Liên kết",
+        "description": "URL đích tùy chọn bao quanh toàn bộ thẻ."
+      }
+    ]
+  }
+}

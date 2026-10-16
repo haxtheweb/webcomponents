@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Container NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Ascunde editorul",
+        "description": "Ascunde interfața de editare a fișierelor."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Ascunde terminalul",
+        "description": "Ascunde terminalul pentru programele care rulează automat."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Ascunde fereastra",
+        "description": "Ascunde fereastra de ieșire pentru utilizare doar cu terminalul."
+      },
+      {
+        "slot": "",
+        "title": "Comenzi",
+        "description": "Comenzi (câte una pe linie) de rulat înainte de încărcare."
+      }
+    ]
+  }
+}

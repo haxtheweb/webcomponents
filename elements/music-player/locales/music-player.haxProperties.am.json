@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "የMIDI ምስላዊ ማሳያ",
+    "description": "MIDIን ከምስላዊ ማሳያ ጋር በዐውድ ውስጥ አጫውት።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ምንጭ",
+        "description": "የሚጫወተው ፋይል URL።"
+      },
+      {
+        "property": "visualizer",
+        "title": "ምስላዊ ማሳያ",
+        "description": "ለሙዚቃ ፋይሉ የምስላዊ ማሳያ ቅጥ።",
+        "options": {
+          "staff": "የሙዚቃ መስመሮች",
+          "piano-roll": "የፒያኖ ጥቅል",
+          "waterfall": "ፒያኖ + ፏፏቴ"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "ፏፏቴን ደብቅ",
+        "description": "በፒያኖ ምስላዊ ማሳያ ውስጥ የፏፏቴ ኖታዎችን ደብቅ።"
+      }
+    ]
+  }
+}

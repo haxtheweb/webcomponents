@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "దశ అంశం",
+    "description": "దశల జాబితాలో భాగమైన అంశం"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "శీర్షిక"
+      }
+    ]
+  }
+}

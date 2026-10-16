@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "मिति",
+    "description": "विवरणसहित पात्रोको मिति देखाउनुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "महिना",
+        "description": "कार्डमा देखाइने महिना।"
+      },
+      {
+        "property": "date",
+        "title": "महिनाको दिन",
+        "description": "महिनाको दिन सङ्ख्यामा।"
+      },
+      {
+        "property": "day",
+        "title": "हप्ताको दिन",
+        "description": "हप्ताको दिन पाठमा।"
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "कार्यक्रमको नाम।"
+      },
+      {
+        "property": "location",
+        "title": "स्थान",
+        "description": "कार्यक्रमको स्थान।"
+      },
+      {
+        "property": "startTime",
+        "title": "सुरु",
+        "description": "सुरु समय।"
+      },
+      {
+        "property": "endTime",
+        "title": "अन्त्य",
+        "description": "अन्त्य समय।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "वैकल्पिक एक्सेन्ट रङ।"
+      },
+      {
+        "property": "dark",
+        "title": "गाढा थिम",
+        "description": "गाढा थिम सक्षम गर्नुहोस्।"
+      }
+    ]
+  }
+}

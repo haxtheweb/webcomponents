@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Leherketa ikaragarria",
+    "description": "Leherketa animazio interaktiboa, aukerako soinu efektuekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Tamaina",
+        "description": "Ezarri leherketaren tamaina.",
+        "options": {
+          "tiny": "Txiki-txikia",
+          "small": "Txikia",
+          "medium": "Ertaina",
+          "large": "Handia",
+          "epic": "Epikoa"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Kolorea",
+        "description": "Ezarri leherketaren kolore-gaia.",
+        "options": {
+          "": "Lehenetsia",
+          "red": "Gorria",
+          "blue": "Urdina",
+          "purple": "Morea",
+          "orange": "Laranja",
+          "yellow": "Horia"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Soinu efektuak",
+        "description": "Gaitu soinu efektuak."
+      },
+      {
+        "property": "resetSound",
+        "title": "Berrezarri soinua",
+        "description": "Hasi soinua hasieratik aldi bakoitzean."
+      },
+      {
+        "property": "image",
+        "title": "Irudi pertsonalizatua",
+        "description": "Leherketa irudi pertsonalizatu baten aukerako URLa."
+      },
+      {
+        "property": "sound",
+        "title": "Soinu pertsonalizatua",
+        "description": "Soinu efektu pertsonalizatu baten aukerako URLa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Desgaituta",
+        "description": "Desgaitu interakzio guztiak."
+      }
+    ]
+  }
+}

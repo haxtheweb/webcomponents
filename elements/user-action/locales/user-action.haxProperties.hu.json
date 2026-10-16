@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Felhasználói művelet",
+    "description": "Felhasználói műveletek követése és adatok küldése xAPI-tárolókba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Követendő esemény",
+        "description": "Az eseményt kiváltó felhasználói művelet.",
+        "options": {
+          "visibility": "Látja ezt",
+          "keydown": "Itt lenyom egy billentyűt",
+          "click": "Erre kattint",
+          "hover": "Ráviszi az egeret"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Követés minden alkalommal",
+        "description": "Alapértelmezés szerint csak az első előfordulás kerül követésre."
+      }
+    ]
+  }
+}

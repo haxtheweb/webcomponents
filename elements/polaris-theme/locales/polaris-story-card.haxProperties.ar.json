@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "بطاقة قصة Polaris",
+    "description": "عرض بطاقة قصة Polaris مع صورة خلفية وتسمية محور ونص عنوان رئيسي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "صورة الخلفية",
+        "description": "URL الصورة المعروضة كخلفية للبطاقة."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "حجم الخلفية",
+        "description": "كيفية ملء صورة الخلفية للبطاقة (CSS background-size).",
+        "options": {
+          "cover": "تغطية (cover)",
+          "contain": "احتواء (contain)",
+          "auto": "تلقائي (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "تثبيت الخلفية",
+        "description": "سلوك صورة الخلفية عند التمرير (CSS background-attachment).",
+        "options": {
+          "scroll": "تمرير (scroll)",
+          "fixed": "ثابت (fixed)",
+          "local": "محلي (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "تسمية المحور",
+        "description": "تسمية قصيرة بأحرف كبيرة تُعرض أعلى البطاقة. اتركها فارغة لإخفائها."
+      },
+      {
+        "property": "label",
+        "title": "نص البطاقة",
+        "description": "النص الأساسي المعروض في اللوحة السفلية."
+      },
+      {
+        "property": "link",
+        "title": "الرابط",
+        "description": "URL وجهة اختياري يحيط بالبطاقة بأكملها."
+      }
+    ]
+  }
+}

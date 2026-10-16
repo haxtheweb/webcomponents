@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "පේළිගත ශ්‍රව්‍ය",
+    "description": "පිටු අන්තර්ගතයට අතිරේකව ශ්‍රව්‍ය පේළිගතව වාදනය කරන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "මූලාශ්‍රය",
+        "description": "MP3 ගොනුව හෝ URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "කාඩ්පතේ උච්චාරණ වර්ණය."
+      },
+      {
+        "property": "shiny",
+        "title": "දිලිසෙන",
+        "description": "අළු වෙනුවට ලා උච්චාරණ පසුබිමක් භාවිත කරන්න."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "අඳුරු",
+        "description": "අඳුරු ප්‍රකාරය භාවිත කරන්න."
+      }
+    ]
+  }
+}

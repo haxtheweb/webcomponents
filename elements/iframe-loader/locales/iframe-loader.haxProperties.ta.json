@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "வெளிப்புற இணைய உள்ளடக்கத்தை iframe-இல் உட்பொதிக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "வள URL",
+        "description": "வள URL."
+      },
+      {
+        "property": "height",
+        "title": "உயரம்",
+        "description": "Iframe உயரம்."
+      },
+      {
+        "property": "width",
+        "title": "அகலம்",
+        "description": "Iframe அகலம்."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "아이콘",
+    "description": "전체 아이콘 라이브러리의 아이콘입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "아이콘",
+        "description": "렌더링할 아이콘입니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "아이콘의 강조 색상입니다."
+      },
+      {
+        "property": "dark",
+        "title": "어둡게",
+        "description": "다크 모드(반전된 색상 세트)를 사용합니다."
+      }
+    ]
+  }
+}

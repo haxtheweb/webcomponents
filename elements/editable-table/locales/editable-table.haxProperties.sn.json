@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tafura",
+    "description": "Dhata yakarongwa mutafura yewebhu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Musoro weMutsara",
+        "description": "Shandisa mutsara wekutanga semusoro."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Musoro weKoramu",
+        "description": "Shandisa koramu yekutanga semusoro."
+      },
+      {
+        "property": "footer",
+        "title": "Pazasi",
+        "description": "Shandisa mutsara wekupedzisira sepazasi."
+      },
+      {
+        "property": "sort",
+        "title": "Zvinorongeka",
+        "description": "Bvumira kuronga nemhando dzekoramu."
+      },
+      {
+        "property": "filter",
+        "title": "Bvumira Kusefa",
+        "description": "Bvumira kusefa nemhando dzekoramu."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Marongerwo eNhamba",
+        "description": "Shandisa marongerwo enhamba pamakoramu ane nhamba."
+      },
+      {
+        "property": "responsive",
+        "title": "Zvinochinja",
+        "description": "Gadzirisa marongerwo etafura pazviratidziro zvidiki."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mamiriro eRubric",
+        "description": "Tora tafura iyi seOER Schema Rubric kuitira kuti metadata yeRubric, RubricScale, RubricCriterion, neRubricLevel ibudiswe."
+      },
+      {
+        "property": "rubricType",
+        "title": "Mhando yeRubric",
+        "description": "Mhando yerubric inobudiswa seoer:rubricType (inoshanda chete kana Mamiriro eRubric akabatidzwa).",
+        "options": {
+          "": "(hapana)",
+          "analytic": "Yekuongorora zvikamu",
+          "holistic": "Yakazara",
+          "single-point": "Yepoindi Imwe",
+          "checklist": "Rondedzero yekutarisa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Ine Muganhu"
+      },
+      {
+        "property": "condensed",
+        "title": "Deredza Mitsara",
+        "description": "Deredza kureba kwemitsara."
+      },
+      {
+        "property": "striped",
+        "title": "Mitsara Ine Mitsetse",
+        "description": "Sviba mimwe mitsara yose."
+      },
+      {
+        "property": "downloadable",
+        "title": "Bhatani Rekudhaunirodha",
+        "description": "Wedzera bhatani rekudhaunirodha tafura."
+      },
+      {
+        "property": "copyable",
+        "title": "Bhatani Rekukopa",
+        "description": "Wedzera bhatani rekukopa dhata yeCSV yetafura."
+      },
+      {
+        "property": "printable",
+        "title": "Bhatani Rekudhinda",
+        "description": "Wedzera bhatani rekudhinda tafura chete."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Dhata yeCSV",
+        "description": "Gadzira tafura kubva kufaira reCSV rakaiswa."
+      }
+    ]
+  }
+}

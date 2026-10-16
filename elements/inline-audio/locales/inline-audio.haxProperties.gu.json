@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ઇનલાઇન ઑડિયો",
+    "description": "પૃષ્ઠની સામગ્રીને પૂરક બનાવવા ઑડિયો ઇનલાઇન વગાડો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "સ્રોત",
+        "description": "MP3 ફાઇલ અથવા URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "કાર્ડનો ઍક્સેન્ટ રંગ."
+      },
+      {
+        "property": "shiny",
+        "title": "ચમકદાર",
+        "description": "ગ્રેને બદલે હળવી ઍક્સેન્ટ પૃષ્ઠભૂમિ વાપરો."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ડાર્ક",
+        "description": "ડાર્ક મોડ વાપરો."
+      }
+    ]
+  }
+}

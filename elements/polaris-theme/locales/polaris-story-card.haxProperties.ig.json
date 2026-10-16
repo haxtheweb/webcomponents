@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kaadị akụkọ Polaris",
+    "description": "Gosi kaadị akụkọ Polaris nwere onyonyo azụ, akara aha ogidi, na ederede isiokwu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Onyonyo azụ",
+        "description": "URL onyonyo a na-egosi dịka azụ kaadị."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Nha azụ",
+        "description": "Otu onyonyo azụ si jupụta kaadị ahụ (CSS background-size).",
+        "options": {
+          "cover": "Kpuchie (cover)",
+          "contain": "Nwee n'ime (contain)",
+          "auto": "Akpaaka (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Njikọ azụ",
+        "description": "Otu onyonyo azụ si akpa àgwà mgbe a na-akpụgharị (CSS background-attachment).",
+        "options": {
+          "scroll": "Kpụgharịa (scroll)",
+          "fixed": "Kwụ chịm (fixed)",
+          "local": "Mpaghara (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Akara aha ogidi",
+        "description": "Akara aha mkpụmkpụ na mkpụrụedemede ukwu a na-egosi n'elu kaadị. Hapụ ya efu iji zoo ya."
+      },
+      {
+        "property": "label",
+        "title": "Ederede kaadị",
+        "description": "Ederede bụ isi a na-egosi na mpaghara ala."
+      },
+      {
+        "property": "link",
+        "title": "Njikọ",
+        "description": "URL ebe a na-aga nhọrọ nke na-ekpuchi kaadị ahụ niile."
+      }
+    ]
+  }
+}

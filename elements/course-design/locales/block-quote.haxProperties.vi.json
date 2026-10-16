@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Khối trích dẫn",
+    "description": "Khối trích dẫn có định dạng."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Nguồn trích dẫn",
+        "description": "Văn bản nguồn trích dẫn."
+      },
+      {
+        "property": "alt",
+        "title": "Văn bản thay thế",
+        "description": "Văn bản thay thế cho hình ảnh."
+      },
+      {
+        "property": "image",
+        "title": "Hình ảnh",
+        "description": "Hình ảnh hiển thị cùng trích dẫn."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX soʻz sanʼati",
+    "description": "HAX uchun logotip elementi, albatta HAX bilan ishlay oladigan element sifatida."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Joylashtiriladigan HAX logotipi oʻlchami",
+        "options": {
+          "mini": "Mini",
+          "small": "Kichik",
+          "normal": "Oddiy",
+          "large": "Katta"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Logotipni bosh harflarga oʻzgartirish kerakmi"
+      }
+    ]
+  }
+}

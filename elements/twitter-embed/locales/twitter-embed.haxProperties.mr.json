@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) एम्बेड",
+    "description": "X वरील ट्वीट संदर्भात एम्बेड करा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ट्वीट URL",
+        "description": "एम्बेड करायच्या ट्वीटची URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "थीम",
+        "description": "X ट्वीटसाठी फिकट किंवा गडद थीम.",
+        "options": {
+          "light": "फिकट",
+          "dark": "गडद"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "क्लिक केल्यावर पॉपअप रोखा",
+        "description": "वापरकर्त्यांना x.com वर ट्वीट उघडण्यापासून रोखा."
+      }
+    ]
+  }
+}

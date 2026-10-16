@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Player Unity",
+    "description": "Player Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Țintă",
+        "description": "Calea către build-ul jocului."
+      },
+      {
+        "property": "compression",
+        "title": "Metodă de compresie",
+        "description": "Extensia de fișier a compresiei pentru resursele jocului."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL de streaming",
+        "description": "URL-ul resurselor de streaming."
+      },
+      {
+        "property": "companyname",
+        "title": "Numele companiei",
+        "description": "Numele companiei."
+      },
+      {
+        "property": "productname",
+        "title": "Numele produsului",
+        "description": "Titlul jocului."
+      },
+      {
+        "property": "productversion",
+        "title": "Versiunea produsului",
+        "description": "Versiunea lansării."
+      },
+      {
+        "property": "width",
+        "title": "Lățimea canvasului",
+        "description": "Lățimea CSS a canvasului (de exemplu px sau em)."
+      },
+      {
+        "property": "height",
+        "title": "Înălțimea canvasului",
+        "description": "Înălțimea CSS a canvasului (de exemplu px sau em)."
+      },
+      {
+        "property": "background",
+        "title": "Fundalul canvasului",
+        "description": "Fundalul CSS al canvasului."
+      }
+    ]
+  }
+}

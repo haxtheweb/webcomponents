@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Genişləndir-yığ qrupu",
+    "description": "Genişləndirilən və yığılan elementlər qrupu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Yalnız birini genişləndir",
+        "description": "Yalnız bir element genişləndirilə bilər."
+      },
+      {
+        "slot": "",
+        "title": "Yığılan elementlər",
+        "description": "Yığılan elementlər."
+      }
+    ]
+  }
+}

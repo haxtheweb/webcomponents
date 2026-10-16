@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "পৃষ্ঠায় Disqus মন্তব্য এমবেড করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "সংক্ষিপ্ত নাম",
+        "description": "সাইটের সংক্ষিপ্ত নাম, যা Disqus স্ক্রিপ্ট হোস্ট নির্ধারণ করে।"
+      },
+      {
+        "property": "pageURL",
+        "title": "পৃষ্ঠার URL",
+        "description": "যে পৃষ্ঠার সাথে মন্তব্যের থ্রেড যুক্ত তার URL।"
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "পৃষ্ঠার শনাক্তকারী",
+        "description": "পৃষ্ঠার মন্তব্য থ্রেডের অনন্য শনাক্তকারী।"
+      },
+      {
+        "property": "pageTitle",
+        "title": "পৃষ্ঠার শিরোনাম",
+        "description": "যে পৃষ্ঠার সাথে মন্তব্যের থ্রেড যুক্ত তার শিরোনাম।"
+      },
+      {
+        "property": "loadingText",
+        "title": "লোডিং টেক্সট",
+        "description": "মন্তব্য লোড হওয়ার সময় ঘোষিত টেক্সট।"
+      },
+      {
+        "property": "lang",
+        "title": "ভাষা",
+        "description": "Disqus ইন্টারফেসের ভাষা কোড, যেমন en।"
+      }
+    ]
+  }
+}

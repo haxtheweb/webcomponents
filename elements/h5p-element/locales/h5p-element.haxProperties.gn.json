@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P ryru omyenyhẽ ha ohechauka hag̃ua marandurenda .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe moinge ayvu"
+      }
+    ]
+  }
+}

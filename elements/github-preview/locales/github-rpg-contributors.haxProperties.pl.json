@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lista współtwórców GitHub",
+    "description": "Wyświetlani jako postacie RPG z użyciem GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizacja",
+        "description": "Nazwa organizacji z github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repozytorium",
+        "description": "Nazwa repozytorium z github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Limit",
+        "description": "Ogranicz liczbę wyświetlanych współtwórców."
+      }
+    ]
+  }
+}

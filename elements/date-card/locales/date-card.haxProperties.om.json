@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Guyyaa",
+    "description": "Guyyaa kaaleendarii bal'ina isaa wajjin agarsiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Ji'a",
+        "description": "Ji'a kaardii irratti mul'atu."
+      },
+      {
+        "property": "date",
+        "title": "Guyyaa ji'aa",
+        "description": "Lakkoofsa guyyaa ji'aa."
+      },
+      {
+        "property": "day",
+        "title": "Guyyaa torbanii",
+        "description": "Maqaa guyyaa torbanii."
+      },
+      {
+        "property": "title",
+        "title": "Mata-duree",
+        "description": "Maqaa taateewwanii."
+      },
+      {
+        "property": "location",
+        "title": "Bakka",
+        "description": "Bakka taateen itti geggeeffamu."
+      },
+      {
+        "property": "startTime",
+        "title": "Jalqaba",
+        "description": "Yeroo jalqabaa."
+      },
+      {
+        "property": "endTime",
+        "title": "Xumura",
+        "description": "Yeroo xumuraa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu Calaqqee",
+        "description": "Halluu calaqqee filannoo."
+      },
+      {
+        "property": "dark",
+        "title": "Haala Dukkanaa",
+        "description": "Haala dukkanaa banuu."
+      }
+    ]
+  }
+}

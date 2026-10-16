@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Dokumentasjonsspiller for webkomponenter"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Skjul vindu",
+        "description": "Skjul utdatavinduet, nyttig når bare terminalen trengs"
+      }
+    ]
+  }
+}

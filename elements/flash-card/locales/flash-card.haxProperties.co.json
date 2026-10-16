@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Carta di memoria",
+    "description": "Praticà cuncetti cù carte di memoria à duie facce."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Faccia di a carta",
+        "description": "Testu o dumanda di a faccia."
+      },
+      {
+        "slot": "back",
+        "title": "Retru di a carta",
+        "description": "Risposta aspettata."
+      },
+      {
+        "property": "imgSource",
+        "title": "Fonte di l'imagine",
+        "description": "Schedariu d'imagine adupratu per a carta. Rimpiazza a parolla chjave di l'imagine."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tipu d'azzione",
+        "description": "OER Schema: u tipu d'azzione chì sta pratica implica (per esempiu leghje, scrive, fà, circà, ascultà, fighjà, riflette, discute, osservà, prisentà, valutà)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ughjettivu d'amparera",
+        "description": "OER Schema: ID o URL di l'ughjettivu d'amparera chì sta pratica sustene."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Scuru",
+        "description": "Aduprà u modu scuru."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Culore d'accentu di a carta."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Parolla chjave di l'imagine",
+        "description": "Parolla chjave per una imagine à l'azardu. Rimpiazzata da a fonte di l'imagine."
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kortelė",
+    "description": "Kortelės komponentas, stilizuotas DDD dizaino sistema."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Vaizdas",
+        "description": "Pasirenkamas vaizdas."
+      },
+      {
+        "property": "alt",
+        "title": "Vaizdo alternatyvusis tekstas",
+        "description": "Vaizdą apibūdinantis alternatyvusis tekstas."
+      },
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Kortelės pavadinimas."
+      },
+      {
+        "slot": "",
+        "title": "Turinys",
+        "description": "Kortelės turinio sritis."
+      },
+      {
+        "property": "href",
+        "title": "Nuoroda",
+        "description": "Mygtuko nuorodos URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etiketė",
+        "description": "Mygtuko etiketė."
+      },
+      {
+        "property": "noArrow",
+        "title": "Be rodyklės",
+        "description": "Slėpti mygtuko rodyklę."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Nuoroda: paskirtis",
+        "description": "Kur atverti nuorodą.",
+        "options": {
+          "": "Tas pats langas",
+          "_blank": "Naujas langas – _blank",
+          "_top": "Viršutinis langas – _top",
+          "_parent": "Tėvinis langas – _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Nuoroda: rel",
+        "description": "Susieto ištekliaus ir dabartinio dokumento ryšys."
+      }
+    ]
+  }
+}

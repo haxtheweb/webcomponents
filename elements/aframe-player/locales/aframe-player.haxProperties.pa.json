@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D ਪਲੇਅਰ",
+    "description": "3D ਫ਼ਾਈਲ / ਵਧਾਈ ਗਈ ਹਕੀਕਤ (AR) ਪਲੇਅਰ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ",
+        "description": "ਇਸ AR ਫ਼ਾਈਲ ਦਾ URL।"
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR ਵਿੱਚ ਤੱਤ ਦੀ X ਸਥਿਤੀ।"
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR ਵਿੱਚ ਤੱਤ ਦੀ Y ਸਥਿਤੀ।"
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR ਵਿੱਚ ਤੱਤ ਦੀ Z ਸਥਿਤੀ।"
+      },
+      {
+        "property": "skyColor",
+        "title": "ਅਸਮਾਨ ਦਾ ਰੰਗ",
+        "description": "ਦ੍ਰਿਸ਼ ਵਿੱਚ ਅਸਮਾਨ ਦਾ ਰੰਗ ਚੁਣੋ।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Citat bloc",
+    "description": "Bloc de citat stilizat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Citare",
+        "description": "Textul citării."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Text alternativ pentru imagine."
+      },
+      {
+        "property": "image",
+        "title": "Imagine",
+        "description": "Imagine afișată împreună cu citatul."
+      }
+    ]
+  }
+}

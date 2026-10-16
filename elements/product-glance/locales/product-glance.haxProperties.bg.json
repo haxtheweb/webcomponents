@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Продукт с един поглед",
+    "description": "Блок за бърз преглед на продукт."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона, представяща понятието."
+      },
+      {
+        "property": "title",
+        "title": "Заглавие",
+        "description": "Основното понятие с един поглед."
+      },
+      {
+        "property": "subtitle",
+        "title": "Подзаглавие",
+        "description": "Допълнителна подробност."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентен цвят",
+        "description": "Акцентен цвят за иконата."
+      }
+    ]
+  }
+}

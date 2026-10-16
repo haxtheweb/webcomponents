@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "เครื่องเล่น Unity",
+    "description": "เครื่องเล่น Unity WebGL"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "เป้าหมาย",
+        "description": "เส้นทางไปยังบิลด์ของเกม"
+      },
+      {
+        "property": "compression",
+        "title": "วิธีการบีบอัด",
+        "description": "นามสกุลไฟล์การบีบอัดสำหรับแอสเซ็ตของเกม"
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL สตรีมมิง",
+        "description": "URL ของแอสเซ็ตสตรีมมิง"
+      },
+      {
+        "property": "companyname",
+        "title": "ชื่อบริษัท",
+        "description": "ชื่อบริษัท"
+      },
+      {
+        "property": "productname",
+        "title": "ชื่อผลิตภัณฑ์",
+        "description": "ชื่อเกม"
+      },
+      {
+        "property": "productversion",
+        "title": "เวอร์ชันผลิตภัณฑ์",
+        "description": "เวอร์ชันที่เผยแพร่"
+      },
+      {
+        "property": "width",
+        "title": "ความกว้างของแคนวาส",
+        "description": "ความกว้าง CSS ของแคนวาส (เช่น px หรือ em)"
+      },
+      {
+        "property": "height",
+        "title": "ความสูงของแคนวาส",
+        "description": "ความสูง CSS ของแคนวาส (เช่น px หรือ em)"
+      },
+      {
+        "property": "background",
+        "title": "พื้นหลังของแคนวาส",
+        "description": "พื้นหลัง CSS ของแคนวาส"
+      }
+    ]
+  }
+}

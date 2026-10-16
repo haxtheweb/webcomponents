@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Köp saýlawly",
+    "description": "Özüňi barlamak üçin köp saýlawly sorag."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Sorag",
+        "description": "Ulanyjylaryň jogap bermeli soragy."
+      },
+      {
+        "property": "randomize",
+        "title": "Tötänleýin tertiple",
+        "description": "Jogaplary dinamiki tötänleýin tertiple."
+      },
+      {
+        "property": "singleOption",
+        "title": "Ýeke jogap",
+        "description": "Diňe bir jogaba rugsat ber."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Baha beriş formaty",
+        "description": "OER Schema: bu baha beriş üçin baha formaty (meselem, ballar, harp, göterim, tamamlama)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Okuw maksady",
+        "description": "OER Schema: bu baha beriş bilen baglanyşykly okuw maksady."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: bu baha berişiň niýetlenen kursy."
+      },
+      {
+        "property": "answers",
+        "title": "Jogaplar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testiň ady",
+        "description": "Analitika ulgamlarynda xAPI arkaly kesgitlemek üçin ulanylýan testiň ady."
+      }
+    ]
+  }
+}

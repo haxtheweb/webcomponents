@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "संग्रह पंक्ति",
+    "description": "संग्रह सूची के भीतर उपयोग के लिए पंक्ति-शैली आइटम, जिसमें टेक्स्ट, लिंक, आइकन, टैग और वैकल्पिक छवि हो।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "लिंक",
+        "description": "इस पंक्ति के लिए गंतव्य URL।"
+      },
+      {
+        "property": "image",
+        "title": "छवि",
+        "description": "पंक्ति के लिए छवि।"
+      },
+      {
+        "property": "alt",
+        "title": "वैकल्पिक टेक्स्ट",
+        "description": "छवि का वर्णन करने वाला वैकल्पिक टेक्स्ट।"
+      },
+      {
+        "property": "line1",
+        "title": "पंक्ति 1",
+        "description": "टेक्स्ट की पहली पंक्ति।"
+      },
+      {
+        "property": "line2",
+        "title": "पंक्ति 2",
+        "description": "टेक्स्ट की दूसरी पंक्ति।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "पंक्ति को दर्शाने वाला आइकन।"
+      },
+      {
+        "property": "saturate",
+        "title": "संतृप्ति प्रभाव",
+        "description": "उपयोगकर्ता के फ़ोकस करने पर छवि की संतृप्ति बदलें।"
+      },
+      {
+        "property": "tags",
+        "title": "टैग",
+        "description": "अल्पविराम से अलग की गई टैग सूची।"
+      },
+      {
+        "property": "accentColor",
+        "title": "रंग",
+        "description": "आइकन और टैग के लिए प्रयुक्त रंग।"
+      }
+    ]
+  }
+}

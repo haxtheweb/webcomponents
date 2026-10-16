@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kuatia'atã",
+    "description": "Kuatia'atã oñemohendáva DDD ñembohekópe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Ta'ãnga",
+        "description": "Ta'ãnga ikatúramo."
+      },
+      {
+        "property": "alt",
+        "title": "Ta'ãnga moñe'ẽrã mokõiha",
+        "description": "Moñe'ẽrã mokõiha omombe'úva ta'ãnga."
+      },
+      {
+        "property": "title",
+        "title": "Teratee",
+        "description": "Kuatia'atã teratee."
+      },
+      {
+        "slot": "",
+        "title": "Tetepy",
+        "description": "Kuatia'atã tetepy renda."
+      },
+      {
+        "property": "href",
+        "title": "Joajuha",
+        "description": "URL votõ joajuha."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Teramoĩ",
+        "description": "Votõ teramoĩ."
+      },
+      {
+        "property": "noArrow",
+        "title": "Hu'y'ỹre",
+        "description": "Emokañy votõ hu'y."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Joajuha: ohohápe",
+        "description": "Moõpa ojepe'áta joajuha.",
+        "options": {
+          "": "Ovetã peteĩchagua",
+          "_blank": "Ovetã pyahu - _blank",
+          "_top": "Ovetã yvategua - _top",
+          "_parent": "Ovetã ru - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Joajuha: rel",
+        "description": "Joaju mba'e joajupyre ha kuatia ko'ag̃agua apytépe."
+      }
+    ]
+  }
+}

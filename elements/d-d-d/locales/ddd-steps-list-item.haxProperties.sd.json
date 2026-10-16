@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "مرحلي جي شيءِ",
+    "description": "مرحلن جي لسٽ جو حصو شيءِ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ynline audio",
+    "description": "Audio ynline ôfspylje as oanfolling op de ynhâld fan de side."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Boarne",
+        "description": "MP3-bestân of URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Aksintkleur fan de kaart."
+      },
+      {
+        "property": "shiny",
+        "title": "Glânzich",
+        "description": "In ljochtere aksinteftergrûn brûke yn stee fan griis."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tsjuster",
+        "description": "Tsjustere modus brûke."
+      }
+    ]
+  }
+}

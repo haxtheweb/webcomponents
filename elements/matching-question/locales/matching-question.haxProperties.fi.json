@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Yhdistämistehtävä",
+    "description": "Vedä ja pudota -yhdistämistehtävä, joka yhdistää kysymykset oikeisiin vastauksiin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Kysymys",
+        "description": "Kysymys käyttäjille. Merkitse pudotuskohteet ja luettele sitten vastaukset seuraavaan kohteeseen asti."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Arvostelumuoto",
+        "description": "OER Schema: tämän arvioinnin arvostelumuoto (esim. pisteet, kirjain, prosentti, suoritus)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oppimistavoite",
+        "description": "OER Schema: tähän arviointiin liittyvä oppimistavoite."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurssi",
+        "description": "OER Schema: kurssi, jolle tämä arviointi on tarkoitettu."
+      },
+      {
+        "property": "answers",
+        "title": "Vastaukset"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tietovisan nimi",
+        "description": "Tietovisan nimi, jota käytetään xAPI-tunnistukseen analytiikkajärjestelmissä."
+      }
+    ]
+  }
+}

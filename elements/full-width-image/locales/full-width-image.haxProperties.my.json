@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "ပုံ အပိုင်း",
+    "description": "စာမျက်နှာ အပိုင်းကို ခွဲခြားပေးသော အကျယ်အပြည့် ပုံ။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "နောက်ခံ ပုံ။"
+      },
+      {
+        "property": "caption",
+        "description": "စာသား ခေါင်းစီး။"
+      }
+    ]
+  }
+}

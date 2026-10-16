@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ryru oñemomichĩva",
+    "description": "Peteĩ ryru ikatúva oñembotuicha ha oñemomichĩ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Moakãha",
+        "description": "Moñe'ẽrã pehẽ oñemomichĩvape g̃uarã."
+      },
+      {
+        "property": "expanded",
+        "title": "Mbotuichapyre",
+        "description": "Embotuicha ijypykuévape."
+      },
+      {
+        "property": "headingButton",
+        "title": "Votõ moakãha",
+        "description": "Ejapo moakãha pukukue jopyrã, ta'ãnga'i añoite rangue."
+      },
+      {
+        "property": "icon",
+        "title": "Ta'ãnga'i",
+        "description": "Ta'ãnga'i votõ mbotuicha/momichĩ peg̃uarã."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ta'ãnga'i (oñembotuicha jave)",
+        "description": "Ta'ãnga'i ojeiporavokuaáva oñembotuicha jave g̃uarã."
+      },
+      {
+        "slot": "",
+        "title": "Tetepy",
+        "description": "Tetepy pehẽ oñemomichĩvape g̃uarã."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Ñe'ẽ'i pytyvõha",
+        "description": "Ñe'ẽ'i pytyvõha votõ mbotuicha/momichĩ peg̃uarã."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Ñe'ẽ'i pytyvõha (oñembotuicha jave)",
+        "description": "Ñe'ẽ'i pytyvõha votõ mbotuicha/momichĩ peg̃uarã oñembotuicha jave."
+      }
+    ]
+  }
+}

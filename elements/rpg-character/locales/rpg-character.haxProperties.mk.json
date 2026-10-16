@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG лик",
+    "description": "Забавен лик од HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Име",
+        "description": "Збор што се користи за создавање случаен лик."
+      },
+      {
+        "property": "hat",
+        "title": "Капа",
+        "description": "Стил на капата.",
+        "options": {
+          "none": "Стандардно",
+          "random": "Случајно",
+          "bunny": "Зајаче",
+          "cowboy": "Каубој",
+          "education": "Образование",
+          "construction": "Градежништво",
+          "warning": "Предупредување",
+          "watermelon": "Лубеница",
+          "coffee": "Кафе",
+          "knight": "Витез",
+          "ninja": "Нинџа",
+          "party": "Забава",
+          "error": "Грешка",
+          "edit": "Уреди"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина на ликот во пиксели."
+      },
+      {
+        "property": "height",
+        "title": "Висина",
+        "description": "Висина на ликот во пиксели."
+      },
+      {
+        "property": "fire",
+        "title": "Гори?",
+        "description": "Дали ликот гори."
+      },
+      {
+        "property": "walking",
+        "title": "Оди?",
+        "description": "Анимација на одење; се извршува кога гори."
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Safu ya mkusanyiko",
+    "description": "Kipengee cha mtindo wa safu cha kutumia ndani ya orodha ya mkusanyiko, chenye maandishi, kiungo, aikoni, lebo na picha ya hiari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Kiungo",
+        "description": "URL lengwa ya safu hii."
+      },
+      {
+        "property": "image",
+        "title": "Picha",
+        "description": "Picha ya safu."
+      },
+      {
+        "property": "alt",
+        "title": "Mbadala",
+        "description": "Maandishi mbadala yanayoelezea picha."
+      },
+      {
+        "property": "line1",
+        "title": "Mstari 1",
+        "description": "Mstari wa kwanza wa maandishi."
+      },
+      {
+        "property": "line2",
+        "title": "Mstari 2",
+        "description": "Mstari wa pili wa maandishi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni inayowakilisha safu."
+      },
+      {
+        "property": "saturate",
+        "title": "Athari ya ukolezaji",
+        "description": "Badilisha ukolezaji wa picha mtumiaji anapolenga."
+      },
+      {
+        "property": "tags",
+        "title": "Lebo",
+        "description": "Orodha ya lebo zilizotenganishwa kwa koma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi",
+        "description": "Rangi inayotumika kwa aikoni na lebo."
+      }
+    ]
+  }
+}

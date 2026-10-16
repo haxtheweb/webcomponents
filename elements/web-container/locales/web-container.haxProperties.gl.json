@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Contedor NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Ocultar o editor",
+        "description": "Ocultar a interface de edición de ficheiros."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Ocultar o terminal",
+        "description": "Ocultar o terminal para programas que se executan automaticamente."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Ocultar a xanela",
+        "description": "Ocultar a xanela de saída para usar só o terminal."
+      },
+      {
+        "slot": "",
+        "title": "Ordes",
+        "description": "Ordes (unha por liña) que se executan antes de cargar."
+      }
+    ]
+  }
+}

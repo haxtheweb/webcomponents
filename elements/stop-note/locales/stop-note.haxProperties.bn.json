@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "থামার নোট",
+    "description": "পাঠকদের নির্দিষ্ট নির্দেশনা সম্পর্কে সতর্ক করার বার্তা।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "থামার নোটের শিরোনাম লিখুন।"
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "একটি বাহ্যিক URL লিখুন।"
+      },
+      {
+        "property": "status",
+        "title": "অবস্থা",
+        "description": "অবস্থা নির্ধারণ করলে রং ও আইকন সেই অনুযায়ী বদলে যায়",
+        "options": {
+          "stop": "থামুন",
+          "warning": "সতর্কতা",
+          "success": "নিশ্চিতকরণ",
+          "info": "বিজ্ঞপ্তি"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "নোটের টেক্সট",
+        "description": "থামার নোটের টেক্সট।"
+      }
+    ]
+  }
+}

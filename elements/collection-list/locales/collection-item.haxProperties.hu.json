@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Gyűjteményelem",
+    "description": "Kártya stílusú elem gyűjteménylistán belüli használatra, szöveggel, hivatkozással és opcionális médiával."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Hivatkozás",
+        "description": "A kártya cél-URL-je."
+      },
+      {
+        "property": "image",
+        "title": "Kép",
+        "description": "Háttérkép."
+      },
+      {
+        "property": "line1",
+        "title": "1. sor",
+        "description": "A szöveg első sora."
+      },
+      {
+        "property": "line2",
+        "title": "2. sor",
+        "description": "A szöveg második sora."
+      },
+      {
+        "property": "line3",
+        "title": "3. sor",
+        "description": "A szöveg harmadik sora."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "A kártyát jelölő ikon."
+      },
+      {
+        "property": "saturate",
+        "title": "Telítettségi effektus",
+        "description": "A kép telítettségének módosítása, amikor a felhasználó fókuszba helyezi."
+      },
+      {
+        "property": "tags",
+        "title": "Címkék",
+        "description": "Címkék vesszővel elválasztott listája."
+      },
+      {
+        "property": "accentColor",
+        "title": "Szín",
+        "description": "A címkék színe."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "A hivatkozást leíró helyettesítő szöveg."
+      }
+    ]
+  }
+}

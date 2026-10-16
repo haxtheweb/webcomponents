@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "ເຄື່ອງໝາຍ Polaris",
+    "description": "ສະແດງເຄື່ອງໝາຍເອກະລັກ PSU ພ້ອມຊື່ວິທະຍາໄລ ແລະ URL ປາຍທາງທາງເລືອກ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "ຊື່ວິທະຍາໄລ",
+        "description": "ຊື່ທີ່ສະແດງຂ້າງເຄື່ອງໝາຍ."
+      },
+      {
+        "property": "name2",
+        "title": "ຊື່ວິທະຍາໄລ 2",
+        "description": "ຊື່ທີສອງທີ່ສະແດງຢູ່ກ້ອງຊື່ວິທະຍາໄລທຳອິດ."
+      },
+      {
+        "property": "name3",
+        "title": "ຊື່ວິທະຍາໄລ 3",
+        "description": "ຊື່ທີສາມທີ່ສະແດງຢູ່ກ້ອງຊື່ວິທະຍາໄລທີສອງ."
+      },
+      {
+        "property": "url",
+        "title": "ລິ້ງ",
+        "description": "URL ປາຍທາງເມື່ອຄລິກເຄື່ອງໝາຍ."
+      },
+      {
+        "property": "type",
+        "title": "ແບບຍ່ອຍ",
+        "description": "ແບບຍ່ອຍຂອງເຄື່ອງໝາຍ.",
+        "options": {
+          "default": "ຄ່າເລີ່ມຕົ້ນ",
+          "light": "ແຈ້ງ",
+          "dark": "ມືດ"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "ໂຄງຮ່າງແນວຕັ້ງ",
+        "description": "ສະແດງຊື່ທີສາມຢູ່ກ້ອງຊື່ທີສອງ ພ້ອມເສັ້ນແນວນອນ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) енгізу",
+    "description": "X-тағы твитті мәтінмәнде енгізу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Твит URL-і",
+        "description": "Енгізілетін твиттің URL-і."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Тақырып",
+        "description": "X твиттеріне арналған ашық немесе қараңғы тақырып.",
+        "options": {
+          "light": "Ашық",
+          "dark": "Қараңғы"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Басқанда қалқымалы терезеге жол бермеу",
+        "description": "Пайдаланушыларға твитті x.com сайтында ашуға жол бермеу."
+      }
+    ]
+  }
+}

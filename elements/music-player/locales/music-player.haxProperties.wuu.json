@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI 可视化",
+    "description": "放 MIDI 并且配可视化。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "来源",
+        "description": "要放个文件 URL。"
+      },
+      {
+        "property": "visualizer",
+        "title": "可视化",
+        "description": "音乐文件个可视化样式。",
+        "options": {
+          "staff": "五线谱",
+          "piano-roll": "钢琴卷帘",
+          "waterfall": "钢琴 + 瀑布"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "隐藏瀑布",
+        "description": "钢琴可视化里隐藏瀑布音符。"
+      }
+    ]
+  }
+}

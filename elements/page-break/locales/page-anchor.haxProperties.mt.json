@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ankra tal-paġna",
+    "description": "Link għal punti speċifiċi fil-midja fuq il-paġna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Mira tal-paġna",
+        "description": "ID jew riżorsa li għaliha tipponta din l-ankra."
+      },
+      {
+        "property": "value",
+        "title": "Valur tad-deep link",
+        "description": "Valur tad-deep link (pereżempju timestamp jew ID tas-slide)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entità tas-sit",
+        "description": "Entità tas-sit fakultattiva għall-kontroll tal-preżentazzjoni ta' kunċetti relatati."
+      }
+    ]
+  }
+}

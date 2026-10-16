@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Ngulit komente Disqus në një faqe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Emri i shkurtër",
+        "description": "Emri i shkurtër i sajtit, që përcakton hostin e skriptit Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL-ja e faqes",
+        "description": "URL-ja e faqes me të cilën lidhet diskutimi i komenteve."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Identifikuesi i faqes",
+        "description": "Identifikuesi unik për diskutimin e komenteve të faqes."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Titulli i faqes",
+        "description": "Titulli i faqes me të cilën lidhet diskutimi i komenteve."
+      },
+      {
+        "property": "loadingText",
+        "title": "Teksti i ngarkimit",
+        "description": "Teksti që njoftohet ndërsa komentet po ngarkohen."
+      },
+      {
+        "property": "lang",
+        "title": "Gjuha",
+        "description": "Kodi i gjuhës për ndërfaqen e Disqus, p.sh. en."
+      }
+    ]
+  }
+}

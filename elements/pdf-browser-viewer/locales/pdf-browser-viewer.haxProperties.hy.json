@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF դիտարկիչ բրաուզերում",
+    "description": "Ներկառուցել PDF ֆայլ տեքստի մեջ՝ ըստ ցանկության քարտի դասավորությամբ և ներբեռնման կոճակով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF ֆայլի գտնվելու վայրը։"
+      },
+      {
+        "property": "heading",
+        "title": "Վերնագիր",
+        "description": "Քարտի վերնագրի տեքստը։"
+      },
+      {
+        "property": "card",
+        "title": "Քարտի դասավորություն",
+        "description": "Ցուցադրել PDF-ը քարտում՝ ներբեռնման կոճակով։"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Ներբեռնման պիտակ",
+        "description": "Ներբեռնման կոճակի պիտակը։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Չաջակցվող հաղորդագրություն",
+        "description": "Հաղորդագրություն, երբ բրաուզերը չի կարող ցուցադրել PDF ֆայլեր։"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Չաջակցվող հղման հաղորդագրություն",
+        "description": "Հղման տեքստ, երբ բրաուզերը չի կարող ցուցադրել PDF ֆայլեր։"
+      },
+      {
+        "property": "width",
+        "title": "Լայնություն",
+        "description": "PDF դիտարկիչի լայնությունը։"
+      },
+      {
+        "property": "height",
+        "title": "Բարձրություն",
+        "description": "PDF դիտարկիչի բարձրությունը։"
+      }
+    ]
+  }
+}

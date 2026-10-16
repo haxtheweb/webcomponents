@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity ਪਲੇਅਰ",
+    "description": "Unity WebGL ਪਲੇਅਰ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "ਟੀਚਾ",
+        "description": "ਗੇਮ ਬਿਲਡ ਦਾ ਪਾਥ।"
+      },
+      {
+        "property": "compression",
+        "title": "ਸੰਕੁਚਨ ਵਿਧੀ",
+        "description": "ਗੇਮ ਸੰਪਤੀਆਂ ਲਈ ਸੰਕੁਚਨ ਫ਼ਾਈਲ ਐਕਸਟੈਂਸ਼ਨ।"
+      },
+      {
+        "property": "streamingurl",
+        "title": "ਸਟ੍ਰੀਮਿੰਗ URL",
+        "description": "ਸਟ੍ਰੀਮਿੰਗ ਸੰਪਤੀਆਂ ਦਾ URL।"
+      },
+      {
+        "property": "companyname",
+        "title": "ਕੰਪਨੀ ਦਾ ਨਾਮ",
+        "description": "ਕੰਪਨੀ ਦਾ ਨਾਮ।"
+      },
+      {
+        "property": "productname",
+        "title": "ਉਤਪਾਦ ਦਾ ਨਾਮ",
+        "description": "ਗੇਮ ਦਾ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "productversion",
+        "title": "ਉਤਪਾਦ ਸੰਸਕਰਣ",
+        "description": "ਰਿਲੀਜ਼ ਸੰਸਕਰਣ।"
+      },
+      {
+        "property": "width",
+        "title": "ਕੈਨਵਸ ਚੌੜਾਈ",
+        "description": "ਕੈਨਵਸ ਦੀ CSS ਚੌੜਾਈ (ਉਦਾਹਰਨ ਲਈ px ਜਾਂ em)।"
+      },
+      {
+        "property": "height",
+        "title": "ਕੈਨਵਸ ਉਚਾਈ",
+        "description": "ਕੈਨਵਸ ਦੀ CSS ਉਚਾਈ (ਉਦਾਹਰਨ ਲਈ px ਜਾਂ em)।"
+      },
+      {
+        "property": "background",
+        "title": "ਕੈਨਵਸ ਪਿਛੋਕੜ",
+        "description": "ਕੈਨਵਸ ਦਾ CSS ਪਿਛੋਕੜ।"
+      }
+    ]
+  }
+}

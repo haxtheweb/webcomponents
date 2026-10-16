@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Otázka s krátkou odpovědí",
+    "description": "Nechte uživatele odpovědět na jednoduchou otázku"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Otázka",
+        "description": "Otázka, na kterou mají uživatelé odpovědět."
+      },
+      {
+        "property": "answers",
+        "title": "Možné odpovědi"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Název kvízu",
+        "description": "Název kvízu předávaný pro identifikaci této položky v prostředích řízených xAPI"
+      }
+    ]
+  }
+}

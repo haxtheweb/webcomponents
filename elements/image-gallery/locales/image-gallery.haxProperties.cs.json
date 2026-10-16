@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galerie obrázků",
+    "description": "Galerie, která zobrazuje obrázky v mřížce, zděném rozvržení nebo prezentaci."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Režim zobrazení",
+        "description": "Jak zobrazit obrázky v galerii.",
+        "options": {
+          "grid": "Mřížka",
+          "masonry": "Zděné rozvržení",
+          "gallery": "Galerie"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktivní index",
+        "description": "Index aktivního obrázku, kterým se v režimu galerie začne."
+      }
+    ]
+  }
+}

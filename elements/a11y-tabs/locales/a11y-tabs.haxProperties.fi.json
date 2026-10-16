@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Välilehdet",
+    "description": "Joukko välilehtiä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Nimike (saavutettavuutta varten)",
+        "description": "Välilehtijoukon saavutettava nimike."
+      },
+      {
+        "property": "disabled",
+        "title": "Pois käytöstä",
+        "description": "Poista kaikki välilehdet käytöstä."
+      },
+      {
+        "property": "hidden",
+        "title": "Piilotettu",
+        "description": "Piilota välilehtijoukko."
+      },
+      {
+        "property": "sticky",
+        "title": "Kiinnitetty",
+        "description": "Pidä vaakasuuntaiset välilehdet ylhäällä vierityksen aikana."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Asettelun raja-arvo",
+        "description": "Vaakasuuntaisten välilehtien raja-arvo; käytä arvoa -1 vain pystysuuntaiselle."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Kuvakkeiden raja-arvo",
+        "description": "Raja-arvo tekstin näyttämiselle kuvakkeiden kanssa. Oletus on 0; käytä arvoa -1 pelkille kuvakkeille."
+      },
+      {
+        "slot": "",
+        "title": "Välilehdet",
+        "description": "Sarja <a11y-tab/>-elementtejä."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Yksilöllinen ID",
+        "description": "Tämän välilehtijoukon yksilöllinen ID."
+      }
+    ]
+  }
+}

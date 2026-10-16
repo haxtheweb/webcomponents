@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Of Madaaluu",
+    "description": "Fayyadamtoonni of madaaluu xumuruu danda'u."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Suuraa",
+        "description": "Suuraa of madaaluu."
+      },
+      {
+        "property": "title",
+        "title": "Mata-duree",
+        "description": "Mata-duree of madaaluu."
+      },
+      {
+        "property": "alt",
+        "title": "Barreeffama Bakka Bu'aa",
+        "description": "Barreeffama bakka bu'aa suuraa."
+      },
+      {
+        "slot": "question",
+        "title": "Gaaffii"
+      },
+      {
+        "slot": "",
+        "title": "Deebii"
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu Dhiyeessaa",
+        "description": "Sirna dizaayinii keessaa halluu dhiyeessaa filadhu.",
+        "options": {
+          "primary": "Ijoo",
+          "accent": "Calaqqee",
+          "success": "Milkaa'ina",
+          "warning": "Akeekkachiisa",
+          "error": "Dogoggora",
+          "info": "Odeeffannoo"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Kaayyoo Barnootaa",
+        "description": "Wabii kaayyoo barnootaa kan akka oer:hasLearningObjective tti ba'u."
+      },
+      {
+        "property": "assessing",
+        "title": "Kan madaalamu",
+        "description": "Wabii sochii kan akka oer:assessing tti ba'u."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Hidhoo dabalataa",
+        "description": "Hidhoo odeeffannoo dabalataa."
+      }
+    ]
+  }
+}

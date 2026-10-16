@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub goşant goşanlarynyň sanawy",
+    "description": "GitHub API-ni ulanyp, RPG gahrymanlary hökmünde görkezilýär."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Gurama",
+        "description": "github.com/ORG/REPO-dan guramanyň ady."
+      },
+      {
+        "property": "repo",
+        "title": "Repozitoriý",
+        "description": "github.com/ORG/REPO-dan repozitoriýanyň ady."
+      },
+      {
+        "property": "limit",
+        "title": "Çäk",
+        "description": "Görkezilýän goşant goşanlaryň sanyny çäklendir."
+      }
+    ]
+  }
+}

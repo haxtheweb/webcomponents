@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Uitklapgroep",
+    "description": "Een groep uitklapbare elementen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Slechts één uitklappen",
+        "description": "Er kan maar één item tegelijk uitgeklapt zijn."
+      },
+      {
+        "slot": "",
+        "title": "Uitklapitems",
+        "description": "De uitklapitems."
+      }
+    ]
+  }
+}

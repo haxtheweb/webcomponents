@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) insluiten",
+    "description": "Sluit een tweet van X in context in."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Tweet-URL",
+        "description": "URL van de in te sluiten tweet."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Thema",
+        "description": "Licht of donker thema voor tweets van X.",
+        "options": {
+          "light": "Licht",
+          "dark": "Donker"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Pop-up bij klikken voorkomen",
+        "description": "Voorkom dat gebruikers de tweet op x.com openen."
+      }
+    ]
+  }
+}

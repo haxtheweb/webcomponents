@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "نمایشگر MIDI",
+    "description": "پخش MIDI در بافت همراه با نمایش تصویری."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "منبع",
+        "description": "URL فایل برای پخش."
+      },
+      {
+        "property": "visualizer",
+        "title": "نمایش تصویری",
+        "description": "سبک نمایش تصویری فایل موسیقی.",
+        "options": {
+          "staff": "حامل",
+          "piano-roll": "رول پیانو",
+          "waterfall": "پیانو + آبشار"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "پنهان کردن آبشار",
+        "description": "نت‌های آبشاری در نمایش پیانو پنهان شوند."
+      }
+    ]
+  }
+}

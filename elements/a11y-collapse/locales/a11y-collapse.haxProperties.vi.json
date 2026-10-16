@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Khung thu gọn được",
+    "description": "Một khung có thể mở rộng và thu gọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Tiêu đề",
+        "description": "Văn bản cho phần thu gọn."
+      },
+      {
+        "property": "expanded",
+        "title": "Đã mở rộng",
+        "description": "Mở rộng theo mặc định."
+      },
+      {
+        "property": "headingButton",
+        "title": "Nút tiêu đề",
+        "description": "Cho phép nhấp vào toàn bộ tiêu đề thay vì chỉ biểu tượng."
+      },
+      {
+        "property": "icon",
+        "title": "Biểu tượng",
+        "description": "Biểu tượng cho nút bật/tắt mở rộng/thu gọn."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Biểu tượng (khi mở rộng)",
+        "description": "Biểu tượng tùy chọn cho trạng thái đã mở rộng."
+      },
+      {
+        "slot": "",
+        "title": "Nội dung",
+        "description": "Nội dung cho phần thu gọn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Chú giải công cụ",
+        "description": "Chú giải công cụ cho nút bật/tắt mở rộng/thu gọn."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Chú giải công cụ (khi mở rộng)",
+        "description": "Chú giải công cụ cho nút mở rộng/thu gọn khi đã mở rộng."
+      }
+    ]
+  }
+}

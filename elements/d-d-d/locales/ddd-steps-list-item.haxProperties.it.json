@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Elemento dei passaggi",
+    "description": "Elemento che fa parte di un elenco di passaggi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo"
+      }
+    ]
+  }
+}

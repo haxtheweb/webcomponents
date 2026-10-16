@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "በመስመር ውስጥ ድምፅ",
+    "description": "የገጽ ይዘትን ለማሟላት ድምፅን በመስመር ውስጥ አጫውት።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ምንጭ",
+        "description": "MP3 ፋይል ወይም URL።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "የካርድ አጽንዖት ቀለም።"
+      },
+      {
+        "property": "shiny",
+        "title": "የሚያብረቀርቅ",
+        "description": "ከግራጫ ይልቅ ቀለል ያለ የአጽንዖት ጀርባ ተጠቀም።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ጨለማ",
+        "description": "ጨለማ ሁነታን ተጠቀም።"
+      }
+    ]
+  }
+}

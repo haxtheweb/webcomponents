@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Web komponent resminama pleýeri"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Penjiräni gizle",
+        "description": "Çykyş penjiresini gizle, maksat diňe terminal bolanda peýdaly"
+      }
+    ]
+  }
+}

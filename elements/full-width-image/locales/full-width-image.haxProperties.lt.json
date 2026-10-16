@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Vaizdo sekcija",
+    "description": "Viso pločio vaizdas, skiriantis puslapio sekcijas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Fono vaizdas."
+      },
+      {
+        "property": "caption",
+        "description": "Teksto antraštė."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus تبصرے",
+    "description": "Disqus تبصرہ ویب سروس نال جوڑ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "مختصر ناں",
+        "description": "Disqus اُتے پراپرٹی دا مختصر ناں"
+      }
+    ]
+  }
+}

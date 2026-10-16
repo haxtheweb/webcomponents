@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Kutipan media",
+    "description": "Gambar dengan kutipan, sitasi, dan keterangan opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Kutipan",
+        "description": "Teks kutipan."
+      },
+      {
+        "slot": "author",
+        "title": "Penulis",
+        "description": "Penulis kutipan."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Detail penulis",
+        "description": "Detail penulis."
+      },
+      {
+        "slot": "caption",
+        "title": "Keterangan",
+        "description": "Keterangan gambar."
+      },
+      {
+        "property": "src",
+        "title": "Sumber Gambar",
+        "description": "File gambar yang digunakan untuk kutipan media."
+      },
+      {
+        "property": "alt",
+        "title": "Teks Alt",
+        "description": "Teks alternatif untuk gambar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen kartu."
+      }
+    ]
+  }
+}

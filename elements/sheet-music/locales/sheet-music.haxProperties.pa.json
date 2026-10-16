@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "ਸੰਗੀਤ ਸੁਰਲਿਪੀ",
+    "description": "alphaTex ਜਾਂ MusicXML ਰਾਹੀਂ ਸੁਰਲਿਪੀ, ਗਿਟਾਰ ਟੈਬਾਂ ਅਤੇ ਸਕੋਰ ਸੰਕੇਤ ਦਿਖਾਉਂਦਾ ਅਤੇ ਚਲਾਉਂਦਾ ਹੈ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex ਸੰਕੇਤ",
+        "description": "ਸੁਰਲਿਪੀ ਲਈ ਇਨਲਾਈਨ alphaTex ਮਾਰਕਅੱਪ। ਸੰਕੇਤ ਲਿਖਣ ਲਈ ਸਿੱਧਾ ਸੰਪਾਦਿਤ ਕਰੋ; ਇਹ ਟੈਂਪਲੇਟ ਵਿੱਚ ਸਟੋਰ ਹੁੰਦਾ ਹੈ ਤਾਂ ਜੋ ਖਾਲੀ ਥਾਂ ਬਰਕਰਾਰ ਰਹੇ।"
+      },
+      {
+        "property": "source",
+        "title": "ਸਕੋਰ ਫ਼ਾਈਲ",
+        "description": "MusicXML (.xml/.musicxml/.mxl) ਜਾਂ Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) ਫ਼ਾਈਲ ਅੱਪਲੋਡ ਕਰੋ ਜਾਂ ਲਿੰਕ ਕਰੋ। ਸੈੱਟ ਹੋਣ 'ਤੇ ਇਨਲਾਈਨ alphaTex ਨੂੰ ਓਵਰਰਾਈਡ ਕਰਦੀ ਹੈ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "ਆਡੀਓ ਪਲੇਬੈਕ",
+        "description": "ਮੂਲ ਰੂਪ ਵਿੱਚ ਚਾਲੂ - ਬਿਲਟ-ਇਨ ਸਿੰਥੇਸਾਈਜ਼ਰ ਰਾਹੀਂ ਚਲਾਈ ਸੁਰਲਿਪੀ ਸੁਣੋ। ਸਿਰਫ਼-ਦੇਖਣ (ਬਿਨਾਂ ਆਡੀਓ) ਮੋਡ ਲਈ ਬੰਦ ਕਰੋ।"
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "ਡਿਸਪਲੇ ਵਿਕਲਪ ਦਿਖਾਓ",
+        "description": "ਪਲੇਅਰ ਪੱਟੀ 'ਤੇ ਜ਼ੂਮ, ਖਿਚਾਅ ਅਤੇ ਲੇਆਉਟ ਬਟਨ ਦਿਖਾਓ।"
+      },
+      {
+        "property": "showExport",
+        "title": "ਨਿਰਯਾਤ ਬਟਨ ਦਿਖਾਓ",
+        "description": "ਪਲੇਅਰ ਪੱਟੀ 'ਤੇ MIDI ਡਾਊਨਲੋਡ ਅਤੇ ਪ੍ਰਿੰਟ/PDF ਬਟਨ ਦਿਖਾਓ।"
+      }
+    ]
+  }
+}

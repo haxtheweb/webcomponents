@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Gosi bọtịnụ oku-maka-omume Polaris nwere isiokwu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Ederede bọtịnụ",
+        "description": "Ederede a na-egosi na bọtịnụ oku-maka-omume."
+      },
+      {
+        "property": "link",
+        "title": "Njikọ",
+        "description": "URL ebe a na-aga maka bọtịnụ ahụ."
+      },
+      {
+        "property": "type",
+        "title": "Ụdị dị iche",
+        "description": "Ụdị anya dị iche.",
+        "options": {
+          "primary": "Bụ isi",
+          "tinted": "Nwere ntụ agba",
+          "light": "Nchara nchara"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Ụdị nwere oke",
+        "description": "Gbanye nhazi nwere oke."
+      },
+      {
+        "property": "filled",
+        "title": "Ụdị ejupụtara",
+        "description": "Gbanye nhazi ejupụtara."
+      }
+    ]
+  }
+}

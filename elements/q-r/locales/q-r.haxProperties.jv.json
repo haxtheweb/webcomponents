@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Kode QR",
+    "description": "Kode kanggo dipindai saka smartphone."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Data QR",
+        "description": "Sumber data kanggo kode QR."
+      },
+      {
+        "property": "title",
+        "title": "Judhul alternatif",
+        "description": "Judhul alternatif sing dipranalani menyang sumber kode QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Ukuran",
+        "description": "Ukuran kode QR."
+      },
+      {
+        "property": "margin",
+        "title": "Pinggiran",
+        "description": "Pambungkus kode."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Format asil",
+        "description": "Format kanggo ngasilake.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

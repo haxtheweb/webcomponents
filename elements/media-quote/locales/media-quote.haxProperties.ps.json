@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "رسنیز اقتباس",
+    "description": "انځور له اقتباس، حوالې او اختیاري عنوان سره."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "اقتباس",
+        "description": "د اقتباس متن."
+      },
+      {
+        "slot": "author",
+        "title": "لیکوال",
+        "description": "د اقتباس لیکوال."
+      },
+      {
+        "slot": "author-detail",
+        "title": "د لیکوال جزییات",
+        "description": "د لیکوال جزییات."
+      },
+      {
+        "slot": "caption",
+        "title": "عنوان",
+        "description": "د انځور عنوان."
+      },
+      {
+        "property": "src",
+        "title": "د انځور سرچینه",
+        "description": "هغه انځوري فایل چې د رسنیز اقتباس لپاره کارول کېږي."
+      },
+      {
+        "property": "alt",
+        "title": "بدیل متن",
+        "description": "د انځور لپاره بدیل متن."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د کارت تاکیدي رنګ."
+      }
+    ]
+  }
+}

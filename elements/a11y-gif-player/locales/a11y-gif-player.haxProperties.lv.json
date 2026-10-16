@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Padariet animētos GIF pieejamus."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Animēts GIF",
+        "description": "Animētā GIF URL."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatīvais teksts",
+        "description": "Attēla alternatīvais teksts."
+      },
+      {
+        "property": "longdesc",
+        "title": "Garais apraksts",
+        "description": "Garš GIF apraksts piekļūstamībai."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Statisks attēls",
+        "description": "GIF statiskās versijas URL."
+      }
+    ]
+  }
+}

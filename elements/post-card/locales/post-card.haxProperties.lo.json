@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ໂປສກາດ",
+    "description": "ສື່ທີ່ສະໜຸກສະໜານ ອອກແບບໃຫ້ຄືໂປສກາດແທ້ຈາກບ່ອນໃດບ່ອນໜຶ່ງ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "ເຖິງ",
+        "description": "ສົ່ງເຖິງໃຜ?"
+      },
+      {
+        "property": "from",
+        "title": "ຈາກ",
+        "description": "ທ່ານແມ່ນໃຜ?"
+      },
+      {
+        "property": "message",
+        "title": "ຂໍ້ຄວາມ",
+        "description": "ທ່ານຢາກເວົ້າຫຍັງ?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "ປະທັບຕາໄປສະນີຈາກ",
+        "description": "ບັດນີ້ຖືກສົ່ງມາຈາກໃສ?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "ແຫຼ່ງຮູບພາບຫຼັກ",
+        "description": "ຮູບພາບຂອງທ່ານຢູ່ໃສ?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "ແຫຼ່ງຮູບພາບສະແຕມ",
+        "description": "ຮູບພາບຂອງທ່ານຢູ່ໃສ?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Alegere multiplă",
+    "description": "Întrebare de autoverificare cu alegere multiplă."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Întrebare",
+        "description": "Întrebarea la care răspund utilizatorii."
+      },
+      {
+        "property": "randomize",
+        "title": "Ordine aleatorie",
+        "description": "Amestecă răspunsurile în mod dinamic."
+      },
+      {
+        "property": "singleOption",
+        "title": "Un singur răspuns",
+        "description": "Permite un singur răspuns."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de notare",
+        "description": "OER Schema: formatul de notare pentru această evaluare (de ex. puncte, literă, procent, finalizare)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiectiv de învățare",
+        "description": "OER Schema: obiectivul de învățare asociat acestei evaluări."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curs",
+        "description": "OER Schema: cursul căruia îi este destinată această evaluare."
+      },
+      {
+        "property": "answers",
+        "title": "Răspunsuri"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Numele testului",
+        "description": "Numele testului folosit pentru identificarea xAPI în sistemele de analiză."
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity mängija",
+    "description": "Unity WebGL-mängija."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Sihtkoht",
+        "description": "Tee mängu järguni."
+      },
+      {
+        "property": "compression",
+        "title": "Tihendusmeetod",
+        "description": "Mänguvarade tihendusfaili laiend."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Voogedastuse URL",
+        "description": "Voogedastusvarade URL."
+      },
+      {
+        "property": "companyname",
+        "title": "Ettevõtte nimi",
+        "description": "Ettevõtte nimi."
+      },
+      {
+        "property": "productname",
+        "title": "Toote nimi",
+        "description": "Mängu pealkiri."
+      },
+      {
+        "property": "productversion",
+        "title": "Toote versioon",
+        "description": "Väljalaske versioon."
+      },
+      {
+        "property": "width",
+        "title": "Lõuendi laius",
+        "description": "Lõuendi CSS-laius (näiteks px või em)."
+      },
+      {
+        "property": "height",
+        "title": "Lõuendi kõrgus",
+        "description": "Lõuendi CSS-kõrgus (näiteks px või em)."
+      },
+      {
+        "property": "background",
+        "title": "Lõuendi taust",
+        "description": "Lõuendi CSS-taust."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Ndepụta egwu",
+    "description": "Gosi ụdị ọdịnaya ọ bụla na ndepụta egwu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Isi mmalite",
+        "description": "Ọdịnaya a na-egosi na ndepụta egwu ahụ."
+      },
+      {
+        "property": "edit",
+        "title": "Ọnọdụ ndezi",
+        "description": "Gbanwee n'etiti ọnọdụ ndezi na nlele maka ndepụta egwu."
+      },
+      {
+        "property": "navigation",
+        "title": "Nnyocha",
+        "description": "Gosi bọtịnụ nnyocha n'ihu na azụ."
+      },
+      {
+        "property": "pagination",
+        "title": "Nkewa peeji",
+        "description": "Gosi ntụpọ nkewa peeji."
+      },
+      {
+        "property": "orientation",
+        "title": "Nhazi akụkụ",
+        "description": "Nhazi akụkụ nke slide ndị ahụ.",
+        "options": {
+          "horizontal": "Kwụ ọnọdụ",
+          "vertical": "Kwụ ọtọ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Slide a ga-amalite na ya",
+        "description": "Ndekọ slide a ga-elekwasị anya na mbụ."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Oke Nha",
+        "description": "Oke nha nke slide ndị ahụ.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

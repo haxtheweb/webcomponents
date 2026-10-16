@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Өөрийгөө шалгах",
+    "description": "Хэрэглэгчид өөрийгөө шалгах дасгал гүйцэтгэж болно."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Зураг",
+        "description": "Өөрийгөө шалгах дасгалын зураг."
+      },
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Өөрийгөө шалгах дасгалын гарчиг."
+      },
+      {
+        "property": "alt",
+        "title": "Орлуулах текст",
+        "description": "Зургийн орлуулах текст."
+      },
+      {
+        "slot": "question",
+        "title": "Асуулт"
+      },
+      {
+        "slot": "",
+        "title": "Хариулт"
+      },
+      {
+        "property": "accentColor",
+        "title": "Загварын өнгө",
+        "description": "Дизайн системээс загварын өнгө сонгоно уу.",
+        "options": {
+          "primary": "Үндсэн",
+          "accent": "Онцлох",
+          "success": "Амжилт",
+          "warning": "Анхааруулга",
+          "error": "Алдаа",
+          "info": "Мэдээлэл"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Сургалтын зорилт",
+        "description": "oer:hasLearningObjective болгон гаргах сургалтын зорилтын лавлагаа."
+      },
+      {
+        "property": "assessing",
+        "title": "Үнэлж буй",
+        "description": "oer:assessing болгон гаргах үйл ажиллагааны лавлагаа."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Дэлгэрэнгүй холбоос",
+        "description": "Нэмэлт мэдээллийн холбоос."
+      }
+    ]
+  }
+}

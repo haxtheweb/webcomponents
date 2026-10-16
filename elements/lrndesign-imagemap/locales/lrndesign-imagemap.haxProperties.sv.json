@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bildkarta",
+    "description": "En tillgänglig bildkarta med interaktiva aktiva punkter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etikett",
+        "description": "Etikett för bildkartan."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Detaljer om aktiva punkter",
+        "description": "De interaktiva aktiva punkterna på bildkartan."
+      }
+    ]
+  }
+}

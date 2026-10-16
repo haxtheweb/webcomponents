@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Karakter sa RPG",
+    "description": "Nakakatuwang karakter mula sa HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Pangalan",
+        "description": "Salitang ginagamit para bumuo ng random na karakter."
+      },
+      {
+        "property": "hat",
+        "title": "Sumbrero",
+        "description": "Istilo ng sumbrero.",
+        "options": {
+          "none": "Default",
+          "random": "Random",
+          "bunny": "Kuneho",
+          "cowboy": "Koboy",
+          "education": "Edukasyon",
+          "construction": "Konstruksyon",
+          "warning": "Babala",
+          "watermelon": "Pakwan",
+          "coffee": "Kape",
+          "knight": "Kabalyero",
+          "ninja": "Ninja",
+          "party": "Party",
+          "error": "Error",
+          "edit": "I-edit"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Lapad",
+        "description": "Lapad ng karakter sa pixel."
+      },
+      {
+        "property": "height",
+        "title": "Taas",
+        "description": "Taas ng karakter sa pixel."
+      },
+      {
+        "property": "fire",
+        "title": "Nagliliyab?",
+        "description": "Kung nagliliyab ang karakter."
+      },
+      {
+        "property": "walking",
+        "title": "Naglalakad?",
+        "description": "Animation ng paglalakad; tumatakbo kapag nagliliyab."
+      }
+    ]
+  }
+}

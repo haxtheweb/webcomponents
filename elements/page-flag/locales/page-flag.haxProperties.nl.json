@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Paginavlag",
+    "description": "Redactionele notitie voor auteurs van de pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Accentkleur van de paginavlag."
+      },
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Labeltekst van de paginavlag."
+      }
+    ]
+  }
+}

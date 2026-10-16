@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "图像对比",
+    "description": "将一张图像滑过另一张图像进行对比。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "上层图像",
+        "description": "滑过下层图像的上层图像。"
+      },
+      {
+        "property": "topAlt",
+        "title": "上层图像替代文本",
+        "description": "无障碍访问所需的替代文本。"
+      },
+      {
+        "property": "bottomSrc",
+        "title": "下层图像",
+        "description": "显示在上层图像下方的图像。"
+      },
+      {
+        "property": "bottomAlt",
+        "title": "下层图像替代文本",
+        "description": "无障碍访问所需的替代文本。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "行为",
+        "description": "选择擦除模式（默认）或上层图像透明度模式。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "滑块条颜色。"
+      },
+      {
+        "property": "dark",
+        "title": "深色",
+        "description": "反转滑块条颜色。"
+      },
+      {
+        "property": "position",
+        "title": "初始位置",
+        "description": "起始位置，范围 0 到 100。"
+      }
+    ]
+  }
+}

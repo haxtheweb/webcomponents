@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Pitakonan Ngurutake",
+    "description": "Urutake item-item miturut urutan sing bener."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pitakonan",
+        "description": "Irah-irahan pitakonan."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format biji",
+        "description": "OER Schema: format biji kanggo penilaian iki (contone poin, huruf, persen, rampung)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan sinau",
+        "description": "OER Schema: tujuan sinau sing ana gandhengane karo penilaian iki."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus sing dituju penilaian iki."
+      },
+      {
+        "property": "answers",
+        "title": "Wangsulan",
+        "description": "Urutan wangsulan nemtokake urutan sing bener."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jeneng kuis",
+        "description": "Jeneng kuis sing digunakake kanggo identifikasi xAPI ing sistem analitik."
+      }
+    ]
+  }
+}

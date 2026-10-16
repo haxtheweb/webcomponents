@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "نوتة موسيقية",
+    "description": "يعرض النوتات الموسيقية وتابات الغيتار والتدوين الموسيقي ويشغّلها عبر alphaTex أو MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "تدوين AlphaTex",
+        "description": "ترميز alphaTex مضمَّن للنوتة الموسيقية. حرِّره مباشرة لكتابة التدوين؛ يُخزَّن في قالب للحفاظ على المسافات."
+      },
+      {
+        "property": "source",
+        "title": "ملف المدوَّنة",
+        "description": "ارفع ملف MusicXML (.xml/.musicxml/.mxl) أو Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) أو اربط به. يتجاوز alphaTex المضمَّن عند تعيينه."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "تشغيل الصوت",
+        "description": "مفعَّل افتراضيًا - استمع إلى النوتة الموسيقية عبر المُركِّب الصوتي المدمج. أوقفه لوضع العرض فقط (بدون صوت)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "إظهار خيارات العرض",
+        "description": "إظهار أزرار التكبير والتمديد والتخطيط في شريط المشغّل."
+      },
+      {
+        "property": "showExport",
+        "title": "إظهار أزرار التصدير",
+        "description": "إظهار أزرار تنزيل MIDI والطباعة/PDF في شريط المشغّل."
+      }
+    ]
+  }
+}

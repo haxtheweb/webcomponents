@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Сурет бөлімі",
+    "description": "Бет бөлімін бөлетін толық енді сурет."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Фондық сурет."
+      },
+      {
+        "property": "caption",
+        "description": "Мәтін тақырыбы."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI ვიზუალიზატორი",
+    "description": "MIDI-ის დაკვრა კონტექსტში ვიზუალიზაციით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "წყარო",
+        "description": "დასაკრავი ფაილის URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "ვიზუალიზაცია",
+        "description": "მუსიკალური ფაილის ვიზუალიზაციის სტილი.",
+        "options": {
+          "staff": "სანოტო ხაზი",
+          "piano-roll": "პიანო-როლი",
+          "waterfall": "პიანო + ჩანჩქერი"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "ჩანჩქერის დამალვა",
+        "description": "ჩანჩქერის ნოტების დამალვა პიანოს ვიზუალიზაციაში."
+      }
+    ]
+  }
+}

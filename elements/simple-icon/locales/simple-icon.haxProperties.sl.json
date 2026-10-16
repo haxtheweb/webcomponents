@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikona",
+    "description": "Ikona iz celotne knjižnice ikon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona za prikaz."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Poudarna barva ikone."
+      },
+      {
+        "property": "dark",
+        "title": "Temno",
+        "description": "Uporabi temni način (obrnjen nabor barv)."
+      }
+    ]
+  }
+}

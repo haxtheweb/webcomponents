@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Цитат са сликом",
+    "description": "Стилизовани цитат са опционалном сликом."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Слика",
+        "description": "Додајте слику уз препоруку."
+      },
+      {
+        "property": "name",
+        "title": "Пуно име",
+        "description": "Име особе која даје препоруку."
+      },
+      {
+        "property": "position",
+        "title": "Позиција или звање",
+        "description": "Позиција или звање особе."
+      },
+      {
+        "slot": "",
+        "title": "Цитат",
+        "description": "Цитат аутора препоруке."
+      }
+    ]
+  }
+}

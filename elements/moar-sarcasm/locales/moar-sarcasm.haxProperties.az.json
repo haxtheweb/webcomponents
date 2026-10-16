@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkazm",
+    "description": "Mətni zarafatyana şəkildə təqdim etmək"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Mətn",
+        "description": "Sarkastik ediləcək mətn"
+      }
+    ]
+  }
+}

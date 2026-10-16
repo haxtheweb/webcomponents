@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "संकुचित होणारा कंटेनर",
+    "description": "विस्तारित आणि संकुचित होऊ शकणारा एकल कंटेनर."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "शीर्षक",
+        "description": "संकुचनासाठी मजकूर."
+      },
+      {
+        "property": "expanded",
+        "title": "विस्तारित",
+        "description": "डीफॉल्टनुसार विस्तारित करा."
+      },
+      {
+        "property": "headingButton",
+        "title": "शीर्षक बटण",
+        "description": "फक्त आयकॉनऐवजी संपूर्ण शीर्षक क्लिक करण्यायोग्य करा."
+      },
+      {
+        "property": "icon",
+        "title": "आयकॉन",
+        "description": "विस्तार/संकुचन टॉगल बटणासाठी आयकॉन."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "आयकॉन (विस्तारित असताना)",
+        "description": "विस्तारित टॉगल स्थितीसाठी पर्यायी आयकॉन."
+      },
+      {
+        "slot": "",
+        "title": "सामग्री",
+        "description": "संकुचनासाठी सामग्री."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "टूलटिप",
+        "description": "विस्तार/संकुचन टॉगल बटणासाठी टूलटिप."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "टूलटिप (विस्तारित असताना)",
+        "description": "विस्तारित असताना विस्तार/संकुचन बटणासाठी टूलटिप."
+      }
+    ]
+  }
+}

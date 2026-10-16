@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Sitat við mynd",
+    "description": "Sniðgivið sitat við valfríari mynd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Mynd",
+        "description": "Legg eina mynd afturat ummælinum."
+      },
+      {
+        "property": "name",
+        "title": "Fult navn",
+        "description": "Navn á persóninum, sum gevur ummælið."
+      },
+      {
+        "property": "position",
+        "title": "Starv ella starvsheiti",
+        "description": "Starv ella starvsheiti hjá persóninum."
+      },
+      {
+        "slot": "",
+        "title": "Sitat",
+        "description": "Sitat frá høvundinum at ummælinum."
+      }
+    ]
+  }
+}

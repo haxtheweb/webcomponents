@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "ছবির অংশ",
+    "description": "পূর্ণ-প্রস্থের ছবি যা পৃষ্ঠার অংশকে বিভক্ত করে।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "পটভূমির ছবি।"
+      },
+      {
+        "property": "caption",
+        "description": "টেক্সট শিরোনাম।"
+      }
+    ]
+  }
+}

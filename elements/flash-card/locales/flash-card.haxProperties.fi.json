@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Muistikortti",
+    "description": "Harjoittele käsitteitä kaksipuolisilla muistikorteilla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Kortin etupuoli",
+        "description": "Etupuolen teksti tai kysymys."
+      },
+      {
+        "slot": "back",
+        "title": "Kortin takapuoli",
+        "description": "Odotettu vastaus."
+      },
+      {
+        "property": "imgSource",
+        "title": "Kuvan lähde",
+        "description": "Kortissa käytettävä kuvatiedosto. Ohittaa kuvan hakusanan."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Toiminnan tyyppi",
+        "description": "OER Schema: harjoitukseen liittyvän toiminnan tyyppi (esim. lukeminen, kirjoittaminen, tekeminen, tutkiminen, kuunteleminen, katsominen, pohtiminen, keskusteleminen, havainnointi, esittäminen, arviointi)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oppimistavoite",
+        "description": "OER Schema: sen oppimistavoitteen ID tai URL, jota tämä harjoitus tukee."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tumma",
+        "description": "Käytä tummaa tilaa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Kortin korostusväri."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Kuvan hakusana",
+        "description": "Satunnaisen kuvan hakusana. Kuvan lähde ohittaa tämän."
+      }
+    ]
+  }
+}

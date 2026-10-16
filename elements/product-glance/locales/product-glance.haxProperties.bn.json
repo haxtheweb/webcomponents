@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "পণ্যের সংক্ষিপ্ত দৃশ্য",
+    "description": "দ্রুত পণ্য পরিচিতি ব্লক।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "আইকন",
+        "description": "ধারণাটির প্রতিনিধিত্বকারী আইকন।"
+      },
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "এক নজরে প্রধান ধারণা।"
+      },
+      {
+        "property": "subtitle",
+        "title": "উপশিরোনাম",
+        "description": "অতিরিক্ত বিবরণ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "আইকনের অ্যাকসেন্ট রং।"
+      }
+    ]
+  }
+}

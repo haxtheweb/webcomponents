@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Nhota Onyonyo",
+    "description": "Nhota ahaziri nwere onyonyo nhọrọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Onyonyo",
+        "description": "Tinye onyonyo na akaebe ahụ."
+      },
+      {
+        "property": "name",
+        "title": "Aha Zuru Ezu",
+        "description": "Aha onye na-enye akaebe ahụ."
+      },
+      {
+        "property": "position",
+        "title": "Ọkwa ma ọ bụ Aha Ọrụ",
+        "description": "Ọkwa ma ọ bụ aha ọrụ onye ahụ."
+      },
+      {
+        "slot": "",
+        "title": "Nhota",
+        "description": "Nhota sitere n'aka onye nyere akaebe ahụ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galerija slik",
+    "description": "Galerija, ki prikazuje slike v mreži, mozaiku ali kot diaprojekcijo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Način prikaza",
+        "description": "Kako prikazati slike v galeriji.",
+        "options": {
+          "grid": "Mreža",
+          "masonry": "Mozaik",
+          "gallery": "Galerija"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktivni indeks",
+        "description": "Indeks aktivne slike, s katero se začne v načinu galerije."
+      }
+    ]
+  }
+}

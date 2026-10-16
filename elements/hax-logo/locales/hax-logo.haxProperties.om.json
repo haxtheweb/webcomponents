@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Barreeffama aartii HAX",
+    "description": "Wanta asxaa HAX, ifaan akka wanta HAX waliin hojjetuutti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Hamma asxaa HAX kaa'amuu",
+        "options": {
+          "mini": "Xiqqaa",
+          "small": "Xiqqaa",
+          "normal": "Idilee",
+          "large": "Guddaa"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Asxaan gara qubee guddaatti jijjiiramuu fi dhiisuu isaa"
+      }
+    ]
+  }
+}

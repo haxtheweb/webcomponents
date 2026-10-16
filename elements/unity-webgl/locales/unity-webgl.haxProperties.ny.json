@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Choseweretsa cha Unity",
+    "description": "Choseweretsa cha Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Kopita",
+        "description": "Njira yopita ku masewera opangidwa."
+      },
+      {
+        "property": "compression",
+        "title": "Njira yochepetsera kukula",
+        "description": "Mtundu wa fayilo yochepetsedwa ya zinthu za masewera."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL Yotsatsira",
+        "description": "URL ya zinthu zotsatsira."
+      },
+      {
+        "property": "companyname",
+        "title": "Dzina la Kampani",
+        "description": "Dzina la kampani."
+      },
+      {
+        "property": "productname",
+        "title": "Dzina la Chinthu",
+        "description": "Mutu wa masewera."
+      },
+      {
+        "property": "productversion",
+        "title": "Mtundu wa Chinthu",
+        "description": "Mtundu wotulutsidwa."
+      },
+      {
+        "property": "width",
+        "title": "M'lifupi mwa Canvas",
+        "description": "M'lifupi mwa CSS mwa canvas (mwachitsanzo px kapena em)."
+      },
+      {
+        "property": "height",
+        "title": "Kutalika kwa Canvas",
+        "description": "Kutalika kwa CSS kwa canvas (mwachitsanzo px kapena em)."
+      },
+      {
+        "property": "background",
+        "title": "Kumbuyo kwa Canvas",
+        "description": "Kumbuyo kwa CSS kwa canvas."
+      }
+    ]
+  }
+}

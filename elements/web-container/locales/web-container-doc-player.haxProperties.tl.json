@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Doc player ng web component"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Itago ang window",
+        "description": "Itago ang output window, kapaki-pakinabang kapag terminal lamang ang layunin"
+      }
+    ]
+  }
+}

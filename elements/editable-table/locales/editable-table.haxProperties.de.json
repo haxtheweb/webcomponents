@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabelle",
+    "description": "Tabellenbasierte Daten für das Web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Zeilenüberschrift",
+        "description": "Erste Zeile als Überschrift behandeln."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Spaltenüberschrift",
+        "description": "Erste Spalte als Überschrift behandeln."
+      },
+      {
+        "property": "footer",
+        "title": "Fußzeile",
+        "description": "Letzte Zeile als Fußzeile behandeln."
+      },
+      {
+        "property": "sort",
+        "title": "Sortierbar",
+        "description": "Sortieren nach Spaltenwerten erlauben."
+      },
+      {
+        "property": "filter",
+        "title": "Filtern erlauben",
+        "description": "Filtern nach Spaltenwerten erlauben."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numerische Formatierung",
+        "description": "Numerische Formatierung auf numerische Spalten anwenden."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsiv",
+        "description": "Tabellenlayout auf kleinen Bildschirmen anpassen."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubrik-Modus",
+        "description": "Diese Tabelle als OER Schema Rubric interpretieren, sodass Rubric-, RubricScale-, RubricCriterion- und RubricLevel-Metadaten ausgegeben werden."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubrik-Typ",
+        "description": "Als oer:rubricType ausgegebener Rubrik-Stil (nur relevant, wenn der Rubrik-Modus aktiviert ist).",
+        "options": {
+          "": "(keiner)",
+          "analytic": "Analytisch",
+          "holistic": "Ganzheitlich",
+          "single-point": "Einzelpunkt",
+          "checklist": "Checkliste"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Mit Rahmen"
+      },
+      {
+        "property": "condensed",
+        "title": "Zeilen verdichten",
+        "description": "Zeilenhöhe verringern."
+      },
+      {
+        "property": "striped",
+        "title": "Gestreifte Zeilen",
+        "description": "Jede zweite Zeile schattieren."
+      },
+      {
+        "property": "downloadable",
+        "title": "Download-Schaltfläche",
+        "description": "Eine Schaltfläche zum Herunterladen der Tabelle hinzufügen."
+      },
+      {
+        "property": "copyable",
+        "title": "Kopier-Schaltfläche",
+        "description": "Eine Schaltfläche zum Kopieren der CSV-Daten der Tabelle hinzufügen."
+      },
+      {
+        "property": "printable",
+        "title": "Druck-Schaltfläche",
+        "description": "Eine Schaltfläche hinzufügen, um nur die Tabelle zu drucken."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV-Daten",
+        "description": "Eine Tabelle aus einer hochgeladenen CSV-Datei erstellen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Aŭdvida citaĵo",
+    "description": "Bildo kun citaĵo, fontindiko kaj nedeviga apudskribo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Citaĵo",
+        "description": "Teksto de la citaĵo."
+      },
+      {
+        "slot": "author",
+        "title": "Aŭtoro",
+        "description": "Aŭtoro de la citaĵo."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Detaloj pri la aŭtoro",
+        "description": "Detaloj pri la aŭtoro."
+      },
+      {
+        "slot": "caption",
+        "title": "Apudskribo",
+        "description": "Apudskribo de la bildo."
+      },
+      {
+        "property": "src",
+        "title": "Bilda fonto",
+        "description": "Bilddosiero uzata por la aŭdvida citaĵo."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativa teksto",
+        "description": "Alternativa teksto por la bildo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Akcenta koloro de la karto."
+      }
+    ]
+  }
+}

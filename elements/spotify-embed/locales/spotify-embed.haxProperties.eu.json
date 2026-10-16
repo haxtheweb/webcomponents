@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify erreproduzigailuen txertaketetarako bilgarria."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Iturburua",
+        "description": "Spotify-ko txertatze edo partekatze esteka."
+      },
+      {
+        "property": "theme",
+        "title": "Gaia",
+        "description": "Erreproduzigailuaren atzeko kolorearen gaia.",
+        "options": {
+          "": "Lehenetsia",
+          "0": "Beltza"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Tamaina",
+        "description": "Erreproduzigailuaren tamaina.",
+        "options": {
+          "normal": "Lehenetsia",
+          "compact": "Trinkoa"
+        }
+      }
+    ]
+  }
+}

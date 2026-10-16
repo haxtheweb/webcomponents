@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Scheda storia Polaris",
+    "description": "Mostra una scheda storia Polaris con immagine di sfondo, etichetta del pilastro e titolo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Immagine di sfondo",
+        "description": "URL dell'immagine mostrata come sfondo della scheda."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Dimensione dello sfondo",
+        "description": "Come l'immagine di sfondo riempie la scheda (CSS background-size).",
+        "options": {
+          "cover": "Copri (cover)",
+          "contain": "Contieni (contain)",
+          "auto": "Automatico (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Ancoraggio dello sfondo",
+        "description": "Come si comporta l'immagine di sfondo durante lo scorrimento (CSS background-attachment).",
+        "options": {
+          "scroll": "Scorrevole (scroll)",
+          "fixed": "Fisso (fixed)",
+          "local": "Locale (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Etichetta del pilastro",
+        "description": "Breve etichetta in maiuscolo mostrata in cima alla scheda. Lascia vuoto per nasconderla."
+      },
+      {
+        "property": "label",
+        "title": "Testo della scheda",
+        "description": "Testo principale mostrato nel pannello inferiore."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "URL di destinazione facoltativo che racchiude l'intera scheda."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Sandt/falsk-spørgsmål",
+    "description": "Sandt/falsk-spørgsmål"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spørgsmål",
+        "description": "Spørgsmål, som brugerne skal besvare."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Korrekt svar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Quizzens navn",
+        "description": "Quiznavn, der videregives til brug i xAPI-drevne miljøer til identifikation af dette element"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Rubutun kiɗa",
+    "description": "Yana nunawa da kunna rubutun kiɗa, tab na guitar, da alamomin kiɗa ta alphaTex ko MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Alamomin AlphaTex",
+        "description": "Rubutun alphaTex a layi na rubutun kiɗan. Gyara kai tsaye don rubuta alamomi; ana ajiye shi a cikin samfuri don a kiyaye tazara."
+      },
+      {
+        "property": "source",
+        "title": "Fayil ɗin kiɗa",
+        "description": "Ɗora ko haɗa zuwa fayil ɗin MusicXML (.xml/.musicxml/.mxl) ko Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Yana maye gurbin alphaTex na layi idan an saita."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Kunna sauti",
+        "description": "A kunne a matsayin tsoho - saurari rubutun kiɗan ta na'urar haɗa sauti da aka gina a ciki. Kashe don yanayin kallo kawai (babu sauti)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Nuna zaɓuɓɓukan nuni",
+        "description": "Nuna maɓallan zuƙowa, miƙewa, da tsari a sandar mai kunnawa."
+      },
+      {
+        "property": "showExport",
+        "title": "Nuna maɓallan fitarwa",
+        "description": "Nuna maɓallan sauke MIDI da bugawa/PDF a sandar mai kunnawa."
+      }
+    ]
+  }
+}

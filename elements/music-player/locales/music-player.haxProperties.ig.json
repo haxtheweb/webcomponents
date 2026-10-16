@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ihe ngosi MIDI",
+    "description": "Kpọọ MIDI n'ọnọdụ ya nwere ihe ngosi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isi mmalite",
+        "description": "URL faịlụ a ga-akpọ."
+      },
+      {
+        "property": "visualizer",
+        "title": "Ihe ngosi",
+        "description": "Ụdị ihe ngosi maka faịlụ egwu ahụ.",
+        "options": {
+          "staff": "Ahịrị egwu",
+          "piano-roll": "Ọkpọkọ piano",
+          "waterfall": "Piano + mmiri ozuzo"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Zoo mmiri ozuzo",
+        "description": "Zoo ndetu mmiri ozuzo n'ihe ngosi piano."
+      }
+    ]
+  }
+}

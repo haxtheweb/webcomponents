@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Mbështjellës për ngulitjet e luajtësit Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Burimi",
+        "description": "Lidhje ngulitjeje ose ndarjeje nga Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Tema e ngjyrës së sfondit për luajtësin.",
+        "options": {
+          "": "Parazgjedhje",
+          "0": "E zezë"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Madhësia",
+        "description": "Madhësia e luajtësit.",
+        "options": {
+          "normal": "Parazgjedhje",
+          "compact": "Kompakt"
+        }
+      }
+    ]
+  }
+}

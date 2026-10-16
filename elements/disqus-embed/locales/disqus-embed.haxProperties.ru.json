@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Встраивание комментариев Disqus на страницу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Краткое имя",
+        "description": "Краткое имя сайта, определяющее хост скрипта Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL страницы",
+        "description": "URL страницы, к которой привязана ветка комментариев."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Идентификатор страницы",
+        "description": "Уникальный идентификатор ветки комментариев страницы."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Заголовок страницы",
+        "description": "Заголовок страницы, к которой привязана ветка комментариев."
+      },
+      {
+        "property": "loadingText",
+        "title": "Текст загрузки",
+        "description": "Текст, озвучиваемый во время загрузки комментариев."
+      },
+      {
+        "property": "lang",
+        "title": "Язык",
+        "description": "Код языка интерфейса Disqus, например en."
+      }
+    ]
+  }
+}

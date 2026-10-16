@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Media-aanhaling",
+    "description": "Prent met 'n aanhaling, bronverwysing en opsionele onderskrif."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Aanhaling",
+        "description": "Aanhalingsteks."
+      },
+      {
+        "slot": "author",
+        "title": "Outeur",
+        "description": "Outeur van die aanhaling."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Outeurbesonderhede",
+        "description": "Outeurbesonderhede."
+      },
+      {
+        "slot": "caption",
+        "title": "Onderskrif",
+        "description": "Prentonderskrif."
+      },
+      {
+        "property": "src",
+        "title": "Prentbron",
+        "description": "Prentlêer gebruik vir die media-aanhaling."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-teks",
+        "description": "Alternatiewe teks vir die prent."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "Kaart se aksentkleur."
+      }
+    ]
+  }
+}
