@@ -1,0 +1,14 @@
+{
+  "title": "Blokken",
+  "enabled": "Ingeschakeld",
+  "block": "Blok",
+  "preview": "Voorbeeld",
+  "filterBlocks": "Blokken filteren",
+  "requiredTextNote": "Sommige teksttags zijn verplicht en altijd ingeschakeld (uitgeschakeld weergegeven).",
+  "selectAll": "Alles selecteren",
+  "deselectAll": "Alles deselecteren",
+  "save": "Opslaan",
+  "noDescription": "Geen beschrijving beschikbaar.",
+  "details": "Details",
+  "loadingInventory": "Volledige blokkeninventaris laden…"
+}

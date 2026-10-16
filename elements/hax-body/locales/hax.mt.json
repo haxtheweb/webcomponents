@@ -122,5 +122,21 @@
   "recent": "Reċenti",
   "popular": "Popolari",
   "copiedToClipboard": "Ikkopjat fil-klipbord",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Informazzjoni dwar l-immaġni",
+  "imageActions": "Azzjonijiet tal-immaġni",
+  "imageRecommendations": "Rakkomandazzjonijiet għall-immaġni",
+  "compressImage": "Ikkompressa l-immaġni",
+  "resizeTo": "Ibdel id-daqs għal",
+  "created": "Maħluq",
+  "size": "Daqs",
+  "dimensions": "Dimensjonijiet",
+  "type": "Tip",
+  "done": "lest",
+  "noFileUuid": "Ir-referenza tal-fajl mhix disponibbli; erġa' tella' l-fajl biex tattiva l-azzjonijiet.",
+  "fileOpsUnavailable": "L-operazzjonijiet tal-fajls mhumiex disponibbli għal dan is-sit.",
+  "fileOpFailed": "L-operazzjoni tal-fajl falliet.",
+  "fileExtensionNotAllowed": "Dan il-qasam jaċċetta biss dawn it-tipi ta' fajls:",
+  "fileTypeNotAllowed": "Dan il-qasam jaċċetta biss dawn it-tipi ta' midja:",
+  "transformFailed": "It-trasformazzjoni wara t-tlugħ falliet; il-fajl oriġinali nżamm."
 }

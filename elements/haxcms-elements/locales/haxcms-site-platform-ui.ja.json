@@ -1,0 +1,18 @@
+{
+  "title": "プラットフォーム機能",
+  "experienceLevel": "経験レベル",
+  "cmsFeatures": "CMS 機能",
+  "editorFeatures": "エディター機能",
+  "blocks": "ブロック",
+  "filterBlocks": "ブロックを絞り込む",
+  "requiredTextNote": "一部のテキストタグは必須のため常に有効です（無効表示）。",
+  "download": "スケルトンをダウンロード",
+  "save": "保存",
+  "generating": "スケルトンを生成中…",
+  "generated": "スケルトンをダウンロードしました",
+  "enabled": "有効",
+  "feature": "機能",
+  "details": "詳細",
+  "featuresWarning": "これらのオプションを無効にすると、主要な作成・管理機能が使えなくなる場合があります。",
+  "largeSiteWarning": "このサイトには多数のページがあります。スケルトンの生成に時間がかかる場合があります。"
+}

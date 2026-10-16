@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Ystorfa GitHub",
   "anErrorOccurred": "Digwyddodd gwall",
-  "retry": "Ceisio eto"
+  "retry": "Ceisio eto",
+  "permissionRequired": "Angen caniatâd",
+  "passwordRequirements": "Gofynion cyfrinair",
+  "requirementLength": "O leiaf 8 nod",
+  "requirementUppercase": "Un briflythyren",
+  "requirementLowercase": "Un llythyren fach",
+  "requirementNumber": "Un rhif",
+  "requirementSymbol": "Un symbol"
 }

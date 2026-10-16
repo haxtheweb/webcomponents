@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub-repositorio",
   "anErrorOccurred": "Tapahtui virhe",
-  "retry": "Yritä uudelleen"
+  "retry": "Yritä uudelleen",
+  "permissionRequired": "Lupa vaaditaan",
+  "passwordRequirements": "Salasanan vaatimukset",
+  "requirementLength": "Vähintään 8 merkkiä",
+  "requirementUppercase": "Yksi iso kirjain",
+  "requirementLowercase": "Yksi pieni kirjain",
+  "requirementNumber": "Yksi numero",
+  "requirementSymbol": "Yksi erikoismerkki"
 }

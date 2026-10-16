@@ -1,0 +1,14 @@
+{
+  "title": "Blocos",
+  "enabled": "Ativado",
+  "block": "Bloco",
+  "preview": "Pré-visualização",
+  "filterBlocks": "Filtrar blocos",
+  "requiredTextNote": "Algumas tags de texto são obrigatórias e estão sempre ativadas (mostradas desativadas).",
+  "selectAll": "Selecionar tudo",
+  "deselectAll": "Desmarcar tudo",
+  "save": "Salvar",
+  "noDescription": "Nenhuma descrição disponível.",
+  "details": "Detalhes",
+  "loadingInventory": "Carregando inventário completo de blocos…"
+}

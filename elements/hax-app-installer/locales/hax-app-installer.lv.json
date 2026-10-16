@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub repozitorijs",
   "anErrorOccurred": "Radās kļūda",
-  "retry": "Mēģināt vēlreiz"
+  "retry": "Mēģināt vēlreiz",
+  "permissionRequired": "Nepieciešama atļauja",
+  "passwordRequirements": "Paroles prasības",
+  "requirementLength": "Vismaz 8 rakstzīmes",
+  "requirementUppercase": "Viens lielais burts",
+  "requirementLowercase": "Viens mazais burts",
+  "requirementNumber": "Viens cipars",
+  "requirementSymbol": "Viens simbols"
 }

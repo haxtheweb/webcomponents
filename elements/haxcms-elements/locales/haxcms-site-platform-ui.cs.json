@@ -1,0 +1,18 @@
+{
+  "title": "Funkce platformy",
+  "experienceLevel": "Úroveň zkušeností",
+  "cmsFeatures": "Funkce CMS",
+  "editorFeatures": "Funkce editoru",
+  "blocks": "Bloky",
+  "filterBlocks": "Filtrovat bloky",
+  "requiredTextNote": "Některé textové značky jsou povinné a vždy povolené (zobrazeny jako neaktivní).",
+  "download": "Stáhnout kostru",
+  "save": "Uložit",
+  "generating": "Generování kostry…",
+  "generated": "Kostra stažena",
+  "enabled": "Povoleno",
+  "feature": "Funkce",
+  "details": "Podrobnosti",
+  "featuresWarning": "Vypnutí těchto možností může odebrat důležité funkce pro tvorbu obsahu a správu.",
+  "largeSiteWarning": "Tento web má mnoho stránek. Generování kostry může chvíli trvat."
+}

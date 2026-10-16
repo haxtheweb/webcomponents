@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub သိုက်",
   "anErrorOccurred": "အမှားတစ်ခု ဖြစ်ပေါ်ခဲ့သည်",
-  "retry": "ပြန်လည်ကြိုးစားရန်"
+  "retry": "ပြန်လည်ကြိုးစားရန်",
+  "permissionRequired": "ခွင့်ပြုချက် လိုအပ်သည်",
+  "passwordRequirements": "စကားဝှက် လိုအပ်ချက်များ",
+  "requirementLength": "အနည်းဆုံး စာလုံး 8 လုံး",
+  "requirementUppercase": "စာလုံးကြီး တစ်လုံး",
+  "requirementLowercase": "စာလုံးသေး တစ်လုံး",
+  "requirementNumber": "ဂဏန်း တစ်လုံး",
+  "requirementSymbol": "သင်္ကေတ တစ်ခု"
 }

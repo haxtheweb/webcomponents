@@ -1,0 +1,18 @@
+{
+  "title": "Karatteristiċi tal-Pjattaforma",
+  "experienceLevel": "Livell ta' esperjenza",
+  "cmsFeatures": "Karatteristiċi tas-CMS",
+  "editorFeatures": "Karatteristiċi tal-editur",
+  "blocks": "Blokki",
+  "filterBlocks": "Iffiltra l-blokki",
+  "requiredTextNote": "Xi tikketti tat-test huma meħtieġa u dejjem attivati (murija bħala diżattivati).",
+  "download": "Niżżel l-iskeletru",
+  "save": "Issejvja",
+  "generating": "Qed jiġi ġġenerat l-iskeletru…",
+  "generated": "L-iskeletru tniżżel",
+  "enabled": "Attivat",
+  "feature": "Karatteristika",
+  "details": "Dettalji",
+  "featuresWarning": "Id-diżattivazzjoni ta' dawn l-għażliet tista' tneħħi kapaċitajiet ewlenin ta' kitba u amministrazzjoni.",
+  "largeSiteWarning": "Dan is-sit għandu ħafna paġni. Il-ġenerazzjoni tal-iskeletru tista' tieħu ftit ħin."
+}

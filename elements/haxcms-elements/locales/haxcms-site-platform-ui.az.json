@@ -1,0 +1,18 @@
+{
+  "title": "Platforma funksiyaları",
+  "experienceLevel": "Təcrübə səviyyəsi",
+  "cmsFeatures": "CMS funksiyaları",
+  "editorFeatures": "Redaktor funksiyaları",
+  "blocks": "Bloklar",
+  "filterBlocks": "Blokları filtrlə",
+  "requiredTextNote": "Bəzi mətn teqləri məcburidir və həmişə aktivdir (deaktiv kimi göstərilir).",
+  "download": "Skeleti endir",
+  "save": "Saxla",
+  "generating": "Skelet yaradılır…",
+  "generated": "Skelet endirildi",
+  "enabled": "Aktivdir",
+  "feature": "Funksiya",
+  "details": "Təfərrüatlar",
+  "featuresWarning": "Bu seçimləri deaktiv etmək əsas müəlliflik və idarəetmə imkanlarını ləğv edə bilər.",
+  "largeSiteWarning": "Bu saytda çoxlu səhifə var. Skeletin yaradılması bir qədər vaxt apara bilər."
+}

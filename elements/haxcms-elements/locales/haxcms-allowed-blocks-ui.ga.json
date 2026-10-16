@@ -1,0 +1,14 @@
+{
+  "title": "Bloic",
+  "enabled": "Cumasaithe",
+  "block": "Bloc",
+  "preview": "Réamhamharc",
+  "filterBlocks": "Scag bloic",
+  "requiredTextNote": "Tá roinnt clibeanna téacs riachtanach agus cumasaithe i gcónaí (taispeántar díchumasaithe iad).",
+  "selectAll": "Roghnaigh gach rud",
+  "deselectAll": "Díroghnaigh gach rud",
+  "save": "Sábháil",
+  "noDescription": "Níl cur síos ar fáil.",
+  "details": "Sonraí",
+  "loadingInventory": "Fardal iomlán na mbloc á luchtú…"
+}

@@ -122,5 +122,21 @@
   "recent": "Son",
   "popular": "Məşhur",
   "copiedToClipboard": "Clipboard-a kopyalandı",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Şəkil məlumatı",
+  "imageActions": "Şəkil əməliyyatları",
+  "imageRecommendations": "Şəkil tövsiyələri",
+  "compressImage": "Şəkli sıxışdır",
+  "resizeTo": "Ölçünü dəyiş:",
+  "created": "Yaradılıb",
+  "size": "Ölçü",
+  "dimensions": "Ölçülər",
+  "type": "Növ",
+  "done": "hazırdır",
+  "noFileUuid": "Fayl istinadı mövcud deyil; əməliyyatları aktivləşdirmək üçün yenidən yükləyin.",
+  "fileOpsUnavailable": "Bu sayt üçün fayl əməliyyatları mövcud deyil.",
+  "fileOpFailed": "Fayl əməliyyatı uğursuz oldu.",
+  "fileExtensionNotAllowed": "Bu sahə yalnız aşağıdakı fayl növlərini qəbul edir:",
+  "fileTypeNotAllowed": "Bu sahə yalnız aşağıdakı media növlərini qəbul edir:",
+  "transformFailed": "Yükləmədən sonrakı çevirmə uğursuz oldu; orijinal fayl saxlanıldı."
 }

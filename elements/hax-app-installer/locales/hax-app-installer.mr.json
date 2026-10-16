@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub रेपॉझिटरी",
   "anErrorOccurred": "त्रुटी आली",
-  "retry": "पुन्हा प्रयत्न करा"
+  "retry": "पुन्हा प्रयत्न करा",
+  "permissionRequired": "परवानगी आवश्यक",
+  "passwordRequirements": "पासवर्ड आवश्यकता",
+  "requirementLength": "किमान 8 वर्ण",
+  "requirementUppercase": "एक कॅपिटल अक्षर",
+  "requirementLowercase": "एक लहान अक्षर",
+  "requirementNumber": "एक अंक",
+  "requirementSymbol": "एक चिन्ह"
 }

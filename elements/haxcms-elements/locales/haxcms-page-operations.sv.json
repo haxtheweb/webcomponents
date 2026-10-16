@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Strukturåtgärder",
+  "editPage": "Redigera sida",
+  "addPage": "Lägg till undersida",
+  "moveUp": "Flytta upp",
+  "moveDown": "Flytta ner",
+  "indent": "Öka indrag",
+  "outdent": "Minska indrag",
+  "moveTo": "Flytta till...",
+  "siteOutline": "Öppna webbplatsens struktur",
+  "delete": "Ta bort sida",
+  "unlock": "Lås upp",
+  "lock": "Lås"
+}

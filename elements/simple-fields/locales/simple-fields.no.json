@@ -5,5 +5,9 @@
   "recordAudio": "Ta opp lyd",
   "recordScreen": "Ta opp skjerm",
   "cancel": "Avbryt",
-  "uploadMedia": "Last opp media"
+  "uploadMedia": "Last opp media",
+  "record": "Ta opp",
+  "pause": "Pause opptak",
+  "stopSave": "Stopp og lagre",
+  "clickToTakePhoto": "Klikk for å ta bilde"
 }

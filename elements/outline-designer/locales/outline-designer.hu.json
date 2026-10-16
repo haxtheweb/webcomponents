@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Cél kiválasztása",
+  "importContentUnderThisPage": "Tartalom importálása ez alá az oldal alá",
+  "importThisContent": "Tartalom importálása",
+  "thisPage": "ez az oldal",
+  "newPage": "Új oldal",
+  "copyOf": "Másolat:",
+  "pageActions": "Oldalműveletek",
+  "editTitle": "Cím szerkesztése",
+  "lock": "Zárolás",
+  "unlock": "Feloldás",
+  "moveUp": "Feljebb",
+  "moveDown": "Lejjebb",
+  "makeChild": "Aloldallá tétel",
+  "moveToParentLevel": "Áthelyezés a szülő szintre",
+  "addPage": "Oldal hozzáadása",
+  "duplicate": "Másolat készítése",
+  "delete": "Törlés",
+  "restore": "Visszaállítás",
+  "goToPage": "Ugrás az oldalra"
+}

@@ -5,5 +5,9 @@
   "recordAudio": "Nahrát zvuk",
   "recordScreen": "Nahrát obrazovku",
   "cancel": "Zrušit",
-  "uploadMedia": "Nahrát média"
+  "uploadMedia": "Nahrát média",
+  "record": "Nahrát",
+  "pause": "Pozastavit nahrávání",
+  "stopSave": "Zastavit a uložit",
+  "clickToTakePhoto": "Klikněte pro pořízení fotografie"
 }

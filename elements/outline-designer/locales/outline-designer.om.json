@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Bakka gahumsaa filadhu",
+  "importContentUnderThisPage": "Qabiyyee fuula kana jalatti galchi",
+  "importThisContent": "Qabiyyee kana galchi",
+  "thisPage": "fuula kana",
+  "newPage": "Fuula haaraa",
+  "copyOf": "Garagalcha",
+  "pageActions": "Gochaalee fuulaa",
+  "editTitle": "Mata-duree gulaali",
+  "lock": "Cufi",
+  "unlock": "Cufaa bani",
+  "moveUp": "Ol kaasi",
+  "moveDown": "Gad buusi",
+  "makeChild": "Fuula ilmaa godhi",
+  "moveToParentLevel": "Gara sadarkaa maatiitti socho'i",
+  "addPage": "Fuula dabali",
+  "duplicate": "Dachaasi",
+  "delete": "Haqi",
+  "restore": "Deebisi",
+  "goToPage": "Gara fuulaa deemi"
+}

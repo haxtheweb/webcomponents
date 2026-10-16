@@ -122,5 +122,21 @@
   "recent": "وروستي",
   "popular": "مشهور",
   "copiedToClipboard": "کلیپ بورډ ته کاپي شو",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "د انځور معلومات",
+  "imageActions": "د انځور کړنې",
+  "imageRecommendations": "د انځور سپارښتنې",
+  "compressImage": "انځور کمپریس کړئ",
+  "resizeTo": "اندازه بدل کړئ ته",
+  "created": "جوړ شوی",
+  "size": "اندازه",
+  "dimensions": "ابعاد",
+  "type": "ډول",
+  "done": "بشپړ شو",
+  "noFileUuid": "د فایل حواله شتون نه لري؛ د کړنو د فعالولو لپاره یې بیا پورته کړئ.",
+  "fileOpsUnavailable": "د دې سایټ لپاره د فایل عملیات شتون نه لري.",
+  "fileOpFailed": "د فایل عملیات ناکام شو.",
+  "fileExtensionNotAllowed": "دا ساحه یوازې لاندې فایل ډولونه مني:",
+  "fileTypeNotAllowed": "دا ساحه یوازې لاندې رسنیز ډولونه مني:",
+  "transformFailed": "له پورته کولو وروسته بدلون ناکام شو؛ اصلي فایل وساتل شو."
 }

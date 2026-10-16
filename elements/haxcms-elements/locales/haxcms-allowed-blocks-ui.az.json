@@ -1,0 +1,14 @@
+{
+  "title": "Bloklar",
+  "enabled": "Aktivdir",
+  "block": "Blok",
+  "preview": "Önizləmə",
+  "filterBlocks": "Blokları filtrlə",
+  "requiredTextNote": "Bəzi mətn teqləri məcburidir və həmişə aktivdir (deaktiv kimi göstərilir).",
+  "selectAll": "Hamısını seç",
+  "deselectAll": "Seçimi ləğv et",
+  "save": "Saxla",
+  "noDescription": "Təsvir mövcud deyil.",
+  "details": "Təfərrüatlar",
+  "loadingInventory": "Blokların tam siyahısı yüklənir…"
+}

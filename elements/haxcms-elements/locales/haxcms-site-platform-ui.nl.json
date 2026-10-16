@@ -1,0 +1,18 @@
+{
+  "title": "Platformfuncties",
+  "experienceLevel": "Ervaringsniveau",
+  "cmsFeatures": "CMS-functies",
+  "editorFeatures": "Editorfuncties",
+  "blocks": "Blokken",
+  "filterBlocks": "Blokken filteren",
+  "requiredTextNote": "Sommige teksttags zijn verplicht en altijd ingeschakeld (uitgeschakeld weergegeven).",
+  "download": "Skelet downloaden",
+  "save": "Opslaan",
+  "generating": "Skelet genereren…",
+  "generated": "Skelet gedownload",
+  "enabled": "Ingeschakeld",
+  "feature": "Functie",
+  "details": "Details",
+  "featuresWarning": "Het uitschakelen van deze opties kan belangrijke ontwerp- en beheermogelijkheden verwijderen.",
+  "largeSiteWarning": "Deze site heeft veel pagina's. Het genereren van het skelet kan even duren."
+}

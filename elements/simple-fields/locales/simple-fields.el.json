@@ -5,5 +5,9 @@
   "recordAudio": "Ηχογράφηση",
   "recordScreen": "Εγγραφή οθόνης",
   "cancel": "Ακύρωση",
-  "uploadMedia": "Ανέβασμα μέσων"
+  "uploadMedia": "Ανέβασμα μέσων",
+  "record": "Εγγραφή",
+  "pause": "Παύση εγγραφής",
+  "stopSave": "Διακοπή & αποθήκευση",
+  "clickToTakePhoto": "Κάντε κλικ για λήψη φωτογραφίας"
 }

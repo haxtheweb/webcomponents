@@ -1,0 +1,14 @@
+{
+  "title": "Iibhloko",
+  "enabled": "Yenziwe isebenze",
+  "block": "Ibhloko",
+  "preview": "Inkangeleko yangaphambili",
+  "filterBlocks": "Hluza iibhloko",
+  "requiredTextNote": "Ezinye iithegi zombhalo ziyafuneka kwaye zihlala zisebenza (ziboniswa zingasebenzi).",
+  "selectAll": "Khetha konke",
+  "deselectAll": "Susa ukhetho kuko konke",
+  "save": "Gcina",
+  "noDescription": "Akukho nkcazo ifumanekayo.",
+  "details": "Iinkcukacha",
+  "loadingInventory": "Kulayishwa uluhlu olupheleleyo lweebhloko…"
+}

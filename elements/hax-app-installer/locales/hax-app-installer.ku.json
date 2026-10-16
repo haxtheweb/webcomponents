@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Depoya GitHub",
   "anErrorOccurred": "Çewtiyek çêbû",
-  "retry": "Dîsa biceribîne"
+  "retry": "Dîsa biceribîne",
+  "permissionRequired": "Destûr pêwîst e",
+  "passwordRequirements": "Mercên şîfreyê",
+  "requirementLength": "Herî kêm 8 tîp",
+  "requirementUppercase": "Yek tîpa mezin",
+  "requirementLowercase": "Yek tîpa biçûk",
+  "requirementNumber": "Yek hejmar",
+  "requirementSymbol": "Yek nîşan"
 }

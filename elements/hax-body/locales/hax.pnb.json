@@ -122,5 +122,21 @@
   "recent": "حالیہ",
   "popular": "مقبول",
   "copiedToClipboard": "کلپ بورڈ 'تے کاپی ہو گیا",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "تصویر دی معلومات",
+  "imageActions": "تصویر دیاں کارروائیاں",
+  "imageRecommendations": "تصویر لئی سفارشاں",
+  "compressImage": "تصویر کمپریس کرو",
+  "resizeTo": "سائز بدلو",
+  "created": "بنائی گئی",
+  "size": "سائز",
+  "dimensions": "پیمائشاں",
+  "type": "قسم",
+  "done": "ہو گیا",
+  "noFileUuid": "فائل حوالہ دستیاب نہیں؛ کارروائیاں چالو کرن لئی فیر اپ لوڈ کرو۔",
+  "fileOpsUnavailable": "ایس سائٹ لئی فائل کارروائیاں دستیاب نہیں۔",
+  "fileOpFailed": "فائل کارروائی ناکام ہو گئی۔",
+  "fileExtensionNotAllowed": "ایہہ خانہ صرف ایہناں فائل قسماں نوں قبول کردا اے:",
+  "fileTypeNotAllowed": "ایہہ خانہ صرف ایہناں میڈیا قسماں نوں قبول کردا اے:",
+  "transformFailed": "اپ لوڈ توں بعد تبدیلی ناکام ہو گئی؛ اصل فائل رکھ لئی گئی۔"
 }

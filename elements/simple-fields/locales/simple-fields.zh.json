@@ -5,5 +5,9 @@
   "recordAudio": "录音",
   "recordScreen": "录屏",
   "cancel": "取消",
-  "uploadMedia": "上传媒体"
+  "uploadMedia": "上传媒体",
+  "record": "录制",
+  "pause": "暂停录制",
+  "stopSave": "停止并保存",
+  "clickToTakePhoto": "点击拍照"
 }

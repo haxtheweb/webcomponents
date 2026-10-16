@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Elekti celon",
+  "importContentUnderThisPage": "Importi enhavon sub ĉi tiun paĝon",
+  "importThisContent": "Importi ĉi tiun enhavon",
+  "thisPage": "ĉi tiu paĝo",
+  "newPage": "Nova paĝo",
+  "copyOf": "Kopio de",
+  "pageActions": "Paĝaj agoj",
+  "editTitle": "Redakti titolon",
+  "lock": "Ŝlosi",
+  "unlock": "Malŝlosi",
+  "moveUp": "Movi supren",
+  "moveDown": "Movi malsupren",
+  "makeChild": "Fari ida",
+  "moveToParentLevel": "Movi al gepatra nivelo",
+  "addPage": "Aldoni paĝon",
+  "duplicate": "Duobligi",
+  "delete": "Forigi",
+  "restore": "Restarigi",
+  "goToPage": "Iri al paĝo"
+}

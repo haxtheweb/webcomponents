@@ -1,0 +1,14 @@
+{
+  "title": "Bloki",
+  "enabled": "Iespējots",
+  "block": "Bloks",
+  "preview": "Priekšskatījums",
+  "filterBlocks": "Filtrēt blokus",
+  "requiredTextNote": "Daži teksta tagi ir obligāti un vienmēr iespējoti (parādīti kā atspējoti).",
+  "selectAll": "Atlasīt visu",
+  "deselectAll": "Noņemt visu atlasi",
+  "save": "Saglabāt",
+  "noDescription": "Apraksts nav pieejams.",
+  "details": "Detaļas",
+  "loadingInventory": "Ielādē pilnu bloku sarakstu…"
+}

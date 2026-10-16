@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Tuzilma amallari",
+  "editPage": "Sahifani tahrirlash",
+  "addPage": "Ichki sahifa qo‘shish",
+  "moveUp": "Yuqoriga ko‘chirish",
+  "moveDown": "Pastga ko‘chirish",
+  "indent": "Chekinish",
+  "outdent": "Chekinishni kamaytirish",
+  "moveTo": "Ko‘chirish...",
+  "siteOutline": "Sayt tuzilmasini ochish",
+  "delete": "Sahifani o‘chirish",
+  "unlock": "Qulfdan chiqarish",
+  "lock": "Qulflash"
+}

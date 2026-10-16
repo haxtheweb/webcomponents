@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub-repo",
   "anErrorOccurred": "Der is in flater bard",
-  "retry": "Op 'e nij probearje"
+  "retry": "Op 'e nij probearje",
+  "permissionRequired": "Tastimming fereaske",
+  "passwordRequirements": "Wachtwurdeasken",
+  "requirementLength": "Op syn minst 8 tekens",
+  "requirementUppercase": "Ien haadletter",
+  "requirementLowercase": "Ien lytse letter",
+  "requirementNumber": "Ien sifer",
+  "requirementSymbol": "Ien symboal"
 }

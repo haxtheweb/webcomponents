@@ -1,0 +1,21 @@
+{
+  "selectTarget": "اختر الهدف",
+  "importContentUnderThisPage": "استيراد المحتوى أسفل هذه الصفحة",
+  "importThisContent": "استيراد هذا المحتوى",
+  "thisPage": "هذه الصفحة",
+  "newPage": "صفحة جديدة",
+  "copyOf": "نسخة من",
+  "pageActions": "إجراءات الصفحة",
+  "editTitle": "تحرير العنوان",
+  "lock": "قفل",
+  "unlock": "إلغاء القفل",
+  "moveUp": "نقل لأعلى",
+  "moveDown": "نقل لأسفل",
+  "makeChild": "جعلها صفحة فرعية",
+  "moveToParentLevel": "نقل إلى المستوى الأصلي",
+  "addPage": "إضافة صفحة",
+  "duplicate": "تكرار",
+  "delete": "حذف",
+  "restore": "استعادة",
+  "goToPage": "الانتقال إلى الصفحة"
+}

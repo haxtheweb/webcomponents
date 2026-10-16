@@ -122,5 +122,21 @@
   "recent": "最近",
   "popular": "热门",
   "copiedToClipboard": "已复制到剪贴板",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "图片信息",
+  "imageActions": "图片操作",
+  "imageRecommendations": "图片建议",
+  "compressImage": "压缩图片",
+  "resizeTo": "调整大小到",
+  "created": "创建辰光",
+  "size": "大小",
+  "dimensions": "尺寸",
+  "type": "类型",
+  "done": "好了",
+  "noFileUuid": "文件引用用勿来；重新上传再好操作。",
+  "fileOpsUnavailable": "搿只网站用勿来文件操作。",
+  "fileOpFailed": "文件操作失败。",
+  "fileExtensionNotAllowed": "搿只字段只接受下头搿眼文件类型：",
+  "fileTypeNotAllowed": "搿只字段只接受下头搿眼媒体类型：",
+  "transformFailed": "上传以后个转换失败；原来个文件保留了。"
 }

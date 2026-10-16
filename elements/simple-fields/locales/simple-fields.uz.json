@@ -5,5 +5,9 @@
   "recordAudio": "Audio yozish",
   "recordScreen": "Ekranni yozish",
   "cancel": "Bekor qilish",
-  "uploadMedia": "Mediani yuklash"
+  "uploadMedia": "Mediani yuklash",
+  "record": "Yozib olish",
+  "pause": "Yozishni to‘xtatib turish",
+  "stopSave": "To‘xtatish va saqlash",
+  "clickToTakePhoto": "Surat olish uchun bosing"
 }

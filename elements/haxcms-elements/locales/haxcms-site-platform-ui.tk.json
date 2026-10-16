@@ -1,0 +1,18 @@
+{
+  "title": "Platformanyň aýratynlyklary",
+  "experienceLevel": "Tejribe derejesi",
+  "cmsFeatures": "CMS aýratynlyklary",
+  "editorFeatures": "Redaktoryň aýratynlyklary",
+  "blocks": "Bloklar",
+  "filterBlocks": "Bloklary süzmek",
+  "requiredTextNote": "Käbir tekst bellikleri hökmany we hemişe işjeň (öçürilen ýaly görkezilýär).",
+  "download": "Karkasy ýükläp almak",
+  "save": "Ýatda saklamak",
+  "generating": "Karkas döredilýär…",
+  "generated": "Karkas ýüklenip alyndy",
+  "enabled": "Işjeň",
+  "feature": "Aýratynlyk",
+  "details": "Jikme-jiklikler",
+  "featuresWarning": "Bu opsiýalary öçürmek esasy awtorlyk we dolandyryş mümkinçiliklerini aýryp biler.",
+  "largeSiteWarning": "Bu saýtda köp sahypa bar. Karkas döretmek biraz wagt alyp biler."
+}

@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Selecionar destino",
+  "importContentUnderThisPage": "Importar conteúdo abaixo desta página",
+  "importThisContent": "Importar este conteúdo",
+  "thisPage": "esta página",
+  "newPage": "Nova página",
+  "copyOf": "Cópia de",
+  "pageActions": "Ações da página",
+  "editTitle": "Editar título",
+  "lock": "Bloquear",
+  "unlock": "Desbloquear",
+  "moveUp": "Mover para cima",
+  "moveDown": "Mover para baixo",
+  "makeChild": "Tornar filha",
+  "moveToParentLevel": "Mover para o nível superior",
+  "addPage": "Adicionar página",
+  "duplicate": "Duplicar",
+  "delete": "Excluir",
+  "restore": "Restaurar",
+  "goToPage": "Ir para a página"
+}

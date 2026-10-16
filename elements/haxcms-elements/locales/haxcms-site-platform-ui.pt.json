@@ -1,0 +1,18 @@
+{
+  "title": "Recursos da plataforma",
+  "experienceLevel": "Nível de experiência",
+  "cmsFeatures": "Recursos do CMS",
+  "editorFeatures": "Recursos do editor",
+  "blocks": "Blocos",
+  "filterBlocks": "Filtrar blocos",
+  "requiredTextNote": "Algumas tags de texto são obrigatórias e estão sempre ativadas (mostradas desativadas).",
+  "download": "Baixar esqueleto",
+  "save": "Salvar",
+  "generating": "Gerando esqueleto…",
+  "generated": "Esqueleto baixado",
+  "enabled": "Ativado",
+  "feature": "Recurso",
+  "details": "Detalhes",
+  "featuresWarning": "Desativar estas opções pode remover recursos importantes de criação e administração.",
+  "largeSiteWarning": "Este site tem muitas páginas. A geração do esqueleto pode demorar um pouco."
+}

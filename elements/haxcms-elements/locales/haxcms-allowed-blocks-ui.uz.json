@@ -1,0 +1,14 @@
+{
+  "title": "Bloklar",
+  "enabled": "Yoqilgan",
+  "block": "Blok",
+  "preview": "Oldindan ko‘rish",
+  "filterBlocks": "Bloklarni filtrlash",
+  "requiredTextNote": "Ba’zi matn teglari majburiy va doim yoqilgan (nofaol holda ko‘rsatilgan).",
+  "selectAll": "Hammasini tanlash",
+  "deselectAll": "Hammasini bekor qilish",
+  "save": "Saqlash",
+  "noDescription": "Tavsif mavjud emas.",
+  "details": "Tafsilotlar",
+  "loadingInventory": "Bloklarning to‘liq ro‘yxati yuklanmoqda…"
+}

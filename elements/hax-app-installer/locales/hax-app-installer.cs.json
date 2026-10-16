@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Repozitář GitHub",
   "anErrorOccurred": "Došlo k chybě",
-  "retry": "Zkusit znovu"
+  "retry": "Zkusit znovu",
+  "permissionRequired": "Vyžadováno oprávnění",
+  "passwordRequirements": "Požadavky na heslo",
+  "requirementLength": "Alespoň 8 znaků",
+  "requirementUppercase": "Jedno velké písmeno",
+  "requirementLowercase": "Jedno malé písmeno",
+  "requirementNumber": "Jedna číslice",
+  "requirementSymbol": "Jeden symbol"
 }

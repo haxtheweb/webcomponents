@@ -1,0 +1,9 @@
+{
+  "title": "编辑器设置",
+  "experienceLevel": "经验水平",
+  "experienceLevelDescription": "选择编辑器体验并预览工具栏布局。",
+  "buttons": "按钮",
+  "futureButtonConfiguration": "自定义编辑器按钮配置即将推出。",
+  "save": "保存",
+  "saving": "正在保存…"
+}

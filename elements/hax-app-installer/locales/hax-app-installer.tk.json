@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub Repositoriýasy",
   "anErrorOccurred": "Säwlik ýüze çykdy",
-  "retry": "Täzeden synanyş"
+  "retry": "Täzeden synanyş",
+  "permissionRequired": "Rugsat gerek",
+  "passwordRequirements": "Açar sözüne talaplar",
+  "requirementLength": "Azyndan 8 nyşan",
+  "requirementUppercase": "Bir baş harp",
+  "requirementLowercase": "Bir setir harpy",
+  "requirementNumber": "Bir san",
+  "requirementSymbol": "Bir nyşan"
 }

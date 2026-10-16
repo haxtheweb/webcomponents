@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub агуулах",
   "anErrorOccurred": "Алдаа гарлаа",
-  "retry": "Дахин оролдох"
+  "retry": "Дахин оролдох",
+  "permissionRequired": "Зөвшөөрөл шаардлагатай",
+  "passwordRequirements": "Нууц үгийн шаардлага",
+  "requirementLength": "Хамгийн багадаа 8 тэмдэгт",
+  "requirementUppercase": "Нэг том үсэг",
+  "requirementLowercase": "Нэг жижиг үсэг",
+  "requirementNumber": "Нэг тоо",
+  "requirementSymbol": "Нэг тэмдэг"
 }

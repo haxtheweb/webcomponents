@@ -122,5 +122,21 @@
   "recent": "Pyahúva",
   "popular": "Ojehayhuva",
   "copiedToClipboard": "Monguatia'apo kuatiahai rendápe",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Ta'ãnga marandu",
+  "imageActions": "Ta'ãnga rembiapo",
+  "imageRecommendations": "Ta'ãnga rehegua ñe'ẽporã",
+  "compressImage": "Mbohete'i ta'ãnga",
+  "resizeTo": "Moambue tuichakue:",
+  "created": "Ojejapóma",
+  "size": "Tuichakue",
+  "dimensions": "Ijyvatekue ha ipekue",
+  "type": "Peteĩchagua",
+  "done": "oĩma",
+  "noFileUuid": "Marandurenda jehechauka ndaipóri; ehupi jey eipuru hag̃ua tembiapo.",
+  "fileOpsUnavailable": "Marandurenda rembiapo ndaipóri ko tendápe g̃uarã.",
+  "fileOpFailed": "Marandurenda rembiapo ndoikói.",
+  "fileExtensionNotAllowed": "Ko kora omoneĩ marandurenda ko'ã mba'ichagua añónte:",
+  "fileTypeNotAllowed": "Ko kora omoneĩ mba'erecharã ko'ã mba'ichagua añónte:",
+  "transformFailed": "Ñemoambue ñehupi rire ndoikói; marandurenda ypykue oñeñongatu."
 }

@@ -1,0 +1,18 @@
+{
+  "title": "תכונות הפלטפורמה",
+  "experienceLevel": "רמת ניסיון",
+  "cmsFeatures": "תכונות CMS",
+  "editorFeatures": "תכונות העורך",
+  "blocks": "רכיבים",
+  "filterBlocks": "סינון רכיבים",
+  "requiredTextNote": "חלק מתגי הטקסט נדרשים ותמיד מופעלים (מוצגים כמושבתים).",
+  "download": "הורדת שלד",
+  "save": "שמירה",
+  "generating": "יוצר שלד…",
+  "generated": "השלד הורד",
+  "enabled": "מופעל",
+  "feature": "תכונה",
+  "details": "פרטים",
+  "featuresWarning": "השבתת אפשרויות אלה עלולה להסיר יכולות מרכזיות של כתיבה וניהול.",
+  "largeSiteWarning": "באתר זה דפים רבים. יצירת השלד עשויה להימשך זמן מה."
+}

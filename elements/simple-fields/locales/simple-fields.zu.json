@@ -5,5 +5,9 @@
   "recordAudio": "Qopha umsindo",
   "recordScreen": "Qopha isikrini",
   "cancel": "Khansela",
-  "uploadMedia": "Layisha imidiya"
+  "uploadMedia": "Layisha imidiya",
+  "record": "Qopha",
+  "pause": "Misa ukuqopha",
+  "stopSave": "Misa futhi ulondoloze",
+  "clickToTakePhoto": "Chofoza ukuze uthathe isithombe"
 }

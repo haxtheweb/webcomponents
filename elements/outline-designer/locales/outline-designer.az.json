@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Hədəfi seçin",
+  "importContentUnderThisPage": "Məzmunu bu səhifənin altına idxal et",
+  "importThisContent": "Bu məzmunu idxal et",
+  "thisPage": "bu səhifə",
+  "newPage": "Yeni səhifə",
+  "copyOf": "Surəti:",
+  "pageActions": "Səhifə əməliyyatları",
+  "editTitle": "Başlığı redaktə et",
+  "lock": "Kilidlə",
+  "unlock": "Kilidi aç",
+  "moveUp": "Yuxarı köçür",
+  "moveDown": "Aşağı köçür",
+  "makeChild": "Alt səhifə et",
+  "moveToParentLevel": "Ana səviyyəyə köçür",
+  "addPage": "Səhifə əlavə et",
+  "duplicate": "Dublikat yarat",
+  "delete": "Sil",
+  "restore": "Bərpa et",
+  "goToPage": "Səhifəyə keç"
+}

@@ -5,5 +5,9 @@
   "recordAudio": "Rekodi sauti",
   "recordScreen": "Rekodi skrini",
   "cancel": "Ghairi",
-  "uploadMedia": "Pakia media"
+  "uploadMedia": "Pakia media",
+  "record": "Rekodi",
+  "pause": "Sitisha kurekodi",
+  "stopSave": "Simamisha na uhifadhi",
+  "clickToTakePhoto": "Bofya ili kupiga picha"
 }

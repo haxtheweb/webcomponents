@@ -5,5 +5,9 @@
   "recordAudio": "Lemba mawu",
   "recordScreen": "Lemba skrini",
   "cancel": "Chotsani",
-  "uploadMedia": "Kweza media"
+  "uploadMedia": "Kweza media",
+  "record": "Jambulani",
+  "pause": "Imitsani kujambula kaye",
+  "stopSave": "Imitsani ndi kusunga",
+  "clickToTakePhoto": "Dinani kuti mujambule chithunzi"
 }

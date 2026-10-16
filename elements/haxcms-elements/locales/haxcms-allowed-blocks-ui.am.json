@@ -1,0 +1,14 @@
+{
+  "title": "ብሎኮች",
+  "enabled": "ነቅቷል",
+  "block": "ብሎክ",
+  "preview": "ቅድመ እይታ",
+  "filterBlocks": "ብሎኮችን አጣራ",
+  "requiredTextNote": "አንዳንድ የጽሑፍ መለያዎች አስፈላጊ ናቸው እና ሁልጊዜ ነቅተዋል (ተሰናክለው ይታያሉ)።",
+  "selectAll": "ሁሉንም ምረጥ",
+  "deselectAll": "ሁሉንም አትምረጥ",
+  "save": "አስቀምጥ",
+  "noDescription": "ምንም መግለጫ የለም።",
+  "details": "ዝርዝሮች",
+  "loadingInventory": "ሙሉ የብሎክ ዝርዝር በመጫን ላይ…"
+}

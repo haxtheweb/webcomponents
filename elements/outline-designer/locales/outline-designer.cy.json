@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Dewiswch darged",
+  "importContentUnderThisPage": "Mewnforio cynnwys o dan y dudalen hon",
+  "importThisContent": "Mewnforio'r cynnwys hwn",
+  "thisPage": "y dudalen hon",
+  "newPage": "Tudalen newydd",
+  "copyOf": "Copi o",
+  "pageActions": "Gweithredoedd tudalen",
+  "editTitle": "Golygu'r teitl",
+  "lock": "Cloi",
+  "unlock": "Datgloi",
+  "moveUp": "Symud i fyny",
+  "moveDown": "Symud i lawr",
+  "makeChild": "Gwneud yn is-dudalen",
+  "moveToParentLevel": "Symud i'r lefel uwch",
+  "addPage": "Ychwanegu tudalen",
+  "duplicate": "Dyblygu",
+  "delete": "Dileu",
+  "restore": "Adfer",
+  "goToPage": "Mynd i'r dudalen"
+}

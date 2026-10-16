@@ -122,5 +122,21 @@
   "recent": "Gần đây",
   "popular": "Phổ biến",
   "copiedToClipboard": "Đã sao chép vào khay nhớ tạm",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Thông tin hình ảnh",
+  "imageActions": "Thao tác với hình ảnh",
+  "imageRecommendations": "Đề xuất cho hình ảnh",
+  "compressImage": "Nén hình ảnh",
+  "resizeTo": "Đổi kích thước thành",
+  "created": "Ngày tạo",
+  "size": "Dung lượng",
+  "dimensions": "Kích thước",
+  "type": "Loại",
+  "done": "xong",
+  "noFileUuid": "Không có tham chiếu tệp; hãy tải lên lại để bật các thao tác.",
+  "fileOpsUnavailable": "Thao tác với tệp không khả dụng cho trang web này.",
+  "fileOpFailed": "Thao tác với tệp thất bại.",
+  "fileExtensionNotAllowed": "Trường này chỉ chấp nhận các loại tệp sau:",
+  "fileTypeNotAllowed": "Trường này chỉ chấp nhận các loại phương tiện sau:",
+  "transformFailed": "Chuyển đổi sau khi tải lên thất bại; tệp gốc đã được giữ lại."
 }

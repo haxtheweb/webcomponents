@@ -122,5 +122,21 @@
   "recent": "Viimeisimmät",
   "popular": "Suosittu",
   "copiedToClipboard": "Kopioitu leikepöydälle",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Kuvan tiedot",
+  "imageActions": "Kuvan toiminnot",
+  "imageRecommendations": "Kuvasuositukset",
+  "compressImage": "Pakkaa kuva",
+  "resizeTo": "Muuta kokoon",
+  "created": "Luotu",
+  "size": "Koko",
+  "dimensions": "Mitat",
+  "type": "Tyyppi",
+  "done": "valmis",
+  "noFileUuid": "Tiedostoviite ei ole käytettävissä; lataa tiedosto uudelleen toimintojen käyttämiseksi.",
+  "fileOpsUnavailable": "Tiedostotoiminnot eivät ole käytettävissä tällä sivustolla.",
+  "fileOpFailed": "Tiedostotoiminto epäonnistui.",
+  "fileExtensionNotAllowed": "Tämä kenttä hyväksyy vain seuraavat tiedostotyypit:",
+  "fileTypeNotAllowed": "Tämä kenttä hyväksyy vain seuraavat mediatyypit:",
+  "transformFailed": "Latauksen jälkeinen muunnos epäonnistui; alkuperäinen tiedosto säilytettiin."
 }

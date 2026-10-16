@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Rakenteen toiminnot",
+  "editPage": "Muokkaa sivua",
+  "addPage": "Lisää alasivu",
+  "moveUp": "Siirrä ylös",
+  "moveDown": "Siirrä alas",
+  "indent": "Sisennä",
+  "outdent": "Poista sisennys",
+  "moveTo": "Siirrä kohteeseen...",
+  "siteOutline": "Avaa sivuston rakenne",
+  "delete": "Poista sivu",
+  "unlock": "Avaa lukitus",
+  "lock": "Lukitse"
+}

@@ -122,5 +122,21 @@
   "recent": "Hou",
   "popular": "Kaulana",
   "copiedToClipboard": "Ua kope ʻia i ka papa kuhikuhi",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "ʻIke kiʻi",
+  "imageActions": "Nā hana kiʻi",
+  "imageRecommendations": "Nā ʻōlelo paipai kiʻi",
+  "compressImage": "Hoʻoemi i ke kiʻi",
+  "resizeTo": "Hoʻololi i ka nui i",
+  "created": "Ua hana ʻia",
+  "size": "Nui",
+  "dimensions": "Nā ana",
+  "type": "ʻAno",
+  "done": "pau",
+  "noFileUuid": "ʻAʻole loaʻa ke kuhikuhi faila; e hoʻouka hou e hoʻā ai i nā hana.",
+  "fileOpsUnavailable": "ʻAʻole loaʻa nā hana faila no kēia pūnaewele.",
+  "fileOpFailed": "Ua hāʻule ka hana faila.",
+  "fileExtensionNotAllowed": "Ke ʻae nei kēia kahua i kēia mau ʻano faila wale nō:",
+  "fileTypeNotAllowed": "Ke ʻae nei kēia kahua i kēia mau ʻano media wale nō:",
+  "transformFailed": "Ua hāʻule ka hoʻololi ma hope o ka hoʻouka ʻana; ua mālama ʻia ka faila kumu."
 }

@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Репозиторій GitHub",
   "anErrorOccurred": "Сталася помилка",
-  "retry": "Спробувати знову"
+  "retry": "Спробувати знову",
+  "permissionRequired": "Потрібен дозвіл",
+  "passwordRequirements": "Вимоги до пароля",
+  "requirementLength": "Щонайменше 8 символів",
+  "requirementUppercase": "Одна велика літера",
+  "requirementLowercase": "Одна мала літера",
+  "requirementNumber": "Одна цифра",
+  "requirementSymbol": "Один спеціальний символ"
 }

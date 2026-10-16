@@ -5,5 +5,9 @@
   "recordAudio": "آڈیو ریکارڈ کرو",
   "recordScreen": "سکرین ریکارڈ کرو",
   "cancel": "منسوخ کرو",
-  "uploadMedia": "میڈیا اپلوڈ کرو"
+  "uploadMedia": "میڈیا اپلوڈ کرو",
+  "record": "ریکارڈ کرو",
+  "pause": "ریکارڈنگ روکو",
+  "stopSave": "بند کرو تے محفوظ کرو",
+  "clickToTakePhoto": "تصویر لین لئی کلک کرو"
 }

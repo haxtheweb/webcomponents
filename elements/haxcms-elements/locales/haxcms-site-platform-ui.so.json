@@ -1,0 +1,18 @@
+{
+  "title": "Astaamaha madasha",
+  "experienceLevel": "Heerka khibradda",
+  "cmsFeatures": "Astaamaha CMS",
+  "editorFeatures": "Astaamaha tifaftiraha",
+  "blocks": "Blokyada",
+  "filterBlocks": "Sifee blokyada",
+  "requiredTextNote": "Calaamadaha qoraalka qaarkood waa lagama maarmaan waxayna had iyo jeer shidan yihiin (waxay u muuqdaan kuwo naafo ah).",
+  "download": "Soo dejiso qaab-dhismeedka",
+  "save": "Kaydi",
+  "generating": "Qaab-dhismeedka waa la abuurayaa…",
+  "generated": "Qaab-dhismeedka waa la soo dejiyay",
+  "enabled": "Shidan",
+  "feature": "Astaan",
+  "details": "Faahfaahin",
+  "featuresWarning": "Damintan doorashooyinkan waxay meesha ka saari kartaa awoodaha muhiimka ah ee qorista iyo maamulka.",
+  "largeSiteWarning": "Goobtan waxay leedahay bogag badan. Abuurista qaab-dhismeedka waxay qaadan kartaa waqti."
+}

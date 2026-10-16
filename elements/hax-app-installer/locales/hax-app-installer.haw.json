@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Waihona GitHub",
   "anErrorOccurred": "Ua hana ʻia kahi hewa",
-  "retry": "Hoʻāʻo hou"
+  "retry": "Hoʻāʻo hou",
+  "permissionRequired": "Pono ka ʻae",
+  "passwordRequirements": "Nā koi o ka ʻōlelo huna",
+  "requirementLength": "Ma ka liʻiliʻi he 8 hua",
+  "requirementUppercase": "Hoʻokahi hua nui",
+  "requirementLowercase": "Hoʻokahi hua liʻiliʻi",
+  "requirementNumber": "Hoʻokahi helu",
+  "requirementSymbol": "Hoʻokahi hōʻailona"
 }

@@ -1,0 +1,14 @@
+{
+  "title": "Mga Block",
+  "enabled": "Naka-enable",
+  "block": "Block",
+  "preview": "Preview",
+  "filterBlocks": "I-filter ang mga block",
+  "requiredTextNote": "Ang ilang text tag ay kinakailangan at laging naka-enable (ipinapakitang naka-disable).",
+  "selectAll": "Piliin lahat",
+  "deselectAll": "Alisin ang pagpili sa lahat",
+  "save": "I-save",
+  "noDescription": "Walang available na paglalarawan.",
+  "details": "Mga Detalye",
+  "loadingInventory": "Nilo-load ang buong listahan ng block…"
+}

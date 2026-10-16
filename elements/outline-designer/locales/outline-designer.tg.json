@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Ҳадафро интихоб кунед",
+  "importContentUnderThisPage": "Воридоти мундариҷа зери ин саҳифа",
+  "importThisContent": "Воридоти ин мундариҷа",
+  "thisPage": "ин саҳифа",
+  "newPage": "Саҳифаи нав",
+  "copyOf": "Нусхаи",
+  "pageActions": "Амалҳои саҳифа",
+  "editTitle": "Таҳрири сарлавҳа",
+  "lock": "Қулф кардан",
+  "unlock": "Кушодани қулф",
+  "moveUp": "Ба боло",
+  "moveDown": "Ба поён",
+  "makeChild": "Зерсаҳифа кардан",
+  "moveToParentLevel": "Ба сатҳи волидайн кӯчонидан",
+  "addPage": "Илова кардани саҳифа",
+  "duplicate": "Нусхабардорӣ",
+  "delete": "Нест кардан",
+  "restore": "Барқарор кардан",
+  "goToPage": "Гузаштан ба саҳифа"
+}

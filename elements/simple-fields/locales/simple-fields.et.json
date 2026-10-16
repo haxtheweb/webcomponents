@@ -5,5 +5,9 @@
   "recordAudio": "Salvesta heli",
   "recordScreen": "Salvesta ekraan",
   "cancel": "Tühista",
-  "uploadMedia": "Laadi meedia üles"
+  "uploadMedia": "Laadi meedia üles",
+  "record": "Salvesta",
+  "pause": "Peata salvestamine",
+  "stopSave": "Lõpeta ja salvesta",
+  "clickToTakePhoto": "Klõpsa pildistamiseks"
 }

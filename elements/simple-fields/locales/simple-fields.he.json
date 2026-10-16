@@ -5,5 +5,9 @@
   "recordAudio": "הקלט שמע",
   "recordScreen": "הקלט מסך",
   "cancel": "ביטול",
-  "uploadMedia": "העלה מדיה"
+  "uploadMedia": "העלה מדיה",
+  "record": "הקלטה",
+  "pause": "השהיית הקלטה",
+  "stopSave": "עצירה ושמירה",
+  "clickToTakePhoto": "לחצו כדי לצלם תמונה"
 }

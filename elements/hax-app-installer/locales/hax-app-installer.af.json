@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub-bewaarplek",
   "anErrorOccurred": "'n Fout het voorgekom",
-  "retry": "Probeer weer"
+  "retry": "Probeer weer",
+  "permissionRequired": "Toestemming vereis",
+  "passwordRequirements": "Wagwoordvereistes",
+  "requirementLength": "Minstens 8 karakters",
+  "requirementUppercase": "Een hoofletter",
+  "requirementLowercase": "Een kleinletter",
+  "requirementNumber": "Een syfer",
+  "requirementSymbol": "Een simbool"
 }

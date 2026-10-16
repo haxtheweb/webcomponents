@@ -122,5 +122,21 @@
   "recent": "Nesenie",
   "popular": "Populāri",
   "copiedToClipboard": "Kopēts starpliktuvē",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Attēla informācija",
+  "imageActions": "Attēla darbības",
+  "imageRecommendations": "Attēla ieteikumi",
+  "compressImage": "Saspiest attēlu",
+  "resizeTo": "Mainīt izmēru uz",
+  "created": "Izveidots",
+  "size": "Izmērs",
+  "dimensions": "Dimensijas",
+  "type": "Tips",
+  "done": "gatavs",
+  "noFileUuid": "Faila atsauce nav pieejama; augšupielādējiet atkārtoti, lai iespējotu darbības.",
+  "fileOpsUnavailable": "Failu darbības šai vietnei nav pieejamas.",
+  "fileOpFailed": "Faila darbība neizdevās.",
+  "fileExtensionNotAllowed": "Šis lauks pieņem tikai šādus failu tipus:",
+  "fileTypeNotAllowed": "Šis lauks pieņem tikai šādus multivides tipus:",
+  "transformFailed": "Pēcaugšupielādes pārveide neizdevās; sākotnējais fails tika saglabāts."
 }

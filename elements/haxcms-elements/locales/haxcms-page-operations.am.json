@@ -1,0 +1,14 @@
+{
+  "outlineActions": "የዝርዝር ማውጫ እርምጃዎች",
+  "editPage": "ገጽ አርትዕ",
+  "addPage": "ንዑስ ገጽ አክል",
+  "moveUp": "ወደ ላይ አንቀሳቅስ",
+  "moveDown": "ወደ ታች አንቀሳቅስ",
+  "indent": "ወደ ውስጥ አስገባ",
+  "outdent": "ወደ ውጭ አውጣ",
+  "moveTo": "አንቀሳቅስ ወደ...",
+  "siteOutline": "የጣቢያ ዝርዝር ማውጫ ክፈት",
+  "delete": "ገጽ ሰርዝ",
+  "unlock": "ክፈት",
+  "lock": "ቆልፍ"
+}

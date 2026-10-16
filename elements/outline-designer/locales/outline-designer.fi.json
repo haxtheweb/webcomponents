@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Valitse kohde",
+  "importContentUnderThisPage": "Tuo sisältö tämän sivun alle",
+  "importThisContent": "Tuo tämä sisältö",
+  "thisPage": "tämä sivu",
+  "newPage": "Uusi sivu",
+  "copyOf": "Kopio:",
+  "pageActions": "Sivun toiminnot",
+  "editTitle": "Muokkaa otsikkoa",
+  "lock": "Lukitse",
+  "unlock": "Avaa lukitus",
+  "moveUp": "Siirrä ylös",
+  "moveDown": "Siirrä alas",
+  "makeChild": "Tee alasivuksi",
+  "moveToParentLevel": "Siirrä ylemmälle tasolle",
+  "addPage": "Lisää sivu",
+  "duplicate": "Monista",
+  "delete": "Poista",
+  "restore": "Palauta",
+  "goToPage": "Siirry sivulle"
+}

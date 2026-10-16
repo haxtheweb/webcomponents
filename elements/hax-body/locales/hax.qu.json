@@ -122,5 +122,21 @@
   "recent": "Qayllaman",
   "popular": "Riqsisqa",
   "copiedToClipboard": "Clipboardman kikinchasqa",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Rikchaypa willakuynin",
+  "imageActions": "Rikchaypa ruranankuna",
+  "imageRecommendations": "Rikchaypaq yuyaychaykuna",
+  "compressImage": "Rikchayta huch'uyyachiy",
+  "resizeTo": "Sayayninta tikray:",
+  "created": "Ruwasqa",
+  "size": "Sayay",
+  "dimensions": "Tupukuna",
+  "type": "Laya",
+  "done": "tukusqa",
+  "noFileUuid": "Archivopa willakuynin mana kanchu; ruranakunata atinapaq hukmanta wichachiy.",
+  "fileOpsUnavailable": "Kay sitiopaq archivo ruranakunaqa mana kanchu.",
+  "fileOpFailed": "Archivo ruranaqa pantarqan.",
+  "fileExtensionNotAllowed": "Kay campoqa kay archivo layakunallatam chaskin:",
+  "fileTypeNotAllowed": "Kay campoqa kay medio layakunallatam chaskin:",
+  "transformFailed": "Wichachisqa qhipa tikrayqa pantarqan; ñawpaq archivoqa waqaychasqa karqan."
 }
