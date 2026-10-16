@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 
 import "../a11y-media-player.js";
 import { installOfflineYouTubeStubs, FakeYTPlayer } from "./offline-stubs.js";
@@ -68,7 +68,13 @@ describe("a11y-media-player offline youtube stubbing", () => {
       html`<a11y-media-player youtube-id="abc123"></a11y-media-player>`,
     );
     await el.updateComplete;
-    await sleep(100);
+    // the youtube child only renders on the player's second update; wait for
+    // its player instead of a fixed sleep that flakes under load
+    await waitUntil(
+      () => el.youtube && el.youtube.__yt,
+      "youtube child player never initialized",
+      { interval: 20, timeout: 5000 },
+    );
     const yt = el.youtube;
     expect(yt).to.exist;
     expect(yt.tagName.toLowerCase()).to.equal("a11y-media-youtube");
@@ -84,7 +90,11 @@ describe("a11y-media-player offline youtube stubbing", () => {
       html`<a11y-media-player youtube-id="abc123"></a11y-media-player>`,
     );
     await el.updateComplete;
-    await sleep(100);
+    await waitUntil(
+      () => el.youtube && el.youtube.__yt,
+      "youtube child player never initialized",
+      { interval: 20, timeout: 5000 },
+    );
     const before = el.youtube.__yt;
     el.height = "50%";
     el.width = "50%";
@@ -243,7 +253,11 @@ describe("a11y-media-player calculated getters", () => {
     await video.updateComplete;
     yt = await fixture(html`<a11y-media-player youtube-id="abc123"></a11y-media-player>`);
     await yt.updateComplete;
-    await sleep(100);
+    await waitUntil(
+      () => yt.youtube && yt.youtube.__yt,
+      "youtube child player never initialized",
+      { interval: 20, timeout: 5000 },
+    );
   });
 
   it("anchor exposes target and params", () => {
