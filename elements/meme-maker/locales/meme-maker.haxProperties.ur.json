@@ -1,38 +1,37 @@
 {
   "gizmo": {
     "title": "میم",
-    "description": "تصویر سے میم بنائیں"
+    "description": "کسی تصویر سے میم بنائیں۔"
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "ماخذ",
-        "description": "آپ جس عنصر کا حوالہ دے رہے ہیں اس کا ماخذ URL"
+        "description": "میم تصویر کا ماخذ URL۔"
       },
       {
-        "title": "اوپر کا متن",
-        "description": "میم کا اوپر کا متن"
+        "property": "topText",
+        "title": "اوپری متن",
+        "description": "میم کا اوپری متن۔"
       },
       {
-        "title": "نیچے کا متن",
-        "description": "میم کا نیچے کا متن"
+        "property": "bottomText",
+        "title": "نچلا متن",
+        "description": "میم کا نچلا متن۔"
       },
       {
+        "property": "alt",
         "title": "متبادل متن",
-        "description": "نابینا صارفین کے لیے تصویر کی تشریح کرنے والا متن"
-      }
-    ],
-    "advanced": [
-      {
-        "description": "تصویر کی تشریح کرنے والے عناصر کے لیے اسپیس سے الگ کی گئی آئی ڈیز کی فہرست"
+        "description": "نابینا صارفین کے لیے تصویر کی وضاحت کرنے والا متن۔"
       }
     ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "بلی چھوٹے کھلونے کا پیچھا کر رہی ہے",
-        "topText": "میں آپ کے لیے لایا ہوں",
+        "alt": "بلی ایک چھوٹے کھلونے کی گھات میں",
+        "topText": "میں تمہارے لیے لایا ہوں",
         "bottomText": "موت"
       }
     }

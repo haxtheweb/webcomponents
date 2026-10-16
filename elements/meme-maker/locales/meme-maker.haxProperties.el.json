@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Δημιουργήστε ένα meme από μια εικόνα."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Πηγή",
+        "description": "URL πηγής για την εικόνα του meme."
+      },
+      {
+        "property": "topText",
+        "title": "Επάνω κείμενο",
+        "description": "Το επάνω κείμενο του meme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Κάτω κείμενο",
+        "description": "Το κάτω κείμενο του meme."
+      },
+      {
+        "property": "alt",
+        "title": "Εναλλακτικό κείμενο",
+        "description": "Κείμενο που περιγράφει την εικόνα σε χρήστες με προβλήματα όρασης."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Γάτα που παραμονεύει ένα μικρό παιχνίδι",
+        "topText": "Σας φέρνω",
+        "bottomText": "τον θάνατο"
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Bëj një meme nga një imazh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Burimi",
+        "description": "URL e burimit për imazhin e meme-s."
+      },
+      {
+        "property": "topText",
+        "title": "Teksti i sipërm",
+        "description": "Teksti i sipërm i meme-s."
+      },
+      {
+        "property": "bottomText",
+        "title": "Teksti i poshtëm",
+        "description": "Teksti i poshtëm i meme-s."
+      },
+      {
+        "property": "alt",
+        "title": "Teksti alternativ",
+        "description": "Tekst që përshkruan imazhin për përdoruesit që nuk shohin."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Mace që gjuan një lodër të vogël",
+        "topText": "Ju sjell",
+        "bottomText": "vdekjen"
+      }
+    }
+  ]
+}

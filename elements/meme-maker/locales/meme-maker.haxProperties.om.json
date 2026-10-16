@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Miim",
+    "description": "Suuraa irraa miim hojjedhu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Madda",
+        "description": "URL madda suuraa miimii."
+      },
+      {
+        "property": "topText",
+        "title": "Barreeffama olii",
+        "description": "Barreeffama gubbaa miimii."
+      },
+      {
+        "property": "bottomText",
+        "title": "Barreeffama gadii",
+        "description": "Barreeffama jalaa miimii."
+      },
+      {
+        "property": "alt",
+        "title": "Barreeffama bakka bu'aa",
+        "description": "Fayyadamtoota hin argineef suuraa ibsuuf barreeffama."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Adurree meeshaa taphaa xiqqaa riphxee eegdu",
+        "topText": "Siif fide",
+        "bottomText": "du'a"
+      }
+    }
+  ]
+}

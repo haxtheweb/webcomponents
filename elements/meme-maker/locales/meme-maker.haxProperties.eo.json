@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Memeo",
+    "description": "Faru memeon el bildo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Fonto",
+        "description": "Fonta URL de la memea bildo."
+      },
+      {
+        "property": "topText",
+        "title": "Supra teksto",
+        "description": "Supra teksto de la memeo."
+      },
+      {
+        "property": "bottomText",
+        "title": "Malsupra teksto",
+        "description": "Malsupra teksto de la memeo."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativa teksto",
+        "description": "Teksto por priskribi la bildon al nevidantaj uzantoj."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kato ŝteliranta al malgranda ludilo",
+        "topText": "Mi alportas al vi",
+        "bottomText": "la morton"
+      }
+    }
+  ]
+}

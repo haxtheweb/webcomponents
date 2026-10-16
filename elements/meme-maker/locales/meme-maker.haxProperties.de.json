@@ -1,34 +1,37 @@
 {
   "gizmo": {
     "title": "Meme",
-    "description": "Erstelle ein Meme aus einem Bild"
+    "description": "Erstellen Sie ein Meme aus einem Bild."
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "Quelle",
-        "description": "Die Quell-URL für das Element, das zitiert wird"
+        "description": "Quell-URL des Meme-Bildes."
       },
       {
+        "property": "topText",
         "title": "Oberer Text",
-        "description": "Oberer Text des Memes"
+        "description": "Oberer Text des Memes."
       },
       {
+        "property": "bottomText",
         "title": "Unterer Text",
-        "description": "Unterer Text des Memes"
+        "description": "Unterer Text des Memes."
       },
       {
-        "title": "Alternativer Text",
-        "description": "Text zur Beschreibung des Bildes für sehbehinderte Benutzer"
+        "property": "alt",
+        "title": "Alternativtext",
+        "description": "Text, der das Bild für blinde und sehbehinderte Benutzer beschreibt."
       }
-    ],
-    "advanced": []
+    ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "Katze, die ein kleines Spielzeug verfolgt",
-        "topText": "Ich bringe dir",
+        "alt": "Katze, die sich an ein kleines Spielzeug heranpirscht",
+        "topText": "Ich bringe euch",
         "bottomText": "den Tod"
       }
     }

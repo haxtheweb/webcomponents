@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Memea",
+    "description": "Sortu meme bat irudi batetik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Iturria",
+        "description": "Memearen irudiaren iturburu-URLa."
+      },
+      {
+        "property": "topText",
+        "title": "Goiko testua",
+        "description": "Memearen goiko testua."
+      },
+      {
+        "property": "bottomText",
+        "title": "Beheko testua",
+        "description": "Memearen beheko testua."
+      },
+      {
+        "property": "alt",
+        "title": "Testu alternatiboa",
+        "description": "Irudia ikusmen-urritasuna duten erabiltzaileei deskribatzeko testua."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Jostailu txiki bat zelatatzen ari den katua",
+        "topText": "Ekartzen dizut",
+        "bottomText": "heriotza"
+      }
+    }
+  ]
+}

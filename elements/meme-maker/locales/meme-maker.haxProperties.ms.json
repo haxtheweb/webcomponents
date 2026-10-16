@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Hasilkan meme daripada imej."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Sumber",
+        "description": "URL sumber untuk imej meme."
+      },
+      {
+        "property": "topText",
+        "title": "Teks atas",
+        "description": "Teks atas meme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Teks bawah",
+        "description": "Teks bawah meme."
+      },
+      {
+        "property": "alt",
+        "title": "Teks alternatif",
+        "description": "Teks untuk menerangkan imej kepada pengguna yang tidak dapat melihat."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kucing mengendap mainan kecil",
+        "topText": "Aku bawakan kepadamu",
+        "bottomText": "kematian"
+      }
+    }
+  ]
+}

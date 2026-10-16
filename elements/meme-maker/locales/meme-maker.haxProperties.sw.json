@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Tengeneza meme kutoka kwa picha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Chanzo",
+        "description": "URL ya chanzo cha picha ya meme."
+      },
+      {
+        "property": "topText",
+        "title": "Maandishi ya juu",
+        "description": "Maandishi ya juu ya meme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Maandishi ya chini",
+        "description": "Maandishi ya chini ya meme."
+      },
+      {
+        "property": "alt",
+        "title": "Maandishi mbadala",
+        "description": "Maandishi ya kuelezea picha kwa watumiaji wasioona."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Paka akinyemelea kichezeo kidogo",
+        "topText": "Nakuletea",
+        "bottomText": "kifo"
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Maak 'n meme van 'n beeld."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Bron",
+        "description": "Bron-URL vir die meme-beeld."
+      },
+      {
+        "property": "topText",
+        "title": "Boonste teks",
+        "description": "Boonste teks van die meme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Onderste teks",
+        "description": "Onderste teks van die meme."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatiewe teks",
+        "description": "Teks om die beeld aan siendgestremde gebruikers te beskryf."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kat wat 'n klein speelding bekruip",
+        "topText": "Ek bring vir jou",
+        "bottomText": "die dood"
+      }
+    }
+  ]
+}

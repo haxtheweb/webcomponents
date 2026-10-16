@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Meitsje in meme fan in ôfbylding."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Boarne",
+        "description": "Boarne-URL foar de meme-ôfbylding."
+      },
+      {
+        "property": "topText",
+        "title": "Boppetekst",
+        "description": "Boppetekst fan de meme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Ûndertekst",
+        "description": "Ûndertekst fan de meme."
+      },
+      {
+        "property": "alt",
+        "title": "Alternative tekst",
+        "description": "Tekst dy't de ôfbylding beskriuwt foar blinde brûkers."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kat dy't op in lyts boartersguodsje loert",
+        "topText": "Ik bring dy",
+        "bottomText": "de dea"
+      }
+    }
+  ]
+}

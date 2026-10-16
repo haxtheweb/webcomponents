@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mém",
+    "description": "Készítsen mémet egy képből."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Forrás",
+        "description": "A mémkép forrás-URL-je."
+      },
+      {
+        "property": "topText",
+        "title": "Felső szöveg",
+        "description": "A mém felső szövege."
+      },
+      {
+        "property": "bottomText",
+        "title": "Alsó szöveg",
+        "description": "A mém alsó szövege."
+      },
+      {
+        "property": "alt",
+        "title": "Helyettesítő szöveg",
+        "description": "A képet látássérült felhasználóknak leíró szöveg."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Egy kis játékra lesben álló macska",
+        "topText": "Elhoztam neked",
+        "bottomText": "a halált"
+      }
+    }
+  ]
+}

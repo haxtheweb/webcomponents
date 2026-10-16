@@ -1,38 +1,37 @@
 {
   "gizmo": {
-    "title": "模因",
-    "description": "用图片做模因"
+    "title": "表情包",
+    "description": "用一张图片做表情包。"
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "来源",
-        "description": "侬引用个元素个源URL"
+        "description": "表情包图片个来源 URL。"
       },
       {
-        "title": "顶头文字",
-        "description": "模因个顶头文字"
+        "property": "topText",
+        "title": "上头文字",
+        "description": "表情包上头个文字。"
       },
       {
+        "property": "bottomText",
         "title": "下头文字",
-        "description": "模因个下头文字"
+        "description": "表情包下头个文字。"
       },
       {
+        "property": "alt",
         "title": "替代文字",
-        "description": "帮盲人用户描述图片个文字"
-      }
-    ],
-    "advanced": [
-      {
-        "description": "用空格分隔个ID列表，用来描述图片个元素"
+        "description": "拨看勿见个用户描述图片个文字。"
       }
     ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "猫咪勒追小玩具",
-        "topText": "我帮侬带来仔",
+        "alt": "猫咪辣辣偷偷跟牢一只小玩具",
+        "topText": "我拨侬带来",
         "bottomText": "死亡"
       }
     }

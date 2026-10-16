@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "ਮੀਮ",
+    "description": "ਕਿਸੇ ਚਿੱਤਰ ਤੋਂ ਮੀਮ ਬਣਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "ਸਰੋਤ",
+        "description": "ਮੀਮ ਚਿੱਤਰ ਦਾ ਸਰੋਤ URL।"
+      },
+      {
+        "property": "topText",
+        "title": "ਉੱਪਰਲਾ ਟੈਕਸਟ",
+        "description": "ਮੀਮ ਦਾ ਉੱਪਰਲਾ ਟੈਕਸਟ।"
+      },
+      {
+        "property": "bottomText",
+        "title": "ਹੇਠਲਾ ਟੈਕਸਟ",
+        "description": "ਮੀਮ ਦਾ ਹੇਠਲਾ ਟੈਕਸਟ।"
+      },
+      {
+        "property": "alt",
+        "title": "ਵਿਕਲਪਿਕ ਟੈਕਸਟ",
+        "description": "ਨੇਤਰਹੀਣ ਵਰਤੋਂਕਾਰਾਂ ਲਈ ਚਿੱਤਰ ਦਾ ਵਰਣਨ ਕਰਨ ਵਾਲਾ ਟੈਕਸਟ।"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "ਇੱਕ ਛੋਟੇ ਖਿਡੌਣੇ ਦੀ ਤਾਕ ਵਿੱਚ ਬਿੱਲੀ",
+        "topText": "ਮੈਂ ਤੁਹਾਡੇ ਲਈ ਲਿਆਇਆ ਹਾਂ",
+        "bottomText": "ਮੌਤ"
+      }
+    }
+  ]
+}

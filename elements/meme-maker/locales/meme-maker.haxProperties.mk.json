@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Мем",
+    "description": "Направете мем од слика."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Извор",
+        "description": "URL на изворот за сликата на мемот."
+      },
+      {
+        "property": "topText",
+        "title": "Горен текст",
+        "description": "Горниот текст на мемот."
+      },
+      {
+        "property": "bottomText",
+        "title": "Долен текст",
+        "description": "Долниот текст на мемот."
+      },
+      {
+        "property": "alt",
+        "title": "Алтернативен текст",
+        "description": "Текст што ја опишува сликата за корисници со оштетен вид."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Мачка демне мала играчка",
+        "topText": "Ви ја носам",
+        "bottomText": "смртта"
+      }
+    }
+  ]
+}

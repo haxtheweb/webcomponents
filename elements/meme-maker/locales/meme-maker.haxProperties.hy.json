@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Մեմ",
+    "description": "Պատկերից մեմ պատրաստեք։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Աղբյուր",
+        "description": "Մեմի պատկերի աղբյուրի URL։"
+      },
+      {
+        "property": "topText",
+        "title": "Վերին տեքստ",
+        "description": "Մեմի վերին տեքստը։"
+      },
+      {
+        "property": "bottomText",
+        "title": "Ստորին տեքստ",
+        "description": "Մեմի ստորին տեքստը։"
+      },
+      {
+        "property": "alt",
+        "title": "Այլընտրանքային տեքստ",
+        "description": "Տեքստ, որը նկարագրում է պատկերը տեսողության խնդիրներ ունեցող օգտատերերի համար։"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Փոքրիկ խաղալիքին դարանակալած կատու",
+        "topText": "Ես քեզ բերել եմ",
+        "bottomText": "մահը"
+      }
+    }
+  ]
+}

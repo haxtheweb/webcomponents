@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "میم",
+    "description": "له انځور څخه میم جوړ کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "سرچینه",
+        "description": "د میم انځور سرچینه URL."
+      },
+      {
+        "property": "topText",
+        "title": "پورتنی متن",
+        "description": "د میم پورتنی متن."
+      },
+      {
+        "property": "bottomText",
+        "title": "ښکتنی متن",
+        "description": "د میم ښکتنی متن."
+      },
+      {
+        "property": "alt",
+        "title": "بدیل متن",
+        "description": "هغه متن چې نابینا کارنانو ته انځور تشریح کوي."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "پیشو چې یوې کوچنۍ لوبونې ته پټه کېني",
+        "topText": "زه تاسو ته راوړم",
+        "bottomText": "مرګ"
+      }
+    }
+  ]
+}

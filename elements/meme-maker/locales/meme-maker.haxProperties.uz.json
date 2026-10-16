@@ -1,35 +1,38 @@
 {
   "gizmo": {
     "title": "Mem",
-    "description": "Rasmdan mem yarating"
+    "description": "Rasmdan mem yarating."
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "Manba",
-        "description": "Iqtibos keltiruvchi element uchun manba URL"
+        "description": "Mem rasmi uchun manba URL."
       },
       {
-        "title": "Yuqoridagi matn",
-        "description": "Memning yuqoridagi matni"
+        "property": "topText",
+        "title": "Yuqori matn",
+        "description": "Memning yuqori matni."
       },
       {
-        "title": "Pastdagi matn",
-        "description": "Memning pastdagi matni"
+        "property": "bottomText",
+        "title": "Pastki matn",
+        "description": "Memning pastki matni."
       },
       {
+        "property": "alt",
         "title": "Muqobil matn",
-        "description": "Ko'rmayotgan foydalanuvchilar uchun rasmni tasvirlash uchun matn"
+        "description": "Ko‘rish imkoniyati cheklangan foydalanuvchilar uchun rasmni tavsiflovchi matn."
       }
-    ],
-    "advanced": []
+    ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "Kichik o'yinchoqni ta'qib qilayotgan mushuk",
-        "topText": "Men sizga olib kelaman",
-        "bottomText": "o'lim"
+        "alt": "Kichkina o‘yinchoqni poylayotgan mushuk",
+        "topText": "Senga olib keldim",
+        "bottomText": "o‘limni"
       }
     }
   ]

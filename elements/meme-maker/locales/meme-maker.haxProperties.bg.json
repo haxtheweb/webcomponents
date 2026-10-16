@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Мийм",
+    "description": "Направете мийм от изображение."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Източник",
+        "description": "URL адрес на изображението за мийма."
+      },
+      {
+        "property": "topText",
+        "title": "Горен текст",
+        "description": "Горният текст на мийма."
+      },
+      {
+        "property": "bottomText",
+        "title": "Долен текст",
+        "description": "Долният текст на мийма."
+      },
+      {
+        "property": "alt",
+        "title": "Алтернативен текст",
+        "description": "Текст, описващ изображението за незрящи потребители."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Котка дебне малка играчка",
+        "topText": "Нося ви",
+        "bottomText": "смъртта"
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "I-meme",
+    "description": "Yenza i-meme ngesithombe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Umthombo",
+        "description": "I-URL yomthombo yesithombe se-meme."
+      },
+      {
+        "property": "topText",
+        "title": "Umbhalo ophezulu",
+        "description": "Umbhalo ophezulu we-meme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Umbhalo ongezansi",
+        "description": "Umbhalo ongezansi we-meme."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo ongenye indlela",
+        "description": "Umbhalo ochaza isithombe kubasebenzisi abangaboni."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Ikati licathamela ithoyizi elincane",
+        "topText": "Ngikulethela",
+        "bottomText": "ukufa"
+      }
+    }
+  ]
+}

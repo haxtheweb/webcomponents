@@ -1,35 +1,38 @@
 {
   "gizmo": {
-    "title": "မီမ်",
-    "description": "ပုံတစ်ခုမှ မီမ်ပြုလုပ်ပါ"
+    "title": "Meme",
+    "description": "ပုံတစ်ပုံမှ meme တစ်ခု ဖန်တီးပါ။"
   },
   "settings": {
     "configure": [
       {
-        "title": "အရင်းအမြစ်",
-        "description": "ကိုးကားနေသော အစိတ်အပိုင်းအတွက် အရင်းအမြစ် URL"
+        "property": "imageUrl",
+        "title": "ရင်းမြစ်",
+        "description": "meme ပုံအတွက် ရင်းမြစ် URL။"
       },
       {
-        "title": "အပေါ်စာသား",
-        "description": "မီမ်၏ အပေါ်စာသား"
+        "property": "topText",
+        "title": "အပေါ် စာသား",
+        "description": "meme ၏ အပေါ် စာသား။"
       },
       {
-        "title": "အောက်စာသား",
-        "description": "မီမ်၏ အောက်စာသား"
+        "property": "bottomText",
+        "title": "အောက် စာသား",
+        "description": "meme ၏ အောက် စာသား။"
       },
       {
-        "title": "အစားထိုးစာသား",
-        "description": "မျက်စိမမြင်သော သုံးစွဲသူများအတွက် ပုံကို ဖော်ပြရန် စာသား"
+        "property": "alt",
+        "title": "အစားထိုး စာသား",
+        "description": "မမြင်နိုင်သော အသုံးပြုသူများအတွက် ပုံကို ဖော်ပြသည့် စာသား။"
       }
-    ],
-    "advanced": []
+    ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "ကစားစရာ သေးသေးလေးကို လိုက်လံနေသော ကြောင်",
-        "topText": "ကျွန်တော် သင့်အတွက် ယူလာပေးမယ်",
-        "bottomText": "သေခြင်း"
+        "alt": "ကစားစရာလေးကို ချောင်းနေသော ကြောင်",
+        "topText": "မင်းအတွက် ငါယူလာတာက",
+        "bottomText": "သေခြင်းတရား"
       }
     }
   ]

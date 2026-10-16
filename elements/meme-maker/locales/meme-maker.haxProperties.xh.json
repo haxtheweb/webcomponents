@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Imimi",
+    "description": "Yenza imimi ngomfanekiso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Umthombo",
+        "description": "I-URL yomthombo womfanekiso wemimi."
+      },
+      {
+        "property": "topText",
+        "title": "Umbhalo ophezulu",
+        "description": "Umbhalo ophezulu wemimi."
+      },
+      {
+        "property": "bottomText",
+        "title": "Umbhalo ongezantsi",
+        "description": "Umbhalo ongezantsi wemimi."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo ongenye indlela",
+        "description": "Umbhalo ochaza umfanekiso kubasebenzisi abangaboniyo."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Ikati izingela into encinane yokudlala",
+        "topText": "Ndikuphathele",
+        "bottomText": "ukufa"
+      }
+    }
+  ]
+}
