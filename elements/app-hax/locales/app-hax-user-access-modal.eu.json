@@ -1,0 +1,11 @@
+{
+  "userAccess": "Erabiltzaileen sarbidea",
+  "enterUsername": "Idatzi sarbidea emateko erabiltzaile-izena",
+  "usernamePlaceholder": "Erabiltzaile-izena",
+  "addUser": "Gehitu erabiltzailea",
+  "cancel": "Utzi",
+  "userAccessGranted": "Erabiltzaileari sarbidea ondo eman zaio!",
+  "userNotFound": "Ez da erabiltzailea aurkitu edo ez du baimenik",
+  "loadingAddingUser": "Erabiltzailea gehitzen...",
+  "grantAccessTo": "Eman sarbidea honi:"
+}

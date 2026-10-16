@@ -1,0 +1,11 @@
+{
+  "userAccess": "Accés d'usuaris",
+  "enterUsername": "Introduïu el nom d'usuari per concedir accés",
+  "usernamePlaceholder": "Nom d'usuari",
+  "addUser": "Afegeix un usuari",
+  "cancel": "Cancel·la",
+  "userAccessGranted": "S'ha concedit l'accés a l'usuari correctament!",
+  "userNotFound": "Usuari no trobat o no autoritzat",
+  "loadingAddingUser": "S'està afegint l'usuari...",
+  "grantAccessTo": "Concedeix accés a:"
+}

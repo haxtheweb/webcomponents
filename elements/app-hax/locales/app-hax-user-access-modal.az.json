@@ -1,0 +1,11 @@
+{
+  "userAccess": "İstifadəçi girişi",
+  "enterUsername": "Giriş vermək üçün istifadəçi adını daxil edin",
+  "usernamePlaceholder": "İstifadəçi adı",
+  "addUser": "İstifadəçi əlavə et",
+  "cancel": "Ləğv et",
+  "userAccessGranted": "İstifadəçiyə giriş uğurla verildi!",
+  "userNotFound": "İstifadəçi tapılmadı və ya icazəsi yoxdur",
+  "loadingAddingUser": "İstifadəçi əlavə edilir...",
+  "grantAccessTo": "Giriş verilsin:"
+}

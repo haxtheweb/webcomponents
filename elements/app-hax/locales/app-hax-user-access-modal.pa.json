@@ -1,0 +1,11 @@
+{
+  "userAccess": "ਵਰਤੋਂਕਾਰ ਪਹੁੰਚ",
+  "enterUsername": "ਪਹੁੰਚ ਦੇਣ ਲਈ ਵਰਤੋਂਕਾਰ ਨਾਂ ਦਰਜ ਕਰੋ",
+  "usernamePlaceholder": "ਵਰਤੋਂਕਾਰ ਨਾਂ",
+  "addUser": "ਵਰਤੋਂਕਾਰ ਸ਼ਾਮਲ ਕਰੋ",
+  "cancel": "ਰੱਦ ਕਰੋ",
+  "userAccessGranted": "ਵਰਤੋਂਕਾਰ ਨੂੰ ਸਫਲਤਾਪੂਰਵਕ ਪਹੁੰਚ ਦਿੱਤੀ ਗਈ!",
+  "userNotFound": "ਵਰਤੋਂਕਾਰ ਨਹੀਂ ਮਿਲਿਆ ਜਾਂ ਅਧਿਕਾਰਤ ਨਹੀਂ ਹੈ",
+  "loadingAddingUser": "ਵਰਤੋਂਕਾਰ ਸ਼ਾਮਲ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...",
+  "grantAccessTo": "ਇਸ ਨੂੰ ਪਹੁੰਚ ਦਿਓ:"
+}
