@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Gwnewch feme o ddelwedd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Ffynhonnell",
+        "description": "URL ffynhonnell delwedd y meme."
+      },
+      {
+        "property": "topText",
+        "title": "Testun uchaf",
+        "description": "Testun uchaf y meme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Testun gwaelod",
+        "description": "Testun gwaelod y meme."
+      },
+      {
+        "property": "alt",
+        "title": "Testun amgen",
+        "description": "Testun i ddisgrifio'r ddelwedd i ddefnyddwyr dall."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Cath yn stelcian tegan bach",
+        "topText": "Dyma fi'n dod â",
+        "bottomText": "marwolaeth i ti"
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Ejapo peteĩ meme ta'ãngagui."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Reñoiha",
+        "description": "URL meme ta'ãnga reñoiha."
+      },
+      {
+        "property": "topText",
+        "title": "Moñe'ẽrã yvategua",
+        "description": "Meme moñe'ẽrã yvategua."
+      },
+      {
+        "property": "bottomText",
+        "title": "Moñe'ẽrã yvygua",
+        "description": "Meme moñe'ẽrã yvygua."
+      },
+      {
+        "property": "alt",
+        "title": "Moñe'ẽrã mbohekoviaha",
+        "description": "Moñe'ẽrã omyesakã hag̃ua ta'ãnga umi ohecha'ỹvape g̃uarã."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Mbarakaja oñeñomíva ombosyry hag̃ua peteĩ mba'e'i",
+        "topText": "Agueru ndéve",
+        "bottomText": "ñemano"
+      }
+    }
+  ]
+}

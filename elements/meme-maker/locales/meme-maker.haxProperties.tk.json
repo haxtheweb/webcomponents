@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mem",
+    "description": "Suratdan mem dörediň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Çeşme",
+        "description": "Mem suratynyň çeşme URL salgysy."
+      },
+      {
+        "property": "topText",
+        "title": "Ýokarky tekst",
+        "description": "Memiň ýokarky teksti."
+      },
+      {
+        "property": "bottomText",
+        "title": "Aşaky tekst",
+        "description": "Memiň aşaky teksti."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatiw tekst",
+        "description": "Suraty görüş ukyby bolmadyk ulanyjylara düşündirýän tekst."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kiçijik oýnawaja ýaşrynyp ýakynlaşýan pişik",
+        "topText": "Men saňa getirdim",
+        "bottomText": "ölümi"
+      }
+    }
+  ]
+}

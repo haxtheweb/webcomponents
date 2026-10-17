@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Ger eitt meme úr einari mynd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Kelda",
+        "description": "Keldu-URL til meme-myndina."
+      },
+      {
+        "property": "topText",
+        "title": "Ovari tekstur",
+        "description": "Ovari tekstur á meme'inum."
+      },
+      {
+        "property": "bottomText",
+        "title": "Niðari tekstur",
+        "description": "Niðari tekstur á meme'inum."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativur tekstur",
+        "description": "Tekstur, ið lýsir myndina fyri brúkarum, sum ikki síggja."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Køttur, ið lúrir eftir lítlum leikutóli",
+        "topText": "Eg føri tær",
+        "bottomText": "deyðan"
+      }
+    }
+  ]
+}

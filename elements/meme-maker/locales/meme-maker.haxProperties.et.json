@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meem",
+    "description": "Tee pildist meem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Allikas",
+        "description": "Meemipildi allika URL."
+      },
+      {
+        "property": "topText",
+        "title": "Ülemine tekst",
+        "description": "Meemi ülemine tekst."
+      },
+      {
+        "property": "bottomText",
+        "title": "Alumine tekst",
+        "description": "Meemi alumine tekst."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatiivtekst",
+        "description": "Tekst, mis kirjeldab pilti nägemispuudega kasutajatele."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kass hiilib väikese mänguasja kallale",
+        "topText": "Ma toon sulle",
+        "bottomText": "surma"
+      }
+    }
+  ]
+}

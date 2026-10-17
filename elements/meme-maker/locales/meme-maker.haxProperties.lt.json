@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Memas",
+    "description": "Sukurkite memą iš vaizdo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Šaltinis",
+        "description": "Memo vaizdo šaltinio URL."
+      },
+      {
+        "property": "topText",
+        "title": "Viršutinis tekstas",
+        "description": "Memo viršutinis tekstas."
+      },
+      {
+        "property": "bottomText",
+        "title": "Apatinis tekstas",
+        "description": "Memo apatinis tekstas."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatyvusis tekstas",
+        "description": "Tekstas, aprašantis vaizdą neregiams naudotojams."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Katė, tykojanti mažo žaislo",
+        "topText": "Atnešiau tau",
+        "bottomText": "mirtį"
+      }
+    }
+  ]
+}

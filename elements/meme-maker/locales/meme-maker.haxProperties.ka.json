@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "მიმი",
+    "description": "შექმენით მიმი სურათისგან."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "წყარო",
+        "description": "მიმის სურათის წყაროს URL."
+      },
+      {
+        "property": "topText",
+        "title": "ზედა ტექსტი",
+        "description": "მიმის ზედა ტექსტი."
+      },
+      {
+        "property": "bottomText",
+        "title": "ქვედა ტექსტი",
+        "description": "მიმის ქვედა ტექსტი."
+      },
+      {
+        "property": "alt",
+        "title": "ალტერნატიული ტექსტი",
+        "description": "ტექსტი, რომელიც სურათს აღუწერს უსინათლო მომხმარებლებს."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "კატა პატარა სათამაშოს უთვალთვალებს",
+        "topText": "მოგიტანე",
+        "bottomText": "სიკვდილი"
+      }
+    }
+  ]
+}
