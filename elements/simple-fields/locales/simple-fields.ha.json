@@ -5,5 +5,9 @@
   "recordAudio": "Yi rikodin sauti",
   "recordScreen": "Yi rikodin allon",
   "cancel": "Soke",
-  "uploadMedia": "Dora media"
+  "uploadMedia": "Dora media",
+  "record": "Naɗa",
+  "pause": "Dakatar da naɗawa",
+  "stopSave": "Tsaya & Ajiye",
+  "clickToTakePhoto": "Danna don ɗaukar hoto"
 }

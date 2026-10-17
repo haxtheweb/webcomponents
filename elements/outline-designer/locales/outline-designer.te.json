@@ -1,0 +1,21 @@
+{
+  "selectTarget": "లక్ష్యాన్ని ఎంచుకోండి",
+  "importContentUnderThisPage": "ఈ పేజీ కింద కంటెంట్‌ను దిగుమతి చేయి",
+  "importThisContent": "ఈ కంటెంట్‌ను దిగుమతి చేయి",
+  "thisPage": "ఈ పేజీ",
+  "newPage": "కొత్త పేజీ",
+  "copyOf": "దీని కాపీ:",
+  "pageActions": "పేజీ చర్యలు",
+  "editTitle": "శీర్షికను సవరించు",
+  "lock": "లాక్ చేయి",
+  "unlock": "అన్‌లాక్ చేయి",
+  "moveUp": "పైకి జరుపు",
+  "moveDown": "కిందికి జరుపు",
+  "makeChild": "ఉప పేజీగా చేయి",
+  "moveToParentLevel": "పేరెంట్ స్థాయికి తరలించు",
+  "addPage": "పేజీని జోడించు",
+  "duplicate": "నకిలీ చేయి",
+  "delete": "తొలగించు",
+  "restore": "పునరుద్ధరించు",
+  "goToPage": "పేజీకి వెళ్లు"
+}

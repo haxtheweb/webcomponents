@@ -1,0 +1,18 @@
+{
+  "title": "Platforma imkoniyatlari",
+  "experienceLevel": "Tajriba darajasi",
+  "cmsFeatures": "CMS imkoniyatlari",
+  "editorFeatures": "Muharrir imkoniyatlari",
+  "blocks": "Bloklar",
+  "filterBlocks": "Bloklarni filtrlash",
+  "requiredTextNote": "Ba’zi matn teglari majburiy va doim yoqilgan (nofaol holda ko‘rsatilgan).",
+  "download": "Skeletni yuklab olish",
+  "save": "Saqlash",
+  "generating": "Skelet yaratilmoqda…",
+  "generated": "Skelet yuklab olindi",
+  "enabled": "Yoqilgan",
+  "feature": "Imkoniyat",
+  "details": "Tafsilotlar",
+  "featuresWarning": "Bu parametrlarni o‘chirish muhim mualliflik va boshqaruv imkoniyatlarini olib tashlashi mumkin.",
+  "largeSiteWarning": "Bu saytda sahifalar ko‘p. Skelet yaratish biroz vaqt olishi mumkin."
+}

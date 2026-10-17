@@ -5,5 +5,9 @@
   "recordAudio": "ضبط صدا",
   "recordScreen": "ضبط صفحه",
   "cancel": "لغو",
-  "uploadMedia": "بارگذاری رسانه"
+  "uploadMedia": "بارگذاری رسانه",
+  "record": "ضبط",
+  "pause": "توقف موقت ضبط",
+  "stopSave": "توقف و ذخیره",
+  "clickToTakePhoto": "برای گرفتن عکس کلیک کنید"
 }

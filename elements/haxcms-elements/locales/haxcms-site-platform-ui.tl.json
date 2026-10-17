@@ -1,0 +1,18 @@
+{
+  "title": "Mga Feature ng Platform",
+  "experienceLevel": "Antas ng karanasan",
+  "cmsFeatures": "Mga feature ng CMS",
+  "editorFeatures": "Mga feature ng editor",
+  "blocks": "Mga Block",
+  "filterBlocks": "I-filter ang mga block",
+  "requiredTextNote": "Ang ilang text tag ay kinakailangan at laging naka-enable (ipinapakitang naka-disable).",
+  "download": "I-download ang skeleton",
+  "save": "I-save",
+  "generating": "Gumagawa ng skeleton…",
+  "generated": "Na-download ang skeleton",
+  "enabled": "Naka-enable",
+  "feature": "Feature",
+  "details": "Mga Detalye",
+  "featuresWarning": "Ang pag-disable sa mga opsyong ito ay maaaring mag-alis ng mahahalagang kakayahan sa pag-author at pangangasiwa.",
+  "largeSiteWarning": "Maraming pahina ang site na ito. Maaaring matagalan ang paggawa ng skeleton."
+}

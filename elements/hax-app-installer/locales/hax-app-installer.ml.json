@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub റിപ്പോസിറ്ററി",
   "anErrorOccurred": "ഒരു പിശക് സംഭവിച്ചു",
-  "retry": "വീണ്ടും ശ്രമിക്കുക"
+  "retry": "വീണ്ടും ശ്രമിക്കുക",
+  "permissionRequired": "അനുമതി ആവശ്യമാണ്",
+  "passwordRequirements": "പാസ്‌വേഡ് ആവശ്യകതകൾ",
+  "requirementLength": "കുറഞ്ഞത് 8 അക്ഷരങ്ങൾ",
+  "requirementUppercase": "ഒരു വലിയക്ഷരം",
+  "requirementLowercase": "ഒരു ചെറിയക്ഷരം",
+  "requirementNumber": "ഒരു സംഖ്യ",
+  "requirementSymbol": "ഒരു ചിഹ്നം"
 }

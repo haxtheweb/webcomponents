@@ -1,0 +1,14 @@
+{
+  "outlineActions": "大纲操作",
+  "editPage": "编辑页面",
+  "addPage": "添加子页面",
+  "moveUp": "上移",
+  "moveDown": "下移",
+  "indent": "缩进",
+  "outdent": "取消缩进",
+  "moveTo": "移动到...",
+  "siteOutline": "打开站点大纲",
+  "delete": "删除页面",
+  "unlock": "解锁",
+  "lock": "锁定"
+}

@@ -122,5 +122,21 @@
   "recent": "Kwanan nan",
   "popular": "Shahara",
   "copiedToClipboard": "An kwafa zuwa clipboard",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Bayanin hoto",
+  "imageActions": "Ayyukan hoto",
+  "imageRecommendations": "Shawarwarin hoto",
+  "compressImage": "Matsa hoto",
+  "resizeTo": "Canza girma zuwa",
+  "created": "An ƙirƙira",
+  "size": "Girma",
+  "dimensions": "Ma'auni",
+  "type": "Nau'i",
+  "done": "an gama",
+  "noFileUuid": "Babu nassoshin fayil; sake lodawa don kunna ayyuka.",
+  "fileOpsUnavailable": "Ayyukan fayil ba su samuwa ga wannan shafin yanar gizo.",
+  "fileOpFailed": "Aikin fayil ya gaza.",
+  "fileExtensionNotAllowed": "Wannan filin yana karɓar waɗannan nau'ikan fayil kawai:",
+  "fileTypeNotAllowed": "Wannan filin yana karɓar waɗannan nau'ikan kafofin watsa labarai kawai:",
+  "transformFailed": "Sauyi bayan lodawa ya gaza; an adana ainihin fayil ɗin."
 }

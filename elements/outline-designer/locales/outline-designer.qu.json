@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Chayana kaqta akllay",
+  "importContentUnderThisPage": "Kay rapi uraman ukhunta apamuy",
+  "importThisContent": "Kay ukhuta apamuy",
+  "thisPage": "kay rapi",
+  "newPage": "Musuq rapi",
+  "copyOf": "Kopia:",
+  "pageActions": "Rapipa ruranankuna",
+  "editTitle": "Sutichayta allichay",
+  "lock": "Wichqay",
+  "unlock": "Kichay",
+  "moveUp": "Hanaqman kuyuchiy",
+  "moveDown": "Uraqman kuyuchiy",
+  "makeChild": "Wawa rapiman tukuchiy",
+  "moveToParentLevel": "Tayta pataman kuyuchiy",
+  "addPage": "Rapita yapay",
+  "duplicate": "Iskayachiy",
+  "delete": "Qulluchiy",
+  "restore": "Kutichiy",
+  "goToPage": "Rapiman riy"
+}

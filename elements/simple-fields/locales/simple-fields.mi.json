@@ -5,5 +5,9 @@
   "recordAudio": "Rekoti oro",
   "recordScreen": "Rekoti mata",
   "cancel": "Whakakore",
-  "uploadMedia": "Tuku atu i ngā pāpāho"
+  "uploadMedia": "Tuku atu i ngā pāpāho",
+  "record": "Hopu",
+  "pause": "Tatari hopu",
+  "stopSave": "Kati & Tiaki",
+  "clickToTakePhoto": "Pāwhiri hei tango whakaahua"
 }

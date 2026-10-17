@@ -5,5 +5,9 @@
   "recordAudio": "音声を録音",
   "recordScreen": "画面を録画",
   "cancel": "キャンセル",
-  "uploadMedia": "メディアをアップロード"
+  "uploadMedia": "メディアをアップロード",
+  "record": "録画",
+  "pause": "録画を一時停止",
+  "stopSave": "停止して保存",
+  "clickToTakePhoto": "クリックして写真を撮影"
 }

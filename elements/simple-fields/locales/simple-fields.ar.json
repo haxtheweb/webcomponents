@@ -5,5 +5,9 @@
   "recordAudio": "تسجيل صوت",
   "recordScreen": "تسجيل الشاشة",
   "cancel": "إلغاء",
-  "uploadMedia": "رفع الوسائط"
+  "uploadMedia": "رفع الوسائط",
+  "record": "تسجيل",
+  "pause": "إيقاف التسجيل مؤقتًا",
+  "stopSave": "إيقاف وحفظ",
+  "clickToTakePhoto": "انقر لالتقاط صورة"
 }

@@ -122,5 +122,21 @@
   "recent": "最近",
   "popular": "人気",
   "copiedToClipboard": "クリップボードにコピーしました",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "画像情報",
+  "imageActions": "画像の操作",
+  "imageRecommendations": "画像の推奨事項",
+  "compressImage": "画像を圧縮",
+  "resizeTo": "サイズ変更:",
+  "created": "作成日",
+  "size": "サイズ",
+  "dimensions": "寸法",
+  "type": "種類",
+  "done": "完了",
+  "noFileUuid": "ファイル参照を利用できません。操作を有効にするには再アップロードしてください。",
+  "fileOpsUnavailable": "このサイトではファイル操作を利用できません。",
+  "fileOpFailed": "ファイル操作に失敗しました。",
+  "fileExtensionNotAllowed": "このフィールドでは次のファイル形式のみ受け付けます:",
+  "fileTypeNotAllowed": "このフィールドでは次のメディアタイプのみ受け付けます:",
+  "transformFailed": "アップロード後の変換に失敗しました。元のファイルは保持されています。"
 }

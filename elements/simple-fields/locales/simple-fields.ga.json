@@ -5,5 +5,9 @@
   "recordAudio": "Taifead fuaime",
   "recordScreen": "Taifead scáileáin",
   "cancel": "Cealaigh",
-  "uploadMedia": "Uaslódáil meán"
+  "uploadMedia": "Uaslódáil meán",
+  "record": "Taifead",
+  "pause": "Cuir an taifeadadh ar sos",
+  "stopSave": "Stop agus sábháil",
+  "clickToTakePhoto": "Cliceáil chun grianghraf a ghlacadh"
 }

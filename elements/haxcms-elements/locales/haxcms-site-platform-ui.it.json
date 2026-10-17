@@ -1,0 +1,18 @@
+{
+  "title": "Funzionalità della piattaforma",
+  "experienceLevel": "Livello di esperienza",
+  "cmsFeatures": "Funzionalità CMS",
+  "editorFeatures": "Funzionalità dell'editor",
+  "blocks": "Blocchi",
+  "filterBlocks": "Filtra blocchi",
+  "requiredTextNote": "Alcuni tag di testo sono obbligatori e sempre abilitati (mostrati come disabilitati).",
+  "download": "Scarica scheletro",
+  "save": "Salva",
+  "generating": "Generazione dello scheletro…",
+  "generated": "Scheletro scaricato",
+  "enabled": "Abilitato",
+  "feature": "Funzionalità",
+  "details": "Dettagli",
+  "featuresWarning": "Disattivare queste opzioni può rimuovere importanti funzionalità di creazione e amministrazione.",
+  "largeSiteWarning": "Questo sito ha molte pagine. La generazione dello scheletro potrebbe richiedere del tempo."
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Blloqet",
+  "enabled": "Aktivizuar",
+  "block": "Blloku",
+  "preview": "Parapamje",
+  "filterBlocks": "Filtro blloqet",
+  "requiredTextNote": "Disa etiketa teksti janë të detyrueshme dhe gjithmonë të aktivizuara (shfaqen të çaktivizuara).",
+  "selectAll": "Zgjidh të gjitha",
+  "deselectAll": "Hiq zgjedhjen nga të gjitha",
+  "save": "Ruaj",
+  "noDescription": "Nuk ka përshkrim.",
+  "details": "Detajet",
+  "loadingInventory": "Po ngarkohet inventari i plotë i blloqeve…"
+}

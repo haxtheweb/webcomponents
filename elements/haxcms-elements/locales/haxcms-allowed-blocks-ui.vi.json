@@ -1,0 +1,14 @@
+{
+  "title": "Khối",
+  "enabled": "Đã bật",
+  "block": "Khối",
+  "preview": "Xem trước",
+  "filterBlocks": "Lọc khối",
+  "requiredTextNote": "Một số thẻ văn bản là bắt buộc và luôn được bật (hiển thị ở trạng thái vô hiệu).",
+  "selectAll": "Chọn tất cả",
+  "deselectAll": "Bỏ chọn tất cả",
+  "save": "Lưu",
+  "noDescription": "Không có mô tả.",
+  "details": "Chi tiết",
+  "loadingInventory": "Đang tải toàn bộ danh mục khối…"
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Configuració de l'editor",
+  "experienceLevel": "Nivell d'experiència",
+  "experienceLevelDescription": "Seleccioneu l'experiència de l'editor i previsualitzeu la disposició de la barra d'eines.",
+  "buttons": "Botons",
+  "futureButtonConfiguration": "Aviat es podran configurar botons personalitzats de l'editor.",
+  "save": "Desa",
+  "saving": "S'està desant…"
+}

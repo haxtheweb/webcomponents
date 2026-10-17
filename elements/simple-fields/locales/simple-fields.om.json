@@ -5,5 +5,9 @@
   "recordAudio": "Sagalee galmeessi",
   "recordScreen": "Skiriinii galmeessi",
   "cancel": "Dhiisi",
-  "uploadMedia": "Meediya fe'i"
+  "uploadMedia": "Meediya fe'i",
+  "record": "Waraabi",
+  "pause": "Waraabbii dhaabi",
+  "stopSave": "Dhaabii olkaa'i",
+  "clickToTakePhoto": "Suuraa kaasuuf cuqaasi"
 }

@@ -1,0 +1,18 @@
+{
+  "title": "Platvormi funktsioonid",
+  "experienceLevel": "Kogemuste tase",
+  "cmsFeatures": "CMS-i funktsioonid",
+  "editorFeatures": "Redaktori funktsioonid",
+  "blocks": "Plokid",
+  "filterBlocks": "Filtreeri plokke",
+  "requiredTextNote": "Mõned tekstisildid on kohustuslikud ja alati lubatud (kuvatakse keelatuna).",
+  "download": "Laadi alla skelett",
+  "save": "Salvesta",
+  "generating": "Skeleti genereerimine…",
+  "generated": "Skelett alla laaditud",
+  "enabled": "Lubatud",
+  "feature": "Funktsioon",
+  "details": "Üksikasjad",
+  "featuresWarning": "Nende valikute keelamine võib eemaldada olulisi sisu loomise ja haldamise võimalusi.",
+  "largeSiteWarning": "Sellel saidil on palju lehti. Skeleti genereerimine võib võtta aega."
+}

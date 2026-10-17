@@ -1,0 +1,18 @@
+{
+  "title": "Zvinowanikwa paPuratifomu",
+  "experienceLevel": "Danho reruzivo",
+  "cmsFeatures": "Zvinowanikwa paCMS",
+  "editorFeatures": "Zvinowanikwa pamupepeti",
+  "blocks": "Mabhuroko",
+  "filterBlocks": "Sefa mabhuroko",
+  "requiredTextNote": "Mamwe ma tag emavara anodiwa uye anogara akabatidzwa (anoratidzwa asingashandike).",
+  "download": "Dhawunirodha skeleton",
+  "save": "Chengeta",
+  "generating": "Kugadzira skeleton…",
+  "generated": "Skeleton yadhawunirodhwa",
+  "enabled": "Zvabatidzwa",
+  "feature": "Chinowanikwa",
+  "details": "Ruzivo",
+  "featuresWarning": "Kudzima sarudzo idzi kunogona kubvisa masimba makuru ekunyora nekutonga.",
+  "largeSiteWarning": "Saiti iyi ine mapeji akawanda. Kugadzira skeleton kunogona kutora nguva."
+}

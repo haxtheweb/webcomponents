@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Agħżel id-destinazzjoni",
+  "importContentUnderThisPage": "Importa l-kontenut taħt din il-paġna",
+  "importThisContent": "Importa dan il-kontenut",
+  "thisPage": "din il-paġna",
+  "newPage": "Paġna ġdida",
+  "copyOf": "Kopja ta'",
+  "pageActions": "Azzjonijiet tal-Paġna",
+  "editTitle": "Editja t-titlu",
+  "lock": "Sakkar",
+  "unlock": "Iftaħ",
+  "moveUp": "Ċaqlaq 'il fuq",
+  "moveDown": "Ċaqlaq 'l isfel",
+  "makeChild": "Agħmilha sottopaġna",
+  "moveToParentLevel": "Ċaqlaq għal-livell ta' fuq",
+  "addPage": "Żid paġna",
+  "duplicate": "Idduplika",
+  "delete": "Ħassar",
+  "restore": "Irrestawra",
+  "goToPage": "Mur għall-paġna"
+}

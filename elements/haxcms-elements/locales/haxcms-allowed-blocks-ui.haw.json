@@ -1,0 +1,14 @@
+{
+  "title": "Nā poloka",
+  "enabled": "Hoʻā ʻia",
+  "block": "Poloka",
+  "preview": "Nānā mua",
+  "filterBlocks": "Kānana i nā poloka",
+  "requiredTextNote": "Pono kekahi mau lepili kikokikona a hoʻā mau ʻia (hōʻike ʻia me he mea pio lā).",
+  "selectAll": "Koho i nā mea a pau",
+  "deselectAll": "Hoʻopau i ke koho ʻana o nā mea a pau",
+  "save": "Mālama",
+  "noDescription": "ʻAʻohe wehewehe.",
+  "details": "Nā kikoʻī",
+  "loadingInventory": "Ke hoʻouka nei i ka papa inoa piha o nā poloka…"
+}

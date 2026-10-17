@@ -122,5 +122,21 @@
   "recent": "אחרונים",
   "popular": "פופולריים",
   "copiedToClipboard": "הועתק ללוח",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "פרטי התמונה",
+  "imageActions": "פעולות על התמונה",
+  "imageRecommendations": "המלצות לתמונה",
+  "compressImage": "דחיסת התמונה",
+  "resizeTo": "שינוי גודל ל",
+  "created": "נוצר",
+  "size": "גודל",
+  "dimensions": "ממדים",
+  "type": "סוג",
+  "done": "הושלם",
+  "noFileUuid": "הפניה לקובץ אינה זמינה; העלו מחדש כדי לאפשר פעולות.",
+  "fileOpsUnavailable": "פעולות קבצים אינן זמינות באתר זה.",
+  "fileOpFailed": "פעולת הקובץ נכשלה.",
+  "fileExtensionNotAllowed": "שדה זה מקבל רק את סוגי הקבצים הבאים:",
+  "fileTypeNotAllowed": "שדה זה מקבל רק את סוגי המדיה הבאים:",
+  "transformFailed": "העיבוד שלאחר ההעלאה נכשל; הקובץ המקורי נשמר."
 }

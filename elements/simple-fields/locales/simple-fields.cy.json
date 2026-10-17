@@ -5,5 +5,9 @@
   "recordAudio": "Recordio sain",
   "recordScreen": "Recordio'r sgrin",
   "cancel": "Canslo",
-  "uploadMedia": "Llwytho cyfryngau i fyny"
+  "uploadMedia": "Llwytho cyfryngau i fyny",
+  "record": "Recordio",
+  "pause": "Oedi'r recordio",
+  "stopSave": "Stopio a chadw",
+  "clickToTakePhoto": "Cliciwch i dynnu llun"
 }

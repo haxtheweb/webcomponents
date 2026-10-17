@@ -122,5 +122,21 @@
   "recent": "તાજેતર",
   "popular": "લોકપ્રિય",
   "copiedToClipboard": "Copied to clipboard",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "છબીની માહિતી",
+  "imageActions": "છબીની ક્રિયાઓ",
+  "imageRecommendations": "છબી માટે ભલામણો",
+  "compressImage": "છબી સંકુચિત કરો",
+  "resizeTo": "આ કદમાં બદલો",
+  "created": "બનાવ્યાની તારીખ",
+  "size": "કદ",
+  "dimensions": "પરિમાણો",
+  "type": "પ્રકાર",
+  "done": "થઈ ગયું",
+  "noFileUuid": "ફાઇલ સંદર્ભ ઉપલબ્ધ નથી; ક્રિયાઓ સક્ષમ કરવા માટે ફરીથી અપલોડ કરો.",
+  "fileOpsUnavailable": "આ સાઇટ માટે ફાઇલ ઑપરેશન્સ ઉપલબ્ધ નથી.",
+  "fileOpFailed": "ફાઇલ ઑપરેશન નિષ્ફળ ગયું.",
+  "fileExtensionNotAllowed": "આ ફીલ્ડ ફક્ત નીચેના ફાઇલ પ્રકારો સ્વીકારે છે:",
+  "fileTypeNotAllowed": "આ ફીલ્ડ ફક્ત નીચેના મીડિયા પ્રકારો સ્વીકારે છે:",
+  "transformFailed": "અપલોડ પછીનું રૂપાંતર નિષ્ફળ ગયું; મૂળ ફાઇલ રાખવામાં આવી છે."
 }

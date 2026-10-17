@@ -122,5 +122,21 @@
   "recent": "Rezent",
   "popular": "Beléift",
   "copiedToClipboard": "An Clipboard kopéiert",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Billinfo",
+  "imageActions": "Billaktiounen",
+  "imageRecommendations": "Billempfeelungen",
+  "compressImage": "Bild kompriméieren",
+  "resizeTo": "Gréisst änneren op",
+  "created": "Erstallt",
+  "size": "Gréisst",
+  "dimensions": "Dimensiounen",
+  "type": "Typ",
+  "done": "fäerdeg",
+  "noFileUuid": "Dateireferenz net disponibel; nei eroplueden, fir Aktiounen z'aktivéieren.",
+  "fileOpsUnavailable": "Dateioperatioune sinn op dësem Site net disponibel.",
+  "fileOpFailed": "Dateioperatioun ass feelgeschloen.",
+  "fileExtensionNotAllowed": "Dëst Feld akzeptéiert just dës Dateitypen:",
+  "fileTypeNotAllowed": "Dëst Feld akzeptéiert just dës Medientypen:",
+  "transformFailed": "Transformatioun nom Eroplueden ass feelgeschloen; d'Originaldatei gouf behalen."
 }

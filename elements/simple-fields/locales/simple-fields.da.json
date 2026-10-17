@@ -5,5 +5,9 @@
   "recordAudio": "Optag lyd",
   "recordScreen": "Optag skærm",
   "cancel": "Annullér",
-  "uploadMedia": "Upload medier"
+  "uploadMedia": "Upload medier",
+  "record": "Optag",
+  "pause": "Sæt optagelse på pause",
+  "stopSave": "Stop og gem",
+  "clickToTakePhoto": "Klik for at tage et foto"
 }

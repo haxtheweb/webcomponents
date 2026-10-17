@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Depoja GitHub",
   "anErrorOccurred": "Ndodhi një gabim",
-  "retry": "Provo përsëri"
+  "retry": "Provo përsëri",
+  "permissionRequired": "Kërkohet leje",
+  "passwordRequirements": "Kërkesat e fjalëkalimit",
+  "requirementLength": "Të paktën 8 karaktere",
+  "requirementUppercase": "Një shkronjë e madhe",
+  "requirementLowercase": "Një shkronjë e vogël",
+  "requirementNumber": "Një numër",
+  "requirementSymbol": "Një simbol"
 }

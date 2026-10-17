@@ -1,0 +1,6 @@
+{
+  "pageTemplate": "Шаблон страницы",
+  "templateId": "ID шаблона",
+  "defaultTemplate": "Шаблон по умолчанию",
+  "namedTemplate": "Именованный шаблон"
+}

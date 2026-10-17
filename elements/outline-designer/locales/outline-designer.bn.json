@@ -1,0 +1,21 @@
+{
+  "selectTarget": "গন্তব্য নির্বাচন করুন",
+  "importContentUnderThisPage": "এই পৃষ্ঠার অধীনে বিষয়বস্তু আমদানি করুন",
+  "importThisContent": "এই বিষয়বস্তু আমদানি করুন",
+  "thisPage": "এই পৃষ্ঠা",
+  "newPage": "নতুন পৃষ্ঠা",
+  "copyOf": "এর অনুলিপি",
+  "pageActions": "পৃষ্ঠার কাজ",
+  "editTitle": "শিরোনাম সম্পাদনা করুন",
+  "lock": "লক করুন",
+  "unlock": "আনলক করুন",
+  "moveUp": "উপরে সরান",
+  "moveDown": "নিচে সরান",
+  "makeChild": "চাইল্ড বানান",
+  "moveToParentLevel": "প্যারেন্ট স্তরে সরান",
+  "addPage": "পৃষ্ঠা যোগ করুন",
+  "duplicate": "ডুপ্লিকেট করুন",
+  "delete": "মুছুন",
+  "restore": "পুনরুদ্ধার করুন",
+  "goToPage": "পৃষ্ঠায় যান"
+}

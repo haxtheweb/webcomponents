@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Seleccioneu la destinació",
+  "importContentUnderThisPage": "Importa el contingut sota aquesta pàgina",
+  "importThisContent": "Importa aquest contingut",
+  "thisPage": "aquesta pàgina",
+  "newPage": "Pàgina nova",
+  "copyOf": "Còpia de",
+  "pageActions": "Accions de la pàgina",
+  "editTitle": "Edita el títol",
+  "lock": "Bloqueja",
+  "unlock": "Desbloqueja",
+  "moveUp": "Mou amunt",
+  "moveDown": "Mou avall",
+  "makeChild": "Converteix en filla",
+  "moveToParentLevel": "Mou al nivell superior",
+  "addPage": "Afegeix una pàgina",
+  "duplicate": "Duplica",
+  "delete": "Suprimeix",
+  "restore": "Restaura",
+  "goToPage": "Ves a la pàgina"
+}

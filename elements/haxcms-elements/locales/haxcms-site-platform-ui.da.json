@@ -1,0 +1,18 @@
+{
+  "title": "Platformsfunktioner",
+  "experienceLevel": "Erfaringsniveau",
+  "cmsFeatures": "CMS-funktioner",
+  "editorFeatures": "Editorfunktioner",
+  "blocks": "Blokke",
+  "filterBlocks": "Filtrér blokke",
+  "requiredTextNote": "Nogle tekst-tags er påkrævede og altid aktiveret (vist som deaktiverede).",
+  "download": "Download skelet",
+  "save": "Gem",
+  "generating": "Genererer skelet…",
+  "generated": "Skelet downloadet",
+  "enabled": "Aktiveret",
+  "feature": "Funktion",
+  "details": "Detaljer",
+  "featuresWarning": "Deaktivering af disse indstillinger kan fjerne vigtige redigerings- og administrationsmuligheder.",
+  "largeSiteWarning": "Dette websted har mange sider. Generering af skelettet kan tage et stykke tid."
+}

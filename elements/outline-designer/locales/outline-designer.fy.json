@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Doel selektearje",
+  "importContentUnderThisPage": "Ynhâld ûnder dizze side ymportearje",
+  "importThisContent": "Dizze ynhâld ymportearje",
+  "thisPage": "dizze side",
+  "newPage": "Nije side",
+  "copyOf": "Kopy fan",
+  "pageActions": "Sideaksjes",
+  "editTitle": "Titel bewurkje",
+  "lock": "Beskoattelje",
+  "unlock": "Ûntskoattelje",
+  "moveUp": "Omheech",
+  "moveDown": "Omleech",
+  "makeChild": "Subside meitsje",
+  "moveToParentLevel": "Nei boppelizzend nivo ferpleatse",
+  "addPage": "Side tafoegje",
+  "duplicate": "Duplisearje",
+  "delete": "Wiskje",
+  "restore": "Werombringe",
+  "goToPage": "Gean nei side"
+}

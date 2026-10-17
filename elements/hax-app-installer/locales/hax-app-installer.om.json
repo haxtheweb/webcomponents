@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Repozitoori GitHub",
   "anErrorOccurred": "Dogoggorri uumameera",
-  "retry": "Irra deebi'i yaali"
+  "retry": "Irra deebi'i yaali",
+  "permissionRequired": "Hayyamni barbaachisaadha",
+  "passwordRequirements": "Ulaagaalee jecha icciitii",
+  "requirementLength": "Yoo xiqqaate arfii 8",
+  "requirementUppercase": "Qubee guddaa tokko",
+  "requirementLowercase": "Qubee xiqqaa tokko",
+  "requirementNumber": "Lakkoofsa tokko",
+  "requirementSymbol": "Mallattoo tokko"
 }

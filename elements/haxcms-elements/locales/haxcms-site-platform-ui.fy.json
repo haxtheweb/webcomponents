@@ -1,0 +1,18 @@
+{
+  "title": "Platfoarmfunksjes",
+  "experienceLevel": "Ûnderfiningsnivo",
+  "cmsFeatures": "CMS-funksjes",
+  "editorFeatures": "Bewurkerfunksjes",
+  "blocks": "Blokken",
+  "filterBlocks": "Blokken filterje",
+  "requiredTextNote": "Guon teksttags binne ferplicht en altyd ynskeakele (útskeakele werjûn).",
+  "download": "Skelet downloade",
+  "save": "Bewarje",
+  "generating": "Skelet generearje…",
+  "generated": "Skelet downloade",
+  "enabled": "Ynskeakele",
+  "feature": "Funksje",
+  "details": "Details",
+  "featuresWarning": "It útskeakeljen fan dizze opsjes kin wichtige skriuw- en behearmooglikheden fuortsmite.",
+  "largeSiteWarning": "Dizze webside hat in protte siden. It generearjen fan it skelet kin efkes duorje."
+}

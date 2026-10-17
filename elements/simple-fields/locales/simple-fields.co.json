@@ -5,5 +5,9 @@
   "recordAudio": "Registra l'audio",
   "recordScreen": "Registra u screnu",
   "cancel": "Annullà",
-  "uploadMedia": "Caricà media"
+  "uploadMedia": "Caricà media",
+  "record": "Arregistrà",
+  "pause": "Mette in pausa l'arregistramentu",
+  "stopSave": "Piantà è salvà",
+  "clickToTakePhoto": "Cliccate per piglià una foto"
 }

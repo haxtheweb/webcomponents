@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Izvēlieties mērķi",
+  "importContentUnderThisPage": "Importēt saturu zem šīs lapas",
+  "importThisContent": "Importēt šo saturu",
+  "thisPage": "šī lapa",
+  "newPage": "Jauna lapa",
+  "copyOf": "Kopija:",
+  "pageActions": "Lapas darbības",
+  "editTitle": "Rediģēt virsrakstu",
+  "lock": "Bloķēt",
+  "unlock": "Atbloķēt",
+  "moveUp": "Pārvietot uz augšu",
+  "moveDown": "Pārvietot uz leju",
+  "makeChild": "Padarīt par apakšlapu",
+  "moveToParentLevel": "Pārvietot uz vecāklīmeni",
+  "addPage": "Pievienot lapu",
+  "duplicate": "Dublēt",
+  "delete": "Dzēst",
+  "restore": "Atjaunot",
+  "goToPage": "Doties uz lapu"
+}

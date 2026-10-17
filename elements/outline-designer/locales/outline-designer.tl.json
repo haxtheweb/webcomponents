@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Piliin ang target",
+  "importContentUnderThisPage": "I-import ang nilalaman sa ilalim ng pahinang ito",
+  "importThisContent": "I-import ang nilalamang ito",
+  "thisPage": "ang pahinang ito",
+  "newPage": "Bagong pahina",
+  "copyOf": "Kopya ng",
+  "pageActions": "Mga Aksyon sa Pahina",
+  "editTitle": "I-edit ang pamagat",
+  "lock": "I-lock",
+  "unlock": "I-unlock",
+  "moveUp": "Ilipat pataas",
+  "moveDown": "Ilipat pababa",
+  "makeChild": "Gawing child",
+  "moveToParentLevel": "Ilipat sa antas ng parent",
+  "addPage": "Magdagdag ng pahina",
+  "duplicate": "I-duplicate",
+  "delete": "Burahin",
+  "restore": "Ibalik",
+  "goToPage": "Pumunta sa pahina"
+}

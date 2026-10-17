@@ -1,0 +1,21 @@
+{
+  "selectTarget": "ਟੀਚਾ ਚੁਣੋ",
+  "importContentUnderThisPage": "ਇਸ ਪੰਨੇ ਹੇਠ ਸਮੱਗਰੀ ਆਯਾਤ ਕਰੋ",
+  "importThisContent": "ਇਹ ਸਮੱਗਰੀ ਆਯਾਤ ਕਰੋ",
+  "thisPage": "ਇਹ ਪੰਨਾ",
+  "newPage": "ਨਵਾਂ ਪੰਨਾ",
+  "copyOf": "ਦੀ ਕਾਪੀ",
+  "pageActions": "ਪੰਨਾ ਕਾਰਵਾਈਆਂ",
+  "editTitle": "ਸਿਰਲੇਖ ਸੋਧੋ",
+  "lock": "ਲੌਕ ਕਰੋ",
+  "unlock": "ਅਨਲੌਕ ਕਰੋ",
+  "moveUp": "ਉੱਪਰ ਲਿਜਾਓ",
+  "moveDown": "ਹੇਠਾਂ ਲਿਜਾਓ",
+  "makeChild": "ਉਪ-ਪੰਨਾ ਬਣਾਓ",
+  "moveToParentLevel": "ਮੂਲ ਪੱਧਰ 'ਤੇ ਲਿਜਾਓ",
+  "addPage": "ਪੰਨਾ ਸ਼ਾਮਲ ਕਰੋ",
+  "duplicate": "ਡੁਪਲੀਕੇਟ ਬਣਾਓ",
+  "delete": "ਮਿਟਾਓ",
+  "restore": "ਬਹਾਲ ਕਰੋ",
+  "goToPage": "ਪੰਨੇ 'ਤੇ ਜਾਓ"
+}

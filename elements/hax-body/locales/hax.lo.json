@@ -122,5 +122,21 @@
   "recent": "ຫຼ້າສຸດ",
   "popular": "ຍອດນິຍົມ",
   "copiedToClipboard": "ສຳເນົາໄປຄລິບບອດແລ້ວ",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "ຂໍ້ມູນຮູບພາບ",
+  "imageActions": "ການດຳເນີນການຮູບພາບ",
+  "imageRecommendations": "ຄຳແນະນຳຮູບພາບ",
+  "compressImage": "ບີບອັດຮູບພາບ",
+  "resizeTo": "ປັບຂະໜາດເປັນ",
+  "created": "ສ້າງເມື່ອ",
+  "size": "ຂະໜາດ",
+  "dimensions": "ມິຕິ",
+  "type": "ປະເພດ",
+  "done": "ສຳເລັດ",
+  "noFileUuid": "ບໍ່ມີການອ້າງອີງໄຟລ໌; ອັບໂຫຼດໃໝ່ເພື່ອເປີດໃຊ້ການດຳເນີນການ.",
+  "fileOpsUnavailable": "ການດຳເນີນການໄຟລ໌ບໍ່ມີໃຫ້ໃຊ້ສຳລັບເວັບໄຊນີ້.",
+  "fileOpFailed": "ການດຳເນີນການໄຟລ໌ລົ້ມເຫຼວ.",
+  "fileExtensionNotAllowed": "ຊ່ອງນີ້ຮັບສະເພາະປະເພດໄຟລ໌ຕໍ່ໄປນີ້:",
+  "fileTypeNotAllowed": "ຊ່ອງນີ້ຮັບສະເພາະປະເພດສື່ຕໍ່ໄປນີ້:",
+  "transformFailed": "ການແປງຫຼັງອັບໂຫຼດລົ້ມເຫຼວ; ໄດ້ເກັບໄຟລ໌ຕົ້ນສະບັບໄວ້."
 }

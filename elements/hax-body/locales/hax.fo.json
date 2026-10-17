@@ -122,5 +122,21 @@
   "recent": "Nýliga",
   "popular": "Umtókt",
   "copiedToClipboard": "Avrita til setibrett",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Myndaupplýsingar",
+  "imageActions": "Myndagerðir",
+  "imageRecommendations": "Tilmæli fyri myndina",
+  "compressImage": "Samanpressa mynd",
+  "resizeTo": "Broyt stødd til",
+  "created": "Stovnað",
+  "size": "Stødd",
+  "dimensions": "Mát",
+  "type": "Slag",
+  "done": "liðugt",
+  "noFileUuid": "Fílutilvísing er ikki tøk; legg upp aftur fyri at virkja gerðir.",
+  "fileOpsUnavailable": "Fílugerðir eru ikki tøkar fyri hesa síðuna.",
+  "fileOpFailed": "Fílugerðin miseydnaðist.",
+  "fileExtensionNotAllowed": "Hetta feltið tekur bert ímóti hesum fíluslagum:",
+  "fileTypeNotAllowed": "Hetta feltið tekur bert ímóti hesum miðlasløgum:",
+  "transformFailed": "Umskapan eftir uppsending miseydnaðist; upprunafílan varð goymd."
 }

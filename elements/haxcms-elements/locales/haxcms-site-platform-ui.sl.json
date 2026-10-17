@@ -1,0 +1,18 @@
+{
+  "title": "Funkcije platforme",
+  "experienceLevel": "Raven izkušenj",
+  "cmsFeatures": "Funkcije CMS",
+  "editorFeatures": "Funkcije urejevalnika",
+  "blocks": "Bloki",
+  "filterBlocks": "Filtriraj bloke",
+  "requiredTextNote": "Nekatere besedilne oznake so obvezne in vedno omogočene (prikazane kot onemogočene).",
+  "download": "Prenesi ogrodje",
+  "save": "Shrani",
+  "generating": "Ustvarjanje ogrodja …",
+  "generated": "Ogrodje preneseno",
+  "enabled": "Omogočeno",
+  "feature": "Funkcija",
+  "details": "Podrobnosti",
+  "featuresWarning": "Onemogočanje teh možnosti lahko odstrani pomembne zmožnosti urejanja in upravljanja.",
+  "largeSiteWarning": "To spletno mesto ima veliko strani. Ustvarjanje ogrodja lahko traja nekaj časa."
+}

@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Maqsadni tanlang",
+  "importContentUnderThisPage": "Kontentni shu sahifa ostiga import qilish",
+  "importThisContent": "Bu kontentni import qilish",
+  "thisPage": "bu sahifa",
+  "newPage": "Yangi sahifa",
+  "copyOf": "Nusxa:",
+  "pageActions": "Sahifa amallari",
+  "editTitle": "Sarlavhani tahrirlash",
+  "lock": "Qulflash",
+  "unlock": "Qulfdan chiqarish",
+  "moveUp": "Yuqoriga ko‘chirish",
+  "moveDown": "Pastga ko‘chirish",
+  "makeChild": "Ichki sahifa qilish",
+  "moveToParentLevel": "Yuqori darajaga ko‘chirish",
+  "addPage": "Sahifa qo‘shish",
+  "duplicate": "Nusxa ko‘paytirish",
+  "delete": "O‘chirish",
+  "restore": "Tiklash",
+  "goToPage": "Sahifaga o‘tish"
+}

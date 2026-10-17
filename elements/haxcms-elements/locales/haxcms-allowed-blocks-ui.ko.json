@@ -1,0 +1,14 @@
+{
+  "title": "블록",
+  "enabled": "사용",
+  "block": "블록",
+  "preview": "미리 보기",
+  "filterBlocks": "블록 필터",
+  "requiredTextNote": "일부 텍스트 태그는 필수이며 항상 사용됩니다(비활성 상태로 표시됨).",
+  "selectAll": "모두 선택",
+  "deselectAll": "모두 선택 해제",
+  "save": "저장",
+  "noDescription": "설명이 없습니다.",
+  "details": "세부 정보",
+  "loadingInventory": "전체 블록 목록을 불러오는 중…"
+}

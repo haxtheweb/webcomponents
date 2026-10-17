@@ -1,0 +1,14 @@
+{
+  "title": "Blok",
+  "enabled": "Aktif",
+  "block": "Blok",
+  "preview": "Pratinjau",
+  "filterBlocks": "Saring blok",
+  "requiredTextNote": "Sawetara tag teks iku wajib lan tansah aktif (ditampilake ora aktif).",
+  "selectAll": "Pilih kabèh",
+  "deselectAll": "Batal pilih kabèh",
+  "save": "Simpen",
+  "noDescription": "Ora ana katrangan.",
+  "details": "Rincian",
+  "loadingInventory": "Lagi ngemot daftar blok lengkap…"
+}

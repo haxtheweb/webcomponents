@@ -1,0 +1,18 @@
+{
+  "title": "平台功能",
+  "experienceLevel": "经验水平",
+  "cmsFeatures": "CMS 功能",
+  "editorFeatures": "编辑器功能",
+  "blocks": "区块",
+  "filterBlocks": "筛选区块",
+  "requiredTextNote": "部分文本标签为必需项，始终启用（显示为禁用状态）。",
+  "download": "下载骨架",
+  "save": "保存",
+  "generating": "正在生成骨架…",
+  "generated": "骨架已下载",
+  "enabled": "已启用",
+  "feature": "功能",
+  "details": "详细信息",
+  "featuresWarning": "禁用这些选项可能会移除主要的创作和管理功能。",
+  "largeSiteWarning": "此站点页面较多，生成骨架可能需要一些时间。"
+}

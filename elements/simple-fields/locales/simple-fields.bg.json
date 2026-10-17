@@ -5,5 +5,9 @@
   "recordAudio": "Запишете аудио",
   "recordScreen": "Запишете екрана",
   "cancel": "Отказ",
-  "uploadMedia": "Качете медия"
+  "uploadMedia": "Качете медия",
+  "record": "Запис",
+  "pause": "Пауза на записа",
+  "stopSave": "Спиране и запазване",
+  "clickToTakePhoto": "Щракнете, за да направите снимка"
 }

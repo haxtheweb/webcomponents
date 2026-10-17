@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub ñongatuhá",
   "anErrorOccurred": "Oiko jejavy",
-  "retry": "Eha'ãjey"
+  "retry": "Eha'ãjey",
+  "permissionRequired": "Oñeikotevẽ moneĩ",
+  "passwordRequirements": "Ñe'ẽñemi oikotevẽva",
+  "requirementLength": "Sa'ive 8 tai",
+  "requirementUppercase": "Peteĩ tai guasu",
+  "requirementLowercase": "Peteĩ tai michĩ",
+  "requirementNumber": "Peteĩ papapy",
+  "requirementSymbol": "Peteĩ techaukaha"
 }

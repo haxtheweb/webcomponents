@@ -1,0 +1,9 @@
+{
+  "title": "Configuración del editor",
+  "experienceLevel": "Nivel de experiencia",
+  "experienceLevelDescription": "Selecciona la experiencia del editor y previsualiza el diseño de la barra de herramientas.",
+  "buttons": "Botones",
+  "futureButtonConfiguration": "Pronto estará disponible la configuración personalizada de los botones del editor.",
+  "save": "Guardar",
+  "saving": "Guardando…"
+}

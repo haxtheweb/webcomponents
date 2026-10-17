@@ -1,0 +1,9 @@
+{
+  "title": "Editor Settings",
+  "experienceLevel": "Experience Level",
+  "experienceLevelDescription": "Select the editor experience and preview the toolbar layout.",
+  "buttons": "Buttons",
+  "futureButtonConfiguration": "Custom editor button configuration is coming soon.",
+  "save": "Save",
+  "saving": "Saving…"
+}

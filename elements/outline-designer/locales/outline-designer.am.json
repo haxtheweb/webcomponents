@@ -1,0 +1,21 @@
+{
+  "selectTarget": "ዒላማ ይምረጡ",
+  "importContentUnderThisPage": "ይዘትን ከዚህ ገጽ ስር አስመጣ",
+  "importThisContent": "ይህን ይዘት አስመጣ",
+  "thisPage": "ይህ ገጽ",
+  "newPage": "አዲስ ገጽ",
+  "copyOf": "ቅጂ የ",
+  "pageActions": "የገጽ እርምጃዎች",
+  "editTitle": "ርዕስ አርትዕ",
+  "lock": "ቆልፍ",
+  "unlock": "ክፈት",
+  "moveUp": "ወደ ላይ አንቀሳቅስ",
+  "moveDown": "ወደ ታች አንቀሳቅስ",
+  "makeChild": "ንዑስ ገጽ አድርግ",
+  "moveToParentLevel": "ወደ ወላጅ ደረጃ አንቀሳቅስ",
+  "addPage": "ገጽ አክል",
+  "duplicate": "አባዛ",
+  "delete": "ሰርዝ",
+  "restore": "መልስ",
+  "goToPage": "ወደ ገጹ ሂድ"
+}

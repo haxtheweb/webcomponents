@@ -5,5 +5,9 @@
   "recordAudio": "Maqal duubo",
   "recordScreen": "Shaasha duubo",
   "cancel": "Jooji",
-  "uploadMedia": "Soo geli macluumaadka"
+  "uploadMedia": "Soo geli macluumaadka",
+  "record": "Duub",
+  "pause": "Hakad duubista",
+  "stopSave": "Jooji & Kaydi",
+  "clickToTakePhoto": "Riix si aad sawir u qaaddo"
 }

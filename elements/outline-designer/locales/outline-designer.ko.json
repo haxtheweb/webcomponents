@@ -1,0 +1,21 @@
+{
+  "selectTarget": "대상 선택",
+  "importContentUnderThisPage": "이 페이지 아래로 콘텐츠 가져오기",
+  "importThisContent": "이 콘텐츠 가져오기",
+  "thisPage": "이 페이지",
+  "newPage": "새 페이지",
+  "copyOf": "사본:",
+  "pageActions": "페이지 작업",
+  "editTitle": "제목 편집",
+  "lock": "잠금",
+  "unlock": "잠금 해제",
+  "moveUp": "위로 이동",
+  "moveDown": "아래로 이동",
+  "makeChild": "하위 항목으로 만들기",
+  "moveToParentLevel": "상위 수준으로 이동",
+  "addPage": "페이지 추가",
+  "duplicate": "복제",
+  "delete": "삭제",
+  "restore": "복원",
+  "goToPage": "페이지로 이동"
+}

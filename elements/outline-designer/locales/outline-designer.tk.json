@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Maksady saýlaň",
+  "importContentUnderThisPage": "Mazmuny şu sahypanyň aşagyna import etmek",
+  "importThisContent": "Bu mazmuny import etmek",
+  "thisPage": "bu sahypa",
+  "newPage": "Täze sahypa",
+  "copyOf": "Nusgasy:",
+  "pageActions": "Sahypa amallary",
+  "editTitle": "Ady redaktirlemek",
+  "lock": "Gulplamak",
+  "unlock": "Gulpy açmak",
+  "moveUp": "Ýokary süýşürmek",
+  "moveDown": "Aşak süýşürmek",
+  "makeChild": "Içki sahypa etmek",
+  "moveToParentLevel": "Ene derejä geçirmek",
+  "addPage": "Sahypa goşmak",
+  "duplicate": "Nusgalamak",
+  "delete": "Pozmak",
+  "restore": "Dikeltmek",
+  "goToPage": "Sahypa geçmek"
+}

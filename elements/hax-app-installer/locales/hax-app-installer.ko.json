@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub 저장소",
   "anErrorOccurred": "오류가 발생했습니다",
-  "retry": "재시도"
+  "retry": "재시도",
+  "permissionRequired": "권한 필요",
+  "passwordRequirements": "비밀번호 요건",
+  "requirementLength": "8자 이상",
+  "requirementUppercase": "대문자 1개",
+  "requirementLowercase": "소문자 1개",
+  "requirementNumber": "숫자 1개",
+  "requirementSymbol": "기호 1개"
 }

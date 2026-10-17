@@ -1,0 +1,11 @@
+{
+  "pagination": "Pagination",
+  "page": "Page",
+  "of": "of",
+  "first": "First page",
+  "previous": "Previous page",
+  "next": "Next page",
+  "last": "Last page",
+  "showing": "Showing",
+  "to": "to"
+}

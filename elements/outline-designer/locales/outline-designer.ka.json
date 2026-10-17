@@ -1,0 +1,21 @@
+{
+  "selectTarget": "აირჩიეთ სამიზნე",
+  "importContentUnderThisPage": "შიგთავსის იმპორტი ამ გვერდის ქვეშ",
+  "importThisContent": "ამ შიგთავსის იმპორტი",
+  "thisPage": "ეს გვერდი",
+  "newPage": "ახალი გვერდი",
+  "copyOf": "ასლი:",
+  "pageActions": "გვერდის მოქმედებები",
+  "editTitle": "სათაურის რედაქტირება",
+  "lock": "დაბლოკვა",
+  "unlock": "განბლოკვა",
+  "moveUp": "ზემოთ გადატანა",
+  "moveDown": "ქვემოთ გადატანა",
+  "makeChild": "ქვეგვერდად გადაქცევა",
+  "moveToParentLevel": "მშობელ დონეზე გადატანა",
+  "addPage": "გვერდის დამატება",
+  "duplicate": "დუბლირება",
+  "delete": "წაშლა",
+  "restore": "აღდგენა",
+  "goToPage": "გვერდზე გადასვლა"
+}

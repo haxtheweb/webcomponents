@@ -5,5 +5,9 @@
   "recordAudio": "Аудионы жазу",
   "recordScreen": "Экранды жазу",
   "cancel": "Бас тарту",
-  "uploadMedia": "Медианы жүктеу"
+  "uploadMedia": "Медианы жүктеу",
+  "record": "Жазу",
+  "pause": "Жазуды кідірту",
+  "stopSave": "Тоқтату және сақтау",
+  "clickToTakePhoto": "Суретке түсіру үшін басыңыз"
 }

@@ -1,0 +1,14 @@
+{
+  "title": "Blọọkụ",
+  "enabled": "Agbanyere",
+  "block": "Blọọkụ",
+  "preview": "Nlele mbụ",
+  "filterBlocks": "Hazie blọọkụ",
+  "requiredTextNote": "Ụfọdụ mkpado ederede dị mkpa ma na-agbanye mgbe niile (egosiri ka agbanyụrụ).",
+  "selectAll": "Họrọ ha niile",
+  "deselectAll": "Wepụ nhọrọ niile",
+  "save": "Chekwaa",
+  "noDescription": "Enweghị nkọwa dị.",
+  "details": "Nkọwa zuru ezu",
+  "loadingInventory": "Na-ebugo ndepụta blọọkụ niile…"
+}

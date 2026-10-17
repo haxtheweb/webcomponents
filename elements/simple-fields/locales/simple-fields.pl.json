@@ -5,5 +5,9 @@
   "recordAudio": "Nagraj dźwięk",
   "recordScreen": "Nagraj ekran",
   "cancel": "Anuluj",
-  "uploadMedia": "Prześlij media"
+  "uploadMedia": "Prześlij media",
+  "record": "Nagrywaj",
+  "pause": "Wstrzymaj nagrywanie",
+  "stopSave": "Zatrzymaj i zapisz",
+  "clickToTakePhoto": "Kliknij, aby zrobić zdjęcie"
 }

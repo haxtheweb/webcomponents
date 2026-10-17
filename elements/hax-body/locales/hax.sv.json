@@ -122,5 +122,21 @@
   "recent": "Senaste",
   "popular": "Populära",
   "copiedToClipboard": "Kopierad till urklipp",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Bildinformation",
+  "imageActions": "Bildåtgärder",
+  "imageRecommendations": "Bildrekommendationer",
+  "compressImage": "Komprimera bild",
+  "resizeTo": "Ändra storlek till",
+  "created": "Skapad",
+  "size": "Storlek",
+  "dimensions": "Mått",
+  "type": "Typ",
+  "done": "klart",
+  "noFileUuid": "Filreferensen är inte tillgänglig; ladda upp igen för att aktivera åtgärder.",
+  "fileOpsUnavailable": "Filåtgärder är inte tillgängliga för den här webbplatsen.",
+  "fileOpFailed": "Filåtgärden misslyckades.",
+  "fileExtensionNotAllowed": "Det här fältet accepterar endast följande filtyper:",
+  "fileTypeNotAllowed": "Det här fältet accepterar endast följande medietyper:",
+  "transformFailed": "Bearbetningen efter uppladdning misslyckades; originalfilen behölls."
 }

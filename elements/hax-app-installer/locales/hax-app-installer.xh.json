@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "I-repository ye-GitHub",
   "anErrorOccurred": "Kwenzeke imposiso",
-  "retry": "Zama kwakhona"
+  "retry": "Zama kwakhona",
+  "permissionRequired": "Imvume iyafuneka",
+  "passwordRequirements": "Iimfuno zegama lokugqitha",
+  "requirementLength": "Ubuncinane iimpawu ezi-8",
+  "requirementUppercase": "Unobumba omkhulu omnye",
+  "requirementLowercase": "Unobumba omncinane omnye",
+  "requirementNumber": "Inani elinye",
+  "requirementSymbol": "Uphawu olunye"
 }
