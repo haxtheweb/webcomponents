@@ -83,9 +83,46 @@ describe("hax-store _registerHaxPropertiesLocales", () => {
     );
   });
 
-  it("skips inline haxProperties objects", () => {
-    HAXStore._registerHaxPropertiesLocales(INLINE_TAG);
-    expect(registered(INLINE_TAG).length).to.equal(0);
+  it("skips inline haxProperties when the import path is unknown", () => {
+    const saved = HAXStore.__elementImportPaths;
+    HAXStore.__elementImportPaths = {};
+    try {
+      HAXStore._registerHaxPropertiesLocales(INLINE_TAG);
+      expect(registered(INLINE_TAG).length).to.equal(0);
+    } finally {
+      HAXStore.__elementImportPaths = saved;
+    }
+  });
+
+  it("resolves inline haxProperties to the package locales folder", () => {
+    const saved = HAXStore.__elementImportPaths;
+    HAXStore.__elementImportPaths = {
+      [INLINE_TAG]:
+        "https://cdn.example.com/build/@haxtheweb/probe-pkg/lib/nested/probe.js",
+    };
+    try {
+      HAXStore._registerHaxPropertiesLocales(INLINE_TAG);
+      const found = registered(INLINE_TAG);
+      expect(found.length).to.equal(1);
+      expect(found[0].localesPath).to.equal(
+        "https://cdn.example.com/build/@haxtheweb/probe-pkg/locales",
+      );
+    } finally {
+      HAXStore.__elementImportPaths = saved;
+    }
+  });
+
+  it("ignores inline schemas from non-@haxtheweb packages", () => {
+    const saved = HAXStore.__elementImportPaths;
+    HAXStore.__elementImportPaths = {
+      [INLINE_TAG]: "https://cdn.example.com/other-scope/probe/probe.js",
+    };
+    try {
+      HAXStore._registerHaxPropertiesLocales(INLINE_TAG);
+      expect(registered(INLINE_TAG).length).to.equal(0);
+    } finally {
+      HAXStore.__elementImportPaths = saved;
+    }
   });
 
   it("skips schema URLs outside <package>/lib/<tag>.haxProperties.json", () => {

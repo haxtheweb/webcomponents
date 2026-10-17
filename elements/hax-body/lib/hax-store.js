@@ -1697,7 +1697,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (globalThis.WCGlobalBasePath) {
       basePath = globalThis.WCGlobalBasePath;
     }
+    this.__elementImportPaths = this.__elementImportPaths || {};
     for (let i in items) {
+      // remember where each element came from so its package locales
+      // can be found later (see _packageLocalesPath)
+      if (typeof items[i] === "string") {
+        this.__elementImportPaths[i] = this.isExternalURLImport(items[i])
+          ? items[i]
+          : `${basePath}${items[i]}`;
+      }
       // try to skip an import
       if (globalThis.customElements.get(i)) {
         if (globalThis.customElements.get(i).haxProperties) {
@@ -6456,10 +6464,43 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       : null;
   }
   /**
-   * Register `<tag>.haxProperties` with the i18n manager for blocks whose
-   * haxProperties point at <package>/lib/<tag>.haxProperties.json, so their
-   * editor labels translate from <package>/locales without a per-element
-   * gizmoRegistration hook. Blocks that already registered are left alone.
+   * Where a block's package keeps its locales, worked out from the import
+   * path HAX loaded it with (app store autoloader, else the dynamic import
+   * registry). Only @haxtheweb/<package>/ paths qualify; their locales sit
+   * at the package root.
+   */
+  _packageLocalesPath(tag) {
+    let importPath =
+      this.__elementImportPaths && this.__elementImportPaths[tag];
+    if (
+      !importPath &&
+      globalThis.DynamicImportRegistry &&
+      globalThis.DynamicImportRegistry.instance &&
+      typeof globalThis.DynamicImportRegistry.instance.getPathToTag ===
+        "function"
+    ) {
+      importPath = globalThis.DynamicImportRegistry.instance.getPathToTag(tag);
+    }
+    if (typeof importPath !== "string") {
+      return null;
+    }
+    const match = importPath.match(/^(.*?@haxtheweb\/[^/]+)\//);
+    if (!match) {
+      return null;
+    }
+    try {
+      return new URL(`${match[1]}/locales`, globalThis.document.baseURI).href;
+    } catch (e) {
+      return null;
+    }
+  }
+  /**
+   * Register `<tag>.haxProperties` with the i18n manager so a block's editor
+   * labels translate from its package's locales folder without a per-element
+   * gizmoRegistration hook. File-based schemas
+   * (<package>/lib/<tag>.haxProperties.json) resolve from the schema URL;
+   * inline schemas resolve from the element's import path. Blocks that
+   * already registered are left alone.
    */
   _registerHaxPropertiesLocales(tag) {
     const namespace = `${tag}.haxProperties`;
@@ -6476,15 +6517,20 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     } catch (e) {
       return;
     }
-    if (
-      typeof source !== "string" ||
-      !source.split("?")[0].endsWith(`/lib/${tag}.haxProperties.json`)
-    ) {
+    let localesPath = null;
+    if (typeof source === "string") {
+      if (source.split("?")[0].endsWith(`/lib/${tag}.haxProperties.json`)) {
+        localesPath = new URL("../locales", source).href;
+      }
+    } else if (source && typeof source === "object") {
+      localesPath = this._packageLocalesPath(tag);
+    }
+    if (!localesPath) {
       return;
     }
     I18NManagerStore.registerLocalization({
       namespace: namespace,
-      localesPath: new URL("../locales", source).href,
+      localesPath: localesPath,
     });
   }
   async attemptGizmoTranslation(tag, properties) {
