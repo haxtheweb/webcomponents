@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "صحیح / غلط سوال",
+    "description": "صحیح غلط سوال"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "سوال",
+        "description": "صارفاں دے جواب دین لئی سوال۔"
+      },
+      {
+        "property": "_tfanswer",
+        "title": "صحیح جواب"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "کوئز دا ناں",
+        "description": "xAPI والے ماحول وچ ایس آئٹم دی شناخت لئی بھیجیا جاوݨ والا کوئز دا ناں"
+      }
+    ]
+  }
+}

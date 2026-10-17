@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Phần hình ảnh",
+    "description": "Hình ảnh toàn chiều rộng để phân tách một phần của trang."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Hình nền."
+      },
+      {
+        "property": "caption",
+        "description": "Tiêu đề văn bản."
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kart",
+    "description": "Pêkhateya kartê ya bi pergala sêwiranê DDD hatiye şêwekirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Wêne",
+        "description": "Wêneyê vebijarkî."
+      },
+      {
+        "property": "alt",
+        "title": "Alt a wêneyê",
+        "description": "Nivîsa alternatîf a ku wêneyê dide nasîn."
+      },
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê kartê."
+      },
+      {
+        "slot": "",
+        "title": "Naverok",
+        "description": "Qada naveroka kartê."
+      },
+      {
+        "property": "href",
+        "title": "Girêdan",
+        "description": "URL ya girêdana bişkokê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etîket",
+        "description": "Etîketa bişkokê."
+      },
+      {
+        "property": "noArrow",
+        "title": "Bê Tîr",
+        "description": "Tîra bişkokê veşêre."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Girêdan: armanc",
+        "description": "Girêdan li ku were vekirin.",
+        "options": {
+          "": "Heman pencere",
+          "_blank": "Pencereya nû - _blank",
+          "_top": "Pencereya jorîn - _top",
+          "_parent": "Pencereya dêûbav - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Girêdan: rel",
+        "description": "Têkiliya di navbera çavkaniya girêdayî û belgeya niha de."
+      }
+    ]
+  }
+}

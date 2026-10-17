@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Rètol HAX",
+    "description": "Element de logotip per a HAX, evidentment com a element compatible amb HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Mida del logotip d'HAX que es col·loca",
+        "options": {
+          "mini": "Mini",
+          "small": "Petita",
+          "normal": "Normal",
+          "large": "Gran"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Si cal convertir el logotip a majúscules"
+      }
+    ]
+  }
+}

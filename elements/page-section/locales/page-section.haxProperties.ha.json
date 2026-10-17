@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sashen shafi",
+    "description": "Akwatin sashe don abun cikin shafi da tsarin allo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Salon zane",
+        "description": "Salon da aka shirya wanda ke sabunta saituna masu alaƙa."
+      },
+      {
+        "property": "image",
+        "title": "Hoto",
+        "description": "Kafofin bango na sashen."
+      },
+      {
+        "property": "bg",
+        "title": "Launin bango",
+        "description": "Launin bango idan ba a saita hoto ba."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Maɓallin gungurawa",
+        "description": "Nuna maɓallin da ke gungurawa zuwa sashe na gaba."
+      },
+      {
+        "property": "fold",
+        "title": "Nuna ninki",
+        "description": "Nuna ninki na gani a ƙasan sashen."
+      },
+      {
+        "property": "full",
+        "title": "Girman cikakken allo",
+        "description": "Cika tsawon allon mai kallo."
+      },
+      {
+        "property": "filter",
+        "title": "Sanya Tacewa",
+        "description": "Sanya tacewar gani a kan hoton bango."
+      },
+      {
+        "slot": "",
+        "title": "Abun ciki",
+        "description": "Abun cikin sashe."
+      },
+      {
+        "slot": "entice",
+        "title": "Jawo hankali",
+        "description": "Abun ciki na zaɓi don jawo hankali."
+      },
+      {
+        "slot": "buttons",
+        "title": "Maɓallai",
+        "description": "Rukunin maɓallai da ake nunawa ƙarƙashin rubutun."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Rubutun angar",
+        "description": "Lakabin angar da ake nunawa a kewayawa."
+      }
+    ]
+  }
+}

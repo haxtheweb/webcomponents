@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Produit op ee Bléck",
+    "description": "Block fir e séieren Iwwerbléck iwwer e Produit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon, deen d'Konzept representéiert."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Haaptkonzept op ee Bléck."
+      },
+      {
+        "property": "subtitle",
+        "title": "Ënnertitel",
+        "description": "Zousätzlechen Detail."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Akzentfaarf fir d'Ikon."
+      }
+    ]
+  }
+}

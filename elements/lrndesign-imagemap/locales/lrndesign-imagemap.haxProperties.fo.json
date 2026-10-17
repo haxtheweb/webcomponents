@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Myndakort",
+    "description": "Eitt atkomuligt myndakort við gagnvirknum heitum blettum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Heiti",
+        "description": "Heiti á myndakortinum."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Smálutir um heitar blettir",
+        "description": "Teir gagnvirknu heitu blettirnir á myndakortinum."
+      }
+    ]
+  }
+}

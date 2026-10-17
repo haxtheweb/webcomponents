@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "भन्नाट स्फोट",
+    "description": "पर्यायी ध्वनी प्रभावांसह परस्परसंवादी स्फोट अॅनिमेशन."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "आकार",
+        "description": "स्फोटाचा आकार सेट करा.",
+        "options": {
+          "tiny": "अतिलहान",
+          "small": "लहान",
+          "medium": "मध्यम",
+          "large": "मोठा",
+          "epic": "महाकाय"
+        }
+      },
+      {
+        "property": "color",
+        "title": "रंग",
+        "description": "स्फोटाची रंगसंगती सेट करा.",
+        "options": {
+          "": "डीफॉल्ट",
+          "red": "लाल",
+          "blue": "निळा",
+          "purple": "जांभळा",
+          "orange": "नारिंगी",
+          "yellow": "पिवळा"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "ध्वनी प्रभाव",
+        "description": "ध्वनी प्रभाव सक्षम करा."
+      },
+      {
+        "property": "resetSound",
+        "title": "ध्वनी रीसेट करा",
+        "description": "प्रत्येक वेळी ध्वनी सुरुवातीपासून पुन्हा सुरू करा."
+      },
+      {
+        "property": "image",
+        "title": "सानुकूल प्रतिमा",
+        "description": "सानुकूल स्फोट प्रतिमेसाठी पर्यायी URL."
+      },
+      {
+        "property": "sound",
+        "title": "सानुकूल ध्वनी",
+        "description": "सानुकूल ध्वनी प्रभावासाठी पर्यायी URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "अक्षम",
+        "description": "सर्व परस्परसंवाद अक्षम करा."
+      }
+    ]
+  }
+}

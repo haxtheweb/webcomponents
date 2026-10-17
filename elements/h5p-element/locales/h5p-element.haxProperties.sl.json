@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Ovoj H5P za nalaganje in predstavitev datotek .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Koda za vdelavo H5P prek iframe"
+      }
+    ]
+  }
+}

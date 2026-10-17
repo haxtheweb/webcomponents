@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kwatanta hotuna",
+    "description": "Ja hoto ɗaya a kan wani don kwatantawa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Hoton sama",
+        "description": "Hoton sama da za a ja a kan hoton ƙasa."
+      },
+      {
+        "property": "topAlt",
+        "title": "Rubutun madadi na hoton sama",
+        "description": "Rubutun madadi da ake buƙata don sauƙin isa."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Hoton ƙasa",
+        "description": "Hoton ƙasa da ake nunawa ƙarƙashin hoton sama."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Rubutun madadi na hoton ƙasa",
+        "description": "Rubutun madadi da ake buƙata don sauƙin isa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Hali",
+        "description": "Zaɓi yanayin sharewa (tsoho) ko yanayin bayyanar hoton sama."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin Ƙawa",
+        "description": "Launin sandar zamewa."
+      },
+      {
+        "property": "dark",
+        "title": "Duhu",
+        "description": "Juya launin sandar zamewa."
+      },
+      {
+        "property": "position",
+        "title": "Matsayin Farko",
+        "description": "Matsayin farawa daga 0 zuwa 100."
+      }
+    ]
+  }
+}

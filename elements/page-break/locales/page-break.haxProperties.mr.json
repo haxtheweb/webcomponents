@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "पृष्ठ तपशील",
+    "description": "पृष्ठांमधील दृश्य विभाजन निश्चित करा, ज्याचा वापर CMS पृष्ठे तयार करण्यासाठी करू शकतात."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "थीममध्ये आणि पहिल्या शीर्षकात दाखवलेले शीर्षक."
+      },
+      {
+        "property": "pageType",
+        "title": "प्रकार",
+        "description": "दृश्य पृष्ठ संदर्भ लेबल.",
+        "options": {
+          "": "-- काहीही नाही --",
+          "content": "सामग्री",
+          "assessment": "मूल्यमापन",
+          "quiz": "प्रश्नमंजुषा",
+          "submission": "सबमिशन",
+          "lesson": "पाठ",
+          "module": "मॉड्यूल",
+          "task": "कार्य",
+          "activity": "उपक्रम",
+          "project": "प्रकल्प",
+          "practice": "सराव",
+          "unit": "घटक",
+          "objectives": "अध्ययन उद्दिष्टे",
+          "connection": "संबंध",
+          "knowledge": "तुम्हाला माहीत आहे का?",
+          "strategy": "अध्ययन धोरण",
+          "discuss": "चर्चा करा",
+          "listen": "ऐका",
+          "make": "तयार करा",
+          "observe": "निरीक्षण करा",
+          "present": "सादर करा",
+          "reading": "वाचन",
+          "reflect": "चिंतन करा",
+          "research": "संशोधन",
+          "watch": "पाहा",
+          "write": "लिहा"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "टॅग",
+        "description": "स्वल्पविरामाने विभक्त टॅगची सूची."
+      },
+      {
+        "property": "linkUrl",
+        "title": "लिंक URL",
+        "description": "पृष्ठ सामग्रीऐवजी दाखवली जाणारी पुनर्निर्देशन URL."
+      },
+      {
+        "property": "linkTarget",
+        "title": "लिंक लक्ष्य",
+        "description": "लिंक त्याच विंडोमध्ये किंवा नवीन विंडोमध्ये उघडा.",
+        "options": {
+          "_self": "त्याच विंडोमध्ये",
+          "_blank": "नवीन विंडो"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "प्रकाशित",
+        "description": "अप्रकाशित पृष्ठे अंतिम वापरकर्त्यांपासून लपवली जातात."
+      },
+      {
+        "property": "locked",
+        "title": "पृष्ठ लॉक करा",
+        "description": "या पृष्ठावरील सर्व घटक लॉक किंवा अनलॉक करा."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "स्वयंचलित स्लग अधिलिखित करा",
+        "description": "शीर्षक किंवा मूळ पृष्ठावर आधारित स्वयंचलित अद्यतनांपासून स्लग लॉक करा."
+      },
+      {
+        "property": "slug",
+        "title": "पथ",
+        "description": "या पृष्ठासाठी URL स्लग."
+      },
+      {
+        "property": "image",
+        "title": "माध्यम",
+        "description": "पृष्ठाचे प्रतिनिधित्व करणारे माध्यम, काही थीम आणि दृश्यांमध्ये वापरले जाते."
+      },
+      {
+        "property": "parent",
+        "title": "मूळ",
+        "description": "मूळ पृष्ठाचा पथ."
+      },
+      {
+        "property": "noderefs",
+        "title": "संबंधित सामग्री",
+        "description": "या पृष्ठाशी संबंधित पृष्ठे."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "वर्णन",
+        "description": "संग्रहांमध्ये आणि शोध इंजिन ऑप्टिमायझेशनमध्ये वापरलेले वर्णन."
+      },
+      {
+        "property": "entityType",
+        "title": "घटक प्रकार",
+        "description": "अन्यथा सेट न केल्यास डीफॉल्ट पृष्ठ.",
+        "options": {
+          "page": "पृष्ठ (डीफॉल्ट)",
+          "taxonomy": "वर्गीकरण",
+          "taxonomyTerm": "वर्गीकरण संज्ञा",
+          "region": "प्रदेश"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "आयकॉन",
+        "description": "साइटमध्ये या पृष्ठाशी संबंधित आयकॉन."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "साइटमध्ये या पृष्ठाशी संबंधित रंग."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "मेनूमध्ये लपवा",
+        "description": "URL कायम ठेवून हे पृष्ठ मेनूमधून लपवा."
+      },
+      {
+        "property": "order",
+        "title": "क्रम",
+        "description": "सहोदर पृष्ठांच्या तुलनेत क्रम."
+      },
+      {
+        "property": "developerTheme",
+        "title": "पृष्ठ थीम",
+        "description": "फक्त या पृष्ठासाठी थीम अधिलिखित करा."
+      },
+      {
+        "property": "author",
+        "title": "लेखक",
+        "description": "हे पृष्ठ शेवटी सुधारित करणाऱ्या व्यक्तीचे वापरकर्तानाव."
+      }
+    ]
+  }
+}

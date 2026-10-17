@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Liiska ka-qayb-qaatayaasha GitHub",
+    "description": "Loo muujiyay sidii jilayaal RPG ah iyadoo la isticmaalayo GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Hay'ad",
+        "description": "Magaca hay'adda ee github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Kayd",
+        "description": "Magaca kaydka ee github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Xad",
+        "description": "Xaddid tirada ka-qayb-qaatayaasha la muujinayo."
+      }
+    ]
+  }
+}

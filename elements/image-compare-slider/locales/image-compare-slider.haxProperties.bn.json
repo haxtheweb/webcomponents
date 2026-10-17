@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ছবি তুলনা",
+    "description": "তুলনার জন্য একটি ছবির উপর দিয়ে আরেকটি সোয়াইপ করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "উপরের ছবি",
+        "description": "নিচের ছবির উপর দিয়ে সোয়াইপ করার উপরের ছবি।"
+      },
+      {
+        "property": "topAlt",
+        "title": "উপরের ছবির বিকল্প টেক্সট",
+        "description": "অ্যাক্সেসযোগ্যতার জন্য আবশ্যক বিকল্প টেক্সট।"
+      },
+      {
+        "property": "bottomSrc",
+        "title": "নিচের ছবি",
+        "description": "উপরের ছবির নিচে দেখানো ছবি।"
+      },
+      {
+        "property": "bottomAlt",
+        "title": "নিচের ছবির বিকল্প টেক্সট",
+        "description": "অ্যাক্সেসযোগ্যতার জন্য আবশ্যক বিকল্প টেক্সট।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "আচরণ",
+        "description": "ওয়াইপ মোড (ডিফল্ট) বা উপরের ছবির অস্বচ্ছতা মোড বেছে নিন।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "স্লাইডার বারের রং।"
+      },
+      {
+        "property": "dark",
+        "title": "ডার্ক",
+        "description": "স্লাইডার বারের রং উল্টে দিন।"
+      },
+      {
+        "property": "position",
+        "title": "প্রাথমিক অবস্থান",
+        "description": "0 থেকে 100 পর্যন্ত শুরুর অবস্থান।"
+      }
+    ]
+  }
+}

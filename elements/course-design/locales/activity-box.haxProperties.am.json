@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "የእንቅስቃሴ ሳጥን",
+    "description": "ትንሽ ቅጥ ያለው የርዕስ ብሎክ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "አዶ",
+        "description": "ከእንቅስቃሴ ሳጥኑ ጎን የሚታይ አዶ።"
+      },
+      {
+        "property": "tag",
+        "title": "የእንቅስቃሴ ሳጥን መለያ",
+        "description": "በእንቅስቃሴ ሳጥኑ ውስጥ የሚታይ መለያ።"
+      },
+      {
+        "property": "nocolourize",
+        "title": "ቀለም አትቀባ",
+        "description": "ቀለሞች በአዶው ላይ እንዳይተገበሩ ከልክል።"
+      }
+    ]
+  }
+}

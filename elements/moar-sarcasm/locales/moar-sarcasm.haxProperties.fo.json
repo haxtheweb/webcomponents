@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Háð",
+    "description": "Vísir tekst á ein ertandi hátt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Tekstur",
+        "description": "Tekstur, sum skal gerast háðsligur"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ಐಕಾನ್",
+    "description": "ಸಂಪೂರ್ಣ ಐಕಾನ್ ಲೈಬ್ರರಿಯಿಂದ ಐಕಾನ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ಐಕಾನ್",
+        "description": "ಪ್ರದರ್ಶಿಸಬೇಕಾದ ಐಕಾನ್."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಐಕಾನ್‌ನ ಒತ್ತು ಬಣ್ಣ."
+      },
+      {
+        "property": "dark",
+        "title": "ಡಾರ್ಕ್",
+        "description": "ಡಾರ್ಕ್ ಮೋಡ್ ಬಳಸಿ (ತಲೆಕೆಳಗಾದ ಬಣ್ಣ ಸೆಟ್)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Saka abun cikin yanar gizo na waje a cikin iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL na Albarkatu",
+        "description": "URL na albarkatu."
+      },
+      {
+        "property": "height",
+        "title": "Tsawo",
+        "description": "Tsawon iframe."
+      },
+      {
+        "property": "width",
+        "title": "Faɗi",
+        "description": "Faɗin iframe."
+      }
+    ]
+  }
+}

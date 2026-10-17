@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Data",
+    "description": "Affissà una data di u calendariu cù i detagli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mese",
+        "description": "Mese affissatu nant'à a carta."
+      },
+      {
+        "property": "date",
+        "title": "Ghjornu di u mese",
+        "description": "Ghjornu di u mese in numeru."
+      },
+      {
+        "property": "day",
+        "title": "Ghjornu di a settimana",
+        "description": "Ghjornu di a settimana in testu."
+      },
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Nome di l'avvenimentu."
+      },
+      {
+        "property": "location",
+        "title": "Locu",
+        "description": "Locu di l'avvenimentu."
+      },
+      {
+        "property": "startTime",
+        "title": "Principiu",
+        "description": "Ora di principiu."
+      },
+      {
+        "property": "endTime",
+        "title": "Fine",
+        "description": "Ora di fine."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Un culore d'accentu facultativu."
+      },
+      {
+        "property": "dark",
+        "title": "Tema scuru",
+        "description": "Attivà u tema scuru."
+      }
+    ]
+  }
+}

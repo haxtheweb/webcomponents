@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Skjalaspælari til vevpartar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Fjal vindeyga",
+        "description": "Fjal úttaksvindeygað, gagnligt tá endamálið bert er terminalurin"
+      }
+    ]
+  }
+}

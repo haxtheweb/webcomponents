@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris-Geschichtekaart",
+    "description": "Eng Polaris-Geschichtekaart mat Hannergrondbild, Pilier-Etikett an Iwwerschrëft uweisen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Hannergrondbild",
+        "description": "Bild-URL, déi als Hannergrond vun der Kaart ugewise gëtt."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Hannergrondgréisst",
+        "description": "Wéi d'Hannergrondbild d'Kaart ausfëllt (CSS background-size).",
+        "options": {
+          "cover": "Ofdecken (cover)",
+          "contain": "Androen (contain)",
+          "auto": "Automatesch (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Hannergrondfixéierung",
+        "description": "Wéi sech d'Hannergrondbild beim Scrolle behält (CSS background-attachment).",
+        "options": {
+          "scroll": "Scrollen (scroll)",
+          "fixed": "Fix (fixed)",
+          "local": "Lokal (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Pilier-Etikett",
+        "description": "Kuert Etikett a Groussbuschtawen uewen op der Kaart. Eidel loosse fir ze verstoppen."
+      },
+      {
+        "property": "label",
+        "title": "Kaarttext",
+        "description": "Haapttext am ënneschte Beräich."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Optional Zil-URL, déi déi ganz Kaart ëmfaasst."
+      }
+    ]
+  }
+}

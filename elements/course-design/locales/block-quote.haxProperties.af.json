@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Blokaanhaling",
+    "description": "Gestileerde aanhalingsblok."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Bronverwysing",
+        "description": "Bronverwysingsteks."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternatiewe teks vir die prent."
+      },
+      {
+        "property": "image",
+        "title": "Prent",
+        "description": "Prent wat saam met die aanhaling gewys word."
+      }
+    ]
+  }
+}

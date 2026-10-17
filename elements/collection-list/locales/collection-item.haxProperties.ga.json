@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Mír bhailiúcháin",
+    "description": "Mír i stíl cárta le húsáid laistigh de liosta bailiúcháin, le téacs, nasc agus meáin roghnacha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Nasc",
+        "description": "URL cinn scríbe don chárta seo."
+      },
+      {
+        "property": "image",
+        "title": "Íomhá",
+        "description": "Íomhá chúlra."
+      },
+      {
+        "property": "line1",
+        "title": "Líne 1",
+        "description": "An chéad líne téacs."
+      },
+      {
+        "property": "line2",
+        "title": "Líne 2",
+        "description": "An dara líne téacs."
+      },
+      {
+        "property": "line3",
+        "title": "Líne 3",
+        "description": "An tríú líne téacs."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Deilbhín",
+        "description": "Deilbhín a léiríonn an cárta."
+      },
+      {
+        "property": "saturate",
+        "title": "Maisíocht sháithithe",
+        "description": "Athraigh sáithiú na híomhá nuair a dhíríonn an t-úsáideoir air."
+      },
+      {
+        "property": "tags",
+        "title": "Clibeanna",
+        "description": "Liosta clibeanna scartha le camóga."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath",
+        "description": "Dath a úsáidtear do na clibeanna."
+      },
+      {
+        "property": "alt",
+        "title": "Téacs malartach",
+        "description": "Téacs malartach a chuireann síos ar an nasc."
+      }
+    ]
+  }
+}

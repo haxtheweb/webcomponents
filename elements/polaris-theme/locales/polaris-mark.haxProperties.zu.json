@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Uphawu lwe-Polaris",
+    "description": "Bonisa uphawu lobunikazi lwe-PSU negama lekolishi ne-URL okuyiwa kuyo ongakukhetha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Igama lekolishi",
+        "description": "Igama eliboniswa eduze kophawu."
+      },
+      {
+        "property": "name2",
+        "title": "Igama lekolishi 2",
+        "description": "Igama lesibili eliboniswa ngaphansi kwegama lokuqala lekolishi."
+      },
+      {
+        "property": "name3",
+        "title": "Igama lekolishi 3",
+        "description": "Igama lesithathu eliboniswa ngaphansi kwegama lesibili lekolishi."
+      },
+      {
+        "property": "url",
+        "title": "Isixhumanisi",
+        "description": "I-URL okuyiwa kuyo lapho uphawu luchofozwa."
+      },
+      {
+        "property": "type",
+        "title": "Okuhlukile",
+        "description": "Uhlobo olubonakalayo lophawu.",
+        "options": {
+          "default": "Okuzenzakalelayo",
+          "light": "Okukhanyayo",
+          "dark": "Okumnyama"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Isakhiwo esiqondile",
+        "description": "Bonisa igama lesithathu ngaphansi kwegama lesibili nomugqa ovundlile."
+      }
+    ]
+  }
+}

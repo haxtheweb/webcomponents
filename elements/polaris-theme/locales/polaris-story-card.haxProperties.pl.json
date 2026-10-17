@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Karta historii Polaris",
+    "description": "Wyświetl kartę historii Polaris z obrazem tła, etykietą filaru i tekstem nagłówka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Obraz tła",
+        "description": "URL obrazu wyświetlanego jako tło karty."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Rozmiar tła",
+        "description": "Jak obraz tła wypełnia kartę (CSS background-size).",
+        "options": {
+          "cover": "Pokrycie (cover)",
+          "contain": "Zmieszczenie (contain)",
+          "auto": "Automatycznie (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Zachowanie tła",
+        "description": "Jak obraz tła zachowuje się podczas przewijania (CSS background-attachment).",
+        "options": {
+          "scroll": "Przewijane (scroll)",
+          "fixed": "Stałe (fixed)",
+          "local": "Lokalne (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Etykieta filaru",
+        "description": "Krótka etykieta wielkimi literami wyświetlana u góry karty. Pozostaw puste, aby ukryć."
+      },
+      {
+        "property": "label",
+        "title": "Tekst karty",
+        "description": "Główny tekst wyświetlany w dolnym panelu."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Opcjonalny docelowy URL obejmujący całą kartę."
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Ihe mkpuchi maka ntinye ihe ọkpụkpọ Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isi mmalite",
+        "description": "Njikọ ntinye ma ọ bụ nkekọrịta sitere na Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Isiokwu",
+        "description": "Isiokwu agba azụ maka ihe ọkpụkpọ.",
+        "options": {
+          "": "Ndabara",
+          "0": "Oji"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Nha",
+        "description": "Nha ihe ọkpụkpọ.",
+        "options": {
+          "normal": "Ndabara",
+          "compact": "Kọmpat"
+        }
+      }
+    ]
+  }
+}

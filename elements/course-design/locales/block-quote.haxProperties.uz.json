@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iqtibos bloki",
+    "description": "Bezatilgan iqtibos bloki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Manba koʻrsatkichi",
+        "description": "Manba koʻrsatkichi matni."
+      },
+      {
+        "property": "alt",
+        "title": "Muqobil matn",
+        "description": "Rasm uchun muqobil matn."
+      },
+      {
+        "property": "image",
+        "title": "Rasm",
+        "description": "Iqtibos bilan koʻrsatiladigan rasm."
+      }
+    ]
+  }
+}

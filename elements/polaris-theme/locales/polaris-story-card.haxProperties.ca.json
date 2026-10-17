@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Targeta de notícia Polaris",
+    "description": "Mostra una targeta de notícia Polaris amb una imatge de fons, una etiqueta de pilar i un titular."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imatge de fons",
+        "description": "URL de la imatge que es mostra com a fons de la targeta."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Mida del fons",
+        "description": "Com omple la targeta la imatge de fons (CSS background-size).",
+        "options": {
+          "cover": "cobreix (cover)",
+          "contain": "conté (contain)",
+          "auto": "automàtica (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Fixació del fons",
+        "description": "Com es comporta la imatge de fons en desplaçar-se (CSS background-attachment).",
+        "options": {
+          "scroll": "desplaçable (scroll)",
+          "fixed": "fixa (fixed)",
+          "local": "local"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Etiqueta de pilar",
+        "description": "Etiqueta curta en majúscules que es mostra a la part superior de la targeta. Deixa-la buida per amagar-la."
+      },
+      {
+        "property": "label",
+        "title": "Text de la targeta",
+        "description": "Text principal que es mostra al plafó inferior."
+      },
+      {
+        "property": "link",
+        "title": "Enllaç",
+        "description": "URL de destinació opcional que embolcalla tota la targeta."
+      }
+    ]
+  }
+}

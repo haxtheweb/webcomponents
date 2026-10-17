@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Fokabú",
+    "description": "Ọ̀rọ̀ fokabú."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Ọ̀rọ̀"
+      },
+      {
+        "property": "information",
+        "title": "Ìtumọ̀",
+        "description": "Ìtumọ̀ tí a fi hàn nígbà tí a bá tẹ ọ̀rọ̀ náà."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Fèrèsé agbéjáde",
+        "description": "Fi ìtumọ̀ hàn nínú fèrèsé agbéjáde dípò láàrín ọ̀rọ̀."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Àwọn ìjápọ̀",
+        "description": "Àtòjọ àwọn ìjápọ̀ àfikún tí ó jẹmọ́ ọ̀rọ̀ yìí."
+      }
+    ]
+  }
+}

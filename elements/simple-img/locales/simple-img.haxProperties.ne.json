@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "सरल तस्बिर",
+    "description": "सरल प्यारामिटरहरूबाट तस्बिरहरू परिवर्तन गर्नुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "स्रोत",
+        "description": "तस्बिरको स्रोत URL।"
+      },
+      {
+        "property": "height",
+        "title": "उचाइ",
+        "description": "वैकल्पिक तस्बिर उचाइ।"
+      },
+      {
+        "property": "width",
+        "title": "चौडाइ",
+        "description": "वैकल्पिक तस्बिर चौडाइ।"
+      },
+      {
+        "property": "alt",
+        "title": "वैकल्पिक पाठ",
+        "description": "स्क्रिन रिडरहरू र राम्रो SEO का लागि उपयोगी।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "गुणस्तर",
+        "description": "उत्पन्न गर्दाको तस्बिर गुणस्तर (JPEG मात्र)।"
+      },
+      {
+        "property": "fetchpriority",
+        "title": "फेच प्राथमिकता",
+        "description": "आधुनिक ब्राउजरहरूका लागि कार्यसम्पादन सङ्केत।",
+        "options": {
+          "auto": "स्वचालित",
+          "high": "उच्च",
+          "low": "न्यून"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "डिकोडिङ विधि",
+        "description": "आधुनिक ब्राउजरहरूमा तस्बिर रेन्डरिङका लागि कार्यसम्पादन सङ्केत।",
+        "options": {
+          "auto": "स्वचालित",
+          "async": "एसिन्क"
+        }
+      }
+    ]
+  }
+}

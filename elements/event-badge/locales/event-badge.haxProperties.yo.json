@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Bájì Ìṣẹ̀lẹ̀",
+    "description": "Èròjà bájì ìṣẹ̀lẹ̀."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Àwòrán TV",
+        "description": "Àwòrán tí a fi hàn lórí TV."
+      },
+      {
+        "property": "logo",
+        "title": "Àmì-ìdánimọ̀",
+        "description": "Àmì-ìdánimọ̀ tí a fi hàn ní igun bájì."
+      },
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Àkọlé tí a fi hàn ní òkè bájì."
+      },
+      {
+        "property": "name",
+        "title": "Orúkọ",
+        "description": "Orúkọ tí a fi hàn lórí bájì."
+      },
+      {
+        "property": "position",
+        "title": "Ipò",
+        "description": "Ipa tàbí oyè ẹni náà."
+      },
+      {
+        "property": "organization",
+        "title": "Àjọ",
+        "description": "Àjọ tí ẹni náà ń ṣiṣẹ́ fún."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Àwọ̀ TV",
+        "description": "Yan àwọ̀ fún TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Àwọ̀ àkọ́kọ́ fún ẹ̀yìn tàbí ọ̀rọ̀."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Àwọ̀ bọ́tìnnì yíyí",
+        "description": "Àwọ̀ àwọn bọ́tìnnì yíyí TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sẹ́píà",
+        "description": "Lo ipa sẹ́píà."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Dúdú àti funfun",
+        "description": "Lo ipa dúdú-àti-funfun."
+      }
+    ]
+  }
+}

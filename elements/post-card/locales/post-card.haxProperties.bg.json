@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Пощенска картичка",
+    "description": "Закачлив медиен елемент, който изглежда като истинска пощенска картичка отнякъде"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "До",
+        "description": "До кого е предназначена?"
+      },
+      {
+        "property": "from",
+        "title": "От",
+        "description": "Кой сте вие?"
+      },
+      {
+        "property": "message",
+        "title": "Съобщение",
+        "description": "Какво искате да кажете?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Пощенско клеймо от",
+        "description": "Откъде е изпратена картичката?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Източник на основната снимка",
+        "description": "Къде се намира снимката ви?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Източник на снимката на марката",
+        "description": "Къде се намира снимката ви?"
+      }
+    ]
+  }
+}

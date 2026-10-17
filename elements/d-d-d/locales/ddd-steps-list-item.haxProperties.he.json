@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "פריט שלבים",
+    "description": "פריט שהוא חלק מרשימת שלבים"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "כותרת"
+      }
+    ]
+  }
+}

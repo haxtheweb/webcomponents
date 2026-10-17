@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF־בלעטערער",
+    "description": "אײַנבעטן אַ PDF־טעקע אין דער זײַט מיט אַן אָפּציאָנעלן קאַרטל־אויסלייג און אַראָפּלאָד־קנעפּל."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "אָרט פֿון דער PDF־טעקע."
+      },
+      {
+        "property": "heading",
+        "title": "קעפּל",
+        "description": "קעפּל־טעקסט פֿונעם קאַרטל."
+      },
+      {
+        "property": "card",
+        "title": "קאַרטל־אויסלייג",
+        "description": "ווײַזן די PDF אין אַ קאַרטל מיט אַן אַראָפּלאָד־קנעפּל."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "אַראָפּלאָד־באַצייכענונג",
+        "description": "באַצייכענונג פֿאַרן אַראָפּלאָד־קנעפּל."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "מעלדונג „ניט געשטיצט“",
+        "description": "מעלדונג ווען דער בלעטערער קען ניט ווײַזן PDF־טעקעס."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "לינק־מעלדונג „ניט געשטיצט“",
+        "description": "לינק־טעקסט ווען דער בלעטערער קען ניט ווײַזן PDF־טעקעס."
+      },
+      {
+        "property": "width",
+        "title": "ברייט",
+        "description": "ברייט פֿונעם PDF־ווײַזער."
+      },
+      {
+        "property": "height",
+        "title": "הייך",
+        "description": "הייך פֿונעם PDF־ווײַזער."
+      }
+    ]
+  }
+}

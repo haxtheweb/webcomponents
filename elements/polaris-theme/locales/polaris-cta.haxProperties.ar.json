@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "عرض زر دعوة لاتخاذ إجراء من Polaris بسمة مخصصة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "نص الزر",
+        "description": "النص المعروض في زر الدعوة لاتخاذ إجراء."
+      },
+      {
+        "property": "link",
+        "title": "الرابط",
+        "description": "URL وجهة الزر."
+      },
+      {
+        "property": "type",
+        "title": "الشكل",
+        "description": "الشكل المرئي للنمط.",
+        "options": {
+          "primary": "أساسي",
+          "tinted": "ملوَّن خفيف",
+          "light": "فاتح"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "نمط محدَّد",
+        "description": "تفعيل المعالجة المحدَّدة."
+      },
+      {
+        "property": "filled",
+        "title": "نمط معبَّأ",
+        "description": "تفعيل المعالجة المعبَّأة."
+      }
+    ]
+  }
+}

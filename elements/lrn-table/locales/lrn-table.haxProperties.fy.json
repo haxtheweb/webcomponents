@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV-tabel",
+    "description": "Dit kin in tabel meitsje fan in CSV-bestân, wêr't it ek stiet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Boarne",
+        "description": "URL foar dit CSV-bestân."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel foar de tabel dy't makke wurde sil."
+      },
+      {
+        "property": "description",
+        "title": "Beskriuwing",
+        "description": "Mear detaillearre beskriuwing foar bettere tagonklikens fan de tabelgegevens."
+      }
+    ]
+  }
+}

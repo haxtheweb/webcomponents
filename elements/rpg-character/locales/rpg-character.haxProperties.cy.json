@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Cymeriad RPG",
+    "description": "Cymeriad hwyliog gan HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Enw",
+        "description": "Gair a ddefnyddir i gynhyrchu cymeriad ar hap."
+      },
+      {
+        "property": "hat",
+        "title": "Het",
+        "description": "Arddull yr het.",
+        "options": {
+          "none": "Rhagosodiad",
+          "random": "Ar hap",
+          "bunny": "Cwningen",
+          "cowboy": "Cowboi",
+          "education": "Addysg",
+          "construction": "Adeiladu",
+          "warning": "Rhybudd",
+          "watermelon": "Melon dŵr",
+          "coffee": "Coffi",
+          "knight": "Marchog",
+          "ninja": "Ninja",
+          "party": "Parti",
+          "error": "Gwall",
+          "edit": "Golygu"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Lled",
+        "description": "Lled y cymeriad mewn picseli."
+      },
+      {
+        "property": "height",
+        "title": "Uchder",
+        "description": "Uchder y cymeriad mewn picseli."
+      },
+      {
+        "property": "fire",
+        "title": "Ar dân?",
+        "description": "A yw'r cymeriad ar dân."
+      },
+      {
+        "property": "walking",
+        "title": "Yn cerdded?",
+        "description": "Animeiddiad cerdded; yn rhedeg pan fydd ar dân."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Not yazısı",
+    "description": "alphaTex və ya MusicXML vasitəsilə not yazısını, gitara tablarını və partitura notasiyasını göstərir və oxudur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex notasiyası",
+        "description": "Not yazısı üçün sətirdaxili alphaTex işarələməsi. Notasiyanı yazmaq üçün birbaşa redaktə edin; boşluqların qorunması üçün şablonda saxlanılır."
+      },
+      {
+        "property": "source",
+        "title": "Partitura faylı",
+        "description": "MusicXML (.xml/.musicxml/.mxl) və ya Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) faylı yükləyin və ya ona keçid verin. Təyin edildikdə sətirdaxili alphaTex-i əvəz edir."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Audio səsləndirmə",
+        "description": "Defolt olaraq aktivdir - not yazısını daxili sintezator vasitəsilə dinləyin. Yalnız baxış (səssiz) rejimi üçün söndürün."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Göstərmə seçimlərini göstər",
+        "description": "Pleyer panelində böyütmə, uzatma və düzən düymələrini göstər."
+      },
+      {
+        "property": "showExport",
+        "title": "İxrac düymələrini göstər",
+        "description": "Pleyer panelində MIDI endirmə və çap/PDF düymələrini göstər."
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Teqîna Ecêb",
+    "description": "Anîmasyona teqînê ya înteraktîf bi efektên dengî yên vebijarkî."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Mezinahî",
+        "description": "Mezinahiya teqînê diyar bike.",
+        "options": {
+          "tiny": "Pir piçûk",
+          "small": "Piçûk",
+          "medium": "Navîn",
+          "large": "Mezin",
+          "epic": "Destanî"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Reng",
+        "description": "Mijara rengê teqînê diyar bike.",
+        "options": {
+          "": "Xwerû",
+          "red": "Sor",
+          "blue": "Şîn",
+          "purple": "Mor",
+          "orange": "Porteqalî",
+          "yellow": "Zer"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Efektên Dengî",
+        "description": "Efektên dengî çalak bike."
+      },
+      {
+        "property": "resetSound",
+        "title": "Dengê ji Nû ve Destpêkirin",
+        "description": "Her carê dengê ji destpêkê ve dest pê bike."
+      },
+      {
+        "property": "image",
+        "title": "Wêneyê Taybet",
+        "description": "URL ya vebijarkî ji bo wêneyekî teqînê yê taybet."
+      },
+      {
+        "property": "sound",
+        "title": "Dengê Taybet",
+        "description": "URL ya vebijarkî ji bo efekteke dengî ya taybet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Neçalak",
+        "description": "Hemû înteraksiyonan neçalak bike."
+      }
+    ]
+  }
+}

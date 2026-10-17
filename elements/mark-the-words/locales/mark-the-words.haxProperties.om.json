@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Jechoota mallatteessi",
+    "description": "Barreeffama keessatti tuquun yaadota jechootaan adda baasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Gaaffii",
+        "description": "Gaaffii fayyadamtoonni deebisan."
+      },
+      {
+        "property": "statement",
+        "title": "Ibsa",
+        "description": "Ibsa gara sochii jechoota mallatteessuutti jijjiiramu."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Akkaataa qabxii kennuu",
+        "description": "OER Schema: akkaataa qabxii kennuu madaallii kanaa (fkn. qabxii, qubee, dhibbeentaa, xumuruu)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Kaayyoo barnootaa",
+        "description": "OER Schema: kaayyoo barnootaa madaallii kana wajjin walqabatu."
+      },
+      {
+        "property": "forCourse",
+        "title": "Koorsii",
+        "description": "OER Schema: koorsii madaalliin kun itti yaadame."
+      },
+      {
+        "property": "answers",
+        "title": "Deebiiwwan"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Maqaa qormaata gabaabaa",
+        "description": "Maqaa qormaata gabaabaa naannoo xAPI tiin oofamu keessatti wanta kana addaan baasuuf darbu"
+      }
+    ]
+  }
+}

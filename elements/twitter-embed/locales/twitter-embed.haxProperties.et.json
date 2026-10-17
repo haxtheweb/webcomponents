@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitteri (X) manus",
+    "description": "Manusta X-i säuts kontekstis."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Säutsu URL",
+        "description": "Manustatava säutsu URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Teema",
+        "description": "X-i säutsude hele või tume teema.",
+        "options": {
+          "light": "Hele",
+          "dark": "Tume"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Takista klõpsamisel hüpikakent",
+        "description": "Takista kasutajatel säutsu avamist saidil x.com."
+      }
+    ]
+  }
+}

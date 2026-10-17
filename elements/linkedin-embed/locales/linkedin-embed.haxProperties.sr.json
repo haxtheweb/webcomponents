@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn уградња",
+    "description": "Уградите LinkedIn картицу профила."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Прилагођено име",
+        "description": "Део прилагођеног корисничког имена на LinkedIn-у."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Локал",
+        "description": "Вредност метаподатака локала, као што је en_US."
+      }
+    ]
+  }
+}

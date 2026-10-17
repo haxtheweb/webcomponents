@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Flashkort",
+    "description": "Øv på begreper med flashkort med forside og bakside."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Forsiden av kortet",
+        "description": "Tekst eller spørsmål på forsiden."
+      },
+      {
+        "slot": "back",
+        "title": "Baksiden av kortet",
+        "description": "Forventet svar."
+      },
+      {
+        "property": "imgSource",
+        "title": "Bildekilde",
+        "description": "Bildefil som brukes for kortet. Overstyrer bildenøkkelord."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Type handling",
+        "description": "OER Schema: typen handling denne øvelsen innebærer (f.eks. lesing, skriving, laging, forskning, lytting, se på, refleksjon, diskusjon, observasjon, presentasjon, vurdering)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: ID eller URL til læringsmålet denne øvelsen støtter."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Mørk",
+        "description": "Bruk mørk modus."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Aksentfarge for kortet."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Bildenøkkelord",
+        "description": "Nøkkelord for tilfeldig bilde. Overstyres av bildekilde."
+      }
+    ]
+  }
+}

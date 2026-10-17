@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "讽刺",
+    "description": "用捣蛋个方式展示文字"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "文字",
+        "description": "要变讽刺个文字"
+      }
+    ]
+  }
+}

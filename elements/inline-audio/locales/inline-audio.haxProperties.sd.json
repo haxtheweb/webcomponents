@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ان لائن آڊيو",
+    "description": "صفحي جي مواد جي مدد لاءِ آڊيو ان لائن هلايو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ذريعو",
+        "description": "MP3 فائل يا URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "ڪارڊ جو نمايان رنگ."
+      },
+      {
+        "property": "shiny",
+        "title": "چمڪدار",
+        "description": "ڀوري بدران هلڪو نمايان پس منظر استعمال ڪريو."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ڊارڪ",
+        "description": "ڊارڪ موڊ استعمال ڪريو."
+      }
+    ]
+  }
+}

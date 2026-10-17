@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn joylashtirish",
+    "description": "LinkedIn profil kartasini joylashtirish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Maxsus nom",
+        "description": "LinkedIn maxsus foydalanuvchi nomi qismi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokal",
+        "description": "en_US kabi lokal metamaʼlumot qiymati."
+      }
+    ]
+  }
+}

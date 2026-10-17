@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Počítadlo",
+    "description": "Animace čísla, které se po zobrazení načítá až k cílové hodnotě."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Koncová hodnota",
+        "description": "Číslo, ke kterému se počítá."
+      },
+      {
+        "property": "start",
+        "title": "Počáteční hodnota",
+        "description": "Číslo, od kterého se počítá."
+      },
+      {
+        "property": "duration",
+        "title": "Doba trvání",
+        "description": "Počet sekund, které má animace počítání trvat."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Text předpony",
+        "description": "Text zobrazený před číslem (např. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Text přípony",
+        "description": "Text zobrazený za číslem (např. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot předpony",
+        "description": "Volitelný vložený obsah před číslem."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot přípony",
+        "description": "Volitelný vložený obsah za číslem."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Desetinná místa",
+        "description": "Počet zobrazených desetinných míst."
+      },
+      {
+        "property": "separator",
+        "title": "Oddělovač tisíců",
+        "description": "Znak oddělující skupiny tisíců."
+      },
+      {
+        "property": "decimal",
+        "title": "Desetinný znak",
+        "description": "Znak použitý jako desetinná čárka."
+      },
+      {
+        "property": "noeasing",
+        "title": "Bez zrychlení",
+        "description": "Vypnout náběh a doběh, aby počítání bylo lineární."
+      }
+    ]
+  }
+}

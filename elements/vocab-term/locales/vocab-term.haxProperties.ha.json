@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalmomi",
+    "description": "Kalmar ƙamus."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Kalma"
+      },
+      {
+        "property": "information",
+        "title": "Ma'ana",
+        "description": "Ma'anar da ake nunawa idan an danna kalmar."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Akwatin bayyana",
+        "description": "Nuna ma'anar a cikin akwatin bayyana maimakon a layi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Mahaɗai",
+        "description": "Jerin ƙarin mahaɗai masu alaƙa da wannan kalma."
+      }
+    ]
+  }
+}

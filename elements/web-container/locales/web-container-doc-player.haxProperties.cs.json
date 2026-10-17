@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Přehrávač dokumentace webových komponent"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Skrýt okno",
+        "description": "Skrýt výstupní okno, užitečné, když jde pouze o terminál"
+      }
+    ]
+  }
+}

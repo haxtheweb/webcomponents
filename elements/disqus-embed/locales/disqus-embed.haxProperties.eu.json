@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Txertatu Disqus iruzkinak orri batean."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Izen laburra",
+        "description": "Gunearen izen laburra, Disqus scriptaren ostalaria zehazten duena."
+      },
+      {
+        "property": "pageURL",
+        "title": "Orriaren URLa",
+        "description": "Iruzkin haria lotuta dagoen orriaren URLa."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Orriaren identifikatzailea",
+        "description": "Orriaren iruzkin hariaren identifikatzaile bakarra."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Orriaren izenburua",
+        "description": "Iruzkin haria lotuta dagoen orriaren izenburua."
+      },
+      {
+        "property": "loadingText",
+        "title": "Kargatzeko testua",
+        "description": "Iruzkinak kargatzen ari diren bitartean iragartzen den testua."
+      },
+      {
+        "property": "lang",
+        "title": "Hizkuntza",
+        "description": "Disqus interfazearen hizkuntza kodea, adib. en."
+      }
+    ]
+  }
+}

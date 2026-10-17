@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Kiʻi Maʻalahi",
+    "description": "E hoʻololi i nā kiʻi me nā ʻāpana maʻalahi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Kumu",
+        "description": "URL kumu kiʻi."
+      },
+      {
+        "property": "height",
+        "title": "Kiʻekiʻe",
+        "description": "Kiʻekiʻe kiʻi koho."
+      },
+      {
+        "property": "width",
+        "title": "Ākea",
+        "description": "Ākea kiʻi koho."
+      },
+      {
+        "property": "alt",
+        "title": "Kikokikona pani",
+        "description": "He mea pono no nā mea heluhelu pākaukau a me ka SEO maikaʻi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Maikaʻi",
+        "description": "Ka maikaʻi o ke kiʻi ke hana ʻia (JPEG wale nō)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Kūlana Kiʻi Mua",
+        "description": "He kuhikuhi hana no nā polokalamu kele hou.",
+        "options": {
+          "auto": "ʻAkomi",
+          "high": "Kiʻekiʻe",
+          "low": "Haʻahaʻa"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Ala hoʻokaʻawale",
+        "description": "He kuhikuhi hana no ka hōʻike kiʻi ma nā polokalamu kele hou.",
+        "options": {
+          "auto": "ʻAkomi",
+          "async": "Kali ʻole"
+        }
+      }
+    ]
+  }
+}

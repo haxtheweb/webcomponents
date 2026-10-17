@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Caixa de actividade",
+    "description": "Pequeno bloque de título con estilo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona que se mostra xunto á caixa de actividade."
+      },
+      {
+        "property": "tag",
+        "title": "Etiqueta da caixa de actividade",
+        "description": "Etiqueta que se mostra na caixa de actividade."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Sen colorear",
+        "description": "Evitar que se apliquen cores á icona."
+      }
+    ]
+  }
+}

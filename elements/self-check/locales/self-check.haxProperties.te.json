@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "స్వీయ పరీక్ష",
+    "description": "వినియోగదారులు స్వీయ పరీక్షను పూర్తి చేయవచ్చు."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "చిత్రం",
+        "description": "స్వీయ పరీక్ష కోసం చిత్రం."
+      },
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "స్వీయ పరీక్ష శీర్షిక."
+      },
+      {
+        "property": "alt",
+        "title": "ప్రత్యామ్నాయ వచనం",
+        "description": "చిత్రం కోసం ప్రత్యామ్నాయ వచనం."
+      },
+      {
+        "slot": "question",
+        "title": "ప్రశ్న"
+      },
+      {
+        "slot": "",
+        "title": "సమాధానం"
+      },
+      {
+        "property": "accentColor",
+        "title": "థీమ్ రంగు",
+        "description": "డిజైన్ సిస్టమ్ నుండి థీమ్ రంగును ఎంచుకోండి.",
+        "options": {
+          "primary": "ప్రాథమిక",
+          "accent": "యాక్సెంట్",
+          "success": "విజయం",
+          "warning": "హెచ్చరిక",
+          "error": "లోపం",
+          "info": "సమాచారం"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "అభ్యాస లక్ష్యం",
+        "description": "oer:hasLearningObjective గా విడుదలయ్యే అభ్యాస లక్ష్య సూచన."
+      },
+      {
+        "property": "assessing",
+        "title": "మూల్యాంకనం చేస్తున్నది",
+        "description": "oer:assessing గా విడుదలయ్యే కార్యాచరణ సూచన."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "మరింత లింక్",
+        "description": "అదనపు సమాచారానికి లింక్."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Hartă de imagine",
+    "description": "O hartă de imagine accesibilă, cu zone interactive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etichetă",
+        "description": "Eticheta hărții de imagine."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Detalii zone interactive",
+        "description": "Zonele interactive de pe harta de imagine."
+      }
+    ]
+  }
+}

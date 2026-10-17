@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Tūemi kohinga",
+    "description": "He tūemi āhua kāri mō roto i tētahi rārangi kohinga, me te kupu, te hono, me te pāpāho kōwhiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Hono",
+        "description": "URL taunga mō tēnei kāri."
+      },
+      {
+        "property": "image",
+        "title": "Whakaahua",
+        "description": "Whakaahua papamuri."
+      },
+      {
+        "property": "line1",
+        "title": "Rārangi 1",
+        "description": "Rārangi kupu tuatahi."
+      },
+      {
+        "property": "line2",
+        "title": "Rārangi 2",
+        "description": "Rārangi kupu tuarua."
+      },
+      {
+        "property": "line3",
+        "title": "Rārangi 3",
+        "description": "Rārangi kupu tuatoru."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ata tohu",
+        "description": "Ata tohu e tohu ana i te kāri."
+      },
+      {
+        "property": "saturate",
+        "title": "Pānga kauruku",
+        "description": "Huri i te kauruku o te whakaahua ina arotahi te kaiwhakamahi."
+      },
+      {
+        "property": "tags",
+        "title": "Ngā Tūtohu",
+        "description": "Rārangi tūtohu kua wehea ki te piko."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae",
+        "description": "Tae mō ngā tūtohu."
+      },
+      {
+        "property": "alt",
+        "title": "Kupu kē",
+        "description": "Kupu kē e whakaahua ana i te hono."
+      }
+    ]
+  }
+}

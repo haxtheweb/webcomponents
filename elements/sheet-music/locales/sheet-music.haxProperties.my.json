@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "ဂီတ သင်္ကေတစာ",
+    "description": "alphaTex သို့မဟုတ် MusicXML ဖြင့် ဂီတ သင်္ကေတစာ၊ ဂီတာ tab များနှင့် score သင်္ကေတများကို ပြသပြီး ဖွင့်ပေးသည်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex သင်္ကေတ",
+        "description": "ဂီတ သင်္ကေတစာအတွက် inline alphaTex markup။ သင်္ကေတ ရေးသားရန် တိုက်ရိုက် တည်းဖြတ်ပါ; နေရာလွတ်များ ထိန်းသိမ်းထားနိုင်ရန် template တွင် သိမ်းဆည်းထားသည်။"
+      },
+      {
+        "property": "source",
+        "title": "Score ဖိုင်",
+        "description": "MusicXML (.xml/.musicxml/.mxl) သို့မဟုတ် Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) ဖိုင်ကို အပ်လုဒ်လုပ်ပါ သို့မဟုတ် လင့်ခ်ချိတ်ပါ။ သတ်မှတ်ထားလျှင် inline alphaTex ကို အစားထိုးသည်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "အသံ ဖွင့်ခြင်း",
+        "description": "မူလအနေဖြင့် ဖွင့်ထားသည် - ပါဝင်ပြီးသား synthesizer မှတစ်ဆင့် ဖွင့်သော ဂီတ သင်္ကေတစာကို နားထောင်ပါ။ ကြည့်ရှုရန်သာ (အသံမပါ) မုဒ်အတွက် ပိတ်ပါ။"
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "ပြသမှု ရွေးချယ်စရာများ ပြရန်",
+        "description": "ပလေယာ ဘားပေါ်တွင် zoom၊ ဆွဲဆန့်ခြင်းနှင့် အပြင်အဆင် ခလုတ်များကို ပြရန်။"
+      },
+      {
+        "property": "showExport",
+        "title": "Export ခလုတ်များ ပြရန်",
+        "description": "ပလေယာ ဘားပေါ်တွင် MIDI ဒေါင်းလုဒ်နှင့် ပရင့်/PDF ခလုတ်များကို ပြရန်။"
+      }
+    ]
+  }
+}

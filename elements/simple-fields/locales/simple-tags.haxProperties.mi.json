@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ngā Tūtohu",
+    "description": "He rārangi tūtohu māmā hei whakaatu ki te whārangi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Ngā Tūtohu",
+        "description": "Rārangi tūtohu kua wehea ki te piko."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Tae Arotahi Aunoa",
+        "description": "Tautuhi aunoatia te tae arotahi i runga i te tapanga."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae",
+        "description": "Tae mō ngā tūtohu."
+      }
+    ]
+  }
+}

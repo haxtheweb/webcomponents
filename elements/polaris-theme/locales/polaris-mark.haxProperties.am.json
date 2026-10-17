@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "የPolaris ምልክት",
+    "description": "የPSU መለያ ምልክትን ከአማራጭ የኮሌጅ ስም እና የመድረሻ URL ጋር አሳይ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "የኮሌጅ ስም",
+        "description": "ከምልክቱ ጎን የሚታይ ስም።"
+      },
+      {
+        "property": "name2",
+        "title": "የኮሌጅ ስም 2",
+        "description": "ከመጀመሪያው የኮሌጅ ስም በታች የሚታይ ሁለተኛ ስም።"
+      },
+      {
+        "property": "name3",
+        "title": "የኮሌጅ ስም 3",
+        "description": "ከሁለተኛው የኮሌጅ ስም በታች የሚታይ ሦስተኛ ስም።"
+      },
+      {
+        "property": "url",
+        "title": "አገናኝ",
+        "description": "ምልክቱ ጠቅ ሲደረግ የመድረሻ URL።"
+      },
+      {
+        "property": "type",
+        "title": "ልዩነት",
+        "description": "የምልክቱ ምስላዊ ልዩነት።",
+        "options": {
+          "default": "ነባሪ",
+          "light": "ብሩህ",
+          "dark": "ጨለማ"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "ቁልቁል አቀማመጥ",
+        "description": "ሦስተኛውን ስም ከሁለተኛው ስም በታች በአግድም መስመር አሳይ።"
+      }
+    ]
+  }
+}

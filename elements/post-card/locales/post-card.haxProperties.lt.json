@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Atvirukas",
+    "description": "Žaismingas medijos elementas, primenantis tikrą atviruką iš kažkur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Kam",
+        "description": "Kam jis skirtas?"
+      },
+      {
+        "property": "from",
+        "title": "Nuo",
+        "description": "Kas jūs?"
+      },
+      {
+        "property": "message",
+        "title": "Žinutė",
+        "description": "Ką norite pasakyti?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Pašto žymeklis iš",
+        "description": "Iš kur buvo išsiųstas šis atvirukas?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Pagrindinės nuotraukos šaltinis",
+        "description": "Kur yra jūsų nuotrauka?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Pašto ženklo nuotraukos šaltinis",
+        "description": "Kur yra jūsų nuotrauka?"
+      }
+    ]
+  }
+}

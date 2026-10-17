@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "გვერდის დეტალები",
+    "description": "გვერდებს შორის ვიზუალური გამყოფის განსაზღვრა, რომელსაც CMS-ები გვერდების შესაქმნელად იყენებენ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "სათაური",
+        "description": "თემასა და პირველ სათაურში ნაჩვენები სათაური."
+      },
+      {
+        "property": "pageType",
+        "title": "ტიპი",
+        "description": "გვერდის კონტექსტის ვიზუალური იარლიყი.",
+        "options": {
+          "": "-- არცერთი --",
+          "content": "შიგთავსი",
+          "assessment": "შეფასება",
+          "quiz": "ქვიზი",
+          "submission": "ნაშრომის ჩაბარება",
+          "lesson": "გაკვეთილი",
+          "module": "მოდული",
+          "task": "დავალება",
+          "activity": "აქტივობა",
+          "project": "პროექტი",
+          "practice": "ვარჯიში",
+          "unit": "ერთეული",
+          "objectives": "სასწავლო მიზნები",
+          "connection": "კავშირი",
+          "knowledge": "იცოდით?",
+          "strategy": "სწავლის სტრატეგია",
+          "discuss": "განხილვა",
+          "listen": "მოსმენა",
+          "make": "შექმნა",
+          "observe": "დაკვირვება",
+          "present": "პრეზენტაცია",
+          "reading": "კითხვა",
+          "reflect": "რეფლექსია",
+          "research": "კვლევა",
+          "watch": "ყურება",
+          "write": "წერა"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ტეგები",
+        "description": "მძიმით გამოყოფილი ტეგების სია."
+      },
+      {
+        "property": "linkUrl",
+        "title": "ბმულის URL",
+        "description": "გადამისამართების URL, რომელიც გვერდის შიგთავსის ნაცვლად ჩანს."
+      },
+      {
+        "property": "linkTarget",
+        "title": "ბმულის სამიზნე",
+        "description": "ბმულების გახსნა იმავე ან ახალ ფანჯარაში.",
+        "options": {
+          "_self": "იმავე ფანჯარაში",
+          "_blank": "ახალი ფანჯარა"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "გამოქვეყნებული",
+        "description": "გამოუქვეყნებელი გვერდები საბოლოო მომხმარებლებისგან დამალულია."
+      },
+      {
+        "property": "locked",
+        "title": "გვერდის ჩაკეტვა",
+        "description": "ამ გვერდის ყველა ელემენტის ჩაკეტვა ან განბლოკვა."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "ავტომატური slug-ის გადაფარვა",
+        "description": "slug-ის დაცვა სათაურის ან მშობლის მიხედვით ავტომატური განახლებისგან."
+      },
+      {
+        "property": "slug",
+        "title": "მისამართი",
+        "description": "ამ გვერდის URL slug."
+      },
+      {
+        "property": "image",
+        "title": "მედია",
+        "description": "გვერდის ამსახველი მედია, რომელიც ზოგიერთ თემასა და ხედში გამოიყენება."
+      },
+      {
+        "property": "parent",
+        "title": "მშობელი",
+        "description": "მშობელი გვერდის მისამართი."
+      },
+      {
+        "property": "noderefs",
+        "title": "დაკავშირებული შიგთავსი",
+        "description": "ამ გვერდთან დაკავშირებული გვერდები."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "აღწერა",
+        "description": "აღწერა, რომელიც კოლექციებსა და საძიებო სისტემის ოპტიმიზაციაში გამოიყენება."
+      },
+      {
+        "property": "entityType",
+        "title": "ერთეულის ტიპი",
+        "description": "ნაგულისხმევად გვერდი, თუ სხვა არ არის მითითებული.",
+        "options": {
+          "page": "გვერდი (ნაგულისხმევი)",
+          "taxonomy": "ტაქსონომია",
+          "taxonomyTerm": "ტაქსონომიის ტერმინი",
+          "region": "რეგიონი"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "ხატულა",
+        "description": "საიტზე ამ გვერდთან დაკავშირებული ხატულა."
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "საიტზე ამ გვერდთან დაკავშირებული ფერი."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "მენიუში დამალვა",
+        "description": "ამ გვერდის მენიუებიდან დამალვა მისი URL-ის შენარჩუნებით."
+      },
+      {
+        "property": "order",
+        "title": "რიგი",
+        "description": "რიგი მეზობელ გვერდებთან მიმართებით."
+      },
+      {
+        "property": "developerTheme",
+        "title": "გვერდის თემა",
+        "description": "თემის გადაფარვა მხოლოდ ამ გვერდისთვის."
+      },
+      {
+        "property": "author",
+        "title": "ავტორი",
+        "description": "ამ გვერდის ბოლო რედაქტორის მომხმარებლის სახელი."
+      }
+    ]
+  }
+}

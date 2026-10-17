@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Cwestiwn Paru",
+    "description": "Gweithgaredd paru llusgo a gollwng sy'n paru anogwyr â'u hymatebion cywir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Cwestiwn",
+        "description": "Cwestiwn i ddefnyddwyr. Marciwch dargedau gollwng, yna rhestrwch atebion hyd at y targed nesaf."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Fformat graddio",
+        "description": "OER Schema: fformat graddio ar gyfer yr asesiad hwn (e.e. pwyntiau, llythyren, canran, cwblhau)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Amcan dysgu",
+        "description": "OER Schema: amcan dysgu sy'n gysylltiedig â'r asesiad hwn."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cwrs",
+        "description": "OER Schema: y cwrs y bwriedir yr asesiad hwn ar ei gyfer."
+      },
+      {
+        "property": "answers",
+        "title": "Atebion"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Enw'r cwis",
+        "description": "Enw'r cwis a ddefnyddir i'w adnabod drwy xAPI mewn systemau dadansoddeg."
+      }
+    ]
+  }
+}

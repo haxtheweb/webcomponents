@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Odtwarzacz dokumentacji komponentów webowych"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Ukryj okno",
+        "description": "Ukryj okno wyników, przydatne, gdy celem jest tylko terminal"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "ฝัง Twitter (X)",
+    "description": "ฝังทวีตจาก X ในบริบท"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL ของทวีต",
+        "description": "URL ของทวีตที่จะฝัง"
+      },
+      {
+        "attribute": "data-theme",
+        "title": "ธีม",
+        "description": "ธีมสว่างหรือมืดสำหรับทวีตของ X",
+        "options": {
+          "light": "สว่าง",
+          "dark": "มืด"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "ป้องกันป๊อปอัปเมื่อคลิก",
+        "description": "ป้องกันไม่ให้ผู้ใช้เปิดทวีตบน x.com"
+      }
+    ]
+  }
+}

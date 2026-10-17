@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Vocabulari",
+    "description": "Terme de vocabulari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Terme"
+      },
+      {
+        "property": "information",
+        "title": "Definició",
+        "description": "Definició que es mostra en fer clic al terme."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Finestra emergent",
+        "description": "Mostra la definició en una finestra emergent en lloc d'integrada al text."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Enllaços",
+        "description": "Llista d'enllaços complementaris associats a aquest terme."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Hình ảnh đơn giản",
+    "description": "Xử lý hình ảnh bằng các tham số đơn giản."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Nguồn",
+        "description": "URL nguồn hình ảnh."
+      },
+      {
+        "property": "height",
+        "title": "Chiều cao",
+        "description": "Chiều cao hình ảnh tùy chọn."
+      },
+      {
+        "property": "width",
+        "title": "Chiều rộng",
+        "description": "Chiều rộng hình ảnh tùy chọn."
+      },
+      {
+        "property": "alt",
+        "title": "Văn bản thay thế",
+        "description": "Hữu ích cho trình đọc màn hình và cải thiện SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Chất lượng",
+        "description": "Chất lượng hình ảnh khi tạo (chỉ JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Mức ưu tiên tải",
+        "description": "Gợi ý hiệu năng cho các trình duyệt hiện đại.",
+        "options": {
+          "auto": "Tự động",
+          "high": "Cao",
+          "low": "Thấp"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Phương thức giải mã",
+        "description": "Gợi ý hiệu năng cho việc hiển thị hình ảnh trên các trình duyệt hiện đại.",
+        "options": {
+          "auto": "Tự động",
+          "async": "Bất đồng bộ"
+        }
+      }
+    ]
+  }
+}

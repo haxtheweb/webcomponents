@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P־הילע צו לאָדן און ווײַזן .h5p־טעקעס"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe אײַנבעט־קאָד"
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Samlingsrække",
+    "description": "Rækkeelement til brug i en samlingsliste med tekst, link, ikon, tags og valgfrit billede."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Destinations-URL for denne række."
+      },
+      {
+        "property": "image",
+        "title": "Billede",
+        "description": "Billede til rækken."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativ tekst, der beskriver billedet."
+      },
+      {
+        "property": "line1",
+        "title": "Linje 1",
+        "description": "Første tekstlinje."
+      },
+      {
+        "property": "line2",
+        "title": "Linje 2",
+        "description": "Anden tekstlinje."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon, der repræsenterer rækken."
+      },
+      {
+        "property": "saturate",
+        "title": "Mætningseffekt",
+        "description": "Skift billedets farvemætning, når brugeren fokuserer."
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Kommasepareret liste over tags."
+      },
+      {
+        "property": "accentColor",
+        "title": "Farve",
+        "description": "Farve brugt til ikon og tags."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "SDG des UN (ODD de l'ONU)",
+    "description": "Objectif de développement durable des Nations Unies."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Objectif",
+        "description": "Numéro du SDG des UN."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Couleur uniquement",
+        "description": "Afficher uniquement la couleur de l'objectif."
+      }
+    ]
+  }
+}

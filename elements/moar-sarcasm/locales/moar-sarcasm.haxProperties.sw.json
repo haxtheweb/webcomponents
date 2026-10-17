@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kejeli",
+    "description": "Kuwasilisha maandishi kwa namna ya utani"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Maandishi",
+        "description": "Maandishi ya kufanywa ya kejeli"
+      }
+    ]
+  }
+}

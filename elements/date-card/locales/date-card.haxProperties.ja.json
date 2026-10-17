@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "日付",
+    "description": "カレンダーの日付を詳細とともに表示します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "月",
+        "description": "カードに表示する月。"
+      },
+      {
+        "property": "date",
+        "title": "日",
+        "description": "月の日付（数値）。"
+      },
+      {
+        "property": "day",
+        "title": "曜日",
+        "description": "曜日（テキスト）。"
+      },
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "イベント名。"
+      },
+      {
+        "property": "location",
+        "title": "場所",
+        "description": "イベントの場所。"
+      },
+      {
+        "property": "startTime",
+        "title": "開始",
+        "description": "開始時刻。"
+      },
+      {
+        "property": "endTime",
+        "title": "終了",
+        "description": "終了時刻。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "任意のアクセントカラー。"
+      },
+      {
+        "property": "dark",
+        "title": "ダークテーマ",
+        "description": "ダークテーマを有効にします。"
+      }
+    ]
+  }
+}

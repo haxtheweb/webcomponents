@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "ځان ازموینه",
+    "description": "کاروونکي کولی شي ځان ازموینه بشپړه کړي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "انځور",
+        "description": "د ځان ازموینې انځور."
+      },
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "د ځان ازموینې سرلیک."
+      },
+      {
+        "property": "alt",
+        "title": "بدیل متن",
+        "description": "د انځور بدیل متن."
+      },
+      {
+        "slot": "question",
+        "title": "پوښتنه"
+      },
+      {
+        "slot": "",
+        "title": "ځواب"
+      },
+      {
+        "property": "accentColor",
+        "title": "د تیم رنګ",
+        "description": "د ډیزاین سیسټم څخه د تیم رنګ وټاکئ.",
+        "options": {
+          "primary": "لومړنی",
+          "accent": "تاکیدي",
+          "success": "بریالیتوب",
+          "warning": "خبرداری",
+          "error": "تېروتنه",
+          "info": "معلومات"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "د زده کړې موخه",
+        "description": "د زده کړې موخې حواله چې د oer:hasLearningObjective په توګه خپرېږي."
+      },
+      {
+        "property": "assessing",
+        "title": "ارزونه",
+        "description": "د فعالیت حواله چې د oer:assessing په توګه خپرېږي."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "نور لینک",
+        "description": "نورو معلوماتو ته لینک."
+      }
+    ]
+  }
+}

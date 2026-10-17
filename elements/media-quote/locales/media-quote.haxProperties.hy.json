@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Մեդիա մեջբերում",
+    "description": "Պատկեր՝ մեջբերումով, աղբյուրով և ըստ ցանկության ենթագրով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Մեջբերում",
+        "description": "Մեջբերման տեքստը։"
+      },
+      {
+        "slot": "author",
+        "title": "Հեղինակ",
+        "description": "Մեջբերման հեղինակը։"
+      },
+      {
+        "slot": "author-detail",
+        "title": "Հեղինակի մանրամասներ",
+        "description": "Հեղինակի մանրամասներ։"
+      },
+      {
+        "slot": "caption",
+        "title": "Ենթագիր",
+        "description": "Պատկերի ենթագիր։"
+      },
+      {
+        "property": "src",
+        "title": "Պատկերի աղբյուր",
+        "description": "Մեդիա մեջբերման համար օգտագործվող պատկերի ֆայլը։"
+      },
+      {
+        "property": "alt",
+        "title": "Alt տեքստ",
+        "description": "Պատկերի այլընտրանքային տեքստը։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Քարտի շեշտադրման գույնը։"
+      }
+    ]
+  }
+}

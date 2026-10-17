@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "የNodeJS መያዣ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "አርታዒውን ደብቅ",
+        "description": "የፋይል ማረሚያ በይነገጹን ደብቅ።"
+      },
+      {
+        "property": "hideTerminal",
+        "title": "ተርሚናሉን ደብቅ",
+        "description": "በራስ-ሰር ለሚሠሩ ፕሮግራሞች ተርሚናሉን ደብቅ።"
+      },
+      {
+        "property": "hideWindow",
+        "title": "መስኮት ደብቅ",
+        "description": "ለተርሚናል-ብቻ አጠቃቀም የውጤት መስኮቱን ደብቅ።"
+      },
+      {
+        "slot": "",
+        "title": "ትዕዛዞች",
+        "description": "ከመጫኑ በፊት የሚሄዱ ትዕዛዞች (በአንድ መስመር አንድ)።"
+      }
+    ]
+  }
+}

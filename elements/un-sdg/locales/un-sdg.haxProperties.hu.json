@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Az ENSZ fenntartható fejlődési célja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Cél",
+        "description": "Az UN SDG cél száma."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Csak szín",
+        "description": "Csak a cél színének megjelenítése."
+      }
+    ]
+  }
+}

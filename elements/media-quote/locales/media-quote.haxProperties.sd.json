@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "ميڊيا اقتباس",
+    "description": "اقتباس، حوالي ۽ اختياري ڪيپشن سان تصوير."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "اقتباس",
+        "description": "اقتباس جو متن."
+      },
+      {
+        "slot": "author",
+        "title": "ليکڪ",
+        "description": "اقتباس جو ليکڪ."
+      },
+      {
+        "slot": "author-detail",
+        "title": "ليکڪ جا تفصيل",
+        "description": "ليکڪ جا تفصيل."
+      },
+      {
+        "slot": "caption",
+        "title": "ڪيپشن",
+        "description": "تصوير جو ڪيپشن."
+      },
+      {
+        "property": "src",
+        "title": "تصوير جو ذريعو",
+        "description": "ميڊيا اقتباس لاءِ استعمال ٿيندڙ تصويري فائل."
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "تصوير لاءِ متبادل متن."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "ڪارڊ جو نمايان رنگ."
+      }
+    ]
+  }
+}

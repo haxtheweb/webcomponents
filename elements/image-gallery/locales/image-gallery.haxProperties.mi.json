@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Taiwhanga Whakaahua",
+    "description": "He taiwhanga e whakaatu ana i ngā whakaahua hei mātiti, hei tahora pātū, hei whakaaturanga kiriata rānei."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Aratau whakaatu",
+        "description": "Me pēhea te whakaatu i ngā whakaahua i te taiwhanga.",
+        "options": {
+          "grid": "Mātiti",
+          "masonry": "Tahora pātū",
+          "gallery": "Taiwhanga"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Taupū hohe",
+        "description": "Taupū o te whakaahua hohe hei tīmatanga i te aratau taiwhanga."
+      }
+    ]
+  }
+}

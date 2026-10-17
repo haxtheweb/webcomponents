@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "זאַמלונג־שורה",
+    "description": "שורה־עלעמענט פֿאַר אַ זאַמלונג־רשימה, מיט טעקסט, לינק, איקאָן, טעגן און אָפּציאָנעלן בילד."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "לינק",
+        "description": "ציל־URL פֿאַר דער שורה."
+      },
+      {
+        "property": "image",
+        "title": "בילד",
+        "description": "בילד פֿאַר דער שורה."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "אַלטערנאַטיווער טעקסט וואָס באַשרײַבט דאָס בילד."
+      },
+      {
+        "property": "line1",
+        "title": "שורה 1",
+        "description": "ערשטע שורה טעקסט."
+      },
+      {
+        "property": "line2",
+        "title": "שורה 2",
+        "description": "צווייטע שורה טעקסט."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "איקאָן",
+        "description": "איקאָן וואָס פֿאַרטרעט די שורה."
+      },
+      {
+        "property": "saturate",
+        "title": "זעטיקונג־עפֿעקט",
+        "description": "ענדערן די בילד־זעטיקונג ווען דער באַניצער פֿאָקוסירט."
+      },
+      {
+        "property": "tags",
+        "title": "טעגן",
+        "description": "רשימה פֿון טעגן, אָפּגעטיילט מיט קאָמעס."
+      },
+      {
+        "property": "accentColor",
+        "title": "קאָליר",
+        "description": "קאָליר פֿאַר איקאָן און טעגן."
+      }
+    ]
+  }
+}

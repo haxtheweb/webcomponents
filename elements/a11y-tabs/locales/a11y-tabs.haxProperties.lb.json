@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tabs",
+    "description": "Eng Rei vun Tabs."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etikett (fir d'Accessibilitéit)",
+        "description": "Accessibelt Etikett fir d'Tab-Grupp."
+      },
+      {
+        "property": "disabled",
+        "title": "Desaktivéiert",
+        "description": "All Tabs desaktivéieren."
+      },
+      {
+        "property": "hidden",
+        "title": "Verstoppt",
+        "description": "D'Tab-Grupp verstoppen."
+      },
+      {
+        "property": "sticky",
+        "title": "Fixéiert",
+        "description": "Horizontal Tabs beim Scrollen uewen halen."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Layout-Breakpoint",
+        "description": "Breakpoint fir horizontal Tabs; -1 fir nëmme vertikal."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Ikon-Breakpoint",
+        "description": "Breakpoint fir Text mat Ikonen ze weisen. Standard ass 0; -1 fir nëmmen Ikonen."
+      },
+      {
+        "slot": "",
+        "title": "Tabs",
+        "description": "Rei vun <a11y-tab/>-Elementer."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Eendeiteg ID",
+        "description": "Eendeiteg ID fir dës Tab-Grupp."
+      }
+    ]
+  }
+}

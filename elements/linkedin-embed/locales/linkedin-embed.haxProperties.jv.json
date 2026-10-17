@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Sematan LinkedIn",
+    "description": "Lebokake kertu profil LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Jeneng vanity",
+        "description": "Bagean jeneng pangguna vanity LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokal",
+        "description": "Nilai metadata lokal kayata en_US."
+      }
+    ]
+  }
+}

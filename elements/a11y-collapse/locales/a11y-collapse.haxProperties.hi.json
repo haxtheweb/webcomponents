@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "संक्षिप्त करने योग्य कंटेनर",
+    "description": "एकल विस्तार और संक्षिप्त करने योग्य कंटेनर।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "शीर्षक",
+        "description": "संक्षिप्त तत्व के लिए टेक्स्ट।"
+      },
+      {
+        "property": "expanded",
+        "title": "विस्तारित",
+        "description": "डिफ़ॉल्ट रूप से विस्तारित करें।"
+      },
+      {
+        "property": "headingButton",
+        "title": "शीर्षक बटन",
+        "description": "केवल आइकन के बजाय पूरे शीर्षक को क्लिक करने योग्य बनाएँ।"
+      },
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "विस्तार/संक्षिप्त टॉगल बटन के लिए आइकन।"
+      },
+      {
+        "property": "iconExpanded",
+        "title": "आइकन (विस्तारित होने पर)",
+        "description": "विस्तारित टॉगल स्थिति के लिए वैकल्पिक आइकन।"
+      },
+      {
+        "slot": "",
+        "title": "सामग्री",
+        "description": "संक्षिप्त तत्व की सामग्री।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "टूलटिप",
+        "description": "विस्तार/संक्षिप्त टॉगल बटन के लिए टूलटिप।"
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "टूलटिप (विस्तारित होने पर)",
+        "description": "विस्तारित होने पर विस्तार/संक्षिप्त बटन के लिए टूलटिप।"
+      }
+    ]
+  }
+}

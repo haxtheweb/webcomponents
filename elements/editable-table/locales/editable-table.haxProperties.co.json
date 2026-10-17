@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tavula",
+    "description": "Dati in forma di tavula per u web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Intestatura di linea",
+        "description": "Trattà a prima linea cum'è intestatura."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Intestatura di culonna",
+        "description": "Trattà a prima culonna cum'è intestatura."
+      },
+      {
+        "property": "footer",
+        "title": "Pede",
+        "description": "Trattà l'ultima linea cum'è pede."
+      },
+      {
+        "property": "sort",
+        "title": "Ordinabile",
+        "description": "Permette d'ordinà secondu i valori di e culonne."
+      },
+      {
+        "property": "filter",
+        "title": "Permette u filtru",
+        "description": "Permette di filtrà secondu i valori di e culonne."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Stile numericu",
+        "description": "Applicà u stile numericu à e culonne numeriche."
+      },
+      {
+        "property": "responsive",
+        "title": "Adattativu",
+        "description": "Adattà a dispusizione di a tavula nant'à i screni chjuchi."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Modu rubrica",
+        "description": "Interpretà sta tavula cum'è una Rubric OER Schema per chì e metadate Rubric, RubricScale, RubricCriterion è RubricLevel sianu emesse."
+      },
+      {
+        "property": "rubricType",
+        "title": "Tipu di rubrica",
+        "description": "Stile di rubrica emessu cum'è oer:rubricType (hà sensu solu quandu u modu rubrica hè attivu).",
+        "options": {
+          "": "(nisunu)",
+          "analytic": "Analitica",
+          "holistic": "Olistica",
+          "single-point": "À puntu unicu",
+          "checklist": "Lista di cuntrollu"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Cù bordi"
+      },
+      {
+        "property": "condensed",
+        "title": "Linee cumpatte",
+        "description": "Riduce l'altezza di e linee."
+      },
+      {
+        "property": "striped",
+        "title": "Linee à strisce",
+        "description": "Umbrighjà una linea nant'à duie."
+      },
+      {
+        "property": "downloadable",
+        "title": "Buttone di scaricamentu",
+        "description": "Aghjunghje un buttone per scaricà a tavula."
+      },
+      {
+        "property": "copyable",
+        "title": "Buttone di copia",
+        "description": "Aghjunghje un buttone per cupià i dati CSV di a tavula."
+      },
+      {
+        "property": "printable",
+        "title": "Buttone di stampa",
+        "description": "Aghjunghje un buttone per stampà solu a tavula."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Dati CSV",
+        "description": "Creà una tavula da un schedariu CSV caricatu."
+      }
+    ]
+  }
+}

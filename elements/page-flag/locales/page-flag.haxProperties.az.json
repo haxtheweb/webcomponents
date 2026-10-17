@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Səhifə bayrağı",
+    "description": "Səhifə müəllifləri üçün redaksiya qeydi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Səhifə bayrağı üçün vurğu rəngi."
+      },
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Səhifə bayrağı üçün etiket mətni."
+      }
+    ]
+  }
+}

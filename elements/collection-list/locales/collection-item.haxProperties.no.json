@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Samlingselement",
+    "description": "Kortelement til bruk i en samlingsliste, med tekst, lenke og valgfrie medier."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Lenke",
+        "description": "Mål-URL for dette kortet."
+      },
+      {
+        "property": "image",
+        "title": "Bilde",
+        "description": "Bakgrunnsbilde."
+      },
+      {
+        "property": "line1",
+        "title": "Linje 1",
+        "description": "Første tekstlinje."
+      },
+      {
+        "property": "line2",
+        "title": "Linje 2",
+        "description": "Andre tekstlinje."
+      },
+      {
+        "property": "line3",
+        "title": "Linje 3",
+        "description": "Tredje tekstlinje."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon som representerer kortet."
+      },
+      {
+        "property": "saturate",
+        "title": "Metningseffekt",
+        "description": "Endre bildets metning når brukeren fokuserer."
+      },
+      {
+        "property": "tags",
+        "title": "Merker",
+        "description": "Kommadelt liste med merker."
+      },
+      {
+        "property": "accentColor",
+        "title": "Farge",
+        "description": "Farge brukt for merker."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativ tekst som beskriver lenken."
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Cuntenitore NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Piattà l'editore",
+        "description": "Piattà l'interfaccia di mudificazione di i schedarii."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Piattà u terminale",
+        "description": "Piattà u terminale per i prugrammi chì partenu autumaticamente."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Piattà a finestra",
+        "description": "Piattà a finestra di surtita per un usu solu cù u terminale."
+      },
+      {
+        "slot": "",
+        "title": "Cumande",
+        "description": "Cumande (una per linea) da eseguisce nanzu à u caricamentu."
+      }
+    ]
+  }
+}

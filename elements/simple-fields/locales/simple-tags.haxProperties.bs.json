@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Oznake",
+    "description": "Jednostavna lista oznaka za prikaz na stranici."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Oznake",
+        "description": "Lista oznaka odvojenih zarezom."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatska boja naglaska",
+        "description": "Automatski postavi boju naglaska na osnovu oznake."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja",
+        "description": "Boja oznaka."
+      }
+    ]
+  }
+}

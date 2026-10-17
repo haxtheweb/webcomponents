@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Mai naɗe H5P don lodawa da gabatar da fayilolin .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Lambar saka iframe na H5P"
+      }
+    ]
+  }
+}

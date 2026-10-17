@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Луғат",
+    "description": "Истилоҳи луғавӣ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Истилоҳ"
+      },
+      {
+        "property": "information",
+        "title": "Таъриф",
+        "description": "Таърифе, ки ҳангоми клик кардани истилоҳ нишон дода мешавад."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Равзанаи пайдошаванда",
+        "description": "Таърифро дар равзанаи пайдошаванда, на дар дохили сатр, нишон диҳед."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Пайвандҳо",
+        "description": "Рӯйхати пайвандҳои иловагӣ, ки бо ин истилоҳ алоқаманданд."
+      }
+    ]
+  }
+}

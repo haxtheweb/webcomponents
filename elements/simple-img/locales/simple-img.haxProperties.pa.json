@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ਸਧਾਰਨ ਚਿੱਤਰ",
+    "description": "ਸਧਾਰਨ ਮਾਪਦੰਡਾਂ ਨਾਲ ਚਿੱਤਰਾਂ ਵਿੱਚ ਬਦਲਾਅ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ਸਰੋਤ",
+        "description": "ਚਿੱਤਰ ਸਰੋਤ URL।"
+      },
+      {
+        "property": "height",
+        "title": "ਉਚਾਈ",
+        "description": "ਵਿਕਲਪਿਕ ਚਿੱਤਰ ਉਚਾਈ।"
+      },
+      {
+        "property": "width",
+        "title": "ਚੌੜਾਈ",
+        "description": "ਵਿਕਲਪਿਕ ਚਿੱਤਰ ਚੌੜਾਈ।"
+      },
+      {
+        "property": "alt",
+        "title": "Alt ਲਿਖਤ",
+        "description": "ਸਕ੍ਰੀਨ ਰੀਡਰਾਂ ਅਤੇ ਬਿਹਤਰ SEO ਲਈ ਲਾਭਦਾਇਕ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "ਗੁਣਵੱਤਾ",
+        "description": "ਬਣਾਉਣ ਵੇਲੇ ਚਿੱਤਰ ਦੀ ਗੁਣਵੱਤਾ (ਸਿਰਫ਼ JPEG)।"
+      },
+      {
+        "property": "fetchpriority",
+        "title": "ਲਿਆਉਣ ਦੀ ਤਰਜੀਹ",
+        "description": "ਆਧੁਨਿਕ ਬ੍ਰਾਊਜ਼ਰਾਂ ਲਈ ਕਾਰਗੁਜ਼ਾਰੀ ਸੰਕੇਤ।",
+        "options": {
+          "auto": "ਸਵੈਚਲਿਤ",
+          "high": "ਉੱਚੀ",
+          "low": "ਘੱਟ"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "ਡੀਕੋਡਿੰਗ ਵਿਧੀ",
+        "description": "ਆਧੁਨਿਕ ਬ੍ਰਾਊਜ਼ਰਾਂ ਵਿੱਚ ਚਿੱਤਰ ਰੈਂਡਰਿੰਗ ਲਈ ਕਾਰਗੁਜ਼ਾਰੀ ਸੰਕੇਤ।",
+        "options": {
+          "auto": "ਸਵੈਚਲਿਤ",
+          "async": "ਅਸਿੰਕ੍ਰੋਨਸ"
+        }
+      }
+    ]
+  }
+}

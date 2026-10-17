@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ටැග",
+    "description": "පිටුවේ පෙන්වීම සඳහා සරල ටැග ලැයිස්තුව."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ටැග",
+        "description": "කොමා වලින් වෙන් කළ ටැග ලැයිස්තුව."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ස්වයංක්‍රීය උච්චාරණ වර්ණය",
+        "description": "ලේබලය අනුව උච්චාරණ වර්ණය ස්වයංක්‍රීයව සකසන්න."
+      },
+      {
+        "property": "accentColor",
+        "title": "වර්ණය",
+        "description": "ටැග සඳහා වර්ණය."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ẹ̀rọ ìṣeré 3D",
+    "description": "Ẹ̀rọ ìṣeré fáìlì 3D / òtítọ́ àfikún."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orísun",
+        "description": "URL fún fáìlì AR yìí."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Ipò X ti èròjà náà nínú AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Ipò Y ti èròjà náà nínú AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Ipò Z ti èròjà náà nínú AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Àwọ̀ ojú ọ̀run",
+        "description": "Yan àwọ̀ ojú ọ̀run nínú ìran náà."
+      }
+    ]
+  }
+}

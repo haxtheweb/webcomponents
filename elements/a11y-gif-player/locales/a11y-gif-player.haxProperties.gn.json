@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Ejapo GIF oñemomýiva opavavépe g̃uarã."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF oñemomýiva",
+        "description": "URL GIF oñemomýivape g̃uarã."
+      },
+      {
+        "property": "alt",
+        "title": "Moñe'ẽrã mokõiha",
+        "description": "Moñe'ẽrã mokõiha ta'ãngape g̃uarã."
+      },
+      {
+        "property": "longdesc",
+        "title": "Ñemombe'u puku",
+        "description": "GIF ñemombe'u puku opavavépe g̃uarã."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Ta'ãnga opytáva",
+        "description": "URL GIF ta'ãnga opytáva rehegua."
+      }
+    ]
+  }
+}

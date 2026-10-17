@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Inline အသံ",
+    "description": "စာမျက်နှာ အကြောင်းအရာကို ဖြည့်စွက်ရန် အသံကို inline ဖွင့်ရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ရင်းမြစ်",
+        "description": "MP3 ဖိုင် သို့မဟုတ် URL။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "ကတ် အထူးပြု အရောင်။"
+      },
+      {
+        "property": "shiny",
+        "title": "တောက်ပ",
+        "description": "မီးခိုးရောင်အစား ပိုဖျော့သော အထူးပြု နောက်ခံကို သုံးရန်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "အမှောင်",
+        "description": "အမှောင် မုဒ်ကို သုံးရန်။"
+      }
+    ]
+  }
+}

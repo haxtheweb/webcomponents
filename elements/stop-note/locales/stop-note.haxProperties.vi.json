@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Ghi chú dừng",
+    "description": "Thông báo để lưu ý người đọc về các hướng dẫn cụ thể."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Nhập tiêu đề cho ghi chú dừng."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Nhập một URL bên ngoài."
+      },
+      {
+        "property": "status",
+        "title": "Trạng thái",
+        "description": "Đặt trạng thái sẽ thay đổi màu sắc và biểu tượng cho phù hợp",
+        "options": {
+          "stop": "Dừng",
+          "warning": "Cảnh báo",
+          "success": "Xác nhận",
+          "info": "Thông báo"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Văn bản ghi chú",
+        "description": "Văn bản cho ghi chú dừng."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Kuyika kwa LinkedIn",
+    "description": "Ikani khadi la mbiri ya LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Dzina lapadera",
+        "description": "Gawo la dzina lapadera la wogwiritsa ntchito pa LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Chilankhulo ndi dera",
+        "description": "Mtengo wa chilankhulo ndi dera monga en_US."
+      }
+    ]
+  }
+}

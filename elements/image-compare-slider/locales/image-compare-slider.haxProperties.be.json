@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Параўнанне выяў",
+    "description": "Перацягвайце адну выяву па-над другой для параўнання."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Верхняя выява",
+        "description": "Верхняя выява, якая перацягваецца па-над ніжняй."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alt-тэкст верхняй выявы",
+        "description": "Абавязковы alt-тэкст для даступнасці."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Ніжняя выява",
+        "description": "Ніжняя выява, якая паказваецца пад верхняй."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alt-тэкст ніжняй выявы",
+        "description": "Абавязковы alt-тэкст для даступнасці."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Паводзіны",
+        "description": "Выберыце рэжым зрушэння (па змаўчанні) або рэжым празрыстасці верхняй выявы."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Колер паласы паўзунка."
+      },
+      {
+        "property": "dark",
+        "title": "Цёмная",
+        "description": "Інвертаваць колер паласы паўзунка."
+      },
+      {
+        "property": "position",
+        "title": "Пачатковая пазіцыя",
+        "description": "Пачатковая пазіцыя ад 0 да 100."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "රූප සංසන්දනය",
+    "description": "සංසන්දනය සඳහා එක් රූපයක් තවත් රූපයක් මතින් ස්වයිප් කරන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "ඉහළ රූපය",
+        "description": "පහළ රූපය මතින් ස්වයිප් කිරීමට ඉහළ රූපය."
+      },
+      {
+        "property": "topAlt",
+        "title": "ඉහළ රූපයේ විකල්ප පෙළ",
+        "description": "ප්‍රවේශ්‍යතාව සඳහා අවශ්‍ය විකල්ප පෙළ."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "පහළ රූපය",
+        "description": "ඉහළ රූපයට යටින් පෙන්වන පහළ රූපය."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "පහළ රූපයේ විකල්ප පෙළ",
+        "description": "ප්‍රවේශ්‍යතාව සඳහා අවශ්‍ය විකල්ප පෙළ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "හැසිරීම",
+        "description": "පිසදැමීමේ ප්‍රකාරය (පෙරනිමි) හෝ ඉහළ රූපයේ පාරාන්ධතා ප්‍රකාරය තෝරන්න."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "ස්ලයිඩර් තීරුවේ වර්ණය."
+      },
+      {
+        "property": "dark",
+        "title": "අඳුරු",
+        "description": "ස්ලයිඩර් තීරුවේ වර්ණය ප්‍රතිලෝම කරන්න."
+      },
+      {
+        "property": "position",
+        "title": "ආරම්භක පිහිටීම",
+        "description": "0 සිට 100 දක්වා ආරම්භක පිහිටීම."
+      }
+    ]
+  }
+}

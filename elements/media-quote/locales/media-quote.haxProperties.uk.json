@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Медіацитата",
+    "description": "Зображення з цитатою, джерелом і необов'язковим підписом."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Цитата",
+        "description": "Текст цитати."
+      },
+      {
+        "slot": "author",
+        "title": "Автор",
+        "description": "Автор цитати."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Відомості про автора",
+        "description": "Відомості про автора."
+      },
+      {
+        "slot": "caption",
+        "title": "Підпис",
+        "description": "Підпис до зображення."
+      },
+      {
+        "property": "src",
+        "title": "Джерело зображення",
+        "description": "Файл зображення для медіацитати."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернативний текст",
+        "description": "Альтернативний текст для зображення."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "Акцентний колір картки."
+      }
+    ]
+  }
+}

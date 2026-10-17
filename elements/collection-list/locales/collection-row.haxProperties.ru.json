@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Строка коллекции",
+    "description": "Элемент в виде строки для списка коллекции: текст, ссылка, значок, теги и необязательное изображение."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Ссылка",
+        "description": "URL назначения для этой строки."
+      },
+      {
+        "property": "image",
+        "title": "Изображение",
+        "description": "Изображение для строки."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Альтернативный текст, описывающий изображение."
+      },
+      {
+        "property": "line1",
+        "title": "Строка 1",
+        "description": "Первая строка текста."
+      },
+      {
+        "property": "line2",
+        "title": "Строка 2",
+        "description": "Вторая строка текста."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Значок",
+        "description": "Значок, представляющий строку."
+      },
+      {
+        "property": "saturate",
+        "title": "Эффект насыщенности",
+        "description": "Изменять насыщенность изображения при фокусе."
+      },
+      {
+        "property": "tags",
+        "title": "Теги",
+        "description": "Список тегов через запятую."
+      },
+      {
+        "property": "accentColor",
+        "title": "Цвет",
+        "description": "Цвет значка и тегов."
+      }
+    ]
+  }
+}

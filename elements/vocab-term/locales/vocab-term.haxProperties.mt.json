@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Vokabularju",
+    "description": "Terminu tal-vokabularju."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Terminu"
+      },
+      {
+        "property": "information",
+        "title": "Definizzjoni",
+        "description": "Definizzjoni murija meta jiġi kklikkjat it-terminu."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "Uri d-definizzjoni f'popover minflok inline."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Links",
+        "description": "Lista ta' links supplimentari assoċjati ma' dan it-terminu."
+      }
+    ]
+  }
+}

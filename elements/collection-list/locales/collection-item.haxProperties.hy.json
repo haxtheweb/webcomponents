@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Հավաքածուի տարր",
+    "description": "Քարտի ոճով տարր՝ հավաքածուի ցանկի ներսում օգտագործելու համար, տեքստով, հղումով և ըստ ցանկության մեդիայով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Հղում",
+        "description": "Այս քարտի նպատակակետի URL-ը։"
+      },
+      {
+        "property": "image",
+        "title": "Պատկեր",
+        "description": "Ֆոնային պատկեր։"
+      },
+      {
+        "property": "line1",
+        "title": "Տող 1",
+        "description": "Տեքստի առաջին տողը։"
+      },
+      {
+        "property": "line2",
+        "title": "Տող 2",
+        "description": "Տեքստի երկրորդ տողը։"
+      },
+      {
+        "property": "line3",
+        "title": "Տող 3",
+        "description": "Տեքստի երրորդ տողը։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Պատկերակ",
+        "description": "Քարտը ներկայացնող պատկերակ։"
+      },
+      {
+        "property": "saturate",
+        "title": "Հագեցվածության էֆեկտ",
+        "description": "Փոխել պատկերի հագեցվածությունը, երբ օգտատերը կենտրոնանում է դրա վրա։"
+      },
+      {
+        "property": "tags",
+        "title": "Պիտակներ",
+        "description": "Ստորակետերով բաժանված պիտակների ցանկ։"
+      },
+      {
+        "property": "accentColor",
+        "title": "Գույն",
+        "description": "Պիտակների համար օգտագործվող գույնը։"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Հղումը նկարագրող այլընտրանքային տեքստ։"
+      }
+    ]
+  }
+}

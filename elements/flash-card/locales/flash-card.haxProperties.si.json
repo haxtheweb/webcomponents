@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ෆ්ලෑෂ් කාඩ්පත",
+    "description": "ඉදිරිපස සහ පසුපස සහිත ෆ්ලෑෂ් කාඩ්පත් මගින් සංකල්ප පුහුණු වන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "කාඩ්පතේ ඉදිරිපස",
+        "description": "ඉදිරිපස පෙළ හෝ ප්‍රශ්නය."
+      },
+      {
+        "slot": "back",
+        "title": "කාඩ්පතේ පසුපස",
+        "description": "අපේක්ෂිත පිළිතුර."
+      },
+      {
+        "property": "imgSource",
+        "title": "රූප මූලාශ්‍රය",
+        "description": "කාඩ්පත සඳහා භාවිත රූප ගොනුව. රූප මූලපදය අභිබවා යයි."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "ක්‍රියා වර්ගය",
+        "description": "OER Schema: මෙම පුහුණුවට අදාළ ක්‍රියා වර්ගය (උදා. කියවීම, ලිවීම, සෑදීම, පර්යේෂණය, සවන්දීම, නැරඹීම, ආවර්ජනය, සාකච්ඡාව, නිරීක්ෂණය, ඉදිරිපත් කිරීම, තක්සේරුව)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ඉගෙනුම් අරමුණ",
+        "description": "OER Schema: මෙම පුහුණුව සහාය දක්වන ඉගෙනුම් අරමුණේ ID හෝ URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "අඳුරු",
+        "description": "අඳුරු ප්‍රකාරය භාවිත කරන්න."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "කාඩ්පතේ උච්චාරණ වර්ණය."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "රූප මූලපදය",
+        "description": "අහඹු රූප මූලපදය. රූප මූලාශ්‍රය මගින් අභිබවා යයි."
+      }
+    ]
+  }
+}

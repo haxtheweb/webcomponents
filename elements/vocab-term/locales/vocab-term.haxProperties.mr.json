@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "शब्दसंग्रह",
+    "description": "शब्दसंग्रहातील संज्ञा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "संज्ञा"
+      },
+      {
+        "property": "information",
+        "title": "व्याख्या",
+        "description": "संज्ञेवर क्लिक केल्यावर दाखवली जाणारी व्याख्या."
+      },
+      {
+        "property": "popoverMode",
+        "title": "पॉपओव्हर",
+        "description": "व्याख्या ओळीत न दाखवता पॉपओव्हरमध्ये दाखवा."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "लिंक",
+        "description": "या संज्ञेशी संबंधित पूरक लिंकची सूची."
+      }
+    ]
+  }
+}

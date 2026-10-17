@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "തീം ചെയ്ത Polaris കോൾ-ടു-ആക്ഷൻ ബട്ടൺ പ്രദർശിപ്പിക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "ബട്ടൺ വാചകം",
+        "description": "കോൾ-ടു-ആക്ഷൻ ബട്ടണിൽ കാണിക്കുന്ന വാചകം."
+      },
+      {
+        "property": "link",
+        "title": "ലിങ്ക്",
+        "description": "ബട്ടണിന്റെ ലക്ഷ്യസ്ഥാന URL."
+      },
+      {
+        "property": "type",
+        "title": "വകഭേദം",
+        "description": "ദൃശ്യ ശൈലി വകഭേദം.",
+        "options": {
+          "primary": "പ്രാഥമികം",
+          "tinted": "ഛായ ചേർത്തത്",
+          "light": "ഇളം"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "ഔട്ട്‌ലൈൻ ശൈലി",
+        "description": "ഔട്ട്‌ലൈൻ ശൈലി പ്രവർത്തനക്ഷമമാക്കുക."
+      },
+      {
+        "property": "filled",
+        "title": "നിറച്ച ശൈലി",
+        "description": "നിറച്ച ശൈലി പ്രവർത്തനക്ഷമമാക്കുക."
+      }
+    ]
+  }
+}

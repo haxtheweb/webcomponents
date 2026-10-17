@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Inline na audio",
+    "description": "Mag-play ng audio nang inline bilang dagdag sa nilalaman ng pahina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pinagmulan",
+        "description": "MP3 file o URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na Kulay",
+        "description": "Accent na kulay ng card."
+      },
+      {
+        "property": "shiny",
+        "title": "Makintab",
+        "description": "Gumamit ng mas maliwanag na accent na background sa halip na gray."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Madilim",
+        "description": "Gamitin ang dark mode."
+      }
+    ]
+  }
+}

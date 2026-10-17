@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "内联音频",
+    "description": "以内联方式播放音频，补充页面内容。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "来源",
+        "description": "MP3 文件或 URL。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "卡片强调色。"
+      },
+      {
+        "property": "shiny",
+        "title": "亮色",
+        "description": "使用较浅的强调背景色而非灰色。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "深色",
+        "description": "使用深色模式。"
+      }
+    ]
+  }
+}

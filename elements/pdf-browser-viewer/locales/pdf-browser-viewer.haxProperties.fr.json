@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Visionneuse PDF du navigateur",
+    "description": "Intégrer un fichier PDF dans la page avec une mise en page de carte et un bouton de téléchargement facultatifs."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL du PDF",
+        "description": "Emplacement du fichier PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Titre",
+        "description": "Texte du titre de la carte."
+      },
+      {
+        "property": "card",
+        "title": "Mise en page en carte",
+        "description": "Afficher le PDF dans une carte avec un bouton de téléchargement."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Libellé de téléchargement",
+        "description": "Libellé du bouton de téléchargement."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Message de non-prise en charge",
+        "description": "Message affiché lorsque le navigateur ne peut pas afficher les fichiers PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Texte du lien de non-prise en charge",
+        "description": "Texte du lien affiché lorsque le navigateur ne peut pas afficher les fichiers PDF."
+      },
+      {
+        "property": "width",
+        "title": "Largeur",
+        "description": "Largeur de la visionneuse PDF."
+      },
+      {
+        "property": "height",
+        "title": "Hauteur",
+        "description": "Hauteur de la visionneuse PDF."
+      }
+    ]
+  }
+}

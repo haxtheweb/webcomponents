@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "កាតចងចាំ",
+    "description": "ហាត់សូត្រគំនិតជាមួយកាតចងចាំមុខ-ក្រោយ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "មុខកាត",
+        "description": "អត្ថបទ ឬសំណួរខាងមុខ។"
+      },
+      {
+        "slot": "back",
+        "title": "ខ្នងកាត",
+        "description": "ចម្លើយដែលរំពឹងទុក។"
+      },
+      {
+        "property": "imgSource",
+        "title": "ប្រភពរូបភាព",
+        "description": "ឯកសាររូបភាពដែលប្រើសម្រាប់កាត។ បដិសេធពាក្យគន្លឹះរូបភាព។"
+      },
+      {
+        "property": "typeOfAction",
+        "title": "ប្រភេទសកម្មភាព",
+        "description": "OER Schema: ប្រភេទសកម្មភាពដែលការហាត់នេះពាក់ព័ន្ធ (ឧ. ការអាន ការសរសេរ ការបង្កើត ការស្រាវជ្រាវ ការស្តាប់ ការមើល ការឆ្លុះបញ្ចាំង ការពិភាក្សា ការសង្កេត ការបង្ហាញ ការវាយតម្លៃ)។"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "គោលបំណងសិក្សា",
+        "description": "OER Schema: ID ឬ URL នៃគោលបំណងសិក្សាដែលការហាត់នេះគាំទ្រ។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ងងឹត",
+        "description": "ប្រើរបៀបងងឹត។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌សង្កត់របស់កាត។"
+      },
+      {
+        "property": "imgKeyword",
+        "title": "ពាក្យគន្លឹះរូបភាព",
+        "description": "ពាក្យគន្លឹះរូបភាពចៃដន្យ។ ត្រូវបានបដិសេធដោយប្រភពរូបភាព។"
+      }
+    ]
+  }
+}

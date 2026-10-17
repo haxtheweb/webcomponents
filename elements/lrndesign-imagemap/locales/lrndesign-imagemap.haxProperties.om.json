@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kaartaa suuraa",
+    "description": "Kaartaa suuraa dhaqqabamaa bakkeewwan tuqamoo qabu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Maqaa",
+        "description": "Maqaa kaartaa suuraa."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Bal'ina bakkeewwan tuqamoo",
+        "description": "Bakkeewwan tuqamoo kaartaa suuraa irra jiran."
+      }
+    ]
+  }
+}

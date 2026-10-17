@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Бет желекчеси",
+    "description": "Бет авторлору үчүн редакциялык эскертме."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Бет желекчесинин акцент түсү."
+      },
+      {
+        "property": "label",
+        "title": "Энбелги",
+        "description": "Бет желекчесинин энбелги тексти."
+      }
+    ]
+  }
+}

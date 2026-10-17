@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Isbarbardhig sawir",
+    "description": "Hal sawir ku jiid dul sawir kale si aad isu barbardhigto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Sawirka sare",
+        "description": "Sawirka sare ee lagu jiido dul sawirka hoose."
+      },
+      {
+        "property": "topAlt",
+        "title": "Qoraalka beddelka sawirka sare",
+        "description": "Qoraal beddel ah oo loo baahan yahay si qof walba u helo."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Sawirka hoose",
+        "description": "Sawirka hoose ee ka muuqda sawirka sare hoostiisa."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Qoraalka beddelka sawirka hoose",
+        "description": "Qoraal beddel ah oo loo baahan yahay si qof walba u helo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Dabeecad",
+        "description": "Dooro habka tirtirka (caadi) ama habka hufnaanta sawirka sare."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka Xoojinta",
+        "description": "Midabka xariijinta silidhka."
+      },
+      {
+        "property": "dark",
+        "title": "Madow",
+        "description": "Rogo midabka xariijinta silidhka."
+      },
+      {
+        "property": "position",
+        "title": "Booska Bilowga",
+        "description": "Booska bilowga laga bilaabo 0 ilaa 100."
+      }
+    ]
+  }
+}

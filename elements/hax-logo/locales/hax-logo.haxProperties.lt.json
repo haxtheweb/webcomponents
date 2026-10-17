@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX žodžių menas",
+    "description": "HAX logotipo elementas, žinoma, palaikantis HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Įterpiamo HAX logotipo dydis",
+        "options": {
+          "mini": "Mini",
+          "small": "Mažas",
+          "normal": "Įprastas",
+          "large": "Didelis"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Ar logotipą paversti didžiosiomis raidėmis"
+      }
+    ]
+  }
+}

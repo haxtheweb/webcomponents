@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ຕາຕະລາງ CSV",
+    "description": "ສາມາດສ້າງຕາຕະລາງຈາກໄຟລ໌ CSV ບໍ່ວ່າຈະຢູ່ບ່ອນໃດ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "URL ຂອງໄຟລ໌ CSV ນີ້."
+      },
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ຂອງຕາຕະລາງທີ່ຈະສ້າງ."
+      },
+      {
+        "property": "description",
+        "title": "ຄຳອະທິບາຍ",
+        "description": "ຄຳອະທິບາຍລະອຽດເພີ່ມເຕີມ ເພື່ອປັບປຸງການເຂົ້າເຖິງຂໍ້ມູນໃນຕາຕະລາງ."
+      }
+    ]
+  }
+}

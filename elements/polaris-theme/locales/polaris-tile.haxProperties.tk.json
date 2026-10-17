@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris plitkasy",
+    "description": "Atly, goşmaça goldaýjy tekstli we goşmaça baglanyşykly Polaris plitkasyny görkeziň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Esasy tekst",
+        "description": "Plitkanyň esasy teksti."
+      },
+      {
+        "property": "line2",
+        "title": "Goşmaça tekst",
+        "description": "Goşmaça goldaýjy tekst."
+      },
+      {
+        "property": "type",
+        "title": "Plitka stili",
+        "description": "Plitkanyň taýýar wizual stili.",
+        "options": {
+          "1": "1-nji stil",
+          "2": "2-nji stil",
+          "3": "3-nji stil",
+          "4": "4-nji stil",
+          "5": "5-nji stil"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Fon suraty",
+        "description": "Surat goldaýan plitka stilleriniň ulanýan fon suratynyň URL-i."
+      },
+      {
+        "property": "link",
+        "title": "Baglanyşyk",
+        "description": "Plitka hereketi üçin goşmaça barmaly URL."
+      }
+    ]
+  }
+}

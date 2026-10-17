@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Mubvunzo Wemhinduro Pfupi",
+    "description": "Ita kuti mushandisi apindure mubvunzo wakareruka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Mubvunzo",
+        "description": "Mubvunzo unopindurwa nevashandisi."
+      },
+      {
+        "property": "answers",
+        "title": "Mhinduro Dzinobvira"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Zita rekuedzwa",
+        "description": "Zita rekuedzwa rinoshandiswa munzvimbo dzinoshandisa xAPI kuziva chinhu ichi"
+      }
+    ]
+  }
+}

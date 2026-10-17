@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D پليئر",
+    "description": "3D فائل / وڌايل حقيقت (AR) پليئر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ذريعو",
+        "description": "هن AR فائل جو URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR ۾ عنصر جي X پوزيشن."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR ۾ عنصر جي Y پوزيشن."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR ۾ عنصر جي Z پوزيشن."
+      },
+      {
+        "property": "skyColor",
+        "title": "آسمان جو رنگ",
+        "description": "منظر ۾ آسمان جو رنگ چونڊيو."
+      }
+    ]
+  }
+}

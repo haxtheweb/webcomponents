@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Vizualizator MIDI",
+    "description": "Predvajajte MIDI v kontekstu z vizualizacijo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Vir",
+        "description": "URL datoteke za predvajanje."
+      },
+      {
+        "property": "visualizer",
+        "title": "Vizualizacija",
+        "description": "Slog vizualizacije glasbene datoteke.",
+        "options": {
+          "staff": "Notno črtovje",
+          "piano-roll": "Klavirski zvitek",
+          "waterfall": "Klavir + slap"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Skrij slap",
+        "description": "Skrij padajoče note v vizualizaciji klavirja."
+      }
+    ]
+  }
+}

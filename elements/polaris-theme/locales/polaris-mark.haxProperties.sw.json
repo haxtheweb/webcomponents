@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Alama ya Polaris",
+    "description": "Onyesha alama ya utambulisho ya PSU pamoja na jina la chuo la hiari na URL lengwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Jina la chuo",
+        "description": "Jina linaloonyeshwa kando ya alama."
+      },
+      {
+        "property": "name2",
+        "title": "Jina la chuo 2",
+        "description": "Jina la pili linaloonyeshwa chini ya jina la kwanza la chuo."
+      },
+      {
+        "property": "name3",
+        "title": "Jina la chuo 3",
+        "description": "Jina la tatu linaloonyeshwa chini ya jina la pili la chuo."
+      },
+      {
+        "property": "url",
+        "title": "Kiungo",
+        "description": "URL lengwa alama inapobofywa."
+      },
+      {
+        "property": "type",
+        "title": "Lahaja",
+        "description": "Lahaja ya kuona ya alama.",
+        "options": {
+          "default": "Chaguo-msingi",
+          "light": "Angavu",
+          "dark": "Meusi"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Mpangilio wima",
+        "description": "Onyesha jina la tatu chini ya jina la pili pamoja na mstari wa mlalo."
+      }
+    ]
+  }
+}

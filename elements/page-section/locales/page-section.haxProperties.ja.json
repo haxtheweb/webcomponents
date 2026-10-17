@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "ページセクション",
+    "description": "ページのコンテンツや画面単位のレイアウト用のセクションコンテナ。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "デザイン処理",
+        "description": "関連する設定を更新するプリセットスタイル。"
+      },
+      {
+        "property": "image",
+        "title": "画像",
+        "description": "セクションの背景メディア。"
+      },
+      {
+        "property": "bg",
+        "title": "背景色",
+        "description": "画像が設定されていないときの背景色。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "スクロールボタン",
+        "description": "次のセクションへスクロールするボタンを表示します。"
+      },
+      {
+        "property": "fold",
+        "title": "折り目を表示",
+        "description": "セクションの下部に視覚的な折り目を表示します。"
+      },
+      {
+        "property": "full",
+        "title": "全画面サイズ",
+        "description": "画面の高さいっぱいに表示します。"
+      },
+      {
+        "property": "filter",
+        "title": "フィルターを適用",
+        "description": "背景画像に視覚フィルターを適用します。"
+      },
+      {
+        "slot": "",
+        "title": "コンテンツ",
+        "description": "セクションのコンテンツ。"
+      },
+      {
+        "slot": "entice",
+        "title": "誘導",
+        "description": "任意の誘導コンテンツ。"
+      },
+      {
+        "slot": "buttons",
+        "title": "ボタン",
+        "description": "テキストの下に表示するボタングループ。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "アンカーテキスト",
+        "description": "ナビゲーションに表示するアンカーのラベル。"
+      }
+    ]
+  }
+}

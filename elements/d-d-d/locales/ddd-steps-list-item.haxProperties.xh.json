@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Into yamanyathelo",
+    "description": "Into eyinxalenye yoluhlu lwamanyathelo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF böngészőnézegető",
+    "description": "PDF-fájl beágyazása az oldalba opcionális kártyaelrendezéssel és letöltés gombbal."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL-je",
+        "description": "A PDF-fájl helye."
+      },
+      {
+        "property": "heading",
+        "title": "Címsor",
+        "description": "A kártya címsorának szövege."
+      },
+      {
+        "property": "card",
+        "title": "Kártyaelrendezés",
+        "description": "A PDF megjelenítése kártyában, letöltés gombbal."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Letöltés felirata",
+        "description": "A letöltés gomb felirata."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Nem támogatott üzenet",
+        "description": "Üzenet, ha a böngésző nem tud PDF-fájlokat megjeleníteni."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Nem támogatott hivatkozás szövege",
+        "description": "Hivatkozás szövege, ha a böngésző nem tud PDF-fájlokat megjeleníteni."
+      },
+      {
+        "property": "width",
+        "title": "Szélesség",
+        "description": "A PDF-nézegető szélessége."
+      },
+      {
+        "property": "height",
+        "title": "Magasság",
+        "description": "A PDF-nézegető magassága."
+      }
+    ]
+  }
+}

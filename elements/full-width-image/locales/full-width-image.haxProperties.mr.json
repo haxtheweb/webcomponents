@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "प्रतिमा विभाग",
+    "description": "पृष्ठ विभाग वेगळा करणारी पूर्ण-रुंदीची प्रतिमा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "पार्श्वभूमी प्रतिमा."
+      },
+      {
+        "property": "caption",
+        "description": "मजकूर शीर्षक."
+      }
+    ]
+  }
+}

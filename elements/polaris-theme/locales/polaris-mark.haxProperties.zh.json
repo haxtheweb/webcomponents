@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris 标识",
+    "description": "显示 PSU 识别标识，可附带学院名称和目标 URL。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "学院名称",
+        "description": "显示在标识旁边的名称。"
+      },
+      {
+        "property": "name2",
+        "title": "学院名称 2",
+        "description": "显示在第一个学院名称下方的第二个名称。"
+      },
+      {
+        "property": "name3",
+        "title": "学院名称 3",
+        "description": "显示在第二个学院名称下方的第三个名称。"
+      },
+      {
+        "property": "url",
+        "title": "链接",
+        "description": "点击标识时的目标 URL。"
+      },
+      {
+        "property": "type",
+        "title": "变体",
+        "description": "标识的视觉变体。",
+        "options": {
+          "default": "默认",
+          "light": "浅色",
+          "dark": "深色"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "垂直布局",
+        "description": "将第三个名称显示在第二个名称下方，并以水平线分隔。"
+      }
+    ]
+  }
+}

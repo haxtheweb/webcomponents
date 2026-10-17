@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Mallattoolee",
+    "description": "Tarree mallattoolee salphaa fuula irratti agarsiisuuf."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Mallattoolee",
+        "description": "Tarree mallattoolee qooduu (,) n addaan baafaman."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Halluu Calaqqee Ofumaan",
+        "description": "Maqaa irratti hundaa'uun halluu calaqqee ofumaan murteessi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu",
+        "description": "Halluu mallattooleef."
+      }
+    ]
+  }
+}

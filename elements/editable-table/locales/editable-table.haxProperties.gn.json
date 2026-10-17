@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabla",
+    "description": "Mba'ekuaarã tabla rekópe ñanduti g̃uarã."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Tysýi moakãha",
+        "description": "Eguereko tysýi peteĩha moakãhárõ."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Ysýi moakãha",
+        "description": "Eguereko ysýi peteĩha moakãhárõ."
+      },
+      {
+        "property": "footer",
+        "title": "Py'ãkuatia",
+        "description": "Eguereko tysýi pahagua py'ãkuatiarõ."
+      },
+      {
+        "property": "sort",
+        "title": "Ikatu oñemohenda",
+        "description": "Emoneĩ ñemohenda ysýi repykue rupive."
+      },
+      {
+        "property": "filter",
+        "title": "Emoneĩ mbogua'ã",
+        "description": "Emoneĩ mbogua'ã ysýi repykue rupive."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Papapy jehaipyrã",
+        "description": "Emoĩ papapy jehaipyrã ysýi papapygua rehe."
+      },
+      {
+        "property": "responsive",
+        "title": "Ojeguerovakuaáva",
+        "description": "Emohenda tabla mba'erechaha michĩvape."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rúbrica reko",
+        "description": "Ehechakuaa ko tabla OER Schema Rubric ramo ojeguenohẽ hag̃ua Rubric, RubricScale, RubricCriterion ha RubricLevel mba'ekuaarã."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rúbrica rekoichagua",
+        "description": "Rúbrica reko ojeguenohẽva oer:rubricType ramo (oiporúnte Rúbrica reko oñemyandy jave).",
+        "options": {
+          "": "(mba'eve)",
+          "analytic": "Ñehesa'ỹijopy",
+          "holistic": "Pavẽme",
+          "single-point": "Peteĩ kyta",
+          "checklist": "Jehechajeyrã"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Ijembe'ýva"
+      },
+      {
+        "property": "condensed",
+        "title": "Emomichĩ tysýi",
+        "description": "Emomichĩ tysýi yvatekue."
+      },
+      {
+        "property": "striped",
+        "title": "Tysýi ijyvyrãva",
+        "description": "Emoĩ ñembopytũ tysýi peteĩ ha ambuépe."
+      },
+      {
+        "property": "downloadable",
+        "title": "Votõ mboguejyha",
+        "description": "Embojoapy votõ tabla oñemboguejy hag̃ua."
+      },
+      {
+        "property": "copyable",
+        "title": "Votõ monguatiaha",
+        "description": "Embojoapy votõ ojemonguatia hag̃ua tabla mba'ekuaarã CSV."
+      },
+      {
+        "property": "printable",
+        "title": "Votõ mbokuatiaha",
+        "description": "Embojoapy votõ ojembokuatia hag̃ua tabla añoite."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Mba'ekuaarã CSV",
+        "description": "Ejapo tabla marandurenda CSV ojehupi va'ekuégui."
+      }
+    ]
+  }
+}

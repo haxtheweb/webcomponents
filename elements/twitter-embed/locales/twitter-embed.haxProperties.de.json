@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X)-Einbettung",
+    "description": "Einen Post von X im Kontext einbetten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Tweet-URL",
+        "description": "URL des einzubettenden Tweets."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Design",
+        "description": "Helles oder dunkles Design für Tweets von X.",
+        "options": {
+          "light": "Hell",
+          "dark": "Dunkel"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Pop-up beim Klicken verhindern",
+        "description": "Verhindern, dass Benutzer den Tweet auf x.com öffnen."
+      }
+    ]
+  }
+}

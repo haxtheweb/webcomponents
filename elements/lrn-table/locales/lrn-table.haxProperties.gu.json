@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV કોષ્ટક",
+    "description": "આ CSV ફાઇલ ગમે ત્યાં હોય, તેમાંથી કોષ્ટક બનાવી શકે છે."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "સ્રોત",
+        "description": "આ CSV ફાઇલ માટેનું URL."
+      },
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "બનાવવાના કોષ્ટકનું શીર્ષક."
+      },
+      {
+        "property": "description",
+        "title": "વર્ણન",
+        "description": "કોષ્ટકના ડેટાની વધુ સારી સુલભતા માટે વધુ વિગતવાર વર્ણન."
+      }
+    ]
+  }
+}

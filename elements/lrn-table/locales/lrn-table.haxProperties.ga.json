@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tábla CSV",
+    "description": "Is féidir leis seo tábla a ghiniúint ó chomhad CSV is cuma cá bhfuil sé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Foinse",
+        "description": "URL don chomhad CSV seo."
+      },
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Teideal don tábla a ghinfear."
+      },
+      {
+        "property": "description",
+        "title": "Cur síos",
+        "description": "Cur síos níos mionsonraithe chun inrochtaineacht shonraí an tábla a fheabhsú."
+      }
+    ]
+  }
+}

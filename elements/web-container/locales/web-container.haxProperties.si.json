@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS බහාලුම"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "සංස්කාරකය සඟවන්න",
+        "description": "ගොනු සංස්කරණ අතුරුමුහුණත සඟවන්න."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "ටර්මිනලය සඟවන්න",
+        "description": "ස්වයංක්‍රීයව ධාවනය වන වැඩසටහන් සඳහා ටර්මිනලය සඟවන්න."
+      },
+      {
+        "property": "hideWindow",
+        "title": "කවුළුව සඟවන්න",
+        "description": "ටර්මිනලය පමණක් භාවිතය සඳහා ප්‍රතිදාන කවුළුව සඟවන්න."
+      },
+      {
+        "slot": "",
+        "title": "විධාන",
+        "description": "පූරණය කිරීමට පෙර ධාවනය කළ යුතු විධාන (පේළියකට එකක්)."
+      }
+    ]
+  }
+}

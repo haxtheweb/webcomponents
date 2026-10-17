@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Audio en liña",
+    "description": "Reproduce audio en liña para complementar o contido da páxina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orixe",
+        "description": "Ficheiro MP3 ou URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Cor de realce da tarxeta."
+      },
+      {
+        "property": "shiny",
+        "title": "Brillante",
+        "description": "Usar un fondo de realce máis claro en lugar de gris."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Escuro",
+        "description": "Usar o modo escuro."
+      }
+    ]
+  }
+}

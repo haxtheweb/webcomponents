@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Сүзләрне билгеләү",
+    "description": "Текст эчендә сүзләргә басып төшенчәләрне табарга."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Сорау",
+        "description": "Кулланучылар җавап бирәсе сорау."
+      },
+      {
+        "property": "statement",
+        "title": "Җөмлә",
+        "description": "Сүзләрне билгеләү күнегүенә әверелдереләчәк җөмлә."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Бәяләү форматы",
+        "description": "OER Schema: бу бәяләүнең бәяләү форматы (мәс., баллар, хәреф, процент, үтәлү)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Уку максаты",
+        "description": "OER Schema: бу бәяләү белән бәйле уку максаты."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: бу бәяләү билгеләнгән курс."
+      },
+      {
+        "property": "answers",
+        "title": "Җаваплар"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Тест исеме",
+        "description": "Бу элементны танып белү өчен xAPI нигезендәге мохитләрдә кулланыла торган тест исеме"
+      }
+    ]
+  }
+}

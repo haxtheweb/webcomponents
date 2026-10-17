@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Nukuu yenye Picha",
+    "description": "Nukuu yenye mtindo pamoja na picha ya hiari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Picha",
+        "description": "Ongeza picha kwenye ushuhuda."
+      },
+      {
+        "property": "name",
+        "title": "Jina Kamili",
+        "description": "Jina la mtu anayetoa ushuhuda."
+      },
+      {
+        "property": "position",
+        "title": "Wadhifa au Cheo cha Kazi",
+        "description": "Wadhifa au cheo cha kazi cha mtu."
+      },
+      {
+        "slot": "",
+        "title": "Nukuu",
+        "description": "Nukuu kutoka kwa mwandishi wa ushuhuda."
+      }
+    ]
+  }
+}

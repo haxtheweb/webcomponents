@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ໄອຄອນ",
+    "description": "ໄອຄອນຈາກຄັງໄອຄອນທັງໝົດ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ໄອຄອນ",
+        "description": "ໄອຄອນທີ່ຈະສະແດງ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນສຳລັບໄອຄອນ."
+      },
+      {
+        "property": "dark",
+        "title": "ມືດ",
+        "description": "ໃຊ້ໂໝດມືດ (ຊຸດສີກັບກັນ)."
+      }
+    ]
+  }
+}

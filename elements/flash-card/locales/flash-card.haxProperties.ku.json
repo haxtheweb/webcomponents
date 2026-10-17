@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Karta fêrbûnê",
+    "description": "Têgehan bi kartên fêrbûnê yên pêş û paş biceribîne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Pêşiya Kartê",
+        "description": "Nivîs an pirsa pêşiyê."
+      },
+      {
+        "slot": "back",
+        "title": "Paşiya Kartê",
+        "description": "Bersiva hêvîkirî."
+      },
+      {
+        "property": "imgSource",
+        "title": "Çavkaniya Wêneyê",
+        "description": "Pela wêneyê ku ji bo kartê tê bikaranîn. Li şûna Peyva Sereke ya Wêneyê derbas dibe."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Cureyê Çalakiyê",
+        "description": "OER Schema: cureyê çalakiya ku ev pratîk tê de heye (mînak Xwendin, Nivîsîn, Çêkirin, Lêkolîn, Guhdarîkirin, Temaşekirin, Ramandin, Nîqaşkirin, Çavdêrîkirin, Pêşkêşkirin, Nirxandin)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Armanca Fêrbûnê",
+        "description": "OER Schema: ID an URL ya armanca fêrbûnê ya ku ev pratîk piştgirî dike."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tarî",
+        "description": "Moda tarî bikar bîne."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê Balkêş",
+        "description": "Rengê balkêş ê kartê."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Peyva Sereke ya Wêneyê",
+        "description": "Peyva sereke ji bo wêneyê rasthatî. Çavkaniya Wêneyê li şûna wê derbas dibe."
+      }
+    ]
+  }
+}

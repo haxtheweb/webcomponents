@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Aikoni",
+    "description": "Aikoni kutoka kwa maktaba kamili ya aikoni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni ya kuonyesha."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya msisitizo",
+        "description": "Rangi ya msisitizo ya aikoni."
+      },
+      {
+        "property": "dark",
+        "title": "Meusi",
+        "description": "Tumia hali ya giza (seti ya rangi iliyogeuzwa)."
+      }
+    ]
+  }
+}

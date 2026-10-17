@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Kutaa fuulaa",
+    "description": "Saanduqa kutaa qabiyyee fuulaa fi qindaa'ina iskiriinii irratti hundaa'eef."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Miidhagina dizaayinii",
+        "description": "Akkaataa dursa qophaa'e kan qindaa'ina walqabatan haaromsu."
+      },
+      {
+        "property": "image",
+        "title": "Suuraa",
+        "description": "Miidiyaa duubaa kutaa kanaa."
+      },
+      {
+        "property": "bg",
+        "title": "Halluu duubaa",
+        "description": "Halluu duubaa yeroo suuraan hin jirre."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Qabduu gadi buusuu",
+        "description": "Qabduu gara kutaa itti aanuutti gadi buusu agarsiisi."
+      },
+      {
+        "property": "fold",
+        "title": "Dachaa agarsiisi",
+        "description": "Dachaa mul'ataa kutaa jalatti agarsiisi."
+      },
+      {
+        "property": "full",
+        "title": "Hamma iskiriinii guutuu",
+        "description": "Dheerina iskiriinii daawwataa guuti."
+      },
+      {
+        "property": "filter",
+        "title": "Calaltuu Dibi",
+        "description": "Suuraa duubaa irratti calaltuu mul'ataa dibi."
+      },
+      {
+        "slot": "",
+        "title": "Qabiyyee",
+        "description": "Qabiyyee kutaa."
+      },
+      {
+        "slot": "entice",
+        "title": "Hawwatuu",
+        "description": "Qabiyyee hawwataa filannoo."
+      },
+      {
+        "slot": "buttons",
+        "title": "Qabduuwwan",
+        "description": "Garee qabduuwwanii barreeffama jalatti mul'atu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Barreeffama hidhaa",
+        "description": "Maqaa hidhaa naannessa keessatti mul'atu."
+      }
+    ]
+  }
+}

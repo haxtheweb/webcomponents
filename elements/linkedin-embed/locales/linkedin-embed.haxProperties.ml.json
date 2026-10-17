@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn ഉൾച്ചേർക്കൽ",
+    "description": "ഒരു LinkedIn പ്രൊഫൈൽ കാർഡ് ഉൾച്ചേർക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "വാനിറ്റി പേര്",
+        "description": "LinkedIn വാനിറ്റി ഉപയോക്തൃനാമ ഭാഗം."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "ലൊക്കേൽ",
+        "description": "en_US പോലുള്ള ലൊക്കേൽ മെറ്റാഡാറ്റ മൂല്യം."
+      }
+    ]
+  }
+}

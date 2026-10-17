@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "คำศัพท์",
+    "description": "คำศัพท์"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "คำ"
+      },
+      {
+        "property": "information",
+        "title": "คำจำกัดความ",
+        "description": "คำจำกัดความที่แสดงเมื่อคลิกคำ"
+      },
+      {
+        "property": "popoverMode",
+        "title": "ป๊อปโอเวอร์",
+        "description": "แสดงคำจำกัดความในป๊อปโอเวอร์แทนการแสดงแบบอินไลน์"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "ลิงก์",
+        "description": "รายการลิงก์เสริมที่เชื่อมโยงกับคำนี้"
+      }
+    ]
+  }
+}

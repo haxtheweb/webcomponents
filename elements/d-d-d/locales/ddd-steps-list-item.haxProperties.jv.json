@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Item langkah",
+    "description": "Item sing dadi bagean saka dhaptar langkah"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Judhul"
+      }
+    ]
+  }
+}

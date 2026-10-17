@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkasms",
+    "description": "Teksta pasniegšana ņirdzīgā veidā"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Teksts",
+        "description": "Teksts, ko padarīt sarkastisku"
+      }
+    ]
+  }
+}

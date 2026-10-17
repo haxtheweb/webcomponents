@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "प्लेलिस्ट",
+    "description": "किसी भी प्रकार की सामग्री को प्लेलिस्ट में प्रदर्शित करें।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "स्रोत",
+        "description": "प्लेलिस्ट में दिखाई गई सामग्री।"
+      },
+      {
+        "property": "edit",
+        "title": "संपादन मोड",
+        "description": "प्लेलिस्ट के लिए संपादन और पूर्वावलोकन मोड के बीच टॉगल करें।"
+      },
+      {
+        "property": "navigation",
+        "title": "नेविगेशन",
+        "description": "आगे और पीछे जाने के नेविगेशन बटन दिखाएँ।"
+      },
+      {
+        "property": "pagination",
+        "title": "पृष्ठांकन",
+        "description": "पृष्ठांकन बिंदु दिखाएँ।"
+      },
+      {
+        "property": "orientation",
+        "title": "अभिविन्यास",
+        "description": "स्लाइडों का अभिविन्यास।",
+        "options": {
+          "horizontal": "क्षैतिज",
+          "vertical": "ऊर्ध्वाधर"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "आरंभिक स्लाइड",
+        "description": "शुरुआत में फ़ोकस करने के लिए स्लाइड इंडेक्स।"
+      },
+      {
+        "property": "aspectRatio",
+        "title": "आस्पेक्ट रेशियो",
+        "description": "स्लाइडों का आस्पेक्ट रेशियो।",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "让 GIF 动图无障碍。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF 动图",
+        "description": "GIF 动图个 URL。"
+      },
+      {
+        "property": "alt",
+        "title": "替代文字",
+        "description": "图片个替代文字。"
+      },
+      {
+        "property": "longdesc",
+        "title": "长描述",
+        "description": "GIF 个长描述，用于无障碍。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "静态图片",
+        "description": "GIF 静态版本个 URL。"
+      }
+    ]
+  }
+}

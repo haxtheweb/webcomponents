@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "షేర్ URL నుండి Discord కమ్యూనిటీలను పొందుపరచండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "వనరు URL",
+        "description": "వనరు URL."
+      },
+      {
+        "property": "height",
+        "title": "ఎత్తు",
+        "description": "కంటెంట్ ఫ్రేమ్ ఎత్తు."
+      },
+      {
+        "property": "width",
+        "title": "వెడల్పు",
+        "description": "కంటెంట్ ఫ్రేమ్ వెడల్పు."
+      }
+    ]
+  }
+}

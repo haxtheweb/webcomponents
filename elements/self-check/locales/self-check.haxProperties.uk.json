@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Самоперевірка",
+    "description": "Користувачі можуть пройти самоперевірку."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Зображення",
+        "description": "Зображення для самоперевірки."
+      },
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Назва самоперевірки."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернативний текст",
+        "description": "Альтернативний текст для зображення."
+      },
+      {
+        "slot": "question",
+        "title": "Запитання"
+      },
+      {
+        "slot": "",
+        "title": "Відповідь"
+      },
+      {
+        "property": "accentColor",
+        "title": "Колір теми",
+        "description": "Виберіть колір теми з дизайн-системи.",
+        "options": {
+          "primary": "Основний",
+          "accent": "Акцент",
+          "success": "Успіх",
+          "warning": "Попередження",
+          "error": "Помилка",
+          "info": "Інформація"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Навчальна мета",
+        "description": "Посилання на навчальну мету, що виводиться як oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Що оцінюється",
+        "description": "Посилання на активність, що виводиться як oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Посилання «Докладніше»",
+        "description": "Посилання на додаткову інформацію."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Element hapash",
+    "description": "Element që është pjesë e një liste hapash"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulli"
+      }
+    ]
+  }
+}

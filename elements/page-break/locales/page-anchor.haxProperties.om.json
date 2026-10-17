@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hidhaa Fuulaa",
+    "description": "Bakka murtaa'e miidiyaa fuula irra jiruutti hidhi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Kaayyoo fuulaa",
+        "description": "ID ykn qabeenya hidhaan kun agarsiisu."
+      },
+      {
+        "property": "value",
+        "title": "Gatii hidhoo gadi fagoo",
+        "description": "Gatii hidhoo gadi fagoo (fkn. yeroo ykn ID saliidii)."
+      },
+      {
+        "property": "entityId",
+        "title": "Qaama marsariitii",
+        "description": "Qaama marsariitii filannoo dhiyeessa yaadota walqabatan to'achuuf."
+      }
+    ]
+  }
+}

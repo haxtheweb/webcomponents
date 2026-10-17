@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ప్లే జాబితా",
+    "description": "ఏ రకమైన కంటెంట్‌నైనా ప్లేజాబితాలో ప్రదర్శించండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "మూలం",
+        "description": "ప్లేజాబితాలో చూపబడే కంటెంట్."
+      },
+      {
+        "property": "edit",
+        "title": "సవరణ మోడ్",
+        "description": "ప్లేజాబితా కోసం సవరణ మరియు ప్రివ్యూ మోడ్‌ల మధ్య మారండి."
+      },
+      {
+        "property": "navigation",
+        "title": "నావిగేషన్",
+        "description": "ముందుకు మరియు వెనుకకు నావిగేషన్ బటన్‌లను చూపండి."
+      },
+      {
+        "property": "pagination",
+        "title": "పేజినేషన్",
+        "description": "పేజినేషన్ చుక్కలను చూపండి."
+      },
+      {
+        "property": "orientation",
+        "title": "దిశ",
+        "description": "స్లైడ్‌ల దిశ.",
+        "options": {
+          "horizontal": "అడ్డం",
+          "vertical": "నిలువు"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "ప్రారంభించాల్సిన స్లైడ్",
+        "description": "ప్రారంభంలో ఫోకస్ చేయాల్సిన స్లైడ్ సూచిక."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "కారక నిష్పత్తి",
+        "description": "స్లైడ్‌ల కారక నిష్పత్తి.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

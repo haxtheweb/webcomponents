@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ahendatav konteiner",
+    "description": "Üksik laiendatav ja ahendatav konteiner."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Pealkiri",
+        "description": "Ahendatava elemendi tekst."
+      },
+      {
+        "property": "expanded",
+        "title": "Laiendatud",
+        "description": "Vaikimisi laiendatud."
+      },
+      {
+        "property": "headingButton",
+        "title": "Pealkiri nupuna",
+        "description": "Muuda kogu pealkiri klõpsatavaks, mitte ainult ikoon."
+      },
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Laiendamise/ahendamise nupu ikoon."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikoon (laiendatuna)",
+        "description": "Valikuline ikoon laiendatud oleku jaoks."
+      },
+      {
+        "slot": "",
+        "title": "Sisu",
+        "description": "Ahendatava elemendi sisu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Kohtspikker",
+        "description": "Laiendamise/ahendamise nupu kohtspikker."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Kohtspikker (laiendatuna)",
+        "description": "Laiendamise/ahendamise nupu kohtspikker laiendatud olekus."
+      }
+    ]
+  }
+}

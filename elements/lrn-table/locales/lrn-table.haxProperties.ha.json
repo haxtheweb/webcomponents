@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Teburin CSV",
+    "description": "Wannan na iya ƙirƙirar tebur daga fayil ɗin CSV ko ina yake."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Tushe",
+        "description": "URL na wannan fayil ɗin CSV."
+      },
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Taken teburin da za a ƙirƙira."
+      },
+      {
+        "property": "description",
+        "title": "Bayani",
+        "description": "Ƙarin cikakken bayani don inganta sauƙin isa ga bayanan teburin."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "चूक / बरोबर प्रश्न",
+    "description": "चूक-बरोबर प्रश्न"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "प्रश्न",
+        "description": "वापरकर्त्यांनी उत्तर द्यायचा प्रश्न."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "योग्य उत्तर"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "प्रश्नमंजुषेचे नाव",
+        "description": "xAPI-चालित वातावरणात या आयटमच्या ओळखीसाठी वापरले जाणारे प्रश्नमंजुषेचे नाव"
+      }
+    ]
+  }
+}

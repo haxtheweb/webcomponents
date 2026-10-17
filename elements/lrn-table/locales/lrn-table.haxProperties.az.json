@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV cədvəli",
+    "description": "Harada yerləşməsindən asılı olmayaraq CSV faylından cədvəl yarada bilər."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Mənbə",
+        "description": "Bu CSV faylının URL-i."
+      },
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Yaradılacaq cədvəlin başlığı."
+      },
+      {
+        "property": "description",
+        "title": "Təsvir",
+        "description": "Cədvəl məlumatlarının daha yaxşı əlçatanlığı üçün daha ətraflı təsvir."
+      }
+    ]
+  }
+}

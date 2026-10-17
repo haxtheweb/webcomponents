@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "အဖြေရွေးချယ်",
+    "description": "အဖြေရွေးချယ်ရသော ကိုယ်တိုင်စစ်ဆေး မေးခွန်း။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "မေးခွန်း",
+        "description": "အသုံးပြုသူများ ဖြေဆိုရန် မေးခွန်း။"
+      },
+      {
+        "property": "randomize",
+        "title": "ကျပန်းစီရန်",
+        "description": "အဖြေများကို ကျပန်း ပြောင်းလဲစီရန်။"
+      },
+      {
+        "property": "singleOption",
+        "title": "အဖြေ တစ်ခုတည်း",
+        "description": "အဖြေ တစ်ခုသာ ခွင့်ပြုရန်။"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "အမှတ်ပေး ပုံစံ",
+        "description": "OER Schema: ဤအကဲဖြတ်မှုအတွက် အမှတ်ပေး ပုံစံ (ဥပမာ အမှတ်၊ အက္ခရာ၊ ရာခိုင်နှုန်း၊ ပြီးမြောက်မှု)။"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "သင်ယူမှု ရည်မှန်းချက်",
+        "description": "OER Schema: ဤအကဲဖြတ်မှုနှင့် ဆက်စပ်သော သင်ယူမှု ရည်မှန်းချက်။"
+      },
+      {
+        "property": "forCourse",
+        "title": "သင်တန်း",
+        "description": "OER Schema: ဤအကဲဖြတ်မှု ရည်ရွယ်ထားသော သင်တန်း။"
+      },
+      {
+        "property": "answers",
+        "title": "အဖြေများ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "စာမေးပွဲငယ် အမည်",
+        "description": "Analytics စနစ်များတွင် xAPI ခွဲခြားသိရှိရန် အသုံးပြုသော စာမေးပွဲငယ် အမည်။"
+      }
+    ]
+  }
+}

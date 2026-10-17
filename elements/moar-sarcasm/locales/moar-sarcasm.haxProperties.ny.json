@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Chipongwe",
+    "description": "Kuwonetsa mawu mwanjira yachipongwe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Mawu",
+        "description": "Mawu oti apangidwe achipongwe"
+      }
+    ]
+  }
+}

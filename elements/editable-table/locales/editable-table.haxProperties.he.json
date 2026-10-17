@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "טבלה",
+    "description": "נתונים טבלאיים לאינטרנט."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "כותרת שורה",
+        "description": "התייחסות לשורה הראשונה ככותרת."
+      },
+      {
+        "property": "columnHeader",
+        "title": "כותרת עמודה",
+        "description": "התייחסות לעמודה הראשונה ככותרת."
+      },
+      {
+        "property": "footer",
+        "title": "כותרת תחתונה",
+        "description": "התייחסות לשורה האחרונה ככותרת תחתונה."
+      },
+      {
+        "property": "sort",
+        "title": "ניתן למיון",
+        "description": "אפשור מיון לפי ערכי העמודות."
+      },
+      {
+        "property": "filter",
+        "title": "אפשור סינון",
+        "description": "אפשור סינון לפי ערכי העמודות."
+      },
+      {
+        "property": "numericStyles",
+        "title": "עיצוב מספרי",
+        "description": "החלת עיצוב מספרי על עמודות מספריות."
+      },
+      {
+        "property": "responsive",
+        "title": "רספונסיבי",
+        "description": "התאמת פריסת הטבלה למסכים קטנים."
+      },
+      {
+        "property": "rubricMode",
+        "title": "מצב מחוון",
+        "description": "פירוש טבלה זו כ-Rubric של OER Schema כך שיופקו מטא־נתונים מסוג Rubric,‏ RubricScale,‏ RubricCriterion ו-RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "סוג מחוון",
+        "description": "סגנון המחוון המופק כ-oer:rubricType (רלוונטי רק כאשר מצב מחוון מופעל).",
+        "options": {
+          "": "(ללא)",
+          "analytic": "אנליטי",
+          "holistic": "הוליסטי",
+          "single-point": "נקודה יחידה",
+          "checklist": "רשימת תיוג"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "עם גבולות"
+      },
+      {
+        "property": "condensed",
+        "title": "דחיסת שורות",
+        "description": "הקטנת גובה השורות."
+      },
+      {
+        "property": "striped",
+        "title": "שורות מפוספסות",
+        "description": "הצללת כל שורה שנייה."
+      },
+      {
+        "property": "downloadable",
+        "title": "כפתור הורדה",
+        "description": "הוספת כפתור להורדת הטבלה."
+      },
+      {
+        "property": "copyable",
+        "title": "כפתור העתקה",
+        "description": "הוספת כפתור להעתקת נתוני ה-CSV של הטבלה."
+      },
+      {
+        "property": "printable",
+        "title": "כפתור הדפסה",
+        "description": "הוספת כפתור להדפסת הטבלה בלבד."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "נתוני CSV",
+        "description": "יצירת טבלה מקובץ CSV שהועלה."
+      }
+    ]
+  }
+}

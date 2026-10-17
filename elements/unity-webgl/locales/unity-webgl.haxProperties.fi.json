@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity-soitin",
+    "description": "Unity WebGL -soitin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Kohde",
+        "description": "Polku pelin koontiversioon."
+      },
+      {
+        "property": "compression",
+        "title": "Pakkausmenetelmä",
+        "description": "Pelin resurssien pakkaustiedostopääte."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Suoratoiston URL",
+        "description": "Suoratoistettavien resurssien URL."
+      },
+      {
+        "property": "companyname",
+        "title": "Yrityksen nimi",
+        "description": "Yrityksen nimi."
+      },
+      {
+        "property": "productname",
+        "title": "Tuotteen nimi",
+        "description": "Pelin nimi."
+      },
+      {
+        "property": "productversion",
+        "title": "Tuotteen versio",
+        "description": "Julkaisuversio."
+      },
+      {
+        "property": "width",
+        "title": "Piirtoalueen leveys",
+        "description": "Piirtoalueen CSS-leveys (esimerkiksi px tai em)."
+      },
+      {
+        "property": "height",
+        "title": "Piirtoalueen korkeus",
+        "description": "Piirtoalueen CSS-korkeus (esimerkiksi px tai em)."
+      },
+      {
+        "property": "background",
+        "title": "Piirtoalueen tausta",
+        "description": "Piirtoalueen CSS-tausta."
+      }
+    ]
+  }
+}

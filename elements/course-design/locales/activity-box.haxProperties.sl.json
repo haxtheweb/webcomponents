@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Okvir dejavnosti",
+    "description": "Majhen oblikovan blok naslova."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona, prikazana ob okvirju dejavnosti."
+      },
+      {
+        "property": "tag",
+        "title": "Oznaka okvirja dejavnosti",
+        "description": "Oznaka, prikazana v okvirju dejavnosti."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Brez obarvanja",
+        "description": "Prepreči uporabo barv na ikoni."
+      }
+    ]
+  }
+}

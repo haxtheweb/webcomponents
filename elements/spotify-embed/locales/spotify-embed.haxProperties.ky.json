@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify ойноткучун кыстаруу үчүн ороо."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Булак",
+        "description": "Spotify'дан кыстаруу же бөлүшүү шилтемеси."
+      },
+      {
+        "property": "theme",
+        "title": "Тема",
+        "description": "Ойноткучтун фон түсүнүн темасы.",
+        "options": {
+          "": "Демейки",
+          "0": "Кара"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Өлчөм",
+        "description": "Ойноткучтун өлчөмү.",
+        "options": {
+          "normal": "Демейки",
+          "compact": "Компакттуу"
+        }
+      }
+    ]
+  }
+}

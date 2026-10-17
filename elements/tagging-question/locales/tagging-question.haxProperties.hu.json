@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Címkézős kérdés",
+    "description": "Válasszon címkéket a kérdés megválaszolásához."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Kérdés",
+        "description": "A kérdés, amelyre a felhasználók válaszolnak."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Értékelési formátum",
+        "description": "OER Schema: az értékelés pontozási formátuma (pl. pont, érdemjegy, százalék, teljesítés)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tanulási cél",
+        "description": "OER Schema: az értékeléshez kapcsolódó tanulási cél."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurzus",
+        "description": "OER Schema: a kurzus, amelyhez az értékelés készült."
+      },
+      {
+        "property": "answers",
+        "title": "Válaszok"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "A kvíz neve",
+        "description": "A kvíz neve, amely az elemzőrendszerekben xAPI-azonosításra szolgál."
+      }
+    ]
+  }
+}

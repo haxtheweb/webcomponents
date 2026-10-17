@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF براؤزر ویور",
+    "description": "PDF فائل نوں اختیاری کارڈ ترتیب تے ڈاؤن لوڈ بٹن نال ان لائن ایمبیڈ کرو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF فائل دی تھاں۔"
+      },
+      {
+        "property": "heading",
+        "title": "سرخی",
+        "description": "کارڈ دی سرخی دا متن۔"
+      },
+      {
+        "property": "card",
+        "title": "کارڈ ترتیب",
+        "description": "PDF نوں ڈاؤن لوڈ بٹن والے کارڈ وچ وکھاؤ۔"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ڈاؤن لوڈ لیبل",
+        "description": "ڈاؤن لوڈ بٹن دا لیبل۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "سپورٹ نہ ہوݨ دا پیغام",
+        "description": "جدوں براؤزر PDF فائلاں نہ وکھا سکے تاں پیغام۔"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "سپورٹ نہ ہوݨ دا لنک پیغام",
+        "description": "جدوں براؤزر PDF فائلاں نہ وکھا سکے تاں لنک دا متن۔"
+      },
+      {
+        "property": "width",
+        "title": "چوڑائی",
+        "description": "PDF ویور دی چوڑائی۔"
+      },
+      {
+        "property": "height",
+        "title": "اُچائی",
+        "description": "PDF ویور دی اُچائی۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "展開/折りたたみグループ",
+    "description": "展開/折りたたみ要素のグループ。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "1つだけ展開",
+        "description": "展開できる項目は1つだけです。"
+      },
+      {
+        "slot": "",
+        "title": "折りたたみ項目",
+        "description": "折りたたみ項目。"
+      }
+    ]
+  }
+}

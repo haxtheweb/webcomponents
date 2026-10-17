@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity پلیر",
+    "description": "Unity WebGL پلیر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "هدف",
+        "description": "د لوبې جوړښت ته لار."
+      },
+      {
+        "property": "compression",
+        "title": "د فشار طریقه",
+        "description": "د لوبې د سرچینو لپاره د فشار فایل غځونه."
+      },
+      {
+        "property": "streamingurl",
+        "title": "د سټریمینګ URL",
+        "description": "د سټریمینګ سرچینو URL."
+      },
+      {
+        "property": "companyname",
+        "title": "د شرکت نوم",
+        "description": "د شرکت نوم."
+      },
+      {
+        "property": "productname",
+        "title": "د محصول نوم",
+        "description": "د لوبې سرلیک."
+      },
+      {
+        "property": "productversion",
+        "title": "د محصول نسخه",
+        "description": "د خپرېدو نسخه."
+      },
+      {
+        "property": "width",
+        "title": "د کینوس پلنوالی",
+        "description": "د کینوس CSS پلنوالی (لکه px یا em)."
+      },
+      {
+        "property": "height",
+        "title": "د کینوس لوړوالی",
+        "description": "د کینوس CSS لوړوالی (لکه px یا em)."
+      },
+      {
+        "property": "background",
+        "title": "د کینوس شالید",
+        "description": "د کینوس CSS شالید."
+      }
+    ]
+  }
+}

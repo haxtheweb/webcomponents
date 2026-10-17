@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Aneka pilihan",
+    "description": "Soalan semak kendiri aneka pilihan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Soalan",
+        "description": "Soalan untuk dijawab oleh pengguna."
+      },
+      {
+        "property": "randomize",
+        "title": "Rawakkan",
+        "description": "Rawakkan jawapan secara dinamik."
+      },
+      {
+        "property": "singleOption",
+        "title": "Jawapan tunggal",
+        "description": "Benarkan satu jawapan sahaja."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format penggredan",
+        "description": "OER Schema: format penggredan untuk pentaksiran ini (cth. mata, huruf, peratus, penyiapan)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objektif pembelajaran",
+        "description": "OER Schema: objektif pembelajaran yang berkaitan dengan pentaksiran ini."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus yang dimaksudkan untuk pentaksiran ini."
+      },
+      {
+        "property": "answers",
+        "title": "Jawapan"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nama kuiz",
+        "description": "Nama kuiz yang digunakan untuk pengenalan xAPI dalam sistem analitik."
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "การ์ด",
+    "description": "คอมโพเนนต์การ์ดที่จัดรูปแบบด้วยระบบการออกแบบ DDD"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "รูปภาพ",
+        "description": "รูปภาพเสริม"
+      },
+      {
+        "property": "alt",
+        "title": "Alt ของรูปภาพ",
+        "description": "ข้อความแสดงแทนที่อธิบายรูปภาพ"
+      },
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อการ์ด"
+      },
+      {
+        "slot": "",
+        "title": "เนื้อหา",
+        "description": "พื้นที่เนื้อหาของการ์ด"
+      },
+      {
+        "property": "href",
+        "title": "ลิงก์",
+        "description": "URL ลิงก์ของปุ่ม"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "ป้ายกำกับ",
+        "description": "ป้ายกำกับปุ่ม"
+      },
+      {
+        "property": "noArrow",
+        "title": "ไม่มีลูกศร",
+        "description": "ซ่อนลูกศรของปุ่ม"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "ลิงก์: target",
+        "description": "ตำแหน่งที่จะเปิดลิงก์",
+        "options": {
+          "": "หน้าต่างเดียวกัน",
+          "_blank": "หน้าต่างใหม่ - _blank",
+          "_top": "หน้าต่างบนสุด - _top",
+          "_parent": "หน้าต่างหลัก - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "ลิงก์: rel",
+        "description": "ความสัมพันธ์ระหว่างทรัพยากรที่ลิงก์กับเอกสารปัจจุบัน"
+      }
+    ]
+  }
+}

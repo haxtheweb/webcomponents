@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Enkel bild",
+    "description": "Bearbeta bilder med enkla parametrar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Källa",
+        "description": "Bildens käll-URL."
+      },
+      {
+        "property": "height",
+        "title": "Höjd",
+        "description": "Valfri bildhöjd."
+      },
+      {
+        "property": "width",
+        "title": "Bredd",
+        "description": "Valfri bildbredd."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-text",
+        "description": "Användbar för skärmläsare och bättre SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kvalitet",
+        "description": "Bildkvalitet vid generering (endast JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Hämtningsprioritet",
+        "description": "Prestandatips för moderna webbläsare.",
+        "options": {
+          "auto": "Automatisk",
+          "high": "Hög",
+          "low": "Låg"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Avkodningsmetod",
+        "description": "Prestandatips för bildåtergivning i moderna webbläsare.",
+        "options": {
+          "auto": "Automatisk",
+          "async": "Asynkron"
+        }
+      }
+    ]
+  }
+}

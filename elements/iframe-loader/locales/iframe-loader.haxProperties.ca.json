@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Insereix contingut web extern en un iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL del recurs",
+        "description": "URL del recurs."
+      },
+      {
+        "property": "height",
+        "title": "Alçada",
+        "description": "Alçada de l'iframe."
+      },
+      {
+        "property": "width",
+        "title": "Amplada",
+        "description": "Amplada de l'iframe."
+      }
+    ]
+  }
+}

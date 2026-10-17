@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": ".h5p ගොනු පූරණය කිරීමට සහ ඉදිරිපත් කිරීමට H5P ආවරණය"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe කාවැද්දීමේ කේතය"
+      }
+    ]
+  }
+}

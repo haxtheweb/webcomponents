@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "عدّاد تصاعدي",
+    "description": "تحريك رقم يعدّ تصاعديًا حتى قيمة مستهدفة عند ظهوره أثناء التمرير."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "القيمة النهائية",
+        "description": "الرقم الذي يتوقف عنده العد."
+      },
+      {
+        "property": "start",
+        "title": "القيمة الابتدائية",
+        "description": "الرقم الذي يبدأ منه العد."
+      },
+      {
+        "property": "duration",
+        "title": "المدة",
+        "description": "عدد الثواني التي تستغرقها حركة العد."
+      },
+      {
+        "property": "prefixtext",
+        "title": "نص البادئة",
+        "description": "النص المعروض قبل الرقم (مثل '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "نص اللاحقة",
+        "description": "النص المعروض بعد الرقم (مثل '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "خانة البادئة",
+        "description": "محتوى اختياري يوضع قبل الرقم."
+      },
+      {
+        "slot": "suffix",
+        "title": "خانة اللاحقة",
+        "description": "محتوى اختياري يوضع بعد الرقم."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "المنازل العشرية",
+        "description": "عدد المنازل العشرية المعروضة."
+      },
+      {
+        "property": "separator",
+        "title": "فاصل الآلاف",
+        "description": "الحرف الفاصل بين مجموعات الآلاف."
+      },
+      {
+        "property": "decimal",
+        "title": "الفاصلة العشرية",
+        "description": "الحرف المستخدم للفاصلة العشرية."
+      },
+      {
+        "property": "noeasing",
+        "title": "بدون تسهيل",
+        "description": "تعطيل التسهيل ليكون العد خطيًا."
+      }
+    ]
+  }
+}

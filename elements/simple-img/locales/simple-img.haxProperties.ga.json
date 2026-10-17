@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Íomhá Shimplí",
+    "description": "Láimhsigh íomhánna le paraiméadair shimplí."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Foinse",
+        "description": "URL foinse na híomhá."
+      },
+      {
+        "property": "height",
+        "title": "Airde",
+        "description": "Airde roghnach na híomhá."
+      },
+      {
+        "property": "width",
+        "title": "Leithead",
+        "description": "Leithead roghnach na híomhá."
+      },
+      {
+        "property": "alt",
+        "title": "Téacs malartach",
+        "description": "Úsáideach do léitheoirí scáileáin agus do SEO níos fearr."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Cáilíocht",
+        "description": "Cáilíocht na híomhá agus í á giniúint (JPEG amháin)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Tosaíocht Fhaighte",
+        "description": "Leid feidhmíochta do bhrabhsálaithe nua-aimseartha.",
+        "options": {
+          "auto": "Uathoibríoch",
+          "high": "Ard",
+          "low": "Íseal"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Modh díchódaithe",
+        "description": "Leid feidhmíochta do léiriú íomhánna i mbrabhsálaithe nua-aimseartha.",
+        "options": {
+          "auto": "Uathoibríoch",
+          "async": "Asioncrónach"
+        }
+      }
+    ]
+  }
+}

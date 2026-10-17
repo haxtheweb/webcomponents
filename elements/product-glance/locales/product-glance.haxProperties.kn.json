@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ಉತ್ಪನ್ನ ಒಂದು ನೋಟ",
+    "description": "ತ್ವರಿತ ಉತ್ಪನ್ನ ಅವಲೋಕನ ಬ್ಲಾಕ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ಐಕಾನ್",
+        "description": "ಪರಿಕಲ್ಪನೆಯನ್ನು ಪ್ರತಿನಿಧಿಸುವ ಐಕಾನ್."
+      },
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಒಂದು ನೋಟದಲ್ಲಿ ಪ್ರಾಥಮಿಕ ಪರಿಕಲ್ಪನೆ."
+      },
+      {
+        "property": "subtitle",
+        "title": "ಉಪಶೀರ್ಷಿಕೆ",
+        "description": "ಹೆಚ್ಚುವರಿ ವಿವರ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಐಕಾನ್‌ನ ಒತ್ತು ಬಣ್ಣ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "ٹیگ / پِل",
+    "description": "اختیاری نمایاں رنگ، منسوخی بٹن یا ٹوگل کے ساتھ گولی نما مختصر لیبل۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "لیبل",
+        "description": "پِل کے اندر دکھایا جانے والا متن۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "پِل کے پس منظر کے لیے SimpleColors نمایاں رنگ کا نام۔",
+        "options": {
+          "": "-- طے شدہ --",
+          "red": "سرخ",
+          "pink": "گلابی",
+          "purple": "جامنی",
+          "deep-purple": "گہرا جامنی",
+          "indigo": "نیلگوں",
+          "blue": "نیلا",
+          "light-blue": "ہلکا نیلا",
+          "cyan": "فیروزی",
+          "teal": "سبز نیلا",
+          "green": "سبز",
+          "light-green": "ہلکا سبز",
+          "lime": "لیموں سبز",
+          "yellow": "پیلا",
+          "amber": "کہربائی",
+          "orange": "نارنجی",
+          "deep-orange": "گہرا نارنجی",
+          "brown": "بھورا",
+          "blue-grey": "نیلا سرمئی",
+          "grey": "سرمئی"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "خودکار نمایاں رنگ",
+        "description": "لیبل کے متن سے نمایاں رنگ خود بخود اخذ کریں۔"
+      },
+      {
+        "property": "cancelButton",
+        "title": "منسوخی بٹن",
+        "description": "پِل کے اندر ہٹانے/منسوخی کا آئیکن بٹن دکھائیں۔"
+      },
+      {
+        "property": "readonly",
+        "title": "صرف پڑھنے کے لیے",
+        "description": "منسوخی بٹن چھپائیں تاکہ پِل صرف دکھانے کے لیے ہو۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "ٹوگل ہوتا ہے",
+        "description": "بٹن پر کلک کرنے سے پِل کو آن/آف کریں۔"
+      },
+      {
+        "property": "toggled",
+        "title": "ٹوگل آن",
+        "description": "کیا پِل اس وقت آن ہے۔"
+      },
+      {
+        "property": "toggledIcon",
+        "title": "ٹوگل آئیکن",
+        "description": "پِل آن ہونے پر دکھایا جانے والا آئیکن۔"
+      },
+      {
+        "property": "disabled",
+        "title": "غیر فعال",
+        "description": "پِل کے ساتھ تعامل غیر فعال کریں۔"
+      }
+    ]
+  }
+}

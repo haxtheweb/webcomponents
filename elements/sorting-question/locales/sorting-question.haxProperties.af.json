@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Sorteervraag",
+    "description": "Sorteer items in die korrekte volgorde."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vraag",
+        "description": "Vraagopskrif."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Nasienformaat",
+        "description": "OER Schema: nasienformaat vir hierdie assessering (bv. punte, letter, persentasie, voltooiing)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leeruitkoms",
+        "description": "OER Schema: leeruitkoms wat met hierdie assessering verband hou."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus waarvoor hierdie assessering bedoel is."
+      },
+      {
+        "property": "answers",
+        "title": "Antwoorde",
+        "description": "Die antwoordvolgorde bepaal die korrekte reeks."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naam van die vasvra",
+        "description": "Vasvranaam gebruik vir xAPI-identifikasie in analitiese stelsels."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "سادہ تصویر",
+    "description": "سادے پیرامیٹراں نال تصویراں بدلو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "سرچشمہ",
+        "description": "تصویر دے سرچشمے دا URL۔"
+      },
+      {
+        "property": "height",
+        "title": "اُچائی",
+        "description": "تصویر دی اختیاری اُچائی۔"
+      },
+      {
+        "property": "width",
+        "title": "چوڑائی",
+        "description": "تصویر دی اختیاری چوڑائی۔"
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "سکرین ریڈراں تے بہتر SEO لئی فائدے مند۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "معیار",
+        "description": "بناوݨ ویلے تصویر دا معیار (صرف JPEG)۔"
+      },
+      {
+        "property": "fetchpriority",
+        "title": "لیاوݨ دی ترجیح",
+        "description": "جدید براؤزراں لئی کارکردگی دا اشارہ۔",
+        "options": {
+          "auto": "خودکار",
+          "high": "اُچی",
+          "low": "نیویں"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "ڈیکوڈنگ طریقہ",
+        "description": "جدید براؤزراں وچ تصویر رینڈر کرن لئی کارکردگی دا اشارہ۔",
+        "options": {
+          "auto": "خودکار",
+          "async": "غیر ہم وقت"
+        }
+      }
+    ]
+  }
+}

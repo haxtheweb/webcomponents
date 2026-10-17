@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Maqal gudaha ah",
+    "description": "Ku shid maqal gudaha bogga si uu u kabo nuxurka bogga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isha",
+        "description": "Fayl MP3 ah ama URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka Xoojinta",
+        "description": "Midabka xoojinta kaarka."
+      },
+      {
+        "property": "shiny",
+        "title": "Dhalaal",
+        "description": "Isticmaal asal midab xoojin oo khafiif ah halkii cawl."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Madow",
+        "description": "Isticmaal habka madow."
+      }
+    ]
+  }
+}

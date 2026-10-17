@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Memorkarto",
+    "description": "Ekzerci konceptojn per duflankaj memorkartoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Antaŭa flanko de la karto",
+        "description": "Antaŭa teksto aŭ demando."
+      },
+      {
+        "slot": "back",
+        "title": "Malantaŭa flanko de la karto",
+        "description": "Atendata respondo."
+      },
+      {
+        "property": "imgSource",
+        "title": "Bilda fonto",
+        "description": "Bilddosiero uzata por la karto. Superregas la bildan ŝlosilvorton."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tipo de ago",
+        "description": "OER Schema: la tipo de ago, kiun ĉi tiu ekzercado implikas (ekz. legado, skribado, farado, esplorado, aŭskultado, spektado, pripensado, diskutado, observado, prezentado, taksado)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lerncelo",
+        "description": "OER Schema: ID aŭ URL de la lerncelo, kiun ĉi tiu ekzercado subtenas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Malhela",
+        "description": "Uzi malhelan reĝimon."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Akcenta koloro de la karto."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Bilda ŝlosilvorto",
+        "description": "Ŝlosilvorto por hazarda bildo. Superregata de la bilda fonto."
+      }
+    ]
+  }
+}

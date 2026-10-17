@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "ផ្នែករូបភាព",
+    "description": "រូបភាពពេញទទឹងដែលបំបែកផ្នែកទំព័រ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "រូបភាពផ្ទៃខាងក្រោយ។"
+      },
+      {
+        "property": "caption",
+        "description": "ចំណងជើងអត្ថបទ។"
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "ແທັກ / ປ້າຍມົນ",
+    "description": "ປ້າຍກະທັດຮັດຮູບຊົງເມັດຢາ ພ້ອມສີເນັ້ນ, ປຸ່ມຍົກເລີກ ຫຼື ສະວິດທາງເລືອກ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ປ້າຍກຳກັບ",
+        "description": "ຂໍ້ຄວາມທີ່ສະແດງໃນປ້າຍ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ຊື່ສີເນັ້ນ SimpleColors ສຳລັບພື້ນຫຼັງຂອງປ້າຍ.",
+        "options": {
+          "": "-- ຄ່າເລີ່ມຕົ້ນ --",
+          "red": "ແດງ",
+          "pink": "ບົວ",
+          "purple": "ມ່ວງ",
+          "deep-purple": "ມ່ວງເຂັ້ມ",
+          "indigo": "ຄາມ",
+          "blue": "ຟ້າ",
+          "light-blue": "ຟ້າອ່ອນ",
+          "cyan": "ຟ້າຄາມ",
+          "teal": "ຂຽວອົມຟ້າ",
+          "green": "ຂຽວ",
+          "light-green": "ຂຽວອ່ອນ",
+          "lime": "ຂຽວໝາກນາວ",
+          "yellow": "ເຫຼືອງ",
+          "amber": "ອຳພັນ",
+          "orange": "ສົ້ມ",
+          "deep-orange": "ສົ້ມເຂັ້ມ",
+          "brown": "ນ້ຳຕານ",
+          "blue-grey": "ເທົາອົມຟ້າ",
+          "grey": "ເທົາ"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ສີເນັ້ນອັດຕະໂນມັດ",
+        "description": "ກຳນົດສີເນັ້ນຈາກຂໍ້ຄວາມປ້າຍໂດຍອັດຕະໂນມັດ."
+      },
+      {
+        "property": "cancelButton",
+        "title": "ປຸ່ມຍົກເລີກ",
+        "description": "ສະແດງປຸ່ມໄອຄອນລຶບ/ຍົກເລີກໃນປ້າຍ."
+      },
+      {
+        "property": "readonly",
+        "title": "ອ່ານຢ່າງດຽວ",
+        "description": "ເຊື່ອງປຸ່ມຍົກເລີກ ເພື່ອໃຫ້ປ້າຍສະແດງຢ່າງດຽວ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "ສະຫຼັບໄດ້",
+        "description": "ເຮັດໃຫ້ປ້າຍສະຫຼັບເປີດ/ປິດເມື່ອຄລິກປຸ່ມ."
+      },
+      {
+        "property": "toggled",
+        "title": "ເປີດຢູ່",
+        "description": "ປ້າຍກຳລັງເປີດຢູ່ຫຼືບໍ່."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "ໄອຄອນເມື່ອເປີດ",
+        "description": "ໄອຄອນທີ່ສະແດງເມື່ອປ້າຍເປີດຢູ່."
+      },
+      {
+        "property": "disabled",
+        "title": "ປິດໃຊ້ງານ",
+        "description": "ປິດການໂຕ້ຕອບກັບປ້າຍ."
+      }
+    ]
+  }
+}

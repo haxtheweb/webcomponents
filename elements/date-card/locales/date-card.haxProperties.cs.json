@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Datum",
+    "description": "Zobrazení kalendářního data s podrobnostmi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Měsíc",
+        "description": "Měsíc zobrazený na kartě."
+      },
+      {
+        "property": "date",
+        "title": "Den v měsíci",
+        "description": "Číselný den v měsíci."
+      },
+      {
+        "property": "day",
+        "title": "Den v týdnu",
+        "description": "Den v týdnu jako text."
+      },
+      {
+        "property": "title",
+        "title": "Název",
+        "description": "Název události."
+      },
+      {
+        "property": "location",
+        "title": "Místo",
+        "description": "Místo konání události."
+      },
+      {
+        "property": "startTime",
+        "title": "Začátek",
+        "description": "Čas začátku."
+      },
+      {
+        "property": "endTime",
+        "title": "Konec",
+        "description": "Čas konce."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňující barva",
+        "description": "Volitelná zvýrazňující barva."
+      },
+      {
+        "property": "dark",
+        "title": "Tmavý motiv",
+        "description": "Zapnout tmavý motiv."
+      }
+    ]
+  }
+}

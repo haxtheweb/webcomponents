@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikona",
+    "description": "Ikonë nga biblioteka e plotë e ikonave."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona që do të shfaqet."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra theksuese për ikonën."
+      },
+      {
+        "property": "dark",
+        "title": "E errët",
+        "description": "Përdor modalitetin e errët (grup ngjyrash i përmbysur)."
+      }
+    ]
+  }
+}

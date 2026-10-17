@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Marque Polaris",
+    "description": "Afficher la marque d'identité PSU avec un nom de collège et une URL de destination facultatifs."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Nom du collège",
+        "description": "Nom affiché à côté de la marque."
+      },
+      {
+        "property": "name2",
+        "title": "Nom du collège 2",
+        "description": "Deuxième nom affiché sous le premier nom de collège."
+      },
+      {
+        "property": "name3",
+        "title": "Nom du collège 3",
+        "description": "Troisième nom affiché sous le deuxième nom de collège."
+      },
+      {
+        "property": "url",
+        "title": "Lien",
+        "description": "URL de destination lorsqu'on clique sur la marque."
+      },
+      {
+        "property": "type",
+        "title": "Variante",
+        "description": "Variante visuelle de la marque.",
+        "options": {
+          "default": "Par défaut",
+          "light": "Clair",
+          "dark": "Sombre"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Disposition verticale",
+        "description": "Afficher le troisième nom sous le deuxième, séparé par une ligne horizontale."
+      }
+    ]
+  }
+}

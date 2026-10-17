@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Өзүн-өзү текшерүү",
+    "description": "Колдонуучулар өзүн-өзү текшерүүнү аткара алышат."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Сүрөт",
+        "description": "Өзүн-өзү текшерүү үчүн сүрөт."
+      },
+      {
+        "property": "title",
+        "title": "Аталыш",
+        "description": "Өзүн-өзү текшерүүнүн аталышы."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернативдик текст",
+        "description": "Сүрөт үчүн alt текст."
+      },
+      {
+        "slot": "question",
+        "title": "Суроо"
+      },
+      {
+        "slot": "",
+        "title": "Жооп"
+      },
+      {
+        "property": "accentColor",
+        "title": "Теманын түсү",
+        "description": "Дизайн системасынан теманын түсүн тандаңыз.",
+        "options": {
+          "primary": "Негизги",
+          "accent": "Акцент",
+          "success": "Ийгилик",
+          "warning": "Эскертүү",
+          "error": "Ката",
+          "info": "Маалымат"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Окуу максаты",
+        "description": "oer:hasLearningObjective катары чыгарылган окуу максатына шилтеме."
+      },
+      {
+        "property": "assessing",
+        "title": "Баалануучу",
+        "description": "oer:assessing катары чыгарылган иш-аракетке шилтеме."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Кененирээк шилтеме",
+        "description": "Кошумча маалыматка шилтеме."
+      }
+    ]
+  }
+}

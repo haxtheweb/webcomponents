@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Mndandanda wa othandizira pa GitHub",
+    "description": "Owonetsedwa ngati anthu a masewera a RPG pogwiritsa ntchito GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Bungwe",
+        "description": "Dzina la bungwe kuchokera ku github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Malo osungira (repository)",
+        "description": "Dzina la malo osungira kuchokera ku github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Malire",
+        "description": "Chepetsani chiwerengero cha othandizira owonetsedwa."
+      }
+    ]
+  }
+}

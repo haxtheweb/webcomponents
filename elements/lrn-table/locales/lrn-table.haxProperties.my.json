@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV ဇယား",
+    "description": "CSV ဖိုင် မည်သည့်နေရာတွင် ရှိနေပါစေ ၎င်းမှ ဇယားကို ထုတ်ပေးနိုင်သည်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "ရင်းမြစ်",
+        "description": "ဤ CSV ဖိုင်၏ URL။"
+      },
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်",
+        "description": "ထုတ်ပေးမည့် ဇယား၏ ခေါင်းစဉ်။"
+      },
+      {
+        "property": "description",
+        "title": "ဖော်ပြချက်",
+        "description": "ဇယားဒေတာကို ပိုမို အသုံးပြုရလွယ်ကူစေရန် ပိုအသေးစိတ်သော ဖော်ပြချက်။"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "用語",
+    "description": "語彙の用語。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "用語"
+      },
+      {
+        "property": "information",
+        "title": "定義",
+        "description": "用語をクリックしたときに表示される定義。"
+      },
+      {
+        "property": "popoverMode",
+        "title": "ポップオーバー",
+        "description": "定義をインラインではなくポップオーバーで表示します。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "リンク",
+        "description": "この用語に関連する補足リンクのリスト。"
+      }
+    ]
+  }
+}

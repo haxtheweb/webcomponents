@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Nota de alerta",
+    "description": "Uma mensagem para alertar os leitores sobre instruções específicas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Digite o título da nota de alerta."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Digite uma URL externa."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Definir o status altera as cores e os ícones de acordo",
+        "options": {
+          "stop": "Pare",
+          "warning": "Aviso",
+          "success": "Confirmação",
+          "info": "Aviso"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Texto da nota",
+        "description": "Texto da nota de alerta."
+      }
+    ]
+  }
+}

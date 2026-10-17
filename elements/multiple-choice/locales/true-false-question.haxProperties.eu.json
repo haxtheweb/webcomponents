@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Egia / gezurra galdera",
+    "description": "Egia ala gezurra galdera"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Galdera",
+        "description": "Erabiltzaileek erantzun beharreko galdera."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Erantzun zuzena"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Galdetegiaren izena",
+        "description": "xAPI bidezko inguruneetan elementu hau identifikatzeko pasatzen den galdetegiaren izena"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Incrustà cumunità Discord da un URL di spartera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL di a risorsa",
+        "description": "URL di a risorsa."
+      },
+      {
+        "property": "height",
+        "title": "Altezza",
+        "description": "Altezza di u quadru di cuntenutu."
+      },
+      {
+        "property": "width",
+        "title": "Larghezza",
+        "description": "Larghezza di u quadru di cuntenutu."
+      }
+    ]
+  }
+}

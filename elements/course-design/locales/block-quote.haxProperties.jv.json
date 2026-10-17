@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kutipan blok",
+    "description": "Blok kutipan kanthi gaya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Kutipan sumber",
+        "description": "Teks kutipan sumber."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Teks alternatif kanggo gambar."
+      },
+      {
+        "property": "image",
+        "title": "Gambar",
+        "description": "Gambar sing katon karo kutipan."
+      }
+    ]
+  }
+}

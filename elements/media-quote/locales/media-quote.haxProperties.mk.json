@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Медиумски цитат",
+    "description": "Слика со цитат, навод и изборен опис."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Цитат",
+        "description": "Текст на цитатот."
+      },
+      {
+        "slot": "author",
+        "title": "Автор",
+        "description": "Автор на цитатот."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Детали за авторот",
+        "description": "Детали за авторот."
+      },
+      {
+        "slot": "caption",
+        "title": "Опис",
+        "description": "Опис на сликата."
+      },
+      {
+        "property": "src",
+        "title": "Извор на сликата",
+        "description": "Датотека со слика за медиумскиот цитат."
+      },
+      {
+        "property": "alt",
+        "title": "Алтернативен текст",
+        "description": "Алтернативен текст за сликата."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Акцентна боја на картичката."
+      }
+    ]
+  }
+}

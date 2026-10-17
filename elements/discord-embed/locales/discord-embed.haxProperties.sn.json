@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Isa nharaunda dzeDiscord kubva kuURL yekugovana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL yeZviwanikwa",
+        "description": "URL yeZviwanikwa."
+      },
+      {
+        "property": "height",
+        "title": "Kureba",
+        "description": "Kureba kwefuremu yezvirimo."
+      },
+      {
+        "property": "width",
+        "title": "Upamhi",
+        "description": "Upamhi hwefuremu yezvirimo."
+      }
+    ]
+  }
+}

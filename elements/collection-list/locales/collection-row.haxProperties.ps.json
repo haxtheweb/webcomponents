@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "د ټولګې قطار",
+    "description": "د ټولګې په لېست کې د کارونې لپاره د قطار په بڼه توکی، له متن، لینک، آیکن، ټګونو او اختیاري انځور سره."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "لینک",
+        "description": "د دې قطار لپاره د منزل URL."
+      },
+      {
+        "property": "image",
+        "title": "انځور",
+        "description": "د قطار انځور."
+      },
+      {
+        "property": "alt",
+        "title": "بدیل متن",
+        "description": "بدیل متن چې انځور تشریح کوي."
+      },
+      {
+        "property": "line1",
+        "title": "لومړۍ کرښه",
+        "description": "د متن لومړۍ کرښه."
+      },
+      {
+        "property": "line2",
+        "title": "دویمه کرښه",
+        "description": "د متن دویمه کرښه."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "آیکن",
+        "description": "هغه آیکن چې د قطار استازیتوب کوي."
+      },
+      {
+        "property": "saturate",
+        "title": "د رنګ د اشباع اغېز",
+        "description": "د کارن د تمرکز پر مهال د انځور د رنګ اشباع بدله کړئ."
+      },
+      {
+        "property": "tags",
+        "title": "ټګونه",
+        "description": "د کامې په واسطه جلا شوو ټګونو لېست."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنګ",
+        "description": "د آیکن او ټګونو لپاره کارول شوی رنګ."
+      }
+    ]
+  }
+}

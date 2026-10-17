@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Ilrogha",
+    "description": "Ceist ilrogha féinseiceála."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ceist",
+        "description": "Ceist le freagairt ag úsáideoirí."
+      },
+      {
+        "property": "randomize",
+        "title": "Randamaigh",
+        "description": "Randamaigh na freagraí go dinimiciúil."
+      },
+      {
+        "property": "singleOption",
+        "title": "Freagra aonair",
+        "description": "Ceadaigh freagra amháin amháin."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formáid ghrádaithe",
+        "description": "OER Schema: formáid ghrádaithe don mheasúnú seo (m.sh. pointí, litir, céatadán, críochnú)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cuspóir foghlama",
+        "description": "OER Schema: cuspóir foghlama a bhaineann leis an measúnú seo."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cúrsa",
+        "description": "OER Schema: an cúrsa a bhfuil an measúnú seo beartaithe dó."
+      },
+      {
+        "property": "answers",
+        "title": "Freagraí"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ainm an tráth na gceist",
+        "description": "Ainm an tráth na gceist a úsáidtear chun aithint xAPI i gcórais anailíse."
+      }
+    ]
+  }
+}

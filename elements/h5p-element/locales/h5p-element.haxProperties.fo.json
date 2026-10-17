@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P-umbúgv at innlesa og vísa .h5p-fílur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe-innsetingarkota"
+      }
+    ]
+  }
+}

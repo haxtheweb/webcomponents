@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "媒体引语",
+    "description": "带引语、出处和可选说明文字的图像。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "引语",
+        "description": "引语文本。"
+      },
+      {
+        "slot": "author",
+        "title": "作者",
+        "description": "引语作者。"
+      },
+      {
+        "slot": "author-detail",
+        "title": "作者详情",
+        "description": "作者详情。"
+      },
+      {
+        "slot": "caption",
+        "title": "说明文字",
+        "description": "图像说明文字。"
+      },
+      {
+        "property": "src",
+        "title": "图像来源",
+        "description": "媒体引语所用的图像文件。"
+      },
+      {
+        "property": "alt",
+        "title": "替代文本",
+        "description": "图像的替代文本。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "卡片强调色。"
+      }
+    ]
+  }
+}

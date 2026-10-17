@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Táboa",
+    "description": "Datos en táboa para a web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Cabeceira de fila",
+        "description": "Tratar a primeira fila como cabeceira."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Cabeceira de columna",
+        "description": "Tratar a primeira columna como cabeceira."
+      },
+      {
+        "property": "footer",
+        "title": "Pé",
+        "description": "Tratar a última fila como pé."
+      },
+      {
+        "property": "sort",
+        "title": "Ordenable",
+        "description": "Permitir ordenar polos valores das columnas."
+      },
+      {
+        "property": "filter",
+        "title": "Permitir filtrar",
+        "description": "Permitir filtrar polos valores das columnas."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Estilo numérico",
+        "description": "Aplicar estilo numérico ás columnas numéricas."
+      },
+      {
+        "property": "responsive",
+        "title": "Adaptable",
+        "description": "Axustar o deseño da táboa en pantallas pequenas."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Modo rúbrica",
+        "description": "Interpretar esta táboa como unha Rubric de OER Schema para que se emitan os metadatos Rubric, RubricScale, RubricCriterion e RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Tipo de rúbrica",
+        "description": "Estilo de rúbrica emitido como oer:rubricType (só ten sentido cando o modo rúbrica está activado).",
+        "options": {
+          "": "(ningún)",
+          "analytic": "Analítica",
+          "holistic": "Holística",
+          "single-point": "Dun só punto",
+          "checklist": "Lista de verificación"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Con bordos"
+      },
+      {
+        "property": "condensed",
+        "title": "Filas compactas",
+        "description": "Reducir a altura das filas."
+      },
+      {
+        "property": "striped",
+        "title": "Filas alternas",
+        "description": "Sombrear filas alternas."
+      },
+      {
+        "property": "downloadable",
+        "title": "Botón de descarga",
+        "description": "Engadir un botón para descargar a táboa."
+      },
+      {
+        "property": "copyable",
+        "title": "Botón de copia",
+        "description": "Engadir un botón para copiar os datos CSV da táboa."
+      },
+      {
+        "property": "printable",
+        "title": "Botón de impresión",
+        "description": "Engadir un botón para imprimir só a táboa."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Datos CSV",
+        "description": "Crear unha táboa a partir dun ficheiro CSV cargado."
+      }
+    ]
+  }
+}

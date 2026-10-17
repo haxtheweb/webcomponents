@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Billedsammenligning",
+    "description": "Stryg et billede hen over et andet for at sammenligne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Øverste billede",
+        "description": "Øverste billede, der strøges hen over det nederste billede."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alt-tekst til øverste billede",
+        "description": "Påkrævet alt-tekst af hensyn til tilgængelighed."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Nederste billede",
+        "description": "Nederste billede vist under det øverste billede."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alt-tekst til nederste billede",
+        "description": "Påkrævet alt-tekst af hensyn til tilgængelighed."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Adfærd",
+        "description": "Vælg aftørringstilstand (standard) eller gennemsigtighedstilstand for øverste billede."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfarve",
+        "description": "Skyderbjælkens farve."
+      },
+      {
+        "property": "dark",
+        "title": "Mørk",
+        "description": "Inverter skyderbjælkens farve."
+      },
+      {
+        "property": "position",
+        "title": "Startposition",
+        "description": "Startposition fra 0 til 100."
+      }
+    ]
+  }
+}

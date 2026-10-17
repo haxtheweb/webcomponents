@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Incorporação do Twitter (X)",
+    "description": "Incorpore um tweet do X no contexto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL do tweet",
+        "description": "URL do tweet a incorporar."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Tema claro ou escuro para tweets do X.",
+        "options": {
+          "light": "Clara",
+          "dark": "Escuro"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Impedir pop-up ao clicar",
+        "description": "Impedir que os usuários abram o tweet em x.com."
+      }
+    ]
+  }
+}

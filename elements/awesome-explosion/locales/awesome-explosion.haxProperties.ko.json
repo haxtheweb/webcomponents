@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "멋진 폭발",
+    "description": "선택적 효과음이 있는 인터랙티브 폭발 애니메이션입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "크기",
+        "description": "폭발 크기를 설정합니다.",
+        "options": {
+          "tiny": "아주 작게",
+          "small": "작게",
+          "medium": "보통",
+          "large": "크게",
+          "epic": "엄청 크게"
+        }
+      },
+      {
+        "property": "color",
+        "title": "색상",
+        "description": "폭발 색상 테마를 설정합니다.",
+        "options": {
+          "": "기본값",
+          "red": "빨강",
+          "blue": "파랑",
+          "purple": "보라",
+          "orange": "주황",
+          "yellow": "노랑"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "효과음",
+        "description": "효과음을 켭니다."
+      },
+      {
+        "property": "resetSound",
+        "title": "소리 재설정",
+        "description": "매번 소리를 처음부터 다시 재생합니다."
+      },
+      {
+        "property": "image",
+        "title": "사용자 지정 이미지",
+        "description": "사용자 지정 폭발 이미지의 선택적 URL입니다."
+      },
+      {
+        "property": "sound",
+        "title": "사용자 지정 소리",
+        "description": "사용자 지정 효과음의 선택적 URL입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "비활성화",
+        "description": "모든 상호작용을 비활성화합니다."
+      }
+    ]
+  }
+}

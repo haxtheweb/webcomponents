@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Mgbawa Dị Egwu",
+    "description": "Ihe ngosi mgbawa na-emekọrịta ihe nwere mmetụta ụda nhọrọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Nha",
+        "description": "Debe nha mgbawa ahụ.",
+        "options": {
+          "tiny": "Obere nnọọ",
+          "small": "Obere",
+          "medium": "Etiti",
+          "large": "Nnukwu",
+          "epic": "Nnukwu nnọọ"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Agba",
+        "description": "Debe isiokwu agba mgbawa ahụ.",
+        "options": {
+          "": "Ndabara",
+          "red": "Uhie",
+          "blue": "Anụnụ anụnụ",
+          "purple": "Odo odo",
+          "orange": "Oroma",
+          "yellow": "Edo edo"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Mmetụta Ụda",
+        "description": "Gbanye mmetụta ụda."
+      },
+      {
+        "property": "resetSound",
+        "title": "Malitegharịa Ụda",
+        "description": "Malitegharịa ụda site na mmalite oge ọ bụla."
+      },
+      {
+        "property": "image",
+        "title": "Onyonyo Ahaziri",
+        "description": "URL nhọrọ maka onyonyo mgbawa ahaziri."
+      },
+      {
+        "property": "sound",
+        "title": "Ụda Ahaziri",
+        "description": "URL nhọrọ maka mmetụta ụda ahaziri."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Agbanyụrụ",
+        "description": "Gbanyụọ mmekọrịta niile."
+      }
+    ]
+  }
+}

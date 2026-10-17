@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Produkt v kostce",
+    "description": "Blok rychlého přehledu produktu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona představující pojem."
+      },
+      {
+        "property": "title",
+        "title": "Název",
+        "description": "Hlavní pojem v kostce."
+      },
+      {
+        "property": "subtitle",
+        "title": "Podtitul",
+        "description": "Doplňující podrobnost."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňující barva",
+        "description": "Zvýrazňující barva ikony."
+      }
+    ]
+  }
+}

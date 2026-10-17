@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Opptelling",
+    "description": "Animer et tall som teller opp til en målverdi når det rulles inn i visningen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Sluttverdi",
+        "description": "Tallet det skal telles opp til."
+      },
+      {
+        "property": "start",
+        "title": "Startverdi",
+        "description": "Tallet det skal telles opp fra."
+      },
+      {
+        "property": "duration",
+        "title": "Varighet",
+        "description": "Antall sekunder telleanimasjonen skal ta."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Prefikstekst",
+        "description": "Tekst som vises foran tallet (f.eks. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Suffikstekst",
+        "description": "Tekst som vises etter tallet (f.eks. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefiksplass",
+        "description": "Valgfritt innsatt innhold foran tallet."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffiksplass",
+        "description": "Valgfritt innsatt innhold etter tallet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Desimaler",
+        "description": "Antall desimaler som skal vises."
+      },
+      {
+        "property": "separator",
+        "title": "Tusenskilletegn",
+        "description": "Tegn som skiller tusengrupper."
+      },
+      {
+        "property": "decimal",
+        "title": "Desimaltegn",
+        "description": "Tegn brukt som desimalskilletegn."
+      },
+      {
+        "property": "noeasing",
+        "title": "Ingen myk overgang",
+        "description": "Slå av myk overgang slik at tellingen blir lineær."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Karakter RPG",
+    "description": "Karakter seru dari HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Nama",
+        "description": "Kata yang digunakan untuk membuat karakter acak."
+      },
+      {
+        "property": "hat",
+        "title": "Topi",
+        "description": "Gaya topi.",
+        "options": {
+          "none": "Bawaan",
+          "random": "Acak",
+          "bunny": "Kelinci",
+          "cowboy": "Koboi",
+          "education": "Pendidikan",
+          "construction": "Konstruksi",
+          "warning": "Peringatan",
+          "watermelon": "Semangka",
+          "coffee": "Kopi",
+          "knight": "Ksatria",
+          "ninja": "Ninja",
+          "party": "Pesta",
+          "error": "Galat",
+          "edit": "Edit"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Lebar",
+        "description": "Lebar karakter dalam piksel."
+      },
+      {
+        "property": "height",
+        "title": "Tinggi",
+        "description": "Tinggi karakter dalam piksel."
+      },
+      {
+        "property": "fire",
+        "title": "Terbakar?",
+        "description": "Apakah karakter sedang terbakar."
+      },
+      {
+        "property": "walking",
+        "title": "Berjalan?",
+        "description": "Animasi berjalan; berjalan saat terbakar."
+      }
+    ]
+  }
+}

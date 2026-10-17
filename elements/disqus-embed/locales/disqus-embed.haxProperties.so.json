@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Ku dhex dar faallooyinka Disqus bog."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Magac gaaban",
+        "description": "Magaca gaaban ee goobta, kaas oo go'aamiya martigeliyaha qoraalka Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL-ka Bogga",
+        "description": "URL-ka bogga uu ku xiran yahay dulucda faallooyinka."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Aqoonsiga Bogga",
+        "description": "Aqoonsiga gaarka ah ee dulucda faallooyinka bogga."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Cinwaanka Bogga",
+        "description": "Cinwaanka bogga uu ku xiran yahay dulucda faallooyinka."
+      },
+      {
+        "property": "loadingText",
+        "title": "Qoraalka soo-dejinta",
+        "description": "Qoraalka la ogeysiiyo inta faallooyinku soo dejinayaan."
+      },
+      {
+        "property": "lang",
+        "title": "Luuqad",
+        "description": "Koodhka luuqadda interface-ka Disqus, tusaale en."
+      }
+    ]
+  }
+}

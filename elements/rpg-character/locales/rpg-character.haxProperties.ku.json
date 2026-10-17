@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Karakterê RPG",
+    "description": "Karakterê kêfxweş ji HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Nav",
+        "description": "Peyva ku ji bo çêkirina karakterekî rasthatî tê bikaranîn."
+      },
+      {
+        "property": "hat",
+        "title": "Kum",
+        "description": "Şêweya kumê.",
+        "options": {
+          "none": "Xwerû",
+          "random": "Rasthatî",
+          "bunny": "Kêvroşk",
+          "cowboy": "Kowboy",
+          "education": "Perwerde",
+          "construction": "Avahîsazî",
+          "warning": "Hişyarî",
+          "watermelon": "Zebeş",
+          "coffee": "Qehwe",
+          "knight": "Siwar",
+          "ninja": "Nînja",
+          "party": "Şahî",
+          "error": "Çewtî",
+          "edit": "Sererast bike"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Firehî",
+        "description": "Firehiya karakterê bi pîksel."
+      },
+      {
+        "property": "height",
+        "title": "Bilindahî",
+        "description": "Bilindahiya karakterê bi pîksel."
+      },
+      {
+        "property": "fire",
+        "title": "Dişewite?",
+        "description": "Gelo karakter dişewite."
+      },
+      {
+        "property": "walking",
+        "title": "Dimeşe?",
+        "description": "Anîmasyona meşê; dema dişewite dibeze."
+      }
+    ]
+  }
+}

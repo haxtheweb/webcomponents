@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "የዘርጋ/ሰብስብ ቡድን",
+    "description": "የዘርጋ/ሰብስብ አካላት ቡድን።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "አንዱን ብቻ ዘርጋ",
+        "description": "አንድ ንጥል ብቻ ሊዘረጋ ይችላል።"
+      },
+      {
+        "slot": "",
+        "title": "የሚሰበሰቡ ንጥሎች",
+        "description": "የሚሰበሰቡት ንጥሎች።"
+      }
+    ]
+  }
+}

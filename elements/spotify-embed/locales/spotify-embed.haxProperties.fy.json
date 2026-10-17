@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Omhulsel foar ynsleatene Spotify-spilers."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Boarne",
+        "description": "Ynslút- of dielkeppeling fan Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Kleurtema fan de eftergrûn foar de spiler.",
+        "options": {
+          "": "Standert",
+          "0": "Swart"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Grutte",
+        "description": "Grutte fan de spiler.",
+        "options": {
+          "normal": "Standert",
+          "compact": "Kompakt"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Chidule cha chinthu",
+    "description": "Bokosi la chidule cha chinthu mwachangu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Chizindikiro",
+        "description": "Chizindikiro choyimira mfundoyo."
+      },
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mfundo yaikulu mwachidule."
+      },
+      {
+        "property": "subtitle",
+        "title": "Mutu wang'ono",
+        "description": "Zambiri zowonjezera."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu wowonjezera",
+        "description": "Mtundu wowonjezera wa chizindikiro."
+      }
+    ]
+  }
+}

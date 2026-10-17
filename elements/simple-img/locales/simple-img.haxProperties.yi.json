@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "פּשוטער בילד",
+    "description": "באַאַרבעטן בילדער מיט פּשוטע פּאַראַמעטערס."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "מקור",
+        "description": "URL פֿונעם בילד־מקור."
+      },
+      {
+        "property": "height",
+        "title": "הייך",
+        "description": "אָפּציאָנעלע בילד־הייך."
+      },
+      {
+        "property": "width",
+        "title": "ברייט",
+        "description": "אָפּציאָנעלע בילד־ברייט."
+      },
+      {
+        "property": "alt",
+        "title": "Alt־טעקסט",
+        "description": "ניצלעך פֿאַר עקראַן־לייענער און בעסערן SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "קוואַליטעט",
+        "description": "בילד־קוואַליטעט בעתן שאַפֿן (נאָר JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "לאָדן־פּריאָריטעט",
+        "description": "פּערפֿאָרמאַנס־אָנווײַז פֿאַר מאָדערנע בלעטערערס.",
+        "options": {
+          "auto": "אויטאָמאַטיש",
+          "high": "הויך",
+          "low": "נידעריק"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "דעקאָדיר־מעטאָד",
+        "description": "פּערפֿאָרמאַנס־אָנווײַז פֿאַרן ווײַזן בילדער אין מאָדערנע בלעטערערס.",
+        "options": {
+          "auto": "אויטאָמאַטיש",
+          "async": "אַסינכראָניש"
+        }
+      }
+    ]
+  }
+}

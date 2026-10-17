@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Стоп-примітка",
+    "description": "Повідомлення, що привертає увагу читачів до конкретних вказівок."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Введіть назву стоп-примітки."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Введіть зовнішній URL."
+      },
+      {
+        "property": "status",
+        "title": "Статус",
+        "description": "Зміна статусу змінює відповідно кольори та значки",
+        "options": {
+          "stop": "Стоп",
+          "warning": "Попередження",
+          "success": "Підтвердження",
+          "info": "Повідомлення"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Текст примітки",
+        "description": "Текст стоп-примітки."
+      }
+    ]
+  }
+}

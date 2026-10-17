@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Paĝa sekcio",
+    "description": "Sekcia ujo por paĝa enhavo kaj ekranbazitaj aranĝoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Dezajna traktado",
+        "description": "Antaŭagordita stilo, kiu ĝisdatigas rilatajn agordojn."
+      },
+      {
+        "property": "image",
+        "title": "Bildo",
+        "description": "Fona aŭdvidaĵo por la sekcio."
+      },
+      {
+        "property": "bg",
+        "title": "Fona koloro",
+        "description": "Fona koloro kiam neniu bildo estas agordita."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Rulumbutono",
+        "description": "Montri butonon, kiu rulumas al la sekva sekcio."
+      },
+      {
+        "property": "fold",
+        "title": "Montri faldon",
+        "description": "Montri vidan faldon ĉe la malsupro de la sekcio."
+      },
+      {
+        "property": "full",
+        "title": "Plenekrana grandeco",
+        "description": "Plenigi la ekranan altecon de la spektanto."
+      },
+      {
+        "property": "filter",
+        "title": "Apliki filtrilon",
+        "description": "Apliki vidan filtrilon al la fona bildo."
+      },
+      {
+        "slot": "",
+        "title": "Enhavo",
+        "description": "Enhavo de la sekcio."
+      },
+      {
+        "slot": "entice",
+        "title": "Allogaĵo",
+        "description": "Nedeviga alloga enhavo."
+      },
+      {
+        "slot": "buttons",
+        "title": "Butonoj",
+        "description": "Butongrupo montrata sub la teksto."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ankra teksto",
+        "description": "Ankra etikedo montrata en la navigado."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Numărătoare crescătoare",
+    "description": "Animează un număr care crește până la o valoare țintă când devine vizibil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Valoare finală",
+        "description": "Numărul până la care se numără."
+      },
+      {
+        "property": "start",
+        "title": "Valoare inițială",
+        "description": "Numărul de la care începe numărătoarea."
+      },
+      {
+        "property": "duration",
+        "title": "Durată",
+        "description": "Numărul de secunde al animației de numărare."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Text prefix",
+        "description": "Text afișat înaintea numărului (de ex. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Text sufix",
+        "description": "Text afișat după număr (de ex. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot prefix",
+        "description": "Conținut opțional plasat înaintea numărului."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot sufix",
+        "description": "Conținut opțional plasat după număr."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Zecimale",
+        "description": "Numărul de zecimale afișate."
+      },
+      {
+        "property": "separator",
+        "title": "Separator de mii",
+        "description": "Caracterul care separă grupurile de mii."
+      },
+      {
+        "property": "decimal",
+        "title": "Caracter zecimal",
+        "description": "Caracterul folosit ca separator zecimal."
+      },
+      {
+        "property": "noeasing",
+        "title": "Fără atenuare",
+        "description": "Dezactivează atenuarea pentru o numărare liniară."
+      }
+    ]
+  }
+}

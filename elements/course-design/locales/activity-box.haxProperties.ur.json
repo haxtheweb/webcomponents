@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "سرگرمی باکس",
+    "description": "چھوٹا اسٹائل شدہ سرخی بلاک۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "سرگرمی باکس کے ساتھ دکھایا جانے والا آئیکن۔"
+      },
+      {
+        "property": "tag",
+        "title": "سرگرمی باکس ٹیگ",
+        "description": "سرگرمی باکس میں دکھایا جانے والا ٹیگ۔"
+      },
+      {
+        "property": "nocolourize",
+        "title": "رنگ نہ لگائیں",
+        "description": "آئیکن پر رنگ لاگو ہونے سے روکیں۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub laguntzaileen zerrenda",
+    "description": "RPG pertsonaia gisa bistaratuta, GitHub API erabiliz."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Erakundea",
+        "description": "Erakundearen izena, github.com/ORG/REPO helbidetik."
+      },
+      {
+        "property": "repo",
+        "title": "Biltegia",
+        "description": "Biltegiaren izena, github.com/ORG/REPO helbidetik."
+      },
+      {
+        "property": "limit",
+        "title": "Muga",
+        "description": "Mugatu erakusten diren laguntzaileen kopurua."
+      }
+    ]
+  }
+}

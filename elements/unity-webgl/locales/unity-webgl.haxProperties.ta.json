@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity பிளேயர்",
+    "description": "Unity WebGL பிளேயர்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "இலக்கு",
+        "description": "கேம் உருவாக்கத்திற்கான பாதை."
+      },
+      {
+        "property": "compression",
+        "title": "சுருக்க முறை",
+        "description": "கேம் சொத்துகளுக்கான சுருக்கக் கோப்பு நீட்டிப்பு."
+      },
+      {
+        "property": "streamingurl",
+        "title": "ஸ்ட்ரீமிங் URL",
+        "description": "ஸ்ட்ரீமிங் சொத்துகளின் URL."
+      },
+      {
+        "property": "companyname",
+        "title": "நிறுவனப் பெயர்",
+        "description": "நிறுவனப் பெயர்."
+      },
+      {
+        "property": "productname",
+        "title": "தயாரிப்புப் பெயர்",
+        "description": "கேமின் தலைப்பு."
+      },
+      {
+        "property": "productversion",
+        "title": "தயாரிப்புப் பதிப்பு",
+        "description": "வெளியீட்டுப் பதிப்பு."
+      },
+      {
+        "property": "width",
+        "title": "கேன்வாஸ் அகலம்",
+        "description": "கேன்வாஸின் CSS அகலம் (எடுத்துக்காட்டாக px அல்லது em)."
+      },
+      {
+        "property": "height",
+        "title": "கேன்வாஸ் உயரம்",
+        "description": "கேன்வாஸின் CSS உயரம் (எடுத்துக்காட்டாக px அல்லது em)."
+      },
+      {
+        "property": "background",
+        "title": "கேன்வாஸ் பின்னணி",
+        "description": "கேன்வாஸின் CSS பின்னணி."
+      }
+    ]
+  }
+}

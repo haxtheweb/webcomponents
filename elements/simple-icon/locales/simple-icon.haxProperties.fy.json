@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikoan",
+    "description": "Ikoan út de folsleine ikoanebibleteek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikoan",
+        "description": "Ikoan om te toanen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Aksintkleur foar it ikoan."
+      },
+      {
+        "property": "dark",
+        "title": "Tsjuster",
+        "description": "Tsjustere modus brûke (omkearde kleureset)."
+      }
+    ]
+  }
+}

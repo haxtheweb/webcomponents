@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Fylltu í eyðurnar",
+    "description": "Matsverkefni þar sem nemendur fylla inn orð sem vantar í staðhæfingu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spurning",
+        "description": "Spurning sem notendur svara."
+      },
+      {
+        "property": "statement",
+        "title": "Staðhæfing",
+        "description": "Staðhæfing sem verður breytt í „merktu orðin“ verkefni."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Einkunnasnið",
+        "description": "OER Schema: einkunnasnið fyrir þetta mat (t.d. stig, bókstafur, prósenta, lokið)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Námsmarkmið",
+        "description": "OER Schema: námsmarkmið tengt þessu mati."
+      },
+      {
+        "property": "forCourse",
+        "title": "Námskeið",
+        "description": "OER Schema: námskeiðið sem þetta mat er ætlað."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Heiti prófs",
+        "description": "Heiti prófs sem sent er inn til notkunar í xAPI-umhverfum til að auðkenna þetta atriði"
+      }
+    ]
+  }
+}

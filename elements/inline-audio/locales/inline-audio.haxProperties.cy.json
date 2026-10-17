@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Sain fewnol",
+    "description": "Chwarae sain o fewn y testun i ategu cynnwys y dudalen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ffynhonnell",
+        "description": "Ffeil MP3 neu URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw Acen",
+        "description": "Lliw acen y cerdyn."
+      },
+      {
+        "property": "shiny",
+        "title": "Sgleiniog",
+        "description": "Defnyddio cefndir acen goleuach yn lle llwyd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tywyll",
+        "description": "Defnyddio modd tywyll."
+      }
+    ]
+  }
+}

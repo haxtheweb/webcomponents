@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Détails de la page",
+    "description": "Définir une séparation visuelle entre les pages, que les CMS peuvent utiliser pour créer des pages."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titre",
+        "description": "Titre affiché dans le thème et comme premier titre."
+      },
+      {
+        "property": "pageType",
+        "title": "Type",
+        "description": "Libellé visuel du contexte de la page.",
+        "options": {
+          "": "-- aucun --",
+          "content": "Contenu",
+          "assessment": "Évaluation",
+          "quiz": "Quiz",
+          "submission": "Remise",
+          "lesson": "Leçon",
+          "module": "Module",
+          "task": "Tâche",
+          "activity": "Activité",
+          "project": "Projet",
+          "practice": "Exercice",
+          "unit": "Unité",
+          "objectives": "Objectifs d'apprentissage",
+          "connection": "Lien",
+          "knowledge": "Le saviez-vous ?",
+          "strategy": "Stratégie d'apprentissage",
+          "discuss": "Discuter",
+          "listen": "Écouter",
+          "make": "Créer",
+          "observe": "Observer",
+          "present": "Présenter",
+          "reading": "Lecture",
+          "reflect": "Réfléchir",
+          "research": "Rechercher",
+          "watch": "Regarder",
+          "write": "Écrire"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Étiquettes",
+        "description": "Liste d'étiquettes séparées par des virgules."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL du lien",
+        "description": "URL de redirection affichée à la place du contenu de la page."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Cible du lien",
+        "description": "Ouvrir les liens dans la même fenêtre ou dans une nouvelle fenêtre.",
+        "options": {
+          "_self": "Même fenêtre",
+          "_blank": "Nouvelle fenêtre"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Publiée",
+        "description": "Les pages non publiées sont masquées pour les utilisateurs finaux."
+      },
+      {
+        "property": "locked",
+        "title": "Verrouiller la page",
+        "description": "Verrouiller ou déverrouiller tous les éléments de cette page."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Remplacer le slug automatique",
+        "description": "Empêcher la mise à jour automatique du slug selon le titre ou la page parente."
+      },
+      {
+        "property": "slug",
+        "title": "Chemin",
+        "description": "Slug d'URL de cette page."
+      },
+      {
+        "property": "image",
+        "title": "Média",
+        "description": "Média qui représente la page, utilisé dans certains thèmes et vues."
+      },
+      {
+        "property": "parent",
+        "title": "Parent",
+        "description": "Chemin de la page parente."
+      },
+      {
+        "property": "noderefs",
+        "title": "Contenu associé",
+        "description": "Pages associées à cette page."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Description",
+        "description": "Description utilisée dans les collections et pour le référencement (SEO)."
+      },
+      {
+        "property": "entityType",
+        "title": "Type d'entité",
+        "description": "Page par défaut, sauf indication contraire.",
+        "options": {
+          "page": "Page (par défaut)",
+          "taxonomy": "Taxonomie",
+          "taxonomyTerm": "Terme de taxonomie",
+          "region": "Région"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Icône",
+        "description": "Icône associée à cette page dans le site."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Couleur associée à cette page dans le site."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Masquer dans le menu",
+        "description": "Masquer cette page des menus tout en conservant son URL."
+      },
+      {
+        "property": "order",
+        "title": "Ordre",
+        "description": "Ordre par rapport aux pages sœurs."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Thème de la page",
+        "description": "Remplacer le thème pour cette page uniquement."
+      },
+      {
+        "property": "author",
+        "title": "Auteur",
+        "description": "Nom d'utilisateur de la dernière personne ayant modifié cette page."
+      }
+    ]
+  }
+}

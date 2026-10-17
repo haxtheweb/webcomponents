@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Item koleksi",
+    "description": "Item gaya kertu kanggo ing njero dhaptar koleksi, kanthi teks, pranala, lan media opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Pranala",
+        "description": "URL tujuan kanggo kertu iki."
+      },
+      {
+        "property": "image",
+        "title": "Gambar",
+        "description": "Gambar latar mburi."
+      },
+      {
+        "property": "line1",
+        "title": "Baris 1",
+        "description": "Baris teks kapisan."
+      },
+      {
+        "property": "line2",
+        "title": "Baris 2",
+        "description": "Baris teks kapindho."
+      },
+      {
+        "property": "line3",
+        "title": "Baris 3",
+        "description": "Baris teks katelu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon sing makili kertu."
+      },
+      {
+        "property": "saturate",
+        "title": "Efek saturasi",
+        "description": "Owahi saturasi gambar nalika fokus pangguna."
+      },
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Dhaptar tag sing dipisah koma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna",
+        "description": "Werna kanggo tag."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Teks alternatif sing njlentrehake pranala."
+      }
+    ]
+  }
+}

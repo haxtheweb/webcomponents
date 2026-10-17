@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Külső webes tartalom beágyazása iframe-be."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Erőforrás URL-je",
+        "description": "Az erőforrás URL-je."
+      },
+      {
+        "property": "height",
+        "title": "Magasság",
+        "description": "Az iframe magassága."
+      },
+      {
+        "property": "width",
+        "title": "Szélesség",
+        "description": "Az iframe szélessége."
+      }
+    ]
+  }
+}

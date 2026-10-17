@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Inline-Audio",
+    "description": "Audio direkt am Text ofspillen fir de Säiteninhalt z'ergänzen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quell",
+        "description": "MP3-Fichier oder URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Akzentfaarf vun der Kaart."
+      },
+      {
+        "property": "shiny",
+        "title": "Glänzend",
+        "description": "E méi hellen Akzenthannergrond amplaz vu Gro benotzen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Däischter",
+        "description": "Däischtere Modus benotzen."
+      }
+    ]
+  }
+}

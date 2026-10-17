@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "ตาราง",
+    "description": "ข้อมูลแบบตารางสำหรับเว็บ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "ส่วนหัวแถว",
+        "description": "ใช้แถวแรกเป็นส่วนหัว"
+      },
+      {
+        "property": "columnHeader",
+        "title": "ส่วนหัวคอลัมน์",
+        "description": "ใช้คอลัมน์แรกเป็นส่วนหัว"
+      },
+      {
+        "property": "footer",
+        "title": "ส่วนท้าย",
+        "description": "ใช้แถวสุดท้ายเป็นส่วนท้าย"
+      },
+      {
+        "property": "sort",
+        "title": "จัดเรียงได้",
+        "description": "อนุญาตให้จัดเรียงตามค่าในคอลัมน์"
+      },
+      {
+        "property": "filter",
+        "title": "อนุญาตให้กรอง",
+        "description": "อนุญาตให้กรองตามค่าในคอลัมน์"
+      },
+      {
+        "property": "numericStyles",
+        "title": "รูปแบบตัวเลข",
+        "description": "ใช้รูปแบบตัวเลขกับคอลัมน์ที่เป็นตัวเลข"
+      },
+      {
+        "property": "responsive",
+        "title": "ปรับตามหน้าจอ",
+        "description": "ปรับเลย์เอาต์ตารางบนหน้าจอขนาดเล็ก"
+      },
+      {
+        "property": "rubricMode",
+        "title": "โหมดรูบริก",
+        "description": "ตีความตารางนี้เป็น Rubric ของ OER Schema เพื่อสร้างเมทาดาทา Rubric, RubricScale, RubricCriterion และ RubricLevel"
+      },
+      {
+        "property": "rubricType",
+        "title": "ประเภทรูบริก",
+        "description": "รูปแบบรูบริกที่สร้างเป็น oer:rubricType (มีผลเฉพาะเมื่อเปิดโหมดรูบริก)",
+        "options": {
+          "": "(ไม่มี)",
+          "analytic": "แบบแยกส่วน",
+          "holistic": "แบบองค์รวม",
+          "single-point": "แบบจุดเดียว",
+          "checklist": "รายการตรวจสอบ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "มีเส้นขอบ"
+      },
+      {
+        "property": "condensed",
+        "title": "ย่อแถว",
+        "description": "ลดความสูงของแถว"
+      },
+      {
+        "property": "striped",
+        "title": "แถวสลับสี",
+        "description": "แรเงาแถวเว้นแถว"
+      },
+      {
+        "property": "downloadable",
+        "title": "ปุ่มดาวน์โหลด",
+        "description": "เพิ่มปุ่มสำหรับดาวน์โหลดตาราง"
+      },
+      {
+        "property": "copyable",
+        "title": "ปุ่มคัดลอก",
+        "description": "เพิ่มปุ่มสำหรับคัดลอกข้อมูล CSV ของตาราง"
+      },
+      {
+        "property": "printable",
+        "title": "ปุ่มพิมพ์",
+        "description": "เพิ่มปุ่มสำหรับพิมพ์เฉพาะตาราง"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "ข้อมูล CSV",
+        "description": "สร้างตารางจากไฟล์ CSV ที่อัปโหลด"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Mawu Ogwidwa ndi Chithunzi",
+    "description": "Mawu ogwidwa okongoletsedwa okhala ndi chithunzi chosankha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Chithunzi",
+        "description": "Onjezani chithunzi ku umboniwo."
+      },
+      {
+        "property": "name",
+        "title": "Dzina Lonse",
+        "description": "Dzina la munthu wopereka umboni."
+      },
+      {
+        "property": "position",
+        "title": "Udindo kapena Dzina la Ntchito",
+        "description": "Udindo kapena dzina la ntchito la munthuyo."
+      },
+      {
+        "slot": "",
+        "title": "Mawu ogwidwa",
+        "description": "Mawu ochokera kwa wopereka umboni."
+      }
+    ]
+  }
+}

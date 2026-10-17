@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Gníomh úsáideora",
+    "description": "Rianaigh gníomhartha úsáideoirí agus seol sonraí chuig stórais xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Imeacht le rianú",
+        "description": "Gníomh úsáideora a spreagann an t-imeacht seo.",
+        "options": {
+          "visibility": "Is féidir é seo a fheiceáil",
+          "keydown": "Brúigh eochair anseo",
+          "click": "Cliceáil air seo",
+          "hover": "Ainligh os cionn seo"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Rianaigh gach uair",
+        "description": "De réir réamhshocraithe, ní rianaítear ach an chéad tarlú."
+      }
+    ]
+  }
+}

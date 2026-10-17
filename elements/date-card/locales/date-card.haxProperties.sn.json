@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Zuva",
+    "description": "Ratidza zuva rekarenda nemashoko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mwedzi",
+        "description": "Mwedzi unoratidzwa pakadhi."
+      },
+      {
+        "property": "date",
+        "title": "Zuva remwedzi",
+        "description": "Nhamba yezuva remwedzi."
+      },
+      {
+        "property": "day",
+        "title": "Zuva revhiki",
+        "description": "Zita rezuva revhiki."
+      },
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Zita rechiitiko."
+      },
+      {
+        "property": "location",
+        "title": "Nzvimbo",
+        "description": "Nzvimbo yechiitiko."
+      },
+      {
+        "property": "startTime",
+        "title": "Kutanga",
+        "description": "Nguva yekutanga."
+      },
+      {
+        "property": "endTime",
+        "title": "Kupera",
+        "description": "Nguva yekupera."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rwekusimbisa rusingamanikidzwi."
+      },
+      {
+        "property": "dark",
+        "title": "Dingindira Rerima",
+        "description": "Batidza dingindira rerima."
+      }
+    ]
+  }
+}

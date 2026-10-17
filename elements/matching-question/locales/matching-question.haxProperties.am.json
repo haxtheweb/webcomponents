@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "የማዛመድ ጥያቄ",
+    "description": "ጥያቄዎችን ከትክክለኛ መልሶቻቸው ጋር የሚያጣምር ጎትተህ-ጣል የማዛመድ እንቅስቃሴ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ጥያቄ",
+        "description": "ለተጠቃሚዎች ጥያቄ። የመጣያ ዒላማዎችን ምልክት አድርግ፣ ከዚያም እስከ ቀጣዩ ዒላማ ድረስ መልሶችን ዘርዝር።"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "የውጤት አሰጣጥ ቅርጸት",
+        "description": "OER Schema፦ ለዚህ ምዘና የውጤት አሰጣጥ ቅርጸት (ለምሳሌ ነጥቦች፣ ፊደል፣ መቶኛ፣ ማጠናቀቅ)።"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "የመማር ዓላማ",
+        "description": "OER Schema፦ ከዚህ ምዘና ጋር የተያያዘ የመማር ዓላማ።"
+      },
+      {
+        "property": "forCourse",
+        "title": "ኮርስ",
+        "description": "OER Schema፦ ይህ ምዘና የታሰበለት ኮርስ።"
+      },
+      {
+        "property": "answers",
+        "title": "መልሶች"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "የፈተናው ስም",
+        "description": "በትንታኔ ሥርዓቶች ውስጥ ለxAPI መለያ የሚውል የፈተና ስም።"
+      }
+    ]
+  }
+}

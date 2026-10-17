@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "بطاقة تعليمية",
+    "description": "تدرَّب على المفاهيم ببطاقات تعليمية ذات وجهين."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "وجه البطاقة",
+        "description": "النص أو السؤال على الوجه."
+      },
+      {
+        "slot": "back",
+        "title": "ظهر البطاقة",
+        "description": "الإجابة المتوقعة."
+      },
+      {
+        "property": "imgSource",
+        "title": "مصدر الصورة",
+        "description": "ملف الصورة المستخدم للبطاقة. يتجاوز الكلمة المفتاحية للصورة."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "نوع الإجراء",
+        "description": "OER Schema: نوع الإجراء الذي يتضمنه هذا التدريب (مثل القراءة، الكتابة، الصنع، البحث، الاستماع، المشاهدة، التأمل، النقاش، الملاحظة، العرض، التقييم)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "هدف التعلّم",
+        "description": "OER Schema: ID أو URL هدف التعلّم الذي يدعمه هذا التدريب."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "داكن",
+        "description": "استخدام الوضع الداكن."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون تمييز البطاقة."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "الكلمة المفتاحية للصورة",
+        "description": "كلمة مفتاحية لصورة عشوائية. يتجاوزها مصدر الصورة."
+      }
+    ]
+  }
+}

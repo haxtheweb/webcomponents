@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iithegi",
+    "description": "Uluhlu olulula lweethegi lokubonisa ekhasini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Iithegi",
+        "description": "Uluhlu lweethegi ezahlulwe ngeekoma."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Umbala oGqamisayo oZenzekelayo",
+        "description": "Seta umbala ogqamisayo ngokuzenzekelayo ngokusekelwe kwileyibhile."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala",
+        "description": "Umbala weethegi."
+      }
+    ]
+  }
+}

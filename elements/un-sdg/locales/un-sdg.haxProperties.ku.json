@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Armanca Pêşketina Domdar a Neteweyên Yekbûyî."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Armanc",
+        "description": "Hejmara UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Tenê reng",
+        "description": "Tenê rengê armancê nîşan bide."
+      }
+    ]
+  }
+}

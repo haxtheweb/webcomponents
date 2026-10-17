@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Encadré d'activité",
+    "description": "Petit bloc de titre stylisé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icône",
+        "description": "Icône affichée à côté de l'encadré d'activité."
+      },
+      {
+        "property": "tag",
+        "title": "Étiquette de l'encadré d'activité",
+        "description": "Étiquette affichée dans l'encadré d'activité."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Sans colorisation",
+        "description": "Empêcher l'application de couleurs à l'icône."
+      }
+    ]
+  }
+}

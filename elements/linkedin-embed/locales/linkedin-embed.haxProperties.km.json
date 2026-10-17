@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "បង្កប់ LinkedIn",
+    "description": "បង្កប់កាតប្រវត្តិរូប LinkedIn។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "ឈ្មោះផ្ទាល់ខ្លួន",
+        "description": "ផ្នែកឈ្មោះអ្នកប្រើផ្ទាល់ខ្លួនរបស់ LinkedIn។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "មូលដ្ឋានភាសា",
+        "description": "តម្លៃទិន្នន័យមេតាមូលដ្ឋានភាសា ដូចជា en_US។"
+      }
+    ]
+  }
+}

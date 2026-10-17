@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D pleyer",
+    "description": "3D fayl / kengaytirilgan reallik pleyeri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manba",
+        "description": "Ushbu AR faylining URL manzili."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Elementning AR dagi X joylashuvi."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Elementning AR dagi Y joylashuvi."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Elementning AR dagi Z joylashuvi."
+      },
+      {
+        "property": "skyColor",
+        "title": "Osmon rangi",
+        "description": "Sahnadagi osmon rangini tanlang."
+      }
+    ]
+  }
+}

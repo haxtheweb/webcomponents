@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF ब्राउज़र व्यूअर",
+    "description": "वैकल्पिक कार्ड लेआउट और डाउनलोड बटन के साथ PDF फ़ाइल को इनलाइन एम्बेड करें।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF फ़ाइल का स्थान।"
+      },
+      {
+        "property": "heading",
+        "title": "शीर्षक",
+        "description": "कार्ड का शीर्षक टेक्स्ट।"
+      },
+      {
+        "property": "card",
+        "title": "कार्ड लेआउट",
+        "description": "PDF को डाउनलोड बटन वाले कार्ड में प्रदर्शित करें।"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "डाउनलोड लेबल",
+        "description": "डाउनलोड बटन का लेबल।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "असमर्थित संदेश",
+        "description": "जब ब्राउज़र PDF फ़ाइलें प्रदर्शित नहीं कर सकता तब का संदेश।"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "असमर्थित लिंक संदेश",
+        "description": "जब ब्राउज़र PDF फ़ाइलें प्रदर्शित नहीं कर सकता तब का लिंक टेक्स्ट।"
+      },
+      {
+        "property": "width",
+        "title": "चौड़ाई",
+        "description": "PDF व्यूअर की चौड़ाई।"
+      },
+      {
+        "property": "height",
+        "title": "ऊँचाई",
+        "description": "PDF व्यूअर की ऊँचाई।"
+      }
+    ]
+  }
+}

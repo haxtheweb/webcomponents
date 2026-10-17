@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X)-innbygging",
+    "description": "Bygg inn en post fra X i sammenhengen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Post-URL",
+        "description": "URL til posten som skal bygges inn."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Lyst eller mørkt tema for poster fra X.",
+        "options": {
+          "light": "Lys",
+          "dark": "Mørk"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Hindre oppsprettvindu ved klikk",
+        "description": "Hindre brukere i å åpne posten på x.com."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Števec",
+    "description": "Animirano štetje števila do ciljne vrednosti, ko se pomakne v pogled."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Končna vrednost",
+        "description": "Število, do katerega se šteje."
+      },
+      {
+        "property": "start",
+        "title": "Začetna vrednost",
+        "description": "Število, od katerega se šteje."
+      },
+      {
+        "property": "duration",
+        "title": "Trajanje",
+        "description": "Število sekund, koliko naj traja animacija štetja."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Besedilo predpone",
+        "description": "Besedilo, prikazano pred številom (npr. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Besedilo pripone",
+        "description": "Besedilo, prikazano za številom (npr. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Reža za predpono",
+        "description": "Neobvezna vstavljena vsebina pred številom."
+      },
+      {
+        "slot": "suffix",
+        "title": "Reža za pripono",
+        "description": "Neobvezna vstavljena vsebina za številom."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Decimalna mesta",
+        "description": "Število prikazanih decimalnih mest."
+      },
+      {
+        "property": "separator",
+        "title": "Ločilo tisočic",
+        "description": "Znak, ki ločuje skupine tisočic."
+      },
+      {
+        "property": "decimal",
+        "title": "Decimalni znak",
+        "description": "Znak za decimalno vejico."
+      },
+      {
+        "property": "noeasing",
+        "title": "Brez blaženja",
+        "description": "Onemogoči blaženje, da je štetje linearno."
+      }
+    ]
+  }
+}

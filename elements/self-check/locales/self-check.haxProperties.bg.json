@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Самопроверка",
+    "description": "Потребителите могат да направят самопроверка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Изображение",
+        "description": "Изображение за самопроверката."
+      },
+      {
+        "property": "title",
+        "title": "Заглавие",
+        "description": "Заглавие на самопроверката."
+      },
+      {
+        "property": "alt",
+        "title": "Алтернативен текст",
+        "description": "Alt текст за изображението."
+      },
+      {
+        "slot": "question",
+        "title": "Въпрос"
+      },
+      {
+        "slot": "",
+        "title": "Отговор"
+      },
+      {
+        "property": "accentColor",
+        "title": "Цвят на темата",
+        "description": "Изберете цвят на темата от дизайн системата.",
+        "options": {
+          "primary": "Основен",
+          "accent": "Акцент",
+          "success": "Успех",
+          "warning": "Предупреждение",
+          "error": "Грешка",
+          "info": "Информация"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Учебна цел",
+        "description": "Препратка към учебна цел, генерирана като oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Оценява",
+        "description": "Препратка към дейност, генерирана като oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Връзка „Още“",
+        "description": "Връзка към допълнителна информация."
+      }
+    ]
+  }
+}

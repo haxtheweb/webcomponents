@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Puslapio vėliavėlė",
+    "description": "Redakcinė pastaba puslapio autoriams."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Puslapio vėliavėlės akcento spalva."
+      },
+      {
+        "property": "label",
+        "title": "Etiketė",
+        "description": "Puslapio vėliavėlės etiketės tekstas."
+      }
+    ]
+  }
+}

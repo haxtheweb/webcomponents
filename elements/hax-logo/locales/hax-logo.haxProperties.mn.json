@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX үсгийн урлаг",
+    "description": "HAX-ийн лого элемент, мэдээж HAX-тэй ажиллах элемент."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Байрлуулах HAX логоны хэмжээ",
+        "options": {
+          "mini": "Бяцхан",
+          "small": "Жижиг",
+          "normal": "Энгийн",
+          "large": "Том"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Логог том үсэг рүү хөрвүүлэх эсэх"
+      }
+    ]
+  }
+}

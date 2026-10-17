@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "הטמעת קהילות Discord מכתובת URL לשיתוף."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL של המשאב",
+        "description": "URL של המשאב."
+      },
+      {
+        "property": "height",
+        "title": "גובה",
+        "description": "גובה מסגרת התוכן."
+      },
+      {
+        "property": "width",
+        "title": "רוחב",
+        "description": "רוחב מסגרת התוכן."
+      }
+    ]
+  }
+}

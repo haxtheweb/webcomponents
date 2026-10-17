@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Quadre d'activitat",
+    "description": "Bloc d'encapçalament petit amb estil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona que es mostra al costat del quadre d'activitat."
+      },
+      {
+        "property": "tag",
+        "title": "Etiqueta del quadre d'activitat",
+        "description": "Etiqueta que es mostra al quadre d'activitat."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Sense color",
+        "description": "Evita que s'apliquin colors a la icona."
+      }
+    ]
+  }
+}

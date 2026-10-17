@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabel",
+    "description": "Tabelbaserede data til nettet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Rækkeoverskrift",
+        "description": "Behandl første række som overskrift."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Kolonneoverskrift",
+        "description": "Behandl første kolonne som overskrift."
+      },
+      {
+        "property": "footer",
+        "title": "Sidefod",
+        "description": "Behandl sidste række som sidefod."
+      },
+      {
+        "property": "sort",
+        "title": "Sorterbar",
+        "description": "Tillad sortering efter kolonneværdier."
+      },
+      {
+        "property": "filter",
+        "title": "Tillad filtrering",
+        "description": "Tillad filtrering efter kolonneværdier."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numerisk formatering",
+        "description": "Anvend numerisk formatering på numeriske kolonner."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsiv",
+        "description": "Tilpas tabellens layout på små skærme."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubrik-tilstand",
+        "description": "Fortolk denne tabel som en OER Schema Rubric, så der udsendes Rubric-, RubricScale-, RubricCriterion- og RubricLevel-metadata."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubriktype",
+        "description": "Rubrikstil udsendt som oer:rubricType (har kun betydning, når Rubrik-tilstand er slået til).",
+        "options": {
+          "": "(ingen)",
+          "analytic": "Analytisk",
+          "holistic": "Holistisk",
+          "single-point": "Enkeltpunkt",
+          "checklist": "Tjekliste"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Med kant"
+      },
+      {
+        "property": "condensed",
+        "title": "Komprimér rækker",
+        "description": "Reducer rækkehøjden."
+      },
+      {
+        "property": "striped",
+        "title": "Stribede rækker",
+        "description": "Skraver hver anden række."
+      },
+      {
+        "property": "downloadable",
+        "title": "Downloadknap",
+        "description": "Tilføj en knap til at downloade tabellen."
+      },
+      {
+        "property": "copyable",
+        "title": "Kopiknap",
+        "description": "Tilføj en knap til at kopiere tabellens CSV-data."
+      },
+      {
+        "property": "printable",
+        "title": "Udskriftsknap",
+        "description": "Tilføj en knap til kun at udskrive tabellen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV-data",
+        "description": "Opret en tabel ud fra en uploadet CSV-fil."
+      }
+    ]
+  }
+}

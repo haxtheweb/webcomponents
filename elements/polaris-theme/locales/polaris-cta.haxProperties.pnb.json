@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "تھیم والا Polaris کال ٹو ایکشن بٹن وکھاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "بٹن دا متن",
+        "description": "کال ٹو ایکشن بٹن وچ وکھایا جاوݨ والا متن۔"
+      },
+      {
+        "property": "link",
+        "title": "لنک",
+        "description": "بٹن لئی منزل URL۔"
+      },
+      {
+        "property": "type",
+        "title": "قسم",
+        "description": "بصری سٹائل دی قسم۔",
+        "options": {
+          "primary": "مڈھلا",
+          "tinted": "ہلکا رنگیا",
+          "light": "ہلکا"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "آؤٹ لائن سٹائل",
+        "description": "آؤٹ لائن انداز فعال کرو۔"
+      },
+      {
+        "property": "filled",
+        "title": "بھریا سٹائل",
+        "description": "بھریا انداز فعال کرو۔"
+      }
+    ]
+  }
+}

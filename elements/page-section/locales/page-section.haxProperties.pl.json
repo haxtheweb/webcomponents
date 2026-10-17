@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sekcja strony",
+    "description": "Kontener sekcji na zawartość strony i układy ekranowe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Wariant wyglądu",
+        "description": "Gotowy styl, który aktualizuje powiązane ustawienia."
+      },
+      {
+        "property": "image",
+        "title": "Obraz",
+        "description": "Multimedia tła sekcji."
+      },
+      {
+        "property": "bg",
+        "title": "Kolor tła",
+        "description": "Kolor tła, gdy nie ustawiono obrazu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Przycisk przewijania",
+        "description": "Pokaż przycisk przewijający do następnej sekcji."
+      },
+      {
+        "property": "fold",
+        "title": "Pokaż zagięcie",
+        "description": "Pokaż wizualne zagięcie u dołu sekcji."
+      },
+      {
+        "property": "full",
+        "title": "Pełny ekran",
+        "description": "Wypełnij wysokość ekranu oglądającego."
+      },
+      {
+        "property": "filter",
+        "title": "Zastosuj filtr",
+        "description": "Zastosuj filtr wizualny do obrazu tła."
+      },
+      {
+        "slot": "",
+        "title": "Zawartość",
+        "description": "Zawartość sekcji."
+      },
+      {
+        "slot": "entice",
+        "title": "Zachęta",
+        "description": "Opcjonalna zawartość zachęcająca."
+      },
+      {
+        "slot": "buttons",
+        "title": "Przyciski",
+        "description": "Grupa przycisków wyświetlana pod tekstem."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Tekst kotwicy",
+        "description": "Etykieta kotwicy wyświetlana w nawigacji."
+      }
+    ]
+  }
+}

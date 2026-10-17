@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Irudi galeria",
+    "description": "Irudiak sare, harlangaitz edo diapositiba aurkezpen diseinuetan aurkezten dituen galeria."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Bistaratze modua",
+        "description": "Nola aurkeztu irudiak galerian.",
+        "options": {
+          "grid": "Sarea",
+          "masonry": "Harlangaitza",
+          "gallery": "Galeria"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Indize aktiboa",
+        "description": "Galeria moduan hasteko irudi aktiboaren indizea."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris-CTA",
+    "description": "Toan in Polaris-oprop-ta-aksjeknop yn temastyl."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Knoptekst",
+        "description": "Tekst yn de oprop-ta-aksjeknop."
+      },
+      {
+        "property": "link",
+        "title": "Keppeling",
+        "description": "Bestimmings-URL foar de knop."
+      },
+      {
+        "property": "type",
+        "title": "Fariant",
+        "description": "Fariant fan de fisuele styl.",
+        "options": {
+          "primary": "Primêr",
+          "tinted": "Tinte",
+          "light": "Ljocht"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Omlijne styl",
+        "description": "Omlijne behanneling ynskeakelje."
+      },
+      {
+        "property": "filled",
+        "title": "Folle styl",
+        "description": "Folle behanneling ynskeakelje."
+      }
+    ]
+  }
+}

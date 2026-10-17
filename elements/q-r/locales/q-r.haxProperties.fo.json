@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR-kota",
+    "description": "Kota at skanna við snildfonu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR-dáta",
+        "description": "Kelda til dátuna í QR-kotuni."
+      },
+      {
+        "property": "title",
+        "title": "Annað heiti",
+        "description": "Annað heiti leinkjað til keldu QR-kotunnar."
+      },
+      {
+        "property": "modulesize",
+        "title": "Stødd",
+        "description": "Stødd á QR-kotuni."
+      },
+      {
+        "property": "margin",
+        "title": "Breddi",
+        "description": "Umbúgv um kotuna."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Útflutningssnið",
+        "description": "Snið at seta hana út í.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

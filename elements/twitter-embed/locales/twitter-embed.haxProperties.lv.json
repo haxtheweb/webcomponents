@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) iegulums",
+    "description": "Iegult ierakstu no X kontekstā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Ieraksta URL",
+        "description": "Iegulstamā ieraksta URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Motīvs",
+        "description": "Gaišs vai tumšs motīvs X ierakstiem.",
+        "options": {
+          "light": "Gaišs",
+          "dark": "Tumšs"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Novērst uznirstošo logu pēc klikšķa",
+        "description": "Neļaut lietotājiem atvērt ierakstu vietnē x.com."
+      }
+    ]
+  }
+}

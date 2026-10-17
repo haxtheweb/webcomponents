@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Вопрос с тегами",
+    "description": "Выберите теги, чтобы ответить на вопрос."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Вопрос",
+        "description": "Вопрос, на который отвечают пользователи."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат оценивания",
+        "description": "OER Schema: формат оценивания для этого задания (например, баллы, буква, процент, выполнение)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Учебная цель",
+        "description": "OER Schema: учебная цель, связанная с этим заданием."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, для которого предназначено это задание."
+      },
+      {
+        "property": "answers",
+        "title": "Ответы"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Название теста",
+        "description": "Название теста для идентификации xAPI в системах аналитики."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "ಸಂಕ್ಷಿಪ್ತ ಉತ್ತರ ಪ್ರಶ್ನೆ",
+    "description": "ಬಳಕೆದಾರರು ಮೂಲಭೂತ ಪ್ರಶ್ನೆಗೆ ಉತ್ತರಿಸುವಂತೆ ಮಾಡಿ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ಪ್ರಶ್ನೆ",
+        "description": "ಬಳಕೆದಾರರು ಉತ್ತರಿಸಬೇಕಾದ ಪ್ರಶ್ನೆ."
+      },
+      {
+        "property": "answers",
+        "title": "ಸಂಭಾವ್ಯ ಉತ್ತರಗಳು"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು",
+        "description": "xAPI ಆಧಾರಿತ ಪರಿಸರಗಳಲ್ಲಿ ಈ ಐಟಂ ಅನ್ನು ಗುರುತಿಸಲು ಬಳಸುವ ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು"
+      }
+    ]
+  }
+}

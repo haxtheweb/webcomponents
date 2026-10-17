@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "ചിത്ര വിഭാഗം",
+    "description": "പേജ് വിഭാഗത്തെ വേർതിരിക്കുന്ന പൂർണ്ണ-വീതി ചിത്രം."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "പശ്ചാത്തല ചിത്രം."
+      },
+      {
+        "property": "caption",
+        "description": "വാചക തലക്കെട്ട്."
+      }
+    ]
+  }
+}

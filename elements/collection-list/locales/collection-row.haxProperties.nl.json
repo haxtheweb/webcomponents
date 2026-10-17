@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Collectierij",
+    "description": "Rij-item voor gebruik in een collectielijst, met tekst, link, pictogram, tags en optionele afbeelding."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Doel-URL voor deze rij."
+      },
+      {
+        "property": "image",
+        "title": "Afbeelding",
+        "description": "Afbeelding voor de rij."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternatieve tekst die de afbeelding beschrijft."
+      },
+      {
+        "property": "line1",
+        "title": "Regel 1",
+        "description": "Eerste tekstregel."
+      },
+      {
+        "property": "line2",
+        "title": "Regel 2",
+        "description": "Tweede tekstregel."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Pictogram",
+        "description": "Pictogram dat de rij vertegenwoordigt."
+      },
+      {
+        "property": "saturate",
+        "title": "Verzadigingseffect",
+        "description": "Verander de verzadiging van de afbeelding bij focus."
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Door komma's gescheiden lijst met tags."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kleur",
+        "description": "Kleur voor pictogram en tags."
+      }
+    ]
+  }
+}

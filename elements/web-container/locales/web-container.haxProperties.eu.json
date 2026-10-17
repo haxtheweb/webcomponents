@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS edukiontzia"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Ezkutatu editorea",
+        "description": "Ezkutatu fitxategiak editatzeko interfazea."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Ezkutatu terminala",
+        "description": "Ezkutatu terminala automatikoki exekutatzen diren programetarako."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Ezkutatu leihoa",
+        "description": "Ezkutatu irteera leihoa terminala soilik erabiltzeko."
+      },
+      {
+        "slot": "",
+        "title": "Komandoak",
+        "description": "Kargatu aurretik exekutatzeko komandoak (bat lerro bakoitzeko)."
+      }
+    ]
+  }
+}

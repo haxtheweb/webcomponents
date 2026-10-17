@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Inserción de Twitter (X)",
+    "description": "Incrusta en contexto un chío de X."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL do chío",
+        "description": "URL do chío que se vai incrustar."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Tema claro ou escuro para os chíos de X.",
+        "options": {
+          "light": "Clara",
+          "dark": "Escuro"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Evitar xanela emerxente ao facer clic",
+        "description": "Evitar que os usuarios abran o chío en x.com."
+      }
+    ]
+  }
+}

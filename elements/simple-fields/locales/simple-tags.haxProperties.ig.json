@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Mkpado",
+    "description": "Ndepụta mkpado dị mfe maka ngosi na peeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Mkpado",
+        "description": "Ndepụta mkpado ekewapụtara na rịkọm."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Agba Mkpụrụ Akpaaka",
+        "description": "Debe agba mkpụrụ na-akpaghị aka dabere n'akara aha."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba",
+        "description": "Agba maka mkpado."
+      }
+    ]
+  }
+}

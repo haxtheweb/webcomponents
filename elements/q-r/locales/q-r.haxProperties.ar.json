@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "رمز QR",
+    "description": "رمز يُمسح بالهاتف الذكي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "بيانات QR",
+        "description": "مصدر بيانات رمز QR."
+      },
+      {
+        "property": "title",
+        "title": "عنوان بديل",
+        "description": "عنوان بديل مرتبط بمصدر رمز QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "الحجم",
+        "description": "حجم رمز QR."
+      },
+      {
+        "property": "margin",
+        "title": "الهامش",
+        "description": "الإطار المحيط بالرمز."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "صيغة الإخراج",
+        "description": "الصيغة التي يُخرج بها.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

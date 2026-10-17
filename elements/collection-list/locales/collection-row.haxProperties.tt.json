@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Коллекция юлы",
+    "description": "Коллекция исемлеге эчендә кулланыла торган, текст, сылтама, иконка, теглар һәм өстәмә рәсемле юл рәвешендәге элемент."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Сылтама",
+        "description": "Бу юл өчен максат URL."
+      },
+      {
+        "property": "image",
+        "title": "Рәсем",
+        "description": "Юл өчен рәсем."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Рәсемне тасвирлаучы альтернатив текст."
+      },
+      {
+        "property": "line1",
+        "title": "1 нче юл",
+        "description": "Текстның беренче юлы."
+      },
+      {
+        "property": "line2",
+        "title": "2 нче юл",
+        "description": "Текстның икенче юлы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Иконка",
+        "description": "Юлны белдерүче иконка."
+      },
+      {
+        "property": "saturate",
+        "title": "Туенкылык эффекты",
+        "description": "Кулланучы игътибар иткәндә рәсемнең төс туенкылыгын үзгәртергә."
+      },
+      {
+        "property": "tags",
+        "title": "Теглар",
+        "description": "Өтерләр белән аерылган теглар исемлеге."
+      },
+      {
+        "property": "accentColor",
+        "title": "Төс",
+        "description": "Иконка һәм теглар өчен кулланыла торган төс."
+      }
+    ]
+  }
+}

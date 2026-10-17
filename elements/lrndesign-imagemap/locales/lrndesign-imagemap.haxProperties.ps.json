@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "د انځور نقشه",
+    "description": "د لاسرسي وړ د انځور نقشه له تعاملي ټکو سره."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "لیبل",
+        "description": "د انځور د نقشې لیبل."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "د تعاملي ټکو جزییات",
+        "description": "د انځور په نقشه کې تعاملي ټکي."
+      }
+    ]
+  }
+}

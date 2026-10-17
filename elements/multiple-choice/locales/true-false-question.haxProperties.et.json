@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Õige / vale küsimus",
+    "description": "Õige või vale küsimus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Küsimus",
+        "description": "Küsimus, millele kasutajad vastavad."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Õige vastus"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testi nimi",
+        "description": "Testi nimi, mida kasutatakse xAPI-põhistes keskkondades selle üksuse tuvastamiseks"
+      }
+    ]
+  }
+}

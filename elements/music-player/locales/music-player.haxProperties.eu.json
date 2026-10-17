@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI bistaratzailea",
+    "description": "Erreproduzitu MIDI testuinguruan, bistaratzearekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Iturburua",
+        "description": "Erreproduzitzeko fitxategiaren URLa."
+      },
+      {
+        "property": "visualizer",
+        "title": "Bistaratzea",
+        "description": "Musika fitxategiaren bistaratze estiloa.",
+        "options": {
+          "staff": "Pentagrama",
+          "piano-roll": "Piano errulua",
+          "waterfall": "Pianoa + ur-jauzia"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Ezkutatu ur-jauzia",
+        "description": "Ezkutatu ur-jauziko notak piano bistaratzean."
+      }
+    ]
+  }
+}

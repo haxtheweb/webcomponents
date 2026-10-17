@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D ማጫወቻ",
+    "description": "የ3D ፋይል / የተጨመረ እውነታ ማጫወቻ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ምንጭ",
+        "description": "ለዚህ AR ፋይል የURL አድራሻ።"
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "በAR ውስጥ የአካሉ X አቀማመጥ።"
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "በAR ውስጥ የአካሉ Y አቀማመጥ።"
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "በAR ውስጥ የአካሉ Z አቀማመጥ።"
+      },
+      {
+        "property": "skyColor",
+        "title": "የሰማይ ቀለም",
+        "description": "በትዕይንቱ ውስጥ የሰማዩን ቀለም ምረጥ።"
+      }
+    ]
+  }
+}

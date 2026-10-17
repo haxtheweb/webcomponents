@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Nota d'attenzione",
+    "description": "Un messaghju per avvistà i lettori d'indicazioni precise."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Scrive u titulu di a nota d'attenzione."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Scrive un URL esternu."
+      },
+      {
+        "property": "status",
+        "title": "Statu",
+        "description": "A definizione di u statu cambia i culori è l'icone in cunsequenza",
+        "options": {
+          "stop": "Piantà",
+          "warning": "Avertimentu",
+          "success": "Cunfirmazione",
+          "info": "Avisu"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Testu di a nota",
+        "description": "Testu di a nota d'attenzione."
+      }
+    ]
+  }
+}

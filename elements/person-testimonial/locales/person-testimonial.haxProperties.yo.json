@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Àyọkà Pẹ̀lú Àwòrán",
+    "description": "Àyọkà tí a ṣe lọ́ṣọ̀ọ́ pẹ̀lú àwòrán àṣàyàn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Àwòrán",
+        "description": "Fi àwòrán kún ẹ̀rí náà."
+      },
+      {
+        "property": "name",
+        "title": "Orúkọ Kíkún",
+        "description": "Orúkọ ẹni tí ó ń jẹ́rìí."
+      },
+      {
+        "property": "position",
+        "title": "Ipò tàbí Oyè Iṣẹ́",
+        "description": "Ipò tàbí oyè iṣẹ́ ẹni náà."
+      },
+      {
+        "slot": "",
+        "title": "Àyọkà",
+        "description": "Àyọkà láti ọ̀dọ̀ òǹkọ̀wé ẹ̀rí náà."
+      }
+    ]
+  }
+}

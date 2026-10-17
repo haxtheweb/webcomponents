@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Kogumiku element",
+    "description": "Kogumiku loendis kasutatav kaardikujuline element teksti, lingi ja valikulise meediaga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Selle kaardi siht-URL."
+      },
+      {
+        "property": "image",
+        "title": "Pilt",
+        "description": "Taustapilt."
+      },
+      {
+        "property": "line1",
+        "title": "Rida 1",
+        "description": "Esimene tekstirida."
+      },
+      {
+        "property": "line2",
+        "title": "Rida 2",
+        "description": "Teine tekstirida."
+      },
+      {
+        "property": "line3",
+        "title": "Rida 3",
+        "description": "Kolmas tekstirida."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Kaarti esindav ikoon."
+      },
+      {
+        "property": "saturate",
+        "title": "Küllastusefekt",
+        "description": "Muuda pildi küllastust, kui kasutaja selle fookusesse viib."
+      },
+      {
+        "property": "tags",
+        "title": "Sildid",
+        "description": "Komadega eraldatud siltide loend."
+      },
+      {
+        "property": "accentColor",
+        "title": "Värv",
+        "description": "Siltide värv."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Linki kirjeldav alternatiivtekst."
+      }
+    ]
+  }
+}

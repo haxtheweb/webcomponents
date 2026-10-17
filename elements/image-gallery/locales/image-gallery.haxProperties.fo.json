@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Myndasavn",
+    "description": "Eitt myndasavn, sum vísir myndir í rist-, múrsteins- ella myndasýningarsniði."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Vísingarháttur",
+        "description": "Hvussu myndirnar verða vístar í myndasavninum.",
+        "options": {
+          "grid": "Rist",
+          "masonry": "Múrsteinur",
+          "gallery": "Myndasavn"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Virkið index",
+        "description": "Index á virknu myndini at byrja við í myndasavnsstilling."
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Bilješka za zaustavljanje",
+    "description": "Poruka koja upozorava čitaoce na određena uputstva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Unesite naslov bilješke."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Unesite vanjski URL."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Postavljanje statusa mijenja boje i ikone u skladu s njim",
+        "options": {
+          "stop": "Stop",
+          "warning": "Upozorenje",
+          "success": "Potvrda",
+          "info": "Obavještenje"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Tekst bilješke",
+        "description": "Tekst bilješke."
+      }
+    ]
+  }
+}

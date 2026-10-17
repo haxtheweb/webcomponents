@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ukubuka umkhiqizo ngokushesha",
+    "description": "Ibhulokhi yokubuka umkhiqizo ngokushesha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Isithonjana",
+        "description": "Isithonjana esimele umqondo."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Umqondo oyinhloko ngokubuka nje."
+      },
+      {
+        "property": "subtitle",
+        "title": "Isihlokwana",
+        "description": "Imininingwane eyengeziwe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala wokugcizelela",
+        "description": "Umbala wokugcizelela wesithonjana."
+      }
+    ]
+  }
+}

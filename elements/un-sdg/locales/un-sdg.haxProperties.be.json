@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Мэта ўстойлівага развіцця ААН."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Мэта",
+        "description": "Нумар UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Толькі колер",
+        "description": "Паказваць толькі колер мэты."
+      }
+    ]
+  }
+}

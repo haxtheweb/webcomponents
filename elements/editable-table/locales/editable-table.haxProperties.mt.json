@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabella",
+    "description": "Data f'tabella għall-web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Intestatura tar-ringiela",
+        "description": "Ittratta l-ewwel ringiela bħala intestatura."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Intestatura tal-kolonna",
+        "description": "Ittratta l-ewwel kolonna bħala intestatura."
+      },
+      {
+        "property": "footer",
+        "title": "Footer",
+        "description": "Ittratta l-aħħar ringiela bħala footer."
+      },
+      {
+        "property": "sort",
+        "title": "Tista' tiġi ordnata",
+        "description": "Ippermetti l-ordni skont il-valuri tal-kolonna."
+      },
+      {
+        "property": "filter",
+        "title": "Ippermetti l-filtru",
+        "description": "Ippermetti l-iffiltrar skont il-valuri tal-kolonna."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Stil numeriku",
+        "description": "Applika stil numeriku lill-kolonni numeriċi."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsiv",
+        "description": "Adatta t-tqassim tat-tabella fuq skrins żgħar."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Modalità Rubrika",
+        "description": "Interpreta din it-tabella bħala Rubric tal-OER Schema sabiex tinħareġ il-metadata Rubric, RubricScale, RubricCriterion u RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Tip ta' rubrika",
+        "description": "Stil ta' rubrika maħruġ bħala oer:rubricType (għandu sens biss meta l-Modalità Rubrika tkun mixgħula).",
+        "options": {
+          "": "(xejn)",
+          "analytic": "Analitika",
+          "holistic": "Olistika",
+          "single-point": "Punt wieħed",
+          "checklist": "Lista ta' kontroll"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "B'bordura"
+      },
+      {
+        "property": "condensed",
+        "title": "Ikkondensa r-ringieli",
+        "description": "Naqqas l-għoli tar-ringieli."
+      },
+      {
+        "property": "striped",
+        "title": "Ringieli bl-istrixxi",
+        "description": "Ilwen ringiela iva u ringiela le."
+      },
+      {
+        "property": "downloadable",
+        "title": "Buttuna tat-tniżżil",
+        "description": "Żid buttuna biex titniżżel it-tabella."
+      },
+      {
+        "property": "copyable",
+        "title": "Buttuna tal-ikkupjar",
+        "description": "Żid buttuna biex tikkopja d-data CSV tat-tabella."
+      },
+      {
+        "property": "printable",
+        "title": "Buttuna tal-istampar",
+        "description": "Żid buttuna biex tistampa t-tabella biss."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Data CSV",
+        "description": "Oħloq tabella minn fajl CSV imtella'."
+      }
+    ]
+  }
+}

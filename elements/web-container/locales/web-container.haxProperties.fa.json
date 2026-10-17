@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "محفظهٔ NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "پنهان کردن ویرایشگر",
+        "description": "رابط ویرایش فایل پنهان شود."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "پنهان کردن پایانه",
+        "description": "پایانه برای برنامه‌های خوداجرا پنهان شود."
+      },
+      {
+        "property": "hideWindow",
+        "title": "پنهان کردن پنجره",
+        "description": "پنجرهٔ خروجی برای استفادهٔ فقط پایانه‌ای پنهان شود."
+      },
+      {
+        "slot": "",
+        "title": "فرمان‌ها",
+        "description": "فرمان‌هایی (هر کدام در یک خط) که پیش از بارگذاری اجرا می‌شوند."
+      }
+    ]
+  }
+}

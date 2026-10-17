@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": ".h5p fayllarını yükləmək və təqdim etmək üçün H5P örtüyü"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe yerləşdirmə kodu"
+      }
+    ]
+  }
+}

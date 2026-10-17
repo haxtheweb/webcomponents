@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS-houer"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Versteek redigeerder",
+        "description": "Versteek die lêerwysigingskoppelvlak."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Versteek terminaal",
+        "description": "Versteek die terminaal vir outomaties lopende programme."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Versteek venster",
+        "description": "Versteek die uitvoervenster vir slegs-terminaal-gebruik."
+      },
+      {
+        "slot": "",
+        "title": "Opdragte",
+        "description": "Opdragte (een per reël) om voor laai uit te voer."
+      }
+    ]
+  }
+}

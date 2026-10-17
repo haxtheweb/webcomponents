@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Luajtës Unity",
+    "description": "Luajtës Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Objektivi",
+        "description": "Shtegu për ndërtimin e lojës."
+      },
+      {
+        "property": "compression",
+        "title": "Metoda e ngjeshjes",
+        "description": "Prapashtesa e skedarit të ngjeshjes për asetet e lojës."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL-ja e transmetimit",
+        "description": "URL-ja e aseteve të transmetimit."
+      },
+      {
+        "property": "companyname",
+        "title": "Emri i kompanisë",
+        "description": "Emri i kompanisë."
+      },
+      {
+        "property": "productname",
+        "title": "Emri i produktit",
+        "description": "Titulli i lojës."
+      },
+      {
+        "property": "productversion",
+        "title": "Versioni i produktit",
+        "description": "Versioni i publikimit."
+      },
+      {
+        "property": "width",
+        "title": "Gjerësia e kanavacës",
+        "description": "Gjerësia CSS e kanavacës (për shembull px ose em)."
+      },
+      {
+        "property": "height",
+        "title": "Lartësia e kanavacës",
+        "description": "Lartësia CSS e kanavacës (për shembull px ose em)."
+      },
+      {
+        "property": "background",
+        "title": "Sfondi i kanavacës",
+        "description": "Sfondi CSS i kanavacës."
+      }
+    ]
+  }
+}

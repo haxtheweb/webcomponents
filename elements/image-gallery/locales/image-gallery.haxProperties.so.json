@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Bandhigga Sawirada",
+    "description": "Bandhig muujiya sawirada qaab shabakad, masonry, ama slideshow ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Habka muujinta",
+        "description": "Sida sawirada loogu soo bandhigo bandhigga.",
+        "options": {
+          "grid": "Shabakad",
+          "masonry": "Masonry",
+          "gallery": "Bandhig"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Tusaha firfircoon",
+        "description": "Tusaha sawirka firfircoon ee laga bilaabayo habka bandhigga."
+      }
+    ]
+  }
+}

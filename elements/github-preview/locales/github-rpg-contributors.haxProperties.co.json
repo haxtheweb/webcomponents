@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lista di cuntributori GitHub",
+    "description": "Affissati cum'è parsunaghji di RPG cù l'API GitHub."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Urganizazione",
+        "description": "Nome di l'urganizazione in github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Dipositu",
+        "description": "Nome di u dipositu in github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Limita",
+        "description": "Limità u numeru di cuntributori affissati."
+      }
+    ]
+  }
+}

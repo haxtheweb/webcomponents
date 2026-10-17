@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Marker ordene",
+    "description": "Identifiser begreper ved å klikke på ord i en tekst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spørsmål",
+        "description": "Spørsmål brukerne skal svare på."
+      },
+      {
+        "property": "statement",
+        "title": "Påstand",
+        "description": "Påstand som skal gjøres om til en «marker ordene»-oppgave."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vurderingsformat",
+        "description": "OER Schema: vurderingsformat for denne vurderingen (f.eks. poeng, bokstav, prosent, fullføring)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurderingen."
+      },
+      {
+        "property": "forCourse",
+        "title": "Emne",
+        "description": "OER Schema: emnet denne vurderingen er beregnet for."
+      },
+      {
+        "property": "answers",
+        "title": "Svar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn på quizen",
+        "description": "Quiznavn som sendes inn for å identifisere dette elementet i xAPI-baserte miljøer"
+      }
+    ]
+  }
+}

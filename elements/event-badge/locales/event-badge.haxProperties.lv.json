@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Pasākuma nozīmīte",
+    "description": "Pasākuma nozīmītes komponents."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV attēls",
+        "description": "Televizorā rādītais attēls."
+      },
+      {
+        "property": "logo",
+        "title": "Logotips",
+        "description": "Nozīmītes stūrī rādītais logotips."
+      },
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Nozīmītes augšdaļā rādītais nosaukums."
+      },
+      {
+        "property": "name",
+        "title": "Vārds",
+        "description": "Nozīmītē rādītais vārds."
+      },
+      {
+        "property": "position",
+        "title": "Amats",
+        "description": "Personas loma vai amats."
+      },
+      {
+        "property": "organization",
+        "title": "Organizācija",
+        "description": "Organizācija, kurā persona strādā."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV krāsa",
+        "description": "Izvēlieties televizora krāsu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Galvenā fona vai teksta krāsa."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Pogu krāsa",
+        "description": "Televizora regulēšanas pogu krāsa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sēpija",
+        "description": "Piemērot sēpijas efektu."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Melnbalts",
+        "description": "Piemērot melnbaltu efektu."
+      }
+    ]
+  }
+}

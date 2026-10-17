@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "आत्मजाँच",
+    "description": "प्रयोगकर्ताहरूले आत्मजाँच पूरा गर्न सक्छन्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "तस्बिर",
+        "description": "आत्मजाँचको तस्बिर।"
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "आत्मजाँचको शीर्षक।"
+      },
+      {
+        "property": "alt",
+        "title": "वैकल्पिक पाठ",
+        "description": "तस्बिरको वैकल्पिक पाठ।"
+      },
+      {
+        "slot": "question",
+        "title": "प्रश्न"
+      },
+      {
+        "slot": "",
+        "title": "उत्तर"
+      },
+      {
+        "property": "accentColor",
+        "title": "थिम रङ",
+        "description": "डिजाइन प्रणालीबाट थिम रङ छान्नुहोस्।",
+        "options": {
+          "primary": "मुख्य",
+          "accent": "एक्सेन्ट",
+          "success": "सफलता",
+          "warning": "चेतावनी",
+          "error": "त्रुटि",
+          "info": "जानकारी"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "सिकाइ उद्देश्य",
+        "description": "oer:hasLearningObjective का रूपमा उत्पन्न हुने सिकाइ उद्देश्य सन्दर्भ।"
+      },
+      {
+        "property": "assessing",
+        "title": "मूल्याङ्कन गरिँदै",
+        "description": "oer:assessing का रूपमा उत्पन्न हुने गतिविधि सन्दर्भ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "थप लिङ्क",
+        "description": "थप जानकारीको लिङ्क।"
+      }
+    ]
+  }
+}

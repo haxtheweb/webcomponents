@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV хүснэгт",
+    "description": "CSV файл хаана ч байсан түүнээс хүснэгт үүсгэж чадна."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Эх сурвалж",
+        "description": "Энэ CSV файлын URL."
+      },
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Үүсгэх хүснэгтийн гарчиг."
+      },
+      {
+        "property": "description",
+        "title": "Тайлбар",
+        "description": "Хүснэгтийн өгөгдлийн хүртээмжийг сайжруулах дэлгэрэнгүй тайлбар."
+      }
+    ]
+  }
+}

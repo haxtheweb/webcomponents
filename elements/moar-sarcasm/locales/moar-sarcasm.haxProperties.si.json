@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "උපහාසය",
+    "description": "පෙළ විහිළු සහගත ආකාරයකින් ඉදිරිපත් කිරීම"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "පෙළ",
+        "description": "උපහාසාත්මක කළ යුතු පෙළ"
+      }
+    ]
+  }
+}

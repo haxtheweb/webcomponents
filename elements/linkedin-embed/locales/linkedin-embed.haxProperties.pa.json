@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn ਏਮਬੈਡ",
+    "description": "LinkedIn ਪ੍ਰੋਫਾਈਲ ਕਾਰਡ ਏਮਬੈਡ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "ਕਸਟਮ ਨਾਮ",
+        "description": "LinkedIn ਕਸਟਮ ਉਪਭੋਗਤਾ ਨਾਮ ਹਿੱਸਾ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "ਲੋਕੇਲ",
+        "description": "ਲੋਕੇਲ ਮੈਟਾਡਾਟਾ ਮੁੱਲ, ਜਿਵੇਂ en_US।"
+      }
+    ]
+  }
+}

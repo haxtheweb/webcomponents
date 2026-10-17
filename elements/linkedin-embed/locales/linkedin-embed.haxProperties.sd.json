@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn ايمبيڊ",
+    "description": "LinkedIn پروفائل ڪارڊ شامل ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "وينٽي نالو",
+        "description": "LinkedIn وينٽي يوزرنيم جو حصو."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "لوڪيل",
+        "description": "لوڪيل ميٽاڊيٽا قيمت جهڙوڪ en_US."
+      }
+    ]
+  }
+}

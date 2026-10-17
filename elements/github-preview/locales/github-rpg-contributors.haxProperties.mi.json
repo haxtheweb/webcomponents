@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Rārangi kaitautoko GitHub",
+    "description": "Ka whakaaturia hei kiripuaki RPG mā te GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Whakahaere",
+        "description": "Ingoa whakahaere mai i github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Pūranga",
+        "description": "Ingoa pūranga mai i github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Tepe",
+        "description": "Whakatepea te maha o ngā kaitautoko ka whakaaturia."
+      }
+    ]
+  }
+}

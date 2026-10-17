@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D-Player",
+    "description": "Ein Player für 3D-Dateien/Augmented Reality."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quelle",
+        "description": "Die URL dieser AR-Datei."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "X-Position des Elements in AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Y-Position des Elements in AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Z-Position des Elements in AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Himmelsfarbe",
+        "description": "Farbe des Himmels in der Szene auswählen."
+      }
+    ]
+  }
+}

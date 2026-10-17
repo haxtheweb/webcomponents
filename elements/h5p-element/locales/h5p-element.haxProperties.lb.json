@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P-Wrapper fir .h5p-Fichieren ze lueden an ze presentéieren"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P-iframe-Abannungscode"
+      }
+    ]
+  }
+}

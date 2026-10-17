@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Taera Polaris",
+    "description": "Whakaaturia tētahi taera Polaris me te taitara, he kupu tautoko kōwhiri, me tētahi hono kōwhiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Kupu matua",
+        "description": "Kupu matua o te taera."
+      },
+      {
+        "property": "line2",
+        "title": "Kupu tuarua",
+        "description": "Kupu tautoko kōwhiri."
+      },
+      {
+        "property": "type",
+        "title": "Kāhua taera",
+        "description": "Kāhua ataata taera kua tautuhi kē.",
+        "options": {
+          "1": "Kāhua 1",
+          "2": "Kāhua 2",
+          "3": "Kāhua 3",
+          "4": "Kāhua 4",
+          "5": "Kāhua 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Whakaahua papamuri",
+        "description": "URL whakaahua papamuri ka whakamahia e ngā kāhua taera e taea ana te whakaahua."
+      },
+      {
+        "property": "link",
+        "title": "Hono",
+        "description": "URL taunga kōwhiri mō te mahi a te taera."
+      }
+    ]
+  }
+}

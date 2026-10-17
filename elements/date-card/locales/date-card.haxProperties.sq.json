@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Data",
+    "description": "Shfaq një datë kalendarike me detaje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Muaji",
+        "description": "Muaji i shfaqur në kartë."
+      },
+      {
+        "property": "date",
+        "title": "Dita e muajit",
+        "description": "Dita e muajit në numër."
+      },
+      {
+        "property": "day",
+        "title": "Dita e javës",
+        "description": "Dita e javës me tekst."
+      },
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Emri i ngjarjes."
+      },
+      {
+        "property": "location",
+        "title": "Vendndodhja",
+        "description": "Vendndodhja e ngjarjes."
+      },
+      {
+        "property": "startTime",
+        "title": "Fillimi",
+        "description": "Ora e fillimit."
+      },
+      {
+        "property": "endTime",
+        "title": "Mbarimi",
+        "description": "Ora e mbarimit."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Një ngjyrë theksuese opsionale."
+      },
+      {
+        "property": "dark",
+        "title": "Tema e errët",
+        "description": "Aktivizo temën e errët."
+      }
+    ]
+  }
+}

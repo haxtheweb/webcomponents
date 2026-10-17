@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "表格",
+    "description": "面向网页的表格数据。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "行标题",
+        "description": "将第一行视为标题。"
+      },
+      {
+        "property": "columnHeader",
+        "title": "列标题",
+        "description": "将第一列视为标题。"
+      },
+      {
+        "property": "footer",
+        "title": "页脚",
+        "description": "将最后一行视为页脚。"
+      },
+      {
+        "property": "sort",
+        "title": "可排序",
+        "description": "允许按列值排序。"
+      },
+      {
+        "property": "filter",
+        "title": "允许筛选",
+        "description": "允许按列值筛选。"
+      },
+      {
+        "property": "numericStyles",
+        "title": "数字样式",
+        "description": "对数字列应用数字样式。"
+      },
+      {
+        "property": "responsive",
+        "title": "响应式",
+        "description": "在小屏幕上调整表格布局。"
+      },
+      {
+        "property": "rubricMode",
+        "title": "评分量规模式",
+        "description": "将此表格解释为 OER Schema Rubric，以输出 Rubric、RubricScale、RubricCriterion 和 RubricLevel 元数据。"
+      },
+      {
+        "property": "rubricType",
+        "title": "量规类型",
+        "description": "以 oer:rubricType 输出的量规样式（仅在启用评分量规模式时有效）。",
+        "options": {
+          "": "（无）",
+          "analytic": "分析型",
+          "holistic": "整体型",
+          "single-point": "单点型",
+          "checklist": "核对清单"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "带边框"
+      },
+      {
+        "property": "condensed",
+        "title": "紧凑行",
+        "description": "减小行高。"
+      },
+      {
+        "property": "striped",
+        "title": "条纹行",
+        "description": "隔行加底色。"
+      },
+      {
+        "property": "downloadable",
+        "title": "下载按钮",
+        "description": "添加用于下载表格的按钮。"
+      },
+      {
+        "property": "copyable",
+        "title": "复制按钮",
+        "description": "添加用于复制表格 CSV 数据的按钮。"
+      },
+      {
+        "property": "printable",
+        "title": "打印按钮",
+        "description": "添加仅打印表格的按钮。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV 数据",
+        "description": "从上传的 CSV 文件创建表格。"
+      }
+    ]
+  }
+}

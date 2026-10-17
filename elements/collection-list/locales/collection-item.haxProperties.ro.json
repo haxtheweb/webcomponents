@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Element de colecție",
+    "description": "Element de tip card pentru o listă de colecție, cu text, link și media opțională."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "URL-ul de destinație pentru acest card."
+      },
+      {
+        "property": "image",
+        "title": "Imagine",
+        "description": "Imagine de fundal."
+      },
+      {
+        "property": "line1",
+        "title": "Linia 1",
+        "description": "Prima linie de text."
+      },
+      {
+        "property": "line2",
+        "title": "Linia 2",
+        "description": "A doua linie de text."
+      },
+      {
+        "property": "line3",
+        "title": "Linia 3",
+        "description": "A treia linie de text."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Pictogramă",
+        "description": "Pictograma care reprezintă cardul."
+      },
+      {
+        "property": "saturate",
+        "title": "Efect de saturație",
+        "description": "Modifică saturația imaginii la focalizare."
+      },
+      {
+        "property": "tags",
+        "title": "Etichete",
+        "description": "Listă de etichete separate prin virgulă."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare",
+        "description": "Culoarea folosită pentru etichete."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Text alternativ care descrie linkul."
+      }
+    ]
+  }
+}

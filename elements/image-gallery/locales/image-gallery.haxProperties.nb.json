@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Bildegalleri",
+    "description": "Et galleri som viser bilder i rutenett, murverk eller lysbildefremvisning."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Visningsmodus",
+        "description": "Hvordan bildene i galleriet skal vises.",
+        "options": {
+          "grid": "Rutenett",
+          "masonry": "Murverk",
+          "gallery": "Galleri"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktiv indeks",
+        "description": "Indeksen til bildet som skal vises først i gallerimodus."
+      }
+    ]
+  }
+}

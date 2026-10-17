@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Dlaždice Polaris",
+    "description": "Zobrazte dlaždici Polaris s názvem, volitelným doplňujícím textem a volitelným odkazem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Hlavní text",
+        "description": "Hlavní text dlaždice."
+      },
+      {
+        "property": "line2",
+        "title": "Vedlejší text",
+        "description": "Volitelný doplňující text."
+      },
+      {
+        "property": "type",
+        "title": "Styl dlaždice",
+        "description": "Přednastavený vizuální styl dlaždice.",
+        "options": {
+          "1": "Styl 1",
+          "2": "Styl 2",
+          "3": "Styl 3",
+          "4": "Styl 4",
+          "5": "Styl 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Obrázek pozadí",
+        "description": "URL obrázku pozadí používaná styly dlaždic, které podporují obrázky."
+      },
+      {
+        "property": "link",
+        "title": "Odkaz",
+        "description": "Volitelná cílová URL pro akci dlaždice."
+      }
+    ]
+  }
+}

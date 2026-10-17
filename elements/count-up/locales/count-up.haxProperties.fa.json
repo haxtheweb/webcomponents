@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "شمارندهٔ صعودی",
+    "description": "شمارش متحرک یک عدد تا مقدار هدف، هنگامی که در دید قرار می‌گیرد."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "مقدار پایانی",
+        "description": "عددی که شمارش تا آن ادامه می‌یابد."
+      },
+      {
+        "property": "start",
+        "title": "مقدار آغازین",
+        "description": "عددی که شمارش از آن آغاز می‌شود."
+      },
+      {
+        "property": "duration",
+        "title": "مدت",
+        "description": "چند ثانیه پویانمایی شمارش طول بکشد."
+      },
+      {
+        "property": "prefixtext",
+        "title": "متن پیشوند",
+        "description": "متنی که پیش از عدد نمایش داده می‌شود (مثلاً '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "متن پسوند",
+        "description": "متنی که پس از عدد نمایش داده می‌شود (مثلاً '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "اسلات پیشوند",
+        "description": "محتوای اسلات اختیاری پیش از عدد."
+      },
+      {
+        "slot": "suffix",
+        "title": "اسلات پسوند",
+        "description": "محتوای اسلات اختیاری پس از عدد."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "تعداد ارقام اعشار",
+        "description": "تعداد ارقام اعشاری که نمایش داده می‌شود."
+      },
+      {
+        "property": "separator",
+        "title": "جداکنندهٔ هزارگان",
+        "description": "نویسه‌ای که گروه‌های هزارگان را جدا می‌کند."
+      },
+      {
+        "property": "decimal",
+        "title": "نویسهٔ اعشار",
+        "description": "نویسهٔ مورد استفاده برای ممیز اعشار."
+      },
+      {
+        "property": "noeasing",
+        "title": "بدون نرم‌سازی",
+        "description": "نرم‌سازی غیرفعال شود تا شمارش خطی باشد."
+      }
+    ]
+  }
+}

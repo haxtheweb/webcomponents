@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Mír chéime",
+    "description": "Mír atá mar chuid de liosta céimeanna"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teideal"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Lîstikvana Unity",
+    "description": "Lîstikvana Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Armanc",
+        "description": "Rêya avakirina lîstikê."
+      },
+      {
+        "property": "compression",
+        "title": "Rêbaza pêçandinê",
+        "description": "Dirêjkirina pela pêçandinê ji bo çavkaniyên lîstikê."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL ya Weşana Zindî",
+        "description": "URL ya çavkaniyên weşana zindî."
+      },
+      {
+        "property": "companyname",
+        "title": "Navê Şîrketê",
+        "description": "Navê şîrketê."
+      },
+      {
+        "property": "productname",
+        "title": "Navê Berhemê",
+        "description": "Sernavê lîstikê."
+      },
+      {
+        "property": "productversion",
+        "title": "Guhertoya Berhemê",
+        "description": "Guhertoya weşanê."
+      },
+      {
+        "property": "width",
+        "title": "Firehiya Kanvasê",
+        "description": "Firehiya CSS ya kanvasê (mînak px an em)."
+      },
+      {
+        "property": "height",
+        "title": "Bilindahiya Kanvasê",
+        "description": "Bilindahiya CSS ya kanvasê (mînak px an em)."
+      },
+      {
+        "property": "background",
+        "title": "Paşxaneya Kanvasê",
+        "description": "Paşxaneya CSS ya kanvasê."
+      }
+    ]
+  }
+}

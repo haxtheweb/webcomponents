@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Badge d'avvenimentu",
+    "description": "Cumpunente di badge d'avvenimentu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagine di a TV",
+        "description": "Imagine affissata nant'à a televisione."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo affissatu in u cantone di u badge."
+      },
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Titulu affissatu in cima di u badge."
+      },
+      {
+        "property": "name",
+        "title": "Nome",
+        "description": "Nome affissatu nant'à u badge."
+      },
+      {
+        "property": "position",
+        "title": "Funzione",
+        "description": "Rolu o funzione di a persona."
+      },
+      {
+        "property": "organization",
+        "title": "Urganizazione",
+        "description": "Urganizazione per a quale travaglia a persona."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Culore di a TV",
+        "description": "Sceglie u culore di a televisione."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Culore principale di fondu o di testu."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Culore di i buttoni",
+        "description": "Culore di i buttoni di a televisione."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Seppia",
+        "description": "Applicà un effettu seppia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Neru è biancu",
+        "description": "Applicà un effettu neru è biancu."
+      }
+    ]
+  }
+}

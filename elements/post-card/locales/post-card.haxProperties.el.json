@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Καρτ ποστάλ",
+    "description": "Ένα παιχνιδιάρικο στοιχείο πολυμέσων που μοιάζει με πραγματική καρτ ποστάλ από κάπου"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Προς",
+        "description": "Σε ποιον απευθύνεται;"
+      },
+      {
+        "property": "from",
+        "title": "Από",
+        "description": "Ποιος είστε;"
+      },
+      {
+        "property": "message",
+        "title": "Μήνυμα",
+        "description": "Τι θέλετε να πείτε;"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Σφραγίδα από",
+        "description": "Από πού στάλθηκε αυτή η κάρτα;"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Πηγή κύριας φωτογραφίας",
+        "description": "Πού βρίσκεται η φωτογραφία σας;"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Πηγή φωτογραφίας γραμματοσήμου",
+        "description": "Πού βρίσκεται η φωτογραφία σας;"
+      }
+    ]
+  }
+}

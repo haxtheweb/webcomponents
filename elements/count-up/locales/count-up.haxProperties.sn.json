@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Kuverenga Kukwira",
+    "description": "Ratidza nhamba ichiverengwa ichikwira kusvika pachinangwa kana yasvika pachiratidziro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Nhamba yekupedzisira",
+        "description": "Nhamba yekuverenga kusvika pairi."
+      },
+      {
+        "property": "start",
+        "title": "Nhamba yekutanga",
+        "description": "Nhamba yekutanga kuverenga kubva pairi."
+      },
+      {
+        "property": "duration",
+        "title": "Nguva",
+        "description": "Masekondi anotorwa nekuverenga."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Mavara ekutanga",
+        "description": "Mavara anoratidzwa pamberi penhamba (semuenzaniso '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Mavara ekupedzisira",
+        "description": "Mavara anoratidzwa shure kwenhamba (semuenzaniso '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Nzvimbo yekutanga",
+        "description": "Zvirimo zvisingamanikidzwi pamberi penhamba."
+      },
+      {
+        "slot": "suffix",
+        "title": "Nzvimbo yekupedzisira",
+        "description": "Zvirimo zvisingamanikidzwi shure kwenhamba."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Nzvimbo dzedesimari",
+        "description": "Huwandu hwenzvimbo dzedesimari dzekuratidza."
+      },
+      {
+        "property": "separator",
+        "title": "Chipatsanuri chezviuru",
+        "description": "Mavara anopatsanura mapoka ezviuru."
+      },
+      {
+        "property": "decimal",
+        "title": "Mavara edesimari",
+        "description": "Mavara anoshandiswa sedesimari."
+      },
+      {
+        "property": "noeasing",
+        "title": "Pasina kunyorovesa",
+        "description": "Dzima kunyorovesa kuitira kuti kuverenga kuenderere zvakaenzana."
+      }
+    ]
+  }
+}

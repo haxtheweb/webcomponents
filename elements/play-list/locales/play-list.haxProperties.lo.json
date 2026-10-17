@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ລາຍການຫຼິ້ນ",
+    "description": "ສະແດງເນື້ອຫາທຸກປະເພດໃນລາຍການຫຼິ້ນ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "ເນື້ອຫາທີ່ສະແດງໃນລາຍການຫຼິ້ນ."
+      },
+      {
+        "property": "edit",
+        "title": "ໂໝດແກ້ໄຂ",
+        "description": "ສະຫຼັບລະຫວ່າງໂໝດແກ້ໄຂ ແລະ ໂໝດສະແດງຕົວຢ່າງຂອງລາຍການຫຼິ້ນ."
+      },
+      {
+        "property": "navigation",
+        "title": "ການນຳທາງ",
+        "description": "ສະແດງປຸ່ມນຳທາງໄປໜ້າ ແລະ ຖອຍຫຼັງ."
+      },
+      {
+        "property": "pagination",
+        "title": "ການແບ່ງໜ້າ",
+        "description": "ສະແດງຈຸດແບ່ງໜ້າ."
+      },
+      {
+        "property": "orientation",
+        "title": "ທິດທາງ",
+        "description": "ທິດທາງຂອງສະໄລ້.",
+        "options": {
+          "horizontal": "ແນວນອນ",
+          "vertical": "ແນວຕັ້ງ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "ສະໄລ້ເລີ່ມຕົ້ນ",
+        "description": "ດັດຊະນີສະໄລ້ທີ່ຈະໂຟກັສໃນຕອນຕົ້ນ."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "ອັດຕາສ່ວນ",
+        "description": "ອັດຕາສ່ວນຂອງສະໄລ້.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

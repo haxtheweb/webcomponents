@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Fashewa Mai Ban Mamaki",
+    "description": "Motsin fashewa mai mu'amala tare da sautin zaɓi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Girma",
+        "description": "Saita girman fashewar.",
+        "options": {
+          "tiny": "Ƙanƙane",
+          "small": "Ƙarami",
+          "medium": "Matsakaici",
+          "large": "Babba",
+          "epic": "Gagarumi"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Launi",
+        "description": "Saita jigon launin fashewar.",
+        "options": {
+          "": "Tsoho",
+          "red": "Ja",
+          "blue": "Shuɗi",
+          "purple": "Shunayya",
+          "orange": "Lemu",
+          "yellow": "Rawaya"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Sautuka",
+        "description": "Kunna sautuka."
+      },
+      {
+        "property": "resetSound",
+        "title": "Sake Saita Sauti",
+        "description": "Sake fara sauti daga farko kowane lokaci."
+      },
+      {
+        "property": "image",
+        "title": "Hoto na Musamman",
+        "description": "URL na zaɓi don hoton fashewa na musamman."
+      },
+      {
+        "property": "sound",
+        "title": "Sauti na Musamman",
+        "description": "URL na zaɓi don sauti na musamman."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "An kashe",
+        "description": "Kashe dukan mu'amaloli."
+      }
+    ]
+  }
+}

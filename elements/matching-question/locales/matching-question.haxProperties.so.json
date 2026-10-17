@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Su'aal Isku-aadin",
+    "description": "Hawl isku-aadin jiid-oo-dhig ah oo isku lammaanaysa su'aalaha iyo jawaabahooda saxda ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Su'aal",
+        "description": "Su'aal isticmaalayaasha. Calaamadee meelaha lagu dhigo, kadibna qor jawaabaha ilaa meesha xigta."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Qaabka dhibcaha",
+        "description": "OER Schema: qaabka dhibcaha qiimayntan (tusaale dhibco, xaraf, boqolkiiba, dhammaystir)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ujeeddada waxbarasho",
+        "description": "OER Schema: ujeeddada waxbarasho ee la xiriirta qiimayntan."
+      },
+      {
+        "property": "forCourse",
+        "title": "Koorso",
+        "description": "OER Schema: koorsada loogu talagalay qiimayntan."
+      },
+      {
+        "property": "answers",
+        "title": "Jawaabaha"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Magaca imtixaanka",
+        "description": "Magaca imtixaanka loo isticmaalo aqoonsiga xAPI ee nidaamyada falanqaynta."
+      }
+    ]
+  }
+}

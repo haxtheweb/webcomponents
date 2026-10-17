@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ancre de page",
+    "description": "Lier vers des moments précis d'un média de la page."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cible dans la page",
+        "description": "ID ou ressource vers laquelle pointe cette ancre."
+      },
+      {
+        "property": "value",
+        "title": "Valeur du lien profond",
+        "description": "Valeur du lien profond (par exemple un horodatage ou un ID de diapositive)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entité du site",
+        "description": "Entité du site facultative pour contrôler la présentation des notions associées."
+      }
+    ]
+  }
+}

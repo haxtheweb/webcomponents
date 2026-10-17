@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "ਐਨੀਮੇਟਿਡ GIF ਨੂੰ ਪਹੁੰਚਯੋਗ ਬਣਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ਐਨੀਮੇਟਿਡ GIF",
+        "description": "ਐਨੀਮੇਟਿਡ GIF ਦਾ URL।"
+      },
+      {
+        "property": "alt",
+        "title": "ਵਿਕਲਪਿਕ ਲਿਖਤ (Alt)",
+        "description": "ਚਿੱਤਰ ਲਈ ਵਿਕਲਪਿਕ ਲਿਖਤ।"
+      },
+      {
+        "property": "longdesc",
+        "title": "ਲੰਮਾ ਵੇਰਵਾ",
+        "description": "ਪਹੁੰਚਯੋਗਤਾ ਲਈ GIF ਦਾ ਲੰਮਾ ਵੇਰਵਾ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "ਸਥਿਰ ਚਿੱਤਰ",
+        "description": "GIF ਦੇ ਸਥਿਰ ਚਿੱਤਰ ਰੂਪ ਦਾ URL।"
+      }
+    ]
+  }
+}

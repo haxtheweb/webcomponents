@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Bädda in Discord-gemenskaper från en delnings-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Resurs-URL",
+        "description": "Resurs-URL."
+      },
+      {
+        "property": "height",
+        "title": "Höjd",
+        "description": "Innehållsramens höjd."
+      },
+      {
+        "property": "width",
+        "title": "Bredd",
+        "description": "Innehållsramens bredd."
+      }
+    ]
+  }
+}

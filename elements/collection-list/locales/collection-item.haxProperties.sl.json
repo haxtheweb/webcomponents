@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Element zbirke",
+    "description": "Element v obliki kartice za uporabo v seznamu zbirke, z besedilom, povezavo in neobveznimi mediji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Povezava",
+        "description": "Ciljni URL te kartice."
+      },
+      {
+        "property": "image",
+        "title": "Slika",
+        "description": "Slika ozadja."
+      },
+      {
+        "property": "line1",
+        "title": "Vrstica 1",
+        "description": "Prva vrstica besedila."
+      },
+      {
+        "property": "line2",
+        "title": "Vrstica 2",
+        "description": "Druga vrstica besedila."
+      },
+      {
+        "property": "line3",
+        "title": "Vrstica 3",
+        "description": "Tretja vrstica besedila."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona, ki predstavlja kartico."
+      },
+      {
+        "property": "saturate",
+        "title": "Učinek nasičenosti",
+        "description": "Spremeni nasičenost slike, ko jo uporabnik izbere."
+      },
+      {
+        "property": "tags",
+        "title": "Oznake",
+        "description": "Seznam oznak, ločenih z vejicami."
+      },
+      {
+        "property": "accentColor",
+        "title": "Barva",
+        "description": "Barva oznak."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Nadomestno besedilo, ki opisuje povezavo."
+      }
+    ]
+  }
+}

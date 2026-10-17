@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Qaybta sawirka",
+    "description": "Sawir ballac buuxa ah oo kala jara qayb bogga ka mid ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Sawirka asalka."
+      },
+      {
+        "property": "caption",
+        "description": "Cinwaanka qoraalka."
+      }
+    ]
+  }
+}

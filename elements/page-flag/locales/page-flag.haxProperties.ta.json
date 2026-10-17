@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "பக்கக் கொடி",
+    "description": "பக்க ஆசிரியர்களுக்கான தொகுப்புக் குறிப்பு."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "பக்கக் கொடிக்கான அழுத்த நிறம்."
+      },
+      {
+        "property": "label",
+        "title": "லேபிள்",
+        "description": "பக்கக் கொடிக்கான லேபிள் உரை."
+      }
+    ]
+  }
+}

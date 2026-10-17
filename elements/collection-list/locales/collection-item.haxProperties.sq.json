@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Element koleksioni",
+    "description": "Element në formë karte për përdorim brenda një liste koleksioni, me tekst, lidhje dhe media opsionale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Lidhja",
+        "description": "URL-ja e destinacionit për këtë kartë."
+      },
+      {
+        "property": "image",
+        "title": "Imazhi",
+        "description": "Imazhi i sfondit."
+      },
+      {
+        "property": "line1",
+        "title": "Rreshti 1",
+        "description": "Rreshti i parë i tekstit."
+      },
+      {
+        "property": "line2",
+        "title": "Rreshti 2",
+        "description": "Rreshti i dytë i tekstit."
+      },
+      {
+        "property": "line3",
+        "title": "Rreshti 3",
+        "description": "Rreshti i tretë i tekstit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona që përfaqëson kartën."
+      },
+      {
+        "property": "saturate",
+        "title": "Efekti i ngopjes",
+        "description": "Ndrysho ngopjen e imazhit kur përdoruesi fokusohet."
+      },
+      {
+        "property": "tags",
+        "title": "Etiketat",
+        "description": "Listë etiketash të ndara me presje."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra",
+        "description": "Ngjyra e përdorur për etiketat."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Tekst alternativ që përshkruan lidhjen."
+      }
+    ]
+  }
+}

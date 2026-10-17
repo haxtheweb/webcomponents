@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "ព័ត៌មានលម្អិតទំព័រ",
+    "description": "កំណត់ការបំបែកដែលមើលឃើញរវាងទំព័រ ដែល CMS អាចប្រើដើម្បីបង្កើតទំព័រ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងបង្ហាញក្នុងរចនាប័ទ្ម និងក្បាលទីមួយ។"
+      },
+      {
+        "property": "pageType",
+        "title": "ប្រភេទ",
+        "description": "ស្លាកបរិបទទំព័រដែលមើលឃើញ។",
+        "options": {
+          "": "-- គ្មាន --",
+          "content": "ខ្លឹមសារ",
+          "assessment": "ការវាយតម្លៃ",
+          "quiz": "កម្រងសំណួរ",
+          "submission": "ការដាក់ស្នើ",
+          "lesson": "មេរៀន",
+          "module": "ម៉ូឌុល",
+          "task": "កិច្ចការ",
+          "activity": "សកម្មភាព",
+          "project": "គម្រោង",
+          "practice": "ការហាត់",
+          "unit": "ជំពូក",
+          "objectives": "គោលបំណងសិក្សា",
+          "connection": "ការតភ្ជាប់",
+          "knowledge": "តើអ្នកដឹងទេ?",
+          "strategy": "យុទ្ធសាស្ត្រសិក្សា",
+          "discuss": "ពិភាក្សា",
+          "listen": "ស្តាប់",
+          "make": "បង្កើត",
+          "observe": "សង្កេត",
+          "present": "បង្ហាញ",
+          "reading": "ការអាន",
+          "reflect": "ឆ្លុះបញ្ចាំង",
+          "research": "ស្រាវជ្រាវ",
+          "watch": "មើល",
+          "write": "សរសេរ"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ស្លាក",
+        "description": "បញ្ជីស្លាកបំបែកដោយក្បៀស។"
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL តំណ",
+        "description": "URL បញ្ជូនបន្តដែលបង្ហាញជំនួសខ្លឹមសារទំព័រ។"
+      },
+      {
+        "property": "linkTarget",
+        "title": "គោលដៅតំណ",
+        "description": "បើកតំណក្នុងបង្អួចដដែល ឬបង្អួចថ្មី។",
+        "options": {
+          "_self": "បង្អួចដដែល",
+          "_blank": "បង្អួចថ្មី"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "បានបោះពុម្ពផ្សាយ",
+        "description": "ទំព័រដែលមិនទាន់បោះពុម្ពផ្សាយត្រូវបានលាក់ពីអ្នកប្រើចុងក្រោយ។"
+      },
+      {
+        "property": "locked",
+        "title": "ចាក់សោទំព័រ",
+        "description": "ចាក់សោ ឬដោះសោធាតុទាំងអស់លើទំព័រនេះ។"
+      },
+      {
+        "property": "overridePathauto",
+        "title": "បដិសេធ slug ស្វ័យប្រវត្តិ",
+        "description": "ចាក់សោ slug ពីការធ្វើបច្ចុប្បន្នភាពស្វ័យប្រវត្តិផ្អែកលើចំណងជើង ឬទំព័រមេ។"
+      },
+      {
+        "property": "slug",
+        "title": "ផ្លូវ",
+        "description": "URL slug សម្រាប់ទំព័រនេះ។"
+      },
+      {
+        "property": "image",
+        "title": "មេឌៀ",
+        "description": "មេឌៀតំណាងឱ្យទំព័រ ដែលប្រើក្នុងរចនាប័ទ្ម និងទិដ្ឋភាពមួយចំនួន។"
+      },
+      {
+        "property": "parent",
+        "title": "មេ",
+        "description": "ផ្លូវនៃទំព័រមេ។"
+      },
+      {
+        "property": "noderefs",
+        "title": "ខ្លឹមសារពាក់ព័ន្ធ",
+        "description": "ទំព័រដែលពាក់ព័ន្ធនឹងទំព័រនេះ។"
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "ការពិពណ៌នា",
+        "description": "ការពិពណ៌នាដែលប្រើក្នុងបណ្តុំ និងការបង្កើនប្រសិទ្ធភាពម៉ាស៊ីនស្វែងរក (SEO)។"
+      },
+      {
+        "property": "entityType",
+        "title": "ប្រភេទអង្គភាព",
+        "description": "លំនាំដើមជាទំព័រ លុះត្រាតែកំណត់ផ្សេង។",
+        "options": {
+          "page": "ទំព័រ (លំនាំដើម)",
+          "taxonomy": "ចំណាត់ថ្នាក់",
+          "taxonomyTerm": "ពាក្យចំណាត់ថ្នាក់",
+          "region": "តំបន់"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "រូបតំណាង",
+        "description": "រូបតំណាងដែលភ្ជាប់នឹងទំព័រនេះក្នុងគេហទំព័រ។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌ដែលភ្ជាប់នឹងទំព័រនេះក្នុងគេហទំព័រ។"
+      },
+      {
+        "property": "hideInMenu",
+        "title": "លាក់ក្នុងម៉ឺនុយ",
+        "description": "លាក់ទំព័រនេះពីម៉ឺនុយ ខណៈរក្សា URL របស់វា។"
+      },
+      {
+        "property": "order",
+        "title": "លំដាប់",
+        "description": "លំដាប់ធៀបនឹងទំព័របងប្អូន។"
+      },
+      {
+        "property": "developerTheme",
+        "title": "រចនាប័ទ្មទំព័រ",
+        "description": "បដិសេធរចនាប័ទ្មសម្រាប់តែទំព័រនេះ។"
+      },
+      {
+        "property": "author",
+        "title": "អ្នកនិពន្ធ",
+        "description": "ឈ្មោះអ្នកប្រើរបស់អ្នកចុងក្រោយដែលបានកែប្រែទំព័រនេះ។"
+      }
+    ]
+  }
+}

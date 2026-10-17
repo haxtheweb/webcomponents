@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "سؤال إجابة قصيرة",
+    "description": "اطلب من المستخدم الإجابة عن سؤال بسيط"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "السؤال",
+        "description": "السؤال الذي يجيب عنه المستخدمون."
+      },
+      {
+        "property": "answers",
+        "title": "الإجابات المحتملة"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "اسم الاختبار",
+        "description": "اسم الاختبار المُمرَّر للاستخدام في البيئات المعتمدة على xAPI لتعريف هذا العنصر"
+      }
+    ]
+  }
+}

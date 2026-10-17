@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kadi ya hadithi ya Polaris",
+    "description": "Onyesha kadi ya hadithi ya Polaris yenye picha ya usuli, lebo ya nguzo na maandishi ya kichwa cha habari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Picha ya usuli",
+        "description": "URL ya picha inayoonyeshwa kama usuli wa kadi."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Ukubwa wa usuli",
+        "description": "Jinsi picha ya usuli inavyojaza kadi (CSS background-size).",
+        "options": {
+          "cover": "Funika (cover)",
+          "contain": "Tosheleza (contain)",
+          "auto": "Kiotomatiki (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Kiambatisho cha usuli",
+        "description": "Jinsi picha ya usuli inavyotenda wakati wa kusogeza (CSS background-attachment).",
+        "options": {
+          "scroll": "Sogeza (scroll)",
+          "fixed": "Imara (fixed)",
+          "local": "Ndani (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Lebo ya nguzo",
+        "description": "Lebo fupi ya herufi kubwa inayoonyeshwa juu ya kadi. Acha tupu ili kuficha."
+      },
+      {
+        "property": "label",
+        "title": "Maandishi ya kadi",
+        "description": "Maandishi makuu yanayoonyeshwa kwenye paneli ya chini."
+      },
+      {
+        "property": "link",
+        "title": "Kiungo",
+        "description": "URL lengwa ya hiari inayozunguka kadi nzima."
+      }
+    ]
+  }
+}

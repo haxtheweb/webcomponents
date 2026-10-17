@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV 표",
+    "description": "CSV 파일이 어디에 있든 표를 생성할 수 있습니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "소스",
+        "description": "이 CSV 파일의 URL입니다."
+      },
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "생성할 표의 제목입니다."
+      },
+      {
+        "property": "description",
+        "title": "설명",
+        "description": "표 데이터의 접근성 향상을 위한 더 자세한 설명입니다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Întrebare cu răspuns scurt",
+    "description": "Utilizatorul răspunde la o întrebare simplă"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Întrebare",
+        "description": "Întrebarea la care răspund utilizatorii."
+      },
+      {
+        "property": "answers",
+        "title": "Răspunsuri posibile"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Numele testului",
+        "description": "Numele testului transmis pentru identificarea acestui element în medii bazate pe xAPI"
+      }
+    ]
+  }
+}

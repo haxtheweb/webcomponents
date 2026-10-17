@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Beji ya Tukio",
+    "description": "Kijenzi cha beji ya tukio."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Picha ya TV",
+        "description": "Picha inayoonyeshwa kwenye TV."
+      },
+      {
+        "property": "logo",
+        "title": "Nembo",
+        "description": "Nembo inayoonyeshwa kwenye kona ya beji."
+      },
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Kichwa kinachoonyeshwa juu ya beji."
+      },
+      {
+        "property": "name",
+        "title": "Jina",
+        "description": "Jina linaloonyeshwa kwenye beji."
+      },
+      {
+        "property": "position",
+        "title": "Wadhifa",
+        "description": "Jukumu au cheo cha mtu."
+      },
+      {
+        "property": "organization",
+        "title": "Shirika",
+        "description": "Shirika ambalo mtu hufanyia kazi."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Rangi ya TV",
+        "description": "Chagua rangi ya TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya msisitizo",
+        "description": "Rangi kuu ya usuli au maandishi."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Rangi ya vifundo",
+        "description": "Rangi ya vifundo vya TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Tumia athari ya sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Nyeusi na nyeupe",
+        "description": "Tumia athari ya nyeusi na nyeupe."
+      }
+    ]
+  }
+}

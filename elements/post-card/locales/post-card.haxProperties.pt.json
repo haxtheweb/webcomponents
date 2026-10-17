@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Cartão-postal",
+    "description": "Uma peça de mídia divertida que imita um cartão-postal físico enviado de algum lugar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Para",
+        "description": "Para quem é?"
+      },
+      {
+        "property": "from",
+        "title": "De",
+        "description": "Quem é você?"
+      },
+      {
+        "property": "message",
+        "title": "Mensagem",
+        "description": "O que você quer dizer?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Carimbo postal de",
+        "description": "De onde este cartão foi enviado?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Origem da foto principal",
+        "description": "Onde está a sua foto?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Origem da foto do selo",
+        "description": "Onde está a sua foto?"
+      }
+    ]
+  }
+}

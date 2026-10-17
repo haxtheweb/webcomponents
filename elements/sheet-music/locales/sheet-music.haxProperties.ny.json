@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Nyimbo zolembedwa",
+    "description": "Imawonetsa ndi kuimba nyimbo zolembedwa, ma tabu a gitala, ndi zolemba za nyimbo kudzera mu alphaTex kapena MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Zolemba za AlphaTex",
+        "description": "Zolemba za alphaTex za nyimbo zolembedwa. Sinthani mwachindunji kuti mulembe; zimasungidwa mu template kuti mipata isungidwe."
+      },
+      {
+        "property": "source",
+        "title": "Fayilo ya nyimbo",
+        "description": "Kwezani kapena lumikizani ku fayilo ya MusicXML (.xml/.musicxml/.mxl) kapena Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Imaposa alphaTex ya mkati ikaikidwa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Kuimba mawu",
+        "description": "Yatsidwa mwachisawawa - mverani nyimbo zolembedwa zikuimbidwa ndi chopangira mawu chomangidwa mkati. Zimitsani kuti mungowonera (popanda mawu)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Onetsani zosankha zowonetsera",
+        "description": "Onetsani mabatani okulitsa, otambasula, ndi a kapangidwe pa mzere wa choseweretsa."
+      },
+      {
+        "property": "showExport",
+        "title": "Onetsani mabatani otumiza kunja",
+        "description": "Onetsani mabatani otsitsa MIDI ndi osindikiza/PDF pa mzere wa choseweretsa."
+      }
+    ]
+  }
+}

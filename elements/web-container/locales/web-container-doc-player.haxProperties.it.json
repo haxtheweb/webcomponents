@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Lettore di documentazione dei web component"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Nascondi finestra",
+        "description": "Nascondi la finestra di output, utile quando serve solo il terminale"
+      }
+    ]
+  }
+}

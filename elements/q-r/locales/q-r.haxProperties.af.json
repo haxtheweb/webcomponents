@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR-kode",
+    "description": "Kode om met 'n slimfoon te skandeer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR-data",
+        "description": "Bron van die data vir die QR-kode."
+      },
+      {
+        "property": "title",
+        "title": "Alternatiewe titel",
+        "description": "Alternatiewe titel gekoppel aan die QR-kode se bron."
+      },
+      {
+        "property": "modulesize",
+        "title": "Grootte",
+        "description": "Grootte van die QR-kode."
+      },
+      {
+        "property": "margin",
+        "title": "Kantlyn",
+        "description": "Omhulsel om die kode."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Uitvoerformaat",
+        "description": "Formaat waarin dit uitgevoer word.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

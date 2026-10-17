@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Web 组件文档播放器"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "隐藏窗口",
+        "description": "隐藏输出窗口，只用终端辰光有用"
+      }
+    ]
+  }
+}

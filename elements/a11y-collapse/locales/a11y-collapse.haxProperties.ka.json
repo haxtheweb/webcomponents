@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ჩაკეცვადი კონტეინერი",
+    "description": "ერთი გაშლადი და ჩაკეცვადი კონტეინერი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "სათაური",
+        "description": "ჩაკეცვადი ბლოკის ტექსტი."
+      },
+      {
+        "property": "expanded",
+        "title": "გაშლილი",
+        "description": "ნაგულისხმევად გაშლა."
+      },
+      {
+        "property": "headingButton",
+        "title": "სათაურის ღილაკი",
+        "description": "მთელი სათაური გახდეს დაწკაპუნებადი და არა მხოლოდ ხატულა."
+      },
+      {
+        "property": "icon",
+        "title": "ხატულა",
+        "description": "გაშლა/ჩაკეცვის ღილაკის ხატულა."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "ხატულა (გაშლისას)",
+        "description": "არასავალდებულო ხატულა ღილაკის გაშლილი მდგომარეობისთვის."
+      },
+      {
+        "slot": "",
+        "title": "შიგთავსი",
+        "description": "ჩაკეცვადი ბლოკის შიგთავსი."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "მინიშნება",
+        "description": "გაშლა/ჩაკეცვის ღილაკის მინიშნება."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "მინიშნება (გაშლისას)",
+        "description": "გაშლა/ჩაკეცვის ღილაკის მინიშნება გაშლილ მდგომარეობაში."
+      }
+    ]
+  }
+}

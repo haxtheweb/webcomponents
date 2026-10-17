@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Għadd 'il fuq",
+    "description": "Animazzjoni ta' numru li jgħodd 'il fuq sa valur fil-mira meta jidher fuq l-iskrin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Valur tat-tmiem",
+        "description": "In-numru li sa fih jgħodd."
+      },
+      {
+        "property": "start",
+        "title": "Valur tal-bidu",
+        "description": "In-numru li minnu jibda jgħodd."
+      },
+      {
+        "property": "duration",
+        "title": "Tul ta' żmien",
+        "description": "Kemm-il sekonda għandha tieħu l-animazzjoni tal-għadd."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Test ta' qabel",
+        "description": "Test li jintwera qabel in-numru (eż. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Test ta' wara",
+        "description": "Test li jintwera wara n-numru (eż. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot ta' qabel",
+        "description": "Kontenut fakultattiv fis-slot qabel in-numru."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot ta' wara",
+        "description": "Kontenut fakultattiv fis-slot wara n-numru."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Postijiet deċimali",
+        "description": "Numru ta' postijiet deċimali li jintwerew."
+      },
+      {
+        "property": "separator",
+        "title": "Separatur tal-eluf",
+        "description": "Karattru li jifred il-gruppi tal-eluf."
+      },
+      {
+        "property": "decimal",
+        "title": "Karattru deċimali",
+        "description": "Karattru użat għall-punt deċimali."
+      },
+      {
+        "property": "noeasing",
+        "title": "Mingħajr easing",
+        "description": "Iddiżattiva l-easing biex l-għadd ikun lineari."
+      }
+    ]
+  }
+}

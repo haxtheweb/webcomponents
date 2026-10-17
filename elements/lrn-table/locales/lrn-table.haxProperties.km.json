@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "តារាង CSV",
+    "description": "វាអាចបង្កើតតារាងពីឯកសារ CSV មិនថាវាស្ថិតនៅទីណាក៏ដោយ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "ប្រភព",
+        "description": "URL សម្រាប់ឯកសារ CSV នេះ។"
+      },
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងសម្រាប់តារាងដែលនឹងបង្កើត។"
+      },
+      {
+        "property": "description",
+        "title": "ការពិពណ៌នា",
+        "description": "ការពិពណ៌នាលម្អិតបន្ថែម ដើម្បីបង្កើនភាពងាយស្រួលចូលប្រើទិន្នន័យតារាង។"
+      }
+    ]
+  }
+}

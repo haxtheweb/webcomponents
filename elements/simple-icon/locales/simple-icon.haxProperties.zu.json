@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Isithonjana",
+    "description": "Isithonjana esivela kumtapo ophelele wezithonjana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Isithonjana",
+        "description": "Isithonjana esizovezwa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala wokugcizelela",
+        "description": "Umbala wokugcizelela wesithonjana."
+      },
+      {
+        "property": "dark",
+        "title": "Okumnyama",
+        "description": "Sebenzisa imodi emnyama (imibala ephendukezelwe)."
+      }
+    ]
+  }
+}

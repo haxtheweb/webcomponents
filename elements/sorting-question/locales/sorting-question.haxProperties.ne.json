@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "क्रम मिलाउने प्रश्न",
+    "description": "वस्तुहरूलाई सही क्रममा मिलाउनुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "प्रश्न",
+        "description": "प्रश्नको शीर्षक।"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ग्रेडिङ ढाँचा",
+        "description": "OER Schema: यस मूल्याङ्कनको ग्रेडिङ ढाँचा (जस्तै अङ्क, अक्षर, प्रतिशत, पूर्णता)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "सिकाइ उद्देश्य",
+        "description": "OER Schema: यस मूल्याङ्कनसँग सम्बन्धित सिकाइ उद्देश्य।"
+      },
+      {
+        "property": "forCourse",
+        "title": "पाठ्यक्रम",
+        "description": "OER Schema: यो मूल्याङ्कन लक्षित पाठ्यक्रम।"
+      },
+      {
+        "property": "answers",
+        "title": "उत्तरहरू",
+        "description": "उत्तरहरूको क्रमले सही अनुक्रम निर्धारण गर्छ।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "क्विजको नाम",
+        "description": "विश्लेषण प्रणालीहरूमा xAPI पहिचानका लागि प्रयोग हुने क्विजको नाम।"
+      }
+    ]
+  }
+}

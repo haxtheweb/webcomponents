@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Afspeellijst",
+    "description": "Toon elk soort inhoud in een afspeellijst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Bron",
+        "description": "Inhoud in de afspeellijst."
+      },
+      {
+        "property": "edit",
+        "title": "Bewerkmodus",
+        "description": "Schakel tussen bewerk- en voorbeeldmodus voor de afspeellijst."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigatie",
+        "description": "Toon knoppen om vooruit en terug te navigeren."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginering",
+        "description": "Toon pagineringsstipjes."
+      },
+      {
+        "property": "orientation",
+        "title": "Oriëntatie",
+        "description": "Oriëntatie van de dia's.",
+        "options": {
+          "horizontal": "Horizontaal",
+          "vertical": "Verticaal"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Startdia",
+        "description": "Index van de dia waarop eerst wordt gefocust."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Beeldverhouding",
+        "description": "Beeldverhouding van de dia's.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

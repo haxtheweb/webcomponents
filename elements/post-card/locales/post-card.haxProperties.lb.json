@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Postkaart",
+    "description": "E verspilte Medienelement, dat ausgesäit wéi eng richteg Postkaart vun iergendwou"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Un",
+        "description": "Un wien geet dat?"
+      },
+      {
+        "property": "from",
+        "title": "Vun",
+        "description": "Wien sidd Dir?"
+      },
+      {
+        "property": "message",
+        "title": "Message",
+        "description": "Wat wëllt Dir soen?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Ofgestempelt zu",
+        "description": "Vu wou gouf dës Kaart geschéckt?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Quell vum Haaptfoto",
+        "description": "Wou ass Äre Foto?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Quell vum Timberfoto",
+        "description": "Wou ass Äre Foto?"
+      }
+    ]
+  }
+}

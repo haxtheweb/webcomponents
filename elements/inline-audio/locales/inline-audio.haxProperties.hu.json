@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Beágyazott hang",
+    "description": "Hang lejátszása a szövegben, az oldal tartalmának kiegészítésére."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Forrás",
+        "description": "MP3-fájl vagy URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "A kártya kiemelőszíne."
+      },
+      {
+        "property": "shiny",
+        "title": "Fényes",
+        "description": "Világosabb kiemelő háttér használata szürke helyett."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Sötét",
+        "description": "Sötét mód használata."
+      }
+    ]
+  }
+}

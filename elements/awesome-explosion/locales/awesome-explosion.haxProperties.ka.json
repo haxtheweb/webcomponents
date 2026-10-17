@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "საოცარი აფეთქება",
+    "description": "აფეთქების ინტერაქტიული ანიმაცია არასავალდებულო ხმოვანი ეფექტებით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "ზომა",
+        "description": "აფეთქების ზომის დაყენება.",
+        "options": {
+          "tiny": "პაწაწინა",
+          "small": "პატარა",
+          "medium": "საშუალო",
+          "large": "დიდი",
+          "epic": "ეპიკური"
+        }
+      },
+      {
+        "property": "color",
+        "title": "ფერი",
+        "description": "აფეთქების ფერის თემის დაყენება.",
+        "options": {
+          "": "ნაგულისხმევი",
+          "red": "წითელი",
+          "blue": "ლურჯი",
+          "purple": "იისფერი",
+          "orange": "ნარინჯისფერი",
+          "yellow": "ყვითელი"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "ხმოვანი ეფექტები",
+        "description": "ხმოვანი ეფექტების ჩართვა."
+      },
+      {
+        "property": "resetSound",
+        "title": "ხმის თავიდან დაწყება",
+        "description": "ხმის ყოველ ჯერზე თავიდან დაწყება."
+      },
+      {
+        "property": "image",
+        "title": "საკუთარი სურათი",
+        "description": "საკუთარი აფეთქების სურათის არასავალდებულო URL."
+      },
+      {
+        "property": "sound",
+        "title": "საკუთარი ხმა",
+        "description": "საკუთარი ხმოვანი ეფექტის არასავალდებულო URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "გამორთული",
+        "description": "ყველა ინტერაქციის გამორთვა."
+      }
+    ]
+  }
+}

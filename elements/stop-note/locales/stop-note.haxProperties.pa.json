@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "ਰੋਕ ਨੋਟ",
+    "description": "ਪਾਠਕਾਂ ਨੂੰ ਖਾਸ ਹਦਾਇਤਾਂ ਬਾਰੇ ਸੁਚੇਤ ਕਰਨ ਲਈ ਸੁਨੇਹਾ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਰੋਕ ਨੋਟ ਲਈ ਸਿਰਲੇਖ ਦਰਜ ਕਰੋ।"
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "ਬਾਹਰੀ URL ਦਰਜ ਕਰੋ।"
+      },
+      {
+        "property": "status",
+        "title": "ਸਥਿਤੀ",
+        "description": "ਸਥਿਤੀ ਸੈੱਟ ਕਰਨ ਨਾਲ ਰੰਗ ਅਤੇ ਆਈਕਨ ਉਸ ਅਨੁਸਾਰ ਬਦਲ ਜਾਂਦੇ ਹਨ",
+        "options": {
+          "stop": "ਰੁਕੋ",
+          "warning": "ਚੇਤਾਵਨੀ",
+          "success": "ਪੁਸ਼ਟੀ",
+          "info": "ਸੂਚਨਾ"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "ਨੋਟ ਲਿਖਤ",
+        "description": "ਰੋਕ ਨੋਟ ਲਈ ਲਿਖਤ।"
+      }
+    ]
+  }
+}

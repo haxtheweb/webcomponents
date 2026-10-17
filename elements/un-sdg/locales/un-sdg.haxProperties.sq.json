@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "SDG i UN",
+    "description": "Objektivi i Zhvillimit të Qëndrueshëm i Kombeve të Bashkuara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Objektivi",
+        "description": "Numri i SDG të UN."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Vetëm ngjyra",
+        "description": "Shfaq vetëm ngjyrën e objektivit."
+      }
+    ]
+  }
+}

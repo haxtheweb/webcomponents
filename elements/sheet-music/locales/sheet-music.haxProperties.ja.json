@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "楽譜",
+    "description": "alphaTexまたはMusicXMLを使って楽譜、ギタータブ譜、スコアを表示・再生します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "alphaTex記法",
+        "description": "楽譜用のインラインalphaTexマークアップ。直接編集して記譜します。テンプレートに保存されるため、スペースは保持されます。"
+      },
+      {
+        "property": "source",
+        "title": "スコアファイル",
+        "description": "MusicXML（.xml/.musicxml/.mxl）またはGuitar Pro（.gp3/.gp4/.gp5/.gpx/.gp）ファイルをアップロードまたはリンクします。設定するとインラインのalphaTexより優先されます。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "音声再生",
+        "description": "既定でオン：内蔵シンセサイザーで演奏される楽譜を聴けます。表示のみ（音声なし）モードにするにはオフにします。"
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "表示オプションを表示",
+        "description": "プレーヤーバーにズーム、伸縮、レイアウトのボタンを表示します。"
+      },
+      {
+        "property": "showExport",
+        "title": "エクスポートボタンを表示",
+        "description": "プレーヤーバーにMIDIダウンロードと印刷/PDFのボタンを表示します。"
+      }
+    ]
+  }
+}

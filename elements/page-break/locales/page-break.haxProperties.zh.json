@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "页面详情",
+    "description": "定义页面之间的视觉分隔，CMS 可据此创建页面。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "显示在主题和第一个标题中的标题。"
+      },
+      {
+        "property": "pageType",
+        "title": "类型",
+        "description": "页面的视觉情境标签。",
+        "options": {
+          "": "-- 无 --",
+          "content": "内容",
+          "assessment": "测评",
+          "quiz": "测验",
+          "submission": "提交",
+          "lesson": "课",
+          "module": "模块",
+          "task": "任务",
+          "activity": "活动",
+          "project": "项目",
+          "practice": "练习",
+          "unit": "单元",
+          "objectives": "学习目标",
+          "connection": "联系",
+          "knowledge": "你知道吗？",
+          "strategy": "学习策略",
+          "discuss": "讨论",
+          "listen": "聆听",
+          "make": "制作",
+          "observe": "观察",
+          "present": "展示",
+          "reading": "阅读",
+          "reflect": "反思",
+          "research": "研究",
+          "watch": "观看",
+          "write": "写作"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "标签",
+        "description": "以逗号分隔的标签列表。"
+      },
+      {
+        "property": "linkUrl",
+        "title": "链接 URL",
+        "description": "替代页面内容显示的重定向 URL。"
+      },
+      {
+        "property": "linkTarget",
+        "title": "链接目标",
+        "description": "在同一窗口或新窗口中打开链接。",
+        "options": {
+          "_self": "同一窗口",
+          "_blank": "新窗口"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "已发布",
+        "description": "未发布的页面对最终用户隐藏。"
+      },
+      {
+        "property": "locked",
+        "title": "锁定页面",
+        "description": "锁定或解锁此页面上的所有元素。"
+      },
+      {
+        "property": "overridePathauto",
+        "title": "覆盖自动别名",
+        "description": "锁定别名，使其不再根据标题或父页面自动更新。"
+      },
+      {
+        "property": "slug",
+        "title": "路径",
+        "description": "此页面的 URL 别名。"
+      },
+      {
+        "property": "image",
+        "title": "媒体",
+        "description": "代表此页面的媒体，用于某些主题和视图。"
+      },
+      {
+        "property": "parent",
+        "title": "父页面",
+        "description": "父页面的路径。"
+      },
+      {
+        "property": "noderefs",
+        "title": "相关内容",
+        "description": "与此页面相关的页面。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "描述",
+        "description": "用于集合和搜索引擎优化的描述。"
+      },
+      {
+        "property": "entityType",
+        "title": "实体类型",
+        "description": "除非另行设置，默认为页面。",
+        "options": {
+          "page": "页面（默认）",
+          "taxonomy": "分类法",
+          "taxonomyTerm": "分类术语",
+          "region": "区域"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "图标",
+        "description": "站点中与此页面关联的图标。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "站点中与此页面关联的颜色。"
+      },
+      {
+        "property": "hideInMenu",
+        "title": "在菜单中隐藏",
+        "description": "在菜单中隐藏此页面，但保留其 URL。"
+      },
+      {
+        "property": "order",
+        "title": "顺序",
+        "description": "相对于同级页面的顺序。"
+      },
+      {
+        "property": "developerTheme",
+        "title": "页面主题",
+        "description": "仅覆盖此页面的主题。"
+      },
+      {
+        "property": "author",
+        "title": "作者",
+        "description": "最后修改此页面的用户名。"
+      }
+    ]
+  }
+}

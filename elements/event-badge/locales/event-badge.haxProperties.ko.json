@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "행사 배지",
+    "description": "행사 배지 컴포넌트입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV 이미지",
+        "description": "TV에 표시되는 이미지입니다."
+      },
+      {
+        "property": "logo",
+        "title": "로고",
+        "description": "배지 모서리에 표시되는 로고입니다."
+      },
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "배지 상단에 표시되는 제목입니다."
+      },
+      {
+        "property": "name",
+        "title": "이름",
+        "description": "배지에 표시되는 이름입니다."
+      },
+      {
+        "property": "position",
+        "title": "직위",
+        "description": "사람의 역할 또는 직함입니다."
+      },
+      {
+        "property": "organization",
+        "title": "소속 기관",
+        "description": "사람이 근무하는 기관입니다."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV 색상",
+        "description": "TV 색상을 선택합니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "기본 배경 또는 텍스트 색상입니다."
+      },
+      {
+        "property": "knobcolor",
+        "title": "손잡이 색상",
+        "description": "TV 손잡이의 색상입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "세피아",
+        "description": "세피아 효과를 적용합니다."
+      },
+      {
+        "property": "blackwhite",
+        "title": "흑백",
+        "description": "흑백 효과를 적용합니다."
+      }
+    ]
+  }
+}

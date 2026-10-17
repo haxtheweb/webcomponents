@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Sematkan komentar Disqus pada halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Nama pendek",
+        "description": "Nama pendek situs, yang menentukan host skrip Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL halaman",
+        "description": "URL halaman tempat utas komentar dilampirkan."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Pengenal halaman",
+        "description": "Pengenal unik untuk utas komentar halaman."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Judul halaman",
+        "description": "Judul halaman tempat utas komentar dilampirkan."
+      },
+      {
+        "property": "loadingText",
+        "title": "Teks pemuatan",
+        "description": "Teks yang diumumkan saat komentar sedang dimuat."
+      },
+      {
+        "property": "lang",
+        "title": "Bahasa",
+        "description": "Kode bahasa untuk antarmuka Disqus, mis. en."
+      }
+    ]
+  }
+}

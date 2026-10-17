@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Káàdì ìrántí",
+    "description": "Ṣe ìdánrawò àwọn èrò pẹ̀lú àwọn káàdì ìrántí ojú-àti-ẹ̀yìn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Ojú Káàdì",
+        "description": "Ọ̀rọ̀ tàbí ìbéèrè iwájú."
+      },
+      {
+        "slot": "back",
+        "title": "Ẹ̀yìn Káàdì",
+        "description": "Ìdáhùn tí a ń retí."
+      },
+      {
+        "property": "imgSource",
+        "title": "Orísun àwòrán",
+        "description": "Fáìlì àwòrán tí a lò fún káàdì. Ó borí Kókó-ọ̀rọ̀ Àwòrán."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Irú Ìṣe",
+        "description": "OER Schema: irú ìṣe tí ìdánrawò yìí ní nínú (fún àpẹẹrẹ Kíkà, Kíkọ, Ṣíṣe, Ìwádìí, Gbígbọ́, Wíwò, Ìrònújinlẹ̀, Ìjíròrò, Àkíyèsí, Ìgbékalẹ̀, Ìgbéléwọ̀n)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Àfojúsùn Ẹ̀kọ́",
+        "description": "OER Schema: ID tàbí URL àfojúsùn ẹ̀kọ́ tí ìdánrawò yìí ń ṣàtìlẹ́yìn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Dúdú",
+        "description": "Lo ipò dúdú."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ Ìtẹnumọ́",
+        "description": "Àwọ̀ ìtẹnumọ́ káàdì."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Kókó-ọ̀rọ̀ Àwòrán",
+        "description": "Kókó-ọ̀rọ̀ fún àwòrán àìròtẹ́lẹ̀. Orísun Àwòrán borí rẹ̀."
+      }
+    ]
+  }
+}

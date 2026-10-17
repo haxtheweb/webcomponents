@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "چندگزینه‌ای",
+    "description": "پرسش چندگزینه‌ای خودسنجی."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "پرسش",
+        "description": "پرسشی که کاربران باید به آن پاسخ دهند."
+      },
+      {
+        "property": "randomize",
+        "title": "تصادفی‌سازی",
+        "description": "پاسخ‌ها به‌صورت پویا به هم ریخته شوند."
+      },
+      {
+        "property": "singleOption",
+        "title": "پاسخ تکی",
+        "description": "فقط یک پاسخ مجاز باشد."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "قالب نمره‌دهی",
+        "description": "OER Schema: قالب نمره‌دهی این ارزشیابی (مثلاً امتیاز، حرفی، درصدی، تکمیل)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "هدف یادگیری",
+        "description": "OER Schema: هدف یادگیری مرتبط با این ارزشیابی."
+      },
+      {
+        "property": "forCourse",
+        "title": "درس",
+        "description": "OER Schema: درسی که این ارزشیابی برای آن در نظر گرفته شده است."
+      },
+      {
+        "property": "answers",
+        "title": "پاسخ‌ها"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "نام آزمونک",
+        "description": "نام آزمونک برای شناسایی xAPI در سامانه‌های تحلیلی."
+      }
+    ]
+  }
+}

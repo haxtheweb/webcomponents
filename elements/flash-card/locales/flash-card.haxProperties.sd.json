@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "فليش ڪارڊ",
+    "description": "اڳيان ۽ پويان واري فليش ڪارڊن سان تصورن جي مشق ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "ڪارڊ جو اڳيون پاسو",
+        "description": "اڳيون متن يا سوال."
+      },
+      {
+        "slot": "back",
+        "title": "ڪارڊ جو پويون پاسو",
+        "description": "متوقع جواب."
+      },
+      {
+        "property": "imgSource",
+        "title": "تصوير جو ذريعو",
+        "description": "ڪارڊ لاءِ استعمال ٿيندڙ تصويري فائل. تصويري ڪي ورڊ کي اوور رائيڊ ڪري ٿي."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "عمل جو قسم",
+        "description": "OER Schema: هن مشق ۾ شامل عمل جو قسم (مثال طور پڙهڻ، لکڻ، ٺاهڻ، تحقيق، ٻڌڻ، ڏسڻ، غور ڪرڻ، بحث، مشاهدو، پيش ڪرڻ، جائزو)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "سکيا جو مقصد",
+        "description": "OER Schema: ان سکيا جي مقصد جو ID يا URL جنهن جي هي مشق مدد ڪري ٿي."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ڊارڪ",
+        "description": "ڊارڪ موڊ استعمال ڪريو."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "ڪارڊ جو نمايان رنگ."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "تصويري ڪي ورڊ",
+        "description": "بي ترتيب تصوير جو ڪي ورڊ. تصوير جو ذريعو ان کي اوور رائيڊ ڪري ٿو."
+      }
+    ]
+  }
+}

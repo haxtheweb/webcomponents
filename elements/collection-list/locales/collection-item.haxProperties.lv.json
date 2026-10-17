@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Kolekcijas elements",
+    "description": "Kartītes tipa elements kolekcijas sarakstā ar tekstu, saiti un neobligātu multividi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Saite",
+        "description": "Šīs kartītes mērķa URL."
+      },
+      {
+        "property": "image",
+        "title": "Attēls",
+        "description": "Fona attēls."
+      },
+      {
+        "property": "line1",
+        "title": "1. rinda",
+        "description": "Pirmā teksta rinda."
+      },
+      {
+        "property": "line2",
+        "title": "2. rinda",
+        "description": "Otrā teksta rinda."
+      },
+      {
+        "property": "line3",
+        "title": "3. rinda",
+        "description": "Trešā teksta rinda."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Kartīti attēlojoša ikona."
+      },
+      {
+        "property": "saturate",
+        "title": "Piesātinājuma efekts",
+        "description": "Mainīt attēla piesātinājumu, kad lietotājs to fokusē."
+      },
+      {
+        "property": "tags",
+        "title": "Birkas",
+        "description": "Ar komatiem atdalīts birku saraksts."
+      },
+      {
+        "property": "accentColor",
+        "title": "Krāsa",
+        "description": "Birku krāsa."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatīvais teksts",
+        "description": "Saiti aprakstošs alternatīvais teksts."
+      }
+    ]
+  }
+}

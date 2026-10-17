@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Orodha ya kucheza",
+    "description": "Onyesha aina yoyote ya maudhui katika orodha ya kucheza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Chanzo",
+        "description": "Maudhui yanayoonyeshwa katika orodha ya kucheza."
+      },
+      {
+        "property": "edit",
+        "title": "Hali ya kuhariri",
+        "description": "Badilisha kati ya hali ya kuhariri na hali ya onyesho la kukagua kwa orodha ya kucheza."
+      },
+      {
+        "property": "navigation",
+        "title": "Urambazaji",
+        "description": "Onyesha vitufe vya urambazaji vya mbele na nyuma."
+      },
+      {
+        "property": "pagination",
+        "title": "Ukurasa",
+        "description": "Onyesha vitone vya kurasa."
+      },
+      {
+        "property": "orientation",
+        "title": "Mwelekeo",
+        "description": "Mwelekeo wa slaidi.",
+        "options": {
+          "horizontal": "Mlalo",
+          "vertical": "Wima"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Slaidi ya kuanzia",
+        "description": "Faharasa ya slaidi ya kulenga mwanzoni."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Uwiano wa Vipimo",
+        "description": "Uwiano wa vipimo wa slaidi.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

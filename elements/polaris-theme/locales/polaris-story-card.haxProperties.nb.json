@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris-historiekort",
+    "description": "Vis et Polaris-historiekort med bakgrunnsbilde, søyleetikett og overskrift."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bakgrunnsbilde",
+        "description": "URL til bildet som vises som kortbakgrunn."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Bakgrunnsstørrelse",
+        "description": "Hvordan bakgrunnsbildet fyller kortet (CSS background-size).",
+        "options": {
+          "cover": "Dekk (cover)",
+          "contain": "Tilpass (contain)",
+          "auto": "Automatisk (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Bakgrunnsfeste",
+        "description": "Hvordan bakgrunnsbildet oppfører seg ved rulling (CSS background-attachment).",
+        "options": {
+          "scroll": "Rull (scroll)",
+          "fixed": "Fast (fixed)",
+          "local": "Lokal (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Søyleetikett",
+        "description": "Kort etikett med store bokstaver som vises øverst på kortet. La stå tomt for å skjule."
+      },
+      {
+        "property": "label",
+        "title": "Korttekst",
+        "description": "Primærtekst som vises i det nederste panelet."
+      },
+      {
+        "property": "link",
+        "title": "Lenke",
+        "description": "Valgfri mål-URL som omslutter hele kortet."
+      }
+    ]
+  }
+}

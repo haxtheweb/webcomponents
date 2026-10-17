@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Ruraqpa ruraynin",
+    "description": "Ruraqpa rurayninkunata qatipay, willakuykunata xAPI waqaychanakunaman apachiy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Qatipanapaq ruwakuy",
+        "description": "Kay ruwakuyta qallarichiq ruraqpa ruraynin.",
+        "options": {
+          "visibility": "Kayta rikuyta atin",
+          "keydown": "Kaypi huk teclata ñit'in",
+          "click": "Kayta ñit'in",
+          "hover": "Kaypa hawanpi ratonta apan"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Sapa kuti qatipay",
+        "description": "Kikinmanta, ñawpaq kaq kutillam qatipakun."
+      }
+    ]
+  }
+}

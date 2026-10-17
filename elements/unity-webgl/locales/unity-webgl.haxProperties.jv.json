@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Pamuter Unity",
+    "description": "Pamuter Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Target",
+        "description": "Path menyang build game."
+      },
+      {
+        "property": "compression",
+        "title": "Cara kompresi",
+        "description": "Ekstensi berkas kompresi kanggo aset game."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL Streaming",
+        "description": "URL aset streaming."
+      },
+      {
+        "property": "companyname",
+        "title": "Jeneng Perusahaan",
+        "description": "Jeneng perusahaan."
+      },
+      {
+        "property": "productname",
+        "title": "Jeneng Produk",
+        "description": "Judhul game."
+      },
+      {
+        "property": "productversion",
+        "title": "Versi Produk",
+        "description": "Versi rilis."
+      },
+      {
+        "property": "width",
+        "title": "Ambane Kanvas",
+        "description": "Ambane CSS kanvas (contone px utawa em)."
+      },
+      {
+        "property": "height",
+        "title": "Dhuwure Kanvas",
+        "description": "Dhuwure CSS kanvas (contone px utawa em)."
+      },
+      {
+        "property": "background",
+        "title": "Latar Mburi Kanvas",
+        "description": "Latar mburi CSS kanvas."
+      }
+    ]
+  }
+}

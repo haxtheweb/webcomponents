@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "စာမျက်နှာပေါ်တွင် Disqus မှတ်ချက်များကို ထည့်သွင်းရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "အတိုကောက် အမည်",
+        "description": "Disqus script host ကို ဆုံးဖြတ်သော ဆိုက်၏ အတိုကောက် အမည်။"
+      },
+      {
+        "property": "pageURL",
+        "title": "စာမျက်နှာ URL",
+        "description": "မှတ်ချက် thread ချိတ်ဆက်ထားသော စာမျက်နှာ၏ URL။"
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "စာမျက်နှာ identifier",
+        "description": "စာမျက်နှာ မှတ်ချက် thread အတွက် သီးသန့် identifier။"
+      },
+      {
+        "property": "pageTitle",
+        "title": "စာမျက်နှာ ခေါင်းစဉ်",
+        "description": "မှတ်ချက် thread ချိတ်ဆက်ထားသော စာမျက်နှာ၏ ခေါင်းစဉ်။"
+      },
+      {
+        "property": "loadingText",
+        "title": "ဖွင့်နေစဉ် စာသား",
+        "description": "မှတ်ချက်များ ဖွင့်နေစဉ် ကြေညာသော စာသား။"
+      },
+      {
+        "property": "lang",
+        "title": "ဘာသာစကား",
+        "description": "Disqus interface အတွက် ဘာသာစကား ကုဒ်၊ ဥပမာ en။"
+      }
+    ]
+  }
+}

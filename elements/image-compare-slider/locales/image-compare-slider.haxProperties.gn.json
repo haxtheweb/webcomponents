@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ta'ãnga ñembojoja",
+    "description": "Embosyryry peteĩ ta'ãnga ambue ári ojembojoja hag̃ua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Ta'ãnga yvategua",
+        "description": "Ta'ãnga yvategua ojesyryrýva ta'ãnga yvygua ári."
+      },
+      {
+        "property": "topAlt",
+        "title": "Ta'ãnga yvategua moñe'ẽrã mokõiha",
+        "description": "Moñe'ẽrã mokõiha tekotevẽva opavavépe g̃uarã."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Ta'ãnga yvygua",
+        "description": "Ta'ãnga ojehechaukáva ta'ãnga yvategua guýpe."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Ta'ãnga yvygua moñe'ẽrã mokõiha",
+        "description": "Moñe'ẽrã mokõiha tekotevẽva opavavépe g̃uarã."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Teko",
+        "description": "Eiporavo reko mopotĩ (ijypykuéva) térã ta'ãnga yvategua hesakã'ỹva reko."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Syryryha sa'y."
+      },
+      {
+        "property": "dark",
+        "title": "Pytũ",
+        "description": "Embojere syryryha sa'y."
+      },
+      {
+        "property": "position",
+        "title": "Tenda ñepyrũrã",
+        "description": "Tenda ñepyrũrã 0 guive 100 peve."
+      }
+    ]
+  }
+}

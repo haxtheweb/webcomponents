@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Sebakontrola",
+    "description": "Používatelia môžu vykonať sebakontrolu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Obrázok",
+        "description": "Obrázok pre sebakontrolu."
+      },
+      {
+        "property": "title",
+        "title": "Názov",
+        "description": "Názov sebakontroly."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatívny text",
+        "description": "Alternatívny text obrázka."
+      },
+      {
+        "slot": "question",
+        "title": "Otázka"
+      },
+      {
+        "slot": "",
+        "title": "Odpoveď"
+      },
+      {
+        "property": "accentColor",
+        "title": "Farba témy",
+        "description": "Vyberte farbu témy z dizajnového systému.",
+        "options": {
+          "primary": "Primárny",
+          "accent": "Zvýraznenie",
+          "success": "Úspech",
+          "warning": "Varovanie",
+          "error": "Chyba",
+          "info": "Informácia"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Vzdelávací cieľ",
+        "description": "Odkaz na vzdelávací cieľ generovaný ako oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Hodnotí",
+        "description": "Odkaz na aktivitu generovaný ako oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Odkaz na viac",
+        "description": "Odkaz na ďalšie informácie."
+      }
+    ]
+  }
+}

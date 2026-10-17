@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ordforråd",
+    "description": "Ordforrådsbegrep."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Begrep"
+      },
+      {
+        "property": "information",
+        "title": "Definisjon",
+        "description": "Definisjon som vises når det klikkes på begrepet."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "Vis definisjonen i en popover i stedet for innebygd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Lenker",
+        "description": "Liste over tilleggslenker knyttet til dette begrepet."
+      }
+    ]
+  }
+}

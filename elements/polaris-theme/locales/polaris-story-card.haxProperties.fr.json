@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Carte récit Polaris",
+    "description": "Afficher une carte récit Polaris avec une image d'arrière-plan, un libellé de pilier et un titre."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Image d'arrière-plan",
+        "description": "URL de l'image affichée en arrière-plan de la carte."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Taille de l'arrière-plan",
+        "description": "Comment l'image d'arrière-plan remplit la carte (CSS background-size).",
+        "options": {
+          "cover": "couvrir (cover)",
+          "contain": "contenir (contain)",
+          "auto": "auto",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Comportement de l'arrière-plan",
+        "description": "Comportement de l'image d'arrière-plan lors du défilement (CSS background-attachment).",
+        "options": {
+          "scroll": "défilant (scroll)",
+          "fixed": "fixe (fixed)",
+          "local": "local"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Libellé de pilier",
+        "description": "Court libellé en majuscules affiché en haut de la carte. Laissez vide pour le masquer."
+      },
+      {
+        "property": "label",
+        "title": "Texte de la carte",
+        "description": "Texte principal affiché dans le panneau inférieur."
+      },
+      {
+        "property": "link",
+        "title": "Lien",
+        "description": "URL de destination facultative qui englobe toute la carte."
+      }
+    ]
+  }
+}

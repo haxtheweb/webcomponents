@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "सङ्ग्रह पङ्क्ति",
+    "description": "सङ्ग्रह सूचीभित्र प्रयोग गर्ने पङ्क्ति-शैलीको वस्तु, पाठ, लिङ्क, आइकन, ट्याग र वैकल्पिक तस्बिरसहित।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "लिङ्क",
+        "description": "यस पङ्क्तिको गन्तव्य URL।"
+      },
+      {
+        "property": "image",
+        "title": "तस्बिर",
+        "description": "पङ्क्तिको तस्बिर।"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "तस्बिरको वर्णन गर्ने वैकल्पिक पाठ।"
+      },
+      {
+        "property": "line1",
+        "title": "पङ्क्ति 1",
+        "description": "पाठको पहिलो पङ्क्ति।"
+      },
+      {
+        "property": "line2",
+        "title": "पङ्क्ति 2",
+        "description": "पाठको दोस्रो पङ्क्ति।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "पङ्क्तिलाई प्रतिनिधित्व गर्ने आइकन।"
+      },
+      {
+        "property": "saturate",
+        "title": "संतृप्ति प्रभाव",
+        "description": "प्रयोगकर्ताले फोकस गर्दा तस्बिरको संतृप्ति परिवर्तन गर्नुहोस्।"
+      },
+      {
+        "property": "tags",
+        "title": "ट्यागहरू",
+        "description": "अल्पविरामले छुट्याइएको ट्यागहरूको सूची।"
+      },
+      {
+        "property": "accentColor",
+        "title": "रङ",
+        "description": "आइकन र ट्यागहरूका लागि प्रयोग हुने रङ।"
+      }
+    ]
+  }
+}

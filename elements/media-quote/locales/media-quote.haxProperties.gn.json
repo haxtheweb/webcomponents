@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Mba'erechapyrã ñe'ẽ jeguerupyre",
+    "description": "Ta'ãnga ñe'ẽ jeguerupyre, mbojoapy ha ñe'ẽ'i ikatúramo ndive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Ñe'ẽ jeguerupyre",
+        "description": "Ñe'ẽ jeguerupyre moñe'ẽrã."
+      },
+      {
+        "slot": "author",
+        "title": "Apohára",
+        "description": "Ñe'ẽ jeguerupyre apohára."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Apohára mba'emimi",
+        "description": "Apohára mba'emimi."
+      },
+      {
+        "slot": "caption",
+        "title": "Ñe'ẽ'i",
+        "description": "Ta'ãnga ñe'ẽ'i."
+      },
+      {
+        "property": "src",
+        "title": "Ta'ãnga ypykue",
+        "description": "Ta'ãnga marandurenda ojeporúva mba'erechapyrã ñe'ẽ jeguerupyrépe."
+      },
+      {
+        "property": "alt",
+        "title": "Moñe'ẽrã mokõiha",
+        "description": "Moñe'ẽrã mokõiha ta'ãngape g̃uarã."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Kuatia'atã sa'y ojehechaukavéva."
+      }
+    ]
+  }
+}

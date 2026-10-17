@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ਆਈਕਨ",
+    "description": "ਪੂਰੀ ਆਈਕਨ ਲਾਇਬ੍ਰੇਰੀ ਤੋਂ ਆਈਕਨ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ਆਈਕਨ",
+        "description": "ਦਿਖਾਉਣ ਲਈ ਆਈਕਨ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਆਈਕਨ ਲਈ ਐਕਸੈਂਟ ਰੰਗ।"
+      },
+      {
+        "property": "dark",
+        "title": "ਗੂੜ੍ਹਾ",
+        "description": "ਗੂੜ੍ਹਾ ਮੋਡ ਵਰਤੋ (ਉਲਟਾ ਰੰਗ ਸੈੱਟ)।"
+      }
+    ]
+  }
+}

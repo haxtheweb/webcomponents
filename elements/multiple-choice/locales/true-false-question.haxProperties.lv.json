@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Jautājums „Patiess / nepatiess”",
+    "description": "Jautājums „patiess vai nepatiess”"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Jautājums",
+        "description": "Jautājums, uz kuru lietotājiem jāatbild."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Pareizā atbilde"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testa nosaukums",
+        "description": "Testa nosaukums, ko nodod xAPI vidēm šī elementa identificēšanai"
+      }
+    ]
+  }
+}

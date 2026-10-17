@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Calaamadee erayada",
+    "description": "Ku aqoonso fikradaha erayada adigoo gujinaya gudaha qoraal."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Su'aal",
+        "description": "Su'aasha ay isticmaalayaashu ka jawaabayaan."
+      },
+      {
+        "property": "statement",
+        "title": "Weedh",
+        "description": "Weedha loo beddeli doono hawsha calaamadee erayada."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Qaabka dhibcaha",
+        "description": "OER Schema: qaabka dhibcaha qiimayntan (tusaale dhibco, xaraf, boqolkiiba, dhammaystir)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ujeeddada waxbarasho",
+        "description": "OER Schema: ujeeddada waxbarasho ee la xiriirta qiimayntan."
+      },
+      {
+        "property": "forCourse",
+        "title": "Koorso",
+        "description": "OER Schema: koorsada loogu talagalay qiimayntan."
+      },
+      {
+        "property": "answers",
+        "title": "Jawaabaha"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Magaca imtixaanka",
+        "description": "Magaca imtixaanka loo gudbiyo deegaannada xAPI si loo aqoonsado walaxdan"
+      }
+    ]
+  }
+}

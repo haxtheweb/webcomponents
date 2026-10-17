@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "אײַנבעטן Discord־קהילות פֿון אַ טיילן־URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "רעסורס־URL",
+        "description": "רעסורס־URL."
+      },
+      {
+        "property": "height",
+        "title": "הייך",
+        "description": "הייך פֿון דער אינהאַלט־ראַם."
+      },
+      {
+        "property": "width",
+        "title": "ברייט",
+        "description": "ברייט פֿון דער אינהאַלט־ראַם."
+      }
+    ]
+  }
+}

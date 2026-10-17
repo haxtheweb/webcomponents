@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Admirakuypaq t'uqyay",
+    "description": "Ruraq t'uqyay kuyuchiy, akllanalla uyarikuqkunawan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Sayay",
+        "description": "T'uqyaypa sayayninta churay.",
+        "options": {
+          "tiny": "Ancha huch'uy",
+          "small": "Huch'uy",
+          "medium": "Chawpi",
+          "large": "Hatun",
+          "epic": "Ancha hatun"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Llimpi",
+        "description": "T'uqyaypa llimpi temanta churay.",
+        "options": {
+          "": "Kikinmanta",
+          "red": "Puka",
+          "blue": "Anqas",
+          "purple": "Kulli",
+          "orange": "Laranha",
+          "yellow": "Q'illu"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Uyarikuqkuna",
+        "description": "Uyarikuqkunata kawsachiy."
+      },
+      {
+        "property": "resetSound",
+        "title": "Uyarikuyta musuqmanta qallarichiy",
+        "description": "Sapa kuti uyarikuyta qallariymanta qallarichiy."
+      },
+      {
+        "property": "image",
+        "title": "Kikiykiq rikch'a",
+        "description": "Kikiykiq t'uqyay rikch'apa akllanalla URL-nin."
+      },
+      {
+        "property": "sound",
+        "title": "Kikiykiq uyarikuy",
+        "description": "Kikiykiq uyarikuypa akllanalla URL-nin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Hark'asqa",
+        "description": "Llapan ruraykunata hark'ay."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": ".h5p willañiqikunata cargaq rikuchiqpas H5P p'istuq"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe churana código"
+      }
+    ]
+  }
+}

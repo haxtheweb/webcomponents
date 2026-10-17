@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "טבלת CSV",
+    "description": "יוצר טבלה מקובץ CSV, בלי קשר למיקומו."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "מקור",
+        "description": "URL של קובץ ה-CSV."
+      },
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "כותרת לטבלה שתיווצר."
+      },
+      {
+        "property": "description",
+        "title": "תיאור",
+        "description": "תיאור מפורט יותר לשיפור הנגישות של נתוני הטבלה."
+      }
+    ]
+  }
+}

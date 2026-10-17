@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "ശേഖരണ നിര",
+    "description": "ശേഖരണ ലിസ്റ്റിനുള്ളിൽ ഉപയോഗിക്കാനുള്ള നിര-ശൈലി ഇനം; വാചകം, ലിങ്ക്, ഐക്കൺ, ടാഗുകൾ, ഐച്ഛിക ചിത്രം എന്നിവയോടെ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "ലിങ്ക്",
+        "description": "ഈ നിരയുടെ ലക്ഷ്യസ്ഥാന URL."
+      },
+      {
+        "property": "image",
+        "title": "ചിത്രം",
+        "description": "നിരയ്ക്കുള്ള ചിത്രം."
+      },
+      {
+        "property": "alt",
+        "title": "ആൾട്ട്",
+        "description": "ചിത്രം വിവരിക്കുന്ന പകരം വാചകം."
+      },
+      {
+        "property": "line1",
+        "title": "വരി 1",
+        "description": "വാചകത്തിന്റെ ആദ്യ വരി."
+      },
+      {
+        "property": "line2",
+        "title": "വരി 2",
+        "description": "വാചകത്തിന്റെ രണ്ടാം വരി."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ഐക്കൺ",
+        "description": "നിരയെ പ്രതിനിധീകരിക്കുന്ന ഐക്കൺ."
+      },
+      {
+        "property": "saturate",
+        "title": "സാച്ചുറേഷൻ ഇഫക്റ്റ്",
+        "description": "ഉപയോക്താവ് ഫോക്കസ് ചെയ്യുമ്പോൾ ചിത്രത്തിന്റെ സാച്ചുറേഷൻ മാറ്റുക."
+      },
+      {
+        "property": "tags",
+        "title": "ടാഗുകൾ",
+        "description": "കോമ കൊണ്ട് വേർതിരിച്ച ടാഗുകളുടെ ലിസ്റ്റ്."
+      },
+      {
+        "property": "accentColor",
+        "title": "നിറം",
+        "description": "ഐക്കണിനും ടാഗുകൾക്കും ഉപയോഗിക്കുന്ന നിറം."
+      }
+    ]
+  }
+}

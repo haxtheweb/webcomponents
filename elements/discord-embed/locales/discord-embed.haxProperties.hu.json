@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Discord-közösségek beágyazása megosztási URL alapján."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Erőforrás URL-je",
+        "description": "Az erőforrás URL-je."
+      },
+      {
+        "property": "height",
+        "title": "Magasság",
+        "description": "A tartalomkeret magassága."
+      },
+      {
+        "property": "width",
+        "title": "Szélesség",
+        "description": "A tartalomkeret szélessége."
+      }
+    ]
+  }
+}

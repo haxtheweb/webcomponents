@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Nota",
+    "description": "alphaTex veya MusicXML ile notaları, gitar tablarını ve partisyonları görüntüler ve çalar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex gösterimi",
+        "description": "Nota için satır içi alphaTex işaretlemesi. Notayı yazmak için doğrudan düzenleyin; boşlukların korunması için bir şablonda saklanır."
+      },
+      {
+        "property": "source",
+        "title": "Partisyon dosyası",
+        "description": "Bir MusicXML (.xml/.musicxml/.mxl) veya Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) dosyası yükleyin ya da bağlantısını verin. Ayarlandığında satır içi alphaTex'i geçersiz kılar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Ses çalma",
+        "description": "Varsayılan olarak açık - notayı yerleşik sentezleyiciyle çalınırken dinleyin. Yalnızca görüntüleme (sessiz) modu için kapatın."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Görüntüleme seçeneklerini göster",
+        "description": "Oynatıcı çubuğunda yakınlaştırma, esnetme ve düzen düğmelerini göster."
+      },
+      {
+        "property": "showExport",
+        "title": "Dışa aktarma düğmelerini göster",
+        "description": "Oynatıcı çubuğunda MIDI indirme ve yazdırma/PDF düğmelerini göster."
+      }
+    ]
+  }
+}

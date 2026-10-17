@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Code QR",
+    "description": "Code à scanner avec un smartphone."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Données QR",
+        "description": "Source des données du code QR."
+      },
+      {
+        "property": "title",
+        "title": "Titre alternatif",
+        "description": "Titre alternatif lié à la source du code QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Taille",
+        "description": "Taille du code QR."
+      },
+      {
+        "property": "margin",
+        "title": "Marge",
+        "description": "Espace autour du code."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Format de sortie",
+        "description": "Format de génération.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

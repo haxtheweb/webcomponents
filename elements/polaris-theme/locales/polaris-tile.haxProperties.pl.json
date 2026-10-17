@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Kafelek Polaris",
+    "description": "Wyświetl kafelek Polaris z tytułem, opcjonalnym tekstem uzupełniającym i opcjonalnym linkiem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Tekst główny",
+        "description": "Główny tekst kafelka."
+      },
+      {
+        "property": "line2",
+        "title": "Tekst dodatkowy",
+        "description": "Opcjonalny tekst uzupełniający."
+      },
+      {
+        "property": "type",
+        "title": "Styl kafelka",
+        "description": "Gotowy styl wizualny kafelka.",
+        "options": {
+          "1": "Styl 1",
+          "2": "Styl 2",
+          "3": "Styl 3",
+          "4": "Styl 4",
+          "5": "Styl 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Obraz tła",
+        "description": "URL obrazu tła używany przez style kafelków obsługujące obrazy."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Opcjonalny docelowy URL akcji kafelka."
+      }
+    ]
+  }
+}

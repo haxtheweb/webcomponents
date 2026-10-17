@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Pahūtanga Mīharo",
+    "description": "He hākoritanga pahūtanga tauwhitiwhiti me ngā pānga oro kōwhiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Rahi",
+        "description": "Tautuhia te rahi o te pahūtanga.",
+        "options": {
+          "tiny": "Iti rawa",
+          "small": "Iti",
+          "medium": "Waenga",
+          "large": "Nui",
+          "epic": "Nui whakaharahara"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Tae",
+        "description": "Tautuhia te kaupapa tae o te pahūtanga.",
+        "options": {
+          "": "Taunoa",
+          "red": "Whero",
+          "blue": "Kahurangi",
+          "purple": "Pāpura",
+          "orange": "Karaka",
+          "yellow": "Kōwhai"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Ngā Pānga Oro",
+        "description": "Whakahohea ngā pānga oro."
+      },
+      {
+        "property": "resetSound",
+        "title": "Tautuhi Anō i te Oro",
+        "description": "Tīmata anō te oro mai i te tīmatanga i ia wā."
+      },
+      {
+        "property": "image",
+        "title": "Whakaahua Ritenga",
+        "description": "He URL kōwhiri mō tētahi whakaahua pahūtanga ritenga."
+      },
+      {
+        "property": "sound",
+        "title": "Oro Ritenga",
+        "description": "He URL kōwhiri mō tētahi pānga oro ritenga."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Kua monokia",
+        "description": "Monokia ngā tauwhitiwhitinga katoa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Картка гісторыі Polaris",
+    "description": "Паказаць картку гісторыі Polaris з фонавай выявай, меткай рубрыкі і тэкстам загалоўка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Фонавая выява",
+        "description": "URL выявы, якая паказваецца як фон карткі."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Памер фону",
+        "description": "Як фонавая выява запаўняе картку (CSS background-size).",
+        "options": {
+          "cover": "cover (пакрыць) (cover)",
+          "contain": "contain (змясціць) (contain)",
+          "auto": "auto (аўта) (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Прывязка фону",
+        "description": "Як паводзіць сябе фонавая выява пры пракрутцы (CSS background-attachment).",
+        "options": {
+          "scroll": "scroll (пракручваецца) (scroll)",
+          "fixed": "fixed (фіксаваны) (fixed)",
+          "local": "local (лакальны) (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Метка рубрыкі",
+        "description": "Кароткая метка вялікімі літарамі ўверсе карткі. Пакіньце пустой, каб схаваць."
+      },
+      {
+        "property": "label",
+        "title": "Тэкст карткі",
+        "description": "Асноўны тэкст у ніжняй панэлі."
+      },
+      {
+        "property": "link",
+        "title": "Спасылка",
+        "description": "Неабавязковы URL прызначэння, які ахоплівае ўсю картку."
+      }
+    ]
+  }
+}

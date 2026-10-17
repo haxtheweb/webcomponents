@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Tekstisisene heli",
+    "description": "Esita heli tekstisiseselt lehe sisu täiendamiseks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Allikas",
+        "description": "MP3-fail või URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Kaardi rõhuvärv."
+      },
+      {
+        "property": "shiny",
+        "title": "Läikiv",
+        "description": "Kasuta halli asemel heledamat rõhuvärvi tausta."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tume",
+        "description": "Kasuta tumedat režiimi."
+      }
+    ]
+  }
+}

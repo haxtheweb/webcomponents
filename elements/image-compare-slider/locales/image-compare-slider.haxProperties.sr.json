@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Поређење слика",
+    "description": "Превуците једну слику преко друге ради поређења."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Горња слика",
+        "description": "Горња слика која се превлачи преко доње слике."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alt текст горње слике",
+        "description": "Обавезан alt текст ради приступачности."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Доња слика",
+        "description": "Доња слика приказана испод горње слике."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alt текст доње слике",
+        "description": "Обавезан alt текст ради приступачности."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Понашање",
+        "description": "Изаберите режим брисања (подразумевано) или режим прозирности горње слике."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Боја клизача."
+      },
+      {
+        "property": "dark",
+        "title": "Тамно",
+        "description": "Обрни боју клизача."
+      },
+      {
+        "property": "position",
+        "title": "Почетни положај",
+        "description": "Почетни положај од 0 до 100."
+      }
+    ]
+  }
+}

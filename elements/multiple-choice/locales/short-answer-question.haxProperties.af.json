@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Kortantwoordvraag",
+    "description": "Laat die gebruiker 'n basiese vraag beantwoord"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vraag",
+        "description": "Vraag waarop gebruikers moet antwoord."
+      },
+      {
+        "property": "answers",
+        "title": "Moontlike antwoorde"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naam van die vasvra",
+        "description": "Vasvranaam wat deurgegee word vir gebruik in xAPI-gedrewe omgewings om hierdie item te identifiseer"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "மேற்கோள் தொகுதி",
+    "description": "வடிவமைக்கப்பட்ட மேற்கோள் தொகுதி."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "மேற்கோள் மூலம்",
+        "description": "மேற்கோள் மூல உரை."
+      },
+      {
+        "property": "alt",
+        "title": "மாற்று உரை",
+        "description": "படத்திற்கான மாற்று உரை."
+      },
+      {
+        "property": "image",
+        "title": "படம்",
+        "description": "மேற்கோளுடன் காட்டப்படும் படம்."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Élément d'étapes",
+    "description": "Élément faisant partie d'une liste d'étapes"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titre"
+      }
+    ]
+  }
+}

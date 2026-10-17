@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mapa obrazu",
+    "description": "Dostępna mapa obrazu z interaktywnymi punktami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etykieta",
+        "description": "Etykieta mapy obrazu."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Szczegóły punktów",
+        "description": "Interaktywne punkty na mapie obrazu."
+      }
+    ]
+  }
+}

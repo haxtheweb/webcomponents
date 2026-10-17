@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR কোড",
+    "description": "স্মার্টফোন দিয়ে স্ক্যান করার কোড।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR ডেটা",
+        "description": "QR কোডের ডেটার উৎস।"
+      },
+      {
+        "property": "title",
+        "title": "বিকল্প শিরোনাম",
+        "description": "QR কোডের উৎসের সাথে লিংক করা বিকল্প শিরোনাম।"
+      },
+      {
+        "property": "modulesize",
+        "title": "আকার",
+        "description": "QR কোডের আকার।"
+      },
+      {
+        "property": "margin",
+        "title": "মার্জিন",
+        "description": "কোডের চারপাশের ফাঁকা জায়গা।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "আউটপুট ফরম্যাট",
+        "description": "যে ফরম্যাটে আউটপুট দেওয়া হবে।",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

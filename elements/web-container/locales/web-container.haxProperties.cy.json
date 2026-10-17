@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Cynhwysydd NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Cuddio'r golygydd",
+        "description": "Cuddio'r rhyngwyneb golygu ffeiliau."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Cuddio'r derfynell",
+        "description": "Cuddio'r derfynell ar gyfer rhaglenni sy'n rhedeg yn awtomatig."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Cuddio'r ffenestr",
+        "description": "Cuddio'r ffenestr allbwn ar gyfer defnydd terfynell yn unig."
+      },
+      {
+        "slot": "",
+        "title": "Gorchmynion",
+        "description": "Gorchmynion (un i bob llinell) i'w rhedeg cyn llwytho."
+      }
+    ]
+  }
+}

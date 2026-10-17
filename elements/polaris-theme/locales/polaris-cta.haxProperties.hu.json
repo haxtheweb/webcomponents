@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Témázott Polaris cselekvésre ösztönző gomb megjelenítése."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Gomb szövege",
+        "description": "A cselekvésre ösztönző gombon megjelenő szöveg."
+      },
+      {
+        "property": "link",
+        "title": "Hivatkozás",
+        "description": "A gomb cél-URL-je."
+      },
+      {
+        "property": "type",
+        "title": "Változat",
+        "description": "Vizuális stílusváltozat.",
+        "options": {
+          "primary": "Elsődleges",
+          "tinted": "Színezett",
+          "light": "Világos"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Körvonalas stílus",
+        "description": "Körvonalas megjelenés engedélyezése."
+      },
+      {
+        "property": "filled",
+        "title": "Kitöltött stílus",
+        "description": "Kitöltött megjelenés engedélyezése."
+      }
+    ]
+  }
+}

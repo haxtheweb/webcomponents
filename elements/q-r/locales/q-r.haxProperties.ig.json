@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Koodu QR",
+    "description": "Koodu a ga-enyocha site na ekwentị smart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Data QR",
+        "description": "Isi mmalite data maka koodu QR."
+      },
+      {
+        "property": "title",
+        "title": "Aha ọzọ",
+        "description": "Aha ọzọ jikọtara na isi mmalite koodu QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Nha",
+        "description": "Nha koodu QR."
+      },
+      {
+        "property": "margin",
+        "title": "Oke ọnụ",
+        "description": "Ihe mkpuchi koodu ahụ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Usoro mmepụta",
+        "description": "Usoro a ga-esi wepụta ya.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

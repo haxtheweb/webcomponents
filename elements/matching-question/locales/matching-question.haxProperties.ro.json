@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Întrebare de asociere",
+    "description": "Activitate de asociere prin glisare și plasare, care leagă enunțurile de răspunsurile corecte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Întrebare",
+        "description": "Întrebare pentru utilizatori. Marcați țintele de plasare, apoi enumerați răspunsurile până la următoarea țintă."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de notare",
+        "description": "OER Schema: formatul de notare pentru această evaluare (de ex. puncte, literă, procent, finalizare)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiectiv de învățare",
+        "description": "OER Schema: obiectivul de învățare asociat acestei evaluări."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curs",
+        "description": "OER Schema: cursul căruia îi este destinată această evaluare."
+      },
+      {
+        "property": "answers",
+        "title": "Răspunsuri"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Numele testului",
+        "description": "Numele testului folosit pentru identificarea xAPI în sistemele de analiză."
+      }
+    ]
+  }
+}

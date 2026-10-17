@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "පිටු කොටස",
+    "description": "පිටු අන්තර්ගතය සහ තිර-පාදක පිරිසැලසුම් සඳහා කොටස් බහාලුම."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "නිර්මාණ ප්‍රතිකාරය",
+        "description": "අදාළ සැකසුම් යාවත්කාලීන කරන පෙරසැකසූ ශෛලිය."
+      },
+      {
+        "property": "image",
+        "title": "රූපය",
+        "description": "කොටස සඳහා පසුබිම් මාධ්‍ය."
+      },
+      {
+        "property": "bg",
+        "title": "පසුබිම් වර්ණය",
+        "description": "රූපයක් සකසා නොමැති විට පසුබිම් වර්ණය."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "අනුචලන බොත්තම",
+        "description": "ඊළඟ කොටසට අනුචලනය කරන බොත්තමක් පෙන්වන්න."
+      },
+      {
+        "property": "fold",
+        "title": "නැමීම පෙන්වන්න",
+        "description": "කොටසේ පහළින් දෘශ්‍ය නැමීමක් පෙන්වන්න."
+      },
+      {
+        "property": "full",
+        "title": "සම්පූර්ණ තිර ප්‍රමාණය",
+        "description": "නරඹන්නාගේ තිර උස පුරවන්න."
+      },
+      {
+        "property": "filter",
+        "title": "පෙරහන යොදන්න",
+        "description": "පසුබිම් රූපයට දෘශ්‍ය පෙරහනක් යොදන්න."
+      },
+      {
+        "slot": "",
+        "title": "අන්තර්ගතය",
+        "description": "කොටසේ අන්තර්ගතය."
+      },
+      {
+        "slot": "entice",
+        "title": "ආකර්ෂණය",
+        "description": "විකල්ප ආකර්ෂණීය අන්තර්ගතය."
+      },
+      {
+        "slot": "buttons",
+        "title": "බොත්තම්",
+        "description": "පෙළට පහළින් පෙන්වන බොත්තම් සමූහය."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "නැංගුරම් පෙළ",
+        "description": "සංචාලනයේ පෙන්වන නැංගුරම් ලේබලය."
+      }
+    ]
+  }
+}

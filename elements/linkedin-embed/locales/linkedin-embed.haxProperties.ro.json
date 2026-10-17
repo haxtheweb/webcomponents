@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Încorporare LinkedIn",
+    "description": "Încorporează un card de profil LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Nume personalizat",
+        "description": "Segmentul de nume de utilizator personalizat LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Setări regionale",
+        "description": "Valoarea metadatelor regionale, de ex. en_US."
+      }
+    ]
+  }
+}

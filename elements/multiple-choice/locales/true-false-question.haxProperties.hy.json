@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Ճիշտ / Սխալ հարց",
+    "description": "Ճիշտ-սխալ հարց"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Հարց",
+        "description": "Հարց, որին պետք է պատասխանեն օգտատերերը։"
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Ճիշտ պատասխան"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Թեստի անվանում",
+        "description": "Թեստի անվանում, որը փոխանցվում է xAPI-ով աշխատող միջավայրերում այս տարրը նույնականացնելու համար"
+      }
+    ]
+  }
+}

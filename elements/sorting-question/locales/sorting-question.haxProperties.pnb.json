@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ترتیب والا سوال",
+    "description": "آئٹماں نوں صحیح ترتیب وچ لاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "سوال",
+        "description": "سوال دی سرخی۔"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "گریڈنگ فارمیٹ",
+        "description": "OER Schema: ایس جائزے دا گریڈنگ فارمیٹ (جیویں پوائنٹ، حرف، فیصد، تکمیل)۔"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "سکھݨ دا مقصد",
+        "description": "OER Schema: ایس جائزے نال جڑیا سکھݨ دا مقصد۔"
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "OER Schema: اوہ کورس جیہدے لئی ایہہ جائزہ اے۔"
+      },
+      {
+        "property": "answers",
+        "title": "جواب",
+        "description": "جواباں دی ترتیب صحیح لڑی طے کردی اے۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "کوئز دا ناں",
+        "description": "تجزیاتی سسٹماں وچ xAPI شناخت لئی ورتیا جاوݨ والا کوئز دا ناں۔"
+      }
+    ]
+  }
+}

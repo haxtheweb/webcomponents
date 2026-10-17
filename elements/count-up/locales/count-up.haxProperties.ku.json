@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Hejmartina Jorîn",
+    "description": "Dema ku tê ber çavan, hejmarekê bi anîmasyonê heta nirxa armanc bihejmêre."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Nirxa dawî",
+        "description": "Hejmara ku heta wê were hejmartin."
+      },
+      {
+        "property": "start",
+        "title": "Nirxa destpêkê",
+        "description": "Hejmara ku jê dest bi hejmartinê dike."
+      },
+      {
+        "property": "duration",
+        "title": "Dem",
+        "description": "Çend saniye anîmasyona hejmartinê bidomîne."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Nivîsa pêşgir",
+        "description": "Nivîsa berî hejmarê tê nîşandan (mînak '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Nivîsa paşgir",
+        "description": "Nivîsa piştî hejmarê tê nîşandan (mînak '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slota pêşgir",
+        "description": "Naveroka slotê ya vebijarkî berî hejmarê."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slota paşgir",
+        "description": "Naveroka slotê ya vebijarkî piştî hejmarê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Cihên dehan",
+        "description": "Hejmara cihên dehan ên ku werin nîşandan."
+      },
+      {
+        "property": "separator",
+        "title": "Veqetînera hezaran",
+        "description": "Tîpa ku komên hezaran ji hev vediqetîne."
+      },
+      {
+        "property": "decimal",
+        "title": "Tîpa dehan",
+        "description": "Tîpa ku ji bo xala dehan tê bikaranîn."
+      },
+      {
+        "property": "noeasing",
+        "title": "Bê nermkirin",
+        "description": "Nermkirinê neçalak bike da ku hejmartin xêzî be."
+      }
+    ]
+  }
+}

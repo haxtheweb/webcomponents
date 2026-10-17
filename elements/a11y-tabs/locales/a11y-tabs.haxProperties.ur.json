@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ٹیبز",
+    "description": "ٹیبز کا مجموعہ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "لیبل (رسائی کے لیے)",
+        "description": "ٹیب سیٹ کے لیے قابلِ رسائی لیبل۔"
+      },
+      {
+        "property": "disabled",
+        "title": "غیر فعال",
+        "description": "تمام ٹیبز غیر فعال کریں۔"
+      },
+      {
+        "property": "hidden",
+        "title": "پوشیدہ",
+        "description": "ٹیب سیٹ چھپائیں۔"
+      },
+      {
+        "property": "sticky",
+        "title": "چسپاں",
+        "description": "اسکرول کرتے وقت افقی ٹیبز کو اوپر رکھیں۔"
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "لے آؤٹ بریک پوائنٹ",
+        "description": "افقی ٹیبز کا بریک پوائنٹ؛ صرف عمودی کے لیے -1 استعمال کریں۔"
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "آئیکن بریک پوائنٹ",
+        "description": "آئیکنز کے ساتھ متن دکھانے کا بریک پوائنٹ۔ طے شدہ قدر 0 ہے؛ صرف آئیکن موڈ کے لیے -1 استعمال کریں۔"
+      },
+      {
+        "slot": "",
+        "title": "ٹیبز",
+        "description": "<a11y-tab/> عناصر کا سلسلہ۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "منفرد ID",
+        "description": "اس ٹیب سیٹ کی منفرد ID۔"
+      }
+    ]
+  }
+}

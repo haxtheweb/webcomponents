@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Etichetta / Pillula",
+    "description": "Un'etichetta cumpatta in forma di pillula cù culore d'accentu, buttone d'annullamentu o cummutatore facultativi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etichetta",
+        "description": "Testu affissatu in a pillula."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Nome di u culore d'accentu SimpleColors per u fondu di a pillula.",
+        "options": {
+          "": "-- predefinitu --",
+          "red": "Rossu",
+          "pink": "Rosulu",
+          "purple": "Viulettu",
+          "deep-purple": "Viulettu scuru",
+          "indigo": "Indacu",
+          "blue": "Turchinu",
+          "light-blue": "Turchinu chjaru",
+          "cyan": "Cianu",
+          "teal": "Verde turchinu",
+          "green": "Verde",
+          "light-green": "Verde chjaru",
+          "lime": "Lima",
+          "yellow": "Ghjallu",
+          "amber": "Ambra",
+          "orange": "Aranciu",
+          "deep-orange": "Aranciu scuru",
+          "brown": "Marrone",
+          "blue-grey": "Grisgiu turchinu",
+          "grey": "Grisgiu"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Culore d'accentu autumaticu",
+        "description": "Ricavà autumaticamente u culore d'accentu da u testu di l'etichetta."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Buttone d'annullamentu",
+        "description": "Affissà un buttone icona per caccià/annullà in a pillula."
+      },
+      {
+        "property": "readonly",
+        "title": "Lettura sola",
+        "description": "Piattà u buttone d'annullamentu per chì a pillula sia solu d'affissera."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Cummutevule",
+        "description": "Fà chì a pillula s'attivi o si disattivi quandu si clicca nant'à u buttone."
+      },
+      {
+        "property": "toggled",
+        "title": "Attivata",
+        "description": "S'ellu a pillula hè attivata avà."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Icona d'attivazione",
+        "description": "Icona affissata quandu a pillula hè attivata."
+      },
+      {
+        "property": "disabled",
+        "title": "Disattivatu",
+        "description": "Disattivà l'interazzione cù a pillula."
+      }
+    ]
+  }
+}

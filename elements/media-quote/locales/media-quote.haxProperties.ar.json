@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "اقتباس وسائط",
+    "description": "صورة مع اقتباس واستشهاد وتعليق اختياري."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "الاقتباس",
+        "description": "نص الاقتباس."
+      },
+      {
+        "slot": "author",
+        "title": "المؤلف",
+        "description": "مؤلف الاقتباس."
+      },
+      {
+        "slot": "author-detail",
+        "title": "تفاصيل المؤلف",
+        "description": "تفاصيل المؤلف."
+      },
+      {
+        "slot": "caption",
+        "title": "التعليق",
+        "description": "تعليق الصورة."
+      },
+      {
+        "property": "src",
+        "title": "مصدر الصورة",
+        "description": "ملف الصورة المستخدم لاقتباس الوسائط."
+      },
+      {
+        "property": "alt",
+        "title": "النص البديل",
+        "description": "نص بديل للصورة."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون تمييز البطاقة."
+      }
+    ]
+  }
+}

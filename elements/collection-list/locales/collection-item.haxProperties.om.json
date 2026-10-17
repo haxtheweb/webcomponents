@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Wanta kuusaa",
+    "description": "Wanta akka kaardiitti mul'atu kan tarree kuusaa keessatti fayyadamu, barreeffama, hidhoo fi miidiyaa filannoo qabu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Hidhoo",
+        "description": "URL gahiinsaa kaardii kanaa."
+      },
+      {
+        "property": "image",
+        "title": "Suuraa",
+        "description": "Suuraa duubaa."
+      },
+      {
+        "property": "line1",
+        "title": "Sarara 1",
+        "description": "Sarara barreeffamaa jalqabaa."
+      },
+      {
+        "property": "line2",
+        "title": "Sarara 2",
+        "description": "Sarara barreeffamaa lammaffaa."
+      },
+      {
+        "property": "line3",
+        "title": "Sarara 3",
+        "description": "Sarara barreeffamaa sadaffaa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Mallattoo",
+        "description": "Mallattoo kaardii bakka bu'u."
+      },
+      {
+        "property": "saturate",
+        "title": "Bu'aa cimina halluu",
+        "description": "Yeroo fayyadamaan xiyyeeffatu cimina halluu suuraa jijjiiri."
+      },
+      {
+        "property": "tags",
+        "title": "Mallattoolee",
+        "description": "Tarree mallattoolee qooduu (,) n addaan baafaman."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu",
+        "description": "Halluu mallattooleef fayyadamu."
+      },
+      {
+        "property": "alt",
+        "title": "Ibsa suuraa",
+        "description": "Barreeffama bakka bu'aa hidhoo ibsu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ਚਿੱਤਰ ਨਕਸ਼ਾ",
+    "description": "ਇੰਟਰਐਕਟਿਵ ਹੌਟਸਪੌਟਾਂ ਵਾਲਾ ਪਹੁੰਚਯੋਗ ਚਿੱਤਰ ਨਕਸ਼ਾ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "ਲੇਬਲ",
+        "description": "ਚਿੱਤਰ ਨਕਸ਼ੇ ਲਈ ਲੇਬਲ।"
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "ਹੌਟਸਪੌਟ ਵੇਰਵੇ",
+        "description": "ਚਿੱਤਰ ਨਕਸ਼ੇ 'ਤੇ ਇੰਟਰਐਕਟਿਵ ਹੌਟਸਪੌਟ।"
+      }
+    ]
+  }
+}

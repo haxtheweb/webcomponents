@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Medienzitat",
+    "description": "Bild mit Zitat, Quellenangabe und optionaler Bildunterschrift."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Zitat",
+        "description": "Zitattext."
+      },
+      {
+        "slot": "author",
+        "title": "Autor",
+        "description": "Autor des Zitats."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Angaben zum Autor",
+        "description": "Angaben zum Autor."
+      },
+      {
+        "slot": "caption",
+        "title": "Bildunterschrift",
+        "description": "Bildunterschrift."
+      },
+      {
+        "property": "src",
+        "title": "Bildquelle",
+        "description": "Für das Medienzitat verwendete Bilddatei."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativtext",
+        "description": "Alternativtext für das Bild."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Akzentfarbe der Karte."
+      }
+    ]
+  }
+}

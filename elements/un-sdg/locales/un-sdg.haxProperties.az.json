@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "BMT-nin Davamlı İnkişaf Məqsədi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Məqsəd",
+        "description": "UN SDG nömrəsi."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Yalnız rəng",
+        "description": "Yalnız məqsədin rəngini göstər."
+      }
+    ]
+  }
+}

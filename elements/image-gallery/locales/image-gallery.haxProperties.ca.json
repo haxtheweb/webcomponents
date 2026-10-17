@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galeria d'imatges",
+    "description": "Una galeria que presenta les imatges en quadrícula, mosaic o presentació de diapositives."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Mode de visualització",
+        "description": "Com es presenten les imatges a la galeria.",
+        "options": {
+          "grid": "Quadrícula",
+          "masonry": "Mosaic",
+          "gallery": "Galeria"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Índex actiu",
+        "description": "Índex de la imatge activa amb què comença el mode galeria."
+      }
+    ]
+  }
+}

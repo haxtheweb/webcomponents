@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sideseksjon",
+    "description": "Seksjonsbeholder for sideinnhold og skjermbaserte oppsett."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Utforming",
+        "description": "Forhåndsinnstilt stil som oppdaterer tilhørende innstillinger."
+      },
+      {
+        "property": "image",
+        "title": "Bilde",
+        "description": "Bakgrunnsmedier for seksjonen."
+      },
+      {
+        "property": "bg",
+        "title": "Bakgrunnsfarge",
+        "description": "Bakgrunnsfarge når ingen bilde er angitt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Rulleknapp",
+        "description": "Vis en knapp som ruller til neste seksjon."
+      },
+      {
+        "property": "fold",
+        "title": "Vis bretting",
+        "description": "Vis en visuell bretting nederst i seksjonen."
+      },
+      {
+        "property": "full",
+        "title": "Full skjermstørrelse",
+        "description": "Fyll hele skjermhøyden til seeren."
+      },
+      {
+        "property": "filter",
+        "title": "Bruk filter",
+        "description": "Bruk et visuelt filter på bakgrunnsbildet."
+      },
+      {
+        "slot": "",
+        "title": "Innhold",
+        "description": "Seksjonsinnhold."
+      },
+      {
+        "slot": "entice",
+        "title": "Lokkemiddel",
+        "description": "Valgfritt lokkende innhold."
+      },
+      {
+        "slot": "buttons",
+        "title": "Knapper",
+        "description": "Knappegruppe som vises under teksten."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ankertekst",
+        "description": "Ankeretikett som vises i navigasjonen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Plejer 3D",
+    "description": "Plejer ta' fajls 3D / realtà awmentata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sors",
+        "description": "Il-URL għal dan il-fajl AR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Pożizzjoni X tal-element fl-AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Pożizzjoni Y tal-element fl-AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Pożizzjoni Z tal-element fl-AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Kulur tas-sema",
+        "description": "Agħżel il-kulur tas-sema fix-xena."
+      }
+    ]
+  }
+}

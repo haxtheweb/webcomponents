@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Citat",
+    "description": "Oblikovan blok citata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Navedba vira",
+        "description": "Besedilo navedbe vira."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Nadomestno besedilo za sliko."
+      },
+      {
+        "property": "image",
+        "title": "Slika",
+        "description": "Slika, prikazana s citatom."
+      }
+    ]
+  }
+}

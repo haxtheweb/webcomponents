@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "ಅದ್ಭುತ ಸ್ಫೋಟ",
+    "description": "ಐಚ್ಛಿಕ ಧ್ವನಿ ಪರಿಣಾಮಗಳೊಂದಿಗೆ ಸಂವಾದಾತ್ಮಕ ಸ್ಫೋಟ ಅನಿಮೇಷನ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "ಗಾತ್ರ",
+        "description": "ಸ್ಫೋಟದ ಗಾತ್ರವನ್ನು ಹೊಂದಿಸಿ.",
+        "options": {
+          "tiny": "ಅತಿ ಚಿಕ್ಕ",
+          "small": "ಚಿಕ್ಕ",
+          "medium": "ಮಧ್ಯಮ",
+          "large": "ದೊಡ್ಡ",
+          "epic": "ಭಾರೀ"
+        }
+      },
+      {
+        "property": "color",
+        "title": "ಬಣ್ಣ",
+        "description": "ಸ್ಫೋಟದ ಬಣ್ಣದ ಥೀಮ್ ಹೊಂದಿಸಿ.",
+        "options": {
+          "": "ಪೂರ್ವನಿಯೋಜಿತ",
+          "red": "ಕೆಂಪು",
+          "blue": "ನೀಲಿ",
+          "purple": "ನೇರಳೆ",
+          "orange": "ಕಿತ್ತಳೆ",
+          "yellow": "ಹಳದಿ"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "ಧ್ವನಿ ಪರಿಣಾಮಗಳು",
+        "description": "ಧ್ವನಿ ಪರಿಣಾಮಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ."
+      },
+      {
+        "property": "resetSound",
+        "title": "ಧ್ವನಿ ಮರುಹೊಂದಿಸಿ",
+        "description": "ಪ್ರತಿ ಬಾರಿ ಧ್ವನಿಯನ್ನು ಆರಂಭದಿಂದ ಮರುಪ್ರಾರಂಭಿಸಿ."
+      },
+      {
+        "property": "image",
+        "title": "ಕಸ್ಟಮ್ ಚಿತ್ರ",
+        "description": "ಕಸ್ಟಮ್ ಸ್ಫೋಟ ಚಿತ್ರಕ್ಕಾಗಿ ಐಚ್ಛಿಕ URL."
+      },
+      {
+        "property": "sound",
+        "title": "ಕಸ್ಟಮ್ ಧ್ವನಿ",
+        "description": "ಕಸ್ಟಮ್ ಧ್ವನಿ ಪರಿಣಾಮಕ್ಕಾಗಿ ಐಚ್ಛಿಕ URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ",
+        "description": "ಎಲ್ಲಾ ಸಂವಹನಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ."
+      }
+    ]
+  }
+}

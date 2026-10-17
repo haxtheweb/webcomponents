@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Paĝaj detaloj",
+    "description": "Difini vidan dividon inter paĝoj, kiun CMS-oj povas uzi por krei paĝojn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo montrata en la temo kaj la unua titolo."
+      },
+      {
+        "property": "pageType",
+        "title": "Tipo",
+        "description": "Vida kunteksta etikedo de la paĝo.",
+        "options": {
+          "": "-- neniu --",
+          "content": "Enhavo",
+          "assessment": "Takso",
+          "quiz": "Kvizo",
+          "submission": "Submeto",
+          "lesson": "Leciono",
+          "module": "Modulo",
+          "task": "Tasko",
+          "activity": "Aktivaĵo",
+          "project": "Projekto",
+          "practice": "Ekzercado",
+          "unit": "Unuo",
+          "objectives": "Lernceloj",
+          "connection": "Konekto",
+          "knowledge": "Ĉu vi sciis?",
+          "strategy": "Lernstrategio",
+          "discuss": "Diskuti",
+          "listen": "Aŭskulti",
+          "make": "Fari",
+          "observe": "Observi",
+          "present": "Prezenti",
+          "reading": "Legado",
+          "reflect": "Pripensi",
+          "research": "Esplori",
+          "watch": "Spekti",
+          "write": "Skribi"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Etikedoj",
+        "description": "Komo-apartigita listo de etikedoj."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Ligila URL",
+        "description": "Alidirekta URL montrata anstataŭ la paĝa enhavo."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Ligila celo",
+        "description": "Malfermi ligilojn en la sama fenestro aŭ en nova fenestro.",
+        "options": {
+          "_self": "Sama fenestro",
+          "_blank": "Nova fenestro"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Publikigita",
+        "description": "Nepublikigitaj paĝoj estas kaŝitaj de finuzantoj."
+      },
+      {
+        "property": "locked",
+        "title": "Ŝlosi paĝon",
+        "description": "Ŝlosi aŭ malŝlosi ĉiujn elementojn sur ĉi tiu paĝo."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Transpasi aŭtomatan slug",
+        "description": "Ŝlosi la slug kontraŭ aŭtomataj ĝisdatigoj laŭ titolo aŭ gepatro."
+      },
+      {
+        "property": "slug",
+        "title": "Vojo",
+        "description": "URL-slug por ĉi tiu paĝo."
+      },
+      {
+        "property": "image",
+        "title": "Aŭdvidaĵo",
+        "description": "Aŭdvidaĵo, kiu reprezentas la paĝon, uzata en kelkaj temoj kaj vidoj."
+      },
+      {
+        "property": "parent",
+        "title": "Gepatro",
+        "description": "Vojo de la gepatra paĝo."
+      },
+      {
+        "property": "noderefs",
+        "title": "Rilata enhavo",
+        "description": "Paĝoj rilataj al ĉi tiu paĝo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Priskribo",
+        "description": "Priskribo uzata en kolektoj kaj por serĉilo-optimumigo."
+      },
+      {
+        "property": "entityType",
+        "title": "Enta tipo",
+        "description": "Defaŭlte paĝo, krom se alie agordita.",
+        "options": {
+          "page": "Paĝo (defaŭlta)",
+          "taxonomy": "Taksonomio",
+          "taxonomyTerm": "Taksonomia termino",
+          "region": "Regiono"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Piktogramo",
+        "description": "Piktogramo asociita kun ĉi tiu paĝo en la retejo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Koloro asociita kun ĉi tiu paĝo en la retejo."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Kaŝi en menuo",
+        "description": "Kaŝi ĉi tiun paĝon de menuoj, konservante ĝian URL."
+      },
+      {
+        "property": "order",
+        "title": "Ordo",
+        "description": "Ordo rilate al samnivelaj paĝoj."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Paĝa temo",
+        "description": "Transpasi la temon nur por ĉi tiu paĝo."
+      },
+      {
+        "property": "author",
+        "title": "Aŭtoro",
+        "description": "Uzantnomo de la lasta persono, kiu modifis ĉi tiun paĝon."
+      }
+    ]
+  }
+}

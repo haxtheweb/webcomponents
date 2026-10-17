@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Ívefja ytra vefefni í iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL auðlindar",
+        "description": "URL auðlindar."
+      },
+      {
+        "property": "height",
+        "title": "Hæð",
+        "description": "Hæð iframe."
+      },
+      {
+        "property": "width",
+        "title": "Breidd",
+        "description": "Breidd iframe."
+      }
+    ]
+  }
+}

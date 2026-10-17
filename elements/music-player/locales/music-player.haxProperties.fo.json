@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI-sjónleggjari",
+    "description": "Spæl MIDI í samanhangi við sjónlegging."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kelda",
+        "description": "URL til fíluna, sum skal spælast."
+      },
+      {
+        "property": "visualizer",
+        "title": "Sjónlegging",
+        "description": "Sjónleggingarsnið til tónleikafíluna.",
+        "options": {
+          "staff": "Nótalinjur",
+          "piano-roll": "Klaverrulla",
+          "waterfall": "Klaver + fossur"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Fjal foss",
+        "description": "Fjal fossnótar í klaversjónleggingini."
+      }
+    ]
+  }
+}

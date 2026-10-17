@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Жөнөкөй сүрөт",
+    "description": "Сүрөттөрдү жөнөкөй параметрлер менен өзгөртүү."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Булак",
+        "description": "Сүрөт булагынын URL дареги."
+      },
+      {
+        "property": "height",
+        "title": "Бийиктиги",
+        "description": "Сүрөттүн кошумча бийиктиги."
+      },
+      {
+        "property": "width",
+        "title": "Туурасы",
+        "description": "Сүрөттүн кошумча туурасы."
+      },
+      {
+        "property": "alt",
+        "title": "Alt текст",
+        "description": "Экран окугучтар жана жакшыртылган SEO үчүн пайдалуу."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Сапаты",
+        "description": "Түзүүдөгү сүрөттүн сапаты (JPEG гана)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Жүктөө артыкчылыгы",
+        "description": "Заманбап браузерлер үчүн өндүрүмдүүлүк кеңеши.",
+        "options": {
+          "auto": "Автоматтык",
+          "high": "Жогору",
+          "low": "Төмөн"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Декоддоо ыкмасы",
+        "description": "Заманбап браузерлерде сүрөттөрдү көрсөтүү үчүн өндүрүмдүүлүк кеңеши.",
+        "options": {
+          "auto": "Автоматтык",
+          "async": "Асинхрондук"
+        }
+      }
+    ]
+  }
+}

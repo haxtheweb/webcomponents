@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "ٻاهريون ويب مواد iframe ۾ شامل ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "وسيلي جو URL",
+        "description": "وسيلي جو URL."
+      },
+      {
+        "property": "height",
+        "title": "اوچائي",
+        "description": "Iframe جي اوچائي."
+      },
+      {
+        "property": "width",
+        "title": "ويڪر",
+        "description": "Iframe جي ويڪر."
+      }
+    ]
+  }
+}

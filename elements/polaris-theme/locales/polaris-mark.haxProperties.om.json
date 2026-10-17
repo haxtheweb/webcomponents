@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Asxaa Polaris",
+    "description": "Asxaa eenyummaa PSU maqaa kolleejii filannoo fi URL gahiinsaa wajjin agarsiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Maqaa kolleejii",
+        "description": "Maqaa asxaa cinatti mul'atu."
+      },
+      {
+        "property": "name2",
+        "title": "Maqaa kolleejii 2",
+        "description": "Maqaa lammaffaa maqaa kolleejii jalqabaa jalatti mul'atu."
+      },
+      {
+        "property": "name3",
+        "title": "Maqaa kolleejii 3",
+        "description": "Maqaa sadaffaa maqaa kolleejii lammaffaa jalatti mul'atu."
+      },
+      {
+        "property": "url",
+        "title": "Hidhoo",
+        "description": "URL gahiinsaa yeroo asxaan tuqamu."
+      },
+      {
+        "property": "type",
+        "title": "Gosa",
+        "description": "Gosa asxaa mul'ataa.",
+        "options": {
+          "default": "Durtii",
+          "light": "Ifaa",
+          "dark": "Dukkana"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Qindaa'ina dhaabbataa",
+        "description": "Maqaa sadaffaa maqaa lammaffaa jalatti sarara dalgaa wajjin agarsiisi."
+      }
+    ]
+  }
+}

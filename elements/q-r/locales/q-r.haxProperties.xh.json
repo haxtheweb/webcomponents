@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ikhowudi ye-QR",
+    "description": "Ikhowudi yokuskena ngefowuni ehlakaniphileyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Idatha ye-QR",
+        "description": "Umthombo wedatha yekhowudi ye-QR."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko esithatha indawo",
+        "description": "Isihloko esithatha indawo esinxulunyaniswe nomthombo wekhowudi ye-QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Ubungakanani",
+        "description": "Ubungakanani bekhowudi ye-QR."
+      },
+      {
+        "property": "margin",
+        "title": "Umda",
+        "description": "Isithuba esijikeleze ikhowudi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Ifomathi yesiphumo",
+        "description": "Ifomathi yokuyikhupha.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

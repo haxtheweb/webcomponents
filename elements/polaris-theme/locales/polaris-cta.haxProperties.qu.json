@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Temayuq Polaris ruranapaq waqyay ñit'inata rikuchiy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Ñit'ina qillqa",
+        "description": "Ruranapaq waqyay ñit'inapi rikukuq qillqa."
+      },
+      {
+        "property": "link",
+        "title": "T'inki",
+        "description": "Ñit'inapa chayana URL-nin."
+      },
+      {
+        "property": "type",
+        "title": "Laya",
+        "description": "Rikukuq laya.",
+        "options": {
+          "primary": "Ñawpaq kaq",
+          "tinted": "Llimpichasqa",
+          "light": "K'anchaq"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Muyuchisqa laya",
+        "description": "Muyuchisqa layata kawsachiy."
+      },
+      {
+        "property": "filled",
+        "title": "Hunt'asqa laya",
+        "description": "Hunt'asqa layata kawsachiy."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn-inniseting",
+    "description": "Innset eitt LinkedIn-vangakort."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Persónligt navn",
+        "description": "Persónligi brúkaranavnsparturin á LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Staðarkota",
+        "description": "Metadátavirði fyri staðarkotu, t.d. en_US."
+      }
+    ]
+  }
+}

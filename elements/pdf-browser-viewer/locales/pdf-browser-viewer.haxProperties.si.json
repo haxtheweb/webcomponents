@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF බ්‍රවුසර දසුන",
+    "description": "විකල්ප කාඩ් පිරිසැලසුමක් සහ බාගැනීමේ බොත්තමක් සමඟ PDF ගොනුවක් පේළිගතව කාවද්දන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF ගොනුවේ ස්ථානය."
+      },
+      {
+        "property": "heading",
+        "title": "ශීර්ෂය",
+        "description": "කාඩ්පතේ ශීර්ෂ පෙළ."
+      },
+      {
+        "property": "card",
+        "title": "කාඩ් පිරිසැලසුම",
+        "description": "බාගැනීමේ බොත්තමක් සහිත කාඩ්පතක PDF පෙන්වන්න."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "බාගැනීමේ ලේබලය",
+        "description": "බාගැනීමේ බොත්තම සඳහා ලේබලය."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "සහාය නොදක්වන පණිවිඩය",
+        "description": "බ්‍රවුසරයට PDF ගොනු පෙන්විය නොහැකි විට පණිවිඩය."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "සහාය නොදක්වන සබැඳි පණිවිඩය",
+        "description": "බ්‍රවුසරයට PDF ගොනු පෙන්විය නොහැකි විට සබැඳි පෙළ."
+      },
+      {
+        "property": "width",
+        "title": "පළල",
+        "description": "PDF දසුනේ පළල."
+      },
+      {
+        "property": "height",
+        "title": "උස",
+        "description": "PDF දසුනේ උස."
+      }
+    ]
+  }
+}

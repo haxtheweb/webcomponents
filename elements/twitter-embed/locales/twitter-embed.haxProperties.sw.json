@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Kupachika Twitter (X)",
+    "description": "Pachika tweet kutoka X katika muktadha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL ya Tweet",
+        "description": "URL ya tweet ya kupachika."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Mandhari",
+        "description": "Mandhari angavu au meusi kwa tweet za X.",
+        "options": {
+          "light": "Angavu",
+          "dark": "Meusi"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Zuia dirisha ibukizi unapobofya",
+        "description": "Zuia watumiaji wasifungue tweet kwenye x.com."
+      }
+    ]
+  }
+}

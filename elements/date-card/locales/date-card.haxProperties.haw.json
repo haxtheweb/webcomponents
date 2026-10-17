@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Lā",
+    "description": "E hōʻike i kekahi lā alemanaka me nā kikoʻī."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mahina",
+        "description": "Ka mahina i hōʻike ʻia ma ke kāleka."
+      },
+      {
+        "property": "date",
+        "title": "Lā o ka mahina",
+        "description": "Ka helu lā o ka mahina."
+      },
+      {
+        "property": "day",
+        "title": "Lā o ka pule",
+        "description": "Ka inoa lā o ka pule."
+      },
+      {
+        "property": "title",
+        "title": "Poʻo Inoa",
+        "description": "Inoa o ka hanana."
+      },
+      {
+        "property": "location",
+        "title": "Wahi",
+        "description": "Wahi o ka hanana."
+      },
+      {
+        "property": "startTime",
+        "title": "Hoʻomaka",
+        "description": "Manawa hoʻomaka."
+      },
+      {
+        "property": "endTime",
+        "title": "Pau",
+        "description": "Manawa pau."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu Kiko",
+        "description": "He waihoʻoluʻu kiko koho."
+      },
+      {
+        "property": "dark",
+        "title": "Kumuhana Pōuliuli",
+        "description": "E hoʻā i ke kumuhana pōuliuli."
+      }
+    ]
+  }
+}

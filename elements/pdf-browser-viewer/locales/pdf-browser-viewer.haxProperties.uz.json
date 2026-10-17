@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Brauzer PDF koʻrsatkichi",
+    "description": "PDF faylni ixtiyoriy karta maketi va yuklab olish tugmasi bilan matn ichida joylashtirish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF faylning joylashuvi."
+      },
+      {
+        "property": "heading",
+        "title": "Sarlavha",
+        "description": "Karta sarlavhasi matni."
+      },
+      {
+        "property": "card",
+        "title": "Karta maketi",
+        "description": "PDF ni yuklab olish tugmasi bilan kartada koʻrsatish."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Yuklab olish yorligʻi",
+        "description": "Yuklab olish tugmasi uchun yorliq."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Qoʻllab-quvvatlanmaslik xabari",
+        "description": "Brauzer PDF fayllarni koʻrsata olmaganda chiqadigan xabar."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Qoʻllab-quvvatlanmaslik havolasi xabari",
+        "description": "Brauzer PDF fayllarni koʻrsata olmaganda chiqadigan havola matni."
+      },
+      {
+        "property": "width",
+        "title": "Kenglik",
+        "description": "PDF koʻrsatkichi kengligi."
+      },
+      {
+        "property": "height",
+        "title": "Balandlik",
+        "description": "PDF koʻrsatkichi balandligi."
+      }
+    ]
+  }
+}

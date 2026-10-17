@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "ಚಿತ್ರ ವಿಭಾಗ",
+    "description": "ಪುಟದ ವಿಭಾಗವನ್ನು ಬೇರ್ಪಡಿಸುವ ಪೂರ್ಣ ಅಗಲದ ಚಿತ್ರ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "ಹಿನ್ನೆಲೆ ಚಿತ್ರ."
+      },
+      {
+        "property": "caption",
+        "description": "ಪಠ್ಯ ಶೀರ್ಷಿಕೆ."
+      }
+    ]
+  }
+}

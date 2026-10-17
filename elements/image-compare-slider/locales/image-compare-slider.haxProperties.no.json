@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Bildesammenligning",
+    "description": "Sveip ett bilde over et annet for å sammenligne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Øverste bilde",
+        "description": "Øverste bilde som sveipes over det nederste."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alternativ tekst for øverste bilde",
+        "description": "Påkrevd alternativ tekst for tilgjengelighet."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Nederste bilde",
+        "description": "Nederste bilde som vises under det øverste."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alternativ tekst for nederste bilde",
+        "description": "Påkrevd alternativ tekst for tilgjengelighet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Virkemåte",
+        "description": "Velg sveipemodus (standard) eller gjennomsiktighetsmodus for øverste bilde."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Fargen på glidebryteren."
+      },
+      {
+        "property": "dark",
+        "title": "Mørk",
+        "description": "Inverter fargen på glidebryteren."
+      },
+      {
+        "property": "position",
+        "title": "Startposisjon",
+        "description": "Startposisjon fra 0 til 100."
+      }
+    ]
+  }
+}

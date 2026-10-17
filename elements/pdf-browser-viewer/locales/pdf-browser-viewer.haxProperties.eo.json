@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF-montrilo",
+    "description": "Enkorpigi PDF-dosieron enlinie kun nedeviga karta aranĝo kaj elŝuta butono."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF-URL",
+        "description": "Loko de la PDF-dosiero."
+      },
+      {
+        "property": "heading",
+        "title": "Titolo",
+        "description": "Titola teksto de la karto."
+      },
+      {
+        "property": "card",
+        "title": "Karta aranĝo",
+        "description": "Montri la PDF en karto kun elŝuta butono."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Elŝuta etikedo",
+        "description": "Etikedo por la elŝuta butono."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mesaĝo pri nesubteno",
+        "description": "Mesaĝo kiam la retumilo ne povas montri PDF-dosierojn."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Ligila mesaĝo pri nesubteno",
+        "description": "Ligila teksto kiam la retumilo ne povas montri PDF-dosierojn."
+      },
+      {
+        "property": "width",
+        "title": "Larĝo",
+        "description": "Larĝo de la PDF-montrilo."
+      },
+      {
+        "property": "height",
+        "title": "Alteco",
+        "description": "Alteco de la PDF-montrilo."
+      }
+    ]
+  }
+}

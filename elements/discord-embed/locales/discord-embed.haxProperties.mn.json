@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Хуваалцах URL-аас Discord нийгэмлэгийг суулгах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Нөөцийн URL",
+        "description": "Нөөцийн URL."
+      },
+      {
+        "property": "height",
+        "title": "Өндөр",
+        "description": "Агуулгын хүрээний өндөр."
+      },
+      {
+        "property": "width",
+        "title": "Өргөн",
+        "description": "Агуулгын хүрээний өргөн."
+      }
+    ]
+  }
+}

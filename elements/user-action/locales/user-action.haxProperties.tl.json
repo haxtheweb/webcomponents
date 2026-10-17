@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Aksyon ng user",
+    "description": "Subaybayan ang mga aksyon ng user at ipadala ang datos sa mga xAPI store."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Event na susubaybayan",
+        "description": "Aksyon ng user na nagti-trigger sa event na ito.",
+        "options": {
+          "visibility": "Nakikita ito",
+          "keydown": "Pumindot ng key dito",
+          "click": "I-click ito",
+          "hover": "I-hover ito"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Subaybayan sa bawat pagkakataon",
+        "description": "Bilang default, ang unang pagkakataon lamang ang sinusubaybayan."
+      }
+    ]
+  }
+}

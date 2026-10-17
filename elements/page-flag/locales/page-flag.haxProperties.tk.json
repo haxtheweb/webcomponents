@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Sahypa belligi",
+    "description": "Sahypa awtorlary üçin redaksion bellik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Sahypa belligi üçin aksent reňki."
+      },
+      {
+        "property": "label",
+        "title": "Belgi",
+        "description": "Sahypa belligi üçin belgi teksti."
+      }
+    ]
+  }
+}

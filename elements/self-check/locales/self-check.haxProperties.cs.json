@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Samoověření",
+    "description": "Uživatelé si mohou ověřit své znalosti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Obrázek",
+        "description": "Obrázek pro samoověření."
+      },
+      {
+        "property": "title",
+        "title": "Název",
+        "description": "Název samoověření."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativní text",
+        "description": "Alternativní text obrázku."
+      },
+      {
+        "slot": "question",
+        "title": "Otázka"
+      },
+      {
+        "slot": "",
+        "title": "Odpověď"
+      },
+      {
+        "property": "accentColor",
+        "title": "Barva motivu",
+        "description": "Vyberte barvu motivu z designového systému.",
+        "options": {
+          "primary": "Primární",
+          "accent": "Zvýraznění",
+          "success": "Úspěch",
+          "warning": "Varování",
+          "error": "Chyba",
+          "info": "Informace"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Výukový cíl",
+        "description": "Odkaz na výukový cíl generovaný jako oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Hodnotí",
+        "description": "Odkaz na aktivitu generovaný jako oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Odkaz Více",
+        "description": "Odkaz na další informace."
+      }
+    ]
+  }
+}

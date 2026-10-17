@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris kaşısı",
+    "description": "Başlıq, ixtiyari köməkçi mətn və ixtiyari keçidlə Polaris kaşısı göstər."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Əsas mətn",
+        "description": "Kaşının əsas mətni."
+      },
+      {
+        "property": "line2",
+        "title": "İkinci dərəcəli mətn",
+        "description": "İxtiyari köməkçi mətn."
+      },
+      {
+        "property": "type",
+        "title": "Kaşı üslubu",
+        "description": "Kaşının hazır vizual üslubu.",
+        "options": {
+          "1": "Üslub 1",
+          "2": "Üslub 2",
+          "3": "Üslub 3",
+          "4": "Üslub 4",
+          "5": "Üslub 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Fon şəkli",
+        "description": "Şəkil dəstəkləyən kaşı üslublarında istifadə olunan fon şəklinin URL-i."
+      },
+      {
+        "property": "link",
+        "title": "Keçid",
+        "description": "Kaşı əməliyyatı üçün ixtiyari hədəf URL."
+      }
+    ]
+  }
+}

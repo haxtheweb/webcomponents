@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "I-CTA ye-Polaris",
+    "description": "Bonisa iqhosha lobizo-lokuthatha-inyathelo le-Polaris elinomxholo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Umbhalo weqhosha",
+        "description": "Umbhalo oboniswa kwiqhosha lobizo-lokuthatha-inyathelo."
+      },
+      {
+        "property": "link",
+        "title": "Ikhonkco",
+        "description": "I-URL ekuyiwa kuyo yeqhosha."
+      },
+      {
+        "property": "type",
+        "title": "Uhlobo",
+        "description": "Uhlobo lwesitayile esibonakalayo.",
+        "options": {
+          "primary": "Ephambili",
+          "tinted": "Enombala okhaphukileyo",
+          "light": "Ekhanyayo"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Isitayile esinomgca wangaphandle",
+        "description": "Vula unyango lomgca wangaphandle."
+      },
+      {
+        "property": "filled",
+        "title": "Isitayile esigcwalisiweyo",
+        "description": "Vula unyango olugcwalisiweyo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris ისტორიის ბარათი",
+    "description": "Polaris ისტორიის ბარათის ჩვენება ფონის სურათით, სვეტის იარლიყითა და სათაურის ტექსტით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ფონის სურათი",
+        "description": "ბარათის ფონად ნაჩვენები სურათის URL."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "ფონის ზომა",
+        "description": "როგორ ავსებს ფონის სურათი ბარათს (CSS background-size).",
+        "options": {
+          "cover": "დაფარვა (cover)",
+          "contain": "ჩატევა (contain)",
+          "auto": "ავტომატური (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "ფონის მიმაგრება",
+        "description": "როგორ იქცევა ფონის სურათი გადახვევისას (CSS background-attachment).",
+        "options": {
+          "scroll": "გადახვევა (scroll)",
+          "fixed": "ფიქსირებული (fixed)",
+          "local": "ლოკალური (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "სვეტის იარლიყი",
+        "description": "ბარათის ზედა ნაწილში ნაჩვენები მოკლე იარლიყი დიდი ასოებით. დასამალად დატოვეთ ცარიელი."
+      },
+      {
+        "property": "label",
+        "title": "ბარათის ტექსტი",
+        "description": "ქვედა პანელში ნაჩვენები ძირითადი ტექსტი."
+      },
+      {
+        "property": "link",
+        "title": "ბმული",
+        "description": "არასავალდებულო დანიშნულების URL, რომელიც მთელ ბარათს მოიცავს."
+      }
+    ]
+  }
+}

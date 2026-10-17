@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Taịlị Polaris",
+    "description": "Gosi taịlị Polaris nwere aha, ederede nkwado nhọrọ, na njikọ nhọrọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Ederede bụ isi",
+        "description": "Ederede bụ isi nke taịlị."
+      },
+      {
+        "property": "line2",
+        "title": "Ederede nke abụọ",
+        "description": "Ederede nkwado nhọrọ."
+      },
+      {
+        "property": "type",
+        "title": "Ụdị taịlị",
+        "description": "Ụdị anya taịlị edoziri.",
+        "options": {
+          "1": "Ụdị 1",
+          "2": "Ụdị 2",
+          "3": "Ụdị 3",
+          "4": "Ụdị 4",
+          "5": "Ụdị 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Onyonyo azụ",
+        "description": "URL onyonyo azụ nke ụdị taịlị nwere ike igosi onyonyo na-eji."
+      },
+      {
+        "property": "link",
+        "title": "Njikọ",
+        "description": "URL ebe a na-aga nhọrọ maka omume taịlị."
+      }
+    ]
+  }
+}

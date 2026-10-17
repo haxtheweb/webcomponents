@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Lengo la Maendeleo Endelevu la Umoja wa Mataifa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Lengo",
+        "description": "Nambari ya UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Rangi pekee",
+        "description": "Onyesha rangi ya lengo pekee."
+      }
+    ]
+  }
+}

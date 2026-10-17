@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sitatblokkur",
+    "description": "Sniðgivin sitatblokkur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Keldutilvísing",
+        "description": "Tekstur í keldutilvísingini."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativur tekstur til myndina."
+      },
+      {
+        "property": "image",
+        "title": "Mynd",
+        "description": "Mynd, sum verður víst saman við sitatinum."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Ил захидал",
+    "description": "Хаа нэгтээгээс ирсэн жинхэнэ ил захидал шиг харагдах хөгжилтэй медиа хэсэг"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Хэнд",
+        "description": "Үүнийг хэнд илгээх вэ?"
+      },
+      {
+        "property": "from",
+        "title": "Хэнээс",
+        "description": "Та хэн бэ?"
+      },
+      {
+        "property": "message",
+        "title": "Мессеж",
+        "description": "Та юу хэлмээр байна?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Шуудангийн тамга дарсан газар",
+        "description": "Энэ картыг хаанаас илгээсэн бэ?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Үндсэн зургийн эх сурвалж",
+        "description": "Таны зураг хаана байна вэ?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Маркийн зургийн эх сурвалж",
+        "description": "Таны зураг хаана байна вэ?"
+      }
+    ]
+  }
+}

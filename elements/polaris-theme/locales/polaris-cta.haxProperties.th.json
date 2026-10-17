@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA ของ Polaris",
+    "description": "แสดงปุ่มกระตุ้นการตัดสินใจของ Polaris ตามธีม"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "ข้อความปุ่ม",
+        "description": "ข้อความที่แสดงในปุ่มกระตุ้นการตัดสินใจ"
+      },
+      {
+        "property": "link",
+        "title": "ลิงก์",
+        "description": "URL ปลายทางสำหรับปุ่ม"
+      },
+      {
+        "property": "type",
+        "title": "รูปแบบ",
+        "description": "รูปแบบสไตล์ภาพ",
+        "options": {
+          "primary": "หลัก",
+          "tinted": "แต้มสี",
+          "light": "สว่าง"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "สไตล์เส้นขอบ",
+        "description": "เปิดใช้งานการแสดงผลแบบเส้นขอบ"
+      },
+      {
+        "property": "filled",
+        "title": "สไตล์เติมสี",
+        "description": "เปิดใช้งานการแสดงผลแบบเติมสี"
+      }
+    ]
+  }
+}

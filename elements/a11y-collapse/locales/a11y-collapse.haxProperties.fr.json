@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Conteneur repliable",
+    "description": "Conteneur unique dépliable et repliable."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Titre",
+        "description": "Texte de la section repliable."
+      },
+      {
+        "property": "expanded",
+        "title": "Déplié",
+        "description": "Déplier par défaut."
+      },
+      {
+        "property": "headingButton",
+        "title": "Bouton de titre",
+        "description": "Rendre tout le titre cliquable au lieu de l'icône seule."
+      },
+      {
+        "property": "icon",
+        "title": "Icône",
+        "description": "Icône du bouton pour déplier/replier."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Icône (une fois déplié)",
+        "description": "Icône facultative pour l'état déplié du bouton."
+      },
+      {
+        "slot": "",
+        "title": "Contenu",
+        "description": "Contenu de la section repliable."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Info-bulle",
+        "description": "Info-bulle du bouton pour déplier/replier."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Info-bulle (une fois déplié)",
+        "description": "Info-bulle du bouton déplier/replier lorsqu'il est déplié."
+      }
+    ]
+  }
+}

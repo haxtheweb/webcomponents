@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Mostra un pulsante di invito all'azione Polaris a tema."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Testo del pulsante",
+        "description": "Testo mostrato nel pulsante di invito all'azione."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "URL di destinazione del pulsante."
+      },
+      {
+        "property": "type",
+        "title": "Variante",
+        "description": "Variante dello stile visivo.",
+        "options": {
+          "primary": "Primario",
+          "tinted": "Tinta",
+          "light": "Chiaro"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Stile con contorno",
+        "description": "Attiva lo stile con contorno."
+      },
+      {
+        "property": "filled",
+        "title": "Stile pieno",
+        "description": "Attiva lo stile pieno."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR കോഡ്",
+    "description": "സ്മാർട്ട്ഫോണിൽ നിന്ന് സ്കാൻ ചെയ്യാനുള്ള കോഡ്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR ഡാറ്റ",
+        "description": "QR കോഡിനുള്ള ഡാറ്റയുടെ ഉറവിടം."
+      },
+      {
+        "property": "title",
+        "title": "പകരം ശീർഷകം",
+        "description": "QR കോഡ് ഉറവിടവുമായി ലിങ്ക് ചെയ്ത പകരം ശീർഷകം."
+      },
+      {
+        "property": "modulesize",
+        "title": "വലുപ്പം",
+        "description": "QR കോഡിന്റെ വലുപ്പം."
+      },
+      {
+        "property": "margin",
+        "title": "മാർജിൻ",
+        "description": "കോഡിന് ചുറ്റുമുള്ള ഇടം."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "ഔട്ട്പുട്ട് ഫോർമാറ്റ്",
+        "description": "ഔട്ട്പുട്ട് നൽകേണ്ട ഫോർമാറ്റ്.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

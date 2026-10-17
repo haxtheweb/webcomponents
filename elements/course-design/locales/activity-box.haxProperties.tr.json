@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Etkinlik Kutusu",
+    "description": "Küçük, biçimlendirilmiş başlık bloğu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Simge",
+        "description": "Etkinlik kutusunun yanında gösterilen simge."
+      },
+      {
+        "property": "tag",
+        "title": "Etkinlik kutusu etiketi",
+        "description": "Etkinlik kutusunda gösterilen etiket."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Renklendirme Yok",
+        "description": "Simgeye renk uygulanmasını engelle."
+      }
+    ]
+  }
+}

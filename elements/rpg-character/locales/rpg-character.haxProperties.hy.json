@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG կերպար",
+    "description": "Զվարճալի կերպար HAX-ից։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Անուն",
+        "description": "Պատահական կերպար ստեղծելու համար օգտագործվող բառ։"
+      },
+      {
+        "property": "hat",
+        "title": "Գլխարկ",
+        "description": "Գլխարկի ոճը։",
+        "options": {
+          "none": "Լռելյայն",
+          "random": "Պատահական",
+          "bunny": "Ճագար",
+          "cowboy": "Կովբոյ",
+          "education": "Կրթություն",
+          "construction": "Շինարարություն",
+          "warning": "Զգուշացում",
+          "watermelon": "Ձմերուկ",
+          "coffee": "Սուրճ",
+          "knight": "Ասպետ",
+          "ninja": "Նինձյա",
+          "party": "Խնջույք",
+          "error": "Սխալ",
+          "edit": "Խմբագրել"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Լայնություն",
+        "description": "Կերպարի լայնությունը պիքսելներով։"
+      },
+      {
+        "property": "height",
+        "title": "Բարձրություն",
+        "description": "Կերպարի բարձրությունը պիքսելներով։"
+      },
+      {
+        "property": "fire",
+        "title": "Վառվո՞ւմ է",
+        "description": "Արդյոք կերպարը վառվում է։"
+      },
+      {
+        "property": "walking",
+        "title": "Քայլո՞ւմ է",
+        "description": "Քայլելու անիմացիա. աշխատում է, երբ կերպարը վառվում է։"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "어휘",
+    "description": "어휘 용어입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "용어"
+      },
+      {
+        "property": "information",
+        "title": "정의",
+        "description": "용어를 클릭하면 표시되는 정의입니다."
+      },
+      {
+        "property": "popoverMode",
+        "title": "팝오버",
+        "description": "정의를 인라인 대신 팝오버로 표시합니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "링크",
+        "description": "이 용어와 관련된 보충 링크 목록입니다."
+      }
+    ]
+  }
+}

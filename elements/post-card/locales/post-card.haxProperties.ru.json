@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Почтовая открытка",
+    "description": "Шуточный медиаэлемент в виде настоящей почтовой открытки откуда-то"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Кому",
+        "description": "Кому адресована открытка?"
+      },
+      {
+        "property": "from",
+        "title": "От кого",
+        "description": "Кто вы?"
+      },
+      {
+        "property": "message",
+        "title": "Сообщение",
+        "description": "Что вы хотите сказать?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Почтовый штемпель",
+        "description": "Откуда отправлена эта открытка?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Источник основного фото",
+        "description": "Где находится ваше фото?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Источник фото марки",
+        "description": "Где находится ваше фото?"
+      }
+    ]
+  }
+}

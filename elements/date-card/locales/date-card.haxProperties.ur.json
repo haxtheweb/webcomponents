@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "تاریخ",
+    "description": "تفصیلات کے ساتھ کیلنڈر کی تاریخ دکھائیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "مہینہ",
+        "description": "کارڈ پر دکھایا جانے والا مہینہ۔"
+      },
+      {
+        "property": "date",
+        "title": "مہینے کا دن",
+        "description": "مہینے کا عددی دن۔"
+      },
+      {
+        "property": "day",
+        "title": "ہفتے کا دن",
+        "description": "ہفتے کے دن کا نام۔"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "تقریب کا نام۔"
+      },
+      {
+        "property": "location",
+        "title": "مقام",
+        "description": "تقریب کا مقام۔"
+      },
+      {
+        "property": "startTime",
+        "title": "آغاز",
+        "description": "آغاز کا وقت۔"
+      },
+      {
+        "property": "endTime",
+        "title": "اختتام",
+        "description": "اختتام کا وقت۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "اختیاری نمایاں رنگ۔"
+      },
+      {
+        "property": "dark",
+        "title": "گہری تھیم",
+        "description": "گہری تھیم فعال کریں۔"
+      }
+    ]
+  }
+}

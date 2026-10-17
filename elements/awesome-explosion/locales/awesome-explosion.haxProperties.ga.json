@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Pléascadh Iontach",
+    "description": "Beochan phléasctha idirghníomhach le maisíochtaí fuaime roghnacha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Méid",
+        "description": "Socraigh méid an phléasctha.",
+        "options": {
+          "tiny": "Bídeach",
+          "small": "Beag",
+          "medium": "Meánach",
+          "large": "Mór",
+          "epic": "Eipiciúil"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Dath",
+        "description": "Socraigh téama datha an phléasctha.",
+        "options": {
+          "": "Réamhshocrú",
+          "red": "Dearg",
+          "blue": "Gorm",
+          "purple": "Corcra",
+          "orange": "Oráiste",
+          "yellow": "Buí"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Maisíochtaí Fuaime",
+        "description": "Cumasaigh maisíochtaí fuaime."
+      },
+      {
+        "property": "resetSound",
+        "title": "Athshocraigh an Fhuaim",
+        "description": "Atosaigh an fhuaim ón tús gach uair."
+      },
+      {
+        "property": "image",
+        "title": "Íomhá Shaincheaptha",
+        "description": "URL roghnach d'íomhá phléasctha shaincheaptha."
+      },
+      {
+        "property": "sound",
+        "title": "Fuaim Shaincheaptha",
+        "description": "URL roghnach do mhaisíocht fuaime shaincheaptha."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Díchumasaithe",
+        "description": "Díchumasaigh gach idirghníomhaíocht."
+      }
+    ]
+  }
+}

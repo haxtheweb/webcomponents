@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Poraka whakahua",
+    "description": "He poraka whakahua kua whakarākeitia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Tohutoro",
+        "description": "Kupu tohutoro."
+      },
+      {
+        "property": "alt",
+        "title": "Kupu kē",
+        "description": "Kupu kē mō te whakaahua."
+      },
+      {
+        "property": "image",
+        "title": "Whakaahua",
+        "description": "Whakaahua ka whakaaturia me te whakahua."
+      }
+    ]
+  }
+}

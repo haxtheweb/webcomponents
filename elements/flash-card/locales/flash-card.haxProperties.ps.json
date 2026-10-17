@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "فلش کارت",
+    "description": "مفاهیم د مخ او شا لرونکو فلش کارتونو سره تمرین کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "د کارت مخ",
+        "description": "د مخ متن یا پوښتنه."
+      },
+      {
+        "slot": "back",
+        "title": "د کارت شا",
+        "description": "تمه شوی ځواب."
+      },
+      {
+        "property": "imgSource",
+        "title": "د انځور سرچینه",
+        "description": "هغه انځوري فایل چې په کارت کې کارول کېږي. د انځور پر کلیدي کلمې غالب دی."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "د عمل ډول",
+        "description": "OER Schema: هغه عمل چې دا تمرین پکې شامل دی (لکه لوستل، لیکل، جوړول، څېړنه، اورېدل، کتل، فکر کول، بحث، مشاهده، وړاندې کول، ارزونه)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "د زده کړې موخه",
+        "description": "OER Schema: د هغې زده کړې موخې ID یا URL چې دا تمرین یې ملاتړ کوي."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "تیاره",
+        "description": "تیاره حالت وکاروئ."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د کارت تاکیدي رنګ."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "د انځور کلیدي کلمه",
+        "description": "د تصادفي انځور کلیدي کلمه. د انځور سرچینه پرې غالبه ده."
+      }
+    ]
+  }
+}

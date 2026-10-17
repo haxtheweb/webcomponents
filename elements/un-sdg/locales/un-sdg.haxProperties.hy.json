@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "ՄԱԿ-ի կայուն զարգացման նպատակ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Նպատակ",
+        "description": "UN SDG համարը։"
+      },
+      {
+        "property": "colorOnly",
+        "title": "Միայն գույնը",
+        "description": "Ցուցադրել միայն նպատակի գույնը։"
+      }
+    ]
+  }
+}

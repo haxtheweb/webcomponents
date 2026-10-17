@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Isisongeli se-H5P sokulayisha nokubonisa iifayile ze-.h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Ikhowudi yokufaka i-iframe ye-H5P"
+      }
+    ]
+  }
+}

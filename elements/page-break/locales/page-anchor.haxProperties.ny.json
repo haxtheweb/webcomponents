@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Nangula wa Tsamba",
+    "description": "Lumikizani ku malo enieni a zofalitsa patsamba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cholinga cha tsamba",
+        "description": "ID kapena chinthu chomwe nangula uyu akuloza."
+      },
+      {
+        "property": "value",
+        "title": "Mtengo wa ulalo wakuya",
+        "description": "Mtengo wa ulalo wakuya (mwachitsanzo nthawi kapena ID ya silaidi)."
+      },
+      {
+        "property": "entityId",
+        "title": "Chinthu cha tsamba",
+        "description": "Chinthu chosankha cha tsamba choyendetsa kuwonetsa kwa mfundo zokhudzana."
+      }
+    ]
+  }
+}

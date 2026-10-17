@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Detagli di a pagina",
+    "description": "Definisce una sparte visuale trà e pagine chì i CMS ponu aduprà per creà pagine."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Titulu affissatu in u tema è cum'è prima intestatura."
+      },
+      {
+        "property": "pageType",
+        "title": "Tipu",
+        "description": "Etichetta visuale di u cuntestu di a pagina.",
+        "options": {
+          "": "-- nisunu --",
+          "content": "Cuntenutu",
+          "assessment": "Valutazione",
+          "quiz": "Quiz",
+          "submission": "Rimessa",
+          "lesson": "Lezzione",
+          "module": "Modulu",
+          "task": "Funzione",
+          "activity": "Attività",
+          "project": "Prughjettu",
+          "practice": "Pratica",
+          "unit": "Unità",
+          "objectives": "Ughjettivi d'amparera",
+          "connection": "Cunnessione",
+          "knowledge": "A sapiate?",
+          "strategy": "Strategia d'amparera",
+          "discuss": "Discute",
+          "listen": "Ascultà",
+          "make": "Fà",
+          "observe": "Osservà",
+          "present": "Prisentà",
+          "reading": "Lettura",
+          "reflect": "Riflette",
+          "research": "Circà",
+          "watch": "Fighjà",
+          "write": "Scrive"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Etichette",
+        "description": "Lista d'etichette spiccate da virgule."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL di u ligame",
+        "description": "URL di ridirezzione affissatu invece di u cuntenutu di a pagina."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Destinazione di u ligame",
+        "description": "Apre i ligami in a listessa finestra o in una finestra nova.",
+        "options": {
+          "_self": "Listessa finestra",
+          "_blank": "Finestra nova"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Publicata",
+        "description": "E pagine micca publicate sò piattate à l'utilizatori finali."
+      },
+      {
+        "property": "locked",
+        "title": "Bloccà a pagina",
+        "description": "Bloccà o sbluccà tutti l'elementi di sta pagina."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Rimpiazzà u slug autumaticu",
+        "description": "Impedisce l'aghjurnamenti autumatichi di u slug secondu u titulu o a pagina parente."
+      },
+      {
+        "property": "slug",
+        "title": "Percorsu",
+        "description": "Slug di l'URL di sta pagina."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Media chì riprisenta a pagina, adupratu in certi temi è vedute."
+      },
+      {
+        "property": "parent",
+        "title": "Parente",
+        "description": "Percorsu di a pagina parente."
+      },
+      {
+        "property": "noderefs",
+        "title": "Cuntenutu cunnessu",
+        "description": "Pagine cunnesse à sta pagina."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Discrizzione",
+        "description": "Discrizzione aduprata in e cullezzione è per l'ottimizazione per i mutori di ricerca."
+      },
+      {
+        "property": "entityType",
+        "title": "Tipu d'entità",
+        "description": "Hè una pagina per difettu, s'ellu ùn hè micca definitu altrimente.",
+        "options": {
+          "page": "Pagina (predefinita)",
+          "taxonomy": "Tassunumia",
+          "taxonomyTerm": "Termine di tassunumia",
+          "region": "Regione"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona assuciata à sta pagina in u situ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Culore assuciatu à sta pagina in u situ."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Piattà in u menù",
+        "description": "Piattà sta pagina da i menù tenendu u so URL."
+      },
+      {
+        "property": "order",
+        "title": "Ordine",
+        "description": "Ordine rispettu à e pagine surelle."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Tema di a pagina",
+        "description": "Rimpiazzà u tema solu per sta pagina."
+      },
+      {
+        "property": "author",
+        "title": "Autore",
+        "description": "Nome d'utilizatore di l'ultima persona chì hà mudificatu sta pagina."
+      }
+    ]
+  }
+}

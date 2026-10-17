@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Tile yePolaris",
+    "description": "Ratidza tile yePolaris ine musoro, mavara anotsigira asingamanikidzwi, nechinongedzo chisingamanikidzwi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Mavara makuru",
+        "description": "Mavara makuru etile."
+      },
+      {
+        "property": "line2",
+        "title": "Mavara echipiri",
+        "description": "Mavara anotsigira asingamanikidzwi."
+      },
+      {
+        "property": "type",
+        "title": "Mhando yetile",
+        "description": "Mhando yetile yakagadzirwa kare.",
+        "options": {
+          "1": "Mhando 1",
+          "2": "Mhando 2",
+          "3": "Mhando 3",
+          "4": "Mhando 4",
+          "5": "Mhando 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Mufananidzo wekumashure",
+        "description": "URL yemufananidzo wekumashure inoshandiswa nemhando dzetile dzinotsigira mifananidzo."
+      },
+      {
+        "property": "link",
+        "title": "Chinongedzo",
+        "description": "URL isingamanikidzwi yekuenda kana tile yadzvanywa."
+      }
+    ]
+  }
+}

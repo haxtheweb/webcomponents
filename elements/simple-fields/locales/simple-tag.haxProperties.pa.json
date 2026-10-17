@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "ਟੈਗ / ਪਿੱਲ",
+    "description": "ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਰੰਗ, ਰੱਦ ਬਟਨ ਜਾਂ ਟੌਗਲ ਵਾਲਾ ਸੰਖੇਪ ਪਿੱਲ-ਆਕਾਰ ਲੇਬਲ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ਲੇਬਲ",
+        "description": "ਪਿੱਲ ਦੇ ਅੰਦਰ ਦਿਖਾਈ ਲਿਖਤ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਪਿੱਲ ਦੇ ਪਿਛੋਕੜ ਲਈ SimpleColors ਐਕਸੈਂਟ ਨਾਮ।",
+        "options": {
+          "": "-- ਮੂਲ --",
+          "red": "ਲਾਲ",
+          "pink": "ਗੁਲਾਬੀ",
+          "purple": "ਜਾਮਨੀ",
+          "deep-purple": "ਗੂੜ੍ਹਾ ਜਾਮਨੀ",
+          "indigo": "ਨੀਲ (ਇੰਡੀਗੋ)",
+          "blue": "ਨੀਲਾ",
+          "light-blue": "ਹਲਕਾ ਨੀਲਾ",
+          "cyan": "ਸਿਆਨ",
+          "teal": "ਟੀਲ",
+          "green": "ਹਰਾ",
+          "light-green": "ਹਲਕਾ ਹਰਾ",
+          "lime": "ਨਿੰਬੂ ਰੰਗ",
+          "yellow": "ਪੀਲਾ",
+          "amber": "ਅੰਬਰ",
+          "orange": "ਸੰਤਰੀ",
+          "deep-orange": "ਗੂੜ੍ਹਾ ਸੰਤਰੀ",
+          "brown": "ਭੂਰਾ",
+          "blue-grey": "ਨੀਲਾ ਸਲੇਟੀ",
+          "grey": "ਸਲੇਟੀ"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ਸਵੈਚਲਿਤ ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਲੇਬਲ ਲਿਖਤ ਤੋਂ ਐਕਸੈਂਟ ਰੰਗ ਸਵੈਚਲਿਤ ਤੌਰ 'ਤੇ ਤੈਅ ਕਰੋ।"
+      },
+      {
+        "property": "cancelButton",
+        "title": "ਰੱਦ ਬਟਨ",
+        "description": "ਪਿੱਲ ਦੇ ਅੰਦਰ ਹਟਾਓ/ਰੱਦ ਕਰੋ ਆਈਕਨ ਬਟਨ ਦਿਖਾਓ।"
+      },
+      {
+        "property": "readonly",
+        "title": "ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ",
+        "description": "ਰੱਦ ਬਟਨ ਲੁਕਾਓ ਤਾਂ ਜੋ ਪਿੱਲ ਸਿਰਫ਼ ਦਿਖਾਉਣ ਲਈ ਹੋਵੇ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "ਟੌਗਲ ਹੁੰਦਾ ਹੈ",
+        "description": "ਬਟਨ 'ਤੇ ਕਲਿੱਕ ਕਰਨ 'ਤੇ ਪਿੱਲ ਨੂੰ ਚਾਲੂ/ਬੰਦ ਟੌਗਲ ਕਰੋ।"
+      },
+      {
+        "property": "toggled",
+        "title": "ਟੌਗਲ ਚਾਲੂ",
+        "description": "ਕੀ ਪਿੱਲ ਇਸ ਵੇਲੇ ਚਾਲੂ ਹੈ।"
+      },
+      {
+        "property": "toggledIcon",
+        "title": "ਟੌਗਲ ਆਈਕਨ",
+        "description": "ਪਿੱਲ ਚਾਲੂ ਹੋਣ 'ਤੇ ਦਿਖਾਉਣ ਲਈ ਆਈਕਨ।"
+      },
+      {
+        "property": "disabled",
+        "title": "ਅਯੋਗ",
+        "description": "ਪਿੱਲ ਨਾਲ ਪਰਸਪਰ ਕਿਰਿਆ ਅਯੋਗ ਕਰੋ।"
+      }
+    ]
+  }
+}

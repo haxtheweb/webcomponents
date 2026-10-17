@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "自我检测",
+    "description": "用户可以完成自我检测。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "图像",
+        "description": "自我检测的图像。"
+      },
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "自我检测的标题。"
+      },
+      {
+        "property": "alt",
+        "title": "替代文本",
+        "description": "图像的替代文本。"
+      },
+      {
+        "slot": "question",
+        "title": "问题"
+      },
+      {
+        "slot": "",
+        "title": "答案"
+      },
+      {
+        "property": "accentColor",
+        "title": "主题颜色",
+        "description": "从设计系统中选择主题颜色。",
+        "options": {
+          "primary": "主要",
+          "accent": "强调",
+          "success": "成功",
+          "warning": "警告",
+          "error": "错误",
+          "info": "信息"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学习目标",
+        "description": "以 oer:hasLearningObjective 输出的学习目标引用。"
+      },
+      {
+        "property": "assessing",
+        "title": "测评对象",
+        "description": "以 oer:assessing 输出的活动引用。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "更多链接",
+        "description": "指向更多信息的链接。"
+      }
+    ]
+  }
+}

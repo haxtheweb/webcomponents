@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Veb komponent sənəd pleyeri"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Pəncərəni gizlət",
+        "description": "Çıxış pəncərəsini gizlət; məqsəd yalnız terminal olduqda faydalıdır"
+      }
+    ]
+  }
+}

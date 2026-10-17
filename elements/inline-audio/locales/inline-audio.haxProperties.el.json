@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ενσωματωμένος ήχος",
+    "description": "Αναπαραγωγή ήχου μέσα στο κείμενο για εμπλουτισμό του περιεχομένου της σελίδας."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Πηγή",
+        "description": "Αρχείο MP3 ή URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Χρώμα έμφασης",
+        "description": "Χρώμα έμφασης κάρτας."
+      },
+      {
+        "property": "shiny",
+        "title": "Γυαλιστερό",
+        "description": "Χρήση πιο ανοιχτού φόντου έμφασης αντί για γκρι."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Σκούρο",
+        "description": "Χρήση σκούρας λειτουργίας."
+      }
+    ]
+  }
+}

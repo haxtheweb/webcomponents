@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Tinye ọdịnaya webụ mpụga n'ime iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL Akụrụngwa",
+        "description": "URL akụrụngwa."
+      },
+      {
+        "property": "height",
+        "title": "Ogo",
+        "description": "Ogo iframe."
+      },
+      {
+        "property": "width",
+        "title": "Obosara",
+        "description": "Obosara iframe."
+      }
+    ]
+  }
+}

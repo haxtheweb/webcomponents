@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Таблиця",
+    "description": "Табличні дані для вебу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Заголовок рядка",
+        "description": "Вважати перший рядок заголовком."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Заголовок стовпця",
+        "description": "Вважати перший стовпець заголовком."
+      },
+      {
+        "property": "footer",
+        "title": "Нижній колонтитул",
+        "description": "Вважати останній рядок підсумковим."
+      },
+      {
+        "property": "sort",
+        "title": "Сортування",
+        "description": "Дозволити сортування за значеннями стовпців."
+      },
+      {
+        "property": "filter",
+        "title": "Дозволити фільтр",
+        "description": "Дозволити фільтрування за значеннями стовпців."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Числове оформлення",
+        "description": "Застосувати числове оформлення до числових стовпців."
+      },
+      {
+        "property": "responsive",
+        "title": "Адаптивна",
+        "description": "Підлаштовувати макет таблиці на малих екранах."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Режим рубрики",
+        "description": "Трактувати цю таблицю як Rubric з OER Schema, щоб генерувалися метадані Rubric, RubricScale, RubricCriterion і RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Тип рубрики",
+        "description": "Стиль рубрики, що виводиться як oer:rubricType (має сенс лише коли увімкнено режим рубрики).",
+        "options": {
+          "": "(немає)",
+          "analytic": "Аналітична",
+          "holistic": "Холістична",
+          "single-point": "Одноточкова",
+          "checklist": "Контрольний список"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "З рамками"
+      },
+      {
+        "property": "condensed",
+        "title": "Стиснуті рядки",
+        "description": "Зменшити висоту рядків."
+      },
+      {
+        "property": "striped",
+        "title": "Смугасті рядки",
+        "description": "Затінювати кожен другий рядок."
+      },
+      {
+        "property": "downloadable",
+        "title": "Кнопка завантаження",
+        "description": "Додати кнопку для завантаження таблиці."
+      },
+      {
+        "property": "copyable",
+        "title": "Кнопка копіювання",
+        "description": "Додати кнопку для копіювання даних таблиці у форматі CSV."
+      },
+      {
+        "property": "printable",
+        "title": "Кнопка друку",
+        "description": "Додати кнопку для друку лише таблиці."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Дані CSV",
+        "description": "Створити таблицю із завантаженого CSV-файлу."
+      }
+    ]
+  }
+}

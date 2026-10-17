@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJSコンテナ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "エディターを非表示",
+        "description": "ファイル編集インターフェースを非表示にします。"
+      },
+      {
+        "property": "hideTerminal",
+        "title": "ターミナルを非表示",
+        "description": "自動実行プログラム用にターミナルを非表示にします。"
+      },
+      {
+        "property": "hideWindow",
+        "title": "ウィンドウを非表示",
+        "description": "ターミナルのみで使う場合に出力ウィンドウを非表示にします。"
+      },
+      {
+        "slot": "",
+        "title": "コマンド",
+        "description": "読み込み前に実行するコマンド（1行に1つ）。"
+      }
+    ]
+  }
+}

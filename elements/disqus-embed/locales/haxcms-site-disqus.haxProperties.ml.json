@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus അഭിപ്രായങ്ങൾ",
+    "description": "Disqus അഭിപ്രായ വെബ് സേവനവുമായുള്ള സംയോജനം"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "ചുരുക്കപ്പേര്",
+        "description": "Disqus-ലെ പ്രോപ്പർട്ടി ചുരുക്കപ്പേര്"
+      }
+    ]
+  }
+}

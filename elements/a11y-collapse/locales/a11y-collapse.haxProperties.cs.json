@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Sbalitelný kontejner",
+    "description": "Jeden rozbalovací a sbalovací kontejner."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Nadpis",
+        "description": "Text sbalitelného panelu."
+      },
+      {
+        "property": "expanded",
+        "title": "Rozbaleno",
+        "description": "Ve výchozím stavu rozbalit."
+      },
+      {
+        "property": "headingButton",
+        "title": "Tlačítko v nadpisu",
+        "description": "Umožnit kliknutí na celý nadpis, nejen na ikonu."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona tlačítka pro rozbalení/sbalení."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikona (po rozbalení)",
+        "description": "Volitelná ikona pro rozbalený stav přepínače."
+      },
+      {
+        "slot": "",
+        "title": "Obsah",
+        "description": "Obsah sbalitelného panelu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Popisek",
+        "description": "Popisek tlačítka pro rozbalení/sbalení."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Popisek (po rozbalení)",
+        "description": "Popisek tlačítka pro rozbalení/sbalení v rozbaleném stavu."
+      }
+    ]
+  }
+}

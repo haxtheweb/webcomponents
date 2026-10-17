@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Iegult Discord kopienas no kopīgošanas URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Resursa URL",
+        "description": "Resursa URL."
+      },
+      {
+        "property": "height",
+        "title": "Augstums",
+        "description": "Satura rāmja augstums."
+      },
+      {
+        "property": "width",
+        "title": "Platums",
+        "description": "Satura rāmja platums."
+      }
+    ]
+  }
+}

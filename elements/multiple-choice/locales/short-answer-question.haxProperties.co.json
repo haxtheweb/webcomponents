@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Dumanda à risposta corta",
+    "description": "Fà risponde l'utilizatore à una dumanda simplice"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Dumanda",
+        "description": "Dumanda à a quale l'utilizatori devenu risponde."
+      },
+      {
+        "property": "answers",
+        "title": "Risposte pussibule"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome di u quiz",
+        "description": "Nome di u quiz trasmessu per identificà st'elementu in l'ambienti basati nant'à xAPI"
+      }
+    ]
+  }
+}

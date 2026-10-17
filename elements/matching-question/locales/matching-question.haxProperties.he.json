@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "שאלת התאמה",
+    "description": "פעילות התאמה בגרירה ושחרור המצמידה הנחיות לתשובות הנכונות שלהן."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "שאלה",
+        "description": "שאלה למשתמשים. סמנו יעדי שחרור, ולאחר מכן רשמו תשובות עד ליעד הבא."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "פורמט ציון",
+        "description": "OER Schema: פורמט הציון להערכה זו (למשל נקודות, אות, אחוז, השלמה)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "מטרת למידה",
+        "description": "OER Schema: מטרת הלמידה המשויכת להערכה זו."
+      },
+      {
+        "property": "forCourse",
+        "title": "קורס",
+        "description": "OER Schema: הקורס שעבורו מיועדת הערכה זו."
+      },
+      {
+        "property": "answers",
+        "title": "תשובות"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "שם הבוחן",
+        "description": "שם הבוחן המשמש לזיהוי ב-xAPI במערכות אנליטיקה."
+      }
+    ]
+  }
+}

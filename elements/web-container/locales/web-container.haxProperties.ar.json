@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "حاوية NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "إخفاء المحرر",
+        "description": "إخفاء واجهة تحرير الملفات."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "إخفاء الطرفية",
+        "description": "إخفاء الطرفية للبرامج ذات التشغيل التلقائي."
+      },
+      {
+        "property": "hideWindow",
+        "title": "إخفاء النافذة",
+        "description": "إخفاء نافذة الإخراج للاستخدام عبر الطرفية فقط."
+      },
+      {
+        "slot": "",
+        "title": "الأوامر",
+        "description": "الأوامر (واحد في كل سطر) المراد تشغيلها قبل التحميل."
+      }
+    ]
+  }
+}

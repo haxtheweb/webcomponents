@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Калимаҳоро қайд кунед",
+    "description": "Мафҳумҳоро тавассути калимаҳо бо клик дар дохили матн муайян кунед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Савол",
+        "description": "Саволе, ки корбарон бояд ба он ҷавоб диҳанд."
+      },
+      {
+        "property": "statement",
+        "title": "Изҳорот",
+        "description": "Изҳороте, ки ба амали мутақобилаи «калимаҳоро қайд кунед» табдил дода мешавад."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формати баҳодиҳӣ",
+        "description": "OER Schema: формати баҳодиҳӣ барои ин арзёбӣ (масалан, хол, ҳарф, фоиз, иҷро)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ҳадафи таълимӣ",
+        "description": "OER Schema: ҳадафи таълимӣ, ки бо ин арзёбӣ алоқаманд аст."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курсе, ки ин арзёбӣ барои он пешбинӣ шудааст."
+      },
+      {
+        "property": "answers",
+        "title": "Ҷавобҳо"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Номи викторина",
+        "description": "Номи викторина, ки барои муайян кардани ин унсур дар муҳитҳои дар асоси xAPI истифода мешавад"
+      }
+    ]
+  }
+}

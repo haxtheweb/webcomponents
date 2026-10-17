@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI վիզուալիզատոր",
+    "description": "Նվագարկել MIDI համատեքստում՝ վիզուալիզացիայով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Աղբյուր",
+        "description": "Նվագարկվող ֆայլի URL-ը։"
+      },
+      {
+        "property": "visualizer",
+        "title": "Վիզուալիզացիա",
+        "description": "Երաժշտական ֆայլի վիզուալիզացիայի ոճը։",
+        "options": {
+          "staff": "Հնգագիծ",
+          "piano-roll": "Դաշնամուրային գլան",
+          "waterfall": "Դաշնամուր + ջրվեժ"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Թաքցնել ջրվեժը",
+        "description": "Թաքցնել ջրվեժի նոտաները դաշնամուրային վիզուալիզացիայում։"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D predvajalnik",
+    "description": "Predvajalnik 3D datotek / obogatene resničnosti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Vir",
+        "description": "URL te AR datoteke."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Položaj X elementa v AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Položaj Y elementa v AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Položaj Z elementa v AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Barva neba",
+        "description": "Izberite barvo neba v prizoru."
+      }
+    ]
+  }
+}

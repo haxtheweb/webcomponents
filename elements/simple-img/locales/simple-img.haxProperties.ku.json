@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Wêneyê Hêsan",
+    "description": "Wêneyan bi parametreyên hêsan biguherîne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Çavkanî",
+        "description": "URL ya çavkaniya wêneyê."
+      },
+      {
+        "property": "height",
+        "title": "Bilindahî",
+        "description": "Bilindahiya wêneyê ya vebijarkî."
+      },
+      {
+        "property": "width",
+        "title": "Firehî",
+        "description": "Firehiya wêneyê ya vebijarkî."
+      },
+      {
+        "property": "alt",
+        "title": "Nivîsa alt",
+        "description": "Ji bo xwînerên ekranê û SEO ya baştir bikêr e."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kalîte",
+        "description": "Kalîteya wêneyê dema çêkirinê (tenê JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Pêşîniya Anînê",
+        "description": "Şîreta performansê ji bo gerokên nûjen.",
+        "options": {
+          "auto": "Otomatîk",
+          "high": "Bilind",
+          "low": "Nizm"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Rêbaza dekodkirinê",
+        "description": "Şîreta performansê ji bo nîşandana wêneyan di gerokên nûjen de.",
+        "options": {
+          "auto": "Otomatîk",
+          "async": "Asînkron"
+        }
+      }
+    ]
+  }
+}

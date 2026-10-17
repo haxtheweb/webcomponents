@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Upota Discord-yhteisöjä jakolinkin avulla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Resurssin URL",
+        "description": "Resurssin URL."
+      },
+      {
+        "property": "height",
+        "title": "Korkeus",
+        "description": "Sisältökehyksen korkeus."
+      },
+      {
+        "property": "width",
+        "title": "Leveys",
+        "description": "Sisältökehyksen leveys."
+      }
+    ]
+  }
+}

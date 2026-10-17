@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ancla de página",
+    "description": "Enlaza a puntos concretos de los elementos multimedia de la página."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Destino en la página",
+        "description": "ID o recurso al que apunta esta ancla."
+      },
+      {
+        "property": "value",
+        "title": "Valor del enlace profundo",
+        "description": "Valor del enlace profundo (por ejemplo, una marca de tiempo o el ID de una diapositiva)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entidad del sitio",
+        "description": "Entidad del sitio opcional para controlar la presentación de conceptos relacionados."
+      }
+    ]
+  }
+}

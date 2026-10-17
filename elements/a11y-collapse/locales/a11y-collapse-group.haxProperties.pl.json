@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grupa rozwijanych sekcji",
+    "description": "Grupa elementów do rozwijania i zwijania."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Rozwijaj tylko jeden",
+        "description": "Tylko jeden element może być rozwinięty."
+      },
+      {
+        "slot": "",
+        "title": "Elementy zwijane",
+        "description": "Elementy do zwijania."
+      }
+    ]
+  }
+}

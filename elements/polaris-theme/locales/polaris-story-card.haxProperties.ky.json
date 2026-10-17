@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris окуя картасы",
+    "description": "Фон сүрөтү, тиреч энбелгиси жана баш сөз тексти бар Polaris окуя картасын көрсөтүү."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Фон сүрөтү",
+        "description": "Картанын фону катары көрсөтүлгөн сүрөттүн URL дареги."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Фондун өлчөмү",
+        "description": "Фон сүрөтү картаны кантип толтурат (CSS background-size).",
+        "options": {
+          "cover": "Жабуу (cover)",
+          "contain": "Батыруу (contain)",
+          "auto": "Авто (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Фондун бекитилиши",
+        "description": "Сыдырганда фон сүрөтү кандай аракеттенет (CSS background-attachment).",
+        "options": {
+          "scroll": "Сыдыруу (scroll)",
+          "fixed": "Бекитилген (fixed)",
+          "local": "Жергиликтүү (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Тиреч энбелгиси",
+        "description": "Картанын жогору жагында көрсөтүлгөн баш тамга менен жазылган кыска энбелги. Жашыруу үчүн бош калтырыңыз."
+      },
+      {
+        "property": "label",
+        "title": "Картанын тексти",
+        "description": "Төмөнкү панелде көрсөтүлгөн негизги текст."
+      },
+      {
+        "property": "link",
+        "title": "Шилтеме",
+        "description": "Бүт картаны ороп турган кошумча бара турган URL."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "சொற்களஞ்சியம்",
+    "description": "சொற்களஞ்சியச் சொல்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "சொல்"
+      },
+      {
+        "property": "information",
+        "title": "வரையறை",
+        "description": "சொல்லைக் கிளிக் செய்யும்போது காட்டப்படும் வரையறை."
+      },
+      {
+        "property": "popoverMode",
+        "title": "பாப்ஓவர்",
+        "description": "வரையறையை உள்வரியாக அல்லாமல் பாப்ஓவரில் காட்டவும்."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "இணைப்புகள்",
+        "description": "இந்தச் சொல்லுடன் தொடர்புடைய துணை இணைப்புகளின் பட்டியல்."
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity pleýeri",
+    "description": "Unity WebGL pleýeri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Maksat",
+        "description": "Oýun gurluşygynyň ýoly."
+      },
+      {
+        "property": "compression",
+        "title": "Gysyş usuly",
+        "description": "Oýun serişdeleri üçin gysyş faýl giňeltmesi."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Akym URL-i",
+        "description": "Akym serişdeleriniň URL-i."
+      },
+      {
+        "property": "companyname",
+        "title": "Kompaniýanyň ady",
+        "description": "Kompaniýanyň ady."
+      },
+      {
+        "property": "productname",
+        "title": "Önümiň ady",
+        "description": "Oýnuň ady."
+      },
+      {
+        "property": "productversion",
+        "title": "Önümiň wersiýasy",
+        "description": "Çykyş wersiýasy."
+      },
+      {
+        "property": "width",
+        "title": "Kanwanyň giňligi",
+        "description": "Kanwanyň CSS giňligi (meselem, px ýa-da em)."
+      },
+      {
+        "property": "height",
+        "title": "Kanwanyň beýikligi",
+        "description": "Kanwanyň CSS beýikligi (meselem, px ýa-da em)."
+      },
+      {
+        "property": "background",
+        "title": "Kanwanyň fony",
+        "description": "Kanwanyň CSS fony."
+      }
+    ]
+  }
+}

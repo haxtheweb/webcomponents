@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub хувь нэмэр оруулагчдын жагсаалт",
+    "description": "GitHub API ашиглан RPG дүрүүд болгон харуулна."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Байгууллага",
+        "description": "github.com/ORG/REPO-оос авсан байгууллагын нэр."
+      },
+      {
+        "property": "repo",
+        "title": "Репозитори",
+        "description": "github.com/ORG/REPO-оос авсан репозиторийн нэр."
+      },
+      {
+        "property": "limit",
+        "title": "Хязгаар",
+        "description": "Харуулах хувь нэмэр оруулагчдын тоог хязгаарлах."
+      }
+    ]
+  }
+}

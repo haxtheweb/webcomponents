@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV-talva",
+    "description": "Hetta kann gera eina talvu úr eini CSV-fílu, líkamikið hvar hon er."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Kelda",
+        "description": "URL til hesa CSV-fíluna."
+      },
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Heiti á talvuni, sum skal gerast."
+      },
+      {
+        "property": "description",
+        "title": "Lýsing",
+        "description": "Neyvari lýsing fyri betri atkomuleika til dátuna í talvuni."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn-inbäddning",
+    "description": "Bädda in ett LinkedIn-profilkort."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Personligt namn",
+        "description": "Segment med personligt användarnamn på LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Språkinställning",
+        "description": "Metadatavärde för språkinställning, t.ex. en_US."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Bilda komparo",
+    "description": "Ŝovi unu bildon super alian por komparo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Supra bildo",
+        "description": "Supra bildo ŝovata super la malsupran bildon."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alt-teksto de supra bildo",
+        "description": "Deviga alternativa teksto por alirebleco."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Malsupra bildo",
+        "description": "Malsupra bildo montrata sub la supra bildo."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alt-teksto de malsupra bildo",
+        "description": "Deviga alternativa teksto por alirebleco."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Konduto",
+        "description": "Elektu viŝan reĝimon (defaŭlta) aŭ opakecan reĝimon de la supra bildo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Koloro de la glitila stango."
+      },
+      {
+        "property": "dark",
+        "title": "Malhela",
+        "description": "Inversigi la koloron de la glitila stango."
+      },
+      {
+        "property": "position",
+        "title": "Komenca pozicio",
+        "description": "Komenca pozicio de 0 ĝis 100."
+      }
+    ]
+  }
+}

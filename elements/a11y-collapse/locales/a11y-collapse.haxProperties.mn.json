@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Хураадаг контейнер",
+    "description": "Дэлгэж, хурааж болох ганц контейнер."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Гарчиг",
+        "description": "Хураадаг хэсгийн текст."
+      },
+      {
+        "property": "expanded",
+        "title": "Дэлгэсэн",
+        "description": "Анхдагчаар дэлгэх."
+      },
+      {
+        "property": "headingButton",
+        "title": "Гарчгийн товч",
+        "description": "Зөвхөн дүрс тэмдэг биш, гарчгийг бүхэлд нь дарж болохуйц болгох."
+      },
+      {
+        "property": "icon",
+        "title": "Дүрс тэмдэг",
+        "description": "Дэлгэх/хураах сэлгүүр товчны дүрс тэмдэг."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Дүрс тэмдэг (дэлгэсэн үед)",
+        "description": "Дэлгэсэн төлөвийн нэмэлт дүрс тэмдэг."
+      },
+      {
+        "slot": "",
+        "title": "Агуулга",
+        "description": "Хураадаг хэсгийн агуулга."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Зөвлөмж",
+        "description": "Дэлгэх/хураах сэлгүүр товчны зөвлөмж."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Зөвлөмж (дэлгэсэн үед)",
+        "description": "Дэлгэсэн үед дэлгэх/хураах товчны зөвлөмж."
+      }
+    ]
+  }
+}

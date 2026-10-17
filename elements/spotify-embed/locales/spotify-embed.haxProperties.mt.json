@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Wrapper għall-embeds tal-plejer ta' Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sors",
+        "description": "Link embed jew ta' qsim minn Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Tema tal-kulur tal-isfond għall-plejer.",
+        "options": {
+          "": "Awtomatiku",
+          "0": "Iswed"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Daqs",
+        "description": "Daqs tal-plejer.",
+        "options": {
+          "normal": "Awtomatiku",
+          "compact": "Kompatt"
+        }
+      }
+    ]
+  }
+}

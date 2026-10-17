@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Brauseri PDF-vaatur",
+    "description": "Manusta PDF-fail tekstisiseselt koos valikulise kaardipaigutuse ja allalaadimisnupuga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF-i URL",
+        "description": "PDF-faili asukoht."
+      },
+      {
+        "property": "heading",
+        "title": "Pealkiri",
+        "description": "Kaardi pealkirja tekst."
+      },
+      {
+        "property": "card",
+        "title": "Kaardipaigutus",
+        "description": "Kuva PDF kaardil koos allalaadimisnupuga."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Allalaadimise silt",
+        "description": "Allalaadimisnupu silt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Toetamatuse teade",
+        "description": "Teade, kui brauser ei saa PDF-faile kuvada."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Toetamatuse lingi teade",
+        "description": "Lingi tekst, kui brauser ei saa PDF-faile kuvada."
+      },
+      {
+        "property": "width",
+        "title": "Laius",
+        "description": "PDF-vaaturi laius."
+      },
+      {
+        "property": "height",
+        "title": "Kõrgus",
+        "description": "PDF-vaaturi kõrgus."
+      }
+    ]
+  }
+}

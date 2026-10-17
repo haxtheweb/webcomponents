@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Angar Shafi",
+    "description": "Mahaɗi zuwa takamaiman wurare a cikin kafofi a shafin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Manufar shafi",
+        "description": "ID ko albarkatun da wannan angar ke nunawa."
+      },
+      {
+        "property": "value",
+        "title": "Ƙimar mahaɗi mai zurfi",
+        "description": "Ƙimar mahaɗi mai zurfi (misali lokaci ko ID na faifai)."
+      },
+      {
+        "property": "entityId",
+        "title": "Abun shafin yanar gizo",
+        "description": "Abun shafin yanar gizo na zaɓi don sarrafa gabatar da ra'ayoyi masu alaƙa."
+      }
+    ]
+  }
+}

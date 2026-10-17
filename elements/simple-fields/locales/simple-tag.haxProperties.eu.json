@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Etiketa / pilula",
+    "description": "Pilula itxurako etiketa trinkoa, aukerako nabarmentze kolorearekin, ezeztatzeko botoiarekin edo txandakagailuarekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etiketa",
+        "description": "Pilularen barruan erakusten den testua."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Pilularen atzealderako SimpleColors nabarmentze kolorearen izena.",
+        "options": {
+          "": "-- lehenetsia --",
+          "red": "Gorria",
+          "pink": "Arrosa",
+          "purple": "Morea",
+          "deep-purple": "More iluna",
+          "indigo": "Indigoa",
+          "blue": "Urdina",
+          "light-blue": "Urdin argia",
+          "cyan": "Ziana",
+          "teal": "Berde urdinxka",
+          "green": "Berdea",
+          "light-green": "Berde argia",
+          "lime": "Lima",
+          "yellow": "Horia",
+          "amber": "Anbarra",
+          "orange": "Laranja",
+          "deep-orange": "Laranja iluna",
+          "brown": "Marroia",
+          "blue-grey": "Gris urdinxka",
+          "grey": "Grisa"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Nabarmentze kolore automatikoa",
+        "description": "Atera nabarmentze kolorea etiketaren testutik automatikoki."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Ezeztatzeko botoia",
+        "description": "Erakutsi kentzeko/ezeztatzeko ikono-botoi bat pilularen barruan."
+      },
+      {
+        "property": "readonly",
+        "title": "Irakurtzeko soilik",
+        "description": "Ezkutatu ezeztatzeko botoia, pilula bistaratzeko soilik izan dadin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Txandakatzen da",
+        "description": "Egin pilula aktibatu/desaktibatu botoian klik egitean."
+      },
+      {
+        "property": "toggled",
+        "title": "Aktibatuta",
+        "description": "Pilula une honetan aktibatuta dagoen ala ez."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Aktibatutako ikonoa",
+        "description": "Pilula aktibatuta dagoenean erakusteko ikonoa."
+      },
+      {
+        "property": "disabled",
+        "title": "Desgaituta",
+        "description": "Desgaitu pilularekiko interakzioa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Petikan media",
+    "description": "Imej dengan petikan, sumber dan kapsyen pilihan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Petikan",
+        "description": "Teks petikan."
+      },
+      {
+        "slot": "author",
+        "title": "Pengarang",
+        "description": "Pengarang petikan."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Butiran pengarang",
+        "description": "Butiran pengarang."
+      },
+      {
+        "slot": "caption",
+        "title": "Kapsyen",
+        "description": "Kapsyen imej."
+      },
+      {
+        "property": "src",
+        "title": "Sumber Imej",
+        "description": "Fail imej yang digunakan untuk petikan media."
+      },
+      {
+        "property": "alt",
+        "title": "Teks Alt",
+        "description": "Teks alternatif untuk imej."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen kad."
+      }
+    ]
+  }
+}

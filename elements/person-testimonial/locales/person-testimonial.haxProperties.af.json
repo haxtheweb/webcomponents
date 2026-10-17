@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Prent-blokaanhaling",
+    "description": "Gestileerde aanhaling met 'n opsionele prent."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Prent",
+        "description": "Voeg 'n prent by die getuigskrif."
+      },
+      {
+        "property": "name",
+        "title": "Volle naam",
+        "description": "Naam van die persoon wat die getuigskrif gee."
+      },
+      {
+        "property": "position",
+        "title": "Posisie of postitel",
+        "description": "Posisie of postitel van die persoon."
+      },
+      {
+        "slot": "",
+        "title": "Aanhaling",
+        "description": "Aanhaling van die getuigskrif se outeur."
+      }
+    ]
+  }
+}

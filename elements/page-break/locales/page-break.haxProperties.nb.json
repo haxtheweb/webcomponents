@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Sidedetaljer",
+    "description": "Definer et visuelt skille mellom sider som publiseringssystemer kan bruke til å lage sider."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Tittel som vises i temaet og som første overskrift."
+      },
+      {
+        "property": "pageType",
+        "title": "Type",
+        "description": "Visuell kontekstetikett for siden.",
+        "options": {
+          "": "-- ingen --",
+          "content": "Innhold",
+          "assessment": "Vurdering",
+          "quiz": "Quiz",
+          "submission": "Innlevering",
+          "lesson": "Leksjon",
+          "module": "Modul",
+          "task": "Oppgave",
+          "activity": "Aktivitet",
+          "project": "Prosjekt",
+          "practice": "Øving",
+          "unit": "Enhet",
+          "objectives": "Læringsmål",
+          "connection": "Kobling",
+          "knowledge": "Visste du at?",
+          "strategy": "Læringsstrategi",
+          "discuss": "Diskuter",
+          "listen": "Lytt",
+          "make": "Lag",
+          "observe": "Observer",
+          "present": "Presenter",
+          "reading": "Lesing",
+          "reflect": "Reflekter",
+          "research": "Undersøk",
+          "watch": "Se",
+          "write": "Skriv"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Stikkord",
+        "description": "Kommaseparert liste med stikkord."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Lenke-URL",
+        "description": "Omdirigerings-URL som vises i stedet for sideinnholdet."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Lenkemål",
+        "description": "Åpne lenker i samme vindu eller i et nytt vindu.",
+        "options": {
+          "_self": "Samme vindu",
+          "_blank": "Nytt vindu"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Publisert",
+        "description": "Upubliserte sider er skjult for sluttbrukere."
+      },
+      {
+        "property": "locked",
+        "title": "Lås siden",
+        "description": "Lås eller lås opp alle elementer på denne siden."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Overstyr automatisk adressenavn",
+        "description": "Lås adressenavnet mot automatiske oppdateringer basert på tittel eller overordnet side."
+      },
+      {
+        "property": "slug",
+        "title": "Sti",
+        "description": "Adressenavn (URL-slug) for denne siden."
+      },
+      {
+        "property": "image",
+        "title": "Medier",
+        "description": "Medier som representerer siden, brukt i enkelte temaer og visninger."
+      },
+      {
+        "property": "parent",
+        "title": "Overordnet",
+        "description": "Stien til den overordnede siden."
+      },
+      {
+        "property": "noderefs",
+        "title": "Relatert innhold",
+        "description": "Sider relatert til denne siden."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Beskrivelse",
+        "description": "Beskrivelse brukt i samlinger og søkemotoroptimalisering."
+      },
+      {
+        "property": "entityType",
+        "title": "Enhetstype",
+        "description": "Standard er side med mindre annet er angitt.",
+        "options": {
+          "page": "Side (standard)",
+          "taxonomy": "Taksonomi",
+          "taxonomyTerm": "Taksonomiterm",
+          "region": "Region"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon knyttet til denne siden på nettstedet."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Farge knyttet til denne siden på nettstedet."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Skjul i meny",
+        "description": "Skjul denne siden fra menyer, men behold URL-en."
+      },
+      {
+        "property": "order",
+        "title": "Rekkefølge",
+        "description": "Rekkefølge i forhold til søskensider."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Sidetema",
+        "description": "Overstyr temaet bare for denne siden."
+      },
+      {
+        "property": "author",
+        "title": "Forfatter",
+        "description": "Brukernavnet til den som sist endret denne siden."
+      }
+    ]
+  }
+}

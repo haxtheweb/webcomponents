@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Partitura",
+    "description": "Representa y reproduce partituras, tablaturas de guitarra y notación musical mediante alphaTex o MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Notación alphaTex",
+        "description": "Marcado alphaTex en línea para la partitura. Edítalo directamente para escribir la notación; se guarda en una plantilla para conservar los espacios."
+      },
+      {
+        "property": "source",
+        "title": "Archivo de partitura",
+        "description": "Sube o enlaza un archivo MusicXML (.xml/.musicxml/.mxl) o Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Si se establece, tiene prioridad sobre el alphaTex en línea."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Reproducción de audio",
+        "description": "Activado de forma predeterminada: escucha la partitura reproducida con el sintetizador integrado. Desactívalo para el modo solo visor (sin audio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Mostrar opciones de visualización",
+        "description": "Mostrar los botones de zoom, estiramiento y diseño en la barra del reproductor."
+      },
+      {
+        "property": "showExport",
+        "title": "Mostrar botones de exportación",
+        "description": "Mostrar los botones para descargar MIDI e imprimir/PDF en la barra del reproductor."
+      }
+    ]
+  }
+}

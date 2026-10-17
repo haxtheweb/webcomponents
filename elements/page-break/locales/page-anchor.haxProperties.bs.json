@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sidro stranice",
+    "description": "Povežite na određene tačke u mediju na stranici."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cilj na stranici",
+        "description": "ID ili resurs na koji ovo sidro upućuje."
+      },
+      {
+        "property": "value",
+        "title": "Vrijednost dubokog linka",
+        "description": "Vrijednost dubokog linka (npr. vremenska oznaka ili ID slajda)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entitet stranice",
+        "description": "Opcionalni entitet stranice za upravljanje prikazom povezanih pojmova."
+      }
+    ]
+  }
+}

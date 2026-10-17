@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "从分享 URL 嵌入 Discord 社区。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "资源 URL",
+        "description": "资源 URL。"
+      },
+      {
+        "property": "height",
+        "title": "高度",
+        "description": "内容框高度。"
+      },
+      {
+        "property": "width",
+        "title": "宽度",
+        "description": "内容框宽度。"
+      }
+    ]
+  }
+}

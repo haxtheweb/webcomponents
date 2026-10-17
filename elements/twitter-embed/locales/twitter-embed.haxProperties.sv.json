@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X)-inbäddning",
+    "description": "Bädda in ett inlägg från X i sitt sammanhang."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Inläggets URL",
+        "description": "URL till inlägget som ska bäddas in."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Ljust eller mörkt tema för inlägg på X.",
+        "options": {
+          "light": "Ljus",
+          "dark": "Mörk"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Förhindra popup vid klick",
+        "description": "Förhindra att användare öppnar inlägget på x.com."
+      }
+    ]
+  }
+}

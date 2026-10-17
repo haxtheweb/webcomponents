@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Вбудовування Twitter (X)",
+    "description": "Вбудувати допис з X у контекст."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL допису",
+        "description": "URL допису для вбудовування."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Тема",
+        "description": "Світла або темна тема для дописів X.",
+        "options": {
+          "light": "Світлий",
+          "dark": "Темна"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Не відкривати спливне вікно при клацанні",
+        "description": "Не дозволяти користувачам відкривати допис на x.com."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris 故事卡",
+    "description": "显示 Polaris 故事卡，有背景图片、支柱标签搭标题文字。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "背景图片",
+        "description": "当卡片背景个图片 URL。"
+      },
+      {
+        "property": "backgroundSize",
+        "title": "背景尺寸",
+        "description": "背景图片哪能填满卡片（CSS background-size）。",
+        "options": {
+          "cover": "覆盖 (cover)",
+          "contain": "包含 (contain)",
+          "auto": "自动 (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "背景附着",
+        "description": "滚动辰光背景图片个表现（CSS background-attachment）。",
+        "options": {
+          "scroll": "滚动 (scroll)",
+          "fixed": "固定 (fixed)",
+          "local": "本地 (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "支柱标签",
+        "description": "卡片顶上显示个简短大写标签。留空就隐藏。"
+      },
+      {
+        "property": "label",
+        "title": "卡片文字",
+        "description": "下层面板里显示个主要文字。"
+      },
+      {
+        "property": "link",
+        "title": "链接",
+        "description": "包住整张卡片个可选目标 URL。"
+      }
+    ]
+  }
+}

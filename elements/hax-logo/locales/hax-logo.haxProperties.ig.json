@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Nka okwu HAX",
+    "description": "Ihe logo maka HAX, n'ezie dịka ihe HAX nwere ike iji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Nha logo HAX a ga-etinye",
+        "options": {
+          "mini": "Obere",
+          "small": "Obere",
+          "normal": "Nkịtị",
+          "large": "Nnukwu"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Ma a ga-agbanwe logo ka ọ bụrụ mkpụrụedemede ukwu"
+      }
+    ]
+  }
+}

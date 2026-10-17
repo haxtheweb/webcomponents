@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF brauzer baxıcısı",
+    "description": "PDF faylını ixtiyari kart düzəni və endirmə düyməsi ilə sətirdaxili yerləşdir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL-i",
+        "description": "PDF faylının yeri."
+      },
+      {
+        "property": "heading",
+        "title": "Başlıq",
+        "description": "Kart başlığının mətni."
+      },
+      {
+        "property": "card",
+        "title": "Kart düzəni",
+        "description": "PDF-i endirmə düyməsi olan kartda göstər."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Endirmə etiketi",
+        "description": "Endirmə düyməsi üçün etiket."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Dəstəklənmir mesajı",
+        "description": "Brauzer PDF fayllarını göstərə bilmədikdə mesaj."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Dəstəklənmir keçid mesajı",
+        "description": "Brauzer PDF fayllarını göstərə bilmədikdə keçid mətni."
+      },
+      {
+        "property": "width",
+        "title": "En",
+        "description": "PDF baxıcısının eni."
+      },
+      {
+        "property": "height",
+        "title": "Hündürlük",
+        "description": "PDF baxıcısının hündürlüyü."
+      }
+    ]
+  }
+}

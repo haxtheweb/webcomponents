@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "پرسش جورکردنی",
+    "description": "فعالیت جورکردنی کشیدن و رها کردن که گزاره‌ها را با پاسخ درستشان جفت می‌کند."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "پرسش",
+        "description": "پرسش برای کاربران. مقصدهای رهاسازی را علامت بزنید، سپس پاسخ‌ها را تا مقصد بعدی فهرست کنید."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "قالب نمره‌دهی",
+        "description": "OER Schema: قالب نمره‌دهی این ارزشیابی (مثلاً امتیاز، حرفی، درصدی، تکمیل)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "هدف یادگیری",
+        "description": "OER Schema: هدف یادگیری مرتبط با این ارزشیابی."
+      },
+      {
+        "property": "forCourse",
+        "title": "درس",
+        "description": "OER Schema: درسی که این ارزشیابی برای آن در نظر گرفته شده است."
+      },
+      {
+        "property": "answers",
+        "title": "پاسخ‌ها"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "نام آزمونک",
+        "description": "نام آزمونک برای شناسایی xAPI در سامانه‌های تحلیلی."
+      }
+    ]
+  }
+}

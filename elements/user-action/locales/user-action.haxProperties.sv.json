@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Användaråtgärd",
+    "description": "Spåra användaråtgärder och skicka data till xAPI-lager."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Händelse att spåra",
+        "description": "Användaråtgärd som utlöser händelsen.",
+        "options": {
+          "visibility": "Kan se detta",
+          "keydown": "Tryck på en tangent här",
+          "click": "Klicka här",
+          "hover": "Hovra över detta"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Spåra varje gång",
+        "description": "Som standard spåras endast första förekomsten."
+      }
+    ]
+  }
+}

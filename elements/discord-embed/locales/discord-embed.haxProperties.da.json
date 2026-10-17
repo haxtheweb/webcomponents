@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Indlejr Discord-fællesskaber fra en delings-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ressource-URL",
+        "description": "Ressource-URL."
+      },
+      {
+        "property": "height",
+        "title": "Højde",
+        "description": "Indholdsrammens højde."
+      },
+      {
+        "property": "width",
+        "title": "Bredde",
+        "description": "Indholdsrammens bredde."
+      }
+    ]
+  }
+}

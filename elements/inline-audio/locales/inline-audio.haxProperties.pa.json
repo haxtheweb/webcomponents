@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ਇਨਲਾਈਨ ਆਡੀਓ",
+    "description": "ਪੰਨੇ ਦੀ ਸਮੱਗਰੀ ਦੇ ਪੂਰਕ ਵਜੋਂ ਆਡੀਓ ਇਨਲਾਈਨ ਚਲਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ",
+        "description": "MP3 ਫ਼ਾਈਲ ਜਾਂ URL।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਕਾਰਡ ਦਾ ਐਕਸੈਂਟ ਰੰਗ।"
+      },
+      {
+        "property": "shiny",
+        "title": "ਚਮਕਦਾਰ",
+        "description": "ਸਲੇਟੀ ਦੀ ਥਾਂ ਹਲਕਾ ਐਕਸੈਂਟ ਪਿਛੋਕੜ ਵਰਤੋ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ਗੂੜ੍ਹਾ",
+        "description": "ਗੂੜ੍ਹਾ ਮੋਡ ਵਰਤੋ।"
+      }
+    ]
+  }
+}

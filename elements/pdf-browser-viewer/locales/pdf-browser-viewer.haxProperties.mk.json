@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Прегледувач на PDF во прелистувач",
+    "description": "Вградете PDF-датотека во страницата со изборен распоред на картичка и копче за преземање."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL на PDF",
+        "description": "Локација на PDF-датотеката."
+      },
+      {
+        "property": "heading",
+        "title": "Наслов",
+        "description": "Текст на насловот на картичката."
+      },
+      {
+        "property": "card",
+        "title": "Распоред на картичка",
+        "description": "Прикажи го PDF-от во картичка со копче за преземање."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Ознака за преземање",
+        "description": "Ознака за копчето за преземање."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Порака за неподдржано",
+        "description": "Порака кога прелистувачот не може да прикажува PDF-датотеки."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Порака за врска при неподдржано",
+        "description": "Текст на врската кога прелистувачот не може да прикажува PDF-датотеки."
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина на PDF-прегледувачот."
+      },
+      {
+        "property": "height",
+        "title": "Висина",
+        "description": "Висина на PDF-прегледувачот."
+      }
+    ]
+  }
+}

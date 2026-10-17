@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "ਪੰਨਾ ਭਾਗ",
+    "description": "ਪੰਨੇ ਦੀ ਸਮੱਗਰੀ ਅਤੇ ਸਕ੍ਰੀਨ-ਆਧਾਰਿਤ ਲੇਆਉਟਾਂ ਲਈ ਭਾਗ ਕੰਟੇਨਰ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "ਡਿਜ਼ਾਈਨ ਰੂਪ",
+        "description": "ਪਹਿਲਾਂ ਤੋਂ ਸੈੱਟ ਸ਼ੈਲੀ ਜੋ ਸਬੰਧਤ ਸੈਟਿੰਗਾਂ ਅੱਪਡੇਟ ਕਰਦੀ ਹੈ।"
+      },
+      {
+        "property": "image",
+        "title": "ਚਿੱਤਰ",
+        "description": "ਭਾਗ ਲਈ ਪਿਛੋਕੜ ਮੀਡੀਆ।"
+      },
+      {
+        "property": "bg",
+        "title": "ਪਿਛੋਕੜ ਰੰਗ",
+        "description": "ਜਦੋਂ ਕੋਈ ਚਿੱਤਰ ਸੈੱਟ ਨਾ ਹੋਵੇ ਤਾਂ ਪਿਛੋਕੜ ਰੰਗ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "ਸਕ੍ਰੋਲ ਬਟਨ",
+        "description": "ਅਗਲੇ ਭਾਗ ਤੱਕ ਸਕ੍ਰੋਲ ਕਰਨ ਵਾਲਾ ਬਟਨ ਦਿਖਾਓ।"
+      },
+      {
+        "property": "fold",
+        "title": "ਫੋਲਡ ਦਿਖਾਓ",
+        "description": "ਭਾਗ ਦੇ ਹੇਠਾਂ ਦਿੱਖ ਫੋਲਡ ਦਿਖਾਓ।"
+      },
+      {
+        "property": "full",
+        "title": "ਪੂਰੀ ਸਕ੍ਰੀਨ ਆਕਾਰ",
+        "description": "ਦਰਸ਼ਕ ਦੀ ਸਕ੍ਰੀਨ ਦੀ ਉਚਾਈ ਭਰੋ।"
+      },
+      {
+        "property": "filter",
+        "title": "ਫਿਲਟਰ ਲਾਗੂ ਕਰੋ",
+        "description": "ਪਿਛੋਕੜ ਚਿੱਤਰ 'ਤੇ ਦਿੱਖ ਫਿਲਟਰ ਲਾਗੂ ਕਰੋ।"
+      },
+      {
+        "slot": "",
+        "title": "ਸਮੱਗਰੀ",
+        "description": "ਭਾਗ ਦੀ ਸਮੱਗਰੀ।"
+      },
+      {
+        "slot": "entice",
+        "title": "ਖਿੱਚ",
+        "description": "ਵਿਕਲਪਿਕ ਖਿੱਚ ਪਾਉਣ ਵਾਲੀ ਸਮੱਗਰੀ।"
+      },
+      {
+        "slot": "buttons",
+        "title": "ਬਟਨ",
+        "description": "ਲਿਖਤ ਦੇ ਹੇਠਾਂ ਦਿਖਾਇਆ ਬਟਨ ਸਮੂਹ।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "ਐਂਕਰ ਲਿਖਤ",
+        "description": "ਨੈਵੀਗੇਸ਼ਨ ਵਿੱਚ ਦਿਖਾਇਆ ਐਂਕਰ ਲੇਬਲ।"
+      }
+    ]
+  }
+}

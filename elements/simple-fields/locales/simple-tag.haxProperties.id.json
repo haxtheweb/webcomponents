@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tag / Pil",
+    "description": "Label ringkas berbentuk pil dengan warna aksen, tombol batal, atau sakelar opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Label",
+        "description": "Teks yang ditampilkan di dalam pil."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Nama aksen SimpleColors untuk latar belakang pil.",
+        "options": {
+          "": "-- bawaan --",
+          "red": "Merah",
+          "pink": "Merah muda",
+          "purple": "Ungu",
+          "deep-purple": "Ungu Tua",
+          "indigo": "Nila",
+          "blue": "Biru",
+          "light-blue": "Biru Muda",
+          "cyan": "Sian",
+          "teal": "Hijau Kebiruan",
+          "green": "Hijau",
+          "light-green": "Hijau Muda",
+          "lime": "Hijau Limau",
+          "yellow": "Kuning",
+          "amber": "Kuning Amber",
+          "orange": "Oranye",
+          "deep-orange": "Oranye Tua",
+          "brown": "Cokelat",
+          "blue-grey": "Abu-abu Kebiruan",
+          "grey": "Abu-abu"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Warna aksen otomatis",
+        "description": "Turunkan warna aksen dari teks label secara otomatis."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Tombol batal",
+        "description": "Tampilkan tombol ikon hapus/batal di dalam pil."
+      },
+      {
+        "property": "readonly",
+        "title": "Hanya baca",
+        "description": "Sembunyikan tombol batal sehingga pil hanya untuk tampilan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Dapat dialihkan",
+        "description": "Jadikan pil beralih aktif/nonaktif saat tombol diklik."
+      },
+      {
+        "property": "toggled",
+        "title": "Dialihkan",
+        "description": "Apakah pil saat ini dalam keadaan aktif."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ikon saat aktif",
+        "description": "Ikon yang ditampilkan saat pil dalam keadaan aktif."
+      },
+      {
+        "property": "disabled",
+        "title": "Nonaktif",
+        "description": "Nonaktifkan interaksi dengan pil."
+      }
+    ]
+  }
+}

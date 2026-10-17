@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Рәсемнәрне чагыштыру",
+    "description": "Чагыштыру өчен бер рәсемне икенчесе өстеннән шудырырга."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Өске рәсем",
+        "description": "Аскы рәсем өстеннән шудырыла торган өске рәсем."
+      },
+      {
+        "property": "topAlt",
+        "title": "Өске рәсемнең alt тексты",
+        "description": "Үтемлелек өчен мәҗбүри alt текст."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Аскы рәсем",
+        "description": "Өске рәсем астында күрсәтелә торган рәсем."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Аскы рәсемнең alt тексты",
+        "description": "Үтемлелек өчен мәҗбүри alt текст."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Үз-үзен тоту",
+        "description": "Шудыру режимын (килешү буенча) яки өске рәсемнең үтә күренмәлек режимын сайлагыз."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Шудыргыч сызыгы төсе."
+      },
+      {
+        "property": "dark",
+        "title": "Караңгы",
+        "description": "Шудыргыч сызыгы төсен кирегә әйләндерергә."
+      },
+      {
+        "property": "position",
+        "title": "Башлангыч позиция",
+        "description": "0 дән 100 гә кадәр башлангыч позиция."
+      }
+    ]
+  }
+}

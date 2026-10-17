@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Nkọwa peeji",
+    "description": "Kọwaa nkewa a na-ahụ anya n'etiti peeji nke CMS nwere ike iji mepụta peeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Aha a na-egosi n'isiokwu saịtị na isiokwu mbụ."
+      },
+      {
+        "property": "pageType",
+        "title": "Ụdị",
+        "description": "Akara aha ọnọdụ peeji a na-ahụ anya.",
+        "options": {
+          "": "-- ọ dịghị --",
+          "content": "Ọdịnaya",
+          "assessment": "Nyocha",
+          "quiz": "Ule",
+          "submission": "Nnyefe",
+          "lesson": "Ihe ọmụmụ",
+          "module": "Modul",
+          "task": "Ọrụ",
+          "activity": "Omume",
+          "project": "Ọrụ ngo",
+          "practice": "Omume mmụta",
+          "unit": "Nkeji",
+          "objectives": "Ebumnuche Mmụta",
+          "connection": "Njikọ",
+          "knowledge": "Ị Maara?",
+          "strategy": "Atụmatụ Mmụta",
+          "discuss": "Kparịta ụka",
+          "listen": "Gee ntị",
+          "make": "Mepụta",
+          "observe": "Legide anya",
+          "present": "Gosipụta",
+          "reading": "Ịgụ",
+          "reflect": "Tụgharịa uche",
+          "research": "Nyocha",
+          "watch": "Lelee",
+          "write": "Dee"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Mkpado",
+        "description": "Ndepụta mkpado ekewapụtara na rịkọm."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL Njikọ",
+        "description": "URL nduzigharị a na-egosi kama ọdịnaya peeji."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Ebe Njikọ ga-emepe",
+        "description": "Mepee njikọ n'otu windo ahụ ma ọ bụ windo ọhụrụ.",
+        "options": {
+          "_self": "Otu windo ahụ",
+          "_blank": "Windo ọhụrụ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Ebipụtara",
+        "description": "A na-ezochi peeji ndị a na-ebipụtaghị n'aka ndị ọrụ ikpeazụ."
+      },
+      {
+        "property": "locked",
+        "title": "Kpọchie peeji",
+        "description": "Kpọchie ma ọ bụ meghe ihe niile dị na peeji a."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Nọchie slug akpaaka",
+        "description": "Kpọchie slug ahụ ka ọ ghara imelite onwe ya dabere n'aha ma ọ bụ nne."
+      },
+      {
+        "property": "slug",
+        "title": "Ụzọ",
+        "description": "Slug URL maka peeji a."
+      },
+      {
+        "property": "image",
+        "title": "Mgbasa ozi",
+        "description": "Mgbasa ozi na-anọchi anya peeji ahụ, eji n'ụfọdụ isiokwu saịtị na ngosi."
+      },
+      {
+        "property": "parent",
+        "title": "Nne",
+        "description": "Ụzọ peeji nne."
+      },
+      {
+        "property": "noderefs",
+        "title": "Ọdịnaya metụtara",
+        "description": "Peeji ndị metụtara peeji a."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Nkọwa",
+        "description": "Nkọwa eji na nchịkọta na nkwalite igwe nchọta (SEO)."
+      },
+      {
+        "property": "entityType",
+        "title": "Ụdị Ihe",
+        "description": "Ọ bụ peeji na ndabara belụsọ ma edobere ya ọzọ.",
+        "options": {
+          "page": "Peeji (ndabara)",
+          "taxonomy": "Nhazi ọkwa",
+          "taxonomyTerm": "Okwu Nhazi ọkwa",
+          "region": "Mpaghara"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Akara ngosi",
+        "description": "Akara ngosi jikọtara na peeji a na saịtị ahụ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba mkpụrụ",
+        "description": "Agba jikọtara na peeji a na saịtị ahụ."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Zoo na menu",
+        "description": "Zoo peeji a na menu ma debe URL ya."
+      },
+      {
+        "property": "order",
+        "title": "Usoro",
+        "description": "Usoro ya na peeji ụmụnne ya."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Isiokwu peeji",
+        "description": "Nọchie isiokwu saịtị maka naanị peeji a."
+      },
+      {
+        "property": "author",
+        "title": "Onye dere",
+        "description": "Aha njirimara onye ikpeazụ gbanwere peeji a."
+      }
+    ]
+  }
+}

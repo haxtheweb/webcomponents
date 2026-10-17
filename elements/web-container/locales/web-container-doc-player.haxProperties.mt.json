@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Plejer tad-dokumentazzjoni tal-web component"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Aħbi t-tieqa",
+        "description": "Aħbi t-tieqa tal-output, utli meta l-iskop huwa t-terminal biss"
+      }
+    ]
+  }
+}

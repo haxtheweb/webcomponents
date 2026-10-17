@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Wier / net wier-fraach",
+    "description": "Wier-net-wier-fraach"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fraach",
+        "description": "Fraach dêr't brûkers op reagearje moatte."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Goed antwurd"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Namme fan de kwis",
+        "description": "Kwisnamme dy't trochjûn wurdt foar identifikaasje fan dit item yn xAPI-basearre omjouwings"
+      }
+    ]
+  }
+}

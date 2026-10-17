@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarcasmo",
+    "description": "Presenta texto en tono burlón"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Texto",
+        "description": "Texto que se volverá sarcástico"
+      }
+    ]
+  }
+}

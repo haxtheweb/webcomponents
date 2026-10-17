@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Tarxeta",
+    "description": "Compoñente de tarxeta co estilo do sistema de deseño DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Imaxe",
+        "description": "Imaxe opcional."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo da imaxe",
+        "description": "Texto alternativo que describe a imaxe."
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título da tarxeta."
+      },
+      {
+        "slot": "",
+        "title": "Contido",
+        "description": "Área de contido da tarxeta."
+      },
+      {
+        "property": "href",
+        "title": "Ligazón",
+        "description": "URL da ligazón do botón."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etiqueta",
+        "description": "Etiqueta do botón."
+      },
+      {
+        "property": "noArrow",
+        "title": "Sen frecha",
+        "description": "Ocultar a frecha do botón."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Ligazón: destino",
+        "description": "Onde abrir a ligazón.",
+        "options": {
+          "": "Mesma xanela",
+          "_blank": "Nova xanela - _blank",
+          "_top": "Xanela superior - _top",
+          "_parent": "Xanela nai - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Ligazón: rel",
+        "description": "Relación entre o recurso ligado e o documento actual."
+      }
+    ]
+  }
+}

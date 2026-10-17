@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "સંગ્રહ આઇટમ",
+    "description": "સંગ્રહ સૂચિની અંદર વાપરવા માટે કાર્ડ-શૈલીની આઇટમ, જેમાં લખાણ, લિંક અને વૈકલ્પિક મીડિયા હોય છે."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "લિંક",
+        "description": "આ કાર્ડ માટે ગંતવ્ય URL."
+      },
+      {
+        "property": "image",
+        "title": "છબી",
+        "description": "પૃષ્ઠભૂમિ છબી."
+      },
+      {
+        "property": "line1",
+        "title": "પંક્તિ 1",
+        "description": "લખાણની પહેલી પંક્તિ."
+      },
+      {
+        "property": "line2",
+        "title": "પંક્તિ 2",
+        "description": "લખાણની બીજી પંક્તિ."
+      },
+      {
+        "property": "line3",
+        "title": "પંક્તિ 3",
+        "description": "લખાણની ત્રીજી પંક્તિ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "આઇકન",
+        "description": "કાર્ડને દર્શાવતું આઇકન."
+      },
+      {
+        "property": "saturate",
+        "title": "સંતૃપ્તિ અસર",
+        "description": "વપરાશકર્તા ફોકસ કરે ત્યારે છબીની સંતૃપ્તિ બદલો."
+      },
+      {
+        "property": "tags",
+        "title": "ટૅગ્સ",
+        "description": "અલ્પવિરામથી અલગ કરેલી ટૅગ્સની સૂચિ."
+      },
+      {
+        "property": "accentColor",
+        "title": "રંગ",
+        "description": "ટૅગ્સ માટે વપરાતો રંગ."
+      },
+      {
+        "property": "alt",
+        "title": "વૈકલ્પિક લખાણ",
+        "description": "લિંકનું વર્ણન કરતું વૈકલ્પિક લખાણ."
+      }
+    ]
+  }
+}

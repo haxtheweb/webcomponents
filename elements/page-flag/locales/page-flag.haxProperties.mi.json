@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Haki whārangi",
+    "description": "He tuhipoka ētita mā ngā kaituhi whārangi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Tae Arotahi",
+        "description": "Tae arotahi mō te haki whārangi."
+      },
+      {
+        "property": "label",
+        "title": "Tapanga",
+        "description": "Kupu tapanga mō te haki whārangi."
+      }
+    ]
+  }
+}

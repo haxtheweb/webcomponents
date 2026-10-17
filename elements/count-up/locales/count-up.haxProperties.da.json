@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Optælling",
+    "description": "Animer et tal, der tæller op til en målværdi, når det rulles ind i visningen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Slutværdi",
+        "description": "Tallet, der skal tælles op til."
+      },
+      {
+        "property": "start",
+        "title": "Startværdi",
+        "description": "Tallet, der skal tælles op fra."
+      },
+      {
+        "property": "duration",
+        "title": "Varighed",
+        "description": "Antal sekunder, optællingsanimationen skal vare."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Præfikstekst",
+        "description": "Tekst vist før tallet (f.eks. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Suffikstekst",
+        "description": "Tekst vist efter tallet (f.eks. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Præfiks-slot",
+        "description": "Valgfrit indsat indhold før tallet."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffiks-slot",
+        "description": "Valgfrit indsat indhold efter tallet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Decimaler",
+        "description": "Antal decimaler, der skal vises."
+      },
+      {
+        "property": "separator",
+        "title": "Tusindtalsseparator",
+        "description": "Tegn, der adskiller tusindtalsgrupper."
+      },
+      {
+        "property": "decimal",
+        "title": "Decimaltegn",
+        "description": "Tegn brugt som decimaltegn."
+      },
+      {
+        "property": "noeasing",
+        "title": "Ingen blødgøring",
+        "description": "Deaktiver blødgøring, så optællingen er lineær."
+      }
+    ]
+  }
+}

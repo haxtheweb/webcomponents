@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Flesh-karta",
+    "description": "Old va orqa tomonli flesh-kartalar yordamida tushunchalarni mashq qilish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Kartaning old tomoni",
+        "description": "Old tomon matni yoki savol."
+      },
+      {
+        "slot": "back",
+        "title": "Kartaning orqa tomoni",
+        "description": "Kutilgan javob."
+      },
+      {
+        "property": "imgSource",
+        "title": "Rasm manbasi",
+        "description": "Karta uchun ishlatiladigan rasm fayli. Rasm kalit soʻzini bekor qiladi."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Harakat turi",
+        "description": "OER Schema: ushbu mashq oʻz ichiga olgan harakat turi (masalan, Oʻqish, Yozish, Yaratish, Tadqiq qilish, Tinglash, Tomosha qilish, Mulohaza qilish, Muhokama qilish, Kuzatish, Taqdim etish, Baholash)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oʻquv maqsadi",
+        "description": "OER Schema: ushbu mashq qoʻllab-quvvatlaydigan oʻquv maqsadining ID yoki URL manzili."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Qorongʻi",
+        "description": "Qorongʻi rejimdan foydalanish."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Kartaning urgʻu rangi."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Rasm kalit soʻzi",
+        "description": "Tasodifiy rasm kalit soʻzi. Rasm manbasi tomonidan bekor qilinadi."
+      }
+    ]
+  }
+}

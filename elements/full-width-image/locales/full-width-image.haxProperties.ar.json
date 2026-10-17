@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "قسم صورة",
+    "description": "صورة بعرض كامل تفصل بين أقسام الصفحة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "صورة الخلفية."
+      },
+      {
+        "property": "caption",
+        "description": "عنوان نصي."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kwotazzjoni b'Immaġni",
+    "description": "Kwotazzjoni bi stil b'immaġni fakultattiva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Immaġni",
+        "description": "Żid immaġni max-xhieda."
+      },
+      {
+        "property": "name",
+        "title": "Isem sħiħ",
+        "description": "Isem il-persuna li qed tagħti x-xhieda."
+      },
+      {
+        "property": "position",
+        "title": "Pożizzjoni jew titlu tax-xogħol",
+        "description": "Il-pożizzjoni jew it-titlu tax-xogħol tal-persuna."
+      },
+      {
+        "slot": "",
+        "title": "Kwotazzjoni",
+        "description": "Kwotazzjoni mill-awtur tax-xhieda."
+      }
+    ]
+  }
+}

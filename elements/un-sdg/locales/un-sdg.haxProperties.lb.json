@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Zil fir nohalteg Entwécklung vun de Vereenten Natiounen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Zil",
+        "description": "UN-SDG-Nummer."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Nëmmen d'Faarf",
+        "description": "Nëmmen d'Faarf vum Zil weisen."
+      }
+    ]
+  }
+}

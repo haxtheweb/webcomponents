@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "ఆపు గమనిక",
+    "description": "నిర్దిష్ట సూచనల గురించి పాఠకులను హెచ్చరించే సందేశం."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "ఆపు గమనిక కోసం శీర్షికను నమోదు చేయండి."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "బాహ్య URL‌ను నమోదు చేయండి."
+      },
+      {
+        "property": "status",
+        "title": "స్థితి",
+        "description": "స్థితిని సెట్ చేస్తే దానికి సరిపోయేలా రంగులు మరియు ఐకాన్‌లు మారుతాయి",
+        "options": {
+          "stop": "ఆపు",
+          "warning": "హెచ్చరిక",
+          "success": "నిర్ధారణ",
+          "info": "నోటీసు"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "గమనిక వచనం",
+        "description": "ఆపు గమనిక కోసం వచనం."
+      }
+    ]
+  }
+}

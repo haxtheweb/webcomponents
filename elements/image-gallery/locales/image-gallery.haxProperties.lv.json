@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Attēlu galerija",
+    "description": "Galerija, kas attēlo attēlus režģa, mūra vai slaidrādes izkārtojumā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Attēlošanas režīms",
+        "description": "Kā attēlot attēlus galerijā.",
+        "options": {
+          "grid": "Režģis",
+          "masonry": "Mūris",
+          "gallery": "Galerija"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktīvais indekss",
+        "description": "Aktīvā attēla indekss, ar kuru sākt galerijas režīmā."
+      }
+    ]
+  }
+}

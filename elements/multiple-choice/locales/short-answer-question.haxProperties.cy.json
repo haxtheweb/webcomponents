@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Cwestiwn Ateb Byr",
+    "description": "Gofyn i'r defnyddiwr ateb cwestiwn sylfaenol"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Cwestiwn",
+        "description": "Cwestiwn i ddefnyddwyr ymateb iddo."
+      },
+      {
+        "property": "answers",
+        "title": "Atebion Posibl"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Enw'r cwis",
+        "description": "Enw'r cwis a drosglwyddir i'w ddefnyddio mewn amgylcheddau a yrrir gan xAPI i adnabod yr eitem hon"
+      }
+    ]
+  }
+}

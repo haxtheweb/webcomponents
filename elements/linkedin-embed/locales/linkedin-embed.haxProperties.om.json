@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Galchiinsa LinkedIn",
+    "description": "Kaardii piroofaayilii LinkedIn galchi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Maqaa addaa",
+        "description": "Kutaa maqaa fayyadamaa addaa LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Afaan fi naannoo",
+        "description": "Gatii meetaadaataa afaanii fi naannoo kan akka en_US."
+      }
+    ]
+  }
+}

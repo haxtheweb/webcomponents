@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Kaşiya Polaris",
+    "description": "Kaşiyeke Polaris bi sernav, nivîsa piştgir a vebijarkî û girêdana vebijarkî nîşan bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Nivîsa sereke",
+        "description": "Nivîsa sereke ya kaşiyê."
+      },
+      {
+        "property": "line2",
+        "title": "Nivîsa duyemîn",
+        "description": "Nivîsa piştgir a vebijarkî."
+      },
+      {
+        "property": "type",
+        "title": "Şêweya kaşiyê",
+        "description": "Şêweya dîtbarî ya amadekirî ya kaşiyê.",
+        "options": {
+          "1": "Şêwe 1",
+          "2": "Şêwe 2",
+          "3": "Şêwe 3",
+          "4": "Şêwe 4",
+          "5": "Şêwe 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Wêneyê paşxanê",
+        "description": "URL ya wêneyê paşxanê ku ji hêla şêweyên kaşiyê yên bi wêne ve tê bikaranîn."
+      },
+      {
+        "property": "link",
+        "title": "Girêdan",
+        "description": "URL ya armanc a vebijarkî ji bo çalakiya kaşiyê."
+      }
+    ]
+  }
+}

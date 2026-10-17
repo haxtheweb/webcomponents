@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Disqus rimarisqakunata rapiman churay."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Pisi suti",
+        "description": "Sitiopa pisi sutin, Disqus scriptpa hostninta kamachiq."
+      },
+      {
+        "property": "pageURL",
+        "title": "Rapipa URL-nin",
+        "description": "Rimarisqa siqi t'inkisqa kaq rapipa URL-nin."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Rapi riqsichiq",
+        "description": "Rapipa rimarisqa siqinpaq sapalla riqsichiq."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Rapipa sutichaynin",
+        "description": "Rimarisqa siqi t'inkisqa kaq rapipa sutichaynin."
+      },
+      {
+        "property": "loadingText",
+        "title": "Cargachkaq qillqa",
+        "description": "Rimarisqakuna cargakuchkaptin willakuq qillqa."
+      },
+      {
+        "property": "lang",
+        "title": "Simi",
+        "description": "Disqus interfazpaq simi código, kayhina en."
+      }
+    ]
+  }
+}

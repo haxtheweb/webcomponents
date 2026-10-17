@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Rukunin Faɗaɗa da Ninke",
+    "description": "Rukunin abubuwan faɗaɗawa da ninkewa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Faɗaɗa ɗaya kawai",
+        "description": "Abu ɗaya kawai za a iya faɗaɗawa."
+      },
+      {
+        "slot": "",
+        "title": "Abubuwan Ninkewa",
+        "description": "Abubuwan ninkewa."
+      }
+    ]
+  }
+}

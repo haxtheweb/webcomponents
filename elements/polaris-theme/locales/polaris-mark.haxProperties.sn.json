@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Chiratidzo chePolaris",
+    "description": "Ratidza chiratidzo chePSU nezita rekoreji risingamanikidzwi neURL yekuenda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Zita rekoreji",
+        "description": "Zita rinoratidzwa parutivi pechiratidzo."
+      },
+      {
+        "property": "name2",
+        "title": "Zita rekoreji 2",
+        "description": "Zita rechipiri rinoratidzwa pasi pezita rekutanga rekoreji."
+      },
+      {
+        "property": "name3",
+        "title": "Zita rekoreji 3",
+        "description": "Zita rechitatu rinoratidzwa pasi pezita rechipiri rekoreji."
+      },
+      {
+        "property": "url",
+        "title": "Chinongedzo",
+        "description": "URL yekuenda kana chiratidzo chadzvanywa."
+      },
+      {
+        "property": "type",
+        "title": "Mhando",
+        "description": "Mhando yechiratidzo inooneka.",
+        "options": {
+          "default": "Zvakajairwa",
+          "light": "Yakajeka",
+          "dark": "Rima"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Marongerwo akamira",
+        "description": "Ratidza zita rechitatu pasi pezita rechipiri nemutsetse wakatwasuka."
+      }
+    ]
+  }
+}

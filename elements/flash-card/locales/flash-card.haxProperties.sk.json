@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kartička",
+    "description": "Precvičovanie pojmov pomocou obojstranných kartičiek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Predná strana kartičky",
+        "description": "Text alebo otázka na prednej strane."
+      },
+      {
+        "slot": "back",
+        "title": "Zadná strana kartičky",
+        "description": "Očakávaná odpoveď."
+      },
+      {
+        "property": "imgSource",
+        "title": "Zdroj obrázka",
+        "description": "Súbor obrázka použitý pre kartičku. Má prednosť pred kľúčovým slovom obrázka."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Typ činnosti",
+        "description": "OER Schema: typ činnosti, ktorú toto precvičovanie zahŕňa (napr. čítanie, písanie, tvorba, skúmanie, počúvanie, sledovanie, reflexia, diskusia, pozorovanie, prezentovanie, hodnotenie)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Vzdelávací cieľ",
+        "description": "OER Schema: ID alebo URL vzdelávacieho cieľa, ktorý toto precvičovanie podporuje."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tmavý",
+        "description": "Použiť tmavý režim."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Zvýrazňujúca farba kartičky."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Kľúčové slovo obrázka",
+        "description": "Kľúčové slovo pre náhodný obrázok. Zdroj obrázka má pred ním prednosť."
+      }
+    ]
+  }
+}

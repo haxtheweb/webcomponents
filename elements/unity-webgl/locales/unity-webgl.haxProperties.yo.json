@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Ẹ̀rọ Ìṣeré Unity",
+    "description": "Ẹ̀rọ ìṣeré Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Ibi-àfojúsùn",
+        "description": "Ipa-ọ̀nà sí ìkọ́ eré náà."
+      },
+      {
+        "property": "compression",
+        "title": "Ọ̀nà ìfúnpọ̀",
+        "description": "Àfikún orúkọ fáìlì ìfúnpọ̀ fún àwọn ohun-èlò eré."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL Ìṣàn",
+        "description": "URL àwọn ohun-èlò ìṣàn."
+      },
+      {
+        "property": "companyname",
+        "title": "Orúkọ Ilé-iṣẹ́",
+        "description": "Orúkọ ilé-iṣẹ́."
+      },
+      {
+        "property": "productname",
+        "title": "Orúkọ Ọjà",
+        "description": "Àkọlé eré."
+      },
+      {
+        "property": "productversion",
+        "title": "Ẹ̀dà Ọjà",
+        "description": "Ẹ̀dà ìtújáde."
+      },
+      {
+        "property": "width",
+        "title": "Ìbú Kanfásì",
+        "description": "Ìbú CSS kanfásì (fún àpẹẹrẹ px tàbí em)."
+      },
+      {
+        "property": "height",
+        "title": "Gíga Kanfásì",
+        "description": "Gíga CSS kanfásì (fún àpẹẹrẹ px tàbí em)."
+      },
+      {
+        "property": "background",
+        "title": "Ẹ̀yìn Kanfásì",
+        "description": "Ẹ̀yìn CSS kanfásì."
+      }
+    ]
+  }
+}

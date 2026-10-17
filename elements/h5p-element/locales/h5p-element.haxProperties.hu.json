@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P-burkoló .h5p fájlok betöltéséhez és megjelenítéséhez"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe beágyazási kód"
+      }
+    ]
+  }
+}

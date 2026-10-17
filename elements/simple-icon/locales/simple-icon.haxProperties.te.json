@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ఐకాన్",
+    "description": "పూర్తి ఐకాన్ లైబ్రరీ నుండి ఐకాన్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ఐకాన్",
+        "description": "ప్రదర్శించాల్సిన ఐకాన్."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "ఐకాన్ కోసం యాక్సెంట్ రంగు."
+      },
+      {
+        "property": "dark",
+        "title": "డార్క్",
+        "description": "డార్క్ మోడ్ ఉపయోగించండి (విలోమ రంగుల సమితి)."
+      }
+    ]
+  }
+}

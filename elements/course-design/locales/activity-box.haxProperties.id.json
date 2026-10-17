@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kotak Aktivitas",
+    "description": "Blok judul kecil bergaya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon yang ditampilkan di samping kotak aktivitas."
+      },
+      {
+        "property": "tag",
+        "title": "Tag kotak aktivitas",
+        "description": "Tag yang ditampilkan di kotak aktivitas."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Tanpa Pewarnaan",
+        "description": "Cegah warna diterapkan pada ikon."
+      }
+    ]
+  }
+}

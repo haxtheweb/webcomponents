@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Sammlungszeile",
+    "description": "Zeilenelement zur Verwendung in einer Sammlungsliste, mit Text, Link, Symbol, Tags und optionalem Bild."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Ziel-URL für diese Zeile."
+      },
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Bild für die Zeile."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativtext, der das Bild beschreibt."
+      },
+      {
+        "property": "line1",
+        "title": "Zeile 1",
+        "description": "Erste Textzeile."
+      },
+      {
+        "property": "line2",
+        "title": "Zeile 2",
+        "description": "Zweite Textzeile."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Symbol",
+        "description": "Symbol, das die Zeile darstellt."
+      },
+      {
+        "property": "saturate",
+        "title": "Sättigungseffekt",
+        "description": "Bildsättigung bei Fokus durch den Benutzer ändern."
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Kommagetrennte Liste von Tags."
+      },
+      {
+        "property": "accentColor",
+        "title": "Farbe",
+        "description": "Farbe für Symbol und Tags."
+      }
+    ]
+  }
+}

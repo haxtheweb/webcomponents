@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kort",
+    "description": "Kortkomponent stilisert med designsystemet DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Bilde",
+        "description": "Valgfritt bilde."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ tekst for bilde",
+        "description": "Alternativ tekst som beskriver bildet."
+      },
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Korttittel."
+      },
+      {
+        "slot": "",
+        "title": "Innhold",
+        "description": "Innholdsområde for kortet."
+      },
+      {
+        "property": "href",
+        "title": "Lenke",
+        "description": "URL for knappelenken."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etikett",
+        "description": "Knappetekst."
+      },
+      {
+        "property": "noArrow",
+        "title": "Ingen pil",
+        "description": "Skjul pilen på knappen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Lenke: mål",
+        "description": "Hvor lenken skal åpnes.",
+        "options": {
+          "": "Samme vindu",
+          "_blank": "Nytt vindu - _blank",
+          "_top": "Øverste vindu - _top",
+          "_parent": "Overordnet vindu - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Lenke: rel",
+        "description": "Forholdet mellom den lenkede ressursen og gjeldende dokument."
+      }
+    ]
+  }
+}

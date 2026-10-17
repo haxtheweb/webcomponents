@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Sawir Fudud",
+    "description": "Ku maamul sawirada xuduudo fudud."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Isha",
+        "description": "URL-ka isha sawirka."
+      },
+      {
+        "property": "height",
+        "title": "Dherer",
+        "description": "Dhererka sawirka oo ikhtiyaari ah."
+      },
+      {
+        "property": "width",
+        "title": "Ballac",
+        "description": "Ballaca sawirka oo ikhtiyaari ah."
+      },
+      {
+        "property": "alt",
+        "title": "Qoraalka beddelka",
+        "description": "Waxtar u leh akhristayaasha shaashadda iyo hagaajinta SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Tayada",
+        "description": "Tayada sawirka marka la samaynayo (JPEG keliya)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Mudnaanta Soo-qaadista",
+        "description": "Tilmaan waxqabad oo loogu talagalay biraawsarada casriga ah.",
+        "options": {
+          "auto": "Toos",
+          "high": "Sare",
+          "low": "Hoose"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Habka furfurista",
+        "description": "Tilmaan waxqabad oo muujinta sawirada ee biraawsarada casriga ah.",
+        "options": {
+          "auto": "Toos",
+          "async": "Isku-xiran la'aan"
+        }
+      }
+    ]
+  }
+}

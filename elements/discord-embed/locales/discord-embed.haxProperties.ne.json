@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "सेयर URL बाट Discord समुदायहरू इम्बेड गर्नुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत URL",
+        "description": "स्रोत URL।"
+      },
+      {
+        "property": "height",
+        "title": "उचाइ",
+        "description": "सामग्री फ्रेमको उचाइ।"
+      },
+      {
+        "property": "width",
+        "title": "चौडाइ",
+        "description": "सामग्री फ्रेमको चौडाइ।"
+      }
+    ]
+  }
+}

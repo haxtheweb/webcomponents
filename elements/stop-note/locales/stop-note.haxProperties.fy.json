@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Stopnotysje",
+    "description": "In berjocht om lêzers op spesifike oanwizings te wizen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Fier in titel yn foar de stopnotysje."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Fier in eksterne URL yn."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "De status feroaret de kleuren en ikoanen dêrop oan",
+        "options": {
+          "stop": "Stop",
+          "warning": "Warskôging",
+          "success": "Befêstiging",
+          "info": "Meidieling"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Notysjetekst",
+        "description": "Tekst foar de stopnotysje."
+      }
+    ]
+  }
+}

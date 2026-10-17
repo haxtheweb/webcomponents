@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "വാക്കുകൾ അടയാളപ്പെടുത്തുക",
+    "description": "ഒരു വാചക ഭാഗത്തിനുള്ളിൽ ക്ലിക്ക് ചെയ്ത് വാക്കുകളിലൂടെ ആശയങ്ങൾ തിരിച്ചറിയുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ചോദ്യം",
+        "description": "ഉപയോക്താക്കൾ പ്രതികരിക്കേണ്ട ചോദ്യം."
+      },
+      {
+        "property": "statement",
+        "title": "പ്രസ്താവന",
+        "description": "വാക്കുകൾ അടയാളപ്പെടുത്തൽ ഇടപെടലായി മാറ്റപ്പെടുന്ന പ്രസ്താവന."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ഗ്രേഡിംഗ് ഫോർമാറ്റ്",
+        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയത്തിനുള്ള ഗ്രേഡിംഗ് ഫോർമാറ്റ് (ഉദാ. പോയിന്റുകൾ, അക്ഷരം, ശതമാനം, പൂർത്തീകരണം)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "പഠന ലക്ഷ്യം",
+        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയവുമായി ബന്ധപ്പെട്ട പഠന ലക്ഷ്യം."
+      },
+      {
+        "property": "forCourse",
+        "title": "കോഴ്സ്",
+        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയം ഉദ്ദേശിച്ചിരിക്കുന്ന കോഴ്സ്."
+      },
+      {
+        "property": "answers",
+        "title": "ഉത്തരങ്ങൾ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ക്വിസിന്റെ പേര്",
+        "description": "ഈ ഇനം തിരിച്ചറിയാൻ xAPI അധിഷ്ഠിത പരിതസ്ഥിതികളിൽ ഉപയോഗിക്കാൻ കൈമാറുന്ന ക്വിസ് പേര്"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Innbygt ljóð",
+    "description": "Spæl ljóð inni í tekstinum sum ískoyti til síðuinnihaldið."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kelda",
+        "description": "MP3-fíla ella URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Dámlitur á kortinum."
+      },
+      {
+        "property": "shiny",
+        "title": "Glansandi",
+        "description": "Nýt ljósari dámbakgrund í staðin fyri gráa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Myrkt",
+        "description": "Nýt myrkan stilling."
+      }
+    ]
+  }
+}

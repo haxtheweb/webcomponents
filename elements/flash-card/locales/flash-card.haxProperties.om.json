@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kaardii barumsaa",
+    "description": "Kaardii barumsaa fuula lamaa qabuun yaadota shaakali."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Fuula Duraa Kaardii",
+        "description": "Barreeffama ykn gaaffii fuula duraa."
+      },
+      {
+        "slot": "back",
+        "title": "Fuula Duubaa Kaardii",
+        "description": "Deebii eegamu."
+      },
+      {
+        "property": "imgSource",
+        "title": "Madda Suuraa",
+        "description": "Faayilii suuraa kaardiif fayyadamu. Jecha Ijoo Suuraa ni bakka bu'a."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Gosa Gochaa",
+        "description": "OER Schema: gosa gochaa shaakalli kun of keessaa qabu (fkn. Dubbisuu, Barreessuu, Hojjechuu, Qorachuu, Dhaggeeffachuu, Daawwachuu, Xiinxaluu, Mari'achuu, Hordofuu, Dhiyeessuu, Madaaluu)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Kaayyoo Barnootaa",
+        "description": "OER Schema: ID ykn URL kaayyoo barnootaa shaakalli kun deeggaru."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Dukkana",
+        "description": "Haala dukkanaa fayyadami."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu Calaqqee",
+        "description": "Halluu calaqqee kaardii."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Jecha Ijoo Suuraa",
+        "description": "Jecha ijoo suuraa akkasumaa. Madda Suuraatiin bakka bu'ama."
+      }
+    ]
+  }
+}

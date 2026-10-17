@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Loiloi Iho",
+    "description": "Hiki i nā mea hoʻohana ke hoʻopau i kekahi loiloi iho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Kiʻi",
+        "description": "Kiʻi no ka loiloi iho."
+      },
+      {
+        "property": "title",
+        "title": "Poʻo Inoa",
+        "description": "Poʻo inoa o ka loiloi iho."
+      },
+      {
+        "property": "alt",
+        "title": "Kikokikona Pani",
+        "description": "Kikokikona pani no ke kiʻi."
+      },
+      {
+        "slot": "question",
+        "title": "Nīnau"
+      },
+      {
+        "slot": "",
+        "title": "Pane"
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu Kumuhana",
+        "description": "E koho i kekahi waihoʻoluʻu kumuhana mai ka ʻōnaehana hoʻolālā.",
+        "options": {
+          "primary": "Mua",
+          "accent": "Kiko",
+          "success": "Kūleʻa",
+          "warning": "Kaʻao aʻo",
+          "error": "Hewa",
+          "info": "ʻIke"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Pahuhopu Aʻo",
+        "description": "Kuhikuhi pahuhopu aʻo i puka ʻia ma ke ʻano he oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Ke loiloi nei",
+        "description": "Kuhikuhi hana i puka ʻia ma ke ʻano he oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Loulou hou",
+        "description": "Loulou i ka ʻike hou aʻe."
+      }
+    ]
+  }
+}

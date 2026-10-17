@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Comptador",
+    "description": "Anima un nombre que compta fins a un valor objectiu quan entra en pantalla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Valor final",
+        "description": "El nombre fins al qual es compta."
+      },
+      {
+        "property": "start",
+        "title": "Valor inicial",
+        "description": "El nombre des del qual es comença a comptar."
+      },
+      {
+        "property": "duration",
+        "title": "Durada",
+        "description": "Segons que ha de durar l'animació del comptador."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Text de prefix",
+        "description": "Text que es mostra abans del nombre (p. ex. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Text de sufix",
+        "description": "Text que es mostra després del nombre (p. ex. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Espai de prefix",
+        "description": "Contingut opcional inserit abans del nombre."
+      },
+      {
+        "slot": "suffix",
+        "title": "Espai de sufix",
+        "description": "Contingut opcional inserit després del nombre."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Decimals",
+        "description": "Nombre de decimals que es mostren."
+      },
+      {
+        "property": "separator",
+        "title": "Separador de milers",
+        "description": "Caràcter que separa els grups de milers."
+      },
+      {
+        "property": "decimal",
+        "title": "Caràcter decimal",
+        "description": "Caràcter utilitzat com a separador decimal."
+      },
+      {
+        "property": "noeasing",
+        "title": "Sense suavitzat",
+        "description": "Desactiva el suavitzat perquè el compte sigui lineal."
+      }
+    ]
+  }
+}

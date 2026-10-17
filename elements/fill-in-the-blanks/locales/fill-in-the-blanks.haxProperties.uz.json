@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Boʻsh joylarni toʻldiring",
+    "description": "Oʻquvchilar gapdagi tushirib qoldirilgan soʻzlarni toʻldiradigan baholash mashgʻuloti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Savol",
+        "description": "Foydalanuvchilar javob beradigan savol."
+      },
+      {
+        "property": "statement",
+        "title": "Gap",
+        "description": "Soʻzlarni belgilash mashgʻulotiga aylantiriladigan gap."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Baholash formati",
+        "description": "OER Schema: ushbu baholash uchun baholash formati (masalan, ball, harf, foiz, bajarilganlik)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oʻquv maqsadi",
+        "description": "OER Schema: ushbu baholash bilan bogʻliq oʻquv maqsadi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: ushbu baholash moʻljallangan kurs."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Test nomi",
+        "description": "xAPI asosidagi muhitlarda ushbu elementni aniqlash uchun uzatiladigan test nomi"
+      }
+    ]
+  }
+}

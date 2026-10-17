@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Корт",
+    "description": "Ҷузъи корт, ки бо системаи тарроҳии DDD оро дода шудааст."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Тасвир",
+        "description": "Тасвири ихтиёрӣ."
+      },
+      {
+        "property": "alt",
+        "title": "Алти тасвир",
+        "description": "Матни алтернативие, ки тасвирро тавсиф мекунад."
+      },
+      {
+        "property": "title",
+        "title": "Унвон",
+        "description": "Унвони корт."
+      },
+      {
+        "slot": "",
+        "title": "Мундариҷа",
+        "description": "Минтақаи мундариҷаи корт."
+      },
+      {
+        "property": "href",
+        "title": "Пайванд",
+        "description": "URL-и пайванди тугма."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Нишонга",
+        "description": "Нишонгаи тугма."
+      },
+      {
+        "property": "noArrow",
+        "title": "Бе тир",
+        "description": "Тири тугмаро пинҳон кунед."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Пайванд: target",
+        "description": "Пайвандро дар куҷо кушодан.",
+        "options": {
+          "": "Ҳамон равзана",
+          "_blank": "Равзанаи нав - _blank",
+          "_top": "Равзанаи болоӣ - _top",
+          "_parent": "Равзанаи волидайн - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Пайванд: rel",
+        "description": "Муносибати байни манбаи пайвандшуда ва ҳуҷҷати ҷорӣ."
+      }
+    ]
+  }
+}

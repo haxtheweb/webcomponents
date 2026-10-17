@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "د شریکولو له URL څخه د Discord ټولنې ځای پر ځای کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "د سرچینې URL",
+        "description": "د سرچینې URL."
+      },
+      {
+        "property": "height",
+        "title": "لوړوالی",
+        "description": "د منځپانګې د چوکاټ لوړوالی."
+      },
+      {
+        "property": "width",
+        "title": "پلنوالی",
+        "description": "د منځپانګې د چوکاټ پلنوالی."
+      }
+    ]
+  }
+}

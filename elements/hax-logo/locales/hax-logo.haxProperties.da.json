@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX-ordkunst",
+    "description": "Logoelement til HAX, naturligvis som et HAX-kompatibelt element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Størrelse på HAX-logoet, der skal indsættes",
+        "options": {
+          "mini": "Mini",
+          "small": "Lille",
+          "normal": "Normal",
+          "large": "Stor"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Om logoet skal omdannes til store bogstaver"
+      }
+    ]
+  }
+}

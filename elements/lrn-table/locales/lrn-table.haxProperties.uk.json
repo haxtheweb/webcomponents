@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Таблиця CSV",
+    "description": "Створює таблицю з CSV-файлу, де б він не розміщувався."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Джерело",
+        "description": "URL цього CSV-файлу."
+      },
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Назва таблиці, що буде створена."
+      },
+      {
+        "property": "description",
+        "title": "Опис",
+        "description": "Детальніший опис для кращої доступності даних таблиці."
+      }
+    ]
+  }
+}

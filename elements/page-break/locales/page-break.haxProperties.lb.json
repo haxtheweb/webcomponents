@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Säitendetailer",
+    "description": "Eng visuell Trennung tëscht Säiten definéieren, déi CMS benotze kënne fir Säiten ze erstellen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel, deen am Thema an als éischt Iwwerschrëft ugewise gëtt."
+      },
+      {
+        "property": "pageType",
+        "title": "Typ",
+        "description": "Visuellt Kontextetikett vun der Säit.",
+        "options": {
+          "": "-- keen --",
+          "content": "Inhalt",
+          "assessment": "Bewäertung",
+          "quiz": "Quiz",
+          "submission": "Agab",
+          "lesson": "Lektioun",
+          "module": "Modul",
+          "task": "Aufgab",
+          "activity": "Aktivitéit",
+          "project": "Projet",
+          "practice": "Übung",
+          "unit": "Eenheet",
+          "objectives": "Léierziler",
+          "connection": "Verbindung",
+          "knowledge": "Wosst Dir schonn?",
+          "strategy": "Léierstrategie",
+          "discuss": "Diskutéieren",
+          "listen": "Lauschteren",
+          "make": "Maachen",
+          "observe": "Observéieren",
+          "present": "Presentéieren",
+          "reading": "Liesen",
+          "reflect": "Nodenken",
+          "research": "Recherchéieren",
+          "watch": "Kucken",
+          "write": "Schreiwen"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Mat Komma getrennte Lëscht vun Tags."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Link-URL",
+        "description": "Weiderleedungs-URL, déi amplaz vum Säiteninhalt ugewise gëtt."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Link-Zil",
+        "description": "Linken an der selwechter oder an enger neier Fënster opmaachen.",
+        "options": {
+          "_self": "Selwecht Fënster",
+          "_blank": "Nei Fënster"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Publizéiert",
+        "description": "Net publizéiert Säite si fir Endbenotzer verstoppt."
+      },
+      {
+        "property": "locked",
+        "title": "Säit spären",
+        "description": "All Elementer op dëser Säit spären oder entspären."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Automatesche Slug iwwerschreiwen",
+        "description": "De Slug géint automatesch Aktualiséierungen op Basis vum Titel oder Elterendeel spären."
+      },
+      {
+        "property": "slug",
+        "title": "Pfad",
+        "description": "URL-Slug fir dës Säit."
+      },
+      {
+        "property": "image",
+        "title": "Medien",
+        "description": "Medien, déi d'Säit representéieren, a verschiddenen Themen an Usiichte benotzt."
+      },
+      {
+        "property": "parent",
+        "title": "Elterendeel",
+        "description": "Pfad vun der iwwergeuerdenter Säit."
+      },
+      {
+        "property": "noderefs",
+        "title": "Verwandten Inhalt",
+        "description": "Säiten, déi mat dëser Säit verwandt sinn."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Beschreiwung",
+        "description": "Beschreiwung fir Sammlungen an d'Sichmaschinnenoptiméierung."
+      },
+      {
+        "property": "entityType",
+        "title": "Entitéitstyp",
+        "description": "Standardméisseg Säit, ausser et gëtt anescht festgeluecht.",
+        "options": {
+          "page": "Säit (Standard)",
+          "taxonomy": "Taxonomie",
+          "taxonomyTerm": "Taxonomie-Begrëff",
+          "region": "Regioun"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon, deen um Site mat dëser Säit verbonnen ass."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Faarf, déi um Site mat dëser Säit verbonnen ass."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Am Menü verstoppen",
+        "description": "Dës Säit an de Menüen verstoppen, mä hir URL behalen."
+      },
+      {
+        "property": "order",
+        "title": "Reiefolleg",
+        "description": "Reiefolleg relativ zu de Nopeschsäiten."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Säitenthema",
+        "description": "Thema nëmme fir dës Säit iwwerschreiwen."
+      },
+      {
+        "property": "author",
+        "title": "Auteur",
+        "description": "Benotzernumm vun der leschter Persoun, déi dës Säit geännert huet."
+      }
+    ]
+  }
+}

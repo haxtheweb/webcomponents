@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Partitur musik",
+    "description": "Nampilake lan muter partitur musik, tab gitar, lan notasi skor liwat alphaTex utawa MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Notasi AlphaTex",
+        "description": "Markup alphaTex sebaris kanggo partitur musik. Sunting langsung kanggo nulis notasi; disimpen ing template supaya spasi tetep."
+      },
+      {
+        "property": "source",
+        "title": "Berkas skor",
+        "description": "Unggah utawa pranalani berkas MusicXML (.xml/.musicxml/.mxl) utawa Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Ngganti alphaTex sebaris yen disetel."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Puter audio",
+        "description": "Urip kanthi gawan - rungokake partitur musik sing diputer liwat synthesizer bawaan. Pateni kanggo mode tampilan wae (tanpa audio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Tampilake pilihan tampilan",
+        "description": "Tampilake tombol zoom, mulur, lan tata letak ing bilah pamuter."
+      },
+      {
+        "property": "showExport",
+        "title": "Tampilake tombol ekspor",
+        "description": "Tampilake tombol undhuh MIDI lan cithak/PDF ing bilah pamuter."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "পৃষ্ঠার বিবরণ",
+    "description": "পৃষ্ঠাগুলোর মধ্যে একটি দৃশ্যমান বিভাজন নির্ধারণ করুন, যা CMS পৃষ্ঠা তৈরিতে ব্যবহার করতে পারে।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "থিমে ও প্রথম শিরোনামে দেখানো শিরোনাম।"
+      },
+      {
+        "property": "pageType",
+        "title": "ধরন",
+        "description": "দৃশ্যমান পৃষ্ঠা প্রেক্ষাপট লেবেল।",
+        "options": {
+          "": "-- কোনোটি নয় --",
+          "content": "বিষয়বস্তু",
+          "assessment": "মূল্যায়ন",
+          "quiz": "কুইজ",
+          "submission": "জমা",
+          "lesson": "পাঠ",
+          "module": "মডিউল",
+          "task": "কাজ",
+          "activity": "কার্যক্রম",
+          "project": "প্রকল্প",
+          "practice": "অনুশীলন",
+          "unit": "ইউনিট",
+          "objectives": "শিখনফল",
+          "connection": "সংযোগ",
+          "knowledge": "আপনি কি জানেন?",
+          "strategy": "শিখন কৌশল",
+          "discuss": "আলোচনা",
+          "listen": "শুনুন",
+          "make": "তৈরি করুন",
+          "observe": "পর্যবেক্ষণ",
+          "present": "উপস্থাপন",
+          "reading": "পঠন",
+          "reflect": "প্রতিফলন",
+          "research": "গবেষণা",
+          "watch": "দেখুন",
+          "write": "লিখুন"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ট্যাগ",
+        "description": "কমা দিয়ে আলাদা করা ট্যাগের তালিকা।"
+      },
+      {
+        "property": "linkUrl",
+        "title": "লিংক URL",
+        "description": "পৃষ্ঠার বিষয়বস্তুর পরিবর্তে দেখানো রিডাইরেক্ট URL।"
+      },
+      {
+        "property": "linkTarget",
+        "title": "লিংক টার্গেট",
+        "description": "লিংক একই উইন্ডোতে বা নতুন উইন্ডোতে খুলুন।",
+        "options": {
+          "_self": "একই উইন্ডো",
+          "_blank": "নতুন উইন্ডো"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "প্রকাশিত",
+        "description": "অপ্রকাশিত পৃষ্ঠা শেষ ব্যবহারকারীদের কাছ থেকে লুকানো থাকে।"
+      },
+      {
+        "property": "locked",
+        "title": "পৃষ্ঠা লক করুন",
+        "description": "এই পৃষ্ঠার সব উপাদান লক বা আনলক করুন।"
+      },
+      {
+        "property": "overridePathauto",
+        "title": "স্বয়ংক্রিয় স্লাগ অগ্রাহ্য করুন",
+        "description": "শিরোনাম বা প্যারেন্টের ভিত্তিতে স্বয়ংক্রিয় হালনাগাদ থেকে স্লাগ লক করুন।"
+      },
+      {
+        "property": "slug",
+        "title": "পাথ",
+        "description": "এই পৃষ্ঠার URL স্লাগ।"
+      },
+      {
+        "property": "image",
+        "title": "মিডিয়া",
+        "description": "পৃষ্ঠার প্রতিনিধিত্বকারী মিডিয়া, কিছু থিম ও ভিউতে ব্যবহৃত।"
+      },
+      {
+        "property": "parent",
+        "title": "প্যারেন্ট",
+        "description": "প্যারেন্ট পৃষ্ঠার পাথ।"
+      },
+      {
+        "property": "noderefs",
+        "title": "সম্পর্কিত বিষয়বস্তু",
+        "description": "এই পৃষ্ঠার সাথে সম্পর্কিত পৃষ্ঠাগুলো।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "বিবরণ",
+        "description": "সংগ্রহে ও সার্চ ইঞ্জিন অপ্টিমাইজেশনে ব্যবহৃত বিবরণ।"
+      },
+      {
+        "property": "entityType",
+        "title": "সত্তার ধরন",
+        "description": "অন্যথা নির্ধারণ না করলে ডিফল্ট পৃষ্ঠা।",
+        "options": {
+          "page": "পৃষ্ঠা (ডিফল্ট)",
+          "taxonomy": "শ্রেণিবিন্যাস",
+          "taxonomyTerm": "শ্রেণিবিন্যাস পদ",
+          "region": "অঞ্চল"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "আইকন",
+        "description": "সাইটে এই পৃষ্ঠার সাথে সংশ্লিষ্ট আইকন।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "সাইটে এই পৃষ্ঠার সাথে সংশ্লিষ্ট রং।"
+      },
+      {
+        "property": "hideInMenu",
+        "title": "মেনুতে লুকান",
+        "description": "URL বজায় রেখে এই পৃষ্ঠাটি মেনু থেকে লুকান।"
+      },
+      {
+        "property": "order",
+        "title": "ক্রম",
+        "description": "সহোদর পৃষ্ঠাগুলোর তুলনায় ক্রম।"
+      },
+      {
+        "property": "developerTheme",
+        "title": "পৃষ্ঠার থিম",
+        "description": "শুধু এই পৃষ্ঠার জন্য থিম পরিবর্তন করুন।"
+      },
+      {
+        "property": "author",
+        "title": "লেখক",
+        "description": "যিনি সর্বশেষ এই পৃষ্ঠা পরিবর্তন করেছেন তার ব্যবহারকারী নাম।"
+      }
+    ]
+  }
+}

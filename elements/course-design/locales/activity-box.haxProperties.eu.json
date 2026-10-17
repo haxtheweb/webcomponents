@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Jarduera-koadroa",
+    "description": "Estilodun izenburu bloke txikia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikonoa",
+        "description": "Jarduera-koadroaren ondoan bistaratzen den ikonoa."
+      },
+      {
+        "property": "tag",
+        "title": "Jarduera-koadroaren etiketa",
+        "description": "Jarduera-koadroan erakusten den etiketa."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Kolorerik ez",
+        "description": "Eragotzi ikonoari koloreak aplikatzea."
+      }
+    ]
+  }
+}

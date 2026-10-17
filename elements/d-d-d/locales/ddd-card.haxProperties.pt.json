@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Cartão",
+    "description": "Componente de cartão estilizado com o sistema de design DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Imagem",
+        "description": "Imagem opcional."
+      },
+      {
+        "property": "alt",
+        "title": "Alt da imagem",
+        "description": "Texto alternativo que descreve a imagem."
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título do cartão."
+      },
+      {
+        "slot": "",
+        "title": "Conteúdo",
+        "description": "Área de conteúdo do cartão."
+      },
+      {
+        "property": "href",
+        "title": "Link",
+        "description": "URL do link do botão."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Rótulo",
+        "description": "Rótulo do botão."
+      },
+      {
+        "property": "noArrow",
+        "title": "Sem seta",
+        "description": "Ocultar a seta do botão."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Link: destino",
+        "description": "Onde abrir o link.",
+        "options": {
+          "": "Mesma janela",
+          "_blank": "Nova janela - _blank",
+          "_top": "Janela superior - _top",
+          "_parent": "Janela pai - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Link: rel",
+        "description": "Relação entre o recurso vinculado e o documento atual."
+      }
+    ]
+  }
+}

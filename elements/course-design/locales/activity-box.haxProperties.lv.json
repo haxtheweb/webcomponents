@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Aktivitātes lodziņš",
+    "description": "Neliels stilizēta virsraksta bloks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona, kas tiek rādīta blakus aktivitātes lodziņam."
+      },
+      {
+        "property": "tag",
+        "title": "Aktivitātes lodziņa birka",
+        "description": "Aktivitātes lodziņā rādītā birka."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Bez iekrāsošanas",
+        "description": "Neļaut piemērot krāsas ikonai."
+      }
+    ]
+  }
+}

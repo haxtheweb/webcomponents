@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Player 3D",
+    "description": "Um player de arquivos 3D / realidade aumentada."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origem",
+        "description": "A URL deste arquivo de AR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Posição X do elemento em AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Posição Y do elemento em AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Posição Z do elemento em AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Cor do céu",
+        "description": "Selecione a cor do céu na cena."
+      }
+    ]
+  }
+}

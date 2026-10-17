@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI ပုံဖော်စနစ်",
+    "description": "MIDI ကို ပုံဖော်ပြသမှုနှင့်အတူ ဖွင့်ရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ရင်းမြစ်",
+        "description": "ဖွင့်မည့် ဖိုင် URL။"
+      },
+      {
+        "property": "visualizer",
+        "title": "ပုံဖော်ပြသမှု",
+        "description": "ဂီတဖိုင်အတွက် ပုံဖော်ပြသမှု ပုံစံ။",
+        "options": {
+          "staff": "ငါးကြောင်းမျဉ်း",
+          "piano-roll": "စန္ဒရား roll",
+          "waterfall": "စန္ဒရား + ရေတံခွန်"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "ရေတံခွန် ဝှက်ရန်",
+        "description": "စန္ဒရား ပုံဖော်ပြသမှုတွင် ရေတံခွန် မှတ်စုများကို ဝှက်ရန်။"
+      }
+    ]
+  }
+}

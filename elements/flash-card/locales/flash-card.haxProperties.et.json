@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Mälukaart",
+    "description": "Harjuta mõisteid kahepoolsete mälukaartidega."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Kaardi esikülg",
+        "description": "Esikülje tekst või küsimus."
+      },
+      {
+        "slot": "back",
+        "title": "Kaardi tagakülg",
+        "description": "Oodatav vastus."
+      },
+      {
+        "property": "imgSource",
+        "title": "Pildi allikas",
+        "description": "Kaardi jaoks kasutatav pildifail. Alistab pildi märksõna."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tegevuse tüüp",
+        "description": "OER Schema: selle harjutusega seotud tegevuse tüüp (nt lugemine, kirjutamine, loomine, uurimine, kuulamine, vaatamine, mõtisklemine, arutamine, vaatlemine, esitlemine, hindamine)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Õpieesmärk",
+        "description": "OER Schema: õpieesmärgi ID või URL, mida see harjutus toetab."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tume",
+        "description": "Kasuta tumedat režiimi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Kaardi rõhuvärv."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Pildi märksõna",
+        "description": "Juhusliku pildi märksõna. Pildi allikas alistab selle."
+      }
+    ]
+  }
+}

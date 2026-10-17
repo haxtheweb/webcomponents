@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "이미지 갤러리",
+    "description": "이미지를 격자, 벽돌형, 슬라이드쇼 레이아웃으로 보여 주는 갤러리입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "표시 모드",
+        "description": "갤러리에서 이미지를 보여 주는 방식입니다.",
+        "options": {
+          "grid": "격자",
+          "masonry": "벽돌형",
+          "gallery": "갤러리"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "활성 인덱스",
+        "description": "갤러리 모드에서 처음 표시할 활성 이미지의 인덱스입니다."
+      }
+    ]
+  }
+}

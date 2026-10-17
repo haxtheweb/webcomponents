@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Mtazamo wa bidhaa",
+    "description": "Kizuizi cha muhtasari wa haraka wa bidhaa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni inayowakilisha dhana."
+      },
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Dhana kuu kwa mtazamo mmoja."
+      },
+      {
+        "property": "subtitle",
+        "title": "Kichwa kidogo",
+        "description": "Maelezo ya ziada."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya msisitizo",
+        "description": "Rangi ya msisitizo ya aikoni."
+      }
+    ]
+  }
+}

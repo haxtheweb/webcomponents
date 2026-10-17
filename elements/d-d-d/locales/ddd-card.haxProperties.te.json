@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "కార్డ్",
+    "description": "DDD డిజైన్ సిస్టమ్‌తో శైలీకరించిన కార్డ్ కాంపోనెంట్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "చిత్రం",
+        "description": "ఐచ్ఛిక చిత్రం."
+      },
+      {
+        "property": "alt",
+        "title": "చిత్ర ప్రత్యామ్నాయ వచనం",
+        "description": "చిత్రాన్ని వివరించే ప్రత్యామ్నాయ వచనం."
+      },
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "కార్డ్ శీర్షిక."
+      },
+      {
+        "slot": "",
+        "title": "కంటెంట్",
+        "description": "కార్డ్ కంటెంట్ ప్రాంతం."
+      },
+      {
+        "property": "href",
+        "title": "లింక్",
+        "description": "బటన్ లింక్ URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "లేబుల్",
+        "description": "బటన్ లేబుల్."
+      },
+      {
+        "property": "noArrow",
+        "title": "బాణం లేదు",
+        "description": "బటన్ బాణాన్ని దాచండి."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "లింక్: లక్ష్యం",
+        "description": "లింక్‌ను ఎక్కడ తెరవాలి.",
+        "options": {
+          "": "అదే విండో",
+          "_blank": "కొత్త విండో - _blank",
+          "_top": "పై విండో - _top",
+          "_parent": "పేరెంట్ విండో - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "లింక్: rel",
+        "description": "లింక్ చేసిన వనరు మరియు ప్రస్తుత పత్రం మధ్య సంబంధం."
+      }
+    ]
+  }
+}

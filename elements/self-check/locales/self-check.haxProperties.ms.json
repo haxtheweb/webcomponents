@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Semak Kendiri",
+    "description": "Pengguna boleh melengkapkan semakan kendiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imej",
+        "description": "Imej untuk semakan kendiri."
+      },
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tajuk semakan kendiri."
+      },
+      {
+        "property": "alt",
+        "title": "Teks Alt",
+        "description": "Teks alt untuk imej."
+      },
+      {
+        "slot": "question",
+        "title": "Soalan"
+      },
+      {
+        "slot": "",
+        "title": "Jawapan"
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Tema",
+        "description": "Pilih warna tema daripada sistem reka bentuk.",
+        "options": {
+          "primary": "Utama",
+          "accent": "Aksen",
+          "success": "Berjaya",
+          "warning": "Amaran",
+          "error": "Ralat",
+          "info": "Maklumat"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objektif Pembelajaran",
+        "description": "Rujukan objektif pembelajaran yang dikeluarkan sebagai oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Mentaksir",
+        "description": "Rujukan aktiviti yang dikeluarkan sebagai oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Pautan lanjut",
+        "description": "Pautan ke maklumat tambahan."
+      }
+    ]
+  }
+}

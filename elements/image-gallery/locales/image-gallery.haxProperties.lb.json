@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Bildergalerie",
+    "description": "Eng Galerie, déi Biller als Gitter, Mauerwierk oder Diashow weist."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Uweisungsmodus",
+        "description": "Wéi d'Biller an der Galerie presentéiert ginn.",
+        "options": {
+          "grid": "Gitter",
+          "masonry": "Mauerwierk",
+          "gallery": "Galerie"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktiven Index",
+        "description": "Index vum aktive Bild, mat deem am Galeriemodus ugefaange gëtt."
+      }
+    ]
+  }
+}

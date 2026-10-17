@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kāleka hoʻomanaʻo",
+    "description": "E hoʻomaʻamaʻa i nā manaʻo me nā kāleka hoʻomanaʻo alo a kua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Alo o ke Kāleka",
+        "description": "Kikokikona alo a nīnau paha."
+      },
+      {
+        "slot": "back",
+        "title": "Kua o ke Kāleka",
+        "description": "Ka pane i manaʻo ʻia."
+      },
+      {
+        "property": "imgSource",
+        "title": "Kumu Kiʻi",
+        "description": "Faila kiʻi i hoʻohana ʻia no ke kāleka. Pani ʻo ia i ka Huaʻōlelo Kiʻi."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "ʻAno o ka Hana",
+        "description": "OER Schema: ke ʻano o ka hana e pili ana i kēia hoʻomaʻamaʻa (e laʻa me ka Heluhelu, Kākau, Hana, Noiʻi, Hoʻolohe, Nānā, Noʻonoʻo, Kūkākūkā, Kilo, Hōʻike, Loiloi)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Pahuhopu Aʻo",
+        "description": "OER Schema: ID a URL paha o ka pahuhopu aʻo i kākoʻo ʻia e kēia hoʻomaʻamaʻa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Pōuliuli",
+        "description": "E hoʻohana i ke ʻano pōuliuli."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu Kiko",
+        "description": "Waihoʻoluʻu kiko o ke kāleka."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Huaʻōlelo Kiʻi",
+        "description": "Huaʻōlelo kiʻi kaulele. Pani ʻia e ke Kumu Kiʻi."
+      }
+    ]
+  }
+}

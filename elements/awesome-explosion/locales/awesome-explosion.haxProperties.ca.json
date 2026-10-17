@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Explosió espectacular",
+    "description": "Animació d'explosió interactiva amb efectes de so opcionals."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Mida",
+        "description": "Defineix la mida de l'explosió.",
+        "options": {
+          "tiny": "Minúscula",
+          "small": "Petita",
+          "medium": "Mitjana",
+          "large": "Gran",
+          "epic": "Èpica"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Color",
+        "description": "Defineix el tema de color de l'explosió.",
+        "options": {
+          "": "Per defecte",
+          "red": "Vermell",
+          "blue": "Blau",
+          "purple": "Lila",
+          "orange": "Taronja",
+          "yellow": "Groc"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Efectes de so",
+        "description": "Activa els efectes de so."
+      },
+      {
+        "property": "resetSound",
+        "title": "Reinicia el so",
+        "description": "Reinicia el so des del principi cada vegada."
+      },
+      {
+        "property": "image",
+        "title": "Imatge personalitzada",
+        "description": "URL opcional d'una imatge d'explosió personalitzada."
+      },
+      {
+        "property": "sound",
+        "title": "So personalitzat",
+        "description": "URL opcional d'un efecte de so personalitzat."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Desactivat",
+        "description": "Desactiva totes les interaccions."
+      }
+    ]
+  }
+}

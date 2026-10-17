@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "خود جانچ",
+    "description": "صارفین خود جانچ مکمل کر سکتے ہیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "خود جانچ کی تصویر۔"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "خود جانچ کا عنوان۔"
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "تصویر کا متبادل متن۔"
+      },
+      {
+        "slot": "question",
+        "title": "سوال"
+      },
+      {
+        "slot": "",
+        "title": "جواب"
+      },
+      {
+        "property": "accentColor",
+        "title": "تھیم کا رنگ",
+        "description": "ڈیزائن سسٹم سے تھیم کا رنگ منتخب کریں۔",
+        "options": {
+          "primary": "بنیادی",
+          "accent": "نمایاں",
+          "success": "کامیابی",
+          "warning": "انتباہ",
+          "error": "خرابی",
+          "info": "معلومات"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "تعلیمی مقصد",
+        "description": "تعلیمی مقصد کا حوالہ جو oer:hasLearningObjective کے طور پر جاری ہوتا ہے۔"
+      },
+      {
+        "property": "assessing",
+        "title": "جانچ کا موضوع",
+        "description": "سرگرمی کا حوالہ جو oer:assessing کے طور پر جاری ہوتا ہے۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "مزید لنک",
+        "description": "اضافی معلومات کا لنک۔"
+      }
+    ]
+  }
+}

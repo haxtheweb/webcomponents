@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Röðunarspurning",
+    "description": "Raða atriðum í rétta röð."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spurning",
+        "description": "Haus spurningar."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Einkunnasnið",
+        "description": "OER Schema: einkunnasnið fyrir þetta mat (t.d. stig, bókstafur, prósenta, lokið)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Námsmarkmið",
+        "description": "OER Schema: námsmarkmið tengt þessu mati."
+      },
+      {
+        "property": "forCourse",
+        "title": "Námskeið",
+        "description": "OER Schema: námskeiðið sem þetta mat er ætlað."
+      },
+      {
+        "property": "answers",
+        "title": "Svör",
+        "description": "Röð svaranna skilgreinir réttu röðina."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Heiti prófs",
+        "description": "Heiti prófs notað til xAPI-auðkenningar í greiningarkerfum."
+      }
+    ]
+  }
+}

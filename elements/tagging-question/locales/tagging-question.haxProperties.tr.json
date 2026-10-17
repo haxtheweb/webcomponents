@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Etiketleme Sorusu",
+    "description": "Soruyu yanıtlamak için etiketleri seçin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Soru",
+        "description": "Kullanıcıların yanıtlayacağı soru."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Notlandırma biçimi",
+        "description": "OER Schema: bu değerlendirmenin notlandırma biçimi (ör. puan, harf, yüzde, tamamlama)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Öğrenme hedefi",
+        "description": "OER Schema: bu değerlendirmeyle ilişkili öğrenme hedefi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ders",
+        "description": "OER Schema: bu değerlendirmenin amaçlandığı ders."
+      },
+      {
+        "property": "answers",
+        "title": "Yanıtlar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Sınavın adı",
+        "description": "Analiz sistemlerinde xAPI ile tanımlama için kullanılan sınav adı."
+      }
+    ]
+  }
+}

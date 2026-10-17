@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ma Tagi",
+    "description": "Mndandanda wosavuta wa ma tagi owonetsedwa patsamba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Ma Tagi",
+        "description": "Mndandanda wa ma tagi olekanitsidwa ndi koma."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Mtundu Wowonjezera Wokha",
+        "description": "Ikani mtundu wowonjezera wokha potsatira dzina."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu",
+        "description": "Mtundu wa ma tagi."
+      }
+    ]
+  }
+}

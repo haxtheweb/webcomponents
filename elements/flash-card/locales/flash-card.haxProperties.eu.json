@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Flash txartela",
+    "description": "Landu kontzeptuak aurrealde eta atzealdedun flash txartelekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Txartelaren aurrealdea",
+        "description": "Aurrealdeko testua edo galdera."
+      },
+      {
+        "slot": "back",
+        "title": "Txartelaren atzealdea",
+        "description": "Espero den erantzuna."
+      },
+      {
+        "property": "imgSource",
+        "title": "Irudiaren iturburua",
+        "description": "Txartelerako erabilitako irudi fitxategia. Irudiaren gako-hitza gainidazten du."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Ekintza mota",
+        "description": "OER Schema: praktika honek dakarren ekintza mota (adib. Irakurtzea, Idaztea, Egitea, Ikertzea, Entzutea, Ikustea, Hausnartzea, Eztabaidatzea, Behatzea, Aurkeztea, Ebaluatzea)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ikaskuntza helburua",
+        "description": "OER Schema: praktika honek babesten duen ikaskuntza helburuaren IDa edo URLa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Iluna",
+        "description": "Erabili modu iluna."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Txartelaren nabarmentze kolorea."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Irudiaren gako-hitza",
+        "description": "Ausazko irudiaren gako-hitza. Irudiaren iturburuak gainidazten du."
+      }
+    ]
+  }
+}

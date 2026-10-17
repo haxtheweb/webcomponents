@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus 댓글",
+    "description": "Disqus 댓글 웹 서비스와의 통합"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "짧은 이름",
+        "description": "Disqus의 속성 짧은 이름"
+      }
+    ]
+  }
+}

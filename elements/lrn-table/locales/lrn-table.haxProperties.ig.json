@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tebụl CSV",
+    "description": "Nke a nwere ike imepụta tebụl site na faịlụ CSV n'agbanyeghị ebe ọ dị."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Isi mmalite",
+        "description": "URL maka faịlụ CSV a."
+      },
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Aha tebụl a ga-emepụta."
+      },
+      {
+        "property": "description",
+        "title": "Nkọwa",
+        "description": "Nkọwa zuru ezu maka ịdị mfe ịnweta data tebụl ka mma."
+      }
+    ]
+  }
+}

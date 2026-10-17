@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Élément de collection",
+    "description": "Élément de type carte à utiliser dans une liste de collection, avec texte, lien et média facultatif."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Lien",
+        "description": "URL de destination de cette carte."
+      },
+      {
+        "property": "image",
+        "title": "Image",
+        "description": "Image d'arrière-plan."
+      },
+      {
+        "property": "line1",
+        "title": "Ligne 1",
+        "description": "Première ligne de texte."
+      },
+      {
+        "property": "line2",
+        "title": "Ligne 2",
+        "description": "Deuxième ligne de texte."
+      },
+      {
+        "property": "line3",
+        "title": "Ligne 3",
+        "description": "Troisième ligne de texte."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icône",
+        "description": "Icône représentant la carte."
+      },
+      {
+        "property": "saturate",
+        "title": "Effet de saturation",
+        "description": "Modifier la saturation de l'image lors du focus."
+      },
+      {
+        "property": "tags",
+        "title": "Étiquettes",
+        "description": "Liste d'étiquettes séparées par des virgules."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur",
+        "description": "Couleur utilisée pour les étiquettes."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Texte alternatif décrivant le lien."
+      }
+    ]
+  }
+}

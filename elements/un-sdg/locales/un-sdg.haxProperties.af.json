@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Verenigde Nasies se Volhoubare Ontwikkelingsdoelwit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Doelwit",
+        "description": "UN SDG-nommer."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Slegs kleur",
+        "description": "Wys slegs die doelwitkleur."
+      }
+    ]
+  }
+}

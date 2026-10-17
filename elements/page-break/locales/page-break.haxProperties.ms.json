@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Butiran halaman",
+    "description": "Tentukan pemisahan visual antara halaman yang boleh digunakan oleh CMS untuk mencipta halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tajuk yang dipaparkan dalam tema dan tajuk pertama."
+      },
+      {
+        "property": "pageType",
+        "title": "Jenis",
+        "description": "Label konteks visual halaman.",
+        "options": {
+          "": "-- tiada --",
+          "content": "Kandungan",
+          "assessment": "Pentaksiran",
+          "quiz": "Kuiz",
+          "submission": "Penyerahan",
+          "lesson": "Pelajaran",
+          "module": "Modul",
+          "task": "Tugasan",
+          "activity": "Aktiviti",
+          "project": "Projek",
+          "practice": "Latihan",
+          "unit": "Unit",
+          "objectives": "Objektif Pembelajaran",
+          "connection": "Kaitan",
+          "knowledge": "Tahukah Anda?",
+          "strategy": "Strategi Pembelajaran",
+          "discuss": "Bincang",
+          "listen": "Dengar",
+          "make": "Buat",
+          "observe": "Perhati",
+          "present": "Bentang",
+          "reading": "Bacaan",
+          "reflect": "Renung",
+          "research": "Penyelidikan",
+          "watch": "Tonton",
+          "write": "Tulis"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Senarai tag dipisahkan koma."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL Pautan",
+        "description": "URL ubah hala yang dipaparkan dan bukannya kandungan halaman."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Sasaran Pautan",
+        "description": "Buka pautan dalam tetingkap yang sama atau tetingkap baharu.",
+        "options": {
+          "_self": "Tetingkap yang sama",
+          "_blank": "Tetingkap baharu"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Diterbitkan",
+        "description": "Halaman yang tidak diterbitkan disembunyikan daripada pengguna akhir."
+      },
+      {
+        "property": "locked",
+        "title": "Kunci halaman",
+        "description": "Kunci atau buka kunci semua elemen pada halaman ini."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Atasi slug automatik",
+        "description": "Kunci slug daripada kemas kini automatik berdasarkan tajuk atau induk."
+      },
+      {
+        "property": "slug",
+        "title": "Laluan",
+        "description": "Slug URL untuk halaman ini."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Media yang mewakili halaman, digunakan dalam sesetengah tema dan paparan."
+      },
+      {
+        "property": "parent",
+        "title": "Induk",
+        "description": "Laluan halaman induk."
+      },
+      {
+        "property": "noderefs",
+        "title": "Kandungan berkaitan",
+        "description": "Halaman yang berkaitan dengan halaman ini."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Penerangan",
+        "description": "Penerangan yang digunakan dalam koleksi dan pengoptimuman enjin carian."
+      },
+      {
+        "property": "entityType",
+        "title": "Jenis Entiti",
+        "description": "Lalai kepada halaman melainkan ditetapkan sebaliknya.",
+        "options": {
+          "page": "Halaman (lalai)",
+          "taxonomy": "Taksonomi",
+          "taxonomyTerm": "Istilah Taksonomi",
+          "region": "Rantau"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon yang dikaitkan dengan halaman ini dalam laman."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Warna yang dikaitkan dengan halaman ini dalam laman."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Sembunyikan dalam menu",
+        "description": "Sembunyikan halaman ini daripada menu sambil mengekalkan URLnya."
+      },
+      {
+        "property": "order",
+        "title": "Susunan",
+        "description": "Susunan berbanding halaman sejajar."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Tema halaman",
+        "description": "Atasi tema untuk halaman ini sahaja."
+      },
+      {
+        "property": "author",
+        "title": "Pengarang",
+        "description": "Nama pengguna orang terakhir yang mengubah suai halaman ini."
+      }
+    ]
+  }
+}

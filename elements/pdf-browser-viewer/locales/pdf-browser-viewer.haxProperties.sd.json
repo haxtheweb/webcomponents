@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF براؤزر ويوئر",
+    "description": "اختياري ڪارڊ ترتيب ۽ ڊائون لوڊ بٽڻ سان PDF فائل ان لائن شامل ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF فائل جي جڳهه."
+      },
+      {
+        "property": "heading",
+        "title": "سرخي",
+        "description": "ڪارڊ جي سرخي جو متن."
+      },
+      {
+        "property": "card",
+        "title": "ڪارڊ ترتيب",
+        "description": "ڊائون لوڊ بٽڻ سان ڪارڊ ۾ PDF ڏيکاريو."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ڊائون لوڊ ليبل",
+        "description": "ڊائون لوڊ بٽڻ لاءِ ليبل."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "غير مددي پيغام",
+        "description": "جڏهن براؤزر PDF فائلون ڏيکاري نه سگهي ته پيغام."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "غير مددي لنڪ پيغام",
+        "description": "جڏهن براؤزر PDF فائلون ڏيکاري نه سگهي ته لنڪ جو متن."
+      },
+      {
+        "property": "width",
+        "title": "ويڪر",
+        "description": "PDF ويوئر جي ويڪر."
+      },
+      {
+        "property": "height",
+        "title": "اوچائي",
+        "description": "PDF ويوئر جي اوچائي."
+      }
+    ]
+  }
+}

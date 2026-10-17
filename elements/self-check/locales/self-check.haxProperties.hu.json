@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Önellenőrzés",
+    "description": "A felhasználók önellenőrzést végezhetnek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Kép",
+        "description": "Az önellenőrzés képe."
+      },
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "Az önellenőrzés címe."
+      },
+      {
+        "property": "alt",
+        "title": "Helyettesítő szöveg",
+        "description": "A kép helyettesítő szövege."
+      },
+      {
+        "slot": "question",
+        "title": "Kérdés"
+      },
+      {
+        "slot": "",
+        "title": "Válasz"
+      },
+      {
+        "property": "accentColor",
+        "title": "Téma színe",
+        "description": "Válasszon téma színt a tervezési rendszerből.",
+        "options": {
+          "primary": "Elsődleges",
+          "accent": "Kiemelés",
+          "success": "Siker",
+          "warning": "Figyelmeztetés",
+          "error": "Hiba",
+          "info": "Információ"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tanulási cél",
+        "description": "Tanulási célra mutató hivatkozás oer:hasLearningObjective értékként kiadva."
+      },
+      {
+        "property": "assessing",
+        "title": "Értékeli",
+        "description": "Tevékenységre mutató hivatkozás oer:assessing értékként kiadva."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "További információ hivatkozás",
+        "description": "Hivatkozás további információkra."
+      }
+    ]
+  }
+}

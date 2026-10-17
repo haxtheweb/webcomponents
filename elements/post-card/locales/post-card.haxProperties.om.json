@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Kaardii Poostaa",
+    "description": "Miidiyaa taphaa kan akka kaardii poostaa bakka tokko irraa dhufeetti mul'atu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Gara",
+        "description": "Kun eenyuuf ergama?"
+      },
+      {
+        "property": "from",
+        "title": "Irraa",
+        "description": "Ati eenyu?"
+      },
+      {
+        "property": "message",
+        "title": "Ergaa",
+        "description": "Maal jechuu barbaadda?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Chaappaa Poostaa Bakka Irraa",
+        "description": "Kaardiin kun eessaa ergame?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Madda Suuraa Ijoo",
+        "description": "Suuraan kee eessa jira?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Madda Suuraa Chaappaa",
+        "description": "Suuraan kee eessa jira?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ubin Polaris",
+    "description": "Tampilake ubin Polaris kanthi judhul, teks panyengkuyung opsional, lan pranala opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Teks utama",
+        "description": "Teks utama ubin."
+      },
+      {
+        "property": "line2",
+        "title": "Teks sekunder",
+        "description": "Teks panyengkuyung opsional."
+      },
+      {
+        "property": "type",
+        "title": "Gaya ubin",
+        "description": "Gaya visual ubin prasetel.",
+        "options": {
+          "1": "Gaya 1",
+          "2": "Gaya 2",
+          "3": "Gaya 3",
+          "4": "Gaya 4",
+          "5": "Gaya 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Gambar latar mburi",
+        "description": "URL gambar latar mburi sing digunakake gaya ubin sing ndhukung gambar."
+      },
+      {
+        "property": "link",
+        "title": "Pranala",
+        "description": "URL tujuan opsional kanggo tumindak ubin."
+      }
+    ]
+  }
+}

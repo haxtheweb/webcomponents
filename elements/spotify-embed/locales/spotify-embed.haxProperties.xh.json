@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Isisongeli sezidlali ze-Spotify ezifakiweyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Umthombo",
+        "description": "Ikhonkco lokufaka okanye lokwabelana elivela kwi-Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Umxholo",
+        "description": "Umxholo wombala ongasemva wesidlali.",
+        "options": {
+          "": "Okungagqibekanga",
+          "0": "Mnyama"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Ubungakanani",
+        "description": "Ubungakanani besidlali.",
+        "options": {
+          "normal": "Okungagqibekanga",
+          "compact": "Ecinezelekileyo"
+        }
+      }
+    ]
+  }
+}

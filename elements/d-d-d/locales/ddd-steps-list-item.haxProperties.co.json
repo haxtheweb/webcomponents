@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Elementu di tappe",
+    "description": "Elementu chì face parte d'una lista di tappe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulu"
+      }
+    ]
+  }
+}

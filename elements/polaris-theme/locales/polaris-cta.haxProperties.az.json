@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Temalı Polaris fəaliyyətə çağırış düyməsini göstər."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Düymə mətni",
+        "description": "Fəaliyyətə çağırış düyməsində göstərilən mətn."
+      },
+      {
+        "property": "link",
+        "title": "Keçid",
+        "description": "Düymə üçün hədəf URL."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Vizual üslub variantı.",
+        "options": {
+          "primary": "Əsas",
+          "tinted": "Çalarlı",
+          "light": "Açıq"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Konturlu üslub",
+        "description": "Konturlu tərtibatı aktivləşdir."
+      },
+      {
+        "property": "filled",
+        "title": "Doldurulmuş üslub",
+        "description": "Doldurulmuş tərtibatı aktivləşdir."
+      }
+    ]
+  }
+}

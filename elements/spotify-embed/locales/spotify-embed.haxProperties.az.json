@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify pleyer yerləşdirmələri üçün örtük."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Mənbə",
+        "description": "Spotify-dan yerləşdirmə və ya paylaşım keçidi."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Pleyer üçün fon rəngi teması.",
+        "options": {
+          "": "Defolt",
+          "0": "Qara"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Ölçü",
+        "description": "Pleyerin ölçüsü.",
+        "options": {
+          "normal": "Defolt",
+          "compact": "Yığcam"
+        }
+      }
+    ]
+  }
+}

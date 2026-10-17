@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX сүз сәнгате",
+    "description": "HAX логотибы элементы, әлбәттә, HAX белән эшли торган элемент буларак."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Урнаштырыла торган HAX логотибының зурлыгы",
+        "options": {
+          "mini": "Мини",
+          "small": "Кечкенә",
+          "normal": "Гадәти",
+          "large": "Зур"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Логотипны баш хәрефләргә әверелдерергәме"
+      }
+    ]
+  }
+}

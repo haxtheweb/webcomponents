@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Sulyap sa produkto",
+    "description": "Block para sa mabilis na pangkalahatang-ideya ng produkto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Icon na kumakatawan sa konsepto."
+      },
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Pangunahing konsepto sa isang sulyap."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtitle",
+        "description": "Karagdagang detalye."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na kulay",
+        "description": "Accent na kulay para sa icon."
+      }
+    ]
+  }
+}

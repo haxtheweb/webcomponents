@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Uhlu lwabanikeli be-GitHub",
+    "description": "Bavezwa njengabalingiswa be-RPG kusetshenziswa i-GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Inhlangano",
+        "description": "Igama lenhlangano kusuka ku-github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Inqolobane",
+        "description": "Igama lenqolobane kusuka ku-github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Umkhawulo",
+        "description": "Khawulela inani labanikeli ababoniswayo."
+      }
+    ]
+  }
+}

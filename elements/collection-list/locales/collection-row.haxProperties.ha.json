@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Layin tarin",
+    "description": "Abu irin layi don amfani a cikin jerin tarin, tare da rubutu, mahaɗi, alama, alamun tag, da hoton zaɓi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Mahaɗi",
+        "description": "URL na inda wannan layin zai kai."
+      },
+      {
+        "property": "image",
+        "title": "Hoto",
+        "description": "Hoton layin."
+      },
+      {
+        "property": "alt",
+        "title": "Madadi",
+        "description": "Rubutun madadi mai bayyana hoton."
+      },
+      {
+        "property": "line1",
+        "title": "Layi na 1",
+        "description": "Layin rubutu na farko."
+      },
+      {
+        "property": "line2",
+        "title": "Layi na 2",
+        "description": "Layin rubutu na biyu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Alama",
+        "description": "Alamar da ke wakiltar layin."
+      },
+      {
+        "property": "saturate",
+        "title": "Tasirin cikar launi",
+        "description": "Canza cikar launin hoto idan mai amfani ya mai da hankali."
+      },
+      {
+        "property": "tags",
+        "title": "Tag-tag",
+        "description": "Jerin tag-tag da aka raba da waƙafi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launi",
+        "description": "Launin da ake amfani da shi don alama da tag-tag."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Áncora de páxina",
+    "description": "Ligazón a puntos específicos do contido multimedia da páxina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Destino na páxina",
+        "description": "ID ou recurso ao que apunta esta áncora."
+      },
+      {
+        "property": "value",
+        "title": "Valor da ligazón profunda",
+        "description": "Valor da ligazón profunda (por exemplo, marca de tempo ou ID de diapositiva)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entidade do sitio",
+        "description": "Entidade do sitio opcional para controlar a presentación de conceptos relacionados."
+      }
+    ]
+  }
+}

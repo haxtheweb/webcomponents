@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Produktuari begirada",
+    "description": "Produktuaren ikuspegi orokor azkarra emateko blokea."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikonoa",
+        "description": "Kontzeptua adierazten duen ikonoa."
+      },
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Kontzeptu nagusia begirada batean."
+      },
+      {
+        "property": "subtitle",
+        "title": "Azpititulua",
+        "description": "Xehetasun gehigarria."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Ikonoaren nabarmentze kolorea."
+      }
+    ]
+  }
+}

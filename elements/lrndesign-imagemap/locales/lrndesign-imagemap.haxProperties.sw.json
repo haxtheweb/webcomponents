@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ramani ya picha",
+    "description": "Ramani ya picha inayofikika yenye maeneo shirikishi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Lebo",
+        "description": "Lebo ya ramani ya picha."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Maelezo ya maeneo shirikishi",
+        "description": "Maeneo shirikishi kwenye ramani ya picha."
+      }
+    ]
+  }
+}

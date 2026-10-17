@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Bildjämförelse",
+    "description": "Svep en bild över en annan för att jämföra."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Övre bild",
+        "description": "Övre bild som sveps över den undre bilden."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alt-text för övre bild",
+        "description": "Obligatorisk alt-text för tillgänglighet."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Undre bild",
+        "description": "Undre bild som visas under den övre bilden."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alt-text för undre bild",
+        "description": "Obligatorisk alt-text för tillgänglighet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Beteende",
+        "description": "Välj svepläge (standard) eller opacitetsläge för övre bild."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "Reglagefältets färg."
+      },
+      {
+        "property": "dark",
+        "title": "Mörk",
+        "description": "Invertera reglagefältets färg."
+      },
+      {
+        "property": "position",
+        "title": "Startposition",
+        "description": "Startposition från 0 till 100."
+      }
+    ]
+  }
+}

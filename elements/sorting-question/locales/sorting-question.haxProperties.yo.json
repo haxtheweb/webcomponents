@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ìbéèrè Títò",
+    "description": "Tò àwọn ẹyọ sí ètò-ìtẹ̀léra tó tọ́."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ìbéèrè",
+        "description": "Àkọlé Ìbéèrè."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ọ̀nà ìfúnmáàkì",
+        "description": "OER Schema: ọ̀nà ìfúnmáàkì fún ìgbéléwọ̀n yìí (fún àpẹẹrẹ máàkì, lẹ́tà, ìdá-ọgọ́rùn-ún, ìparí)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Àfojúsùn ẹ̀kọ́",
+        "description": "OER Schema: àfojúsùn ẹ̀kọ́ tí ó jẹmọ́ ìgbéléwọ̀n yìí."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kọ́ọ̀sì",
+        "description": "OER Schema: kọ́ọ̀sì tí a pète ìgbéléwọ̀n yìí fún."
+      },
+      {
+        "property": "answers",
+        "title": "Àwọn ìdáhùn",
+        "description": "Ètò-ìtẹ̀léra àwọn ìdáhùn ni ó ń pinnu ọ̀wọ́ tó tọ́."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Orúkọ ìdánwò kékeré náà",
+        "description": "Orúkọ ìdánwò kékeré tí a lò fún ìdánimọ̀ xAPI nínú àwọn ètò ìtúpalẹ̀."
+      }
+    ]
+  }
+}

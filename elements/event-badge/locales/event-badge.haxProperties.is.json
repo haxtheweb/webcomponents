@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Viðburðarmerki",
+    "description": "Viðburðarmerkiseining."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV-mynd",
+        "description": "Mynd sem birtist á sjónvarpinu."
+      },
+      {
+        "property": "logo",
+        "title": "Merki (lógó)",
+        "description": "Lógó sem birtist í horni merkisins."
+      },
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Titill sem birtist efst á merkinu."
+      },
+      {
+        "property": "name",
+        "title": "Nafn",
+        "description": "Nafn sem birtist á merkinu."
+      },
+      {
+        "property": "position",
+        "title": "Staða",
+        "description": "Hlutverk eða starfsheiti viðkomandi."
+      },
+      {
+        "property": "organization",
+        "title": "Stofnun",
+        "description": "Stofnunin sem viðkomandi starfar hjá."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV-litur",
+        "description": "Veldu lit sjónvarpsins."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Aðalbakgrunns- eða textalitur."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Litur hnúða",
+        "description": "Litur sjónvarpshnúðanna."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Nota sepia-áhrif."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Svarthvítt",
+        "description": "Nota svarthvít áhrif."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mappa tal-immaġni",
+    "description": "Mappa tal-immaġni aċċessibbli b'hotspots interattivi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Tikketta",
+        "description": "Tikketta għall-mappa tal-immaġni."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Dettalji tal-hotspots",
+        "description": "Il-hotspots interattivi fuq il-mappa tal-immaġni."
+      }
+    ]
+  }
+}

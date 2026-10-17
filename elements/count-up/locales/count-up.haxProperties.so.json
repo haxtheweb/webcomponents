@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Tirinta Kor u Kaca",
+    "description": "Muuji tiro kor u tirinaysa ilaa qiimaha la beegsaday marka ay soo muuqato."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Qiimaha dhammaadka",
+        "description": "Tirada loo tirinayo."
+      },
+      {
+        "property": "start",
+        "title": "Qiimaha bilowga",
+        "description": "Tirada laga bilaabayo tirinta."
+      },
+      {
+        "property": "duration",
+        "title": "Muddo",
+        "description": "Ilbiriqsiyada ay qaadanayso tirintu."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Qoraalka horgalka",
+        "description": "Qoraalka ka hor muuqda tirada (tusaale '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Qoraalka dabagalka",
+        "description": "Qoraalka ka dib muuqda tirada (tusaale '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Booska horgalka",
+        "description": "Nuxur ikhtiyaari ah oo ka horreeya tirada."
+      },
+      {
+        "slot": "suffix",
+        "title": "Booska dabagalka",
+        "description": "Nuxur ikhtiyaari ah oo ka dambeeya tirada."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Meelaha jajabka",
+        "description": "Tirada meelaha jajabka ee la muujinayo."
+      },
+      {
+        "property": "separator",
+        "title": "Kala-saaraha kumanaanka",
+        "description": "Xarafka kala saara kooxaha kumanaanka."
+      },
+      {
+        "property": "decimal",
+        "title": "Xarafka jajabka",
+        "description": "Xarafka loo isticmaalo dhibicda jajabka."
+      },
+      {
+        "property": "noeasing",
+        "title": "Jilcin la'aan",
+        "description": "Dami jilcinta si tirintu u noqoto mid toosan."
+      }
+    ]
+  }
+}

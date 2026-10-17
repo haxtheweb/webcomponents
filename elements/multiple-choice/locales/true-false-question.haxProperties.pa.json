@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "ਸਹੀ / ਗਲਤ ਸਵਾਲ",
+    "description": "ਸਹੀ ਗਲਤ ਸਵਾਲ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ਸਵਾਲ",
+        "description": "ਉਪਭੋਗਤਾਵਾਂ ਦੇ ਜਵਾਬ ਦੇਣ ਲਈ ਸਵਾਲ।"
+      },
+      {
+        "property": "_tfanswer",
+        "title": "ਸਹੀ ਜਵਾਬ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ਕੁਇਜ਼ ਦਾ ਨਾਮ",
+        "description": "xAPI-ਆਧਾਰਿਤ ਵਾਤਾਵਰਣਾਂ ਵਿੱਚ ਇਸ ਆਈਟਮ ਦੀ ਪਛਾਣ ਲਈ ਭੇਜਿਆ ਕੁਇਜ਼ ਨਾਮ"
+      }
+    ]
+  }
+}

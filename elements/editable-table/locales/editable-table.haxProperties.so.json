@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Shax",
+    "description": "Xog shax ku salaysan oo webka ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Madaxa Safka",
+        "description": "U dhig safka koowaad madax."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Madaxa Tiirka",
+        "description": "U dhig tiirka koowaad madax."
+      },
+      {
+        "property": "footer",
+        "title": "Cagta",
+        "description": "U dhig safka ugu dambeeya cag."
+      },
+      {
+        "property": "sort",
+        "title": "La kala sooci karo",
+        "description": "Oggolow kala-soocida qiimaha tiirarka."
+      },
+      {
+        "property": "filter",
+        "title": "Oggolow Shaandhaynta",
+        "description": "Oggolow shaandhaynta qiimaha tiirarka."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Qaabka Tirooyinka",
+        "description": "Ku dabaq qaabka tirooyinka tiirarka tirooyinka leh."
+      },
+      {
+        "property": "responsive",
+        "title": "Jawaab-celin",
+        "description": "Hagaaji qaabka shaxda shaashadaha yaryar."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Habka Rubric",
+        "description": "U fasir shaxdan sidii OER Schema Rubric si loo soo saaro xogta Rubric, RubricScale, RubricCriterion, iyo RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Nooca Rubric",
+        "description": "Qaabka rubric-ga oo loo soo saaro oer:rubricType (macno keliya ayuu leeyahay marka Habka Rubric uu daaran yahay).",
+        "options": {
+          "": "(midna)",
+          "analytic": "Falanqayn",
+          "holistic": "Guud",
+          "single-point": "Hal Dhibic",
+          "checklist": "Liis hubin"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Xuduud leh"
+      },
+      {
+        "property": "condensed",
+        "title": "Cidhiidhi Safafka",
+        "description": "Yaree dhererka safka."
+      },
+      {
+        "property": "striped",
+        "title": "Safaf Xariijin leh",
+        "description": "Hadh sii saf kasta oo kale."
+      },
+      {
+        "property": "downloadable",
+        "title": "Badhanka Soo-dejinta",
+        "description": "Ku dar badhan lagu soo dejiyo shaxda."
+      },
+      {
+        "property": "copyable",
+        "title": "Badhanka Koobiyeynta",
+        "description": "Ku dar badhan lagu koobiyeeyo xogta CSV ee shaxda."
+      },
+      {
+        "property": "printable",
+        "title": "Badhanka Daabacaadda",
+        "description": "Ku dar badhan lagu daabaco shaxda oo keliya."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Xogta CSV",
+        "description": "Ka samee shax fayl CSV ah oo la soo geliyay."
+      }
+    ]
+  }
+}

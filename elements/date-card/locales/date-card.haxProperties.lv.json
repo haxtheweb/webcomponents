@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Datums",
+    "description": "Rādīt kalendāra datumu ar informāciju."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mēnesis",
+        "description": "Kartītē rādītais mēnesis."
+      },
+      {
+        "property": "date",
+        "title": "Mēneša diena",
+        "description": "Mēneša dienas numurs."
+      },
+      {
+        "property": "day",
+        "title": "Nedēļas diena",
+        "description": "Nedēļas diena vārdiem."
+      },
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Pasākuma nosaukums."
+      },
+      {
+        "property": "location",
+        "title": "Vieta",
+        "description": "Pasākuma norises vieta."
+      },
+      {
+        "property": "startTime",
+        "title": "Sākums",
+        "description": "Sākuma laiks."
+      },
+      {
+        "property": "endTime",
+        "title": "Beigas",
+        "description": "Beigu laiks."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Neobligāta akcenta krāsa."
+      },
+      {
+        "property": "dark",
+        "title": "Tumšais motīvs",
+        "description": "Iespējot tumšo motīvu."
+      }
+    ]
+  }
+}

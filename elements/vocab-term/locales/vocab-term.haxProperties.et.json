@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Sõnavara",
+    "description": "Sõnavara termin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termin"
+      },
+      {
+        "property": "information",
+        "title": "Definitsioon",
+        "description": "Terminil klõpsamisel kuvatav definitsioon."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Hüpikaken",
+        "description": "Kuva definitsioon tekstisisese asemel hüpikaknas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Lingid",
+        "description": "Selle terminiga seotud täiendavate linkide loend."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Iegult Disqus komentārus lapā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Īsais nosaukums",
+        "description": "Vietnes īsais nosaukums, kas nosaka Disqus skripta resursdatoru."
+      },
+      {
+        "property": "pageURL",
+        "title": "Lapas URL",
+        "description": "Tās lapas URL, kurai pievienots komentāru pavediens."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Lapas identifikators",
+        "description": "Lapas komentāru pavediena unikālais identifikators."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Lapas nosaukums",
+        "description": "Tās lapas nosaukums, kurai pievienots komentāru pavediens."
+      },
+      {
+        "property": "loadingText",
+        "title": "Ielādes teksts",
+        "description": "Teksts, kas tiek paziņots, kamēr ielādējas komentāri."
+      },
+      {
+        "property": "lang",
+        "title": "Valoda",
+        "description": "Disqus saskarnes valodas kods, piem., en."
+      }
+    ]
+  }
+}

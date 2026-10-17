@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "طنز",
+    "description": "متن کي مذاقيه انداز ۾ پيش ڪرڻ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "متن",
+        "description": "طنزيه بڻائڻ لاءِ متن"
+      }
+    ]
+  }
+}

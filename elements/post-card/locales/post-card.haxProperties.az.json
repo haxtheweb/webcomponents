@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Poçt kartı",
+    "description": "Haradansa göndərilmiş real poçt kartına bənzəyən əyləncəli media elementi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Kimə",
+        "description": "Bu kimə gedir?"
+      },
+      {
+        "property": "from",
+        "title": "Kimdən",
+        "description": "Siz kimsiniz?"
+      },
+      {
+        "property": "message",
+        "title": "Mesaj",
+        "description": "Nə demək istəyirsiniz?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Poçt möhürü yeri",
+        "description": "Bu kart haradan göndərilib?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Əsas foto mənbəyi",
+        "description": "Fotonuz harada yerləşir?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Marka fotosu mənbəyi",
+        "description": "Fotonuz harada yerləşir?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) урнаштыру",
+    "description": "X-тан твитны контекстта урнаштырырга."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Твит URL адресы",
+        "description": "Урнаштырыла торган твитның URL адресы."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Тема",
+        "description": "X твитлары өчен якты яки караңгы тема.",
+        "options": {
+          "light": "Якты",
+          "dark": "Караңгы"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Басканда popup тәрәзәне тыярга",
+        "description": "Кулланучыларга твитны x.com-да ачарга ирек бирмәскә."
+      }
+    ]
+  }
+}

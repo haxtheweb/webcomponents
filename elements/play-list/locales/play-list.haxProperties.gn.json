@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Ñembopu rysýi",
+    "description": "Ehechauka oimeraẽ tetepy ñembopu rysýipe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Ypykue",
+        "description": "Tetepy ojehechaukáva ñembopu rysýipe."
+      },
+      {
+        "property": "edit",
+        "title": "Ñembosako'i reko",
+        "description": "Emoambue ñembosako'i ha jehecha ypy reko apytépe ñembopu rysýipe g̃uarã."
+      },
+      {
+        "property": "navigation",
+        "title": "Jeguata",
+        "description": "Ehechauka votõ jeguata tenonde ha tapykuépe."
+      },
+      {
+        "property": "pagination",
+        "title": "Kuatiarogue papapy",
+        "description": "Ehechauka kuatiarogue kyta'i."
+      },
+      {
+        "property": "orientation",
+        "title": "Ñembohape",
+        "description": "Jehechauka ñembohape.",
+        "options": {
+          "horizontal": "Atãvõ",
+          "vertical": "Oñembo'ýva"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Jehechauka ñepyrũrã",
+        "description": "Jehechauka papapy ojehechaukataha ñepyrũrã."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Tuichakue joja",
+        "description": "Jehechauka tuichakue joja.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

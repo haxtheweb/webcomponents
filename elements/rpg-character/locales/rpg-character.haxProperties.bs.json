@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG lik",
+    "description": "Zabavni lik iz HAX-a."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Ime",
+        "description": "Riječ koja se koristi za generisanje nasumičnog lika."
+      },
+      {
+        "property": "hat",
+        "title": "Šešir",
+        "description": "Stil šešira.",
+        "options": {
+          "none": "Zadano",
+          "random": "Nasumično",
+          "bunny": "Zeko",
+          "cowboy": "Kauboj",
+          "education": "Obrazovanje",
+          "construction": "Građevina",
+          "warning": "Upozorenje",
+          "watermelon": "Lubenica",
+          "coffee": "Kafa",
+          "knight": "Vitez",
+          "ninja": "Nindža",
+          "party": "Zabava",
+          "error": "Greška",
+          "edit": "Uređivanje"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Širina",
+        "description": "Širina lika u pikselima."
+      },
+      {
+        "property": "height",
+        "title": "Visina",
+        "description": "Visina lika u pikselima."
+      },
+      {
+        "property": "fire",
+        "title": "Gori?",
+        "description": "Da li lik gori."
+      },
+      {
+        "property": "walking",
+        "title": "Hoda?",
+        "description": "Animacija hodanja; trči kada gori."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF 浏览器查看器",
+    "description": "内嵌 PDF 文件，可选卡片布局搭下载按钮。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF 文件个位置。"
+      },
+      {
+        "property": "heading",
+        "title": "标题",
+        "description": "卡片标题文字。"
+      },
+      {
+        "property": "card",
+        "title": "卡片布局",
+        "description": "用带下载按钮个卡片显示 PDF。"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "下载标签",
+        "description": "下载按钮个标签。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "勿支持提示",
+        "description": "浏览器显示勿了 PDF 文件辰光个提示。"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "勿支持链接提示",
+        "description": "浏览器显示勿了 PDF 文件辰光个链接文字。"
+      },
+      {
+        "property": "width",
+        "title": "宽度",
+        "description": "PDF 查看器宽度。"
+      },
+      {
+        "property": "height",
+        "title": "高度",
+        "description": "PDF 查看器高度。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Aktivitätsbox",
+    "description": "Kleiner gestalteter Überschriftenblock."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Symbol",
+        "description": "Symbol, das neben der Aktivitätsbox angezeigt wird."
+      },
+      {
+        "property": "tag",
+        "title": "Tag der Aktivitätsbox",
+        "description": "Tag, das in der Aktivitätsbox angezeigt wird."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Keine Einfärbung",
+        "description": "Verhindern, dass das Symbol eingefärbt wird."
+      }
+    ]
+  }
+}

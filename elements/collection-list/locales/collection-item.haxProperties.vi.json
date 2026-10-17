@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Mục bộ sưu tập",
+    "description": "Mục dạng thẻ dùng trong danh sách bộ sưu tập, có văn bản, liên kết và phương tiện tùy chọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Liên kết",
+        "description": "URL đích cho thẻ này."
+      },
+      {
+        "property": "image",
+        "title": "Hình ảnh",
+        "description": "Hình nền."
+      },
+      {
+        "property": "line1",
+        "title": "Dòng 1",
+        "description": "Dòng văn bản thứ nhất."
+      },
+      {
+        "property": "line2",
+        "title": "Dòng 2",
+        "description": "Dòng văn bản thứ hai."
+      },
+      {
+        "property": "line3",
+        "title": "Dòng 3",
+        "description": "Dòng văn bản thứ ba."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Biểu tượng",
+        "description": "Biểu tượng đại diện cho thẻ."
+      },
+      {
+        "property": "saturate",
+        "title": "Hiệu ứng bão hòa",
+        "description": "Thay đổi độ bão hòa của hình ảnh khi người dùng chọn."
+      },
+      {
+        "property": "tags",
+        "title": "Thẻ",
+        "description": "Danh sách thẻ phân tách bằng dấu phẩy."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu sắc",
+        "description": "Màu dùng cho các thẻ."
+      },
+      {
+        "property": "alt",
+        "title": "Văn bản thay thế",
+        "description": "Văn bản thay thế mô tả liên kết."
+      }
+    ]
+  }
+}

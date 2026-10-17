@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "थांबा सूचना",
+    "description": "वाचकांना विशिष्ट निर्देशांबद्दल सावध करणारा संदेश."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "थांबा सूचनेसाठी शीर्षक प्रविष्ट करा."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "बाह्य url प्रविष्ट करा."
+      },
+      {
+        "property": "status",
+        "title": "स्थिती",
+        "description": "स्थिती सेट केल्याने रंग आणि आयकॉन त्यानुसार बदलतात",
+        "options": {
+          "stop": "थांबा",
+          "warning": "इशारा",
+          "success": "पुष्टी",
+          "info": "सूचना"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "सूचना मजकूर",
+        "description": "थांबा सूचनेसाठी मजकूर."
+      }
+    ]
+  }
+}

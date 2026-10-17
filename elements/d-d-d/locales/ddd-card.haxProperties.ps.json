@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "کارت",
+    "description": "د DDD ډیزاین سیسټم سره ښکلی شوی کارت."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "انځور",
+        "description": "اختیاري انځور."
+      },
+      {
+        "property": "alt",
+        "title": "د انځور بدیل متن",
+        "description": "بدیل متن چې انځور تشریح کوي."
+      },
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "د کارت سرلیک."
+      },
+      {
+        "slot": "",
+        "title": "منځپانګه",
+        "description": "د کارت د منځپانګې ساحه."
+      },
+      {
+        "property": "href",
+        "title": "لینک",
+        "description": "د تڼۍ د لینک URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "لیبل",
+        "description": "د تڼۍ لیبل."
+      },
+      {
+        "property": "noArrow",
+        "title": "بې غشي",
+        "description": "د تڼۍ غشی پټ کړئ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "لینک: هدف",
+        "description": "لینک چېرته پرانیستل شي.",
+        "options": {
+          "": "همدا کړکۍ",
+          "_blank": "نوې کړکۍ - _blank",
+          "_top": "پورتنۍ کړکۍ - _top",
+          "_parent": "مورنۍ کړکۍ - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "لینک: rel",
+        "description": "د تړل شوې سرچینې او اوسني سند ترمنځ اړیکه."
+      }
+    ]
+  }
+}

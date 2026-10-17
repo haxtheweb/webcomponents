@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Carte mémoire",
+    "description": "Réviser des notions avec des cartes mémoire recto verso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Recto de la carte",
+        "description": "Texte ou question du recto."
+      },
+      {
+        "slot": "back",
+        "title": "Verso de la carte",
+        "description": "Réponse attendue."
+      },
+      {
+        "property": "imgSource",
+        "title": "Source de l'image",
+        "description": "Fichier image utilisé pour la carte. Remplace le mot-clé d'image."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Type d'action",
+        "description": "OER Schema : le type d'action qu'implique cet exercice (p. ex. lire, écrire, créer, rechercher, écouter, regarder, réfléchir, discuter, observer, présenter, évaluer)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objectif d'apprentissage",
+        "description": "OER Schema : ID ou URL de l'objectif d'apprentissage soutenu par cet exercice."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Sombre",
+        "description": "Utiliser le mode sombre."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Couleur d'accent de la carte."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Mot-clé d'image",
+        "description": "Mot-clé pour une image aléatoire. Remplacé par la source de l'image."
+      }
+    ]
+  }
+}

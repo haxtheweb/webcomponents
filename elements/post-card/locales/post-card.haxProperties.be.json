@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Паштоўка",
+    "description": "Гуллівы медыяэлемент, які выглядае як сапраўдная паштоўка аднекуль"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Каму",
+        "description": "Каму гэта адпраўляецца?"
+      },
+      {
+        "property": "from",
+        "title": "Ад каго",
+        "description": "Хто вы?"
+      },
+      {
+        "property": "message",
+        "title": "Паведамленне",
+        "description": "Што вы хочаце сказаць?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Паштовы штэмпель з",
+        "description": "Адкуль была адпраўлена гэта паштоўка?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Крыніца галоўнага фота",
+        "description": "Дзе знаходзіцца ваша фота?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Крыніца фота маркі",
+        "description": "Дзе знаходзіцца ваша фота?"
+      }
+    ]
+  }
+}

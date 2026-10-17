@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Kolleksje-item",
+    "description": "Item yn kaartstyl foar gebrûk yn in kolleksjelist, mei tekst, keppeling en opsjonele media."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Keppeling",
+        "description": "Bestimmings-URL foar dizze kaart."
+      },
+      {
+        "property": "image",
+        "title": "Ofbylding",
+        "description": "Eftergrûnôfbylding."
+      },
+      {
+        "property": "line1",
+        "title": "Rigel 1",
+        "description": "Earste tekstrigel."
+      },
+      {
+        "property": "line2",
+        "title": "Rigel 2",
+        "description": "Twadde tekstrigel."
+      },
+      {
+        "property": "line3",
+        "title": "Rigel 3",
+        "description": "Tredde tekstrigel."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikoan",
+        "description": "Ikoan dat de kaart foarstelt."
+      },
+      {
+        "property": "saturate",
+        "title": "Sêdingseffekt",
+        "description": "Feroarje de kleursêding fan de ôfbylding by fokus."
+      },
+      {
+        "property": "tags",
+        "title": "Labels",
+        "description": "Mei komma's skieden list fan labels."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kleur",
+        "description": "Kleur foar labels."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternative tekst dy't de keppeling beskriuwt."
+      }
+    ]
+  }
+}

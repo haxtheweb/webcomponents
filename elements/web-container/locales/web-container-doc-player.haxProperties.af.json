@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Webkomponent-dokumentspeler"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Versteek venster",
+        "description": "Versteek die uitvoervenster, nuttig wanneer die doel slegs terminaal is"
+      }
+    ]
+  }
+}

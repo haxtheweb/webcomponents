@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Fellanlegur hópur",
+    "description": "Hópur af fellanlegum einingum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Opna aðeins eitt",
+        "description": "Aðeins eitt atriði getur verið opið."
+      },
+      {
+        "slot": "",
+        "title": "Fellanleg atriði",
+        "description": "Fellanlegu atriðin."
+      }
+    ]
+  }
+}

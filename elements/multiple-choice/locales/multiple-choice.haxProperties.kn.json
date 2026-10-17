@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "ಬಹು ಆಯ್ಕೆ",
+    "description": "ಬಹು ಆಯ್ಕೆಯ ಸ್ವಯಂ ಪರಿಶೀಲನಾ ಪ್ರಶ್ನೆ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ಪ್ರಶ್ನೆ",
+        "description": "ಬಳಕೆದಾರರು ಉತ್ತರಿಸಬೇಕಾದ ಪ್ರಶ್ನೆ."
+      },
+      {
+        "property": "randomize",
+        "title": "ಯಾದೃಚ್ಛಿಕಗೊಳಿಸಿ",
+        "description": "ಉತ್ತರಗಳನ್ನು ಕ್ರಿಯಾತ್ಮಕವಾಗಿ ಯಾದೃಚ್ಛಿಕಗೊಳಿಸಿ."
+      },
+      {
+        "property": "singleOption",
+        "title": "ಏಕ ಉತ್ತರ",
+        "description": "ಒಂದೇ ಉತ್ತರವನ್ನು ಮಾತ್ರ ಅನುಮತಿಸಿ."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ಶ್ರೇಣೀಕರಣ ಸ್ವರೂಪ",
+        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನದ ಶ್ರೇಣೀಕರಣ ಸ್ವರೂಪ (ಉದಾ. ಅಂಕಗಳು, ಗ್ರೇಡ್ ಅಕ್ಷರ, ಶೇಕಡಾ, ಪೂರ್ಣಗೊಳಿಕೆ)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ಕಲಿಕಾ ಉದ್ದೇಶ",
+        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಕಲಿಕಾ ಉದ್ದೇಶ."
+      },
+      {
+        "property": "forCourse",
+        "title": "ಕೋರ್ಸ್",
+        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನ ಉದ್ದೇಶಿಸಿರುವ ಕೋರ್ಸ್."
+      },
+      {
+        "property": "answers",
+        "title": "ಉತ್ತರಗಳು"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು",
+        "description": "ವಿಶ್ಲೇಷಣಾ ವ್ಯವಸ್ಥೆಗಳಲ್ಲಿ xAPI ಗುರುತಿಸುವಿಕೆಗೆ ಬಳಸುವ ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು."
+      }
+    ]
+  }
+}

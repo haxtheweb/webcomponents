@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Укмуш жарылуу",
+    "description": "Кошумча үн эффекттери бар интерактивдүү жарылуу анимациясы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Өлчөм",
+        "description": "Жарылуунун өлчөмүн коюу.",
+        "options": {
+          "tiny": "Өтө кичине",
+          "small": "Кичине",
+          "medium": "Орто",
+          "large": "Чоң",
+          "epic": "Эпикалык"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Түс",
+        "description": "Жарылуунун түс темасын коюу.",
+        "options": {
+          "": "Демейки",
+          "red": "Кызыл",
+          "blue": "Көк",
+          "purple": "Кызгылт көк",
+          "orange": "Кызгылт сары",
+          "yellow": "Сары"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Үн эффекттери",
+        "description": "Үн эффекттерин иштетүү."
+      },
+      {
+        "property": "resetSound",
+        "title": "Үндү баштан баштоо",
+        "description": "Үндү ар бир жолу башынан баштоо."
+      },
+      {
+        "property": "image",
+        "title": "Өз сүрөтү",
+        "description": "Өз жарылуу сүрөтү үчүн кошумча URL."
+      },
+      {
+        "property": "sound",
+        "title": "Өз үнү",
+        "description": "Өз үн эффекти үчүн кошумча URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Өчүрүлгөн",
+        "description": "Бардык аракеттешүүлөрдү өчүрүү."
+      }
+    ]
+  }
+}

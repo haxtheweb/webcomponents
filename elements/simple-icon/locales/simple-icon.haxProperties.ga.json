@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Deilbhín",
+    "description": "Deilbhín ón leabharlann iomlán deilbhíní."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Deilbhín",
+        "description": "Deilbhín le léiriú."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath aibhsithe",
+        "description": "Dath aibhsithe don deilbhín."
+      },
+      {
+        "property": "dark",
+        "title": "Dorcha",
+        "description": "Úsáid an mód dorcha (tacar dathanna inbhéartaithe)."
+      }
+    ]
+  }
+}

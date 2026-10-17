@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kaart",
+    "description": "DDD disainisüsteemiga kujundatud kaardikomponent."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Pilt",
+        "description": "Valikuline pilt."
+      },
+      {
+        "property": "alt",
+        "title": "Pildi alternatiivtekst",
+        "description": "Pilti kirjeldav alternatiivtekst."
+      },
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Kaardi pealkiri."
+      },
+      {
+        "slot": "",
+        "title": "Sisu",
+        "description": "Kaardi sisuala."
+      },
+      {
+        "property": "href",
+        "title": "Link",
+        "description": "Nupu lingi URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Silt",
+        "description": "Nupu silt."
+      },
+      {
+        "property": "noArrow",
+        "title": "Noolata",
+        "description": "Peida nupu nool."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Link: sihtkoht",
+        "description": "Kus link avada.",
+        "options": {
+          "": "Samas aknas",
+          "_blank": "Uues aknas - _blank",
+          "_top": "Ülemises aknas - _top",
+          "_parent": "Ülemaknas - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Link: rel",
+        "description": "Lingitud ressursi ja praeguse dokumendi vaheline seos."
+      }
+    ]
+  }
+}

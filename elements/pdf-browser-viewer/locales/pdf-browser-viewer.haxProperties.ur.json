@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF براؤزر ویور",
+    "description": "اختیاری کارڈ لے آؤٹ اور ڈاؤن لوڈ بٹن کے ساتھ PDF فائل ان لائن ایمبیڈ کریں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF فائل کا مقام۔"
+      },
+      {
+        "property": "heading",
+        "title": "سرخی",
+        "description": "کارڈ کی سرخی کا متن۔"
+      },
+      {
+        "property": "card",
+        "title": "کارڈ لے آؤٹ",
+        "description": "PDF کو ڈاؤن لوڈ بٹن والے کارڈ میں دکھائیں۔"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ڈاؤن لوڈ لیبل",
+        "description": "ڈاؤن لوڈ بٹن کا لیبل۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "غیر معاون پیغام",
+        "description": "جب براؤزر PDF فائلیں نہ دکھا سکے تو پیغام۔"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "غیر معاون لنک پیغام",
+        "description": "جب براؤزر PDF فائلیں نہ دکھا سکے تو لنک کا متن۔"
+      },
+      {
+        "property": "width",
+        "title": "چوڑائی",
+        "description": "PDF ویور کی چوڑائی۔"
+      },
+      {
+        "property": "height",
+        "title": "اونچائی",
+        "description": "PDF ویور کی اونچائی۔"
+      }
+    ]
+  }
+}

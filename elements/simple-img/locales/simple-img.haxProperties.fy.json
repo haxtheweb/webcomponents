@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Ienfâldige ôfbylding",
+    "description": "Ofbyldings bewurkje mei ienfâldige parameters."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Boarne",
+        "description": "Boarne-URL fan de ôfbylding."
+      },
+      {
+        "property": "height",
+        "title": "Hichte",
+        "description": "Opsjonele hichte fan de ôfbylding."
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Opsjonele breedte fan de ôfbylding."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-tekst",
+        "description": "Nuttich foar skermlêzers en bettere SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kwaliteit",
+        "description": "Ofbyldingskwaliteit by it generearjen (allinnich JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Opheljeprioriteit",
+        "description": "Prestaasje-oanwizing foar moderne blêders.",
+        "options": {
+          "auto": "Automatysk",
+          "high": "Heech",
+          "low": "Leech"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dekodearmetoade",
+        "description": "Prestaasje-oanwizing foar it werjaan fan ôfbyldings yn moderne blêders.",
+        "options": {
+          "auto": "Automatysk",
+          "async": "Asynchroan"
+        }
+      }
+    ]
+  }
+}

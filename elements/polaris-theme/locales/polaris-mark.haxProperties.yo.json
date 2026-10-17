@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Àmì Polaris",
+    "description": "Fi àmì ìdánimọ̀ PSU hàn pẹ̀lú orúkọ kọ́lẹ́ẹ̀jì àṣàyàn àti URL ibi-àfojúsùn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Orúkọ kọ́lẹ́ẹ̀jì",
+        "description": "Orúkọ tí a fi hàn lẹ́gbẹ̀ẹ́ àmì náà."
+      },
+      {
+        "property": "name2",
+        "title": "Orúkọ kọ́lẹ́ẹ̀jì 2",
+        "description": "Orúkọ kejì tí a fi hàn lábẹ́ orúkọ kọ́lẹ́ẹ̀jì àkọ́kọ́."
+      },
+      {
+        "property": "name3",
+        "title": "Orúkọ kọ́lẹ́ẹ̀jì 3",
+        "description": "Orúkọ kẹta tí a fi hàn lábẹ́ orúkọ kọ́lẹ́ẹ̀jì kejì."
+      },
+      {
+        "property": "url",
+        "title": "Ìjápọ̀",
+        "description": "URL ibi-àfojúsùn nígbà tí a bá tẹ àmì náà."
+      },
+      {
+        "property": "type",
+        "title": "Oríṣi",
+        "description": "Oríṣi ìrísí àmì.",
+        "options": {
+          "default": "Àtilẹ̀wá",
+          "light": "Ìmọ́lẹ̀",
+          "dark": "Dúdú"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Ìtò inaro",
+        "description": "Fi orúkọ kẹta hàn lábẹ́ orúkọ kejì pẹ̀lú ìlà ìdábùú."
+      }
+    ]
+  }
+}

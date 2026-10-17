@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "স্বরলিপি",
+    "description": "alphaTex বা MusicXML-এর মাধ্যমে স্বরলিপি, গিটার ট্যাব ও স্কোর নোটেশন দেখায় ও বাজায়।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex নোটেশন",
+        "description": "স্বরলিপির ইনলাইন alphaTex মার্কআপ। নোটেশন লিখতে সরাসরি সম্পাদনা করুন; এটি একটি টেমপ্লেটে সংরক্ষিত হয় তাই ফাঁকা স্থান অক্ষুণ্ণ থাকে।"
+      },
+      {
+        "property": "source",
+        "title": "স্কোর ফাইল",
+        "description": "একটি MusicXML (.xml/.musicxml/.mxl) বা Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) ফাইল আপলোড বা লিংক করুন। সেট করা হলে ইনলাইন alphaTex অগ্রাহ্য হয়।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "অডিও প্লেব্যাক",
+        "description": "ডিফল্টভাবে চালু - অন্তর্নির্মিত সিনথেসাইজারে বাজানো স্বরলিপি শুনুন। শুধু দেখার (অডিও ছাড়া) মোডের জন্য বন্ধ করুন।"
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "প্রদর্শন বিকল্প দেখান",
+        "description": "প্লেয়ার বারে জুম, প্রসারণ ও লেআউট বোতাম দেখান।"
+      },
+      {
+        "property": "showExport",
+        "title": "এক্সপোর্ট বোতাম দেখান",
+        "description": "প্লেয়ার বারে MIDI ডাউনলোড ও প্রিন্ট/PDF বোতাম দেখান।"
+      }
+    ]
+  }
+}

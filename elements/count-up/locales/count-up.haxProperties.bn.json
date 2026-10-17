@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "গণনা বৃদ্ধি",
+    "description": "স্ক্রল করে দৃশ্যমান হলে একটি সংখ্যাকে লক্ষ্য মান পর্যন্ত গুনে বাড়ানোর অ্যানিমেশন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "শেষ মান",
+        "description": "যে সংখ্যা পর্যন্ত গণনা হবে।"
+      },
+      {
+        "property": "start",
+        "title": "শুরুর মান",
+        "description": "যে সংখ্যা থেকে গণনা শুরু হবে।"
+      },
+      {
+        "property": "duration",
+        "title": "সময়কাল",
+        "description": "গণনা অ্যানিমেশনে কত সেকেন্ড লাগবে।"
+      },
+      {
+        "property": "prefixtext",
+        "title": "উপসর্গ টেক্সট",
+        "description": "সংখ্যার আগে দেখানো টেক্সট (যেমন '$')।"
+      },
+      {
+        "property": "suffixtext",
+        "title": "প্রত্যয় টেক্সট",
+        "description": "সংখ্যার পরে দেখানো টেক্সট (যেমন '%')।"
+      },
+      {
+        "slot": "prefix",
+        "title": "উপসর্গ স্লট",
+        "description": "সংখ্যার আগে ঐচ্ছিক স্লটেড বিষয়বস্তু।"
+      },
+      {
+        "slot": "suffix",
+        "title": "প্রত্যয় স্লট",
+        "description": "সংখ্যার পরে ঐচ্ছিক স্লটেড বিষয়বস্তু।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "দশমিক স্থান",
+        "description": "কতগুলো দশমিক স্থান দেখানো হবে।"
+      },
+      {
+        "property": "separator",
+        "title": "হাজার বিভাজক",
+        "description": "হাজারের গ্রুপ আলাদা করার অক্ষর।"
+      },
+      {
+        "property": "decimal",
+        "title": "দশমিক অক্ষর",
+        "description": "দশমিক বিন্দুর জন্য ব্যবহৃত অক্ষর।"
+      },
+      {
+        "property": "noeasing",
+        "title": "ইজিং নেই",
+        "description": "ইজিং বন্ধ করুন যাতে গণনা সরলরৈখিক হয়।"
+      }
+    ]
+  }
+}

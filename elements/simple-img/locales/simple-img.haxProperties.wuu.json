@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "简单图片",
+    "description": "用简单参数处理图片。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "来源",
+        "description": "图片来源 URL。"
+      },
+      {
+        "property": "height",
+        "title": "高度",
+        "description": "可选图片高度。"
+      },
+      {
+        "property": "width",
+        "title": "宽度",
+        "description": "可选图片宽度。"
+      },
+      {
+        "property": "alt",
+        "title": "替代文字",
+        "description": "对读屏软件有用，也好改善 SEO。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "质量",
+        "description": "生成辰光个图片质量（只限 JPEG）。"
+      },
+      {
+        "property": "fetchpriority",
+        "title": "获取优先级",
+        "description": "拨现代浏览器个性能提示。",
+        "options": {
+          "auto": "自动",
+          "high": "高",
+          "low": "低"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "解码方式",
+        "description": "现代浏览器里图片渲染个性能提示。",
+        "options": {
+          "auto": "自动",
+          "async": "异步"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Tampilkan tombol ajakan bertindak Polaris bertema."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Teks tombol",
+        "description": "Teks yang ditampilkan di tombol ajakan bertindak."
+      },
+      {
+        "property": "link",
+        "title": "Tautan",
+        "description": "URL tujuan untuk tombol."
+      },
+      {
+        "property": "type",
+        "title": "Varian",
+        "description": "Varian gaya visual.",
+        "options": {
+          "primary": "Utama",
+          "tinted": "Berwarna samar",
+          "light": "Terang"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Gaya garis tepi",
+        "description": "Aktifkan perlakuan garis tepi."
+      },
+      {
+        "property": "filled",
+        "title": "Gaya terisi",
+        "description": "Aktifkan perlakuan terisi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Mai kunna takardun ɓangaren yanar gizo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Ɓoye taga",
+        "description": "Ɓoye tagar fitarwa, mai amfani idan manufar tasha kawai ce"
+      }
+    ]
+  }
+}

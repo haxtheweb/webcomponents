@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "共有URLからDiscordコミュニティを埋め込みます。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "リソースURL",
+        "description": "リソースURL。"
+      },
+      {
+        "property": "height",
+        "title": "高さ",
+        "description": "コンテンツフレームの高さ。"
+      },
+      {
+        "property": "width",
+        "title": "幅",
+        "description": "コンテンツフレームの幅。"
+      }
+    ]
+  }
+}

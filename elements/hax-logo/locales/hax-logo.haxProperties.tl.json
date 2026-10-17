@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX word art",
+    "description": "Elementong logo para sa HAX, siyempre bilang elementong may kakayahang HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Laki ng HAX logo na ilalagay",
+        "options": {
+          "mini": "Mini",
+          "small": "Maliit",
+          "normal": "Normal",
+          "large": "Malaki"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Kung gagawing malalaking titik ang logo"
+      }
+    ]
+  }
+}

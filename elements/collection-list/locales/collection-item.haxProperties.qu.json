@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Huñu item",
+    "description": "Huñu listapi tarjeta hina item: qillqawan, t'inkiwan, akllanalla mediawanpas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "T'inki",
+        "description": "Kay tarjetapa chayana URL-nin."
+      },
+      {
+        "property": "image",
+        "title": "Rikch'a",
+        "description": "Qhipa rikch'a."
+      },
+      {
+        "property": "line1",
+        "title": "1 siqi",
+        "description": "Ñawpaq qillqa siqi."
+      },
+      {
+        "property": "line2",
+        "title": "2 siqi",
+        "description": "Iskay ñiqin qillqa siqi."
+      },
+      {
+        "property": "line3",
+        "title": "3 siqi",
+        "description": "Kimsa ñiqin qillqa siqi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Unancha",
+        "description": "Tarjetata rikuchiq unancha."
+      },
+      {
+        "property": "saturate",
+        "title": "Llimpi sinchiyay",
+        "description": "Ruraq qhawaykuptin rikch'apa llimpi sinchiynin tikray."
+      },
+      {
+        "property": "tags",
+        "title": "Tagkuna",
+        "description": "Comawan t'aqasqa tagkunapa listan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Llimpi",
+        "description": "Tagkunapaq llimpi."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "T'inkita willakuq hukniray qillqa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Badge ng Event",
+    "description": "Component na badge ng event."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Larawan sa TV",
+        "description": "Larawang ipinapakita sa TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logong ipinapakita sa sulok ng badge."
+      },
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Pamagat na ipinapakita sa itaas ng badge."
+      },
+      {
+        "property": "name",
+        "title": "Pangalan",
+        "description": "Pangalang ipinapakita sa badge."
+      },
+      {
+        "property": "position",
+        "title": "Posisyon",
+        "description": "Tungkulin o titulo ng tao."
+      },
+      {
+        "property": "organization",
+        "title": "Organisasyon",
+        "description": "Organisasyong pinagtatrabahuhan ng tao."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Kulay ng TV",
+        "description": "Piliin ang kulay para sa TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na kulay",
+        "description": "Pangunahing kulay ng background o teksto."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Kulay ng knob",
+        "description": "Kulay ng mga knob ng TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Maglapat ng sepia na epekto."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Itim at puti",
+        "description": "Maglapat ng itim-at-puting epekto."
+      }
+    ]
+  }
+}

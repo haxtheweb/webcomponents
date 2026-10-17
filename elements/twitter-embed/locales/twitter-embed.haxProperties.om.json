@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Galchiinsa Twitter (X)",
+    "description": "Tiwiitii X irraa fuula keessatti galchi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL Tiwiitii",
+        "description": "URL tiwiitii galchamuu."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Dhiyeessa",
+        "description": "Dhiyeessa ifaa ykn dukkanaa tiwiitii X tiif.",
+        "options": {
+          "light": "Ifaa",
+          "dark": "Dukkana"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Yeroo tuqamu foddaa ol ka'u dhoowwi",
+        "description": "Fayyadamtoonni tiwiitii x.com irratti akka hin banne dhoowwi."
+      }
+    ]
+  }
+}

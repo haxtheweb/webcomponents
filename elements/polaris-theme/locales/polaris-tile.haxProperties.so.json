@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Leydi Polaris",
+    "description": "Muuji leydi Polaris oo leh cinwaan, qoraal taageero ikhtiyaari ah, iyo xiriiriye ikhtiyaari ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Qoraalka koowaad",
+        "description": "Qoraalka ugu muhiimsan ee leydiga."
+      },
+      {
+        "property": "line2",
+        "title": "Qoraalka labaad",
+        "description": "Qoraal taageero oo ikhtiyaari ah."
+      },
+      {
+        "property": "type",
+        "title": "Qaabka leydiga",
+        "description": "Qaab muuqaal leydi oo horay loo dejiyay.",
+        "options": {
+          "1": "Qaab 1",
+          "2": "Qaab 2",
+          "3": "Qaab 3",
+          "4": "Qaab 4",
+          "5": "Qaab 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Sawirka asalka",
+        "description": "URL-ka sawirka asalka ee ay isticmaalaan qaababka leydiga ee sawirka taageera."
+      },
+      {
+        "property": "link",
+        "title": "Xiriiriye",
+        "description": "URL ikhtiyaari ah oo loo socdo marka leydiga la gujiyo."
+      }
+    ]
+  }
+}

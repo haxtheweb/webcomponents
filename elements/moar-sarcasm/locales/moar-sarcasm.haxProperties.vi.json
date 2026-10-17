@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Mỉa mai",
+    "description": "Trình bày văn bản theo kiểu châm chọc"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Văn bản",
+        "description": "Văn bản cần làm cho mỉa mai"
+      }
+    ]
+  }
+}

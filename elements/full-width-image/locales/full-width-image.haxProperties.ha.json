@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Sashen hoto",
+    "description": "Hoto mai cikakken faɗi da ke raba sashen shafi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Hoton bango."
+      },
+      {
+        "property": "caption",
+        "description": "Kanun rubutu."
+      }
+    ]
+  }
+}

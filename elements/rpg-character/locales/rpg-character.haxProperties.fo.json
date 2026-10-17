@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG-figurur",
+    "description": "Stuttligur figurur frá HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Navn",
+        "description": "Orð, sum verður nýtt at gera ein tilvildarligan figur."
+      },
+      {
+        "property": "hat",
+        "title": "Hattur",
+        "description": "Hattasnið.",
+        "options": {
+          "none": "Standard",
+          "random": "Tilvildarligur",
+          "bunny": "Hara",
+          "cowboy": "Cowboy",
+          "education": "Útbúgving",
+          "construction": "Bygging",
+          "warning": "Ávaring",
+          "watermelon": "Vatnmelón",
+          "coffee": "Kaffi",
+          "knight": "Riddari",
+          "ninja": "Ninja",
+          "party": "Veitsla",
+          "error": "Villa",
+          "edit": "Rætta"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Breidd",
+        "description": "Breidd á figurinum í pixlum."
+      },
+      {
+        "property": "height",
+        "title": "Hædd",
+        "description": "Hædd á figurinum í pixlum."
+      },
+      {
+        "property": "fire",
+        "title": "Í eldi?",
+        "description": "Um figururin stendur í eldi."
+      },
+      {
+        "property": "walking",
+        "title": "Gongur?",
+        "description": "Gonguanimatión; rennur, tá hann stendur í eldi."
+      }
+    ]
+  }
+}

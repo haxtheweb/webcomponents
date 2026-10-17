@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Atitikimo klausimas",
+    "description": "Vilkimo ir numetimo užduotis, kurioje užuominos sujungiamos su teisingais atsakymais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Klausimas",
+        "description": "Klausimas naudotojams. Pažymėkite numetimo vietas, tada išvardykite atsakymus iki kitos vietos."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vertinimo formatas",
+        "description": "OER Schema: šio vertinimo formatas (pvz., taškai, raidė, procentai, atlikimas)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mokymosi tikslas",
+        "description": "OER Schema: su šiuo vertinimu susijęs mokymosi tikslas."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursas",
+        "description": "OER Schema: kursas, kuriam skirtas šis vertinimas."
+      },
+      {
+        "property": "answers",
+        "title": "Atsakymai"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testo pavadinimas",
+        "description": "Testo pavadinimas, naudojamas xAPI identifikavimui analitikos sistemose."
+      }
+    ]
+  }
+}

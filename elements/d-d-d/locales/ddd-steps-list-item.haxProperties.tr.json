@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Adım öğesi",
+    "description": "Bir adım listesinin parçası olan öğe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlık"
+      }
+    ]
+  }
+}

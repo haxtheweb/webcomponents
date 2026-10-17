@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Bladsybesonderhede",
+    "description": "Definieer 'n visuele skeiding tussen bladsye wat CMS'e kan gebruik om bladsye te skep."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel wat in die tema en eerste opskrif gewys word."
+      },
+      {
+        "property": "pageType",
+        "title": "Tipe",
+        "description": "Visuele bladsykonteks-etiket.",
+        "options": {
+          "": "-- geen --",
+          "content": "Inhoud",
+          "assessment": "Assessering",
+          "quiz": "Vasvra",
+          "submission": "Inhandiging",
+          "lesson": "Les",
+          "module": "Module",
+          "task": "Taak",
+          "activity": "Aktiwiteit",
+          "project": "Projek",
+          "practice": "Oefening",
+          "unit": "Eenheid",
+          "objectives": "Leeruitkomste",
+          "connection": "Verbinding",
+          "knowledge": "Het jy geweet?",
+          "strategy": "Leerstrategie",
+          "discuss": "Bespreek",
+          "listen": "Luister",
+          "make": "Maak",
+          "observe": "Neem waar",
+          "present": "Bied aan",
+          "reading": "Lees",
+          "reflect": "Besin",
+          "research": "Navorsing",
+          "watch": "Kyk",
+          "write": "Skryf"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Etikette",
+        "description": "Kommageskeide lys van etikette."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Skakel-URL",
+        "description": "Herlei-URL wat in plaas van bladsyinhoud gewys word."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Skakelteiken",
+        "description": "Maak skakels in dieselfde venster of 'n nuwe venster oop.",
+        "options": {
+          "_self": "Dieselfde venster",
+          "_blank": "Nuwe venster"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Gepubliseer",
+        "description": "Ongepubliseerde bladsye is vir eindgebruikers versteek."
+      },
+      {
+        "property": "locked",
+        "title": "Sluit bladsy",
+        "description": "Sluit of ontsluit alle elemente op hierdie bladsy."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Oorheers outomatiese slak",
+        "description": "Sluit die slak teen outomatiese bywerkings gebaseer op titel of ouer."
+      },
+      {
+        "property": "slug",
+        "title": "Pad",
+        "description": "URL-slak vir hierdie bladsy."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Media wat die bladsy verteenwoordig, gebruik in sommige temas en aansigte."
+      },
+      {
+        "property": "parent",
+        "title": "Ouer",
+        "description": "Pad van die ouerbladsy."
+      },
+      {
+        "property": "noderefs",
+        "title": "Verwante inhoud",
+        "description": "Bladsye wat met hierdie bladsy verband hou."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Beskrywing",
+        "description": "Beskrywing gebruik in versamelings en soekenjinoptimalisering."
+      },
+      {
+        "property": "entityType",
+        "title": "Entiteitstipe",
+        "description": "Verstek is bladsy tensy anders gestel.",
+        "options": {
+          "page": "Bladsy (standaard)",
+          "taxonomy": "Taksonomie",
+          "taxonomyTerm": "Taksonomieterm",
+          "region": "Streek"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Ikoon wat met hierdie bladsy op die werf geassosieer word."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "Kleur wat met hierdie bladsy op die werf geassosieer word."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Versteek in kieslys",
+        "description": "Versteek hierdie bladsy uit kieslyste terwyl die URL behou word."
+      },
+      {
+        "property": "order",
+        "title": "Volgorde",
+        "description": "Volgorde relatief tot susterbladsye."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Bladsytema",
+        "description": "Oorheers die tema slegs vir hierdie bladsy."
+      },
+      {
+        "property": "author",
+        "title": "Outeur",
+        "description": "Gebruikersnaam van die laaste persoon wat hierdie bladsy gewysig het."
+      }
+    ]
+  }
+}

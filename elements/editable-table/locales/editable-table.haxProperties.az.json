@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Cədvəl",
+    "description": "Veb üçün cədvəl əsaslı məlumatlar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Sətir başlığı",
+        "description": "Birinci sətri başlıq kimi qəbul et."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Sütun başlığı",
+        "description": "Birinci sütunu başlıq kimi qəbul et."
+      },
+      {
+        "property": "footer",
+        "title": "Altlıq",
+        "description": "Son sətri altlıq kimi qəbul et."
+      },
+      {
+        "property": "sort",
+        "title": "Çeşidlənə bilən",
+        "description": "Sütun dəyərlərinə görə çeşidləməyə icazə ver."
+      },
+      {
+        "property": "filter",
+        "title": "Filtrə icazə ver",
+        "description": "Sütun dəyərlərinə görə filtrləməyə icazə ver."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Rəqəmsal üslub",
+        "description": "Rəqəmsal sütunlara rəqəmsal üslub tətbiq et."
+      },
+      {
+        "property": "responsive",
+        "title": "Adaptiv",
+        "description": "Kiçik ekranlarda cədvəlin düzənini uyğunlaşdır."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubrika rejimi",
+        "description": "Bu cədvəli OER Schema Rubric kimi şərh et ki, Rubric, RubricScale, RubricCriterion və RubricLevel metaməlumatları yaradılsın."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubrika növü",
+        "description": "oer:rubricType kimi ötürülən rubrika üslubu (yalnız Rubrika rejimi aktiv olduqda mənalıdır).",
+        "options": {
+          "": "(heç biri)",
+          "analytic": "Analitik",
+          "holistic": "Holistik",
+          "single-point": "Tək xal",
+          "checklist": "Yoxlama siyahısı"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Haşiyəli"
+      },
+      {
+        "property": "condensed",
+        "title": "Sətirləri sıxlaşdır",
+        "description": "Sətir hündürlüyünü azalt."
+      },
+      {
+        "property": "striped",
+        "title": "Zolaqlı sətirlər",
+        "description": "Hər ikinci sətri kölgələ."
+      },
+      {
+        "property": "downloadable",
+        "title": "Endirmə düyməsi",
+        "description": "Cədvəli endirmək üçün düymə əlavə et."
+      },
+      {
+        "property": "copyable",
+        "title": "Kopyalama düyməsi",
+        "description": "Cədvəlin CSV məlumatlarını kopyalamaq üçün düymə əlavə et."
+      },
+      {
+        "property": "printable",
+        "title": "Çap düyməsi",
+        "description": "Yalnız cədvəli çap etmək üçün düymə əlavə et."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV məlumatları",
+        "description": "Yüklənmiş CSV faylından cədvəl yarat."
+      }
+    ]
+  }
+}

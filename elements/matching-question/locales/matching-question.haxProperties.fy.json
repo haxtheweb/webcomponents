@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Kombinaasjefraach",
+    "description": "Slepe-en-delsette-aktiviteit dy't stellingen oan de goede antwurden keppelet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fraach",
+        "description": "Fraach foar brûkers. Markearje delsetdoelen en list dan antwurden oant it folgjende doel."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Beoardielingsformaat",
+        "description": "OER Schema: beoardielingsformaat foar dizze toets (bgl. punten, letter, persintaazje, foltôging)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leardoel",
+        "description": "OER Schema: leardoel dat by dizze toets heart."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus dêr't dizze toets foar bedoeld is."
+      },
+      {
+        "property": "answers",
+        "title": "Antwurden"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Namme fan de kwis",
+        "description": "Kwisnamme foar xAPI-identifikaasje yn analysesystemen."
+      }
+    ]
+  }
+}

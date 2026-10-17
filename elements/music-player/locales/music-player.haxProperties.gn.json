@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI jehechaukaha",
+    "description": "Embopu MIDI ijehechauka ndive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ypykue",
+        "description": "URL marandurenda ojembopútava."
+      },
+      {
+        "property": "visualizer",
+        "title": "Jehechauka",
+        "description": "Jehechauka reko purahéi marandurendápe g̃uarã.",
+        "options": {
+          "staff": "Pentagrama",
+          "piano-roll": "Piano rysýi",
+          "waterfall": "Piano + ykuaja"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Emokañy ykuaja",
+        "description": "Emokañy ykuaja nóta piano jehechaukápe."
+      }
+    ]
+  }
+}

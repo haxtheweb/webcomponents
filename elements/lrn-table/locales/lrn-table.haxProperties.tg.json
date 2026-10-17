@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ҷадвали CSV",
+    "description": "Ин метавонад аз файли CSV, новобаста ба ҷойгиршавии он, ҷадвал тавлид кунад."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Манбаъ",
+        "description": "URL барои ин файли CSV."
+      },
+      {
+        "property": "title",
+        "title": "Унвон",
+        "description": "Унвони ҷадвале, ки тавлид мешавад."
+      },
+      {
+        "property": "description",
+        "title": "Тавсиф",
+        "description": "Тавсифи муфассалтар барои беҳтар кардани дастрасии маълумоти ҷадвал."
+      }
+    ]
+  }
+}

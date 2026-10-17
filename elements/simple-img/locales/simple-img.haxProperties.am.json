@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ቀላል ምስል",
+    "description": "ምስሎችን በቀላል መለኪያዎች አስተካክል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ምንጭ",
+        "description": "የምስል ምንጭ URL።"
+      },
+      {
+        "property": "height",
+        "title": "ቁመት",
+        "description": "አማራጭ የምስል ቁመት።"
+      },
+      {
+        "property": "width",
+        "title": "ስፋት",
+        "description": "አማራጭ የምስል ስፋት።"
+      },
+      {
+        "property": "alt",
+        "title": "አማራጭ ጽሑፍ",
+        "description": "ለማያ ገጽ አንባቢዎች እና ለተሻሻለ SEO ጠቃሚ።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "ጥራት",
+        "description": "በሚመነጭበት ጊዜ የምስል ጥራት (JPEG ብቻ)።"
+      },
+      {
+        "property": "fetchpriority",
+        "title": "የማምጣት ቅድሚያ",
+        "description": "ለዘመናዊ አሳሾች የአፈጻጸም ፍንጭ።",
+        "options": {
+          "auto": "ራስ-ሰር",
+          "high": "ከፍተኛ",
+          "low": "ዝቅተኛ"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "የመፍታት ዘዴ",
+        "description": "በዘመናዊ አሳሾች ውስጥ ለምስል አቀራረብ የአፈጻጸም ፍንጭ።",
+        "options": {
+          "auto": "ራስ-ሰር",
+          "async": "ያልተመሳሰለ"
+        }
+      }
+    ]
+  }
+}

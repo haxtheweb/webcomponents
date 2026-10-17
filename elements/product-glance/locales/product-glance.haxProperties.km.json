@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ទិដ្ឋភាពផលិតផល",
+    "description": "ប្លុកទិដ្ឋភាពទូទៅផលិតផលរហ័ស។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "រូបតំណាង",
+        "description": "រូបតំណាងតំណាងឱ្យគំនិត។"
+      },
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "គំនិតចម្បងក្នុងមួយភ្លែត។"
+      },
+      {
+        "property": "subtitle",
+        "title": "ចំណងជើងរង",
+        "description": "ព័ត៌មានលម្អិតបន្ថែម។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌សង្កត់សម្រាប់រូបតំណាង។"
+      }
+    ]
+  }
+}

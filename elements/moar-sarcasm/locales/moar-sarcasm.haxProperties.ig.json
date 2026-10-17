@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Okwu nlelị",
+    "description": "Igosi ederede n'ụzọ ịkwa emo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Ederede",
+        "description": "Ederede a ga-eme ka ọ bụrụ okwu nlelị"
+      }
+    ]
+  }
+}

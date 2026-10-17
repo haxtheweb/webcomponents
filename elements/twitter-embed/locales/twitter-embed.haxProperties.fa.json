@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "جاسازی Twitter (X)",
+    "description": "جاسازی یک توییت از X در بافت."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL توییت",
+        "description": "URL توییتی که جاسازی می‌شود."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "پوسته",
+        "description": "پوستهٔ روشن یا تیره برای توییت‌های X.",
+        "options": {
+          "light": "روشن",
+          "dark": "تیره"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "جلوگیری از پنجرهٔ بازشو هنگام کلیک",
+        "description": "جلوگیری از باز کردن توییت در x.com توسط کاربران."
+      }
+    ]
+  }
+}

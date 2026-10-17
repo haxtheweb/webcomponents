@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ইনলাইন অডিও",
+    "description": "পৃষ্ঠার বিষয়বস্তুর পরিপূরক হিসেবে ইনলাইনে অডিও চালান।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "উৎস",
+        "description": "MP3 ফাইল বা URL।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "কার্ডের অ্যাকসেন্ট রং।"
+      },
+      {
+        "property": "shiny",
+        "title": "উজ্জ্বল",
+        "description": "ধূসরের পরিবর্তে হালকা অ্যাকসেন্ট পটভূমি ব্যবহার করুন।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ডার্ক",
+        "description": "ডার্ক মোড ব্যবহার করুন।"
+      }
+    ]
+  }
+}

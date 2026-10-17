@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "GIF-ên livdar gihîştbar bike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF-a livdar",
+        "description": "URL ya GIF-a livdar."
+      },
+      {
+        "property": "alt",
+        "title": "Nivîsa Alternatîf",
+        "description": "Nivîsa alternatîf ji bo wêneyê."
+      },
+      {
+        "property": "longdesc",
+        "title": "Danasîna Dirêj",
+        "description": "Danasîna dirêj a GIF-ê ji bo gihîştbariyê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Wêneyê Sabît",
+        "description": "URL ya guhertoya wêneyê sabît a GIF-ê."
+      }
+    ]
+  }
+}

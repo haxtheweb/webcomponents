@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "سؤال صح / خطأ",
+    "description": "سؤال صح أو خطأ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "السؤال",
+        "description": "السؤال الذي يجيب عنه المستخدمون."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "الإجابة الصحيحة"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "اسم الاختبار",
+        "description": "اسم الاختبار المُمرَّر للاستخدام في البيئات المعتمدة على xAPI لتعريف هذا العنصر"
+      }
+    ]
+  }
+}

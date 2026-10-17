@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG पात्र",
+    "description": "HAX मधील मजेदार पात्र."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "नाव",
+        "description": "यादृच्छिक पात्र तयार करण्यासाठी वापरला जाणारा शब्द."
+      },
+      {
+        "property": "hat",
+        "title": "टोपी",
+        "description": "टोपीची शैली.",
+        "options": {
+          "none": "डीफॉल्ट",
+          "random": "यादृच्छिक",
+          "bunny": "ससा",
+          "cowboy": "काउबॉय",
+          "education": "शिक्षण",
+          "construction": "बांधकाम",
+          "warning": "इशारा",
+          "watermelon": "कलिंगड",
+          "coffee": "कॉफी",
+          "knight": "योद्धा",
+          "ninja": "निंजा",
+          "party": "पार्टी",
+          "error": "त्रुटी",
+          "edit": "संपादन"
+        }
+      },
+      {
+        "property": "width",
+        "title": "रुंदी",
+        "description": "पिक्सेलमध्ये पात्राची रुंदी."
+      },
+      {
+        "property": "height",
+        "title": "उंची",
+        "description": "पिक्सेलमध्ये पात्राची उंची."
+      },
+      {
+        "property": "fire",
+        "title": "पेटलेले?",
+        "description": "पात्र पेटलेले आहे की नाही."
+      },
+      {
+        "property": "walking",
+        "title": "चालत आहे?",
+        "description": "चालण्याचे अॅनिमेशन; पेटलेले असताना धावते."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sanduuqa Hawsha",
+    "description": "Qayb cinwaan yar oo qurxin leh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Astaan",
+        "description": "Astaanta lagu muujiyo agtiisa sanduuqa hawsha."
+      },
+      {
+        "property": "tag",
+        "title": "Summadda sanduuqa hawsha",
+        "description": "Summadda ka muuqata sanduuqa hawsha."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Midab La'aan",
+        "description": "Ka hortag in midabyo lagu dabaqo astaanta."
+      }
+    ]
+  }
+}

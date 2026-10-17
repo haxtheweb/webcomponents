@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Seksyon ng larawan",
+    "description": "Larawang sakop ang buong lapad na naghahati sa isang seksyon ng pahina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Larawan sa background."
+      },
+      {
+        "property": "caption",
+        "description": "Heading ng teksto."
+      }
+    ]
+  }
+}

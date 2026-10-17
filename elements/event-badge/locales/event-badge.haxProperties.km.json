@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ផ្លាកព្រឹត្តិការណ៍",
+    "description": "សមាសភាគផ្លាកព្រឹត្តិការណ៍។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "រូបភាព TV",
+        "description": "រូបភាពបង្ហាញលើទូរទស្សន៍។"
+      },
+      {
+        "property": "logo",
+        "title": "ឡូហ្គោ",
+        "description": "ឡូហ្គោបង្ហាញនៅជ្រុងផ្លាក។"
+      },
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងបង្ហាញនៅខាងលើផ្លាក។"
+      },
+      {
+        "property": "name",
+        "title": "ឈ្មោះ",
+        "description": "ឈ្មោះបង្ហាញលើផ្លាក។"
+      },
+      {
+        "property": "position",
+        "title": "តួនាទី",
+        "description": "តួនាទី ឬមុខតំណែងរបស់បុគ្គល។"
+      },
+      {
+        "property": "organization",
+        "title": "អង្គភាព",
+        "description": "អង្គភាពដែលបុគ្គលធ្វើការ។"
+      },
+      {
+        "property": "tvcolor",
+        "title": "ពណ៌ TV",
+        "description": "ជ្រើសរើសពណ៌សម្រាប់ទូរទស្សន៍។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌ផ្ទៃខាងក្រោយ ឬអត្ថបទចម្បង។"
+      },
+      {
+        "property": "knobcolor",
+        "title": "ពណ៌ប៊ូតុងមូល",
+        "description": "ពណ៌ប៊ូតុងមូលរបស់ទូរទស្សន៍។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "សេពៀ",
+        "description": "អនុវត្តបែបផែនសេពៀ។"
+      },
+      {
+        "property": "blackwhite",
+        "title": "ស-ខ្មៅ",
+        "description": "អនុវត្តបែបផែនស-ខ្មៅ។"
+      }
+    ]
+  }
+}

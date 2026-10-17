@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris-CTA",
+    "description": "Vertoon 'n Polaris-oproep-tot-aksie-knoppie met tema."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Knoppieteks",
+        "description": "Teks wat in die oproep-tot-aksie-knoppie gewys word."
+      },
+      {
+        "property": "link",
+        "title": "Skakel",
+        "description": "Bestemmings-URL vir die knoppie."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Visuele stylvariant.",
+        "options": {
+          "primary": "Primêr",
+          "tinted": "Getint",
+          "light": "Lig"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Omlynde styl",
+        "description": "Aktiveer omlynde behandeling."
+      },
+      {
+        "property": "filled",
+        "title": "Gevulde styl",
+        "description": "Aktiveer gevulde behandeling."
+      }
+    ]
+  }
+}

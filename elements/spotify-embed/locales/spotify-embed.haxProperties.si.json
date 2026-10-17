@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify වාදක කාවැද්දීම් සඳහා ආවරණය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "මූලාශ්‍රය",
+        "description": "Spotify වෙතින් කාවැද්දීමේ හෝ බෙදාගැනීමේ සබැඳිය."
+      },
+      {
+        "property": "theme",
+        "title": "තේමාව",
+        "description": "වාදකය සඳහා පසුබිම් වර්ණ තේමාව.",
+        "options": {
+          "": "පෙරනිමි",
+          "0": "කළු"
+        }
+      },
+      {
+        "property": "size",
+        "title": "ප්‍රමාණය",
+        "description": "වාදකයේ ප්‍රමාණය.",
+        "options": {
+          "normal": "පෙරනිමි",
+          "compact": "සංයුක්ත"
+        }
+      }
+    ]
+  }
+}

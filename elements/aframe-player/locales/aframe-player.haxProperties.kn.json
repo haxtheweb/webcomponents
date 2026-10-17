@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D ಪ್ಲೇಯರ್",
+    "description": "3D ಫೈಲ್ / ವರ್ಧಿತ ವಾಸ್ತವ ಪ್ಲೇಯರ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ಮೂಲ",
+        "description": "ಈ AR ಫೈಲ್‌ನ URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR ನಲ್ಲಿ ಅಂಶದ X ಸ್ಥಾನ."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR ನಲ್ಲಿ ಅಂಶದ Y ಸ್ಥಾನ."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR ನಲ್ಲಿ ಅಂಶದ Z ಸ್ಥಾನ."
+      },
+      {
+        "property": "skyColor",
+        "title": "ಆಕಾಶದ ಬಣ್ಣ",
+        "description": "ದೃಶ್ಯದಲ್ಲಿ ಆಕಾಶದ ಬಣ್ಣವನ್ನು ಆಯ್ಕೆಮಾಡಿ."
+      }
+    ]
+  }
+}

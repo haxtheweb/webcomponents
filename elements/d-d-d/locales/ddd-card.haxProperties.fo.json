@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kort",
+    "description": "Kortpartur sniðgivin við DDD-sniðskipanini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Mynd",
+        "description": "Valfrí mynd."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativur myndatekstur",
+        "description": "Alternativur tekstur, sum lýsir myndina."
+      },
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Heiti á kortinum."
+      },
+      {
+        "slot": "",
+        "title": "Innihald",
+        "description": "Innihaldsøki á kortinum."
+      },
+      {
+        "property": "href",
+        "title": "Leinki",
+        "description": "Leinki-URL til knøttin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Heiti",
+        "description": "Heiti á knøttinum."
+      },
+      {
+        "property": "noArrow",
+        "title": "Ongin pílur",
+        "description": "Fjal pílin á knøttinum."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Leinki: mál",
+        "description": "Hvar leinkið skal latast upp.",
+        "options": {
+          "": "Sama vindeyga",
+          "_blank": "Nýtt vindeyga - _blank",
+          "_top": "Ovasta vindeyga - _top",
+          "_parent": "Yvirskipað vindeyga - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Leinki: rel",
+        "description": "Samband millum leinkjaðu tilfeingið og núverandi skjalið."
+      }
+    ]
+  }
+}

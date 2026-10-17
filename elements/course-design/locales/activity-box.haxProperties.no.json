@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Aktivitetsboks",
+    "description": "Liten stilisert overskriftsblokk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon som vises ved siden av aktivitetsboksen."
+      },
+      {
+        "property": "tag",
+        "title": "Merke for aktivitetsboks",
+        "description": "Merke som vises i aktivitetsboksen."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Ingen farging",
+        "description": "Hindre at farger brukes på ikonet."
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Kontejner NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Skrýt editor",
+        "description": "Skrýt rozhraní pro úpravu souborů."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Skrýt terminál",
+        "description": "Skrýt terminál pro automaticky spouštěné programy."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Skrýt okno",
+        "description": "Skrýt výstupní okno při použití pouze terminálu."
+      },
+      {
+        "slot": "",
+        "title": "Příkazy",
+        "description": "Příkazy (jeden na řádek), které se spustí před načtením."
+      }
+    ]
+  }
+}

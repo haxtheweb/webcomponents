@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Kiripuaki RPG",
+    "description": "He kiripuaki pārekareka nō HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Ingoa",
+        "description": "Kupu ka whakamahia hei hanga kiripuaki matapōkere."
+      },
+      {
+        "property": "hat",
+        "title": "Pōtae",
+        "description": "Kāhua pōtae.",
+        "options": {
+          "none": "Taunoa",
+          "random": "Matapōkere",
+          "bunny": "Rāpeti",
+          "cowboy": "Kaupoai",
+          "education": "Mātauranga",
+          "construction": "Hanganga",
+          "warning": "Whakatūpato",
+          "watermelon": "Merengi",
+          "coffee": "Kawhe",
+          "knight": "Naita",
+          "ninja": "Ninja",
+          "party": "Pāti",
+          "error": "Hapa",
+          "edit": "Whakatika"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Whānui",
+        "description": "Whānui o te kiripuaki i ngā pika."
+      },
+      {
+        "property": "height",
+        "title": "Teitei",
+        "description": "Teitei o te kiripuaki i ngā pika."
+      },
+      {
+        "property": "fire",
+        "title": "E kā ana?",
+        "description": "Mēnā e kā ana te kiripuaki."
+      },
+      {
+        "property": "walking",
+        "title": "E hīkoi ana?",
+        "description": "Hākoritanga hīkoi; ka rere ina kā ana."
+      }
+    ]
+  }
+}

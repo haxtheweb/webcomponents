@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Худсанҷӣ",
+    "description": "Корбарон метавонанд худсанҷиро анҷом диҳанд."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Тасвир",
+        "description": "Тасвир барои худсанҷӣ."
+      },
+      {
+        "property": "title",
+        "title": "Унвон",
+        "description": "Унвони худсанҷӣ."
+      },
+      {
+        "property": "alt",
+        "title": "Матни алтернативӣ",
+        "description": "Матни алтернативӣ барои тасвир."
+      },
+      {
+        "slot": "question",
+        "title": "Савол"
+      },
+      {
+        "slot": "",
+        "title": "Ҷавоб"
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги мавзӯъ",
+        "description": "Аз системаи тарроҳӣ ранги мавзӯъро интихоб кунед.",
+        "options": {
+          "primary": "Асосӣ",
+          "accent": "Таъкидӣ",
+          "success": "Муваффақият",
+          "warning": "Огоҳӣ",
+          "error": "Хато",
+          "info": "Маълумот"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ҳадафи таълимӣ",
+        "description": "Истинод ба ҳадафи таълимӣ, ки ҳамчун oer:hasLearningObjective тавлид мешавад."
+      },
+      {
+        "property": "assessing",
+        "title": "Арзёбӣ мекунад",
+        "description": "Истинод ба фаъолият, ки ҳамчун oer:assessing тавлид мешавад."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Пайванди бештар",
+        "description": "Пайванд ба маълумоти иловагӣ."
+      }
+    ]
+  }
+}

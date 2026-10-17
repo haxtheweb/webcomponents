@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Cathetan Mandheg",
+    "description": "Pesen kanggo ngelingake pamaca babagan pituduh tartamtu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Judhul",
+        "description": "Lebokake judhul kanggo cathetan mandheg."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Lebokake URL eksternal."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Nyetel status ngowahi werna lan ikon supaya cocog",
+        "options": {
+          "stop": "Mandheg",
+          "warning": "Pènget",
+          "success": "Konfirmasi",
+          "info": "Pengumuman"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Teks Cathetan",
+        "description": "Teks kanggo cathetan mandheg."
+      }
+    ]
+  }
+}

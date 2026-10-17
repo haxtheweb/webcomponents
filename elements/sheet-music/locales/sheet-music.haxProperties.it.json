@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Spartito",
+    "description": "Visualizza e riproduce spartiti, intavolature per chitarra e partiture tramite alphaTex o MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Notazione alphaTex",
+        "description": "Markup alphaTex in linea per lo spartito. Modificalo direttamente per scrivere la notazione; viene salvato in un template, così la spaziatura viene mantenuta."
+      },
+      {
+        "property": "source",
+        "title": "File della partitura",
+        "description": "Carica o collega un file MusicXML (.xml/.musicxml/.mxl) o Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Se impostato, ha la precedenza sull'alphaTex in linea."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Riproduzione audio",
+        "description": "Attiva per impostazione predefinita: ascolta lo spartito suonato dal sintetizzatore integrato. Disattiva per la modalità solo visualizzazione (senza audio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Mostra opzioni di visualizzazione",
+        "description": "Mostra i pulsanti di zoom, adattamento e layout nella barra del lettore."
+      },
+      {
+        "property": "showExport",
+        "title": "Mostra pulsanti di esportazione",
+        "description": "Mostra i pulsanti per scaricare il MIDI e stampare/PDF nella barra del lettore."
+      }
+    ]
+  }
+}

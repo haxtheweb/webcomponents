@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR کوډ",
+    "description": "هغه کوډ چې د سمارټ فون څخه سکن کېږي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR معلومات",
+        "description": "د QR کوډ لپاره د معلوماتو سرچینه."
+      },
+      {
+        "property": "title",
+        "title": "بدیل سرلیک",
+        "description": "بدیل سرلیک چې د QR کوډ له سرچینې سره تړل شوی."
+      },
+      {
+        "property": "modulesize",
+        "title": "اندازه",
+        "description": "د QR کوډ اندازه."
+      },
+      {
+        "property": "margin",
+        "title": "څنډه",
+        "description": "د کوډ شاوخوا پوښ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "د وتو بڼه",
+        "description": "د وتو لپاره بڼه.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

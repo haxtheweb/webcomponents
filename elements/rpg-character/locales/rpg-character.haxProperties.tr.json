@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG Karakteri",
+    "description": "HAX'ten eğlenceli bir karakter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Ad",
+        "description": "Rastgele karakter oluşturmak için kullanılan sözcük."
+      },
+      {
+        "property": "hat",
+        "title": "Şapka",
+        "description": "Şapka stili.",
+        "options": {
+          "none": "Varsayılan",
+          "random": "Rastgele",
+          "bunny": "Tavşan",
+          "cowboy": "Kovboy",
+          "education": "Eğitim",
+          "construction": "İnşaat",
+          "warning": "Uyarı",
+          "watermelon": "Karpuz",
+          "coffee": "Kahve",
+          "knight": "Şövalye",
+          "ninja": "Ninja",
+          "party": "Parti",
+          "error": "Hata",
+          "edit": "Düzenle"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Genişlik",
+        "description": "Piksel cinsinden karakter genişliği."
+      },
+      {
+        "property": "height",
+        "title": "Yükseklik",
+        "description": "Piksel cinsinden karakter yüksekliği."
+      },
+      {
+        "property": "fire",
+        "title": "Alevli mi?",
+        "description": "Karakterin alev alıp almadığı."
+      },
+      {
+        "property": "walking",
+        "title": "Yürüyor mu?",
+        "description": "Yürüme animasyonu; alevliyken çalışır."
+      }
+    ]
+  }
+}

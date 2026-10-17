@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Dokumentatiouns-Player fir Webkomponenten"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Fënster verstoppen",
+        "description": "D'Ausgabfënster verstoppen, nëtzlech wann et nëmmen ëm den Terminal geet"
+      }
+    ]
+  }
+}

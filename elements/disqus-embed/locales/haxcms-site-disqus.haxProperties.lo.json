@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ຄຳເຫັນ Disqus",
+    "description": "ການເຊື່ອມໂຍງກັບບໍລິການເວັບຄຳເຫັນ Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "ຊື່ຫຍໍ້",
+        "description": "ຊື່ຫຍໍ້ຂອງພຣັອບເພີຕີໃນ Disqus"
+      }
+    ]
+  }
+}

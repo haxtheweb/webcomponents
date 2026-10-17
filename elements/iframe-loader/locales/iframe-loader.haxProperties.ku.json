@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Naveroka webê ya derveyî di iframe de bi cih bike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ya Çavkaniyê",
+        "description": "URL ya çavkaniyê."
+      },
+      {
+        "property": "height",
+        "title": "Bilindahî",
+        "description": "Bilindahiya iframe."
+      },
+      {
+        "property": "width",
+        "title": "Firehî",
+        "description": "Firehiya iframe."
+      }
+    ]
+  }
+}

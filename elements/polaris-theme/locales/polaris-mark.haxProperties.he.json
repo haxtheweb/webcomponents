@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "סמליל Polaris",
+    "description": "הצגת סמליל הזהות של PSU עם שם מכללה ו-URL יעד אופציונליים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "שם המכללה",
+        "description": "השם המוצג לצד הסמליל."
+      },
+      {
+        "property": "name2",
+        "title": "שם המכללה 2",
+        "description": "שם שני המוצג מתחת לשם המכללה הראשון."
+      },
+      {
+        "property": "name3",
+        "title": "שם המכללה 3",
+        "description": "שם שלישי המוצג מתחת לשם המכללה השני."
+      },
+      {
+        "property": "url",
+        "title": "קישור",
+        "description": "URL היעד בעת לחיצה על הסמליל."
+      },
+      {
+        "property": "type",
+        "title": "וריאנט",
+        "description": "וריאנט חזותי של הסמליל.",
+        "options": {
+          "default": "ברירת מחדל",
+          "light": "בהיר",
+          "dark": "כהה"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "פריסה אנכית",
+        "description": "הצגת השם השלישי מתחת לשם השני עם קו אופקי."
+      }
+    ]
+  }
+}

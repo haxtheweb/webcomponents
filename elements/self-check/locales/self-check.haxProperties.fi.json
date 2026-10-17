@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Itsearviointi",
+    "description": "Käyttäjät voivat tehdä itsearvioinnin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Kuva",
+        "description": "Itsearvioinnin kuva."
+      },
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Itsearvioinnin otsikko."
+      },
+      {
+        "property": "alt",
+        "title": "Vaihtoehtoinen teksti",
+        "description": "Kuvan vaihtoehtoinen teksti."
+      },
+      {
+        "slot": "question",
+        "title": "Kysymys"
+      },
+      {
+        "slot": "",
+        "title": "Vastaus"
+      },
+      {
+        "property": "accentColor",
+        "title": "Teeman väri",
+        "description": "Valitse teeman väri suunnittelujärjestelmästä.",
+        "options": {
+          "primary": "Ensisijainen",
+          "accent": "Korostus",
+          "success": "Onnistuminen",
+          "warning": "Varoitus",
+          "error": "Virhe",
+          "info": "Tiedote"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oppimistavoite",
+        "description": "Oppimistavoiteviittaus, joka tuotetaan muodossa oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Arvioi",
+        "description": "Aktiviteettiviittaus, joka tuotetaan muodossa oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Lisätietolinkki",
+        "description": "Linkki lisätietoihin."
+      }
+    ]
+  }
+}

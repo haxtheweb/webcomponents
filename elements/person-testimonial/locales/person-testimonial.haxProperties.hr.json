@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Citat sa slikom",
+    "description": "Stilizirani citat s neobaveznom slikom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Slika",
+        "description": "Dodajte sliku svjedočanstvu."
+      },
+      {
+        "property": "name",
+        "title": "Puno ime",
+        "description": "Ime osobe koja daje svjedočanstvo."
+      },
+      {
+        "property": "position",
+        "title": "Položaj ili radno mjesto",
+        "description": "Položaj ili radno mjesto osobe."
+      },
+      {
+        "slot": "",
+        "title": "Citat",
+        "description": "Citat autora svjedočanstva."
+      }
+    ]
+  }
+}

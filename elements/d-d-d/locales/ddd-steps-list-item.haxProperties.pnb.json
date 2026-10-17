@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "قدماں دا آئٹم",
+    "description": "اوہ آئٹم جیہڑا قدماں دی لسٹ دا حصہ اے"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان"
+      }
+    ]
+  }
+}

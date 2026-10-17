@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Maoni ya Disqus",
+    "description": "Muunganisho na huduma ya wavuti ya maoni ya Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Jina fupi",
+        "description": "Jina fupi la mali kwenye Disqus"
+      }
+    ]
+  }
+}

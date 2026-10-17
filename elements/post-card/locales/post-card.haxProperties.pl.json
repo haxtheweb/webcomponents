@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Pocztówka",
+    "description": "Zabawny element multimedialny wyglądający jak prawdziwa pocztówka skądś"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Do",
+        "description": "Do kogo to trafi?"
+      },
+      {
+        "property": "from",
+        "title": "Od",
+        "description": "Kim jesteś?"
+      },
+      {
+        "property": "message",
+        "title": "Wiadomość",
+        "description": "Co chcesz powiedzieć?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Stempel pocztowy z",
+        "description": "Skąd wysłano tę kartkę?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Źródło głównego zdjęcia",
+        "description": "Gdzie znajduje się Twoje zdjęcie?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Źródło zdjęcia znaczka",
+        "description": "Gdzie znajduje się Twoje zdjęcie?"
+      }
+    ]
+  }
+}

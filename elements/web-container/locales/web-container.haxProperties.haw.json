@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Pahu NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Hūnā i ka mea hoʻoponopono",
+        "description": "E hūnā i ke alo hoʻoponopono faila."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Hūnā i ke kāhuna",
+        "description": "E hūnā i ke kāhuna no nā polokalamu holo ʻakomi."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Hūnā i ka puka aniani",
+        "description": "E hūnā i ka puka aniani puka no ka hoʻohana kāhuna wale nō."
+      },
+      {
+        "slot": "",
+        "title": "Nā Kauoha",
+        "description": "Nā kauoha (hoʻokahi ma kēlā me kēia laina) e holo ai ma mua o ka hoʻouka ʻana."
+      }
+    ]
+  }
+}

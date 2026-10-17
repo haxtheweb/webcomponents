@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Natos",
+    "description": "Atvaizduoja ir groja natas, gitaros tabulatūras ir partitūras naudojant alphaTex arba MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex notacija",
+        "description": "Įterptas natų alphaTex žymėjimas. Redaguokite tiesiogiai, kad sukurtumėte notaciją; jis saugomas šablone, todėl tarpai išlaikomi."
+      },
+      {
+        "property": "source",
+        "title": "Partitūros failas",
+        "description": "Įkelkite arba susiekite MusicXML (.xml/.musicxml/.mxl) ar Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) failą. Nustačius turi pirmenybę prieš įterptą alphaTex."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Garso atkūrimas",
+        "description": "Įjungta pagal numatytuosius nustatymus – klausykitės natų, grojamų integruotu sintezatoriumi. Išjunkite, jei norite tik peržiūros (be garso) režimo."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Rodyti rodymo parinktis",
+        "description": "Rodyti mastelio, ištempimo ir išdėstymo mygtukus grotuvo juostoje."
+      },
+      {
+        "property": "showExport",
+        "title": "Rodyti eksporto mygtukus",
+        "description": "Rodyti MIDI atsisiuntimo ir spausdinimo / PDF mygtukus grotuvo juostoje."
+      }
+    ]
+  }
+}

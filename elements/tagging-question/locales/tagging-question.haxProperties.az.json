@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Teqləmə sualı",
+    "description": "Suala cavab vermək üçün teqləri seçin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Sual",
+        "description": "İstifadəçilərin cavablandıracağı sual."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Qiymətləndirmə formatı",
+        "description": "OER Schema: bu qiymətləndirmənin qiymətləndirmə formatı (məs. xal, hərf, faiz, tamamlanma)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Öyrənmə məqsədi",
+        "description": "OER Schema: bu qiymətləndirmə ilə əlaqəli öyrənmə məqsədi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: bu qiymətləndirmənin nəzərdə tutulduğu kurs."
+      },
+      {
+        "property": "answers",
+        "title": "Cavablar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testin adı",
+        "description": "Analitika sistemlərində xAPI identifikasiyası üçün istifadə olunan test adı."
+      }
+    ]
+  }
+}

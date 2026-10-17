@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) කාවැද්දීම",
+    "description": "X වෙතින් ට්වීට් එකක් සන්දර්භය තුළ කාවද්දන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ට්වීට් URL",
+        "description": "කාවැද්දිය යුතු ට්වීට් එකේ URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "තේමාව",
+        "description": "X ට්වීට් සඳහා ලා හෝ අඳුරු තේමාව.",
+        "options": {
+          "light": "ලා",
+          "dark": "අඳුරු"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "ක්ලික් කිරීමේදී උත්පතනය වළක්වන්න",
+        "description": "පරිශීලකයින් x.com හි ට්වීට් එක විවෘත කිරීම වළක්වන්න."
+      }
+    ]
+  }
+}

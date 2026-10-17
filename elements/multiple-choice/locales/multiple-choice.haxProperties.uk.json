@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Множинний вибір",
+    "description": "Питання для самоперевірки з множинним вибором."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Запитання",
+        "description": "Запитання, на яке мають відповісти користувачі."
+      },
+      {
+        "property": "randomize",
+        "title": "Випадковий порядок",
+        "description": "Динамічно перемішувати відповіді."
+      },
+      {
+        "property": "singleOption",
+        "title": "Одна відповідь",
+        "description": "Дозволити лише одну відповідь."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат оцінювання",
+        "description": "OER Schema: формат оцінювання для цього завдання (напр. бали, літера, відсоток, виконання)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Навчальна мета",
+        "description": "OER Schema: навчальна мета, пов'язана з цим завданням."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, для якого призначене це завдання."
+      },
+      {
+        "property": "answers",
+        "title": "Відповіді"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Назва тесту",
+        "description": "Назва тесту для ідентифікації xAPI в аналітичних системах."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Загварчилсан Polaris үйлдэлд уриалах товч харуулах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Товчны текст",
+        "description": "Үйлдэлд уриалах товчинд харуулах текст."
+      },
+      {
+        "property": "link",
+        "title": "Холбоос",
+        "description": "Товчны очих URL."
+      },
+      {
+        "property": "type",
+        "title": "Хувилбар",
+        "description": "Харагдах загварын хувилбар.",
+        "options": {
+          "primary": "Үндсэн",
+          "tinted": "Өнгө оруулсан",
+          "light": "Цайвар"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Хүрээтэй загвар",
+        "description": "Хүрээтэй хэлбэрийг идэвхжүүлэх."
+      },
+      {
+        "property": "filled",
+        "title": "Дүүргэсэн загвар",
+        "description": "Дүүргэсэн хэлбэрийг идэвхжүүлэх."
+      }
+    ]
+  }
+}

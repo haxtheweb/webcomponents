@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Sematan LinkedIn",
+    "description": "Sematkan kartu profil LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Nama khusus",
+        "description": "Segmen nama pengguna khusus LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokal",
+        "description": "Nilai metadata lokal seperti en_US."
+      }
+    ]
+  }
+}

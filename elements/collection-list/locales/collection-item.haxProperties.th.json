@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "รายการคอลเลกชัน",
+    "description": "รายการแบบการ์ดสำหรับใช้ในรายการคอลเลกชัน พร้อมข้อความ ลิงก์ และสื่อเสริม"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "ลิงก์",
+        "description": "URL ปลายทางสำหรับการ์ดนี้"
+      },
+      {
+        "property": "image",
+        "title": "รูปภาพ",
+        "description": "รูปภาพพื้นหลัง"
+      },
+      {
+        "property": "line1",
+        "title": "บรรทัดที่ 1",
+        "description": "ข้อความบรรทัดแรก"
+      },
+      {
+        "property": "line2",
+        "title": "บรรทัดที่ 2",
+        "description": "ข้อความบรรทัดที่สอง"
+      },
+      {
+        "property": "line3",
+        "title": "บรรทัดที่ 3",
+        "description": "ข้อความบรรทัดที่สาม"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ไอคอน",
+        "description": "ไอคอนที่แสดงถึงการ์ด"
+      },
+      {
+        "property": "saturate",
+        "title": "เอฟเฟกต์ความอิ่มตัว",
+        "description": "เปลี่ยนความอิ่มตัวของรูปภาพเมื่อผู้ใช้โฟกัส"
+      },
+      {
+        "property": "tags",
+        "title": "แท็ก",
+        "description": "รายการแท็กที่คั่นด้วยเครื่องหมายจุลภาค"
+      },
+      {
+        "property": "accentColor",
+        "title": "สี",
+        "description": "สีที่ใช้สำหรับแท็ก"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "ข้อความแสดงแทนที่อธิบายลิงก์"
+      }
+    ]
+  }
+}

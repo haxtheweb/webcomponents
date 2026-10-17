@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "שאלת נכון / לא נכון",
+    "description": "שאלת נכון או לא נכון"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "שאלה",
+        "description": "שאלה שהמשתמשים יגיבו עליה."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "התשובה הנכונה"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "שם הבוחן",
+        "description": "שם הבוחן המועבר לשימוש בסביבות מבוססות xAPI לצורך זיהוי פריט זה"
+      }
+    ]
+  }
+}

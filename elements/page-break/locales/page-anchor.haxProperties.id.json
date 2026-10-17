@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Jangkar Halaman",
+    "description": "Tautkan ke titik tertentu pada media di halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Target halaman",
+        "description": "ID atau sumber daya yang dituju jangkar ini."
+      },
+      {
+        "property": "value",
+        "title": "Nilai tautan dalam",
+        "description": "Nilai tautan dalam (misalnya stempel waktu atau ID slide)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entitas situs",
+        "description": "Entitas situs opsional untuk mengontrol penyajian konsep terkait."
+      }
+    ]
+  }
+}

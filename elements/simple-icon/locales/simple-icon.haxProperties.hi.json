@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "आइकन",
+    "description": "पूर्ण आइकन लाइब्रेरी से आइकन।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "प्रदर्शित किया जाने वाला आइकन।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "आइकन का एक्सेंट रंग।"
+      },
+      {
+        "property": "dark",
+        "title": "डार्क",
+        "description": "डार्क मोड का उपयोग करें (उलटा रंग सेट)।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI görselleştirici",
+    "description": "MIDI'yi bağlam içinde görselleştirmeyle çalın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kaynak",
+        "description": "Çalınacak dosya URL'si."
+      },
+      {
+        "property": "visualizer",
+        "title": "Görselleştirme",
+        "description": "Müzik dosyası için görselleştirme stili.",
+        "options": {
+          "staff": "Porte",
+          "piano-roll": "Piyano rulosu",
+          "waterfall": "Piyano + şelale"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Şelaleyi gizle",
+        "description": "Piyano görselleştirmesinde şelale notalarını gizle."
+      }
+    ]
+  }
+}

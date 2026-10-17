@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Postkort",
+    "description": "Ein spølin miðilslutur, sum skal líkjast einum veruligum postkorti einastaðni frá"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Til",
+        "description": "Hvør skal hava hetta?"
+      },
+      {
+        "property": "from",
+        "title": "Frá",
+        "description": "Hvør ert tú?"
+      },
+      {
+        "property": "message",
+        "title": "Boð",
+        "description": "Hvat vilt tú siga?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Poststemplað frá",
+        "description": "Hvaðani var hetta kortið sent?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Kelda til høvuðsmynd",
+        "description": "Hvar er myndin hjá tær?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Kelda til frímerkjamynd",
+        "description": "Hvar er myndin hjá tær?"
+      }
+    ]
+  }
+}

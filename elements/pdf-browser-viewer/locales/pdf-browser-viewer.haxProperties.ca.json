@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Visualitzador de PDF del navegador",
+    "description": "Insereix un fitxer PDF amb un disseny de targeta i un botó de baixada opcionals."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL del PDF",
+        "description": "Ubicació del fitxer PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Encapçalament",
+        "description": "Text de l'encapçalament de la targeta."
+      },
+      {
+        "property": "card",
+        "title": "Disseny de targeta",
+        "description": "Mostra el PDF en una targeta amb un botó de baixada."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Etiqueta de baixada",
+        "description": "Etiqueta del botó de baixada."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Missatge de no compatible",
+        "description": "Missatge quan el navegador no pot mostrar fitxers PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Missatge d'enllaç de no compatible",
+        "description": "Text de l'enllaç quan el navegador no pot mostrar fitxers PDF."
+      },
+      {
+        "property": "width",
+        "title": "Amplada",
+        "description": "Amplada del visualitzador de PDF."
+      },
+      {
+        "property": "height",
+        "title": "Alçada",
+        "description": "Alçada del visualitzador de PDF."
+      }
+    ]
+  }
+}

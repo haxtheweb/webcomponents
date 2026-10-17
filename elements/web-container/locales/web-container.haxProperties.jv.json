@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wadhah NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Dhelikake editor",
+        "description": "Dhelikake antarmuka nyunting berkas."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Dhelikake terminal",
+        "description": "Dhelikake terminal kanggo program sing mlaku otomatis."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Dhelikake jendhela",
+        "description": "Dhelikake jendhela asil kanggo panggunaan terminal wae."
+      },
+      {
+        "slot": "",
+        "title": "Prentah",
+        "description": "Prentah (siji saben baris) sing dilakokake sadurunge ngemot."
+      }
+    ]
+  }
+}

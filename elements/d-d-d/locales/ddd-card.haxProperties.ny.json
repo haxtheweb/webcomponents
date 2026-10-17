@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Khadi",
+    "description": "Khadi lokongoletsedwa ndi kapangidwe ka DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Chithunzi",
+        "description": "Chithunzi chosankha."
+      },
+      {
+        "property": "alt",
+        "title": "Mawu ofotokoza chithunzi",
+        "description": "Mawu ena ofotokoza chithunzicho."
+      },
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mutu wa khadi."
+      },
+      {
+        "slot": "",
+        "title": "Zomwe zili mkati",
+        "description": "Malo a zomwe zili mu khadi."
+      },
+      {
+        "property": "href",
+        "title": "Ulalo",
+        "description": "URL ya ulalo wa batani."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Dzina",
+        "description": "Dzina la batani."
+      },
+      {
+        "property": "noArrow",
+        "title": "Popanda Muvi",
+        "description": "Bisani muvi wa batani."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Ulalo: komwe ukutsegukira",
+        "description": "Komwe ulalo ungatsegukire.",
+        "options": {
+          "": "Zenera lomwelo",
+          "_blank": "Zenera latsopano - _blank",
+          "_top": "Zenera lapamwamba - _top",
+          "_parent": "Zenera la kholo - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Ulalo: rel",
+        "description": "Ubale pakati pa chinthu cholumikizidwa ndi chikalata chomwe chilipo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Chwaraewr 3D",
+    "description": "Chwaraewr ffeiliau 3D / realiti estynedig."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ffynhonnell",
+        "description": "Yr URL ar gyfer y ffeil AR hon."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Safle X yr elfen yn AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Safle Y yr elfen yn AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Safle Z yr elfen yn AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Lliw'r awyr",
+        "description": "Dewiswch liw'r awyr yn yr olygfa."
+      }
+    ]
+  }
+}

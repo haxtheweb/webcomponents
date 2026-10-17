@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "재생 목록",
+    "description": "모든 종류의 콘텐츠를 재생 목록으로 표시합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "소스",
+        "description": "재생 목록에 표시되는 콘텐츠입니다."
+      },
+      {
+        "property": "edit",
+        "title": "편집 모드",
+        "description": "재생 목록의 편집 모드와 미리보기 모드를 전환합니다."
+      },
+      {
+        "property": "navigation",
+        "title": "탐색",
+        "description": "앞으로 및 뒤로 탐색 버튼을 표시합니다."
+      },
+      {
+        "property": "pagination",
+        "title": "페이지 매기기",
+        "description": "페이지 표시 점을 보여 줍니다."
+      },
+      {
+        "property": "orientation",
+        "title": "방향",
+        "description": "슬라이드의 방향입니다.",
+        "options": {
+          "horizontal": "가로",
+          "vertical": "세로"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "시작 슬라이드",
+        "description": "처음에 포커스할 슬라이드 인덱스입니다."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "가로세로 비율",
+        "description": "슬라이드의 가로세로 비율입니다.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

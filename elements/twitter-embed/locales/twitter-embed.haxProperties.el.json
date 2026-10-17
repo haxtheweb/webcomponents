@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Ενσωμάτωση Twitter (X)",
+    "description": "Ενσωμάτωση ενός tweet από το X στο πλαίσιο της σελίδας."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL tweet",
+        "description": "URL του tweet προς ενσωμάτωση."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Θέμα",
+        "description": "Φωτεινό ή σκούρο θέμα για τα tweet του X.",
+        "options": {
+          "light": "Ανοιχτόχρωμο",
+          "dark": "Σκούρο"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Αποτροπή αναδυόμενου παραθύρου με κλικ",
+        "description": "Αποτροπή ανοίγματος του tweet στο x.com από τους χρήστες."
+      }
+    ]
+  }
+}

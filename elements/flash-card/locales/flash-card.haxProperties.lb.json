@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Léierkaart",
+    "description": "Konzepter mat Léierkaarte mat Vir- a Récksäit üben."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Virsäit vun der Kaart",
+        "description": "Text oder Fro op der Virsäit."
+      },
+      {
+        "slot": "back",
+        "title": "Récksäit vun der Kaart",
+        "description": "Erwaart Äntwert."
+      },
+      {
+        "property": "imgSource",
+        "title": "Bildquell",
+        "description": "Bildfichier fir d'Kaart. Huet Virrang virum Bild-Stéchwuert."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Aktiounstyp",
+        "description": "OER Schema: den Aktiounstyp vun dëser Übung (z. B. Liesen, Schreiwen, Maachen, Recherchéieren, Lauschteren, Kucken, Nodenken, Diskutéieren, Observéieren, Presentéieren, Bewäerten)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Léierzil",
+        "description": "OER Schema: ID oder URL vum Léierzil, dat dës Übung ënnerstëtzt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Däischter",
+        "description": "Däischtere Modus benotzen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Akzentfaarf vun der Kaart."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Bild-Stéchwuert",
+        "description": "Stéchwuert fir e Zoufallsbild. Gëtt vun der Bildquell iwwerschriwwen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris-søgukort",
+    "description": "Vís eitt Polaris-søgukort við bakgrundsmynd, súluheiti og yvirskriftarteksti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bakgrundsmynd",
+        "description": "URL til myndina, sum verður víst sum bakgrund á kortinum."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Bakgrundsstødd",
+        "description": "Hvussu bakgrundsmyndin fyllir kortið (CSS background-size).",
+        "options": {
+          "cover": "dekka (cover)",
+          "contain": "innihalda (contain)",
+          "auto": "sjálvvirkið (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Bakgrundsfesting",
+        "description": "Hvussu bakgrundsmyndin ber seg at, tá rult verður (CSS background-attachment).",
+        "options": {
+          "scroll": "rullar (scroll)",
+          "fixed": "føst (fixed)",
+          "local": "lokalt (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Súluheiti",
+        "description": "Stutt heiti við stórum bókstavum, víst ovast á kortinum. Lat vera tómt fyri at fjala."
+      },
+      {
+        "property": "label",
+        "title": "Korttekstur",
+        "description": "Høvuðstekstur, sum verður vístur í niðara partinum."
+      },
+      {
+        "property": "link",
+        "title": "Leinki",
+        "description": "Valfrí mál-URL, sum fevnir um alt kortið."
+      }
+    ]
+  }
+}

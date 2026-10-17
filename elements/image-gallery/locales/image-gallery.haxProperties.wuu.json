@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "图片画廊",
+    "description": "用网格、瀑布流或者幻灯片布局展示图片个画廊。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "显示模式",
+        "description": "画廊里图片个展示方式。",
+        "options": {
+          "grid": "网格",
+          "masonry": "瀑布流",
+          "gallery": "画廊"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "当前索引",
+        "description": "画廊模式下开始显示个图片索引。"
+      }
+    ]
+  }
+}

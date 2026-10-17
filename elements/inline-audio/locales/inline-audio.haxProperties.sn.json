@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Odhiyo iri mukati",
+    "description": "Ridza odhiyo iri mukati kuwedzera zvirimo zvepeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kwakabva",
+        "description": "Faira reMP3 kana URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rwekusimbisa rwekadhi."
+      },
+      {
+        "property": "shiny",
+        "title": "Inopenya",
+        "description": "Shandisa ruvara rwekumashure rwakajeka pachinzvimbo chegireyi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Rima",
+        "description": "Shandisa mamiriro erima."
+      }
+    ]
+  }
+}

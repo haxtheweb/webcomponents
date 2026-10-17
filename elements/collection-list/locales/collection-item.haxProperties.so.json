@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Walax ururin",
+    "description": "Walax kaar u eg oo loogu talagalay liiska ururinta, leh qoraal, xiriiriye, iyo warbaahin ikhtiyaari ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Xiriiriye",
+        "description": "URL-ka loo socdo ee kaarkan."
+      },
+      {
+        "property": "image",
+        "title": "Sawir",
+        "description": "Sawirka asalka."
+      },
+      {
+        "property": "line1",
+        "title": "Sadar 1",
+        "description": "Sadarka koowaad ee qoraalka."
+      },
+      {
+        "property": "line2",
+        "title": "Sadar 2",
+        "description": "Sadarka labaad ee qoraalka."
+      },
+      {
+        "property": "line3",
+        "title": "Sadar 3",
+        "description": "Sadarka saddexaad ee qoraalka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Astaan",
+        "description": "Astaanta matalaysa kaarka."
+      },
+      {
+        "property": "saturate",
+        "title": "Saamaynta dhereg midabka",
+        "description": "Beddel dhereg midabka sawirka marka isticmaaluhu diiradda saaro."
+      },
+      {
+        "property": "tags",
+        "title": "Summado",
+        "description": "Liis summado ah oo hakad lagu kala saaray."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midab",
+        "description": "Midabka loo isticmaalo summadaha."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Qoraal beddel ah oo sharaxaya xiriiriyaha."
+      }
+    ]
+  }
+}

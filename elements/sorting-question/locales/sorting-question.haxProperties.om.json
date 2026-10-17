@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Gaaffii Tartiibessuu",
+    "description": "Wantoota tartiiba sirriitti tartiibessi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Gaaffii",
+        "description": "Mata-duree Gaaffii."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Akkaataa qabxii kennuu",
+        "description": "OER Schema: akkaataa qabxii kennuu madaallii kanaa (fkn. qabxii, qubee, dhibbeentaa, xumuruu)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Kaayyoo barnootaa",
+        "description": "OER Schema: kaayyoo barnootaa madaallii kana wajjin walqabatu."
+      },
+      {
+        "property": "forCourse",
+        "title": "Koorsii",
+        "description": "OER Schema: koorsii madaalliin kun itti yaadame."
+      },
+      {
+        "property": "answers",
+        "title": "Deebiiwwan",
+        "description": "Tartiibni deebiiwwanii walduraa duuba sirrii murteessa."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Maqaa qormaata gabaabaa",
+        "description": "Maqaa qormaata gabaabaa sirna xiinxalaa keessatti eenyummeessa xAPI tiif fayyadamu."
+      }
+    ]
+  }
+}

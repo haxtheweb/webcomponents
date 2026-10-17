@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus iruzkinak",
+    "description": "Disqus iruzkin web zerbitzuarekiko integrazioa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Izen laburra",
+        "description": "Propietatearen izen laburra Disqus-en"
+      }
+    ]
+  }
+}

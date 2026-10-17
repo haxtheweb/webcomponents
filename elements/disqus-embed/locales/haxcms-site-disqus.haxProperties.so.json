@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Faallooyinka Disqus",
+    "description": "Isku xirka adeegga webka faallooyinka Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Magac gaaban",
+        "description": "Magaca gaaban ee hantida ee Disqus"
+      }
+    ]
+  }
+}

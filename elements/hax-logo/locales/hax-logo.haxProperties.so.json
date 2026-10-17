@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Farshaxanka qoraalka HAX",
+    "description": "walax astaanta HAX ah, si cad walax HAX la jaanqaada."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Cabbirka astaanta HAX ee la dhigayo",
+        "options": {
+          "mini": "Aad u yar",
+          "small": "Yar",
+          "normal": "Caadi",
+          "large": "Weyn"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "In astaanta loo beddelo xarfo waaweyn"
+      }
+    ]
+  }
+}

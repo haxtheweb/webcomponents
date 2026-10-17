@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR־קאָד",
+    "description": "קאָד צו סקאַנירן פֿון אַ סמאַרטפֿאָן."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR־דאַטן",
+        "description": "מקור פֿון די דאַטן פֿאַרן QR־קאָד."
+      },
+      {
+        "property": "title",
+        "title": "אַלטערנאַטיווער טיטל",
+        "description": "אַלטערנאַטיווער טיטל פֿאַרלינקט צום מקור פֿונעם QR־קאָד."
+      },
+      {
+        "property": "modulesize",
+        "title": "גרייס",
+        "description": "גרייס פֿונעם QR־קאָד."
+      },
+      {
+        "property": "margin",
+        "title": "ראַנד",
+        "description": "הילע אַרום דעם קאָד."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "אַרויסגאַנג־פֿאָרמאַט",
+        "description": "פֿאָרמאַט אין וועלכן עס אַרויסצוגעבן.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

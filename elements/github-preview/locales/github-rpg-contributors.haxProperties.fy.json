@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "List fan GitHub-bydragers",
+    "description": "Werjûn as RPG-personaazjes mei de GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisaasje",
+        "description": "Organisaasjenamme út github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repository",
+        "description": "Repositorynamme út github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Limyt",
+        "description": "It oantal toande bydragers beheine."
+      }
+    ]
+  }
+}

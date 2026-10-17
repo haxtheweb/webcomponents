@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Үг тэмдэглэх",
+    "description": "Текст дотор дарж үгээр дамжуулан ойлголтуудыг тодорхойлох."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Асуулт",
+        "description": "Хэрэглэгчдийн хариулах асуулт."
+      },
+      {
+        "property": "statement",
+        "title": "Өгүүлбэр",
+        "description": "Үг тэмдэглэх харилцан үйлдэл болгон хөрвүүлэх өгүүлбэр."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Дүгнэх хэлбэр",
+        "description": "OER Schema: энэ үнэлгээний дүгнэх хэлбэр (жишээ нь оноо, үсэг, хувь, гүйцэтгэл)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Сургалтын зорилт",
+        "description": "OER Schema: энэ үнэлгээтэй холбоотой сургалтын зорилт."
+      },
+      {
+        "property": "forCourse",
+        "title": "Хичээл",
+        "description": "OER Schema: энэ үнэлгээг зориулсан хичээл."
+      },
+      {
+        "property": "answers",
+        "title": "Хариултууд"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Шалгалтын нэр",
+        "description": "xAPI-д суурилсан орчинд энэ зүйлийг танихад ашиглахаар дамжуулах шалгалтын нэр"
+      }
+    ]
+  }
+}

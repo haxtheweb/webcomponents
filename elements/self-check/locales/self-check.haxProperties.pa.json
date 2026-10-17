@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "ਸਵੈ-ਜਾਂਚ",
+    "description": "ਉਪਭੋਗਤਾ ਸਵੈ-ਜਾਂਚ ਪੂਰੀ ਕਰ ਸਕਦੇ ਹਨ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ਚਿੱਤਰ",
+        "description": "ਸਵੈ-ਜਾਂਚ ਲਈ ਚਿੱਤਰ।"
+      },
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਸਵੈ-ਜਾਂਚ ਦਾ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "alt",
+        "title": "ਵਿਕਲਪਿਕ ਲਿਖਤ (Alt)",
+        "description": "ਚਿੱਤਰ ਲਈ alt ਲਿਖਤ।"
+      },
+      {
+        "slot": "question",
+        "title": "ਸਵਾਲ"
+      },
+      {
+        "slot": "",
+        "title": "ਜਵਾਬ"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਥੀਮ ਰੰਗ",
+        "description": "ਡਿਜ਼ਾਈਨ ਸਿਸਟਮ ਤੋਂ ਥੀਮ ਰੰਗ ਚੁਣੋ।",
+        "options": {
+          "primary": "ਮੁੱਖ",
+          "accent": "ਐਕਸੈਂਟ",
+          "success": "ਸਫ਼ਲਤਾ",
+          "warning": "ਚੇਤਾਵਨੀ",
+          "error": "ਗਲਤੀ",
+          "info": "ਜਾਣਕਾਰੀ"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼",
+        "description": "oer:hasLearningObjective ਵਜੋਂ ਜਾਰੀ ਸਿੱਖਣ ਦੇ ਉਦੇਸ਼ ਦਾ ਹਵਾਲਾ।"
+      },
+      {
+        "property": "assessing",
+        "title": "ਮੁਲਾਂਕਣ ਅਧੀਨ",
+        "description": "oer:assessing ਵਜੋਂ ਜਾਰੀ ਗਤੀਵਿਧੀ ਦਾ ਹਵਾਲਾ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "ਹੋਰ ਲਿੰਕ",
+        "description": "ਵਾਧੂ ਜਾਣਕਾਰੀ ਲਈ ਲਿੰਕ।"
+      }
+    ]
+  }
+}

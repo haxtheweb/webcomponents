@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "גלויה",
+    "description": "פריט מדיה משעשע שנועד להיראות כמו גלויה אמיתית שנשלחה ממקום כלשהו"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "אל",
+        "description": "למי הגלויה נשלחת?"
+      },
+      {
+        "property": "from",
+        "title": "מאת",
+        "description": "מי אתם?"
+      },
+      {
+        "property": "message",
+        "title": "הודעה",
+        "description": "מה תרצו לומר?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "חותמת דואר מ־",
+        "description": "מאיפה נשלחה הגלויה?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "מקור התמונה הראשית",
+        "description": "היכן נמצאת התמונה שלכם?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "מקור תמונת הבול",
+        "description": "היכן נמצאת התמונה שלכם?"
+      }
+    ]
+  }
+}

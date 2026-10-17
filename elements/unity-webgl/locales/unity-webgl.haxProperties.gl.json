@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Reprodutor Unity",
+    "description": "Reprodutor Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Destino",
+        "description": "Ruta á compilación do xogo."
+      },
+      {
+        "property": "compression",
+        "title": "Método de compresión",
+        "description": "Extensión de ficheiro de compresión para os recursos do xogo."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL de streaming",
+        "description": "URL dos recursos de streaming."
+      },
+      {
+        "property": "companyname",
+        "title": "Nome da empresa",
+        "description": "Nome da empresa."
+      },
+      {
+        "property": "productname",
+        "title": "Nome do produto",
+        "description": "Título do xogo."
+      },
+      {
+        "property": "productversion",
+        "title": "Versión do produto",
+        "description": "Versión da publicación."
+      },
+      {
+        "property": "width",
+        "title": "Largura do lenzo",
+        "description": "Largura CSS do lenzo (por exemplo, px ou em)."
+      },
+      {
+        "property": "height",
+        "title": "Altura do lenzo",
+        "description": "Altura CSS do lenzo (por exemplo, px ou em)."
+      },
+      {
+        "property": "background",
+        "title": "Fondo do lenzo",
+        "description": "Fondo CSS do lenzo."
+      }
+    ]
+  }
+}

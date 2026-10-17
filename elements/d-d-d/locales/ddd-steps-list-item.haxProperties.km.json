@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "ធាតុជំហាន",
+    "description": "ធាតុដែលជាផ្នែកនៃបញ្ជីជំហាន"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ចំណងជើង"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Обвивка h5p за зареждане и представяне на файлове .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Код за вграждане на H5P в iframe"
+      }
+    ]
+  }
+}

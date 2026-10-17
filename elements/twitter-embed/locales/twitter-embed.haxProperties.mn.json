@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) суулгац",
+    "description": "X-ийн жиргээг нөхцөлд нь суулгах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Жиргээний URL",
+        "description": "Суулгах жиргээний URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Загвар",
+        "description": "X жиргээний цайвар эсвэл бараан загвар.",
+        "options": {
+          "light": "Цайвар",
+          "dark": "Бараан"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Дарахад гарч ирэх цонхоос сэргийлэх",
+        "description": "Хэрэглэгчид жиргээг x.com дээр нээхээс сэргийлэх."
+      }
+    ]
+  }
+}

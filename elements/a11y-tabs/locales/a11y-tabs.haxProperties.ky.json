@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Өтмөктөр",
+    "description": "Өтмөктөр топтому."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Энбелги (жеткиликтүүлүк үчүн)",
+        "description": "Өтмөктөр топтомунун жеткиликтүү энбелгиси."
+      },
+      {
+        "property": "disabled",
+        "title": "Өчүрүлгөн",
+        "description": "Бардык өтмөктөрдү өчүрүү."
+      },
+      {
+        "property": "hidden",
+        "title": "Жашыруун",
+        "description": "Өтмөктөр топтомун жашыруу."
+      },
+      {
+        "property": "sticky",
+        "title": "Бекитилген",
+        "description": "Сыдырганда горизонталдык өтмөктөрдү жогоруда калтыруу."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Макет чеги",
+        "description": "Горизонталдык өтмөктөр үчүн чек; тик гана болушу үчүн -1 колдонуңуз."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Сөлөкөт чеги",
+        "description": "Сөлөкөттөр менен текстти көрсөтүү чеги. Демейки 0; сөлөкөт гана режими үчүн -1 колдонуңуз."
+      },
+      {
+        "slot": "",
+        "title": "Өтмөктөр",
+        "description": "<a11y-tab/> элементтеринин тизмеги."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Уникалдуу ID",
+        "description": "Бул өтмөктөр топтомунун уникалдуу ID."
+      }
+    ]
+  }
+}

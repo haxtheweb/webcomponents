@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Шошгууд",
+    "description": "Хуудсан дээр харуулах энгийн шошгын жагсаалт."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Шошгууд",
+        "description": "Таслалаар тусгаарласан шошгын жагсаалт."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Автомат онцлох өнгө",
+        "description": "Шошгонд үндэслэн онцлох өнгийг автоматаар тохируулах."
+      },
+      {
+        "property": "accentColor",
+        "title": "Өнгө",
+        "description": "Шошгоны өнгө."
+      }
+    ]
+  }
+}

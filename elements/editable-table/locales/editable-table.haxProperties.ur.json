@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "جدول",
+    "description": "ویب کے لیے جدول پر مبنی ڈیٹا۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "قطار سرخی",
+        "description": "پہلی قطار کو سرخی سمجھیں۔"
+      },
+      {
+        "property": "columnHeader",
+        "title": "کالم سرخی",
+        "description": "پہلے کالم کو سرخی سمجھیں۔"
+      },
+      {
+        "property": "footer",
+        "title": "فُٹر",
+        "description": "آخری قطار کو فُٹر سمجھیں۔"
+      },
+      {
+        "property": "sort",
+        "title": "ترتیب کے قابل",
+        "description": "کالم کی قدروں کے لحاظ سے ترتیب کی اجازت دیں۔"
+      },
+      {
+        "property": "filter",
+        "title": "فلٹر کی اجازت",
+        "description": "کالم کی قدروں کے لحاظ سے فلٹر کرنے کی اجازت دیں۔"
+      },
+      {
+        "property": "numericStyles",
+        "title": "عددی اسٹائلنگ",
+        "description": "عددی کالموں پر عددی اسٹائلنگ لاگو کریں۔"
+      },
+      {
+        "property": "responsive",
+        "title": "ریسپانسیو",
+        "description": "چھوٹی اسکرینوں پر جدول کا لے آؤٹ ایڈجسٹ کریں۔"
+      },
+      {
+        "property": "rubricMode",
+        "title": "روبرک موڈ",
+        "description": "اس جدول کو OER Schema کا Rubric سمجھیں تاکہ Rubric، RubricScale، RubricCriterion اور RubricLevel میٹا ڈیٹا جاری ہو۔"
+      },
+      {
+        "property": "rubricType",
+        "title": "روبرک کی قسم",
+        "description": "oer:rubricType کے طور پر جاری ہونے والا روبرک انداز (صرف روبرک موڈ آن ہونے پر بامعنی)۔",
+        "options": {
+          "": "(کوئی نہیں)",
+          "analytic": "تجزیاتی",
+          "holistic": "مجموعی",
+          "single-point": "واحد نکاتی",
+          "checklist": "چیک لسٹ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "حاشیہ دار"
+      },
+      {
+        "property": "condensed",
+        "title": "قطاریں سکیڑیں",
+        "description": "قطار کی اونچائی کم کریں۔"
+      },
+      {
+        "property": "striped",
+        "title": "دھاری دار قطاریں",
+        "description": "ہر دوسری قطار پر سایہ کریں۔"
+      },
+      {
+        "property": "downloadable",
+        "title": "ڈاؤن لوڈ بٹن",
+        "description": "جدول ڈاؤن لوڈ کرنے کا بٹن شامل کریں۔"
+      },
+      {
+        "property": "copyable",
+        "title": "کاپی بٹن",
+        "description": "جدول کا CSV ڈیٹا کاپی کرنے کا بٹن شامل کریں۔"
+      },
+      {
+        "property": "printable",
+        "title": "پرنٹ بٹن",
+        "description": "صرف جدول پرنٹ کرنے کا بٹن شامل کریں۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV ڈیٹا",
+        "description": "اپ لوڈ کی گئی CSV فائل سے جدول بنائیں۔"
+      }
+    ]
+  }
+}

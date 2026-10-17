@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D 플레이어",
+    "description": "3D 파일/증강 현실 플레이어입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "소스",
+        "description": "이 AR 파일의 URL입니다."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR에서 요소의 X 위치입니다."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR에서 요소의 Y 위치입니다."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR에서 요소의 Z 위치입니다."
+      },
+      {
+        "property": "skyColor",
+        "title": "하늘 색상",
+        "description": "장면의 하늘 색상을 선택합니다."
+      }
+    ]
+  }
+}

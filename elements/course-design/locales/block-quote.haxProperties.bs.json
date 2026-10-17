@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Blok citata",
+    "description": "Stilizovani blok citata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Navod izvora",
+        "description": "Tekst navoda izvora."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativni tekst za sliku."
+      },
+      {
+        "property": "image",
+        "title": "Slika",
+        "description": "Slika prikazana uz citat."
+      }
+    ]
+  }
+}

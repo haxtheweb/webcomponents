@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Мапа слике",
+    "description": "Приступачна мапа слике са интерактивним активним тачкама."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Ознака",
+        "description": "Ознака мапе слике."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Детаљи активних тачака",
+        "description": "Интерактивне активне тачке на мапи слике."
+      }
+    ]
+  }
+}

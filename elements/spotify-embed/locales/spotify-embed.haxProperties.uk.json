@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Обгортка для вбудованих програвачів Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Джерело",
+        "description": "Посилання для вбудовування або поширення зі Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Тема",
+        "description": "Колірна тема фону програвача.",
+        "options": {
+          "": "За замовчуванням",
+          "0": "Чорна"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Розмір",
+        "description": "Розмір програвача.",
+        "options": {
+          "normal": "За замовчуванням",
+          "compact": "Компактний"
+        }
+      }
+    ]
+  }
+}

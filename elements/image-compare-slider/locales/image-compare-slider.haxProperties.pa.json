@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ਚਿੱਤਰ ਤੁਲਨਾ",
+    "description": "ਤੁਲਨਾ ਲਈ ਇੱਕ ਚਿੱਤਰ ਨੂੰ ਦੂਜੇ ਉੱਤੇ ਸਵਾਈਪ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "ਉੱਪਰਲਾ ਚਿੱਤਰ",
+        "description": "ਹੇਠਲੇ ਚਿੱਤਰ ਉੱਤੇ ਸਵਾਈਪ ਹੋਣ ਵਾਲਾ ਉੱਪਰਲਾ ਚਿੱਤਰ।"
+      },
+      {
+        "property": "topAlt",
+        "title": "ਉੱਪਰਲੇ ਚਿੱਤਰ ਦੀ alt ਲਿਖਤ",
+        "description": "ਪਹੁੰਚਯੋਗਤਾ ਲਈ ਲੋੜੀਂਦੀ alt ਲਿਖਤ।"
+      },
+      {
+        "property": "bottomSrc",
+        "title": "ਹੇਠਲਾ ਚਿੱਤਰ",
+        "description": "ਉੱਪਰਲੇ ਚਿੱਤਰ ਹੇਠਾਂ ਦਿਖਾਇਆ ਹੇਠਲਾ ਚਿੱਤਰ।"
+      },
+      {
+        "property": "bottomAlt",
+        "title": "ਹੇਠਲੇ ਚਿੱਤਰ ਦੀ alt ਲਿਖਤ",
+        "description": "ਪਹੁੰਚਯੋਗਤਾ ਲਈ ਲੋੜੀਂਦੀ alt ਲਿਖਤ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "ਵਿਹਾਰ",
+        "description": "ਵਾਈਪ ਮੋਡ (ਮੂਲ) ਜਾਂ ਉੱਪਰਲੇ-ਚਿੱਤਰ ਦੀ ਪਾਰਦਰਸ਼ਤਾ ਮੋਡ ਚੁਣੋ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਸਲਾਈਡਰ ਪੱਟੀ ਦਾ ਰੰਗ।"
+      },
+      {
+        "property": "dark",
+        "title": "ਗੂੜ੍ਹਾ",
+        "description": "ਸਲਾਈਡਰ ਪੱਟੀ ਦਾ ਰੰਗ ਉਲਟਾਓ।"
+      },
+      {
+        "property": "position",
+        "title": "ਸ਼ੁਰੂਆਤੀ ਸਥਿਤੀ",
+        "description": "0 ਤੋਂ 100 ਤੱਕ ਸ਼ੁਰੂਆਤੀ ਸਥਿਤੀ।"
+      }
+    ]
+  }
+}

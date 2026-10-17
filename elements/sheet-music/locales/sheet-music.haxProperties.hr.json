@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Notni zapis",
+    "description": "Prikazuje i reproducira notni zapis, gitarske tabulature i partiture putem alphaTexa ili MusicXML-a."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex notacija",
+        "description": "Ugrađeni alphaTex zapis za notni zapis. Uređujte ga izravno za pisanje notacije; pohranjuje se u predlošku pa se razmaci čuvaju."
+      },
+      {
+        "property": "source",
+        "title": "Datoteka partiture",
+        "description": "Prenesite ili povežite datoteku MusicXML (.xml/.musicxml/.mxl) ili Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Kada je postavljena, nadjačava ugrađeni alphaTex."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Reprodukcija zvuka",
+        "description": "Uključeno prema zadanim postavkama - slušajte notni zapis koji svira ugrađeni sintesajzer. Isključite za način samo pregledavanja (bez zvuka)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Prikaži mogućnosti prikaza",
+        "description": "Prikaži gumbe za zumiranje, rastezanje i raspored na traci reproduktora."
+      },
+      {
+        "property": "showExport",
+        "title": "Prikaži gumbe za izvoz",
+        "description": "Prikaži gumbe za preuzimanje MIDI-ja i ispis/PDF na traci reproduktora."
+      }
+    ]
+  }
+}

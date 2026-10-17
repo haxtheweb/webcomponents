@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Jangkar Kaca",
+    "description": "Pranala menyang titik tartamtu ing media ing kaca."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Target kaca",
+        "description": "ID utawa sumber daya sing dituju jangkar iki."
+      },
+      {
+        "property": "value",
+        "title": "Nilai pranala jero",
+        "description": "Nilai pranala jero (contone cap wektu utawa ID slide)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entitas situs",
+        "description": "Entitas situs opsional kanggo ngontrol tampilan konsep sing gegandhengan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sezzione di pagina",
+    "description": "Cuntenitore di sezzione per u cuntenutu di a pagina è e dispusizioni à screnu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Trattamentu di cuncezzione",
+        "description": "Stile predefinitu chì aghjorna i paràmetri cunnessi."
+      },
+      {
+        "property": "image",
+        "title": "Imagine",
+        "description": "Media di fondu di a sezzione."
+      },
+      {
+        "property": "bg",
+        "title": "Culore di fondu",
+        "description": "Culore di fondu quandu ùn ci hè nisuna imagine."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Buttone di sfilarata",
+        "description": "Affissà un buttone chì sfila finu à a sezzione dopu."
+      },
+      {
+        "property": "fold",
+        "title": "Affissà a piegatura",
+        "description": "Affissà una piegatura visuale in fondu di a sezzione."
+      },
+      {
+        "property": "full",
+        "title": "Dimensione di screnu sanu",
+        "description": "Empie l'altezza di u screnu di l'utilizatore."
+      },
+      {
+        "property": "filter",
+        "title": "Applicà un filtru",
+        "description": "Applicà un filtru visuale à l'imagine di fondu."
+      },
+      {
+        "slot": "",
+        "title": "Cuntenutu",
+        "description": "Cuntenutu di a sezzione."
+      },
+      {
+        "slot": "entice",
+        "title": "Richjamu",
+        "description": "Cuntenutu di richjamu facultativu."
+      },
+      {
+        "slot": "buttons",
+        "title": "Buttoni",
+        "description": "Gruppu di buttoni affissatu sottu à u testu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Testu di l'ancura",
+        "description": "Etichetta di l'ancura affissata in a navigazione."
+      }
+    ]
+  }
+}

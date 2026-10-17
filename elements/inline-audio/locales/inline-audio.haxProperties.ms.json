@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Audio sebaris",
+    "description": "Mainkan audio sebaris untuk melengkapkan kandungan halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "Fail MP3 atau URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen kad."
+      },
+      {
+        "property": "shiny",
+        "title": "Berkilat",
+        "description": "Gunakan latar belakang aksen yang lebih cerah dan bukannya kelabu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Gelap",
+        "description": "Gunakan mod gelap."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Postikadi",
+    "description": "Kipande cha midia cha kuchekesha kinachokusudiwa kuonekana kama postikadi halisi kutoka mahali fulani"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Kwa",
+        "description": "Inaenda kwa nani?"
+      },
+      {
+        "property": "from",
+        "title": "Kutoka",
+        "description": "Wewe ni nani?"
+      },
+      {
+        "property": "message",
+        "title": "Ujumbe",
+        "description": "Unataka kusema nini?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Muhuri wa Posta Kutoka",
+        "description": "Kadi hii ilitumwa kutoka wapi?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Chanzo cha Picha Kuu",
+        "description": "Picha yako iko wapi?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Chanzo cha Picha ya Stempu",
+        "description": "Picha yako iko wapi?"
+      }
+    ]
+  }
+}

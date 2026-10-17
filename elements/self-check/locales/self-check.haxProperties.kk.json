@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Өзін-өзі тексеру",
+    "description": "Пайдаланушылар өзін-өзі тексеруді орындай алады."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Сурет",
+        "description": "Өзін-өзі тексеруге арналған сурет."
+      },
+      {
+        "property": "title",
+        "title": "Атауы",
+        "description": "Өзін-өзі тексеру атауы."
+      },
+      {
+        "property": "alt",
+        "title": "Балама мәтін",
+        "description": "Суреттің балама мәтіні."
+      },
+      {
+        "slot": "question",
+        "title": "Сұрақ"
+      },
+      {
+        "slot": "",
+        "title": "Жауап"
+      },
+      {
+        "property": "accentColor",
+        "title": "Тақырып түсі",
+        "description": "Дизайн жүйесінен тақырып түсін таңдаңыз.",
+        "options": {
+          "primary": "Негізгі",
+          "accent": "Екпін",
+          "success": "Сәтті",
+          "warning": "Ескерту",
+          "error": "Қате",
+          "info": "Ақпарат"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Оқу мақсаты",
+        "description": "oer:hasLearningObjective ретінде шығарылатын оқу мақсатына сілтеме."
+      },
+      {
+        "property": "assessing",
+        "title": "Бағаланатын",
+        "description": "oer:assessing ретінде шығарылатын әрекетке сілтеме."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Қосымша сілтеме",
+        "description": "Қосымша ақпаратқа сілтеме."
+      }
+    ]
+  }
+}

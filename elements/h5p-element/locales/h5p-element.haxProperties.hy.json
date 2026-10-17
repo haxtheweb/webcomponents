@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P փաթաթիչ՝ .h5p ֆայլերը բեռնելու և ներկայացնելու համար"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe ներկառուցման կոդ"
+      }
+    ]
+  }
+}

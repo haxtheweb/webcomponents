@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Apá àwòrán",
+    "description": "Àwòrán tí ó gba gbogbo ìbú tí ó pín apá ojú-ìwé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Àwòrán ẹ̀yìn."
+      },
+      {
+        "property": "caption",
+        "description": "Àkọlé ọ̀rọ̀."
+      }
+    ]
+  }
+}

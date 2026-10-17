@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI-Visualisierung",
+    "description": "MIDI im Kontext mit Visualisierung abspielen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quelle",
+        "description": "URL der abzuspielenden Datei."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualisierung",
+        "description": "Visualisierungsstil für die Musikdatei.",
+        "options": {
+          "staff": "Notensystem",
+          "piano-roll": "Pianorolle",
+          "waterfall": "Klavier + Wasserfall"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Wasserfall ausblenden",
+        "description": "Wasserfall-Noten in der Klaviervisualisierung ausblenden."
+      }
+    ]
+  }
+}

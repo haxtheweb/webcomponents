@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "用 iframe 嵌入外部网页内容。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "资源 URL",
+        "description": "资源 URL。"
+      },
+      {
+        "property": "height",
+        "title": "高度",
+        "description": "Iframe 高度。"
+      },
+      {
+        "property": "width",
+        "title": "宽度",
+        "description": "Iframe 宽度。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn உட்பொதிவு",
+    "description": "LinkedIn சுயவிவர அட்டையை உட்பொதிக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "தனிப்பயன் பெயர்",
+        "description": "LinkedIn தனிப்பயன் பயனர்பெயர் பகுதி."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "மொழி அமைப்பு",
+        "description": "en_US போன்ற மொழி அமைப்பு மெட்டாடேட்டா மதிப்பு."
+      }
+    ]
+  }
+}

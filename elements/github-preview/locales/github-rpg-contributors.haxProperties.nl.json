@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lijst met GitHub-bijdragers",
+    "description": "Weergegeven als RPG-personages via de GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisatie",
+        "description": "Organisatienaam uit github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repository",
+        "description": "Repositorynaam uit github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Limiet",
+        "description": "Beperk het aantal getoonde bijdragers."
+      }
+    ]
+  }
+}

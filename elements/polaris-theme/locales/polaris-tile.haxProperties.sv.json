@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris-ruta",
+    "description": "Visa en Polaris-ruta med titel, valfri stödtext och valfri länk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Primär text",
+        "description": "Rutans huvudtext."
+      },
+      {
+        "property": "line2",
+        "title": "Sekundär text",
+        "description": "Valfri stödtext."
+      },
+      {
+        "property": "type",
+        "title": "Rutstil",
+        "description": "Förinställd visuell stil för rutan.",
+        "options": {
+          "1": "Stil 1",
+          "2": "Stil 2",
+          "3": "Stil 3",
+          "4": "Stil 4",
+          "5": "Stil 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Bakgrundsbild",
+        "description": "URL till bakgrundsbild som används av rutstilar med bildstöd."
+      },
+      {
+        "property": "link",
+        "title": "Länk",
+        "description": "Valfri mål-URL för rutans åtgärd."
+      }
+    ]
+  }
+}

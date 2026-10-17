@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Spellista",
+    "description": "Visa alla typer av innehåll i en spellista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Källa",
+        "description": "Innehåll som visas i spellistan."
+      },
+      {
+        "property": "edit",
+        "title": "Redigeringsläge",
+        "description": "Växla mellan redigerings- och förhandsgranskningsläge för spellistan."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigering",
+        "description": "Visa navigeringsknappar framåt och bakåt."
+      },
+      {
+        "property": "pagination",
+        "title": "Sidnumrering",
+        "description": "Visa sidnumreringspunkter."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientering",
+        "description": "Bildernas orientering.",
+        "options": {
+          "horizontal": "Vågrät",
+          "vertical": "Lodrät"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Bild att börja på",
+        "description": "Index för bilden som ska ha fokus från början."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Bildförhållande",
+        "description": "Bildernas bildförhållande.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

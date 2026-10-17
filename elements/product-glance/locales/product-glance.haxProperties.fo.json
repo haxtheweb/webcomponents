@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Vøruyvirlit",
+    "description": "Blokkur til skjótt vøruyvirlit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ímynd",
+        "description": "Ímynd, sum umboðar hugtakið."
+      },
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Høvuðshugtak í stuttum."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undirheiti",
+        "description": "Meiri smálutir."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Dámlitur á ímyndini."
+      }
+    ]
+  }
+}

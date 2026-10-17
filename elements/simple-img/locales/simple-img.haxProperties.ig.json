@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Onyonyo Dị Mfe",
+    "description": "Hazie onyonyo site na paramita dị mfe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Isi mmalite",
+        "description": "URL isi mmalite onyonyo."
+      },
+      {
+        "property": "height",
+        "title": "Ogo",
+        "description": "Ogo onyonyo nhọrọ."
+      },
+      {
+        "property": "width",
+        "title": "Obosara",
+        "description": "Obosara onyonyo nhọrọ."
+      },
+      {
+        "property": "alt",
+        "title": "Ederede alt",
+        "description": "Bara uru maka ihe ọgụgụ ihuenyo na SEO ka mma."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Ịdị mma",
+        "description": "Ịdị mma onyonyo mgbe a na-emepụta ya (naanị JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Mkpa Nweta",
+        "description": "Ndụmọdụ arụmọrụ maka ihe nchọgharị ọgbara ọhụrụ.",
+        "options": {
+          "auto": "Akpaaka",
+          "high": "Elu",
+          "low": "Ala"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Usoro ntụgharị koodu",
+        "description": "Ndụmọdụ arụmọrụ maka ngosi onyonyo n'ihe nchọgharị ọgbara ọhụrụ.",
+        "options": {
+          "auto": "Akpaaka",
+          "async": "Na-adịghị n'usoro (Async)"
+        }
+      }
+    ]
+  }
+}

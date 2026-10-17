@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sahypa çapasy",
+    "description": "Sahypadaky medianyň belli nokatlaryna baglanyşyk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Sahypa maksady",
+        "description": "Bu çapanyň görkezýän ID-si ýa-da çeşmesi."
+      },
+      {
+        "property": "value",
+        "title": "Çuň baglanyşyk bahasy",
+        "description": "Çuň baglanyşyk bahasy (meselem, wagt belligi ýa-da slaýd ID-si)."
+      },
+      {
+        "property": "entityId",
+        "title": "Saýt obýekti",
+        "description": "Baglanyşykly düşünjäniň görkezilişini dolandyrmak üçin goşmaça saýt obýekti."
+      }
+    ]
+  }
+}

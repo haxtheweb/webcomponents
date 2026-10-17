@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub 贡献者列表",
+    "description": "用 GitHub API 显示成 RPG 角色。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "单位",
+        "description": "github.com/ORG/REPO 里个组织名。"
+      },
+      {
+        "property": "repo",
+        "title": "仓库",
+        "description": "github.com/ORG/REPO 里个仓库名。"
+      },
+      {
+        "property": "limit",
+        "title": "上限",
+        "description": "限制显示个贡献者数量。"
+      }
+    ]
+  }
+}

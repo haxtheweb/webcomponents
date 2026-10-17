@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ตัวแสดงภาพ MIDI",
+    "description": "เล่น MIDI ในบริบทพร้อมการแสดงภาพ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "แหล่งที่มา",
+        "description": "URL ของไฟล์ที่จะเล่น"
+      },
+      {
+        "property": "visualizer",
+        "title": "การแสดงภาพ",
+        "description": "รูปแบบการแสดงภาพสำหรับไฟล์เพลง",
+        "options": {
+          "staff": "บรรทัดห้าเส้น",
+          "piano-roll": "เปียโนโรล",
+          "waterfall": "เปียโน + น้ำตก"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "ซ่อนน้ำตก",
+        "description": "ซ่อนโน้ตแบบน้ำตกในการแสดงภาพเปียโน"
+      }
+    ]
+  }
+}

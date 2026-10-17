@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Spælilisti",
+    "description": "Vís hvat slag av innihaldi sum helst í einum spælilista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Kelda",
+        "description": "Innihald, sum verður víst í spælilistanum."
+      },
+      {
+        "property": "edit",
+        "title": "Rættingarstilling",
+        "description": "Skift millum rættingar- og forsýningarstilling fyri spælilistan."
+      },
+      {
+        "property": "navigation",
+        "title": "Leiðsla",
+        "description": "Vís knøttar at fara fram og aftur."
+      },
+      {
+        "property": "pagination",
+        "title": "Síðubýti",
+        "description": "Vís síðubýtisprikkar."
+      },
+      {
+        "property": "orientation",
+        "title": "Vending",
+        "description": "Vending á glærunum.",
+        "options": {
+          "horizontal": "Vatnrætt",
+          "vertical": "Loddrætt"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Byrjanarglæra",
+        "description": "Index á glæruni, sum fyrst skal fokuserast á."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Hædd-breidd-lutfall",
+        "description": "Hædd-breidd-lutfall á glærunum.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

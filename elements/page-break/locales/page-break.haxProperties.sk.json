@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Podrobnosti stránky",
+    "description": "Definuje vizuálne rozdelenie medzi stránkami, ktoré môžu systémy CMS použiť na vytváranie stránok."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Názov",
+        "description": "Názov zobrazený v téme a v prvom nadpise."
+      },
+      {
+        "property": "pageType",
+        "title": "Typ",
+        "description": "Vizuálne označenie kontextu stránky.",
+        "options": {
+          "": "-- žiadny --",
+          "content": "Obsah",
+          "assessment": "Hodnotenie",
+          "quiz": "Kvíz",
+          "submission": "Odovzdanie",
+          "lesson": "Lekcia",
+          "module": "Modul",
+          "task": "Úloha",
+          "activity": "Aktivita",
+          "project": "Projekt",
+          "practice": "Precvičovanie",
+          "unit": "Celok",
+          "objectives": "Vzdelávacie ciele",
+          "connection": "Súvislosť",
+          "knowledge": "Vedeli ste?",
+          "strategy": "Stratégia učenia",
+          "discuss": "Diskutuj",
+          "listen": "Počúvaj",
+          "make": "Vytvor",
+          "observe": "Pozoruj",
+          "present": "Prezentuj",
+          "reading": "Čítanie",
+          "reflect": "Zamysli sa",
+          "research": "Skúmaj",
+          "watch": "Sleduj",
+          "write": "Píš"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Značky",
+        "description": "Zoznam značiek oddelených čiarkami."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL odkazu",
+        "description": "URL presmerovania zobrazená namiesto obsahu stránky."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Cieľ odkazu",
+        "description": "Otvárať odkazy v rovnakom alebo novom okne.",
+        "options": {
+          "_self": "Rovnaké okno",
+          "_blank": "Nové okno"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Publikované",
+        "description": "Nepublikované stránky sú pred koncovými používateľmi skryté."
+      },
+      {
+        "property": "locked",
+        "title": "Zamknúť stránku",
+        "description": "Zamknúť alebo odomknúť všetky prvky na tejto stránke."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Prepísať automatický slug",
+        "description": "Uzamknúť slug pred automatickými aktualizáciami podľa názvu alebo nadradenej stránky."
+      },
+      {
+        "property": "slug",
+        "title": "Cesta",
+        "description": "URL slug tejto stránky."
+      },
+      {
+        "property": "image",
+        "title": "Médiá",
+        "description": "Médiá reprezentujúce stránku, používané v niektorých témach a zobrazeniach."
+      },
+      {
+        "property": "parent",
+        "title": "Nadradená",
+        "description": "Cesta nadradenej stránky."
+      },
+      {
+        "property": "noderefs",
+        "title": "Súvisiaci obsah",
+        "description": "Stránky súvisiace s touto stránkou."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Popis",
+        "description": "Popis používaný v kolekciách a na optimalizáciu pre vyhľadávače."
+      },
+      {
+        "property": "entityType",
+        "title": "Typ entity",
+        "description": "Predvolene stránka, ak nie je nastavené inak.",
+        "options": {
+          "page": "Stránka (predvolené)",
+          "taxonomy": "Taxonómia",
+          "taxonomyTerm": "Termín taxonómie",
+          "region": "Oblasť"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona priradená k tejto stránke na webe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Farba priradená k tejto stránke na webe."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Skryť v menu",
+        "description": "Skryť túto stránku z menu, ale zachovať jej URL."
+      },
+      {
+        "property": "order",
+        "title": "Poradie",
+        "description": "Poradie vzhľadom na súrodenecké stránky."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Téma stránky",
+        "description": "Prepísať tému iba pre túto stránku."
+      },
+      {
+        "property": "author",
+        "title": "Autor",
+        "description": "Používateľské meno osoby, ktorá túto stránku naposledy upravila."
+      }
+    ]
+  }
+}

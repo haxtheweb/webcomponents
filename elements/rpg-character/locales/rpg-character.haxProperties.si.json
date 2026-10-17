@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG චරිතය",
+    "description": "HAX හි විනෝදජනක චරිතයක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "නම",
+        "description": "අහඹු චරිතයක් ජනනය කිරීමට භාවිත වචනය."
+      },
+      {
+        "property": "hat",
+        "title": "තොප්පිය",
+        "description": "තොප්පි ශෛලිය.",
+        "options": {
+          "none": "පෙරනිමි",
+          "random": "අහඹු",
+          "bunny": "හාවා",
+          "cowboy": "කව්බෝයි",
+          "education": "අධ්‍යාපනය",
+          "construction": "ඉදිකිරීම්",
+          "warning": "අවවාදය",
+          "watermelon": "කොමඩු",
+          "coffee": "කෝපි",
+          "knight": "නයිට්",
+          "ninja": "නින්ජා",
+          "party": "සාදය",
+          "error": "දෝෂය",
+          "edit": "සංස්කරණය"
+        }
+      },
+      {
+        "property": "width",
+        "title": "පළල",
+        "description": "චරිතයේ පළල පික්සල වලින්."
+      },
+      {
+        "property": "height",
+        "title": "උස",
+        "description": "චරිතයේ උස පික්සල වලින්."
+      },
+      {
+        "property": "fire",
+        "title": "ගිනි ගෙන?",
+        "description": "චරිතය ගිනි ගෙන ඇත්ද යන්න."
+      },
+      {
+        "property": "walking",
+        "title": "ඇවිදිමින්?",
+        "description": "ඇවිදීමේ සජීවිකරණය; ගිනි ගෙන ඇති විට ධාවනය වේ."
+      }
+    ]
+  }
+}

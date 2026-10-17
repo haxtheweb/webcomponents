@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ຮູບພາບແບບງ່າຍ",
+    "description": "ປັບແຕ່ງຮູບພາບດ້ວຍພາລາມິເຕີງ່າຍໆ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "URL ແຫຼ່ງຮູບພາບ."
+      },
+      {
+        "property": "height",
+        "title": "ຄວາມສູງ",
+        "description": "ຄວາມສູງຮູບພາບທາງເລືອກ."
+      },
+      {
+        "property": "width",
+        "title": "ຄວາມກວ້າງ",
+        "description": "ຄວາມກວ້າງຮູບພາບທາງເລືອກ."
+      },
+      {
+        "property": "alt",
+        "title": "ຂໍ້ຄວາມທົດແທນ",
+        "description": "ເປັນປະໂຫຍດສຳລັບໂປຣແກຣມອ່ານໜ້າຈໍ ແລະ ປັບປຸງ SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "ຄຸນນະພາບ",
+        "description": "ຄຸນນະພາບຮູບພາບເມື່ອສ້າງ (JPEG ເທົ່ານັ້ນ)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "ລຳດັບຄວາມສຳຄັນການດຶງ",
+        "description": "ຄຳແນະນຳດ້ານປະສິດທິພາບສຳລັບບຣາວເຊີທັນສະໄໝ.",
+        "options": {
+          "auto": "ອັດຕະໂນມັດ",
+          "high": "ສູງ",
+          "low": "ຕ່ຳ"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "ວິທີຖອດລະຫັດ",
+        "description": "ຄຳແນະນຳດ້ານປະສິດທິພາບສຳລັບການສະແດງຮູບພາບໃນບຣາວເຊີທັນສະໄໝ.",
+        "options": {
+          "auto": "ອັດຕະໂນມັດ",
+          "async": "ບໍ່ພ້ອມກັນ"
+        }
+      }
+    ]
+  }
+}

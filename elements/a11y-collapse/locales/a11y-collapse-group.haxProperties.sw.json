@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kikundi cha Kupanua na Kukunja",
+    "description": "Kikundi cha vipengele vinavyoweza kupanuliwa na kukunjwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Panua kimoja tu",
+        "description": "Kipengee kimoja tu kinaweza kupanuliwa."
+      },
+      {
+        "slot": "",
+        "title": "Vipengee vya Kukunja",
+        "description": "Vipengee vinavyokunjwa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Khadi la Positi",
+    "description": "Chinthu choseketsa chooneka ngati khadi la positi lochokera kwinakwake"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Kwa",
+        "description": "Likupita kwa ndani?"
+      },
+      {
+        "property": "from",
+        "title": "Kuchokera",
+        "description": "Ndinu ndani?"
+      },
+      {
+        "property": "message",
+        "title": "Uthenga",
+        "description": "Mukufuna kunena chiyani?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Sitampu ya Kumene Lachokera",
+        "description": "Khadili latumizidwa kuchokera kuti?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Gwero la Chithunzi Chachikulu",
+        "description": "Chithunzi chanu chili kuti?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Gwero la Chithunzi cha Sitampu",
+        "description": "Chithunzi chanu chili kuti?"
+      }
+    ]
+  }
+}

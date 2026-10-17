@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Стъпка",
+    "description": "Елемент, който е част от списък със стъпки"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Заглавие"
+      }
+    ]
+  }
+}

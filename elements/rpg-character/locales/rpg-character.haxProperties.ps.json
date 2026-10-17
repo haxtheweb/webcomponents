@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG کرکټر",
+    "description": "د HAX خوندور کرکټر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "نوم",
+        "description": "هغه کلمه چې د تصادفي کرکټر د جوړولو لپاره کارول کېږي."
+      },
+      {
+        "property": "hat",
+        "title": "خولۍ",
+        "description": "د خولۍ بڼه.",
+        "options": {
+          "none": "ډیفالټ",
+          "random": "تصادفي",
+          "bunny": "سوی",
+          "cowboy": "کاوبوی",
+          "education": "زده کړه",
+          "construction": "ساختمان",
+          "warning": "خبرداری",
+          "watermelon": "هندوانه",
+          "coffee": "قهوه",
+          "knight": "نایټ",
+          "ninja": "نینجا",
+          "party": "مېلمستیا",
+          "error": "تېروتنه",
+          "edit": "سمون"
+        }
+      },
+      {
+        "property": "width",
+        "title": "پلنوالی",
+        "description": "د کرکټر پلنوالی په پکسلونو."
+      },
+      {
+        "property": "height",
+        "title": "لوړوالی",
+        "description": "د کرکټر لوړوالی په پکسلونو."
+      },
+      {
+        "property": "fire",
+        "title": "اور اخیستی؟",
+        "description": "ایا کرکټر اور اخیستی دی."
+      },
+      {
+        "property": "walking",
+        "title": "روان؟",
+        "description": "د تګ انیمېشن؛ کله چې اور اخیستی وي چلېږي."
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "ਚਿੱਤਰ ਭਾਗ",
+    "description": "ਪੂਰੀ-ਚੌੜਾਈ ਵਾਲਾ ਚਿੱਤਰ ਜੋ ਪੰਨੇ ਦੇ ਭਾਗ ਨੂੰ ਵੰਡਦਾ ਹੈ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "ਪਿਛੋਕੜ ਚਿੱਤਰ।"
+      },
+      {
+        "property": "caption",
+        "description": "ਲਿਖਤ ਸਿਰਲੇਖ।"
+      }
+    ]
+  }
+}

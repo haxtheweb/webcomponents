@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tag / Pastilla",
+    "description": "Pastilla hina huch'uy sutichay, akllanalla rikchachiq llimpiwan, chinkachiy ñit'inawan utaq tikraywan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Sutichay",
+        "description": "Pastilla ukhupi rikukuq qillqa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Pastillapa qhipanpaq SimpleColors rikchachiq llimpi suti.",
+        "options": {
+          "": "-- kikinmanta --",
+          "red": "Puka",
+          "pink": "Panti",
+          "purple": "Kulli",
+          "deep-purple": "Tutayaq kulli",
+          "indigo": "Índigo",
+          "blue": "Anqas",
+          "light-blue": "Ch'uya anqas",
+          "cyan": "Cian",
+          "teal": "Anqas q'umir",
+          "green": "Q'umir",
+          "light-green": "Ch'uya q'umir",
+          "lime": "Lima q'umir",
+          "yellow": "Q'illu",
+          "amber": "Ámbar",
+          "orange": "Laranha",
+          "deep-orange": "Tutayaq laranha",
+          "brown": "Ch'umpi",
+          "blue-grey": "Anqas uqi",
+          "grey": "Uqi"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Kikinmanta rikchachiq llimpi",
+        "description": "Sutichay qillqamanta rikchachiq llimpita kikinmanta hurquy."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Chinkachiy ñit'ina",
+        "description": "Pastilla ukhupi qichuy/chinkachiy unancha ñit'inata rikuchiy."
+      },
+      {
+        "property": "readonly",
+        "title": "Ñawirinallapaq",
+        "description": "Chinkachiy ñit'inata pakay, pastilla rikuchinallapaq kananpaq."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Tikrakuq",
+        "description": "Ñit'inata ñit'iqtin pastillata kawsachiy/wañuchiy."
+      },
+      {
+        "property": "toggled",
+        "title": "Kawsachisqa",
+        "description": "Pastilla kunan kawsachisqa kasqanta."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Kawsachisqa unancha",
+        "description": "Pastilla kawsachisqa kaqtin rikuchinapaq unancha."
+      },
+      {
+        "property": "disabled",
+        "title": "Hark'asqa",
+        "description": "Pastillawan ruraykunata hark'ay."
+      }
+    ]
+  }
+}

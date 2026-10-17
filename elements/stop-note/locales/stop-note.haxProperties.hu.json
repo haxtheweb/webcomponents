@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Megállító megjegyzés",
+    "description": "Üzenet, amely konkrét utasításokra hívja fel az olvasók figyelmét."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "Adja meg a megjegyzés címét."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Adjon meg egy külső URL-t."
+      },
+      {
+        "property": "status",
+        "title": "Állapot",
+        "description": "Az állapot beállítása ennek megfelelően módosítja a színeket és az ikonokat",
+        "options": {
+          "stop": "Stop",
+          "warning": "Figyelmeztetés",
+          "success": "Megerősítés",
+          "info": "Közlemény"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Megjegyzés szövege",
+        "description": "A megjegyzés szövege."
+      }
+    ]
+  }
+}

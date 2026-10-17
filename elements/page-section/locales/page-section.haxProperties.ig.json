@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Ngalaba peeji",
+    "description": "Igbe ngalaba maka ọdịnaya peeji na nhazi dabere na ihuenyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Nhazi imewe",
+        "description": "Ụdị edoziri na-emelite ntọala metụtara."
+      },
+      {
+        "property": "image",
+        "title": "Onyonyo",
+        "description": "Mgbasa ozi azụ maka ngalaba ahụ."
+      },
+      {
+        "property": "bg",
+        "title": "Agba azụ",
+        "description": "Agba azụ mgbe enweghị onyonyo edobere."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Bọtịnụ mkpụgharị",
+        "description": "Gosi bọtịnụ na-akpụgharị gaa na ngalaba ọzọ."
+      },
+      {
+        "property": "fold",
+        "title": "Gosi mpịaji",
+        "description": "Gosi mpịaji a na-ahụ anya n'ala ngalaba ahụ."
+      },
+      {
+        "property": "full",
+        "title": "Nha ihuenyo zuru oke",
+        "description": "Jupụta ogo ihuenyo onye na-ele ya."
+      },
+      {
+        "property": "filter",
+        "title": "Tinye Nzacha",
+        "description": "Tinye nzacha a na-ahụ anya na onyonyo azụ."
+      },
+      {
+        "slot": "",
+        "title": "Ọdịnaya",
+        "description": "Ọdịnaya ngalaba."
+      },
+      {
+        "slot": "entice",
+        "title": "Ihe ndọta",
+        "description": "Ọdịnaya ndọta nhọrọ."
+      },
+      {
+        "slot": "buttons",
+        "title": "Bọtịnụ",
+        "description": "Otu bọtịnụ a na-egosi n'okpuru ederede."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ederede arịlịka",
+        "description": "Akara aha arịlịka a na-egosi na nnyocha."
+      }
+    ]
+  }
+}

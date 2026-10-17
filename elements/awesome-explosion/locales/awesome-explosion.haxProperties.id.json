@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Ledakan Keren",
+    "description": "Animasi ledakan interaktif dengan efek suara opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Ukuran",
+        "description": "Atur ukuran ledakan.",
+        "options": {
+          "tiny": "Sangat kecil",
+          "small": "Kecil",
+          "medium": "Sedang",
+          "large": "Besar",
+          "epic": "Epik"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Warna",
+        "description": "Atur tema warna ledakan.",
+        "options": {
+          "": "Bawaan",
+          "red": "Merah",
+          "blue": "Biru",
+          "purple": "Ungu",
+          "orange": "Oranye",
+          "yellow": "Kuning"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Efek Suara",
+        "description": "Aktifkan efek suara."
+      },
+      {
+        "property": "resetSound",
+        "title": "Atur Ulang Suara",
+        "description": "Mulai ulang suara dari awal setiap kali."
+      },
+      {
+        "property": "image",
+        "title": "Gambar Kustom",
+        "description": "URL opsional untuk gambar ledakan kustom."
+      },
+      {
+        "property": "sound",
+        "title": "Suara Kustom",
+        "description": "URL opsional untuk efek suara kustom."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Nonaktif",
+        "description": "Nonaktifkan semua interaksi."
+      }
+    ]
+  }
+}

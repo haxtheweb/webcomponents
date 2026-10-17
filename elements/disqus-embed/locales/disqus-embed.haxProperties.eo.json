@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Enkorpigi Disqus-komentojn en paĝon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Mallonga nomo",
+        "description": "La mallonga nomo de la retejo, kiu determinas la gastiganton de la Disqus-skripto."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL de paĝo",
+        "description": "La URL de la paĝo, al kiu la komenta fadeno estas ligita."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Identigilo de paĝo",
+        "description": "La unika identigilo por la komenta fadeno de la paĝo."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Titolo de paĝo",
+        "description": "La titolo de la paĝo, al kiu la komenta fadeno estas ligita."
+      },
+      {
+        "property": "loadingText",
+        "title": "Ŝarga teksto",
+        "description": "Teksto anoncata dum la komentoj ŝargiĝas."
+      },
+      {
+        "property": "lang",
+        "title": "Lingvo",
+        "description": "Lingvokodo por la Disqus-interfaco, ekz. en."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tabiiwwan",
+    "description": "Walitti qabama tabiiwwanii."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Maqaa (dhaqqabummaaf)",
+        "description": "Maqaa dhaqqabamaa walitti qabama tabiiwwanii."
+      },
+      {
+        "property": "disabled",
+        "title": "Kan dhaabbate",
+        "description": "Tabiiwwan hunda dhaabi."
+      },
+      {
+        "property": "hidden",
+        "title": "Kan dhokate",
+        "description": "Walitti qabama tabiiwwanii dhoksi."
+      },
+      {
+        "property": "sticky",
+        "title": "Kan maxxanu",
+        "description": "Yeroo gadi buufamu tabiiwwan dalgaa gubbaatti tursi."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Daangaa Qindaa'inaa",
+        "description": "Daangaa tabiiwwan dalgaa; kan dhaabbataa qofaaf -1 fayyadami."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Daangaa Mallattoo",
+        "description": "Daangaa barreeffama mallattoo wajjin agarsiisuu. Durtiin 0 dha; haala mallattoo qofaaf -1 fayyadami."
+      },
+      {
+        "slot": "",
+        "title": "Tabiiwwan",
+        "description": "Tarree wantoota <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Addaa",
+        "description": "ID addaa walitti qabama tabiiwwanii kanaa."
+      }
+    ]
+  }
+}

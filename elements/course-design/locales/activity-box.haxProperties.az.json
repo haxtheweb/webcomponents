@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Fəaliyyət qutusu",
+    "description": "Kiçik üslublu başlıq bloku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "İkon",
+        "description": "Fəaliyyət qutusunun yanında göstərilən ikon."
+      },
+      {
+        "property": "tag",
+        "title": "Fəaliyyət qutusu teqi",
+        "description": "Fəaliyyət qutusunda göstərilən teq."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Rəngləmədən",
+        "description": "İkona rənglərin tətbiq edilməsinin qarşısını al."
+      }
+    ]
+  }
+}

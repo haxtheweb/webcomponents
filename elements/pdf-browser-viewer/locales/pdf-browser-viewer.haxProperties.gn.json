@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF jehechaha kundahárape",
+    "description": "Emoinge marandurenda PDF tysýipe, kuatia'atã reko ha votõ mboguejyha ikatúramo ndive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Marandurenda PDF renda."
+      },
+      {
+        "property": "heading",
+        "title": "Moakãha",
+        "description": "Kuatia'atã moakãha moñe'ẽrã."
+      },
+      {
+        "property": "card",
+        "title": "Kuatia'atã reko",
+        "description": "Ehechauka PDF kuatia'atãme votõ mboguejyha ndive."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Mboguejyha teramoĩ",
+        "description": "Teramoĩ votõ mboguejyhápe g̃uarã."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Marandu ndojepytyvõiramo",
+        "description": "Marandu kundahára ndaikatúiramo ohechauka marandurenda PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Joajuha marandu ndojepytyvõiramo",
+        "description": "Joajuha moñe'ẽrã kundahára ndaikatúiramo ohechauka marandurenda PDF."
+      },
+      {
+        "property": "width",
+        "title": "Pekue",
+        "description": "PDF jehechaha pekue."
+      },
+      {
+        "property": "height",
+        "title": "Yvatekue",
+        "description": "PDF jehechaha yvatekue."
+      }
+    ]
+  }
+}

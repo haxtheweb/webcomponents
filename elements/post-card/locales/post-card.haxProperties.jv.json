@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Kertu Pos",
+    "description": "Media lucu sing digawe kaya kertu pos fisik saka sawijining panggonan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Kanggo",
+        "description": "Iki kanggo sapa?"
+      },
+      {
+        "property": "from",
+        "title": "Saka",
+        "description": "Sampeyan sapa?"
+      },
+      {
+        "property": "message",
+        "title": "Pesen",
+        "description": "Sampeyan arep ngomong apa?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Cap Pos Saka",
+        "description": "Kertu iki dikirim saka ngendi?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Sumber Foto Utama",
+        "description": "Foto sampeyan ana ing ngendi?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Sumber Foto Prangko",
+        "description": "Foto sampeyan ana ing ngendi?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Sortéierfro",
+    "description": "Elementer an déi richteg Reiefolleg sortéieren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fro",
+        "description": "Iwwerschrëft vun der Fro."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bewäertungsformat",
+        "description": "OER Schema: Bewäertungsformat fir dës Bewäertung (z. B. Punkten, Buschtaf, Prozent, Ofschloss)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Léierzil",
+        "description": "OER Schema: Léierzil, dat mat dëser Bewäertung verbonnen ass."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cours",
+        "description": "OER Schema: Cours, fir deen dës Bewäertung geduecht ass."
+      },
+      {
+        "property": "answers",
+        "title": "Äntwerten",
+        "description": "D'Reiefolleg vun den Äntwerte bestëmmt déi richteg Sequenz."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Numm vum Quiz",
+        "description": "Quiznumm fir d'xAPI-Identifikatioun an Analysesystemer."
+      }
+    ]
+  }
+}

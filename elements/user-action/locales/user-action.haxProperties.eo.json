@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Uzanta ago",
+    "description": "Spuri agojn de uzantoj kaj sendi datumojn al xAPI-memorejoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Spurota evento",
+        "description": "Uzanta ago, kiu ekigas ĉi tiun eventon.",
+        "options": {
+          "visibility": "Povas vidi ĉi tion",
+          "keydown": "Premas klavon ĉi tie",
+          "click": "Klakas ĉi tion",
+          "hover": "Ŝvebas super ĉi tio"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Spuri ĉiufoje",
+        "description": "Defaŭlte nur la unua okazo estas spurata."
+      }
+    ]
+  }
+}

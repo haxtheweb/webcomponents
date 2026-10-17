@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Bladsyafdeling",
+    "description": "Afdelingshouer vir bladsyinhoud en skermgebaseerde uitlegte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Ontwerpbehandeling",
+        "description": "Voorafbepaalde styl wat verwante instellings bywerk."
+      },
+      {
+        "property": "image",
+        "title": "Prent",
+        "description": "Agtergrondmedia vir die afdeling."
+      },
+      {
+        "property": "bg",
+        "title": "Agtergrondkleur",
+        "description": "Agtergrondkleur wanneer geen prent gestel is nie."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Rolknoppie",
+        "description": "Wys 'n knoppie wat na die volgende afdeling rol."
+      },
+      {
+        "property": "fold",
+        "title": "Vertoon vou",
+        "description": "Wys 'n visuele vou onderaan die afdeling."
+      },
+      {
+        "property": "full",
+        "title": "Volskermgrootte",
+        "description": "Vul die kyker se skermhoogte."
+      },
+      {
+        "property": "filter",
+        "title": "Pas filter toe",
+        "description": "Pas 'n visuele filter op die agtergrondprent toe."
+      },
+      {
+        "slot": "",
+        "title": "Inhoud",
+        "description": "Afdelingsinhoud."
+      },
+      {
+        "slot": "entice",
+        "title": "Lokmiddel",
+        "description": "Opsionele lokinhoud."
+      },
+      {
+        "slot": "buttons",
+        "title": "Knoppies",
+        "description": "Knoppiegroep wat onder die teks gewys word."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ankerteks",
+        "description": "Anker-etiket wat in die navigasie gewys word."
+      }
+    ]
+  }
+}

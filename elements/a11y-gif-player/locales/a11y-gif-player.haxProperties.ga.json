@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Déan GIFanna beochana inrochtana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF beochana",
+        "description": "URL don GIF beochana."
+      },
+      {
+        "property": "alt",
+        "title": "Téacs Malartach",
+        "description": "Téacs malartach don íomhá."
+      },
+      {
+        "property": "longdesc",
+        "title": "Cur Síos Fada",
+        "description": "Cur síos fada ar an GIF ar mhaithe le hinrochtaineacht."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Íomhá Shocair",
+        "description": "URL do leagan socair den GIF."
+      }
+    ]
+  }
+}

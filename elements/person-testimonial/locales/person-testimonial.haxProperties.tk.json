@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Suratly sitata bloky",
+    "description": "Goşmaça suratly bezelen sitata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Surat",
+        "description": "Syna surat goşuň."
+      },
+      {
+        "property": "name",
+        "title": "Doly ady",
+        "description": "Syn berýän adamyň ady."
+      },
+      {
+        "property": "position",
+        "title": "Wezipe ýa-da iş ady",
+        "description": "Adamyň wezipesi ýa-da iş ady."
+      },
+      {
+        "slot": "",
+        "title": "Sitata",
+        "description": "Syn awtorynyň sitatasy."
+      }
+    ]
+  }
+}

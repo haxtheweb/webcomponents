@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Isandi esingaphakathi",
+    "description": "Dlala isandi phakathi kombhalo ukongeza kumxholo wekhasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Umthombo",
+        "description": "Ifayile ye-MP3 okanye i-URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Ogqamisayo",
+        "description": "Umbala ogqamisayo wekhadi."
+      },
+      {
+        "property": "shiny",
+        "title": "Ekhazimlayo",
+        "description": "Sebenzisa umva ogqamisayo okhanyayo endaweni yengwevu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Mnyama",
+        "description": "Sebenzisa imowudi emnyama."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Innfellt hljóð",
+    "description": "Spila hljóð innfellt til að bæta við efni síðunnar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Uppruni",
+        "description": "MP3-skrá eða URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Áherslulitur spjalds."
+      },
+      {
+        "property": "shiny",
+        "title": "Glansandi",
+        "description": "Nota ljósari áherslubakgrunn í stað grás."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Dökkt",
+        "description": "Nota dökka stillingu."
+      }
+    ]
+  }
+}

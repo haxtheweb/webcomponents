@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Prikažite tematsko Polaris dugme za poziv na akciju."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Tekst dugmeta",
+        "description": "Tekst prikazan na dugmetu za poziv na akciju."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Odredišni URL dugmeta."
+      },
+      {
+        "property": "type",
+        "title": "Varijanta",
+        "description": "Varijanta vizuelnog stila.",
+        "options": {
+          "primary": "Primarno",
+          "tinted": "Zatamnjeno",
+          "light": "Svijetlo"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Obrubljeni stil",
+        "description": "Omogući obrubljeni izgled."
+      },
+      {
+        "property": "filled",
+        "title": "Ispunjeni stil",
+        "description": "Omogući ispunjeni izgled."
+      }
+    ]
+  }
+}

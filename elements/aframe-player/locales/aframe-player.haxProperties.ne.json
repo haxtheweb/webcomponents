@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D प्लेयर",
+    "description": "3D फाइल / संवर्धित वास्तविकता (AR) प्लेयर।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "यस AR फाइलको URL।"
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR मा तत्वको X स्थिति।"
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR मा तत्वको Y स्थिति।"
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR मा तत्वको Z स्थिति।"
+      },
+      {
+        "property": "skyColor",
+        "title": "आकाशको रङ",
+        "description": "दृश्यमा आकाशको रङ छान्नुहोस्।"
+      }
+    ]
+  }
+}

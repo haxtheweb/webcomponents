@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Kadhi rePositi",
+    "description": "Chinhu chemidhiya chinonakidza chakaita sekadhi chaiko repositi kubva kumwe kunzvimbo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Kuna",
+        "description": "Riri kuenda kuna ani?"
+      },
+      {
+        "property": "from",
+        "title": "Kubva kuna",
+        "description": "Ndiwe ani?"
+      },
+      {
+        "property": "message",
+        "title": "Meseji",
+        "description": "Unoda kutii?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Chitambi Chekwakabva",
+        "description": "Kadhi iri rakatumirwa kubva kupi?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Kwakabva Mufananidzo Mukuru",
+        "description": "Mufananidzo wako uri kupi?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Kwakabva Mufananidzo weChitambi",
+        "description": "Mufananidzo wako uri kupi?"
+      }
+    ]
+  }
+}

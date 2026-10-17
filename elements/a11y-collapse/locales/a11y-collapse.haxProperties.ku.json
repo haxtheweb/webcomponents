@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Konteynera vebûyî",
+    "description": "Konteynereke yekane ya ku vedibe û digire."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Sernivîs",
+        "description": "Nivîsa ji bo girtinê."
+      },
+      {
+        "property": "expanded",
+        "title": "Vekirî",
+        "description": "Ji xwerû ve vekirî be."
+      },
+      {
+        "property": "headingButton",
+        "title": "Bişkoka Sernivîsê",
+        "description": "Li şûna tenê îkonê, hemû sernivîsê bike tikandinbar."
+      },
+      {
+        "property": "icon",
+        "title": "Îkon",
+        "description": "Îkona bişkoka vekirin/girtinê."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Îkon (dema vekirî ye)",
+        "description": "Îkona vebijarkî ji bo rewşa vekirî."
+      },
+      {
+        "slot": "",
+        "title": "Naverok",
+        "description": "Naveroka ji bo girtinê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Şîreta amûrê",
+        "description": "Şîreta amûrê ji bo bişkoka vekirin/girtinê."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Şîreta amûrê (dema vekirî ye)",
+        "description": "Şîreta amûrê ji bo bişkoka vekirin/girtinê dema vekirî ye."
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Gareri reMifananidzo",
+    "description": "Gareri rinoratidza mifananidzo mugridhi, masonry, kana slideshow."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Mamiriro ekuratidza",
+        "description": "Maratidziro emifananidzo mugareri.",
+        "options": {
+          "grid": "Gridhi",
+          "masonry": "Masonry",
+          "gallery": "Gareri"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Indekisi iri kushanda",
+        "description": "Indekisi yemufananidzo wekutanga nawo mumamiriro egareri."
+      }
+    ]
+  }
+}

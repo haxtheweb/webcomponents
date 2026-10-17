@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Ngalaba onyonyo",
+    "description": "Onyonyo obosara zuru oke na-ekewa ngalaba peeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Onyonyo azụ."
+      },
+      {
+        "property": "caption",
+        "description": "Isiokwu ederede."
+      }
+    ]
+  }
+}

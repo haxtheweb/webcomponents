@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Geweldige eksploazje",
+    "description": "Ynteraktive eksploazje-animaasje mei opsjonele lûdseffekten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Grutte",
+        "description": "Stel de grutte fan de eksploazje yn.",
+        "options": {
+          "tiny": "Hiel lyts",
+          "small": "Lyts",
+          "medium": "Middel",
+          "large": "Grut",
+          "epic": "Epysk"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Kleur",
+        "description": "Stel it kleurtema fan de eksploazje yn.",
+        "options": {
+          "": "Standert",
+          "red": "Read",
+          "blue": "Blau",
+          "purple": "Pears",
+          "orange": "Oranje",
+          "yellow": "Giel"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Lûdseffekten",
+        "description": "Lûdseffekten ynskeakelje."
+      },
+      {
+        "property": "resetSound",
+        "title": "Lûd weromsette",
+        "description": "Start it lûd elke kear fan it begjin ôf."
+      },
+      {
+        "property": "image",
+        "title": "Oanpaste ôfbylding",
+        "description": "Opsjonele URL foar in oanpaste eksploazje-ôfbylding."
+      },
+      {
+        "property": "sound",
+        "title": "Oanpast lûd",
+        "description": "Opsjonele URL foar in oanpast lûdseffekt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Utskeakele",
+        "description": "Alle ynteraksjes útskeakelje."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Λίστα συνεισφερόντων GitHub",
+    "description": "Εμφανίζονται ως χαρακτήρες RPG μέσω του GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Οργανισμός",
+        "description": "Όνομα οργανισμού από το github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Αποθετήριο",
+        "description": "Όνομα αποθετηρίου από το github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Όριο",
+        "description": "Περιορισμός του πλήθους των συνεισφερόντων που εμφανίζονται."
+      }
+    ]
+  }
+}

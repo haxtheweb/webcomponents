@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Hawa web kaqkunata iframe-pi churay."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pukyu URL",
+        "description": "Pukyupa URL-nin."
+      },
+      {
+        "property": "height",
+        "title": "Sayaynin",
+        "description": "Iframepa sayaynin."
+      },
+      {
+        "property": "width",
+        "title": "Kinraynin",
+        "description": "Iframepa kinraynin."
+      }
+    ]
+  }
+}

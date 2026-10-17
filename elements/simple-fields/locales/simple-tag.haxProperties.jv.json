@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tag / Pil",
+    "description": "Label kompak awujud pil kanthi werna aksen, tombol batal, utawa toggle opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Label",
+        "description": "Teks sing katon ing njero pil."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna aksen",
+        "description": "Jeneng aksen SimpleColors kanggo latar mburi pil.",
+        "options": {
+          "": "-- gawan --",
+          "red": "Abang",
+          "pink": "Jambon",
+          "purple": "Wungu",
+          "deep-purple": "Wungu Tuwa",
+          "indigo": "Nila",
+          "blue": "Biru",
+          "light-blue": "Biru Enom",
+          "cyan": "Sian",
+          "teal": "Biru Ijo",
+          "green": "Ijo",
+          "light-green": "Ijo Enom",
+          "lime": "Ijo Jeruk",
+          "yellow": "Kuning",
+          "amber": "Kuning Amber",
+          "orange": "Oranye",
+          "deep-orange": "Oranye Tuwa",
+          "brown": "Coklat",
+          "blue-grey": "Abu-abu Biru",
+          "grey": "Abu-abu"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Werna aksen otomatis",
+        "description": "Jupuk werna aksen saka teks label kanthi otomatis."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Tombol batal",
+        "description": "Tampilake tombol ikon busak/batal ing njero pil."
+      },
+      {
+        "property": "readonly",
+        "title": "Mung diwaca",
+        "description": "Dhelikake tombol batal supaya pil mung kanggo tampilan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Toggle",
+        "description": "Gawe pil urip/mati nalika tombol diklik."
+      },
+      {
+        "property": "toggled",
+        "title": "Urip",
+        "description": "Apa pil saiki lagi urip."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ikon nalika urip",
+        "description": "Ikon sing katon nalika pil urip."
+      },
+      {
+        "property": "disabled",
+        "title": "Dipateni",
+        "description": "Pateni interaksi karo pil."
+      }
+    ]
+  }
+}

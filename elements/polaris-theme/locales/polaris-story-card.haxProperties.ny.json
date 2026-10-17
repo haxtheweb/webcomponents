@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Khadi la nkhani la Polaris",
+    "description": "Onetsani khadi la nkhani la Polaris lokhala ndi chithunzi chakumbuyo, dzina la mzati, ndi mutu wankhani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Chithunzi chakumbuyo",
+        "description": "URL ya chithunzi chowonetsedwa kumbuyo kwa khadi."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Kukula kwa chakumbuyo",
+        "description": "Momwe chithunzi chakumbuyo chimadzazira khadi (CSS background-size).",
+        "options": {
+          "cover": "Phimba (cover)",
+          "contain": "Lowetsa (contain)",
+          "auto": "Zokha (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Kulumikizidwa kwa chakumbuyo",
+        "description": "Momwe chithunzi chakumbuyo chimachitira popukusa (CSS background-attachment).",
+        "options": {
+          "scroll": "Pukusa (scroll)",
+          "fixed": "Chokhazikika (fixed)",
+          "local": "Zam'deralo (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Dzina la mzati",
+        "description": "Dzina lalifupi la zilembo zazikulu lowonetsedwa pamwamba pa khadi. Siyani lopanda kanthu kuti mulibise."
+      },
+      {
+        "property": "label",
+        "title": "Mawu a khadi",
+        "description": "Mawu akuluakulu owonetsedwa m'gawo lapansi."
+      },
+      {
+        "property": "link",
+        "title": "Ulalo",
+        "description": "URL yosankha yopitako yomwe imakuta khadi lonse."
+      }
+    ]
+  }
+}

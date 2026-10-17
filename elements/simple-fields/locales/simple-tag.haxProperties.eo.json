@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Etikedo / Pilolo",
+    "description": "Kompakta pilolforma etikedo kun nedeviga akcenta koloro, nuliga butono aŭ baskulo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etikedo",
+        "description": "Teksto montrata en la pilolo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "SimpleColors-nomo de akcenta koloro por la fono de la pilolo.",
+        "options": {
+          "": "-- defaŭlta --",
+          "red": "Ruĝa",
+          "pink": "Rozkolora",
+          "purple": "Purpura",
+          "deep-purple": "Malhelpurpura",
+          "indigo": "Indiga",
+          "blue": "Blua",
+          "light-blue": "Helblua",
+          "cyan": "Cejana",
+          "teal": "Blugrizverda",
+          "green": "Verda",
+          "light-green": "Helverda",
+          "lime": "Limeta",
+          "yellow": "Flava",
+          "amber": "Sukcena",
+          "orange": "Oranĝa",
+          "deep-orange": "Malheloranĝa",
+          "brown": "Bruna",
+          "blue-grey": "Blugriza",
+          "grey": "Griza"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Aŭtomata akcenta koloro",
+        "description": "Aŭtomate derivi la akcentan koloron el la etikeda teksto."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Nuliga butono",
+        "description": "Montri piktograman butonon por forigi/nuligi en la pilolo."
+      },
+      {
+        "property": "readonly",
+        "title": "Nur legebla",
+        "description": "Kaŝi la nuligan butonon, por ke la pilolo estu nur montra."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Baskulas",
+        "description": "Igi la pilolon baskuli ŝaltite/malŝaltite kiam oni klakas la butonon."
+      },
+      {
+        "property": "toggled",
+        "title": "Ŝaltita",
+        "description": "Ĉu la pilolo nun estas ŝaltita."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Piktogramo kiam ŝaltita",
+        "description": "Piktogramo montrata kiam la pilolo estas ŝaltita."
+      },
+      {
+        "property": "disabled",
+        "title": "Malŝaltita",
+        "description": "Malŝalti interagon kun la pilolo."
+      }
+    ]
+  }
+}

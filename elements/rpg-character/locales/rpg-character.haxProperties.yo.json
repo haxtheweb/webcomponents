@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Ẹ̀dá RPG",
+    "description": "Ẹ̀dá aláwàdà láti HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Orúkọ",
+        "description": "Ọ̀rọ̀ tí a lò láti ṣẹ̀dá ẹ̀dá àìròtẹ́lẹ̀."
+      },
+      {
+        "property": "hat",
+        "title": "Fìlà",
+        "description": "Ìrísí fìlà.",
+        "options": {
+          "none": "Àtilẹ̀wá",
+          "random": "Àìròtẹ́lẹ̀",
+          "bunny": "Ehoro",
+          "cowboy": "Màlúù-ọdẹ",
+          "education": "Ẹ̀kọ́",
+          "construction": "Ìkọ́lé",
+          "warning": "Ìkìlọ̀",
+          "watermelon": "Bàrà",
+          "coffee": "Kọfí",
+          "knight": "Jagunjagun ẹlẹ́ṣin",
+          "ninja": "Ninja",
+          "party": "Àríyá",
+          "error": "Àṣìṣe",
+          "edit": "Ṣàtúnṣe"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Ìbú",
+        "description": "Ìbú ẹ̀dá náà ní píksẹ́lì."
+      },
+      {
+        "property": "height",
+        "title": "Gíga",
+        "description": "Gíga ẹ̀dá náà ní píksẹ́lì."
+      },
+      {
+        "property": "fire",
+        "title": "Ń jóná?",
+        "description": "Bóyá ẹ̀dá náà ń jóná."
+      },
+      {
+        "property": "walking",
+        "title": "Ń rìn?",
+        "description": "Ìgbéérí rírìn; ó ń ṣiṣẹ́ nígbà tí ó bá ń jóná."
+      }
+    ]
+  }
+}

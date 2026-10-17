@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Element korakov",
+    "description": "Element, ki je del seznama korakov"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov"
+      }
+    ]
+  }
+}

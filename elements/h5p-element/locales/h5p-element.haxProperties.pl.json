@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Nakładka H5P do ładowania i prezentowania plików .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Kod osadzenia iframe H5P"
+      }
+    ]
+  }
+}

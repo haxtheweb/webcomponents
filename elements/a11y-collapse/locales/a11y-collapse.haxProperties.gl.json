@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Contedor despregable",
+    "description": "Contedor único que se pode despregar e pregar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Título",
+        "description": "Texto do despregable."
+      },
+      {
+        "property": "expanded",
+        "title": "Despregado",
+        "description": "Despregar por defecto."
+      },
+      {
+        "property": "headingButton",
+        "title": "Botón de título",
+        "description": "Facer que todo o título sexa clicable en lugar de só a icona."
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona do botón para despregar/pregar."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Icona (cando está despregado)",
+        "description": "Icona opcional para o estado despregado."
+      },
+      {
+        "slot": "",
+        "title": "Contido",
+        "description": "Contido do despregable."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Información sobre ferramenta",
+        "description": "Información sobre ferramenta do botón para despregar/pregar."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Información sobre ferramenta (cando está despregado)",
+        "description": "Información sobre ferramenta do botón para despregar/pregar cando está despregado."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Tinye nkọwa Disqus na peeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Aha mkpụmkpụ",
+        "description": "Aha mkpụmkpụ nke saịtị ahụ, nke na-ekpebi onye nnabata edemede Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL Peeji",
+        "description": "URL nke peeji eriri nkọwa ahụ jikọtara na ya."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Njirimara peeji",
+        "description": "Njirimara pụrụ iche maka eriri nkọwa peeji ahụ."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Aha peeji",
+        "description": "Aha peeji eriri nkọwa ahụ jikọtara na ya."
+      },
+      {
+        "property": "loadingText",
+        "title": "Ederede nbudata",
+        "description": "Ederede a na-ekwupụta mgbe nkọwa na-ebudata."
+      },
+      {
+        "property": "lang",
+        "title": "Asụsụ",
+        "description": "Koodu asụsụ maka ihu Disqus, dịka en."
+      }
+    ]
+  }
+}

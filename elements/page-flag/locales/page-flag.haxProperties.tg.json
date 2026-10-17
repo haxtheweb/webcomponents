@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Парчами саҳифа",
+    "description": "Ёддошти таҳририявӣ барои муаллифони саҳифа."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидӣ барои парчами саҳифа."
+      },
+      {
+        "property": "label",
+        "title": "Нишонга",
+        "description": "Матни нишонга барои парчами саҳифа."
+      }
+    ]
+  }
+}

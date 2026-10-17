@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Symbol",
+    "description": "Symbol aus der vollständigen Symbolbibliothek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Symbol",
+        "description": "Darzustellendes Symbol."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Akzentfarbe für das Symbol."
+      },
+      {
+        "property": "dark",
+        "title": "Dunkel",
+        "description": "Dunkelmodus verwenden (invertierte Farben)."
+      }
+    ]
+  }
+}

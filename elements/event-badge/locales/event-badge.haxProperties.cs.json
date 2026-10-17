@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Odznak události",
+    "description": "Komponenta odznaku události."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Obrázek TV",
+        "description": "Obrázek zobrazený na TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo zobrazené v rohu odznaku."
+      },
+      {
+        "property": "title",
+        "title": "Název",
+        "description": "Název zobrazený v horní části odznaku."
+      },
+      {
+        "property": "name",
+        "title": "Jméno",
+        "description": "Jméno zobrazené na odznaku."
+      },
+      {
+        "property": "position",
+        "title": "Pozice",
+        "description": "Role nebo funkce osoby."
+      },
+      {
+        "property": "organization",
+        "title": "Organizace",
+        "description": "Organizace, pro kterou osoba pracuje."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Barva TV",
+        "description": "Vyberte barvu TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňující barva",
+        "description": "Primární barva pozadí nebo textu."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Barva knoflíků",
+        "description": "Barva knoflíků TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sépie",
+        "description": "Použít efekt sépie."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Černobílé",
+        "description": "Použít černobílý efekt."
+      }
+    ]
+  }
+}

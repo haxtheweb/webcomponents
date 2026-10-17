@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polarise märk",
+    "description": "Kuva PSU identiteedimärk valikulise kolledži nime ja siht-URL-iga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Kolledži nimi",
+        "description": "Märgi kõrval kuvatav nimi."
+      },
+      {
+        "property": "name2",
+        "title": "Kolledži nimi 2",
+        "description": "Teine nimi, mis kuvatakse esimese kolledži nime all."
+      },
+      {
+        "property": "name3",
+        "title": "Kolledži nimi 3",
+        "description": "Kolmas nimi, mis kuvatakse teise kolledži nime all."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Siht-URL märgil klõpsamisel."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Märgi visuaalne variant.",
+        "options": {
+          "default": "Vaikimisi",
+          "light": "Hele",
+          "dark": "Tume"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Vertikaalne paigutus",
+        "description": "Kuva kolmas nimi teise nime all horisontaaljoonega."
+      }
+    ]
+  }
+}

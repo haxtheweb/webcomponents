@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Sanaýjy",
+    "description": "Görünýän meýdana girende sany maksat bahasyna çenli artdyrýan animasiýa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Soňky baha",
+        "description": "Sanalmaly iň soňky san."
+      },
+      {
+        "property": "start",
+        "title": "Başlangyç baha",
+        "description": "Sanamagyň başlanýan sany."
+      },
+      {
+        "property": "duration",
+        "title": "Dowamlylyk",
+        "description": "Sanama animasiýasynyň dowam etmeli sekuntlary."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Öňündäki tekst",
+        "description": "Sanyň öňünde görkezilýän tekst (meselem, '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Yzyndaky tekst",
+        "description": "Sanyň yzynda görkezilýän tekst (meselem, '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Öň slot",
+        "description": "Sanyň öňündäki goşmaça slot mazmuny."
+      },
+      {
+        "slot": "suffix",
+        "title": "Yz slot",
+        "description": "Sanyň yzyndaky goşmaça slot mazmuny."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Onluk belgiler",
+        "description": "Görkezilmeli onluk belgileriň sany."
+      },
+      {
+        "property": "separator",
+        "title": "Müňlükleri aýyryjy",
+        "description": "Müňlük toparlaryny aýyrýan belgi."
+      },
+      {
+        "property": "decimal",
+        "title": "Onluk belgisi",
+        "description": "Onluk nokady üçin ulanylýan belgi."
+      },
+      {
+        "property": "noeasing",
+        "title": "Ýumşatmasyz",
+        "description": "Sanama çyzykly bolar ýaly ýumşatmany öçür."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "활동 상자",
+    "description": "스타일이 적용된 작은 제목 블록입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "아이콘",
+        "description": "활동 상자 옆에 표시되는 아이콘입니다."
+      },
+      {
+        "property": "tag",
+        "title": "활동 상자 태그",
+        "description": "활동 상자에 표시되는 태그입니다."
+      },
+      {
+        "property": "nocolourize",
+        "title": "색상 적용 안 함",
+        "description": "아이콘에 색상이 적용되지 않도록 합니다."
+      }
+    ]
+  }
+}

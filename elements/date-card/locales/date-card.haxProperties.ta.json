@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "தேதி",
+    "description": "விவரங்களுடன் நாட்காட்டித் தேதியைக் காட்டவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "மாதம்",
+        "description": "அட்டையில் காட்டப்படும் மாதம்."
+      },
+      {
+        "property": "date",
+        "title": "மாதத்தின் நாள்",
+        "description": "மாதத்தின் நாள் (எண்ணில்)."
+      },
+      {
+        "property": "day",
+        "title": "வாரத்தின் நாள்",
+        "description": "வாரத்தின் நாள் (உரையாக)."
+      },
+      {
+        "property": "title",
+        "title": "தலைப்பு",
+        "description": "நிகழ்வின் பெயர்."
+      },
+      {
+        "property": "location",
+        "title": "இடம்",
+        "description": "நிகழ்வு நடைபெறும் இடம்."
+      },
+      {
+        "property": "startTime",
+        "title": "தொடக்கம்",
+        "description": "தொடக்க நேரம்."
+      },
+      {
+        "property": "endTime",
+        "title": "முடிவு",
+        "description": "முடிவு நேரம்."
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "விருப்ப அழுத்த நிறம்."
+      },
+      {
+        "property": "dark",
+        "title": "இருண்ட தீம்",
+        "description": "இருண்ட தீமை இயக்கவும்."
+      }
+    ]
+  }
+}

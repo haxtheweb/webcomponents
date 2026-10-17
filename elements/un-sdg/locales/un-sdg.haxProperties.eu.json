@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Nazio Batuen Garapen Jasangarrirako Helburua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Helburua",
+        "description": "UN SDG zenbakia."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Kolorea soilik",
+        "description": "Erakutsi helburuaren kolorea soilik."
+      }
+    ]
+  }
+}

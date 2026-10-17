@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify پليئر ايمبيڊز لاءِ ريپر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ذريعو",
+        "description": "Spotify مان ايمبيڊ يا شيئر لنڪ."
+      },
+      {
+        "property": "theme",
+        "title": "ٿيم",
+        "description": "پليئر لاءِ پس منظر جي رنگ جو ٿيم.",
+        "options": {
+          "": "ڊفالٽ",
+          "0": "ڪارو"
+        }
+      },
+      {
+        "property": "size",
+        "title": "سائيز",
+        "description": "پليئر جي سائيز.",
+        "options": {
+          "normal": "ڊفالٽ",
+          "compact": "ننڍو"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "හැකිළිය හැකි බහාලුම",
+    "description": "දිග හැරිය හැකි සහ හැකිළිය හැකි තනි බහාලුමක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "ශීර්ෂය",
+        "description": "හැකිළිය හැකි කොටස සඳහා පෙළ."
+      },
+      {
+        "property": "expanded",
+        "title": "දිග හැර ඇත",
+        "description": "පෙරනිමියෙන් දිග හරින්න."
+      },
+      {
+        "property": "headingButton",
+        "title": "ශීර්ෂ බොත්තම",
+        "description": "නිරූපකය පමණක් නොව සම්පූර්ණ ශීර්ෂයම ක්ලික් කළ හැකි කරන්න."
+      },
+      {
+        "property": "icon",
+        "title": "නිරූපකය",
+        "description": "දිග හැරීම/හැකිළීම ටොගල බොත්තම සඳහා නිරූපකය."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "නිරූපකය (දිග හැර ඇති විට)",
+        "description": "දිග හැර ඇති ටොගල තත්ත්වය සඳහා විකල්ප නිරූපකය."
+      },
+      {
+        "slot": "",
+        "title": "අන්තර්ගතය",
+        "description": "හැකිළිය හැකි කොටස සඳහා අන්තර්ගතය."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "ඉඟි පෙළ",
+        "description": "දිග හැරීම/හැකිළීම ටොගල බොත්තම සඳහා ඉඟි පෙළ."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "ඉඟි පෙළ (දිග හැර ඇති විට)",
+        "description": "දිග හැර ඇති විට දිග හැරීම/හැකිළීම බොත්තම සඳහා ඉඟි පෙළ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Словамастацтва HAX",
+    "description": "Элемент лагатыпа HAX, вядома ж, сумяшчальны з HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Памер лагатыпа HAX для размяшчэння",
+        "options": {
+          "mini": "Міні",
+          "small": "Малы",
+          "normal": "Звычайны",
+          "large": "Вялікі"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Ці пераўтвараць лагатып у вялікія літары"
+      }
+    ]
+  }
+}

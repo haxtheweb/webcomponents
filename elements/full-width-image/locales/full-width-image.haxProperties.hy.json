@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Պատկերի բաժին",
+    "description": "Ամբողջ լայնությամբ պատկեր, որը բաժանում է էջի բաժինները։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Ֆոնային պատկեր։"
+      },
+      {
+        "property": "caption",
+        "description": "Տեքստային վերնագիր։"
+      }
+    ]
+  }
+}

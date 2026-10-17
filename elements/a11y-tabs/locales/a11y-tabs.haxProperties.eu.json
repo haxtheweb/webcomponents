@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Fitxak",
+    "description": "Fitxa multzoa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etiketa (irisgarritasunerako)",
+        "description": "Fitxa multzoaren etiketa irisgarria."
+      },
+      {
+        "property": "disabled",
+        "title": "Desgaituta",
+        "description": "Desgaitu fitxa guztiak."
+      },
+      {
+        "property": "hidden",
+        "title": "Ezkutuan",
+        "description": "Ezkutatu fitxa multzoa."
+      },
+      {
+        "property": "sticky",
+        "title": "Finkoa",
+        "description": "Mantendu fitxa horizontalak goian korritzean."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Diseinuaren eten-puntua",
+        "description": "Fitxa horizontalen eten-puntua; erabili -1 bertikalak soilik izateko."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Ikonoen eten-puntua",
+        "description": "Testua ikonoekin erakusteko eten-puntua. Lehenetsia 0 da; erabili -1 ikonoak soilik erakusteko."
+      },
+      {
+        "slot": "",
+        "title": "Fitxak",
+        "description": "<a11y-tab/> elementuen segida."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID bakarra",
+        "description": "Fitxa multzo honen ID bakarra."
+      }
+    ]
+  }
+}

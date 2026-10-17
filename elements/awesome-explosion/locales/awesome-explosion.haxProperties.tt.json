@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Искиткеч шартлау",
+    "description": "Теләк буенча тавыш эффектлары белән интерактив шартлау анимациясе."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Зурлык",
+        "description": "Шартлау зурлыгын билгеләгез.",
+        "options": {
+          "tiny": "Бик кечкенә",
+          "small": "Кечкенә",
+          "medium": "Урта",
+          "large": "Зур",
+          "epic": "Эпик"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Төс",
+        "description": "Шартлауның төс темасын билгеләгез.",
+        "options": {
+          "": "Килешү буенча",
+          "red": "Кызыл",
+          "blue": "Зәңгәр",
+          "purple": "Шәмәхә",
+          "orange": "Кызгылт сары",
+          "yellow": "Сары"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Тавыш эффектлары",
+        "description": "Тавыш эффектларын кабызырга."
+      },
+      {
+        "property": "resetSound",
+        "title": "Тавышны яңадан башлау",
+        "description": "Тавышны һәр тапкыр баштан башларга."
+      },
+      {
+        "property": "image",
+        "title": "Үз рәсемең",
+        "description": "Үз шартлау рәсемең өчен өстәмә URL."
+      },
+      {
+        "property": "sound",
+        "title": "Үз тавышың",
+        "description": "Үз тавыш эффектың өчен өстәмә URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Сүндерелгән",
+        "description": "Барлык үзара тәэсирләрне сүндерергә."
+      }
+    ]
+  }
+}

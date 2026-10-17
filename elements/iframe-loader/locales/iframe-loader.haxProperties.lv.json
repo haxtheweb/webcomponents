@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Iegult ārēju tīmekļa saturu iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Resursa URL",
+        "description": "Resursa URL."
+      },
+      {
+        "property": "height",
+        "title": "Augstums",
+        "description": "Iframe augstums."
+      },
+      {
+        "property": "width",
+        "title": "Platums",
+        "description": "Iframe platums."
+      }
+    ]
+  }
+}

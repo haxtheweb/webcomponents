@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify ਪਲੇਅਰ ਏਮਬੈਡਾਂ ਲਈ ਰੈਪਰ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ",
+        "description": "Spotify ਤੋਂ ਏਮਬੈਡ ਜਾਂ ਸਾਂਝਾ ਕਰਨ ਵਾਲਾ ਲਿੰਕ।"
+      },
+      {
+        "property": "theme",
+        "title": "ਥੀਮ",
+        "description": "ਪਲੇਅਰ ਲਈ ਪਿਛੋਕੜ ਰੰਗ ਥੀਮ।",
+        "options": {
+          "": "ਮੂਲ",
+          "0": "ਕਾਲਾ"
+        }
+      },
+      {
+        "property": "size",
+        "title": "ਆਕਾਰ",
+        "description": "ਪਲੇਅਰ ਦਾ ਆਕਾਰ।",
+        "options": {
+          "normal": "ਮੂਲ",
+          "compact": "ਸੰਖੇਪ"
+        }
+      }
+    ]
+  }
+}

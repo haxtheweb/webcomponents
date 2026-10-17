@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D-speler",
+    "description": "'n 3D-lêer-/toegevoegde-werklikheid-speler."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Bron",
+        "description": "Die URL vir hierdie AR-lêer."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "X-posisie van die element in AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Y-posisie van die element in AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Z-posisie van die element in AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Lugkleur",
+        "description": "Kies die kleur van die lug in die toneel."
+      }
+    ]
+  }
+}

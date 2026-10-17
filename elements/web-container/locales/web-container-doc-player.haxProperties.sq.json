@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Luajtës dokumentacioni për komponentë web"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Fshih dritaren",
+        "description": "Fshih dritaren e daljes, e dobishme kur qëllimi është vetëm terminali"
+      }
+    ]
+  }
+}

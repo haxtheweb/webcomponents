@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ບັດຄຳ",
+    "description": "ຝຶກແນວຄິດດ້ວຍບັດຄຳແບບໜ້າ-ຫຼັງ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "ໜ້າບັດ",
+        "description": "ຂໍ້ຄວາມ ຫຼື ຄຳຖາມດ້ານໜ້າ."
+      },
+      {
+        "slot": "back",
+        "title": "ດ້ານຫຼັງບັດ",
+        "description": "ຄຳຕອບທີ່ຄາດໄວ້."
+      },
+      {
+        "property": "imgSource",
+        "title": "ແຫຼ່ງຮູບພາບ",
+        "description": "ໄຟລ໌ຮູບພາບທີ່ໃຊ້ສຳລັບບັດ. ໃຊ້ແທນຄຳສຳຄັນຮູບພາບ."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "ປະເພດການກະທຳ",
+        "description": "OER Schema: ປະເພດການກະທຳຂອງການຝຶກນີ້ (ເຊັ່ນ: ການອ່ານ, ການຂຽນ, ການສ້າງ, ການຄົ້ນຄວ້າ, ການຟັງ, ການເບິ່ງ, ການໄຕ່ຕອງ, ການສົນທະນາ, ການສັງເກດ, ການນຳສະເໜີ, ການປະເມີນ)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ຈຸດປະສົງການຮຽນຮູ້",
+        "description": "OER Schema: ID ຫຼື URL ຂອງຈຸດປະສົງການຮຽນຮູ້ທີ່ການຝຶກນີ້ສະໜັບສະໜູນ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ມືດ",
+        "description": "ໃຊ້ໂໝດມືດ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນຂອງບັດ."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "ຄຳສຳຄັນຮູບພາບ",
+        "description": "ຄຳສຳຄັນສຳລັບຮູບພາບແບບສຸ່ມ. ຖືກແທນທີ່ດ້ວຍແຫຼ່ງຮູບພາບ."
+      }
+    ]
+  }
+}

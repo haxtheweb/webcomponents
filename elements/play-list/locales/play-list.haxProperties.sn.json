@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Rondedzero yekuridza",
+    "description": "Ratidza chero mhando yezvirimo murondedzero yekuridza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Kwakabva",
+        "description": "Zvirimo zvinoratidzwa murondedzero yekuridza."
+      },
+      {
+        "property": "edit",
+        "title": "Mamiriro ekugadzirisa",
+        "description": "Chinja pakati pemamiriro ekugadzirisa nekuongorora erondedzero yekuridza."
+      },
+      {
+        "property": "navigation",
+        "title": "Kufamba",
+        "description": "Ratidza mabhatani ekuenda mberi nekudzokera shure."
+      },
+      {
+        "property": "pagination",
+        "title": "Mapeji",
+        "description": "Ratidza madotsi emapeji."
+      },
+      {
+        "property": "orientation",
+        "title": "Kutarisa",
+        "description": "Kutarisa kwemasiraidhi.",
+        "options": {
+          "horizontal": "Kwakatwasuka",
+          "vertical": "Kwakamira"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Siraidhi yekutanga nayo",
+        "description": "Indekisi yesiraidhi yekutanga kutarisa."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Chiyero cheChimiro",
+        "description": "Chiyero chechimiro chemasiraidhi.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

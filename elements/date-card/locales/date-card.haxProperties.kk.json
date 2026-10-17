@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Күн",
+    "description": "Күнтізбелік күнді мәліметтерімен көрсету."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Ай",
+        "description": "Картада көрсетілетін ай."
+      },
+      {
+        "property": "date",
+        "title": "Айдың күні",
+        "description": "Айдың сандық күні."
+      },
+      {
+        "property": "day",
+        "title": "Апта күні",
+        "description": "Апта күнінің мәтіні."
+      },
+      {
+        "property": "title",
+        "title": "Атауы",
+        "description": "Іс-шара атауы."
+      },
+      {
+        "property": "location",
+        "title": "Орны",
+        "description": "Іс-шараның өтетін орны."
+      },
+      {
+        "property": "startTime",
+        "title": "Басталуы",
+        "description": "Басталу уақыты."
+      },
+      {
+        "property": "endTime",
+        "title": "Аяқталуы",
+        "description": "Аяқталу уақыты."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Қосымша екпін түсі."
+      },
+      {
+        "property": "dark",
+        "title": "Қараңғы тақырып",
+        "description": "Қараңғы тақырыпты қосу."
+      }
+    ]
+  }
+}

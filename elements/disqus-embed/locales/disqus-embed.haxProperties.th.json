@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "ฝังความคิดเห็น Disqus ในหน้า"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "ชื่อย่อ",
+        "description": "ชื่อย่อของเว็บไซต์ ซึ่งกำหนดโฮสต์สคริปต์ของ Disqus"
+      },
+      {
+        "property": "pageURL",
+        "title": "URL ของหน้า",
+        "description": "URL ของหน้าที่เธรดความคิดเห็นแนบอยู่"
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "ตัวระบุหน้า",
+        "description": "ตัวระบุเฉพาะสำหรับเธรดความคิดเห็นของหน้า"
+      },
+      {
+        "property": "pageTitle",
+        "title": "ชื่อหน้า",
+        "description": "ชื่อของหน้าที่เธรดความคิดเห็นแนบอยู่"
+      },
+      {
+        "property": "loadingText",
+        "title": "ข้อความขณะโหลด",
+        "description": "ข้อความที่ประกาศขณะกำลังโหลดความคิดเห็น"
+      },
+      {
+        "property": "lang",
+        "title": "ภาษา",
+        "description": "รหัสภาษาสำหรับอินเทอร์เฟซ Disqus เช่น en"
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Play list",
+    "description": "Magpakita ng anumang uri ng nilalaman sa isang playlist."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Pinagmulan",
+        "description": "Nilalamang ipinapakita sa playlist."
+      },
+      {
+        "property": "edit",
+        "title": "Edit mode",
+        "description": "Magpalipat-lipat sa edit at preview mode ng playlist."
+      },
+      {
+        "property": "navigation",
+        "title": "Nabigasyon",
+        "description": "Ipakita ang mga button sa nabigasyong pasulong at paurong."
+      },
+      {
+        "property": "pagination",
+        "title": "Pagination",
+        "description": "Ipakita ang mga tuldok ng pagination."
+      },
+      {
+        "property": "orientation",
+        "title": "Oryentasyon",
+        "description": "Oryentasyon ng mga slide.",
+        "options": {
+          "horizontal": "Pahalang",
+          "vertical": "Patayo"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Slide na sisimulan",
+        "description": "Index ng slide na unang itutuon."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Aspect Ratio",
+        "description": "Aspect ratio ng mga slide.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

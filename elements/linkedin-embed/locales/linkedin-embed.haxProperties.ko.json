@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn 삽입",
+    "description": "LinkedIn 프로필 카드를 삽입합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "사용자 지정 이름",
+        "description": "LinkedIn 사용자 지정 사용자 이름 부분입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "로캘",
+        "description": "en_US와 같은 로캘 메타데이터 값입니다."
+      }
+    ]
+  }
+}

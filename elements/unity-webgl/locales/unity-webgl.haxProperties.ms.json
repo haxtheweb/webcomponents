@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Pemain Unity",
+    "description": "Pemain Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Sasaran",
+        "description": "Laluan ke binaan permainan."
+      },
+      {
+        "property": "compression",
+        "title": "Kaedah pemampatan",
+        "description": "Sambungan fail pemampatan untuk aset permainan."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL Penstriman",
+        "description": "URL aset penstriman."
+      },
+      {
+        "property": "companyname",
+        "title": "Nama Syarikat",
+        "description": "Nama syarikat."
+      },
+      {
+        "property": "productname",
+        "title": "Nama Produk",
+        "description": "Tajuk permainan."
+      },
+      {
+        "property": "productversion",
+        "title": "Versi Produk",
+        "description": "Versi keluaran."
+      },
+      {
+        "property": "width",
+        "title": "Lebar Kanvas",
+        "description": "Lebar CSS kanvas (contohnya px atau em)."
+      },
+      {
+        "property": "height",
+        "title": "Ketinggian Kanvas",
+        "description": "Ketinggian CSS kanvas (contohnya px atau em)."
+      },
+      {
+        "property": "background",
+        "title": "Latar Belakang Kanvas",
+        "description": "Latar belakang CSS kanvas."
+      }
+    ]
+  }
+}

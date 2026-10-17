@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "تضمين تعليقات Disqus في صفحة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "الاسم المختصر",
+        "description": "الاسم المختصر للموقع، والذي يحدد مضيف برنامج Disqus النصي."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL الصفحة",
+        "description": "URL الصفحة المرتبطة بها سلسلة التعليقات."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "معرّف الصفحة",
+        "description": "المعرّف الفريد لسلسلة تعليقات الصفحة."
+      },
+      {
+        "property": "pageTitle",
+        "title": "عنوان الصفحة",
+        "description": "عنوان الصفحة المرتبطة بها سلسلة التعليقات."
+      },
+      {
+        "property": "loadingText",
+        "title": "نص التحميل",
+        "description": "النص الذي يُعلَن أثناء تحميل التعليقات."
+      },
+      {
+        "property": "lang",
+        "title": "اللغة",
+        "description": "رمز اللغة لواجهة Disqus، مثل en."
+      }
+    ]
+  }
+}

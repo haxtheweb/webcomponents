@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Odtwarzacz Unity",
+    "description": "Odtwarzacz Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cel",
+        "description": "Ścieżka do kompilacji gry."
+      },
+      {
+        "property": "compression",
+        "title": "Metoda kompresji",
+        "description": "Rozszerzenie pliku kompresji dla zasobów gry."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL strumieniowania",
+        "description": "URL zasobów strumieniowanych."
+      },
+      {
+        "property": "companyname",
+        "title": "Nazwa firmy",
+        "description": "Nazwa firmy."
+      },
+      {
+        "property": "productname",
+        "title": "Nazwa produktu",
+        "description": "Tytuł gry."
+      },
+      {
+        "property": "productversion",
+        "title": "Wersja produktu",
+        "description": "Wersja wydania."
+      },
+      {
+        "property": "width",
+        "title": "Szerokość płótna",
+        "description": "Szerokość płótna w CSS (np. px lub em)."
+      },
+      {
+        "property": "height",
+        "title": "Wysokość płótna",
+        "description": "Wysokość płótna w CSS (np. px lub em)."
+      },
+      {
+        "property": "background",
+        "title": "Tło płótna",
+        "description": "Tło płótna w CSS."
+      }
+    ]
+  }
+}

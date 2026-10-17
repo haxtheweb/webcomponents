@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Nod Datblygu Cynaliadwy y Cenhedloedd Unedig."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Nod",
+        "description": "Rhif UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Lliw yn unig",
+        "description": "Dangos lliw'r nod yn unig."
+      }
+    ]
+  }
+}

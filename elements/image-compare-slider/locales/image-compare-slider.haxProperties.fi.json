@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kuvavertailu",
+    "description": "Pyyhkäise kuva toisen päälle vertailua varten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Yläkuva",
+        "description": "Yläkuva, joka pyyhkäistään alakuvan päälle."
+      },
+      {
+        "property": "topAlt",
+        "title": "Yläkuvan vaihtoehtoinen teksti",
+        "description": "Pakollinen vaihtoehtoinen teksti saavutettavuutta varten."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Alakuva",
+        "description": "Yläkuvan alla näytettävä alakuva."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alakuvan vaihtoehtoinen teksti",
+        "description": "Pakollinen vaihtoehtoinen teksti saavutettavuutta varten."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Toiminta",
+        "description": "Valitse pyyhkäisytila (oletus) tai yläkuvan läpinäkyvyystila."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Liukusäätimen palkin väri."
+      },
+      {
+        "property": "dark",
+        "title": "Tumma",
+        "description": "Käännä liukusäätimen palkin väri."
+      },
+      {
+        "property": "position",
+        "title": "Alkusijainti",
+        "description": "Alkusijainti välillä 0–100."
+      }
+    ]
+  }
+}

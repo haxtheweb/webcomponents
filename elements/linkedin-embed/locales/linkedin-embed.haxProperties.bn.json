@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn এমবেড",
+    "description": "একটি LinkedIn প্রোফাইল কার্ড এমবেড করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "ভ্যানিটি নাম",
+        "description": "LinkedIn ভ্যানিটি ব্যবহারকারী নামের অংশ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "লোকেল",
+        "description": "লোকেল মেটাডেটা মান, যেমন en_US।"
+      }
+    ]
+  }
+}

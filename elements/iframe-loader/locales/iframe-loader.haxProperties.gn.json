@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Emoinge tetepy ñanduti okaguáva iframe-pe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL mba'erepy",
+        "description": "URL mba'erepy."
+      },
+      {
+        "property": "height",
+        "title": "Yvatekue",
+        "description": "Iframe yvatekue."
+      },
+      {
+        "property": "width",
+        "title": "Pekue",
+        "description": "Iframe pekue."
+      }
+    ]
+  }
+}

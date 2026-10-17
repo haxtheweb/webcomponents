@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Fanya GIF zinazosonga ziweze kufikiwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF Inayosonga",
+        "description": "URL ya GIF inayosonga."
+      },
+      {
+        "property": "alt",
+        "title": "Maandishi Mbadala",
+        "description": "Maandishi mbadala ya picha."
+      },
+      {
+        "property": "longdesc",
+        "title": "Maelezo Marefu",
+        "description": "Maelezo marefu ya GIF kwa ajili ya ufikivu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Picha Tuli",
+        "description": "URL ya toleo la picha tuli la GIF."
+      }
+    ]
+  }
+}

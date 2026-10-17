@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "تصويري حصو",
+    "description": "مڪمل ويڪر واري تصوير جيڪا صفحي جي حصي کي ورهائي ٿي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "پس منظر جي تصوير."
+      },
+      {
+        "property": "caption",
+        "description": "متن جي سرخي."
+      }
+    ]
+  }
+}

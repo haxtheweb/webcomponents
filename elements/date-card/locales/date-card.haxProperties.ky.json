@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Күн",
+    "description": "Календардык күндү чоо-жайы менен көрсөтүү."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Ай",
+        "description": "Картада көрсөтүлгөн ай."
+      },
+      {
+        "property": "date",
+        "title": "Айдын күнү",
+        "description": "Айдын күнү сан менен."
+      },
+      {
+        "property": "day",
+        "title": "Жуманын күнү",
+        "description": "Жуманын күнү текст менен."
+      },
+      {
+        "property": "title",
+        "title": "Аталыш",
+        "description": "Иш-чаранын аталышы."
+      },
+      {
+        "property": "location",
+        "title": "Орду",
+        "description": "Иш-чаранын өтө турган жери."
+      },
+      {
+        "property": "startTime",
+        "title": "Башталышы",
+        "description": "Башталуу убактысы."
+      },
+      {
+        "property": "endTime",
+        "title": "Аякташы",
+        "description": "Аяктоо убактысы."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Кошумча акцент түсү."
+      },
+      {
+        "property": "dark",
+        "title": "Караңгы тема",
+        "description": "Караңгы теманы иштетүү."
+      }
+    ]
+  }
+}

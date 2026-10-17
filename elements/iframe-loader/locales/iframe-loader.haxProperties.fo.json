@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Innset uttanhýsis netinnihald í eina iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Tilfeingis-URL",
+        "description": "Tilfeingis-URL."
+      },
+      {
+        "property": "height",
+        "title": "Hædd",
+        "description": "Hædd á iframe."
+      },
+      {
+        "property": "width",
+        "title": "Breidd",
+        "description": "Breidd á iframe."
+      }
+    ]
+  }
+}

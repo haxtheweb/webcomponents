@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI വിഷ്വലൈസർ",
+    "description": "ദൃശ്യവൽക്കരണത്തോടെ സന്ദർഭത്തിൽ MIDI പ്ലേ ചെയ്യുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ഉറവിടം",
+        "description": "പ്ലേ ചെയ്യേണ്ട ഫയലിന്റെ URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "ദൃശ്യവൽക്കരണം",
+        "description": "സംഗീത ഫയലിനുള്ള ദൃശ്യവൽക്കരണ ശൈലി.",
+        "options": {
+          "staff": "സ്റ്റാഫ്",
+          "piano-roll": "പിയാനോ റോൾ",
+          "waterfall": "പിയാനോ + വെള്ളച്ചാട്ടം"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "വെള്ളച്ചാട്ടം മറയ്ക്കുക",
+        "description": "പിയാനോ ദൃശ്യവൽക്കരണത്തിലെ വെള്ളച്ചാട്ട സ്വരങ്ങൾ മറയ്ക്കുക."
+      }
+    ]
+  }
+}

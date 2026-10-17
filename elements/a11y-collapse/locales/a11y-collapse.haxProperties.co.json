@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Cuntenitore pieghevule",
+    "description": "Cuntenitore unicu chì si pò spiegà è piegà."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Intestatura",
+        "description": "Testu per u pieghevule."
+      },
+      {
+        "property": "expanded",
+        "title": "Spiegatu",
+        "description": "Spiegà per difettu."
+      },
+      {
+        "property": "headingButton",
+        "title": "Buttone d'intestatura",
+        "description": "Rende cliccabile tutta l'intestatura invece di solu l'icona."
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona per u buttone di spiegà/piegà."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Icona (quandu hè spiegatu)",
+        "description": "Icona facultativa per u statu spiegatu di u buttone."
+      },
+      {
+        "slot": "",
+        "title": "Cuntenutu",
+        "description": "Cuntenutu di u pieghevule."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Infobolla",
+        "description": "Infobolla per u buttone di spiegà/piegà."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Infobolla (quandu hè spiegatu)",
+        "description": "Infobolla per u buttone di spiegà/piegà quandu hè spiegatu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": ".h5p فائلاں لوڈ کرن تے پیش کرن لئی H5P ریپر"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe ایمبیڈ کوڈ"
+      }
+    ]
+  }
+}

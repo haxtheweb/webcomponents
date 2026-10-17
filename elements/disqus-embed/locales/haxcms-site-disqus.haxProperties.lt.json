@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus komentarai",
+    "description": "Integracija su Disqus komentavimo žiniatinklio paslauga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Trumpasis pavadinimas",
+        "description": "Nuosavybės trumpasis pavadinimas Disqus"
+      }
+    ]
+  }
+}

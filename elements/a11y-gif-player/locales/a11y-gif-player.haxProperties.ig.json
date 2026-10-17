@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Mee ka GIF na-emegharị ahụ dị mfe ịnweta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF na-emegharị ahụ",
+        "description": "URL maka GIF na-emegharị ahụ."
+      },
+      {
+        "property": "alt",
+        "title": "Ederede Alt",
+        "description": "Ederede ọzọ maka onyonyo ahụ."
+      },
+      {
+        "property": "longdesc",
+        "title": "Nkọwa Ogologo",
+        "description": "Nkọwa ogologo nke GIF ahụ maka ịdị mfe ịnweta."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Onyonyo Na-adịghị Emegharị",
+        "description": "URL maka ụdị onyonyo na-adịghị emegharị nke GIF ahụ."
+      }
+    ]
+  }
+}

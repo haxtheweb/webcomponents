@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Kartolinë",
+    "description": "Një element medie lozonjar që duket si një kartolinë fizike e dërguar nga diku"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Për",
+        "description": "Për kë është?"
+      },
+      {
+        "property": "from",
+        "title": "Nga",
+        "description": "Kush jeni ju?"
+      },
+      {
+        "property": "message",
+        "title": "Mesazhi",
+        "description": "Çfarë doni të thoni?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Vula postare nga",
+        "description": "Nga u dërgua kjo kartolinë?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Burimi i fotos kryesore",
+        "description": "Ku ndodhet fotoja juaj?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Burimi i fotos së pullës",
+        "description": "Ku ndodhet fotoja juaj?"
+      }
+    ]
+  }
+}

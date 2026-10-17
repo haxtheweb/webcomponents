@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "បង្កប់ខ្លឹមសារបណ្តាញខាងក្រៅក្នុង iframe។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ធនធាន",
+        "description": "URL ធនធាន។"
+      },
+      {
+        "property": "height",
+        "title": "កម្ពស់",
+        "description": "កម្ពស់ iframe។"
+      },
+      {
+        "property": "width",
+        "title": "ទទឹង",
+        "description": "ទទឹង iframe។"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify atskaņotāja iegulumu ietvars."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Avots",
+        "description": "Spotify iegulšanas vai kopīgošanas saite."
+      },
+      {
+        "property": "theme",
+        "title": "Motīvs",
+        "description": "Atskaņotāja fona krāsu motīvs.",
+        "options": {
+          "": "Noklusējums",
+          "0": "Melns"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Izmērs",
+        "description": "Atskaņotāja izmērs.",
+        "options": {
+          "normal": "Noklusējums",
+          "compact": "Kompakts"
+        }
+      }
+    ]
+  }
+}

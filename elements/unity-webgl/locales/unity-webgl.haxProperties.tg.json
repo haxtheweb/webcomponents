@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Плеери Unity",
+    "description": "Плеери Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Ҳадаф",
+        "description": "Роҳ ба сохти бозӣ."
+      },
+      {
+        "property": "compression",
+        "title": "Усули фишурдасозӣ",
+        "description": "Васеъшавии файли фишурдасозӣ барои дороиҳои бозӣ."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL-и ҷараён",
+        "description": "URL-и дороиҳои ҷараёнӣ."
+      },
+      {
+        "property": "companyname",
+        "title": "Номи ширкат",
+        "description": "Номи ширкат."
+      },
+      {
+        "property": "productname",
+        "title": "Номи маҳсулот",
+        "description": "Унвони бозӣ."
+      },
+      {
+        "property": "productversion",
+        "title": "Версияи маҳсулот",
+        "description": "Версияи нашр."
+      },
+      {
+        "property": "width",
+        "title": "Паҳноии канвас",
+        "description": "Паҳноии CSS-и канвас (масалан, px ё em)."
+      },
+      {
+        "property": "height",
+        "title": "Баландии канвас",
+        "description": "Баландии CSS-и канвас (масалан, px ё em)."
+      },
+      {
+        "property": "background",
+        "title": "Заминаи канвас",
+        "description": "Заминаи CSS-и канвас."
+      }
+    ]
+  }
+}

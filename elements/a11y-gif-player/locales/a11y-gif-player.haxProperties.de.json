@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Animierte GIFs barrierefrei machen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Animiertes GIF",
+        "description": "URL des animierten GIFs."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativtext",
+        "description": "Alternativtext für das Bild."
+      },
+      {
+        "property": "longdesc",
+        "title": "Lange Beschreibung",
+        "description": "Lange Beschreibung des GIFs für die Barrierefreiheit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Standbild",
+        "description": "URL einer Standbildversion des GIFs."
+      }
+    ]
+  }
+}

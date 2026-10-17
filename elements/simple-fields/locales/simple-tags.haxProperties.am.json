@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "መለያዎች",
+    "description": "በገጹ ላይ የሚታይ ቀላል የመለያዎች ዝርዝር።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "መለያዎች",
+        "description": "በኮማ የተለዩ መለያዎች ዝርዝር።"
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ራስ-ሰር የአጽንዖት ቀለም",
+        "description": "በመለያው ላይ ተመሥርቶ የአጽንዖት ቀለምን በራስ-ሰር አዘጋጅ።"
+      },
+      {
+        "property": "accentColor",
+        "title": "ቀለም",
+        "description": "ለመለያዎች ቀለም።"
+      }
+    ]
+  }
+}

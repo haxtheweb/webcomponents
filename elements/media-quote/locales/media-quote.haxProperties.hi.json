@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "मीडिया उद्धरण",
+    "description": "उद्धरण, संदर्भ और वैकल्पिक कैप्शन के साथ छवि।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "उद्धरण",
+        "description": "उद्धरण टेक्स्ट।"
+      },
+      {
+        "slot": "author",
+        "title": "लेखक",
+        "description": "उद्धरण का लेखक।"
+      },
+      {
+        "slot": "author-detail",
+        "title": "लेखक विवरण",
+        "description": "लेखक विवरण।"
+      },
+      {
+        "slot": "caption",
+        "title": "कैप्शन",
+        "description": "छवि कैप्शन।"
+      },
+      {
+        "property": "src",
+        "title": "छवि स्रोत",
+        "description": "मीडिया उद्धरण के लिए प्रयुक्त छवि फ़ाइल।"
+      },
+      {
+        "property": "alt",
+        "title": "वैकल्पिक टेक्स्ट",
+        "description": "छवि के लिए वैकल्पिक टेक्स्ट।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "कार्ड का एक्सेंट रंग।"
+      }
+    ]
+  }
+}

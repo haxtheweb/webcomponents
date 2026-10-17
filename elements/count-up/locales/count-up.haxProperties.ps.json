@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "پورته شمېرنه",
+    "description": "یوه شمېره متحرکه کړئ چې د لید ساحې ته د راتلو پر مهال تر ټاکلي ارزښت پورې پورته شمېرل کېږي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "پای ارزښت",
+        "description": "هغه شمېره چې تر هغې پورې شمېرل کېږي."
+      },
+      {
+        "property": "start",
+        "title": "پیل ارزښت",
+        "description": "هغه شمېره چې شمېرنه ترې پیلېږي."
+      },
+      {
+        "property": "duration",
+        "title": "موده",
+        "description": "هغه ثانیې چې د شمېرنې انیمېشن یې باید ونیسي."
+      },
+      {
+        "property": "prefixtext",
+        "title": "مخکینی متن",
+        "description": "هغه متن چې له شمېرې مخکې ښودل کېږي (لکه '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "وروستی متن",
+        "description": "هغه متن چې له شمېرې وروسته ښودل کېږي (لکه '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "مخکینی سلاټ",
+        "description": "له شمېرې مخکې اختیاري سلاټ شوې منځپانګه."
+      },
+      {
+        "slot": "suffix",
+        "title": "وروستی سلاټ",
+        "description": "له شمېرې وروسته اختیاري سلاټ شوې منځپانګه."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "اعشاري ځایونه",
+        "description": "د ښودلو لپاره د اعشاري ځایونو شمېر."
+      },
+      {
+        "property": "separator",
+        "title": "د زرګونو جلاکوونکی",
+        "description": "هغه توری چې د زرګونو ډلې سره جلا کوي."
+      },
+      {
+        "property": "decimal",
+        "title": "اعشاري توری",
+        "description": "د اعشاري ټکي لپاره کارول شوی توری."
+      },
+      {
+        "property": "noeasing",
+        "title": "پرته له نرمښت",
+        "description": "نرمښت غیر فعال کړئ ترڅو شمېرنه خطي وي."
+      }
+    ]
+  }
+}

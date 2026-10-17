@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Esplosione fantastica",
+    "description": "Animazione interattiva di un'esplosione con effetti sonori facoltativi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Dimensione",
+        "description": "Imposta la dimensione dell'esplosione.",
+        "options": {
+          "tiny": "Minuscola",
+          "small": "Piccola",
+          "medium": "Media",
+          "large": "Grande",
+          "epic": "Epica"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Colore",
+        "description": "Imposta il tema di colore dell'esplosione.",
+        "options": {
+          "": "Predefinito",
+          "red": "Rosso",
+          "blue": "Blu",
+          "purple": "Viola",
+          "orange": "Arancione",
+          "yellow": "Giallo"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Effetti sonori",
+        "description": "Attiva gli effetti sonori."
+      },
+      {
+        "property": "resetSound",
+        "title": "Reimposta suono",
+        "description": "Riavvia il suono dall'inizio ogni volta."
+      },
+      {
+        "property": "image",
+        "title": "Immagine personalizzata",
+        "description": "URL facoltativo per un'immagine di esplosione personalizzata."
+      },
+      {
+        "property": "sound",
+        "title": "Suono personalizzato",
+        "description": "URL facoltativo per un effetto sonoro personalizzato."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Disattivato",
+        "description": "Disattiva tutte le interazioni."
+      }
+    ]
+  }
+}

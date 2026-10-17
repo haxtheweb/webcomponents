@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Hitung Naik",
+    "description": "Animasikan angka yang menghitung naik ke nilai target saat bergulir ke dalam tampilan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Nilai akhir",
+        "description": "Angka tujuan hitungan."
+      },
+      {
+        "property": "start",
+        "title": "Nilai awal",
+        "description": "Angka awal hitungan."
+      },
+      {
+        "property": "duration",
+        "title": "Durasi",
+        "description": "Lama animasi hitungan dalam detik."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Teks awalan",
+        "description": "Teks yang ditampilkan sebelum angka (mis. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Teks akhiran",
+        "description": "Teks yang ditampilkan setelah angka (mis. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot awalan",
+        "description": "Konten slot opsional sebelum angka."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot akhiran",
+        "description": "Konten slot opsional setelah angka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Jumlah desimal",
+        "description": "Jumlah angka desimal yang ditampilkan."
+      },
+      {
+        "property": "separator",
+        "title": "Pemisah ribuan",
+        "description": "Karakter pemisah kelompok ribuan."
+      },
+      {
+        "property": "decimal",
+        "title": "Karakter desimal",
+        "description": "Karakter yang digunakan sebagai tanda desimal."
+      },
+      {
+        "property": "noeasing",
+        "title": "Tanpa easing",
+        "description": "Nonaktifkan easing agar hitungan berjalan linear."
+      }
+    ]
+  }
+}

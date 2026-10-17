@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Nā kikoʻī ʻaoʻao",
+    "description": "E wehewehe i kahi hoʻokaʻawale ʻike ʻia ma waena o nā ʻaoʻao e hiki ai i nā CMS ke hoʻohana no ka hana ʻana i nā ʻaoʻao."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Poʻo Inoa",
+        "description": "Poʻo inoa i hōʻike ʻia ma ke kumuhana a me ke poʻo mua."
+      },
+      {
+        "property": "pageType",
+        "title": "ʻAno",
+        "description": "Lepili pōʻaiapili ʻaoʻao ʻike ʻia.",
+        "options": {
+          "": "-- ʻaʻohe --",
+          "content": "Ka ʻIkepili",
+          "assessment": "Loiloi",
+          "quiz": "Hōʻike",
+          "submission": "Waiho",
+          "lesson": "Haʻawina",
+          "module": "Mōkuna",
+          "task": "Hana",
+          "activity": "Hana Pāʻani",
+          "project": "Papahana",
+          "practice": "Hoʻomaʻamaʻa",
+          "unit": "Pauku",
+          "objectives": "Nā Pahuhopu Aʻo",
+          "connection": "Pilina",
+          "knowledge": "Ua ʻIke Anei ʻOe?",
+          "strategy": "Kaʻakaʻa Aʻo",
+          "discuss": "Kūkākūkā",
+          "listen": "Hoʻolohe",
+          "make": "Hana",
+          "observe": "Kilo",
+          "present": "Hōʻike",
+          "reading": "Heluhelu",
+          "reflect": "Noʻonoʻo",
+          "research": "Noiʻi",
+          "watch": "Nānā",
+          "write": "Kākau"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Nā Lepili",
+        "description": "Papa lepili i hoʻokaʻawale ʻia me ke koma."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL Loulou",
+        "description": "URL hoʻohuli i hōʻike ʻia ma kahi o ka ʻikepili o ka ʻaoʻao."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Pahuhopu Loulou",
+        "description": "E wehe i nā loulou ma ka puka aniani like a i ʻole ka puka aniani hou.",
+        "options": {
+          "_self": "Puka aniani like",
+          "_blank": "Puka aniani hou"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Paʻi ʻia",
+        "description": "Hūnā ʻia nā ʻaoʻao i paʻi ʻole ʻia mai nā mea hoʻohana."
+      },
+      {
+        "property": "locked",
+        "title": "Laka i ka ʻaoʻao",
+        "description": "E laka a wehe paha i nā mea a pau ma kēia ʻaoʻao."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Pani i ka slug ʻakomi",
+        "description": "E laka i ka slug mai nā hōʻano hou ʻakomi ma muli o ka poʻo inoa a i ʻole ka makua."
+      },
+      {
+        "property": "slug",
+        "title": "Ala",
+        "description": "Slug URL no kēia ʻaoʻao."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Media e hōʻike ana i ka ʻaoʻao, i hoʻohana ʻia ma kekahi mau kumuhana a me nā nānaina."
+      },
+      {
+        "property": "parent",
+        "title": "Makua",
+        "description": "Ala o ka ʻaoʻao makua."
+      },
+      {
+        "property": "noderefs",
+        "title": "ʻIkepili pili",
+        "description": "Nā ʻaoʻao e pili ana i kēia ʻaoʻao."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Wehewehe",
+        "description": "Wehewehe i hoʻohana ʻia ma nā hōʻiliʻili a me ka hoʻomaikaʻi ʻenekini huli (SEO)."
+      },
+      {
+        "property": "entityType",
+        "title": "ʻAno Mea",
+        "description": "He ʻaoʻao ma ka paʻamau ke ʻole ia e hoʻonoho ʻia ma kekahi ʻano ʻē.",
+        "options": {
+          "page": "ʻAoʻao (paʻamau)",
+          "taxonomy": "Papa māhele",
+          "taxonomyTerm": "Hua Papa Māhele",
+          "region": "Wahi"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Hōʻailona",
+        "description": "Hōʻailona e pili ana i kēia ʻaoʻao ma ka pūnaewele."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu kiko",
+        "description": "Waihoʻoluʻu e pili ana i kēia ʻaoʻao ma ka pūnaewele."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Hūnā ma ka papa koho",
+        "description": "E hūnā i kēia ʻaoʻao mai nā papa koho me ka mālama ʻana i kona URL."
+      },
+      {
+        "property": "order",
+        "title": "Kaʻina",
+        "description": "Kaʻina e pili ana i nā ʻaoʻao hoahānau."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Kumuhana ʻaoʻao",
+        "description": "E pani i ke kumuhana no kēia ʻaoʻao wale nō."
+      },
+      {
+        "property": "author",
+        "title": "Mea kākau",
+        "description": "Inoa mea hoʻohana o ke kanaka hope loa i hoʻololi i kēia ʻaoʻao."
+      }
+    ]
+  }
+}

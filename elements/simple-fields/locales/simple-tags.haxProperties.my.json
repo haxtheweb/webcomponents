@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "တဂ်များ",
+    "description": "စာမျက်နှာပေါ်တွင် ပြသရန် ရိုးရှင်းသော တဂ်စာရင်း။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "တဂ်များ",
+        "description": "ကော်မာဖြင့် ခွဲထားသော တဂ်စာရင်း။"
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "အလိုအလျောက် အထူးပြု အရောင်",
+        "description": "အညွှန်းအပေါ် အခြေခံ၍ အထူးပြု အရောင်ကို အလိုအလျောက် သတ်မှတ်ရန်။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အရောင်",
+        "description": "တဂ်များအတွက် အရောင်။"
+      }
+    ]
+  }
+}

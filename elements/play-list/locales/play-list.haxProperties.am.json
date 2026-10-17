@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "የአጫዋች ዝርዝር",
+    "description": "ማንኛውንም ዓይነት ይዘት በአጫዋች ዝርዝር ውስጥ አሳይ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ምንጭ",
+        "description": "በአጫዋች ዝርዝሩ ውስጥ የሚታይ ይዘት።"
+      },
+      {
+        "property": "edit",
+        "title": "የአርትዖት ሁነታ",
+        "description": "ለአጫዋች ዝርዝሩ በአርትዖት እና በቅድመ-እይታ ሁነታ መካከል ቀያይር።"
+      },
+      {
+        "property": "navigation",
+        "title": "አሰሳ",
+        "description": "የወደፊት እና የኋላ አሰሳ አዝራሮችን አሳይ።"
+      },
+      {
+        "property": "pagination",
+        "title": "ገጽ ቁጥር አሰጣጥ",
+        "description": "የገጽ ቁጥር ነጥቦችን አሳይ።"
+      },
+      {
+        "property": "orientation",
+        "title": "አቅጣጫ",
+        "description": "የተንሸራታቾቹ አቅጣጫ።",
+        "options": {
+          "horizontal": "አግድም",
+          "vertical": "ቁልቁል"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "የሚጀመርበት ተንሸራታች",
+        "description": "መጀመሪያ ትኩረት የሚሰጠው የተንሸራታች መረጃ ጠቋሚ።"
+      },
+      {
+        "property": "aspectRatio",
+        "title": "የገጽታ ምጥጥን",
+        "description": "የተንሸራታቾቹ የገጽታ ምጥጥን።",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

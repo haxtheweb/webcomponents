@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "P'unchaw",
+    "description": "Kalendario p'unchawta willakuykunawan rikuchiy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Killa",
+        "description": "Tarjetapi rikukuq killa."
+      },
+      {
+        "property": "date",
+        "title": "Killapa p'unchawnin",
+        "description": "Killapa p'unchawnin yupaypi."
+      },
+      {
+        "property": "day",
+        "title": "Semanapa p'unchawnin",
+        "description": "Semanapa p'unchawnin qillqapi."
+      },
+      {
+        "property": "title",
+        "title": "Sutichay",
+        "description": "Ruwakuypa sutin."
+      },
+      {
+        "property": "location",
+        "title": "Maypi",
+        "description": "Ruwakuy maypi kasqan."
+      },
+      {
+        "property": "startTime",
+        "title": "Qallariy",
+        "description": "Qallariy pacha."
+      },
+      {
+        "property": "endTime",
+        "title": "Tukuy",
+        "description": "Tukuy pacha."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Akllanalla rikchachiq llimpi."
+      },
+      {
+        "property": "dark",
+        "title": "Tutayaq tema",
+        "description": "Tutayaq temata kawsachiy."
+      }
+    ]
+  }
+}

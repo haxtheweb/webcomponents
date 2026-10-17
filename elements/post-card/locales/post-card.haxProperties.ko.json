@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "엽서",
+    "description": "어딘가에서 보낸 실제 엽서처럼 보이도록 만든 재미있는 미디어 요소"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "받는 사람",
+        "description": "누구에게 보내나요?"
+      },
+      {
+        "property": "from",
+        "title": "보내는 사람",
+        "description": "당신은 누구인가요?"
+      },
+      {
+        "property": "message",
+        "title": "메시지",
+        "description": "무엇을 말하고 싶나요?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "소인 발송지",
+        "description": "이 카드는 어디에서 보냈나요?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "메인 사진 소스",
+        "description": "사진은 어디에 있나요?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "우표 사진 소스",
+        "description": "사진은 어디에 있나요?"
+      }
+    ]
+  }
+}

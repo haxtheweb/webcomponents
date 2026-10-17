@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Položka krokov",
+    "description": "Položka, ktorá je súčasťou zoznamu krokov"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Názov"
+      }
+    ]
+  }
+}

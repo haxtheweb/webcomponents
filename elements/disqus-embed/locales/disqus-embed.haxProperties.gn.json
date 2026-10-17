@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Emoinge Disqus jehai'i kuatiaroguépe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Téra mbyky",
+        "description": "Tenda réra mbyky, omotenondéva Disqus script ryru."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL kuatiarogue",
+        "description": "URL kuatiarogue ojoajuha jehai'i aty."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Kuatiarogue mboheraha",
+        "description": "Mboheraha peteĩchagua kuatiarogue jehai'i atýpe g̃uarã."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Kuatiarogue teratee",
+        "description": "Kuatiarogue teratee ojoajuha jehai'i aty."
+      },
+      {
+        "property": "loadingText",
+        "title": "Moñe'ẽrã henyhẽ aja",
+        "description": "Moñe'ẽrã oñemomarandúva jehai'i henyhẽ aja."
+      },
+      {
+        "property": "lang",
+        "title": "Ñe'ẽ",
+        "description": "Ñe'ẽ ayvu Disqus ñemboherapépe g̃uarã, techapyrã en."
+      }
+    ]
+  }
+}

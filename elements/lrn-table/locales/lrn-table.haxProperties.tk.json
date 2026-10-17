@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV tablisasy",
+    "description": "Bu, CSV faýly nirede ýerleşse-de, ondan tablisa döredip biler."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Çeşme",
+        "description": "Bu CSV faýlynyň URL-i."
+      },
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Dörediljek tablisanyň ady."
+      },
+      {
+        "property": "description",
+        "title": "Düşündiriş",
+        "description": "Tablisa maglumatlarynyň elýeterliligini gowulandyrmak üçin has jikme-jik düşündiriş."
+      }
+    ]
+  }
+}

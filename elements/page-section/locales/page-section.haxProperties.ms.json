@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Bahagian halaman",
+    "description": "Bekas bahagian untuk kandungan halaman dan susun atur berasaskan skrin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Rawatan reka bentuk",
+        "description": "Gaya pratetap yang mengemas kini tetapan berkaitan."
+      },
+      {
+        "property": "image",
+        "title": "Imej",
+        "description": "Media latar belakang untuk bahagian."
+      },
+      {
+        "property": "bg",
+        "title": "Warna latar belakang",
+        "description": "Warna latar belakang apabila tiada imej ditetapkan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Butang tatal",
+        "description": "Paparkan butang yang menatal ke bahagian seterusnya."
+      },
+      {
+        "property": "fold",
+        "title": "Paparkan lipatan",
+        "description": "Paparkan lipatan visual di bahagian bawah bahagian."
+      },
+      {
+        "property": "full",
+        "title": "Saiz skrin penuh",
+        "description": "Penuhi ketinggian skrin penonton."
+      },
+      {
+        "property": "filter",
+        "title": "Gunakan Penapis",
+        "description": "Gunakan penapis visual pada imej latar belakang."
+      },
+      {
+        "slot": "",
+        "title": "Kandungan",
+        "description": "Kandungan bahagian."
+      },
+      {
+        "slot": "entice",
+        "title": "Tarikan",
+        "description": "Kandungan tarikan pilihan."
+      },
+      {
+        "slot": "buttons",
+        "title": "Butang",
+        "description": "Kumpulan butang yang dipaparkan di bawah teks."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Teks sauh",
+        "description": "Label sauh yang dipaparkan dalam navigasi."
+      }
+    ]
+  }
+}

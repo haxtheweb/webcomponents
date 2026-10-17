@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grup zgjerimi/palosjeje",
+    "description": "Një grup elementesh që zgjerohen dhe palosen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Zgjero vetëm një",
+        "description": "Vetëm një element mund të zgjerohet."
+      },
+      {
+        "slot": "",
+        "title": "Elementet e palosshme",
+        "description": "Elementet e palosshme."
+      }
+    ]
+  }
+}

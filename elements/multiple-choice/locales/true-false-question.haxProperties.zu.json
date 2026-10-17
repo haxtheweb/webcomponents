@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Umbuzo Weqiniso / Amanga",
+    "description": "Umbuzo weqiniso noma amanga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Umbuzo",
+        "description": "Umbuzo abasebenzisi okufanele bawuphendule."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Impendulo Elungile"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Igama lemibuzo",
+        "description": "Igama lemibuzo elidluliselwayo ukuze lisetshenziswe ezindaweni eziqhutshwa yi-xAPI ukuhlonza le nto"
+      }
+    ]
+  }
+}

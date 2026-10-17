@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Agarsiisaa MIDI",
+    "description": "MIDI agarsiisa fakkii wajjin taphachiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Madda",
+        "description": "URL faayilii taphatamuu."
+      },
+      {
+        "property": "visualizer",
+        "title": "Agarsiisa",
+        "description": "Akkaataa agarsiisa faayilii muuziqaa.",
+        "options": {
+          "staff": "Sarara muuziqaa",
+          "piano-roll": "Marsaa piyaanoo",
+          "waterfall": "Piyaanoo + bishaan dhangala'aa"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Bishaan dhangala'aa dhoksi",
+        "description": "Agarsiisa piyaanoo keessatti nootii bishaan dhangala'aa dhoksi."
+      }
+    ]
+  }
+}

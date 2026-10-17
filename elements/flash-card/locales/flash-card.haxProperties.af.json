@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Flitskaart",
+    "description": "Oefen begrippe met voor-en-agter-flitskaarte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Voorkant van die kaart",
+        "description": "Voorkantteks of vraag."
+      },
+      {
+        "slot": "back",
+        "title": "Agterkant van die kaart",
+        "description": "Verwagte antwoord."
+      },
+      {
+        "property": "imgSource",
+        "title": "Prentbron",
+        "description": "Prentlêer gebruik vir die kaart. Oorheers Prent-sleutelwoord."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tipe aksie",
+        "description": "OER Schema: die tipe aksie wat hierdie oefening behels (bv. Lees, Skryf, Maak, Navors, Luister, Kyk, Besin, Bespreek, Waarneem, Aanbied, Assesseer)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leeruitkoms",
+        "description": "OER Schema: ID of URL van die leeruitkoms wat hierdie oefening ondersteun."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Donker",
+        "description": "Gebruik donker modus."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "Kaart se aksentkleur."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Prent-sleutelwoord",
+        "description": "Sleutelwoord vir 'n ewekansige prent. Word oorheers deur Prentbron."
+      }
+    ]
+  }
+}

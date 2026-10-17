@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Koma taban."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etîket (ji bo gihîştbariyê)",
+        "description": "Etîketa gihîştbar ji bo koma taban."
+      },
+      {
+        "property": "disabled",
+        "title": "Neçalak",
+        "description": "Hemû taban neçalak bike."
+      },
+      {
+        "property": "hidden",
+        "title": "Veşartî",
+        "description": "Koma taban veşêre."
+      },
+      {
+        "property": "sticky",
+        "title": "Zeliqî",
+        "description": "Dema gerandinê tabên horîzontal li jor bihêle."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Xala Şikandina Rûpelsazkirinê",
+        "description": "Xala şikandinê ji bo tabên horîzontal; ji bo tenê vertîkal -1 bikar bîne."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Xala Şikandina Îkonê",
+        "description": "Xala şikandinê ji bo nîşandana nivîsê bi îkonan re. Xwerû 0 e; ji bo moda tenê îkon -1 bikar bîne."
+      },
+      {
+        "slot": "",
+        "title": "Tab",
+        "description": "Rêzek ji hêmanên <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID ya Yekta",
+        "description": "ID ya yekta ji bo vê koma taban."
+      }
+    ]
+  }
+}

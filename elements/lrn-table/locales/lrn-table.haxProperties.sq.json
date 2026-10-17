@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tabelë CSV",
+    "description": "Kjo mund të gjenerojë një tabelë nga një skedar CSV pavarësisht se ku ndodhet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Burimi",
+        "description": "URL-ja e këtij skedari CSV."
+      },
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Titulli i tabelës që do të gjenerohet."
+      },
+      {
+        "property": "description",
+        "title": "Përshkrimi",
+        "description": "Përshkrim më i detajuar për aksesueshmëri më të mirë të të dhënave të tabelës."
+      }
+    ]
+  }
+}

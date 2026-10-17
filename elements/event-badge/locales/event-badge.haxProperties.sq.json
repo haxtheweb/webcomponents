@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Distinktiv ngjarjeje",
+    "description": "Komponent distinktivi ngjarjeje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imazhi i TV",
+        "description": "Imazhi i shfaqur në TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logoja",
+        "description": "Logoja e shfaqur në cep të distinktivit."
+      },
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Titulli i shfaqur në krye të distinktivit."
+      },
+      {
+        "property": "name",
+        "title": "Emri",
+        "description": "Emri i shfaqur në distinktiv."
+      },
+      {
+        "property": "position",
+        "title": "Pozicioni",
+        "description": "Roli ose titulli i personit."
+      },
+      {
+        "property": "organization",
+        "title": "Organizata",
+        "description": "Organizata ku punon personi."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Ngjyra e TV",
+        "description": "Zgjidh ngjyrën për TV-në."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra kryesore e sfondit ose e tekstit."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Ngjyra e çelësave",
+        "description": "Ngjyra e çelësave të TV-së."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Apliko një efekt sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Bardh e zi",
+        "description": "Apliko një efekt bardh e zi."
+      }
+    ]
+  }
+}

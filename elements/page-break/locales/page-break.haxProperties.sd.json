@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "صفحي جا تفصيل",
+    "description": "صفحن جي وچ ۾ بصري ورهاست مقرر ڪريو جيڪا CMS صفحا ٺاهڻ لاءِ استعمال ڪري سگهن."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "ٿيم ۽ پهرين سرخي ۾ ڏيکاريل عنوان."
+      },
+      {
+        "property": "pageType",
+        "title": "قسم",
+        "description": "بصري صفحي جي حوالي جو ليبل.",
+        "options": {
+          "": "-- ڪوبه نه --",
+          "content": "مواد",
+          "assessment": "جائزو",
+          "quiz": "ڪوئز",
+          "submission": "جمع ڪرائڻ",
+          "lesson": "سبق",
+          "module": "ماڊيول",
+          "task": "ڪم",
+          "activity": "سرگرمي",
+          "project": "منصوبو",
+          "practice": "مشق",
+          "unit": "يونٽ",
+          "objectives": "سکيا جا مقصد",
+          "connection": "ڳانڍاپو",
+          "knowledge": "ڇا توهان ڄاڻو ٿا؟",
+          "strategy": "سکيا جي حڪمت عملي",
+          "discuss": "بحث ڪريو",
+          "listen": "ٻڌو",
+          "make": "ٺاهيو",
+          "observe": "مشاهدو ڪريو",
+          "present": "پيش ڪريو",
+          "reading": "پڙهڻ",
+          "reflect": "غور ڪريو",
+          "research": "تحقيق",
+          "watch": "ڏسو",
+          "write": "لکو"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ٽيگ",
+        "description": "ڪاما سان ڌار ٽيگن جي لسٽ."
+      },
+      {
+        "property": "linkUrl",
+        "title": "لنڪ URL",
+        "description": "صفحي جي مواد بدران ڏيکاريل ري ڊائريڪٽ URL."
+      },
+      {
+        "property": "linkTarget",
+        "title": "لنڪ ٽارگيٽ",
+        "description": "لنڪون ساڳي ونڊو يا نئين ونڊو ۾ کوليو.",
+        "options": {
+          "_self": "ساڳي ونڊو",
+          "_blank": "نئين ونڊو"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "شايع ٿيل",
+        "description": "غير شايع ٿيل صفحا آخري يوزرن کان لڪيل هوندا آهن."
+      },
+      {
+        "property": "locked",
+        "title": "صفحو لاڪ ڪريو",
+        "description": "هن صفحي جا سڀ عنصر لاڪ يا ان لاڪ ڪريو."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "خودڪار slug اوور رائيڊ ڪريو",
+        "description": "عنوان يا پيرنٽ جي بنياد تي خودڪار تازه ڪارين کان slug لاڪ ڪريو."
+      },
+      {
+        "property": "slug",
+        "title": "رستو",
+        "description": "هن صفحي لاءِ URL slug."
+      },
+      {
+        "property": "image",
+        "title": "ميڊيا",
+        "description": "صفحي جي نمائندگي ڪندڙ ميڊيا، ڪجهه ٿيمن ۽ ڏيکن ۾ استعمال ٿيندڙ."
+      },
+      {
+        "property": "parent",
+        "title": "پيرنٽ",
+        "description": "پيرنٽ صفحي جو رستو."
+      },
+      {
+        "property": "noderefs",
+        "title": "لاڳاپيل مواد",
+        "description": "هن صفحي سان لاڳاپيل صفحا."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "وضاحت",
+        "description": "ڪليڪشنن ۽ سرچ انجڻ آپٽيمائيزيشن (SEO) ۾ استعمال ٿيندڙ وضاحت."
+      },
+      {
+        "property": "entityType",
+        "title": "اداري جو قسم",
+        "description": "جيستائين ٻي صورت ۾ مقرر نه ڪجي، ڊفالٽ صفحو آهي.",
+        "options": {
+          "page": "صفحو (ڊفالٽ)",
+          "taxonomy": "درجه بندي",
+          "taxonomyTerm": "درجه بندي جو اصطلاح",
+          "region": "علائقو"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "آئڪن",
+        "description": "سائيٽ ۾ هن صفحي سان لاڳاپيل آئڪن."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "سائيٽ ۾ هن صفحي سان لاڳاپيل رنگ."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "مينيو ۾ لڪايو",
+        "description": "هن صفحي کي مينيوز مان لڪايو پر ان جو URL برقرار رکو."
+      },
+      {
+        "property": "order",
+        "title": "ترتيب",
+        "description": "ڀيڻ صفحن جي نسبت ترتيب."
+      },
+      {
+        "property": "developerTheme",
+        "title": "صفحي جو ٿيم",
+        "description": "صرف هن صفحي لاءِ ٿيم اوور رائيڊ ڪريو."
+      },
+      {
+        "property": "author",
+        "title": "ليکڪ",
+        "description": "هن صفحي ۾ آخري تبديلي ڪندڙ شخص جو يوزرنيم."
+      }
+    ]
+  }
+}

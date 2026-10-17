@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Бит флагы",
+    "description": "Бит авторлары өчен редакция искәрмәсе."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Бит флагының ассызык төсе."
+      },
+      {
+        "property": "label",
+        "title": "Тамга",
+        "description": "Бит флагының тамга тексты."
+      }
+    ]
+  }
+}

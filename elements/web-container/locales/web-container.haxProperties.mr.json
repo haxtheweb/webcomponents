@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS कंटेनर"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "संपादक लपवा",
+        "description": "फाइल संपादन इंटरफेस लपवा."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "टर्मिनल लपवा",
+        "description": "आपोआप चालणाऱ्या प्रोग्रामसाठी टर्मिनल लपवा."
+      },
+      {
+        "property": "hideWindow",
+        "title": "विंडो लपवा",
+        "description": "फक्त-टर्मिनल वापरासाठी आउटपुट विंडो लपवा."
+      },
+      {
+        "slot": "",
+        "title": "आदेश",
+        "description": "लोड करण्यापूर्वी चालवायचे आदेश (प्रत्येक ओळीत एक)."
+      }
+    ]
+  }
+}

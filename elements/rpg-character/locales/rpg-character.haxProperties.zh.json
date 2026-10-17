@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG 角色",
+    "description": "来自 HAX 的趣味角色。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "姓名",
+        "description": "用于生成随机角色的词。"
+      },
+      {
+        "property": "hat",
+        "title": "帽子",
+        "description": "帽子样式。",
+        "options": {
+          "none": "默认",
+          "random": "随机",
+          "bunny": "兔子",
+          "cowboy": "牛仔",
+          "education": "教育",
+          "construction": "施工",
+          "warning": "警告",
+          "watermelon": "西瓜",
+          "coffee": "咖啡",
+          "knight": "骑士",
+          "ninja": "忍者",
+          "party": "派对",
+          "error": "错误",
+          "edit": "编辑"
+        }
+      },
+      {
+        "property": "width",
+        "title": "宽度",
+        "description": "角色宽度（像素）。"
+      },
+      {
+        "property": "height",
+        "title": "高度",
+        "description": "角色高度（像素）。"
+      },
+      {
+        "property": "fire",
+        "title": "着火？",
+        "description": "角色是否着火。"
+      },
+      {
+        "property": "walking",
+        "title": "行走？",
+        "description": "行走动画；着火时运行。"
+      }
+    ]
+  }
+}

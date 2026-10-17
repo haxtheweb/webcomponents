@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "થીમવાળું Polaris કૉલ-ટુ-ઍક્શન બટન બતાવો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "બટન લખાણ",
+        "description": "કૉલ-ટુ-ઍક્શન બટનમાં બતાવાતું લખાણ."
+      },
+      {
+        "property": "link",
+        "title": "લિંક",
+        "description": "બટન માટે ગંતવ્ય URL."
+      },
+      {
+        "property": "type",
+        "title": "પ્રકાર",
+        "description": "દૃશ્ય શૈલીનો પ્રકાર.",
+        "options": {
+          "primary": "પ્રાથમિક",
+          "tinted": "રંગછાયાવાળું",
+          "light": "હળવું"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "રૂપરેખા શૈલી",
+        "description": "રૂપરેખા શૈલી સક્ષમ કરો."
+      },
+      {
+        "property": "filled",
+        "title": "ભરેલી શૈલી",
+        "description": "ભરેલી શૈલી સક્ષમ કરો."
+      }
+    ]
+  }
+}

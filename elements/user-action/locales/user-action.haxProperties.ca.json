@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Acció d'usuari",
+    "description": "Registra les accions dels usuaris i envia les dades a magatzems xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Esdeveniment que es registra",
+        "description": "Acció de l'usuari que activa aquest esdeveniment.",
+        "options": {
+          "visibility": "Ho pot veure",
+          "keydown": "Prem una tecla aquí",
+          "click": "Fes clic aquí",
+          "hover": "Passa el cursor per sobre"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Registra cada vegada",
+        "description": "Per defecte, només es registra la primera vegada."
+      }
+    ]
+  }
+}

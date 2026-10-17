@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sideanker",
+    "description": "Lenk til bestemte punkter i medier på siden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Sidemål",
+        "description": "ID eller ressurs som dette ankeret peker til."
+      },
+      {
+        "property": "value",
+        "title": "Verdi for dyplenke",
+        "description": "Dyplenkeverdi (for eksempel tidsstempel eller lysbilde-ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Nettstedsenhet",
+        "description": "Valgfri nettstedsenhet for å styre visningen av relaterte begreper."
+      }
+    ]
+  }
+}

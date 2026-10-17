@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Etiquetas",
+    "description": "Lista simple de etiquetas para mostrar na páxina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Etiquetas",
+        "description": "Lista de etiquetas separadas por comas."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Cor de realce automática",
+        "description": "Definir automaticamente a cor de realce segundo a etiqueta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor",
+        "description": "Cor para as etiquetas."
+      }
+    ]
+  }
+}

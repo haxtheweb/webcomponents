@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Citação com imagem",
+    "description": "Citação estilizada com imagem opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagem",
+        "description": "Adicionar uma imagem ao depoimento."
+      },
+      {
+        "property": "name",
+        "title": "Nome completo",
+        "description": "Nome da pessoa que dá o depoimento."
+      },
+      {
+        "property": "position",
+        "title": "Cargo ou função",
+        "description": "Cargo ou função da pessoa."
+      },
+      {
+        "slot": "",
+        "title": "Citação",
+        "description": "Citação do autor do depoimento."
+      }
+    ]
+  }
+}

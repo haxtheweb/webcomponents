@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Flipar",
+    "description": "Safn flipa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Merki (fyrir aðgengi)",
+        "description": "Aðgengilegt merki fyrir flipasafnið."
+      },
+      {
+        "property": "disabled",
+        "title": "Óvirkt",
+        "description": "Gera alla flipa óvirka."
+      },
+      {
+        "property": "hidden",
+        "title": "Falið",
+        "description": "Fela flipasafnið."
+      },
+      {
+        "property": "sticky",
+        "title": "Fast",
+        "description": "Halda láréttum flipum efst við skrun."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Útlitsbrotpunktur",
+        "description": "Brotpunktur fyrir lárétta flipa; notaðu -1 fyrir aðeins lóðrétta."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Táknbrotpunktur",
+        "description": "Brotpunktur fyrir birtingu texta með táknum. Sjálfgefið er 0; notaðu -1 fyrir aðeins tákn."
+      },
+      {
+        "slot": "",
+        "title": "Flipar",
+        "description": "Röð af <a11y-tab/> einingum."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Einkvæmt auðkenni (ID)",
+        "description": "Einkvæmt auðkenni fyrir þetta flipasafn."
+      }
+    ]
+  }
+}

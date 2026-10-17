@@ -1,23 +1,25 @@
 {
   "gizmo": {
     "title": "Acción del usuario",
-    "description": "realizar un seguimiento de las acciones de los usuarios y permitirles hablar con las tiendas xAPI fácilmente"
+    "description": "Registra las acciones del usuario y envía los datos a almacenes xAPI."
   },
   "settings": {
     "configure": [
       {
-        "title": "Evento a seguir",
-        "description": "Acción del usuario que hace que este evento se dispare",
+        "attribute": "track",
+        "title": "Evento que se registra",
+        "description": "Acción del usuario que desencadena este evento.",
         "options": {
           "visibility": "Puede ver esto",
-          "keydown": "Presiona una tecla aquí",
-          "click": "Hace clic en esto",
-          "hover": "Pase el cursor sobre esto"
+          "keydown": "Pulsar una tecla aquí",
+          "click": "Hacer clic aquí",
+          "hover": "Pasar el cursor por encima"
         }
       },
       {
-        "title": "Seguimiento cada vez",
-        "description": "El comportamiento predeterminado es solo para realizar un seguimiento de la primera aparición"
+        "attribute": "every",
+        "title": "Registrar cada vez",
+        "description": "De forma predeterminada, solo se registra la primera vez."
       }
     ]
   }

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Strnljivi vsebnik",
+    "description": "Posamezen razširljiv in strnljiv vsebnik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Naslov",
+        "description": "Besedilo strnljivega elementa."
+      },
+      {
+        "property": "expanded",
+        "title": "Razširjeno",
+        "description": "Privzeto razširjeno."
+      },
+      {
+        "property": "headingButton",
+        "title": "Gumb v naslovu",
+        "description": "Celoten naslov naj bo klikljiv, ne le ikona."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona gumba za razširitev/strnitev."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikona (ko je razširjeno)",
+        "description": "Neobvezna ikona za razširjeno stanje preklopa."
+      },
+      {
+        "slot": "",
+        "title": "Vsebina",
+        "description": "Vsebina strnljivega elementa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Opis orodja",
+        "description": "Opis orodja za gumb za razširitev/strnitev."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Opis orodja (ko je razširjeno)",
+        "description": "Opis orodja za gumb za razširitev/strnitev v razširjenem stanju."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ikhadi lokuzilolonga",
+    "description": "Ziqhelise iingqikelelo ngamakhadi anomphambili nomva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Umphambili weKhadi",
+        "description": "Umbhalo wangaphambili okanye umbuzo."
+      },
+      {
+        "slot": "back",
+        "title": "Umva weKhadi",
+        "description": "Impendulo elindelekileyo."
+      },
+      {
+        "property": "imgSource",
+        "title": "Umthombo woMfanekiso",
+        "description": "Ifayile yomfanekiso esetyenziselwa ikhadi. Ithatha indawo yeGama eliPhambili loMfanekiso."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Uhlobo lweNtshukumo",
+        "description": "OER Schema: uhlobo lwentshukumo olubandakanywa kolu qheliselo (umz. Reading, Writing, Making, Researching, Listening, Watching, Reflecting, Discussing, Observing, Presenting, Assess)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Injongo yokuFunda",
+        "description": "OER Schema: i-ID okanye i-URL yenjongo yokufunda exhaswa lolu qheliselo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Mnyama",
+        "description": "Sebenzisa imowudi emnyama."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Ogqamisayo",
+        "description": "Umbala ogqamisayo wekhadi."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Igama eliPhambili loMfanekiso",
+        "description": "Igama eliphambili lomfanekiso ongacwangciswanga. Lithathelwa indawo nguMthombo woMfanekiso."
+      }
+    ]
+  }
+}

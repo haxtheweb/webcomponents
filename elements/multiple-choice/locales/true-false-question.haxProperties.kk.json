@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Дұрыс / Бұрыс сұрағы",
+    "description": "Дұрыс-бұрыс сұрағы"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Сұрақ",
+        "description": "Пайдаланушылар жауап беретін сұрақ."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Дұрыс жауап"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Тест атауы",
+        "description": "Осы элементті сәйкестендіру үшін xAPI негізіндегі орталарда қолданылатын тест атауы"
+      }
+    ]
+  }
+}

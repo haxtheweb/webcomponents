@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Medijski citat",
+    "description": "Slika s citatom, navedbo vira in neobveznim napisom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Citat",
+        "description": "Besedilo citata."
+      },
+      {
+        "slot": "author",
+        "title": "Avtor",
+        "description": "Avtor citata."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Podrobnosti o avtorju",
+        "description": "Podrobnosti o avtorju."
+      },
+      {
+        "slot": "caption",
+        "title": "Napis",
+        "description": "Napis slike."
+      },
+      {
+        "property": "src",
+        "title": "Vir slike",
+        "description": "Slikovna datoteka, uporabljena za medijski citat."
+      },
+      {
+        "property": "alt",
+        "title": "Nadomestno besedilo",
+        "description": "Nadomestno besedilo za sliko."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Poudarna barva kartice."
+      }
+    ]
+  }
+}

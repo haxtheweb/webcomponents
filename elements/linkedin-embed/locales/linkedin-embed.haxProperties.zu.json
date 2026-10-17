@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Ukushumeka kwe-LinkedIn",
+    "description": "Shumeka ikhadi lephrofayela ye-LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Igama elikhethekile",
+        "description": "Ingxenye yegama lomsebenzisi elikhethekile le-LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Isifunda solimi",
+        "description": "Inani lemethadatha yesifunda solimi njengo-en_US."
+      }
+    ]
+  }
+}

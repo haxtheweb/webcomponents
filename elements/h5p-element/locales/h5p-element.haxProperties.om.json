@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Marsaa H5P faayilota .h5p fe'uu fi dhiyeessuuf"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Koodii galchiinsa iframe H5P"
+      }
+    ]
+  }
+}

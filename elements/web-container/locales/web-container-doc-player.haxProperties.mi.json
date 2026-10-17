@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Kaipurei tuhinga wāhanga tukutuku"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Hunaia te matapihi",
+        "description": "Hunaia te matapihi putanga, he whai hua ina ko te tauranga anake te kaupapa"
+      }
+    ]
+  }
+}

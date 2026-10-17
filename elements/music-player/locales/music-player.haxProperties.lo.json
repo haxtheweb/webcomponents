@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ຕົວສະແດງພາບ MIDI",
+    "description": "ຫຼິ້ນ MIDI ໃນບໍລິບົດພ້ອມການສະແດງພາບ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "URL ຂອງໄຟລ໌ທີ່ຈະຫຼິ້ນ."
+      },
+      {
+        "property": "visualizer",
+        "title": "ການສະແດງພາບ",
+        "description": "ຮູບແບບການສະແດງພາບສຳລັບໄຟລ໌ດົນຕີ.",
+        "options": {
+          "staff": "ບັນທັດ 5 ເສັ້ນ",
+          "piano-roll": "ມ້ວນເປຍໂນ",
+          "waterfall": "ເປຍໂນ + ນ້ຳຕົກ"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "ເຊື່ອງນ້ຳຕົກ",
+        "description": "ເຊື່ອງໂນດແບບນ້ຳຕົກໃນການສະແດງພາບເປຍໂນ."
+      }
+    ]
+  }
+}

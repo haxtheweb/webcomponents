@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "स्व-तपासणी",
+    "description": "वापरकर्ते स्व-तपासणी पूर्ण करू शकतात."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "प्रतिमा",
+        "description": "स्व-तपासणीसाठी प्रतिमा."
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "स्व-तपासणीचे शीर्षक."
+      },
+      {
+        "property": "alt",
+        "title": "पर्यायी मजकूर",
+        "description": "प्रतिमेसाठी पर्यायी मजकूर."
+      },
+      {
+        "slot": "question",
+        "title": "प्रश्न"
+      },
+      {
+        "slot": "",
+        "title": "उत्तर"
+      },
+      {
+        "property": "accentColor",
+        "title": "थीम रंग",
+        "description": "डिझाइन सिस्टममधून थीम रंग निवडा.",
+        "options": {
+          "primary": "प्राथमिक",
+          "accent": "उठाव",
+          "success": "यश",
+          "warning": "इशारा",
+          "error": "त्रुटी",
+          "info": "माहिती"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "अध्ययन उद्दिष्ट",
+        "description": "oer:hasLearningObjective म्हणून तयार होणारा अध्ययन उद्दिष्ट संदर्भ."
+      },
+      {
+        "property": "assessing",
+        "title": "मूल्यमापन",
+        "description": "oer:assessing म्हणून तयार होणारा उपक्रम संदर्भ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "अधिक लिंक",
+        "description": "अतिरिक्त माहितीची लिंक."
+      }
+    ]
+  }
+}

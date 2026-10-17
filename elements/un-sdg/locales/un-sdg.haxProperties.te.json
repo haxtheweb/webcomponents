@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "ఐక్యరాజ్యసమితి సుస్థిర అభివృద్ధి లక్ష్యం."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "లక్ష్యం",
+        "description": "UN SDG సంఖ్య."
+      },
+      {
+        "property": "colorOnly",
+        "title": "రంగు మాత్రమే",
+        "description": "లక్ష్యం రంగును మాత్రమే చూపండి."
+      }
+    ]
+  }
+}

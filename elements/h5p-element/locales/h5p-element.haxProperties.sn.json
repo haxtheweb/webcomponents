@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Chiputiro cheh5p chekurodha nekuratidza mafaira e.h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Kodhi yekuisa iframe yeH5P"
+      }
+    ]
+  }
+}

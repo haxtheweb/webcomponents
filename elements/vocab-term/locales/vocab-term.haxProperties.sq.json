@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Fjalor",
+    "description": "Term fjalori."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termi"
+      },
+      {
+        "property": "information",
+        "title": "Përkufizimi",
+        "description": "Përkufizimi i shfaqur kur klikohet termi."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Dritare kërcyese",
+        "description": "Shfaq përkufizimin në një dritare kërcyese në vend të brenda tekstit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Lidhjet",
+        "description": "Listë lidhjesh shtesë të lidhura me këtë term."
+      }
+    ]
+  }
+}

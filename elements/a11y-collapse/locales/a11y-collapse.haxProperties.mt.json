@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kontenitur li jingħalaq",
+    "description": "Kontenitur wieħed li jista' jiġi espanż u magħluq."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Intestatura",
+        "description": "Test għall-kontenitur li jingħalaq."
+      },
+      {
+        "property": "expanded",
+        "title": "Espanż",
+        "description": "Espandi b'mod awtomatiku."
+      },
+      {
+        "property": "headingButton",
+        "title": "Buttuna tal-intestatura",
+        "description": "Agħmel l-intestatura kollha klikkabbli minflok l-ikona biss."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona għall-buttuna li tespandi/tagħlaq."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikona (meta espanż)",
+        "description": "Ikona fakultattiva għall-istat espanż tal-buttuna."
+      },
+      {
+        "slot": "",
+        "title": "Kontenut",
+        "description": "Kontenut għall-kontenitur li jingħalaq."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Tooltip",
+        "description": "Tooltip għall-buttuna li tespandi/tagħlaq."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Tooltip (meta espanż)",
+        "description": "Tooltip għall-buttuna li tespandi/tagħlaq meta tkun espanża."
+      }
+    ]
+  }
+}

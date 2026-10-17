@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Kurzantwortfrage",
+    "description": "Den Benutzer eine einfache Frage beantworten lassen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Frage",
+        "description": "Frage, auf die Benutzer antworten sollen."
+      },
+      {
+        "property": "answers",
+        "title": "Mögliche Antworten"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Name des Quiz",
+        "description": "Quizname, der in xAPI-gesteuerten Umgebungen zur Identifizierung dieses Elements übergeben wird"
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Ol Lakkaa'uu",
+    "description": "Yeroo mul'atu lakkoofsi hanga gatii barbaadamuutti ol lakkaa'amu agarsiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Gatii xumuraa",
+        "description": "Lakkoofsa hanga isaatti lakkaa'amu."
+      },
+      {
+        "property": "start",
+        "title": "Gatii jalqabaa",
+        "description": "Lakkoofsa irraa lakkaa'uun jalqabamu."
+      },
+      {
+        "property": "duration",
+        "title": "Turtii",
+        "description": "Sekondii sochiin lakkaa'insaa fudhachuu qabu."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Barreeffama duraa",
+        "description": "Barreeffama lakkoofsa dura mul'atu (fkn. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Barreeffama boodaa",
+        "description": "Barreeffama lakkoofsa booda mul'atu (fkn. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Bakka duraa",
+        "description": "Qabiyyee filannoo lakkoofsa dura."
+      },
+      {
+        "slot": "suffix",
+        "title": "Bakka boodaa",
+        "description": "Qabiyyee filannoo lakkoofsa booda."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Bakka desimaalaa",
+        "description": "Baay'ina bakka desimaalaa agarsiifamu."
+      },
+      {
+        "property": "separator",
+        "title": "Qooduu kumaa",
+        "description": "Arfii garee kumaa addaan baasu."
+      },
+      {
+        "property": "decimal",
+        "title": "Arfii desimaalaa",
+        "description": "Arfii tuqaa desimaalaatiif fayyadamu."
+      },
+      {
+        "property": "noeasing",
+        "title": "Saffisa hin laaffisin",
+        "description": "Akka lakkaa'insi walqixa ta'uuf laaffisuu dhaabi."
+      }
+    ]
+  }
+}

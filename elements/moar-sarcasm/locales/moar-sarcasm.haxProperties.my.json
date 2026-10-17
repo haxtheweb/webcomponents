@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "သရော်စာ",
+    "description": "စာသားကို နောက်ပြောင်သော ပုံစံဖြင့် တင်ပြခြင်း"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "စာသား",
+        "description": "သရော်စာ ဖြစ်စေမည့် စာသား"
+      }
+    ]
+  }
+}

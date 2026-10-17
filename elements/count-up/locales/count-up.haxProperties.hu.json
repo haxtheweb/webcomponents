@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Számláló",
+    "description": "Egy szám animált felfelé számlálása a célértékig, amikor a nézetbe görgetik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Záróérték",
+        "description": "A szám, ameddig számol."
+      },
+      {
+        "property": "start",
+        "title": "Kezdőérték",
+        "description": "A szám, ahonnan a számlálás indul."
+      },
+      {
+        "property": "duration",
+        "title": "Időtartam",
+        "description": "A számlálási animáció időtartama másodpercben."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Előtag szövege",
+        "description": "A szám előtt megjelenő szöveg (pl. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Utótag szövege",
+        "description": "A szám után megjelenő szöveg (pl. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Előtag helye",
+        "description": "Opcionális beillesztett tartalom a szám előtt."
+      },
+      {
+        "slot": "suffix",
+        "title": "Utótag helye",
+        "description": "Opcionális beillesztett tartalom a szám után."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Tizedesjegyek",
+        "description": "A megjelenítendő tizedesjegyek száma."
+      },
+      {
+        "property": "separator",
+        "title": "Ezres elválasztó",
+        "description": "Az ezres csoportokat elválasztó karakter."
+      },
+      {
+        "property": "decimal",
+        "title": "Tizedesjel",
+        "description": "A tizedesjelként használt karakter."
+      },
+      {
+        "property": "noeasing",
+        "title": "Nincs gyorsítás",
+        "description": "A gyorsítás kikapcsolása, hogy a számlálás egyenletes legyen."
+      }
+    ]
+  }
+}

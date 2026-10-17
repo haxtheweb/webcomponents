@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Möhtəşəm partlayış",
+    "description": "İxtiyari səs effektləri ilə interaktiv partlayış animasiyası."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Ölçü",
+        "description": "Partlayışın ölçüsünü təyin edin.",
+        "options": {
+          "tiny": "Çox kiçik",
+          "small": "Kiçik",
+          "medium": "Orta",
+          "large": "Böyük",
+          "epic": "Epik"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Rəng",
+        "description": "Partlayışın rəng temasını təyin edin.",
+        "options": {
+          "": "Defolt",
+          "red": "Qırmızı",
+          "blue": "Mavi",
+          "purple": "Bənövşəyi",
+          "orange": "Narıncı",
+          "yellow": "Sarı"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Səs effektləri",
+        "description": "Səs effektlərini aktivləşdir."
+      },
+      {
+        "property": "resetSound",
+        "title": "Səsi sıfırla",
+        "description": "Səsi hər dəfə əvvəldən başlat."
+      },
+      {
+        "property": "image",
+        "title": "Fərdi şəkil",
+        "description": "Fərdi partlayış şəkli üçün ixtiyari URL."
+      },
+      {
+        "property": "sound",
+        "title": "Fərdi səs",
+        "description": "Fərdi səs effekti üçün ixtiyari URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Deaktiv",
+        "description": "Bütün qarşılıqlı təsirləri deaktiv et."
+      }
+    ]
+  }
+}

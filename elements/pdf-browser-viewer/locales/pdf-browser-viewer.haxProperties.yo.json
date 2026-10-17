@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Olùwò PDF Aṣàwákiri",
+    "description": "Fi fáìlì PDF sínú ojú-ìwé pẹ̀lú ìtò káàdì àṣàyàn àti bọ́tìnnì ìgbàsílẹ̀."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Ibi tí fáìlì PDF wà."
+      },
+      {
+        "property": "heading",
+        "title": "Àkọlé",
+        "description": "Ọ̀rọ̀ àkọlé káàdì."
+      },
+      {
+        "property": "card",
+        "title": "Ìtò káàdì",
+        "description": "Fi PDF hàn nínú káàdì pẹ̀lú bọ́tìnnì ìgbàsílẹ̀."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Àmì-orúkọ ìgbàsílẹ̀",
+        "description": "Àmì-orúkọ fún bọ́tìnnì ìgbàsílẹ̀."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Ìfiránṣẹ́ àìṣàtìlẹ́yìn",
+        "description": "Ìfiránṣẹ́ nígbà tí aṣàwákiri kò lè fi àwọn fáìlì PDF hàn."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Ìfiránṣẹ́ ìjápọ̀ àìṣàtìlẹ́yìn",
+        "description": "Ọ̀rọ̀ ìjápọ̀ nígbà tí aṣàwákiri kò lè fi àwọn fáìlì PDF hàn."
+      },
+      {
+        "property": "width",
+        "title": "Ìbú",
+        "description": "Ìbú olùwò PDF."
+      },
+      {
+        "property": "height",
+        "title": "Gíga",
+        "description": "Gíga olùwò PDF."
+      }
+    ]
+  }
+}

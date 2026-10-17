@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Papa",
+    "description": "ʻIkepili ma ke ʻano papa no ka pūnaewele."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Poʻo Lālani",
+        "description": "E manaʻo i ka lālani mua he poʻo."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Poʻo Kolamu",
+        "description": "E manaʻo i ke kolamu mua he poʻo."
+      },
+      {
+        "property": "footer",
+        "title": "Wāwae",
+        "description": "E manaʻo i ka lālani hope he wāwae."
+      },
+      {
+        "property": "sort",
+        "title": "Hiki ke hoʻonohonoho",
+        "description": "E ʻae i ka hoʻonohonoho ʻana ma nā waiwai kolamu."
+      },
+      {
+        "property": "filter",
+        "title": "ʻAe i ke Kānana",
+        "description": "E ʻae i ke kānana ʻana ma nā waiwai kolamu."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Kaila Helu",
+        "description": "E hoʻopili i ke kaila helu i nā kolamu helu."
+      },
+      {
+        "property": "responsive",
+        "title": "Hoʻololi Nui",
+        "description": "E hoʻoponopono i ka hoʻonohonoho papa ma nā pākaukau liʻiliʻi."
+      },
+      {
+        "property": "rubricMode",
+        "title": "ʻAno Rubric",
+        "description": "E unuhi i kēia papa ma ke ʻano he OER Schema Rubric i puka mai ai ka metadata Rubric, RubricScale, RubricCriterion, a me RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "ʻAno o ka Rubric",
+        "description": "Ke kaila rubric i puka ʻia ma ke ʻano he oer:rubricType (he manaʻo wale nō ke hoʻā ʻia ka ʻAno Rubric).",
+        "options": {
+          "": "(ʻaʻohe)",
+          "analytic": "Kālailai",
+          "holistic": "Holoʻokoʻa",
+          "single-point": "Kiko Hoʻokahi",
+          "checklist": "Papa helu"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Me ka lihi"
+      },
+      {
+        "property": "condensed",
+        "title": "Hoʻoemi i nā Lālani",
+        "description": "E hoʻoemi i ke kiʻekiʻe o ka lālani."
+      },
+      {
+        "property": "striped",
+        "title": "Nā Lālani Kaha",
+        "description": "E hoʻomalu i kēlā lālani kēia lālani."
+      },
+      {
+        "property": "downloadable",
+        "title": "Pihi Hoʻoiho",
+        "description": "E hoʻohui i kekahi pihi e hoʻoiho i ka papa."
+      },
+      {
+        "property": "copyable",
+        "title": "Pihi Kope",
+        "description": "E hoʻohui i kekahi pihi e kope i ka ʻikepili CSV o ka papa."
+      },
+      {
+        "property": "printable",
+        "title": "Pihi Paʻi",
+        "description": "E hoʻohui i kekahi pihi e paʻi i ka papa wale nō."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "ʻIkepili CSV",
+        "description": "E hana i kekahi papa mai kekahi faila CSV i hoʻouka ʻia."
+      }
+    ]
+  }
+}

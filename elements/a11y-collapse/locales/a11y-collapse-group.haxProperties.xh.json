@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Iqela lokuVula nokuVala",
+    "description": "Iqela lezinto ezivulekayo nezivalekayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Vula enye kuphela",
+        "description": "Inye kuphela into enokuvulwa."
+      },
+      {
+        "slot": "",
+        "title": "Izinto eziValekayo",
+        "description": "Izinto ezivalekayo."
+      }
+    ]
+  }
+}

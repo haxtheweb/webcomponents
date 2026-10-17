@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Tema boýunça bezelen Polaris hereket çagyryş düwmesini görkeziň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Düwmäniň teksti",
+        "description": "Hereket çagyryş düwmesinde görkezilýän tekst."
+      },
+      {
+        "property": "link",
+        "title": "Baglanyşyk",
+        "description": "Düwme üçin barmaly URL."
+      },
+      {
+        "property": "type",
+        "title": "Wariant",
+        "description": "Wizual stil warianty.",
+        "options": {
+          "primary": "Esasy",
+          "tinted": "Reňklenen",
+          "light": "Açyk"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Gyraly stil",
+        "description": "Gyraly bezegi işlet."
+      },
+      {
+        "property": "filled",
+        "title": "Doldurylan stil",
+        "description": "Doldurylan bezegi işlet."
+      }
+    ]
+  }
+}

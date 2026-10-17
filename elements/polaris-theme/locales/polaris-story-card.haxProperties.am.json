@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "የPolaris ታሪክ ካርድ",
+    "description": "የጀርባ ምስል፣ የምሰሶ መለያ እና የርዕስ ጽሑፍ ያለው የPolaris ታሪክ ካርድ አሳይ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "የጀርባ ምስል",
+        "description": "እንደ ካርዱ ጀርባ የሚታይ የምስል URL።"
+      },
+      {
+        "property": "backgroundSize",
+        "title": "የጀርባ መጠን",
+        "description": "የጀርባ ምስሉ ካርዱን እንዴት እንደሚሞላ (CSS background-size)።",
+        "options": {
+          "cover": "ሸፍን (cover)",
+          "contain": "አካትት (contain)",
+          "auto": "ራስ-ሰር (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "የጀርባ ማያያዣ",
+        "description": "በሚሸበለልበት ጊዜ የጀርባ ምስሉ እንዴት እንደሚሆን (CSS background-attachment)።",
+        "options": {
+          "scroll": "ማሸብለል (scroll)",
+          "fixed": "ቋሚ (fixed)",
+          "local": "አካባቢያዊ (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "የምሰሶ መለያ",
+        "description": "በካርዱ አናት ላይ የሚታይ በአቢይ ሆሄያት ያለ አጭር መለያ። ለመደበቅ ባዶ ተው።"
+      },
+      {
+        "property": "label",
+        "title": "የካርድ ጽሑፍ",
+        "description": "በታችኛው ፓነል ውስጥ የሚታይ ዋና ጽሑፍ።"
+      },
+      {
+        "property": "link",
+        "title": "አገናኝ",
+        "description": "ሙሉውን ካርድ የሚጠቀልል አማራጭ የመድረሻ URL።"
+      }
+    ]
+  }
+}

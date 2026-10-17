@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "رُکو نوٹ",
+    "description": "پڑھن والیاں نوں خاص ہدایتاں بارے خبردار کرن والا سنیہا۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "رُکو نوٹ لئی عنوان لکھو۔"
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "باہرلا url لکھو۔"
+      },
+      {
+        "property": "status",
+        "title": "حالت",
+        "description": "حالت مقرر کرن نال رنگ تے آئیکن اوہدے مطابق بدل جاندے نیں",
+        "options": {
+          "stop": "رُکو",
+          "warning": "خبرداری",
+          "success": "تصدیق",
+          "info": "اطلاع"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "نوٹ دا متن",
+        "description": "رُکو نوٹ دا متن۔"
+      }
+    ]
+  }
+}

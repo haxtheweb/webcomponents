@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Câu hỏi sắp xếp",
+    "description": "Sắp xếp các mục theo đúng thứ tự."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Câu hỏi",
+        "description": "Tiêu đề câu hỏi."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Hình thức chấm điểm",
+        "description": "OER Schema: hình thức chấm điểm cho bài đánh giá này (ví dụ: điểm số, điểm chữ, phần trăm, hoàn thành)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mục tiêu học tập",
+        "description": "OER Schema: mục tiêu học tập gắn với bài đánh giá này."
+      },
+      {
+        "property": "forCourse",
+        "title": "Khóa học",
+        "description": "OER Schema: khóa học mà bài đánh giá này dành cho."
+      },
+      {
+        "property": "answers",
+        "title": "Đáp án",
+        "description": "Thứ tự đáp án xác định trình tự đúng."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tên bài kiểm tra",
+        "description": "Tên bài kiểm tra dùng để nhận dạng xAPI trong các hệ thống phân tích."
+      }
+    ]
+  }
+}

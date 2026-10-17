@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Àkójọ Ṣí/Pa",
+    "description": "Àkójọ àwọn èròjà tí a lè ṣí àti pa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Ṣí ẹyọ kan ṣoṣo",
+        "description": "Ẹyọ kan ṣoṣo ni a lè ṣí."
+      },
+      {
+        "slot": "",
+        "title": "Àwọn ẹyọ tí a lè pa",
+        "description": "Àwọn ẹyọ tí a lè pa."
+      }
+    ]
+  }
+}

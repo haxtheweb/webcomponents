@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "अंतर्गत ऑडिओ",
+    "description": "पृष्ठ सामग्रीला पूरक म्हणून ओळीतच ऑडिओ वाजवा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "MP3 फाइल किंवा URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "कार्डचा उठाव रंग."
+      },
+      {
+        "property": "shiny",
+        "title": "चमकदार",
+        "description": "राखाडीऐवजी फिकट उठाव पार्श्वभूमी वापरा."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "गडद",
+        "description": "गडद मोड वापरा."
+      }
+    ]
+  }
+}

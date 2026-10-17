@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Список участников GitHub",
+    "description": "Отображаются как персонажи RPG с помощью GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Организация",
+        "description": "Название организации из github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Репозиторий",
+        "description": "Название репозитория из github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Ограничение",
+        "description": "Ограничить количество отображаемых участников."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Isicatshulwa esiyibhloko",
+    "description": "Ibhloko yesicatshulwa enesitayile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Umthombo wesicatshulwa",
+        "description": "Umbhalo womthombo."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo ongenayo",
+        "description": "Umbhalo ongenayo womfanekiso."
+      },
+      {
+        "property": "image",
+        "title": "Umfanekiso",
+        "description": "Umfanekiso oboniswa nesicatshulwa."
+      }
+    ]
+  }
+}

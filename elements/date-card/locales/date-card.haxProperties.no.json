@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Dato",
+    "description": "Vis en kalenderdato med detaljer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Måned",
+        "description": "Måned som vises på kortet."
+      },
+      {
+        "property": "date",
+        "title": "Dag i måneden",
+        "description": "Dag i måneden som tall."
+      },
+      {
+        "property": "day",
+        "title": "Ukedag",
+        "description": "Ukedag som tekst."
+      },
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Navnet på arrangementet."
+      },
+      {
+        "property": "location",
+        "title": "Sted",
+        "description": "Stedet for arrangementet."
+      },
+      {
+        "property": "startTime",
+        "title": "Start",
+        "description": "Starttidspunkt."
+      },
+      {
+        "property": "endTime",
+        "title": "Slutt",
+        "description": "Sluttidspunkt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "En valgfri aksentfarge."
+      },
+      {
+        "property": "dark",
+        "title": "Mørkt tema",
+        "description": "Slå på mørkt tema."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "อักษรศิลป์ HAX",
+    "description": "องค์ประกอบโลโก้สำหรับ HAX แน่นอนว่าเป็นองค์ประกอบที่รองรับ HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "ขนาดของโลโก้ HAX ที่จะวาง",
+        "options": {
+          "mini": "จิ๋ว",
+          "small": "เล็ก",
+          "normal": "ปกติ",
+          "large": "ใหญ่"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "จะแปลงโลโก้เป็นตัวพิมพ์ใหญ่หรือไม่"
+      }
+    ]
+  }
+}

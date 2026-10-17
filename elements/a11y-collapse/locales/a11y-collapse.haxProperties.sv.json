@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Hopfällbar behållare",
+    "description": "En enskild behållare som kan expanderas och fällas ihop."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Rubrik",
+        "description": "Text för den hopfällbara delen."
+      },
+      {
+        "property": "expanded",
+        "title": "Expanderad",
+        "description": "Expandera som standard."
+      },
+      {
+        "property": "headingButton",
+        "title": "Rubrikknapp",
+        "description": "Gör hela rubriken klickbar i stället för bara ikonen."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon för knappen som expanderar/fäller ihop."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikon (när expanderad)",
+        "description": "Valfri ikon för expanderat läge."
+      },
+      {
+        "slot": "",
+        "title": "Innehåll",
+        "description": "Innehåll för den hopfällbara delen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Verktygstips",
+        "description": "Verktygstips för knappen som expanderar/fäller ihop."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Verktygstips (när expanderad)",
+        "description": "Verktygstips för expandera/fäll ihop-knappen i expanderat läge."
+      }
+    ]
+  }
+}

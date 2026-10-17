@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Карточка истории Polaris",
+    "description": "Отображение карточки истории Polaris с фоновым изображением, меткой направления и заголовком."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Фоновое изображение",
+        "description": "URL изображения, используемого в качестве фона карточки."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Размер фона",
+        "description": "Как фоновое изображение заполняет карточку (CSS background-size).",
+        "options": {
+          "cover": "Покрыть (cover)",
+          "contain": "Вместить (contain)",
+          "auto": "Авто (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Прикрепление фона",
+        "description": "Как ведёт себя фоновое изображение при прокрутке (CSS background-attachment).",
+        "options": {
+          "scroll": "Прокручивать (scroll)",
+          "fixed": "Фиксированный (fixed)",
+          "local": "Локальный (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Метка направления",
+        "description": "Короткая метка прописными буквами вверху карточки. Оставьте пустой, чтобы скрыть."
+      },
+      {
+        "property": "label",
+        "title": "Текст карточки",
+        "description": "Основной текст в нижней панели."
+      },
+      {
+        "property": "link",
+        "title": "Ссылка",
+        "description": "Необязательный URL назначения для всей карточки."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tabiau",
+    "description": "Set o dabiau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Label (er hygyrchedd)",
+        "description": "Label hygyrch ar gyfer y set dabiau."
+      },
+      {
+        "property": "disabled",
+        "title": "Wedi'i analluogi",
+        "description": "Analluogi pob tab."
+      },
+      {
+        "property": "hidden",
+        "title": "Cudd",
+        "description": "Cuddio'r set dabiau."
+      },
+      {
+        "property": "sticky",
+        "title": "Gludiog",
+        "description": "Cadw tabiau llorweddol ar y brig wrth sgrolio."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Torbwynt Cynllun",
+        "description": "Torbwynt ar gyfer tabiau llorweddol; defnyddiwch -1 ar gyfer fertigol yn unig."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Torbwynt Eiconau",
+        "description": "Torbwynt ar gyfer dangos testun gydag eiconau. Y rhagosodiad yw 0; defnyddiwch -1 ar gyfer modd eiconau yn unig."
+      },
+      {
+        "slot": "",
+        "title": "Tabiau",
+        "description": "Cyfres o elfennau <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Unigryw",
+        "description": "ID unigryw ar gyfer y set dabiau hon."
+      }
+    ]
+  }
+}

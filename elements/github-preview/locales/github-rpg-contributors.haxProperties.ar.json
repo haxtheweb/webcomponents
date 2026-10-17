@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "قائمة المساهمين في GitHub",
+    "description": "يُعرضون كشخصيات RPG باستخدام GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "المؤسسة",
+        "description": "اسم المؤسسة من github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "المستودع",
+        "description": "اسم المستودع من github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "الحد",
+        "description": "تحديد عدد المساهمين المعروضين."
+      }
+    ]
+  }
+}

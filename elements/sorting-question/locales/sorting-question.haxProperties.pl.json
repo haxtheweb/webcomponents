@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Pytanie z sortowaniem",
+    "description": "Ułóż elementy we właściwej kolejności."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pytanie",
+        "description": "Nagłówek pytania."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format oceniania",
+        "description": "OER Schema: format oceniania tego sprawdzianu (np. punkty, litera, procent, ukończenie)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cel uczenia się",
+        "description": "OER Schema: cel uczenia się powiązany z tym sprawdzianem."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kurs, dla którego przeznaczony jest ten sprawdzian."
+      },
+      {
+        "property": "answers",
+        "title": "Odpowiedzi",
+        "description": "Kolejność odpowiedzi określa prawidłową sekwencję."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nazwa quizu",
+        "description": "Nazwa quizu używana do identyfikacji xAPI w systemach analitycznych."
+      }
+    ]
+  }
+}

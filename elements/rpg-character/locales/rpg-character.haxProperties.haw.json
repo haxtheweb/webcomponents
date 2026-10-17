@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Kanaka RPG",
+    "description": "He kanaka leʻaleʻa mai HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Inoa",
+        "description": "Huaʻōlelo i hoʻohana ʻia no ka hana ʻana i kekahi kanaka kaulele."
+      },
+      {
+        "property": "hat",
+        "title": "Pāpale",
+        "description": "Kaila pāpale.",
+        "options": {
+          "none": "Paʻamau",
+          "random": "Kaulele",
+          "bunny": "Lāpaki",
+          "cowboy": "Paniolo",
+          "education": "Hoʻonaʻauao",
+          "construction": "Kūkulu hale",
+          "warning": "Kaʻao aʻo",
+          "watermelon": "Ipu ʻai maka",
+          "coffee": "Kope",
+          "knight": "Naita",
+          "ninja": "Ninja",
+          "party": "Pāʻina",
+          "error": "Hewa",
+          "edit": "Hoʻoponopono"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Ākea",
+        "description": "Ākea o ke kanaka ma nā pika."
+      },
+      {
+        "property": "height",
+        "title": "Kiʻekiʻe",
+        "description": "Kiʻekiʻe o ke kanaka ma nā pika."
+      },
+      {
+        "property": "fire",
+        "title": "Ke ʻā nei?",
+        "description": "Inā ke ʻā nei ke kanaka."
+      },
+      {
+        "property": "walking",
+        "title": "Ke hele wāwae nei?",
+        "description": "Hoʻoneʻe hele wāwae; holo ʻo ia ke ʻā."
+      }
+    ]
+  }
+}

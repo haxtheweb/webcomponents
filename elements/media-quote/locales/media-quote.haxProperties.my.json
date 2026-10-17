@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "မီဒီယာ ကိုးကားချက်",
+    "description": "ကိုးကားချက်၊ ကိုးကားမှုနှင့် ရွေးချယ်နိုင်သော စာတန်းပါသည့် ပုံ။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "ကိုးကားချက်",
+        "description": "ကိုးကားချက် စာသား။"
+      },
+      {
+        "slot": "author",
+        "title": "စာရေးသူ",
+        "description": "ကိုးကားချက်၏ စာရေးသူ။"
+      },
+      {
+        "slot": "author-detail",
+        "title": "စာရေးသူ အသေးစိတ်",
+        "description": "စာရေးသူ အသေးစိတ်။"
+      },
+      {
+        "slot": "caption",
+        "title": "စာတန်း",
+        "description": "ပုံ စာတန်း။"
+      },
+      {
+        "property": "src",
+        "title": "ပုံ ရင်းမြစ်",
+        "description": "မီဒီယာ ကိုးကားချက်အတွက် အသုံးပြုသော ပုံဖိုင်။"
+      },
+      {
+        "property": "alt",
+        "title": "အစားထိုး စာသား",
+        "description": "ပုံအတွက် အစားထိုး စာသား။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "ကတ် အထူးပြု အရောင်။"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "ရက်စွဲ",
+    "description": "အသေးစိတ်များနှင့်အတူ ပြက္ခဒိန် ရက်စွဲကို ပြသရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "လ",
+        "description": "ကတ်ပေါ်တွင် ပြသော လ။"
+      },
+      {
+        "property": "date",
+        "title": "လ၏ ရက်",
+        "description": "လ၏ ရက်နံပါတ်။"
+      },
+      {
+        "property": "day",
+        "title": "အပတ်၏ နေ့",
+        "description": "အပတ်၏ နေ့ (စာသားဖြင့်)။"
+      },
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်",
+        "description": "အစီအစဉ်၏ အမည်။"
+      },
+      {
+        "property": "location",
+        "title": "တည်နေရာ",
+        "description": "အစီအစဉ်၏ တည်နေရာ။"
+      },
+      {
+        "property": "startTime",
+        "title": "စတင်ချိန်",
+        "description": "စတင်ချိန်။"
+      },
+      {
+        "property": "endTime",
+        "title": "ပြီးဆုံးချိန်",
+        "description": "ပြီးဆုံးချိန်။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "ရွေးချယ်နိုင်သော အထူးပြု အရောင်။"
+      },
+      {
+        "property": "dark",
+        "title": "အမှောင် Theme",
+        "description": "အမှောင် theme ကို ဖွင့်ရန်။"
+      }
+    ]
+  }
+}

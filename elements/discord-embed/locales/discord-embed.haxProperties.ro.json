@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Încorporează comunități Discord dintr-un URL de partajare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL resursă",
+        "description": "URL-ul resursei."
+      },
+      {
+        "property": "height",
+        "title": "Înălțime",
+        "description": "Înălțimea cadrului de conținut."
+      },
+      {
+        "property": "width",
+        "title": "Lățime",
+        "description": "Lățimea cadrului de conținut."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Pildiga tsitaat",
+    "description": "Kujundatud tsitaat valikulise pildiga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Pilt",
+        "description": "Lisa iseloomustusele pilt."
+      },
+      {
+        "property": "name",
+        "title": "Täisnimi",
+        "description": "Iseloomustuse andja nimi."
+      },
+      {
+        "property": "position",
+        "title": "Ametikoht või ametinimetus",
+        "description": "Isiku ametikoht või ametinimetus."
+      },
+      {
+        "slot": "",
+        "title": "Tsitaat",
+        "description": "Iseloomustuse autori tsitaat."
+      }
+    ]
+  }
+}

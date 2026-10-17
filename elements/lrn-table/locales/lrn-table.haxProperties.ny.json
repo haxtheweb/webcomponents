@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tebulo la CSV",
+    "description": "Ichi chingathe kupanga tebulo kuchokera ku fayilo ya CSV kulikonse komwe ili."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Gwero",
+        "description": "URL ya fayilo ya CSV iyi."
+      },
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mutu wa tebulo loti lipangidwe."
+      },
+      {
+        "property": "description",
+        "title": "Kufotokoza",
+        "description": "Kufotokoza mwatsatanetsatane kuti zambiri za tebulo zifikike mosavuta."
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "გარსი Spotify-ის ფლეერის ჩასმებისთვის."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "წყარო",
+        "description": "ჩასმის ან გაზიარების ბმული Spotify-დან."
+      },
+      {
+        "property": "theme",
+        "title": "თემა",
+        "description": "ფლეერის ფონის ფერის თემა.",
+        "options": {
+          "": "ნაგულისხმევი",
+          "0": "შავი"
+        }
+      },
+      {
+        "property": "size",
+        "title": "ზომა",
+        "description": "ფლეერის ზომა.",
+        "options": {
+          "normal": "ნაგულისხმევი",
+          "compact": "კომპაქტური"
+        }
+      }
+    ]
+  }
+}

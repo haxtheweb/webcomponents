@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Ներկառուցել արտաքին վեբ բովանդակություն iframe-ում։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ռեսուրսի URL",
+        "description": "Ռեսուրսի URL-ը։"
+      },
+      {
+        "property": "height",
+        "title": "Բարձրություն",
+        "description": "Iframe-ի բարձրությունը։"
+      },
+      {
+        "property": "width",
+        "title": "Լայնություն",
+        "description": "Iframe-ի լայնությունը։"
+      }
+    ]
+  }
+}

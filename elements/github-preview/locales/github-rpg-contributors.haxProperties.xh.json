@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Uluhlu lwabanegalelo be-GitHub",
+    "description": "Baboniswa njengabalinganiswa be-RPG kusetyenziswa i-GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Umbutho",
+        "description": "Igama lombutho ukusuka kwi-github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Indawo yokugcina",
+        "description": "Igama lendawo yokugcina ukusuka kwi-github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Umda",
+        "description": "Nciphisa inani labanegalelo ababoniswayo."
+      }
+    ]
+  }
+}

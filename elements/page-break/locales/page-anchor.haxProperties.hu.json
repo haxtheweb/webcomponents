@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Oldalhorgony",
+    "description": "Hivatkozás az oldalon lévő média adott pontjaira."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cél az oldalon",
+        "description": "Az azonosító vagy erőforrás, amelyre ez a horgony mutat."
+      },
+      {
+        "property": "value",
+        "title": "Mélyhivatkozás értéke",
+        "description": "Mélyhivatkozás értéke (például időbélyeg vagy diaazonosító)."
+      },
+      {
+        "property": "entityId",
+        "title": "Webhelyentitás",
+        "description": "Opcionális webhelyentitás a kapcsolódó fogalmak megjelenítésének vezérléséhez."
+      }
+    ]
+  }
+}

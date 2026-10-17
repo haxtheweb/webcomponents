@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Player Unity",
+    "description": "Player WebGL do Unity."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Destino",
+        "description": "Caminho para a build do jogo."
+      },
+      {
+        "property": "compression",
+        "title": "Método de compressão",
+        "description": "Extensão de arquivo de compressão para os recursos do jogo."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL de streaming",
+        "description": "URL dos recursos de streaming."
+      },
+      {
+        "property": "companyname",
+        "title": "Nome da empresa",
+        "description": "Nome da empresa."
+      },
+      {
+        "property": "productname",
+        "title": "Nome do produto",
+        "description": "Título do jogo."
+      },
+      {
+        "property": "productversion",
+        "title": "Versão do produto",
+        "description": "Versão de lançamento."
+      },
+      {
+        "property": "width",
+        "title": "Largura do canvas",
+        "description": "Largura CSS do canvas (por exemplo, px ou em)."
+      },
+      {
+        "property": "height",
+        "title": "Altura do canvas",
+        "description": "Altura CSS do canvas (por exemplo, px ou em)."
+      },
+      {
+        "property": "background",
+        "title": "Fundo do canvas",
+        "description": "Fundo CSS do canvas."
+      }
+    ]
+  }
+}

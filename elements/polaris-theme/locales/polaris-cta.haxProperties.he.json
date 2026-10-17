@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA של Polaris",
+    "description": "הצגת כפתור קריאה לפעולה של Polaris בעיצוב ערכת הנושא."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "טקסט הכפתור",
+        "description": "הטקסט המוצג בכפתור הקריאה לפעולה."
+      },
+      {
+        "property": "link",
+        "title": "קישור",
+        "description": "URL היעד של הכפתור."
+      },
+      {
+        "property": "type",
+        "title": "וריאנט",
+        "description": "וריאנט סגנון חזותי.",
+        "options": {
+          "primary": "ראשי",
+          "tinted": "גוון",
+          "light": "בהיר"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "סגנון מתאר",
+        "description": "הפעלת עיצוב מתאר."
+      },
+      {
+        "property": "filled",
+        "title": "סגנון מלא",
+        "description": "הפעלת עיצוב מלא."
+      }
+    ]
+  }
+}

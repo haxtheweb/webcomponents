@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "კოლექციის ელემენტი",
+    "description": "ბარათის სტილის ელემენტი კოლექციის სიაში გამოსაყენებლად, ტექსტით, ბმულით და არასავალდებულო მედიით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "ბმული",
+        "description": "ამ ბარათის დანიშნულების URL."
+      },
+      {
+        "property": "image",
+        "title": "სურათი",
+        "description": "ფონის სურათი."
+      },
+      {
+        "property": "line1",
+        "title": "ხაზი 1",
+        "description": "ტექსტის პირველი ხაზი."
+      },
+      {
+        "property": "line2",
+        "title": "ხაზი 2",
+        "description": "ტექსტის მეორე ხაზი."
+      },
+      {
+        "property": "line3",
+        "title": "ხაზი 3",
+        "description": "ტექსტის მესამე ხაზი."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ხატულა",
+        "description": "ბარათის ამსახველი ხატულა."
+      },
+      {
+        "property": "saturate",
+        "title": "გაჯერების ეფექტი",
+        "description": "სურათის გაჯერების შეცვლა მომხმარებლის ფოკუსისას."
+      },
+      {
+        "property": "tags",
+        "title": "ტეგები",
+        "description": "მძიმით გამოყოფილი ტეგების სია."
+      },
+      {
+        "property": "accentColor",
+        "title": "ფერი",
+        "description": "ტეგების ფერი."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "ბმულის აღმწერი ალტერნატიული ტექსტი."
+      }
+    ]
+  }
+}

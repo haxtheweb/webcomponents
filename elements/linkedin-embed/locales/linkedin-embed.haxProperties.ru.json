@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Встраивание LinkedIn",
+    "description": "Встраивание карточки профиля LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Персональное имя",
+        "description": "Персональное имя пользователя LinkedIn из адреса профиля."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Локаль",
+        "description": "Значение метаданных локали, например en_US."
+      }
+    ]
+  }
+}

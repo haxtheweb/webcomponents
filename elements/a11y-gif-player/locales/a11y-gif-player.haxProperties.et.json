@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Muuda animeeritud GIF-id ligipääsetavaks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Animeeritud GIF",
+        "description": "Animeeritud GIF-i URL."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatiivtekst",
+        "description": "Pildi alternatiivtekst."
+      },
+      {
+        "property": "longdesc",
+        "title": "Pikk kirjeldus",
+        "description": "GIF-i pikk kirjeldus ligipääsetavuse jaoks."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Liikumatu pilt",
+        "description": "GIF-i liikumatu versiooni URL."
+      }
+    ]
+  }
+}

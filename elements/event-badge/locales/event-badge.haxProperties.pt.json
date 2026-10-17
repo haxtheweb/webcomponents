@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Crachá de evento",
+    "description": "Componente de crachá de evento."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagem da TV",
+        "description": "Imagem mostrada na TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logotipo",
+        "description": "Logotipo mostrado no canto do crachá."
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título mostrado no topo do crachá."
+      },
+      {
+        "property": "name",
+        "title": "Nome",
+        "description": "Nome mostrado no crachá."
+      },
+      {
+        "property": "position",
+        "title": "Cargo",
+        "description": "Função ou cargo da pessoa."
+      },
+      {
+        "property": "organization",
+        "title": "Organização",
+        "description": "Organização em que a pessoa trabalha."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Cor da TV",
+        "description": "Selecione a cor da TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Cor principal de fundo ou do texto."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Cor dos botões",
+        "description": "Cor dos botões giratórios da TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sépia",
+        "description": "Aplicar um efeito sépia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Preto e branco",
+        "description": "Aplicar um efeito preto e branco."
+      }
+    ]
+  }
+}

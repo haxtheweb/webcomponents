@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Genişlet Daralt Grubu",
+    "description": "Genişletilip daraltılabilen öğelerden oluşan bir grup."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Yalnızca birini genişlet",
+        "description": "Yalnızca bir öğe genişletilebilir."
+      },
+      {
+        "slot": "",
+        "title": "Daraltılabilir öğeler",
+        "description": "Daraltılabilir öğeler."
+      }
+    ]
+  }
+}

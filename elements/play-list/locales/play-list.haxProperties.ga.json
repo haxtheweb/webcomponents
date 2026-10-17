@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Seinnliosta",
+    "description": "Taispeáin aon chineál ábhair i seinnliosta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Foinse",
+        "description": "Ábhar a thaispeántar sa seinnliosta."
+      },
+      {
+        "property": "edit",
+        "title": "Mód eagarthóireachta",
+        "description": "Scoránaigh idir mód eagarthóireachta agus mód réamhamhairc don seinnliosta."
+      },
+      {
+        "property": "navigation",
+        "title": "Nascleanúint",
+        "description": "Taispeáin cnaipí nascleanúna ar aghaidh agus siar."
+      },
+      {
+        "property": "pagination",
+        "title": "Uimhriú leathanach",
+        "description": "Taispeáin poncanna uimhrithe leathanach."
+      },
+      {
+        "property": "orientation",
+        "title": "Treoshuíomh",
+        "description": "Treoshuíomh na sleamhnán.",
+        "options": {
+          "horizontal": "Cothrománach",
+          "vertical": "Ingearach"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Sleamhnán tosaigh",
+        "description": "Innéacs an tsleamhnáin le díriú air ar dtús."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Cóimheas Gné",
+        "description": "Cóimheas gné na sleamhnán.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Etiketë / Kapsulë",
+    "description": "Një etiketë kompakte në formë kapsule me ngjyrë theksuese opsionale, buton anulimi ose çelës."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etiketa",
+        "description": "Teksti i shfaqur brenda kapsulës."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Emri i ngjyrës theksuese SimpleColors për sfondin e kapsulës.",
+        "options": {
+          "": "-- parazgjedhje --",
+          "red": "E kuqe",
+          "pink": "Rozë",
+          "purple": "Vjollcë",
+          "deep-purple": "Vjollcë e thellë",
+          "indigo": "Indigo",
+          "blue": "Blu",
+          "light-blue": "Blu e çelët",
+          "cyan": "Cian",
+          "teal": "Gurkali",
+          "green": "E gjelbër",
+          "light-green": "E gjelbër e çelët",
+          "lime": "Lime",
+          "yellow": "E verdhë",
+          "amber": "Qelibar",
+          "orange": "Portokalli",
+          "deep-orange": "Portokalli e thellë",
+          "brown": "Kafe",
+          "blue-grey": "Gri në blu",
+          "grey": "Gri"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Ngjyrë theksuese automatike",
+        "description": "Nxirre ngjyrën theksuese automatikisht nga teksti i etiketës."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Butoni i anulimit",
+        "description": "Shfaq një buton ikone për heqje/anulim brenda kapsulës."
+      },
+      {
+        "property": "readonly",
+        "title": "Vetëm për lexim",
+        "description": "Fshih butonin e anulimit që kapsula të jetë vetëm për shfaqje."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Ndërrohet",
+        "description": "Bëje kapsulën të ndizet/fiket kur klikohet butoni."
+      },
+      {
+        "property": "toggled",
+        "title": "E ndezur",
+        "description": "Nëse kapsula është aktualisht e ndezur."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ikona kur është e ndezur",
+        "description": "Ikona që shfaqet kur kapsula është e ndezur."
+      },
+      {
+        "property": "disabled",
+        "title": "I çaktivizuar",
+        "description": "Çaktivizo ndërveprimin me kapsulën."
+      }
+    ]
+  }
+}

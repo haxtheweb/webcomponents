@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Isidlali samaxwebhu ecandelo lewebhu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Fihla ifestile",
+        "description": "Fihla ifestile yesiphumo, iluncedo xa injongo iyitheminali kuphela"
+      }
+    ]
+  }
+}

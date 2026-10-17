@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Card",
+    "description": "Component na card na naka-istilo gamit ang DDD design system."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Larawan",
+        "description": "Opsyonal na larawan."
+      },
+      {
+        "property": "alt",
+        "title": "Alt ng larawan",
+        "description": "Alternatibong teksto na naglalarawan sa larawan."
+      },
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Pamagat ng card."
+      },
+      {
+        "slot": "",
+        "title": "Nilalaman",
+        "description": "Lugar ng nilalaman ng card."
+      },
+      {
+        "property": "href",
+        "title": "Link",
+        "description": "URL ng link ng button."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label ng button."
+      },
+      {
+        "property": "noArrow",
+        "title": "Walang Arrow",
+        "description": "Itago ang arrow ng button."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Link: target",
+        "description": "Kung saan bubuksan ang link.",
+        "options": {
+          "": "Parehong window",
+          "_blank": "Bagong window - _blank",
+          "_top": "Pinakamataas na window - _top",
+          "_parent": "Parent na window - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Link: rel",
+        "description": "Ugnayan ng naka-link na resource at ng kasalukuyang dokumento."
+      }
+    ]
+  }
+}

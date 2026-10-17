@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Бахши тасвир",
+    "description": "Тасвири паҳнои пурра, ки бахши саҳифаро ҷудо мекунад."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Тасвири замина."
+      },
+      {
+        "property": "caption",
+        "description": "Сарлавҳаи матнӣ."
+      }
+    ]
+  }
+}

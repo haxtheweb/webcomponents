@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Tampilake tombol ajakan tumindak Polaris mawa tema."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Teks tombol",
+        "description": "Teks sing katon ing tombol ajakan tumindak."
+      },
+      {
+        "property": "link",
+        "title": "Pranala",
+        "description": "URL tujuan kanggo tombol."
+      },
+      {
+        "property": "type",
+        "title": "Varian",
+        "description": "Varian gaya visual.",
+        "options": {
+          "primary": "Utama",
+          "tinted": "Diwarnai",
+          "light": "Padhang"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Gaya garis pinggir",
+        "description": "Aktifake perlakuan garis pinggir."
+      },
+      {
+        "property": "filled",
+        "title": "Gaya diisi",
+        "description": "Aktifake perlakuan diisi."
+      }
+    ]
+  }
+}

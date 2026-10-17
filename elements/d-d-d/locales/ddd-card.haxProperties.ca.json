@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Targeta",
+    "description": "Component de targeta amb l'estil del sistema de disseny DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Imatge",
+        "description": "Imatge opcional."
+      },
+      {
+        "property": "alt",
+        "title": "Text alternatiu de la imatge",
+        "description": "Text alternatiu que descriu la imatge."
+      },
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "Títol de la targeta."
+      },
+      {
+        "slot": "",
+        "title": "Contingut",
+        "description": "Àrea de contingut de la targeta."
+      },
+      {
+        "property": "href",
+        "title": "Enllaç",
+        "description": "URL de l'enllaç del botó."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etiqueta",
+        "description": "Etiqueta del botó."
+      },
+      {
+        "property": "noArrow",
+        "title": "Sense fletxa",
+        "description": "Amaga la fletxa del botó."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Enllaç: destinació",
+        "description": "On s'obre l'enllaç.",
+        "options": {
+          "": "Mateixa finestra",
+          "_blank": "Finestra nova - _blank",
+          "_top": "Finestra superior - _top",
+          "_parent": "Finestra pare - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Enllaç: rel",
+        "description": "Relació entre el recurs enllaçat i el document actual."
+      }
+    ]
+  }
+}

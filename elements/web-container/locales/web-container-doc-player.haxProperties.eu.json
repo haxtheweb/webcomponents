@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Web osagaien dokumentazio erreproduzigailua"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Ezkutatu leihoa",
+        "description": "Ezkutatu irteera leihoa, erabilgarria helburua terminala soilik denean"
+      }
+    ]
+  }
+}

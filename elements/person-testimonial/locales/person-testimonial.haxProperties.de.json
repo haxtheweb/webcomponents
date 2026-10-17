@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Bild-Blockzitat",
+    "description": "Gestaltetes Zitat mit optionalem Bild."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Ein Bild zum Erfahrungsbericht hinzufügen."
+      },
+      {
+        "property": "name",
+        "title": "Vollständiger Name",
+        "description": "Name der Person, die den Erfahrungsbericht abgibt."
+      },
+      {
+        "property": "position",
+        "title": "Position oder Berufsbezeichnung",
+        "description": "Position oder Berufsbezeichnung der Person."
+      },
+      {
+        "slot": "",
+        "title": "Zitat",
+        "description": "Zitat der Person, die den Erfahrungsbericht verfasst hat."
+      }
+    ]
+  }
+}

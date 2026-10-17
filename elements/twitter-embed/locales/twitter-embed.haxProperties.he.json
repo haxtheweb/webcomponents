@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "הטמעת Twitter (X)",
+    "description": "הטמעת ציוץ מ-X בהקשר."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL של הציוץ",
+        "description": "ה-URL של הציוץ להטמעה."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "ערכת נושא",
+        "description": "ערכת נושא בהירה או כהה לציוצים ב-X.",
+        "options": {
+          "light": "בהיר",
+          "dark": "כהה"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "מניעת חלון קופץ בלחיצה",
+        "description": "מניעה מהמשתמשים לפתוח את הציוץ ב-x.com."
+      }
+    ]
+  }
+}

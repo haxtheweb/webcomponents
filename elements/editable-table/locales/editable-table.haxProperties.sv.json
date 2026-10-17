@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabell",
+    "description": "Tabellbaserad data för webben."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Radrubrik",
+        "description": "Behandla första raden som rubrik."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Kolumnrubrik",
+        "description": "Behandla första kolumnen som rubrik."
+      },
+      {
+        "property": "footer",
+        "title": "Sidfot",
+        "description": "Behandla sista raden som sidfot."
+      },
+      {
+        "property": "sort",
+        "title": "Sorterbar",
+        "description": "Tillåt sortering efter kolumnvärden."
+      },
+      {
+        "property": "filter",
+        "title": "Tillåt filter",
+        "description": "Tillåt filtrering efter kolumnvärden."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numerisk formatering",
+        "description": "Tillämpa numerisk formatering på numeriska kolumner."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsiv",
+        "description": "Anpassa tabellens layout på små skärmar."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Bedömningsmatrisläge",
+        "description": "Tolka tabellen som en OER Schema-Rubric så att metadata för Rubric, RubricScale, RubricCriterion och RubricLevel genereras."
+      },
+      {
+        "property": "rubricType",
+        "title": "Typ av bedömningsmatris",
+        "description": "Matrisstil som genereras som oer:rubricType (gäller endast när bedömningsmatrisläget är på).",
+        "options": {
+          "": "(ingen)",
+          "analytic": "Analytisk",
+          "holistic": "Holistisk",
+          "single-point": "Enpunkts",
+          "checklist": "Checklista"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Med kantlinjer"
+      },
+      {
+        "property": "condensed",
+        "title": "Kompakta rader",
+        "description": "Minska radhöjden."
+      },
+      {
+        "property": "striped",
+        "title": "Randiga rader",
+        "description": "Skugga varannan rad."
+      },
+      {
+        "property": "downloadable",
+        "title": "Nedladdningsknapp",
+        "description": "Lägg till en knapp för att ladda ned tabellen."
+      },
+      {
+        "property": "copyable",
+        "title": "Kopieringsknapp",
+        "description": "Lägg till en knapp för att kopiera tabellens CSV-data."
+      },
+      {
+        "property": "printable",
+        "title": "Utskriftsknapp",
+        "description": "Lägg till en knapp för att skriva ut endast tabellen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV-data",
+        "description": "Skapa en tabell från en uppladdad CSV-fil."
+      }
+    ]
+  }
+}

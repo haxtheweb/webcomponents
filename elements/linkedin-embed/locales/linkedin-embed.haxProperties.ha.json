@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Saka LinkedIn",
+    "description": "Saka katin bayanin martaba na LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Sunan musamman",
+        "description": "Ɓangaren sunan mai amfani na musamman na LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Yanki",
+        "description": "Ƙimar metadata na yanki kamar en_US."
+      }
+    ]
+  }
+}

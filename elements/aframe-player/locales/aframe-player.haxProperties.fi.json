@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D-soitin",
+    "description": "3D-tiedostojen / lisätyn todellisuuden soitin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Lähde",
+        "description": "Tämän AR-tiedoston URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Elementin X-sijainti AR-näkymässä."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Elementin Y-sijainti AR-näkymässä."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Elementin Z-sijainti AR-näkymässä."
+      },
+      {
+        "property": "skyColor",
+        "title": "Taivaan väri",
+        "description": "Valitse taivaan väri näkymässä."
+      }
+    ]
+  }
+}

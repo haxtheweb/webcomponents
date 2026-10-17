@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Iqembu Lokuvula Nokugoqa",
+    "description": "Iqembu lezinto ezingavulwa nezingagoqwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Vula eyodwa kuphela",
+        "description": "Into eyodwa kuphela engavulwa."
+      },
+      {
+        "slot": "",
+        "title": "Izinto Ezigoqekayo",
+        "description": "Izinto ezigoqekayo."
+      }
+    ]
+  }
+}

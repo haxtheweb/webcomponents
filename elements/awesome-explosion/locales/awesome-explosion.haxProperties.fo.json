@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Ræðulig sprongjing",
+    "description": "Gagnvirkin sprongingaranimatión við valfríum ljóðeffektum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Stødd",
+        "description": "Set stødd á sprongjingini.",
+        "options": {
+          "tiny": "Pínulítil",
+          "small": "Lítil",
+          "medium": "Miðal",
+          "large": "Stór",
+          "epic": "Episk"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Litur",
+        "description": "Set litaevnið á sprongjingini.",
+        "options": {
+          "": "Standard",
+          "red": "Reyður",
+          "blue": "Bláur",
+          "purple": "Lilla",
+          "orange": "Appelsingulur",
+          "yellow": "Gulur"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Ljóðeffektir",
+        "description": "Virkja ljóðeffektir."
+      },
+      {
+        "property": "resetSound",
+        "title": "Nullstilla ljóð",
+        "description": "Byrja ljóðið av nýggjum hvørja ferð."
+      },
+      {
+        "property": "image",
+        "title": "Sergjørd mynd",
+        "description": "Valfrí URL til sergjørda sprongjingarmynd."
+      },
+      {
+        "property": "sound",
+        "title": "Sergjørt ljóð",
+        "description": "Valfrí URL til sergjørdan ljóðeffekt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Óvirkið",
+        "description": "Ger alla samvirkan óvirkna."
+      }
+    ]
+  }
+}

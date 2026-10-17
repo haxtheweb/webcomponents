@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX текстов арт",
+    "description": "Елемент лого на HAX, естествено съвместим с HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Размер на логото на HAX за поставяне",
+        "options": {
+          "mini": "Мини",
+          "small": "Малък",
+          "normal": "Нормален",
+          "large": "Голям"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Дали логото да се преобразува в главни букви"
+      }
+    ]
+  }
+}

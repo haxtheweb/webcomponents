@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ទង់ទំព័រ",
+    "description": "កំណត់ចំណាំវិចារណកថាសម្រាប់អ្នកនិពន្ធទំព័រ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌សង្កត់សម្រាប់ទង់ទំព័រ។"
+      },
+      {
+        "property": "label",
+        "title": "ស្លាក",
+        "description": "អត្ថបទស្លាកសម្រាប់ទង់ទំព័រ។"
+      }
+    ]
+  }
+}

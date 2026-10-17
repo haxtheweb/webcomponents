@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Isikhongozeli se-NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Fihla umhleli",
+        "description": "Fihla ujongano lokuhlela iifayile."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Fihla itheminali",
+        "description": "Fihla itheminali yeenkqubo eziziqhubayo."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Fihla ifestile",
+        "description": "Fihla ifestile yesiphumo xa kusetyenziswa itheminali kuphela."
+      },
+      {
+        "slot": "",
+        "title": "Imiyalelo",
+        "description": "Imiyalelo (omnye ngomgca) eza kuqhutywa phambi kokulayisha."
+      }
+    ]
+  }
+}

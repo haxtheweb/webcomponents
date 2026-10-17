@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "مجموعة توسيع وطي",
+    "description": "مجموعة من عناصر التوسيع والطي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "توسيع عنصر واحد فقط",
+        "description": "يمكن توسيع عنصر واحد فقط."
+      },
+      {
+        "slot": "",
+        "title": "عناصر الطي",
+        "description": "عناصر الطي."
+      }
+    ]
+  }
+}

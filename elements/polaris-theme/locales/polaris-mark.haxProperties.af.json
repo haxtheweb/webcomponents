@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris-merk",
+    "description": "Vertoon die PSU-identiteitsmerk met opsionele kollegenaam en bestemmings-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Kollegenaam",
+        "description": "Naam wat langs die merk weergegee word."
+      },
+      {
+        "property": "name2",
+        "title": "Kollegenaam 2",
+        "description": "Tweede naam wat onder die eerste kollegenaam weergegee word."
+      },
+      {
+        "property": "name3",
+        "title": "Kollegenaam 3",
+        "description": "Derde naam wat onder die tweede kollegenaam weergegee word."
+      },
+      {
+        "property": "url",
+        "title": "Skakel",
+        "description": "Bestemmings-URL wanneer op die merk geklik word."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Visuele variant van die merk.",
+        "options": {
+          "default": "Standaard",
+          "light": "Lig",
+          "dark": "Donker"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Vertikale uitleg",
+        "description": "Vertoon die derde naam onder die tweede naam met 'n horisontale lyn."
+      }
+    ]
+  }
+}

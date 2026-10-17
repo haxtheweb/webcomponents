@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Dagfesting",
+    "description": "Vís eina kalendaradagfesting við smálutum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mánaði",
+        "description": "Mánaði, sum verður vístur á kortinum."
+      },
+      {
+        "property": "date",
+        "title": "Dagur í mánaðinum",
+        "description": "Dagur í mánaðinum sum tal."
+      },
+      {
+        "property": "day",
+        "title": "Vikudagur",
+        "description": "Vikudagur sum tekstur."
+      },
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Navn á tiltakinum."
+      },
+      {
+        "property": "location",
+        "title": "Staður",
+        "description": "Staður fyri tiltakið."
+      },
+      {
+        "property": "startTime",
+        "title": "Byrjan",
+        "description": "Byrjanartíð."
+      },
+      {
+        "property": "endTime",
+        "title": "Endi",
+        "description": "Endatíð."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Ein valfríur dámlitur."
+      },
+      {
+        "property": "dark",
+        "title": "Myrkt evni",
+        "description": "Virkja myrkt evni."
+      }
+    ]
+  }
+}

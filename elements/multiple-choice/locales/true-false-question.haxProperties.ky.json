@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Туура / Туура эмес суроосу",
+    "description": "Туура же туура эмес суроосу"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Суроо",
+        "description": "Колдонуучулар жооп бере турган суроо."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Туура жооп"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Тесттин аталышы",
+        "description": "xAPI негизиндеги чөйрөлөрдө бул элементти аныктоо үчүн берилген тест аталышы"
+      }
+    ]
+  }
+}

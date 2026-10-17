@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Պիտակներ",
+    "description": "Էջում ցուցադրելու պիտակների պարզ ցանկ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Պիտակներ",
+        "description": "Ստորակետերով բաժանված պիտակների ցանկ։"
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Ավտոմատ շեշտադրման գույն",
+        "description": "Ավտոմատ սահմանել շեշտադրման գույնը՝ ըստ պիտակի։"
+      },
+      {
+        "property": "accentColor",
+        "title": "Գույն",
+        "description": "Պիտակների գույնը։"
+      }
+    ]
+  }
+}

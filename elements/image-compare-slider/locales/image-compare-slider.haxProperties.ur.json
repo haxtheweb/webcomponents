@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "تصویری موازنہ",
+    "description": "موازنے کے لیے ایک تصویر کو دوسری پر سوائپ کریں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "اوپری تصویر",
+        "description": "نچلی تصویر پر سوائپ ہونے والی اوپری تصویر۔"
+      },
+      {
+        "property": "topAlt",
+        "title": "اوپری تصویر کا متبادل متن",
+        "description": "رسائی کے لیے لازمی متبادل متن۔"
+      },
+      {
+        "property": "bottomSrc",
+        "title": "نچلی تصویر",
+        "description": "اوپری تصویر کے نیچے دکھائی جانے والی نچلی تصویر۔"
+      },
+      {
+        "property": "bottomAlt",
+        "title": "نچلی تصویر کا متبادل متن",
+        "description": "رسائی کے لیے لازمی متبادل متن۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "رویہ",
+        "description": "وائپ موڈ (طے شدہ) یا اوپری تصویر کی شفافیت کا موڈ منتخب کریں۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "سلائیڈر بار کا رنگ۔"
+      },
+      {
+        "property": "dark",
+        "title": "گہرا",
+        "description": "سلائیڈر بار کا رنگ الٹ دیں۔"
+      },
+      {
+        "property": "position",
+        "title": "ابتدائی پوزیشن",
+        "description": "0 سے 100 تک ابتدائی پوزیشن۔"
+      }
+    ]
+  }
+}

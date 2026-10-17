@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Cita en bloque",
+    "description": "Bloque de cita con estilo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Cita",
+        "description": "Texto da cita."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo",
+        "description": "Texto alternativo para a imaxe."
+      },
+      {
+        "property": "image",
+        "title": "Imaxe",
+        "description": "Imaxe que se mostra coa cita."
+      }
+    ]
+  }
+}

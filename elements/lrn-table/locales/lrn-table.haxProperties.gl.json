@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Táboa CSV",
+    "description": "Pode xerar unha táboa a partir dun ficheiro CSV, estea onde estea."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Orixe",
+        "description": "URL deste ficheiro CSV."
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título da táboa que se vai xerar."
+      },
+      {
+        "property": "description",
+        "title": "Descrición",
+        "description": "Descrición máis detallada para mellorar a accesibilidade dos datos da táboa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Тегҳо",
+    "description": "Рӯйхати оддии тегҳо барои намоиш дар саҳифа."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Тегҳо",
+        "description": "Рӯйхати тегҳо, ки бо вергул ҷудо шудаанд."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Ранги таъкидии худкор",
+        "description": "Ранги таъкидиро дар асоси нишонга ба таври худкор муқаррар кунед."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранг",
+        "description": "Ранг барои тегҳо."
+      }
+    ]
+  }
+}

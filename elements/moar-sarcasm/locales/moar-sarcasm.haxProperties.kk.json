@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Кекесін",
+    "description": "Мәтінді әзіл-қалжыңмен көрсету"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Мәтін",
+        "description": "Кекесінді етілетін мәтін"
+      }
+    ]
+  }
+}

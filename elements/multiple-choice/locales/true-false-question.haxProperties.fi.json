@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Tosi / epätosi -kysymys",
+    "description": "Tosi vai epätosi -kysymys"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Kysymys",
+        "description": "Kysymys, johon käyttäjät vastaavat."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Oikea vastaus"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tietovisan nimi",
+        "description": "Tietovisan nimi, jota käytetään xAPI-pohjaisissa ympäristöissä tämän kohteen tunnistamiseen"
+      }
+    ]
+  }
+}

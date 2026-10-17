@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Isibukeli se-PDF Esiphequluli",
+    "description": "Shumeka ifayela le-PDF phakathi nekhasi nesakhiwo sekhadi nenkinobho yokulanda ongakukhetha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "I-URL ye-PDF",
+        "description": "Indawo yefayela le-PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Isihloko",
+        "description": "Umbhalo wesihloko sekhadi."
+      },
+      {
+        "property": "card",
+        "title": "Isakhiwo sekhadi",
+        "description": "Bonisa i-PDF ekhadini elinenkinobho yokulanda."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Ilebula yokulanda",
+        "description": "Ilebula yenkinobho yokulanda."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Umlayezo wokungasekelwa",
+        "description": "Umlayezo lapho isiphequluli singakwazi ukubonisa amafayela e-PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Umlayezo wesixhumanisi sokungasekelwa",
+        "description": "Umbhalo wesixhumanisi lapho isiphequluli singakwazi ukubonisa amafayela e-PDF."
+      },
+      {
+        "property": "width",
+        "title": "Ububanzi",
+        "description": "Ububanzi besibukeli se-PDF."
+      },
+      {
+        "property": "height",
+        "title": "Ubude",
+        "description": "Ubude besibukeli se-PDF."
+      }
+    ]
+  }
+}

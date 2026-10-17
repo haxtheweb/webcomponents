@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Poskaart",
+    "description": "'n Speelse mediastuk wat soos 'n fisiese poskaart van êrens moet lyk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Aan",
+        "description": "Aan wie gaan dit?"
+      },
+      {
+        "property": "from",
+        "title": "Van",
+        "description": "Wie is jy?"
+      },
+      {
+        "property": "message",
+        "title": "Boodskap",
+        "description": "Wat wil jy sê?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Gestempel vanaf",
+        "description": "Van waar is hierdie kaart gestuur?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Hooffotobron",
+        "description": "Waar is jou foto geleë?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Seëlfotobron",
+        "description": "Waar is jou foto geleë?"
+      }
+    ]
+  }
+}

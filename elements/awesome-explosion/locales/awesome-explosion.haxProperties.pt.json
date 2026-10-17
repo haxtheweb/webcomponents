@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Explosão incrível",
+    "description": "Animação interativa de explosão com efeitos sonoros opcionais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Tamanho",
+        "description": "Definir o tamanho da explosão.",
+        "options": {
+          "tiny": "Minúsculo",
+          "small": "Pequeno",
+          "medium": "Médio",
+          "large": "Grande",
+          "epic": "Épico"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Cor",
+        "description": "Definir o tema de cores da explosão.",
+        "options": {
+          "": "Padrão",
+          "red": "Vermelho",
+          "blue": "Azul",
+          "purple": "Roxo",
+          "orange": "Laranja",
+          "yellow": "Amarelo"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Efeitos sonoros",
+        "description": "Ativar efeitos sonoros."
+      },
+      {
+        "property": "resetSound",
+        "title": "Reiniciar som",
+        "description": "Reiniciar o som desde o início a cada vez."
+      },
+      {
+        "property": "image",
+        "title": "Imagem personalizada",
+        "description": "URL opcional de uma imagem de explosão personalizada."
+      },
+      {
+        "property": "sound",
+        "title": "Som personalizado",
+        "description": "URL opcional de um efeito sonoro personalizado."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Desativado",
+        "description": "Desativar todas as interações."
+      }
+    ]
+  }
+}

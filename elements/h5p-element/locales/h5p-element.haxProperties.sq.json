@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Mbështjellës H5P për ngarkimin dhe paraqitjen e skedarëve .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Kodi i ngulitjes iframe i H5P"
+      }
+    ]
+  }
+}

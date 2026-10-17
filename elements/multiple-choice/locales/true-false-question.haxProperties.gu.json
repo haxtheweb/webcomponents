@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "સાચું / ખોટું પ્રશ્ન",
+    "description": "સાચું-ખોટું પ્રશ્ન"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "પ્રશ્ન",
+        "description": "વપરાશકર્તાઓએ જવાબ આપવાનો પ્રશ્ન."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "સાચો જવાબ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ક્વિઝનું નામ",
+        "description": "આ આઇટમની ઓળખ માટે xAPI આધારિત વાતાવરણમાં વાપરવા માટે પસાર કરાતું ક્વિઝનું નામ"
+      }
+    ]
+  }
+}

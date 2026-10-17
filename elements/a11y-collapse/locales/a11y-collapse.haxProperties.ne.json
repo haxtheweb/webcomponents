@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "संक्षेप गर्न मिल्ने कन्टेनर",
+    "description": "विस्तार र संक्षेप गर्न मिल्ने एकल कन्टेनर।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "शीर्षक",
+        "description": "संक्षेप भागको पाठ।"
+      },
+      {
+        "property": "expanded",
+        "title": "विस्तारित",
+        "description": "पूर्वनिर्धारित रूपमा विस्तार गर्नुहोस्।"
+      },
+      {
+        "property": "headingButton",
+        "title": "शीर्षक बटन",
+        "description": "आइकन मात्र नभई सम्पूर्ण शीर्षकलाई क्लिक गर्न मिल्ने बनाउनुहोस्।"
+      },
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "विस्तार/संक्षेप टगल बटनको आइकन।"
+      },
+      {
+        "property": "iconExpanded",
+        "title": "आइकन (विस्तार हुँदा)",
+        "description": "विस्तारित अवस्थाका लागि वैकल्पिक आइकन।"
+      },
+      {
+        "slot": "",
+        "title": "सामग्री",
+        "description": "संक्षेप भागको सामग्री।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "टुलटिप",
+        "description": "विस्तार/संक्षेप टगल बटनको टुलटिप।"
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "टुलटिप (विस्तार हुँदा)",
+        "description": "विस्तार हुँदा विस्तार/संक्षेप बटनको टुलटिप।"
+      }
+    ]
+  }
+}

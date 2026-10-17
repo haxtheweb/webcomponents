@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris-ruutu",
+    "description": "Näytä Polaris-ruutu, jossa on otsikko, valinnainen lisäteksti ja valinnainen linkki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Ensisijainen teksti",
+        "description": "Ruudun pääteksti."
+      },
+      {
+        "property": "line2",
+        "title": "Toissijainen teksti",
+        "description": "Valinnainen lisäteksti."
+      },
+      {
+        "property": "type",
+        "title": "Ruudun tyyli",
+        "description": "Ruudun esiasetettu visuaalinen tyyli.",
+        "options": {
+          "1": "Tyyli 1",
+          "2": "Tyyli 2",
+          "3": "Tyyli 3",
+          "4": "Tyyli 4",
+          "5": "Tyyli 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Taustakuva",
+        "description": "Taustakuvan URL, jota kuvia tukevat ruututyylit käyttävät."
+      },
+      {
+        "property": "link",
+        "title": "Linkki",
+        "description": "Valinnainen kohde-URL ruudun toiminnolle."
+      }
+    ]
+  }
+}

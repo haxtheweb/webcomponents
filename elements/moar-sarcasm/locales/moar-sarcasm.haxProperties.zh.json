@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "反讽",
+    "description": "以调侃的方式呈现文本"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "文本",
+        "description": "要变成反讽语气的文本"
+      }
+    ]
+  }
+}

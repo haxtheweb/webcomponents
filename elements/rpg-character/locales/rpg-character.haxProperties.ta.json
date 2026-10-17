@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG கதாபாத்திரம்",
+    "description": "HAX-இலிருந்து வேடிக்கையான கதாபாத்திரம்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "பெயர்",
+        "description": "சீரற்ற கதாபாத்திரத்தை உருவாக்கப் பயன்படும் சொல்."
+      },
+      {
+        "property": "hat",
+        "title": "தொப்பி",
+        "description": "தொப்பியின் பாணி.",
+        "options": {
+          "none": "இயல்புநிலை",
+          "random": "சீரற்றது",
+          "bunny": "முயல்",
+          "cowboy": "கௌபாய்",
+          "education": "கல்வி",
+          "construction": "கட்டுமானம்",
+          "warning": "எச்சரிக்கை",
+          "watermelon": "தர்பூசணி",
+          "coffee": "காபி",
+          "knight": "வீரர்",
+          "ninja": "நிஞ்ஜா",
+          "party": "கொண்டாட்டம்",
+          "error": "பிழை",
+          "edit": "திருத்து"
+        }
+      },
+      {
+        "property": "width",
+        "title": "அகலம்",
+        "description": "பிக்சல்களில் கதாபாத்திரத்தின் அகலம்."
+      },
+      {
+        "property": "height",
+        "title": "உயரம்",
+        "description": "பிக்சல்களில் கதாபாத்திரத்தின் உயரம்."
+      },
+      {
+        "property": "fire",
+        "title": "தீப்பற்றியதா?",
+        "description": "கதாபாத்திரம் தீப்பற்றியுள்ளதா."
+      },
+      {
+        "property": "walking",
+        "title": "நடக்கிறதா?",
+        "description": "நடை அசைவூட்டம்; தீப்பற்றியிருக்கும்போது ஓடும்."
+      }
+    ]
+  }
+}

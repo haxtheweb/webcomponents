@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS-säilö"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Piilota editori",
+        "description": "Piilota tiedostojen muokkausnäkymä."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Piilota pääte",
+        "description": "Piilota pääte automaattisesti suoritettavilta ohjelmilta."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Piilota ikkuna",
+        "description": "Piilota tulosteikkuna pelkkää päätekäyttöä varten."
+      },
+      {
+        "slot": "",
+        "title": "Komennot",
+        "description": "Ennen latausta suoritettavat komennot (yksi riviä kohden)."
+      }
+    ]
+  }
+}

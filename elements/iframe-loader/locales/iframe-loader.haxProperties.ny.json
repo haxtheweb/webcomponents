@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Ikani zomwe zili pa intaneti zakunja mu iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ya Gwero",
+        "description": "URL ya gwero."
+      },
+      {
+        "property": "height",
+        "title": "Kutalika",
+        "description": "Kutalika kwa iframe."
+      },
+      {
+        "property": "width",
+        "title": "M'lifupi",
+        "description": "M'lifupi mwa iframe."
+      }
+    ]
+  }
+}

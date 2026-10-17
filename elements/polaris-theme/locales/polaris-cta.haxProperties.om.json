@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Qabduu waamicha gochaa Polaris miidhagfame agarsiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Barreeffama qabduu",
+        "description": "Barreeffama qabduu waamicha gochaa irratti mul'atu."
+      },
+      {
+        "property": "link",
+        "title": "Hidhoo",
+        "description": "URL gahiinsaa qabduu."
+      },
+      {
+        "property": "type",
+        "title": "Gosa",
+        "description": "Gosa akkaataa mul'ataa.",
+        "options": {
+          "primary": "Ijoo",
+          "tinted": "Halluu laafaa",
+          "light": "Ifaa"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Akkaataa sarara alaa",
+        "description": "Miidhagina sarara alaa banuu."
+      },
+      {
+        "property": "filled",
+        "title": "Akkaataa guutame",
+        "description": "Miidhagina guutame banuu."
+      }
+    ]
+  }
+}
