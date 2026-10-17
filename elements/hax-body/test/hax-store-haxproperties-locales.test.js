@@ -130,6 +130,24 @@ describe("hax-store _registerHaxPropertiesLocales", () => {
     expect(registered(OTHER_PATH_TAG).length).to.equal(0);
   });
 
+  it("registers built-in HTML blocks against hax-body's locales folder", () => {
+    // "blockquote" has no hyphen, so it is a built-in block defined by hax-body
+    forget("blockquote");
+    try {
+      HAXStore._registerHaxPropertiesLocales("blockquote");
+      const found = registered("blockquote");
+      expect(found.length).to.equal(1);
+      expect(found[0].localesPath).to.match(/\/hax-body\/locales$/);
+    } finally {
+      forget("blockquote");
+    }
+  });
+
+  it("ignores empty or non-string tags", () => {
+    expect(() => HAXStore._registerHaxPropertiesLocales("")).to.not.throw();
+    expect(() => HAXStore._registerHaxPropertiesLocales(null)).to.not.throw();
+  });
+
   it("ignores tags that are not defined", () => {
     expect(() =>
       HAXStore._registerHaxPropertiesLocales("not-a-defined-probe"),

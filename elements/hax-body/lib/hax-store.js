@@ -6503,12 +6503,25 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
    * already registered are left alone.
    */
   _registerHaxPropertiesLocales(tag) {
+    if (typeof tag !== "string" || !tag) {
+      return;
+    }
     const namespace = `${tag}.haxProperties`;
+    if (I18NManagerStore.elements.find((el) => el.namespace === namespace)) {
+      return;
+    }
+    // built-in HTML blocks (p, h2, img, a...) have no hyphen and no custom
+    // element definition; their schemas live in hax-body, so their editor
+    // labels translate from hax-body's own locales folder
+    if (!tag.includes("-")) {
+      I18NManagerStore.registerLocalization({
+        namespace: namespace,
+        localesPath: new URL("../locales", import.meta.url).href,
+      });
+      return;
+    }
     const definition = globalThis.customElements.get(tag);
-    if (
-      !definition ||
-      I18NManagerStore.elements.find((el) => el.namespace === namespace)
-    ) {
+    if (!definition) {
       return;
     }
     let source;
