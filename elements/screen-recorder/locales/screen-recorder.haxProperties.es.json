@@ -1,0 +1,6 @@
+{
+  "gizmo": {
+    "title": "Grabador de pantalla",
+    "description": "Graba tu pantalla, con audio opcional del sistema y del micrófono, y descarga el vídeo."
+  }
+}

@@ -5,5 +5,6 @@
   "systemAudio": "Sluit stelselklank in",
   "microphoneAudio": "Sluit mikrofoon in",
   "recordingStarted": "Opname het begin",
-  "recordingStopped": "Opname het gestop"
+  "recordingStopped": "Opname het gestop",
+  "audioOptions": "Oudio-opsies"
 }

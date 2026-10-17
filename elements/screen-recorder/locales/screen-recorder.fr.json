@@ -5,5 +5,6 @@
   "systemAudio": "Inclure l'audio du système",
   "microphoneAudio": "Inclure le microphone",
   "recordingStarted": "Enregistrement démarré",
-  "recordingStopped": "Enregistrement arrêté"
+  "recordingStopped": "Enregistrement arrêté",
+  "audioOptions": "Options audio"
 }
