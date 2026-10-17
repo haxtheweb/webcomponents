@@ -6,6 +6,49 @@ import { html, css } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 
+/**
+ * English defaults for user-facing text rendered by these helpers.
+ * Callers pass their own translated strings via `options.t` (same keys);
+ * anything missing falls back to the English here.
+ */
+export const VIEWS_RENDER_TEXT = {
+  viewsRecordNoTitle: "No results",
+  viewsRecordHeading: "Record",
+  viewsTitleImage: "{title} image",
+  viewsTitlePreview: "{title} preview",
+  viewsNoTimelineRecords:
+    "No date-oriented records available for timeline rendering.",
+  viewsTimelineTitle: "{title} timeline",
+  viewsNoChartField: "No numeric field detected for chart rendering.",
+  viewsChartingValue: "Charting {value}",
+  viewsChartingValueByLabel: "Charting {value} by {label}",
+  viewsChartTitle: "{title} chart",
+  viewsNoTreeRecords: "No hierarchical records available for tree rendering.",
+  viewsNoGalleryRecords: "No image records available for gallery rendering.",
+  viewsNoPlaylistRecords: "No media records available for playlist rendering.",
+};
+
+export const viewsText = (options, key) => {
+  if (options && options.t && options.t[key]) {
+    return options.t[key];
+  }
+  return VIEWS_RENDER_TEXT[key];
+};
+
+// split a translated string around {placeholders} so values can be wrapped in markup
+const fillTemplateParts = (template, values) => {
+  return String(template)
+    .split(/(\{[a-zA-Z]+\})/)
+    .filter((part) => part !== "")
+    .map((part) => {
+      const match = part.match(/^\{([a-zA-Z]+)\}$/);
+      if (match && Object.prototype.hasOwnProperty.call(values, match[1])) {
+        return values[match[1]];
+      }
+      return part;
+    });
+};
+
 export const safeString = (value) => {
   if (value === null || typeof value === "undefined") {
     return "";
@@ -46,7 +89,7 @@ export const valueAtPath = (record, path) => {
   return pointer;
 };
 
-export const recordTitle = (record) => {
+export const recordTitle = (record, options = {}) => {
   const titleCandidates = [
     "title",
     "name",
@@ -62,7 +105,7 @@ export const recordTitle = (record) => {
       return safeString(value);
     }
   }
-  return "No results";
+  return viewsText(options, "viewsRecordNoTitle");
 };
 
 export const recordDescription = (record) => {
@@ -512,7 +555,7 @@ export const recordTimelineDate = (record) => {
   return "";
 };
 
-export const timelineEvents = (records) => {
+export const timelineEvents = (records, options = {}) => {
   if (!Array.isArray(records)) {
     return [];
   }
@@ -521,15 +564,18 @@ export const timelineEvents = (records) => {
       const isoDate = recordTimelineDate(record);
       const headingPrefix = isoDate
         ? new Date(isoDate).toLocaleDateString()
-        : "Record";
+        : viewsText(options, "viewsRecordHeading");
       const detailsSource =
         recordDescription(record) || recordBody(record) || "";
       const details = shortValue(stripHtml(detailsSource), 420);
       return {
-        heading: `${headingPrefix} — ${recordTitle(record)}`,
+        heading: `${headingPrefix} — ${recordTitle(record, options)}`,
         details,
         imagesrc: recordImage(record),
-        imagealt: `${recordTitle(record)} image`,
+        imagealt: viewsText(options, "viewsTitleImage").replace(
+          "{title}",
+          recordTitle(record, options),
+        ),
       };
     })
     .filter((event) => event.heading && event.details);
@@ -550,7 +596,12 @@ export const numericValue = (value) => {
   return null;
 };
 
-export const chartDescriptor = (records, selectedFields, selectedEntity) => {
+export const chartDescriptor = (
+  records,
+  selectedFields,
+  selectedEntity,
+  options = {},
+) => {
   if (!Array.isArray(records) || records.length < 1) {
     return null;
   }
@@ -613,9 +664,9 @@ export const chartDescriptor = (records, selectedFields, selectedEntity) => {
     const record = records[i];
     const label = labelField
       ? safeString(valueAtPath(record, labelField)).trim()
-      : recordTitle(record);
+      : recordTitle(record, options);
     const numeric = numericValue(valueAtPath(record, valueField));
-    labels.push(label || recordTitle(record));
+    labels.push(label || recordTitle(record, options));
     values.push(numeric === null ? 0 : numeric);
   }
   return {
@@ -628,7 +679,7 @@ export const chartDescriptor = (records, selectedFields, selectedEntity) => {
   };
 };
 
-export const treeRecords = (records) => {
+export const treeRecords = (records, options = {}) => {
   if (!Array.isArray(records) || records.length < 1) {
     return [];
   }
@@ -642,7 +693,7 @@ export const treeRecords = (records) => {
     return {
       id,
       parent: safeString(record.parent).trim(),
-      title: recordTitle(record),
+      title: recordTitle(record, options),
       slug: recordUrl(record),
       metadata: {
         icon: recordIcon(record),
@@ -683,7 +734,7 @@ export const renderRecordPrimary = (record, maxLength = 240, options = {}) => {
       <div class="record-media">
         <video-player
           source="${vSource}"
-          media-title="${recordTitle(record)}"
+          media-title="${recordTitle(record, options)}"
         ></video-player>
       </div>
     `;
@@ -694,7 +745,10 @@ export const renderRecordPrimary = (record, maxLength = 240, options = {}) => {
       <img
         class="record-image"
         src="${imgSource}"
-        alt="${recordTitle(record)} preview"
+        alt="${viewsText(options, "viewsTitlePreview").replace(
+            "{title}",
+            recordTitle(record, options),
+          )}"
         loading="lazy"
         decoding="async"
       />
@@ -728,7 +782,7 @@ export const renderCollectionPreview = (records, options = {}) => {
         const elementPreview = renderRecordElementPreview(record);
         return html`
           <collection-item
-            line1="${recordTitle(record)}"
+            line1="${recordTitle(record, options)}"
             line2="${bodyIsHtml
               ? ""
               : shortValue(recordDescription(record), 180)}"
@@ -756,7 +810,7 @@ export const renderGridPreview = (records, options = {}) => {
         const url = recordUrl(record, options);
         return html`
           <accent-card no-border>
-            <div slot="heading">${recordTitle(record)}</div>
+            <div slot="heading">${recordTitle(record, options)}</div>
             <div slot="subheading">
               ${recordTags(record).slice(0, 5).join(", ")}
             </div>
@@ -796,9 +850,9 @@ export const renderBulletedListPreview = (records, options = {}) => {
             <h4 class="result-title">
               ${url
                 ? html`<a href="${url}" target="_blank" rel="noopener"
-                    >${recordTitle(record)}</a
+                    >${recordTitle(record, options)}</a
                   >`
-                : recordTitle(record)}
+                : recordTitle(record, options)}
             </h4>
             ${renderRecordPrimary(record, 360, options)}
           </li>
@@ -821,9 +875,9 @@ export const renderContentPreview = (records, options = {}) => {
             <h3 class="content-record-title">
               ${url
                 ? html`<a href="${url}" target="_blank" rel="noopener"
-                    >${recordTitle(record)}</a
+                    >${recordTitle(record, options)}</a
                   >`
-                : recordTitle(record)}
+                : recordTitle(record, options)}
             </h3>
             ${renderRecordPrimary(record, 720, options)}
           </article>
@@ -898,17 +952,23 @@ export const renderCarouselPreview = (records, options = {}) => {
                 ? html`<a href="${url}" target="_blank" rel="noopener"
                     ><img
                       src="${image}"
-                      alt="${recordTitle(record)} preview"
+                      alt="${viewsText(options, "viewsTitlePreview").replace(
+            "{title}",
+            recordTitle(record, options),
+          )}"
                       loading="lazy"
                       decoding="async"
                   /></a>`
                 : html`<img
                     src="${image}"
-                    alt="${recordTitle(record)} preview"
+                    alt="${viewsText(options, "viewsTitlePreview").replace(
+            "{title}",
+            recordTitle(record, options),
+          )}"
                     loading="lazy"
                     decoding="async"
                   />`}
-              <span class="media-gallery-caption">${recordTitle(record)}</span>
+              <span class="media-gallery-caption">${recordTitle(record, options)}</span>
             </div>
           `;
         })}
@@ -924,7 +984,7 @@ export const renderCarouselPreview = (records, options = {}) => {
             return html`
               <video-player
                 source="${vSource}"
-                media-title="${recordTitle(record)}"
+                media-title="${recordTitle(record, options)}"
               ></video-player>
             `;
           }
@@ -937,16 +997,19 @@ export const renderCarouselPreview = (records, options = {}) => {
                 <img
                   class="record-image"
                   src="${image}"
-                  alt="${recordTitle(record)} preview"
+                  alt="${viewsText(options, "viewsTitlePreview").replace(
+            "{title}",
+            recordTitle(record, options),
+          )}"
                   loading="lazy"
                   decoding="async"
                 />
                 <figcaption>
                   ${url
                     ? html`<a href="${url}" target="_blank" rel="noopener"
-                        >${recordTitle(record)}</a
+                        >${recordTitle(record, options)}</a
                       >`
-                    : recordTitle(record)}
+                    : recordTitle(record, options)}
                 </figcaption>
               </figure>
             `;
@@ -956,7 +1019,7 @@ export const renderCarouselPreview = (records, options = {}) => {
           }
           return html`
             <accent-card>
-              <div slot="heading">${recordTitle(record)}</div>
+              <div slot="heading">${recordTitle(record, options)}</div>
               <div slot="content">
                 ${renderRecordBody(record, 300)}
                 ${url
@@ -984,7 +1047,7 @@ export const renderAccordionPreview = (records, options = {}) => {
           (record, index) => html`
             <a11y-collapse
               heading-button
-              heading="${recordTitle(record)}"
+              heading="${recordTitle(record, options)}"
               ?expanded="${index === 0}"
             >
               ${renderRecordPrimary(record, 420, options)}
@@ -1007,7 +1070,7 @@ export const renderTabsPreview = (records, options = {}) => {
           (record, index) => html`
             <a11y-tab
               id="views-preview-tab-${index}"
-              label="${recordTitle(record)}"
+              label="${recordTitle(record, options)}"
             >
               ${renderRecordPrimary(record, 520, options)}
             </a11y-tab>
@@ -1022,18 +1085,19 @@ export const renderTimelinePreview = (records, options = {}) => {
   if (!Array.isArray(records)) {
     return html``;
   }
-  const events = timelineEvents(records);
+  const events = timelineEvents(records, options);
   if (!events || events.length < 1) {
     return html`<p class="empty-preview">
-      No date-oriented records available for timeline rendering.
+      ${viewsText(options, "viewsNoTimelineRecords")}
     </p>`;
   }
   return html`
     <div class="timeline-shell">
       <lrndesign-timeline
-        timeline-title="${titleFromParameterName(
-          options.selectedEntity || "",
-        )} timeline"
+        timeline-title="${viewsText(options, "viewsTimelineTitle").replace(
+          "{title}",
+          titleFromParameterName(options.selectedEntity || ""),
+        )}"
         .events="${events}"
       ></lrndesign-timeline>
     </div>
@@ -1048,27 +1112,39 @@ export const renderChartPreview = (records, options = {}) => {
     records,
     options.selectedFields,
     options.selectedEntity,
+    options,
   );
   if (!descriptor) {
     return html`<p class="empty-preview">
-      No numeric field detected for chart rendering.
+      ${viewsText(options, "viewsNoChartField")}
     </p>`;
   }
   return html`
     <div class="chart-shell">
       <p class="note">
-        Charting
-        <strong>${titleFromParameterName(descriptor.valueField)}</strong
-        >${descriptor.labelField
-          ? html` by
-              <strong>${titleFromParameterName(descriptor.labelField)}</strong>`
-          : html``}
+        ${fillTemplateParts(
+          viewsText(
+            options,
+            descriptor.labelField
+              ? "viewsChartingValueByLabel"
+              : "viewsChartingValue",
+          ),
+          {
+            value: html`<strong
+              >${titleFromParameterName(descriptor.valueField)}</strong
+            >`,
+            label: html`<strong
+              >${titleFromParameterName(descriptor.labelField)}</strong
+            >`,
+          },
+        )}
       </p>
       <lrndesign-bar
         .data="${descriptor.data}"
-        chart-title="${titleFromParameterName(
-          options.selectedEntity || "",
-        )} chart"
+        chart-title="${viewsText(options, "viewsChartTitle").replace(
+          "{title}",
+          titleFromParameterName(options.selectedEntity || ""),
+        )}"
         show-table
       ></lrndesign-bar>
     </div>
@@ -1079,10 +1155,10 @@ export const renderTreePreview = (records, options = {}) => {
   if (!Array.isArray(records)) {
     return html``;
   }
-  const mapped = treeRecords(records);
+  const mapped = treeRecords(records, options);
   if (!mapped || mapped.length < 1) {
     return html`<p class="empty-preview">
-      No hierarchical records available for tree rendering.
+      ${viewsText(options, "viewsNoTreeRecords")}
     </p>`;
   }
   return html`
@@ -1101,7 +1177,7 @@ export const renderImageGalleryPreview = (records, options = {}) => {
   });
   if (imageRecords.length < 1) {
     return html`<p class="empty-preview">
-      No image records available for gallery rendering.
+      ${viewsText(options, "viewsNoGalleryRecords")}
     </p>`;
   }
   return html`
@@ -1110,7 +1186,10 @@ export const renderImageGalleryPreview = (records, options = {}) => {
         const image = recordImage(record, options);
         return html`<img
           src="${image}"
-          alt="${recordTitle(record)} preview"
+          alt="${viewsText(options, "viewsTitlePreview").replace(
+            "{title}",
+            recordTitle(record, options),
+          )}"
           loading="lazy"
           decoding="async"
         />`;
@@ -1128,7 +1207,7 @@ export const renderMediaPlaylistPreview = (records, options = {}) => {
   });
   if (mediaRecords.length < 1) {
     return html`<p class="empty-preview">
-      No media records available for playlist rendering.
+      ${viewsText(options, "viewsNoPlaylistRecords")}
     </p>`;
   }
   return html`
@@ -1138,13 +1217,16 @@ export const renderMediaPlaylistPreview = (records, options = {}) => {
         if (vSource) {
           return html`<video-player
             source="${vSource}"
-            media-title="${recordTitle(record)}"
+            media-title="${recordTitle(record, options)}"
           ></video-player>`;
         }
         const image = recordImage(record, options);
         return html`<img
           src="${image}"
-          alt="${recordTitle(record)} preview"
+          alt="${viewsText(options, "viewsTitlePreview").replace(
+            "{title}",
+            recordTitle(record, options),
+          )}"
           loading="lazy"
           decoding="async"
         />`;

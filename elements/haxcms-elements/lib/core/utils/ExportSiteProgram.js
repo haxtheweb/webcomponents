@@ -66,16 +66,21 @@ export function createExportSiteProgram(context) {
 
     // Filter results based on input
     SITE_EXPORT_FORMATS.forEach((format) => {
+      const formatTitle =
+        _t(context, `${format.tKey}Title`) || format.title;
+      const formatDescription =
+        _t(context, `${format.tKey}Description`) || format.description;
       if (
         input === "" ||
+        formatTitle.toLowerCase().includes(input.toLowerCase()) ||
         format.title.toLowerCase().includes(input.toLowerCase()) ||
         format.format.includes(input.toLowerCase())
       ) {
         results.push({
-          title: format.title,
+          title: formatTitle,
           icon: format.icon,
           tags: ["export", "site", format.format],
-          more: format.description,
+          more: formatDescription,
           value: {
             target: context,
             method: "exportSiteAs",

@@ -34,6 +34,57 @@ class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
       exportThisPageDescription: "Download or copy the current page in multiple formats.",
       exportThisSite: "Export this site",
       exportThisSiteDescription: "Download the full site in publication-ready or portable formats.",
+      importFileTitle: "Import from file",
+      importFileDescription:
+        "Pick a local file, then choose how to apply it to content or site structure.",
+      importLinkTitle: "Import from URL",
+      importLinkDescription:
+        "Paste a URL and choose how to embed it, link it, or transform it in content.",
+      exportPageHtmlTitle: "Export as HTML",
+      exportPageHtmlDescription:
+        "Download current page as HTML file",
+      exportPageMarkdownTitle: "Export as Markdown",
+      exportPageMarkdownDescription:
+        "Download current page as Markdown (.md) file",
+      exportPageJsonTitle: "Export as JSON",
+      exportPageJsonDescription:
+        "Download current page as JSON",
+      exportPageYamlTitle: "Export as YAML",
+      exportPageYamlDescription:
+        "Download current page as YAML",
+      exportPageXmlTitle: "Export as XML",
+      exportPageXmlDescription:
+        "Download current page as XML",
+      exportPageDocxTitle: "Export as DOCX",
+      exportPageDocxDescription:
+        "Download current page as Word document",
+      exportPagePdfTitle: "Export as PDF",
+      exportPagePdfDescription:
+        "Download current page as PDF file",
+      exportPageEpubTitle: "Export as EPUB",
+      exportPageEpubDescription:
+        "Download current page as an EPUB book",
+      exportSiteArchiveTitle: "Download site archive",
+      exportSiteArchiveDescription:
+        "Download the complete site as a ZIP file",
+      exportSiteHtmlTitle: "Export site as HTML",
+      exportSiteHtmlDescription:
+        "Download the entire site as a single HTML document",
+      exportSiteMarkdownTitle: "Export site as Markdown",
+      exportSiteMarkdownDescription:
+        "Download the entire site as Markdown",
+      exportSiteDocxTitle: "Export site as DOCX",
+      exportSiteDocxDescription:
+        "Download the entire site as a Word document",
+      exportSitePdfTitle: "Export site as PDF",
+      exportSitePdfDescription:
+        "Download the entire site as a PDF document",
+      exportSiteEpubTitle: "Export site as EPUB",
+      exportSiteEpubDescription:
+        "Download the site as an EPUB book",
+      exportSiteSkeletonTitle: "Export site skeleton",
+      exportSiteSkeletonDescription:
+        "Export a reusable site template for creating similar sites",
     };
     this.registerLocalization({
       context: this,
@@ -162,6 +213,12 @@ class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
     }
   }
 
+  // translate shared option metadata, falling back to its English text
+  _actionText(item, field) {
+    const suffix = field === "description" ? "Description" : "Title";
+    return (item.tKey && this.t[`${item.tKey}${suffix}`]) || item[field];
+  }
+
   _actionDisabledTooltip(item) {
     return this._isActionDisabled(item) ? this.t.disabledInFeatures : "";
   }
@@ -192,7 +249,7 @@ class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
         type="button"
         class="action-button"
         title="${this._actionDisabledTooltip(item)}"
-        aria-label="${item.title}"
+        aria-label="${this._actionText(item, "title")}"
         ?disabled="${this._isActionDisabled(item)}"
         @click="${() => this._emitAction(item)}"
       >
@@ -201,8 +258,12 @@ class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
           aria-hidden="true"
         ></simple-icon-lite>
         <span>
-          <span class="action-title">${item.title}</span>
-          <span class="action-description">${item.description}</span>
+          <span class="action-title"
+            >${this._actionText(item, "title")}</span
+          >
+          <span class="action-description"
+            >${this._actionText(item, "description")}</span
+          >
         </span>
       </button>
     `;

@@ -72,6 +72,8 @@ export class QuestionElement extends SchemaBehaviors(
       addAnswer: "Add answer",
       removeAnswer: "Remove answer",
       toggleEditingFeedbackBlocks: "Toggle editing feedback blocks",
+      feedbackEditMode: "Feedback edit mode",
+      addContent: "Add content",
     };
     this.edit = false;
   }
@@ -92,6 +94,13 @@ export class QuestionElement extends SchemaBehaviors(
   }
   set incorrectText(value) {
     this._incorrectText = value;
+  }
+  // quote a translated string so it can be used as a CSS content value
+  _cssString(str) {
+    return `"${String(str || "")
+      .replace(/\\/g, "\\\\")
+      .replace(/"/g, '\\"')
+      .replace(/[\r\n]+/g, " ")}"`;
   }
   // render a translated string, swapping {name} placeholders for template parts
   _tParts(str, parts = {}) {
@@ -788,7 +797,7 @@ export class QuestionElement extends SchemaBehaviors(
           );
         }
         :host([edit]) .edit-wrapper::before {
-          content: "Feedback edit mode";
+          content: attr(data-feedback-label);
           display: block;
           font-size: 16px;
         }
@@ -801,7 +810,7 @@ export class QuestionElement extends SchemaBehaviors(
         :host([edit]) .edit-wrapper ::slotted(*:empty)::before {
           display: block;
           font-size: 12px;
-          content: "Add content";
+          content: var(--question-element-add-content-label, "Add content");
         }
         @media (max-width: 600px) {
           :host {
@@ -1346,7 +1355,13 @@ export class QuestionElement extends SchemaBehaviors(
 
   renderEditModeFeedbackAreas() {
     return html`
-      <div class="edit-wrapper">
+      <div
+        class="edit-wrapper"
+        data-feedback-label="${this.t.feedbackEditMode}"
+        style="--question-element-add-content-label: ${this._cssString(
+          this.t.addContent,
+        )};"
+      >
         <h4>${this.t.relatedContentHeading}</h4>
         <p>${this.t.relatedContentDescription}</p>
         <slot name="content"></slot>

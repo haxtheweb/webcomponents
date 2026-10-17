@@ -254,10 +254,23 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
     totalMonths = (totalMonths > 1 ? this.t.monthsShort : this.t.monthShort).replace("{count}", totalMonths);
 
     // Using a 3-letter short format for the months
-    const shortDate = new Intl.DateTimeFormat('en-US', {
+    // format in the document's language, falling back to the runtime default
+    const dateOptions = {
       year: 'numeric',
       month: 'short'
-    });
+    };
+    const docLang =
+      (globalThis.document &&
+        globalThis.document.documentElement &&
+        globalThis.document.documentElement.lang) ||
+      undefined;
+    let shortDate;
+    try {
+      shortDate = new Intl.DateTimeFormat(docLang, dateOptions);
+    } catch (e) {
+      // invalid lang tag on the document
+      shortDate = new Intl.DateTimeFormat(undefined, dateOptions);
+    }
 
     const shortStart = shortDate.format(startDateObj);
     // If there's no explicit end date, interpret as ongoing role

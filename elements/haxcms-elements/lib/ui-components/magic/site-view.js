@@ -110,6 +110,23 @@ export class SiteView extends I18NMixin(DDD) {
       noResultsFound: "No results found.",
       refreshView: "Refresh view",
       breakIntoStaticContent: "Break into static content",
+      viewsRecordNoTitle: "No results",
+      viewsRecordHeading: "Record",
+      viewsTitleImage: "{title} image",
+      viewsTitlePreview: "{title} preview",
+      viewsNoTimelineRecords:
+        "No date-oriented records available for timeline rendering.",
+      viewsTimelineTitle: "{title} timeline",
+      viewsNoChartField: "No numeric field detected for chart rendering.",
+      viewsChartingValue: "Charting {value}",
+      viewsChartingValueByLabel: "Charting {value} by {label}",
+      viewsChartTitle: "{title} chart",
+      viewsNoTreeRecords:
+        "No hierarchical records available for tree rendering.",
+      viewsNoGalleryRecords:
+        "No image records available for gallery rendering.",
+      viewsNoPlaylistRecords:
+        "No media records available for playlist rendering.",
     };
     this.registerLocalization({
       context: this,
@@ -270,6 +287,7 @@ export class SiteView extends I18NMixin(DDD) {
     return html`
       ${renderPreview(this.results, this.renderer, {
         selectedEntity: this.entity,
+        t: this.t,
       })}
     `;
   }
@@ -282,6 +300,7 @@ export class SiteView extends I18NMixin(DDD) {
     render(
       renderPreview(this.results, this.renderer, {
         selectedEntity: this.entity,
+        t: this.t,
       }),
       container,
     );

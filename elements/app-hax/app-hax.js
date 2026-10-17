@@ -379,6 +379,16 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       toggleSoundEffectsOff: "Toggle sound effects off",
       toggleSoundEffectsOn: "Toggle sound effects on",
       soundEffects: "Sound effects",
+      // route text from AppHaxStore baseRoutes (see _translateRoute)
+      welcomeBack: "Welcome back",
+      letsGoOnAHaxJourney: "Let's go on a HAX Journey",
+      search: "Search",
+      discoverActiveAdventures: "Discover active adventures",
+      searchSites: "Search sites",
+      welcome: "Welcome",
+      letsBuildSomethingAwesome: "Let's build something awesome!",
+      notFoundStatement: "it's not you.. it's me",
+      notFoundTitle: "FoUr Oh FoUr",
     };
     this.registerLocalization({
       context: this,
@@ -598,7 +608,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     autorun(() => {
       const _mobx_val_0 = toJS(store.activeItem);
       Promise.resolve().then(() => {
-        const item = _mobx_val_0;
+        const item = this._translateRoute(_mobx_val_0);
         if (item && item.title) {
           store.setPageTitle(item.title);
         }
@@ -1629,7 +1639,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       const _mobx_val_0 = toJS(store.activeItem);
       Promise.resolve().then(() => {
         if (store.activeItem) {
-          this.activeItem = _mobx_val_0;
+          this.activeItem = this._translateRoute(_mobx_val_0);
         }
       });
     });
@@ -1835,6 +1845,21 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       );
     }
     return null;
+  }
+
+  // swap a route's English label / statement / title for this.t versions
+  _translateRoute(item) {
+    if (!item || !item.tKeys || !this.t) {
+      return item;
+    }
+    const translated = { ...item };
+    Object.keys(item.tKeys).forEach((field) => {
+      const key = item.tKeys[field];
+      if (key && this.t[key]) {
+        translated[field] = this.t[key];
+      }
+    });
+    return translated;
   }
 
   _systemSettingsModalRouteState(panelKey = "dashboard") {

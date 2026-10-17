@@ -99,13 +99,13 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
                 loading="lazy"
                 alt="${this.t.licenseGraphic.replace(
                   "{license}",
-                  this.licenseName,
+                  this._licenseDisplayName(),
                 )}"
                 src="${this.licenseImage}"
                 ?hidden="${!this.licenseImage}"
                 width="44px"
                 height="16px"
-              />${this.licenseName}</a
+              />${this._licenseDisplayName()}</a
             >`,
             date: html`<span class="license-link">${this.date}</span>`,
           },
@@ -144,6 +144,12 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
         "{title} by {creator}, licensed under {license}. Accessed {date}.",
       citationWithoutLicense: "{title} by {creator}. Accessed {date}.",
       licenseGraphic: "{license} graphic",
+      licenseBy: "Attribution",
+      licenseBySa: "Attribution Share a like",
+      licenseByNd: "Attribution No derivatives",
+      licenseByNc: "Attribution non-commercial",
+      licenseByNcSa: "Attribution non-commercial share a like",
+      licenseByNcNd: "Attribution Non-commercial No derivatives",
     };
     this.registerLocalization({
       context: this,
@@ -460,6 +466,24 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
     };
   }
 
+  /**
+   * translated license name for display; custom licenseName values pass through
+   */
+  _licenseDisplayName() {
+    const entry =
+      this.license && new licenseList()[this.license]
+        ? new licenseList()[this.license]
+        : null;
+    if (
+      entry &&
+      entry.tKey &&
+      entry.name === this.licenseName &&
+      this.t[entry.tKey]
+    ) {
+      return this.t[entry.tKey];
+    }
+    return this.licenseName;
+  }
   /**
    * License was updated, time to update license name and link.
    */

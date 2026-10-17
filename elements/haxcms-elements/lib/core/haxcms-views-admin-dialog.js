@@ -123,6 +123,23 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       rendererTimeline: "Timeline",
       rendererChart: "Chart",
       rendererTree: "Tree",
+      viewsRecordNoTitle: "No results",
+      viewsRecordHeading: "Record",
+      viewsTitleImage: "{title} image",
+      viewsTitlePreview: "{title} preview",
+      viewsNoTimelineRecords:
+        "No date-oriented records available for timeline rendering.",
+      viewsTimelineTitle: "{title} timeline",
+      viewsNoChartField: "No numeric field detected for chart rendering.",
+      viewsChartingValue: "Charting {value}",
+      viewsChartingValueByLabel: "Charting {value} by {label}",
+      viewsChartTitle: "{title} chart",
+      viewsNoTreeRecords:
+        "No hierarchical records available for tree rendering.",
+      viewsNoGalleryRecords:
+        "No image records available for gallery rendering.",
+      viewsNoPlaylistRecords:
+        "No media records available for playlist rendering.",
     };
     this.registerLocalization({
       context: this,
@@ -1868,6 +1885,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       selectedFields: this.selectedFields,
       selectedEntity: this.selectedEntity,
       resolveHref: this._resolveSiteHref.bind(this),
+      t: this.t,
     });
   }
 

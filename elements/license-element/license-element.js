@@ -1,5 +1,7 @@
 /**
  * A list of licenses that we support the references for.
+ * `name` is the English label; elements that display it translate via
+ * `this.t[tKey]` (see license-element / citation-element _licenseDisplayName)
  */
 export class licenseList {
   constructor(mode = "full") {
@@ -7,31 +9,37 @@ export class licenseList {
     let list = {
       by: {
         name: "Attribution",
+        tKey: "licenseBy",
         link: "https://creativecommons.org/licenses/by/4.0/",
         image: "https://i.creativecommons.org/l/by/4.0/88x31.png",
       },
       "by-sa": {
         name: "Attribution Share a like",
+        tKey: "licenseBySa",
         link: "https://creativecommons.org/licenses/by-sa/4.0/",
         image: "https://i.creativecommons.org/l/by-sa/4.0/88x31.png",
       },
       "by-nd": {
         name: "Attribution No derivatives",
+        tKey: "licenseByNd",
         link: "https://creativecommons.org/licenses/by-nd/4.0/",
         image: "https://i.creativecommons.org/l/by-nd/4.0/88x31.png",
       },
       "by-nc": {
         name: "Attribution non-commercial",
+        tKey: "licenseByNc",
         link: "https://creativecommons.org/licenses/by-nc/4.0/",
         image: "https://i.creativecommons.org/l/by-nc/4.0/88x31.png",
       },
       "by-nc-sa": {
         name: "Attribution non-commercial share a like",
+        tKey: "licenseByNcSa",
         link: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
         image: "https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png",
       },
       "by-nc-nd": {
         name: "Attribution Non-commercial No derivatives",
+        tKey: "licenseByNcNd",
         link: "https://creativecommons.org/licenses/by-nc-nd/4.0/",
         image: "https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png",
       },
@@ -140,7 +148,7 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
                   loading="lazy"
                   alt="${this.t.licenseGraphic.replace(
                     "{license}",
-                    this.licenseName,
+                    this._licenseDisplayName(),
                   )}"
                   src="${this.licenseImage}"
               /></a>
@@ -165,7 +173,7 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
               class="license-link"
               target="_blank"
               href="${this.licenseLink}"
-              >${this.licenseName}</a
+              >${this._licenseDisplayName()}</a
             >`,
           },
         )} <span rel="dc:source" href="${this.source}"></span>
@@ -285,6 +293,12 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
         "Permissions beyond the scope of this license are available {link}.",
       author: "(author)",
       onTheLicensingDetailsPage: "on the licensing details page",
+      licenseBy: "Attribution",
+      licenseBySa: "Attribution Share a like",
+      licenseByNd: "Attribution No derivatives",
+      licenseByNc: "Attribution non-commercial",
+      licenseByNcSa: "Attribution non-commercial share a like",
+      licenseByNcNd: "Attribution Non-commercial No derivatives",
     };
     this.registerLocalization({
       context: this,
@@ -420,6 +434,24 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
       return true;
     }
     return false;
+  }
+  /**
+   * translated license name for display; custom licenseName values pass through
+   */
+  _licenseDisplayName() {
+    const entry =
+      this.license && new licenseList()[this.license]
+        ? new licenseList()[this.license]
+        : null;
+    if (
+      entry &&
+      entry.tKey &&
+      entry.name === this.licenseName &&
+      this.t[entry.tKey]
+    ) {
+      return this.t[entry.tKey];
+    }
+    return this.licenseName;
   }
   /**
    * License was updated, time to update license name and link.

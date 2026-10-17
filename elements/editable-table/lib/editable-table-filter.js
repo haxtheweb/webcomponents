@@ -11,6 +11,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { SimpleToolbarButtonBehaviors } from "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `editable-table-editor-filter`
@@ -20,7 +21,7 @@ import { SimpleToolbarButtonBehaviors } from "@haxtheweb/simple-toolbar/lib/simp
  * @customElement
  * @extends LitElement
  */
-class EditableTableFilter extends SimpleToolbarButtonBehaviors(DDD) {
+class EditableTableFilter extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
   static get styles() {
     return [
       ...(super.styles || []),
@@ -82,16 +83,33 @@ class EditableTableFilter extends SimpleToolbarButtonBehaviors(DDD) {
     this.text = "";
     this.toggles = true;
     this.icon = "editable-table:filter";
-    this.label = "Toggle filter.";
-    this.tooltip = "Toggle filter for column.";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      toggleFilter: "Toggle filter.",
+      toggleFilterForColumn: "Toggle filter for column.",
+      toggleColumnFilter: "Toggle Column {column} filter.",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
+    this.label = this.t.toggleFilter;
+    this.tooltip = this.t.toggleFilterForColumn;
     this.describedby = "cell";
   }
 
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "columnIndex") {
-        this.tooltip = `Toggle Column ${this.columnIndex} filter.`;
+      if (propName == "t") {
+        this.label = this.t.toggleFilter;
+      }
+      if (propName == "columnIndex" || propName == "t") {
+        this.tooltip = this.t.toggleColumnFilter.replace(
+          "{column}",
+          this.columnIndex,
+        );
       }
     });
   }

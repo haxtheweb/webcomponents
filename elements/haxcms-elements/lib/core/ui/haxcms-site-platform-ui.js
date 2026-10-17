@@ -281,6 +281,8 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       communityFeatureLabel: "Community outreach",
       communityFeatureDescription:
         "Enables community-related command search context and outreach-oriented actions.",
+      skeletonLargeSiteConfirm:
+        "This site has {count} pages. Generating a skeleton may take a while and create a large file. Continue?",
     };
 
     this.registerLocalization({
@@ -1305,7 +1307,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       );
 
       const skeleton =
-        await SiteSkeletonGenerator.generateFromCurrentSite(true);
+        await SiteSkeletonGenerator.generateFromCurrentSite(true, this.t);
 
       const platformConfig = this._platformConfigForExport();
       if (!skeleton.site) {
