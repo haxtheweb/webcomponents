@@ -33,6 +33,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
     this.siteTitle = "";
     this.t = {
       userAccess: "User Access",
+      characterWillAppear: "Character will appear when you enter a username",
       enterUsername: "Enter username to grant access",
       usernamePlaceholder: "Username",
       addUser: "Add User",
@@ -336,7 +337,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
               `
             : html`
                 <div class="empty-character">
-                  Character will appear when you enter a username
+                  ${this.t.characterWillAppear}
                 </div>
               `}
         </div>

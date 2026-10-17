@@ -140,6 +140,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         "No image records available for gallery rendering.",
       viewsNoPlaylistRecords:
         "No media records available for playlist rendering.",
+      viewsOpenRecord: "Open record",
     };
     this.registerLocalization({
       context: this,

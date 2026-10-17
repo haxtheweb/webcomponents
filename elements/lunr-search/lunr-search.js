@@ -3,6 +3,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 /**
@@ -11,7 +12,7 @@ import "@haxtheweb/es-global-bridge/es-global-bridge.js";
  * @demo demo/index.html
  * @element lunr-search
  */
-class LunrSearch extends LitElement {
+class LunrSearch extends I18NMixin(LitElement) {
   //styles function
   static get styles() {
     return [
@@ -39,7 +40,7 @@ class LunrSearch extends LitElement {
       ${this.demo
         ? html`<div class="results" aria-live="polite">
             ${this.results && this.results.length > 0
-              ? html`<ul aria-label="Search results">
+              ? html`<ul aria-label="${this.t.searchResults}">
                   ${this.results.map(
                     (item) => html`<li>
                       ${item && item.title
@@ -115,6 +116,15 @@ class LunrSearch extends LitElement {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      searchResults: "Search results",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.windowControllers = new AbortController();
     this.method = "GET";
     this.noStopWords = false;

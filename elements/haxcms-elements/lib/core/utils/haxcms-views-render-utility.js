@@ -26,6 +26,7 @@ export const VIEWS_RENDER_TEXT = {
   viewsNoTreeRecords: "No hierarchical records available for tree rendering.",
   viewsNoGalleryRecords: "No image records available for gallery rendering.",
   viewsNoPlaylistRecords: "No media records available for playlist rendering.",
+  viewsOpenRecord: "Open record",
 };
 
 export const viewsText = (options, key) => {
@@ -822,7 +823,7 @@ export const renderGridPreview = (records, options = {}) => {
                     href="${url}"
                     target="_blank"
                     rel="noopener"
-                    >Open record</a
+                    >${viewsText(options, "viewsOpenRecord")}</a
                   >`
                 : html``}
             </div>
@@ -1024,7 +1025,7 @@ export const renderCarouselPreview = (records, options = {}) => {
                 ${renderRecordBody(record, 300)}
                 ${url
                   ? html`<a href="${url}" target="_blank" rel="noopener"
-                      >Open record</a
+                      >${viewsText(options, "viewsOpenRecord")}</a
                     >`
                   : html``}
               </div>

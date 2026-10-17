@@ -2,6 +2,7 @@
  * Copyright 2024 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  */
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { WebContainer } from "@webcontainer/api";
@@ -13,7 +14,7 @@ import { FitAddon } from "@xterm/addon-fit";
  * @demo index.html
  * @element web-container
  */
-export class WebContainerEl extends DDDSuper(LitElement) {
+export class WebContainerEl extends I18NMixin(DDDSuper(LitElement)) {
 
   static get tag() {
     return "web-container";
@@ -21,8 +22,22 @@ export class WebContainerEl extends DDDSuper(LitElement) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      loading: "Loading",
+      settingUpContainer: "Setting up container",
+      runningCommands: "Running commands",
+      installing: "Installing..",
+      runningStart: "Running Start..",
+      webContainerPreview: "Web container preview",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.filesShown = [];
-    this.status = "Loading";
+    this.status = this.t.loading;
     this.fname = null;
     this.hideEditor = false;
     this.hideTerminal = false;
@@ -222,21 +237,21 @@ export class WebContainerEl extends DDDSuper(LitElement) {
   
     fitAddon.fit();
     // Call only once
-    this.status = "Setting up container";
+    this.status = this.t.settingUpContainer;
     this.webcontainerInstance = await globalThis.WebContainerManager.requestAvailability();
     await this.webcontainerInstance.mount(this.files);
     const shellProcess = await this.startShell(terminal);
     this.__shellProcess = shellProcess;
     if (this.commands.length > 0) {
-      this.status = "Running commands";
+      this.status = this.t.runningCommands;
       await this.runCommands(this.commands);
     }
     else {
-      this.status = "Installing..";
+      this.status = this.t.installing;
       this.dispatchEvent(new CustomEvent('web-container-dependencies-installing', { bubbles: true, compose: true, cancelable: false, detail: true }))
       await this.installDependencies();
       this.dispatchEvent(new CustomEvent('web-container-dependencies-installed', { bubbles: true, compose: true, cancelable: false, detail: true }))
-      this.status = "Running Start..";
+      this.status = this.t.runningStart;
       await this.startDevServer();
       this.dispatchEvent(new CustomEvent('web-container-npm-start', { bubbles: true, compose: true, cancelable: false, detail: true }))
     }
@@ -665,7 +680,7 @@ export class WebContainerEl extends DDDSuper(LitElement) {
           <code-editor part="code-editor" @value-changed="${this.editorValueChanged}"></code-editor>
         </div>` : ``}
       <div class="preview" part="preview">
-        ${!this.hideWindow ? html`<div class="status" part="status" role="status" aria-live="polite">${this.status}</div><iframe part="iframe" title="Web container preview" src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>`: ``}
+        ${!this.hideWindow ? html`<div class="status" part="status" role="status" aria-live="polite">${this.status}</div><iframe part="iframe" title="${this.t.webContainerPreview}" src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>`: ``}
       </div>
     </div>
     <div class="terminal" part="terminal"></div>`;

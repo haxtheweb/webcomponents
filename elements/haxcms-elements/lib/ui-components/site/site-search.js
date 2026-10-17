@@ -244,6 +244,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
       searchResultTags: "Tags",
       createdOn: "Created on",
       pageLocation: "Page location",
+      noResultsFor: 'No results found for "{search}"',
     };
     this.whileLoading = false;
     this.hideInput = false;
@@ -381,7 +382,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
           `
         : this.search.length > 0 && !this.whileLoading
           ? html`<div class="no-results" role="status">
-              No results found for "${this.search}"
+              ${this.t.noResultsFor.replace("{search}", this.search)}
             </div>`
           : html``}
     `;

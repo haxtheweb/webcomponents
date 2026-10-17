@@ -46,6 +46,7 @@ class A11yGifPlayer extends I18NMixin(
     this._updateFromSlot();
     this.t = {
       toggleAnimation: "Toggle animation",
+      info: "info",
     };
     this.registerLocalization({
       context: this,
@@ -219,7 +220,7 @@ class A11yGifPlayer extends I18NMixin(
               ?hidden="${!this.src || !this.longdesc}"
               .style="opacity:${this.__playing ? 0 : 1}"
             >
-              <div slot="summary">info</div>
+              <div slot="summary">${this.t.info}</div>
               <div slot="details">${this.longdesc}</div>
             </a11y-details>
           </div>
