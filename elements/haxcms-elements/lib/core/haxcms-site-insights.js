@@ -954,12 +954,12 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           schema.fields = [
             {
               property: "links",
-              title: "Link status",
+              title: this.t.reportLinkStatus,
               inputMethod: "select",
               options: {
-                all: "All",
-                error: "Error only",
-                ok: "OK only",
+                all: this.t.reportAll,
+                error: this.t.reportErrorOnly,
+                ok: this.t.reportOkOnly,
               },
             },
           ];
@@ -980,12 +980,12 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           schema.fields = [
             {
               property: "title",
-              title: "Title",
+              title: this.t.reportTitle,
               inputMethod: "textfield",
             },
             {
               property: "pageType",
-              title: "Page type",
+              title: this.t.reportPageType,
               inputMethod: "select",
               options: {
                 "": "",
@@ -994,54 +994,54 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             },
             {
               property: "sort",
-              title: "Sort by",
+              title: this.t.reportSortBy,
               inputMethod: "select",
               options: {
-                title: "Title",
-                lastUpdated: "Last updated",
-                contentLength: "Content length",
+                title: this.t.reportTitle,
+                lastUpdated: this.t.lastUpdated,
+                contentLength: this.t.reportContentLength,
               },
             },
             {
               property: "hasAuthorNotes",
-              title: "Author notes",
-              description: "Includes content editor notes",
+              title: this.t.authorNotes,
+              description: this.t.reportIncludesContentEditorNotes,
               inputMethod: "boolean",
             },
             {
               property: "hasVideo",
-              title: "Video",
-              description: "Includes video",
+              title: this.t.video,
+              description: this.t.reportIncludesVideo,
               inputMethod: "boolean",
             },
             {
               property: "hasH5P",
               title: "H5P",
-              description: "Includes h5p",
+              description: this.t.reportIncludesH5p,
               inputMethod: "boolean",
             },
             {
               property: "hasPlaceholders",
-              title: "Placeholders",
-              description: "Includes placeholders",
+              title: this.t.placeholders,
+              description: this.t.reportIncludesPlaceholders,
               inputMethod: "boolean",
             },
             {
               property: "hasSiteRemoteContent",
-              title: "Remote content",
-              description: "Includes remote content",
+              title: this.t.reportRemoteContent,
+              description: this.t.reportIncludesRemoteContent,
               inputMethod: "boolean",
             },
             {
               property: "hasLinks",
-              title: "Links",
-              description: "Includes external links",
+              title: this.t.links,
+              description: this.t.reportIncludesExternalLinks,
               inputMethod: "boolean",
             },
             {
               property: "hasImages",
-              title: "Images",
-              description: "Includes images",
+              title: this.t.images,
+              description: this.t.reportIncludesImages,
               inputMethod: "boolean",
             },
           ];
@@ -1051,41 +1051,41 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           schema.fields = [
             {
               property: "title",
-              title: "Title",
+              title: this.t.reportTitle,
               inputMethod: "textfield",
             },
             {
               property: "status",
-              title: "Status",
+              title: this.t.reportStatus,
               inputMethod: "select",
               options: {
-                all: "All",
-                info: "No issues",
-                warning: "Warnings",
-                error: "Errors",
+                all: this.t.reportAll,
+                info: this.t.reportNoIssues,
+                warning: this.t.reportWarnings,
+                error: this.t.reportErrors,
               },
             },
             {
               property: "type",
-              title: "Media type",
+              title: this.t.reportMediaType,
               inputMethod: "select",
               options: {
-                all: "All",
+                all: this.t.reportAll,
                 audio: this.t.audio,
                 video: this.t.video,
                 image: this.t.images,
                 h5p: "H5P",
-                document: "Document",
+                document: this.t.reportDocument,
               },
             },
             {
               property: "location",
-              title: "Location",
+              title: this.t.reportLocation,
               inputMethod: "select",
               options: {
-                all: "All",
-                external: "External only",
-                internal: "Internal only",
+                all: this.t.reportAll,
+                external: this.t.reportExternalOnly,
+                internal: this.t.reportInternalOnly,
               },
             },
           ];
@@ -1418,7 +1418,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
   }
   _buildSummaryTableData(data) {
-    const rows = [["Metric", "Value", "Details"]];
+    const rows = [
+      [this.t.reportMetric, this.t.reportValue, this.t.reportDetails],
+    ];
     rows.push([
       this.t.pages,
       this._toCellValue(data.pages),
@@ -1441,7 +1443,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     ]);
     if (data.readability && typeof data.readability === "object") {
       rows.push([
-        "Readability",
+        this.t.reportReadability,
         this._toCellValue(data.readability.gradeLevel),
         `Dale-Chall, ${this._toCellValue(data.readability.lexiconCount)} ${this.t.words}, ${this._toCellValue(data.readability.difficultWords)} ${this.t.longWords}`,
       ]);
@@ -1464,7 +1466,14 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     return rows;
   }
   _buildLinkCheckerTableData(data) {
-    const rows = [["Status", "Link", "Usage count", "Used on"]];
+    const rows = [
+      [
+        this.t.reportStatus,
+        this.t.reportLink,
+        this.t.reportUsageCount,
+        this.t.reportUsedOn,
+      ],
+    ];
     const linkData =
       data && data.linkData && typeof data.linkData === "object"
         ? data.linkData
@@ -1509,21 +1518,21 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   _buildContentBrowserTableData(data) {
     const rows = [
       [
-        "Title",
-        "Type",
-        "Updated",
-        "Read time",
-        "Links",
-        "Images",
-        "Videos",
-        "Audio",
+        this.t.reportTitle,
+        this.t.reportType,
+        this.t.reportUpdated,
+        this.t.reportReadTime,
+        this.t.links,
+        this.t.images,
+        this.t.reportVideos,
+        this.t.audio,
         "H5P",
-        "Objectives",
-        "Author notes",
-        "Special",
-        "Data tables",
-        "Placeholders",
-        "Remote content",
+        this.t.reportObjectives,
+        this.t.authorNotes,
+        this.t.reportSpecial,
+        this.t.dataTables,
+        this.t.placeholders,
+        this.t.reportRemoteContent,
       ],
     ];
     const contentData =
@@ -1552,14 +1561,14 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   _buildMediaBrowserTableData(data) {
     const rows = [
       [
-        "Name",
-        "Title",
-        "Type",
-        "Location",
-        "Status",
-        "Found under",
-        "Page",
-        "Alt",
+        this.t.reportName,
+        this.t.reportTitle,
+        this.t.reportType,
+        this.t.reportLocation,
+        this.t.reportStatus,
+        this.t.reportFoundUnder,
+        this.t.reportPage,
+        this.t.reportAlt,
       ],
     ];
     const mediaData =
@@ -1638,15 +1647,17 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   _linkStatusLabel(linkKey) {
     const statusData = this.linkResponseData[linkKey];
     if (!statusData || statusData.ok === "loading") {
-      return "Loading";
+      return this.t.loading;
     }
     if (statusData.ok === true) {
-      return "OK";
+      return this.t.linkStatusOk;
     }
     if (statusData.ok === false) {
-      return statusData.status ? `Error (${statusData.status})` : "Error";
+      return statusData.status
+        ? this.t.linkStatusErrorCode.replace("{status}", statusData.status)
+        : this.t.linkStatusError;
     }
-    return "Unknown";
+    return this.t.linkStatusUnknown;
   }
   _ensureLinkValidationData(linkData) {
     if (!linkData || typeof linkData !== "object") {
@@ -1923,6 +1934,52 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       hours: "hours",
       minute: "minute",
       minutes: "minutes",
+      reportLinkStatus: "Link status",
+      reportAll: "All",
+      reportErrorOnly: "Error only",
+      reportOkOnly: "OK only",
+      reportTitle: "Title",
+      reportPageType: "Page type",
+      reportSortBy: "Sort by",
+      reportContentLength: "Content length",
+      reportIncludesContentEditorNotes: "Includes content editor notes",
+      reportIncludesVideo: "Includes video",
+      reportIncludesH5p: "Includes h5p",
+      reportIncludesPlaceholders: "Includes placeholders",
+      reportRemoteContent: "Remote content",
+      reportIncludesRemoteContent: "Includes remote content",
+      reportIncludesExternalLinks: "Includes external links",
+      reportIncludesImages: "Includes images",
+      reportStatus: "Status",
+      reportNoIssues: "No issues",
+      reportWarnings: "Warnings",
+      reportErrors: "Errors",
+      reportMediaType: "Media type",
+      reportDocument: "Document",
+      reportLocation: "Location",
+      reportExternalOnly: "External only",
+      reportInternalOnly: "Internal only",
+      reportMetric: "Metric",
+      reportValue: "Value",
+      reportDetails: "Details",
+      reportReadability: "Readability",
+      reportLink: "Link",
+      reportUsageCount: "Usage count",
+      reportUsedOn: "Used on",
+      reportType: "Type",
+      reportUpdated: "Updated",
+      reportReadTime: "Read time",
+      reportObjectives: "Objectives",
+      reportSpecial: "Special",
+      reportName: "Name",
+      reportFoundUnder: "Found under",
+      reportPage: "Page",
+      reportAlt: "Alt",
+      linkStatusOk: "OK",
+      linkStatusError: "Error",
+      linkStatusErrorCode: "Error ({status})",
+      linkStatusUnknown: "Unknown",
+      reportVideos: "Videos",
     };
     this.data = {
       readability: {},

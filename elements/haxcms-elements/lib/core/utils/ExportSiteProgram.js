@@ -15,6 +15,28 @@ import { SITE_EXPORT_FORMATS } from "./import-export-options.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { waitForAppHAXSystemApiRegistryReady } from "@haxtheweb/app-hax/lib/v2/app-hax-system-api-registry.js";
 
+// English defaults for messages these helpers show. They run with `this`
+// bound to haxcms-site-editor-ui, so translations come from its (haxcms
+// namespace) this.t when present, falling back to these strings.
+const EXPORT_SITE_T = {
+  siteManifestNotAvailableForExport: "Site manifest not available for export",
+  exportFormatNotSupported: 'Export format "{format}" not supported',
+  siteExportFailed: "Site export failed: {error}",
+  siteFormatDownloadedSuccessfully: "Site {format} downloaded successfully",
+  siteFormatExportServiceNotAvailable:
+    "Site {format} export service not available",
+  siteArchiveDownloadNotAvailable: "Site archive download not available",
+  siteArchiveDownloadInitiated: "Site archive download initiated",
+  platformSettings: "Platform settings",
+  siteSkeleton: "Site skeleton",
+  skeletonExportFailed: "Skeleton export failed: {error}",
+};
+function _t(context, key) {
+  return context && context.t && context.t[key]
+    ? context.t[key]
+    : EXPORT_SITE_T[key];
+}
+
 function _buildV1ExportUrl(baseUrl, format, queryParams = {}) {
   const url = new URL(
     `./x/api/v1/site/export/${encodeURIComponent(format)}`,
@@ -76,7 +98,7 @@ export async function exportSiteAs(format, options = {}) {
     const manifest = toJS(store.manifest);
     if (!manifest || !manifest.metadata) {
       HAXStore.toast(
-        "Site manifest not available for export",
+        _t(this, "siteManifestNotAvailableForExport"),
         3000,
         "fit-bottom",
       );
@@ -119,14 +141,18 @@ export async function exportSiteAs(format, options = {}) {
 
       default:
         HAXStore.toast(
-          `Export format "${format}" not supported`,
+          _t(this, "exportFormatNotSupported").replace("{format}", format),
           3000,
           "fit-bottom",
         );
     }
   } catch (error) {
     console.error("Site export error:", error);
-    HAXStore.toast(`Site export failed: ${error.message}`, 3000, "fit-bottom");
+    HAXStore.toast(
+      _t(this, "siteExportFailed").replace("{error}", error.message),
+      3000,
+      "fit-bottom",
+    );
   }
 }
 
@@ -147,7 +173,14 @@ export async function _exportSiteAsHTML(manifest, title, baseUrl) {
       const html = await response.text();
       this._downloadFile(html, `${title}.html`, "text/html");
       this.clearProcessingVisual();
-      HAXStore.toast("Site HTML downloaded successfully", 3000, "fit-bottom");
+      HAXStore.toast(
+        _t(this, "siteFormatDownloadedSuccessfully").replace(
+          "{format}",
+          "HTML",
+        ),
+        3000,
+        "fit-bottom",
+      );
     } else {
       throw new Error(`Failed to export site as HTML: ${response.status}`);
     }
@@ -155,7 +188,10 @@ export async function _exportSiteAsHTML(manifest, title, baseUrl) {
     console.error("Site HTML export error:", error);
     this.clearProcessingVisual();
     HAXStore.toast(
-      "Site HTML export service not available",
+      _t(this, "siteFormatExportServiceNotAvailable").replace(
+        "{format}",
+        "HTML",
+      ),
       3000,
       "fit-bottom",
     );
@@ -173,7 +209,10 @@ export async function _exportSiteAsMarkdown(manifest, title, baseUrl) {
       this._downloadFile(markdown, `${title}.md`, "text/markdown");
       this.clearProcessingVisual();
       HAXStore.toast(
-        "Site Markdown downloaded successfully",
+        _t(this, "siteFormatDownloadedSuccessfully").replace(
+          "{format}",
+          "Markdown",
+        ),
         3000,
         "fit-bottom",
       );
@@ -184,7 +223,10 @@ export async function _exportSiteAsMarkdown(manifest, title, baseUrl) {
     console.error("Site Markdown export error:", error);
     this.clearProcessingVisual();
     HAXStore.toast(
-      "Site Markdown export service not available",
+      _t(this, "siteFormatExportServiceNotAvailable").replace(
+        "{format}",
+        "Markdown",
+      ),
       3000,
       "fit-bottom",
     );
@@ -201,7 +243,14 @@ export async function _exportSiteAsDOCX(manifest, title, baseUrl) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.docx`);
       this.clearProcessingVisual();
-      HAXStore.toast("Site DOCX downloaded successfully", 3000, "fit-bottom");
+      HAXStore.toast(
+        _t(this, "siteFormatDownloadedSuccessfully").replace(
+          "{format}",
+          "DOCX",
+        ),
+        3000,
+        "fit-bottom",
+      );
     } else {
       throw new Error(`Failed to export site as DOCX: ${response.status}`);
     }
@@ -209,7 +258,10 @@ export async function _exportSiteAsDOCX(manifest, title, baseUrl) {
     console.error("Site DOCX export error:", error);
     this.clearProcessingVisual();
     HAXStore.toast(
-      "Site DOCX export service not available",
+      _t(this, "siteFormatExportServiceNotAvailable").replace(
+        "{format}",
+        "DOCX",
+      ),
       3000,
       "fit-bottom",
     );
@@ -226,14 +278,28 @@ export async function _exportSiteAsPDF(manifest, title, baseUrl) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.pdf`);
       this.clearProcessingVisual();
-      HAXStore.toast("Site PDF downloaded successfully", 3000, "fit-bottom");
+      HAXStore.toast(
+        _t(this, "siteFormatDownloadedSuccessfully").replace(
+          "{format}",
+          "PDF",
+        ),
+        3000,
+        "fit-bottom",
+      );
     } else {
       throw new Error(`Failed to export site as PDF: ${response.status}`);
     }
   } catch (error) {
     console.error("Site PDF export error:", error);
     this.clearProcessingVisual();
-    HAXStore.toast("Site PDF export service not available", 3000, "fit-bottom");
+    HAXStore.toast(
+      _t(this, "siteFormatExportServiceNotAvailable").replace(
+        "{format}",
+        "PDF",
+      ),
+      3000,
+      "fit-bottom",
+    );
   }
 }
 
@@ -247,7 +313,14 @@ export async function _exportSiteAsEPUB(manifest, title, baseUrl) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.epub`);
       this.clearProcessingVisual();
-      HAXStore.toast("Site EPUB downloaded successfully", 3000, "fit-bottom");
+      HAXStore.toast(
+        _t(this, "siteFormatDownloadedSuccessfully").replace(
+          "{format}",
+          "EPUB",
+        ),
+        3000,
+        "fit-bottom",
+      );
     } else {
       throw new Error(`Failed to export site as EPUB: ${response.status}`);
     }
@@ -255,7 +328,10 @@ export async function _exportSiteAsEPUB(manifest, title, baseUrl) {
     console.error("Site EPUB export error:", error);
     this.clearProcessingVisual();
     HAXStore.toast(
-      "Site EPUB export service not available",
+      _t(this, "siteFormatExportServiceNotAvailable").replace(
+        "{format}",
+        "EPUB",
+      ),
       3000,
       "fit-bottom",
     );
@@ -273,7 +349,11 @@ export async function _downloadSiteArchive() {
         ? String(manifest.metadata.site.name)
         : "";
     if (!siteName) {
-      HAXStore.toast("Site archive download not available", 3000, "fit-bottom");
+      HAXStore.toast(
+        _t(this, "siteArchiveDownloadNotAvailable"),
+        3000,
+        "fit-bottom",
+      );
       return;
     }
     // downloadSite is a system-level operation (it zips the site folder off
@@ -289,7 +369,11 @@ export async function _downloadSiteArchive() {
       typeof MicroFrontendRegistry.call !== "function" ||
       !MicroFrontendRegistry.has("@system/downloadSite")
     ) {
-      HAXStore.toast("Site archive download not available", 3000, "fit-bottom");
+      HAXStore.toast(
+        _t(this, "siteArchiveDownloadNotAvailable"),
+        3000,
+        "fit-bottom",
+      );
       return;
     }
     this.setProcessingVisual(600000);
@@ -312,14 +396,18 @@ export async function _downloadSiteArchive() {
       const message =
         typeof response.message === "string" && response.message
           ? response.message
-          : "Site archive download not available";
+          : _t(this, "siteArchiveDownloadNotAvailable");
       this.clearProcessingVisual();
       HAXStore.toast(message, 3000, "fit-bottom");
       return;
     }
     if (!(response && response.data && response.data.link)) {
       this.clearProcessingVisual();
-      HAXStore.toast("Site archive download not available", 3000, "fit-bottom");
+      HAXStore.toast(
+        _t(this, "siteArchiveDownloadNotAvailable"),
+        3000,
+        "fit-bottom",
+      );
       return;
     }
     // Use an anchor element so this is treated as a real navigation and not
@@ -334,11 +422,15 @@ export async function _downloadSiteArchive() {
     link.click();
     globalThis.document.body.removeChild(link);
     this.clearProcessingVisual();
-    HAXStore.toast("Site archive download initiated", 3000, "fit-bottom");
+    HAXStore.toast(_t(this, "siteArchiveDownloadInitiated"), 3000, "fit-bottom");
   } catch (error) {
     console.error("Site archive download error:", error);
     this.clearProcessingVisual();
-    HAXStore.toast("Site archive download not available", 3000, "fit-bottom");
+    HAXStore.toast(
+      _t(this, "siteArchiveDownloadNotAvailable"),
+      3000,
+      "fit-bottom",
+    );
   }
 }
 
@@ -380,8 +472,8 @@ export async function _exportSiteAsSkeleton(
       options && options.modalTitle
         ? options.modalTitle
         : options && options.platformSettings
-          ? "Platform settings"
-          : "Site skeleton";
+          ? _t(this, "platformSettings")
+          : _t(this, "siteSkeleton");
     const modalTitleIcon =
       options && options.modalTitleIcon
         ? options.modalTitleIcon
@@ -445,7 +537,7 @@ export async function _exportSiteAsSkeleton(
   } catch (error) {
     console.error("Skeleton export modal failed:", error);
     HAXStore.toast(
-      `Skeleton export failed: ${error.message}`,
+      _t(this, "skeletonExportFailed").replace("{error}", error.message),
       5000,
       "fit-bottom",
     );

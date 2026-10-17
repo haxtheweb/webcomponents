@@ -1,14 +1,26 @@
 /* eslint-disable no-return-assign */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-export class AppHaxScrollButton extends LitElement {
+export class AppHaxScrollButton extends I18NMixin(LitElement) {
   static get tag() {
     return "app-hax-scroll-button";
   }
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      navigateToSection: "{label} - Navigate to section",
+      clickToScrollToSection: "Click to scroll to the {label} section",
+      navigatedToSection: "Navigated to {label} section",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.label = "";
     this.targetId = "";
     this.isDarkMode = document.body.classList.contains("dark-mode");
@@ -134,12 +146,12 @@ export class AppHaxScrollButton extends LitElement {
         @click="${this.scrollToTarget}"
         tabindex="0"
         role="button"
-        aria-label="${this.label} - Navigate to section"
+        aria-label="${this.t.navigateToSection.replace("{label}", this.label)}"
         aria-describedby="scroll-desc"
       >
         <span aria-hidden="true">${this.label}</span>
         <div id="scroll-desc" class="sr-only">
-          Click to scroll to the ${this.label} section
+          ${this.t.clickToScrollToSection.replace("{label}", this.label)}
         </div>
       </div>
       <div
@@ -167,7 +179,10 @@ export class AppHaxScrollButton extends LitElement {
   _announceNavigation() {
     const announcement = this.shadowRoot.querySelector("#scroll-announcement");
     if (announcement) {
-      announcement.textContent = `Navigated to ${this.label} section`;
+      announcement.textContent = this.t.navigatedToSection.replace(
+        "{label}",
+        this.label,
+      );
       // Clear announcement after delay
       setTimeout(() => {
         announcement.textContent = "";

@@ -728,8 +728,8 @@ class CleanOne extends LTIResizingMixin(
   render() {
     return html`
       <div class="site">
-        <a class="skip-link" href="#contentcontainer">Skip to content</a>
-        <nav class="menu-outline" aria-label="Site menu">
+        <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
+        <nav class="menu-outline" aria-label="${this.t.siteMenu}">
           <div id="site-search-input" role="search" part="search-btn">
             <clean-one-search-box
               part="${this.editMode
@@ -820,7 +820,7 @@ class CleanOne extends LTIResizingMixin(
             </main>
           </div>
           <footer>
-            <nav aria-label="Page navigation">
+            <nav aria-label="${this.t.pageNavigation}">
               <site-menu-button
                 type="prev"
                 position="right"
@@ -888,6 +888,13 @@ class CleanOne extends LTIResizingMixin(
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      siteMenu: "Site menu",
+      pageNavigation: "Page navigation",
+    };
     this.dataPalette = 5;
     this.searchTerm = "";
     this.HAXCMSThemeSettings.autoScroll = true;

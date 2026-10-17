@@ -4,6 +4,7 @@ import { FullscreenBehaviors } from "@haxtheweb/fullscreen-behaviors/fullscreen-
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `img-view-viewer`
@@ -24,7 +25,7 @@ Custom property | Description | Default
  * @element img-view-viewer
  * 
  */
-class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
+class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -282,6 +283,36 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     this.minZoomImageRatio = 1;
     this.maxZoomPixelRatio = 3;
     this.__screenfullLoaded = false;
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      returnImageToHomePosition: "return image to home position",
+      toggleFullscreen: "toggle fullscreen",
+      toggleNavWindow: "toggle nav window",
+      toggleInformation: "toggle information",
+      toggleKeyboardShortcutsHelp: "toggle keyboard shorcuts help",
+      keyboardShortcutsCaption: "Keyboard Shortcuts (when image has focus)",
+      panUp: "pan up",
+      panDown: "pan down",
+      panLeft: "pan left",
+      panRight: "pan right",
+      home: "home",
+      zoomOut: "zoom out",
+      zoomIn: "zoom in",
+      rotateClockwise: "rotate clockwise",
+      rotateCounterclockwise: "rotate counterclockwise",
+      or: "or",
+      flipHorizontal: "flip horizontal",
+      prev: "prev",
+      next: "next",
+      page: "Page",
+      pageXOfY: "{x} of {y}",
+      ofTotal: "of {total}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     import("@haxtheweb/simple-tooltip/simple-tooltip.js");
   }
 
@@ -386,7 +417,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "homebutton",
       icon: "home",
-      text: "return image to home position",
+      text: this.t.returnImageToHomePosition,
     };
   }
   /**
@@ -401,7 +432,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       icon: "fullscreen",
       toggleProp: "__fullscreen",
       enabledProp: "fullscreenEnabled",
-      text: html` toggle fullscreen `,
+      text: this.t.toggleFullscreen,
     };
   }
   /**
@@ -428,7 +459,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       toggleProp: "navigatorToggled",
       shownProp: "showNavigator",
       enabledProp: "showNavigator",
-      text: "toggle nav window",
+      text: this.t.toggleNavWindow,
     };
   }
   /**
@@ -443,7 +474,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       icon: "info-outline",
       toggleProp: "infoToggled",
       hiddenProp: "noSources",
-      text: "toggle information",
+      text: this.t.toggleInformation,
     };
   }
   /**
@@ -457,47 +488,47 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       id: "kbdbutton",
       icon: "help-outline",
       toggleProp: "kbdToggled",
-      text: "toggle keyboard shorcuts help",
+      text: this.t.toggleKeyboardShortcutsHelp,
       details: html`
         <table>
           <caption>
-            Keyboard Shortcuts (when image has focus)
+            ${this.t.keyboardShortcutsCaption}
           </caption>
           <tbody>
             <tr>
-              <th scope="row">pan up</th>
-              <td><kbd>w</kbd> or <kbd>&uarr;</kbd></td>
+              <th scope="row">${this.t.panUp}</th>
+              <td><kbd>w</kbd> ${this.t.or} <kbd>&uarr;</kbd></td>
             </tr>
             <tr>
-              <th scope="row">pan down</th>
-              <td><kbd>s</kbd> or <kbd>&darr;</kbd></td>
+              <th scope="row">${this.t.panDown}</th>
+              <td><kbd>s</kbd> ${this.t.or} <kbd>&darr;</kbd></td>
             </tr>
             <tr>
-              <th scope="row">pan left</th>
-              <td><kbd>a</kbd> or <kbd>&larr;</kbd></td>
+              <th scope="row">${this.t.panLeft}</th>
+              <td><kbd>a</kbd> ${this.t.or} <kbd>&larr;</kbd></td>
             </tr>
             <tr>
-              <th scope="row">pan right</th>
-              <td><kbd>d</kbd> or <kbd>&rarr;</kbd></td>
+              <th scope="row">${this.t.panRight}</th>
+              <td><kbd>d</kbd> ${this.t.or} <kbd>&rarr;</kbd></td>
             </tr>
             <tr>
-              <th scope="row">home</th>
+              <th scope="row">${this.t.home}</th>
               <td><kbd>0</kbd></td>
             </tr>
             <tr>
-              <th scope="row">zoom out</th>
-              <td><kbd>-</kbd> or <kbd>_</kbd></td>
+              <th scope="row">${this.t.zoomOut}</th>
+              <td><kbd>-</kbd> ${this.t.or} <kbd>_</kbd></td>
             </tr>
             <tr>
-              <th scope="row">zoom in</th>
-              <td><kbd>+</kbd> or <kbd>=</kbd></td>
+              <th scope="row">${this.t.zoomIn}</th>
+              <td><kbd>+</kbd> ${this.t.or} <kbd>=</kbd></td>
             </tr>
             <tr>
-              <th scope="row">rotate clockwise</th>
+              <th scope="row">${this.t.rotateClockwise}</th>
               <td><kbd>r</kbd></td>
             </tr>
             <tr>
-              <th scope="row">rotate counterclockwise</th>
+              <th scope="row">${this.t.rotateCounterclockwise}</th>
               <td><kbd>shift+r</kbd></td>
             </tr>
           </tbody>
@@ -515,7 +546,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "flipbutton",
       icon: "image:flip",
-      text: "flip horizontal",
+      text: this.t.flipHorizontal,
       toggleProp: "flipToggled",
     };
   }
@@ -542,7 +573,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "rotateccwbutton",
       icon: "image:rotate-left",
-      text: "rotate counterclockwise",
+      text: this.t.rotateCounterclockwise,
     };
   }
   /**
@@ -555,7 +586,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "rotatecwbutton",
       icon: "image:rotate-right",
-      text: "rotate clockwise",
+      text: this.t.rotateClockwise,
     };
   }
   /**
@@ -586,7 +617,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "panleftbutton",
       icon: "arrow-back",
-      text: "pan left",
+      text: this.t.panLeft,
     };
   }
   /**
@@ -599,7 +630,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "panupbutton",
       icon: "arrow-upward",
-      text: "pan up",
+      text: this.t.panUp,
     };
   }
   /**
@@ -612,7 +643,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "pandownbutton",
       icon: "arrow-downward",
-      text: "pan down",
+      text: this.t.panDown,
     };
   }
   /**
@@ -625,7 +656,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "panrightbutton",
       icon: "arrow-forward",
-      text: "pan right",
+      text: this.t.panRight,
     };
   }
   /**
@@ -651,7 +682,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "zoominbutton",
       icon: "zoom-in",
-      text: "zoom in",
+      text: this.t.zoomIn,
     };
   }
   /**
@@ -664,7 +695,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "zoomoutbutton",
       icon: "zoom-out",
-      text: "zoom out",
+      text: this.t.zoomOut,
     };
   }
   /**
@@ -678,7 +709,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       id: "prevbutton",
       showText: true,
       icon: "chevron-left",
-      text: "prev",
+      text: this.t.prev,
       disabledProp: "prevDisabled",
       flexGrow: true,
     };
@@ -695,7 +726,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       icon: "chevron-right",
       iconRight: true,
       disabledProp: "nextDisabled",
-      text: "next",
+      text: this.t.next,
       showText: true,
       flexGrow: true,
     };
@@ -729,7 +760,9 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
    * @memberof imgViewViewer
    */
   get pageXofY() {
-    return `${(this.page || 0) + 1} of ${this.pages.length}`;
+    return this.t.pageXOfY
+      .replace("{x}", (this.page || 0) + 1)
+      .replace("{y}", this.pages.length);
   }
   get navXofY() {
     return {
@@ -737,7 +770,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       type: "misc-item",
       contents: html`
         <p>
-          <label for="pageX" class="sr-only">Page</label>
+          <label for="pageX" class="sr-only">${this.t.page}</label>
           <input
             ?disabled="${this.disabled}"
             id="pageX"
@@ -747,7 +780,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
             value="${this.page + 1}"
             @change="${(e) => this._xOfYClick(e, this.disabled)}"
           />
-          of ${this.pages.length}
+          ${this.t.ofTotal.replace("{total}", this.pages.length)}
         </p>
       `,
     };

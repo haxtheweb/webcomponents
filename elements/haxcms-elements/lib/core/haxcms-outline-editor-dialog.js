@@ -116,6 +116,14 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       ...this.t,
       save: "Save Outline",
       import: "Import From File",
+      outlineNewPageCreated: "{count} new page will be created",
+      outlineNewPagesCreated: "{count} new pages will be created",
+      outlinePageUpdated: "{count} page will be updated",
+      outlinePagesUpdated: "{count} pages will be updated",
+      outlinePageDeleted: "{count} page will be deleted",
+      outlinePagesDeleted: "{count} pages will be deleted",
+      outlineUnsavedChangesConfirm: "You have unsaved changes in Site Outline:\n{changes}\nIf you continue, these changes will be lost. Continue?",
+      outlineSaveConfirm: "Saving will apply these Site Outline changes:\n{changes}\nContinue?",
     };
   }
   static get properties() {
@@ -288,15 +296,24 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     }
     const addedText =
       summary.added > 0
-        ? `‣ ${summary.added} new page${summary.added === 1 ? "" : "s"} will be created\n`
+        ? `‣ ${(summary.added === 1
+            ? this.t.outlineNewPageCreated
+            : this.t.outlineNewPagesCreated
+          ).replace("{count}", summary.added)}\n`
         : "";
     const modifiedText =
       summary.modified > 0
-        ? `‣ ${summary.modified} page${summary.modified === 1 ? "" : "s"} will be updated\n`
+        ? `‣ ${(summary.modified === 1
+            ? this.t.outlinePageUpdated
+            : this.t.outlinePagesUpdated
+          ).replace("{count}", summary.modified)}\n`
         : "";
     const deletedText =
       summary.deleted > 0
-        ? `‣ ${summary.deleted} page${summary.deleted === 1 ? "" : "s"} will be deleted\n`
+        ? `‣ ${(summary.deleted === 1
+            ? this.t.outlinePageDeleted
+            : this.t.outlinePagesDeleted
+          ).replace("{count}", summary.deleted)}\n`
         : "";
     return `${addedText}${modifiedText}${deletedText}`;
   }
@@ -319,7 +336,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       return true;
     }
     return globalThis.confirm(
-      `You have unsaved changes in Site Outline:\n${sumChanges}\nIf you continue, these changes will be lost. Continue?`,
+      this.t.outlineUnsavedChangesConfirm.replace("{changes}", sumChanges),
     );
   }
   _ownsSimpleModalEvent(e) {
@@ -434,7 +451,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       confirmation = true;
     } else {
       confirmation = globalThis.confirm(
-        `Saving will apply these Site Outline changes:\n${sumChanges}\nContinue?`,
+        this.t.outlineSaveConfirm.replace("{changes}", sumChanges),
       );
     }
     if (confirmation) {

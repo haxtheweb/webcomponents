@@ -5,6 +5,17 @@
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
 
+// English defaults for the labels this program shows; translations come from
+// the context element's this.t (haxcms-site-editor-ui, haxcms namespace)
+const EDIT_ICON_T = {
+  noActivePageFound: "No active page found",
+  noIconsFoundFor: 'No icons found for "{search}"',
+  noIconsAvailable: "No icons available",
+  showingIconsTypeToSearch: "Showing {shown} of {total} icons - type to search",
+};
+const _t = (context, key) =>
+  context && context.t && context.t[key] ? context.t[key] : EDIT_ICON_T[key];
+
 /**
  * Creates the edit icon program for use in SuperDaemon
  * @param {Object} context - The context object (typically the haxcms-site-editor-ui instance)
@@ -22,7 +33,7 @@ export const createEditIconProgram = (context) => {
     if (!activeItem || !activeItem.id) {
       return [
         {
-          title: "No active page found",
+          title: _t(context, "noActivePageFound"),
           icon: "icons:warning",
           tags: ["error"],
           value: { disabled: true },
@@ -84,8 +95,8 @@ export const createEditIconProgram = (context) => {
       return [
         {
           title: searchTerm
-            ? `No icons found for "${searchTerm}"`
-            : "No icons available",
+            ? _t(context, "noIconsFoundFor").replace("{search}", searchTerm)
+            : _t(context, "noIconsAvailable"),
           icon: "icons:search",
           tags: ["empty"],
           value: { disabled: true },
@@ -97,7 +108,9 @@ export const createEditIconProgram = (context) => {
 
     if (!searchTerm && allIcons.length > 50) {
       results.push({
-        title: `Showing 50 of ${allIcons.length} icons - type to search`,
+        title: _t(context, "showingIconsTypeToSearch")
+          .replace("{shown}", 50)
+          .replace("{total}", allIcons.length),
         icon: "icons:info",
         tags: ["hint"],
         value: { disabled: true },

@@ -1,5 +1,6 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import {
   IMPORT_WORKFLOWS,
@@ -7,7 +8,7 @@ import {
   SITE_EXPORT_FORMATS,
 } from "./utils/import-export-options.js";
 
-class HAXCMSSiteImportExportDashboard extends DDD {
+class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-site-import-export-dashboard";
   }
@@ -23,6 +24,21 @@ class HAXCMSSiteImportExportDashboard extends DDD {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      disabledInFeatures: "Disabled in Features",
+      import: "Import",
+      importDescription: "Bring external files or links into your site.",
+      exportThisPage: "Export this page",
+      exportThisPageDescription: "Download or copy the current page in multiple formats.",
+      exportThisSite: "Export this site",
+      exportThisSiteDescription: "Download the full site in publication-ready or portable formats.",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.allowImportFiles = true;
     this.allowImportLinks = true;
     this.allowPageExport = true;
@@ -147,7 +163,7 @@ class HAXCMSSiteImportExportDashboard extends DDD {
   }
 
   _actionDisabledTooltip(item) {
-    return this._isActionDisabled(item) ? "Disabled in Features" : "";
+    return this._isActionDisabled(item) ? this.t.disabledInFeatures : "";
   }
 
   _emitAction(item) {
@@ -208,28 +224,22 @@ class HAXCMSSiteImportExportDashboard extends DDD {
     return html`
       <div class="dashboard-shell">
         <section>
-          <h3 class="section-title">Import</h3>
-          <p class="section-description">
-            Bring external files or links into your site.
-          </p>
+          <h3 class="section-title">${this.t.import}</h3>
+          <p class="section-description">${this.t.importDescription}</p>
           <div class="action-grid">
             ${IMPORT_WORKFLOWS.map((item) => this._renderAction(item))}
           </div>
         </section>
         <section>
-          <h3 class="section-title">Export this page</h3>
-          <p class="section-description">
-            Download or copy the current page in multiple formats.
-          </p>
+          <h3 class="section-title">${this.t.exportThisPage}</h3>
+          <p class="section-description">${this.t.exportThisPageDescription}</p>
           <div class="action-grid">
             ${pageExportActions.map((item) => this._renderAction(item))}
           </div>
         </section>
         <section>
-          <h3 class="section-title">Export this site</h3>
-          <p class="section-description">
-            Download the full site in publication-ready or portable formats.
-          </p>
+          <h3 class="section-title">${this.t.exportThisSite}</h3>
+          <p class="section-description">${this.t.exportThisSiteDescription}</p>
           <div class="action-grid">
             ${siteExportActions.map((item) => this._renderAction(item))}
           </div>

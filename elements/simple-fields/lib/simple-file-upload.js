@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `simple-file-upload`
@@ -14,7 +15,7 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
  * @class SimpleFileUpload
  * @extends {DDD}
  */
-class SimpleFileUpload extends DDD {
+class SimpleFileUpload extends I18NMixin(DDD) {
   static get tag() {
     return "simple-file-upload";
   }
@@ -272,6 +273,33 @@ class SimpleFileUpload extends DDD {
     this.nodrop = false;
     this.capture = "";
     this._dragover = false;
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      dropFilesHere: "Drop files here",
+      uploadQueue: "Upload queue",
+      pending: "Pending",
+      preparing: "Preparing",
+      uploading: "Uploading",
+      complete: "Complete",
+      aborted: "Aborted",
+      cancelled: "Cancelled",
+      error: "Error",
+      errorWithStatus: "Error: {status}",
+      cancel: "Cancel",
+      cancelUploadOf: "Cancel upload of {name}",
+      retry: "Retry",
+      retryUploadOf: "Retry upload of {name}",
+      remove: "Remove",
+      removeFromQueue: "Remove {name} from queue",
+      fileTypeNotAccepted: "File type not accepted: {name}",
+      uploadFailed: "Upload failed: {status}",
+      networkError: "Network error",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this._preventWindowDrop = (e) => {
       e.preventDefault();
     };
@@ -327,10 +355,10 @@ class SimpleFileUpload extends DDD {
       >
         <slot name="drop-label">
           <span part="drop-label-icon" aria-hidden="true"></span>
-          <span part="drop-label">Drop files here</span>
+          <span part="drop-label">${this.t.dropFilesHere}</span>
         </slot>
       </div>
-      <div part="file-list" role="list" aria-label="Upload queue">
+      <div part="file-list" role="list" aria-label="${this.t.uploadQueue}">
         ${this.files.map(
           (file, index) => html`
             <div class="file-row" role="listitem" aria-label="${file.name}">
@@ -342,7 +370,7 @@ class SimpleFileUpload extends DDD {
                     `
                   : html`
                       <div class="file-status">
-                        ${file.status || "Pending"}
+                        ${this._statusLabel(file.status)}
                         ${file.progress > 0 && file.progress < 100
                           ? ` (${file.progress}%)`
                           : ""}
@@ -364,8 +392,11 @@ class SimpleFileUpload extends DDD {
                   ? html`
                       <button
                         @click="${() => this._abortFile(index)}"
-                        aria-label="Cancel upload of ${file.name}"
-                        title="Cancel"
+                        aria-label="${this.t.cancelUploadOf.replace(
+                          "{name}",
+                          file.name,
+                        )}"
+                        title="${this.t.cancel}"
                       >
                         ×
                       </button>
@@ -377,8 +408,11 @@ class SimpleFileUpload extends DDD {
                   ? html`
                       <button
                         @click="${() => this._retryFile(index)}"
-                        aria-label="Retry upload of ${file.name}"
-                        title="Retry"
+                        aria-label="${this.t.retryUploadOf.replace(
+                          "{name}",
+                          file.name,
+                        )}"
+                        title="${this.t.retry}"
                       >
                         ↻
                       </button>
@@ -392,8 +426,11 @@ class SimpleFileUpload extends DDD {
                   ? html`
                       <button
                         @click="${() => this._removeFile(index)}"
-                        aria-label="Remove ${file.name} from queue"
-                        title="Remove"
+                        aria-label="${this.t.removeFromQueue.replace(
+                          "{name}",
+                          file.name,
+                        )}"
+                        title="${this.t.remove}"
                       >
                         🗑
                       </button>
@@ -409,6 +446,34 @@ class SimpleFileUpload extends DDD {
   }
 
   /**
+   * Translate an internal file status value for display. Status values
+   * stay in English internally because they are compared in logic.
+   * @param {String} status
+   */
+  _statusLabel(status) {
+    const labels = {
+      Pending: this.t.pending,
+      Preparing: this.t.preparing,
+      Uploading: this.t.uploading,
+      Complete: this.t.complete,
+      Aborted: this.t.aborted,
+      Cancelled: this.t.cancelled,
+      Error: this.t.error,
+    };
+    if (!status) {
+      return this.t.pending;
+    }
+    if (labels[status]) {
+      return labels[status];
+    }
+    const errorStatus = /^Error: (.*)$/.exec(status);
+    if (errorStatus) {
+      return this.t.errorWithStatus.replace("{status}", errorStatus[1]);
+    }
+    return status;
+  }
+
+  /**
    * Add a file to the upload queue.
    * @param {File} file
    */
@@ -418,7 +483,7 @@ class SimpleFileUpload extends DDD {
     }
     // Check accept
     if (this.accept && !this._fileTypeAccepted(file)) {
-      const error = `File type not accepted: ${file.name}`;
+      const error = this.t.fileTypeNotAccepted.replace("{name}", file.name);
       this.dispatchEvent(
         new CustomEvent("file-reject", {
           bubbles: true,
@@ -562,7 +627,7 @@ class SimpleFileUpload extends DDD {
         file.complete = true;
         file.status = xhr.status === 200 ? "Complete" : `Error: ${xhr.status}`;
         if (xhr.status !== 200) {
-          file.error = `Upload failed: ${xhr.status}`;
+          file.error = this.t.uploadFailed.replace("{status}", xhr.status);
         }
         this.dispatchEvent(
           new CustomEvent("upload-response", {
@@ -590,7 +655,7 @@ class SimpleFileUpload extends DDD {
       });
 
       xhr.addEventListener("error", () => {
-        file.error = "Network error";
+        file.error = this.t.networkError;
         file.status = "Error";
         this.dispatchEvent(
           new CustomEvent("upload-response", {

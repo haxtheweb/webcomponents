@@ -937,6 +937,54 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       delete: "Delete",
       restore: "Restore",
       goToPage: "Go to page",
+      collapseAll: "Collapse all",
+      expandAll: "Expand all",
+      deleteSelected: "Delete Selected ({count})",
+      zoomIn: "Zoom In",
+      zoomOut: "Zoom Out",
+      hideDeleted: "Hide Deleted",
+      showDeleted: "Show Deleted",
+      outlineStructure: "Outline structure of pages and content",
+      close: "Close",
+      asChildrenOf: "as children of",
+      above: "Above",
+      below: "Below",
+      modified: "modified",
+      markedForDeletion: "marked for deletion",
+      expandChildren: "Expand children",
+      collapseChildren: "Collapse children",
+      dragToReorder: "Drag to reorder",
+      dragToReorderKeyboard:
+        "Drag to reorder or press Enter to activate keyboard controls",
+      contentStructure: "Content structure",
+      indent: "Indent",
+      outdent: "Outdent",
+      addContentType: "Add {title}",
+      clickToPreview: "Click to preview",
+      increaseHeading: "Increase heading",
+      decreaseHeading: "Decrease Heading",
+      promoteToPage: "Promote to page",
+      keyboardControlsDeactivated: "Keyboard controls deactivated",
+      keyboardControlsActivated:
+        "Keyboard controls activated. Use arrow keys to move, Enter or Escape to deactivate",
+      movingItemUp: "Moving item up",
+      movingItemDown: "Moving item down",
+      indentingItem: "Indenting item",
+      outdentingItem: "Outdenting item",
+      titleEditingActivated: "Title editing activated",
+      movedToNextItem: "Moved to next item",
+      movedToPreviousItem: "Moved to previous item",
+      expanded: "Expanded",
+      collapsed: "Collapsed",
+      movedToFirstChild: "Moved to first child",
+      movedToParent: "Moved to parent",
+      movedToFirstItem: "Moved to first item",
+      movedToLastItem: "Moved to last item",
+      itemMarkedForDeletion: "Item marked for deletion",
+      itemDuplicated: "Item duplicated",
+      dropAbove: "Drop above {title}",
+      dropBelow: "Drop below {title}",
+      dropAsChildOf: "Drop as child of {title}",
     };
     this.registerLocalization({
       context: this,
@@ -1026,15 +1074,15 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                     value="children"
                     .itemsList="${[
                       {
-                        text: "as children of",
+                        text: this.t.asChildrenOf,
                         value: "children",
                       },
                       {
-                        text: "Above",
+                        text: this.t.above,
                         value: "above",
                       },
                       {
-                        text: "Below",
+                        text: this.t.below,
                         value: "below",
                       },
                     ]}"
@@ -1058,26 +1106,29 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           class="control"
           icon="add"
           @click="${this.addItemToTop}"
-          label="Add page"
+          label="${this.t.addPage}"
         ></simple-toolbar-button>
         <simple-toolbar-button
           icon="hardware:keyboard-arrow-right"
           @click="${this.collapseAll}"
           class="control"
-          label="Collapse all"
+          label="${this.t.collapseAll}"
         ></simple-toolbar-button>
         <simple-toolbar-button
           icon="hardware:keyboard-arrow-down"
           @click="${this.expandAll}"
           class="control"
-          label="Expand all"
+          label="${this.t.expandAll}"
         ></simple-toolbar-button>
         ${this.selectedPages.length > 0
           ? html`<simple-toolbar-button
               icon="delete"
               @click="${this.deleteSelected}"
               class="control"
-              label="Delete Selected (${this.selectedPages.length})"
+              label="${this.t.deleteSelected.replace(
+                "{count}",
+                this.selectedPages.length,
+              )}"
             ></simple-toolbar-button>`
           : ``}
         <simple-toolbar-button
@@ -1085,28 +1136,30 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           @click="${this.zoomIn}"
           class="control"
           ?disabled="${this.zoomLevel >= 1}"
-          label="Zoom In"
+          label="${this.t.zoomIn}"
         ></simple-toolbar-button>
         <simple-toolbar-button
           icon="zoom-out"
           @click="${this.zoomOut}"
           class="control"
           ?disabled="${this.zoomLevel <= -3}"
-          label="Zoom Out"
+          label="${this.t.zoomOut}"
         ></simple-toolbar-button>
         ${this.hasDeletedItems()
           ? html`<simple-toolbar-button
               icon="delete"
               @click="${this.toggleDelete}"
               class="control"
-              label="${!this.hideDelete ? "Hide Deleted" : "Show Deleted"}"
+              label="${!this.hideDelete
+                ? this.t.hideDeleted
+                : this.t.showDeleted}"
             ></simple-toolbar-button>`
           : ``}
       </div>
       <ul
         id="list"
         role="tree"
-        aria-label="Outline structure of pages and content"
+        aria-label="${this.t.outlineStructure}"
         typeof="oer:TableOfContents"
       >
         ${this.items.map((item, index) =>
@@ -1121,7 +1174,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       <simple-popover auto for="list" hidden>
         <simple-icon-button-lite
           @click="${this.resetPopOver}"
-          title="Close"
+          title="${this.t.close}"
           icon="cancel"
           class="close-btn"
         ></simple-icon-button-lite>
@@ -1300,8 +1353,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         role="treeitem"
         tabindex="${index === 0 ? "0" : "-1"}"
         aria-label="${item.title}${item.modified
-          ? " (modified)"
-          : ""}${item.delete ? " (marked for deletion)" : ""}"
+          ? ` (${this.t.modified})`
+          : ""}${item.delete ? ` (${this.t.markedForDeletion})` : ""}"
         aria-expanded="${this.hasChildren(item.id)
           ? this.isCollapsed(item.id)
             ? "false"
@@ -1345,11 +1398,11 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                   ? `hardware:keyboard-arrow-right`
                   : `hardware:keyboard-arrow-down`}"
                 label="${this.isCollapsed(item.id)
-                  ? "Expand children"
-                  : "Collapse children"}"
+                  ? this.t.expandChildren
+                  : this.t.collapseChildren}"
                 title="${this.isCollapsed(item.id)
-                  ? "Expand children"
-                  : "Collapse children"}"
+                  ? this.t.expandChildren
+                  : this.t.collapseChildren}"
                 @click="${this.collapseExpand}"
               ></simple-icon-button-lite>`
             : html`<span
@@ -1368,8 +1421,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             class="drag-handle ${this._dragHandleActive === item.id
               ? "drag-handle-active"
               : ""}"
-            label="Drag to reorder"
-            title="Drag to reorder or press Enter to activate keyboard controls"
+            label="${this.t.dragToReorder}"
+            title="${this.t.dragToReorderKeyboard}"
             data-drag-handle-id="${item.id}"
           ></simple-icon-button-lite>
           <simple-toolbar-button
@@ -1387,8 +1440,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           !item.contents}"
           icon="editor:insert-drive-file"
           @click="${this.toggleContent}"
-          label="Content structure"
-          title="Content structure"
+          label="${this.t.contentStructure}"
+          title="${this.t.contentStructure}"
         >
           ${item.new
             ? html`<simple-icon
@@ -1441,7 +1494,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             value="in"
             ?disabled="${this.isLocked(index)}"
             icon="hax:outline-designer-indent"
-            label="Indent"
+            label="${this.t.indent}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "in")}"
           ></simple-toolbar-button>
@@ -1449,7 +1502,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             value="out"
             ?disabled="${this.isLocked(index)}"
             icon="hax:outline-designer-outdent"
-            label="Outdent"
+            label="${this.t.outdent}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "out")}"
           ></simple-toolbar-button>
@@ -1497,7 +1550,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             value="delete"
             ?disabled="${this.isLocked(index)}"
             icon="icons:delete"
-            label="Delete"
+            label="${this.t.delete}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "delete")}"
           ></simple-toolbar-button>
@@ -1570,7 +1623,10 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             icon="${gizmo.icon}"
             value="${gizmo.tag}"
             @click="${this.prependNodeToContent}"
-            >Add ${gizmo.title}</simple-icon-button-lite
+            >${this.t.addContentType.replace(
+              "{title}",
+              gizmo.title,
+            )}</simple-icon-button-lite
           >
         `,
       )}
@@ -1640,7 +1696,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       <div class="btn-contrast">
         <simple-icon-button-lite
           icon="${icon}"
-          title="Click to preview"
+          title="${this.t.clickToPreview}"
           @click="${this.setActivePreview}"
         ></simple-icon-button-lite>
       </div>
@@ -1660,21 +1716,21 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           class="content-operation"
           icon="hax:outline-designer-outdent"
           @click="${(e) => this.modifyContentAction(e, item, "in")}"
-          title="Increase heading"
+          title="${this.t.increaseHeading}"
           ?disabled="${tagName === "h1" || item.metadata.locked}"
           ?hidden="${part !== "heading"}"
         ></simple-icon-button-lite>
         <simple-icon-button-lite
           icon="hax:keyboard-arrow-up"
           @click="${(e) => this.modifyContentAction(e, item, "up")}"
-          title="Move up"
+          title="${this.t.moveUp}"
           ?disabled="${item.metadata.locked}"
           class="content-operation"
         ></simple-icon-button-lite>
         <simple-icon-button-lite
           icon="hax:keyboard-arrow-down"
           @click="${(e) => this.modifyContentAction(e, item, "down")}"
-          title="Move down"
+          title="${this.t.moveDown}"
           ?disabled="${item.metadata.locked}"
           class="content-operation"
         ></simple-icon-button-lite>
@@ -1682,7 +1738,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           class="content-operation"
           icon="hax:outline-designer-indent"
           @click="${(e) => this.modifyContentAction(e, item, "out")}"
-          title="Decrease Heading"
+          title="${this.t.decreaseHeading}"
           ?disabled="${tagName === "h6" || item.metadata.locked}"
           ?hidden="${part !== "heading"}"
         ></simple-icon-button-lite>
@@ -1690,7 +1746,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           class="content-operation"
           icon="editor:format-page-break"
           @click="${(e) => this.pageBreakHere(e, item)}"
-          title="Promote to page"
+          title="${this.t.promoteToPage}"
           ?disabled="${item.metadata.locked}"
           ?hidden="${part !== "heading"}"
         ></simple-icon-button-lite>
@@ -1698,7 +1754,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           icon="delete"
           @click="${(e) => this.modifyContentAction(e, item, "delete")}"
           class="content-operation del"
-          title="Delete"
+          title="${this.t.delete}"
           ?disabled="${item.metadata.locked}"
           accent-color="red"
         ></simple-icon-button-lite>
@@ -2109,13 +2165,11 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       if (this._dragHandleActive === itemId) {
         // Deactivate
         this._dragHandleActive = null;
-        this.announceAction("Keyboard controls deactivated");
+        this.announceAction(this.t.keyboardControlsDeactivated);
       } else {
         // Activate
         this._dragHandleActive = itemId;
-        this.announceAction(
-          "Keyboard controls activated. Use arrow keys to move, Enter or Escape to deactivate",
-        );
+        this.announceAction(this.t.keyboardControlsActivated);
       }
       this.requestUpdate();
       return;
@@ -2126,7 +2180,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       e.preventDefault();
       e.stopPropagation();
       this._dragHandleActive = null;
-      this.announceAction("Keyboard controls deactivated");
+      this.announceAction(this.t.keyboardControlsDeactivated);
       this.requestUpdate();
       return;
     }
@@ -2140,25 +2194,25 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         e.preventDefault();
         e.stopPropagation();
         action = "up";
-        this.announceAction("Moving item up");
+        this.announceAction(this.t.movingItemUp);
         break;
       case "ArrowDown":
         e.preventDefault();
         e.stopPropagation();
         action = "down";
-        this.announceAction("Moving item down");
+        this.announceAction(this.t.movingItemDown);
         break;
       case "ArrowLeft":
         e.preventDefault();
         e.stopPropagation();
         action = "in";
-        this.announceAction("Indenting item");
+        this.announceAction(this.t.indentingItem);
         break;
       case "ArrowRight":
         e.preventDefault();
         e.stopPropagation();
         action = "out";
-        this.announceAction("Outdenting item");
+        this.announceAction(this.t.outdentingItem);
         break;
     }
 
@@ -2174,7 +2228,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       e.preventDefault();
       e.stopPropagation();
       this.editTitle(e);
-      this.announceAction("Title editing activated");
+      this.announceAction(this.t.titleEditingActivated);
     }
   }
 
@@ -2197,31 +2251,31 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       case "ArrowDown":
         e.preventDefault();
         this.focusNextItem(itemIndex);
-        this.announceNavigation("Moved to next item");
+        this.announceNavigation(this.t.movedToNextItem);
         break;
       case "ArrowUp":
         e.preventDefault();
         this.focusPreviousItem(itemIndex);
-        this.announceNavigation("Moved to previous item");
+        this.announceNavigation(this.t.movedToPreviousItem);
         break;
       case "ArrowRight":
         e.preventDefault();
         if (this.hasChildren(itemId) && this.isCollapsed(itemId)) {
           this.collapseExpand(e);
-          this.announceStateChange("Expanded");
+          this.announceStateChange(this.t.expanded);
         } else {
           this.focusFirstChild(itemIndex);
-          this.announceNavigation("Moved to first child");
+          this.announceNavigation(this.t.movedToFirstChild);
         }
         break;
       case "ArrowLeft":
         e.preventDefault();
         if (this.hasChildren(itemId) && !this.isCollapsed(itemId)) {
           this.collapseExpand(e);
-          this.announceStateChange("Collapsed");
+          this.announceStateChange(this.t.collapsed);
         } else {
           this.focusParent(itemIndex);
-          this.announceNavigation("Moved to parent");
+          this.announceNavigation(this.t.movedToParent);
         }
         break;
       case "Enter":
@@ -2230,19 +2284,21 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         if (this.activeItemForActions !== itemId && this.hasChildren(itemId)) {
           e.preventDefault();
           this.collapseExpand(e);
-          const newState = this.isCollapsed(itemId) ? "Collapsed" : "Expanded";
+          const newState = this.isCollapsed(itemId)
+            ? this.t.collapsed
+            : this.t.expanded;
           this.announceStateChange(newState);
         }
         break;
       case "Home":
         e.preventDefault();
         this.focusFirstItem();
-        this.announceNavigation("Moved to first item");
+        this.announceNavigation(this.t.movedToFirstItem);
         break;
       case "End":
         e.preventDefault();
         this.focusLastItem();
-        this.announceNavigation("Moved to last item");
+        this.announceNavigation(this.t.movedToLastItem);
         break;
       case "Delete":
       case "Backspace":
@@ -2250,7 +2306,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         if (this.activeItemForActions === itemId && !this.isLocked(itemIndex)) {
           e.preventDefault();
           this.itemOp(itemIndex, "delete");
-          this.announceAction("Item marked for deletion");
+          this.announceAction(this.t.itemMarkedForDeletion);
         }
         break;
       case "d":
@@ -2262,7 +2318,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         ) {
           e.preventDefault();
           this.itemOp(itemIndex, "duplicate");
-          this.announceAction("Item duplicated");
+          this.announceAction(this.t.itemDuplicated);
         }
         break;
     }
@@ -2604,11 +2660,14 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       if (targetItem) {
         let announcement = "";
         if (dropZone === "above") {
-          announcement = `Drop above ${targetItem.title}`;
+          announcement = this.t.dropAbove.replace("{title}", targetItem.title);
         } else if (dropZone === "below") {
-          announcement = `Drop below ${targetItem.title}`;
+          announcement = this.t.dropBelow.replace("{title}", targetItem.title);
         } else {
-          announcement = `Drop as child of ${targetItem.title}`;
+          announcement = this.t.dropAsChildOf.replace(
+            "{title}",
+            targetItem.title,
+          );
         }
         this.announceAction(announcement);
       }

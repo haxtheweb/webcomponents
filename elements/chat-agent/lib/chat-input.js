@@ -3,17 +3,32 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { css, html } from "lit";
 import { autorun, toJS } from "mobx";
 import { ChatStore } from "./chat-agent-store.js";
 
-class ChatInput extends DDD {
+class ChatInput extends I18NMixin(DDD) {
   static get tag() {
     return "chat-input";
   }
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      displayPreviousMessageUp: "Display previously sent message (up)",
+      displayPreviousMessageDown: "Display previously sent message (down)",
+      sendPrompt: "Send Prompt",
+      sendPromptToMerlin: "Send Prompt to Merlin",
+      shortenPrompt:
+        "Please shorten your prompt to no more than {limit} characters.",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
 
     this.chatLog = [];
     this.darkMode = null;
@@ -179,7 +194,7 @@ class ChatInput extends DDD {
           <button
             id="input-up-btn"
             @click=${this.handleDirectionButtons}
-            aria-label="Display previously sent message (up)"
+            aria-label="${this.t.displayPreviousMessageUp}"
           >
             <simple-icon-lite
               icon="hardware:keyboard-arrow-up"
@@ -188,7 +203,7 @@ class ChatInput extends DDD {
           <button
             id="input-down-btn"
             @click=${this.handleDirectionButtons}
-            aria-label="Display previously sent message (down)"
+            aria-label="${this.t.displayPreviousMessageDown}"
           >
             <simple-icon-lite
               icon="hardware:keyboard-arrow-down"
@@ -201,12 +216,12 @@ class ChatInput extends DDD {
           @click=${this.handleSendButton}
           @keydown=${this.handleSendButtonKeyPress}
           tabindex="0"
-          aria-label="Send Prompt"
+          aria-label="${this.t.sendPrompt}"
         >
           <simple-icon-lite icon="icons:send"></simple-icon-lite>
         </div>
         <simple-tooltip for="send-button" position="left"
-          >Send Prompt to Merlin</simple-tooltip
+          >${this.t.sendPromptToMerlin}</simple-tooltip
         >
       </div>
     `;
@@ -289,7 +304,7 @@ class ChatInput extends DDD {
     ) {
       // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
       alert(
-        `Please shorten your prompt to no more than ${ChatStore.promptCharacterLimit} characters.`,
+        this.t.shortenPrompt.replace("{limit}", ChatStore.promptCharacterLimit),
       );
     }
 

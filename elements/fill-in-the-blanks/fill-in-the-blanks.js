@@ -32,10 +32,9 @@ class FillInTheBlanks extends MarkTheWords {
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      Read the sentance and type or select the answer at each input. Once you
-      set all your answers you can press
-      <strong>${this.t.checkAnswer}</strong> to test your answers. You will get
-      feedback indicating correctness of your answer.
+      ${this._tParts(this.t.fillInTheBlanksDirections, {
+        checkAnswer: html`<strong>${this.t.checkAnswer}</strong>`,
+      })}
     </p>`;
   }
 
@@ -197,6 +196,17 @@ class FillInTheBlanks extends MarkTheWords {
    */
   constructor() {
     super();
+    // the localization was registered by MarkTheWords' constructor (namespace
+    // = this tag), so merge these defaults into its fallback copy as well
+    const fillInTheBlanksT = {
+      fillInTheBlanksDirections:
+        "Read the sentance and type or select the answer at each input. Once you set all your answers you can press {checkAnswer} to test your answers. You will get feedback indicating correctness of your answer.",
+      blankNumber: "Blank {number}",
+    };
+    this.t = { ...this.t, ...fillInTheBlanksT };
+    if (this._t) {
+      this._t = { ...this._t, ...fillInTheBlanksT };
+    }
     this.question = "Fill in the blanks";
     this.isMarkTheWords = false;
   }
@@ -280,7 +290,7 @@ class FillInTheBlanks extends MarkTheWords {
       ];
       return html`<simple-fields-field
           data-answer-index="${index}"
-          label="Blank ${index + 1}"
+          label="${this.t.blankNumber.replace("{number}", index + 1)}"
           @value-changed="${this.refreshEvent}"
           type="select"
           .itemsList="${selectItems}"
@@ -295,7 +305,7 @@ class FillInTheBlanks extends MarkTheWords {
     } else {
       return html` <simple-fields-field
           type="text"
-          label="Blank ${index + 1}"
+          label="${this.t.blankNumber.replace("{number}", index + 1)}"
           @value-changed="${this.refreshEvent}"
           data-answer-index="${index}"
           ?disabled="${this.showAnswer}"

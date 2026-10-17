@@ -1,5 +1,6 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 
 const SCALE_PRESETS = {
@@ -37,7 +38,7 @@ const COMPRESS_PRESETS = {
  * hax-upload-field's post-upload recommendation logic) share this single
  * source of truth instead of duplicating the preset table.
  */
-class HAXFileActions extends DDD {
+class HAXFileActions extends I18NMixin(DDD) {
   static get tag() {
     return "hax-file-actions";
   }
@@ -68,6 +69,38 @@ class HAXFileActions extends DDD {
     this.canScale = false;
     this.busy = false;
     this.mode = "bulk";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      chooseAnAction: "Choose an action\u2026",
+      operations: "Operations",
+      insertGallery: "Insert Gallery",
+      imageButton: "Insert Image",
+      duplicate: "Duplicate",
+      rename: "Rename",
+      delete: "Delete",
+      transform: "Transform",
+      convertToJpg: "Convert to JPG",
+      sepia: "Sepia",
+      blackAndWhite: "Black and white",
+      rotate90: "Rotate 90\u00b0",
+      compress: "Compress",
+      scale: "Scale",
+      compressLight: "Light ({quality})",
+      compressMedium: "Medium ({quality})",
+      compressHeavy: "Heavy ({quality})",
+      compressMaximum: "Maximum ({quality})",
+      imageActions: "Image actions",
+      bulkFileActions: "Bulk file actions",
+      fileSelected: "{count} file selected",
+      filesSelected: "{count} files selected",
+      action: "Action",
+    };
+    this.registerLocalization({
+      context: this,
+      namespace: "hax",
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
   }
 
   /**
@@ -116,7 +149,7 @@ class HAXFileActions extends DDD {
    * @readonly
    */
   get actionItems() {
-    const items = [{ value: "", text: "Choose an action\u2026" }];
+    const items = [{ value: "", text: this.t.chooseAnAction }];
     // In field mode we only surface image transformations; the Operations
     // group (insert/duplicate/rename/delete) is intentionally omitted so a
     // single haxupload field never offers destructive or insert actions.
@@ -124,62 +157,85 @@ class HAXFileActions extends DDD {
       if (this.selectedCount >= 2 && this.imageCount === this.selectedCount) {
         items.push(
           {
-            group: "Operations",
+            group: this.t.operations,
             value: "insert:gallery",
-            text: "Insert Gallery",
+            text: this.t.insertGallery,
           },
           {
-            group: "Operations",
+            group: this.t.operations,
             value: "insert:standalone",
-            text: "Insert Image",
+            text: this.t.imageButton,
           },
         );
       } else {
         items.push({
-          group: "Operations",
+          group: this.t.operations,
           value: "insert:standalone",
-          text: "Insert Image",
+          text: this.t.imageButton,
         });
       }
       items.push(
         {
-          group: "Operations",
+          group: this.t.operations,
           value: "duplicate:duplicate",
-          text: "Duplicate",
+          text: this.t.duplicate,
         },
-        { group: "Operations", value: "rename:rename", text: "Rename" },
-        { group: "Operations", value: "delete:delete", text: "Delete" },
+        {
+          group: this.t.operations,
+          value: "rename:rename",
+          text: this.t.rename,
+        },
+        {
+          group: this.t.operations,
+          value: "delete:delete",
+          text: this.t.delete,
+        },
       );
     }
     if (this.canScale) {
       items.push(
         {
-          group: "Transform",
+          group: this.t.transform,
           value: "transform:convert-jpg",
-          text: "Convert to JPG",
+          text: this.t.convertToJpg,
         },
-        { group: "Transform", value: "transform:sepia", text: "Sepia" },
         {
-          group: "Transform",
+          group: this.t.transform,
+          value: "transform:sepia",
+          text: this.t.sepia,
+        },
+        {
+          group: this.t.transform,
           value: "transform:black-and-white",
-          text: "Black and white",
+          text: this.t.blackAndWhite,
         },
         {
-          group: "Transform",
+          group: this.t.transform,
           value: "rotate:rotate-90",
-          text: "Rotate 90\u00b0",
+          text: this.t.rotate90,
         },
       );
+      const compressLabels = {
+        light: this.t.compressLight,
+        medium: this.t.compressMedium,
+        heavy: this.t.compressHeavy,
+        maximum: this.t.compressMaximum,
+      };
       Object.keys(COMPRESS_PRESETS).forEach((key) => {
         items.push({
-          group: "Compress",
+          group: this.t.compress,
           value: `compress:${key}`,
-          text: COMPRESS_PRESETS[key].label,
+          text: compressLabels[key]
+            ? compressLabels[key].replace(
+                "{quality}",
+                COMPRESS_PRESETS[key].quality,
+              )
+            : COMPRESS_PRESETS[key].label,
         });
       });
       Object.keys(SCALE_PRESETS).forEach((key) => {
         items.push({
-          group: "Scale",
+          group: this.t.scale,
           value: `scale:${key}`,
           text: SCALE_PRESETS[key].label,
         });
@@ -231,17 +287,19 @@ class HAXFileActions extends DDD {
         class="acts"
         role="group"
         aria-label="${this._isFieldMode
-          ? "Image actions"
-          : "Bulk file actions"}"
+          ? this.t.imageActions
+          : this.t.bulkFileActions}"
       >
         ${this._isFieldMode
           ? ""
           : html`<span class="count"
-              >${this.selectedCount} file${this.selectedCount === 1 ? "" : "s"}
-              selected</span
+              >${(this.selectedCount === 1
+                ? this.t.fileSelected
+                : this.t.filesSelected
+              ).replace("{count}", this.selectedCount)}</span
             >`}
         <simple-fields-field
-          label="Action"
+          label="${this.t.action}"
           type="select"
           .itemsList="${this.actionItems}"
           ?disabled="${this.busy || this.selectedCount < 1}"

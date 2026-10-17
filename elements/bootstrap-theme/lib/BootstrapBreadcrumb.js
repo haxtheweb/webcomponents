@@ -8,6 +8,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { adoptBootstrapStylesheet } from "./BootstrapStylesheetManager.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `bootstrap-breadcrumb`
@@ -15,7 +16,7 @@ import { adoptBootstrapStylesheet } from "./BootstrapStylesheetManager.js";
  * @demo demo/index.html
  * @element bootstrap-breadcrumb
  */
-class BootstrapBreadcrumb extends LitElement {
+class BootstrapBreadcrumb extends I18NMixin(LitElement) {
   static get styles() {
     return [
       css`
@@ -162,6 +163,18 @@ class BootstrapBreadcrumb extends LitElement {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      breadcrumbNavigation: "Breadcrumb navigation",
+      navigateToHomePage: "Navigate to home page",
+      home: "Home",
+      navigateToItem: "Navigate to {title}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.items = [];
     this._activeItem = {};
     this.homeItem = {};
@@ -201,7 +214,7 @@ class BootstrapBreadcrumb extends LitElement {
   render() {
     return html`
       <div class="container p-0 mb-3">
-        <nav aria-label="Breadcrumb navigation">
+        <nav aria-label="${this.t.breadcrumbNavigation}">
           <ol class="breadcrumb m-auto">
             <li
               class="breadcrumb-item"
@@ -211,7 +224,7 @@ class BootstrapBreadcrumb extends LitElement {
             >
               <a
                 href="${this.homeItem.slug}"
-                aria-label="Navigate to home page"
+                aria-label="${this.t.navigateToHomePage}"
               >
                 <simple-icon-lite
                   accent-color="blue"
@@ -219,7 +232,7 @@ class BootstrapBreadcrumb extends LitElement {
                   aria-hidden="true"
                 >
                 </simple-icon-lite>
-                <span class="visually-hidden">Home</span>
+                <span class="visually-hidden">${this.t.home}</span>
               </a>
             </li>
             ${this.items.map((item, index) => {
@@ -236,7 +249,10 @@ class BootstrapBreadcrumb extends LitElement {
                     ? html`<span>${item.title}</span>`
                     : html`<a
                         href="${item.slug}"
-                        aria-label="Navigate to ${item.title}"
+                        aria-label="${this.t.navigateToItem.replace(
+                          "{title}",
+                          item.title || "",
+                        )}"
                         >${item.title}</a
                       >`}
                 </li>

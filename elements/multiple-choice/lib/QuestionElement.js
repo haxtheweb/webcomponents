@@ -36,16 +36,71 @@ export class QuestionElement extends SchemaBehaviors(
     this.question = "";
     this.answers = [];
     this.displayedAnswers = [];
-    this.correctText = "You are correct!";
-    this.incorrectText = "Try again!";
+    // null = use the translatable defaults (see correctText / incorrectText getters)
+    this.correctText = null;
+    this.incorrectText = null;
     this.quizName = "default";
     this.t = {
       numCorrectLeft: "You have",
       numCorrectRight: "correct",
       checkAnswer: "Check answer",
       tryAgain: "Try again",
+      correctFeedback: "You are correct!",
+      incorrectFeedback: "Try again!",
+      question: "Question",
+      feedback: "Feedback",
+      legend: "Legend",
+      relatedContent: "Related content",
+      directions: "Directions",
+      defaultDirections:
+        "Select the answer you feel answers the question. When you are done, press {checkAnswer}. You will get feedback indicating correctness of your answer and how to proceed.",
+      correct: "Correct",
+      answerIsCorrect: "Answer is correct",
+      incorrect: "Incorrect",
+      answerRequiresCorrection: "Answer requires correction",
+      needAHint: "Need a hint?",
+      evidence: "Evidence",
+      relatedContentHeading: "Related Content",
+      relatedContentDescription:
+        "This creates a collapsed area for content related to this question and is always shown",
+      feedbackIncorrectHeading: "Feedback for incorrect answer",
+      feedbackCorrectHeading: "Feedback for correct answer",
+      hint: "Hint",
+      hintDescription: "This is presented if the user gets the answer wrong",
+      evidenceDescription:
+        "This is presented if the user gets the answer correct",
+      addAnswer: "Add answer",
+      removeAnswer: "Remove answer",
+      toggleEditingFeedbackBlocks: "Toggle editing feedback blocks",
     };
     this.edit = false;
+  }
+  // correct / incorrect feedback text; authored values win, otherwise
+  // fall back to the translatable defaults in this.t
+  get correctText() {
+    return this._correctText != null
+      ? this._correctText
+      : this.t && this.t.correctFeedback;
+  }
+  set correctText(value) {
+    this._correctText = value;
+  }
+  get incorrectText() {
+    return this._incorrectText != null
+      ? this._incorrectText
+      : this.t && this.t.incorrectFeedback;
+  }
+  set incorrectText(value) {
+    this._incorrectText = value;
+  }
+  // render a translated string, swapping {name} placeholders for template parts
+  _tParts(str, parts = {}) {
+    return String(str)
+      .split(/(\{\w+\})/g)
+      .map((piece) => {
+        const m = piece.match(/^\{(\w+)\}$/);
+        return m && m[1] in parts ? parts[m[1]] : piece;
+      });
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -891,7 +946,7 @@ export class QuestionElement extends SchemaBehaviors(
               class="details-icon"
               icon="hax:head-question"
             ></simple-icon-lite
-            >Question
+            >${this.t.question}
           </summary>
           <div class="container">
             <h3 property="oer:name" ?hidden="${!this.question}">
@@ -912,7 +967,7 @@ export class QuestionElement extends SchemaBehaviors(
               icon="icons:feedback"
               aria-hidden="true"
             ></simple-icon-lite
-            >Feedback
+            >${this.t.feedback}
             <span class="sr-only" aria-live="polite" aria-atomic="true"
               >${this.showAnswer
                 ? this.isCorrect()
@@ -928,7 +983,7 @@ export class QuestionElement extends SchemaBehaviors(
                   class="details-icon"
                   icon="hax:map-legend"
                 ></simple-icon-lite
-                >Legend
+                >${this.t.legend}
               </summary>
               <div class="container">${this.renderLegend()}</div>
             </details>
@@ -944,7 +999,7 @@ export class QuestionElement extends SchemaBehaviors(
                   class="details-icon"
                   icon="lrn:content"
                 ></simple-icon-lite
-                >Related content
+                >${this.t.relatedContent}
               </summary>
               <div class="container">
                 <slot name="content"></slot>
@@ -961,7 +1016,7 @@ export class QuestionElement extends SchemaBehaviors(
               class="details-icon"
               icon="maps:directions"
             ></simple-icon-lite
-            >Directions
+            >${this.t.directions}
           </summary>
           <div class="container">${this.renderDirections()}</div>
         </details>
@@ -1045,19 +1100,19 @@ export class QuestionElement extends SchemaBehaviors(
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      Select the answer you feel answers the question. When you are done, press
-      <strong>${this.t.checkAnswer}</strong>. You will get feedback indicating
-      correctness of your answer and how to proceed.
+      ${this._tParts(this.t.defaultDirections, {
+        checkAnswer: html`<strong>${this.t.checkAnswer}</strong>`,
+      })}
     </p>`;
   }
 
   // legend so user understands color relation to correctness
   renderLegend() {
     return html` <dl>
-      <dt class="correct">Correct</dt>
-      <dd>Answer is correct</dd>
-      <dt class="incorrect">Incorrect</dt>
-      <dd>Answer requires correction</dd>
+      <dt class="correct">${this.t.correct}</dt>
+      <dd>${this.t.answerIsCorrect}</dd>
+      <dt class="incorrect">${this.t.incorrect}</dt>
+      <dd>${this.t.answerRequiresCorrection}</dd>
     </dl>`;
   }
 
@@ -1090,7 +1145,7 @@ export class QuestionElement extends SchemaBehaviors(
           this.showAnswer &&
           !this.isCorrect()
             ? html`
-                <h4>Need a hint?</h4>
+                <h4>${this.t.needAHint}</h4>
                 <div>
                   <slot name="hint"></slot>
                 </div>
@@ -1101,7 +1156,7 @@ export class QuestionElement extends SchemaBehaviors(
           this.showAnswer &&
           this.isCorrect()
             ? html`
-                <h4>Evidence</h4>
+                <h4>${this.t.evidence}</h4>
                 <div>
                   <slot name="evidence"></slot>
                 </div>
@@ -1292,21 +1347,18 @@ export class QuestionElement extends SchemaBehaviors(
   renderEditModeFeedbackAreas() {
     return html`
       <div class="edit-wrapper">
-        <h4>Related Content</h4>
-        <p>
-          This creates a collapsed area for content related to this question and
-          is always shown
-        </p>
+        <h4>${this.t.relatedContentHeading}</h4>
+        <p>${this.t.relatedContentDescription}</p>
         <slot name="content"></slot>
-        <h4>Feedback for incorrect answer</h4>
+        <h4>${this.t.feedbackIncorrectHeading}</h4>
         <slot name="feedbackIncorrect"></slot>
-        <h4>Feedback for correct answer</h4>
+        <h4>${this.t.feedbackCorrectHeading}</h4>
         <slot name="feedbackCorrect"></slot>
-        <h4>Hint</h4>
-        <p>This is presented if the user gets the answer wrong</p>
+        <h4>${this.t.hint}</h4>
+        <p>${this.t.hintDescription}</p>
         <slot name="hint"></slot>
-        <h4>Evidence</h4>
-        <p>This is presented if the user gets the answer correct</p>
+        <h4>${this.t.evidence}</h4>
+        <p>${this.t.evidenceDescription}</p>
         <slot name="evidence"></slot>
       </div>
     `;
@@ -1333,7 +1385,7 @@ export class QuestionElement extends SchemaBehaviors(
       {
         icon: "lrn:edit",
         callback: "haxToggleEdit",
-        label: "Toggle editing feedback blocks",
+        label: this.t.toggleEditingFeedbackBlocks,
       },
     ];
   }

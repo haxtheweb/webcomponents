@@ -299,7 +299,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     let type =
       this.activePlaceHolderOperationType || this.guessGizmoType(values);
     if (type === "upload-only") {
-      this.toast("Upload successful!");
+      this.toast(this.t.uploadSuccessful);
       return false;
     }
     // told to insert a link based on operation executed
@@ -453,15 +453,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         this.haxAppPicker.presentOptions(
           haxElements,
           type,
-          "Pick how to present this " + typeName,
+          this.t.pickHowToPresent.replace("{type}", typeName),
           "gizmo",
         );
       }
       return true;
     } else {
-      this.toast(
-        "Sorry, HAX doesn't know how to handle that type of link yet.",
-      );
+      this.toast(this.t.cantHandleLinkType);
       return false;
     }
   }
@@ -557,10 +555,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     } else if (transform.fallbackType) {
       // degrade to the element's declared fallback (e.g. a plain link)
       this.activePlaceHolderOperationType = transform.fallbackType;
-      this.toast(
-        "Post-upload transform failed; inserted a file link.",
-        4000,
-      );
+      this.toast(this.t.transformFailedFileLink, 4000);
     }
   }
   /**
@@ -751,7 +746,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
 
     this.activePlaceHolder = null;
     this.activeNode = replacement;
-    this.toast("Image replaced");
+    this.toast(this.t.imageReplaced);
   }
 
   /**
@@ -821,7 +816,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.activeNode = gallery;
 
     // Show success message
-    this.toast("Image gallery created successfully!");
+    this.toast(this.t.imageGalleryCreated);
   }
 
   /**
@@ -866,7 +861,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.activeNode = playListElement;
 
     // Show success message
-    this.toast("Image added to gallery successfully!");
+    this.toast(this.t.imageAddedToGallery);
   }
 
   /**
@@ -912,7 +907,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.activeNode = galleryElement;
 
     // Show success message
-    this.toast("Image added to gallery successfully!");
+    this.toast(this.t.imageAddedToGallery);
   }
 
   /**
@@ -987,7 +982,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.activeNode = playlist;
 
     // Show success message
-    this.toast("Media playlist created successfully!");
+    this.toast(this.t.mediaPlaylistCreated);
   }
 
   /**
@@ -1016,7 +1011,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.activeNode = playlistElement;
 
     // Show success message
-    this.toast("Media added to playlist successfully!");
+    this.toast(this.t.mediaAddedToPlaylist);
   }
 
   /**
@@ -1047,9 +1042,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     });
 
     // Show success message
-    this.toast(
-      "Image gallery created! Add more images by editing the gallery.",
-    );
+    this.toast(this.t.imageGalleryCreatedAddMore);
   }
 
   /**
@@ -3221,6 +3214,36 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       : "simple-toast-show";
     this.t = {
       close: "Close",
+      uploadSuccessful: "Upload successful!",
+      cantHandleLinkType:
+        "Sorry, HAX doesn't know how to handle that type of link yet.",
+      pickHowToPresent: "Pick how to present this {type}",
+      transformFailedFileLink:
+        "Post-upload transform failed; inserted a file link.",
+      imageReplaced: "Image replaced",
+      imageGalleryCreated: "Image gallery created successfully!",
+      imageAddedToGallery: "Image added to gallery successfully!",
+      mediaPlaylistCreated: "Media playlist created successfully!",
+      mediaAddedToPlaylist: "Media added to playlist successfully!",
+      imageGalleryCreatedAddMore:
+        "Image gallery created! Add more images by editing the gallery.",
+      notAValidTag: "{tag} is not a valid tag",
+      termsOfService: "Terms of service:",
+      searchApp: "Search {title}",
+      insertEmoji: "Insert emoji",
+      insertEmojiInline: "Insert emoji (inline token)",
+      searchForEmoji: "Search for an emoji",
+      insertSymbol: "Insert symbol",
+      insertSymbolInline: "Insert symbol (inline token)",
+      searchForSymbol: "Search for a symbol",
+      joinOurCommunity: "Join our Community",
+      userTutorials: "User Tutorials",
+      userDocumentation: "User Documentation",
+      haxTeachingExcellence: "HAX Teaching Excellence",
+      reportAnIssueTogether: "Report an issue together",
+      leaveWithoutSaving:
+        "Are you sure you want to leave? Your work will not be saved!",
+      letsLearnHax: "Let's learn HAX",
     };
     // customizations to daemon
     if (
@@ -3248,7 +3271,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // lists; the "::" shortcut chip still renders on its row in inline mode.
     // Resolved by machineName "insert-emoji" via runProgram / waveWand.
     SuperDaemonInstance.defineOption({
-      title: "Insert emoji",
+      title: this.t.insertEmoji,
       icon: "editor:insert-emoticon",
       tags: ["emoji"],
       inlineOnly: true,
@@ -3256,14 +3279,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         id: "inline-emoji",
         type: "markdown",
         trigger: "::",
-        description: "Insert emoji (inline token)",
+        description: this.t.insertEmojiInline,
       },
       voice: "insert emoji",
       value: {
-        name: "Insert emoji",
+        name: this.t.insertEmoji,
         machineName: "insert-emoji",
         context: "/",
-        placeholder: "Search for an emoji",
+        placeholder: this.t.searchForEmoji,
         program: async (input, values) => {
           if (!globalThis.SimplePickerEmojis) {
             await import("@haxtheweb/simple-picker/lib/SimplePickerEmojis.js");
@@ -3552,7 +3575,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // lists; the ":::" shortcut chip still renders on its row in inline mode.
     // Resolved by machineName "insert-symbol" via runProgram / waveWand.
     SuperDaemonInstance.defineOption({
-      title: "Insert symbol",
+      title: this.t.insertSymbol,
       icon: "editor:functions",
       tags: ["symbol"],
       inlineOnly: true,
@@ -3560,14 +3583,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         id: "inline-symbol",
         type: "markdown",
         trigger: ":::",
-        description: "Insert symbol (inline token)",
+        description: this.t.insertSymbolInline,
       },
       voice: "insert symbol",
       value: {
-        name: "Insert symbol",
+        name: this.t.insertSymbol,
         machineName: "insert-symbol",
         context: "/",
-        placeholder: "Search for a symbol",
+        placeholder: this.t.searchForSymbol,
         program: async (input, values) => {
           // SimplePickerSymbols is defined inline at the bottom of
           // simple-symbol-picker.js (no standalone data file), so importing
@@ -3632,7 +3655,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
-      title: "Join our Community",
+      title: this.t.joinOurCommunity,
       icon: "hax:discord",
       priority: -100,
       tags: ["community", "discord", "chat", "help"],
@@ -3647,7 +3670,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       context: "community",
     });
     SuperDaemonInstance.defineOption({
-      title: "User Tutorials",
+      title: this.t.userTutorials,
       icon: "hax:hax2022",
       priority: -1000,
       tags: ["Documentation", "community", "help"],
@@ -3662,7 +3685,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       context: "community",
     });
     SuperDaemonInstance.defineOption({
-      title: "User Documentation",
+      title: this.t.userDocumentation,
       icon: "hax:hax2022",
       tags: ["Documentation", "community", "help"],
       externalLink: true,
@@ -3676,7 +3699,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       context: "community",
     });
     SuperDaemonInstance.defineOption({
-      title: "HAX Teaching Excellence",
+      title: this.t.haxTeachingExcellence,
       icon: "hax:hax2022",
       tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
       externalLink: true,
@@ -3690,7 +3713,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       context: "community",
     });
     SuperDaemonInstance.defineOption({
-      title: "Report an issue together",
+      title: this.t.reportAnIssueTogether,
       icon: "mdi-social:github-circle",
       tags: [
         "Bug report",
@@ -3742,8 +3765,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // prevent leaving if we are in editMode
     globalThis.onbeforeunload = (e) => {
       if (!this.skipExitTrap && this.editMode) {
-        var saving =
-          "Are you sure you want to leave? Your work will not be saved!";
+        var saving = this.t.leaveWithoutSaving;
         e.returnValue = saving;
         return saving;
       }
@@ -3751,7 +3773,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // establish the tour
     SimpleTourManager.registerNewTour({
       key: "hax",
-      name: "Let's learn HAX",
+      name: this.t.letsLearnHax,
       style: `
       simple-popover-manager::part(simple-popover) {
         max-width: 250px;
@@ -5455,12 +5477,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       }
       // slash command context
       SuperDaemonInstance.defineOption({
-        title: "Search " + app.details.title,
+        title: this.t.searchApp.replace("{title}", app.details.title),
         icon: app.details.icon,
         tags: ["Search", ...app.details.tags, defaultType],
         more:
           app.details.tos && app.details.tos.length > 0
-            ? html`<div class="tos-text">Terms of service:</div>
+            ? html`<div class="tos-text">${this.t.termsOfService}</div>
                 <ul class="tos-text">
                   ${app.details.tos.map((item) => {
                     return html`
@@ -5477,7 +5499,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 </ul>`
             : null,
         value: {
-          name: "Search " + app.details.title,
+          name: this.t.searchApp.replace("{title}", app.details.title),
           context: "/",
           index: app.index,
           detail: app,
@@ -6657,7 +6679,7 @@ globalThis.Hax.add = function (tag) {
     HAXStore.activeHaxBody.__focusLogic(target);
   } else {
     // do nothing, we tried to be a pro but failed :(
-    HAXStore.toast(`${tag} is not a valid tag`);
+    HAXStore.toast(HAXStore.t.notAValidTag.replace("{tag}", tag));
   }
 };
 globalThis.Hax.delete = function () {

@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { varGet } from "@haxtheweb/utils/lib/object-path.js";
@@ -8,7 +9,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { defineCustomElements } from "web-social-share/dist/esm/loader.js";
 
-class SiteShareWidget extends LitElement {
+class SiteShareWidget extends I18NMixin(LitElement) {
   static get tag() {
     return "site-share-widget";
   }
@@ -57,8 +58,17 @@ class SiteShareWidget extends LitElement {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      sharePage: "Share page",
+    };
     defineCustomElements(globalThis);
-    this.alt = "Share page";
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
+    this.alt = this.t.sharePage;
     this.icon = "social:share";
     this.activeGitFileLink = "";
     this.__disposer = [];

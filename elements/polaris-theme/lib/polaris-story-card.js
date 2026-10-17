@@ -3,13 +3,14 @@
  * @license , see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `polaris-story-card`
  * `A polaris PSU based branding styled theme`
  * @demo demo/index.html
  * @element polaris-story-card
  */
-class PolarisStoryCard extends LitElement {
+class PolarisStoryCard extends I18NMixin(LitElement) {
   static get properties() {
     return {
       image: { type: String },
@@ -30,6 +31,16 @@ class PolarisStoryCard extends LitElement {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      storyImage: "Story image",
+      storyCard: "Story card",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.image = "";
     this.label = "";
     this.pillar = "";
@@ -161,7 +172,7 @@ class PolarisStoryCard extends LitElement {
               class="card-image"
               role="img"
               aria-hidden="${this.link ? "true" : "false"}"
-              aria-label="${this.label || this.pillar || "Story image"}"
+              aria-label="${this.label || this.pillar || this.t.storyImage}"
               style="background-image: url(${this
                 .image}); background-size: ${this
                 .backgroundSize}; background-attachment: ${this
@@ -180,7 +191,7 @@ class PolarisStoryCard extends LitElement {
       ? html`<a
           class="link"
           href="${this.link}"
-          aria-label="${[this.pillar, this.label].filter(Boolean).join(" ") || "Story card"}"
+          aria-label="${[this.pillar, this.label].filter(Boolean).join(" ") || this.t.storyCard}"
           @click="${this._clickLink}"
           >${card}</a
         >`

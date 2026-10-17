@@ -1,8 +1,9 @@
 // dependencies / things imported
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 // top bar of the UI
-export class AppHaxTopBar extends LitElement {
+export class AppHaxTopBar extends I18NMixin(LitElement) {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
     return "app-hax-top-bar";
@@ -11,6 +12,18 @@ export class AppHaxTopBar extends LitElement {
   constructor() {
     super();
     this.editMode = false;
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      applicationHeader: "Application header",
+      navigationAndHome: "Navigation and home",
+      mainActions: "Main actions",
+      userControls: "User controls",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
   }
 
   static get properties() {
@@ -94,15 +107,15 @@ export class AppHaxTopBar extends LitElement {
         class="topBar"
         part="top-bar"
         role="banner"
-        aria-label="Application header"
+        aria-label="${this.t.applicationHeader}"
       >
-        <div class="left" part="left" aria-label="Navigation and home">
+        <div class="left" part="left" aria-label="${this.t.navigationAndHome}">
           <slot name="left"></slot>
         </div>
-        <div class="center" part="center" aria-label="Main actions">
+        <div class="center" part="center" aria-label="${this.t.mainActions}">
           <slot name="center"></slot>
         </div>
-        <div class="right" part="right" aria-label="User controls">
+        <div class="right" part="right" aria-label="${this.t.userControls}">
           <slot name="right"></slot>
         </div>
       </div>

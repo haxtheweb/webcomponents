@@ -22,6 +22,15 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      all: "All",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
 
     this.filtersList = [];
     this.filteredData = [];
@@ -226,7 +235,7 @@ ${this.data.length > 0 ?   html`
 
     if(this.filtersList.length > 0){
       return html`
-      <button class="filter active" name="all" @click="${this.updateFilter}">All</button>
+      <button class="filter active" name="all" @click="${this.updateFilter}">${this.t.all}</button>
       ${Array.from(this.filtersList).map((filter) => html`
         <button @click="${this.updateFilter}" name="${filter}"  class="filter"> 
           ${this.capitalizeWords(filter)} 

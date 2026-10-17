@@ -41,6 +41,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
       userNotFound: "User not found or unauthorized",
       loadingAddingUser: "Adding user...",
       grantAccessTo: "Grant access to:",
+      networkErrorTryAgain: "Network error occurred. Please try again.",
     };
     this.registerLocalization({
       context: this,
@@ -432,7 +433,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
       }
     } catch (error) {
       console.error("Error adding user access:", error);
-      this.error = "Network error occurred. Please try again.";
+      this.error = this.t.networkErrorTryAgain;
     } finally {
       this.loading = false;
     }

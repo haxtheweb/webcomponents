@@ -4,6 +4,7 @@ import { html, css, unsafeCSS } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 import { toJS } from "mobx";
@@ -14,7 +15,7 @@ import "./app-hax-confirmation-modal.js";
 let appHaxSiteBarInstanceCount = 0;
 // EXPORT (so make available to other documents that reference this file) a class, that extends LitElement
 // which has the magic life-cycles and developer experience below added
-export class AppHaxSiteBars extends SimpleColors {
+export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
     return "app-hax-site-bar";
@@ -23,6 +24,47 @@ export class AppHaxSiteBars extends SimpleColors {
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      copy: "Copy",
+      download: "Download",
+      archive: "Archive",
+      copyOperation: "copy",
+      downloadOperation: "download",
+      archiveOperation: "archive",
+      createTemplate: "Create Template",
+      userAccess: "User Access",
+      options: "Options",
+      openOptions: "Open options",
+      lastUpdated: "Last updated",
+      site: "site",
+      openSite: "Open {title}",
+      siteThemeScreenshot: "Screenshot of {title} theme",
+      confirm: "Confirm",
+      cancel: "Cancel",
+      siteOperationConfirmTitle: "{operationName} {siteName}?",
+      siteOperationConfirmMessage:
+        "Are you sure you want to {operation} {siteName}?",
+      siteOperationSuccessful: "{siteName} {operation} successful!",
+      siteOperationFailed: "{siteName} {operation} failed",
+      createTemplateFrom: "Create template from {siteName}?",
+      createTemplateMessage:
+        "Choose how to turn this site into a reusable template: download the skeleton file or save it to your templates.",
+      saveToTemplates: "Save to templates",
+      downloadSkeleton: "Download skeleton",
+      downloadSkeletonNotConfigured:
+        "Download skeleton endpoint is not configured.",
+      skeletonDownloaded: "{siteName} skeleton downloaded!",
+      unableToDownloadSkeleton: "Unable to download site skeleton.",
+      saveTemplateNotConfigured: "Save template endpoint is not configured.",
+      savedToTemplates: "{siteName} saved to templates!",
+      unableToSaveTemplate: "Unable to save site as template.",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.showOptions = false;
     this.inprogress = false;
     this.textInfo = {};
@@ -82,18 +124,24 @@ export class AppHaxSiteBars extends SimpleColors {
   }
   copySite() {
     this.closeOptionsMenu();
-    this.siteOperation("copySite", "Copy", "icons:content-copy");
+    this.siteOperation("copySite", this.t.copy, "icons:content-copy");
   }
 
   downloadSite() {
     this.closeOptionsMenu();
-    this.siteOperation("downloadSite", "Download", "file-download");
+    this.siteOperation("downloadSite", this.t.download, "file-download");
   }
 
   archiveSite() {
     this.closeOptionsMenu();
-    this.siteOperation("archiveSite", "Archive", "icons:archive");
+    this.siteOperation("archiveSite", this.t.archive, "icons:archive");
   }
+  // translated verb for an operation such as copySite / archiveSite
+  _operationVerb(op) {
+    const verb = op.replace("Site", "");
+    return this.t[`${verb}Operation`] || verb;
+  }
+
   createTemplate() {
     this.closeOptionsMenu();
     const site = this.getSiteRecord();
@@ -116,13 +164,12 @@ export class AppHaxSiteBars extends SimpleColors {
     if (!site || !site.metadata || !site.metadata.site) {
       return;
     }
-    const siteName = site.metadata.site.name || this.title || "site";
+    const siteName = site.metadata.site.name || this.title || this.t.site;
     const modal = document.createElement("app-hax-confirmation-modal");
-    modal.title = `Create template from ${siteName}?`;
-    modal.message =
-      "Choose how to turn this site into a reusable template: download the skeleton file or save it to your templates.";
-    modal.confirmText = "Save to templates";
-    modal.cancelText = "Download skeleton";
+    modal.title = this.t.createTemplateFrom.replace("{siteName}", siteName);
+    modal.message = this.t.createTemplateMessage;
+    modal.confirmText = this.t.saveToTemplates;
+    modal.cancelText = this.t.downloadSkeleton;
     modal.modal = true;
     modal.cancelIsNeutral = true;
     modal.cancelActionOnPassiveClose = false;
@@ -181,7 +228,7 @@ export class AppHaxSiteBars extends SimpleColors {
       typeof api.makeCall !== "function" ||
       !supportsDownloadSkeleton
     ) {
-      store.toast("Download skeleton endpoint is not configured.", 3000, {
+      store.toast(this.t.downloadSkeletonNotConfigured, 3000, {
         hat: "random",
       });
       return;
@@ -218,7 +265,7 @@ export class AppHaxSiteBars extends SimpleColors {
           ? payload.filename
           : `${this.getSiteMachineName() || "site-template"}.json`;
       this.triggerJsonDownload(skeletonData, fileName);
-      store.toast(`${siteName} skeleton downloaded!`, 3000, {
+      store.toast(this.t.skeletonDownloaded.replace("{siteName}", siteName), 3000, {
         hat: "random",
       });
     } catch (error) {
@@ -226,7 +273,7 @@ export class AppHaxSiteBars extends SimpleColors {
         store.appEl.playSound("error");
       }
       console.error("downloadSiteSkeleton failed:", error);
-      store.toast("Unable to download site skeleton.", 4000, {
+      store.toast(this.t.unableToDownloadSkeleton, 4000, {
         hat: "random",
       });
     }
@@ -244,7 +291,7 @@ export class AppHaxSiteBars extends SimpleColors {
       typeof api.makeCall !== "function" ||
       !supportsSaveTemplate
     ) {
-      store.toast("Save template endpoint is not configured.", 3000, {
+      store.toast(this.t.saveTemplateNotConfigured, 3000, {
         hat: "random",
       });
       return;
@@ -274,7 +321,7 @@ export class AppHaxSiteBars extends SimpleColors {
         throw new Error("saveSiteAsTemplate did not return status 200");
       }
       this.refreshTemplateResults();
-      store.toast(`${siteName} saved to templates!`, 3000, {
+      store.toast(this.t.savedToTemplates.replace("{siteName}", siteName), 3000, {
         hat: "random",
       });
     } catch (error) {
@@ -282,7 +329,7 @@ export class AppHaxSiteBars extends SimpleColors {
         store.appEl.playSound("error");
       }
       console.error("saveSiteAsTemplate failed:", error);
-      store.toast("Unable to save site as template.", 4000, {
+      store.toast(this.t.unableToSaveTemplate, 4000, {
         hat: "random",
       });
     }
@@ -311,7 +358,7 @@ export class AppHaxSiteBars extends SimpleColors {
         composed: true,
         cancelable: true,
         detail: {
-          title: "User Access",
+          title: this.t.userAccess,
           elements: { content: modal },
           invokedBy: this,
           styles: {
@@ -366,10 +413,14 @@ export class AppHaxSiteBars extends SimpleColors {
 
     // Create and configure the confirmation modal
     const modal = document.createElement("app-hax-confirmation-modal");
-    modal.title = `${opName} ${site.metadata.site.name}?`;
-    modal.message = `Are you sure you want to ${op.replace("Site", "")} ${site.metadata.site.name}?`;
-    modal.confirmText = "Confirm";
-    modal.cancelText = "Cancel";
+    modal.title = this.t.siteOperationConfirmTitle
+      .replace("{operationName}", opName)
+      .replace("{siteName}", site.metadata.site.name);
+    modal.message = this.t.siteOperationConfirmMessage
+      .replace("{operation}", this._operationVerb(op))
+      .replace("{siteName}", site.metadata.site.name);
+    modal.confirmText = this.t.confirm;
+    modal.cancelText = this.t.cancel;
 
     // Mark archive operations as dangerous for red styling
     modal.dangerous = op === "archiveSite";
@@ -491,11 +542,15 @@ export class AppHaxSiteBars extends SimpleColors {
       const errMsg =
         typeof opResponse.message === "string" && opResponse.message
           ? opResponse.message
-          : `${site.metadata.site.name} ${op.replace("Site", "")} failed`;
+          : this.t.siteOperationFailed
+              .replace("{siteName}", site.metadata.site.name)
+              .replace("{operation}", this._operationVerb(op));
       store.toast(errMsg, 3000, { hat: "random" });
     } else {
       store.toast(
-        `${site.metadata.site.name} ${op.replace("Site", "")} successful!`,
+        this.t.siteOperationSuccessful
+          .replace("{siteName}", site.metadata.site.name)
+          .replace("{operation}", this._operationVerb(op)),
         3000,
         {
           hat: "random",
@@ -672,11 +727,17 @@ export class AppHaxSiteBars extends SimpleColors {
                 <a
                   class="imageLink"
                   href="${this.siteUrl}"
-                  aria-label="Open ${this.title || "site"}"
+                  aria-label="${this.t.openSite.replace(
+                    "{title}",
+                    this.title || this.t.site,
+                  )}"
                 >
                   <img
                     src="${this.image}"
-                    alt="Screenshot of ${this.title || "site"} theme"
+                    alt="${this.t.siteThemeScreenshot.replace(
+                      "{title}",
+                      this.title || this.t.site,
+                    )}"
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
@@ -694,17 +755,17 @@ export class AppHaxSiteBars extends SimpleColors {
                 id="${this.moreOptionsId}"
                 icon="lrn:more-vert"
                 @click="${this.toggleOptionsMenu}"
-                aria-label="Open options"
+                aria-label="${this.t.openOptions}"
                 aria-haspopup="menu"
-                title="Options"
+                title="${this.t.options}"
               ></simple-icon-button-lite>
-              <simple-context-menu title="Options">
+              <simple-context-menu title="${this.t.options}">
                 <simple-toolbar-button
                   icon="content-copy"
                   icon-position="left"
                   align-horizontal="left"
                   show-text-label
-                  label="Copy"
+                  label="${this.t.copy}"
                   @click=${this.copySite}
                 ></simple-toolbar-button>
                 <simple-toolbar-button
@@ -712,7 +773,7 @@ export class AppHaxSiteBars extends SimpleColors {
                   icon-position="left"
                   align-horizontal="left"
                   show-text-label
-                  label="Download"
+                  label="${this.t.download}"
                   @click=${this.downloadSite}
                 ></simple-toolbar-button>
                 <simple-toolbar-button
@@ -720,7 +781,7 @@ export class AppHaxSiteBars extends SimpleColors {
                   icon-position="left"
                   align-horizontal="left"
                   show-text-label
-                  label="Create Template"
+                  label="${this.t.createTemplate}"
                   @click=${this.createTemplate}
                 ></simple-toolbar-button>
                 <simple-toolbar-button
@@ -728,7 +789,7 @@ export class AppHaxSiteBars extends SimpleColors {
                   icon-position="left"
                   align-horizontal="left"
                   show-text-label
-                  label="Archive"
+                  label="${this.t.archive}"
                   @click=${this.archiveSite}
                 ></simple-toolbar-button>
                 ${store &&
@@ -741,7 +802,7 @@ export class AppHaxSiteBars extends SimpleColors {
                         icon-position="left"
                         align-horizontal="left"
                         show-text-label
-                        label="User Access"
+                        label="${this.t.userAccess}"
                         @click=${this.openUserAccess}
                       ></simple-toolbar-button>
                     `
@@ -751,9 +812,9 @@ export class AppHaxSiteBars extends SimpleColors {
           </div>
 
           <div class="date">
-            <simple-icon icon="hax:calendar" title="Last updated"></simple-icon>
+            <simple-icon icon="hax:calendar" title="${this.t.lastUpdated}"></simple-icon>
             <simple-datetime
-              title="Last updated"
+              title="${this.t.lastUpdated}"
               format="m/j/y"
               .timestamp="${this.lastUpdatedTime}"
               unix

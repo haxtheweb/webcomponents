@@ -8,6 +8,7 @@ import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXC
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
@@ -67,6 +68,21 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      siteInformation: "Site information",
+      topMenuLinks: "Top menu links",
+      postNavigation: "Post navigation",
+      previous: "Previous",
+      next: "Next",
+    };
+    // no I18NMixin in this class chain, so register with the store directly
+    I18NManagerStore.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.HAXCMSThemeSettings.autoScroll = true;
     this.siteDescription = "";
     this.activeId = null;
@@ -559,14 +575,14 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     const tags = this._tagsArray(this.activeTags);
     const hasMetadata = this.pageCreated || tags.length > 0;
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <site-query
         @result-changed="${this.__topMenuResultChanged}"
         .conditions="${this.topMenuConditions}"
         .sort="${this.topMenuSort}"
       ></site-query>
       <div class="layout">
-        <aside class="sidebar" part="sidebar" aria-label="Site information">
+        <aside class="sidebar" part="sidebar" aria-label="${this.t.siteInformation}">
           <div class="sidebar-inner">
             <site-title
               .part="${this.editMode ? `edit-mode-active` : ``}"
@@ -576,7 +592,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             ${this.siteDescription
               ? html`<p class="site-description">${this.siteDescription}</p>`
               : ``}
-            <nav class="top-menu" aria-label="Top menu links" part="top-menu">
+            <nav class="top-menu" aria-label="${this.t.topMenuLinks}" part="top-menu">
               <ul>
                 ${visibleMenuItems.map(
                   (item) => html`
@@ -649,7 +665,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
                   `
                 : ``}
             </article>
-            <nav class="link-actions" aria-label="Post navigation">
+            <nav class="link-actions" aria-label="${this.t.postNavigation}">
               <div class="link-actions-inner">
                 <site-menu-button
                   hide-label
@@ -658,7 +674,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
                   @label-changed="${this.__prevPageLabelChanged}"
                 >
                   <div slot="suffix" class="wrapper">
-                    <span class="top">Previous</span>
+                    <span class="top">${this.t.previous}</span>
                     <span class="bottom">${this.prevPage}</span>
                   </div>
                 </site-menu-button>
@@ -669,7 +685,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
                   @label-changed="${this.__nextPageLabelChanged}"
                 >
                   <div slot="prefix" class="wrapper">
-                    <span class="top">Next</span>
+                    <span class="top">${this.t.next}</span>
                     <span class="bottom">${this.nextPage}</span>
                   </div>
                 </site-menu-button>

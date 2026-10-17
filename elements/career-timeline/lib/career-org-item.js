@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./career-role-item.js";
 
 /**
@@ -12,13 +13,27 @@ import "./career-role-item.js";
  * @demo index.html
  * @element ddd-steps-list
  */
-export class CareerOrgItem extends DDDSuper(LitElement) {
+export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
   static get tag() {
     return "career-org-item";
   }
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      addARole: "Add a Role",
+      addRoleUnderOrganization: "Add role under organization",
+      yearShort: "{count} yr",
+      yearsShort: "{count} yrs",
+      monthShort: "{count} mo",
+      monthsShort: "{count} mos",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.organization = "";
     this.location = "";
     this.source = "https://avatars.githubusercontent.com/u/170651362";
@@ -109,7 +124,7 @@ export class CareerOrgItem extends DDDSuper(LitElement) {
         </div>
       </div>
       <div class="steps-container">
-        <slot><career-role-item title="Add a Role"></career-role-item></slot>
+        <slot><career-role-item title="${this.t.addARole}"></career-role-item></slot>
         <div class="border-line"></div>
       </div>
     `;
@@ -150,7 +165,7 @@ export class CareerOrgItem extends DDDSuper(LitElement) {
 
   _formatDate(){
     // Math.max/min return Infinity for empty arrays
-    if(!Number.isFinite(this.earliestDate) || !Number.isFinite(this.latestDate)) return `0 yr 0 mo`;
+    if(!Number.isFinite(this.earliestDate) || !Number.isFinite(this.latestDate)) return `${this.t.yearShort.replace("{count}", 0)} ${this.t.monthShort.replace("{count}", 0)}`;
     const startDateObj = new Date(this.earliestDate);
     const endDateObj = new Date(this.latestDate);
 
@@ -165,8 +180,8 @@ export class CareerOrgItem extends DDDSuper(LitElement) {
     }
 
     // Accounting for proper grammar with small values
-    totalYears = totalYears > 1 ? `${totalYears} yrs` : `${totalYears} yr`;
-    totalMonths = totalMonths > 1 ? `${totalMonths} mos` : `${totalMonths} mo`
+    totalYears = (totalYears > 1 ? this.t.yearsShort : this.t.yearShort).replace("{count}", totalYears);
+    totalMonths = (totalMonths > 1 ? this.t.monthsShort : this.t.monthShort).replace("{count}", totalMonths);
 
     return `${totalYears} ${totalMonths}`;
   }
@@ -219,7 +234,7 @@ export class CareerOrgItem extends DDDSuper(LitElement) {
       {
         icon: "icons:add",
         callback: "_addItemHandler",
-        label: "Add role under organization",
+        label: this.t.addRoleUnderOrganization,
       },
     ];
   }

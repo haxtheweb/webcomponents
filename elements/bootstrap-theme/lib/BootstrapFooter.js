@@ -4,8 +4,9 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { adoptBootstrapStylesheet } from "./BootstrapStylesheetManager.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-class BootstrapFooter extends LitElement {
+class BootstrapFooter extends I18NMixin(LitElement) {
   static get tag() {
     return "bootstrap-footer";
   }
@@ -158,6 +159,17 @@ class BootstrapFooter extends LitElement {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      pageNavigation: "Page navigation",
+      goToPreviousPage: "Go to previous page: {title}",
+      goToNextPage: "Go to next page: {title}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this._bootstrapPath = this._resolveBootstrapStylesheetPath();
     this._forwardItem = {};
     this._backwardItem = {};
@@ -205,14 +217,17 @@ class BootstrapFooter extends LitElement {
 
   render() {
     return html`
-      <nav class="container" role="navigation" aria-label="Page navigation">
+      <nav class="container" role="navigation" aria-label="${this.t.pageNavigation}">
         ${this._backwardItem && this._backwardItem.slug
           ? html`
               <a
                 class="btn btn-outline-primary backward"
                 href="${this._backwardItem.slug}"
                 role="button"
-                aria-label="Go to previous page: ${this._backwardItem.title}"
+                aria-label="${this.t.goToPreviousPage.replace(
+                  "{title}",
+                  this._backwardItem.title || "",
+                )}"
               >
                 <simple-icon-lite
                   icon="av:fast-rewind"
@@ -228,7 +243,10 @@ class BootstrapFooter extends LitElement {
                 class="btn btn-outline-primary forward"
                 href="${this._forwardItem.slug}"
                 role="button"
-                aria-label="Go to next page: ${this._forwardItem.title}"
+                aria-label="${this.t.goToNextPage.replace(
+                  "{title}",
+                  this._forwardItem.title || "",
+                )}"
               >
                 <span>${this._forwardItem.title}</span>
                 <simple-icon-lite

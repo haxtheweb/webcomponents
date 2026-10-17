@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-modal/lib/simple-modal-template.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
 
@@ -16,7 +17,7 @@ import "@haxtheweb/simple-tooltip/simple-tooltip.js";
  *
  * @demo demo/index.html
  */
-class SiteModal extends HAXCMSThemeParts(LitElement) {
+class SiteModal extends HAXCMSThemeParts(I18NMixin(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -51,9 +52,19 @@ class SiteModal extends HAXCMSThemeParts(LitElement) {
   }
   constructor() {
     super();
-    this.title = "Dialog";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      dialog: "Dialog",
+      openDialog: "Open dialog",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
+    this.title = this.t.dialog;
     this.icon = "icons:menu";
-    this.buttonLabel = "Open dialog";
+    this.buttonLabel = this.t.openDialog;
     this.position = "auto";
     this.disabled = false;
   }

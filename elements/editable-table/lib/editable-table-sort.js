@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { editableTableCellStyles } from "./editable-table-behaviors.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -19,7 +20,9 @@ import { SimpleToolbarButtonBehaviors } from "@haxtheweb/simple-toolbar/lib/simp
  * @extends LitElement
  * @extends editableTableCellStyles
  */
-class EditableTableSort extends SimpleToolbarButtonBehaviors(DDD) {
+class EditableTableSort extends I18NMixin(
+  SimpleToolbarButtonBehaviors(DDD),
+) {
   static get styles() {
     return [
       ...(super.styles || []),
@@ -86,25 +89,47 @@ class EditableTableSort extends SimpleToolbarButtonBehaviors(DDD) {
     return html`
       <div>
         <slot id="cell"></slot>
-        <span class="offscreen asc">(ascending)</span>
-        <span class="offscreen desc">(descending)</span>
+        <span class="offscreen asc">${this.t.ascending}</span>
+        <span class="offscreen desc">${this.t.descending}</span>
         ${super.render()}
       </div>
     `;
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      ascending: "(ascending)",
+      descending: "(descending)",
+      toggleSortMode: "Toggle sort mode.",
+      togglesSortingByColumn: "Toggles sorting by this column.",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.sortMode = "none";
     this.sortColumn = -1;
     this.toggles = true;
     this.icon = "editable-table:sortable";
-    this.label = "Toggle sort mode.";
-    this.tooltip = "Toggles sorting by this column.";
+    this.label = this.t.toggleSortMode;
+    this.tooltip = this.t.togglesSortingByColumn;
     this.describedby = "cell";
   }
 
   willUpdate(changedProperties) {
     if (super.willUpdate) super.willUpdate(changedProperties);
+    // keep the default label / tooltip in sync with the active language
+    if (changedProperties.has("t") && this.t) {
+      const oldT = changedProperties.get("t") || {};
+      if (!this.label || this.label === oldT.toggleSortMode) {
+        this.label = this.t.toggleSortMode;
+      }
+      if (!this.tooltip || this.tooltip === oldT.togglesSortingByColumn) {
+        this.tooltip = this.t.togglesSortingByColumn;
+      }
+    }
     // Derive toggled + icon from columnIndex/sortMode/sortColumn in
     // willUpdate so reactive sets batch into the current update cycle.
     // Setting them in updated() scheduled a redundant second update (Lit

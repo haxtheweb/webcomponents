@@ -43,6 +43,50 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     this.loadedFormatData = "";
     this.loadedFromNativeRoute = false;
     this.__loadStamp = 0;
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      copyDataToClipboard: "Copy data to clipboard",
+      copyFormatToClipboard: "Copy {format} to clipboard",
+      goBackToPage: "Go back to page",
+      goBack: "Go back",
+      activeItemDataFormat: "Active Item Data ({format})",
+      nativeFilePreference:
+        "This view prefers the native {extension} page file and falls back to generated data only when that file is not available:",
+      nativeRouteForRobotsAndLlms: "Native route for robots and LLMs",
+      openedUsingFormatQuery:
+        "You opened this using {query}. For machine-native access, append {extension} to the current page slug instead.",
+      copyNativeDataRoute: "Copy native data route",
+      copyNativeFormatRoute: "Copy native format route",
+      example: "Example:",
+      hideChildren: "Hide children",
+      showChildren: "Show children",
+      loadingFormatData: "Loading {format} data...",
+      appendingMdGuidance:
+        "Appending .md to the slug returns Markdown that is useful for LLM-oriented workflows.",
+      appendingFormatGuidance:
+        "Appending .{extension} to the slug returns this page directly in {format} format for machine use.",
+      loadedDirectlyFrom: "Loaded directly from {path}.",
+      nativeFileNotFoundFallback:
+        "Native .{extension} file was not found. Showing generated {type} fallback from activeItem data.",
+      formatDataCopiedToClipboard: "{format} data copied to clipboard!",
+      failedToCopyFormatData: "Failed to copy {format} data",
+      nativeFormatRouteCopied: "Native format route copied to clipboard!",
+      failedToConvertToYaml: "Failed to convert to YAML",
+    };
+  }
+
+  // render a translated string, swapping {placeholders} for <code> wrapped values
+  __renderWithCode(str, values) {
+    return String(str)
+      .split(/(\{[a-zA-Z]+\})/)
+      .map((part) => {
+        const match = part.match(/^\{([a-zA-Z]+)\}$/);
+        if (match && values[match[1]] !== undefined) {
+          return html`<code>${values[match[1]]}</code>`;
+        }
+        return part;
+      });
   }
 
   render() {
@@ -75,60 +119,73 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     const formatCopy = routeFormat.toUpperCase();
     const machineGuidance =
       routeFormat === "md"
-        ? "Appending .md to the slug returns Markdown that is useful for LLM-oriented workflows."
-        : `Appending .${routeFormat} to the slug returns this page directly in ${formatCopy} format for machine use.`;
+        ? this.t.appendingMdGuidance
+        : this.t.appendingFormatGuidance
+            .replace("{extension}", routeFormat)
+            .replace("{format}", formatCopy);
     const sourceMessage = usingNativeRoute
-      ? `Loaded directly from ${this.nativeFormatPath}.`
-      : `Native .${routeFormat} file was not found. Showing generated ${generatedData.type.toUpperCase()} fallback from activeItem data.`;
+      ? this.t.loadedDirectlyFrom.replace("{path}", this.nativeFormatPath)
+      : this.t.nativeFileNotFoundFallback
+          .replace("{extension}", routeFormat)
+          .replace("{type}", generatedData.type.toUpperCase());
 
     return html`
-      <a class="skip-link" href="#main-content">Skip to content</a>
+      <a class="skip-link" href="#main-content">${this.t.skipToContent}</a>
       <header>
         <simple-icon-button-lite
           @click="${this.copyToClipboard}"
           id="copybtn"
           icon="content-copy"
-          label="Copy data to clipboard"
-          title="Copy ${copyFormat.toUpperCase()} to clipboard"
+          label="${this.t.copyDataToClipboard}"
+          title="${this.t.copyFormatToClipboard.replace(
+            "{format}",
+            copyFormat.toUpperCase(),
+          )}"
         ></simple-icon-button-lite>
         <simple-icon-button-lite
           @click="${this.goBack}"
           id="backbtn"
           icon="arrow-back"
-          label="Go back to page"
-          title="Go back"
+          label="${this.t.goBackToPage}"
+          title="${this.t.goBack}"
         ></simple-icon-button-lite>
       </header>
       <main id="main-content" tabindex="-1">
         <article>
           <section>
-            <h1>Active Item Data (${routeFormat.toUpperCase()})</h1>
+            <h1>
+              ${this.t.activeItemDataFormat.replace(
+                "{format}",
+                routeFormat.toUpperCase(),
+              )}
+            </h1>
             <p>
-              This view prefers the native <code>.${routeFormat}</code> page
-              file and falls back to generated data only when that file is not
-              available:
+              ${this.__renderWithCode(this.t.nativeFilePreference, {
+                extension: `.${routeFormat}`,
+              })}
             </p>
             <p class="source-note">${sourceMessage}</p>
             <div class="format-routing-help">
-              <h2>Native route for robots and LLMs</h2>
+              <h2>${this.t.nativeRouteForRobotsAndLlms}</h2>
               <p>
-                You opened this using <code>?format=${routeFormat}</code>. For
-                machine-native access, append <code>.${routeFormat}</code> to
-                the current page slug instead.
+                ${this.__renderWithCode(this.t.openedUsingFormatQuery, {
+                  query: `?format=${routeFormat}`,
+                  extension: `.${routeFormat}`,
+                })}
               </p>
               <div class="native-route">
                 <code>${this.nativeFormatPath}</code>
                 <simple-icon-button-lite
                   id="copyroutebtn"
                   icon="content-copy"
-                  label="Copy native data route"
-                  title="Copy native format route"
+                  label="${this.t.copyNativeDataRoute}"
+                  title="${this.t.copyNativeFormatRoute}"
                   @click="${this.copyNativeRoute}"
                 ></simple-icon-button-lite>
               </div>
               <p class="machine-note">${machineGuidance}</p>
               <p class="machine-note">
-                Example:
+                ${this.t.example}
                 <code>${this.nativeFormatUrl}</code>
               </p>
             </div>
@@ -142,13 +199,15 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
                         ? "expand-less"
                         : "expand-more"}"
                       label="${this.showChildren
-                        ? "Hide children"
-                        : "Show children"}"
+                        ? this.t.hideChildren
+                        : this.t.showChildren}"
                       title="${this.showChildren
-                        ? "Hide children"
-                        : "Show children"}"
+                        ? this.t.hideChildren
+                        : this.t.showChildren}"
                     >
-                      ${this.showChildren ? "Hide children" : "Show children"}
+                      ${this.showChildren
+                        ? this.t.hideChildren
+                        : this.t.showChildren}
                     </simple-icon-button-lite>
                   </div>
                 `
@@ -156,7 +215,10 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
             ${this.loading
               ? html`
                   <div class="loading">
-                    Loading ${routeFormat.toUpperCase()} data...
+                    ${this.t.loadingFormatData.replace(
+                      "{format}",
+                      routeFormat.toUpperCase(),
+                    )}
                   </div>
                 `
               : html`
@@ -322,7 +384,10 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
         ) {
           const toast = globalThis.SimpleToast.requestAvailability();
           toast.showSimpleToast(
-            `${copyFormat.toUpperCase()} data copied to clipboard!`,
+            this.t.formatDataCopiedToClipboard.replace(
+              "{format}",
+              copyFormat.toUpperCase(),
+            ),
           );
         } else {
           console.log(`${copyFormat.toUpperCase()} data copied to clipboard!`);
@@ -337,7 +402,10 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
         ) {
           const toast = globalThis.SimpleToast.requestAvailability();
           toast.showSimpleToast(
-            `Failed to copy ${copyFormat.toUpperCase()} data`,
+            this.t.failedToCopyFormatData.replace(
+              "{format}",
+              copyFormat.toUpperCase(),
+            ),
             3000,
             { hat: "error" },
           );
@@ -359,7 +427,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           globalThis.SimpleToast.requestAvailability
         ) {
           const toast = globalThis.SimpleToast.requestAvailability();
-          toast.showSimpleToast("Native format route copied to clipboard!");
+          toast.showSimpleToast(this.t.nativeFormatRouteCopied);
         } else {
           console.log("Native format route copied to clipboard!");
         }
@@ -452,7 +520,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
         globalThis.SimpleToast.requestAvailability
       ) {
         const toast = globalThis.SimpleToast.requestAvailability();
-        toast.showSimpleToast("Failed to convert to YAML", 3000, {
+        toast.showSimpleToast(this.t.failedToConvertToYaml, 3000, {
           hat: "error",
         });
       }

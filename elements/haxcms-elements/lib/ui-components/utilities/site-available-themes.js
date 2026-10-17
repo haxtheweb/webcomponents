@@ -42,15 +42,30 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
     this.columns = 3;
     this.currentTheme = "";
     this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      failedToLoadThemes: "Failed to load themes: {error}",
+      noThemesForView: "No themes available for this view.",
+      active: "Active",
+      themeIsActive: "{name} theme is active",
+      applyTheme: "Apply {name} theme",
+      apply: "Apply",
+      preview: "Preview",
+      name: "Name",
+      element: "Element",
+      description: "Description",
+      action: "Action",
+      loadingThemes: "Loading themes...",
+      themesShown: "{count} themes shown",
+      themesShownDefaults: "{count} themes shown (app-hax defaults)",
+      availableHaxcmsThemes: "Available HAXcms Themes",
+      gallery: "Gallery",
+      table: "Table",
+    };
 
     this.registerLocalization({
       context: this,
-      localesPath:
-        new URL(
-          "../../../../../../locales/site-available-themes/",
-          import.meta.url,
-        ).href + "/",
-      locales: ["en"],
+      localesPath: new URL("../../../locales/", import.meta.url).href,
     });
   }
 
@@ -491,7 +506,7 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
 
       this.loading = false;
     } catch (error) {
-      this.error = `Failed to load themes: ${error.message}`;
+      this.error = this.t.failedToLoadThemes.replace("{error}", error.message);
       this.loading = false;
       console.error("Error loading themes:", error);
     }
@@ -542,9 +557,7 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
   renderGalleryView() {
     const visibleThemes = this._getVisibleThemes();
     if (visibleThemes.length === 0) {
-      return html`<div class="loading">
-        No themes available for this view.
-      </div>`;
+      return html`<div class="loading">${this.t.noThemesForView}</div>`;
     }
     return html`
       <div class="gallery-grid">
@@ -556,7 +569,7 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
                 : ""}"
             >
               ${theme.element === this.currentTheme
-                ? html` <div class="current-badge">Active</div> `
+                ? html` <div class="current-badge">${this.t.active}</div> `
                 : ""}
               <div class="theme-thumbnail">
                 <img
@@ -582,15 +595,15 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
                         class="preview-button"
                         type="button"
                         aria-label="${theme.element === this.currentTheme
-                          ? `${theme.name} theme is active`
-                          : `Apply ${theme.name} theme`}"
+                          ? this.t.themeIsActive.replace("{name}", theme.name)
+                          : this.t.applyTheme.replace("{name}", theme.name)}"
                         ?disabled="${theme.element === this.currentTheme}"
                         @click="${() => this.switchTheme(theme.element)}"
                       >
                         <simple-icon-lite icon="visibility"></simple-icon-lite>
                         ${theme.element === this.currentTheme
-                          ? "Active"
-                          : "Apply"}
+                          ? this.t.active
+                          : this.t.apply}
                       </button>
                     </div>
                   `
@@ -605,19 +618,17 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
   renderTableView() {
     const visibleThemes = this._getVisibleThemes();
     if (visibleThemes.length === 0) {
-      return html`<div class="loading">
-        No themes available for this view.
-      </div>`;
+      return html`<div class="loading">${this.t.noThemesForView}</div>`;
     }
     return html`
       <table class="theme-table">
         <thead>
           <tr>
-            <th>Preview</th>
-            <th>Name</th>
-            <th>Element</th>
-            ${this.showDetails ? html`<th>Description</th>` : ""}
-            <th>Action</th>
+            <th>${this.t.preview}</th>
+            <th>${this.t.name}</th>
+            <th>${this.t.element}</th>
+            ${this.showDetails ? html`<th>${this.t.description}</th>` : ""}
+            <th>${this.t.action}</th>
           </tr>
         </thead>
         <tbody>
@@ -639,7 +650,7 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
                 <td>
                   <div class="table-name">${theme.name}</div>
                   ${theme.element === this.currentTheme
-                    ? html` <div class="current-label">Active</div> `
+                    ? html` <div class="current-label">${this.t.active}</div> `
                     : ""}
                 </td>
                 <td>
@@ -653,13 +664,15 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
                     class="preview-button"
                     type="button"
                     aria-label="${theme.element === this.currentTheme
-                      ? `${theme.name} theme is active`
-                      : `Apply ${theme.name} theme`}"
+                      ? this.t.themeIsActive.replace("{name}", theme.name)
+                      : this.t.applyTheme.replace("{name}", theme.name)}"
                     ?disabled="${theme.element === this.currentTheme}"
                     @click="${() => this.switchTheme(theme.element)}"
                   >
                     <simple-icon-lite icon="visibility"></simple-icon-lite>
-                    ${theme.element === this.currentTheme ? "Active" : "Apply"}
+                    ${theme.element === this.currentTheme
+                      ? this.t.active
+                      : this.t.apply}
                   </button>
                 </td>
               </tr>
@@ -672,7 +685,7 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
 
   render() {
     if (this.loading) {
-      return html`<div class="loading">Loading themes...</div>`;
+      return html`<div class="loading">${this.t.loadingThemes}</div>`;
     }
 
     if (this.error) {
@@ -680,13 +693,13 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
     }
     const visibleThemes = this._getVisibleThemes();
     const themeCountLabel = this.showAllThemes
-      ? `${visibleThemes.length} themes shown`
-      : `${visibleThemes.length} themes shown (app-hax defaults)`;
+      ? this.t.themesShown.replace("{count}", visibleThemes.length)
+      : this.t.themesShownDefaults.replace("{count}", visibleThemes.length);
 
     return html`
       <div class="gallery-header">
         <div>
-          <h2 class="gallery-title">Available HAXcms Themes</h2>
+          <h2 class="gallery-title">${this.t.availableHaxcmsThemes}</h2>
           <div class="theme-count">${themeCountLabel}</div>
         </div>
         <div class="view-toggle">
@@ -697,7 +710,7 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
             @click="${() => this.setViewMode("gallery")}"
           >
             <simple-icon-lite icon="view-module"></simple-icon-lite>
-            Gallery
+            ${this.t.gallery}
           </button>
           <button
             class="toggle-button ${this.viewMode === "table" ? "active" : ""}"
@@ -706,7 +719,7 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
             @click="${() => this.setViewMode("table")}"
           >
             <simple-icon-lite icon="view-list"></simple-icon-lite>
-            Table
+            ${this.t.table}
           </button>
         </div>
       </div>

@@ -94,6 +94,7 @@ class GradeBookLite extends UIRenderPieces(
     this.loading = false;
     // translatable text
     this.t = {
+      ...this.t,
       downloadingPdfPleaseWait: "Downloading PDF, please wait...",
       downloadPdf: "Download PDF",
       csvURL: "CSV URL",
@@ -134,6 +135,22 @@ class GradeBookLite extends UIRenderPieces(
       sourceData: "Source data",
       pasteValidJSONHere: "Paste valid JSON here",
       loadingFilePleaseWait: "Loading file, please wait...",
+      fileSystem: "File system",
+      googleDocs: "Google docs",
+      urlEndpointJSON: "URL endpoint (JSON)",
+      jsonDataBlob: "JSON data blob",
+      filter: "Filter",
+      tagSearch: "Tag search",
+      collapseAll: "Collapse all",
+      expandAll: "Expand all",
+      additionalCriteriaFeedback: "Additional {criteria} feedback",
+      outOfPoints: "/ {points} pts",
+      feedbackReport: "Feedback report",
+      criteriaDetails: "Criteria details",
+      yourFeedback: "Your feedback",
+      additionalCriteriaFeedbackHeading: "Additional Criteria feedback",
+      yourTotalScore: "Your total Score",
+      scoreOutOfPoints: "{score} / {points} pts",
     };
     this.registerLocalization({
       context: this,
@@ -1203,17 +1220,17 @@ class GradeBookLite extends UIRenderPieces(
                 value="filesystem"
                 ?selected="${this.source === "filesystem"}"
               >
-                File system
+                ${this.t.fileSystem}
               </option>`
             : nothing}
           <option
             value="googledocs"
             ?selected="${this.source === "googledocs"}"
           >
-            Google docs
+            ${this.t.googleDocs}
           </option>
-          <option value="url">URL endpoint (JSON)</option>
-          <option value="json">JSON data blob</option>
+          <option value="url">${this.t.urlEndpointJSON}</option>
+          <option value="json">${this.t.jsonDataBlob}</option>
         </select>
         <simple-icon-button-lite
           @click="${this.loadFromSource}"
@@ -1275,8 +1292,8 @@ class GradeBookLite extends UIRenderPieces(
                       id="inputfilter"
                       @value-changed="${this.inputfilterChanged}"
                       .value="${this.like}"
-                      label="Filter"
-                      placeholder="Tag search"
+                      label="${this.t.filter}"
+                      placeholder="${this.t.tagSearch}"
                       type="text"
                       auto-validate=""
                       autofocus
@@ -1287,14 +1304,14 @@ class GradeBookLite extends UIRenderPieces(
                       icon="hardware:keyboard-arrow-right"
                       class="control"
                       value=""
-                      >Collapse all</simple-icon-button-lite
+                      >${this.t.collapseAll}</simple-icon-button-lite
                     >
                     <simple-icon-button-lite
                       @click="${this.expandAll}"
                       icon="hardware:keyboard-arrow-down"
                       class="control"
                       value=""
-                      >Expand all</simple-icon-button-lite
+                      >${this.t.expandAll}</simple-icon-button-lite
                     >
                     ${this.database.tags.categories.length > 0
                       ? html`
@@ -1376,7 +1393,12 @@ class GradeBookLite extends UIRenderPieces(
                             </tbody>
                           </table>
                         </editable-table-display>
-                        <h4>Additional ${rubric.criteria} feedback</h4>
+                        <h4>
+                          ${this.t.additionalCriteriaFeedback.replace(
+                            "{criteria}",
+                            rubric.criteria,
+                          )}
+                        </h4>
                         <simple-fields-field
                           type="textarea"
                           data-rubric-written
@@ -1386,7 +1408,7 @@ class GradeBookLite extends UIRenderPieces(
                     )}
                     <div class="student-feedback-wrap">
                       <div class="student-feedback-text">
-                        <h3 class="heading">Overall feedback</h3>
+                        <h3 class="heading">${this.t.overallFeedback}</h3>
                         <simple-fields-field
                           type="textarea"
                           data-criteria="overall"
@@ -1406,10 +1428,11 @@ class GradeBookLite extends UIRenderPieces(
                           maxlength="10"
                           @value-changed="${this.totalScoreChangedEvent}"
                         ></simple-fields-field>
-                        /
-                        ${this.database.assignments[this.activeAssignment]
-                          .points}
-                        pts
+                        ${this.t.outOfPoints.replace(
+                          "{points}",
+                          this.database.assignments[this.activeAssignment]
+                            .points,
+                        )}
                         <letter-grade
                           style="margin:-8px 0 0 16px;"
                           total="${this.database.assignments[
@@ -1441,7 +1464,7 @@ class GradeBookLite extends UIRenderPieces(
                       .points}"
                     score="${this.totalScore}"
                   ></letter-grade>
-                  <h2>Feedback report</h2>
+                  <h2>${this.t.feedbackReport}</h2>
                   <div class="student-report-wrap">
                     <a11y-collapse-group
                       heading-button
@@ -1475,10 +1498,10 @@ class GradeBookLite extends UIRenderPieces(
                                         ].points,
                                     )}
                                   </div>
-                                  <h3>Criteria details</h3>
+                                  <h3>${this.t.criteriaDetails}</h3>
                                 </div>
                                 <p>${rubric.description}</p>
-                                <h3>Your feedback</h3>
+                                <h3>${this.t.yourFeedback}</h3>
                                 <ul>
                                   ${rubric.qualitative.map(
                                     (cat) => html`
@@ -1519,7 +1542,9 @@ class GradeBookLite extends UIRenderPieces(
                                     `,
                                   )}
                                 </ul>
-                                <h3>Additional Criteria feedback</h3>
+                                <h3>
+                                  ${this.t.additionalCriteriaFeedbackHeading}
+                                </h3>
                                 <p>
                                   ${this.getCriteriaFeedback(rubric.criteria)}
                                 </p>
@@ -1535,12 +1560,15 @@ class GradeBookLite extends UIRenderPieces(
                         </div>
                         <div slot="content">
                           <p>${this.getCriteriaFeedback("overall")}</p>
-                          <h2>Your total Score</h2>
+                          <h2>${this.t.yourTotalScore}</h2>
                           <div class="score-display">
-                            ${this.totalScore} /
-                            ${this.database.assignments[this.activeAssignment]
-                              .points}
-                            pts
+                            ${this.t.scoreOutOfPoints
+                              .replace("{score}", this.totalScore)
+                              .replace(
+                                "{points}",
+                                this.database.assignments[this.activeAssignment]
+                                  .points,
+                              )}
                           </div>
                         </div>
                       </a11y-collapse>

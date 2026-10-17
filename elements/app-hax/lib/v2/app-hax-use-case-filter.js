@@ -1,6 +1,7 @@
 /* eslint-disable no-return-assign */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -11,13 +12,139 @@ import "./app-hax-filter-tag.js";
 import "./app-hax-scroll-button.js";
 import "./app-hax-site-creation-modal.js";
 
-export class AppHaxUseCaseFilter extends LitElement {
+export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
   static get tag() {
     return "app-hax-use-case-filter";
   }
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      templates: "Templates",
+      moreTemplates: "More Templates",
+      browseAllTemplateStarters: "Browse all template starters",
+      moreTemplatesTooltip: "More templates",
+      fromScratch: "From Scratch",
+      startFromBlankSiteWithTheme: "Start from a blank site using a theme",
+      fromScratchTooltip: "From scratch",
+      import: "Import",
+      importContentFromExistingSource:
+        "Import content from an existing source",
+      importContent: "Import content",
+      createNewSiteEllipsis: "Create New Site...",
+      quickCreateOptions: "Quick create options",
+      filterAndSearchSiteTemplates: "Filter and search site templates",
+      search: "Search",
+      searchHelp:
+        "Type to search for site templates and existing sites. Press Escape to clear.",
+      sortOptions: "Sort options",
+      recentlyUpdated: "Recently updated",
+      titleAZ: "Title A–Z",
+      titleZA: "Title Z–A",
+      leastRecentlyUpdated: "Least recently updated",
+      themeName: "Theme name",
+      clearFiltersHelp: "Clear all active filters and search terms",
+      returnTo: "Return to...",
+      previouslyCreatedSites: "Previously created sites",
+      createNewSite: "Create New Site",
+      optionsAvailable: "{count} options available",
+      fromTemplate: "From Template",
+      templateBasedStarters: "Template-based starters",
+      noTemplatesMatchFilters: "No templates match your current filters.",
+      fromScratchUsingTheme: "From Scratch Using Theme",
+      themeBasedStarters: "Theme-based starters",
+      noThemesMatchFilters: "No themes match your current filters.",
+      fromExistingSource: "From Existing Source",
+      importOptions: "Import options",
+      noImportOptionsMatchFilters:
+        "No import options match your current filters.",
+      loadingTemplates: "Loading templates...",
+      noTemplatesMatchResetFilters:
+        "No templates match your current filters. Reset filters to see more options.",
+      noTemplatesAvailable:
+        "No templates available. You can still create a blank site.",
+      blankSite: "Blank Site",
+      blankSiteDescription:
+        "Create a blank site using the clean-one theme",
+      couldNotFindUseCase: "Could not find use-case: {useCase}",
+      skeletonsEndpointNotConfigured: "Skeletons endpoint not configured",
+      untitledTemplate: "Untitled Template",
+      customizable: "Customizable",
+      untitledTheme: "Untitled Theme",
+      startWithBlankSiteUsingTheme:
+        "Start with a blank site using this theme",
+      noTemplatesFound: "No Templates Found",
+      failedToLoadData: "Failed to load data: {error}",
+      noSitesFound: "No Sites Found",
+      templateMissingSkeletonUrl:
+        "This template isn't configured yet (missing skeleton URL).",
+      templateInvalidSkeletonUrl:
+        "This template isn't configured yet (invalid skeleton URL).",
+      failedToLoadTemplateSkeleton: "Failed to load template skeleton.",
+      newSite: "New site",
+      importedSite: "Imported site",
+      enterAUrl: "Enter a URL",
+      importInvalidStructure: "Import did not return a valid structure",
+      importFailed: "Import failed",
+      wordDocImportTitle: "Word Doc",
+      wordDocImportDescription:
+        "Import a .docx outline into a new HAX site",
+      wordDocImportTooltip: "DOCX import",
+      pdfImportDescription: "Import a .pdf outline into a new HAX site",
+      pdfImportTooltip: "PDF import",
+      powerpointImportDescription:
+        "Import a .pptx outline into a new HAX site",
+      powerpointImportTooltip: "PPTX import",
+      excelImportDescription:
+        "Import a .xlsx site structure into a new HAX site",
+      excelImportTooltip: "XLSX import",
+      htmlFileImportTitle: "HTML File",
+      htmlFileImportDescription:
+        "Import a .html/.htm outline into a new HAX site",
+      htmlFileImportTooltip: "HTML file import",
+      gitbookImportDescription:
+        "Import a GitBook repo into a new HAX site",
+      gitBasedImport: "Git-based import",
+      gitbookImportPrompt: "URL for the GitBook git repo",
+      haxcmsImportDescription:
+        "Import content from an existing HAXcms site",
+      haxcmsImportTooltip: "HAXcms import",
+      haxcmsImportPrompt: "URL for the HAXcms site",
+      notionImportDescription: "Import a Notion-exported git repo",
+      notionImportTooltip: "Notion import",
+      notionImportPrompt: "URL for the Notion git repo",
+      htmlUrlImportTitle: "HTML URL",
+      htmlUrlImportDescription: "Import remote HTML from a URL into HAX",
+      htmlUrlImportTooltip: "HTML import",
+      htmlUrlImportPrompt: "URL for the HTML content",
+      pressbooksImportDescription: "Import a Pressbooks site URL into HAX",
+      pressbooksImportTooltip: "Pressbooks import",
+      pressbooksImportPrompt: "URL for the Pressbooks site",
+      wordpressPagesImportTitle: "WordPress Pages",
+      wordpressPagesImportDescription:
+        "Import WordPress pages into a new HAX site",
+      wordpressPagesImportTooltip: "WordPress import",
+      wordpressPagesImportPrompt: "URL for the WordPress site",
+      drupalImportDescription: "Import a Drupal site URL into HAX",
+      drupalImportTooltip: "Drupal import",
+      drupalImportPrompt: "URL for the Drupal site",
+      ploneImportDescription: "Import a Plone site URL into HAX",
+      ploneImportTooltip: "Plone import",
+      ploneImportPrompt: "URL for the Plone site",
+      openstaxImportDescription:
+        "Import an OpenStax textbook into a new HAX site",
+      openstaxImportTooltip: "OpenStax import",
+      openstaxImportPrompt: "URL for the OpenStax book",
+      vitepressImportDescription:
+        "Import a VitePress docs repo into a new HAX site",
+      vitepressImportPrompt: "URL for the VitePress git repo",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.windowControllers = new AbortController();
     this.searchTerm = "";
     this.disabled = false;
@@ -910,7 +1037,10 @@ export class AppHaxUseCaseFilter extends LitElement {
 
         await this.openTemplateModal(template);
       } else if (store && store.toast) {
-        store.toast(`Could not find use-case: ${useCaseParam}`, 4000);
+        store.toast(
+          this.t.couldNotFindUseCase.replace("{useCase}", useCaseParam),
+          4000,
+        );
       }
 
       this.__useCaseParamHandled = true;
@@ -1002,11 +1132,11 @@ export class AppHaxUseCaseFilter extends LitElement {
     return html`
       <div class="contentSection">
         <section class="quick-create" aria-labelledby="quick-create-heading">
-          <h2 id="quick-create-heading">Create New Site...</h2>
+          <h2 id="quick-create-heading">${this.t.createNewSiteEllipsis}</h2>
           <div
             class="quick-create-grid"
             role="list"
-            aria-label="Quick create options"
+            aria-label="${this.t.quickCreateOptions}"
           >
             ${quickSkeletons.map(
               (item) => html`
@@ -1027,9 +1157,11 @@ export class AppHaxUseCaseFilter extends LitElement {
             <div role="listitem">
               <app-hax-use-case
                 .source=${""}
-                .title=${isMobile ? "Templates" : "More Templates"}
-                .description=${"Browse all template starters"}
-                .iconImage=${[{ icon: "icons:add", tooltip: "More templates" }]}
+                .title=${isMobile ? this.t.templates : this.t.moreTemplates}
+                .description=${this.t.browseAllTemplateStarters}
+                .iconImage=${[
+                  { icon: "icons:add", tooltip: this.t.moreTemplatesTooltip },
+                ]}
                 ?dark="${this.dark}"
                 @click=${() =>
                   this.scrollToGroup("from-template-heading", "skeleton")}
@@ -1040,12 +1172,12 @@ export class AppHaxUseCaseFilter extends LitElement {
                   <div role="listitem">
                     <app-hax-use-case
                       .source=${""}
-                      .title=${"From Scratch"}
-                      .description=${"Start from a blank site using a theme"}
+                      .title=${this.t.fromScratch}
+                      .description=${this.t.startFromBlankSiteWithTheme}
                       .iconImage=${[
                         {
                           icon: "editor:insert-drive-file",
-                          tooltip: "From scratch",
+                          tooltip: this.t.fromScratchTooltip,
                         },
                       ]}
                       ?dark="${this.dark}"
@@ -1060,12 +1192,12 @@ export class AppHaxUseCaseFilter extends LitElement {
                   <div role="listitem">
                     <app-hax-use-case
                       .source=${""}
-                      .title=${"Import"}
-                      .description=${"Import content from an existing source"}
+                      .title=${this.t.import}
+                      .description=${this.t.importContentFromExistingSource}
                       .iconImage=${[
                         {
                           icon: "icons:cloud-download",
-                          tooltip: "Import content",
+                          tooltip: this.t.importContent,
                         },
                       ]}
                       ?dark="${this.dark}"
@@ -1082,11 +1214,13 @@ export class AppHaxUseCaseFilter extends LitElement {
           <div
             class="filter"
             role="search"
-            aria-label="Filter and search site templates"
+            aria-label="${this.t.filterAndSearchSiteTemplates}"
           >
             <!-- Search bar -->
             <div class="upper-filter">
-              <label for="searchField" class="visually-hidden">Search</label>
+              <label for="searchField" class="visually-hidden"
+                >${this.t.search}</label
+              >
               <slot>
                 <simple-icon-lite
                   class="search-icon"
@@ -1099,13 +1233,12 @@ export class AppHaxUseCaseFilter extends LitElement {
                 @input="${this.handleSearch}"
                 @keydown="${this.testKeydown}"
                 type="text"
-                placeholder="Search"
-                aria-label="Search"
+                placeholder="${this.t.search}"
+                aria-label="${this.t.search}"
                 aria-describedby="search-help"
               />
               <div id="search-help" class="visually-hidden">
-                Type to search for site templates and existing sites. Press
-                Escape to clear.
+                ${this.t.searchHelp}
               </div>
             </div>
             <!-- Sort options for returning sites -->
@@ -1116,7 +1249,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                   e.stopPropagation();
                   this.sortMenuOpen = !this.sortMenuOpen;
                 }}
-                aria-label="Sort options"
+                aria-label="${this.t.sortOptions}"
                 aria-expanded=${this.sortMenuOpen}
                 aria-haspopup="menu"
                 aria-controls="sort-menu"
@@ -1132,42 +1265,42 @@ export class AppHaxUseCaseFilter extends LitElement {
                       id="sort-menu"
                       class="sort-menu"
                       role="menu"
-                      aria-label="Sort options"
+                      aria-label="${this.t.sortOptions}"
                     >
                       <button
                         role="menuitem"
                         class="sort-menu-item"
                         @click=${() => this.handleSortChange("newest")}
                       >
-                        Recently updated
+                        ${this.t.recentlyUpdated}
                       </button>
                       <button
                         role="menuitem"
                         class="sort-menu-item"
                         @click=${() => this.handleSortChange("az")}
                       >
-                        Title A–Z
+                        ${this.t.titleAZ}
                       </button>
                       <button
                         role="menuitem"
                         class="sort-menu-item"
                         @click=${() => this.handleSortChange("za")}
                       >
-                        Title Z–A
+                        ${this.t.titleZA}
                       </button>
                       <button
                         role="menuitem"
                         class="sort-menu-item"
                         @click=${() => this.handleSortChange("oldest")}
                       >
-                        Least recently updated
+                        ${this.t.leastRecentlyUpdated}
                       </button>
                       <button
                         role="menuitem"
                         class="sort-menu-item"
                         @click=${() => this.handleSortChange("theme")}
                       >
-                        Theme name
+                        ${this.t.themeName}
                       </button>
                     </div>
                   `
@@ -1175,7 +1308,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             </div>
 
             <div id="reset-help" class="visually-hidden">
-              Clear all active filters and search terms
+              ${this.t.clearFiltersHelp}
             </div>
           </div>
         </div>
@@ -1187,11 +1320,11 @@ export class AppHaxUseCaseFilter extends LitElement {
             class="returnTo"
             aria-labelledby="return-to-heading"
           >
-            <h2 id="return-to-heading">Return to...</h2>
+            <h2 id="return-to-heading">${this.t.returnTo}</h2>
             <div class="decorative-line"></div>
             <div
               role="region"
-              aria-label="Previously created sites"
+              aria-label="${this.t.previouslyCreatedSites}"
               aria-live="polite"
             >
               <app-hax-search-results
@@ -1210,10 +1343,13 @@ export class AppHaxUseCaseFilter extends LitElement {
             class="startNew"
             aria-labelledby="create-site-heading"
           >
-            <h2 id="create-site-heading">Create New Site</h2>
+            <h2 id="create-site-heading">${this.t.createNewSite}</h2>
             <div class="decorative-line"></div>
             <div id="template-count" class="visually-hidden">
-              ${this.filteredItems.length} options available
+              ${this.t.optionsAvailable.replace(
+                "{count}",
+                this.filteredItems.length,
+              )}
             </div>
 
             ${this.filteredItems.length > 0
@@ -1273,13 +1409,13 @@ export class AppHaxUseCaseFilter extends LitElement {
                         id="from-template-heading"
                         class="template-group-heading"
                       >
-                        From Template
+                        ${this.t.fromTemplate}
                       </h3>
                       ${skeletonEntries.length > 0
                         ? html`<div
                             class="template-results"
                             role="grid"
-                            aria-label="Template-based starters"
+                            aria-label="${this.t.templateBasedStarters}"
                             aria-describedby="template-count"
                           >
                             ${renderEntries(skeletonEntries)}
@@ -1289,7 +1425,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                             class="no-results"
                             aria-live="polite"
                           >
-                            No templates match your current filters.
+                            ${this.t.noTemplatesMatchFilters}
                           </p>`}
                     </div>
 
@@ -1303,13 +1439,13 @@ export class AppHaxUseCaseFilter extends LitElement {
                         id="from-scratch-heading"
                         class="template-group-heading"
                       >
-                        From Scratch Using Theme
+                        ${this.t.fromScratchUsingTheme}
                       </h3>
                       ${blankEntries.length > 0
                         ? html`<div
                             class="template-results"
                             role="grid"
-                            aria-label="Theme-based starters"
+                            aria-label="${this.t.themeBasedStarters}"
                             aria-describedby="template-count"
                           >
                             ${renderEntries(blankEntries)}
@@ -1319,7 +1455,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                             class="no-results"
                             aria-live="polite"
                           >
-                            No themes match your current filters.
+                            ${this.t.noThemesMatchFilters}
                           </p>`}
                     </div>
 
@@ -1335,13 +1471,13 @@ export class AppHaxUseCaseFilter extends LitElement {
                               id="from-existing-heading"
                               class="template-group-heading"
                             >
-                              From Existing Source
+                              ${this.t.fromExistingSource}
                             </h3>
                             ${importEntries.length > 0
                               ? html`<div
                                   class="template-results"
                                   role="grid"
-                                  aria-label="Import options"
+                                  aria-label="${this.t.importOptions}"
                                   aria-describedby="template-count"
                                 >
                                   ${renderEntries(importEntries)}
@@ -1351,7 +1487,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                                   class="no-results"
                                   aria-live="polite"
                                 >
-                                  No import options match your current filters.
+                                  ${this.t.noImportOptionsMatchFilters}
                                 </p>`}
                           </div>
                         `
@@ -1364,23 +1500,22 @@ export class AppHaxUseCaseFilter extends LitElement {
                     class="loading-message"
                     aria-live="polite"
                   >
-                    Loading templates...
+                    ${this.t.loadingTemplates}
                   </p>`
                 : this.items && this.items.length > 0
                   ? html`<p role="status" class="no-results" aria-live="polite">
-                      No templates match your current filters. Reset filters to
-                      see more options.
+                      ${this.t.noTemplatesMatchResetFilters}
                     </p>`
                   : html`
                       <div class="fallback-message">
                         <p role="status" class="no-results" aria-live="polite">
                           ${this.errorMessage ||
-                          "No templates available. You can still create a blank site."}
+                          this.t.noTemplatesAvailable}
                         </p>
                         <app-hax-use-case
                           .source=""
-                          .title="Blank Site"
-                          .description="Create a blank site using the clean-one theme"
+                          .title="${this.t.blankSite}"
+                          .description="${this.t.blankSiteDescription}"
                           .iconImage=${[]}
                           .isSelected=${this.selectedCardIndex === -1}
                           .showContinue=${this.selectedCardIndex === -1}
@@ -1412,10 +1547,10 @@ export class AppHaxUseCaseFilter extends LitElement {
         importType: "docx",
         callback: "@system/importDocx",
         fileType: "docx",
-        useCaseTitle: "Word Doc",
+        useCaseTitle: this.t.wordDocImportTitle,
         useCaseImage: "",
-        useCaseDescription: "Import a .docx outline into a new HAX site",
-        useCaseIcon: [{ icon: "hax:file-docx", tooltip: "DOCX import" }],
+        useCaseDescription: this.t.wordDocImportDescription,
+        useCaseIcon: [{ icon: "hax:file-docx", tooltip: this.t.wordDocImportTooltip }],
         useCaseTag: ["Import", "Docx"],
         demoLink: "#",
       },
@@ -1427,8 +1562,8 @@ export class AppHaxUseCaseFilter extends LitElement {
         fileType: "pdf",
         useCaseTitle: "PDF",
         useCaseImage: "",
-        useCaseDescription: "Import a .pdf outline into a new HAX site",
-        useCaseIcon: [{ icon: "hax:file-pdf", tooltip: "PDF import" }],
+        useCaseDescription: this.t.pdfImportDescription,
+        useCaseIcon: [{ icon: "hax:file-pdf", tooltip: this.t.pdfImportTooltip }],
         useCaseTag: ["Import", "PDF"],
         demoLink: "#",
       },
@@ -1440,8 +1575,8 @@ export class AppHaxUseCaseFilter extends LitElement {
         fileType: "pptx",
         useCaseTitle: "PowerPoint",
         useCaseImage: "",
-        useCaseDescription: "Import a .pptx outline into a new HAX site",
-        useCaseIcon: [{ icon: "hax:file-ppt", tooltip: "PPTX import" }],
+        useCaseDescription: this.t.powerpointImportDescription,
+        useCaseIcon: [{ icon: "hax:file-ppt", tooltip: this.t.powerpointImportTooltip }],
         useCaseTag: ["Import", "PPTX"],
         demoLink: "#",
       },
@@ -1453,8 +1588,8 @@ export class AppHaxUseCaseFilter extends LitElement {
         fileType: "xlsx",
         useCaseTitle: "Excel",
         useCaseImage: "",
-        useCaseDescription: "Import a .xlsx site structure into a new HAX site",
-        useCaseIcon: [{ icon: "hax:file-xls", tooltip: "XLSX import" }],
+        useCaseDescription: this.t.excelImportDescription,
+        useCaseIcon: [{ icon: "hax:file-xls", tooltip: this.t.excelImportTooltip }],
         useCaseTag: ["Import", "XLSX"],
         demoLink: "#",
       },
@@ -1464,10 +1599,10 @@ export class AppHaxUseCaseFilter extends LitElement {
         importType: "html",
         callback: "@system/htmlToSite",
         fileType: "html",
-        useCaseTitle: "HTML File",
+        useCaseTitle: this.t.htmlFileImportTitle,
         useCaseImage: "",
-        useCaseDescription: "Import a .html/.htm outline into a new HAX site",
-        useCaseIcon: [{ icon: "icons:code", tooltip: "HTML file import" }],
+        useCaseDescription: this.t.htmlFileImportDescription,
+        useCaseIcon: [{ icon: "icons:code", tooltip: this.t.htmlFileImportTooltip }],
         useCaseTag: ["Import", "HTML"],
         demoLink: "#",
       },
@@ -1476,13 +1611,13 @@ export class AppHaxUseCaseFilter extends LitElement {
         importKind: "url",
         importType: "gitbook",
         callback: "@system/gitbookToSite",
-        prompt: "URL for the GitBook git repo",
+        prompt: this.t.gitbookImportPrompt,
         param: "repoUrl",
         useCaseTitle: "GitBook",
         useCaseImage: "",
-        useCaseDescription: "Import a GitBook repo into a new HAX site",
+        useCaseDescription: this.t.gitbookImportDescription,
         useCaseIcon: [
-          { icon: "mdi-social:github-circle", tooltip: "Git-based import" },
+          { icon: "mdi-social:github-circle", tooltip: this.t.gitBasedImport },
         ],
         useCaseTag: ["Import", "Git"],
         demoLink: "#",
@@ -1492,12 +1627,12 @@ export class AppHaxUseCaseFilter extends LitElement {
         importKind: "url",
         importType: "haxcms",
         callback: "@system/haxcmsToSite",
-        prompt: "URL for the HAXcms site",
+        prompt: this.t.haxcmsImportPrompt,
         param: "repoUrl",
         useCaseTitle: "HAXcms",
         useCaseImage: "",
-        useCaseDescription: "Import content from an existing HAXcms site",
-        useCaseIcon: [{ icon: "hax:hax2022", tooltip: "HAXcms import" }],
+        useCaseDescription: this.t.haxcmsImportDescription,
+        useCaseIcon: [{ icon: "hax:hax2022", tooltip: this.t.haxcmsImportTooltip }],
         useCaseTag: ["Import", "HAXcms"],
         demoLink: "#",
       },
@@ -1506,12 +1641,12 @@ export class AppHaxUseCaseFilter extends LitElement {
         importKind: "url",
         importType: "notion",
         callback: "@system/notionToSite",
-        prompt: "URL for the Notion git repo",
+        prompt: this.t.notionImportPrompt,
         param: "repoUrl",
         useCaseTitle: "Notion",
         useCaseImage: "",
-        useCaseDescription: "Import a Notion-exported git repo",
-        useCaseIcon: [{ icon: "book", tooltip: "Notion import" }],
+        useCaseDescription: this.t.notionImportDescription,
+        useCaseIcon: [{ icon: "book", tooltip: this.t.notionImportTooltip }],
         useCaseTag: ["Import", "Notion"],
         demoLink: "#",
       },
@@ -1520,12 +1655,12 @@ export class AppHaxUseCaseFilter extends LitElement {
         importKind: "url",
         importType: "html",
         callback: "@system/htmlToSite",
-        prompt: "URL for the HTML content",
+        prompt: this.t.htmlUrlImportPrompt,
         param: "repoUrl",
-        useCaseTitle: "HTML URL",
+        useCaseTitle: this.t.htmlUrlImportTitle,
         useCaseImage: "",
-        useCaseDescription: "Import remote HTML from a URL into HAX",
-        useCaseIcon: [{ icon: "icons:code", tooltip: "HTML import" }],
+        useCaseDescription: this.t.htmlUrlImportDescription,
+        useCaseIcon: [{ icon: "icons:code", tooltip: this.t.htmlUrlImportTooltip }],
         useCaseTag: ["Import", "HTML"],
         demoLink: "#",
       },
@@ -1534,12 +1669,12 @@ export class AppHaxUseCaseFilter extends LitElement {
         importKind: "url",
         importType: "pressbooks",
         callback: "@system/pressbooksToSite",
-        prompt: "URL for the Pressbooks site",
+        prompt: this.t.pressbooksImportPrompt,
         param: "repoUrl",
         useCaseTitle: "Pressbooks",
         useCaseImage: "",
-        useCaseDescription: "Import a Pressbooks site URL into HAX",
-        useCaseIcon: [{ icon: "hax:wordpress", tooltip: "Pressbooks import" }],
+        useCaseDescription: this.t.pressbooksImportDescription,
+        useCaseIcon: [{ icon: "hax:wordpress", tooltip: this.t.pressbooksImportTooltip }],
         useCaseTag: ["Import", "Pressbooks"],
         demoLink: "#",
       },
@@ -1548,12 +1683,12 @@ export class AppHaxUseCaseFilter extends LitElement {
         importKind: "url",
         importType: "wordpress",
         callback: "@system/wordpressToSite",
-        prompt: "URL for the WordPress site",
+        prompt: this.t.wordpressPagesImportPrompt,
         param: "repoUrl",
-        useCaseTitle: "WordPress Pages",
+        useCaseTitle: this.t.wordpressPagesImportTitle,
         useCaseImage: "",
-        useCaseDescription: "Import WordPress pages into a new HAX site",
-        useCaseIcon: [{ icon: "hax:wordpress", tooltip: "WordPress import" }],
+        useCaseDescription: this.t.wordpressPagesImportDescription,
+        useCaseIcon: [{ icon: "hax:wordpress", tooltip: this.t.wordpressPagesImportTooltip }],
         useCaseTag: ["Import", "WordPress"],
         demoLink: "#",
       },
@@ -1562,12 +1697,12 @@ export class AppHaxUseCaseFilter extends LitElement {
         importKind: "url",
         importType: "drupal",
         callback: "@system/drupalToSite",
-        prompt: "URL for the Drupal site",
+        prompt: this.t.drupalImportPrompt,
         param: "repoUrl",
         useCaseTitle: "Drupal",
         useCaseImage: "",
-        useCaseDescription: "Import a Drupal site URL into HAX",
-        useCaseIcon: [{ icon: "hax:drupal", tooltip: "Drupal import" }],
+        useCaseDescription: this.t.drupalImportDescription,
+        useCaseIcon: [{ icon: "hax:drupal", tooltip: this.t.drupalImportTooltip }],
         useCaseTag: ["Import", "Drupal"],
         demoLink: "#",
       },
@@ -1576,13 +1711,13 @@ export class AppHaxUseCaseFilter extends LitElement {
         importKind: "url",
         importType: "plone",
         callback: "@system/ploneToSite",
-        prompt: "URL for the Plone site",
+        prompt: this.t.ploneImportPrompt,
         param: "repoUrl",
         useCaseTitle: "Plone",
         useCaseImage: "",
-        useCaseDescription: "Import a Plone site URL into HAX",
+        useCaseDescription: this.t.ploneImportDescription,
         useCaseIcon: [
-          { icon: "communication:business", tooltip: "Plone import" },
+          { icon: "communication:business", tooltip: this.t.ploneImportTooltip },
         ],
         useCaseTag: ["Import", "Plone"],
         demoLink: "#",
@@ -1592,12 +1727,12 @@ export class AppHaxUseCaseFilter extends LitElement {
         importKind: "url",
         importType: "openstax",
         callback: "@system/openstaxToSite",
-        prompt: "URL for the OpenStax book",
+        prompt: this.t.openstaxImportPrompt,
         param: "repoUrl",
         useCaseTitle: "OpenStax",
         useCaseImage: "",
-        useCaseDescription: "Import an OpenStax textbook into a new HAX site",
-        useCaseIcon: [{ icon: "book", tooltip: "OpenStax import" }],
+        useCaseDescription: this.t.openstaxImportDescription,
+        useCaseIcon: [{ icon: "book", tooltip: this.t.openstaxImportTooltip }],
         useCaseTag: ["Import", "OpenStax"],
         demoLink: "#",
       },
@@ -1606,13 +1741,13 @@ export class AppHaxUseCaseFilter extends LitElement {
         importKind: "url",
         importType: "vitepress",
         callback: "@system/vitepressToSite",
-        prompt: "URL for the VitePress git repo",
+        prompt: this.t.vitepressImportPrompt,
         param: "repoUrl",
         useCaseTitle: "VitePress",
         useCaseImage: "",
-        useCaseDescription: "Import a VitePress docs repo into a new HAX site",
+        useCaseDescription: this.t.vitepressImportDescription,
         useCaseIcon: [
-          { icon: "mdi-social:github-circle", tooltip: "Git-based import" },
+          { icon: "mdi-social:github-circle", tooltip: this.t.gitBasedImport },
         ],
         useCaseTag: ["Import", "VitePress"],
         demoLink: "#",
@@ -1933,7 +2068,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         : false;
     // Require API support for skeleton listing
     if (!supportsSkeletonsList) {
-      this.errorMessage = "Skeletons endpoint not configured";
+      this.errorMessage = this.t.skeletonsEndpointNotConfigured;
       this.loading = false;
       return;
     }
@@ -2055,7 +2190,7 @@ export class AppHaxUseCaseFilter extends LitElement {
               machineName: machineName,
               hidden: isHidden,
               terrible: isTerrible,
-              useCaseTitle: item.title || "Untitled Template",
+              useCaseTitle: item.title || this.t.untitledTemplate,
               useCaseImage: thumbnailPath || "",
               useCaseDescription: item.description || "",
               useCaseIcon: icons,
@@ -2121,7 +2256,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             }
 
             // Simple icon array for blank themes
-            const icons = [{ icon: "icons:build", tooltip: "Customizable" }];
+            const icons = [{ icon: "icons:build", tooltip: this.t.customizable }];
 
             // Resolve thumbnail path using import.meta.url navigation
             let thumbnailPath = theme.thumbnail || "";
@@ -2143,10 +2278,10 @@ export class AppHaxUseCaseFilter extends LitElement {
               themeElement: themeElement,
               hidden: isHidden,
               terrible: isTerrible,
-              useCaseTitle: theme.name || "Untitled Theme",
+              useCaseTitle: theme.name || this.t.untitledTheme,
               useCaseImage: thumbnailPath || "",
               useCaseDescription:
-                theme.description || "Start with a blank site using this theme",
+                theme.description || this.t.startWithBlankSiteUsingTheme,
               useCaseIcon: icons,
               useCaseTag: tags,
               demoLink: `https://playground.hax.cloud/site.html?theme=${themeMachineName}`,
@@ -2183,13 +2318,16 @@ export class AppHaxUseCaseFilter extends LitElement {
         this.filters = Array.from(this.allFilters).sort(); // Set AFTER all visible items
 
         if (this.items.length === 0 && !this.errorMessage) {
-          this.errorMessage = "No Templates Found";
+          this.errorMessage = this.t.noTemplatesFound;
         }
 
         this.resetFilters();
       })
       .catch((error) => {
-        this.errorMessage = `Failed to load data: ${error.message}`;
+        this.errorMessage = this.t.failedToLoadData.replace(
+          "{error}",
+          error.message,
+        );
         this.items = [];
         this.filters = [];
       })
@@ -2297,13 +2435,16 @@ export class AppHaxUseCaseFilter extends LitElement {
       this.filteredSites = [...siteItems];
 
       if (siteItems.length === 0 && !this.errorMessage) {
-        this.errorMessage = "No Sites Found";
+        this.errorMessage = this.t.noSitesFound;
       }
 
       this.requestUpdate();
       this.loading = false;
     } catch (error) {
-      this.errorMessage = `Failed to load data: ${error.message}`;
+      this.errorMessage = this.t.failedToLoadData.replace(
+          "{error}",
+          error.message,
+        );
       this.returningSites = [];
       this.filteredSites = [];
       this.filters = [];
@@ -2352,8 +2493,8 @@ export class AppHaxUseCaseFilter extends LitElement {
       // Keep URL in sync for link sharing
       this._updateUrlQueryParam("use-case", "blank-site");
 
-      modal.title = "Blank Site";
-      modal.description = "Create a blank site using the clean-one theme";
+      modal.title = this.t.blankSite;
+      modal.description = this.t.blankSiteDescription;
       modal.source = "";
       modal.template = "Blank Site";
       modal.themeElement = "clean-one";
@@ -2478,7 +2619,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       }
       if (store && store.toast) {
         store.toast(
-          "This template isn't configured yet (missing skeleton URL).",
+          this.t.templateMissingSkeletonUrl,
           4000,
         );
       }
@@ -2507,7 +2648,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           }
           if (store && store.toast) {
             store.toast(
-              "This template isn't configured yet (invalid skeleton URL).",
+              this.t.templateInvalidSkeletonUrl,
               4000,
             );
           }
@@ -2607,7 +2748,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             store.appEl.playSound("error");
           }
           if (store && store.toast) {
-            store.toast("Failed to load template skeleton.", 4000);
+            store.toast(this.t.failedToLoadTemplateSkeleton, 4000);
           }
           console.warn(`Failed to load skeleton from ${safeUrl}`);
           modal.themeElement = "clean-one"; // fallback
@@ -2618,7 +2759,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           store.appEl.playSound("error");
         }
         if (store && store.toast) {
-          store.toast("Failed to load template skeleton.", 4000);
+          store.toast(this.t.failedToLoadTemplateSkeleton, 4000);
         }
         console.warn("Error loading skeleton:", error);
         modal.themeElement = "clean-one"; // fallback
@@ -2677,7 +2818,8 @@ export class AppHaxUseCaseFilter extends LitElement {
     }
 
     // Prepopulate the site name from the selected template's title
-    modal.siteName = selectedTemplate.useCaseTitle || modal.title || "New site";
+    modal.siteName =
+      selectedTemplate.useCaseTitle || modal.title || this.t.newSite;
 
     // Open the modal
     modal.openModal();
@@ -2685,13 +2827,13 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   _normalizeImportedName(rawName) {
     if (!rawName || typeof rawName !== "string") {
-      return "Imported site";
+      return this.t.importedSite;
     }
     // Remove file extension (if present), normalize separators, and trim.
     let name = rawName.replace(/\.[^/.]+$/, "");
     name = name.replace(/[_-]+/g, " ");
     name = name.replace(/\s+/g, " ").trim();
-    return name || "Imported site";
+    return name || this.t.importedSite;
   }
 
   async processImportTemplate(selectedTemplate, modal) {
@@ -2735,7 +2877,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           formData,
         );
       } else if (selectedTemplate.importKind === "url") {
-        const promptText = selectedTemplate.prompt || "Enter a URL";
+        const promptText = selectedTemplate.prompt || this.t.enterAUrl;
         const promptUrl = globalThis.prompt(promptText);
         if (!promptUrl) {
           return;
@@ -2797,7 +2939,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         store.clearProcessingVisual();
         if (store && store.toast) {
-          store.toast("Import did not return a valid structure", 3000);
+          store.toast(this.t.importInvalidStructure, 3000);
         }
         console.warn("Import did not return a valid structure:", response);
       }
@@ -2807,7 +2949,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       }
       store.clearProcessingVisual();
       if (store && store.toast) {
-        store.toast("Import failed", 3000);
+        store.toast(this.t.importFailed, 3000);
       }
       console.warn("Import error:", error);
     } finally {

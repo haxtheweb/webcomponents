@@ -590,6 +590,14 @@ class BootstrapTheme extends HAXCMSThemeParts(
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      siteMenu: "Site menu",
+      siteLogo: "{title} site logo",
+      searchResults: "Search results",
+    };
     this._registerBootstrapDesignSystem();
     this.HAXCMSThemeSettings.autoScroll = true;
     this.menuOpen = true;
@@ -643,14 +651,19 @@ class BootstrapTheme extends HAXCMSThemeParts(
   render() {
     return html`
       <div class="site ">
-        <a class="skip-link" href="#contentcontainer">Skip to content</a>
-        <div class="menu-outline" role="navigation" aria-label="Site menu">
+        <a class="skip-link" href="#contentcontainer"
+          >${this.t.skipToContent}</a
+        >
+        <div class="menu-outline" role="navigation" aria-label="${this.t.siteMenu}">
           <div class="site-title" part="site-title">
             ${this.__siteImage
               ? html`<img
                   class="site-img"
                   src="${this.__siteImage}"
-                  alt="${this.__siteTitle} site logo"
+                  alt="${this.t.siteLogo.replace(
+                    "{title}",
+                    this.__siteTitle || "",
+                  )}"
                 />`
               : ``}
             ${this.__siteTitle ? html`<h4>${this.__siteTitle}</h4>` : ``}
@@ -700,7 +713,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                       style="${this.searchTerm === "" ? "display: none;" : ""}"
                       @search-item-selected=${this.searchItemSelected}
                       role="search"
-                      aria-label="Search results"
+                      aria-label="${this.t.searchResults}"
                     ></site-search>
                   </section>
                   <section

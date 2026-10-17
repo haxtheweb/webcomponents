@@ -8,6 +8,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `csv-render`
@@ -19,7 +20,7 @@ import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/I
  * @demo demo/index.html
  * @element csv-render
  */
-class CsvRender extends IntersectionObserverMixin(DDD) {
+class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
   /**
    * LitElement style construction
    */
@@ -130,6 +131,15 @@ class CsvRender extends IntersectionObserverMixin(DDD) {
     this.tableHeadings = [];
     this.tableData = "";
     this.debounceDelay = 500;
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      downloadTableData: "Download table data",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
   }
   /**
    * LitElement life cycle - property about to change; set state needed
@@ -200,17 +210,17 @@ class CsvRender extends IntersectionObserverMixin(DDD) {
         href="${this.dataSource}"
         id="download"
         tabindex="-1"
-        title="Download table data"
+        title="${this.t.downloadTableData}"
       >
         <simple-icon-button-lite
           id="ficon"
           aria-labelledby="download"
-          label="Download table data"
+          label="${this.t.downloadTableData}"
           icon="file-download"
         ></simple-icon-button-lite>
       </a>
       <simple-tooltip for="ficon" offset="14" position="top"
-        >Download table data</simple-tooltip
+        >${this.t.downloadTableData}</simple-tooltip
       >
       <table class="table" summary="${this.summary}">
         ${this.caption

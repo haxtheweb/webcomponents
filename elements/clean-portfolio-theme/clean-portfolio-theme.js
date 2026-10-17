@@ -12,6 +12,7 @@ import "@haxtheweb/scroll-button/scroll-button.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   DDDVariables,
   DDDPaletteStyles,
@@ -80,6 +81,28 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      siteHome: "Site home",
+      mainNavigation: "Main navigation",
+      toggleMenu: "Toggle menu",
+      changeTheme: "Change theme",
+      breadcrumb: "Breadcrumb",
+      tagFilter: "Tag filter:",
+      all: "All",
+      pageNumberOfTotal: "Page number: {current} of {total}",
+      siteGenerated: "Site generated: {date}",
+      copyright: "Copyright: {year} {author}",
+      viewContentByTag: "View Content by Tag",
+      licenseGraphic: "{license} graphic",
+    };
+    // no I18NMixin in this class chain, so register with the store directly
+    I18NManagerStore.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.dataPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette") || "";
     this.selectedTag = "";
     this.activeLayout = "text"; // text, media, listing
@@ -1383,11 +1406,11 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   // Lit render the HTML
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <header>
         <div class="header-inner">
-          <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" id="site-title" aria-label="${this.siteTitle || 'Site home'}" @click="${this.testEditMode}" href="${this.homeLink}">${this.siteTitle}</a>
-          <nav aria-label="Main navigation">
+          <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" id="site-title" aria-label="${this.siteTitle || this.t.siteHome}" @click="${this.testEditMode}" href="${this.homeLink}">${this.siteTitle}</a>
+          <nav aria-label="${this.t.mainNavigation}">
             ${this.topItems.map(
                 (item) => html`
                   <a
@@ -1405,7 +1428,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           ${this.menuOverflow.length > 0
             ? html`
               <div class="mobile-menu-wrapper">
-                <button type="button" class=${this.menuOpen ? 'close' : ''} aria-label="Toggle menu" aria-expanded="${this.menuOpen ? 'true' : 'false'}" aria-controls="overflow-menu" @click="${() => this.menuOpen = !this.menuOpen}">
+                <button type="button" class=${this.menuOpen ? 'close' : ''} aria-label="${this.t.toggleMenu}" aria-expanded="${this.menuOpen ? 'true' : 'false'}" aria-controls="overflow-menu" @click="${() => this.menuOpen = !this.menuOpen}">
                   <div class="navicon"></div>
                 </button>
                 <ul id="overflow-menu" class="hidden-links ${!this.menuOpen ? 'hidden' : ''}">
@@ -1429,11 +1452,11 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         </div>
         ${this.menuOverflow.length == 0
             ? html`
-              <simple-icon-button-lite title="Change theme" label="Change theme" icon="image:style" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
+              <simple-icon-button-lite title="${this.t.changeTheme}" label="${this.t.changeTheme}" icon="image:style" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
             ` : ''}
       </header>
       
-      <nav class="breadcrumb" aria-label="Breadcrumb">
+      <nav class="breadcrumb" aria-label="${this.t.breadcrumb}">
         ${this.activeParent
           ? html`
             <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" href=${this.activeParent.slug} @click="${this.testEditMode}">
@@ -1457,9 +1480,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                 <!-- Render select for filtering tags (only appears if >1 tag OR 1 tag and items with no tag) -->
                 ${(this.categoryTags.length > 1 || (this.categoryTags.length > 0 && this.items.some(item => normalizeTags(toJS(item.metadata && item.metadata.tags)).length === 0)))
                   ? html`
-                    <label class="list-filter-label" for="listing-filter">Tag filter:</label>
+                    <label class="list-filter-label" for="listing-filter">${this.t.tagFilter}</label>
                     <select ?disabled="${this.editMode}" id="listing-filter" @change=${(e) => this.selectedTag = e.target.value}>
-                      <option value="" ?selected="${this.selectedTag === ''}">All</option>
+                      <option value="" ?selected="${this.selectedTag === ''}">${this.t.all}</option>
                       ${this.categoryTags.map(
                         (tag) => html`
                           <option value="${tag}" ?selected="${this.selectedTag === tag}">
@@ -1525,10 +1548,10 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       <footer>
         <div> 
-          <div>Page number: ${this.pageCurrent} of ${this.pageTotal}</div>
-          <div>Site generated: ${this.lastUpdated}</div>
-          <div>Copyright: ${this.copyrightYear} ${store.manifest && store.manifest.author ? store.manifest.author : ""}</div>
-          <div><a class="footer-link" @click="${this.testEditMode}" tabindex="${this.editMode ? '-1' : '0'}" href="x/displays/tags" ?disabled="${this.editMode}">View Content by Tag</a></div>
+          <div>${this.t.pageNumberOfTotal.replace("{current}", this.pageCurrent ?? "").replace("{total}", this.pageTotal ?? "")}</div>
+          <div>${this.t.siteGenerated.replace("{date}", this.lastUpdated)}</div>
+          <div>${this.t.copyright.replace("{year}", this.copyrightYear).replace("{author}", store.manifest && store.manifest.author ? store.manifest.author : "")}</div>
+          <div><a class="footer-link" @click="${this.testEditMode}" tabindex="${this.editMode ? '-1' : '0'}" href="x/displays/tags" ?disabled="${this.editMode}">${this.t.viewContentByTag}</a></div>
         </div>
         <div
           class="license-body"
@@ -1547,13 +1570,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
-                    alt="${this.licenseName} graphic"
+                    alt="${this.t.licenseGraphic.replace("{license}", this.licenseName)}"
                     src="${this.licenseImage}"
                   />
                 </a>
               ` : ``}
         </div>
-        <simple-icon-button-lite icon="image:style" title="Change theme" label="Change theme" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
+        <simple-icon-button-lite icon="image:style" title="${this.t.changeTheme}" label="${this.t.changeTheme}" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
         <scroll-button @click="${(e) => e.currentTarget.blur()}"></scroll-button>
       </footer>
     `;

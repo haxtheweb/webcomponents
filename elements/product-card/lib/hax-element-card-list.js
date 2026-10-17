@@ -3,7 +3,8 @@ import { haxElementToNode } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/hexagon-loader/hexagon-loader.js";
 import "../product-card.js";
-class HAXElementCardList extends LitElement {
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+class HAXElementCardList extends I18NMixin(LitElement) {
   constructor() {
     super();
     this.showCardList = false;
@@ -12,6 +13,24 @@ class HAXElementCardList extends LitElement {
     this.value = {};
     this.cols = 2;
     this._layout = "1-1-1";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      scanningRegistry: "Scanning Web Component Registry for more HAX elements..",
+      enabled: "Enabled",
+      disabled: "Disabled",
+      details: "Details",
+      tags: "Tags:",
+      tagName: "Tag name:",
+      developerUsage: "Developer usage:",
+      demo: "Demo",
+      popUpDemo: "Pop up demo",
+      demoOf: "Demo of {tag}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     globalThis.SimpleModal.requestAvailability();
   }
   static get tag() {
@@ -116,9 +135,7 @@ class HAXElementCardList extends LitElement {
       ? ``
       : html`
           <p class="loaderText" ?hidden="${!this.loading}">
-            <strong
-              >Scanning Web Component Registry for more HAX elements..</strong
-            ><hexagon-loader
+            <strong>${this.t.scanningRegistry}</strong><hexagon-loader
               item-count="4"
               ?loading="${this.loading}"
               size="small"
@@ -146,7 +163,7 @@ class HAXElementCardList extends LitElement {
                 >
                   <label slot="card-header">
                     <span class="sr-only"
-                      >${el.status ? `Enabled` : `Disabled`}</span
+                      >${el.status ? this.t.enabled : this.t.disabled}</span
                     >
                     <input
                       class="checkbox"
@@ -155,17 +172,19 @@ class HAXElementCardList extends LitElement {
                       @change="${(e) => this.elementStatusChange(el)}"
                     />
                   </label>
-                  <div slot="details-collapse-header">Details</div>
+                  <div slot="details-collapse-header">${this.t.details}</div>
                   <div slot="details-collapse-content">
                     <ul>
                       <li>
-                        <strong>Tags:</strong> ${el.schema.gizmo.tags.map(
+                        <strong>${this.t.tags}</strong> ${el.schema.gizmo.tags.map(
                           (group) => html` ${group}, `,
                         )}
                       </li>
-                      <li><strong>Tag name:</strong> <code>${el.tag}</code></li>
                       <li>
-                        <strong>Developer usage:</strong>
+                        <strong>${this.t.tagName}</strong> <code>${el.tag}</code>
+                      </li>
+                      <li>
+                        <strong>${this.t.developerUsage}</strong>
                         <code>import "${el.file}";</code>
                       </li>
                       ${el.schema.gizmo.meta
@@ -182,7 +201,7 @@ class HAXElementCardList extends LitElement {
                         : ``}
                     </ul>
                   </div>
-                  <div slot="demo-collapse-header">Demo</div>
+                  <div slot="demo-collapse-header">${this.t.demo}</div>
                   <div slot="demo-collapse-content">
                     ${el.schema.demoSchema && el.showDemo
                       ? html`
@@ -193,7 +212,7 @@ class HAXElementCardList extends LitElement {
                                 outlined
                                 @click="${this._viewDemo}"
                               >
-                                Pop up demo
+                                ${this.t.popUpDemo}
                               </button>
                               <div class="demo">
                                 ${this._haxElementToNode(demoItem)}
@@ -237,7 +256,10 @@ class HAXElementCardList extends LitElement {
           composed: true,
           cancelable: false,
           detail: {
-            title: "Demo of " + e.target.getAttribute("data-tag"),
+            title: this.t.demoOf.replace(
+              "{tag}",
+              e.target.getAttribute("data-tag"),
+            ),
             styles: {
               "--simple-modal-width": "80vw",
               "--simple-modal-max-width": "80vw",

@@ -80,6 +80,7 @@ class GradeBook extends UIRenderPieces(
     this.loading = false;
     // translatable text
     this.t = {
+      ...this.t,
       csvURL: "CSV URL",
       points: "Points",
       criteria: "Criteria",
@@ -119,6 +120,20 @@ class GradeBook extends UIRenderPieces(
       sourceData: "Source data",
       pasteValidJSONHere: "Paste valid JSON here",
       loadingFilePleaseWait: "LOADING FILE PLEASE WAIT..",
+      fileSystem: "File system",
+      googleDocs: "Google docs",
+      urlEndpointJSON: "URL endpoint (JSON)",
+      jsonDataBlob: "JSON data blob",
+      studentAssignment: "{student}'s assignment {assignment}",
+      additionalCriteriaFeedback: "Additional {criteria} feedback",
+      outOfPoints: "/ {points} pts",
+      downloadPDF: "Download PDF",
+      feedbackReport: "Feedback report",
+      criteriaDetails: "Criteria details",
+      yourFeedback: "Your feedback",
+      additionalCriteriaFeedbackHeading: "Additional Criteria feedback",
+      yourTotalScore: "Your total Score",
+      scoreOutOfPoints: "{score} / {points} pts",
     };
     this.registerLocalization({
       context: this,
@@ -1494,17 +1509,17 @@ class GradeBook extends UIRenderPieces(
                 value="filesystem"
                 ?selected="${this.source === "filesystem"}"
               >
-                File system
+                ${this.t.fileSystem}
               </option>`
             : nothing}
           <option
             value="googledocs"
             ?selected="${this.source === "googledocs"}"
           >
-            Google docs
+            ${this.t.googleDocs}
           </option>
-          <option value="url">URL endpoint (JSON)</option>
-          <option value="json">JSON data blob</option>
+          <option value="url">${this.t.urlEndpointJSON}</option>
+          <option value="json">${this.t.jsonDataBlob}</option>
         </select>
         <simple-icon-button-lite
           @click="${this.loadFromSource}"
@@ -1653,7 +1668,9 @@ class GradeBook extends UIRenderPieces(
                             this.activeAssignment === h}"
                           >
                             <button
-                              aria-label="${s.student}'s assignment ${a.name}"
+                              aria-label="${this.t.studentAssignment
+                                .replace("{student}", s.student)
+                                .replace("{assignment}", a.name)}"
                               data-student="${i}"
                               data-assignment="${h}"
                             >
@@ -1773,7 +1790,12 @@ class GradeBook extends UIRenderPieces(
                             </tbody>
                           </table>
                         </editable-table-display>
-                        <h4>Additional ${rubric.criteria} feedback</h4>
+                        <h4>
+                          ${this.t.additionalCriteriaFeedback.replace(
+                            "{criteria}",
+                            rubric.criteria,
+                          )}
+                        </h4>
                         <simple-fields-field
                           type="textarea"
                           data-rubric-written
@@ -1783,7 +1805,7 @@ class GradeBook extends UIRenderPieces(
                     )}
                     <div class="student-feedback-wrap">
                       <div class="student-feedback-text">
-                        <h3 class="heading">Overall feedback</h3>
+                        <h3 class="heading">${this.t.overallFeedback}</h3>
                         <simple-fields-field
                           type="textarea"
                           data-criteria="overall"
@@ -1805,11 +1827,11 @@ class GradeBook extends UIRenderPieces(
                         ></simple-fields-field>
                         ${this.database.assignments &&
                         this.database.assignments[this.activeAssignment]
-                          ? html`/
-                              ${this.database.assignments[
-                                this.activeAssignment
-                              ].points}
-                              pts
+                          ? html`${this.t.outOfPoints.replace(
+                                "{points}",
+                                this.database.assignments[this.activeAssignment]
+                                  .points,
+                              )}
                               <letter-grade
                                 style="margin:-8px 0 0 16px;"
                                 total="${this.database.assignments[
@@ -1844,10 +1866,10 @@ class GradeBook extends UIRenderPieces(
         >
           <simple-icon-button-lite
             @click="${this.studentreportClick}"
-            title="Download PDF"
+            title="${this.t.downloadPDF}"
             icon="image:picture-as-pdf"
           >
-            <span class="hide-900" value="prev">Download PDF</span>
+            <span class="hide-900" value="prev">${this.t.downloadPDF}</span>
           </simple-icon-button-lite>
           <div id="studentreport">
             ${!this.loading &&
@@ -1861,7 +1883,7 @@ class GradeBook extends UIRenderPieces(
                       .points}"
                     score="${this.totalScore}"
                   ></letter-grade>
-                  <h2>Feedback report</h2>
+                  <h2>${this.t.feedbackReport}</h2>
                   <div class="student-report-wrap">
                     <a11y-collapse-group
                       heading-button
@@ -1895,10 +1917,10 @@ class GradeBook extends UIRenderPieces(
                                         ].points,
                                     )}
                                   </div>
-                                  <h3>Criteria details</h3>
+                                  <h3>${this.t.criteriaDetails}</h3>
                                 </div>
                                 <p>${rubric.description}</p>
-                                <h3>Your feedback</h3>
+                                <h3>${this.t.yourFeedback}</h3>
                                 <ul>
                                   ${rubric.qualitative.map(
                                     (cat) => html`
@@ -1939,7 +1961,9 @@ class GradeBook extends UIRenderPieces(
                                     `,
                                   )}
                                 </ul>
-                                <h3>Additional Criteria feedback</h3>
+                                <h3>
+                                  ${this.t.additionalCriteriaFeedbackHeading}
+                                </h3>
                                 <p>
                                   ${this.getCriteriaFeedback(rubric.criteria)}
                                 </p>
@@ -1955,12 +1979,15 @@ class GradeBook extends UIRenderPieces(
                         </div>
                         <div slot="content">
                           <p>${this.getCriteriaFeedback("overall")}</p>
-                          <h2>Your total Score</h2>
+                          <h2>${this.t.yourTotalScore}</h2>
                           <div class="score-display">
-                            ${this.totalScore} /
-                            ${this.database.assignments[this.activeAssignment]
-                              .points}
-                            pts
+                            ${this.t.scoreOutOfPoints
+                              .replace("{score}", this.totalScore)
+                              .replace(
+                                "{points}",
+                                this.database.assignments[this.activeAssignment]
+                                  .points,
+                              )}
                           </div>
                         </div>
                       </a11y-collapse>

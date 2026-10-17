@@ -1,13 +1,14 @@
 import { html, css } from "lit";
 import { toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { store } from "../haxcms-site-store.js";
 import { waitForHAXCMSSiteApiRegistryReady } from "../utils/haxcms-site-api-registry.js";
 import "../haxcms-theme-picker.js";
 import "@haxtheweb/d-d-d/lib/hax-palette-picker.js";
 
-class HAXCMSThemePreviewPanel extends DDD {
+class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-theme-preview-panel";
   }
@@ -46,6 +47,25 @@ class HAXCMSThemePreviewPanel extends DDD {
     this._themesRegistry = {};
     this.__snapshotThemeData = null;
     this.__windowKeyHandler = this._windowKeydown.bind(this);
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      showThemePreview: "Show Theme Preview",
+      hideThemePreview: "Hide Theme Preview",
+      themePreviewPanel: "Theme Preview Panel",
+      themePreview: "Theme Preview",
+      themePreviewDescription:
+        "Try a theme and palette temporarily while you browse. Use Cancel to restore your original appearance.",
+      loadingThemes: "Loading themes...",
+      theme: "Theme",
+      palette: "Palette",
+      cancel: "Cancel",
+      openAppearanceSettings: "Open Appearance Settings",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
   }
 
   connectedCallback() {
@@ -740,24 +760,21 @@ class HAXCMSThemePreviewPanel extends DDD {
         @click=${this._toggleCollapsed}
         aria-expanded="${this.collapsed ? "false" : "true"}"
       >
-        ${this.collapsed ? "Show Theme Preview" : "Hide Theme Preview"}
+        ${this.collapsed ? this.t.showThemePreview : this.t.hideThemePreview}
       </button>
-      <section class="shell" aria-label="Theme Preview Panel">
+      <section class="shell" aria-label="${this.t.themePreviewPanel}">
         <header class="header">
-          <h2 class="title">Theme Preview</h2>
-          <p class="description">
-            Try a theme and palette temporarily while you browse. Use Cancel to
-            restore your original appearance.
-          </p>
+          <h2 class="title">${this.t.themePreview}</h2>
+          <p class="description">${this.t.themePreviewDescription}</p>
         </header>
         <div class="content">
           <div class="picker-column">
             ${this.loadingThemes
-              ? html`<p class="status">Loading themes...</p>`
+              ? html`<p class="status">${this.t.loadingThemes}</p>`
               : html`<haxcms-theme-picker
                   class="theme-picker"
                   mini
-                  .label=${"Theme"}
+                  .label=${this.t.theme}
                   .value=${this.selectedTheme}
                   .showStatusFlags=${false}
                   .options=${this.themeOptions}
@@ -766,9 +783,9 @@ class HAXCMSThemePreviewPanel extends DDD {
                 ></haxcms-theme-picker>`}
           </div>
           <div class="picker-column">
-            <h3 class="picker-heading">Palette</h3>
+            <h3 class="picker-heading">${this.t.palette}</h3>
             <hax-palette-picker
-              .label=${"Palette"}
+              .label=${this.t.palette}
               .value=${this.selectedPalette}
               .activeValue=${this.activePalette}
               .showStatusFlags=${true}
@@ -783,14 +800,14 @@ class HAXCMSThemePreviewPanel extends DDD {
             type="button"
             @click=${this._cancelPreview}
           >
-            Cancel
+            ${this.t.cancel}
           </button>
           <button
             class="action primary"
             type="button"
             @click=${this._openAdminTheme}
           >
-            Open Appearance Settings
+            ${this.t.openAppearanceSettings}
           </button>
         </div>
       </section>

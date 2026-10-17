@@ -4,13 +4,25 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { autorun, toJS } from "mobx";
 import { css, html } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
+class SiteMenuContent extends HAXCMSThemeParts(I18NMixin(PageContentsMenu)) {
   static get tag() {
     return "site-menu-content";
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      video: "Video",
+      audio: "Audio",
+      backToTop: "Back to top",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.hierarchyTags = [
       "h1",
       "h2",
@@ -23,8 +35,8 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
       "audio-player",
     ];
     this.fallbackText = {
-      "video-player": "Video",
-      "audio-player": "Audio",
+      "video-player": this.t.video,
+      "audio-player": this.t.audio,
     };
     this.hideIfEmpty = true;
     this.__disposer = this.__disposer ? this.__disposer : [];
@@ -90,7 +102,7 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
         <simple-icon-button-lite
           icon="icons:arrow-upward"
           @click="${this.backToTop}"
-          ><span>Back to top</span></simple-icon-button-lite
+          ><span>${this.t.backToTop}</span></simple-icon-button-lite
         >
       </div>
     `;

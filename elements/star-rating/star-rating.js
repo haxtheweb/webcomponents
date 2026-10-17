@@ -7,6 +7,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `star-rating`
  * `Rating display widget or button to do rating`
@@ -14,7 +15,7 @@ import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js
  * @demo demo/index.html
  * @element star-rating
  */
-class StarRating extends SchemaBehaviors(SimpleColors) {
+class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
   static get tag() {
     return "star-rating";
   }
@@ -149,6 +150,16 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
   // these defaults in constructor assume that it's an empty star rating by default
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      starRating: "Star rating",
+      rateValueOfAmount: "Rate {value} of {amount}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this._calPercent = 0;
     this.numStars = 5;
     this.score = 10;
@@ -168,7 +179,7 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
         <div
           class="stars"
           role="${this.interactive ? "radiogroup" : nothing}"
-          aria-label="${this.interactive ? "Star rating" : nothing}"
+          aria-label="${this.interactive ? this.t.starRating : nothing}"
           @keydown="${this._starsKeydown}"
           @focusin="${this._starsFocusin}"
         >
@@ -308,7 +319,9 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
             contrast="${this.contrast}"
             class="star"
             data-value="${value}"
-            label="Rate ${value} of ${amount}"
+            label="${this.t.rateValueOfAmount
+              .replace("{value}", value)
+              .replace("{amount}", amount)}"
             .buttonRole="${"radio"}"
             .ariaChecked="${value === this._checkedStar}"
             .buttonTabindex="${value === this._tabStopStar ? 0 : -1}"

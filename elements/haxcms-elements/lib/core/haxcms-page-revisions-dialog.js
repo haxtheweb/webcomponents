@@ -1,10 +1,11 @@
 import { html, css } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 
-class HAXCMSPageRevisionsDialog extends DDD {
+class HAXCMSPageRevisionsDialog extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-page-revisions-dialog";
   }
@@ -33,6 +34,40 @@ class HAXCMSPageRevisionsDialog extends DDD {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      restoreConfirm: "Restore this revision as a new commit?",
+      loadingRevisionPreview: "Loading revision preview…",
+      noRevisionContent: "No revision content loaded.",
+      revisionPreview: "Revision preview",
+      revisionsFor: "Revisions for {page}",
+      page: "page",
+      loadingRevisions: "Loading revisions…",
+      revisionCountSingular: "{count} revision",
+      revisionCountPlural: "{count} revisions",
+      noRevisionsFound: "No revisions found.",
+      date: "Date",
+      author: "Author",
+      actions: "Actions",
+      unknown: "Unknown",
+      unknownDate: "Unknown date",
+      previewRevision: "Preview revision",
+      restoreRevision: "Restore revision",
+      restoreRevisionAsNewCommit: "Restore revision as a new commit",
+      revisionPreviewMode: "Revision preview mode",
+      htmlSource: "HTML source",
+      showHtmlSource: "Show HTML source",
+      renderedOutput: "Rendered output",
+      showRenderedOutput: "Show rendered output",
+      details: "Details",
+      selectRevisionRow: "Select a revision row to load details.",
+      preview: "Preview",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.nodeId = "";
     this.nodeTitle = "";
     this.revisions = [];
@@ -345,7 +380,7 @@ class HAXCMSPageRevisionsDialog extends DDD {
     if (this._isCurrentRevisionHash(normalizedHash)) {
       return;
     }
-    if (!globalThis.confirm("Restore this revision as a new commit?")) {
+    if (!globalThis.confirm(this.t.restoreConfirm)) {
       return;
     }
     this.restoring = true;
@@ -650,10 +685,10 @@ class HAXCMSPageRevisionsDialog extends DDD {
 
   _renderPreviewContent() {
     if (this.revisionLoading) {
-      return html`<div class="loading">Loading revision preview…</div>`;
+      return html`<div class="loading">${this.t.loadingRevisionPreview}</div>`;
     }
     if (!this.previewContent) {
-      return html`<div class="empty">No revision content loaded.</div>`;
+      return html`<div class="empty">${this.t.noRevisionContent}</div>`;
     }
     if (this.previewMode === "rendered") {
       return html`<div class="preview-rendered">
@@ -675,7 +710,7 @@ class HAXCMSPageRevisionsDialog extends DDD {
       selectedItemMetadata.title.trim() !== ""
         ? selectedItemMetadata.title.trim()
         : "";
-    const previewTitle = selectedTitle || pageLabel || "Revision preview";
+    const previewTitle = selectedTitle || pageLabel || this.t.revisionPreview;
     const revisionDetails = {};
     if (this.selectedRevision && typeof this.selectedRevision === "object") {
       revisionDetails.revision = this.selectedRevision;
@@ -693,17 +728,23 @@ class HAXCMSPageRevisionsDialog extends DDD {
         <section class="panel">
           <div class="panel-header">
             <span class="panel-header-title"
-              >Revisions for ${pageLabel || "page"}</span
+              >${this.t.revisionsFor.replace(
+                "{page}",
+                pageLabel || this.t.page,
+              )}</span
             >
           </div>
           <div class="status" role="status" aria-live="polite">
             ${this.loading
-              ? "Loading revisions…"
-              : `${this.revisions.length} revision${this.revisions.length === 1 ? "" : "s"}`}
+              ? this.t.loadingRevisions
+              : (this.revisions.length === 1
+                  ? this.t.revisionCountSingular
+                  : this.t.revisionCountPlural
+                ).replace("{count}", this.revisions.length)}
           </div>
           <div class="table-wrap">
             ${this.revisions.length === 0 && !this.loading
-              ? html`<div class="empty">No revisions found.</div>`
+              ? html`<div class="empty">${this.t.noRevisionsFound}</div>`
               : html`
                   <editable-table-display
                     bordered
@@ -718,9 +759,9 @@ class HAXCMSPageRevisionsDialog extends DDD {
                     <table>
                       <thead>
                         <tr>
-                          <th>Date</th>
-                          <th>Author</th>
-                          <th>Actions</th>
+                          <th>${this.t.date}</th>
+                          <th>${this.t.author}</th>
+                          <th>${this.t.actions}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -729,10 +770,10 @@ class HAXCMSPageRevisionsDialog extends DDD {
                           const revisionTimestamp =
                             this._getRevisionTimestamp(revision);
                           const dateDisplay =
-                            this._formatTimeAgo(revisionTimestamp) || "Unknown";
+                            this._formatTimeAgo(revisionTimestamp) || this.t.unknown;
                           const dateTitle =
                             this._formatAbsoluteDate(revisionTimestamp) ||
-                            "Unknown date";
+                            this.t.unknownDate;
                           const authorEmail = revision.authorEmail || "";
                           const authorDisplay = revision.author || "";
                           return html`
@@ -756,8 +797,8 @@ class HAXCMSPageRevisionsDialog extends DDD {
                                 <simple-icon-button-lite
                                   class="action"
                                   icon="icons:visibility"
-                                  label="Preview revision"
-                                  title="Preview revision"
+                                  label="${this.t.previewRevision}"
+                                  title="${this.t.previewRevision}"
                                   data-action="preview"
                                   data-hash="${revision.hash || ""}"
                                   ?disabled="${isCurrentRevision}"
@@ -765,8 +806,8 @@ class HAXCMSPageRevisionsDialog extends DDD {
                                 <simple-icon-button-lite
                                   class="action restore"
                                   icon="icons:restore"
-                                  label="Restore revision"
-                                  title="Restore revision as a new commit"
+                                  label="${this.t.restoreRevision}"
+                                  title="${this.t.restoreRevisionAsNewCommit}"
                                   data-action="restore"
                                   data-hash="${revision.hash || ""}"
                                   ?disabled="${this.restoring ||
@@ -785,15 +826,15 @@ class HAXCMSPageRevisionsDialog extends DDD {
             <div
               class="preview-toggle"
               role="group"
-              aria-label="Revision preview mode"
+              aria-label="${this.t.revisionPreviewMode}"
             >
               <simple-icon-button-lite
                 class="mode-toggle ${this.previewMode === "source"
                   ? "active"
                   : ""}"
                 icon="code"
-                label="HTML source"
-                title="Show HTML source"
+                label="${this.t.htmlSource}"
+                title="${this.t.showHtmlSource}"
                 data-preview-mode="source"
                 aria-pressed="${this.previewMode === "source"
                   ? "true"
@@ -805,8 +846,8 @@ class HAXCMSPageRevisionsDialog extends DDD {
                   ? "active"
                   : ""}"
                 icon="icons:visibility"
-                label="Rendered output"
-                title="Show rendered output"
+                label="${this.t.renderedOutput}"
+                title="${this.t.showRenderedOutput}"
                 data-preview-mode="rendered"
                 aria-pressed="${this.previewMode === "rendered"
                   ? "true"
@@ -819,15 +860,15 @@ class HAXCMSPageRevisionsDialog extends DDD {
             >
           </div>
           <details class="preview-details">
-            <summary>Details</summary>
+            <summary>${this.t.details}</summary>
             ${revisionDetailsJson
               ? html`<pre class="details-json">${revisionDetailsJson}</pre>`
               : html`<div class="preview-details-empty">
-                  Select a revision row to load details.
+                  ${this.t.selectRevisionRow}
                 </div>`}
           </details>
           <details class="preview-collapse" open>
-            <summary>Preview</summary>
+            <summary>${this.t.preview}</summary>
             <div class="preview">${this._renderPreviewContent()}</div>
           </details>
         </section>

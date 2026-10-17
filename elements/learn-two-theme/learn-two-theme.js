@@ -11,6 +11,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * @title Learn2
  * @element learn-two-theme
@@ -446,6 +447,20 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      toggleSiteMenu: "Toggle site menu",
+      searchSite: "Search site",
+      search: "Search",
+      siteNavigation: "Site navigation",
+    };
+    // no I18NMixin in this class chain, so register with the store directly
+    I18NManagerStore.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.HAXCMSThemeSettings.autoScroll = true;
     // initialize the drawer state so aria-expanded renders a valid state
     // ("false") on the very first render instead of an empty attribute
@@ -503,12 +518,12 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
   render() {
     return html`
       <div class="layout">
-        <a class="skip-link" href="#contentcontainer">Skip to content</a>
+        <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
         <simple-icon-button-lite
           id="menubutton"
           icon="menu"
           @click="${this.toggleDrawer}"
-          title="Toggle site menu"
+          title="${this.t.toggleSiteMenu}"
           aria-expanded="${this.opened}"
           aria-controls="drawer"
         ></simple-icon-button-lite>
@@ -517,7 +532,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
             id="menubutton2"
             icon="menu"
             @click="${this.toggleDrawer}"
-            title="Toggle site menu"
+            title="${this.t.toggleSiteMenu}"
             aria-expanded="${this.opened}"
             aria-controls="drawer"
           ></simple-icon-button-lite>
@@ -531,8 +546,8 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
                 @site-modal-click="${this.siteModalClick}"
                 ?disabled="${this.editMode}"
                 icon="icons:search"
-                title="Search site"
-                button-label="Search"
+                title="${this.t.searchSite}"
+                button-label="${this.t.search}"
                 part="search-btn"
               >
                 <site-search></site-search>
@@ -554,7 +569,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
               ></site-rss-button>
             </div>
           </header>
-          <nav aria-label="Site navigation">
+          <nav aria-label="${this.t.siteNavigation}">
             <site-menu part="site-menu"></site-menu>
           </nav>
         </div>

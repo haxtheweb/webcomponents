@@ -1,5 +1,6 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 const FALLBACK_LOCALE = "en_US";
 const TRACKING_PARAM = "profile-badge";
@@ -11,7 +12,7 @@ const CALLBACK_NAME = "LIBadgeCallback";
  * @demo demo/index.html
  * @element linkedin-embed
  */
-class LinkedinEmbed extends DDD {
+class LinkedinEmbed extends I18NMixin(DDD) {
   static get tag() {
     return "linkedin-embed";
   }
@@ -84,6 +85,15 @@ class LinkedinEmbed extends DDD {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      viewOnLinkedin: "View {name} on LinkedIn",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.vanityname = "btopro";
     this.locale = FALLBACK_LOCALE;
     this._prefersDark = false;
@@ -382,7 +392,7 @@ class LinkedinEmbed extends DDD {
             class="badge-base__link LI-simple-link"
             href="${this._profileHref}"
           >
-            View ${this.vanityname} on LinkedIn
+            ${this.t.viewOnLinkedin.replace("{name}", this.vanityname)}
           </a>
         </div>
       </div>

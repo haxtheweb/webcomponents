@@ -2,15 +2,25 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "./AppHaxStore.js";
 
-export class AppHaxUseCase extends LitElement {
+export class AppHaxUseCase extends I18NMixin(LitElement) {
   static get tag() {
     return "app-hax-use-case";
   }
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      untitledTemplate: "Untitled template",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.title = "";
     this.description = "";
     this.source = "";
@@ -321,7 +331,7 @@ export class AppHaxUseCase extends LitElement {
     const safeTitle =
       this.title && typeof this.title === "string" && this.title.trim() !== ""
         ? this.title.trim()
-        : "Untitled template";
+        : this.t.untitledTemplate;
     const cardLabel =
       this.description &&
       typeof this.description === "string" &&

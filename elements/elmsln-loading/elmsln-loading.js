@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -18,7 +19,7 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
  * @demo demo/index.html
  * @element elmsln-loading
  */
-class ElmslnLoading extends SimpleColors {
+class ElmslnLoading extends I18NMixin(SimpleColors) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -96,6 +97,15 @@ class ElmslnLoading extends SimpleColors {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      loading: "Loading",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.size = "medium";
     this.dark = false;
   }
@@ -153,7 +163,7 @@ class ElmslnLoading extends SimpleColors {
         contrast="${this.contrast}"
         ?dark="${this.dark}"
         role="status"
-        aria-label="Loading"
+        aria-label="${this.t.loading}"
       ></simple-icon>
     `;
   }

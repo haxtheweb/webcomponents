@@ -1,11 +1,12 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { store } from "./AppHaxStore.js";
 
-export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
+export class AppHaxConfirmationModal extends I18NMixin(DDDSuper(LitElement)) {
   static get tag() {
     return "app-hax-confirmation-modal";
   }
@@ -26,11 +27,21 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      confirm: "Confirm",
+      cancel: "Cancel",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.open = false;
     this.title = "";
     this.message = "";
-    this.confirmText = "Confirm";
-    this.cancelText = "Cancel";
+    this.confirmText = this.t.confirm;
+    this.cancelText = this.t.cancel;
     this.confirmAction = null;
     this.cancelAction = null;
     this.dangerous = false; // For destructive actions like delete/archive

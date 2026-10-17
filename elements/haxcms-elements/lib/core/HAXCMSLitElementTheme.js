@@ -21,6 +21,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
 ) {
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      anchorLinkCopied: "Anchor link copied!",
+    };
     this.isSafari = globalThis.safari !== undefined;
     this.editMode = false;
     this.trayStatus = "";
@@ -175,7 +180,10 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       target.getAttribute("id");
     globalThis.history.pushState({}, null, headingLink);
     globalThis.dispatchEvent(new PopStateEvent("popstate"));
-    copyToClipboard(headingLink, "Anchor link copied!");
+    copyToClipboard(
+      headingLink,
+      (this.t && this.t.anchorLinkCopied) || "Anchor link copied!",
+    );
   }
   _syncResponsiveStoreState() {
     if (

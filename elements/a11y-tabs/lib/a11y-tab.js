@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `a11y-tab`
  * a single tab within `a11y-tabs`
@@ -23,7 +24,7 @@ Custom property | Description | Default
  * @extends LitElement
  * @see ../a11y-tabs.js
  */
-class A11yTab extends LitElement {
+class A11yTab extends I18NMixin(LitElement) {
   static get styles() {
     return [
       css`
@@ -78,7 +79,7 @@ class A11yTab extends LitElement {
   }
   render() {
     return html`
-      <span class="sr-only">Tab ${this.xOfY}</span>
+      <span class="sr-only">${this.t.tabXOfY.replace("{xOfY}", this.xOfY)}</span>
       <div class="label-heading" part="heading">
         <simple-icon-lite
           class="icon"
@@ -92,7 +93,8 @@ class A11yTab extends LitElement {
       </div>
       <div id="content-inner" part="content"><slot></slot></div>
       <span class="sr-only">
-        End of tab ${this.xOfY}. Back to <a href="#${this.id}">tabs</a>.
+        ${this._endOfTabParts()[0]}<a href="#${this.id}">${this.t.tabs}</a
+        >${this._endOfTabParts()[1]}
       </span>
     `;
   }
@@ -238,6 +240,20 @@ class A11yTab extends LitElement {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      tabXOfY: "Tab {xOfY}",
+      xOfY: "{order} of {total}",
+      endOfTab: "End of tab {xOfY}. Back to {tabs}.",
+      tabs: "tabs",
+    };
+    // explicit namespace so subclasses (simple-fields-tab) share this bucket
+    this.registerLocalization({
+      context: this,
+      namespace: "a11y-tab",
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.disabled = false;
     this.hidden = false;
     this.order = 1;
@@ -266,7 +282,18 @@ class A11yTab extends LitElement {
    * @returns {string} eg., "1 of 2"
    */
   get xOfY() {
-    return `${this.order} of ${this.total}`;
+    return this.t.xOfY
+      .replace("{order}", this.order)
+      .replace("{total}", this.total);
+  }
+  /**
+   * splits the translated "end of tab" sentence around the {tabs} link
+   *
+   * @returns {array} text before and after the tabs link
+   */
+  _endOfTabParts() {
+    let parts = this.t.endOfTab.replace("{xOfY}", this.xOfY).split("{tabs}");
+    return [parts[0], parts.slice(1).join("")];
   }
 
   connectedCallback() {

@@ -7,6 +7,7 @@ import "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js";
 import "@haxtheweb/a11y-collapse/a11y-collapse.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "@haxtheweb/accent-card/accent-card.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `product-card`
  * `basic display of a product with advanced data driven helpers`
@@ -14,7 +15,7 @@ import "@haxtheweb/accent-card/accent-card.js";
  * @demo demo/hax.html HAX Demo
  * @element product-card
  */
-class ProductCard extends SimpleColors {
+class ProductCard extends I18NMixin(SimpleColors) {
   static get styles() {
     return [
       super.styles,
@@ -85,10 +86,10 @@ class ProductCard extends SimpleColors {
         </div>
         <div slot="content"><slot></slot></div>
         <div slot="footer">
-          <a11y-collapse-group heading-button tooltip="Toggle section">
+          <a11y-collapse-group heading-button tooltip="${this.t.toggleSection}">
             <a11y-collapse ?disabled="${this.disabled}">
               <div slot="heading">
-                <slot name="details-collapse-header">Details</slot>
+                <slot name="details-collapse-header">${this.t.details}</slot>
               </div>
               <div slot="content">
                 <slot name="details-collapse-content"></slot>
@@ -100,7 +101,7 @@ class ProductCard extends SimpleColors {
               @collapse="${this.__demoCollapseStatusChange}"
             >
               <div slot="heading">
-                <slot name="demo-collapse-header">Demo</slot>
+                <slot name="demo-collapse-header">${this.t.demo}</slot>
               </div>
               <div slot="content">
                 <slot name="demo-collapse-content"></slot>
@@ -155,6 +156,17 @@ class ProductCard extends SimpleColors {
   constructor() {
     super();
     this.disabled = false;
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      toggleSection: "Toggle section",
+      details: "Details",
+      demo: "Demo",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
   }
 }
 globalThis.customElements.define(ProductCard.tag, ProductCard);

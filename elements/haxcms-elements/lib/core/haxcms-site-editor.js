@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/jwt-login/jwt-login.js";
@@ -25,7 +26,7 @@ import {
  * @demo demo/index.html
  */
 
-class HAXCMSSiteEditor extends LitElement {
+class HAXCMSSiteEditor extends I18NMixin(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -35,6 +36,61 @@ class HAXCMSSiteEditor extends LitElement {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      sessionExpired: "Session expired, please log in again",
+      userDataEndpointUnavailable: "User data endpoint is not available.",
+      addingPagesDisabled: "Adding pages is disabled for this site",
+      finished: "finished!",
+      invalidDocxResponse: "Invalid response from DOCX import.",
+      createItemEndpointUnavailable: "Create item endpoint is not available.",
+      deleteDisabled: "Delete is disabled for this site",
+      unableToDeleteMissingId: "Unable to delete page: missing page id",
+      deleteItemEndpointUnavailable: "Delete item endpoint is not available.",
+      revisionRestored: "Revision restored as a new commit.",
+      unableToSaveMissingSite: "Unable to save page: missing site context",
+      pageSaveEndpointUnavailable: "Page save endpoint is not available.",
+      outlineOperationsDisabled: "Outline operations are disabled for this site",
+      unableToCompleteMissingId: "Unable to complete operation: missing page id",
+      unableToCompleteMissingOperation: "Unable to complete operation: missing operation",
+      itemUpdateEndpointUnavailable: "Item update endpoint is not available.",
+      unableToCompleteOperation: "Unable to complete operation",
+      outlineSaveEndpointUnavailable: "Outline save endpoint is not available.",
+      siteSaveEndpointUnavailable: "Site save endpoint is not available.",
+      slugNormalizationEndpointUnavailable: "Slug normalization endpoint is not available.",
+      slugNormalizationCompleted: "Slug normalization completed.",
+      slugNormalizationFailed: "Slug normalization failed.",
+      seoSaveEndpointUnavailable: "SEO save endpoint is not available.",
+      appearanceSaveEndpointUnavailable: "Appearance save endpoint is not available.",
+      platformSettingsSaveEndpointUnavailable: "Platform settings save endpoint is not available.",
+      editorSettingsSaveEndpointUnavailable: "Editor settings save endpoint is not available.",
+      editorSettingsInvalid: "Editor settings are invalid.",
+      blocksSaveEndpointUnavailable: "Blocks save endpoint is not available.",
+      contentReplaceEndpointUnavailable: "Content replace endpoint is not available.",
+      contentSearchEndpointUnavailable: "Content search endpoint is not available.",
+      useUploadWorkflow: "Use the existing upload workflow to process files.",
+      requestFailed: "Request failed",
+      operationFailed: "Operation failed",
+      pageDeletedSelecting: "Page deleted {title}, selecting another page",
+      createdOpenToEdit: "Created {title} — open it to edit",
+      page: "page",
+      recoveredUnsavedEdits: "Recovered unsaved edits to {title}. Open that page and select Edit to restore them.",
+      aPreviousPage: "a previous page",
+      restoredUnsavedEdits: "Restored unsaved edits to {title}",
+      thisPage: "this page",
+      pageSaved: "Page saved!",
+      outlineSaved: "Outline saved!",
+      operationCompleted: "Operation completed!",
+      unableToCompleteOperationStatus: "Unable to complete operation ({status})",
+      normalizedPageSlugs: "Normalized {count} page slugs",
+      createdTitle: "Created {title}!",
+      processing: "Processing",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.__disposer = [];
     this.__lastContentDashboardOperation = "search";
     this.__lastContentSearchQuery = "";
@@ -213,7 +269,10 @@ class HAXCMSSiteEditor extends LitElement {
     // show message
     if (e.detail.value && e.detail.value.data && e.detail.value.data.title) {
       store.toast(
-        `Page deleted ${e.detail.value.data.title}, selecting another page`,
+        this.t.pageDeletedSelecting.replace(
+          "{title}",
+          e.detail.value.data.title,
+        ),
         4000,
       );
       store.playSound("coin");
@@ -228,7 +287,7 @@ class HAXCMSSiteEditor extends LitElement {
         const node = e.detail.value.data;
         globalThis.history.pushState({}, null, node.slug);
         globalThis.dispatchEvent(new PopStateEvent("popstate"));
-        store.toast(`Created ${node.title}!`, 4000, {
+        store.toast(this.t.createdTitle.replace("{title}", node.title), 4000, {
           hat: "random",
         });
 
@@ -320,9 +379,13 @@ class HAXCMSSiteEditor extends LitElement {
       this._merlinCreated = false;
       this.__autoEditDisposer();
       this.__autoEditDisposer = null;
-      store.toast(`Created ${node.title || "page"} — open it to edit`, 4000, {
-        hat: "random",
-      });
+      store.toast(
+        this.t.createdOpenToEdit.replace("{title}", node.title || this.t.page),
+        4000,
+        {
+          hat: "random",
+        },
+      );
     }, 10000);
   }
   /**
@@ -480,7 +543,7 @@ class HAXCMSSiteEditor extends LitElement {
     }
     return 0;
   }
-  _responseStatusText(response, fallbackMessage = "Request failed") {
+  _responseStatusText(response, fallbackMessage = this.t.requestFailed) {
     if (!response || typeof response !== "object") {
       return fallbackMessage;
     }
@@ -548,7 +611,7 @@ class HAXCMSSiteEditor extends LitElement {
     };
     return target;
   }
-  _emitRequestError(target, status, statusText = "Request failed") {
+  _emitRequestError(target, status, statusText = this.t.requestFailed) {
     this.lastErrorChanged({
       detail: {
         value: {
@@ -587,7 +650,10 @@ class HAXCMSSiteEditor extends LitElement {
         };
       }
       const status = this._responseStatusCode(response);
-      const statusText = this._responseStatusText(response, "Operation failed");
+      const statusText = this._responseStatusText(
+        response,
+        this.t.operationFailed,
+      );
       this._emitRequestError(target, status, statusText);
       return {
         unavailable: false,
@@ -606,7 +672,7 @@ class HAXCMSSiteEditor extends LitElement {
         typeof error.message === "string" &&
         error.message.trim() !== ""
           ? error.message.trim()
-          : "Operation failed";
+          : this.t.operationFailed;
       this._emitRequestError(target, status, statusText);
       return {
         unavailable: false,
@@ -736,7 +802,7 @@ class HAXCMSSiteEditor extends LitElement {
       const status = this._responseStatusCode(normalizedResponse);
       const statusText = this._responseStatusText(
         normalizedResponse,
-        "Operation failed",
+        this.t.operationFailed,
       );
       this._emitRequestError(target, status || response.status, statusText);
       return {
@@ -756,7 +822,7 @@ class HAXCMSSiteEditor extends LitElement {
         typeof error.message === "string" &&
         error.message.trim() !== ""
           ? error.message.trim()
-          : "Operation failed";
+          : this.t.operationFailed;
       this._emitRequestError(target, status, statusText);
       return {
         unavailable: false,
@@ -901,7 +967,7 @@ class HAXCMSSiteEditor extends LitElement {
           const statusText =
             e.detail.value.statusText && e.detail.value.statusText !== ""
               ? e.detail.value.statusText
-              : "Request failed";
+              : this.t.requestFailed;
           store.toast(e.detail.value.status + " " + statusText, 5000, {
             fire: true,
           });
@@ -925,7 +991,7 @@ class HAXCMSSiteEditor extends LitElement {
       // refresh-failure path (_tokenRefreshFailed) handles the normal case;
       // toast here too so this rare path isn't a silent kick to the homepage.
       try {
-        store.toast("Session expired, please log in again", 4000, {
+        store.toast(this.t.sessionExpired, 4000, {
           fire: true,
         });
       } catch (e) {}
@@ -1066,7 +1132,7 @@ class HAXCMSSiteEditor extends LitElement {
     // so a login failure (no jwt) doesn't toast "session expired"
     if (this.jwt && this.jwt !== "" && this.jwt !== "null") {
       try {
-        store.toast("Session expired, please log in again", 4000, {
+        store.toast(this.t.sessionExpired, 4000, {
           fire: true,
         });
       } catch (ex) {}
@@ -1312,7 +1378,7 @@ class HAXCMSSiteEditor extends LitElement {
       endpoint: userDataEndpoint,
       method: "GET",
       headers: userHeaders,
-      unavailableMessage: "User data endpoint is not available.",
+      unavailableMessage: this.t.userDataEndpointUnavailable,
       onSuccess: (response) => {
         this._handleUserDataResponse({
           detail: {
@@ -1348,7 +1414,7 @@ class HAXCMSSiteEditor extends LitElement {
   async createNode(e) {
     // Check platform configuration before allowing page creation
     if (!store.platformAllows("addPage")) {
-      store.toast("Adding pages is disabled for this site", 3000, {
+      store.toast(this.t.addingPagesDisabled, 3000, {
         fire: true,
       });
       return;
@@ -1395,7 +1461,7 @@ class HAXCMSSiteEditor extends LitElement {
             "@system/importDocx",
             formData,
           );
-          store.toast("finished!", 300);
+          store.toast(this.t.finished, 300);
           if (
             response.status === 200 &&
             response.data &&
@@ -1414,7 +1480,7 @@ class HAXCMSSiteEditor extends LitElement {
               }),
             );
           } else {
-            store.toast("Invalid response from DOCX import.", 4000, {
+            store.toast(this.t.invalidDocxResponse, 4000, {
               hat: "construction",
             });
           }
@@ -1425,7 +1491,7 @@ class HAXCMSSiteEditor extends LitElement {
           requestId: "createajax",
           operationName: "@site/createItem",
           payload: reqBody,
-          unavailableMessage: "Create item endpoint is not available.",
+          unavailableMessage: this.t.createItemEndpointUnavailable,
           onSuccess: (response) => {
             this.__createNodeResponseChanged({
               detail: {
@@ -1480,7 +1546,7 @@ class HAXCMSSiteEditor extends LitElement {
   deleteNode(e) {
     // Check platform configuration before allowing delete
     if (!store.platformAllows("deletePage")) {
-      store.toast("Delete is disabled for this site", 3000, { fire: true });
+      store.toast(this.t.deleteDisabled, 3000, { fire: true });
       return;
     }
     const itemId =
@@ -1488,7 +1554,7 @@ class HAXCMSSiteEditor extends LitElement {
         ? String(e.detail.item.id)
         : "";
     if (!itemId) {
-      store.toast("Unable to delete page: missing page id", 3000, {
+      store.toast(this.t.unableToDeleteMissingId, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -1507,7 +1573,7 @@ class HAXCMSSiteEditor extends LitElement {
           id: itemId,
         },
       },
-      unavailableMessage: "Delete item endpoint is not available.",
+      unavailableMessage: this.t.deleteItemEndpointUnavailable,
       onSuccess: (response) => {
         this.__deleteNodeResponseChanged({
           detail: {
@@ -1624,9 +1690,9 @@ class HAXCMSSiteEditor extends LitElement {
         return;
       }
       this.__pendingRestore = snapshot;
-      const title = snapshot.title || "a previous page";
+      const title = snapshot.title || this.t.aPreviousPage;
       store.toast(
-        `Recovered unsaved edits to ${title}. Open that page and select Edit to restore them.`,
+        this.t.recoveredUnsavedEdits.replace("{title}", title),
         6000,
         { fire: true, hat: "save" },
       );
@@ -1657,8 +1723,8 @@ class HAXCMSSiteEditor extends LitElement {
       globalThis.sessionStorage.removeItem("haxcms-pending-edit");
     } catch (e) {}
     try {
-      const title = snapshot.title || "this page";
-      store.toast(`Restored unsaved edits to ${title}`, 4000, {
+      const title = snapshot.title || this.t.thisPage;
+      store.toast(this.t.restoredUnsavedEdits.replace("{title}", title), 4000, {
         fire: true,
         hat: "save",
       });
@@ -1891,7 +1957,7 @@ class HAXCMSSiteEditor extends LitElement {
       let tmp = store.activeId;
       store.activeId = null;
       store.activeId = tmp;
-      store.toast(`Page saved!`, 4000, { hat: "random" });
+      store.toast(this.t.pageSaved, 4000, { hat: "random" });
     }, 300);
   }
 
@@ -1907,7 +1973,7 @@ class HAXCMSSiteEditor extends LitElement {
           detail: true,
         }),
       );
-      store.toast(`Outline saved!`, 4000, { hat: "random" });
+      store.toast(this.t.outlineSaved, 4000, { hat: "random" });
       // If the active page's slug changed, redirect to the new URL
       const activeItem = store.activeItem;
       // MicroFrontendRegistry.call returns the full {status, data} envelope,
@@ -2062,7 +2128,7 @@ class HAXCMSSiteEditor extends LitElement {
           detail: true,
         }),
       );
-      store.toast(`Operation completed!`, 3000, { hat: "construction" });
+      store.toast(this.t.operationCompleted, 3000, { hat: "construction" });
       // If this operation changed the active page's slug, redirect to the
       // new URL so the browser doesn't sit on a stale slug that no longer
       // resolves. Mirrors _handleOutlineResponse's redirect behavior.
@@ -2103,7 +2169,7 @@ class HAXCMSSiteEditor extends LitElement {
           detail: true,
         }),
       );
-      store.toast("Revision restored as a new commit.", 4000, {
+      store.toast(this.t.revisionRestored, 4000, {
         hat: "construction",
       });
       globalThis.dispatchEvent(
@@ -2319,7 +2385,7 @@ class HAXCMSSiteEditor extends LitElement {
     }
     const siteName = this._siteName();
     if (!siteName) {
-      store.toast("Unable to save page: missing site context", 3000, {
+      store.toast(this.t.unableToSaveMissingSite, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -2366,7 +2432,7 @@ class HAXCMSSiteEditor extends LitElement {
           schema: schema,
         },
       },
-      unavailableMessage: "Page save endpoint is not available.",
+      unavailableMessage: this.t.pageSaveEndpointUnavailable,
       onSuccess: (response) => {
         this._handleNodeResponse({
           detail: {
@@ -2383,7 +2449,7 @@ class HAXCMSSiteEditor extends LitElement {
   async saveNodeDetails(e) {
     // Check platform configuration before allowing outline operations
     if (!store.platformAllows("outlineDesigner")) {
-      store.toast("Outline operations are disabled for this site", 3000, {
+      store.toast(this.t.outlineOperationsDisabled, 3000, {
         fire: true,
       });
       return;
@@ -2402,7 +2468,7 @@ class HAXCMSSiteEditor extends LitElement {
               ? String(detail.idOrSlug).trim()
               : "";
     if (!itemId) {
-      store.toast("Unable to complete operation: missing page id", 3000, {
+      store.toast(this.t.unableToCompleteMissingId, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -2413,7 +2479,7 @@ class HAXCMSSiteEditor extends LitElement {
         ? detail.operation.trim()
         : "";
     if (!operation) {
-      store.toast("Unable to complete operation: missing operation", 3000, {
+      store.toast(this.t.unableToCompleteMissingOperation, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -2428,7 +2494,7 @@ class HAXCMSSiteEditor extends LitElement {
       typeof MicroFrontendRegistry.has !== "function" ||
       !MicroFrontendRegistry.has("@site/updateItem")
     ) {
-      store.toast("Item update endpoint is not available.", 3000, {
+      store.toast(this.t.itemUpdateEndpointUnavailable, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -2466,11 +2532,11 @@ class HAXCMSSiteEditor extends LitElement {
       const message =
         response && response.message
           ? String(response.message)
-          : `Unable to complete operation (${status})`;
+          : this.t.unableToCompleteOperationStatus.replace("{status}", status);
       store.toast(message, 4000, { fire: true });
       store.playSound("error");
     } catch (error) {
-      store.toast("Unable to complete operation", 4000, { fire: true });
+      store.toast(this.t.unableToCompleteOperation, 4000, { fire: true });
       store.playSound("error");
     }
   }
@@ -2481,7 +2547,7 @@ class HAXCMSSiteEditor extends LitElement {
   saveOutline(e) {
     const siteName = this._siteName();
     if (!siteName) {
-      store.toast("Outline save endpoint is not available.", 3000, {
+      store.toast(this.t.outlineSaveEndpointUnavailable, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -2497,7 +2563,7 @@ class HAXCMSSiteEditor extends LitElement {
         },
         items: e && e.detail ? e.detail : [],
       },
-      unavailableMessage: "Outline save endpoint is not available.",
+      unavailableMessage: this.t.outlineSaveEndpointUnavailable,
       onSuccess: (response) => {
         this._handleOutlineResponse({
           detail: {
@@ -2518,7 +2584,7 @@ class HAXCMSSiteEditor extends LitElement {
     loadingIcon.style.setProperty("--simple-icon-width", "40px");
     loadingIcon.style.height = "150px";
     loadingIcon.style.marginLeft = "8px";
-    store.toast(`Processing`, duration, {
+    store.toast(this.t.processing, duration, {
       hat: "construction",
       slot: loadingIcon,
     });
@@ -2551,7 +2617,7 @@ class HAXCMSSiteEditor extends LitElement {
     }
     const siteName = this._siteName();
     if (!siteName) {
-      store.toast("Site save endpoint is not available.", 3000, {
+      store.toast(this.t.siteSaveEndpointUnavailable, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -2571,7 +2637,7 @@ class HAXCMSSiteEditor extends LitElement {
       requestId: "manifestupdateajax",
       operationName: "@site/updateSiteSummary",
       payload: values,
-      unavailableMessage: "Site save endpoint is not available.",
+      unavailableMessage: this.t.siteSaveEndpointUnavailable,
       onSuccess: (response) => {
         this._handleManifestResponse({
           detail: {
@@ -2585,7 +2651,7 @@ class HAXCMSSiteEditor extends LitElement {
   async normalizeSlugs(e) {
     const siteName = this._siteName();
     if (!siteName) {
-      store.toast("Slug normalization endpoint is not available.", 3000, {
+      store.toast(this.t.slugNormalizationEndpointUnavailable, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -2597,7 +2663,7 @@ class HAXCMSSiteEditor extends LitElement {
       !MicroFrontendRegistry ||
       !MicroFrontendRegistry.has("@site/normalizeSiteSlugs")
     ) {
-      store.toast("Slug normalization endpoint is not available.", 3000, {
+      store.toast(this.t.slugNormalizationEndpointUnavailable, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -2617,11 +2683,15 @@ class HAXCMSSiteEditor extends LitElement {
         const changes = response.data.changes;
         store.playSound("success");
         if (changes.length > 0) {
-          store.toast(`Normalized ${changes.length} page slugs`, 4000, {
-            hat: "random",
-          });
+          store.toast(
+            this.t.normalizedPageSlugs.replace("{count}", changes.length),
+            4000,
+            {
+              hat: "random",
+            },
+          );
         } else {
-          store.toast("Slug normalization completed.", 3000, {
+          store.toast(this.t.slugNormalizationCompleted, 3000, {
             hat: "random",
           });
         }
@@ -2650,13 +2720,13 @@ class HAXCMSSiteEditor extends LitElement {
         }
       } else {
         store.playSound("success");
-        store.toast("Slug normalization completed.", 3000, {
+        store.toast(this.t.slugNormalizationCompleted, 3000, {
           hat: "random",
         });
       }
     } catch (error) {
       console.warn(error);
-      store.toast("Slug normalization failed.", 3000, { fire: true });
+      store.toast(this.t.slugNormalizationFailed, 3000, { fire: true });
       store.playSound("error");
     }
   }
@@ -2664,7 +2734,7 @@ class HAXCMSSiteEditor extends LitElement {
   saveSEOSettings(e) {
     const siteName = this._siteName();
     if (!siteName) {
-      store.toast("SEO save endpoint is not available.", 3000, {
+      store.toast(this.t.seoSaveEndpointUnavailable, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -2872,7 +2942,7 @@ class HAXCMSSiteEditor extends LitElement {
       requestId: "seoupdateajax",
       operationName: "@site/updateSiteSeo",
       payload,
-      unavailableMessage: "SEO save endpoint is not available.",
+      unavailableMessage: this.t.seoSaveEndpointUnavailable,
       onSuccess: (response) => {
         this._handleManifestResponse({
           detail: {
@@ -2886,7 +2956,7 @@ class HAXCMSSiteEditor extends LitElement {
   saveAppearanceSettings(e) {
     const siteName = this._siteName();
     if (!siteName) {
-      store.toast("Appearance save endpoint is not available.", 3000, {
+      store.toast(this.t.appearanceSaveEndpointUnavailable, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -2911,7 +2981,7 @@ class HAXCMSSiteEditor extends LitElement {
       requestId: "appearancesettingsajax",
       operationName: "@site/updateSiteAppearance",
       payload: values,
-      unavailableMessage: "Appearance save endpoint is not available.",
+      unavailableMessage: this.t.appearanceSaveEndpointUnavailable,
       onSuccess: (response) => {
         this._handleAppearanceSettingsResponse({
           detail: {
@@ -2925,7 +2995,7 @@ class HAXCMSSiteEditor extends LitElement {
   savePlatformSettings(e) {
     const siteName = this._siteName();
     if (!siteName) {
-      store.toast("Platform settings save endpoint is not available.", 3000, {
+      store.toast(this.t.platformSettingsSaveEndpointUnavailable, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -2941,7 +3011,7 @@ class HAXCMSSiteEditor extends LitElement {
         },
         platform: e && e.detail ? e.detail : {},
       },
-      unavailableMessage: "Platform settings save endpoint is not available.",
+      unavailableMessage: this.t.platformSettingsSaveEndpointUnavailable,
       onSuccess: (response) => {
         this._handlePlatformSettingsResponse({
           detail: {
@@ -2954,7 +3024,7 @@ class HAXCMSSiteEditor extends LitElement {
   saveEditorSettings(e) {
     const siteName = this._siteName();
     if (!siteName) {
-      store.toast("Editor settings save endpoint is not available.", 3000, {
+      store.toast(this.t.editorSettingsSaveEndpointUnavailable, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -2963,7 +3033,7 @@ class HAXCMSSiteEditor extends LitElement {
     const detail = e && e.detail ? JSON.parse(JSON.stringify(e.detail)) : {};
     const audience = detail && detail.audience ? String(detail.audience) : "";
     if (audience !== "novice" && audience !== "expert") {
-      store.toast("Editor settings are invalid.", 3000, {
+      store.toast(this.t.editorSettingsInvalid, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -2981,7 +3051,7 @@ class HAXCMSSiteEditor extends LitElement {
           audience: audience,
         },
       },
-      unavailableMessage: "Editor settings save endpoint is not available.",
+      unavailableMessage: this.t.editorSettingsSaveEndpointUnavailable,
       onSuccess: (response) => {
         this._handleEditorSettingsResponse({
           detail: {
@@ -2994,7 +3064,7 @@ class HAXCMSSiteEditor extends LitElement {
   saveAllowedBlocks(e) {
     const siteName = this._siteName();
     if (!siteName) {
-      store.toast("Blocks save endpoint is not available.", 3000, {
+      store.toast(this.t.blocksSaveEndpointUnavailable, 3000, {
         fire: true,
       });
       store.playSound("error");
@@ -3031,7 +3101,7 @@ class HAXCMSSiteEditor extends LitElement {
         },
         platform: platform,
       },
-      unavailableMessage: "Blocks save endpoint is not available.",
+      unavailableMessage: this.t.blocksSaveEndpointUnavailable,
       onSuccess: (response) => {
         this._handleAllowedBlocksResponse({
           detail: {
@@ -3169,7 +3239,7 @@ class HAXCMSSiteEditor extends LitElement {
           requestId: "contentsearchajax",
           operationName: "@site/replaceContent",
           payload: body,
-          unavailableMessage: "Content replace endpoint is not available.",
+          unavailableMessage: this.t.contentReplaceEndpointUnavailable,
           onSuccess: (responseData) => {
             this._handleContentSearchResponse({
               detail: {
@@ -3206,7 +3276,7 @@ class HAXCMSSiteEditor extends LitElement {
           requestId: "contentsearchajax",
           operationName: "@site/searchContent",
           payload: searchPayload,
-          unavailableMessage: "Content search endpoint is not available.",
+          unavailableMessage: this.t.contentSearchEndpointUnavailable,
           onSuccess: (responseData) => {
             this._handleContentSearchResponse({
               detail: {
@@ -3239,7 +3309,7 @@ class HAXCMSSiteEditor extends LitElement {
       return;
     }
     if (e.detail.operation === "upload") {
-      store.toast("Use the existing upload workflow to process files.", 3000, {
+      store.toast(this.t.useUploadWorkflow, 3000, {
         hat: "construction",
       });
       return;

@@ -1,4 +1,5 @@
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { html, css, render } from "lit";
 import {
   renderPreview,
@@ -43,7 +44,7 @@ export const mediaKeys = [
   "video",
 ];
 
-export class SiteView extends DDD {
+export class SiteView extends I18NMixin(DDD) {
   static get tag() {
     return "site-view";
   }
@@ -101,6 +102,19 @@ export class SiteView extends DDD {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      fetchFailed: "Fetch failed ({status})",
+      unableToLoadViewData: "Unable to load view data.",
+      noResultsFound: "No results found.",
+      refreshView: "Refresh view",
+      breakIntoStaticContent: "Break into static content",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.src = "";
     this.renderer = "collection";
     this.entity = "";
@@ -202,7 +216,9 @@ export class SiteView extends DDD {
         },
       });
       if (!response.ok) {
-        throw new Error(`Fetch failed (${response.status})`);
+        throw new Error(
+          this.t.fetchFailed.replace("{status}", response.status),
+        );
       }
       const payload = await response.json();
       const extracted = extractViewsRecords(payload, { name: this.entity });
@@ -211,7 +227,7 @@ export class SiteView extends DDD {
         this.results = records;
       }
     } catch (e) {
-      this.error = e.message || "Unable to load view data.";
+      this.error = e.message || this.t.unableToLoadViewData;
     } finally {
       this.loading = false;
     }
@@ -247,7 +263,7 @@ export class SiteView extends DDD {
     if (!this.results || this.results.length < 1) {
       return html`
         <div class="empty" role="status" aria-live="polite">
-          No results found.
+          ${this.t.noResultsFound}
         </div>
       `;
     }
@@ -326,12 +342,12 @@ export class SiteView extends DDD {
       {
         icon: "icons:refresh",
         callback: "refreshView",
-        label: "Refresh view",
+        label: this.t.refreshView,
       },
       {
         icon: "icons:open-in-browser",
         callback: "breakSiteView",
-        label: "Break into static content",
+        label: this.t.breakIntoStaticContent,
       },
     ];
   }

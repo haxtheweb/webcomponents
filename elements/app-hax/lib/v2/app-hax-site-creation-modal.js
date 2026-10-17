@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "web-dialog/index.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -8,13 +9,45 @@ import "./app-hax-simple-hat-progress.js";
 import { store } from "./AppHaxStore.js";
 import { toJS } from "mobx";
 
-export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
+export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   static get tag() {
     return "app-hax-site-creation-modal";
   }
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      createNewSite: "Create New Site",
+      creatingSite: "Creating Site",
+      siteCreated: "Site Created",
+      creatingSiteEllipsis: "Creating Site...",
+      siteCreatedExclaim: "Site Created!",
+      closeModal: "Close modal",
+      siteNameRequired: "Site name is required",
+      siteNameMinLength: "Site name must be at least 3 characters",
+      siteNameMaxLength: "Site name must be less than 50 characters",
+      siteNameInvalidCharacters:
+        "Site name can only contain letters, numbers, spaces, hyphens, and underscores",
+      failedToCreateSite: "Failed to create site. Please try again.",
+      siteCreationFailed: "Site creation failed. Please try again.",
+      templatePreview: "{title} preview",
+      siteName: "Site Name",
+      enterSiteName: "Enter your site name...",
+      createSite: "Create Site",
+      cancel: "Cancel",
+      creatingYourSite: "Creating your site...",
+      percentComplete: "{percent}% complete",
+      siteCreatedSuccessfully: "Site Created Successfully!",
+      newSiteReady: 'Your new site "{siteName}" is ready to use.',
+      stayHere: "Stay Here",
+      goToSite: "Go to Site",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.open = false;
     this.title = "";
     this.description = "";
@@ -521,12 +554,12 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
 
   _getDialogLabel() {
     if (this.currentStep === 1) {
-      return "Create New Site";
+      return this.t.createNewSite;
     }
     if (this.currentStep === 2) {
-      return "Creating Site";
+      return this.t.creatingSite;
     }
-    return "Site Created";
+    return this.t.siteCreated;
   }
 
   _syncDialogA11yLabel() {
@@ -765,20 +798,19 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
   validateSiteName() {
     const name = this.siteName.trim();
     if (!name) {
-      this.errorMessage = "Site name is required";
+      this.errorMessage = this.t.siteNameRequired;
       return false;
     }
     if (name.length < 3) {
-      this.errorMessage = "Site name must be at least 3 characters";
+      this.errorMessage = this.t.siteNameMinLength;
       return false;
     }
     if (name.length > 50) {
-      this.errorMessage = "Site name must be less than 50 characters";
+      this.errorMessage = this.t.siteNameMaxLength;
       return false;
     }
     if (!/^[a-zA-Z0-9\s\-_]+$/.test(name)) {
-      this.errorMessage =
-        "Site name can only contain letters, numbers, spaces, hyphens, and underscores";
+      this.errorMessage = this.t.siteNameInvalidCharacters;
       return false;
     }
     this.errorMessage = "";
@@ -877,7 +909,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       }
     } catch (error) {
       if (!this.creationCancelled) {
-        this.errorMessage = "Failed to create site. Please try again.";
+        this.errorMessage = this.t.failedToCreateSite;
         this.currentStep = 1;
         this.isCreating = false;
         console.error("Site creation error:", error);
@@ -949,7 +981,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           typeof createResult.message === "string" &&
           createResult.message
             ? createResult.message
-            : "Site creation failed. Please try again.";
+            : this.t.siteCreationFailed;
         return;
       }
 
@@ -1172,7 +1204,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
               <div class="template-image">
                 <img
                   src="${this.source}"
-                  alt="${this.title} preview"
+                  alt="${this.t.templatePreview.replace("{title}", this.title)}"
                   loading="lazy"
                   decoding="async"
                   fetchpriority="high"
@@ -1187,7 +1219,9 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="siteName">Site Name</label>
+        <label class="form-label" for="siteName"
+          >${this.t.siteName}</label
+        >
         <simple-icon-lite
           class="form-icon"
           icon="icons:create"
@@ -1201,7 +1235,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
             this._handleSiteNameInput(e);
           }}"
           @keydown="${this.handleKeyDown}"
-          placeholder="Enter your site name..."
+          placeholder="${this.t.enterSiteName}"
           maxlength="50"
           required
         />
@@ -1221,10 +1255,10 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           ?disabled="${!this.siteName.trim() || this.errorMessage}"
         >
           <simple-icon-lite icon="icons:add-circle"></simple-icon-lite>
-          Create Site
+          ${this.t.createSite}
         </button>
         <button class="button button-secondary" @click="${this.closeModal}">
-          Cancel
+          ${this.t.cancel}
         </button>
       </div>
     `;
@@ -1233,7 +1267,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
   renderCreatingStep() {
     return html`
       <div class="progress-container">
-        <p class="progress-text">Creating your site...</p>
+        <p class="progress-text">${this.t.creatingYourSite}</p>
 
         <div class="hat-progress-container">
           <app-hax-simple-hat-progress
@@ -1257,7 +1291,10 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           ></div>
         </div>
         <div class="progress-percentage">
-          ${this.creationProgress}% complete
+          ${this.t.percentComplete.replace(
+            "{percent}",
+            this.creationProgress,
+          )}
         </div>
       </div>
     `;
@@ -1272,9 +1309,9 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
             .max="100"
           ></app-hax-simple-hat-progress>
         </div>
-        <h2 class="success-title">Site Created Successfully!</h2>
+        <h2 class="success-title">${this.t.siteCreatedSuccessfully}</h2>
         <p class="success-subtitle">
-          Your new site "${this.siteName}" is ready to use.
+          ${this.t.newSiteReady.replace("{siteName}", this.siteName)}
         </p>
       </div>
     `;
@@ -1285,11 +1322,11 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       <div class="button-group">
         <button class="button button-secondary" @click="${this.closeModal}">
           <simple-icon-lite icon="icons:home"></simple-icon-lite>
-          Stay Here
+          ${this.t.stayHere}
         </button>
         <button class="button button-success" @click="${this.goToSite}">
           <simple-icon-lite icon="icons:launch"></simple-icon-lite>
-          Go to Site
+          ${this.t.goToSite}
         </button>
       </div>
     `;
@@ -1306,16 +1343,16 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         <div class="modal-header">
           <h2 class="modal-title">
             ${this.currentStep === 1
-              ? "Create New Site"
+              ? this.t.createNewSite
               : this.currentStep === 2
-                ? "Creating Site..."
-                : "Site Created!"}
+                ? this.t.creatingSiteEllipsis
+                : this.t.siteCreatedExclaim}
           </h2>
           <button
             class="close-button"
             @click="${this.closeModal}"
             ?disabled="${this.isCreating}"
-            aria-label="Close modal"
+            aria-label="${this.t.closeModal}"
           >
             <simple-icon-lite icon="icons:close"></simple-icon-lite>
           </button>

@@ -1,9 +1,10 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 
-export class SortingOption extends DDDSuper(LitElement) {
+export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
     return "sorting-option";
@@ -46,6 +47,18 @@ export class SortingOption extends DDDSuper(LitElement) {
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      answerInCorrectOrder: "Answer is in correct order",
+      answerInIncorrectOrder: "Answer is in incorrect order",
+      moveOptionUp: "Select to move option up in order",
+      moveOptionDown: "Select to move option down in order",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.dragging = false;
     this.disabled = false;
     this.addEventListener("mousedown", this.getCurrentPosition);
@@ -345,9 +358,9 @@ export class SortingOption extends DDDSuper(LitElement) {
           ? html`<simple-icon-lite
               class="icon"
               icon="${this.correct ? "check" : "clear"}"
-              title="Answer is in ${this.correct
-                ? "correct"
-                : "incorrect"} order"
+              title="${this.correct
+                ? this.t.answerInCorrectOrder
+                : this.t.answerInIncorrectOrder}"
             ></simple-icon-lite>`
           : html`<div class="icon"></div>`}
       </div>
@@ -358,14 +371,14 @@ export class SortingOption extends DDDSuper(LitElement) {
           ?disabled="${this.disabled}"
           icon="arrow-upward"
           @click="${this.arrowSort}"
-          title="Select to move option up in order"
+          title="${this.t.moveOptionUp}"
         ></simple-icon-button-lite>
         <simple-icon-button-lite
           id="downArrow"
           ?disabled="${this.disabled}"
           icon="arrow-downward"
           @click="${this.arrowSort}"
-          title="Select to move option down in order"
+          title="${this.t.moveOptionDown}"
         ></simple-icon-button-lite>
       </div>
     `;

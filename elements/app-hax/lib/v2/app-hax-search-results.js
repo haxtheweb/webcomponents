@@ -1,5 +1,6 @@
 /* eslint-disable no-return-assign */
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { html, css } from "lit";
 import { autorun, toJS } from "mobx";
 import { varGet } from "@haxtheweb/utils/lib/object-path.js";
@@ -8,7 +9,7 @@ import "./app-hax-site-bar.js";
 import "./app-hax-site-details.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
-export class AppHaxSearchResults extends SimpleColors {
+export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
     return "app-hax-search-results";
@@ -16,6 +17,23 @@ export class AppHaxSearchResults extends SimpleColors {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      siteResultsCarousel: "Site results carousel",
+      previous: "Previous",
+      previousSites: "Previous sites",
+      viewPreviousSites: "View previous sites in the carousel",
+      next: "Next",
+      nextSites: "Next sites",
+      viewNextSites: "View next sites in the carousel",
+      noResults: "No results",
+      noResultsCreateNewSite: "No results, Create a new site!",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.searchItems = [];
     this.displayItems = [];
     this.searchTerm = "";
@@ -440,23 +458,23 @@ export class AppHaxSearchResults extends SimpleColors {
       <div
         class="carousel-container"
         role="region"
-        aria-label="Site results carousel"
+        aria-label="${this.t.siteResultsCarousel}"
         aria-live="polite"
       >
         <simple-tooltip for="scroll-left-btn" position="top"
-          >Previous</simple-tooltip
+          >${this.t.previous}</simple-tooltip
         >
         <button
           id="scroll-left-btn"
           class="scroll-left"
           @click="${this.scrollLeft}"
           ?disabled="${this.isAtStart || this.totalItems <= 1}"
-          aria-label="Previous sites"
+          aria-label="${this.t.previousSites}"
           aria-describedby="scroll-left-desc"
         >
           ◀
           <span id="scroll-left-desc" class="sr-only"
-            >View previous sites in the carousel</span
+            >${this.t.viewPreviousSites}</span
           >
         </button>
         <ul id="results" @scroll="${this.handleScroll}">
@@ -508,26 +526,26 @@ export class AppHaxSearchResults extends SimpleColors {
         </ul>
         ${itemsToRender.length === 0
           ? html`<div id="noResult" role="status" aria-live="polite">
-              No
-              results${this.searchTerm !== ""
-                ? html`<strong>"${this.searchTerm}"</strong>`
-                : ", Create a new site!"}
+              ${this.searchTerm !== ""
+                ? html`${this.t
+                      .noResults}<strong>"${this.searchTerm}"</strong>`
+                : this.t.noResultsCreateNewSite}
             </div>`
           : ``}
         <simple-tooltip for="scroll-right-btn" position="top"
-          >Next</simple-tooltip
+          >${this.t.next}</simple-tooltip
         >
         <button
           id="scroll-right-btn"
           class="scroll-right"
           @click="${this.scrollRight}"
           ?disabled="${this.isAtEnd || this.totalItems <= 1}"
-          aria-label="Next sites"
+          aria-label="${this.t.nextSites}"
           aria-describedby="scroll-right-desc"
         >
           ▶
           <span id="scroll-right-desc" class="sr-only"
-            >View next sites in the carousel</span
+            >${this.t.viewNextSites}</span
           >
         </button>
       </div>

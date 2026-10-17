@@ -732,7 +732,7 @@ class CleanTwo extends LTIResizingMixin(
   render() {
     return html`
       <div class="body-wrapper">
-        <a class="skip-link" href="#contentcontainer">Skip to content</a>
+        <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
         <div class="left-col" part="left-col">${this.HAXCMSMobileMenu()}</div>
         <div class="content-wrapper">
           <div class="content">
@@ -753,9 +753,9 @@ class CleanTwo extends LTIResizingMixin(
                 @site-modal-click="${this.siteModalClick}"
                 ?disabled="${this.editMode}"
                 icon="icons:search"
-                title="Search site"
+                title="${this.t.searchSite}"
                 class="search-modal-btn"
-                button-label="Search"
+                button-label="${this.t.search}"
                 part="search-btn"
                 position="right"
               >
@@ -827,7 +827,7 @@ class CleanTwo extends LTIResizingMixin(
                     @label-changed="${this.__prevPageLabelChanged}"
                   >
                     <div slot="suffix" class="wrapper">
-                      <div class="top">Previous</div>
+                      <div class="top">${this.t.previous}</div>
                       <div class="bottom">${this.prevPage}</div>
                     </div>
                   </site-menu-button>
@@ -839,7 +839,7 @@ class CleanTwo extends LTIResizingMixin(
                     @label-changed="${this.__nextPageLabelChanged}"
                   >
                     <div slot="prefix" class="wrapper">
-                      <div class="top">Next</div>
+                      <div class="top">${this.t.next}</div>
                       <div class="bottom">${this.nextPage}</div>
                     </div>
                   </site-menu-button>
@@ -847,7 +847,7 @@ class CleanTwo extends LTIResizingMixin(
               </div>
               <div class="footer" part="footer">
                 <div class="footer-left" part="footer-left">
-                  Last updated
+                  ${this.t.lastUpdated}
                   <replace-tag with="simple-datetime" import-only></replace-tag>
                   <simple-datetime
                     unix
@@ -917,6 +917,16 @@ class CleanTwo extends LTIResizingMixin(
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      searchSite: "Search site",
+      search: "Search",
+      previous: "Previous",
+      next: "Next",
+      lastUpdated: "Last updated",
+    };
     this.xl = 1800;
     this.HAXCMSThemeSettings.autoScroll = true;
     this.searchTerm = "";

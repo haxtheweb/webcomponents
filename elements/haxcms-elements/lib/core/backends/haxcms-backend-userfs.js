@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { FileSystemBrokerSingleton } from "@haxtheweb/file-system-broker/file-system-broker.js";
 import {
   store,
@@ -20,7 +21,7 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
  * @microcopy - the mental model for this element
  * - jwt - a JSON Web Token used as an encrypted security token for communication
  */
-class HAXCMSBackendUserfs extends LitElement {
+class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -54,6 +55,20 @@ class HAXCMSBackendUserfs extends LitElement {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      pageUpdated: "Page updated!",
+      outlineSaved: "Outline saved!",
+      seoSettingsSaved: "SEO settings saved!",
+      titleDeleted: "{title} deleted",
+      titleCreated: "{title} created!",
+      detailsSaved: "Details saved!",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     // file object references so we can load and work with read/write ops
     this.fileObjects = {};
     this.fileRoot = "";
@@ -200,7 +215,7 @@ class HAXCMSBackendUserfs extends LitElement {
         await HAXStore.activeHaxBody.haxToContent(),
       )
     ) {
-      store.toast("Page updated!");
+      store.toast(this.t.pageUpdated);
       store.cmsSiteEditor.instance.dispatchEvent(
         new CustomEvent("haxcms-trigger-update", {
           bubbles: true,
@@ -229,7 +244,7 @@ class HAXCMSBackendUserfs extends LitElement {
     this.manifest.items = e.detail;
     // .write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.toast("Outline saved!");
+    store.toast(this.t.outlineSaved);
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -676,7 +691,7 @@ class HAXCMSBackendUserfs extends LitElement {
     }
     // write to site json
     //.write("site.json", JSON.stringify(this.manifest, null, 2));
-    store.toast("SEO settings saved!");
+    store.toast(this.t.seoSettingsSaved);
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -712,7 +727,7 @@ class HAXCMSBackendUserfs extends LitElement {
     });
     //.write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.toast(`${page.title} deleted`);
+    store.toast(this.t.titleDeleted.replace("{title}", page.title));
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -769,7 +784,7 @@ class HAXCMSBackendUserfs extends LitElement {
     // write to site json
     //.write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.toast(`${page.title} created!`);
+    store.toast(this.t.titleCreated.replace("{title}", page.title));
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -832,7 +847,7 @@ class HAXCMSBackendUserfs extends LitElement {
     // write to site json
     //.write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.toast("Details saved!");
+    store.toast(this.t.detailsSaved);
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,

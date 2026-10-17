@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `ddd-steps-list-item`
@@ -11,14 +12,31 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  * @demo index.html
  * @element ddd-steps-list-item
  */
-export class CareerRoleItem extends DDDSuper(LitElement) {
+export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
   static get tag() {
     return "career-role-item";
   }
 
   constructor() {
     super();
-    this.title = "Role Title";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      roleTitle: "Role Title",
+      describeYourRole: "Describe your role here...",
+      present: "Present",
+      skills: "Skills:",
+      skillsAndMore: "{skills} and +{count} more",
+      yearShort: "{count} yr",
+      yearsShort: "{count} yrs",
+      monthShort: "{count} mo",
+      monthsShort: "{count} mos",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
+    this.title = this.t.roleTitle;
     this.startDate = new Date().toISOString();
     this.endDate = new Date().toISOString();
     this.skills = [];
@@ -172,7 +190,7 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
     // Force a contenteditable primitive if there's nothing in the slot
     if (this.children.length === 0) {
       const p = globalThis.document.createElement("p");
-      p.textContent = "Describe your role here...";
+      p.textContent = this.t.describeYourRole;
       this.appendChild(p);
     }
   }
@@ -232,8 +250,8 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
     }
 
     // Accounting for proper grammar with small values
-    totalYears = totalYears > 1 ? `${totalYears} yrs` : `${totalYears} yr`;
-    totalMonths = totalMonths > 1 ? `${totalMonths} mos` : `${totalMonths} mo`
+    totalYears = (totalYears > 1 ? this.t.yearsShort : this.t.yearShort).replace("{count}", totalYears);
+    totalMonths = (totalMonths > 1 ? this.t.monthsShort : this.t.monthShort).replace("{count}", totalMonths);
 
     // Using a 3-letter short format for the months
     const shortDate = new Intl.DateTimeFormat('en-US', {
@@ -243,7 +261,7 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
 
     const shortStart = shortDate.format(startDateObj);
     // If there's no explicit end date, interpret as ongoing role
-    const shortEnd = hasEndDate ? shortDate.format(endDateObj) : "Present";
+    const shortEnd = hasEndDate ? shortDate.format(endDateObj) : this.t.present;
 
     return `${shortStart} - ${shortEnd} · ${totalYears} ${totalMonths}`;
   }
@@ -255,10 +273,10 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
     const skills = this.skills.map(item => item.name);
     // We don't want the list to be too long, especially with long skills names. This cuts off at 5 skills.
     // TODO: Include full list in <career-timeline> export mode.
-    const output = skills.length > 5 ? `${skills.slice(0, 5).join(' · ')} and +${skills.length - 5} more`
+    const output = skills.length > 5 ? this.t.skillsAndMore.replace("{skills}", skills.slice(0, 5).join(' · ')).replace("{count}", skills.length - 5)
       : skills.join(' · ');
 
-    return html`<div class="skills">Skills:</div> ${output}`
+    return html`<div class="skills">${this.t.skills}</div> ${output}`
   }
 
   static get haxProperties() {

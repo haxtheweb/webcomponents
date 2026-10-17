@@ -890,7 +890,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
         <nav
           id="haxcmsmobilemenunav-mirror"
           role="navigation"
-          aria-label="Site navigation"
+          aria-label="${this.t.siteNavigation}"
           aria-labelledby="sitemenu-mirror"
           itemscope
           itemtype="http://schema.org/SiteNavigationElement"
@@ -936,7 +936,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
   // render function
   render() {
     return html`
-      <a class="skip-link" href="#main">Skip to content</a>
+      <a class="skip-link" href="#main">${this.t.skipToContent}</a>
       <div id="haxcms-theme-top"></div>
       <header itemscope itemtype="http://schema.org/WPHeader">
         <div class="wrap">
@@ -948,9 +948,9 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
                 .part="${this.editMode ? `edit-mode-active` : ``}"
                 ?disabled="${this.editMode}"
                 icon="icons:search"
-                title="Search site"
+                title="${this.t.searchSite}"
                 class="search-modal-btn"
-                button-label="Search"
+                button-label="${this.t.search}"
                 part="search-btn"
                 position="left"
               >
@@ -1083,6 +1083,14 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      searchSite: "Search site",
+      search: "Search",
+      siteNavigation: "Site navigation",
+    };
     // helps with user preference on side of screen for the tray
     this.haxTrayAlignment = localStorageGet("hax-tray-elementAlign");
     this.windowControllersLoaded = new AbortController();

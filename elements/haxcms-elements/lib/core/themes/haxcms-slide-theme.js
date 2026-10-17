@@ -10,17 +10,30 @@ import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `haxcms-slide-theme`
  * `A simple slide playing theme`
  *
  * @demo demo/index.html
  */
-class HAXCMSSlideTheme extends DDDSuper(
-  SimpleColorsSuper(HAXCMSLitElementTheme),
+class HAXCMSSlideTheme extends I18NMixin(
+  DDDSuper(SimpleColorsSuper(HAXCMSLitElementTheme)),
 ) {
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      previous: "Previous",
+      next: "Next",
+      printSlide: "Print slide",
+      printAllSlides: "Print All slides",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     // do NOT reassign this.__disposer here: HAXCMSLitElementTheme's
     // constructor already created it and pushed its constructor-time
     // autoruns (editMode/trayStatus/activeItemContent) into it; a fresh
@@ -202,7 +215,7 @@ class HAXCMSSlideTheme extends DDDSuper(
         <div class="controls">
           <site-menu-button
             type="prev"
-            label="Previous"
+            label="${this.t.previous}"
             position="top"
           ></site-menu-button>
           <div class="counter">
@@ -210,7 +223,7 @@ class HAXCMSSlideTheme extends DDDSuper(
           </div>
           <site-menu-button
             type="next"
-            label="Next"
+            label="${this.t.next}"
             position="top"
           ></site-menu-button>
         </div>
@@ -219,12 +232,12 @@ class HAXCMSSlideTheme extends DDDSuper(
           <site-title></site-title>
           <site-print-button
             type="page"
-            label="Print slide"
+            label="${this.t.printSlide}"
             position="top"
           ></site-print-button>
           <site-print-button
             type="site"
-            label="Print All slides"
+            label="${this.t.printAllSlides}"
             position="top"
           ></site-print-button>
           <site-active-title></site-active-title>

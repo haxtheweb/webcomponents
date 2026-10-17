@@ -37,6 +37,7 @@
     "@haxtheweb/deduping-fix": "^26.8.0",
     "@haxtheweb/figure-label": "^26.8.0",
     "@haxtheweb/haxcms-elements": "^26.8.0",
+    "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/media-image": "^26.8.0",
     "@haxtheweb/page-section": "^26.8.0",
     "@haxtheweb/self-check": "^26.8.0",

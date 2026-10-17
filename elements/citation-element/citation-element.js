@@ -4,6 +4,7 @@ import { licenseList } from "@haxtheweb/license-element/license-element.js";
 import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDReset } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `citation-element`
  * An element dedicated to presenting and managing a correct citation on the web
@@ -11,7 +12,7 @@ import { DDDReset } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
  * @demo demo/index.html
  * @element citation-element
  */
-class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
+class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -74,36 +75,56 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         content="License: ${this.licenseName}"
       />
       <cite
-        ><a
-          target="_blank"
-          rel="noopener noreferrer"
-          class="license-link"
-          href="${this.source}"
-          property="oer:name"
-          content="${this.title}"
-          >${this.title}</a
-        >
-        by
-        ${this.creator}${this.licenseName
-          ? html`, licensed under
-              <a
-                class="license-link"
-                rel="noopener noreferrer"
-                target="_blank"
-                href="${this.licenseLink}"
-                ><img
-                  loading="lazy"
-                  alt="${this.licenseName} graphic"
-                  src="${this.licenseImage}"
-                  ?hidden="${!this.licenseImage}"
-                  width="44px"
-                  height="16px"
-                />${this.licenseName}</a
-              >`
-          : ``}.
-        Accessed <span class="license-link">${this.date}</span>.</cite
+        >${this._fillTemplate(
+          this.licenseName
+            ? this.t.citationWithLicense
+            : this.t.citationWithoutLicense,
+          {
+            title: html`<a
+              target="_blank"
+              rel="noopener noreferrer"
+              class="license-link"
+              href="${this.source}"
+              property="oer:name"
+              content="${this.title}"
+              >${this.title}</a
+            >`,
+            creator: this.creator,
+            license: html`<a
+              class="license-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="${this.licenseLink}"
+              ><img
+                loading="lazy"
+                alt="${this.t.licenseGraphic.replace(
+                  "{license}",
+                  this.licenseName,
+                )}"
+                src="${this.licenseImage}"
+                ?hidden="${!this.licenseImage}"
+                width="44px"
+                height="16px"
+              />${this.licenseName}</a
+            >`,
+            date: html`<span class="license-link">${this.date}</span>`,
+          },
+        )}</cite
       >
     `;
+  }
+  /**
+   * splits a translated sentence on {placeholders} and swaps in the
+   * matching values (strings or templates) so links stay inside one string
+   */
+  _fillTemplate(str, values) {
+    return str.split(/(\{[a-zA-Z]+\})/).map((part) => {
+      const match = part.match(/^\{([a-zA-Z]+)\}$/);
+      if (match && Object.prototype.hasOwnProperty.call(values, match[1])) {
+        return values[match[1]];
+      }
+      return part;
+    });
   }
   /**
    * convention
@@ -116,6 +137,18 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      citationWithLicense:
+        "{title} by {creator}, licensed under {license}. Accessed {date}.",
+      citationWithoutLicense: "{title} by {creator}. Accessed {date}.",
+      licenseGraphic: "{license} graphic",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.scope = "sibling";
     this.source = "";
     this.typeof = "oer:ReferencedMaterial";

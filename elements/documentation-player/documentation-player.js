@@ -8,6 +8,7 @@ import "@haxtheweb/play-list/play-list.js";
 import "@haxtheweb/code-sample/code-sample.js";
 import "@haxtheweb/code-editor/lib/code-pen-button.js";
 import { nodeToHaxElement } from "@haxtheweb/utils/utils.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `documentation-player`
@@ -15,12 +16,22 @@ import { nodeToHaxElement } from "@haxtheweb/utils/utils.js";
  * @demo demo/index.html
  * @element documentation-player
  */
-class DocumentationPlayer extends LitElement {
+class DocumentationPlayer extends I18NMixin(LitElement) {
   /**
    * HTMLElement
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      openPreviewSource: "Open preview source",
+      insertIntoYourSite: "Insert into your site",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.label = "";
     this.haxSchema = [];
     this.imageUrl = "";
@@ -88,7 +99,7 @@ class DocumentationPlayer extends LitElement {
           ${this.imageUrl
             ? html`<div>
                 <a href="${this.imageUrl}" rel="noopener" target="_blank"
-                  >Open preview source</a
+                  >${this.t.openPreviewSource}</a
                 >
               </div>`
             : nothing}
@@ -126,7 +137,7 @@ class DocumentationPlayer extends LitElement {
     // and we lose our events along the way.
     return html`
       <simple-icon-button-lite icon="settings" @click="${this._injectHAX}"
-        >Insert into your site</simple-icon-button-lite
+        >${this.t.insertIntoYourSite}</simple-icon-button-lite
       >
     `;
   }

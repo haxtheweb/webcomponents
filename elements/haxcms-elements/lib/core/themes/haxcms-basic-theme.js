@@ -5,12 +5,23 @@
 import { css } from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { BasicTemplate } from "@haxtheweb/haxcms-elements/lib/ui-components/templates/basic-template.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `haxcms-basic-theme`
  * `An incredibly basic theme.
  * @demo demo/index.html
  */
 class HAXCMSBasicTheme extends BasicTemplate(HAXCMSLitElementTheme) {
+  constructor() {
+    super();
+    // no I18NMixin in this class chain; BasicTemplate's strings live in the
+    // shared haxcms namespace
+    I18NManagerStore.registerLocalization({
+      context: this,
+      namespace: "haxcms",
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
+  }
   static get styles() {
     return [
       super.styles,

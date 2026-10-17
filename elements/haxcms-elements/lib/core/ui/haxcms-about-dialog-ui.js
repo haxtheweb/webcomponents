@@ -1,6 +1,7 @@
 import { html, css } from "lit";
 import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store, HAXcmsStore } from "../haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import {
@@ -10,7 +11,7 @@ import {
 import { _pageRouteVariantUrl } from "../utils/ExportPageProgram.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
-class HAXCMSAboutDialogUI extends DDD {
+class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-about-dialog-ui";
   }
@@ -22,6 +23,65 @@ class HAXCMSAboutDialogUI extends DDD {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      insertBlock: "Insert block",
+      heading1: "Heading 1",
+      heading2: "Heading 2",
+      heading3: "Heading 3",
+      heading4: "Heading 4",
+      heading5: "Heading 5",
+      heading6: "Heading 6",
+      numberedList: "Numbered list",
+      bulletedList: "Bulleted list",
+      horizontalRule: "Horizontal rule",
+      codeBlock: "Code block",
+      blockquote: "Blockquote",
+      insertTag: "Insert {tag}",
+      noShortcutsRegisteredForContext:
+        "No shortcuts are registered for this context.",
+      helpAndAbout: "Help & About",
+      aboutIntro:
+        "Keyboard shortcuts, tutorials, community and more to help you learn and grow HAX.",
+      aboutHaxAndCommunity: "About HAX and Community",
+      haxDescription:
+        "HAX is a web-native authoring system designed for accessible, modular content publishing across many delivery environments.",
+      projectOverview: "Project overview",
+      documentation: "Documentation",
+      joinTheHaxDiscordCommunity: "Join the HAX Discord community",
+      issueQueue: "Issue queue (bugs and feature requests)",
+      keyboardShortcuts: "Keyboard shortcuts",
+      keyboardShortcutsDescription:
+        "Registered centrally in HAXcms and shown by active context. Bindings use Ctrl+Shift+[Key]; in the editor, typing a markdown trigger then space converts the block. Type {slash} in an empty text block to open inline Search.",
+      global: "Global",
+      viewMode: "View mode",
+      editMode: "Edit mode",
+      searchShortcutBrowserPath: "Search shortcut browser path:",
+      tutorialsAndHowTo: "Tutorials and How-To",
+      tutorialsDescription:
+        "Start with guided tasks, then move to step-by-step tutorials.",
+      haxTutorials: "HAX tutorials",
+      customThemeDevelopmentDocs: "Custom theme development docs",
+      searchOnboardingPath: "Search onboarding path:",
+      apiLinks: "API Links",
+      apiLinksDescription:
+        "HAXcms can publish pages in machine-friendly formats so LLM tools can read and process your content with less cleanup.",
+      apiLinksFormats:
+        "Add {formats} to page URLs to request alternate page outputs.",
+      apiLinksLlms:
+        "Use {llms} as a model-facing index for this site, with links to key machine-readable resources.",
+      apiLinksPair:
+        "Pair {siteJson} (structure) with {searchIndex} (retrieval) for stronger AI-powered workflows.",
+      apiLinksOpenapi: "Explore the site API contract at {openapi}.",
+      learnMoreInTheHaxEcosystem: "Learn more in the HAX ecosystem:",
+      dataFormatsGuide: "Data formats guide",
+      haxAiOverview: "HAX AI overview",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.keyboardShortcuts = [];
     this.__disposer = [];
     this.__keyboardShortcutsUpdatedHandler =
@@ -86,40 +146,53 @@ class HAXCMSAboutDialogUI extends DDD {
       );
   }
 
+  /**
+   * Split a translated string on {placeholder} tokens and interleave the
+   * matching template values so links / code can live inside one sentence
+   */
+  _fillTemplate(text, values = {}) {
+    return text
+      .split(/(\{[a-zA-Z]+\})/)
+      .map((part) => {
+        const m = part.match(/^\{([a-zA-Z]+)\}$/);
+        return m && values[m[1]] !== undefined ? values[m[1]] : part;
+      });
+  }
+
   _handleKeyboardShortcutsUpdated() {
     this._loadKeyboardShortcuts();
   }
 
   _markdownShortcutDescription(shortcut) {
     if (!shortcut || !shortcut.tag) {
-      return "Insert block";
+      return this.t.insertBlock;
     }
     const tag = shortcut.tag.toLowerCase();
     switch (tag) {
       case "h1":
-        return "Heading 1";
+        return this.t.heading1;
       case "h2":
-        return "Heading 2";
+        return this.t.heading2;
       case "h3":
-        return "Heading 3";
+        return this.t.heading3;
       case "h4":
-        return "Heading 4";
+        return this.t.heading4;
       case "h5":
-        return "Heading 5";
+        return this.t.heading5;
       case "h6":
-        return "Heading 6";
+        return this.t.heading6;
       case "ol":
-        return "Numbered list";
+        return this.t.numberedList;
       case "ul":
-        return "Bulleted list";
+        return this.t.bulletedList;
       case "hr":
-        return "Horizontal rule";
+        return this.t.horizontalRule;
       case "code":
-        return "Code block";
+        return this.t.codeBlock;
       case "blockquote":
-        return "Blockquote";
+        return this.t.blockquote;
       default:
-        return `Insert ${tag}`;
+        return this.t.insertTag.replace("{tag}", tag);
     }
   }
 
@@ -132,7 +205,7 @@ class HAXCMSAboutDialogUI extends DDD {
   _renderShortcutList(shortcuts) {
     if (!shortcuts || shortcuts.length === 0) {
       return html`<p class="section-description">
-        No shortcuts are registered for this context.
+        ${this.t.noShortcutsRegisteredForContext}
       </p>`;
     }
     return html`<ul class="shortcut-list">
@@ -451,11 +524,8 @@ class HAXCMSAboutDialogUI extends DDD {
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
-          <h2>Help &amp; About</h2>
-          <p class="intro">
-            Keyboard shortcuts, tutorials, community and more to help you learn
-            and grow HAX.
-          </p>
+          <h2>${this.t.helpAndAbout}</h2>
+          <p class="intro">${this.t.aboutIntro}</p>
 
           <details class="section" open>
             <summary class="section-title">
@@ -464,21 +534,18 @@ class HAXCMSAboutDialogUI extends DDD {
                   icon="hax:hax2022"
                   aria-hidden="true"
                 ></simple-icon-lite>
-                <h3>About HAX and Community</h3>
+                <h3>${this.t.aboutHaxAndCommunity}</h3>
               </span>
             </summary>
             <div class="collapse-body">
-              <p class="section-description">
-                HAX is a web-native authoring system designed for accessible,
-                modular content publishing across many delivery environments.
-              </p>
+              <p class="section-description">${this.t.haxDescription}</p>
               <ul>
                 <li>
                   <a
                     href="https://haxtheweb.org/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >Project overview</a
+                    >${this.t.projectOverview}</a
                   >
                 </li>
                 <li>
@@ -486,7 +553,7 @@ class HAXCMSAboutDialogUI extends DDD {
                     href="https://haxtheweb.org/documentation"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >Documentation</a
+                    >${this.t.documentation}</a
                   >
                 </li>
                 <li>
@@ -494,7 +561,7 @@ class HAXCMSAboutDialogUI extends DDD {
                     href="https://discord.gg/aCGxmRHEJP"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >Join the HAX Discord community</a
+                    >${this.t.joinTheHaxDiscordCommunity}</a
                   >
                 </li>
                 <li>
@@ -502,7 +569,7 @@ class HAXCMSAboutDialogUI extends DDD {
                     href="https://github.com/haxtheweb/issues/issues"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >Issue queue (bugs and feature requests)</a
+                    >${this.t.issueQueue}</a
                   >
                 </li>
               </ul>
@@ -516,32 +583,31 @@ class HAXCMSAboutDialogUI extends DDD {
                   icon="hardware:keyboard"
                   aria-hidden="true"
                 ></simple-icon-lite>
-                <h3>Keyboard shortcuts</h3>
+                <h3>${this.t.keyboardShortcuts}</h3>
               </span>
             </summary>
             <div class="collapse-body">
               <p class="section-description">
-                Registered centrally in HAXcms and shown by active context.
-                Bindings use Ctrl+Shift+[Key]; in the editor, typing a markdown
-                trigger then space converts the block. Type
-                <code>/</code> in an empty text block to open inline Search.
+                ${this._fillTemplate(this.t.keyboardShortcutsDescription, {
+                  slash: html`<code>/</code>`,
+                })}
               </p>
               <div class="shortcut-groups">
                 <div class="shortcut-group">
-                  <h4>Global</h4>
+                  <h4>${this.t.global}</h4>
                   ${this._renderShortcutList(globalShortcuts)}
                 </div>
                 <div class="shortcut-group">
-                  <h4>View mode</h4>
+                  <h4>${this.t.viewMode}</h4>
                   ${this._renderShortcutList(viewShortcuts)}
                 </div>
                 <div class="shortcut-group">
-                  <h4>Edit mode</h4>
+                  <h4>${this.t.editMode}</h4>
                   ${this._renderShortcutList(editShortcuts)}
                 </div>
               </div>
               <p class="section-description">
-                Search shortcut browser path:
+                ${this.t.searchShortcutBrowserPath}
                 <code>CMS/help/keyboard-shortcuts</code>
               </p>
             </div>
@@ -554,20 +620,18 @@ class HAXCMSAboutDialogUI extends DDD {
                   icon="hax:page-edit"
                   aria-hidden="true"
                 ></simple-icon-lite>
-                <h3>Tutorials and How-To</h3>
+                <h3>${this.t.tutorialsAndHowTo}</h3>
               </span>
             </summary>
             <div class="collapse-body">
-              <p class="section-description">
-                Start with guided tasks, then move to step-by-step tutorials.
-              </p>
+              <p class="section-description">${this.t.tutorialsDescription}</p>
               <ul>
                 <li>
                   <a
                     href="https://haxtheweb.org/tutorials"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >HAX tutorials</a
+                    >${this.t.haxTutorials}</a
                   >
                 </li>
                 <li>
@@ -575,10 +639,12 @@ class HAXCMSAboutDialogUI extends DDD {
                     href="https://haxtheweb.org/documentation/developers/haxsite/custom-theme-development"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >Custom theme development docs</a
+                    >${this.t.customThemeDevelopmentDocs}</a
                   >
                 </li>
-                <li>Search onboarding path: <code>CMS/welcome</code></li>
+                <li>
+                  ${this.t.searchOnboardingPath} <code>CMS/welcome</code>
+                </li>
               </ul>
             </div>
           </details>
@@ -590,18 +656,15 @@ class HAXCMSAboutDialogUI extends DDD {
                   icon="hax:hax2022"
                   aria-hidden="true"
                 ></simple-icon-lite>
-                <h3>API Links</h3>
+                <h3>${this.t.apiLinks}</h3>
               </span>
             </summary>
             <div class="collapse-body">
-              <p class="section-description">
-                HAXcms can publish pages in machine-friendly formats so LLM
-                tools can read and process your content with less cleanup.
-              </p>
+              <p class="section-description">${this.t.apiLinksDescription}</p>
               <ul>
                 <li>
-                  Add
-                  <a
+                  ${this._fillTemplate(this.t.apiLinksFormats, {
+                    formats: html`<a
                     href="${this._currentPageFormatHref("html")}"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -630,51 +693,50 @@ class HAXCMSAboutDialogUI extends DDD {
                     target="_blank"
                     rel="noopener noreferrer"
                     ><code>.xml</code></a
-                  >
-                  to page URLs to request alternate page outputs.
+                  >`,
+                  })}
                 </li>
                 <li>
-                  Use
-                  <a
-                    href="${this._currentSiteResourceHref("llms.txt")}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><code>/llms.txt</code></a
-                  >
-                  as a model-facing index for this site, with links to key
-                  machine-readable resources.
+                  ${this._fillTemplate(this.t.apiLinksLlms, {
+                    llms: html`<a
+                      href="${this._currentSiteResourceHref("llms.txt")}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><code>/llms.txt</code></a
+                    >`,
+                  })}
                 </li>
                 <li>
-                  Pair
-                  <a
-                    href="${this._currentSiteResourceHref("site.json")}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><code>/site.json</code></a
-                  >
-                  (structure) with
-                  <a
-                    href="${this._currentSiteResourceHref(
-                      "lunrSearchIndex.json",
-                    )}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><code>/lunrSearchIndex.json</code></a
-                  >
-                  (retrieval) for stronger AI-powered workflows.
+                  ${this._fillTemplate(this.t.apiLinksPair, {
+                    siteJson: html`<a
+                      href="${this._currentSiteResourceHref("site.json")}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><code>/site.json</code></a
+                    >`,
+                    searchIndex: html`<a
+                      href="${this._currentSiteResourceHref(
+                        "lunrSearchIndex.json",
+                      )}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><code>/lunrSearchIndex.json</code></a
+                    >`,
+                  })}
                 </li>
                 <li>
-                  Explore the site API contract at
-                  <a
-                    href="${this._currentSiteResourceHref("x/api/openapi")}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><code>/x/api/openapi</code></a
-                  >.
+                  ${this._fillTemplate(this.t.apiLinksOpenapi, {
+                    openapi: html`<a
+                      href="${this._currentSiteResourceHref("x/api/openapi")}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><code>/x/api/openapi</code></a
+                    >`,
+                  })}
                 </li>
               </ul>
               <p class="section-description">
-                Learn more in the HAX ecosystem:
+                ${this.t.learnMoreInTheHaxEcosystem}
               </p>
               <ul>
                 <li>
@@ -682,7 +744,7 @@ class HAXCMSAboutDialogUI extends DDD {
                     href="https://haxtheweb.org/documentation/data-formats"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >Data formats guide</a
+                    >${this.t.dataFormatsGuide}</a
                   >
                 </li>
                 <li>
@@ -706,7 +768,7 @@ class HAXCMSAboutDialogUI extends DDD {
                     href="https://haxtheweb.org/hax-lab/hax-ai"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >HAX AI overview</a
+                    >${this.t.haxAiOverview}</a
                   >
                 </li>
               </ul>

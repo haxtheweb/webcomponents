@@ -1,5 +1,6 @@
 import { html, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { varExists } from "@haxtheweb/utils/lib/object-path.js";
 import { autorun, toJS } from "mobx";
@@ -11,7 +12,7 @@ import { autorun, toJS } from "mobx";
  * @microcopy - the mental model for this element
  * - footer of the page for blog posts relating back to the main overview page
  */
-class SimpleBlogFooter extends SimpleColors {
+class SimpleBlogFooter extends I18NMixin(SimpleColors) {
   /**
    * LitElement style render
    */
@@ -189,7 +190,9 @@ class SimpleBlogFooter extends SimpleColors {
           ></simple-datetime>
           <span slot="prefix">${this.nextTitle}</span>
         </site-menu-button>
-        <button raised @click="${this._backButtonTap}">Back to list</button>
+        <button raised @click="${this._backButtonTap}">
+          ${this.t.backToList}</button
+        >
         <h2 class="blog-title">
           ${varExists(this.manifest, "title") ? this.manifest.title : ""}
         </h2>
@@ -269,6 +272,15 @@ class SimpleBlogFooter extends SimpleColors {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      backToList: "Back to list",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.prevTitle = "";
     this.prevChanged = "";
     this.nextTitle = "";
