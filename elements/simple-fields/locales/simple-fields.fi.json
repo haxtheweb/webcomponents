@@ -11,5 +11,6 @@
   "stopSave": "Lopeta ja tallenna",
   "clickToTakePhoto": "Ota kuva napsauttamalla",
   "url": "URL",
-  "open": "avaa"
+  "open": "avaa",
+  "removeValue": "Poista {value}"
 }

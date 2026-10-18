@@ -11,5 +11,6 @@
   "stopSave": "நிறுத்தி சேமி",
   "clickToTakePhoto": "புகைப்படம் எடுக்க கிளிக் செய்யவும்",
   "url": "URL",
-  "open": "திற"
+  "open": "திற",
+  "removeValue": "{value} ஐ அகற்று"
 }

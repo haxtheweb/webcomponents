@@ -11,5 +11,6 @@
   "stopSave": "Atura i desa",
   "clickToTakePhoto": "Feu clic per fer una foto",
   "url": "URL",
-  "open": "obre"
+  "open": "obre",
+  "removeValue": "Elimina {value}"
 }

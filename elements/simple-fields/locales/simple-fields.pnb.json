@@ -11,5 +11,6 @@
   "stopSave": "بند کرو تے محفوظ کرو",
   "clickToTakePhoto": "تصویر لین لئی کلک کرو",
   "url": "URL",
-  "open": "کھولو"
+  "open": "کھولو",
+  "removeValue": "{value} ہٹاؤ"
 }

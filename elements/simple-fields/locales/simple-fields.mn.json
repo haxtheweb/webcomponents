@@ -11,5 +11,6 @@
   "stopSave": "Зогсоож хадгалах",
   "clickToTakePhoto": "Зураг авахын тулд дарна уу",
   "url": "URL",
-  "open": "нээх"
+  "open": "нээх",
+  "removeValue": "{value}-г устгах"
 }

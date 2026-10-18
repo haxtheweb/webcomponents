@@ -37,5 +37,6 @@
   "moreDetails": "Толук маалымат",
   "details": "Маалымат",
   "saved": "Сакталды",
-  "opensInNewWindow": "Жаңы терезеде ачылат"
+  "opensInNewWindow": "Жаңы терезеде ачылат",
+  "resultsCount": "{count} натыйжа"
 }

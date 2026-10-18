@@ -37,5 +37,6 @@
   "moreDetails": "Eminye imininingwane",
   "details": "Imininingwane",
   "saved": "Kugcinwe",
-  "opensInNewWindow": "Kuvuleka ewindini elisha"
+  "opensInNewWindow": "Kuvuleka ewindini elisha",
+  "resultsCount": "Imiphumela engu-{count}"
 }

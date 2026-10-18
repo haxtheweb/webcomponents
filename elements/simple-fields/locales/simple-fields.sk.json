@@ -11,5 +11,6 @@
   "stopSave": "Zastaviť a uložiť",
   "clickToTakePhoto": "Kliknutím odfotiť",
   "url": "URL",
-  "open": "otvoriť"
+  "open": "otvoriť",
+  "removeValue": "Odstrániť {value}"
 }

@@ -11,5 +11,6 @@
   "stopSave": "ရပ်ပြီး သိမ်းရန်",
   "clickToTakePhoto": "ဓာတ်ပုံရိုက်ရန် နှိပ်ပါ",
   "url": "URL",
-  "open": "ဖွင့်ရန်"
+  "open": "ဖွင့်ရန်",
+  "removeValue": "{value} ကို ဖယ်ရှားရန်"
 }

@@ -37,5 +37,6 @@
   "moreDetails": "Fleiri upplýsingar",
   "details": "Upplýsingar",
   "saved": "Vistað",
-  "opensInNewWindow": "Opnast í nýjum glugga"
+  "opensInNewWindow": "Opnast í nýjum glugga",
+  "resultsCount": "{count} niðurstöður"
 }

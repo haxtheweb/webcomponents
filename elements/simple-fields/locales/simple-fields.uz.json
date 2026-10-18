@@ -11,5 +11,6 @@
   "stopSave": "To‘xtatish va saqlash",
   "clickToTakePhoto": "Surat olish uchun bosing",
   "url": "URL",
-  "open": "ochish"
+  "open": "ochish",
+  "removeValue": "{value} ni olib tashlash"
 }

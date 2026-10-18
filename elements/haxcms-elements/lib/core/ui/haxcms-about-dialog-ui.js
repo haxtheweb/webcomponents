@@ -752,7 +752,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
                     href="https://haxtheweb.org/documentation/developers/schema/json-outline-schema"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >JSON Outline Schema</a
+                    >JSON Outline Schema<!-- i18n-ignore: specification name --></a
                   >
                 </li>
                 <li>
@@ -760,7 +760,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
                     href="https://haxtheweb.org/documentation/oer-schema"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >OER Schema</a
+                    >OER Schema<!-- i18n-ignore: specification name --></a
                   >
                 </li>
                 <li>

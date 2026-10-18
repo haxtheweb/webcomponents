@@ -37,5 +37,6 @@
   "moreDetails": "Zambiri",
   "details": "Tsatanetsatane",
   "saved": "Yasungidwa",
-  "opensInNewWindow": "Imatseguka pa zenera latsopano"
+  "opensInNewWindow": "Imatseguka pa zenera latsopano",
+  "resultsCount": "Zotsatira {count}"
 }

@@ -11,5 +11,6 @@
   "stopSave": "Oprește și salvează",
   "clickToTakePhoto": "Faceți clic pentru a face o fotografie",
   "url": "URL",
-  "open": "deschide"
+  "open": "deschide",
+  "removeValue": "Elimină {value}"
 }

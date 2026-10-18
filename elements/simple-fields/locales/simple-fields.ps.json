@@ -11,5 +11,6 @@
   "stopSave": "ودروئ او خوندي کړئ",
   "clickToTakePhoto": "د انځور اخیستلو لپاره کلیک وکړئ",
   "url": "URL",
-  "open": "پرانیستل"
+  "open": "پرانیستل",
+  "removeValue": "{value} لرې کړئ"
 }

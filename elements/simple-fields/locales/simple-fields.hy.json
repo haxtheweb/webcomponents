@@ -11,5 +11,6 @@
   "stopSave": "Կանգնեցնել և պահպանել",
   "clickToTakePhoto": "Սեղմեք՝ լուսանկարելու համար",
   "url": "URL",
-  "open": "բացել"
+  "open": "բացել",
+  "removeValue": "Հեռացնել {value}"
 }

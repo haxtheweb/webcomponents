@@ -37,5 +37,6 @@
   "moreDetails": "Batafsil ma'lumot",
   "details": "Tafsilotlar",
   "saved": "Saqlandi",
-  "opensInNewWindow": "Yangi oynada ochiladi"
+  "opensInNewWindow": "Yangi oynada ochiladi",
+  "resultsCount": "{count} ta natija"
 }

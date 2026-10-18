@@ -11,5 +11,6 @@
   "stopSave": "Тоқтату және сақтау",
   "clickToTakePhoto": "Суретке түсіру үшін басыңыз",
   "url": "URL",
-  "open": "ашу"
+  "open": "ашу",
+  "removeValue": "{value} жою"
 }

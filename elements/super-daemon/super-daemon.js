@@ -81,6 +81,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   constructor() {
     super();
     this.t = {
+      // product name; no locale entries, so it stays "Super Daemon" unless a language adds one
+      superDaemon: "Super Daemon",
       toggleSantaMode: "Toggle Santa Mode",
       santaModeDescription:
         "He sees you when your sleeping, he knows when your awake, and with this command active he is always listening for input ready to respond. He's.. Santa Merlin. Ho..Ho...Ho.",
@@ -1319,7 +1321,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
             center
             role="dialog"
             part="dialog"
-            aria-label="Super Daemon"
+            aria-label="${this.t.superDaemon}"
             aria-modal="true"
             ?open="${this.opened}"
             @open="${this.open}"

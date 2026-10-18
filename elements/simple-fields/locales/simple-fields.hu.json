@@ -11,5 +11,6 @@
   "stopSave": "Leállítás és mentés",
   "clickToTakePhoto": "Kattintson fénykép készítéséhez",
   "url": "URL",
-  "open": "megnyitás"
+  "open": "megnyitás",
+  "removeValue": "{value} eltávolítása"
 }

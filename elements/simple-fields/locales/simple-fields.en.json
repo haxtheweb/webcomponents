@@ -11,5 +11,6 @@
   "stopSave": "Stop & Save",
   "clickToTakePhoto": "Click to take photo",
   "url": "URL",
-  "open": "open"
+  "open": "open",
+  "removeValue": "Remove {value}"
 }

@@ -37,5 +37,6 @@
   "moreDetails": "Tuilleadh sonraí",
   "details": "Sonraí",
   "saved": "Sábháilte",
-  "opensInNewWindow": "Osclaíonn sé i bhfuinneog nua"
+  "opensInNewWindow": "Osclaíonn sé i bhfuinneog nua",
+  "resultsCount": "{count} toradh"
 }

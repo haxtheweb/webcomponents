@@ -37,5 +37,6 @@
   "moreDetails": "နောက်ထပ်အသေးအစိတ်",
   "details": "အသေးအစိတ်",
   "saved": "သိမ်းဆည်းပြီး",
-  "opensInNewWindow": "ဝင်းဒိုးအသစ်တွင် ဖွင့်သည်"
+  "opensInNewWindow": "ဝင်းဒိုးအသစ်တွင် ဖွင့်သည်",
+  "resultsCount": "ရလဒ် {count} ခု"
 }

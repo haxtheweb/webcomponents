@@ -37,5 +37,6 @@
   "moreDetails": "Butiran lanjut",
   "details": "Butiran",
   "saved": "Disimpan",
-  "opensInNewWindow": "Dibuka dalam tetingkap baharu"
+  "opensInNewWindow": "Dibuka dalam tetingkap baharu",
+  "resultsCount": "{count} hasil"
 }

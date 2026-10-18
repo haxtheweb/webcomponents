@@ -37,5 +37,6 @@
   "moreDetails": "مزید تفصیلات",
   "details": "تفصیلات",
   "saved": "محفوظ ہو گیا",
-  "opensInNewWindow": "نئی ونڈو میں کھلتا ہے"
+  "opensInNewWindow": "نئی ونڈو میں کھلتا ہے",
+  "resultsCount": "{count} نتائج"
 }

@@ -37,5 +37,6 @@
   "moreDetails": "Máis detalles",
   "details": "Detalles",
   "saved": "Gardado",
-  "opensInNewWindow": "Ábrese nunha nova xanela"
+  "opensInNewWindow": "Ábrese nunha nova xanela",
+  "resultsCount": "{count} resultados"
 }

@@ -37,5 +37,6 @@
   "moreDetails": "Daha fazla ayrıntı",
   "details": "Ayrıntılar",
   "saved": "Kaydedildi",
-  "opensInNewWindow": "Yeni pencerede açılır"
+  "opensInNewWindow": "Yeni pencerede açılır",
+  "resultsCount": "{count} sonuç"
 }

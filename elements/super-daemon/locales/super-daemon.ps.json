@@ -37,5 +37,6 @@
   "moreDetails": "نورې تفصیلاں",
   "details": "تفصیلاں",
   "saved": "خوندي شو",
-  "opensInNewWindow": "په نوې کړکۍ کې پرانیستل کېږي"
+  "opensInNewWindow": "په نوې کړکۍ کې پرانیستل کېږي",
+  "resultsCount": "{count} پایلې"
 }

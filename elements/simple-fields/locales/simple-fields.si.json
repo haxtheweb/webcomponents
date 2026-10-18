@@ -11,5 +11,6 @@
   "stopSave": "නවත්වා සුරකින්න",
   "clickToTakePhoto": "ඡායාරූපයක් ගැනීමට ක්ලික් කරන්න",
   "url": "URL",
-  "open": "විවෘත කරන්න"
+  "open": "විවෘත කරන්න",
+  "removeValue": "{value} ඉවත් කරන්න"
 }

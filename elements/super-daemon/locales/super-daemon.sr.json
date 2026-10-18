@@ -37,5 +37,6 @@
   "moreDetails": "Више детаља",
   "details": "Детаљи",
   "saved": "Сачувано",
-  "opensInNewWindow": "Отвара се у новом прозору"
+  "opensInNewWindow": "Отвара се у новом прозору",
+  "resultsCount": "Резултата: {count}"
 }

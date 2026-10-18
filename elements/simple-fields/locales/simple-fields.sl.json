@@ -11,5 +11,6 @@
   "stopSave": "Ustavi in shrani",
   "clickToTakePhoto": "Kliknite za fotografiranje",
   "url": "URL",
-  "open": "odpri"
+  "open": "odpri",
+  "removeValue": "Odstrani {value}"
 }

@@ -37,5 +37,6 @@
   "moreDetails": "Fleiri lýsingar",
   "details": "Lýsingar",
   "saved": "Goymt",
-  "opensInNewWindow": "Opnast í nýggjum glugga"
+  "opensInNewWindow": "Opnast í nýggjum glugga",
+  "resultsCount": "{count} úrslit"
 }

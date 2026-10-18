@@ -37,5 +37,6 @@
   "moreDetails": "Илүү дэлгэрэнгүй",
   "details": "Дэлгэрэнгүй",
   "saved": "Хадгалагдлаа",
-  "opensInNewWindow": "Шинэ цонхонд нээгдэнэ"
+  "opensInNewWindow": "Шинэ цонхонд нээгдэнэ",
+  "resultsCount": "{count} үр дүн"
 }

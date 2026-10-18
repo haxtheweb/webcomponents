@@ -37,5 +37,6 @@
   "moreDetails": "Více detailů",
   "details": "Detaily",
   "saved": "Uloženo",
-  "opensInNewWindow": "Otevře se v novém okně"
+  "opensInNewWindow": "Otevře se v novém okně",
+  "resultsCount": "Výsledků: {count}"
 }

@@ -11,5 +11,6 @@
   "stopSave": "Misa futhi ulondoloze",
   "clickToTakePhoto": "Chofoza ukuze uthathe isithombe",
   "url": "URL",
-  "open": "vula"
+  "open": "vula",
+  "removeValue": "Susa {value}"
 }

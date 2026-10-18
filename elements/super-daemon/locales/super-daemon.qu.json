@@ -37,5 +37,6 @@
   "moreDetails": "Aswan willakuna",
   "details": "Willakuna",
   "saved": "Waqaychasqa",
-  "opensInNewWindow": "Musuq ventanapi kichakun"
+  "opensInNewWindow": "Musuq ventanapi kichakun",
+  "resultsCount": "{count} lluqsiykuna"
 }

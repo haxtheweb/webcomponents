@@ -11,5 +11,6 @@
   "stopSave": "Заустави и сачувај",
   "clickToTakePhoto": "Кликните да снимите фотографију",
   "url": "URL",
-  "open": "отвори"
+  "open": "отвори",
+  "removeValue": "Уклони {value}"
 }

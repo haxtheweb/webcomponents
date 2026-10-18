@@ -11,5 +11,6 @@
   "stopSave": "থামান ও সংরক্ষণ করুন",
   "clickToTakePhoto": "ছবি তুলতে ক্লিক করুন",
   "url": "URL",
-  "open": "খুলুন"
+  "open": "খুলুন",
+  "removeValue": "{value} সরান"
 }

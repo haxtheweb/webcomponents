@@ -37,5 +37,6 @@
   "moreDetails": "פרטים נוספים",
   "details": "פרטים",
   "saved": "נשמר",
-  "opensInNewWindow": "נפתח בחלון חדש"
+  "opensInNewWindow": "נפתח בחלון חדש",
+  "resultsCount": "{count} תוצאות"
 }

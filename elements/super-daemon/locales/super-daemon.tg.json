@@ -37,5 +37,6 @@
   "moreDetails": "Тафсилоти бештар",
   "details": "Тафсилот",
   "saved": "Захира шуд",
-  "opensInNewWindow": "Дар равзанаи нав кушода мешавад"
+  "opensInNewWindow": "Дар равзанаи нав кушода мешавад",
+  "resultsCount": "{count} натиҷа"
 }

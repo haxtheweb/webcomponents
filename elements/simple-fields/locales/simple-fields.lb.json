@@ -11,5 +11,6 @@
   "stopSave": "Stoppen & späicheren",
   "clickToTakePhoto": "Klickt, fir eng Foto ze maachen",
   "url": "URL",
-  "open": "opmaachen"
+  "open": "opmaachen",
+  "removeValue": "{value} ewechhuelen"
 }

@@ -37,5 +37,6 @@
   "moreDetails": "વધુ વિગતો",
   "details": "વિગતો",
   "saved": "સાચવાયું",
-  "opensInNewWindow": "નવી વિન્ડોમાં ખુલે છે"
+  "opensInNewWindow": "નવી વિન્ડોમાં ખુલે છે",
+  "resultsCount": "{count} પરિણામો"
 }

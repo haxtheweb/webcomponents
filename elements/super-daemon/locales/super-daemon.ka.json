@@ -37,5 +37,6 @@
   "moreDetails": "მეტი დეტალი",
   "details": "დეტალები",
   "saved": "შენახულია",
-  "opensInNewWindow": "იხსნება ახალ ფანჯარაში"
+  "opensInNewWindow": "იხსნება ახალ ფანჯარაში",
+  "resultsCount": "{count} შედეგი"
 }

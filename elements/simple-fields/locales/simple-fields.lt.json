@@ -11,5 +11,6 @@
   "stopSave": "Sustabdyti ir išsaugoti",
   "clickToTakePhoto": "Spustelėkite, kad nufotografuotumėte",
   "url": "URL",
-  "open": "atidaryti"
+  "open": "atidaryti",
+  "removeValue": "Pašalinti {value}"
 }

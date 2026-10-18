@@ -37,5 +37,6 @@
   "moreDetails": "Rohkem detaile",
   "details": "Üksikasjad",
   "saved": "Salvestatud",
-  "opensInNewWindow": "Avaneb uues aknas"
+  "opensInNewWindow": "Avaneb uues aknas",
+  "resultsCount": "{count} tulemust"
 }

@@ -11,5 +11,6 @@
   "stopSave": "Piantà è salvà",
   "clickToTakePhoto": "Cliccate per piglià una foto",
   "url": "URL",
-  "open": "apre"
+  "open": "apre",
+  "removeValue": "Caccià {value}"
 }

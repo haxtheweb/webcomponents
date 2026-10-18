@@ -11,5 +11,6 @@
   "stopSave": "Sayachiy waqaychay",
   "clickToTakePhoto": "Foto hap'inapaq ñit'iy",
   "url": "URL",
-  "open": "kichay"
+  "open": "kichay",
+  "removeValue": "{value} qichuy"
 }

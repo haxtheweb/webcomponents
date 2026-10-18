@@ -11,5 +11,6 @@
   "stopSave": "Kati & Tiaki",
   "clickToTakePhoto": "Pāwhiri hei tango whakaahua",
   "url": "URL",
-  "open": "tuwhera"
+  "open": "tuwhera",
+  "removeValue": "Tangohia {value}"
 }

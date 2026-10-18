@@ -11,5 +11,6 @@
   "stopSave": "შეჩერება და შენახვა",
   "clickToTakePhoto": "დააწკაპუნეთ ფოტოს გადასაღებად",
   "url": "URL",
-  "open": "გახსნა"
+  "open": "გახსნა",
+  "removeValue": "{value}-ის წაშლა"
 }

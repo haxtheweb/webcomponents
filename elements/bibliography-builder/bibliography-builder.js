@@ -192,7 +192,9 @@ export class BibliographyBuilder extends SchemaBehaviors(
             @change=${this._exportHandler}
           >
             <option value="Export">${this.t.export}</option>
+            <!-- i18n-ignore: citation format names -->
             <option value="APA">APA</option>
+            <!-- i18n-ignore: citation format names -->
             <option value="BibTeX">BibTeX</option>
           </select>
         </div>

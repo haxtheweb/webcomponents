@@ -37,5 +37,6 @@
   "moreDetails": "Detail lainnya",
   "details": "Detail",
   "saved": "Tersimpan",
-  "opensInNewWindow": "Terbuka di jendela baru"
+  "opensInNewWindow": "Terbuka di jendela baru",
+  "resultsCount": "{count} hasil"
 }

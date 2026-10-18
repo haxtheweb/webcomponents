@@ -11,5 +11,6 @@
   "stopSave": "Stop agus sábháil",
   "clickToTakePhoto": "Cliceáil chun grianghraf a ghlacadh",
   "url": "URL",
-  "open": "oscail"
+  "open": "oscail",
+  "removeValue": "Bain {value}"
 }

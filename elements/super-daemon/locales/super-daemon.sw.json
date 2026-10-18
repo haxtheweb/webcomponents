@@ -37,5 +37,6 @@
   "moreDetails": "Maelezo zaidi",
   "details": "Maelezo",
   "saved": "Imehifadhiwa",
-  "opensInNewWindow": "Hufunguka katika dirisha jipya"
+  "opensInNewWindow": "Hufunguka katika dirisha jipya",
+  "resultsCount": "Matokeo {count}"
 }

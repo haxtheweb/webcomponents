@@ -11,5 +11,6 @@
   "stopSave": "Stöðva og vista",
   "clickToTakePhoto": "Smelltu til að taka mynd",
   "url": "URL",
-  "open": "opna"
+  "open": "opna",
+  "removeValue": "Fjarlægja {value}"
 }

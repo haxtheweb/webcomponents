@@ -11,5 +11,6 @@
   "stopSave": "Спыніць і захаваць",
   "clickToTakePhoto": "Націсніце, каб зрабіць фота",
   "url": "URL",
-  "open": "адкрыць"
+  "open": "адкрыць",
+  "removeValue": "Выдаліць {value}"
 }

@@ -37,5 +37,6 @@
   "moreDetails": "Iinkcukacha ezongezelelweyo",
   "details": "Iinkcukacha",
   "saved": "Igciniwe",
-  "opensInNewWindow": "Ivula kwifestile entsha"
+  "opensInNewWindow": "Ivula kwifestile entsha",
+  "resultsCount": "Iziphumo ezingu-{count}"
 }

@@ -11,5 +11,6 @@
   "stopSave": "ຢຸດ ແລະ ບັນທຶກ",
   "clickToTakePhoto": "ຄລິກເພື່ອຖ່າຍຮູບ",
   "url": "URL",
-  "open": "ເປີດ"
+  "open": "ເປີດ",
+  "removeValue": "ລຶບ {value}"
 }

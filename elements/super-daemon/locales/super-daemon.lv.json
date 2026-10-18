@@ -37,5 +37,6 @@
   "moreDetails": "Vairāk detaļu",
   "details": "Detaļas",
   "saved": "Saglabāts",
-  "opensInNewWindow": "Atveras jaunā logā"
+  "opensInNewWindow": "Atveras jaunā logā",
+  "resultsCount": "Rezultāti: {count}"
 }

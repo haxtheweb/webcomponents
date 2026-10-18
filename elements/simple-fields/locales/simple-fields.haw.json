@@ -11,5 +11,6 @@
   "stopSave": "Kū & Mālama",
   "clickToTakePhoto": "Kaomi e paʻi kiʻi ai",
   "url": "URL",
-  "open": "wehe"
+  "open": "wehe",
+  "removeValue": "Wehe iā {value}"
 }

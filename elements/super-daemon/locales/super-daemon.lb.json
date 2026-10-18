@@ -37,5 +37,6 @@
   "moreDetails": "Méi Detailer",
   "details": "Detailer",
   "saved": "Gespäichert",
-  "opensInNewWindow": "Mécht an enger neier Fënster op"
+  "opensInNewWindow": "Mécht an enger neier Fënster op",
+  "resultsCount": "{count} Resultater"
 }

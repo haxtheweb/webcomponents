@@ -11,5 +11,6 @@
   "stopSave": "Stopio a chadw",
   "clickToTakePhoto": "Cliciwch i dynnu llun",
   "url": "URL",
-  "open": "agor"
+  "open": "agor",
+  "removeValue": "Tynnu {value}"
 }

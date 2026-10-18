@@ -37,5 +37,6 @@
   "moreDetails": "ລາຍລະອຽດເພີ່ມເຕີມ",
   "details": "ລາຍລະອຽດ",
   "saved": "ບັນທຶກແລ້ວ",
-  "opensInNewWindow": "ເປີດໃນໜ້າຕ່າງໃໝ່"
+  "opensInNewWindow": "ເປີດໃນໜ້າຕ່າງໃໝ່",
+  "resultsCount": "{count} ຜົນລັບ"
 }

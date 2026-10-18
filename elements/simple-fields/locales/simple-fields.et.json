@@ -11,5 +11,6 @@
   "stopSave": "Lõpeta ja salvesta",
   "clickToTakePhoto": "Klõpsa pildistamiseks",
   "url": "URL",
-  "open": "ava"
+  "open": "ava",
+  "removeValue": "Eemalda {value}"
 }

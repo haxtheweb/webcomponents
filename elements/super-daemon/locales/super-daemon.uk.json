@@ -37,5 +37,6 @@
   "moreDetails": "Більше деталей",
   "details": "Деталі",
   "saved": "Збережено",
-  "opensInNewWindow": "Відкривається в новому вікні"
+  "opensInNewWindow": "Відкривається в новому вікні",
+  "resultsCount": "Результатів: {count}"
 }

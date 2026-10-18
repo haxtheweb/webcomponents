@@ -11,5 +11,6 @@
   "stopSave": "Ihinto at I-save",
   "clickToTakePhoto": "I-click para kumuha ng larawan",
   "url": "URL",
-  "open": "buksan"
+  "open": "buksan",
+  "removeValue": "Alisin ang {value}"
 }

@@ -37,5 +37,6 @@
   "moreDetails": "More details",
   "details": "Details",
   "saved": "Saved",
-  "opensInNewWindow": "Opens in a new window"
+  "opensInNewWindow": "Opens in a new window",
+  "resultsCount": "{count} results"
 }

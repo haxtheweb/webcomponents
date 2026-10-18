@@ -37,5 +37,6 @@
   "moreDetails": "Rincian liyane",
   "details": "Rincian",
   "saved": "Kesimpen",
-  "opensInNewWindow": "Mbukak ing jendhela anyar"
+  "opensInNewWindow": "Mbukak ing jendhela anyar",
+  "resultsCount": "{count} asil"
 }

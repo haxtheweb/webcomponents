@@ -37,5 +37,6 @@
   "moreDetails": "Lisää yksityiskohtia",
   "details": "Yksityiskohdat",
   "saved": "Tallennettu",
-  "opensInNewWindow": "Avautuu uuteen ikkunaan"
+  "opensInNewWindow": "Avautuu uuteen ikkunaan",
+  "resultsCount": "{count} tulosta"
 }

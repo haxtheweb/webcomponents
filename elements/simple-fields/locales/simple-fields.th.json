@@ -11,5 +11,6 @@
   "stopSave": "หยุดและบันทึก",
   "clickToTakePhoto": "คลิกเพื่อถ่ายภาพ",
   "url": "URL",
-  "open": "เปิด"
+  "open": "เปิด",
+  "removeValue": "ลบ {value}"
 }

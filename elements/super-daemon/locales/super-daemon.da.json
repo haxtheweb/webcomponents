@@ -37,5 +37,6 @@
   "moreDetails": "Flere detaljer",
   "details": "Detaljer",
   "saved": "Gemt",
-  "opensInNewWindow": "Åbner i et nyt vindue"
+  "opensInNewWindow": "Åbner i et nyt vindue",
+  "resultsCount": "{count} resultater"
 }

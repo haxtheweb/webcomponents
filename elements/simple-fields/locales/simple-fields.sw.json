@@ -11,5 +11,6 @@
   "stopSave": "Simamisha na uhifadhi",
   "clickToTakePhoto": "Bofya ili kupiga picha",
   "url": "URL",
-  "open": "fungua"
+  "open": "fungua",
+  "removeValue": "Ondoa {value}"
 }

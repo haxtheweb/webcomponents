@@ -11,5 +11,6 @@
   "stopSave": "עצירה ושמירה",
   "clickToTakePhoto": "לחצו כדי לצלם תמונה",
   "url": "URL",
-  "open": "פתיחה"
+  "open": "פתיחה",
+  "removeValue": "הסרת {value}"
 }

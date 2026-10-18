@@ -11,5 +11,6 @@
   "stopSave": "Durdur ve kaydet",
   "clickToTakePhoto": "Fotoğraf çekmek için tıklayın",
   "url": "URL",
-  "open": "aç"
+  "open": "aç",
+  "removeValue": "{value} öğesini kaldır"
 }

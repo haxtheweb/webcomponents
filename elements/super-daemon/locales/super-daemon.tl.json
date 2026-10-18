@@ -37,5 +37,6 @@
   "moreDetails": "Karagdagang detalye",
   "details": "Detalye",
   "saved": "Na-save",
-  "opensInNewWindow": "Bubukas sa bagong window"
+  "opensInNewWindow": "Bubukas sa bagong window",
+  "resultsCount": "{count} resulta"
 }

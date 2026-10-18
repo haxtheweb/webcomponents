@@ -11,5 +11,6 @@
   "stopSave": "Mandheg & Simpen",
   "clickToTakePhoto": "Klik kanggo njupuk foto",
   "url": "URL",
-  "open": "bukak"
+  "open": "bukak",
+  "removeValue": "Busak {value}"
 }

@@ -37,5 +37,6 @@
   "moreDetails": "Daugiau detalių",
   "details": "Detalės",
   "saved": "Išsaugota",
-  "opensInNewWindow": "Atidaroma naujame lange"
+  "opensInNewWindow": "Atidaroma naujame lange",
+  "resultsCount": "Rezultatų: {count}"
 }

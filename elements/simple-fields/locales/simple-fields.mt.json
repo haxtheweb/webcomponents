@@ -11,5 +11,6 @@
   "stopSave": "Waqqaf u Ssejvja",
   "clickToTakePhoto": "Ikklikkja biex tieħu ritratt",
   "url": "URL",
-  "open": "iftaħ"
+  "open": "iftaħ",
+  "removeValue": "Neħħi {value}"
 }

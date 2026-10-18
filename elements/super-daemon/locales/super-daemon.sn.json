@@ -37,5 +37,6 @@
   "moreDetails": "Mamwe matsanangurwo",
   "details": "Matsanangurwo",
   "saved": "Yakachengetwa",
-  "opensInNewWindow": "Inovhura muhwindo idzva"
+  "opensInNewWindow": "Inovhura muhwindo idzva",
+  "resultsCount": "Mhedzisiro {count}"
 }

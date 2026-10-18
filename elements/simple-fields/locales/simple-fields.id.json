@@ -11,5 +11,6 @@
   "stopSave": "Hentikan & Simpan",
   "clickToTakePhoto": "Klik untuk mengambil foto",
   "url": "URL",
-  "open": "buka"
+  "open": "buka",
+  "removeValue": "Hapus {value}"
 }

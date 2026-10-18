@@ -37,5 +37,6 @@
   "moreDetails": "আরও বিস্তারিত",
   "details": "বিস্তারিত",
   "saved": "সংরক্ষিত",
-  "opensInNewWindow": "নতুন উইন্ডোতে খোলে"
+  "opensInNewWindow": "নতুন উইন্ডোতে খোলে",
+  "resultsCount": "{count}টি ফলাফল"
 }

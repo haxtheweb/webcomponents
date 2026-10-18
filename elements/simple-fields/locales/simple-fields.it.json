@@ -11,5 +11,6 @@
   "stopSave": "Interrompi e salva",
   "clickToTakePhoto": "Fai clic per scattare una foto",
   "url": "URL",
-  "open": "apri"
+  "open": "apri",
+  "removeValue": "Rimuovi {value}"
 }

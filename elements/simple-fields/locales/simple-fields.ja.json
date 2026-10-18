@@ -11,5 +11,6 @@
   "stopSave": "停止して保存",
   "clickToTakePhoto": "クリックして写真を撮影",
   "url": "URL",
-  "open": "開く"
+  "open": "開く",
+  "removeValue": "{value}を削除"
 }

@@ -11,5 +11,6 @@
   "stopSave": "روکیں اور محفوظ کریں",
   "clickToTakePhoto": "تصویر لینے کے لیے کلک کریں",
   "url": "URL",
-  "open": "کھولیں"
+  "open": "کھولیں",
+  "removeValue": "{value} ہٹائیں"
 }

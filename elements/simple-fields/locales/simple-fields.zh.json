@@ -11,5 +11,6 @@
   "stopSave": "停止并保存",
   "clickToTakePhoto": "点击拍照",
   "url": "URL",
-  "open": "打开"
+  "open": "打开",
+  "removeValue": "移除{value}"
 }

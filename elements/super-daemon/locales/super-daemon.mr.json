@@ -37,5 +37,6 @@
   "moreDetails": "अधिक तपशील",
   "details": "तपशील",
   "saved": "जतन केले",
-  "opensInNewWindow": "नवीन विंडोमध्ये उघडते"
+  "opensInNewWindow": "नवीन विंडोमध्ये उघडते",
+  "resultsCount": "{count} परिणाम"
 }

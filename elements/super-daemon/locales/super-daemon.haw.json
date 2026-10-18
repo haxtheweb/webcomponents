@@ -37,5 +37,6 @@
   "moreDetails": "Nā kikoʻī hou",
   "details": "Nā kikoʻī",
   "saved": "Ua mālama ʻia",
-  "opensInNewWindow": "Wehe ʻia ma kahi pukaaniani hou"
+  "opensInNewWindow": "Wehe ʻia ma kahi pukaaniani hou",
+  "resultsCount": "{count} hopena"
 }

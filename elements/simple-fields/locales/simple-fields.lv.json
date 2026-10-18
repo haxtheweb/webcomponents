@@ -11,5 +11,6 @@
   "stopSave": "Apturēt un saglabāt",
   "clickToTakePhoto": "Noklikšķiniet, lai uzņemtu foto",
   "url": "URL",
-  "open": "atvērt"
+  "open": "atvērt",
+  "removeValue": "Noņemt {value}"
 }

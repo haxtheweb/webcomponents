@@ -11,5 +11,6 @@
   "stopSave": "Jooji & Kaydi",
   "clickToTakePhoto": "Riix si aad sawir u qaaddo",
   "url": "URL",
-  "open": "fur"
+  "open": "fur",
+  "removeValue": "Ka saar {value}"
 }

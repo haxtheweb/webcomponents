@@ -11,5 +11,6 @@
   "stopSave": "Διακοπή & αποθήκευση",
   "clickToTakePhoto": "Κάντε κλικ για λήψη φωτογραφίας",
   "url": "URL",
-  "open": "άνοιγμα"
+  "open": "άνοιγμα",
+  "removeValue": "Κατάργηση {value}"
 }

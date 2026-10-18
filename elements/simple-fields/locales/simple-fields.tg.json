@@ -11,5 +11,6 @@
   "stopSave": "Қатъ ва нигоҳ доштан",
   "clickToTakePhoto": "Барои гирифтани акс клик кунед",
   "url": "URL",
-  "open": "кушодан"
+  "open": "кушодан",
+  "removeValue": "Хориҷ кардани {value}"
 }

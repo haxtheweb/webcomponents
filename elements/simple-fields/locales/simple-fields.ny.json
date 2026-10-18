@@ -11,5 +11,6 @@
   "stopSave": "Imitsani ndi kusunga",
   "clickToTakePhoto": "Dinani kuti mujambule chithunzi",
   "url": "URL",
-  "open": "tsegulani"
+  "open": "tsegulani",
+  "removeValue": "Chotsani {value}"
 }

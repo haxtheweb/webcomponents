@@ -211,6 +211,7 @@ class A11yGifPlayer extends I18NMixin(
               >
                 <g>
                   <polygon points="30,20 30,180 170,100"></polygon>
+                  <!-- i18n-ignore: file format name -->
                   <text x="50" y="115" font-size="40px">GIF</text>
                 </g>
               </svg>

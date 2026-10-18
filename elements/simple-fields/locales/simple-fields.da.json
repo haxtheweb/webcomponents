@@ -11,5 +11,6 @@
   "stopSave": "Stop og gem",
   "clickToTakePhoto": "Klik for at tage et foto",
   "url": "URL",
-  "open": "åbn"
+  "open": "åbn",
+  "removeValue": "Fjern {value}"
 }

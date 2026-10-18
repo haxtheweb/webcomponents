@@ -37,5 +37,6 @@
   "moreDetails": "Więcej szczegółów",
   "details": "Szczegóły",
   "saved": "Zapisano",
-  "opensInNewWindow": "Otwiera się w nowym oknie"
+  "opensInNewWindow": "Otwiera się w nowym oknie",
+  "resultsCount": "Wyniki: {count}"
 }

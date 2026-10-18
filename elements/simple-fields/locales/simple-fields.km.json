@@ -11,5 +11,6 @@
   "stopSave": "បញ្ឈប់ និងរក្សាទុក",
   "clickToTakePhoto": "ចុចដើម្បីថតរូប",
   "url": "URL",
-  "open": "បើក"
+  "open": "បើក",
+  "removeValue": "លុប {value}"
 }

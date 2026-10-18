@@ -11,5 +11,6 @@
   "stopSave": "Stoppen en opslaan",
   "clickToTakePhoto": "Klik om een foto te maken",
   "url": "URL",
-  "open": "openen"
+  "open": "openen",
+  "removeValue": "{value} verwijderen"
 }

@@ -11,5 +11,6 @@
   "stopSave": "રોકો અને સાચવો",
   "clickToTakePhoto": "ફોટો લેવા માટે ક્લિક કરો",
   "url": "URL",
-  "open": "ખોલો"
+  "open": "ખોલો",
+  "removeValue": "{value} દૂર કરો"
 }

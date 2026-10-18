@@ -11,5 +11,6 @@
   "stopSave": "Ĉesi kaj konservi",
   "clickToTakePhoto": "Alklaku por foti",
   "url": "URL",
-  "open": "malfermi"
+  "open": "malfermi",
+  "removeValue": "Forigi {value}"
 }

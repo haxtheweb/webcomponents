@@ -37,5 +37,6 @@
   "moreDetails": "थप विवरण",
   "details": "विवरण",
   "saved": "सेभ भयो",
-  "opensInNewWindow": "नयाँ विन्डोमा खुल्छ"
+  "opensInNewWindow": "नयाँ विन्डोमा खुल्छ",
+  "resultsCount": "{count} नतिजाहरू"
 }

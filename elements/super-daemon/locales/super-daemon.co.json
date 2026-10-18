@@ -37,5 +37,6 @@
   "moreDetails": "Più detagli",
   "details": "Detagli",
   "saved": "Arregistratu",
-  "opensInNewWindow": "S'apre in una finestra nova"
+  "opensInNewWindow": "S'apre in una finestra nova",
+  "resultsCount": "{count} risultati"
 }

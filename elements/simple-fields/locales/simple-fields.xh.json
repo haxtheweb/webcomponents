@@ -11,5 +11,6 @@
   "stopSave": "Yima kwaye ugcine",
   "clickToTakePhoto": "Cofa ukuze uthathe ifoto",
   "url": "URL",
-  "open": "vula"
+  "open": "vula",
+  "removeValue": "Susa {value}"
 }

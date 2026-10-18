@@ -11,5 +11,6 @@
   "stopSave": "Stop en stoor",
   "clickToTakePhoto": "Klik om foto te neem",
   "url": "URL",
-  "open": "maak oop"
+  "open": "maak oop",
+  "removeValue": "Verwyder {value}"
 }

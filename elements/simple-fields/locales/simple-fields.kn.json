@@ -11,5 +11,6 @@
   "stopSave": "ನಿಲ್ಲಿಸಿ ಮತ್ತು ಉಳಿಸಿ",
   "clickToTakePhoto": "ಫೋಟೋ ತೆಗೆಯಲು ಕ್ಲಿಕ್ ಮಾಡಿ",
   "url": "URL",
-  "open": "ತೆರೆಯಿರಿ"
+  "open": "ತೆರೆಯಿರಿ",
+  "removeValue": "{value} ತೆಗೆದುಹಾಕಿ"
 }

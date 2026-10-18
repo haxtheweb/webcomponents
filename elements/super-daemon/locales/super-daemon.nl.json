@@ -37,5 +37,6 @@
   "moreDetails": "Meer details",
   "details": "Details",
   "saved": "Opgeslagen",
-  "opensInNewWindow": "Opent in een nieuw venster"
+  "opensInNewWindow": "Opent in een nieuw venster",
+  "resultsCount": "{count} resultaten"
 }

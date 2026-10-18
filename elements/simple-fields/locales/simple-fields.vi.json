@@ -11,5 +11,6 @@
   "stopSave": "Dừng & Lưu",
   "clickToTakePhoto": "Nhấp để chụp ảnh",
   "url": "URL",
-  "open": "mở"
+  "open": "mở",
+  "removeValue": "Xóa {value}"
 }

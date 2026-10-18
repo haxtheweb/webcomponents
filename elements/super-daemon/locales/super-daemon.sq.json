@@ -37,5 +37,6 @@
   "moreDetails": "Më shumë detaje",
   "details": "Detajet",
   "saved": "E ruajtur",
-  "opensInNewWindow": "Hapet në dritare të re"
+  "opensInNewWindow": "Hapet në dritare të re",
+  "resultsCount": "{count} rezultate"
 }

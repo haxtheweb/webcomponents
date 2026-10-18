@@ -11,5 +11,6 @@
   "stopSave": "Dayandır və saxla",
   "clickToTakePhoto": "Foto çəkmək üçün klikləyin",
   "url": "URL",
-  "open": "aç"
+  "open": "aç",
+  "removeValue": "{value} sil"
 }

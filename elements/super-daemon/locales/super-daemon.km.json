@@ -37,5 +37,6 @@
   "moreDetails": "ព័ត៌មានបន្ថែម",
   "details": "ព័ត៌មាន",
   "saved": "បានរក្សាទុក",
-  "opensInNewWindow": "បើកក្នុងបង្អួចថ្មី"
+  "opensInNewWindow": "បើកក្នុងបង្អួចថ្មី",
+  "resultsCount": "លទ្ធផល {count}"
 }

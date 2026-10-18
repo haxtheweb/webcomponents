@@ -11,5 +11,6 @@
   "stopSave": "Deter e gardar",
   "clickToTakePhoto": "Fai clic para sacar unha foto",
   "url": "URL",
-  "open": "abrir"
+  "open": "abrir",
+  "removeValue": "Quitar {value}"
 }

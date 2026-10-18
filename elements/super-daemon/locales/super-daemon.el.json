@@ -37,5 +37,6 @@
   "moreDetails": "Περισσότερες λεπτομέρειες",
   "details": "Λεπτομέρειες",
   "saved": "Αποθηκεύτηκε",
-  "opensInNewWindow": "Ανοίγει σε νέο παράθυρο"
+  "opensInNewWindow": "Ανοίγει σε νέο παράθυρο",
+  "resultsCount": "{count} αποτελέσματα"
 }
