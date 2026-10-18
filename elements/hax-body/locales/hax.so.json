@@ -122,5 +122,21 @@
   "recent": "Dhawaan",
   "popular": "Caan ah",
   "copiedToClipboard": "Waa la koobiyey clipboard-ka",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Macluumaadka sawirka",
+  "imageActions": "Ficillada sawirka",
+  "imageRecommendations": "Talooyinka sawirka",
+  "compressImage": "Cufnaanta sawirka yaree",
+  "resizeTo": "Cabbirka u beddel",
+  "created": "La sameeyay",
+  "size": "Cabbir",
+  "dimensions": "Cabbirrada",
+  "type": "Nooc",
+  "done": "waa la dhammeeyay",
+  "noFileUuid": "Tixraaca faylka lama heli karo; dib u soo geli si ficilladu u shaqeeyaan.",
+  "fileOpsUnavailable": "Hawlgallada faylka lagama heli karo goobtan.",
+  "fileOpFailed": "Hawlgalka faylka wuu fashilmay.",
+  "fileExtensionNotAllowed": "Goobtan waxay aqbashaa oo keliya noocyada faylasha soo socda:",
+  "fileTypeNotAllowed": "Goobtan waxay aqbashaa oo keliya noocyada warbaahinta soo socda:",
+  "transformFailed": "Beddelka kadib soo gelinta wuu fashilmay; faylkii asalka ahaa waa la hayaa."
 }

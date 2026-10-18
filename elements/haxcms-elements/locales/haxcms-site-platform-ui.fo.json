@@ -1,0 +1,18 @@
+{
+  "title": "Pallsvirksemi",
+  "experienceLevel": "Royndarstig",
+  "cmsFeatures": "CMS-virksemi",
+  "editorFeatures": "Ritilsvirksemi",
+  "blocks": "Blokkar",
+  "filterBlocks": "Filtrera blokkar",
+  "requiredTextNote": "Nøkur tekstmerki eru kravd og altíð virkin (víst sum óvirkin).",
+  "download": "Tak beinagrind niður",
+  "save": "Goym",
+  "generating": "Ger beinagrind…",
+  "generated": "Beinagrind tikin niður",
+  "enabled": "Virkið",
+  "feature": "Virksemi",
+  "details": "Smálutir",
+  "featuresWarning": "At gera hesi val óvirkin kann taka týðandi høvundar- og umsitingarmøguleikar burtur.",
+  "largeSiteWarning": "Henda heimasíðan hevur nógvar síður. Tað kann taka eina løtu at gera beinagrindina."
+}

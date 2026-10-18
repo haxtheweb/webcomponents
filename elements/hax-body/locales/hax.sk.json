@@ -122,5 +122,21 @@
   "recent": "Nedávne",
   "popular": "Populárne",
   "copiedToClipboard": "Skopírované do schránky",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Informácie o obrázku",
+  "imageActions": "Akcie s obrázkom",
+  "imageRecommendations": "Odporúčania pre obrázok",
+  "compressImage": "Komprimovať obrázok",
+  "resizeTo": "Zmeniť veľkosť na",
+  "created": "Vytvorené",
+  "size": "Veľkosť",
+  "dimensions": "Rozmery",
+  "type": "Typ",
+  "done": "hotovo",
+  "noFileUuid": "Odkaz na súbor nie je k dispozícii; na povolenie akcií ho nahrajte znova.",
+  "fileOpsUnavailable": "Operácie so súbormi nie sú pre túto stránku k dispozícii.",
+  "fileOpFailed": "Operácia so súborom zlyhala.",
+  "fileExtensionNotAllowed": "Toto pole prijíma iba tieto typy súborov:",
+  "fileTypeNotAllowed": "Toto pole prijíma iba tieto typy médií:",
+  "transformFailed": "Transformácia po nahraní zlyhala; pôvodný súbor bol zachovaný."
 }

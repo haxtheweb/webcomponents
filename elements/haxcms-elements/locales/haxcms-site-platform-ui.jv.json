@@ -1,0 +1,18 @@
+{
+  "title": "Fitur Platform",
+  "experienceLevel": "Tingkat pengalaman",
+  "cmsFeatures": "Fitur CMS",
+  "editorFeatures": "Fitur editor",
+  "blocks": "Blok",
+  "filterBlocks": "Saring blok",
+  "requiredTextNote": "Sawetara tag teks iku wajib lan tansah aktif (ditampilake ora aktif).",
+  "download": "Undhuh kerangka",
+  "save": "Simpen",
+  "generating": "Lagi nggawé kerangka…",
+  "generated": "Kerangka wis diundhuh",
+  "enabled": "Aktif",
+  "feature": "Fitur",
+  "details": "Rincian",
+  "featuresWarning": "Mateni pilihan iki bisa ngilangi kemampuan utama kanggo nyusun lan ngatur.",
+  "largeSiteWarning": "Situs iki duwe akèh kaca. Nggawé kerangka bisa suwé."
+}

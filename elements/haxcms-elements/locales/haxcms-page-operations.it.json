@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Azioni struttura",
+  "editPage": "Modifica pagina",
+  "addPage": "Aggiungi pagina figlia",
+  "moveUp": "Sposta su",
+  "moveDown": "Sposta giù",
+  "indent": "Aumenta rientro",
+  "outdent": "Riduci rientro",
+  "moveTo": "Sposta in...",
+  "siteOutline": "Apri struttura del sito",
+  "delete": "Elimina pagina",
+  "unlock": "Sblocca",
+  "lock": "Blocca"
+}

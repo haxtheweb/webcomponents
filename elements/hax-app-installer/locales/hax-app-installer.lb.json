@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub-Repertoire",
   "anErrorOccurred": "Et ass e Feeler opgetrueden",
-  "retry": "Nach eng Kéier versichen"
+  "retry": "Nach eng Kéier versichen",
+  "permissionRequired": "Erlaabnes erfuerderlech",
+  "passwordRequirements": "Ufuerderunge fir d'Passwuert",
+  "requirementLength": "Mindestens 8 Zeechen",
+  "requirementUppercase": "Ee Groussbustaf",
+  "requirementLowercase": "Ee Klengbustaf",
+  "requirementNumber": "Eng Zuel",
+  "requirementSymbol": "E Sonnerzeechen"
 }

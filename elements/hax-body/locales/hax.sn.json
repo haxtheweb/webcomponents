@@ -122,5 +122,21 @@
   "recent": "Yambichinyorwa",
   "popular": "Yakazivikanwa",
   "copiedToClipboard": "Wakopwa padhibhodi",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Ruzivo rwemufananidzo",
+  "imageActions": "Zviito zvemufananidzo",
+  "imageRecommendations": "Zvinokurudzirwa pamufananidzo",
+  "compressImage": "Deredza saizi yemufananidzo",
+  "resizeTo": "Shandura saizi kuita",
+  "created": "Zvakagadzirwa",
+  "size": "Saizi",
+  "dimensions": "Zviyero",
+  "type": "Rudzi",
+  "done": "zvapera",
+  "noFileUuid": "Referensi yefaira haiwanikwe; isazve faira kuti zviito zvishande.",
+  "fileOpsUnavailable": "Zviito zvemafaira hazviwanikwe pasaiti iyi.",
+  "fileOpFailed": "Chiito chefaira chakundikana.",
+  "fileExtensionNotAllowed": "Ndima iyi inogamuchira marudzi emafaira anotevera chete:",
+  "fileTypeNotAllowed": "Ndima iyi inogamuchira marudzi emidhiya anotevera chete:",
+  "transformFailed": "Kushandura faira mushure mekuiisa kwakundikana; faira rekutanga rakachengetwa."
 }

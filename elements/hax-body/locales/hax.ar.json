@@ -122,5 +122,21 @@
   "recent": "حديث",
   "popular": "شائع",
   "copiedToClipboard": "تم النسخ إلى الحافظة",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "معلومات الصورة",
+  "imageActions": "إجراءات الصورة",
+  "imageRecommendations": "توصيات الصورة",
+  "compressImage": "ضغط الصورة",
+  "resizeTo": "تغيير الحجم إلى",
+  "created": "تاريخ الإنشاء",
+  "size": "الحجم",
+  "dimensions": "الأبعاد",
+  "type": "النوع",
+  "done": "تم",
+  "noFileUuid": "مرجع الملف غير متاح؛ أعد الرفع لتفعيل الإجراءات.",
+  "fileOpsUnavailable": "عمليات الملفات غير متاحة لهذا الموقع.",
+  "fileOpFailed": "فشلت عملية الملف.",
+  "fileExtensionNotAllowed": "يقبل هذا الحقل أنواع الملفات التالية فقط:",
+  "fileTypeNotAllowed": "يقبل هذا الحقل أنواع الوسائط التالية فقط:",
+  "transformFailed": "فشلت المعالجة بعد الرفع؛ تم الاحتفاظ بالملف الأصلي."
 }

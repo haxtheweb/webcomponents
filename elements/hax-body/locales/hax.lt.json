@@ -122,5 +122,21 @@
   "recent": "Naujausi",
   "popular": "Populiarūs",
   "copiedToClipboard": "Nukopijuota į iškarpinę",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Vaizdo informacija",
+  "imageActions": "Vaizdo veiksmai",
+  "imageRecommendations": "Vaizdo rekomendacijos",
+  "compressImage": "Suspausti vaizdą",
+  "resizeTo": "Keisti dydį į",
+  "created": "Sukurta",
+  "size": "Dydis",
+  "dimensions": "Matmenys",
+  "type": "Tipas",
+  "done": "atlikta",
+  "noFileUuid": "Failo nuoroda nepasiekiama; įkelkite iš naujo, kad įjungtumėte veiksmus.",
+  "fileOpsUnavailable": "Šioje svetainėje failų operacijos negalimos.",
+  "fileOpFailed": "Failo operacija nepavyko.",
+  "fileExtensionNotAllowed": "Šis laukas priima tik šiuos failų tipus:",
+  "fileTypeNotAllowed": "Šis laukas priima tik šiuos medijos tipus:",
+  "transformFailed": "Apdorojimas po įkėlimo nepavyko; originalus failas išsaugotas."
 }

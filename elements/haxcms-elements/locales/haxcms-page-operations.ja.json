@@ -1,0 +1,14 @@
+{
+  "outlineActions": "アウトラインの操作",
+  "editPage": "ページを編集",
+  "addPage": "子ページを追加",
+  "moveUp": "上へ移動",
+  "moveDown": "下へ移動",
+  "indent": "インデント",
+  "outdent": "インデント解除",
+  "moveTo": "移動先...",
+  "siteOutline": "サイトのアウトラインを開く",
+  "delete": "ページを削除",
+  "unlock": "ロック解除",
+  "lock": "ロック"
+}

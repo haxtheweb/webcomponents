@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Hautatu helburua",
+  "importContentUnderThisPage": "Inportatu edukia orri honen azpian",
+  "importThisContent": "Inportatu eduki hau",
+  "thisPage": "orri hau",
+  "newPage": "Orri berria",
+  "copyOf": "Honen kopia:",
+  "pageActions": "Orriaren ekintzak",
+  "editTitle": "Editatu izenburua",
+  "lock": "Blokeatu",
+  "unlock": "Desblokeatu",
+  "moveUp": "Eraman gora",
+  "moveDown": "Eraman behera",
+  "makeChild": "Bihurtu ume",
+  "moveToParentLevel": "Eraman goiko mailara",
+  "addPage": "Gehitu orria",
+  "duplicate": "Bikoiztu",
+  "delete": "Ezabatu",
+  "restore": "Leheneratu",
+  "goToPage": "Joan orrira"
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Blocchi",
+  "enabled": "Attivatu",
+  "block": "Bloccu",
+  "preview": "Anteprima",
+  "filterBlocks": "Filtrà i blocchi",
+  "requiredTextNote": "Certi tag di testu sò ubligatorii è sempre attivati (affissati disattivati).",
+  "selectAll": "Selezziunà tuttu",
+  "deselectAll": "Deselezziunà tuttu",
+  "save": "Salvà",
+  "noDescription": "Nisuna discrizzione dispunibule.",
+  "details": "Ditaglii",
+  "loadingInventory": "Caricamentu di l'inventariu cumpletu di i blocchi…"
+}

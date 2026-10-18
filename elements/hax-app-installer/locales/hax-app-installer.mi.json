@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Pātaka GitHub",
   "anErrorOccurred": "I puta he hapa",
-  "retry": "Ngana anō"
+  "retry": "Ngana anō",
+  "permissionRequired": "Me whai whakaaetanga",
+  "passwordRequirements": "Ngā herenga kupuhipa",
+  "requirementLength": "Kia 8 neke atu ngā pūāhua",
+  "requirementUppercase": "Kotahi pū matua",
+  "requirementLowercase": "Kotahi pū iti",
+  "requirementNumber": "Kotahi nama",
+  "requirementSymbol": "Kotahi tohu"
 }

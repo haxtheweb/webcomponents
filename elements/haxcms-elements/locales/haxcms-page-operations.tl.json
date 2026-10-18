@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Mga Aksyon sa Outline",
+  "editPage": "I-edit ang Pahina",
+  "addPage": "Magdagdag ng child page",
+  "moveUp": "Ilipat Pataas",
+  "moveDown": "Ilipat Pababa",
+  "indent": "I-indent",
+  "outdent": "I-outdent",
+  "moveTo": "Ilipat sa...",
+  "siteOutline": "Buksan ang Outline ng Site",
+  "delete": "Burahin ang Pahina",
+  "unlock": "I-unlock",
+  "lock": "I-lock"
+}

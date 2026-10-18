@@ -1,0 +1,14 @@
+{
+  "title": "Bloques",
+  "enabled": "Habilitado",
+  "block": "Bloque",
+  "preview": "Vista previa",
+  "filterBlocks": "Filtrar bloques",
+  "requiredTextNote": "Algunas etiquetas de texto son obligatorias y están siempre habilitadas (se muestran deshabilitadas).",
+  "selectAll": "Seleccionar todo",
+  "deselectAll": "Deseleccionar todo",
+  "save": "Guardar",
+  "noDescription": "No hay descripción disponible.",
+  "details": "Detalles",
+  "loadingInventory": "Cargando el inventario completo de bloques…"
+}

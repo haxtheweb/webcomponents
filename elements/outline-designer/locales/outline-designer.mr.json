@@ -1,0 +1,21 @@
+{
+  "selectTarget": "लक्ष्य निवडा",
+  "importContentUnderThisPage": "या पृष्ठाखाली मजकूर आयात करा",
+  "importThisContent": "हा मजकूर आयात करा",
+  "thisPage": "हे पृष्ठ",
+  "newPage": "नवीन पृष्ठ",
+  "copyOf": "याची प्रत:",
+  "pageActions": "पृष्ठ क्रिया",
+  "editTitle": "शीर्षक संपादित करा",
+  "lock": "लॉक करा",
+  "unlock": "अनलॉक करा",
+  "moveUp": "वर हलवा",
+  "moveDown": "खाली हलवा",
+  "makeChild": "उप-पृष्ठ बनवा",
+  "moveToParentLevel": "मूळ स्तरावर हलवा",
+  "addPage": "पृष्ठ जोडा",
+  "duplicate": "डुप्लिकेट करा",
+  "delete": "हटवा",
+  "restore": "पुनर्संचयित करा",
+  "goToPage": "पृष्ठावर जा"
+}

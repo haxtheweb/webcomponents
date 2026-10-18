@@ -1,0 +1,18 @@
+{
+  "title": "Plattformfunktionen",
+  "experienceLevel": "Erfahrungsstufe",
+  "cmsFeatures": "CMS-Funktionen",
+  "editorFeatures": "Editor-Funktionen",
+  "blocks": "Blöcke",
+  "filterBlocks": "Blöcke filtern",
+  "requiredTextNote": "Einige Text-Tags sind erforderlich und immer aktiviert (deaktiviert dargestellt).",
+  "download": "Grundgerüst herunterladen",
+  "save": "Speichern",
+  "generating": "Grundgerüst wird erstellt…",
+  "generated": "Grundgerüst heruntergeladen",
+  "enabled": "Aktiviert",
+  "feature": "Funktion",
+  "details": "Details",
+  "featuresWarning": "Das Deaktivieren dieser Optionen kann wichtige Bearbeitungs- und Verwaltungsfunktionen entfernen.",
+  "largeSiteWarning": "Diese Website hat viele Seiten. Das Erstellen des Grundgerüsts kann eine Weile dauern."
+}

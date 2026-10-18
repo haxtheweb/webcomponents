@@ -122,5 +122,21 @@
   "recent": "Son",
   "popular": "Popüler",
   "copiedToClipboard": "Panoya kopyalandı",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Görsel bilgisi",
+  "imageActions": "Görsel işlemleri",
+  "imageRecommendations": "Görsel önerileri",
+  "compressImage": "Görseli sıkıştır",
+  "resizeTo": "Yeniden boyutlandır:",
+  "created": "Oluşturulma",
+  "size": "Boyut",
+  "dimensions": "Boyutlar",
+  "type": "Tür",
+  "done": "tamam",
+  "noFileUuid": "Dosya referansı kullanılamıyor; işlemleri etkinleştirmek için yeniden yükleyin.",
+  "fileOpsUnavailable": "Bu site için dosya işlemleri kullanılamıyor.",
+  "fileOpFailed": "Dosya işlemi başarısız oldu.",
+  "fileExtensionNotAllowed": "Bu alan yalnızca şu dosya türlerini kabul eder:",
+  "fileTypeNotAllowed": "Bu alan yalnızca şu medya türlerini kabul eder:",
+  "transformFailed": "Yükleme sonrası dönüştürme başarısız oldu; özgün dosya korundu."
 }

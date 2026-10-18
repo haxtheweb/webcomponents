@@ -1,0 +1,14 @@
+{
+  "title": "Ngā Paraka",
+  "enabled": "Kua whakahohea",
+  "block": "Paraka",
+  "preview": "Arokite",
+  "filterBlocks": "Tātari paraka",
+  "requiredTextNote": "He herenga ētahi tūtohu kuputuhi, ā, kua whakahohea i ngā wā katoa (e whakaatuhia ana kua monokia).",
+  "selectAll": "Tīpako katoa",
+  "deselectAll": "Wetetīpako katoa",
+  "save": "Tiaki",
+  "noDescription": "Kāore he whakaahuatanga e wātea ana.",
+  "details": "Ngā taipitopito",
+  "loadingInventory": "E uta ana i te rārangi paraka katoa…"
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Blokoj",
+  "enabled": "Ŝaltita",
+  "block": "Bloko",
+  "preview": "Antaŭrigardo",
+  "filterBlocks": "Filtri blokojn",
+  "requiredTextNote": "Kelkaj tekstaj etikedoj estas devigaj kaj ĉiam ŝaltitaj (montrataj kiel malaktivaj).",
+  "selectAll": "Elekti ĉiujn",
+  "deselectAll": "Malelekti ĉiujn",
+  "save": "Konservi",
+  "noDescription": "Neniu priskribo disponebla.",
+  "details": "Detaloj",
+  "loadingInventory": "Ŝargante la plenan inventaron de blokoj…"
+}

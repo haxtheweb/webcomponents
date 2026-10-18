@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub tároló",
   "anErrorOccurred": "Hiba történt",
-  "retry": "Újrapróbálkozás"
+  "retry": "Újrapróbálkozás",
+  "permissionRequired": "Engedély szükséges",
+  "passwordRequirements": "Jelszókövetelmények",
+  "requirementLength": "Legalább 8 karakter",
+  "requirementUppercase": "Egy nagybetű",
+  "requirementLowercase": "Egy kisbetű",
+  "requirementNumber": "Egy szám",
+  "requirementSymbol": "Egy szimbólum"
 }

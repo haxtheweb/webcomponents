@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Seleccionar destino",
+  "importContentUnderThisPage": "Importar contido baixo esta páxina",
+  "importThisContent": "Importar este contido",
+  "thisPage": "esta páxina",
+  "newPage": "Nova páxina",
+  "copyOf": "Copia de",
+  "pageActions": "Accións da páxina",
+  "editTitle": "Editar título",
+  "lock": "Bloquear",
+  "unlock": "Desbloquear",
+  "moveUp": "Subir",
+  "moveDown": "Baixar",
+  "makeChild": "Converter en filla",
+  "moveToParentLevel": "Mover ao nivel superior",
+  "addPage": "Engadir páxina",
+  "duplicate": "Duplicar",
+  "delete": "Eliminar",
+  "restore": "Restaurar",
+  "goToPage": "Ir á páxina"
+}

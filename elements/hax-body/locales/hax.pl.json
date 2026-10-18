@@ -122,5 +122,21 @@
   "recent": "Ostatnie",
   "popular": "Popularne",
   "copiedToClipboard": "Skopiowano do schowka",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Informacje o obrazie",
+  "imageActions": "Działania na obrazie",
+  "imageRecommendations": "Zalecenia dotyczące obrazu",
+  "compressImage": "Kompresuj obraz",
+  "resizeTo": "Zmień rozmiar na",
+  "created": "Utworzono",
+  "size": "Rozmiar",
+  "dimensions": "Wymiary",
+  "type": "Typ",
+  "done": "gotowe",
+  "noFileUuid": "Odwołanie do pliku jest niedostępne; prześlij plik ponownie, aby włączyć działania.",
+  "fileOpsUnavailable": "Operacje na plikach nie są dostępne dla tej witryny.",
+  "fileOpFailed": "Operacja na pliku nie powiodła się.",
+  "fileExtensionNotAllowed": "To pole akceptuje tylko następujące typy plików:",
+  "fileTypeNotAllowed": "To pole akceptuje tylko następujące typy multimediów:",
+  "transformFailed": "Przetwarzanie po przesłaniu nie powiodło się; zachowano oryginalny plik."
 }

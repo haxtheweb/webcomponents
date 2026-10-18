@@ -122,5 +122,21 @@
   "recent": "Nedavno",
   "popular": "Popularno",
   "copiedToClipboard": "Kopirano u clipboard",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Informacije o slici",
+  "imageActions": "Radnje sa slikom",
+  "imageRecommendations": "Preporuke za sliku",
+  "compressImage": "Komprimiraj sliku",
+  "resizeTo": "Promijeni veličinu na",
+  "created": "Kreirano",
+  "size": "Veličina",
+  "dimensions": "Dimenzije",
+  "type": "Vrsta",
+  "done": "gotovo",
+  "noFileUuid": "Referenca datoteke nije dostupna; ponovo je otpremite da omogućite radnje.",
+  "fileOpsUnavailable": "Operacije s datotekama nisu dostupne za ovu stranicu.",
+  "fileOpFailed": "Operacija s datotekom nije uspjela.",
+  "fileExtensionNotAllowed": "Ovo polje prihvata samo sljedeće vrste datoteka:",
+  "fileTypeNotAllowed": "Ovo polje prihvata samo sljedeće vrste medija:",
+  "transformFailed": "Transformacija nakon otpremanja nije uspjela; originalna datoteka je zadržana."
 }

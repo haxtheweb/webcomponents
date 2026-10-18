@@ -5,5 +5,9 @@
   "recordAudio": "Lûd opnimme",
   "recordScreen": "Skerm opnimme",
   "cancel": "Annulearje",
-  "uploadMedia": "Media oplade"
+  "uploadMedia": "Media oplade",
+  "record": "Opnimme",
+  "pause": "Opname skoftsje",
+  "stopSave": "Stopje & bewarje",
+  "clickToTakePhoto": "Klik om in foto te meitsjen"
 }

@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Repożitorju GitHub",
   "anErrorOccurred": "Sar żball",
-  "retry": "Erġa' pprova"
+  "retry": "Erġa' pprova",
+  "permissionRequired": "Meħtieġ permess",
+  "passwordRequirements": "Rekwiżiti tal-password",
+  "requirementLength": "Mill-inqas 8 karattri",
+  "requirementUppercase": "Ittra kapitali waħda",
+  "requirementLowercase": "Ittra żgħira waħda",
+  "requirementNumber": "Numru wieħed",
+  "requirementSymbol": "Simbolu wieħed"
 }

@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub ذخيرو",
   "anErrorOccurred": "هڪ چڪ آيو",
-  "retry": "ٻيهر ڪوشش ڪريو"
+  "retry": "ٻيهر ڪوشش ڪريو",
+  "permissionRequired": "اجازت گهربل آهي",
+  "passwordRequirements": "پاسورڊ جون گهرجون",
+  "requirementLength": "گهٽ ۾ گهٽ 8 اکر",
+  "requirementUppercase": "هڪ وڏو اکر",
+  "requirementLowercase": "هڪ ننڍو اکر",
+  "requirementNumber": "هڪ انگ",
+  "requirementSymbol": "هڪ نشان"
 }

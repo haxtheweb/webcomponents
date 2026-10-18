@@ -122,5 +122,21 @@
   "recent": "Titun",
   "popular": "Gbajumo",
   "copiedToClipboard": "Ti daakọ si clipboard",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Ìsọfúnni àwòrán",
+  "imageActions": "Ìgbésẹ̀ àwòrán",
+  "imageRecommendations": "Àbá fún àwòrán",
+  "compressImage": "Fún àwòrán pọ̀",
+  "resizeTo": "Yí ìwọ̀n padà sí",
+  "created": "Ọjọ́ ìṣẹ̀dá",
+  "size": "Ìwọ̀n",
+  "dimensions": "Ìbú àti gígùn",
+  "type": "Irú",
+  "done": "ó ti parí",
+  "noFileUuid": "Ìtọ́kasí fáìlì kò sí; tún un gbé sókè láti mú ìgbésẹ̀ ṣiṣẹ́.",
+  "fileOpsUnavailable": "Iṣẹ́ fáìlì kò sí fún ojú-òpó yìí.",
+  "fileOpFailed": "Iṣẹ́ fáìlì kùnà.",
+  "fileExtensionNotAllowed": "Pápá yìí gba irú fáìlì wọ̀nyí nìkan:",
+  "fileTypeNotAllowed": "Pápá yìí gba irú mídíà wọ̀nyí nìkan:",
+  "transformFailed": "Ìyípadà lẹ́yìn ìgbésókè kùnà; a pa fáìlì àtilẹ̀wá mọ́."
 }

@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Odaberite odredište",
+  "importContentUnderThisPage": "Uvezi sadržaj ispod ove stranice",
+  "importThisContent": "Uvezi ovaj sadržaj",
+  "thisPage": "ova stranica",
+  "newPage": "Nova stranica",
+  "copyOf": "Kopija od",
+  "pageActions": "Radnje stranice",
+  "editTitle": "Uredi naslov",
+  "lock": "Zaključaj",
+  "unlock": "Otključaj",
+  "moveUp": "Pomjeri gore",
+  "moveDown": "Pomjeri dolje",
+  "makeChild": "Učini podstranicom",
+  "moveToParentLevel": "Pomjeri na nadređeni nivo",
+  "addPage": "Dodaj stranicu",
+  "duplicate": "Dupliciraj",
+  "delete": "Izbriši",
+  "restore": "Vrati",
+  "goToPage": "Idi na stranicu"
+}

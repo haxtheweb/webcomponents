@@ -1,0 +1,18 @@
+{
+  "title": "Platformas funkcijas",
+  "experienceLevel": "Pieredzes līmenis",
+  "cmsFeatures": "CMS funkcijas",
+  "editorFeatures": "Redaktora funkcijas",
+  "blocks": "Bloki",
+  "filterBlocks": "Filtrēt blokus",
+  "requiredTextNote": "Daži teksta tagi ir obligāti un vienmēr iespējoti (parādīti kā atspējoti).",
+  "download": "Lejupielādēt skeletu",
+  "save": "Saglabāt",
+  "generating": "Ģenerē skeletu…",
+  "generated": "Skelets lejupielādēts",
+  "enabled": "Iespējots",
+  "feature": "Funkcija",
+  "details": "Detaļas",
+  "featuresWarning": "Šo opciju atspējošana var noņemt būtiskas satura veidošanas un administrēšanas iespējas.",
+  "largeSiteWarning": "Šajā vietnē ir daudz lapu. Skeleta ģenerēšana var aizņemt kādu laiku."
+}

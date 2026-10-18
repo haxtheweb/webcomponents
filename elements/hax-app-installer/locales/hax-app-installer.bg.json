@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Хранилище в GitHub",
   "anErrorOccurred": "Възникна грешка",
-  "retry": "Опитайте отново"
+  "retry": "Опитайте отново",
+  "permissionRequired": "Изисква се разрешение",
+  "passwordRequirements": "Изисквания за паролата",
+  "requirementLength": "Поне 8 знака",
+  "requirementUppercase": "Една главна буква",
+  "requirementLowercase": "Една малка буква",
+  "requirementNumber": "Една цифра",
+  "requirementSymbol": "Един специален символ"
 }

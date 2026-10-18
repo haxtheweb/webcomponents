@@ -1,0 +1,18 @@
+{
+  "title": "Funkcje platformy",
+  "experienceLevel": "Poziom zaawansowania",
+  "cmsFeatures": "Funkcje CMS",
+  "editorFeatures": "Funkcje edytora",
+  "blocks": "Bloki",
+  "filterBlocks": "Filtruj bloki",
+  "requiredTextNote": "Niektóre znaczniki tekstowe są wymagane i zawsze włączone (pokazane jako wyłączone).",
+  "download": "Pobierz szkielet",
+  "save": "Zapisz",
+  "generating": "Generowanie szkieletu…",
+  "generated": "Szkielet pobrany",
+  "enabled": "Włączone",
+  "feature": "Funkcja",
+  "details": "Szczegóły",
+  "featuresWarning": "Wyłączenie tych opcji może usunąć ważne funkcje tworzenia treści i administracji.",
+  "largeSiteWarning": "Ta witryna ma wiele stron. Generowanie szkieletu może chwilę potrwać."
+}

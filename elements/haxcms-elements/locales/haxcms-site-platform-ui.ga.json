@@ -1,0 +1,18 @@
+{
+  "title": "Gnéithe an ardáin",
+  "experienceLevel": "Leibhéal taithí",
+  "cmsFeatures": "Gnéithe CMS",
+  "editorFeatures": "Gnéithe an eagarthóra",
+  "blocks": "Bloic",
+  "filterBlocks": "Scag bloic",
+  "requiredTextNote": "Tá roinnt clibeanna téacs riachtanach agus cumasaithe i gcónaí (taispeántar díchumasaithe iad).",
+  "download": "Íoslódáil creatlach",
+  "save": "Sábháil",
+  "generating": "Creatlach á giniúint…",
+  "generated": "Creatlach íoslódáilte",
+  "enabled": "Cumasaithe",
+  "feature": "Gné",
+  "details": "Sonraí",
+  "featuresWarning": "Má dhíchumasaítear na roghanna seo, d'fhéadfaí mórchumais údaraithe agus riaracháin a bhaint.",
+  "largeSiteWarning": "Tá go leor leathanach sa suíomh seo. D'fhéadfadh tamall a thógáil an chreatlach a ghiniúint."
+}

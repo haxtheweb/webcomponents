@@ -33,5 +33,6 @@
   "volumeLabel": "",
   "youTubeLoadingLabel": "",
   "youTubeStartLoading": "",
-  "youTubeTranscriptLabel": ""
+  "youTubeTranscriptLabel": "",
+  "audioDescriptionLabel": "Аудио опис"
 }

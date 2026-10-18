@@ -1,0 +1,14 @@
+{
+  "title": "ਬਲਾਕ",
+  "enabled": "ਚਾਲੂ",
+  "block": "ਬਲਾਕ",
+  "preview": "ਝਲਕ",
+  "filterBlocks": "ਬਲਾਕ ਫਿਲਟਰ ਕਰੋ",
+  "requiredTextNote": "ਕੁਝ ਟੈਕਸਟ ਟੈਗ ਲੋੜੀਂਦੇ ਹਨ ਅਤੇ ਹਮੇਸ਼ਾ ਚਾਲੂ ਰਹਿੰਦੇ ਹਨ (ਅਯੋਗ ਵਜੋਂ ਦਿਖਾਏ ਗਏ)।",
+  "selectAll": "ਸਭ ਚੁਣੋ",
+  "deselectAll": "ਸਭ ਦੀ ਚੋਣ ਹਟਾਓ",
+  "save": "ਸੰਭਾਲੋ",
+  "noDescription": "ਕੋਈ ਵੇਰਵਾ ਉਪਲਬਧ ਨਹੀਂ।",
+  "details": "ਵੇਰਵੇ",
+  "loadingInventory": "ਪੂਰੀ ਬਲਾਕ ਸੂਚੀ ਲੋਡ ਹੋ ਰਹੀ ਹੈ…"
+}

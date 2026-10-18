@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Chọn đích",
+  "importContentUnderThisPage": "Nhập nội dung vào dưới trang này",
+  "importThisContent": "Nhập nội dung này",
+  "thisPage": "trang này",
+  "newPage": "Trang mới",
+  "copyOf": "Bản sao của",
+  "pageActions": "Thao tác trang",
+  "editTitle": "Chỉnh sửa tiêu đề",
+  "lock": "Khóa",
+  "unlock": "Mở khóa",
+  "moveUp": "Di chuyển lên",
+  "moveDown": "Di chuyển xuống",
+  "makeChild": "Đặt làm trang con",
+  "moveToParentLevel": "Chuyển lên cấp cha",
+  "addPage": "Thêm trang",
+  "duplicate": "Nhân bản",
+  "delete": "Xóa",
+  "restore": "Khôi phục",
+  "goToPage": "Đi đến trang"
+}

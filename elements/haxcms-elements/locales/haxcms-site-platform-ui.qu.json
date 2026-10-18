@@ -1,0 +1,18 @@
+{
+  "title": "Plataformapa atiyninkuna",
+  "experienceLevel": "Yachaypa patan",
+  "cmsFeatures": "CMS atiykuna",
+  "editorFeatures": "Editorpa atiyninkuna",
+  "blocks": "Bloquekuna",
+  "filterBlocks": "Bloquekunata suysuy",
+  "requiredTextNote": "Wakin qillqa etiquetakunaqa necesitakunmi, sapa kutillam atichisqa kanku (mana atichisqa hina rikuchisqa).",
+  "download": "Tullu-kayta uraqachiy",
+  "save": "Waqaychay",
+  "generating": "Tullu-kayta ruwachkan…",
+  "generated": "Tullu-kay uraqachisqa",
+  "enabled": "Atichisqa",
+  "feature": "Atiy",
+  "details": "Sut'inchaykuna",
+  "featuresWarning": "Kay akllanakunata mana atichiyqa qillqanapaq kamachinapaq hatun atiykunata qichunman.",
+  "largeSiteWarning": "Kay sitioqa achka rapiyuqmi. Tullu-kay ruwayqa unayta atinman."
+}

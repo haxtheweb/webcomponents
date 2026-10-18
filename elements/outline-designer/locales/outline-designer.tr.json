@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Hedef seçin",
+  "importContentUnderThisPage": "İçeriği bu sayfanın altına aktar",
+  "importThisContent": "Bu içeriği içe aktar",
+  "thisPage": "bu sayfa",
+  "newPage": "Yeni sayfa",
+  "copyOf": "Kopyası:",
+  "pageActions": "Sayfa işlemleri",
+  "editTitle": "Başlığı düzenle",
+  "lock": "Kilitle",
+  "unlock": "Kilidi aç",
+  "moveUp": "Yukarı taşı",
+  "moveDown": "Aşağı taşı",
+  "makeChild": "Alt sayfa yap",
+  "moveToParentLevel": "Üst düzeye taşı",
+  "addPage": "Sayfa ekle",
+  "duplicate": "Çoğalt",
+  "delete": "Sil",
+  "restore": "Geri yükle",
+  "goToPage": "Sayfaya git"
+}

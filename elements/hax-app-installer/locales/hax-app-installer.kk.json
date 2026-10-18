@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub репозиторийі",
   "anErrorOccurred": "Қате орын алды",
-  "retry": "Қайталау"
+  "retry": "Қайталау",
+  "permissionRequired": "Рұқсат қажет",
+  "passwordRequirements": "Құпиясөз талаптары",
+  "requirementLength": "Кемінде 8 таңба",
+  "requirementUppercase": "Бір бас әріп",
+  "requirementLowercase": "Бір кіші әріп",
+  "requirementNumber": "Бір сан",
+  "requirementSymbol": "Бір арнайы таңба"
 }

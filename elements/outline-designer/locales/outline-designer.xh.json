@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Khetha apho uya khona",
+  "importContentUnderThisPage": "Ngenisa umxholo phantsi kweli phepha",
+  "importThisContent": "Ngenisa lo mxholo",
+  "thisPage": "eli phepha",
+  "newPage": "Iphepha elitsha",
+  "copyOf": "Ikopi ye",
+  "pageActions": "Izenzo zephepha",
+  "editTitle": "Hlela isihloko",
+  "lock": "Tshixa",
+  "unlock": "Vula isitshixo",
+  "moveUp": "Yisa phezulu",
+  "moveDown": "Yisa ezantsi",
+  "makeChild": "Yenza libe phantsi",
+  "moveToParentLevel": "Yisa kwinqanaba elingaphezulu",
+  "addPage": "Yongeza iphepha",
+  "duplicate": "Phinda wenze ikopi",
+  "delete": "Cima",
+  "restore": "Buyisela",
+  "goToPage": "Yiya ephepheni"
+}

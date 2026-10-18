@@ -1,0 +1,18 @@
+{
+  "title": "Funciones de la plataforma",
+  "experienceLevel": "Nivel de experiencia",
+  "cmsFeatures": "Funciones del CMS",
+  "editorFeatures": "Funciones del editor",
+  "blocks": "Bloques",
+  "filterBlocks": "Filtrar bloques",
+  "requiredTextNote": "Algunas etiquetas de texto son obligatorias y están siempre habilitadas (se muestran deshabilitadas).",
+  "download": "Descargar esqueleto",
+  "save": "Guardar",
+  "generating": "Generando esqueleto…",
+  "generated": "Esqueleto descargado",
+  "enabled": "Habilitado",
+  "feature": "Función",
+  "details": "Detalles",
+  "featuresWarning": "Deshabilitar estas opciones puede eliminar funciones importantes de creación y administración.",
+  "largeSiteWarning": "Este sitio tiene muchas páginas. La generación del esqueleto puede tardar un poco."
+}

@@ -1,0 +1,14 @@
+{
+  "title": "بلاکونه",
+  "enabled": "فعال",
+  "block": "بلاک",
+  "preview": "مخکتنه",
+  "filterBlocks": "بلاکونه فلټر کړئ",
+  "requiredTextNote": "ځینې متني ټګونه اړین دي او تل فعال وي (غیرفعال ښودل شوي).",
+  "selectAll": "ټول وټاکئ",
+  "deselectAll": "ټول نا ټاکلي کړئ",
+  "save": "خوندي کول",
+  "noDescription": "هېڅ تشریح شتون نه لري.",
+  "details": "جزئیات",
+  "loadingInventory": "د بلاکونو بشپړ لیست پورته کېږي…"
+}

@@ -5,5 +5,9 @@
   "recordAudio": "Сабти садо",
   "recordScreen": "Сабти экран",
   "cancel": "Бекор кунед",
-  "uploadMedia": "Медиаро бор кунед"
+  "uploadMedia": "Медиаро бор кунед",
+  "record": "Сабт",
+  "pause": "Таваққуфи сабт",
+  "stopSave": "Қатъ ва нигоҳ доштан",
+  "clickToTakePhoto": "Барои гирифтани акс клик кунед"
 }

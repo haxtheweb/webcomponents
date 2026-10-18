@@ -122,5 +122,21 @@
   "recent": "最近",
   "popular": "热门",
   "copiedToClipboard": "已复制到剪贴板",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "图片信息",
+  "imageActions": "图片操作",
+  "imageRecommendations": "图片建议",
+  "compressImage": "压缩图片",
+  "resizeTo": "调整大小为",
+  "created": "创建时间",
+  "size": "大小",
+  "dimensions": "尺寸",
+  "type": "类型",
+  "done": "完成",
+  "noFileUuid": "文件引用不可用；请重新上传以启用操作。",
+  "fileOpsUnavailable": "此站点不支持文件操作。",
+  "fileOpFailed": "文件操作失败。",
+  "fileExtensionNotAllowed": "此字段仅接受以下文件类型：",
+  "fileTypeNotAllowed": "此字段仅接受以下媒体类型：",
+  "transformFailed": "上传后转换失败；已保留原始文件。"
 }

@@ -122,5 +122,21 @@
   "recent": "Terkini",
   "popular": "Popular",
   "copiedToClipboard": "Disalin ke papan keratan",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Maklumat imej",
+  "imageActions": "Tindakan imej",
+  "imageRecommendations": "Cadangan imej",
+  "compressImage": "Mampatkan imej",
+  "resizeTo": "Ubah saiz kepada",
+  "created": "Dicipta",
+  "size": "Saiz",
+  "dimensions": "Dimensi",
+  "type": "Jenis",
+  "done": "selesai",
+  "noFileUuid": "Rujukan fail tidak tersedia; muat naik semula untuk mendayakan tindakan.",
+  "fileOpsUnavailable": "Operasi fail tidak tersedia untuk tapak ini.",
+  "fileOpFailed": "Operasi fail gagal.",
+  "fileExtensionNotAllowed": "Medan ini hanya menerima jenis fail berikut:",
+  "fileTypeNotAllowed": "Medan ini hanya menerima jenis media berikut:",
+  "transformFailed": "Transformasi selepas muat naik gagal; fail asal telah dikekalkan."
 }

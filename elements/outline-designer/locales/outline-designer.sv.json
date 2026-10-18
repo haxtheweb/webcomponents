@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Välj mål",
+  "importContentUnderThisPage": "Importera innehåll under den här sidan",
+  "importThisContent": "Importera det här innehållet",
+  "thisPage": "den här sidan",
+  "newPage": "Ny sida",
+  "copyOf": "Kopia av",
+  "pageActions": "Sidåtgärder",
+  "editTitle": "Redigera rubrik",
+  "lock": "Lås",
+  "unlock": "Lås upp",
+  "moveUp": "Flytta upp",
+  "moveDown": "Flytta ner",
+  "makeChild": "Gör till undersida",
+  "moveToParentLevel": "Flytta till överordnad nivå",
+  "addPage": "Lägg till sida",
+  "duplicate": "Duplicera",
+  "delete": "Ta bort",
+  "restore": "Återställ",
+  "goToPage": "Gå till sida"
+}

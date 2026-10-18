@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Vali sihtkoht",
+  "importContentUnderThisPage": "Impordi sisu selle lehe alla",
+  "importThisContent": "Impordi see sisu",
+  "thisPage": "see leht",
+  "newPage": "Uus leht",
+  "copyOf": "Koopia:",
+  "pageActions": "Lehe toimingud",
+  "editTitle": "Muuda pealkirja",
+  "lock": "Lukusta",
+  "unlock": "Ava lukk",
+  "moveUp": "Liiguta üles",
+  "moveDown": "Liiguta alla",
+  "makeChild": "Muuda alamleheks",
+  "moveToParentLevel": "Liiguta ülemisele tasemele",
+  "addPage": "Lisa leht",
+  "duplicate": "Dubleeri",
+  "delete": "Kustuta",
+  "restore": "Taasta",
+  "goToPage": "Mine lehele"
+}

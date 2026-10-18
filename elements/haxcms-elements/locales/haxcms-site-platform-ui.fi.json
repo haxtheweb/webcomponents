@@ -1,0 +1,18 @@
+{
+  "title": "Alustan ominaisuudet",
+  "experienceLevel": "Kokemustaso",
+  "cmsFeatures": "CMS-ominaisuudet",
+  "editorFeatures": "Editorin ominaisuudet",
+  "blocks": "Lohkot",
+  "filterBlocks": "Suodata lohkoja",
+  "requiredTextNote": "Jotkin tekstitagit ovat pakollisia ja aina käytössä (näytetään harmaina).",
+  "download": "Lataa runko",
+  "save": "Tallenna",
+  "generating": "Luodaan runkoa…",
+  "generated": "Runko ladattu",
+  "enabled": "Käytössä",
+  "feature": "Ominaisuus",
+  "details": "Tiedot",
+  "featuresWarning": "Näiden asetusten poistaminen käytöstä voi poistaa merkittäviä sisällöntuotanto- ja hallintaominaisuuksia.",
+  "largeSiteWarning": "Tällä sivustolla on paljon sivuja. Rungon luominen voi kestää jonkin aikaa."
+}

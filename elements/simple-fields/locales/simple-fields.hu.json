@@ -5,5 +5,9 @@
   "recordAudio": "Hangrögzítés",
   "recordScreen": "Képernyő rögzítése",
   "cancel": "Mégse",
-  "uploadMedia": "Média feltöltése"
+  "uploadMedia": "Média feltöltése",
+  "record": "Felvétel",
+  "pause": "Felvétel szüneteltetése",
+  "stopSave": "Leállítás és mentés",
+  "clickToTakePhoto": "Kattintson fénykép készítéséhez"
 }

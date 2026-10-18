@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub ማከማቻ",
   "anErrorOccurred": "ስህተት ተከስቷል",
-  "retry": "እንደገና ይሞክሩ"
+  "retry": "እንደገና ይሞክሩ",
+  "permissionRequired": "ፈቃድ ያስፈልጋል",
+  "passwordRequirements": "የይለፍ ቃል መስፈርቶች",
+  "requirementLength": "ቢያንስ 8 ቁምፊዎች",
+  "requirementUppercase": "አንድ ትልቅ ፊደል",
+  "requirementLowercase": "አንድ ትንሽ ፊደል",
+  "requirementNumber": "አንድ ቁጥር",
+  "requirementSymbol": "አንድ ምልክት"
 }

@@ -5,5 +5,9 @@
   "recordAudio": "Sesi ýazdyryň",
   "recordScreen": "Ekrany ýazdyryň",
   "cancel": "Ýatyryň",
-  "uploadMedia": "Mediýany ýükleň"
+  "uploadMedia": "Mediýany ýükleň",
+  "record": "Ýazgy etmek",
+  "pause": "Ýazgyny saklamak",
+  "stopSave": "Togtatmak we ýatda saklamak",
+  "clickToTakePhoto": "Surata almak üçin basyň"
 }

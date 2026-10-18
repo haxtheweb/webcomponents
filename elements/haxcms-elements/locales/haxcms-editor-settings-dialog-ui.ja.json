@@ -1,0 +1,9 @@
+{
+  "title": "エディター設定",
+  "experienceLevel": "経験レベル",
+  "experienceLevelDescription": "エディターのモードを選択し、ツールバーのレイアウトをプレビューします。",
+  "buttons": "ボタン",
+  "futureButtonConfiguration": "エディターボタンのカスタム設定は近日公開予定です。",
+  "save": "保存",
+  "saving": "保存中…"
+}

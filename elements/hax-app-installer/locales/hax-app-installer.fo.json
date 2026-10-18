@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub goymsla",
   "anErrorOccurred": "Ein villa hendi",
-  "retry": "Royn aftur"
+  "retry": "Royn aftur",
+  "permissionRequired": "Loyvi kravt",
+  "passwordRequirements": "Krøv til loyniorð",
+  "requirementLength": "Í minsta lagi 8 tekn",
+  "requirementUppercase": "Ein stórur bókstavur",
+  "requirementLowercase": "Ein lítil bókstavur",
+  "requirementNumber": "Eitt tal",
+  "requirementSymbol": "Eitt tekn"
 }

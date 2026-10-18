@@ -1,0 +1,18 @@
+{
+  "title": "Mawonekedwe a pulatifomu",
+  "experienceLevel": "Mlingo wa luso",
+  "cmsFeatures": "Mawonekedwe a CMS",
+  "editorFeatures": "Mawonekedwe a mkonzi",
+  "blocks": "Mabuloko",
+  "filterBlocks": "Sefa mabuloko",
+  "requiredTextNote": "Ma tag ena a malemba ndi ofunikira ndipo amakhala oyatsidwa nthawi zonse (akuwonetsedwa ngati ozimitsidwa).",
+  "download": "Tsitsani chigoba",
+  "save": "Sungani",
+  "generating": "Ikupanga chigoba…",
+  "generated": "Chigoba chatsitsidwa",
+  "enabled": "Zayatsidwa",
+  "feature": "Mawonekedwe",
+  "details": "Zambiri",
+  "featuresWarning": "Kuzimitsa zosankha izi kungachotse kuthekera kwakukulu kolemba ndi koyang'anira.",
+  "largeSiteWarning": "Tsamba ili lili ndi masamba ambiri. Kupanga chigoba kungatenge nthawi."
+}
