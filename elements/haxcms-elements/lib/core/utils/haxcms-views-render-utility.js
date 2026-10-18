@@ -575,7 +575,7 @@ export const timelineEvents = (records, options = {}) => {
         imagesrc: recordImage(record),
         imagealt: viewsText(options, "viewsTitleImage").replace(
           "{title}",
-          recordTitle(record, options),
+          () => (recordTitle(record, options)),
         ),
       };
     })
@@ -748,7 +748,7 @@ export const renderRecordPrimary = (record, maxLength = 240, options = {}) => {
         src="${imgSource}"
         alt="${viewsText(options, "viewsTitlePreview").replace(
             "{title}",
-            recordTitle(record, options),
+            () => (recordTitle(record, options)),
           )}"
         loading="lazy"
         decoding="async"
@@ -955,7 +955,7 @@ export const renderCarouselPreview = (records, options = {}) => {
                       src="${image}"
                       alt="${viewsText(options, "viewsTitlePreview").replace(
             "{title}",
-            recordTitle(record, options),
+            () => (recordTitle(record, options)),
           )}"
                       loading="lazy"
                       decoding="async"
@@ -964,7 +964,7 @@ export const renderCarouselPreview = (records, options = {}) => {
                     src="${image}"
                     alt="${viewsText(options, "viewsTitlePreview").replace(
             "{title}",
-            recordTitle(record, options),
+            () => (recordTitle(record, options)),
           )}"
                     loading="lazy"
                     decoding="async"
@@ -1000,7 +1000,7 @@ export const renderCarouselPreview = (records, options = {}) => {
                   src="${image}"
                   alt="${viewsText(options, "viewsTitlePreview").replace(
             "{title}",
-            recordTitle(record, options),
+            () => (recordTitle(record, options)),
           )}"
                   loading="lazy"
                   decoding="async"
@@ -1097,7 +1097,7 @@ export const renderTimelinePreview = (records, options = {}) => {
       <lrndesign-timeline
         timeline-title="${viewsText(options, "viewsTimelineTitle").replace(
           "{title}",
-          titleFromParameterName(options.selectedEntity || ""),
+          () => (titleFromParameterName(options.selectedEntity || "")),
         )}"
         .events="${events}"
       ></lrndesign-timeline>
@@ -1144,7 +1144,7 @@ export const renderChartPreview = (records, options = {}) => {
         .data="${descriptor.data}"
         chart-title="${viewsText(options, "viewsChartTitle").replace(
           "{title}",
-          titleFromParameterName(options.selectedEntity || ""),
+          () => (titleFromParameterName(options.selectedEntity || "")),
         )}"
         show-table
       ></lrndesign-bar>
@@ -1189,7 +1189,7 @@ export const renderImageGalleryPreview = (records, options = {}) => {
           src="${image}"
           alt="${viewsText(options, "viewsTitlePreview").replace(
             "{title}",
-            recordTitle(record, options),
+            () => (recordTitle(record, options)),
           )}"
           loading="lazy"
           decoding="async"
@@ -1226,7 +1226,7 @@ export const renderMediaPlaylistPreview = (records, options = {}) => {
           src="${image}"
           alt="${viewsText(options, "viewsTitlePreview").replace(
             "{title}",
-            recordTitle(record, options),
+            () => (recordTitle(record, options)),
           )}"
           loading="lazy"
           decoding="async"

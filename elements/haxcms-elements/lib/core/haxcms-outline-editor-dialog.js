@@ -299,21 +299,21 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
         ? `‣ ${(summary.added === 1
             ? this.t.outlineNewPageCreated
             : this.t.outlineNewPagesCreated
-          ).replace("{count}", summary.added)}\n`
+          ).replace("{count}", () => summary.added)}\n`
         : "";
     const modifiedText =
       summary.modified > 0
         ? `‣ ${(summary.modified === 1
             ? this.t.outlinePageUpdated
             : this.t.outlinePagesUpdated
-          ).replace("{count}", summary.modified)}\n`
+          ).replace("{count}", () => summary.modified)}\n`
         : "";
     const deletedText =
       summary.deleted > 0
         ? `‣ ${(summary.deleted === 1
             ? this.t.outlinePageDeleted
             : this.t.outlinePagesDeleted
-          ).replace("{count}", summary.deleted)}\n`
+          ).replace("{count}", () => summary.deleted)}\n`
         : "";
     return `${addedText}${modifiedText}${deletedText}`;
   }
@@ -336,7 +336,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       return true;
     }
     return globalThis.confirm(
-      this.t.outlineUnsavedChangesConfirm.replace("{changes}", sumChanges),
+      this.t.outlineUnsavedChangesConfirm.replace("{changes}", () => sumChanges),
     );
   }
   _ownsSimpleModalEvent(e) {
@@ -451,7 +451,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       confirmation = true;
     } else {
       confirmation = globalThis.confirm(
-        this.t.outlineSaveConfirm.replace("{changes}", sumChanges),
+        this.t.outlineSaveConfirm.replace("{changes}", () => sumChanges),
       );
     }
     if (confirmation) {

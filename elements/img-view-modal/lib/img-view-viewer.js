@@ -761,8 +761,8 @@ class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
    */
   get pageXofY() {
     return this.t.pageXOfY
-      .replace("{x}", (this.page || 0) + 1)
-      .replace("{y}", this.pages.length);
+      .replace("{x}", () => ((this.page || 0) + 1))
+      .replace("{y}", () => this.pages.length);
   }
   get navXofY() {
     return {
@@ -780,7 +780,7 @@ class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
             value="${this.page + 1}"
             @change="${(e) => this._xOfYClick(e, this.disabled)}"
           />
-          ${this.t.ofTotal.replace("{total}", this.pages.length)}
+          ${this.t.ofTotal.replace("{total}", () => this.pages.length)}
         </p>
       `,
     };

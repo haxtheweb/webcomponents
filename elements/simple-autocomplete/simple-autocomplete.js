@@ -152,7 +152,7 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
         part="simple-popover"
         aria-label="${this.t.labelSuggestions.replace(
           "{label}",
-          this.inputLabel,
+          () => this.inputLabel,
         )}"
         ?hidden="${!this.opened || this.filtered.length === 0}"
         position="bottom"

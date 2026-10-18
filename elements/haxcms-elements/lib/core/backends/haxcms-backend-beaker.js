@@ -696,7 +696,7 @@ class HAXCMSBackendBeaker extends I18NMixin(LitElement) {
     // simulate save events since they wont fire
     store.cmsSiteEditor.instance.shadowRoot
       .querySelector("#toast")
-      .show(this.t.titleDeleted.replace("{title}", page.title));
+      .show(this.t.titleDeleted.replace("{title}", () => page.title));
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -758,7 +758,7 @@ class HAXCMSBackendBeaker extends I18NMixin(LitElement) {
     // simulate save events since they wont fire
     store.cmsSiteEditor.instance.shadowRoot
       .querySelector("#toast")
-      .show(this.t.titleCreated.replace("{title}", page.title));
+      .show(this.t.titleCreated.replace("{title}", () => page.title));
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,

@@ -466,10 +466,10 @@ export class LinkCardTheme extends HAXCMSThemeParts(
     const platform = this._socialLabel(item.socialType);
     if (item.title) {
       return this.t.titleOnPlatform
-        .replace("{title}", item.title)
-        .replace("{platform}", platform);
+        .replace("{title}", () => item.title)
+        .replace("{platform}", () => platform);
     }
-    return this.t.openPlatform.replace("{platform}", platform);
+    return this.t.openPlatform.replace("{platform}", () => platform);
   }
 
   _syncManifestData() {
@@ -559,7 +559,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
     }
     this.dataPalette = `${paletteValue}`;
     this.paletteAnnouncement =
-      this.t.paletteUpdated.replace("{number}", paletteValue + 1);
+      this.t.paletteUpdated.replace("{number}", () => (paletteValue + 1));
   }
 
   testEditMode(e) {
@@ -574,7 +574,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
 
   render() {
     const profileAlt = this.profileName
-      ? this.t.profileImageOf.replace("{name}", this.profileName)
+      ? this.t.profileImageOf.replace("{name}", () => this.profileName)
       : this.t.profileImage;
     const profileLabel = this.profileName ? this.profileName : this.t.linkCardProfile;
     return html`

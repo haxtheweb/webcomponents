@@ -1204,7 +1204,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
               <div class="template-image">
                 <img
                   src="${this.source}"
-                  alt="${this.t.templatePreview.replace("{title}", this.title)}"
+                  alt="${this.t.templatePreview.replace("{title}", () => this.title)}"
                   loading="lazy"
                   decoding="async"
                   fetchpriority="high"
@@ -1293,7 +1293,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         <div class="progress-percentage">
           ${this.t.percentComplete.replace(
             "{percent}",
-            this.creationProgress,
+            () => this.creationProgress,
           )}
         </div>
       </div>
@@ -1311,7 +1311,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         </div>
         <h2 class="success-title">${this.t.siteCreatedSuccessfully}</h2>
         <p class="success-subtitle">
-          ${this.t.newSiteReady.replace("{siteName}", this.siteName)}
+          ${this.t.newSiteReady.replace("{siteName}", () => this.siteName)}
         </p>
       </div>
     `;

@@ -258,7 +258,7 @@ class HAXElementCardList extends I18NMixin(LitElement) {
           detail: {
             title: this.t.demoOf.replace(
               "{tag}",
-              e.target.getAttribute("data-tag"),
+              () => (e.target.getAttribute("data-tag")),
             ),
             styles: {
               "--simple-modal-width": "80vw",

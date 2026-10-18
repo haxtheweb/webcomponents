@@ -250,8 +250,8 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
     }
 
     // Accounting for proper grammar with small values
-    totalYears = (totalYears > 1 ? this.t.yearsShort : this.t.yearShort).replace("{count}", totalYears);
-    totalMonths = (totalMonths > 1 ? this.t.monthsShort : this.t.monthShort).replace("{count}", totalMonths);
+    totalYears = (totalYears > 1 ? this.t.yearsShort : this.t.yearShort).replace("{count}", () => totalYears);
+    totalMonths = (totalMonths > 1 ? this.t.monthsShort : this.t.monthShort).replace("{count}", () => totalMonths);
 
     // Using a 3-letter short format for the months
     // format in the document's language, falling back to the runtime default
@@ -286,7 +286,7 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
     const skills = this.skills.map(item => item.name);
     // We don't want the list to be too long, especially with long skills names. This cuts off at 5 skills.
     // TODO: Include full list in <career-timeline> export mode.
-    const output = skills.length > 5 ? this.t.skillsAndMore.replace("{skills}", skills.slice(0, 5).join(' · ')).replace("{count}", skills.length - 5)
+    const output = skills.length > 5 ? this.t.skillsAndMore.replace("{skills}", () => (skills.slice(0, 5).join(' · '))).replace("{count}", () => (skills.length - 5))
       : skills.join(' · ');
 
     return html`<div class="skills">${this.t.skills}</div> ${output}`

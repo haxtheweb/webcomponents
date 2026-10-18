@@ -731,8 +731,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
             <div class="note">
               ${this.inventoryReady
                 ? html`${this.t.selectedOfAvailable
-                    .replace("{selected}", toggleableSelected)
-                    .replace("{total}", toggleableTotal)}
+                    .replace("{selected}", () => toggleableSelected)
+                    .replace("{total}", () => toggleableTotal)}
                   ${HAXStore.requiredPrimitives.size
                     ? html`<span> • ${this.t.requiredTextNote}</span>`
                     : ""}`
@@ -1334,7 +1334,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     } catch (error) {
       console.error("Saving blocks failed:", error);
       HAXStore.toast(
-        this.t.savingBlocksFailed.replace("{error}", error.message),
+        this.t.savingBlocksFailed.replace("{error}", () => error.message),
         5000,
         {},
         "fit-bottom",

@@ -45,7 +45,7 @@ export const createSharePageProgram = (context) => {
       "share link copy url current page".includes(normalizedInput)
     ) {
       results.push({
-        title: _t(context, "copyLinkToPage").replace("{title}", pageTitle),
+        title: _t(context, "copyLinkToPage").replace("{title}", () => pageTitle),
         icon: "editor:insert-link",
         tags: ["CMS", "share", "link", "copy", "url", "page"],
         more: shareLink,

@@ -392,7 +392,7 @@ class LinkedinEmbed extends I18NMixin(DDD) {
             class="badge-base__link LI-simple-link"
             href="${this._profileHref}"
           >
-            ${this.t.viewOnLinkedin.replace("{name}", this.vanityname)}
+            ${this.t.viewOnLinkedin.replace("{name}", () => this.vanityname)}
           </a>
         </div>
       </div>

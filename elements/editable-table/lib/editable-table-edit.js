@@ -626,11 +626,11 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
         id="cell-${rowIndex}-${colIndex}"
         aria-label="${this.t.cellLabel.replace(
           "{cell}",
-          `${this._getLabel(colIndex, false)}${rowIndex}`,
+          () => (`${this._getLabel(colIndex, false)}${rowIndex}`),
         )}"
         label="${this.t.cellLabel.replace(
           "{cell}",
-          `${this._getLabel(colIndex, false)}${rowIndex}`,
+          () => (`${this._getLabel(colIndex, false)}${rowIndex}`),
         )}"
         rawhtml="${contents}"
         type="rich-text-editor-toolbar-mini"

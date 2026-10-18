@@ -320,8 +320,8 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
             class="star"
             data-value="${value}"
             label="${this.t.rateValueOfAmount
-              .replace("{value}", value)
-              .replace("{amount}", amount)}"
+              .replace("{value}", () => value)
+              .replace("{amount}", () => amount)}"
             .buttonRole="${"radio"}"
             .ariaChecked="${value === this._checkedStar}"
             .buttonTabindex="${value === this._tabStopStar ? 0 : -1}"

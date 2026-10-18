@@ -951,7 +951,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                         src=${toolbarImgPath}
                         alt="${this.t.toolbarPreviewAlt.replace(
                           "{audience}",
-                          this.audience,
+                          () => this.audience,
                         )}"
                       />
                     </div>
@@ -1331,7 +1331,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     } catch (error) {
       console.error("Skeleton export failed:", error);
       HAXStore.toast(
-        this.t.skeletonExportFailed.replace("{error}", error.message),
+        this.t.skeletonExportFailed.replace("{error}", () => error.message),
         5000,
         {},
         "fit-bottom",
@@ -1368,7 +1368,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     } catch (error) {
       console.error("Saving platform settings failed:", error);
       HAXStore.toast(
-        this.t.savingPlatformSettingsFailed.replace("{error}", error.message),
+        this.t.savingPlatformSettingsFailed.replace("{error}", () => error.message),
         5000,
         {},
         "fit-bottom",

@@ -382,7 +382,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
           `
         : this.search.length > 0 && !this.whileLoading
           ? html`<div class="no-results" role="status">
-              ${this.t.noResultsFor.replace("{search}", this.search)}
+              ${this.t.noResultsFor.replace("{search}", () => this.search)}
             </div>`
           : html``}
     `;

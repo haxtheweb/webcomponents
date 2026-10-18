@@ -180,8 +180,8 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
     }
 
     // Accounting for proper grammar with small values
-    totalYears = (totalYears > 1 ? this.t.yearsShort : this.t.yearShort).replace("{count}", totalYears);
-    totalMonths = (totalMonths > 1 ? this.t.monthsShort : this.t.monthShort).replace("{count}", totalMonths);
+    totalYears = (totalYears > 1 ? this.t.yearsShort : this.t.yearShort).replace("{count}", () => totalYears);
+    totalMonths = (totalMonths > 1 ? this.t.monthsShort : this.t.monthShort).replace("{count}", () => totalMonths);
 
     return `${totalYears} ${totalMonths}`;
   }

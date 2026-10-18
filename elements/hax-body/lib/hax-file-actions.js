@@ -228,7 +228,7 @@ class HAXFileActions extends I18NMixin(DDD) {
           text: compressLabels[key]
             ? compressLabels[key].replace(
                 "{quality}",
-                COMPRESS_PRESETS[key].quality,
+                () => COMPRESS_PRESETS[key].quality,
               )
             : COMPRESS_PRESETS[key].label,
         });
@@ -296,7 +296,7 @@ class HAXFileActions extends I18NMixin(DDD) {
               >${(this.selectedCount === 1
                 ? this.t.fileSelected
                 : this.t.filesSelected
-              ).replace("{count}", this.selectedCount)}</span
+              ).replace("{count}", () => this.selectedCount)}</span
             >`}
         <simple-fields-field
           label="${this.t.action}"

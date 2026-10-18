@@ -727,7 +727,7 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
     });
     //.write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.toast(this.t.titleDeleted.replace("{title}", page.title));
+    store.toast(this.t.titleDeleted.replace("{title}", () => page.title));
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -784,7 +784,7 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
     // write to site json
     //.write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.toast(this.t.titleCreated.replace("{title}", page.title));
+    store.toast(this.t.titleCreated.replace("{title}", () => page.title));
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,

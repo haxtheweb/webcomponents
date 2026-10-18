@@ -128,7 +128,7 @@ class SiteOutlineBlock extends I18NMixin(LitElement) {
                 data-id="${item.id}"
                 class="link"
                 tabindex="-1"
-                title="${this.t.goToPage.replace("{title}", item.title)}"
+                title="${this.t.goToPage.replace("{title}", () => item.title)}"
                 href="${item.slug}"
                 ><button ?noink="${this.noink}">
                   <span class="link-index">${this._humanIndex(index)}</span

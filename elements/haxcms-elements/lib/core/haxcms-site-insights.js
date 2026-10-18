@@ -1654,7 +1654,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
     if (statusData.ok === false) {
       return statusData.status
-        ? this.t.linkStatusErrorCode.replace("{status}", statusData.status)
+        ? this.t.linkStatusErrorCode.replace("{status}", () => statusData.status)
         : this.t.linkStatusError;
     }
     return this.t.linkStatusUnknown;

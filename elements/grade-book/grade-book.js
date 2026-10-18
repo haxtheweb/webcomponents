@@ -1669,8 +1669,8 @@ class GradeBook extends UIRenderPieces(
                           >
                             <button
                               aria-label="${this.t.studentAssignment
-                                .replace("{student}", s.student)
-                                .replace("{assignment}", a.name)}"
+                                .replace("{student}", () => s.student)
+                                .replace("{assignment}", () => a.name)}"
                               data-student="${i}"
                               data-assignment="${h}"
                             >
@@ -1793,7 +1793,7 @@ class GradeBook extends UIRenderPieces(
                         <h4>
                           ${this.t.additionalCriteriaFeedback.replace(
                             "{criteria}",
-                            rubric.criteria,
+                            () => rubric.criteria,
                           )}
                         </h4>
                         <simple-fields-field
@@ -1829,8 +1829,8 @@ class GradeBook extends UIRenderPieces(
                         this.database.assignments[this.activeAssignment]
                           ? html`${this.t.outOfPoints.replace(
                                 "{points}",
-                                this.database.assignments[this.activeAssignment]
-                                  .points,
+                                () => (this.database.assignments[this.activeAssignment]
+                                  .points),
                               )}
                               <letter-grade
                                 style="margin:-8px 0 0 16px;"
@@ -1982,11 +1982,11 @@ class GradeBook extends UIRenderPieces(
                           <h2>${this.t.yourTotalScore}</h2>
                           <div class="score-display">
                             ${this.t.scoreOutOfPoints
-                              .replace("{score}", this.totalScore)
+                              .replace("{score}", () => this.totalScore)
                               .replace(
                                 "{points}",
-                                this.database.assignments[this.activeAssignment]
-                                  .points,
+                                () => (this.database.assignments[this.activeAssignment]
+                                  .points),
                               )}
                           </div>
                         </div>

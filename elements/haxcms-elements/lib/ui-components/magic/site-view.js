@@ -235,7 +235,7 @@ export class SiteView extends I18NMixin(DDD) {
       });
       if (!response.ok) {
         throw new Error(
-          this.t.fetchFailed.replace("{status}", response.status),
+          this.t.fetchFailed.replace("{status}", () => response.status),
         );
       }
       const payload = await response.json();

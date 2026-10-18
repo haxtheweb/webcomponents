@@ -677,7 +677,7 @@ class DDDocs extends I18NMixin(DDD) {
             data-primary="${i}"
             style="color: var(--ddd-theme-primary); background-color: var(--ddd-theme-bgContrast);"
           >
-            ${this.t.headerSampleNumber.replace("{number}", i)}
+            ${this.t.headerSampleNumber.replace("{number}", () => i)}
           </summary>
           ${Array(6)
             .fill()
@@ -3565,7 +3565,7 @@ class DDDocs extends I18NMixin(DDD) {
           ? html`<div class="pattern-gap">
               ${this.t.haxCapabilityGap.replace(
                 "{components}",
-                flagged.excludedComponents.join(", "),
+                () => (flagged.excludedComponents.join(", ")),
               )}
             </div>`
           : ``}
@@ -3719,7 +3719,7 @@ class DDDocs extends I18NMixin(DDD) {
             <div class="contract-card">
               <p class="contract-card-title">${c.title}</p>
               <p class="contract-card-surface">
-                ${this.t.contractSurface.replace("{surface}", c.surface || "")}
+                ${this.t.contractSurface.replace("{surface}", () => (c.surface || ""))}
               </p>
               <p class="contract-card-structure">${c.structure}</p>
               ${c.example
@@ -3754,7 +3754,7 @@ class DDDocs extends I18NMixin(DDD) {
               <p class="contract-card-targets">
                 ${this.t.contractAppliesTo.replace(
                   "{elements}",
-                  (c.targetElements || []).join(", "),
+                  () => ((c.targetElements || []).join(", ")),
                 )}
               </p>
             </div>

@@ -1548,9 +1548,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       <footer>
         <div> 
-          <div>${this.t.pageNumberOfTotal.replace("{current}", this.pageCurrent ?? "").replace("{total}", this.pageTotal ?? "")}</div>
-          <div>${this.t.siteGenerated.replace("{date}", this.lastUpdated)}</div>
-          <div>${this.t.copyright.replace("{year}", this.copyrightYear).replace("{author}", store.manifest && store.manifest.author ? store.manifest.author : "")}</div>
+          <div>${this.t.pageNumberOfTotal.replace("{current}", () => (this.pageCurrent ?? "")).replace("{total}", () => (this.pageTotal ?? ""))}</div>
+          <div>${this.t.siteGenerated.replace("{date}", () => this.lastUpdated)}</div>
+          <div>${this.t.copyright.replace("{year}", () => this.copyrightYear).replace("{author}", () => (store.manifest && store.manifest.author ? store.manifest.author : ""))}</div>
           <div><a class="footer-link" @click="${this.testEditMode}" tabindex="${this.editMode ? '-1' : '0'}" href="x/displays/tags" ?disabled="${this.editMode}">${this.t.viewContentByTag}</a></div>
         </div>
         <div
@@ -1570,7 +1570,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
-                    alt="${this.t.licenseGraphic.replace("{license}", this.licenseName)}"
+                    alt="${this.t.licenseGraphic.replace("{license}", () => this.licenseName)}"
                     src="${this.licenseImage}"
                   />
                 </a>

@@ -113,7 +113,7 @@ class LoremData extends I18NMixin(LoremDataBehaviors(LitElement)) {
       confirm(
         this.t.saveTheFollowing.replace(
           "{list}",
-          Object.keys(this.schemas).join(", "),
+          () => (Object.keys(this.schemas).join(", ")),
         ),
       )
     ) {

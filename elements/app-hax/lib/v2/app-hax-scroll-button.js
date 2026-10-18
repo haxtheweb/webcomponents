@@ -146,12 +146,12 @@ export class AppHaxScrollButton extends I18NMixin(LitElement) {
         @click="${this.scrollToTarget}"
         tabindex="0"
         role="button"
-        aria-label="${this.t.navigateToSection.replace("{label}", this.label)}"
+        aria-label="${this.t.navigateToSection.replace("{label}", () => this.label)}"
         aria-describedby="scroll-desc"
       >
         <span aria-hidden="true">${this.label}</span>
         <div id="scroll-desc" class="sr-only">
-          ${this.t.clickToScrollToSection.replace("{label}", this.label)}
+          ${this.t.clickToScrollToSection.replace("{label}", () => this.label)}
         </div>
       </div>
       <div
@@ -181,7 +181,7 @@ export class AppHaxScrollButton extends I18NMixin(LitElement) {
     if (announcement) {
       announcement.textContent = this.t.navigatedToSection.replace(
         "{label}",
-        this.label,
+        () => this.label,
       );
       // Clear announcement after delay
       setTimeout(() => {

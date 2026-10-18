@@ -1011,8 +1011,8 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           <div class="h1">${this.manifest.title}</div>
           <div class="h2">${this.manifest.description}</div class="h2">
           <div>
-              ${this.pageCurrent > 0 ? html`${this.t.pageOfTotal.replace("{current}", this.pageCurrent).replace("{total}", this.pageTotal)}` : nothing} <br /><br />
-              ${this.t.siteGenerated.replace("{date}", this.lastUpdated ?? "")}<br><br>
+              ${this.pageCurrent > 0 ? html`${this.t.pageOfTotal.replace("{current}", () => this.pageCurrent).replace("{total}", () => this.pageTotal)}` : nothing} <br /><br />
+              ${this.t.siteGenerated.replace("{date}", () => (this.lastUpdated ?? ""))}<br><br>
               © ${this.copyrightYear} ${this.manifest.author}.
           </div>
           <div
@@ -1033,7 +1033,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
                       loading="lazy"
                       decoding="async"
                       fetchpriority="low"
-                      alt="${this.t.licenseGraphic.replace("{license}", this.licenseName)}"
+                      alt="${this.t.licenseGraphic.replace("{license}", () => this.licenseName)}"
                       src="${this.licenseImage}"
                     />
                   </a>

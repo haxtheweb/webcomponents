@@ -166,7 +166,7 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
     }
     const siteName = site.metadata.site.name || this.title || this.t.site;
     const modal = document.createElement("app-hax-confirmation-modal");
-    modal.title = this.t.createTemplateFrom.replace("{siteName}", siteName);
+    modal.title = this.t.createTemplateFrom.replace("{siteName}", () => siteName);
     modal.message = this.t.createTemplateMessage;
     modal.confirmText = this.t.saveToTemplates;
     modal.cancelText = this.t.downloadSkeleton;
@@ -265,7 +265,7 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
           ? payload.filename
           : `${this.getSiteMachineName() || "site-template"}.json`;
       this.triggerJsonDownload(skeletonData, fileName);
-      store.toast(this.t.skeletonDownloaded.replace("{siteName}", siteName), 3000, {
+      store.toast(this.t.skeletonDownloaded.replace("{siteName}", () => siteName), 3000, {
         hat: "random",
       });
     } catch (error) {
@@ -321,7 +321,7 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
         throw new Error("saveSiteAsTemplate did not return status 200");
       }
       this.refreshTemplateResults();
-      store.toast(this.t.savedToTemplates.replace("{siteName}", siteName), 3000, {
+      store.toast(this.t.savedToTemplates.replace("{siteName}", () => siteName), 3000, {
         hat: "random",
       });
     } catch (error) {
@@ -414,11 +414,11 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
     // Create and configure the confirmation modal
     const modal = document.createElement("app-hax-confirmation-modal");
     modal.title = this.t.siteOperationConfirmTitle
-      .replace("{operationName}", opName)
-      .replace("{siteName}", site.metadata.site.name);
+      .replace("{operationName}", () => opName)
+      .replace("{siteName}", () => site.metadata.site.name);
     modal.message = this.t.siteOperationConfirmMessage
-      .replace("{operation}", this._operationVerb(op))
-      .replace("{siteName}", site.metadata.site.name);
+      .replace("{operation}", () => (this._operationVerb(op)))
+      .replace("{siteName}", () => site.metadata.site.name);
     modal.confirmText = this.t.confirm;
     modal.cancelText = this.t.cancel;
 
@@ -543,14 +543,14 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
         typeof opResponse.message === "string" && opResponse.message
           ? opResponse.message
           : this.t.siteOperationFailed
-              .replace("{siteName}", site.metadata.site.name)
-              .replace("{operation}", this._operationVerb(op));
+              .replace("{siteName}", () => site.metadata.site.name)
+              .replace("{operation}", () => (this._operationVerb(op)));
       store.toast(errMsg, 3000, { hat: "random" });
     } else {
       store.toast(
         this.t.siteOperationSuccessful
-          .replace("{siteName}", site.metadata.site.name)
-          .replace("{operation}", this._operationVerb(op)),
+          .replace("{siteName}", () => site.metadata.site.name)
+          .replace("{operation}", () => (this._operationVerb(op))),
         3000,
         {
           hat: "random",
@@ -729,14 +729,14 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
                   href="${this.siteUrl}"
                   aria-label="${this.t.openSite.replace(
                     "{title}",
-                    this.title || this.t.site,
+                    () => (this.title || this.t.site),
                   )}"
                 >
                   <img
                     src="${this.image}"
                     alt="${this.t.siteThemeScreenshot.replace(
                       "{title}",
-                      this.title || this.t.site,
+                      () => (this.title || this.t.site),
                     )}"
                     loading="lazy"
                     decoding="async"

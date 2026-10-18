@@ -1127,7 +1127,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
               class="control"
               label="${this.t.deleteSelected.replace(
                 "{count}",
-                this.selectedPages.length,
+                () => this.selectedPages.length,
               )}"
             ></simple-toolbar-button>`
           : ``}
@@ -1625,7 +1625,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             @click="${this.prependNodeToContent}"
             >${this.t.addContentType.replace(
               "{title}",
-              gizmo.title,
+              () => gizmo.title,
             )}</simple-icon-button-lite
           >
         `,
@@ -2660,13 +2660,13 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       if (targetItem) {
         let announcement = "";
         if (dropZone === "above") {
-          announcement = this.t.dropAbove.replace("{title}", targetItem.title);
+          announcement = this.t.dropAbove.replace("{title}", () => targetItem.title);
         } else if (dropZone === "below") {
-          announcement = this.t.dropBelow.replace("{title}", targetItem.title);
+          announcement = this.t.dropBelow.replace("{title}", () => targetItem.title);
         } else {
           announcement = this.t.dropAsChildOf.replace(
             "{title}",
-            targetItem.title,
+            () => targetItem.title,
           );
         }
         this.announceAction(announcement);

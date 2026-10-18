@@ -1780,7 +1780,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
           ? response.data.machineName
           : "";
       this.statusMessage = machineName
-        ? this.t.uploadedSkeleton.replace("{machineName}", machineName)
+        ? this.t.uploadedSkeleton.replace("{machineName}", () => machineName)
         : this.t.skeletonUploaded;
       this._clearSkeletonUploaderQueue();
       await this._loadSkeletonOptions(true);
@@ -2056,7 +2056,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       this.statusMessage = saved
         ? this.t.skeletonOptionsSaved.replace(
             "{count}",
-            savePayload.enabledSkeletons.length,
+            () => savePayload.enabledSkeletons.length,
           )
         : this.t.unableToSaveSkeletonOptions;
       if (saved) {
@@ -2067,7 +2067,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       this.statusMessage = saved
         ? this.t.themeOptionsSaved.replace(
             "{count}",
-            savePayload.enabledThemes.length,
+            () => savePayload.enabledThemes.length,
           )
         : this.t.unableToSaveThemeOptions;
       if (saved) {
@@ -2076,36 +2076,36 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     } else if (panelKey === "custom-code") {
       this.statusMessage = this.t.panelSavedLocally.replace(
         "{panel}",
-        this._panelLabel(panelKey),
+        () => (this._panelLabel(panelKey)),
       );
     } else if (panelKey === "integrations") {
       saved = await this._saveApiKeysData(savePayload);
       this.statusMessage = saved
-        ? this.t.panelSaved.replace("{panel}", this._panelLabel(panelKey))
+        ? this.t.panelSaved.replace("{panel}", () => (this._panelLabel(panelKey)))
         : this.t.unableToSavePanel.replace(
             "{panel}",
-            this._panelLabel(panelKey).toLowerCase(),
+            () => (this._panelLabel(panelKey).toLowerCase()),
           );
     } else if (panelKey === "media") {
       saved = await this._saveMediaSettingsData(savePayload);
       this.statusMessage = saved
-        ? this.t.panelSaved.replace("{panel}", this._panelLabel(panelKey))
+        ? this.t.panelSaved.replace("{panel}", () => (this._panelLabel(panelKey)))
         : this.t.unableToSavePanel.replace(
             "{panel}",
-            this._panelLabel(panelKey).toLowerCase(),
+            () => (this._panelLabel(panelKey).toLowerCase()),
           );
     } else if (panelKey === "configuration") {
       saved = await this._saveLocalizationSettingsData(savePayload);
       this.statusMessage = saved
-        ? this.t.panelSaved.replace("{panel}", this._panelLabel(panelKey))
+        ? this.t.panelSaved.replace("{panel}", () => (this._panelLabel(panelKey)))
         : this.t.unableToSavePanel.replace(
             "{panel}",
-            this._panelLabel(panelKey).toLowerCase(),
+            () => (this._panelLabel(panelKey).toLowerCase()),
           );
     } else {
       this.statusMessage = this.t.panelSavedLocallyPending.replace(
         "{panel}",
-        this._panelLabel(panelKey),
+        () => (this._panelLabel(panelKey)),
       );
     }
     this.dispatchEvent(
@@ -3194,18 +3194,18 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       ? (compare < 0
           ? this.t.versionUpdateAvailable
           : this.t.versionUpToDate
-        ).replace("{version}", summary.haxcmsVersionCurrent)
+        ).replace("{version}", () => summary.haxcmsVersionCurrent)
       : this.t.unknown;
     const versionDescription =
       compare < 0
         ? this.t.currentLatestVersion
             .replace(
               "{current}",
-              summary.haxcmsVersionCurrent || this.t.unknownLower,
+              () => (summary.haxcmsVersionCurrent || this.t.unknownLower),
             )
             .replace(
               "{latest}",
-              summary.haxcmsVersionLatest || this.t.unknownLower,
+              () => (summary.haxcmsVersionLatest || this.t.unknownLower),
             )
         : description;
     const nextRows = Array.isArray(rows) ? this._cloneData(rows) : [];
@@ -3583,7 +3583,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
             : nextName;
         this.statusMessage = this.t.renamedSkeleton.replace(
           "{machineName}",
-          renamedMachineName,
+          () => renamedMachineName,
         );
         await this._loadSkeletonOptions(true);
       } else {
@@ -3615,7 +3615,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     }
     const machineName = this._normalizeMachineName(option.machineName);
     const shouldDelete = globalThis.confirm(
-      this.t.deleteSkeletonConfirm.replace("{machineName}", machineName),
+      this.t.deleteSkeletonConfirm.replace("{machineName}", () => machineName),
     );
     if (!shouldDelete) {
       return;
@@ -3632,7 +3632,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       if (response && response.status === 200) {
         this.statusMessage = this.t.deletedSkeleton.replace(
           "{machineName}",
-          machineName,
+          () => machineName,
         );
         await this._loadSkeletonOptions(true);
       } else {
@@ -3687,7 +3687,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
                           icon="icons:create"
                           label="${this.t.renameSkeletonNamed.replace(
                             "{machineName}",
-                            option.machineName,
+                            () => option.machineName,
                           )}"
                           ?disabled="${actionDisabled}"
                           @click="${(e) =>
@@ -3702,7 +3702,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
                           icon="delete"
                           label="${this.t.deleteSkeletonNamed.replace(
                             "{machineName}",
-                            option.machineName,
+                            () => option.machineName,
                           )}"
                           ?disabled="${actionDisabled}"
                           @click="${(e) =>
@@ -3795,7 +3795,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
               ? html`
                   <img
                     src="${option.screenshot}"
-                    alt="${this.t.themePreviewAlt.replace("{theme}", option.label)}"
+                    alt="${this.t.themePreviewAlt.replace("{theme}", () => option.label)}"
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"

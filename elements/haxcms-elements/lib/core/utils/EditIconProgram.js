@@ -95,7 +95,7 @@ export const createEditIconProgram = (context) => {
       return [
         {
           title: searchTerm
-            ? _t(context, "noIconsFoundFor").replace("{search}", searchTerm)
+            ? _t(context, "noIconsFoundFor").replace("{search}", () => searchTerm)
             : _t(context, "noIconsAvailable"),
           icon: "icons:search",
           tags: ["empty"],
@@ -110,7 +110,7 @@ export const createEditIconProgram = (context) => {
       results.push({
         title: _t(context, "showingIconsTypeToSearch")
           .replace("{shown}", 50)
-          .replace("{total}", allIcons.length),
+          .replace("{total}", () => allIcons.length),
         icon: "icons:info",
         tags: ["hint"],
         value: { disabled: true },

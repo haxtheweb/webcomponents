@@ -57,7 +57,7 @@ export const createPageAsDataProgram = (context) => {
     PAGE_AS_DATA_FORMATS.forEach((item) => {
       const title = _t(context, "viewPageAsFormat").replace(
         "{format}",
-        item.formatName,
+        () => item.formatName,
       );
       if (
         normalizedInput === "" ||
@@ -72,7 +72,7 @@ export const createPageAsDataProgram = (context) => {
           tags: ["developer", "page", "data", "format"].concat(item.tags),
           more: _t(context, "reloadPageUsingQuery").replace(
             "{query}",
-            `?format=${item.format}`,
+            () => (`?format=${item.format}`),
           ),
           value: {
             target: context,

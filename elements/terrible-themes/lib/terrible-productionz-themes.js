@@ -334,7 +334,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                                   <p class="posted">
                                     ${this.t.byAuthor.replace(
                                       "{author}",
-                                      this.author || "",
+                                      () => (this.author || ""),
                                     )}
                                   </p>
                                 </td>

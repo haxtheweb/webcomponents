@@ -1038,7 +1038,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         await this.openTemplateModal(template);
       } else if (store && store.toast) {
         store.toast(
-          this.t.couldNotFindUseCase.replace("{useCase}", useCaseParam),
+          this.t.couldNotFindUseCase.replace("{useCase}", () => useCaseParam),
           4000,
         );
       }
@@ -1348,7 +1348,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
             <div id="template-count" class="visually-hidden">
               ${this.t.optionsAvailable.replace(
                 "{count}",
-                this.filteredItems.length,
+                () => this.filteredItems.length,
               )}
             </div>
 
@@ -2326,7 +2326,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       .catch((error) => {
         this.errorMessage = this.t.failedToLoadData.replace(
           "{error}",
-          error.message,
+          () => error.message,
         );
         this.items = [];
         this.filters = [];
@@ -2443,7 +2443,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     } catch (error) {
       this.errorMessage = this.t.failedToLoadData.replace(
           "{error}",
-          error.message,
+          () => error.message,
         );
       this.returningSites = [];
       this.filteredSites = [];

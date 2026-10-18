@@ -327,7 +327,7 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
               >${this.message}
             </p>
             <p class="answer-message">
-              ${this.t.correctAnswer.replace("{answer}", this.correctAnswer)}
+              ${this.t.correctAnswer.replace("{answer}", () => this.correctAnswer)}
             </p>`
         : ``}
       <div id="buttons">

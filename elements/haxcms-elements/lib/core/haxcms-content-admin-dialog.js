@@ -495,14 +495,14 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       const months = Math.floor(delta / month);
       return this.t.timeAgo.replace(
         "{time}",
-        `${months} ${months === 1 ? this.t.month : this.t.months}`,
+        () => (`${months} ${months === 1 ? this.t.month : this.t.months}`),
       );
     }
     if (delta >= day) {
       const days = Math.floor(delta / day);
       return this.t.timeAgo.replace(
         "{time}",
-        `${days} ${days === 1 ? this.t.day : this.t.days}`,
+        () => (`${days} ${days === 1 ? this.t.day : this.t.days}`),
       );
     }
     if (delta >= hour) {
@@ -511,12 +511,12 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       if (minutes > 0) {
         return this.t.timeAgo.replace(
           "{time}",
-          `${hours} ${hours === 1 ? this.t.hour : this.t.hours} ${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes}`,
+          () => (`${hours} ${hours === 1 ? this.t.hour : this.t.hours} ${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes}`),
         );
       }
       return this.t.timeAgo.replace(
         "{time}",
-        `${hours} ${hours === 1 ? this.t.hour : this.t.hours}`,
+        () => (`${hours} ${hours === 1 ? this.t.hour : this.t.hours}`),
       );
     }
     if (delta >= minute) {
@@ -524,12 +524,12 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       const seconds = Math.floor(delta % minute);
       return this.t.timeAgo.replace(
         "{time}",
-        `${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes} ${seconds} ${seconds === 1 ? this.t.second : this.t.seconds}`,
+        () => (`${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes} ${seconds} ${seconds === 1 ? this.t.second : this.t.seconds}`),
       );
     }
     return this.t.timeAgo.replace(
       "{time}",
-      `${delta} ${delta === 1 ? this.t.second : this.t.seconds}`,
+      () => (`${delta} ${delta === 1 ? this.t.second : this.t.seconds}`),
     );
   }
 
@@ -689,14 +689,14 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       typeof data.totalReplacements === "number" ? data.totalReplacements : 0;
     store.toast(
       this.t.replaceSummary
-        .replace("{pageCount}", updatedItems)
-        .replace("{pageUnit}", updatedItems === 1 ? this.t.pageUnit : this.t.pagesUnit)
-        .replace("{replacementCount}", totalReplacements)
+        .replace("{pageCount}", () => updatedItems)
+        .replace("{pageUnit}", () => (updatedItems === 1 ? this.t.pageUnit : this.t.pagesUnit))
+        .replace("{replacementCount}", () => totalReplacements)
         .replace(
           "{replacementUnit}",
-          totalReplacements === 1
+          () => (totalReplacements === 1
             ? this.t.replacementUnit
-            : this.t.replacementsUnit,
+            : this.t.replacementsUnit),
         ),
       3000,
       { hat: "construction" },
@@ -1062,7 +1062,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                         : (this._searchMatchCount() === 1
                             ? this.t.matchCountSingular
                             : this.t.matchCountPlural
-                          ).replace("{count}", this._searchMatchCount())}
+                          ).replace("{count}", () => (this._searchMatchCount()))}
                     </p>
                   `
                 : ``}

@@ -163,8 +163,8 @@ export class SortingQuestion extends QuestionElement {
             this.__toastColor = "red";
             this.__toastIcon = "icons:thumb-down";
             this.__toastText = this.t.numCorrectOfTotal
-              .replace("{correct}", this.numberCorrect)
-              .replace("{total}", this.answers.length);
+              .replace("{correct}", () => this.numberCorrect)
+              .replace("{total}", () => this.answers.length);
             this.playSound("error");
             extras.fire = true;
           }

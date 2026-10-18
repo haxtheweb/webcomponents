@@ -79,7 +79,7 @@ class A11yTab extends I18NMixin(LitElement) {
   }
   render() {
     return html`
-      <span class="sr-only">${this.t.tabXOfY.replace("{xOfY}", this.xOfY)}</span>
+      <span class="sr-only">${this.t.tabXOfY.replace("{xOfY}", () => this.xOfY)}</span>
       <div class="label-heading" part="heading">
         <simple-icon-lite
           class="icon"
@@ -283,8 +283,8 @@ class A11yTab extends I18NMixin(LitElement) {
    */
   get xOfY() {
     return this.t.xOfY
-      .replace("{order}", this.order)
-      .replace("{total}", this.total);
+      .replace("{order}", () => this.order)
+      .replace("{total}", () => this.total);
   }
   /**
    * splits the translated "end of tab" sentence around the {tabs} link
@@ -292,7 +292,7 @@ class A11yTab extends I18NMixin(LitElement) {
    * @returns {array} text before and after the tabs link
    */
   _endOfTabParts() {
-    let parts = this.t.endOfTab.replace("{xOfY}", this.xOfY).split("{tabs}");
+    let parts = this.t.endOfTab.replace("{xOfY}", () => this.xOfY).split("{tabs}");
     return [parts[0], parts.slice(1).join("")];
   }
 

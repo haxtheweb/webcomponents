@@ -226,7 +226,7 @@ class BootstrapFooter extends I18NMixin(LitElement) {
                 role="button"
                 aria-label="${this.t.goToPreviousPage.replace(
                   "{title}",
-                  this._backwardItem.title || "",
+                  () => (this._backwardItem.title || ""),
                 )}"
               >
                 <simple-icon-lite
@@ -245,7 +245,7 @@ class BootstrapFooter extends I18NMixin(LitElement) {
                 role="button"
                 aria-label="${this.t.goToNextPage.replace(
                   "{title}",
-                  this._forwardItem.title || "",
+                  () => (this._forwardItem.title || ""),
                 )}"
               >
                 <span>${this._forwardItem.title}</span>

@@ -121,8 +121,8 @@ class PolarisMark extends I18NMixin(LitElement) {
           rel="noopener"
           aria-label="${this.t.visitPsuEdu.replace(
             "{name}",
-            [this.name, this.name2, this.name3].filter(Boolean).join(" ") ||
-              "Penn State",
+            () => ([this.name, this.name2, this.name3].filter(Boolean).join(" ") ||
+              "Penn State"),
           )}"
           @click="${this._clickPrevent}"
         >

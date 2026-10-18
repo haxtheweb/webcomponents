@@ -301,7 +301,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       >
 
         <div class="logo-hamburger desktop">
-          <a class="logo-link desktop" href="${this.homeLink}" aria-label="${this.t.siteNameHome.replace("{name}", store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : this.t.home)}" @focus=${this.fullOpacity}>
+          <a class="logo-link desktop" href="${this.homeLink}" aria-label="${this.t.siteNameHome.replace("{name}", () => (store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : this.t.home))}" @focus=${this.fullOpacity}>
             <img class="logo desktop" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="" />
           </a>
         </div>
@@ -321,7 +321,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       <!-- -----------MOBILE HEADER--------------- -->
       <div class="container mobile">
         <div class="logo-hamburger mobile">
-          <a class="logo-link mobile" href="${this.homeLink}" aria-label="${this.t.siteNameHome.replace("{name}", store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : this.t.home)}" @click="${this.closeHamburger}">
+          <a class="logo-link mobile" href="${this.homeLink}" aria-label="${this.t.siteNameHome.replace("{name}", () => (store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : this.t.home))}" @click="${this.closeHamburger}">
             <img class="logo mobile" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="" />
           </a> 
 

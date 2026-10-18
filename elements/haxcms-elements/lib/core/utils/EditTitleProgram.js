@@ -43,7 +43,7 @@ export const createEditTitleProgram = (context) => {
     if (!input || input.trim() === "") {
       if (currentTitle) {
         results.push({
-          title: _t(context, "saveTitleValue").replace("{title}", currentTitle),
+          title: _t(context, "saveTitleValue").replace("{title}", () => currentTitle),
           icon: "icons:check",
           tags: ["confirm", "save"],
           value: {
@@ -72,7 +72,7 @@ export const createEditTitleProgram = (context) => {
 
     // User has typed something - show save option with their input
     results.push({
-      title: _t(context, "saveTitleValue").replace("{title}", input),
+      title: _t(context, "saveTitleValue").replace("{title}", () => input),
       icon: "icons:check",
       tags: ["confirm", "save"],
       value: {

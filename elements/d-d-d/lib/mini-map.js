@@ -230,7 +230,7 @@ export class MiniMap extends I18NMixin(DDD) {
       cancelable: true,
       composed: true,
       detail: {
-        title: this.t.nodeId.replace("{id}", id),
+        title: this.t.nodeId.replace("{id}", () => id),
         elements: { content, buttons },
         invokedBy: invokedBy || saveButton,
         clone: false,

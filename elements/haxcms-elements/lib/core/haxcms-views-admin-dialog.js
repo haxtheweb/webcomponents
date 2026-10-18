@@ -1829,7 +1829,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       pieces.push(
         this.t.filterableFields.replace(
           "{fields}",
-          `${entityConfig.filterableFields.slice(0, 6).join(", ")}${entityConfig.filterableFields.length > 6 ? "…" : ""}`,
+          () => (`${entityConfig.filterableFields.slice(0, 6).join(", ")}${entityConfig.filterableFields.length > 6 ? "…" : ""}`),
         ),
       );
     }
@@ -1840,7 +1840,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       pieces.push(
         this.t.selectableFields.replace(
           "{fields}",
-          `${entityConfig.selectableFields.slice(0, 8).join(", ")}${entityConfig.selectableFields.length > 8 ? "…" : ""}`,
+          () => (`${entityConfig.selectableFields.slice(0, 8).join(", ")}${entityConfig.selectableFields.length > 8 ? "…" : ""}`),
         ),
       );
     }
@@ -2211,11 +2211,11 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                           ? this.t.loading
                           : this.previewTotal > this.previewCount
                             ? this.t.recordsShownOfTotal
-                                .replace("{count}", this.previewCount)
-                                .replace("{total}", this.previewTotal)
+                                .replace("{count}", () => this.previewCount)
+                                .replace("{total}", () => this.previewTotal)
                             : this.t.recordsShown.replace(
                                 "{count}",
-                                this.previewCount,
+                                () => this.previewCount,
                               )}
                       </span>
                     </div>

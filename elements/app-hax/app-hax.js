@@ -2393,7 +2393,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 hat="${this.userMenuOpen ? "edit" : "none"}"
                 aria-label="${this.t.userMenuFor.replace(
                   "{name}",
-                  displayUserName,
+                  () => displayUserName,
                 )}"
                 aria-expanded="${this.userMenuOpen}"
                 ?walking="${this.rpgWalk}"

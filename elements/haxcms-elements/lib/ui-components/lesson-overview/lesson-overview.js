@@ -152,43 +152,43 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
         // walk response details, setting things into associated smart blocks
         switch (key) {
           case "audio":
-            item.title = this.t.lessonAudioCount.replace("{count}", value);
+            item.title = this.t.lessonAudioCount.replace("{count}", () => value);
             item.icon = "av:music-video";
             break;
           case "images":
-            item.title = this.t.lessonImagesCount.replace("{count}", value);
+            item.title = this.t.lessonImagesCount.replace("{count}", () => value);
             item.icon = "image:image";
             break;
           case "objectives":
-            item.title = this.t.lessonObjectivesCount.replace("{count}", value);
+            item.title = this.t.lessonObjectivesCount.replace("{count}", () => value);
             item.subtitle = this.t.lessonObjectivesSubtitle;
             item.icon = "editor:format-list-numbered";
             break;
           case "dataTables":
-            item.title = this.t.lessonDataTablesCount.replace("{count}", value);
+            item.title = this.t.lessonDataTablesCount.replace("{count}", () => value);
             item.icon = "image:grid-on";
             break;
           case "pages":
             let items = [];
-            item.title = this.t.lessonPagesCount.replace("{count}", value);
+            item.title = this.t.lessonPagesCount.replace("{count}", () => value);
             if (data.objectives) {
               items.push(
                 this.t.lessonLearningObjectivesCount.replace(
                   "{count}",
-                  data.objectives,
+                  () => data.objectives,
                 ),
               );
             }
             if (data.images) {
               items.push(
-                this.t.lessonImagesLowerCount.replace("{count}", data.images),
+                this.t.lessonImagesLowerCount.replace("{count}", () => data.images),
               );
             }
             if (data.dataTables) {
               items.push(
                 this.t.lessonDataTablesLowerCount.replace(
                   "{count}",
-                  data.dataTables,
+                  () => data.dataTables,
                 ),
               );
             }
@@ -217,7 +217,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
             }
             item.title = this.t.lessonApproxReading.replace(
               "{time}",
-              readVal.join(", "),
+              () => (readVal.join(", ")),
             );
             item.subtitle = this.t.lessonReadingEstimate;
             item.icon = "communication:import-contacts";
@@ -225,17 +225,17 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
           case "selfChecks":
             item.title = this.t.lessonInteractiveItemsCount.replace(
               "{count}",
-              value,
+              () => value,
             );
             item.subtitle = this.t.lessonSelfChecksSubtitle;
             item.icon = "hardware:videogame-asset";
             break;
           case "video":
-            item.title = this.t.lessonVideosCount.replace("{count}", value);
+            item.title = this.t.lessonVideosCount.replace("{count}", () => value);
             if (data.videoLength) {
               item.subtitle = this.t.lessonVideoLength.replace(
                 "{time}",
-                toHHMMSS(data.videoLength),
+                () => (toHHMMSS(data.videoLength)),
               );
             }
             item.icon = "av:play-circle-outline";
@@ -243,14 +243,14 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
           case "videoLength":
             item.title = this.t.lessonVideoLength.replace(
               "{time}",
-              toHHMMSS(value),
+              () => (toHHMMSS(value)),
             );
             item.icon = "av:play-circle-outline";
             break;
           default:
             item.title = this.t.lessonValueOfKey
-              .replace("{value}", value)
-              .replace("{key}", key);
+              .replace("{value}", () => value)
+              .replace("{key}", () => key);
             item.icon = "hardware:videogame-asset";
             break;
         }

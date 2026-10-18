@@ -107,7 +107,7 @@ export async function exportPageAs(format) {
 
       default:
         HAXStore.toast(
-          _t(this, "exportFormatNotSupported").replace("{format}", format),
+          _t(this, "exportFormatNotSupported").replace("{format}", () => format),
           3000,
           "fit-bottom",
         );
@@ -115,7 +115,7 @@ export async function exportPageAs(format) {
   } catch (error) {
     console.error("Export error:", error);
     HAXStore.toast(
-      _t(this, "exportFailed").replace("{error}", error.message),
+      _t(this, "exportFailed").replace("{error}", () => error.message),
       3000,
       "fit-bottom",
     );
@@ -208,7 +208,7 @@ export async function _exportPageRouteVariant(format, title) {
     HAXStore.toast(
       _t(this, "formatFileDownloadedSuccessfully").replace(
         "{format}",
-        ext.toUpperCase(),
+        () => (ext.toUpperCase()),
       ),
       3000,
       "fit-bottom",
@@ -217,7 +217,7 @@ export async function _exportPageRouteVariant(format, title) {
     console.error(`Page ${format} export error:`, error);
     this.clearProcessingVisual();
     HAXStore.toast(
-      _t(this, "pageFormatExportNotAvailable").replace("{format}", format),
+      _t(this, "pageFormatExportNotAvailable").replace("{format}", () => format),
       3000,
       "fit-bottom",
     );

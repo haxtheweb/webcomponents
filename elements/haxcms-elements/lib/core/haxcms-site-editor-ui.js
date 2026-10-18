@@ -1151,7 +1151,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             store.toast(
               this.t.errorConvertingExcelFile.replace(
                 "{error}",
-                excelResponse.data.error || this.t.unknownError,
+                () => (excelResponse.data.error || this.t.unknownError),
               ),
               4000,
               {
@@ -1162,7 +1162,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         } catch (error) {
           console.error("Excel conversion error:", error);
           store.toast(
-            this.t.errorProcessingExcelFile.replace("{error}", error.message),
+            this.t.errorProcessingExcelFile.replace("{error}", () => error.message),
             4000,
             {
               hat: "construction",
@@ -1614,11 +1614,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
 
     // Provide user feedback
-    let message = this.t.pageCreatedSuccessfully.replace("{title}", title);
+    let message = this.t.pageCreatedSuccessfully.replace("{title}", () => title);
     if (type === "child") {
-      message = this.t.childPageCreatedSuccessfully.replace("{title}", title);
+      message = this.t.childPageCreatedSuccessfully.replace("{title}", () => title);
     } else if (type === "duplicate") {
-      message = this.t.pageDuplicatedSuccessfully.replace("{title}", title);
+      message = this.t.pageDuplicatedSuccessfully.replace("{title}", () => title);
     }
     if (templateContent) {
       message += " " + this.t.templateApplied;
@@ -1681,7 +1681,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const parentTitle = newParentId
       ? (await store.findItem(newParentId)).title
       : this.t.rootLevel;
-    store.toast(this.t.pageMovedUnder.replace("{parent}", parentTitle), 3000, {
+    store.toast(this.t.pageMovedUnder.replace("{parent}", () => parentTitle), 3000, {
       hat: "construction",
       walking: true,
     });
@@ -2034,8 +2034,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             // Add blank page option first
             results.push({
               title: templateContent
-                ? this.t.createTitleWithView.replace("{title}", title)
-                : this.t.createTitle.replace("{title}", title),
+                ? this.t.createTitleWithView.replace("{title}", () => title)
+                : this.t.createTitle.replace("{title}", () => title),
               icon: "hax:add-page",
               tags: ["page", "blank", "create"],
               value: {
@@ -2052,8 +2052,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               pageTemplates.forEach((template, index) => {
                 results.push({
                   title: this.t.createTemplateNamedTitle
-                    .replace("{template}", template.name)
-                    .replace("{title}", title),
+                    .replace("{template}", () => template.name)
+                    .replace("{title}", () => title),
                   icon: "hax:templates",
                   tags: ["template", "page", "create"],
                   value: {
@@ -2074,7 +2074,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             // Add duplicate current page option
             if (currentItem) {
               results.push({
-                title: this.t.duplicateAsTitle.replace("{title}", title),
+                title: this.t.duplicateAsTitle.replace("{title}", () => title),
                 icon: "hax:duplicate",
                 tags: ["page", "duplicate", "create"],
                 value: {
@@ -2092,7 +2092,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             console.error("Error in create-page program:", error);
             return [
               {
-                title: this.t.errorMessage.replace("{error}", error.message),
+                title: this.t.errorMessage.replace("{error}", () => error.message),
                 icon: "icons:error",
                 tags: ["error"],
                 value: { disabled: true },
@@ -2293,7 +2293,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 // only show options to make new content if we are NOT in edit mode
                 if (!usMemory.editMode) {
                   results.push({
-                    title: this.t.newSiblingPageFromType.replace("{type}", values.type),
+                    title: this.t.newSiblingPageFromType.replace("{type}", () => values.type),
                     icon: "hax:add-page",
                     tags: ["agent"],
                     value: {
@@ -2305,7 +2305,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     path: this.t.pageCreatedNextToCurrent,
                   });
                   results.push({
-                    title: this.t.newChildPageFromType.replace("{type}", values.type),
+                    title: this.t.newChildPageFromType.replace("{type}", () => values.type),
                     icon: "hax:add-child-page",
                     tags: ["agent"],
                     value: {
@@ -2322,7 +2322,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     )
                   ) {
                     results.push({
-                      title: this.t.createOutlineFromType.replace("{type}", values.type),
+                      title: this.t.createOutlineFromType.replace("{type}", () => values.type),
                       icon: "hax:site-map",
                       tags: ["agent"],
                       value: {
@@ -2336,7 +2336,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   }
                 }
                 results.push({
-                  title: this.t.insertTypeContentsInPage.replace("{type}", values.type),
+                  title: this.t.insertTypeContentsInPage.replace("{type}", () => values.type),
                   icon: "hax:html-code",
                   tags: ["agent"],
                   value: {
@@ -2349,7 +2349,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 });
                 if (values.type === "pdf") {
                   results.push({
-                    title: this.t.embedTypeInPage.replace("{type}", values.type),
+                    title: this.t.embedTypeInPage.replace("{type}", () => values.type),
                     icon: "hax:file-pdf",
                     tags: ["agent"],
                     value: {
@@ -2383,7 +2383,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               case "gif":
               case "jpg":
                 results.push({
-                  title: this.t.insertTypeInPage.replace("{type}", values.type),
+                  title: this.t.insertTypeInPage.replace("{type}", () => values.type),
                   icon: "editor:insert-photo",
                   tags: ["agent"],
                   value: {
@@ -2409,7 +2409,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 break;
               case "mp4":
                 results.push({
-                  title: this.t.insertTypeInPage.replace("{type}", values.type),
+                  title: this.t.insertTypeInPage.replace("{type}", () => values.type),
                   icon: "av:play-circle-filled",
                   tags: ["agent"],
                   value: {
@@ -2425,7 +2425,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               case "mid":
               case "mp3":
                 results.push({
-                  title: this.t.insertTypeInPage.replace("{type}", values.type),
+                  title: this.t.insertTypeInPage.replace("{type}", () => values.type),
                   icon: "av:volume-up",
                   tags: ["agent"],
                   value: {
@@ -2441,7 +2441,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               case "xls":
               case "ods":
                 results.push({
-                  title: this.t.insertTypeAsTable.replace("{type}", values.type),
+                  title: this.t.insertTypeAsTable.replace("{type}", () => values.type),
                   icon: "editor:border-all",
                   tags: ["agent"],
                   value: {
@@ -2453,7 +2453,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   path: this.t.spreadsheetConvertedToHtmlTable,
                 });
                 results.push({
-                  title: this.t.insertTypeAsCsvText.replace("{type}", values.type),
+                  title: this.t.insertTypeAsCsvText.replace("{type}", () => values.type),
                   icon: "hax:code",
                   tags: ["agent"],
                   value: {
@@ -2471,7 +2471,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 break;
             }
             results.push({
-              title: this.t.linkToTypeFile.replace("{type}", values.type),
+              title: this.t.linkToTypeFile.replace("{type}", () => values.type),
               icon: "editor:insert-link",
               tags: ["agent"],
               value: {
@@ -2483,7 +2483,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               path: this.t.fileUploadedAndLinkedTo,
             });
             results.push({
-              title: this.t.justUploadTypeFile.replace("{type}", values.type),
+              title: this.t.justUploadTypeFile.replace("{type}", () => values.type),
               icon: "file-upload",
               tags: ["agent"],
               value: {
@@ -2730,7 +2730,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               results.push({
                 title: this.t.applyLinkToSelectedText.replace(
                   "{text}",
-                  `${sel.toString().trim().substring(0, 30)}${sel.toString().trim().length > 30 ? "..." : ""}`,
+                  () => (`${sel.toString().trim().substring(0, 30)}${sel.toString().trim().length > 30 ? "..." : ""}`),
                 ),
                 icon: "editor:format-color-text",
                 tags: ["agent", "link", "selection"],
@@ -3394,7 +3394,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 ?walking="${this.rpgWalk}"
                 aria-label="${this.t.userMenuFor.replace(
                   "{name}",
-                  this.userName,
+                  () => this.userName,
                 )}"
                 aria-expanded="${this.userMenuOpen}"
                 @mouseover="${this.rpgStartWalk}"
@@ -3744,7 +3744,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     if (store.platformAllows("insights")) {
       SuperDaemonInstance.defineOption({
-        title: this.t.adminSection.replace("{section}", this.t.reports),
+        title: this.t.adminSection.replace("{section}", () => this.t.reports),
         icon: "hax:graph",
         tags: ["CMS", "admin", "reports", "data", "operation"],
         value: {
@@ -3775,7 +3775,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/action/edit",
     });
     SuperDaemonInstance.defineOption({
-      title: this.t.adminSection.replace("{section}", this.t.siteSettings),
+      title: this.t.adminSection.replace("{section}", () => this.t.siteSettings),
       icon: "hax:site-settings",
       tags: ["CMS", "admin", "site", "settings", "operation", "command"],
       // Links this Merlin option to the Ctrl+Shift+6 binding registered in
@@ -3791,7 +3791,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/admin/dashboard",
     });
     SuperDaemonInstance.defineOption({
-      title: this.t.adminSection.replace("{section}", this.t.about),
+      title: this.t.adminSection.replace("{section}", () => this.t.about),
       icon: "help",
       tags: ["CMS", "admin", "about", "help", "tutorials", "community"],
       value: {
@@ -3805,7 +3805,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     if (store.platformAllows("themeManifest")) {
       SuperDaemonInstance.defineOption({
-        title: this.t.adminSection.replace("{section}", this.t.appearance),
+        title: this.t.adminSection.replace("{section}", () => this.t.appearance),
         icon: "lrn:palette",
         tags: [
           "CMS",
@@ -3826,7 +3826,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/admin/appearance",
       });
       SuperDaemonInstance.defineOption({
-        title: this.t.adminSection.replace("{section}", this.t.themePreview),
+        title: this.t.adminSection.replace("{section}", () => this.t.themePreview),
         icon: "image:style",
         tags: [
           "CMS",
@@ -3849,7 +3849,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     if (store.platformAllows("seoManifest")) {
       SuperDaemonInstance.defineOption({
-        title: this.t.adminSection.replace("{section}", this.t.seoSettings),
+        title: this.t.adminSection.replace("{section}", () => this.t.seoSettings),
         icon: "icons:search",
         tags: [
           "CMS",
@@ -3873,7 +3873,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     if (store.platformAllows("authorManifest")) {
       SuperDaemonInstance.defineOption({
-        title: this.t.adminSection.replace("{section}", this.t.authorSettings),
+        title: this.t.adminSection.replace("{section}", () => this.t.authorSettings),
         icon: "account-circle",
         tags: ["CMS", "admin", "author", "settings", "site settings"],
         value: {
@@ -3887,7 +3887,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
     }
     SuperDaemonInstance.defineOption({
-      title: this.t.adminSection.replace("{section}", this.t.content),
+      title: this.t.adminSection.replace("{section}", () => this.t.content),
       icon: "editor:insert-drive-file",
       tags: ["CMS", "admin", "content", "site settings", "operation"],
       value: {
@@ -3900,7 +3900,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/admin/content",
     });
     SuperDaemonInstance.defineOption({
-      title: this.t.adminSection.replace("{section}", this.t.views),
+      title: this.t.adminSection.replace("{section}", () => this.t.views),
       icon: "hax:view-gallery",
       tags: ["CMS", "admin", "views", "display", "query", "site settings"],
       value: {
@@ -3926,7 +3926,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     if (store.platformAllows("siteManifest")) {
       SuperDaemonInstance.defineOption({
-        title: this.t.adminSection.replace("{section}", this.t.details),
+        title: this.t.adminSection.replace("{section}", () => this.t.details),
         icon: "settings",
         tags: ["CMS", "admin", "details", "site", "settings", "metadata"],
         value: {
@@ -3939,7 +3939,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/admin/details",
       });
       SuperDaemonInstance.defineOption({
-        title: this.t.adminSection.replace("{section}", this.t.blocks),
+        title: this.t.adminSection.replace("{section}", () => this.t.blocks),
         icon: "hax:blocks",
         tags: ["CMS", "admin", "blocks", "settings", "site settings"],
         value: {
@@ -3952,7 +3952,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/admin/blocks",
       });
       SuperDaemonInstance.defineOption({
-        title: this.t.adminSection.replace("{section}", this.t.editor),
+        title: this.t.adminSection.replace("{section}", () => this.t.editor),
         icon: "hax:page-edit",
         tags: ["CMS", "admin", "editor", "settings", "site settings"],
         value: {
@@ -3966,7 +3966,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
     }
     SuperDaemonInstance.defineOption({
-      title: this.t.adminSection.replace("{section}", this.t.features),
+      title: this.t.adminSection.replace("{section}", () => this.t.features),
       icon: "hax:add-item",
       tags: ["CMS", "admin", "features", "platform", "settings"],
       value: {
@@ -3980,7 +3980,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     if (store.platformAllows("uploadMedia")) {
       SuperDaemonInstance.defineOption({
-        title: this.t.adminSection.replace("{section}", this.t.files),
+        title: this.t.adminSection.replace("{section}", () => this.t.files),
         icon: "icons:folder",
         tags: ["CMS", "admin", "files", "media", "site settings"],
         value: {
@@ -3994,7 +3994,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
     }
     SuperDaemonInstance.defineOption({
-      title: this.t.adminSection.replace("{section}", this.t.importExport),
+      title: this.t.adminSection.replace("{section}", () => this.t.importExport),
       icon: "icons:file-download",
       tags: ["CMS", "admin", "import", "export", "transfer", "site settings"],
       value: {
@@ -4008,7 +4008,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     if (store.platformAllows("styleGuide")) {
       SuperDaemonInstance.defineOption({
-        title: this.t.adminSection.replace("{section}", this.t.styleGuide),
+        title: this.t.adminSection.replace("{section}", () => this.t.styleGuide),
         icon: "lrn:palette",
         tags: ["CMS", "admin", "theme", "style guide", "design"],
         value: {
@@ -4064,7 +4064,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     if (store.platformAllows("outlineDesigner")) {
       SuperDaemonInstance.defineOption({
-        title: this.t.adminSection.replace("{section}", this.t.pageOutline),
+        title: this.t.adminSection.replace("{section}", () => this.t.pageOutline),
         icon: "hax:site-map",
         tags: [
           "CMS",
@@ -4754,7 +4754,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             {
               title: this.t.openRevisionsFor.replace(
                 "{title}",
-                activeItem.title || this.t.currentPageLower,
+                () => (activeItem.title || this.t.currentPageLower),
               ),
               icon: "icons:history",
               tags: ["revisions", "history", "page"],
@@ -5286,7 +5286,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     if (copied) {
       HAXStore.toast(
-        this.t.linkCopiedFor.replace("{title}", pageTitle),
+        this.t.linkCopiedFor.replace("{title}", () => pageTitle),
         3000,
         "fit-bottom",
       );
@@ -7095,7 +7095,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           cancelable: false,
           detail: {
             title: resolvedNodeTitle
-              ? this.t.pageRevisionsFor.replace("{title}", resolvedNodeTitle)
+              ? this.t.pageRevisionsFor.replace("{title}", () => resolvedNodeTitle)
               : this.t.pageRevisions,
             titleIcon: "icons:history",
             breadcrumbs: breadcrumbs,
@@ -7323,7 +7323,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     let confirmDialog = globalThis.document.createElement("hax-confirm-dialog");
     confirmDialog.message = this.t.deletePageConfirmMessage.replace(
       "{title}",
-      activeTitle,
+      () => activeTitle,
     );
     confirmDialog.confirmLabel = this.t.delete;
     confirmDialog.cancelLabel = this.t.cancel;
@@ -7444,7 +7444,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     const newTitle = globalThis.prompt(
       this.t.enterTitleForDuplicatedPage,
-      this.t.titleCopy.replace("{title}", activeItem.title),
+      this.t.titleCopy.replace("{title}", () => activeItem.title),
     );
     if (newTitle && newTitle.trim() !== "") {
       store.playSound("click");

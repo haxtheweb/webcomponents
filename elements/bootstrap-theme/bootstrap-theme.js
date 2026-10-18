@@ -662,7 +662,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                   src="${this.__siteImage}"
                   alt="${this.t.siteLogo.replace(
                     "{title}",
-                    this.__siteTitle || "",
+                    () => (this.__siteTitle || ""),
                   )}"
                 />`
               : ``}

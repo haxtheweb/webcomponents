@@ -207,7 +207,7 @@ class LessonHighlight extends I18NMixin(SimpleColors) {
     changedProperties.forEach((oldValue, propName) => {
       // if we go into a loading state, disable the item until loading finishes
       if (propName === "loading" && this[propName] && this.smart) {
-        this.title = this.t.updatingData.replace("{type}", this.smart);
+        this.title = this.t.updatingData.replace("{type}", () => this.smart);
       }
     });
   }

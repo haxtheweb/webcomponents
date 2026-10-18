@@ -251,11 +251,11 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
     // Create and configure the confirmation modal
     const modal = document.createElement("app-hax-confirmation-modal");
     modal.title = this.t.siteOperationConfirmTitle
-      .replace("{operationName}", opName)
-      .replace("{siteName}", site.metadata.site.name);
+      .replace("{operationName}", () => opName)
+      .replace("{siteName}", () => site.metadata.site.name);
     modal.message = this.t.siteOperationConfirmMessage
-      .replace("{operation}", this._operationVerb(op))
-      .replace("{siteName}", site.metadata.site.name);
+      .replace("{operation}", () => (this._operationVerb(op)))
+      .replace("{siteName}", () => site.metadata.site.name);
     modal.confirmText = this.t.confirm;
     modal.cancelText = this.t.cancel;
 
@@ -376,14 +376,14 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
           typeof opResponse.message === "string" && opResponse.message
             ? opResponse.message
             : this.t.siteOperationFailed
-                .replace("{siteName}", site.metadata.site.name)
-                .replace("{operation}", this._operationVerb(op));
+                .replace("{siteName}", () => site.metadata.site.name)
+                .replace("{operation}", () => (this._operationVerb(op)));
         store.toast(errMsg, 3000, { hat: "random" });
       } else {
         store.toast(
           this.t.siteOperationSuccessful
-            .replace("{siteName}", site.metadata.site.name)
-            .replace("{operation}", this._operationVerb(op)),
+            .replace("{siteName}", () => site.metadata.site.name)
+            .replace("{operation}", () => (this._operationVerb(op))),
           3000,
           {
             hat: "random",
@@ -400,8 +400,8 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
       store.clearProcessingVisual();
       store.toast(
         this.t.siteOperationFailed
-          .replace("{siteName}", site.metadata.site.name)
-          .replace("{operation}", this._operationVerb(op)),
+          .replace("{siteName}", () => site.metadata.site.name)
+          .replace("{operation}", () => (this._operationVerb(op))),
         3000,
         { hat: "random" },
       );

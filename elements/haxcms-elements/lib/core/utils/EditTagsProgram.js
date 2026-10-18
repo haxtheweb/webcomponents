@@ -53,7 +53,7 @@ export const createEditTagsProgram = (context) => {
     // User typed something - offer to save their input verbatim.
     if (input && input.trim() !== "") {
       results.push({
-        title: _t(context, "saveTagsValue").replace("{tags}", input),
+        title: _t(context, "saveTagsValue").replace("{tags}", () => input),
         icon: "icons:check",
         tags: ["confirm", "save"],
         value: {
@@ -84,7 +84,7 @@ export const createEditTagsProgram = (context) => {
     // clear them.
     if (currentTags) {
       results.push({
-        title: _t(context, "saveTagsValue").replace("{tags}", currentTags),
+        title: _t(context, "saveTagsValue").replace("{tags}", () => currentTags),
         icon: "icons:check",
         tags: ["confirm", "save"],
         value: {

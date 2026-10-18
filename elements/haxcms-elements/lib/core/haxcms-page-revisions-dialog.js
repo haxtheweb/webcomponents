@@ -730,7 +730,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(DDD) {
             <span class="panel-header-title"
               >${this.t.revisionsFor.replace(
                 "{page}",
-                pageLabel || this.t.page,
+                () => (pageLabel || this.t.page),
               )}</span
             >
           </div>
@@ -740,7 +740,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(DDD) {
               : (this.revisions.length === 1
                   ? this.t.revisionCountSingular
                   : this.t.revisionCountPlural
-                ).replace("{count}", this.revisions.length)}
+                ).replace("{count}", () => this.revisions.length)}
           </div>
           <div class="table-wrap">
             ${this.revisions.length === 0 && !this.loading

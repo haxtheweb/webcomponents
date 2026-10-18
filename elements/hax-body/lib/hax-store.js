@@ -453,7 +453,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         this.haxAppPicker.presentOptions(
           haxElements,
           type,
-          this.t.pickHowToPresent.replace("{type}", typeName),
+          this.t.pickHowToPresent.replace("{type}", () => typeName),
           "gizmo",
         );
       }
@@ -5496,7 +5496,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       }
       // slash command context
       SuperDaemonInstance.defineOption({
-        title: this.t.searchApp.replace("{title}", app.details.title),
+        title: this.t.searchApp.replace("{title}", () => app.details.title),
         icon: app.details.icon,
         tags: ["Search", ...app.details.tags, defaultType],
         more:
@@ -5518,7 +5518,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 </ul>`
             : null,
         value: {
-          name: this.t.searchApp.replace("{title}", app.details.title),
+          name: this.t.searchApp.replace("{title}", () => app.details.title),
           context: "/",
           index: app.index,
           detail: app,
@@ -6698,7 +6698,7 @@ globalThis.Hax.add = function (tag) {
     HAXStore.activeHaxBody.__focusLogic(target);
   } else {
     // do nothing, we tried to be a pro but failed :(
-    HAXStore.toast(HAXStore.t.notAValidTag.replace("{tag}", tag));
+    HAXStore.toast(HAXStore.t.notAValidTag.replace("{tag}", () => tag));
   }
 };
 globalThis.Hax.delete = function () {

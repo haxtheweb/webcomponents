@@ -394,7 +394,7 @@ class SimpleFileUpload extends I18NMixin(DDD) {
                         @click="${() => this._abortFile(index)}"
                         aria-label="${this.t.cancelUploadOf.replace(
                           "{name}",
-                          file.name,
+                          () => file.name,
                         )}"
                         title="${this.t.cancel}"
                       >
@@ -410,7 +410,7 @@ class SimpleFileUpload extends I18NMixin(DDD) {
                         @click="${() => this._retryFile(index)}"
                         aria-label="${this.t.retryUploadOf.replace(
                           "{name}",
-                          file.name,
+                          () => file.name,
                         )}"
                         title="${this.t.retry}"
                       >
@@ -428,7 +428,7 @@ class SimpleFileUpload extends I18NMixin(DDD) {
                         @click="${() => this._removeFile(index)}"
                         aria-label="${this.t.removeFromQueue.replace(
                           "{name}",
-                          file.name,
+                          () => file.name,
                         )}"
                         title="${this.t.remove}"
                       >
@@ -468,7 +468,7 @@ class SimpleFileUpload extends I18NMixin(DDD) {
     }
     const errorStatus = /^Error: (.*)$/.exec(status);
     if (errorStatus) {
-      return this.t.errorWithStatus.replace("{status}", errorStatus[1]);
+      return this.t.errorWithStatus.replace("{status}", () => errorStatus[1]);
     }
     return status;
   }
@@ -483,7 +483,7 @@ class SimpleFileUpload extends I18NMixin(DDD) {
     }
     // Check accept
     if (this.accept && !this._fileTypeAccepted(file)) {
-      const error = this.t.fileTypeNotAccepted.replace("{name}", file.name);
+      const error = this.t.fileTypeNotAccepted.replace("{name}", () => file.name);
       this.dispatchEvent(
         new CustomEvent("file-reject", {
           bubbles: true,
@@ -627,7 +627,7 @@ class SimpleFileUpload extends I18NMixin(DDD) {
         file.complete = true;
         file.status = xhr.status === 200 ? "Complete" : `Error: ${xhr.status}`;
         if (xhr.status !== 200) {
-          file.error = this.t.uploadFailed.replace("{status}", xhr.status);
+          file.error = this.t.uploadFailed.replace("{status}", () => xhr.status);
         }
         this.dispatchEvent(
           new CustomEvent("upload-response", {

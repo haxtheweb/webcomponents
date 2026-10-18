@@ -167,7 +167,7 @@ class ChatSuggestion extends I18NMixin(DDD) {
         aria-disabled="${this.disabled ? "true" : "false"}"
         aria-label="${this.t.sendSuggestionToMerlin.replace(
           "{suggestion}",
-          this.suggestion,
+          () => this.suggestion,
         )}"
       >
         <div class="suggestion-icon">

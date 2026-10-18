@@ -271,7 +271,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       store.toast(
         this.t.pageDeletedSelecting.replace(
           "{title}",
-          e.detail.value.data.title,
+          () => e.detail.value.data.title,
         ),
         4000,
       );
@@ -287,7 +287,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         const node = e.detail.value.data;
         globalThis.history.pushState({}, null, node.slug);
         globalThis.dispatchEvent(new PopStateEvent("popstate"));
-        store.toast(this.t.createdTitle.replace("{title}", node.title), 4000, {
+        store.toast(this.t.createdTitle.replace("{title}", () => node.title), 4000, {
           hat: "random",
         });
 
@@ -380,7 +380,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       this.__autoEditDisposer();
       this.__autoEditDisposer = null;
       store.toast(
-        this.t.createdOpenToEdit.replace("{title}", node.title || this.t.page),
+        this.t.createdOpenToEdit.replace("{title}", () => (node.title || this.t.page)),
         4000,
         {
           hat: "random",
@@ -1692,7 +1692,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       this.__pendingRestore = snapshot;
       const title = snapshot.title || this.t.aPreviousPage;
       store.toast(
-        this.t.recoveredUnsavedEdits.replace("{title}", title),
+        this.t.recoveredUnsavedEdits.replace("{title}", () => title),
         6000,
         { fire: true, hat: "save" },
       );
@@ -1724,7 +1724,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     } catch (e) {}
     try {
       const title = snapshot.title || this.t.thisPage;
-      store.toast(this.t.restoredUnsavedEdits.replace("{title}", title), 4000, {
+      store.toast(this.t.restoredUnsavedEdits.replace("{title}", () => title), 4000, {
         fire: true,
         hat: "save",
       });
@@ -2532,7 +2532,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       const message =
         response && response.message
           ? String(response.message)
-          : this.t.unableToCompleteOperationStatus.replace("{status}", status);
+          : this.t.unableToCompleteOperationStatus.replace("{status}", () => status);
       store.toast(message, 4000, { fire: true });
       store.playSound("error");
     } catch (error) {
@@ -2684,7 +2684,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         store.playSound("success");
         if (changes.length > 0) {
           store.toast(
-            this.t.normalizedPageSlugs.replace("{count}", changes.length),
+            this.t.normalizedPageSlugs.replace("{count}", () => changes.length),
             4000,
             {
               hat: "random",

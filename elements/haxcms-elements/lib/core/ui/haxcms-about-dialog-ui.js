@@ -192,7 +192,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
       case "blockquote":
         return this.t.blockquote;
       default:
-        return this.t.insertTag.replace("{tag}", tag);
+        return this.t.insertTag.replace("{tag}", () => tag);
     }
   }
 

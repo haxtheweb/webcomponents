@@ -314,7 +314,7 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
         }),
       );
       store.toast(
-        this.t.welcomeLetsGo.replace("{username}", this.username),
+        this.t.welcomeLetsGo.replace("{username}", () => this.username),
         5000,
         {
           hat: "construction",
@@ -375,7 +375,7 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
                 ${this.t.next}
               </button>`
           : html` <div class="notyou">
-                ${this.t.welcomeBack.replace("{username}", this.username)}
+                ${this.t.welcomeBack.replace("{username}", () => this.username)}
                 <a @click=${this.reset}>${this.t.notYou}</a>
               </div>
               <div class="form-group">

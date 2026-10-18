@@ -28,7 +28,7 @@ class SiteSkeletonGenerator {
         (t && t.skeletonLargeSiteConfirm) ||
         "This site has {count} pages. Generating a skeleton may take a while and create a large file. Continue?";
       const shouldContinue = confirm(
-        confirmText.replace("{count}", manifest.items.length),
+        confirmText.replace("{count}", () => manifest.items.length),
       );
       if (!shouldContinue) {
         throw new Error("Skeleton generation cancelled by user");

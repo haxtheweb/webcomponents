@@ -98,7 +98,7 @@ class PlayList extends I18NMixin(DDD) {
 
   _getSlideTitle(item, index) {
     if (!item) {
-      return this.t.slideNumber.replace("{number}", index + 1);
+      return this.t.slideNumber.replace("{number}", () => (index + 1));
     }
     if (item.properties) {
       if (item.properties.alt) {
@@ -117,7 +117,7 @@ class PlayList extends I18NMixin(DDD) {
         return text.length > 60 ? text.substring(0, 60) + "..." : text;
       }
     }
-    return this.t.slideNumber.replace("{number}", index + 1);
+    return this.t.slideNumber.replace("{number}", () => (index + 1));
   }
 
   disconnectedCallback() {
@@ -381,7 +381,7 @@ class PlayList extends I18NMixin(DDD) {
                         class="carousel-item"
                         role="group"
                         aria-roledescription="${this.t.slide}"
-                        aria-label="${this.t.slideOfTotal.replace("{number}", index + 1).replace("{total}", this.items.length)}"
+                        aria-label="${this.t.slideOfTotal.replace("{number}", () => (index + 1)).replace("{total}", () => this.items.length)}"
                         ?active="${index === this.slide}"
                       >
                         ${this.renderHAXItem(item)}
@@ -420,7 +420,7 @@ class PlayList extends I18NMixin(DDD) {
                           <button
                             class="pagination-dot"
                             role="tab"
-                            aria-label="${this.t.goToSlide.replace("{number}", index + 1)}"
+                            aria-label="${this.t.goToSlide.replace("{number}", () => (index + 1))}"
                             title="${this._getSlideTitle(item, index)}"
                             aria-selected="${index === this.slide}"
                             tabindex="0"

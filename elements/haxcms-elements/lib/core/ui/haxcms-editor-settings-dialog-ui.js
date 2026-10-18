@@ -409,7 +409,7 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
                   <img
                     class="toolbar-preview"
                     src="${toolbarImgPath}"
-                    alt="${this.t.toolbarPreviewAlt.replace("{audience}", this.audience)}"
+                    alt="${this.t.toolbarPreviewAlt.replace("{audience}", () => this.audience)}"
                   />
                 </div>
               </div>
@@ -491,7 +491,7 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
     } catch (error) {
       console.error("Saving editor settings failed:", error);
       HAXStore.toast(
-        this.t.savingEditorSettingsFailed.replace("{error}", error.message),
+        this.t.savingEditorSettingsFailed.replace("{error}", () => error.message),
         5000,
         {},
         "fit-bottom",

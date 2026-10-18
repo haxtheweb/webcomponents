@@ -40,7 +40,7 @@ export const createEditSlugProgram = (context) => {
     // Save button first - most common action
     if (input && input.trim() !== "") {
       results.push({
-        title: _t(context, "saveSlugValue").replace("{slug}", input),
+        title: _t(context, "saveSlugValue").replace("{slug}", () => input),
         icon: "icons:check",
         tags: ["confirm", "save"],
         value: {

@@ -150,7 +150,7 @@ export class GithubRpgContributors extends I18NMixin(DDDSuper(LitElement)) {
         <rpg-character seed="${item.login}"></rpg-character>
         <div class="content">
           <div>${item.login}</div>
-          <div>${this.t.commits.replace("{count}", item.contributions)}</div>
+          <div>${this.t.commits.replace("{count}", () => item.contributions)}</div>
         </div>
       </a>
     </div>

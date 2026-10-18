@@ -121,13 +121,13 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
       routeFormat === "md"
         ? this.t.appendingMdGuidance
         : this.t.appendingFormatGuidance
-            .replace("{extension}", routeFormat)
-            .replace("{format}", formatCopy);
+            .replace("{extension}", () => routeFormat)
+            .replace("{format}", () => formatCopy);
     const sourceMessage = usingNativeRoute
-      ? this.t.loadedDirectlyFrom.replace("{path}", this.nativeFormatPath)
+      ? this.t.loadedDirectlyFrom.replace("{path}", () => this.nativeFormatPath)
       : this.t.nativeFileNotFoundFallback
-          .replace("{extension}", routeFormat)
-          .replace("{type}", generatedData.type.toUpperCase());
+          .replace("{extension}", () => routeFormat)
+          .replace("{type}", () => (generatedData.type.toUpperCase()));
 
     return html`
       <a class="skip-link" href="#main-content">${this.t.skipToContent}</a>
@@ -139,7 +139,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           label="${this.t.copyDataToClipboard}"
           title="${this.t.copyFormatToClipboard.replace(
             "{format}",
-            copyFormat.toUpperCase(),
+            () => (copyFormat.toUpperCase()),
           )}"
         ></simple-icon-button-lite>
         <simple-icon-button-lite
@@ -156,7 +156,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
             <h1>
               ${this.t.activeItemDataFormat.replace(
                 "{format}",
-                routeFormat.toUpperCase(),
+                () => (routeFormat.toUpperCase()),
               )}
             </h1>
             <p>
@@ -217,7 +217,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
                   <div class="loading">
                     ${this.t.loadingFormatData.replace(
                       "{format}",
-                      routeFormat.toUpperCase(),
+                      () => (routeFormat.toUpperCase()),
                     )}
                   </div>
                 `
@@ -386,7 +386,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           toast.showSimpleToast(
             this.t.formatDataCopiedToClipboard.replace(
               "{format}",
-              copyFormat.toUpperCase(),
+              () => (copyFormat.toUpperCase()),
             ),
           );
         } else {
@@ -404,7 +404,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           toast.showSimpleToast(
             this.t.failedToCopyFormatData.replace(
               "{format}",
-              copyFormat.toUpperCase(),
+              () => (copyFormat.toUpperCase()),
             ),
             3000,
             { hat: "error" },

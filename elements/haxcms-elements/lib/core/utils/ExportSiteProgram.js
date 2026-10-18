@@ -146,7 +146,7 @@ export async function exportSiteAs(format, options = {}) {
 
       default:
         HAXStore.toast(
-          _t(this, "exportFormatNotSupported").replace("{format}", format),
+          _t(this, "exportFormatNotSupported").replace("{format}", () => format),
           3000,
           "fit-bottom",
         );
@@ -154,7 +154,7 @@ export async function exportSiteAs(format, options = {}) {
   } catch (error) {
     console.error("Site export error:", error);
     HAXStore.toast(
-      _t(this, "siteExportFailed").replace("{error}", error.message),
+      _t(this, "siteExportFailed").replace("{error}", () => error.message),
       3000,
       "fit-bottom",
     );
@@ -542,7 +542,7 @@ export async function _exportSiteAsSkeleton(
   } catch (error) {
     console.error("Skeleton export modal failed:", error);
     HAXStore.toast(
-      _t(this, "skeletonExportFailed").replace("{error}", error.message),
+      _t(this, "skeletonExportFailed").replace("{error}", () => error.message),
       5000,
       "fit-bottom",
     );

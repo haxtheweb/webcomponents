@@ -170,7 +170,7 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
     return html`
 <footer class="background" role="contentinfo">
   <div class="wrapper">
-      <p class="item"> ${this.t.lastUpdatedOn.replace("{date}", this.lastUpdated ?? "")} </p>
+      <p class="item"> ${this.t.lastUpdatedOn.replace("{date}", () => (this.lastUpdated ?? ""))} </p>
       <p class="center">© ${this.copyrightYear}   </p>
     ${this.licenseLink ? html`
     <div class="license item"> 

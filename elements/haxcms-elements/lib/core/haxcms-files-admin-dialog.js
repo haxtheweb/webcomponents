@@ -520,14 +520,14 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       const months = Math.floor(delta / month);
       return this.t.timeAgo.replace(
         "{time}",
-        `${months} ${months === 1 ? this.t.month : this.t.months}`,
+        () => (`${months} ${months === 1 ? this.t.month : this.t.months}`),
       );
     }
     if (delta >= day) {
       const days = Math.floor(delta / day);
       return this.t.timeAgo.replace(
         "{time}",
-        `${days} ${days === 1 ? this.t.day : this.t.days}`,
+        () => (`${days} ${days === 1 ? this.t.day : this.t.days}`),
       );
     }
     if (delta >= hour) {
@@ -536,12 +536,12 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       if (minutes > 0) {
         return this.t.timeAgo.replace(
           "{time}",
-          `${hours} ${hours === 1 ? this.t.hour : this.t.hours} ${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes}`,
+          () => (`${hours} ${hours === 1 ? this.t.hour : this.t.hours} ${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes}`),
         );
       }
       return this.t.timeAgo.replace(
         "{time}",
-        `${hours} ${hours === 1 ? this.t.hour : this.t.hours}`,
+        () => (`${hours} ${hours === 1 ? this.t.hour : this.t.hours}`),
       );
     }
     if (delta >= minute) {
@@ -549,12 +549,12 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       const seconds = Math.floor(delta % minute);
       return this.t.timeAgo.replace(
         "{time}",
-        `${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes} ${seconds} ${seconds === 1 ? this.t.second : this.t.seconds}`,
+        () => (`${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes} ${seconds} ${seconds === 1 ? this.t.second : this.t.seconds}`),
       );
     }
     return this.t.timeAgo.replace(
       "{time}",
-      `${delta} ${delta === 1 ? this.t.second : this.t.seconds}`,
+      () => (`${delta} ${delta === 1 ? this.t.second : this.t.seconds}`),
     );
   }
 
@@ -1190,9 +1190,9 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       else if (op === "black-and-white")
         message = this.t.imageTransformedBlackAndWhite;
       else if (op === "scale" && options && options.size)
-        message = this.t.scaledTo.replace("{size}", options.size);
+        message = this.t.scaledTo.replace("{size}", () => options.size);
       else if (op === "compress" && options && options.level)
-        message = this.t.compressedLevel.replace("{level}", options.level);
+        message = this.t.compressedLevel.replace("{level}", () => options.level);
       else if (op === "duplicate") message = this.t.fileDuplicated;
       if (!silent) this._msg(message);
       if (!skipRefresh) await this.refreshFiles();
@@ -1231,8 +1231,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         if (multi) {
           this._msg(
             this.t.processingProgress
-              .replace("{current}", idx + 1)
-              .replace("{total}", rows.length),
+              .replace("{current}", () => (idx + 1))
+              .replace("{total}", () => rows.length),
           );
         }
         const result = await opFn(row, idx);
@@ -1257,27 +1257,27 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       if (failCount === 0) {
         this._msg(
           (okCount === 1 ? this.t.bulkSummaryFile : this.t.bulkSummaryFiles)
-            .replace("{verb}", summaryVerb)
-            .replace("{count}", okCount),
+            .replace("{verb}", () => summaryVerb)
+            .replace("{count}", () => okCount),
         );
       } else if (okCount === 0) {
         this.errorMessage =
-          lastError || this.t.bulkFailed.replace("{verb}", summaryVerb);
+          lastError || this.t.bulkFailed.replace("{verb}", () => summaryVerb);
         this._msg(
           (failCount === 1
             ? this.t.bulkFailedAllFile
             : this.t.bulkFailedAllFiles
           )
-            .replace("{verb}", summaryVerb)
-            .replace("{count}", failCount),
+            .replace("{verb}", () => summaryVerb)
+            .replace("{count}", () => failCount),
           true,
         );
       } else {
         this._msg(
           this.t.bulkPartial
-            .replace("{verb}", summaryVerb)
-            .replace("{ok}", okCount)
-            .replace("{failed}", failCount),
+            .replace("{verb}", () => summaryVerb)
+            .replace("{ok}", () => okCount)
+            .replace("{failed}", () => failCount),
           true,
         );
       }
@@ -1304,7 +1304,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           silent: true,
           skipRefresh: true,
         }),
-      this.t.scaledTo.replace("{size}", normalizedSize),
+      this.t.scaledTo.replace("{size}", () => normalizedSize),
       { refreshMedia: true },
     );
   }
@@ -1362,7 +1362,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           silent: true,
           skipRefresh: true,
         }),
-      this.t.compressedLevel.replace("{level}", normalizedLevel),
+      this.t.compressedLevel.replace("{level}", () => normalizedLevel),
       { refreshMedia: true },
     );
   }
@@ -1381,7 +1381,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     const requestedName = globalThis.prompt(
       rows.length === 1
         ? this.t.renamePromptSingle
-        : this.t.renamePromptMultiple.replace("{count}", rows.length),
+        : this.t.renamePromptMultiple.replace("{count}", () => rows.length),
       defaultName,
     );
     if (typeof requestedName !== "string") return;
@@ -1407,8 +1407,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     const label =
       rows.length === 1
         ? rows[0].path
-        : this.t.selectedFilesCount.replace("{count}", rows.length);
-    if (!globalThis.confirm(this.t.deleteConfirm.replace("{label}", label)))
+        : this.t.selectedFilesCount.replace("{count}", () => rows.length);
+    if (!globalThis.confirm(this.t.deleteConfirm.replace("{label}", () => label)))
       return;
     await this._runBulkOp(
       rows,
@@ -1492,13 +1492,13 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       if (skipped > 0) {
         this._msg(
           this.t.insertedSkipped
-            .replace("{count}", insertable.length)
-            .replace("{skipped}", skipped),
+            .replace("{count}", () => insertable.length)
+            .replace("{skipped}", () => skipped),
           true,
         );
       } else {
         this._msg(
-          this.t.insertedIntoPage.replace("{count}", insertable.length),
+          this.t.insertedIntoPage.replace("{count}", () => insertable.length),
         );
       }
     }, 300);
@@ -1669,7 +1669,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
                               <td>
                                 <input
                                   type="checkbox"
-                                  aria-label="${this.t.selectFile.replace("{name}", r.name)}"
+                                  aria-label="${this.t.selectFile.replace("{name}", () => r.name)}"
                                   data-action="select-row"
                                   data-row-key="${this._rowKey(r)}"
                                   ?disabled="${this.busy}"

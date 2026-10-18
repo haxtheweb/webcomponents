@@ -108,7 +108,7 @@ class EditableTableFilter extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
       if (propName == "columnIndex" || propName == "t") {
         this.tooltip = this.t.toggleColumnFilter.replace(
           "{column}",
-          this.columnIndex,
+          () => this.columnIndex,
         );
       }
     });
