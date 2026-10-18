@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Jeguakaha apopyvusu HAX-pe g̃uarã"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Jeporavorã ojehechaukátava",
+        "options": {
+          "*": "Jeguakaha rape tuichakue"
+        }
+      }
+    ]
+  }
+}

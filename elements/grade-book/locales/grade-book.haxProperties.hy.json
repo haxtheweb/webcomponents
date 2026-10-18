@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Գնահատականների մատյան",
+    "description": "Առանց ինտերֆեյսի գնահատականների մատյան, որն աջակցում է բազմաթիվ աղբյուրներ և գնահատման սանդղակներ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Աղբյուր",
+        "description": "Տվյալների աղբյուրի տեսակ (googledocs, url, json, filesystem)։",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "JSON տվյալների բլոկ",
+          "filesystem": "Ֆայլային համակարգ"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Աղբյուրի տվյալներ",
+        "description": "URL կամ JSON տվյալներ գնահատականների մատյանի համար։"
+      },
+      {
+        "property": "forCourse",
+        "title": "Դասընթացի հղում",
+        "description": "Դասընթացի նույնացուցիչ, որը արտածվում է որպես oer:forCourse յուրաքանչյուր Assessment ռեսուրսում։"
+      }
+    ]
+  }
+}

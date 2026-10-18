@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Donat Kemajuan",
+    "description": "Donat kemajuan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tajuk elemen"
+      },
+      {
+        "property": "desc",
+        "title": "Penerangan",
+        "description": "Perihalan panjang boleh akses"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Sumber Imej",
+        "description": "Sumber imej di dalam donat."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Teks Alt Imej",
+        "description": "Teks alt untuk imej."
+      },
+      {
+        "property": "animated",
+        "title": "Beranimasi",
+        "description": "Sama ada kemajuan beranimasi semasa pemuatan pertama"
+      },
+      {
+        "property": "complete",
+        "title": "Selesai",
+        "description": "Tatasusunan nilai yang telah selesai."
+      },
+      {
+        "property": "total",
+        "title": "Jumlah",
+        "description": "Jumlah apabila semua item selesai."
+      },
+      {
+        "property": "startAngle",
+        "title": "Sudut Mula",
+        "description": "Sudut donat tempat kemajuan bermula"
+      }
+    ]
+  }
+}

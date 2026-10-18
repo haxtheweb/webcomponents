@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "الصوت",
+    "description": "يمكن لهذا عرض الفيديو بطريقة سهلة الوصول للغاية بغض النظر عن المصدر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "المصدر",
+        "description": "URL هذه الوسائط."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "العنوان",
+        "description": "عنوان بسيط أسفل الفيديو"
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "اختر لون التمييز للمشغّل."
+      },
+      {
+        "property": "track",
+        "title": "الترجمة المصاحبة",
+        "description": "URL ملف الترجمة المصاحبة."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "الصورة المصغرة",
+        "description": "اختياري. URL الصورة المصغرة/صورة الملصق."
+      },
+      {
+        "property": "learningMode",
+        "title": "تفعيل وضع التعلّم",
+        "description": "يعطّل التقديم السريع والترجيع."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "إزالة زر الفتح على YouTube",
+        "description": "يزيل زر فتح الفيديو على YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "تضمين رابط مشاركة؟",
+        "description": "يوفر رابطًا لمشاركة الفيديو."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "يشير إلى ما إذا كان سيتم استخدام CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "السماح بالتشغيل في الخلفية",
+        "description": "تتوقف مقاطع الفيديو مؤقتًا / تُشغَّل تلقائيًا عندما تفقد علامة التبويب التركيز؛ يتيح هذا تشغيل الفيديو دون أن تكون علامة التبويب في حالة التركيز"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "سمة داكنة للنص المكتوب",
+        "description": "تفعيل السمة الداكنة للنص المكتوب."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "تعطيل التفاعل",
+        "description": "تعطيل الوضع التفاعلي الذي يجعل النص المكتوب قابلًا للنقر."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "إخفاء الطوابع الزمنية",
+        "description": "إخفاء الطوابع الزمنية في النص المكتوب."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "إخفاء النص المكتوب",
+        "description": "إخفاء النص المكتوب افتراضيًا."
+      },
+      {
+        "property": "lang",
+        "title": "اللغة",
+        "description": "لغة الوسائط."
+      }
+    ]
+  }
+}

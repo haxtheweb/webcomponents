@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ביבליאָגראַפֿיע־עלעמענט",
+    "description": "עלעמענט וואָס רעפּרעזענטירט איין ציטאַט אין אַ ביבליאָגראַפֿיע, מיט שטיצע פֿאַר עטלעכע פֿאָרמאַטן און עקספּאָרט־אָפּציעס."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "סאָרט",
+        "description": "ציטאַט־טיפּ",
+        "options": {
+          "web": "וועב",
+          "journal": "זשורנאַל",
+          "book": "בוך"
+        }
+      },
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "טיטל פֿונעם עלעמענט"
+      },
+      {
+        "property": "authors",
+        "title": "מחבר(ים)",
+        "description": "די געשעענישן אין דער צײַט־ליניע"
+      },
+      {
+        "property": "publisher",
+        "title": "פֿאַרלעגער",
+        "description": "אָריגינעל וועבזײַטל"
+      }
+    ]
+  }
+}

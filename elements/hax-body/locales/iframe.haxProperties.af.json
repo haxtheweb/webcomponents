@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Bed eksterne webinhoud in."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Bron",
+        "description": "URL vir hierdie hulpbron."
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "description": "Omoheñói ta'ãngarysýi ojeikekuaáva peteĩ CSV rehegua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Sa'y ojehechaukavéva ikatúramo."
+      },
+      {
+        "property": "dark",
+        "title": "Ñemohenda pytũ",
+        "description": "Emyendy Jeguakaha Ypytũ"
+      },
+      {
+        "property": "dataSource",
+        "title": "CSV Marandurenda",
+        "description": "Emyenyhẽ mba'ekuaarã peteĩ CSV-gui."
+      },
+      {
+        "slot": "heading",
+        "title": "Ta'ãngarysýi Réra",
+        "description": "Moñe'ẽrã alt ojeikekuaáva nde ta'ãngarysýipe g̃uarã."
+      },
+      {
+        "slot": "desc",
+        "title": "Ta'ãngarysýi Ñemoha'ãnga",
+        "description": "Ñemoha'ãnga ojeikekuaáva nde ta'ãngarysýipe g̃uarã."
+      },
+      {
+        "property": "scale",
+        "title": "Tuichakue Réra",
+        "description": "Ta'ãngarysýi pekue:yvatekue joja (Ehecha https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings $ct-scales ha $ct-scales-names peg̃uarã).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "reverseData",
+        "title": "Embojere Mba'ekuaarã",
+        "description": "Embojere mba'ekuaarã techaukaha reheve, serie ñemohenda ha opaite serie mba'ekuaarã."
+      },
+      {
+        "slot": "",
+        "title": "HTML Tabla",
+        "description": "Ojeporavokuaáva: Emyenyhẽ mba'ekuaarã HTML tabla ramo."
+      }
+    ]
+  }
+}

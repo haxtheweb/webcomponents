@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "បញ្ជីចំណុច",
+    "description": "បង្កើតបញ្ជីចំណុច។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "រចនាប័ទ្មចំណុច",
+        "description": "រចនាប័ទ្មដែលប្រើសម្រាប់ចំណុចបញ្ជីគ្មានលំដាប់។",
+        "options": {
+          "": "លំនាំដើម (ការ៉េ)",
+          "list-disc": "ថាស",
+          "list-circle": "រង្វង់",
+          "list-square": "ការ៉េ"
+        }
+      }
+    ]
+  }
+}

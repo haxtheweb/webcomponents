@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "የጊዜ መስመር",
+    "description": "ምስሎች እና ጽሑፍ ያሉት የክስተቶች የጊዜ መስመር"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "የጊዜ መስመር ርዕስ",
+        "description": "ለጊዜ መስመሩ ርዕስ።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "አማራጭ የአጽንዖት ቀለም።"
+      },
+      {
+        "property": "dark",
+        "title": "ጨለማ ገጽታ",
+        "description": "የጨለማ ገጽታን አንቃ"
+      },
+      {
+        "slot": "",
+        "title": "የጊዜ መስመር መግለጫ",
+        "description": "የጊዜ መስመሩን የሚገልጽ አማራጭ ጽሑፍ።"
+      },
+      {
+        "property": "events",
+        "title": "የጊዜ መስመር ክስተቶች",
+        "description": "በጊዜ መስመሩ ውስጥ ያሉ ክስተቶች"
+      }
+    ]
+  }
+}

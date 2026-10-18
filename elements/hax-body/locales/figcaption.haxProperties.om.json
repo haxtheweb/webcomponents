@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ibsa fakkii",
+    "description": "Ibsa fakkiitiif."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Ibsa suuraa",
+        "description": "Barreeffama fakkii jalatti agarsiifamu."
+      }
+    ]
+  }
+}

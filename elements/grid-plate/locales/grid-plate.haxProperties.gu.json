@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "કૉલમ લેઆઉટ",
+    "description": "સાદા કૉલમમાં સામગ્રી ગોઠવો"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "કૉલમ લેઆઉટ",
+        "description": "આ આઇટમ્સ પ્રસ્તુત કરવાની શૈલી (નાની સ્ક્રીન માટે બદલાઈ શકે છે)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "રિસ્પોન્સિવ અક્ષમ કરો",
+        "description": "મોટી સ્ક્રીન પર કૉલમ જાળવવા માટે બોક્સ ચેક કરો, જ્યારે સૌથી નાની સ્ક્રીન પર તે ઉપર-નીચે ગોઠવાય છે"
+      },
+      {
+        "property": "itemPadding",
+        "title": "આઇટમ પેડિંગ",
+        "description": "દરેક આઇટમની અંદરનું પેડિંગ"
+      },
+      {
+        "property": "itemMargin",
+        "title": "આઇટમ માર્જિન",
+        "description": "આઇટમ્સ વચ્ચેનું માર્જિન"
+      }
+    ]
+  }
+}

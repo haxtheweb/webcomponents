@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Bộ chọn mã Hex",
+    "description": "Bộ chọn màu theo mã hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Giá trị",
+        "description": "Giá trị hex mặc định"
+      },
+      {
+        "property": "disabled",
+        "title": "Vô hiệu hóa",
+        "description": "Tắt ô văn bản"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Hiển thị lớn",
+        "description": "Hiển thị màu ở khung lớn"
+      }
+    ]
+  }
+}

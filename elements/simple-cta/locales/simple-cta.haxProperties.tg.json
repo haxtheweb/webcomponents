@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Даъват ба амал",
+    "description": "Тугмаи оддӣ бо пайванд барои анҷом додани амал."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Нишона",
+        "description": "Нишонаи пайванд"
+      },
+      {
+        "property": "link",
+        "title": "Пайванд",
+        "description": "Пайвандро ба ҳар гуна манбаъ ворид кунед"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Пинҳон кардани нишонак",
+        "description": "Нишонаке, ки барои таъкиди матн истифода мешавад, пинҳон кунед"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Нишона",
+        "description": "Нишонаки пайванди амал"
+      }
+    ]
+  }
+}

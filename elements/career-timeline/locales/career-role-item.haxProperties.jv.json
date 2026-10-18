@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Peran Karir",
+    "description": "Peran individu ing sawijining organisasi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Irah-irahan"
+      },
+      {
+        "property": "startDate",
+        "title": "Tanggal Wiwit"
+      },
+      {
+        "property": "endDate",
+        "title": "Tanggal Pungkasan (Opsional)"
+      },
+      {
+        "property": "skills",
+        "title": "Katrampilan sing Gegandhengan",
+        "description": "Pilih tombol + kanggo miwiti nambah katrampilan"
+      }
+    ]
+  }
+}

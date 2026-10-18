@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Comhartha CMS",
+    "description": "Comhartha CMS rindreáilte ar an inneall"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Comhartha",
+        "description": "Comhartha ónár CMS"
+      }
+    ]
+  }
+}

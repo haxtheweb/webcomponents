@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Rondedzero ine madonhwe",
+    "description": "Gadzira rondedzero ine madonhwe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Maitiro emadonhwe",
+        "description": "Maitiro anoshandiswa pamadonhwe erondedzero isina kurongwa.",
+        "options": {
+          "": "Zvakagara zviripo (sikweya)",
+          "list-disc": "Dhisiki",
+          "list-circle": "Denderedzwa",
+          "list-square": "Sikweya"
+        }
+      }
+    ]
+  }
+}

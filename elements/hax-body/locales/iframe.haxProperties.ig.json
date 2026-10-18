@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Tinye ọdịnaya weebụ dị n'èzí."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Isi mmalite",
+        "description": "URL maka akụrụngwa a."
+      }
+    ]
+  }
+}

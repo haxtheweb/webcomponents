@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "គំរូកូដ",
+    "description": "គំរូកូដដែលបានបន្លិចនៅក្នុងទំព័រ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "ការបន្លិចកូដ",
+        "description": "ការបន្លិចវាក្យសម្ព័ន្ធដែលត្រូវអនុវត្តចំពោះតំបន់កូដ",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "ទិន្នន័យ JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "ប៊ូតុងចម្លងទៅក្ដារតម្បៀតខ្ទាស់",
+        "description": "ប៊ូតុងនៅជ្រុងខាងលើស្ដាំដែលសរសេរថា ចម្លងទៅក្ដារតម្បៀតខ្ទាស់"
+      },
+      {
+        "property": "highlightStart",
+        "title": "ចំណុចចាប់ផ្ដើមបន្លិច",
+        "description": "លេខបន្ទាត់ដើម្បីចាប់ផ្ដើមបន្លិច"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "ចំណុចបញ្ចប់បន្លិច",
+        "description": "បន្ទាត់ដើម្បីបញ្ចប់ការបន្លិច"
+      }
+    ]
+  }
+}

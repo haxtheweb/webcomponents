@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "מודל קורס",
+    "description": "פריסה אינטראקטיבית למושגי הקורס עם פרטים, אנימציה ובדיקות ידע."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "כותרת"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "אזור מידע"
+      },
+      {
+        "title": "אזור פרטים"
+      },
+      {
+        "title": "אזור אנימציה"
+      },
+      {
+        "title": "אזור בדיקת ידע"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "אזור לוגו"
+      }
+    ]
+  }
+}

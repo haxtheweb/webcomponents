@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Isithombe Esithuthukisiwe",
+    "description": "Indlela yokwethula izithombe ngokuthuthukiswa okuhlukahlukene."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Umthombo",
+        "description": "I-URL yesithombe."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo ongenye indlela",
+        "description": "Umbhalo ochaza isithombe kubasebenzisi abangaboni."
+      },
+      {
+        "property": "link",
+        "title": "Isixhumanisi",
+        "description": "Xhumanisa isithombe ne-URL"
+      },
+      {
+        "property": "card",
+        "title": "Ikhadi",
+        "description": "Sebenzisa isithunzi ukuze kubukeke sengathi yikhadi eliphakanyisiwe."
+      },
+      {
+        "property": "box",
+        "title": "Ibhokisi",
+        "description": "Faka ibhokisi elibonakalayo elizungeze isithombe."
+      },
+      {
+        "property": "offset",
+        "title": "Ukususwa endaweni",
+        "description": "Susa isithombe endaweni sibe kwesobunxele noma kwesokudla.",
+        "options": {
+          "none": "lutho",
+          "wide": "kubanzi",
+          "narrow": "kuncane"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Umthombo wengcaphuno",
+        "description": "Ingcaphuno yesithombe."
+      },
+      {
+        "property": "caption",
+        "title": "Incazelo yesithombe",
+        "description": "Incazelo yesithombe."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Isihloko Somfanekiso",
+        "description": "Isihloko selebula lomfanekiso."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Incazelo Yomfanekiso",
+        "description": "Incazelo yelebula lomfanekiso."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Isithonjana sesithombe",
+        "description": "Umthombo wesithonjana sesithombe. Kubonisa isithonjana kodwa kuvula umthombo ogcwele ewindini."
+      },
+      {
+        "property": "round",
+        "title": "Isithombe esiyindilinga",
+        "description": "Kusika ukubukeka kwesithombe kube nesimo sendilinga."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Vala iwindi lesithombe",
+        "description": "Vala ukuchofoza okuvula isithombe ebhokisini lengxoxo lomhloli wesithombe."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Bonisa njenge-markdown",
+        "description": "Bonisa incazelo nengcaphuno njenge-markdown."
+      }
+    ]
+  }
+}

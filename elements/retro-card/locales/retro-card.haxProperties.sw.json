@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kadi ya zamani",
+    "description": "Kadi rahisi yenye muundo wa zamani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Kichwa kikuu cha kadi."
+      },
+      {
+        "property": "url",
+        "description": "URL ya kufungua kadi inapobofywa."
+      },
+      {
+        "property": "subtitle",
+        "title": "Kichwa kidogo",
+        "description": "Kichwa kidogo cha kadi."
+      },
+      {
+        "property": "tags",
+        "title": "Lebo",
+        "description": "Lebo zilizotenganishwa kwa koma."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Chanzo cha midia",
+        "description": "Chanzo kikuu cha midia."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Chanzo wakati wa kupita juu",
+        "description": "Chanzo cha midia kinachoonyeshwa kiashiria kinapopita juu ya kadi au kadi inapowashwa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya Msisitizo",
+        "description": "Rangi ya msisitizo inayotumika kwenye kadi nzima."
+      },
+      {
+        "property": "dark",
+        "title": "Meusi",
+        "description": "Tumia rangi za msingi za hali ya giza."
+      }
+    ]
+  }
+}

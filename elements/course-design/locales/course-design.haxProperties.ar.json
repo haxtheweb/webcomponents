@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "تصميم المقرر",
+    "description": "حاوية للمواد التعليمية وعناصر تصميم المقرر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "معرّف المقرر",
+        "description": "OER Schema: معرّف المقرر، مثل MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "الفصل الدراسي المقدَّم فيه",
+        "description": "OER Schema: الفصل الدراسي الذي يُقدَّم فيه المقرر."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "صيغة التقديم",
+        "description": "OER Schema: الصيغة المستخدمة لتقديم المقرر (مثل الحضوري، عبر الإنترنت، المدمج)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "المدرّس الأساسي",
+        "description": "OER Schema: المدرّس الأساسي للمقرر."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL خطة المقرر",
+        "description": "OER Schema: URL خطة المقرر الدراسية."
+      }
+    ]
+  }
+}

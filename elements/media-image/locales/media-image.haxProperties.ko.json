@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "향상된 이미지",
+    "description": "다양한 기능을 더해 이미지를 표시하는 방법."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "소스",
+        "description": "이미지의 URL."
+      },
+      {
+        "property": "alt",
+        "title": "대체 텍스트",
+        "description": "시각 장애인 사용자에게 이미지를 설명하는 텍스트입니다."
+      },
+      {
+        "property": "link",
+        "title": "링크",
+        "description": "이미지를 URL에 연결"
+      },
+      {
+        "property": "card",
+        "title": "카드",
+        "description": "그림자를 적용하여 카드가 떠 있는 것처럼 보이게 합니다."
+      },
+      {
+        "property": "box",
+        "title": "상자",
+        "description": "이미지 주위에 시각적 상자를 적용합니다."
+      },
+      {
+        "property": "offset",
+        "title": "오프셋",
+        "description": "이미지에 왼쪽 또는 오른쪽 오프셋을 적용합니다.",
+        "options": {
+          "none": "없음",
+          "wide": "넓게",
+          "narrow": "좁게"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "출처",
+        "description": "이미지의 출처."
+      },
+      {
+        "property": "caption",
+        "title": "캡션",
+        "description": "이미지의 캡션."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "그림 제목",
+        "description": "그림 레이블의 제목."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "그림 설명",
+        "description": "그림 레이블의 설명."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "미리 보기 이미지",
+        "description": "썸네일 이미지 소스. 썸네일을 표시하지만 모달에서 원본 전체를 엽니다."
+      },
+      {
+        "property": "round",
+        "title": "둥근 이미지",
+        "description": "이미지를 원 모양으로 잘라 표시합니다."
+      },
+      {
+        "property": "disableZoom",
+        "title": "이미지 모달 비활성화",
+        "description": "클릭 시 이미지 검사 대화 상자에서 이미지가 열리지 않도록 합니다."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "마크다운으로 렌더링",
+        "description": "캡션과 출처를 마크다운으로 렌더링합니다."
+      }
+    ]
+  }
+}

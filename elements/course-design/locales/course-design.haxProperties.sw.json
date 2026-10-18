@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Muundo wa Kozi",
+    "description": "Chombo cha nyenzo za kielimu na vipengele vya muundo wa kozi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kitambulisho cha Kozi",
+        "description": "OER Schema: kitambulisho cha kozi, mf. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Muhula Inapotolewa",
+        "description": "OER Schema: muhula ambao kozi inatolewa."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Muundo wa Uwasilishaji",
+        "description": "OER Schema: muundo unaotumika kuwasilisha kozi (mf. ana kwa ana, mtandaoni, mseto)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Mkufunzi Mkuu",
+        "description": "OER Schema: mkufunzi mkuu wa kozi."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL ya Mtaala",
+        "description": "OER Schema: URL ya mtaala wa kozi."
+      }
+    ]
+  }
+}

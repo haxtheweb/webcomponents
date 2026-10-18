@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Uzak İçerik",
+    "description": "Bir sitedeki içeriği başka bir sitede yeniden kullanın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Site adresi",
+        "description": "Geçerli site değilse, içeriğin alınacağı adresi yapıştırın"
+      },
+      {
+        "property": "uuid",
+        "title": "Öğe",
+        "description": "Bağlantı / başlık verisi için gösterilecek öğe"
+      },
+      {
+        "property": "breakreference",
+        "title": "Referansı kopar",
+        "description": "Bu kutuyu işaretlemek, uzak içeriği yerel olarak düzenlemek için kopyalar ancak ilişkiyi kaldırır. Referans materyal güncellendiğinde artık güncelleme almaz."
+      },
+      {
+        "property": "showTitle",
+        "title": "Başlığı göster",
+        "description": "Görüntülenen kaynağın başlığını göstermek için açın"
+      }
+    ]
+  }
+}

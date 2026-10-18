@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "مورد شغلی",
+    "description": "یک سازمان و نقش‌های وابسته به آن"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "نام سازمان"
+      },
+      {
+        "property": "location",
+        "title": "مکان"
+      },
+      {
+        "property": "source",
+        "title": "منبع"
+      }
+    ]
+  }
+}

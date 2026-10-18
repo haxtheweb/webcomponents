@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Tembiapo Rape Rembiapo",
+    "description": "Peteĩ tembiapo atyguasu ryepýpe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Téra"
+      },
+      {
+        "property": "startDate",
+        "title": "Ñepyrũ Arange"
+      },
+      {
+        "property": "endDate",
+        "title": "Paha Arange (Ojeporavokuaáva)"
+      },
+      {
+        "property": "skills",
+        "title": "Katupyry Ojoajúva",
+        "description": "Eiporavo votõ + reñepyrũ hag̃ua rembojoapy katupyry"
+      }
+    ]
+  }
+}

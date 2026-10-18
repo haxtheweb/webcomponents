@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Masamu",
+    "description": "Onetsani masamu m'njira yokongola."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Masamu",
+        "description": "Lowetsani equation ngati LaTeX"
+      }
+    ]
+  }
+}

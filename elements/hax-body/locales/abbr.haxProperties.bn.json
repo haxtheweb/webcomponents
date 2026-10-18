@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "সংক্ষেপরূপ",
+    "description": "পূর্ণ শব্দের টুলটিপসহ সংক্ষেপরূপ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "টেক্সট",
+        "description": "দৃশ্যমান সংক্ষেপরূপের টেক্সট।"
+      },
+      {
+        "attribute": "title",
+        "title": "শব্দ",
+        "description": "হোভার করলে দেখানো পূর্ণ শব্দ।"
+      }
+    ]
+  }
+}

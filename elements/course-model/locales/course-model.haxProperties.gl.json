@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "modelo de curso",
+    "description": "Deseño interactivo para conceptos do curso con detalles, animación e comprobacións de coñecementos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "título"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Área de información"
+      },
+      {
+        "title": "Área de detalles"
+      },
+      {
+        "title": "Área de animación"
+      },
+      {
+        "title": "Área de comprobación de coñecementos"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Área do logotipo"
+      }
+    ]
+  }
+}

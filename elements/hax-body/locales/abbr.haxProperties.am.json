@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ምህጻረ ቃል",
+    "description": "ሙሉ ቃል የሚያሳይ ጠቃሚ ምክር ያለው ምህጻረ ቃል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "ጽሑፍ",
+        "description": "የሚታይ የምህጻረ ቃል ጽሑፍ።"
+      },
+      {
+        "attribute": "title",
+        "title": "ቃል",
+        "description": "በማንዣበብ ጊዜ የሚታይ ሙሉ ቃል።"
+      }
+    ]
+  }
+}

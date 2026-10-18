@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Abreviere",
+    "description": "Abreviere cu indicație cu termenul complet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Textul vizibil al abrevierii."
+      },
+      {
+        "attribute": "title",
+        "title": "Cuvânt",
+        "description": "Termenul complet afișat la trecerea cursorului."
+      }
+    ]
+  }
+}

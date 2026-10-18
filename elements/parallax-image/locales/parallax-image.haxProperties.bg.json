@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Паралакс изображение",
+    "description": "Изображение, което се превърта"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Изображение",
+        "description": "изображение, което да се използва във фона"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Област на заглавието",
+        "description": "Текстова област на заглавието"
+      }
+    ]
+  }
+}

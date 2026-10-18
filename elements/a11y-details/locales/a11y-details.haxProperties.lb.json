@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Accessibele Detailer-Knäppchen",
+    "description": "Accessibel progressiv Offenleeung mat Detail a Resumé"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Knäppchen",
+        "description": "Resumé vum Inhalt, deen agekläppt ass, z. B. „Info“, „Metadaten“ asw."
+      },
+      {
+        "slot": "details",
+        "title": "Beschreiwung",
+        "description": "Detailléiert Beschreiwung, déi verstoppt oder ugewise ka ginn"
+      },
+      {
+        "slot": "",
+        "title": "Beschreiwungsknäppchen",
+        "description": "Standard fir de Knäppchen, deen de Beschreiwungstext weist/verstoppt, z. B. „Info“, „Metadaten“ asw."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Optionalen Resuméstext, wann d'Detailer op sinn"
+      },
+      {
+        "property": "closeText",
+        "title": "Optionalen Resuméstext, wann d'Detailer zou sinn"
+      }
+    ]
+  }
+}

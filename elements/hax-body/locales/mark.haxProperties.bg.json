@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Открояване",
+    "description": "Открояване на текст в реда."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Откроен текст."
+      }
+    ]
+  }
+}

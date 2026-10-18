@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Esasy salgy",
+    "description": "Esasy salgy elementi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Baglanyşyk",
+        "description": "Barmaly URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Görünýän salgy teksti."
+      },
+      {
+        "attribute": "target",
+        "title": "Maksat",
+        "description": "Baglanyşygy nirede açmaly.",
+        "options": {
+          "": "Şol bir penjire",
+          "_blank": "Täze penjire - _blank",
+          "_top": "Ýokarky penjire - _top",
+          "_parent": "Ene penjire - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "At teksti",
+        "description": "Elýeterlilik we SEO üçin maslahat beriji at."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Barmaly ýer bilen gatnaşyk (howpsuzlyk/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

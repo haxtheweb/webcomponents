@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Пример код",
+    "description": "Пример код истакнат во страницата"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Истакнување на кодот",
+        "description": "Истакнување на синтаксата што ќе се примени на областа со код",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-податоци",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Копче за копирање во меѓумеморијата",
+        "description": "копче горе десно што вели копирај во меѓумеморијата"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Почеток на истакнувањето",
+        "description": "Број на ред од кој започнува истакнувањето"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Крај на истакнувањето",
+        "description": "Ред на кој завршува истакнувањето"
+      }
+    ]
+  }
+}

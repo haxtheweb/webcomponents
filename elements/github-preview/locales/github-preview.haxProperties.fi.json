@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub-esikatselu",
+    "description": "Saavutettava kuvio pitkällä kuvauksella"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisaatio",
+        "description": "GitHub-organisaation konenimi"
+      },
+      {
+        "property": "repo",
+        "title": "Repositorio",
+        "description": "Repositorion konenimi"
+      },
+      {
+        "property": "extended",
+        "title": "Laajennettu näkymä",
+        "description": "Sisällyttää readme-tiedoston elementtiin"
+      }
+    ]
+  }
+}

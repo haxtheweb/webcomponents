@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Badge tal-Mertu",
+    "description": "Badge viżiva biex tikkomunika l-kisba ta' ħila."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Titlu tal-Badge",
+        "description": "Titlu muri fuq il-badge."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Immaġni tal-Badge",
+        "description": "URL tal-immaġni għall-badge."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Dettalji tal-Badge",
+        "description": "Dettalji dwar il-badge."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlink",
+        "description": "Link assoċjat mal-badge."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Ħiliet tal-Badge",
+        "description": "Ħiliet murija fuq il-badge."
+      },
+      {
+        "property": "skill",
+        "title": "Ħila (OER Schema)",
+        "description": "OER Schema: ħila mitgħallma miksuba bit-tlestija ta' dan l-għan tat-tagħlim."
+      }
+    ]
+  }
+}

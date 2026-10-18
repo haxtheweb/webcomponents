@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Registro dei voti",
+    "description": "Un registro dei voti headless che supporta più backend con rubriche di valutazione."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origine",
+        "description": "Tipo di origine dati (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Endpoint URL (JSON)",
+          "json": "Blob di dati JSON",
+          "filesystem": "File system"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Dati di origine",
+        "description": "URL o dati JSON per il registro dei voti."
+      },
+      {
+        "property": "forCourse",
+        "title": "Riferimento al corso",
+        "description": "Identificativo del corso emesso come oer:forCourse su ogni risorsa Assessment."
+      }
+    ]
+  }
+}

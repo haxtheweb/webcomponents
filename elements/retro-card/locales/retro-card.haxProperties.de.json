@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro-Karte",
+    "description": "Einfache Karte im Retro-Design."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Haupttitel der Karte."
+      },
+      {
+        "property": "url",
+        "description": "URL, die beim Klick auf die Karte geöffnet wird."
+      },
+      {
+        "property": "subtitle",
+        "title": "Untertitel",
+        "description": "Untertitel der Karte."
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Durch Kommas getrennte Tags."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Medienquelle",
+        "description": "Primäre Medienquelle."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Quelle beim Hovern",
+        "description": "Medienquelle, die angezeigt wird, wenn die Karte überfahren oder aktiviert wird."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Akzentfarbe, die auf die gesamte Karte angewendet wird."
+      },
+      {
+        "property": "dark",
+        "title": "Dunkel",
+        "description": "Grundfarben des Dunkelmodus verwenden."
+      }
+    ]
+  }
+}

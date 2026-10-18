@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Qaybta Waxbarashada",
+    "description": "Kaar macallimiintu ku gudbiyaan barashada iyo xeeladaha waxbarida."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Nooc",
+        "description": "Nooca kaarka la isticmaalayo."
+      },
+      {
+        "property": "subtitle",
+        "title": "Cinwaan-hoosaad",
+        "description": "Cinwaan-hoosaadka kaarka."
+      },
+      {
+        "property": "url",
+        "title": "Xiriiriye",
+        "description": "Xiriir ikhtiyaari ah oo kaarka (Xiriir looma heli karo Ujeeddooyinka Waxbarashada)."
+      },
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Deji Cinwaanka, tani waxay beddeshaa cinwaanka ku salaysan nooca"
+      },
+      {
+        "property": "icon",
+        "title": "Astaan",
+        "description": "Deji astaanta, tani waxay beddeshaa astaanta ku salaysan nooca"
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka xoojinta",
+        "description": "Deji midabka xoojinta, tani waxay beddeshaa midabka ku salaysan nooca"
+      },
+      {
+        "slot": "",
+        "title": "Tusmada"
+      }
+    ]
+  }
+}

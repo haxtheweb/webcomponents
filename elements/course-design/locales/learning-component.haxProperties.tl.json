@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Learning Component",
+    "description": "Isang card para maipahayag ng mga instructor ang pedagogy at mga estratehiya sa pagtuturo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Uri",
+        "description": "Ang uri ng card na gagamitin."
+      },
+      {
+        "property": "subtitle",
+        "title": "Sub-Title",
+        "description": "Ang sub-title ng card."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Opsyonal na link para sa card (Hindi available ang link para sa Learning Objectives)."
+      },
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Itakda ang Pamagat, pinapalitan nito ang pamagat batay sa uri"
+      },
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Itakda ang icon, pinapalitan nito ang icon batay sa uri"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na kulay",
+        "description": "Itakda ang accent na kulay, pinapalitan nito ang kulay batay sa uri"
+      },
+      {
+        "slot": "",
+        "title": "Mga Nilalaman"
+      }
+    ]
+  }
+}

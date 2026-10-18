@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Itshati yeKhonkco",
+    "description": "Yenza itshati efikelelekayo esekelwe kwi-CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Umbala Ogqamisayo",
+        "description": "Umbala ogqamisayo okhethwayo."
+      },
+      {
+        "title": "Umxholo oMnyama",
+        "description": "Vula uMxholo oMnyama"
+      },
+      {
+        "title": "Ifayile ye-CSV",
+        "description": "Layisha idatha evela kwi-CSV."
+      },
+      {
+        "title": "Isihloko seTshati",
+        "description": "Umbhalo ongenye ofikelelekayo wetshati yakho."
+      },
+      {
+        "title": "Inkcazo yeTshati",
+        "description": "Inkcazo efikelelekayo yetshati yakho."
+      },
+      {
+        "title": "Igama leSikali",
+        "description": "Umlinganiselo wobubanzi:ukuphakama kwetshati (Jonga https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings ukufumana $ct-scales kunye ne-$ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Bonisa iGridi ngasemva"
+      },
+      {
+        "title": "Bonisa iNdawo"
+      },
+      {
+        "title": "Bonisa iKhonkco"
+      },
+      {
+        "title": "Bonisa iNqaku"
+      },
+      {
+        "title": "Ububanzi obuPheleleyo"
+      },
+      {
+        "title": "Bonisa iiLeyibhile zeNqaku"
+      },
+      {
+        "title": "Isithuba seTshati (phezulu)"
+      },
+      {
+        "title": "Isithuba seTshati (ezantsi)"
+      },
+      {
+        "title": "Isithuba seTshati (ekhohlo)"
+      },
+      {
+        "title": "Isithuba seTshati (ekunene)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Buyisela Idatha Emva",
+        "description": "Buyisela idatha emva kuquka iileyibhile, ulandelelwano lothotho kunye noluhlu lwedatha yonke yothotho."
+      },
+      {
+        "title": "Itafile ye-HTML",
+        "description": "Akunyanzelekanga: Layisha idatha njengetafile ye-HTML."
+      },
+      {
+        "title": "Ubuncinci beTshati",
+        "description": "Ukungqongqa ubuncinci bendalo betshati kukuvumela ukuba ukhulise okanye unciphise elona xabiso lisezantsi liboniswayo kwitshati"
+      },
+      {
+        "title": "Ubuninzi beTshati",
+        "description": "Ukungqongqa ubuninzi bendalo betshati kukuvumela ukuba ukhulise okanye unciphise elona xabiso liphezulu liboniswayo kwitshati"
+      },
+      {
+        "title": "Bonisa iiLeyibhile zeNqaku",
+        "options": {
+          "middle": "Phakathi",
+          "start": "Ukuqala",
+          "end": "Ukuphela"
+        }
+      },
+      {
+        "title": "Ukushenxiswa kwe-X kweeLeyibhile zeNqaku"
+      },
+      {
+        "title": "Ukushenxiswa kwe-Y kweeLeyibhile zeNqaku"
+      },
+      {
+        "title": "Umgca oGudileyo"
+      },
+      {
+        "title": "Isiseko seNdawo",
+        "description": "Isiseko setshati yendawo esiza kusetyenziswa ukuvala imilo yendawo (ngokuqhelekileyo ngu-0)."
+      },
+      {
+        "title": "I-Axis ye-X Bonisa iGridi",
+        "description": "Bonisa igridi ye-Axis ye-X."
+      },
+      {
+        "title": "Ukushenxiswa kwe-Axis ye-X"
+      },
+      {
+        "title": "Indawo ye-Axis ye-X",
+        "description": "Indawo apho iileyibhile zibekwa khona. Inokusetwa ku-\"start\" okanye ku-\"end\" apho u-\"start\" elingana nasekhohlo okanye phezulu kwi-axis ethe nkqo kwaye u-\"end\" elingana nasekunene okanye ezantsi kwi-axis ethe tyaba"
+      },
+      {
+        "title": "I-Axis ye-X Bonisa iLeyibhile",
+        "description": "Bonisa ileyibhile ye-Axis ye-X."
+      },
+      {
+        "title": "Ileyibhile ye-Axis ye-X (ukushenxiswa okuthe tyaba)",
+        "description": "Indawo ethe tyaba yeeleyibhile ze-Axis ye-X."
+      },
+      {
+        "title": "Ileyibhile ye-Axis ye-X (ukushenxiswa okuthe nkqo)",
+        "description": "Indawo ethe nkqo yeeleyibhile ze-Axis ye-X."
+      },
+      {
+        "title": "Isihloko se-Axis ye-X",
+        "description": "Isihloko esingenyanzelekanga se-axis ye-X."
+      },
+      {
+        "title": "Isihloko se-Axis ye-X (ukushenxiswa okuthe tyaba)",
+        "description": "Indawo ethe tyaba yesihloko se-Axis ye-X."
+      },
+      {
+        "title": "Isihloko se-Axis ye-X (ukushenxiswa okuthe nkqo)",
+        "description": "Indawo ethe nkqo yesihloko se-Axis ye-X."
+      },
+      {
+        "title": "Iankile yeSihloko se-Axis ye-X",
+        "description": "Iankile engenyanzelekanga yesihloko se-axis ye-X.",
+        "options": {
+          "middle": "phakathi",
+          "end": "isiphelo",
+          "start": "isiqalo"
+        }
+      },
+      {
+        "title": "I-Axis ye-Y: Bonisa iGridi",
+        "description": "Bonisa igridi ye-Axis ye-Y."
+      },
+      {
+        "title": "Ukushenxiswa kwe-Axis ye-Y"
+      },
+      {
+        "title": "Indawo ye-Axis ye-Y",
+        "description": "Indawo apho iileyibhile zibekwa khona. Inokusetwa ku-\"start\" okanye ku-\"end\" apho u-\"start\" elingana nasekhohlo okanye phezulu kwi-axis ethe nkqo kwaye u-\"end\" elingana nasekunene okanye ezantsi kwi-axis ethe tyaba"
+      },
+      {
+        "title": "I-Axis ye-Y Bonisa iLeyibhile",
+        "description": "Bonisa ileyibhile ye-Axis ye-Y."
+      },
+      {
+        "title": "Ileyibhile ye-Axis ye-Y (ukushenxiswa okuthe tyaba)",
+        "description": "Indawo ethe tyaba yeleyibhile ye-Axis ye-Y."
+      },
+      {
+        "title": "Ileyibhile ye-Axis ye-Y (ukushenxiswa okuthe nkqo)",
+        "description": "Indawo ethe nkqo yeleyibhile ye-Axis ye-Y."
+      },
+      {
+        "title": "Isithuba esiNcinci seSikali se-Axis ye-Y",
+        "description": "Ichaza ukuphakama okuncinci ngeepixel kwamanyathelo esikali."
+      },
+      {
+        "title": "Isikali se-Axis ye-Y (amanani apheleleyo kuphela)",
+        "description": "Sebenzisa amaxabiso amanani apheleleyo kuphela kumanyathelo esikali."
+      },
+      {
+        "title": "Isihloko se-Axis ye-Y",
+        "description": "Isihloko esingenyanzelekanga se-axis ye-Y."
+      },
+      {
+        "title": "Isihloko se-Axis ye-Y (ukushenxiswa okuthe nkqo)",
+        "description": "Indawo ethe tyaba yesihloko se-Axis ye-Y."
+      },
+      {
+        "title": "Isihloko se-Axis ye-Y (ukushenxiswa okuthe tyaba)",
+        "description": "Indawo ethe tyaba yesihloko se-Axis ye-Y."
+      },
+      {
+        "title": "Iankile yeSihloko se-Axis ye-Y",
+        "description": "Iankile engenyanzelekanga yesihloko se-axis ye-Y.",
+        "options": {
+          "middle": "phakathi",
+          "end": "isiphelo",
+          "start": "isiqalo"
+        }
+      },
+      {
+        "title": "Ukuguqula iSihloko se-Axis ye-Y",
+        "description": "Guqula isihloko se-axis ye-Y?"
+      }
+    ]
+  }
+}

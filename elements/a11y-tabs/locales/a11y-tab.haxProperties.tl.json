@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Isang tab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icon ng Tab"
+      },
+      {
+        "property": "disabled",
+        "title": "Naka-disable"
+      },
+      {
+        "property": "label",
+        "title": "Label ng Tab"
+      },
+      {
+        "slot": "",
+        "title": "Nilalaman ng Tab",
+        "description": "Isang nilalaman ng tab."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Natatanging ID"
+      },
+      {
+        "property": "flag",
+        "title": "Opsyonal na Teksto ng Flag"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Opsyonal na Icon ng Flag"
+      }
+    ]
+  }
+}

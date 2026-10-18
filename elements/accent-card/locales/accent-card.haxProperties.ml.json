@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "കാർഡ്",
+    "description": "ഓപ്ഷണൽ ആക്സന്റ് സ്റ്റൈലിംഗുള്ള ഒരു കാർഡ്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "തലക്കെട്ട്",
+        "description": "കാർഡിനുള്ള ഒരു തലക്കെട്ട്."
+      },
+      {
+        "slot": "subheading",
+        "title": "ഉപതലക്കെട്ട്",
+        "description": "കാർഡിനുള്ള ഒരു ഓപ്ഷണൽ ഉപതലക്കെട്ട്."
+      },
+      {
+        "slot": "content",
+        "title": "ഉള്ളടക്കം",
+        "description": "കാർഡിനുള്ള ഉള്ളടക്കം."
+      },
+      {
+        "slot": "footer",
+        "title": "അടിക്കുറിപ്പ്",
+        "description": "കാർഡിനുള്ള ഒരു ഓപ്ഷണൽ ഫൂട്ടർ."
+      },
+      {
+        "property": "imageSrc",
+        "title": "ചിത്രം",
+        "description": "ഓപ്ഷണൽ ചിത്രം"
+      },
+      {
+        "property": "imageAlt",
+        "title": "ചിത്ര Alt ടെക്സ്റ്റ്",
+        "description": "സ്ക്രീൻ റീഡറുകൾക്കായി ചിത്രത്തെ വിവരിക്കുന്ന ഇതര ടെക്സ്റ്റ്. ചിത്രം പൂർണ്ണമായും അലങ്കാരമാണെങ്കിൽ മാത്രം ശൂന്യമായി വിടുക."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "ചിത്രത്തിന്റെ തിരശ്ചീന വിന്യാസം",
+        "options": {
+          "left": "ഇടത്",
+          "center": "മധ്യം",
+          "right": "വലത്"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "ചിത്രത്തിന്റെ ലംബ വിന്യാസം",
+        "options": {
+          "top": "മുകളിൽ",
+          "center": "മധ്യം",
+          "bottom": "താഴെ"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "ഒരു ഐച്ഛിക ആക്സന്റ് നിറം."
+      },
+      {
+        "property": "dark",
+        "title": "ഇരുണ്ട തീം",
+        "description": "ഡാർക്ക് തീം പ്രവർത്തനക്ഷമമാക്കുക"
+      },
+      {
+        "property": "horizontal",
+        "title": "തിരശ്ചീനം",
+        "description": "തിരശ്ചീന ദിശ?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "തലക്കെട്ട് ആക്സന്റ്",
+        "description": "തലക്കെട്ടിൽ ആക്സന്റ് നിറം പ്രയോഗിക്കണോ?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "പശ്ചാത്തല ആക്സന്റ്",
+        "description": "കാർഡ് പശ്ചാത്തലത്തിൽ ആക്സന്റ് നിറം പ്രയോഗിക്കണോ?"
+      },
+      {
+        "property": "noBorder",
+        "title": "ബോർഡർ ആക്സന്റ് വേണ്ട",
+        "description": "ബോർഡർ ആക്സന്റ് നീക്കം ചെയ്യണോ?"
+      },
+      {
+        "property": "flat",
+        "title": "ഫ്ലാറ്റ്",
+        "description": "ബോക്സ് ഷാഡോ നീക്കം ചെയ്യണോ?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "മൂല",
+        "description": "കാർഡ് മൂലയ്ക്കുള്ള ഉള്ളടക്കം."
+      }
+    ]
+  }
+}

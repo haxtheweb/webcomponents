@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Boolokii Html",
+    "description": "Boolokii HTML bu'uuraa walitti hidhamiinsa HAXschema kennu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Koodii HTML qabiyyee keessatti dhiyeessuu barbaaddu"
+      }
+    ]
+  }
+}

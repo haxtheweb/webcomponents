@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ikuspegia",
+    "description": "Backend-ean errendatutako CMS ikuspegiak"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Izena",
+        "description": "Gure CMSko ikuspegiaren izena"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Bistaratzea",
+        "description": "Gure CMSko ikuspegi horren barruko bistaratzea"
+      }
+    ]
+  }
+}

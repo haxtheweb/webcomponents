@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Cirkeldiagram",
+    "description": "Skapar ett tillgängligt diagram baserat på en CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Accentfärg",
+        "description": "En valfri accentfärg."
+      },
+      {
+        "title": "Mörkt tema",
+        "description": "Aktivera mörkt tema"
+      },
+      {
+        "title": "CSV-fil",
+        "description": "Läs in data från en CSV."
+      },
+      {
+        "title": "Diagramtitel",
+        "description": "Tillgänglig alternativtext för diagrammet."
+      },
+      {
+        "title": "Diagrambeskrivning",
+        "description": "Tillgänglig beskrivning av diagrammet."
+      },
+      {
+        "title": "Skalnamn",
+        "description": "Förhållandet bredd:höjd för diagrammet (se https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings för $ct-scales och $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Munk"
+      },
+      {
+        "title": "Visa etikett"
+      },
+      {
+        "title": "Startvinkel"
+      },
+      {
+        "title": "Utfyllnad"
+      },
+      {
+        "title": "Totalt",
+        "description": "Valfri summa som du kan ange. Om du anger ett totalvärde måste summan av värdena i serien vara denna summa för att en hel cirkel ska ritas. Du kan använda parametern för att rita endast delar av en cirkel eller mätardiagram."
+      },
+      {
+        "title": "Ignorera tomma värden",
+        "description": "Tomma värden ignoreras för att undvika att onödiga sektorer och etiketter ritas."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vänd data",
+        "description": "Vänd ordningen på data inklusive etiketter, seriernas ordning samt hela seriernas datamatriser."
+      },
+      {
+        "title": "HTML-tabell",
+        "description": "Valfritt: Läs in data som en HTML-tabell."
+      },
+      {
+        "title": "Munkens linjebredd"
+      },
+      {
+        "title": "Solid munk",
+        "description": "Rita munksegment som former i stället för linjer."
+      },
+      {
+        "title": "Etikettriktning",
+        "description": "Rita munksegment som former i stället för linjer.",
+        "options": {
+          "neutral": "neutral",
+          "explode": "utåt",
+          "implode": "inåt"
+        }
+      },
+      {
+        "title": "Etikettförskjutning",
+        "description": "Etikettens förskjutning från standardpositionen, som är halva radien. Värdet kan vara positivt eller negativt. Positiva värden placerar etiketten bort från mitten."
+      },
+      {
+        "title": "Etikettposition",
+        "options": {
+          "inside": "inuti",
+          "outside": "utanför",
+          "center": "mitten"
+        }
+      }
+    ]
+  }
+}

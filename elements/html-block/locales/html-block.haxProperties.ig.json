@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Blọọkụ Html",
+    "description": "Blọọkụ HTML nkịtị na-enye njikọ HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Koodu HTML ịchọrọ igosi n'ọdịnaya"
+      }
+    ]
+  }
+}

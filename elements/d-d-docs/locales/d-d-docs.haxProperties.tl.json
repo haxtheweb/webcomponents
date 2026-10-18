@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Implementasyon ng design system para sa HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Opsyong ire-render",
+        "options": {
+          "*": "Buong gabay sa estilo"
+        }
+      }
+    ]
+  }
+}

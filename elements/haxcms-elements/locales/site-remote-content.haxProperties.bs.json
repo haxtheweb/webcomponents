@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Udaljeni sadržaj",
+    "description": "Ponovo iskoristite sadržaj s jednog sajta na drugom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Adresa sajta",
+        "description": "Zalijepite adresu s koje se referencira sadržaj ako nije trenutni sajt"
+      },
+      {
+        "property": "uuid",
+        "title": "Stavka",
+        "description": "Stavka koja se prikazuje za link / podatke naslova"
+      },
+      {
+        "property": "breakreference",
+        "title": "Prekini referencu",
+        "description": "Označavanjem ovog okvira udaljeni sadržaj se kopira za lokalno uređivanje, ali se uklanja povezanost. Više neće dobijati ažuriranja kada se referentni materijal ažurira."
+      },
+      {
+        "property": "showTitle",
+        "title": "Prikaži naslov",
+        "description": "Uključite za prikaz naslova resursa koji se prikazuje"
+      }
+    ]
+  }
+}

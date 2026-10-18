@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub-forskoðun",
+    "description": "Aðgengileg mynd með langri lýsingu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Fyrirtæki/stofnun",
+        "description": "Vélarheiti GitHub-stofnunar"
+      },
+      {
+        "property": "repo",
+        "title": "Geymsla",
+        "description": "Vélarheiti geymslu"
+      },
+      {
+        "property": "extended",
+        "title": "Útvíkkuð sýn",
+        "description": "Hefur readme með í einingunni"
+      }
+    ]
+  }
+}

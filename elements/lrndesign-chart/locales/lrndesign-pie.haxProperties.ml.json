@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "പൈ ചാർട്ട്",
+    "description": "ഒരു CSV അടിസ്ഥാനമാക്കി ആക്സസ് ചെയ്യാവുന്ന ചാർട്ട് സൃഷ്ടിക്കുന്നു."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ആക്സന്റ് നിറം",
+        "description": "ഒരു ഐച്ഛിക ആക്സന്റ് നിറം."
+      },
+      {
+        "title": "ഇരുണ്ട തീം",
+        "description": "ഡാർക്ക് തീം പ്രവർത്തനക്ഷമമാക്കുക"
+      },
+      {
+        "title": "CSV ഫയൽ",
+        "description": "ഒരു CSV-ൽ നിന്ന് ഡാറ്റ ലോഡ് ചെയ്യുക."
+      },
+      {
+        "title": "ചാർട്ട് തലക്കെട്ട്",
+        "description": "നിങ്ങളുടെ ചാർട്ടിനുള്ള ആക്സസ് ചെയ്യാവുന്ന alt ടെക്സ്റ്റ്."
+      },
+      {
+        "title": "ചാർട്ട് വിവരണം",
+        "description": "നിങ്ങളുടെ ചാർട്ടിന്റെ ആക്സസ് ചെയ്യാവുന്ന വിവരണം."
+      },
+      {
+        "title": "സ്കെയിൽ പേര്",
+        "description": "ചാർട്ടിന്റെ വീതി:ഉയരം അനുപാതം ($ct-scales, $ct-scales-names എന്നിവയ്ക്കായി https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings കാണുക).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "ഡോനട്ട്"
+      },
+      {
+        "title": "ലേബൽ കാണിക്കുക"
+      },
+      {
+        "title": "ആരംഭ കോൺ"
+      },
+      {
+        "title": "പാഡിംഗ്"
+      },
+      {
+        "title": "ആകെ",
+        "description": "നിങ്ങൾക്ക് വ്യക്തമാക്കാവുന്ന ഓപ്ഷണൽ ആകെത്തുക. ഒരു ആകെ മൂല്യം വ്യക്തമാക്കിയാൽ, ഒരു പൂർണ്ണ പൈ വരയ്ക്കാൻ സീരീസിലെ മൂല്യങ്ങളുടെ തുക ഈ ആകെത്തുകയായിരിക്കണം. പൈയുടെയോ ഗേജ് ചാർട്ടുകളുടെയോ ഭാഗങ്ങൾ മാത്രം വരയ്ക്കാൻ ഈ പാരാമീറ്റർ ഉപയോഗിക്കാം."
+      },
+      {
+        "title": "ശൂന്യ മൂല്യങ്ങൾ അവഗണിക്കുക",
+        "description": "അനാവശ്യ സ്ലൈസുകളും ലേബലുകളും വരയ്ക്കുന്നത് ഒഴിവാക്കാൻ ശൂന്യ മൂല്യങ്ങൾ അവഗണിക്കും."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "ഡാറ്റ വിപരീതമാക്കുക",
+        "description": "ലേബലുകൾ, സീരീസ് ക്രമം, മുഴുവൻ സീരീസ് ഡാറ്റ അറേകൾ എന്നിവ ഉൾപ്പെടെ ഡാറ്റ വിപരീതമാക്കുക."
+      },
+      {
+        "title": "HTML ടേബിൾ",
+        "description": "ഓപ്ഷണൽ: ഡാറ്റ ഒരു HTML ടേബിളായി ലോഡ് ചെയ്യുക."
+      },
+      {
+        "title": "ഡോനട്ട് സ്ട്രോക്ക് വീതി"
+      },
+      {
+        "title": "ഖര ഡോനട്ട്",
+        "description": "ഡോനട്ട് ഭാഗങ്ങൾ സ്ട്രോക്കുകൾക്ക് പകരം ആകൃതികളായി വരയ്ക്കുക."
+      },
+      {
+        "title": "ലേബൽ ദിശ",
+        "description": "ഡോനട്ട് ഭാഗങ്ങൾ സ്ട്രോക്കുകൾക്ക് പകരം ആകൃതികളായി വരയ്ക്കുക.",
+        "options": {
+          "neutral": "നിഷ്പക്ഷം",
+          "explode": "പുറത്തേക്ക്",
+          "implode": "അകത്തേക്ക്"
+        }
+      },
+      {
+        "title": "ലേബൽ ഓഫ്സെറ്റ്",
+        "description": "ആരത്തിന്റെ പകുതി അകലമായ സാധാരണ സ്ഥാനത്തുനിന്നുള്ള ലേബൽ സ്ഥാന ഓഫ്സെറ്റ്. ഈ മൂല്യം പോസിറ്റീവോ നെഗറ്റീവോ ആകാം. പോസിറ്റീവ് മൂല്യങ്ങൾ ലേബലിനെ കേന്ദ്രത്തിൽ നിന്ന് അകലേക്ക് സ്ഥാപിക്കും."
+      },
+      {
+        "title": "ലേബൽ സ്ഥാനം",
+        "options": {
+          "inside": "അകത്ത്",
+          "outside": "പുറത്ത്",
+          "center": "മധ്യം"
+        }
+      }
+    ]
+  }
+}

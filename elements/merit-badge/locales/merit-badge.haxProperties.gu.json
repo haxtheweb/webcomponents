@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "મેરિટ બેજ",
+    "description": "કૌશલ્ય પ્રાપ્ત કર્યાનું દર્શાવતો દૃશ્ય બેજ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "બેજ શીર્ષક",
+        "description": "બેજ પર પ્રદર્શિત શીર્ષક."
+      },
+      {
+        "property": "badgeImage",
+        "title": "બેજ છબી",
+        "description": "બેજ માટે છબી URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "બેજ વિગતો",
+        "description": "બેજ વિશેની વિગતો."
+      },
+      {
+        "property": "hyperLink",
+        "title": "હાઇપરલિંક",
+        "description": "બેજ સાથે સંકળાયેલી લિંક."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "બેજ કૌશલ્યો",
+        "description": "બેજ પર પ્રદર્શિત કૌશલ્યો."
+      },
+      {
+        "property": "skill",
+        "title": "કૌશલ્ય (OER Schema)",
+        "description": "OER Schema: આ શીખવાનો ઉદ્દેશ પૂર્ણ કરીને પ્રાપ્ત થયેલું શીખેલું કૌશલ્ય."
+      }
+    ]
+  }
+}

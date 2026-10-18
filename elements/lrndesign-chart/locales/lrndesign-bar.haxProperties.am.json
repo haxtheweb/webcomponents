@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "የአሞሌ ገበታ",
+    "description": "በCSV ላይ የተመሠረተ ተደራሽ ገበታ ይፈጥራል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "የአጽንዖት ቀለም",
+        "description": "አማራጭ የአጽንዖት ቀለም።"
+      },
+      {
+        "title": "ጨለማ ገጽታ",
+        "description": "የጨለማ ገጽታን አንቃ"
+      },
+      {
+        "title": "CSV ፋይል",
+        "description": "ውሂብን ከCSV ጫን።"
+      },
+      {
+        "title": "የገበታ ርዕስ",
+        "description": "ለገበታዎ ተደራሽ alt ጽሑፍ።"
+      },
+      {
+        "title": "የገበታ መግለጫ",
+        "description": "የገበታዎ ተደራሽ መግለጫ።"
+      },
+      {
+        "title": "የልኬት ስም",
+        "description": "የገበታው ስፋት:ቁመት ጥምርታ ($ct-scales እና $ct-scales-names ለማግኘት https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings ይመልከቱ)።",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "የፍርግርግ ዳራ አሳይ"
+      },
+      {
+        "title": "አግድም አሞሌዎች",
+        "description": "አግድም የአሞሌ ገበታ ለመሳል የአሞሌ ገበታውን ዘንጎች ይገለብጣል። የY ዘንግ አሁን መለያዎቹን እና የX ዘንግ እሴቶቹን ስለሚያሳዩ የዘንግ ቅንብሮችዎንም መገልበጥ እንዳለብዎ ልብ ይበሉ።"
+      },
+      {
+        "title": "አሞሌዎችን ደራርብ",
+        "description": "ወደ true ከተዘጋጀ ይህ ባህሪ የተከታታይ አሞሌዎች እንዲደራረቡ ያደርጋል።"
+      },
+      {
+        "title": "ተከታታዮችን አሰራጭ",
+        "description": "ወደ true ከተዘጋጀ እያንዳንዱ አሞሌ አንድ ተከታታይን ይወክላል እና የውሂብ ድርድሩ ከተከታታዮች ድርድር ይልቅ ባለ አንድ ልኬት የውሂብ እሴቶች ድርድር እንዲሆን ይጠበቃል።"
+      },
+      {
+        "title": "የገበታ ውስጣዊ ክፍተት (ላይ)"
+      },
+      {
+        "title": "የገበታ ውስጣዊ ክፍተት (ታች)"
+      },
+      {
+        "title": "የገበታ ውስጣዊ ክፍተት (ግራ)"
+      },
+      {
+        "title": "የገበታ ውስጣዊ ክፍተት (ቀኝ)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "ውሂብን ገልብጥ",
+        "description": "መለያዎችን፣ የተከታታዮችን ቅደም ተከተል እና ሙሉውን የተከታታይ ውሂብ ድርድሮችን ጨምሮ ውሂብን ገልብጥ።"
+      },
+      {
+        "title": "HTML ሰንጠረዥ",
+        "description": "አማራጭ: ውሂብን እንደ HTML ሰንጠረዥ ጫን።"
+      },
+      {
+        "title": "የገበታ ዝቅተኛ",
+        "description": "የገበታውን ተፈጥሯዊ ዝቅተኛ መሻር እንዲያጎሉ ወይም የገበታውን ዝቅተኛ የሚታይ እሴት እንዲገድቡ ያስችልዎታል"
+      },
+      {
+        "title": "የገበታ ከፍተኛ",
+        "description": "የገበታውን ተፈጥሯዊ ከፍተኛ መሻር እንዲያጎሉ ወይም የገበታውን ከፍተኛ የሚታይ እሴት እንዲገድቡ ያስችልዎታል"
+      },
+      {
+        "title": "የX-ዘንግ ፍርግርግ አሳይ",
+        "description": "የX-ዘንጉን ፍርግርግ አሳይ።"
+      },
+      {
+        "title": "የX-ዘንግ ማካካሻ"
+      },
+      {
+        "title": "የX-ዘንግ አቀማመጥ",
+        "description": "መለያዎች የሚቀመጡበት ቦታ። ወደ \"start\" ወይም \"end\" ሊዘጋጅ ይችላል፤ \"start\" በቁመታዊ ዘንግ ላይ ከግራ ወይም ከላይ፣ \"end\" ደግሞ በአግድም ዘንግ ላይ ከቀኝ ወይም ከታች ጋር እኩል ነው"
+      },
+      {
+        "title": "የX-ዘንግ መለያ አሳይ",
+        "description": "የX-ዘንጉን መለያ አሳይ።"
+      },
+      {
+        "title": "የX-ዘንግ መለያ (አግድም ማካካሻ)",
+        "description": "የX-ዘንግ መለያዎች አግድም አቀማመጥ።"
+      },
+      {
+        "title": "የX-ዘንግ መለያ (ቁመታዊ ማካካሻ)",
+        "description": "የX-ዘንግ መለያዎች ቁመታዊ አቀማመጥ።"
+      },
+      {
+        "title": "የX-ዘንግ ርዕስ",
+        "description": "ለX-ዘንግ አማራጭ ርዕስ።"
+      },
+      {
+        "title": "የX-ዘንግ ርዕስ (አግድም ማካካሻ)",
+        "description": "የX-ዘንግ ርዕስ አግድም አቀማመጥ።"
+      },
+      {
+        "title": "የX-ዘንግ ርዕስ (ቁመታዊ ማካካሻ)",
+        "description": "የX-ዘንግ ርዕስ ቁመታዊ አቀማመጥ።"
+      },
+      {
+        "title": "የX-ዘንግ ርዕስ መልህቅ",
+        "description": "ለX-ዘንግ ርዕስ አማራጭ መልህቅ።",
+        "options": {
+          "middle": "መሃል",
+          "end": "መጨረሻ",
+          "start": "መጀመሪያ"
+        }
+      },
+      {
+        "title": "የX-ዘንግ ልኬት ዝቅተኛ ቦታ",
+        "description": "የልኬት ደረጃዎችን ዝቅተኛ ቁመት በፒክሰል ይገልጻል።"
+      },
+      {
+        "title": "የX-ዘንግ ልኬት (ኢንቲጀሮች ብቻ)",
+        "description": "ለልኬት ደረጃዎች የኢንቲጀር እሴቶችን (ሙሉ ቁጥሮችን) ብቻ ተጠቀም።"
+      },
+      {
+        "title": "Y-ዘንግ: ፍርግርግ አሳይ",
+        "description": "የY-ዘንጉን ፍርግርግ አሳይ።"
+      },
+      {
+        "title": "የY-ዘንግ ማካካሻ"
+      },
+      {
+        "title": "የY-ዘንግ አቀማመጥ",
+        "description": "መለያዎች የሚቀመጡበት ቦታ። ወደ \"start\" ወይም \"end\" ሊዘጋጅ ይችላል፤ \"start\" በቁመታዊ ዘንግ ላይ ከግራ ወይም ከላይ፣ \"end\" ደግሞ በአግድም ዘንግ ላይ ከቀኝ ወይም ከታች ጋር እኩል ነው"
+      },
+      {
+        "title": "የY-ዘንግ መለያ አሳይ",
+        "description": "የY-ዘንጉን መለያ አሳይ።"
+      },
+      {
+        "title": "የY-ዘንግ መለያ (አግድም ማካካሻ)",
+        "description": "የY-ዘንግ መለያ አግድም አቀማመጥ።"
+      },
+      {
+        "title": "የY-ዘንግ መለያ (ቁመታዊ ማካካሻ)",
+        "description": "የY-ዘንግ መለያ ቁመታዊ አቀማመጥ።"
+      },
+      {
+        "title": "የY-ዘንግ ልኬት ዝቅተኛ ቦታ",
+        "description": "የልኬት ደረጃዎችን ዝቅተኛ ቁመት በፒክሰል ይገልጻል።"
+      },
+      {
+        "title": "የY-ዘንግ ልኬት (ኢንቲጀሮች ብቻ)",
+        "description": "ለልኬት ደረጃዎች የኢንቲጀር እሴቶችን (ሙሉ ቁጥሮችን) ብቻ ተጠቀም።"
+      },
+      {
+        "title": "የY-ዘንግ ርዕስ",
+        "description": "ለY-ዘንግ አማራጭ ርዕስ።"
+      },
+      {
+        "title": "የY-ዘንግ ርዕስ (ቁመታዊ ማካካሻ)",
+        "description": "የY-ዘንግ ርዕስ አግድም አቀማመጥ።"
+      },
+      {
+        "title": "የY-ዘንግ ርዕስ (አግድም ማካካሻ)",
+        "description": "የY-ዘንግ ርዕስ አግድም አቀማመጥ።"
+      },
+      {
+        "title": "የY-ዘንግ ርዕስ መልህቅ",
+        "description": "ለY-ዘንግ ርዕስ አማራጭ መልህቅ።",
+        "options": {
+          "middle": "መሃል",
+          "end": "መጨረሻ",
+          "start": "መጀመሪያ"
+        }
+      },
+      {
+        "title": "የY-ዘንግ ርዕስ ገልብጥ",
+        "description": "ለY-ዘንግ ርዕሱ ይገልበጥ?"
+      },
+      {
+        "title": "የማጣቀሻ እሴት",
+        "description": "ዝቅተኛ/ከፍተኛ በግልጽ ካልተዘጋጁ በስተቀር የአሞሌ ገበታው በነባሪ በዜሮ ላይ ያማከለ ይሆናል።"
+      },
+      {
+        "title": "የተከታታይ አሞሌ ርቀት",
+        "description": "በቡድን ውስጥ ያሉ አሞሌዎችን ርቀት በፒክሰል ይግለጹ።"
+      },
+      {
+        "title": "የመደራረብ ሁነታ",
+        "description": "ወደ \"true\" ከተዘጋጀ ይህ ባህሪ ለእያንዳንዱ የተከታታይ ነጥብ ጠቅላላ ይፈጥራል። ይህ የy-ዘንጉን እና የገበታውን አጠቃላይ ወሰኖችም ይነካል። ወደ \"false\" ከተዘጋጀ ይህ ባህሪ የተደራረቡ አሞሌዎች ከዜሮ መስመር እንዲሳሉ ያስገድዳል። በተደራራቢ ሁነታ የ\"seriesBarDistance\" ባህሪ ምንም ውጤት አይኖረውም።"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML blokas",
+    "description": "Paprastas HTML blokas su HAXschema sąsaja"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML kodas, kurį norite pateikti turinyje"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hexkiezer",
+    "description": "Kleurkiezer met hexcode"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Waarde",
+        "description": "Standaard hexwaarde"
+      },
+      {
+        "property": "disabled",
+        "title": "Uitgeschakeld",
+        "description": "Het tekstveld uitschakelen"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Grote weergave",
+        "description": "Kleur in grote weergave tonen"
+      }
+    ]
+  }
+}

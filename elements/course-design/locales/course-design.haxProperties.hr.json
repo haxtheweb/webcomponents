@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Dizajn kolegija",
+    "description": "Spremnik za obrazovne materijale i elemente dizajna kolegija."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Identifikator kolegija",
+        "description": "OER Schema: identifikator kolegija, npr. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Semestar izvođenja",
+        "description": "OER Schema: semestar u kojem se kolegij izvodi."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Oblik izvođenja",
+        "description": "OER Schema: oblik izvođenja kolegija (npr. uživo, online, hibridno)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Glavni nastavnik",
+        "description": "OER Schema: glavni nastavnik kolegija."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL izvedbenog plana",
+        "description": "OER Schema: URL izvedbenog plana kolegija."
+      }
+    ]
+  }
+}

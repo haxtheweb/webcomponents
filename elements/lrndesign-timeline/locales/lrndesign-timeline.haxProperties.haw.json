@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Laina manawa",
+    "description": "He laina manawa o nā hanana me nā kiʻi a me ke kikokikona"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Poʻo inoa o ka moʻolelo",
+        "description": "He poʻo inoa no ka laina manawa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu Kiko",
+        "description": "He waihoʻoluʻu kiko koho."
+      },
+      {
+        "property": "dark",
+        "title": "Kumuhana Pōuliuli",
+        "description": "Hoʻā i ke kumuhana pōʻeleʻele"
+      },
+      {
+        "slot": "",
+        "title": "Wehewehe laina manawa",
+        "description": "Kikokikona koho e wehewehe ana i ka laina manawa."
+      },
+      {
+        "property": "events",
+        "title": "Nā hanana laina manawa",
+        "description": "Nā hanana ma ka laina manawa"
+      }
+    ]
+  }
+}

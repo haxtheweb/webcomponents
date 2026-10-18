@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Peruslinkki",
+    "description": "Peruslinkkielementti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Linkki",
+        "description": "Kohde-URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Teksti",
+        "description": "Näkyvä linkkiteksti."
+      },
+      {
+        "attribute": "target",
+        "title": "Kohde",
+        "description": "Missä linkki avataan.",
+        "options": {
+          "": "Sama ikkuna",
+          "_blank": "Uusi ikkuna - _blank",
+          "_top": "Ylin ikkuna - _top",
+          "_parent": "Yläikkuna - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Otsikkoteksti",
+        "description": "Ohjeellinen otsikko saavutettavuutta ja SEO:ta varten."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Suhde kohteeseen (tietoturva/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

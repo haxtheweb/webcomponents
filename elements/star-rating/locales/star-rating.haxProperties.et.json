@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Tärnhinnang",
+    "description": "Hinnangu kuvamise vidin või nupp hindamiseks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Tulemus",
+        "description": "Praegune tulemuse väärtus."
+      },
+      {
+        "property": "possible",
+        "title": "Võimalik",
+        "description": "Maksimaalne võimalik tulemus."
+      },
+      {
+        "property": "numStars",
+        "title": "Tärnide arv",
+        "description": "Kuvatavate tärnide arv."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktiivne",
+        "description": "Luba kasutajal hinnangut määrata."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Hindamisskaala režiim",
+        "description": "Väljasta iga tärni kohta OER Schema RubricScale ja RubricLevel metaandmed (levelOrdinal/levelPoints)."
+      }
+    ]
+  }
+}

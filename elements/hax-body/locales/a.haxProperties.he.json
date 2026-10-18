@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "קישור בסיסי",
+    "description": "רכיב קישור בסיסי."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "קישור",
+        "description": "כתובת URL של היעד."
+      },
+      {
+        "attribute": "innerText",
+        "title": "טקסט",
+        "description": "טקסט הקישור הגלוי."
+      },
+      {
+        "attribute": "target",
+        "title": "יעד",
+        "description": "היכן לפתוח את הקישור.",
+        "options": {
+          "": "אותו חלון",
+          "_blank": "חלון חדש - _blank",
+          "_top": "חלון עליון - _top",
+          "_parent": "חלון הורה - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "טקסט כותרת",
+        "description": "כותרת מייעצת לנגישות ול-SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "היחס ליעד (אבטחה/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

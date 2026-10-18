@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Cuntenutu luntanu",
+    "description": "Riutilizà cuntenutu d'un situ in un altru."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Indirizzu di u situ",
+        "description": "Incullate l'indirizzu da u quale riferisce u cuntenutu s'ellu ùn hè micca u situ attuale"
+      },
+      {
+        "property": "uuid",
+        "title": "Elementu",
+        "description": "Elementu da affissà per i dati di ligame / titulu"
+      },
+      {
+        "property": "breakreference",
+        "title": "Rompe a riferenza",
+        "description": "Marcà sta casella copia u cuntenutu luntanu per mudificallu in lucale ma caccia l'associu. Ùn riceverà più aghjurnamenti quandu u materiale di riferenza serà aghjurnatu."
+      },
+      {
+        "property": "showTitle",
+        "title": "Mustrà u titulu",
+        "description": "Attivate per affissà u titulu di a risorsa affissata"
+      }
+    ]
+  }
+}

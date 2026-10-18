@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Contenu distant",
+    "description": "Réutiliser le contenu d'un site dans un autre."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Adresse du site",
+        "description": "Collez l'adresse depuis laquelle référencer du contenu s'il ne s'agit pas du site actuel"
+      },
+      {
+        "property": "uuid",
+        "title": "Élément",
+        "description": "Élément à afficher pour les données du lien / du titre"
+      },
+      {
+        "property": "breakreference",
+        "title": "Rompre la référence",
+        "description": "Cocher cette case copie le contenu distant pour le modifier localement, mais supprime l'association. Il ne recevra plus les mises à jour du contenu de référence."
+      },
+      {
+        "property": "showTitle",
+        "title": "Afficher le titre",
+        "description": "Activez pour afficher le titre de la ressource présentée"
+      }
+    ]
+  }
+}

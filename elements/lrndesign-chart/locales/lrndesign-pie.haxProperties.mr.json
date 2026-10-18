@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "पाय चार्ट",
+    "description": "CSV वर आधारित सुलभ चार्ट तयार करते."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "उठाव रंग",
+        "description": "पर्यायी उठाव रंग."
+      },
+      {
+        "title": "गडद थीम",
+        "description": "डार्क थीम सक्षम करा"
+      },
+      {
+        "title": "CSV फाइल",
+        "description": "CSV मधून डेटा लोड करा."
+      },
+      {
+        "title": "चार्ट शीर्षक",
+        "description": "तुमच्या चार्टसाठी सुलभ alt मजकूर."
+      },
+      {
+        "title": "चार्ट वर्णन",
+        "description": "तुमच्या चार्टचे सुलभ वर्णन."
+      },
+      {
+        "title": "स्केल नाव",
+        "description": "चार्टचे रुंदी:उंची गुणोत्तर ($ct-scales आणि $ct-scales-names साठी https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings पाहा).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "डोनट"
+      },
+      {
+        "title": "लेबल दाखवा"
+      },
+      {
+        "title": "सुरुवातीचा कोन"
+      },
+      {
+        "title": "पॅडिंग"
+      },
+      {
+        "title": "एकूण",
+        "description": "तुम्ही निर्दिष्ट करू शकता असे पर्यायी एकूण. एकूण मूल्य निर्दिष्ट केल्यास, पूर्ण पाय काढण्यासाठी मालिकेतील मूल्यांची बेरीज हे एकूण असणे आवश्यक आहे. पाय किंवा गेज चार्टचे फक्त भाग काढण्यासाठी तुम्ही हा पॅरामीटर वापरू शकता."
+      },
+      {
+        "title": "रिकामी मूल्ये दुर्लक्षित करा",
+        "description": "अनावश्यक तुकडे आणि लेबल काढणे टाळण्यासाठी रिकामी मूल्ये दुर्लक्षित केली जातील."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "डेटा उलटा करा",
+        "description": "लेबल, मालिका क्रम तसेच संपूर्ण मालिका डेटा अ‍ॅरेसह डेटा उलटा करा."
+      },
+      {
+        "title": "HTML टेबल",
+        "description": "पर्यायी: डेटा HTML टेबल म्हणून लोड करा."
+      },
+      {
+        "title": "डोनट रेषेची रुंदी"
+      },
+      {
+        "title": "भरीव डोनट",
+        "description": "डोनट भाग रेषांऐवजी आकार म्हणून काढा."
+      },
+      {
+        "title": "लेबल दिशा",
+        "description": "डोनट भाग रेषांऐवजी आकार म्हणून काढा.",
+        "options": {
+          "neutral": "तटस्थ",
+          "explode": "बाहेरच्या दिशेने",
+          "implode": "आतल्या दिशेने"
+        }
+      },
+      {
+        "title": "लेबल ऑफसेट",
+        "description": "त्रिज्येच्या अर्ध्या अंतरावरील मानक स्थानापासून लेबल स्थानाचा ऑफसेट. हे मूल्य धन किंवा ऋण असू शकते. धन मूल्ये लेबल केंद्रापासून दूर ठेवतील."
+      },
+      {
+        "title": "लेबल स्थान",
+        "options": {
+          "inside": "आत",
+          "outside": "बाहेर",
+          "center": "मध्यभागी"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "บทบาทในอาชีพ",
+    "description": "บทบาทแต่ละตำแหน่งภายในองค์กร"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง"
+      },
+      {
+        "property": "startDate",
+        "title": "วันที่เริ่มต้น"
+      },
+      {
+        "property": "endDate",
+        "title": "วันที่สิ้นสุด (ไม่บังคับ)"
+      },
+      {
+        "property": "skills",
+        "title": "ทักษะที่เกี่ยวข้อง",
+        "description": "เลือกปุ่ม + เพื่อเริ่มเพิ่มทักษะ"
+      }
+    ]
+  }
+}

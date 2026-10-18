@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Uluhlu lwamachaphaza",
+    "description": "Yenza uluhlu lwamachaphaza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Isitayile sechaphaza",
+        "description": "Isitayile esisetyenziswa kumachaphaza oluhlu olungalandelelaniswanga.",
+        "options": {
+          "": "Okungagqibekanga (isikwere)",
+          "list-disc": "Idiski",
+          "list-circle": "Isangqa",
+          "list-square": "Isikwere"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Oštevilčen seznam",
+    "description": "Ustvari oštevilčen seznam."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Slog številčenja",
+        "description": "Slog številčenja urejenega seznama.",
+        "options": {
+          "": "Privzeto (desetiško)",
+          "list-decimal-leading-zero": "Desetiško z vodilno ničlo (01, 02, 03)",
+          "list-lower-alpha": "Male črke (a, b, c)",
+          "list-upper-alpha": "Velike črke (A, B, C)",
+          "list-lower-roman": "Male rimske (i, ii, iii)",
+          "list-upper-roman": "Velike rimske (I, II, III)"
+        }
+      }
+    ]
+  }
+}

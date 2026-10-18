@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "수학",
+    "description": "수식을 보기 좋게 표시합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "수학",
+        "description": "LaTeX로 수식 입력"
+      }
+    ]
+  }
+}

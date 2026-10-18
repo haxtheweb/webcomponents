@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Kartica",
+    "description": "Jedna kartica."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona kartice"
+      },
+      {
+        "property": "disabled",
+        "title": "Onemogućeno"
+      },
+      {
+        "property": "label",
+        "title": "Oznaka kartice"
+      },
+      {
+        "slot": "",
+        "title": "Sadržaj kartice",
+        "description": "Sadržaj kartice."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Jedinstveni ID"
+      },
+      {
+        "property": "flag",
+        "title": "Neobavezni tekst zastavice"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Neobavezna ikona zastavice"
+      }
+    ]
+  }
+}

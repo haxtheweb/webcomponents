@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-Book-Button",
+    "description": "Ein Button, der auf ein E-Book verlinkt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Der Titel des Buttons."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Der Link, zu dem beim Klick weitergeleitet wird."
+      },
+      {
+        "property": "icon",
+        "title": "Symbol",
+        "description": "Symbol, das diesen Link darstellt"
+      }
+    ]
+  }
+}

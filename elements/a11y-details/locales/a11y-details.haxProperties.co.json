@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Buttone di dettagli accessibile",
+    "description": "Divulgazione prugressiva accessibile cù dettagli è riassuntu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Buttone",
+        "description": "Riassuntu di u cuntenutu piattatu, p. es. \"infurmazioni\", \"metadati\", ecc."
+      },
+      {
+        "slot": "details",
+        "title": "Descrizzione",
+        "description": "Descrizzione detagliata chì pò esse piattata o mustrata"
+      },
+      {
+        "slot": "",
+        "title": "Buttone di descrizzione",
+        "description": "Valore predefinitu per u buttone chì mostra/piatta u testu di descrizzione, p. es. \"infurmazioni\", \"metadati\", ecc."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Testu di riassuntu facultativu quandu i dettagli sò aperti"
+      },
+      {
+        "property": "closeText",
+        "title": "Testu di riassuntu facultativu quandu i dettagli sò chjosi"
+      }
+    ]
+  }
+}

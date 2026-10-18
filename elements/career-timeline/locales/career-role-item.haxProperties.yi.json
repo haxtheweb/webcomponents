@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "קאַריערע־ראָלע",
+    "description": "אַן איינציקע ראָלע אין אַן אָרגאַניזאַציע"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "טיטל"
+      },
+      {
+        "property": "startDate",
+        "title": "אָנהייב־דאַטע"
+      },
+      {
+        "property": "endDate",
+        "title": "סוף־דאַטע (אָפּציאָנעל)"
+      },
+      {
+        "property": "skills",
+        "title": "פֿאַרבונדענע פֿעיִקייטן",
+        "description": "קלײַב דאָס + קנעפּל צו אָנהייבן צולייגן פֿעיִקייטן"
+      }
+    ]
+  }
+}

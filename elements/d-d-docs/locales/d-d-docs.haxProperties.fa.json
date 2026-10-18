@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "طراحی، توسعه، تخریب",
+    "description": "پیاده‌سازی سیستم طراحی برای HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "گزینه برای نمایش",
+        "options": {
+          "*": "راهنمای سبک کامل"
+        }
+      }
+    ]
+  }
+}

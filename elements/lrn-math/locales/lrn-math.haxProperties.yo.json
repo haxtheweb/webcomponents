@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ìṣirò",
+    "description": "Ṣàfihàn ìṣirò lọ́nà tó dára láti wò."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Ìṣirò",
+        "description": "Tẹ ìdọ́gba bí LaTeX"
+      }
+    ]
+  }
+}

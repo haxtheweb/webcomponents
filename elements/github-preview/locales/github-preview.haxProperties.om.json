@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Agarsiisa Duraa Github",
+    "description": "Fakkii dhaqqabamaa ibsa dheeraa qabu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Dhaabbata",
+        "description": "Maqaa maashinii dhaabbata Github"
+      },
+      {
+        "property": "repo",
+        "title": "Kuusaa (repository)",
+        "description": "Maqaa maashinii ripoo"
+      },
+      {
+        "property": "extended",
+        "title": "Ilaalcha Bal'aa",
+        "description": "Elementii keessatti readme dabala"
+      }
+    ]
+  }
+}

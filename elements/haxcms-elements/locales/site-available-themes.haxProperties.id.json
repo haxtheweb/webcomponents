@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Tema yang Tersedia",
+    "description": "Tampilkan tema HAXcms yang tersedia dengan peralihan pratinjau langsung"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Mode Tampilan",
+        "description": "Pilih cara menampilkan tema",
+        "options": {
+          "gallery": "Galeri",
+          "table": "Tabel"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Tampilkan Detail",
+        "description": "Tampilkan deskripsi tema dan informasi tambahan"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Tampilkan Tema Tersembunyi dan Lama",
+        "description": "Tampilkan tema tersembunyi, lama, dan buruk selain default dasbor"
+      },
+      {
+        "property": "columns",
+        "title": "Kolom (Galeri)",
+        "description": "Jumlah kolom dalam tampilan galeri"
+      }
+    ]
+  }
+}

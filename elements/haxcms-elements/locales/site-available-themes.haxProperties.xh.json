@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Imixholo Ekhoyo",
+    "description": "Bonisa imixholo ye-HAXcms ekhoyo ngokutshintsha komboniso ngqo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Imo yokuJonga",
+        "description": "Khetha indlela yokubonisa imixholo",
+        "options": {
+          "gallery": "Igalari",
+          "table": "Itheyibhile"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Bonisa iiNkcukacha",
+        "description": "Bonisa iinkcazo zemixholo nolwazi olongezelelweyo"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Bonisa iMixholo eFihliweyo neyaKudala",
+        "description": "Bonisa imixholo efihliweyo, yakudala, nemibi kakhulu ukongeza kwezingagqibekanga zedeshibhodi"
+      },
+      {
+        "property": "columns",
+        "title": "Iikholamu (iGalari)",
+        "description": "Inani leekholamu kumboniso wegalari"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-kitab düyməsi",
+    "description": "E-kitaba keçid verən düymə."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Düymənin başlığı."
+      },
+      {
+        "property": "link",
+        "title": "Keçid",
+        "description": "Klikləndikdə yönləndiriləcək keçid."
+      },
+      {
+        "property": "icon",
+        "title": "İkon",
+        "description": "Bu keçidi təmsil edən ikon"
+      }
+    ]
+  }
+}

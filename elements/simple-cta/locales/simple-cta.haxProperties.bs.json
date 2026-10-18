@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Poziv na akciju",
+    "description": "Jednostavno dugme s linkom za poduzimanje akcije."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Oznaka",
+        "description": "Oznaka linka"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Unesite link na bilo koji resurs"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Sakrij ikonu",
+        "description": "Sakrij ikonu koja naglašava tekst"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona linka za akciju"
+      }
+    ]
+  }
+}

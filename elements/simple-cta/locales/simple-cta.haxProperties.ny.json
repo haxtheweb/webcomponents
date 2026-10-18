@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Pempho lochitapo kanthu",
+    "description": "Batani losavuta lokhala ndi ulalo wochitapo kanthu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Chizindikiro",
+        "description": "Dzina la ulalo"
+      },
+      {
+        "property": "link",
+        "title": "Ulalo",
+        "description": "Lowetsani ulalo wa chinthu chilichonse"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Bisani chizindikiro",
+        "description": "Bisani chizindikiro chogwiritsidwa ntchito kukongoletsa mawu"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Chizindikiro",
+        "description": "Chizindikiro cha ulalo wochitapo kanthu"
+      }
+    ]
+  }
+}

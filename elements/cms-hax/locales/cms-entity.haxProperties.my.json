@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS Entity",
+    "description": "backend တွင် ပြသသော CMS entity"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "အမျိုးအစား",
+        "description": "ကျွန်ုပ်တို့၏ CMS မှ အမျိုးအစား",
+        "options": {
+          "node": "Node",
+          "user": "အသုံးပြုသူ",
+          "file": "ဖိုင်"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ကျွန်ုပ်တို့၏ CMS မှ id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "ပြသမှု မုဒ်",
+        "description": "ကျွန်ုပ်တို့၏ CMS မှ display မုဒ်"
+      }
+    ]
+  }
+}

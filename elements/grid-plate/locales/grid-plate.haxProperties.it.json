@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Layout a colonne",
+    "description": "Disponi il materiale in semplici colonne"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Layout a colonne",
+        "description": "Stile con cui presentare questi elementi (può cambiare sugli schermi piccoli)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Disattiva layout adattivo",
+        "description": "Seleziona per mantenere le colonne sugli schermi più grandi, impilandole comunque sugli schermi più piccoli"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Spaziatura interna degli elementi",
+        "description": "Spaziatura interna di ogni elemento"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Margini degli elementi",
+        "description": "Margine tra gli elementi"
+      }
+    ]
+  }
+}

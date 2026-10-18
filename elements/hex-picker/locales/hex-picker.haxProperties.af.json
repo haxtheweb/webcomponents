@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex-kieser",
+    "description": "Hexkode-kleurkieser"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Waarde",
+        "description": "Verstek-hexwaarde"
+      },
+      {
+        "property": "disabled",
+        "title": "Gedeaktiveer",
+        "description": "Deaktiveer die teksveld"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Groot vertoning",
+        "description": "Sluit kleur in groot vertoning in"
+      }
+    ]
+  }
+}

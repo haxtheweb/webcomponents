@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Povezava HAX",
+    "description": "Povezava do določenega vira na spletnem mestu, na katerem delate."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Element za prikaz podatkov povezave / naslova"
+      }
+    ]
+  }
+}

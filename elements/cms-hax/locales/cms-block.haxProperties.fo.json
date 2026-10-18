@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-blokkur",
+    "description": "CMS-blokkur útgreiddur á bakendanum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modul",
+        "description": "Modul at innlesa úr CMS okkara"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta á blokkinum at innlesa úr CMS okkara"
+      }
+    ]
+  }
+}

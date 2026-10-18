@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "강조 표시",
+    "description": "인라인 텍스트를 강조 표시합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "텍스트",
+        "description": "강조 표시된 텍스트."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Delwedd parallacs",
+    "description": "Delwedd yn sgrolio heibio"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Delwedd",
+        "description": "delwedd i'w chynnwys yn y cefndir"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Ardal pennawd",
+        "description": "Ardal testun y pennawd"
+      }
+    ]
+  }
+}

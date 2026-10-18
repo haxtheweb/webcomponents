@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Leagan amach colún",
+    "description": "Leag amach ábhar i gcolúin shimplí"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Leagan Amach Colún",
+        "description": "Stíl chun na míreanna seo a chur i láthair (d'fhéadfadh sé athrú ar scáileáin bheaga)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Díchumasaigh freagrúlacht",
+        "description": "Cuir tic sa bhosca chun colúin a choinneáil ar scáileáin níos mó agus iad fós a chruachadh ar na scáileáin is lú"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Stuáil Míreanna",
+        "description": "Stuáil taobh istigh de gach mír"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Imill na míreanna",
+        "description": "Imeall idir míreanna"
+      }
+    ]
+  }
+}

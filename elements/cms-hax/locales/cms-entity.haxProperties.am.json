@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "የCMS አካል",
+    "description": "በጀርባ የሚሰራ የCMS አካል"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "ዓይነት",
+        "description": "ከCMSችን ዓይነት",
+        "options": {
+          "node": "Node",
+          "user": "ተጠቃሚ",
+          "file": "ፋይል"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ከCMSችን id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "የማሳያ ሁነታ",
+        "description": "ከCMSችን የማሳያ ሁነታ"
+      }
+    ]
+  }
+}

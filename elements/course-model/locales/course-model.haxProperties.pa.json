@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ਕੋਰਸ ਮਾਡਲ",
+    "description": "ਵੇਰਵਿਆਂ, ਐਨੀਮੇਸ਼ਨ ਅਤੇ ਗਿਆਨ ਜਾਂਚਾਂ ਨਾਲ ਕੋਰਸ ਸੰਕਲਪਾਂ ਲਈ ਇੰਟਰਐਕਟਿਵ ਲੇਆਉਟ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "ਸਿਰਲੇਖ"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "ਜਾਣਕਾਰੀ ਖੇਤਰ"
+      },
+      {
+        "title": "ਵੇਰਵਾ ਖੇਤਰ"
+      },
+      {
+        "title": "ਐਨੀਮੇਸ਼ਨ ਖੇਤਰ"
+      },
+      {
+        "title": "ਗਿਆਨ ਜਾਂਚ ਖੇਤਰ"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "ਲੋਗੋ ਖੇਤਰ"
+      }
+    ]
+  }
+}

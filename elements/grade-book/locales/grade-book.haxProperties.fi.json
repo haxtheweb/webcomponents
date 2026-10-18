@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Arviointikirja",
+    "description": "Käyttöliittymätön arviointikirja, joka tukee useita taustapalveluja ja arviointimatriiseja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Lähde",
+        "description": "Tietolähteen tyyppi (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-päätepiste (JSON)",
+          "json": "JSON-datamöhkäle",
+          "filesystem": "Tiedostojärjestelmä"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Lähdedata",
+        "description": "Arviointikirjan URL tai JSON-data."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurssiviite",
+        "description": "Kurssin tunniste, joka lisätään oer:forCourse-arvona jokaiseen Assessment-resurssiin."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Kubbur með markdown-efni, beint eða hlaðið úr fjarlægð"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Hrátt markdown"
+      },
+      {
+        "property": "source",
+        "title": "Uppruni",
+        "description": "Upprunaskrá fyrir markdown"
+      }
+    ]
+  }
+}

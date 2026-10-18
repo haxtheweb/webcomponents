@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "การออกแบบรายวิชา",
+    "description": "คอนเทนเนอร์สำหรับสื่อการเรียนรู้และองค์ประกอบการออกแบบรายวิชา"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "รหัสรายวิชา",
+        "description": "OER Schema: รหัสของรายวิชา เช่น MATH-100"
+      },
+      {
+        "property": "termOffered",
+        "title": "ภาคการศึกษาที่เปิดสอน",
+        "description": "OER Schema: ภาคการศึกษาที่เปิดสอนรายวิชา"
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "รูปแบบการจัดการเรียนการสอน",
+        "description": "OER Schema: รูปแบบที่ใช้จัดการเรียนการสอนรายวิชา (เช่น ในชั้นเรียน ออนไลน์ แบบผสมผสาน)"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "ผู้สอนหลัก",
+        "description": "OER Schema: ผู้สอนหลักของรายวิชา"
+      },
+      {
+        "property": "syllabus",
+        "title": "URL ของประมวลรายวิชา",
+        "description": "OER Schema: URL ไปยังประมวลรายวิชา"
+      }
+    ]
+  }
+}

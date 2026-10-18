@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Riproduzione video accessibile da più sorgenti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origine",
+        "description": "URL di questo contenuto multimediale."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titolo",
+        "description": "Titolo mostrato sotto il video."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Immagine di anteprima",
+        "description": "URL dell'immagine di anteprima."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Tracce di testo",
+        "description": "Sottotitoli per non udenti, sottotitoli, descrizioni e altre tracce di testo per il video."
+      },
+      {
+        "property": "startTime",
+        "title": "Ora di inizio",
+        "description": "Avvia il video a un momento specifico (secondi)."
+      },
+      {
+        "property": "endTime",
+        "title": "Ora di fine",
+        "description": "Termina il video a un momento specifico (secondi); richiede un'ora di inizio."
+      },
+      {
+        "property": "learningMode",
+        "title": "Attiva modalità apprendimento",
+        "description": "Disattiva avanzamento e riavvolgimento rapidi."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Rimuovi il pulsante Apri su YouTube",
+        "description": "Rimuove il pulsante per aprire il video su YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Includere un link di condivisione?",
+        "description": "Fornisce un link per condividere il video."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Nascondi indicazioni temporali",
+        "description": "Nasconde le indicazioni temporali nella trascrizione."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Nascondi trascrizione",
+        "description": "Nasconde la trascrizione per impostazione predefinita."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Traccia di audiodescrizione",
+        "description": "URL di una traccia di audiodescrizione (file MP3) che fornisce la narrazione degli elementi visivi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indica se usare CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Consenti riproduzione in background",
+        "description": "Continua la riproduzione quando la scheda del browser perde il focus."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema scuro per la trascrizione",
+        "description": "Attiva il tema scuro per la trascrizione."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Disattiva interattività",
+        "description": "Disattiva la modalità interattiva che rende cliccabile la trascrizione."
+      },
+      {
+        "property": "lang",
+        "title": "Lingua",
+        "description": "Lingua del contenuto multimediale."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "(obsoleto) Seleziona il colore di risalto per il lettore."
+      }
+    ]
+  }
+}

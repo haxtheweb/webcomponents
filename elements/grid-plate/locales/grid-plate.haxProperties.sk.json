@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Stĺpcové rozloženie",
+    "description": "Rozloženie materiálu do jednoduchých stĺpcov"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Stĺpcové rozloženie",
+        "description": "Štýl prezentácie týchto položiek (na malých obrazovkách sa môže zmeniť)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Vypnúť responzivitu",
+        "description": "Začiarknite, ak chcete zachovať stĺpce na väčších obrazovkách a na najmenších ich stále skladať pod seba"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Vnútorné odsadenie položky",
+        "description": "Vnútorné odsadenie v každej položke"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Okraje položiek",
+        "description": "Okraj medzi položkami"
+      }
+    ]
+  }
+}

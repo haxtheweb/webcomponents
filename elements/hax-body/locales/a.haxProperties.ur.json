@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "بنیادی لنک",
+    "description": "بنیادی لنک عنصر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "لنک",
+        "description": "منزل کا URL۔"
+      },
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "لنک کا نظر آنے والا متن۔"
+      },
+      {
+        "attribute": "target",
+        "title": "ہدف",
+        "description": "لنک کہاں کھولنا ہے۔",
+        "options": {
+          "": "وہی ونڈو",
+          "_blank": "نئی ونڈو - _blank",
+          "_top": "اوپری ونڈو - _top",
+          "_parent": "والد ونڈو - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "عنوان کا متن",
+        "description": "رسائی اور SEO کے لیے مشاورتی عنوان۔"
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "منزل سے تعلق (سیکیورٹی/SEO)۔",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

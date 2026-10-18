@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "सापेक्ष शीर्षक",
+    "description": "मूलको शीर्षकका आधारमा सही शीर्षक श्रेणी निकाल्छ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "मूल शीर्षकको स्रोत ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "लिङ्क बटन सुविधा असक्षम गर्छ।"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "लिङ्क प्रतिलिपि बटनलाई शीर्षकको एकदम दायाँ पङ्क्तिबद्ध गर्छ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "मूल नभेटिएमा शीर्षक तह।"
+      },
+      {
+        "property": "copyMessage",
+        "description": "लिङ्क प्रतिलिपिको टोस्ट सन्देशको पूर्वनिर्धारित पाठ ओभरराइड गर्छ।"
+      },
+      {
+        "property": "linkLabel",
+        "description": "लिङ्क प्रतिलिपि बटनको पूर्वनिर्धारित लेबल ओभरराइड गर्छ।"
+      },
+      {
+        "property": "linkIcon",
+        "description": "लिङ्क प्रतिलिपि बटनको पूर्वनिर्धारित आइकन ओभरराइड गर्छ।"
+      },
+      {
+        "property": "closeLabel",
+        "description": "लिङ्क प्रतिलिपि टोस्टको बन्द बटनको पूर्वनिर्धारित लेबल ओभरराइड गर्छ।"
+      },
+      {
+        "property": "closeIcon",
+        "description": "लिङ्क प्रतिलिपि टोस्टको बन्द बटनको पूर्वनिर्धारित आइकन ओभरराइड गर्छ।"
+      }
+    ]
+  }
+}

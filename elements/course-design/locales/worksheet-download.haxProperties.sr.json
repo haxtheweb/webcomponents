@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Преузимање радног листа",
+    "description": "Дугме за приказ датотека доступних за преузимање."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов преузимања."
+      },
+      {
+        "property": "link",
+        "title": "Веза",
+        "description": "Веза за преузимање."
+      }
+    ]
+  }
+}

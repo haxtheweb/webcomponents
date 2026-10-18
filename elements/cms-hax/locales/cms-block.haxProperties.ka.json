@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ბლოკი",
+    "description": "CMS ბლოკი, რომელიც backend-ზე რენდერდება"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "მოდული",
+        "description": "ჩვენი CMS-იდან ჩასატვირთი მოდული"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "ჩვენი CMS-იდან ჩასატვირთი ბლოკის Delta"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Rajah Deskriptif",
+    "description": "Rajah boleh akses dengan perihalan panjang"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Imej"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Teks Alt"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Kapsyen Rajah",
+        "description": "Teks kapsyen rajah yang sentiasa kelihatan."
+      },
+      {
+        "slot": "details",
+        "title": "Perihalan",
+        "description": "Perihalan imej terperinci yang boleh disembunyikan atau ditunjukkan"
+      },
+      {
+        "slot": "summary",
+        "title": "Butang Perihalan",
+        "description": "Lalai untuk butang yang menunjukkan/menyembunyikan teks perihalan, cth. \"info\", \"metadata\", dsb."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Teks ringkasan pilihan apabila butiran dibuka"
+      },
+      {
+        "property": "closeText",
+        "title": "Teks ringkasan pilihan apabila butiran ditutup"
+      }
+    ]
+  }
+}

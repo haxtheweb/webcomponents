@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Tişta Kariyerê",
+    "description": "Rêxistineke yekane û rolên wê yên têkildar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Navê Rêxistinê"
+      },
+      {
+        "property": "location",
+        "title": "Cih"
+      },
+      {
+        "property": "source",
+        "title": "Çavkanî"
+      }
+    ]
+  }
+}

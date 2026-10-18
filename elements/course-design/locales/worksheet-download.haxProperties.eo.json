@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Elŝuto de laborfolio",
+    "description": "Butono por montri dosierojn disponeblajn por elŝuto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "La titolo de la elŝutaĵo."
+      },
+      {
+        "property": "link",
+        "title": "Ligilo",
+        "description": "La ligilo por la elŝutaĵo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "ວິດີໂອ",
+    "description": "ການຫຼິ້ນວິດີໂອທີ່ເຂົ້າເຖິງໄດ້ຈາກຫຼາຍແຫຼ່ງ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "URL ສຳລັບສື່ນີ້."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ທີ່ສະແດງໃຕ້ວິດີໂອ."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "ຮູບໂປສເຕີ",
+        "description": "URL ຮູບໂປສເຕີ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "ແທຣັກຂໍ້ຄວາມ",
+        "description": "ຄຳບັນຍາຍ, ຄຳແປບັນຍາຍ, ຄຳອະທິບາຍ ແລະ ແທຣັກຂໍ້ຄວາມອື່ນໆສຳລັບວິດີໂອ."
+      },
+      {
+        "property": "startTime",
+        "title": "ເວລາເລີ່ມຕົ້ນ",
+        "description": "ເລີ່ມວິດີໂອທີ່ເວລາສະເພາະ (ວິນາທີ)."
+      },
+      {
+        "property": "endTime",
+        "title": "ເວລາສິ້ນສຸດ",
+        "description": "ສິ້ນສຸດວິດີໂອທີ່ເວລາສະເພາະ (ວິນາທີ), ຕ້ອງມີເວລາເລີ່ມຕົ້ນ."
+      },
+      {
+        "property": "learningMode",
+        "title": "ເປີດໃຊ້ໂໝດການຮຽນ",
+        "description": "ປິດການເລື່ອນໄປໜ້າ ແລະ ຍ້ອນກັບ."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "ລຶບປຸ່ມເປີດໃນ YouTube",
+        "description": "ລຶບປຸ່ມສຳລັບເປີດວິດີໂອໃນ YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "ລວມລິ້ງແບ່ງປັນບໍ?",
+        "description": "ໃຫ້ລິ້ງເພື່ອແບ່ງປັນວິດີໂອ."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ເຊື່ອງເວລາ",
+        "description": "ເຊື່ອງເວລາໃນບົດຖອດຄວາມ."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ເຊື່ອງບົດຖອດຄວາມ",
+        "description": "ເຊື່ອງບົດຖອດຄວາມເປັນຄ່າເລີ່ມຕົ້ນ."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "ແທຣັກຄຳອະທິບາຍດ້ວຍສຽງ",
+        "description": "URL ຂອງແທຣັກຄຳອະທິບາຍດ້ວຍສຽງ (ໄຟລ໌ MP3) ທີ່ບັນຍາຍອົງປະກອບທາງພາບ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "ລະບຸວ່າຈະໃຊ້ CORS ຫຼືບໍ່.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "ອະນຸຍາດການຫຼິ້ນໃນພື້ນຫຼັງ",
+        "description": "ຫຼິ້ນຕໍ່ເມື່ອແຖບບຣາວເຊີເສຍໂຟກັສ."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ທີມມືດສຳລັບບົດຖອດຄວາມ",
+        "description": "ເປີດໃຊ້ທີມມືດສຳລັບບົດຖອດຄວາມ."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ປິດການໂຕ້ຕອບ",
+        "description": "ປິດໂໝດໂຕ້ຕອບທີ່ເຮັດໃຫ້ບົດຖອດຄວາມຄລິກໄດ້."
+      },
+      {
+        "property": "lang",
+        "title": "ພາສາ",
+        "description": "ພາສາຂອງສື່."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "(ເຊົາໃຊ້ແລ້ວ) ເລືອກສີເນັ້ນສຳລັບເຄື່ອງຫຼິ້ນ."
+      }
+    ]
+  }
+}

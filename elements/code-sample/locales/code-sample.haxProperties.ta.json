@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "குறியீட்டு மாதிரி",
+    "description": "பக்கத்தில் முன்னிலைப்படுத்தப்பட்ட குறியீட்டு மாதிரி"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "குறியீட்டு முன்னிலைப்படுத்தல்",
+        "description": "குறியீட்டுப் பகுதிக்குப் பயன்படுத்த வேண்டிய தொடரியல் முன்னிலைப்படுத்தல்",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON தரவு",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "கிளிப்போர்டுக்கு நகலெடு பொத்தான்",
+        "description": "மேல் வலதுபுறத்தில் கிளிப்போர்டுக்கு நகலெடு எனக் காட்டும் பொத்தான்"
+      },
+      {
+        "property": "highlightStart",
+        "title": "முன்னிலைப்படுத்தல் தொடக்கம்",
+        "description": "முன்னிலைப்படுத்தலைத் தொடங்க வேண்டிய வரி எண்"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "முன்னிலைப்படுத்தல் முடிவு",
+        "description": "முன்னிலைப்படுத்தலை முடிக்க வேண்டிய வரி"
+      }
+    ]
+  }
+}

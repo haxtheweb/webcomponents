@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Beskikbare temas",
+    "description": "Vertoon beskikbare HAXcms-temas met regstreekse voorskouwisseling"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Aansigmodus",
+        "description": "Kies hoe om die temas te vertoon",
+        "options": {
+          "gallery": "Galery",
+          "table": "Tabel"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Wys besonderhede",
+        "description": "Wys temabeskrywings en bykomende inligting"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Wys versteekte en verouderde temas",
+        "description": "Wys versteekte, verouderde en aaklige temas benewens paneelbord-verstekwaardes"
+      },
+      {
+        "property": "columns",
+        "title": "Kolomme (galery)",
+        "description": "Aantal kolomme in galery-aansig"
+      }
+    ]
+  }
+}

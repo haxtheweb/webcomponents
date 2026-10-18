@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Opis slike",
+    "description": "Opis za sliku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Opis slike",
+        "description": "Tekst prikazan ispod slike."
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "بطاقة",
+    "description": "بطاقة مع تنسيق تمييز اختياري."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "العنوان الرئيسي",
+        "description": "عنوان للبطاقة."
+      },
+      {
+        "slot": "subheading",
+        "title": "العنوان الفرعي",
+        "description": "عنوان فرعي اختياري للبطاقة."
+      },
+      {
+        "slot": "content",
+        "title": "المحتوى",
+        "description": "محتوى البطاقة."
+      },
+      {
+        "slot": "footer",
+        "title": "التذييل",
+        "description": "تذييل اختياري للبطاقة."
+      },
+      {
+        "property": "imageSrc",
+        "title": "الصورة",
+        "description": "صورة اختيارية"
+      },
+      {
+        "property": "imageAlt",
+        "title": "النص البديل للصورة",
+        "description": "نص بديل يصف الصورة لقارئات الشاشة. اتركه فارغًا فقط إذا كانت الصورة زخرفية بحتة."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "المحاذاة الأفقية للصورة",
+        "options": {
+          "left": "يسار",
+          "center": "وسط",
+          "right": "يمين"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "المحاذاة العمودية للصورة",
+        "options": {
+          "top": "أعلى",
+          "center": "وسط",
+          "bottom": "أسفل"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون تمييز اختياري."
+      },
+      {
+        "property": "dark",
+        "title": "السمة الداكنة",
+        "description": "تفعيل السمة الداكنة"
+      },
+      {
+        "property": "horizontal",
+        "title": "أفقي",
+        "description": "اتجاه أفقي؟"
+      },
+      {
+        "property": "accentHeading",
+        "title": "تمييز العنوان",
+        "description": "تطبيق لون التمييز على العنوان؟"
+      },
+      {
+        "property": "accentBackground",
+        "title": "تمييز الخلفية",
+        "description": "تطبيق لون التمييز على خلفية البطاقة؟"
+      },
+      {
+        "property": "noBorder",
+        "title": "بدون تمييز الحدود",
+        "description": "إزالة تمييز الحدود؟"
+      },
+      {
+        "property": "flat",
+        "title": "مسطّح",
+        "description": "إزالة ظل المربع؟"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "الزاوية",
+        "description": "محتوى زاوية البطاقة."
+      }
+    ]
+  }
+}

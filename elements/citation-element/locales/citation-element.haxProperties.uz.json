@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Manba koʻrsatkichi",
+    "description": "Uchta taqdimot rejimiga ega iqtibos elementi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Iqtibos keltirilgan asar sarlavhasi."
+      },
+      {
+        "property": "source",
+        "title": "Manba havolasi",
+        "description": "Iqtibos keltirilgan asarning manba URL manzili."
+      },
+      {
+        "property": "date",
+        "title": "Murojaat sanasi",
+        "description": "Manbaga murojaat qilingan sana."
+      },
+      {
+        "property": "scope",
+        "title": "Qamrov",
+        "description": "Iqtibos keltiriladigan element qamrovi.",
+        "options": {
+          "sibling": "Qoʻshni element",
+          "parent": "Yuqori element"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Litsenziya",
+        "description": "Iqtibos keltirilgan asar litsenziyasi."
+      },
+      {
+        "property": "creator",
+        "title": "Muallif",
+        "description": "Iqtibos keltirilgan asar muallifi yoki egasi."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema turi",
+        "description": "Ushbu iqtibos uchun OER Schema klassi. Standart: oer:ReferencedMaterial; faqat yaroqli OER klassi bilan almashtiring (masalan, oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

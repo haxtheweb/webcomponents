@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Imagem com paralaxe",
+    "description": "Imagem que rola com efeito"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Imagem",
+        "description": "imagem a ser usada no fundo"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Área do cabeçalho",
+        "description": "Área de texto do cabeçalho"
+      }
+    ]
+  }
+}

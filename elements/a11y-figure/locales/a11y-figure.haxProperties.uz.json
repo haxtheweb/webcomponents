@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Tavsifli rasm",
+    "description": "Uzun tavsifli qulay rasm"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Rasm"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Muqobil matn"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Rasm izohi",
+        "description": "Doim koʻrinadigan rasm izohi matni."
+      },
+      {
+        "slot": "details",
+        "title": "Tavsif",
+        "description": "Yashirish yoki koʻrsatish mumkin boʻlgan batafsil rasm tavsifi"
+      },
+      {
+        "slot": "summary",
+        "title": "Tavsif tugmasi",
+        "description": "Tavsif matnini koʻrsatuvchi/yashiruvchi tugma uchun standart matn, masalan, \"maʼlumot\", \"metamaʼlumotlar\" va h.k."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Tafsilotlar ochiq boʻlganda ixtiyoriy qisqacha matn"
+      },
+      {
+        "property": "closeText",
+        "title": "Tafsilotlar yopiq boʻlganda ixtiyoriy qisqacha matn"
+      }
+    ]
+  }
+}

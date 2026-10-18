@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Graficu à torta",
+    "description": "Crea un graficu accessibile basatu nant'à un CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Culore d'accentu",
+        "description": "Un culore d'accentu facultativu."
+      },
+      {
+        "title": "Tema scuru",
+        "description": "Attivà u tema bughju"
+      },
+      {
+        "title": "Schedariu CSV",
+        "description": "Caricà dati da un CSV."
+      },
+      {
+        "title": "Titulu di u graficu",
+        "description": "Testu alternativu accessibile per u vostru graficu."
+      },
+      {
+        "title": "Descrizzione di u graficu",
+        "description": "Descrizzione accessibile di u vostru graficu."
+      },
+      {
+        "title": "Nome di a scala",
+        "description": "U rapportu larghezza:altezza di u graficu (vede https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings per $ct-scales è $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Ciambella"
+      },
+      {
+        "title": "Mustrà l'etichetta"
+      },
+      {
+        "title": "Angulu d'iniziu"
+      },
+      {
+        "title": "Spaziatura"
+      },
+      {
+        "title": "Tutale",
+        "description": "Tutale facultativu chì pudete specificà. Specifichendu un valore tutale, a somma di i valori di a serie deve esse stu tutale per disegnà una torta cumpleta. Pudete aduprà stu parametru per disegnà solu parte d'una torta o grafichi à indicatore."
+      },
+      {
+        "title": "Ignurà i valori bioti",
+        "description": "I valori bioti saranu ignurati per evità di disegnà fette è etichette inutile."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Invertisce i dati",
+        "description": "Invertisce i dati cumprese l'etichette, l'ordine di e serie è tutte e tavule di dati di e serie."
+      },
+      {
+        "title": "Tavula HTML",
+        "description": "Facultativu: caricà i dati cum'è tavula HTML."
+      },
+      {
+        "title": "Larghezza di u trattu di a ciambella"
+      },
+      {
+        "title": "Ciambella piena",
+        "description": "Disegnà i segmenti di a ciambella cum'è forme invece di tratti."
+      },
+      {
+        "title": "Direzzione di l'etichette",
+        "description": "Disegnà i segmenti di a ciambella cum'è forme invece di tratti.",
+        "options": {
+          "neutral": "neutra",
+          "explode": "versu l'esternu",
+          "implode": "versu l'internu"
+        }
+      },
+      {
+        "title": "Scartu di l'etichette",
+        "description": "Scartu di pusizione di l'etichetta in rapportu à a pusizione standard, chì hè à a mità di u raghju. Stu valore pò esse pusitivu o negativu. I valori pusitivi alluntananu l'etichetta da u centru."
+      },
+      {
+        "title": "Pusizione di l'etichette",
+        "options": {
+          "inside": "drentu",
+          "outside": "fora",
+          "center": "centru"
+        }
+      }
+    ]
+  }
+}

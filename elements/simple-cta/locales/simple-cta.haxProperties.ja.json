@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "コールトゥアクション",
+    "description": "行動を促すリンク付きのシンプルなボタン。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "ラベル",
+        "description": "リンクのラベル"
+      },
+      {
+        "property": "link",
+        "title": "リンク",
+        "description": "任意のリソースへのリンクを入力してください"
+      },
+      {
+        "property": "hideIcon",
+        "title": "アイコンを非表示",
+        "description": "テキストを強調するアイコンを非表示にします"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "アイコン",
+        "description": "アクションリンクのアイコン"
+      }
+    ]
+  }
+}

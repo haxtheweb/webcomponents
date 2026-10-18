@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Caption tal-figura",
+    "description": "Caption għal figura."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Didaskalija",
+        "description": "Test muri taħt il-figura."
+      }
+    ]
+  }
+}

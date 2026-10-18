@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Zomwe Zili Kutali",
+    "description": "Gwiritsaninso ntchito zomwe zili mkati kuchokera ku webusayiti imodzi kupita ku ina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Adilesi ya webusayiti",
+        "description": "Matani adilesi yoti mutengeko zomwe zili mkati ngati si webusayiti iyi"
+      },
+      {
+        "property": "uuid",
+        "title": "Chinthu",
+        "description": "Chinthu choti chionetsedwe pa ulalo / deta ya mutu"
+      },
+      {
+        "property": "breakreference",
+        "title": "Dulani kulumikizana",
+        "description": "Kuchonga bokosi ili kumakopera zomwe zili kutali kuti musinthe pano koma kumachotsa kulumikizana. Sizidzalandiranso zosintha pamene zinthu zoyambirira zasinthidwa."
+      },
+      {
+        "property": "showTitle",
+        "title": "Onetsani mutu",
+        "description": "Yatsani kuti muonetse mutu wa chinthu choonetsedwa"
+      }
+    ]
+  }
+}

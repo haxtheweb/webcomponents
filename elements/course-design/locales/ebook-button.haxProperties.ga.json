@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Cnaipe ríomhleabhair",
+    "description": "Cnaipe a nascann le ríomhleabhar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Teideal an chnaipe."
+      },
+      {
+        "property": "link",
+        "title": "Nasc",
+        "description": "An nasc chun atreorú chuige ar chliceáil."
+      },
+      {
+        "property": "icon",
+        "title": "Deilbhín",
+        "description": "Deilbhín chun an nasc seo a léiriú"
+      }
+    ]
+  }
+}

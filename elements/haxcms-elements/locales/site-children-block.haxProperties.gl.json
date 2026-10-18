@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: bloque de fillas",
+    "description": "Bloque dinámico para mostrar as fillas da páxina actual"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Método dinámico",
+        "description": "Como calcular as fillas en relación con este elemento",
+        "options": {
+          "active": "Fillas activas",
+          "parent": "Fillas da páxina pai",
+          "ancestor": "Todas as fillas desde o antepasado máis alto"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Nivel inicial"
+      },
+      {
+        "property": "end",
+        "title": "Nivel final"
+      }
+    ]
+  }
+}

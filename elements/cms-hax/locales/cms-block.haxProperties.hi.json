@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ब्लॉक",
+    "description": "बैकएंड पर रेंडर किया गया CMS ब्लॉक"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "मॉड्यूल",
+        "description": "हमारे CMS से लोड करने के लिए मॉड्यूल"
+      },
+      {
+        "property": "blockDelta",
+        "title": "डेल्टा",
+        "description": "हमारे CMS से लोड किए जाने वाले ब्लॉक का डेल्टा"
+      }
+    ]
+  }
+}

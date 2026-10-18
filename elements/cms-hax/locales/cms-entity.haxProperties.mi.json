@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Hinonga CMS",
+    "description": "Hinonga CMS ka whakaaturia ki te tuarongo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Momo",
+        "description": "momo mai i tō mātou CMS",
+        "options": {
+          "node": "Pona",
+          "user": "Kaiwhakamahi",
+          "file": "Kōnae"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id mai i tō mātou CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Aratau whakaatu",
+        "description": "aratau whakaatu mai i tō mātou CMS"
+      }
+    ]
+  }
+}

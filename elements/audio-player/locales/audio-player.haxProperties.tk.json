@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Ses",
+    "description": "Bu, çeşmesine garamazdan, wideony ýokary derejede elýeterli görnüşde görkezip bilýär."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çeşme",
+        "description": "Bu media üçin URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Ady",
+        "description": "Wideonyň aşagyndaky ýönekeý at"
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Pleýer üçin aksent reňkini saýlaň."
+      },
+      {
+        "property": "track",
+        "title": "Ýapyk subtitrler",
+        "description": "Subtitr faýlynyň URL-i."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Kiçi surat",
+        "description": "Hökmany däl. Kiçi suratyň/poster suratyň URL-i."
+      },
+      {
+        "property": "learningMode",
+        "title": "Okuw tertibini işjeňleşdir",
+        "description": "Çalt öňe we yza aýlamagy öçürýär."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube-da aç düwmesini aýyr",
+        "description": "Wideony YouTube-da açmak düwmesini aýyrýar."
+      },
+      {
+        "property": "linkable",
+        "title": "Paýlaşmak salgysy goşulsynmy?",
+        "description": "Wideony paýlaşmak üçin salgy berýär."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS ulanylmalydygyny görkezýär.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Fonda oýnatmaga rugsat ber",
+        "description": "Goýmaç fokusy ýitirende wideolar awtomatik saklanýar / oýnaýar; bu goýmaç fokusda bolmasa-da wideonyň oýnamagyna mümkinçilik berýär"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Transkript üçin garaňky tema",
+        "description": "Transkript üçin garaňky temany işjeňleşdir."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Interaktiwligi öçür",
+        "description": "Transkripti basylýan edýän interaktiw tertibi öçür."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Wagt belliklerini gizle",
+        "description": "Transkriptdäki wagt belliklerini gizle."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkripti gizle",
+        "description": "Transkripti deslapky ýagdaýda gizle."
+      },
+      {
+        "property": "lang",
+        "title": "Dil",
+        "description": "Medianyň dili."
+      }
+    ]
+  }
+}

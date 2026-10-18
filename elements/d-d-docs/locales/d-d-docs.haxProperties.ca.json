@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Dissenya, desenvolupa, destrueix",
+    "description": "Implementació del sistema de disseny per a HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Opció que es mostrarà",
+        "options": {
+          "*": "Guia d'estil completa"
+        }
+      }
+    ]
+  }
+}

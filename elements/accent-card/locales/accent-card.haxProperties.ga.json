@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Cárta",
+    "description": "Cárta le stíliú aiceanta roghnach."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Ceannteideal",
+        "description": "Ceannteideal don chárta."
+      },
+      {
+        "slot": "subheading",
+        "title": "Fotheideal",
+        "description": "Fotheideal roghnach don chárta."
+      },
+      {
+        "slot": "content",
+        "title": "Ábhar",
+        "description": "Ábhar don chárta."
+      },
+      {
+        "slot": "footer",
+        "title": "Buntásc",
+        "description": "Buntásc roghnach don chárta."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Íomhá",
+        "description": "Íomhá roghnach"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Téacs Alt na hÍomhá",
+        "description": "Téacs malartach a chuireann síos ar an íomhá do léitheoirí scáileáin. Fág folamh é ach amháin más maisiúchán amháin í an íomhá."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Ailíniú Cothrománach na hÍomhá",
+        "options": {
+          "left": "clé",
+          "center": "lár",
+          "right": "deas"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Ailíniú Ingearach na hÍomhá",
+        "options": {
+          "top": "barr",
+          "center": "lár",
+          "bottom": "bun"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath Aibhsithe",
+        "description": "Dath aibhsithe roghnach."
+      },
+      {
+        "property": "dark",
+        "title": "Téama Dorcha",
+        "description": "Cumasaigh an Téama Dorcha"
+      },
+      {
+        "property": "horizontal",
+        "title": "Cothrománach",
+        "description": "Treoshuíomh cothrománach?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Aiceann Ceannteidil",
+        "description": "Cuir an dath aiceanta i bhfeidhm ar an gceannteideal?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Aiceann Cúlra",
+        "description": "Cuir an dath aiceanta i bhfeidhm ar chúlra an chárta?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Gan Aiceann Imlíne",
+        "description": "Bain an t-aiceann imlíne?"
+      },
+      {
+        "property": "flat",
+        "title": "Cothrom",
+        "description": "Bain scáth an bhosca?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Cúinne",
+        "description": "Ábhar do chúinne an chárta."
+      }
+    ]
+  }
+}

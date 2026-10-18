@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "सन्दर्भसूची वस्तु",
+    "description": "विभिन्न ढाँचा र निर्यात विकल्पहरू समर्थन गर्ने, सन्दर्भसूचीको एउटा उद्धरण जनाउने वस्तु।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "प्रकार",
+        "description": "उद्धरण प्रकार",
+        "options": {
+          "web": "वेब",
+          "journal": "जर्नल",
+          "book": "पुस्तक"
+        }
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "वस्तुको शीर्षक"
+      },
+      {
+        "property": "authors",
+        "title": "लेखक(हरू)",
+        "description": "टाइमलाइनका घटनाहरू"
+      },
+      {
+        "property": "publisher",
+        "title": "प्रकाशक",
+        "description": "मूल वेबसाइट"
+      }
+    ]
+  }
+}

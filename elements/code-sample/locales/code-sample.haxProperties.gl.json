@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mostra de código",
+    "description": "Unha mostra de código resaltada na páxina"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Resaltado de código",
+        "description": "Resaltado de sintaxe que se aplicará á área de código",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Datos JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Botón de copiar ao portapapeis",
+        "description": "botón na parte superior dereita que di copiar ao portapapeis"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Inicio do resaltado",
+        "description": "Número de liña onde comeza o resaltado"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Fin do resaltado",
+        "description": "Liña onde remata o resaltado"
+      }
+    ]
+  }
+}

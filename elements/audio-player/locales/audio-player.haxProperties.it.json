@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Presenta video in modo altamente accessibile, indipendentemente dalla sorgente."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origine",
+        "description": "L'URL di questo contenuto multimediale."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titolo",
+        "description": "Titolo semplice sotto il video"
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Seleziona il colore di accento del lettore."
+      },
+      {
+        "property": "track",
+        "title": "Sottotitoli",
+        "description": "L'URL del file dei sottotitoli."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Immagine di anteprima",
+        "description": "Facoltativo. L'URL di un'immagine di anteprima/poster."
+      },
+      {
+        "property": "learningMode",
+        "title": "Attiva modalità apprendimento",
+        "description": "Disattiva avanzamento e riavvolgimento rapidi."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Rimuovi il pulsante Apri su YouTube",
+        "description": "Rimuove il pulsante per aprire il video su YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Includere un link di condivisione?",
+        "description": "Fornisce un link per condividere il video."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indica se usare CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Consenti riproduzione in background",
+        "description": "I video si mettono in pausa / riprendono automaticamente quando la scheda perde il focus; questa opzione consente la riproduzione anche senza focus sulla scheda"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema scuro per la trascrizione",
+        "description": "Attiva il tema scuro per la trascrizione."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Disattiva interattività",
+        "description": "Disattiva la modalità interattiva che rende cliccabile la trascrizione."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Nascondi indicazioni temporali",
+        "description": "Nasconde le indicazioni temporali nella trascrizione."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Nascondi trascrizione",
+        "description": "Nasconde la trascrizione per impostazione predefinita."
+      },
+      {
+        "property": "lang",
+        "title": "Lingua",
+        "description": "Lingua del contenuto multimediale."
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "진행률 도넛",
+    "description": "진행률 도넛"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "요소의 제목"
+      },
+      {
+        "property": "desc",
+        "title": "설명",
+        "description": "접근성을 위한 상세 설명"
+      },
+      {
+        "property": "imageSrc",
+        "title": "이미지 소스",
+        "description": "도넛 안 이미지의 소스."
+      },
+      {
+        "property": "imageAlt",
+        "title": "이미지 대체 텍스트",
+        "description": "이미지의 대체 텍스트."
+      },
+      {
+        "property": "animated",
+        "title": "애니메이션",
+        "description": "처음 로드할 때 진행률 애니메이션 여부"
+      },
+      {
+        "property": "complete",
+        "title": "완료",
+        "description": "완료된 값의 배열."
+      },
+      {
+        "property": "total",
+        "title": "합계",
+        "description": "모든 항목이 완료되었을 때의 합계."
+      },
+      {
+        "property": "startAngle",
+        "title": "시작 각도",
+        "description": "진행률이 시작되는 도넛 각도"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Into Yomsebenzi",
+    "description": "Inhlangano ngayinye nezindima zayo ezihlobene"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Igama Lenhlangano"
+      },
+      {
+        "property": "location",
+        "title": "Indawo"
+      },
+      {
+        "property": "source",
+        "title": "Umthombo"
+      }
+    ]
+  }
+}

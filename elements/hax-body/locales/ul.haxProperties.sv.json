@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Punktlista",
+    "description": "Skapa en punktlista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Punktstil",
+        "description": "Stil som används för punkter i oordnade listor.",
+        "options": {
+          "": "Standard (fyrkant)",
+          "list-disc": "Skiva",
+          "list-circle": "Cirkel",
+          "list-square": "Fyrkant"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Моҳияти CMS",
+    "description": "Моҳияти CMS, ки дар бэкенд намоиш дода мешавад"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Навъ",
+        "description": "навъ аз CMS-и мо",
+        "options": {
+          "node": "Гиреҳ",
+          "user": "Корбар",
+          "file": "Файл"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id аз CMS-и мо"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Реҷаи намоиш",
+        "description": "реҷаи намоиш аз CMS-и мо"
+      }
+    ]
+  }
+}

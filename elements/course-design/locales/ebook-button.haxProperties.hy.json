@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Էլեկտրոնային գրքի կոճակ",
+    "description": "Կոճակ, որը հղում է էլեկտրոնային գրքին։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Կոճակի վերնագիրը։"
+      },
+      {
+        "property": "link",
+        "title": "Հղում",
+        "description": "Հղումը, որին վերահղել սեղմելիս։"
+      },
+      {
+        "property": "icon",
+        "title": "Պատկերակ",
+        "description": "Այս հղումը ներկայացնող պատկերակ"
+      }
+    ]
+  }
+}

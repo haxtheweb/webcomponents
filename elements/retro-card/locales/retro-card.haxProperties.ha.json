@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Katin retro",
+    "description": "Kati mai sauƙi tare da ƙirar retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Babban taken kati."
+      },
+      {
+        "property": "url",
+        "description": "URL da za a buɗe idan aka danna katin."
+      },
+      {
+        "property": "subtitle",
+        "title": "Ƙaramin take",
+        "description": "Ƙaramin taken kati."
+      },
+      {
+        "property": "tags",
+        "title": "Tag-tag",
+        "description": "Alamomi da waƙafi a tsakaninsu."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Tushen kafofin watsa labarai",
+        "description": "Babban tushen kafofin watsa labarai."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Tushe yayin shawagi",
+        "description": "Tushen kafofin watsa labarai da ake nunawa lokacin da aka yi shawagi ko aka kunna katin."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin Ƙawa",
+        "description": "Launin accent da ake amfani da shi a duk katin."
+      },
+      {
+        "property": "dark",
+        "title": "Duhu",
+        "description": "Yi amfani da launukan tushe na yanayin duhu."
+      }
+    ]
+  }
+}

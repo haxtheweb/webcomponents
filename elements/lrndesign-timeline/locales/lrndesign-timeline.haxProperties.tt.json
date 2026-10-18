@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Хронология",
+    "description": "Рәсемнәр һәм текст белән вакыйгалар вакыт сызыгы"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Хронология исеме",
+        "description": "Вакыт сызыгы өчен исем."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Өстәмә ассызык төсе."
+      },
+      {
+        "property": "dark",
+        "title": "Караңгы тема",
+        "description": "Караңгы теманы кабызу"
+      },
+      {
+        "slot": "",
+        "title": "Вакыт сызыгы тасвирламасы",
+        "description": "Вакыт сызыгын тасвирлаучы ихтыяри текст."
+      },
+      {
+        "property": "events",
+        "title": "Вакыт сызыгы вакыйгалары",
+        "description": "Вакыт сызыгындагы вакыйгалар"
+      }
+    ]
+  }
+}

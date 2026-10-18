@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kolonnelayout",
+    "description": "Placer materiale i simple kolonner"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Kolonnelayout",
+        "description": "Stil til visning af disse elementer (kan ændres på små skærme)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Deaktiver responsivitet",
+        "description": "Markér feltet for at bevare kolonner på større skærme, mens de stadig stables på de mindste skærme"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Elementudfyldning",
+        "description": "Udfyldning inde i hvert element"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Elementmargener",
+        "description": "Margen mellem elementer"
+      }
+    ]
+  }
+}

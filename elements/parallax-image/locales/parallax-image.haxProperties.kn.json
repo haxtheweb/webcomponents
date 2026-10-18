@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ಪ್ಯಾರಲಾಕ್ಸ್ ಚಿತ್ರ",
+    "description": "ಸ್ಕ್ರಾಲ್ ಆಗುವ ಚಿತ್ರ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "ಚಿತ್ರ",
+        "description": "ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಬಳಸಬೇಕಾದ ಚಿತ್ರ"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "ಶಿರೋನಾಮೆ ಪ್ರದೇಶ",
+        "description": "ಶಿರೋನಾಮೆ ಪಠ್ಯ ಪ್ರದೇಶ"
+      }
+    ]
+  }
+}

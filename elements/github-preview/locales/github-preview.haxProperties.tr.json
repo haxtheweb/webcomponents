@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub Önizlemesi",
+    "description": "Uzun açıklamalı erişilebilir şekil"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Kuruluş",
+        "description": "GitHub kuruluşunun makine adı"
+      },
+      {
+        "property": "repo",
+        "title": "Depo",
+        "description": "Deponun makine adı"
+      },
+      {
+        "property": "extended",
+        "title": "Genişletilmiş Görünüm",
+        "description": "Öğeye readme dosyasını dahil eder"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Qaybta CMS",
+    "description": "Qaybta CMS ee lagu muujiyo backend-ka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Qaybta koorsada",
+        "description": "Moduulka laga soo rarayo CMS-kayaga"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta-da qaybta laga soo rarayo CMS-kayaga"
+      }
+    ]
+  }
+}

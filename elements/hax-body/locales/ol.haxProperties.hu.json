@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Számozott lista",
+    "description": "Számozott lista létrehozása."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Számozás stílusa",
+        "description": "A számozott lista számozásának stílusa.",
+        "options": {
+          "": "Alapértelmezett (decimális)",
+          "list-decimal-leading-zero": "Decimális vezető nullával (01, 02, 03)",
+          "list-lower-alpha": "Kisbetűs (a, b, c)",
+          "list-upper-alpha": "Nagybetűs (A, B, C)",
+          "list-lower-roman": "Kis római számok (i, ii, iii)",
+          "list-upper-roman": "Nagy római számok (I, II, III)"
+        }
+      }
+    ]
+  }
+}

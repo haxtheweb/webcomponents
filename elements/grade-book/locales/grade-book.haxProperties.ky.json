@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Баалар журналы",
+    "description": "Рубрикалар менен бир нече backend'ди колдогон интерфейссиз баалар журналы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Булак",
+        "description": "Маалымат булагынын түрү (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL акыркы чекити (JSON)",
+          "json": "JSON маалымат блогу",
+          "filesystem": "Файл системасы"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Булак маалыматтары",
+        "description": "Баалар журналы үчүн URL же JSON маалыматтары."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курска шилтеме",
+        "description": "Ар бир Assessment ресурсунда oer:forCourse катары чыгарылуучу курстун идентификатору."
+      }
+    ]
+  }
+}

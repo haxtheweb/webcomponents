@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Erayo",
+    "description": "Erayga ereybixinta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Erey"
+      },
+      {
+        "slot": "",
+        "title": "Qeexid",
+        "description": "Qeexidda la muujinayo marka erayga la gujiyo."
+      },
+      {
+        "property": "description",
+        "title": "Sharraxaad (OER Schema)",
+        "description": "OER Schema: sharraxaad gaaban oo erayga ereybixinta. Si toos ah ayaa looga buuxiyaa qoraalka qeexidda haddii bannaan laga tago."
+      }
+    ]
+  }
+}

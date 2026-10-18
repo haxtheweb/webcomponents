@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Manusta väline veebisisu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Allikas",
+        "description": "Selle ressursi URL."
+      }
+    ]
+  }
+}

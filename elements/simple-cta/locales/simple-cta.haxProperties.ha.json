@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Kira zuwa aiki",
+    "description": "Maɓalli mai sauƙi tare da hanyar haɗi don ɗaukar mataki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Lakabi",
+        "description": "Lakabin hanyar haɗi"
+      },
+      {
+        "property": "link",
+        "title": "Mahaɗi",
+        "description": "Shigar da hanyar haɗi zuwa kowace albarka"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Ɓoye gunki",
+        "description": "Ɓoye gunkin da ake amfani da shi don ƙawata rubutu"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Alama",
+        "description": "Gunkin hanyar haɗin aiki"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Nội dung từ xa",
+    "description": "Tái sử dụng nội dung từ trang web này sang trang web khác."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Địa chỉ trang web",
+        "description": "Dán địa chỉ để tham chiếu nội dung nếu không phải trang web hiện tại"
+      },
+      {
+        "property": "uuid",
+        "title": "Mục",
+        "description": "Mục dùng để hiển thị liên kết / dữ liệu tiêu đề"
+      },
+      {
+        "property": "breakreference",
+        "title": "Ngắt tham chiếu",
+        "description": "Đánh dấu ô này sẽ sao chép nội dung từ xa để chỉnh sửa cục bộ nhưng xóa liên kết. Nội dung sẽ không còn được cập nhật khi tài liệu tham chiếu thay đổi."
+      },
+      {
+        "property": "showTitle",
+        "title": "Hiện tiêu đề",
+        "description": "Bật để hiển thị tiêu đề của tài nguyên đang được hiển thị"
+      }
+    ]
+  }
+}

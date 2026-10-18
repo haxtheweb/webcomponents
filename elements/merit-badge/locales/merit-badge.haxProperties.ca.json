@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Insígnia de mèrit",
+    "description": "Insígnia visual per comunicar l'obtenció d'una habilitat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Títol de la insígnia",
+        "description": "Títol que es mostra a la insígnia."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Imatge de la insígnia",
+        "description": "URL de la imatge de la insígnia."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Detalls de la insígnia",
+        "description": "Detalls sobre la insígnia."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hiperenllaç",
+        "description": "Enllaç associat a la insígnia."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Habilitats de la insígnia",
+        "description": "Habilitats que es mostren a la insígnia."
+      },
+      {
+        "property": "skill",
+        "title": "Habilitat (OER Schema)",
+        "description": "OER Schema: una habilitat apresa obtinguda en completar aquest objectiu d'aprenentatge."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Uitligting",
+    "description": "Lig inlyn-teks uit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teks",
+        "description": "Uitgeligte teks."
+      }
+    ]
+  }
+}

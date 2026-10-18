@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ihe CMS",
+    "description": "Ihe CMS emepụtara n'azụ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Ụdị",
+        "description": "ụdị sitere na CMS anyị",
+        "options": {
+          "node": "Node",
+          "user": "Onye ọrụ",
+          "file": "Faịlụ"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id sitere na CMS anyị"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Ọnọdụ ngosi",
+        "description": "ọnọdụ ngosipụta sitere na CMS anyị"
+      }
+    ]
+  }
+}

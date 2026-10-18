@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ລາຍການບັນນານຸກົມ",
+    "description": "ລາຍການທີ່ແທນການອ້າງອີງດຽວໃນບັນນານຸກົມ, ຮອງຮັບຫຼາຍຮູບແບບ ແລະ ຕົວເລືອກການສົ່ງອອກ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "ປະເພດ",
+        "description": "ປະເພດການອ້າງອີງ",
+        "options": {
+          "web": "ເວັບ",
+          "journal": "ວາລະສານ",
+          "book": "ປຶ້ມ"
+        }
+      },
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ຂອງລາຍການ"
+      },
+      {
+        "property": "authors",
+        "title": "ຜູ້ຂຽນ",
+        "description": "ເຫດການໃນເສັ້ນເວລາ"
+      },
+      {
+        "property": "publisher",
+        "title": "ຜູ້ຈັດພິມ",
+        "description": "ເວັບໄຊຕົ້ນສະບັບ"
+      }
+    ]
+  }
+}

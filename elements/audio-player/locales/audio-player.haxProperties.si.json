@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "ශ්‍රව්‍ය",
+    "description": "මූලාශ්‍රය කුමක් වුවත් මෙයට වීඩියෝ ඉතා ප්‍රවේශ විය හැකි ආකාරයෙන් ඉදිරිපත් කළ හැක."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "මූලාශ්‍රය",
+        "description": "මෙම මාධ්‍ය සඳහා URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "මාතෘකාව",
+        "description": "වීඩියෝවට යටින් සරල මාතෘකාව"
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "වාදකය සඳහා උච්චාරණ වර්ණය තෝරන්න."
+      },
+      {
+        "property": "track",
+        "title": "සංවෘත සිරස්තල",
+        "description": "සිරස්තල ගොනුව සඳහා URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "සිඟිති රූපය",
+        "description": "විකල්ප. සිඟිති/පෝස්ටර් රූපයක් සඳහා URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "ඉගෙනුම් ප්‍රකාරය සක්‍රිය කරන්න",
+        "description": "ඉදිරියට වේගයෙන් යාම සහ ආපසු පෙරළීම අක්‍රිය කරයි."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube හි විවෘත කිරීමේ බොත්තම ඉවත් කරන්න",
+        "description": "වීඩියෝව YouTube හි විවෘත කිරීමේ බොත්තම ඉවත් කරයි."
+      },
+      {
+        "property": "linkable",
+        "title": "බෙදාගැනීමේ සබැඳියක් ඇතුළත් කරන්නද?",
+        "description": "වීඩියෝව බෙදා ගැනීමට සබැඳියක් සපයයි."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS භාවිත කළ යුතුද යන්න දක්වයි.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "පසුබිම් වාදනයට ඉඩ දෙන්න",
+        "description": "ටැබය නාභිගතය අහිමි වූ විට වීඩියෝ ස්වයංක්‍රීයව විරාම / වාදනය වේ; මෙය ටැබය නාභිගත නොවී වීඩියෝව වාදනය කිරීමට ඉඩ දෙයි"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "පිටපත සඳහා අඳුරු තේමාව",
+        "description": "පිටපත සඳහා අඳුරු තේමාව සක්‍රිය කරන්න."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "අන්තර්ක්‍රියාකාරී අක්‍රිය කරන්න",
+        "description": "පිටපත ක්ලික් කළ හැකි කරන අන්තර්ක්‍රියාකාරී ප්‍රකාරය අක්‍රිය කරන්න."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "කාල මුද්‍රා සඟවන්න",
+        "description": "පිටපතේ කාල මුද්‍රා සඟවන්න."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "පිටපත සඟවන්න",
+        "description": "පෙරනිමියෙන් පිටපත සඟවන්න."
+      },
+      {
+        "property": "lang",
+        "title": "භාෂාව",
+        "description": "මාධ්‍යයේ භාෂාව."
+      }
+    ]
+  }
+}

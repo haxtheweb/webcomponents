@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Isampula lekhodi",
+    "description": "Isampula lekhodi eligqanyiswe ekhasini"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Ukugqamisa ikhodi",
+        "description": "Ukugqamisa i-syntax okufanele kusetshenziswe endaweni yekhodi",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Idatha ye-JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Inkinobho yokukopishela ebhodini lokunamathisela",
+        "description": "inkinobho ephezulu kwesokudla ethi kopishela ebhodini lokunamathisela"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Ukuqala kokugqamisa",
+        "description": "Inombolo yomugqa lapho kuqala khona ukugqamisa"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Ukuphela kokugqamisa",
+        "description": "Umugqa lapho kuphela khona ukugqamisa"
+      }
+    ]
+  }
+}

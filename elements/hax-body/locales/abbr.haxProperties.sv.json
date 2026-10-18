@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Förkortning",
+    "description": "Förkortning med verktygstips för hela termen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Synlig förkortningstext."
+      },
+      {
+        "attribute": "title",
+        "title": "Ord",
+        "description": "Hela termen som visas vid hovring."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Notenbuch",
+    "description": "Ein Headless-Notenbuch, das mehrere Backends mit Bewertungsrastern unterstützt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quelle",
+        "description": "Art der Datenquelle (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-Endpunkt (JSON)",
+          "json": "JSON-Datenblob",
+          "filesystem": "Dateisystem"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Quelldaten",
+        "description": "URL oder JSON-Daten für das Notenbuch."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursbezug",
+        "description": "Kurskennung, die als oer:forCourse bei jeder Assessment-Ressource ausgegeben wird."
+      }
+    ]
+  }
+}

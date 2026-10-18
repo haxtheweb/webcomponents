@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Маркерлы исемлек",
+    "description": "Маркерлы исемлек ясау."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Маркер стиле",
+        "description": "Тәртипсез исемлек маркерлары өчен кулланыла торган стиль.",
+        "options": {
+          "": "Килешү буенча (квадрат)",
+          "list-disc": "Диск",
+          "list-circle": "Түгәрәк",
+          "list-square": "Квадрат"
+        }
+      }
+    ]
+  }
+}

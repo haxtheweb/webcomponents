@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ретро картичка",
+    "description": "Едноставна картичка со ретро дизајн."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Главен наслов на картичката."
+      },
+      {
+        "property": "url",
+        "description": "URL што се отвора кога ќе се кликне на картичката."
+      },
+      {
+        "property": "subtitle",
+        "title": "Поднаслов",
+        "description": "Поднаслов на картичката."
+      },
+      {
+        "property": "tags",
+        "title": "Ознаки",
+        "description": "Ознаки одделени со запирки."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Извор на медиумот",
+        "description": "Примарен извор на медиумот."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Извор при лебдење",
+        "description": "Извор на медиумот што се прикажува кога ќе се лебди над картичката или ќе се активира."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Боја за акцент што се применува низ картичката."
+      },
+      {
+        "property": "dark",
+        "title": "Темно",
+        "description": "Користи основни бои за темен режим."
+      }
+    ]
+  }
+}

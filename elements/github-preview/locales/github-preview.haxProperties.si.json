@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Github පෙරදසුන",
+    "description": "දිගු විස්තරයක් සහිත ප්‍රවේශ විය හැකි රූප සටහන"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "සංවිධානය",
+        "description": "Github සංවිධානයේ යන්ත්‍ර නාමය"
+      },
+      {
+        "property": "repo",
+        "title": "ගබඩාව",
+        "description": "ගබඩාවේ යන්ත්‍ර නාමය"
+      },
+      {
+        "property": "extended",
+        "title": "දිගු කළ දසුන",
+        "description": "මූලද්‍රව්‍යයේ readme ඇතුළත් කරයි"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Listahang may bullet",
+    "description": "Gumawa ng listahang may bullet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Estilo ng bullet",
+        "description": "Estilong ginagamit para sa mga bullet ng unordered list.",
+        "options": {
+          "": "Default (parisukat)",
+          "list-disc": "Disc",
+          "list-circle": "Bilog",
+          "list-square": "Parisukat"
+        }
+      }
+    ]
+  }
+}

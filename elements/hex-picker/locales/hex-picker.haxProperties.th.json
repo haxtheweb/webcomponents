@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ตัวเลือกสี Hex",
+    "description": "ตัวเลือกสีแบบรหัส Hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ค่า",
+        "description": "ค่า hex เริ่มต้น"
+      },
+      {
+        "property": "disabled",
+        "title": "ปิดใช้งาน",
+        "description": "ปิดใช้งานช่องข้อความ"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "การแสดงผลขนาดใหญ่",
+        "description": "รวมสีไว้ในการแสดงผลขนาดใหญ่"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Лиценз",
+    "description": "Бүтээлдээ лиценз өгөх."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Иш татсан бүтээлийн гарчиг."
+      },
+      {
+        "property": "source",
+        "title": "Эх сурвалжийн холбоос",
+        "description": "Лицензтэй бүтээлийн эх URL."
+      },
+      {
+        "property": "license",
+        "title": "Лиценз",
+        "description": "Энэ бүтээлд хэрэглэсэн лиценз."
+      },
+      {
+        "property": "creator",
+        "title": "Бүтээгч",
+        "description": "Энэ бүтээлийн бүтээгч эсвэл эзэмшигч."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Эх сурвалжийн холбоос",
+        "description": "Лицензийн нэмэлт дэлгэрэнгүй рүү холбоос."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Нэмэлт шошго",
+        "description": "Лицензийн нэмэлт дэлгэрэнгүйн шошго."
+      }
+    ]
+  }
+}

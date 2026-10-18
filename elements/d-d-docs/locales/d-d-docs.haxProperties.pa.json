@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "ਡਿਜ਼ਾਈਨ, ਵਿਕਾਸ, ਨਸ਼ਟ",
+    "description": "HAX ਲਈ ਡਿਜ਼ਾਈਨ ਸਿਸਟਮ ਲਾਗੂਕਰਨ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "ਦਿਖਾਉਣ ਲਈ ਵਿਕਲਪ",
+        "options": {
+          "*": "ਪੂਰੀ ਸ਼ੈਲੀ ਗਾਈਡ"
+        }
+      }
+    ]
+  }
+}

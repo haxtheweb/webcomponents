@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Fremskridtsdonut",
+    "description": "Donut, der viser fremskridt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Elementets titel"
+      },
+      {
+        "property": "desc",
+        "title": "Beskrivelse",
+        "description": "Tilgængelig lang beskrivelse"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Billedkilde",
+        "description": "Kilde til billede inde i donutten."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Billedets alternative tekst",
+        "description": "Alternativ tekst til billede."
+      },
+      {
+        "property": "animated",
+        "title": "Animeret",
+        "description": "Om fremskridtet animeres ved første indlæsning"
+      },
+      {
+        "property": "complete",
+        "title": "Fuldført",
+        "description": "Et array af fuldførte værdier."
+      },
+      {
+        "property": "total",
+        "title": "I alt",
+        "description": "Total, når alle elementer er fuldført."
+      },
+      {
+        "property": "startAngle",
+        "title": "Startvinkel",
+        "description": "Donuttens vinkel, hvor fremskridtet starter"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Блок CMS",
+    "description": "Блок CMS, які адлюстроўваецца на бэкендзе"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Модуль",
+        "description": "Модуль для загрузкі з нашай CMS"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Дэльта",
+        "description": "Delta блока для загрузкі з нашай CMS"
+      }
+    ]
+  }
+}

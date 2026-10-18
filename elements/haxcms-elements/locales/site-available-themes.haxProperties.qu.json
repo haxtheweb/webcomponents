@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Kachkaq Rikch'aykuna",
+    "description": "Kachkaq HAXcms rikch'aykunata kawsaq qhawarichiy tikraywan rikuchiy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Qhaway Kay",
+        "description": "Imayna rikch'aykunata rikuchinata akllay",
+        "options": {
+          "gallery": "Galería",
+          "table": "Tabla"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Detallekunata Rikuchiy",
+        "description": "Rikch'ay willakuykunata yapasqa willakuytapas rikuchiy"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Pakasqa Ñawpa Rikch'aykunata Rikuchiy",
+        "description": "Pakasqa, ñawpa, millay rikch'aykunatapas tablerop kikin kaqninkunawan rikuchiy"
+      },
+      {
+        "property": "columns",
+        "title": "Columnakuna (Galeria)",
+        "description": "Galeria qhawaypi columnakunap yupaynin"
+      }
+    ]
+  }
+}

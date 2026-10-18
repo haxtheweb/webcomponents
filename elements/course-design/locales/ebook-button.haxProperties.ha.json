@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Maɓallin Ebook",
+    "description": "Maɓalli da ke haɗi zuwa Ebook."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Taken maɓallin."
+      },
+      {
+        "property": "link",
+        "title": "Mahaɗi",
+        "description": "Hanyar haɗin da za a tura zuwa idan aka danna."
+      },
+      {
+        "property": "icon",
+        "title": "Alama",
+        "description": "Gunki don wakiltar wannan hanyar haɗi"
+      }
+    ]
+  }
+}

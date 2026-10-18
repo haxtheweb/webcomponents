@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Baixada de fitxa de treball",
+    "description": "Un botó per mostrar fitxers disponibles per baixar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "El títol de la baixada."
+      },
+      {
+        "property": "link",
+        "title": "Enllaç",
+        "description": "L'enllaç de la baixada."
+      }
+    ]
+  }
+}

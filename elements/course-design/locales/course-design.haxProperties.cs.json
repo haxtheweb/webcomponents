@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Návrh kurzu",
+    "description": "Kontejner pro výukové materiály a prvky návrhu kurzu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Identifikátor kurzu",
+        "description": "OER Schema: identifikátor kurzu, např. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Nabízené období",
+        "description": "OER Schema: období, ve kterém je kurz nabízen."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Forma výuky",
+        "description": "OER Schema: forma, ve které se kurz vyučuje (např. prezenčně, online, hybridně)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Hlavní vyučující",
+        "description": "OER Schema: hlavní vyučující kurzu."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL sylabu",
+        "description": "OER Schema: URL sylabu kurzu."
+      }
+    ]
+  }
+}

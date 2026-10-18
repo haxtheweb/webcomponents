@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relativní nadpis",
+    "description": "vytváří správnou hierarchii nadpisů podle nadpisu nadřazeného prvku"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID zdroje nadřazeného nadpisu"
+      },
+      {
+        "property": "disableLink",
+        "description": "Vypne funkci tlačítka odkazu."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Zarovná tlačítko kopírování odkazu úplně vpravo od nadpisu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Úroveň nadpisu, pokud nadřazený prvek není nalezen."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Přepíše výchozí text oznámení po kopírování odkazu."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Přepíše výchozí popisek tlačítka kopírování odkazu."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Přepíše výchozí ikonu tlačítka kopírování odkazu."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Přepíše výchozí popisek tlačítka zavření oznámení po kopírování odkazu."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Přepíše výchozí ikonu tlačítka zavření oznámení po kopírování odkazu."
+      }
+    ]
+  }
+}

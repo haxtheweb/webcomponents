@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kaart",
+    "description": "Kaart valikulise rõhustiiliga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Pealkiri",
+        "description": "Kaardi pealkiri."
+      },
+      {
+        "slot": "subheading",
+        "title": "Alapealkiri",
+        "description": "Kaardi valikuline alapealkiri."
+      },
+      {
+        "slot": "content",
+        "title": "Sisu",
+        "description": "Kaardi sisu."
+      },
+      {
+        "slot": "footer",
+        "title": "Jalus",
+        "description": "Kaardi valikuline jalus."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Pilt",
+        "description": "Valikuline pilt"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Pildi alt-tekst",
+        "description": "Ekraanilugejatele pilti kirjeldav alternatiivtekst. Jäta tühjaks ainult siis, kui pilt on puhtalt dekoratiivne."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Pildi horisontaalne joondus",
+        "options": {
+          "left": "vasak",
+          "center": "keskel",
+          "right": "parem"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Pildi vertikaalne joondus",
+        "options": {
+          "top": "üleval",
+          "center": "keskel",
+          "bottom": "all"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Valikuline rõhuvärv."
+      },
+      {
+        "property": "dark",
+        "title": "Tume teema",
+        "description": "Luba tume teema"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horisontaalne",
+        "description": "Horisontaalne suund?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Pealkirja rõhk",
+        "description": "Kas rakendada pealkirjale rõhuvärv?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Tausta rõhk",
+        "description": "Kas rakendada kaardi taustale rõhuvärv?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Ilma äärise rõhuta",
+        "description": "Kas eemaldada äärise rõhk?"
+      },
+      {
+        "property": "flat",
+        "title": "Lame",
+        "description": "Kas eemaldada kasti vari?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Nurk",
+        "description": "Kaardi nurga sisu."
+      }
+    ]
+  }
+}

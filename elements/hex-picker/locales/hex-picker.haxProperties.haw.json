@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Mea koho Hex",
+    "description": "Mea koho waihoʻoluʻu Hexcode"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Waiwai",
+        "description": "Waiwai hex paʻamau"
+      },
+      {
+        "property": "disabled",
+        "title": "Hoʻopio ʻia",
+        "description": "Hoʻopio i ke kahua kikokikona"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Hōʻike nui",
+        "description": "Hoʻokomo i ka waihoʻoluʻu ma ka hōʻike nui"
+      }
+    ]
+  }
+}

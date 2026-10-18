@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Khối HTML",
+    "description": "Khối HTML cơ bản có kết nối HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Mã HTML bạn muốn trình bày trong nội dung"
+      }
+    ]
+  }
+}

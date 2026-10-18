@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "ਮੁੱਢਲਾ ਲਿੰਕ",
+    "description": "ਮੁੱਢਲਾ ਲਿੰਕ ਐਲੀਮੈਂਟ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "ਲਿੰਕ",
+        "description": "ਮੰਜ਼ਿਲ URL।"
+      },
+      {
+        "attribute": "innerText",
+        "title": "ਲਿਖਤ",
+        "description": "ਦਿਖਾਈ ਦੇਣ ਵਾਲਾ ਲਿੰਕ ਟੈਕਸਟ।"
+      },
+      {
+        "attribute": "target",
+        "title": "ਟੀਚਾ",
+        "description": "ਲਿੰਕ ਕਿੱਥੇ ਖੋਲ੍ਹਣਾ ਹੈ।",
+        "options": {
+          "": "ਉਹੀ ਵਿੰਡੋ",
+          "_blank": "ਨਵੀਂ ਵਿੰਡੋ - _blank",
+          "_top": "ਸਿਖਰਲੀ ਵਿੰਡੋ - _top",
+          "_parent": "ਮੂਲ ਵਿੰਡੋ - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "ਸਿਰਲੇਖ ਟੈਕਸਟ",
+        "description": "ਪਹੁੰਚਯੋਗਤਾ ਅਤੇ SEO ਲਈ ਸਲਾਹਕਾਰੀ ਸਿਰਲੇਖ।"
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "ਮੰਜ਼ਿਲ ਨਾਲ ਸੰਬੰਧ (ਸੁਰੱਖਿਆ/SEO)।",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

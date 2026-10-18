@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Nút sách điện tử",
+    "description": "Nút liên kết đến một sách điện tử."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề của nút."
+      },
+      {
+        "property": "link",
+        "title": "Liên kết",
+        "description": "Liên kết chuyển hướng đến khi nhấn."
+      },
+      {
+        "property": "icon",
+        "title": "Biểu tượng",
+        "description": "Biểu tượng đại diện cho liên kết này"
+      }
+    ]
+  }
+}

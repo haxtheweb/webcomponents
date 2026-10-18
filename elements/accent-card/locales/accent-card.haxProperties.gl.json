@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Tarxeta",
+    "description": "Unha tarxeta con estilo de acento opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Encabezado",
+        "description": "Unha cabeceira para a tarxeta."
+      },
+      {
+        "slot": "subheading",
+        "title": "Subcabeceira",
+        "description": "Unha subcabeceira opcional para a tarxeta."
+      },
+      {
+        "slot": "content",
+        "title": "Contido",
+        "description": "Contido da tarxeta."
+      },
+      {
+        "slot": "footer",
+        "title": "Pé",
+        "description": "Un pé opcional para a tarxeta."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Imaxe",
+        "description": "Imaxe opcional"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Texto alternativo da imaxe",
+        "description": "Texto alternativo que describe a imaxe para os lectores de pantalla. Déixao baleiro só se a imaxe é puramente decorativa."
+      },
+      {
+        "property": "imageAlign",
+        "title": "Aliñamento da imaxe",
+        "description": "Aliñamento horizontal da imaxe",
+        "options": {
+          "left": "esquerda",
+          "center": "centro",
+          "right": "dereita"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "Aliñamento vertical da imaxe",
+        "description": "Aliñamento vertical da imaxe",
+        "options": {
+          "top": "arriba",
+          "center": "centro",
+          "bottom": "abaixo"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Unha cor de realce opcional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema escuro",
+        "description": "Activar o tema escuro"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Orientación horizontal?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Acento na cabeceira",
+        "description": "Aplicar a cor de acento á cabeceira?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Acento no fondo",
+        "description": "Aplicar a cor de acento ao fondo da tarxeta?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Sen bordo de acento",
+        "description": "Quitar o bordo de acento?"
+      },
+      {
+        "property": "flat",
+        "title": "Plana",
+        "description": "Quitar a sombra da caixa?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Esquina",
+        "description": "Contido para a esquina da tarxeta."
+      }
+    ]
+  }
+}

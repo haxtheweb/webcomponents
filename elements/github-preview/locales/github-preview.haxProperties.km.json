@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ការមើល Github ជាមុន",
+    "description": "រូបភាពងាយស្រួលចូលប្រើជាមួយការពិពណ៌នាវែង"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "អង្គភាព",
+        "description": "ឈ្មោះម៉ាស៊ីនរបស់ស្ថាប័ន Github"
+      },
+      {
+        "property": "repo",
+        "title": "ឃ្លាំង",
+        "description": "ឈ្មោះម៉ាស៊ីនរបស់ឃ្លាំង"
+      },
+      {
+        "property": "extended",
+        "title": "ទិដ្ឋភាពពង្រីក",
+        "description": "រួមបញ្ចូល readme នៅក្នុងធាតុ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "คณิตศาสตร์",
+    "description": "นำเสนอคณิตศาสตร์ในรูปแบบที่สวยงาม"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "คณิตศาสตร์",
+        "description": "ป้อนสมการเป็น LaTeX"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Nlele CMS",
+    "description": "Nlele CMS emepụtara n'azụ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Aha",
+        "description": "Aha nlele sitere na CMS anyị"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Ngosipụta",
+        "description": "Ngosipụta n'ime nlele ahụ sitere na CMS anyị"
+      }
+    ]
+  }
+}

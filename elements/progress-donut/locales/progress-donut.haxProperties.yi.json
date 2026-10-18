@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "פֿאָרשריט־פּעמפּיקל",
+    "description": "פֿאָרשריט־פּעמפּיקל"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "דער טיטל פֿונעם עלעמענט"
+      },
+      {
+        "property": "desc",
+        "title": "באַשרײַבונג",
+        "description": "צוטריטלעכע לאַנגע באַשרײַבונג"
+      },
+      {
+        "property": "imageSrc",
+        "title": "בילד־מקור",
+        "description": "מקור פֿונעם בילד אינעם פּעמפּיקל."
+      },
+      {
+        "property": "imageAlt",
+        "title": "בילד־alt־טעקסט",
+        "description": "alt־טעקסט פֿאַרן בילד."
+      },
+      {
+        "property": "animated",
+        "title": "אַנימירט",
+        "description": "צי דער פֿאָרשריט זאָל אַנימירט ווערן בײַם ערשטן לאָדן"
+      },
+      {
+        "property": "complete",
+        "title": "פֿאַרטיק",
+        "description": "אַ מאַסיוו פֿון פֿאַרטיקע ווערטן."
+      },
+      {
+        "property": "total",
+        "title": "סך־הכּל",
+        "description": "סך־הכּל ווען אַלע עלעמענטן זענען פֿאַרטיק."
+      },
+      {
+        "property": "startAngle",
+        "title": "אָנהייב־ווינקל",
+        "description": "ווינקל פֿונעם פּעמפּיקל וווּ דער פֿאָרשריט הייבט זיך אָן"
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kadi",
+    "description": "Kadi yenye mtindo wa hiari wa msisitizo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Kichwa",
+        "description": "Kichwa cha kadi."
+      },
+      {
+        "slot": "subheading",
+        "title": "Kichwa kidogo",
+        "description": "Kichwa kidogo cha hiari cha kadi."
+      },
+      {
+        "slot": "content",
+        "title": "Maudhui",
+        "description": "Maudhui ya kadi."
+      },
+      {
+        "slot": "footer",
+        "title": "Sehemu ya Chini",
+        "description": "Kijachini cha hiari cha kadi."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Picha",
+        "description": "Picha ya hiari"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Maandishi Mbadala ya Picha",
+        "description": "Maandishi mbadala yanayoeleza picha kwa visoma skrini. Acha tupu tu ikiwa picha ni ya mapambo pekee."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Mpangilio Mlalo wa Picha",
+        "options": {
+          "left": "kushoto",
+          "center": "katikati",
+          "right": "kulia"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Mpangilio Wima wa Picha",
+        "options": {
+          "top": "juu",
+          "center": "katikati",
+          "bottom": "chini"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya Msisitizo",
+        "description": "Rangi ya msisitizo ya hiari."
+      },
+      {
+        "property": "dark",
+        "title": "Mandhari Meusi",
+        "description": "Washa Mandhari ya Giza"
+      },
+      {
+        "property": "horizontal",
+        "title": "Mlalo",
+        "description": "Mkao mlalo?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Msisitizo wa Kichwa",
+        "description": "Tumia rangi ya msisitizo kwenye kichwa?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Msisitizo wa Mandharinyuma",
+        "description": "Tumia rangi ya msisitizo kwenye mandharinyuma ya kadi?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Bila Msisitizo wa Mpaka",
+        "description": "Ondoa msisitizo wa mpaka?"
+      },
+      {
+        "property": "flat",
+        "title": "Bapa",
+        "description": "Ondoa kivuli cha kisanduku?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Kona",
+        "description": "Maudhui ya kona ya kadi."
+      }
+    ]
+  }
+}

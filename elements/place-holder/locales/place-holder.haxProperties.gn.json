@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Oñemoĩva rangue",
+    "description": "Peteĩ tenda ikatúva oñembohasa momarandu ñemyasãi reko oñeporavóvape"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Peteĩchagua",
+        "description": "Mba'e reko ojeguerohorýva ñemyengoviarã.",
+        "options": {
+          "text": "Moñe'ẽrã / tetepy",
+          "document": "Kuatia / marandurenda",
+          "audio": "Mba'epu",
+          "video": "Ta'ãngamýi",
+          "image": "Ta'ãnga",
+          "math": "Papapykuaa"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Moñe'ẽrã",
+        "description": "Ehechauka hekopete'ive tenda reipotáva"
+      }
+    ]
+  }
+}

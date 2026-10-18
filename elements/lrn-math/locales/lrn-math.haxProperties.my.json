@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "သင်္ချာ",
+    "description": "သင်္ချာကို လှပစွာ တင်ပြရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "သင်္ချာ",
+        "description": "ညီမျှခြင်းကို LaTeX အဖြစ် ထည့်ပါ"
+      }
+    ]
+  }
+}

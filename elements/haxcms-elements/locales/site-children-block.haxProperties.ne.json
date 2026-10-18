@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: उप ब्लक",
+    "description": "हालको पेजका उप-पेजहरू देखाउने गतिशील ब्लक"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "गतिशील विधि",
+        "description": "यस तत्वको सापेक्षमा उप-वस्तुहरू कसरी गणना गर्ने",
+        "options": {
+          "active": "सक्रिय उप-वस्तुहरू",
+          "parent": "मूलका उप-वस्तुहरू",
+          "ancestor": "सबैभन्दा माथिल्लो पुर्खाबाट सबै उप-वस्तुहरू"
+        }
+      },
+      {
+        "property": "start",
+        "title": "सुरु तह"
+      },
+      {
+        "property": "end",
+        "title": "अन्त्य तह"
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kotudømi",
+    "description": "Eitt kotudømi framhevjað á síðuni"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kotuframhevjan",
+        "description": "Syntaksframhevjan at nýta á kotuøkið",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-dátur",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Knøttur til at avrita til klippiborðið",
+        "description": "knøttur ovast til høgru, sum sigur avrita til klippiborðið"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Byrjan á framhevjan",
+        "description": "Linjunummar, har framhevjanin byrjar"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Endi á framhevjan",
+        "description": "Linja, har framhevjanin endar"
+      }
+    ]
+  }
+}

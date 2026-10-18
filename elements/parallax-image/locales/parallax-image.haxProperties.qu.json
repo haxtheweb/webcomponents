@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallax siq'i",
+    "description": "Siq'i kuyuspa puriy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Rikch'a",
+        "description": "qhipa pampapi kanapaq siq'i"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Umanchay sitio",
+        "description": "Umanchay qillqa sitio"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS Bloğu",
+    "description": "Arka uçta işlenen CMS bloğu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modül",
+        "description": "CMS'imizden yüklenecek modül"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "CMS'imizden yüklenecek bloğun deltası"
+      }
+    ]
+  }
+}

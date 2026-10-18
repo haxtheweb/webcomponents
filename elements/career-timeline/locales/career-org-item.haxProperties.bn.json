@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "ক্যারিয়ার আইটেম",
+    "description": "একটি প্রতিষ্ঠান ও এর সংশ্লিষ্ট ভূমিকাসমূহ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "প্রতিষ্ঠানের নাম"
+      },
+      {
+        "property": "location",
+        "title": "অবস্থান"
+      },
+      {
+        "property": "source",
+        "title": "উৎস"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Hōʻuʻuku",
+    "description": "Hōʻuʻuku me ka memo kōkua o ka huaʻōlelo piha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Kikokikona",
+        "description": "Kikokikona hōʻuʻuku ʻike ʻia."
+      },
+      {
+        "attribute": "title",
+        "title": "Huaʻōlelo",
+        "description": "Huaʻōlelo piha i hōʻike ʻia ke kau ka ʻiole."
+      }
+    ]
+  }
+}

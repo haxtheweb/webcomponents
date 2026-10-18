@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "ক্যারিয়ারের ভূমিকা",
+    "description": "একটি প্রতিষ্ঠানের মধ্যে একটি ভূমিকা"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "শিরোনাম"
+      },
+      {
+        "property": "startDate",
+        "title": "শুরুর তারিখ"
+      },
+      {
+        "property": "endDate",
+        "title": "শেষের তারিখ (ঐচ্ছিক)"
+      },
+      {
+        "property": "skills",
+        "title": "সংশ্লিষ্ট দক্ষতা",
+        "description": "দক্ষতা যোগ করা শুরু করতে + বাটন নির্বাচন করুন"
+      }
+    ]
+  }
+}

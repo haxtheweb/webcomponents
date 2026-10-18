@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliograafia kirje",
+    "description": "Kirje, mis esindab bibliograafias üht viidet ning toetab mitut vormingut ja ekspordivalikut."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tüüp",
+        "description": "Viite tüüp",
+        "options": {
+          "web": "Veeb",
+          "journal": "Ajakiri",
+          "book": "Raamat"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Kirje pealkiri"
+      },
+      {
+        "property": "authors",
+        "title": "Autor(id)",
+        "description": "Ajajoone sündmused"
+      },
+      {
+        "property": "publisher",
+        "title": "Kirjastaja",
+        "description": "Algne veebisait"
+      }
+    ]
+  }
+}

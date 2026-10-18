@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Xisaab",
+    "description": "U soo bandhig xisaabta si qurux badan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Xisaab",
+        "description": "Geli isle'egta sida LaTeX"
+      }
+    ]
+  }
+}

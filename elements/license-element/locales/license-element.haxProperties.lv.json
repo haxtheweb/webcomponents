@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Licence",
+    "description": "Norādiet licenci savam darbam."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Citētā darba nosaukums."
+      },
+      {
+        "property": "source",
+        "title": "Avota saite",
+        "description": "Licencētā darba avota URL."
+      },
+      {
+        "property": "license",
+        "title": "Licence",
+        "description": "Šim darbam piemērotā licence."
+      },
+      {
+        "property": "creator",
+        "title": "Autors",
+        "description": "Šī darba autors vai īpašnieks."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Avota saite",
+        "description": "Saite uz papildu licencēšanas informāciju."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Papildu etiķete",
+        "description": "Etiķete papildu licencēšanas informācijai."
+      }
+    ]
+  }
+}

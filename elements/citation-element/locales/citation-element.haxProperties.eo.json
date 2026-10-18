@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Fontindiko",
+    "description": "Citaĵa elemento kun tri prezentaj reĝimoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo de la citita verko."
+      },
+      {
+        "property": "source",
+        "title": "Fonta ligilo",
+        "description": "Fonta URL de la citita verko."
+      },
+      {
+        "property": "date",
+        "title": "Dato de aliro",
+        "description": "Dato kiam la fonto estis alirita."
+      },
+      {
+        "property": "scope",
+        "title": "Amplekso",
+        "description": "Elementa amplekso por citi.",
+        "options": {
+          "sibling": "Samnivela elemento",
+          "parent": "Gepatra elemento"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Permesilo",
+        "description": "Permesilo de la citita verko."
+      },
+      {
+        "property": "creator",
+        "title": "Kreinto",
+        "description": "Kreinto aŭ posedanto de la citita verko."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema-tipo",
+        "description": "OER Schema-klaso por ĉi tiu citaĵo. Defaŭlte oer:ReferencedMaterial; anstataŭigu nur per valida OER-klaso (ekz. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

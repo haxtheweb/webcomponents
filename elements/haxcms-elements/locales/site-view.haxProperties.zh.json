@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "站点视图",
+    "description": "根据条件查询并显示站点数据的动态区块"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "视图 URL",
+        "description": "视图数据源的查询参数。可从视图仪表板中获取。"
+      },
+      {
+        "property": "renderer",
+        "title": "显示模式",
+        "description": "视图结果的呈现方式"
+      },
+      {
+        "property": "entity",
+        "title": "实体类型",
+        "description": "用于解析响应的实体类型",
+        "options": {
+          "": "默认（项目）",
+          "item": "项目",
+          "page": "页面",
+          "file": "文件",
+          "tag": "标签",
+          "block": "区块",
+          "view": "视图",
+          "theme": "主题",
+          "region": "区域",
+          "customElement": "自定义元素"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "拆分站点视图",
+        "description": "转换为静态内容以便直接编辑；将不再从来源自动更新。"
+      }
+    ]
+  }
+}

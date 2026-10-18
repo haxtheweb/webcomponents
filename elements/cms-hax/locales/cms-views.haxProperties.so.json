@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Muuqaalka CMS",
+    "description": "Muuqaallada CMS ee lagu muujiyo backend-ka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Magac",
+        "description": "Magaca muuqaalka ee CMS-kayaga"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Muujin",
+        "description": "Muujinta gudaha muuqaalkaas ee CMS-kayaga"
+      }
+    ]
+  }
+}

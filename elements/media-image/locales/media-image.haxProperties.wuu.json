@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "增强图片",
+    "description": "用各种增强效果展示图片个办法。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "来源",
+        "description": "图片个 URL。"
+      },
+      {
+        "property": "alt",
+        "title": "替代文字",
+        "description": "拨看勿见个用户描述图片个文字。"
+      },
+      {
+        "property": "link",
+        "title": "链接",
+        "description": "拿图片链接到一只 URL"
+      },
+      {
+        "property": "card",
+        "title": "卡片",
+        "description": "加一只投影,看上去像凸起来个卡片。"
+      },
+      {
+        "property": "box",
+        "title": "方框",
+        "description": "辣图片外头加一只方框。"
+      },
+      {
+        "property": "offset",
+        "title": "偏移",
+        "description": "拨图片加左偏移或者右偏移。",
+        "options": {
+          "none": "呒没",
+          "wide": "宽",
+          "narrow": "窄"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "出处",
+        "description": "图片个引用出处。"
+      },
+      {
+        "property": "caption",
+        "title": "说明",
+        "description": "图片个说明。"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "图标题",
+        "description": "图标签个标题。"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "图描述",
+        "description": "图标签个描述。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "缩略图",
+        "description": "缩略图来源。显示缩略图,但是辣弹窗里打开完整来源。"
+      },
+      {
+        "property": "round",
+        "title": "圆形图片",
+        "description": "拿图片裁成圆形个样子。"
+      },
+      {
+        "property": "disableZoom",
+        "title": "停用图片弹窗",
+        "description": "停用点一记就辣图片查看对话框里打开图片。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "用 markdown 渲染",
+        "description": "拿说明搭引用用 markdown 渲染。"
+      }
+    ]
+  }
+}

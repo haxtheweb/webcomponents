@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Barrierefreie Videowiedergabe aus mehreren Quellen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quelle",
+        "description": "URL dieses Mediums."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titel",
+        "description": "Unter dem Video angezeigter Titel."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Posterbild",
+        "description": "URL des Posterbilds."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Textspuren",
+        "description": "Untertitel für Hörgeschädigte, Untertitel, Beschreibungen und andere Textspuren für das Video."
+      },
+      {
+        "property": "startTime",
+        "title": "Startzeit",
+        "description": "Video zu einer bestimmten Zeit starten (Sekunden)."
+      },
+      {
+        "property": "endTime",
+        "title": "Endzeit",
+        "description": "Video zu einer bestimmten Zeit beenden (Sekunden), erfordert eine Startzeit."
+      },
+      {
+        "property": "learningMode",
+        "title": "Lernmodus aktivieren",
+        "description": "Deaktiviert Vor- und Zurückspulen."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Button „Auf YouTube öffnen“ entfernen",
+        "description": "Entfernt den Button zum Öffnen des Videos auf YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Freigabelink einfügen?",
+        "description": "Stellt einen Link zum Teilen des Videos bereit."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Zeitstempel ausblenden",
+        "description": "Die Zeitstempel im Transkript ausblenden."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkript ausblenden",
+        "description": "Transkript standardmäßig ausblenden."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Audiodeskriptionsspur",
+        "description": "URL zu einer Audiodeskriptionsspur (MP3-Datei), die visuelle Elemente beschreibt."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Gibt an, ob CORS verwendet werden soll.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Wiedergabe im Hintergrund erlauben",
+        "description": "Weiter abspielen, wenn der Browser-Tab den Fokus verliert."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Dunkles Theme für das Transkript",
+        "description": "Dunkles Theme für das Transkript aktivieren."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Interaktivität deaktivieren",
+        "description": "Interaktiven Modus deaktivieren, der das Transkript anklickbar macht."
+      },
+      {
+        "property": "lang",
+        "title": "Sprache",
+        "description": "Sprache des Mediums."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "(veraltet) Wähle die Akzentfarbe für den Player."
+      }
+    ]
+  }
+}

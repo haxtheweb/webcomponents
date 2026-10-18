@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex தேர்வி",
+    "description": "Hexcode வண்ணத் தேர்வி"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "மதிப்பு",
+        "description": "இயல்புநிலை hex மதிப்பு"
+      },
+      {
+        "property": "disabled",
+        "title": "முடக்கப்பட்டது",
+        "description": "உரைப் புலத்தை முடக்கு"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "பெரிய காட்சி",
+        "description": "பெரிய காட்சியில் நிறத்தைச் சேர்"
+      }
+    ]
+  }
+}

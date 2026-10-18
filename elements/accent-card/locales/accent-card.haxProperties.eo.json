@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Karto",
+    "description": "Karto kun nedeviga akcenta stilo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Titolo",
+        "description": "Titolo por la karto."
+      },
+      {
+        "slot": "subheading",
+        "title": "Subtitolo",
+        "description": "Nedeviga subtitolo por la karto."
+      },
+      {
+        "slot": "content",
+        "title": "Enhavo",
+        "description": "Enhavo por la karto."
+      },
+      {
+        "slot": "footer",
+        "title": "Piedlinio",
+        "description": "Nedeviga piedo por la karto."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Bildo",
+        "description": "Nedeviga bildo"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alternativa teksto de bildo",
+        "description": "Alternativa teksto priskribanta la bildon por ekranlegiloj. Lasu malplena nur se la bildo estas pure dekoracia."
+      },
+      {
+        "property": "imageAlign",
+        "title": "Bilda ĝisrandigo",
+        "description": "Horizontala ĝisrandigo de bildo",
+        "options": {
+          "left": "maldekstre",
+          "center": "centre",
+          "right": "dekstre"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "Vertikala bilda ĝisrandigo",
+        "description": "Vertikala ĝisrandigo de bildo",
+        "options": {
+          "top": "supre",
+          "center": "centre",
+          "bottom": "malsupre"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Nedeviga akcenta koloro."
+      },
+      {
+        "property": "dark",
+        "title": "Malhela temo",
+        "description": "Ŝalti malhelan etoson"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontala",
+        "description": "Ĉu horizontala orientiĝo?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Titola akcento",
+        "description": "Ĉu apliki akcentan koloron al la titolo?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Fona akcento",
+        "description": "Ĉu apliki akcentan koloron al la karta fono?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Sen bordera akcento",
+        "description": "Ĉu forigi borderan akcenton?"
+      },
+      {
+        "property": "flat",
+        "title": "Plata",
+        "description": "Ĉu forigi skatolan ombron?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Angulo",
+        "description": "Enhavo por la karta angulo."
+      }
+    ]
+  }
+}

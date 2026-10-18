@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "ڊيزائن، ڊولپ، ڊسٽرائي",
+    "description": "HAX لاءِ ڊيزائن سسٽم جو نفاذ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "ڏيکارڻ لاءِ آپشن",
+        "options": {
+          "*": "مڪمل انداز رهنمائي"
+        }
+      }
+    ]
+  }
+}

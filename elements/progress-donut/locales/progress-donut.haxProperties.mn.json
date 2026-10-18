@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Явцын цагираг",
+    "description": "Явцын цагираг"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Элементийн гарчиг"
+      },
+      {
+        "property": "desc",
+        "title": "Тайлбар",
+        "description": "Хүртээмжтэй урт тайлбар"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Зургийн эх сурвалж",
+        "description": "Цагираг доторх зургийн эх сурвалж."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Зургийн alt текст",
+        "description": "Зургийн alt текст."
+      },
+      {
+        "property": "animated",
+        "title": "Хөдөлгөөнт",
+        "description": "Анх ачаалахад явц хөдөлгөөнтэй харагдах эсэх"
+      },
+      {
+        "property": "complete",
+        "title": "Дууссан",
+        "description": "Гүйцэтгэсэн утгуудын массив."
+      },
+      {
+        "property": "total",
+        "title": "Нийт",
+        "description": "Бүх зүйл гүйцэтгэгдсэн үеийн нийт."
+      },
+      {
+        "property": "startAngle",
+        "title": "Эхлэх өнцөг",
+        "description": "Явц эхлэх цагирагийн өнцөг"
+      }
+    ]
+  }
+}

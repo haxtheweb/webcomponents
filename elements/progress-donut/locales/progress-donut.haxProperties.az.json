@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "İrəliləyiş halqası",
+    "description": "İrəliləyiş halqası"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Elementin başlığı"
+      },
+      {
+        "property": "desc",
+        "title": "Təsvir",
+        "description": "Əlçatan uzun təsvir"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Şəkil mənbəyi",
+        "description": "Halqanın içindəki şəklin mənbəyi."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Şəklin alternativ mətni",
+        "description": "Şəkil üçün alternativ mətn."
+      },
+      {
+        "property": "animated",
+        "title": "Animasiyalı",
+        "description": "İrəliləyişin ilk yükləmədə animasiya ilə göstərilib-göstərilməməsi"
+      },
+      {
+        "property": "complete",
+        "title": "Tamamlandı",
+        "description": "Tamamlanmış dəyərlər massivi."
+      },
+      {
+        "property": "total",
+        "title": "Cəmi",
+        "description": "Bütün elementlər tamamlandıqda cəmi."
+      },
+      {
+        "property": "startAngle",
+        "title": "Başlanğıc bucağı",
+        "description": "İrəliləyişin başladığı halqa bucağı"
+      }
+    ]
+  }
+}

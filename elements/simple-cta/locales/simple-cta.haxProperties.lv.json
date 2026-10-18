@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Aicinājums uz darbību",
+    "description": "Vienkārša poga ar saiti, lai rīkotos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiķete",
+        "description": "Saites etiķete"
+      },
+      {
+        "property": "link",
+        "title": "Saite",
+        "description": "Ievadiet saiti uz jebkuru resursu"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Paslēpt ikonu",
+        "description": "Paslēpt teksta izcelšanai izmantoto ikonu"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Darbības saites ikona"
+      }
+    ]
+  }
+}

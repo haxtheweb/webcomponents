@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX t'inki",
+    "description": "Llamk'achkasqayki tiyanapi huk recursoman t'inki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Imakuna",
+        "description": "T'inkipaq / suti willakuypaq rikuchinapaq kaq"
+      }
+    ]
+  }
+}

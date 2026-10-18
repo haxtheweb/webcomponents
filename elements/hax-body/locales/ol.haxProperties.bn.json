@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "নম্বরযুক্ত তালিকা",
+    "description": "একটি নম্বরযুক্ত তালিকা তৈরি করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "নম্বরের স্টাইল",
+        "description": "ক্রমযুক্ত তালিকার নম্বরের জন্য ব্যবহৃত স্টাইল।",
+        "options": {
+          "": "ডিফল্ট (দশমিক)",
+          "list-decimal-leading-zero": "শুরুতে শূন্যসহ দশমিক (01, 02, 03)",
+          "list-lower-alpha": "ছোট হাতের বর্ণ (a, b, c)",
+          "list-upper-alpha": "বড় হাতের বর্ণ (A, B, C)",
+          "list-lower-roman": "ছোট হাতের রোমান (i, ii, iii)",
+          "list-upper-roman": "বড় হাতের রোমান (I, II, III)"
+        }
+      }
+    ]
+  }
+}

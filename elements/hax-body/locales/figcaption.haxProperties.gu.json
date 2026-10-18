@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "આકૃતિ કૅપ્શન",
+    "description": "આકૃતિ માટે કૅપ્શન."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "કૅપ્શન",
+        "description": "આકૃતિ નીચે બતાવાતું ટેક્સ્ટ."
+      }
+    ]
+  }
+}

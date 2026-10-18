@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Pályafutási elem",
+    "description": "Egy szervezet és a hozzá tartozó szerepkörök"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Szervezet neve"
+      },
+      {
+        "property": "location",
+        "title": "Helyszín"
+      },
+      {
+        "property": "source",
+        "title": "Forrás"
+      }
+    ]
+  }
+}

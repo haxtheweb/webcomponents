@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Karýera elementi",
+    "description": "Aýry bir gurama we onuň bilen baglanyşykly wezipeler"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Guramanyň ady"
+      },
+      {
+        "property": "location",
+        "title": "Ýerleşýän ýeri"
+      },
+      {
+        "property": "source",
+        "title": "Çeşme"
+      }
+    ]
+  }
+}

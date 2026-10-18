@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "description": "Crea un gràfic accessible a partir d'un CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Un color d'accent opcional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema fosc",
+        "description": "Activa el tema fosc"
+      },
+      {
+        "property": "dataSource",
+        "title": "Fitxer CSV",
+        "description": "Carrega dades d'un CSV."
+      },
+      {
+        "slot": "heading",
+        "title": "Títol del gràfic",
+        "description": "Text alternatiu accessible per al gràfic."
+      },
+      {
+        "slot": "desc",
+        "title": "Descripció del gràfic",
+        "description": "Descripció accessible del gràfic."
+      },
+      {
+        "property": "scale",
+        "title": "Nom de l'escala",
+        "description": "La proporció amplada:alçada del gràfic (consulta https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings per a $ct-scales i $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "reverseData",
+        "title": "Inverteix les dades",
+        "description": "Inverteix les dades, incloses les etiquetes, l'ordre de les sèries i les matrius de dades de totes les sèries."
+      },
+      {
+        "slot": "",
+        "title": "Taula HTML",
+        "description": "Opcional: carrega les dades com a taula HTML."
+      }
+    ]
+  }
+}

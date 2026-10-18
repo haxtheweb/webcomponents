@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Slumpmässigt sidinnehåll",
+    "description": "Visa ett slumpmässigt element på toppnivå från en vald sida"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Sida",
+        "description": "Välj sidan att hämta slumpmässigt innehåll från. Elementet visar slumpmässigt ett av HTML-elementen på toppnivå från den här sidan."
+      }
+    ]
+  }
+}

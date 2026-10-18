@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML ብሎክ",
+    "description": "የHAXschema ግንኙነትን የሚያቀርብ መሠረታዊ HTML ብሎክ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "በይዘት ውስጥ ማቅረብ የሚፈልጉት HTML ኮድ"
+      }
+    ]
+  }
+}

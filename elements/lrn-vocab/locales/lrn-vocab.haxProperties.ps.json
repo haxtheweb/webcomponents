@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "لغات",
+    "description": "د لغت اصطلاح"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "اصطلاح"
+      },
+      {
+        "slot": "",
+        "title": "تعریف",
+        "description": "هغه تعریف چې د اصطلاح په کلیک کولو سره ښودل کېږي."
+      },
+      {
+        "property": "description",
+        "title": "تشریح (OER سکیما)",
+        "description": "OER سکیما: د لغت د اصطلاح لنډه تشریح. که تش پرېښودل شي، له تعریف متن څخه په اوتومات ډول ډکېږي."
+      }
+    ]
+  }
+}

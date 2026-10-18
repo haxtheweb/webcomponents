@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Ìjápọ̀ ìpìlẹ̀",
+    "description": "Ẹ̀yà ìjápọ̀ ìpìlẹ̀."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Ìjápọ̀",
+        "description": "URL ibi tí a ń lọ."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Ọ̀rọ̀",
+        "description": "Ọ̀rọ̀ ìjápọ̀ tí a lè rí."
+      },
+      {
+        "attribute": "target",
+        "title": "Ibi-àfojúsùn",
+        "description": "Ibi tí a ó ti ṣí ìjápọ̀ náà.",
+        "options": {
+          "": "Fèrèsé kan náà",
+          "_blank": "Fèrèsé tuntun - _blank",
+          "_top": "Fèrèsé òkè - _top",
+          "_parent": "Fèrèsé òbí - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Ọ̀rọ̀ àkọlé",
+        "description": "Àkọlé ìmọ̀ràn fún ìráyèsí àti SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Ìbáṣepọ̀ pẹ̀lú ibi tí a ń lọ (ààbò/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

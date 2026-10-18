@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Keterangan gambar",
+    "description": "Keterangan untuk gambar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Keterangan",
+        "description": "Teks yang ditampilkan di bawah gambar."
+      }
+    ]
+  }
+}

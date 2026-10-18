@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "コードサンプル",
+    "description": "ページ内でハイライト表示されるコードのサンプル"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "コードのハイライト",
+        "description": "コード領域に適用する構文ハイライト",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON データ",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "クリップボードにコピーボタン",
+        "description": "右上に表示される「クリップボードにコピー」ボタン"
+      },
+      {
+        "property": "highlightStart",
+        "title": "ハイライト開始",
+        "description": "ハイライトを開始する行番号"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "ハイライト終了",
+        "description": "ハイライトを終了する行"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Mai Zaɓar Hex",
+    "description": "Mai zaɓar launi na lambar hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Ƙima",
+        "description": "Tsohuwar ƙimar hex"
+      },
+      {
+        "property": "disabled",
+        "title": "An kashe",
+        "description": "Kashe filin rubutu"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Babban Nuni",
+        "description": "Haɗa launi a babban nuni"
+      }
+    ]
+  }
+}

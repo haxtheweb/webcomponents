@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Hình ảnh nâng cao",
+    "description": "Cách trình bày hình ảnh với nhiều tính năng nâng cao."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Nguồn",
+        "description": "URL của hình ảnh."
+      },
+      {
+        "property": "alt",
+        "title": "Văn bản thay thế",
+        "description": "Văn bản mô tả hình ảnh cho người dùng khiếm thị."
+      },
+      {
+        "property": "link",
+        "title": "Liên kết",
+        "description": "Liên kết hình ảnh đến một URL"
+      },
+      {
+        "property": "card",
+        "title": "Thẻ",
+        "description": "Áp dụng đổ bóng để tạo cảm giác như một thẻ nổi."
+      },
+      {
+        "property": "box",
+        "title": "Khung",
+        "description": "Thêm khung bao quanh hình ảnh."
+      },
+      {
+        "property": "offset",
+        "title": "Độ lệch",
+        "description": "Áp dụng độ lệch trái hoặc phải cho hình ảnh.",
+        "options": {
+          "none": "không",
+          "wide": "rộng",
+          "narrow": "hẹp"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Nguồn trích dẫn",
+        "description": "Trích dẫn cho hình ảnh."
+      },
+      {
+        "property": "caption",
+        "title": "Chú thích",
+        "description": "Chú thích cho hình ảnh."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Tiêu đề hình",
+        "description": "Tiêu đề cho nhãn hình."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Mô tả hình",
+        "description": "Mô tả cho nhãn hình."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Ảnh thu nhỏ",
+        "description": "Nguồn ảnh thu nhỏ. Hiển thị ảnh thu nhỏ nhưng mở ảnh gốc trong hộp thoại."
+      },
+      {
+        "property": "round",
+        "title": "Ảnh tròn",
+        "description": "Cắt hình ảnh hiển thị thành hình tròn."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Tắt hộp thoại hình ảnh",
+        "description": "Tắt việc nhấp để mở hình ảnh trong hộp thoại xem ảnh."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Hiển thị dạng markdown",
+        "description": "Hiển thị chú thích và trích dẫn dưới dạng markdown."
+      }
+    ]
+  }
+}

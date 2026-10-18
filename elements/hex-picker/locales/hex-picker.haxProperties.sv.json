@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex-väljare",
+    "description": "Färgväljare med hexkod"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Värde",
+        "description": "Standardvärde i hex"
+      },
+      {
+        "property": "disabled",
+        "title": "Inaktiverad",
+        "description": "Inaktivera textfältet"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Stor visning",
+        "description": "Inkludera färgen i stor visning"
+      }
+    ]
+  }
+}

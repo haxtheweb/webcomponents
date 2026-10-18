@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS ענטיטעט",
+    "description": "CMS ענטיטעט געשילדערט אויפֿן באַקענד"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "סאָרט",
+        "description": "טיפּ פֿון אונדזער CMS",
+        "options": {
+          "node": "קנופּ",
+          "user": "באַניצער",
+          "file": "טעקע"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id פֿון אונדזער CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "ווײַז־מאָדע",
+        "description": "אויסשטעל־מאָדוס פֿון אונדזער CMS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Priskriba figuro",
+    "description": "Alirebla figuro kun longa priskribo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Bildo"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alternativa teksto"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Figura apudskribo",
+        "description": "Figura apudskriba teksto, kiu ĉiam estas videbla."
+      },
+      {
+        "slot": "details",
+        "title": "Priskribo",
+        "description": "Detala bildpriskribo, kiu povas esti kaŝita aŭ montrita"
+      },
+      {
+        "slot": "summary",
+        "title": "Priskriba butono",
+        "description": "Defaŭlto por butono, kiu montras/kaŝas priskriban tekston, ekz. \"info\", \"metadatumoj\", ktp."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Nedeviga resuma teksto kiam la detaloj estas malfermitaj"
+      },
+      {
+        "property": "closeText",
+        "title": "Nedeviga resuma teksto kiam la detaloj estas fermitaj"
+      }
+    ]
+  }
+}

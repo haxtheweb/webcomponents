@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX-keppeling",
+    "description": "In keppeling nei in spesifike boarne yn de webstee dêr't jo oan wurkje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item om wer te jaan foar de keppeling-/titelgegevens"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Accessible na Details Button",
+    "description": "Accessible na progressive disclosure gamit ang detail at summary"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Button",
+        "description": "Buod ng nilalaman na nakatago, hal. \"info\", \"medatadata\", atbp."
+      },
+      {
+        "slot": "details",
+        "title": "Paglalarawan",
+        "description": "Detalyadong paglalarawan na maaaring itago o ipakita"
+      },
+      {
+        "slot": "",
+        "title": "Button ng Paglalarawan",
+        "description": "Default para sa button na nagpapakita/nagtatago ng tekstong paglalarawan, hal. \"info\", \"medatadata\", atbp."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Opsyonal na buod na teksto kapag bukas ang mga detalye"
+      },
+      {
+        "property": "closeText",
+        "title": "Opsyonal na buod na teksto kapag sarado ang mga detalye"
+      }
+    ]
+  }
+}

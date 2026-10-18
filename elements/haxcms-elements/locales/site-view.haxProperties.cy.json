@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Golwg Gwefan",
+    "description": "Bloc dynamig sy'n ymholi ac yn dangos data'r wefan yn seiliedig ar feini prawf"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL yr Olwg",
+        "description": "Paramedrau ymholiad ar gyfer ffrwd ddata'r olwg. Gallwch gael hwn o ddangosfwrdd Golygon."
+      },
+      {
+        "property": "renderer",
+        "title": "Modd dangos",
+        "description": "Sut y dylid rendro canlyniadau'r olwg"
+      },
+      {
+        "property": "entity",
+        "title": "Math o endid",
+        "description": "Math o endid a ddefnyddir i ddosrannu'r ymateb",
+        "options": {
+          "": "Diofyn (eitemau)",
+          "item": "Eitem",
+          "page": "Tudalen",
+          "file": "Ffeil",
+          "tag": "Tag",
+          "block": "Bloc",
+          "view": "Golwg",
+          "theme": "Thema",
+          "region": "Rhanbarth",
+          "customElement": "Elfen Bersonol"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Torri golwg y wefan",
+        "description": "Trosi'n gynnwys statig ar gyfer golygu uniongyrchol; yn rhoi'r gorau i ddiweddaru'n awtomatig o'r ffynhonnell."
+      }
+    ]
+  }
+}

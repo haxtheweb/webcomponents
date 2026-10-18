@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Khối giữ chỗ",
+    "description": "Khối giữ chỗ có thể chuyển thành loại phương tiện đã chọn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Loại",
+        "description": "Loại tiện ích mà khối này chấp nhận để thay thế.",
+        "options": {
+          "text": "Văn bản / nội dung",
+          "document": "Tài liệu / tệp",
+          "audio": "Âm thanh",
+          "video": "Video",
+          "image": "Hình ảnh",
+          "math": "Toán học"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Văn bản",
+        "description": "Mô tả chi tiết hơn khối giữ chỗ mong muốn"
+      }
+    ]
+  }
+}

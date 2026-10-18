@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Shafi",
+    "description": "Shafi ɗaya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Gunkin Shafi"
+      },
+      {
+        "property": "disabled",
+        "title": "An kashe"
+      },
+      {
+        "property": "label",
+        "title": "Lakabin Shafi"
+      },
+      {
+        "slot": "",
+        "title": "Abun Cikin Shafi",
+        "description": "Abun cikin shafin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID na Musamman"
+      },
+      {
+        "property": "flag",
+        "title": "Rubutun Tuta na Zaɓi"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Gunkin Tuta na Zaɓi"
+      }
+    ]
+  }
+}

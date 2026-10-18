@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "model kursus",
+    "description": "Tata letak interaktif kanggo konsep kursus kanthi rincian, animasi, lan pamriksa kawruh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "judhul"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Area informasi"
+      },
+      {
+        "title": "Area rincian"
+      },
+      {
+        "title": "Area animasi"
+      },
+      {
+        "title": "Area Pamriksa Kawruh"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Area logo"
+      }
+    ]
+  }
+}

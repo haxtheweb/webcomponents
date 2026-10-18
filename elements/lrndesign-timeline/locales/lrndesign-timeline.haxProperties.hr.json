@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Vremenska crta",
+    "description": "Vremenska crta događaja sa slikama i tekstom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Naslov vremenske crte",
+        "description": "Naslov vremenske crte."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja isticanja",
+        "description": "Neobavezna boja isticanja."
+      },
+      {
+        "property": "dark",
+        "title": "Tamna tema",
+        "description": "Omogući tamnu temu"
+      },
+      {
+        "slot": "",
+        "title": "Opis vremenske crte",
+        "description": "Neobavezni tekst koji opisuje vremensku crtu."
+      },
+      {
+        "property": "events",
+        "title": "Događaji na vremenskoj crti",
+        "description": "Događaji na vremenskoj crti"
+      }
+    ]
+  }
+}

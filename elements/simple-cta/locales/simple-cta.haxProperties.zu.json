@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ubizo lokwenza",
+    "description": "Inkinobho elula enesixhumanisi sokuthatha isinyathelo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Ilebula",
+        "description": "Ilebula lesixhumanisi"
+      },
+      {
+        "property": "link",
+        "title": "Isixhumanisi",
+        "description": "Faka isixhumanisi kunoma iyiphi insiza"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Fihla isithonjana",
+        "description": "Fihla isithonjana esisetshenziselwa ukugcizelela umbhalo"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Isithonjana",
+        "description": "Isithonjana sesixhumanisi sesenzo"
+      }
+    ]
+  }
+}

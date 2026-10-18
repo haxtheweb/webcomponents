@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Կարիերայի տարր",
+    "description": "Առանձին կազմակերպություն և դրա հետ կապված դերերը"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Կազմակերպության անվանում"
+      },
+      {
+        "property": "location",
+        "title": "Վայր"
+      },
+      {
+        "property": "source",
+        "title": "Աղբյուր"
+      }
+    ]
+  }
+}

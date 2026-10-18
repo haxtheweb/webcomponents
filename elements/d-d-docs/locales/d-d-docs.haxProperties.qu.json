@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "HAX-paq rikch'ay sistema ruray"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Rikuchinapaq akllana",
+        "options": {
+          "*": "Hunt'asqa rikch'ay pusaq"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Klassifikazzjoni bl-Istilel",
+    "description": "Widget għall-wiri tal-klassifikazzjoni jew buttuna biex tagħti klassifikazzjoni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Punteġġ",
+        "description": "Valur attwali tal-punteġġ."
+      },
+      {
+        "property": "possible",
+        "title": "Possibbli",
+        "description": "Punteġġ massimu possibbli."
+      },
+      {
+        "property": "numStars",
+        "title": "Numru ta' Stilel",
+        "description": "Numru ta' stilel li jintwerew."
+      },
+      {
+        "property": "interactive",
+        "title": "Interattiv",
+        "description": "Ippermetti l-interazzjoni tal-utent biex tissettja l-klassifikazzjoni."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Mod tal-Iskala tar-Rubrika",
+        "description": "Oħroġ metadata OER Schema RubricScale u RubricLevel (levelOrdinal/levelPoints) għal kull stilla."
+      }
+    ]
+  }
+}

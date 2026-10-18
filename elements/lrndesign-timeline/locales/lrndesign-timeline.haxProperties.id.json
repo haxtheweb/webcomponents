@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Linimasa",
+    "description": "Linimasa peristiwa dengan gambar dan teks"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Judul linimasa",
+        "description": "Judul untuk linimasa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen opsional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema Gelap",
+        "description": "Aktifkan Tema Gelap"
+      },
+      {
+        "slot": "",
+        "title": "Deskripsi Linimasa",
+        "description": "Teks opsional yang menjelaskan linimasa."
+      },
+      {
+        "property": "events",
+        "title": "Peristiwa Linimasa",
+        "description": "Peristiwa dalam linimasa"
+      }
+    ]
+  }
+}

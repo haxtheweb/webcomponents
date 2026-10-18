@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "ڪوڊ جو نمونو",
+    "description": "صفحي ۾ نمايان ڪيل ڪوڊ جو نمونو"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "ڪوڊ نمايان ڪرڻ",
+        "description": "ڪوڊ واري حصي تي لاڳو ڪرڻ لاءِ نحوي نمايان ڪرڻ",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON ڊيٽا",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "ڪلپ بورڊ تي ڪاپي ڪرڻ وارو بٽڻ",
+        "description": "مٿي ساڄي پاسي بٽڻ جنهن تي لکيل هجي ڪلپ بورڊ تي ڪاپي ڪريو"
+      },
+      {
+        "property": "highlightStart",
+        "title": "نمايان ڪرڻ جي شروعات",
+        "description": "نمايان ڪرڻ شروع ڪرڻ جي سٽ جو نمبر"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "نمايان ڪرڻ جو اختتام",
+        "description": "سٽ جتي نمايان ڪرڻ ختم ٿئي"
+      }
+    ]
+  }
+}

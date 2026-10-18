@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Chithunzi Chofotokozedwa",
+    "description": "Chithunzi chopezeka kwa onse chokhala ndi kufotokozera kwautali"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Chithunzi"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Mawu Ofotokoza Chithunzi"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Mawu Ofotokozera Chithunzi",
+        "description": "Mawu ofotokozera chithunzi omwe amaoneka nthawi zonse."
+      },
+      {
+        "slot": "details",
+        "title": "Kufotokozera",
+        "description": "Kufotokozera kwatsatanetsatane kwa chithunzi komwe kungabisidwe kapena kuonetsedwa"
+      },
+      {
+        "slot": "summary",
+        "title": "Batani la Kufotokozera",
+        "description": "Zokhazikika za batani lomwe limaonetsa/kubisa mawu ofotokozera, mwachitsanzo \"zambiri\", \"metadata\", ndi zina."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Mawu achidule osankha zambiri zikatsegulidwa"
+      },
+      {
+        "property": "closeText",
+        "title": "Mawu achidule osankha zambiri zikatsekedwa"
+      }
+    ]
+  }
+}

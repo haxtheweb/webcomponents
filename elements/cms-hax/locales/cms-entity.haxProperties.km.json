@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "អង្គភាព CMS",
+    "description": "អង្គភាព CMS ដែលបង្ហាញនៅផ្នែកខាងក្រោយ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "ប្រភេទ",
+        "description": "ប្រភេទពី CMS របស់យើង",
+        "options": {
+          "node": "ថ្នាំង",
+          "user": "អ្នកប្រើ",
+          "file": "ឯកសារ"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id ពី CMS របស់យើង"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "របៀបបង្ហាញ",
+        "description": "របៀបបង្ហាញពី CMS របស់យើង"
+      }
+    ]
+  }
+}

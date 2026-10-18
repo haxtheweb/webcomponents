@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Origen",
+        "description": "URL d'aquest recurs."
+      }
+    ]
+  }
+}

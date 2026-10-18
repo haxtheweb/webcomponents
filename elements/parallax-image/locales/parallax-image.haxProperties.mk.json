@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Паралакс-слика",
+    "description": "Скролување на сликата"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Слика",
+        "description": "слика што ќе биде во позадината"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Област за наслов",
+        "description": "Текстуална област за наслов"
+      }
+    ]
+  }
+}

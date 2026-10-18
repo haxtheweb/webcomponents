@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "زر الكتاب الإلكتروني",
+    "description": "زر يرتبط بكتاب إلكتروني."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "عنوان الزر."
+      },
+      {
+        "property": "link",
+        "title": "الرابط",
+        "description": "الرابط المراد إعادة التوجيه إليه عند النقر."
+      },
+      {
+        "property": "icon",
+        "title": "الأيقونة",
+        "description": "أيقونة لتمثيل هذا الرابط"
+      }
+    ]
+  }
+}

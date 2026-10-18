@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Blok obsahu Markdown zadaný přímo nebo načtený vzdáleně"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Surový markdown"
+      },
+      {
+        "property": "source",
+        "title": "Zdroj",
+        "description": "Zdrojový soubor markdownu"
+      }
+    ]
+  }
+}

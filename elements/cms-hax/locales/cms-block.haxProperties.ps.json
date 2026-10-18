@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS بلاک",
+    "description": "په بیک اینډ کې ښودل شوی CMS بلاک"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "ماډول",
+        "description": "زموږ له CMS څخه د پورته کولو ماډول"
+      },
+      {
+        "property": "blockDelta",
+        "title": "ډلټا",
+        "description": "زموږ له CMS څخه د پورته کېدونکي بلاک ډلټا"
+      }
+    ]
+  }
+}

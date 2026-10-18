@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retrokaart",
+    "description": "Lihtne retrokujundusega kaart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Kaardi peapealkiri."
+      },
+      {
+        "property": "url",
+        "description": "URL, mis avatakse kaardil klõpsamisel."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alapealkiri",
+        "description": "Kaardi alapealkiri."
+      },
+      {
+        "property": "tags",
+        "title": "Sildid",
+        "description": "Komadega eraldatud sildid."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Meediaallikas",
+        "description": "Peamine meediaallikas."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Allikas hõljutamisel",
+        "description": "Meediaallikas, mida kuvatakse kaardi hõljutamisel või aktiveerimisel."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Kogu kaardile rakendatav rõhuvärv."
+      },
+      {
+        "property": "dark",
+        "title": "Tume",
+        "description": "Kasuta tumeda režiimi põhivärve."
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Mndandanda wa madontho",
+    "description": "Pangani mndandanda wa madontho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Kalembedwe ka madontho",
+        "description": "Kalembedwe kogwiritsidwa ntchito pa madontho a mndandanda wosatsatana.",
+        "options": {
+          "": "Chokhazikika (sikweya)",
+          "list-disc": "Dontho",
+          "list-circle": "Bwalo",
+          "list-square": "Sikweya"
+        }
+      }
+    ]
+  }
+}

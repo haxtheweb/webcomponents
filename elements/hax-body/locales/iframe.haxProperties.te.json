@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "బాహ్య వెబ్ కంటెంట్‌ను పొందుపరచండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "మూలం",
+        "description": "ఈ వనరు కోసం URL."
+      }
+    ]
+  }
+}

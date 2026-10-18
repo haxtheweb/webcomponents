@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ìjápọ̀ HAX",
+    "description": "Ìjápọ̀ sí ohun èlò kan pàtó nínú ojú òpó tí ò ń ṣiṣẹ́ lé lórí."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Ohun kan",
+        "description": "Ohun láti fi hàn fún dátà ìjápọ̀ / àkọlé"
+      }
+    ]
+  }
+}

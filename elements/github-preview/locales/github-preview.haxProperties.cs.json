@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Náhled GitHub",
+    "description": "Přístupný obrázek s dlouhým popisem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizace",
+        "description": "Strojový název organizace GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Repozitář",
+        "description": "Strojový název repozitáře"
+      },
+      {
+        "property": "extended",
+        "title": "Rozšířené zobrazení",
+        "description": "Zahrne do prvku readme"
+      }
+    ]
+  }
+}

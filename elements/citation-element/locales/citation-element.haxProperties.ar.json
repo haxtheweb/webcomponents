@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "الاستشهاد",
+    "description": "عنصر استشهاد بثلاثة أوضاع عرض."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "عنوان العمل المستشهد به."
+      },
+      {
+        "property": "source",
+        "title": "رابط المصدر",
+        "description": "URL مصدر العمل المستشهد به."
+      },
+      {
+        "property": "date",
+        "title": "تاريخ الوصول",
+        "description": "التاريخ الذي تم فيه الوصول إلى المصدر."
+      },
+      {
+        "property": "scope",
+        "title": "النطاق",
+        "description": "نطاق العنصر المراد الاستشهاد به.",
+        "options": {
+          "sibling": "العنصر الشقيق",
+          "parent": "العنصر الأصل"
+        }
+      },
+      {
+        "property": "license",
+        "title": "الترخيص",
+        "description": "ترخيص العمل المستشهد به."
+      },
+      {
+        "property": "creator",
+        "title": "المؤلف",
+        "description": "مؤلف العمل المستشهد به أو مالكه."
+      },
+      {
+        "property": "typeof",
+        "title": "نوع OER Schema",
+        "description": "فئة OER Schema لهذا الاستشهاد. القيمة الافتراضية هي oer:ReferencedMaterial؛ لا تتجاوزها إلا بفئة OER صالحة (مثل oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

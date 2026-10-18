@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Έμβλημα αξίας",
+    "description": "Οπτικό έμβλημα που δηλώνει την απόκτηση μιας δεξιότητας."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Τίτλος εμβλήματος",
+        "description": "Τίτλος που εμφανίζεται στο έμβλημα."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Εικόνα εμβλήματος",
+        "description": "URL εικόνας για το έμβλημα."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Λεπτομέρειες εμβλήματος",
+        "description": "Λεπτομέρειες για το έμβλημα."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Υπερσύνδεσμος",
+        "description": "Σύνδεσμος που σχετίζεται με το έμβλημα."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Δεξιότητες εμβλήματος",
+        "description": "Δεξιότητες που εμφανίζονται στο έμβλημα."
+      },
+      {
+        "property": "skill",
+        "title": "Δεξιότητα (OER Schema)",
+        "description": "OER Schema: μια δεξιότητα που αποκτήθηκε με την ολοκλήρωση αυτού του μαθησιακού στόχου."
+      }
+    ]
+  }
+}

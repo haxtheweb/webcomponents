@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Hliðrunarmynd (parallax)",
+    "description": "Mynd sem flettist"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Mynd",
+        "description": "mynd sem nota á í bakgrunni"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Fyrirsagnarsvæði",
+        "description": "Textasvæði fyrirsagnar"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "कार्यका लागि आह्वान",
+    "description": "कार्य गर्न लिङ्कसहितको साधारण बटन।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "लेबल",
+        "description": "लिङ्क लेबल"
+      },
+      {
+        "property": "link",
+        "title": "लिङ्क",
+        "description": "कुनै पनि स्रोतको लिङ्क प्रविष्ट गर्नुहोस्"
+      },
+      {
+        "property": "hideIcon",
+        "title": "आइकन लुकाउनुहोस्",
+        "description": "पाठलाई जोड दिन प्रयोग हुने आइकन लुकाउनुहोस्"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "कार्य लिङ्क आइकन"
+      }
+    ]
+  }
+}

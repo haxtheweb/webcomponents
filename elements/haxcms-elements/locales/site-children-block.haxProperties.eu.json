@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: ume-blokea",
+    "description": "Uneko orriaren umeak erakusteko bloke dinamikoa"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Metodo dinamikoa",
+        "description": "Nola kalkulatu umeak elementu honekiko",
+        "options": {
+          "active": "Ume aktiboak",
+          "parent": "Gurasoaren umeak",
+          "ancestor": "Arbaso gorenaren ume guztiak"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Hasierako maila"
+      },
+      {
+        "property": "end",
+        "title": "Amaierako maila"
+      }
+    ]
+  }
+}

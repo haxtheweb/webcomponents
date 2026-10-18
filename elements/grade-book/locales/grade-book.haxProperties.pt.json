@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Diário de notas",
+    "description": "Um diário de notas headless que suporta vários backends com rubricas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonte",
+        "description": "Tipo de fonte de dados (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Endpoint de URL (JSON)",
+          "json": "Bloco de dados JSON",
+          "filesystem": "Sistema de arquivos"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Dados de origem",
+        "description": "URL ou dados JSON para o diário de notas."
+      },
+      {
+        "property": "forCourse",
+        "title": "Referência do curso",
+        "description": "Identificador do curso emitido como oer:forCourse em cada recurso de Avaliação."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Námskeiðshönnun",
+    "description": "Ílát fyrir námsefni og þætti námskeiðshönnunar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Auðkenni námskeiðs",
+        "description": "OER Schema: auðkenni námskeiðsins, t.d. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Önn í boði",
+        "description": "OER Schema: önnin sem námskeiðið er í boði."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Kennsluform",
+        "description": "OER Schema: formið sem notað er til að kenna námskeiðið (t.d. staðnám, fjarnám, blandað nám)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Aðalkennari",
+        "description": "OER Schema: aðalkennari námskeiðsins."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL kennsluáætlunar",
+        "description": "OER Schema: URL á kennsluáætlun námskeiðsins."
+      }
+    ]
+  }
+}

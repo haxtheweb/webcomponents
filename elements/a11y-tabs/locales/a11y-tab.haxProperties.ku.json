@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Tabeke yekane."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Îkona Tabê"
+      },
+      {
+        "property": "disabled",
+        "title": "Neçalak"
+      },
+      {
+        "property": "label",
+        "title": "Etîketa Tabê"
+      },
+      {
+        "slot": "",
+        "title": "Naveroka Tabê",
+        "description": "Naveroka tabê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID ya Yekta"
+      },
+      {
+        "property": "flag",
+        "title": "Nivîsa Alayê ya Vebijarkî"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Îkona Alayê ya Vebijarkî"
+      }
+    ]
+  }
+}

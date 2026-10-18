@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Vendmbajtëse",
+    "description": "Një vendmbajtëse që mund të shndërrohet në llojin e medias që është përzgjedhur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Lloji",
+        "description": "Lloji i mjetit që pranon për zëvendësim.",
+        "options": {
+          "text": "Tekst / përmbajtje",
+          "document": "Dokument / skedar",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Imazhi",
+          "math": "Matematikë"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Teksti",
+        "description": "Përcakto më hollësisht vendmbajtësen e dëshiruar"
+      }
+    ]
+  }
+}

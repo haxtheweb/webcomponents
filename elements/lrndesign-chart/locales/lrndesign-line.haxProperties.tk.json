@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Çyzykly diagramma",
+    "description": "CSV esasynda elýeterli diagramma döredýär."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aksent reňki",
+        "description": "Goşmaça aksent reňki."
+      },
+      {
+        "title": "Garaňky tema",
+        "description": "Garaňky temany işjeňleşdir"
+      },
+      {
+        "title": "CSV faýly",
+        "description": "Maglumatlary CSV-den ýükle."
+      },
+      {
+        "title": "Diagrammanyň ady",
+        "description": "Diagrammaňyz üçin elýeterli alternatiw tekst."
+      },
+      {
+        "title": "Diagrammanyň düşündirişi",
+        "description": "Diagrammaňyzyň elýeterli düşündirişi."
+      },
+      {
+        "title": "Masştabyň ady",
+        "description": "Diagrammanyň ini:beýiklik gatnaşygy ($ct-scales we $ct-scales-names üçin https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings serediň).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Tor fonuny görkez"
+      },
+      {
+        "title": "Meýdany görkez"
+      },
+      {
+        "title": "Çyzygy görkez"
+      },
+      {
+        "title": "Nokady görkez"
+      },
+      {
+        "title": "Doly ini"
+      },
+      {
+        "title": "Nokat belliklerini görkez"
+      },
+      {
+        "title": "Diagrammanyň içki boşlugy (ýokary)"
+      },
+      {
+        "title": "Diagrammanyň içki boşlugy (aşak)"
+      },
+      {
+        "title": "Diagrammanyň içki boşlugy (çep)"
+      },
+      {
+        "title": "Diagrammanyň içki boşlugy (sag)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Maglumatlary tersine öwür",
+        "description": "Maglumatlary, şol sanda bellikleri, seriýalaryň tertibini we ähli seriýa maglumat massiwlerini tersine öwür."
+      },
+      {
+        "title": "HTML tablisa",
+        "description": "Hökmany däl: maglumatlary HTML tablisa hökmünde ýükle."
+      },
+      {
+        "title": "Diagrammanyň minimumy",
+        "description": "Diagrammanyň tebigy pes bahasyny çalyşmak ulaltmaga ýa-da diagrammanyň görkezilýän iň pes bahasyny çäklendirmäge mümkinçilik berýär"
+      },
+      {
+        "title": "Diagrammanyň maksimumy",
+        "description": "Diagrammanyň tebigy ýokary bahasyny çalyşmak ulaltmaga ýa-da diagrammanyň görkezilýän iň ýokary bahasyny çäklendirmäge mümkinçilik berýär"
+      },
+      {
+        "title": "Nokat belliklerini görkez",
+        "options": {
+          "middle": "Orta",
+          "start": "Başlangyç",
+          "end": "Soňy"
+        }
+      },
+      {
+        "title": "Nokat bellikleriniň X süýşmesi"
+      },
+      {
+        "title": "Nokat bellikleriniň Y süýşmesi"
+      },
+      {
+        "title": "Çyzygy ýumşat"
+      },
+      {
+        "title": "Meýdanyň esasy",
+        "description": "Meýdan şekilini ýapmak üçin ulanyljak meýdan diagrammasynyň esasy (adatça 0)."
+      },
+      {
+        "title": "X oky: tory görkez",
+        "description": "X okunyň toruny görkez."
+      },
+      {
+        "title": "X okunyň süýşmesi"
+      },
+      {
+        "title": "X okunyň ýerleşişi",
+        "description": "Bellikleriň ýerleşdirilýän ýeri. \"start\" ýa-da \"end\" bellenip bilner, bu ýerde \"start\" dik okda çep ýa-da ýokary, \"end\" bolsa keseligine okda sag ýa-da aşak diýmekdir"
+      },
+      {
+        "title": "X oky: belligi görkez",
+        "description": "X okunyň belligini görkez."
+      },
+      {
+        "title": "X okunyň belligi (keseligine süýşme)",
+        "description": "X okunyň bellikleriniň keseligine ýerleşişi."
+      },
+      {
+        "title": "X okunyň belligi (dikligine süýşme)",
+        "description": "X okunyň bellikleriniň dikligine ýerleşişi."
+      },
+      {
+        "title": "X okunyň ady",
+        "description": "X oky üçin goşmaça at."
+      },
+      {
+        "title": "X okunyň ady (keseligine süýşme)",
+        "description": "X okunyň adynyň keseligine ýerleşişi."
+      },
+      {
+        "title": "X okunyň ady (dikligine süýşme)",
+        "description": "X okunyň adynyň dikligine ýerleşişi."
+      },
+      {
+        "title": "X okunyň adynyň daýanjy",
+        "description": "X okunyň ady üçin goşmaça daýanç.",
+        "options": {
+          "middle": "orta",
+          "end": "soňy",
+          "start": "başy"
+        }
+      },
+      {
+        "title": "Y oky: tory görkez",
+        "description": "Y okunyň toruny görkez."
+      },
+      {
+        "title": "Y okunyň süýşmesi"
+      },
+      {
+        "title": "Y okunyň ýerleşişi",
+        "description": "Bellikleriň ýerleşdirilýän ýeri. \"start\" ýa-da \"end\" bellenip bilner, bu ýerde \"start\" dik okda çep ýa-da ýokary, \"end\" bolsa keseligine okda sag ýa-da aşak diýmekdir"
+      },
+      {
+        "title": "Y oky: belligi görkez",
+        "description": "Y okunyň belligini görkez."
+      },
+      {
+        "title": "Y okunyň belligi (keseligine süýşme)",
+        "description": "Y okunyň belliginiň keseligine ýerleşişi."
+      },
+      {
+        "title": "Y okunyň belligi (dikligine süýşme)",
+        "description": "Y okunyň belliginiň dikligine ýerleşişi."
+      },
+      {
+        "title": "Y okunyň şkalasynyň minimal aralygy",
+        "description": "Şkala ädimleriniň piksel boýunça minimal beýikligini kesgitleýär."
+      },
+      {
+        "title": "Y okunyň şkalasy (diňe bitin sanlar)",
+        "description": "Şkala ädimleri üçin diňe bitin sanlary ulan."
+      },
+      {
+        "title": "Y okunyň ady",
+        "description": "Y oky üçin goşmaça at."
+      },
+      {
+        "title": "Y okunyň ady (dikligine süýşme)",
+        "description": "Y okunyň adynyň keseligine ýerleşişi."
+      },
+      {
+        "title": "Y okunyň ady (keseligine süýşme)",
+        "description": "Y okunyň adynyň keseligine ýerleşişi."
+      },
+      {
+        "title": "Y okunyň adynyň daýanjy",
+        "description": "Y okunyň ady üçin goşmaça daýanç.",
+        "options": {
+          "middle": "orta",
+          "end": "soňy",
+          "start": "başy"
+        }
+      },
+      {
+        "title": "Y okunyň adyny öwür",
+        "description": "Y okunyň adyny öwürmelimi?"
+      }
+    ]
+  }
+}

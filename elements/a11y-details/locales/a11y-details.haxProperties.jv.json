@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Tombol Rincian sing Bisa Diakses",
+    "description": "Pambukaan bertahap sing bisa diakses nganggo detail lan ringkesan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Tombol",
+        "description": "Ringkesan isi sing yen didhelikake, conto: \"info\", \"metadata\", lsp."
+      },
+      {
+        "slot": "details",
+        "title": "Katrangan",
+        "description": "Katrangan rinci sing bisa didhelikake utawa ditampilake"
+      },
+      {
+        "slot": "",
+        "title": "Tombol Katrangan",
+        "description": "Gawan kanggo tombol sing nampilake/ndhelikake teks katrangan, conto: \"info\", \"metadata\", lsp."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Teks ringkesan opsional nalika rincian dibukak"
+      },
+      {
+        "property": "closeText",
+        "title": "Teks ringkesan opsional nalika rincian ditutup"
+      }
+    ]
+  }
+}

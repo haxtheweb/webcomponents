@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "റെട്രോ കാർഡ്",
+    "description": "റെട്രോ ഡിസൈനുള്ള ലളിതമായ കാർഡ്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ശീർഷകം",
+        "description": "പ്രധാന കാർഡ് തലക്കെട്ട്."
+      },
+      {
+        "property": "url",
+        "description": "കാർഡിൽ ക്ലിക്ക് ചെയ്യുമ്പോൾ തുറക്കേണ്ട URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "ഉപതലക്കെട്ട്",
+        "description": "കാർഡ് ഉപതലക്കെട്ട്."
+      },
+      {
+        "property": "tags",
+        "title": "ടാഗുകൾ",
+        "description": "കോമകൊണ്ട് വേർതിരിച്ച ടാഗുകൾ."
+      },
+      {
+        "property": "mediaSource",
+        "title": "മീഡിയ ഉറവിടം",
+        "description": "പ്രാഥമിക മീഡിയ ഉറവിടം."
+      },
+      {
+        "property": "hoverSource",
+        "title": "ഹോവർ ചെയ്യുമ്പോഴുള്ള ഉറവിടം",
+        "description": "കാർഡ് ഹോവർ ചെയ്യുമ്പോഴോ സജീവമാക്കുമ്പോഴോ കാണിക്കുന്ന മീഡിയ ഉറവിടം."
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "കാർഡിലുടനീളം പ്രയോഗിക്കുന്ന ആക്സന്റ് നിറം."
+      },
+      {
+        "property": "dark",
+        "title": "ഇരുണ്ടത്",
+        "description": "ഡാർക്ക് മോഡ് അടിസ്ഥാന നിറങ്ങൾ ഉപയോഗിക്കുക."
+      }
+    ]
+  }
+}

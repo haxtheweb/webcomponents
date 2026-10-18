@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ibhulokhi ye-CMS",
+    "description": "Ibhulokhi ye-CMS eboniswa ku-backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Imojuli",
+        "description": "Imojula okufanele ilayishwe kusuka ku-CMS yethu"
+      },
+      {
+        "property": "blockDelta",
+        "title": "I-Delta",
+        "description": "I-Delta yebhulokhi okufanele ilayishwe kusuka ku-CMS yethu"
+      }
+    ]
+  }
+}

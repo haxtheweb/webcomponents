@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Burimi i citatit",
+    "description": "Element citimi me tre mënyra paraqitjeje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Titulli i veprës së cituar."
+      },
+      {
+        "property": "source",
+        "title": "Lidhja e burimit",
+        "description": "URL-ja burimore e veprës së cituar."
+      },
+      {
+        "property": "date",
+        "title": "Data e qasjes",
+        "description": "Data kur u qas burimi."
+      },
+      {
+        "property": "scope",
+        "title": "Fusha",
+        "description": "Fusha e elementit për t'u cituar.",
+        "options": {
+          "sibling": "Element vëlla",
+          "parent": "Element prind"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licenca",
+        "description": "Licenca e veprës së cituar."
+      },
+      {
+        "property": "creator",
+        "title": "Krijuesi",
+        "description": "Krijuesi ose pronari i veprës së cituar."
+      },
+      {
+        "property": "typeof",
+        "title": "Lloji i Skemës OER",
+        "description": "Klasa e Skemës OER për këtë citim. Parazgjedhja është oer:ReferencedMaterial; ndryshoje vetëm me një klasë të vlefshme OER (p.sh. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

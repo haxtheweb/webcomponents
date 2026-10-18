@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Karýera wezipesi",
+    "description": "Gurama içindäki aýry bir wezipe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Ady"
+      },
+      {
+        "property": "startDate",
+        "title": "Başlangyç senesi"
+      },
+      {
+        "property": "endDate",
+        "title": "Gutarýan senesi (hökmany däl)"
+      },
+      {
+        "property": "skills",
+        "title": "Baglanyşykly başarnyklar",
+        "description": "Başarnyk goşmaga başlamak üçin + düwmesini saýlaň"
+      }
+    ]
+  }
+}

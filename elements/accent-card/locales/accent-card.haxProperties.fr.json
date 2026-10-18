@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Carte",
+    "description": "Une carte avec un style d'accent facultatif."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "En-tête",
+        "description": "Un titre pour la carte."
+      },
+      {
+        "slot": "subheading",
+        "title": "Sous-titre",
+        "description": "Un sous-titre facultatif pour la carte."
+      },
+      {
+        "slot": "content",
+        "title": "Contenu",
+        "description": "Contenu de la carte."
+      },
+      {
+        "slot": "footer",
+        "title": "Pied de tableau",
+        "description": "Un pied facultatif pour la carte."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Image",
+        "description": "Image facultative"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Texte alternatif de l'image",
+        "description": "Texte alternatif décrivant l'image pour les lecteurs d'écran. Laissez-le vide uniquement si l'image est purement décorative."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Alignement horizontal de l'image",
+        "options": {
+          "left": "gauche",
+          "center": "centre",
+          "right": "droite"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Alignement vertical de l'image",
+        "options": {
+          "top": "haut",
+          "center": "centre",
+          "bottom": "bas"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Une couleur d'accent facultative."
+      },
+      {
+        "property": "dark",
+        "title": "Thème sombre",
+        "description": "Activer le thème sombre"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontale",
+        "description": "Orientation horizontale ?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Accent sur le titre",
+        "description": "Appliquer la couleur d'accent au titre ?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Accent sur l'arrière-plan",
+        "description": "Appliquer la couleur d'accent à l'arrière-plan de la carte ?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Sans bordure d'accent",
+        "description": "Supprimer la bordure d'accent ?"
+      },
+      {
+        "property": "flat",
+        "title": "Plat",
+        "description": "Supprimer l'ombre portée ?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Coin",
+        "description": "Contenu du coin de la carte."
+      }
+    ]
+  }
+}

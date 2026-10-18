@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "პროგრესის რგოლი",
+    "description": "პროგრესის რგოლი"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "სათაური",
+        "description": "ელემენტის სათაური"
+      },
+      {
+        "property": "desc",
+        "title": "აღწერა",
+        "description": "ხელმისაწვდომი ვრცელი აღწერა"
+      },
+      {
+        "property": "imageSrc",
+        "title": "სურათის წყარო",
+        "description": "რგოლის შიგნით სურათის წყარო."
+      },
+      {
+        "property": "imageAlt",
+        "title": "სურათის ალტერნატიული ტექსტი",
+        "description": "სურათის ალტერნატიული ტექსტი."
+      },
+      {
+        "property": "animated",
+        "title": "ანიმირებული",
+        "description": "ანიმირდება თუ არა პროგრესი პირველი ჩატვირთვისას"
+      },
+      {
+        "property": "complete",
+        "title": "დასრულებული",
+        "description": "დასრულებული მნიშვნელობების მასივი."
+      },
+      {
+        "property": "total",
+        "title": "სულ",
+        "description": "ჯამი, როცა ყველა ელემენტი დასრულებულია."
+      },
+      {
+        "property": "startAngle",
+        "title": "საწყისი კუთხე",
+        "description": "რგოლის კუთხე, საიდანაც პროგრესი იწყება"
+      }
+    ]
+  }
+}

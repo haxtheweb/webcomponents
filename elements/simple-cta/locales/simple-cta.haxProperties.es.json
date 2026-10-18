@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Llamada a la acción",
+    "description": "Un botón sencillo con un enlace para actuar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiqueta",
+        "description": "Etiqueta del enlace"
+      },
+      {
+        "property": "link",
+        "title": "Enlace",
+        "description": "Introduce un enlace a cualquier recurso"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Ocultar icono",
+        "description": "Oculta el icono usado para acentuar el texto"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icono",
+        "description": "Icono del enlace de acción"
+      }
+    ]
+  }
+}

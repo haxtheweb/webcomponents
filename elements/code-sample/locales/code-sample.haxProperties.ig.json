@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Ihe atụ koodu",
+    "description": "Ihe atụ koodu egosipụtara n'ibe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Ngosipụta koodu",
+        "description": "Ngosipụta syntax a ga-etinye na mpaghara koodu",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Data JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Bọtịnụ detuo na clipboard",
+        "description": "bọtịnụ dị n'elu aka nri nke na-ekwu detuo na clipboard"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Mmalite ngosipụta",
+        "description": "Nọmba ahịrị iji malite ngosipụta"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Njedebe ngosipụta",
+        "description": "Ahịrị a ga-akwụsị ngosipụta"
+      }
+    ]
+  }
+}

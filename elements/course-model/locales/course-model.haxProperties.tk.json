@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kurs modeli",
+    "description": "Jikme-jiklikler, animasiýa we bilim barlaglary bilen kurs düşünjeleri üçin interaktiw ýerleşiş."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "at"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Maglumat meýdany"
+      },
+      {
+        "title": "Jikme-jiklik meýdany"
+      },
+      {
+        "title": "Animasiýa meýdany"
+      },
+      {
+        "title": "Bilim barlagy meýdany"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logotip meýdany"
+      }
+    ]
+  }
+}

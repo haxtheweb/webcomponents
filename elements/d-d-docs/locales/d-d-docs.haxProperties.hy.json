@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Դիզայն համակարգի իրականացում HAX-ի համար"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Ցուցադրվող տարբերակ",
+        "options": {
+          "*": "Ամբողջական ոճի ուղեցույց"
+        }
+      }
+    ]
+  }
+}

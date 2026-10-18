@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kursa dezajno",
+    "description": "Ujo por edukaj materialoj kaj elementoj de kursa dezajno."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kursa identigilo",
+        "description": "OER Schema: la identigilo de la kurso, ekz. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Oferta periodo",
+        "description": "OER Schema: la periodo dum kiu la kurso estas ofertata."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Liverformato",
+        "description": "OER Schema: la formato uzata por liveri la kurson (ekz. ĉeesta, reta, hibrida)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Ĉefa instruisto",
+        "description": "OER Schema: la ĉefa instruisto de la kurso."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL de la studprogramo",
+        "description": "OER Schema: URL al la studprogramo de la kurso."
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Tema sing Kasedhiya",
+    "description": "Tampilake tema HAXcms sing kasedhiya kanthi ngalih pratinjau langsung"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Mode Tampilan",
+        "description": "Pilih carane nampilake tema",
+        "options": {
+          "gallery": "Galeri",
+          "table": "Tabel"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Tampilake Rincian",
+        "description": "Tampilake katrangan tema lan informasi tambahan"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Tampilake Tema Didhelikake lan Lawas",
+        "description": "Tampilake tema sing didhelikake, lawas, lan elek saliyane gawan dashboard"
+      },
+      {
+        "property": "columns",
+        "title": "Kolom (Galeri)",
+        "description": "Jumlah kolom ing tampilan galeri"
+      }
+    ]
+  }
+}

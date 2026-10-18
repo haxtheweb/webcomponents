@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kartoçka",
+    "description": "Goşmaça aksent bezegli kart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Sözbaşy",
+        "description": "Kart üçin sözbaşy."
+      },
+      {
+        "slot": "subheading",
+        "title": "Kiçi sözbaşy",
+        "description": "Kart üçin goşmaça kiçi sözbaşy."
+      },
+      {
+        "slot": "content",
+        "title": "Mazmun",
+        "description": "Kart üçin mazmun."
+      },
+      {
+        "slot": "footer",
+        "title": "Aşaky bölüm",
+        "description": "Kart üçin goşmaça aşaky bölüm."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Surat",
+        "description": "Goşmaça surat"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Suratyň alternatiw teksti",
+        "description": "Ekran okaýjylar üçin suraty beýan edýän alternatiw tekst. Surat diňe bezeg üçin bolsa, boş goýuň."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Suratyň keseligine deňleşdirilişi",
+        "options": {
+          "left": "çep",
+          "center": "orta",
+          "right": "sag"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Suratyň dikligine deňleşdirilişi",
+        "options": {
+          "top": "ýokary",
+          "center": "orta",
+          "bottom": "aşak"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Goşmaça aksent reňki."
+      },
+      {
+        "property": "dark",
+        "title": "Garaňky tema",
+        "description": "Garaňky temany işjeňleşdir"
+      },
+      {
+        "property": "horizontal",
+        "title": "Keseligine",
+        "description": "Keseligine ýerleşişmi?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Sözbaşy aksenti",
+        "description": "Sözbaşa aksent reňkini ulanmalymy?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Fon aksenti",
+        "description": "Kartyň fonuna aksent reňkini ulanmalymy?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Gyra aksenti ýok",
+        "description": "Gyra aksentini aýyrmalymy?"
+      },
+      {
+        "property": "flat",
+        "title": "Tekiz",
+        "description": "Kölegäni aýyrmalymy?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Burç",
+        "description": "Kartyň burçy üçin mazmun."
+      }
+    ]
+  }
+}

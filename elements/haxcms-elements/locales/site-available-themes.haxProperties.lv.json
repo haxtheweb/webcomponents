@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Pieejamie motīvi",
+    "description": "Rādīt pieejamos HAXcms motīvus ar tiešraides priekšskatījuma pārslēgšanu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Skata režīms",
+        "description": "Izvēlieties, kā attēlot motīvus",
+        "options": {
+          "gallery": "Galerija",
+          "table": "Tabula"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Rādīt detaļas",
+        "description": "Rādīt motīvu aprakstus un papildu informāciju"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Rādīt slēptos un mantotos motīvus",
+        "description": "Papildus informācijas paneļa noklusējumiem rādīt slēptos, mantotos un briesmīgos motīvus"
+      },
+      {
+        "property": "columns",
+        "title": "Kolonnas (galerija)",
+        "description": "Kolonnu skaits galerijas skatā"
+      }
+    ]
+  }
+}

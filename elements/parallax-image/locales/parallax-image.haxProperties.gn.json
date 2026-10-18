@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallax ta'ãnga",
+    "description": "Ta'ãnga ojeguejýva"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Ta'ãnga",
+        "description": "ta'ãnga ojeiporútava tapykuépe"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Omoakãva renda",
+        "description": "Omoakãva moñe'ẽrã renda"
+      }
+    ]
+  }
+}

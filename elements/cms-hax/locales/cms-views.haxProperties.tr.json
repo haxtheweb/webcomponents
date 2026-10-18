@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS Görünümü",
+    "description": "Arka uçta işlenen CMS görünümleri"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Ad",
+        "description": "CMS'imizdeki görünümün adı"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Görüntüleme",
+        "description": "CMS'imizdeki o görünüm içindeki ekran"
+      }
+    ]
+  }
+}

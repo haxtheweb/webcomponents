@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: alt blok",
+    "description": "Cari səhifənin alt elementini göstərən dinamik blok"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dinamik metod",
+        "description": "Alt elementlərin bu elementə nisbətən necə hesablanacağı",
+        "options": {
+          "active": "Aktiv alt elementlər",
+          "parent": "Üst elementin alt elementləri",
+          "ancestor": "Ən yuxarı əcdaddan bütün alt elementlər"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Başlanğıc səviyyə"
+      },
+      {
+        "property": "end",
+        "title": "Son səviyyə"
+      }
+    ]
+  }
+}

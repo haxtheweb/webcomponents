@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Pristupačni gumb s pojedinostima",
+    "description": "Pristupačno postupno otkrivanje s pojedinostima i sažetkom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Gumb",
+        "description": "Sažetak sadržaja ako je skriven, npr. \"informacije\", \"metapodaci\" itd."
+      },
+      {
+        "slot": "details",
+        "title": "Opis",
+        "description": "Detaljan opis koji se može sakriti ili prikazati"
+      },
+      {
+        "slot": "",
+        "title": "Gumb opisa",
+        "description": "Zadano za gumb koji prikazuje/skriva tekst opisa, npr. \"informacije\", \"metapodaci\" itd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Neobavezni tekst sažetka kada su pojedinosti otvorene"
+      },
+      {
+        "property": "closeText",
+        "title": "Neobavezni tekst sažetka kada su pojedinosti zatvorene"
+      }
+    ]
+  }
+}

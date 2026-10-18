@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "वर्णनात्मक चित्र",
+    "description": "लंबे विवरण के साथ सुलभ चित्र"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "छवि"
+      },
+      {
+        "property": "imgAlt",
+        "title": "वैकल्पिक टेक्स्ट"
+      },
+      {
+        "slot": "figcaption",
+        "title": "चित्र कैप्शन",
+        "description": "चित्र कैप्शन टेक्स्ट जो हमेशा दिखाई देता है।"
+      },
+      {
+        "slot": "details",
+        "title": "विवरण",
+        "description": "विस्तृत छवि विवरण जिसे छिपाया या दिखाया जा सकता है"
+      },
+      {
+        "slot": "summary",
+        "title": "विवरण बटन",
+        "description": "विवरण टेक्स्ट दिखाने/छिपाने वाले बटन का डिफ़ॉल्ट, जैसे \"info\", \"medatadata\" आदि।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "विवरण खुले होने पर वैकल्पिक सारांश टेक्स्ट"
+      },
+      {
+        "property": "closeText",
+        "title": "विवरण बंद होने पर वैकल्पिक सारांश टेक्स्ट"
+      }
+    ]
+  }
+}

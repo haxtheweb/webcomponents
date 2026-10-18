@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Loopbaanitem",
+    "description": "'n Individuele organisasie en sy geaffilieerde rolle"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Organisasienaam"
+      },
+      {
+        "property": "location",
+        "title": "Ligging"
+      },
+      {
+        "property": "source",
+        "title": "Bron"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Kapsulatu kanpoko web-edukia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Iturria",
+        "description": "Baliabide honen URLa."
+      }
+    ]
+  }
+}

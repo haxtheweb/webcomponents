@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Skraćenica",
+    "description": "Skraćenica s opisom punog pojma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Vidljivi tekst skraćenice."
+      },
+      {
+        "attribute": "title",
+        "title": "Riječ",
+        "description": "Puni pojam prikazan pri prelasku mišem."
+      }
+    ]
+  }
+}

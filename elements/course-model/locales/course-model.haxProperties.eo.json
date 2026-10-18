@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kursa modelo",
+    "description": "Interaga aranĝo por kursaj konceptoj kun detaloj, animacio kaj sciaj kontroloj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "titolo"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Informa areo"
+      },
+      {
+        "title": "Detala areo"
+      },
+      {
+        "title": "Animacia areo"
+      },
+      {
+        "title": "Areo de scia kontrolo"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Emblema areo"
+      }
+    ]
+  }
+}

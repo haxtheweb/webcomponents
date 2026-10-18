@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Gambar paralaks",
+    "description": "Gambar bergulir"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Gambar",
+        "description": "gambar yang digunakan di latar belakang"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Area judul",
+        "description": "Area teks judul"
+      }
+    ]
+  }
+}

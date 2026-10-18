@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "ಆಡಿಯೋ",
+    "description": "ಇದು ಮೂಲ ಯಾವುದೇ ಇರಲಿ ವೀಡಿಯೊವನ್ನು ಹೆಚ್ಚು ಪ್ರವೇಶಿಸಬಹುದಾದ ರೀತಿಯಲ್ಲಿ ಪ್ರಸ್ತುತಪಡಿಸಬಲ್ಲದು."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ಮೂಲ",
+        "description": "ಈ ಮೀಡಿಯಾದ URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ವೀಡಿಯೊ ಕೆಳಗಿನ ಸರಳ ಶೀರ್ಷಿಕೆ"
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಪ್ಲೇಯರ್‌ಗೆ ಆಕ್ಸೆಂಟ್ ಬಣ್ಣವನ್ನು ಆಯ್ಕೆಮಾಡಿ."
+      },
+      {
+        "property": "track",
+        "title": "ಉಪಶೀರ್ಷಿಕೆಗಳು",
+        "description": "ಉಪಶೀರ್ಷಿಕೆ ಫೈಲ್‌ನ URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "ಥಂಬ್‌ನೇಲ್ ಚಿತ್ರ",
+        "description": "ಐಚ್ಛಿಕ. ಥಂಬ್‌ನೇಲ್/ಪೋಸ್ಟರ್ ಚಿತ್ರದ URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "ಕಲಿಕೆ ಮೋಡ್ ಸಕ್ರಿಯಗೊಳಿಸಿ",
+        "description": "ಮುಂದಕ್ಕೆ ಮತ್ತು ಹಿಂದಕ್ಕೆ ಸರಿಸುವಿಕೆಯನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸುತ್ತದೆ."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube ನಲ್ಲಿ ತೆರೆಯುವ ಬಟನ್ ತೆಗೆದುಹಾಕಿ",
+        "description": "ವೀಡಿಯೊವನ್ನು YouTube ನಲ್ಲಿ ತೆರೆಯುವ ಬಟನ್ ಅನ್ನು ತೆಗೆದುಹಾಕುತ್ತದೆ."
+      },
+      {
+        "property": "linkable",
+        "title": "ಹಂಚಿಕೆ ಲಿಂಕ್ ಸೇರಿಸುವುದೇ?",
+        "description": "ವೀಡಿಯೊ ಹಂಚಿಕೊಳ್ಳಲು ಲಿಂಕ್ ಒದಗಿಸುತ್ತದೆ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS ಬಳಸಬೇಕೇ ಎಂಬುದನ್ನು ಸೂಚಿಸುತ್ತದೆ.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "ಹಿನ್ನೆಲೆ ಪ್ಲೇಬ್ಯಾಕ್ ಅನುಮತಿಸಿ",
+        "description": "ಟ್ಯಾಬ್ ಫೋಕಸ್ ಕಳೆದುಕೊಂಡಾಗ ವೀಡಿಯೊಗಳು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ವಿರಾಮ / ಪ್ಲೇ ಆಗುತ್ತವೆ; ಇದು ಟ್ಯಾಬ್ ಫೋಕಸ್ ಇಲ್ಲದೆಯೂ ವೀಡಿಯೊ ಪ್ಲೇ ಆಗಲು ಅನುಮತಿಸುತ್ತದೆ"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ಪ್ರತಿಲಿಪಿಗೆ ಡಾರ್ಕ್ ಥೀಮ್",
+        "description": "ಪ್ರತಿಲಿಪಿಗೆ ಡಾರ್ಕ್ ಥೀಮ್ ಸಕ್ರಿಯಗೊಳಿಸಿ."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ಸಂವಾದಾತ್ಮಕತೆ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ",
+        "description": "ಪ್ರತಿಲಿಪಿಯನ್ನು ಕ್ಲಿಕ್ ಮಾಡಬಹುದಾದಂತೆ ಮಾಡುವ ಸಂವಾದಾತ್ಮಕ ಮೋಡ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ಸಮಯಮುದ್ರೆಗಳನ್ನು ಮರೆಮಾಡಿ",
+        "description": "ಪ್ರತಿಲಿಪಿಯಲ್ಲಿನ ಸಮಯಮುದ್ರೆಗಳನ್ನು ಮರೆಮಾಡಿ."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ಪ್ರತಿಲಿಪಿ ಮರೆಮಾಡಿ",
+        "description": "ಡೀಫಾಲ್ಟ್ ಆಗಿ ಪ್ರತಿಲಿಪಿ ಮರೆಮಾಡಿ."
+      },
+      {
+        "property": "lang",
+        "title": "ಭಾಷೆ",
+        "description": "ಮೀಡಿಯಾದ ಭಾಷೆ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Dezajni, Disvolvi, Detrui",
+    "description": "Realigo de dezajnsistemo por HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Opcio por montri",
+        "options": {
+          "*": "Plena stilgvidilo"
+        }
+      }
+    ]
+  }
+}

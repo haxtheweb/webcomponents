@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "స్టార్ రేటింగ్",
+    "description": "రేటింగ్ ప్రదర్శన విడ్జెట్ లేదా రేటింగ్ ఇవ్వడానికి బటన్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "స్కోర్",
+        "description": "ప్రస్తుత స్కోర్ విలువ."
+      },
+      {
+        "property": "possible",
+        "title": "సాధ్యమైనది",
+        "description": "గరిష్ఠంగా సాధ్యమైన స్కోర్."
+      },
+      {
+        "property": "numStars",
+        "title": "నక్షత్రాల సంఖ్య",
+        "description": "ప్రదర్శించాల్సిన నక్షత్రాల సంఖ్య."
+      },
+      {
+        "property": "interactive",
+        "title": "ఇంటరాక్టివ్",
+        "description": "రేటింగ్‌ను సెట్ చేయడానికి వినియోగదారు పరస్పర చర్యను అనుమతించండి."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "రూబ్రిక్ స్కేల్ మోడ్",
+        "description": "ప్రతి నక్షత్రానికి OER Schema RubricScale మరియు RubricLevel మెటాడేటాను (levelOrdinal/levelPoints) విడుదల చేయండి."
+      }
+    ]
+  }
+}

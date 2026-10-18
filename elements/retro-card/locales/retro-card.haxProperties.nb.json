@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retrokort",
+    "description": "Enkelt kort med retrodesign."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Hovedtittel for kortet."
+      },
+      {
+        "property": "url",
+        "description": "URL som åpnes når det klikkes på kortet."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undertittel",
+        "description": "Undertittel for kortet."
+      },
+      {
+        "property": "tags",
+        "title": "Stikkord",
+        "description": "Kommaseparerte tagger."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Mediekilde",
+        "description": "Primær mediekilde."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Kilde ved hover",
+        "description": "Mediekilde som vises når musepekeren holdes over kortet eller det aktiveres."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Aksentfarge brukt i hele kortet."
+      },
+      {
+        "property": "dark",
+        "title": "Mørk",
+        "description": "Bruk grunnfarger for mørk modus."
+      }
+    ]
+  }
+}

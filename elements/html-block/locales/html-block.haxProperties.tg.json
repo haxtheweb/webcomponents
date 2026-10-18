@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Блоки Html",
+    "description": "Блоки асосии HTML, ки пайвасти HAXschema-ро таъмин мекунад"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Коди HTML, ки мехоҳед дар мундариҷа пешниҳод кунед"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kursusdesign",
+    "description": "Beholder til undervisningsmaterialer og kursusdesignelementer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kursus-id",
+        "description": "OER Schema: kursets id, f.eks. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Udbudt semester",
+        "description": "OER Schema: det semester, hvor kurset udbydes."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Undervisningsform",
+        "description": "OER Schema: den form, kurset gennemføres i (f.eks. fysisk fremmøde, online, hybrid)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Primær underviser",
+        "description": "OER Schema: kursets primære underviser."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL til kursusplan",
+        "description": "OER Schema: URL til kursusplanen."
+      }
+    ]
+  }
+}

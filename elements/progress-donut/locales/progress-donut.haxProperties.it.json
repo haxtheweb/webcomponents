@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Ciambella di avanzamento",
+    "description": "Ciambella di avanzamento"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Il titolo dell'elemento"
+      },
+      {
+        "property": "desc",
+        "title": "Descrizione",
+        "description": "Descrizione estesa accessibile"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Origine dell'immagine",
+        "description": "Sorgente dell'immagine all'interno della ciambella."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Testo alternativo dell'immagine",
+        "description": "Testo alternativo per l'immagine."
+      },
+      {
+        "property": "animated",
+        "title": "Animato",
+        "description": "Indica se l'avanzamento è animato al primo caricamento"
+      },
+      {
+        "property": "complete",
+        "title": "Completato",
+        "description": "Un array di valori completati."
+      },
+      {
+        "property": "total",
+        "title": "Totale",
+        "description": "Totale quando tutti gli elementi sono completati."
+      },
+      {
+        "property": "startAngle",
+        "title": "Angolo iniziale",
+        "description": "Angolo della ciambella da cui parte l'avanzamento"
+      }
+    ]
+  }
+}

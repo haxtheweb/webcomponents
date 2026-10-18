@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "HAX کے لیے ڈیزائن سسٹم کا نفاذ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "دکھانے کا اختیار",
+        "options": {
+          "*": "مکمل اسٹائل گائیڈ"
+        }
+      }
+    ]
+  }
+}

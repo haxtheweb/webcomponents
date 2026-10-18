@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "ສຽງ",
+    "description": "ສິ່ງນີ້ສາມາດນຳສະເໜີວິດີໂອໃນແບບທີ່ເຂົ້າເຖິງໄດ້ສູງ ບໍ່ວ່າຈະມາຈາກແຫຼ່ງໃດ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "URL ສຳລັບສື່ນີ້."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ແບບງ່າຍສຳລັບໃຕ້ວິດີໂອ"
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ເລືອກສີເນັ້ນສຳລັບເຄື່ອງຫຼິ້ນ."
+      },
+      {
+        "property": "track",
+        "title": "ຄຳບັນຍາຍປິດ",
+        "description": "URL ສຳລັບໄຟລ໌ຄຳບັນຍາຍ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "ຮູບຕົວຢ່າງ",
+        "description": "ບໍ່ບັງຄັບ. URL ສຳລັບຮູບຕົວຢ່າງ/ໂປສເຕີ."
+      },
+      {
+        "property": "learningMode",
+        "title": "ເປີດໃຊ້ໂໝດການຮຽນ",
+        "description": "ປິດການເລື່ອນໄປໜ້າ ແລະ ຍ້ອນກັບ."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "ລຶບປຸ່ມເປີດໃນ YouTube",
+        "description": "ລຶບປຸ່ມສຳລັບເປີດວິດີໂອໃນ YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "ລວມລິ້ງແບ່ງປັນບໍ?",
+        "description": "ໃຫ້ລິ້ງເພື່ອແບ່ງປັນວິດີໂອ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "ລະບຸວ່າຈະໃຊ້ CORS ຫຼືບໍ່.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "ອະນຸຍາດການຫຼິ້ນໃນພື້ນຫຼັງ",
+        "description": "ວິດີໂອຈະຢຸດ / ຫຼິ້ນໂດຍອັດຕະໂນມັດເມື່ອແຖບເສຍໂຟກັສ; ອັນນີ້ເຮັດໃຫ້ວິດີໂອຫຼິ້ນໄດ້ໂດຍທີ່ແຖບບໍ່ຕ້ອງມີໂຟກັສ"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ທີມມືດສຳລັບບົດຖອດຄວາມ",
+        "description": "ເປີດໃຊ້ທີມມືດສຳລັບບົດຖອດຄວາມ."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ປິດການໂຕ້ຕອບ",
+        "description": "ປິດໂໝດໂຕ້ຕອບທີ່ເຮັດໃຫ້ບົດຖອດຄວາມຄລິກໄດ້."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ເຊື່ອງເວລາ",
+        "description": "ເຊື່ອງເວລາໃນບົດຖອດຄວາມ."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ເຊື່ອງບົດຖອດຄວາມ",
+        "description": "ເຊື່ອງບົດຖອດຄວາມເປັນຄ່າເລີ່ມຕົ້ນ."
+      },
+      {
+        "property": "lang",
+        "title": "ພາສາ",
+        "description": "ພາສາຂອງສື່."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "သင်ရိုး ဒီဇိုင်း",
+    "description": "ပညာရေး ပစ္စည်းများနှင့် သင်ရိုး ဒီဇိုင်း အစိတ်အပိုင်းများအတွက် ကွန်တိန်နာ။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "သင်ရိုး ID",
+        "description": "OER Schema: သင်ရိုး၏ identifier၊ ဥပမာ MATH-100။"
+      },
+      {
+        "property": "termOffered",
+        "title": "ပို့ချသည့် ကာလ",
+        "description": "OER Schema: သင်ရိုးကို ပို့ချသည့် ကာလ။"
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "ပို့ချမှု ပုံစံ",
+        "description": "OER Schema: သင်ရိုးကို ပို့ချရာတွင် သုံးသော ပုံစံ (ဥပမာ လူကိုယ်တိုင်၊ အွန်လိုင်း၊ ပေါင်းစပ်)။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "အဓိက သင်ကြားသူ",
+        "description": "OER Schema: သင်ရိုးအတွက် အဓိက သင်ကြားသူ။"
+      },
+      {
+        "property": "syllabus",
+        "title": "သင်ရိုးညွှန်းတမ်း URL",
+        "description": "OER Schema: သင်ရိုးညွှန်းတမ်းသို့ URL။"
+      }
+    ]
+  }
+}

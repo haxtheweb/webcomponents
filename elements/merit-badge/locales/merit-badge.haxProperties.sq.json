@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Distinktiv merite",
+    "description": "Distinktiv vizual për të komunikuar fitimin e një aftësie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Titulli i distinktivit",
+        "description": "Titulli që shfaqet në distinktiv."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Imazhi i distinktivit",
+        "description": "URL-ja e imazhit për distinktivin."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Detajet e distinktivit",
+        "description": "Detaje rreth distinktivit."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hiperlidhja",
+        "description": "Lidhja e shoqëruar me distinktivin."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Aftësitë e distinktivit",
+        "description": "Aftësitë që shfaqen në distinktiv."
+      },
+      {
+        "property": "skill",
+        "title": "Aftësia (Skema OER)",
+        "description": "Skema OER: një aftësi e mësuar e fituar me përmbushjen e këtij objektivi mësimor."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Maudhui ya Mbali",
+    "description": "Tumia tena maudhui kutoka tovuti moja katika nyingine."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Anwani ya tovuti",
+        "description": "Bandika anwani ya kurejelea maudhui ikiwa si tovuti ya sasa"
+      },
+      {
+        "property": "uuid",
+        "title": "Kipengee",
+        "description": "Kipengee cha kuonyesha kwa data ya kiungo / kichwa"
+      },
+      {
+        "property": "breakreference",
+        "title": "Vunja rejeleo",
+        "description": "Kuteua kisanduku hiki hunakili maudhui ya mbali kwa ajili ya kuhariri hapa lakini huondoa uhusiano. Hayatapata tena masasisho nyenzo za marejeleo zinaposasishwa."
+      },
+      {
+        "property": "showTitle",
+        "title": "Onyesha kichwa",
+        "description": "Washa ili kuonyesha kichwa cha rasilimali inayoonyeshwa"
+      }
+    ]
+  }
+}

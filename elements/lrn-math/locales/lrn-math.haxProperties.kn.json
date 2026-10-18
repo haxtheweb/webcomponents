@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ಗಣಿತ",
+    "description": "ಗಣಿತವನ್ನು ಅಂದವಾಗಿ ಪ್ರಸ್ತುತಪಡಿಸಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "ಗಣಿತ",
+        "description": "ಸಮೀಕರಣವನ್ನು LaTeX ಆಗಿ ನಮೂದಿಸಿ"
+      }
+    ]
+  }
+}

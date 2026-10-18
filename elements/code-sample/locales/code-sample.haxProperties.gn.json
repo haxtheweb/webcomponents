@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Papapy techapyrã",
+    "description": "Peteĩ papapy techapyrã ojehechaukavéva kuatiaroguépe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Papapy jehechaukave",
+        "description": "Syntax jehechaukave ojepurútava papapy rendápe",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON mba'ekuaarã",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Monguatia mbohasaha'ípe votõ",
+        "description": "votõ yvate akatúa gotyo he'íva emonguatia mbohasaha'ípe"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Jehechaukave ñepyrũ",
+        "description": "Tysýi papapy oñepyrũ hag̃ua jehechaukave"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Jehechaukave paha",
+        "description": "Tysýi opa hag̃ua jehechaukave"
+      }
+    ]
+  }
+}

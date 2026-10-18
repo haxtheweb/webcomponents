@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Пример кода",
+    "description": "Фрагмент кода с подсветкой на странице"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Подсветка кода",
+        "description": "Подсветка синтаксиса для области кода",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Данные JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Кнопка копирования в буфер обмена",
+        "description": "кнопка в правом верхнем углу с надписью «копировать в буфер обмена»"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Начало подсветки",
+        "description": "Номер строки, с которой начинается подсветка"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Конец подсветки",
+        "description": "Строка, на которой заканчивается подсветка"
+      }
+    ]
+  }
+}

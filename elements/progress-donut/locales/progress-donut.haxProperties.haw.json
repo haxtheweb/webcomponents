@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Kuʻi holomua",
+    "description": "Kuʻi holomua"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Poʻo inoa",
+        "description": "Ke poʻo inoa o ka mea"
+      },
+      {
+        "property": "desc",
+        "title": "Wehewehe",
+        "description": "Wehewehe lōʻihi hiki ke komo ʻia"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Kumu Kiʻi",
+        "description": "Kumu o ke kiʻi i loko o ke kuʻi."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Kikokikona alt kiʻi",
+        "description": "Kikokikona alt no ke kiʻi."
+      },
+      {
+        "property": "animated",
+        "title": "Hoʻonaueue ʻia",
+        "description": "Inā e hoʻonaueue ka holomua i ka hoʻouka mua ʻana"
+      },
+      {
+        "property": "complete",
+        "title": "Ua pau",
+        "description": "He papa o nā waiwai i pau."
+      },
+      {
+        "property": "total",
+        "title": "Huina",
+        "description": "Huina ke pau nā mea a pau."
+      },
+      {
+        "property": "startAngle",
+        "title": "Huina hoʻomaka",
+        "description": "Huina kuʻi kahi e hoʻomaka ai ka holomua"
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Isto pode presentar vídeo dun xeito moi accesible independentemente da fonte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orixe",
+        "description": "O URL deste multimedia."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Título",
+        "description": "Título simple para debaixo do vídeo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Selecciona a cor de acento do reprodutor."
+      },
+      {
+        "property": "track",
+        "title": "Subtítulos",
+        "description": "O URL do ficheiro de subtítulos."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Imaxe en miniatura",
+        "description": "Opcional. O URL dunha imaxe en miniatura/póster."
+      },
+      {
+        "property": "learningMode",
+        "title": "Activar o modo de aprendizaxe",
+        "description": "Desactiva o avance e o retroceso rápidos."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Quitar o botón de abrir en YouTube",
+        "description": "Quita o botón para abrir o vídeo en YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Incluír unha ligazón para compartir?",
+        "description": "Ofrece unha ligazón para compartir o vídeo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indica se se debe usar CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Permitir a reprodución en segundo plano",
+        "description": "Os vídeos páranse / reprodúcense automaticamente cando a lapela perde o foco; isto permite que o vídeo se reproduza sen que a lapela teña o foco"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema escuro para a transcrición",
+        "description": "Activar o tema escuro para a transcrición."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Desactivar interactivo",
+        "description": "Desactivar o modo interactivo que fai que se poida facer clic na transcrición."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Ocultar as marcas de tempo",
+        "description": "Ocultar as marcas de tempo na transcrición."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Ocultar a transcrición",
+        "description": "Ocultar a transcrición de forma predeterminada."
+      },
+      {
+        "property": "lang",
+        "title": "Idioma",
+        "description": "Idioma do multimedia."
+      }
+    ]
+  }
+}

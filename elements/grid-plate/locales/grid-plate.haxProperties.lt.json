@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Stulpelių išdėstymas",
+    "description": "Išdėstyti medžiagą paprastais stulpeliais"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Stulpelių išdėstymas",
+        "description": "Šių elementų pateikimo stilius (mažuose ekranuose gali keistis)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Išjungti prisitaikymą",
+        "description": "Pažymėkite langelį, kad didesniuose ekranuose stulpeliai išliktų, o mažiausiuose vis tiek būtų išdėstomi vienas po kito"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Elementų vidinė paraštė",
+        "description": "Vidinė paraštė kiekviename elemente"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Elementų paraštės",
+        "description": "Paraštė tarp elementų"
+      }
+    ]
+  }
+}

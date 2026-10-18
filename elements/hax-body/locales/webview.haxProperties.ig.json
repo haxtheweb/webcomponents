@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Isi mmalite",
+        "description": "URL maka akụrụngwa a."
+      }
+    ]
+  }
+}

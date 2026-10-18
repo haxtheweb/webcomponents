@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "करियर वस्तु",
+    "description": "एउटा संस्था र यससँग सम्बद्ध भूमिकाहरू"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "संस्थाको नाम"
+      },
+      {
+        "property": "location",
+        "title": "स्थान"
+      },
+      {
+        "property": "source",
+        "title": "स्रोत"
+      }
+    ]
+  }
+}

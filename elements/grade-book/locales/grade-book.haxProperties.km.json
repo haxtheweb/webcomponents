@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "សៀវភៅពិន្ទុ",
+    "description": "សៀវភៅពិន្ទុគ្មានក្បាលដែលគាំទ្រផ្នែកខាងក្រោយច្រើនជាមួយរូប្រិក។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ប្រភព",
+        "description": "ប្រភេទប្រភពទិន្នន័យ (googledocs, url, json, filesystem)។",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "ចំណុចបញ្ចប់ URL (JSON)",
+          "json": "ដុំទិន្នន័យ JSON",
+          "filesystem": "ប្រព័ន្ធឯកសារ"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "ទិន្នន័យប្រភព",
+        "description": "URL ឬទិន្នន័យ JSON សម្រាប់សៀវភៅពិន្ទុ។"
+      },
+      {
+        "property": "forCourse",
+        "title": "ឯកសារយោងវគ្គសិក្សា",
+        "description": "លេខសម្គាល់វគ្គសិក្សាដែលបញ្ចេញជា oer:forCourse នៅលើធនធាន Assessment នីមួយៗ។"
+      }
+    ]
+  }
+}

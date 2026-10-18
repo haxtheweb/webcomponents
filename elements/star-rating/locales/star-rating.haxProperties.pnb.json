@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "تارا ریٹنگ",
+    "description": "ریٹنگ وکھاؤن والا ویجٹ یا ریٹنگ دین والا بٹن۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "سکور",
+        "description": "موجودہ سکور دی قدر۔"
+      },
+      {
+        "property": "possible",
+        "title": "ممکن",
+        "description": "وڈا توں وڈا ممکن سکور۔"
+      },
+      {
+        "property": "numStars",
+        "title": "تاریاں دی گنتی",
+        "description": "وکھاؤن والے تاریاں دی گنتی۔"
+      },
+      {
+        "property": "interactive",
+        "title": "انٹرایکٹو",
+        "description": "ریٹنگ سیٹ کرن لئی صارف نوں انٹرایکشن دی اجازت دیو۔"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "روبرک پیمانہ موڈ",
+        "description": "ہر تارے لئی OER سکیما RubricScale تے RubricLevel میٹا ڈیٹا (levelOrdinal/levelPoints) دیو۔"
+      }
+    ]
+  }
+}

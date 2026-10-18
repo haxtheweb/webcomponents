@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "HAX માટે ડિઝાઇન સિસ્ટમ અમલીકરણ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "રેન્ડર કરવાનો વિકલ્પ",
+        "options": {
+          "*": "સંપૂર્ણ શૈલી માર્ગદર્શિકા"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Vista del CMS",
+    "description": "Vistes del CMS renderitzades al backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Nom",
+        "description": "Nom de la vista del nostre CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Visualització",
+        "description": "Visualització dins d'aquesta vista del nostre CMS"
+      }
+    ]
+  }
+}

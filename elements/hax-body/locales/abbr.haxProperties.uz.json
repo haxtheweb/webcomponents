@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Qisqartma",
+    "description": "Toʻliq atama maslahati bilan qisqartma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Matn",
+        "description": "Koʻrinadigan qisqartma matni."
+      },
+      {
+        "attribute": "title",
+        "title": "Soʻz",
+        "description": "Ustiga olib borilganda koʻrsatiladigan toʻliq atama."
+      }
+    ]
+  }
+}

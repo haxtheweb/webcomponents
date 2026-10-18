@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Kupu Taputapu",
+    "description": "Kupu kupu-taka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Kīanga"
+      },
+      {
+        "slot": "",
+        "title": "Tikanga",
+        "description": "Te whakamāramatanga hei whakaatu ina pāwhiritia te kupu."
+      },
+      {
+        "property": "description",
+        "title": "Whakaahuatanga (OER Schema)",
+        "description": "OER Schema: he whakaahuatanga poto o te kupu kupu-taka. Ka whakakīia aunoatia mai i te kuputuhi whakamārama mēnā ka waiho kau."
+      }
+    ]
+  }
+}

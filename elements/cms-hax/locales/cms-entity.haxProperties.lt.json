@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS objektas",
+    "description": "CMS objektas, atvaizduojamas serveryje"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Tipas",
+        "description": "tipas iš mūsų CMS",
+        "options": {
+          "node": "Mazgas",
+          "user": "Naudotojas",
+          "file": "Failas"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID iš mūsų CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Rodymo režimas",
+        "description": "rodymo režimas iš mūsų CMS"
+      }
+    ]
+  }
+}

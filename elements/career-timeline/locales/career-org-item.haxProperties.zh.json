@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "职业条目",
+    "description": "单个组织及其相关职位"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "组织名称"
+      },
+      {
+        "property": "location",
+        "title": "地点"
+      },
+      {
+        "property": "source",
+        "title": "来源"
+      }
+    ]
+  }
+}

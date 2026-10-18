@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ប៊ូតុងសៀវភៅអេឡិចត្រូនិក",
+    "description": "ប៊ូតុងដែលភ្ជាប់ទៅសៀវភៅអេឡិចត្រូនិក។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងនៃប៊ូតុង។"
+      },
+      {
+        "property": "link",
+        "title": "តំណ",
+        "description": "តំណដែលត្រូវបញ្ជូនបន្តទៅពេលចុច។"
+      },
+      {
+        "property": "icon",
+        "title": "រូបតំណាង",
+        "description": "រូបតំណាងដើម្បីតំណាងឱ្យតំណនេះ"
+      }
+    ]
+  }
+}

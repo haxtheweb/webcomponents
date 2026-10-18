@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Khối CMS",
+    "description": "Khối CMS được hiển thị từ phía máy chủ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Mô-đun",
+        "description": "Mô-đun cần tải từ CMS của chúng tôi"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta của khối cần tải từ CMS của chúng tôi"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Βαθμολόγιο",
+    "description": "Ένα βαθμολόγιο χωρίς διεπαφή που υποστηρίζει πολλαπλά backend με ρουμπρίκες."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Πηγή",
+        "description": "Τύπος πηγής δεδομένων (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Τελικό σημείο URL (JSON)",
+          "json": "Μπλοκ δεδομένων JSON",
+          "filesystem": "Σύστημα αρχείων"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Δεδομένα πηγής",
+        "description": "URL ή δεδομένα JSON για το βαθμολόγιο."
+      },
+      {
+        "property": "forCourse",
+        "title": "Αναφορά μαθήματος",
+        "description": "Αναγνωριστικό μαθήματος που εκπέμπεται ως oer:forCourse σε κάθε πόρο αξιολόγησης."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "بلوک Html",
+    "description": "یک بلوک HTML پایه که اتصال HAXschema را فراهم می‌کند"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "کد HTML که می‌خواهید در محتوا نمایش دهید"
+      }
+    ]
+  }
+}

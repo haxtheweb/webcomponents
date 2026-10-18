@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Khadi lakale",
+    "description": "Khadi losavuta lokhala ndi kapangidwe kakale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mutu waukulu wa khadi."
+      },
+      {
+        "property": "url",
+        "description": "URL yoti itsegulidwe khadi likadinidwa."
+      },
+      {
+        "property": "subtitle",
+        "title": "Mutu waung'ono",
+        "description": "Mutu waung'ono wa khadi."
+      },
+      {
+        "property": "tags",
+        "title": "Ma Tagi",
+        "description": "Ma tag olekanitsidwa ndi koma."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Gwero la zofalitsa",
+        "description": "Gwero lalikulu la zofalitsa."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Gwero pamene cholozera chili pamwamba",
+        "description": "Gwero la zofalitsa loonetsedwa cholozera chikakhala pa khadi kapena khadi likayatsidwa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera woikidwa pa khadi lonse."
+      },
+      {
+        "property": "dark",
+        "title": "Mdima",
+        "description": "Gwiritsani ntchito mitundu yoyambira ya mawonekedwe amdima."
+      }
+    ]
+  }
+}

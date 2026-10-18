@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Vidéo",
+    "description": "Lecture vidéo accessible depuis plusieurs sources."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "URL de ce média."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titre",
+        "description": "Titre affiché sous la vidéo."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Image d'affiche",
+        "description": "URL de l'image d'affiche."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Pistes de texte",
+        "description": "Sous-titres, sous-titres pour sourds et malentendants, descriptions et autres pistes de texte de la vidéo."
+      },
+      {
+        "property": "startTime",
+        "title": "Heure de début",
+        "description": "Démarrer la vidéo à un moment précis (en secondes)."
+      },
+      {
+        "property": "endTime",
+        "title": "Heure de fin",
+        "description": "Arrêter la vidéo à un moment précis (en secondes) ; nécessite une heure de début."
+      },
+      {
+        "property": "learningMode",
+        "title": "Activer le mode apprentissage",
+        "description": "Désactive l'avance et le retour rapides."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Supprimer le bouton d'ouverture sur YouTube",
+        "description": "Supprime le bouton permettant d'ouvrir la vidéo sur YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Inclure un lien de partage ?",
+        "description": "Fournit un lien pour partager la vidéo."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Masquer les horodatages",
+        "description": "Masquer les horodatages de la transcription."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Masquer la transcription",
+        "description": "Masquer la transcription par défaut."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Piste d'audiodescription",
+        "description": "URL d'une piste d'audiodescription (fichier MP3) qui décrit oralement les éléments visuels."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indique s'il faut utiliser CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Autoriser la lecture en arrière-plan",
+        "description": "Poursuivre la lecture lorsque l'onglet du navigateur perd le focus."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Thème sombre pour la transcription",
+        "description": "Activer le thème sombre pour la transcription."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Désactiver l'interactivité",
+        "description": "Désactiver le mode interactif qui rend la transcription cliquable."
+      },
+      {
+        "property": "lang",
+        "title": "Langue",
+        "description": "Langue du média."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "(obsolète) Sélectionnez la couleur d'accent du lecteur."
+      }
+    ]
+  }
+}

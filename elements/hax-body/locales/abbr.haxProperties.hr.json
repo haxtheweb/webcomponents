@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kratica",
+    "description": "Kratica s opisom punog izraza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Vidljivi tekst kratice."
+      },
+      {
+        "attribute": "title",
+        "title": "Riječ",
+        "description": "Puni izraz prikazan pri prelasku mišem."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS-eind",
+    "description": "CMS-eind útgreidd á bakendanum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Slag",
+        "description": "slag úr CMS okkara",
+        "options": {
+          "node": "Knútur",
+          "user": "Brúkari",
+          "file": "Fíla"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id úr CMS okkara"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Vísingarháttur",
+        "description": "vísingarháttur úr CMS okkara"
+      }
+    ]
+  }
+}

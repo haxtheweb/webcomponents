@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Wêneya Danasîner",
+    "description": "Wêneya gihîştbar bi danasîna dirêj"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Wêne"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Nivîsa Alternatîf"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Binnivîsa Wêneyê",
+        "description": "Nivîsa binnivîsa wêneyê ku her dem xuya ye."
+      },
+      {
+        "slot": "details",
+        "title": "Danasîn",
+        "description": "Danasîna berfireh a wêneyê ku dikare were veşartin an nîşandan"
+      },
+      {
+        "slot": "summary",
+        "title": "Bişkoka Danasînê",
+        "description": "Xwerû ji bo bişkoka ku nivîsa danasînê nîşan dide/vedişêre, mînak \"agahî\", \"metadane\", hwd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Nivîsa kurteyê ya vebijarkî dema hûrgilî vekirî ne"
+      },
+      {
+        "property": "closeText",
+        "title": "Nivîsa kurteyê ya vebijarkî dema hûrgilî girtî ne"
+      }
+    ]
+  }
+}

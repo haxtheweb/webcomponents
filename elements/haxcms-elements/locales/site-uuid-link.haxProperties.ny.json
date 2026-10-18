@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ulalo wa HAX",
+    "description": "Ulalo wa chinthu china mu webusayiti yomwe mukugwira ntchito."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Chinthu",
+        "description": "Chinthu choti chionetsedwe pa ulalo / deta ya mutu"
+      }
+    ]
+  }
+}

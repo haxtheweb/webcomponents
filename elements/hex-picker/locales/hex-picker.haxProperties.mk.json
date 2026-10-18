@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Избирач на HEX",
+    "description": "Избирач на боја со hex-код"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Вредност",
+        "description": "Стандардна hex-вредност"
+      },
+      {
+        "property": "disabled",
+        "title": "Оневозможено",
+        "description": "Оневозможи го текстуалното поле"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Голем приказ",
+        "description": "Вклучи ја бојата во голем приказ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-werjefte",
+    "description": "CMS-werjeften wurde op de backend werjûn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Namme",
+        "description": "Namme fan de werjefte út ús CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Werjefte",
+        "description": "Display binnen dy werjefte út ús CMS"
+      }
+    ]
+  }
+}

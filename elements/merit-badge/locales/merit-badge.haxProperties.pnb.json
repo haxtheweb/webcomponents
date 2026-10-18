@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "میرٹ بیج",
+    "description": "کوئی ہنر حاصل کرن دسن لئی بصری بیج۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "بیج دا سرناواں",
+        "description": "بیج اُتے وکھایا سرناواں۔"
+      },
+      {
+        "property": "badgeImage",
+        "title": "بیج دی تصویر",
+        "description": "بیج لئی تصویر URL۔"
+      },
+      {
+        "property": "badgeDetails",
+        "title": "بیج دیاں تفصیلاں",
+        "description": "بیج بارے تفصیلاں۔"
+      },
+      {
+        "property": "hyperLink",
+        "title": "ہائپر لنک",
+        "description": "بیج نال جڑیا لنک۔"
+      },
+      {
+        "property": "badgeSkills",
+        "title": "بیج دے ہنر",
+        "description": "بیج اُتے وکھائے ہنر۔"
+      },
+      {
+        "property": "skill",
+        "title": "ہنر (OER سکیما)",
+        "description": "OER سکیما: ایس سکھن دے مقصد نوں پورا کر کے حاصل کیتا ہنر۔"
+      }
+    ]
+  }
+}

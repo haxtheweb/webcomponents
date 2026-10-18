@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kākau kiʻi",
+    "description": "Kākau no kahi kiʻi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Lepili kiʻi",
+        "description": "Kikokikona i hōʻike ʻia ma lalo o ke kiʻi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "ბარათი",
+    "description": "ბარათი არასავალდებულო აქცენტის სტილით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "სათაური",
+        "description": "ბარათის სათაური."
+      },
+      {
+        "slot": "subheading",
+        "title": "ქვესათაური",
+        "description": "ბარათის არასავალდებულო ქვესათაური."
+      },
+      {
+        "slot": "content",
+        "title": "შიგთავსი",
+        "description": "ბარათის კონტენტი."
+      },
+      {
+        "slot": "footer",
+        "title": "ქვედა კოლონტიტული",
+        "description": "ბარათის არასავალდებულო ძირსართი."
+      },
+      {
+        "property": "imageSrc",
+        "title": "სურათი",
+        "description": "არასავალდებულო სურათი"
+      },
+      {
+        "property": "imageAlt",
+        "title": "სურათის ალტერნატიული ტექსტი",
+        "description": "ალტერნატიული ტექსტი, რომელიც სურათს ეკრანის წამკითხველებისთვის აღწერს. დატოვეთ ცარიელი მხოლოდ მაშინ, თუ სურათი წმინდად დეკორატიულია."
+      },
+      {
+        "property": "imageAlign",
+        "title": "სურათის გასწორება",
+        "description": "სურათის ჰორიზონტალური გასწორება",
+        "options": {
+          "left": "მარცხნივ",
+          "center": "ცენტრში",
+          "right": "მარჯვნივ"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "სურათის ვერტიკალური გასწორება",
+        "description": "სურათის ვერტიკალური გასწორება",
+        "options": {
+          "top": "ზემოთ",
+          "center": "ცენტრში",
+          "bottom": "ქვემოთ"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "არასავალდებულო აქცენტის ფერი."
+      },
+      {
+        "property": "dark",
+        "title": "მუქი თემა",
+        "description": "მუქი თემის ჩართვა"
+      },
+      {
+        "property": "horizontal",
+        "title": "ჰორიზონტალური",
+        "description": "ჰორიზონტალური ორიენტაცია?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "სათაურის აქცენტი",
+        "description": "გამოვიყენოთ აქცენტის ფერი სათაურზე?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "ფონის აქცენტი",
+        "description": "გამოვიყენოთ აქცენტის ფერი ბარათის ფონზე?"
+      },
+      {
+        "property": "noBorder",
+        "title": "ჩარჩოს აქცენტის გარეშე",
+        "description": "მოვაშოროთ ჩარჩოს აქცენტი?"
+      },
+      {
+        "property": "flat",
+        "title": "ბრტყელი",
+        "description": "მოვაშოროთ ჩრდილი?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "კუთხე",
+        "description": "ბარათის კუთხის კონტენტი."
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Listă numerotată",
+    "description": "Creează o listă numerotată."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stilul numerotării",
+        "description": "Stilul folosit pentru numerotarea listei ordonate.",
+        "options": {
+          "": "Implicit (zecimal)",
+          "list-decimal-leading-zero": "Zecimal cu zero în față (01, 02, 03)",
+          "list-lower-alpha": "Litere mici (a, b, c)",
+          "list-upper-alpha": "Litere mari (A, B, C)",
+          "list-lower-roman": "Cifre romane mici (i, ii, iii)",
+          "list-upper-roman": "Cifre romane mari (I, II, III)"
+        }
+      }
+    ]
+  }
+}

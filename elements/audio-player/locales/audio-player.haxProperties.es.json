@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Puede presentar vídeo de forma muy accesible, sea cual sea la fuente."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origen",
+        "description": "La URL de este contenido multimedia."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Título",
+        "description": "Título sencillo debajo del vídeo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Selecciona el color de acento del reproductor."
+      },
+      {
+        "property": "track",
+        "title": "Subtítulos",
+        "description": "La URL del archivo de subtítulos."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Imagen en miniatura",
+        "description": "Opcional. La URL de una imagen en miniatura o de portada."
+      },
+      {
+        "property": "learningMode",
+        "title": "Activar modo de aprendizaje",
+        "description": "Desactiva el avance y el retroceso rápidos."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Quitar el botón de abrir en YouTube",
+        "description": "Quita el botón para abrir el vídeo en YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "¿Incluir un enlace para compartir?",
+        "description": "Proporciona un enlace para compartir el vídeo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indica si se debe usar CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Permitir reproducción en segundo plano",
+        "description": "Los vídeos se pausan / reproducen automáticamente cuando la pestaña pierde el foco; esto permite reproducir el vídeo sin que la pestaña tenga el foco"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema oscuro para la transcripción",
+        "description": "Activar el tema oscuro para la transcripción."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Desactivar modo interactivo",
+        "description": "Desactivar el modo interactivo que hace que la transcripción sea clicable."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Ocultar marcas de tiempo",
+        "description": "Ocultar las marcas de tiempo de la transcripción."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Ocultar transcripción",
+        "description": "Ocultar la transcripción por defecto."
+      },
+      {
+        "property": "lang",
+        "title": "Idioma",
+        "description": "Idioma del contenido multimedia."
+      }
+    ]
+  }
+}

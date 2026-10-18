@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS entitás",
+    "description": "A háttérrendszeren megjelenített CMS entitás"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Típus",
+        "description": "típus a CMS-ünkből",
+        "options": {
+          "node": "Csomópont",
+          "user": "Felhasználó",
+          "file": "Fájl"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "azonosító a CMS-ünkből"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Megjelenítési mód",
+        "description": "megjelenítési mód a CMS-ünkből"
+      }
+    ]
+  }
+}

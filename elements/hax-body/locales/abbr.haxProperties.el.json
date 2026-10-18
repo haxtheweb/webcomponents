@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Συντομογραφία",
+    "description": "Συντομογραφία με επεξήγηση του πλήρους όρου."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Κείμενο",
+        "description": "Ορατό κείμενο συντομογραφίας."
+      },
+      {
+        "attribute": "title",
+        "title": "Λέξη",
+        "description": "Πλήρης όρος που εμφανίζεται κατά την αιώρηση."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Paparan CMS",
+    "description": "Paparan CMS dipaparkan di backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Nama",
+        "description": "Nama paparan daripada CMS kami"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Paparan",
+        "description": "Paparan dalam view tersebut daripada CMS kami"
+      }
+    ]
+  }
+}

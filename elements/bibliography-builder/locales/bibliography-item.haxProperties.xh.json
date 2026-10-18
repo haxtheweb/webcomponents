@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Into yebhayibhliyografi",
+    "description": "Into emele intetho ecatshulweyo enye kwibhayibhliyografi, exhasa iifomathi ezininzi nokhetho lokuthumela."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Uhlobo",
+        "description": "Uhlobo lwentetho ecatshulweyo",
+        "options": {
+          "web": "Iwebhu",
+          "journal": "Ijenali",
+          "book": "Incwadi"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko sento"
+      },
+      {
+        "property": "authors",
+        "title": "Umbhali/Ababhali",
+        "description": "Iziganeko kumgca wexesha"
+      },
+      {
+        "property": "publisher",
+        "title": "Umpapashi",
+        "description": "Iwebhusayithi yokuqala"
+      }
+    ]
+  }
+}

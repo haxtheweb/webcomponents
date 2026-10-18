@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Abun Ciki na Nesa",
+    "description": "Sake amfani da abun ciki daga gidan yanar gizo ɗaya a wani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Adireshin gidan yanar gizo",
+        "description": "Liƙa adireshi don yin ishara ga abun ciki idan ba gidan yanar gizon yanzu ba ne"
+      },
+      {
+        "property": "uuid",
+        "title": "Abu",
+        "description": "Abun da za a nuna don hanyar haɗi / bayanan take"
+      },
+      {
+        "property": "breakreference",
+        "title": "Karya ishara",
+        "description": "Danna wannan akwati yana kwafi abun ciki na nesa don gyarawa a gida amma yana cire alaƙar. Ba zai ƙara samun sabuntawa ba idan kayan ishara sun sabunta."
+      },
+      {
+        "property": "showTitle",
+        "title": "Nuna take",
+        "description": "Kunna don nuna taken albarkar da ake nunawa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Olùyan Hex",
+    "description": "Olùyan àwọ̀ kóòdù hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Iye",
+        "description": "Iye hex àkọ́kọ́"
+      },
+      {
+        "property": "disabled",
+        "title": "Àìṣiṣẹ́",
+        "description": "Pa pápá ọ̀rọ̀"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Ìfihàn Ńlá",
+        "description": "Fi àwọ̀ sínú ìfihàn ńlá"
+      }
+    ]
+  }
+}

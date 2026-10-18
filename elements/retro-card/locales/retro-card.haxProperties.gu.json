@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "રેટ્રો કાર્ડ",
+    "description": "રેટ્રો ડિઝાઇન સાથેનું સાદું કાર્ડ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "મુખ્ય કાર્ડ શીર્ષક."
+      },
+      {
+        "property": "url",
+        "description": "કાર્ડ પર ક્લિક કરવામાં આવે ત્યારે ખોલવાનું URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "પેટા-શીર્ષક",
+        "description": "કાર્ડ પેટા-શીર્ષક."
+      },
+      {
+        "property": "tags",
+        "title": "ટૅગ્સ",
+        "description": "અલ્પવિરામથી અલગ કરેલા ટૅગ્સ."
+      },
+      {
+        "property": "mediaSource",
+        "title": "મીડિયા સ્રોત",
+        "description": "પ્રાથમિક મીડિયા સ્રોત."
+      },
+      {
+        "property": "hoverSource",
+        "title": "હોવર પર સ્રોત",
+        "description": "કાર્ડ પર હોવર અથવા સક્રિય કરવામાં આવે ત્યારે બતાવાતો મીડિયા સ્રોત."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "સમગ્ર કાર્ડ પર લાગુ થતો એક્સેન્ટ રંગ."
+      },
+      {
+        "property": "dark",
+        "title": "ડાર્ક",
+        "description": "ડાર્ક મોડના મૂળ રંગો વાપરો."
+      }
+    ]
+  }
+}

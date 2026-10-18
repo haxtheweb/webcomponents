@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Karta retro",
+    "description": "Karteke sade bi sêwirandineke retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê sereke yê kartê."
+      },
+      {
+        "property": "url",
+        "description": "URL ku dema kart tê tikandin vebe."
+      },
+      {
+        "property": "subtitle",
+        "title": "Binsernav",
+        "description": "Binsernavê kartê."
+      },
+      {
+        "property": "tags",
+        "title": "Etîket",
+        "description": "Etîketên bi bêhnokê veqetandî."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Çavkaniya medyayê",
+        "description": "Çavkaniya sereke ya medyayê."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Çavkanî dema ser re derbas dibe",
+        "description": "Çavkaniya medyayê ku dema mişk li ser kartê ye an kart çalak e tê nîşandan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê Balkêş",
+        "description": "Rengê aksentê ku li seranserê kartê tê sepandin."
+      },
+      {
+        "property": "dark",
+        "title": "Tarî",
+        "description": "Rengên bingehîn ên moda tarî bi kar bîne."
+      }
+    ]
+  }
+}

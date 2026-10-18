@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Quyllur Chaninchay",
+    "description": "Chaninchayta rikuchiq widget utaq chaninchanapaq boton."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Puntaje",
+        "description": "Kunan puntaje chanin."
+      },
+      {
+        "property": "possible",
+        "title": "Atikuq",
+        "description": "Aswan hatun atikuq puntaje."
+      },
+      {
+        "property": "numStars",
+        "title": "Quyllurkunap Yupaynin",
+        "description": "Rikuchinapaq quyllurkunap yupaynin."
+      },
+      {
+        "property": "interactive",
+        "title": "Kuyuq",
+        "description": "Ruraqta chaninchayta churananpaq saqiy."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Rubrica Escala Kay",
+        "description": "Sapanka quyllurpaq OER Schema RubricScale RubricLevel metadata-ta (levelOrdinal/levelPoints) lluqsichiy."
+      }
+    ]
+  }
+}

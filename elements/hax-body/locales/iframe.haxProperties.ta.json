@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "வெளிப்புற வலை உள்ளடக்கத்தை உட்பொதிக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "மூலம்",
+        "description": "இந்த வளத்திற்கான URL."
+      }
+    ]
+  }
+}

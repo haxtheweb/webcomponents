@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "ઉપલબ્ધ થીમ્સ",
+    "description": "લાઇવ પૂર્વાવલોકન સ્વિચિંગ સાથે ઉપલબ્ધ HAXcms થીમ્સ પ્રદર્શિત કરો"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "વ્યૂ મોડ",
+        "description": "થીમ્સ કેવી રીતે પ્રદર્શિત કરવી તે પસંદ કરો",
+        "options": {
+          "gallery": "ગૅલેરી",
+          "table": "કોષ્ટક"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "વિગતો બતાવો",
+        "description": "થીમ વર્ણનો અને વધારાની માહિતી બતાવો"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "છુપાયેલી અને જૂની થીમ્સ બતાવો",
+        "description": "ડેશબોર્ડ ડિફૉલ્ટ્સ ઉપરાંત છુપાયેલી, જૂની અને ભયંકર થીમ્સ બતાવો"
+      },
+      {
+        "property": "columns",
+        "title": "કૉલમ (ગેલેરી)",
+        "description": "ગેલેરી વ્યૂમાં કૉલમની સંખ્યા"
+      }
+    ]
+  }
+}

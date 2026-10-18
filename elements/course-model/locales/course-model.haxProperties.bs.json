@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "model kursa",
+    "description": "Interaktivni raspored za koncepte kursa s detaljima, animacijom i provjerama znanja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "naslov"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Područje informacija"
+      },
+      {
+        "title": "Područje detalja"
+      },
+      {
+        "title": "Područje animacije"
+      },
+      {
+        "title": "Područje provjere znanja"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Područje logotipa"
+      }
+    ]
+  }
+}

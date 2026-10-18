@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "صورة بتأثير المنظر",
+    "description": "تمرير الصورة"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "الصورة",
+        "description": "الصورة المستخدمة في الخلفية"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "منطقة العنوان",
+        "description": "منطقة نص العنوان"
+      }
+    ]
+  }
+}

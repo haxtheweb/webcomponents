@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Sözcük",
+    "description": "Kelime terimi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Terim"
+      },
+      {
+        "slot": "",
+        "title": "Tanım",
+        "description": "Terime tıklandığında gösterilecek tanım."
+      },
+      {
+        "property": "description",
+        "title": "Açıklama (OER Şeması)",
+        "description": "OER Şeması: kelime teriminin kısa açıklaması. Boş bırakılırsa tanım metninden otomatik doldurulur."
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Bronverwysing",
+    "description": "Aanhalingselement met drie aanbiedingsmodusse."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel van die aangehaalde werk."
+      },
+      {
+        "property": "source",
+        "title": "Bronskakel",
+        "description": "Bron-URL vir die aangehaalde werk."
+      },
+      {
+        "property": "date",
+        "title": "Datum geraadpleeg",
+        "description": "Datum waarop die bron geraadpleeg is."
+      },
+      {
+        "property": "scope",
+        "title": "Omvang",
+        "description": "Elementomvang om aan te haal.",
+        "options": {
+          "sibling": "Sibbe-element",
+          "parent": "Ouer-element"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lisensie",
+        "description": "Lisensie vir die aangehaalde werk."
+      },
+      {
+        "property": "creator",
+        "title": "Skepper",
+        "description": "Skepper of eienaar van die aangehaalde werk."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema-tipe",
+        "description": "OER Schema-klas vir hierdie aanhaling. Verstek is oer:ReferencedMaterial; oorskryf slegs met 'n geldige OER-klas (bv. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

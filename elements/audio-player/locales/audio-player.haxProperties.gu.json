@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "ઑડિયો",
+    "description": "આ સ્રોતને ધ્યાનમાં લીધા વિના વિડિયોને અત્યંત સુલભ રીતે પ્રસ્તુત કરી શકે છે."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "સ્રોત",
+        "description": "આ મીડિયા માટે URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "શીર્ષક",
+        "description": "વિડિયો નીચે સાદું શીર્ષક"
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "પ્લેયર માટે એક્સેન્ટ રંગ પસંદ કરો."
+      },
+      {
+        "property": "track",
+        "title": "ક્લોઝ્ડ કૅપ્શન્સ",
+        "description": "કૅપ્શન્સ ફાઇલ માટે URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "થંબનેલ છબી",
+        "description": "વૈકલ્પિક. થંબનેલ/પોસ્ટર છબી માટે URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "શીખવાનો મોડ સક્ષમ કરો",
+        "description": "ઝડપી આગળ અને પાછળ જવાનું અક્ષમ કરે છે."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube પર ખોલો બટન દૂર કરો",
+        "description": "YouTube પર વિડિયો ખોલવા માટેનું બટન દૂર કરે છે."
+      },
+      {
+        "property": "linkable",
+        "title": "શેર લિંક શામેલ કરવી છે?",
+        "description": "વિડિયો શેર કરવા માટે લિંક આપે છે."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS વાપરવું કે નહીં તે દર્શાવે છે.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "પૃષ્ઠભૂમિમાં પ્લેબેકની મંજૂરી આપો",
+        "description": "ટૅબ ફોકસ ગુમાવે ત્યારે વિડિયો આપમેળે થોભે / ચાલે છે; આ ટૅબ પર ફોકસ વિના વિડિયો ચલાવવા સક્ષમ કરે છે"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ટ્રાન્સક્રિપ્ટ માટે ડાર્ક થીમ",
+        "description": "ટ્રાન્સક્રિપ્ટ માટે ડાર્ક થીમ સક્ષમ કરો."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ઇન્ટરેક્ટિવ અક્ષમ કરો",
+        "description": "ટ્રાન્સક્રિપ્ટને ક્લિક કરી શકાય તેવું બનાવતો ઇન્ટરેક્ટિવ મોડ અક્ષમ કરો."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ટાઇમસ્ટેમ્પ છુપાવો",
+        "description": "ટ્રાન્સક્રિપ્ટ પરના ટાઇમસ્ટેમ્પ છુપાવો."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ટ્રાન્સક્રિપ્ટ છુપાવો",
+        "description": "ડિફૉલ્ટ રૂપે ટ્રાન્સક્રિપ્ટ છુપાવો."
+      },
+      {
+        "property": "lang",
+        "title": "ભાષા",
+        "description": "મીડિયાની ભાષા."
+      }
+    ]
+  }
+}

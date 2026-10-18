@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Paryškinimas",
+    "description": "Paryškinti tekstą eilutėje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekstas",
+        "description": "Paryškintas tekstas."
+      }
+    ]
+  }
+}

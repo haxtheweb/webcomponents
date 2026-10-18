@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "ವೃತ್ತಿ ಐಟಂ",
+    "description": "ಒಂದು ಸಂಸ್ಥೆ ಮತ್ತು ಅದಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಪಾತ್ರಗಳು"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "ಸಂಸ್ಥೆಯ ಹೆಸರು"
+      },
+      {
+        "property": "location",
+        "title": "ಸ್ಥಳ"
+      },
+      {
+        "property": "source",
+        "title": "ಮೂಲ"
+      }
+    ]
+  }
+}

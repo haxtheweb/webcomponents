@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Viide",
+    "description": "Viite element kolme esitusrežiimiga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Viidatud teose pealkiri."
+      },
+      {
+        "property": "source",
+        "title": "Allika link",
+        "description": "Viidatud teose allika URL."
+      },
+      {
+        "property": "date",
+        "title": "Vaatamise kuupäev",
+        "description": "Kuupäev, millal allikat vaadati."
+      },
+      {
+        "property": "scope",
+        "title": "Ulatus",
+        "description": "Viidatava elemendi ulatus.",
+        "options": {
+          "sibling": "Sama taseme element",
+          "parent": "Ülemelement"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Litsents",
+        "description": "Viidatud teose litsents."
+      },
+      {
+        "property": "creator",
+        "title": "Looja",
+        "description": "Viidatud teose looja või omanik."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema tüüp",
+        "description": "Selle viite OER Schema klass. Vaikimisi oer:ReferencedMaterial; asenda ainult kehtiva OER-klassiga (nt oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

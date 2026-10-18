@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Gráfico de barras",
+    "description": "Cria um gráfico acessível com base em um CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cor de destaque",
+        "description": "Uma cor de destaque opcional."
+      },
+      {
+        "title": "Tema escuro",
+        "description": "Ativar tema escuro"
+      },
+      {
+        "title": "Arquivo CSV",
+        "description": "Carregar dados de um CSV."
+      },
+      {
+        "title": "Título do gráfico",
+        "description": "Texto alternativo acessível para o seu gráfico."
+      },
+      {
+        "title": "Descrição do gráfico",
+        "description": "Descrição acessível do seu gráfico."
+      },
+      {
+        "title": "Nome da escala",
+        "description": "A proporção largura:altura do gráfico (consulte https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings para $ct-scales e $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Mostrar grade de fundo"
+      },
+      {
+        "title": "Barras horizontais",
+        "description": "Inverte os eixos do gráfico de barras para desenhar um gráfico de barras horizontais. Lembre-se de que também é preciso inverter as configurações dos eixos, pois o eixo Y passará a exibir os rótulos e o eixo X os valores."
+      },
+      {
+        "title": "Empilhar barras",
+        "description": "Se definida como true, esta propriedade fará com que as barras das séries sejam empilhadas."
+      },
+      {
+        "title": "Distribuir séries",
+        "description": "Se definida como true, cada barra representará uma série, e espera-se que o array de dados seja um array unidimensional de valores em vez de um array de séries."
+      },
+      {
+        "title": "Preenchimento do gráfico (superior)"
+      },
+      {
+        "title": "Preenchimento do gráfico (inferior)"
+      },
+      {
+        "title": "Preenchimento do gráfico (esquerda)"
+      },
+      {
+        "title": "Preenchimento do gráfico (direita)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Inverter dados",
+        "description": "Inverte os dados, incluindo os rótulos, a ordem das séries e os arrays de dados de todas as séries."
+      },
+      {
+        "title": "Tabela HTML",
+        "description": "Opcional: carregar os dados como uma tabela HTML."
+      },
+      {
+        "title": "Mínimo do gráfico",
+        "description": "Substituir o mínimo natural do gráfico permite ampliar ou limitar o menor valor exibido no gráfico"
+      },
+      {
+        "title": "Máximo do gráfico",
+        "description": "Substituir o máximo natural do gráfico permite ampliar ou limitar o maior valor exibido no gráfico"
+      },
+      {
+        "title": "Eixo X: mostrar grade",
+        "description": "Mostrar a grade do eixo X."
+      },
+      {
+        "title": "Deslocamento do eixo X"
+      },
+      {
+        "title": "Posição do eixo X",
+        "description": "Posição onde os rótulos são colocados. Pode ser definida como \"start\" ou \"end\", em que \"start\" equivale a esquerda ou topo no eixo vertical e \"end\" equivale a direita ou base no eixo horizontal"
+      },
+      {
+        "title": "Eixo X: mostrar rótulo",
+        "description": "Mostrar o rótulo do eixo X."
+      },
+      {
+        "title": "Rótulo do eixo X (deslocamento horizontal)",
+        "description": "Posição horizontal dos rótulos do eixo X."
+      },
+      {
+        "title": "Rótulo do eixo X (deslocamento vertical)",
+        "description": "Posição vertical dos rótulos do eixo X."
+      },
+      {
+        "title": "Título do eixo X",
+        "description": "Título opcional para o eixo X."
+      },
+      {
+        "title": "Título do eixo X (deslocamento horizontal)",
+        "description": "Posição horizontal do título do eixo X."
+      },
+      {
+        "title": "Título do eixo X (deslocamento vertical)",
+        "description": "Posição vertical do título do eixo X."
+      },
+      {
+        "title": "Âncora do título do eixo X",
+        "description": "Âncora opcional para o título do eixo X.",
+        "options": {
+          "middle": "meio",
+          "end": "fim",
+          "start": "início"
+        }
+      },
+      {
+        "title": "Espaço mínimo da escala do eixo X",
+        "description": "Especifica a altura mínima em pixels dos passos da escala."
+      },
+      {
+        "title": "Escala do eixo X (somente inteiros)",
+        "description": "Usar apenas valores inteiros (números inteiros) nos passos da escala."
+      },
+      {
+        "title": "Eixo Y: mostrar grade",
+        "description": "Mostrar a grade do eixo Y."
+      },
+      {
+        "title": "Deslocamento do eixo Y"
+      },
+      {
+        "title": "Posição do eixo Y",
+        "description": "Posição onde os rótulos são colocados. Pode ser definida como \"start\" ou \"end\", em que \"start\" equivale a esquerda ou topo no eixo vertical e \"end\" equivale a direita ou base no eixo horizontal"
+      },
+      {
+        "title": "Eixo Y: mostrar rótulo",
+        "description": "Mostrar o rótulo do eixo Y."
+      },
+      {
+        "title": "Rótulo do eixo Y (deslocamento horizontal)",
+        "description": "Posição horizontal do rótulo do eixo Y."
+      },
+      {
+        "title": "Rótulo do eixo Y (deslocamento vertical)",
+        "description": "Posição vertical do rótulo do eixo Y."
+      },
+      {
+        "title": "Espaço mínimo da escala do eixo Y",
+        "description": "Especifica a altura mínima em pixels dos passos da escala."
+      },
+      {
+        "title": "Escala do eixo Y (somente inteiros)",
+        "description": "Usar apenas valores inteiros (números inteiros) nos passos da escala."
+      },
+      {
+        "title": "Título do eixo Y",
+        "description": "Título opcional para o eixo Y."
+      },
+      {
+        "title": "Título do eixo Y (deslocamento vertical)",
+        "description": "Posição horizontal do título do eixo Y."
+      },
+      {
+        "title": "Título do eixo Y (deslocamento horizontal)",
+        "description": "Posição horizontal do título do eixo Y."
+      },
+      {
+        "title": "Âncora do título do eixo Y",
+        "description": "Âncora opcional para o título do eixo Y.",
+        "options": {
+          "middle": "meio",
+          "end": "fim",
+          "start": "início"
+        }
+      },
+      {
+        "title": "Inverter título do eixo Y",
+        "description": "Inverter o título do eixo Y?"
+      },
+      {
+        "title": "Valor de referência",
+        "description": "A menos que mínimo/máximo sejam definidos explicitamente, o gráfico de barras será centralizado em zero por padrão."
+      },
+      {
+        "title": "Distância entre barras da série",
+        "description": "Especifique a distância em pixels entre as barras de um grupo."
+      },
+      {
+        "title": "Modo de empilhamento",
+        "description": "Se definida como \"true\", esta propriedade formará um total para cada ponto da série. Isso também influenciará o eixo y e os limites gerais do gráfico. Se definida como \"false\", esta propriedade forçará as barras empilhadas a serem desenhadas a partir da linha zero. No modo empilhado, a propriedade \"seriesBarDistance\" não terá efeito."
+      }
+    ]
+  }
+}

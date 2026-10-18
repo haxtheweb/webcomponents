@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Link bażiku",
+    "description": "Element bażiku tal-link."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Link",
+        "description": "URL tad-destinazzjoni."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Test",
+        "description": "Test viżibbli tal-link."
+      },
+      {
+        "attribute": "target",
+        "title": "Mira",
+        "description": "Fejn għandu jinfetaħ il-link.",
+        "options": {
+          "": "L-istess tieqa",
+          "_blank": "Tieqa ġdida - _blank",
+          "_top": "Tieqa ta' fuq nett - _top",
+          "_parent": "Tieqa ġenitur - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Test tat-titlu",
+        "description": "Titlu ta' konsulenza għall-aċċessibbiltà u l-SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Relazzjoni mad-destinazzjoni (sigurtà/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

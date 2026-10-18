@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Siart Cylch",
+    "description": "Yn creu siart hygyrch yn seiliedig ar CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lliw Acen",
+        "description": "Lliw acen dewisol."
+      },
+      {
+        "title": "Thema Dywyll",
+        "description": "Galluogi Thema Dywyll"
+      },
+      {
+        "title": "Ffeil CSV",
+        "description": "Llwytho data o CSV."
+      },
+      {
+        "title": "Teitl y Siart",
+        "description": "Testun amgen hygyrch ar gyfer eich siart."
+      },
+      {
+        "title": "Disgrifiad y Siart",
+        "description": "Disgrifiad hygyrch o'ch siart."
+      },
+      {
+        "title": "Enw'r Raddfa",
+        "description": "Cymhareb lled:uchder y siart (Gweler https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings ar gyfer $ct-scales a $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Toesen"
+      },
+      {
+        "title": "Dangos Label"
+      },
+      {
+        "title": "Ongl Ddechrau"
+      },
+      {
+        "title": "Padin"
+      },
+      {
+        "title": "Cyfanswm",
+        "description": "Cyfanswm dewisol y gallwch ei bennu. Drwy bennu gwerth cyfanswm, rhaid i swm y gwerthoedd yn y gyfres fod yn hafal i'r cyfanswm hwn er mwyn llunio cylch llawn. Gallwch ddefnyddio'r paramedr hwn i lunio rhannau o gylch yn unig neu siartiau medrydd."
+      },
+      {
+        "title": "Anwybyddu Gwerthoedd Gwag",
+        "description": "Bydd gwerthoedd gwag yn cael eu hanwybyddu i osgoi llunio sleisiau a labeli diangen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gwrthdroi'r Data",
+        "description": "Gwrthdroi'r data gan gynnwys labeli, trefn y cyfresi yn ogystal ag araeau data'r cyfresi cyfan."
+      },
+      {
+        "title": "Tabl HTML",
+        "description": "Dewisol: Llwytho data fel tabl HTML."
+      },
+      {
+        "title": "Lled Strôc y Toesen"
+      },
+      {
+        "title": "Toesen Solet",
+        "description": "Llunio segmentau'r toesen fel siapiau yn lle strociau."
+      },
+      {
+        "title": "Cyfeiriad y Label",
+        "description": "Llunio segmentau'r toesen fel siapiau yn lle strociau.",
+        "options": {
+          "neutral": "niwtral",
+          "explode": "ffrwydro",
+          "implode": "mewnffrwydro"
+        }
+      },
+      {
+        "title": "Gwrthbwyso'r Label",
+        "description": "Gwrthbwyso safle'r label o'r safle safonol, sef hanner pellter y radiws. Gall y gwerth hwn fod naill ai'n bositif neu'n negatif. Bydd gwerthoedd positif yn gosod y label i ffwrdd o'r canol."
+      },
+      {
+        "title": "Safle'r Label",
+        "options": {
+          "inside": "y tu mewn",
+          "outside": "y tu allan",
+          "center": "canol"
+        }
+      }
+    ]
+  }
+}

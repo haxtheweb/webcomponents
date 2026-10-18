@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Hisabati",
+    "description": "Wasilisha hisabati kwa njia inayopendeza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Hisabati",
+        "description": "Ingiza mlinganyo kama LaTeX"
+      }
+    ]
+  }
+}

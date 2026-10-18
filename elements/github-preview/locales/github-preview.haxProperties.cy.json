@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Rhagolwg Github",
+    "description": "Ffigur hygyrch gyda disgrifiad hir"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Sefydliad",
+        "description": "Enw peiriant y sefydliad Github"
+      },
+      {
+        "property": "repo",
+        "title": "Ystorfa",
+        "description": "Enw peiriant yr ystorfa"
+      },
+      {
+        "property": "extended",
+        "title": "Golwg Estynedig",
+        "description": "Yn cynnwys readme yn yr elfen"
+      }
+    ]
+  }
+}

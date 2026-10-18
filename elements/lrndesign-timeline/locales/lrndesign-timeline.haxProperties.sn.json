@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Nhoroondo yenguva",
+    "description": "Mutsetse wenguva wezviitiko une mifananidzo nemavara"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Musoro wenhoroondo",
+        "description": "Zita remutsetse wenguva."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rwekusimbisa rusingamanikidzwi."
+      },
+      {
+        "property": "dark",
+        "title": "Dingindira Rerima",
+        "description": "Batidza Dingindira reRima"
+      },
+      {
+        "slot": "",
+        "title": "Tsananguro yeMutsetse weNguva",
+        "description": "Mavara asingamanikidzwe anotsanangura mutsetse wenguva."
+      },
+      {
+        "property": "events",
+        "title": "Zviitiko zveMutsetse weNguva",
+        "description": "Zviitiko zviri pamutsetse wenguva"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Makemakika",
+    "description": "Hōʻike i ka makemakika ma ke ʻano nani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Makemakika",
+        "description": "Hoʻokomo i ka haʻihelu ma ke ʻano LaTeX"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex پکر",
+    "description": "Hex کوڈ رنگ پکر"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "قدر",
+        "description": "طے شدہ hex قدر"
+      },
+      {
+        "property": "disabled",
+        "title": "غیر فعال",
+        "description": "متن کا خانہ غیر فعال کریں"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "بڑا ڈسپلے",
+        "description": "بڑے ڈسپلے میں رنگ شامل کریں"
+      }
+    ]
+  }
+}

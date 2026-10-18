@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS-tekn",
+    "description": "CMS-tekn útgreitt á bakendanum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Tekn",
+        "description": "Tekn úr CMS okkara"
+      }
+    ]
+  }
+}

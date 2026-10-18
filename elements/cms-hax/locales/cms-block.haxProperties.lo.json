@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ບລັອກ CMS",
+    "description": "ບລັອກ CMS ທີ່ສະແດງຜົນຢູ່ backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "ໂມດູນ",
+        "description": "ໂມດູນທີ່ຈະໂຫຼດຈາກ CMS ຂອງພວກເຮົາ"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta ຂອງບລັອກທີ່ຈະໂຫຼດຈາກ CMS ຂອງພວກເຮົາ"
+      }
+    ]
+  }
+}

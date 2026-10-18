@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "دستیاب تھیماں",
+    "description": "دستیاب HAXcms تھیماں سدھی جھلک بدلن نال وکھاؤ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "ویو موڈ",
+        "description": "چݨو کہ تھیماں کیویں وکھاؤݨیاں نیں",
+        "options": {
+          "gallery": "گیلری",
+          "table": "جدول"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "تفصیلاں وکھاؤ",
+        "description": "تھیم دیاں تفصیلاں تے ہور معلومات وکھاؤ"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "لُکیاں تے پرانیاں تھیماں وکھاؤ",
+        "description": "ڈیش بورڈ ڈیفالٹاں دے نال لُکیاں، پرانیاں تے بھیڑیاں تھیماں وی وکھاؤ"
+      },
+      {
+        "property": "columns",
+        "title": "کالم (گیلری)",
+        "description": "گیلری ویو وچ کالماں دی گنتی"
+      }
+    ]
+  }
+}

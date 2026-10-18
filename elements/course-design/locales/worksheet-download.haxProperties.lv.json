@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Darba lapas lejupielāde",
+    "description": "Poga lejupielādei pieejamu failu attēlošanai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Lejupielādes nosaukums."
+      },
+      {
+        "property": "link",
+        "title": "Saite",
+        "description": "Lejupielādes saite."
+      }
+    ]
+  }
+}

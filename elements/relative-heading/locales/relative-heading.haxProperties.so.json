@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Madax qaraabo ah",
+    "description": "wuxuu soo saaraa heer-kala-sarraynta madaxa saxda ah iyadoo lagu salaynayo madaxa waalidka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Aqoonsiga Ilaha ee Madaxa Waalidka"
+      },
+      {
+        "property": "disableLink",
+        "description": "Wuxuu damiyaa astaanta badhanka xiriirka."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Wuxuu u toosiyaa badhanka koobiga xiriirka dhinaca midig ee madaxa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Heerka madaxa haddii waalidka la heli waayo."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Wuxuu beddelaa qoraalka caadiga ah ee fariinta koobiga xiriirka."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Wuxuu beddelaa calaamadda caadiga ah ee badhanka koobiga xiriirka."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Wuxuu beddelaa astaanta caadiga ah ee badhanka koobiga xiriirka."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Wuxuu beddelaa calaamadda caadiga ah ee badhanka xidhitaanka fariinta koobiga xiriirka."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Wuxuu beddelaa astaanta caadiga ah ee badhanka xidhitaanka fariinta koobiga xiriirka."
+      }
+    ]
+  }
+}

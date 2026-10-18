@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Simi qullqa",
+    "description": "Simi qullqa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Simi"
+      },
+      {
+        "slot": "",
+        "title": "Sut'ichay",
+        "description": "Simi ñit'isqa kaptin rikuchinapaq sut'ichay."
+      },
+      {
+        "property": "description",
+        "title": "Willakuy (OER Schema)",
+        "description": "OER Schema: simip pisi willakuynin. Ch'usaq saqisqa kaptinqa sut'ichay qillqamanta kikillanmanta hunt'achikun."
+      }
+    ]
+  }
+}

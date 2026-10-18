@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Dálkauppsetning",
+    "description": "Raða efni í einfalda dálka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Dálkauppsetning",
+        "description": "Stíll til að birta þessi atriði (getur breyst á litlum skjám)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Slökkva á aðlögun",
+        "description": "Hakaðu í reitinn til að halda dálkum á stærri skjám en stafla þeim samt á minnstu skjám"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Innri spássía atriða",
+        "description": "Spássía inni í hverju atriði"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Ytri spássía atriða",
+        "description": "Bil milli atriða"
+      }
+    ]
+  }
+}

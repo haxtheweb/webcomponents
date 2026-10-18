@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Cita bibliográfica",
+    "description": "Elemento de cita con tres modos de presentación."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título de la obra citada."
+      },
+      {
+        "property": "source",
+        "title": "Enlace de origen",
+        "description": "URL de origen de la obra citada."
+      },
+      {
+        "property": "date",
+        "title": "Fecha de consulta",
+        "description": "Fecha en que se consultó la fuente."
+      },
+      {
+        "property": "scope",
+        "title": "Ámbito",
+        "description": "Ámbito del elemento que citar.",
+        "options": {
+          "sibling": "Elemento hermano",
+          "parent": "Elemento padre"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licencia",
+        "description": "Licencia de la obra citada."
+      },
+      {
+        "property": "creator",
+        "title": "Creador",
+        "description": "Creador o propietario de la obra citada."
+      },
+      {
+        "property": "typeof",
+        "title": "Tipo de OER Schema",
+        "description": "Clase de OER Schema para esta cita. Por defecto es oer:ReferencedMaterial; cámbiala solo por una clase OER válida (p. ej., oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

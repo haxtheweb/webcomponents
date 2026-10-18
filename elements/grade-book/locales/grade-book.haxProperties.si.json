@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ශ්‍රේණි පොත",
+    "description": "rubric සමඟ පසුබිම් කිහිපයකට සහාය දක්වන ශීර්ෂ රහිත ශ්‍රේණි පොතක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "මූලාශ්‍රය",
+        "description": "දත්ත මූලාශ්‍ර වර්ගය (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL අන්ත ලක්ෂ්‍යය (JSON)",
+          "json": "JSON දත්ත කට්ටලය",
+          "filesystem": "ගොනු පද්ධතිය"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "මූලාශ්‍ර දත්ත",
+        "description": "ශ්‍රේණි පොත සඳහා URL හෝ JSON දත්ත."
+      },
+      {
+        "property": "forCourse",
+        "title": "පාඨමාලා යොමුව",
+        "description": "එක් එක් ඇගයීම් සම්පතක oer:forCourse ලෙස නිකුත් කරන පාඨමාලා හඳුනාගැනීම."
+      }
+    ]
+  }
+}

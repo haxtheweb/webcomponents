@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Wadhifa wa Taaluma",
+    "description": "Wadhifa mmoja ndani ya shirika"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Kichwa"
+      },
+      {
+        "property": "startDate",
+        "title": "Tarehe ya Kuanza"
+      },
+      {
+        "property": "endDate",
+        "title": "Tarehe ya Kumaliza (Hiari)"
+      },
+      {
+        "property": "skills",
+        "title": "Ujuzi Unaohusiana",
+        "description": "Chagua kitufe cha + ili kuanza kuongeza ujuzi"
+      }
+    ]
+  }
+}

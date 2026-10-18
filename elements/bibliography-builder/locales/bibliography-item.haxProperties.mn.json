@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Номзүйн зүйл",
+    "description": "Номзүйн нэг ишлэлийг илэрхийлэх зүйл, олон формат болон экспортын сонголтыг дэмжинэ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Төрөл",
+        "description": "Ишлэлийн төрөл",
+        "options": {
+          "web": "Вэб",
+          "journal": "Сэтгүүл",
+          "book": "Ном"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Зүйлийн гарчиг"
+      },
+      {
+        "property": "authors",
+        "title": "Зохиогч(ид)",
+        "description": "Цагийн хэлхээс дэх үйл явдлууд"
+      },
+      {
+        "property": "publisher",
+        "title": "Хэвлэгч",
+        "description": "Эх вэбсайт"
+      }
+    ]
+  }
+}

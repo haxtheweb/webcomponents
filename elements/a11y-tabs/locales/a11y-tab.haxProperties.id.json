@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Satu tab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon Tab"
+      },
+      {
+        "property": "disabled",
+        "title": "Nonaktif"
+      },
+      {
+        "property": "label",
+        "title": "Label Tab"
+      },
+      {
+        "slot": "",
+        "title": "Konten Tab",
+        "description": "Konten tab."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Unik"
+      },
+      {
+        "property": "flag",
+        "title": "Teks Penanda Opsional"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Ikon Penanda Opsional"
+      }
+    ]
+  }
+}

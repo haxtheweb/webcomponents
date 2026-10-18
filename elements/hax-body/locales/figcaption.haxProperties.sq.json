@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Legjenda e figurës",
+    "description": "Legjendë për një figurë."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Mbishkrimi",
+        "description": "Teksti që shfaqet poshtë figurës."
+      }
+    ]
+  }
+}

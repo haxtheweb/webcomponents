@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Temayên Berdest",
+    "description": "Temayên HAXcms ên berdest bi guhertina pêşdîtina zindî nîşan bide"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Moda Dîtinê",
+        "description": "Hilbijêre ka tema çawa werin nîşandan",
+        "options": {
+          "gallery": "Galerî",
+          "table": "Tablo"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Hûrgiliyan Nîşan Bide",
+        "description": "Danasînên temayan û agahiyên zêde nîşan bide"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Temayên Veşartî û Kevn Nîşan Bide",
+        "description": "Ji bilî xwerûyên dashboardê, temayên veşartî, kevn û xirab jî nîşan bide"
+      },
+      {
+        "property": "columns",
+        "title": "Stûn (Galerî)",
+        "description": "Hejmara stûnan di dîtina galeriyê de"
+      }
+    ]
+  }
+}

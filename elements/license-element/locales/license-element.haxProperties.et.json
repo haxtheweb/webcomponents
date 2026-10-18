@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Litsents",
+    "description": "Lisa oma teosele litsents."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Viidatud teose pealkiri."
+      },
+      {
+        "property": "source",
+        "title": "Allika link",
+        "description": "Litsentsitud teose allika URL."
+      },
+      {
+        "property": "license",
+        "title": "Litsents",
+        "description": "Sellele teosele rakendatav litsents."
+      },
+      {
+        "property": "creator",
+        "title": "Looja",
+        "description": "Selle teose looja või omanik."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Allika link",
+        "description": "Link litsentsi lisateabele."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Lisateabe silt",
+        "description": "Litsentsi lisateabe silt."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "நேரடியாக அல்லது தொலைவிலிருந்து ஏற்றப்படும் markdown உள்ளடக்கத் தொகுதி"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "மூல markdown"
+      },
+      {
+        "property": "source",
+        "title": "மூலம்",
+        "description": "markdown க்கான மூலக் கோப்பு"
+      }
+    ]
+  }
+}

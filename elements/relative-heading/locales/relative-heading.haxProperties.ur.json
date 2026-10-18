@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "اضافی سرخی",
+    "description": "بالائی عنصر کی سرخی کی بنیاد پر سرخیوں کی درست درجہ بندی دیتا ہے"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "بالائی سرخی کی وسیلہ ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "لنک بٹن کی خصوصیت غیر فعال کرتا ہے۔"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "لنک کاپی بٹن کو سرخی کے بالکل دائیں جانب رکھتا ہے۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "اگر بالائی عنصر نہ ملے تو سرخی کی سطح۔"
+      },
+      {
+        "property": "copyMessage",
+        "description": "لنک کاپی کے ٹوسٹ پیغام کا طے شدہ متن بدلتا ہے۔"
+      },
+      {
+        "property": "linkLabel",
+        "description": "لنک کاپی بٹن کا طے شدہ لیبل بدلتا ہے۔"
+      },
+      {
+        "property": "linkIcon",
+        "description": "لنک کاپی بٹن کا طے شدہ آئیکن بدلتا ہے۔"
+      },
+      {
+        "property": "closeLabel",
+        "description": "لنک کاپی کے ٹوسٹ کے بند کرنے والے بٹن کا طے شدہ لیبل بدلتا ہے۔"
+      },
+      {
+        "property": "closeIcon",
+        "description": "لنک کاپی کے ٹوسٹ کے بند کرنے والے بٹن کا طے شدہ آئیکن بدلتا ہے۔"
+      }
+    ]
+  }
+}

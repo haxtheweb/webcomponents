@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "اسٽار ريٽنگ",
+    "description": "ريٽنگ ڏيکارڻ وارو وجيٽ يا ريٽنگ ڏيڻ وارو بٽڻ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "اسڪور",
+        "description": "موجوده اسڪور جو قدر."
+      },
+      {
+        "property": "possible",
+        "title": "ممڪن",
+        "description": "وڌ ۾ وڌ ممڪن اسڪور."
+      },
+      {
+        "property": "numStars",
+        "title": "تارن جو تعداد",
+        "description": "ڏيکارڻ لاءِ تارن جو تعداد."
+      },
+      {
+        "property": "interactive",
+        "title": "انٽرايڪٽو",
+        "description": "ريٽنگ مقرر ڪرڻ لاءِ صارف جي عمل جي اجازت ڏيو."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "روبرڪ پيماني موڊ",
+        "description": "هر تاري لاءِ OER Schema RubricScale ۽ RubricLevel ميٽا ڊيٽا (levelOrdinal/levelPoints) ڏيو."
+      }
+    ]
+  }
+}

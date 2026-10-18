@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Literaturangabe",
+    "description": "Element, das eine einzelne Quellenangabe in einem Literaturverzeichnis darstellt, mit mehreren Formaten und Exportoptionen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Typ",
+        "description": "Art der Quellenangabe",
+        "options": {
+          "web": "Web",
+          "journal": "Fachzeitschrift",
+          "book": "Buch"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel des Elements"
+      },
+      {
+        "property": "authors",
+        "title": "Autor(en)",
+        "description": "Die Ereignisse in der Zeitleiste"
+      },
+      {
+        "property": "publisher",
+        "title": "Verlag",
+        "description": "Ursprüngliche Website"
+      }
+    ]
+  }
+}

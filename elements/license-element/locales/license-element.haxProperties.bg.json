@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Лиценз",
+    "description": "Посочете лиценз за вашата творба."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Заглавие",
+        "description": "Заглавие на цитираната творба."
+      },
+      {
+        "property": "source",
+        "title": "Връзка към източника",
+        "description": "URL на източника на лицензираната творба."
+      },
+      {
+        "property": "license",
+        "title": "Лиценз",
+        "description": "Лиценз, приложен към тази творба."
+      },
+      {
+        "property": "creator",
+        "title": "Създател",
+        "description": "Създател или собственик на тази творба."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Връзка към източника",
+        "description": "Връзка към допълнителни подробности за лицензирането."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Етикет за повече",
+        "description": "Етикет за допълнителните подробности за лицензирането."
+      }
+    ]
+  }
+}

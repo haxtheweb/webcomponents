@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "그림 캡션",
+    "description": "그림의 캡션."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "캡션",
+        "description": "그림 아래에 표시되는 텍스트."
+      }
+    ]
+  }
+}

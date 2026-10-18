@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Λήψη φύλλου εργασίας",
+    "description": "Ένα κουμπί για την εμφάνιση αρχείων διαθέσιμων για λήψη."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Τίτλος",
+        "description": "Ο τίτλος της λήψης."
+      },
+      {
+        "property": "link",
+        "title": "Σύνδεσμος",
+        "description": "Ο σύνδεσμος για τη λήψη."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "طراحی دوره",
+    "description": "محفظه‌ای برای مواد آموزشی و عناصر طراحی دوره."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "شناسه دوره",
+        "description": "OER Schema: شناسه دوره، مثلاً MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "نیم‌سال ارائه",
+        "description": "OER Schema: نیم‌سالی که دوره در آن ارائه می‌شود."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "شیوه ارائه",
+        "description": "OER Schema: شیوه‌ای که دوره ارائه می‌شود (مثلاً حضوری، آنلاین، ترکیبی)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "مدرس اصلی",
+        "description": "OER Schema: مدرس اصلی دوره."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL طرح درس",
+        "description": "OER Schema: URL طرح درس دوره."
+      }
+    ]
+  }
+}

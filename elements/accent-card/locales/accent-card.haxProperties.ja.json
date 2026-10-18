@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "カード",
+    "description": "アクセントスタイルを任意で適用できるカード。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "見出し",
+        "description": "カードの見出し。"
+      },
+      {
+        "slot": "subheading",
+        "title": "小見出し",
+        "description": "カードの小見出し (任意)。"
+      },
+      {
+        "slot": "content",
+        "title": "コンテンツ",
+        "description": "カードのコンテンツ。"
+      },
+      {
+        "slot": "footer",
+        "title": "フッター",
+        "description": "カードのフッター (任意)。"
+      },
+      {
+        "property": "imageSrc",
+        "title": "画像",
+        "description": "画像 (任意)"
+      },
+      {
+        "property": "imageAlt",
+        "title": "画像の代替テキスト",
+        "description": "スクリーンリーダー向けに画像を説明する代替テキストです。画像が純粋に装飾目的の場合のみ空欄にしてください。"
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "画像の水平方向の配置",
+        "options": {
+          "left": "左",
+          "center": "中央",
+          "right": "右"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "画像の垂直方向の配置",
+        "options": {
+          "top": "上",
+          "center": "中央",
+          "bottom": "下"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "任意のアクセントカラー。"
+      },
+      {
+        "property": "dark",
+        "title": "ダークテーマ",
+        "description": "ダークテーマを有効にする"
+      },
+      {
+        "property": "horizontal",
+        "title": "横",
+        "description": "横向きにしますか?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "見出しのアクセント",
+        "description": "見出しにアクセントカラーを適用しますか?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "背景のアクセント",
+        "description": "カードの背景にアクセントカラーを適用しますか?"
+      },
+      {
+        "property": "noBorder",
+        "title": "枠線のアクセントなし",
+        "description": "枠線のアクセントを削除しますか?"
+      },
+      {
+        "property": "flat",
+        "title": "フラット",
+        "description": "ボックスシャドウを削除しますか?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "コーナー",
+        "description": "カードのコーナーのコンテンツ。"
+      }
+    ]
+  }
+}

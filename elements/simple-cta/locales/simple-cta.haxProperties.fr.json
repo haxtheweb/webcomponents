@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Appel à l'action",
+    "description": "Un bouton simple avec un lien pour passer à l'action."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Libellé",
+        "description": "Libellé du lien"
+      },
+      {
+        "property": "link",
+        "title": "Lien",
+        "description": "Saisissez un lien vers n'importe quelle ressource"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Masquer l'icône",
+        "description": "Masquer l'icône utilisée pour accentuer le texte"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icône",
+        "description": "Icône du lien d'action"
+      }
+    ]
+  }
+}

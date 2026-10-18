@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Grafik Batang",
+    "description": "Nggawe grafik sing gampang diakses adhedhasar CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Werna Aksen",
+        "description": "Werna aksen opsional."
+      },
+      {
+        "title": "Tema Peteng",
+        "description": "Aktifake Tema Peteng"
+      },
+      {
+        "title": "Berkas CSV",
+        "description": "Emot data saka CSV."
+      },
+      {
+        "title": "Judhul Grafik",
+        "description": "Teks alt sing gampang diakses kanggo grafikmu."
+      },
+      {
+        "title": "Katrangan Grafik",
+        "description": "Katrangan grafikmu sing gampang diakses."
+      },
+      {
+        "title": "Jeneng Skala",
+        "description": "Rasio ambane:dhuwure grafik (Deleng https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings kanggo $ct-scales lan $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Tampilake Latar Kothak-kothak"
+      },
+      {
+        "title": "Batang Horisontal",
+        "description": "Mbalik sumbu grafik batang kanggo nggambar grafik batang horisontal. Elinga yen sampeyan uga kudu mbalik setelan sumbu amarga Sumbu Y saiki bakal nampilake label lan Sumbu X nampilake nilai."
+      },
+      {
+        "title": "Tumpuk Batang",
+        "description": "Yen disetel dadi true, properti iki bakal nggawe batang seri ditumpuk."
+      },
+      {
+        "title": "Sebar Seri",
+        "description": "Yen disetel dadi true, saben batang bakal makili siji seri lan larik data dikarepake dadi larik siji dimensi saka nilai data tinimbang larik seri."
+      },
+      {
+        "title": "Padding Grafik (ndhuwur)"
+      },
+      {
+        "title": "Padding Grafik (ngisor)"
+      },
+      {
+        "title": "Padding Grafik (kiwa)"
+      },
+      {
+        "title": "Padding Grafik (tengen)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Walik Data",
+        "description": "Walik data kalebu label, urutan seri uga kabeh larik data seri."
+      },
+      {
+        "title": "Tabel HTML",
+        "description": "Opsional: Emot data minangka tabel HTML."
+      },
+      {
+        "title": "Minimal Grafik",
+        "description": "Ngganti nilai paling endhek alami grafik ngidini sampeyan nggedhekake utawa mbatesi nilai paling endhek sing ditampilake grafik"
+      },
+      {
+        "title": "Maksimal Grafik",
+        "description": "Ngganti nilai paling dhuwur alami grafik ngidini sampeyan nggedhekake utawa mbatesi nilai paling dhuwur sing ditampilake grafik"
+      },
+      {
+        "title": "Sumbu X Tampilake Kothak-kothak",
+        "description": "Tampilake kothak-kothak Sumbu X."
+      },
+      {
+        "title": "Offset Sumbu X"
+      },
+      {
+        "title": "Posisi Sumbu X",
+        "description": "Posisi ing ngendi label dipasang. Bisa disetel dadi \"start\" utawa \"end\" ing ngendi \"start\" padha karo kiwa utawa ndhuwur ing sumbu vertikal lan \"end\" padha karo tengen utawa ngisor ing sumbu horisontal"
+      },
+      {
+        "title": "Sumbu X Tampilake Label",
+        "description": "Tampilake label Sumbu X."
+      },
+      {
+        "title": "Label Sumbu X (offset horisontal)",
+        "description": "Posisi horisontal label Sumbu X."
+      },
+      {
+        "title": "Label Sumbu X (offset vertikal)",
+        "description": "Posisi vertikal label Sumbu X."
+      },
+      {
+        "title": "Judhul Sumbu X",
+        "description": "Judhul opsional kanggo sumbu X."
+      },
+      {
+        "title": "Judhul Sumbu X (offset horisontal)",
+        "description": "Posisi horisontal judhul Sumbu X."
+      },
+      {
+        "title": "Judhul Sumbu X (offset vertikal)",
+        "description": "Posisi vertikal judhul Sumbu X."
+      },
+      {
+        "title": "Jangkar Judhul Sumbu X",
+        "description": "Jangkar opsional kanggo judhul sumbu X.",
+        "options": {
+          "middle": "tengah",
+          "end": "pungkasan",
+          "start": "wiwitan"
+        }
+      },
+      {
+        "title": "Ruang Minimal Skala Sumbu X",
+        "description": "Nemtokake dhuwur minimal ing piksel kanggo langkah skala."
+      },
+      {
+        "title": "Skala Sumbu X (mung bilangan bulat)",
+        "description": "Gunakake mung nilai bilangan bulat kanggo langkah skala."
+      },
+      {
+        "title": "Sumbu Y: Tampilake Kothak-kothak",
+        "description": "Tampilake kothak-kothak Sumbu Y."
+      },
+      {
+        "title": "Offset Sumbu Y"
+      },
+      {
+        "title": "Posisi Sumbu Y",
+        "description": "Posisi ing ngendi label dipasang. Bisa disetel dadi \"start\" utawa \"end\" ing ngendi \"start\" padha karo kiwa utawa ndhuwur ing sumbu vertikal lan \"end\" padha karo tengen utawa ngisor ing sumbu horisontal"
+      },
+      {
+        "title": "Sumbu Y Tampilake Label",
+        "description": "Tampilake label Sumbu Y."
+      },
+      {
+        "title": "Label Sumbu Y (offset horisontal)",
+        "description": "Posisi horisontal label Sumbu Y."
+      },
+      {
+        "title": "Label Sumbu Y (offset vertikal)",
+        "description": "Posisi vertikal label Sumbu Y."
+      },
+      {
+        "title": "Ruang Minimal Skala Sumbu Y",
+        "description": "Nemtokake dhuwur minimal ing piksel kanggo langkah skala."
+      },
+      {
+        "title": "Skala Sumbu Y (mung bilangan bulat)",
+        "description": "Gunakake mung nilai bilangan bulat kanggo langkah skala."
+      },
+      {
+        "title": "Judhul Sumbu Y",
+        "description": "Judhul opsional kanggo sumbu Y."
+      },
+      {
+        "title": "Judhul Sumbu Y (offset vertikal)",
+        "description": "Posisi horisontal judhul Sumbu Y."
+      },
+      {
+        "title": "Judhul Sumbu Y (offset horisontal)",
+        "description": "Posisi horisontal judhul Sumbu Y."
+      },
+      {
+        "title": "Jangkar Judhul Sumbu Y",
+        "description": "Jangkar opsional kanggo judhul sumbu Y.",
+        "options": {
+          "middle": "tengah",
+          "end": "pungkasan",
+          "start": "wiwitan"
+        }
+      },
+      {
+        "title": "Walik Judhul Sumbu Y",
+        "description": "Walik judhul kanggo sumbu Y?"
+      },
+      {
+        "title": "Nilai Referensi",
+        "description": "Kajaba low/high disetel kanthi tegas, grafik batang bakal dipusatake ing nol kanthi gawan."
+      },
+      {
+        "title": "Jarak Batang Seri",
+        "description": "Nemtokake jarak ing piksel antarane batang ing sawijining grup."
+      },
+      {
+        "title": "Mode Tumpukan",
+        "description": "Yen disetel dadi \"true\", properti iki bakal mbentuk total kanggo saben titik seri. Iki uga bakal mangaruhi sumbu y lan wates sakabehe grafik. Yen disetel dadi \"false\", properti iki bakal meksa batang sing ditumpuk digambar saka garis nol. Ing mode tumpukan, properti \"seriesBarDistance\" ora bakal ana pengaruhe."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Desain Kursus",
+    "description": "Wadhah kanggo materi pendhidhikan lan elemen desain kursus."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Pengenal Kursus",
+        "description": "OER Schema: pengenal kursus, conto: MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Semester Ditawakake",
+        "description": "OER Schema: semester nalika kursus ditawakake."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Format Pangiriman",
+        "description": "OER Schema: format sing dienggo kanggo ngirim kursus (conto: tatap muka, online, hibrida)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Instruktur Utama",
+        "description": "OER Schema: instruktur utama kanggo kursus."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL Silabus",
+        "description": "OER Schema: URL menyang silabus kursus."
+      }
+    ]
+  }
+}

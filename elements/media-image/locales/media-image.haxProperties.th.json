@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "รูปภาพแบบปรับปรุง",
+    "description": "วิธีนำเสนอรูปภาพพร้อมการปรับปรุงต่างๆ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "แหล่งที่มา",
+        "description": "URL ของรูปภาพ"
+      },
+      {
+        "property": "alt",
+        "title": "ข้อความทางเลือก",
+        "description": "ข้อความที่อธิบายรูปภาพสำหรับผู้ใช้ที่มองไม่เห็น"
+      },
+      {
+        "property": "link",
+        "title": "ลิงก์",
+        "description": "ลิงก์รูปภาพไปยัง URL"
+      },
+      {
+        "property": "card",
+        "title": "การ์ด",
+        "description": "ใส่เงาตกกระทบเพื่อให้ดูเหมือนการ์ดที่ยกขึ้น"
+      },
+      {
+        "property": "box",
+        "title": "กล่อง",
+        "description": "ใส่กรอบกล่องรอบรูปภาพ"
+      },
+      {
+        "property": "offset",
+        "title": "ระยะเยื้อง",
+        "description": "ใส่ระยะเยื้องซ้ายหรือขวาให้กับรูปภาพ",
+        "options": {
+          "none": "ไม่มี",
+          "wide": "กว้าง",
+          "narrow": "แคบ"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "การอ้างอิง",
+        "description": "การอ้างอิงสำหรับรูปภาพ"
+      },
+      {
+        "property": "caption",
+        "title": "คำบรรยาย",
+        "description": "คำบรรยายสำหรับรูปภาพ"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ชื่อรูป",
+        "description": "ชื่อเรื่องสำหรับป้ายกำกับรูป"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "คำอธิบายรูป",
+        "description": "คำอธิบายสำหรับป้ายกำกับรูป"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "ภาพขนาดย่อ",
+        "description": "แหล่งที่มาของภาพขนาดย่อ แสดงภาพขนาดย่อแต่เปิดภาพต้นฉบับเต็มในหน้าต่างโมดัล"
+      },
+      {
+        "property": "round",
+        "title": "รูปภาพทรงกลม",
+        "description": "ครอบตัดรูปภาพให้แสดงเป็นรูปวงกลม"
+      },
+      {
+        "property": "disableZoom",
+        "title": "ปิดใช้หน้าต่างโมดัลของรูปภาพ",
+        "description": "ปิดใช้การคลิกเพื่อเปิดรูปภาพในกล่องโต้ตอบตรวจสอบรูปภาพ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "แสดงผลเป็น Markdown",
+        "description": "แสดงผลคำบรรยายและการอ้างอิงเป็น Markdown"
+      }
+    ]
+  }
+}

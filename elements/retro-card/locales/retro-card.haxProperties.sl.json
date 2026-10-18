@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro kartica",
+    "description": "Preprosta kartica z retro oblikovanjem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Glavni naslov kartice."
+      },
+      {
+        "property": "url",
+        "description": "URL, ki se odpre ob kliku na kartico."
+      },
+      {
+        "property": "subtitle",
+        "title": "Podnaslov",
+        "description": "Podnaslov kartice."
+      },
+      {
+        "property": "tags",
+        "title": "Oznake",
+        "description": "Oznake, ločene z vejicami."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Vir medija",
+        "description": "Primarni vir medija."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Vir ob prehodu z miško",
+        "description": "Vir medija, prikazan, ko je kazalec nad kartico ali je ta aktivirana."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Poudarjena barva, uporabljena na celotni kartici."
+      },
+      {
+        "property": "dark",
+        "title": "Temno",
+        "description": "Uporabi osnovne barve temnega načina."
+      }
+    ]
+  }
+}

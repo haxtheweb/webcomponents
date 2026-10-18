@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Listë me pika",
+    "description": "Krijo një listë me pika."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stili i pikave",
+        "description": "Stili që përdoret për pikat e listës së parenditur.",
+        "options": {
+          "": "Parazgjedhur (katror)",
+          "list-disc": "Disk",
+          "list-circle": "Rreth",
+          "list-square": "Katror"
+        }
+      }
+    ]
+  }
+}

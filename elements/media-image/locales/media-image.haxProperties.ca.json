@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Imatge millorada",
+    "description": "Una manera de presentar imatges amb diverses millores."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origen",
+        "description": "L'URL de la imatge."
+      },
+      {
+        "property": "alt",
+        "title": "Text alternatiu",
+        "description": "Text per descriure la imatge a usuaris amb discapacitat visual."
+      },
+      {
+        "property": "link",
+        "title": "Enllaç",
+        "description": "Enllaça la imatge a un URL"
+      },
+      {
+        "property": "card",
+        "title": "Targeta",
+        "description": "Aplica una ombra per donar l'aparença d'una targeta elevada."
+      },
+      {
+        "property": "box",
+        "title": "Quadre",
+        "description": "Aplica un quadre visual al voltant de la imatge."
+      },
+      {
+        "property": "offset",
+        "title": "Desplaçament",
+        "description": "Aplica un desplaçament a l'esquerra o a la dreta a la imatge.",
+        "options": {
+          "none": "cap",
+          "wide": "ample",
+          "narrow": "estret"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Cita bibliogràfica",
+        "description": "Cita de la imatge."
+      },
+      {
+        "property": "caption",
+        "title": "Peu de foto",
+        "description": "Llegenda de la imatge."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Títol de la figura",
+        "description": "Títol de l'etiqueta de figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descripció de la figura",
+        "description": "Descripció de l'etiqueta de figura."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Imatge en miniatura",
+        "description": "Font de la imatge en miniatura. Mostra la miniatura, però obre la font completa en un modal."
+      },
+      {
+        "property": "round",
+        "title": "Imatge rodona",
+        "description": "Retalla l'aparença de la imatge en forma de cercle."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Desactiva el modal de la imatge",
+        "description": "Desactiva que els clics obrin la imatge en un diàleg d'inspector d'imatges."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Mostra com a markdown",
+        "description": "Mostra la llegenda i la cita com a markdown."
+      }
+    ]
+  }
+}

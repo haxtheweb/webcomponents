@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "වෘත්තීය භූමිකාව",
+    "description": "සංවිධානයක් තුළ තනි භූමිකාවක්"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "මාතෘකාව"
+      },
+      {
+        "property": "startDate",
+        "title": "ආරම්භක දිනය"
+      },
+      {
+        "property": "endDate",
+        "title": "අවසන් දිනය (විකල්ප)"
+      },
+      {
+        "property": "skills",
+        "title": "සම්බන්ධිත කුසලතා",
+        "description": "කුසලතා එක් කිරීම ආරම්භ කිරීමට + බොත්තම තෝරන්න"
+      }
+    ]
+  }
+}

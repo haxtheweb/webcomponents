@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Framgongdarkringla",
+    "description": "Framgongdarkringla"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Heitið á elementinum"
+      },
+      {
+        "property": "desc",
+        "title": "Lýsing",
+        "description": "Atkomilig long lýsing"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Myndakelda",
+        "description": "Kelda til mynd inni í kringluni."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt-tekstur til mynd",
+        "description": "Alt-tekstur til mynd."
+      },
+      {
+        "property": "animated",
+        "title": "Livandi",
+        "description": "Um framgongdin er livandi við fyrstu innlesing"
+      },
+      {
+        "property": "complete",
+        "title": "Liðugt",
+        "description": "Ein røð av fullførdum virðum."
+      },
+      {
+        "property": "total",
+        "title": "Íalt",
+        "description": "Íalt, tá ið allir lutir eru fullførdir."
+      },
+      {
+        "property": "startAngle",
+        "title": "Byrjanarvinkul",
+        "description": "Kringluvinkul, har framgongdin byrjar"
+      }
+    ]
+  }
+}

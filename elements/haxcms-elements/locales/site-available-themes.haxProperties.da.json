@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Tilgængelige temaer",
+    "description": "Vis tilgængelige HAXcms-temaer med live skift af forhåndsvisning"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Visningstilstand",
+        "description": "Vælg, hvordan temaerne skal vises",
+        "options": {
+          "gallery": "Galleri",
+          "table": "Tabel"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Vis detaljer",
+        "description": "Vis temabeskrivelser og yderligere oplysninger"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Vis skjulte og forældede temaer",
+        "description": "Vis skjulte, forældede og forfærdelige temaer ud over oversigtens standarder"
+      },
+      {
+        "property": "columns",
+        "title": "Kolonner (galleri)",
+        "description": "Antal kolonner i gallerivisning"
+      }
+    ]
+  }
+}

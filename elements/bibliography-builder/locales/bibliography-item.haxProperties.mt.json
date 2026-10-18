@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Oġġett tal-bibljografija",
+    "description": "Oġġett li jirrappreżenta ċitazzjoni waħda f'bibljografija, li jappoġġja diversi formati u għażliet ta' esportazzjoni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tip",
+        "description": "Tip ta' ċitazzjoni",
+        "options": {
+          "web": "Web",
+          "journal": "Ġurnal",
+          "book": "Ktieb"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlu tal-oġġett"
+      },
+      {
+        "property": "authors",
+        "title": "Awtur(i)",
+        "description": "L-avvenimenti fil-kronoloġija"
+      },
+      {
+        "property": "publisher",
+        "title": "Pubblikatur",
+        "description": "Sit web oriġinali"
+      }
+    ]
+  }
+}

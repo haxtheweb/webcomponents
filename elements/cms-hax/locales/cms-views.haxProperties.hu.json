@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS nézet",
+    "description": "A háttérrendszeren megjelenített CMS nézetek"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Név",
+        "description": "A nézet neve a CMS-ünkben"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Megjelenítés",
+        "description": "Megjelenítés az adott nézeten belül a CMS-ünkből"
+      }
+    ]
+  }
+}

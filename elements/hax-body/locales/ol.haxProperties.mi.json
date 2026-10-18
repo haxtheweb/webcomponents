@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Rārangi tau",
+    "description": "Waihanga rārangi tau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Kāhua tau",
+        "description": "Kāhua e whakamahia ana mō te tatau rārangi raupapa.",
+        "options": {
+          "": "Taunoa (ā-ira)",
+          "list-decimal-leading-zero": "Ā-ira me te kore i mua (01, 02, 03)",
+          "list-lower-alpha": "Pū iti (a, b, c)",
+          "list-upper-alpha": "Pū matua (A, B, C)",
+          "list-lower-roman": "Rōmana iti (i, ii, iii)",
+          "list-upper-roman": "Rōmana matua (I, II, III)"
+        }
+      }
+    ]
+  }
+}

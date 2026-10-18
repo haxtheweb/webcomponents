@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Càrrec professional",
+    "description": "Un càrrec individual dins d'una organització"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Títol"
+      },
+      {
+        "property": "startDate",
+        "title": "Data d'inici"
+      },
+      {
+        "property": "endDate",
+        "title": "Data de finalització (opcional)"
+      },
+      {
+        "property": "skills",
+        "title": "Habilitats associades",
+        "description": "Selecciona el botó + per començar a afegir habilitats"
+      }
+    ]
+  }
+}

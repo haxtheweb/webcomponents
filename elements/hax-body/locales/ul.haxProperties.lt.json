@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Ženklinamasis sąrašas",
+    "description": "Sukurti suženklintą sąrašą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Ženklelio stilius",
+        "description": "Nenumeruoto sąrašo ženklelių stilius.",
+        "options": {
+          "": "Numatytasis (kvadratas)",
+          "list-disc": "Skritulys",
+          "list-circle": "Apskritimas",
+          "list-square": "Kvadratas"
+        }
+      }
+    ]
+  }
+}

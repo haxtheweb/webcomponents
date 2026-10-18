@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Słownictwo",
+    "description": "Termin słownikowy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termin"
+      },
+      {
+        "slot": "",
+        "title": "Definicja",
+        "description": "Definicja wyświetlana po kliknięciu terminu."
+      },
+      {
+        "property": "description",
+        "title": "Opis (OER Schema)",
+        "description": "OER Schema: krótki opis terminu słownikowego. Jeśli pozostanie pusty, zostanie uzupełniony tekstem definicji."
+      }
+    ]
+  }
+}

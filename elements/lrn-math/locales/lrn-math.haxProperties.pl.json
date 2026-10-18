@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematyka",
+    "description": "Prezentuj matematykę w estetyczny sposób."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematyka",
+        "description": "Wpisz równanie w LaTeX"
+      }
+    ]
+  }
+}

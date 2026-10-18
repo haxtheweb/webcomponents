@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Sernivîsa nisbî",
+    "description": "li gorî sernivîsa dêûbav hiyerarşiya rast a sernivîsan derdixe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID ya Çavkaniyê ya Sernivîsa Dêûbav"
+      },
+      {
+        "property": "disableLink",
+        "description": "Taybetmendiya bişkoka girêdanê neçalak dike."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Bişkoka kopîkirina girêdanê li aliyê herî rastê yê sernivîsê rêz dike."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Asta sernivîsê heke dêûbav neyê dîtin."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Nivîsa xwerû ya peyama toast a kopîkirina girêdanê diguherîne."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Etîketa xwerû ya bişkoka kopîkirina girêdanê diguherîne."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Îkona xwerû ya bişkoka kopîkirina girêdanê diguherîne."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Etîketa xwerû ya bişkoka girtinê ya toasta kopîkirina girêdanê diguherîne."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Îkona xwerû ya bişkoka girtinê ya toasta kopîkirina girêdanê diguherîne."
+      }
+    ]
+  }
+}

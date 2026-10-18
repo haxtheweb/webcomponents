@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Blok HTML",
+    "description": "Osnovni blok HTML, ki zagotavlja povezavo s HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Koda HTML, ki jo želite prikazati v vsebini"
+      }
+    ]
+  }
+}

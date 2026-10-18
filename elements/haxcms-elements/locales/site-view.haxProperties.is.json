@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Vefsýn",
+    "description": "Kvikur kubbur sem sækir og birtir gögn vefsins eftir skilyrðum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL sýnar",
+        "description": "Fyrirspurnarfæribreytur fyrir gagnastraum sýnarinnar. Þú getur fengið þær á stjórnborði sýna."
+      },
+      {
+        "property": "renderer",
+        "title": "Birtingarhamur",
+        "description": "Hvernig niðurstöður sýnarinnar eiga að birtast"
+      },
+      {
+        "property": "entity",
+        "title": "Tegund einingar",
+        "description": "Tegund einingar sem notuð er til að greina svarið",
+        "options": {
+          "": "Sjálfgefið (atriði)",
+          "item": "Atriði",
+          "page": "Síða",
+          "file": "Skrá",
+          "tag": "Merki",
+          "block": "Kubbur",
+          "view": "Sýn",
+          "theme": "Þema",
+          "region": "Svæði",
+          "customElement": "Sérsniðin eining"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Rjúfa vefsýn",
+        "description": "Breyta í kyrrstætt efni til beinna breytinga; hættir sjálfvirkum uppfærslum frá uppruna."
+      }
+    ]
+  }
+}

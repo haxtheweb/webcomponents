@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ilayisensi",
+    "description": "Nika ilayisensi yomsebenzi wakho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko somsebenzi ocatshulweyo."
+      },
+      {
+        "property": "source",
+        "title": "Ikhonkco lomthombo",
+        "description": "I-URL yomthombo womsebenzi onelayisensi."
+      },
+      {
+        "property": "license",
+        "title": "Ilayisensi",
+        "description": "Ilayisensi esetyenziswa kulo msebenzi."
+      },
+      {
+        "property": "creator",
+        "title": "Umyili",
+        "description": "Umyili okanye umnini walo msebenzi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Ikhonkco lomthombo",
+        "description": "Ikhonkco eliya kwiinkcukacha ezongezelelweyo zelayisensi."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Ileyibhile ethi Ngakumbi",
+        "description": "Ileyibhile yeenkcukacha ezongezelelweyo zelayisensi."
+      }
+    ]
+  }
+}

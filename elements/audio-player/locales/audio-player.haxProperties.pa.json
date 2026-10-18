@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "ਆਡੀਓ",
+    "description": "ਇਹ ਸਰੋਤ ਭਾਵੇਂ ਕੋਈ ਵੀ ਹੋਵੇ, ਵੀਡੀਓ ਨੂੰ ਬਹੁਤ ਪਹੁੰਚਯੋਗ ਢੰਗ ਨਾਲ ਪੇਸ਼ ਕਰ ਸਕਦਾ ਹੈ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ",
+        "description": "ਇਸ ਮੀਡੀਆ ਦਾ URL।"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਵੀਡੀਓ ਹੇਠਾਂ ਸਧਾਰਨ ਸਿਰਲੇਖ"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਪਲੇਅਰ ਲਈ ਐਕਸੈਂਟ ਰੰਗ ਚੁਣੋ।"
+      },
+      {
+        "property": "track",
+        "title": "ਬੰਦ ਸੁਰਖੀਆਂ",
+        "description": "ਸੁਰਖੀਆਂ ਫ਼ਾਈਲ ਦਾ URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "ਥੰਬਨੇਲ ਚਿੱਤਰ",
+        "description": "ਵਿਕਲਪਿਕ। ਥੰਬਨੇਲ/ਪੋਸਟਰ ਚਿੱਤਰ ਦਾ URL।"
+      },
+      {
+        "property": "learningMode",
+        "title": "ਸਿੱਖਣ ਮੋਡ ਚਾਲੂ ਕਰੋ",
+        "description": "ਅੱਗੇ ਅਤੇ ਪਿੱਛੇ ਕਰਨਾ ਬੰਦ ਕਰਦਾ ਹੈ।"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube 'ਤੇ ਖੋਲ੍ਹੋ ਬਟਨ ਹਟਾਓ",
+        "description": "ਵੀਡੀਓ ਨੂੰ YouTube 'ਤੇ ਖੋਲ੍ਹਣ ਵਾਲਾ ਬਟਨ ਹਟਾਉਂਦਾ ਹੈ।"
+      },
+      {
+        "property": "linkable",
+        "title": "ਸਾਂਝਾ ਲਿੰਕ ਸ਼ਾਮਲ ਕਰਨਾ ਹੈ?",
+        "description": "ਵੀਡੀਓ ਸਾਂਝੀ ਕਰਨ ਲਈ ਲਿੰਕ ਦਿੰਦਾ ਹੈ।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "ਦਰਸਾਉਂਦਾ ਹੈ ਕਿ CORS ਵਰਤਣਾ ਹੈ ਜਾਂ ਨਹੀਂ।",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "ਪਿਛੋਕੜ ਵਿੱਚ ਚਲਾਉਣ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ",
+        "description": "ਟੈਬ ਤੋਂ ਫੋਕਸ ਹਟਣ 'ਤੇ ਵੀਡੀਓ ਆਪਣੇ ਆਪ ਰੁਕਦੇ / ਚੱਲਦੇ ਹਨ; ਇਹ ਟੈਬ 'ਤੇ ਫੋਕਸ ਤੋਂ ਬਿਨਾਂ ਵੀਡੀਓ ਚਲਾਉਣ ਦਿੰਦਾ ਹੈ"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਲਈ ਡਾਰਕ ਥੀਮ",
+        "description": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਲਈ ਡਾਰਕ ਥੀਮ ਚਾਲੂ ਕਰੋ।"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ਇੰਟਰਐਕਟਿਵ ਬੰਦ ਕਰੋ",
+        "description": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਨੂੰ ਕਲਿੱਕ ਕਰਨਯੋਗ ਬਣਾਉਣ ਵਾਲਾ ਇੰਟਰਐਕਟਿਵ ਮੋਡ ਬੰਦ ਕਰੋ।"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ਸਮਾਂ-ਮੋਹਰਾਂ ਲੁਕਾਓ",
+        "description": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ 'ਤੇ ਸਮਾਂ-ਮੋਹਰਾਂ ਲੁਕਾਓ।"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਲੁਕਾਓ",
+        "description": "ਪੂਰਵ-ਨਿਰਧਾਰਤ ਤੌਰ 'ਤੇ ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਲੁਕਾਓ।"
+      },
+      {
+        "property": "lang",
+        "title": "ਭਾਸ਼ਾ",
+        "description": "ਮੀਡੀਆ ਦੀ ਭਾਸ਼ਾ।"
+      }
+    ]
+  }
+}

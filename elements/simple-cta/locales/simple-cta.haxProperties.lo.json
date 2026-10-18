@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ປຸ່ມກະຕຸ້ນການກະທຳ",
+    "description": "ປຸ່ມແບບງ່າຍທີ່ມີລິ້ງເພື່ອດຳເນີນການ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "ປ້າຍຊື່",
+        "description": "ປ້າຍລິ້ງ"
+      },
+      {
+        "property": "link",
+        "title": "ລິ້ງ",
+        "description": "ໃສ່ລິ້ງໄປຫາຊັບພະຍາກອນໃດກໍໄດ້"
+      },
+      {
+        "property": "hideIcon",
+        "title": "ເຊື່ອງໄອຄອນ",
+        "description": "ເຊື່ອງໄອຄອນທີ່ໃຊ້ເນັ້ນຂໍ້ຄວາມ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ໄອຄອນ",
+        "description": "ໄອຄອນລິ້ງການກະທຳ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Ҷадвалак",
+    "description": "Як ҷадвалак."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Нишонаи ҷадвалак"
+      },
+      {
+        "property": "disabled",
+        "title": "Ғайрифаъол"
+      },
+      {
+        "property": "label",
+        "title": "Тамғаи ҷадвалак"
+      },
+      {
+        "slot": "",
+        "title": "Мундариҷаи ҷадвалак",
+        "description": "Мундариҷаи ҷадвалак."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID-и ягона"
+      },
+      {
+        "property": "flag",
+        "title": "Матни ихтиёрии парчам"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Нишонаи ихтиёрии парчам"
+      }
+    ]
+  }
+}

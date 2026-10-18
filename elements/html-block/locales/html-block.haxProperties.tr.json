@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML bloğu",
+    "description": "HAXschema bağlantısı sağlayan temel bir HTML bloğu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "İçerikte sunmak istediğiniz HTML kodu"
+      }
+    ]
+  }
+}

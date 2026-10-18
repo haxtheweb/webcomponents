@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "별점",
+    "description": "별점을 표시하거나 평가하는 위젯 또는 버튼."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "점수",
+        "description": "현재 점수 값."
+      },
+      {
+        "property": "possible",
+        "title": "만점",
+        "description": "가능한 최대 점수."
+      },
+      {
+        "property": "numStars",
+        "title": "별 개수",
+        "description": "표시할 별의 개수."
+      },
+      {
+        "property": "interactive",
+        "title": "상호작용",
+        "description": "사용자가 직접 평점을 매길 수 있도록 허용합니다."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "루브릭 척도 모드",
+        "description": "각 별에 대해 OER Schema RubricScale 및 RubricLevel 메타데이터(levelOrdinal/levelPoints)를 출력합니다."
+      }
+    ]
+  }
+}

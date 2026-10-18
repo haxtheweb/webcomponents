@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lisans",
+    "description": "Çalışmanız için bir lisans belirtin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Alıntılanan eserin başlığı."
+      },
+      {
+        "property": "source",
+        "title": "Kaynak bağlantısı",
+        "description": "Lisanslı eserin kaynak URL'si."
+      },
+      {
+        "property": "license",
+        "title": "Lisans",
+        "description": "Bu esere uygulanan lisans."
+      },
+      {
+        "property": "creator",
+        "title": "Oluşturan",
+        "description": "Bu eserin oluşturucusu veya sahibi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Kaynak bağlantısı",
+        "description": "Ek lisans ayrıntılarına bağlantı."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Daha fazla etiketi",
+        "description": "Ek lisans ayrıntıları için etiket."
+      }
+    ]
+  }
+}

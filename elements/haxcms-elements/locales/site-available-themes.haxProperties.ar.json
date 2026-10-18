@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "السمات المتاحة",
+    "description": "عرض سمات HAXcms المتاحة مع التبديل بالمعاينة المباشرة"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "وضع العرض",
+        "description": "اختر طريقة عرض السمات",
+        "options": {
+          "gallery": "المعرض",
+          "table": "جدول"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "إظهار التفاصيل",
+        "description": "إظهار أوصاف السمات ومعلومات إضافية"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "إظهار السمات المخفية والقديمة",
+        "description": "إظهار السمات المخفية والقديمة والرديئة بالإضافة إلى الإعدادات الافتراضية للوحة"
+      },
+      {
+        "property": "columns",
+        "title": "الأعمدة (المعرض)",
+        "description": "عدد الأعمدة في عرض المعرض"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML-Block",
+    "description": "En einfachen HTML-Block, deen HAXschema-Uschlëss bitt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML-Code, deen Dir am Inhalt presentéiere wëllt"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Toán học",
+    "description": "Trình bày công thức toán học đẹp mắt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Toán học",
+        "description": "Nhập phương trình dưới dạng LaTeX"
+      }
+    ]
+  }
+}

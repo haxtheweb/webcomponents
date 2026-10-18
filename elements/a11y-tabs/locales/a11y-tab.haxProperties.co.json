@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Unghjetta",
+    "description": "Una sola unghjetta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icona di l'unghjetta"
+      },
+      {
+        "property": "disabled",
+        "title": "Disattivatu"
+      },
+      {
+        "property": "label",
+        "title": "Etichetta di l'unghjetta"
+      },
+      {
+        "slot": "",
+        "title": "Cuntenutu di l'unghjetta",
+        "description": "U cuntenutu di l'unghjetta."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID unicu"
+      },
+      {
+        "property": "flag",
+        "title": "Testu di bandera facultativu"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Icona di bandera facultativa"
+      }
+    ]
+  }
+}

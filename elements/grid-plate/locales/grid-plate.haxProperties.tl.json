@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Layout ng column",
+    "description": "I-layout ang materyal sa mga simpleng column"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Layout ng Column",
+        "description": "Estilo ng pagpapakita ng mga item na ito (maaaring magbago sa maliliit na screen)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "I-disable ang responsive",
+        "description": "I-check para panatilihin ang mga column sa mas malalaking screen habang nagsasalansan pa rin sa pinakamaliit na screen"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Padding ng Item",
+        "description": "Padding sa loob ng bawat item"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Mga margin ng item",
+        "description": "Margin sa pagitan ng mga item"
+      }
+    ]
+  }
+}

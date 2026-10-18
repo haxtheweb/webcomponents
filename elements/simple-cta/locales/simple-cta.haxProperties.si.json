@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ක්‍රියාවට ඇරයුම",
+    "description": "ක්‍රියා කිරීමට සබැඳියක් සහිත සරල බොත්තමක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "ලේබලය",
+        "description": "සබැඳි ලේබලය"
+      },
+      {
+        "property": "link",
+        "title": "සබැඳිය",
+        "description": "ඕනෑම සම්පතකට සබැඳියක් ඇතුළු කරන්න"
+      },
+      {
+        "property": "hideIcon",
+        "title": "නිරූපකය සඟවන්න",
+        "description": "පෙළ උච්චාරණය කිරීමට භාවිත කරන නිරූපකය සඟවන්න"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "නිරූපකය",
+        "description": "ක්‍රියා සබැඳි නිරූපකය"
+      }
+    ]
+  }
+}

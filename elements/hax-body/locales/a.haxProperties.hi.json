@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "बुनियादी लिंक",
+    "description": "बुनियादी लिंक एलिमेंट।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "लिंक",
+        "description": "गंतव्य URL।"
+      },
+      {
+        "attribute": "innerText",
+        "title": "टेक्स्ट",
+        "description": "दृश्यमान लिंक टेक्स्ट।"
+      },
+      {
+        "attribute": "target",
+        "title": "लक्ष्य",
+        "description": "लिंक कहाँ खोलना है।",
+        "options": {
+          "": "वही विंडो",
+          "_blank": "नई विंडो - _blank",
+          "_top": "शीर्ष विंडो - _top",
+          "_parent": "पैरेंट विंडो - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "शीर्षक टेक्स्ट",
+        "description": "सुलभता और SEO के लिए परामर्शी शीर्षक।"
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "गंतव्य से संबंध (सुरक्षा/SEO)।",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

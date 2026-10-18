@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Táàbù",
+    "description": "Táàbù kan ṣoṣo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Àmì Táàbù"
+      },
+      {
+        "property": "disabled",
+        "title": "Àìṣiṣẹ́"
+      },
+      {
+        "property": "label",
+        "title": "Àkọlé Táàbù"
+      },
+      {
+        "slot": "",
+        "title": "Àkóónú Táàbù",
+        "description": "Àkóónú táàbù náà."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID aláìlẹ́gbẹ́"
+      },
+      {
+        "property": "flag",
+        "title": "Ọ̀rọ̀ Àsíá (Àṣàyàn)"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Àmì Àsíá (Àṣàyàn)"
+      }
+    ]
+  }
+}

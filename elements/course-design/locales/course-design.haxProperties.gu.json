@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "અભ્યાસક્રમ ડિઝાઇન",
+    "description": "શૈક્ષણિક સામગ્રી અને અભ્યાસક્રમ ડિઝાઇન એલિમેન્ટ્સ માટે કન્ટેનર."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "અભ્યાસક્રમ ઓળખકર્તા",
+        "description": "OER Schema: અભ્યાસક્રમનો ઓળખકર્તા, દા.ત. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "ઓફર કરેલું સત્ર",
+        "description": "OER Schema: જે સત્ર દરમિયાન અભ્યાસક્રમ ઓફર થાય છે."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "વિતરણ ફોર્મેટ",
+        "description": "OER Schema: અભ્યાસક્રમ પહોંચાડવા માટે વપરાતું ફોર્મેટ (દા.ત. રૂબરૂ, ઑનલાઇન, હાઇબ્રિડ)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "પ્રાથમિક પ્રશિક્ષક",
+        "description": "OER Schema: અભ્યાસક્રમ માટે પ્રાથમિક પ્રશિક્ષક."
+      },
+      {
+        "property": "syllabus",
+        "title": "અભ્યાસક્રમ રૂપરેખા URL",
+        "description": "OER Schema: અભ્યાસક્રમ રૂપરેખાનું URL."
+      }
+    ]
+  }
+}

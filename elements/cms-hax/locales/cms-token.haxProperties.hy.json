@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS տոկեն",
+    "description": "CMS տոկեն՝ ցուցադրված սերվերի կողմում"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Տոկեն",
+        "description": "Տոկեն մեր CMS-ից"
+      }
+    ]
+  }
+}

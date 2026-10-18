@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Qaama Barumsaa",
+    "description": "Kaardii barsiisonni tooftaa barsiisuu fi tarsiimoo barnootaa ittiin beeksisan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Gosa",
+        "description": "Gosa kaardii fayyadamu."
+      },
+      {
+        "property": "subtitle",
+        "title": "Mata Duree Xiqqaa",
+        "description": "Mata duree xiqqaa kaardii."
+      },
+      {
+        "property": "url",
+        "title": "Hidhoo",
+        "description": "Liinkii dirqama hin taane kaardiif (Liinkiin Kaayyoowwan Barumsaatiif hin jiru)."
+      },
+      {
+        "property": "title",
+        "title": "Mata duree",
+        "description": "Mata duree kaa'i, kun mata duree gosa irratti hundaa'e bakka buusa"
+      },
+      {
+        "property": "icon",
+        "title": "Mallattoo",
+        "description": "Aayikoonii kaa'i, kun aayikoonii gosa irratti hundaa'e bakka buusa"
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu calaqqee",
+        "description": "Halluu cimsaa kaa'i, kun halluu gosa irratti hundaa'e bakka buusa"
+      },
+      {
+        "slot": "",
+        "title": "Qabiyyee"
+      }
+    ]
+  }
+}

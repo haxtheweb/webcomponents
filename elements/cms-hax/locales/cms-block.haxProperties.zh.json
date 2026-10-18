@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS 区块",
+    "description": "在后端渲染的 CMS 区块"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "模块",
+        "description": "从我们的 CMS 加载的模块"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "从我们的 CMS 加载的区块 Delta"
+      }
+    ]
+  }
+}

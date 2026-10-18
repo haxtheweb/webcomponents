@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Përmbajtje e rastësishme faqeje",
+    "description": "Shfaq një element të rastësishëm të nivelit të lartë nga një faqe e përzgjedhur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Faqja",
+        "description": "Zgjidh faqen nga e cila do të merret përmbajtje e rastësishme. Elementi do të shfaqë rastësisht një nga elementet HTML të nivelit të lartë të kësaj faqeje."
+      }
+    ]
+  }
+}

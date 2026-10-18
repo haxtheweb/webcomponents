@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kurso dizainas",
+    "description": "Konteineris mokomajai medžiagai ir kurso dizaino elementams."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kurso identifikatorius",
+        "description": "OER Schema: kurso identifikatorius, pvz., MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Siūlomas semestras",
+        "description": "OER Schema: semestras, kurio metu siūlomas kursas."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Pateikimo formatas",
+        "description": "OER Schema: kurso pateikimo formatas (pvz., kontaktinis, nuotolinis, mišrus)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Pagrindinis dėstytojas",
+        "description": "OER Schema: pagrindinis kurso dėstytojas."
+      },
+      {
+        "property": "syllabus",
+        "title": "Kurso aprašo URL",
+        "description": "OER Schema: kurso aprašo URL."
+      }
+    ]
+  }
+}

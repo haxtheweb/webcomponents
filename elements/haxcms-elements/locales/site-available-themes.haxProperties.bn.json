@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "উপলভ্য থিম",
+    "description": "লাইভ প্রিভিউ পরিবর্তনসহ উপলভ্য HAXcms থিম দেখান"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "ভিউ মোড",
+        "description": "থিমগুলো কীভাবে দেখাবেন বেছে নিন",
+        "options": {
+          "gallery": "গ্যালারি",
+          "table": "টেবিল"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "বিস্তারিত দেখান",
+        "description": "থিমের বিবরণ ও অতিরিক্ত তথ্য দেখান"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "লুকানো ও পুরোনো থিম দেখান",
+        "description": "ড্যাশবোর্ডের ডিফল্টের পাশাপাশি লুকানো, পুরোনো ও বাজে থিম দেখান"
+      },
+      {
+        "property": "columns",
+        "title": "কলাম (গ্যালারি)",
+        "description": "গ্যালারি ভিউতে কলামের সংখ্যা"
+      }
+    ]
+  }
+}

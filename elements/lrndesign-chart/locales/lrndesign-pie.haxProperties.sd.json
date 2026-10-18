@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "پائي چارٽ",
+    "description": "CSV جي بنياد تي رسائي لائق چارٽ ٺاهي ٿو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "نمايان رنگ",
+        "description": "اختياري نمايان رنگ."
+      },
+      {
+        "title": "ڊارڪ ٿيم",
+        "description": "ڊارڪ ٿيم چالو ڪريو"
+      },
+      {
+        "title": "CSV فائل",
+        "description": "CSV مان ڊيٽا لوڊ ڪريو."
+      },
+      {
+        "title": "چارٽ جو عنوان",
+        "description": "توهان جي چارٽ لاءِ رسائي لائق متبادل متن."
+      },
+      {
+        "title": "چارٽ جي وضاحت",
+        "description": "توهان جي چارٽ جي رسائي لائق وضاحت."
+      },
+      {
+        "title": "پيماني جو نالو",
+        "description": "چارٽ جي ويڪر:اوچائي جو تناسب ($ct-scales ۽ $ct-scales-names لاءِ https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings ڏسو).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "ڊونٽ"
+      },
+      {
+        "title": "ليبل ڏيکاريو"
+      },
+      {
+        "title": "شروعاتي زاويو"
+      },
+      {
+        "title": "پيڊنگ"
+      },
+      {
+        "title": "ڪل",
+        "description": "اختياري ڪل جيڪو توهان مقرر ڪري سگهو ٿا. ڪل قدر مقرر ڪرڻ سان، مڪمل پائي ٺاهڻ لاءِ سيريز جي قدرن جو مجموعو هن ڪل جي برابر هجڻ گهرجي. توهان هي پيرا ميٽر پائي جا صرف حصا يا گيج چارٽ ٺاهڻ لاءِ استعمال ڪري سگهو ٿا."
+      },
+      {
+        "title": "خالي قدر نظرانداز ڪريو",
+        "description": "غير ضروري ٽڪرن ۽ ليبلن ٺاهڻ کان بچڻ لاءِ خالي قدر نظرانداز ڪيا ويندا."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "ڊيٽا ابتي ڪريو",
+        "description": "ليبلن سميت ڊيٽا، سيريز جي ترتيب ۽ سڄي سيريز ڊيٽا جون قطارون ابتيون ڪريو."
+      },
+      {
+        "title": "HTML ٽيبل",
+        "description": "اختياري: ڊيٽا HTML ٽيبل طور لوڊ ڪريو."
+      },
+      {
+        "title": "ڊونٽ جي لڪير جي ويڪر"
+      },
+      {
+        "title": "ٺوس ڊونٽ",
+        "description": "ڊونٽ جا حصا لڪيرن بدران شڪلين طور ٺاهيو."
+      },
+      {
+        "title": "ليبل جو رخ",
+        "description": "ڊونٽ جا حصا لڪيرن بدران شڪلين طور ٺاهيو.",
+        "options": {
+          "neutral": "غير جانبدار",
+          "explode": "ٻاهر ڦهلايو",
+          "implode": "اندر سميٽيو"
+        }
+      },
+      {
+        "title": "ليبل آفسيٽ",
+        "description": "معياري پوزيشن کان ليبل جي پوزيشن جو آفسيٽ جيڪا ريڊيس جي اڌ فاصلي تي آهي. هي قدر مثبت يا منفي ٿي سگهي ٿو. مثبت قدر ليبل کي مرڪز کان پري رکندا."
+      },
+      {
+        "title": "ليبل جي پوزيشن",
+        "options": {
+          "inside": "اندر",
+          "outside": "ٻاهر",
+          "center": "وچ"
+        }
+      }
+    ]
+  }
+}

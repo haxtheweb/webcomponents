@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ਸੰਖੇਪ ਰੂਪ",
+    "description": "ਪੂਰੇ ਸ਼ਬਦ ਵਾਲੇ ਟੂਲਟਿੱਪ ਨਾਲ ਸੰਖੇਪ ਰੂਪ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "ਲਿਖਤ",
+        "description": "ਦਿਖਾਈ ਦੇਣ ਵਾਲਾ ਸੰਖੇਪ ਰੂਪ ਟੈਕਸਟ।"
+      },
+      {
+        "attribute": "title",
+        "title": "ਸ਼ਬਦ",
+        "description": "ਹੋਵਰ 'ਤੇ ਦਿਖਾਇਆ ਪੂਰਾ ਸ਼ਬਦ।"
+      }
+    ]
+  }
+}

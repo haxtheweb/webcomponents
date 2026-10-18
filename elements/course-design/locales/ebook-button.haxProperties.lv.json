@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-grāmatas poga",
+    "description": "Poga, kas ved uz e-grāmatu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Pogas nosaukums."
+      },
+      {
+        "property": "link",
+        "title": "Saite",
+        "description": "Saite, uz kuru novirzīt pēc noklikšķināšanas."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona, kas attēlo šo saiti"
+      }
+    ]
+  }
+}

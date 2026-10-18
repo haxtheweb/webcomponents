@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS-ентитет",
+    "description": "CMS-ентитет прикажан во заднината"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Тип",
+        "description": "тип од нашиот CMS",
+        "options": {
+          "node": "Јазол",
+          "user": "Корисник",
+          "file": "Датотека"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id од нашиот CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Режим на прикажување",
+        "description": "режим на приказ од нашиот CMS"
+      }
+    ]
+  }
+}

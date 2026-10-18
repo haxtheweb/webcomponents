@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Vokabel",
+    "description": "Vokabelbegrëff"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Begrëff"
+      },
+      {
+        "slot": "",
+        "title": "Definitioun",
+        "description": "D'Definitioun, déi ugewise gëtt, wann op de Begrëff geklickt gëtt."
+      },
+      {
+        "property": "description",
+        "title": "Beschreiwung (OER Schema)",
+        "description": "OER Schema: eng kuerz Beschreiwung vum Vokabelbegrëff. Gëtt automatesch aus dem Definitiounstext ausgefëllt, wann d'Feld eidel bleift."
+      }
+    ]
+  }
+}

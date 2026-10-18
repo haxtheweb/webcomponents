@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Ithebhu",
+    "description": "Ithebhu enye."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "I-Icon yeThebhu"
+      },
+      {
+        "property": "disabled",
+        "title": "Kuvaliwe"
+      },
+      {
+        "property": "label",
+        "title": "Ileyibhile yeThebhu"
+      },
+      {
+        "slot": "",
+        "title": "Umxholo weThebhu",
+        "description": "Umxholo wethebhu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "I-ID eyodwa"
+      },
+      {
+        "property": "flag",
+        "title": "Umbhalo weFlegi Ongenyanzelekanga"
+      },
+      {
+        "property": "flagIcon",
+        "title": "I-Icon yeFlegi Engenyanzelekanga"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Edenemise rõngas",
+    "description": "Edenemise rõngasdiagramm"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Elemendi pealkiri"
+      },
+      {
+        "property": "desc",
+        "title": "Kirjeldus",
+        "description": "Ligipääsetav pikk kirjeldus"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Pildi allikas",
+        "description": "Rõnga sees oleva pildi allikas."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Pildi alt-tekst",
+        "description": "Pildi alt-tekst."
+      },
+      {
+        "property": "animated",
+        "title": "Animeeritud",
+        "description": "Kas edenemine animeeritakse esmakordsel laadimisel"
+      },
+      {
+        "property": "complete",
+        "title": "Valmis",
+        "description": "Lõpetatud väärtuste massiiv."
+      },
+      {
+        "property": "total",
+        "title": "Kokku",
+        "description": "Koguarv, kui kõik üksused on lõpetatud."
+      },
+      {
+        "property": "startAngle",
+        "title": "Algusnurk",
+        "description": "Rõnga nurk, kust edenemine algab"
+      }
+    ]
+  }
+}

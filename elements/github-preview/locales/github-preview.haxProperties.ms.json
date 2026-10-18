@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pratonton Github",
+    "description": "Rajah boleh akses dengan perihalan panjang"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisasi",
+        "description": "Nama mesin organisasi Github"
+      },
+      {
+        "property": "repo",
+        "title": "Repositori",
+        "description": "Nama mesin repo"
+      },
+      {
+        "property": "extended",
+        "title": "Paparan Lanjutan",
+        "description": "Termasuk readme dalam elemen"
+      }
+    ]
+  }
+}

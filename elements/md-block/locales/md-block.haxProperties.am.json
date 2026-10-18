@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "በቀጥታ ወይም በርቀት የተጫነ የmarkdown ይዘት ብሎክ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "ጥሬ markdown"
+      },
+      {
+        "property": "source",
+        "title": "ምንጭ",
+        "description": "ለmarkdown የምንጭ ፋይል"
+      }
+    ]
+  }
+}

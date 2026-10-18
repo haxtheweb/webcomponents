@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Calaqqisiisi",
+    "description": "Barreeffama sarara keessaa calaqqisiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Barreeffama",
+        "description": "Barreeffama calaqqifame."
+      }
+    ]
+  }
+}

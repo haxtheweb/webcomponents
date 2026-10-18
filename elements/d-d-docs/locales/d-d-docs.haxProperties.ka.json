@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "დიზაინ-სისტემის იმპლემენტაცია HAX-ისთვის"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "გამოსატანი ვარიანტი",
+        "options": {
+          "*": "სრული სტილის სახელმძღვანელო"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Pie de figura",
+    "description": "Pie para una figura."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Pie de foto",
+        "description": "Texto que se muestra debajo de la figura."
+      }
+    ]
+  }
+}

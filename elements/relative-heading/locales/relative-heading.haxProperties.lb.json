@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relativ Iwwerschrëft",
+    "description": "gëtt déi richteg Iwwerschrëftenhierarchie op Basis vun der Iwwerschrëft vum iwwergeuerdenten Element aus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Ressourcen-ID vun der iwwergeuerdenter Iwwerschrëft"
+      },
+      {
+        "property": "disableLink",
+        "description": "Desaktivéiert d'Link-Knäppchen-Funktioun."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Riicht de Knäppchen „Link kopéieren“ ganz riets vun der Iwwerschrëft aus."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Iwwerschrëftniveau, wann dat iwwergeuerdent Element net fonnt gëtt."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Iwwerschreift de Standardtext vun der Toast-Message beim Kopéiere vum Link."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Iwwerschreift d'Standardbezeechnung vum Knäppchen „Link kopéieren“."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Iwwerschreift de Standard-Ikon vum Knäppchen „Link kopéieren“."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Iwwerschreift d'Standardbezeechnung vum Zoumaache-Knäppchen vum Toast beim Kopéiere vum Link."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Iwwerschreift de Standard-Ikon vum Zoumaache-Knäppchen vum Toast beim Kopéiere vum Link."
+      }
+    ]
+  }
+}

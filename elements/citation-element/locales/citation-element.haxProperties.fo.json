@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Keldutilvísing",
+    "description": "Tilvísingarelement við trimum framsetingarháttum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Heiti á verkinum, ið verður víst til."
+      },
+      {
+        "property": "source",
+        "title": "Leinki til keldu",
+        "description": "Keldu-URL til verkið, ið verður víst til."
+      },
+      {
+        "property": "date",
+        "title": "Lisið dagfesting",
+        "description": "Dagfesting, tá ið keldan varð lisin."
+      },
+      {
+        "property": "scope",
+        "title": "Umfang",
+        "description": "Elementsumfang at vísa til.",
+        "options": {
+          "sibling": "Systurelement",
+          "parent": "Yvirelement"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Loyvi",
+        "description": "Loyvi til verkið, ið verður víst til."
+      },
+      {
+        "property": "creator",
+        "title": "Skapari",
+        "description": "Skapari ella eigari av verkinum, ið verður víst til."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema slag",
+        "description": "OER Schema flokkur til hesa tilvísingina. Sjálvsett er oer:ReferencedMaterial; skriva bara yvir við einum gyldugum OER-flokki (t.d. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

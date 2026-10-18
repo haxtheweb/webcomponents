@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Түздөн-түз же алыстан жүктөлгөн markdown мазмунунун блогу"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Чийки markdown"
+      },
+      {
+        "property": "source",
+        "title": "Булак",
+        "description": "Markdown үчүн булак файл"
+      }
+    ]
+  }
+}

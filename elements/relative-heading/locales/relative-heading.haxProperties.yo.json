@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Àkọlé onípele",
+    "description": "ó ń gbé ìpele àkọlé tó tọ́ jáde gẹ́gẹ́ bí àkọlé òbí"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID Ohun Èlò Àkọlé Òbí"
+      },
+      {
+        "property": "disableLink",
+        "description": "Ó ń pa ẹ̀yà bọ́tìnnì ìjápọ̀."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Ó ń to bọ́tìnnì ìdàkọ ìjápọ̀ sí apá ọ̀tún pátápátá àkọlé."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Ìpele àkọlé tí a kò bá rí òbí."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Ó ń rọ́pò ọ̀rọ̀ àkọ́kọ́ fún ìfiránṣẹ́ toast ìdàkọ ìjápọ̀."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Ó ń rọ́pò àkọlé àkọ́kọ́ bọ́tìnnì ìdàkọ ìjápọ̀."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Ó ń rọ́pò àmì àkọ́kọ́ bọ́tìnnì ìdàkọ ìjápọ̀."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Ó ń rọ́pò àkọlé àkọ́kọ́ fún bọ́tìnnì ìpadé toast ìdàkọ ìjápọ̀."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Ó ń rọ́pò àmì àkọ́kọ́ fún bọ́tìnnì ìpadé toast ìdàkọ ìjápọ̀."
+      }
+    ]
+  }
+}

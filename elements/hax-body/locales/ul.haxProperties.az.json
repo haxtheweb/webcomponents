@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Markerli siyahı",
+    "description": "Markerli siyahı yarat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Marker üslubu",
+        "description": "Nömrəsiz siyahı markerləri üçün istifadə olunan üslub.",
+        "options": {
+          "": "Standart (kvadrat)",
+          "list-disc": "Disk",
+          "list-circle": "Dairə",
+          "list-square": "Kvadrat"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Isixhumanisi se-HAX",
+    "description": "Isixhumanisi esiya kunsiza ethile kusayithi osebenza kulo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Into",
+        "description": "Into okufanele iboniswe yedatha yesixhumanisi / yesihloko"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Fora enhavo",
+    "description": "Reuzi enhavon de unu retejo en alia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Reteja adreso",
+        "description": "Algluu adreson de kiu referenci enhavon, se ne la nuna retejo"
+      },
+      {
+        "property": "uuid",
+        "title": "Ero",
+        "description": "Ero bildigota por la ligilo / titolaj datumoj"
+      },
+      {
+        "property": "breakreference",
+        "title": "Rompi referencon",
+        "description": "Marki ĉi tiun skatolon kopias la foran enhavon por loka redaktado sed forigas la ligon. Ĝi ne plu ricevos ĝisdatigojn kiam la referencita materialo ĝisdatiĝos."
+      },
+      {
+        "property": "showTitle",
+        "title": "Montri titolon",
+        "description": "Ŝaltu por montri la titolon de la montrata rimedo"
+      }
+    ]
+  }
+}

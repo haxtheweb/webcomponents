@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "የኮርስ ሞዴል",
+    "description": "ዝርዝሮች፣ እነማ እና የዕውቀት ፈተናዎች ያሉት ለኮርስ ጽንሰ-ሐሳቦች በይነተገናኝ አቀማመጥ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "ርዕስ"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "የመረጃ ቦታ"
+      },
+      {
+        "title": "የዝርዝሮች ቦታ"
+      },
+      {
+        "title": "የእነማ ቦታ"
+      },
+      {
+        "title": "የዕውቀት ፈተና ቦታ"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "የአርማ ቦታ"
+      }
+    ]
+  }
+}

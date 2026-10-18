@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematika",
+    "description": "Matematikai tartalom szép megjelenítése."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematika",
+        "description": "Add meg az egyenletet LaTeX formában"
+      }
+    ]
+  }
+}

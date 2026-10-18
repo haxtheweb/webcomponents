@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Kasbiy faoliyat bandi",
+    "description": "Alohida tashkilot va unga tegishli lavozimlar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Tashkilot nomi"
+      },
+      {
+        "property": "location",
+        "title": "Joylashuv"
+      },
+      {
+        "property": "source",
+        "title": "Manba"
+      }
+    ]
+  }
+}

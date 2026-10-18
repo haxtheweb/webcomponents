@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Karyera vəzifəsi",
+    "description": "Təşkilat daxilində ayrıca vəzifə"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlıq"
+      },
+      {
+        "property": "startDate",
+        "title": "Başlama tarixi"
+      },
+      {
+        "property": "endDate",
+        "title": "Bitmə tarixi (istəyə bağlı)"
+      },
+      {
+        "property": "skills",
+        "title": "Əlaqəli bacarıqlar",
+        "description": "Bacarıq əlavə etməyə başlamaq üçün + düyməsini seçin"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Lüğət",
+    "description": "Lüğət termini"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termin"
+      },
+      {
+        "slot": "",
+        "title": "Tərif",
+        "description": "Terminə kliklədikdə göstəriləcək tərif."
+      },
+      {
+        "property": "description",
+        "title": "Təsvir (OER Schema)",
+        "description": "OER Schema: lüğət termininin qısa təsviri. Boş buraxılarsa, tərif mətnindən avtomatik doldurulur."
+      }
+    ]
+  }
+}

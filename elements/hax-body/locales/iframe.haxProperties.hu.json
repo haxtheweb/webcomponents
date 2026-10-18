@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Külső webes tartalom beágyazása."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Forrás",
+        "description": "Az erőforrás URL-je."
+      }
+    ]
+  }
+}

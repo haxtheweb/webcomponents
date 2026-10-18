@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Gwero la mawu",
+    "description": "Chinthu cha mawu ogwidwa chokhala ndi njira zitatu zoonetsera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mutu wa ntchito yogwidwa."
+      },
+      {
+        "property": "source",
+        "title": "Ulalo wa gwero",
+        "description": "URL ya gwero la ntchito yogwidwa."
+      },
+      {
+        "property": "date",
+        "title": "Tsiku lopezeka",
+        "description": "Tsiku lomwe gwero linapezeka."
+      },
+      {
+        "property": "scope",
+        "title": "Malire",
+        "description": "Malire a chinthu choti chigwidwe.",
+        "options": {
+          "sibling": "Chinthu chapafupi",
+          "parent": "Chinthu cha kholo"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Layisensi",
+        "description": "Chilolezo cha ntchito yogwidwa."
+      },
+      {
+        "property": "creator",
+        "title": "Wopanga",
+        "description": "Wopanga kapena mwini wa ntchito yogwidwa."
+      },
+      {
+        "property": "typeof",
+        "title": "Mtundu wa OER Schema",
+        "description": "Kalasi ya OER Schema ya mawu ogwidwa awa. Mwachisawawa ndi oer:ReferencedMaterial; sinthani ndi kalasi ya OER yovomerezeka yokha (mwachitsanzo oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex ရွေးကိရိယာ",
+    "description": "Hexcode အရောင် ရွေးကိရိယာ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "တန်ဖိုး",
+        "description": "မူလ hex တန်ဖိုး"
+      },
+      {
+        "property": "disabled",
+        "title": "ပိတ်ထားသည်",
+        "description": "စာသား အကွက်ကို ပိတ်ရန်"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "ကြီးမားသော ပြသမှု",
+        "description": "ကြီးမားသော ပြသမှုတွင် အရောင် ထည့်ရန်"
+      }
+    ]
+  }
+}

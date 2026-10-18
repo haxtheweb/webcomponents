@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Vocabular",
+    "description": "Termen de vocabular"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termen"
+      },
+      {
+        "slot": "",
+        "title": "Definiție",
+        "description": "Definiția afișată când se face clic pe termen."
+      },
+      {
+        "property": "description",
+        "title": "Descriere (OER Schema)",
+        "description": "OER Schema: o scurtă descriere a termenului de vocabular. Completată automat din textul definiției dacă este lăsată goală."
+      }
+    ]
+  }
+}

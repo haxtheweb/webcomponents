@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Élément de bibliographie",
+    "description": "Élément représentant une citation unique dans une bibliographie, prenant en charge plusieurs formats et options d'exportation."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Type",
+        "description": "Type de citation",
+        "options": {
+          "web": "Web",
+          "journal": "Revue",
+          "book": "Livre"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titre",
+        "description": "Titre de l'élément"
+      },
+      {
+        "property": "authors",
+        "title": "Auteur(s)",
+        "description": "Les événements de la frise chronologique"
+      },
+      {
+        "property": "publisher",
+        "title": "Éditeur",
+        "description": "Site web d'origine"
+      }
+    ]
+  }
+}

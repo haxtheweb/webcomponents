@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tokena CMS",
+    "description": "Tokena CMS ku li backendê tê nîşandan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Token",
+        "description": "Token ji CMS a me"
+      }
+    ]
+  }
+}

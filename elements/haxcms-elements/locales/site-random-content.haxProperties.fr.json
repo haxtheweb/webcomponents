@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Contenu de page aléatoire",
+    "description": "Afficher un élément de premier niveau aléatoire d'une page sélectionnée"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Page",
+        "description": "Sélectionnez la page d'où tirer du contenu aléatoire. L'élément affichera au hasard l'un des éléments HTML de premier niveau de cette page."
+      }
+    ]
+  }
+}

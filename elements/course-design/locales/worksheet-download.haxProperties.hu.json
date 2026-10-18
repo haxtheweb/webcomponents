@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Munkalap letöltése",
+    "description": "Gomb a letölthető fájlok megjelenítéséhez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "A letöltés címe."
+      },
+      {
+        "property": "link",
+        "title": "Hivatkozás",
+        "description": "A letöltés hivatkozása."
+      }
+    ]
+  }
+}

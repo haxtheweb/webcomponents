@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: qayb ilmo",
+    "description": "Qayb firfircoon oo muujisa carruurta bogga hadda"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Habka firfircoon",
+        "description": "Sida loo xisaabiyo carruurta marka loo eego curiyahan",
+        "options": {
+          "active": "Carruurta firfircoon",
+          "parent": "Carruurta waalidka",
+          "ancestor": "Dhammaan carruurta laga bilaabo awoowga ugu sarreeya"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Heerka bilowga"
+      },
+      {
+        "property": "end",
+        "title": "Heerka dhammaadka"
+      }
+    ]
+  }
+}

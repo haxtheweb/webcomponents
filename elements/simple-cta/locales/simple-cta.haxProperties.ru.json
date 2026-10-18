@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Призыв к действию",
+    "description": "Простая кнопка со ссылкой для выполнения действия."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Метка",
+        "description": "Текст ссылки"
+      },
+      {
+        "property": "link",
+        "title": "Ссылка",
+        "description": "Введите ссылку на любой ресурс"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Скрыть значок",
+        "description": "Скрыть значок, выделяющий текст"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Значок",
+        "description": "Значок ссылки действия"
+      }
+    ]
+  }
+}

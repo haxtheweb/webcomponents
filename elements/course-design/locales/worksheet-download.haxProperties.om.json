@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Buufannaa Waraqaa Hojii",
+    "description": "Qabduu faayiliiwwan buufachuuf jiran agarsiisu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mata duree",
+        "description": "Mata duree buufannaa."
+      },
+      {
+        "property": "link",
+        "title": "Hidhoo",
+        "description": "Liinkii buufannaa."
+      }
+    ]
+  }
+}

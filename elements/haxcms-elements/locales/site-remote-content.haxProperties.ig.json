@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ọdịnaya dị anya",
+    "description": "Jiri ọdịnaya sitere na otu saịtị mee ihe na nke ọzọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Adreesị saịtị",
+        "description": "Mado adreesị a ga-esi zoo aka n'ọdịnaya ma ọ bụrụ na ọ bụghị saịtị dị ugbu a"
+      },
+      {
+        "property": "uuid",
+        "title": "Ihe",
+        "description": "Ihe a ga-egosi maka data njikọ / aha"
+      },
+      {
+        "property": "breakreference",
+        "title": "Gbajie ntụaka",
+        "description": "Ịkpa igbe a na-edetuo ọdịnaya dị anya maka idezi ya n'ime ebe a mana ọ na-ewepụ njikọ ahụ. Ọ gaghị enweta mmelite ọzọ mgbe ihe ntụaka ahụ emelitere."
+      },
+      {
+        "property": "showTitle",
+        "title": "Gosi aha",
+        "description": "Gbanye iji gosi aha nke akụrụngwa a na-egosi"
+      }
+    ]
+  }
+}

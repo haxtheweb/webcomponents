@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Implementácia dizajnového systému pre HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Možnosť na zobrazenie",
+        "options": {
+          "*": "Celá štýlová príručka"
+        }
+      }
+    ]
+  }
+}

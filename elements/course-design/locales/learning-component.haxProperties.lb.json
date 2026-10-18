@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Léierkomponent",
+    "description": "Eng Kaart fir Enseignanten, fir Pädagogik an Ënnerrechtsstrategien ze kommunizéieren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Typ",
+        "description": "Den Typ vu Kaart, dee benotzt gëtt."
+      },
+      {
+        "property": "subtitle",
+        "title": "Ënnertitel",
+        "description": "Den Ënnertitel vun der Kaart."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "En optionale Link fir d'Kaart (Link net disponibel fir Léierzieler)."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel festleeën; dëst iwwerschreift den typbaséierten Titel"
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon festleeën; dëst iwwerschreift den typbaséierten Ikon"
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Akzentfaarf festleeën; dëst iwwerschreift déi typbaséiert Faarf"
+      },
+      {
+        "slot": "",
+        "title": "Inhalt"
+      }
+    ]
+  }
+}

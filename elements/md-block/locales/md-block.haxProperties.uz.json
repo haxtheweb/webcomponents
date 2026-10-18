@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Bevosita yoki masofadan yuklangan markdown kontent bloki"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Xom markdown"
+      },
+      {
+        "property": "source",
+        "title": "Manba",
+        "description": "Markdown manba fayli"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P මූලද්‍රව්‍යය",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "පෙළ",
+        "description": "පැති සටහනේ අන්තර්ගතය"
+      }
+    ]
+  }
+}

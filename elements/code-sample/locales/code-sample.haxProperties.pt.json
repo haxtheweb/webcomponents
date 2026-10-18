@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Exemplo de código",
+    "description": "Um exemplo de código destacado na página"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Destaque de código",
+        "description": "Destaque de sintaxe a aplicar à área de código",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Dados JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Botão de copiar para a área de transferência",
+        "description": "botão no canto superior direito que diz copiar para a área de transferência"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Início do destaque",
+        "description": "Número da linha onde o destaque começa"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Fim do destaque",
+        "description": "Linha onde o destaque termina"
+      }
+    ]
+  }
+}

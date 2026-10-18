@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kuhikuhina",
+    "description": "Mea kuhia me ʻekolu ʻano hōʻike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Poʻo inoa",
+        "description": "Poʻo inoa o ka hana i kuhia ʻia."
+      },
+      {
+        "property": "source",
+        "title": "Loulou kumu",
+        "description": "URL kumu no ka hana i kuhia ʻia."
+      },
+      {
+        "property": "date",
+        "title": "Lā i komo ʻia",
+        "description": "Ka lā i komo ʻia ai ke kumu."
+      },
+      {
+        "property": "scope",
+        "title": "Ākea",
+        "description": "Ākea o ka mea e kuhia ai.",
+        "options": {
+          "sibling": "Mea kaikaina",
+          "parent": "Mea makua"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Laikini",
+        "description": "Laikini no ka hana i kuhia ʻia."
+      },
+      {
+        "property": "creator",
+        "title": "Mea hana",
+        "description": "Mea hana a i ʻole mea nona ka hana i kuhia ʻia."
+      },
+      {
+        "property": "typeof",
+        "title": "ʻAno OER Schema",
+        "description": "Papa OER Schema no kēia kuhia. Paʻamau iā oer:ReferencedMaterial; e pani wale me kahi papa OER kūpono (e laʻa me oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

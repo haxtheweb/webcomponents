@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bhuroko reCMS",
+    "description": "Bhuroko reCMS rinoratidzwa pabackend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Chikamu chekosi",
+        "description": "Module yekurodha kubva kuCMS yedu"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta yebhuroko rekurodha kubva kuCMS yedu"
+      }
+    ]
+  }
+}

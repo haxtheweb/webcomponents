@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Doiraviy diagramma",
+    "description": "CSV asosida qulay diagramma yaratadi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Urgʻu rangi",
+        "description": "Ixtiyoriy urgʻu rangi."
+      },
+      {
+        "title": "Qorongʻi mavzu",
+        "description": "Qorongʻi mavzuni yoqish"
+      },
+      {
+        "title": "CSV fayli",
+        "description": "Maʼlumotlarni CSV dan yuklash."
+      },
+      {
+        "title": "Diagramma sarlavhasi",
+        "description": "Diagrammangiz uchun qulay alt matn."
+      },
+      {
+        "title": "Diagramma tavsifi",
+        "description": "Diagrammangizning qulay tavsifi."
+      },
+      {
+        "title": "Shkala nomi",
+        "description": "Diagrammaning kenglik:balandlik nisbati ($ct-scales va $ct-scales-names uchun https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings ga qarang).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Halqa"
+      },
+      {
+        "title": "Yorliqni koʻrsatish"
+      },
+      {
+        "title": "Boshlangʻich burchak"
+      },
+      {
+        "title": "Chekinish"
+      },
+      {
+        "title": "Jami",
+        "description": "Belgilashingiz mumkin boʻlgan ixtiyoriy jami. Jami qiymat belgilansa, toʻliq doira chizish uchun seriyadagi qiymatlar yigʻindisi shu jamiga teng boʻlishi kerak. Bu parametrdan doiraning faqat bir qismini yoki koʻrsatkichli diagrammalarni chizish uchun foydalanishingiz mumkin."
+      },
+      {
+        "title": "Boʻsh qiymatlarni eʼtiborsiz qoldirish",
+        "description": "Keraksiz boʻlaklar va yorliqlarni chizmaslik uchun boʻsh qiymatlar eʼtiborsiz qoldiriladi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Maʼlumotlarni teskari aylantirish",
+        "description": "Maʼlumotlarni, jumladan yorliqlarni, seriyalar tartibini va butun seriya maʼlumotlar massivlarini teskari aylantirish."
+      },
+      {
+        "title": "HTML jadval",
+        "description": "Ixtiyoriy: maʼlumotlarni HTML jadval sifatida yuklash."
+      },
+      {
+        "title": "Halqa chizigʻi qalinligi"
+      },
+      {
+        "title": "Yaxlit halqa",
+        "description": "Halqa segmentlarini chiziq emas, shakl sifatida chizish."
+      },
+      {
+        "title": "Yorliq yoʻnalishi",
+        "description": "Halqa segmentlarini chiziq emas, shakl sifatida chizish.",
+        "options": {
+          "neutral": "neytral",
+          "explode": "tashqariga",
+          "implode": "ichkariga"
+        }
+      },
+      {
+        "title": "Yorliq siljishi",
+        "description": "Yorliqning radiusning yarmi masofasidagi standart joylashuvdan siljishi. Bu qiymat musbat yoki manfiy boʻlishi mumkin. Musbat qiymatlar yorliqni markazdan uzoqlashtiradi."
+      },
+      {
+        "title": "Yorliq joylashuvi",
+        "options": {
+          "inside": "ichkarida",
+          "outside": "tashqarida",
+          "center": "markaz"
+        }
+      }
+    ]
+  }
+}

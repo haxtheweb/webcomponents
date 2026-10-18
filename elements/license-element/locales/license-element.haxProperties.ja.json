@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ライセンス",
+    "description": "作品にライセンスを付与します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "引用する作品のタイトル。"
+      },
+      {
+        "property": "source",
+        "title": "ソースリンク",
+        "description": "ライセンスが付与された作品のソースURL。"
+      },
+      {
+        "property": "license",
+        "title": "ライセンス",
+        "description": "この作品に適用されるライセンス。"
+      },
+      {
+        "property": "creator",
+        "title": "作成者",
+        "description": "この作品の作成者または所有者。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "ソースリンク",
+        "description": "ライセンスの詳細情報へのリンク。"
+      },
+      {
+        "property": "moreLabel",
+        "title": "詳細ラベル",
+        "description": "ライセンスの詳細情報のラベル。"
+      }
+    ]
+  }
+}

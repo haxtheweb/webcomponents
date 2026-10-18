@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ကျမ်းကိုးစာရင်း အရာ",
+    "description": "ဖော်မတ်များစွာနှင့် ထုတ်ယူမှု ရွေးချယ်စရာများကို ပံ့ပိုးသော ကျမ်းကိုးစာရင်းရှိ ကိုးကားချက် တစ်ခုကို ကိုယ်စားပြုသော အရာ။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "အမျိုးအစား",
+        "description": "ကိုးကားချက် အမျိုးအစား",
+        "options": {
+          "web": "ဝဘ်",
+          "journal": "ဂျာနယ်",
+          "book": "စာအုပ်"
+        }
+      },
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်",
+        "description": "အရာ၏ ခေါင်းစဉ်"
+      },
+      {
+        "property": "authors",
+        "title": "စာရေးသူ(များ)",
+        "description": "အချိန်ဇယားရှိ ဖြစ်ရပ်များ"
+      },
+      {
+        "property": "publisher",
+        "title": "ထုတ်ဝေသူ",
+        "description": "မူရင်း ဝဘ်ဆိုက်"
+      }
+    ]
+  }
+}

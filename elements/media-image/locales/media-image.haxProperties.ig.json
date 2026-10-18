@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Onyonyo emeziri",
+    "description": "Ụzọ isi gosi onyonyo nwere mmezi dị iche iche."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isi mmalite",
+        "description": "URL maka onyonyo ahụ."
+      },
+      {
+        "property": "alt",
+        "title": "Ederede ọzọ",
+        "description": "Ederede na-akọwa foto ahụ nye ndị ọrụ na-adịghị ahụ ụzọ."
+      },
+      {
+        "property": "link",
+        "title": "Njikọ",
+        "description": "Jikọọ onyonyo ahụ na URL"
+      },
+      {
+        "property": "card",
+        "title": "Kaadị",
+        "description": "Tinye onyinyo ka ọ dị ka kaadị ebuliri elu."
+      },
+      {
+        "property": "box",
+        "title": "Igbe",
+        "description": "Tinye igbe a na-ahụ anya gburugburu onyonyo ahụ."
+      },
+      {
+        "property": "offset",
+        "title": "Ndọpụ",
+        "description": "Tinye ndọpụ aka ekpe ma ọ bụ aka nri na onyonyo ahụ.",
+        "options": {
+          "none": "ọ dịghị",
+          "wide": "sara mbara",
+          "narrow": "dị warara"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Ntụaka",
+        "description": "Ntụaka maka onyonyo ahụ."
+      },
+      {
+        "property": "caption",
+        "title": "Nkọwa onyonyo",
+        "description": "Nkọwa maka onyonyo ahụ."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Aha ọgụgụ",
+        "description": "Aha maka akara ọgụgụ."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Nkọwa ọgụgụ",
+        "description": "Nkọwa maka akara ọgụgụ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Onyonyo nta",
+        "description": "Isi iyi onyonyo nta. Na-egosi onyonyo nta mana ọ na-emepe isi iyi zuru ezu na modal."
+      },
+      {
+        "property": "round",
+        "title": "Onyonyo gburugburu",
+        "description": "Na-akpụ ọdịdị onyonyo ka ọ bụrụ okirikiri."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Gbanyụọ modal onyonyo",
+        "description": "Gbanyụọ ịpị na-emepe onyonyo n'igbe nnyocha onyonyo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Gosi dị ka markdown",
+        "description": "Gosi nkọwa na ntụaka dị ka markdown."
+      }
+    ]
+  }
+}

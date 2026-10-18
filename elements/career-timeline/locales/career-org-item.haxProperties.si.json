@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "වෘත්තීය අයිතමය",
+    "description": "තනි සංවිධානයක් සහ එහි අනුබද්ධ භූමිකා"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "සංවිධානයේ නම"
+      },
+      {
+        "property": "location",
+        "title": "ස්ථානය"
+      },
+      {
+        "property": "source",
+        "title": "මූලාශ්‍රය"
+      }
+    ]
+  }
+}

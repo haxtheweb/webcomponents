@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "शब्दसंग्रह",
+    "description": "शब्दसंग्रह संज्ञा"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "संज्ञा"
+      },
+      {
+        "slot": "",
+        "title": "व्याख्या",
+        "description": "संज्ञेवर क्लिक केल्यावर दाखवायची व्याख्या."
+      },
+      {
+        "property": "description",
+        "title": "वर्णन (OER Schema)",
+        "description": "OER Schema: शब्दसंग्रह संज्ञेचे लहान वर्णन. रिकामे ठेवल्यास व्याख्येच्या मजकुरातून आपोआप भरले जाते."
+      }
+    ]
+  }
+}

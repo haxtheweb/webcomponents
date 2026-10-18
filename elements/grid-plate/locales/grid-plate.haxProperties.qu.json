@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Columna layout",
+    "description": "Kaqkunata sapalla columnakunapi churay"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Columna Layout",
+        "description": "Kay kaqkunata rikuchinapaq rikch'ay (huch'uy pantallakunapaq tikrakunman)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Responsive-ta wañuchiy",
+        "description": "Cajata unanchay hatun pantallakunapi columnakunata waqaychanapaq, aswan huch'uy pantallakunapi pataman churakuchkaptinpas"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Kaqpa Ukhu Ch'usaqnin",
+        "description": "Sapanka kaqpa ukhunpi ch'usaq"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Kaqkunap patankuna",
+        "description": "Kaqkuna chawpipi ch'usaq"
+      }
+    ]
+  }
+}

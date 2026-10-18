@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kadhi",
+    "description": "Kadhi rine maitiro eaccent asingamanikidzwe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Musoro",
+        "description": "Musoro wekadhi."
+      },
+      {
+        "slot": "subheading",
+        "title": "Musoro mudiki",
+        "description": "Musoro mudiki wekadhi usingamanikidzwe."
+      },
+      {
+        "slot": "content",
+        "title": "Zvirimo",
+        "description": "Zvirimo zvekadhi."
+      },
+      {
+        "slot": "footer",
+        "title": "Pazasi",
+        "description": "Footer yekadhi isingamanikidzwe."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Mufananidzo",
+        "description": "Mufananidzo usingamanikidzwe"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Mavara eAlt eMufananidzo",
+        "description": "Mavara ekutsiva anotsanangura mufananidzo kune vanoverengerwa nesikirini. Siya pasina chinhu chete kana mufananidzo uri wekushongedza chete."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Kurongwa Kwakatwasuka kweMufananidzo",
+        "options": {
+          "left": "kuruboshwe",
+          "center": "pakati",
+          "right": "kurudyi"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Kurongwa Kwakamira kweMufananidzo",
+        "options": {
+          "top": "pamusoro",
+          "center": "pakati",
+          "bottom": "pazasi"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rwekusimbisa rusingamanikidzwi."
+      },
+      {
+        "property": "dark",
+        "title": "Dingindira Rerima",
+        "description": "Batidza Dingindira reRima"
+      },
+      {
+        "property": "horizontal",
+        "title": "Kwakatwasuka",
+        "description": "Kutarisa kwakatwasuka?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Accent yeMusoro",
+        "description": "Isa ruvara rweaccent pamusoro?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Accent yeKumashure",
+        "description": "Isa ruvara rweaccent kumashure kwekadhi?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Hapana Accent yeMuganhu",
+        "description": "Bvisa accent yemuganhu?"
+      },
+      {
+        "property": "flat",
+        "title": "Yakati sandara",
+        "description": "Bvisa mumvuri webhokisi?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Kona",
+        "description": "Zvirimo zvekona yekadhi."
+      }
+    ]
+  }
+}

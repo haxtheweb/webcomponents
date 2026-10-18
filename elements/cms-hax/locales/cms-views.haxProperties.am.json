@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "የCMS እይታ",
+    "description": "በጀርባ የሚሰሩ የCMS እይታዎች"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "ስም",
+        "description": "ከCMSችን የእይታው ስም"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "ማሳያ",
+        "description": "ከCMSችን በዚያ እይታ ውስጥ ያለ ማሳያ"
+      }
+    ]
+  }
+}

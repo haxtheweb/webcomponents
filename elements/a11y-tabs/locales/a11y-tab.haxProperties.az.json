@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Tək tab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Tab ikonu"
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktiv"
+      },
+      {
+        "property": "label",
+        "title": "Tab etiketi"
+      },
+      {
+        "slot": "",
+        "title": "Tab məzmunu",
+        "description": "Tabın məzmunu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unikal ID"
+      },
+      {
+        "property": "flag",
+        "title": "İstəyə bağlı bayraq mətni"
+      },
+      {
+        "property": "flagIcon",
+        "title": "İstəyə bağlı bayraq ikonu"
+      }
+    ]
+  }
+}

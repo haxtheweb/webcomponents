@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-visning",
+    "description": "CMS-visninger gengivet i backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Navn",
+        "description": "Navnet på visningen fra vores CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Visning",
+        "description": "Display i den visning fra vores CMS"
+      }
+    ]
+  }
+}

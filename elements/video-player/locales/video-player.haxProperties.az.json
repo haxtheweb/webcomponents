@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Müxtəlif mənbələrdən əlçatan video oynatma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Mənbə",
+        "description": "Bu medianın URL-i."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Başlıq",
+        "description": "Videonun altında göstərilən başlıq."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Poster şəkli",
+        "description": "Poster şəklinin URL-i."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Mətn trekləri",
+        "description": "Video üçün altyazılar, tərcümə altyazıları, təsvirlər və digər mətn trekləri."
+      },
+      {
+        "property": "startTime",
+        "title": "Başlama vaxtı",
+        "description": "Videonu müəyyən vaxtdan başlat (saniyə)."
+      },
+      {
+        "property": "endTime",
+        "title": "Bitmə vaxtı",
+        "description": "Videonu müəyyən vaxtda bitir (saniyə), başlama vaxtı tələb olunur."
+      },
+      {
+        "property": "learningMode",
+        "title": "Təlim rejimini aktivləşdir",
+        "description": "İrəli və geri çəkməni deaktiv edir."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube-da aç düyməsini sil",
+        "description": "Videonu YouTube-da açmaq üçün düyməni silir."
+      },
+      {
+        "property": "linkable",
+        "title": "Paylaşım keçidi əlavə edilsin?",
+        "description": "Videonu paylaşmaq üçün keçid təqdim edir."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Vaxt nişanlarını gizlət",
+        "description": "Transkriptdəki vaxt nişanlarını gizlədin."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkripti gizlət",
+        "description": "Transkripti standart olaraq gizlədin."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Səsli təsvir treki",
+        "description": "Vizual elementləri nəql edən səsli təsvir trekinin (MP3 faylı) URL-i."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS-dan istifadə edilib-edilməyəcəyini göstərir.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Fonda oynatmaya icazə ver",
+        "description": "Brauzer tabı fokusu itirdikdə oynatmağa davam et."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Transkript üçün qaranlıq mövzu",
+        "description": "Transkript üçün qaranlıq mövzunu aktivləşdirin."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "İnteraktivliyi deaktiv et",
+        "description": "Transkripti kliklənə bilən edən interaktiv rejimi deaktiv edin."
+      },
+      {
+        "property": "lang",
+        "title": "Dil",
+        "description": "Medianın dili."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "(köhnəlmiş) Pleyer üçün vurğu rəngini seçin."
+      }
+    ]
+  }
+}

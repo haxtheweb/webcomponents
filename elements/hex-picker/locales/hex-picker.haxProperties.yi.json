@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex אויסקלײַבער",
+    "description": "Hex־קאָד קאָליר־אויסקלײַבער"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ווערט",
+        "description": "פֿאַרויסגעשטעלטער hex ווערט"
+      },
+      {
+        "property": "disabled",
+        "title": "אויסגעשאַלטן",
+        "description": "דעאַקטיוויר דאָס טעקסט־פֿעלד"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "גרויסע אויסשטעלונג",
+        "description": "ווײַז דעם קאָליר אין אַ גרויסער אויסשטעלונג"
+      }
+    ]
+  }
+}

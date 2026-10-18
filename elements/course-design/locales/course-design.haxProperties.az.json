@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kurs dizaynı",
+    "description": "Təhsil materialları və kurs dizaynı elementləri üçün konteyner."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kurs identifikatoru",
+        "description": "OER Schema: kursun identifikatoru, məs. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Tədris dövrü",
+        "description": "OER Schema: kursun təklif olunduğu dövr."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Tədris formatı",
+        "description": "OER Schema: kursun tədris formatı (məs. əyani, onlayn, hibrid)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Əsas müəllim",
+        "description": "OER Schema: kursun əsas müəllimi."
+      },
+      {
+        "property": "syllabus",
+        "title": "Sillabus URL-i",
+        "description": "OER Schema: kurs sillabusunun URL-i."
+      }
+    ]
+  }
+}

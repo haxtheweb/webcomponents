@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Камилләштерелгән рәсем",
+    "description": "Рәсемнәрне төрле камилләштерүләр белән күрсәтү ысулы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Чыганак",
+        "description": "Рәсем өчен URL."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернатив текст",
+        "description": "Күрмәүче кулланучыларга рәсемне тасвирлаучы текст."
+      },
+      {
+        "property": "link",
+        "title": "Сылтама",
+        "description": "Рәсемне URL'га бәйләү"
+      },
+      {
+        "property": "card",
+        "title": "Карточка",
+        "description": "Күтәрелгән карточка кебек күренсен өчен күләгә өстәү."
+      },
+      {
+        "property": "box",
+        "title": "Рамка",
+        "description": "Рәсем тирәли күренеп торган рамка өстәү."
+      },
+      {
+        "property": "offset",
+        "title": "Күчерелеш",
+        "description": "Рәсемне сулга яки уңга күчерү.",
+        "options": {
+          "none": "юк",
+          "wide": "киң",
+          "narrow": "тар"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Чыганак",
+        "description": "Рәсем өчен цитата."
+      },
+      {
+        "property": "caption",
+        "title": "Имза",
+        "description": "Рәсем өчен язу."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Иллюстрация исеме",
+        "description": "Иллюстрация билгесе өчен исем."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Иллюстрация тасвирламасы",
+        "description": "Иллюстрация билгесе өчен тасвирлама."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Миниатюра рәсеме",
+        "description": "Миниатюра рәсеме чыганагы. Миниатюраны күрсәтә, ләкин модаль тәрәзәдә тулы чыганакны ача."
+      },
+      {
+        "property": "round",
+        "title": "Түгәрәк рәсем",
+        "description": "Рәсемнең тышкы күренешен түгәрәк формага кисә."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Рәсемнең модаль тәрәзәсен сүндерү",
+        "description": "Басканда рәсемне карау диалогында ачуны сүндерү."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Markdown итеп күрсәтү",
+        "description": "Язуны һәм цитатаны markdown итеп күрсәтү."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS entitet",
+    "description": "CMS entitet prikazan na pozadini"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Vrsta",
+        "description": "vrsta iz našeg CMS-a",
+        "options": {
+          "node": "Čvor",
+          "user": "Korisnik",
+          "file": "Datoteka"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID iz našeg CMS-a"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Način prikaza",
+        "description": "način prikaza iz našeg CMS-a"
+      }
+    ]
+  }
+}

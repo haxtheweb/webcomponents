@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Fortschrittsring",
+    "description": "Fortschrittsring"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Der Titel des Elements"
+      },
+      {
+        "property": "desc",
+        "title": "Beschreibung",
+        "description": "Barrierefreie ausführliche Beschreibung"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Bildquelle",
+        "description": "Quelle des Bildes im Ring."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Bild-Alternativtext",
+        "description": "Alternativtext für das Bild."
+      },
+      {
+        "property": "animated",
+        "title": "Animiert",
+        "description": "Ob der Fortschritt beim ersten Laden animiert wird"
+      },
+      {
+        "property": "complete",
+        "title": "Abgeschlossen",
+        "description": "Ein Array abgeschlossener Werte."
+      },
+      {
+        "property": "total",
+        "title": "Gesamt",
+        "description": "Gesamtwert, wenn alle Elemente abgeschlossen sind."
+      },
+      {
+        "property": "startAngle",
+        "title": "Startwinkel",
+        "description": "Winkel des Rings, an dem der Fortschritt beginnt"
+      }
+    ]
+  }
+}

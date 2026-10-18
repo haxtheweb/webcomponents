@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Numeroitu luettelo",
+    "description": "Luo numeroitu luettelo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Numerotyyli",
+        "description": "Numeroidun luettelon numeroinnissa käytettävä tyyli.",
+        "options": {
+          "": "Oletus (desimaali)",
+          "list-decimal-leading-zero": "Desimaali etunollalla (01, 02, 03)",
+          "list-lower-alpha": "Pienet kirjaimet (a, b, c)",
+          "list-upper-alpha": "Isot kirjaimet (A, B, C)",
+          "list-lower-roman": "Pienet roomalaiset (i, ii, iii)",
+          "list-upper-roman": "Isot roomalaiset (I, II, III)"
+        }
+      }
+    ]
+  }
+}

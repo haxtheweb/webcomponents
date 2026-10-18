@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Txartela",
+    "description": "Aukerako azentu-estiloa duen txartela."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Goiburua",
+        "description": "Txartelaren goiburua."
+      },
+      {
+        "slot": "subheading",
+        "title": "Azpigoiburua",
+        "description": "Txartelaren aukerako azpigoiburua."
+      },
+      {
+        "slot": "content",
+        "title": "Edukia",
+        "description": "Txartelaren edukia."
+      },
+      {
+        "slot": "footer",
+        "title": "Orri-oina",
+        "description": "Txartelaren aukerako orri-oina."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Irudia",
+        "description": "Aukerako irudia"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Irudiaren testu alternatiboa",
+        "description": "Pantaila-irakurgailuentzat irudia deskribatzen duen testu alternatiboa. Utzi hutsik irudia apaingarria soilik bada."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Irudiaren lerrokatze horizontala",
+        "options": {
+          "left": "ezkerra",
+          "center": "erdia",
+          "right": "eskuina"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Irudiaren lerrokatze bertikala",
+        "options": {
+          "top": "goia",
+          "center": "erdia",
+          "bottom": "behea"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Aukerako nabarmentze kolorea."
+      },
+      {
+        "property": "dark",
+        "title": "Gai iluna",
+        "description": "Gaitu gai iluna"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontala",
+        "description": "Orientazio horizontala?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Goiburuaren azentua",
+        "description": "Aplikatu azentu-kolorea goiburuari?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Atzeko planoaren azentua",
+        "description": "Aplikatu azentu-kolorea txartelaren atzeko planoari?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Ertz-azenturik ez",
+        "description": "Kendu ertz-azentua?"
+      },
+      {
+        "property": "flat",
+        "title": "Laua",
+        "description": "Kendu koadroaren itzala?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Izkina",
+        "description": "Txartelaren izkinako edukia."
+      }
+    ]
+  }
+}

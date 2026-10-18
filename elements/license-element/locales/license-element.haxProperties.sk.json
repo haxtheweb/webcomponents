@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Licencia",
+    "description": "Poskytnite licenciu pre svoje dielo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Názov",
+        "description": "Názov citovaného diela."
+      },
+      {
+        "property": "source",
+        "title": "Odkaz na zdroj",
+        "description": "URL zdroja licencovaného diela."
+      },
+      {
+        "property": "license",
+        "title": "Licencia",
+        "description": "Licencia použitá na toto dielo."
+      },
+      {
+        "property": "creator",
+        "title": "Tvorca",
+        "description": "Tvorca alebo vlastník tohto diela."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Odkaz na zdroj",
+        "description": "Odkaz na ďalšie podrobnosti o licencii."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Označenie „viac“",
+        "description": "Označenie pre ďalšie podrobnosti o licencii."
+      }
+    ]
+  }
+}

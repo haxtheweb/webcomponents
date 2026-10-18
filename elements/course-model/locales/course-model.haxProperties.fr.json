@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "modèle de cours",
+    "description": "Mise en page interactive des concepts du cours avec détails, animation et vérifications des connaissances."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "titre"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Zone d'information"
+      },
+      {
+        "title": "Zone de détails"
+      },
+      {
+        "title": "Zone d'animation"
+      },
+      {
+        "title": "Zone de vérification des connaissances"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Zone du logo"
+      }
+    ]
+  }
+}

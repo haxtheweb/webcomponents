@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Пайванди асосӣ",
+    "description": "Элементи асосии пайванд."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Пайванд",
+        "description": "URL-и мақсад."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Матн",
+        "description": "Матни намоёни пайванд."
+      },
+      {
+        "attribute": "target",
+        "title": "Ҳадаф",
+        "description": "Пайвандро дар куҷо кушодан.",
+        "options": {
+          "": "Ҳамон равзана",
+          "_blank": "Равзанаи нав - _blank",
+          "_top": "Равзанаи болоӣ - _top",
+          "_parent": "Равзанаи волидайн - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Матни сарлавҳа",
+        "description": "Сарлавҳаи маслиҳатӣ барои дастрасӣ ва SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Муносибат бо мақсад (амният/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

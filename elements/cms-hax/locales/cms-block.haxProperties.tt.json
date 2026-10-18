@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS блогы",
+    "description": "Серверда күрсәтелә торган CMS блогы"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Модуль",
+        "description": "Безнең CMS'тан йөкләнә торган модуль"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Безнең CMS'тан йөкләнә торган блокның Delta'сы"
+      }
+    ]
+  }
+}

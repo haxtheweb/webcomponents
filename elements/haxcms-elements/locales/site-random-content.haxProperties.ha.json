@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Abun Ciki na Shafi Bazuwar",
+    "description": "Nuna abu bazuwar na babban mataki daga shafin da aka zaɓa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Shafi",
+        "description": "Zaɓi shafin da za a ɗauko abun ciki bazuwar daga gare shi. Abun zai nuna ɗaya daga cikin abubuwan HTML na babban mataki daga wannan shafi bazuwar."
+      }
+    ]
+  }
+}

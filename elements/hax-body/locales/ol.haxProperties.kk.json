@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Нөмірленген тізім",
+    "description": "Нөмірленген тізім жасау."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Нөмір стилі",
+        "description": "Реттелген тізімді нөмірлеуге қолданылатын стиль.",
+        "options": {
+          "": "Әдепкі (ондық)",
+          "list-decimal-leading-zero": "Алдында нөлі бар ондық (01, 02, 03)",
+          "list-lower-alpha": "Кіші әріптер (a, b, c)",
+          "list-upper-alpha": "Бас әріптер (A, B, C)",
+          "list-lower-roman": "Кіші рим сандары (i, ii, iii)",
+          "list-upper-roman": "Бас рим сандары (I, II, III)"
+        }
+      }
+    ]
+  }
+}

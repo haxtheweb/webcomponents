@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS කොටස",
+    "description": "පසුබිමේ විදැහූ CMS කොටස"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "මොඩියුලය",
+        "description": "අපගේ CMS වෙතින් පූරණය කළ යුතු මොඩියුලය"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "අපගේ CMS වෙතින් පූරණය කළ යුතු කොටසේ delta"
+      }
+    ]
+  }
+}

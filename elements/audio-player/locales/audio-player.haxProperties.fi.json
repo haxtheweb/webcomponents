@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Ääni",
+    "description": "Tämä voi esittää videon erittäin saavutettavasti lähteestä riippumatta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Lähde",
+        "description": "Tämän median URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Otsikko",
+        "description": "Lyhyt otsikko videon alle"
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Valitse soittimen korosteväri."
+      },
+      {
+        "property": "track",
+        "title": "Tekstitys",
+        "description": "Tekstitystiedoston URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Pikkukuva",
+        "description": "Valinnainen. Pikkukuvan/julistekuvan URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "Ota oppimistila käyttöön",
+        "description": "Poistaa käytöstä pikakelauksen eteen- ja taaksepäin."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Poista Avaa YouTubessa -painike",
+        "description": "Poistaa painikkeen, jolla video avataan YouTubessa."
+      },
+      {
+        "property": "linkable",
+        "title": "Lisätäänkö jakolinkki?",
+        "description": "Tarjoaa linkin videon jakamiseen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Ilmaisee, käytetäänkö CORSia.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Salli taustatoisto",
+        "description": "Videot keskeytyvät / jatkuvat automaattisesti, kun välilehti menettää kohdistuksen; tämä sallii videon toiston ilman, että välilehti on kohdistettuna"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tumma teema tekstitallenteelle",
+        "description": "Ota tumma teema käyttöön tekstitallenteelle."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Poista interaktiivisuus käytöstä",
+        "description": "Poista käytöstä interaktiivinen tila, joka tekee tekstitallenteesta napsautettavan."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Piilota aikaleimat",
+        "description": "Piilota tekstitallenteen aikaleimat."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Piilota tekstitallenne",
+        "description": "Piilota tekstitallenne oletuksena."
+      },
+      {
+        "property": "lang",
+        "title": "Kieli",
+        "description": "Median kieli."
+      }
+    ]
+  }
+}

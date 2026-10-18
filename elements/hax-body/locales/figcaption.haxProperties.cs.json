@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Popisek obrázku",
+    "description": "Popisek pro prvek figure."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Titulek",
+        "description": "Text zobrazený pod obrázkem."
+      }
+    ]
+  }
+}

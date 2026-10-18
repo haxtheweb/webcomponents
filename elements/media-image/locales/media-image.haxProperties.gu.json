@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "ઉન્નત છબી",
+    "description": "વિવિધ સુધારાઓ સાથે છબીઓ પ્રસ્તુત કરવાની રીત."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "સ્રોત",
+        "description": "છબી માટે URL."
+      },
+      {
+        "property": "alt",
+        "title": "વૈકલ્પિક લખાણ",
+        "description": "દૃષ્ટિહીન વપરાશકર્તાઓ માટે છબીનું વર્ણન કરતું લખાણ."
+      },
+      {
+        "property": "link",
+        "title": "લિંક",
+        "description": "છબીને URL સાથે લિંક કરો"
+      },
+      {
+        "property": "card",
+        "title": "કાર્ડ",
+        "description": "ઊપસેલા કાર્ડ જેવો દેખાવ આપવા માટે ડ્રોપ શેડો લાગુ કરો."
+      },
+      {
+        "property": "box",
+        "title": "બોક્સ",
+        "description": "છબીની આસપાસ દૃશ્ય બોક્સ લાગુ કરો."
+      },
+      {
+        "property": "offset",
+        "title": "ઑફસેટ",
+        "description": "છબી પર ડાબી અથવા જમણી ઑફસેટ લાગુ કરો.",
+        "options": {
+          "none": "કોઈ નહીં",
+          "wide": "પહોળું",
+          "narrow": "સાંકડું"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "સંદર્ભ",
+        "description": "છબી માટે સંદર્ભ."
+      },
+      {
+        "property": "caption",
+        "title": "કૅપ્શન",
+        "description": "છબી માટે કૅપ્શન."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "આકૃતિ શીર્ષક",
+        "description": "આકૃતિ લેબલ માટે શીર્ષક."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "આકૃતિ વર્ણન",
+        "description": "આકૃતિ લેબલ માટે વર્ણન."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "થંબનેલ છબી",
+        "description": "થંબનેલ છબી સ્રોત. થંબનેલ બતાવે છે પરંતુ મોડલમાં સંપૂર્ણ સ્રોત ખોલે છે."
+      },
+      {
+        "property": "round",
+        "title": "ગોળ છબી",
+        "description": "છબીના દેખાવને વર્તુળ આકારમાં કાપે છે."
+      },
+      {
+        "property": "disableZoom",
+        "title": "છબી મોડલ અક્ષમ કરો",
+        "description": "ક્લિક કરવાથી છબી નિરીક્ષક સંવાદમાં છબી ખૂલવાનું અક્ષમ કરો."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "markdown તરીકે રેન્ડર કરો",
+        "description": "કૅપ્શન અને સંદર્ભને markdown તરીકે રેન્ડર કરો."
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Toeganklike video-afspeel uit verskeie bronne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Bron",
+        "description": "URL vir hierdie media."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titel",
+        "description": "Titel wat onder die video gewys word."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Plakkaatprent",
+        "description": "Plakkaatprent-URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Teksspore",
+        "description": "Onderskrifte, ondertitels, beskrywings en ander teksspore vir die video."
+      },
+      {
+        "property": "startTime",
+        "title": "Begintyd",
+        "description": "Begin video op 'n spesifieke tyd (sekondes)."
+      },
+      {
+        "property": "endTime",
+        "title": "Eindtyd",
+        "description": "Eindig video op 'n spesifieke tyd (sekondes), vereis 'n begintyd."
+      },
+      {
+        "property": "learningMode",
+        "title": "Aktiveer leermodus",
+        "description": "Deaktiveer vinnig vorentoe en terugspoel."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Verwyder 'open op YouTube'-knoppie",
+        "description": "Verwyder die knoppie om die video op YouTube oop te maak."
+      },
+      {
+        "property": "linkable",
+        "title": "Sluit 'n deelskakel in?",
+        "description": "Verskaf 'n skakel om die video te deel."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Versteek tydstempels",
+        "description": "Versteek die tydstempels op die transkripsie."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Versteek transkripsie",
+        "description": "Versteek transkripsie by verstek."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Oudiobeskrywingspoor",
+        "description": "URL na 'n oudiobeskrywingspoor (MP3-lêer) wat visuele elemente vertel."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Dui aan of CORS gebruik moet word.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Laat agtergrondafspeel toe",
+        "description": "Hou aan speel wanneer die blaaieroortjie fokus verloor."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Donker tema vir transkripsie",
+        "description": "Aktiveer donker tema vir die transkripsie."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Deaktiveer interaktief",
+        "description": "Deaktiveer interaktiewe modus wat die transkripsie klikbaar maak."
+      },
+      {
+        "property": "lang",
+        "title": "Taal",
+        "description": "Taal van die media."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "(verouderd) Kies die aksentkleur vir die speler."
+      }
+    ]
+  }
+}

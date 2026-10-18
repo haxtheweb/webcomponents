@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kartica",
+    "description": "Kartica s neobaveznim naglasnim stilom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Naslov",
+        "description": "Naslov kartice."
+      },
+      {
+        "slot": "subheading",
+        "title": "Podnaslov",
+        "description": "Neobavezni podnaslov kartice."
+      },
+      {
+        "slot": "content",
+        "title": "Sadržaj",
+        "description": "Sadržaj kartice."
+      },
+      {
+        "slot": "footer",
+        "title": "Podnožje",
+        "description": "Neobavezno podnožje kartice."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Slika",
+        "description": "Neobavezna slika"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alternativni tekst slike",
+        "description": "Alternativni tekst koji opisuje sliku za čitače zaslona. Ostavite prazno samo ako je slika isključivo ukrasna."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Vodoravno poravnanje slike",
+        "options": {
+          "left": "lijevo",
+          "center": "sredina",
+          "right": "desno"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Okomito poravnanje slike",
+        "options": {
+          "top": "vrh",
+          "center": "sredina",
+          "bottom": "dno"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja isticanja",
+        "description": "Neobavezna boja isticanja."
+      },
+      {
+        "property": "dark",
+        "title": "Tamna tema",
+        "description": "Omogući tamnu temu"
+      },
+      {
+        "property": "horizontal",
+        "title": "Vodoravno",
+        "description": "Vodoravna orijentacija?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Naglasak naslova",
+        "description": "Primijeniti naglasnu boju na naslov?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Naglasak pozadine",
+        "description": "Primijeniti naglasnu boju na pozadinu kartice?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Bez naglaska obruba",
+        "description": "Ukloniti naglasak obruba?"
+      },
+      {
+        "property": "flat",
+        "title": "Ravno",
+        "description": "Ukloniti sjenu okvira?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Kut",
+        "description": "Sadržaj za kut kartice."
+      }
+    ]
+  }
+}

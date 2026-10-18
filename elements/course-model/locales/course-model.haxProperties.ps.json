@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "د کورس ماډل",
+    "description": "د کورس مفاهیمو لپاره متقابل ترتیب د جزیاتو، انیمیشن او د پوهې ازموینو سره."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "سرلیک"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "د معلوماتو سیمه"
+      },
+      {
+        "title": "د جزیاتو سیمه"
+      },
+      {
+        "title": "د انیمیشن سیمه"
+      },
+      {
+        "title": "د پوهې ازموینې سیمه"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "د لوګو سیمه"
+      }
+    ]
+  }
+}

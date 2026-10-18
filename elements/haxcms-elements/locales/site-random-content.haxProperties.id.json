@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Konten Halaman Acak",
+    "description": "Tampilkan elemen tingkat atas secara acak dari halaman yang dipilih"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Halaman",
+        "description": "Pilih halaman untuk mengambil konten acak. Elemen akan menampilkan secara acak salah satu elemen HTML tingkat atas dari halaman ini."
+      }
+    ]
+  }
+}

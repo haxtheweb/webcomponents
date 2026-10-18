@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Kanema",
+    "description": "Kusewera kanema kopezeka kwa onse kuchokera ku magwero osiyanasiyana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Gwero",
+        "description": "URL ya zofalitsa izi."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Mutu",
+        "description": "Mutu woonetsedwa pansi pa kanema."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Chithunzi cha chikwangwani",
+        "description": "URL ya chithunzi cha chikwangwani."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Mizere ya malemba",
+        "description": "Mawu olembedwa pansi, matanthauzidwe, mafotokozedwe, ndi mizere ina ya malemba ya kanema."
+      },
+      {
+        "property": "startTime",
+        "title": "Nthawi yoyambira",
+        "description": "Yambitsani kanema pa nthawi inayake (masekondi)."
+      },
+      {
+        "property": "endTime",
+        "title": "Nthawi yomaliza",
+        "description": "Malizitsani kanema pa nthawi inayake (masekondi), pamafunika nthawi yoyambira."
+      },
+      {
+        "property": "learningMode",
+        "title": "Yatsani njira yophunzirira",
+        "description": "Imazimitsa kupititsa patsogolo ndi kubweza m'mbuyo."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Chotsani batani lotsegula pa YouTube",
+        "description": "Imachotsa batani lotsegula kanema pa YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Phatikizani ulalo wogawana?",
+        "description": "Imapereka ulalo wogawana kanema."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Bisani nthawi",
+        "description": "Bisani nthawi pa zolembedwa."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Bisani Zolembedwa",
+        "description": "Bisani zolembedwa mwachisawawa."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Mzere wa kufotokoza ndi mawu",
+        "description": "URL ya mzere wa kufotokoza ndi mawu (fayilo ya MP3) yomwe imafotokoza zinthu zowoneka."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Imasonyeza ngati mugwiritse ntchito CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Lolani kusewera kumbuyo",
+        "description": "Pitirizani kusewera tabu ya msakatuli ikasiya kusankhidwa."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Mawonekedwe amdima a zolembedwa",
+        "description": "Yatsani mawonekedwe amdima a zolembedwa."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Zimitsani Kuchita Nawo",
+        "description": "Zimitsani njira yochita nawo yomwe imapangitsa zolembedwa kudinika."
+      },
+      {
+        "property": "lang",
+        "title": "Chilankhulo",
+        "description": "Chilankhulo cha zofalitsa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu wowonjezera",
+        "description": "(chachikale) Sankhani mtundu wowonjezera wa chosewerera."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html කොටස",
+    "description": "HAXschema සම්බන්ධතා සපයන මූලික HTML කොටසක්"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "අන්තර්ගතයේ ඉදිරිපත් කිරීමට අවශ්‍ය HTML කේතය"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Elemento de traxectoria",
+    "description": "Unha organización individual e os seus cargos asociados"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Nome da organización"
+      },
+      {
+        "property": "location",
+        "title": "Lugar"
+      },
+      {
+        "property": "source",
+        "title": "Orixe"
+      }
+    ]
+  }
+}

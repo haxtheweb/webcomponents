@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Shati",
+    "description": "Sii shati shaqadaada."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Cinwaanka shaqada la tixraacay."
+      },
+      {
+        "property": "source",
+        "title": "Xiriirka isha",
+        "description": "URL-ka isha ee shaqada la shatiyay."
+      },
+      {
+        "property": "license",
+        "title": "Shati",
+        "description": "Shatiga lagu dabaqay shaqadan."
+      },
+      {
+        "property": "creator",
+        "title": "Abuure",
+        "description": "Abuuraha ama milkiilaha shaqadan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Xiriirka isha",
+        "description": "Xiriir faahfaahin shati oo dheeraad ah."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Calaamadda dheeraadka",
+        "description": "Calaamadda faahfaahinta shatiga dheeraadka ah."
+      }
+    ]
+  }
+}

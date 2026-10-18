@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kuwunikira",
+    "description": "Wunikirani mawu a m'mzere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Mawu",
+        "description": "Mawu owunikiridwa."
+      }
+    ]
+  }
+}

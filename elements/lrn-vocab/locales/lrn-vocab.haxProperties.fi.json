@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Sanasto",
+    "description": "Sanastotermi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termi"
+      },
+      {
+        "slot": "",
+        "title": "Määritelmä",
+        "description": "Määritelmä, joka näytetään termiä napsautettaessa."
+      },
+      {
+        "property": "description",
+        "title": "Kuvaus (OER Schema)",
+        "description": "OER Schema: sanastotermin lyhyt kuvaus. Täytetään automaattisesti määritelmätekstistä, jos jätetään tyhjäksi."
+      }
+    ]
+  }
+}

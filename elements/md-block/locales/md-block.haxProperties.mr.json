@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "थेट किंवा दूरस्थपणे लोड केलेला markdown मजकुराचा ब्लॉक"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "कच्चे markdown"
+      },
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "markdown साठी स्रोत फाइल"
+      }
+    ]
+  }
+}

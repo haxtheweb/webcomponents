@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Քարտ",
+    "description": "Քարտ՝ ընտրովի շեշտադրող ոճով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Վերնագիր",
+        "description": "Քարտի վերնագիր։"
+      },
+      {
+        "slot": "subheading",
+        "title": "Ենթավերնագիր",
+        "description": "Քարտի ընտրովի ենթավերնագիր։"
+      },
+      {
+        "slot": "content",
+        "title": "Բովանդակություն",
+        "description": "Քարտի բովանդակություն։"
+      },
+      {
+        "slot": "footer",
+        "title": "Ստորագիր",
+        "description": "Քարտի ընտրովի ստորագիր։"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Պատկեր",
+        "description": "Ընտրովի նկար"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Նկարի այլընտրանքային տեքստ",
+        "description": "Այլընտրանքային տեքստ, որը նկարագրում է նկարը էկրանի ընթերցիչների համար։ Թողեք դատարկ միայն եթե նկարը զուտ դեկորատիվ է։"
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Նկարի հորիզոնական հավասարեցում",
+        "options": {
+          "left": "ձախ",
+          "center": "կենտրոն",
+          "right": "աջ"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Նկարի ուղղահայաց հավասարեցում",
+        "options": {
+          "top": "վերև",
+          "center": "կենտրոն",
+          "bottom": "ներքև"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Ըստ ցանկության շեշտադրման գույն։"
+      },
+      {
+        "property": "dark",
+        "title": "Մուգ թեմա",
+        "description": "Միացնել մութ թեման"
+      },
+      {
+        "property": "horizontal",
+        "title": "Հորիզոնական",
+        "description": "Հորիզոնական դասավորությո՞ւն"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Վերնագրի շեշտադրում",
+        "description": "Կիրառե՞լ շեշտադրող գույնը վերնագրի վրա"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Ֆոնի շեշտադրում",
+        "description": "Կիրառե՞լ շեշտադրող գույնը քարտի ֆոնի վրա"
+      },
+      {
+        "property": "noBorder",
+        "title": "Առանց եզրագծի շեշտադրման",
+        "description": "Հեռացնե՞լ եզրագծի շեշտադրումը"
+      },
+      {
+        "property": "flat",
+        "title": "Հարթ",
+        "description": "Հեռացնե՞լ ստվերը"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Անկյուն",
+        "description": "Քարտի անկյան բովանդակություն։"
+      }
+    ]
+  }
+}

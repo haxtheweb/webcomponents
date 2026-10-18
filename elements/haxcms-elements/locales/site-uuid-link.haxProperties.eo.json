@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX-ligilo",
+    "description": "Ligilo al specifa rimedo en la retejo, pri kiu vi laboras."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Ero",
+        "description": "Ero bildigota por la ligilo / titolaj datumoj"
+      }
+    ]
+  }
+}

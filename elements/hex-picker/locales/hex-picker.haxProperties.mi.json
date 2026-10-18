@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kaikōwhiri Hex",
+    "description": "Kaikōwhiri tae waehere hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Uara",
+        "description": "Uara hex taunoa"
+      },
+      {
+        "property": "disabled",
+        "title": "Kua monokia",
+        "description": "Whakakore i te āpure kuputuhi"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Whakaaturanga Nui",
+        "description": "Whakaurua te tae ki te whakaaturanga nui"
+      }
+    ]
+  }
+}

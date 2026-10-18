@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Ini dapat menyajikan video dengan cara yang sangat aksesibel apa pun sumbernya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "URL untuk media ini."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Judul",
+        "description": "Judul sederhana di bawah video"
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Pilih warna aksen untuk pemutar."
+      },
+      {
+        "property": "track",
+        "title": "Teks tertutup",
+        "description": "URL untuk file teks keterangan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Gambar thumbnail",
+        "description": "Opsional. URL untuk gambar thumbnail/poster."
+      },
+      {
+        "property": "learningMode",
+        "title": "Aktifkan mode belajar",
+        "description": "Menonaktifkan maju cepat dan mundur."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Hapus tombol buka di YouTube",
+        "description": "Menghapus tombol untuk membuka video di YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Sertakan tautan berbagi?",
+        "description": "Menyediakan tautan untuk membagikan video."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Menunjukkan apakah akan menggunakan CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Izinkan pemutaran latar belakang",
+        "description": "Video dijeda / diputar otomatis saat tab kehilangan fokus; ini memungkinkan video diputar tanpa tab memiliki fokus"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema gelap untuk transkrip",
+        "description": "Aktifkan tema gelap untuk transkrip."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Nonaktifkan Interaktif",
+        "description": "Nonaktifkan mode interaktif yang membuat transkrip dapat diklik."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Sembunyikan stempel waktu",
+        "description": "Sembunyikan stempel waktu pada transkrip."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Sembunyikan Transkrip",
+        "description": "Sembunyikan transkrip secara default."
+      },
+      {
+        "property": "lang",
+        "title": "Bahasa",
+        "description": "Bahasa media."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "رياضي",
+    "description": "رياضي کي سهڻي انداز ۾ پيش ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "رياضي",
+        "description": "مساوات LaTeX طور داخل ڪريو"
+      }
+    ]
+  }
+}

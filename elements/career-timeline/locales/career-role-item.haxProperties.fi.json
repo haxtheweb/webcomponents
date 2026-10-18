@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Urarooli",
+    "description": "Yksittäinen rooli organisaatiossa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Otsikko"
+      },
+      {
+        "property": "startDate",
+        "title": "Aloituspäivä"
+      },
+      {
+        "property": "endDate",
+        "title": "Päättymispäivä (valinnainen)"
+      },
+      {
+        "property": "skills",
+        "title": "Liittyvät taidot",
+        "description": "Aloita taitojen lisääminen valitsemalla +-painike"
+      }
+    ]
+  }
+}

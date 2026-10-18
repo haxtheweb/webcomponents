@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Pane whanaunga",
+    "description": "ka whakaputa i te hiranga pane tika i runga i te pane o te matua"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID Rauemi o te Pane Matua"
+      },
+      {
+        "property": "disableLink",
+        "description": "Ka whakakore i te āhuatanga pātene hono."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Ka whakahāngai i te pātene tārua hono ki te taha matau rawa o te pane."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Taumata pane mēnā kāore i kitea te matua."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Ka takahi i te kuputuhi taunoa mō te karere pānui tārua hono."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Ka takahi i te tapanga taunoa o te pātene tārua hono."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Ka takahi i te ata taunoa o te pātene tārua hono."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Ka takahi i te tapanga taunoa mō te pātene kati o te pānui tārua hono."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Ka takahi i te ata taunoa mō te pātene kati o te pānui tārua hono."
+      }
+    ]
+  }
+}

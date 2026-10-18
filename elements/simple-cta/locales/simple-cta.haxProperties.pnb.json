@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "عمل دا سدا",
+    "description": "عمل کرن لئی لنک والا سادہ بٹن۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "لیبل",
+        "description": "لنک لیبل"
+      },
+      {
+        "property": "link",
+        "title": "لنک",
+        "description": "کسے وی وسیلے دا لنک لکھو"
+      },
+      {
+        "property": "hideIcon",
+        "title": "آئیکن لُکاؤ",
+        "description": "متن نوں نمایاں کرن والا آئیکن لُکاؤ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "عمل لنک آئیکن"
+      }
+    ]
+  }
+}

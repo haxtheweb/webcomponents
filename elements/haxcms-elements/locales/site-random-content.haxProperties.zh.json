@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "随机页面内容",
+    "description": "显示所选页面中的一个随机顶级元素"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "页面",
+        "description": "选择用于抽取随机内容的页面。该元素将随机显示此页面中的一个顶级 HTML 元素。"
+      }
+    ]
+  }
+}

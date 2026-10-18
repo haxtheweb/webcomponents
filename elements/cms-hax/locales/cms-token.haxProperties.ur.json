@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS ٹوکن",
+    "description": "بیک اینڈ پر رینڈر ہونے والا CMS ٹوکن"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "ٹوکن",
+        "description": "ہمارے CMS سے ٹوکن"
+      }
+    ]
+  }
+}

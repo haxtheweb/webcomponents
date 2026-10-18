@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Chosankha Hex",
+    "description": "Chosankha mtundu cha Hexcode"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Mtengo",
+        "description": "Mtengo wa hex wokhazikika"
+      },
+      {
+        "property": "disabled",
+        "title": "Zoletsedwa",
+        "description": "Zimitsani gawo la mawu"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Kuonetsa Kwakukulu",
+        "description": "Phatikizani mtundu m'kuonetsa kwakukulu"
+      }
+    ]
+  }
+}

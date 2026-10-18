@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ذریعہ",
+        "description": "ایس وسیلے دا URL۔"
+      }
+    ]
+  }
+}

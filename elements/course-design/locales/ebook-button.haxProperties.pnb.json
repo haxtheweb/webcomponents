@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ای بُک بٹن",
+    "description": "ای بُک نال جڑیا بٹن۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرناواں",
+        "description": "بٹن دا سرناواں۔"
+      },
+      {
+        "property": "link",
+        "title": "لنک",
+        "description": "کلک کرن تے جاݨ والا لنک۔"
+      },
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "ایس لنک دی نمائندگی کرن والا آئیکن"
+      }
+    ]
+  }
+}

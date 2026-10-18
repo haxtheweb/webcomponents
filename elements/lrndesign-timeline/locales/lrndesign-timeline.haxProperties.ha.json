@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Jadawalin lokaci",
+    "description": "Jadawalin lokaci na abubuwan da suka faru tare da hotuna da rubutu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Taken tarihin aiki",
+        "description": "Take don jadawalin lokaci."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin Ƙawa",
+        "description": "Launin ƙawa na zaɓi."
+      },
+      {
+        "property": "dark",
+        "title": "Jigo Mai Duhu",
+        "description": "Kunna Jigon Duhu"
+      },
+      {
+        "slot": "",
+        "title": "Bayanin Jadawalin Lokaci",
+        "description": "Rubutu na zaɓi da ke bayyana jadawalin lokaci."
+      },
+      {
+        "property": "events",
+        "title": "Abubuwan Jadawalin Lokaci",
+        "description": "Abubuwan da suka faru a jadawalin lokaci"
+      }
+    ]
+  }
+}

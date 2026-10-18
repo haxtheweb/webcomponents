@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Джерело цитати",
+    "description": "Елемент цитування з трьома режимами показу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Назва цитованої праці."
+      },
+      {
+        "property": "source",
+        "title": "Посилання на джерело",
+        "description": "URL джерела цитованої праці."
+      },
+      {
+        "property": "date",
+        "title": "Дата звернення",
+        "description": "Дата звернення до джерела."
+      },
+      {
+        "property": "scope",
+        "title": "Область",
+        "description": "Область елемента для цитування.",
+        "options": {
+          "sibling": "Сусідній елемент",
+          "parent": "Батьківський елемент"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Ліцензія",
+        "description": "Ліцензія цитованої праці."
+      },
+      {
+        "property": "creator",
+        "title": "Автор",
+        "description": "Автор або власник цитованої праці."
+      },
+      {
+        "property": "typeof",
+        "title": "Тип OER Schema",
+        "description": "Клас OER Schema для цього цитування. За замовчуванням oer:ReferencedMaterial; змінюйте лише на дійсний клас OER (напр. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

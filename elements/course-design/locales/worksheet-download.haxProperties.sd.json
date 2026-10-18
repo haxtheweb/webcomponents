@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ورڪ شيٽ ڊائونلوڊ",
+    "description": "ڊائونلوڊ لاءِ موجود فائلون ڏيکارڻ وارو بٽڻ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "ڊائونلوڊ جو عنوان."
+      },
+      {
+        "property": "link",
+        "title": "لنڪ",
+        "description": "ڊائونلوڊ جي لنڪ."
+      }
+    ]
+  }
+}

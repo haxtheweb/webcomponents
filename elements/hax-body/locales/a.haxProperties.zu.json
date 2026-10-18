@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Isixhumanisi esiyisisekelo",
+    "description": "Isakhi sesixhumanisi esiyisisekelo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Isixhumanisi",
+        "description": "I-URL oya kuyo."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Umbhalo",
+        "description": "Umbhalo wesixhumanisi obonakalayo."
+      },
+      {
+        "attribute": "target",
+        "title": "Okuhlosiwe",
+        "description": "Lapho isixhumanisi sizovulelwa khona.",
+        "options": {
+          "": "Iwindi elifanayo",
+          "_blank": "Iwindi elisha - _blank",
+          "_top": "Iwindi eliphezulu - _top",
+          "_parent": "Iwindi elingumzali - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Umbhalo wesihloko",
+        "description": "Isihloko sokweluleka sokufinyeleleka ne-SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Ubudlelwano nendawo oya kuyo (ukuphepha/i-SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

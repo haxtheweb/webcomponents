@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "पाठ्यक्रम डिजाइन",
+    "description": "शैक्षिक सामग्री र पाठ्यक्रम डिजाइन तत्वहरूका लागि कन्टेनर।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "पाठ्यक्रम पहिचानकर्ता",
+        "description": "OER Schema: पाठ्यक्रमको पहिचानकर्ता, जस्तै MATH-100।"
+      },
+      {
+        "property": "termOffered",
+        "title": "सञ्चालन हुने अवधि",
+        "description": "OER Schema: पाठ्यक्रम सञ्चालन हुने अवधि।"
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "वितरण ढाँचा",
+        "description": "OER Schema: पाठ्यक्रम सञ्चालनमा प्रयोग हुने ढाँचा (जस्तै प्रत्यक्ष, अनलाइन, मिश्रित)।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "मुख्य प्रशिक्षक",
+        "description": "OER Schema: पाठ्यक्रमको मुख्य प्रशिक्षक।"
+      },
+      {
+        "property": "syllabus",
+        "title": "पाठ्यक्रम विवरण URL",
+        "description": "OER Schema: पाठ्यक्रम विवरण (syllabus) को URL।"
+      }
+    ]
+  }
+}

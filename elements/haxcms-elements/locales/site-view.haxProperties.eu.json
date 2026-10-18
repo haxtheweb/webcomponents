@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Gune-ikuspegia",
+    "description": "Irizpideen arabera gunearen datuak kontsultatu eta bistaratzen dituen bloke dinamikoa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Ikuspegiaren URLa",
+        "description": "Ikuspegiaren datu-jarioaren kontsulta-parametroak. Ikuspegien paneletik lor ditzakezu."
+      },
+      {
+        "property": "renderer",
+        "title": "Bistaratze modua",
+        "description": "Ikuspegiaren emaitzak nola errendatu behar diren"
+      },
+      {
+        "property": "entity",
+        "title": "Entitate mota",
+        "description": "Erantzuna analizatzeko erabilitako entitate mota",
+        "options": {
+          "": "Lehenetsia (elementuak)",
+          "item": "Elementua",
+          "page": "Orria",
+          "file": "Fitxategia",
+          "tag": "Etiketa",
+          "block": "Blokea",
+          "view": "Ikuspegia",
+          "theme": "Gaia",
+          "region": "Eskualdea",
+          "customElement": "Elementu pertsonalizatua"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Hautsi gune-ikuspegia",
+        "description": "Bihurtu eduki estatiko zuzenean editatzeko; iturritik automatikoki eguneratzeari uzten dio."
+      }
+    ]
+  }
+}

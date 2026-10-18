@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Samfurin lamba",
+    "description": "Samfurin lamba da aka haskaka a cikin shafi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Haskaka lamba",
+        "description": "Haskaka tsarin rubutu da za a yi amfani da shi a wurin lamba",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Bayanan JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Maɓallin kwafi zuwa allon kwafi",
+        "description": "maɓalli a sama dama da ke cewa kwafi zuwa allon kwafi"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Farkon haskakawa",
+        "description": "Lambar layi da za a fara haskakawa"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Ƙarshen haskakawa",
+        "description": "Layin da za a gama haskakawa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "รายการอาชีพ",
+    "description": "องค์กรแต่ละแห่งและบทบาทที่เกี่ยวข้อง"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "ชื่อองค์กร"
+      },
+      {
+        "property": "location",
+        "title": "สถานที่"
+      },
+      {
+        "property": "source",
+        "title": "แหล่งที่มา"
+      }
+    ]
+  }
+}

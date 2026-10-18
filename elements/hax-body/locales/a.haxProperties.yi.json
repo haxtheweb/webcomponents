@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "פּשוטער לינק",
+    "description": "גרונטיקער לינק־עלעמענט."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "לינק",
+        "description": "ציל־URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "טעקסט",
+        "description": "קענטיקער לינק־טעקסט."
+      },
+      {
+        "attribute": "target",
+        "title": "ציל",
+        "description": "וווּ צו עפֿענען דעם לינק.",
+        "options": {
+          "": "זעלבער פֿענצטער",
+          "_blank": "נײַער פֿענצטער - _blank",
+          "_top": "אייבערשטער פֿענצטער - _top",
+          "_parent": "עלטערן־פֿענצטער - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "טיטל־טעקסט",
+        "description": "אַדוויזאָרישער טיטל פֿאַר צוטריטלעכקייט און SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "באַציִונג צום ציל (זיכערהייט/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Fjärrinnehåll",
+    "description": "Återanvänd innehåll från en webbplats på en annan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Webbplatsadress",
+        "description": "Klistra in adressen att hämta innehåll från om det inte är den aktuella webbplatsen"
+      },
+      {
+        "property": "uuid",
+        "title": "Objekt",
+        "description": "Objekt att visa för länk-/titeldata"
+      },
+      {
+        "property": "breakreference",
+        "title": "Bryt referens",
+        "description": "Om du markerar den här rutan kopieras fjärrinnehållet för lokal redigering men kopplingen tas bort. Det uppdateras inte längre när referensmaterialet uppdateras."
+      },
+      {
+        "property": "showTitle",
+        "title": "Visa titel",
+        "description": "Slå på för att visa titeln på resursen som visas"
+      }
+    ]
+  }
+}

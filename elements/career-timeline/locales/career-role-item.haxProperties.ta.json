@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "பணிப் பதவி",
+    "description": "ஒரு நிறுவனத்திற்குள் ஒரு தனிப் பதவி"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "தலைப்பு"
+      },
+      {
+        "property": "startDate",
+        "title": "தொடக்கத் தேதி"
+      },
+      {
+        "property": "endDate",
+        "title": "முடிவுத் தேதி (விருப்பத்தேர்வு)"
+      },
+      {
+        "property": "skills",
+        "title": "தொடர்புடைய திறன்கள்",
+        "description": "திறன்களைச் சேர்க்கத் தொடங்க + பொத்தானைத் தேர்ந்தெடுக்கவும்"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Link de bază",
+    "description": "Element de link de bază."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Link",
+        "description": "URL-ul de destinație."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Textul vizibil al linkului."
+      },
+      {
+        "attribute": "target",
+        "title": "Țintă",
+        "description": "Unde se deschide linkul.",
+        "options": {
+          "": "Aceeași fereastră",
+          "_blank": "Fereastră nouă - _blank",
+          "_top": "Fereastra de sus - _top",
+          "_parent": "Fereastra părinte - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Textul titlului",
+        "description": "Titlu consultativ pentru accesibilitate și SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Relația cu destinația (securitate/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

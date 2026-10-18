@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ლიცენზია",
+    "description": "მიუთითეთ თქვენი ნაშრომის ლიცენზია."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "სათაური",
+        "description": "ციტირებული ნაშრომის სათაური."
+      },
+      {
+        "property": "source",
+        "title": "წყაროს ბმული",
+        "description": "ლიცენზირებული ნაშრომის წყაროს URL."
+      },
+      {
+        "property": "license",
+        "title": "ლიცენზია",
+        "description": "ამ ნაშრომზე გამოყენებული ლიცენზია."
+      },
+      {
+        "property": "creator",
+        "title": "შემქმნელი",
+        "description": "ამ ნაშრომის შემქმნელი ან მფლობელი."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "წყაროს ბმული",
+        "description": "ბმული ლიცენზირების დამატებით დეტალებზე."
+      },
+      {
+        "property": "moreLabel",
+        "title": "„მეტის“ წარწერა",
+        "description": "ლიცენზირების დამატებითი დეტალების წარწერა."
+      }
+    ]
+  }
+}

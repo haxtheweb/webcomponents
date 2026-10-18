@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Punktlisti",
+    "description": "Stovna ein punktlista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Punktsnið",
+        "description": "Snið nýtt til punkt í óraðaðum lista.",
+        "options": {
+          "": "Sjálvsett (ferningur)",
+          "list-disc": "Skíva",
+          "list-circle": "Ringur",
+          "list-square": "Ferningur"
+        }
+      }
+    ]
+  }
+}

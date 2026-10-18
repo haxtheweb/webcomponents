@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "课程模型",
+    "description": "课程概念个互动布局,有详情、动画搭知识检查。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "标题"
+      },
+      {
+        "property": "src",
+        "title": "来源"
+      },
+      {
+        "property": "alt",
+        "title": "替代文字"
+      },
+      {
+        "title": "信息区域"
+      },
+      {
+        "title": "详情区域"
+      },
+      {
+        "title": "动画区域"
+      },
+      {
+        "title": "知识检查区域"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "标志区域"
+      }
+    ]
+  }
+}

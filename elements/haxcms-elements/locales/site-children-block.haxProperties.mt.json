@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: blokk tas-sottopaġni",
+    "description": "Blokk dinamiku biex juri s-sottopaġni tal-paġna attwali"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Metodu dinamiku",
+        "description": "Kif jiġu kkalkulati s-sottopaġni relattivament għal dan l-element",
+        "options": {
+          "active": "Sottopaġni attivi",
+          "parent": "Sottopaġni tal-ġenitur",
+          "ancestor": "Is-sottopaġni kollha mill-ogħla antenat"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Livell tal-bidu"
+      },
+      {
+        "property": "end",
+        "title": "Livell tat-tmiem"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kurzusmodell",
+    "description": "Interaktív elrendezés kurzusfogalmakhoz részletekkel, animációval és tudásellenőrzéssel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "cím"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Információs terület"
+      },
+      {
+        "title": "Részletek területe"
+      },
+      {
+        "title": "Animáció területe"
+      },
+      {
+        "title": "Tudásellenőrzés területe"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logó területe"
+      }
+    ]
+  }
+}

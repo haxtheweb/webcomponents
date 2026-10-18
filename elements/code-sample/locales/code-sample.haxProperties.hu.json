@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kódminta",
+    "description": "Az oldalon kiemelt kódminta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kódkiemelés",
+        "description": "A kódterületre alkalmazott szintaxiskiemelés",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-adatok",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Vágólapra másolás gomb",
+        "description": "a jobb felső sarokban lévő, vágólapra másolás feliratú gomb"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Kiemelés kezdete",
+        "description": "A kiemelés kezdő sorának száma"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Kiemelés vége",
+        "description": "A kiemelés záró sora"
+      }
+    ]
+  }
+}

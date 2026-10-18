@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Plássfyllari",
+    "description": "Ein plássfyllari, ið kann umskapast til miðilsslagið, ið er valt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Slag",
+        "description": "Slag av amboði, ið hetta tekur ímóti til útskifting.",
+        "options": {
+          "text": "Tekstur / innihald",
+          "document": "Skjal / fíla",
+          "audio": "Ljóð",
+          "video": "Video",
+          "image": "Mynd",
+          "math": "Støddfrøði"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Tekstur",
+        "description": "Lýs ynskta plássfyllaran nágreiniligari"
+      }
+    ]
+  }
+}

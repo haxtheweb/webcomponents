@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Figura descritiva",
+    "description": "Figura acessível com descrição longa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Imagem"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Texto alternativo"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Legenda da figura",
+        "description": "Texto da legenda da figura que fica sempre visível."
+      },
+      {
+        "slot": "details",
+        "title": "Descrição",
+        "description": "Descrição detalhada da imagem que pode ser ocultada ou exibida"
+      },
+      {
+        "slot": "summary",
+        "title": "Botão de descrição",
+        "description": "Padrão para o botão que mostra/oculta o texto de descrição, ex.: \"info\", \"metadados\" etc."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Texto de resumo opcional quando os detalhes estão abertos"
+      },
+      {
+        "property": "closeText",
+        "title": "Texto de resumo opcional quando os detalhes estão fechados"
+      }
+    ]
+  }
+}

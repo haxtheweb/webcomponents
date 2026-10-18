@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Vzorec kode",
+    "description": "Vzorec kode, označen na strani"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Označevanje kode",
+        "description": "Označevanje sintakse za območje kode",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Podatki JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Gumb za kopiranje v odložišče",
+        "description": "gumb zgoraj desno z napisom kopiraj v odložišče"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Začetek označevanja",
+        "description": "Številka vrstice, kjer se začne označevanje"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Konec označevanja",
+        "description": "Vrstica, kjer se označevanje konča"
+      }
+    ]
+  }
+}

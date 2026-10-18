@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Ruolo professionale",
+    "description": "Un singolo ruolo all'interno di un'organizzazione"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo"
+      },
+      {
+        "property": "startDate",
+        "title": "Data di inizio"
+      },
+      {
+        "property": "endDate",
+        "title": "Data di fine (facoltativa)"
+      },
+      {
+        "property": "skills",
+        "title": "Competenze associate",
+        "description": "Seleziona il pulsante + per iniziare ad aggiungere competenze"
+      }
+    ]
+  }
+}

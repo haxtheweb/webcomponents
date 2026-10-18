@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Fideo",
+    "description": "Tagonklik ôfspyljen fan fideo út meardere boarnen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Boarne",
+        "description": "URL foar dizze media."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titel",
+        "description": "Titel toand ûnder de fideo."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Posterôfbylding",
+        "description": "URL fan posterôfbylding."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Tekstspoaren",
+        "description": "Ûndertiteling foar dôven, ûndertitels, beskriuwings en oare tekstspoaren foar de fideo."
+      },
+      {
+        "property": "startTime",
+        "title": "Begjintiid",
+        "description": "Fideo begjinne op in spesifike tiid (sekonden)."
+      },
+      {
+        "property": "endTime",
+        "title": "Eintiid",
+        "description": "Fideo einigje op in spesifike tiid (sekonden), fereasket in begjintiid."
+      },
+      {
+        "property": "learningMode",
+        "title": "Learmodus ynskeakelje",
+        "description": "Skeakelet foarút- en weromspielen út."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Knop 'Iepenje op YouTube' fuortsmite",
+        "description": "Smyt de knop fuort om de fideo op YouTube te iepenjen."
+      },
+      {
+        "property": "linkable",
+        "title": "In dielkeppeling opnimme?",
+        "description": "Jout in keppeling om de fideo te dielen."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Tiidstempels ferbergje",
+        "description": "De tiidstempels yn de transkripsje ferbergje."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkripsje ferbergje",
+        "description": "Transkripsje standert ferbergje."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Audiobeskriuwingsspoar",
+        "description": "URL nei in audiobeskriuwingsspoar (MP3-triem) dat fisuele eleminten fertelt."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Jout oan oft CORS brûkt wurde moat.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Ofspyljen op de eftergrûn tastean",
+        "description": "Trochspylje as de blêderljepper de fokus ferliest."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tsjuster tema foar transkripsje",
+        "description": "Tsjuster tema ynskeakelje foar de transkripsje."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Ynteraktyf útskeakelje",
+        "description": "Ynteraktive modus útskeakelje dy't de transkripsje klikber makket."
+      },
+      {
+        "property": "lang",
+        "title": "Taal",
+        "description": "Taal fan de media."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "(ferâldere) Selektearje de aksintkleur foar de spiler."
+      }
+    ]
+  }
+}

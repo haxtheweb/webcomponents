@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Paralaxný obrázok",
+    "description": "Posúvanie obrázka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Obrázok",
+        "description": "obrázok, ktorý sa použije na pozadí"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Oblasť nadpisu",
+        "description": "Textová oblasť nadpisu"
+      }
+    ]
+  }
+}

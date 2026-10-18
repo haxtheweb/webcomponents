@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Ντόνατ προόδου",
+    "description": "Ντόνατ εξέλιξης"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Τίτλος",
+        "description": "Ο τίτλος του στοιχείου"
+      },
+      {
+        "property": "desc",
+        "title": "Περιγραφή",
+        "description": "Προσβάσιμη εκτενής περιγραφή"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Πηγή εικόνας",
+        "description": "Πηγή εικόνας μέσα στο ντόνατ."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Εναλλακτικό κείμενο εικόνας",
+        "description": "Εναλλακτικό κείμενο για την εικόνα."
+      },
+      {
+        "property": "animated",
+        "title": "Κινούμενο",
+        "description": "Αν η πρόοδος εμφανίζεται με κίνηση στην πρώτη φόρτωση"
+      },
+      {
+        "property": "complete",
+        "title": "Ολοκληρώθηκε",
+        "description": "Ένας πίνακας ολοκληρωμένων τιμών."
+      },
+      {
+        "property": "total",
+        "title": "Σύνολο",
+        "description": "Σύνολο όταν όλα τα στοιχεία έχουν ολοκληρωθεί."
+      },
+      {
+        "property": "startAngle",
+        "title": "Γωνία έναρξης",
+        "description": "Γωνία του ντόνατ από την οποία ξεκινά η πρόοδος"
+      }
+    ]
+  }
+}

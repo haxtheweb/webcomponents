@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Loulou HAX",
+    "description": "He loulou i kekahi kumuwaiwai kikoʻī ma ka pūnaewele āu e hana nei."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Mea",
+        "description": "Mea e hōʻike ai no ka ʻikepili loulou / poʻo inoa"
+      }
+    ]
+  }
+}

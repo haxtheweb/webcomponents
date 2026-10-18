@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Vahekaart",
+    "description": "Üksik vahekaart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Vahekaardi ikoon"
+      },
+      {
+        "property": "disabled",
+        "title": "Keelatud"
+      },
+      {
+        "property": "label",
+        "title": "Vahekaardi silt"
+      },
+      {
+        "slot": "",
+        "title": "Vahekaardi sisu",
+        "description": "Vahekaardi sisu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unikaalne ID"
+      },
+      {
+        "property": "flag",
+        "title": "Valikuline märgise tekst"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Valikuline märgise ikoon"
+      }
+    ]
+  }
+}

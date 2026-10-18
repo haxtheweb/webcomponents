@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Wêneyê parallax",
+    "description": "Wêne bi gerandinê re dilive"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Wêne",
+        "description": "wêneyê ku di paşxaneyê de cih bigire"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Qada sernivîsê",
+        "description": "Qada nivîsa sernivîsê"
+      }
+    ]
+  }
+}

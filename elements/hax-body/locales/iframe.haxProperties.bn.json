@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "বাহ্যিক ওয়েব কনটেন্ট এমবেড করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "উৎস",
+        "description": "এই রিসোর্সের URL।"
+      }
+    ]
+  }
+}

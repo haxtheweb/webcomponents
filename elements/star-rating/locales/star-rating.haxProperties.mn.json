@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Одны үнэлгээ",
+    "description": "Үнэлгээ харуулах хэрэгсэл эсвэл үнэлгээ өгөх товчлуур."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Оноо",
+        "description": "Одоогийн онооны утга."
+      },
+      {
+        "property": "possible",
+        "title": "Боломжит",
+        "description": "Хамгийн их боломжит оноо."
+      },
+      {
+        "property": "numStars",
+        "title": "Одны тоо",
+        "description": "Харуулах одны тоо."
+      },
+      {
+        "property": "interactive",
+        "title": "Интерактив",
+        "description": "Хэрэглэгч үнэлгээ өгөхийг зөвшөөрөх."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Рубрикийн хуваарийн горим",
+        "description": "Од бүрт OER Schema RubricScale болон RubricLevel мета өгөгдлийг (levelOrdinal/levelPoints) гаргах."
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Tehostettu kuva",
+    "description": "Tapa esittää kuvia erilaisin tehostein."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Lähde",
+        "description": "Kuvan URL."
+      },
+      {
+        "property": "alt",
+        "title": "Vaihtoehtoinen teksti",
+        "description": "Teksti, joka kuvailee kuvan näkövammaisille käyttäjille."
+      },
+      {
+        "property": "link",
+        "title": "Linkki",
+        "description": "Linkitä kuva URL-osoitteeseen"
+      },
+      {
+        "property": "card",
+        "title": "Kortti",
+        "description": "Lisää pudotusvarjo, jotta kuva näyttää kohotetulta kortilta."
+      },
+      {
+        "property": "box",
+        "title": "Laatikko",
+        "description": "Lisää kuvan ympärille visuaalinen laatikko."
+      },
+      {
+        "property": "offset",
+        "title": "Siirtymä",
+        "description": "Siirrä kuvaa vasemmalle tai oikealle.",
+        "options": {
+          "none": "ei mitään",
+          "wide": "leveä",
+          "narrow": "kapea"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Lähdeviite",
+        "description": "Kuvan lähdeviite."
+      },
+      {
+        "property": "caption",
+        "title": "Kuvateksti",
+        "description": "Kuvan kuvateksti."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Kuvion otsikko",
+        "description": "Kuvion nimikkeen otsikko."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Kuvion kuvaus",
+        "description": "Kuvion nimikkeen kuvaus."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Pikkukuva",
+        "description": "Pikkukuvan lähde. Näyttää pikkukuvan, mutta avaa täyden lähteen modaali-ikkunassa."
+      },
+      {
+        "property": "round",
+        "title": "Pyöreä kuva",
+        "description": "Rajaa kuvan ulkoasun ympyränmuotoiseksi."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Poista kuvan modaali-ikkuna käytöstä",
+        "description": "Estä napsautuksia avaamasta kuvaa kuvatarkastimen valintaikkunassa."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Renderöi markdownina",
+        "description": "Renderöi kuvateksti ja lähdeviite markdownina."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "پارالاکس انځور",
+    "description": "د انځور سکرول"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "انځور",
+        "description": "هغه انځور چې په شالید کې شامل شي"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "د سرلیک سیمه",
+        "description": "د سرلیک متن سیمه"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex 取色器",
+    "description": "十六进制颜色选择器"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "值",
+        "description": "默认十六进制值"
+      },
+      {
+        "property": "disabled",
+        "title": "已禁用",
+        "description": "禁用文本字段"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "大尺寸显示",
+        "description": "以大尺寸显示颜色"
+      }
+    ]
+  }
+}

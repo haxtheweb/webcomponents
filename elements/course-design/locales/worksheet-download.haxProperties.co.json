@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Scaricamentu di fogliu d'eserciziu",
+    "description": "Un buttone per affissà schedarii dispunibuli da scaricà."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "U titulu di u scaricamentu."
+      },
+      {
+        "property": "link",
+        "title": "Ligame",
+        "description": "U ligame di u scaricamentu."
+      }
+    ]
+  }
+}

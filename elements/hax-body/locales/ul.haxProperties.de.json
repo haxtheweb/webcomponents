@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Aufzählungsliste",
+    "description": "Eine Aufzählungsliste erstellen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Aufzählungszeichen",
+        "description": "Stil für die Aufzählungszeichen ungeordneter Listen.",
+        "options": {
+          "": "Standard (Quadrat)",
+          "list-disc": "Scheibe",
+          "list-circle": "Kreis",
+          "list-square": "Quadrat"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kiungo cha HAX",
+    "description": "Kiungo cha rasilimali maalum katika tovuti unayoifanyia kazi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Kipengee",
+        "description": "Kipengee cha kuonyesha kwa data ya kiungo / kichwa"
+      }
+    ]
+  }
+}

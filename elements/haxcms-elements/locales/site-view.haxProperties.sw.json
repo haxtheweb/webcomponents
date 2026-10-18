@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Mwonekano wa Tovuti",
+    "description": "Kizuizi kinachobadilika kinachohoji na kuonyesha data ya tovuti kulingana na vigezo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL ya Mwonekano",
+        "description": "Vigezo vya hoja kwa mlisho wa data wa mwonekano. Unaweza kupata hivi kutoka dashibodi ya Views."
+      },
+      {
+        "property": "renderer",
+        "title": "Hali ya kuonyesha",
+        "description": "Jinsi matokeo ya mwonekano yanavyopaswa kuonyeshwa"
+      },
+      {
+        "property": "entity",
+        "title": "Aina ya huluki",
+        "description": "Aina ya huluki inayotumika kuchanganua jibu",
+        "options": {
+          "": "Chaguomsingi (vipengee)",
+          "item": "Kipengee",
+          "page": "Ukurasa",
+          "file": "Faili",
+          "tag": "Lebo",
+          "block": "Kizuizi",
+          "view": "Mwonekano",
+          "theme": "Mandhari",
+          "region": "Eneo",
+          "customElement": "Kipengele Maalum"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Vunja mwonekano wa tovuti",
+        "description": "Geuza kuwa maudhui tuli kwa kuhariri moja kwa moja; huacha kujisasisha kiotomatiki kutoka chanzo."
+      }
+    ]
+  }
+}

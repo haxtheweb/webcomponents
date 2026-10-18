@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Eksternt innhold",
+    "description": "Gjenbruk innhold fra ett nettsted på et annet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Nettstedsadresse",
+        "description": "Lim inn adressen du vil referere innhold fra hvis det ikke er gjeldende nettsted"
+      },
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Element som skal vises for lenken / tittel-data"
+      },
+      {
+        "property": "breakreference",
+        "title": "Bryt referanse",
+        "description": "Hvis du krysser av her, kopieres det eksterne innholdet for lokal redigering, men koblingen fjernes. Det får ikke lenger oppdateringer når referansematerialet oppdateres."
+      },
+      {
+        "property": "showTitle",
+        "title": "Vis tittel",
+        "description": "Slå på for å vise tittelen på ressursen som vises"
+      }
+    ]
+  }
+}

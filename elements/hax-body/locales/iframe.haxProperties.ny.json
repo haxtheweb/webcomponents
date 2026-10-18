@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Lowetsani zinthu za pa intaneti zakunja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Gwero",
+        "description": "URL ya chinthu ichi."
+      }
+    ]
+  }
+}

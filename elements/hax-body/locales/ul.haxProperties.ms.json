@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Senarai berbulet",
+    "description": "Cipta senarai berbulet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Gaya bulet",
+        "description": "Gaya yang digunakan untuk bulet senarai tidak bertertib.",
+        "options": {
+          "": "Lalai (segi empat sama)",
+          "list-disc": "Cakera",
+          "list-circle": "Bulatan",
+          "list-square": "Segi empat sama"
+        }
+      }
+    ]
+  }
+}

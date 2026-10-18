@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "תפקיד בקריירה",
+    "description": "תפקיד בודד בתוך ארגון"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "כותרת"
+      },
+      {
+        "property": "startDate",
+        "title": "תאריך התחלה"
+      },
+      {
+        "property": "endDate",
+        "title": "תאריך סיום (אופציונלי)"
+      },
+      {
+        "property": "skills",
+        "title": "מיומנויות קשורות",
+        "description": "בחרו בכפתור + כדי להתחיל להוסיף מיומנויות"
+      }
+    ]
+  }
+}

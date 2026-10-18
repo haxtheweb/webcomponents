@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ocjena zvjezdicama",
+    "description": "Widget za prikaz ocjene ili gumb za ocjenjivanje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Rezultat",
+        "description": "Trenutačna vrijednost rezultata."
+      },
+      {
+        "property": "possible",
+        "title": "Moguće",
+        "description": "Najveći mogući rezultat."
+      },
+      {
+        "property": "numStars",
+        "title": "Broj zvjezdica",
+        "description": "Broj zvjezdica za prikaz."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktivno",
+        "description": "Dopusti korisniku postavljanje ocjene."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Način ljestvice rubrike",
+        "description": "Emitiraj OER Schema metapodatke RubricScale i RubricLevel (levelOrdinal/levelPoints) za svaku zvjezdicu."
+      }
+    ]
+  }
+}

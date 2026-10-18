@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Vloga v karieri",
+    "description": "Posamezna vloga v organizaciji"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov"
+      },
+      {
+        "property": "startDate",
+        "title": "Datum začetka"
+      },
+      {
+        "property": "endDate",
+        "title": "Datum konca (neobvezno)"
+      },
+      {
+        "property": "skills",
+        "title": "Povezane veščine",
+        "description": "Izberite gumb +, da začnete dodajati veščine"
+      }
+    ]
+  }
+}

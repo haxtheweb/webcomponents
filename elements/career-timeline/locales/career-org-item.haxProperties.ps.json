@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "د مسلک توکی",
+    "description": "یو انفرادي سازمان او د هغه اړوندې دندې"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "د سازمان نوم"
+      },
+      {
+        "property": "location",
+        "title": "ځای"
+      },
+      {
+        "property": "source",
+        "title": "سرچینه"
+      }
+    ]
+  }
+}

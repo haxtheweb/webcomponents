@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "भिडियो",
+    "description": "विभिन्न स्रोतहरूमा पहुँचयोग्य भिडियो प्लेब्याक।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "यस मिडियाको URL।"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "शीर्षक",
+        "description": "भिडियोको तल देखाइने शीर्षक।"
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "पोस्टर छवि",
+        "description": "पोस्टर छवि URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "पाठ ट्र्याकहरू",
+        "description": "भिडियोका लागि क्याप्सन, उपशीर्षक, विवरण र अन्य पाठ ट्र्याकहरू।"
+      },
+      {
+        "property": "startTime",
+        "title": "सुरु समय",
+        "description": "भिडियो निश्चित समयबाट सुरु गर्नुहोस् (सेकेन्ड)।"
+      },
+      {
+        "property": "endTime",
+        "title": "अन्त्य समय",
+        "description": "भिडियो निश्चित समयमा अन्त्य गर्नुहोस् (सेकेन्ड), सुरु समय आवश्यक छ।"
+      },
+      {
+        "property": "learningMode",
+        "title": "सिकाइ मोड सक्षम गर्नुहोस्",
+        "description": "अगाडि बढाउने र पछाडि फर्काउने असक्षम गर्छ।"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube मा खोल्ने बटन हटाउनुहोस्",
+        "description": "भिडियो YouTube मा खोल्ने बटन हटाउँछ।"
+      },
+      {
+        "property": "linkable",
+        "title": "साझा लिङ्क समावेश गर्ने?",
+        "description": "भिडियो साझा गर्न लिङ्क दिन्छ।"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "समय चिन्हहरू लुकाउनुहोस्",
+        "description": "ट्रान्सक्रिप्टमा समय चिन्हहरू लुकाउनुहोस्।"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ट्रान्सक्रिप्ट लुकाउनुहोस्",
+        "description": "पूर्वनिर्धारित रूपमा ट्रान्सक्रिप्ट लुकाउनुहोस्।"
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "अडियो विवरण ट्र्याक",
+        "description": "दृश्य तत्वहरूको वर्णन गर्ने अडियो विवरण ट्र्याक (MP3 फाइल) को URL।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS प्रयोग गर्ने कि नगर्ने जनाउँछ।",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "पृष्ठभूमिमा प्लेब्याक अनुमति दिनुहोस्",
+        "description": "ब्राउजर ट्याबबाट फोकस हट्दा पनि चलिरहोस्।"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ट्रान्सक्रिप्टका लागि डार्क थिम",
+        "description": "ट्रान्सक्रिप्टका लागि डार्क थिम सक्षम गर्नुहोस्।"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "अन्तरक्रिया असक्षम गर्नुहोस्",
+        "description": "ट्रान्सक्रिप्टलाई क्लिक गर्न मिल्ने बनाउने अन्तरक्रियात्मक मोड असक्षम गर्नुहोस्।"
+      },
+      {
+        "property": "lang",
+        "title": "भाषा",
+        "description": "मिडियाको भाषा।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "(अप्रचलित) प्लेयरका लागि एक्सेन्ट रङ चयन गर्नुहोस्।"
+      }
+    ]
+  }
+}

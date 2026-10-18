@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliogrāfijas vienums",
+    "description": "Vienums, kas attēlo vienu citātu bibliogrāfijā, atbalstot vairākus formātus un eksportēšanas iespējas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tips",
+        "description": "Citāta veids",
+        "options": {
+          "web": "Tīmeklis",
+          "journal": "Žurnāls",
+          "book": "Grāmata"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Vienuma nosaukums"
+      },
+      {
+        "property": "authors",
+        "title": "Autors(-i)",
+        "description": "Notikumi laika joslā"
+      },
+      {
+        "property": "publisher",
+        "title": "Izdevējs",
+        "description": "Sākotnējā tīmekļa vietne"
+      }
+    ]
+  }
+}

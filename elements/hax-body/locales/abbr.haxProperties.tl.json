@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Daglat",
+    "description": "Daglat na may tooltip ng buong termino."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teksto",
+        "description": "Nakikitang teksto ng daglat."
+      },
+      {
+        "attribute": "title",
+        "title": "Salita",
+        "description": "Buong terminong ipinapakita kapag naka-hover."
+      }
+    ]
+  }
+}

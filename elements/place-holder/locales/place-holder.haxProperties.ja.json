@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "プレースホルダー",
+    "description": "選択したメディアの種類に変換できるプレースホルダー"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "種類",
+        "description": "置き換えとして受け付けるガジェットの種類。",
+        "options": {
+          "text": "テキスト / コンテンツ",
+          "document": "ドキュメント / ファイル",
+          "audio": "音声",
+          "video": "ビデオ",
+          "image": "画像",
+          "math": "数式"
+        }
+      },
+      {
+        "property": "text",
+        "title": "テキスト",
+        "description": "必要なプレースホルダーをより詳しく指定します"
+      }
+    ]
+  }
+}

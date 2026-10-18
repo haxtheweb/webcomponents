@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ನಕ್ಷತ್ರ ರೇಟಿಂಗ್",
+    "description": "ರೇಟಿಂಗ್ ಪ್ರದರ್ಶನ ವಿಜೆಟ್ ಅಥವಾ ರೇಟಿಂಗ್ ನೀಡುವ ಬಟನ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "ಅಂಕ",
+        "description": "ಪ್ರಸ್ತುತ ಅಂಕದ ಮೌಲ್ಯ."
+      },
+      {
+        "property": "possible",
+        "title": "ಸಾಧ್ಯ",
+        "description": "ಗರಿಷ್ಠ ಸಾಧ್ಯ ಅಂಕ."
+      },
+      {
+        "property": "numStars",
+        "title": "ನಕ್ಷತ್ರಗಳ ಸಂಖ್ಯೆ",
+        "description": "ಪ್ರದರ್ಶಿಸಬೇಕಾದ ನಕ್ಷತ್ರಗಳ ಸಂಖ್ಯೆ."
+      },
+      {
+        "property": "interactive",
+        "title": "ಸಂವಾದಾತ್ಮಕ",
+        "description": "ರೇಟಿಂಗ್ ಹೊಂದಿಸಲು ಬಳಕೆದಾರರ ಸಂವಹನವನ್ನು ಅನುಮತಿಸಿ."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "ರೂಬ್ರಿಕ್ ಮಾಪಕ ಮೋಡ್",
+        "description": "ಪ್ರತಿ ನಕ್ಷತ್ರಕ್ಕೆ OER Schema RubricScale ಮತ್ತು RubricLevel ಮೆಟಾಡೇಟಾ (levelOrdinal/levelPoints) ಹೊರಸೂಸಿ."
+      }
+    ]
+  }
+}

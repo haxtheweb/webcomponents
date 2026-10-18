@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Бөлүп көрсөтүү",
+    "description": "Сап ичиндеги текстти бөлүп көрсөтүү."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Бөлүнүп көрсөтүлгөн текст."
+      }
+    ]
+  }
+}

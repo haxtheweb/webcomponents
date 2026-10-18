@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS ادارو",
+    "description": "بيڪ اينڊ تي ڏيکاريل CMS ادارو"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "قسم",
+        "description": "اسان جي CMS مان قسم",
+        "options": {
+          "node": "نوڊ",
+          "user": "صارف",
+          "file": "فائل"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "اسان جي CMS مان id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "ڊسپلي موڊ",
+        "description": "اسان جي CMS مان ڊسپلي موڊ"
+      }
+    ]
+  }
+}

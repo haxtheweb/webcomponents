@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ligame HAX",
+    "description": "Un ligame versu una risorsa precisa in u situ nant'à u quale travagliate."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Elementu",
+        "description": "Elementu da affissà per i dati di ligame / titulu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Sterrenbeoordeling",
+    "description": "Widget om een beoordeling te tonen of knop om te beoordelen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Score",
+        "description": "Huidige scorewaarde."
+      },
+      {
+        "property": "possible",
+        "title": "Mogelijk",
+        "description": "Maximaal mogelijke score."
+      },
+      {
+        "property": "numStars",
+        "title": "Aantal sterren",
+        "description": "Aantal sterren om te tonen."
+      },
+      {
+        "property": "interactive",
+        "title": "Interactief",
+        "description": "Gebruikers toestaan de beoordeling in te stellen."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Rubricschaalmodus",
+        "description": "OER Schema-metagegevens voor RubricScale en RubricLevel (levelOrdinal/levelPoints) meegeven voor elke ster."
+      }
+    ]
+  }
+}

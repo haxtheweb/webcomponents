@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Glosa",
+    "description": "Ordförrådsterm"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Term"
+      },
+      {
+        "slot": "",
+        "title": "Definition",
+        "description": "Definitionen som visas när termen klickas."
+      },
+      {
+        "property": "description",
+        "title": "Beskrivning (OER Schema)",
+        "description": "OER Schema: en kort beskrivning av termen. Fylls i automatiskt från definitionstexten om den lämnas tom."
+      }
+    ]
+  }
+}

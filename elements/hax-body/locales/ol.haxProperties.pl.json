@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Lista numerowana",
+    "description": "Utwórz listę numerowaną."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Styl numeracji",
+        "description": "Styl numeracji listy uporządkowanej.",
+        "options": {
+          "": "Domyślny (dziesiętny)",
+          "list-decimal-leading-zero": "Dziesiętny z wiodącym zerem (01, 02, 03)",
+          "list-lower-alpha": "Małe litery (a, b, c)",
+          "list-upper-alpha": "Wielkie litery (A, B, C)",
+          "list-lower-roman": "Małe rzymskie (i, ii, iii)",
+          "list-upper-roman": "Wielkie rzymskie (I, II, III)"
+        }
+      }
+    ]
+  }
+}

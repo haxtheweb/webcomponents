@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Nömrəli siyahı",
+    "description": "Nömrəli siyahı yarat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Nömrə üslubu",
+        "description": "Nömrəli siyahının nömrələnməsi üçün istifadə olunan üslub.",
+        "options": {
+          "": "Standart (onluq)",
+          "list-decimal-leading-zero": "Öndə sıfır olan onluq (01, 02, 03)",
+          "list-lower-alpha": "Kiçik hərflər (a, b, c)",
+          "list-upper-alpha": "Böyük hərflər (A, B, C)",
+          "list-lower-roman": "Kiçik Roma rəqəmləri (i, ii, iii)",
+          "list-upper-roman": "Böyük Roma rəqəmləri (I, II, III)"
+        }
+      }
+    ]
+  }
+}

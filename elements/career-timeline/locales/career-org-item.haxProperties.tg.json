@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Унсури касб",
+    "description": "Ташкилоти алоҳида ва вазифаҳои марбут ба он"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Номи ташкилот"
+      },
+      {
+        "property": "location",
+        "title": "Макон"
+      },
+      {
+        "property": "source",
+        "title": "Манбаъ"
+      }
+    ]
+  }
+}

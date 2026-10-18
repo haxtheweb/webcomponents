@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Раздел",
+    "description": "Единичен раздел."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Икона на раздела"
+      },
+      {
+        "property": "disabled",
+        "title": "Деактивирано"
+      },
+      {
+        "property": "label",
+        "title": "Етикет на раздела"
+      },
+      {
+        "slot": "",
+        "title": "Съдържание на раздела",
+        "description": "Съдържанието на раздела."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Уникален ID"
+      },
+      {
+        "property": "flag",
+        "title": "Незадължителен текст на флага"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Незадължителна икона на флага"
+      }
+    ]
+  }
+}

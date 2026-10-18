@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "பணி வாழ்க்கை உருப்படி",
+    "description": "ஒரு தனி நிறுவனமும் அதனுடன் இணைந்த பதவிகளும்"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "நிறுவனப் பெயர்"
+      },
+      {
+        "property": "location",
+        "title": "இடம்"
+      },
+      {
+        "property": "source",
+        "title": "மூலம்"
+      }
+    ]
+  }
+}

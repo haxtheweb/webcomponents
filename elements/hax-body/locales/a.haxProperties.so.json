@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Xiriir aasaasi ah",
+    "description": "Curiye xiriir aasaasi ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Xiriiriye",
+        "description": "URL-ka meesha loo socdo."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Qoraal",
+        "description": "Qoraalka xiriirka ee muuqda."
+      },
+      {
+        "attribute": "target",
+        "title": "Bartilmaameed",
+        "description": "Meesha laga furayo xiriiriyaha.",
+        "options": {
+          "": "Isla daaqadda",
+          "_blank": "Daaqad cusub - _blank",
+          "_top": "Daaqadda sare - _top",
+          "_parent": "Daaqadda waalidka - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Qoraalka cinwaanka",
+        "description": "Cinwaan talo-bixin ah oo loogu talagalay gelitaanka iyo SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Xiriirka la leh meesha loo socdo (amniga/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

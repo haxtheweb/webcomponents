@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relativni naslov",
+    "description": "daje ispravnu hijerarhiju naslova na osnovu naslova nadređenog elementa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID resursa nadređenog naslova"
+      },
+      {
+        "property": "disableLink",
+        "description": "Onemogućava funkciju dugmeta za link."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Poravnava dugme za kopiranje linka skroz desno od naslova."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Nivo naslova ako nadređeni nije pronađen."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Zamjenjuje zadani tekst obavještenja za kopiranje linka."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Zamjenjuje zadanu oznaku dugmeta za kopiranje linka."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Zamjenjuje zadanu ikonu dugmeta za kopiranje linka."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Zamjenjuje zadanu oznaku dugmeta za zatvaranje obavještenja kopiranja linka."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Zamjenjuje zadanu ikonu dugmeta za zatvaranje obavještenja kopiranja linka."
+      }
+    ]
+  }
+}

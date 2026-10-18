@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS-eining",
+    "description": "CMS-eining birt á bakendanum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Tegund",
+        "description": "tegund úr CMS-kerfinu okkar",
+        "options": {
+          "node": "Hnútur",
+          "user": "Notandi",
+          "file": "Skrá"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id úr CMS-kerfinu okkar"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Birtingarhamur",
+        "description": "birtingarhamur úr CMS-kerfinu okkar"
+      }
+    ]
+  }
+}

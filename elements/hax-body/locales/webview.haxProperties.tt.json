@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Чыганак",
+        "description": "Бу ресурс өчен URL."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Bố cục cột",
+    "description": "Bố trí nội dung theo các cột đơn giản"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Bố cục cột",
+        "description": "Kiểu trình bày các mục này (có thể thay đổi trên màn hình nhỏ)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Tắt đáp ứng",
+        "description": "Đánh dấu ô để giữ các cột trên màn hình lớn hơn nhưng vẫn xếp chồng trên màn hình nhỏ nhất"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Đệm trong mục",
+        "description": "Khoảng đệm bên trong mỗi mục"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Lề giữa các mục",
+        "description": "Khoảng cách giữa các mục"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Quellenugab",
+    "description": "Zitatelement mat dräi Presentatiounsmodi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel vum zitéierte Wierk."
+      },
+      {
+        "property": "source",
+        "title": "Quelllink",
+        "description": "Quell-URL vum zitéierte Wierk."
+      },
+      {
+        "property": "date",
+        "title": "Zougrëffsdatum",
+        "description": "Datum, op deem op d'Quell zougegraff gouf."
+      },
+      {
+        "property": "scope",
+        "title": "Ëmfang",
+        "description": "Elementëmfang fir ze zitéieren.",
+        "options": {
+          "sibling": "Nopeschelement",
+          "parent": "Iwwergeuerdent Element"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lizenz",
+        "description": "Lizenz vum zitéierte Wierk."
+      },
+      {
+        "property": "creator",
+        "title": "Creator",
+        "description": "Creator oder Besëtzer vum zitéierte Wierk."
+      },
+      {
+        "property": "typeof",
+        "title": "OER-Schema-Typ",
+        "description": "OER-Schema-Klass fir dëst Zitat. Standard ass oer:ReferencedMaterial; nëmme mat enger gëlteger OER-Klass iwwerschreiwen (z. B. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

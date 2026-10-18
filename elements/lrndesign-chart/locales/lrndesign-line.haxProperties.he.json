@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "תרשים קווי",
+    "description": "יוצר תרשים נגיש על בסיס CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "צבע הדגשה",
+        "description": "צבע הדגשה אופציונלי."
+      },
+      {
+        "title": "ערכת נושא כהה",
+        "description": "הפעלת ערכת נושא כהה"
+      },
+      {
+        "title": "קובץ CSV",
+        "description": "טעינת נתונים מ-CSV."
+      },
+      {
+        "title": "כותרת התרשים",
+        "description": "טקסט חלופי נגיש לתרשים שלכם."
+      },
+      {
+        "title": "תיאור התרשים",
+        "description": "תיאור נגיש של התרשים שלכם."
+      },
+      {
+        "title": "שם קנה המידה",
+        "description": "היחס רוחב:גובה של התרשים (ראו https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings עבור $ct-scales ו-$ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "הצגת רקע רשת"
+      },
+      {
+        "title": "הצגת שטח"
+      },
+      {
+        "title": "הצגת קו"
+      },
+      {
+        "title": "הצגת נקודה"
+      },
+      {
+        "title": "רוחב מלא"
+      },
+      {
+        "title": "הצגת תוויות נקודות"
+      },
+      {
+        "title": "ריפוד התרשים (למעלה)"
+      },
+      {
+        "title": "ריפוד התרשים (למטה)"
+      },
+      {
+        "title": "ריפוד התרשים (שמאל)"
+      },
+      {
+        "title": "ריפוד התרשים (ימין)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "היפוך הנתונים",
+        "description": "היפוך הנתונים כולל התוויות, סדר הסדרות וכן מערכי הנתונים המלאים של הסדרות."
+      },
+      {
+        "title": "טבלת HTML",
+        "description": "אופציונלי: טעינת נתונים כטבלת HTML."
+      },
+      {
+        "title": "מינימום התרשים",
+        "description": "דריסת הערך הנמוך הטבעי של התרשים מאפשרת להגדיל את התצוגה או להגביל את הערך הנמוך ביותר המוצג בתרשים"
+      },
+      {
+        "title": "מקסימום התרשים",
+        "description": "דריסת הערך הגבוה הטבעי של התרשים מאפשרת להגדיל את התצוגה או להגביל את הערך הגבוה ביותר המוצג בתרשים"
+      },
+      {
+        "title": "הצגת תוויות נקודות",
+        "options": {
+          "middle": "אמצע",
+          "start": "התחלה",
+          "end": "סיום"
+        }
+      },
+      {
+        "title": "היסט X של תוויות הנקודות"
+      },
+      {
+        "title": "היסט Y של תוויות הנקודות"
+      },
+      {
+        "title": "החלקת קו"
+      },
+      {
+        "title": "בסיס השטח",
+        "description": "הבסיס של תרשים השטח שישמש לסגירת צורת השטח (בדרך כלל 0)."
+      },
+      {
+        "title": "ציר X: הצגת רשת",
+        "description": "הצגת הרשת של ציר X."
+      },
+      {
+        "title": "היסט ציר X"
+      },
+      {
+        "title": "מיקום ציר X",
+        "description": "המיקום שבו ממוקמות התוויות. ניתן להגדיר כ-\"start\" או \"end\", כאשר \"start\" שקול לשמאל או למעלה בציר האנכי ו-\"end\" שקול לימין או למטה בציר האופקי"
+      },
+      {
+        "title": "ציר X: הצגת תווית",
+        "description": "הצגת התווית של ציר X."
+      },
+      {
+        "title": "תווית ציר X (היסט אופקי)",
+        "description": "המיקום האופקי של תוויות ציר X."
+      },
+      {
+        "title": "תווית ציר X (היסט אנכי)",
+        "description": "המיקום האנכי של תוויות ציר X."
+      },
+      {
+        "title": "כותרת ציר X",
+        "description": "כותרת אופציונלית לציר X."
+      },
+      {
+        "title": "כותרת ציר X (היסט אופקי)",
+        "description": "המיקום האופקי של כותרת ציר X."
+      },
+      {
+        "title": "כותרת ציר X (היסט אנכי)",
+        "description": "המיקום האנכי של כותרת ציר X."
+      },
+      {
+        "title": "עוגן כותרת ציר X",
+        "description": "עוגן אופציונלי לכותרת ציר X.",
+        "options": {
+          "middle": "אמצע",
+          "end": "סוף",
+          "start": "התחלה"
+        }
+      },
+      {
+        "title": "ציר Y: הצגת רשת",
+        "description": "הצגת הרשת של ציר Y."
+      },
+      {
+        "title": "היסט ציר Y"
+      },
+      {
+        "title": "מיקום ציר Y",
+        "description": "המיקום שבו ממוקמות התוויות. ניתן להגדיר כ-\"start\" או \"end\", כאשר \"start\" שקול לשמאל או למעלה בציר האנכי ו-\"end\" שקול לימין או למטה בציר האופקי"
+      },
+      {
+        "title": "ציר Y: הצגת תווית",
+        "description": "הצגת התווית של ציר Y."
+      },
+      {
+        "title": "תווית ציר Y (היסט אופקי)",
+        "description": "המיקום האופקי של תווית ציר Y."
+      },
+      {
+        "title": "תווית ציר Y (היסט אנכי)",
+        "description": "המיקום האנכי של תווית ציר Y."
+      },
+      {
+        "title": "מרווח מינימלי בסולם ציר Y",
+        "description": "מציין את הגובה המינימלי בפיקסלים של צעדי הסולם."
+      },
+      {
+        "title": "סולם ציר Y (מספרים שלמים בלבד)",
+        "description": "שימוש בערכים שלמים בלבד עבור צעדי הסולם."
+      },
+      {
+        "title": "כותרת ציר Y",
+        "description": "כותרת אופציונלית לציר Y."
+      },
+      {
+        "title": "כותרת ציר Y (היסט אנכי)",
+        "description": "המיקום האופקי של כותרת ציר Y."
+      },
+      {
+        "title": "כותרת ציר Y (היסט אופקי)",
+        "description": "המיקום האופקי של כותרת ציר Y."
+      },
+      {
+        "title": "עוגן כותרת ציר Y",
+        "description": "עוגן אופציונלי לכותרת ציר Y.",
+        "options": {
+          "middle": "אמצע",
+          "end": "סוף",
+          "start": "התחלה"
+        }
+      },
+      {
+        "title": "היפוך כותרת ציר Y",
+        "description": "להפוך את כותרת ציר Y?"
+      }
+    ]
+  }
+}

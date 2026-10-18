@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Alirebla videoludado el pluraj fontoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonto",
+        "description": "URL por ĉi tiu aŭdvidaĵo."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titolo",
+        "description": "Titolo montrata sub la video."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Afiŝa bildo",
+        "description": "URL de la afiŝa bildo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Tekstaj trakoj",
+        "description": "Subtekstoj, tradukaj subtekstoj, priskriboj kaj aliaj tekstaj trakoj por la video."
+      },
+      {
+        "property": "startTime",
+        "title": "Komenca tempo",
+        "description": "Komenci la videon je specifa tempo (sekundoj)."
+      },
+      {
+        "property": "endTime",
+        "title": "Fina tempo",
+        "description": "Fini la videon je specifa tempo (sekundoj), postulas komencan tempon."
+      },
+      {
+        "property": "learningMode",
+        "title": "Ŝalti lernan reĝimon",
+        "description": "Malŝaltas rapidan antaŭenigon kaj reenigon."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Forigi la butonon Malfermi ĉe YouTube",
+        "description": "Forigas la butonon por malfermi la videon ĉe YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Ĉu inkluzivi kunhavigan ligilon?",
+        "description": "Provizas ligilon por kunhavigi la videon."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Kaŝi tempomarkojn",
+        "description": "Kaŝi la tempomarkojn en la transskribo."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Kaŝi transskribon",
+        "description": "Kaŝi la transskribon defaŭlte."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Trako de aŭda priskribo",
+        "description": "URL al trako de aŭda priskribo (MP3-dosiero), kiu rakontas la vidajn elementojn."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indikas ĉu uzi CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Permesi fonan ludadon",
+        "description": "Daŭrigi ludadon kiam la retumila langeto perdas fokuson."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Malhela etoso por transskribo",
+        "description": "Ŝalti malhelan etoson por la transskribo."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Malŝalti interagecon",
+        "description": "Malŝalti interagan reĝimon, kiu igas la transskribon alklakebla."
+      },
+      {
+        "property": "lang",
+        "title": "Lingvo",
+        "description": "Lingvo de la aŭdvidaĵo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "(malrekomendita) Elektu la akcentan koloron por la ludilo."
+      }
+    ]
+  }
+}

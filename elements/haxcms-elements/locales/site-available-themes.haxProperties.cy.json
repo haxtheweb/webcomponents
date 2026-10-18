@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Themâu Sydd ar Gael",
+    "description": "Dangos themâu HAXcms sydd ar gael gyda newid rhagolwg byw"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Modd Gweld",
+        "description": "Dewiswch sut i ddangos y themâu",
+        "options": {
+          "gallery": "Oriel",
+          "table": "Tabl"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Dangos Manylion",
+        "description": "Dangos disgrifiadau'r themâu a gwybodaeth ychwanegol"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Dangos Themâu Cudd a Hen",
+        "description": "Dangos themâu cudd, hen, ac ofnadwy yn ogystal â rhagosodiadau'r dangosfwrdd"
+      },
+      {
+        "property": "columns",
+        "title": "Colofnau (Oriel)",
+        "description": "Nifer y colofnau yn yr olwg oriel"
+      }
+    ]
+  }
+}

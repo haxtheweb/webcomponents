@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ലൈസൻസ്",
+    "description": "നിങ്ങളുടെ കൃതിക്ക് ഒരു ലൈസൻസ് നൽകുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ശീർഷകം",
+        "description": "ഉദ്ധരിച്ച കൃതിയുടെ തലക്കെട്ട്."
+      },
+      {
+        "property": "source",
+        "title": "ഉറവിട ലിങ്ക്",
+        "description": "ലൈസൻസുള്ള കൃതിയുടെ ഉറവിട URL."
+      },
+      {
+        "property": "license",
+        "title": "ലൈസൻസ്",
+        "description": "ഈ കൃതിക്ക് പ്രയോഗിച്ച ലൈസൻസ്."
+      },
+      {
+        "property": "creator",
+        "title": "സ്രഷ്ടാവ്",
+        "description": "ഈ കൃതിയുടെ സ്രഷ്ടാവ് അല്ലെങ്കിൽ ഉടമ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "ഉറവിട ലിങ്ക്",
+        "description": "അധിക ലൈസൻസിംഗ് വിശദാംശങ്ങളിലേക്കുള്ള ലിങ്ക്."
+      },
+      {
+        "property": "moreLabel",
+        "title": "കൂടുതൽ ലേബൽ",
+        "description": "അധിക ലൈസൻസിംഗ് വിശദാംശങ്ങൾക്കുള്ള ലേബൽ."
+      }
+    ]
+  }
+}

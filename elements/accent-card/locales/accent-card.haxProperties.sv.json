@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kort",
+    "description": "Ett kort med valfri accentstil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Rubrik",
+        "description": "En rubrik för kortet."
+      },
+      {
+        "slot": "subheading",
+        "title": "Underrubrik",
+        "description": "En valfri underrubrik för kortet."
+      },
+      {
+        "slot": "content",
+        "title": "Innehåll",
+        "description": "Innehåll för kortet."
+      },
+      {
+        "slot": "footer",
+        "title": "Sidfot",
+        "description": "En valfri sidfot för kortet."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Bild",
+        "description": "Valfri bild"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alternativtext för bild",
+        "description": "Alternativ text som beskriver bilden för skärmläsare. Lämna tomt endast om bilden är rent dekorativ."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Bildens horisontella justering",
+        "options": {
+          "left": "vänster",
+          "center": "mitten",
+          "right": "höger"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Bildens vertikala justering",
+        "options": {
+          "top": "topp",
+          "center": "mitten",
+          "bottom": "botten"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "En valfri accentfärg."
+      },
+      {
+        "property": "dark",
+        "title": "Mörkt tema",
+        "description": "Aktivera mörkt tema"
+      },
+      {
+        "property": "horizontal",
+        "title": "Vågrät",
+        "description": "Horisontell orientering?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Rubrikaccent",
+        "description": "Tillämpa accentfärg på rubriken?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Bakgrundsaccent",
+        "description": "Tillämpa accentfärg på kortets bakgrund?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Ingen kantaccent",
+        "description": "Ta bort kantaccent?"
+      },
+      {
+        "property": "flat",
+        "title": "Platt",
+        "description": "Ta bort skugga?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Hörn",
+        "description": "Innehåll för kortets hörn."
+      }
+    ]
+  }
+}

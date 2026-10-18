@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Vidiyo",
+    "description": "Ọkpụkpọ vidiyo dị mfe iru site n'ọtụtụ isi iyi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isi mmalite",
+        "description": "URL maka mgbasa ozi a."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Aha",
+        "description": "Aha egosiri n'okpuru vidiyo."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Onyonyo poster",
+        "description": "URL onyonyo poster."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Ụzọ ederede",
+        "description": "Ndepụta okwu, ntụgharị okwu, nkọwa, na ụzọ ederede ndị ọzọ maka vidiyo ahụ."
+      },
+      {
+        "property": "startTime",
+        "title": "Oge mbido",
+        "description": "Malite vidiyo n'otu oge akọwapụtara (sekọnd)."
+      },
+      {
+        "property": "endTime",
+        "title": "Oge njedebe",
+        "description": "Kwụsị vidiyo n'otu oge akọwapụtara (sekọnd), chọrọ oge mbido."
+      },
+      {
+        "property": "learningMode",
+        "title": "Gbanye ọnọdụ mmụta",
+        "description": "Na-egbochi ịga n'ihu ngwa ngwa na ịlaghachi azụ."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Wepụ bọtịnụ mepee na YouTube",
+        "description": "Na-ewepụ bọtịnụ maka imepe vidiyo na YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Tinye njikọ nkekọrịta?",
+        "description": "Na-enye njikọ iji kekọrịta vidiyo."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Zoo oge",
+        "description": "Zoo oge dị na ederede."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Zoo ederede",
+        "description": "Zoo ederede na ndabere."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Ụzọ nkọwa ụda",
+        "description": "URL nye ụzọ nkọwa ụda (faịlụ MP3) nke na-akọwa ihe ndị a na-ahụ anya."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Na-egosi ma a ga-eji CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Kwe ka ọ kpọọ n'azụ",
+        "description": "Gaa n'ihu na-akpọ mgbe taabụ ihe nchọgharị tufuru nlebara anya."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Isiokwu ọchịchịrị maka ederede",
+        "description": "Gbanye isiokwu ọchịchịrị maka ederede."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Gbanyụọ mmekọrịta",
+        "description": "Gbanyụọ ọnọdụ mmekọrịta na-eme ka ederede bụrụ ihe enwere ike ịpị."
+      },
+      {
+        "property": "lang",
+        "title": "Asụsụ",
+        "description": "Asụsụ nke mgbasa ozi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba mkpụrụ",
+        "description": "(akwụsịla) Họrọ agba accent maka ihe ọkpụkpọ."
+      }
+    ]
+  }
+}

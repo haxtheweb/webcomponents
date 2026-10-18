@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Ithebhu",
+    "description": "Ithebhu eyodwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Isithonjana Sethebhu"
+      },
+      {
+        "property": "disabled",
+        "title": "Kukhutshaziwe"
+      },
+      {
+        "property": "label",
+        "title": "Ilebula Lethebhu"
+      },
+      {
+        "slot": "",
+        "title": "Okuqukethwe Kwethebhu",
+        "description": "Okuqukethwe kwethebhu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "I-ID Eyingqayizivele"
+      },
+      {
+        "property": "flag",
+        "title": "Umbhalo Wefulegi Ongaphoqelekile"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Isithonjana Sefulegi Esingaphoqelekile"
+      }
+    ]
+  }
+}

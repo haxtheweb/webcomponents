@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Conception de cours",
+    "description": "Conteneur pour les ressources pédagogiques et les éléments de conception de cours."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Identifiant du cours",
+        "description": "OER Schema : l'identifiant du cours, p. ex. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Session offerte",
+        "description": "OER Schema : la session pendant laquelle le cours est offert."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Mode de diffusion",
+        "description": "OER Schema : le mode utilisé pour dispenser le cours (p. ex. en présentiel, en ligne, hybride)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Enseignant principal",
+        "description": "OER Schema : l'enseignant principal du cours."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL du plan de cours",
+        "description": "OER Schema : URL du plan de cours."
+      }
+    ]
+  }
+}

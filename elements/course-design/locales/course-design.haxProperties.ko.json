@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "강좌 설계",
+    "description": "교육 자료와 강좌 설계 요소를 위한 컨테이너."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "강좌 식별자",
+        "description": "OER Schema: 강좌의 식별자 (예: MATH-100)."
+      },
+      {
+        "property": "termOffered",
+        "title": "개설 학기",
+        "description": "OER Schema: 강좌가 개설되는 학기."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "수업 방식",
+        "description": "OER Schema: 강좌를 진행하는 방식 (예: 대면, 온라인, 혼합)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "주 강사",
+        "description": "OER Schema: 강좌의 주 강사."
+      },
+      {
+        "property": "syllabus",
+        "title": "강의 계획서 URL",
+        "description": "OER Schema: 강의 계획서의 URL."
+      }
+    ]
+  }
+}

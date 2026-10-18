@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "بطاقة كلاسيكية",
+    "description": "بطاقة بسيطة بتصميم كلاسيكي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "العنوان الرئيسي للبطاقة."
+      },
+      {
+        "property": "url",
+        "description": "URL المراد فتحه عند النقر على البطاقة."
+      },
+      {
+        "property": "subtitle",
+        "title": "العنوان الفرعي",
+        "description": "العنوان الفرعي للبطاقة."
+      },
+      {
+        "property": "tags",
+        "title": "الوسوم",
+        "description": "وسوم مفصولة بفواصل."
+      },
+      {
+        "property": "mediaSource",
+        "title": "مصدر الوسائط",
+        "description": "مصدر الوسائط الأساسي."
+      },
+      {
+        "property": "hoverSource",
+        "title": "المصدر عند التمرير",
+        "description": "مصدر الوسائط المعروض عند تمرير المؤشر فوق البطاقة أو تفعيلها."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون التمييز المطبق على البطاقة بالكامل."
+      },
+      {
+        "property": "dark",
+        "title": "داكن",
+        "description": "استخدام الألوان الأساسية للوضع الداكن."
+      }
+    ]
+  }
+}

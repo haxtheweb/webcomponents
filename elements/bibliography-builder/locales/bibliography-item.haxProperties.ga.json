@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Mír leabharliosta",
+    "description": "Mír a léiríonn lua aonair i leabharliosta, le tacaíocht d'fhormáidí éagsúla agus roghanna easpórtála."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Cineál",
+        "description": "Cineál lua",
+        "options": {
+          "web": "Gréasán",
+          "journal": "Iris",
+          "book": "Leabhar"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Teideal na míre"
+      },
+      {
+        "property": "authors",
+        "title": "Údar/Údair",
+        "description": "Na himeachtaí san amlíne"
+      },
+      {
+        "property": "publisher",
+        "title": "Foilsitheoir",
+        "description": "Bunsuíomh gréasáin"
+      }
+    ]
+  }
+}

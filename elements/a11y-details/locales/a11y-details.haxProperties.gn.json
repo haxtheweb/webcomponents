@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Mba'emimi Votõ Ojeikekuaáva",
+    "description": "Jehechauka mbeguekatúva ojeikekuaáva mba'emimi ha ñemombyky reheve"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Votõ",
+        "description": "Tetepy ñemombyky okañýramo, techapyrã \"marandu\", \"mba'ekuaarã\", ha ambue."
+      },
+      {
+        "slot": "details",
+        "title": "Ñemoha'ãnga",
+        "description": "Ñemoha'ãnga py'ỹi ikatúva okañy térã ojehechauka"
+      },
+      {
+        "slot": "",
+        "title": "Ñemoha'ãnga Votõ",
+        "description": "Ypyguáva votõ ohechauka/omokañývape ñemoha'ãnga, techapyrã \"marandu\", \"mba'ekuaarã\", ha ambue."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Ñemombyky ojeporavokuaáva mba'emimi ojejuruja jave"
+      },
+      {
+        "property": "closeText",
+        "title": "Ñemombyky ojeporavokuaáva mba'emimi oñemboty jave"
+      }
+    ]
+  }
+}

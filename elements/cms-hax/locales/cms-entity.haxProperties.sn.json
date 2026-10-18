@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Chinhu cheCMS",
+    "description": "Chinhu cheCMS chinoratidzwa pabackend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Rudzi",
+        "description": "mhando kubva kuCMS yedu",
+        "options": {
+          "node": "Node",
+          "user": "Mushandisi",
+          "file": "Faira"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id kubva kuCMS yedu"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Mamiriro ekuratidza",
+        "description": "modhi yekuratidza kubva kuCMS yedu"
+      }
+    ]
+  }
+}

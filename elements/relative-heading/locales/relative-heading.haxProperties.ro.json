@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Titlu relativ",
+    "description": "generează ierarhia corectă a titlurilor pe baza titlului părintelui"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID-ul resursei titlului părinte"
+      },
+      {
+        "property": "disableLink",
+        "description": "Dezactivează funcția butonului de link."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Aliniază butonul de copiere a linkului în extrema dreaptă a titlului."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Nivelul titlului dacă părintele nu este găsit."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Înlocuiește textul implicit al notificării de copiere a linkului."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Înlocuiește eticheta implicită a butonului de copiere a linkului."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Înlocuiește pictograma implicită a butonului de copiere a linkului."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Înlocuiește eticheta implicită a butonului de închidere din notificarea de copiere a linkului."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Înlocuiește pictograma implicită a butonului de închidere din notificarea de copiere a linkului."
+      }
+    ]
+  }
+}

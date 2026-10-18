@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Veduta tas-Sit",
+    "description": "Blokk dinamiku li jfittex u juri d-data tas-sit ibbażat fuq kriterji"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL tal-Veduta",
+        "description": "Parametri tal-query għall-feed tad-data tal-veduta. Tista' tiksbu mid-dashboard tal-Vedute."
+      },
+      {
+        "property": "renderer",
+        "title": "Modalità tal-wiri",
+        "description": "Kif għandhom jintwerew ir-riżultati tal-veduta"
+      },
+      {
+        "property": "entity",
+        "title": "Tip ta' entità",
+        "description": "Tip ta' entità użat għall-analiżi tar-rispons",
+        "options": {
+          "": "Default (oġġetti)",
+          "item": "Oġġett",
+          "page": "Paġna",
+          "file": "Fajl",
+          "tag": "Tikketta",
+          "block": "Blokk",
+          "view": "Veduta",
+          "theme": "Tema",
+          "region": "Reġjun",
+          "customElement": "Element Personalizzat"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Ikser il-veduta tas-sit",
+        "description": "Ikkonverti f'kontenut statiku għall-editjar dirett; jieqaf jiġi aġġornat awtomatikament mis-sors."
+      }
+    ]
+  }
+}

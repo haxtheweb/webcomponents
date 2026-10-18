@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "የምስል መግለጫ ጽሑፍ",
+    "description": "ለምስል መግለጫ ጽሑፍ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "የምስል መግለጫ",
+        "description": "ከምስሉ በታች የሚታይ ጽሑፍ።"
+      }
+    ]
+  }
+}

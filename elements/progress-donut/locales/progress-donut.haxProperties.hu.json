@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Haladási fánk",
+    "description": "Haladást mutató fánkdiagram"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "Az elem címe"
+      },
+      {
+        "property": "desc",
+        "title": "Leírás",
+        "description": "Akadálymentes hosszú leírás"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Kép forrása",
+        "description": "A fánk belsejében lévő kép forrása."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Kép alternatív szövege",
+        "description": "A kép alternatív szövege."
+      },
+      {
+        "property": "animated",
+        "title": "Animált",
+        "description": "Animálódjon-e a haladás az első betöltéskor"
+      },
+      {
+        "property": "complete",
+        "title": "Kész",
+        "description": "A teljesített értékek tömbje."
+      },
+      {
+        "property": "total",
+        "title": "Összesen",
+        "description": "Az összeg, amikor minden elem teljesült."
+      },
+      {
+        "property": "startAngle",
+        "title": "Kezdőszög",
+        "description": "A fánk szöge, ahol a haladás kezdődik"
+      }
+    ]
+  }
+}

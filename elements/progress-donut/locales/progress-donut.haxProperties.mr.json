@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "प्रगती डोनट",
+    "description": "प्रगती डोनट"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "घटकाचे शीर्षक"
+      },
+      {
+        "property": "desc",
+        "title": "वर्णन",
+        "description": "सुलभ दीर्घ वर्णन"
+      },
+      {
+        "property": "imageSrc",
+        "title": "प्रतिमा स्रोत",
+        "description": "डोनटमधील प्रतिमेचा स्रोत."
+      },
+      {
+        "property": "imageAlt",
+        "title": "प्रतिमा पर्यायी मजकूर",
+        "description": "प्रतिमेसाठी alt मजकूर."
+      },
+      {
+        "property": "animated",
+        "title": "अ‍ॅनिमेटेड",
+        "description": "पहिल्यांदा लोड होताना प्रगती अ‍ॅनिमेट होते की नाही"
+      },
+      {
+        "property": "complete",
+        "title": "पूर्ण",
+        "description": "पूर्ण झालेल्या मूल्यांचा अ‍ॅरे."
+      },
+      {
+        "property": "total",
+        "title": "एकूण",
+        "description": "सर्व आयटम पूर्ण झाल्यावर एकूण."
+      },
+      {
+        "property": "startAngle",
+        "title": "सुरुवातीचा कोन",
+        "description": "प्रगती जिथून सुरू होते तो डोनट कोन"
+      }
+    ]
+  }
+}

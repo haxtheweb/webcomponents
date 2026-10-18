@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Vhidhiyo",
+    "description": "Kutamba vhidhiyo kunowanikwa nevose kubva kusosi dzakawanda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kwakabva",
+        "description": "URL yemidhiya iyi."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Musoro",
+        "description": "Zita rinoratidzwa pasi pevhidhiyo."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Mufananidzo weposter",
+        "description": "URL yemufananidzo weposter."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Mitsetse yemavara",
+        "description": "Mazwi ari pasi, shanduro, tsananguro, nedzimwe mitsetse yemavara yevhidhiyo."
+      },
+      {
+        "property": "startTime",
+        "title": "Nguva yekutanga",
+        "description": "Tanga vhidhiyo panguva chaiyo (masekondi)."
+      },
+      {
+        "property": "endTime",
+        "title": "Nguva yekupedzisira",
+        "description": "Pedza vhidhiyo panguva chaiyo (masekondi), inoda nguva yekutanga."
+      },
+      {
+        "property": "learningMode",
+        "title": "Batidza modhi yekudzidza",
+        "description": "Inodzima kumhanyisa mberi nekudzosera shure."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Bvisa bhatani rekuvhura paYouTube",
+        "description": "Inobvisa bhatani rekuvhura vhidhiyo paYouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Isa chinongedzo chekugovera?",
+        "description": "Inopa chinongedzo chekugovera vhidhiyo."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Vanza nguva",
+        "description": "Vanza nguva dziri patranscript."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Vanza Transcript",
+        "description": "Vanza transcript sezvakagara."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Mutsetse weTsananguro Yeodhiyo",
+        "description": "URL kumutsetse wetsananguro yeodhiyo (faira reMP3) unotsanangura zvinoonekwa."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Inoratidza kana CORS ichishandiswa.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Bvumira kutamba kumashure",
+        "description": "Ramba uchitamba kana tebhu yebhurawuza yarasa kutariswa."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Dingindira rerima retranscript",
+        "description": "Batidza dingindira rerima retranscript."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Dzima Kupindurana",
+        "description": "Dzima modhi yekupindurana inoita kuti transcript idzvanyike."
+      },
+      {
+        "property": "lang",
+        "title": "Mutauro",
+        "description": "Mutauro wemidhiya."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara rwekusimbisa",
+        "description": "(yakasiiwa) Sarudza ruvara rweaccent rwemutambi."
+      }
+    ]
+  }
+}

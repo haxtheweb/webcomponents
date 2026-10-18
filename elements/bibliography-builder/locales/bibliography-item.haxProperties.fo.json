@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Heimildarlutur",
+    "description": "Lutur, ið umboðar eina einstaka tilvísing í einum heimildarlista, við stuðli fyri fleiri sniðum og útflutningsmøguleikum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Slag",
+        "description": "Tilvísingarslag",
+        "options": {
+          "web": "Vevur",
+          "journal": "Tíðarrit",
+          "book": "Bók"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Heiti á lutinum"
+      },
+      {
+        "property": "authors",
+        "title": "Høvundur(ar)",
+        "description": "Hendingarnar á tíðarlinjuni"
+      },
+      {
+        "property": "publisher",
+        "title": "Útgevari",
+        "description": "Upprunalig heimasíða"
+      }
+    ]
+  }
+}

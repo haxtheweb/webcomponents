@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Iddisinja, Iżviluppa, Eqred",
+    "description": "Implimentazzjoni tas-sistema tad-disinn għal HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Għażla biex tintwera",
+        "options": {
+          "*": "Gwida tal-istil sħiħa"
+        }
+      }
+    ]
+  }
+}

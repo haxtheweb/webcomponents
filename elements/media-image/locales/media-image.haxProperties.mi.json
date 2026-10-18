@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Atahanga Whakapaipai",
+    "description": "He huarahi whakaatu atahanga me ngā whakapainga maha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pūtake",
+        "description": "Te URL mō te atahanga."
+      },
+      {
+        "property": "alt",
+        "title": "Kuputuhi kē",
+        "description": "He kuputuhi hei whakaahua i te whakaahua mō ngā kaiwhakamahi kāpō."
+      },
+      {
+        "property": "link",
+        "title": "Hono",
+        "description": "Honoa te atahanga ki tētahi URL"
+      },
+      {
+        "property": "card",
+        "title": "Kāri",
+        "description": "Hāngaitia he ātārangi taka kia rite ai te āhua ki tētahi kāri kua hiki."
+      },
+      {
+        "property": "box",
+        "title": "Pouaka",
+        "description": "Hāngaitia he pouaka ā-kanohi huri noa i te atahanga."
+      },
+      {
+        "property": "offset",
+        "title": "Neke",
+        "description": "Hāngaitia he neke mauī, matau rānei ki te atahanga.",
+        "options": {
+          "none": "kore",
+          "wide": "whānui",
+          "narrow": "whāiti"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Tohutoro",
+        "description": "Tohutoro mō te atahanga."
+      },
+      {
+        "property": "caption",
+        "title": "Kupu whakamārama",
+        "description": "Tapanga mō te atahanga."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Taitara Whakaahua",
+        "description": "Taitara mō te tapanga whakaahua."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Whakaahuatanga Whakaahua",
+        "description": "Whakaahuatanga mō te tapanga whakaahua."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Atahanga kōnui",
+        "description": "Pūtake atahanga kōnui. Ka whakaatu i te kōnui engari ka whakatuwhera i te pūtake katoa i te matapihi."
+      },
+      {
+        "property": "round",
+        "title": "Atahanga porowhita",
+        "description": "Ka kuti i te āhua o te atahanga kia porowhita."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Whakakore matapihi atahanga",
+        "description": "Whakakore i ngā pāwhiri e whakatuwhera ana i te atahanga i tētahi matapihi kaitirotiro atahanga."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Whakaatu hei markdown",
+        "description": "Whakaatu i te tapanga me te tohutoro hei markdown."
+      }
+    ]
+  }
+}

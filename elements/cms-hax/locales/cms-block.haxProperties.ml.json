@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ബ്ലോക്ക്",
+    "description": "ബാക്കെൻഡിൽ റെൻഡർ ചെയ്യുന്ന CMS ബ്ലോക്ക്"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "മൊഡ്യൂൾ",
+        "description": "ഞങ്ങളുടെ CMS-ൽ നിന്ന് ലോഡ് ചെയ്യേണ്ട മൊഡ്യൂൾ"
+      },
+      {
+        "property": "blockDelta",
+        "title": "ഡെൽറ്റ",
+        "description": "ഞങ്ങളുടെ CMS-ൽ നിന്ന് ലോഡ് ചെയ്യേണ്ട ബ്ലോക്കിന്റെ ഡെൽറ്റ"
+      }
+    ]
+  }
+}

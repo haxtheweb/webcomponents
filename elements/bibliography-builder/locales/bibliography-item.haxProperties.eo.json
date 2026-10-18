@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliografia ero",
+    "description": "Ero reprezentanta unu citaĵon en bibliografio, subtenanta plurajn formatojn kaj eksportajn opciojn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tipo",
+        "description": "Citaĵtipo",
+        "options": {
+          "web": "Reto",
+          "journal": "Revuo",
+          "book": "Libro"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo de la ero"
+      },
+      {
+        "property": "authors",
+        "title": "Aŭtoro(j)",
+        "description": "La eventoj en la tempolinio"
+      },
+      {
+        "property": "publisher",
+        "title": "Eldonejo",
+        "description": "Originala retejo"
+      }
+    ]
+  }
+}

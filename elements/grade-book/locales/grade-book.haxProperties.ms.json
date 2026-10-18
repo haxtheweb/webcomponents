@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Buku Gred",
+    "description": "Buku gred tanpa kepala yang menyokong pelbagai backend dengan rubrik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "Jenis sumber data (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Titik akhir URL (JSON)",
+          "json": "Gumpalan data JSON",
+          "filesystem": "Sistem fail"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Data Sumber",
+        "description": "URL atau data JSON untuk buku gred."
+      },
+      {
+        "property": "forCourse",
+        "title": "Rujukan Kursus",
+        "description": "Pengecam kursus yang dikeluarkan sebagai oer:forCourse pada setiap sumber Assessment."
+      }
+    ]
+  }
+}

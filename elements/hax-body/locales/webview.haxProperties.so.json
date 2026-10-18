@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Isha",
+        "description": "URL-ka ilahan."
+      }
+    ]
+  }
+}

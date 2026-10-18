@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "მათემატიკა",
+    "description": "მათემატიკის ლამაზად წარმოდგენა."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "მათემატიკა",
+        "description": "შეიყვანეთ განტოლება LaTeX-ით"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Nirxandina Stêrkan",
+    "description": "Wîdceta nîşandana nirxandinê an bişkoka nirxandinê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Pûan",
+        "description": "Nirxa pûana niha."
+      },
+      {
+        "property": "possible",
+        "title": "Gengaz",
+        "description": "Pûana herî zêde ya gengaz."
+      },
+      {
+        "property": "numStars",
+        "title": "Hejmara Stêrkan",
+        "description": "Hejmara stêrkên ku werin nîşandan."
+      },
+      {
+        "property": "interactive",
+        "title": "Înteraktîf",
+        "description": "Destûrê bide bikarhêner ku nirxandinê diyar bike."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Moda Pîvana Rubrîkê",
+        "description": "Ji bo her stêrkê metadaneyên OER Schema RubricScale û RubricLevel (levelOrdinal/levelPoints) derxe."
+      }
+    ]
+  }
+}

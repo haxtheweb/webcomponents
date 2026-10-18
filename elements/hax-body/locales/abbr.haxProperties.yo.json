@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ìkékúrú",
+    "description": "Ìkékúrú pẹ̀lú àlàyé ọ̀rọ̀ kíkún."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Ọ̀rọ̀",
+        "description": "Ọ̀rọ̀ ìkékúrú tí a lè rí."
+      },
+      {
+        "attribute": "title",
+        "title": "Ọ̀rọ̀",
+        "description": "Ọ̀rọ̀ kíkún tí a fi hàn nígbà rírábàbà."
+      }
+    ]
+  }
+}

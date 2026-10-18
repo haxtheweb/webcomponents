@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "课程设计",
+    "description": "用于教学材料和课程设计元素的容器。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "课程标识",
+        "description": "OER Schema：课程的标识，例如 MATH-100。"
+      },
+      {
+        "property": "termOffered",
+        "title": "开课学期",
+        "description": "OER Schema：开设课程的学期。"
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "授课形式",
+        "description": "OER Schema：课程的授课形式（例如面授、在线、混合）。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "主讲教师",
+        "description": "OER Schema：课程的主讲教师。"
+      },
+      {
+        "property": "syllabus",
+        "title": "教学大纲 URL",
+        "description": "OER Schema：课程教学大纲的 URL。"
+      }
+    ]
+  }
+}

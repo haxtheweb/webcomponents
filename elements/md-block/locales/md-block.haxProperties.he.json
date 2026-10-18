@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "בלוק של תוכן markdown, ישיר או נטען מרחוק"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "markdown גולמי"
+      },
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "קובץ מקור ל-markdown"
+      }
+    ]
+  }
+}

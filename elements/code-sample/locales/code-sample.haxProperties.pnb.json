@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "کوڈ نمونہ",
+    "description": "صفحے وچ نمایاں کیتا کوڈ دا نمونہ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "کوڈ نمایاں کرنا",
+        "description": "کوڈ والے حصے تے لاؤن والی سنٹیکس نمایاں کاری",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON ڈیٹا",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "کلپ بورڈ تے کاپی کرو بٹن",
+        "description": "سجے اُتلے کونے وچ کلپ بورڈ تے کاپی کرو لکھیا بٹن"
+      },
+      {
+        "property": "highlightStart",
+        "title": "نمایاں کاری شروع",
+        "description": "نمایاں کاری شروع کرن والی لائن نمبر"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "نمایاں کاری انت",
+        "description": "نمایاں کاری مُکاؤن والی لائن"
+      }
+    ]
+  }
+}

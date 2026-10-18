@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Teigauppseting",
+    "description": "Set tilfar upp í einfaldar teigar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Teigauppseting",
+        "description": "Snið at vísa hesar lutirnar (kann broytast á smáum skíggjum)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Slókk tillaging",
+        "description": "Kross í boksina fyri at varðveita teigar á størri skíggjum, men framvegis stabla á minstu skíggjunum"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Innanfráskot á lutum",
+        "description": "Innanfráskot í hvørjum luti"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Uttanfráskot á lutum",
+        "description": "Fráskot millum lutir"
+      }
+    ]
+  }
+}

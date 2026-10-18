@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: bloka zarok",
+    "description": "Bloka dînamîk ji bo nîşandana zarokên rûpela niha"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Rêbaza dînamîk",
+        "description": "Zarok li gorî vê hêmanê çawa werin hesibandin",
+        "options": {
+          "active": "Zarokên çalak",
+          "parent": "Zarokên dêûbav",
+          "ancestor": "Hemû zarok ji bav û kalê herî jorîn"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Asta destpêkê"
+      },
+      {
+        "property": "end",
+        "title": "Asta dawiyê"
+      }
+    ]
+  }
+}

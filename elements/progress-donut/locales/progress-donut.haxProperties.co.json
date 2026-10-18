@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Ciambella di prugressu",
+    "description": "Ciambella di prugressione"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "U titulu di l'elementu"
+      },
+      {
+        "property": "desc",
+        "title": "Discrizzione",
+        "description": "Descrizzione longa accessibile"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Fonte di l'imagine",
+        "description": "Fonte di l'imagine in a ciambella."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Testu alternativu di l'imagine",
+        "description": "Testu alternativu per l'imagine."
+      },
+      {
+        "property": "animated",
+        "title": "Animatu",
+        "description": "S'è u prugressu hè animatu à u primu caricamentu"
+      },
+      {
+        "property": "complete",
+        "title": "Cumpiutu",
+        "description": "Una tavula di valori cumpiuti."
+      },
+      {
+        "property": "total",
+        "title": "Tutale",
+        "description": "Tutale quandu tutti l'elementi sò cumpiuti."
+      },
+      {
+        "property": "startAngle",
+        "title": "Angulu d'iniziu",
+        "description": "Angulu di a ciambella induve principia u prugressu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "د برېښنايي کتاب تڼۍ",
+    "description": "هغه تڼۍ چې برېښنايي کتاب ته لینک ورکوي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "د تڼۍ سرلیک."
+      },
+      {
+        "property": "link",
+        "title": "لینک",
+        "description": "هغه لینک چې په کلیک سره ورته لېږدول کېږي."
+      },
+      {
+        "property": "icon",
+        "title": "آیکن",
+        "description": "د دې لینک د استازیتوب لپاره آیکون"
+      }
+    ]
+  }
+}

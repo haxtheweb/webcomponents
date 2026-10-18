@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ਵਰਕਸ਼ੀਟ ਡਾਊਨਲੋਡ",
+    "description": "ਡਾਊਨਲੋਡ ਲਈ ਉਪਲਬਧ ਫ਼ਾਈਲਾਂ ਦਿਖਾਉਣ ਵਾਲਾ ਬਟਨ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਡਾਊਨਲੋਡ ਦਾ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "link",
+        "title": "ਲਿੰਕ",
+        "description": "ਡਾਊਨਲੋਡ ਦਾ ਲਿੰਕ।"
+      }
+    ]
+  }
+}

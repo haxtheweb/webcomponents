@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "പദാവലി",
+    "description": "പദാവലി പദം"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "പദം"
+      },
+      {
+        "slot": "",
+        "title": "നിർവചനം",
+        "description": "പദത്തിൽ ക്ലിക്ക് ചെയ്യുമ്പോൾ പ്രദർശിപ്പിക്കേണ്ട നിർവചനം."
+      },
+      {
+        "property": "description",
+        "title": "വിവരണം (OER Schema)",
+        "description": "OER Schema: പദാവലി പദത്തിന്റെ ഒരു ചെറിയ വിവരണം. ശൂന്യമായി വിട്ടാൽ നിർവചന ടെക്സ്റ്റിൽ നിന്ന് സ്വയമേവ പൂരിപ്പിക്കും."
+      }
+    ]
+  }
+}

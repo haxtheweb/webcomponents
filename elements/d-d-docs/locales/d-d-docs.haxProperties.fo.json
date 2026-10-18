@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Sniðgevingarkervi til HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Møguleiki at vísa",
+        "options": {
+          "*": "Fullfíggjað stílvegleiðing"
+        }
+      }
+    ]
+  }
+}

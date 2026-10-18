@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "គំនូសតាងចំណិត",
+    "description": "បង្កើតគំនូសតាងដែលងាយស្រួលចូលប្រើដោយផ្អែកលើ CSV។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌សង្កត់ជាជម្រើស។"
+      },
+      {
+        "title": "រចនាប័ទ្មងងឹត",
+        "description": "បើកធីមងងឹត"
+      },
+      {
+        "title": "ឯកសារ CSV",
+        "description": "ផ្ទុកទិន្នន័យពី CSV។"
+      },
+      {
+        "title": "ចំណងជើងគំនូសតាង",
+        "description": "អត្ថបទជំនួសដែលងាយស្រួលចូលប្រើសម្រាប់គំនូសតាងរបស់អ្នក។"
+      },
+      {
+        "title": "ការពិពណ៌នាគំនូសតាង",
+        "description": "ការពិពណ៌នាដែលងាយស្រួលចូលប្រើនៃគំនូសតាងរបស់អ្នក។"
+      },
+      {
+        "title": "ឈ្មោះមាត្រដ្ឋាន",
+        "description": "សមាមាត្រទទឹង:កម្ពស់នៃគំនូសតាង (មើល https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings សម្រាប់ $ct-scales និង $ct-scales-names)។",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "ដូណាត់"
+      },
+      {
+        "title": "បង្ហាញស្លាក"
+      },
+      {
+        "title": "មុំចាប់ផ្ដើម"
+      },
+      {
+        "title": "ចន្លោះខាងក្នុង"
+      },
+      {
+        "title": "សរុប",
+        "description": "សរុប (ស្រេចចិត្ត) ដែលអ្នកអាចបញ្ជាក់។ ដោយបញ្ជាក់តម្លៃសរុប ផលបូកនៃតម្លៃនៅក្នុងស៊េរីត្រូវតែស្មើនឹងសរុបនេះ ដើម្បីគូរចំណិតពេញ។ អ្នកអាចប្រើប៉ារ៉ាម៉ែត្រនេះដើម្បីគូរតែផ្នែកនៃគំនូសតាងចំណិត ឬគំនូសតាងរង្វាស់។"
+      },
+      {
+        "title": "មិនអើពើតម្លៃទទេ",
+        "description": "តម្លៃទទេនឹងត្រូវបានមិនអើពើ ដើម្បីជៀសវាងការគូរចំណិត និងស្លាកដែលមិនចាំបាច់។"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "បញ្ច្រាសទិន្នន័យ",
+        "description": "បញ្ច្រាសទិន្នន័យ រួមទាំងស្លាក លំដាប់ស៊េរី ព្រមទាំងអារេទិន្នន័យស៊េរីទាំងមូល។"
+      },
+      {
+        "title": "តារាង HTML",
+        "description": "ស្រេចចិត្ត៖ ផ្ទុកទិន្នន័យជាតារាង HTML។"
+      },
+      {
+        "title": "ទទឹងខ្សែដូណាត់"
+      },
+      {
+        "title": "ដូណាត់ពេញ",
+        "description": "គូរផ្នែកដូណាត់ជារាង ជំនួសឱ្យខ្សែ។"
+      },
+      {
+        "title": "ទិសដៅស្លាក",
+        "description": "គូរផ្នែកដូណាត់ជារាង ជំនួសឱ្យខ្សែ។",
+        "options": {
+          "neutral": "អព្យាក្រឹត",
+          "explode": "រីកចេញ",
+          "implode": "រួមចូល"
+        }
+      },
+      {
+        "title": "គម្លាតស្លាក",
+        "description": "គម្លាតទីតាំងស្លាកពីទីតាំងស្តង់ដារ ដែលជាពាក់កណ្ដាលចម្ងាយនៃកាំ។ តម្លៃនេះអាចជាវិជ្ជមាន ឬអវិជ្ជមាន។ តម្លៃវិជ្ជមាននឹងដាក់ស្លាកឆ្ងាយពីកណ្ដាល។"
+      },
+      {
+        "title": "ទីតាំងស្លាក",
+        "options": {
+          "inside": "ខាងក្នុង",
+          "outside": "ខាងក្រៅ",
+          "center": "កណ្ដាល"
+        }
+      }
+    ]
+  }
+}

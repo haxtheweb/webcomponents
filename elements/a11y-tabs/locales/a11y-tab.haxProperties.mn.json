@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Таб",
+    "description": "Нэг таб."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Табын дүрс тэмдэг"
+      },
+      {
+        "property": "disabled",
+        "title": "Идэвхгүй"
+      },
+      {
+        "property": "label",
+        "title": "Табын шошго"
+      },
+      {
+        "slot": "",
+        "title": "Табын агуулга",
+        "description": "Табын агуулга."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Цорын ганц ID"
+      },
+      {
+        "property": "flag",
+        "title": "Нэмэлт тугны текст"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Нэмэлт тугны дүрс тэмдэг"
+      }
+    ]
+  }
+}

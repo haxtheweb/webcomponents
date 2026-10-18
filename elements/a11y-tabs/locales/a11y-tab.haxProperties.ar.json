@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "علامة تبويب",
+    "description": "علامة تبويب واحدة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "أيقونة علامة التبويب"
+      },
+      {
+        "property": "disabled",
+        "title": "معطَّل"
+      },
+      {
+        "property": "label",
+        "title": "تسمية علامة التبويب"
+      },
+      {
+        "slot": "",
+        "title": "محتوى علامة التبويب",
+        "description": "محتوى علامة التبويب."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID فريد"
+      },
+      {
+        "property": "flag",
+        "title": "نص العلامة الاختياري"
+      },
+      {
+        "property": "flagIcon",
+        "title": "أيقونة العلامة الاختيارية"
+      }
+    ]
+  }
+}

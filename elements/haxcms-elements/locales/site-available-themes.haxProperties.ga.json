@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Téamaí atá ar Fáil",
+    "description": "Taispeáin téamaí HAXcms atá ar fáil le malartú réamhamhairc beo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Mód Amhairc",
+        "description": "Roghnaigh conas na téamaí a thaispeáint",
+        "options": {
+          "gallery": "Gailearaí",
+          "table": "Tábla"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Taispeáin Sonraí",
+        "description": "Taispeáin cur síos na dtéamaí agus faisnéis bhreise"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Taispeáin Téamaí Ceilte agus Oidhreachta",
+        "description": "Taispeáin téamaí ceilte, oidhreachta agus uafásacha chomh maith le réamhshocruithe an deais"
+      },
+      {
+        "property": "columns",
+        "title": "Colúin (Gailearaí)",
+        "description": "Líon na gcolún san amharc gailearaí"
+      }
+    ]
+  }
+}

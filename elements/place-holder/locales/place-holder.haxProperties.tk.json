@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Orun tutujy",
+    "description": "Saýlanan media görnüşine öwrülip bilinýän orun tutujy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Görnüşi",
+        "description": "Bu ýeriň çalyşmak üçin kabul edýän gizmo görnüşi.",
+        "options": {
+          "text": "Tekst / mazmun",
+          "document": "Resminama / faýl",
+          "audio": "Ses",
+          "video": "Wideo",
+          "image": "Surat",
+          "math": "Matematika"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Tekst",
+        "description": "Isleýän orun tutujyňyzy has jikme-jik kesgitläň"
+      }
+    ]
+  }
+}

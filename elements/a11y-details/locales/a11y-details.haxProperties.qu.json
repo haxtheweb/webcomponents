@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Llapanpaq Detalle Boton",
+    "description": "Detalle summary-wan llapanpaq haykunalla pisi pisi rikuchiy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Boton",
+        "description": "Pakasqa kaptin ukhunpa pisichasqan, rikch'anachiy \"info\", \"medatadata\", hukkunapas."
+      },
+      {
+        "slot": "details",
+        "title": "Willakuy",
+        "description": "Pakanalla utaq rikuchinalla hunt'asqa willakuy"
+      },
+      {
+        "slot": "",
+        "title": "Willakuy Boton",
+        "description": "Willakuy qillqata rikuchiq/pakaq botonpaq kikin, rikch'anachiy \"info\", \"medatadata\", hukkunapas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Detallekuna kichasqa kaptin munaspalla pisichasqa qillqa"
+      },
+      {
+        "property": "closeText",
+        "title": "Detallekuna wichq'asqa kaptin munaspalla pisichasqa qillqa"
+      }
+    ]
+  }
+}

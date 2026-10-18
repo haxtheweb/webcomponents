@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Hoʻomālamalama",
+    "description": "Hoʻomālamalama i ke kikokikona laina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Kikokikona",
+        "description": "Kikokikona i hoʻomālamalama ʻia."
+      }
+    ]
+  }
+}

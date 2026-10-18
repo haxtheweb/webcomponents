@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Відео",
+    "description": "Доступне відтворення відео з різних джерел."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Джерело",
+        "description": "URL цього медіафайлу."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Назва",
+        "description": "Назва, що показується під відео."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Постер",
+        "description": "URL постера."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Текстові доріжки",
+        "description": "Приховані субтитри, субтитри, описи та інші текстові доріжки для відео."
+      },
+      {
+        "property": "startTime",
+        "title": "Час початку",
+        "description": "Почати відео з певного моменту (у секундах)."
+      },
+      {
+        "property": "endTime",
+        "title": "Час завершення",
+        "description": "Завершити відео в певний момент (у секундах), потрібен час початку."
+      },
+      {
+        "property": "learningMode",
+        "title": "Увімкнути навчальний режим",
+        "description": "Вимикає перемотування вперед і назад."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Прибрати кнопку «Відкрити на YouTube»",
+        "description": "Прибирає кнопку відкриття відео на YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Додати посилання для поширення?",
+        "description": "Надає посилання, щоб поділитися відео."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Приховати позначки часу",
+        "description": "Приховати позначки часу в транскрипті."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Приховати транскрипт",
+        "description": "Приховувати транскрипт за замовчуванням."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Доріжка аудіоопису",
+        "description": "URL доріжки аудіоопису (файл MP3), що озвучує візуальні елементи."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Визначає, чи використовувати CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Дозволити фонове відтворення",
+        "description": "Продовжувати відтворення, коли вкладка браузера втрачає фокус."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Темна тема для транскрипту",
+        "description": "Увімкнути темну тему для транскрипту."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Вимкнути інтерактивність",
+        "description": "Вимкнути інтерактивний режим, у якому транскрипт клікабельний."
+      },
+      {
+        "property": "lang",
+        "title": "Мова",
+        "description": "Мова медіафайлу."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "(застаріле) Виберіть акцентний колір для програвача."
+      }
+    ]
+  }
+}

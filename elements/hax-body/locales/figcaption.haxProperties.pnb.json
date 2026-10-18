@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "شکل دا کیپشن",
+    "description": "شکل لئی کیپشن۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "کیپشن",
+        "description": "شکل تھلے وکھایا متن۔"
+      }
+    ]
+  }
+}

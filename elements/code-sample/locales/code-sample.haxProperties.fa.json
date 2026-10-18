@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "نمونه کد",
+    "description": "نمونه‌ای از کد که در صفحه برجسته شده است"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "برجسته‌سازی کد",
+        "description": "برجسته‌سازی نحوی برای اعمال روی ناحیه کد",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "داده JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "دکمه کپی در کلیپ‌بورد",
+        "description": "دکمه‌ای در بالا سمت راست با عنوان کپی در کلیپ‌بورد"
+      },
+      {
+        "property": "highlightStart",
+        "title": "شروع برجسته‌سازی",
+        "description": "شماره خط شروع برجسته‌سازی"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "پایان برجسته‌سازی",
+        "description": "خطی که برجسته‌سازی در آن پایان می‌یابد"
+      }
+    ]
+  }
+}

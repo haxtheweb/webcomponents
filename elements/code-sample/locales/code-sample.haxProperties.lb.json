@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Codebeispill",
+    "description": "E Codebeispill, dat op der Säit hervirgehuewe gëtt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Code-Hervirhiewung",
+        "description": "Syntax-Hervirhiewung fir de Codeberäich",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-Donnéeën",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Knäppchen „An d'Tëschenoflag kopéieren“",
+        "description": "Knäppchen uewe riets mam Text „An d'Tëschenoflag kopéieren“"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Ufank vun der Hervirhiewung",
+        "description": "Zeilennummer, wou d'Hervirhiewung ufänkt"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Enn vun der Hervirhiewung",
+        "description": "Zeil, wou d'Hervirhiewung ophält"
+      }
+    ]
+  }
+}

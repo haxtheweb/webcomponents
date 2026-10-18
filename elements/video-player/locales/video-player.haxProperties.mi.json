@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Ataata",
+    "description": "Pūrei ataata wātea puta noa i ngā pūtake maha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pūtake",
+        "description": "URL mō tēnei pāpāho."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Taitara",
+        "description": "Taitara e whakaaturia ana i raro i te ataata."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Atahanga pānui",
+        "description": "URL atahanga pānui."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Ngā ara kuputuhi",
+        "description": "Ngā kupu hauraro, ngā whakamāoritanga, ngā whakaahuatanga, me ētahi atu ara kuputuhi mō te ataata."
+      },
+      {
+        "property": "startTime",
+        "title": "Wā tīmata",
+        "description": "Tīmata te ataata i tētahi wā motuhake (hēkona)."
+      },
+      {
+        "property": "endTime",
+        "title": "Wā mutunga",
+        "description": "Whakamutu te ataata i tētahi wā motuhake (hēkona), me whai wā tīmata."
+      },
+      {
+        "property": "learningMode",
+        "title": "Whakahohe aratau ako",
+        "description": "Ka whakakore i te whakatere whakamua me te whakahoki whakamuri."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Tango i te pātene whakatuwhera ki YouTube",
+        "description": "Ka tango i te pātene mō te whakatuwhera i te ataata ki YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Whakauru he hono tiri?",
+        "description": "Ka whakarato i tētahi hono hei tiri i te ataata."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Huna tohuwā",
+        "description": "Huna i ngā tohuwā i te tuhinga kōrero."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Huna Tuhinga Kōrero",
+        "description": "Huna i te tuhinga kōrero mā te taunoa."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Ara Whakaahuatanga ā-oro",
+        "description": "URL ki tētahi ara whakaahuatanga ā-oro (kōnae MP3) e kōrero ana i ngā huānga ataata."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Ka tohu mēnā ka whakamahia te CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Tukua te pūrei papamuri",
+        "description": "Kia pūrei tonu ina ngaro te arotahi o te ripa pūtirotiro."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Kaupapa āhua pōuri mō te tuhinga kōrero",
+        "description": "Whakahohe kaupapa āhua pōuri mō te tuhinga kōrero."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Whakakore Pāhekoheko",
+        "description": "Whakakore i te aratau pāhekoheko e taea ai te pāwhiri i te tuhinga kōrero."
+      },
+      {
+        "property": "lang",
+        "title": "Reo",
+        "description": "Te reo o te pāpāho."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae arotahi",
+        "description": "(kua whakarērea) Tīpakohia te tae arotahi mō te kaitākaro."
+      }
+    ]
+  }
+}

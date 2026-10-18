@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Vārdnīca",
+    "description": "Vārdnīcas termins"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termins"
+      },
+      {
+        "slot": "",
+        "title": "Definīcija",
+        "description": "Definīcija, kas tiek parādīta, noklikšķinot uz termina."
+      },
+      {
+        "property": "description",
+        "title": "Apraksts (OER Schema)",
+        "description": "OER Schema: īss vārdnīcas termina apraksts. Ja atstāts tukšs, tiek automātiski aizpildīts no definīcijas teksta."
+      }
+    ]
+  }
+}

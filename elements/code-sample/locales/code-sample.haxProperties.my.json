@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "ကုဒ် နမူနာ",
+    "description": "စာမျက်နှာတွင် highlight လုပ်ထားသော ကုဒ် နမူနာ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "ကုဒ် highlight",
+        "description": "ကုဒ်နေရာတွင် အသုံးချမည့် syntax highlight",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON ဒေတာ",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "ကလစ်ဘုတ်သို့ ကူးယူရန် ခလုတ်",
+        "description": "ညာဘက်အပေါ်ထောင့်ရှိ ကလစ်ဘုတ်သို့ ကူးယူရန် ဟုဆိုသော ခလုတ်"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Highlight အစ",
+        "description": "highlight စတင်မည့် စာကြောင်း နံပါတ်"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Highlight အဆုံး",
+        "description": "highlight ပြီးဆုံးမည့် စာကြောင်း"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "分栏布局",
+    "description": "以简单分栏排布内容"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "分栏布局",
+        "description": "呈现这些项目的样式（在小屏幕上可能会变化）"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "禁用响应式",
+        "description": "勾选此框可在较大屏幕上保持分栏，但在最小屏幕上仍会堆叠"
+      },
+      {
+        "property": "itemPadding",
+        "title": "项目内边距",
+        "description": "每个项目内部的内边距"
+      },
+      {
+        "property": "itemMargin",
+        "title": "项目外边距",
+        "description": "项目之间的外边距"
+      }
+    ]
+  }
+}

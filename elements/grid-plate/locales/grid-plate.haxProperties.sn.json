@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Marongerwo emakoramu",
+    "description": "Ronga zvinyorwa mumakoramu akareruka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Marongerwo eMakoramu",
+        "description": "Maitiro ekuratidza zvinhu izvi (anogona kuchinja pamasikirini madiki)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Dzima kuchinja nesikirini",
+        "description": "Tara bhokisi kuti uchengete makoramu pamasikirini makuru asi achiri kuunganidzwa pamasikirini madiki kwazvo"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Padding yeChinhu",
+        "description": "Padding mukati mechinhu chimwe nechimwe"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Mamajini ezvinhu",
+        "description": "Majini pakati pezvinhu"
+      }
+    ]
+  }
+}

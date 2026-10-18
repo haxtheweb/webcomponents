@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Karjeros pareigos",
+    "description": "Atskiros pareigos organizacijoje"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pavadinimas"
+      },
+      {
+        "property": "startDate",
+        "title": "Pradžios data"
+      },
+      {
+        "property": "endDate",
+        "title": "Pabaigos data (neprivaloma)"
+      },
+      {
+        "property": "skills",
+        "title": "Susiję įgūdžiai",
+        "description": "Pasirinkite mygtuką +, kad pradėtumėte pridėti įgūdžius"
+      }
+    ]
+  }
+}

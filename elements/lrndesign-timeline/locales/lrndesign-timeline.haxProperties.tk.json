@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Wagt çyzgysy",
+    "description": "Suratly we tekstli wakalaryň wagt çyzygy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Wagt çyzgysynyň ady",
+        "description": "Wagt çyzygy üçin at."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Goşmaça aksent reňki."
+      },
+      {
+        "property": "dark",
+        "title": "Garaňky tema",
+        "description": "Garaňky temany işjeňleşdir"
+      },
+      {
+        "slot": "",
+        "title": "Wagt çyzygynyň düşündirişi",
+        "description": "Wagt çyzygyny beýan edýän goşmaça tekst."
+      },
+      {
+        "property": "events",
+        "title": "Wagt çyzygynyň wakalary",
+        "description": "Wagt çyzygyndaky wakalar"
+      }
+    ]
+  }
+}

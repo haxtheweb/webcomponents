@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Geirfa",
+    "description": "Term geirfa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Term"
+      },
+      {
+        "slot": "",
+        "title": "Diffiniad",
+        "description": "Y diffiniad i'w ddangos pan gaiff y term ei glicio."
+      },
+      {
+        "property": "description",
+        "title": "Disgrifiad (OER Schema)",
+        "description": "OER Schema: disgrifiad byr o'r term geirfa. Caiff ei lenwi'n awtomatig o destun y diffiniad os caiff ei adael yn wag."
+      }
+    ]
+  }
+}

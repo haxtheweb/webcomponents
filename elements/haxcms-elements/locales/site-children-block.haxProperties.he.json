@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: בלוק צאצאים",
+    "description": "בלוק דינמי להצגת צאצאי הדף הנוכחי"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "שיטה דינמית",
+        "description": "כיצד לחשב את הצאצאים ביחס לרכיב זה",
+        "options": {
+          "active": "צאצאים פעילים",
+          "parent": "צאצאי ההורה",
+          "ancestor": "כל הצאצאים מהאב הקדמון הגבוה ביותר"
+        }
+      },
+      {
+        "property": "start",
+        "title": "רמת התחלה"
+      },
+      {
+        "property": "end",
+        "title": "רמת סיום"
+      }
+    ]
+  }
+}

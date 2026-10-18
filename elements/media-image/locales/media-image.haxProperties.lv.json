@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Uzlabots attēls",
+    "description": "Veids, kā attēlot attēlus ar dažādiem uzlabojumiem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Avots",
+        "description": "Attēla URL."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatīvais teksts",
+        "description": "Teksts, kas apraksta attēlu neredzīgiem lietotājiem."
+      },
+      {
+        "property": "link",
+        "title": "Saite",
+        "description": "Piesaistīt attēlu URL"
+      },
+      {
+        "property": "card",
+        "title": "Kartīte",
+        "description": "Piemērot krītošu ēnu, lai radītu paceltas kartītes izskatu."
+      },
+      {
+        "property": "box",
+        "title": "Rāmis",
+        "description": "Piemērot vizuālu rāmi ap attēlu."
+      },
+      {
+        "property": "offset",
+        "title": "Nobīde",
+        "description": "Piemērot attēlam nobīdi pa kreisi vai pa labi.",
+        "options": {
+          "none": "nav",
+          "wide": "plata",
+          "narrow": "šaura"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Atsauce",
+        "description": "Attēla atsauce."
+      },
+      {
+        "property": "caption",
+        "title": "Paraksts",
+        "description": "Attēla paraksts."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Attēla nosaukums",
+        "description": "Attēla etiķetes nosaukums."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Attēla apraksts",
+        "description": "Attēla etiķetes apraksts."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Sīktēls",
+        "description": "Sīktēla avots. Rāda sīktēlu, bet modālajā logā atver pilno avotu."
+      },
+      {
+        "property": "round",
+        "title": "Apaļš attēls",
+        "description": "Apgriež attēla izskatu apļa formā."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Atspējot attēla modālo logu",
+        "description": "Atspējot attēla atvēršanu attēlu inspektora dialogā, noklikšķinot uz tā."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Atveidot kā markdown",
+        "description": "Atveidot parakstu un atsauci kā markdown."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "گریڈ بک",
+    "description": "ہیڈلیس گریڈ بک جو روبرکس کے ساتھ متعدد بیک اینڈز کو سپورٹ کرتی ہے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ماخذ",
+        "description": "ڈیٹا ماخذ کی قسم (googledocs، url، json، filesystem)۔",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL اینڈپوائنٹ (JSON)",
+          "json": "JSON ڈیٹا بلاب",
+          "filesystem": "فائل سسٹم"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "ماخذ ڈیٹا",
+        "description": "گریڈ بک کے لیے URL یا JSON ڈیٹا۔"
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس کا حوالہ",
+        "description": "ہر Assessment وسیلے پر oer:forCourse کے طور پر جاری ہونے والا کورس شناخت کنندہ۔"
+      }
+    ]
+  }
+}

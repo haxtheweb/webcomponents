@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Donut de progrés",
+    "description": "Donut de progressió"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "El títol de l'element"
+      },
+      {
+        "property": "desc",
+        "title": "Descripció",
+        "description": "Descripció llarga accessible"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Font de la imatge",
+        "description": "Font de la imatge dins del donut."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Text alternatiu de la imatge",
+        "description": "Text alternatiu de la imatge."
+      },
+      {
+        "property": "animated",
+        "title": "Animat",
+        "description": "Si el progrés s'anima en la primera càrrega"
+      },
+      {
+        "property": "complete",
+        "title": "Completat",
+        "description": "Una matriu de valors completats."
+      },
+      {
+        "property": "total",
+        "title": "Total",
+        "description": "Total quan tots els elements estan completats."
+      },
+      {
+        "property": "startAngle",
+        "title": "Angle inicial",
+        "description": "Angle del donut on comença el progrés"
+      }
+    ]
+  }
+}

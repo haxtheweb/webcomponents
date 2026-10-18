@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "לייסענס",
+    "description": "גיב אַ ליצענץ פֿאַר דײַן ווערק."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "טיטל פֿונעם ציטירטן ווערק."
+      },
+      {
+        "property": "source",
+        "title": "מקור־לינק",
+        "description": "מקור־URL פֿונעם ליצענצירטן ווערק."
+      },
+      {
+        "property": "license",
+        "title": "לייסענס",
+        "description": "ליצענץ אָנגעווענדט אויף דעם ווערק."
+      },
+      {
+        "property": "creator",
+        "title": "שאַפֿער",
+        "description": "שאַפֿער אָדער באַזיצער פֿון דעם ווערק."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "מקור־לינק",
+        "description": "לינק צו נאָך ליצענץ־פּרטים."
+      },
+      {
+        "property": "moreLabel",
+        "title": "\"מער\" עטיקעט",
+        "description": "עטיקעט פֿאַר נאָך ליצענץ־פּרטים."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kandungan Halaman Rawak",
+    "description": "Paparkan elemen peringkat atas secara rawak daripada halaman yang dipilih"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Halaman",
+        "description": "Pilih halaman untuk mengambil kandungan rawak. Elemen ini akan memaparkan salah satu elemen HTML peringkat atas daripada halaman ini secara rawak."
+      }
+    ]
+  }
+}

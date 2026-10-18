@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Yer tutucu",
+    "description": "Seçilen medya türüne dönüştürülebilen bir yer tutucu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tür",
+        "description": "Bunun yerine geçebilecek araç türü.",
+        "options": {
+          "text": "Metin / içerik",
+          "document": "Belge / dosya",
+          "audio": "Ses",
+          "video": "Video",
+          "image": "Görsel",
+          "math": "Matematik"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Metin",
+        "description": "İstenen yer tutucuyu daha ayrıntılı tanımlayın"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Soo-gaabin",
+    "description": "Soo-gaabin leh tilmaame eray buuxa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Qoraal",
+        "description": "Qoraalka soo-gaabinta ee muuqda."
+      },
+      {
+        "attribute": "title",
+        "title": "Eray",
+        "description": "Erayga buuxa ee la muujiyo marka la dul istaago."
+      }
+    ]
+  }
+}

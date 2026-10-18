@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-blok",
+    "description": "CMS-blok wat op die agterkant weergegee word"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Module",
+        "description": "Module om uit ons CMS te laai"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta van die blok om uit ons CMS te laai"
+      }
+    ]
+  }
+}

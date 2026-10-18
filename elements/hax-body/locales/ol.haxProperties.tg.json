@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Рӯйхати рақамдор",
+    "description": "Рӯйхати рақамдор созед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Услуби рақам",
+        "description": "Услубе, ки барои рақамгузории рӯйхати тартибдор истифода мешавад.",
+        "options": {
+          "": "Пешфарз (даҳӣ)",
+          "list-decimal-leading-zero": "Даҳӣ бо сифри пешоянда (01, 02, 03)",
+          "list-lower-alpha": "Ҳарфҳои хурд (a, b, c)",
+          "list-upper-alpha": "Ҳарфҳои калон (A, B, C)",
+          "list-lower-roman": "Румии хурд (i, ii, iii)",
+          "list-upper-roman": "Румии калон (I, II, III)"
+        }
+      }
+    ]
+  }
+}

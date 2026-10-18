@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Batani la Ebook",
+    "description": "Batani lolumikiza ku Ebook."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mutu wa batani."
+      },
+      {
+        "property": "link",
+        "title": "Ulalo",
+        "description": "Ulalo wopitako mukadina."
+      },
+      {
+        "property": "icon",
+        "title": "Chizindikiro",
+        "description": "Chizindikiro choimira ulalo uwu"
+      }
+    ]
+  }
+}

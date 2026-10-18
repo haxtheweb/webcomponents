@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "电子书按钮",
+    "description": "链接到电子书个按钮。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "按钮个标题。"
+      },
+      {
+        "property": "link",
+        "title": "链接",
+        "description": "点了以后跳转个链接。"
+      },
+      {
+        "property": "icon",
+        "title": "图标",
+        "description": "代表搿只链接个图标"
+      }
+    ]
+  }
+}

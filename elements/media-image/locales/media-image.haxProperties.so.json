@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Sawir La Horumariyay",
+    "description": "Hab lagu soo bandhigo sawirrada oo leh horumarin kala duwan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isha",
+        "description": "URL-ka sawirka."
+      },
+      {
+        "property": "alt",
+        "title": "Qoraal beddel ah",
+        "description": "Qoraal sawirka u sharxaya isticmaalayaasha aan arki karin."
+      },
+      {
+        "property": "link",
+        "title": "Xiriiriye",
+        "description": "Ku xidh sawirka URL"
+      },
+      {
+        "property": "card",
+        "title": "Kaar",
+        "description": "Ku dabaq hadh hoose si uu ugu ekaado kaar kor u kacsan."
+      },
+      {
+        "property": "box",
+        "title": "Sanduuq",
+        "description": "Ku dabaq sanduuq muuqaal ah oo ku wareegsan sawirka."
+      },
+      {
+        "property": "offset",
+        "title": "Leexin",
+        "description": "Ku dabaq leexin bidix ama midig sawirka.",
+        "options": {
+          "none": "midna",
+          "wide": "ballaadhan",
+          "narrow": "cidhiidhi"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Tixraac",
+        "description": "Tixraaca sawirka."
+      },
+      {
+        "property": "caption",
+        "title": "Qoraal hoosaad",
+        "description": "Cinwaan-hoosaadka sawirka."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Cinwaanka Sawirka",
+        "description": "Cinwaanka calaamadda sawirka."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Sharraxaadda Sawirka",
+        "description": "Sharraxaadda calaamadda sawirka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Sawirka yar",
+        "description": "Isha sawirka yar. Wuxuu muujiyaa sawirka yar laakiin wuxuu ku furaa isha buuxda daaqad."
+      },
+      {
+        "property": "round",
+        "title": "Sawir wareegsan",
+        "description": "Wuxuu u jaraa muuqaalka sawirka qaab goobaabin ah."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Dami daaqadda sawirka",
+        "description": "Dami gujinta ku furta sawirka wada-hadalka baadhaha sawirka."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "U muuji sida markdown",
+        "description": "U muuji cinwaan-hoosaadka iyo tixraaca sida markdown."
+      }
+    ]
+  }
+}

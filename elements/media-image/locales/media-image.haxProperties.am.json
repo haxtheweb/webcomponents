@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "የተሻሻለ ምስል",
+    "description": "ምስሎችን በተለያዩ ማሻሻያዎች የማቅረቢያ መንገድ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ምንጭ",
+        "description": "የምስሉ URL።"
+      },
+      {
+        "property": "alt",
+        "title": "አማራጭ ጽሑፍ",
+        "description": "ምስሉን ማየት ለማይችሉ ተጠቃሚዎች የሚገልጽ ጽሑፍ።"
+      },
+      {
+        "property": "link",
+        "title": "አገናኝ",
+        "description": "ምስሉን ከURL ጋር አገናኝ"
+      },
+      {
+        "property": "card",
+        "title": "ካርድ",
+        "description": "ከፍ ያለ ካርድ እንዲመስል ጥላ ይተግብሩ።"
+      },
+      {
+        "property": "box",
+        "title": "ሳጥን",
+        "description": "በምስሉ ዙሪያ ምስላዊ ሳጥን ይተግብሩ።"
+      },
+      {
+        "property": "offset",
+        "title": "ማካካሻ",
+        "description": "በምስሉ ላይ የግራ ወይም የቀኝ ማካካሻ ይተግብሩ።",
+        "options": {
+          "none": "ምንም",
+          "wide": "ሰፊ",
+          "narrow": "ጠባብ"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "ዋቢ",
+        "description": "ለምስሉ ጥቅስ።"
+      },
+      {
+        "property": "caption",
+        "title": "የምስል መግለጫ",
+        "description": "ለምስሉ መግለጫ ጽሑፍ።"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "የምስል ርዕስ",
+        "description": "ለምስል መለያው ርዕስ።"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "የምስል መግለጫ",
+        "description": "ለምስል መለያው መግለጫ።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "ድንክዬ ምስል",
+        "description": "የድንክዬ ምስል ምንጭ። ድንክዬውን ያሳያል ነገር ግን ሙሉውን ምንጭ በሞዳል ውስጥ ይከፍታል።"
+      },
+      {
+        "property": "round",
+        "title": "ክብ ምስል",
+        "description": "የምስሉን ገጽታ ክብ ቅርጽ እንዲኖረው ይከርክማል።"
+      },
+      {
+        "property": "disableZoom",
+        "title": "የምስል ሞዳልን አሰናክል",
+        "description": "ጠቅታዎች ምስሉን በምስል መመርመሪያ መገናኛ ውስጥ እንዳይከፍቱ አሰናክል።"
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "እንደ markdown አሳይ",
+        "description": "መግለጫ ጽሑፉን እና ጥቅሱን እንደ markdown አሳይ።"
+      }
+    ]
+  }
+}

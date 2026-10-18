@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tombol e-book",
+    "description": "Tombol yang menautkan ke e-book."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Judul tombol."
+      },
+      {
+        "property": "link",
+        "title": "Tautan",
+        "description": "Tautan tujuan pengalihan saat diklik."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon untuk mewakili tautan ini"
+      }
+    ]
+  }
+}

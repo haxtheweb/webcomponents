@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "د کاري پاڼې ښکته کول",
+    "description": "د ښکته کولو لپاره د شته فایلونو د ښودلو تڼۍ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "د ښکته کولو سرلیک."
+      },
+      {
+        "property": "link",
+        "title": "لینک",
+        "description": "د ښکته کولو لینک."
+      }
+    ]
+  }
+}

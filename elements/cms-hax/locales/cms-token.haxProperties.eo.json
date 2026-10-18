@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS-ĵetono",
+    "description": "CMS-ĵetono bildigita ĉe la backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Ĵetono",
+        "description": "Ĵetono el nia CMS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Obraz paralaksy",
+    "description": "Przewijanie obrazu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Obraz",
+        "description": "obraz użyty w tle"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Obszar nagłówka",
+        "description": "Obszar tekstu nagłówka"
+      }
+    ]
+  }
+}

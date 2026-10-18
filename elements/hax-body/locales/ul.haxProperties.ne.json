@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "बुलेट सूची",
+    "description": "बुलेट सूची बनाउनुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "बुलेट शैली",
+        "description": "अक्रमित सूचीका बुलेटहरूका लागि प्रयोग हुने शैली।",
+        "options": {
+          "": "पूर्वनिर्धारित (वर्ग)",
+          "list-disc": "डिस्क",
+          "list-circle": "वृत्त",
+          "list-square": "वर्ग"
+        }
+      }
+    ]
+  }
+}

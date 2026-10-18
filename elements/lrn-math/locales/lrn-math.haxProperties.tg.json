@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Математика",
+    "description": "Математикаро ба таври зебо пешниҳод кунед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Математика",
+        "description": "Муодиларо ҳамчун LaTeX ворид кунед"
+      }
+    ]
+  }
+}

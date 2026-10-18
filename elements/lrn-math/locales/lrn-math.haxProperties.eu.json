@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematika",
+    "description": "Aurkeztu matematika itxura politarekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematika",
+        "description": "Idatzi ekuazioa LaTeX gisa"
+      }
+    ]
+  }
+}

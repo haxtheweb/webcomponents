@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Xarici veb məzmunu yerləşdir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Mənbə",
+        "description": "Bu resursun URL-i."
+      }
+    ]
+  }
+}

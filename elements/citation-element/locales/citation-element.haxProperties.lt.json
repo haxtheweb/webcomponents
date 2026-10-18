@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Šaltinio nuoroda",
+    "description": "Citatos elementas su trimis pateikimo režimais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Cituojamo kūrinio pavadinimas."
+      },
+      {
+        "property": "source",
+        "title": "Šaltinio nuoroda",
+        "description": "Cituojamo kūrinio šaltinio URL."
+      },
+      {
+        "property": "date",
+        "title": "Prieigos data",
+        "description": "Data, kada šaltinis buvo pasiektas."
+      },
+      {
+        "property": "scope",
+        "title": "Apimtis",
+        "description": "Cituojamo elemento apimtis.",
+        "options": {
+          "sibling": "Gretimas elementas",
+          "parent": "Tėvinis elementas"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licencija",
+        "description": "Cituojamo kūrinio licencija."
+      },
+      {
+        "property": "creator",
+        "title": "Kūrėjas",
+        "description": "Cituojamo kūrinio kūrėjas arba savininkas."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema tipas",
+        "description": "Šios citatos OER Schema klasė. Numatytoji – oer:ReferencedMaterial; keiskite tik į galiojančią OER klasę (pvz., oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

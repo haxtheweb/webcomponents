@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "হাইলাইট",
+    "description": "ইনলাইন টেক্সট হাইলাইট করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "টেক্সট",
+        "description": "হাইলাইট করা টেক্সট।"
+      }
+    ]
+  }
+}

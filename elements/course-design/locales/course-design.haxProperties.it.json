@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Progettazione del corso",
+    "description": "Contenitore per materiali didattici ed elementi di progettazione del corso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Identificativo del corso",
+        "description": "OER Schema: l'identificativo del corso, ad es. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Periodo di erogazione",
+        "description": "OER Schema: il periodo in cui viene offerto il corso."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Formato di erogazione",
+        "description": "OER Schema: il formato con cui viene erogato il corso (ad es. in presenza, online, ibrido)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Docente principale",
+        "description": "OER Schema: il docente principale del corso."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL del programma",
+        "description": "OER Schema: URL del programma del corso."
+      }
+    ]
+  }
+}

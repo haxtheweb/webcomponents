@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Hono taketake",
+    "description": "Huānga hono taketake."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Hono",
+        "description": "URL ūnga."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Kupu",
+        "description": "Kuputuhi hono e kitea ana."
+      },
+      {
+        "attribute": "target",
+        "title": "Whāinga",
+        "description": "Me whakatuwhera te hono ki hea.",
+        "options": {
+          "": "Te matapihi ōrite",
+          "_blank": "Matapihi hou - _blank",
+          "_top": "Matapihi runga - _top",
+          "_parent": "Matapihi matua - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Kuputuhi taitara",
+        "description": "Taitara tohutohu mō te wātea me te SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Hononga ki te ūnga (haumarutanga/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "بنسټیز لینک",
+    "description": "بنسټیز لینک عنصر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "لینک",
+        "description": "د منزل URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "د لینک ښکاره متن."
+      },
+      {
+        "attribute": "target",
+        "title": "هدف",
+        "description": "لینک چېرته پرانیستل شي.",
+        "options": {
+          "": "همدا کړکۍ",
+          "_blank": "نوې کړکۍ - _blank",
+          "_top": "پورتنۍ کړکۍ - _top",
+          "_parent": "مورنۍ کړکۍ - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "د سرلیک متن",
+        "description": "د لاسرسي او SEO لپاره مشورتي سرلیک."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "له منزل سره اړیکه (امنیت/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

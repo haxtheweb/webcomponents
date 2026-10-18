@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Đánh giá sao",
+    "description": "Tiện ích hiển thị đánh giá hoặc nút để đánh giá."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Điểm",
+        "description": "Giá trị điểm hiện tại."
+      },
+      {
+        "property": "possible",
+        "title": "Tối đa",
+        "description": "Điểm tối đa có thể đạt."
+      },
+      {
+        "property": "numStars",
+        "title": "Số sao",
+        "description": "Số sao hiển thị."
+      },
+      {
+        "property": "interactive",
+        "title": "Tương tác",
+        "description": "Cho phép người dùng tương tác để đánh giá."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Chế độ thang tiêu chí",
+        "description": "Xuất siêu dữ liệu OER Schema RubricScale và RubricLevel (levelOrdinal/levelPoints) cho mỗi sao."
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Umthombo wengcaphuno",
+    "description": "Isakhi sengcaphuno esinezindlela ezintathu zokwethula."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko somsebenzi ocashunwayo."
+      },
+      {
+        "property": "source",
+        "title": "Isixhumanisi somthombo",
+        "description": "I-URL yomthombo womsebenzi ocashunwayo."
+      },
+      {
+        "property": "date",
+        "title": "Usuku lokufinyelela",
+        "description": "Usuku umthombo owafinyelelwa ngalo."
+      },
+      {
+        "property": "scope",
+        "title": "Ububanzi",
+        "description": "Ububanzi besakhi okufanele bucashunwe.",
+        "options": {
+          "sibling": "Isakhi esingumzalwane",
+          "parent": "Isakhi esingumzali"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Ilayisensi",
+        "description": "Ilayisensi yomsebenzi ocashunwayo."
+      },
+      {
+        "property": "creator",
+        "title": "Umdali",
+        "description": "Umdali noma umnikazi womsebenzi ocashunwayo."
+      },
+      {
+        "property": "typeof",
+        "title": "Uhlobo lwe-OER Schema",
+        "description": "Ikilasi le-OER Schema lale ngcaphuno. Okuzenzakalelayo ngu-oer:ReferencedMaterial; kweqe kuphela ngekilasi le-OER elivumelekile (isb. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

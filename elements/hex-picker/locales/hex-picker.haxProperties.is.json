@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex-litaval",
+    "description": "Litaval með hex-kóða"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Gildi",
+        "description": "Sjálfgefið hex-gildi"
+      },
+      {
+        "property": "disabled",
+        "title": "Óvirkt",
+        "description": "Gera textareitinn óvirkan"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Stór birting",
+        "description": "Sýna lit í stórri birtingu"
+      }
+    ]
+  }
+}

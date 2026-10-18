@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Kosa kata",
+    "description": "Istilah perbendaharaan kata"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Istilah"
+      },
+      {
+        "slot": "",
+        "title": "Definisi",
+        "description": "Definisi untuk dipaparkan apabila istilah diklik."
+      },
+      {
+        "property": "description",
+        "title": "Perihalan (OER Schema)",
+        "description": "OER Schema: perihalan ringkas istilah perbendaharaan kata. Diisi secara automatik daripada teks definisi jika dibiarkan kosong."
+      }
+    ]
+  }
+}

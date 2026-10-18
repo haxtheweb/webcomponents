@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Niðurhal verkefnablaðs",
+    "description": "Hnappur til að birta skrár sem hægt er að sækja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Titill niðurhalsins."
+      },
+      {
+        "property": "link",
+        "title": "Tengill",
+        "description": "Tengillinn fyrir niðurhalið."
+      }
+    ]
+  }
+}

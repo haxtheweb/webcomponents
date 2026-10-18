@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Açıklamalı Şekil",
+    "description": "Uzun açıklamalı erişilebilir şekil"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Görsel"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alternatif Metin"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Şekil Başlığı",
+        "description": "Her zaman görünen şekil başlığı metni."
+      },
+      {
+        "slot": "details",
+        "title": "Açıklama",
+        "description": "Gizlenebilen veya gösterilebilen ayrıntılı görsel açıklaması"
+      },
+      {
+        "slot": "summary",
+        "title": "Açıklama Düğmesi",
+        "description": "Açıklama metnini gösteren/gizleyen düğme için varsayılan, ör. \"bilgi\", \"meta veri\" vb."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Ayrıntılar açıkken isteğe bağlı özet metni"
+      },
+      {
+        "property": "closeText",
+        "title": "Ayrıntılar kapalıyken isteğe bağlı özet metni"
+      }
+    ]
+  }
+}

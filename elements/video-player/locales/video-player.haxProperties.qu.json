@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Askha pukyukunapi llapanpaq haykunalla video puklachiy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pukyu",
+        "description": "Kay mediap URL-nin."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Suti",
+        "description": "Video urayninpi rikuchisqa suti."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Poster siq'i",
+        "description": "Poster siq'ip URL-nin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Qillqa pistakuna",
+        "description": "Videopaq pakasqa subtítulokuna, subtítulokuna, willakuykuna hinallataq huk qillqa pistakuna."
+      },
+      {
+        "property": "startTime",
+        "title": "Qallariy pacha",
+        "description": "Videota huk pachapi qallarichiy (segundokuna)."
+      },
+      {
+        "property": "endTime",
+        "title": "Tukukuy pacha",
+        "description": "Videota huk pachapi tukuchiy (segundokuna), qallariy pachatam mañan."
+      },
+      {
+        "property": "learningMode",
+        "title": "Yachay kayta hap'ichiy",
+        "description": "Utqaylla ñawpaqman qhipaman puriyta wañuchin."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube-pi kichay botonta hurquy",
+        "description": "Videota YouTube-pi kichana botonta hurqun."
+      },
+      {
+        "property": "linkable",
+        "title": "Rakinakuy t'inkita yapankichu?",
+        "description": "Videota rakinakunapaq t'inkita qun."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Pacha unanchakunata pakay",
+        "description": "Qillqasqapi pacha unanchakunata pakay."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Qillqasqata Pakay",
+        "description": "Qillqasqata kikinmanta pakay."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Uyarina willakuy pista",
+        "description": "Uyarina willakuy pistapa URL (MP3 archivo), rikuna kaqkunata willakun."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS llamk'achinachus kasqanta willan.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Qhipapi puklachiyta saqiy",
+        "description": "Navegador pestaña mana akllasqa kaptinpas puklachkallay."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Qillqasqapaq tuta rikch'ay",
+        "description": "Qillqasqapaq tuta rikch'ayta hap'ichiy."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Kuyuqta Wañuchiy",
+        "description": "Qillqasqata ñit'inalla ruraq kuyuq kayta wañuchiy."
+      },
+      {
+        "property": "lang",
+        "title": "Simi",
+        "description": "Mediap simin."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "(mañaña llamk'achinachu) Puklachiqpaq accent llimpita akllay."
+      }
+    ]
+  }
+}

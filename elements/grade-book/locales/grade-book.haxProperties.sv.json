@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Betygsbok",
+    "description": "En huvudlös betygsbok som stöder flera backends med bedömningsmatriser."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Källa",
+        "description": "Typ av datakälla (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-slutpunkt (JSON)",
+          "json": "JSON-datablob",
+          "filesystem": "Filsystem"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Källdata",
+        "description": "URL eller JSON-data för betygsboken."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursreferens",
+        "description": "Kursidentifierare som anges som oer:forCourse på varje Assessment-resurs."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML bloks",
+    "description": "Pamata HTML bloks, kas nodrošina HAXschema sasaisti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML kods, ko vēlaties attēlot saturā"
+      }
+    ]
+  }
+}

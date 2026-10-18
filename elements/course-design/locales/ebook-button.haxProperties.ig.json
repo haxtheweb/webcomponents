@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Bọtịnụ Ebook",
+    "description": "Bọtịnụ na-ejikọ na Ebook."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Aha nke bọtịnụ ahụ."
+      },
+      {
+        "property": "link",
+        "title": "Njikọ",
+        "description": "Njikọ a ga-eduga mgbe a pịrị."
+      },
+      {
+        "property": "icon",
+        "title": "Akara ngosi",
+        "description": "Akara ngosi na-anọchite njikọ a"
+      }
+    ]
+  }
+}

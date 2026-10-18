@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Klasifikační kniha",
+    "description": "Bezhlavá klasifikační kniha podporující více backendů a hodnoticí rubriky."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Zdroj",
+        "description": "Typ zdroje dat (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Koncový bod URL (JSON)",
+          "json": "Blok dat JSON",
+          "filesystem": "Souborový systém"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Zdrojová data",
+        "description": "URL nebo data JSON pro klasifikační knihu."
+      },
+      {
+        "property": "forCourse",
+        "title": "Odkaz na kurz",
+        "description": "Identifikátor kurzu vkládaný jako oer:forCourse do každého zdroje Assessment."
+      }
+    ]
+  }
+}

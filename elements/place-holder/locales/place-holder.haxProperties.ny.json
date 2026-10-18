@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Chosungira malo",
+    "description": "Chosungira malo chomwe chingasinthidwe kukhala mtundu wa zofalitsa womwe wasankhidwa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Mtundu",
+        "description": "Mtundu wa chida chomwe chimalandira posintha.",
+        "options": {
+          "text": "Mawu / zomwe zili mkati",
+          "document": "Chikalata / fayilo",
+          "audio": "Mawu",
+          "video": "Kanema",
+          "image": "Chithunzi",
+          "math": "Masamu"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Mawu",
+        "description": "Fotokozani mwatsatanetsatane chosungira malo chomwe mukufuna"
+      }
+    ]
+  }
+}

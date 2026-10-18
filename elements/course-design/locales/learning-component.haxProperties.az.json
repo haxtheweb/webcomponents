@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Təlim komponenti",
+    "description": "Müəllimlərin pedaqogika və tədris strategiyalarını çatdırması üçün kart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Növ",
+        "description": "İstifadə ediləcək kartın növü."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alt başlıq",
+        "description": "Kartın alt başlığı."
+      },
+      {
+        "property": "url",
+        "title": "Keçid",
+        "description": "Kart üçün istəyə bağlı keçid (Təlim məqsədləri üçün keçid mövcud deyil)."
+      },
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Başlığı təyin edin, bu, növə əsaslanan başlığı əvəz edir"
+      },
+      {
+        "property": "icon",
+        "title": "İkon",
+        "description": "İkonu təyin edin, bu, növə əsaslanan ikonu əvəz edir"
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Vurğu rəngini təyin edin, bu, növə əsaslanan rəngi əvəz edir"
+      },
+      {
+        "slot": "",
+        "title": "Mündəricat"
+      }
+    ]
+  }
+}

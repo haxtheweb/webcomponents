@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "تصویر پارالاکس",
+    "description": "تصویر با پیمایش"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "تصویر",
+        "description": "تصویری که در پس‌زمینه قرار می‌گیرد"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "ناحیه سرعنوان",
+        "description": "ناحیه متن سرعنوان"
+      }
+    ]
+  }
+}

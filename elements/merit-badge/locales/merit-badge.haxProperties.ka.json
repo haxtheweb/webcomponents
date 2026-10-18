@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ღირსების სამკერდე ნიშანი",
+    "description": "ვიზუალური სამკერდე ნიშანი უნარის მოპოვების აღსანიშნად."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "ნიშნის სათაური",
+        "description": "ნიშანზე ნაჩვენები სათაური."
+      },
+      {
+        "property": "badgeImage",
+        "title": "ნიშნის სურათი",
+        "description": "ნიშნის სურათის URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "ნიშნის დეტალები",
+        "description": "დეტალები ნიშნის შესახებ."
+      },
+      {
+        "property": "hyperLink",
+        "title": "ჰიპერბმული",
+        "description": "ნიშანთან დაკავშირებული ბმული."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "ნიშნის უნარები",
+        "description": "ნიშანზე ნაჩვენები უნარები."
+      },
+      {
+        "property": "skill",
+        "title": "უნარი (OER Schema)",
+        "description": "OER Schema: ამ სასწავლო მიზნის დასრულებით მოპოვებული უნარი."
+      }
+    ]
+  }
+}

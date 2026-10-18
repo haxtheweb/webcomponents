@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Бібліяграфічны запіс",
+    "description": "Запіс, які прадстаўляе адну цытату ў бібліяграфіі, з падтрымкай некалькіх фарматаў і варыянтаў экспарту."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Тып",
+        "description": "Тып цытавання",
+        "options": {
+          "web": "Вэб",
+          "journal": "Часопіс",
+          "book": "Кніга"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Загаловак",
+        "description": "Назва запісу"
+      },
+      {
+        "property": "authors",
+        "title": "Аўтар(ы)",
+        "description": "Падзеі ў храналогіі"
+      },
+      {
+        "property": "publisher",
+        "title": "Выдавец",
+        "description": "Арыгінальны вэб-сайт"
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Ikhadi",
+    "description": "Ikhadi elinesitayile sogxininiso esingenyanzelekanga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Isihloko",
+        "description": "Intloko yekhadi."
+      },
+      {
+        "slot": "subheading",
+        "title": "Intloko engaphantsi",
+        "description": "Intloko engaphantsi engenyanzelekanga yekhadi."
+      },
+      {
+        "slot": "content",
+        "title": "Umxholo",
+        "description": "Umxholo wekhadi."
+      },
+      {
+        "slot": "footer",
+        "title": "Ezantsi",
+        "description": "Umbhalo osezantsi ongenyanzelekanga wekhadi."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Umfanekiso",
+        "description": "Umfanekiso ongenyanzelekanga"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Umbhalo Ongenye woMfanekiso",
+        "description": "Umbhalo ongenye ochaza umfanekiso kubafundi besikrini. Shiya ungenanto kuphela ukuba umfanekiso ngowokuhombisa nje."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Ulungelelwaniso loMfanekiso oluThe tyaba",
+        "options": {
+          "left": "ekhohlo",
+          "center": "embindini",
+          "right": "ekunene"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Ulungelelwaniso loMfanekiso oluThe nkqo",
+        "options": {
+          "top": "phezulu",
+          "center": "embindini",
+          "bottom": "ezantsi"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Ogqamisayo",
+        "description": "Umbala ogqamisayo okhethwayo."
+      },
+      {
+        "property": "dark",
+        "title": "Umxholo oMnyama",
+        "description": "Vula uMxholo oMnyama"
+      },
+      {
+        "property": "horizontal",
+        "title": "Ithe tyaba",
+        "description": "Ukuma okuthe tyaba?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Ugxininiso lweNtloko",
+        "description": "Sebenzisa umbala wogxininiso kwintloko?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Ugxininiso loMva",
+        "description": "Sebenzisa umbala wogxininiso ngasemva kwekhadi?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Akukho Gxininiso loMda",
+        "description": "Susa ugxininiso lomda?"
+      },
+      {
+        "property": "flat",
+        "title": "Isicaba",
+        "description": "Susa isithunzi sebhokisi?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Ikona",
+        "description": "Umxholo wekona yekhadi."
+      }
+    ]
+  }
+}

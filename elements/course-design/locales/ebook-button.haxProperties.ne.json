@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ebook बटन",
+    "description": "Ebook मा लिङ्क गर्ने बटन।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "बटनको शीर्षक।"
+      },
+      {
+        "property": "link",
+        "title": "लिङ्क",
+        "description": "क्लिक गर्दा रिडाइरेक्ट हुने लिङ्क।"
+      },
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "यो लिङ्क जनाउने आइकन"
+      }
+    ]
+  }
+}

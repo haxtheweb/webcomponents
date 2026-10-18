@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Raspored stupaca",
+    "description": "Rasporedite materijal u jednostavne stupce"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Raspored stupaca",
+        "description": "Stil prikaza ovih stavki (može se promijeniti na malim zaslonima)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Onemogući responzivnost",
+        "description": "Označite okvir kako biste zadržali stupce na većim zaslonima, a i dalje ih slagali na najmanjim zaslonima"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Unutarnja margina stavke",
+        "description": "Unutarnja margina svake stavke"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Margine stavki",
+        "description": "Margina između stavki"
+      }
+    ]
+  }
+}

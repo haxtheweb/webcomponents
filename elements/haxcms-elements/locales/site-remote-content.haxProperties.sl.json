@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Oddaljena vsebina",
+    "description": "Ponovno uporabite vsebino enega spletnega mesta na drugem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Naslov spletnega mesta",
+        "description": "Prilepite naslov, iz katerega želite sklicevati vsebino, če ni trenutno spletno mesto"
+      },
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Element za prikaz podatkov povezave / naslova"
+      },
+      {
+        "property": "breakreference",
+        "title": "Prekini sklic",
+        "description": "Če označite to polje, se oddaljena vsebina kopira za lokalno urejanje, povezava pa se odstrani. Ob posodobitvah izvornega gradiva ne bo več prejemala posodobitev."
+      },
+      {
+        "property": "showTitle",
+        "title": "Prikaži naslov",
+        "description": "Vklopite za prikaz naslova prikazanega vira"
+      }
+    ]
+  }
+}

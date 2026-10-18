@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Buton de detalii accesibil",
+    "description": "Dezvăluire progresivă accesibilă cu detalii și rezumat"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Buton",
+        "description": "Rezumatul conținutului ascuns, de ex. „info”, „metadate” etc."
+      },
+      {
+        "slot": "details",
+        "title": "Descriere",
+        "description": "Descriere detaliată care poate fi ascunsă sau afișată"
+      },
+      {
+        "slot": "",
+        "title": "Butonul descrierii",
+        "description": "Valoarea implicită pentru butonul care afișează/ascunde textul descrierii, de ex. „info”, „metadate” etc."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Text de rezumat opțional când detaliile sunt deschise"
+      },
+      {
+        "property": "closeText",
+        "title": "Text de rezumat opțional când detaliile sunt închise"
+      }
+    ]
+  }
+}

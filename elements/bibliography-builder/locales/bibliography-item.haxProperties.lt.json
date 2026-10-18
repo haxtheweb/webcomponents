@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliografijos įrašas",
+    "description": "Įrašas, atitinkantis vieną bibliografijos citatą; palaiko kelis formatus ir eksportavimo parinktis."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tipas",
+        "description": "Citatos tipas",
+        "options": {
+          "web": "Žiniatinklis",
+          "journal": "Žurnalas",
+          "book": "Knyga"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Įrašo pavadinimas"
+      },
+      {
+        "property": "authors",
+        "title": "Autorius (-iai)",
+        "description": "Laiko juostos įvykiai"
+      },
+      {
+        "property": "publisher",
+        "title": "Leidėjas",
+        "description": "Originali svetainė"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Dòng thời gian",
+    "description": "Dòng thời gian các sự kiện kèm hình ảnh và văn bản"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Tiêu đề dòng thời gian",
+        "description": "Tiêu đề cho dòng thời gian."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nhấn tùy chọn."
+      },
+      {
+        "property": "dark",
+        "title": "Giao diện tối",
+        "description": "Bật giao diện tối"
+      },
+      {
+        "slot": "",
+        "title": "Mô tả dòng thời gian",
+        "description": "Văn bản tùy chọn mô tả dòng thời gian."
+      },
+      {
+        "property": "events",
+        "title": "Các sự kiện trên dòng thời gian",
+        "description": "Các sự kiện trên dòng thời gian"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Thẻ cổ điển",
+    "description": "Thẻ đơn giản với thiết kế cổ điển."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề chính của thẻ."
+      },
+      {
+        "property": "url",
+        "description": "URL sẽ mở khi nhấp vào thẻ."
+      },
+      {
+        "property": "subtitle",
+        "title": "Tiêu đề phụ",
+        "description": "Tiêu đề phụ của thẻ."
+      },
+      {
+        "property": "tags",
+        "title": "Thẻ",
+        "description": "Các thẻ phân cách bằng dấu phẩy."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Nguồn phương tiện",
+        "description": "Nguồn phương tiện chính."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Nguồn khi di chuột",
+        "description": "Nguồn phương tiện hiển thị khi di chuột qua hoặc kích hoạt thẻ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nhấn áp dụng cho toàn bộ thẻ."
+      },
+      {
+        "property": "dark",
+        "title": "Tối",
+        "description": "Dùng màu nền của chế độ tối."
+      }
+    ]
+  }
+}

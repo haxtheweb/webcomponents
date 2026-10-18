@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Heli",
+    "description": "See võib esitada videot väga ligipääsetaval viisil sõltumata allikast."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Allikas",
+        "description": "Selle meedia URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Pealkiri",
+        "description": "Lihtne pealkiri video all"
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Vali mängija rõhuvärv."
+      },
+      {
+        "property": "track",
+        "title": "Subtiitrid",
+        "description": "Subtiitrifaili URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Pisipilt",
+        "description": "Valikuline. Pisipildi/plakatipildi URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "Luba õpirežiim",
+        "description": "Keelab edasi- ja tagasikerimise."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Eemalda YouTube'is avamise nupp",
+        "description": "Eemaldab nupu video avamiseks YouTube'is."
+      },
+      {
+        "property": "linkable",
+        "title": "Kas lisada jagamislink?",
+        "description": "Pakub linki video jagamiseks."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Näitab, kas kasutada CORS-i.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Luba taustal esitamine",
+        "description": "Videod peatuvad / mängivad automaatselt, kui vahekaart kaotab fookuse; see võimaldab videot esitada ka siis, kui vahekaart pole fookuses"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Transkriptsiooni tume teema",
+        "description": "Luba transkriptsioonile tume teema."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Keela interaktiivsus",
+        "description": "Keela interaktiivne režiim, mis muudab transkriptsiooni klõpsatavaks."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Peida ajatemplid",
+        "description": "Peida transkriptsiooni ajatemplid."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Peida transkriptsioon",
+        "description": "Peida transkriptsioon vaikimisi."
+      },
+      {
+        "property": "lang",
+        "title": "Keel",
+        "description": "Meedia keel."
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "زوړ ډوله کارت",
+    "description": "د زوړ ډوله ډیزاین سره ساده کارت."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "د کارت اصلي سرلیک."
+      },
+      {
+        "property": "url",
+        "description": "هغه URL چې د کارت په کلیک کولو سره پرانیستل کېږي."
+      },
+      {
+        "property": "subtitle",
+        "title": "فرعي سرلیک",
+        "description": "د کارت فرعي سرلیک."
+      },
+      {
+        "property": "tags",
+        "title": "ټګونه",
+        "description": "د کامو په واسطه جلا شوي ټګونه."
+      },
+      {
+        "property": "mediaSource",
+        "title": "د رسنۍ سرچینه",
+        "description": "د رسنۍ لومړنۍ سرچینه."
+      },
+      {
+        "property": "hoverSource",
+        "title": "د هوور پر مهال سرچینه",
+        "description": "د رسنۍ سرچینه چې کله کارت هوور یا فعال شي ښودل کېږي."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "په ټول کارت پلي شوی د ټینګار رنګ."
+      },
+      {
+        "property": "dark",
+        "title": "تیاره",
+        "description": "د تیارې بڼې بنسټیز رنګونه وکاروئ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Stavka karijere",
+    "description": "Pojedinačna organizacija i s njom povezane uloge"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Naziv organizacije"
+      },
+      {
+        "property": "location",
+        "title": "Lokacija"
+      },
+      {
+        "property": "source",
+        "title": "Izvor"
+      }
+    ]
+  }
+}

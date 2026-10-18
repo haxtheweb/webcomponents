@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Licentie",
+    "description": "Geef een licentie voor je werk op."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel van het geciteerde werk."
+      },
+      {
+        "property": "source",
+        "title": "Bronlink",
+        "description": "Bron-URL van het gelicentieerde werk."
+      },
+      {
+        "property": "license",
+        "title": "Licentie",
+        "description": "Licentie die op dit werk van toepassing is."
+      },
+      {
+        "property": "creator",
+        "title": "Maker",
+        "description": "Maker of eigenaar van dit werk."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Bronlink",
+        "description": "Link naar aanvullende licentiegegevens."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Label voor meer",
+        "description": "Label voor aanvullende licentiegegevens."
+      }
+    ]
+  }
+}

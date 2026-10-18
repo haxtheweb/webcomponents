@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kolomuitleg",
+    "description": "Lê materiaal in eenvoudige kolomme uit"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Kolomuitleg",
+        "description": "Styl om hierdie items aan te bied (kan vir klein skerms verander)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Deaktiveer responsief",
+        "description": "Merk die blokkie om kolomme op groter skerms te behou terwyl dit steeds op die kleinste skerms stapel"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Item-binnespasie",
+        "description": "Binnespasie binne elke item"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Item-kantlyne",
+        "description": "Kantlyn tussen items"
+      }
+    ]
+  }
+}

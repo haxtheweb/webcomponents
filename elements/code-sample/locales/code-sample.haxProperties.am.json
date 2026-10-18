@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "የኮድ ናሙና",
+    "description": "በገጹ ውስጥ የደመቀ የኮድ ናሙና"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "የኮድ ማድመቅ",
+        "description": "በኮድ ቦታው ላይ የሚተገበር የአገባብ ማድመቅ",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON ውሂብ",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "ወደ ቅንጥብ ሰሌዳ ቅዳ አዝራር",
+        "description": "ከላይ በቀኝ በኩል ወደ ቅንጥብ ሰሌዳ ቅዳ የሚል አዝራር"
+      },
+      {
+        "property": "highlightStart",
+        "title": "የማድመቅ መጀመሪያ",
+        "description": "ማድመቅ የሚጀምርበት የመስመር ቁጥር"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "የማድመቅ መጨረሻ",
+        "description": "ማድመቅ የሚያበቃበት መስመር"
+      }
+    ]
+  }
+}

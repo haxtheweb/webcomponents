@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "แท็บ",
+    "description": "แท็บเดี่ยว"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ไอคอนแท็บ"
+      },
+      {
+        "property": "disabled",
+        "title": "ปิดใช้งาน"
+      },
+      {
+        "property": "label",
+        "title": "ป้ายแท็บ"
+      },
+      {
+        "slot": "",
+        "title": "เนื้อหาแท็บ",
+        "description": "เนื้อหาของแท็บ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID เฉพาะ"
+      },
+      {
+        "property": "flag",
+        "title": "ข้อความธงเพิ่มเติม"
+      },
+      {
+        "property": "flagIcon",
+        "title": "ไอคอนธงเพิ่มเติม"
+      }
+    ]
+  }
+}

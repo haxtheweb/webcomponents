@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "ڪورس ڊيزائن",
+    "description": "تعليمي مواد ۽ ڪورس ڊيزائن عنصرن لاءِ ڪنٽينر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "ڪورس جي سڃاڻپ",
+        "description": "OER Schema: ڪورس جي سڃاڻپ، مثال طور MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "پيش ڪيل ٽرم",
+        "description": "OER Schema: اها ٽرم جنهن دوران ڪورس پيش ڪيو وڃي ٿو."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "ترسيل جو فارميٽ",
+        "description": "OER Schema: ڪورس پهچائڻ لاءِ استعمال ٿيندڙ فارميٽ (مثال طور ذاتي، آن لائن، هائبرڊ)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "مکيه استاد",
+        "description": "OER Schema: ڪورس جو مکيه استاد."
+      },
+      {
+        "property": "syllabus",
+        "title": "نصاب جو URL",
+        "description": "OER Schema: ڪورس جي نصاب جو URL."
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Pamata saite",
+    "description": "Pamata saites elements."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Saite",
+        "description": "Mērķa URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Teksts",
+        "description": "Redzamais saites teksts."
+      },
+      {
+        "attribute": "target",
+        "title": "Mērķis",
+        "description": "Kur atvērt saiti.",
+        "options": {
+          "": "Tas pats logs",
+          "_blank": "Jauns logs — _blank",
+          "_top": "Augšējais logs — _top",
+          "_parent": "Vecāklogs — _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Virsraksta teksts",
+        "description": "Ieteikuma virsraksts pieejamībai un SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Attiecības ar mērķi (drošība/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

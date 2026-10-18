@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "I-Donut Yenqubekela phambili",
+    "description": "I-donut yenqubekela phambili"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko sesakhi"
+      },
+      {
+        "property": "desc",
+        "title": "Incazelo",
+        "description": "Incazelo ende efinyelelekayo"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Umthombo Wesithombe",
+        "description": "Umthombo wesithombe ngaphakathi kwe-donut."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Umbhalo Ongenye Wesithombe",
+        "description": "Umbhalo ongenye wesithombe."
+      },
+      {
+        "property": "animated",
+        "title": "Kunopopayi",
+        "description": "Ukuthi inqubekela phambili inopopayi yini ekulayisheni kokuqala"
+      },
+      {
+        "property": "complete",
+        "title": "Kuqediwe",
+        "description": "I-array yamanani aqediwe."
+      },
+      {
+        "property": "total",
+        "title": "Isamba",
+        "description": "Isamba lapho zonke izinto seziqediwe."
+      },
+      {
+        "property": "startAngle",
+        "title": "I-engeli Yokuqala",
+        "description": "I-engeli ye-donut lapho kuqala khona inqubekela phambili"
+      }
+    ]
+  }
+}

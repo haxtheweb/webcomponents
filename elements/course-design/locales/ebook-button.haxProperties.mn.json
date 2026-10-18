@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Цахим номын товчлуур",
+    "description": "Цахим ном руу холбосон товчлуур."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Товчлуурын гарчиг."
+      },
+      {
+        "property": "link",
+        "title": "Холбоос",
+        "description": "Товшиход шилжих холбоос."
+      },
+      {
+        "property": "icon",
+        "title": "Дүрс тэмдэг",
+        "description": "Энэ холбоосыг төлөөлөх дүрс тэмдэг"
+      }
+    ]
+  }
+}

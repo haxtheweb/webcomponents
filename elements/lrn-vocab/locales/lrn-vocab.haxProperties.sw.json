@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Msamiati",
+    "description": "Istilahi ya msamiati"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Istilahi"
+      },
+      {
+        "slot": "",
+        "title": "Ufafanuzi",
+        "description": "Ufafanuzi wa kuonyesha istilahi inapobofywa."
+      },
+      {
+        "property": "description",
+        "title": "Maelezo (OER Schema)",
+        "description": "OER Schema: maelezo mafupi ya istilahi ya msamiati. Hujazwa kiotomatiki kutoka maandishi ya ufafanuzi ikiachwa tupu."
+      }
+    ]
+  }
+}

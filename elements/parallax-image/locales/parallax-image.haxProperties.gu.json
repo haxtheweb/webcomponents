@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "પેરેલેક્સ છબી",
+    "description": "સ્ક્રોલ સાથે ખસતી છબી"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "છબી",
+        "description": "પૃષ્ઠભૂમિમાં વપરાતી છબી"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "હેડિંગ વિસ્તાર",
+        "description": "હેડિંગ ટેક્સ્ટ વિસ્તાર"
+      }
+    ]
+  }
+}

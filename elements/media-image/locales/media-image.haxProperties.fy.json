@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Ferbettere ôfbylding",
+    "description": "In manier om ôfbyldings mei ferskate ferbetterings te presintearjen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Boarne",
+        "description": "De URL foar de ôfbylding."
+      },
+      {
+        "property": "alt",
+        "title": "Alternative tekst",
+        "description": "Tekst dy't de ôfbylding beskriuwt foar blinde brûkers."
+      },
+      {
+        "property": "link",
+        "title": "Keppeling",
+        "description": "De ôfbylding keppelje oan in URL"
+      },
+      {
+        "property": "card",
+        "title": "Kaart",
+        "description": "In slachskaad tapasse sadat it liket op in ferhege kaart."
+      },
+      {
+        "property": "box",
+        "title": "Fak",
+        "description": "In fisueel fak om de ôfbylding hinne tapasse."
+      },
+      {
+        "property": "offset",
+        "title": "Ferskowing",
+        "description": "In ferskowing nei lofts of rjochts tapasse op de ôfbylding.",
+        "options": {
+          "none": "gjin",
+          "wide": "breed",
+          "narrow": "smel"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Boarnefermelding",
+        "description": "Sitaasje foar de ôfbylding."
+      },
+      {
+        "property": "caption",
+        "title": "Underskrift",
+        "description": "Byskrift foar de ôfbylding."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figuertitel",
+        "description": "Titel foar it figuerlabel."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figuerbeskriuwing",
+        "description": "Beskriuwing foar it figuerlabel."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Miniatuerôfbylding",
+        "description": "Boarne fan miniatuerôfbylding. Toant de miniatuer mar iepenet de folsleine boarne yn in modaal finster."
+      },
+      {
+        "property": "round",
+        "title": "Rûne ôfbylding",
+        "description": "Snijt de ôfbylding by sadat er rûn liket."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Modaal finster foar ôfbylding útskeakelje",
+        "description": "Foarkomme dat klikken de ôfbylding iepenet yn in ôfbyldingsynspeksjedialooch."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Werjaan as markdown",
+        "description": "It byskrift en de sitaasje as markdown werjaan."
+      }
+    ]
+  }
+}

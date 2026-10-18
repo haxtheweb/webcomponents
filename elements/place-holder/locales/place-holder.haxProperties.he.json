@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "מציין מקום",
+    "description": "מציין מקום שניתן להמיר לסוג המדיה שנבחר"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "סוג",
+        "description": "סוג הגאדג'ט שמציין מקום זה מקבל להחלפה.",
+        "options": {
+          "text": "טקסט / תוכן",
+          "document": "מסמך / קובץ",
+          "audio": "שמע",
+          "video": "וידאו",
+          "image": "תמונה",
+          "math": "מתמטיקה"
+        }
+      },
+      {
+        "property": "text",
+        "title": "טקסט",
+        "description": "תארו בפירוט רב יותר את מציין המקום הרצוי"
+      }
+    ]
+  }
+}

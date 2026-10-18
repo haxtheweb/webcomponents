@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Cuntenutu di pagina à l'azardu",
+    "description": "Affissà un elementu di primu livellu à l'azardu da una pagina selezziunata"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Pagina",
+        "description": "Selezziunate a pagina da a quale piglià u cuntenutu à l'azardu. L'elementu affisserà à l'azardu unu di l'elementi HTML di primu livellu di sta pagina."
+      }
+    ]
+  }
+}

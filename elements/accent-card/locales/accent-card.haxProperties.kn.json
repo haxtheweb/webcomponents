@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "ಕಾರ್ಡ್",
+    "description": "ಐಚ್ಛಿಕ ಆಕ್ಸೆಂಟ್ ಶೈಲಿಯ ಕಾರ್ಡ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "ಶಿರೋನಾಮೆ",
+        "description": "ಕಾರ್ಡ್‌ಗೆ ಶಿರೋನಾಮೆ."
+      },
+      {
+        "slot": "subheading",
+        "title": "ಉಪಶೀರ್ಷಿಕೆ",
+        "description": "ಕಾರ್ಡ್‌ಗೆ ಐಚ್ಛಿಕ ಉಪಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "slot": "content",
+        "title": "ವಿಷಯ",
+        "description": "ಕಾರ್ಡ್‌ನ ವಿಷಯ."
+      },
+      {
+        "slot": "footer",
+        "title": "ಅಡಿಟಿಪ್ಪಣಿ",
+        "description": "ಕಾರ್ಡ್‌ಗೆ ಐಚ್ಛಿಕ ಅಡಿಟಿಪ್ಪಣಿ."
+      },
+      {
+        "property": "imageSrc",
+        "title": "ಚಿತ್ರ",
+        "description": "ಐಚ್ಛಿಕ ಚಿತ್ರ"
+      },
+      {
+        "property": "imageAlt",
+        "title": "ಚಿತ್ರದ ಪರ್ಯಾಯ ಪಠ್ಯ",
+        "description": "ಸ್ಕ್ರೀನ್ ರೀಡರ್‌ಗಳಿಗಾಗಿ ಚಿತ್ರವನ್ನು ವಿವರಿಸುವ ಪರ್ಯಾಯ ಪಠ್ಯ. ಚಿತ್ರವು ಕೇವಲ ಅಲಂಕಾರಿಕವಾಗಿದ್ದರೆ ಮಾತ್ರ ಖಾಲಿ ಬಿಡಿ."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "ಚಿತ್ರದ ಅಡ್ಡ ಜೋಡಣೆ",
+        "options": {
+          "left": "ಎಡ",
+          "center": "ಮಧ್ಯ",
+          "right": "ಬಲ"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "ಚಿತ್ರದ ಲಂಬ ಜೋಡಣೆ",
+        "options": {
+          "top": "ಮೇಲೆ",
+          "center": "ಮಧ್ಯ",
+          "bottom": "ಕೆಳಗೆ"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ."
+      },
+      {
+        "property": "dark",
+        "title": "ಡಾರ್ಕ್ ಥೀಮ್",
+        "description": "ಡಾರ್ಕ್ ಥೀಮ್ ಸಕ್ರಿಯಗೊಳಿಸಿ"
+      },
+      {
+        "property": "horizontal",
+        "title": "ಅಡ್ಡ",
+        "description": "ಅಡ್ಡ ದಿಕ್ಕಿನ ವಿನ್ಯಾಸವೇ?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "ಶಿರೋನಾಮೆ ಆಕ್ಸೆಂಟ್",
+        "description": "ಶಿರೋನಾಮೆಗೆ ಆಕ್ಸೆಂಟ್ ಬಣ್ಣ ಅನ್ವಯಿಸುವುದೇ?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "ಹಿನ್ನೆಲೆ ಆಕ್ಸೆಂಟ್",
+        "description": "ಕಾರ್ಡ್ ಹಿನ್ನೆಲೆಗೆ ಆಕ್ಸೆಂಟ್ ಬಣ್ಣ ಅನ್ವಯಿಸುವುದೇ?"
+      },
+      {
+        "property": "noBorder",
+        "title": "ಅಂಚಿನ ಆಕ್ಸೆಂಟ್ ಇಲ್ಲ",
+        "description": "ಅಂಚಿನ ಆಕ್ಸೆಂಟ್ ತೆಗೆದುಹಾಕುವುದೇ?"
+      },
+      {
+        "property": "flat",
+        "title": "ಸಮತಟ್ಟು",
+        "description": "ಬಾಕ್ಸ್ ನೆರಳು ತೆಗೆದುಹಾಕುವುದೇ?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "ಮೂಲೆ",
+        "description": "ಕಾರ್ಡ್ ಮೂಲೆಯ ವಿಷಯ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Titull relativ",
+    "description": "jep hierarkinë e saktë të titujve bazuar në titullin e prindit"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID-ja e burimit të titullit prind"
+      },
+      {
+        "property": "disableLink",
+        "description": "Çaktivizon veçorinë e butonit të lidhjes."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "E shtrin butonin e kopjimit të lidhjes në skajin e djathtë të titullit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Niveli i titullit nëse prindi nuk gjendet."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Mbishkruan tekstin e parazgjedhur të njoftimit për kopjimin e lidhjes."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Mbishkruan etiketën e parazgjedhur të butonit të kopjimit të lidhjes."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Mbishkruan ikonën e parazgjedhur të butonit të kopjimit të lidhjes."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Mbishkruan etiketën e parazgjedhur të butonit të mbylljes së njoftimit për kopjimin e lidhjes."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Mbishkruan ikonën e parazgjedhur të butonit të mbylljes së njoftimit për kopjimin e lidhjes."
+      }
+    ]
+  }
+}

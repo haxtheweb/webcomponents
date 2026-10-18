@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS בלאָק",
+    "description": "CMS בלאָק געשילדערט אויפֿן באַקענד"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "מאָדול",
+        "description": "מאָדול צו לאָדן פֿון אונדזער CMS"
+      },
+      {
+        "property": "blockDelta",
+        "title": "דעלטאַ",
+        "description": "דעלטאַ פֿונעם בלאָק צו לאָדן פֿון אונדזער CMS"
+      }
+    ]
+  }
+}

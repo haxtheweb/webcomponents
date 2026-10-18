@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "ਅੰਕਿਤ ਸੂਚੀ",
+    "description": "ਅੰਕਿਤ ਸੂਚੀ ਬਣਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "ਅੰਕ ਸ਼ੈਲੀ",
+        "description": "ਕ੍ਰਮਬੱਧ ਸੂਚੀ ਦੀ ਗਿਣਤੀ ਲਈ ਵਰਤੀ ਸ਼ੈਲੀ।",
+        "options": {
+          "": "ਪੂਰਵ-ਨਿਰਧਾਰਤ (ਦਸ਼ਮਲਵ)",
+          "list-decimal-leading-zero": "ਮੋਹਰੀ ਸਿਫ਼ਰ ਨਾਲ ਦਸ਼ਮਲਵ (01, 02, 03)",
+          "list-lower-alpha": "ਛੋਟੇ ਅੱਖਰ (a, b, c)",
+          "list-upper-alpha": "ਵੱਡੇ ਅੱਖਰ (A, B, C)",
+          "list-lower-roman": "ਛੋਟੇ ਰੋਮਨ (i, ii, iii)",
+          "list-upper-roman": "ਵੱਡੇ ਰੋਮਨ (I, II, III)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: gyermekblokk",
+    "description": "Az aktuális oldal gyermekeit megjelenítő dinamikus blokk"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dinamikus módszer",
+        "description": "A gyermekek kiszámításának módja ehhez az elemhez képest",
+        "options": {
+          "active": "Aktív gyermekek",
+          "parent": "A szülő gyermekei",
+          "ancestor": "A legfelső őstől számított összes gyermek"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Kezdőszint"
+      },
+      {
+        "property": "end",
+        "title": "Zárószint"
+      }
+    ]
+  }
+}

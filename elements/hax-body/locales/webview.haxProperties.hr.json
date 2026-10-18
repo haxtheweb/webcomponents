@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Izvor",
+        "description": "URL ovog resursa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Шилтеме булагы",
+    "description": "Үч көрсөтүү режими бар цитата элементи."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Аталышы",
+        "description": "Цитаталанган чыгарманын аталышы."
+      },
+      {
+        "property": "source",
+        "title": "Булак шилтемеси",
+        "description": "Цитаталанган чыгарманын булак URL дареги."
+      },
+      {
+        "property": "date",
+        "title": "Кирген күнү",
+        "description": "Булакка кирилген күн."
+      },
+      {
+        "property": "scope",
+        "title": "Чөйрө",
+        "description": "Цитаталануучу элементтин чөйрөсү.",
+        "options": {
+          "sibling": "Коңшу элемент",
+          "parent": "Ата-элемент"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Лицензия",
+        "description": "Цитаталанган чыгарманын лицензиясы."
+      },
+      {
+        "property": "creator",
+        "title": "Автор",
+        "description": "Цитаталанган чыгарманын автору же ээси."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema түрү",
+        "description": "Бул цитата үчүн OER Schema классы. Демейки боюнча oer:ReferencedMaterial; жарактуу OER классы менен гана алмаштырыңыз (мис. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

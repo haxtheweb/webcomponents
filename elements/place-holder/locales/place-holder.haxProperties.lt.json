@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Rezervuota vieta",
+    "description": "Rezervuota vieta, kurią galima paversti pasirinktu medijos tipu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipas",
+        "description": "Elemento tipas, kurį ši vieta priima pakeitimui.",
+        "options": {
+          "text": "Tekstas / turinys",
+          "document": "Dokumentas / failas",
+          "audio": "Garso įrašai",
+          "video": "Vaizdo įrašai",
+          "image": "Vaizdas",
+          "math": "Matematika"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Tekstas",
+        "description": "Išsamiau nurodykite norimą rezervuotą vietą"
+      }
+    ]
+  }
+}

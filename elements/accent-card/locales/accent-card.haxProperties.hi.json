@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "कार्ड",
+    "description": "वैकल्पिक एक्सेंट स्टाइलिंग वाला कार्ड।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "शीर्षक",
+        "description": "कार्ड के लिए शीर्षक।"
+      },
+      {
+        "slot": "subheading",
+        "title": "उपशीर्षक",
+        "description": "कार्ड के लिए वैकल्पिक उपशीर्षक।"
+      },
+      {
+        "slot": "content",
+        "title": "सामग्री",
+        "description": "कार्ड की सामग्री।"
+      },
+      {
+        "slot": "footer",
+        "title": "फ़ुटर",
+        "description": "कार्ड के लिए वैकल्पिक फ़ुटर।"
+      },
+      {
+        "property": "imageSrc",
+        "title": "छवि",
+        "description": "वैकल्पिक छवि"
+      },
+      {
+        "property": "imageAlt",
+        "title": "छवि Alt टेक्स्ट",
+        "description": "स्क्रीन रीडर के लिए छवि का वर्णन करने वाला वैकल्पिक टेक्स्ट। केवल तभी खाली छोड़ें जब छवि पूरी तरह सजावटी हो।"
+      },
+      {
+        "property": "imageAlign",
+        "title": "छवि संरेखण",
+        "description": "छवि क्षैतिज संरेखण",
+        "options": {
+          "left": "बाएँ",
+          "center": "केंद्र",
+          "right": "दाएँ"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "छवि ऊर्ध्वाधर संरेखण",
+        "description": "छवि ऊर्ध्वाधर संरेखण",
+        "options": {
+          "top": "ऊपर",
+          "center": "केंद्र",
+          "bottom": "नीचे"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "एक वैकल्पिक एक्सेंट रंग।"
+      },
+      {
+        "property": "dark",
+        "title": "डार्क थीम",
+        "description": "डार्क थीम सक्षम करें"
+      },
+      {
+        "property": "horizontal",
+        "title": "क्षैतिज",
+        "description": "क्षैतिज अभिविन्यास?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "शीर्षक एक्सेंट",
+        "description": "शीर्षक पर एक्सेंट रंग लागू करें?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "पृष्ठभूमि एक्सेंट",
+        "description": "कार्ड पृष्ठभूमि पर एक्सेंट रंग लागू करें?"
+      },
+      {
+        "property": "noBorder",
+        "title": "बिना बॉर्डर एक्सेंट",
+        "description": "बॉर्डर एक्सेंट हटाएँ?"
+      },
+      {
+        "property": "flat",
+        "title": "सपाट",
+        "description": "बॉक्स शैडो हटाएँ?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "कोना",
+        "description": "कार्ड के कोने की सामग्री।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Dziennik ocen",
+    "description": "Dziennik ocen bez interfejsu, obsługujący wiele backendów i rubryki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Źródło",
+        "description": "Typ źródła danych (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Punkt końcowy URL (JSON)",
+          "json": "Blok danych JSON",
+          "filesystem": "System plików"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Dane źródłowe",
+        "description": "URL lub dane JSON dziennika ocen."
+      },
+      {
+        "property": "forCourse",
+        "title": "Odniesienie do kursu",
+        "description": "Identyfikator kursu emitowany jako oer:forCourse w każdym zasobie Assessment."
+      }
+    ]
+  }
+}

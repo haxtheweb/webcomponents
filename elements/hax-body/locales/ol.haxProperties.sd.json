@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "نمبر وار فهرست",
+    "description": "نمبر وار فهرست ٺاهيو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "نمبر جو انداز",
+        "description": "ترتيب وار فهرست جي نمبرن لاءِ استعمال ٿيندڙ انداز.",
+        "options": {
+          "": "ڊفالٽ (اعشاري)",
+          "list-decimal-leading-zero": "اڳ ۾ صفر سان اعشاري (01, 02, 03)",
+          "list-lower-alpha": "ننڍا اکر (a, b, c)",
+          "list-upper-alpha": "وڏا اکر (A, B, C)",
+          "list-lower-roman": "ننڍا رومن (i, ii, iii)",
+          "list-upper-roman": "وڏا رومن (I, II, III)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Mục tài liệu tham khảo",
+    "description": "Mục đại diện cho một trích dẫn trong danh mục tài liệu tham khảo, hỗ trợ nhiều định dạng và tùy chọn xuất."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Loại",
+        "description": "Loại trích dẫn",
+        "options": {
+          "web": "Web",
+          "journal": "Tạp chí",
+          "book": "Sách"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề của mục"
+      },
+      {
+        "property": "authors",
+        "title": "Tác giả",
+        "description": "Các sự kiện trên dòng thời gian"
+      },
+      {
+        "property": "publisher",
+        "title": "Nhà xuất bản",
+        "description": "Trang web gốc"
+      }
+    ]
+  }
+}

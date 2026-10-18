@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "модель курса",
+    "description": "Интерактивный макет для понятий курса с подробностями, анимацией и проверками знаний."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "название"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Область сведений"
+      },
+      {
+        "title": "Область подробностей"
+      },
+      {
+        "title": "Область анимации"
+      },
+      {
+        "title": "Область проверки знаний"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Область логотипа"
+      }
+    ]
+  }
+}

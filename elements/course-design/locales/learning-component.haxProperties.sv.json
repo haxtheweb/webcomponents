@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Lärandekomponent",
+    "description": "Ett kort för lärare att kommunicera pedagogik och undervisningsstrategier."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Typ",
+        "description": "Typ av kort som ska användas."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undertitel",
+        "description": "Kortets undertitel."
+      },
+      {
+        "property": "url",
+        "title": "Länk",
+        "description": "En valfri länk för kortet (länk är inte tillgänglig för lärandemål)."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Ange titel, detta åsidosätter den typbaserade titeln"
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ange ikon, detta åsidosätter den typbaserade ikonen"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "Ange accentfärg, detta åsidosätter den typbaserade färgen"
+      },
+      {
+        "slot": "",
+        "title": "Innehåll"
+      }
+    ]
+  }
+}

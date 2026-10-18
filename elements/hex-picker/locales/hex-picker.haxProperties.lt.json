@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex spalvų parinkiklis",
+    "description": "Hex kodo spalvų parinkiklis"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Reikšmė",
+        "description": "Numatytoji hex reikšmė"
+      },
+      {
+        "property": "disabled",
+        "title": "Išjungta",
+        "description": "Išjungti teksto lauką"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Didelis rodinys",
+        "description": "Įtraukti spalvą į didelį rodinį"
+      }
+    ]
+  }
+}

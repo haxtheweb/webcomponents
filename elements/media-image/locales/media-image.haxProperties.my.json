@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "မြှင့်တင်ထားသော ပုံ",
+    "description": "အမျိုးမျိုးသော မြှင့်တင်မှုများဖြင့် ပုံများကို တင်ပြသည့် နည်းလမ်း။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ရင်းမြစ်",
+        "description": "ပုံအတွက် URL။"
+      },
+      {
+        "property": "alt",
+        "title": "အစားထိုး စာသား",
+        "description": "မမြင်နိုင်သော အသုံးပြုသူများအတွက် ပုံကို ဖော်ပြသည့် စာသား။"
+      },
+      {
+        "property": "link",
+        "title": "လင့်ခ်",
+        "description": "ပုံကို URL သို့ လင့်ခ်ချိတ်ရန်"
+      },
+      {
+        "property": "card",
+        "title": "ကတ်",
+        "description": "မြှင့်ထားသော ကတ်ပုံပေါ်စေရန် drop shadow အသုံးချရန်။"
+      },
+      {
+        "property": "box",
+        "title": "အကွက်",
+        "description": "ပုံ၏ ပတ်လည်တွင် မြင်သာသော အကွက် အသုံးချရန်။"
+      },
+      {
+        "property": "offset",
+        "title": "Offset",
+        "description": "ပုံတွင် ဘယ် သို့မဟုတ် ညာ offset အသုံးချရန်။",
+        "options": {
+          "none": "မရှိ",
+          "wide": "ကျယ်",
+          "narrow": "ကျဉ်း"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "ကိုးကားမှု",
+        "description": "ပုံအတွက် ကိုးကားချက်။"
+      },
+      {
+        "property": "caption",
+        "title": "စာတန်း",
+        "description": "ပုံအတွက် စာတန်း။"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ပုံ ခေါင်းစဉ်",
+        "description": "ပုံ တံဆိပ်အတွက် ခေါင်းစဉ်။"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "ပုံ ဖော်ပြချက်",
+        "description": "ပုံ တံဆိပ်အတွက် ဖော်ပြချက်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Thumbnail ပုံ",
+        "description": "Thumbnail ပုံ ရင်းမြစ်။ thumbnail ကို ပြပြီး မူရင်း အပြည့်ကို မော်ဒယ်တွင် ဖွင့်သည်။"
+      },
+      {
+        "property": "round",
+        "title": "ဝိုင်းသော ပုံ",
+        "description": "ပုံ၏ အသွင်ကို စက်ဝိုင်းပုံ ဖြတ်ညှိသည်။"
+      },
+      {
+        "property": "disableZoom",
+        "title": "ပုံ မော်ဒယ် ပိတ်ရန်",
+        "description": "ပုံ စစ်ဆေးရေး ဒိုင်ယာလော့ခ်တွင် ပုံကို ဖွင့်သော နှိပ်ခြင်းများကို ပိတ်ရန်။"
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "markdown အဖြစ် ပြသရန်",
+        "description": "စာတန်းနှင့် ကိုးကားချက်ကို markdown အဖြစ် ပြသရန်။"
+      }
+    ]
+  }
+}

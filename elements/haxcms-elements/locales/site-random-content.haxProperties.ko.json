@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "무작위 페이지 콘텐츠",
+    "description": "선택한 페이지에서 무작위 최상위 요소 표시"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "페이지",
+        "description": "무작위 콘텐츠를 가져올 페이지를 선택하세요. 이 요소는 해당 페이지의 최상위 HTML 요소 중 하나를 무작위로 표시합니다."
+      }
+    ]
+  }
+}

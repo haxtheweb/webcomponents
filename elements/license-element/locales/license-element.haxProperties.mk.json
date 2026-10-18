@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Лиценца",
+    "description": "Обезбедете лиценца за вашето дело."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов на цитираното дело."
+      },
+      {
+        "property": "source",
+        "title": "Врска до изворот",
+        "description": "URL на изворот на лиценцираното дело."
+      },
+      {
+        "property": "license",
+        "title": "Лиценца",
+        "description": "Лиценца што се применува на ова дело."
+      },
+      {
+        "property": "creator",
+        "title": "Создавач",
+        "description": "Создавач или сопственик на ова дело."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Врска до изворот",
+        "description": "Врска до дополнителни детали за лиценцирањето."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Ознака за повеќе",
+        "description": "Ознака за дополнителните детали за лиценцирањето."
+      }
+    ]
+  }
+}

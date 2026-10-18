@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tötänleýin sahypa mazmuny",
+    "description": "Saýlanan sahypadan tötänleýin ýokary derejeli elementi görkez"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Sahypa",
+        "description": "Tötänleýin mazmun alynjak sahypany saýlaň. Element bu sahypadaky ýokary derejeli HTML elementleriniň birini tötänleýin görkezer."
+      }
+    ]
+  }
+}

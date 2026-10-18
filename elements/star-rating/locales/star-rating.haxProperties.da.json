@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Stjernebedømmelse",
+    "description": "Widget til visning af bedømmelse eller knap til at bedømme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Score",
+        "description": "Aktuel scoreværdi."
+      },
+      {
+        "property": "possible",
+        "title": "Mulig",
+        "description": "Maksimal mulig score."
+      },
+      {
+        "property": "numStars",
+        "title": "Antal stjerner",
+        "description": "Antal stjerner, der skal vises."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktiv",
+        "description": "Tillad brugerinteraktion til at angive bedømmelsen."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Rubrikskalatilstand",
+        "description": "Udsend OER Schema-metadata for RubricScale og RubricLevel (levelOrdinal/levelPoints) for hver stjerne."
+      }
+    ]
+  }
+}

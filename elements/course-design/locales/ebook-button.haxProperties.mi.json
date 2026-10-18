@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pātene pukapuka-e",
+    "description": "He pātene e hono ana ki tētahi pukapuka-e."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Te taitara o te pātene."
+      },
+      {
+        "property": "link",
+        "title": "Hono",
+        "description": "Te hono hei tukuatu ina pāwhiritia."
+      },
+      {
+        "property": "icon",
+        "title": "Ata tohu",
+        "description": "Ata hei tohu i tēnei hono"
+      }
+    ]
+  }
+}

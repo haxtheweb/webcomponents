@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lisensi",
+    "description": "Sediakan lisensi untuk karya Anda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Judul karya yang dikutip."
+      },
+      {
+        "property": "source",
+        "title": "Tautan sumber",
+        "description": "URL sumber untuk karya berlisensi."
+      },
+      {
+        "property": "license",
+        "title": "Lisensi",
+        "description": "Lisensi yang diterapkan pada karya ini."
+      },
+      {
+        "property": "creator",
+        "title": "Pembuat",
+        "description": "Pembuat atau pemilik karya ini."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Tautan sumber",
+        "description": "Tautan ke detail lisensi tambahan."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Label selengkapnya",
+        "description": "Label untuk detail lisensi tambahan."
+      }
+    ]
+  }
+}

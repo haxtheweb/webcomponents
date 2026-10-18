@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Кариерна роля",
+    "description": "Отделна роля в организация"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Заглавие"
+      },
+      {
+        "property": "startDate",
+        "title": "Начална дата"
+      },
+      {
+        "property": "endDate",
+        "title": "Крайна дата (незадължително)"
+      },
+      {
+        "property": "skills",
+        "title": "Свързани умения",
+        "description": "Изберете бутона +, за да започнете да добавяте умения"
+      }
+    ]
+  }
+}

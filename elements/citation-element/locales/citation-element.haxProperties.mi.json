@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Tohutoro",
+    "description": "Huānga tohutoro me ngā aratau whakaatu e toru."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Taitara o te mahi kua tohutorotia."
+      },
+      {
+        "property": "source",
+        "title": "Hono pūtake",
+        "description": "URL pūtake mō te mahi kua tohutorotia."
+      },
+      {
+        "property": "date",
+        "title": "Rā i torohia",
+        "description": "Te rā i torohia ai te pūtake."
+      },
+      {
+        "property": "scope",
+        "title": "Korahi",
+        "description": "Korahi huānga hei tohutoro.",
+        "options": {
+          "sibling": "Huānga tuakana-teina",
+          "parent": "Huānga matua"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Raihana",
+        "description": "Raihana mō te mahi kua tohutorotia."
+      },
+      {
+        "property": "creator",
+        "title": "Kaihanga",
+        "description": "Kaihanga, rangatira rānei o te mahi kua tohutorotia."
+      },
+      {
+        "property": "typeof",
+        "title": "Momo OER Schema",
+        "description": "Akomanga OER Schema mō tēnei tohutoro. Ko oer:ReferencedMaterial te taunoa; takahia anake ki tētahi akomanga OER tika (hei tauira, oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

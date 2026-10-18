@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Saka abun ciki na yanar gizo na waje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Tushe",
+        "description": "URL na wannan albarka."
+      }
+    ]
+  }
+}

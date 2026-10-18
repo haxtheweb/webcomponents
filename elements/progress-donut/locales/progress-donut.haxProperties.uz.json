@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Jarayon halqasi",
+    "description": "Jarayon halqa diagrammasi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Element sarlavhasi"
+      },
+      {
+        "property": "desc",
+        "title": "Tavsif",
+        "description": "Qulay uzun tavsif"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Rasm manbasi",
+        "description": "Halqa ichidagi rasm manbasi."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Rasm alt matni",
+        "description": "Rasm uchun alt matn."
+      },
+      {
+        "property": "animated",
+        "title": "Animatsiyali",
+        "description": "Birinchi yuklanishda jarayon animatsiya qilinadimi"
+      },
+      {
+        "property": "complete",
+        "title": "Tugallandi",
+        "description": "Bajarilgan qiymatlar massivi."
+      },
+      {
+        "property": "total",
+        "title": "Jami",
+        "description": "Barcha elementlar bajarilgandagi jami."
+      },
+      {
+        "property": "startAngle",
+        "title": "Boshlangʻich burchak",
+        "description": "Jarayon boshlanadigan halqa burchagi"
+      }
+    ]
+  }
+}

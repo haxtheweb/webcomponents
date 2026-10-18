@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-kubbur",
+    "description": "CMS-kubbur birtur á bakendanum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Eining",
+        "description": "Eining til að hlaða úr CMS-kerfinu okkar"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta kubbsins sem á að hlaða úr CMS-kerfinu okkar"
+      }
+    ]
+  }
+}

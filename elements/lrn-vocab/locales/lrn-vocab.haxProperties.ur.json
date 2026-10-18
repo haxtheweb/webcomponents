@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "ذخیرۂ الفاظ",
+    "description": "ذخیرۂ الفاظ کی اصطلاح"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "اصطلاح"
+      },
+      {
+        "slot": "",
+        "title": "تعریف",
+        "description": "اصطلاح پر کلک کرنے پر دکھائی جانے والی تعریف۔"
+      },
+      {
+        "property": "description",
+        "title": "وضاحت (OER Schema)",
+        "description": "OER Schema: ذخیرۂ الفاظ کی اصطلاح کی مختصر وضاحت۔ خالی چھوڑنے پر تعریف کے متن سے خود بخود بھر جاتی ہے۔"
+      }
+    ]
+  }
+}

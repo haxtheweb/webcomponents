@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Mazwi",
+    "description": "Izwi remazwi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Izwi"
+      },
+      {
+        "slot": "",
+        "title": "Tsanangudzo",
+        "description": "Tsananguro inoratidzwa kana izwi radzvanywa."
+      },
+      {
+        "property": "description",
+        "title": "Tsananguro (OER Schema)",
+        "description": "OER Schema: tsananguro pfupi yeizwi. Inozadzwa yega kubva pamavara etsananguro kana ikasiyiwa isina chinhu."
+      }
+    ]
+  }
+}

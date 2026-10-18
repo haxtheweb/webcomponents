@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kāleka kahiko",
+    "description": "Kāleka maʻalahi me ka hoʻolālā kahiko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Poʻo inoa",
+        "description": "Poʻo inoa kāleka nui."
+      },
+      {
+        "property": "url",
+        "description": "URL e wehe ai ke kaomi ʻia ke kāleka."
+      },
+      {
+        "property": "subtitle",
+        "title": "Poʻo inoa lalo",
+        "description": "Poʻo inoa lalo o ke kāleka."
+      },
+      {
+        "property": "tags",
+        "title": "Nā Lepili",
+        "description": "Nā lepili i hoʻokaʻawale ʻia me nā koma."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Kumu media",
+        "description": "Kumu media mua."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Kumu ke kau ka ʻiole",
+        "description": "Kumu media i hōʻike ʻia ke kau ka ʻiole ma luna o ke kāleka a i ʻole ke hoʻā ʻia."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu Kiko",
+        "description": "Waihoʻoluʻu kiko i kau ʻia ma ke kāleka holoʻokoʻa."
+      },
+      {
+        "property": "dark",
+        "title": "Pōuliuli",
+        "description": "Hoʻohana i nā waihoʻoluʻu kumu ʻano pōʻeleʻele."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Kitufe cha Maelezo Kinachofikika",
+    "description": "Ufichuzi wa hatua kwa hatua unaofikika kwa maelezo na muhtasari"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Kitufe",
+        "description": "Muhtasari wa maudhui yaliyofichwa, mf. \"maelezo\", \"metadata\", n.k."
+      },
+      {
+        "slot": "details",
+        "title": "Maelezo",
+        "description": "Maelezo ya kina yanayoweza kufichwa au kuonyeshwa"
+      },
+      {
+        "slot": "",
+        "title": "Kitufe cha Maelezo",
+        "description": "Chaguomsingi kwa kitufe kinachoonyesha/kuficha maandishi ya maelezo, mf. \"maelezo\", \"metadata\", n.k."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Maandishi ya hiari ya muhtasari maelezo yakiwa wazi"
+      },
+      {
+        "property": "closeText",
+        "title": "Maandishi ya hiari ya muhtasari maelezo yakiwa yamefungwa"
+      }
+    ]
+  }
+}

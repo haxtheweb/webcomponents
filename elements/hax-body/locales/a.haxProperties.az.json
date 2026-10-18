@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Əsas keçid",
+    "description": "Əsas keçid elementi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Keçid",
+        "description": "Təyinat URL-i."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Mətn",
+        "description": "Görünən keçid mətni."
+      },
+      {
+        "attribute": "target",
+        "title": "Hədəf",
+        "description": "Keçidin harada açılacağı.",
+        "options": {
+          "": "Eyni pəncərə",
+          "_blank": "Yeni pəncərə - _blank",
+          "_top": "Üst pəncərə - _top",
+          "_parent": "Ana pəncərə - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Başlıq mətni",
+        "description": "Əlçatanlıq və SEO üçün məsləhət xarakterli başlıq."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Təyinatla əlaqə (təhlükəsizlik/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Licenca",
+    "description": "Podajte licenco za svoje delo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov citiranega dela."
+      },
+      {
+        "property": "source",
+        "title": "Povezava do vira",
+        "description": "URL vira licenciranega dela."
+      },
+      {
+        "property": "license",
+        "title": "Licenca",
+        "description": "Licenca, uporabljena za to delo."
+      },
+      {
+        "property": "creator",
+        "title": "Ustvarjalec",
+        "description": "Ustvarjalec ali lastnik tega dela."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Povezava do vira",
+        "description": "Povezava do dodatnih podrobnosti o licenci."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Oznaka za več",
+        "description": "Oznaka za dodatne podrobnosti o licenci."
+      }
+    ]
+  }
+}

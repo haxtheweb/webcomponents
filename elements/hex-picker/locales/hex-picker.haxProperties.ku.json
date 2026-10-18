@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hilbijêrê Hex",
+    "description": "Hilbijêrê rengan bi koda hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Nirx",
+        "description": "Nirxa hex a xwerû"
+      },
+      {
+        "property": "disabled",
+        "title": "Neçalak",
+        "description": "Qada nivîsê neçalak bike"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Nîşandana Mezin",
+        "description": "Rengê di nîşandana mezin de bihewîne"
+      }
+    ]
+  }
+}

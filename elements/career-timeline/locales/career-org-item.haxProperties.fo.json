@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Starvslutur",
+    "description": "Ein einstakur felagsskapur og leiklutirnir, ið hoyra til"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Navn á felagsskapi"
+      },
+      {
+        "property": "location",
+        "title": "Staður"
+      },
+      {
+        "property": "source",
+        "title": "Kelda"
+      }
+    ]
+  }
+}

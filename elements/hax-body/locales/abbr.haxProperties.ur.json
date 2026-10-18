@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "مخفف",
+    "description": "مکمل اصطلاح کے ٹول ٹپ کے ساتھ مخفف۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "مخفف کا نظر آنے والا متن۔"
+      },
+      {
+        "attribute": "title",
+        "title": "لفظ",
+        "description": "ہوور پر دکھائی جانے والی مکمل اصطلاح۔"
+      }
+    ]
+  }
+}

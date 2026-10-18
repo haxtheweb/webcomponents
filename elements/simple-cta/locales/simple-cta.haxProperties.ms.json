@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Seruan tindakan",
+    "description": "Butang ringkas dengan pautan untuk mengambil tindakan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label pautan"
+      },
+      {
+        "property": "link",
+        "title": "Pautan",
+        "description": "Masukkan pautan ke mana-mana sumber"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Sembunyikan ikon",
+        "description": "Sembunyikan ikon yang digunakan untuk menyerikan teks"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon pautan tindakan"
+      }
+    ]
+  }
+}

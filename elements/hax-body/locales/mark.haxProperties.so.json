@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Iftiimi",
+    "description": "Iftiimi qoraalka gudaha ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Qoraal",
+        "description": "Qoraal la iftiimiyay."
+      }
+    ]
+  }
+}

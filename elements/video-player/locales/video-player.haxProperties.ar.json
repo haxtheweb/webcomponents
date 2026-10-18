@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "الفيديو",
+    "description": "تشغيل فيديو يسهل الوصول إليه عبر مصادر متعددة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "المصدر",
+        "description": "URL هذه الوسائط."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "العنوان",
+        "description": "العنوان المعروض أسفل الفيديو."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "صورة الملصق",
+        "description": "URL صورة الملصق."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "المسارات النصية",
+        "description": "الترجمة المصاحبة والترجمات والأوصاف والمسارات النصية الأخرى للفيديو."
+      },
+      {
+        "property": "startTime",
+        "title": "وقت البدء",
+        "description": "بدء الفيديو عند وقت محدد (بالثواني)."
+      },
+      {
+        "property": "endTime",
+        "title": "وقت الانتهاء",
+        "description": "إنهاء الفيديو عند وقت محدد (بالثواني)، يتطلب وقت بدء."
+      },
+      {
+        "property": "learningMode",
+        "title": "تفعيل وضع التعلّم",
+        "description": "يعطّل التقديم السريع والترجيع."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "إزالة زر الفتح على YouTube",
+        "description": "يزيل زر فتح الفيديو على YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "تضمين رابط مشاركة؟",
+        "description": "يوفر رابطًا لمشاركة الفيديو."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "إخفاء الطوابع الزمنية",
+        "description": "إخفاء الطوابع الزمنية في النص المكتوب."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "إخفاء النص المكتوب",
+        "description": "إخفاء النص المكتوب افتراضيًا."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "مسار الوصف الصوتي",
+        "description": "URL لمسار وصف صوتي (ملف MP3) يقدم سردًا للعناصر المرئية."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "يشير إلى ما إذا كان سيتم استخدام CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "السماح بالتشغيل في الخلفية",
+        "description": "مواصلة التشغيل عندما تفقد علامة تبويب المتصفح التركيز."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "سمة داكنة للنص المكتوب",
+        "description": "تفعيل السمة الداكنة للنص المكتوب."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "تعطيل التفاعل",
+        "description": "تعطيل الوضع التفاعلي الذي يجعل النص المكتوب قابلًا للنقر."
+      },
+      {
+        "property": "lang",
+        "title": "اللغة",
+        "description": "لغة الوسائط."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "(مُهمل) اختر لون التمييز للمشغّل."
+      }
+    ]
+  }
+}

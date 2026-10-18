@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Lista punktowana",
+    "description": "Utwórz listę punktowaną."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Styl punktorów",
+        "description": "Styl punktorów listy nieuporządkowanej.",
+        "options": {
+          "": "Domyślny (kwadrat)",
+          "list-disc": "Pełne koło",
+          "list-circle": "Okrąg",
+          "list-square": "Kwadrat"
+        }
+      }
+    ]
+  }
+}

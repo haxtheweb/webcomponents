@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Číslovaný seznam",
+    "description": "Vytvořit číslovaný seznam."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Styl číslování",
+        "description": "Styl použitý pro číslování uspořádaného seznamu.",
+        "options": {
+          "": "Výchozí (desítkové)",
+          "list-decimal-leading-zero": "Desítkové s úvodní nulou (01, 02, 03)",
+          "list-lower-alpha": "Malá písmena (a, b, c)",
+          "list-upper-alpha": "Velká písmena (A, B, C)",
+          "list-lower-roman": "Malé římské číslice (i, ii, iii)",
+          "list-upper-roman": "Velké římské číslice (I, II, III)"
+        }
+      }
+    ]
+  }
+}

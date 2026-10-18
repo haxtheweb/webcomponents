@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Atsitiktinis puslapio turinys",
+    "description": "Rodyti atsitiktinį aukščiausio lygio elementą iš pasirinkto puslapio"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Puslapis",
+        "description": "Pasirinkite puslapį, iš kurio imti atsitiktinį turinį. Elementas atsitiktinai parodys vieną iš šio puslapio aukščiausio lygio HTML elementų."
+      }
+    ]
+  }
+}

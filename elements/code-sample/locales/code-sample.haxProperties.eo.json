@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Koda specimeno",
+    "description": "Specimeno de kodo emfazita en la paĝo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Koda emfazado",
+        "description": "Sintaksa emfazado aplikota al la koda areo",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-datumoj",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Butono por kopii al la tondujo",
+        "description": "butono supre dekstre, kiu diras kopii al la tondujo"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Komenco de emfazo",
+        "description": "Linionumero por komenci emfazi"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Fino de emfazo",
+        "description": "Linio ĉe kiu fini emfazi"
+      }
+    ]
+  }
+}

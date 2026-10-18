@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "వీడియో",
+    "description": "బహుళ మూలాల అంతటా యాక్సెసిబుల్ వీడియో ప్లేబ్యాక్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "మూలం",
+        "description": "ఈ మీడియా కోసం URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "శీర్షిక",
+        "description": "వీడియో కింద చూపబడే శీర్షిక."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "పోస్టర్ చిత్రం",
+        "description": "పోస్టర్ చిత్ర URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "టెక్స్ట్ ట్రాక్‌లు",
+        "description": "వీడియో కోసం క్లోజ్డ్ క్యాప్షన్‌లు, ఉపశీర్షికలు, వివరణలు మరియు ఇతర టెక్స్ట్ ట్రాక్‌లు."
+      },
+      {
+        "property": "startTime",
+        "title": "ప్రారంభ సమయం",
+        "description": "వీడియోను నిర్దిష్ట సమయంలో ప్రారంభించండి (సెకన్లు)."
+      },
+      {
+        "property": "endTime",
+        "title": "ముగింపు సమయం",
+        "description": "వీడియోను నిర్దిష్ట సమయంలో ముగించండి (సెకన్లు), ప్రారంభ సమయం అవసరం."
+      },
+      {
+        "property": "learningMode",
+        "title": "లెర్నింగ్ మోడ్‌ను ప్రారంభించండి",
+        "description": "ఫాస్ట్ ఫార్వర్డ్ మరియు రివైండ్‌ను నిలిపివేస్తుంది."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTubeలో తెరవండి బటన్‌ను తొలగించండి",
+        "description": "వీడియోను YouTubeలో తెరవడానికి బటన్‌ను తొలగిస్తుంది."
+      },
+      {
+        "property": "linkable",
+        "title": "షేర్ లింక్‌ను చేర్చాలా?",
+        "description": "వీడియోను షేర్ చేయడానికి లింక్‌ను అందిస్తుంది."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "టైమ్‌స్టాంప్‌లను దాచండి",
+        "description": "ట్రాన్స్‌క్రిప్ట్‌పై టైమ్ స్టాంప్‌లను దాచండి."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ట్రాన్స్‌క్రిప్ట్‌ను దాచండి",
+        "description": "డిఫాల్ట్‌గా ట్రాన్స్‌క్రిప్ట్‌ను దాచండి."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "ఆడియో వివరణ ట్రాక్",
+        "description": "దృశ్య అంశాలను వివరించే ఆడియో వివరణ ట్రాక్ (MP3 ఫైల్) యొక్క URL."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS ఉపయోగించాలో లేదో సూచిస్తుంది.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "నేపథ్య ప్లేబ్యాక్‌ను అనుమతించండి",
+        "description": "బ్రౌజర్ ట్యాబ్ ఫోకస్ కోల్పోయినప్పుడు కూడా ప్లే అవుతూ ఉండండి."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ట్రాన్స్‌క్రిప్ట్ కోసం డార్క్ థీమ్",
+        "description": "ట్రాన్స్‌క్రిప్ట్ కోసం డార్క్ థీమ్‌ను ప్రారంభించండి."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ఇంటరాక్టివ్‌ను నిలిపివేయండి",
+        "description": "ట్రాన్స్‌క్రిప్ట్‌ను క్లిక్ చేయగలిగేలా చేసే ఇంటరాక్టివ్ మోడ్‌ను నిలిపివేయండి."
+      },
+      {
+        "property": "lang",
+        "title": "భాష",
+        "description": "మీడియా యొక్క భాష."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "(విస్మరించబడింది) ప్లేయర్ కోసం యాక్సెంట్ రంగును ఎంచుకోండి."
+      }
+    ]
+  }
+}

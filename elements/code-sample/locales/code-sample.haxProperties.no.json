@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kodeeksempel",
+    "description": "Et kodeeksempel med utheving på siden"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kodeutheving",
+        "description": "Syntaksutheving som skal brukes på kodeområdet",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-data",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Knapp for kopiering til utklippstavlen",
+        "description": "knapp øverst til høyre der det står kopier til utklippstavlen"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Start på utheving",
+        "description": "Linjenummer der uthevingen starter"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Slutt på utheving",
+        "description": "Linje der uthevingen slutter"
+      }
+    ]
+  }
+}

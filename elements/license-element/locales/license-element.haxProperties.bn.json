@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "লাইসেন্স",
+    "description": "আপনার কাজের জন্য একটি লাইসেন্স দিন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "উদ্ধৃত কাজের শিরোনাম।"
+      },
+      {
+        "property": "source",
+        "title": "সোর্স লিংক",
+        "description": "লাইসেন্সকৃত কাজের সোর্স URL।"
+      },
+      {
+        "property": "license",
+        "title": "লাইসেন্স",
+        "description": "এই কাজে প্রয়োগ করা লাইসেন্স।"
+      },
+      {
+        "property": "creator",
+        "title": "স্রষ্টা",
+        "description": "এই কাজের স্রষ্টা বা মালিক।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "সোর্স লিংক",
+        "description": "অতিরিক্ত লাইসেন্সিং বিবরণের লিংক।"
+      },
+      {
+        "property": "moreLabel",
+        "title": "আরও লেবেল",
+        "description": "অতিরিক্ত লাইসেন্সিং বিবরণের লেবেল।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ukubuka kwe-CMS",
+    "description": "Ukubuka kwe-CMS okuboniswa ku-backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Igama",
+        "description": "Igama lokubuka kusuka ku-CMS yethu"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Ukubonisa",
+        "description": "Ukubonisa ngaphakathi kwalokho kubuka kusuka ku-CMS yethu"
+      }
+    ]
+  }
+}

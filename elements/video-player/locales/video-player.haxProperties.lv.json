@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Pieejama video atskaņošana no vairākiem avotiem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Avots",
+        "description": "Šīs multivides URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Nosaukums",
+        "description": "Nosaukums, kas parādīts zem video."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Plakāta attēls",
+        "description": "Plakāta attēla URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Teksta celiņi",
+        "description": "Slēptie titri, subtitri, apraksti un citi video teksta celiņi."
+      },
+      {
+        "property": "startTime",
+        "title": "Sākuma laiks",
+        "description": "Sākt video noteiktā laikā (sekundēs)."
+      },
+      {
+        "property": "endTime",
+        "title": "Beigu laiks",
+        "description": "Beigt video noteiktā laikā (sekundēs), nepieciešams sākuma laiks."
+      },
+      {
+        "property": "learningMode",
+        "title": "Iespējot mācību režīmu",
+        "description": "Atspējo ātro patīšanu uz priekšu un atpakaļ."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Noņemt pogu Atvērt YouTube",
+        "description": "Noņem pogu video atvēršanai YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Iekļaut kopīgošanas saiti?",
+        "description": "Nodrošina saiti video kopīgošanai."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Paslēpt laikspiedolus",
+        "description": "Paslēpt laikspiedolus transkripcijā."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Paslēpt transkripciju",
+        "description": "Pēc noklusējuma paslēpt transkripciju."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Audioapraksta celiņš",
+        "description": "Audioapraksta celiņa (MP3 faila) URL, kas sniedz vizuālo elementu stāstījumu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Norāda, vai izmantot CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Atļaut atskaņošanu fonā",
+        "description": "Turpināt atskaņošanu, kad pārlūka cilne zaudē fokusu."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tumšais motīvs transkripcijai",
+        "description": "Iespējot tumšo motīvu transkripcijai."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Atspējot interaktivitāti",
+        "description": "Atspējot interaktīvo režīmu, kas padara transkripciju noklikšķināmu."
+      },
+      {
+        "property": "lang",
+        "title": "Valoda",
+        "description": "Multivides valoda."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "(novecojis) Izvēlieties atskaņotāja akcenta krāsu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: çaga bloky",
+    "description": "Häzirki sahypanyň çagasyny görkezýän dinamiki blok"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dinamiki usul",
+        "description": "Çagalary bu elemente görä nädip hasaplamaly",
+        "options": {
+          "active": "Işjeň çagalar",
+          "parent": "Ene sahypanyň çagalary",
+          "ancestor": "Iň ýokarky ata sahypadan ähli çagalar"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Başlangyç dereje"
+      },
+      {
+        "property": "end",
+        "title": "Soňky dereje"
+      }
+    ]
+  }
+}

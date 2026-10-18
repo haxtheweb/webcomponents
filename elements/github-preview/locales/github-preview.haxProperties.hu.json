@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub-előnézet",
+    "description": "Akadálymentes ábra hosszú leírással"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Szervezet",
+        "description": "A GitHub-szervezet gépi neve"
+      },
+      {
+        "property": "repo",
+        "title": "Tároló",
+        "description": "A tároló gépi neve"
+      },
+      {
+        "property": "extended",
+        "title": "Bővített nézet",
+        "description": "Beleveszi a readme-t az elembe"
+      }
+    ]
+  }
+}

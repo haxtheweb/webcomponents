@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Náhodný obsah stránky",
+    "description": "Zobrazenie náhodného prvku najvyššej úrovne z vybranej stránky"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Stránka",
+        "description": "Vyberte stránku, z ktorej sa má čerpať náhodný obsah. Prvok náhodne zobrazí jeden z prvkov HTML najvyššej úrovne z tejto stránky."
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Ról Gairme",
+    "description": "Ról aonair laistigh d'eagraíocht"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teideal"
+      },
+      {
+        "property": "startDate",
+        "title": "Dáta Tosaigh"
+      },
+      {
+        "property": "endDate",
+        "title": "Dáta Deiridh (Roghnach)"
+      },
+      {
+        "property": "skills",
+        "title": "Scileanna Gaolmhara",
+        "description": "Roghnaigh an cnaipe + chun tosú ag cur scileanna leis"
+      }
+    ]
+  }
+}

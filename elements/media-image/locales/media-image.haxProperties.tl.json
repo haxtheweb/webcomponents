@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Pinahusay na Larawan",
+    "description": "Isang paraan ng pagpapakita ng mga larawan na may iba't ibang pagpapahusay."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pinagmulan",
+        "description": "Ang URL para sa larawan."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatibong teksto",
+        "description": "Teksto para ilarawan ang larawan sa mga user na hindi nakakakita."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "I-link ang larawan sa isang URL"
+      },
+      {
+        "property": "card",
+        "title": "Card",
+        "description": "Maglapat ng drop shadow para magmukhang nakaangat na card."
+      },
+      {
+        "property": "box",
+        "title": "Kahon",
+        "description": "Maglapat ng biswal na kahon sa paligid ng larawan."
+      },
+      {
+        "property": "offset",
+        "title": "Offset",
+        "description": "Maglapat ng offset sa kaliwa o kanan ng larawan.",
+        "options": {
+          "none": "wala",
+          "wide": "malapad",
+          "narrow": "makitid"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Sipi",
+        "description": "Sipi para sa larawan."
+      },
+      {
+        "property": "caption",
+        "title": "Caption",
+        "description": "Caption para sa larawan."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Pamagat ng Figure",
+        "description": "Pamagat para sa label ng figure."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Paglalarawan ng Figure",
+        "description": "Paglalarawan para sa label ng figure."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Thumbnail na larawan",
+        "description": "Source ng thumbnail na larawan. Ipinapakita ang thumbnail pero binubuksan ang buong source sa modal."
+      },
+      {
+        "property": "round",
+        "title": "Bilog na larawan",
+        "description": "Kina-crop ang hitsura ng larawan para maging hugis bilog."
+      },
+      {
+        "property": "disableZoom",
+        "title": "I-disable ang image modal",
+        "description": "I-disable ang pagbubukas ng larawan sa image inspector dialog kapag na-click."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "I-render bilang markdown",
+        "description": "I-render ang caption at sipi bilang markdown."
+      }
+    ]
+  }
+}

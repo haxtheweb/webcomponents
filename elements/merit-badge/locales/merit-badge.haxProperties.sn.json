@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Bheji reKukudzwa",
+    "description": "Bheji rinooneka rinoratidza kuwana unyanzvi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Zita reBheji",
+        "description": "Zita rinoratidzwa pabheji."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Mufananidzo weBheji",
+        "description": "URL yemufananidzo webheji."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Ruzivo rweBheji",
+        "description": "Ruzivo nezvebheji."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Chinongedzo",
+        "description": "Chinongedzo chine chekuita nebheji."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Unyanzvi hweBheji",
+        "description": "Unyanzvi hunoratidzwa pabheji."
+      },
+      {
+        "property": "skill",
+        "title": "Unyanzvi (OER Schema)",
+        "description": "OER Schema: unyanzvi hwakadzidzwa hunowanikwa nekupedza chinangwa ichi chekudzidza."
+      }
+    ]
+  }
+}

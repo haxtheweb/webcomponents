@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kod nümunəsi",
+    "description": "Səhifədə vurğulanmış kod nümunəsi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kod vurğulama",
+        "description": "Kod sahəsinə tətbiq ediləcək sintaksis vurğulaması",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON məlumatları",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Mübadilə buferinə kopyalama düyməsi",
+        "description": "yuxarı sağ küncdə \"mübadilə buferinə kopyala\" yazılan düymə"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Vurğulamanın başlanğıcı",
+        "description": "Vurğulamanın başladığı sətir nömrəsi"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Vurğulamanın sonu",
+        "description": "Vurğulamanın bitdiyi sətir"
+      }
+    ]
+  }
+}

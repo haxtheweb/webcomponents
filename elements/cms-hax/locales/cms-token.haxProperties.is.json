@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS-tóki",
+    "description": "CMS-tóki birtur á bakendanum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Tóki",
+        "description": "Tóki úr CMS-kerfinu okkar"
+      }
+    ]
+  }
+}

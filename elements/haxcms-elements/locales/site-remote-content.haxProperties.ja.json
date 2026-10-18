@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "リモートコンテンツ",
+    "description": "あるサイトのコンテンツを別のサイトで再利用します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "サイトのアドレス",
+        "description": "現在のサイト以外からコンテンツを参照する場合は、そのアドレスを貼り付けてください"
+      },
+      {
+        "property": "uuid",
+        "title": "項目",
+        "description": "リンク / タイトルのデータとして表示する項目"
+      },
+      {
+        "property": "breakreference",
+        "title": "参照を解除",
+        "description": "このボックスをオンにすると、リモートコンテンツがローカルで編集できるようにコピーされますが、関連付けは削除されます。参照元が更新されても、更新は反映されなくなります。"
+      },
+      {
+        "property": "showTitle",
+        "title": "タイトルを表示",
+        "description": "オンにすると、表示中のリソースのタイトルを表示します"
+      }
+    ]
+  }
+}

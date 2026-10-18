@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "拡張画像",
+    "description": "さまざまな拡張機能で画像を表示する方法。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ソース",
+        "description": "画像のURL。"
+      },
+      {
+        "property": "alt",
+        "title": "代替テキスト",
+        "description": "目の見えないユーザーに画像を説明するテキスト。"
+      },
+      {
+        "property": "link",
+        "title": "リンク",
+        "description": "画像をURLにリンクします"
+      },
+      {
+        "property": "card",
+        "title": "カード",
+        "description": "ドロップシャドウを適用して、浮き上がったカードのように見せます。"
+      },
+      {
+        "property": "box",
+        "title": "ボックス",
+        "description": "画像の周囲に視覚的なボックスを適用します。"
+      },
+      {
+        "property": "offset",
+        "title": "オフセット",
+        "description": "画像に左または右のオフセットを適用します。",
+        "options": {
+          "none": "なし",
+          "wide": "広い",
+          "narrow": "狭い"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "出典",
+        "description": "画像の出典。"
+      },
+      {
+        "property": "caption",
+        "title": "キャプション",
+        "description": "画像のキャプション。"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "図のタイトル",
+        "description": "図ラベルのタイトル。"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "図の説明",
+        "description": "図ラベルの説明。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "サムネイル画像",
+        "description": "サムネイル画像のソース。サムネイルを表示し、モーダルで元の画像を開きます。"
+      },
+      {
+        "property": "round",
+        "title": "丸い画像",
+        "description": "画像の表示を円形に切り抜きます。"
+      },
+      {
+        "property": "disableZoom",
+        "title": "画像モーダルを無効化",
+        "description": "クリックで画像インスペクターダイアログが開かないようにします。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Markdownとして表示",
+        "description": "キャプションと出典をMarkdownとして表示します。"
+      }
+    ]
+  }
+}

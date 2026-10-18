@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Seznam z oznakami",
+    "description": "Ustvari seznam z oznakami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Slog oznak",
+        "description": "Slog oznak neurejenega seznama.",
+        "options": {
+          "": "Privzeto (kvadrat)",
+          "list-disc": "Polni krog",
+          "list-circle": "Krog",
+          "list-square": "Kvadrat"
+        }
+      }
+    ]
+  }
+}

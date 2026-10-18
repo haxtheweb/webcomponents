@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "મૂળભૂત લિંક",
+    "description": "મૂળભૂત લિંક એલિમેન્ટ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "લિંક",
+        "description": "ગંતવ્ય URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "લખાણ",
+        "description": "દૃશ્યમાન લિંક ટેક્સ્ટ."
+      },
+      {
+        "attribute": "target",
+        "title": "લક્ષ્ય",
+        "description": "લિંક ક્યાં ખોલવી.",
+        "options": {
+          "": "એ જ વિન્ડો",
+          "_blank": "નવી વિન્ડો - _blank",
+          "_top": "ટોચની વિન્ડો - _top",
+          "_parent": "પેરેન્ટ વિન્ડો - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "શીર્ષક ટેક્સ્ટ",
+        "description": "સુલભતા અને SEO માટે સલાહકારી શીર્ષક."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "ગંતવ્ય સાથેનો સંબંધ (સુરક્ષા/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

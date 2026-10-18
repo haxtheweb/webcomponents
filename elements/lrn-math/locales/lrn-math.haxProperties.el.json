@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Μαθηματικά",
+    "description": "Παρουσίαση μαθηματικών με ωραίο τρόπο."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Μαθηματικά",
+        "description": "Εισαγάγετε την εξίσωση σε LaTeX"
+      }
+    ]
+  }
+}

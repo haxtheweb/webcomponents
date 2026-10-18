@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P-Element",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Text",
+        "description": "Inhalt der Randnotiz"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Ilaalcha Marsariitii",
+    "description": "Boolokii socho'aa ulaagaa irratti hundaa'uun daataa marsariitii gaafatee agarsiisu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Ilaalchaa",
+        "description": "Qabxiilee gaaffii dhiyeessa daataa ilaalchaatiif. Kana daashboordii Ilaalchota irraa argachuu dandeessa."
+      },
+      {
+        "property": "renderer",
+        "title": "Haala agarsiisaa",
+        "description": "Bu'aan ilaalchaa akkamitti akka agarsiifamu"
+      },
+      {
+        "property": "entity",
+        "title": "Gosa qaamaa",
+        "description": "Gosa qaamaa deebii xiinxaluuf fayyadamu",
+        "options": {
+          "": "Durtii (wantoota)",
+          "item": "Wanta",
+          "page": "Fuula",
+          "file": "Faayilii",
+          "tag": "Mallattoo",
+          "block": "Bilookii",
+          "view": "Ilaalcha",
+          "theme": "Dhiyeessa",
+          "region": "Naannoo",
+          "customElement": "Elementii Dhuunfaa"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Ilaalcha marsariitii citi",
+        "description": "Kallattiin gulaaluuf gara qabiyyee dhaabbataatti jijjiiri; madda irraa ofumaan haaromuu dhaaba."
+      }
+    ]
+  }
+}

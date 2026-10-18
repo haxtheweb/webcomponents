@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Scheda",
+    "description": "Una singola scheda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icona della scheda"
+      },
+      {
+        "property": "disabled",
+        "title": "Disattivato"
+      },
+      {
+        "property": "label",
+        "title": "Etichetta della scheda"
+      },
+      {
+        "slot": "",
+        "title": "Contenuto della scheda",
+        "description": "Il contenuto della scheda."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID univoco"
+      },
+      {
+        "property": "flag",
+        "title": "Testo del contrassegno facoltativo"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Icona del contrassegno facoltativa"
+      }
+    ]
+  }
+}

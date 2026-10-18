@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ретро карта",
+    "description": "Проста карта с ретро дизайн."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Заглавие",
+        "description": "Основно заглавие на картата."
+      },
+      {
+        "property": "url",
+        "description": "URL, който да се отвори при щракване върху картата."
+      },
+      {
+        "property": "subtitle",
+        "title": "Подзаглавие",
+        "description": "Подзаглавие на картата."
+      },
+      {
+        "property": "tags",
+        "title": "Етикети",
+        "description": "Етикети, разделени със запетаи."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Източник на медия",
+        "description": "Основен източник на медия."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Източник при посочване",
+        "description": "Източник на медия, показван при посочване или активиране на картата."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентен цвят",
+        "description": "Акцентен цвят, прилаган в цялата карта."
+      },
+      {
+        "property": "dark",
+        "title": "Тъмен",
+        "description": "Използване на основните цветове на тъмния режим."
+      }
+    ]
+  }
+}

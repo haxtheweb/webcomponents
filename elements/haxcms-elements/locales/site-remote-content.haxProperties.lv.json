@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Attālināts saturs",
+    "description": "Atkārtoti izmantot vienas vietnes saturu citā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Vietnes adrese",
+        "description": "Ielīmējiet adresi, no kuras atsaukties uz saturu, ja tā nav pašreizējā vietne"
+      },
+      {
+        "property": "uuid",
+        "title": "Vienums",
+        "description": "Vienums, ko attēlot saites / nosaukuma datiem"
+      },
+      {
+        "property": "breakreference",
+        "title": "Pārtraukt atsauci",
+        "description": "Atzīmējot šo rūtiņu, attālinātais saturs tiek nokopēts lokālai rediģēšanai, bet sasaiste tiek noņemta. Tas vairs nesaņems atjauninājumus, kad tiks atjaunināts atsauces materiāls."
+      },
+      {
+        "property": "showTitle",
+        "title": "Rādīt nosaukumu",
+        "description": "Ieslēdziet, lai attēlotu rādāmā resursa nosaukumu"
+      }
+    ]
+  }
+}

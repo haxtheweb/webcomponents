@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex ընտրիչ",
+    "description": "Hex կոդով գույնի ընտրիչ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Արժեք",
+        "description": "Լռելյայն hex արժեք"
+      },
+      {
+        "property": "disabled",
+        "title": "Անջատված",
+        "description": "Անջատել տեքստային դաշտը"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Մեծ ցուցադրում",
+        "description": "Ներառել գույնը մեծ ցուցադրմամբ"
+      }
+    ]
+  }
+}

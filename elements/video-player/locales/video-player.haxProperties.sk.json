@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Prístupné prehrávanie videa z viacerých zdrojov."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Zdroj",
+        "description": "URL tohto média."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Názov",
+        "description": "Názov zobrazený pod videom."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Plagát",
+        "description": "URL obrázka plagátu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Textové stopy",
+        "description": "Skryté titulky, titulky, opisy a ďalšie textové stopy videa."
+      },
+      {
+        "property": "startTime",
+        "title": "Čas začiatku",
+        "description": "Spustiť video v konkrétnom čase (sekundy)."
+      },
+      {
+        "property": "endTime",
+        "title": "Čas konca",
+        "description": "Ukončiť video v konkrétnom čase (sekundy), vyžaduje čas začiatku."
+      },
+      {
+        "property": "learningMode",
+        "title": "Zapnúť režim učenia",
+        "description": "Vypne pretáčanie dopredu a dozadu."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Odstrániť tlačidlo otvorenia na YouTube",
+        "description": "Odstráni tlačidlo na otvorenie videa na YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Zahrnúť odkaz na zdieľanie?",
+        "description": "Poskytne odkaz na zdieľanie videa."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Skryť časové značky",
+        "description": "Skryť časové značky v prepise."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Skryť prepis",
+        "description": "Predvolene skryť prepis."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Stopa zvukového opisu",
+        "description": "URL stopy zvukového opisu (súbor MP3), ktorá poskytuje komentár k vizuálnym prvkom."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Určuje, či sa má použiť CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Povoliť prehrávanie na pozadí",
+        "description": "Pokračovať v prehrávaní, keď karta prehliadača stratí fokus."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tmavá téma pre prepis",
+        "description": "Zapnúť tmavú tému pre prepis."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Vypnúť interaktivitu",
+        "description": "Vypnúť interaktívny režim, v ktorom je prepis klikateľný."
+      },
+      {
+        "property": "lang",
+        "title": "Jazyk",
+        "description": "Jazyk média."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "(zastarané) Vyberte farbu zvýraznenia prehrávača."
+      }
+    ]
+  }
+}

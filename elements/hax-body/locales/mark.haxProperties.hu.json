@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kiemelés",
+    "description": "Szövegközi szöveg kiemelése."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Szöveg",
+        "description": "Kiemelt szöveg."
+      }
+    ]
+  }
+}

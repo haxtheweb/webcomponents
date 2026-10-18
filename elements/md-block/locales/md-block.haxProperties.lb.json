@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "E Block mat Markdown-Inhalt, direkt oder vu wäitem gelueden"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Réie Markdown"
+      },
+      {
+        "property": "source",
+        "title": "Quell",
+        "description": "Quellfichier fir de Markdown"
+      }
+    ]
+  }
+}

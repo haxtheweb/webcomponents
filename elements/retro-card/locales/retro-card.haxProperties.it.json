@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Scheda retrò",
+    "description": "Scheda semplice con un design retrò."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo principale della scheda."
+      },
+      {
+        "property": "url",
+        "description": "URL da aprire quando si fa clic sulla scheda."
+      },
+      {
+        "property": "subtitle",
+        "title": "Sottotitolo",
+        "description": "Sottotitolo della scheda."
+      },
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Tag separati da virgole."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Sorgente multimediale",
+        "description": "Sorgente multimediale principale."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Sorgente al passaggio del mouse",
+        "description": "Sorgente multimediale mostrata quando si passa sopra la scheda o la si attiva."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Colore di risalto applicato a tutta la scheda."
+      },
+      {
+        "property": "dark",
+        "title": "Scuro",
+        "description": "Usa i colori di base della modalità scura."
+      }
+    ]
+  }
+}

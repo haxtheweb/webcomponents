@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Qindaa'ina utubaa",
+    "description": "Meeshaa utubaa salphaa keessatti qindeessi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Qindaa'ina Utubaa",
+        "description": "Haala wantoota kana itti dhiyeessan (iskiriinii xiqqaaf jijjiiramuu danda'a)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Deebii-kennuu dhorki",
+        "description": "Iskiriinii xixiqqaa irratti tuulamuu itti fufaa iskiriinii gurguddaa irratti utubaawwan eeguuf saanduqa mallatteessi"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Iddoo Keessaa Wantaa",
+        "description": "Iddoo tokkoon tokkoon wantaa keessaa"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Iddoo alaa wantaa",
+        "description": "Iddoo wantoota gidduu"
+      }
+    ]
+  }
+}

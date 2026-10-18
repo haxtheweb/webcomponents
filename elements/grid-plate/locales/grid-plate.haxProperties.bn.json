@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "কলাম লেআউট",
+    "description": "সাধারণ কলামে উপকরণ বিন্যাস করুন"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "কলাম লেআউট",
+        "description": "এই আইটেমগুলো উপস্থাপনের স্টাইল (ছোট স্ক্রিনে বদলাতে পারে)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "রেসপনসিভ বন্ধ করুন",
+        "description": "সবচেয়ে ছোট স্ক্রিনে স্তূপাকারে রেখেও বড় স্ক্রিনে কলাম বজায় রাখতে বক্সে টিক দিন"
+      },
+      {
+        "property": "itemPadding",
+        "title": "আইটেম প্যাডিং",
+        "description": "প্রতিটি আইটেমের ভেতরের প্যাডিং"
+      },
+      {
+        "property": "itemMargin",
+        "title": "আইটেম মার্জিন",
+        "description": "আইটেমগুলোর মধ্যে মার্জিন"
+      }
+    ]
+  }
+}

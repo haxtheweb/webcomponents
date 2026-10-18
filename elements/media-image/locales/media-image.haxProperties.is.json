@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Endurbætt mynd",
+    "description": "Leið til að birta myndir með ýmsum endurbótum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Uppruni",
+        "description": "URL myndarinnar."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-texti",
+        "description": "Texti sem lýsir myndinni fyrir blinda notendur."
+      },
+      {
+        "property": "link",
+        "title": "Tengill",
+        "description": "Tengja myndina við URL"
+      },
+      {
+        "property": "card",
+        "title": "Spjald",
+        "description": "Bæta við skugga svo hún líti út eins og upphækkað spjald."
+      },
+      {
+        "property": "box",
+        "title": "Kassi",
+        "description": "Bæta sjónrænum kassa utan um myndina."
+      },
+      {
+        "property": "offset",
+        "title": "Hliðrun",
+        "description": "Hliðra myndinni til vinstri eða hægri.",
+        "options": {
+          "none": "engin",
+          "wide": "breið",
+          "narrow": "mjó"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Heimild",
+        "description": "Heimild myndarinnar."
+      },
+      {
+        "property": "caption",
+        "title": "Myndatexti",
+        "description": "Myndatexti myndarinnar."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titill myndar",
+        "description": "Titill myndamerkisins."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Lýsing myndar",
+        "description": "Lýsing myndamerkisins."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Smámynd",
+        "description": "Uppruni smámyndar. Sýnir smámynd en opnar fullan uppruna í glugga."
+      },
+      {
+        "property": "round",
+        "title": "Hringlaga mynd",
+        "description": "Sker myndina þannig að hún birtist hringlaga."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Slökkva á myndaglugga",
+        "description": "Koma í veg fyrir að smellur opni myndina í myndskoðunarglugga."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Birta sem markdown",
+        "description": "Birta myndatexta og heimild sem markdown."
+      }
+    ]
+  }
+}

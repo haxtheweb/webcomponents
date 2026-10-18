@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ગ્રંથસૂચિ આઇટમ",
+    "description": "ગ્રંથસૂચિમાં એક સંદર્ભ દર્શાવતી આઇટમ, જે અનેક ફોર્મેટ્સ અને નિકાસ વિકલ્પોને સમર્થન આપે છે."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "પ્રકાર",
+        "description": "સંદર્ભ પ્રકાર",
+        "options": {
+          "web": "વેબ",
+          "journal": "જર્નલ",
+          "book": "પુસ્તક"
+        }
+      },
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "આઇટમનું શીર્ષક"
+      },
+      {
+        "property": "authors",
+        "title": "લેખક(કો)",
+        "description": "ટાઇમલાઇનમાંની ઘટનાઓ"
+      },
+      {
+        "property": "publisher",
+        "title": "પ્રકાશક",
+        "description": "મૂળ વેબસાઇટ"
+      }
+    ]
+  }
+}

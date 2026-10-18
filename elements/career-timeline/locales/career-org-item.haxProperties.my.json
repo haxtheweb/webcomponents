@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "အသက်မွေးဝမ်းကျောင်း အရာ",
+    "description": "အဖွဲ့အစည်း တစ်ခုနှင့် ၎င်းနှင့် ဆက်စပ်သော ရာထူးများ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "အဖွဲ့အစည်း အမည်"
+      },
+      {
+        "property": "location",
+        "title": "တည်နေရာ"
+      },
+      {
+        "property": "source",
+        "title": "ရင်းမြစ်"
+      }
+    ]
+  }
+}

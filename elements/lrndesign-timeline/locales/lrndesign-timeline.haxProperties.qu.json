@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Pacha sinri",
+    "description": "Siq'ikunawan qillqakunawan ruraykunap pacha siqin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Pacha sinripa sutin",
+        "description": "Pacha siqipaq suti."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Akllanalla rikchachiq llimpi."
+      },
+      {
+        "property": "dark",
+        "title": "Tutayaq tema",
+        "description": "Tuta Rikch'ayta Hap'ichiy"
+      },
+      {
+        "slot": "",
+        "title": "Pacha Siqip Willakuynin",
+        "description": "Pacha siqita willaq munaspalla qillqa."
+      },
+      {
+        "property": "events",
+        "title": "Pacha Siqip Ruraykunan",
+        "description": "Pacha siqipi ruraykuna"
+      }
+    ]
+  }
+}

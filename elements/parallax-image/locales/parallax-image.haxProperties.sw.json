@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Picha ya parallax",
+    "description": "Picha inayosogea wakati wa kusogeza"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Picha",
+        "description": "picha ya kutumika kwenye mandharinyuma"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Eneo la kichwa",
+        "description": "Eneo la maandishi ya kichwa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ប្រភព",
+        "description": "URL សម្រាប់ធនធាននេះ។"
+      }
+    ]
+  }
+}

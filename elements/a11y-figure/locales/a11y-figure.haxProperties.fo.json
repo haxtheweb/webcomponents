@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Lýsandi mynd",
+    "description": "Atkomilig mynd við langari lýsing"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Mynd"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alternativur tekstur"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Myndatekstur",
+        "description": "Myndatekstur, ið altíð er sjónligur."
+      },
+      {
+        "slot": "details",
+        "title": "Lýsing",
+        "description": "Nágreinilig myndalýsing, ið kann fjalast ella vísast"
+      },
+      {
+        "slot": "summary",
+        "title": "Lýsingarknøttur",
+        "description": "Sjálvsett fyri knøtt, ið vísir/fjalir lýsingartekst, t.d. \"kunning\", \"metadátur\" o.a."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Valfrír samandráttartekstur, tá ið smálutirnir eru opnir"
+      },
+      {
+        "property": "closeText",
+        "title": "Valfrír samandráttartekstur, tá ið smálutirnir eru latnir aftur"
+      }
+    ]
+  }
+}

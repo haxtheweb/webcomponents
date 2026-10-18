@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Zobrazení webu",
+    "description": "Dynamický blok, který dotazuje a zobrazuje data webu podle kritérií"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL zobrazení",
+        "description": "Parametry dotazu pro datový kanál zobrazení. Získáte je z nástěnky Zobrazení."
+      },
+      {
+        "property": "renderer",
+        "title": "Režim zobrazení",
+        "description": "Jak se mají výsledky zobrazení vykreslit"
+      },
+      {
+        "property": "entity",
+        "title": "Typ entity",
+        "description": "Typ entity použitý ke zpracování odpovědi",
+        "options": {
+          "": "Výchozí (položky)",
+          "item": "Položka",
+          "page": "Stránka",
+          "file": "Soubor",
+          "tag": "Štítek",
+          "block": "Blok",
+          "view": "Zobrazení",
+          "theme": "Motiv",
+          "region": "Oblast",
+          "customElement": "Vlastní prvek"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Rozdělit zobrazení webu",
+        "description": "Převést na statický obsah pro přímé úpravy; přestane se automaticky aktualizovat ze zdroje."
+      }
+    ]
+  }
+}

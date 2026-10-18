@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "卡片",
+    "description": "带可选强调样式的卡片。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "标题",
+        "description": "卡片的标题。"
+      },
+      {
+        "slot": "subheading",
+        "title": "副标题",
+        "description": "卡片的可选副标题。"
+      },
+      {
+        "slot": "content",
+        "title": "内容",
+        "description": "卡片的内容。"
+      },
+      {
+        "slot": "footer",
+        "title": "页脚",
+        "description": "卡片的可选页脚。"
+      },
+      {
+        "property": "imageSrc",
+        "title": "图像",
+        "description": "可选图片"
+      },
+      {
+        "property": "imageAlt",
+        "title": "图片替代文本",
+        "description": "为屏幕阅读器描述图片的替代文本。仅当图片纯属装饰时才留空。"
+      },
+      {
+        "property": "imageAlign",
+        "title": "图片对齐",
+        "description": "图片水平对齐",
+        "options": {
+          "left": "左",
+          "center": "居中",
+          "right": "右"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "图片垂直对齐",
+        "description": "图片垂直对齐",
+        "options": {
+          "top": "顶部",
+          "center": "居中",
+          "bottom": "底部"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "可选的强调色。"
+      },
+      {
+        "property": "dark",
+        "title": "深色主题",
+        "description": "启用深色主题"
+      },
+      {
+        "property": "horizontal",
+        "title": "水平",
+        "description": "水平方向？"
+      },
+      {
+        "property": "accentHeading",
+        "title": "标题强调",
+        "description": "将强调色应用于标题？"
+      },
+      {
+        "property": "accentBackground",
+        "title": "背景强调",
+        "description": "将强调色应用于卡片背景？"
+      },
+      {
+        "property": "noBorder",
+        "title": "无边框强调",
+        "description": "移除边框强调？"
+      },
+      {
+        "property": "flat",
+        "title": "扁平",
+        "description": "移除阴影？"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "角标",
+        "description": "卡片角标的内容。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Íomhá parallax",
+    "description": "Scrollú íomhá"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Íomhá",
+        "description": "íomhá le bheith sa chúlra"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Limistéar ceannteidil",
+        "description": "Limistéar téacs ceannteidil"
+      }
+    ]
+  }
+}

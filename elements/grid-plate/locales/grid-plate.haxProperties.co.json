@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Layout in colonne",
+    "description": "Dispone u materiale in colonne simplice"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Layout in colonne",
+        "description": "Stile per prisentà st'elementi (pò cambià nant'à i picculi screni)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Disattivà l'adattazione",
+        "description": "Marcate a casella per mantene e colonne nant'à i screni più grandi pur impilendule nant'à i screni più chjuchi"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Spaziatura interna di l'elementi",
+        "description": "Spaziatura interna di ogni elementu"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Margini di l'elementi",
+        "description": "Margine trà l'elementi"
+      }
+    ]
+  }
+}

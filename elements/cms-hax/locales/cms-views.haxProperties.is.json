@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-sýn",
+    "description": "CMS-sýnir birtar á bakendanum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Nafn",
+        "description": "Heiti sýnarinnar úr CMS-kerfinu okkar"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Birting",
+        "description": "Framsetning innan þeirrar sýnar úr CMS-kerfinu okkar"
+      }
+    ]
+  }
+}

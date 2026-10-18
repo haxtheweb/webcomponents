@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Prikaz mjesta",
+    "description": "Dinamički blok koji dohvaća i prikazuje podatke mjesta prema kriterijima"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL prikaza",
+        "description": "Parametri upita za feed podataka prikaza. Možete ih dobiti na nadzornoj ploči prikaza."
+      },
+      {
+        "property": "renderer",
+        "title": "Način prikaza",
+        "description": "Kako prikazati rezultate prikaza"
+      },
+      {
+        "property": "entity",
+        "title": "Vrsta entiteta",
+        "description": "Vrsta entiteta koja se koristi za raščlanjivanje odgovora",
+        "options": {
+          "": "Zadano (stavke)",
+          "item": "Stavka",
+          "page": "Stranica",
+          "file": "Datoteka",
+          "tag": "Oznaka",
+          "block": "Blok",
+          "view": "Prikaz",
+          "theme": "Tema",
+          "region": "Regija",
+          "customElement": "Prilagođeni element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Prekini prikaz mjesta",
+        "description": "Pretvori u statički sadržaj za izravno uređivanje; zaustavlja automatsko ažuriranje iz izvora."
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Տեսանյութ",
+    "description": "Մատչելի տեսանյութերի նվագարկում բազմաթիվ աղբյուրներից։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Աղբյուր",
+        "description": "Այս մեդիայի URL-ը։"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Վերնագիր",
+        "description": "Տեսանյութի տակ ցուցադրվող վերնագիր։"
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Պաստառի նկար",
+        "description": "Պաստառի նկարի URL։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Տեքստային ուղիներ",
+        "description": "Ենթագրեր, թարգմանական ենթագրեր, նկարագրություններ և տեսանյութի այլ տեքստային ուղիներ։"
+      },
+      {
+        "property": "startTime",
+        "title": "Սկզբի ժամանակ",
+        "description": "Սկսել տեսանյութը որոշակի պահից (վայրկյաններով)։"
+      },
+      {
+        "property": "endTime",
+        "title": "Ավարտի ժամանակ",
+        "description": "Ավարտել տեսանյութը որոշակի պահին (վայրկյաններով), պահանջում է սկզբի ժամանակ։"
+      },
+      {
+        "property": "learningMode",
+        "title": "Միացնել ուսուցման ռեժիմը",
+        "description": "Անջատում է արագ առաջ և հետ փաթաթումը։"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Հեռացնել «Բացել YouTube-ում» կոճակը",
+        "description": "Հեռացնում է տեսանյութը YouTube-ում բացելու կոճակը։"
+      },
+      {
+        "property": "linkable",
+        "title": "Ներառե՞լ կիսվելու հղում",
+        "description": "Տրամադրում է տեսանյութով կիսվելու հղում։"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Թաքցնել ժամանակային նշումները",
+        "description": "Թաքցնել սղագրության ժամանակային նշումները։"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Թաքցնել սղագրությունը",
+        "description": "Լռելյայն թաքցնել սղագրությունը։"
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Աուդիո նկարագրության ուղի",
+        "description": "Աուդիո նկարագրության ուղու (MP3 ֆայլ) URL, որը պատմում է տեսողական տարրերի մասին։"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Ցույց է տալիս՝ արդյոք օգտագործել CORS։",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Թույլատրել ֆոնային նվագարկումը",
+        "description": "Շարունակել նվագարկումը, երբ դիտարկիչի ներդիրը կորցնում է ֆոկուսը։"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Մութ թեմա սղագրության համար",
+        "description": "Միացնել մութ թեման սղագրության համար։"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Անջատել ինտերակտիվությունը",
+        "description": "Անջատել ինտերակտիվ ռեժիմը, որը սղագրությունը դարձնում է սեղմելի։"
+      },
+      {
+        "property": "lang",
+        "title": "Լեզու",
+        "description": "Մեդիայի լեզուն։"
+      },
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "(հնացած) Ընտրեք նվագարկչի շեշտադրող գույնը։"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "مخفف",
+    "description": "پورے لفظ والے ٹول ٹپ نال مخفف۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "نظر آؤݨ والا مخفف متن۔"
+      },
+      {
+        "attribute": "title",
+        "title": "لفظ",
+        "description": "ہوور تے وکھایا پورا لفظ۔"
+      }
+    ]
+  }
+}

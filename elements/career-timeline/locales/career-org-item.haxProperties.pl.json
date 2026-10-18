@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Pozycja kariery",
+    "description": "Pojedyncza organizacja i powiązane z nią role"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Nazwa organizacji"
+      },
+      {
+        "property": "location",
+        "title": "Miejsce"
+      },
+      {
+        "property": "source",
+        "title": "Źródło"
+      }
+    ]
+  }
+}

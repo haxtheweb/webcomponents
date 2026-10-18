@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ruranapaq waqyay",
+    "description": "Ruranapaq t'inkiyuq sapalla boton."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiqueta",
+        "description": "T'inkip sutin"
+      },
+      {
+        "property": "link",
+        "title": "T'inki",
+        "description": "Ima recursomanpas t'inkita qillqay"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Iconota pakay",
+        "description": "Qillqata sumaqchanapaq llamk'achisqa iconota pakay"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Unancha",
+        "description": "Ruray t'inki icono"
+      }
+    ]
+  }
+}

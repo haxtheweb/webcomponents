@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "ಕೋರ್ಸ್ ವಿನ್ಯಾಸ",
+    "description": "ಶೈಕ್ಷಣಿಕ ಸಾಮಗ್ರಿಗಳು ಮತ್ತು ಕೋರ್ಸ್ ವಿನ್ಯಾಸ ಘಟಕಗಳಿಗಾಗಿ ಧಾರಕ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "ಕೋರ್ಸ್ ಗುರುತಿಸುವಿಕೆ",
+        "description": "OER Schema: ಕೋರ್ಸ್‌ನ ಗುರುತಿಸುವಿಕೆ, ಉದಾ. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "ನೀಡಲಾಗುವ ಅವಧಿ",
+        "description": "OER Schema: ಕೋರ್ಸ್ ನೀಡಲಾಗುವ ಅವಧಿ."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "ವಿತರಣಾ ಸ್ವರೂಪ",
+        "description": "OER Schema: ಕೋರ್ಸ್ ವಿತರಿಸಲು ಬಳಸುವ ಸ್ವರೂಪ (ಉದಾ. ನೇರ, ಆನ್‌ಲೈನ್, ಮಿಶ್ರ)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "ಪ್ರಾಥಮಿಕ ಬೋಧಕರು",
+        "description": "OER Schema: ಕೋರ್ಸ್‌ನ ಪ್ರಾಥಮಿಕ ಬೋಧಕರು."
+      },
+      {
+        "property": "syllabus",
+        "title": "ಪಠ್ಯಕ್ರಮ URL",
+        "description": "OER Schema: ಕೋರ್ಸ್ ಪಠ್ಯಕ್ರಮದ URL."
+      }
+    ]
+  }
+}

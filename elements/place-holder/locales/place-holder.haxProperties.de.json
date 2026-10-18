@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Platzhalter",
+    "description": "Ein Platzhalter, der in den ausgewählten Medientyp umgewandelt werden kann"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Typ",
+        "description": "Art des Gizmos, das dieser als Ersatz akzeptiert.",
+        "options": {
+          "text": "Text / Inhalt",
+          "document": "Dokument / Datei",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Bild",
+          "math": "Mathematik"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Text",
+        "description": "Den gewünschten Platzhalter genauer beschreiben"
+      }
+    ]
+  }
+}

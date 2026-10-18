@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Biblioqrafiya elementi",
+    "description": "Biblioqrafiyada tək istinadı təmsil edən, çoxsaylı formatları və ixrac seçimlərini dəstəkləyən element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Növ",
+        "description": "İstinad növü",
+        "options": {
+          "web": "Veb",
+          "journal": "Jurnal",
+          "book": "Kitab"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Elementin başlığı"
+      },
+      {
+        "property": "authors",
+        "title": "Müəllif(lər)",
+        "description": "Zaman xəttindəki hadisələr"
+      },
+      {
+        "property": "publisher",
+        "title": "Nəşriyyat",
+        "description": "Orijinal veb-sayt"
+      }
+    ]
+  }
+}

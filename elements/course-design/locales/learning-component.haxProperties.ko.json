@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "학습 구성 요소",
+    "description": "강사가 교수법과 교수 전략을 전달하기 위한 카드."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "유형",
+        "description": "사용할 카드 유형."
+      },
+      {
+        "property": "subtitle",
+        "title": "부제목",
+        "description": "카드의 부제목."
+      },
+      {
+        "property": "url",
+        "title": "링크",
+        "description": "카드의 선택적 링크(학습 목표에는 링크를 사용할 수 없음)."
+      },
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "제목을 설정합니다. 유형에 따른 제목을 재정의합니다"
+      },
+      {
+        "property": "icon",
+        "title": "아이콘",
+        "description": "아이콘을 설정합니다. 유형에 따른 아이콘을 재정의합니다"
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "강조 색상을 설정합니다. 유형에 따른 색상을 재정의합니다"
+      },
+      {
+        "slot": "",
+        "title": "목차"
+      }
+    ]
+  }
+}

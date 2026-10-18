@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: wawa t'aqa",
+    "description": "Kunan p'anqap wawanta rikuchinapaq kuyuq t'aqa"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Kuyuq ñan",
+        "description": "Imayna wawakunata kay elementoman hina yupanapaq",
+        "options": {
+          "active": "Kawsaq wawakuna",
+          "parent": "Taytap wawankuna",
+          "ancestor": "Aswan hanaq ñawpaq taytamanta llapan wawakuna"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Qallariy pata"
+      },
+      {
+        "property": "end",
+        "title": "Tukukuy pata"
+      }
+    ]
+  }
+}

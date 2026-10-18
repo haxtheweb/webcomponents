@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Karta",
+    "description": "Karta bi stil ta' aċċent opzjonali."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Intestatura",
+        "description": "Intestatura għall-karta."
+      },
+      {
+        "slot": "subheading",
+        "title": "Sottointestatura",
+        "description": "Sottointestatura opzjonali għall-karta."
+      },
+      {
+        "slot": "content",
+        "title": "Kontenut",
+        "description": "Kontenut għall-karta."
+      },
+      {
+        "slot": "footer",
+        "title": "Footer",
+        "description": "Footer opzjonali għall-karta."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Immaġni",
+        "description": "Immaġni opzjonali"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Test Alternattiv tal-Immaġni",
+        "description": "Test alternattiv li jiddeskrivi l-immaġni għall-qarrejja tal-iskrin. Ħallih vojt biss jekk l-immaġni hija purament dekorattiva."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Allinjament Orizzontali tal-Immaġni",
+        "options": {
+          "left": "xellug",
+          "center": "ċentru",
+          "right": "lemin"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Allinjament Vertikali tal-Immaġni",
+        "options": {
+          "top": "fuq",
+          "center": "ċentru",
+          "bottom": "isfel"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-enfasi fakultattiv."
+      },
+      {
+        "property": "dark",
+        "title": "Tema skura",
+        "description": "Attiva t-Tema Skura"
+      },
+      {
+        "property": "horizontal",
+        "title": "Orizzontali",
+        "description": "Orjentazzjoni orizzontali?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Aċċent tal-Intestatura",
+        "description": "Tapplika l-kulur tal-aċċent għall-intestatura?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Aċċent tal-Isfond",
+        "description": "Tapplika l-kulur tal-aċċent għall-isfond tal-karta?"
+      },
+      {
+        "property": "noBorder",
+        "title": "L-ebda Aċċent tal-Bordura",
+        "description": "Tneħħi l-aċċent tal-bordura?"
+      },
+      {
+        "property": "flat",
+        "title": "Ċatt",
+        "description": "Tneħħi d-dell tal-kaxxa?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Rokna",
+        "description": "Kontenut għar-rokna tal-karta."
+      }
+    ]
+  }
+}

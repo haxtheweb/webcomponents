@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "การ์ดย้อนยุค",
+    "description": "การ์ดเรียบง่ายที่มีดีไซน์ย้อนยุค"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อหลักของการ์ด"
+      },
+      {
+        "property": "url",
+        "description": "URL ที่จะเปิดเมื่อคลิกการ์ด"
+      },
+      {
+        "property": "subtitle",
+        "title": "ชื่อรอง",
+        "description": "ชื่อรองของการ์ด"
+      },
+      {
+        "property": "tags",
+        "title": "แท็ก",
+        "description": "แท็กที่คั่นด้วยจุลภาค"
+      },
+      {
+        "property": "mediaSource",
+        "title": "แหล่งสื่อ",
+        "description": "แหล่งสื่อหลัก"
+      },
+      {
+        "property": "hoverSource",
+        "title": "แหล่งที่มาเมื่อวางเมาส์",
+        "description": "แหล่งสื่อที่แสดงเมื่อวางเมาส์เหนือการ์ดหรือเปิดใช้งานการ์ด"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีเน้นที่ใช้ทั่วทั้งการ์ด"
+      },
+      {
+        "property": "dark",
+        "title": "มืด",
+        "description": "ใช้สีพื้นฐานของโหมดมืด"
+      }
+    ]
+  }
+}

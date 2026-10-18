@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "접근성 세부 정보 버튼",
+    "description": "세부 정보와 요약을 사용한 접근성 높은 점진적 공개"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "버튼",
+        "description": "숨겨진 콘텐츠의 요약 (예: \"정보\", \"메타데이터\" 등)."
+      },
+      {
+        "slot": "details",
+        "title": "설명",
+        "description": "숨기거나 표시할 수 있는 자세한 설명"
+      },
+      {
+        "slot": "",
+        "title": "설명 버튼",
+        "description": "설명 텍스트를 표시/숨기는 버튼의 기본값 (예: \"정보\", \"메타데이터\" 등)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "세부 정보가 열려 있을 때의 선택적 요약 텍스트"
+      },
+      {
+        "property": "closeText",
+        "title": "세부 정보가 닫혀 있을 때의 선택적 요약 텍스트"
+      }
+    ]
+  }
+}

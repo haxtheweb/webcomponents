@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub プレビュー",
+    "description": "長い説明付きのアクセシブルな図"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "組織",
+        "description": "GitHub の組織のマシン名"
+      },
+      {
+        "property": "repo",
+        "title": "リポジトリ",
+        "description": "リポジトリのマシン名"
+      },
+      {
+        "property": "extended",
+        "title": "拡張表示",
+        "description": "要素に README を含めます"
+      }
+    ]
+  }
+}

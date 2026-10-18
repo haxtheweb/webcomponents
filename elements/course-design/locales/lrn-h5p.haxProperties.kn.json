@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P ಘಟಕ",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ಪಠ್ಯ",
+        "description": "ಪಕ್ಕದ ಟಿಪ್ಪಣಿಯ ವಿಷಯ"
+      }
+    ]
+  }
+}

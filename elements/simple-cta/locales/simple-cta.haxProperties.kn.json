@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ಕ್ರಿಯೆಗೆ ಕರೆ",
+    "description": "ಕ್ರಮ ಕೈಗೊಳ್ಳಲು ಲಿಂಕ್ ಇರುವ ಸರಳ ಬಟನ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "ಲೇಬಲ್",
+        "description": "ಲಿಂಕ್ ಲೇಬಲ್"
+      },
+      {
+        "property": "link",
+        "title": "ಲಿಂಕ್",
+        "description": "ಯಾವುದೇ ಸಂಪನ್ಮೂಲಕ್ಕೆ ಲಿಂಕ್ ನಮೂದಿಸಿ"
+      },
+      {
+        "property": "hideIcon",
+        "title": "ಐಕಾನ್ ಮರೆಮಾಡಿ",
+        "description": "ಪಠ್ಯವನ್ನು ಅಲಂಕರಿಸಲು ಬಳಸುವ ಐಕಾನ್ ಮರೆಮಾಡಿ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ಐಕಾನ್",
+        "description": "ಕ್ರಿಯಾ ಲಿಂಕ್ ಐಕಾನ್"
+      }
+    ]
+  }
+}

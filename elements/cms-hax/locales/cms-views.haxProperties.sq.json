@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Pamje CMS",
+    "description": "Pamje CMS të shfaqura në backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Emri",
+        "description": "Emri i pamjes nga CMS-ja jonë"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Shfaqja",
+        "description": "Shfaqja brenda asaj pamjeje nga CMS-ja jonë"
+      }
+    ]
+  }
+}

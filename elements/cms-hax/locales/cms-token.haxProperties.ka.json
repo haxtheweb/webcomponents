@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS ტოკენი",
+    "description": "CMS ტოკენი, რომელიც backend-ზე რენდერდება"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "ტოკენი",
+        "description": "ტოკენი ჩვენი CMS-იდან"
+      }
+    ]
+  }
+}

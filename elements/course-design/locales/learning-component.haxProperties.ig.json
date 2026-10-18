@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Akụkụ mmụta",
+    "description": "Kaadị maka ndị nkuzi iji kọwaa usoro nkuzi na atụmatụ nkuzi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Ụdị",
+        "description": "Ụdị kaadị a ga-eji."
+      },
+      {
+        "property": "subtitle",
+        "title": "Aha nta",
+        "description": "Aha nta nke kaadị ahụ."
+      },
+      {
+        "property": "url",
+        "title": "Njikọ",
+        "description": "Njikọ nhọrọ maka kaadị ahụ (Njikọ adịghị maka Ebumnobi mmụta)."
+      },
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Tọọ aha, nke a na-anọchi aha dabere n'ụdị"
+      },
+      {
+        "property": "icon",
+        "title": "Akara ngosi",
+        "description": "Tọọ akara ngosi, nke a na-anọchi akara ngosi dabere n'ụdị"
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba mkpụrụ",
+        "description": "Tọọ agba accent, nke a na-anọchi agba dabere n'ụdị"
+      },
+      {
+        "slot": "",
+        "title": "Ihe ndị dị n'ime"
+      }
+    ]
+  }
+}

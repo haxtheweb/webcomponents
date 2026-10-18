@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "اسٹار ریٹنگ",
+    "description": "ریٹنگ دکھانے والا ویجٹ یا ریٹنگ دینے کا بٹن۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "اسکور",
+        "description": "موجودہ اسکور کی قدر۔"
+      },
+      {
+        "property": "possible",
+        "title": "ممکنہ",
+        "description": "زیادہ سے زیادہ ممکنہ اسکور۔"
+      },
+      {
+        "property": "numStars",
+        "title": "ستاروں کی تعداد",
+        "description": "دکھائے جانے والے ستاروں کی تعداد۔"
+      },
+      {
+        "property": "interactive",
+        "title": "تعاملی",
+        "description": "صارف کو ریٹنگ دینے کی اجازت دیں۔"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "روبرک اسکیل موڈ",
+        "description": "ہر ستارے کے لیے OER Schema RubricScale اور RubricLevel میٹا ڈیٹا (levelOrdinal/levelPoints) جاری کریں۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "آڈیو",
+    "description": "یہ ماخذ سے قطع نظر ویڈیو کو انتہائی قابل رسائی انداز میں پیش کر سکتا ہے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ماخذ",
+        "description": "اس میڈیا کا URL۔"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "عنوان",
+        "description": "ویڈیو کے نیچے سادہ عنوان"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "پلیئر کے لیے ایکسنٹ رنگ منتخب کریں۔"
+      },
+      {
+        "property": "track",
+        "title": "کیپشنز",
+        "description": "کیپشنز فائل کا URL۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "تھمب نیل تصویر",
+        "description": "اختیاری۔ تھمب نیل/پوسٹر تصویر کا URL۔"
+      },
+      {
+        "property": "learningMode",
+        "title": "تعلیمی موڈ فعال کریں",
+        "description": "آگے اور پیچھے کرنا غیر فعال کرتا ہے۔"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube پر کھولنے کا بٹن ہٹائیں",
+        "description": "ویڈیو کو YouTube پر کھولنے کا بٹن ہٹاتا ہے۔"
+      },
+      {
+        "property": "linkable",
+        "title": "شیئر لنک شامل کریں؟",
+        "description": "ویڈیو شیئر کرنے کے لیے لنک فراہم کرتا ہے۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "بتاتا ہے کہ CORS استعمال کرنا ہے یا نہیں۔",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "پس منظر میں چلانے کی اجازت دیں",
+        "description": "ٹیب سے فوکس ہٹنے پر ویڈیوز خود بخود رکتی / چلتی ہیں؛ یہ ٹیب پر فوکس کے بغیر ویڈیو چلانے کی اجازت دیتا ہے"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ٹرانسکرپٹ کے لیے ڈارک تھیم",
+        "description": "ٹرانسکرپٹ کے لیے ڈارک تھیم فعال کریں۔"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "تعاملی موڈ غیر فعال کریں",
+        "description": "وہ تعاملی موڈ غیر فعال کریں جو ٹرانسکرپٹ کو قابل کلک بناتا ہے۔"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ٹائم اسٹیمپس چھپائیں",
+        "description": "ٹرانسکرپٹ پر وقت کی مہریں چھپائیں۔"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ٹرانسکرپٹ چھپائیں",
+        "description": "ٹرانسکرپٹ طے شدہ طور پر چھپائیں۔"
+      },
+      {
+        "property": "lang",
+        "title": "زبان",
+        "description": "میڈیا کی زبان۔"
+      }
+    ]
+  }
+}

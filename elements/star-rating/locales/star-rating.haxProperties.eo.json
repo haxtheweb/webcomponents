@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Stela takso",
+    "description": "Fenestraĵo por montri takson aŭ butono por taksi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Poentaro",
+        "description": "Nuna poentara valoro."
+      },
+      {
+        "property": "possible",
+        "title": "Ebla",
+        "description": "Maksimuma ebla poentaro."
+      },
+      {
+        "property": "numStars",
+        "title": "Nombro de steloj",
+        "description": "Nombro de montrotaj steloj."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaga",
+        "description": "Permesi al la uzanto agordi la takson."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Rubrika skala reĝimo",
+        "description": "Eligi OER Schema-metadatumojn RubricScale kaj RubricLevel (levelOrdinal/levelPoints) por ĉiu stelo."
+      }
+    ]
+  }
+}

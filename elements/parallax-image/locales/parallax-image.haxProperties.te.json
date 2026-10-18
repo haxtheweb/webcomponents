@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "పారలాక్స్ చిత్రం",
+    "description": "స్క్రోల్‌తో కదిలే చిత్రం"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "చిత్రం",
+        "description": "నేపథ్యంలో ఉపయోగించాల్సిన చిత్రం"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "శీర్షిక ప్రాంతం",
+        "description": "శీర్షిక వచన ప్రాంతం"
+      }
+    ]
+  }
+}

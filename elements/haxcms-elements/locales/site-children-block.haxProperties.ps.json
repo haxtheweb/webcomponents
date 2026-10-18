@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: فرعي بلاک",
+    "description": "د اوسنۍ پاڼې د فرعي پاڼو د ښودلو لپاره متحرک بلاک"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "متحرکه طریقه",
+        "description": "د دې عنصر په تړاو د فرعي توکو محاسبه څنګه وشي",
+        "options": {
+          "active": "فعال فرعي توکي",
+          "parent": "د اصلي توکي فرعي توکي",
+          "ancestor": "له لوړ نیکه څخه ټول فرعي توکي"
+        }
+      },
+      {
+        "property": "start",
+        "title": "د پیل کچه"
+      },
+      {
+        "property": "end",
+        "title": "د پای کچه"
+      }
+    ]
+  }
+}

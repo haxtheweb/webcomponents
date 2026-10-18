@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kipengele cha H5P",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Maandishi",
+        "description": "Maudhui ya dokezo la pembeni"
+      }
+    ]
+  }
+}

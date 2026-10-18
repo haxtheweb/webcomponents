@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "კურსის დიზაინი",
+    "description": "კონტეინერი სასწავლო მასალებისა და კურსის დიზაინის ელემენტებისთვის."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "კურსის იდენტიფიკატორი",
+        "description": "OER Schema: კურსის იდენტიფიკატორი, მაგ. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "შეთავაზების სემესტრი",
+        "description": "OER Schema: სემესტრი, რომლის განმავლობაშიც კურსი ისწავლება."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "მიწოდების ფორმატი",
+        "description": "OER Schema: კურსის მიწოდების ფორმატი (მაგ. პირისპირ, ონლაინ, ჰიბრიდული)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "ძირითადი ინსტრუქტორი",
+        "description": "OER Schema: კურსის ძირითადი ინსტრუქტორი."
+      },
+      {
+        "property": "syllabus",
+        "title": "სილაბუსის URL",
+        "description": "OER Schema: კურსის სილაბუსის URL."
+      }
+    ]
+  }
+}

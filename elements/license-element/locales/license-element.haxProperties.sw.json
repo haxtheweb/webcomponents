@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Leseni",
+    "description": "Toa leseni kwa kazi yako."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Kichwa cha kazi iliyonukuliwa."
+      },
+      {
+        "property": "source",
+        "title": "Kiungo cha chanzo",
+        "description": "URL ya chanzo cha kazi iliyopewa leseni."
+      },
+      {
+        "property": "license",
+        "title": "Leseni",
+        "description": "Leseni inayotumika kwa kazi hii."
+      },
+      {
+        "property": "creator",
+        "title": "Mtayarishi",
+        "description": "Mtayarishi au mmiliki wa kazi hii."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Kiungo cha chanzo",
+        "description": "Kiungo cha maelezo ya ziada ya leseni."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Lebo ya zaidi",
+        "description": "Lebo ya maelezo ya ziada ya leseni."
+      }
+    ]
+  }
+}

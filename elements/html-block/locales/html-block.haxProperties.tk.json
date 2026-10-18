@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML bloky",
+    "description": "HAXschema baglanyşygyny üpjün edýän esasy HTML bloky"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Mazmunda görkezmek isleýän HTML kodyňyz"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Un bloc de contenu markdown, saisi directement ou chargé à distance"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown brut"
+      },
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "Fichier source du markdown"
+      }
+    ]
+  }
+}

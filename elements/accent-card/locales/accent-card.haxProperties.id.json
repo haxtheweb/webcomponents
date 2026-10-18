@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kartu",
+    "description": "Kartu dengan gaya aksen opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Judul",
+        "description": "Judul untuk kartu."
+      },
+      {
+        "slot": "subheading",
+        "title": "Subjudul",
+        "description": "Subjudul opsional untuk kartu."
+      },
+      {
+        "slot": "content",
+        "title": "Konten",
+        "description": "Konten untuk kartu."
+      },
+      {
+        "slot": "footer",
+        "title": "Footer",
+        "description": "Footer opsional untuk kartu."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Gambar",
+        "description": "Gambar opsional"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Teks Alt Gambar",
+        "description": "Teks alternatif yang menjelaskan gambar untuk pembaca layar. Biarkan kosong hanya jika gambar murni dekoratif."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Perataan Horizontal Gambar",
+        "options": {
+          "left": "kiri",
+          "center": "tengah",
+          "right": "kanan"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Perataan Vertikal Gambar",
+        "options": {
+          "top": "atas",
+          "center": "tengah",
+          "bottom": "bawah"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen opsional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema Gelap",
+        "description": "Aktifkan Tema Gelap"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Orientasi horizontal?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Aksen Judul",
+        "description": "Terapkan warna aksen ke judul?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Aksen Latar Belakang",
+        "description": "Terapkan warna aksen ke latar belakang kartu?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Tanpa Aksen Batas",
+        "description": "Hapus aksen batas?"
+      },
+      {
+        "property": "flat",
+        "title": "Datar",
+        "description": "Hapus bayangan kotak?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Sudut",
+        "description": "Konten untuk sudut kartu."
+      }
+    ]
+  }
+}

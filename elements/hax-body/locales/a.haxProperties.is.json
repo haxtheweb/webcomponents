@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Einfaldur tengill",
+    "description": "Einföld tengileining."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Tengill",
+        "description": "URL áfangastaðar."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Texti",
+        "description": "Sýnilegur texti tengils."
+      },
+      {
+        "attribute": "target",
+        "title": "Markmið",
+        "description": "Hvar á að opna tengilinn.",
+        "options": {
+          "": "Sami gluggi",
+          "_blank": "Nýr gluggi - _blank",
+          "_top": "Efsti gluggi - _top",
+          "_parent": "Yfirgluggi - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Titiltexti",
+        "description": "Leiðbeinandi titill fyrir aðgengi og SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Tengsl við áfangastaðinn (öryggi/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

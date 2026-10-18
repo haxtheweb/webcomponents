@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Интихобгари Hex",
+    "description": "Интихобгари ранги Hexcode"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Қимат",
+        "description": "Қимати hex-и пешфарз"
+      },
+      {
+        "property": "disabled",
+        "title": "Ғайрифаъол",
+        "description": "Ғайрифаъол кардани майдони матн"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Намоиши калон",
+        "description": "Дохил кардани ранг дар намоиши калон"
+      }
+    ]
+  }
+}

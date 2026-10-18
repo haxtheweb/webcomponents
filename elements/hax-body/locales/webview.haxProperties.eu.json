@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Iturria",
+        "description": "Baliabide honen URLa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Chinhu chebibliography",
+    "description": "Chinhu chinomiririra kududza kumwe chete mubibliography, chinotsigira mafomati akawanda nesarudzo dzekubudisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Rudzi",
+        "description": "Mhando yekududza",
+        "options": {
+          "web": "Webhu",
+          "journal": "Magazini",
+          "book": "Bhuku"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Zita rechinhu"
+      },
+      {
+        "property": "authors",
+        "title": "Munyori (vanyori)",
+        "description": "Zviitiko zviri pamutsetse wenguva"
+      },
+      {
+        "property": "publisher",
+        "title": "Muburitsi",
+        "description": "Webhusaiti yekutanga"
+      }
+    ]
+  }
+}

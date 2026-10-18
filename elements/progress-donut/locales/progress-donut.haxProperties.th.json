@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "โดนัทแสดงความคืบหน้า",
+    "description": "โดนัทแสดงความก้าวหน้า"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อเรื่องขององค์ประกอบ"
+      },
+      {
+        "property": "desc",
+        "title": "คำอธิบาย",
+        "description": "คำอธิบายแบบยาวที่เข้าถึงได้"
+      },
+      {
+        "property": "imageSrc",
+        "title": "แหล่งที่มาของรูปภาพ",
+        "description": "แหล่งที่มาของรูปภาพภายในโดนัท"
+      },
+      {
+        "property": "imageAlt",
+        "title": "ข้อความแสดงแทนรูปภาพ",
+        "description": "ข้อความแสดงแทนสำหรับรูปภาพ"
+      },
+      {
+        "property": "animated",
+        "title": "เคลื่อนไหว",
+        "description": "ให้ความคืบหน้าเคลื่อนไหวเมื่อโหลดครั้งแรกหรือไม่"
+      },
+      {
+        "property": "complete",
+        "title": "เสร็จสมบูรณ์",
+        "description": "อาร์เรย์ของค่าที่เสร็จสมบูรณ์"
+      },
+      {
+        "property": "total",
+        "title": "ทั้งหมด",
+        "description": "ค่ารวมเมื่อทุกรายการเสร็จสมบูรณ์"
+      },
+      {
+        "property": "startAngle",
+        "title": "มุมเริ่มต้น",
+        "description": "มุมของโดนัทที่ความคืบหน้าเริ่มต้น"
+      }
+    ]
+  }
+}

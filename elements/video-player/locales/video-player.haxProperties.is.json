@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Myndskeið",
+    "description": "Aðgengileg myndbandsspilun frá mörgum uppsprettum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Uppruni",
+        "description": "URL þessa miðils."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titill",
+        "description": "Titill sem birtist undir myndbandinu."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Forsíðumynd",
+        "description": "URL forsíðumyndar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Textarásir",
+        "description": "Skjátextar, þýðingartextar, lýsingar og aðrar textarásir fyrir myndbandið."
+      },
+      {
+        "property": "startTime",
+        "title": "Upphafstími",
+        "description": "Hefja myndband á tilteknum tíma (sekúndur)."
+      },
+      {
+        "property": "endTime",
+        "title": "Lokatími",
+        "description": "Ljúka myndbandi á tilteknum tíma (sekúndur), krefst upphafstíma."
+      },
+      {
+        "property": "learningMode",
+        "title": "Virkja námsham",
+        "description": "Gerir hraðspólun áfram og til baka óvirka."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Fjarlægja hnappinn „Opna á YouTube“",
+        "description": "Fjarlægir hnappinn til að opna myndbandið á YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Hafa með deilitengil?",
+        "description": "Veitir tengil til að deila myndbandinu."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Fela tímastimpla",
+        "description": "Fela tímastimplana í uppskriftinni."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Fela uppskrift",
+        "description": "Fela uppskrift sjálfgefið."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Hljóðlýsingarrás",
+        "description": "URL á hljóðlýsingarrás (MP3 skrá) sem segir frá sjónrænum atriðum."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Gefur til kynna hvort nota eigi CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Leyfa spilun í bakgrunni",
+        "description": "Halda áfram að spila þegar vafraflipinn missir fókus."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Dökkt þema fyrir uppskrift",
+        "description": "Virkja dökkt þema fyrir uppskriftina."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Slökkva á gagnvirkni",
+        "description": "Slökkva á gagnvirkum ham sem gerir uppskriftina smellanlega."
+      },
+      {
+        "property": "lang",
+        "title": "Tungumál",
+        "description": "Tungumál miðilsins."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "(úrelt) Veldu áherslulit spilarans."
+      }
+    ]
+  }
+}

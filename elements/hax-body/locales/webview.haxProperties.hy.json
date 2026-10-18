@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Աղբյուր",
+        "description": "Այս ռեսուրսի URL-ը։"
+      }
+    ]
+  }
+}

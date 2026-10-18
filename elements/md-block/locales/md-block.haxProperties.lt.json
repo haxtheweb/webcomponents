@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Markdown turinio blokas, įvestas tiesiogiai arba įkeltas nuotoliniu būdu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Neapdorotas Markdown"
+      },
+      {
+        "property": "source",
+        "title": "Šaltinis",
+        "description": "Markdown šaltinio failas"
+      }
+    ]
+  }
+}

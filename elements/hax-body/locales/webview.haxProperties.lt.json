@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Šaltinis",
+        "description": "Šio ištekliaus URL."
+      }
+    ]
+  }
+}

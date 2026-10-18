@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hordhaca Github",
+    "description": "Sawir la heli karo oo leh sharraxaad dheer"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Hay'ad",
+        "description": "Magaca mashiinka ee ururka Github"
+      },
+      {
+        "property": "repo",
+        "title": "Kayd",
+        "description": "Magaca mashiinka ee kaydka"
+      },
+      {
+        "property": "extended",
+        "title": "Muuqaal Ballaadhan",
+        "description": "Wuxuu ku daraa readme curiyaha"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Pinagmulan",
+        "description": "URL para sa resource na ito."
+      }
+    ]
+  }
+}

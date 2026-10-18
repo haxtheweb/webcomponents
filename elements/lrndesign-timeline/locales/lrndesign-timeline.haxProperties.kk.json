@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Хронология",
+    "description": "Суреттер мен мәтіні бар оқиғалар уақыт сызығы"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Хронология тақырыбы",
+        "description": "Уақыт сызығының атауы."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Қосымша екпін түсі."
+      },
+      {
+        "property": "dark",
+        "title": "Қараңғы тақырып",
+        "description": "Қараңғы тақырыпты қосу"
+      },
+      {
+        "slot": "",
+        "title": "Уақыт сызығының сипаттамасы",
+        "description": "Уақыт сызығын сипаттайтын қосымша мәтін."
+      },
+      {
+        "property": "events",
+        "title": "Уақыт сызығындағы оқиғалар",
+        "description": "Уақыт сызығындағы оқиғалар"
+      }
+    ]
+  }
+}

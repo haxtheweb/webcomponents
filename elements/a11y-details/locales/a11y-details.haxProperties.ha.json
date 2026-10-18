@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Maɓallin Cikakkun Bayanai Mai Sauƙin Isa",
+    "description": "Bayyanawa a hankali mai sauƙin isa tare da cikakkun bayanai da taƙaitawa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Maɓalli",
+        "description": "Taƙaitaccen abun cikin da aka ɓoye, misali \"info\", \"medatadata\", da sauransu."
+      },
+      {
+        "slot": "details",
+        "title": "Bayani",
+        "description": "Cikakken bayani da za a iya ɓoyewa ko nunawa"
+      },
+      {
+        "slot": "",
+        "title": "Maɓallin Bayani",
+        "description": "Tsoho don maɓallin da ke nunawa/ɓoye rubutun bayani, misali \"info\", \"medatadata\", da sauransu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Rubutun taƙaitawa na zaɓi idan cikakkun bayanai a buɗe suke"
+      },
+      {
+        "property": "closeText",
+        "title": "Rubutun taƙaitawa na zaɓi idan cikakkun bayanai a rufe suke"
+      }
+    ]
+  }
+}

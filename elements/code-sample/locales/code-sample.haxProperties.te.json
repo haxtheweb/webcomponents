@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "కోడ్ నమూనా",
+    "description": "పేజీలో హైలైట్ చేయబడిన కోడ్ నమూనా"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "కోడ్ హైలైటింగ్",
+        "description": "కోడ్ ప్రాంతానికి వర్తింపజేయాల్సిన సింటాక్స్ హైలైటింగ్",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON డేటా",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "క్లిప్‌బోర్డ్‌కు కాపీ చేసే బటన్",
+        "description": "క్లిప్‌బోర్డ్‌కు కాపీ చేయండి అని చెప్పే కుడి పై మూలలోని బటన్"
+      },
+      {
+        "property": "highlightStart",
+        "title": "హైలైట్ ప్రారంభం",
+        "description": "హైలైటింగ్ ప్రారంభించాల్సిన పంక్తి సంఖ్య"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "హైలైట్ ముగింపు",
+        "description": "హైలైటింగ్ ముగించాల్సిన పంక్తి"
+      }
+    ]
+  }
+}

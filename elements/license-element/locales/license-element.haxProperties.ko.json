@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "라이선스",
+    "description": "저작물에 라이선스를 지정합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "인용한 저작물의 제목."
+      },
+      {
+        "property": "source",
+        "title": "출처 링크",
+        "description": "라이선스가 적용된 저작물의 출처 URL."
+      },
+      {
+        "property": "license",
+        "title": "라이선스",
+        "description": "이 저작물에 적용된 라이선스."
+      },
+      {
+        "property": "creator",
+        "title": "저작자",
+        "description": "이 저작물의 저작자 또는 소유자."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "출처 링크",
+        "description": "추가 라이선스 세부 정보 링크."
+      },
+      {
+        "property": "moreLabel",
+        "title": "더 보기 레이블",
+        "description": "추가 라이선스 세부 정보의 레이블."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ഗ്രേഡ് ബുക്ക്",
+    "description": "റൂബ്രിക്കുകളോടെ ഒന്നിലധികം ബാക്കെൻഡുകളെ പിന്തുണയ്ക്കുന്ന ഒരു ഹെഡ്‌ലെസ് ഗ്രേഡ്ബുക്ക്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ഉറവിടം",
+        "description": "ഡാറ്റ ഉറവിട തരം (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL എൻഡ്‌പോയിന്റ് (JSON)",
+          "json": "JSON ഡാറ്റ ബ്ലോബ്",
+          "filesystem": "ഫയൽ സിസ്റ്റം"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "ഉറവിട ഡാറ്റ",
+        "description": "ഗ്രേഡ്ബുക്കിനുള്ള URL അല്ലെങ്കിൽ JSON ഡാറ്റ."
+      },
+      {
+        "property": "forCourse",
+        "title": "കോഴ്സ് റഫറൻസ്",
+        "description": "ഓരോ Assessment റിസോഴ്സിലും oer:forCourse ആയി പുറപ്പെടുവിക്കുന്ന കോഴ്സ് ഐഡന്റിഫയർ."
+      }
+    ]
+  }
+}

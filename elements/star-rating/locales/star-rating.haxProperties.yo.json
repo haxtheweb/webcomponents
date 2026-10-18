@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ìdíwọ̀n Ìràwọ̀",
+    "description": "Irinṣẹ́ ìfihàn ìdíwọ̀n tàbí bọ́tìnnì láti ṣe ìdíwọ̀n."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Máàkì",
+        "description": "Iye máàkì lọ́wọ́lọ́wọ́."
+      },
+      {
+        "property": "possible",
+        "title": "Tó ṣeé ṣe",
+        "description": "Máàkì tó ga jùlọ tó ṣeé ṣe."
+      },
+      {
+        "property": "numStars",
+        "title": "Iye Ìràwọ̀",
+        "description": "Iye ìràwọ̀ láti fi hàn."
+      },
+      {
+        "property": "interactive",
+        "title": "Ìbáṣepọ̀",
+        "description": "Gbà olùlò láàyè láti ṣètò ìdíwọ̀n."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Ipò Ìwọ̀n Rubric",
+        "description": "Gbé dátà OER Schema RubricScale àti RubricLevel (levelOrdinal/levelPoints) jáde fún ìràwọ̀ kọ̀ọ̀kan."
+      }
+    ]
+  }
+}

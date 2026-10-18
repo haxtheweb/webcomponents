@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX havolasi",
+    "description": "Siz ishlayotgan saytdagi muayyan resursga havola."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Havola / sarlavha maʼlumotlari uchun koʻrsatiladigan element"
+      }
+    ]
+  }
+}
