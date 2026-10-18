@@ -80,7 +80,8 @@ export class PageBreak extends IntersectionObserverMixin(
     this.noderefs = [];
     this.developerTheme = null;
     this.tags = null;
-    this.i18nDefault("title", "newPage");
+    // not kept in sync: title is authored content that gets saved
+    this.title = this.t.newPage;
     this.pageType = null;
     this.slug = "";
     this.published = false;

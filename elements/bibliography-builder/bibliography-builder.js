@@ -47,7 +47,8 @@ export class BibliographyBuilder extends SchemaBehaviors(
         "/../",
     });
     this.exportMode = "";
-    this.i18nDefault("citationArr", (t) => [t.selectCitationFormatBelow]);
+    // empty until a format is picked; render shows the translated prompt
+    this.citationArr = [];
 
     this.addEventListener("add-citation", this._addItemHandler.bind(this));
   }
@@ -172,7 +173,7 @@ export class BibliographyBuilder extends SchemaBehaviors(
         }
       </style>
       <div class="citation-list">
-        ${this.citationArr.map(citation => html`<div class="citation-entry">${citation}</div>`)}
+        ${(this.citationArr.length ? this.citationArr : [this.t.selectCitationFormatBelow]).map(citation => html`<div class="citation-entry">${citation}</div>`)}
       </div>
       <div class="control-bar">
         <div class="copy-button">
@@ -211,7 +212,7 @@ export class BibliographyBuilder extends SchemaBehaviors(
     } else if (this.exportMode === "BibTeX") {
       this.citationArr = slot.map((item) => item.exportBibtex())
     } else {
-      this.citationArr = [ this.t.selectCitationFormatBelow ];
+      this.citationArr = [];
     }
   }
 

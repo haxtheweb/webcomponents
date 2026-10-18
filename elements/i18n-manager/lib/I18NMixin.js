@@ -72,7 +72,7 @@ export const I18NMixin = function (SuperClass) {
           return false;
         }
         const next = this._i18nValue(b.key);
-        if (next !== undefined && next !== b.value) {
+        if (next !== undefined && !this._i18nSame(next, b.value)) {
           b.obj[b.field] = next;
           b.value = next;
           if (b.onChange) {
@@ -81,6 +81,66 @@ export const I18NMixin = function (SuperClass) {
         }
         return true;
       });
+    }
+    // function keys build a new array / object each time; only swap it in
+    // when the text in it actually changed
+    _i18nSame(a, b) {
+      if (a === b) {
+        return true;
+      }
+      const plain = (v) =>
+        v &&
+        typeof v === "object" &&
+        (Array.isArray(v) || Object.getPrototypeOf(v) === Object.prototype);
+      if (plain(a) && plain(b)) {
+        try {
+          return JSON.stringify(a) === JSON.stringify(b);
+        } catch (e) {
+          return false;
+        }
+      }
+      return false;
+    }
+    /**
+     * An attribute written by an author is an explicit value, even when it
+     * matches the English default, so stop translating that property.
+     * Attributes Lit reflects during its own update don't count.
+     */
+    attributeChangedCallback(name, oldValue, value) {
+      if (super.attributeChangedCallback) {
+        super.attributeChangedCallback(name, oldValue, value);
+      }
+      if (
+        this.__i18nInUpdate ||
+        !this.__i18nBindings ||
+        !this.constructor.elementProperties
+      ) {
+        return;
+      }
+      this.__i18nBindings = this.__i18nBindings.filter((b) => {
+        if (b.obj !== this) {
+          return true;
+        }
+        const options = this.constructor.elementProperties.get(b.field);
+        if (!options || options.attribute === false) {
+          return true;
+        }
+        const attribute =
+          typeof options.attribute === "string"
+            ? options.attribute
+            : String(b.field).toLowerCase();
+        return attribute !== name;
+      });
+    }
+    update(changedProperties) {
+      this.__i18nInUpdate = true;
+      try {
+        if (super.update) {
+          super.update(changedProperties);
+        }
+      } finally {
+        this.__i18nInUpdate = false;
+      }
     }
     /**
      * LitElement: translations arrive as a new this.t, which schedules an update

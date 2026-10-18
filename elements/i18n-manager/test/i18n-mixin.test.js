@@ -405,6 +405,7 @@ class TestDefaultsElement extends I18NMixin(LitElement) {
       ...super.properties,
       closeLabel: { type: String, attribute: "close-label" },
       items: { type: Array },
+      heading: { type: String, reflect: true },
     };
   }
   constructor() {
@@ -412,6 +413,7 @@ class TestDefaultsElement extends I18NMixin(LitElement) {
     this.t = { ...this.t, close: "Close", item: "Item" };
     this.i18nDefault("closeLabel", "close");
     this.i18nDefault("items", (t) => [t.item]);
+    this.i18nDefault("heading", "item");
   }
 }
 customElements.define(TestDefaultsElement.tag, TestDefaultsElement);
@@ -437,6 +439,41 @@ describe("I18NMixin i18nDefault / i18nBind", () => {
     el.t = { ...el.t, close: "Cerrar" };
     await el.updateComplete;
     expect(el.closeLabel).to.equal("Dismiss");
+  });
+
+  it("leaves an authored attribute alone even when it matches the default", async () => {
+    const el = await fixture(
+      html`<test-i18n-defaults-element
+        close-label="Close"
+      ></test-i18n-defaults-element>`,
+    );
+    el.t = { ...el.t, close: "Cerrar" };
+    await el.updateComplete;
+    expect(el.closeLabel).to.equal("Close");
+  });
+
+  it("keeps translating a reflected property", async () => {
+    const el = await fixture(
+      html`<test-i18n-defaults-element></test-i18n-defaults-element>`,
+    );
+    expect(el.getAttribute("heading")).to.equal("Item");
+    el.t = { ...el.t, item: "Elemento" };
+    await el.updateComplete;
+    expect(el.heading).to.equal("Elemento");
+    el.t = { ...el.t, item: "Élément" };
+    await el.updateComplete;
+    expect(el.heading).to.equal("Élément");
+    expect(el.getAttribute("heading")).to.equal("Élément");
+  });
+
+  it("does not replace list defaults when their text is unchanged", async () => {
+    const el = await fixture(
+      html`<test-i18n-defaults-element></test-i18n-defaults-element>`,
+    );
+    const before = el.items;
+    el.t = { ...el.t };
+    await el.updateComplete;
+    expect(el.items).to.equal(before);
   });
 
   it("stops following once something else sets the value", async () => {
