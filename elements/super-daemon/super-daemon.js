@@ -499,55 +499,87 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       if (option.shortcut) {
         option.shortcutLabel = this._resolveShortcutLabel(option.shortcut);
       }
-      // create new object from existing so we can build an index
-      // remove icon, image, value, textCharacter, eventName as these are not searchable values
-      // then create an idex by making everything else into a space separated string
-      let indexBuilder = { ...option };
-      delete indexBuilder.icon;
-      delete indexBuilder.image;
-      delete indexBuilder.textCharacter;
-      delete indexBuilder.value;
-      delete indexBuilder.eventName;
-      delete indexBuilder.shortcut;
-      delete indexBuilder.shortcutLabel;
-      indexBuilder = Object.values(indexBuilder).filter((i) => {
-        if (
-          !["boolean", "number"].includes(typeof i) &&
-          i !== "" &&
-          i !== null &&
-          i !== undefined
-        ) {
-          return true;
-        }
-      });
-      let index = [];
-      indexBuilder.map((i) => {
-        if (typeof i === "string") {
-          // helps w/ splitting on / or else it's just a single item anyway
-          let q = i.split("/");
-          q.map((j) => {
-            if (!["", "*", "/", " ", ">"].includes(j)) {
-              index.push(j.toLocaleLowerCase());
-            }
-          });
-        } else if (Array.isArray(i)) {
-          i.map((j) => {
-            if (!["", "*", "/", " ", ">"].includes(j)) {
-              index.push(j.toLocaleLowerCase());
-            }
-          });
-        } else {
-          // this shouldn't be possible so ignore the value..
-        }
-      });
-      // combine all the values into a single string removing silly things that might slip through
-      let tmp = index.join(" ").replace(/\*/g, "").replace(/\?/g, "");
-      // use a set to remove duplicates
-      index = [...new Set(tmp.split(" "))];
-      // clean index of words :) but also include path as a whole phrase
-      option.index = index.join(" ") + " " + option.path;
+      // translated fields (option.i18n) stay in sync with the defining element
+      if (option.i18n) {
+        this._bindOptionI18n(option);
+      }
+      this._indexOption(option);
       this.allItems.push(option);
     }
+  }
+  /**
+   * Keep an option's text translated. option.i18n is
+   * { context: <element using I18NMixin>, field: tKey, "value.name": tKey }
+   * and fields are re-translated (and re-indexed) as that element's
+   * translations load.
+   */
+  _bindOptionI18n(option) {
+    const { context, ...fields } = option.i18n;
+    if (!context || typeof context.i18nBind !== "function") {
+      return;
+    }
+    Object.keys(fields).forEach((fieldPath) => {
+      const parts = fieldPath.split(".");
+      const field = parts.pop();
+      const target = parts.reduce((o, p) => (o ? o[p] : o), option);
+      if (target && typeof target === "object") {
+        context.i18nBind(target, field, fields[fieldPath], () =>
+          this._indexOption(option),
+        );
+      }
+    });
+  }
+  // build the searchable index for an option
+  _indexOption(option) {
+    // create new object from existing so we can build an index
+    // remove icon, image, value, textCharacter, eventName as these are not searchable values
+    // then create an idex by making everything else into a space separated string
+    let indexBuilder = { ...option };
+    delete indexBuilder.icon;
+    delete indexBuilder.image;
+    delete indexBuilder.textCharacter;
+    delete indexBuilder.value;
+    delete indexBuilder.eventName;
+    delete indexBuilder.shortcut;
+    delete indexBuilder.shortcutLabel;
+    delete indexBuilder.i18n;
+    delete indexBuilder.index;
+    indexBuilder = Object.values(indexBuilder).filter((i) => {
+      if (
+        !["boolean", "number"].includes(typeof i) &&
+        i !== "" &&
+        i !== null &&
+        i !== undefined
+      ) {
+        return true;
+      }
+    });
+    let index = [];
+    indexBuilder.map((i) => {
+      if (typeof i === "string") {
+        // helps w/ splitting on / or else it's just a single item anyway
+        let q = i.split("/");
+        q.map((j) => {
+          if (!["", "*", "/", " ", ">"].includes(j)) {
+            index.push(j.toLocaleLowerCase());
+          }
+        });
+      } else if (Array.isArray(i)) {
+        i.map((j) => {
+          if (!["", "*", "/", " ", ">"].includes(j)) {
+            index.push(j.toLocaleLowerCase());
+          }
+        });
+      } else {
+        // this shouldn't be possible so ignore the value..
+      }
+    });
+    // combine all the values into a single string removing silly things that might slip through
+    let tmp = index.join(" ").replace(/\*/g, "").replace(/\?/g, "");
+    // use a set to remove duplicates
+    index = [...new Set(tmp.split(" "))];
+    // clean index of words :) but also include path as a whole phrase
+    option.index = index.join(" ") + " " + option.path;
   }
 
   /**

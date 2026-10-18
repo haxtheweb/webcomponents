@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Feedback pentru cuvintele selectate",
   "wordsNotSelectedFeedback": "Feedback pentru cuvintele neselectate",
   "fillInTheBlanksDirections": "Citește propoziția și tastează sau selectează răspunsul la fiecare câmp. După ce ai setat toate răspunsurile, poți apăsa {checkAnswer} pentru a le verifica. Vei primi feedback care indică dacă răspunsul este corect.",
-  "blankNumber": "Spațiul liber {number}"
+  "blankNumber": "Spațiul liber {number}",
+  "checkAnswer": "Verifică răspunsul",
+  "tryAgain": "Încearcă din nou"
 }

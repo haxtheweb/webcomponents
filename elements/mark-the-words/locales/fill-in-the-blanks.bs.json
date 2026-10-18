@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Povratna informacija za odabrane riječi",
   "wordsNotSelectedFeedback": "Povratna informacija za neodabrane riječi",
   "fillInTheBlanksDirections": "Pročitajte rečenicu i upišite ili odaberite odgovor u svakom polju. Kada postavite sve odgovore, možete pritisnuti {checkAnswer} da ih provjerite. Dobit ćete povratnu informaciju o tačnosti vašeg odgovora.",
-  "blankNumber": "Praznina {number}"
+  "blankNumber": "Praznina {number}",
+  "checkAnswer": "Provjeri odgovor",
+  "tryAgain": "Pokušaj ponovo"
 }

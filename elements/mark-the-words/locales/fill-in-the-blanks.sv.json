@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Feedback för valda ord",
   "wordsNotSelectedFeedback": "Feedback för ej valda ord",
   "fillInTheBlanksDirections": "Läs meningen och skriv eller välj svaret i varje fält. När du har angett alla svar kan du trycka på {checkAnswer} för att testa dina svar. Du får feedback om huruvida ditt svar är rätt.",
-  "blankNumber": "Lucka {number}"
+  "blankNumber": "Lucka {number}",
+  "checkAnswer": "Kontrollera svar",
+  "tryAgain": "Försök igen"
 }

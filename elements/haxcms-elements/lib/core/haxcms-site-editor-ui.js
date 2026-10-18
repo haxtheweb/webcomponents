@@ -1977,6 +1977,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
     // Unified page creation program
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "createAPage",
+        "value.placeholder": "typePageTitleToCreatePage",
+      },
       title: this.t.createAPage,
       icon: "hax:add-page",
       priority: -2000,
@@ -2102,6 +2107,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Move Page program
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "movePage",
+        "value.placeholder": "typeToFilterPages",
+      },
       title: this.t.movePage,
       icon: "icons:open-with",
       priority: 0,
@@ -2248,6 +2258,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "uploadAFile",
+        "value.name": "uploadAFile",
+      },
       title: this.t.uploadAFile,
       icon: "icons:file-upload",
       priority: -10000,
@@ -2561,6 +2576,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Add Magic Link Wand program
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "createBlockFromLink",
+        "value.name": "createBlockFromLink",
+      },
       title: this.t.createBlockFromLink,
       icon: "editor:insert-link",
       priority: -9999,
@@ -3707,6 +3727,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.wandTarget = this.shadowRoot.querySelector("#merlin");
     // load up commands for daemon
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "save" },
       title: this.t.save,
       icon: "icons:save",
       tags: ["CMS", "save", "page", "operation", "command"],
@@ -3737,6 +3758,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
     }
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "edit" },
       title: this.t.edit,
       icon: "hax:page-edit",
       priority: -1500,
@@ -3999,6 +4021,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
     }
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "logOut" },
       title: this.t.logOut,
       icon: "add",
       tags: ["CMS", "user", "logout"],
@@ -4012,6 +4035,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "darkModeToggle" },
       title: this.t.darkModeToggle,
       icon: "device:brightness-medium",
       tags: ["CMS", "dark mode"],
@@ -4026,6 +4050,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "soundToggle" },
       title: this.t.soundToggle,
       icon: "av:volume-up",
       tags: ["CMS", "sound"],
@@ -4066,6 +4091,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     // force item to load schema
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "loadComponentSchema",
+        "value.name": "loadComponentSchema",
+      },
       title: this.t.loadComponentSchema,
       icon: "hax:hax2022",
       tags: ["Developer", "schema", "load", "demo", "testing"],
@@ -4219,6 +4249,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         SuperDaemonInstance._resolveShortcutLabel(createPageOption.shortcut);
     }
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "showGettingStartedTasks" },
       title: this.t.showGettingStartedTasks,
       icon: "hax:hax2022",
       tags: [
@@ -4250,6 +4281,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // change platform audience, only load if the site supports platformConfigs
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "previewAudienceMode",
+        "value.name": "previewAudienceMode",
+      },
       title: this.t.previewAudienceMode,
       icon: "lrn:people",
       tags: ["Developer", "skeleton"],
@@ -4293,6 +4329,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "haxLabs" },
       title: this.t.haxLabs,
       icon: "hax:hax2022",
       tags: ["Developer", "labs", "experiments"],
@@ -4306,6 +4343,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "unlockAllThemes" },
       title: this.t.unlockAllThemes,
       icon: "image:style",
       tags: ["Developer", "theme", "hidden", "terrible", "legacy"],
@@ -4319,6 +4357,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "pageDataFormats",
+        "value.name": "pageDataFormats",
+      },
       title: this.t.pageDataFormats,
       icon: "hax:code-json",
       tags: [
@@ -4351,6 +4394,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "viewOnlyMode" },
       title: this.t.viewOnlyMode,
       icon: "visibility",
       tags: [
@@ -4378,6 +4422,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // force item to load schema
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "switchToAnotherSite",
+        "value.name": "switchToAnotherSite",
+      },
       title: this.t.switchToAnotherSite,
       icon: "hax:hax2022",
       tags: ["Developer", "change", "sites", "administration"],
@@ -4435,6 +4484,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Print Options Program
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "printOptions",
+        "value.name": "printOptions",
+      },
       title: this.t.printOptions,
       icon: "icons:print",
       tags: ["CMS", "print", "page", "site", "pdf"],
@@ -4458,6 +4512,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Export Page Program
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "exportThisPage",
+        "value.name": "exportThisPage",
+      },
       title: this.t.exportThisPage,
       icon: "icons:file-download",
       tags: ["CMS", "export", "page"],
@@ -4480,6 +4539,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Export Site Program
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "exportThisSite",
+        "value.name": "exportThisSite",
+      },
       title: this.t.exportThisSite,
       icon: "icons:file-download",
       tags: ["CMS", "export", "site"],
@@ -4502,6 +4566,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Title Program
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "renameThisPage",
+        "value.name": "renameThisPage",
+        "value.placeholder": "enterNewTitle",
+      },
       title: this.t.renameThisPage,
       icon: "editor:title",
       tags: ["CMS", "edit", "title", "metadata"],
@@ -4525,6 +4595,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Description Program
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "updatePageDescription",
+        "value.name": "updatePageDescription",
+        "value.placeholder": "enterNewDescription",
+      },
       title: this.t.updatePageDescription,
       icon: "editor:format-quote",
       tags: ["CMS", "edit", "description", "metadata"],
@@ -4548,6 +4624,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Slug Program
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "updatePageUrlSlug",
+        "value.name": "updatePageUrlSlug",
+        "value.placeholder": "enterNewSlug",
+      },
       title: this.t.updatePageUrlSlug,
       icon: "editor:insert-link",
       tags: ["CMS", "edit", "slug", "url", "metadata"],
@@ -4571,6 +4653,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Tags Program
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "updatePageTags",
+        "value.name": "updatePageTags",
+        "value.placeholder": "enterTagsSeparatedByCommas",
+      },
       title: this.t.updatePageTags,
       icon: "icons:label",
       tags: ["CMS", "edit", "tags", "metadata"],
@@ -4603,6 +4691,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Icon Program
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "updatePageIcon",
+        "value.name": "updatePageIcon",
+        "value.placeholder": "typeToSearchIconsByName",
+      },
       title: this.t.updatePageIcon,
       icon: "hax:hax2022",
       tags: ["CMS", "edit", "icon", "metadata"],
@@ -4625,6 +4719,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "viewPageRevisions",
+        "value.name": "viewPageRevisions",
+        "value.placeholder": "openRevisionHistoryForCurrentPage",
+      },
       title: this.t.viewPageRevisions,
       icon: "icons:history",
       tags: ["CMS", "edit", "revisions", "history", "metadata"],
@@ -4673,6 +4773,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Core site navigation programs - available regardless of theme
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "openAPageInThisSite",
+        "value.name": "openAPageInThisSite",
+      },
       title: this.t.openAPageInThisSite,
       icon: "link",
       tags: ["Site", "navigation"],
@@ -4713,6 +4818,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // Share current page program
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "shareCurrentPageLink",
+        "value.name": "shareCurrentPageLink",
+      },
       title: this.t.shareCurrentPageLink,
       icon: "editor:insert-link",
       tags: ["CMS", "share", "link", "copy", "url", "page"],
@@ -4735,6 +4845,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Core site page linking program - available in HAX editor for linking to pages
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "insertALinkToAPage",
+        "value.name": "insertALinkToAPage",
+      },
       title: this.t.insertALinkToAPage,
       icon: "hax:file-link-outline",
       tags: ["Search", "pages", "links"],
@@ -4783,6 +4898,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // markdown triggers) from the shared registry and executes the selected
     // one on click.
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "viewKeyboardShortcuts",
+        "value.name": "viewKeyboardShortcuts",
+      },
       title: this.t.viewKeyboardShortcuts,
       icon: "hardware:keyboard",
       tags: ["help", "shortcuts", "keyboard", "reference"],

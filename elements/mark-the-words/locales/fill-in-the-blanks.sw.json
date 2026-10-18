@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Maoni ya maneno yaliyochaguliwa",
   "wordsNotSelectedFeedback": "Maoni ya maneno yasiyochaguliwa",
   "fillInTheBlanksDirections": "Soma sentensi na uandike au uchague jibu kwenye kila kisanduku. Ukishaweka majibu yako yote unaweza kubonyeza {checkAnswer} ili kujaribu majibu yako. Utapata maoni yanayoonyesha usahihi wa jibu lako.",
-  "blankNumber": "Pengo {number}"
+  "blankNumber": "Pengo {number}",
+  "checkAnswer": "Angalia jibu",
+  "tryAgain": "Jaribu tena"
 }

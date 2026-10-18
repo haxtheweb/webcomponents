@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Ndemanga za mawu osankhidwa",
   "wordsNotSelectedFeedback": "Ndemanga za mawu osasankhidwa",
   "fillInTheBlanksDirections": "Werengani chiganizo ndipo lembani kapena sankhani yankho pa malo aliwonse. Mukaika mayankho anu onse mutha kudina {checkAnswer} kuti muyese mayankho anu. Mudzalandira ndemanga zosonyeza ngati yankho lanu ndi lolondola.",
-  "blankNumber": "Malo opanda kanthu {number}"
+  "blankNumber": "Malo opanda kanthu {number}",
+  "checkAnswer": "Onani yankho",
+  "tryAgain": "Yesaninso"
 }

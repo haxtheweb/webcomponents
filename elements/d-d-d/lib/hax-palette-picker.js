@@ -228,7 +228,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
       context: this,
       localesPath: new URL("../locales/", import.meta.url).href,
     });
-    this.label = this.t.palette;
+    this.i18nDefault("label", "palette");
     this.description = "";
     this.activeValue = "";
     this.showStatusFlags = false;

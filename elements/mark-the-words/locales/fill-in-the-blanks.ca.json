@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Retroacció de les paraules seleccionades",
   "wordsNotSelectedFeedback": "Retroacció de les paraules no seleccionades",
   "fillInTheBlanksDirections": "Llegeix la frase i escriu o selecciona la resposta a cada camp. Quan hagis definit totes les respostes, pots prémer {checkAnswer} per comprovar-les. Rebràs una retroacció que indicarà si la resposta és correcta.",
-  "blankNumber": "Buit {number}"
+  "blankNumber": "Buit {number}",
+  "checkAnswer": "Comprova la resposta",
+  "tryAgain": "Torna-ho a provar"
 }

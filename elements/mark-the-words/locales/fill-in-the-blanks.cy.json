@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Adborth ar y geiriau a ddewiswyd",
   "wordsNotSelectedFeedback": "Adborth ar y geiriau na ddewiswyd",
   "fillInTheBlanksDirections": "Darllenwch y frawddeg a theipiwch neu dewiswch yr ateb ym mhob mewnbwn. Unwaith y byddwch wedi gosod eich holl atebion gallwch bwyso {checkAnswer} i brofi eich atebion. Byddwch yn cael adborth yn nodi a yw eich ateb yn gywir.",
-  "blankNumber": "Bwlch {number}"
+  "blankNumber": "Bwlch {number}",
+  "checkAnswer": "Gwirio'r ateb",
+  "tryAgain": "Rhowch gynnig arall"
 }

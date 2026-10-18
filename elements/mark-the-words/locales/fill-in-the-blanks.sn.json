@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Mhinduro yemazwi akasarudzwa",
   "wordsNotSelectedFeedback": "Mhinduro yemazwi asina kusarudzwa",
   "fillInTheBlanksDirections": "Verenga mutsara wonyora kana kusarudza mhinduro panzvimbo imwe neimwe. Kana waisa mhinduro dzako dzose unogona kudzvanya {checkAnswer} kuti uedze mhinduro dzako. Uchawana mhinduro inoratidza kana mhinduro yako yakarurama.",
-  "blankNumber": "Nzvimbo isina chinhu {number}"
+  "blankNumber": "Nzvimbo isina chinhu {number}",
+  "checkAnswer": "Tarisa mhinduro",
+  "tryAgain": "Edza zvakare"
 }

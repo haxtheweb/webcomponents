@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Feedback geselecteerde woorden",
   "wordsNotSelectedFeedback": "Feedback niet-geselecteerde woorden",
   "fillInTheBlanksDirections": "Lees de zin en typ of selecteer bij elk invoerveld het antwoord. Als je al je antwoorden hebt ingevuld, kun je op {checkAnswer} drukken om ze te controleren. Je krijgt feedback over de juistheid van je antwoord.",
-  "blankNumber": "Open plek {number}"
+  "blankNumber": "Open plek {number}",
+  "checkAnswer": "Antwoord controleren",
+  "tryAgain": "Probeer opnieuw"
 }

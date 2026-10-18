@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Bersivdana peyvên hilbijartî",
   "wordsNotSelectedFeedback": "Bersivdana peyvên nehilbijartî",
   "fillInTheBlanksDirections": "Hevokê bixwîne û li her qadê bersivê binivîse an hilbijêre. Dema ku te hemû bersivên xwe danîn, tu dikarî {checkAnswer} bitikînî da ku bersivên xwe biceribînî. Tu yê bersivdanekê bistînî ku nîşan dide bersiva te rast e an na.",
-  "blankNumber": "Valahî {number}"
+  "blankNumber": "Valahî {number}",
+  "checkAnswer": "Bersivê kontrol bike",
+  "tryAgain": "Dîsa biceribîne"
 }

@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Weromkeppeling selektearre wurden",
   "wordsNotSelectedFeedback": "Weromkeppeling net-selektearre wurden",
   "fillInTheBlanksDirections": "Lês de sin en typ of selektearje it antwurd by elk ynfierfjild. As jo al jo antwurden ynfierd hawwe, kinne jo op {checkAnswer} drukke om jo antwurden te testen. Jo krije weromkeppeling oer oft jo antwurd goed is.",
-  "blankNumber": "Leech fak {number}"
+  "blankNumber": "Leech fak {number}",
+  "checkAnswer": "Antwurd kontrolearje",
+  "tryAgain": "Nochris besykje"
 }

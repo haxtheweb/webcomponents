@@ -268,7 +268,7 @@ class HAXCMSThemePicker extends I18NMixin(DDD) {
       context: this,
       localesPath: new URL("../../locales/", import.meta.url).href,
     });
-    this.label = this.t.theme;
+    this.i18nDefault("label", "theme");
     this.description = "";
     this.value = "";
     this.activeValue = "";

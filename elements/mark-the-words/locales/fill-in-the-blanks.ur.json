@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "منتخب الفاظ کا فیڈبیک",
   "wordsNotSelectedFeedback": "غیر منتخب الفاظ کا فیڈبیک",
   "fillInTheBlanksDirections": "جملہ پڑھیں اور ہر خانے میں جواب ٹائپ یا منتخب کریں۔ تمام جوابات دینے کے بعد اپنے جوابات جانچنے کے لیے {checkAnswer} دبا سکتے ہیں۔ آپ کو فیڈبیک ملے گا کہ آپ کا جواب درست ہے یا نہیں۔",
-  "blankNumber": "خالی جگہ {number}"
+  "blankNumber": "خالی جگہ {number}",
+  "checkAnswer": "جواب چیک کریں",
+  "tryAgain": "دوبارہ کوشش کریں"
 }

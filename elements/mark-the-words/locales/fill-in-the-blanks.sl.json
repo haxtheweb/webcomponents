@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Povratna informacija za izbrane besede",
   "wordsNotSelectedFeedback": "Povratna informacija za neizbrane besede",
   "fillInTheBlanksDirections": "Preberite poved in pri vsakem vnosnem polju vpišite ali izberite odgovor. Ko nastavite vse odgovore, lahko pritisnete {checkAnswer}, da jih preverite. Prejeli boste povratno informacijo o pravilnosti odgovora.",
-  "blankNumber": "Vrzel {number}"
+  "blankNumber": "Vrzel {number}",
+  "checkAnswer": "Preveri odgovor",
+  "tryAgain": "Poskusi znova"
 }

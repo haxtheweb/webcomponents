@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Tilbakemelding for valgte ord",
   "wordsNotSelectedFeedback": "Tilbakemelding for ord som ikke er valgt",
   "fillInTheBlanksDirections": "Les setningen og skriv eller velg svaret i hvert felt. Når du har fylt inn alle svarene, kan du trykke på {checkAnswer} for å teste dem. Du får tilbakemelding om svaret er riktig.",
-  "blankNumber": "Tomrom {number}"
+  "blankNumber": "Tomrom {number}",
+  "checkAnswer": "Sjekk svar",
+  "tryAgain": "Prøv igjen"
 }

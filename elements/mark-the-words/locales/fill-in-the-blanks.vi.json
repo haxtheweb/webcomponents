@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Phản hồi về các từ đã chọn",
   "wordsNotSelectedFeedback": "Phản hồi về các từ chưa chọn",
   "fillInTheBlanksDirections": "Đọc câu và nhập hoặc chọn đáp án ở mỗi ô nhập. Khi đã điền hết các câu trả lời, bạn có thể nhấn {checkAnswer} để kiểm tra. Bạn sẽ nhận được phản hồi cho biết câu trả lời có đúng không.",
-  "blankNumber": "Chỗ trống {number}"
+  "blankNumber": "Chỗ trống {number}",
+  "checkAnswer": "Kiểm tra câu trả lời",
+  "tryAgain": "Thử lại"
 }

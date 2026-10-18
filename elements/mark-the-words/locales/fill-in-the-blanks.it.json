@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Feedback sulle parole selezionate",
   "wordsNotSelectedFeedback": "Feedback sulle parole non selezionate",
   "fillInTheBlanksDirections": "Leggi la frase e digita o seleziona la risposta in ogni campo. Dopo aver inserito tutte le risposte, puoi premere {checkAnswer} per verificarle. Riceverai un feedback sulla correttezza della risposta.",
-  "blankNumber": "Spazio {number}"
+  "blankNumber": "Spazio {number}",
+  "checkAnswer": "Verifica risposta",
+  "tryAgain": "Riprova"
 }

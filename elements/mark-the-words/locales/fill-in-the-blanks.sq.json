@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Reagimi për fjalët e përzgjedhura",
   "wordsNotSelectedFeedback": "Reagimi për fjalët e papërzgjedhura",
   "fillInTheBlanksDirections": "Lexo fjalinë dhe shkruaj ose zgjidh përgjigjen në secilën fushë. Pasi të vendosësh të gjitha përgjigjet, mund të shtypësh {checkAnswer} për t'i provuar. Do të marrësh reagim që tregon nëse përgjigjja jote është e saktë.",
-  "blankNumber": "Hapësira {number}"
+  "blankNumber": "Hapësira {number}",
+  "checkAnswer": "Kontrollo përgjigjen",
+  "tryAgain": "Provo përsëri"
 }

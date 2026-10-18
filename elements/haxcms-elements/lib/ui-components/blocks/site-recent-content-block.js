@@ -34,7 +34,7 @@ class SiteRecentContentBlock extends I18NMixin(LitElement) {
       "metadata.created": "ASC",
     };
     this.conditions = {};
-    this.title = this.t.recentContent;
+    this.i18nDefault("title", "recentContent");
     this.__disposer = autorun(() => {
       const _mobx_val_0 = toJS(store.activeId);
       Promise.resolve().then(() => {

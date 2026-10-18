@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "선택한 단어 피드백",
   "wordsNotSelectedFeedback": "선택하지 않은 단어 피드백",
   "fillInTheBlanksDirections": "문장을 읽고 각 입력란에 답을 입력하거나 선택하세요. 모든 답을 정하면 {checkAnswer}을(를) 눌러 답을 확인할 수 있습니다. 답의 정답 여부를 알려 주는 피드백을 받게 됩니다.",
-  "blankNumber": "빈칸 {number}"
+  "blankNumber": "빈칸 {number}",
+  "checkAnswer": "정답 확인",
+  "tryAgain": "다시 시도"
 }

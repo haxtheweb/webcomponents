@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Atsiliepimas apie pasirinktus žodžius",
   "wordsNotSelectedFeedback": "Atsiliepimas apie nepasirinktus žodžius",
   "fillInTheBlanksDirections": "Perskaitykite sakinį ir kiekviename laukelyje įrašykite arba pasirinkite atsakymą. Nustatę visus atsakymus galite spausti {checkAnswer}, kad juos patikrintumėte. Gausite atsiliepimą apie atsakymo teisingumą.",
-  "blankNumber": "Tarpas {number}"
+  "blankNumber": "Tarpas {number}",
+  "checkAnswer": "Tikrinti atsakymą",
+  "tryAgain": "Bandyti dar kartą"
 }

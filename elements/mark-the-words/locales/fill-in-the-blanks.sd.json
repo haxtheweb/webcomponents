@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "چونڊيل لفظن تي راءِ",
   "wordsNotSelectedFeedback": "اڻ چونڊيل لفظن تي راءِ",
   "fillInTheBlanksDirections": "جملو پڙهو ۽ هر خاني ۾ جواب لکو يا چونڊيو. جڏهن سڀ جواب ڏئي ڇڏيو ته انهن کي جانچڻ لاءِ {checkAnswer} دٻائي سگهو ٿا. توهان کي راءِ ملندي جيڪا ٻڌائيندي ته توهان جو جواب صحيح آهي يا نه.",
-  "blankNumber": "خال {number}"
+  "blankNumber": "خال {number}",
+  "checkAnswer": "جواب چيڪ ڪريو",
+  "tryAgain": "ٻيهر ڪوشش ڪريو"
 }

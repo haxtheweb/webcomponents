@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Retroalimentación das palabras seleccionadas",
   "wordsNotSelectedFeedback": "Retroalimentación das palabras non seleccionadas",
   "fillInTheBlanksDirections": "Le a oración e escribe ou selecciona a resposta en cada campo. Cando teñas todas as respostas, podes premer {checkAnswer} para comprobalas. Recibirás retroalimentación que indica se a resposta é correcta.",
-  "blankNumber": "Oco {number}"
+  "blankNumber": "Oco {number}",
+  "checkAnswer": "Comprobar resposta",
+  "tryAgain": "Tentar de novo"
 }

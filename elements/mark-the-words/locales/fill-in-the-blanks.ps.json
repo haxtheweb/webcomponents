@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "د ټاکل شوو کلمو غبرګون",
   "wordsNotSelectedFeedback": "د نه ټاکل شوو کلمو غبرګون",
   "fillInTheBlanksDirections": "جمله ولولئ او په هر ځای کې ځواب ولیکئ یا وټاکئ. کله چې ټول ځوابونه مو وټاکل، کولی شئ د خپلو ځوابونو د ازمویلو لپاره {checkAnswer} کېکاږئ. تاسو به غبرګون ترلاسه کړئ چې ستاسو د ځواب سموالی ښیي.",
-  "blankNumber": "تش ځای {number}"
+  "blankNumber": "تش ځای {number}",
+  "checkAnswer": "ځواب وګورئ",
+  "tryAgain": "بیا هڅه وکړئ"
 }

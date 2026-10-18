@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "चयनित शब्दों पर फ़ीडबैक",
   "wordsNotSelectedFeedback": "अचयनित शब्दों पर फ़ीडबैक",
   "fillInTheBlanksDirections": "वाक्य पढ़ें और हर इनपुट पर उत्तर टाइप करें या चुनें। सभी उत्तर सेट करने के बाद अपने उत्तर जाँचने के लिए {checkAnswer} दबा सकते हैं। आपको फ़ीडबैक मिलेगा कि आपका उत्तर सही है या नहीं।",
-  "blankNumber": "रिक्त स्थान {number}"
+  "blankNumber": "रिक्त स्थान {number}",
+  "checkAnswer": "उत्तर जाँचें",
+  "tryAgain": "फिर से प्रयास करें"
 }

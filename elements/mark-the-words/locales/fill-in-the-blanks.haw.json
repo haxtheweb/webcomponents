@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Manaʻo hoʻihoʻi no nā huaʻōlelo i koho ʻia",
   "wordsNotSelectedFeedback": "Manaʻo hoʻihoʻi no nā huaʻōlelo i koho ʻole ʻia",
   "fillInTheBlanksDirections": "Heluhelu i ka ʻōlelo a kikokiko a koho paha i ka pane ma kēlā me kēia pahu hoʻokomo. Ke hoʻonoho ʻoe i kāu mau pane a pau, hiki iā ʻoe ke kaomi iā {checkAnswer} e hoʻāʻo ai i kāu mau pane. E loaʻa iā ʻoe ka manaʻo hoʻihoʻi e hōʻike ana i ka pololei o kāu pane.",
-  "blankNumber": "Hakahaka {number}"
+  "blankNumber": "Hakahaka {number}",
+  "checkAnswer": "Nānā i ka pane",
+  "tryAgain": "Hoʻāʻo hou"
 }

@@ -34,10 +34,10 @@ class SiteMenuContent extends HAXCMSThemeParts(I18NMixin(PageContentsMenu)) {
       "video-player",
       "audio-player",
     ];
-    this.fallbackText = {
-      "video-player": this.t.video,
-      "audio-player": this.t.audio,
-    };
+    this.i18nDefault("fallbackText", (t) => ({
+      "video-player": t.video,
+      "audio-player": t.audio,
+    }));
     this.hideIfEmpty = true;
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(

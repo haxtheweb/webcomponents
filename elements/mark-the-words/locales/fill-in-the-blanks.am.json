@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "ለተመረጡ ቃላት ግብረመልስ",
   "wordsNotSelectedFeedback": "ላልተመረጡ ቃላት ግብረመልስ",
   "fillInTheBlanksDirections": "ዓረፍተ ነገሩን ያንብቡ እና በእያንዳንዱ ግቤት ላይ መልሱን ይተይቡ ወይም ይምረጡ። ሁሉንም መልሶችዎን ካዘጋጁ በኋላ መልሶችዎን ለመፈተሽ {checkAnswer}ን መጫን ይችላሉ። የመልስዎን ትክክለኛነት የሚያመለክት ግብረመልስ ያገኛሉ።",
-  "blankNumber": "ባዶ ቦታ {number}"
+  "blankNumber": "ባዶ ቦታ {number}",
+  "checkAnswer": "መልሱን አረጋግጥ",
+  "tryAgain": "እንደገና ሞክር"
 }

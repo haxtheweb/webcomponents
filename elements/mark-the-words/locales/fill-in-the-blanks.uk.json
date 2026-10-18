@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Відгук щодо вибраних слів",
   "wordsNotSelectedFeedback": "Відгук щодо невибраних слів",
   "fillInTheBlanksDirections": "Прочитайте речення та введіть або виберіть відповідь у кожному полі. Заповнивши всі відповіді, натисніть {checkAnswer}, щоб перевірити їх. Ви отримаєте відгук про правильність відповіді.",
-  "blankNumber": "Пропуск {number}"
+  "blankNumber": "Пропуск {number}",
+  "checkAnswer": "Перевірити відповідь",
+  "tryAgain": "Спробувати ще раз"
 }

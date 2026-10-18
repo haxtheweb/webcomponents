@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Endurgjöf fyrir valin orð",
   "wordsNotSelectedFeedback": "Endurgjöf fyrir óvalin orð",
   "fillInTheBlanksDirections": "Lestu setninguna og sláðu inn eða veldu svarið í hverjum reit. Þegar þú hefur sett inn öll svörin geturðu ýtt á {checkAnswer} til að prófa svörin þín. Þú færð endurgjöf um hvort svarið sé rétt.",
-  "blankNumber": "Eyða {number}"
+  "blankNumber": "Eyða {number}",
+  "checkAnswer": "Athuga svar",
+  "tryAgain": "Reyna aftur"
 }

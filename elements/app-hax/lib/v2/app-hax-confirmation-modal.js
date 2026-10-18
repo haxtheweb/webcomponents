@@ -40,8 +40,8 @@ export class AppHaxConfirmationModal extends I18NMixin(DDDSuper(LitElement)) {
     this.open = false;
     this.title = "";
     this.message = "";
-    this.confirmText = this.t.confirm;
-    this.cancelText = this.t.cancel;
+    this.i18nDefault("confirmText", "confirm");
+    this.i18nDefault("cancelText", "cancel");
     this.confirmAction = null;
     this.cancelAction = null;
     this.dangerous = false; // For destructive actions like delete/archive

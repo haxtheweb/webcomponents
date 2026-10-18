@@ -410,6 +410,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "unlockHiddenFeatures" },
       title: this.t.unlockHiddenFeatures,
       icon: "hax:hax2022",
       tags: ["Developer", "features", "hidden"],
@@ -425,6 +426,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
     // Expose terrible themes ("90s" themes) in the v2 template picker
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "showTerribleThemes" },
       title: this.t.showTerribleThemes,
       icon: "icons:warning",
       tags: ["Developer", "themes", "terrible"],
@@ -440,6 +442,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
     // Expose hidden themes / use cases in the v2 template picker
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "showHiddenTemplates" },
       title: this.t.showHiddenTemplates,
       icon: "icons:visibility",
       tags: ["Developer", "templates", "hidden"],
@@ -453,6 +456,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: [">"],
     });
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "goToSite" },
       title: this.t.goToSite,
       icon: "hax:hax2022",
       tags: ["Sites", "Administration", "change"],
@@ -499,6 +503,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: ["*"],
     });
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "systemSettings" },
       title: this.t.systemSettings,
       icon: "settings",
       tags: ["Administration", "settings", "system", "dashboard"],
@@ -513,6 +518,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     });
     // contribution helpers
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "joinOurCommunity" },
       title: this.t.joinOurCommunity,
       icon: "hax:discord",
       priority: -100,
@@ -528,6 +534,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "userTutorials" },
       title: this.t.userTutorials,
       icon: "hax:hax2022",
       priority: -1000,
@@ -543,6 +550,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "userDocumentation" },
       title: this.t.userDocumentation,
       icon: "hax:hax2022",
       tags: ["Documentation", "community", "help"],
@@ -557,6 +565,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "haxTeachingExcellence" },
       title: this.t.haxTeachingExcellence,
       icon: "hax:hax2022",
       tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
@@ -571,6 +580,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "bugIssue" },
       title: this.t.bugIssue,
       icon: "mdi-social:github-circle",
       tags: ["Bug report", "github", "git", "community", "issue queue"],
@@ -584,6 +594,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "ideaFeatureRequest" },
       title: this.t.ideaFeatureRequest,
       icon: "mdi-social:github-circle",
       tags: [

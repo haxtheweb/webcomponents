@@ -36,7 +36,7 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
       context: this,
       localesPath: new URL("../locales/", import.meta.url).href,
     });
-    this.title = this.t.roleTitle;
+    this.i18nDefault("title", "roleTitle");
     this.startDate = new Date().toISOString();
     this.endDate = new Date().toISOString();
     this.skills = [];

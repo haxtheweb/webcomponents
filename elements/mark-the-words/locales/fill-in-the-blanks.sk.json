@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Spätná väzba k vybraným slovám",
   "wordsNotSelectedFeedback": "Spätná väzba k nevybraným slovám",
   "fillInTheBlanksDirections": "Prečítajte si vetu a do každého poľa napíšte alebo vyberte odpoveď. Keď nastavíte všetky odpovede, môžete stlačiť {checkAnswer} a otestovať ich. Dostanete spätnú väzbu o správnosti odpovede.",
-  "blankNumber": "Medzera {number}"
+  "blankNumber": "Medzera {number}",
+  "checkAnswer": "Skontrolovať odpoveď",
+  "tryAgain": "Skúsiť znova"
 }

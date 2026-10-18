@@ -26,6 +26,73 @@ export const I18NMixin = function (SuperClass) {
         },
       };
     }
+    /**
+     * Set a property to a translated default and keep it translated.
+     * Translations load after the constructor runs, so a value copied
+     * from this.t there would otherwise stay in English. The property
+     * follows this.t until something sets it to a different value
+     * (an attribute, the author, the app), then it is left alone.
+     * @param {String} prop property on this element
+     * @param {String|Function} key this.t key, or (t) => value
+     */
+    i18nDefault(prop, key) {
+      return this.i18nBind(this, prop, key);
+    }
+    /**
+     * Same as i18nDefault for a field on any object (an option, a program
+     * definition...). onChange(obj) runs after the field is re-translated.
+     * @param {Object} obj
+     * @param {String} field
+     * @param {String|Function} key this.t key, or (t) => value
+     * @param {Function} [onChange]
+     */
+    i18nBind(obj, field, key, onChange) {
+      if (!this.__i18nBindings) {
+        this.__i18nBindings = [];
+      }
+      const value = this._i18nValue(key);
+      obj[field] = value;
+      this.__i18nBindings.push({ obj, field, key, value, onChange });
+      return value;
+    }
+    _i18nValue(key) {
+      const t = this.t || {};
+      return typeof key === "function" ? key(t) : t[key];
+    }
+    /**
+     * Re-apply translated defaults; bindings whose value was changed by
+     * something else are dropped.
+     */
+    _syncI18nBindings() {
+      if (!this.__i18nBindings || this.__i18nBindings.length === 0) {
+        return;
+      }
+      this.__i18nBindings = this.__i18nBindings.filter((b) => {
+        if (b.obj[b.field] !== b.value) {
+          return false;
+        }
+        const next = this._i18nValue(b.key);
+        if (next !== undefined && next !== b.value) {
+          b.obj[b.field] = next;
+          b.value = next;
+          if (b.onChange) {
+            b.onChange(b.obj);
+          }
+        }
+        return true;
+      });
+    }
+    /**
+     * LitElement: translations arrive as a new this.t, which schedules an update
+     */
+    willUpdate(changedProperties) {
+      if (super.willUpdate) {
+        super.willUpdate(changedProperties);
+      }
+      if (changedProperties.has("t")) {
+        this._syncI18nBindings();
+      }
+    }
     // pass through to the manager, automatically adding some namespace values
     registerLocalization(detail) {
       // ensure we have a namespace for later use

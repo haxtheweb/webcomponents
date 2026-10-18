@@ -47,7 +47,7 @@ export class BibliographyBuilder extends SchemaBehaviors(
         "/../",
     });
     this.exportMode = "";
-    this.citationArr = [ this.t.selectCitationFormatBelow ];
+    this.i18nDefault("citationArr", (t) => [t.selectCitationFormatBelow]);
 
     this.addEventListener("add-citation", this._addItemHandler.bind(this));
   }

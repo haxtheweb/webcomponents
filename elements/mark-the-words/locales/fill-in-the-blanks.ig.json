@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Nzaghachi okwu ahọrọ",
   "wordsNotSelectedFeedback": "Nzaghachi okwu na-ahọrọghị",
   "fillInTheBlanksDirections": "Gụọ ahịrịokwu ahụ wee pịnye ma ọ bụ họrọ azịza n'ebe ntinye ọ bụla. Ozugbo i tinyere azịza gị niile, ị nwere ike ịpị {checkAnswer} iji nwalee azịza gị. Ị ga-enweta nzaghachi na-egosi ma azịza gị ziri ezi.",
-  "blankNumber": "Oghere {number}"
+  "blankNumber": "Oghere {number}",
+  "checkAnswer": "Lelee azịza",
+  "tryAgain": "Nwaa ọzọ"
 }

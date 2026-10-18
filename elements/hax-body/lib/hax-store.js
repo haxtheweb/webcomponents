@@ -3271,6 +3271,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // lists; the "::" shortcut chip still renders on its row in inline mode.
     // Resolved by machineName "insert-emoji" via runProgram / waveWand.
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "insertEmoji",
+        "value.name": "insertEmoji",
+        "value.placeholder": "searchForEmoji",
+        "shortcut.description": "insertEmojiInline",
+      },
       title: this.t.insertEmoji,
       icon: "editor:insert-emoticon",
       tags: ["emoji"],
@@ -3575,6 +3582,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // lists; the ":::" shortcut chip still renders on its row in inline mode.
     // Resolved by machineName "insert-symbol" via runProgram / waveWand.
     SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "insertSymbol",
+        "value.name": "insertSymbol",
+        "value.placeholder": "searchForSymbol",
+        "shortcut.description": "insertSymbolInline",
+      },
       title: this.t.insertSymbol,
       icon: "editor:functions",
       tags: ["symbol"],
@@ -3655,6 +3669,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "joinOurCommunity" },
       title: this.t.joinOurCommunity,
       icon: "hax:discord",
       priority: -100,
@@ -3670,6 +3685,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       context: "community",
     });
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "userTutorials" },
       title: this.t.userTutorials,
       icon: "hax:hax2022",
       priority: -1000,
@@ -3685,6 +3701,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       context: "community",
     });
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "userDocumentation" },
       title: this.t.userDocumentation,
       icon: "hax:hax2022",
       tags: ["Documentation", "community", "help"],
@@ -3699,6 +3716,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       context: "community",
     });
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "haxTeachingExcellence" },
       title: this.t.haxTeachingExcellence,
       icon: "hax:hax2022",
       tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
@@ -3713,6 +3731,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       context: "community",
     });
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "reportAnIssueTogether" },
       title: this.t.reportAnIssueTogether,
       icon: "mdi-social:github-circle",
       tags: [

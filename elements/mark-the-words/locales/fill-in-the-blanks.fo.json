@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Afturmelding fyri vald orð",
   "wordsNotSelectedFeedback": "Afturmelding fyri ikki vald orð",
   "fillInTheBlanksDirections": "Les setningin og skriva ella vel svarið í hvørjum innteigi. Tá ið tú hevur sett øll svarini, kanst tú trýsta á {checkAnswer} fyri at kanna svarini. Tú fært afturmelding um, hvørt svarið er rætt.",
-  "blankNumber": "Tómrúm {number}"
+  "blankNumber": "Tómrúm {number}",
+  "checkAnswer": "Kanna svar",
+  "tryAgain": "Royn aftur"
 }

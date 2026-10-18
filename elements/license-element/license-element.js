@@ -305,9 +305,9 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
       localesPath: new URL("./locales/", import.meta.url).href,
     });
     this.licenseList = new licenseList();
-    this.creator = this.t.author;
+    this.i18nDefault("creator", "author");
     this.source = null;
-    this.moreLabel = this.t.onTheLicensingDetailsPage;
+    this.i18nDefault("moreLabel", "onTheLicensingDetailsPage");
   }
   willUpdate(changedProperties) {
     if (super.willUpdate) super.willUpdate(changedProperties);

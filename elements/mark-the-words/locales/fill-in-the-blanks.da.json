@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Feedback for valgte ord",
   "wordsNotSelectedFeedback": "Feedback for ikke-valgte ord",
   "fillInTheBlanksDirections": "Læs sætningen, og skriv eller vælg svaret i hvert felt. Når du har angivet alle dine svar, kan du trykke på {checkAnswer} for at teste dem. Du får feedback om, hvorvidt dit svar er korrekt.",
-  "blankNumber": "Felt {number}"
+  "blankNumber": "Felt {number}",
+  "checkAnswer": "Tjek svar",
+  "tryAgain": "Prøv igen"
 }

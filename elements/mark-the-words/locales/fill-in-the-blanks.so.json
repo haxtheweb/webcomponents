@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Jawaab-celinta erayada la doortay",
   "wordsNotSelectedFeedback": "Jawaab-celinta erayada aan la dooran",
   "fillInTheBlanksDirections": "Akhri jumladda oo qor ama dooro jawaabta meel kasta oo gelin ah. Markaad dejiso dhammaan jawaabahaaga waxaad riixi kartaa {checkAnswer} si aad u tijaabiso jawaabahaaga. Waxaad heli doontaa jawaab-celin muujinaysa saxnaanta jawaabtaada.",
-  "blankNumber": "Bannaanka {number}"
+  "blankNumber": "Bannaanka {number}",
+  "checkAnswer": "Hubi jawaabta",
+  "tryAgain": "Isku day mar kale"
 }

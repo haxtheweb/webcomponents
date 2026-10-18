@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "已选词语反馈",
   "wordsNotSelectedFeedback": "未选词语反馈",
   "fillInTheBlanksDirections": "读一读句子,辣每只输入框里打进或者选好答案。答案全部填好以后,可以揿 {checkAnswer} 测试侬个答案。侬会得到反馈,讲侬个答案对勿对。",
-  "blankNumber": "空格 {number}"
+  "blankNumber": "空格 {number}",
+  "checkAnswer": "检查答案",
+  "tryAgain": "再试一趟"
 }

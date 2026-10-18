@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Èsì àwọn ọ̀rọ̀ tí a yàn",
   "wordsNotSelectedFeedback": "Èsì àwọn ọ̀rọ̀ tí a kò yàn",
   "fillInTheBlanksDirections": "Ka gbólóhùn náà kí o sì tẹ tàbí yan ìdáhùn ní ibi ìtẹ̀wọlé kọ̀ọ̀kan. Tí o bá ti fi gbogbo ìdáhùn rẹ sí, o lè tẹ {checkAnswer} láti dán àwọn ìdáhùn rẹ wò. Wàá gba èsì tó fi hàn bóyá ìdáhùn rẹ tọ́.",
-  "blankNumber": "Àlàfo {number}"
+  "blankNumber": "Àlàfo {number}",
+  "checkAnswer": "Ṣàyẹ̀wò ìdáhùn",
+  "tryAgain": "Tún gbìyànjú"
 }

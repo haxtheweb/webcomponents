@@ -37,7 +37,7 @@ export class WebContainerEl extends I18NMixin(DDDSuper(LitElement)) {
       localesPath: new URL("./locales/", import.meta.url).href,
     });
     this.filesShown = [];
-    this.status = this.t.loading;
+    this.i18nDefault("status", "loading");
     this.fname = null;
     this.hideEditor = false;
     this.hideTerminal = false;

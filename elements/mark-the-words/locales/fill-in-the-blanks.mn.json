@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Сонгосон үгсийн санал хүсэлт",
   "wordsNotSelectedFeedback": "Сонгоогүй үгсийн санал хүсэлт",
   "fillInTheBlanksDirections": "Өгүүлбэрийг уншаад талбар бүрт хариултаа бичих эсвэл сонгоно уу. Бүх хариултаа оруулсны дараа шалгахын тулд {checkAnswer} дарж болно. Хариулт тань зөв эсэхийг заасан санал хүсэлт авна.",
-  "blankNumber": "{number}-р хоосон зай"
+  "blankNumber": "{number}-р хоосон зай",
+  "checkAnswer": "Хариултыг шалгах",
+  "tryAgain": "Дахин оролдох"
 }

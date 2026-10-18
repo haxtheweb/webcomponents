@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Zpětná vazba k vybraným slovům",
   "wordsNotSelectedFeedback": "Zpětná vazba k nevybraným slovům",
   "fillInTheBlanksDirections": "Přečtěte si větu a u každého pole napište nebo vyberte odpověď. Jakmile nastavíte všechny odpovědi, můžete stisknout {checkAnswer} a otestovat je. Dostanete zpětnou vazbu o správnosti své odpovědi.",
-  "blankNumber": "Mezera {number}"
+  "blankNumber": "Mezera {number}",
+  "checkAnswer": "Zkontrolovat odpověď",
+  "tryAgain": "Zkusit znovu"
 }

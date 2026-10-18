@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Feedback zu ausgewählten Wörtern",
   "wordsNotSelectedFeedback": "Feedback zu nicht ausgewählten Wörtern",
   "fillInTheBlanksDirections": "Lies den Satz und gib bei jedem Eingabefeld die Antwort ein oder wähle sie aus. Sobald du alle Antworten gesetzt hast, kannst du {checkAnswer} drücken, um sie zu prüfen. Du erhältst Feedback, ob deine Antwort richtig ist.",
-  "blankNumber": "Lücke {number}"
+  "blankNumber": "Lücke {number}",
+  "checkAnswer": "Antwort prüfen",
+  "tryAgain": "Erneut versuchen"
 }

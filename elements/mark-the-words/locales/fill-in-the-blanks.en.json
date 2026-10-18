@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Words selected feedback",
   "wordsNotSelectedFeedback": "Words not selected feedback",
   "fillInTheBlanksDirections": "Read the sentance and type or select the answer at each input. Once you set all your answers you can press {checkAnswer} to test your answers. You will get feedback indicating correctness of your answer.",
-  "blankNumber": "Blank {number}"
+  "blankNumber": "Blank {number}",
+  "checkAnswer": "Check answer",
+  "tryAgain": "Try again"
 }

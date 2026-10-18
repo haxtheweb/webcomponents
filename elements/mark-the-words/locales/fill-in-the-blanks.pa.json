@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "ਚੁਣੇ ਸ਼ਬਦਾਂ ਦਾ ਫ਼ੀਡਬੈਕ",
   "wordsNotSelectedFeedback": "ਨਾ ਚੁਣੇ ਸ਼ਬਦਾਂ ਦਾ ਫ਼ੀਡਬੈਕ",
   "fillInTheBlanksDirections": "ਵਾਕ ਪੜ੍ਹੋ ਅਤੇ ਹਰ ਇਨਪੁਟ 'ਤੇ ਜਵਾਬ ਲਿਖੋ ਜਾਂ ਚੁਣੋ। ਸਾਰੇ ਜਵਾਬ ਸੈੱਟ ਕਰਨ ਤੋਂ ਬਾਅਦ ਤੁਸੀਂ ਆਪਣੇ ਜਵਾਬ ਜਾਂਚਣ ਲਈ {checkAnswer} ਦਬਾ ਸਕਦੇ ਹੋ। ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਜਵਾਬ ਦੀ ਸ਼ੁੱਧਤਾ ਬਾਰੇ ਫ਼ੀਡਬੈਕ ਮਿਲੇਗਾ।",
-  "blankNumber": "ਖਾਲੀ ਥਾਂ {number}"
+  "blankNumber": "ਖਾਲੀ ਥਾਂ {number}",
+  "checkAnswer": "ਜਵਾਬ ਜਾਂਚੋ",
+  "tryAgain": "ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
 }

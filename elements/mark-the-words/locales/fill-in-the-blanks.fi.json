@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Palaute valituista sanoista",
   "wordsNotSelectedFeedback": "Palaute valitsemattomista sanoista",
   "fillInTheBlanksDirections": "Lue lause ja kirjoita tai valitse vastaus jokaiseen kenttään. Kun olet antanut kaikki vastauksesi, voit painaa {checkAnswer} tarkistaaksesi ne. Saat palautetta vastauksesi oikeellisuudesta.",
-  "blankNumber": "Aukko {number}"
+  "blankNumber": "Aukko {number}",
+  "checkAnswer": "Tarkista vastaus",
+  "tryAgain": "Yritä uudelleen"
 }

@@ -530,7 +530,7 @@ class SimpleModal extends I18NMixin(LitElement) {
     this.breadcrumbs = [];
     this.showClose = false;
     this.opened = false;
-    this.closeLabel = this.t.close;
+    this.i18nDefault("closeLabel", "close");
     this.closeIcon = "close";
     this.modal = false;
   }

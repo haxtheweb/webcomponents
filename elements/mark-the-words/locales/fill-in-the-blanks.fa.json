@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "بازخورد واژه‌های انتخاب‌شده",
   "wordsNotSelectedFeedback": "بازخورد واژه‌های انتخاب‌نشده",
   "fillInTheBlanksDirections": "جمله را بخوانید و در هر ورودی پاسخ را تایپ یا انتخاب کنید. پس از تعیین همه پاسخ‌ها، می‌توانید برای آزمودن آن‌ها {checkAnswer} را بزنید. بازخوردی درباره درستی پاسخ خود دریافت خواهید کرد.",
-  "blankNumber": "جای خالی {number}"
+  "blankNumber": "جای خالی {number}",
+  "checkAnswer": "بررسی پاسخ",
+  "tryAgain": "دوباره تلاش کنید"
 }

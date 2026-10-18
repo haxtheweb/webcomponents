@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Saýlanan sözler boýunça seslenme",
   "wordsNotSelectedFeedback": "Saýlanmadyk sözler boýunça seslenme",
   "fillInTheBlanksDirections": "Sözlemi okaň we her giriş meýdançasyna jogaby ýazyň ýa-da saýlaň. Ähli jogaplaryňyzy goýanyňyzdan soň, jogaplaryňyzy barlamak üçin {checkAnswer} basyp bilersiňiz. Jogabyňyzyň dogrulygyny görkezýän seslenme alarsyňyz.",
-  "blankNumber": "{number}-nji boşluk"
+  "blankNumber": "{number}-nji boşluk",
+  "checkAnswer": "Jogaby barlamak",
+  "tryAgain": "Gaýtadan synanyşmak"
 }

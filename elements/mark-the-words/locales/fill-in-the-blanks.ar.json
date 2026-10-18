@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "ملاحظات الكلمات المحددة",
   "wordsNotSelectedFeedback": "ملاحظات الكلمات غير المحددة",
   "fillInTheBlanksDirections": "اقرأ الجملة واكتب الإجابة أو اخترها عند كل حقل إدخال. بعد تعيين جميع إجاباتك يمكنك الضغط على {checkAnswer} لاختبارها. ستحصل على ملاحظات توضح صحة إجابتك.",
-  "blankNumber": "الفراغ {number}"
+  "blankNumber": "الفراغ {number}",
+  "checkAnswer": "التحقق من الإجابة",
+  "tryAgain": "حاول مرة أخرى"
 }

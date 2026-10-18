@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Duub deebii jechoota filatamanii",
   "wordsNotSelectedFeedback": "Duub deebii jechoota hin filatamnee",
   "fillInTheBlanksDirections": "Hima dubbisiitii bakka galchii tokkoon tokkoon isaa irratti deebii barreessi yookaan fili. Deebii kee hunda erga kaa'ee booda deebii kee qoruuf {checkAnswer} tuquu dandeessa. Sirrummaa deebii keetii kan agarsiisu duub deebii ni argatta.",
-  "blankNumber": "Bakka duwwaa {number}"
+  "blankNumber": "Bakka duwwaa {number}",
+  "checkAnswer": "Deebii mirkaneessi",
+  "tryAgain": "Irra deebi'ii yaali"
 }

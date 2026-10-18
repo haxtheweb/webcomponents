@@ -94,8 +94,8 @@ class EditableTableFilter extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
       context: this,
       localesPath: new URL("../locales/", import.meta.url).href,
     });
-    this.label = this.t.toggleFilter;
-    this.tooltip = this.t.toggleFilterForColumn;
+    this.i18nDefault("label", "toggleFilter");
+    this.i18nDefault("tooltip", "toggleFilterForColumn");
     this.describedby = "cell";
   }
 

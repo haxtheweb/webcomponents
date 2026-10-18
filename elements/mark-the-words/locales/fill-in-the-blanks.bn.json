@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "নির্বাচিত শব্দের ফিডব্যাক",
   "wordsNotSelectedFeedback": "অনির্বাচিত শব্দের ফিডব্যাক",
   "fillInTheBlanksDirections": "বাক্যটি পড়ুন এবং প্রতিটি ইনপুটে উত্তর টাইপ বা নির্বাচন করুন। সব উত্তর দেওয়া হলে যাচাই করতে {checkAnswer} চাপতে পারেন। আপনার উত্তর সঠিক কিনা সে বিষয়ে ফিডব্যাক পাবেন।",
-  "blankNumber": "শূন্যস্থান {number}"
+  "blankNumber": "শূন্যস্থান {number}",
+  "checkAnswer": "উত্তর যাচাই করুন",
+  "tryAgain": "আবার চেষ্টা করুন"
 }

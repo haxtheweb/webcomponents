@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Ñe'ẽ poravopyre mbohovái",
   "wordsNotSelectedFeedback": "Ñe'ẽ poravo'ỹmbyre mbohovái",
   "fillInTheBlanksDirections": "Emoñe'ẽ ñe'ẽjoaju ha ehai térã eiporavo mbohovái opaite moingeha rupi. Remoĩ rire opaite nde mbohovái ikatu rejopy {checkAnswer} rehecha hag̃ua nde mbohovái. Rehupytýta mbohovái ohechaukáva nde mbohovái oĩ porãpa.",
-  "blankNumber": "Nandi {number}"
+  "blankNumber": "Nandi {number}",
+  "checkAnswer": "Hecha mbohovái",
+  "tryAgain": "Eha'ã jey"
 }

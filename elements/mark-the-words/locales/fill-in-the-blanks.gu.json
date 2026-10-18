@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "પસંદ કરેલા શબ્દો માટે પ્રતિસાદ",
   "wordsNotSelectedFeedback": "પસંદ ન કરેલા શબ્દો માટે પ્રતિસાદ",
   "fillInTheBlanksDirections": "વાક્ય વાંચો અને દરેક ઇનપુટમાં જવાબ લખો અથવા પસંદ કરો. તમારા બધા જવાબો સેટ થઈ જાય પછી, તમારા જવાબો ચકાસવા માટે {checkAnswer} દબાવી શકો છો. તમને તમારા જવાબની સાચીતા દર્શાવતો પ્રતિસાદ મળશે.",
-  "blankNumber": "ખાલી જગ્યા {number}"
+  "blankNumber": "ખાલી જગ્યા {number}",
+  "checkAnswer": "જવાબ તપાસો",
+  "tryAgain": "ફરી પ્રયાસ કરો"
 }

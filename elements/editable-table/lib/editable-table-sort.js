@@ -113,8 +113,8 @@ class EditableTableSort extends I18NMixin(
     this.sortColumn = -1;
     this.toggles = true;
     this.icon = "editable-table:sortable";
-    this.label = this.t.toggleSortMode;
-    this.tooltip = this.t.togglesSortingByColumn;
+    this.i18nDefault("label", "toggleSortMode");
+    this.i18nDefault("tooltip", "togglesSortingByColumn");
     this.describedby = "cell";
   }
 

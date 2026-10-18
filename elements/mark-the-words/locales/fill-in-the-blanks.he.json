@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "משוב על מילים שנבחרו",
   "wordsNotSelectedFeedback": "משוב על מילים שלא נבחרו",
   "fillInTheBlanksDirections": "קראו את המשפט והקלידו או בחרו את התשובה בכל שדה. לאחר שתמלאו את כל התשובות, לחצו על {checkAnswer} כדי לבדוק אותן. תקבלו משוב על נכונות התשובה.",
-  "blankNumber": "חסר {number}"
+  "blankNumber": "חסר {number}",
+  "checkAnswer": "בדיקת תשובה",
+  "tryAgain": "נסו שוב"
 }

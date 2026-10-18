@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Feedback dwar il-kliem magħżul",
   "wordsNotSelectedFeedback": "Feedback dwar il-kliem mhux magħżul",
   "fillInTheBlanksDirections": "Aqra s-sentenza u ikteb jew agħżel it-tweġiba f'kull input. Ladarba tissettja t-tweġibiet kollha tiegħek, tista' tagħfas {checkAnswer} biex tittestja t-tweġibiet tiegħek. Tirċievi feedback li jindika jekk it-tweġiba tiegħek hijiex korretta.",
-  "blankNumber": "Vojt {number}"
+  "blankNumber": "Vojt {number}",
+  "checkAnswer": "Iċċekkja t-tweġiba",
+  "tryAgain": "Erġa' pprova"
 }

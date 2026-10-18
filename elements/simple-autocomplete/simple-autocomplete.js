@@ -299,7 +299,7 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
     });
     // default limit of items to show even if there are more results
     this.itemLimit = 6;
-    this.inputLabel = this.t.search;
+    this.i18nDefault("inputLabel", "search");
     // flag to hide input; useful if something else is implementing this tag w/ own input
     this.hideInput = false;
     this.selectionPosition = false;

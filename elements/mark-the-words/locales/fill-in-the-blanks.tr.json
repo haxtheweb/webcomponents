@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Seçilen kelimeler için geri bildirim",
   "wordsNotSelectedFeedback": "Seçilmeyen kelimeler için geri bildirim",
   "fillInTheBlanksDirections": "Cümleyi okuyun ve her alana cevabı yazın veya seçin. Tüm cevaplarınızı belirledikten sonra cevaplarınızı test etmek için {checkAnswer} düğmesine basabilirsiniz. Cevabınızın doğruluğunu belirten geri bildirim alacaksınız.",
-  "blankNumber": "Boşluk {number}"
+  "blankNumber": "Boşluk {number}",
+  "checkAnswer": "Cevabı kontrol et",
+  "tryAgain": "Tekrar dene"
 }

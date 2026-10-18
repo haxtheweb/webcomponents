@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Водгук па выбраных словах",
   "wordsNotSelectedFeedback": "Водгук па невыбраных словах",
   "fillInTheBlanksDirections": "Прачытайце сказ і ўвядзіце або выберыце адказ у кожным полі. Калі ўсе адказы зададзены, націсніце {checkAnswer}, каб праверыць іх. Вы атрымаеце водгук аб правільнасці вашага адказу.",
-  "blankNumber": "Пропуск {number}"
+  "blankNumber": "Пропуск {number}",
+  "checkAnswer": "Праверыць адказ",
+  "tryAgain": "Паспрабаваць зноў"
 }

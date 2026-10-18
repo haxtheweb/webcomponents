@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Tanlangan soʻzlar boʻyicha fikr-mulohaza",
   "wordsNotSelectedFeedback": "Tanlanmagan soʻzlar boʻyicha fikr-mulohaza",
   "fillInTheBlanksDirections": "Gapni oʻqing va har bir maydonga javobni yozing yoki tanlang. Barcha javoblarni kiritgach, ularni tekshirish uchun {checkAnswer} tugmasini bosishingiz mumkin. Javobingiz toʻgʻriligi haqida fikr-mulohaza olasiz.",
-  "blankNumber": "{number}-boʻsh joy"
+  "blankNumber": "{number}-boʻsh joy",
+  "checkAnswer": "Javobni tekshirish",
+  "tryAgain": "Qayta urinish"
 }

@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Aiseolas ar na focail roghnaithe",
   "wordsNotSelectedFeedback": "Aiseolas ar na focail nár roghnaíodh",
   "fillInTheBlanksDirections": "Léigh an abairt agus clóscríobh nó roghnaigh an freagra ag gach ionchur. Nuair a bheidh do fhreagraí go léir socraithe agat, is féidir leat {checkAnswer} a bhrú chun iad a thástáil. Gheobhaidh tú aiseolas a léiríonn an bhfuil do fhreagra ceart.",
-  "blankNumber": "Bearna {number}"
+  "blankNumber": "Bearna {number}",
+  "checkAnswer": "Seiceáil an freagra",
+  "tryAgain": "Bain triail eile as"
 }

@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Feedback zu de gewielte Wierder",
   "wordsNotSelectedFeedback": "Feedback zu den net gewielte Wierder",
   "fillInTheBlanksDirections": "Liest de Saz an tippt oder wielt d'Äntwert bei all Agabfeld. Soubal Dir all Är Äntwerte gesat hutt, kënnt Dir op {checkAnswer} drécken, fir Är Äntwerten ze testen. Dir kritt e Feedback, deen uweist, ob Är Äntwert richteg ass.",
-  "blankNumber": "Lück {number}"
+  "blankNumber": "Lück {number}",
+  "checkAnswer": "Äntwert iwwerpréiwen",
+  "tryAgain": "Nach eng Kéier probéieren"
 }

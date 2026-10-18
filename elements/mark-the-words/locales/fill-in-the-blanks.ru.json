@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Отзыв по выбранным словам",
   "wordsNotSelectedFeedback": "Отзыв по невыбранным словам",
   "fillInTheBlanksDirections": "Прочитайте предложение и введите или выберите ответ в каждом поле. Заполнив все ответы, нажмите {checkAnswer}, чтобы проверить их. Вы получите отзыв о правильности ответа.",
-  "blankNumber": "Пропуск {number}"
+  "blankNumber": "Пропуск {number}",
+  "checkAnswer": "Проверить ответ",
+  "tryAgain": "Попробовать снова"
 }

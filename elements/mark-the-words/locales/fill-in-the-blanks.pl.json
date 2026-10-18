@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Informacja zwrotna o zaznaczonych słowach",
   "wordsNotSelectedFeedback": "Informacja zwrotna o niezaznaczonych słowach",
   "fillInTheBlanksDirections": "Przeczytaj zdanie i wpisz lub wybierz odpowiedź w każdym polu. Po uzupełnieniu wszystkich odpowiedzi naciśnij {checkAnswer}, aby je sprawdzić. Otrzymasz informację o poprawności odpowiedzi.",
-  "blankNumber": "Luka {number}"
+  "blankNumber": "Luka {number}",
+  "checkAnswer": "Sprawdź odpowiedź",
+  "tryAgain": "Spróbuj ponownie"
 }

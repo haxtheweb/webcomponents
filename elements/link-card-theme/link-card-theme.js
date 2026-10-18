@@ -57,12 +57,14 @@ export class LinkCardTheme extends HAXCMSThemeParts(
     I18NManagerStore.registerLocalization({
       context: this,
       localesPath: new URL("./locales/", import.meta.url).href,
+      updateCallback: "_i18nUpdated",
     });
     this.manifest = {};
     this.linkItems = [];
     this.socialItems = [];
     this.profileImage = "";
     this.profileName = this.t.myProfile;
+    this._i18nProfileName = this.profileName;
     this.profileDescription = "";
     this.paletteAnnouncement = "";
     const storedPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette");
@@ -82,6 +84,17 @@ export class LinkCardTheme extends HAXCMSThemeParts(
     );
   }
 
+  /**
+   * i18n manager callback: translate the default profile name unless the
+   * site manifest (or anything else) already replaced it
+   */
+  _i18nUpdated() {
+    if (this.profileName === this._i18nProfileName) {
+      this.profileName = this.t.myProfile;
+      this._i18nProfileName = this.profileName;
+    }
+    this.requestUpdate();
+  }
   static get properties() {
     return {
       ...super.properties,

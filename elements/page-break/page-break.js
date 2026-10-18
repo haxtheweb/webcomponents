@@ -80,7 +80,7 @@ export class PageBreak extends IntersectionObserverMixin(
     this.noderefs = [];
     this.developerTheme = null;
     this.tags = null;
-    this.title = this.t.newPage;
+    this.i18nDefault("title", "newPage");
     this.pageType = null;
     this.slug = "";
     this.published = false;

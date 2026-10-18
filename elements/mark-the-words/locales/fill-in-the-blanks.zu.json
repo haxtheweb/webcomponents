@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Impendulo yamagama akhethiwe",
   "wordsNotSelectedFeedback": "Impendulo yamagama angakhethiwe",
   "fillInTheBlanksDirections": "Funda umusho bese uthayipha noma ukhethe impendulo kukho konke ukufaka. Uma usuzibekile zonke izimpendulo zakho ungacindezela u-{checkAnswer} ukuze uhlole izimpendulo zakho. Uzothola impendulo ekhombisa ukuthi impendulo yakho iqondile yini.",
-  "blankNumber": "Isikhala {number}"
+  "blankNumber": "Isikhala {number}",
+  "checkAnswer": "Hlola impendulo",
+  "tryAgain": "Zama futhi"
 }

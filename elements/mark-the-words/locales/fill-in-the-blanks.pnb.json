@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "چݨے لفظاں دا فیڈبیک",
   "wordsNotSelectedFeedback": "نہ چݨے لفظاں دا فیڈبیک",
   "fillInTheBlanksDirections": "جملہ پڑھو تے ہر خانے وچ جواب لکھو یا چݨو۔ جدوں سارے جواب ہو جاݨ، اپݨے جواب جانچن لئی {checkAnswer} دبا سکدے او۔ تہانوں فیڈبیک ملے گا کہ تہاڈا جواب ٹھیک اے یا نئیں۔",
-  "blankNumber": "خالی تھاں {number}"
+  "blankNumber": "خالی تھاں {number}",
+  "checkAnswer": "جواب چیک کرو",
+  "tryAgain": "فیر کوشش کرو"
 }

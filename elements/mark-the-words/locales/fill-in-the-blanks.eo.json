@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Reago pri elektitaj vortoj",
   "wordsNotSelectedFeedback": "Reago pri neelektitaj vortoj",
   "fillInTheBlanksDirections": "Legu la frazon kaj tajpu aŭ elektu la respondon ĉe ĉiu enigo. Kiam vi agordis ĉiujn respondojn, vi povas premi {checkAnswer} por testi viajn respondojn. Vi ricevos reagon pri la ĝusteco de via respondo.",
-  "blankNumber": "Truo {number}"
+  "blankNumber": "Truo {number}",
+  "checkAnswer": "Kontroli respondon",
+  "tryAgain": "Provi denove"
 }

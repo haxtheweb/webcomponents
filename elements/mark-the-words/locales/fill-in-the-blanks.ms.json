@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Maklum balas perkataan yang dipilih",
   "wordsNotSelectedFeedback": "Maklum balas perkataan yang tidak dipilih",
   "fillInTheBlanksDirections": "Baca ayat dan taip atau pilih jawapan pada setiap input. Setelah anda menetapkan semua jawapan, anda boleh menekan {checkAnswer} untuk menguji jawapan anda. Anda akan mendapat maklum balas yang menunjukkan ketepatan jawapan anda.",
-  "blankNumber": "Tempat kosong {number}"
+  "blankNumber": "Tempat kosong {number}",
+  "checkAnswer": "Semak jawapan",
+  "tryAgain": "Cuba lagi"
 }

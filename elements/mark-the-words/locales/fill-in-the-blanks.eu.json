@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Hautatutako hitzen feedbacka",
   "wordsNotSelectedFeedback": "Hautatu gabeko hitzen feedbacka",
   "fillInTheBlanksDirections": "Irakurri esaldia eta idatzi edo hautatu erantzuna sarrera bakoitzean. Erantzun guztiak ezarri ondoren, sakatu {checkAnswer} zure erantzunak probatzeko. Zure erantzuna zuzena den adierazten duen feedbacka jasoko duzu.",
-  "blankNumber": "{number}. hutsunea"
+  "blankNumber": "{number}. hutsunea",
+  "checkAnswer": "Egiaztatu erantzuna",
+  "tryAgain": "Saiatu berriro"
 }

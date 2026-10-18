@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "ຄຳຕິຊົມຄຳທີ່ເລືອກ",
   "wordsNotSelectedFeedback": "ຄຳຕິຊົມຄຳທີ່ບໍ່ໄດ້ເລືອກ",
   "fillInTheBlanksDirections": "ອ່ານປະໂຫຍກ ແລະ ພິມ ຫຼື ເລືອກຄຳຕອບໃນແຕ່ລະຊ່ອງ. ເມື່ອໃສ່ຄຳຕອບຄົບແລ້ວ ທ່ານສາມາດກົດ {checkAnswer} ເພື່ອກວດຄຳຕອບຂອງທ່ານ. ທ່ານຈະໄດ້ຮັບຄຳຕິຊົມທີ່ບອກວ່າຄຳຕອບຂອງທ່ານຖືກຫຼືບໍ່.",
-  "blankNumber": "ຊ່ອງວ່າງ {number}"
+  "blankNumber": "ຊ່ອງວ່າງ {number}",
+  "checkAnswer": "ກວດຄຳຕອບ",
+  "tryAgain": "ລອງອີກຄັ້ງ"
 }

@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Tagasiside valitud sõnade kohta",
   "wordsNotSelectedFeedback": "Tagasiside valimata sõnade kohta",
   "fillInTheBlanksDirections": "Loe lauset ja kirjuta või vali igasse sisestusvälja vastus. Kui kõik vastused on sisestatud, vajuta vastuste kontrollimiseks {checkAnswer}. Saad tagasisidet vastuse õigsuse kohta.",
-  "blankNumber": "Lünk {number}"
+  "blankNumber": "Lünk {number}",
+  "checkAnswer": "Kontrolli vastust",
+  "tryAgain": "Proovi uuesti"
 }

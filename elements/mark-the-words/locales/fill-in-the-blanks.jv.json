@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Umpan balik tembung sing dipilih",
   "wordsNotSelectedFeedback": "Umpan balik tembung sing ora dipilih",
   "fillInTheBlanksDirections": "Wacanen ukarane lan ketik utawa pilih wangsulan ing saben isian. Yen kabeh wangsulan wis disetel, sampeyan bisa mencet {checkAnswer} kanggo nguji wangsulanmu. Sampeyan bakal entuk umpan balik sing nuduhake bener orane wangsulanmu.",
-  "blankNumber": "Isian {number}"
+  "blankNumber": "Isian {number}",
+  "checkAnswer": "Priksa wangsulan",
+  "tryAgain": "Jajal maneh"
 }

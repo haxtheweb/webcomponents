@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Seçilmiş sözlər üzrə rəy",
   "wordsNotSelectedFeedback": "Seçilməmiş sözlər üzrə rəy",
   "fillInTheBlanksDirections": "Cümləni oxuyun və hər xanada cavabı yazın və ya seçin. Bütün cavabları təyin etdikdən sonra onları yoxlamaq üçün {checkAnswer} düyməsini basa bilərsiniz. Cavabınızın düzgünlüyünü göstərən rəy alacaqsınız.",
-  "blankNumber": "Boşluq {number}"
+  "blankNumber": "Boşluq {number}",
+  "checkAnswer": "Cavabı yoxla",
+  "tryAgain": "Yenidən cəhd et"
 }

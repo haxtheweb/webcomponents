@@ -51,9 +51,9 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
     this.groups = [];
     this.values = {};
     this.errorMessage = "";
-    this.homePageItemsList = [
-      { value: "", text: this.t.defaultToFirstPage },
-    ];
+    this.i18nDefault("homePageItemsList", (t) => [
+      { value: "", text: t.defaultToFirstPage },
+    ]);
     this.__valueChangeLock = false;
     this.__groupValues = {};
     this.__manifestReaction = null;

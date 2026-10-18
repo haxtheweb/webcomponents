@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Akllasqa simikunap kutichiynin",
   "wordsNotSelectedFeedback": "Mana akllasqa simikunap kutichiynin",
   "fillInTheBlanksDirections": "Rimayta ñawinchay, sapanka haykunapi kutichiyta qillqay utaq akllay. Llapan kutichiykunata churaspaqa {checkAnswer} ñit'iyta atinki kutichiyniykikunata qhawanapaq. Kutichiyniyki allinchus kasqanmanta willakuytam chaskinki.",
-  "blankNumber": "Ch'usaq {number}"
+  "blankNumber": "Ch'usaq {number}",
+  "checkAnswer": "Kutichiyta qhaway",
+  "tryAgain": "Hukmanta kallpachakuy"
 }

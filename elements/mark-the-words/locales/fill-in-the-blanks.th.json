@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "ผลตอบกลับของคำที่เลือก",
   "wordsNotSelectedFeedback": "ผลตอบกลับของคำที่ไม่ได้เลือก",
   "fillInTheBlanksDirections": "อ่านประโยคแล้วพิมพ์หรือเลือกคำตอบในแต่ละช่อง เมื่อใส่คำตอบครบแล้ว คุณสามารถกด {checkAnswer} เพื่อตรวจคำตอบ คุณจะได้รับผลตอบกลับที่บอกว่าคำตอบถูกต้องหรือไม่",
-  "blankNumber": "ช่องว่างที่ {number}"
+  "blankNumber": "ช่องว่างที่ {number}",
+  "checkAnswer": "ตรวจคำตอบ",
+  "tryAgain": "ลองอีกครั้ง"
 }

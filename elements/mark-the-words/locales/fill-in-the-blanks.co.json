@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Riscontru nant'à e parolle selezziunate",
   "wordsNotSelectedFeedback": "Riscontru nant'à e parolle micca selezziunate",
   "fillInTheBlanksDirections": "Leghjite a frase è scrivite o selezziunate a risposta in ogni campu. Quandu avete datu tutte e vostre risposte, pudete appughjà nant'à {checkAnswer} per verificalle. Riceverete un riscontru chì indica s'è a vostra risposta hè curretta.",
-  "blankNumber": "Biotu {number}"
+  "blankNumber": "Biotu {number}",
+  "checkAnswer": "Verificà a risposta",
+  "tryAgain": "Torna à pruvà"
 }

@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Ingxelo yamagama akhethiweyo",
   "wordsNotSelectedFeedback": "Ingxelo yamagama angakhethwanga",
   "fillInTheBlanksDirections": "Funda isivakalisi uze uchwetheze okanye ukhethe impendulo kwindawo nganye yokufaka. Xa usetile zonke iimpendulo zakho ungacofa u-{checkAnswer} ukuvavanya iimpendulo zakho. Uza kufumana ingxelo ebonisa ukuchana kwempendulo yakho.",
-  "blankNumber": "Isikhewu {number}"
+  "blankNumber": "Isikhewu {number}",
+  "checkAnswer": "Jonga impendulo",
+  "tryAgain": "Zama kwakhona"
 }

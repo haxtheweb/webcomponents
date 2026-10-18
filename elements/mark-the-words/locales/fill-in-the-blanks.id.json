@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Umpan balik kata yang dipilih",
   "wordsNotSelectedFeedback": "Umpan balik kata yang tidak dipilih",
   "fillInTheBlanksDirections": "Baca kalimatnya lalu ketik atau pilih jawaban di setiap isian. Setelah semua jawaban terisi, Anda dapat menekan {checkAnswer} untuk menguji jawaban Anda. Anda akan mendapatkan umpan balik tentang kebenaran jawaban Anda.",
-  "blankNumber": "Isian {number}"
+  "blankNumber": "Isian {number}",
+  "checkAnswer": "Periksa jawaban",
+  "tryAgain": "Coba lagi"
 }

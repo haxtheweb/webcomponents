@@ -31,5 +31,7 @@
   "wordsSelectedFeedback": "Martanin kalmomin da aka zaɓa",
   "wordsNotSelectedFeedback": "Martanin kalmomin da ba a zaɓa ba",
   "fillInTheBlanksDirections": "Karanta jumlar ka rubuta ko zaɓi amsar a kowane wurin shigarwa. Da zarar ka saita dukkan amsoshinka, za ka iya danna {checkAnswer} don gwada amsoshinka. Za ka sami martani da ke nuna ingancin amsarka.",
-  "blankNumber": "Gurbi {number}"
+  "blankNumber": "Gurbi {number}",
+  "checkAnswer": "Duba amsa",
+  "tryAgain": "Sake gwadawa"
 }

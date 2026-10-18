@@ -37,7 +37,7 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
     this.windowControllers = new AbortController();
     this.username = "";
     this.password = "";
-    this.errorMSG = this.t.enterUserName;
+    this.i18nDefault("errorMSG", "enterUserName");
     this.hidePassword = true;
     this.hasPass = false;
   }

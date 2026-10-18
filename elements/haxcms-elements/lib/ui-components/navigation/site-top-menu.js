@@ -51,7 +51,7 @@ class SiteTopMenu extends I18NMixin(LitElement) {
     this.conditions = {
       parent: null,
     };
-    this.mobileTitle = this.t.navigation;
+    this.i18nDefault("mobileTitle", "navigation");
     this.editMode = false;
     this.__items = [];
   }
