@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Мем",
+    "description": "Сүрөттөн мем жасаңыз."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Булак",
+        "description": "Мем сүрөтүнүн булак URL дареги."
+      },
+      {
+        "property": "topText",
+        "title": "Үстүңкү текст",
+        "description": "Мемдин үстүңкү тексти."
+      },
+      {
+        "property": "bottomText",
+        "title": "Астыңкы текст",
+        "description": "Мемдин астыңкы тексти."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернативдүү текст",
+        "description": "Көрө албаган колдонуучуларга сүрөттү сүрөттөгөн текст."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Кичинекей оюнчукту аңдыган мышык",
+        "topText": "Сага алып келдим",
+        "bottomText": "өлүмдү"
+      }
+    }
+  ]
+}

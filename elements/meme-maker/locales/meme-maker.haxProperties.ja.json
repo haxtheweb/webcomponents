@@ -1,38 +1,37 @@
 {
   "gizmo": {
     "title": "ミーム",
-    "description": "画像からミームを作成する"
+    "description": "画像からミームを作成します。"
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "ソース",
-        "description": "引用する要素のソースURL"
+        "description": "ミーム画像のソース URL。"
       },
       {
+        "property": "topText",
         "title": "上部テキスト",
-        "description": "ミームの上部テキスト"
+        "description": "ミームの上部に表示するテキスト。"
       },
       {
+        "property": "bottomText",
         "title": "下部テキスト",
-        "description": "ミームの下部テキスト"
+        "description": "ミームの下部に表示するテキスト。"
       },
       {
+        "property": "alt",
         "title": "代替テキスト",
-        "description": "視覚障害者のユーザーに画像を説明するテキスト"
-      }
-    ],
-    "advanced": [
-      {
-        "description": "画像を説明する要素のスペース区切りIDリスト"
+        "description": "目の見えないユーザーに画像を説明するテキスト。"
       }
     ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "小さなおもちゃを狙っている猫",
-        "topText": "あなたに持参します",
+        "alt": "小さなおもちゃを狙う猫",
+        "topText": "お前に授けよう",
         "bottomText": "死を"
       }
     }

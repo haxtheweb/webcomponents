@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mem",
+    "description": "Şəkildən mem hazırlayın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Mənbə",
+        "description": "Mem şəklinin mənbə URL-i."
+      },
+      {
+        "property": "topText",
+        "title": "Üst mətn",
+        "description": "Memin üst mətni."
+      },
+      {
+        "property": "bottomText",
+        "title": "Alt mətn",
+        "description": "Memin alt mətni."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ mətn",
+        "description": "Görmə qabiliyyəti olmayan istifadəçilər üçün şəkli təsvir edən mətn."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kiçik oyuncağı güdən pişik",
+        "topText": "Sizə gətirdim",
+        "bottomText": "ölümü"
+      }
+    }
+  ]
+}

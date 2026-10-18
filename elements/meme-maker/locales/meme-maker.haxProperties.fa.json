@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "میم",
+    "description": "از یک تصویر میم بسازید."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "منبع",
+        "description": "URL منبع تصویر میم."
+      },
+      {
+        "property": "topText",
+        "title": "متن بالا",
+        "description": "متن بالای میم."
+      },
+      {
+        "property": "bottomText",
+        "title": "متن پایین",
+        "description": "متن پایین میم."
+      },
+      {
+        "property": "alt",
+        "title": "متن جایگزین",
+        "description": "متنی برای توصیف تصویر برای کاربران نابینا."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "گربه‌ای در کمین یک اسباب‌بازی کوچک",
+        "topText": "برایت آورده‌ام",
+        "bottomText": "مرگ را"
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "मिम",
+    "description": "छविबाट मिम बनाउनुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "स्रोत",
+        "description": "मिम छविको स्रोत URL।"
+      },
+      {
+        "property": "topText",
+        "title": "माथिल्लो पाठ",
+        "description": "मिमको माथिल्लो पाठ।"
+      },
+      {
+        "property": "bottomText",
+        "title": "तल्लो पाठ",
+        "description": "मिमको तल्लो पाठ।"
+      },
+      {
+        "property": "alt",
+        "title": "वैकल्पिक पाठ",
+        "description": "दृष्टिविहीन प्रयोगकर्ताहरूका लागि छविको वर्णन गर्ने पाठ।"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "सानो खेलौनाको पछि लागेको बिरालो",
+        "topText": "म तिमीलाई ल्याउँछु",
+        "bottomText": "मृत्यु"
+      }
+    }
+  ]
+}

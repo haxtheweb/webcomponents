@@ -1,33 +1,36 @@
 {
   "gizmo": {
     "title": "Mem",
-    "description": "Stwórz mem z obrazu"
+    "description": "Zrób mema z obrazu."
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "Źródło",
-        "description": "Źródłowy adres URL elementu, który jest cytowany"
+        "description": "URL źródłowy obrazu mema."
       },
       {
-        "title": "Tekst górny",
-        "description": "Górny tekst mema"
+        "property": "topText",
+        "title": "Tekst u góry",
+        "description": "Górny tekst mema."
       },
       {
-        "title": "Tekst dolny",
-        "description": "Dolny tekst mema"
+        "property": "bottomText",
+        "title": "Tekst u dołu",
+        "description": "Dolny tekst mema."
       },
       {
+        "property": "alt",
         "title": "Tekst alternatywny",
-        "description": "Tekst opisujący obraz dla użytkowników niedowidzących"
+        "description": "Tekst opisujący obraz dla osób niewidomych."
       }
-    ],
-    "advanced": []
+    ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "Kot tropią małą zabawkę",
+        "alt": "Kot czający się na małą zabawkę",
         "topText": "Przynoszę ci",
         "bottomText": "śmierć"
       }

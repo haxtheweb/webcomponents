@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "មីម",
+    "description": "បង្កើតមីមពីរូបភាព។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "ប្រភព",
+        "description": "URL ប្រភពសម្រាប់រូបភាពមីម។"
+      },
+      {
+        "property": "topText",
+        "title": "អត្ថបទខាងលើ",
+        "description": "អត្ថបទខាងលើនៃមីម។"
+      },
+      {
+        "property": "bottomText",
+        "title": "អត្ថបទខាងក្រោម",
+        "description": "អត្ថបទខាងក្រោមនៃមីម។"
+      },
+      {
+        "property": "alt",
+        "title": "អត្ថបទជំនួស",
+        "description": "អត្ថបទសម្រាប់ពិពណ៌នារូបភាពដល់អ្នកប្រើដែលមើលមិនឃើញ។"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "ឆ្មាកំពុងលបចាប់ប្រដាប់ក្មេងលេងតូចមួយ",
+        "topText": "ខ្ញុំនាំមកឲ្យអ្នក",
+        "bottomText": "សេចក្ដីស្លាប់"
+      }
+    }
+  ]
+}

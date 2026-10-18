@@ -1,38 +1,37 @@
 {
   "gizmo": {
     "title": "밈",
-    "description": "이미지로 밈 만들기"
+    "description": "이미지로 밈을 만듭니다."
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "소스",
-        "description": "인용하는 요소의 소스 URL"
+        "description": "밈 이미지의 소스 URL입니다."
       },
       {
-        "title": "상단 텍스트",
-        "description": "밈의 상단 텍스트"
+        "property": "topText",
+        "title": "위쪽 텍스트",
+        "description": "밈의 위쪽 텍스트입니다."
       },
       {
-        "title": "하단 텍스트",
-        "description": "밈의 하단 텍스트"
+        "property": "bottomText",
+        "title": "아래쪽 텍스트",
+        "description": "밈의 아래쪽 텍스트입니다."
       },
       {
+        "property": "alt",
         "title": "대체 텍스트",
-        "description": "시각 장애인 사용자를 위한 이미지 설명 텍스트"
-      }
-    ],
-    "advanced": [
-      {
-        "description": "이미지를 설명하는 요소들을 위한 공백으로 구분된 ID 목록"
+        "description": "시각 장애인 사용자에게 이미지를 설명하는 텍스트입니다."
       }
     ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "작은 장난감을 쫓고 있는 고양이",
-        "topText": "너에게 가져다준다",
+        "alt": "작은 장난감을 노리는 고양이",
+        "topText": "너에게 가져왔다",
         "bottomText": "죽음을"
       }
     }
