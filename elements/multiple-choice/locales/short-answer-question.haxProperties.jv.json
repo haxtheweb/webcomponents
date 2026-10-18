@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Pitakonan Wangsulan Cekak",
+    "description": "Jaluk pangguna mangsuli pitakonan dhasar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pitakonan",
+        "description": "Pitakonan sing kudu diwangsuli pangguna."
+      },
+      {
+        "property": "answers",
+        "title": "Wangsulan sing Bisa"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jeneng kuis",
+        "description": "Jeneng kuis sing dikirim kanggo digunakake ing lingkungan adhedhasar xAPI kanggo ngenali item iki"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) joylashtirish",
+    "description": "X dagi tvitni kontekstda joylashtirish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Tvit URL",
+        "description": "Joylashtiriladigan tvitning URL manzili."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Mavzu",
+        "description": "X tvitlari uchun yorugʻ yoki qorongʻi mavzu.",
+        "options": {
+          "light": "Yorugʻ",
+          "dark": "Qorongʻi"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Bosilganda qalqib chiquvchi oynaning oldini olish",
+        "description": "Foydalanuvchilarning tvitni x.com da ochishining oldini olish."
+      }
+    ]
+  }
+}

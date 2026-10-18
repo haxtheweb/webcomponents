@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Funso Losanja",
+    "description": "Sanjani zinthu motsatira ndondomeko yolondola."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Funso",
+        "description": "Mutu wa Funso."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Njira yopatsira maksi",
+        "description": "OER Schema: njira yopatsira maksi pa mayeso awa (mwachitsanzo mfundo, chilembo, peresenti, kumaliza)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cholinga cha maphunziro",
+        "description": "OER Schema: cholinga cha maphunziro chokhudzana ndi mayeso awa."
+      },
+      {
+        "property": "forCourse",
+        "title": "Maphunziro",
+        "description": "OER Schema: maphunziro omwe mayeso awa akukonzedwera."
+      },
+      {
+        "property": "answers",
+        "title": "Mayankho",
+        "description": "Ndondomeko ya mayankho imatanthauza kutsatana kolondola."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Dzina la mayeso",
+        "description": "Dzina la mayeso logwiritsidwa ntchito pozindikira mu xAPI m'machitidwe owunika."
+      }
+    ]
+  }
+}

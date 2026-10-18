@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Mục tiêu Phát triển Bền vững của Liên Hợp Quốc."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Mục tiêu",
+        "description": "Số hiệu UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Chỉ màu",
+        "description": "Chỉ hiển thị màu của mục tiêu."
+      }
+    ]
+  }
+}

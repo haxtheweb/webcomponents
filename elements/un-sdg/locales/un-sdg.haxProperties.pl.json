@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Cel Zrównoważonego Rozwoju ONZ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Cel",
+        "description": "Numer celu UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Tylko kolor",
+        "description": "Pokaż tylko kolor celu."
+      }
+    ]
+  }
+}

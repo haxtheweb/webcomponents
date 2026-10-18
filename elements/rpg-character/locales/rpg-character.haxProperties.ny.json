@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Munthu wa RPG",
+    "description": "Munthu wosangalatsa wochokera ku HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Dzina",
+        "description": "Liwu logwiritsidwa ntchito kupanga munthu mwachisawawa."
+      },
+      {
+        "property": "hat",
+        "title": "Chipewa",
+        "description": "Mtundu wa chipewa.",
+        "options": {
+          "none": "Mwachisawawa",
+          "random": "Mwachisawawa",
+          "bunny": "Kalulu",
+          "cowboy": "Woweta ng'ombe",
+          "education": "Maphunziro",
+          "construction": "Zomangamanga",
+          "warning": "Chenjezo",
+          "watermelon": "Chivwende",
+          "coffee": "Khofi",
+          "knight": "Msilikali wakale",
+          "ninja": "Ninja",
+          "party": "Phwando",
+          "error": "Cholakwika",
+          "edit": "Sinthani"
+        }
+      },
+      {
+        "property": "width",
+        "title": "M'lifupi",
+        "description": "M'lifupi mwa munthuyo m'mapikiselo."
+      },
+      {
+        "property": "height",
+        "title": "Kutalika",
+        "description": "Kutalika kwa munthuyo m'mapikiselo."
+      },
+      {
+        "property": "fire",
+        "title": "Akuyaka moto?",
+        "description": "Kaya munthuyo akuyaka moto."
+      },
+      {
+        "property": "walking",
+        "title": "Akuyenda?",
+        "description": "Kanema woyenda; amathamanga akamayaka moto."
+      }
+    ]
+  }
+}

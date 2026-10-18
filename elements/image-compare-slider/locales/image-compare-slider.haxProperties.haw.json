@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Hoʻohālikelike kiʻi",
+    "description": "E kahi i kekahi kiʻi ma luna o kekahi kiʻi ʻē aʻe no ka hoʻohālikelike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Kiʻi luna",
+        "description": "Kiʻi luna e kahi ʻia ma luna o ke kiʻi lalo."
+      },
+      {
+        "property": "topAlt",
+        "title": "Kikokikona pani kiʻi luna",
+        "description": "Kikokikona pani e pono ai no ka hiki ke komo."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Kiʻi lalo",
+        "description": "Kiʻi lalo i hōʻike ʻia ma lalo o ke kiʻi luna."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Kikokikona pani kiʻi lalo",
+        "description": "Kikokikona pani e pono ai no ka hiki ke komo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "ʻAno hana",
+        "description": "E koho i ke ʻano holoi (paʻamau) a i ʻole ke ʻano ʻālohilohi o ke kiʻi luna."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu Kiko",
+        "description": "Waihoʻoluʻu o ke kaola paheʻe."
+      },
+      {
+        "property": "dark",
+        "title": "Pōuliuli",
+        "description": "E hoʻohuli i ka waihoʻoluʻu o ke kaola paheʻe."
+      },
+      {
+        "property": "position",
+        "title": "Kūlana Mua",
+        "description": "Kūlana hoʻomaka mai 0 a 100."
+      }
+    ]
+  }
+}

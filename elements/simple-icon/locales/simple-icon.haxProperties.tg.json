@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Нишона",
+    "description": "Нишона аз китобхонаи пурраи нишонаҳо."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Нишона",
+        "description": "Нишона барои намоиш."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидӣ барои нишона."
+      },
+      {
+        "property": "dark",
+        "title": "Торик",
+        "description": "Реҷаи торикро истифода баред (маҷмӯи рангҳои баръакс)."
+      }
+    ]
+  }
+}

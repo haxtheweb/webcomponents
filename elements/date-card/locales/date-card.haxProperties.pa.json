@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "ਮਿਤੀ",
+    "description": "ਵੇਰਵਿਆਂ ਨਾਲ ਕੈਲੰਡਰ ਮਿਤੀ ਦਿਖਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "ਮਹੀਨਾ",
+        "description": "ਕਾਰਡ 'ਤੇ ਦਿਖਾਇਆ ਮਹੀਨਾ।"
+      },
+      {
+        "property": "date",
+        "title": "ਮਹੀਨੇ ਦਾ ਦਿਨ",
+        "description": "ਮਹੀਨੇ ਦਾ ਅੰਕੀ ਦਿਨ।"
+      },
+      {
+        "property": "day",
+        "title": "ਹਫ਼ਤੇ ਦਾ ਦਿਨ",
+        "description": "ਹਫ਼ਤੇ ਦਾ ਦਿਨ ਸ਼ਬਦਾਂ ਵਿੱਚ।"
+      },
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਸਮਾਗਮ ਦਾ ਨਾਮ।"
+      },
+      {
+        "property": "location",
+        "title": "ਸਥਾਨ",
+        "description": "ਸਮਾਗਮ ਦਾ ਸਥਾਨ।"
+      },
+      {
+        "property": "startTime",
+        "title": "ਸ਼ੁਰੂ",
+        "description": "ਸ਼ੁਰੂ ਹੋਣ ਦਾ ਸਮਾਂ।"
+      },
+      {
+        "property": "endTime",
+        "title": "ਅੰਤ",
+        "description": "ਖ਼ਤਮ ਹੋਣ ਦਾ ਸਮਾਂ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਇੱਕ ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਰੰਗ।"
+      },
+      {
+        "property": "dark",
+        "title": "ਗੂੜ੍ਹੀ ਥੀਮ",
+        "description": "ਗੂੜ੍ਹੀ ਥੀਮ ਚਾਲੂ ਕਰੋ।"
+      }
+    ]
+  }
+}

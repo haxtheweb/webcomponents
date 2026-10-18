@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "图标",
+    "description": "来自完整图标库个图标。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "图标",
+        "description": "要显示个图标。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "图标个强调色。"
+      },
+      {
+        "property": "dark",
+        "title": "深色",
+        "description": "用深色模式（反色）。"
+      }
+    ]
+  }
+}

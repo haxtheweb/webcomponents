@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Verkefnareitur",
+    "description": "Lítill stílaður fyrirsagnarreitur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Tákn",
+        "description": "Tákn sem birtist við verkefnareitinn."
+      },
+      {
+        "property": "tag",
+        "title": "Merki verkefnareits",
+        "description": "Merki sem birtist í verkefnareitnum."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Engin litun",
+        "description": "Koma í veg fyrir að litir séu settir á táknið."
+      }
+    ]
+  }
+}

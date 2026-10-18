@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Einfaches Bild",
+    "description": "Bilder mit einfachen Parametern bearbeiten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Quelle",
+        "description": "Quell-URL des Bildes."
+      },
+      {
+        "property": "height",
+        "title": "Höhe",
+        "description": "Optionale Bildhöhe."
+      },
+      {
+        "property": "width",
+        "title": "Breite",
+        "description": "Optionale Bildbreite."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativtext",
+        "description": "Hilfreich für Screenreader und bessere SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Qualität",
+        "description": "Bildqualität beim Erzeugen (nur JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Abrufpriorität",
+        "description": "Leistungshinweis für moderne Browser.",
+        "options": {
+          "auto": "Automatisch",
+          "high": "Hoch",
+          "low": "Niedrig"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dekodierungsmethode",
+        "description": "Leistungshinweis für die Bilddarstellung in modernen Browsern.",
+        "options": {
+          "auto": "Automatisch",
+          "async": "Asynchron"
+        }
+      }
+    ]
+  }
+}

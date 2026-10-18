@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Medya alıntısı",
+    "description": "Alıntı, kaynak ve isteğe bağlı açıklama içeren görsel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Alıntı",
+        "description": "Alıntı metni."
+      },
+      {
+        "slot": "author",
+        "title": "Yazar",
+        "description": "Alıntının yazarı."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Yazar ayrıntıları",
+        "description": "Yazar ayrıntıları."
+      },
+      {
+        "slot": "caption",
+        "title": "Görsel açıklaması",
+        "description": "Görsel açıklaması."
+      },
+      {
+        "property": "src",
+        "title": "Görsel Kaynağı",
+        "description": "Medya alıntısı için kullanılan görsel dosyası."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatif Metin",
+        "description": "Görselin alternatif metni."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Vurgu Rengi",
+        "description": "Kart vurgu rengi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "เพลย์ลิสต์",
+    "description": "แสดงเนื้อหาทุกประเภทในเพลย์ลิสต์"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "แหล่งที่มา",
+        "description": "เนื้อหาที่แสดงในเพลย์ลิสต์"
+      },
+      {
+        "property": "edit",
+        "title": "โหมดแก้ไข",
+        "description": "สลับระหว่างโหมดแก้ไขและโหมดแสดงตัวอย่างของเพลย์ลิสต์"
+      },
+      {
+        "property": "navigation",
+        "title": "การนำทาง",
+        "description": "แสดงปุ่มนำทางไปข้างหน้าและย้อนกลับ"
+      },
+      {
+        "property": "pagination",
+        "title": "การแบ่งหน้า",
+        "description": "แสดงจุดแบ่งหน้า"
+      },
+      {
+        "property": "orientation",
+        "title": "การวางแนว",
+        "description": "การวางแนวของสไลด์",
+        "options": {
+          "horizontal": "แนวนอน",
+          "vertical": "แนวตั้ง"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "สไลด์ที่จะเริ่ม",
+        "description": "ดัชนีของสไลด์ที่จะโฟกัสในตอนแรก"
+      },
+      {
+        "property": "aspectRatio",
+        "title": "อัตราส่วนภาพ",
+        "description": "อัตราส่วนภาพของสไลด์",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

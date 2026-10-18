@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF బ్రౌజర్ వ్యూయర్",
+    "description": "ఐచ్ఛిక కార్డ్ లేఅవుట్ మరియు డౌన్‌లోడ్ బటన్‌తో PDF ఫైల్‌ను ఇన్‌లైన్‌లో పొందుపరచండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF ఫైల్ స్థానం."
+      },
+      {
+        "property": "heading",
+        "title": "శీర్షిక",
+        "description": "కార్డ్ శీర్షిక వచనం."
+      },
+      {
+        "property": "card",
+        "title": "కార్డ్ లేఅవుట్",
+        "description": "డౌన్‌లోడ్ బటన్‌తో PDF‌ను కార్డ్‌లో ప్రదర్శించండి."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "డౌన్‌లోడ్ లేబుల్",
+        "description": "డౌన్‌లోడ్ బటన్ కోసం లేబుల్."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "మద్దతు లేని సందేశం",
+        "description": "బ్రౌజర్ PDF ఫైల్‌లను ప్రదర్శించలేనప్పుడు సందేశం."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "మద్దతు లేని లింక్ సందేశం",
+        "description": "బ్రౌజర్ PDF ఫైల్‌లను ప్రదర్శించలేనప్పుడు లింక్ వచనం."
+      },
+      {
+        "property": "width",
+        "title": "వెడల్పు",
+        "description": "PDF వ్యూయర్ వెడల్పు."
+      },
+      {
+        "property": "height",
+        "title": "ఎత్తు",
+        "description": "PDF వ్యూయర్ ఎత్తు."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Sahypa maglumatlary",
+    "description": "CMS-leriň sahypa döretmek üçin ulanyp bilýän sahypalaryň arasyndaky görnüş bölünişigini kesgitläň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Temada we birinji sözbaşyda görkezilýän at."
+      },
+      {
+        "property": "pageType",
+        "title": "Görnüşi",
+        "description": "Sahypanyň wizual kontekst belgisi.",
+        "options": {
+          "": "-- ýok --",
+          "content": "Mazmun",
+          "assessment": "Baha beriş",
+          "quiz": "Test",
+          "submission": "Tabşyryk iberiş",
+          "lesson": "Sapak",
+          "module": "Modul",
+          "task": "Ýumuş",
+          "activity": "Işjeňlik",
+          "project": "Taslama",
+          "practice": "Türgenleşik",
+          "unit": "Bölüm",
+          "objectives": "Okuw maksatlary",
+          "connection": "Baglanyşyk",
+          "knowledge": "Bilýärsiňizmi?",
+          "strategy": "Okuw strategiýasy",
+          "discuss": "Ara alyp maslahatlaşyň",
+          "listen": "Diňläň",
+          "make": "Ýasaň",
+          "observe": "Synlaň",
+          "present": "Görkeziň",
+          "reading": "Okamak",
+          "reflect": "Oýlanyň",
+          "research": "Gözleg",
+          "watch": "Tomaşa ediň",
+          "write": "Ýazyň"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Bellikler",
+        "description": "Otur bilen aýrylan bellikler sanawy."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Baglanyşyk URL-i",
+        "description": "Sahypanyň mazmunynyň ýerine görkezilýän ugrukdyrma URL-i."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Baglanyşyk maksady",
+        "description": "Baglanyşyklary şol bir penjirede ýa-da täze penjirede açyň.",
+        "options": {
+          "_self": "Şol bir penjire",
+          "_blank": "Täze penjire"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Çap edilen",
+        "description": "Çap edilmedik sahypalar soňky ulanyjylardan gizlenýär."
+      },
+      {
+        "property": "locked",
+        "title": "Sahypany gulpla",
+        "description": "Bu sahypadaky ähli elementleri gulpla ýa-da gulpuny aç."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Awtomatik slugy üýtget",
+        "description": "Slugy ada ýa-da ene sahypa esaslanýan awtomatik täzelenmelerden gulpla."
+      },
+      {
+        "property": "slug",
+        "title": "Ýol",
+        "description": "Bu sahypa üçin URL slugy."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Sahypany aňladýan, käbir temalarda we görnüşlerde ulanylýan media."
+      },
+      {
+        "property": "parent",
+        "title": "Ene sahypa",
+        "description": "Ene sahypanyň ýoly."
+      },
+      {
+        "property": "noderefs",
+        "title": "Baglanyşykly mazmun",
+        "description": "Bu sahypa bilen baglanyşykly sahypalar."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Düşündiriş",
+        "description": "Ýygyndylarda we gözleg ulgamy optimizasiýasynda ulanylýan düşündiriş."
+      },
+      {
+        "property": "entityType",
+        "title": "Obýekt görnüşi",
+        "description": "Başgaça bellenmedik bolsa, deslapky ýagdaýda sahypa.",
+        "options": {
+          "page": "Sahypa (deslapky)",
+          "taxonomy": "Taksonomiýa",
+          "taxonomyTerm": "Taksonomiýa termini",
+          "region": "Sebit"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Nyşan",
+        "description": "Saýtda bu sahypa bilen baglanyşykly nyşan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Saýtda bu sahypa bilen baglanyşykly reňk."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Menýuda gizle",
+        "description": "URL-ini saklap, bu sahypany menýulardan gizle."
+      },
+      {
+        "property": "order",
+        "title": "Tertip",
+        "description": "Dogan sahypalara görä tertip."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Sahypa temasy",
+        "description": "Diňe bu sahypa üçin temany üýtget."
+      },
+      {
+        "property": "author",
+        "title": "Awtor",
+        "description": "Bu sahypany iň soňky üýtgeden adamyň ulanyjy ady."
+      }
+    ]
+  }
+}

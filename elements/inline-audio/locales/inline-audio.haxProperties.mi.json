@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Oro i roto",
+    "description": "Pāho oro i roto i te kōrero hei tāpiri ki ngā ihirangi o te whārangi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pūtake",
+        "description": "Kōnae MP3, URL rānei."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae Arotahi",
+        "description": "Tae arotahi o te kāri."
+      },
+      {
+        "property": "shiny",
+        "title": "Pīataata",
+        "description": "Whakamahia he papamuri arotahi māmā ake, kaua ko te kiwikiwi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Pōuri",
+        "description": "Whakamahia te aratau pōuri."
+      }
+    ]
+  }
+}

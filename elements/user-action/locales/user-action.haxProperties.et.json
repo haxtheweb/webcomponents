@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Kasutaja tegevus",
+    "description": "Jälgi kasutaja tegevusi ja saada andmed xAPI-hoidlatesse."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Jälgitav sündmus",
+        "description": "Kasutaja tegevus, mis selle sündmuse käivitab.",
+        "options": {
+          "visibility": "Näeb seda",
+          "keydown": "Vajuta siin klahvi",
+          "click": "Klõpsa seda",
+          "hover": "Hõlju selle kohal"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Jälgi iga kord",
+        "description": "Vaikimisi jälgitakse ainult esimest korda."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "סרקזם",
+    "description": "הצגת טקסט בסגנון טרולי"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "טקסט",
+        "description": "טקסט שיהפוך לסרקסטי"
+      }
+    ]
+  }
+}

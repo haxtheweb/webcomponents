@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris istorio txartela",
+    "description": "Bistaratu Polaris istorio txartel bat atzeko irudiarekin, zutabe etiketarekin eta titular testuarekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Atzeko irudia",
+        "description": "Txartelaren atzealde gisa erakusten den irudiaren URLa."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Atzealdearen tamaina",
+        "description": "Atzeko irudiak txartela nola betetzen duen (CSS background-size).",
+        "options": {
+          "cover": "estali (cover)",
+          "contain": "barnean hartu (contain)",
+          "auto": "automatikoa (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Atzealdearen finkapena",
+        "description": "Atzeko irudiak nola jokatzen duen korritzean (CSS background-attachment).",
+        "options": {
+          "scroll": "korritu (scroll)",
+          "fixed": "finkoa (fixed)",
+          "local": "lokala (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Zutabe etiketa",
+        "description": "Txartelaren goialdean erakusten den letra larriko etiketa laburra. Utzi hutsik ezkutatzeko."
+      },
+      {
+        "property": "label",
+        "title": "Txartelaren testua",
+        "description": "Beheko panelean bistaratzen den testu nagusia."
+      },
+      {
+        "property": "link",
+        "title": "Esteka",
+        "description": "Txartel osoa biltzen duen aukerako helburuko URLa."
+      }
+    ]
+  }
+}

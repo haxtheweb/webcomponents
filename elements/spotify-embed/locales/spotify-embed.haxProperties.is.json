@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Umgjörð fyrir ívafða Spotify-spilara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Uppruni",
+        "description": "Ívefjunar- eða deilitengill frá Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Þema",
+        "description": "Bakgrunnslitaþema fyrir spilarann.",
+        "options": {
+          "": "Sjálfgefið",
+          "0": "Svartur"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Stærð",
+        "description": "Stærð spilara.",
+        "options": {
+          "normal": "Sjálfgefið",
+          "compact": "Þéttur"
+        }
+      }
+    ]
+  }
+}

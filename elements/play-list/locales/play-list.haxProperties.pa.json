@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ਪਲੇਲਿਸਟ",
+    "description": "ਕਿਸੇ ਵੀ ਕਿਸਮ ਦੀ ਸਮੱਗਰੀ ਪਲੇਲਿਸਟ ਵਿੱਚ ਦਿਖਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ਸਰੋਤ",
+        "description": "ਪਲੇਲਿਸਟ ਵਿੱਚ ਦਿਖਾਈ ਸਮੱਗਰੀ।"
+      },
+      {
+        "property": "edit",
+        "title": "ਸੰਪਾਦਨ ਮੋਡ",
+        "description": "ਪਲੇਲਿਸਟ ਲਈ ਸੰਪਾਦਨ ਅਤੇ ਝਲਕ ਮੋਡ ਵਿਚਕਾਰ ਬਦਲੋ।"
+      },
+      {
+        "property": "navigation",
+        "title": "ਨੈਵੀਗੇਸ਼ਨ",
+        "description": "ਅੱਗੇ ਅਤੇ ਪਿੱਛੇ ਜਾਣ ਵਾਲੇ ਨੈਵੀਗੇਸ਼ਨ ਬਟਨ ਦਿਖਾਓ।"
+      },
+      {
+        "property": "pagination",
+        "title": "ਪੰਨਾਬੰਦੀ",
+        "description": "ਪੰਨਾਬੰਦੀ ਬਿੰਦੀਆਂ ਦਿਖਾਓ।"
+      },
+      {
+        "property": "orientation",
+        "title": "ਦਿਸ਼ਾ",
+        "description": "ਸਲਾਈਡਾਂ ਦੀ ਦਿਸ਼ਾ।",
+        "options": {
+          "horizontal": "ਲੇਟਵੀਂ",
+          "vertical": "ਖੜ੍ਹਵੀਂ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "ਸ਼ੁਰੂਆਤੀ ਸਲਾਈਡ",
+        "description": "ਸ਼ੁਰੂ ਵਿੱਚ ਫੋਕਸ ਕਰਨ ਲਈ ਸਲਾਈਡ ਸੂਚਕਾਂਕ।"
+      },
+      {
+        "property": "aspectRatio",
+        "title": "ਆਕਾਰ ਅਨੁਪਾਤ",
+        "description": "ਸਲਾਈਡਾਂ ਦਾ ਆਕਾਰ ਅਨੁਪਾਤ।",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

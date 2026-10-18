@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Aufklappbarer Container",
+    "description": "Einzelner auf- und zuklappbarer Container."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Überschrift",
+        "description": "Text für das Klappelement."
+      },
+      {
+        "property": "expanded",
+        "title": "Aufgeklappt",
+        "description": "Standardmäßig aufklappen."
+      },
+      {
+        "property": "headingButton",
+        "title": "Überschrift als Schaltfläche",
+        "description": "Die gesamte Überschrift statt nur des Symbols anklickbar machen."
+      },
+      {
+        "property": "icon",
+        "title": "Symbol",
+        "description": "Symbol für die Auf-/Zuklapp-Schaltfläche."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Symbol (aufgeklappt)",
+        "description": "Optionales Symbol für den aufgeklappten Zustand."
+      },
+      {
+        "slot": "",
+        "title": "Inhalt",
+        "description": "Inhalt für das Klappelement."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Tooltip",
+        "description": "Tooltip für die Auf-/Zuklapp-Schaltfläche."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Tooltip (aufgeklappt)",
+        "description": "Tooltip für die Auf-/Zuklapp-Schaltfläche im aufgeklappten Zustand."
+      }
+    ]
+  }
+}

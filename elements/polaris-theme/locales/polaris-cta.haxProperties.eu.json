@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Bistaratu Polaris gaiko ekintzara deitzeko botoi bat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Botoiaren testua",
+        "description": "Ekintzara deitzeko botoian erakusten den testua."
+      },
+      {
+        "property": "link",
+        "title": "Esteka",
+        "description": "Botoiaren helburuko URLa."
+      },
+      {
+        "property": "type",
+        "title": "Aldaera",
+        "description": "Estilo bisualaren aldaera.",
+        "options": {
+          "primary": "Nagusia",
+          "tinted": "Tindatua",
+          "light": "Argia"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Ertz-estiloa",
+        "description": "Gaitu ertz-tratamendua."
+      },
+      {
+        "property": "filled",
+        "title": "Estilo betea",
+        "description": "Gaitu tratamendu betea."
+      }
+    ]
+  }
+}

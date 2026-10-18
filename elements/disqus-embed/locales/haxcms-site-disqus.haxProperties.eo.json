@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus-komentoj",
+    "description": "Integriĝo kun la komenta retservo Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Mallonga nomo",
+        "description": "Mallonga nomo de la posedaĵo ĉe Disqus"
+      }
+    ]
+  }
+}

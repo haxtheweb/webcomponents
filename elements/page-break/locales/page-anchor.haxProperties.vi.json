@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Neo trang",
+    "description": "Liên kết đến các điểm cụ thể trong phương tiện trên trang."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Đích trên trang",
+        "description": "ID hoặc tài nguyên mà neo này trỏ tới."
+      },
+      {
+        "property": "value",
+        "title": "Giá trị liên kết sâu",
+        "description": "Giá trị liên kết sâu (ví dụ: dấu thời gian hoặc ID trang chiếu)."
+      },
+      {
+        "property": "entityId",
+        "title": "Thực thể trang web",
+        "description": "Thực thể trang web tùy chọn để điều khiển cách trình bày khái niệm liên quan."
+      }
+    ]
+  }
+}

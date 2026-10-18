@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grŵp Ehangu a Chwympo",
+    "description": "Grŵp o elfennau ehangu a chwympo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Ehangu un yn unig",
+        "description": "Dim ond un eitem y gellir ei hehangu."
+      },
+      {
+        "slot": "",
+        "title": "Eitemau i'w Chwympo",
+        "description": "Yr eitemau i'w chwympo."
+      }
+    ]
+  }
+}

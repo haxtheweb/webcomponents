@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Àlàyé ojú-ìwé",
+    "description": "Ṣàlàyé ìpínyà tí a lè rí láàrín àwọn ojú-ìwé, èyí tí àwọn CMS lè lò láti ṣẹ̀dá ojú-ìwé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Àkọlé tí a fi hàn nínú àkòrí àti àkọlé àkọ́kọ́."
+      },
+      {
+        "property": "pageType",
+        "title": "Irú",
+        "description": "Àmì-orúkọ àyíká ojú-ìwé tí a lè rí.",
+        "options": {
+          "": "-- kò sí --",
+          "content": "Àkóónú",
+          "assessment": "Ìgbéléwọ̀n",
+          "quiz": "Ìdánwò kékeré",
+          "submission": "Ìfisílẹ̀",
+          "lesson": "Ẹ̀kọ́",
+          "module": "Mọ́dúù",
+          "task": "Iṣẹ́",
+          "activity": "Iṣẹ́ ṣíṣe",
+          "project": "Iṣẹ́ àkànṣe",
+          "practice": "Ìdánrawò",
+          "unit": "Ẹ̀ka",
+          "objectives": "Àwọn Àfojúsùn Ẹ̀kọ́",
+          "connection": "Ìsopọ̀",
+          "knowledge": "Ṣé O Mọ̀?",
+          "strategy": "Ọgbọ́n Ẹ̀kọ́",
+          "discuss": "Jíròrò",
+          "listen": "Gbọ́",
+          "make": "Ṣe",
+          "observe": "Ṣàkíyèsí",
+          "present": "Gbé kalẹ̀",
+          "reading": "Kíkà",
+          "reflect": "Ronú jinlẹ̀",
+          "research": "Ṣèwádìí",
+          "watch": "Wò",
+          "write": "Kọ̀wé"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tágì",
+        "description": "Àtòjọ tágì tí a fi kọ́mà yà sọ́tọ̀."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL ìjápọ̀",
+        "description": "URL àtúndarí tí a fi hàn dípò àkóónú ojú-ìwé."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Ibi-àfojúsùn ìjápọ̀",
+        "description": "Ṣí àwọn ìjápọ̀ nínú fèrèsé kan náà tàbí fèrèsé tuntun.",
+        "options": {
+          "_self": "Fèrèsé kan náà",
+          "_blank": "Fèrèsé tuntun"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Tí a tẹ̀jáde",
+        "description": "Àwọn ojú-ìwé tí a kò tẹ̀jáde ni a fi pamọ́ fún àwọn olùlò."
+      },
+      {
+        "property": "locked",
+        "title": "Tì ojú-ìwé pa",
+        "description": "Tì tàbí ṣí gbogbo èròjà lórí ojú-ìwé yìí."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Borí slug aládàáṣe",
+        "description": "Tì slug náà kúrò lọ́wọ́ àwọn àtúnṣe aládàáṣe tí ó dá lórí àkọlé tàbí òbí."
+      },
+      {
+        "property": "slug",
+        "title": "Ipa-ọ̀nà",
+        "description": "Slug URL fún ojú-ìwé yìí."
+      },
+      {
+        "property": "image",
+        "title": "Mídíà",
+        "description": "Mídíà tí ó dúró fún ojú-ìwé náà, tí a lò nínú àwọn àkòrí àti ìwò kan."
+      },
+      {
+        "property": "parent",
+        "title": "Òbí",
+        "description": "Ipa-ọ̀nà ojú-ìwé òbí."
+      },
+      {
+        "property": "noderefs",
+        "title": "Àkóónú tí ó jọmọ́",
+        "description": "Àwọn ojú-ìwé tí ó jọmọ́ ojú-ìwé yìí."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Àpèjúwe",
+        "description": "Àpèjúwe tí a lò nínú àwọn àkójọpọ̀ àti fún SEO."
+      },
+      {
+        "property": "entityType",
+        "title": "Irú Ẹ̀ka",
+        "description": "Ojú-ìwé ni àtilẹ̀wá àyàfi tí a bá ṣètò rẹ̀ ní ọ̀nà mìíràn.",
+        "options": {
+          "page": "Ojú-ìwé (àtilẹ̀wá)",
+          "taxonomy": "Ìpínsísọ̀rí",
+          "taxonomyTerm": "Ọ̀rọ̀ Ìpínsísọ̀rí",
+          "region": "Agbègbè"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Àmì",
+        "description": "Àmì tí ó jẹmọ́ ojú-ìwé yìí nínú ojú-òpó."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Àwọ̀ tí ó jẹmọ́ ojú-ìwé yìí nínú ojú-òpó."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Fi pamọ́ nínú àkójọ-àṣàyàn",
+        "description": "Fi ojú-ìwé yìí pamọ́ nínú àwọn àkójọ-àṣàyàn ṣùgbọ́n pa URL rẹ̀ mọ́."
+      },
+      {
+        "property": "order",
+        "title": "Ètò-ìtẹ̀léra",
+        "description": "Ètò-ìtẹ̀léra ní ìbámu pẹ̀lú àwọn ojú-ìwé ẹgbẹ́ rẹ̀."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Àkòrí ojú-ìwé",
+        "description": "Borí àkòrí fún ojú-ìwé yìí nìkan."
+      },
+      {
+        "property": "author",
+        "title": "Òǹkọ̀wé",
+        "description": "Orúkọ olùlò ẹni tí ó ṣàtúnṣe ojú-ìwé yìí kẹ́yìn."
+      }
+    ]
+  }
+}

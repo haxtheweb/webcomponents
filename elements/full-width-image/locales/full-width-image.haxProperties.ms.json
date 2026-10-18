@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bahagian imej",
+    "description": "Imej lebar penuh yang memisahkan bahagian halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Imej latar belakang."
+      },
+      {
+        "property": "caption",
+        "description": "Tajuk teks."
+      }
+    ]
+  }
+}

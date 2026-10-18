@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ഇവന്റ് ബാഡ്ജ്",
+    "description": "ഇവന്റ് ബാഡ്ജ് ഘടകം."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV ചിത്രം",
+        "description": "TV-യിൽ കാണിക്കുന്ന ചിത്രം."
+      },
+      {
+        "property": "logo",
+        "title": "ലോഗോ",
+        "description": "ബാഡ്ജിന്റെ മൂലയിൽ കാണിക്കുന്ന ലോഗോ."
+      },
+      {
+        "property": "title",
+        "title": "ശീർഷകം",
+        "description": "ബാഡ്ജിന്റെ മുകളിൽ കാണിക്കുന്ന ശീർഷകം."
+      },
+      {
+        "property": "name",
+        "title": "പേര്",
+        "description": "ബാഡ്ജിൽ കാണിക്കുന്ന പേര്."
+      },
+      {
+        "property": "position",
+        "title": "സ്ഥാനം",
+        "description": "വ്യക്തിയുടെ പങ്ക് അല്ലെങ്കിൽ പദവി."
+      },
+      {
+        "property": "organization",
+        "title": "സ്ഥാപനം",
+        "description": "വ്യക്തി ജോലി ചെയ്യുന്ന സ്ഥാപനം."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV നിറം",
+        "description": "TV-യുടെ നിറം തിരഞ്ഞെടുക്കുക."
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "പ്രാഥമിക പശ്ചാത്തല അല്ലെങ്കിൽ വാചക നിറം."
+      },
+      {
+        "property": "knobcolor",
+        "title": "നോബ് നിറം",
+        "description": "TV നോബുകളുടെ നിറം."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "സെപിയ",
+        "description": "ഒരു സെപിയ ഇഫക്റ്റ് പ്രയോഗിക്കുക."
+      },
+      {
+        "property": "blackwhite",
+        "title": "കറുപ്പും വെളുപ്പും",
+        "description": "കറുപ്പ്-വെളുപ്പ് ഇഫക്റ്റ് പ്രയോഗിക്കുക."
+      }
+    ]
+  }
+}

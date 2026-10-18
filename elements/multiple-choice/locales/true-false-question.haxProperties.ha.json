@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Tambayar Gaskiya / Ƙarya",
+    "description": "Tambayar gaskiya ko ƙarya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tambaya",
+        "description": "Tambayar da masu amfani za su amsa."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Amsa Daidai"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Sunan jarrabawa",
+        "description": "Sunan jarrabawa da ake turawa don amfani a muhallin xAPI don gano wannan abu"
+      }
+    ]
+  }
+}

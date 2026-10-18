@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "फ्लॅश कार्ड",
+    "description": "पुढील-मागील बाजू असलेल्या फ्लॅश कार्डसह संकल्पनांचा सराव करा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "कार्डची पुढील बाजू",
+        "description": "पुढील बाजूचा मजकूर किंवा प्रश्न."
+      },
+      {
+        "slot": "back",
+        "title": "कार्डची मागील बाजू",
+        "description": "अपेक्षित उत्तर."
+      },
+      {
+        "property": "imgSource",
+        "title": "प्रतिमा स्रोत",
+        "description": "कार्डसाठी वापरलेली प्रतिमा फाइल. प्रतिमा कीवर्डला अधिलिखित करते."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "क्रियेचा प्रकार",
+        "description": "OER Schema: या सरावात समाविष्ट क्रियेचा प्रकार (उदा. वाचन, लेखन, निर्मिती, संशोधन, श्रवण, पाहणे, चिंतन, चर्चा, निरीक्षण, सादरीकरण, मूल्यमापन)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "अध्ययन उद्दिष्ट",
+        "description": "OER Schema: हा सराव ज्या अध्ययन उद्दिष्टाला पाठबळ देतो त्याचा ID किंवा URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "गडद",
+        "description": "गडद मोड वापरा."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "कार्डचा उठाव रंग."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "प्रतिमा कीवर्ड",
+        "description": "यादृच्छिक प्रतिमेसाठी कीवर्ड. प्रतिमा स्रोत याला अधिलिखित करतो."
+      }
+    ]
+  }
+}

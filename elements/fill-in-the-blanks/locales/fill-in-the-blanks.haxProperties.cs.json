@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Doplňování mezer",
+    "description": "Hodnoticí aktivita, ve které studenti doplňují chybějící slova do výroku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Otázka",
+        "description": "Otázka, na kterou mají uživatelé odpovědět."
+      },
+      {
+        "property": "statement",
+        "title": "Výrok",
+        "description": "Výrok, který bude převeden na interakci označování slov."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formát hodnocení",
+        "description": "OER Schema: formát hodnocení tohoto testu (např. body, známka, procenta, splnění)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Výukový cíl",
+        "description": "OER Schema: výukový cíl spojený s tímto hodnocením."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurz",
+        "description": "OER Schema: kurz, pro který je toto hodnocení určeno."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Název kvízu",
+        "description": "Název kvízu předávaný pro identifikaci této položky v prostředích řízených xAPI"
+      }
+    ]
+  }
+}

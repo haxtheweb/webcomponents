@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Jilaa RPG",
+    "description": "Jilaa xiiso leh oo ka yimid HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Magac",
+        "description": "Erayga loo isticmaalo samaynta jilaa aan kala horrayn."
+      },
+      {
+        "property": "hat",
+        "title": "Koofiyad",
+        "description": "Qaabka koofiyadda.",
+        "options": {
+          "none": "Caadi",
+          "random": "Aan kala horrayn",
+          "bunny": "Bakayle",
+          "cowboy": "Kawaboy",
+          "education": "Waxbarasho",
+          "construction": "Dhismo",
+          "warning": "Digniin",
+          "watermelon": "Qaraha",
+          "coffee": "Qaxwo",
+          "knight": "Fardooley",
+          "ninja": "Ninja",
+          "party": "Xaflad",
+          "error": "Khalad",
+          "edit": "Wax ka beddel"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Ballac",
+        "description": "Ballaca jilaaga ee pixel."
+      },
+      {
+        "property": "height",
+        "title": "Dherer",
+        "description": "Dhererka jilaaga ee pixel."
+      },
+      {
+        "property": "fire",
+        "title": "Gubanaya?",
+        "description": "In jilaagu dab qabsaday."
+      },
+      {
+        "property": "walking",
+        "title": "Socda?",
+        "description": "Dhaqdhaqaaqa socodka; wuu shaqeeyaa marka uu gubanayo."
+      }
+    ]
+  }
+}

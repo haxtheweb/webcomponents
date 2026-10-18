@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Nuotit",
+    "description": "Näyttää ja soittaa nuotteja, kitaratabulatuureja ja partituureja alphaTex- tai MusicXML-muodossa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex-merkintä",
+        "description": "Nuottien alphaTex-merkintä tekstin seassa. Muokkaa suoraan kirjoittaaksesi nuotteja; se tallennetaan malliin, joten välilyönnit säilyvät."
+      },
+      {
+        "property": "source",
+        "title": "Partituuritiedosto",
+        "description": "Lataa tai linkitä MusicXML- (.xml/.musicxml/.mxl) tai Guitar Pro -tiedosto (.gp3/.gp4/.gp5/.gpx/.gp). Ohittaa tekstinsisäisen alphaTexin, kun asetettu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Äänen toisto",
+        "description": "Oletuksena käytössä – kuuntele nuotit sisäänrakennetun syntetisaattorin soittamana. Poista käytöstä pelkkää katselutilaa (ei ääntä) varten."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Näytä näyttöasetukset",
+        "description": "Näytä zoomaus-, venytys- ja asettelupainikkeet soitinpalkissa."
+      },
+      {
+        "property": "showExport",
+        "title": "Näytä vientipainikkeet",
+        "description": "Näytä MIDI-latauksen ja tulostus/PDF-painikkeet soitinpalkissa."
+      }
+    ]
+  }
+}

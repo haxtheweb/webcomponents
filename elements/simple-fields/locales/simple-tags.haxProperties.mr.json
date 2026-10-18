@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "टॅग",
+    "description": "पृष्ठावर दाखवण्यासाठी साधी टॅग सूची."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "टॅग",
+        "description": "स्वल्पविरामाने विभक्त टॅगची सूची."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "स्वयं उठाव रंग",
+        "description": "लेबलवर आधारित उठाव रंग आपोआप सेट करा."
+      },
+      {
+        "property": "accentColor",
+        "title": "रंग",
+        "description": "टॅगसाठी रंग."
+      }
+    ]
+  }
+}

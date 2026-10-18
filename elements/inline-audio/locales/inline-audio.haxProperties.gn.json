@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ryapu tysýipe",
+    "description": "Embopu ryapu tysýipe oipytyvõ hag̃ua kuatiarogue tetepy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ypykue",
+        "description": "Marandurenda MP3 térã URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Kuatia'atã sa'y ojehechaukavéva."
+      },
+      {
+        "property": "shiny",
+        "title": "Overáva",
+        "description": "Eipuru hapykuegua sa'y hesakãvéva hũngy rangue."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Pytũ",
+        "description": "Eipuru reko pytũ."
+      }
+    ]
+  }
+}

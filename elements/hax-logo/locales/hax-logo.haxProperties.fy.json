@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX-wurdkeunst",
+    "description": "Logo-elemint foar HAX, fansels as HAX-geskikt elemint."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Grutte fan it HAX-logo om te pleatsen",
+        "options": {
+          "mini": "Mini",
+          "small": "Lyts",
+          "normal": "Normaal",
+          "large": "Grut"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Oft it logo yn haadletters omset wurde moat"
+      }
+    ]
+  }
+}

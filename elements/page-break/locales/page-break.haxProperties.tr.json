@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Sayfa ayrıntıları",
+    "description": "İçerik yönetim sistemlerinin sayfa oluşturmak için kullanabileceği, sayfalar arasında görsel bir ayrım tanımlayın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Temada ve ilk başlıkta gösterilen başlık."
+      },
+      {
+        "property": "pageType",
+        "title": "Tür",
+        "description": "Görsel sayfa bağlamı etiketi.",
+        "options": {
+          "": "-- yok --",
+          "content": "İçerik",
+          "assessment": "Değerlendirme",
+          "quiz": "Sınav",
+          "submission": "Teslim",
+          "lesson": "Ders",
+          "module": "Modül",
+          "task": "Görev",
+          "activity": "Etkinlik",
+          "project": "Proje",
+          "practice": "Alıştırma",
+          "unit": "Ünite",
+          "objectives": "Öğrenme Hedefleri",
+          "connection": "Bağlantı",
+          "knowledge": "Biliyor muydunuz?",
+          "strategy": "Öğrenme Stratejisi",
+          "discuss": "Tartış",
+          "listen": "Dinle",
+          "make": "Yap",
+          "observe": "Gözlemle",
+          "present": "Sun",
+          "reading": "Okuma",
+          "reflect": "Düşün",
+          "research": "Araştır",
+          "watch": "İzle",
+          "write": "Yaz"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Etiketler",
+        "description": "Virgülle ayrılmış etiket listesi."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Bağlantı URL'si",
+        "description": "Sayfa içeriği yerine gösterilen yönlendirme URL'si."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Bağlantı Hedefi",
+        "description": "Bağlantıları aynı pencerede veya yeni bir pencerede aç.",
+        "options": {
+          "_self": "Aynı pencere",
+          "_blank": "Yeni pencere"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Yayımlandı",
+        "description": "Yayımlanmamış sayfalar son kullanıcılardan gizlenir."
+      },
+      {
+        "property": "locked",
+        "title": "Sayfayı kilitle",
+        "description": "Bu sayfadaki tüm öğeleri kilitle veya kilidini aç."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Otomatik kısa adı geçersiz kıl",
+        "description": "Kısa adı başlığa veya üst sayfaya göre otomatik güncellemelere karşı kilitle."
+      },
+      {
+        "property": "slug",
+        "title": "Yol",
+        "description": "Bu sayfanın URL kısa adı."
+      },
+      {
+        "property": "image",
+        "title": "Medya",
+        "description": "Sayfayı temsil eden, bazı tema ve görünümlerde kullanılan medya."
+      },
+      {
+        "property": "parent",
+        "title": "Üst sayfa",
+        "description": "Üst sayfanın yolu."
+      },
+      {
+        "property": "noderefs",
+        "title": "İlgili içerik",
+        "description": "Bu sayfayla ilgili sayfalar."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Açıklama",
+        "description": "Koleksiyonlarda ve arama motoru optimizasyonunda kullanılan açıklama."
+      },
+      {
+        "property": "entityType",
+        "title": "Varlık Türü",
+        "description": "Aksi belirtilmedikçe varsayılan olarak sayfadır.",
+        "options": {
+          "page": "Sayfa (varsayılan)",
+          "taxonomy": "Sınıflandırma",
+          "taxonomyTerm": "Sınıflandırma Terimi",
+          "region": "Bölge"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Simge",
+        "description": "Sitede bu sayfayla ilişkili simge."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu rengi",
+        "description": "Sitede bu sayfayla ilişkili renk."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Menüde gizle",
+        "description": "URL'sini koruyarak bu sayfayı menülerden gizle."
+      },
+      {
+        "property": "order",
+        "title": "Sıra",
+        "description": "Kardeş sayfalara göre sıra."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Sayfa teması",
+        "description": "Yalnızca bu sayfa için temayı geçersiz kıl."
+      },
+      {
+        "property": "author",
+        "title": "Yazar",
+        "description": "Bu sayfayı en son değiştiren kişinin kullanıcı adı."
+      }
+    ]
+  }
+}

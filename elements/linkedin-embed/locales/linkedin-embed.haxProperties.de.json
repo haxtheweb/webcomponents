@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn-Einbettung",
+    "description": "Eine LinkedIn-Profilkarte einbetten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Benutzerdefinierter Profilname",
+        "description": "Benutzerdefinierter Profilnamen-Teil der LinkedIn-URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Gebietsschema",
+        "description": "Metadatenwert für das Gebietsschema, z. B. en_US."
+      }
+    ]
+  }
+}

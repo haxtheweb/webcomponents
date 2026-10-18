@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Wrapper ta' H5P għat-tagħbija u l-preżentazzjoni ta' fajls .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Kodiċi embed iframe ta' H5P"
+      }
+    ]
+  }
+}

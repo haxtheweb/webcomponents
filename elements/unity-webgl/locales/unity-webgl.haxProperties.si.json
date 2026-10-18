@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity වාදකය",
+    "description": "Unity WebGL වාදකය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "ඉලක්කය",
+        "description": "ක්‍රීඩා ගොඩනැගීමට මාර්ගය."
+      },
+      {
+        "property": "compression",
+        "title": "සම්පීඩන ක්‍රමය",
+        "description": "ක්‍රීඩා වත්කම් සඳහා සම්පීඩන ගොනු දිගුව."
+      },
+      {
+        "property": "streamingurl",
+        "title": "ප්‍රවාහ URL",
+        "description": "ප්‍රවාහ වත්කම් URL."
+      },
+      {
+        "property": "companyname",
+        "title": "සමාගමේ නම",
+        "description": "සමාගමේ නම."
+      },
+      {
+        "property": "productname",
+        "title": "නිෂ්පාදන නාමය",
+        "description": "ක්‍රීඩාවේ මාතෘකාව."
+      },
+      {
+        "property": "productversion",
+        "title": "නිෂ්පාදන අනුවාදය",
+        "description": "නිකුතු අනුවාදය."
+      },
+      {
+        "property": "width",
+        "title": "කැන්වස් පළල",
+        "description": "කැන්වස් CSS පළල (උදාහරණයක් ලෙස px හෝ em)."
+      },
+      {
+        "property": "height",
+        "title": "කැන්වස් උස",
+        "description": "කැන්වස් CSS උස (උදාහරණයක් ලෙස px හෝ em)."
+      },
+      {
+        "property": "background",
+        "title": "කැන්වස් පසුබිම",
+        "description": "කැන්වස් CSS පසුබිම."
+      }
+    ]
+  }
+}

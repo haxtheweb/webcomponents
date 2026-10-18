@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Visualizador MIDI",
+    "description": "Reproduce MIDI en contexto cunha visualización."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orixe",
+        "description": "URL do ficheiro que se vai reproducir."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualización",
+        "description": "Estilo de visualización para o ficheiro de música.",
+        "options": {
+          "staff": "Pentagrama",
+          "piano-roll": "Rolo de piano",
+          "waterfall": "Piano + fervenza"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Ocultar a fervenza",
+        "description": "Ocultar as notas en fervenza na visualización de piano."
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "कार्ड",
+    "description": "DDD डिज़ाइन सिस्टम से शैलीबद्ध कार्ड घटक।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "छवि",
+        "description": "वैकल्पिक छवि।"
+      },
+      {
+        "property": "alt",
+        "title": "छवि का वैकल्पिक टेक्स्ट",
+        "description": "छवि का वर्णन करने वाला वैकल्पिक टेक्स्ट।"
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "कार्ड का शीर्षक।"
+      },
+      {
+        "slot": "",
+        "title": "सामग्री",
+        "description": "कार्ड का सामग्री क्षेत्र।"
+      },
+      {
+        "property": "href",
+        "title": "लिंक",
+        "description": "बटन लिंक URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "लेबल",
+        "description": "बटन लेबल।"
+      },
+      {
+        "property": "noArrow",
+        "title": "कोई तीर नहीं",
+        "description": "बटन का तीर छिपाएँ।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "लिंक: लक्ष्य",
+        "description": "लिंक कहाँ खोलना है।",
+        "options": {
+          "": "वही विंडो",
+          "_blank": "नई विंडो - _blank",
+          "_top": "शीर्ष विंडो - _top",
+          "_parent": "पैरेंट विंडो - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "लिंक: rel",
+        "description": "लिंक किए गए संसाधन और वर्तमान दस्तावेज़ के बीच संबंध।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Poređenje slika",
+    "description": "Prevucite jednu sliku preko druge radi poređenja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Gornja slika",
+        "description": "Gornja slika koja se prevlači preko donje slike."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alternativni tekst gornje slike",
+        "description": "Obavezni alternativni tekst radi pristupačnosti."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Donja slika",
+        "description": "Donja slika prikazana ispod gornje slike."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alternativni tekst donje slike",
+        "description": "Obavezni alternativni tekst radi pristupačnosti."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Ponašanje",
+        "description": "Odaberite način brisanja (zadano) ili način prozirnosti gornje slike."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Boja trake klizača."
+      },
+      {
+        "property": "dark",
+        "title": "Tamno",
+        "description": "Obrni boju trake klizača."
+      },
+      {
+        "property": "position",
+        "title": "Početni položaj",
+        "description": "Početni položaj od 0 do 100."
+      }
+    ]
+  }
+}

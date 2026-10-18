@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Dată",
+    "description": "Afișează o dată calendaristică cu detalii."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Lună",
+        "description": "Luna afișată pe card."
+      },
+      {
+        "property": "date",
+        "title": "Ziua lunii",
+        "description": "Ziua lunii, ca număr."
+      },
+      {
+        "property": "day",
+        "title": "Ziua săptămânii",
+        "description": "Ziua săptămânii, ca text."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Numele evenimentului."
+      },
+      {
+        "property": "location",
+        "title": "Locație",
+        "description": "Locația evenimentului."
+      },
+      {
+        "property": "startTime",
+        "title": "Început",
+        "description": "Ora de început."
+      },
+      {
+        "property": "endTime",
+        "title": "Sfârșit",
+        "description": "Ora de sfârșit."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "O culoare de accent opțională."
+      },
+      {
+        "property": "dark",
+        "title": "Temă întunecată",
+        "description": "Activează tema întunecată."
+      }
+    ]
+  }
+}

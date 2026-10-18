@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabella",
+    "description": "Dati in forma di tabella per il web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Intestazione di riga",
+        "description": "Tratta la prima riga come intestazione."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Intestazione di colonna",
+        "description": "Tratta la prima colonna come intestazione."
+      },
+      {
+        "property": "footer",
+        "title": "Piè di tabella",
+        "description": "Tratta l'ultima riga come piè di tabella."
+      },
+      {
+        "property": "sort",
+        "title": "Ordinabile",
+        "description": "Consenti l'ordinamento in base ai valori delle colonne."
+      },
+      {
+        "property": "filter",
+        "title": "Consenti filtro",
+        "description": "Consenti il filtro in base ai valori delle colonne."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Stile numerico",
+        "description": "Applica lo stile numerico alle colonne numeriche."
+      },
+      {
+        "property": "responsive",
+        "title": "Adattiva",
+        "description": "Adatta il layout della tabella sugli schermi piccoli."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Modalità rubrica",
+        "description": "Interpreta questa tabella come una Rubric di OER Schema, in modo da emettere i metadati Rubric, RubricScale, RubricCriterion e RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Tipo di rubrica",
+        "description": "Stile della rubrica emesso come oer:rubricType (significativo solo con la Modalità rubrica attiva).",
+        "options": {
+          "": "(nessuno)",
+          "analytic": "Analitica",
+          "holistic": "Olistica",
+          "single-point": "A punto singolo",
+          "checklist": "Lista di controllo"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Con bordi"
+      },
+      {
+        "property": "condensed",
+        "title": "Righe compatte",
+        "description": "Riduci l'altezza delle righe."
+      },
+      {
+        "property": "striped",
+        "title": "Righe alternate",
+        "description": "Ombreggia una riga sì e una no."
+      },
+      {
+        "property": "downloadable",
+        "title": "Pulsante di download",
+        "description": "Aggiungi un pulsante per scaricare la tabella."
+      },
+      {
+        "property": "copyable",
+        "title": "Pulsante copia",
+        "description": "Aggiungi un pulsante per copiare i dati CSV della tabella."
+      },
+      {
+        "property": "printable",
+        "title": "Pulsante stampa",
+        "description": "Aggiungi un pulsante per stampare solo la tabella."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Dati CSV",
+        "description": "Crea una tabella da un file CSV caricato."
+      }
+    ]
+  }
+}

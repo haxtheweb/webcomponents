@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ພາບລວມຜະລິດຕະພັນ",
+    "description": "ບລັອກພາບລວມຜະລິດຕະພັນແບບໄວ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ໄອຄອນ",
+        "description": "ໄອຄອນທີ່ເປັນຕົວແທນຂອງແນວຄິດ."
+      },
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ແນວຄິດຫຼັກໂດຍຫຍໍ້."
+      },
+      {
+        "property": "subtitle",
+        "title": "ຫົວຂໍ້ຍ່ອຍ",
+        "description": "ລາຍລະອຽດເພີ່ມເຕີມ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນສຳລັບໄອຄອນ."
+      }
+    ]
+  }
+}

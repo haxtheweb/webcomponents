@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "플래시 카드",
+    "description": "앞뒷면이 있는 플래시 카드로 개념을 연습합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "카드 앞면",
+        "description": "앞면 텍스트 또는 질문입니다."
+      },
+      {
+        "slot": "back",
+        "title": "카드 뒷면",
+        "description": "예상 답변입니다."
+      },
+      {
+        "property": "imgSource",
+        "title": "이미지 소스",
+        "description": "카드에 사용되는 이미지 파일입니다. 이미지 키워드보다 우선합니다."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "활동 유형",
+        "description": "OER Schema: 이 연습에 포함된 활동 유형입니다(예: 읽기, 쓰기, 만들기, 조사하기, 듣기, 시청하기, 성찰하기, 토론하기, 관찰하기, 발표하기, 평가하기)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "학습 목표",
+        "description": "OER Schema: 이 연습이 지원하는 학습 목표의 ID 또는 URL입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "어둡게",
+        "description": "다크 모드를 사용합니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "카드 강조 색상입니다."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "이미지 키워드",
+        "description": "임의 이미지 키워드입니다. 이미지 소스가 우선합니다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Etkinlik Rozeti",
+    "description": "Etkinlik rozeti bileşeni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV Görseli",
+        "description": "TV'de gösterilen görsel."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Rozetin köşesinde gösterilen logo."
+      },
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Rozetin üstünde gösterilen başlık."
+      },
+      {
+        "property": "name",
+        "title": "Ad",
+        "description": "Rozette gösterilen ad."
+      },
+      {
+        "property": "position",
+        "title": "Pozisyon",
+        "description": "Kişinin rolü veya unvanı."
+      },
+      {
+        "property": "organization",
+        "title": "Kurum",
+        "description": "Kişinin çalıştığı kurum."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV rengi",
+        "description": "TV'nin rengini seçin."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu rengi",
+        "description": "Birincil arka plan veya metin rengi."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Düğme rengi",
+        "description": "TV düğmelerinin rengi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepya",
+        "description": "Sepya efekti uygula."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Siyah beyaz",
+        "description": "Siyah beyaz efekti uygula."
+      }
+    ]
+  }
+}

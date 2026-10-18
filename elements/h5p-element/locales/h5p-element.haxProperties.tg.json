@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Қабати H5P барои боркунӣ ва намоиши файлҳои .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Рамзи ҷойгиркунии iframe-и H5P"
+      }
+    ]
+  }
+}

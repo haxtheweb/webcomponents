@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ordenatze galdera",
+    "description": "Ordenatu elementuak ordena zuzenean."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Galdera",
+        "description": "Galderaren goiburua."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Kalifikazio formatua",
+        "description": "OER Schema: ebaluazio honen kalifikazio formatua (adib. puntuak, letra, ehunekoa, osatzea)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ikaskuntza helburua",
+        "description": "OER Schema: ebaluazio honi lotutako ikaskuntza helburua."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikastaroa",
+        "description": "OER Schema: ebaluazio hau zein ikastarorako den."
+      },
+      {
+        "property": "answers",
+        "title": "Erantzunak",
+        "description": "Erantzunen ordenak sekuentzia zuzena definitzen du."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Galdetegiaren izena",
+        "description": "Analitika sistemetan xAPI bidez identifikatzeko erabiltzen den galdetegiaren izena."
+      }
+    ]
+  }
+}

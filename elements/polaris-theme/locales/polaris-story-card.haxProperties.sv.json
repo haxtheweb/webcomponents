@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris-berättelsekort",
+    "description": "Visa ett Polaris-berättelsekort med bakgrundsbild, pelaretikett och rubriktext."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bakgrundsbild",
+        "description": "Bild-URL som visas som kortets bakgrund."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Bakgrundsstorlek",
+        "description": "Hur bakgrundsbilden fyller kortet (CSS background-size).",
+        "options": {
+          "cover": "Täck (cover)",
+          "contain": "Rymma (contain)",
+          "auto": "Automatisk (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Bakgrundsfästning",
+        "description": "Hur bakgrundsbilden beter sig vid rullning (CSS background-attachment).",
+        "options": {
+          "scroll": "Rulla (scroll)",
+          "fixed": "Fast (fixed)",
+          "local": "Lokal (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Pelaretikett",
+        "description": "Kort etikett med versaler som visas högst upp på kortet. Lämna tomt för att dölja."
+      },
+      {
+        "property": "label",
+        "title": "Korttext",
+        "description": "Primär text som visas i den nedre panelen."
+      },
+      {
+        "property": "link",
+        "title": "Länk",
+        "description": "Valfri mål-URL som omsluter hela kortet."
+      }
+    ]
+  }
+}

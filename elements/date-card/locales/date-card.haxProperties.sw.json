@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Tarehe",
+    "description": "Onyesha tarehe ya kalenda pamoja na maelezo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mwezi",
+        "description": "Mwezi unaoonyeshwa kwenye kadi."
+      },
+      {
+        "property": "date",
+        "title": "Siku ya mwezi",
+        "description": "Siku ya mwezi kwa nambari."
+      },
+      {
+        "property": "day",
+        "title": "Siku ya wiki",
+        "description": "Siku ya wiki kwa maandishi."
+      },
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Jina la tukio."
+      },
+      {
+        "property": "location",
+        "title": "Mahali",
+        "description": "Mahali pa tukio."
+      },
+      {
+        "property": "startTime",
+        "title": "Mwanzo",
+        "description": "Wakati wa kuanza."
+      },
+      {
+        "property": "endTime",
+        "title": "Mwisho",
+        "description": "Wakati wa kumalizika."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya Msisitizo",
+        "description": "Rangi ya msisitizo ya hiari."
+      },
+      {
+        "property": "dark",
+        "title": "Mandhari Meusi",
+        "description": "Washa mandhari meusi."
+      }
+    ]
+  }
+}

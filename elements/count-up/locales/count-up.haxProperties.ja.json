@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "カウントアップ",
+    "description": "表示領域に入ったときに数値が目標値までカウントアップするアニメーション。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "終了値",
+        "description": "カウントアップする先の数値。"
+      },
+      {
+        "property": "start",
+        "title": "開始値",
+        "description": "カウントを始める数値。"
+      },
+      {
+        "property": "duration",
+        "title": "時間",
+        "description": "カウントアニメーションにかける秒数。"
+      },
+      {
+        "property": "prefixtext",
+        "title": "接頭テキスト",
+        "description": "数値の前に表示するテキスト（例: '$'）。"
+      },
+      {
+        "property": "suffixtext",
+        "title": "接尾テキスト",
+        "description": "数値の後に表示するテキスト（例: '%'）。"
+      },
+      {
+        "slot": "prefix",
+        "title": "接頭スロット",
+        "description": "数値の前に入れる任意のスロットコンテンツ。"
+      },
+      {
+        "slot": "suffix",
+        "title": "接尾スロット",
+        "description": "数値の後に入れる任意のスロットコンテンツ。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "小数点以下の桁数",
+        "description": "表示する小数点以下の桁数。"
+      },
+      {
+        "property": "separator",
+        "title": "桁区切り記号",
+        "description": "千の位ごとに区切る文字。"
+      },
+      {
+        "property": "decimal",
+        "title": "小数点記号",
+        "description": "小数点に使う文字。"
+      },
+      {
+        "property": "noeasing",
+        "title": "イージングなし",
+        "description": "イージングを無効にして一定速度でカウントします。"
+      }
+    ]
+  }
+}

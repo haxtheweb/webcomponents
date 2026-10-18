@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG-personage",
+    "description": "Leuk personage van HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Naam",
+        "description": "Woord waarmee een willekeurig personage wordt gegenereerd."
+      },
+      {
+        "property": "hat",
+        "title": "Hoed",
+        "description": "Stijl van de hoed.",
+        "options": {
+          "none": "Standaard",
+          "random": "Willekeurig",
+          "bunny": "Konijn",
+          "cowboy": "Cowboy",
+          "education": "Onderwijs",
+          "construction": "Bouw",
+          "warning": "Waarschuwing",
+          "watermelon": "Watermeloen",
+          "coffee": "Koffie",
+          "knight": "Ridder",
+          "ninja": "Ninja",
+          "party": "Feest",
+          "error": "Fout",
+          "edit": "Bewerken"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Breedte van het personage in pixels."
+      },
+      {
+        "property": "height",
+        "title": "Hoogte",
+        "description": "Hoogte van het personage in pixels."
+      },
+      {
+        "property": "fire",
+        "title": "In brand?",
+        "description": "Of het personage in brand staat."
+      },
+      {
+        "property": "walking",
+        "title": "Lopend?",
+        "description": "Loopanimatie; loopt als het personage in brand staat."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Amharcléiritheoir MIDI",
+    "description": "Seinn MIDI i gcomhthéacs le hamharcléiriú."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Foinse",
+        "description": "URL an chomhaid le seinm."
+      },
+      {
+        "property": "visualizer",
+        "title": "Amharcléiriú",
+        "description": "Stíl amharcléirithe don chomhad ceoil.",
+        "options": {
+          "staff": "Foireann",
+          "piano-roll": "Rolla pianó",
+          "waterfall": "Pianó + eas"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Folaigh an t-eas",
+        "description": "Folaigh nótaí an easa san amharcléiriú pianó."
+      }
+    ]
+  }
+}

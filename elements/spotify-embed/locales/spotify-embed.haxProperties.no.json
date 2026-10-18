@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Omslag for innebygde Spotify-spillere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "Innebyggings- eller delingslenke fra Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Bakgrunnsfargetema for spilleren.",
+        "options": {
+          "": "Standard",
+          "0": "Svart"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Størrelse",
+        "description": "Spillerstørrelse.",
+        "options": {
+          "normal": "Standard",
+          "compact": "Kompakt"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sitata bloky",
+    "description": "Bezelen sitata bloky."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Salgylanma",
+        "description": "Salgylanma teksti."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Surat üçin alternatiw tekst."
+      },
+      {
+        "property": "image",
+        "title": "Surat",
+        "description": "Sitata bilen görkezilýän surat."
+      }
+    ]
+  }
+}

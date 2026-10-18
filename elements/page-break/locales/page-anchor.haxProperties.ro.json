@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ancoră de pagină",
+    "description": "Link către puncte specifice din conținutul media al paginii."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Ținta din pagină",
+        "description": "ID-ul sau resursa către care indică această ancoră."
+      },
+      {
+        "property": "value",
+        "title": "Valoare link direct",
+        "description": "Valoarea linkului direct (de exemplu marcaj de timp sau ID de diapozitiv)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entitate a site-ului",
+        "description": "Entitate opțională a site-ului pentru controlul prezentării conceptelor asociate."
+      }
+    ]
+  }
+}

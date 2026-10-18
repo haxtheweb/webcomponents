@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Εμφάνιση θεματικού κουμπιού πρόσκλησης σε δράση Polaris."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Κείμενο κουμπιού",
+        "description": "Κείμενο που εμφανίζεται στο κουμπί πρόσκλησης σε δράση."
+      },
+      {
+        "property": "link",
+        "title": "Σύνδεσμος",
+        "description": "URL προορισμού για το κουμπί."
+      },
+      {
+        "property": "type",
+        "title": "Παραλλαγή",
+        "description": "Παραλλαγή οπτικού στυλ.",
+        "options": {
+          "primary": "Κύριο",
+          "tinted": "Χρωματισμένο",
+          "light": "Ανοιχτόχρωμο"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Στυλ περιγράμματος",
+        "description": "Ενεργοποίηση εμφάνισης με περίγραμμα."
+      },
+      {
+        "property": "filled",
+        "title": "Στυλ γεμίσματος",
+        "description": "Ενεργοποίηση εμφάνισης με γέμισμα."
+      }
+    ]
+  }
+}

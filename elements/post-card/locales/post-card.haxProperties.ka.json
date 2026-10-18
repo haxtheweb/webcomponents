@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "საფოსტო ბარათი",
+    "description": "სახალისო მედია-ელემენტი, რომელიც სადღაციდან გამოგზავნილ ნამდვილ საფოსტო ბარათს ჰგავს"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "ვის",
+        "description": "ვის ეგზავნება ეს?"
+      },
+      {
+        "property": "from",
+        "title": "ვისგან",
+        "description": "ვინ ხართ?"
+      },
+      {
+        "property": "message",
+        "title": "შეტყობინება",
+        "description": "რისი თქმა გსურთ?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "საფოსტო შტემპელი",
+        "description": "საიდან გამოიგზავნა ეს ბარათი?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "მთავარი ფოტოს წყარო",
+        "description": "სად მდებარეობს თქვენი ფოტო?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "მარკის ფოტოს წყარო",
+        "description": "სად მდებარეობს თქვენი ფოტო?"
+      }
+    ]
+  }
+}

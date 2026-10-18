@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Tāmau Twitter (X)",
+    "description": "Tāmau i tētahi tweet mai i X i tōna horopaki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL Tweet",
+        "description": "URL o te tweet hei tāmau."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Kaupapa",
+        "description": "Kaupapa mārama, pōuri rānei mō ngā tweet X.",
+        "options": {
+          "light": "Mārama",
+          "dark": "Pōuri"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Ārai matapihi puta ake i te pāwhiri",
+        "description": "Ārai i ngā kaiwhakamahi kei whakatuwhera i te tweet i x.com."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF-blaaierkyker",
+    "description": "Bed 'n PDF-lêer inlyn in met 'n opsionele kaartuitleg en aflaaiknoppie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF-URL",
+        "description": "Ligging van die PDF-lêer."
+      },
+      {
+        "property": "heading",
+        "title": "Opskrif",
+        "description": "Kaartopskrifteks."
+      },
+      {
+        "property": "card",
+        "title": "Kaartuitleg",
+        "description": "Vertoon die PDF in 'n kaart met 'n aflaaiknoppie."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Aflaai-etiket",
+        "description": "Etiket vir die aflaaiknoppie."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Nie-ondersteun-boodskap",
+        "description": "Boodskap wanneer die blaaier nie PDF-lêers kan vertoon nie."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Nie-ondersteun-skakelboodskap",
+        "description": "Skakelteks wanneer die blaaier nie PDF-lêers kan vertoon nie."
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Breedte van die PDF-kyker."
+      },
+      {
+        "property": "height",
+        "title": "Hoogte",
+        "description": "Hoogte van die PDF-kyker."
+      }
+    ]
+  }
+}

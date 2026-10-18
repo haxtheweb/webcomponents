@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Birka / tablete",
+    "description": "Kompakta tabletes formas etiķete ar neobligātu akcenta krāsu, atcelšanas pogu vai pārslēgu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etiķete",
+        "description": "Tabletē rādītais teksts."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "SimpleColors akcenta nosaukums tabletes fonam.",
+        "options": {
+          "": "-- noklusējums --",
+          "red": "Sarkana",
+          "pink": "Rozā",
+          "purple": "Violeta",
+          "deep-purple": "Tumši violeta",
+          "indigo": "Indigo",
+          "blue": "Zila",
+          "light-blue": "Gaiši zila",
+          "cyan": "Ciānzila",
+          "teal": "Zilganzaļa",
+          "green": "Zaļa",
+          "light-green": "Gaiši zaļa",
+          "lime": "Laima",
+          "yellow": "Dzeltena",
+          "amber": "Dzintara",
+          "orange": "Oranža",
+          "deep-orange": "Tumši oranža",
+          "brown": "Brūna",
+          "blue-grey": "Zilganpelēka",
+          "grey": "Pelēka"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automātiska akcenta krāsa",
+        "description": "Automātiski noteikt akcenta krāsu no etiķetes teksta."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Atcelšanas poga",
+        "description": "Rādīt noņemšanas/atcelšanas ikonas pogu tabletē."
+      },
+      {
+        "property": "readonly",
+        "title": "Tikai lasāms",
+        "description": "Paslēpt atcelšanas pogu, lai tablete būtu tikai attēlojama."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Pārslēdzams",
+        "description": "Noklikšķinot uz pogas, tablete tiek ieslēgta/izslēgta."
+      },
+      {
+        "property": "toggled",
+        "title": "Ieslēgts",
+        "description": "Vai tablete pašlaik ir ieslēgta."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ieslēgtā stāvokļa ikona",
+        "description": "Ikona, kas tiek rādīta, kad tablete ir ieslēgta."
+      },
+      {
+        "property": "disabled",
+        "title": "Atspējots",
+        "description": "Atspējot mijiedarbību ar tableti."
+      }
+    ]
+  }
+}

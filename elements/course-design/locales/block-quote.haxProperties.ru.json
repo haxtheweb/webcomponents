@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Цитата",
+    "description": "Оформленный блок цитаты."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Источник цитаты",
+        "description": "Текст источника цитаты."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Альтернативный текст для изображения."
+      },
+      {
+        "property": "image",
+        "title": "Изображение",
+        "description": "Изображение, показываемое с цитатой."
+      }
+    ]
+  }
+}

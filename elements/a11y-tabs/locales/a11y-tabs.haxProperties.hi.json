@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "टैब",
+    "description": "टैब का समूह।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "लेबल (सुलभता के लिए)",
+        "description": "टैब समूह के लिए सुलभ लेबल।"
+      },
+      {
+        "property": "disabled",
+        "title": "अक्षम",
+        "description": "सभी टैब अक्षम करें।"
+      },
+      {
+        "property": "hidden",
+        "title": "छिपा हुआ",
+        "description": "टैब समूह छिपाएँ।"
+      },
+      {
+        "property": "sticky",
+        "title": "स्थिर (स्टिकी)",
+        "description": "स्क्रॉल करते समय क्षैतिज टैब को ऊपर रखें।"
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "लेआउट ब्रेकपॉइंट",
+        "description": "क्षैतिज टैब के लिए ब्रेकपॉइंट; केवल ऊर्ध्वाधर के लिए -1 का उपयोग करें।"
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "आइकन ब्रेकपॉइंट",
+        "description": "आइकन के साथ टेक्स्ट दिखाने के लिए ब्रेकपॉइंट। डिफ़ॉल्ट 0 है; केवल-आइकन मोड के लिए -1 का उपयोग करें।"
+      },
+      {
+        "slot": "",
+        "title": "टैब",
+        "description": "<a11y-tab/> तत्वों की श्रृंखला।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "अद्वितीय ID",
+        "description": "इस टैब समूह के लिए अद्वितीय ID।"
+      }
+    ]
+  }
+}

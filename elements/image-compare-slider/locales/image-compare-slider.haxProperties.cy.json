@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Cymharu delweddau",
+    "description": "Llithro un ddelwedd dros un arall i'w cymharu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Delwedd uchaf",
+        "description": "Y ddelwedd uchaf i'w llithro dros y ddelwedd isaf."
+      },
+      {
+        "property": "topAlt",
+        "title": "Testun amgen y ddelwedd uchaf",
+        "description": "Testun amgen gofynnol er hygyrchedd."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Delwedd isaf",
+        "description": "Y ddelwedd isaf a ddangosir o dan y ddelwedd uchaf."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Testun amgen y ddelwedd isaf",
+        "description": "Testun amgen gofynnol er hygyrchedd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Ymddygiad",
+        "description": "Dewiswch fodd sychu (rhagosodiad) neu fodd didreiddedd y ddelwedd uchaf."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw Acen",
+        "description": "Lliw'r bar llithro."
+      },
+      {
+        "property": "dark",
+        "title": "Tywyll",
+        "description": "Gwrthdroi lliw'r bar llithro."
+      },
+      {
+        "property": "position",
+        "title": "Safle Cychwynnol",
+        "description": "Safle cychwyn o 0 i 100."
+      }
+    ]
+  }
+}

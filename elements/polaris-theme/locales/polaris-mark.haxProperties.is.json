@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris-merki",
+    "description": "Birta PSU-auðkennismerkið með valfrjálsu heiti háskóladeildar og áfangastaðar-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Heiti deildar",
+        "description": "Heiti sem birtist við hlið merkisins."
+      },
+      {
+        "property": "name2",
+        "title": "Heiti deildar 2",
+        "description": "Annað heiti sem birtist fyrir neðan fyrsta heiti deildar."
+      },
+      {
+        "property": "name3",
+        "title": "Heiti deildar 3",
+        "description": "Þriðja heiti sem birtist fyrir neðan annað heiti deildar."
+      },
+      {
+        "property": "url",
+        "title": "Tengill",
+        "description": "Áfangastaðar-URL þegar smellt er á merkið."
+      },
+      {
+        "property": "type",
+        "title": "Afbrigði",
+        "description": "Sjónrænt afbrigði merkisins.",
+        "options": {
+          "default": "Sjálfgefið",
+          "light": "Ljóst",
+          "dark": "Dökkt"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Lóðrétt útlit",
+        "description": "Birta þriðja heitið fyrir neðan annað heitið með láréttri línu."
+      }
+    ]
+  }
+}

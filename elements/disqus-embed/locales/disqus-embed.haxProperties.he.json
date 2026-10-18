@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "הטמעת תגובות Disqus בעמוד."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "שם מקוצר",
+        "description": "השם המקוצר של האתר, הקובע את מארח הסקריפט של Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL של העמוד",
+        "description": "ה-URL של העמוד שאליו משויך שרשור התגובות."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "מזהה עמוד",
+        "description": "המזהה הייחודי של שרשור התגובות בעמוד."
+      },
+      {
+        "property": "pageTitle",
+        "title": "כותרת העמוד",
+        "description": "כותרת העמוד שאליו משויך שרשור התגובות."
+      },
+      {
+        "property": "loadingText",
+        "title": "טקסט טעינה",
+        "description": "טקסט המוכרז בזמן טעינת התגובות."
+      },
+      {
+        "property": "lang",
+        "title": "שפה",
+        "description": "קוד שפה לממשק של Disqus, למשל en."
+      }
+    ]
+  }
+}

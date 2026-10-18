@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "คอนเทนเนอร์ที่ยุบได้",
+    "description": "คอนเทนเนอร์เดี่ยวที่ขยายและยุบได้"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "หัวข้อ",
+        "description": "ข้อความสำหรับส่วนที่ยุบได้"
+      },
+      {
+        "property": "expanded",
+        "title": "ขยายแล้ว",
+        "description": "ขยายไว้เป็นค่าเริ่มต้น"
+      },
+      {
+        "property": "headingButton",
+        "title": "ปุ่มหัวข้อ",
+        "description": "ทำให้คลิกได้ทั้งหัวข้อแทนที่จะคลิกได้เฉพาะไอคอน"
+      },
+      {
+        "property": "icon",
+        "title": "ไอคอน",
+        "description": "ไอคอนสำหรับปุ่มสลับขยาย/ยุบ"
+      },
+      {
+        "property": "iconExpanded",
+        "title": "ไอคอน (เมื่อขยาย)",
+        "description": "ไอคอนเสริมสำหรับสถานะขยายของปุ่มสลับ"
+      },
+      {
+        "slot": "",
+        "title": "เนื้อหา",
+        "description": "เนื้อหาสำหรับส่วนที่ยุบได้"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "คำแนะนำเครื่องมือ",
+        "description": "คำแนะนำเครื่องมือสำหรับปุ่มสลับขยาย/ยุบ"
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "คำแนะนำเครื่องมือ (เมื่อขยาย)",
+        "description": "คำแนะนำเครื่องมือสำหรับปุ่มขยาย/ยุบเมื่อขยายอยู่"
+      }
+    ]
+  }
+}

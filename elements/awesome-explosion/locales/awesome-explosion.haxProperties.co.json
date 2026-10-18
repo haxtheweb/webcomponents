@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Splusione maiò",
+    "description": "Animazione di splusione interattiva cù effetti sonori facultativi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Dimensione",
+        "description": "Definisce a dimensione di a splusione.",
+        "options": {
+          "tiny": "Minuscula",
+          "small": "Chjuca",
+          "medium": "Mezana",
+          "large": "Grande",
+          "epic": "Epica"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Culore",
+        "description": "Definisce u tema di culore di a splusione.",
+        "options": {
+          "": "Predefinitu",
+          "red": "Rossu",
+          "blue": "Turchinu",
+          "purple": "Viulettu",
+          "orange": "Aranciu",
+          "yellow": "Ghjallu"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Effetti sonori",
+        "description": "Attivà l'effetti sonori."
+      },
+      {
+        "property": "resetSound",
+        "title": "Riinizià u sonu",
+        "description": "Ripiglià u sonu da u principiu ogni volta."
+      },
+      {
+        "property": "image",
+        "title": "Imagine persunalizata",
+        "description": "URL facultativu d'una imagine di splusione persunalizata."
+      },
+      {
+        "property": "sound",
+        "title": "Sonu persunalizatu",
+        "description": "URL facultativu d'un effettu sonoru persunalizatu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Disattivatu",
+        "description": "Disattivà tutte l'interazzioni."
+      }
+    ]
+  }
+}

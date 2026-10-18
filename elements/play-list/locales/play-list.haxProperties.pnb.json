@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "پلے لسٹ",
+    "description": "پلے لسٹ وچ ہر قسم دا مواد وکھاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "سرچشمہ",
+        "description": "پلے لسٹ وچ وکھایا جاوݨ والا مواد۔"
+      },
+      {
+        "property": "edit",
+        "title": "ترمیم موڈ",
+        "description": "پلے لسٹ لئی ترمیم تے پیش منظر موڈ وچکار بدلو۔"
+      },
+      {
+        "property": "navigation",
+        "title": "نیویگیشن",
+        "description": "اگے تے پچھے جاوݨ والے بٹن وکھاؤ۔"
+      },
+      {
+        "property": "pagination",
+        "title": "صفحہ بندی",
+        "description": "صفحہ بندی دے بندو وکھاؤ۔"
+      },
+      {
+        "property": "orientation",
+        "title": "رخ",
+        "description": "سلائیڈاں دا رخ۔",
+        "options": {
+          "horizontal": "افقی",
+          "vertical": "عمودی"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "شروع والی سلائیڈ",
+        "description": "شروع وچ فوکس کرن والی سلائیڈ دا انڈیکس۔"
+      },
+      {
+        "property": "aspectRatio",
+        "title": "پہلوواں دا تناسب",
+        "description": "سلائیڈاں دے پہلوواں دا تناسب۔",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

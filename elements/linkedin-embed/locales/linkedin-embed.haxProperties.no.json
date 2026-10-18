@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn-innebygging",
+    "description": "Bygg inn et LinkedIn-profilkort."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Tilpasset navn",
+        "description": "Den tilpassede brukernavndelen på LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokalitet",
+        "description": "Metadataverdi for lokalitet, for eksempel en_US."
+      }
+    ]
+  }
+}

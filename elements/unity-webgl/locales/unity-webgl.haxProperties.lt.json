@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity grotuvas",
+    "description": "Unity WebGL grotuvas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Paskirtis",
+        "description": "Kelias į žaidimo versiją."
+      },
+      {
+        "property": "compression",
+        "title": "Glaudinimo būdas",
+        "description": "Žaidimo išteklių glaudinimo failo plėtinys."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Srautinio perdavimo URL",
+        "description": "Srautinių išteklių URL."
+      },
+      {
+        "property": "companyname",
+        "title": "Įmonės pavadinimas",
+        "description": "Įmonės pavadinimas."
+      },
+      {
+        "property": "productname",
+        "title": "Produkto pavadinimas",
+        "description": "Žaidimo pavadinimas."
+      },
+      {
+        "property": "productversion",
+        "title": "Produkto versija",
+        "description": "Leidimo versija."
+      },
+      {
+        "property": "width",
+        "title": "Drobės plotis",
+        "description": "Drobės CSS plotis (pvz., px arba em)."
+      },
+      {
+        "property": "height",
+        "title": "Drobės aukštis",
+        "description": "Drobės CSS aukštis (pvz., px arba em)."
+      },
+      {
+        "property": "background",
+        "title": "Drobės fonas",
+        "description": "Drobės CSS fonas."
+      }
+    ]
+  }
+}

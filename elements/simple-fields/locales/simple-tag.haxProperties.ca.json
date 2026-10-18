@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Etiqueta / Píndola",
+    "description": "Una etiqueta compacta en forma de píndola amb color d'accent, botó de cancel·lació o commutador opcionals."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etiqueta",
+        "description": "Text que es mostra dins de la píndola."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Nom del color d'accent de SimpleColors per al fons de la píndola.",
+        "options": {
+          "": "-- per defecte --",
+          "red": "Vermell",
+          "pink": "Rosa",
+          "purple": "Lila",
+          "deep-purple": "Lila fosc",
+          "indigo": "Indi",
+          "blue": "Blau",
+          "light-blue": "Blau clar",
+          "cyan": "Cian",
+          "teal": "Verd blavós",
+          "green": "Verd",
+          "light-green": "Verd clar",
+          "lime": "Llima",
+          "yellow": "Groc",
+          "amber": "Ambre",
+          "orange": "Taronja",
+          "deep-orange": "Taronja fosc",
+          "brown": "Marró",
+          "blue-grey": "Gris blavós",
+          "grey": "Gris"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Color d'accent automàtic",
+        "description": "Obté automàticament el color d'accent a partir del text de l'etiqueta."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Botó de cancel·lació",
+        "description": "Mostra un botó d'icona per eliminar/cancel·lar dins de la píndola."
+      },
+      {
+        "property": "readonly",
+        "title": "Només lectura",
+        "description": "Amaga el botó de cancel·lació perquè la píndola sigui només de visualització."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Commutable",
+        "description": "Fa que la píndola s'activi o es desactivi en fer clic al botó."
+      },
+      {
+        "property": "toggled",
+        "title": "Activada",
+        "description": "Si la píndola està activada actualment."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Icona d'activació",
+        "description": "Icona que es mostra quan la píndola està activada."
+      },
+      {
+        "property": "disabled",
+        "title": "Desactivat",
+        "description": "Desactiva la interacció amb la píndola."
+      }
+    ]
+  }
+}

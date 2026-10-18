@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Umqolo wengqokelela",
+    "description": "Into enjengomqolo esetyenziswa kuluhlu lwengqokelela, enombhalo, ikhonkco, i-icon, iithegi kunye nomfanekiso okhethwayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Ikhonkco",
+        "description": "I-URL ekuyiwa kuyo yalo mqolo."
+      },
+      {
+        "property": "image",
+        "title": "Umfanekiso",
+        "description": "Umfanekiso womqolo."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo ongenayo",
+        "description": "Umbhalo ongenayo ochaza umfanekiso."
+      },
+      {
+        "property": "line1",
+        "title": "Umgca 1",
+        "description": "Umgca wokuqala wombhalo."
+      },
+      {
+        "property": "line2",
+        "title": "Umgca 2",
+        "description": "Umgca wesibini wombhalo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "I-icon",
+        "description": "I-icon emele lo mqolo."
+      },
+      {
+        "property": "saturate",
+        "title": "Isiphumo sokuqina kombala",
+        "description": "Tshintsha ukuqina kombala womfanekiso xa umsebenzisi egxila kuwo."
+      },
+      {
+        "property": "tags",
+        "title": "Iithegi",
+        "description": "Uluhlu lweethegi ezahlulwe ngeekoma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala",
+        "description": "Umbala osetyenziselwa i-icon neethegi."
+      }
+    ]
+  }
+}

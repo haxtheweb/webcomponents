@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "د انځورونو پرتله",
+    "description": "د پرتلې لپاره یو انځور پر بل باندې وښویوئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "پورتنی انځور",
+        "description": "پورتنی انځور چې پر لاندیني انځور ښوییږي."
+      },
+      {
+        "property": "topAlt",
+        "title": "د پورتني انځور بدیل متن",
+        "description": "د لاسرسي لپاره اړین بدیل متن."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "لاندینی انځور",
+        "description": "لاندینی انځور چې د پورتني انځور لاندې ښودل کېږي."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "د لاندیني انځور بدیل متن",
+        "description": "د لاسرسي لپاره اړین بدیل متن."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "چلند",
+        "description": "د پاکولو حالت (ډیفالټ) یا د پورتني انځور د روڼتیا حالت وټاکئ."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د سلایډر د پټۍ رنګ."
+      },
+      {
+        "property": "dark",
+        "title": "تیاره",
+        "description": "د سلایډر د پټۍ رنګ معکوس کړئ."
+      },
+      {
+        "property": "position",
+        "title": "لومړنی موقعیت",
+        "description": "د پیل موقعیت له 0 تر 100 پورې."
+      }
+    ]
+  }
+}

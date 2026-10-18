@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Bygg inn eksternt nettinnhold i en iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ressurs-URL",
+        "description": "Ressurs-URL."
+      },
+      {
+        "property": "height",
+        "title": "Høyde",
+        "description": "Høyden på iframe."
+      },
+      {
+        "property": "width",
+        "title": "Bredde",
+        "description": "Bredden på iframe."
+      }
+    ]
+  }
+}

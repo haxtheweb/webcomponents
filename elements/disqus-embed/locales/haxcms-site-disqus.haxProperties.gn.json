@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus jehai'i",
+    "description": "Ñembojoaju Disqus jehai'i ñangareko ñandutípe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Téra mbyky",
+        "description": "Mba'etee réra mbyky Disqus-pe"
+      }
+    ]
+  }
+}

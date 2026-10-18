@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Sustainable Development Goal ng United Nations."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Layunin",
+        "description": "Numero ng UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Kulay lamang",
+        "description": "Ipakita lamang ang kulay ng layunin."
+      }
+    ]
+  }
+}

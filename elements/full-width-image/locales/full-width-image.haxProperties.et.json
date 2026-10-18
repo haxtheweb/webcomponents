@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Pildisektsioon",
+    "description": "Täislaiuses pilt, mis eraldab lehe sektsioone."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Taustapilt."
+      },
+      {
+        "property": "caption",
+        "description": "Tekstipealkiri."
+      }
+    ]
+  }
+}

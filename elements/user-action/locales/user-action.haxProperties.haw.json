@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Hana mea hoʻohana",
+    "description": "E hahai i nā hana a ka mea hoʻohana a hoʻouna i ka ʻikepili i nā waihona xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Hanana e hahai ai",
+        "description": "Hana a ka mea hoʻohana e hoʻomaka ai i kēia hanana.",
+        "options": {
+          "visibility": "Hiki ke ʻike i kēia",
+          "keydown": "E kaomi i kekahi pihi ma ʻaneʻi",
+          "click": "E kōmi i kēia",
+          "hover": "E lele ma luna o kēia"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Hahai i kēlā me kēia manawa",
+        "description": "Ma ka paʻamau, ʻo ka hanana mua wale nō ka mea e hahai ʻia."
+      }
+    ]
+  }
+}

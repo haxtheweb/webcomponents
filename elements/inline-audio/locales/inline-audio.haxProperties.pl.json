@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Dźwięk w tekście",
+    "description": "Odtwarzaj dźwięk w tekście jako uzupełnienie treści strony."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Źródło",
+        "description": "Plik MP3 lub URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Kolor akcentu karty."
+      },
+      {
+        "property": "shiny",
+        "title": "Błyszczący",
+        "description": "Użyj jaśniejszego tła w kolorze akcentu zamiast szarego."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Ciemny",
+        "description": "Użyj trybu ciemnego."
+      }
+    ]
+  }
+}

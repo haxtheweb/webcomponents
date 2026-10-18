@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Lencana Acara",
+    "description": "Komponen lencana acara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imej TV",
+        "description": "Imej yang dipaparkan pada TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo yang dipaparkan di penjuru lencana."
+      },
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tajuk yang dipaparkan di bahagian atas lencana."
+      },
+      {
+        "property": "name",
+        "title": "Nama",
+        "description": "Nama yang dipaparkan pada lencana."
+      },
+      {
+        "property": "position",
+        "title": "Jawatan",
+        "description": "Peranan atau jawatan individu."
+      },
+      {
+        "property": "organization",
+        "title": "Organisasi",
+        "description": "Organisasi tempat individu bekerja."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Warna TV",
+        "description": "Pilih warna untuk TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Warna latar belakang atau teks utama."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Warna tombol",
+        "description": "Warna tombol TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Gunakan kesan sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Hitam putih",
+        "description": "Gunakan kesan hitam putih."
+      }
+    ]
+  }
+}

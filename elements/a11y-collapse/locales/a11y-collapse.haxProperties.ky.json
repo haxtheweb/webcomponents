@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Жыйналуучу контейнер",
+    "description": "Ачылып-жабылуучу жалгыз контейнер."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Аталыш",
+        "description": "Жабылуучу блоктун тексти."
+      },
+      {
+        "property": "expanded",
+        "title": "Ачык",
+        "description": "Демейки боюнча ачык болсун."
+      },
+      {
+        "property": "headingButton",
+        "title": "Аталыш баскычы",
+        "description": "Сөлөкөт эмес, бүт аталышты басылуучу кылуу."
+      },
+      {
+        "property": "icon",
+        "title": "Сөлөкөт",
+        "description": "Ачуу/жабуу баскычынын сөлөкөтү."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Сөлөкөт (ачык кезде)",
+        "description": "Ачык абал үчүн кошумча сөлөкөт."
+      },
+      {
+        "slot": "",
+        "title": "Мазмун",
+        "description": "Жабылуучу блоктун мазмуну."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Кеңеш",
+        "description": "Ачуу/жабуу баскычынын кеңеши."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Кеңеш (ачык кезде)",
+        "description": "Ачык кездеги ачуу/жабуу баскычынын кеңеши."
+      }
+    ]
+  }
+}

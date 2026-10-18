@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG-persóna",
+    "description": "Skemmtileg persóna frá HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Nafn",
+        "description": "Orð notað til að búa til handahófskennda persónu."
+      },
+      {
+        "property": "hat",
+        "title": "Hattur",
+        "description": "Hattastíll.",
+        "options": {
+          "none": "Sjálfgefið",
+          "random": "Handahófskennt",
+          "bunny": "Kanína",
+          "cowboy": "Kúreki",
+          "education": "Menntun",
+          "construction": "Byggingarvinna",
+          "warning": "Viðvörun",
+          "watermelon": "Vatnsmelóna",
+          "coffee": "Kaffi",
+          "knight": "Riddari",
+          "ninja": "Ninja",
+          "party": "Veisla",
+          "error": "Villa",
+          "edit": "Breyta"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Breidd",
+        "description": "Breidd persónu í dílum."
+      },
+      {
+        "property": "height",
+        "title": "Hæð",
+        "description": "Hæð persónu í dílum."
+      },
+      {
+        "property": "fire",
+        "title": "Í ljósum logum?",
+        "description": "Hvort persónan standi í ljósum logum."
+      },
+      {
+        "property": "walking",
+        "title": "Gengur?",
+        "description": "Gönguhreyfimynd; hleypur þegar í ljósum logum."
+      }
+    ]
+  }
+}

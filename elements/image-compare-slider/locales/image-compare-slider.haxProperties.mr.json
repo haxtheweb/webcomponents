@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "प्रतिमा तुलना",
+    "description": "तुलनेसाठी एक प्रतिमा दुसऱ्या प्रतिमेवर सरकवा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "वरची प्रतिमा",
+        "description": "खालच्या प्रतिमेवर सरकवायची वरची प्रतिमा."
+      },
+      {
+        "property": "topAlt",
+        "title": "वरच्या प्रतिमेचा पर्यायी मजकूर",
+        "description": "सुलभतेसाठी आवश्यक पर्यायी मजकूर."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "खालची प्रतिमा",
+        "description": "वरच्या प्रतिमेखाली दाखवलेली खालची प्रतिमा."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "खालच्या प्रतिमेचा पर्यायी मजकूर",
+        "description": "सुलभतेसाठी आवश्यक पर्यायी मजकूर."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "वर्तन",
+        "description": "पुसणे मोड (डीफॉल्ट) किंवा वरच्या प्रतिमेचा अपारदर्शकता मोड निवडा."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "स्लायडर पट्टीचा रंग."
+      },
+      {
+        "property": "dark",
+        "title": "गडद",
+        "description": "स्लायडर पट्टीचा रंग उलटा करा."
+      },
+      {
+        "property": "position",
+        "title": "प्रारंभिक स्थान",
+        "description": "0 ते 100 मधील प्रारंभ स्थान."
+      }
+    ]
+  }
+}

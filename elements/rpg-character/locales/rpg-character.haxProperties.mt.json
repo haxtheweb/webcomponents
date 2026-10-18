@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Karattru RPG",
+    "description": "Karattru divertenti minn HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Isem",
+        "description": "Kelma użata biex jiġi ġġenerat karattru każwali."
+      },
+      {
+        "property": "hat",
+        "title": "Kappell",
+        "description": "Stil tal-kappell.",
+        "options": {
+          "none": "Awtomatiku",
+          "random": "Każwali",
+          "bunny": "Fenek",
+          "cowboy": "Cowboy",
+          "education": "Edukazzjoni",
+          "construction": "Kostruzzjoni",
+          "warning": "Twissija",
+          "watermelon": "Dulliegħa",
+          "coffee": "Kafè",
+          "knight": "Kavallier",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "error": "Żball",
+          "edit": "Editja"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Wisa'",
+        "description": "Il-wisa' tal-karattru f'pixels."
+      },
+      {
+        "property": "height",
+        "title": "Għoli",
+        "description": "L-għoli tal-karattru f'pixels."
+      },
+      {
+        "property": "fire",
+        "title": "Qed jaqbad?",
+        "description": "Jekk il-karattru huwiex qed jaqbad."
+      },
+      {
+        "property": "walking",
+        "title": "Miexi?",
+        "description": "Animazzjoni tal-mixi; jiġri meta jkun qed jaqbad."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Lejátszási lista",
+    "description": "Bármilyen tartalom megjelenítése lejátszási listában."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Forrás",
+        "description": "A lejátszási listában megjelenő tartalom."
+      },
+      {
+        "property": "edit",
+        "title": "Szerkesztési mód",
+        "description": "Váltás a lejátszási lista szerkesztési és előnézeti módja között."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigáció",
+        "description": "Előre és hátra navigáló gombok megjelenítése."
+      },
+      {
+        "property": "pagination",
+        "title": "Lapozás",
+        "description": "Lapozópontok megjelenítése."
+      },
+      {
+        "property": "orientation",
+        "title": "Tájolás",
+        "description": "A diák tájolása.",
+        "options": {
+          "horizontal": "Vízszintes",
+          "vertical": "Függőleges"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Kezdő dia",
+        "description": "A kezdetben fókuszban lévő dia indexe."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Képarány",
+        "description": "A diák képaránya.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

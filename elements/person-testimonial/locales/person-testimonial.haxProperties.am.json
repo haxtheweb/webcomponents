@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "የምስል ጥቅስ ብሎክ",
+    "description": "አማራጭ ምስል ያለው ቅጥ የተሰጠው ጥቅስ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ምስል",
+        "description": "ወደ ምስክርነቱ ምስል አክል።"
+      },
+      {
+        "property": "name",
+        "title": "ሙሉ ስም",
+        "description": "ምስክርነቱን የሰጠው ሰው ስም።"
+      },
+      {
+        "property": "position",
+        "title": "ቦታ ወይም የሥራ ማዕረግ",
+        "description": "የሰውየው ቦታ ወይም የሥራ ማዕረግ።"
+      },
+      {
+        "slot": "",
+        "title": "ጥቅስ",
+        "description": "ከምስክርነቱ ደራሲ የተወሰደ ጥቅስ።"
+      }
+    ]
+  }
+}

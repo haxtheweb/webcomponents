@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Catatan Berhenti",
+    "description": "Pesan untuk memperingatkan pembaca tentang petunjuk tertentu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Masukkan judul untuk catatan berhenti."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Masukkan URL eksternal."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Mengatur status akan mengubah warna dan ikon agar sesuai",
+        "options": {
+          "stop": "Berhenti",
+          "warning": "Peringatan",
+          "success": "Konfirmasi",
+          "info": "Pemberitahuan"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Teks Catatan",
+        "description": "Teks untuk catatan berhenti."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tunnisteet",
+    "description": "Yksinkertainen tunnisteluettelo sivulla näytettäväksi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tunnisteet",
+        "description": "Pilkuilla eroteltu luettelo tunnisteista."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automaattinen korostusväri",
+        "description": "Aseta korostusväri automaattisesti nimikkeen perusteella."
+      },
+      {
+        "property": "accentColor",
+        "title": "Väri",
+        "description": "Tunnisteiden väri."
+      }
+    ]
+  }
+}

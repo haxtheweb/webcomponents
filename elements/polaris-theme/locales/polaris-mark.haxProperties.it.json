@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Marchio Polaris",
+    "description": "Mostra il marchio identificativo PSU con nome del college e URL di destinazione facoltativi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Nome del college",
+        "description": "Nome mostrato accanto al marchio."
+      },
+      {
+        "property": "name2",
+        "title": "Nome del college 2",
+        "description": "Secondo nome mostrato sotto il primo nome del college."
+      },
+      {
+        "property": "name3",
+        "title": "Nome del college 3",
+        "description": "Terzo nome mostrato sotto il secondo nome del college."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "URL di destinazione quando si fa clic sul marchio."
+      },
+      {
+        "property": "type",
+        "title": "Variante",
+        "description": "Variante visiva del marchio.",
+        "options": {
+          "default": "Predefinito",
+          "light": "Chiaro",
+          "dark": "Scuro"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Layout verticale",
+        "description": "Mostra il terzo nome sotto il secondo con una linea orizzontale."
+      }
+    ]
+  }
+}

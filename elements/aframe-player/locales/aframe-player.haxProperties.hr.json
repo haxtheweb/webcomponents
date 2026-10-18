@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D reproduktor",
+    "description": "Reproduktor 3D datoteka / proširene stvarnosti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Izvor",
+        "description": "URL ove AR datoteke."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "X položaj elementa u AR-u."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Y položaj elementa u AR-u."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Z položaj elementa u AR-u."
+      },
+      {
+        "property": "skyColor",
+        "title": "Boja neba",
+        "description": "Odaberite boju neba u sceni."
+      }
+    ]
+  }
+}

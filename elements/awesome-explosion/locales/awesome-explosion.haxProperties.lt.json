@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Įspūdingas sprogimas",
+    "description": "Interaktyvi sprogimo animacija su pasirenkamais garso efektais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Dydis",
+        "description": "Nustatykite sprogimo dydį.",
+        "options": {
+          "tiny": "Mažytis",
+          "small": "Mažas",
+          "medium": "Vidutinis",
+          "large": "Didelis",
+          "epic": "Epinis"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Spalva",
+        "description": "Nustatykite sprogimo spalvų temą.",
+        "options": {
+          "": "Numatytoji",
+          "red": "Raudona",
+          "blue": "Mėlyna",
+          "purple": "Violetinė",
+          "orange": "Oranžinė",
+          "yellow": "Geltona"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Garso efektai",
+        "description": "Įjungti garso efektus."
+      },
+      {
+        "property": "resetSound",
+        "title": "Atkurti garsą iš naujo",
+        "description": "Kiekvieną kartą paleisti garsą nuo pradžios."
+      },
+      {
+        "property": "image",
+        "title": "Pasirinktinis vaizdas",
+        "description": "Pasirenkamas pasirinktinio sprogimo vaizdo URL."
+      },
+      {
+        "property": "sound",
+        "title": "Pasirinktinis garsas",
+        "description": "Pasirenkamas pasirinktinio garso efekto URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Išjungta",
+        "description": "Išjungti visas sąveikas."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Taipitopito whārangi",
+    "description": "Tautuhia he wehenga ataata i waenga i ngā whārangi, e taea ai e ngā CMS te hanga whārangi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Taitara ka whakaaturia i te kaupapa me te upoko tuatahi."
+      },
+      {
+        "property": "pageType",
+        "title": "Momo",
+        "description": "Tapanga horopaki whārangi ataata.",
+        "options": {
+          "": "-- kore --",
+          "content": "Ihirangi",
+          "assessment": "Aromatawai",
+          "quiz": "Pātaitai",
+          "submission": "Tāpaetanga",
+          "lesson": "Akoranga",
+          "module": "Kōwae",
+          "task": "Mahi",
+          "activity": "Ngohe",
+          "project": "Kaupapa mahi",
+          "practice": "Whakaharatau",
+          "unit": "Wāhanga",
+          "objectives": "Ngā Whāinga Ako",
+          "connection": "Hononga",
+          "knowledge": "I Mōhio Koe?",
+          "strategy": "Rautaki Ako",
+          "discuss": "Matapaki",
+          "listen": "Whakarongo",
+          "make": "Hanga",
+          "observe": "Mātai",
+          "present": "Whakaatu",
+          "reading": "Pānui",
+          "reflect": "Huritao",
+          "research": "Rangahau",
+          "watch": "Mātakitaki",
+          "write": "Tuhi"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Ngā Tūtohu",
+        "description": "Rārangi tūtohu kua wehea ki te piko."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL Hono",
+        "description": "URL tuku anō ka whakaaturia hei utu mō ngā ihirangi o te whārangi."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Whāinga Hono",
+        "description": "Whakatuwherahia ngā hono i te matapihi ōrite, i tētahi matapihi hou rānei.",
+        "options": {
+          "_self": "Te matapihi ōrite",
+          "_blank": "Matapihi hou"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Kua whakaputaina",
+        "description": "Ka hunaia ngā whārangi kāore anō kia whakaputaina mai i ngā kaiwhakamahi."
+      },
+      {
+        "property": "locked",
+        "title": "Rakaina te whārangi",
+        "description": "Rakaina, wetekina rānei ngā huānga katoa o tēnei whārangi."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Whakakapi i te slug aunoa",
+        "description": "Rakaina te slug kei huri aunoa i runga i te taitara, i te matua rānei."
+      },
+      {
+        "property": "slug",
+        "title": "Ara",
+        "description": "URL slug mō tēnei whārangi."
+      },
+      {
+        "property": "image",
+        "title": "Pāpāho",
+        "description": "He pāpāho e tohu ana i te whārangi, ka whakamahia i ētahi kaupapa me ngā tirohanga."
+      },
+      {
+        "property": "parent",
+        "title": "Matua",
+        "description": "Ara o te whārangi matua."
+      },
+      {
+        "property": "noderefs",
+        "title": "Ihirangi e hāngai ana",
+        "description": "Ngā whārangi e hāngai ana ki tēnei whārangi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Whakaahuatanga",
+        "description": "Whakaahuatanga ka whakamahia i ngā kohinga me te arotautanga pūkaha rapu."
+      },
+      {
+        "property": "entityType",
+        "title": "Momo Hinonga",
+        "description": "Ko te whārangi te taunoa, ki te kore e tautuhia kētia.",
+        "options": {
+          "page": "Whārangi (taunoa)",
+          "taxonomy": "Pūnaha whakarōpū",
+          "taxonomyTerm": "Kupu Pūnaha Whakarōpū",
+          "region": "Rohe"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ata tohu",
+        "description": "Ata tohu e hono ana ki tēnei whārangi i te pae."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae arotahi",
+        "description": "Tae e hono ana ki tēnei whārangi i te pae."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Hunaia i te tahua",
+        "description": "Hunaia tēnei whārangi i ngā tahua engari kia mau tonu tōna URL."
+      },
+      {
+        "property": "order",
+        "title": "Raupapa",
+        "description": "Raupapa e ai ki ngā whārangi teina."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Kaupapa whārangi",
+        "description": "Whakakapia te kaupapa mō tēnei whārangi anake."
+      },
+      {
+        "property": "author",
+        "title": "Kaituhi",
+        "description": "Ingoa kaiwhakamahi o te tangata whakamutunga nāna i whakarerekē tēnei whārangi."
+      }
+    ]
+  }
+}

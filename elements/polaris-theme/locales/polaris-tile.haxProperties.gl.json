@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Mosaico Polaris",
+    "description": "Mostra un mosaico Polaris con título, texto de apoio opcional e ligazón opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Texto principal",
+        "description": "Texto principal do mosaico."
+      },
+      {
+        "property": "line2",
+        "title": "Texto secundario",
+        "description": "Texto de apoio opcional."
+      },
+      {
+        "property": "type",
+        "title": "Estilo do mosaico",
+        "description": "Estilo visual predefinido do mosaico.",
+        "options": {
+          "1": "Estilo 1",
+          "2": "Estilo 2",
+          "3": "Estilo 3",
+          "4": "Estilo 4",
+          "5": "Estilo 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Imaxe de fondo",
+        "description": "URL da imaxe de fondo usada polos estilos de mosaico que admiten imaxes."
+      },
+      {
+        "property": "link",
+        "title": "Ligazón",
+        "description": "URL de destino opcional para a acción do mosaico."
+      }
+    ]
+  }
+}

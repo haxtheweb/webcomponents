@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR kodea",
+    "description": "Telefono adimendun batetik eskaneatzeko kodea."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR datuak",
+        "description": "QR kodearen datuen iturburua."
+      },
+      {
+        "property": "title",
+        "title": "Izenburu alternatiboa",
+        "description": "QR kodearen iturburuari estekatutako izenburu alternatiboa."
+      },
+      {
+        "property": "modulesize",
+        "title": "Tamaina",
+        "description": "QR kodearen tamaina."
+      },
+      {
+        "property": "margin",
+        "title": "Marjina",
+        "description": "Kodearen inguruko bilgarria."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Irteera formatua",
+        "description": "Ateratzeko formatua.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

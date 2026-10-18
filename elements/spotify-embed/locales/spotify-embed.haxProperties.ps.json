@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "د Spotify پلیر د ځای پر ځای کولو پوښ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "سرچینه",
+        "description": "د Spotify څخه د ځای پر ځای کولو یا شریکولو لینک."
+      },
+      {
+        "property": "theme",
+        "title": "تیم",
+        "description": "د پلیر د شالید د رنګ تیم.",
+        "options": {
+          "": "ډیفالټ",
+          "0": "تور"
+        }
+      },
+      {
+        "property": "size",
+        "title": "اندازه",
+        "description": "د پلیر اندازه.",
+        "options": {
+          "normal": "ډیفالټ",
+          "compact": "کمپیکټ"
+        }
+      }
+    ]
+  }
+}

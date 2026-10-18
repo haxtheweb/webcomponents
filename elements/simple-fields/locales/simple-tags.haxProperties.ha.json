@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tag-tag",
+    "description": "Jerin tag-tag mai sauƙi don nunawa a shafi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tag-tag",
+        "description": "Jerin tag-tag da aka raba da waƙafi."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Launin Ƙawa na Atomatik",
+        "description": "Saita launin ƙawa ta atomatik bisa lakabi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launi",
+        "description": "Launin tag-tag."
+      }
+    ]
+  }
+}

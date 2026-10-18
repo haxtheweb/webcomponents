@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub సహకారుల జాబితా",
+    "description": "GitHub API ఉపయోగించి RPG పాత్రలుగా ప్రదర్శించబడుతుంది."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "సంస్థ",
+        "description": "github.com/ORG/REPO నుండి సంస్థ పేరు."
+      },
+      {
+        "property": "repo",
+        "title": "రిపోజిటరీ",
+        "description": "github.com/ORG/REPO నుండి రిపోజిటరీ పేరు."
+      },
+      {
+        "property": "limit",
+        "title": "పరిమితి",
+        "description": "చూపబడే సహకారుల సంఖ్యను పరిమితం చేయండి."
+      }
+    ]
+  }
+}

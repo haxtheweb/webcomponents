@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "İkon",
+    "description": "Tam ikon kitabxanasından ikon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "İkon",
+        "description": "Göstəriləcək ikon."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "İkon üçün vurğu rəngi."
+      },
+      {
+        "property": "dark",
+        "title": "Tünd",
+        "description": "Tünd rejimdən istifadə et (tərsinə çevrilmiş rəng dəsti)."
+      }
+    ]
+  }
+}

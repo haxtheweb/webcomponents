@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkasme",
+    "description": "Nampilake teks kanthi cara ngece"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Teks",
+        "description": "Teks sing arep digawe sarkastis"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Képeslap",
+    "description": "Játékos médiaelem, amely valahonnan küldött valódi képeslapnak tűnik"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Címzett",
+        "description": "Kinek szól?"
+      },
+      {
+        "property": "from",
+        "title": "Feladó",
+        "description": "Ki vagy?"
+      },
+      {
+        "property": "message",
+        "title": "Üzenet",
+        "description": "Mit szeretnél mondani?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Postabélyegző helye",
+        "description": "Honnan küldték ezt a lapot?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Fő fotó forrása",
+        "description": "Hol található a fotód?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Bélyegfotó forrása",
+        "description": "Hol található a fotód?"
+      }
+    ]
+  }
+}

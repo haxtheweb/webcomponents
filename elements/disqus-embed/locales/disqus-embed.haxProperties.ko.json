@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "페이지에 Disqus 댓글을 삽입합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "짧은 이름",
+        "description": "Disqus 스크립트 호스트를 결정하는 사이트 짧은 이름입니다."
+      },
+      {
+        "property": "pageURL",
+        "title": "페이지 URL",
+        "description": "댓글 스레드가 연결된 페이지의 URL입니다."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "페이지 식별자",
+        "description": "페이지 댓글 스레드의 고유 식별자입니다."
+      },
+      {
+        "property": "pageTitle",
+        "title": "페이지 제목",
+        "description": "댓글 스레드가 연결된 페이지의 제목입니다."
+      },
+      {
+        "property": "loadingText",
+        "title": "로딩 텍스트",
+        "description": "댓글을 불러오는 동안 안내되는 텍스트입니다."
+      },
+      {
+        "property": "lang",
+        "title": "언어",
+        "description": "Disqus 인터페이스의 언어 코드입니다(예: en)."
+      }
+    ]
+  }
+}

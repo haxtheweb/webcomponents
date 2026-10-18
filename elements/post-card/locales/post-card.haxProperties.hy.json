@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Բացիկ",
+    "description": "Զվարճալի մեդիա, որը նման է ինչ-որ տեղից ուղարկված իրական բացիկի"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Ում",
+        "description": "Ու՞մ է ուղղված սա"
+      },
+      {
+        "property": "from",
+        "title": "Ումից",
+        "description": "Ո՞վ եք դուք"
+      },
+      {
+        "property": "message",
+        "title": "Հաղորդագրություն",
+        "description": "Ի՞նչ եք ուզում ասել"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Փոստային կնիք՝ որտեղից",
+        "description": "Որտեղի՞ց է ուղարկվել այս բացիկը"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Հիմնական լուսանկարի աղբյուր",
+        "description": "Որտե՞ղ է գտնվում ձեր լուսանկարը"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Նամականիշի լուսանկարի աղբյուր",
+        "description": "Որտե՞ղ է գտնվում ձեր լուսանկարը"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Matchningsspørgsmål",
+    "description": "Træk-og-slip-matchningsaktivitet, der parrer udsagn med de rigtige svar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spørgsmål",
+        "description": "Spørgsmål til brugerne. Markér slipmål, og angiv derefter svar indtil næste mål."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bedømmelsesformat",
+        "description": "OER Schema: bedømmelsesformat for denne vurdering (f.eks. point, bogstav, procent, gennemførelse)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurdering."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus, som denne vurdering er beregnet til."
+      },
+      {
+        "property": "answers",
+        "title": "Svar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Quizzens navn",
+        "description": "Quiznavn brugt til xAPI-identifikation i analysesystemer."
+      }
+    ]
+  }
+}

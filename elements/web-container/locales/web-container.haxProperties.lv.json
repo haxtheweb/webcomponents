@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS konteiners"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Paslēpt redaktoru",
+        "description": "Paslēpt failu rediģēšanas saskarni."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Paslēpt termināli",
+        "description": "Paslēpt termināli automātiski palaižamām programmām."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Paslēpt logu",
+        "description": "Paslēpt izvades logu, ja tiek izmantots tikai terminālis."
+      },
+      {
+        "slot": "",
+        "title": "Komandas",
+        "description": "Komandas (pa vienai rindā), kas jāizpilda pirms ielādes."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Doku-Player für Webkomponenten"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Fenster ausblenden",
+        "description": "Das Ausgabefenster ausblenden; nützlich, wenn nur das Terminal benötigt wird"
+      }
+    ]
+  }
+}

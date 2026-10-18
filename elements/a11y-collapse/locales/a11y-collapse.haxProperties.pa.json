@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ਸਮੇਟਣਯੋਗ ਕੰਟੇਨਰ",
+    "description": "ਇੱਕ ਫੈਲਾਉਣਯੋਗ ਅਤੇ ਸਮੇਟਣਯੋਗ ਕੰਟੇਨਰ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਸਮੇਟਣਯੋਗ ਭਾਗ ਲਈ ਲਿਖਤ।"
+      },
+      {
+        "property": "expanded",
+        "title": "ਫੈਲਿਆ ਹੋਇਆ",
+        "description": "ਮੂਲ ਰੂਪ ਵਿੱਚ ਫੈਲਿਆ ਹੋਇਆ।"
+      },
+      {
+        "property": "headingButton",
+        "title": "ਸਿਰਲੇਖ ਬਟਨ",
+        "description": "ਸਿਰਫ਼ ਆਈਕਨ ਦੀ ਥਾਂ ਪੂਰੇ ਸਿਰਲੇਖ ਨੂੰ ਕਲਿੱਕ ਕਰਨਯੋਗ ਬਣਾਓ।"
+      },
+      {
+        "property": "icon",
+        "title": "ਆਈਕਨ",
+        "description": "ਫੈਲਾਓ/ਸਮੇਟੋ ਟੌਗਲ ਬਟਨ ਲਈ ਆਈਕਨ।"
+      },
+      {
+        "property": "iconExpanded",
+        "title": "ਆਈਕਨ (ਫੈਲਣ 'ਤੇ)",
+        "description": "ਫੈਲੀ ਹੋਈ ਟੌਗਲ ਸਥਿਤੀ ਲਈ ਵਿਕਲਪਿਕ ਆਈਕਨ।"
+      },
+      {
+        "slot": "",
+        "title": "ਸਮੱਗਰੀ",
+        "description": "ਸਮੇਟਣਯੋਗ ਭਾਗ ਲਈ ਸਮੱਗਰੀ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "ਟੂਲਟਿੱਪ",
+        "description": "ਫੈਲਾਓ/ਸਮੇਟੋ ਟੌਗਲ ਬਟਨ ਲਈ ਟੂਲਟਿੱਪ।"
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "ਟੂਲਟਿੱਪ (ਫੈਲਣ 'ਤੇ)",
+        "description": "ਫੈਲਣ 'ਤੇ ਫੈਲਾਓ/ਸਮੇਟੋ ਬਟਨ ਲਈ ਟੂਲਟਿੱਪ।"
+      }
+    ]
+  }
+}

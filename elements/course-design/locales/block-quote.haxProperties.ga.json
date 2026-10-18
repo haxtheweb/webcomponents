@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Bloc-athfhriotal",
+    "description": "Bloc athfhriotail le stíl."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Lua",
+        "description": "Téacs an lua."
+      },
+      {
+        "property": "alt",
+        "title": "Téacs malartach",
+        "description": "Téacs malartach don íomhá."
+      },
+      {
+        "property": "image",
+        "title": "Íomhá",
+        "description": "Íomhá a thaispeántar leis an athfhriotal."
+      }
+    ]
+  }
+}

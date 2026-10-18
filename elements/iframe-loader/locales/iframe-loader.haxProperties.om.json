@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Qabiyyee weebii alaa iframe keessatti galchi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL Qabeenyaa",
+        "description": "URL qabeenyaa."
+      },
+      {
+        "property": "height",
+        "title": "Dheerina",
+        "description": "Dheerina iframe."
+      },
+      {
+        "property": "width",
+        "title": "Bal'ina",
+        "description": "Bal'ina iframe."
+      }
+    ]
+  }
+}

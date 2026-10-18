@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF-katseluohjelma",
+    "description": "Upota PDF-tiedosto sivulle valinnaisella korttiasettelulla ja latauspainikkeella."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF-URL",
+        "description": "PDF-tiedoston sijainti."
+      },
+      {
+        "property": "heading",
+        "title": "Otsikko",
+        "description": "Kortin otsikkoteksti."
+      },
+      {
+        "property": "card",
+        "title": "Korttiasettelu",
+        "description": "Näytä PDF kortissa latauspainikkeen kanssa."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Latauksen nimike",
+        "description": "Latauspainikkeen nimike."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Ei tuettu -viesti",
+        "description": "Viesti, kun selain ei pysty näyttämään PDF-tiedostoja."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Ei tuettu -linkkiviesti",
+        "description": "Linkkiteksti, kun selain ei pysty näyttämään PDF-tiedostoja."
+      },
+      {
+        "property": "width",
+        "title": "Leveys",
+        "description": "PDF-katseluohjelman leveys."
+      },
+      {
+        "property": "height",
+        "title": "Korkeus",
+        "description": "PDF-katseluohjelman korkeus."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Áudio em linha",
+    "description": "Reproduza áudio em linha para complementar o conteúdo da página."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origem",
+        "description": "Arquivo MP3 ou URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Cor de destaque do cartão."
+      },
+      {
+        "property": "shiny",
+        "title": "Brilhante",
+        "description": "Usar um fundo de destaque mais claro em vez de cinza."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Escuro",
+        "description": "Usar o modo escuro."
+      }
+    ]
+  }
+}

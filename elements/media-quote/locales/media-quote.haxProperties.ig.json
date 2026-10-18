@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Nhota mgbasa ozi",
+    "description": "Onyonyo nwere nhota, ntụaka, na nkọwa onyonyo nhọrọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Nhota",
+        "description": "Ederede nhota."
+      },
+      {
+        "slot": "author",
+        "title": "Onye dere",
+        "description": "Onye dere nhota."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Nkọwa onye dere",
+        "description": "Nkọwa onye dere."
+      },
+      {
+        "slot": "caption",
+        "title": "Nkọwa onyonyo",
+        "description": "Nkọwa onyonyo."
+      },
+      {
+        "property": "src",
+        "title": "Isi Mmalite Onyonyo",
+        "description": "Faịlụ onyonyo eji maka nhota mgbasa ozi."
+      },
+      {
+        "property": "alt",
+        "title": "Ederede Alt",
+        "description": "Ederede ọzọ maka onyonyo ahụ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Agba Mkpụrụ",
+        "description": "Agba mkpụrụ kaadị."
+      }
+    ]
+  }
+}

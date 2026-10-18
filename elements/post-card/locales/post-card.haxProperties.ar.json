@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "بطاقة بريدية",
+    "description": "قطعة وسائط مرحة تبدو كبطاقة بريدية حقيقية مرسلة من مكان ما"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "إلى",
+        "description": "إلى من ستُرسل؟"
+      },
+      {
+        "property": "from",
+        "title": "من",
+        "description": "من أنت؟"
+      },
+      {
+        "property": "message",
+        "title": "الرسالة",
+        "description": "ماذا تريد أن تقول؟"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "مختومة من",
+        "description": "من أين أُرسلت هذه البطاقة؟"
+      },
+      {
+        "property": "photoSrc",
+        "title": "مصدر الصورة الرئيسية",
+        "description": "أين توجد صورتك؟"
+      },
+      {
+        "property": "stampSrc",
+        "title": "مصدر صورة الطابع",
+        "description": "أين توجد صورتك؟"
+      }
+    ]
+  }
+}

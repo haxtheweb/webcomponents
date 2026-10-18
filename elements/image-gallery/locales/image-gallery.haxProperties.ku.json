@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galeriya Wêneyan",
+    "description": "Galeriyek ku wêneyan bi rûpelsazkirina tor, mason an pêşandana slaytan pêşkêş dike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Moda nîşandanê",
+        "description": "Wêne di galeriyê de çawa werin pêşkêşkirin.",
+        "options": {
+          "grid": "Tor",
+          "masonry": "Mason",
+          "gallery": "Galerî"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Endeksa çalak",
+        "description": "Endeksa wêneyê çalak ku di moda galeriyê de pê dest pê bike."
+      }
+    ]
+  }
+}

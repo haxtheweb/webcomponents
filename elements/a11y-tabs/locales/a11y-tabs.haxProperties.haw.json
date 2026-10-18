@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Nā Lepe",
+    "description": "He pūʻulu lepe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Lepili (no ka hiki ke komo)",
+        "description": "Lepili hiki ke komo no ka pūʻulu lepe."
+      },
+      {
+        "property": "disabled",
+        "title": "Hoʻopio ʻia",
+        "description": "E hoʻopio i nā lepe a pau."
+      },
+      {
+        "property": "hidden",
+        "title": "Hūnā ʻia",
+        "description": "E hūnā i ka pūʻulu lepe."
+      },
+      {
+        "property": "sticky",
+        "title": "Pipili",
+        "description": "E mālama i nā lepe ākea ma luna i ka wā e kaʻa ai."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Palena Hoʻonohonoho",
+        "description": "Palena no nā lepe ākea; e hoʻohana i ka -1 no ke kū pololei wale nō."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Palena Hōʻailona",
+        "description": "Palena no ka hōʻike ʻana i ka kikokikona me nā hōʻailona. ʻO 0 ka paʻamau; e hoʻohana i ka -1 no ke ʻano hōʻailona wale nō."
+      },
+      {
+        "slot": "",
+        "title": "Nā Lepe",
+        "description": "He moʻo o nā mea <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Kū Hoʻokahi",
+        "description": "ID kū hoʻokahi no kēia pūʻulu lepe."
+      }
+    ]
+  }
+}

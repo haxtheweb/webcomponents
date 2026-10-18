@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX kelime sanatı",
+    "description": "HAX logosu öğesi; elbette HAX uyumlu bir öğe olarak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Yerleştirilecek HAX logosunun boyutu",
+        "options": {
+          "mini": "Mini",
+          "small": "Küçük",
+          "normal": "Normal",
+          "large": "Büyük"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Logonun büyük harfe dönüştürülüp dönüştürülmeyeceği"
+      }
+    ]
+  }
+}

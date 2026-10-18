@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn incorporato",
+    "description": "Incorpora una scheda profilo LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Nome personalizzato",
+        "description": "Segmento del nome utente personalizzato di LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Impostazioni locali",
+        "description": "Valore dei metadati delle impostazioni locali, come en_US."
+      }
+    ]
+  }
+}

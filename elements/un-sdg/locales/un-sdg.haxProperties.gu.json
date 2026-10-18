@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "સંયુક્ત રાષ્ટ્ર ટકાઉ વિકાસ લક્ષ્ય."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "લક્ષ્ય",
+        "description": "UN SDG ક્રમાંક."
+      },
+      {
+        "property": "colorOnly",
+        "title": "ફક્ત રંગ",
+        "description": "ફક્ત લક્ષ્યનો રંગ બતાવો."
+      }
+    ]
+  }
+}

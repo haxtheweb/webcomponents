@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Sündmuse märk",
+    "description": "Sündmuse märgi komponent."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV pilt",
+        "description": "Teleris kuvatav pilt."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Märgi nurgas kuvatav logo."
+      },
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Märgi ülaosas kuvatav pealkiri."
+      },
+      {
+        "property": "name",
+        "title": "Nimi",
+        "description": "Märgil kuvatav nimi."
+      },
+      {
+        "property": "position",
+        "title": "Ametikoht",
+        "description": "Isiku roll või ametinimetus."
+      },
+      {
+        "property": "organization",
+        "title": "Organisatsioon",
+        "description": "Organisatsioon, kus isik töötab."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV värv",
+        "description": "Vali teleri värv."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Peamine tausta- või tekstivärv."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Nuppude värv",
+        "description": "Teleri nuppude värv."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Seepia",
+        "description": "Rakenda seepiaefekt."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Must-valge",
+        "description": "Rakenda must-valge efekt."
+      }
+    ]
+  }
+}

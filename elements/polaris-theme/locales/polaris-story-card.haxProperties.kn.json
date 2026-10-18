@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris ಕಥೆ ಕಾರ್ಡ್",
+    "description": "ಹಿನ್ನೆಲೆ ಚಿತ್ರ, ಸ್ತಂಭ ಲೇಬಲ್ ಮತ್ತು ಮುಖ್ಯಾಂಶ ಪಠ್ಯದೊಂದಿಗೆ Polaris ಕಥೆ ಕಾರ್ಡ್ ಪ್ರದರ್ಶಿಸಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ಹಿನ್ನೆಲೆ ಚಿತ್ರ",
+        "description": "ಕಾರ್ಡ್ ಹಿನ್ನೆಲೆಯಾಗಿ ತೋರಿಸುವ ಚಿತ್ರ URL."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "ಹಿನ್ನೆಲೆ ಗಾತ್ರ",
+        "description": "ಹಿನ್ನೆಲೆ ಚಿತ್ರವು ಕಾರ್ಡ್ ಅನ್ನು ಹೇಗೆ ತುಂಬುತ್ತದೆ (CSS background-size).",
+        "options": {
+          "cover": "ಆವರಿಸು (cover)",
+          "contain": "ಒಳಗೊಳ್ಳಿಸು (contain)",
+          "auto": "ಸ್ವಯಂ (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "ಹಿನ್ನೆಲೆ ಲಗತ್ತು",
+        "description": "ಸ್ಕ್ರೋಲ್ ಮಾಡುವಾಗ ಹಿನ್ನೆಲೆ ಚಿತ್ರ ಹೇಗೆ ವರ್ತಿಸುತ್ತದೆ (CSS background-attachment).",
+        "options": {
+          "scroll": "ಸ್ಕ್ರೋಲ್ (scroll)",
+          "fixed": "ಸ್ಥಿರ (fixed)",
+          "local": "ಸ್ಥಳೀಯ (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "ಸ್ತಂಭ ಲೇಬಲ್",
+        "description": "ಕಾರ್ಡ್‌ನ ಮೇಲ್ಭಾಗದಲ್ಲಿ ತೋರಿಸುವ ಚಿಕ್ಕ ದೊಡ್ಡಕ್ಷರ ಲೇಬಲ್. ಮರೆಮಾಡಲು ಖಾಲಿ ಬಿಡಿ."
+      },
+      {
+        "property": "label",
+        "title": "ಕಾರ್ಡ್ ಪಠ್ಯ",
+        "description": "ಕೆಳಗಿನ ಫಲಕದಲ್ಲಿ ಪ್ರದರ್ಶಿಸುವ ಪ್ರಾಥಮಿಕ ಪಠ್ಯ."
+      },
+      {
+        "property": "link",
+        "title": "ಲಿಂಕ್",
+        "description": "ಸಂಪೂರ್ಣ ಕಾರ್ಡ್ ಅನ್ನು ಸುತ್ತುವ ಐಚ್ಛಿಕ ಗಮ್ಯಸ್ಥಾನ URL."
+      }
+    ]
+  }
+}

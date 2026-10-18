@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris-Story-Karte",
+    "description": "Eine Polaris-Story-Karte mit Hintergrundbild, Säulenbezeichnung und Schlagzeile anzeigen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Hintergrundbild",
+        "description": "Bild-URL, die als Kartenhintergrund angezeigt wird."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Hintergrundgröße",
+        "description": "Wie das Hintergrundbild die Karte ausfüllt (CSS background-size).",
+        "options": {
+          "cover": "abdecken (cover)",
+          "contain": "einpassen (contain)",
+          "auto": "automatisch (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Hintergrundfixierung",
+        "description": "Wie sich das Hintergrundbild beim Scrollen verhält (CSS background-attachment).",
+        "options": {
+          "scroll": "mitscrollen (scroll)",
+          "fixed": "fixiert (fixed)",
+          "local": "lokal (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Säulenbezeichnung",
+        "description": "Kurze Bezeichnung in Großbuchstaben oben auf der Karte. Leer lassen, um sie auszublenden."
+      },
+      {
+        "property": "label",
+        "title": "Kartentext",
+        "description": "Haupttext im unteren Bereich."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Optionale Ziel-URL, die die gesamte Karte umschließt."
+      }
+    ]
+  }
+}

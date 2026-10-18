@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Purahéi kuatia",
+    "description": "Ohechauka ha ombopu purahéi kuatia, mbaraka tendayke ha purahéi jehaipyrã alphaTex térã MusicXML rupive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex jehaipyrã",
+        "description": "alphaTex jehaipyrã tysýipe purahéi kuatiápe g̃uarã. Embosako'i ipype ehai hag̃ua; oñeñongatu peteĩ techapyrãme ani hag̃ua okañy pa'ũ."
+      },
+      {
+        "property": "source",
+        "title": "Purahéi marandurenda",
+        "description": "Ehupi térã ejoaju peteĩ marandurenda MusicXML (.xml/.musicxml/.mxl) térã Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Omyengovia alphaTex tysýipegua oñemoĩramo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Ryapu ñembopu",
+        "description": "Ijypykuévape hendy - ehendu purahéi kuatia ojembopúva sintetizador oĩmavaekue rupive. Embogue jehecha añoitépe g̃uarã (ryapu'ỹre)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Ehechauka jehechauka jeiporavorã",
+        "description": "Ehechauka votõ mbotuicha, mbojepysóvo ha ñemohenda mbopu'aha rysýipe."
+      },
+      {
+        "property": "showExport",
+        "title": "Ehechauka votõ ñemondo okápe",
+        "description": "Ehechauka votõ MIDI mboguejyha ha mbokuatia/PDF mbopu'aha rysýipe."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grup desplegable",
+    "description": "Un grup d'elements desplegables."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Desplega només un",
+        "description": "Només es pot desplegar un element."
+      },
+      {
+        "slot": "",
+        "title": "Elements desplegables",
+        "description": "Els elements desplegables."
+      }
+    ]
+  }
+}

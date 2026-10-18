@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Lehe tähis",
+    "description": "Toimetuse märkus lehe autoritele."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Lehe tähise rõhuvärv."
+      },
+      {
+        "property": "label",
+        "title": "Silt",
+        "description": "Lehe tähise sildi tekst."
+      }
+    ]
+  }
+}

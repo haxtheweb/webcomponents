@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Choseweretsa zolemba za web component"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Bisani zenera",
+        "description": "Bisani zenera lotulutsa, zothandiza ngati cholinga ndi terminal yokha"
+      }
+    ]
+  }
+}

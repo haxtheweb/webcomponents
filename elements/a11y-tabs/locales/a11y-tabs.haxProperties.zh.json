@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "选项卡",
+    "description": "一组选项卡。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "标签（用于无障碍）",
+        "description": "选项卡组的无障碍标签。"
+      },
+      {
+        "property": "disabled",
+        "title": "已禁用",
+        "description": "禁用所有选项卡。"
+      },
+      {
+        "property": "hidden",
+        "title": "隐藏",
+        "description": "隐藏选项卡组。"
+      },
+      {
+        "property": "sticky",
+        "title": "固定",
+        "description": "滚动时将水平选项卡固定在顶部。"
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "布局断点",
+        "description": "水平选项卡的断点；使用 -1 表示仅垂直显示。"
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "图标断点",
+        "description": "显示带图标文本的断点。默认为 0；使用 -1 表示仅图标模式。"
+      },
+      {
+        "slot": "",
+        "title": "选项卡",
+        "description": "一系列 <a11y-tab/> 元素。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "唯一 ID",
+        "description": "此选项卡组的唯一 ID。"
+      }
+    ]
+  }
+}

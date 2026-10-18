@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) ಎಂಬೆಡ್",
+    "description": "X ನಿಂದ ಟ್ವೀಟ್ ಅನ್ನು ಸಂದರ್ಭದಲ್ಲಿ ಎಂಬೆಡ್ ಮಾಡಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ಟ್ವೀಟ್ URL",
+        "description": "ಎಂಬೆಡ್ ಮಾಡಬೇಕಾದ ಟ್ವೀಟ್‌ನ URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "ಥೀಮ್",
+        "description": "X ಟ್ವೀಟ್‌ಗಳಿಗೆ ತಿಳಿ ಅಥವಾ ಡಾರ್ಕ್ ಥೀಮ್.",
+        "options": {
+          "light": "ತಿಳಿ",
+          "dark": "ಡಾರ್ಕ್"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ ಪಾಪ್‌ಅಪ್ ತಡೆಯಿರಿ",
+        "description": "ಬಳಕೆದಾರರು x.com ನಲ್ಲಿ ಟ್ವೀಟ್ ತೆರೆಯುವುದನ್ನು ತಡೆಯಿರಿ."
+      }
+    ]
+  }
+}

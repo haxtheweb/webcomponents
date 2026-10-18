@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Podrobnosti stránky",
+    "description": "Definujte vizuální předěl mezi stránkami, který mohou systémy CMS použít k vytvoření stránek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Název",
+        "description": "Název zobrazený v motivu a v prvním nadpisu."
+      },
+      {
+        "property": "pageType",
+        "title": "Typ",
+        "description": "Vizuální popisek kontextu stránky.",
+        "options": {
+          "": "-- žádný --",
+          "content": "Obsah",
+          "assessment": "Hodnocení",
+          "quiz": "Kvíz",
+          "submission": "Odevzdání",
+          "lesson": "Lekce",
+          "module": "Modul",
+          "task": "Úkol",
+          "activity": "Aktivita",
+          "project": "Projekt",
+          "practice": "Procvičování",
+          "unit": "Celek",
+          "objectives": "Výukové cíle",
+          "connection": "Souvislost",
+          "knowledge": "Věděli jste?",
+          "strategy": "Strategie učení",
+          "discuss": "Diskutujte",
+          "listen": "Poslouchejte",
+          "make": "Tvořte",
+          "observe": "Pozorujte",
+          "present": "Prezentujte",
+          "reading": "Čtení",
+          "reflect": "Reflektujte",
+          "research": "Zkoumejte",
+          "watch": "Sledujte",
+          "write": "Pište"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Štítky",
+        "description": "Seznam štítků oddělených čárkami."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL odkazu",
+        "description": "URL přesměrování zobrazená místo obsahu stránky."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Cíl odkazu",
+        "description": "Otevírat odkazy ve stejném nebo novém okně.",
+        "options": {
+          "_self": "Stejné okno",
+          "_blank": "Nové okno"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Publikováno",
+        "description": "Nepublikované stránky jsou koncovým uživatelům skryty."
+      },
+      {
+        "property": "locked",
+        "title": "Zamknout stránku",
+        "description": "Zamknout nebo odemknout všechny prvky na této stránce."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Přepsat automatický slug",
+        "description": "Zamknout slug proti automatickým aktualizacím podle názvu nebo nadřazené stránky."
+      },
+      {
+        "property": "slug",
+        "title": "Cesta",
+        "description": "URL slug této stránky."
+      },
+      {
+        "property": "image",
+        "title": "Média",
+        "description": "Média představující stránku, používaná v některých motivech a zobrazeních."
+      },
+      {
+        "property": "parent",
+        "title": "Nadřazená stránka",
+        "description": "Cesta nadřazené stránky."
+      },
+      {
+        "property": "noderefs",
+        "title": "Související obsah",
+        "description": "Stránky související s touto stránkou."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Popis",
+        "description": "Popis používaný v kolekcích a pro optimalizaci pro vyhledávače."
+      },
+      {
+        "property": "entityType",
+        "title": "Typ entity",
+        "description": "Výchozí je stránka, pokud není nastaveno jinak.",
+        "options": {
+          "page": "Stránka (výchozí)",
+          "taxonomy": "Taxonomie",
+          "taxonomyTerm": "Termín taxonomie",
+          "region": "Oblast"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona přiřazená této stránce na webu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňující barva",
+        "description": "Barva přiřazená této stránce na webu."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Skrýt v nabídce",
+        "description": "Skrýt tuto stránku z nabídek, ale zachovat její URL."
+      },
+      {
+        "property": "order",
+        "title": "Pořadí",
+        "description": "Pořadí vzhledem k sourozeneckým stránkám."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Motiv stránky",
+        "description": "Přepsat motiv pouze pro tuto stránku."
+      },
+      {
+        "property": "author",
+        "title": "Autor",
+        "description": "Uživatelské jméno osoby, která tuto stránku naposledy upravila."
+      }
+    ]
+  }
+}

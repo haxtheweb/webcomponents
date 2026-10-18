@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Reprodutor de documentación de compoñentes web"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Ocultar a xanela",
+        "description": "Ocultar a xanela de saída, útil cando o propósito é só o terminal"
+      }
+    ]
+  }
+}

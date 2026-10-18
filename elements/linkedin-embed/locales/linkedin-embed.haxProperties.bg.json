@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Вграждане на LinkedIn",
+    "description": "Вграждане на карта на профил в LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Персонално име",
+        "description": "Сегмент с персоналното потребителско име в LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Локал",
+        "description": "Стойност на метаданните за локал, например en_US."
+      }
+    ]
+  }
+}

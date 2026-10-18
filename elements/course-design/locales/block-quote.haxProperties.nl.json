@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Citaatblok",
+    "description": "Opgemaakt citaatblok."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Bronvermelding",
+        "description": "Tekst van de bronvermelding."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternatieve tekst voor de afbeelding."
+      },
+      {
+        "property": "image",
+        "title": "Afbeelding",
+        "description": "Afbeelding die bij het citaat wordt getoond."
+      }
+    ]
+  }
+}

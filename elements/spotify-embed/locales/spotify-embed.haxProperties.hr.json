@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Omotač za ugrađene Spotify reproduktore."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Izvor",
+        "description": "Poveznica za ugradnju ili dijeljenje sa Spotifyja."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Tema boje pozadine reproduktora.",
+        "options": {
+          "": "Zadano",
+          "0": "Crna"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Veličina",
+        "description": "Veličina reproduktora.",
+        "options": {
+          "normal": "Zadano",
+          "compact": "Kompaktno"
+        }
+      }
+    ]
+  }
+}

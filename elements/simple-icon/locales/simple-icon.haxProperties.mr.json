@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "आयकॉन",
+    "description": "संपूर्ण आयकॉन संग्रहातील आयकॉन."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "आयकॉन",
+        "description": "दाखवायचा आयकॉन."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "आयकॉनसाठी उठाव रंग."
+      },
+      {
+        "property": "dark",
+        "title": "गडद",
+        "description": "गडद मोड वापरा (उलटे रंगसंच)."
+      }
+    ]
+  }
+}

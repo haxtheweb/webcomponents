@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Зургийн цомог",
+    "description": "Зургийг тор, өрлөг эсвэл слайд шоуны байршлаар харуулах цомог."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Харуулах горим",
+        "description": "Цомогт зургийг хэрхэн харуулах.",
+        "options": {
+          "grid": "Тор",
+          "masonry": "Өрлөг",
+          "gallery": "Цомог"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Идэвхтэй индекс",
+        "description": "Цомгийн горимд эхлэх идэвхтэй зургийн индекс."
+      }
+    ]
+  }
+}

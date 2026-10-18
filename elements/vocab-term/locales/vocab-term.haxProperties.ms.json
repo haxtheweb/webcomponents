@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kosa kata",
+    "description": "Istilah kosa kata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Istilah"
+      },
+      {
+        "property": "information",
+        "title": "Definisi",
+        "description": "Definisi yang dipaparkan apabila istilah diklik."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "Paparkan definisi dalam popover dan bukannya sebaris."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Pautan",
+        "description": "Senarai pautan tambahan yang dikaitkan dengan istilah ini."
+      }
+    ]
+  }
+}

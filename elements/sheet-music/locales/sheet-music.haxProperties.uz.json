@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Nota",
+    "description": "alphaTex yoki MusicXML orqali notalar, gitara tabulaturalari va partitura yozuvini koʻrsatadi va ijro etadi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex yozuvi",
+        "description": "Notalar uchun ichki alphaTex belgilashi. Yozuvni yaratish uchun bevosita tahrirlang; u shablonda saqlanadi, shuning uchun boʻshliqlar saqlanib qoladi."
+      },
+      {
+        "property": "source",
+        "title": "Partitura fayli",
+        "description": "MusicXML (.xml/.musicxml/.mxl) yoki Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) faylini yuklang yoki unga havola bering. Oʻrnatilganda ichki alphaTex ni bekor qiladi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Audio ijro",
+        "description": "Standart holatda yoqilgan - notalarni oʻrnatilgan sintezator orqali tinglang. Faqat koʻrish (audiosiz) rejimi uchun oʻchiring."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Koʻrsatish parametrlarini koʻrsatish",
+        "description": "Pleyer panelida kattalashtirish, choʻzish va maket tugmalarini koʻrsatish."
+      },
+      {
+        "property": "showExport",
+        "title": "Eksport tugmalarini koʻrsatish",
+        "description": "Pleyer panelida MIDI yuklab olish va chop etish/PDF tugmalarini koʻrsatish."
+      }
+    ]
+  }
+}

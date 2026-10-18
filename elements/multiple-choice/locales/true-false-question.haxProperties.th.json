@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "คำถามถูก / ผิด",
+    "description": "คำถามถูกผิด"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "คำถาม",
+        "description": "คำถามให้ผู้ใช้ตอบ"
+      },
+      {
+        "property": "_tfanswer",
+        "title": "คำตอบที่ถูกต้อง"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ชื่อแบบทดสอบ",
+        "description": "ชื่อแบบทดสอบที่ส่งเข้าไปเพื่อใช้ระบุรายการนี้ในสภาพแวดล้อมที่ขับเคลื่อนด้วย xAPI"
+      }
+    ]
+  }
+}

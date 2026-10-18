@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Քարտ",
+    "description": "DDD դիզայն համակարգով ձևավորված քարտի բաղադրիչ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Պատկեր",
+        "description": "Ըստ ցանկության պատկեր։"
+      },
+      {
+        "property": "alt",
+        "title": "Պատկերի alt",
+        "description": "Պատկերը նկարագրող այլընտրանքային տեքստ։"
+      },
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Քարտի վերնագիրը։"
+      },
+      {
+        "slot": "",
+        "title": "Բովանդակություն",
+        "description": "Քարտի բովանդակության տարածքը։"
+      },
+      {
+        "property": "href",
+        "title": "Հղում",
+        "description": "Կոճակի հղման URL-ը։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Պիտակ",
+        "description": "Կոճակի պիտակը։"
+      },
+      {
+        "property": "noArrow",
+        "title": "Առանց սլաքի",
+        "description": "Թաքցնել կոճակի սլաքը։"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Հղում՝ target",
+        "description": "Որտեղ բացել հղումը։",
+        "options": {
+          "": "Նույն պատուհանում",
+          "_blank": "Նոր պատուհան - _blank",
+          "_top": "Վերին պատուհան - _top",
+          "_parent": "Ծնող պատուհան - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Հղում՝ rel",
+        "description": "Հղված ռեսուրսի և ընթացիկ փաստաթղթի միջև կապը։"
+      }
+    ]
+  }
+}

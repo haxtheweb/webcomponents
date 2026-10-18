@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Hoʻokomo Twitter (X)",
+    "description": "E hoʻokomo i kekahi tweet mai X ma kona pōʻaiapili."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL Tweet",
+        "description": "URL o ka tweet e hoʻokomo ai."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Kumuhana",
+        "description": "Kumuhana māmā a pōuliuli paha no nā tweet X.",
+        "options": {
+          "light": "Māmā",
+          "dark": "Pōuliuli"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Pale i ka puka ʻōlali ke kōmi ʻia",
+        "description": "E pale i nā mea hoʻohana mai ka wehe ʻana i ka tweet ma x.com."
+      }
+    ]
+  }
+}

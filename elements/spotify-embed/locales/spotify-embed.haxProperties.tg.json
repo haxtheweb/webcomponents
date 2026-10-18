@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Қабат барои плеерҳои ҷойгиршудаи Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Манбаъ",
+        "description": "Пайванди ҷойгиркунӣ ё мубодила аз Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Мавзӯъ",
+        "description": "Мавзӯи ранги замина барои плеер.",
+        "options": {
+          "": "Пешфарз",
+          "0": "Сиёҳ"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Андоза",
+        "description": "Андозаи плеер.",
+        "options": {
+          "normal": "Пешфарз",
+          "compact": "Фишурда"
+        }
+      }
+    ]
+  }
+}

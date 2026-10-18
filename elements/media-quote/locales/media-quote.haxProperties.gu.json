@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "મીડિયા અવતરણ",
+    "description": "અવતરણ, સંદર્ભ અને વૈકલ્પિક કૅપ્શન સાથેની છબી."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "અવતરણ",
+        "description": "અવતરણ લખાણ."
+      },
+      {
+        "slot": "author",
+        "title": "લેખક",
+        "description": "અવતરણના લેખક."
+      },
+      {
+        "slot": "author-detail",
+        "title": "લેખકની વિગતો",
+        "description": "લેખકની વિગતો."
+      },
+      {
+        "slot": "caption",
+        "title": "કૅપ્શન",
+        "description": "છબીનું કૅપ્શન."
+      },
+      {
+        "property": "src",
+        "title": "છબી સ્રોત",
+        "description": "મીડિયા અવતરણ માટે વપરાતી છબી ફાઇલ."
+      },
+      {
+        "property": "alt",
+        "title": "વૈકલ્પિક લખાણ",
+        "description": "છબી માટેનું વૈકલ્પિક લખાણ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "કાર્ડનો ઍક્સેન્ટ રંગ."
+      }
+    ]
+  }
+}

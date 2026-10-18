@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "E hoʻokomo i nā manaʻo Disqus ma kekahi ʻaoʻao."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Inoa pōkole",
+        "description": "Ka inoa pōkole o ka pūnaewele, nāna e hoʻoholo i ka mea hoʻokipa palapala Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL ʻaoʻao",
+        "description": "Ka URL o ka ʻaoʻao i hoʻopili ʻia ai ke kaula manaʻo."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Mea ʻike ʻaoʻao",
+        "description": "Ka mea ʻike kū hoʻokahi no ke kaula manaʻo o ka ʻaoʻao."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Poʻo inoa ʻaoʻao",
+        "description": "Ka poʻo inoa o ka ʻaoʻao i hoʻopili ʻia ai ke kaula manaʻo."
+      },
+      {
+        "property": "loadingText",
+        "title": "Kikokikona hoʻouka",
+        "description": "Kikokikona i hoʻolaha ʻia i ka wā e hoʻouka ʻia ai nā manaʻo."
+      },
+      {
+        "property": "lang",
+        "title": "ʻŌlelo",
+        "description": "Pāʻālua ʻōlelo no ke alo Disqus, e laʻa me en."
+      }
+    ]
+  }
+}

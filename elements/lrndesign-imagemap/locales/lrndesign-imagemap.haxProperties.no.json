@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bildekart",
+    "description": "Et tilgjengelig bildekart med interaktive punkter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etikett",
+        "description": "Etikett for bildekartet."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Detaljer om punkter",
+        "description": "De interaktive punktene på bildekartet."
+      }
+    ]
+  }
+}

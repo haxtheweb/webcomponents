@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Vul de gaten in",
+    "description": "Toetsactiviteit waarin leerlingen ontbrekende woorden in een zin aanvullen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vraag",
+        "description": "Vraag waarop gebruikers antwoorden."
+      },
+      {
+        "property": "statement",
+        "title": "Stelling",
+        "description": "Stelling die wordt omgezet in de interactie 'markeer de woorden'."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Beoordelingsformaat",
+        "description": "OER Schema: beoordelingsformaat voor deze toets (bijv. punten, letter, percentage, voltooiing)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leerdoel",
+        "description": "OER Schema: leerdoel dat bij deze toets hoort."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cursus",
+        "description": "OER Schema: cursus waarvoor deze toets bedoeld is."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naam van de quiz",
+        "description": "Quiznaam die wordt doorgegeven in xAPI-omgevingen om dit item te identificeren"
+      }
+    ]
+  }
+}

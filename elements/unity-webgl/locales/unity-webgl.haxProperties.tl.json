@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity Player",
+    "description": "Unity WebGL player."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Target",
+        "description": "Path papunta sa build ng laro."
+      },
+      {
+        "property": "compression",
+        "title": "Paraan ng compression",
+        "description": "File extension ng compression para sa mga asset ng laro."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Streaming URL",
+        "description": "URL ng mga streaming asset."
+      },
+      {
+        "property": "companyname",
+        "title": "Pangalan ng Kumpanya",
+        "description": "Pangalan ng kumpanya."
+      },
+      {
+        "property": "productname",
+        "title": "Pangalan ng Produkto",
+        "description": "Pamagat ng laro."
+      },
+      {
+        "property": "productversion",
+        "title": "Bersyon ng Produkto",
+        "description": "Bersyon ng release."
+      },
+      {
+        "property": "width",
+        "title": "Lapad ng Canvas",
+        "description": "CSS na lapad ng canvas (halimbawa px o em)."
+      },
+      {
+        "property": "height",
+        "title": "Taas ng Canvas",
+        "description": "CSS na taas ng canvas (halimbawa px o em)."
+      },
+      {
+        "property": "background",
+        "title": "Background ng Canvas",
+        "description": "CSS na background ng canvas."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Vocabulário",
+    "description": "Termo de vocabulário."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termo"
+      },
+      {
+        "property": "information",
+        "title": "Definição",
+        "description": "Definição mostrada quando o termo é clicado."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Pop-over",
+        "description": "Exibir a definição em um pop-over em vez de em linha."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Links",
+        "description": "Lista de links complementares associados a este termo."
+      }
+    ]
+  }
+}

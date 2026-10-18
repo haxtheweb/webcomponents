@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Xigasho",
+    "description": "Qayb xigasho oo qurxin leh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Tixraac",
+        "description": "Qoraalka tixraaca."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Qoraal beddel u ah sawirka."
+      },
+      {
+        "property": "image",
+        "title": "Sawir",
+        "description": "Sawirka la socda xigashada."
+      }
+    ]
+  }
+}

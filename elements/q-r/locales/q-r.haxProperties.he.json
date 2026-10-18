@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "קוד QR",
+    "description": "קוד לסריקה בטלפון חכם."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "נתוני QR",
+        "description": "מקור הנתונים עבור קוד ה-QR."
+      },
+      {
+        "property": "title",
+        "title": "כותרת חלופית",
+        "description": "כותרת חלופית המקושרת למקור קוד ה-QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "גודל",
+        "description": "גודל קוד ה-QR."
+      },
+      {
+        "property": "margin",
+        "title": "שוליים",
+        "description": "המעטפת של הקוד."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "פורמט פלט",
+        "description": "הפורמט שבו יופק הפלט.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

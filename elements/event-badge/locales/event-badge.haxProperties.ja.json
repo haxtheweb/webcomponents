@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "イベントバッジ",
+    "description": "イベントバッジのコンポーネント。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV画像",
+        "description": "TVに表示する画像。"
+      },
+      {
+        "property": "logo",
+        "title": "ロゴ",
+        "description": "バッジの隅に表示するロゴ。"
+      },
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "バッジの上部に表示するタイトル。"
+      },
+      {
+        "property": "name",
+        "title": "名前",
+        "description": "バッジに表示する名前。"
+      },
+      {
+        "property": "position",
+        "title": "役職",
+        "description": "その人の役割または肩書き。"
+      },
+      {
+        "property": "organization",
+        "title": "組織",
+        "description": "その人が所属する組織。"
+      },
+      {
+        "property": "tvcolor",
+        "title": "TVの色",
+        "description": "TVの色を選択します。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "主要な背景色または文字色。"
+      },
+      {
+        "property": "knobcolor",
+        "title": "ノブの色",
+        "description": "TVのノブの色。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "セピア",
+        "description": "セピア効果を適用します。"
+      },
+      {
+        "property": "blackwhite",
+        "title": "白黒",
+        "description": "白黒効果を適用します。"
+      }
+    ]
+  }
+}

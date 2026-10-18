@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Dáta",
+    "description": "Taispeáin dáta féilire le sonraí."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mí",
+        "description": "An mhí a thaispeántar ar an gcárta."
+      },
+      {
+        "property": "date",
+        "title": "Lá den mhí",
+        "description": "Lá den mhí mar uimhir."
+      },
+      {
+        "property": "day",
+        "title": "Lá den tseachtain",
+        "description": "Lá den tseachtain mar théacs."
+      },
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Ainm na hócáide."
+      },
+      {
+        "property": "location",
+        "title": "Láthair",
+        "description": "Láthair na hócáide."
+      },
+      {
+        "property": "startTime",
+        "title": "Tús",
+        "description": "Am tosaigh."
+      },
+      {
+        "property": "endTime",
+        "title": "Deireadh",
+        "description": "Am críochnaithe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath Aibhsithe",
+        "description": "Dath aibhsithe roghnach."
+      },
+      {
+        "property": "dark",
+        "title": "Téama Dorcha",
+        "description": "Cumasaigh an téama dorcha."
+      }
+    ]
+  }
+}

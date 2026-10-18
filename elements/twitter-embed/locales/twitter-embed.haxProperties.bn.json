@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) এমবেড",
+    "description": "প্রেক্ষাপটে X থেকে একটি টুইট এমবেড করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "টুইটের URL",
+        "description": "এমবেড করার টুইটের URL।"
+      },
+      {
+        "attribute": "data-theme",
+        "title": "থিম",
+        "description": "X টুইটের জন্য হালকা বা ডার্ক থিম।",
+        "options": {
+          "light": "হালকা",
+          "dark": "ডার্ক"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "ক্লিকে পপআপ আটকান",
+        "description": "ব্যবহারকারীদের x.com-এ টুইট খোলা থেকে বিরত রাখুন।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Mutambi we3D",
+    "description": "Mutambi wefaira re3D / reAR."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kwakabva",
+        "description": "URL yefaira iri reAR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Nzvimbo yeX yechinhu muAR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Nzvimbo yeY yechinhu muAR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Nzvimbo yeZ yechinhu muAR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Ruvara rwedenga",
+        "description": "Sarudza ruvara rwedenga muchiitiko."
+      }
+    ]
+  }
+}

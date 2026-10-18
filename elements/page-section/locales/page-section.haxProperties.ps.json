@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "د پاڼې برخه",
+    "description": "د پاڼې منځپانګې او پر سکرین ولاړ ترتیبونو لپاره د برخې کانټېنر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "ډیزاین بڼه",
+        "description": "مخکې ټاکل شوې بڼه چې اړوند تنظیمات تازه کوي."
+      },
+      {
+        "property": "image",
+        "title": "انځور",
+        "description": "د برخې د شالید رسنۍ."
+      },
+      {
+        "property": "bg",
+        "title": "د شالید رنګ",
+        "description": "د شالید رنګ کله چې انځور نه وي ټاکل شوی."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "د سکرول تڼۍ",
+        "description": "یوه تڼۍ وښایئ چې راتلونکې برخې ته سکرول کوي."
+      },
+      {
+        "property": "fold",
+        "title": "قات وښایئ",
+        "description": "د برخې په پای کې لیدنیز قات وښایئ."
+      },
+      {
+        "property": "full",
+        "title": "بشپړه سکرین اندازه",
+        "description": "د کتونکي د سکرین لوړوالی ډک کړئ."
+      },
+      {
+        "property": "filter",
+        "title": "فلټر پلی کړئ",
+        "description": "د شالید پر انځور لیدنیز فلټر پلی کړئ."
+      },
+      {
+        "slot": "",
+        "title": "منځپانګه",
+        "description": "د برخې منځپانګه."
+      },
+      {
+        "slot": "entice",
+        "title": "جذب",
+        "description": "اختیاري جذبوونکې منځپانګه."
+      },
+      {
+        "slot": "buttons",
+        "title": "تڼۍ",
+        "description": "د تڼیو ډله چې د متن لاندې ښودل کېږي."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "د لنګر متن",
+        "description": "د لنګر لیبل چې په ناوبرۍ کې ښودل کېږي."
+      }
+    ]
+  }
+}

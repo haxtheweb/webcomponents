@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "راټولېدونکی کانټېنر",
+    "description": "یو واحد پراخېدونکی او راټولېدونکی کانټېنر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "سرلیک",
+        "description": "د راټولېدونکې برخې متن."
+      },
+      {
+        "property": "expanded",
+        "title": "پراخ شوی",
+        "description": "په ډیفالټ ډول پراخ کړئ."
+      },
+      {
+        "property": "headingButton",
+        "title": "د سرلیک تڼۍ",
+        "description": "ټول سرلیک د کلیک وړ کړئ، نه یوازې آیکن."
+      },
+      {
+        "property": "icon",
+        "title": "آیکن",
+        "description": "د پراخولو/راټولولو تڼۍ آیکن."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "آیکن (کله چې پراخ وي)",
+        "description": "د پراخ شوي حالت لپاره اختیاري آیکن."
+      },
+      {
+        "slot": "",
+        "title": "منځپانګه",
+        "description": "د راټولېدونکې برخې منځپانګه."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "لارښود متن",
+        "description": "د پراخولو/راټولولو تڼۍ لارښود متن."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "لارښود متن (کله چې پراخ وي)",
+        "description": "د پراخولو/راټولولو تڼۍ لارښود متن کله چې پراخه وي."
+      }
+    ]
+  }
+}

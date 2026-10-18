@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Sidflagga",
+    "description": "Redaktionell anteckning till sidans författare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "Accentfärg för sidflaggan."
+      },
+      {
+        "property": "label",
+        "title": "Etikett",
+        "description": "Etikettext för sidflaggan."
+      }
+    ]
+  }
+}

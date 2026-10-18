@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS konteyneri"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Muharrirni yashirish",
+        "description": "Fayllarni tahrirlash interfeysini yashirish."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Terminalni yashirish",
+        "description": "Avtomatik ishga tushadigan dasturlar uchun terminalni yashirish."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Oynani yashirish",
+        "description": "Faqat terminaldan foydalanish uchun chiqish oynasini yashirish."
+      },
+      {
+        "slot": "",
+        "title": "Buyruqlar",
+        "description": "Yuklashdan oldin bajariladigan buyruqlar (har qatorda bittadan)."
+      }
+    ]
+  }
+}

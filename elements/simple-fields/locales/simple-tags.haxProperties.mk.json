@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ознаки",
+    "description": "Едноставен список ознаки за прикажување на страницата."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Ознаки",
+        "description": "Список ознаки одделени со запирка."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Автоматска акцентна боја",
+        "description": "Автоматски постави акцентна боја според ознаката."
+      },
+      {
+        "property": "accentColor",
+        "title": "Боја",
+        "description": "Боја за ознаките."
+      }
+    ]
+  }
+}

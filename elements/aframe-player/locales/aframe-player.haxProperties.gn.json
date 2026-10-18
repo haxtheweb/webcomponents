@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D mbopu'aha",
+    "description": "Marandurenda 3D / añetegua mbotuichapyre (AR) mbopu'aha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ypykue",
+        "description": "URL ko marandurenda AR rehegua."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Mba'e oĩha X AR-pe."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Mba'e oĩha Y AR-pe."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Mba'e oĩha Z AR-pe."
+      },
+      {
+        "property": "skyColor",
+        "title": "Ára sa'y",
+        "description": "Eiporavo ára sa'y ko jehechaukápe."
+      }
+    ]
+  }
+}

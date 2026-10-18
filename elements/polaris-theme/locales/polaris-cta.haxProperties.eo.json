@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Montri temigitan Polaris-butonon de alvoko al ago."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Butona teksto",
+        "description": "Teksto montrata en la butono de alvoko al ago."
+      },
+      {
+        "property": "link",
+        "title": "Ligilo",
+        "description": "Cela URL por la butono."
+      },
+      {
+        "property": "type",
+        "title": "Varianto",
+        "description": "Varianto de vida stilo.",
+        "options": {
+          "primary": "Ĉefa",
+          "tinted": "Nuancita",
+          "light": "Hela"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Kontura stilo",
+        "description": "Ŝalti konturan aspekton."
+      },
+      {
+        "property": "filled",
+        "title": "Plenigita stilo",
+        "description": "Ŝalti plenigitan aspekton."
+      }
+    ]
+  }
+}

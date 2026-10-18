@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "កូដ QR",
+    "description": "កូដសម្រាប់ស្កេនពីស្មាតហ្វូន។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "ទិន្នន័យ QR",
+        "description": "ប្រភពទិន្នន័យសម្រាប់កូដ QR។"
+      },
+      {
+        "property": "title",
+        "title": "ចំណងជើងជំនួស",
+        "description": "ចំណងជើងជំនួសដែលភ្ជាប់ទៅប្រភពកូដ QR។"
+      },
+      {
+        "property": "modulesize",
+        "title": "ទំហំ",
+        "description": "ទំហំកូដ QR។"
+      },
+      {
+        "property": "margin",
+        "title": "គម្លាត",
+        "description": "គែមព័ទ្ធជុំវិញកូដ។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "ទម្រង់លទ្ធផល",
+        "description": "ទម្រង់សម្រាប់បញ្ចេញ។",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

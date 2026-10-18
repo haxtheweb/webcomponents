@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sidankare",
+    "description": "Länka till specifika punkter i media på sidan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Sidmål",
+        "description": "ID eller resurs som ankaret pekar på."
+      },
+      {
+        "property": "value",
+        "title": "Djuplänksvärde",
+        "description": "Djuplänksvärde (till exempel tidsstämpel eller bild-ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Webbplatsentitet",
+        "description": "Valfri webbplatsentitet för att styra presentationen av relaterade begrepp."
+      }
+    ]
+  }
+}

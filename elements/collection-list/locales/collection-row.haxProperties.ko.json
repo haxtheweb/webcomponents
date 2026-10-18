@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "컬렉션 행",
+    "description": "컬렉션 목록 안에서 사용하는 행 형식 항목으로, 텍스트, 링크, 아이콘, 태그, 선택적 이미지를 포함합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "링크",
+        "description": "이 행의 대상 URL입니다."
+      },
+      {
+        "property": "image",
+        "title": "이미지",
+        "description": "행의 이미지입니다."
+      },
+      {
+        "property": "alt",
+        "title": "대체 텍스트",
+        "description": "이미지를 설명하는 대체 텍스트입니다."
+      },
+      {
+        "property": "line1",
+        "title": "1행",
+        "description": "첫째 줄 텍스트입니다."
+      },
+      {
+        "property": "line2",
+        "title": "2행",
+        "description": "둘째 줄 텍스트입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "아이콘",
+        "description": "행을 나타내는 아이콘입니다."
+      },
+      {
+        "property": "saturate",
+        "title": "채도 효과",
+        "description": "사용자 포커스 시 이미지 채도를 변경합니다."
+      },
+      {
+        "property": "tags",
+        "title": "태그",
+        "description": "쉼표로 구분된 태그 목록입니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "색상",
+        "description": "아이콘과 태그에 사용되는 색상입니다."
+      }
+    ]
+  }
+}

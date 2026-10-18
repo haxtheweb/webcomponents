@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Surat kartasy",
+    "description": "Interaktiw işjeň nokatly elýeterli surat kartasy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Belgi",
+        "description": "Surat kartasy üçin belgi."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Işjeň nokatlaryň jikme-jiklikleri",
+        "description": "Surat kartasyndaky interaktiw işjeň nokatlar."
+      }
+    ]
+  }
+}

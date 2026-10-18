@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Преглед на PDF в браузъра",
+    "description": "Вграждане на PDF файл в страницата с незадължително оформление като карта и бутон за изтегляне."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL на PDF",
+        "description": "Местоположение на PDF файла."
+      },
+      {
+        "property": "heading",
+        "title": "Заглавие",
+        "description": "Текст на заглавието на картата."
+      },
+      {
+        "property": "card",
+        "title": "Оформление като карта",
+        "description": "Показване на PDF в карта с бутон за изтегляне."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Етикет за изтегляне",
+        "description": "Етикет на бутона за изтегляне."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Съобщение за липса на поддръжка",
+        "description": "Съобщение, когато браузърът не може да показва PDF файлове."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Текст на връзката при липса на поддръжка",
+        "description": "Текст на връзката, когато браузърът не може да показва PDF файлове."
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина на програмата за преглед на PDF."
+      },
+      {
+        "property": "height",
+        "title": "Височина",
+        "description": "Височина на програмата за преглед на PDF."
+      }
+    ]
+  }
+}

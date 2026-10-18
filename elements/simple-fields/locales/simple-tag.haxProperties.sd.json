@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "ٽيگ / گولي",
+    "description": "اختياري نمايان رنگ، منسوخ بٽڻ يا ٽوگل سان گولي جي شڪل وارو ننڍو ليبل."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ليبل",
+        "description": "گولي اندر ڏيکاريل متن."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "گولي جي پس منظر لاءِ SimpleColors نمايان نالو.",
+        "options": {
+          "": "-- ڊفالٽ --",
+          "red": "ڳاڙهو",
+          "pink": "گلابي",
+          "purple": "واڱڻائي",
+          "deep-purple": "گهرو واڱڻائي",
+          "indigo": "نيرو جامني",
+          "blue": "نيرو",
+          "light-blue": "هلڪو نيرو",
+          "cyan": "آسماني",
+          "teal": "سائو نيرو",
+          "green": "سائو",
+          "light-green": "هلڪو سائو",
+          "lime": "ليمي",
+          "yellow": "پيلو",
+          "amber": "ڪهرباني",
+          "orange": "نارنگي",
+          "deep-orange": "گهرو نارنگي",
+          "brown": "ناسي",
+          "blue-grey": "نيرو ڀورو",
+          "grey": "ڀورو"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "خودڪار نمايان رنگ",
+        "description": "ليبل جي متن مان نمايان رنگ خودڪار طور حاصل ڪريو."
+      },
+      {
+        "property": "cancelButton",
+        "title": "منسوخ بٽڻ",
+        "description": "گولي اندر هٽائڻ/منسوخ ڪرڻ وارو آئڪن بٽڻ ڏيکاريو."
+      },
+      {
+        "property": "readonly",
+        "title": "صرف پڙهڻ لاءِ",
+        "description": "منسوخ بٽڻ لڪايو ته جيئن گولي صرف ڏيکارڻ لاءِ هجي."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "ٽوگل ڪري ٿو",
+        "description": "بٽڻ ڪلڪ ڪرڻ تي گولي کي آن/آف ٽوگل ڪريو."
+      },
+      {
+        "property": "toggled",
+        "title": "ٽوگل ٿيل",
+        "description": "ڇا گولي هن وقت آن ٽوگل ٿيل آهي."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "ٽوگل ٿيل آئڪن",
+        "description": "گولي آن ٽوگل هجڻ وقت ڏيکارڻ وارو آئڪن."
+      },
+      {
+        "property": "disabled",
+        "title": "غير فعال",
+        "description": "گولي سان انٽرايڪشن غير فعال ڪريو."
+      }
+    ]
+  }
+}

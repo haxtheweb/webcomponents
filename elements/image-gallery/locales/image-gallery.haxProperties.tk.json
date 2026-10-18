@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Surat galereýasy",
+    "description": "Suratlary tor, kerpiç ýa-da slaýd-şou görnüşinde görkezýän galereýa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Görkeziş tertibi",
+        "description": "Suratlary galereýada nähili görkezmeli.",
+        "options": {
+          "grid": "Tor",
+          "masonry": "Kerpiç",
+          "gallery": "Galereýa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Işjeň indeks",
+        "description": "Galereýa tertibinde başlanýan işjeň suratyň indeksi."
+      }
+    ]
+  }
+}

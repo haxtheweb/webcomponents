@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Просмотр PDF в браузере",
+    "description": "Встраивание PDF-файла на страницу с необязательным макетом карточки и кнопкой скачивания."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Расположение PDF-файла."
+      },
+      {
+        "property": "heading",
+        "title": "Заголовок",
+        "description": "Текст заголовка карточки."
+      },
+      {
+        "property": "card",
+        "title": "Макет карточки",
+        "description": "Показывать PDF в карточке с кнопкой скачивания."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Метка скачивания",
+        "description": "Текст кнопки скачивания."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Сообщение о неподдержке",
+        "description": "Сообщение, если браузер не может отображать PDF-файлы."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Текст ссылки при неподдержке",
+        "description": "Текст ссылки, если браузер не может отображать PDF-файлы."
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина просмотрщика PDF."
+      },
+      {
+        "property": "height",
+        "title": "Высота",
+        "description": "Высота просмотрщика PDF."
+      }
+    ]
+  }
+}

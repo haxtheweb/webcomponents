@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Dagsetning",
+    "description": "Birta dagsetningu með upplýsingum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mánuður",
+        "description": "Mánuður sem birtist á spjaldinu."
+      },
+      {
+        "property": "date",
+        "title": "Dagur mánaðar",
+        "description": "Dagur mánaðarins sem tala."
+      },
+      {
+        "property": "day",
+        "title": "Vikudagur",
+        "description": "Vikudagur sem texti."
+      },
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Heiti viðburðarins."
+      },
+      {
+        "property": "location",
+        "title": "Staðsetning",
+        "description": "Staðsetning viðburðarins."
+      },
+      {
+        "property": "startTime",
+        "title": "Upphaf",
+        "description": "Upphafstími."
+      },
+      {
+        "property": "endTime",
+        "title": "Lok",
+        "description": "Lokatími."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Valfrjáls áherslulitur."
+      },
+      {
+        "property": "dark",
+        "title": "Dökkt þema",
+        "description": "Virkja dökkt þema."
+      }
+    ]
+  }
+}

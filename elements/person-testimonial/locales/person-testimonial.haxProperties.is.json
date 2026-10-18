@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Tilvitnun með mynd",
+    "description": "Stíluð tilvitnun með valfrjálsri mynd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Mynd",
+        "description": "Bæta mynd við umsögnina."
+      },
+      {
+        "property": "name",
+        "title": "Fullt nafn",
+        "description": "Nafn þess sem gefur umsögnina."
+      },
+      {
+        "property": "position",
+        "title": "Staða eða starfsheiti",
+        "description": "Staða eða starfsheiti viðkomandi."
+      },
+      {
+        "slot": "",
+        "title": "Tilvitnun",
+        "description": "Tilvitnun frá höfundi umsagnarinnar."
+      }
+    ]
+  }
+}

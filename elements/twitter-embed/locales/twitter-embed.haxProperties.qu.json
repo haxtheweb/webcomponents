@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) churasqa",
+    "description": "X-manta tweetta kaqnin ukhupi churay."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Tweet URL",
+        "description": "Churanapaq tweetpa URL-nin."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "X tweetkunapaq k'anchaq utaq tutayaq tema.",
+        "options": {
+          "light": "K'anchaq",
+          "dark": "Tutayaq"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Ñit'iqtin pop-upta hark'ay",
+        "description": "Ruraqkuna tweetta x.com-pi kichanankuta hark'ay."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tráchtanna Disqus",
+    "description": "Comhtháthú le seirbhís gréasáin tráchtaireachta Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Ainm gearr",
+        "description": "Ainm gearr na maoine ar Disqus"
+      }
+    ]
+  }
+}

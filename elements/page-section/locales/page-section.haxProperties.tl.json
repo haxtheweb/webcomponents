@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Seksyon ng pahina",
+    "description": "Container ng seksyon para sa nilalaman ng pahina at mga layout na batay sa screen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Disenyong trato",
+        "description": "Preset na istilo na nag-a-update sa mga kaugnay na setting."
+      },
+      {
+        "property": "image",
+        "title": "Larawan",
+        "description": "Background na media para sa seksyon."
+      },
+      {
+        "property": "bg",
+        "title": "Kulay ng background",
+        "description": "Kulay ng background kapag walang nakatakdang larawan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Button sa pag-scroll",
+        "description": "Magpakita ng button na nag-i-scroll sa susunod na seksyon."
+      },
+      {
+        "property": "fold",
+        "title": "Ipakita ang fold",
+        "description": "Magpakita ng biswal na fold sa ibaba ng seksyon."
+      },
+      {
+        "property": "full",
+        "title": "Buong laki ng screen",
+        "description": "Punuin ang taas ng screen ng tumitingin."
+      },
+      {
+        "property": "filter",
+        "title": "Maglapat ng Filter",
+        "description": "Maglapat ng biswal na filter sa larawan sa background."
+      },
+      {
+        "slot": "",
+        "title": "Nilalaman",
+        "description": "Nilalaman ng seksyon."
+      },
+      {
+        "slot": "entice",
+        "title": "Pang-akit",
+        "description": "Opsyonal na nilalamang pang-akit."
+      },
+      {
+        "slot": "buttons",
+        "title": "Mga Button",
+        "description": "Grupo ng button na ipinapakita sa ibaba ng teksto."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Teksto ng anchor",
+        "description": "Label ng anchor na ipinapakita sa nabigasyon."
+      }
+    ]
+  }
+}

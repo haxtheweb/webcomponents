@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabuľka",
+    "description": "Tabuľkové údaje pre web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Hlavička riadka",
+        "description": "Považovať prvý riadok za hlavičku."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Hlavička stĺpca",
+        "description": "Považovať prvý stĺpec za hlavičku."
+      },
+      {
+        "property": "footer",
+        "title": "Päta",
+        "description": "Považovať posledný riadok za pätu."
+      },
+      {
+        "property": "sort",
+        "title": "Zoraditeľné",
+        "description": "Povoliť zoraďovanie podľa hodnôt stĺpca."
+      },
+      {
+        "property": "filter",
+        "title": "Povoliť filter",
+        "description": "Povoliť filtrovanie podľa hodnôt stĺpca."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Číselné štýlovanie",
+        "description": "Použiť číselné štýlovanie na číselné stĺpce."
+      },
+      {
+        "property": "responsive",
+        "title": "Responzívne",
+        "description": "Prispôsobiť rozloženie tabuľky na malých obrazovkách."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Režim hodnotiacej škály",
+        "description": "Interpretovať túto tabuľku ako OER Schema Rubric, aby sa generovali metaúdaje Rubric, RubricScale, RubricCriterion a RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Typ hodnotiacej škály",
+        "description": "Štýl hodnotiacej škály generovaný ako oer:rubricType (má význam iba pri zapnutom režime hodnotiacej škály).",
+        "options": {
+          "": "(žiadny)",
+          "analytic": "Analytická",
+          "holistic": "Holistická",
+          "single-point": "Jednobodová",
+          "checklist": "Kontrolný zoznam"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "S okrajmi"
+      },
+      {
+        "property": "condensed",
+        "title": "Zhustiť riadky",
+        "description": "Zmenšiť výšku riadkov."
+      },
+      {
+        "property": "striped",
+        "title": "Pruhované riadky",
+        "description": "Vytieňovať každý druhý riadok."
+      },
+      {
+        "property": "downloadable",
+        "title": "Tlačidlo stiahnutia",
+        "description": "Pridať tlačidlo na stiahnutie tabuľky."
+      },
+      {
+        "property": "copyable",
+        "title": "Tlačidlo kopírovania",
+        "description": "Pridať tlačidlo na kopírovanie údajov tabuľky vo formáte CSV."
+      },
+      {
+        "property": "printable",
+        "title": "Tlačidlo tlače",
+        "description": "Pridať tlačidlo na tlač iba tabuľky."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Údaje CSV",
+        "description": "Vytvoriť tabuľku z nahraného súboru CSV."
+      }
+    ]
+  }
+}

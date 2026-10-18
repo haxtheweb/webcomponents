@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ఇన్‌లైన్ ఆడియో",
+    "description": "పేజీ కంటెంట్‌కు అనుబంధంగా ఆడియోను ఇన్‌లైన్‌లో ప్లే చేయండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "మూలం",
+        "description": "MP3 ఫైల్ లేదా URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "కార్డ్ యాక్సెంట్ రంగు."
+      },
+      {
+        "property": "shiny",
+        "title": "మెరుపు",
+        "description": "బూడిద రంగుకు బదులుగా తేలికపాటి యాక్సెంట్ నేపథ్యాన్ని ఉపయోగించండి."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "డార్క్",
+        "description": "డార్క్ మోడ్ ఉపయోగించండి."
+      }
+    ]
+  }
+}

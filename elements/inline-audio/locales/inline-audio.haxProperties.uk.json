@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Вбудоване аудіо",
+    "description": "Відтворення аудіо в тексті як доповнення до вмісту сторінки."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Джерело",
+        "description": "Файл MP3 або URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "Акцентний колір картки."
+      },
+      {
+        "property": "shiny",
+        "title": "Яскравий",
+        "description": "Використовувати світліший акцентний фон замість сірого."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Темна",
+        "description": "Використовувати темний режим."
+      }
+    ]
+  }
+}

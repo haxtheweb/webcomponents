@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Коллекция сабы",
+    "description": "Коллекция тизмесинин ичинде колдонулуучу сап түрүндөгү элемент: текст, шилтеме, сөлөкөт, тегдер жана кошумча сүрөт."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Шилтеме",
+        "description": "Бул саптын бара турган URL дареги."
+      },
+      {
+        "property": "image",
+        "title": "Сүрөт",
+        "description": "Саптын сүрөтү."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Сүрөттү сүрөттөгөн альтернативдик текст."
+      },
+      {
+        "property": "line1",
+        "title": "1-сап",
+        "description": "Тексттин биринчи сабы."
+      },
+      {
+        "property": "line2",
+        "title": "2-сап",
+        "description": "Тексттин экинчи сабы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Сөлөкөт",
+        "description": "Сапты билдирген сөлөкөт."
+      },
+      {
+        "property": "saturate",
+        "title": "Каныктык эффекти",
+        "description": "Колдонуучу фокустаганда сүрөттүн каныктыгын өзгөртүү."
+      },
+      {
+        "property": "tags",
+        "title": "Тегдер",
+        "description": "Үтүр менен бөлүнгөн тегдердин тизмеси."
+      },
+      {
+        "property": "accentColor",
+        "title": "Түс",
+        "description": "Сөлөкөт жана тегдер үчүн түс."
+      }
+    ]
+  }
+}

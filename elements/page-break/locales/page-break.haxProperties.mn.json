@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Хуудасны дэлгэрэнгүй",
+    "description": "CMS-үүд хуудас үүсгэхэд ашиглаж болох хуудас хоорондын харагдах хуваалтыг тодорхойлох."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Загвар болон эхний гарчигт харуулах гарчиг."
+      },
+      {
+        "property": "pageType",
+        "title": "Төрөл",
+        "description": "Хуудасны харагдах нөхцөлийн шошго.",
+        "options": {
+          "": "-- байхгүй --",
+          "content": "Агуулга",
+          "assessment": "Үнэлгээ",
+          "quiz": "Шалгалт",
+          "submission": "Илгээлт",
+          "lesson": "Хичээл",
+          "module": "Модуль",
+          "task": "Даалгавар",
+          "activity": "Үйл ажиллагаа",
+          "project": "Төсөл",
+          "practice": "Дадлага",
+          "unit": "Нэгж",
+          "objectives": "Сургалтын зорилтууд",
+          "connection": "Холбоо",
+          "knowledge": "Та мэдэх үү?",
+          "strategy": "Суралцах стратеги",
+          "discuss": "Хэлэлцэх",
+          "listen": "Сонсох",
+          "make": "Бүтээх",
+          "observe": "Ажиглах",
+          "present": "Танилцуулах",
+          "reading": "Унших",
+          "reflect": "Эргэцүүлэх",
+          "research": "Судалгаа",
+          "watch": "Үзэх",
+          "write": "Бичих"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Шошгууд",
+        "description": "Таслалаар тусгаарласан шошгын жагсаалт."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Холбоосын URL",
+        "description": "Хуудасны агуулгын оронд харуулах дахин чиглүүлэх URL."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Холбоосын зорилт",
+        "description": "Холбоосыг ижил цонх эсвэл шинэ цонхонд нээх.",
+        "options": {
+          "_self": "Ижил цонх",
+          "_blank": "Шинэ цонх"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Нийтэлсэн",
+        "description": "Нийтлээгүй хуудаснууд эцсийн хэрэглэгчдээс нуугдана."
+      },
+      {
+        "property": "locked",
+        "title": "Хуудсыг түгжих",
+        "description": "Энэ хуудсан дээрх бүх элементийг түгжих эсвэл тайлах."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Автомат slug-ийг дарах",
+        "description": "Гарчиг эсвэл эцэг хуудсанд үндэслэсэн автомат шинэчлэлтээс slug-ийг түгжих."
+      },
+      {
+        "property": "slug",
+        "title": "Зам",
+        "description": "Энэ хуудасны URL slug."
+      },
+      {
+        "property": "image",
+        "title": "Медиа",
+        "description": "Хуудсыг төлөөлөх медиа, зарим загвар болон харагдацад ашиглагдана."
+      },
+      {
+        "property": "parent",
+        "title": "Эцэг",
+        "description": "Эцэг хуудасны зам."
+      },
+      {
+        "property": "noderefs",
+        "title": "Холбогдох агуулга",
+        "description": "Энэ хуудастай холбогдох хуудаснууд."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Тайлбар",
+        "description": "Цуглуулга болон хайлтын системийн оновчлолд ашиглах тайлбар."
+      },
+      {
+        "property": "entityType",
+        "title": "Нэгжийн төрөл",
+        "description": "Өөрөөр тохируулаагүй бол анхдагчаар хуудас байна.",
+        "options": {
+          "page": "Хуудас (анхдагч)",
+          "taxonomy": "Ангилал",
+          "taxonomyTerm": "Ангиллын нэр томьёо",
+          "region": "Бүс"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Дүрс тэмдэг",
+        "description": "Сайт дахь энэ хуудастай холбогдох дүрс тэмдэг."
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Сайт дахь энэ хуудастай холбогдох өнгө."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Цэсэнд нуух",
+        "description": "URL-ийг хадгалан энэ хуудсыг цэснээс нуух."
+      },
+      {
+        "property": "order",
+        "title": "Дараалал",
+        "description": "Ах дүү хуудаснуудтай харьцуулсан дараалал."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Хуудасны загвар",
+        "description": "Зөвхөн энэ хуудсанд загварыг дарж хэрэглэх."
+      },
+      {
+        "property": "author",
+        "title": "Зохиогч",
+        "description": "Энэ хуудсыг хамгийн сүүлд өөрчилсөн хүний хэрэглэгчийн нэр."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Container restrângibil",
+    "description": "Container unic care se poate extinde și restrânge."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Titlu",
+        "description": "Textul pentru elementul restrângibil."
+      },
+      {
+        "property": "expanded",
+        "title": "Extins",
+        "description": "Extins în mod implicit."
+      },
+      {
+        "property": "headingButton",
+        "title": "Buton pe titlu",
+        "description": "Face întregul titlu clicabil, nu doar pictograma."
+      },
+      {
+        "property": "icon",
+        "title": "Pictogramă",
+        "description": "Pictograma butonului de extindere/restrângere."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Pictogramă (când este extins)",
+        "description": "Pictogramă opțională pentru starea extinsă."
+      },
+      {
+        "slot": "",
+        "title": "Conținut",
+        "description": "Conținutul elementului restrângibil."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Indicație",
+        "description": "Indicația pentru butonul de extindere/restrângere."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Indicație (când este extins)",
+        "description": "Indicația pentru butonul de extindere/restrângere când este extins."
+      }
+    ]
+  }
+}

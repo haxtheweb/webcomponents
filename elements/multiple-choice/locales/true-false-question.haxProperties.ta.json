@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "சரி / தவறு கேள்வி",
+    "description": "சரி தவறு கேள்வி"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "கேள்வி",
+        "description": "பயனர்கள் பதிலளிக்க வேண்டிய கேள்வி."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "சரியான பதில்"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "வினாடி வினாவின் பெயர்",
+        "description": "xAPI சார்ந்த சூழல்களில் இந்த உருப்படியை அடையாளம் காண அனுப்பப்படும் வினாடி வினாப் பெயர்"
+      }
+    ]
+  }
+}

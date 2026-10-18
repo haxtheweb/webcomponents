@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "উদ্ধৃতি ব্লক",
+    "description": "স্টাইল করা উদ্ধৃতি ব্লক।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "উৎসনির্দেশ",
+        "description": "উৎসনির্দেশের টেক্সট।"
+      },
+      {
+        "property": "alt",
+        "title": "বিকল্প টেক্সট",
+        "description": "ছবির বিকল্প টেক্সট।"
+      },
+      {
+        "property": "image",
+        "title": "ছবি",
+        "description": "উদ্ধৃতির সাথে দেখানো ছবি।"
+      }
+    ]
+  }
+}

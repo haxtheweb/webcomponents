@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "インライン音声",
+    "description": "ページのコンテンツを補うために音声をインラインで再生します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ソース",
+        "description": "MP3ファイルまたはURL。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "カードのアクセントカラー。"
+      },
+      {
+        "property": "shiny",
+        "title": "シャイニー",
+        "description": "グレーの代わりに明るいアクセント背景を使用します。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ダーク",
+        "description": "ダークモードを使用します。"
+      }
+    ]
+  }
+}

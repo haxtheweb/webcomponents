@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Visualizador MIDI",
+    "description": "Reproduza MIDI no contexto com visualização."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origem",
+        "description": "URL do arquivo a reproduzir."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualização",
+        "description": "Estilo de visualização do arquivo de música.",
+        "options": {
+          "staff": "Pauta",
+          "piano-roll": "Rolo de piano",
+          "waterfall": "Piano + cascata"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Ocultar cascata",
+        "description": "Ocultar as notas em cascata na visualização de piano."
+      }
+    ]
+  }
+}

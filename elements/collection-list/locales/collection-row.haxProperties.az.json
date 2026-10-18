@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Kolleksiya sətri",
+    "description": "Kolleksiya siyahısında istifadə üçün mətn, keçid, ikon, teqlər və ixtiyari şəkil olan sətir tipli element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Keçid",
+        "description": "Bu sətir üçün hədəf URL."
+      },
+      {
+        "property": "image",
+        "title": "Şəkil",
+        "description": "Sətir üçün şəkil."
+      },
+      {
+        "property": "alt",
+        "title": "Alt mətn",
+        "description": "Şəkli təsvir edən alternativ mətn."
+      },
+      {
+        "property": "line1",
+        "title": "Sətir 1",
+        "description": "Mətnin birinci sətri."
+      },
+      {
+        "property": "line2",
+        "title": "Sətir 2",
+        "description": "Mətnin ikinci sətri."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "İkon",
+        "description": "Sətri təmsil edən ikon."
+      },
+      {
+        "property": "saturate",
+        "title": "Doyma effekti",
+        "description": "İstifadəçi fokuslandıqda şəklin doymasını dəyiş."
+      },
+      {
+        "property": "tags",
+        "title": "Teqlər",
+        "description": "Vergüllə ayrılmış teqlər siyahısı."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rəng",
+        "description": "İkon və teqlər üçün istifadə olunan rəng."
+      }
+    ]
+  }
+}

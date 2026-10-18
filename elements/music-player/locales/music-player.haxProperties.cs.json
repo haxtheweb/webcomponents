@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Vizualizér MIDI",
+    "description": "Přehrávejte MIDI v kontextu s vizualizací."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Zdroj",
+        "description": "URL souboru k přehrání."
+      },
+      {
+        "property": "visualizer",
+        "title": "Vizualizace",
+        "description": "Styl vizualizace hudebního souboru.",
+        "options": {
+          "staff": "Notová osnova",
+          "piano-roll": "Pianoroll",
+          "waterfall": "Klavír + vodopád"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Skrýt vodopád",
+        "description": "Skrýt padající noty ve vizualizaci klavíru."
+      }
+    ]
+  }
+}

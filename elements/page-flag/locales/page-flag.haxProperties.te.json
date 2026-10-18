@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "పేజీ ఫ్లాగ్",
+    "description": "పేజీ రచయితల కోసం సంపాదకీయ గమనిక."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "పేజీ ఫ్లాగ్ కోసం యాక్సెంట్ రంగు."
+      },
+      {
+        "property": "label",
+        "title": "లేబుల్",
+        "description": "పేజీ ఫ్లాగ్ కోసం లేబుల్ వచనం."
+      }
+    ]
+  }
+}

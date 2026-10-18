@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tafla",
+    "description": "Gögn í töfluformi fyrir vefinn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Línuhaus",
+        "description": "Nota fyrstu línu sem haus."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Dálkhaus",
+        "description": "Nota fyrsta dálk sem haus."
+      },
+      {
+        "property": "footer",
+        "title": "Fótur",
+        "description": "Nota síðustu línu sem fót."
+      },
+      {
+        "property": "sort",
+        "title": "Raðanlegt",
+        "description": "Leyfa röðun eftir gildum dálka."
+      },
+      {
+        "property": "filter",
+        "title": "Leyfa síu",
+        "description": "Leyfa síun eftir gildum dálka."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Talnasnið",
+        "description": "Nota talnasnið á talnadálka."
+      },
+      {
+        "property": "responsive",
+        "title": "Skalanlegt",
+        "description": "Aðlaga útlit töflu á litlum skjám."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Matskvarðahamur",
+        "description": "Túlka þessa töflu sem OER Schema Rubric svo að Rubric, RubricScale, RubricCriterion og RubricLevel lýsigögn séu gefin út."
+      },
+      {
+        "property": "rubricType",
+        "title": "Tegund matskvarða",
+        "description": "Stíll matskvarða gefinn út sem oer:rubricType (á aðeins við þegar matskvarðahamur er virkur).",
+        "options": {
+          "": "(ekkert)",
+          "analytic": "Greinandi",
+          "holistic": "Heildrænn",
+          "single-point": "Einspunkta",
+          "checklist": "Gátlisti"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Með ramma"
+      },
+      {
+        "property": "condensed",
+        "title": "Þjappa línum",
+        "description": "Minnka línuhæð."
+      },
+      {
+        "property": "striped",
+        "title": "Röndóttar línur",
+        "description": "Skyggja aðra hverja línu."
+      },
+      {
+        "property": "downloadable",
+        "title": "Niðurhalshnappur",
+        "description": "Bæta við hnappi til að sækja töfluna."
+      },
+      {
+        "property": "copyable",
+        "title": "Afritunarhnappur",
+        "description": "Bæta við hnappi til að afrita CSV-gögn töflunnar."
+      },
+      {
+        "property": "printable",
+        "title": "Prenthnappur",
+        "description": "Bæta við hnappi til að prenta aðeins töfluna."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV-gögn",
+        "description": "Búa til töflu úr upphlaðinni CSV-skrá."
+      }
+    ]
+  }
+}

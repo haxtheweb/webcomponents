@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Ойнату тізімі",
+    "description": "Кез келген мазмұнды ойнату тізімінде көрсету."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Дереккөз",
+        "description": "Ойнату тізімінде көрсетілетін мазмұн."
+      },
+      {
+        "property": "edit",
+        "title": "Өңдеу режимі",
+        "description": "Ойнату тізімі үшін өңдеу және алдын ала қарау режимдері арасында ауысу."
+      },
+      {
+        "property": "navigation",
+        "title": "Навигация",
+        "description": "Алға және артқа навигация түймелерін көрсету."
+      },
+      {
+        "property": "pagination",
+        "title": "Беттеу",
+        "description": "Беттеу нүктелерін көрсету."
+      },
+      {
+        "property": "orientation",
+        "title": "Бағдары",
+        "description": "Слайдтардың бағдары.",
+        "options": {
+          "horizontal": "Көлденең",
+          "vertical": "Тік"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Басталатын слайд",
+        "description": "Бастапқыда назар аударылатын слайд индексі."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Арақатынас",
+        "description": "Слайдтардың арақатынасы.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

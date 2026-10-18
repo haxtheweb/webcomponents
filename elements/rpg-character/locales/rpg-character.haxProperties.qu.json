@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG runa",
+    "description": "HAX-manta asikunapaq runa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Suti",
+        "description": "Mana yuyasqa runata rurananpaq simi."
+      },
+      {
+        "property": "hat",
+        "title": "Chuku",
+        "description": "Chukupa layan.",
+        "options": {
+          "none": "Kikinmanta",
+          "random": "Mana yuyasqa",
+          "bunny": "Quwi",
+          "cowboy": "Vaquero",
+          "education": "Yachay",
+          "construction": "Wasichay",
+          "warning": "Paqtataq",
+          "watermelon": "Sandía",
+          "coffee": "Café",
+          "knight": "Caballero",
+          "ninja": "Ninja",
+          "party": "Raymi",
+          "error": "Pantay",
+          "edit": "Allichay"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Kinraynin",
+        "description": "Runapa kinraynin pixelkunapi."
+      },
+      {
+        "property": "height",
+        "title": "Sayaynin",
+        "description": "Runapa sayaynin pixelkunapi."
+      },
+      {
+        "property": "fire",
+        "title": "Rawrachkanchu?",
+        "description": "Runa rawrachkan chayqa."
+      },
+      {
+        "property": "walking",
+        "title": "Purichkanchu?",
+        "description": "Puriy kuyuchiy; rawrachkaptin phawan."
+      }
+    ]
+  }
+}

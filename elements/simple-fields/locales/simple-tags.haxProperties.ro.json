@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Etichete",
+    "description": "Listă simplă de etichete pentru afișare în pagină."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Etichete",
+        "description": "Listă de etichete separate prin virgulă."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Culoare de accent automată",
+        "description": "Setează automat culoarea de accent pe baza etichetei."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare",
+        "description": "Culoarea etichetelor."
+      }
+    ]
+  }
+}

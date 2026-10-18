@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Zbaľovací kontajner",
+    "description": "Samostatný rozbaľovací a zbaľovací kontajner."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Nadpis",
+        "description": "Text pre zbaľovací prvok."
+      },
+      {
+        "property": "expanded",
+        "title": "Rozbalené",
+        "description": "Predvolene rozbalené."
+      },
+      {
+        "property": "headingButton",
+        "title": "Tlačidlo v nadpise",
+        "description": "Celý nadpis bude klikateľný, nie iba ikona."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona tlačidla na rozbalenie/zbalenie."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikona (po rozbalení)",
+        "description": "Voliteľná ikona pre rozbalený stav prepínača."
+      },
+      {
+        "slot": "",
+        "title": "Obsah",
+        "description": "Obsah zbaľovacieho prvku."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Popis",
+        "description": "Popis tlačidla na rozbalenie/zbalenie."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Popis (po rozbalení)",
+        "description": "Popis tlačidla na rozbalenie/zbalenie v rozbalenom stave."
+      }
+    ]
+  }
+}

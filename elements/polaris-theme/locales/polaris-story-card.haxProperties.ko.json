@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris 스토리 카드",
+    "description": "배경 이미지, 필러 레이블, 헤드라인 텍스트가 있는 Polaris 스토리 카드를 표시합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "배경 이미지",
+        "description": "카드 배경으로 표시되는 이미지 URL입니다."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "배경 크기",
+        "description": "배경 이미지가 카드를 채우는 방식입니다(CSS background-size).",
+        "options": {
+          "cover": "덮기 (cover)",
+          "contain": "맞추기 (contain)",
+          "auto": "자동 (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "배경 첨부",
+        "description": "스크롤할 때 배경 이미지의 동작 방식입니다(CSS background-attachment).",
+        "options": {
+          "scroll": "스크롤 (scroll)",
+          "fixed": "고정 (fixed)",
+          "local": "로컬 (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "필러 레이블",
+        "description": "카드 상단에 표시되는 짧은 대문자 레이블입니다. 숨기려면 비워 두세요."
+      },
+      {
+        "property": "label",
+        "title": "카드 텍스트",
+        "description": "아래쪽 패널에 표시되는 기본 텍스트입니다."
+      },
+      {
+        "property": "link",
+        "title": "링크",
+        "description": "카드 전체를 감싸는 선택적 대상 URL입니다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Ciyaaraha Unity",
+    "description": "Ciyaaraha Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Bartilmaameed",
+        "description": "Waddada dhismaha ciyaarta."
+      },
+      {
+        "property": "compression",
+        "title": "Habka cufnaanta",
+        "description": "Dabagalka faylka cufnaanta ee kheyraadka ciyaarta."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL-ka Qulqulka",
+        "description": "URL-ka kheyraadka qulqulka."
+      },
+      {
+        "property": "companyname",
+        "title": "Magaca Shirkadda",
+        "description": "Magaca shirkadda."
+      },
+      {
+        "property": "productname",
+        "title": "Magaca Alaabta",
+        "description": "Cinwaanka ciyaarta."
+      },
+      {
+        "property": "productversion",
+        "title": "Nooca Alaabta",
+        "description": "Nooca la sii daayay."
+      },
+      {
+        "property": "width",
+        "title": "Ballaca Canvas-ka",
+        "description": "Ballaca CSS ee canvas-ka (tusaale px ama em)."
+      },
+      {
+        "property": "height",
+        "title": "Dhererka Canvas-ka",
+        "description": "Dhererka CSS ee canvas-ka (tusaale px ama em)."
+      },
+      {
+        "property": "background",
+        "title": "Asalka Canvas-ka",
+        "description": "Asalka CSS ee canvas-ka."
+      }
+    ]
+  }
+}

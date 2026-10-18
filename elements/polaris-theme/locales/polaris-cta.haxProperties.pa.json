@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "ਥੀਮ ਵਾਲਾ Polaris ਕਾਰਵਾਈ-ਸੱਦਾ ਬਟਨ ਦਿਖਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "ਬਟਨ ਲਿਖਤ",
+        "description": "ਕਾਰਵਾਈ-ਸੱਦਾ ਬਟਨ ਵਿੱਚ ਦਿਖਾਈ ਲਿਖਤ।"
+      },
+      {
+        "property": "link",
+        "title": "ਲਿੰਕ",
+        "description": "ਬਟਨ ਲਈ ਮੰਜ਼ਿਲ URL।"
+      },
+      {
+        "property": "type",
+        "title": "ਰੂਪ",
+        "description": "ਦਿੱਖ ਸ਼ੈਲੀ ਦਾ ਰੂਪ।",
+        "options": {
+          "primary": "ਮੁੱਖ",
+          "tinted": "ਰੰਗਤ ਵਾਲਾ",
+          "light": "ਹਲਕਾ"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "ਰੂਪ-ਰੇਖਾ ਸ਼ੈਲੀ",
+        "description": "ਰੂਪ-ਰੇਖਾ ਵਾਲੀ ਦਿੱਖ ਚਾਲੂ ਕਰੋ।"
+      },
+      {
+        "property": "filled",
+        "title": "ਭਰੀ ਸ਼ੈਲੀ",
+        "description": "ਭਰੀ ਦਿੱਖ ਚਾਲੂ ਕਰੋ।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "מאַכן אַנימירטע GIF־בילדער צוטריטלעך."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "אַנימירטער GIF",
+        "description": "URL פֿון דעם אַנימירטן GIF."
+      },
+      {
+        "property": "alt",
+        "title": "אַלטערנאַטיווער טעקסט",
+        "description": "אַלטערנאַטיווער טעקסט פֿאַר דעם בילד."
+      },
+      {
+        "property": "longdesc",
+        "title": "לאַנגע באַשרײַבונג",
+        "description": "לאַנגע באַשרײַבונג פֿון דעם GIF פֿאַר צוטריטלעכקייט."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "שטילער בילד",
+        "description": "URL פֿון אַ שטילער ווערסיע פֿון דעם GIF."
+      }
+    ]
+  }
+}

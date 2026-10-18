@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Koleksiyon öğesi",
+    "description": "Koleksiyon listesinde kullanılan; metin, bağlantı ve isteğe bağlı medya içeren kart tarzı öğe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Bağlantı",
+        "description": "Bu kartın hedef URL'si."
+      },
+      {
+        "property": "image",
+        "title": "Görsel",
+        "description": "Arka plan görseli."
+      },
+      {
+        "property": "line1",
+        "title": "Satır 1",
+        "description": "Metnin ilk satırı."
+      },
+      {
+        "property": "line2",
+        "title": "Satır 2",
+        "description": "Metnin ikinci satırı."
+      },
+      {
+        "property": "line3",
+        "title": "Satır 3",
+        "description": "Metnin üçüncü satırı."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Simge",
+        "description": "Kartı temsil eden simge."
+      },
+      {
+        "property": "saturate",
+        "title": "Doygunluk efekti",
+        "description": "Kullanıcı odaklandığında görsel doygunluğunu değiştir."
+      },
+      {
+        "property": "tags",
+        "title": "Etiketler",
+        "description": "Virgülle ayrılmış etiket listesi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Renk",
+        "description": "Etiketler için kullanılan renk."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Bağlantıyı açıklayan alternatif metin."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Idézetblokk",
+    "description": "Formázott idézetblokk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Forrásmegjelölés",
+        "description": "A forrásmegjelölés szövege."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "A kép helyettesítő szövege."
+      },
+      {
+        "property": "image",
+        "title": "Kép",
+        "description": "Az idézettel együtt megjelenő kép."
+      }
+    ]
+  }
+}

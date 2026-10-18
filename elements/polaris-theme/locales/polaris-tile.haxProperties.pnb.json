@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris ٹائل",
+    "description": "عنوان، اختیاری معاون متن تے اختیاری لنک نال Polaris ٹائل وکھاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "مڈھلا متن",
+        "description": "ٹائل دا مکھ متن۔"
+      },
+      {
+        "property": "line2",
+        "title": "دوجا متن",
+        "description": "اختیاری معاون متن۔"
+      },
+      {
+        "property": "type",
+        "title": "ٹائل سٹائل",
+        "description": "ٹائل دا پہلاں توں طے بصری سٹائل۔",
+        "options": {
+          "1": "سٹائل 1",
+          "2": "سٹائل 2",
+          "3": "سٹائل 3",
+          "4": "سٹائل 4",
+          "5": "سٹائل 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "پچھوکڑ دی تصویر",
+        "description": "تصویر والے ٹائل سٹائلاں ولوں ورتی جاوݨ والی پچھوکڑ تصویر دا URL۔"
+      },
+      {
+        "property": "link",
+        "title": "لنک",
+        "description": "ٹائل دے عمل لئی اختیاری منزل URL۔"
+      }
+    ]
+  }
+}

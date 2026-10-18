@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Rhes casgliad",
+    "description": "Eitem ar ffurf rhes i'w defnyddio mewn rhestr casgliad, gyda thestun, dolen, eicon, tagiau a delwedd ddewisol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Dolen",
+        "description": "URL cyrchfan ar gyfer y rhes hon."
+      },
+      {
+        "property": "image",
+        "title": "Delwedd",
+        "description": "Delwedd ar gyfer y rhes."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Testun amgen sy'n disgrifio'r ddelwedd."
+      },
+      {
+        "property": "line1",
+        "title": "Llinell 1",
+        "description": "Llinell gyntaf y testun."
+      },
+      {
+        "property": "line2",
+        "title": "Llinell 2",
+        "description": "Ail linell y testun."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Eicon",
+        "description": "Eicon sy'n cynrychioli'r rhes."
+      },
+      {
+        "property": "saturate",
+        "title": "Effaith dirlawnder",
+        "description": "Newid dirlawnder y ddelwedd pan fydd y defnyddiwr yn ffocysu."
+      },
+      {
+        "property": "tags",
+        "title": "Tagiau",
+        "description": "Rhestr o dagiau wedi'u gwahanu gan atalnodau."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw",
+        "description": "Lliw a ddefnyddir ar gyfer yr eicon a'r tagiau."
+      }
+    ]
+  }
+}

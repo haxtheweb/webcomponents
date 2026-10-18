@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Икона",
+    "description": "Икона од целосната библиотека со икони."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона за прикажување."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Акцентна боја за иконата."
+      },
+      {
+        "property": "dark",
+        "title": "Темно",
+        "description": "Користи темен режим (инвертирани бои)."
+      }
+    ]
+  }
+}

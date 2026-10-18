@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "កម្មវិធីបង្ហាញ MIDI",
+    "description": "ចាក់ MIDI តាមបរិបទជាមួយការបង្ហាញរូបភាព។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ប្រភព",
+        "description": "URL ឯកសារដែលត្រូវចាក់។"
+      },
+      {
+        "property": "visualizer",
+        "title": "ការបង្ហាញរូបភាព",
+        "description": "រចនាប័ទ្មបង្ហាញរូបភាពសម្រាប់ឯកសារតន្ត្រី។",
+        "options": {
+          "staff": "បន្ទាត់ណូត",
+          "piano-roll": "រមូរព្យ៉ាណូ",
+          "waterfall": "ព្យ៉ាណូ + ទឹកធ្លាក់"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "លាក់ទឹកធ្លាក់",
+        "description": "លាក់ណូតទឹកធ្លាក់ក្នុងការបង្ហាញព្យ៉ាណូ។"
+      }
+    ]
+  }
+}

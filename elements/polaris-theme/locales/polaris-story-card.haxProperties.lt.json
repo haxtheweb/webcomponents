@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris istorijos kortelė",
+    "description": "Rodyti Polaris istorijos kortelę su fono vaizdu, ramsčio etikete ir antraštės tekstu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Fono vaizdas",
+        "description": "Vaizdo URL, rodomas kaip kortelės fonas."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Fono dydis",
+        "description": "Kaip fono vaizdas užpildo kortelę (CSS background-size).",
+        "options": {
+          "cover": "Uždengti (cover)",
+          "contain": "Sutalpinti (contain)",
+          "auto": "Automatiškai (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Fono pritvirtinimas",
+        "description": "Kaip fono vaizdas elgiasi slenkant (CSS background-attachment).",
+        "options": {
+          "scroll": "Slenkantis (scroll)",
+          "fixed": "Fiksuotas (fixed)",
+          "local": "Vietinis (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Ramsčio etiketė",
+        "description": "Trumpa didžiosiomis raidėmis rašoma etiketė kortelės viršuje. Palikite tuščią, kad paslėptumėte."
+      },
+      {
+        "property": "label",
+        "title": "Kortelės tekstas",
+        "description": "Pagrindinis tekstas, rodomas apatiniame skydelyje."
+      },
+      {
+        "property": "link",
+        "title": "Nuoroda",
+        "description": "Pasirenkamas paskirties URL, apimantis visą kortelę."
+      }
+    ]
+  }
+}

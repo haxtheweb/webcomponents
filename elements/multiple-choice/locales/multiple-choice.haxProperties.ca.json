@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Opció múltiple",
+    "description": "Pregunta d'autoavaluació d'opció múltiple."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Pregunta a la qual han de respondre els usuaris."
+      },
+      {
+        "property": "randomize",
+        "title": "Ordre aleatori",
+        "description": "Ordena les respostes aleatòriament de manera dinàmica."
+      },
+      {
+        "property": "singleOption",
+        "title": "Resposta única",
+        "description": "Permet només una resposta."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de qualificació",
+        "description": "OER Schema: format de qualificació d'aquesta avaluació (p. ex. punts, lletra, percentatge, compleció)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objectiu d'aprenentatge",
+        "description": "OER Schema: objectiu d'aprenentatge associat a aquesta avaluació."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curs",
+        "description": "OER Schema: curs al qual s'adreça aquesta avaluació."
+      },
+      {
+        "property": "answers",
+        "title": "Respostes"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nom del qüestionari",
+        "description": "Nom del qüestionari utilitzat per a la identificació xAPI en sistemes d'analítica."
+      }
+    ]
+  }
+}

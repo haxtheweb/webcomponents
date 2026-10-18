@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Омотач за уграђене Spotify плејере."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Извор",
+        "description": "Веза за уградњу или дељење са Spotify-ја."
+      },
+      {
+        "property": "theme",
+        "title": "Тема",
+        "description": "Тема боје позадине плејера.",
+        "options": {
+          "": "Подразумевано",
+          "0": "Црна"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Величина",
+        "description": "Величина плејера.",
+        "options": {
+          "normal": "Подразумевано",
+          "compact": "Компактна"
+        }
+      }
+    ]
+  }
+}

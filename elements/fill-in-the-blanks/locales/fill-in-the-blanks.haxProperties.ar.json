@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "املأ الفراغات",
+    "description": "نشاط تقييمي يكمل فيه المتعلمون الكلمات الناقصة في عبارة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "السؤال",
+        "description": "السؤال الذي يجيب عنه المستخدمون."
+      },
+      {
+        "property": "statement",
+        "title": "العبارة",
+        "description": "العبارة التي ستُحوَّل إلى تفاعل تحديد الكلمات."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "صيغة التقدير",
+        "description": "OER Schema: صيغة تقدير هذا التقييم (مثل النقاط أو الحرف أو النسبة المئوية أو الإكمال)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "هدف التعلّم",
+        "description": "OER Schema: هدف التعلّم المرتبط بهذا التقييم."
+      },
+      {
+        "property": "forCourse",
+        "title": "المقرر",
+        "description": "OER Schema: المقرر المخصص له هذا التقييم."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "اسم الاختبار",
+        "description": "اسم الاختبار المُمرَّر للاستخدام في البيئات المعتمدة على xAPI لتعريف هذا العنصر"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris-kahelo",
+    "description": "Montri Polaris-kahelon kun titolo, nedeviga subtena teksto kaj nedeviga ligilo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Ĉefa teksto",
+        "description": "Ĉefa teksto de la kahelo."
+      },
+      {
+        "property": "line2",
+        "title": "Duaranga teksto",
+        "description": "Nedeviga subtena teksto."
+      },
+      {
+        "property": "type",
+        "title": "Kahela stilo",
+        "description": "Antaŭagordita vida stilo de la kahelo.",
+        "options": {
+          "1": "Stilo 1",
+          "2": "Stilo 2",
+          "3": "Stilo 3",
+          "4": "Stilo 4",
+          "5": "Stilo 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Fona bildo",
+        "description": "URL de fona bildo uzata de bildkapablaj kahelaj stiloj."
+      },
+      {
+        "property": "link",
+        "title": "Ligilo",
+        "description": "Nedeviga cela URL por la ago de la kahelo."
+      }
+    ]
+  }
+}

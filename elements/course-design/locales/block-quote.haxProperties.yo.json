@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Àyọkà",
+    "description": "Búlọ́ọ̀kù àyọkà tí a ṣe lọ́ṣọ̀ọ́."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Ìtọ́kasí",
+        "description": "Ọ̀rọ̀ ìtọ́kasí."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Ọ̀rọ̀ àfirọ́pò fún àwòrán náà."
+      },
+      {
+        "property": "image",
+        "title": "Àwòrán",
+        "description": "Àwòrán tí a fi hàn pẹ̀lú àyọkà náà."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "ပြင်ပ ဝဘ်အကြောင်းအရာကို iframe တွင် ထည့်သွင်းရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "အရင်းအမြစ် URL",
+        "description": "အရင်းအမြစ် URL။"
+      },
+      {
+        "property": "height",
+        "title": "အမြင့်",
+        "description": "Iframe အမြင့်။"
+      },
+      {
+        "property": "width",
+        "title": "အကျယ်",
+        "description": "Iframe အကျယ်။"
+      }
+    ]
+  }
+}

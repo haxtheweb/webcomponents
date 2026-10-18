@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Produkta pārskats",
+    "description": "Ātra produkta pārskata bloks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Jēdzienu attēlojoša ikona."
+      },
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Galvenais jēdziens īsumā."
+      },
+      {
+        "property": "subtitle",
+        "title": "Apakšvirsraksts",
+        "description": "Papildu informācija."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Ikonas akcenta krāsa."
+      }
+    ]
+  }
+}

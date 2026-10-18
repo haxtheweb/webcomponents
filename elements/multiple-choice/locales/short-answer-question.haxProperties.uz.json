@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Qisqa javobli savol",
+    "description": "Foydalanuvchiga oddiy savolga javob berishni taklif qilish"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Savol",
+        "description": "Foydalanuvchilar javob beradigan savol."
+      },
+      {
+        "property": "answers",
+        "title": "Mumkin boʻlgan javoblar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Test nomi",
+        "description": "xAPI asosidagi muhitlarda ushbu elementni aniqlash uchun uzatiladigan test nomi"
+      }
+    ]
+  }
+}

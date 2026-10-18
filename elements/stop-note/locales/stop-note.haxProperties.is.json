@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Stöðvunarathugasemd",
+    "description": "Skilaboð til að vekja athygli lesenda á tilteknum leiðbeiningum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Sláðu inn titil stöðvunarathugasemdar."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Sláðu inn ytra URL."
+      },
+      {
+        "property": "status",
+        "title": "Staða",
+        "description": "Staðan breytir litum og táknum til samræmis",
+        "options": {
+          "stop": "Stöðva",
+          "warning": "Viðvörun",
+          "success": "Staðfesting",
+          "info": "Tilkynning"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Texti athugasemdar",
+        "description": "Texti stöðvunarathugasemdarinnar."
+      }
+    ]
+  }
+}

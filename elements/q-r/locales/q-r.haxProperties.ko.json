@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR 코드",
+    "description": "스마트폰으로 스캔하는 코드입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR 데이터",
+        "description": "QR 코드에 사용할 데이터의 소스입니다."
+      },
+      {
+        "property": "title",
+        "title": "대체 제목",
+        "description": "QR 코드 소스에 연결된 대체 제목입니다."
+      },
+      {
+        "property": "modulesize",
+        "title": "크기",
+        "description": "QR 코드의 크기입니다."
+      },
+      {
+        "property": "margin",
+        "title": "여백",
+        "description": "코드 주변의 여백입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "출력 형식",
+        "description": "출력할 형식입니다.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

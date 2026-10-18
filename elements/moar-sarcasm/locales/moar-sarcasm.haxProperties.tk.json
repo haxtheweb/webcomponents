@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kinaýa",
+    "description": "Teksti degişmeli görnüşde görkezmek"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Tekst",
+        "description": "Kinaýaly etmeli tekst"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Şəkil müqayisəsi",
+    "description": "Müqayisə üçün bir şəkli digərinin üzərindən sürüşdürün."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Üst şəkil",
+        "description": "Alt şəklin üzərindən sürüşdürüləcək üst şəkil."
+      },
+      {
+        "property": "topAlt",
+        "title": "Üst şəklin alt mətni",
+        "description": "Əlçatanlıq üçün tələb olunan alt mətn."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Alt şəkil",
+        "description": "Üst şəklin altında göstərilən alt şəkil."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alt şəklin alt mətni",
+        "description": "Əlçatanlıq üçün tələb olunan alt mətn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Davranış",
+        "description": "Silmə rejimini (defolt) və ya üst şəklin şəffaflıq rejimini seçin."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Sürüşdürücü zolağın rəngi."
+      },
+      {
+        "property": "dark",
+        "title": "Tünd",
+        "description": "Sürüşdürücü zolağın rəngini tərsinə çevir."
+      },
+      {
+        "property": "position",
+        "title": "İlkin mövqe",
+        "description": "0-dan 100-ə qədər başlanğıc mövqeyi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "اسٽاپ نوٽ",
+    "description": "پڙهندڙن کي مخصوص هدايتن کان خبردار ڪرڻ لاءِ پيغام."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "اسٽاپ نوٽ لاءِ عنوان داخل ڪريو."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "ٻاهريون URL داخل ڪريو."
+      },
+      {
+        "property": "status",
+        "title": "اسٽيٽس",
+        "description": "اسٽيٽس مقرر ڪرڻ سان رنگ ۽ آئڪن ان مطابق بدلجن ٿا",
+        "options": {
+          "stop": "روڪيو",
+          "warning": "خبرداري",
+          "success": "تصديق",
+          "info": "اطلاع"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "نوٽ جو متن",
+        "description": "اسٽاپ نوٽ لاءِ متن."
+      }
+    ]
+  }
+}

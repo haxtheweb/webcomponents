@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Bëji GIF-et e animuara të aksesueshme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF i animuar",
+        "description": "URL-ja e GIF-it të animuar."
+      },
+      {
+        "property": "alt",
+        "title": "Teksti alternativ",
+        "description": "Teksti alternativ për imazhin."
+      },
+      {
+        "property": "longdesc",
+        "title": "Përshkrimi i gjatë",
+        "description": "Përshkrim i gjatë i GIF-it për aksesueshmëri."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Imazh statik",
+        "description": "URL-ja e një versioni statik të GIF-it."
+      }
+    ]
+  }
+}

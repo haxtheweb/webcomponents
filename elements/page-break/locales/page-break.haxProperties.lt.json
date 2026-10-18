@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Puslapio informacija",
+    "description": "Apibrėžkite vizualų puslapių skyrimą, kurį TVS gali naudoti puslapiams kurti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Temoje ir pirmojoje antraštėje rodomas pavadinimas."
+      },
+      {
+        "property": "pageType",
+        "title": "Tipas",
+        "description": "Vizuali puslapio konteksto etiketė.",
+        "options": {
+          "": "-- nėra --",
+          "content": "Turinys",
+          "assessment": "Vertinimas",
+          "quiz": "Testas",
+          "submission": "Pateikimas",
+          "lesson": "Pamoka",
+          "module": "Modulis",
+          "task": "Užduotis",
+          "activity": "Veikla",
+          "project": "Projektas",
+          "practice": "Praktika",
+          "unit": "Skyrius",
+          "objectives": "Mokymosi tikslai",
+          "connection": "Sąsaja",
+          "knowledge": "Ar žinojote?",
+          "strategy": "Mokymosi strategija",
+          "discuss": "Diskutuokite",
+          "listen": "Klausykite",
+          "make": "Kurkite",
+          "observe": "Stebėkite",
+          "present": "Pristatykite",
+          "reading": "Skaitymas",
+          "reflect": "Apmąstykite",
+          "research": "Tyrinėkite",
+          "watch": "Žiūrėkite",
+          "write": "Rašykite"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Žymės",
+        "description": "Kableliais atskirtas žymių sąrašas."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Nuorodos URL",
+        "description": "Peradresavimo URL, rodomas vietoj puslapio turinio."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Nuorodos paskirtis",
+        "description": "Atverti nuorodas tame pačiame arba naujame lange.",
+        "options": {
+          "_self": "Tas pats langas",
+          "_blank": "Naujas langas"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Paskelbta",
+        "description": "Nepaskelbti puslapiai paslėpti nuo galutinių naudotojų."
+      },
+      {
+        "property": "locked",
+        "title": "Užrakinti puslapį",
+        "description": "Užrakinti arba atrakinti visus šio puslapio elementus."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Nepaisyti automatinio adreso",
+        "description": "Neleisti automatiškai atnaujinti adreso pagal pavadinimą ar tėvinį puslapį."
+      },
+      {
+        "property": "slug",
+        "title": "Kelias",
+        "description": "Šio puslapio URL adresas (slug)."
+      },
+      {
+        "property": "image",
+        "title": "Medija",
+        "description": "Puslapį atspindinti medija, naudojama kai kuriose temose ir rodiniuose."
+      },
+      {
+        "property": "parent",
+        "title": "Tėvinis",
+        "description": "Tėvinio puslapio kelias."
+      },
+      {
+        "property": "noderefs",
+        "title": "Susijęs turinys",
+        "description": "Su šiuo puslapiu susiję puslapiai."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Aprašymas",
+        "description": "Aprašymas, naudojamas kolekcijose ir optimizuojant paieškos sistemoms."
+      },
+      {
+        "property": "entityType",
+        "title": "Objekto tipas",
+        "description": "Numatytasis – puslapis, jei nenustatyta kitaip.",
+        "options": {
+          "page": "Puslapis (numatytasis)",
+          "taxonomy": "Taksonomija",
+          "taxonomyTerm": "Taksonomijos terminas",
+          "region": "Regionas"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Piktograma",
+        "description": "Su šiuo puslapiu svetainėje susieta piktograma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Su šiuo puslapiu svetainėje susieta spalva."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Slėpti meniu",
+        "description": "Slėpti šį puslapį meniu, išsaugant jo URL."
+      },
+      {
+        "property": "order",
+        "title": "Tvarka",
+        "description": "Tvarka gretimų puslapių atžvilgiu."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Puslapio tema",
+        "description": "Pakeisti temą tik šiam puslapiui."
+      },
+      {
+        "property": "author",
+        "title": "Autorius",
+        "description": "Paskutinio šį puslapį keitusio asmens naudotojo vardas."
+      }
+    ]
+  }
+}

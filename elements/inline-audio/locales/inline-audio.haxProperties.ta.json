@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "உள்வரி ஒலி",
+    "description": "பக்க உள்ளடக்கத்திற்குத் துணையாக ஒலியை உள்வரியாக இயக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "மூலம்",
+        "description": "MP3 கோப்பு அல்லது URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "அட்டையின் அழுத்த நிறம்."
+      },
+      {
+        "property": "shiny",
+        "title": "பளபளப்பு",
+        "description": "சாம்பலுக்குப் பதிலாக இலகுவான அழுத்தப் பின்னணியைப் பயன்படுத்தவும்."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "இருண்ட",
+        "description": "இருண்ட பயன்முறையைப் பயன்படுத்தவும்."
+      }
+    ]
+  }
+}

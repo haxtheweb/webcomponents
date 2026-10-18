@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ծալվող բեռնարկղ",
+    "description": "Մեկ ծավալվող և ծալվող բեռնարկղ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Վերնագիր",
+        "description": "Ծալվող բաժնի տեքստը։"
+      },
+      {
+        "property": "expanded",
+        "title": "Ծավալված",
+        "description": "Լռելյայն ծավալել։"
+      },
+      {
+        "property": "headingButton",
+        "title": "Վերնագրի կոճակ",
+        "description": "Դարձնել ամբողջ վերնագիրը սեղմելի, ոչ միայն պատկերակը։"
+      },
+      {
+        "property": "icon",
+        "title": "Պատկերակ",
+        "description": "Ծավալման/ծալման կոճակի պատկերակը։"
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Պատկերակ (ծավալված վիճակում)",
+        "description": "Ըստ ցանկության պատկերակ ծավալված վիճակի համար։"
+      },
+      {
+        "slot": "",
+        "title": "Բովանդակություն",
+        "description": "Ծալվող բաժնի բովանդակությունը։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Հուշում",
+        "description": "Ծավալման/ծալման կոճակի հուշումը։"
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Հուշում (ծավալված վիճակում)",
+        "description": "Ծավալման/ծալման կոճակի հուշումը ծավալված վիճակում։"
+      }
+    ]
+  }
+}

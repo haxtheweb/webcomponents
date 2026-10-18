@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "شیئر URL سے Discord کمیونٹیز ایمبیڈ کریں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "وسیلے کا URL",
+        "description": "وسیلے کا URL۔"
+      },
+      {
+        "property": "height",
+        "title": "اونچائی",
+        "description": "مواد فریم کی اونچائی۔"
+      },
+      {
+        "property": "width",
+        "title": "چوڑائی",
+        "description": "مواد فریم کی چوڑائی۔"
+      }
+    ]
+  }
+}

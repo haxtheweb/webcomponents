@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Rodyti temos stiliaus Polaris raginimo veikti mygtuką."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Mygtuko tekstas",
+        "description": "Raginimo veikti mygtuke rodomas tekstas."
+      },
+      {
+        "property": "link",
+        "title": "Nuoroda",
+        "description": "Mygtuko paskirties URL."
+      },
+      {
+        "property": "type",
+        "title": "Variantas",
+        "description": "Vizualinio stiliaus variantas.",
+        "options": {
+          "primary": "Pagrindinis",
+          "tinted": "Atspalvintas",
+          "light": "Šviesus"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Kontūrinis stilius",
+        "description": "Įjungti kontūrinį apipavidalinimą."
+      },
+      {
+        "property": "filled",
+        "title": "Užpildytas stilius",
+        "description": "Įjungti užpildytą apipavidalinimą."
+      }
+    ]
+  }
+}

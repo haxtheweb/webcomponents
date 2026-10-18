@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "表",
+    "description": "ウェブ向けの表形式データ。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "行見出し",
+        "description": "最初の行を見出しとして扱います。"
+      },
+      {
+        "property": "columnHeader",
+        "title": "列見出し",
+        "description": "最初の列を見出しとして扱います。"
+      },
+      {
+        "property": "footer",
+        "title": "フッター",
+        "description": "最後の行をフッターとして扱います。"
+      },
+      {
+        "property": "sort",
+        "title": "並べ替え可能",
+        "description": "列の値で並べ替えられるようにします。"
+      },
+      {
+        "property": "filter",
+        "title": "フィルターを許可",
+        "description": "列の値で絞り込めるようにします。"
+      },
+      {
+        "property": "numericStyles",
+        "title": "数値スタイル",
+        "description": "数値列に数値用のスタイルを適用します。"
+      },
+      {
+        "property": "responsive",
+        "title": "レスポンシブ",
+        "description": "小さい画面で表のレイアウトを調整します。"
+      },
+      {
+        "property": "rubricMode",
+        "title": "ルーブリックモード",
+        "description": "この表をOER SchemaのRubricとして解釈し、Rubric、RubricScale、RubricCriterion、RubricLevelのメタデータを出力します。"
+      },
+      {
+        "property": "rubricType",
+        "title": "ルーブリックの種類",
+        "description": "oer:rubricType として出力されるルーブリックの形式（ルーブリックモードがオンの場合のみ有効）。",
+        "options": {
+          "": "（なし）",
+          "analytic": "分析的",
+          "holistic": "全体的",
+          "single-point": "シングルポイント",
+          "checklist": "チェックリスト"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "枠線あり"
+      },
+      {
+        "property": "condensed",
+        "title": "行を詰める",
+        "description": "行の高さを小さくします。"
+      },
+      {
+        "property": "striped",
+        "title": "縞模様の行",
+        "description": "1行おきに網掛けします。"
+      },
+      {
+        "property": "downloadable",
+        "title": "ダウンロードボタン",
+        "description": "表をダウンロードするボタンを追加します。"
+      },
+      {
+        "property": "copyable",
+        "title": "コピーボタン",
+        "description": "表のCSVデータをコピーするボタンを追加します。"
+      },
+      {
+        "property": "printable",
+        "title": "印刷ボタン",
+        "description": "表だけを印刷するボタンを追加します。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSVデータ",
+        "description": "アップロードしたCSVファイルから表を作成します。"
+      }
+    ]
+  }
+}

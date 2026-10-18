@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Udvid/skjul-gruppe",
+    "description": "En gruppe af udvid/skjul-elementer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Udvid kun ét",
+        "description": "Kun ét element kan være udvidet."
+      },
+      {
+        "slot": "",
+        "title": "Sammenklappelige elementer",
+        "description": "De sammenklappelige elementer."
+      }
+    ]
+  }
+}

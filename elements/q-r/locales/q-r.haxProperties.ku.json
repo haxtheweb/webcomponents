@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Koda QR",
+    "description": "Kodek ku bi têlefona jîr were skenkirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Daneyên QR",
+        "description": "Çavkaniya daneyan ji bo koda QR."
+      },
+      {
+        "property": "title",
+        "title": "Sernavê alternatîf",
+        "description": "Sernavê alternatîf ê bi çavkaniya koda QR ve girêdayî."
+      },
+      {
+        "property": "modulesize",
+        "title": "Mezinahî",
+        "description": "Mezinahiya koda QR."
+      },
+      {
+        "property": "margin",
+        "title": "Kenar",
+        "description": "Valahiya dora kodê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Formata derketinê",
+        "description": "Formata ku pê were derxistin.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Nóta Stoptha",
+    "description": "Teachtaireacht chun aird léitheoirí a tharraingt ar threoracha ar leith."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Cuir isteach teideal don nóta stoptha."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Cuir isteach URL seachtrach."
+      },
+      {
+        "property": "status",
+        "title": "Stádas",
+        "description": "Athraíonn socrú an stádais na dathanna agus na deilbhíní dá réir",
+        "options": {
+          "stop": "Stop",
+          "warning": "Rabhadh",
+          "success": "Deimhniú",
+          "info": "Fógra"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Téacs an Nóta",
+        "description": "Téacs don nóta stoptha."
+      }
+    ]
+  }
+}

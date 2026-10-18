@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Inothi Lokuma",
+    "description": "Umlayezo wokuxwayisa abafundi ngemiyalelo ethile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Faka isihloko senothi lokuma."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Faka i-URL yangaphandle."
+      },
+      {
+        "property": "status",
+        "title": "Isimo",
+        "description": "Ukusetha isimo kushintsha imibala nezithonjana ukuze kufane",
+        "options": {
+          "stop": "Yima",
+          "warning": "Isexwayiso",
+          "success": "Ukuqinisekisa",
+          "info": "Isaziso"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Umbhalo Wenothi",
+        "description": "Umbhalo wenothi lokuma."
+      }
+    ]
+  }
+}

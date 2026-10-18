@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Viżwalizzatur MIDI",
+    "description": "Doqq MIDI fil-kuntest b'viżwalizzazzjoni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sors",
+        "description": "URL tal-fajl li għandu jindaqq."
+      },
+      {
+        "property": "visualizer",
+        "title": "Viżwalizzazzjoni",
+        "description": "Stil tal-viżwalizzazzjoni għall-fajl tal-mużika.",
+        "options": {
+          "staff": "Pentagramma",
+          "piano-roll": "Piano roll",
+          "waterfall": "Pjanu + kaskata"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Aħbi l-kaskata",
+        "description": "Aħbi n-noti tal-kaskata fil-viżwalizzazzjoni tal-pjanu."
+      }
+    ]
+  }
+}

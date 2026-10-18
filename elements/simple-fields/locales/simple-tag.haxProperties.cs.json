@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Štítek / Pilulka",
+    "description": "Kompaktní popisek ve tvaru pilulky s volitelnou zvýrazňující barvou, tlačítkem zrušení nebo přepínačem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Popisek",
+        "description": "Text zobrazený uvnitř pilulky."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňující barva",
+        "description": "Název zvýrazňující barvy SimpleColors pro pozadí pilulky.",
+        "options": {
+          "": "-- výchozí --",
+          "red": "Červená",
+          "pink": "Růžová",
+          "purple": "Fialová",
+          "deep-purple": "Tmavě fialová",
+          "indigo": "Indigová",
+          "blue": "Modrá",
+          "light-blue": "Světle modrá",
+          "cyan": "Azurová",
+          "teal": "Modrozelená",
+          "green": "Zelená",
+          "light-green": "Světle zelená",
+          "lime": "Limetková",
+          "yellow": "Žlutá",
+          "amber": "Jantarová",
+          "orange": "Oranžová",
+          "deep-orange": "Tmavě oranžová",
+          "brown": "Hnědá",
+          "blue-grey": "Modrošedá",
+          "grey": "Šedá"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatická zvýrazňující barva",
+        "description": "Automaticky odvodit zvýrazňující barvu z textu popisku."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Tlačítko zrušení",
+        "description": "Zobrazit uvnitř pilulky ikonové tlačítko odebrání/zrušení."
+      },
+      {
+        "property": "readonly",
+        "title": "Jen pro čtení",
+        "description": "Skrýt tlačítko zrušení, aby pilulka sloužila jen k zobrazení."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Přepíná",
+        "description": "Po kliknutí na tlačítko pilulku zapnout/vypnout."
+      },
+      {
+        "property": "toggled",
+        "title": "Zapnuto",
+        "description": "Zda je pilulka právě zapnutá."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ikona při zapnutí",
+        "description": "Ikona zobrazená při zapnuté pilulce."
+      },
+      {
+        "property": "disabled",
+        "title": "Zakázáno",
+        "description": "Zakázat interakci s pilulkou."
+      }
+    ]
+  }
+}

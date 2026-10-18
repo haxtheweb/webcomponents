@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Omhulsel vir Spotify-speler-inbeddings."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Bron",
+        "description": "Inbed- of deelskakel van Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Agtergrondkleurtema vir die speler.",
+        "options": {
+          "": "Standaard",
+          "0": "Swart"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Grootte",
+        "description": "Spelergrootte.",
+        "options": {
+          "normal": "Standaard",
+          "compact": "Kompak"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Komente Disqus",
+    "description": "Integrim me shërbimin web të komenteve Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Emri i shkurtër",
+        "description": "Emri i shkurtër i pronës në Disqus"
+      }
+    ]
+  }
+}

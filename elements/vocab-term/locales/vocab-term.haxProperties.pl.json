@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Słownictwo",
+    "description": "Termin słownikowy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termin"
+      },
+      {
+        "property": "information",
+        "title": "Definicja",
+        "description": "Definicja wyświetlana po kliknięciu terminu."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Dymek",
+        "description": "Wyświetl definicję w dymku zamiast w tekście."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Linki",
+        "description": "Lista dodatkowych linków powiązanych z tym terminem."
+      }
+    ]
+  }
+}

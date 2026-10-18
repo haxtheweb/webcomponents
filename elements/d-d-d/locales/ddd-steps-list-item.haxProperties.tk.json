@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Ädim elementi",
+    "description": "Ädimler sanawynyň bir bölegi bolan element"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Ady"
+      }
+    ]
+  }
+}

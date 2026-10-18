@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "குறிச்சொல் கேள்வி",
+    "description": "கேள்விக்குப் பதிலளிக்கக் குறிச்சொற்களைத் தேர்ந்தெடுக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "கேள்வி",
+        "description": "பயனர்கள் பதிலளிக்க வேண்டிய கேள்வி."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "மதிப்பெண் வடிவம்",
+        "description": "OER Schema: இந்த மதிப்பீட்டிற்கான மதிப்பெண் வடிவம் (எ.கா. புள்ளிகள், எழுத்துத் தரம், சதவீதம், நிறைவு)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "கற்றல் நோக்கம்",
+        "description": "OER Schema: இந்த மதிப்பீட்டுடன் தொடர்புடைய கற்றல் நோக்கம்."
+      },
+      {
+        "property": "forCourse",
+        "title": "பாடநெறி",
+        "description": "OER Schema: இந்த மதிப்பீடு நோக்கமாகக் கொண்ட பாடநெறி."
+      },
+      {
+        "property": "answers",
+        "title": "பதில்கள்"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "வினாடி வினாவின் பெயர்",
+        "description": "பகுப்பாய்வு அமைப்புகளில் xAPI அடையாளத்திற்குப் பயன்படும் வினாடி வினாப் பெயர்."
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Sjálfspróf",
+    "description": "Notendur geta tekið sjálfspróf."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Mynd",
+        "description": "Mynd fyrir sjálfsprófið."
+      },
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Titill sjálfsprófsins."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-texti",
+        "description": "Alt-texti fyrir myndina."
+      },
+      {
+        "slot": "question",
+        "title": "Spurning"
+      },
+      {
+        "slot": "",
+        "title": "Svar"
+      },
+      {
+        "property": "accentColor",
+        "title": "Þemalitur",
+        "description": "Veldu þemalit úr hönnunarkerfinu.",
+        "options": {
+          "primary": "Aðal",
+          "accent": "Áhersla",
+          "success": "Árangur",
+          "warning": "Viðvörun",
+          "error": "Villa",
+          "info": "Upplýsingar"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Námsmarkmið",
+        "description": "Tilvísun í námsmarkmið gefin út sem oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Metur",
+        "description": "Tilvísun í virkni gefin út sem oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Tengill á meira",
+        "description": "Tengill á frekari upplýsingar."
+      }
+    ]
+  }
+}

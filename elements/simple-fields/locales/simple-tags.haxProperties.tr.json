@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Etiketler",
+    "description": "Sayfada gösterilecek basit etiket listesi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Etiketler",
+        "description": "Virgülle ayrılmış etiket listesi."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Otomatik Vurgu Rengi",
+        "description": "Vurgu rengini etikete göre otomatik ayarla."
+      },
+      {
+        "property": "accentColor",
+        "title": "Renk",
+        "description": "Etiketlerin rengi."
+      }
+    ]
+  }
+}

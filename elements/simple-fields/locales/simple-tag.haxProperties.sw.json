@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Lebo / Kidonge",
+    "description": "Lebo fupi yenye umbo la kidonge yenye rangi ya msisitizo ya hiari, kitufe cha kughairi au kigeuzi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Lebo",
+        "description": "Maandishi yanayoonyeshwa ndani ya kidonge."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya msisitizo",
+        "description": "Jina la msisitizo la SimpleColors kwa usuli wa kidonge.",
+        "options": {
+          "": "-- chaguo-msingi --",
+          "red": "Nyekundu",
+          "pink": "Waridi",
+          "purple": "Zambarau",
+          "deep-purple": "Zambarau Iliyokolea",
+          "indigo": "Nili",
+          "blue": "Bluu",
+          "light-blue": "Bluu Hafifu",
+          "cyan": "Samawati",
+          "teal": "Kijani-bluu",
+          "green": "Kijani",
+          "light-green": "Kijani Hafifu",
+          "lime": "Kijani cha ndimu",
+          "yellow": "Njano",
+          "amber": "Kaharabu",
+          "orange": "Machungwa",
+          "deep-orange": "Machungwa Iliyokolea",
+          "brown": "Kahawia",
+          "blue-grey": "Kijivu-bluu",
+          "grey": "Kijivu"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Rangi ya msisitizo ya kiotomatiki",
+        "description": "Pata rangi ya msisitizo kutoka kwa maandishi ya lebo kiotomatiki."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Kitufe cha kughairi",
+        "description": "Onyesha kitufe cha aikoni cha kuondoa/kughairi ndani ya kidonge."
+      },
+      {
+        "property": "readonly",
+        "title": "Kusoma pekee",
+        "description": "Ficha kitufe cha kughairi ili kidonge kiwe cha kuonyesha pekee."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Kigeuzi",
+        "description": "Fanya kidonge kiwashe/kizime kitufe kinapobofywa."
+      },
+      {
+        "property": "toggled",
+        "title": "Kimewashwa",
+        "description": "Ikiwa kidonge kimewashwa kwa sasa."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Aikoni ya kuwashwa",
+        "description": "Aikoni ya kuonyesha kidonge kikiwa kimewashwa."
+      },
+      {
+        "property": "disabled",
+        "title": "Imezimwa",
+        "description": "Zima mwingiliano na kidonge."
+      }
+    ]
+  }
+}

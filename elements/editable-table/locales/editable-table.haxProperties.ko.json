@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "표",
+    "description": "웹용 표 기반 데이터입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "행 머리글",
+        "description": "첫 행을 머리글로 처리합니다."
+      },
+      {
+        "property": "columnHeader",
+        "title": "열 머리글",
+        "description": "첫 열을 머리글로 처리합니다."
+      },
+      {
+        "property": "footer",
+        "title": "바닥글",
+        "description": "마지막 행을 바닥글로 처리합니다."
+      },
+      {
+        "property": "sort",
+        "title": "정렬 가능",
+        "description": "열 값으로 정렬할 수 있게 합니다."
+      },
+      {
+        "property": "filter",
+        "title": "필터 허용",
+        "description": "열 값으로 필터링할 수 있게 합니다."
+      },
+      {
+        "property": "numericStyles",
+        "title": "숫자 스타일",
+        "description": "숫자 열에 숫자 스타일을 적용합니다."
+      },
+      {
+        "property": "responsive",
+        "title": "반응형",
+        "description": "작은 화면에서 표 레이아웃을 조정합니다."
+      },
+      {
+        "property": "rubricMode",
+        "title": "루브릭 모드",
+        "description": "이 표를 OER Schema Rubric으로 해석하여 Rubric, RubricScale, RubricCriterion, RubricLevel 메타데이터를 출력합니다."
+      },
+      {
+        "property": "rubricType",
+        "title": "루브릭 유형",
+        "description": "oer:rubricType으로 출력되는 루브릭 형식입니다(루브릭 모드가 켜져 있을 때만 의미가 있음).",
+        "options": {
+          "": "(없음)",
+          "analytic": "분석적",
+          "holistic": "총체적",
+          "single-point": "단일 기준점",
+          "checklist": "체크리스트"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "테두리"
+      },
+      {
+        "property": "condensed",
+        "title": "행 압축",
+        "description": "행 높이를 줄입니다."
+      },
+      {
+        "property": "striped",
+        "title": "줄무늬 행",
+        "description": "한 행 걸러 음영을 넣습니다."
+      },
+      {
+        "property": "downloadable",
+        "title": "다운로드 버튼",
+        "description": "표를 다운로드하는 버튼을 추가합니다."
+      },
+      {
+        "property": "copyable",
+        "title": "복사 버튼",
+        "description": "표 CSV 데이터를 복사하는 버튼을 추가합니다."
+      },
+      {
+        "property": "printable",
+        "title": "인쇄 버튼",
+        "description": "표만 인쇄하는 버튼을 추가합니다."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV 데이터",
+        "description": "업로드한 CSV 파일로 표를 만듭니다."
+      }
+    ]
+  }
+}

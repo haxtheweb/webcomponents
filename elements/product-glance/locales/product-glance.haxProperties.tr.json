@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ürüne genel bakış",
+    "description": "Hızlı ürün özeti bloğu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Simge",
+        "description": "Kavramı temsil eden simge."
+      },
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Bir bakışta ana kavram."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alt başlık",
+        "description": "Ek ayrıntı."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu rengi",
+        "description": "Simgenin vurgu rengi."
+      }
+    ]
+  }
+}

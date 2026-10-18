@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Hoʻomāʻewaʻewa",
+    "description": "Ka hōʻike ʻana i ka kikokikona ma ke ʻano hoʻohenehene"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Kikokikona",
+        "description": "Kikokikona e hoʻolilo ai i hoʻomāʻewaʻewa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Gabat getirme soragy",
+    "description": "Soraglary dogry jogaplary bilen jübütleýän süýräp-taşlamaly gabat getirme işjeňligi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Sorag",
+        "description": "Ulanyjylar üçin sorag. Taşlanýan nokatlary belläň, soňra indiki nokada çenli jogaplary sanaň."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Baha beriş formaty",
+        "description": "OER Schema: bu baha beriş üçin baha formaty (meselem, ballar, harp, göterim, tamamlama)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Okuw maksady",
+        "description": "OER Schema: bu baha beriş bilen baglanyşykly okuw maksady."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: bu baha berişiň niýetlenen kursy."
+      },
+      {
+        "property": "answers",
+        "title": "Jogaplar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testiň ady",
+        "description": "Analitika ulgamlarynda xAPI arkaly kesgitlemek üçin ulanylýan testiň ady."
+      }
+    ]
+  }
+}

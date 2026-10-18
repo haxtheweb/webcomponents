@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Görsel haritası",
+    "description": "Etkileşimli sıcak noktalara sahip erişilebilir bir görsel haritası."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Görsel haritasının etiketi."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Sıcak nokta ayrıntıları",
+        "description": "Görsel haritasındaki etkileşimli sıcak noktalar."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tinazî",
+    "description": "Pêşkêşkirina nivîsê bi awayekî tinazkar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Nivîs",
+        "description": "Nivîsa ku were tinazkirin"
+      }
+    ]
+  }
+}

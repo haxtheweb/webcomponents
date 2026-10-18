@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "جدول",
+    "description": "بيانات جدولية للويب."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "رأس الصفوف",
+        "description": "اعتبار الصف الأول رأسًا."
+      },
+      {
+        "property": "columnHeader",
+        "title": "رأس الأعمدة",
+        "description": "اعتبار العمود الأول رأسًا."
+      },
+      {
+        "property": "footer",
+        "title": "التذييل",
+        "description": "اعتبار الصف الأخير تذييلًا."
+      },
+      {
+        "property": "sort",
+        "title": "قابل للفرز",
+        "description": "السماح بالفرز حسب قيم الأعمدة."
+      },
+      {
+        "property": "filter",
+        "title": "السماح بالتصفية",
+        "description": "السماح بالتصفية حسب قيم الأعمدة."
+      },
+      {
+        "property": "numericStyles",
+        "title": "تنسيق رقمي",
+        "description": "تطبيق تنسيق رقمي على الأعمدة الرقمية."
+      },
+      {
+        "property": "responsive",
+        "title": "متجاوب",
+        "description": "ضبط تخطيط الجدول على الشاشات الصغيرة."
+      },
+      {
+        "property": "rubricMode",
+        "title": "وضع سلّم التقدير",
+        "description": "تفسير هذا الجدول على أنه Rubric وفق OER Schema بحيث تُصدَر بيانات وصفية من نوع Rubric وRubricScale وRubricCriterion وRubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "نوع سلّم التقدير",
+        "description": "نمط سلّم التقدير الذي يُصدَر كـ oer:rubricType (له معنى فقط عند تفعيل وضع سلّم التقدير).",
+        "options": {
+          "": "(لا شيء)",
+          "analytic": "تحليلي",
+          "holistic": "شمولي",
+          "single-point": "نقطة واحدة",
+          "checklist": "قائمة تحقق"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "بحدود"
+      },
+      {
+        "property": "condensed",
+        "title": "تضييق الصفوف",
+        "description": "تقليل ارتفاع الصفوف."
+      },
+      {
+        "property": "striped",
+        "title": "صفوف مخططة",
+        "description": "تظليل صف وترك صف."
+      },
+      {
+        "property": "downloadable",
+        "title": "زر التنزيل",
+        "description": "إضافة زر لتنزيل الجدول."
+      },
+      {
+        "property": "copyable",
+        "title": "زر النسخ",
+        "description": "إضافة زر لنسخ بيانات الجدول بصيغة CSV."
+      },
+      {
+        "property": "printable",
+        "title": "زر الطباعة",
+        "description": "إضافة زر لطباعة الجدول فقط."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "بيانات CSV",
+        "description": "إنشاء جدول من ملف CSV مرفوع."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Paylaşım URL'sinden Discord topluluklarını yerleştirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kaynak URL'si",
+        "description": "Kaynak URL'si."
+      },
+      {
+        "property": "height",
+        "title": "Yükseklik",
+        "description": "İçerik çerçevesinin yüksekliği."
+      },
+      {
+        "property": "width",
+        "title": "Genişlik",
+        "description": "İçerik çerçevesinin genişliği."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tembiapo ryru",
+    "description": "Moakãha michĩva jehaipyrã porã."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ta'ãnga'i",
+        "description": "Ta'ãnga'i ojehechaukáva tembiapo ryru ykére."
+      },
+      {
+        "property": "tag",
+        "title": "Tembiapo ryru teramoĩ",
+        "description": "Teramoĩ ojehechaukáva tembiapo ryrúpe."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Sa'y'ỹre",
+        "description": "Ani emoĩ sa'y ta'ãnga'ípe."
+      }
+    ]
+  }
+}

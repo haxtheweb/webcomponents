@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ページフラグ",
+    "description": "ページ作成者向けの編集メモ。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "ページフラグのアクセントカラー。"
+      },
+      {
+        "property": "label",
+        "title": "ラベル",
+        "description": "ページフラグのラベルテキスト。"
+      }
+    ]
+  }
+}

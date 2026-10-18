@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "ஊடக மேற்கோள்",
+    "description": "மேற்கோள், மூலம் மற்றும் விருப்பத் தலைப்புடன் கூடிய படம்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "மேற்கோள்",
+        "description": "மேற்கோள் உரை."
+      },
+      {
+        "slot": "author",
+        "title": "ஆசிரியர்",
+        "description": "மேற்கோளின் ஆசிரியர்."
+      },
+      {
+        "slot": "author-detail",
+        "title": "ஆசிரியர் விவரங்கள்",
+        "description": "ஆசிரியர் விவரங்கள்."
+      },
+      {
+        "slot": "caption",
+        "title": "படக்குறிப்பு",
+        "description": "படத்தின் குறிப்பு."
+      },
+      {
+        "property": "src",
+        "title": "பட மூலம்",
+        "description": "ஊடக மேற்கோளுக்குப் பயன்படும் படக் கோப்பு."
+      },
+      {
+        "property": "alt",
+        "title": "மாற்று உரை",
+        "description": "படத்திற்கான மாற்று உரை."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "அட்டையின் அழுத்த நிறம்."
+      }
+    ]
+  }
+}

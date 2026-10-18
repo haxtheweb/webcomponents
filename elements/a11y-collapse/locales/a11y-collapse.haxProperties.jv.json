@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Wadhah sing bisa dilempit",
+    "description": "Wadhah tunggal sing bisa dibukak lan dilempit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Irah-irahan",
+        "description": "Teks kanggo lempitan."
+      },
+      {
+        "property": "expanded",
+        "title": "Kabukak",
+        "description": "Bukak kanthi gawan."
+      },
+      {
+        "property": "headingButton",
+        "title": "Tombol Irah-irahan",
+        "description": "Gawe kabeh irah-irahan bisa diklik, ora mung ikone."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon kanggo tombol bukak/tutup."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikon (nalika kabukak)",
+        "description": "Ikon opsional kanggo kahanan tombol kabukak."
+      },
+      {
+        "slot": "",
+        "title": "Isi",
+        "description": "Isi kanggo lempitan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Tooltip",
+        "description": "Tooltip kanggo tombol bukak/tutup."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Tooltip (nalika kabukak)",
+        "description": "Tooltip kanggo tombol bukak/tutup nalika kabukak."
+      }
+    ]
+  }
+}

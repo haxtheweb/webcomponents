@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Laskuri",
+    "description": "Animoi luku laskemaan ylöspäin tavoitearvoon, kun se vieritetään näkyviin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Loppuarvo",
+        "description": "Luku, johon lasketaan."
+      },
+      {
+        "property": "start",
+        "title": "Alkuarvo",
+        "description": "Luku, josta laskenta alkaa."
+      },
+      {
+        "property": "duration",
+        "title": "Kesto",
+        "description": "Laskenta-animaation kesto sekunteina."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Etuliiteteksti",
+        "description": "Ennen lukua näytettävä teksti (esim. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Jälkiliiteteksti",
+        "description": "Luvun jälkeen näytettävä teksti (esim. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Etuliitepaikka",
+        "description": "Valinnainen sisältö ennen lukua."
+      },
+      {
+        "slot": "suffix",
+        "title": "Jälkiliitepaikka",
+        "description": "Valinnainen sisältö luvun jälkeen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Desimaalit",
+        "description": "Näytettävien desimaalien määrä."
+      },
+      {
+        "property": "separator",
+        "title": "Tuhaterotin",
+        "description": "Tuhansien ryhmiä erottava merkki."
+      },
+      {
+        "property": "decimal",
+        "title": "Desimaalimerkki",
+        "description": "Desimaalierottimena käytettävä merkki."
+      },
+      {
+        "property": "noeasing",
+        "title": "Ei pehmennystä",
+        "description": "Poista pehmennys, jotta laskenta on lineaarinen."
+      }
+    ]
+  }
+}

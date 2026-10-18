@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Sahifa bayrogʻi",
+    "description": "Sahifa mualliflari uchun tahririy eslatma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Sahifa bayrogʻi uchun urgʻu rangi."
+      },
+      {
+        "property": "label",
+        "title": "Yorliq",
+        "description": "Sahifa bayrogʻi uchun yorliq matni."
+      }
+    ]
+  }
+}

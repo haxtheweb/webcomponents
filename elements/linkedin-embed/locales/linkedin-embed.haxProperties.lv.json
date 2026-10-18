@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn iegulums",
+    "description": "Iegult LinkedIn profila kartīti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Profila vārds",
+        "description": "LinkedIn profila lietotājvārda segments."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokalizācija",
+        "description": "Lokalizācijas metadatu vērtība, piem., en_US."
+      }
+    ]
+  }
+}

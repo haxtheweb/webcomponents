@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Şîroveyên Disqus",
+    "description": "Entegrasyon bi karûbarê webê yê şîroveyan Disqus re"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Navê kurt",
+        "description": "Navê kurt ê taybetmendiyê li ser Disqus"
+      }
+    ]
+  }
+}

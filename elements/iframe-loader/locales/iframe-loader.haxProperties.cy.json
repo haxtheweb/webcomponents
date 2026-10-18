@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Mewnosod cynnwys gwe allanol mewn iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL yr Adnodd",
+        "description": "URL yr adnodd."
+      },
+      {
+        "property": "height",
+        "title": "Uchder",
+        "description": "Uchder yr iframe."
+      },
+      {
+        "property": "width",
+        "title": "Lled",
+        "description": "Lled yr iframe."
+      }
+    ]
+  }
+}

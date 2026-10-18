@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": ".h5p फाइलहरू लोड गर्न र प्रस्तुत गर्न H5P र्‍यापर"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe इम्बेड कोड"
+      }
+    ]
+  }
+}

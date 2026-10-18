@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "תאריך",
+    "description": "הצגת תאריך לוח שנה עם פרטים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "חודש",
+        "description": "החודש המוצג בכרטיס."
+      },
+      {
+        "property": "date",
+        "title": "יום בחודש",
+        "description": "היום בחודש כמספר."
+      },
+      {
+        "property": "day",
+        "title": "יום בשבוע",
+        "description": "היום בשבוע כטקסט."
+      },
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "שם האירוע."
+      },
+      {
+        "property": "location",
+        "title": "מיקום",
+        "description": "מיקום האירוע."
+      },
+      {
+        "property": "startTime",
+        "title": "התחלה",
+        "description": "שעת התחלה."
+      },
+      {
+        "property": "endTime",
+        "title": "סיום",
+        "description": "שעת סיום."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע הדגשה אופציונלי."
+      },
+      {
+        "property": "dark",
+        "title": "ערכת נושא כהה",
+        "description": "הפעלת ערכת נושא כהה."
+      }
+    ]
+  }
+}

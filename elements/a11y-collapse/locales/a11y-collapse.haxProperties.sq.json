@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kontejner i palosshëm",
+    "description": "Kontejner i vetëm që zgjerohet dhe paloset."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Titulli",
+        "description": "Teksti për elementin e palosshëm."
+      },
+      {
+        "property": "expanded",
+        "title": "I zgjeruar",
+        "description": "Zgjero si parazgjedhje."
+      },
+      {
+        "property": "headingButton",
+        "title": "Butoni i titullit",
+        "description": "Bëje të gjithë titullin të klikueshëm në vend të vetëm ikonës."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona për butonin e zgjerimit/palosjes."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikona (kur është zgjeruar)",
+        "description": "Ikonë opsionale për gjendjen e zgjeruar të butonit."
+      },
+      {
+        "slot": "",
+        "title": "Përmbajtja",
+        "description": "Përmbajtja për elementin e palosshëm."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Këshilla",
+        "description": "Këshilla për butonin e zgjerimit/palosjes."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Këshilla (kur është zgjeruar)",
+        "description": "Këshilla për butonin e zgjerimit/palosjes kur është zgjeruar."
+      }
+    ]
+  }
+}

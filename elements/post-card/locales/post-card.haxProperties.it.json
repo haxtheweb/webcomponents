@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Cartolina",
+    "description": "Un elemento multimediale giocoso che imita una vera cartolina spedita da qualche luogo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "A",
+        "description": "A chi è destinata?"
+      },
+      {
+        "property": "from",
+        "title": "Da",
+        "description": "Chi sei?"
+      },
+      {
+        "property": "message",
+        "title": "Messaggio",
+        "description": "Cosa vuoi dire?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Timbro postale da",
+        "description": "Da dove è stata spedita questa cartolina?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Origine della foto principale",
+        "description": "Dove si trova la tua foto?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Origine della foto del francobollo",
+        "description": "Dove si trova la tua foto?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X)-indlejring",
+    "description": "Indlejr et opslag fra X i sammenhængen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Tweet-URL",
+        "description": "URL til det tweet, der skal indlejres."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Lyst eller mørkt tema til tweets fra X.",
+        "options": {
+          "light": "Lys",
+          "dark": "Mørk"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Undgå popup ved klik",
+        "description": "Forhindr brugere i at åbne tweetet på x.com."
+      }
+    ]
+  }
+}

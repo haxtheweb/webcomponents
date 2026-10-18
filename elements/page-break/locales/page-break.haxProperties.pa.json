@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "ਪੰਨੇ ਦੇ ਵੇਰਵੇ",
+    "description": "ਪੰਨਿਆਂ ਵਿਚਕਾਰ ਦਿੱਖ ਵੰਡ ਨਿਰਧਾਰਤ ਕਰੋ ਜਿਸਨੂੰ CMS ਪੰਨੇ ਬਣਾਉਣ ਲਈ ਵਰਤ ਸਕਦੇ ਹਨ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਥੀਮ ਵਿੱਚ ਅਤੇ ਪਹਿਲੇ ਸਿਰਲੇਖ ਵਜੋਂ ਦਿਖਾਇਆ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "pageType",
+        "title": "ਕਿਸਮ",
+        "description": "ਪੰਨੇ ਦੇ ਸੰਦਰਭ ਦਾ ਦਿੱਖ ਲੇਬਲ।",
+        "options": {
+          "": "-- ਕੋਈ ਨਹੀਂ --",
+          "content": "ਸਮੱਗਰੀ",
+          "assessment": "ਮੁਲਾਂਕਣ",
+          "quiz": "ਕੁਇਜ਼",
+          "submission": "ਜਮ੍ਹਾਂ ਕਰਵਾਉਣਾ",
+          "lesson": "ਪਾਠ",
+          "module": "ਮੋਡੀਊਲ",
+          "task": "ਕਾਰਜ",
+          "activity": "ਗਤੀਵਿਧੀ",
+          "project": "ਪ੍ਰੋਜੈਕਟ",
+          "practice": "ਅਭਿਆਸ",
+          "unit": "ਇਕਾਈ",
+          "objectives": "ਸਿੱਖਣ ਦੇ ਉਦੇਸ਼",
+          "connection": "ਸਬੰਧ",
+          "knowledge": "ਕੀ ਤੁਸੀਂ ਜਾਣਦੇ ਹੋ?",
+          "strategy": "ਸਿੱਖਣ ਦੀ ਰਣਨੀਤੀ",
+          "discuss": "ਚਰਚਾ ਕਰੋ",
+          "listen": "ਸੁਣੋ",
+          "make": "ਬਣਾਓ",
+          "observe": "ਨਿਰੀਖਣ ਕਰੋ",
+          "present": "ਪੇਸ਼ ਕਰੋ",
+          "reading": "ਪੜ੍ਹਨਾ",
+          "reflect": "ਵਿਚਾਰ ਕਰੋ",
+          "research": "ਖੋਜ ਕਰੋ",
+          "watch": "ਦੇਖੋ",
+          "write": "ਲਿਖੋ"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ਟੈਗ",
+        "description": "ਕਾਮਿਆਂ ਨਾਲ ਵੱਖ ਕੀਤੀ ਟੈਗਾਂ ਦੀ ਸੂਚੀ।"
+      },
+      {
+        "property": "linkUrl",
+        "title": "ਲਿੰਕ URL",
+        "description": "ਪੰਨੇ ਦੀ ਸਮੱਗਰੀ ਦੀ ਥਾਂ ਦਿਖਾਇਆ ਰੀਡਾਇਰੈਕਟ URL।"
+      },
+      {
+        "property": "linkTarget",
+        "title": "ਲਿੰਕ ਟੀਚਾ",
+        "description": "ਲਿੰਕ ਉਸੇ ਵਿੰਡੋ ਜਾਂ ਨਵੀਂ ਵਿੰਡੋ ਵਿੱਚ ਖੋਲ੍ਹੋ।",
+        "options": {
+          "_self": "ਉਹੀ ਵਿੰਡੋ",
+          "_blank": "ਨਵੀਂ ਵਿੰਡੋ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "ਪ੍ਰਕਾਸ਼ਿਤ",
+        "description": "ਅਪ੍ਰਕਾਸ਼ਿਤ ਪੰਨੇ ਅੰਤਿਮ ਉਪਭੋਗਤਾਵਾਂ ਤੋਂ ਲੁਕੇ ਰਹਿੰਦੇ ਹਨ।"
+      },
+      {
+        "property": "locked",
+        "title": "ਪੰਨਾ ਲੌਕ ਕਰੋ",
+        "description": "ਇਸ ਪੰਨੇ ਦੇ ਸਾਰੇ ਤੱਤ ਲੌਕ ਜਾਂ ਅਨਲੌਕ ਕਰੋ।"
+      },
+      {
+        "property": "overridePathauto",
+        "title": "ਸਵੈਚਲਿਤ ਸਲੱਗ ਓਵਰਰਾਈਡ ਕਰੋ",
+        "description": "ਸਿਰਲੇਖ ਜਾਂ ਮੂਲ ਪੰਨੇ ਦੇ ਆਧਾਰ 'ਤੇ ਸਵੈਚਲਿਤ ਅੱਪਡੇਟਾਂ ਤੋਂ ਸਲੱਗ ਨੂੰ ਲੌਕ ਕਰੋ।"
+      },
+      {
+        "property": "slug",
+        "title": "ਪਾਥ",
+        "description": "ਇਸ ਪੰਨੇ ਲਈ URL ਸਲੱਗ।"
+      },
+      {
+        "property": "image",
+        "title": "ਮੀਡੀਆ",
+        "description": "ਪੰਨੇ ਨੂੰ ਦਰਸਾਉਣ ਵਾਲਾ ਮੀਡੀਆ, ਕੁਝ ਥੀਮਾਂ ਅਤੇ ਦ੍ਰਿਸ਼ਾਂ ਵਿੱਚ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ।"
+      },
+      {
+        "property": "parent",
+        "title": "ਮੂਲ ਪੰਨਾ",
+        "description": "ਮੂਲ ਪੰਨੇ ਦਾ ਪਾਥ।"
+      },
+      {
+        "property": "noderefs",
+        "title": "ਸਬੰਧਤ ਸਮੱਗਰੀ",
+        "description": "ਇਸ ਪੰਨੇ ਨਾਲ ਸਬੰਧਤ ਪੰਨੇ।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "ਵੇਰਵਾ",
+        "description": "ਸੰਗ੍ਰਹਿਆਂ ਅਤੇ ਖੋਜ ਇੰਜਣ ਅਨੁਕੂਲਨ (SEO) ਵਿੱਚ ਵਰਤਿਆ ਵੇਰਵਾ।"
+      },
+      {
+        "property": "entityType",
+        "title": "ਇਕਾਈ ਕਿਸਮ",
+        "description": "ਜਦ ਤੱਕ ਹੋਰ ਸੈੱਟ ਨਾ ਹੋਵੇ, ਮੂਲ ਰੂਪ ਵਿੱਚ ਪੰਨਾ।",
+        "options": {
+          "page": "ਪੰਨਾ (ਮੂਲ)",
+          "taxonomy": "ਵਰਗੀਕਰਨ",
+          "taxonomyTerm": "ਵਰਗੀਕਰਨ ਸ਼ਬਦ",
+          "region": "ਖੇਤਰ"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "ਆਈਕਨ",
+        "description": "ਸਾਈਟ ਵਿੱਚ ਇਸ ਪੰਨੇ ਨਾਲ ਜੁੜਿਆ ਆਈਕਨ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਸਾਈਟ ਵਿੱਚ ਇਸ ਪੰਨੇ ਨਾਲ ਜੁੜਿਆ ਰੰਗ।"
+      },
+      {
+        "property": "hideInMenu",
+        "title": "ਮੀਨੂ ਵਿੱਚ ਲੁਕਾਓ",
+        "description": "ਇਸ ਪੰਨੇ ਦਾ URL ਰੱਖਦੇ ਹੋਏ ਇਸਨੂੰ ਮੀਨੂਆਂ ਤੋਂ ਲੁਕਾਓ।"
+      },
+      {
+        "property": "order",
+        "title": "ਕ੍ਰਮ",
+        "description": "ਸਹਿ-ਪੰਨਿਆਂ ਦੇ ਮੁਕਾਬਲੇ ਕ੍ਰਮ।"
+      },
+      {
+        "property": "developerTheme",
+        "title": "ਪੰਨਾ ਥੀਮ",
+        "description": "ਸਿਰਫ਼ ਇਸ ਪੰਨੇ ਲਈ ਥੀਮ ਓਵਰਰਾਈਡ ਕਰੋ।"
+      },
+      {
+        "property": "author",
+        "title": "ਲੇਖਕ",
+        "description": "ਇਸ ਪੰਨੇ ਨੂੰ ਆਖ਼ਰੀ ਵਾਰ ਸੋਧਣ ਵਾਲੇ ਵਿਅਕਤੀ ਦਾ ਉਪਭੋਗਤਾ ਨਾਮ।"
+      }
+    ]
+  }
+}

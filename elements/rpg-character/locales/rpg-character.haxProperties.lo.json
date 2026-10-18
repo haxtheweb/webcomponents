@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ຕົວລະຄອນ RPG",
+    "description": "ຕົວລະຄອນມ່ວນໆຈາກ HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "ຊື່",
+        "description": "ຄຳທີ່ໃຊ້ສ້າງຕົວລະຄອນແບບສຸ່ມ."
+      },
+      {
+        "property": "hat",
+        "title": "ໝວກ",
+        "description": "ຮູບແບບໝວກ.",
+        "options": {
+          "none": "ຄ່າເລີ່ມຕົ້ນ",
+          "random": "ສຸ່ມ",
+          "bunny": "ກະຕ່າຍ",
+          "cowboy": "ຄາວບອຍ",
+          "education": "ການສຶກສາ",
+          "construction": "ການກໍ່ສ້າງ",
+          "warning": "ຄຳເຕືອນ",
+          "watermelon": "ໝາກໂມ",
+          "coffee": "ກາເຟ",
+          "knight": "ອັດສະວິນ",
+          "ninja": "ນິນຈາ",
+          "party": "ງານລ້ຽງ",
+          "error": "ຂໍ້ຜິດພາດ",
+          "edit": "ແກ້ໄຂ"
+        }
+      },
+      {
+        "property": "width",
+        "title": "ຄວາມກວ້າງ",
+        "description": "ຄວາມກວ້າງຂອງຕົວລະຄອນເປັນພິກເຊວ."
+      },
+      {
+        "property": "height",
+        "title": "ຄວາມສູງ",
+        "description": "ຄວາມສູງຂອງຕົວລະຄອນເປັນພິກເຊວ."
+      },
+      {
+        "property": "fire",
+        "title": "ໄຟລຸກ?",
+        "description": "ຕົວລະຄອນມີໄຟລຸກຫຼືບໍ່."
+      },
+      {
+        "property": "walking",
+        "title": "ກຳລັງຍ່າງ?",
+        "description": "ພາບເຄື່ອນໄຫວການຍ່າງ; ແລ່ນເມື່ອໄຟລຸກ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Postikortti",
+    "description": "Leikkisä mediaelementti, joka näyttää jostain lähetetyltä oikealta postikortilta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Vastaanottaja",
+        "description": "Kenelle tämä lähetetään?"
+      },
+      {
+        "property": "from",
+        "title": "Lähettäjä",
+        "description": "Kuka olet?"
+      },
+      {
+        "property": "message",
+        "title": "Viesti",
+        "description": "Mitä haluat sanoa?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Postileima",
+        "description": "Mistä tämä kortti lähetettiin?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Pääkuvan lähde",
+        "description": "Missä kuvasi sijaitsee?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Postimerkkikuvan lähde",
+        "description": "Missä kuvasi sijaitsee?"
+      }
+    ]
+  }
+}

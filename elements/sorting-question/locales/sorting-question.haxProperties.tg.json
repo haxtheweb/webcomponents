@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Саволи тартибдиҳӣ",
+    "description": "Унсурҳоро бо тартиби дуруст ҷойгир кунед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Савол",
+        "description": "Сарлавҳаи савол."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формати баҳодиҳӣ",
+        "description": "OER Schema: формати баҳодиҳӣ барои ин арзёбӣ (масалан, хол, ҳарф, фоиз, иҷро)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ҳадафи таълимӣ",
+        "description": "OER Schema: ҳадафи таълимӣ, ки бо ин арзёбӣ алоқаманд аст."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курсе, ки ин арзёбӣ барои он пешбинӣ шудааст."
+      },
+      {
+        "property": "answers",
+        "title": "Ҷавобҳо",
+        "description": "Тартиби ҷавобҳо пайдарпаии дурустро муайян мекунад."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Номи викторина",
+        "description": "Номи викторина, ки барои муайянкунии xAPI дар системаҳои таҳлилӣ истифода мешавад."
+      }
+    ]
+  }
+}

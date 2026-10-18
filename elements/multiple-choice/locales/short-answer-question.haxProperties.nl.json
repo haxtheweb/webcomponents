@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Open vraag met kort antwoord",
+    "description": "Laat de gebruiker een eenvoudige vraag beantwoorden"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vraag",
+        "description": "Vraag waarop gebruikers antwoorden."
+      },
+      {
+        "property": "answers",
+        "title": "Mogelijke antwoorden"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naam van de quiz",
+        "description": "Quiznaam die wordt doorgegeven in xAPI-omgevingen om dit item te identificeren"
+      }
+    ]
+  }
+}

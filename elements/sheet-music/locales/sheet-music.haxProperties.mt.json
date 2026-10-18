@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Mużika miktuba",
+    "description": "Juri u jdoqq mużika miktuba, tabs tal-kitarra u notazzjoni tal-partitura permezz ta' alphaTex jew MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Notazzjoni AlphaTex",
+        "description": "Markup alphaTex inline għall-mużika miktuba. Editja direttament biex tikteb in-notazzjoni; tinħażen f'template sabiex l-ispazji jinżammu."
+      },
+      {
+        "property": "source",
+        "title": "Fajl tal-partitura",
+        "description": "Tella' jew orbot ma' fajl MusicXML (.xml/.musicxml/.mxl) jew Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Meta jkun issettjat, jissostitwixxi l-alphaTex inline."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Daqq tal-awdjo",
+        "description": "Mixgħul awtomatikament - isma' l-mużika miktuba tindaqq permezz tas-sintetizzatur integrat. Itfih għall-modalità ta' wiri biss (mingħajr awdjo)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Uri l-għażliet tal-wiri",
+        "description": "Uri l-buttuni taż-żoom, tat-tiġbid u tat-tqassim fil-virga tal-plejer."
+      },
+      {
+        "property": "showExport",
+        "title": "Uri l-buttuni tal-esportazzjoni",
+        "description": "Uri l-buttuni tat-tniżżil tal-MIDI u tal-istampar/PDF fil-virga tal-plejer."
+      }
+    ]
+  }
+}

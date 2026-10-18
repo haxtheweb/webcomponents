@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Бириккен Улуттар Уюмунун Туруктуу өнүгүү максаты."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Максат",
+        "description": "UN SDG номери."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Түс гана",
+        "description": "Максаттын түсүн гана көрсөтүү."
+      }
+    ]
+  }
+}

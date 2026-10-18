@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Flashcard",
+    "description": "Esercita i concetti con flashcard fronte-retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Fronte della carta",
+        "description": "Testo o domanda sul fronte."
+      },
+      {
+        "slot": "back",
+        "title": "Retro della carta",
+        "description": "Risposta attesa."
+      },
+      {
+        "property": "imgSource",
+        "title": "Origine dell'immagine",
+        "description": "File immagine usato per la carta. Ha la precedenza su Parola chiave immagine."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tipo di azione",
+        "description": "OER Schema: il tipo di azione richiesta da questo esercizio (es. Leggere, Scrivere, Creare, Ricercare, Ascoltare, Guardare, Riflettere, Discutere, Osservare, Presentare, Valutare)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiettivo di apprendimento",
+        "description": "OER Schema: ID o URL dell'obiettivo di apprendimento supportato da questo esercizio."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Scuro",
+        "description": "Usa la modalità scura."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Colore di accento della carta."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Parola chiave immagine",
+        "description": "Parola chiave per un'immagine casuale. Sostituita da Origine dell'immagine."
+      }
+    ]
+  }
+}

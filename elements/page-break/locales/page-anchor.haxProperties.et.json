@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lehe ankur",
+    "description": "Lingi lehel oleva meedia kindlatesse kohtadesse."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Siht lehel",
+        "description": "ID või ressurss, millele see ankur osutab."
+      },
+      {
+        "property": "value",
+        "title": "Süvalingi väärtus",
+        "description": "Süvalingi väärtus (näiteks ajatempel või slaidi ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Saidi olem",
+        "description": "Valikuline saidi olem seotud mõistete esituse juhtimiseks."
+      }
+    ]
+  }
+}

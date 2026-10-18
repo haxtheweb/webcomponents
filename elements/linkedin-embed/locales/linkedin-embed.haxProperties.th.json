@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "ฝัง LinkedIn",
+    "description": "ฝังการ์ดโปรไฟล์ LinkedIn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "ชื่อเฉพาะ",
+        "description": "ส่วนชื่อผู้ใช้เฉพาะของ LinkedIn"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "โลแคล",
+        "description": "ค่าเมทาดาทาโลแคล เช่น en_US"
+      }
+    ]
+  }
+}

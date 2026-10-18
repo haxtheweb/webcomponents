@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tag / Pil",
+    "description": "Label padat berbentuk pil dengan warna aksen, butang batal atau togol pilihan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Label",
+        "description": "Teks yang dipaparkan di dalam pil."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Nama aksen SimpleColors untuk latar belakang pil.",
+        "options": {
+          "": "-- lalai --",
+          "red": "Merah",
+          "pink": "Merah Jambu",
+          "purple": "Ungu",
+          "deep-purple": "Ungu Tua",
+          "indigo": "Indigo",
+          "blue": "Biru",
+          "light-blue": "Biru Muda",
+          "cyan": "Sian",
+          "teal": "Hijau Kebiruan",
+          "green": "Hijau",
+          "light-green": "Hijau Muda",
+          "lime": "Limau",
+          "yellow": "Kuning",
+          "amber": "Ambar",
+          "orange": "Jingga",
+          "deep-orange": "Jingga Tua",
+          "brown": "Coklat",
+          "blue-grey": "Kelabu Kebiruan",
+          "grey": "Kelabu"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Warna aksen automatik",
+        "description": "Terbitkan warna aksen daripada teks label secara automatik."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Butang batal",
+        "description": "Paparkan butang ikon alih keluar/batal di dalam pil."
+      },
+      {
+        "property": "readonly",
+        "title": "Baca sahaja",
+        "description": "Sembunyikan butang batal supaya pil hanya untuk paparan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Boleh ditogol",
+        "description": "Jadikan pil bertogol hidup/mati apabila butang diklik."
+      },
+      {
+        "property": "toggled",
+        "title": "Ditogol",
+        "description": "Sama ada pil sedang ditogol hidup."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ikon ditogol",
+        "description": "Ikon untuk dipaparkan apabila pil ditogol hidup."
+      },
+      {
+        "property": "disabled",
+        "title": "Dilumpuhkan",
+        "description": "Lumpuhkan interaksi dengan pil."
+      }
+    ]
+  }
+}

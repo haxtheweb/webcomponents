@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Playlëscht",
+    "description": "All Zort vun Inhalt an enger Playlëscht uweisen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Quell",
+        "description": "Inhalt, deen an der Playlëscht ugewise gëtt."
+      },
+      {
+        "property": "edit",
+        "title": "Beaarbechtungsmodus",
+        "description": "Tëscht Beaarbechtungs- a Virschaumodus fir d'Playlëscht wiesselen."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigatioun",
+        "description": "Navigatiounsknäppercher no vir an no hannen weisen."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginatioun",
+        "description": "Paginatiounspunkten weisen."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientéierung",
+        "description": "Orientéierung vun den Dias.",
+        "options": {
+          "horizontal": "Horizontal",
+          "vertical": "Vertikal"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Start-Dia",
+        "description": "Index vun der Dia, op déi am Ufank fokusséiert gëtt."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Säiteverhältnis",
+        "description": "Säiteverhältnis vun den Dias.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

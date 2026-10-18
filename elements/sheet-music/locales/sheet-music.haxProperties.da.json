@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Noder",
+    "description": "Viser og afspiller noder, guitartabulatur og partiturer via alphaTex eller MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex-notation",
+        "description": "Indlejret alphaTex-markup til noderne. Rediger direkte for at skrive notation; den gemmes i en skabelon, så mellemrum bevares."
+      },
+      {
+        "property": "source",
+        "title": "Partiturfil",
+        "description": "Upload eller link til en MusicXML-fil (.xml/.musicxml/.mxl) eller Guitar Pro-fil (.gp3/.gp4/.gp5/.gpx/.gp). Tilsidesætter indlejret alphaTex, når den er angivet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Lydafspilning",
+        "description": "Slået til som standard - lyt til noderne afspillet via den indbyggede synthesizer. Slå fra for kun visning (uden lyd)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Vis visningsindstillinger",
+        "description": "Vis knapper til zoom, strækning og layout på afspillerbjælken."
+      },
+      {
+        "property": "showExport",
+        "title": "Vis eksportknapper",
+        "description": "Vis knapper til download af MIDI og udskrift/PDF på afspillerbjælken."
+      }
+    ]
+  }
+}

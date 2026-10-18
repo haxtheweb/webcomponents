@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Player de documentație pentru componente web"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Ascunde fereastra",
+        "description": "Ascunde fereastra de ieșire, util când scopul este doar terminalul"
+      }
+    ]
+  }
+}

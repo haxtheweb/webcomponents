@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Κωδικός QR",
+    "description": "Κωδικός για σάρωση από smartphone."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Δεδομένα QR",
+        "description": "Πηγή των δεδομένων για τον κωδικό QR."
+      },
+      {
+        "property": "title",
+        "title": "Εναλλακτικός τίτλος",
+        "description": "Εναλλακτικός τίτλος συνδεδεμένος με την πηγή του κωδικού QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Μέγεθος",
+        "description": "Μέγεθος του κωδικού QR."
+      },
+      {
+        "property": "margin",
+        "title": "Περιθώριο",
+        "description": "Περιθώριο γύρω από τον κωδικό."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Μορφή εξόδου",
+        "description": "Μορφή στην οποία θα εξαχθεί.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

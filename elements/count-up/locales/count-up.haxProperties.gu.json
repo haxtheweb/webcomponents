@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ગણતરી વધારો",
+    "description": "દૃશ્યમાં સ્ક્રોલ થાય ત્યારે સંખ્યાને લક્ષ્ય મૂલ્ય સુધી ગણતી એનિમેશન બતાવો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "અંતિમ મૂલ્ય",
+        "description": "જે સંખ્યા સુધી ગણવાનું છે."
+      },
+      {
+        "property": "start",
+        "title": "પ્રારંભિક મૂલ્ય",
+        "description": "જે સંખ્યાથી ગણવાનું શરૂ કરવું છે."
+      },
+      {
+        "property": "duration",
+        "title": "સમયગાળો",
+        "description": "ગણતરી એનિમેશનમાં લાગતી સેકન્ડ."
+      },
+      {
+        "property": "prefixtext",
+        "title": "ઉપસર્ગ લખાણ",
+        "description": "સંખ્યા પહેલાં બતાવાતું લખાણ (દા.ત. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "પ્રત્યય લખાણ",
+        "description": "સંખ્યા પછી બતાવાતું લખાણ (દા.ત. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "ઉપસર્ગ સ્લૉટ",
+        "description": "સંખ્યા પહેલાં વૈકલ્પિક સ્લૉટ સામગ્રી."
+      },
+      {
+        "slot": "suffix",
+        "title": "પ્રત્યય સ્લૉટ",
+        "description": "સંખ્યા પછી વૈકલ્પિક સ્લૉટ સામગ્રી."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "દશાંશ સ્થાનો",
+        "description": "બતાવવાના દશાંશ સ્થાનોની સંખ્યા."
+      },
+      {
+        "property": "separator",
+        "title": "હજાર વિભાજક",
+        "description": "હજારના જૂથોને અલગ કરતું અક્ષર."
+      },
+      {
+        "property": "decimal",
+        "title": "દશાંશ અક્ષર",
+        "description": "દશાંશ બિંદુ માટે વપરાતું અક્ષર."
+      },
+      {
+        "property": "noeasing",
+        "title": "ઇઝિંગ નહીં",
+        "description": "ઇઝિંગ નિષ્ક્રિય કરો જેથી ગણતરી રેખીય રહે."
+      }
+    ]
+  }
+}

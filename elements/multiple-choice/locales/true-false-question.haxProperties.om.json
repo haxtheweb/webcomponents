@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Gaaffii Dhugaa / Soba",
+    "description": "Gaaffii dhugaa ykn soba"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Gaaffii",
+        "description": "Gaaffii fayyadamtoonni deebisan."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Deebii Sirrii"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Maqaa qormaata gabaabaa",
+        "description": "Maqaa qormaata gabaabaa naannoo xAPI tiin oofamu keessatti wanta kana addaan baasuuf darbu"
+      }
+    ]
+  }
+}

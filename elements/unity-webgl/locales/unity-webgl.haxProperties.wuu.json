@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity 播放器",
+    "description": "Unity WebGL 播放器。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "目标",
+        "description": "游戏构建个路径。"
+      },
+      {
+        "property": "compression",
+        "title": "压缩方式",
+        "description": "游戏资源个压缩文件扩展名。"
+      },
+      {
+        "property": "streamingurl",
+        "title": "流式 URL",
+        "description": "流式资源 URL。"
+      },
+      {
+        "property": "companyname",
+        "title": "公司名",
+        "description": "公司名。"
+      },
+      {
+        "property": "productname",
+        "title": "产品名",
+        "description": "游戏标题。"
+      },
+      {
+        "property": "productversion",
+        "title": "产品版本",
+        "description": "发布版本。"
+      },
+      {
+        "property": "width",
+        "title": "画布宽度",
+        "description": "画布 CSS 宽度（譬如 px 或者 em）。"
+      },
+      {
+        "property": "height",
+        "title": "画布高度",
+        "description": "画布 CSS 高度（譬如 px 或者 em）。"
+      },
+      {
+        "property": "background",
+        "title": "画布背景",
+        "description": "画布 CSS 背景。"
+      }
+    ]
+  }
+}

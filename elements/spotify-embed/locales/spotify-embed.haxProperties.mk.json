@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Обвивка за вградени Spotify плеери."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Извор",
+        "description": "Врска за вградување или споделување од Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Тема",
+        "description": "Тема на бојата на позадината за плеерот.",
+        "options": {
+          "": "Стандардно",
+          "0": "Црна"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Големина",
+        "description": "Големина на плеерот.",
+        "options": {
+          "normal": "Стандардно",
+          "compact": "Компактно"
+        }
+      }
+    ]
+  }
+}

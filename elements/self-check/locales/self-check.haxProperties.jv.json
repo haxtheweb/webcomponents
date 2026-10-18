@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Priksa Dhewe",
+    "description": "Pangguna bisa ngrampungake priksa dhewe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Gambar",
+        "description": "Gambar kanggo priksa dhewe."
+      },
+      {
+        "property": "title",
+        "title": "Judhul",
+        "description": "Judhul priksa dhewe."
+      },
+      {
+        "property": "alt",
+        "title": "Teks Alt",
+        "description": "Teks alt kanggo gambar."
+      },
+      {
+        "slot": "question",
+        "title": "Pitakonan"
+      },
+      {
+        "slot": "",
+        "title": "Wangsulan"
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna Tema",
+        "description": "Pilih werna tema saka sistem desain.",
+        "options": {
+          "primary": "Utama",
+          "accent": "Aksen",
+          "success": "Sukses",
+          "warning": "Pènget",
+          "error": "Kasalahan",
+          "info": "Info"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan Sinau",
+        "description": "Referensi tujuan sinau sing diasilake minangka oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Sing dinilai",
+        "description": "Referensi kagiyatan sing diasilake minangka oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Pranala liyane",
+        "description": "Pranala menyang informasi tambahan."
+      }
+    ]
+  }
+}

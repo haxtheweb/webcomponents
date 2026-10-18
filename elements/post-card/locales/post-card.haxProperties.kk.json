@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Ашықхат",
+    "description": "Бір жерден келген нағыз ашықхатқа ұқсайтын ойын түріндегі медиа элемент"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Кімге",
+        "description": "Бұл кімге жіберіледі?"
+      },
+      {
+        "property": "from",
+        "title": "Кімнен",
+        "description": "Сіз кімсіз?"
+      },
+      {
+        "property": "message",
+        "title": "Хабар",
+        "description": "Не айтқыңыз келеді?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Пошта мөрі",
+        "description": "Бұл ашықхат қайдан жіберілді?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Негізгі фото дереккөзі",
+        "description": "Фотоңыз қай жерде орналасқан?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Марка фотосының дереккөзі",
+        "description": "Фотоңыз қай жерде орналасқан?"
+      }
+    ]
+  }
+}

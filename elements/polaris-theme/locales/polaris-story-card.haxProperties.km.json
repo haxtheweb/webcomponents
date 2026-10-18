@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "កាតរឿង Polaris",
+    "description": "បង្ហាញកាតរឿង Polaris ជាមួយរូបភាពផ្ទៃខាងក្រោយ ស្លាកសសរស្តម្ភ និងអត្ថបទចំណងជើង។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "រូបភាពផ្ទៃខាងក្រោយ",
+        "description": "URL រូបភាពដែលបង្ហាញជាផ្ទៃខាងក្រោយកាត។"
+      },
+      {
+        "property": "backgroundSize",
+        "title": "ទំហំផ្ទៃខាងក្រោយ",
+        "description": "របៀបដែលរូបភាពផ្ទៃខាងក្រោយបំពេញកាត (CSS background-size)។",
+        "options": {
+          "cover": "គ្របពេញ (cover)",
+          "contain": "ដាក់ឱ្យសម (contain)",
+          "auto": "ស្វ័យប្រវត្តិ (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "ការភ្ជាប់ផ្ទៃខាងក្រោយ",
+        "description": "របៀបដែលរូបភាពផ្ទៃខាងក្រោយប្រព្រឹត្តពេលរំកិល (CSS background-attachment)។",
+        "options": {
+          "scroll": "រំកិល (scroll)",
+          "fixed": "ថេរ (fixed)",
+          "local": "មូលដ្ឋាន (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "ស្លាកសសរស្តម្ភ",
+        "description": "ស្លាកខ្លីជាអក្សរធំដែលបង្ហាញនៅខាងលើកាត។ ទុកទទេដើម្បីលាក់។"
+      },
+      {
+        "property": "label",
+        "title": "អត្ថបទកាត",
+        "description": "អត្ថបទចម្បងដែលបង្ហាញក្នុងផ្ទាំងខាងក្រោម។"
+      },
+      {
+        "property": "link",
+        "title": "តំណ",
+        "description": "URL គោលដៅជាជម្រើសដែលរុំកាតទាំងមូល។"
+      }
+    ]
+  }
+}

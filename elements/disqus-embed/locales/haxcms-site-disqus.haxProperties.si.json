@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus අදහස්",
+    "description": "Disqus අදහස් දැක්වීමේ වෙබ් සේවාව සමඟ ඒකාබද්ධ කිරීම"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "කෙටි නම",
+        "description": "Disqus හි අඩවි කෙටි නම"
+      }
+    ]
+  }
+}

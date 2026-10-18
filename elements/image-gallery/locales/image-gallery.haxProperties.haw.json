@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Hale Kiʻi",
+    "description": "He hale kiʻi e hōʻike ana i nā kiʻi ma ka hoʻonohonoho mākala, pōhaku, a hōʻike paheʻe paha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "ʻAno hōʻike",
+        "description": "Pehea e hōʻike ai i nā kiʻi ma ka hale kiʻi.",
+        "options": {
+          "grid": "Mākala",
+          "masonry": "Pōhaku",
+          "gallery": "Hale kiʻi"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Kuhi hana",
+        "description": "Ka helu kuhi o ke kiʻi e hoʻomaka ai ma ke ʻano hale kiʻi."
+      }
+    ]
+  }
+}

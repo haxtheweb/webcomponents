@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Tanda Polaris",
+    "description": "Tampilkan tanda identitas PSU dengan nama fakultas dan URL tujuan opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Nama fakultas",
+        "description": "Nama yang ditampilkan di samping tanda."
+      },
+      {
+        "property": "name2",
+        "title": "Nama fakultas 2",
+        "description": "Nama kedua yang ditampilkan di bawah nama fakultas pertama."
+      },
+      {
+        "property": "name3",
+        "title": "Nama fakultas 3",
+        "description": "Nama ketiga yang ditampilkan di bawah nama fakultas kedua."
+      },
+      {
+        "property": "url",
+        "title": "Tautan",
+        "description": "URL tujuan saat tanda diklik."
+      },
+      {
+        "property": "type",
+        "title": "Varian",
+        "description": "Varian visual tanda.",
+        "options": {
+          "default": "Bawaan",
+          "light": "Terang",
+          "dark": "Gelap"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Tata letak vertikal",
+        "description": "Tampilkan nama ketiga di bawah nama kedua dengan garis horizontal."
+      }
+    ]
+  }
+}

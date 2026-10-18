@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Kuupäev",
+    "description": "Kuva kalendrikuupäev koos üksikasjadega."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Kuu",
+        "description": "Kaardil kuvatav kuu."
+      },
+      {
+        "property": "date",
+        "title": "Kuupäev",
+        "description": "Kuu päev numbrina."
+      },
+      {
+        "property": "day",
+        "title": "Nädalapäev",
+        "description": "Nädalapäev tekstina."
+      },
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Sündmuse nimi."
+      },
+      {
+        "property": "location",
+        "title": "Asukoht",
+        "description": "Sündmuse asukoht."
+      },
+      {
+        "property": "startTime",
+        "title": "Algus",
+        "description": "Algusaeg."
+      },
+      {
+        "property": "endTime",
+        "title": "Lõpp",
+        "description": "Lõpuaeg."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Valikuline rõhuvärv."
+      },
+      {
+        "property": "dark",
+        "title": "Tume teema",
+        "description": "Luba tume teema."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikon",
+    "description": "Ikon saka perpustakaan ikon lengkap."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon sing arep ditampilake."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna aksen",
+        "description": "Werna aksen kanggo ikon."
+      },
+      {
+        "property": "dark",
+        "title": "Peteng",
+        "description": "Gunakake mode peteng (set werna diwalik)."
+      }
+    ]
+  }
+}

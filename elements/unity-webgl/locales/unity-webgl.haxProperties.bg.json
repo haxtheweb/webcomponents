@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity плейър",
+    "description": "Unity WebGL плейър."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Цел",
+        "description": "Път до компилацията на играта."
+      },
+      {
+        "property": "compression",
+        "title": "Метод на компресия",
+        "description": "Файлово разширение на компресията за ресурсите на играта."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL за стрийминг",
+        "description": "URL на стрийминг ресурсите."
+      },
+      {
+        "property": "companyname",
+        "title": "Име на компанията",
+        "description": "Име на компанията."
+      },
+      {
+        "property": "productname",
+        "title": "Име на продукта",
+        "description": "Заглавие на играта."
+      },
+      {
+        "property": "productversion",
+        "title": "Версия на продукта",
+        "description": "Версия на изданието."
+      },
+      {
+        "property": "width",
+        "title": "Ширина на платното",
+        "description": "CSS ширина на платното (например px или em)."
+      },
+      {
+        "property": "height",
+        "title": "Височина на платното",
+        "description": "CSS височина на платното (например px или em)."
+      },
+      {
+        "property": "background",
+        "title": "Фон на платното",
+        "description": "CSS фон на платното."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX শব্দশিল্প",
+    "description": "HAX-এর লোগো উপাদান, স্বাভাবিকভাবেই HAX-সক্ষম উপাদান হিসেবে।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "স্থাপন করার HAX লোগোর আকার",
+        "options": {
+          "mini": "মিনি",
+          "small": "ছোট",
+          "normal": "সাধারণ",
+          "large": "বড়"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "লোগোকে বড় হাতের অক্ষরে রূপান্তর করা হবে কিনা"
+      }
+    ]
+  }
+}

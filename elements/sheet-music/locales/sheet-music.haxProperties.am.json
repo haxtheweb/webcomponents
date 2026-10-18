@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "የሙዚቃ ኖታ",
+    "description": "የሙዚቃ ኖታን፣ የጊታር ታቦችን እና የውጤት ምልክት አጻጻፍን በalphaTex ወይም MusicXML ያሳያል እና ያጫውታል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "የAlphaTex ምልክት አጻጻፍ",
+        "description": "ለሙዚቃ ኖታው በመስመር ውስጥ የalphaTex ምልክት ማድረጊያ። ምልክት አጻጻፍ ለመጻፍ በቀጥታ አርትዕ፤ ክፍተቶች እንዲጠበቁ በአብነት ውስጥ ይቀመጣል።"
+      },
+      {
+        "property": "source",
+        "title": "የውጤት ፋይል",
+        "description": "የMusicXML (.xml/.musicxml/.mxl) ወይም የGuitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) ፋይል ስቀል ወይም አገናኝ። ሲዘጋጅ በመስመር ውስጥ ያለውን alphaTex ይሽራል።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "የድምፅ መልሶ ማጫወት",
+        "description": "በነባሪ በርቷል - በውስጠ-ግንቡ አቀናባሪ የሚጫወተውን የሙዚቃ ኖታ አዳምጥ። ለእይታ-ብቻ (ድምፅ የሌለው) ሁነታ አጥፋ።"
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "የማሳያ አማራጮችን አሳይ",
+        "description": "በማጫወቻ አሞሌው ላይ የማጉላት፣ የመዘርጋት እና የአቀማመጥ አዝራሮችን አሳይ።"
+      },
+      {
+        "property": "showExport",
+        "title": "የመላኪያ አዝራሮችን አሳይ",
+        "description": "በማጫወቻ አሞሌው ላይ MIDI የማውረድ እና የማተም/PDF አዝራሮችን አሳይ።"
+      }
+    ]
+  }
+}

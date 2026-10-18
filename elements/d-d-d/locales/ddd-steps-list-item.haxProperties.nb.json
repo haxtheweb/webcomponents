@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Trinnelement",
+    "description": "Element som er en del av en trinnliste"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tittel"
+      }
+    ]
+  }
+}

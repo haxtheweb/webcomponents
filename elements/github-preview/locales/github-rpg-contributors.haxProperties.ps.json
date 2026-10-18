@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "د GitHub د مرستندویانو لېست",
+    "description": "د GitHub API په کارولو سره د RPG کرکټرونو په بڼه ښودل کېږي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "سازمان",
+        "description": "د سازمان نوم له github.com/ORG/REPO څخه."
+      },
+      {
+        "property": "repo",
+        "title": "زېرمتون",
+        "description": "د زېرمتون نوم له github.com/ORG/REPO څخه."
+      },
+      {
+        "property": "limit",
+        "title": "حد",
+        "description": "د ښودل شوو مرستندویانو شمېر محدود کړئ."
+      }
+    ]
+  }
+}

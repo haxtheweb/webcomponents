@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Karta tal-istorja Polaris",
+    "description": "Uri karta tal-istorja Polaris b'immaġni tal-isfond, tikketta tal-pilastru u test tat-titlu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Immaġni tal-isfond",
+        "description": "URL tal-immaġni murija bħala sfond tal-karta."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Daqs tal-isfond",
+        "description": "Kif l-immaġni tal-isfond timla l-karta (CSS background-size).",
+        "options": {
+          "cover": "Għatti (cover)",
+          "contain": "Ikkontjeni (contain)",
+          "auto": "Awtomatiku (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Twaħħil tal-isfond",
+        "description": "Kif iġġib ruħha l-immaġni tal-isfond waqt l-iskrollar (CSS background-attachment).",
+        "options": {
+          "scroll": "Skrollja (scroll)",
+          "fixed": "Fiss (fixed)",
+          "local": "Lokali (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Tikketta tal-pilastru",
+        "description": "Tikketta qasira b'ittri kbar murija fin-naħa ta' fuq tal-karta. Ħalliha vojta biex taħbiha."
+      },
+      {
+        "property": "label",
+        "title": "Test tal-karta",
+        "description": "Test primarju muri fil-pannell t'isfel."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "URL tad-destinazzjoni fakultattiv li jkopri l-karta kollha."
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Ringiela tal-kollezzjoni",
+    "description": "Oġġett f'forma ta' ringiela għall-użu f'lista ta' kollezzjoni, b'test, link, ikona, tikketti u immaġni fakultattiva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "URL tad-destinazzjoni għal din ir-ringiela."
+      },
+      {
+        "property": "image",
+        "title": "Immaġni",
+        "description": "Immaġni għar-ringiela."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Test alternattiv li jiddeskrivi l-immaġni."
+      },
+      {
+        "property": "line1",
+        "title": "Linja 1",
+        "description": "L-ewwel linja ta' test."
+      },
+      {
+        "property": "line2",
+        "title": "Linja 2",
+        "description": "It-tieni linja ta' test."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona li tirrappreżenta r-ringiela."
+      },
+      {
+        "property": "saturate",
+        "title": "Effett tas-saturazzjoni",
+        "description": "Ibdel is-saturazzjoni tal-immaġni meta l-utent jiffoka fuqha."
+      },
+      {
+        "property": "tags",
+        "title": "Tikketti",
+        "description": "Lista ta' tikketti separati b'virgoli."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur",
+        "description": "Kulur użat għall-ikona u t-tikketti."
+      }
+    ]
+  }
+}

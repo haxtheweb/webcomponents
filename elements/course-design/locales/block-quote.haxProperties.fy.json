@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sitaatblok",
+    "description": "Opmakke sitaatblok."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Boarnefermelding",
+        "description": "Tekst fan de boarnefermelding."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternative tekst foar de ôfbylding."
+      },
+      {
+        "property": "image",
+        "title": "Ofbylding",
+        "description": "Ofbylding by it sitaat."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Sorteervraag",
+    "description": "Zet items in de juiste volgorde."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vraag",
+        "description": "Vraagkop."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Beoordelingsformaat",
+        "description": "OER Schema: beoordelingsformaat voor deze toets (bijv. punten, letter, percentage, voltooiing)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leerdoel",
+        "description": "OER Schema: leerdoel dat bij deze toets hoort."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cursus",
+        "description": "OER Schema: cursus waarvoor deze toets bedoeld is."
+      },
+      {
+        "property": "answers",
+        "title": "Antwoorden",
+        "description": "De volgorde van de antwoorden bepaalt de juiste reeks."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naam van de quiz",
+        "description": "Quiznaam voor xAPI-identificatie in analysesystemen."
+      }
+    ]
+  }
+}

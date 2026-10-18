@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "សំណួរតម្រៀប",
+    "description": "តម្រៀបធាតុតាមលំដាប់ត្រឹមត្រូវ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "សំណួរ",
+        "description": "ក្បាលសំណួរ។"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ទម្រង់ដាក់ពិន្ទុ",
+        "description": "OER Schema: ទម្រង់ដាក់ពិន្ទុសម្រាប់ការវាយតម្លៃនេះ (ឧ. ពិន្ទុ និទ្ទេស ភាគរយ ការបញ្ចប់)។"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "គោលបំណងសិក្សា",
+        "description": "OER Schema: គោលបំណងសិក្សាដែលពាក់ព័ន្ធនឹងការវាយតម្លៃនេះ។"
+      },
+      {
+        "property": "forCourse",
+        "title": "វគ្គសិក្សា",
+        "description": "OER Schema: វគ្គសិក្សាដែលការវាយតម្លៃនេះមានបំណងសម្រាប់។"
+      },
+      {
+        "property": "answers",
+        "title": "ចម្លើយ",
+        "description": "លំដាប់ចម្លើយកំណត់លំដាប់ត្រឹមត្រូវ។"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ឈ្មោះកម្រងសំណួរ",
+        "description": "ឈ្មោះកម្រងសំណួរដែលប្រើសម្រាប់កំណត់អត្តសញ្ញាណ xAPI ក្នុងប្រព័ន្ធវិភាគ។"
+      }
+    ]
+  }
+}

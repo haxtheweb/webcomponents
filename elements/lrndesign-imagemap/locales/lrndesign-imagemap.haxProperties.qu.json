@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Rikch'a mapa",
+    "description": "Ruraq chimpukunayuq aypanalla rikch'a mapa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Sutichay",
+        "description": "Rikch'a mapapa sutichaynin."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Ruraq chimpukunapa willakuynin",
+        "description": "Rikch'a mapapi ruraq chimpukuna."
+      }
+    ]
+  }
+}

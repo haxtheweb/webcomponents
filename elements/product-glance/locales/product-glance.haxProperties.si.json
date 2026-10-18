@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "නිෂ්පාදන දළ විශ්ලේෂණය",
+    "description": "ඉක්මන් නිෂ්පාදන දළ විශ්ලේෂණ කොටස."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "නිරූපකය",
+        "description": "සංකල්පය නියෝජනය කරන නිරූපකය."
+      },
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "එක බැල්මකින් ප්‍රධාන සංකල්පය."
+      },
+      {
+        "property": "subtitle",
+        "title": "උපසිරැසිය",
+        "description": "අතිරේක විස්තර."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "නිරූපකය සඳහා උච්චාරණ වර්ණය."
+      }
+    ]
+  }
+}

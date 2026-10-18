@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV ሰንጠረዥ",
+    "description": "ይህ የትም ቦታ ቢገኝ ከCSV ፋይል ሰንጠረዥ ማመንጨት ይችላል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "ምንጭ",
+        "description": "ለዚህ CSV ፋይል URL።"
+      },
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "ለሚመነጨው ሰንጠረዥ ርዕስ።"
+      },
+      {
+        "property": "description",
+        "title": "መግለጫ",
+        "description": "የሰንጠረዡ ውሂብ ተደራሽነትን ለማሻሻል የበለጠ ዝርዝር መግለጫ።"
+      }
+    ]
+  }
+}

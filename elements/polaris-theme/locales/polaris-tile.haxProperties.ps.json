@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "د Polaris ټایل",
+    "description": "د Polaris ټایل له سرلیک، اختیاري ملاتړي متن او اختیاري لینک سره وښایئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "لومړنی متن",
+        "description": "د ټایل اصلي متن."
+      },
+      {
+        "property": "line2",
+        "title": "دویمي متن",
+        "description": "اختیاري ملاتړی متن."
+      },
+      {
+        "property": "type",
+        "title": "د ټایل بڼه",
+        "description": "د ټایل مخکې ټاکل شوې لیدنیزه بڼه.",
+        "options": {
+          "1": "بڼه 1",
+          "2": "بڼه 2",
+          "3": "بڼه 3",
+          "4": "بڼه 4",
+          "5": "بڼه 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "د شالید انځور",
+        "description": "د شالید انځور URL چې د انځور ملاتړ کوونکو ټایل بڼو لخوا کارول کېږي."
+      },
+      {
+        "property": "link",
+        "title": "لینک",
+        "description": "د ټایل د عمل لپاره اختیاري منزل URL."
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Säitesektioun",
+    "description": "Sektiounscontainer fir Säiteninhalt an ecransbaséiert Layouten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Designbehandlung",
+        "description": "Virastellte Stil, deen déi verbonnen Astellungen aktualiséiert."
+      },
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Hannergrondmedien fir d'Sektioun."
+      },
+      {
+        "property": "bg",
+        "title": "Hannergrondfaarf",
+        "description": "Hannergrondfaarf, wa kee Bild agestallt ass."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Scroll-Knäppchen",
+        "description": "E Knäppchen weisen, deen op déi nächst Sektioun scrollt."
+      },
+      {
+        "property": "fold",
+        "title": "Fal uweisen",
+        "description": "E visuelle Fal ënnen an der Sektioun weisen."
+      },
+      {
+        "property": "full",
+        "title": "Vollecranséisst",
+        "description": "D'Ecranshéicht vum Betruechter ausfëllen."
+      },
+      {
+        "property": "filter",
+        "title": "Filter uwenden",
+        "description": "E visuelle Filter op d'Hannergrondbild uwenden."
+      },
+      {
+        "slot": "",
+        "title": "Inhalt",
+        "description": "Inhalt vun der Sektioun."
+      },
+      {
+        "slot": "entice",
+        "title": "Ureiz",
+        "description": "Optionalen Ureizinhalt."
+      },
+      {
+        "slot": "buttons",
+        "title": "Knäppercher",
+        "description": "Knäppchengrupp ënner dem Text."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ankertext",
+        "description": "Ankeretikett, dat an der Navigatioun ugewise gëtt."
+      }
+    ]
+  }
+}

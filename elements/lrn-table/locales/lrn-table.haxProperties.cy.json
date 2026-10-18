@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tabl CSV",
+    "description": "Gall hyn gynhyrchu tabl o ffeil CSV ble bynnag y mae wedi'i lleoli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Ffynhonnell",
+        "description": "URL ar gyfer y ffeil CSV hon."
+      },
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Teitl ar gyfer y tabl i'w gynhyrchu."
+      },
+      {
+        "property": "description",
+        "title": "Disgrifiad",
+        "description": "Disgrifiad manylach er mwyn gwella hygyrchedd data'r tabl."
+      }
+    ]
+  }
+}

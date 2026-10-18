@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Webcomponent-documentatiespeler"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Venster verbergen",
+        "description": "Verberg het uitvoervenster, handig als alleen de terminal nodig is"
+      }
+    ]
+  }
+}

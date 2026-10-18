@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "सरल छवि",
+    "description": "सरल पैरामीटर से छवियों में बदलाव करें।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "स्रोत",
+        "description": "छवि स्रोत URL।"
+      },
+      {
+        "property": "height",
+        "title": "ऊँचाई",
+        "description": "वैकल्पिक छवि ऊँचाई।"
+      },
+      {
+        "property": "width",
+        "title": "चौड़ाई",
+        "description": "वैकल्पिक छवि चौड़ाई।"
+      },
+      {
+        "property": "alt",
+        "title": "वैकल्पिक टेक्स्ट",
+        "description": "स्क्रीन रीडर और बेहतर SEO के लिए उपयोगी।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "गुणवत्ता",
+        "description": "बनाते समय छवि की गुणवत्ता (केवल JPEG)।"
+      },
+      {
+        "property": "fetchpriority",
+        "title": "फ़ेच प्राथमिकता",
+        "description": "आधुनिक ब्राउज़रों के लिए प्रदर्शन संकेत।",
+        "options": {
+          "auto": "स्वचालित",
+          "high": "उच्च",
+          "low": "निम्न"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "डिकोडिंग विधि",
+        "description": "आधुनिक ब्राउज़रों में छवि रेंडरिंग के लिए प्रदर्शन संकेत।",
+        "options": {
+          "auto": "स्वचालित",
+          "async": "एसिंक"
+        }
+      }
+    ]
+  }
+}

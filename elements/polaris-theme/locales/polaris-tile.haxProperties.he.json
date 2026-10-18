@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "אריח Polaris",
+    "description": "הצגת אריח Polaris עם כותרת, טקסט תומך אופציונלי וקישור אופציונלי."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "טקסט ראשי",
+        "description": "הטקסט הראשי של האריח."
+      },
+      {
+        "property": "line2",
+        "title": "טקסט משני",
+        "description": "טקסט תומך אופציונלי."
+      },
+      {
+        "property": "type",
+        "title": "סגנון אריח",
+        "description": "סגנון חזותי מוגדר מראש לאריח.",
+        "options": {
+          "1": "סגנון 1",
+          "2": "סגנון 2",
+          "3": "סגנון 3",
+          "4": "סגנון 4",
+          "5": "סגנון 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "תמונת רקע",
+        "description": "URL של תמונת רקע המשמשת בסגנונות אריח התומכים בתמונה."
+      },
+      {
+        "property": "link",
+        "title": "קישור",
+        "description": "URL יעד אופציונלי לפעולת האריח."
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Pahū Kupaianaha",
+    "description": "He hoʻoneʻe pahū launa me nā kani koho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Nui",
+        "description": "E hoʻonoho i ka nui o ka pahū.",
+        "options": {
+          "tiny": "Liʻiliʻi Loa",
+          "small": "Liʻiliʻi",
+          "medium": "Waena",
+          "large": "Nui",
+          "epic": "Nui Kupaianaha"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Waihoʻoluʻu",
+        "description": "E hoʻonoho i ke kumuhana waihoʻoluʻu o ka pahū.",
+        "options": {
+          "": "Paʻamau",
+          "red": "ʻUlaʻula",
+          "blue": "Uliuli",
+          "purple": "Poni",
+          "orange": "ʻAlani",
+          "yellow": "Melemele"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Nā Kani",
+        "description": "E hoʻā i nā kani."
+      },
+      {
+        "property": "resetSound",
+        "title": "Hoʻomaka Hou i ke Kani",
+        "description": "E hoʻomaka hou i ke kani mai ka hoʻomaka i kēlā me kēia manawa."
+      },
+      {
+        "property": "image",
+        "title": "Kiʻi Pilikino",
+        "description": "URL koho no kekahi kiʻi pahū pilikino."
+      },
+      {
+        "property": "sound",
+        "title": "Kani Pilikino",
+        "description": "URL koho no kekahi kani pilikino."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Hoʻopio ʻia",
+        "description": "E hoʻopio i nā launa a pau."
+      }
+    ]
+  }
+}

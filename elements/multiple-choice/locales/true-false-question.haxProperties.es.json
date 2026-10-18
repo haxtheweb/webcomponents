@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Pregunta de verdadero / falso",
+    "description": "Pregunta de verdadero o falso"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Pregunta a la que deben responder los usuarios."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Respuesta correcta"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nombre del cuestionario",
+        "description": "Nombre del cuestionario que se usa en entornos basados en xAPI para identificar este elemento"
+      }
+    ]
+  }
+}

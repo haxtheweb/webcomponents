@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "واژگان",
+    "description": "اصطلاح واژگانی."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "اصطلاح"
+      },
+      {
+        "property": "information",
+        "title": "تعریف",
+        "description": "تعریفی که با کلیک روی اصطلاح نمایش داده می‌شود."
+      },
+      {
+        "property": "popoverMode",
+        "title": "پنجرهٔ شناور",
+        "description": "نمایش تعریف در پنجرهٔ شناور به‌جای درون‌خطی."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "پیوندها",
+        "description": "فهرست پیوندهای تکمیلی مرتبط با این اصطلاح."
+      }
+    ]
+  }
+}

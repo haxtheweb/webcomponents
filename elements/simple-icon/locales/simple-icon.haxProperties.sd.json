@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "آئڪن",
+    "description": "مڪمل آئڪن لائبريري مان آئڪن."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "آئڪن",
+        "description": "ڏيکارڻ لاءِ آئڪن."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "آئڪن لاءِ نمايان رنگ."
+      },
+      {
+        "property": "dark",
+        "title": "ڊارڪ",
+        "description": "ڊارڪ موڊ استعمال ڪريو (اُبتو رنگ سيٽ)."
+      }
+    ]
+  }
+}

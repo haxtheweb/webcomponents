@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "カード",
+    "description": "DDDデザインシステムでスタイル設定されたカードコンポーネント。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "画像",
+        "description": "任意の画像。"
+      },
+      {
+        "property": "alt",
+        "title": "画像の代替テキスト",
+        "description": "画像を説明する代替テキスト。"
+      },
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "カードのタイトル。"
+      },
+      {
+        "slot": "",
+        "title": "コンテンツ",
+        "description": "カードのコンテンツ領域。"
+      },
+      {
+        "property": "href",
+        "title": "リンク",
+        "description": "ボタンのリンクURL。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "ラベル",
+        "description": "ボタンのラベル。"
+      },
+      {
+        "property": "noArrow",
+        "title": "矢印なし",
+        "description": "ボタンの矢印を非表示にします。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "リンク: ターゲット",
+        "description": "リンクを開く場所。",
+        "options": {
+          "": "同じウィンドウ",
+          "_blank": "新しいウィンドウ - _blank",
+          "_top": "最上位ウィンドウ - _top",
+          "_parent": "親ウィンドウ - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "リンク: rel",
+        "description": "リンク先リソースと現在のドキュメントとの関係。"
+      }
+    ]
+  }
+}

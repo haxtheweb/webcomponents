@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "பல தேர்வு",
+    "description": "பல தேர்வு சுய சோதனைக் கேள்வி."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "கேள்வி",
+        "description": "பயனர்கள் பதிலளிக்க வேண்டிய கேள்வி."
+      },
+      {
+        "property": "randomize",
+        "title": "சீரற்றதாக்கு",
+        "description": "பதில்களை இயக்கநிலையில் சீரற்ற வரிசையில் காட்டவும்."
+      },
+      {
+        "property": "singleOption",
+        "title": "ஒற்றைப் பதில்",
+        "description": "ஒரு பதிலை மட்டும் அனுமதிக்கவும்."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "மதிப்பெண் வடிவம்",
+        "description": "OER Schema: இந்த மதிப்பீட்டிற்கான மதிப்பெண் வடிவம் (எ.கா. புள்ளிகள், எழுத்துத் தரம், சதவீதம், நிறைவு)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "கற்றல் நோக்கம்",
+        "description": "OER Schema: இந்த மதிப்பீட்டுடன் தொடர்புடைய கற்றல் நோக்கம்."
+      },
+      {
+        "property": "forCourse",
+        "title": "பாடநெறி",
+        "description": "OER Schema: இந்த மதிப்பீடு நோக்கமாகக் கொண்ட பாடநெறி."
+      },
+      {
+        "property": "answers",
+        "title": "பதில்கள்"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "வினாடி வினாவின் பெயர்",
+        "description": "பகுப்பாய்வு அமைப்புகளில் xAPI அடையாளத்திற்குப் பயன்படும் வினாடி வினாப் பெயர்."
+      }
+    ]
+  }
+}

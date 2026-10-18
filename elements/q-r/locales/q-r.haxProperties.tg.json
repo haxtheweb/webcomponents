@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Рамзи QR",
+    "description": "Рамз барои скан кардан аз смартфон."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Маълумоти QR",
+        "description": "Манбаи маълумот барои рамзи QR."
+      },
+      {
+        "property": "title",
+        "title": "Унвони алтернативӣ",
+        "description": "Унвони алтернативӣ, ки ба манбаи рамзи QR пайваст аст."
+      },
+      {
+        "property": "modulesize",
+        "title": "Андоза",
+        "description": "Андозаи рамзи QR."
+      },
+      {
+        "property": "margin",
+        "title": "Ҳошия",
+        "description": "Фосилаи атрофи рамз."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Формати хуруҷӣ",
+        "description": "Формати хуруҷӣ.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

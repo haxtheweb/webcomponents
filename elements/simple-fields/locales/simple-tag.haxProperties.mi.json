@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tūtohu / Pire",
+    "description": "He tapanga āhua pire kiato me tētahi tae arotahi kōwhiri, pātene whakakore, takahuri rānei."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Tapanga",
+        "description": "Kupu ka whakaaturia i roto i te pire."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae arotahi",
+        "description": "Ingoa arotahi SimpleColors mō te papamuri o te pire.",
+        "options": {
+          "": "-- taunoa --",
+          "red": "Whero",
+          "pink": "Māwhero",
+          "purple": "Pāpura",
+          "deep-purple": "Pāpura Hōhonu",
+          "indigo": "Indigo",
+          "blue": "Kahurangi",
+          "light-blue": "Kahurangi Māmā",
+          "cyan": "Kahurangi Kākāriki",
+          "teal": "Kākāriki Kahurangi",
+          "green": "Kākāriki",
+          "light-green": "Kākāriki Māmā",
+          "lime": "Rēmana Kākāriki",
+          "yellow": "Kōwhai",
+          "amber": "Kōwhai Karaka",
+          "orange": "Karaka",
+          "deep-orange": "Karaka Hōhonu",
+          "brown": "Parauri",
+          "blue-grey": "Kiwikiwi Kahurangi",
+          "grey": "Kiwikiwi"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Tae arotahi aunoa",
+        "description": "Tīkina aunoatia te tae arotahi mai i te kupu tapanga."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Pātene whakakore",
+        "description": "Whakaaturia tētahi pātene ata tohu tango/whakakore i roto i te pire."
+      },
+      {
+        "property": "readonly",
+        "title": "Pānui anake",
+        "description": "Hunaia te pātene whakakore kia whakaatu noa te pire."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Ka takahuri",
+        "description": "Kia takahuri te pire ki runga/ki raro ina pāwhiritia te pātene."
+      },
+      {
+        "property": "toggled",
+        "title": "Kua takahuri",
+        "description": "Mēnā kua takahuri te pire ki runga i tēnei wā."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ata tohu takahuri",
+        "description": "Ata tohu hei whakaatu ina takahuri te pire ki runga."
+      },
+      {
+        "property": "disabled",
+        "title": "Kua monokia",
+        "description": "Monokia te tauwhitiwhiti ki te pire."
+      }
+    ]
+  }
+}

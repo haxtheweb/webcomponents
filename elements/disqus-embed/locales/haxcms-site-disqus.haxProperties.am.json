@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "የDisqus አስተያየቶች",
+    "description": "ከDisqus የአስተያየት ድር አገልግሎት ጋር ውህደት"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "አጭር ስም",
+        "description": "በDisqus ላይ የንብረቱ አጭር ስም"
+      }
+    ]
+  }
+}

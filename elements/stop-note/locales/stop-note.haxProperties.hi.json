@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "रोक नोट",
+    "description": "पाठकों को विशिष्ट निर्देशों के प्रति सचेत करने वाला संदेश।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "रोक नोट के लिए शीर्षक दर्ज करें।"
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "बाहरी URL दर्ज करें।"
+      },
+      {
+        "property": "status",
+        "title": "स्थिति",
+        "description": "स्थिति सेट करने से रंग और आइकन उसके अनुसार बदल जाते हैं",
+        "options": {
+          "stop": "रुकें",
+          "warning": "चेतावनी",
+          "success": "पुष्टि",
+          "info": "सूचना"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "नोट टेक्स्ट",
+        "description": "रोक नोट के लिए टेक्स्ट।"
+      }
+    ]
+  }
+}

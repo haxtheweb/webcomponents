@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Sadə şəkil",
+    "description": "Şəkilləri sadə parametrlərlə emal edin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Mənbə",
+        "description": "Şəkil mənbəyinin URL-i."
+      },
+      {
+        "property": "height",
+        "title": "Hündürlük",
+        "description": "İxtiyari şəkil hündürlüyü."
+      },
+      {
+        "property": "width",
+        "title": "En",
+        "description": "İxtiyari şəkil eni."
+      },
+      {
+        "property": "alt",
+        "title": "Alt mətn",
+        "description": "Ekran oxuyucuları və SEO-nun yaxşılaşdırılması üçün faydalıdır."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Keyfiyyət",
+        "description": "Yaradılan zaman şəklin keyfiyyəti (yalnız JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Yükləmə prioriteti",
+        "description": "Müasir brauzerlər üçün performans işarəsi.",
+        "options": {
+          "auto": "Avtomatik",
+          "high": "Yüksək",
+          "low": "Aşağı"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dekodlaşdırma üsulu",
+        "description": "Müasir brauzerlərdə şəkil təsviri üçün performans işarəsi.",
+        "options": {
+          "auto": "Avtomatik",
+          "async": "Asinxron"
+        }
+      }
+    ]
+  }
+}

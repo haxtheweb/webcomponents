@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Daħħal kontenut web estern f'iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL tar-riżorsa",
+        "description": "URL tar-riżorsa."
+      },
+      {
+        "property": "height",
+        "title": "Għoli",
+        "description": "L-għoli tal-iframe."
+      },
+      {
+        "property": "width",
+        "title": "Wisa'",
+        "description": "Il-wisa' tal-iframe."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tabella CSV",
+    "description": "Dan jista' jiġġenera tabella minn fajl CSV ikun fejn ikun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Sors",
+        "description": "URL għal dan il-fajl CSV."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlu għat-tabella li se tiġi ġġenerata."
+      },
+      {
+        "property": "description",
+        "title": "Deskrizzjoni",
+        "description": "Deskrizzjoni aktar dettaljata għal aċċessibbiltà aħjar tad-data tat-tabella."
+      }
+    ]
+  }
+}

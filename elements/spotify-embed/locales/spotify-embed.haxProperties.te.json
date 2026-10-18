@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify ప్లేయర్ ఎంబెడ్‌ల కోసం వ్రాపర్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "మూలం",
+        "description": "Spotify నుండి ఎంబెడ్ లేదా షేర్ లింక్."
+      },
+      {
+        "property": "theme",
+        "title": "థీమ్",
+        "description": "ప్లేయర్ కోసం నేపథ్య రంగు థీమ్.",
+        "options": {
+          "": "డిఫాల్ట్",
+          "0": "నలుపు"
+        }
+      },
+      {
+        "property": "size",
+        "title": "పరిమాణం",
+        "description": "ప్లేయర్ పరిమాణం.",
+        "options": {
+          "normal": "డిఫాల్ట్",
+          "compact": "కాంపాక్ట్"
+        }
+      }
+    ]
+  }
+}

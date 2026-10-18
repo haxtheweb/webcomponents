@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Upplýsingar um síðu",
+    "description": "Skilgreina sjónræn skil milli síðna sem vefumsjónarkerfi geta notað til að búa til síður."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Titill sem birtist í þemanu og fyrstu fyrirsögn."
+      },
+      {
+        "property": "pageType",
+        "title": "Tegund",
+        "description": "Sjónrænt samhengismerki síðu.",
+        "options": {
+          "": "-- ekkert --",
+          "content": "Efni",
+          "assessment": "Mat",
+          "quiz": "Próf",
+          "submission": "Skil",
+          "lesson": "Kennslustund",
+          "module": "Eining",
+          "task": "Verkefni",
+          "activity": "Virkni",
+          "project": "Verkefni (project)",
+          "practice": "Æfing",
+          "unit": "Námseining",
+          "objectives": "Námsmarkmið",
+          "connection": "Tenging",
+          "knowledge": "Vissir þú?",
+          "strategy": "Námsaðferð",
+          "discuss": "Ræða",
+          "listen": "Hlusta",
+          "make": "Búa til",
+          "observe": "Athuga",
+          "present": "Kynna",
+          "reading": "Lestur",
+          "reflect": "Ígrunda",
+          "research": "Rannsaka",
+          "watch": "Horfa",
+          "write": "Skrifa"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Merki",
+        "description": "Kommuaðgreindur listi af merkjum."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL tengils",
+        "description": "Áframsendingar-URL sem birtist í stað efnis síðunnar."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Markmið tengils",
+        "description": "Opna tengla í sama glugga eða nýjum glugga.",
+        "options": {
+          "_self": "Sami gluggi",
+          "_blank": "Nýr gluggi"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Birt",
+        "description": "Óbirtar síður eru faldar fyrir endanotendum."
+      },
+      {
+        "property": "locked",
+        "title": "Læsa síðu",
+        "description": "Læsa eða aflæsa öllum einingum á þessari síðu."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Hnekkja sjálfvirkri slóð",
+        "description": "Læsa slóðinni gegn sjálfvirkum uppfærslum byggðum á titli eða yfirsíðu."
+      },
+      {
+        "property": "slug",
+        "title": "Slóð",
+        "description": "URL-slóð fyrir þessa síðu."
+      },
+      {
+        "property": "image",
+        "title": "Miðill",
+        "description": "Miðill sem táknar síðuna, notaður í sumum þemum og yfirlitum."
+      },
+      {
+        "property": "parent",
+        "title": "Yfirsíða",
+        "description": "Slóð yfirsíðunnar."
+      },
+      {
+        "property": "noderefs",
+        "title": "Tengt efni",
+        "description": "Síður tengdar þessari síðu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Lýsing",
+        "description": "Lýsing notuð í söfnum og leitarvélabestun."
+      },
+      {
+        "property": "entityType",
+        "title": "Tegund einingar",
+        "description": "Sjálfgefið síða nema annað sé stillt.",
+        "options": {
+          "page": "Síða (sjálfgefið)",
+          "taxonomy": "Flokkunarkerfi",
+          "taxonomyTerm": "Flokkunarhugtak",
+          "region": "Svæði"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Tákn",
+        "description": "Tákn tengt þessari síðu á vefsvæðinu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Litur tengdur þessari síðu á vefsvæðinu."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Fela í valmynd",
+        "description": "Fela þessa síðu í valmyndum en halda URL hennar."
+      },
+      {
+        "property": "order",
+        "title": "Röð",
+        "description": "Röð miðað við systursíður."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Þema síðu",
+        "description": "Hnekkja þema aðeins fyrir þessa síðu."
+      },
+      {
+        "property": "author",
+        "title": "Höfundur",
+        "description": "Notandanafn þess sem breytti þessari síðu síðast."
+      }
+    ]
+  }
+}

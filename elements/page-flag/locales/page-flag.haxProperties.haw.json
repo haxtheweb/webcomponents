@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Hae ʻaoʻao",
+    "description": "Hōʻike hoʻoponopono no nā mea kākau ʻaoʻao."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu Kiko",
+        "description": "Waihoʻoluʻu kiko no ka hae ʻaoʻao."
+      },
+      {
+        "property": "label",
+        "title": "Lepili",
+        "description": "Kikokikona lepili no ka hae ʻaoʻao."
+      }
+    ]
+  }
+}

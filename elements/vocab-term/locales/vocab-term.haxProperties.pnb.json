@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "لفظ",
+    "description": "لفظی اصطلاح۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "اصطلاح"
+      },
+      {
+        "property": "information",
+        "title": "تعریف",
+        "description": "اصطلاح اُتے کلک ہوݨ تے وکھائی جاوݨ والی تعریف۔"
+      },
+      {
+        "property": "popoverMode",
+        "title": "پاپ اوور",
+        "description": "تعریف نوں ان لائن دی تھاں پاپ اوور وچ وکھاؤ۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "لنک",
+        "description": "ایس اصطلاح نال جڑے اضافی لنکاں دی لسٹ۔"
+      }
+    ]
+  }
+}

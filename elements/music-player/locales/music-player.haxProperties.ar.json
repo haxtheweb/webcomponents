@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "مُصوِّر MIDI",
+    "description": "تشغيل MIDI في سياقه مع تصوير مرئي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "المصدر",
+        "description": "URL الملف المراد تشغيله."
+      },
+      {
+        "property": "visualizer",
+        "title": "التصوير المرئي",
+        "description": "نمط التصوير المرئي للملف الموسيقي.",
+        "options": {
+          "staff": "مدرَّج موسيقي",
+          "piano-roll": "لفافة البيانو",
+          "waterfall": "بيانو + شلال"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "إخفاء الشلال",
+        "description": "إخفاء نوتات الشلال في تصوير البيانو."
+      }
+    ]
+  }
+}

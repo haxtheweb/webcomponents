@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "数字递增",
+    "description": "当数字滚动进入视图时，以动画方式递增到目标值。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "结束值",
+        "description": "递增到的数字。"
+      },
+      {
+        "property": "start",
+        "title": "起始值",
+        "description": "开始递增的数字。"
+      },
+      {
+        "property": "duration",
+        "title": "持续时间",
+        "description": "计数动画所需的秒数。"
+      },
+      {
+        "property": "prefixtext",
+        "title": "前缀文本",
+        "description": "显示在数字前的文本（例如“$”）。"
+      },
+      {
+        "property": "suffixtext",
+        "title": "后缀文本",
+        "description": "显示在数字后的文本（例如“%”）。"
+      },
+      {
+        "slot": "prefix",
+        "title": "前缀插槽",
+        "description": "数字前的可选插槽内容。"
+      },
+      {
+        "slot": "suffix",
+        "title": "后缀插槽",
+        "description": "数字后的可选插槽内容。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "小数位数",
+        "description": "要显示的小数位数。"
+      },
+      {
+        "property": "separator",
+        "title": "千位分隔符",
+        "description": "分隔千位组的字符。"
+      },
+      {
+        "property": "decimal",
+        "title": "小数点字符",
+        "description": "用作小数点的字符。"
+      },
+      {
+        "property": "noeasing",
+        "title": "无缓动",
+        "description": "禁用缓动，使计数呈线性变化。"
+      }
+    ]
+  }
+}

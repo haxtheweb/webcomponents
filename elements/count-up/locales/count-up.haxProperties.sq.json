@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Numërim rritës",
+    "description": "Animo një numër që rritet deri te një vlerë e synuar kur shfaqet në ekran."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Vlera përfundimtare",
+        "description": "Numri deri te i cili numërohet."
+      },
+      {
+        "property": "start",
+        "title": "Vlera fillestare",
+        "description": "Numri nga i cili fillon numërimi."
+      },
+      {
+        "property": "duration",
+        "title": "Kohëzgjatja",
+        "description": "Sekondat që duhet të zgjasë animacioni i numërimit."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Teksti parashtesë",
+        "description": "Teksti i shfaqur para numrit (p.sh. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Teksti prapashtesë",
+        "description": "Teksti i shfaqur pas numrit (p.sh. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Foleja e parashtesës",
+        "description": "Përmbajtje opsionale në fole para numrit."
+      },
+      {
+        "slot": "suffix",
+        "title": "Foleja e prapashtesës",
+        "description": "Përmbajtje opsionale në fole pas numrit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Shifrat dhjetore",
+        "description": "Numri i shifrave dhjetore që shfaqen."
+      },
+      {
+        "property": "separator",
+        "title": "Ndarësi i mijëshes",
+        "description": "Karakteri që ndan grupet e mijësheve."
+      },
+      {
+        "property": "decimal",
+        "title": "Karakteri dhjetor",
+        "description": "Karakteri i përdorur për presjen dhjetore."
+      },
+      {
+        "property": "noeasing",
+        "title": "Pa zbutje",
+        "description": "Çaktivizo zbutjen që numërimi të jetë linear."
+      }
+    ]
+  }
+}

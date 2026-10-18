@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris-Zeechen",
+    "description": "D'PSU-Identitéitszeechen mat optionalem Fakultéitsnumm an Zil-URL uweisen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Fakultéitsnumm",
+        "description": "Numm, deen nieft dem Zeechen ugewise gëtt."
+      },
+      {
+        "property": "name2",
+        "title": "Fakultéitsnumm 2",
+        "description": "Zweeten Numm, deen ënner dem éischte Fakultéitsnumm ugewise gëtt."
+      },
+      {
+        "property": "name3",
+        "title": "Fakultéitsnumm 3",
+        "description": "Drëtten Numm, deen ënner dem zweete Fakultéitsnumm ugewise gëtt."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Zil-URL, wann op d'Zeeche geklickt gëtt."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Visuell Variant vum Zeechen.",
+        "options": {
+          "default": "Standard",
+          "light": "Hell",
+          "dark": "Däischter"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Vertikale Layout",
+        "description": "Den drëtten Numm ënner dem zweeten Numm mat enger horizontaler Linn uweisen."
+      }
+    ]
+  }
+}

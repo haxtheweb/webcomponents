@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Kigae cha Polaris",
+    "description": "Onyesha kigae cha Polaris chenye kichwa, maandishi saidizi ya hiari na kiungo cha hiari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Maandishi makuu",
+        "description": "Maandishi makuu ya kigae."
+      },
+      {
+        "property": "line2",
+        "title": "Maandishi ya pili",
+        "description": "Maandishi saidizi ya hiari."
+      },
+      {
+        "property": "type",
+        "title": "Mtindo wa kigae",
+        "description": "Mtindo wa kuona wa kigae uliowekwa awali.",
+        "options": {
+          "1": "Mtindo 1",
+          "2": "Mtindo 2",
+          "3": "Mtindo 3",
+          "4": "Mtindo 4",
+          "5": "Mtindo 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Picha ya usuli",
+        "description": "URL ya picha ya usuli inayotumiwa na mitindo ya vigae inayoweza kuonyesha picha."
+      },
+      {
+        "property": "link",
+        "title": "Kiungo",
+        "description": "URL lengwa ya hiari ya kitendo cha kigae."
+      }
+    ]
+  }
+}

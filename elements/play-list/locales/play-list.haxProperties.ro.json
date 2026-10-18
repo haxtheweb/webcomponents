@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Listă de redare",
+    "description": "Afișează orice tip de conținut într-o listă de redare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Sursă",
+        "description": "Conținutul afișat în lista de redare."
+      },
+      {
+        "property": "edit",
+        "title": "Mod editare",
+        "description": "Comută între modul de editare și cel de previzualizare pentru lista de redare."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigare",
+        "description": "Afișează butoane de navigare înainte și înapoi."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginare",
+        "description": "Afișează punctele de paginare."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientare",
+        "description": "Orientarea diapozitivelor.",
+        "options": {
+          "horizontal": "Orizontal",
+          "vertical": "Vertical"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Diapozitivul de pornire",
+        "description": "Indexul diapozitivului focalizat inițial."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Raport de aspect",
+        "description": "Raportul de aspect al diapozitivelor.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

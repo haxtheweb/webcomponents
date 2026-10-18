@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "صحيح / غلط سوال",
+    "description": "صحيح غلط سوال"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "سوال",
+        "description": "يوزرن لاءِ جواب ڏيڻ وارو سوال."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "صحيح جواب"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ڪوئز جو نالو",
+        "description": "xAPI تي ٻڌل ماحول ۾ هن شيءِ جي سڃاڻپ لاءِ موڪليل ڪوئز جو نالو"
+      }
+    ]
+  }
+}

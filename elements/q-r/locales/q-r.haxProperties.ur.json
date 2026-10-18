@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR کوڈ",
+    "description": "اسمارٹ فون سے اسکین کرنے کا کوڈ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR ڈیٹا",
+        "description": "QR کوڈ کے ڈیٹا کا ماخذ۔"
+      },
+      {
+        "property": "title",
+        "title": "متبادل عنوان",
+        "description": "QR کوڈ کے ماخذ سے منسلک متبادل عنوان۔"
+      },
+      {
+        "property": "modulesize",
+        "title": "سائز",
+        "description": "QR کوڈ کا سائز۔"
+      },
+      {
+        "property": "margin",
+        "title": "حاشیہ",
+        "description": "کوڈ کے گرد خالی جگہ۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "آؤٹ پٹ فارمیٹ",
+        "description": "آؤٹ پٹ کا فارمیٹ۔",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

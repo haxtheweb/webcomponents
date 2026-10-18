@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabell",
+    "description": "Tabellendaten fir de Web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Zeilekapp",
+        "description": "Éischt Zeil als Kapp behandelen."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Spaltekapp",
+        "description": "Éischt Spalt als Kapp behandelen."
+      },
+      {
+        "property": "footer",
+        "title": "Fouss",
+        "description": "Lescht Zeil als Fouss behandelen."
+      },
+      {
+        "property": "sort",
+        "title": "Sortéierbar",
+        "description": "Sortéieren no Spaltewäerter erlaben."
+      },
+      {
+        "property": "filter",
+        "title": "Filteren erlaben",
+        "description": "Filteren no Spaltewäerter erlaben."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numeresch Gestaltung",
+        "description": "Numeresch Gestaltung op numeresch Spalten uwenden."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsiv",
+        "description": "Tabellelayout op klengen Ecranen upassen."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubrik-Modus",
+        "description": "Dës Tabell als OER Schema Rubric interpretéieren, sou datt Rubric-, RubricScale-, RubricCriterion- a RubricLevel-Metadaten ausginn ginn."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubrik-Typ",
+        "description": "Rubrik-Stil, deen als oer:rubricType ausginn gëtt (nëmme sënnvoll, wann de Rubrik-Modus un ass).",
+        "options": {
+          "": "(keen)",
+          "analytic": "Analytesch",
+          "holistic": "Holistesch",
+          "single-point": "Eenzelpunkt",
+          "checklist": "Checklëscht"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Mat Rand"
+      },
+      {
+        "property": "condensed",
+        "title": "Zeilen zesummedrécken",
+        "description": "Zeilenhéicht reduzéieren."
+      },
+      {
+        "property": "striped",
+        "title": "Gestreifte Zeilen",
+        "description": "All zweet Zeil schatteéieren."
+      },
+      {
+        "property": "downloadable",
+        "title": "Download-Knäppchen",
+        "description": "E Knäppchen derbäisetzen fir d'Tabell erofzelueden."
+      },
+      {
+        "property": "copyable",
+        "title": "Kopéier-Knäppchen",
+        "description": "E Knäppchen derbäisetzen fir d'CSV-Date vun der Tabell ze kopéieren."
+      },
+      {
+        "property": "printable",
+        "title": "Dréck-Knäppchen",
+        "description": "E Knäppchen derbäisetzen fir nëmmen d'Tabell ze drécken."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV-Daten",
+        "description": "Eng Tabell aus engem eropgeluedene CSV-Fichier erstellen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Бит турында",
+    "description": "Битләр арасында визуаль бүленеш билгеләгез, CMS-лар аны битләр ясау өчен куллана ала."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Темада һәм беренче башлыкта күрсәтелә торган исем."
+      },
+      {
+        "property": "pageType",
+        "title": "Төр",
+        "description": "Битнең визуаль контекст тамгасы.",
+        "options": {
+          "": "-- юк --",
+          "content": "Эчтәлек",
+          "assessment": "Бәяләү",
+          "quiz": "Тест",
+          "submission": "Тапшыру",
+          "lesson": "Дәрес",
+          "module": "Модуль",
+          "task": "Бирем",
+          "activity": "Эшчәнлек",
+          "project": "Проект",
+          "practice": "Күнегү",
+          "unit": "Бүлек",
+          "objectives": "Уку максатлары",
+          "connection": "Бәйләнеш",
+          "knowledge": "Беләсезме?",
+          "strategy": "Уку стратегиясе",
+          "discuss": "Фикер алышу",
+          "listen": "Тыңлау",
+          "make": "Ясау",
+          "observe": "Күзәтү",
+          "present": "Тәкъдим итү",
+          "reading": "Уку",
+          "reflect": "Уйлану",
+          "research": "Тикшеренү",
+          "watch": "Карау",
+          "write": "Язу"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Теглар",
+        "description": "Өтерләр белән аерылган теглар исемлеге."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Сылтама URL адресы",
+        "description": "Бит эчтәлеге урынына күрсәтелә торган юнәлтү URL адресы."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Сылтама максаты",
+        "description": "Сылтамаларны шул ук тәрәзәдә яки яңа тәрәзәдә ачарга.",
+        "options": {
+          "_self": "Шул ук тәрәзә",
+          "_blank": "Яңа тәрәзә"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Бастырылган",
+        "description": "Бастырылмаган битләр ахыргы кулланучылардан яшерелә."
+      },
+      {
+        "property": "locked",
+        "title": "Битне бикләргә",
+        "description": "Бу биттәге барлык элементларны бикләргә яки бикне ачарга."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Автоматик slug-ны алыштырырга",
+        "description": "Slug-ны исем яки ата-ана бит нигезендә автоматик яңартулардан бикләргә."
+      },
+      {
+        "property": "slug",
+        "title": "Юл",
+        "description": "Бу битнең URL slug-ы."
+      },
+      {
+        "property": "image",
+        "title": "Медиа",
+        "description": "Битне белдерүче медиа, кайбер темаларда һәм күренешләрдә кулланыла."
+      },
+      {
+        "property": "parent",
+        "title": "Ата-ана бит",
+        "description": "Ата-ана битнең юлы."
+      },
+      {
+        "property": "noderefs",
+        "title": "Бәйле эчтәлек",
+        "description": "Бу биткә бәйле битләр."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Тасвирлама",
+        "description": "Коллекцияләрдә һәм эзләү системасы оптимизациясендә кулланыла торган тасвирлама."
+      },
+      {
+        "property": "entityType",
+        "title": "Объект төре",
+        "description": "Башкача күрсәтелмәсә, килешү буенча бит.",
+        "options": {
+          "page": "Бит (килешү буенча)",
+          "taxonomy": "Таксономия",
+          "taxonomyTerm": "Таксономия термины",
+          "region": "Өлкә"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Иконка",
+        "description": "Сайтта бу бит белән бәйле иконка."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Сайтта бу бит белән бәйле төс."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Менюда яшерергә",
+        "description": "URL адресын саклап, бу битне менюлардан яшерергә."
+      },
+      {
+        "property": "order",
+        "title": "Тәртип",
+        "description": "Туганлаш битләргә карата тәртип."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Бит темасы",
+        "description": "Бу бит өчен генә теманы алыштырырга."
+      },
+      {
+        "property": "author",
+        "title": "Автор",
+        "description": "Бу битне соңгы тапкыр үзгәрткән кешенең кулланучы исеме."
+      }
+    ]
+  }
+}

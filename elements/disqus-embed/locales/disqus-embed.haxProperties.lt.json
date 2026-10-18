@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Įterpti Disqus komentarus puslapyje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Trumpasis pavadinimas",
+        "description": "Svetainės trumpasis pavadinimas, pagal kurį nustatomas Disqus scenarijaus serveris."
+      },
+      {
+        "property": "pageURL",
+        "title": "Puslapio URL",
+        "description": "Puslapio, prie kurio pridėta komentarų gija, URL."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Puslapio identifikatorius",
+        "description": "Unikalus puslapio komentarų gijos identifikatorius."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Puslapio pavadinimas",
+        "description": "Puslapio, prie kurio pridėta komentarų gija, pavadinimas."
+      },
+      {
+        "property": "loadingText",
+        "title": "Įkėlimo tekstas",
+        "description": "Tekstas, skelbiamas, kol įkeliami komentarai."
+      },
+      {
+        "property": "lang",
+        "title": "Kalba",
+        "description": "Disqus sąsajos kalbos kodas, pvz., en."
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Stoppanteckning",
+    "description": "Ett meddelande som uppmärksammar läsarna på specifika anvisningar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Ange titel för stoppanteckningen."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Ange en extern URL."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Statusen ändrar färger och ikoner så att de matchar",
+        "options": {
+          "stop": "Stopp",
+          "warning": "Varning",
+          "success": "Bekräftelse",
+          "info": "Meddelande"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Anteckningstext",
+        "description": "Text för stoppanteckningen."
+      }
+    ]
+  }
+}

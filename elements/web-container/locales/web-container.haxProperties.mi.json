@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Ipu NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Hunaia te ētita",
+        "description": "Hunaia te atanga whakatika kōnae."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Hunaia te tauranga",
+        "description": "Hunaia te tauranga mō ngā hōtaka rere aunoa."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Hunaia te matapihi",
+        "description": "Hunaia te matapihi putanga mō te whakamahi tauranga anake."
+      },
+      {
+        "slot": "",
+        "title": "Ngā Tohutohu",
+        "description": "Ngā tohutohu (kotahi ki ia rārangi) hei whakahaere i mua i te uta."
+      }
+    ]
+  }
+}

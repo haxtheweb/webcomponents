@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Περιτύλιγμα για ενσωματώσεις του προγράμματος αναπαραγωγής Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Πηγή",
+        "description": "Σύνδεσμος ενσωμάτωσης ή κοινής χρήσης από το Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Θέμα",
+        "description": "Χρωματικό θέμα φόντου για το πρόγραμμα αναπαραγωγής.",
+        "options": {
+          "": "Προεπιλογή",
+          "0": "Μαύρο"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Μέγεθος",
+        "description": "Μέγεθος προγράμματος αναπαραγωγής.",
+        "options": {
+          "normal": "Προεπιλογή",
+          "compact": "Συμπαγές"
+        }
+      }
+    ]
+  }
+}

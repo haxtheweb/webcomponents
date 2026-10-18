@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Card",
+    "description": "Componentă card stilizată cu sistemul de design DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Imagine",
+        "description": "Imagine opțională."
+      },
+      {
+        "property": "alt",
+        "title": "Text alternativ imagine",
+        "description": "Text alternativ care descrie imaginea."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlul cardului."
+      },
+      {
+        "slot": "",
+        "title": "Conținut",
+        "description": "Zona de conținut a cardului."
+      },
+      {
+        "property": "href",
+        "title": "Link",
+        "description": "URL-ul linkului butonului."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etichetă",
+        "description": "Eticheta butonului."
+      },
+      {
+        "property": "noArrow",
+        "title": "Fără săgeată",
+        "description": "Ascunde săgeata butonului."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Link: țintă",
+        "description": "Unde se deschide linkul.",
+        "options": {
+          "": "Aceeași fereastră",
+          "_blank": "Fereastră nouă - _blank",
+          "_top": "Fereastra de sus - _top",
+          "_parent": "Fereastra părinte - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Link: rel",
+        "description": "Relația dintre resursa legată și documentul curent."
+      }
+    ]
+  }
+}

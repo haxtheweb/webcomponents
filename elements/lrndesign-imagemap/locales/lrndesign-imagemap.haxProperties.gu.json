@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "છબી નકશો",
+    "description": "ઇન્ટરૅક્ટિવ હૉટસ્પૉટ સાથેનો સુલભ છબી નકશો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "લેબલ",
+        "description": "છબી નકશા માટેનું લેબલ."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "હૉટસ્પૉટ વિગતો",
+        "description": "છબી નકશા પરના ઇન્ટરૅક્ટિવ હૉટસ્પૉટ."
+      }
+    ]
+  }
+}

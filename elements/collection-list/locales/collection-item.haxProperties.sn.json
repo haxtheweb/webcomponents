@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Chinhu cheunganidzo",
+    "description": "Chinhu chakaita sekadhi chinoshandiswa mukati merondedzero yeunganidzo, chine mavara, chinongedzo, nemidhiya isingamanikidzwi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Chinongedzo",
+        "description": "URL inoendwa nekadhi iri."
+      },
+      {
+        "property": "image",
+        "title": "Mufananidzo",
+        "description": "Mufananidzo wekumashure."
+      },
+      {
+        "property": "line1",
+        "title": "Mutsara 1",
+        "description": "Mutsara wekutanga wemavara."
+      },
+      {
+        "property": "line2",
+        "title": "Mutsara 2",
+        "description": "Mutsara wechipiri wemavara."
+      },
+      {
+        "property": "line3",
+        "title": "Mutsara 3",
+        "description": "Mutsara wechitatu wemavara."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni inomiririra kadhi."
+      },
+      {
+        "property": "saturate",
+        "title": "Kupenya kweruvara",
+        "description": "Shandura kupenya kweruvara rwemufananidzo kana mushandisi akatarisa pairi."
+      },
+      {
+        "property": "tags",
+        "title": "Matagi",
+        "description": "Rondedzero yematagi akapatsanurwa nemakoma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara",
+        "description": "Ruvara rwunoshandiswa pamatagi."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Mavara anotsiva anotsanangura chinongedzo."
+      }
+    ]
+  }
+}

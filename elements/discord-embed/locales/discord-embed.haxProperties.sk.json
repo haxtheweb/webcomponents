@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Vloženie komunít Discord z URL na zdieľanie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL zdroja",
+        "description": "URL zdroja."
+      },
+      {
+        "property": "height",
+        "title": "Výška",
+        "description": "Výška rámca obsahu."
+      },
+      {
+        "property": "width",
+        "title": "Šírka",
+        "description": "Šírka rámca obsahu."
+      }
+    ]
+  }
+}

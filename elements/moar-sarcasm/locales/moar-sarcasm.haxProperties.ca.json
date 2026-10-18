@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarcasme",
+    "description": "Presenta text d'una manera burleta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Text",
+        "description": "Text que es vol fer sarcàstic"
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris-merke",
+    "description": "Vis PSU-identitetsmerket med valgfritt høyskolenavn og mål-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Høyskolenavn",
+        "description": "Navn som vises ved siden av merket."
+      },
+      {
+        "property": "name2",
+        "title": "Høyskolenavn 2",
+        "description": "Andre navn som vises under det første høyskolenavnet."
+      },
+      {
+        "property": "name3",
+        "title": "Høyskolenavn 3",
+        "description": "Tredje navn som vises under det andre høyskolenavnet."
+      },
+      {
+        "property": "url",
+        "title": "Lenke",
+        "description": "Mål-URL når det klikkes på merket."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Visuell variant av merket.",
+        "options": {
+          "default": "Standard",
+          "light": "Lys",
+          "dark": "Mørk"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Vertikalt oppsett",
+        "description": "Vis det tredje navnet under det andre navnet med en vannrett linje."
+      }
+    ]
+  }
+}

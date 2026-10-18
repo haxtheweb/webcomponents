@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG کردار",
+    "description": "HAX دا مزیدار کردار۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "ناں",
+        "description": "بے ترتیب کردار بناوݨ لئی ورتیا جاوݨ والا لفظ۔"
+      },
+      {
+        "property": "hat",
+        "title": "ٹوپی",
+        "description": "ٹوپی دا سٹائل۔",
+        "options": {
+          "none": "ڈیفالٹ",
+          "random": "بے ترتیب",
+          "bunny": "خرگوش",
+          "cowboy": "کاؤ بوائے",
+          "education": "تعلیم",
+          "construction": "اساری",
+          "warning": "خبرداری",
+          "watermelon": "ہدوانہ",
+          "coffee": "کافی",
+          "knight": "نائٹ",
+          "ninja": "ننجا",
+          "party": "پارٹی",
+          "error": "غلطی",
+          "edit": "ترمیم"
+        }
+      },
+      {
+        "property": "width",
+        "title": "چوڑائی",
+        "description": "پکسلاں وچ کردار دی چوڑائی۔"
+      },
+      {
+        "property": "height",
+        "title": "اُچائی",
+        "description": "پکسلاں وچ کردار دی اُچائی۔"
+      },
+      {
+        "property": "fire",
+        "title": "اگ لگی؟",
+        "description": "کیہ کردار نوں اگ لگی ہوئی اے۔"
+      },
+      {
+        "property": "walking",
+        "title": "ٹُر رہیا؟",
+        "description": "ٹُرن دی اینیمیشن؛ اگ لگی ہوݨ تے دوڑدی اے۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Úžasná exploze",
+    "description": "Interaktivní animace exploze s volitelnými zvukovými efekty."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Velikost",
+        "description": "Nastavte velikost exploze.",
+        "options": {
+          "tiny": "Drobná",
+          "small": "Malá",
+          "medium": "Střední",
+          "large": "Velká",
+          "epic": "Epická"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Barva",
+        "description": "Nastavte barevný motiv exploze.",
+        "options": {
+          "": "Výchozí",
+          "red": "Červená",
+          "blue": "Modrá",
+          "purple": "Fialová",
+          "orange": "Oranžová",
+          "yellow": "Žlutá"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Zvukové efekty",
+        "description": "Zapnout zvukové efekty."
+      },
+      {
+        "property": "resetSound",
+        "title": "Restartovat zvuk",
+        "description": "Pokaždé přehrát zvuk od začátku."
+      },
+      {
+        "property": "image",
+        "title": "Vlastní obrázek",
+        "description": "Volitelná URL vlastního obrázku exploze."
+      },
+      {
+        "property": "sound",
+        "title": "Vlastní zvuk",
+        "description": "Volitelná URL vlastního zvukového efektu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Zakázáno",
+        "description": "Zakázat veškerou interakci."
+      }
+    ]
+  }
+}

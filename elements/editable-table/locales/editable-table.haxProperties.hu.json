@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Táblázat",
+    "description": "Táblázatos adatok a webre."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Sorfejléc",
+        "description": "Az első sor fejlécként kezelése."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Oszlopfejléc",
+        "description": "Az első oszlop fejlécként kezelése."
+      },
+      {
+        "property": "footer",
+        "title": "Lábléc",
+        "description": "Az utolsó sor láblécként kezelése."
+      },
+      {
+        "property": "sort",
+        "title": "Rendezhető",
+        "description": "Rendezés engedélyezése oszlopértékek szerint."
+      },
+      {
+        "property": "filter",
+        "title": "Szűrés engedélyezése",
+        "description": "Szűrés engedélyezése oszlopértékek szerint."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numerikus formázás",
+        "description": "Numerikus formázás alkalmazása a numerikus oszlopokra."
+      },
+      {
+        "property": "responsive",
+        "title": "Reszponzív",
+        "description": "A táblázat elrendezésének igazítása kis képernyőkön."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Értékelési mátrix mód",
+        "description": "A táblázat OER Schema Rubric-ként való értelmezése, hogy Rubric, RubricScale, RubricCriterion és RubricLevel metaadatok jöjjenek létre."
+      },
+      {
+        "property": "rubricType",
+        "title": "Értékelési mátrix típusa",
+        "description": "Az oer:rubricType értékként kiadott mátrixstílus (csak bekapcsolt értékelési mátrix módban van jelentősége).",
+        "options": {
+          "": "(nincs)",
+          "analytic": "Analitikus",
+          "holistic": "Holisztikus",
+          "single-point": "Egypontos",
+          "checklist": "Ellenőrzőlista"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Szegélyezett"
+      },
+      {
+        "property": "condensed",
+        "title": "Tömör sorok",
+        "description": "A sormagasság csökkentése."
+      },
+      {
+        "property": "striped",
+        "title": "Csíkos sorok",
+        "description": "Minden második sor árnyékolása."
+      },
+      {
+        "property": "downloadable",
+        "title": "Letöltés gomb",
+        "description": "Gomb hozzáadása a táblázat letöltéséhez."
+      },
+      {
+        "property": "copyable",
+        "title": "Másolás gomb",
+        "description": "Gomb hozzáadása a táblázat CSV-adatainak másolásához."
+      },
+      {
+        "property": "printable",
+        "title": "Nyomtatás gomb",
+        "description": "Gomb hozzáadása csak a táblázat nyomtatásához."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV-adatok",
+        "description": "Táblázat létrehozása feltöltött CSV-fájlból."
+      }
+    ]
+  }
+}

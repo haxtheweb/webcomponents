@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Pine Hanana",
+    "description": "Mea pine hanana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Kiʻi TV",
+        "description": "Kiʻi i hōʻike ʻia ma ka TV."
+      },
+      {
+        "property": "logo",
+        "title": "Lōkō",
+        "description": "Lōkō i hōʻike ʻia ma ke kihi o ka pine."
+      },
+      {
+        "property": "title",
+        "title": "Poʻo Inoa",
+        "description": "Poʻo inoa i hōʻike ʻia ma luna o ka pine."
+      },
+      {
+        "property": "name",
+        "title": "Inoa",
+        "description": "Inoa i hōʻike ʻia ma ka pine."
+      },
+      {
+        "property": "position",
+        "title": "Kūlana",
+        "description": "Ke kuleana a i ʻole ke kūlana o ke kanaka."
+      },
+      {
+        "property": "organization",
+        "title": "Hui",
+        "description": "Ka hui e hana ai ke kanaka."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Waihoʻoluʻu TV",
+        "description": "E koho i ka waihoʻoluʻu no ka TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu kiko",
+        "description": "Waihoʻoluʻu kāʻei hope a kikokikona paha."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Waihoʻoluʻu pōheo",
+        "description": "Waihoʻoluʻu o nā pōheo TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "E hoʻopili i ka hopena sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "ʻEleʻele a keʻokeʻo",
+        "description": "E hoʻopili i ka hopena ʻeleʻele a keʻokeʻo."
+      }
+    ]
+  }
+}

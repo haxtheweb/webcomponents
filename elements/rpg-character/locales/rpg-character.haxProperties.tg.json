@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Қаҳрамони RPG",
+    "description": "Қаҳрамони шавқовар аз HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Ном",
+        "description": "Калимае, ки барои тавлиди қаҳрамони тасодуфӣ истифода мешавад."
+      },
+      {
+        "property": "hat",
+        "title": "Кулоҳ",
+        "description": "Услуби кулоҳ.",
+        "options": {
+          "none": "Пешфарз",
+          "random": "Тасодуфӣ",
+          "bunny": "Харгӯш",
+          "cowboy": "Ковбой",
+          "education": "Маориф",
+          "construction": "Сохтмон",
+          "warning": "Огоҳӣ",
+          "watermelon": "Тарбуз",
+          "coffee": "Қаҳва",
+          "knight": "Рыцар",
+          "ninja": "Нинҷа",
+          "party": "Ҷашн",
+          "error": "Хато",
+          "edit": "Таҳрир"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Паҳноӣ",
+        "description": "Паҳноии қаҳрамон бо пиксел."
+      },
+      {
+        "property": "height",
+        "title": "Баландӣ",
+        "description": "Баландии қаҳрамон бо пиксел."
+      },
+      {
+        "property": "fire",
+        "title": "Дар оташ?",
+        "description": "Оё қаҳрамон дар оташ аст."
+      },
+      {
+        "property": "walking",
+        "title": "Роҳ меравад?",
+        "description": "Аниматсияи роҳгардӣ; ҳангоми дар оташ будан медавад."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Rhestr cyfranwyr GitHub",
+    "description": "Wedi'u dangos fel cymeriadau RPG gan ddefnyddio API GitHub."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Sefydliad",
+        "description": "Enw'r sefydliad o github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Ystorfa",
+        "description": "Enw'r ystorfa o github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Terfyn",
+        "description": "Cyfyngu ar nifer y cyfranwyr a ddangosir."
+      }
+    ]
+  }
+}

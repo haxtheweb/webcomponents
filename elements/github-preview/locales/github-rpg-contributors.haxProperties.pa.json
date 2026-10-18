@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub ਯੋਗਦਾਨੀਆਂ ਦੀ ਸੂਚੀ",
+    "description": "GitHub API ਦੀ ਵਰਤੋਂ ਕਰਕੇ RPG ਪਾਤਰਾਂ ਵਜੋਂ ਦਿਖਾਏ ਜਾਂਦੇ ਹਨ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ਸੰਸਥਾ",
+        "description": "github.com/ORG/REPO ਤੋਂ ਸੰਸਥਾ ਦਾ ਨਾਮ।"
+      },
+      {
+        "property": "repo",
+        "title": "ਰਿਪੋਜ਼ਟਰੀ",
+        "description": "github.com/ORG/REPO ਤੋਂ ਰਿਪੋਜ਼ਟਰੀ ਦਾ ਨਾਮ।"
+      },
+      {
+        "property": "limit",
+        "title": "ਸੀਮਾ",
+        "description": "ਦਿਖਾਏ ਯੋਗਦਾਨੀਆਂ ਦੀ ਗਿਣਤੀ ਸੀਮਤ ਕਰੋ।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Isicatshulwa esinoMfanekiso",
+    "description": "Isicatshulwa esinesitayile esinomfanekiso okhethwayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Umfanekiso",
+        "description": "Yongeza umfanekiso kubungqina."
+      },
+      {
+        "property": "name",
+        "title": "Igama eliPheleleyo",
+        "description": "Igama lomntu onika ubungqina."
+      },
+      {
+        "property": "position",
+        "title": "Isikhundla okanye iTayitile yoMsebenzi",
+        "description": "Isikhundla okanye itayitile yomsebenzi yomntu."
+      },
+      {
+        "slot": "",
+        "title": "Isicatshulwa",
+        "description": "Isicatshulwa esivela kumbhali wobungqina."
+      }
+    ]
+  }
+}

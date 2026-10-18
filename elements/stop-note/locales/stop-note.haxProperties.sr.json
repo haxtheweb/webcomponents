@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Стоп-напомена",
+    "description": "Порука која упозорава читаоце на одређена упутства."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Унесите наслов стоп-напомене."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Унесите спољни URL."
+      },
+      {
+        "property": "status",
+        "title": "Статус",
+        "description": "Подешавање статуса мења боје и иконе у складу с њим",
+        "options": {
+          "stop": "Стоп",
+          "warning": "Упозорење",
+          "success": "Потврда",
+          "info": "Обавештење"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Текст напомене",
+        "description": "Текст стоп-напомене."
+      }
+    ]
+  }
+}

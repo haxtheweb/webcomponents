@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Seitenmarkierung",
+    "description": "Redaktionelle Notiz für Seitenautoren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Akzentfarbe der Seitenmarkierung."
+      },
+      {
+        "property": "label",
+        "title": "Beschriftung",
+        "description": "Beschriftungstext der Seitenmarkierung."
+      }
+    ]
+  }
+}

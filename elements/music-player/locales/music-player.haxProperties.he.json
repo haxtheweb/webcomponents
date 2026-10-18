@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ממחיש MIDI",
+    "description": "השמעת MIDI בהקשר עם המחשה חזותית."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "URL של הקובץ להשמעה."
+      },
+      {
+        "property": "visualizer",
+        "title": "המחשה חזותית",
+        "description": "סגנון ההמחשה החזותית של קובץ המוזיקה.",
+        "options": {
+          "staff": "חמשה",
+          "piano-roll": "גליל פסנתר",
+          "waterfall": "פסנתר + מפל"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "הסתרת המפל",
+        "description": "הסתרת תווי המפל בהמחשת הפסנתר."
+      }
+    ]
+  }
+}

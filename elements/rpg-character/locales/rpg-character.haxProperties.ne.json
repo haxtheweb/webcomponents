@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG पात्र",
+    "description": "HAX को रमाइलो पात्र।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "नाम",
+        "description": "अनियमित पात्र बनाउन प्रयोग हुने शब्द।"
+      },
+      {
+        "property": "hat",
+        "title": "टोपी",
+        "description": "टोपीको शैली।",
+        "options": {
+          "none": "पूर्वनिर्धारित",
+          "random": "अनियमित",
+          "bunny": "खरायो",
+          "cowboy": "काउबय",
+          "education": "शिक्षा",
+          "construction": "निर्माण",
+          "warning": "चेतावनी",
+          "watermelon": "खरबुजा",
+          "coffee": "कफी",
+          "knight": "योद्धा",
+          "ninja": "निन्जा",
+          "party": "पार्टी",
+          "error": "त्रुटि",
+          "edit": "सम्पादन"
+        }
+      },
+      {
+        "property": "width",
+        "title": "चौडाइ",
+        "description": "पिक्सेलमा पात्रको चौडाइ।"
+      },
+      {
+        "property": "height",
+        "title": "उचाइ",
+        "description": "पिक्सेलमा पात्रको उचाइ।"
+      },
+      {
+        "property": "fire",
+        "title": "आगो लागेको?",
+        "description": "पात्रमा आगो लागेको छ कि छैन।"
+      },
+      {
+        "property": "walking",
+        "title": "हिँड्दै?",
+        "description": "हिँड्ने एनिमेसन; आगो लाग्दा दौडिन्छ।"
+      }
+    ]
+  }
+}

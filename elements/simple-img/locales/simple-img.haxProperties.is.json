@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Einföld mynd",
+    "description": "Vinna með myndir með einföldum færibreytum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Uppruni",
+        "description": "URL myndauppruna."
+      },
+      {
+        "property": "height",
+        "title": "Hæð",
+        "description": "Valfrjáls hæð myndar."
+      },
+      {
+        "property": "width",
+        "title": "Breidd",
+        "description": "Valfrjáls breidd myndar."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-texti",
+        "description": "Gagnlegt fyrir skjálesara og bætta SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Gæði",
+        "description": "Myndgæði við myndun (aðeins JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Forgangur sóknar",
+        "description": "Afkastavísbending fyrir nútímavafra.",
+        "options": {
+          "auto": "Sjálfvirkt",
+          "high": "Hár",
+          "low": "Lágur"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Afkóðunaraðferð",
+        "description": "Afkastavísbending fyrir myndbirtingu í nútímavöfrum.",
+        "options": {
+          "auto": "Sjálfvirkt",
+          "async": "Ósamstillt"
+        }
+      }
+    ]
+  }
+}

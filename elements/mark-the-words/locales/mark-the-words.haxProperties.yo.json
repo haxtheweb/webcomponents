@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Sàmì sí àwọn ọ̀rọ̀",
+    "description": "Dá àwọn èrò mọ̀ nípa títẹ àwọn ọ̀rọ̀ nínú àkọsílẹ̀ kan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ìbéèrè",
+        "description": "Ìbéèrè tí àwọn olùlò yóò dáhùn."
+      },
+      {
+        "property": "statement",
+        "title": "Gbólóhùn",
+        "description": "Gbólóhùn tí a ó yí padà sí ìbáṣepọ̀ sàmì sí àwọn ọ̀rọ̀."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ọ̀nà ìfúnmáàkì",
+        "description": "OER Schema: ọ̀nà ìfúnmáàkì fún ìgbéléwọ̀n yìí (fún àpẹẹrẹ máàkì, lẹ́tà, ìdá-ọgọ́rùn-ún, ìparí)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Àfojúsùn ẹ̀kọ́",
+        "description": "OER Schema: àfojúsùn ẹ̀kọ́ tí ó jẹmọ́ ìgbéléwọ̀n yìí."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kọ́ọ̀sì",
+        "description": "OER Schema: kọ́ọ̀sì tí a pète ìgbéléwọ̀n yìí fún."
+      },
+      {
+        "property": "answers",
+        "title": "Àwọn ìdáhùn"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Orúkọ ìdánwò kékeré náà",
+        "description": "Orúkọ ìdánwò kékeré tí a fi ránṣẹ́ fún lílò ní àwọn àyíká tí xAPI ń darí láti dá ẹyọ yìí mọ̀"
+      }
+    ]
+  }
+}

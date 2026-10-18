@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris વાર્તા કાર્ડ",
+    "description": "પૃષ્ઠભૂમિ છબી, સ્તંભ લેબલ અને હેડલાઇન લખાણ સાથે Polaris વાર્તા કાર્ડ બતાવો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "પૃષ્ઠભૂમિ છબી",
+        "description": "કાર્ડની પૃષ્ઠભૂમિ તરીકે બતાવાતું છબી URL."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "પૃષ્ઠભૂમિ કદ",
+        "description": "પૃષ્ઠભૂમિ છબી કાર્ડને કેવી રીતે ભરે છે (CSS background-size).",
+        "options": {
+          "cover": "આવરી લો (cover)",
+          "contain": "સમાવો (contain)",
+          "auto": "સ્વચાલિત (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "પૃષ્ઠભૂમિ જોડાણ",
+        "description": "સ્ક્રોલ કરતી વખતે પૃષ્ઠભૂમિ છબી કેવી રીતે વર્તે છે (CSS background-attachment).",
+        "options": {
+          "scroll": "સ્ક્રોલ (scroll)",
+          "fixed": "સ્થિર (fixed)",
+          "local": "સ્થાનિક (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "સ્તંભ લેબલ",
+        "description": "કાર્ડની ટોચ પર બતાવાતું મોટા અક્ષરોમાં ટૂંકું લેબલ. છુપાવવા માટે ખાલી રાખો."
+      },
+      {
+        "property": "label",
+        "title": "કાર્ડ લખાણ",
+        "description": "નીચલા પૅનલમાં બતાવાતું મુખ્ય લખાણ."
+      },
+      {
+        "property": "link",
+        "title": "લિંક",
+        "description": "આખા કાર્ડને આવરી લેતું વૈકલ્પિક ગંતવ્ય URL."
+      }
+    ]
+  }
+}

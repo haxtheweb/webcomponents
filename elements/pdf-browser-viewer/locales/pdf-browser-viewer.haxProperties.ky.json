@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Браузердеги PDF көрүүчү",
+    "description": "PDF файлын бет ичине кошумча карта макети жана жүктөп алуу баскычы менен кыстаруу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF файлынын жайгашкан жери."
+      },
+      {
+        "property": "heading",
+        "title": "Аталыш",
+        "description": "Картанын аталыш тексти."
+      },
+      {
+        "property": "card",
+        "title": "Карта макети",
+        "description": "PDF файлын жүктөп алуу баскычы бар картада көрсөтүү."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Жүктөп алуу энбелгиси",
+        "description": "Жүктөп алуу баскычынын энбелгиси."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Колдоого алынбайт билдирүүсү",
+        "description": "Браузер PDF файлдарын көрсөтө албаганда чыккан билдирүү."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Колдоого алынбайт шилтеме билдирүүсү",
+        "description": "Браузер PDF файлдарын көрсөтө албаганда шилтеменин тексти."
+      },
+      {
+        "property": "width",
+        "title": "Туурасы",
+        "description": "PDF көрүүчүнүн туурасы."
+      },
+      {
+        "property": "height",
+        "title": "Бийиктиги",
+        "description": "PDF көрүүчүнүн бийиктиги."
+      }
+    ]
+  }
+}

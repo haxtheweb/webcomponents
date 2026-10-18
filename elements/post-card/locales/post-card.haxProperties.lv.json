@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Pastkarte",
+    "description": "Rotaļīgs multivides elements, kas izskatās kā īsta pastkarte no kaut kurienes"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Kam",
+        "description": "Kam tā adresēta?"
+      },
+      {
+        "property": "from",
+        "title": "No",
+        "description": "Kas jūs esat?"
+      },
+      {
+        "property": "message",
+        "title": "Ziņa",
+        "description": "Ko vēlaties pateikt?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Pasta zīmogs no",
+        "description": "No kurienes šī kartīte tika nosūtīta?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Galvenās fotogrāfijas avots",
+        "description": "Kur atrodas jūsu fotogrāfija?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Pastmarkas fotogrāfijas avots",
+        "description": "Kur atrodas jūsu fotogrāfija?"
+      }
+    ]
+  }
+}

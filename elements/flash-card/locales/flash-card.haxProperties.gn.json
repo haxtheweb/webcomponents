@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kuatia'atã mbo'eha",
+    "description": "Ejehekombo'e ñe'ẽmbykyrã kuatia'atã mbo'eha tenonde ha hapykuegua ndive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Kuatia'atã tenonde",
+        "description": "Moñe'ẽrã tenondegua térã porandu."
+      },
+      {
+        "slot": "back",
+        "title": "Kuatia'atã hapykuegua",
+        "description": "Mbohovái oñeha'arõva."
+      },
+      {
+        "property": "imgSource",
+        "title": "Ta'ãnga ypykue",
+        "description": "Ta'ãnga marandurenda ojeporúva kuatia'atãme. Omyengovia Ta'ãnga ñe'ẽ ñemiguáva."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tembiapo rekoichagua",
+        "description": "OER Schema: tembiapo rekoichagua ko jehekombo'e oguerekóva (techapyrã Moñe'ẽ, Jehai, Japo, Jeheka, Ñehendu, Ma'ẽ, Jepy'amongeta, Ñomongeta, Jehecha, Jehechauka, Jehechakuaa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ñembo'e jehupytyrã",
+        "description": "OER Schema: ID térã URL ñembo'e jehupytyrã ko jehekombo'e oipytyvõva."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Pytũ",
+        "description": "Eipuru reko pytũ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Kuatia'atã sa'y ojehechaukavéva."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Ta'ãnga ñe'ẽ ñemiguáva",
+        "description": "Ta'ãnga ñe'ẽ ñemiguáva oimeraẽva. Ta'ãnga ypykue omyengovia."
+      }
+    ]
+  }
+}

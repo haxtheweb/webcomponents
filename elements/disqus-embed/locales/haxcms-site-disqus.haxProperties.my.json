@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus မှတ်ချက်များ",
+    "description": "Disqus မှတ်ချက်ပေး ဝဘ်ဝန်ဆောင်မှုနှင့် ပေါင်းစပ်မှု"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "အတိုကောက် အမည်",
+        "description": "Disqus ပေါ်ရှိ property ၏ အတိုကောက် အမည်"
+      }
+    ]
+  }
+}

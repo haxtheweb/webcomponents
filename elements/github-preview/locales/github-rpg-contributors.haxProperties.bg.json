@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Списък на сътрудниците в GitHub",
+    "description": "Показани като RPG персонажи чрез GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Организация",
+        "description": "Име на организацията от github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Хранилище",
+        "description": "Име на хранилището от github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Ограничение",
+        "description": "Ограничаване на броя показани сътрудници."
+      }
+    ]
+  }
+}

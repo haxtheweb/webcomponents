@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Դարձնել անիմացիոն GIF-երը մատչելի։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Անիմացիոն GIF",
+        "description": "Անիմացիոն GIF-ի URL-ը։"
+      },
+      {
+        "property": "alt",
+        "title": "Alt տեքստ",
+        "description": "Պատկերի այլընտրանքային տեքստը։"
+      },
+      {
+        "property": "longdesc",
+        "title": "Երկար նկարագրություն",
+        "description": "GIF-ի երկար նկարագրություն մատչելիության համար։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Անշարժ պատկեր",
+        "description": "GIF-ի անշարժ տարբերակի URL-ը։"
+      }
+    ]
+  }
+}

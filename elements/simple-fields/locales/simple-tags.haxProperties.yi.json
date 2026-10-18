@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "טעגן",
+    "description": "פּשוטע רשימה פֿון טעגן צו ווײַזן אויף דער זײַט."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "טעגן",
+        "description": "רשימה פֿון טעגן, אָפּגעטיילט מיט קאָמעס."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "אויטאָמאַטישער אַקצענט־קאָליר",
+        "description": "באַשטימען דעם אַקצענט־קאָליר אויטאָמאַטיש לויט דער באַצייכענונג."
+      },
+      {
+        "property": "accentColor",
+        "title": "קאָליר",
+        "description": "קאָליר פֿאַר טעגן."
+      }
+    ]
+  }
+}

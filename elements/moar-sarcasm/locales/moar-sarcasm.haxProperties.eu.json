@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkasmoa",
+    "description": "Testua modu trolean aurkeztea"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Testua",
+        "description": "Sarkastiko bihurtzeko testua"
+      }
+    ]
+  }
+}

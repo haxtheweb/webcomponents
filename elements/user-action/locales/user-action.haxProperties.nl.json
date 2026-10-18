@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Gebruikersactie",
+    "description": "Volg gebruikersacties en stuur gegevens naar xAPI-opslag."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Te volgen gebeurtenis",
+        "description": "Gebruikersactie die deze gebeurtenis activeert.",
+        "options": {
+          "visibility": "Kan dit zien",
+          "keydown": "Druk hier op een toets",
+          "click": "Klik hierop",
+          "hover": "Beweeg hierover"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Elke keer volgen",
+        "description": "Standaard wordt alleen de eerste keer gevolgd."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "产品一览",
+    "description": "快速产品概览块。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "图标",
+        "description": "代表概念个图标。"
+      },
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "一眼看清个主要概念。"
+      },
+      {
+        "property": "subtitle",
+        "title": "副标题",
+        "description": "补充细节。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "图标个强调色。"
+      }
+    ]
+  }
+}

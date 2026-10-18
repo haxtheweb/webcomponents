@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Action utilisateur",
+    "description": "Suivre les actions des utilisateurs et envoyer les données vers des stockages xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Événement à suivre",
+        "description": "Action de l'utilisateur qui déclenche cet événement.",
+        "options": {
+          "visibility": "Peut voir ceci",
+          "keydown": "Appuyer sur une touche ici",
+          "click": "Cliquer ici",
+          "hover": "Survoler ceci"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Suivre à chaque fois",
+        "description": "Par défaut, seule la première occurrence est suivie."
+      }
+    ]
+  }
+}

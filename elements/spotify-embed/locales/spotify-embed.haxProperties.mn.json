@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify тоглуулагч суулгацын бүрхүүл."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Эх сурвалж",
+        "description": "Spotify-ийн суулгах эсвэл хуваалцах холбоос."
+      },
+      {
+        "property": "theme",
+        "title": "Загвар",
+        "description": "Тоглуулагчийн арын өнгөний загвар.",
+        "options": {
+          "": "Анхдагч",
+          "0": "Хар"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Хэмжээ",
+        "description": "Тоглуулагчийн хэмжээ.",
+        "options": {
+          "normal": "Анхдагч",
+          "compact": "Авсаархан"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "پلے لسٹ",
+    "description": "کسی بھی قسم کا مواد پلے لسٹ میں دکھائیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ماخذ",
+        "description": "پلے لسٹ میں دکھایا جانے والا مواد۔"
+      },
+      {
+        "property": "edit",
+        "title": "ترمیمی موڈ",
+        "description": "پلے لسٹ کے لیے ترمیم اور پیش نظارہ موڈ کے درمیان تبدیل کریں۔"
+      },
+      {
+        "property": "navigation",
+        "title": "نیویگیشن",
+        "description": "آگے اور پیچھے جانے کے نیویگیشن بٹن دکھائیں۔"
+      },
+      {
+        "property": "pagination",
+        "title": "صفحہ بندی",
+        "description": "صفحہ بندی کے نقطے دکھائیں۔"
+      },
+      {
+        "property": "orientation",
+        "title": "سمت",
+        "description": "سلائیڈز کی سمت۔",
+        "options": {
+          "horizontal": "افقی",
+          "vertical": "عمودی"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "شروعاتی سلائیڈ",
+        "description": "ابتدا میں فوکس کی جانے والی سلائیڈ کا انڈیکس۔"
+      },
+      {
+        "property": "aspectRatio",
+        "title": "تناسبِ ابعاد",
+        "description": "سلائیڈز کا تناسبِ ابعاد۔",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

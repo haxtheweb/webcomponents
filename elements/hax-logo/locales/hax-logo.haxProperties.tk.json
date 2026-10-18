@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX söz sungaty",
+    "description": "HAX üçin logotip elementi, elbetde HAX bilen işleýän element hökmünde."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Ýerleşdiriljek HAX logotipiniň ölçegi",
+        "options": {
+          "mini": "Mini",
+          "small": "Kiçi",
+          "normal": "Adaty",
+          "large": "Uly"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Logotipi baş harplara öwürmelimi"
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Seitendetails",
+    "description": "Eine visuelle Trennung zwischen Seiten festlegen, die CMS zum Erstellen von Seiten nutzen können."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Im Theme und als erste Überschrift angezeigter Titel."
+      },
+      {
+        "property": "pageType",
+        "title": "Typ",
+        "description": "Visuelle Kontextbezeichnung der Seite.",
+        "options": {
+          "": "-- keiner --",
+          "content": "Inhalt",
+          "assessment": "Prüfung",
+          "quiz": "Quiz",
+          "submission": "Abgabe",
+          "lesson": "Lektion",
+          "module": "Modul",
+          "task": "Aufgabe",
+          "activity": "Aktivität",
+          "project": "Projekt",
+          "practice": "Übung",
+          "unit": "Einheit",
+          "objectives": "Lernziele",
+          "connection": "Verbindung",
+          "knowledge": "Wusstest du schon?",
+          "strategy": "Lernstrategie",
+          "discuss": "Diskutieren",
+          "listen": "Zuhören",
+          "make": "Gestalten",
+          "observe": "Beobachten",
+          "present": "Präsentieren",
+          "reading": "Lesen",
+          "reflect": "Reflektieren",
+          "research": "Recherchieren",
+          "watch": "Ansehen",
+          "write": "Schreiben"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Kommagetrennte Liste von Tags."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Link-URL",
+        "description": "Weiterleitungs-URL, die statt des Seiteninhalts angezeigt wird."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Link-Ziel",
+        "description": "Links im selben oder in einem neuen Fenster öffnen.",
+        "options": {
+          "_self": "Gleiches Fenster",
+          "_blank": "Neues Fenster"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Veröffentlicht",
+        "description": "Unveröffentlichte Seiten sind für Endbenutzer ausgeblendet."
+      },
+      {
+        "property": "locked",
+        "title": "Seite sperren",
+        "description": "Alle Elemente auf dieser Seite sperren oder entsperren."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Automatischen Slug überschreiben",
+        "description": "Slug vor automatischen Aktualisierungen anhand von Titel oder übergeordneter Seite schützen."
+      },
+      {
+        "property": "slug",
+        "title": "Pfad",
+        "description": "URL-Slug für diese Seite."
+      },
+      {
+        "property": "image",
+        "title": "Medien",
+        "description": "Medien, die die Seite repräsentieren und in einigen Themes und Ansichten verwendet werden."
+      },
+      {
+        "property": "parent",
+        "title": "Übergeordnet",
+        "description": "Pfad der übergeordneten Seite."
+      },
+      {
+        "property": "noderefs",
+        "title": "Verwandte Inhalte",
+        "description": "Mit dieser Seite verwandte Seiten."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Beschreibung",
+        "description": "Beschreibung für Sammlungen und Suchmaschinenoptimierung."
+      },
+      {
+        "property": "entityType",
+        "title": "Entitätstyp",
+        "description": "Standardmäßig Seite, sofern nicht anders festgelegt.",
+        "options": {
+          "page": "Seite (Standard)",
+          "taxonomy": "Taxonomie",
+          "taxonomyTerm": "Taxonomiebegriff",
+          "region": "Region"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Symbol",
+        "description": "Mit dieser Seite auf der Website verknüpftes Symbol."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Mit dieser Seite auf der Website verknüpfte Farbe."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Im Menü ausblenden",
+        "description": "Diese Seite in Menüs ausblenden, die URL aber beibehalten."
+      },
+      {
+        "property": "order",
+        "title": "Reihenfolge",
+        "description": "Reihenfolge relativ zu Geschwisterseiten."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Seiten-Theme",
+        "description": "Theme nur für diese Seite überschreiben."
+      },
+      {
+        "property": "author",
+        "title": "Autor",
+        "description": "Benutzername der Person, die diese Seite zuletzt geändert hat."
+      }
+    ]
+  }
+}

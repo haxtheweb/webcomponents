@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ເຄື່ອງຫຼິ້ນ 3D",
+    "description": "ເຄື່ອງຫຼິ້ນໄຟລ໌ 3D / ຄວາມເປັນຈິງເສີມ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "URL ຂອງໄຟລ໌ AR ນີ້."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "ຕຳແໜ່ງ X ຂອງອົງປະກອບໃນ AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "ຕຳແໜ່ງ Y ຂອງອົງປະກອບໃນ AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "ຕຳແໜ່ງ Z ຂອງອົງປະກອບໃນ AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "ສີທ້ອງຟ້າ",
+        "description": "ເລືອກສີຂອງທ້ອງຟ້າໃນສາກ."
+      }
+    ]
+  }
+}

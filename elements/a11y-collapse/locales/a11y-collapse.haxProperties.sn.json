@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Mudziyo unovharika",
+    "description": "Mudziyo mumwe unovhurika nekuvharika."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Musoro",
+        "description": "Mavara echinovharika."
+      },
+      {
+        "property": "expanded",
+        "title": "Zvakavhurwa",
+        "description": "Vhura nekusarudzika."
+      },
+      {
+        "property": "headingButton",
+        "title": "Bhatani reMusoro",
+        "description": "Ita kuti musoro wose udzvanywe pachinzvimbo cheaikoni chete."
+      },
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni yebhatani rekuvhura/kuvhara."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Aikoni (kana yakavhurwa)",
+        "description": "Aikoni isingamanikidzwi yemamiriro akavhurwa."
+      },
+      {
+        "slot": "",
+        "title": "Zvirimo",
+        "description": "Zvirimo zvechinovharika."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Tsananguro pfupi",
+        "description": "Tsananguro pfupi yebhatani rekuvhura/kuvhara."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Tsananguro pfupi (kana yakavhurwa)",
+        "description": "Tsananguro pfupi yebhatani rekuvhura/kuvhara kana rakavhurwa."
+      }
+    ]
+  }
+}

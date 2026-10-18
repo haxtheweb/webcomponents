@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Stór focal",
+    "description": "Téarma foclóra."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Téarma"
+      },
+      {
+        "property": "information",
+        "title": "Sainmhíniú",
+        "description": "Sainmhíniú a thaispeántar nuair a chliceáiltear ar an téarma."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Preabfhuinneog",
+        "description": "Taispeáin an sainmhíniú i bpreabfhuinneog seachas inlíne."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Naisc",
+        "description": "Liosta naisc fhorlíontacha a bhaineann leis an téarma seo."
+      }
+    ]
+  }
+}

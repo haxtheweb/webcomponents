@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Jehechajey ijupe",
+    "description": "Puruhára ikatu ojapo jehechajey ijupe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Ta'ãnga",
+        "description": "Ta'ãnga jehechajey ijupépe g̃uarã."
+      },
+      {
+        "property": "title",
+        "title": "Teratee",
+        "description": "Jehechajey ijupe réra."
+      },
+      {
+        "property": "alt",
+        "title": "Moñe'ẽrã mokõiha",
+        "description": "Moñe'ẽrã mokõiha ta'ãngape g̃uarã."
+      },
+      {
+        "slot": "question",
+        "title": "Porandu"
+      },
+      {
+        "slot": "",
+        "title": "Mbohovái"
+      },
+      {
+        "property": "accentColor",
+        "title": "Ñemohenda sa'y",
+        "description": "Eiporavo ñemohenda sa'y ñembohekógui.",
+        "options": {
+          "primary": "Tenondegua",
+          "accent": "Ojehechaukavéva",
+          "success": "Jehupyty",
+          "warning": "Ñemomarandu",
+          "error": "Jejavy",
+          "info": "Marandu"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ñembo'e jehupytyrã",
+        "description": "Ñembo'e jehupytyrã jehechauka ojeguenohẽva oer:hasLearningObjective ramo."
+      },
+      {
+        "property": "assessing",
+        "title": "Ohechakuaáva",
+        "description": "Tembiapo jehechauka ojeguenohẽva oer:assessing ramo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Joajuha hetave",
+        "description": "Joajuha marandu ojoapývape."
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "টেবিল",
+    "description": "ওয়েবের জন্য টেবিলভিত্তিক ডেটা।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "সারি হেডার",
+        "description": "প্রথম সারিকে হেডার হিসেবে ধরুন।"
+      },
+      {
+        "property": "columnHeader",
+        "title": "কলাম হেডার",
+        "description": "প্রথম কলামকে হেডার হিসেবে ধরুন।"
+      },
+      {
+        "property": "footer",
+        "title": "ফুটার",
+        "description": "শেষ সারিকে ফুটার হিসেবে ধরুন।"
+      },
+      {
+        "property": "sort",
+        "title": "সাজানোযোগ্য",
+        "description": "কলামের মান অনুযায়ী সাজানোর অনুমতি দিন।"
+      },
+      {
+        "property": "filter",
+        "title": "ফিল্টারের অনুমতি",
+        "description": "কলামের মান অনুযায়ী ফিল্টারের অনুমতি দিন।"
+      },
+      {
+        "property": "numericStyles",
+        "title": "সাংখ্যিক স্টাইল",
+        "description": "সাংখ্যিক কলামে সাংখ্যিক স্টাইল প্রয়োগ করুন।"
+      },
+      {
+        "property": "responsive",
+        "title": "রেসপন্সিভ",
+        "description": "ছোট স্ক্রিনে টেবিলের লেআউট সামঞ্জস্য করুন।"
+      },
+      {
+        "property": "rubricMode",
+        "title": "রুব্রিক মোড",
+        "description": "এই টেবিলকে OER Schema Rubric হিসেবে ব্যাখ্যা করুন, যাতে Rubric, RubricScale, RubricCriterion ও RubricLevel মেটাডেটা তৈরি হয়।"
+      },
+      {
+        "property": "rubricType",
+        "title": "রুব্রিকের ধরন",
+        "description": "oer:rubricType হিসেবে প্রকাশিত রুব্রিক স্টাইল (শুধু রুব্রিক মোড চালু থাকলে অর্থবহ)।",
+        "options": {
+          "": "(কোনোটি নয়)",
+          "analytic": "বিশ্লেষণাত্মক",
+          "holistic": "সামগ্রিক",
+          "single-point": "একক পয়েন্ট",
+          "checklist": "চেকলিস্ট"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "বর্ডারযুক্ত"
+      },
+      {
+        "property": "condensed",
+        "title": "সারি সংকুচিত করুন",
+        "description": "সারির উচ্চতা কমান।"
+      },
+      {
+        "property": "striped",
+        "title": "ডোরাকাটা সারি",
+        "description": "একটি পরপর সারি ছায়াযুক্ত করুন।"
+      },
+      {
+        "property": "downloadable",
+        "title": "ডাউনলোড বোতাম",
+        "description": "টেবিল ডাউনলোডের একটি বোতাম যোগ করুন।"
+      },
+      {
+        "property": "copyable",
+        "title": "কপি বোতাম",
+        "description": "টেবিলের CSV ডেটা কপি করার একটি বোতাম যোগ করুন।"
+      },
+      {
+        "property": "printable",
+        "title": "প্রিন্ট বোতাম",
+        "description": "শুধু টেবিলটি প্রিন্ট করার একটি বোতাম যোগ করুন।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV ডেটা",
+        "description": "আপলোড করা CSV ফাইল থেকে টেবিল তৈরি করুন।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Rasmlar galereyasi",
+    "description": "Rasmlarni toʻr, gʻishtsimon yoki slayd-shou maketlarida taqdim etuvchi galereya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Koʻrsatish rejimi",
+        "description": "Galereyada rasmlarni qanday taqdim etish.",
+        "options": {
+          "grid": "Toʻr",
+          "masonry": "Gʻishtsimon",
+          "gallery": "Galereya"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Faol indeks",
+        "description": "Galereya rejimida boshlanadigan faol rasm indeksi."
+      }
+    ]
+  }
+}

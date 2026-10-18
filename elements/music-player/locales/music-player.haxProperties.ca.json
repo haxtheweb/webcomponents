@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Visualitzador MIDI",
+    "description": "Reprodueix MIDI en context amb visualització."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Font",
+        "description": "URL del fitxer que es reproduirà."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualització",
+        "description": "Estil de visualització del fitxer de música.",
+        "options": {
+          "staff": "Pentagrama",
+          "piano-roll": "Rotlle de piano",
+          "waterfall": "Piano + cascada"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Amaga la cascada",
+        "description": "Amaga les notes en cascada a la visualització de piano."
+      }
+    ]
+  }
+}

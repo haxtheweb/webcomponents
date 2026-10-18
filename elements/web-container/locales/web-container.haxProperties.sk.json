@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Kontajner NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Skryť editor",
+        "description": "Skryť rozhranie na úpravu súborov."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Skryť terminál",
+        "description": "Skryť terminál pre automaticky spúšťané programy."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Skryť okno",
+        "description": "Skryť výstupné okno pri použití iba terminálu."
+      },
+      {
+        "slot": "",
+        "title": "Príkazy",
+        "description": "Príkazy (jeden na riadok), ktoré sa spustia pred načítaním."
+      }
+    ]
+  }
+}

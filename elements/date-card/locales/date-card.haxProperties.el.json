@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Ημερομηνία",
+    "description": "Εμφάνιση ημερομηνίας ημερολογίου με λεπτομέρειες."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Μήνας",
+        "description": "Μήνας που εμφανίζεται στην κάρτα."
+      },
+      {
+        "property": "date",
+        "title": "Ημέρα του μήνα",
+        "description": "Αριθμητική ημέρα του μήνα."
+      },
+      {
+        "property": "day",
+        "title": "Ημέρα της εβδομάδας",
+        "description": "Ημέρα της εβδομάδας ως κείμενο."
+      },
+      {
+        "property": "title",
+        "title": "Τίτλος",
+        "description": "Όνομα της εκδήλωσης."
+      },
+      {
+        "property": "location",
+        "title": "Τοποθεσία",
+        "description": "Τοποθεσία της εκδήλωσης."
+      },
+      {
+        "property": "startTime",
+        "title": "Έναρξη",
+        "description": "Ώρα έναρξης."
+      },
+      {
+        "property": "endTime",
+        "title": "Λήξη",
+        "description": "Ώρα λήξης."
+      },
+      {
+        "property": "accentColor",
+        "title": "Χρώμα έμφασης",
+        "description": "Ένα προαιρετικό χρώμα έμφασης."
+      },
+      {
+        "property": "dark",
+        "title": "Σκούρο θέμα",
+        "description": "Ενεργοποίηση σκούρου θέματος."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarcasmo",
+    "description": "Apresenta o texto em tom de zoeira"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Texto",
+        "description": "Texto a tornar sarcástico"
+      }
+    ]
+  }
+}

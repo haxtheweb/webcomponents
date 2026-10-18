@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Fila de col·lecció",
+    "description": "Element en format de fila per a una llista de col·lecció, amb text, enllaç, icona, etiquetes i imatge opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Enllaç",
+        "description": "URL de destinació d'aquesta fila."
+      },
+      {
+        "property": "image",
+        "title": "Imatge",
+        "description": "Imatge de la fila."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Text alternatiu que descriu la imatge."
+      },
+      {
+        "property": "line1",
+        "title": "Línia 1",
+        "description": "Primera línia de text."
+      },
+      {
+        "property": "line2",
+        "title": "Línia 2",
+        "description": "Segona línia de text."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona que representa la fila."
+      },
+      {
+        "property": "saturate",
+        "title": "Efecte de saturació",
+        "description": "Canvia la saturació de la imatge quan rep el focus."
+      },
+      {
+        "property": "tags",
+        "title": "Etiquetes",
+        "description": "Llista d'etiquetes separades per comes."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color",
+        "description": "Color de la icona i les etiquetes."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus аңлатмалары",
+    "description": "Disqus аңлатма веб-хезмәте белән интеграция"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Кыска исем",
+        "description": "Disqus-тагы сайтның кыска исеме"
+      }
+    ]
+  }
+}

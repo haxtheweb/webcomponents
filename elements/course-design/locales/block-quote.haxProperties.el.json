@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Παράθεμα",
+    "description": "Μορφοποιημένο μπλοκ παραθέματος."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Παραπομπή",
+        "description": "Κείμενο παραπομπής."
+      },
+      {
+        "property": "alt",
+        "title": "Εναλλακτικό",
+        "description": "Εναλλακτικό κείμενο για την εικόνα."
+      },
+      {
+        "property": "image",
+        "title": "Εικόνα",
+        "description": "Εικόνα που εμφανίζεται με το παράθεμα."
+      }
+    ]
+  }
+}

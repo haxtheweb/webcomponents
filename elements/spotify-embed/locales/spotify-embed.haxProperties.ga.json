@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Fillteán do sheinnteoirí leabaithe Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Foinse",
+        "description": "Nasc leabaithe nó comhroinnte ó Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Téama",
+        "description": "Téama datha cúlra don seinnteoir.",
+        "options": {
+          "": "Réamhshocrú",
+          "0": "Dubh"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Méid",
+        "description": "Méid an tseinnteora.",
+        "options": {
+          "normal": "Réamhshocrú",
+          "compact": "Dlúth"
+        }
+      }
+    ]
+  }
+}

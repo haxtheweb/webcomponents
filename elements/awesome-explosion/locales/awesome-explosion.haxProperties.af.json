@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Wonderlike ontploffing",
+    "description": "Interaktiewe ontploffingsanimasie met opsionele klankeffekte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Grootte",
+        "description": "Stel die ontploffingsgrootte.",
+        "options": {
+          "tiny": "Piepklein",
+          "small": "Klein",
+          "medium": "Medium",
+          "large": "Groot",
+          "epic": "Epies"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Kleur",
+        "description": "Stel die kleurtema van die ontploffing.",
+        "options": {
+          "": "Standaard",
+          "red": "Rooi",
+          "blue": "Blou",
+          "purple": "Pers",
+          "orange": "Oranje",
+          "yellow": "Geel"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Klankeffekte",
+        "description": "Aktiveer klankeffekte."
+      },
+      {
+        "property": "resetSound",
+        "title": "Herstel klank",
+        "description": "Begin die klank elke keer van voor af."
+      },
+      {
+        "property": "image",
+        "title": "Pasgemaakte prent",
+        "description": "Opsionele URL vir 'n pasgemaakte ontploffingsprent."
+      },
+      {
+        "property": "sound",
+        "title": "Pasgemaakte klank",
+        "description": "Opsionele URL vir 'n pasgemaakte klankeffek."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Gedeaktiveer",
+        "description": "Deaktiveer alle interaksies."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Su'aal Summadeyn",
+    "description": "Dooro summado si aad uga jawaabto su'aasha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Su'aal",
+        "description": "Su'aasha ay isticmaalayaashu ka jawaabayaan."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Qaabka dhibcaha",
+        "description": "OER Schema: qaabka dhibcaha qiimayntan (tusaale dhibco, xaraf, boqolkiiba, dhammaystir)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ujeeddada waxbarasho",
+        "description": "OER Schema: ujeeddada waxbarasho ee la xiriirta qiimayntan."
+      },
+      {
+        "property": "forCourse",
+        "title": "Koorso",
+        "description": "OER Schema: koorsada loogu talagalay qiimayntan."
+      },
+      {
+        "property": "answers",
+        "title": "Jawaabaha"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Magaca imtixaanka",
+        "description": "Magaca imtixaanka loo isticmaalo aqoonsiga xAPI ee nidaamyada falanqaynta."
+      }
+    ]
+  }
+}

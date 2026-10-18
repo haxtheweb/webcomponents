@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ब्लक उद्धरण",
+    "description": "शैलीबद्ध उद्धरण ब्लक।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "सन्दर्भ",
+        "description": "सन्दर्भ पाठ।"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "तस्बिरको वैकल्पिक पाठ।"
+      },
+      {
+        "property": "image",
+        "title": "तस्बिर",
+        "description": "उद्धरणसँग देखाइने तस्बिर।"
+      }
+    ]
+  }
+}

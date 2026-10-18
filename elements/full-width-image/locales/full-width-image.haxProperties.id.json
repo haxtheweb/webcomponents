@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bagian gambar",
+    "description": "Gambar selebar penuh yang memisahkan bagian halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Gambar latar belakang."
+      },
+      {
+        "property": "caption",
+        "description": "Judul teks."
+      }
+    ]
+  }
+}

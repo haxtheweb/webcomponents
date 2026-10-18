@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Apstāšanās piezīme",
+    "description": "Ziņojums, kas pievērš lasītāju uzmanību konkrētiem norādījumiem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Ievadiet apstāšanās piezīmes nosaukumu."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Ievadiet ārēju URL."
+      },
+      {
+        "property": "status",
+        "title": "Statuss",
+        "description": "Iestatot statusu, attiecīgi mainās krāsas un ikonas",
+        "options": {
+          "stop": "Stop",
+          "warning": "Brīdinājums",
+          "success": "Apstiprinājums",
+          "info": "Paziņojums"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Piezīmes teksts",
+        "description": "Apstāšanās piezīmes teksts."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Partitură",
+    "description": "Afișează și redă partituri, tabulaturi de chitară și notație muzicală prin alphaTex sau MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Notație AlphaTex",
+        "description": "Marcaj alphaTex inline pentru partitură. Editați direct pentru a crea notația; este stocat într-un șablon, astfel încât spațierea se păstrează."
+      },
+      {
+        "property": "source",
+        "title": "Fișier de partitură",
+        "description": "Încărcați sau legați un fișier MusicXML (.xml/.musicxml/.mxl) sau Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Când este setat, înlocuiește alphaTex inline."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Redare audio",
+        "description": "Activat implicit - ascultați partitura redată prin sintetizatorul încorporat. Dezactivați pentru modul doar de vizualizare (fără audio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Afișează opțiunile de afișare",
+        "description": "Afișează butoanele de zoom, întindere și aspect pe bara playerului."
+      },
+      {
+        "property": "showExport",
+        "title": "Afișează butoanele de export",
+        "description": "Afișează butoanele de descărcare MIDI și de imprimare/PDF pe bara playerului."
+      }
+    ]
+  }
+}

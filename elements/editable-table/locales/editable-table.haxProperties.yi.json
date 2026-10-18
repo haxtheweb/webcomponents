@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "טאַבעלע",
+    "description": "טאַבעלע־דאַטן פֿאַרן וועב."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "שורה־קעפּל",
+        "description": "באַהאַנדלען די ערשטע שורה ווי אַ קעפּל."
+      },
+      {
+        "property": "columnHeader",
+        "title": "זײַל־קעפּל",
+        "description": "באַהאַנדלען דעם ערשטן זײַל ווי אַ קעפּל."
+      },
+      {
+        "property": "footer",
+        "title": "פֿוס־שורה",
+        "description": "באַהאַנדלען די לעצטע שורה ווי אַ פֿוס."
+      },
+      {
+        "property": "sort",
+        "title": "סאָרטירבאַר",
+        "description": "דערלויבן סאָרטירן לויט זײַל־ווערטן."
+      },
+      {
+        "property": "filter",
+        "title": "דערלויבן פֿילטער",
+        "description": "דערלויבן פֿילטרירן לויט זײַל־ווערטן."
+      },
+      {
+        "property": "numericStyles",
+        "title": "נומערישער סטיל",
+        "description": "אָנווענדן נומערישן סטיל אויף נומערישע זײַלן."
+      },
+      {
+        "property": "responsive",
+        "title": "רעספּאָנסיוו",
+        "description": "צופּאַסן דעם טאַבעלע־אויסלייג אויף קליינע עקראַנען."
+      },
+      {
+        "property": "rubricMode",
+        "title": "רובריק־מאָדע",
+        "description": "אינטערפּרעטירן די טאַבעלע ווי אַן OER Schema Rubric, כּדי עס זאָלן אַרויסגעגעבן ווערן Rubric, RubricScale, RubricCriterion און RubricLevel מעטאַדאַטן."
+      },
+      {
+        "property": "rubricType",
+        "title": "רובריק־טיפּ",
+        "description": "רובריק־סטיל אַרויסגעגעבן ווי oer:rubricType (נאָר באַטײַטיק ווען רובריק־מאָדע איז אָנגעשאַלטן).",
+        "options": {
+          "": "(קיינער)",
+          "analytic": "אַנאַליטיש",
+          "holistic": "האָליסטיש",
+          "single-point": "איין פּונקט",
+          "checklist": "קאָנטראָל־רשימה"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "מיט ראַנד"
+      },
+      {
+        "property": "condensed",
+        "title": "קאָמפּאַקטע שורות",
+        "description": "פֿאַרקלענערן די שורה־הייך."
+      },
+      {
+        "property": "striped",
+        "title": "געשטרײַפֿטע שורות",
+        "description": "שאַטירן יעדע צווייטע שורה."
+      },
+      {
+        "property": "downloadable",
+        "title": "אַראָפּלאָד־קנעפּל",
+        "description": "צולייגן אַ קנעפּל צו אַראָפּלאָדן די טאַבעלע."
+      },
+      {
+        "property": "copyable",
+        "title": "קאָפּיר־קנעפּל",
+        "description": "צולייגן אַ קנעפּל צו קאָפּירן די CSV־דאַטן פֿון דער טאַבעלע."
+      },
+      {
+        "property": "printable",
+        "title": "דרוק־קנעפּל",
+        "description": "צולייגן אַ קנעפּל צו דרוקן נאָר די טאַבעלע."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV־דאַטן",
+        "description": "שאַפֿן אַ טאַבעלע פֿון אַן אַרויפֿגעלאָדענער CSV־טעקע."
+      }
+    ]
+  }
+}

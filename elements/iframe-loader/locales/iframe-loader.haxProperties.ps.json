@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "بهرنۍ وېب منځپانګه په iframe کې ځای پر ځای کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "د سرچینې URL",
+        "description": "د سرچینې URL."
+      },
+      {
+        "property": "height",
+        "title": "لوړوالی",
+        "description": "د iframe لوړوالی."
+      },
+      {
+        "property": "width",
+        "title": "پلنوالی",
+        "description": "د iframe پلنوالی."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "اقتباس بلاک",
+    "description": "سجایا ہویا اقتباس بلاک۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "حوالہ",
+        "description": "حوالے دا متن۔"
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "تصویر لئی متبادل متن۔"
+      },
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "اقتباس نال وکھائی جاوݨ والی تصویر۔"
+      }
+    ]
+  }
+}

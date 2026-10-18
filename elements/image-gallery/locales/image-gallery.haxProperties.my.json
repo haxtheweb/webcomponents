@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "ပုံ ပြခန်း",
+    "description": "ပုံများကို grid၊ masonry သို့မဟုတ် slideshow အပြင်အဆင်များဖြင့် တင်ပြသော ပြခန်း။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "ပြသမှု မုဒ်",
+        "description": "ပြခန်းတွင် ပုံများကို တင်ပြမည့် ပုံစံ။",
+        "options": {
+          "grid": "Grid",
+          "masonry": "Masonry",
+          "gallery": "ပြခန်း"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "လက်ရှိ index",
+        "description": "ပြခန်း မုဒ်တွင် စတင်မည့် လက်ရှိပုံ၏ index။"
+      }
+    ]
+  }
+}

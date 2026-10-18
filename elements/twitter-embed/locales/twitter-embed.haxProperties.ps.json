@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "د Twitter (X) ځای پر ځای کول",
+    "description": "د X یو ټویټ په شرایطو کې ځای پر ځای کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "د ټویټ URL",
+        "description": "د ځای پر ځای کېدونکي ټویټ URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "تیم",
+        "description": "د X ټویټونو لپاره روښانه یا تیاره تیم.",
+        "options": {
+          "light": "روښانه",
+          "dark": "تیاره"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "په کلیک د پاپ اپ مخه ونیسئ",
+        "description": "کاروونکي په x.com کې د ټویټ له پرانیستلو منع کړئ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Медиа дәйексөз",
+    "description": "Дәйексөзі, дереккөзі және қосымша жазуы бар сурет."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Дәйексөз",
+        "description": "Дәйексөз мәтіні."
+      },
+      {
+        "slot": "author",
+        "title": "Автор",
+        "description": "Дәйексөз авторы."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Автор туралы мәліметтер",
+        "description": "Автор туралы мәліметтер."
+      },
+      {
+        "slot": "caption",
+        "title": "Жазу",
+        "description": "Сурет жазуы."
+      },
+      {
+        "property": "src",
+        "title": "Сурет дереккөзі",
+        "description": "Медиа дәйексөзге арналған сурет файлы."
+      },
+      {
+        "property": "alt",
+        "title": "Балама мәтін",
+        "description": "Суреттің балама мәтіні."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Картаның екпін түсі."
+      }
+    ]
+  }
+}

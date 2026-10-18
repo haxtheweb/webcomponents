@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "ബാഹ്യ വെബ് ഉള്ളടക്കം ഒരു iframe-ൽ ഉൾച്ചേർക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ഉറവിട URL",
+        "description": "ഉറവിട URL."
+      },
+      {
+        "property": "height",
+        "title": "ഉയരം",
+        "description": "Iframe ഉയരം."
+      },
+      {
+        "property": "width",
+        "title": "വീതി",
+        "description": "Iframe വീതി."
+      }
+    ]
+  }
+}

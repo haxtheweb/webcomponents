@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Dokumintaasjespiler foar webkomponinten"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Finster ferbergje",
+        "description": "Ferbergje it útfierfinster, nuttich as allinnich de terminal brûkt wurdt"
+      }
+    ]
+  }
+}

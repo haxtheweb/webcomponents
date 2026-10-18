@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Amlap H5P ar gyfer llwytho a chyflwyno ffeiliau .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Cod mewnosod iframe H5P"
+      }
+    ]
+  }
+}

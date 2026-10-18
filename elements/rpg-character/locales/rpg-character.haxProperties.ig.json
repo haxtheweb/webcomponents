@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Agwa RPG",
+    "description": "Agwa na-atọ ụtọ sitere na HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Aha",
+        "description": "Okwu eji emepụta agwa na-enweghị usoro."
+      },
+      {
+        "property": "hat",
+        "title": "Okpu",
+        "description": "Ụdị okpu.",
+        "options": {
+          "none": "Ndabara",
+          "random": "Na-enweghị usoro",
+          "bunny": "Oke bekee",
+          "cowboy": "Onye na-azụ ehi (Cowboy)",
+          "education": "Agụmakwụkwọ",
+          "construction": "Iwu ụlọ",
+          "warning": "Ịdọ aka na ntị",
+          "watermelon": "Anyụ",
+          "coffee": "Kọfị",
+          "knight": "Dike agha",
+          "ninja": "Ninja",
+          "party": "Oriri",
+          "error": "Njehie",
+          "edit": "Dezie"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Obosara",
+        "description": "Obosara agwa na pikselụ."
+      },
+      {
+        "property": "height",
+        "title": "Ogo",
+        "description": "Ogo agwa na pikselụ."
+      },
+      {
+        "property": "fire",
+        "title": "Ọ na-ere ọkụ?",
+        "description": "Ma agwa ahụ na-ere ọkụ."
+      },
+      {
+        "property": "walking",
+        "title": "Ọ na-eje ije?",
+        "description": "Ihe ngosi ije; ọ na-agba ọsọ mgbe ọ na-ere ọkụ."
+      }
+    ]
+  }
+}

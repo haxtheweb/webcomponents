@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Hûrguliyên rûpelê",
+    "description": "Dabeşbûneke dîtbarî di navbera rûpelan de diyar bike ku CMS dikarin ji bo çêkirina rûpelan bikar bînin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê ku di mijarê û sernivîsa yekem de tê nîşandan."
+      },
+      {
+        "property": "pageType",
+        "title": "Cure",
+        "description": "Etîketa çarçoveya dîtbarî ya rûpelê.",
+        "options": {
+          "": "-- tune --",
+          "content": "Naverok",
+          "assessment": "Nirxandin",
+          "quiz": "Quiz",
+          "submission": "Şandin",
+          "lesson": "Ders",
+          "module": "Modûl",
+          "task": "Kar",
+          "activity": "Çalakî",
+          "project": "Proje",
+          "practice": "Pratîk",
+          "unit": "Yekîne",
+          "objectives": "Armancên Fêrbûnê",
+          "connection": "Girêdan",
+          "knowledge": "Te Dizanibû?",
+          "strategy": "Stratejiya Fêrbûnê",
+          "discuss": "Nîqaş bike",
+          "listen": "Guhdarî bike",
+          "make": "Çêke",
+          "observe": "Çavdêrî bike",
+          "present": "Pêşkêş bike",
+          "reading": "Xwendin",
+          "reflect": "Bifikire",
+          "research": "Lêkolîn",
+          "watch": "Temaşe bike",
+          "write": "Binivîse"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Etîket",
+        "description": "Lîsteya etîketan a bi bêhnokan veqetandî."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL ya Girêdanê",
+        "description": "URL ya beralîkirinê ku li şûna naveroka rûpelê tê nîşandan."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Armanca Girêdanê",
+        "description": "Girêdanan di heman pencereyê an pencereyeke nû de veke.",
+        "options": {
+          "_self": "Heman pencere",
+          "_blank": "Pencereya nû"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Weşandî",
+        "description": "Rûpelên neweşandî ji bikarhênerên dawî re veşartî ne."
+      },
+      {
+        "property": "locked",
+        "title": "Rûpelê kilît bike",
+        "description": "Hemû hêmanên li ser vê rûpelê kilît bike an veke."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Slug a otomatîk derbas bike",
+        "description": "Slug ji nûkirinên otomatîk ên li gorî sernav an dêûbavê kilît bike."
+      },
+      {
+        "property": "slug",
+        "title": "Rê",
+        "description": "Slug a URL ji bo vê rûpelê."
+      },
+      {
+        "property": "image",
+        "title": "Medya",
+        "description": "Medyaya ku rûpelê temsîl dike, di hin mijar û dîtinan de tê bikaranîn."
+      },
+      {
+        "property": "parent",
+        "title": "Dêûbav",
+        "description": "Rêya rûpela dêûbav."
+      },
+      {
+        "property": "noderefs",
+        "title": "Naveroka têkildar",
+        "description": "Rûpelên bi vê rûpelê re têkildar."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Danasîn",
+        "description": "Danasîna ku di berhevokan û SEO de tê bikaranîn."
+      },
+      {
+        "property": "entityType",
+        "title": "Cureyê Hebûnê",
+        "description": "Heta ku bi awayekî din neyê diyarkirin, xwerû rûpel e.",
+        "options": {
+          "page": "Rûpel (xwerû)",
+          "taxonomy": "Taksonomî",
+          "taxonomyTerm": "Têgeha Taksonomiyê",
+          "region": "Herêm"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Îkon",
+        "description": "Îkona bi vê rûpelê re di malperê de girêdayî."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê balkêş",
+        "description": "Rengê bi vê rûpelê re di malperê de girêdayî."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Di menuyê de veşêre",
+        "description": "Vê rûpelê ji menuyan veşêre û URL ya wê biparêze."
+      },
+      {
+        "property": "order",
+        "title": "Rêz",
+        "description": "Rêz li gorî rûpelên xwişk."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Mijara rûpelê",
+        "description": "Mijarê tenê ji bo vê rûpelê biguherîne."
+      },
+      {
+        "property": "author",
+        "title": "Nivîskar",
+        "description": "Navê bikarhêner ê kesê dawî ku ev rûpel guhertiye."
+      }
+    ]
+  }
+}

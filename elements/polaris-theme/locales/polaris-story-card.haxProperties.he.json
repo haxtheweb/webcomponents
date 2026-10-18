@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "כרטיס סיפור Polaris",
+    "description": "הצגת כרטיס סיפור Polaris עם תמונת רקע, תווית עמוד תווך וטקסט כותרת."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "תמונת רקע",
+        "description": "URL של התמונה המוצגת כרקע הכרטיס."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "גודל רקע",
+        "description": "אופן מילוי הכרטיס על ידי תמונת הרקע (CSS background-size).",
+        "options": {
+          "cover": "כיסוי (cover)",
+          "contain": "הכלה (contain)",
+          "auto": "אוטומטי (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "הצמדת רקע",
+        "description": "אופן התנהגות תמונת הרקע בזמן גלילה (CSS background-attachment).",
+        "options": {
+          "scroll": "גלילה (scroll)",
+          "fixed": "קבוע (fixed)",
+          "local": "מקומי (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "תווית עמוד תווך",
+        "description": "תווית קצרה באותיות רישיות המוצגת בראש הכרטיס. השאירו ריק כדי להסתיר."
+      },
+      {
+        "property": "label",
+        "title": "טקסט הכרטיס",
+        "description": "הטקסט הראשי המוצג בלוח התחתון."
+      },
+      {
+        "property": "link",
+        "title": "קישור",
+        "description": "URL יעד אופציונלי העוטף את הכרטיס כולו."
+      }
+    ]
+  }
+}

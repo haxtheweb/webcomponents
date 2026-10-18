@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "நையாண்டி",
+    "description": "உரையைக் கிண்டலான முறையில் வழங்குதல்"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "உரை",
+        "description": "நையாண்டியாக்க வேண்டிய உரை"
+      }
+    ]
+  }
+}

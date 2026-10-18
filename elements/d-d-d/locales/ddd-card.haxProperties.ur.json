@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "کارڈ",
+    "description": "DDD ڈیزائن سسٹم کے مطابق اسٹائل شدہ کارڈ جزو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "تصویر",
+        "description": "اختیاری تصویر۔"
+      },
+      {
+        "property": "alt",
+        "title": "تصویر کا Alt",
+        "description": "تصویر کی وضاحت کرنے والا متبادل متن۔"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "کارڈ کا عنوان۔"
+      },
+      {
+        "slot": "",
+        "title": "مواد",
+        "description": "کارڈ کے مواد کا حصہ۔"
+      },
+      {
+        "property": "href",
+        "title": "لنک",
+        "description": "بٹن لنک URL۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "لیبل",
+        "description": "بٹن کا لیبل۔"
+      },
+      {
+        "property": "noArrow",
+        "title": "تیر کے بغیر",
+        "description": "بٹن کا تیر چھپائیں۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "لنک: ہدف",
+        "description": "لنک کہاں کھولنا ہے۔",
+        "options": {
+          "": "وہی ونڈو",
+          "_blank": "نئی ونڈو - _blank",
+          "_top": "اوپری ونڈو - _top",
+          "_parent": "والد ونڈو - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "لنک: rel",
+        "description": "لنک شدہ وسیلے اور موجودہ دستاویز کے درمیان تعلق۔"
+      }
+    ]
+  }
+}

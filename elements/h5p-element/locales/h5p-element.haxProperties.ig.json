@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Ihe mkpuchi H5P maka ibudata na igosi faịlụ .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Koodu ntinye iframe H5P"
+      }
+    ]
+  }
+}

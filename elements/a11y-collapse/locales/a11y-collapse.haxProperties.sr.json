@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Склопиви контејнер",
+    "description": "Један контејнер који се проширује и скупља."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Наслов",
+        "description": "Текст за склопиви елемент."
+      },
+      {
+        "property": "expanded",
+        "title": "Проширено",
+        "description": "Подразумевано проширено."
+      },
+      {
+        "property": "headingButton",
+        "title": "Дугме наслова",
+        "description": "Учини цео наслов кликабилним уместо само иконе."
+      },
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона за дугме проширивања/скупљања."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Икона (када је проширено)",
+        "description": "Опционална икона за проширено стање дугмета."
+      },
+      {
+        "slot": "",
+        "title": "Садржај",
+        "description": "Садржај склопивог елемента."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Опис алатке",
+        "description": "Опис алатке за дугме проширивања/скупљања."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Опис алатке (када је проширено)",
+        "description": "Опис алатке за дугме проширивања/скупљања када је проширено."
+      }
+    ]
+  }
+}

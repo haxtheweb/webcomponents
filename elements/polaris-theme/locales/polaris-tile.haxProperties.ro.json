@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Plăcuță Polaris",
+    "description": "Afișează o plăcuță Polaris cu titlu, text suplimentar opțional și link opțional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Text principal",
+        "description": "Textul principal al plăcuței."
+      },
+      {
+        "property": "line2",
+        "title": "Text secundar",
+        "description": "Text suplimentar opțional."
+      },
+      {
+        "property": "type",
+        "title": "Stilul plăcuței",
+        "description": "Stil vizual predefinit al plăcuței.",
+        "options": {
+          "1": "Stil 1",
+          "2": "Stil 2",
+          "3": "Stil 3",
+          "4": "Stil 4",
+          "5": "Stil 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Imagine de fundal",
+        "description": "URL-ul imaginii de fundal folosite de stilurile de plăcuță care acceptă imagini."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "URL de destinație opțional pentru acțiunea plăcuței."
+      }
+    ]
+  }
+}

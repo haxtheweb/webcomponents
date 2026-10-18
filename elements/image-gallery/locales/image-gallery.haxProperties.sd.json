@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "تصويري گيلري",
+    "description": "اها گيلري جيڪا تصويرن کي گرڊ، ميسنري يا سلائيڊ شو ترتيبن ۾ پيش ڪري ٿي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "ڊسپلي موڊ",
+        "description": "گيلري ۾ تصويرن کي ڪيئن پيش ڪجي.",
+        "options": {
+          "grid": "گرڊ",
+          "masonry": "ميسنري",
+          "gallery": "گيلري"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "فعال انڊيڪس",
+        "description": "گيلري موڊ ۾ شروع ڪرڻ لاءِ فعال تصوير جو انڊيڪس."
+      }
+    ]
+  }
+}

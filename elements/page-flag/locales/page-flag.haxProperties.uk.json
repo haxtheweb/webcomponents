@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Позначка сторінки",
+    "description": "Редакторська примітка для авторів сторінки."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "Акцентний колір позначки сторінки."
+      },
+      {
+        "property": "label",
+        "title": "Мітка",
+        "description": "Текст мітки для позначки сторінки."
+      }
+    ]
+  }
+}

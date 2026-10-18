@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Contêiner recolhível",
+    "description": "Contêiner único expansível e recolhível."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Título",
+        "description": "Texto do item recolhível."
+      },
+      {
+        "property": "expanded",
+        "title": "Expandido",
+        "description": "Expandir por padrão."
+      },
+      {
+        "property": "headingButton",
+        "title": "Botão no título",
+        "description": "Tornar todo o título clicável, em vez de apenas o ícone."
+      },
+      {
+        "property": "icon",
+        "title": "Ícone",
+        "description": "Ícone do botão de expandir/recolher."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ícone (quando expandido)",
+        "description": "Ícone opcional para o estado expandido."
+      },
+      {
+        "slot": "",
+        "title": "Conteúdo",
+        "description": "Conteúdo do item recolhível."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Dica",
+        "description": "Dica do botão de expandir/recolher."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Dica (quando expandido)",
+        "description": "Dica do botão de expandir/recolher quando expandido."
+      }
+    ]
+  }
+}

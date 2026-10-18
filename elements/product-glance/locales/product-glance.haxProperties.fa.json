@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "نگاهی به محصول",
+    "description": "بلوک نمای کلی و سریع محصول."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "نماد",
+        "description": "نمادی که مفهوم را نشان می‌دهد."
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "مفهوم اصلی در یک نگاه."
+      },
+      {
+        "property": "subtitle",
+        "title": "زیرعنوان",
+        "description": "جزئیات بیشتر."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی نماد."
+      }
+    ]
+  }
+}

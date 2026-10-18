@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Dur Notu",
+    "description": "Okurları belirli talimatlar konusunda uyaran bir mesaj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Dur notu için başlık girin."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Harici bir URL girin."
+      },
+      {
+        "property": "status",
+        "title": "Durum",
+        "description": "Durumu ayarlamak renkleri ve simgeleri buna uygun şekilde değiştirir",
+        "options": {
+          "stop": "Dur",
+          "warning": "Uyarı",
+          "success": "Onay",
+          "info": "Duyuru"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Not Metni",
+        "description": "Dur notunun metni."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kontener zwijany",
+    "description": "Pojedynczy kontener do rozwijania i zwijania."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Nagłówek",
+        "description": "Tekst sekcji zwijanej."
+      },
+      {
+        "property": "expanded",
+        "title": "Rozwinięty",
+        "description": "Domyślnie rozwinięty."
+      },
+      {
+        "property": "headingButton",
+        "title": "Nagłówek jako przycisk",
+        "description": "Spraw, aby cały nagłówek był klikalny, a nie tylko ikona."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona przycisku rozwijania/zwijania."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikona (po rozwinięciu)",
+        "description": "Opcjonalna ikona dla stanu rozwiniętego."
+      },
+      {
+        "slot": "",
+        "title": "Zawartość",
+        "description": "Zawartość sekcji zwijanej."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Podpowiedź",
+        "description": "Podpowiedź przycisku rozwijania/zwijania."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Podpowiedź (po rozwinięciu)",
+        "description": "Podpowiedź przycisku rozwijania/zwijania w stanie rozwiniętym."
+      }
+    ]
+  }
+}

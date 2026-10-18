@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "សម្គាល់ពាក្យ",
+    "description": "កំណត់គំនិតតាមរយៈពាក្យ ដោយចុចក្នុងអត្ថបទ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "សំណួរ",
+        "description": "សំណួរសម្រាប់អ្នកប្រើឆ្លើយ។"
+      },
+      {
+        "property": "statement",
+        "title": "ប្រយោគ",
+        "description": "ប្រយោគដែលនឹងបំប្លែងទៅជាអន្តរកម្មសម្គាល់ពាក្យ។"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ទម្រង់ដាក់ពិន្ទុ",
+        "description": "OER Schema: ទម្រង់ដាក់ពិន្ទុសម្រាប់ការវាយតម្លៃនេះ (ឧ. ពិន្ទុ និទ្ទេស ភាគរយ ការបញ្ចប់)។"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "គោលបំណងសិក្សា",
+        "description": "OER Schema: គោលបំណងសិក្សាដែលពាក់ព័ន្ធនឹងការវាយតម្លៃនេះ។"
+      },
+      {
+        "property": "forCourse",
+        "title": "វគ្គសិក្សា",
+        "description": "OER Schema: វគ្គសិក្សាដែលការវាយតម្លៃនេះមានបំណងសម្រាប់។"
+      },
+      {
+        "property": "answers",
+        "title": "ចម្លើយ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ឈ្មោះកម្រងសំណួរ",
+        "description": "ឈ្មោះកម្រងសំណួរបញ្ជូនចូលសម្រាប់ប្រើក្នុងបរិស្ថានដំណើរការដោយ xAPI ដើម្បីកំណត់អត្តសញ្ញាណធាតុនេះ"
+      }
+    ]
+  }
+}

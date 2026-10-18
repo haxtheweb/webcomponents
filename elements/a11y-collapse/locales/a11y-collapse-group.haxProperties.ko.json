@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "펼치기/접기 그룹",
+    "description": "펼치기/접기 요소의 그룹입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "하나만 펼치기",
+        "description": "한 번에 하나의 항목만 펼칠 수 있습니다."
+      },
+      {
+        "slot": "",
+        "title": "접기 항목",
+        "description": "접기 항목입니다."
+      }
+    ]
+  }
+}

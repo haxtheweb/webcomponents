@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Umsindo ophakathi nombhalo",
+    "description": "Dlala umsindo phakathi nombhalo ukwengeza okuqukethwe kwekhasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Umthombo",
+        "description": "Ifayela le-MP3 noma i-URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Wokugcizelela",
+        "description": "Umbala wokugcizelela wekhadi."
+      },
+      {
+        "property": "shiny",
+        "title": "Okucwebezelayo",
+        "description": "Sebenzisa umbala wokugcizelela okhanyayo wangemuva esikhundleni sompunga."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Okumnyama",
+        "description": "Sebenzisa imodi emnyama."
+      }
+    ]
+  }
+}

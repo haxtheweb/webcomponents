@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Síðuflagg",
+    "description": "Ritstjórnarlig viðmerking til síðuhøvundar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Dámlitur á síðuflagginum."
+      },
+      {
+        "property": "label",
+        "title": "Heiti",
+        "description": "Heitistekstur á síðuflagginum."
+      }
+    ]
+  }
+}

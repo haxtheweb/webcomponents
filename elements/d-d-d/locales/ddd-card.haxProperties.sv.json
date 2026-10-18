@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kort",
+    "description": "Kortkomponent formaterad med designsystemet DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Bild",
+        "description": "Valfri bild."
+      },
+      {
+        "property": "alt",
+        "title": "Bildens alt-text",
+        "description": "Alternativ text som beskriver bilden."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Kortets titel."
+      },
+      {
+        "slot": "",
+        "title": "Innehåll",
+        "description": "Kortets innehållsområde."
+      },
+      {
+        "property": "href",
+        "title": "Länk",
+        "description": "Knappens länk-URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etikett",
+        "description": "Knappens etikett."
+      },
+      {
+        "property": "noArrow",
+        "title": "Ingen pil",
+        "description": "Dölj knappens pil."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Länk: mål",
+        "description": "Var länken ska öppnas.",
+        "options": {
+          "": "Samma fönster",
+          "_blank": "Nytt fönster - _blank",
+          "_top": "Översta fönstret - _top",
+          "_parent": "Överordnat fönster - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Länk: rel",
+        "description": "Relation mellan den länkade resursen och det aktuella dokumentet."
+      }
+    ]
+  }
+}

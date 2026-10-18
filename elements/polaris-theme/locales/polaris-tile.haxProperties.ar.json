@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "مربع Polaris",
+    "description": "عرض مربع Polaris مع عنوان ونص داعم اختياري ورابط اختياري."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "النص الأساسي",
+        "description": "النص الرئيسي للمربع."
+      },
+      {
+        "property": "line2",
+        "title": "النص الثانوي",
+        "description": "نص داعم اختياري."
+      },
+      {
+        "property": "type",
+        "title": "نمط المربع",
+        "description": "نمط مرئي مُعدّ مسبقًا للمربع.",
+        "options": {
+          "1": "النمط 1",
+          "2": "النمط 2",
+          "3": "النمط 3",
+          "4": "النمط 4",
+          "5": "النمط 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "صورة الخلفية",
+        "description": "URL صورة الخلفية المستخدمة في أنماط المربعات التي تدعم الصور."
+      },
+      {
+        "property": "link",
+        "title": "الرابط",
+        "description": "URL وجهة اختياري لإجراء المربع."
+      }
+    ]
+  }
+}

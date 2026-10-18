@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ata tohu",
+    "description": "Ata tohu mai i te whare pukapuka ata tohu katoa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ata tohu",
+        "description": "Ata tohu hei whakaatu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae arotahi",
+        "description": "Tae arotahi mō te ata tohu."
+      },
+      {
+        "property": "dark",
+        "title": "Pōuri",
+        "description": "Whakamahia te aratau pōuri (huinga tae kōaro)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Flashkort",
+    "description": "Öva begrepp med flashkort som har fram- och baksida."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Kortets framsida",
+        "description": "Framsidans text eller fråga."
+      },
+      {
+        "slot": "back",
+        "title": "Kortets baksida",
+        "description": "Förväntat svar."
+      },
+      {
+        "property": "imgSource",
+        "title": "Bildkälla",
+        "description": "Bildfil som används för kortet. Åsidosätter Bildnyckelord."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Typ av aktivitet",
+        "description": "OER Schema: vilken typ av aktivitet övningen innebär (t.ex. läsa, skriva, skapa, undersöka, lyssna, titta, reflektera, diskutera, observera, presentera, bedöma)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lärandemål",
+        "description": "OER Schema: ID eller URL för lärandemålet som övningen stöder."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Mörk",
+        "description": "Använd mörkt läge."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "Kortets accentfärg."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Bildnyckelord",
+        "description": "Nyckelord för slumpmässig bild. Åsidosätts av Bildkälla."
+      }
+    ]
+  }
+}

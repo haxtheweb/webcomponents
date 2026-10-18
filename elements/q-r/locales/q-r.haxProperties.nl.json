@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR-code",
+    "description": "Code om te scannen met een smartphone."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR-gegevens",
+        "description": "Bron van de gegevens voor de QR-code."
+      },
+      {
+        "property": "title",
+        "title": "Alternatieve titel",
+        "description": "Alternatieve titel gekoppeld aan de bron van de QR-code."
+      },
+      {
+        "property": "modulesize",
+        "title": "Grootte",
+        "description": "Grootte van de QR-code."
+      },
+      {
+        "property": "margin",
+        "title": "Marge",
+        "description": "Ruimte rond de code."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Uitvoerformaat",
+        "description": "Formaat waarin de code wordt uitgevoerd.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

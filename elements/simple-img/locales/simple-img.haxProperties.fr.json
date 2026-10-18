@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Image simple",
+    "description": "Manipuler des images avec des paramètres simples."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Source",
+        "description": "URL source de l'image."
+      },
+      {
+        "property": "height",
+        "title": "Hauteur",
+        "description": "Hauteur facultative de l'image."
+      },
+      {
+        "property": "width",
+        "title": "Largeur",
+        "description": "Largeur facultative de l'image."
+      },
+      {
+        "property": "alt",
+        "title": "Texte alternatif",
+        "description": "Utile pour les lecteurs d'écran et pour améliorer le SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Qualité",
+        "description": "Qualité de l'image lors de sa génération (JPEG uniquement)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Priorité de chargement",
+        "description": "Indication de performance pour les navigateurs modernes.",
+        "options": {
+          "auto": "Automatique",
+          "high": "Haute",
+          "low": "Basse"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Méthode de décodage",
+        "description": "Indication de performance pour le rendu des images dans les navigateurs modernes.",
+        "options": {
+          "auto": "Automatique",
+          "async": "Asynchrone"
+        }
+      }
+    ]
+  }
+}

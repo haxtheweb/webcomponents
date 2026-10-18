@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Mufananidzo Wakareruka",
+    "description": "Gadzirisa mifananidzo nemasetingi akareruka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Kwakabva",
+        "description": "URL yekwakabva mufananidzo."
+      },
+      {
+        "property": "height",
+        "title": "Kureba",
+        "description": "Kureba kwemufananidzo kusingamanikidzwi."
+      },
+      {
+        "property": "width",
+        "title": "Upamhi",
+        "description": "Upamhi hwemufananidzo husingamanikidzwi."
+      },
+      {
+        "property": "alt",
+        "title": "Mavara anotsiva",
+        "description": "Anobatsira vaverengi vechiratidziro uye anovandudza SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kunaka",
+        "description": "Kunaka kwemufananidzo pakugadzira (JPEG chete)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Kukosha kweKutora",
+        "description": "Zano rekushanda kwemabrowser emazuva ano.",
+        "options": {
+          "auto": "Otomatiki",
+          "high": "Kwakakwira",
+          "low": "Kwakaderera"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Nzira yekududzira",
+        "description": "Zano rekushanda kwekuratidza mifananidzo mumabrowser emazuva ano.",
+        "options": {
+          "auto": "Otomatiki",
+          "async": "Pasina kumirira"
+        }
+      }
+    ]
+  }
+}

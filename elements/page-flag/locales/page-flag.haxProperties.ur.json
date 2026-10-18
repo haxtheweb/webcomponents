@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "صفحہ فلیگ",
+    "description": "صفحے کے مصنفین کے لیے ادارتی نوٹ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "صفحہ فلیگ کا نمایاں رنگ۔"
+      },
+      {
+        "property": "label",
+        "title": "لیبل",
+        "description": "صفحہ فلیگ کا لیبل متن۔"
+      }
+    ]
+  }
+}

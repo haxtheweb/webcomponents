@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Rêza berhevokê",
+    "description": "Hêmaneke bi şêweya rêzê ji bo nav lîsteya berhevokê, bi nivîs, girêdan, îkon, etîket û wêneyê vebijarkî."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Girêdan",
+        "description": "URL ya armanc ji bo vê rêzê."
+      },
+      {
+        "property": "image",
+        "title": "Wêne",
+        "description": "Wêne ji bo rêzê."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Nivîsa alternatîf a ku wêneyê dide nasîn."
+      },
+      {
+        "property": "line1",
+        "title": "Rêz 1",
+        "description": "Rêza yekem a nivîsê."
+      },
+      {
+        "property": "line2",
+        "title": "Rêz 2",
+        "description": "Rêza duyem a nivîsê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Îkon",
+        "description": "Îkona ku rêzê temsîl dike."
+      },
+      {
+        "property": "saturate",
+        "title": "Efekta têrbûna rengan",
+        "description": "Dema bikarhêner fokus dike têrbûna rengê wêneyê biguherîne."
+      },
+      {
+        "property": "tags",
+        "title": "Etîket",
+        "description": "Lîsteya etîketan a bi bêhnokan veqetandî."
+      },
+      {
+        "property": "accentColor",
+        "title": "Reng",
+        "description": "Rengê ji bo îkon û etîketan."
+      }
+    ]
+  }
+}

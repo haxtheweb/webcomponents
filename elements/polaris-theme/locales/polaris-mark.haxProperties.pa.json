@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris ਚਿੰਨ੍ਹ",
+    "description": "ਵਿਕਲਪਿਕ ਕਾਲਜ ਨਾਮ ਅਤੇ ਮੰਜ਼ਿਲ URL ਨਾਲ PSU ਪਛਾਣ ਚਿੰਨ੍ਹ ਦਿਖਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "ਕਾਲਜ ਦਾ ਨਾਮ",
+        "description": "ਚਿੰਨ੍ਹ ਦੇ ਨਾਲ ਦਿਖਾਇਆ ਨਾਮ।"
+      },
+      {
+        "property": "name2",
+        "title": "ਕਾਲਜ ਦਾ ਨਾਮ 2",
+        "description": "ਪਹਿਲੇ ਕਾਲਜ ਨਾਮ ਦੇ ਹੇਠਾਂ ਦਿਖਾਇਆ ਦੂਜਾ ਨਾਮ।"
+      },
+      {
+        "property": "name3",
+        "title": "ਕਾਲਜ ਦਾ ਨਾਮ 3",
+        "description": "ਦੂਜੇ ਕਾਲਜ ਨਾਮ ਦੇ ਹੇਠਾਂ ਦਿਖਾਇਆ ਤੀਜਾ ਨਾਮ।"
+      },
+      {
+        "property": "url",
+        "title": "ਲਿੰਕ",
+        "description": "ਚਿੰਨ੍ਹ 'ਤੇ ਕਲਿੱਕ ਕਰਨ 'ਤੇ ਮੰਜ਼ਿਲ URL।"
+      },
+      {
+        "property": "type",
+        "title": "ਰੂਪ",
+        "description": "ਚਿੰਨ੍ਹ ਦਾ ਦਿੱਖ ਰੂਪ।",
+        "options": {
+          "default": "ਮੂਲ",
+          "light": "ਹਲਕਾ",
+          "dark": "ਗੂੜ੍ਹਾ"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "ਖੜ੍ਹਵਾਂ ਲੇਆਉਟ",
+        "description": "ਤੀਜੇ ਨਾਮ ਨੂੰ ਦੂਜੇ ਨਾਮ ਦੇ ਹੇਠਾਂ ਲੇਟਵੀਂ ਲਾਈਨ ਨਾਲ ਦਿਖਾਓ।"
+      }
+    ]
+  }
+}

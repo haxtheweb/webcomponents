@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Soalan Jawapan Pendek",
+    "description": "Minta pengguna menjawab soalan asas"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Soalan",
+        "description": "Soalan untuk dijawab oleh pengguna."
+      },
+      {
+        "property": "answers",
+        "title": "Jawapan Yang Mungkin"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nama kuiz",
+        "description": "Nama kuiz yang dihantar untuk digunakan dalam persekitaran dipacu xAPI bagi mengenal pasti item ini"
+      }
+    ]
+  }
+}

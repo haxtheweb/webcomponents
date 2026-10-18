@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Mag-embed ng mga komunidad sa Discord mula sa share URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ng Resource",
+        "description": "URL ng resource."
+      },
+      {
+        "property": "height",
+        "title": "Taas",
+        "description": "Taas ng frame ng nilalaman."
+      },
+      {
+        "property": "width",
+        "title": "Lapad",
+        "description": "Lapad ng frame ng nilalaman."
+      }
+    ]
+  }
+}

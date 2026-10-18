@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Blokê gotinê",
+    "description": "Bloka gotinê ya bi şêwe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Jêgirtin",
+        "description": "Nivîsa jêgirtinê."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Nivîsa alternatîf ji bo wêneyê."
+      },
+      {
+        "property": "image",
+        "title": "Wêne",
+        "description": "Wêneyê bi gotinê re tê nîşandan."
+      }
+    ]
+  }
+}

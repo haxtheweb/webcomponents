@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "میڈیا اقتباس",
+    "description": "اقتباس، حوالے اور اختیاری کیپشن کے ساتھ تصویر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "اقتباس",
+        "description": "اقتباس کا متن۔"
+      },
+      {
+        "slot": "author",
+        "title": "مصنف",
+        "description": "اقتباس کا مصنف۔"
+      },
+      {
+        "slot": "author-detail",
+        "title": "مصنف کی تفصیلات",
+        "description": "مصنف کی تفصیلات۔"
+      },
+      {
+        "slot": "caption",
+        "title": "کیپشن",
+        "description": "تصویر کا کیپشن۔"
+      },
+      {
+        "property": "src",
+        "title": "تصویر کا ماخذ",
+        "description": "میڈیا اقتباس کے لیے استعمال ہونے والی تصویری فائل۔"
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "تصویر کے لیے متبادل متن۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "کارڈ کا نمایاں رنگ۔"
+      }
+    ]
+  }
+}

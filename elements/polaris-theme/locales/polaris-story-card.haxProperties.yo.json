@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Káàdì ìtàn Polaris",
+    "description": "Fi káàdì ìtàn Polaris hàn pẹ̀lú àwòrán ẹ̀yìn, àmì-orúkọ ọ̀wọ̀n, àti ọ̀rọ̀ àkọlé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Àwòrán ẹ̀yìn",
+        "description": "URL àwòrán tí a fi hàn bí ẹ̀yìn káàdì."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Ìwọ̀n ẹ̀yìn",
+        "description": "Bí àwòrán ẹ̀yìn ṣe ń kún káàdì náà (CSS background-size).",
+        "options": {
+          "cover": "Bò ó (cover)",
+          "contain": "Kó o sínú (contain)",
+          "auto": "Aládàáṣe (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Ìsomọ́ ẹ̀yìn",
+        "description": "Bí àwòrán ẹ̀yìn ṣe ń hùwà nígbà yíyí ojú-ìwé (CSS background-attachment).",
+        "options": {
+          "scroll": "Yíyí-lọ (scroll)",
+          "fixed": "Dídúró (fixed)",
+          "local": "Àdúgbò (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Àmì-orúkọ ọ̀wọ̀n",
+        "description": "Àmì-orúkọ kúkúrú ní lẹ́tà ńlá tí a fi hàn ní òkè káàdì. Fi sílẹ̀ ní òfo láti fi pamọ́."
+      },
+      {
+        "property": "label",
+        "title": "Ọ̀rọ̀ káàdì",
+        "description": "Ọ̀rọ̀ àkọ́kọ́ tí a fi hàn nínú pátákó ìsàlẹ̀."
+      },
+      {
+        "property": "link",
+        "title": "Ìjápọ̀",
+        "description": "URL ibi-àfojúsùn àṣàyàn tí ó yí gbogbo káàdì ká."
+      }
+    ]
+  }
+}

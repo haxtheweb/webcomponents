@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "ለSpotify ማጫወቻ መክተቻዎች መጠቅለያ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ምንጭ",
+        "description": "ከSpotify የመክተቻ ወይም የማጋሪያ አገናኝ።"
+      },
+      {
+        "property": "theme",
+        "title": "ገጽታ",
+        "description": "ለማጫወቻው የጀርባ ቀለም ገጽታ።",
+        "options": {
+          "": "ነባሪ",
+          "0": "ጥቁር"
+        }
+      },
+      {
+        "property": "size",
+        "title": "መጠን",
+        "description": "የማጫወቻ መጠን።",
+        "options": {
+          "normal": "ነባሪ",
+          "compact": "የታመቀ"
+        }
+      }
+    ]
+  }
+}

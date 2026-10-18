@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Hukllachasqa Nacionkunapa Wiñaypaq Wiñariy Munaynin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Munay",
+        "description": "UN SDG yupay."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Llimpilla",
+        "description": "Munaypa llimpinllata rikuchiy."
+      }
+    ]
+  }
+}

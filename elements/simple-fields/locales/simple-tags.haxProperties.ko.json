@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "태그",
+    "description": "페이지에 표시할 간단한 태그 목록입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "태그",
+        "description": "쉼표로 구분된 태그 목록입니다."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "자동 강조 색상",
+        "description": "레이블에 따라 강조 색상을 자동으로 설정합니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "색상",
+        "description": "태그 색상입니다."
+      }
+    ]
+  }
+}

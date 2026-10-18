@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "సాధారణ చిత్రం",
+    "description": "సాధారణ పారామితులతో చిత్రాలను మార్చండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "మూలం",
+        "description": "చిత్ర మూల URL."
+      },
+      {
+        "property": "height",
+        "title": "ఎత్తు",
+        "description": "ఐచ్ఛిక చిత్ర ఎత్తు."
+      },
+      {
+        "property": "width",
+        "title": "వెడల్పు",
+        "description": "ఐచ్ఛిక చిత్ర వెడల్పు."
+      },
+      {
+        "property": "alt",
+        "title": "ప్రత్యామ్నాయ వచనం",
+        "description": "స్క్రీన్ రీడర్‌లకు మరియు మెరుగైన SEO కోసం ఉపయోగకరం."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "నాణ్యత",
+        "description": "రూపొందించేటప్పుడు చిత్ర నాణ్యత (JPEG మాత్రమే)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "ఫెచ్ ప్రాధాన్యత",
+        "description": "ఆధునిక బ్రౌజర్‌ల కోసం పనితీరు సూచన.",
+        "options": {
+          "auto": "ఆటోమేటిక్",
+          "high": "అధిక",
+          "low": "తక్కువ"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "డీకోడింగ్ పద్ధతి",
+        "description": "ఆధునిక బ్రౌజర్‌లలో చిత్ర రెండరింగ్ కోసం పనితీరు సూచన.",
+        "options": {
+          "auto": "ఆటోమేటిక్",
+          "async": "అసమకాలిక"
+        }
+      }
+    ]
+  }
+}

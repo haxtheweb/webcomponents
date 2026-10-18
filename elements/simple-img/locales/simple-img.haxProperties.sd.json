@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "سادي تصوير",
+    "description": "سادن پيراميٽرن سان تصويرن ۾ تبديلي ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ذريعو",
+        "description": "تصوير جي ذريعي جو URL."
+      },
+      {
+        "property": "height",
+        "title": "اوچائي",
+        "description": "اختياري تصوير جي اوچائي."
+      },
+      {
+        "property": "width",
+        "title": "ويڪر",
+        "description": "اختياري تصوير جي ويڪر."
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "اسڪرين ريڊرن ۽ بهتر SEO لاءِ ڪارائتو."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "معيار",
+        "description": "ٺاهڻ وقت تصوير جو معيار (صرف JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "آڻڻ جي ترجيح",
+        "description": "جديد براؤزرن لاءِ ڪارڪردگي جو اشارو.",
+        "options": {
+          "auto": "خودڪار",
+          "high": "وڌيڪ",
+          "low": "گهٽ"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "ڊيڪوڊنگ جو طريقو",
+        "description": "جديد براؤزرن ۾ تصوير ڏيکارڻ لاءِ ڪارڪردگي جو اشارو.",
+        "options": {
+          "auto": "خودڪار",
+          "async": "غير هم وقت"
+        }
+      }
+    ]
+  }
+}

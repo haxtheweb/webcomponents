@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Etiketat",
+    "description": "Listë e thjeshtë etiketash për shfaqje në faqe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Etiketat",
+        "description": "Listë etiketash të ndara me presje."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Ngjyrë theksuese automatike",
+        "description": "Cakto automatikisht ngjyrën theksuese bazuar në etiketë."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra",
+        "description": "Ngjyra për etiketat."
+      }
+    ]
+  }
+}

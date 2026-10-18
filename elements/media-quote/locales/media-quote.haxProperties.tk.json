@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Media sitata",
+    "description": "Sitataly, salgylanmaly we goşmaça ýazgyly surat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Sitata",
+        "description": "Sitata teksti."
+      },
+      {
+        "slot": "author",
+        "title": "Awtor",
+        "description": "Sitatanyň awtory."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Awtor barada maglumat",
+        "description": "Awtor barada maglumat."
+      },
+      {
+        "slot": "caption",
+        "title": "Ýazgy",
+        "description": "Suratyň ýazgysy."
+      },
+      {
+        "property": "src",
+        "title": "Suratyň çeşmesi",
+        "description": "Media sitata üçin ulanylýan surat faýly."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatiw tekst",
+        "description": "Surat üçin alternatiw tekst."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Kartoçkanyň aksent reňki."
+      }
+    ]
+  }
+}

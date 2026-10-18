@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "סאָרטיר־פֿראַגע",
+    "description": "סאָרטירן עלעמענטן אינעם ריכטיקן סדר."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "פֿראַגע",
+        "description": "קעפּל פֿון דער פֿראַגע."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "צייכענונג־פֿאָרמאַט",
+        "description": "OER Schema: צייכענונג־פֿאָרמאַט פֿאַר דער אָפּשאַצונג (למשל פּונקטן, אות, פּראָצענט, דורכפֿירונג)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "לערן־ציל",
+        "description": "OER Schema: לערן־ציל פֿאַרבונדן מיט דער אָפּשאַצונג."
+      },
+      {
+        "property": "forCourse",
+        "title": "קורס",
+        "description": "OER Schema: קורס פֿאַר וועלכן די אָפּשאַצונג איז באַשטימט."
+      },
+      {
+        "property": "answers",
+        "title": "ענטפֿערס",
+        "description": "דער סדר פֿון די ענטפֿערס באַשטימט די ריכטיקע סעקווענץ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "נאָמען פֿון דעם קוויז",
+        "description": "קוויז־נאָמען פֿאַר xAPI־אידענטיפֿיקאַציע אין אַנאַליטיק־סיסטעמען."
+      }
+    ]
+  }
+}

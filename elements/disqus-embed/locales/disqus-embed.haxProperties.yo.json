@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Fi àwọn àsọyé Disqus sínú ojú-ìwé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Orúkọ kúkúrú",
+        "description": "Orúkọ kúkúrú ojú-òpó náà, tí ó ń darí agbàlejò ìwé-àfọwọ́kọ Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL ojú-ìwé",
+        "description": "URL ojú-ìwé tí okùn àsọyé so mọ́."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Ìdánimọ̀ ojú-ìwé",
+        "description": "Ìdánimọ̀ aláìlẹ́gbẹ́ fún okùn àsọyé ojú-ìwé náà."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Àkọlé ojú-ìwé",
+        "description": "Àkọlé ojú-ìwé tí okùn àsọyé so mọ́."
+      },
+      {
+        "property": "loadingText",
+        "title": "Ọ̀rọ̀ ìgbàsílẹ̀",
+        "description": "Ọ̀rọ̀ tí a kéde nígbà tí àwọn àsọyé ń gbé wọlé."
+      },
+      {
+        "property": "lang",
+        "title": "Èdè",
+        "description": "Kóòdù èdè fún ojú-iṣẹ́ Disqus, fún àpẹẹrẹ en."
+      }
+    ]
+  }
+}

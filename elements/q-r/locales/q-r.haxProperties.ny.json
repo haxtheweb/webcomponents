@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Khodi ya QR",
+    "description": "Khodi yoti mujambule ndi foni yamakono."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Zambiri za QR",
+        "description": "Gwero la zambiri za khodi ya QR."
+      },
+      {
+        "property": "title",
+        "title": "Mutu wina",
+        "description": "Mutu wina wolumikizidwa ku gwero la khodi ya QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Kukula",
+        "description": "Kukula kwa khodi ya QR."
+      },
+      {
+        "property": "margin",
+        "title": "M'mphepete",
+        "description": "Malo ozungulira khodiyo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Mtundu wotulutsa",
+        "description": "Mtundu woti itulutsidwemo.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

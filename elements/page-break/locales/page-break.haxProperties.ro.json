@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Detalii pagină",
+    "description": "Definește o separare vizuală între pagini pe care sistemele CMS o pot folosi pentru a crea pagini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlul afișat în temă și ca prim titlu."
+      },
+      {
+        "property": "pageType",
+        "title": "Tip",
+        "description": "Etichetă vizuală pentru contextul paginii.",
+        "options": {
+          "": "-- niciunul --",
+          "content": "Conținut",
+          "assessment": "Evaluare",
+          "quiz": "Test",
+          "submission": "Predare",
+          "lesson": "Lecție",
+          "module": "Modul",
+          "task": "Sarcină",
+          "activity": "Activitate",
+          "project": "Proiect",
+          "practice": "Exersare",
+          "unit": "Unitate",
+          "objectives": "Obiective de învățare",
+          "connection": "Conexiune",
+          "knowledge": "Știați că?",
+          "strategy": "Strategie de învățare",
+          "discuss": "Discutați",
+          "listen": "Ascultați",
+          "make": "Creați",
+          "observe": "Observați",
+          "present": "Prezentați",
+          "reading": "Lectură",
+          "reflect": "Reflectați",
+          "research": "Cercetați",
+          "watch": "Urmăriți",
+          "write": "Scrieți"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Etichete",
+        "description": "Listă de etichete separate prin virgulă."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL link",
+        "description": "URL de redirecționare afișat în locul conținutului paginii."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Ținta linkului",
+        "description": "Deschide linkurile în aceeași fereastră sau într-o fereastră nouă.",
+        "options": {
+          "_self": "Aceeași fereastră",
+          "_blank": "Fereastră nouă"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Publicată",
+        "description": "Paginile nepublicate sunt ascunse utilizatorilor finali."
+      },
+      {
+        "property": "locked",
+        "title": "Blochează pagina",
+        "description": "Blochează sau deblochează toate elementele de pe această pagină."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Suprascrie slug-ul automat",
+        "description": "Blochează slug-ul împotriva actualizărilor automate bazate pe titlu sau pe părinte."
+      },
+      {
+        "property": "slug",
+        "title": "Cale",
+        "description": "Slug-ul URL al acestei pagini."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Conținut media care reprezintă pagina, folosit în unele teme și vizualizări."
+      },
+      {
+        "property": "parent",
+        "title": "Părinte",
+        "description": "Calea paginii părinte."
+      },
+      {
+        "property": "noderefs",
+        "title": "Conținut asociat",
+        "description": "Pagini asociate acestei pagini."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Descriere",
+        "description": "Descriere folosită în colecții și pentru optimizarea pentru motoarele de căutare."
+      },
+      {
+        "property": "entityType",
+        "title": "Tip de entitate",
+        "description": "Implicit este pagină, dacă nu se setează altfel.",
+        "options": {
+          "page": "Pagină (implicit)",
+          "taxonomy": "Taxonomie",
+          "taxonomyTerm": "Termen de taxonomie",
+          "region": "Regiune"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Pictogramă",
+        "description": "Pictograma asociată acestei pagini în site."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Culoarea asociată acestei pagini în site."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Ascunde în meniu",
+        "description": "Ascunde această pagină din meniuri, păstrându-i URL-ul."
+      },
+      {
+        "property": "order",
+        "title": "Ordine",
+        "description": "Ordinea față de paginile de același nivel."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Temă pagină",
+        "description": "Suprascrie tema doar pentru această pagină."
+      },
+      {
+        "property": "author",
+        "title": "Autor",
+        "description": "Numele de utilizator al ultimei persoane care a modificat această pagină."
+      }
+    ]
+  }
+}

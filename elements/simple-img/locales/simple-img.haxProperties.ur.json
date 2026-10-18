@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "سادہ تصویر",
+    "description": "سادہ پیرامیٹرز کے ساتھ تصاویر میں تبدیلی کریں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ماخذ",
+        "description": "تصویر کے ماخذ کا URL۔"
+      },
+      {
+        "property": "height",
+        "title": "اونچائی",
+        "description": "تصویر کی اختیاری اونچائی۔"
+      },
+      {
+        "property": "width",
+        "title": "چوڑائی",
+        "description": "تصویر کی اختیاری چوڑائی۔"
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "اسکرین ریڈرز اور بہتر SEO کے لیے مفید۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "معیار",
+        "description": "تصویر بناتے وقت معیار (صرف JPEG)۔"
+      },
+      {
+        "property": "fetchpriority",
+        "title": "حصول کی ترجیح",
+        "description": "جدید براؤزرز کے لیے کارکردگی کا اشارہ۔",
+        "options": {
+          "auto": "خودکار",
+          "high": "زیادہ",
+          "low": "کم"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "ڈی کوڈنگ کا طریقہ",
+        "description": "جدید براؤزرز میں تصویر رینڈرنگ کے لیے کارکردگی کا اشارہ۔",
+        "options": {
+          "auto": "خودکار",
+          "async": "غیر ہم وقت"
+        }
+      }
+    ]
+  }
+}

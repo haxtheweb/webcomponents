@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Söz",
+    "description": "Söz düşündirişi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termin"
+      },
+      {
+        "property": "information",
+        "title": "Kesgitleme",
+        "description": "Termine basylanda görkezilýän kesgitleme."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Açylýan penjire",
+        "description": "Kesgitlemäni setiriň içinde däl-de, açylýan penjirede görkez."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Baglanyşyklar",
+        "description": "Bu termin bilen baglanyşykly goşmaça baglanyşyklaryň sanawy."
+      }
+    ]
+  }
+}

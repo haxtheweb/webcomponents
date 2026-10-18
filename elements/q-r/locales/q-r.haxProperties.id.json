@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Kode QR",
+    "description": "Kode untuk dipindai dari ponsel pintar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Data QR",
+        "description": "Sumber data untuk kode QR."
+      },
+      {
+        "property": "title",
+        "title": "Judul alternatif",
+        "description": "Judul alternatif yang ditautkan ke sumber kode QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Ukuran",
+        "description": "Ukuran kode QR."
+      },
+      {
+        "property": "margin",
+        "title": "Margin",
+        "description": "Pembungkus kode."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Format keluaran",
+        "description": "Format untuk mengeluarkannya.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

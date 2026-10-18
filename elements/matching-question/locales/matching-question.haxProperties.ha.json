@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tambayar Haɗawa",
+    "description": "Aikin haɗawa ta ja-da-saki da ke haɗa tambayoyi da amsoshinsu daidai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tambaya",
+        "description": "Tambaya ga masu amfani. Alamta wuraren saki, sannan ka jera amsoshi har zuwa wurin na gaba."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Tsarin maki",
+        "description": "OER Schema: tsarin maki na wannan tantancewa (misali maki, harafi, kashi, kammalawa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Manufar koyo",
+        "description": "OER Schema: manufar koyo da ke da alaƙa da wannan tantancewa."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kwas",
+        "description": "OER Schema: kwas ɗin da aka yi wannan tantancewa domin sa."
+      },
+      {
+        "property": "answers",
+        "title": "Amsoshi"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Sunan jarrabawa",
+        "description": "Sunan jarrabawa da ake amfani da shi don gano xAPI a tsarin nazari."
+      }
+    ]
+  }
+}

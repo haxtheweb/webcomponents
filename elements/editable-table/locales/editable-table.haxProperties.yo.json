@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tábìlì",
+    "description": "Dátà ní ìrísí tábìlì fún wẹ́ẹ̀bù."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Àkọlé ìlà",
+        "description": "Ka ìlà àkọ́kọ́ sí àkọlé."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Àkọlé òpó",
+        "description": "Ka òpó àkọ́kọ́ sí àkọlé."
+      },
+      {
+        "property": "footer",
+        "title": "Ìsàlẹ̀",
+        "description": "Ka ìlà ìkẹyìn sí ìsàlẹ̀."
+      },
+      {
+        "property": "sort",
+        "title": "Ṣeé tò",
+        "description": "Gba títò láàyè nípa iye àwọn òpó."
+      },
+      {
+        "property": "filter",
+        "title": "Gba àlẹ̀mọ́ láàyè",
+        "description": "Gba ṣíṣe àlẹ̀mọ́ láàyè nípa iye àwọn òpó."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Ìrísí nọ́mbà",
+        "description": "Lo ìrísí nọ́mbà fún àwọn òpó nọ́mbà."
+      },
+      {
+        "property": "responsive",
+        "title": "Ìdáhùn sí ìwọ̀n ojú",
+        "description": "Ṣàtúnṣe ìtò tábìlì lórí àwọn ojú kékeré."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Ipò Rúbríìkì",
+        "description": "Túmọ̀ tábìlì yìí gẹ́gẹ́ bí OER Schema Rubric kí a lè gbé dátà-àpèjúwe Rubric, RubricScale, RubricCriterion, àti RubricLevel jáde."
+      },
+      {
+        "property": "rubricType",
+        "title": "Irú Rúbríìkì",
+        "description": "Ìrísí rúbríìkì tí a gbé jáde gẹ́gẹ́ bí oer:rubricType (ó wúlò nìkan nígbà tí Ipò Rúbríìkì bá wà ní títàn).",
+        "options": {
+          "": "(kò sí)",
+          "analytic": "Onítúpalẹ̀",
+          "holistic": "Gbogbo-lápapọ̀",
+          "single-point": "Kókó kan ṣoṣo",
+          "checklist": "Àtòjọ àyẹ̀wò"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Oní-ààlà"
+      },
+      {
+        "property": "condensed",
+        "title": "Dín àwọn ìlà kù",
+        "description": "Dín gíga ìlà kù."
+      },
+      {
+        "property": "striped",
+        "title": "Àwọn ìlà oníbàdí",
+        "description": "Ṣe òjìji sí ìlà kọ̀ọ̀kan tí ó tẹ̀lé ara wọn."
+      },
+      {
+        "property": "downloadable",
+        "title": "Bọ́tìnnì ìgbàsílẹ̀",
+        "description": "Fi bọ́tìnnì kún un láti gba tábìlì sílẹ̀."
+      },
+      {
+        "property": "copyable",
+        "title": "Bọ́tìnnì ìdàkọ",
+        "description": "Fi bọ́tìnnì kún un láti da dátà CSV tábìlì kọ."
+      },
+      {
+        "property": "printable",
+        "title": "Bọ́tìnnì ìtẹ̀jáde",
+        "description": "Fi bọ́tìnnì kún un láti tẹ tábìlì nìkan jáde."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Dátà CSV",
+        "description": "Ṣẹ̀dá tábìlì láti fáìlì CSV tí a gbé sókè."
+      }
+    ]
+  }
+}

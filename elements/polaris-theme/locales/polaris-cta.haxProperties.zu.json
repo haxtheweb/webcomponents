@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "I-CTA ye-Polaris",
+    "description": "Bonisa inkinobho yokubiza isenzo ye-Polaris enetimu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Umbhalo wenkinobho",
+        "description": "Umbhalo oboniswa enkinobhweni yokubiza isenzo."
+      },
+      {
+        "property": "link",
+        "title": "Isixhumanisi",
+        "description": "I-URL okuyiwa kuyo yenkinobho."
+      },
+      {
+        "property": "type",
+        "title": "Okuhlukile",
+        "description": "Uhlobo lwesitayela esibonakalayo.",
+        "options": {
+          "primary": "Okuyinhloko",
+          "tinted": "Okunombala okhanyayo",
+          "light": "Okukhanyayo"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Isitayela esinomugqa ozungezile",
+        "description": "Vula ukwakheka okunomugqa ozungezile."
+      },
+      {
+        "property": "filled",
+        "title": "Isitayela esigcwalisiwe",
+        "description": "Vula ukwakheka okugcwalisiwe."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Vprašanje s kratkim odgovorom",
+    "description": "Uporabnik odgovori na preprosto vprašanje"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vprašanje",
+        "description": "Vprašanje, na katerega naj odgovorijo uporabniki."
+      },
+      {
+        "property": "answers",
+        "title": "Možni odgovori"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ime kviza",
+        "description": "Ime kviza, posredovano za identifikacijo tega elementa v okoljih, ki jih poganja xAPI"
+      }
+    ]
+  }
+}

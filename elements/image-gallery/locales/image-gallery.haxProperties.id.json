@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galeri Gambar",
+    "description": "Galeri yang menyajikan gambar dalam tata letak kisi, masonry, atau tayangan slide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Mode tampilan",
+        "description": "Cara menyajikan gambar di galeri.",
+        "options": {
+          "grid": "Kisi",
+          "masonry": "Masonry",
+          "gallery": "Galeri"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Indeks aktif",
+        "description": "Indeks gambar aktif yang menjadi awal dalam mode galeri."
+      }
+    ]
+  }
+}

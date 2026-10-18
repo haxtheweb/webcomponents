@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ਉਤਪਾਦ ਝਾਤ",
+    "description": "ਤੁਰੰਤ ਉਤਪਾਦ ਝਲਕ ਬਲੌਕ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ਆਈਕਨ",
+        "description": "ਸੰਕਲਪ ਨੂੰ ਦਰਸਾਉਣ ਵਾਲਾ ਆਈਕਨ।"
+      },
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਇੱਕ ਨਜ਼ਰ ਵਿੱਚ ਮੁੱਖ ਸੰਕਲਪ।"
+      },
+      {
+        "property": "subtitle",
+        "title": "ਉਪ-ਸਿਰਲੇਖ",
+        "description": "ਵਾਧੂ ਵੇਰਵਾ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਆਈਕਨ ਲਈ ਐਕਸੈਂਟ ਰੰਗ।"
+      }
+    ]
+  }
+}

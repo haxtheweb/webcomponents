@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Məhsula nəzər",
+    "description": "Məhsula qısa baxış bloku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "İkon",
+        "description": "Anlayışı təmsil edən ikon."
+      },
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Bir baxışda əsas anlayış."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alt başlıq",
+        "description": "Əlavə təfərrüat."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "İkon üçün vurğu rəngi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "የድር ክፍል ሰነድ ማጫወቻ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "መስኮት ደብቅ",
+        "description": "የውጤት መስኮቱን ደብቅ፣ ዓላማው ተርሚናል ብቻ ሲሆን ጠቃሚ ነው"
+      }
+    ]
+  }
+}

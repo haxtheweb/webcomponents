@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "מקטע תמונה",
+    "description": "תמונה ברוחב מלא המפרידה בין מקטעי העמוד."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "תמונת רקע."
+      },
+      {
+        "property": "caption",
+        "description": "כותרת טקסט."
+      }
+    ]
+  }
+}

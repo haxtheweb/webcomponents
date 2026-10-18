@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Lembaran muzik",
+    "description": "Memaparkan dan memainkan lembaran muzik, tab gitar dan notasi skor melalui alphaTex atau MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Notasi AlphaTex",
+        "description": "Penanda alphaTex sebaris untuk lembaran muzik. Sunting terus untuk mengarang notasi; ia disimpan dalam templat supaya jarak dikekalkan."
+      },
+      {
+        "property": "source",
+        "title": "Fail skor",
+        "description": "Muat naik atau pautkan fail MusicXML (.xml/.musicxml/.mxl) atau Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Mengatasi alphaTex sebaris apabila ditetapkan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Main balik audio",
+        "description": "Hidup secara lalai - dengar lembaran muzik dimainkan melalui pensintesis terbina dalam. Matikan untuk mod paparan sahaja (tanpa audio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Paparkan pilihan paparan",
+        "description": "Paparkan butang zum, regang dan susun atur pada bar pemain."
+      },
+      {
+        "property": "showExport",
+        "title": "Paparkan butang eksport",
+        "description": "Paparkan butang muat turun MIDI dan cetak/PDF pada bar pemain."
+      }
+    ]
+  }
+}

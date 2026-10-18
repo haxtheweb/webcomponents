@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lista de colaboradores do GitHub",
+    "description": "Exibidos como personagens de RPG usando a API do GitHub."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organização",
+        "description": "Nome da organização em github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repositório",
+        "description": "Nome do repositório em github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Limite",
+        "description": "Limitar o número de colaboradores exibidos."
+      }
+    ]
+  }
+}

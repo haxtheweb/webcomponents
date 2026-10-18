@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHubi kaastööliste loend",
+    "description": "Kuvatakse RPG-tegelastena GitHubi API abil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisatsioon",
+        "description": "Organisatsiooni nimi aadressist github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Hoidla",
+        "description": "Hoidla nimi aadressist github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Piirang",
+        "description": "Piira kuvatavate kaastööliste arvu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "የስብስብ ረድፍ",
+    "description": "በስብስብ ዝርዝር ውስጥ የሚጠቀም የረድፍ ዓይነት ንጥል፣ ጽሑፍ፣ አገናኝ፣ አዶ፣ መለያዎች እና አማራጭ ምስል ያለው።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "አገናኝ",
+        "description": "ለዚህ ረድፍ የመድረሻ URL።"
+      },
+      {
+        "property": "image",
+        "title": "ምስል",
+        "description": "ለረድፉ ምስል።"
+      },
+      {
+        "property": "alt",
+        "title": "አማራጭ ጽሑፍ",
+        "description": "ምስሉን የሚገልጽ አማራጭ ጽሑፍ።"
+      },
+      {
+        "property": "line1",
+        "title": "መስመር 1",
+        "description": "የመጀመሪያው የጽሑፍ መስመር።"
+      },
+      {
+        "property": "line2",
+        "title": "መስመር 2",
+        "description": "ሁለተኛው የጽሑፍ መስመር።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "አዶ",
+        "description": "ረድፉን የሚወክል አዶ።"
+      },
+      {
+        "property": "saturate",
+        "title": "የሙሌት ውጤት",
+        "description": "ተጠቃሚው ትኩረት ሲሰጥ የምስሉን ሙሌት ቀይር።"
+      },
+      {
+        "property": "tags",
+        "title": "መለያዎች",
+        "description": "በኮማ የተለዩ መለያዎች ዝርዝር።"
+      },
+      {
+        "property": "accentColor",
+        "title": "ቀለም",
+        "description": "ለአዶ እና ለመለያዎች የሚውል ቀለም።"
+      }
+    ]
+  }
+}

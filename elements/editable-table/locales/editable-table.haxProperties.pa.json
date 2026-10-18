@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "ਸਾਰਣੀ",
+    "description": "ਵੈੱਬ ਲਈ ਸਾਰਣੀ-ਆਧਾਰਿਤ ਡਾਟਾ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "ਕਤਾਰ ਸਿਰਲੇਖ",
+        "description": "ਪਹਿਲੀ ਕਤਾਰ ਨੂੰ ਸਿਰਲੇਖ ਮੰਨੋ।"
+      },
+      {
+        "property": "columnHeader",
+        "title": "ਕਾਲਮ ਸਿਰਲੇਖ",
+        "description": "ਪਹਿਲੇ ਕਾਲਮ ਨੂੰ ਸਿਰਲੇਖ ਮੰਨੋ।"
+      },
+      {
+        "property": "footer",
+        "title": "ਫੁੱਟਰ",
+        "description": "ਆਖ਼ਰੀ ਕਤਾਰ ਨੂੰ ਫੁੱਟਰ ਮੰਨੋ।"
+      },
+      {
+        "property": "sort",
+        "title": "ਛਾਂਟਣਯੋਗ",
+        "description": "ਕਾਲਮ ਮੁੱਲਾਂ ਅਨੁਸਾਰ ਛਾਂਟਣ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ।"
+      },
+      {
+        "property": "filter",
+        "title": "ਫਿਲਟਰ ਦੀ ਇਜਾਜ਼ਤ",
+        "description": "ਕਾਲਮ ਮੁੱਲਾਂ ਅਨੁਸਾਰ ਫਿਲਟਰ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ।"
+      },
+      {
+        "property": "numericStyles",
+        "title": "ਅੰਕੀ ਸਟਾਈਲਿੰਗ",
+        "description": "ਅੰਕੀ ਕਾਲਮਾਂ 'ਤੇ ਅੰਕੀ ਸਟਾਈਲਿੰਗ ਲਾਗੂ ਕਰੋ।"
+      },
+      {
+        "property": "responsive",
+        "title": "ਰਿਸਪਾਂਸਿਵ",
+        "description": "ਛੋਟੀਆਂ ਸਕ੍ਰੀਨਾਂ 'ਤੇ ਸਾਰਣੀ ਦਾ ਲੇਆਉਟ ਅਨੁਕੂਲ ਕਰੋ।"
+      },
+      {
+        "property": "rubricMode",
+        "title": "ਰੂਬ੍ਰਿਕ ਮੋਡ",
+        "description": "ਇਸ ਸਾਰਣੀ ਨੂੰ OER Schema Rubric ਵਜੋਂ ਸਮਝੋ ਤਾਂ ਜੋ Rubric, RubricScale, RubricCriterion ਅਤੇ RubricLevel ਮੈਟਾਡਾਟਾ ਜਾਰੀ ਹੋਵੇ।"
+      },
+      {
+        "property": "rubricType",
+        "title": "ਰੂਬ੍ਰਿਕ ਕਿਸਮ",
+        "description": "oer:rubricType ਵਜੋਂ ਜਾਰੀ ਰੂਬ੍ਰਿਕ ਸ਼ੈਲੀ (ਸਿਰਫ਼ ਰੂਬ੍ਰਿਕ ਮੋਡ ਚਾਲੂ ਹੋਣ 'ਤੇ ਅਰਥਪੂਰਨ)।",
+        "options": {
+          "": "(ਕੋਈ ਨਹੀਂ)",
+          "analytic": "ਵਿਸ਼ਲੇਸ਼ਣਾਤਮਕ",
+          "holistic": "ਸਮੁੱਚਾ",
+          "single-point": "ਇੱਕ-ਬਿੰਦੂ",
+          "checklist": "ਚੈੱਕਲਿਸਟ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "ਕਿਨਾਰੀਦਾਰ"
+      },
+      {
+        "property": "condensed",
+        "title": "ਕਤਾਰਾਂ ਸੰਘਣੀਆਂ ਕਰੋ",
+        "description": "ਕਤਾਰ ਦੀ ਉਚਾਈ ਘਟਾਓ।"
+      },
+      {
+        "property": "striped",
+        "title": "ਧਾਰੀਦਾਰ ਕਤਾਰਾਂ",
+        "description": "ਹਰ ਦੂਜੀ ਕਤਾਰ ਨੂੰ ਛਾਂ ਦਿਓ।"
+      },
+      {
+        "property": "downloadable",
+        "title": "ਡਾਊਨਲੋਡ ਬਟਨ",
+        "description": "ਸਾਰਣੀ ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ ਬਟਨ ਜੋੜੋ।"
+      },
+      {
+        "property": "copyable",
+        "title": "ਕਾਪੀ ਬਟਨ",
+        "description": "ਸਾਰਣੀ ਦਾ CSV ਡਾਟਾ ਕਾਪੀ ਕਰਨ ਲਈ ਬਟਨ ਜੋੜੋ।"
+      },
+      {
+        "property": "printable",
+        "title": "ਪ੍ਰਿੰਟ ਬਟਨ",
+        "description": "ਸਿਰਫ਼ ਸਾਰਣੀ ਪ੍ਰਿੰਟ ਕਰਨ ਲਈ ਬਟਨ ਜੋੜੋ।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV ਡਾਟਾ",
+        "description": "ਅੱਪਲੋਡ ਕੀਤੀ CSV ਫ਼ਾਈਲ ਤੋਂ ਸਾਰਣੀ ਬਣਾਓ।"
+      }
+    ]
+  }
+}

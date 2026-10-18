@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P-kääre .h5p-tiedostojen lataamiseen ja esittämiseen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P-iframe-upotuskoodi"
+      }
+    ]
+  }
+}

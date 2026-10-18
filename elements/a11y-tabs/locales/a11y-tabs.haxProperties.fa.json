@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "زبانه‌ها",
+    "description": "مجموعه‌ای از زبانه‌ها."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "برچسب (برای دسترس‌پذیری)",
+        "description": "برچسب دسترس‌پذیر مجموعهٔ زبانه‌ها."
+      },
+      {
+        "property": "disabled",
+        "title": "غیرفعال",
+        "description": "همهٔ زبانه‌ها غیرفعال شوند."
+      },
+      {
+        "property": "hidden",
+        "title": "پنهان",
+        "description": "مجموعهٔ زبانه‌ها پنهان شود."
+      },
+      {
+        "property": "sticky",
+        "title": "چسبان",
+        "description": "زبانه‌های افقی هنگام پیمایش در بالا بمانند."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "نقطهٔ شکست چیدمان",
+        "description": "نقطهٔ شکست برای زبانه‌های افقی؛ برای فقط عمودی از ‎-1 استفاده کنید."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "نقطهٔ شکست نماد",
+        "description": "نقطهٔ شکست برای نمایش متن همراه نمادها. پیش‌فرض 0 است؛ برای حالت فقط نماد از ‎-1 استفاده کنید."
+      },
+      {
+        "slot": "",
+        "title": "زبانه‌ها",
+        "description": "مجموعه‌ای از عناصر <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "شناسهٔ یکتا",
+        "description": "شناسهٔ یکتای این مجموعهٔ زبانه‌ها."
+      }
+    ]
+  }
+}

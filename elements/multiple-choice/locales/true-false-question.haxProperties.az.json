@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Doğru / Yanlış sualı",
+    "description": "Doğru-yanlış sualı"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Sual",
+        "description": "İstifadəçilərin cavablandıracağı sual."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Düzgün cavab"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testin adı",
+        "description": "Bu elementin identifikasiyası üçün xAPI əsaslı mühitlərdə istifadəyə ötürülən test adı"
+      }
+    ]
+  }
+}

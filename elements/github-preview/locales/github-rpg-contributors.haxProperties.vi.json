@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Danh sách người đóng góp GitHub",
+    "description": "Hiển thị dưới dạng nhân vật RPG bằng GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Tổ chức",
+        "description": "Tên tổ chức từ github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Kho mã",
+        "description": "Tên kho mã từ github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Giới hạn",
+        "description": "Giới hạn số lượng người đóng góp được hiển thị."
+      }
+    ]
+  }
+}

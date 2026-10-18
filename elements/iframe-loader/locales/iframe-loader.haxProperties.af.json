@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Bed eksterne webinhoud in 'n iframe in."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Hulpbron-URL",
+        "description": "Hulpbron-URL."
+      },
+      {
+        "property": "height",
+        "title": "Hoogte",
+        "description": "Iframe-hoogte."
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Iframe-breedte."
+      }
+    ]
+  }
+}

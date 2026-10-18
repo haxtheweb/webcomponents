@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Papapy ojupíva",
+    "description": "Emomýi papapy ojupíva papapy ohupyty peve, ojehechakuaa vove."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Paha repykue",
+        "description": "Papapy ohupytyva'erã."
+      },
+      {
+        "property": "start",
+        "title": "Ñepyrũ repykue",
+        "description": "Papapy oñepyrũhagui oñepapa."
+      },
+      {
+        "property": "duration",
+        "title": "Ára pukukue",
+        "description": "Aravo'i oipurúva papapy ñemomýi."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Moñe'ẽrã tenondegua",
+        "description": "Moñe'ẽrã ojehechaukáva papapy mboyve (techapyrã '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Moñe'ẽrã pahagua",
+        "description": "Moñe'ẽrã ojehechaukáva papapy rire (techapyrã '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Tenda tenondegua",
+        "description": "Tetepy ojeiporavokuaáva papapy mboyve."
+      },
+      {
+        "slot": "suffix",
+        "title": "Tenda pahagua",
+        "description": "Tetepy ojeiporavokuaáva papapy rire."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Papapy kyta rire",
+        "description": "Mboy papapy kyta rire ojehechaukáta."
+      },
+      {
+        "property": "separator",
+        "title": "Mokõiha mil ojei'ãha",
+        "description": "Ñe'ẽpehẽ ojei'ãva mil aty."
+      },
+      {
+        "property": "decimal",
+        "title": "Ñe'ẽpehẽ kyta",
+        "description": "Ñe'ẽpehẽ ojeporúva kytarã."
+      },
+      {
+        "property": "noeasing",
+        "title": "Mbeguekatu'ỹre",
+        "description": "Embogue mbeguekatu ani hag̃ua papapy oñemoambue."
+      }
+    ]
+  }
+}

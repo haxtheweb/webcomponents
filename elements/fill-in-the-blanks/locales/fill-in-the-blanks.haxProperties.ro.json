@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Completați spațiile libere",
+    "description": "Activitate de evaluare în care cursanții completează cuvintele lipsă dintr-un enunț."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Întrebare",
+        "description": "Întrebarea la care răspund utilizatorii."
+      },
+      {
+        "property": "statement",
+        "title": "Enunț",
+        "description": "Enunțul care va fi transformat în interacțiunea de marcare a cuvintelor."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de notare",
+        "description": "OER Schema: formatul de notare pentru această evaluare (de ex. puncte, literă, procent, finalizare)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiectiv de învățare",
+        "description": "OER Schema: obiectivul de învățare asociat acestei evaluări."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curs",
+        "description": "OER Schema: cursul căruia îi este destinată această evaluare."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Numele testului",
+        "description": "Numele testului transmis pentru identificarea acestui element în medii bazate pe xAPI"
+      }
+    ]
+  }
+}

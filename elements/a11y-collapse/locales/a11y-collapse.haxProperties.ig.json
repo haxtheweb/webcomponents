@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Igbe a na-apịaji",
+    "description": "Otu igbe a na-agbasa ma na-apịaji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Isiokwu",
+        "description": "Ederede maka mpịaji ahụ."
+      },
+      {
+        "property": "expanded",
+        "title": "Agbasara",
+        "description": "Gbasaa na ndabara."
+      },
+      {
+        "property": "headingButton",
+        "title": "Bọtịnụ isiokwu",
+        "description": "Mee ka isiokwu niile bụrụ ihe a ga-apị kama naanị akara ngosi."
+      },
+      {
+        "property": "icon",
+        "title": "Akara ngosi",
+        "description": "Akara ngosi maka bọtịnụ mgbasa/mpịaji."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Akara ngosi (mgbe agbasara)",
+        "description": "Akara ngosi nhọrọ maka ọnọdụ agbasara nke bọtịnụ."
+      },
+      {
+        "slot": "",
+        "title": "Ọdịnaya",
+        "description": "Ọdịnaya maka mpịaji ahụ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Ndụmọdụ mmapụta",
+        "description": "Ndụmọdụ mmapụta maka bọtịnụ mgbasa/mpịaji."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Ndụmọdụ mmapụta (mgbe agbasara)",
+        "description": "Ndụmọdụ mmapụta maka bọtịnụ mgbasa/mpịaji mgbe agbasara."
+      }
+    ]
+  }
+}

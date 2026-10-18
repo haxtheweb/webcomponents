@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Faahfaahinta bogga",
+    "description": "Qeex kala qaybin muuqata oo u dhaxaysa bogagga, taas oo CMS-yadu u isticmaali karaan samaynta bogag."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Cinwaanka ka muuqda mawduuca iyo cinwaanka koowaad."
+      },
+      {
+        "property": "pageType",
+        "title": "Nooc",
+        "description": "Calaamadda muuqata ee macnaha bogga.",
+        "options": {
+          "": "-- midna --",
+          "content": "Nuxur",
+          "assessment": "Qiimayn",
+          "quiz": "Imtixaan",
+          "submission": "Gudbin",
+          "lesson": "Cashar",
+          "module": "Qaybta koorsada",
+          "task": "Hawl",
+          "activity": "Waxqabad",
+          "project": "Mashruuc",
+          "practice": "Ku-celcelin",
+          "unit": "Cutub",
+          "objectives": "Ujeeddooyinka Waxbarasho",
+          "connection": "Xiriir",
+          "knowledge": "Ma Ogtahay?",
+          "strategy": "Istaraatiijiyadda Waxbarasho",
+          "discuss": "Ka dood",
+          "listen": "Dhegayso",
+          "make": "Samee",
+          "observe": "Indha-indhee",
+          "present": "Soo bandhig",
+          "reading": "Akhris",
+          "reflect": "Ka fiirso",
+          "research": "Cilmi-baadhis",
+          "watch": "Daawo",
+          "write": "Qor"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Summado",
+        "description": "Liis summado ah oo hakad lagu kala saaray."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL-ka Xiriiriyaha",
+        "description": "URL u gudbin ah oo la muujiyo halkii nuxurka bogga."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Bartilmaameedka Xiriiriyaha",
+        "description": "Ku fur xiriiriyeyaasha isla daaqadda ama daaqad cusub.",
+        "options": {
+          "_self": "Isla daaqadda",
+          "_blank": "Daaqad cusub"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "La daabacay",
+        "description": "Bogagga aan la daabacin waa ka qarsoon yihiin isticmaalayaasha."
+      },
+      {
+        "property": "locked",
+        "title": "Quful bogga",
+        "description": "Quful ama fur dhammaan walxaha boggan."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Ka gudub slug-ga tooska ah",
+        "description": "Quful slug-ga si aan si toos ah loogu cusboonaysiin cinwaanka ama waalidka."
+      },
+      {
+        "property": "slug",
+        "title": "Waddo",
+        "description": "Slug-ga URL ee boggan."
+      },
+      {
+        "property": "image",
+        "title": "Warbaahin",
+        "description": "Warbaahinta matalaysa bogga, oo loo isticmaalo mawduucyada iyo muuqaallada qaar."
+      },
+      {
+        "property": "parent",
+        "title": "Waalid",
+        "description": "Waddada bogga waalidka."
+      },
+      {
+        "property": "noderefs",
+        "title": "Nuxur la xiriira",
+        "description": "Bogag la xiriira boggan."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Sharaxaad",
+        "description": "Sharaxaad loo isticmaalo ururinta iyo hagaajinta matoorrada raadinta (SEO)."
+      },
+      {
+        "property": "entityType",
+        "title": "Nooca Hay'adda",
+        "description": "Caadi ahaan waa bog haddii aan si kale loo dejin.",
+        "options": {
+          "page": "Bog (caadi)",
+          "taxonomy": "Kala-soocid",
+          "taxonomyTerm": "Ereyga Kala-soocidda",
+          "region": "Gobol"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Astaan",
+        "description": "Astaanta la xiriirta boggan ee goobta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka xoojinta",
+        "description": "Midabka la xiriira boggan ee goobta."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Ka qari liiska",
+        "description": "Ka qari boggan liisaska adigoo haynaya URL-kiisa."
+      },
+      {
+        "property": "order",
+        "title": "Kala horrayn",
+        "description": "Kala horrayn marka loo eego bogagga walaalaha ah."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Mawduuca bogga",
+        "description": "Beddel mawduuca boggan oo keliya."
+      },
+      {
+        "property": "author",
+        "title": "Qoraa",
+        "description": "Magaca isticmaalaha qofkii ugu dambeeyay ee wax ka beddelay boggan."
+      }
+    ]
+  }
+}

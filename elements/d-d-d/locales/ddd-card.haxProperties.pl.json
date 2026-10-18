@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Karta",
+    "description": "Komponent karty stylizowany systemem projektowym DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Obraz",
+        "description": "Opcjonalny obraz."
+      },
+      {
+        "property": "alt",
+        "title": "Alt obrazu",
+        "description": "Tekst alternatywny opisujący obraz."
+      },
+      {
+        "property": "title",
+        "title": "Tytuł",
+        "description": "Tytuł karty."
+      },
+      {
+        "slot": "",
+        "title": "Zawartość",
+        "description": "Obszar zawartości karty."
+      },
+      {
+        "property": "href",
+        "title": "Link",
+        "description": "URL linku przycisku."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etykieta",
+        "description": "Etykieta przycisku."
+      },
+      {
+        "property": "noArrow",
+        "title": "Bez strzałki",
+        "description": "Ukryj strzałkę przycisku."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Link: cel",
+        "description": "Gdzie otworzyć link.",
+        "options": {
+          "": "To samo okno",
+          "_blank": "Nowe okno - _blank",
+          "_top": "Okno najwyższego poziomu - _top",
+          "_parent": "Okno nadrzędne - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Link: rel",
+        "description": "Relacja między zasobem docelowym a bieżącym dokumentem."
+      }
+    ]
+  }
+}

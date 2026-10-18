@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Zance da kafofi",
+    "description": "Hoto tare da zance, ambato, da taken zaɓi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Zance",
+        "description": "Rubutun zance."
+      },
+      {
+        "slot": "author",
+        "title": "Marubuci",
+        "description": "Marubucin zance."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Bayanan marubuci",
+        "description": "Bayanan marubuci."
+      },
+      {
+        "slot": "caption",
+        "title": "Taken hoto",
+        "description": "Taken hoto."
+      },
+      {
+        "property": "src",
+        "title": "Tushen Hoto",
+        "description": "Fayil ɗin hoton da ake amfani da shi don zancen."
+      },
+      {
+        "property": "alt",
+        "title": "Rubutun Madadi",
+        "description": "Rubutun madadi na hoton."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Launin Ƙawa",
+        "description": "Launin ƙawa na katin."
+      }
+    ]
+  }
+}

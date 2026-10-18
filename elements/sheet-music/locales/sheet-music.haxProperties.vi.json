@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Bản nhạc",
+    "description": "Hiển thị và phát bản nhạc, tab guitar và ký hiệu tổng phổ qua alphaTex hoặc MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Ký hiệu AlphaTex",
+        "description": "Mã alphaTex nội tuyến cho bản nhạc. Chỉnh sửa trực tiếp để soạn ký hiệu; nội dung được lưu trong template nên khoảng trắng được giữ nguyên."
+      },
+      {
+        "property": "source",
+        "title": "Tệp tổng phổ",
+        "description": "Tải lên hoặc liên kết đến tệp MusicXML (.xml/.musicxml/.mxl) hoặc Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Ghi đè alphaTex nội tuyến khi được đặt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Phát âm thanh",
+        "description": "Bật theo mặc định - nghe bản nhạc được phát qua bộ tổng hợp âm tích hợp. Tắt để dùng chế độ chỉ xem (không có âm thanh)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Hiện tùy chọn hiển thị",
+        "description": "Hiện các nút thu phóng, giãn và bố cục trên thanh trình phát."
+      },
+      {
+        "property": "showExport",
+        "title": "Hiện nút xuất",
+        "description": "Hiện các nút tải MIDI và in/PDF trên thanh trình phát."
+      }
+    ]
+  }
+}

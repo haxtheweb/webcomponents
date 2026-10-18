@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Tổng quan sản phẩm",
+    "description": "Khối tổng quan nhanh về sản phẩm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Biểu tượng",
+        "description": "Biểu tượng đại diện cho khái niệm."
+      },
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Khái niệm chính trong nháy mắt."
+      },
+      {
+        "property": "subtitle",
+        "title": "Phụ đề",
+        "description": "Chi tiết bổ sung."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nhấn cho biểu tượng."
+      }
+    ]
+  }
+}

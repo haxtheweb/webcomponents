@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Date",
+    "description": "Afficher une date de calendrier avec des détails."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mois",
+        "description": "Mois affiché sur la carte."
+      },
+      {
+        "property": "date",
+        "title": "Jour du mois",
+        "description": "Jour du mois en chiffres."
+      },
+      {
+        "property": "day",
+        "title": "Jour de la semaine",
+        "description": "Jour de la semaine en toutes lettres."
+      },
+      {
+        "property": "title",
+        "title": "Titre",
+        "description": "Nom de l'événement."
+      },
+      {
+        "property": "location",
+        "title": "Lieu",
+        "description": "Lieu de l'événement."
+      },
+      {
+        "property": "startTime",
+        "title": "Début",
+        "description": "Heure de début."
+      },
+      {
+        "property": "endTime",
+        "title": "Fin",
+        "description": "Heure de fin."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Une couleur d'accent facultative."
+      },
+      {
+        "property": "dark",
+        "title": "Thème sombre",
+        "description": "Activer le thème sombre."
+      }
+    ]
+  }
+}

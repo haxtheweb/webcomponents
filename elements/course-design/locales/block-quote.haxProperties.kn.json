@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ಉದ್ಧರಣ ಬ್ಲಾಕ್",
+    "description": "ಶೈಲಿಯುಕ್ತ ಉದ್ಧರಣ ಬ್ಲಾಕ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "ಉಲ್ಲೇಖ",
+        "description": "ಉಲ್ಲೇಖ ಪಠ್ಯ."
+      },
+      {
+        "property": "alt",
+        "title": "ಪರ್ಯಾಯ ಪಠ್ಯ",
+        "description": "ಚಿತ್ರದ ಪರ್ಯಾಯ ಪಠ್ಯ."
+      },
+      {
+        "property": "image",
+        "title": "ಚಿತ್ರ",
+        "description": "ಉದ್ಧರಣದೊಂದಿಗೆ ತೋರಿಸುವ ಚಿತ್ರ."
+      }
+    ]
+  }
+}

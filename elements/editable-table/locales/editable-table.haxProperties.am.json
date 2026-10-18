@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "ሰንጠረዥ",
+    "description": "ለድር በሰንጠረዥ ላይ የተመሠረተ ውሂብ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "የረድፍ ራስጌ",
+        "description": "የመጀመሪያውን ረድፍ እንደ ራስጌ ውሰድ።"
+      },
+      {
+        "property": "columnHeader",
+        "title": "የዓምድ ራስጌ",
+        "description": "የመጀመሪያውን ዓምድ እንደ ራስጌ ውሰድ።"
+      },
+      {
+        "property": "footer",
+        "title": "ግርጌ",
+        "description": "የመጨረሻውን ረድፍ እንደ ግርጌ ውሰድ።"
+      },
+      {
+        "property": "sort",
+        "title": "ሊደረደር የሚችል",
+        "description": "በዓምድ እሴቶች መደርደርን ፍቀድ።"
+      },
+      {
+        "property": "filter",
+        "title": "ማጣሪያ ፍቀድ",
+        "description": "በዓምድ እሴቶች ማጣራትን ፍቀድ።"
+      },
+      {
+        "property": "numericStyles",
+        "title": "የቁጥር ቅጥ",
+        "description": "በቁጥር ዓምዶች ላይ የቁጥር ቅጥ ተግብር።"
+      },
+      {
+        "property": "responsive",
+        "title": "ምላሽ ሰጪ",
+        "description": "በትናንሽ ማያ ገጾች ላይ የሰንጠረዡን አቀማመጥ አስተካክል።"
+      },
+      {
+        "property": "rubricMode",
+        "title": "የመመዘኛ ሁነታ",
+        "description": "Rubric፣ RubricScale፣ RubricCriterion እና RubricLevel ሜታዳታ እንዲወጣ ይህን ሰንጠረዥ እንደ OER Schema Rubric ተርጉም።"
+      },
+      {
+        "property": "rubricType",
+        "title": "የመመዘኛ ዓይነት",
+        "description": "እንደ oer:rubricType የሚወጣ የመመዘኛ ቅጥ (የመመዘኛ ሁነታ ሲበራ ብቻ ትርጉም ያለው)።",
+        "options": {
+          "": "(ምንም)",
+          "analytic": "ትንተናዊ",
+          "holistic": "ሁለንተናዊ",
+          "single-point": "ነጠላ ነጥብ",
+          "checklist": "የማረጋገጫ ዝርዝር"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "ድንበር ያለው"
+      },
+      {
+        "property": "condensed",
+        "title": "ረድፎችን አጥብብ",
+        "description": "የረድፍ ቁመትን ቀንስ።"
+      },
+      {
+        "property": "striped",
+        "title": "ባለ ሸንተረር ረድፎች",
+        "description": "እያንዳንዱን ሁለተኛ ረድፍ አጥላ።"
+      },
+      {
+        "property": "downloadable",
+        "title": "የማውረጃ አዝራር",
+        "description": "ሰንጠረዡን ለማውረድ አዝራር አክል።"
+      },
+      {
+        "property": "copyable",
+        "title": "የመቅጃ አዝራር",
+        "description": "የሰንጠረዡን CSV ውሂብ ለመቅዳት አዝራር አክል።"
+      },
+      {
+        "property": "printable",
+        "title": "የማተሚያ አዝራር",
+        "description": "ሰንጠረዡን ብቻ ለማተም አዝራር አክል።"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV ውሂብ",
+        "description": "ከተሰቀለ CSV ፋይል ሰንጠረዥ ፍጠር።"
+      }
+    ]
+  }
+}

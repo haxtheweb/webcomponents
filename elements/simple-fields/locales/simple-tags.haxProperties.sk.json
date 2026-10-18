@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Značky",
+    "description": "Jednoduchý zoznam značiek na zobrazenie na stránke."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Značky",
+        "description": "Zoznam značiek oddelených čiarkami."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatická zvýrazňujúca farba",
+        "description": "Automaticky nastaviť zvýrazňujúcu farbu podľa označenia."
+      },
+      {
+        "property": "accentColor",
+        "title": "Farba",
+        "description": "Farba značiek."
+      }
+    ]
+  }
+}

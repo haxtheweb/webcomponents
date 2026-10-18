@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Aipu blokea",
+    "description": "Estilodun aipu blokea."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Aipamena",
+        "description": "Aipamenaren testua."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Irudiaren testu alternatiboa."
+      },
+      {
+        "property": "image",
+        "title": "Irudia",
+        "description": "Aipuarekin erakusten den irudia."
+      }
+    ]
+  }
+}

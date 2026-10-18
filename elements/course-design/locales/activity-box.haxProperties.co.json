@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Casella d'attività",
+    "description": "Picculu bloccu d'intestatura cù stile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona affissata accantu à a casella d'attività."
+      },
+      {
+        "property": "tag",
+        "title": "Etichetta di a casella d'attività",
+        "description": "Etichetta affissata in a casella d'attività."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Senza culore",
+        "description": "Impedisce chì i culori sianu applicati à l'icona."
+      }
+    ]
+  }
+}

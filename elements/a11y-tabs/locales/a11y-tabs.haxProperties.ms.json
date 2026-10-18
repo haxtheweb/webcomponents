@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Set tab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Label (untuk kebolehcapaian)",
+        "description": "Label boleh diakses untuk set tab."
+      },
+      {
+        "property": "disabled",
+        "title": "Dilumpuhkan",
+        "description": "Lumpuhkan semua tab."
+      },
+      {
+        "property": "hidden",
+        "title": "Tersembunyi",
+        "description": "Sembunyikan set tab."
+      },
+      {
+        "property": "sticky",
+        "title": "Melekit",
+        "description": "Kekalkan tab mendatar di bahagian atas semasa menatal."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Titik Henti Susun Atur",
+        "description": "Titik henti untuk tab mendatar; gunakan -1 untuk menegak sahaja."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Titik Henti Ikon",
+        "description": "Titik henti untuk memaparkan teks bersama ikon. Lalai ialah 0; gunakan -1 untuk mod ikon sahaja."
+      },
+      {
+        "slot": "",
+        "title": "Tab",
+        "description": "Siri elemen <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Unik",
+        "description": "ID unik untuk set tab ini."
+      }
+    ]
+  }
+}

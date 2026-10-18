@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Bildgalleri",
+    "description": "Ett galleri som visar bilder i rutnät, murverk eller som bildspel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Visningsläge",
+        "description": "Hur bilderna i galleriet ska visas.",
+        "options": {
+          "grid": "Rutnät",
+          "masonry": "Murverk",
+          "gallery": "Galleri"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktivt index",
+        "description": "Index för den aktiva bilden att börja på i galleriläge."
+      }
+    ]
+  }
+}

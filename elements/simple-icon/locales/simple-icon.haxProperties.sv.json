@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikon",
+    "description": "Ikon från hela ikonbiblioteket."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon att visa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "Accentfärg för ikonen."
+      },
+      {
+        "property": "dark",
+        "title": "Mörk",
+        "description": "Använd mörkt läge (inverterad färguppsättning)."
+      }
+    ]
+  }
+}

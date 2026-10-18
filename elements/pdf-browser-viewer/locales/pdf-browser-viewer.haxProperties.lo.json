@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ຕົວເບິ່ງ PDF ໃນບຣາວເຊີ",
+    "description": "ຝັງໄຟລ໌ PDF ໃນແຖວ ພ້ອມໂຄງຮ່າງບັດ ແລະ ປຸ່ມດາວໂຫຼດທາງເລືອກ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL ຂອງ PDF",
+        "description": "ທີ່ຕັ້ງຂອງໄຟລ໌ PDF."
+      },
+      {
+        "property": "heading",
+        "title": "ຫົວຂໍ້",
+        "description": "ຂໍ້ຄວາມຫົວຂໍ້ບັດ."
+      },
+      {
+        "property": "card",
+        "title": "ໂຄງຮ່າງບັດ",
+        "description": "ສະແດງ PDF ໃນບັດພ້ອມປຸ່ມດາວໂຫຼດ."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ປ້າຍດາວໂຫຼດ",
+        "description": "ປ້າຍກຳກັບສຳລັບປຸ່ມດາວໂຫຼດ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "ຂໍ້ຄວາມບໍ່ຮອງຮັບ",
+        "description": "ຂໍ້ຄວາມເມື່ອບຣາວເຊີບໍ່ສາມາດສະແດງໄຟລ໌ PDF ໄດ້."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "ຂໍ້ຄວາມລິ້ງບໍ່ຮອງຮັບ",
+        "description": "ຂໍ້ຄວາມລິ້ງເມື່ອບຣາວເຊີບໍ່ສາມາດສະແດງໄຟລ໌ PDF ໄດ້."
+      },
+      {
+        "property": "width",
+        "title": "ຄວາມກວ້າງ",
+        "description": "ຄວາມກວ້າງຂອງຕົວເບິ່ງ PDF."
+      },
+      {
+        "property": "height",
+        "title": "ຄວາມສູງ",
+        "description": "ຄວາມສູງຂອງຕົວເບິ່ງ PDF."
+      }
+    ]
+  }
+}

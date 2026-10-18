@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Daawadaha PDF ee Biraawsarka",
+    "description": "Ku dhex dar fayl PDF gudaha oo leh qaab kaar ikhtiyaari ah iyo badhan soo-dejin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL-ka PDF",
+        "description": "Goobta faylka PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Cinwaan",
+        "description": "Qoraalka cinwaanka kaarka."
+      },
+      {
+        "property": "card",
+        "title": "Qaabka kaarka",
+        "description": "Ku muuji PDF-ka kaar leh badhan soo-dejin."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Calaamadda soo-dejinta",
+        "description": "Calaamadda badhanka soo-dejinta."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Fariinta aan la taageerin",
+        "description": "Fariinta marka biraawsarku uusan muujin karin faylasha PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Fariinta xiriiriyaha aan la taageerin",
+        "description": "Qoraalka xiriiriyaha marka biraawsarku uusan muujin karin faylasha PDF."
+      },
+      {
+        "property": "width",
+        "title": "Ballac",
+        "description": "Ballaca daawadaha PDF."
+      },
+      {
+        "property": "height",
+        "title": "Dherer",
+        "description": "Dhererka daawadaha PDF."
+      }
+    ]
+  }
+}

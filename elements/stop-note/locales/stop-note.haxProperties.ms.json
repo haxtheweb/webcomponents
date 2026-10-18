@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Nota Henti",
+    "description": "Mesej untuk memaklumkan pembaca tentang arahan tertentu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Masukkan tajuk untuk nota henti."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Masukkan url luaran."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Menetapkan status mengubah warna dan ikon agar sepadan",
+        "options": {
+          "stop": "Henti",
+          "warning": "Amaran",
+          "success": "Pengesahan",
+          "info": "Notis"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Teks Nota",
+        "description": "Teks untuk nota henti."
+      }
+    ]
+  }
+}

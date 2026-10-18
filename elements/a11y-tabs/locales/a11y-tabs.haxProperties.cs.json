@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Karty",
+    "description": "Sada karet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Popisek (pro přístupnost)",
+        "description": "Přístupný popisek sady karet."
+      },
+      {
+        "property": "disabled",
+        "title": "Zakázáno",
+        "description": "Zakázat všechny karty."
+      },
+      {
+        "property": "hidden",
+        "title": "Skryto",
+        "description": "Skrýt sadu karet."
+      },
+      {
+        "property": "sticky",
+        "title": "Připnuté",
+        "description": "Při posouvání ponechat vodorovné karty nahoře."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Bod zlomu rozvržení",
+        "description": "Bod zlomu pro vodorovné karty; -1 pro pouze svislé."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Bod zlomu ikon",
+        "description": "Bod zlomu pro zobrazení textu s ikonami. Výchozí je 0; -1 pro režim pouze ikon."
+      },
+      {
+        "slot": "",
+        "title": "Karty",
+        "description": "Řada prvků <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Jedinečné ID",
+        "description": "Jedinečné ID této sady karet."
+      }
+    ]
+  }
+}

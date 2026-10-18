@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Samlingsrad",
+    "description": "Radelement til bruk i en samlingsliste, med tekst, lenke, ikon, merker og valgfritt bilde."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Lenke",
+        "description": "Mål-URL for denne raden."
+      },
+      {
+        "property": "image",
+        "title": "Bilde",
+        "description": "Bilde for raden."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativ tekst som beskriver bildet."
+      },
+      {
+        "property": "line1",
+        "title": "Linje 1",
+        "description": "Første tekstlinje."
+      },
+      {
+        "property": "line2",
+        "title": "Linje 2",
+        "description": "Andre tekstlinje."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon som representerer raden."
+      },
+      {
+        "property": "saturate",
+        "title": "Metningseffekt",
+        "description": "Endre bildets metning når brukeren fokuserer."
+      },
+      {
+        "property": "tags",
+        "title": "Merker",
+        "description": "Kommadelt liste med merker."
+      },
+      {
+        "property": "accentColor",
+        "title": "Farge",
+        "description": "Farge brukt for ikon og merker."
+      }
+    ]
+  }
+}

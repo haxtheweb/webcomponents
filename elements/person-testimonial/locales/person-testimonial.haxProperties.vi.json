@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Trích dẫn kèm hình ảnh",
+    "description": "Trích dẫn có định dạng kèm hình ảnh tùy chọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Hình ảnh",
+        "description": "Thêm hình ảnh vào lời chứng thực."
+      },
+      {
+        "property": "name",
+        "title": "Họ và tên",
+        "description": "Tên của người đưa ra lời chứng thực."
+      },
+      {
+        "property": "position",
+        "title": "Vị trí hoặc chức danh",
+        "description": "Vị trí hoặc chức danh của người đó."
+      },
+      {
+        "slot": "",
+        "title": "Trích dẫn",
+        "description": "Trích dẫn từ tác giả lời chứng thực."
+      }
+    ]
+  }
+}

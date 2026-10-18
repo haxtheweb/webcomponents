@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "유엔 지속가능발전목표입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "목표",
+        "description": "UN SDG 번호입니다."
+      },
+      {
+        "property": "colorOnly",
+        "title": "색상만",
+        "description": "목표 색상만 표시합니다."
+      }
+    ]
+  }
+}

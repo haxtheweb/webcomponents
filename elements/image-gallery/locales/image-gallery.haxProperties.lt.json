@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Vaizdų galerija",
+    "description": "Galerija, pateikianti vaizdus tinklelio, mūro arba skaidrių peržiūros išdėstymu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Rodymo režimas",
+        "description": "Kaip pateikti vaizdus galerijoje.",
+        "options": {
+          "grid": "Tinklelis",
+          "masonry": "Mūras",
+          "gallery": "Galerija"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktyvus indeksas",
+        "description": "Aktyvaus vaizdo, nuo kurio pradedama galerijos režimu, indeksas."
+      }
+    ]
+  }
+}

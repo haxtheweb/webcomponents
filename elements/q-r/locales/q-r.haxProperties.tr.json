@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR Kodu",
+    "description": "Akıllı telefonla taranacak kod."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR verisi",
+        "description": "QR kodu için verinin kaynağı."
+      },
+      {
+        "property": "title",
+        "title": "Alternatif başlık",
+        "description": "QR kodu kaynağına bağlı alternatif başlık."
+      },
+      {
+        "property": "modulesize",
+        "title": "Boyut",
+        "description": "QR kodunun boyutu."
+      },
+      {
+        "property": "margin",
+        "title": "Kenar boşluğu",
+        "description": "Kodun çevresindeki boşluk."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Çıktı biçimi",
+        "description": "Çıktının biçimi.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

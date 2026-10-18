@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Rasm boʻlimi",
+    "description": "Sahifa boʻlimini ajratuvchi toʻliq kenglikdagi rasm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Fon rasmi."
+      },
+      {
+        "property": "caption",
+        "description": "Matn sarlavhasi."
+      }
+    ]
+  }
+}

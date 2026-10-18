@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kartu flash",
+    "description": "Latih konsep dengan kartu flash bolak-balik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Bagian Depan Kartu",
+        "description": "Teks depan atau pertanyaan."
+      },
+      {
+        "slot": "back",
+        "title": "Bagian Belakang Kartu",
+        "description": "Jawaban yang diharapkan."
+      },
+      {
+        "property": "imgSource",
+        "title": "Sumber Gambar",
+        "description": "File gambar yang digunakan untuk kartu. Menggantikan Kata Kunci Gambar."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Jenis Tindakan",
+        "description": "OER Schema: jenis tindakan yang dilibatkan latihan ini (mis. Membaca, Menulis, Membuat, Meneliti, Mendengarkan, Menonton, Merefleksikan, Berdiskusi, Mengamati, Mempresentasikan, Menilai)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan Pembelajaran",
+        "description": "OER Schema: ID atau URL tujuan pembelajaran yang didukung latihan ini."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Gelap",
+        "description": "Gunakan mode gelap."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen kartu."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Kata Kunci Gambar",
+        "description": "Kata kunci gambar acak. Digantikan oleh Sumber Gambar."
+      }
+    ]
+  }
+}

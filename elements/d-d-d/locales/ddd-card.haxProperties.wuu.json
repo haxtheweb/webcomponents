@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "卡片",
+    "description": "用 DDD 设计系统样式个卡片组件。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "图片",
+        "description": "可选图片。"
+      },
+      {
+        "property": "alt",
+        "title": "图片替代文字",
+        "description": "描述图片个替代文字。"
+      },
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "卡片标题。"
+      },
+      {
+        "slot": "",
+        "title": "内容",
+        "description": "卡片内容区。"
+      },
+      {
+        "property": "href",
+        "title": "链接",
+        "description": "按钮链接 URL。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "标签",
+        "description": "按钮标签。"
+      },
+      {
+        "property": "noArrow",
+        "title": "无箭头",
+        "description": "隐藏按钮箭头。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "链接：目标",
+        "description": "勒啥地方打开链接。",
+        "options": {
+          "": "同一只窗口",
+          "_blank": "新窗口 - _blank",
+          "_top": "顶层窗口 - _top",
+          "_parent": "父窗口 - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "链接：rel",
+        "description": "链接资源搭当前文档个关系。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Sant/falskt-fråga",
+    "description": "Fråga med sant eller falskt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fråga",
+        "description": "Fråga som användarna ska svara på."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Rätt svar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Quizets namn",
+        "description": "Quiznamn som skickas med för att identifiera objektet i xAPI-drivna miljöer"
+      }
+    ]
+  }
+}

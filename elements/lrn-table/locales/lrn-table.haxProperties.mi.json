@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ripanga CSV",
+    "description": "Ka taea tēnei te hanga ripanga mai i tētahi kōnae CSV ahakoa kei hea."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Pūtake",
+        "description": "URL mō tēnei kōnae CSV."
+      },
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Taitara mō te ripanga ka hangaia."
+      },
+      {
+        "property": "description",
+        "title": "Whakaahuatanga",
+        "description": "He whakaahuatanga taipitopito ake kia pai ake te wātea o ngā raraunga ripanga ki te katoa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Dettalji tal-paġna",
+    "description": "Iddefinixxi qasma viżiva bejn il-paġni li s-CMSs jistgħu jużaw biex joħolqu l-paġni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlu muri fit-tema u fl-ewwel intestatura."
+      },
+      {
+        "property": "pageType",
+        "title": "Tip",
+        "description": "Tikketta viżiva tal-kuntest tal-paġna.",
+        "options": {
+          "": "-- xejn --",
+          "content": "Kontenut",
+          "assessment": "Valutazzjoni",
+          "quiz": "Kwizz",
+          "submission": "Sottomissjoni",
+          "lesson": "Lezzjoni",
+          "module": "Modulu",
+          "task": "Kompitu",
+          "activity": "Attività",
+          "project": "Proġett",
+          "practice": "Prattika",
+          "unit": "Unità",
+          "objectives": "Għanijiet tat-tagħlim",
+          "connection": "Konnessjoni",
+          "knowledge": "Kont taf?",
+          "strategy": "Strateġija tat-tagħlim",
+          "discuss": "Iddiskuti",
+          "listen": "Isma'",
+          "make": "Agħmel",
+          "observe": "Osserva",
+          "present": "Ippreżenta",
+          "reading": "Qari",
+          "reflect": "Irrifletti",
+          "research": "Riċerka",
+          "watch": "Ara",
+          "write": "Ikteb"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tikketti",
+        "description": "Lista ta' tikketti separati b'virgoli."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL tal-link",
+        "description": "URL ta' ridirezzjoni muri minflok il-kontenut tal-paġna."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Mira tal-link",
+        "description": "Iftaħ il-links fl-istess tieqa jew f'tieqa ġdida.",
+        "options": {
+          "_self": "L-istess tieqa",
+          "_blank": "Tieqa ġdida"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Ippubblikat",
+        "description": "Il-paġni mhux ippubblikati huma moħbija mill-utenti finali."
+      },
+      {
+        "property": "locked",
+        "title": "Issakkar il-paġna",
+        "description": "Issakkar jew iftaħ l-elementi kollha f'din il-paġna."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Issostitwixxi s-slug awtomatiku",
+        "description": "Issakkar is-slug minn aġġornamenti awtomatiċi bbażati fuq it-titlu jew il-ġenitur."
+      },
+      {
+        "property": "slug",
+        "title": "Mogħdija",
+        "description": "Slug tal-URL għal din il-paġna."
+      },
+      {
+        "property": "image",
+        "title": "Midja",
+        "description": "Midja li tirrappreżenta l-paġna, użata f'xi temi u veduti."
+      },
+      {
+        "property": "parent",
+        "title": "Ġenitur",
+        "description": "Mogħdija tal-paġna ġenitur."
+      },
+      {
+        "property": "noderefs",
+        "title": "Kontenut relatat",
+        "description": "Paġni relatati ma' din il-paġna."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Deskrizzjoni",
+        "description": "Deskrizzjoni użata fil-kollezzjonijiet u fl-ottimizzazzjoni għall-magni tat-tiftix."
+      },
+      {
+        "property": "entityType",
+        "title": "Tip ta' entità",
+        "description": "Awtomatikament hija paġna sakemm ma jiġix issettjat mod ieħor.",
+        "options": {
+          "page": "Paġna (awtomatiku)",
+          "taxonomy": "Tassonomija",
+          "taxonomyTerm": "Terminu tat-tassonomija",
+          "region": "Reġjun"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona assoċjata ma' din il-paġna fis-sit."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur assoċjat ma' din il-paġna fis-sit."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Aħbi fil-menu",
+        "description": "Aħbi din il-paġna mill-menus filwaqt li żżomm il-URL tagħha."
+      },
+      {
+        "property": "order",
+        "title": "Ordni",
+        "description": "Ordni meta mqabbla mal-paġni aħwa."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Tema tal-paġna",
+        "description": "Issostitwixxi t-tema għal din il-paġna biss."
+      },
+      {
+        "property": "author",
+        "title": "Awtur",
+        "description": "Isem l-utent tal-aħħar persuna li biddlet din il-paġna."
+      }
+    ]
+  }
+}

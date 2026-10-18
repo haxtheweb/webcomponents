@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Mubvunzo Wekuenzanisa",
+    "description": "Chiitwa chekudhonza-nekuisa chinobatanidza mibvunzo nemhinduro dzayo dzakarurama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Mubvunzo",
+        "description": "Mubvunzo wevashandisi. Maka nzvimbo dzekuisa, wobva wanyora mhinduro kusvika panzvimbo inotevera."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Nzira yekupa mamaki",
+        "description": "OER Schema: nzira yekupa mamaki yeongororo iyi (semuenzaniso mapoinzi, tsamba, chikamu muzana, kupedzisa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Chinangwa chekudzidza",
+        "description": "OER Schema: chinangwa chekudzidza chakabatanidzwa neongororo iyi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kosi",
+        "description": "OER Schema: kosi yakagadzirirwa ongororo iyi."
+      },
+      {
+        "property": "answers",
+        "title": "Mhinduro"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Zita rekuedzwa",
+        "description": "Zita rekuedzwa rinoshandiswa kuziva nexAPI mumasisitimu eanalytics."
+      }
+    ]
+  }
+}

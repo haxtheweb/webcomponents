@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Fila de colección",
+    "description": "Elemento en forma de fila para usar dentro de una lista de colección, con texto, enlace, icono, etiquetas e imagen opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Enlace",
+        "description": "URL de destino de esta fila."
+      },
+      {
+        "property": "image",
+        "title": "Imagen",
+        "description": "Imagen de la fila."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Texto alternativo que describe la imagen."
+      },
+      {
+        "property": "line1",
+        "title": "Línea 1",
+        "description": "Primera línea de texto."
+      },
+      {
+        "property": "line2",
+        "title": "Línea 2",
+        "description": "Segunda línea de texto."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icono",
+        "description": "Icono que representa la fila."
+      },
+      {
+        "property": "saturate",
+        "title": "Efecto de saturación",
+        "description": "Cambiar la saturación de la imagen cuando el usuario la enfoca."
+      },
+      {
+        "property": "tags",
+        "title": "Etiquetas",
+        "description": "Lista de etiquetas separadas por comas."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color",
+        "description": "Color usado para el icono y las etiquetas."
+      }
+    ]
+  }
+}

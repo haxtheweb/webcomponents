@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Fyll í holini",
+    "description": "Metingaruppgáva, har lesandi fylla í manglandi orð í einum útsagni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spurningur",
+        "description": "Spurningur, sum brúkarar skulu svara."
+      },
+      {
+        "property": "statement",
+        "title": "Útsagn",
+        "description": "Útsagn, sum verður umskapað til eina uppgávu, har orð skulu merkjast."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Einkunnasnið",
+        "description": "OER Schema: einkunnasnið til hesa metingina (t.d. stig, bókstavur, prosent, fullførd)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lærumál",
+        "description": "OER Schema: lærumál knýtt at hesi metingini."
+      },
+      {
+        "property": "forCourse",
+        "title": "Skeið",
+        "description": "OER Schema: skeið, sum henda metingin er ætlað til."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn á spurnakappingini",
+        "description": "Navn á spurnakappingini, sum verður latið inn til brúks í xAPI-stýrdum umhvørvum at eyðmerkja henda lutin"
+      }
+    ]
+  }
+}

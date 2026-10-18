@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "တဂ် / Pill",
+    "description": "ရွေးချယ်နိုင်သော အထူးပြု အရောင်၊ ပယ်ဖျက် ခလုတ် သို့မဟုတ် toggle ပါသည့် ကျစ်လျစ်သော pill ပုံ အညွှန်း။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "အညွှန်း",
+        "description": "Pill အတွင်း ပြသော စာသား။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "Pill နောက်ခံအတွက် SimpleColors အထူးပြု အရောင် အမည်။",
+        "options": {
+          "": "-- မူလ --",
+          "red": "အနီ",
+          "pink": "ပန်းရောင်",
+          "purple": "ခရမ်း",
+          "deep-purple": "ခရမ်းရင့်",
+          "indigo": "မဲနယ်ပြာ",
+          "blue": "အပြာ",
+          "light-blue": "အပြာဖျော့",
+          "cyan": "စိမ်းပြာ",
+          "teal": "စိမ်းပြာရင့်",
+          "green": "အစိမ်း",
+          "light-green": "အစိမ်းဖျော့",
+          "lime": "သံပုရာစိမ်း",
+          "yellow": "အဝါ",
+          "amber": "ပယင်းရောင်",
+          "orange": "လိမ္မော်",
+          "deep-orange": "လိမ္မော်ရင့်",
+          "brown": "အညို",
+          "blue-grey": "ပြာမီးခိုး",
+          "grey": "မီးခိုးရောင်"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "အလိုအလျောက် အထူးပြု အရောင်",
+        "description": "အညွှန်း စာသားမှ အထူးပြု အရောင်ကို အလိုအလျောက် ရယူရန်။"
+      },
+      {
+        "property": "cancelButton",
+        "title": "ပယ်ဖျက် ခလုတ်",
+        "description": "Pill အတွင်း ဖယ်ရှား/ပယ်ဖျက် အိုင်ကွန် ခလုတ်ကို ပြရန်။"
+      },
+      {
+        "property": "readonly",
+        "title": "ဖတ်ရန်သာ",
+        "description": "Pill ကို ပြသရန်သာ ဖြစ်စေရန် ပယ်ဖျက် ခလုတ်ကို ဝှက်ရန်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Toggle လုပ်နိုင်သည်",
+        "description": "ခလုတ်ကို နှိပ်သောအခါ pill ကို ဖွင့်/ပိတ် ပြောင်းစေရန်။"
+      },
+      {
+        "property": "toggled",
+        "title": "ဖွင့်ထားသည်",
+        "description": "Pill ကို လက်ရှိ ဖွင့်ထားမထား။"
+      },
+      {
+        "property": "toggledIcon",
+        "title": "ဖွင့်ထားချိန် အိုင်ကွန်",
+        "description": "Pill ဖွင့်ထားချိန်တွင် ပြမည့် အိုင်ကွန်။"
+      },
+      {
+        "property": "disabled",
+        "title": "ပိတ်ထားသည်",
+        "description": "Pill နှင့် အပြန်အလှန် လုပ်ဆောင်မှုကို ပိတ်ရန်။"
+      }
+    ]
+  }
+}

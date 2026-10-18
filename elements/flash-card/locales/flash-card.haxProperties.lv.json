@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Zibkartīte",
+    "description": "Apgūstiet jēdzienus ar abpusējām zibkartītēm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Kartītes priekšpuse",
+        "description": "Priekšpuses teksts vai jautājums."
+      },
+      {
+        "slot": "back",
+        "title": "Kartītes aizmugure",
+        "description": "Gaidāmā atbilde."
+      },
+      {
+        "property": "imgSource",
+        "title": "Attēla avots",
+        "description": "Kartītei izmantotais attēla fails. Ignorē attēla atslēgvārdu."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Darbības veids",
+        "description": "OER Schema: šīs prakses darbības veids (piem., lasīšana, rakstīšana, veidošana, pētīšana, klausīšanās, skatīšanās, pārdomas, diskusija, novērošana, prezentēšana, vērtēšana)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mācību mērķis",
+        "description": "OER Schema: tā mācību mērķa ID vai URL, ko atbalsta šī prakse."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tumšs",
+        "description": "Izmantot tumšo režīmu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Kartītes akcenta krāsa."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Attēla atslēgvārds",
+        "description": "Nejauša attēla atslēgvārds. Attēla avots to ignorē."
+      }
+    ]
+  }
+}

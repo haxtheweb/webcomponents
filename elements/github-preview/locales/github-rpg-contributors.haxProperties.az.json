@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub töhfəçilər siyahısı",
+    "description": "GitHub API vasitəsilə RPG personajları kimi göstərilir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Təşkilat",
+        "description": "github.com/ORG/REPO-dan təşkilat adı."
+      },
+      {
+        "property": "repo",
+        "title": "Repozitoriya",
+        "description": "github.com/ORG/REPO-dan repozitoriya adı."
+      },
+      {
+        "property": "limit",
+        "title": "Limit",
+        "description": "Göstərilən töhfəçilərin sayını məhdudlaşdır."
+      }
+    ]
+  }
+}

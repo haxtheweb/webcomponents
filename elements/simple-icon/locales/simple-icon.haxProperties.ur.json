@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "آئیکن",
+    "description": "مکمل آئیکن لائبریری سے آئیکن۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "دکھایا جانے والا آئیکن۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "آئیکن کا نمایاں رنگ۔"
+      },
+      {
+        "property": "dark",
+        "title": "گہرا",
+        "description": "گہرا موڈ استعمال کریں (الٹے رنگ)۔"
+      }
+    ]
+  }
+}

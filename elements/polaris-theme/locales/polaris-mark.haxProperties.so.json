@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Astaanta Polaris",
+    "description": "Muuji astaanta aqoonsiga PSU oo leh magaca kulliyadda ikhtiyaari ah iyo URL loo socdo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Magaca kulliyadda",
+        "description": "Magaca lagu muujiyo agtiisa astaanta."
+      },
+      {
+        "property": "name2",
+        "title": "Magaca kulliyadda 2",
+        "description": "Magac labaad oo laga muujiyo magaca kulliyadda koowaad hoostiisa."
+      },
+      {
+        "property": "name3",
+        "title": "Magaca kulliyadda 3",
+        "description": "Magac saddexaad oo laga muujiyo magaca kulliyadda labaad hoostiisa."
+      },
+      {
+        "property": "url",
+        "title": "Xiriiriye",
+        "description": "URL-ka loo socdo marka astaanta la gujiyo."
+      },
+      {
+        "property": "type",
+        "title": "Nooc",
+        "description": "Nooca muuqaalka astaanta.",
+        "options": {
+          "default": "Caadi",
+          "light": "Iftiin",
+          "dark": "Madow"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Qaab taagan",
+        "description": "Ku muuji magaca saddexaad magaca labaad hoostiisa oo leh xariiq jiif ah."
+      }
+    ]
+  }
+}

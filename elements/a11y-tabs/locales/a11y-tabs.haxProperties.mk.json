@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Јазичиња",
+    "description": "Збир јазичиња."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Ознака (за пристапност)",
+        "description": "Пристапна ознака за збирот јазичиња."
+      },
+      {
+        "property": "disabled",
+        "title": "Оневозможено",
+        "description": "Оневозможи ги сите јазичиња."
+      },
+      {
+        "property": "hidden",
+        "title": "Скриено",
+        "description": "Скриј го збирот јазичиња."
+      },
+      {
+        "property": "sticky",
+        "title": "Залепено",
+        "description": "Хоризонталните јазичиња да останат горе при лизгање."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Точка на прекин за распоред",
+        "description": "Точка на прекин за хоризонтални јазичиња; користете -1 само за вертикални."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Точка на прекин за икони",
+        "description": "Точка на прекин за прикажување текст со икони. Стандардно е 0; користете -1 за режим само со икони."
+      },
+      {
+        "slot": "",
+        "title": "Јазичиња",
+        "description": "Низа елементи <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Уникатен ID",
+        "description": "Уникатен ID за овој збир јазичиња."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Պատկերի քարտեզ",
+    "description": "Մատչելի պատկերի քարտեզ՝ ինտերակտիվ թեժ կետերով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Պիտակ",
+        "description": "Պատկերի քարտեզի պիտակը։"
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Թեժ կետերի մանրամասներ",
+        "description": "Պատկերի քարտեզի ինտերակտիվ թեժ կետերը։"
+      }
+    ]
+  }
+}

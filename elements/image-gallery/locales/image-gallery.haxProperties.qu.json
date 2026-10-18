@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Rikch'a galería",
+    "description": "Rikch'akunata k'uchu k'uchupi, pirqa hinapi utaq diapositivakunapi rikuchiq galería."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Rikuchiy modo",
+        "description": "Galeríapi rikch'akunata imayna rikuchinapaq.",
+        "options": {
+          "grid": "K'uchu k'uchu",
+          "masonry": "Pirqa hina",
+          "gallery": "Galería"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Kunan índice",
+        "description": "Galería modopi qallarinapaq kunan rikch'apa índicen."
+      }
+    ]
+  }
+}

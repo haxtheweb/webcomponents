@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "ట్యాగ్ / పిల్",
+    "description": "ఐచ్ఛిక యాక్సెంట్ రంగు, రద్దు బటన్ లేదా టోగుల్‌తో కూడిన చిన్న పిల్-ఆకార లేబుల్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "లేబుల్",
+        "description": "పిల్ లోపల చూపబడే వచనం."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "పిల్ నేపథ్యం కోసం SimpleColors యాక్సెంట్ పేరు.",
+        "options": {
+          "": "-- డిఫాల్ట్ --",
+          "red": "ఎరుపు",
+          "pink": "గులాబీ",
+          "purple": "ఊదా",
+          "deep-purple": "ముదురు ఊదా",
+          "indigo": "నీలిమందు",
+          "blue": "నీలం",
+          "light-blue": "లేత నీలం",
+          "cyan": "సియాన్",
+          "teal": "టీల్",
+          "green": "ఆకుపచ్చ",
+          "light-green": "లేత ఆకుపచ్చ",
+          "lime": "నిమ్మ పచ్చ",
+          "yellow": "పసుపు",
+          "amber": "కాషాయం",
+          "orange": "నారింజ",
+          "deep-orange": "ముదురు నారింజ",
+          "brown": "గోధుమ",
+          "blue-grey": "నీలి బూడిద",
+          "grey": "బూడిద"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ఆటో యాక్సెంట్ రంగు",
+        "description": "లేబుల్ వచనం నుండి యాక్సెంట్ రంగును స్వయంచాలకంగా పొందండి."
+      },
+      {
+        "property": "cancelButton",
+        "title": "రద్దు బటన్",
+        "description": "పిల్ లోపల తొలగించు/రద్దు ఐకాన్ బటన్‌ను చూపండి."
+      },
+      {
+        "property": "readonly",
+        "title": "చదవడానికి మాత్రమే",
+        "description": "పిల్ ప్రదర్శనకు మాత్రమే ఉండేలా రద్దు బటన్‌ను దాచండి."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "టోగుల్ చేస్తుంది",
+        "description": "బటన్‌ను క్లిక్ చేసినప్పుడు పిల్ ఆన్/ఆఫ్ టోగుల్ అయ్యేలా చేయండి."
+      },
+      {
+        "property": "toggled",
+        "title": "టోగుల్ చేయబడింది",
+        "description": "పిల్ ప్రస్తుతం ఆన్‌లో టోగుల్ చేయబడిందా."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "టోగుల్ ఐకాన్",
+        "description": "పిల్ ఆన్‌లో ఉన్నప్పుడు చూపాల్సిన ఐకాన్."
+      },
+      {
+        "property": "disabled",
+        "title": "నిలిపివేయబడింది",
+        "description": "పిల్‌తో పరస్పర చర్యను నిలిపివేయండి."
+      }
+    ]
+  }
+}

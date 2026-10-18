@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Сарказъм",
+    "description": "Представяне на текст в заядлив стил"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Текст",
+        "description": "Текст, който да стане саркастичен"
+      }
+    ]
+  }
+}

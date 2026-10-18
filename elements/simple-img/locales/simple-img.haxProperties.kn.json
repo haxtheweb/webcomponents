@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ಸರಳ ಚಿತ್ರ",
+    "description": "ಸರಳ ನಿಯತಾಂಕಗಳೊಂದಿಗೆ ಚಿತ್ರಗಳನ್ನು ಮಾರ್ಪಡಿಸಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ಮೂಲ",
+        "description": "ಚಿತ್ರದ ಮೂಲ URL."
+      },
+      {
+        "property": "height",
+        "title": "ಎತ್ತರ",
+        "description": "ಐಚ್ಛಿಕ ಚಿತ್ರದ ಎತ್ತರ."
+      },
+      {
+        "property": "width",
+        "title": "ಅಗಲ",
+        "description": "ಐಚ್ಛಿಕ ಚಿತ್ರದ ಅಗಲ."
+      },
+      {
+        "property": "alt",
+        "title": "ಪರ್ಯಾಯ ಪಠ್ಯ",
+        "description": "ಸ್ಕ್ರೀನ್ ರೀಡರ್‌ಗಳಿಗೆ ಮತ್ತು ಉತ್ತಮ SEO ಗೆ ಉಪಯುಕ್ತ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "ಗುಣಮಟ್ಟ",
+        "description": "ರಚಿಸುವಾಗ ಚಿತ್ರದ ಗುಣಮಟ್ಟ (JPEG ಮಾತ್ರ)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "ಪಡೆಯುವ ಆದ್ಯತೆ",
+        "description": "ಆಧುನಿಕ ಬ್ರೌಸರ್‌ಗಳಿಗೆ ಕಾರ್ಯಕ್ಷಮತೆಯ ಸುಳಿವು.",
+        "options": {
+          "auto": "ಸ್ವಯಂಚಾಲಿತ",
+          "high": "ಹೆಚ್ಚು",
+          "low": "ಕಡಿಮೆ"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "ಡಿಕೋಡಿಂಗ್ ವಿಧಾನ",
+        "description": "ಆಧುನಿಕ ಬ್ರೌಸರ್‌ಗಳಲ್ಲಿ ಚಿತ್ರ ರೆಂಡರಿಂಗ್‌ಗಾಗಿ ಕಾರ್ಯಕ್ಷಮತೆಯ ಸುಳಿವು.",
+        "options": {
+          "auto": "ಸ್ವಯಂಚಾಲಿತ",
+          "async": "ಅಸಮಕಾಲಿಕ"
+        }
+      }
+    ]
+  }
+}

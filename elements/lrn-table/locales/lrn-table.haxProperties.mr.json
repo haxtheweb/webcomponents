@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV तक्ता",
+    "description": "CSV फाइल कुठेही असली तरी यातून तक्ता तयार करता येतो."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "स्रोत",
+        "description": "या CSV फाइलची URL."
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "तयार होणाऱ्या तक्त्याचे शीर्षक."
+      },
+      {
+        "property": "description",
+        "title": "वर्णन",
+        "description": "तक्त्यातील डेटाच्या अधिक चांगल्या सुलभतेसाठी अधिक तपशीलवार वर्णन."
+      }
+    ]
+  }
+}

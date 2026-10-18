@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV টেবিল",
+    "description": "CSV ফাইল যেখানেই থাকুক, এটি তা থেকে টেবিল তৈরি করতে পারে।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "উৎস",
+        "description": "এই CSV ফাইলের URL।"
+      },
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "তৈরি হওয়া টেবিলের শিরোনাম।"
+      },
+      {
+        "property": "description",
+        "title": "বিবরণ",
+        "description": "টেবিলের ডেটার উন্নত অ্যাক্সেসযোগ্যতার জন্য আরও বিস্তারিত বিবরণ।"
+      }
+    ]
+  }
+}

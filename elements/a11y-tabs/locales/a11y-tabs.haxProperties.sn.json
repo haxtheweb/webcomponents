@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Mathebhu",
+    "description": "Seti yemathebhu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Zita (rekuwanikwa nevose)",
+        "description": "Zita rinowanikwa nevose reseti yemathebhu."
+      },
+      {
+        "property": "disabled",
+        "title": "Zvakadzimwa",
+        "description": "Dzima mathebhu ose."
+      },
+      {
+        "property": "hidden",
+        "title": "Zvakavigwa",
+        "description": "Viga seti yemathebhu."
+      },
+      {
+        "property": "sticky",
+        "title": "Zvakanamatira",
+        "description": "Chengeta mathebhu akatwasuka kumusoro paunenge uchikwesha."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Nhanho yeMarongerwo",
+        "description": "Nhanho yemathebhu akatwasuka; shandisa -1 kuti ave akamira chete."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Nhanho yeAikoni",
+        "description": "Nhanho yekuratidza mavara nemaaikoni. Zvakajairwa ndi 0; shandisa -1 kuti pave nemaaikoni chete."
+      },
+      {
+        "slot": "",
+        "title": "Mathebhu",
+        "description": "Nhevedzano yezvinhu <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Yakasiyana",
+        "description": "ID yakasiyana yeseti iyi yemathebhu."
+      }
+    ]
+  }
+}

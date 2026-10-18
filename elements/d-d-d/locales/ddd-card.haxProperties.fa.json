@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "کارت",
+    "description": "مؤلفهٔ کارت با سبک سامانهٔ طراحی DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "تصویر",
+        "description": "تصویر اختیاری."
+      },
+      {
+        "property": "alt",
+        "title": "متن جایگزین تصویر",
+        "description": "متن جایگزینی که تصویر را توصیف می‌کند."
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنوان کارت."
+      },
+      {
+        "slot": "",
+        "title": "محتوا",
+        "description": "ناحیهٔ محتوای کارت."
+      },
+      {
+        "property": "href",
+        "title": "پیوند",
+        "description": "URL پیوند دکمه."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "برچسب",
+        "description": "برچسب دکمه."
+      },
+      {
+        "property": "noArrow",
+        "title": "بدون پیکان",
+        "description": "پیکان دکمه پنهان شود."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "پیوند: مقصد",
+        "description": "پیوند کجا باز شود.",
+        "options": {
+          "": "همان پنجره",
+          "_blank": "پنجرهٔ جدید - _blank",
+          "_top": "پنجرهٔ بالایی - _top",
+          "_parent": "پنجرهٔ والد - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "پیوند: rel",
+        "description": "رابطهٔ میان منبع پیوندشده و سند فعلی."
+      }
+    ]
+  }
+}

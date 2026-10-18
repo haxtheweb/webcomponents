@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Kontainer NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Sembunyikan editor",
+        "description": "Sembunyikan antarmuka pengeditan file."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Sembunyikan terminal",
+        "description": "Sembunyikan terminal untuk program yang berjalan otomatis."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Sembunyikan jendela",
+        "description": "Sembunyikan jendela keluaran untuk penggunaan terminal saja."
+      },
+      {
+        "slot": "",
+        "title": "Perintah",
+        "description": "Perintah (satu per baris) yang dijalankan sebelum memuat."
+      }
+    ]
+  }
+}

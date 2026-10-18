@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Үгсийн сан",
+    "description": "Үгсийн сангийн нэр томьёо."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Нэр томьёо"
+      },
+      {
+        "property": "information",
+        "title": "Тодорхойлолт",
+        "description": "Нэр томьёо дээр дарахад харуулах тодорхойлолт."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Гарч ирэх цонх",
+        "description": "Тодорхойлолтыг шугам дотор биш гарч ирэх цонхонд харуулах."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Холбоосууд",
+        "description": "Энэ нэр томьёотой холбоотой нэмэлт холбоосуудын жагсаалт."
+      }
+    ]
+  }
+}

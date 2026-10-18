@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX-sanataide",
+    "description": "HAXin logoelementti, tietenkin HAX-yhteensopivana elementtinä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Sijoitettavan HAX-logon koko",
+        "options": {
+          "mini": "Mini",
+          "small": "Pieni",
+          "normal": "Normaali",
+          "large": "Suuri"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Muunnetaanko logo isoiksi kirjaimiksi"
+      }
+    ]
+  }
+}

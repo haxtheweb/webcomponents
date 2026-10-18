@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Sheet music",
+    "description": "Nagpapakita at nagpe-play ng sheet music, guitar tab, at notasyon ng score gamit ang alphaTex o MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Notasyong AlphaTex",
+        "description": "Inline na alphaTex markup para sa sheet music. Direktang i-edit para isulat ang notasyon; naka-imbak ito sa isang template kaya napapanatili ang espasyo."
+      },
+      {
+        "property": "source",
+        "title": "Score file",
+        "description": "Mag-upload o mag-link sa isang MusicXML (.xml/.musicxml/.mxl) o Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) file. Nangingibabaw sa inline na alphaTex kapag nakatakda."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Pag-play ng audio",
+        "description": "Naka-on bilang default - pakinggan ang sheet music na pine-play ng built-in na synthesizer. I-off para sa mode na pagtingin lamang (walang audio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Ipakita ang mga opsyon sa display",
+        "description": "Ipakita ang mga button ng zoom, stretch, at layout sa player bar."
+      },
+      {
+        "property": "showExport",
+        "title": "Ipakita ang mga button sa pag-export",
+        "description": "Ipakita ang mga button sa pag-download ng MIDI at pag-print/PDF sa player bar."
+      }
+    ]
+  }
+}

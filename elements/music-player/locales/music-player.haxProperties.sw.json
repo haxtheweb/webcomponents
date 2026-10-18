@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kionyeshi cha MIDI",
+    "description": "Cheza MIDI katika muktadha pamoja na taswira."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Chanzo",
+        "description": "URL ya faili ya kucheza."
+      },
+      {
+        "property": "visualizer",
+        "title": "Taswira",
+        "description": "Mtindo wa taswira wa faili ya muziki.",
+        "options": {
+          "staff": "Mistari ya noti",
+          "piano-roll": "Gombo la piano",
+          "waterfall": "Piano + maporomoko"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Ficha maporomoko",
+        "description": "Ficha noti za maporomoko katika taswira ya piano."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Summado",
+    "description": "Liis summado fudud oo lagu muujiyo bogga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Summado",
+        "description": "Liis summado ah oo hakad lagu kala saaray."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Midab Xoojin Toos ah",
+        "description": "Si toos ah u deji midabka xoojinta iyadoo lagu salaynayo calaamadda."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midab",
+        "description": "Midabka summadaha."
+      }
+    ]
+  }
+}

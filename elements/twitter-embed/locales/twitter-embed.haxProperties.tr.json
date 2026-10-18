@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) yerleştirme",
+    "description": "X'ten bir tweet'i bağlam içinde yerleştirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Tweet URL'si",
+        "description": "Yerleştirilecek tweet'in URL'si."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "X tweet'leri için açık veya koyu tema.",
+        "options": {
+          "light": "Açık",
+          "dark": "Koyu"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Tıklamada açılır pencereyi engelle",
+        "description": "Kullanıcıların tweet'i x.com'da açmasını engelle."
+      }
+    ]
+  }
+}

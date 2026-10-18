@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ta'ãnga ñe'ẽ jeguerupyre",
+    "description": "Ñe'ẽ jeguerupyre jehaipyrã porã ta'ãnga ikatúramo ndive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Ta'ãnga",
+        "description": "Embojoapy ta'ãnga jehechaukaháme."
+      },
+      {
+        "property": "name",
+        "title": "Téra pukukue",
+        "description": "Tapicha ome'ẽva jehechaukaha réra."
+      },
+      {
+        "property": "position",
+        "title": "Tenda'aty térã tembiapo réra",
+        "description": "Tapicha renda'aty térã tembiapo réra."
+      },
+      {
+        "slot": "",
+        "title": "Ñe'ẽ jeguerupyre",
+        "description": "Ñe'ẽ jeguerupyre jehechaukaha apohára mba'e."
+      }
+    ]
+  }
+}

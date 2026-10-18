@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "टैग / पिल",
+    "description": "वैकल्पिक एक्सेंट रंग, रद्द बटन या टॉगल के साथ एक कॉम्पैक्ट गोली-आकार का लेबल।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "लेबल",
+        "description": "पिल के अंदर दिखाया जाने वाला टेक्स्ट।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "पिल की पृष्ठभूमि के लिए SimpleColors एक्सेंट नाम।",
+        "options": {
+          "": "-- डिफ़ॉल्ट --",
+          "red": "लाल",
+          "pink": "गुलाबी",
+          "purple": "बैंगनी",
+          "deep-purple": "गहरा बैंगनी",
+          "indigo": "नील",
+          "blue": "नीला",
+          "light-blue": "हल्का नीला",
+          "cyan": "सियान",
+          "teal": "हरित-नील (टील)",
+          "green": "हरा",
+          "light-green": "हल्का हरा",
+          "lime": "नींबू हरा",
+          "yellow": "पीला",
+          "amber": "एम्बर",
+          "orange": "नारंगी",
+          "deep-orange": "गहरा नारंगी",
+          "brown": "भूरा",
+          "blue-grey": "नीला धूसर",
+          "grey": "धूसर"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "स्वचालित एक्सेंट रंग",
+        "description": "लेबल टेक्स्ट से एक्सेंट रंग स्वचालित रूप से निर्धारित करें।"
+      },
+      {
+        "property": "cancelButton",
+        "title": "रद्द बटन",
+        "description": "पिल के अंदर हटाएँ/रद्द करें आइकन बटन दिखाएँ।"
+      },
+      {
+        "property": "readonly",
+        "title": "केवल पढ़ने के लिए",
+        "description": "रद्द बटन छिपाएँ ताकि पिल केवल प्रदर्शन के लिए हो।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "टॉगल",
+        "description": "बटन क्लिक करने पर पिल को चालू/बंद टॉगल करें।"
+      },
+      {
+        "property": "toggled",
+        "title": "टॉगल चालू",
+        "description": "क्या पिल अभी टॉगल चालू है।"
+      },
+      {
+        "property": "toggledIcon",
+        "title": "टॉगल आइकन",
+        "description": "पिल टॉगल चालू होने पर दिखाया जाने वाला आइकन।"
+      },
+      {
+        "property": "disabled",
+        "title": "अक्षम",
+        "description": "पिल के साथ इंटरैक्शन अक्षम करें।"
+      }
+    ]
+  }
+}

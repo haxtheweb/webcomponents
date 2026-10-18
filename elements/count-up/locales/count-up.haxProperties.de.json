@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Hochzählen",
+    "description": "Eine Zahl animiert bis zu einem Zielwert hochzählen lassen, sobald sie in den sichtbaren Bereich scrollt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Endwert",
+        "description": "Die Zahl, bis zu der hochgezählt wird."
+      },
+      {
+        "property": "start",
+        "title": "Startwert",
+        "description": "Die Zahl, ab der hochgezählt wird."
+      },
+      {
+        "property": "duration",
+        "title": "Dauer",
+        "description": "Dauer der Zählanimation in Sekunden."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Präfixtext",
+        "description": "Text vor der Zahl (z. B. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Suffixtext",
+        "description": "Text nach der Zahl (z. B. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Präfix-Slot",
+        "description": "Optionaler Slot-Inhalt vor der Zahl."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffix-Slot",
+        "description": "Optionaler Slot-Inhalt nach der Zahl."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Dezimalstellen",
+        "description": "Anzahl der anzuzeigenden Dezimalstellen."
+      },
+      {
+        "property": "separator",
+        "title": "Tausendertrennzeichen",
+        "description": "Zeichen zur Trennung von Tausendergruppen."
+      },
+      {
+        "property": "decimal",
+        "title": "Dezimalzeichen",
+        "description": "Zeichen für das Dezimaltrennzeichen."
+      },
+      {
+        "property": "noeasing",
+        "title": "Keine Beschleunigungskurve",
+        "description": "Beschleunigungskurve deaktivieren, sodass linear gezählt wird."
+      }
+    ]
+  }
+}

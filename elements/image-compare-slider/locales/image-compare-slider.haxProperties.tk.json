@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Suratlary deňeşdirmek",
+    "description": "Deňeşdirmek üçin bir suraty beýlekisiniň üstünden süýşüriň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Ýokarky surat",
+        "description": "Aşaky suratyň üstünden süýşürilýän ýokarky surat."
+      },
+      {
+        "property": "topAlt",
+        "title": "Ýokarky suratyň alt teksti",
+        "description": "Elýeterlilik üçin hökmany alt tekst."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Aşaky surat",
+        "description": "Ýokarky suratyň aşagynda görkezilýän surat."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Aşaky suratyň alt teksti",
+        "description": "Elýeterlilik üçin hökmany alt tekst."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Özüňi alyp barşy",
+        "description": "Süpürmek tertibini (deslapky) ýa-da ýokarky suratyň aýdyňlyk tertibini saýlaň."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Süýşüriji zolagyň reňki."
+      },
+      {
+        "property": "dark",
+        "title": "Garaňky",
+        "description": "Süýşüriji zolagyň reňkini tersine öwür."
+      },
+      {
+        "property": "position",
+        "title": "Başlangyç ýagdaý",
+        "description": "0-dan 100-e çenli başlangyç ýagdaý."
+      }
+    ]
+  }
+}

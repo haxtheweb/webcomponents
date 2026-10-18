@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Reproductor de documentación de componentes web"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Ocultar ventana",
+        "description": "Ocultar la ventana de salida, útil cuando solo se usa la terminal"
+      }
+    ]
+  }
+}

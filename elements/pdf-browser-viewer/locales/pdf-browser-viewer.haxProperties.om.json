@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ilaalaa PDF Biraawzarii",
+    "description": "Faayilii PDF fuula keessatti qindaa'ina kaardii fi qabduu buufachuu filannoo wajjin galchi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Bakka faayilii PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Mataduree",
+        "description": "Barreeffama mata-duree kaardii."
+      },
+      {
+        "property": "card",
+        "title": "Qindaa'ina kaardii",
+        "description": "PDF kaardii qabduu buufachuu qabu keessatti agarsiisi."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Maqaa buufachuu",
+        "description": "Maqaa qabduu buufachuu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Ergaa hin deeggaramne",
+        "description": "Ergaa yeroo biraawzariin faayilota PDF agarsiisuu hin dandeenye."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Ergaa hidhoo hin deeggaramne",
+        "description": "Barreeffama hidhoo yeroo biraawzariin faayilota PDF agarsiisuu hin dandeenye."
+      },
+      {
+        "property": "width",
+        "title": "Bal'ina",
+        "description": "Bal'ina ilaalaa PDF."
+      },
+      {
+        "property": "height",
+        "title": "Dheerina",
+        "description": "Dheerina ilaalaa PDF."
+      }
+    ]
+  }
+}

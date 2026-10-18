@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris k'uchu",
+    "description": "Polaris k'uchuta rikuchiy: sutichaywan, akllanalla yanapaq qillqawan, akllanalla t'inkiwanpas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Ñawpaq qillqa",
+        "description": "K'uchupa hatun qillqan."
+      },
+      {
+        "property": "line2",
+        "title": "Iskay ñiqin qillqa",
+        "description": "Akllanalla yanapaq qillqa."
+      },
+      {
+        "property": "type",
+        "title": "K'uchu laya",
+        "description": "K'uchupa ñawpaqmanta churasqa rikukuq layan.",
+        "options": {
+          "1": "1 laya",
+          "2": "2 laya",
+          "3": "3 laya",
+          "4": "4 laya",
+          "5": "5 laya"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Qhipa rikch'a",
+        "description": "Rikch'ata atiq k'uchu layakunapaq qhipa rikch'apa URL-nin."
+      },
+      {
+        "property": "link",
+        "title": "T'inki",
+        "description": "K'uchu ruraypaq akllanalla chayana URL."
+      }
+    ]
+  }
+}

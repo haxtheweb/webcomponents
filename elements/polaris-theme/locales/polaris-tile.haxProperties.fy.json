@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris-tegel",
+    "description": "Toan in Polaris-tegel mei titel, opsjonele stipetekst en opsjonele keppeling."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Haadtekst",
+        "description": "Haadtekst fan de tegel."
+      },
+      {
+        "property": "line2",
+        "title": "Sekundêre tekst",
+        "description": "Opsjonele stipetekst."
+      },
+      {
+        "property": "type",
+        "title": "Tegelstyl",
+        "description": "Foarynstelde fisuele styl fan de tegel.",
+        "options": {
+          "1": "Styl 1",
+          "2": "Styl 2",
+          "3": "Styl 3",
+          "4": "Styl 4",
+          "5": "Styl 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Eftergrûnôfbylding",
+        "description": "URL fan de eftergrûnôfbylding foar tegelstilen dy't ôfbyldings stypje."
+      },
+      {
+        "property": "link",
+        "title": "Keppeling",
+        "description": "Opsjonele bestimmings-URL foar de tegelaksje."
+      }
+    ]
+  }
+}

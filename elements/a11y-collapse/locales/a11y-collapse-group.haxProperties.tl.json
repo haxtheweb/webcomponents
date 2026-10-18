@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grupo ng Expand Collapse",
+    "description": "Isang grupo ng mga elementong nae-expand at nako-collapse."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Isa lang ang i-expand",
+        "description": "Isang item lang ang maaaring i-expand."
+      },
+      {
+        "slot": "",
+        "title": "Mga Item na Nako-collapse",
+        "description": "Ang mga item na nako-collapse."
+      }
+    ]
+  }
+}

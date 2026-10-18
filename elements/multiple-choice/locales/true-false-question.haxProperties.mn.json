@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Үнэн / Худал асуулт",
+    "description": "Үнэн худал асуулт"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Асуулт",
+        "description": "Хэрэглэгчдийн хариулах асуулт."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Зөв хариулт"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Шалгалтын нэр",
+        "description": "xAPI-д суурилсан орчинд энэ зүйлийг танихад ашиглахаар дамжуулах шалгалтын нэр"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI визуелизатор",
+    "description": "Пуштајте MIDI у контексту уз визуелизацију."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Извор",
+        "description": "URL датотеке за пуштање."
+      },
+      {
+        "property": "visualizer",
+        "title": "Визуелизација",
+        "description": "Стил визуелизације музичке датотеке.",
+        "options": {
+          "staff": "Нотни систем",
+          "piano-roll": "Клавирска ролна",
+          "waterfall": "Клавир + водопад"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Сакриј водопад",
+        "description": "Сакриј ноте водопада у клавирској визуелизацији."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "ページの詳細",
+    "description": "CMSがページ作成に使える、ページ間の視覚的な区切りを定義します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "テーマと最初の見出しに表示されるタイトル。"
+      },
+      {
+        "property": "pageType",
+        "title": "種類",
+        "description": "ページの文脈を示す視覚的なラベル。",
+        "options": {
+          "": "-- なし --",
+          "content": "コンテンツ",
+          "assessment": "評価",
+          "quiz": "クイズ",
+          "submission": "提出",
+          "lesson": "レッスン",
+          "module": "モジュール",
+          "task": "タスク",
+          "activity": "アクティビティ",
+          "project": "プロジェクト",
+          "practice": "練習",
+          "unit": "単元",
+          "objectives": "学習目標",
+          "connection": "つながり",
+          "knowledge": "知っていましたか？",
+          "strategy": "学習方略",
+          "discuss": "話し合う",
+          "listen": "聞く",
+          "make": "作る",
+          "observe": "観察する",
+          "present": "発表する",
+          "reading": "読む",
+          "reflect": "振り返る",
+          "research": "調べる",
+          "watch": "見る",
+          "write": "書く"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "タグ",
+        "description": "カンマ区切りのタグのリスト。"
+      },
+      {
+        "property": "linkUrl",
+        "title": "リンクURL",
+        "description": "ページのコンテンツの代わりに表示するリダイレクトURL。"
+      },
+      {
+        "property": "linkTarget",
+        "title": "リンクのターゲット",
+        "description": "リンクを同じウィンドウまたは新しいウィンドウで開きます。",
+        "options": {
+          "_self": "同じウィンドウ",
+          "_blank": "新しいウィンドウ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "公開",
+        "description": "非公開のページはエンドユーザーには表示されません。"
+      },
+      {
+        "property": "locked",
+        "title": "ページをロック",
+        "description": "このページのすべての要素をロックまたはロック解除します。"
+      },
+      {
+        "property": "overridePathauto",
+        "title": "自動スラッグを上書き",
+        "description": "タイトルや親に基づくスラッグの自動更新を止めます。"
+      },
+      {
+        "property": "slug",
+        "title": "パス",
+        "description": "このページのURLスラッグ。"
+      },
+      {
+        "property": "image",
+        "title": "メディア",
+        "description": "ページを表すメディア。一部のテーマやビューで使われます。"
+      },
+      {
+        "property": "parent",
+        "title": "親",
+        "description": "親ページのパス。"
+      },
+      {
+        "property": "noderefs",
+        "title": "関連コンテンツ",
+        "description": "このページに関連するページ。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "説明",
+        "description": "コレクションや検索エンジン最適化に使われる説明。"
+      },
+      {
+        "property": "entityType",
+        "title": "エンティティの種類",
+        "description": "特に設定しない限りページになります。",
+        "options": {
+          "page": "ページ（既定）",
+          "taxonomy": "タクソノミー",
+          "taxonomyTerm": "タクソノミー用語",
+          "region": "リージョン"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "アイコン",
+        "description": "サイト内でこのページに関連付けられたアイコン。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "サイト内でこのページに関連付けられた色。"
+      },
+      {
+        "property": "hideInMenu",
+        "title": "メニューで非表示",
+        "description": "URLを残したままこのページをメニューから隠します。"
+      },
+      {
+        "property": "order",
+        "title": "順序",
+        "description": "同階層のページに対する順序。"
+      },
+      {
+        "property": "developerTheme",
+        "title": "ページテーマ",
+        "description": "このページだけテーマを上書きします。"
+      },
+      {
+        "property": "author",
+        "title": "著者",
+        "description": "このページを最後に変更した人のユーザー名。"
+      }
+    ]
+  }
+}

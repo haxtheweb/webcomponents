@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Akwati mai ninkewa",
+    "description": "Akwati ɗaya mai faɗaɗawa da ninkewa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Kanu",
+        "description": "Rubutun abin ninkewa."
+      },
+      {
+        "property": "expanded",
+        "title": "An faɗaɗa",
+        "description": "Faɗaɗa a matsayin tsoho."
+      },
+      {
+        "property": "headingButton",
+        "title": "Maɓallin Kanu",
+        "description": "Sa dukan kanun ya zama mai dannawa maimakon alamar kawai."
+      },
+      {
+        "property": "icon",
+        "title": "Alama",
+        "description": "Alamar maɓallin faɗaɗa/ninkewa."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Alama (idan an faɗaɗa)",
+        "description": "Alamar zaɓi don yanayin faɗaɗawa."
+      },
+      {
+        "slot": "",
+        "title": "Abun ciki",
+        "description": "Abun cikin abin ninkewa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Bayanin taimako",
+        "description": "Bayanin taimako na maɓallin faɗaɗa/ninkewa."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Bayanin taimako (idan an faɗaɗa)",
+        "description": "Bayanin taimako na maɓallin faɗaɗa/ninkewa idan an faɗaɗa."
+      }
+    ]
+  }
+}

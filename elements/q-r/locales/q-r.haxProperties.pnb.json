@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR کوڈ",
+    "description": "سمارٹ فون نال سکین کرن والا کوڈ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR ڈیٹا",
+        "description": "QR کوڈ لئی ڈیٹا دا سرچشمہ۔"
+      },
+      {
+        "property": "title",
+        "title": "متبادل عنوان",
+        "description": "QR کوڈ دے سرچشمے نال جڑیا متبادل عنوان۔"
+      },
+      {
+        "property": "modulesize",
+        "title": "سائز",
+        "description": "QR کوڈ دا سائز۔"
+      },
+      {
+        "property": "margin",
+        "title": "حاشیہ",
+        "description": "کوڈ دے دوالے ریپر۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "آؤٹ پٹ فارمیٹ",
+        "description": "آؤٹ پٹ دین دا فارمیٹ۔",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

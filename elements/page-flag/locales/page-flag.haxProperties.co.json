@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Segnale di pagina",
+    "description": "Nota editoriale per l'autori di a pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Culore d'accentu di u segnale di pagina."
+      },
+      {
+        "property": "label",
+        "title": "Etichetta",
+        "description": "Testu di l'etichetta di u segnale di pagina."
+      }
+    ]
+  }
+}

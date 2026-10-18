@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Shumeka amazwana e-Disqus ekhasini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Igama elifushane",
+        "description": "Igama elifushane lesayithi, elinquma umsingathi weskripthi se-Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "I-URL Yekhasi",
+        "description": "I-URL yekhasi uchungechunge lwamazwana olunamathiselwe kulo."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Isihlonzi sekhasi",
+        "description": "Isihlonzi esiyingqayizivele sochungechunge lwamazwana ekhasini."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Isihloko sekhasi",
+        "description": "Isihloko sekhasi uchungechunge lwamazwana olunamathiselwe kulo."
+      },
+      {
+        "property": "loadingText",
+        "title": "Umbhalo wokulayisha",
+        "description": "Umbhalo omenyezelwayo ngesikhathi amazwana elayisha."
+      },
+      {
+        "property": "lang",
+        "title": "Ulimi",
+        "description": "Ikhodi yolimi lwesixhumi esibonakalayo se-Disqus, isb. en."
+      }
+    ]
+  }
+}

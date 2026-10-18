@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Teilsen Polaris",
+    "description": "Dangos teilsen Polaris gyda theitl, testun ategol dewisol a dolen ddewisol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Prif destun",
+        "description": "Prif destun y deilsen."
+      },
+      {
+        "property": "line2",
+        "title": "Testun eilaidd",
+        "description": "Testun ategol dewisol."
+      },
+      {
+        "property": "type",
+        "title": "Arddull y deilsen",
+        "description": "Arddull weledol ragosodedig y deilsen.",
+        "options": {
+          "1": "Arddull 1",
+          "2": "Arddull 2",
+          "3": "Arddull 3",
+          "4": "Arddull 4",
+          "5": "Arddull 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Delwedd gefndir",
+        "description": "URL y ddelwedd gefndir a ddefnyddir gan arddulliau teils sy'n cefnogi delweddau."
+      },
+      {
+        "property": "link",
+        "title": "Dolen",
+        "description": "URL cyrchfan dewisol ar gyfer gweithred y deilsen."
+      }
+    ]
+  }
+}

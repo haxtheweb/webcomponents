@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) ایمبیڈ",
+    "description": "X سے ٹویٹ سیاق میں ایمبیڈ کریں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ٹویٹ URL",
+        "description": "ایمبیڈ کی جانے والی ٹویٹ کا URL۔"
+      },
+      {
+        "attribute": "data-theme",
+        "title": "تھیم",
+        "description": "X ٹویٹس کے لیے ہلکی یا گہری تھیم۔",
+        "options": {
+          "light": "ہلکا",
+          "dark": "گہرا"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "کلک پر پاپ اپ روکیں",
+        "description": "صارفین کو x.com پر ٹویٹ کھولنے سے روکیں۔"
+      }
+    ]
+  }
+}

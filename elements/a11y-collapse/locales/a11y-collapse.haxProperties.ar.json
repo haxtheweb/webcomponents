@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "حاوية قابلة للطي",
+    "description": "حاوية مفردة قابلة للتوسيع والطي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "العنوان",
+        "description": "نص عنوان العنصر القابل للطي."
+      },
+      {
+        "property": "expanded",
+        "title": "موسَّع",
+        "description": "موسَّع افتراضيًا."
+      },
+      {
+        "property": "headingButton",
+        "title": "زر العنوان",
+        "description": "جعل العنوان بالكامل قابلًا للنقر بدلًا من الأيقونة فقط."
+      },
+      {
+        "property": "icon",
+        "title": "الأيقونة",
+        "description": "أيقونة زر التبديل بين التوسيع والطي."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "الأيقونة (عند التوسيع)",
+        "description": "أيقونة اختيارية لحالة التوسيع."
+      },
+      {
+        "slot": "",
+        "title": "المحتوى",
+        "description": "محتوى العنصر القابل للطي."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "تلميح",
+        "description": "تلميح زر التبديل بين التوسيع والطي."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "تلميح (عند التوسيع)",
+        "description": "تلميح زر التوسيع والطي عندما يكون موسَّعًا."
+      }
+    ]
+  }
+}

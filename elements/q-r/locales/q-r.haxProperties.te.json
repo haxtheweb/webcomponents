@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR కోడ్",
+    "description": "స్మార్ట్‌ఫోన్ నుండి స్కాన్ చేయాల్సిన కోడ్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR డేటా",
+        "description": "QR కోడ్ కోసం డేటా మూలం."
+      },
+      {
+        "property": "title",
+        "title": "ప్రత్యామ్నాయ శీర్షిక",
+        "description": "QR కోడ్ మూలానికి లింక్ చేసిన ప్రత్యామ్నాయ శీర్షిక."
+      },
+      {
+        "property": "modulesize",
+        "title": "పరిమాణం",
+        "description": "QR కోడ్ పరిమాణం."
+      },
+      {
+        "property": "margin",
+        "title": "మార్జిన్",
+        "description": "కోడ్ చుట్టూ ఉన్న ఖాళీ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "అవుట్‌పుట్ ఫార్మాట్",
+        "description": "అవుట్‌పుట్ చేయాల్సిన ఫార్మాట్.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

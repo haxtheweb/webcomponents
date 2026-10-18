@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF உலாவி பார்வையாளர்",
+    "description": "விருப்ப அட்டைத் தளவமைப்பு மற்றும் பதிவிறக்கப் பொத்தானுடன் PDF கோப்பை உள்வரியாக உட்பொதிக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF கோப்பின் இருப்பிடம்."
+      },
+      {
+        "property": "heading",
+        "title": "தலைப்பு",
+        "description": "அட்டைத் தலைப்பு உரை."
+      },
+      {
+        "property": "card",
+        "title": "அட்டைத் தளவமைப்பு",
+        "description": "பதிவிறக்கப் பொத்தானுடன் PDF-ஐ ஒரு அட்டையில் காட்டவும்."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "பதிவிறக்க லேபிள்",
+        "description": "பதிவிறக்கப் பொத்தானுக்கான லேபிள்."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "ஆதரிக்கப்படாத செய்தி",
+        "description": "உலாவியால் PDF கோப்புகளைக் காட்ட முடியாதபோது வரும் செய்தி."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "ஆதரிக்கப்படாத இணைப்புச் செய்தி",
+        "description": "உலாவியால் PDF கோப்புகளைக் காட்ட முடியாதபோது வரும் இணைப்பு உரை."
+      },
+      {
+        "property": "width",
+        "title": "அகலம்",
+        "description": "PDF பார்வையாளரின் அகலம்."
+      },
+      {
+        "property": "height",
+        "title": "உயரம்",
+        "description": "PDF பார்வையாளரின் உயரம்."
+      }
+    ]
+  }
+}

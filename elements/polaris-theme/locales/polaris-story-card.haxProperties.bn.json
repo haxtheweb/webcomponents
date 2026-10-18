@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris গল্প কার্ড",
+    "description": "পটভূমির ছবি, স্তম্ভ লেবেল ও শিরোনাম টেক্সটসহ একটি Polaris গল্প কার্ড দেখান।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "পটভূমির ছবি",
+        "description": "কার্ডের পটভূমি হিসেবে দেখানো ছবির URL।"
+      },
+      {
+        "property": "backgroundSize",
+        "title": "পটভূমির আকার",
+        "description": "পটভূমির ছবি কীভাবে কার্ড পূরণ করে (CSS background-size)।",
+        "options": {
+          "cover": "আবৃত (cover)",
+          "contain": "ধারণ (contain)",
+          "auto": "স্বয়ংক্রিয় (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "পটভূমির সংযুক্তি",
+        "description": "স্ক্রল করার সময় পটভূমির ছবি কেমন আচরণ করে (CSS background-attachment)।",
+        "options": {
+          "scroll": "স্ক্রল (scroll)",
+          "fixed": "স্থির (fixed)",
+          "local": "স্থানীয় (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "স্তম্ভ লেবেল",
+        "description": "কার্ডের উপরে দেখানো বড় হাতের অক্ষরের সংক্ষিপ্ত লেবেল। লুকাতে খালি রাখুন।"
+      },
+      {
+        "property": "label",
+        "title": "কার্ডের টেক্সট",
+        "description": "নিচের প্যানেলে প্রদর্শিত প্রধান টেক্সট।"
+      },
+      {
+        "property": "link",
+        "title": "লিংক",
+        "description": "পুরো কার্ডকে ঘিরে রাখা ঐচ্ছিক গন্তব্য URL।"
+      }
+    ]
+  }
+}

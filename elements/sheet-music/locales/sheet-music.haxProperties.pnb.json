@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "سُراں دی شیٹ",
+    "description": "alphaTex یا MusicXML راہیں سُراں دی شیٹ، گٹار ٹیب تے سکور علامتاں وکھاندا تے چلاندا اے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex علامتاں",
+        "description": "سُراں دی شیٹ لئی ان لائن alphaTex مارک اپ۔ علامتاں لکھن لئی سدھا ترمیم کرو؛ ایہہ اک ٹیمپلیٹ وچ سانبھیا جاندا اے ایس لئی وتھاں محفوظ رہندیاں نیں۔"
+      },
+      {
+        "property": "source",
+        "title": "سکور فائل",
+        "description": "MusicXML (.xml/.musicxml/.mxl) یا Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) فائل اپ لوڈ کرو یا اوہدا لنک دیو۔ مقرر ہوݨ تے ان لائن alphaTex اُتے حاوی اے۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "آڈیو چلاؤ",
+        "description": "ڈیفالٹ طور تے چالو - اندرلے سنتھیسائزر راہیں سُراں دی شیٹ سنو۔ صرف ویکھݨ (بغیر آواز) والے موڈ لئی بند کرو۔"
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "ڈسپلے آپشن وکھاؤ",
+        "description": "پلیئر بار اُتے زوم، کھچاؤ تے ترتیب دے بٹن وکھاؤ۔"
+      },
+      {
+        "property": "showExport",
+        "title": "ایکسپورٹ بٹن وکھاؤ",
+        "description": "پلیئر بار اُتے MIDI ڈاؤن لوڈ تے پرنٹ/PDF بٹن وکھاؤ۔"
+      }
+    ]
+  }
+}

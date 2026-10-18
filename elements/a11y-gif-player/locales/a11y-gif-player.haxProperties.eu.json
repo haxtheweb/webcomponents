@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Egin GIF animatuak irisgarri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF animatua",
+        "description": "GIF animatuaren URLa."
+      },
+      {
+        "property": "alt",
+        "title": "Testu alternatiboa",
+        "description": "Irudiaren testu alternatiboa."
+      },
+      {
+        "property": "longdesc",
+        "title": "Deskribapen luzea",
+        "description": "GIFaren deskribapen luzea, irisgarritasunerako."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Irudi geldia",
+        "description": "GIFaren irudi geldiaren bertsioaren URLa."
+      }
+    ]
+  }
+}

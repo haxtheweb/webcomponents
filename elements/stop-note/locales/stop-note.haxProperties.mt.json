@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Nota ta' Waqfien",
+    "description": "Messaġġ biex iwissi lill-qarrejja dwar struzzjonijiet speċifiċi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Daħħal titlu għan-nota ta' waqfien."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Daħħal URL estern."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "L-issettjar tal-istatus ibiddel il-kuluri u l-ikoni biex jaqblu",
+        "options": {
+          "stop": "Waqfien",
+          "warning": "Twissija",
+          "success": "Konferma",
+          "info": "Avviż"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Test tan-nota",
+        "description": "Test għan-nota ta' waqfien."
+      }
+    ]
+  }
+}

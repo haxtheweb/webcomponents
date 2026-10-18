@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "پراڈکٹ اک نظر وچ",
+    "description": "پراڈکٹ دا جھٹ پٹ جائزہ بلاک۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "تصور دی نمائندگی کرن والا آئیکن۔"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "اک نظر وچ مکھ تصور۔"
+      },
+      {
+        "property": "subtitle",
+        "title": "ذیلی عنوان",
+        "description": "ہور تفصیل۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "آئیکن دا نمایاں رنگ۔"
+      }
+    ]
+  }
+}

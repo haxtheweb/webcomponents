@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "活动框",
+    "description": "带样式的小标题块。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "图标",
+        "description": "显示在活动框旁的图标。"
+      },
+      {
+        "property": "tag",
+        "title": "活动框标签",
+        "description": "显示在活动框中的标签。"
+      },
+      {
+        "property": "nocolourize",
+        "title": "不着色",
+        "description": "防止对图标应用颜色。"
+      }
+    ]
+  }
+}

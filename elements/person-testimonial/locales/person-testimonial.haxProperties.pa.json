@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ਚਿੱਤਰ ਬਲੌਕ ਹਵਾਲਾ",
+    "description": "ਵਿਕਲਪਿਕ ਚਿੱਤਰ ਨਾਲ ਸਜਾਇਆ ਹਵਾਲਾ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ਚਿੱਤਰ",
+        "description": "ਪ੍ਰਸੰਸਾ-ਪੱਤਰ ਵਿੱਚ ਚਿੱਤਰ ਜੋੜੋ।"
+      },
+      {
+        "property": "name",
+        "title": "ਪੂਰਾ ਨਾਮ",
+        "description": "ਪ੍ਰਸੰਸਾ-ਪੱਤਰ ਦੇਣ ਵਾਲੇ ਵਿਅਕਤੀ ਦਾ ਨਾਮ।"
+      },
+      {
+        "property": "position",
+        "title": "ਅਹੁਦਾ ਜਾਂ ਨੌਕਰੀ ਦਾ ਸਿਰਲੇਖ",
+        "description": "ਵਿਅਕਤੀ ਦਾ ਅਹੁਦਾ ਜਾਂ ਨੌਕਰੀ ਦਾ ਸਿਰਲੇਖ।"
+      },
+      {
+        "slot": "",
+        "title": "ਹਵਾਲਾ",
+        "description": "ਪ੍ਰਸੰਸਾ-ਪੱਤਰ ਲੇਖਕ ਦਾ ਹਵਾਲਾ।"
+      }
+    ]
+  }
+}

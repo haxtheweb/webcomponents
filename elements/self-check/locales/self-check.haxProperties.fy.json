@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Selstoets",
+    "description": "Brûkers kinne in selstoets dwaan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Ofbylding",
+        "description": "Ofbylding foar de selstoets."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel fan de selstoets."
+      },
+      {
+        "property": "alt",
+        "title": "Alternative tekst",
+        "description": "Alt-tekst foar de ôfbylding."
+      },
+      {
+        "slot": "question",
+        "title": "Fraach"
+      },
+      {
+        "slot": "",
+        "title": "Antwurd"
+      },
+      {
+        "property": "accentColor",
+        "title": "Temakleur",
+        "description": "Kies in temakleur út it ûntwerpsysteem.",
+        "options": {
+          "primary": "Primêr",
+          "accent": "Aksint",
+          "success": "Sukses",
+          "warning": "Warskôging",
+          "error": "Flater",
+          "info": "Ynfo"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leardoel",
+        "description": "Ferwizing nei it leardoel, útjûn as oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Beoardielet",
+        "description": "Ferwizing nei de aktiviteit, útjûn as oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Keppeling 'mear'",
+        "description": "Keppeling nei ekstra ynformaasje."
+      }
+    ]
+  }
+}

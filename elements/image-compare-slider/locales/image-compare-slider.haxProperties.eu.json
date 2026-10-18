@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Irudi konparazioa",
+    "description": "Irristatu irudi bat beste baten gainetik konparatzeko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Goiko irudia",
+        "description": "Beheko irudiaren gainetik irristatzeko goiko irudia."
+      },
+      {
+        "property": "topAlt",
+        "title": "Goiko irudiaren alt testua",
+        "description": "Irisgarritasunerako beharrezko alt testua."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Beheko irudia",
+        "description": "Goiko irudiaren azpian erakusten den beheko irudia."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Beheko irudiaren alt testua",
+        "description": "Irisgarritasunerako beharrezko alt testua."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Portaera",
+        "description": "Aukeratu ezabatze modua (lehenetsia) edo goiko irudiaren opakotasun modua."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Irristatze barraren kolorea."
+      },
+      {
+        "property": "dark",
+        "title": "Iluna",
+        "description": "Alderantzikatu irristatze barraren kolorea."
+      },
+      {
+        "property": "position",
+        "title": "Hasierako posizioa",
+        "description": "Hasierako posizioa, 0tik 100era."
+      }
+    ]
+  }
+}

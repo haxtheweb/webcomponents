@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Síðuparti",
+    "description": "Partakassi til síðuinnihald og skermbygd sniði."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Sniðgeving",
+        "description": "Fyrisett snið, sum dagførir skyldar stillingar."
+      },
+      {
+        "property": "image",
+        "title": "Mynd",
+        "description": "Bakgrundsmiðil til partið."
+      },
+      {
+        "property": "bg",
+        "title": "Bakgrundslitur",
+        "description": "Bakgrundslitur, tá eingin mynd er ásett."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Rulliknøttur",
+        "description": "Vís ein knøtt, sum rullar til næsta parti."
+      },
+      {
+        "property": "fold",
+        "title": "Vís fald",
+        "description": "Vís eitt sjónligt fald niðast í partinum."
+      },
+      {
+        "property": "full",
+        "title": "Fullskermsstødd",
+        "description": "Fyll hæddina á skerminum hjá áskoðaranum."
+      },
+      {
+        "property": "filter",
+        "title": "Nýt filtur",
+        "description": "Nýt eitt sjónligt filtur á bakgrundsmyndina."
+      },
+      {
+        "slot": "",
+        "title": "Innihald",
+        "description": "Innihald í partinum."
+      },
+      {
+        "slot": "entice",
+        "title": "Lokkan",
+        "description": "Valfrítt lokkandi innihald."
+      },
+      {
+        "slot": "buttons",
+        "title": "Knøttar",
+        "description": "Knøttabólkur, sum verður vístur undir tekstinum."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Akkertekstur",
+        "description": "Akkerheiti, sum verður víst í leiðsluni."
+      }
+    ]
+  }
+}

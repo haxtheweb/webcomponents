@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "超棒爆炸",
+    "description": "带可选音效的交互式爆炸动画。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "大小",
+        "description": "设置爆炸大小。",
+        "options": {
+          "tiny": "极小",
+          "small": "小",
+          "medium": "中",
+          "large": "大",
+          "epic": "史诗级"
+        }
+      },
+      {
+        "property": "color",
+        "title": "颜色",
+        "description": "设置爆炸颜色主题。",
+        "options": {
+          "": "默认",
+          "red": "红色",
+          "blue": "蓝色",
+          "purple": "紫色",
+          "orange": "橙色",
+          "yellow": "黄色"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "音效",
+        "description": "启用音效。"
+      },
+      {
+        "property": "resetSound",
+        "title": "重置声音",
+        "description": "每次都从头开始播放声音。"
+      },
+      {
+        "property": "image",
+        "title": "自定义图像",
+        "description": "自定义爆炸图像的可选 URL。"
+      },
+      {
+        "property": "sound",
+        "title": "自定义声音",
+        "description": "自定义音效的可选 URL。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "已禁用",
+        "description": "禁用所有交互。"
+      }
+    ]
+  }
+}

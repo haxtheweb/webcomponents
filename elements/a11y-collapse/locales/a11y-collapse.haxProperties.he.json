@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "מכל מתכווץ",
+    "description": "מכל יחיד שניתן להרחיב ולכווץ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "כותרת",
+        "description": "טקסט עבור הרכיב המתכווץ."
+      },
+      {
+        "property": "expanded",
+        "title": "מורחב",
+        "description": "מורחב כברירת מחדל."
+      },
+      {
+        "property": "headingButton",
+        "title": "כפתור כותרת",
+        "description": "הפיכת הכותרת כולה ללחיצה במקום הסמל בלבד."
+      },
+      {
+        "property": "icon",
+        "title": "סמל",
+        "description": "סמל עבור כפתור ההרחבה/הכיווץ."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "סמל (במצב מורחב)",
+        "description": "סמל אופציונלי למצב המורחב של הכפתור."
+      },
+      {
+        "slot": "",
+        "title": "תוכן",
+        "description": "תוכן עבור הרכיב המתכווץ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "תיאור כלי",
+        "description": "תיאור כלי עבור כפתור ההרחבה/הכיווץ."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "תיאור כלי (במצב מורחב)",
+        "description": "תיאור כלי עבור כפתור ההרחבה/הכיווץ במצב מורחב."
+      }
+    ]
+  }
+}

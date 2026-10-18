@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Oldal adatai",
+    "description": "Vizuális elválasztás az oldalak között, amelyet a CMS-ek oldalak létrehozására használhatnak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "A témában és első címsorként megjelenő cím."
+      },
+      {
+        "property": "pageType",
+        "title": "Típus",
+        "description": "Az oldal kontextusát jelző vizuális címke.",
+        "options": {
+          "": "-- nincs --",
+          "content": "Tartalom",
+          "assessment": "Értékelés",
+          "quiz": "Kvíz",
+          "submission": "Beadandó",
+          "lesson": "Lecke",
+          "module": "Modul",
+          "task": "Feladat",
+          "activity": "Tevékenység",
+          "project": "Projekt",
+          "practice": "Gyakorlás",
+          "unit": "Egység",
+          "objectives": "Tanulási célok",
+          "connection": "Kapcsolódás",
+          "knowledge": "Tudta?",
+          "strategy": "Tanulási stratégia",
+          "discuss": "Beszéljétek meg",
+          "listen": "Hallgasd meg",
+          "make": "Alkoss",
+          "observe": "Figyeld meg",
+          "present": "Mutasd be",
+          "reading": "Olvasás",
+          "reflect": "Reflektálj",
+          "research": "Kutatás",
+          "watch": "Nézd meg",
+          "write": "Írj"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Címkék",
+        "description": "Címkék vesszővel elválasztott listája."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Hivatkozás URL-je",
+        "description": "Az oldal tartalma helyett megjelenő átirányítási URL."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Hivatkozás célja",
+        "description": "Hivatkozások megnyitása ugyanabban vagy új ablakban.",
+        "options": {
+          "_self": "Ugyanaz az ablak",
+          "_blank": "Új ablak"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Közzétéve",
+        "description": "A nem közzétett oldalak a végfelhasználók elől rejtve vannak."
+      },
+      {
+        "property": "locked",
+        "title": "Oldal zárolása",
+        "description": "Az oldal összes elemének zárolása vagy feloldása."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Automatikus slug felülírása",
+        "description": "A slug védelme a cím vagy a szülőoldal alapján történő automatikus frissítésektől."
+      },
+      {
+        "property": "slug",
+        "title": "Útvonal",
+        "description": "Az oldal URL-slugja."
+      },
+      {
+        "property": "image",
+        "title": "Média",
+        "description": "Az oldalt jelképező média, egyes témákban és nézetekben használatos."
+      },
+      {
+        "property": "parent",
+        "title": "Szülőoldal",
+        "description": "A szülőoldal útvonala."
+      },
+      {
+        "property": "noderefs",
+        "title": "Kapcsolódó tartalom",
+        "description": "Az oldalhoz kapcsolódó oldalak."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Leírás",
+        "description": "A gyűjteményekben és a keresőoptimalizáláshoz használt leírás."
+      },
+      {
+        "property": "entityType",
+        "title": "Entitástípus",
+        "description": "Alapértelmezés szerint oldal, hacsak másként nincs beállítva.",
+        "options": {
+          "page": "Oldal (alapértelmezett)",
+          "taxonomy": "Taxonómia",
+          "taxonomyTerm": "Taxonómiai kifejezés",
+          "region": "Régió"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Az oldalhoz a webhelyen társított ikon."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "Az oldalhoz a webhelyen társított szín."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Elrejtés a menüben",
+        "description": "Az oldal elrejtése a menükből, az URL megtartásával."
+      },
+      {
+        "property": "order",
+        "title": "Sorrend",
+        "description": "Sorrend a testvéroldalakhoz képest."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Oldal témája",
+        "description": "A téma felülírása csak ennél az oldalnál."
+      },
+      {
+        "property": "author",
+        "title": "Szerző",
+        "description": "Az oldalt utoljára módosító személy felhasználóneve."
+      }
+    ]
+  }
+}

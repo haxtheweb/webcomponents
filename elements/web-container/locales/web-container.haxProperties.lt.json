@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS konteineris"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Slėpti redaktorių",
+        "description": "Slėpti failų redagavimo sąsają."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Slėpti terminalą",
+        "description": "Slėpti terminalą automatiškai vykdomoms programoms."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Slėpti langą",
+        "description": "Slėpti išvesties langą, kai naudojamas tik terminalas."
+      },
+      {
+        "slot": "",
+        "title": "Komandos",
+        "description": "Komandos (po vieną eilutėje), vykdomos prieš įkeliant."
+      }
+    ]
+  }
+}

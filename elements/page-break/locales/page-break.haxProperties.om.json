@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Bal'ina fuulaa",
+    "description": "Qoodinsa mul'ataa fuulota gidduu kan CMS fuula uumuuf fayyadaman murteessi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mata-duree",
+        "description": "Mata-duree dhiyeessa fi mata-duree jalqabaa keessatti mul'atu."
+      },
+      {
+        "property": "pageType",
+        "title": "Gosa",
+        "description": "Maqaa haala fuulaa mul'ataa.",
+        "options": {
+          "": "-- homaa --",
+          "content": "Qabiyyee",
+          "assessment": "Madaallii",
+          "quiz": "Qormaata gabaabaa",
+          "submission": "Galchuu",
+          "lesson": "Barnoota",
+          "module": "Moojuula",
+          "task": "Hojii",
+          "activity": "Sochii",
+          "project": "Pirojektii",
+          "practice": "Shaakala",
+          "unit": "Boqonnaa",
+          "objectives": "Kaayyoowwan Barnootaa",
+          "connection": "Walqunnamtii",
+          "knowledge": "Beektaa?",
+          "strategy": "Tooftaa Barumsaa",
+          "discuss": "Mari'adhu",
+          "listen": "Dhaggeeffadhu",
+          "make": "Hojjedhu",
+          "observe": "Hordofi",
+          "present": "Dhiyeessi",
+          "reading": "Dubbisuu",
+          "reflect": "Xiinxali",
+          "research": "Qoradhu",
+          "watch": "Daawwadhu",
+          "write": "Barreessi"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Mallattoolee",
+        "description": "Tarree mallattoolee qooduu (,) n addaan baafaman."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL Hidhoo",
+        "description": "URL qajeelchaa bakka qabiyyee fuulaa mul'atu."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Bakka Hidhoon Banamu",
+        "description": "Hidhoowwan foddaa wal fakkaataa ykn foddaa haaraa keessatti bani.",
+        "options": {
+          "_self": "Foddaa wal fakkaataa",
+          "_blank": "Foddaa haaraa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Kan maxxanfame",
+        "description": "Fuulonni hin maxxanfamne fayyadamtoota irraa dhokatu."
+      },
+      {
+        "property": "locked",
+        "title": "Fuula cufi",
+        "description": "Wantoota fuula kana irra jiran hunda cufi ykn bani."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Slug ofumaan uumamu bakka buusi",
+        "description": "Slug mata-duree ykn maatii irratti hundaa'uun ofumaan akka hin haaromfamne cufi."
+      },
+      {
+        "property": "slug",
+        "title": "Karaa",
+        "description": "Slug URL fuula kanaa."
+      },
+      {
+        "property": "image",
+        "title": "Miidiyaa",
+        "description": "Miidiyaa fuula bakka bu'u, dhiyeessa fi mul'ata tokko tokko keessatti fayyadamu."
+      },
+      {
+        "property": "parent",
+        "title": "Maatii",
+        "description": "Karaa fuula maatii."
+      },
+      {
+        "property": "noderefs",
+        "title": "Qabiyyee walqabatu",
+        "description": "Fuulota fuula kana wajjin walqabatan."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Ibsa",
+        "description": "Ibsa kuusaa fi fooyyessa motora barbaachaa (SEO) keessatti fayyadamu."
+      },
+      {
+        "property": "entityType",
+        "title": "Gosa Qaamaa",
+        "description": "Yoo kan biraa hin murteeffamne durtiin fuula.",
+        "options": {
+          "page": "Fuula (durtii)",
+          "taxonomy": "Ramaddii",
+          "taxonomyTerm": "Jecha Ramaddii",
+          "region": "Naannoo"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Mallattoo",
+        "description": "Mallattoo fuula kana wajjin marsariitii keessatti walqabatu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu calaqqee",
+        "description": "Halluu fuula kana wajjin marsariitii keessatti walqabatu."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Baafata keessatti dhoksi",
+        "description": "URL isaa osoo eegduu fuula kana baafata irraa dhoksi."
+      },
+      {
+        "property": "order",
+        "title": "Tartiiba",
+        "description": "Tartiiba fuulota obboleessa wajjin walbira qabamee."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Dhiyeessa fuulaa",
+        "description": "Fuula kana qofaaf dhiyeessa bakka buusi."
+      },
+      {
+        "property": "author",
+        "title": "Barreessaa",
+        "description": "Maqaa fayyadamaa nama dhumaa fuula kana jijjiiree."
+      }
+    ]
+  }
+}

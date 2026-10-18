@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Flag ng pahina",
+    "description": "Editoryal na tala para sa mga may-akda ng pahina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Accent na Kulay",
+        "description": "Accent na kulay para sa flag ng pahina."
+      },
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Teksto ng label para sa flag ng pahina."
+      }
+    ]
+  }
+}

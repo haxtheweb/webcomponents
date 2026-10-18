@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Taispeáin cnaipe glao chun gnímh Polaris le téama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Téacs an chnaipe",
+        "description": "Téacs a thaispeántar sa chnaipe glao chun gnímh."
+      },
+      {
+        "property": "link",
+        "title": "Nasc",
+        "description": "URL cinn scríbe don chnaipe."
+      },
+      {
+        "property": "type",
+        "title": "Leagan",
+        "description": "Leagan stíle amhairc.",
+        "options": {
+          "primary": "Príomha",
+          "tinted": "Tinte",
+          "light": "Éadrom"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Stíl imlíne",
+        "description": "Cumasaigh an chóireáil imlíne."
+      },
+      {
+        "property": "filled",
+        "title": "Stíl líonta",
+        "description": "Cumasaigh an chóireáil líonta."
+      }
+    ]
+  }
+}

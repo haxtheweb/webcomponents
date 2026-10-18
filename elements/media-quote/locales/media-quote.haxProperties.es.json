@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Cita multimedia",
+    "description": "Imagen con una cita, la referencia y un pie de foto opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Cita",
+        "description": "Texto de la cita."
+      },
+      {
+        "slot": "author",
+        "title": "Autor",
+        "description": "Autor de la cita."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Detalles del autor",
+        "description": "Detalles del autor."
+      },
+      {
+        "slot": "caption",
+        "title": "Pie de foto",
+        "description": "Pie de la imagen."
+      },
+      {
+        "property": "src",
+        "title": "Origen de la imagen",
+        "description": "Archivo de imagen usado para la cita multimedia."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo",
+        "description": "Texto alternativo de la imagen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Color de acento de la tarjeta."
+      }
+    ]
+  }
+}

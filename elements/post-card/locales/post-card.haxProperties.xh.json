@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Ikhadi leposi",
+    "description": "Umxholo wemidiya odlalisayo owenzelwe ukujongeka njengekhadi leposi lokwenyani elivela kwenye indawo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Ku",
+        "description": "Liya kubani?"
+      },
+      {
+        "property": "from",
+        "title": "Ukusuka ku",
+        "description": "Ungubani?"
+      },
+      {
+        "property": "message",
+        "title": "Umyalezo",
+        "description": "Ufuna ukuthini?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Litywinwe e",
+        "description": "Eli khadi lithunyelwe uphi?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Umthombo weFoto ePhambili",
+        "description": "Ifoto yakho iphi?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Umthombo weFoto yeSitampu",
+        "description": "Ifoto yakho iphi?"
+      }
+    ]
+  }
+}

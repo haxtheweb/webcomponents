@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Block quote",
+    "description": "Naka-istilong block ng sipi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Sipi",
+        "description": "Teksto ng sipi."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternatibong teksto para sa larawan."
+      },
+      {
+        "property": "image",
+        "title": "Larawan",
+        "description": "Larawang ipinapakita kasama ng sipi."
+      }
+    ]
+  }
+}

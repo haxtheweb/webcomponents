@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "پوسټ کارت",
+    "description": "یوه ټوکیزه رسنیزه ټوټه چې د کوم ځای څخه د رښتیني پوسټ کارت په څېر ښکاري"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "ته",
+        "description": "دا چا ته ځي؟"
+      },
+      {
+        "property": "from",
+        "title": "له",
+        "description": "تاسو څوک یاست؟"
+      },
+      {
+        "property": "message",
+        "title": "پیغام",
+        "description": "څه ویل غواړئ؟"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "د پوسټ مهر ځای",
+        "description": "دا کارت له کوم ځای څخه لېږل شوی؟"
+      },
+      {
+        "property": "photoSrc",
+        "title": "د اصلي عکس سرچینه",
+        "description": "ستاسو عکس چېرته دی؟"
+      },
+      {
+        "property": "stampSrc",
+        "title": "د ټکټ عکس سرچینه",
+        "description": "ستاسو عکس چېرته دی؟"
+      }
+    ]
+  }
+}

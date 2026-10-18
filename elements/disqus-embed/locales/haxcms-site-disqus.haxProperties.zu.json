@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Amazwana e-Disqus",
+    "description": "Ukuhlanganiswa nensiza yewebhu yamazwana ye-Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Igama elifushane",
+        "description": "Igama elifushane lesayithi ku-Disqus"
+      }
+    ]
+  }
+}

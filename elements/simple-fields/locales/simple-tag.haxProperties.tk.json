@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Bellik / Tabletka",
+    "description": "Goşmaça aksent reňkli, ýatyrmak düwmeli ýa-da açyp-ýapyjyly ykjam tabletka görnüşli belgi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Belgi",
+        "description": "Tabletkanyň içinde görkezilýän tekst."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Tabletkanyň fony üçin SimpleColors aksent ady.",
+        "options": {
+          "": "-- deslapky --",
+          "red": "Gyzyl",
+          "pink": "Gülgüne",
+          "purple": "Melewşe",
+          "deep-purple": "Goýy melewşe",
+          "indigo": "Indigo",
+          "blue": "Gök",
+          "light-blue": "Açyk gök",
+          "cyan": "Howa reňki",
+          "teal": "Goýy ýaşyl-gök",
+          "green": "Ýaşyl",
+          "light-green": "Açyk ýaşyl",
+          "lime": "Laým",
+          "yellow": "Sary",
+          "amber": "Kähribar",
+          "orange": "Mämişi",
+          "deep-orange": "Goýy mämişi",
+          "brown": "Goňur",
+          "blue-grey": "Gök-çal",
+          "grey": "Çal"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Awtomatik aksent reňki",
+        "description": "Aksent reňkini belginiň tekstinden awtomatik kesgitle."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Ýatyrmak düwmesi",
+        "description": "Tabletkanyň içinde aýyrmak/ýatyrmak nyşan düwmesini görkez."
+      },
+      {
+        "property": "readonly",
+        "title": "Diňe okamak üçin",
+        "description": "Tabletka diňe görkezmek üçin bolar ýaly ýatyrmak düwmesini gizle."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Açyp-ýapýar",
+        "description": "Düwmä basylanda tabletkany açyp-ýapýan et."
+      },
+      {
+        "property": "toggled",
+        "title": "Açyk ýagdaýda",
+        "description": "Tabletkanyň häzirki wagtda açykdygy."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Açyk ýagdaýyň nyşany",
+        "description": "Tabletka açyk wagty görkezilýän nyşan."
+      },
+      {
+        "property": "disabled",
+        "title": "Öçürilen",
+        "description": "Tabletka bilen täsirleşmegi öçür."
+      }
+    ]
+  }
+}

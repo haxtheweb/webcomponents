@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Visor de PDF do navegador",
+    "description": "Incrusta un ficheiro PDF en liña cun deseño de tarxeta opcional e un botón de descarga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL do PDF",
+        "description": "Localización do ficheiro PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Título",
+        "description": "Texto do título da tarxeta."
+      },
+      {
+        "property": "card",
+        "title": "Deseño de tarxeta",
+        "description": "Mostrar o PDF nunha tarxeta cun botón de descarga."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Etiqueta de descarga",
+        "description": "Etiqueta para o botón de descarga."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mensaxe de non compatible",
+        "description": "Mensaxe cando o navegador non pode mostrar ficheiros PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mensaxe da ligazón de non compatible",
+        "description": "Texto da ligazón cando o navegador non pode mostrar ficheiros PDF."
+      },
+      {
+        "property": "width",
+        "title": "Largura",
+        "description": "Largura do visor de PDF."
+      },
+      {
+        "property": "height",
+        "title": "Altura",
+        "description": "Altura do visor de PDF."
+      }
+    ]
+  }
+}

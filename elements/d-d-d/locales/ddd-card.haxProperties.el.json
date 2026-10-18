@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Κάρτα",
+    "description": "Στοιχείο κάρτας μορφοποιημένο με το σύστημα σχεδίασης DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Εικόνα",
+        "description": "Προαιρετική εικόνα."
+      },
+      {
+        "property": "alt",
+        "title": "Εναλλακτικό κείμενο εικόνας",
+        "description": "Εναλλακτικό κείμενο που περιγράφει την εικόνα."
+      },
+      {
+        "property": "title",
+        "title": "Τίτλος",
+        "description": "Τίτλος κάρτας."
+      },
+      {
+        "slot": "",
+        "title": "Περιεχόμενο",
+        "description": "Περιοχή περιεχομένου κάρτας."
+      },
+      {
+        "property": "href",
+        "title": "Σύνδεσμος",
+        "description": "URL συνδέσμου κουμπιού."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Ετικέτα",
+        "description": "Ετικέτα κουμπιού."
+      },
+      {
+        "property": "noArrow",
+        "title": "Χωρίς βέλος",
+        "description": "Απόκρυψη του βέλους του κουμπιού."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Σύνδεσμος: στόχος",
+        "description": "Πού θα ανοίξει ο σύνδεσμος.",
+        "options": {
+          "": "Ίδιο παράθυρο",
+          "_blank": "Νέο παράθυρο - _blank",
+          "_top": "Ανώτατο παράθυρο - _top",
+          "_parent": "Γονικό παράθυρο - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Σύνδεσμος: rel",
+        "description": "Σχέση μεταξύ του συνδεδεμένου πόρου και του τρέχοντος εγγράφου."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Сөлөкөт",
+    "description": "Толук сөлөкөт китепканасынан сөлөкөт."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Сөлөкөт",
+        "description": "Көрсөтүлө турган сөлөкөт."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Сөлөкөттүн акцент түсү."
+      },
+      {
+        "property": "dark",
+        "title": "Караңгы",
+        "description": "Караңгы режимди колдонуу (тескери түстөр топтому)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Отображение тематической кнопки призыва к действию Polaris."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Текст кнопки",
+        "description": "Текст кнопки призыва к действию."
+      },
+      {
+        "property": "link",
+        "title": "Ссылка",
+        "description": "URL назначения кнопки."
+      },
+      {
+        "property": "type",
+        "title": "Вариант",
+        "description": "Вариант визуального стиля.",
+        "options": {
+          "primary": "Основной",
+          "tinted": "Тонированный",
+          "light": "Светлый"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Контурный стиль",
+        "description": "Включить контурное оформление."
+      },
+      {
+        "property": "filled",
+        "title": "Заливной стиль",
+        "description": "Включить оформление с заливкой."
+      }
+    ]
+  }
+}

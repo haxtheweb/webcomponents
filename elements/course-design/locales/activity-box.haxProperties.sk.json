@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Box aktivity",
+    "description": "Malý štylizovaný blok nadpisu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona zobrazená pri boxe aktivity."
+      },
+      {
+        "property": "tag",
+        "title": "Značka boxu aktivity",
+        "description": "Značka zobrazená v boxe aktivity."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Bez zafarbenia",
+        "description": "Zabrániť použitiu farieb na ikonu."
+      }
+    ]
+  }
+}

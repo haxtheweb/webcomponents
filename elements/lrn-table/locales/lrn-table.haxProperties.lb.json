@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV-Tabell",
+    "description": "Generéiert eng Tabell aus engem CSV-Fichier, egal wou en ass."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Quell",
+        "description": "URL fir dësen CSV-Fichier."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel fir déi generéiert Tabell."
+      },
+      {
+        "property": "description",
+        "title": "Beschreiwung",
+        "description": "Méi detailléiert Beschreiwung fir eng besser Accessibilitéit vun den Tabellendaten."
+      }
+    ]
+  }
+}

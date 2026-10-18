@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity प्लेअर",
+    "description": "Unity WebGL प्लेअर."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "लक्ष्य",
+        "description": "गेम बिल्डचा पथ."
+      },
+      {
+        "property": "compression",
+        "title": "संक्षेपण पद्धत",
+        "description": "गेम मालमत्तांसाठी संक्षेपण फाइल विस्तार."
+      },
+      {
+        "property": "streamingurl",
+        "title": "स्ट्रीमिंग URL",
+        "description": "स्ट्रीमिंग मालमत्तांची URL."
+      },
+      {
+        "property": "companyname",
+        "title": "कंपनीचे नाव",
+        "description": "कंपनीचे नाव."
+      },
+      {
+        "property": "productname",
+        "title": "उत्पादनाचे नाव",
+        "description": "गेमचे शीर्षक."
+      },
+      {
+        "property": "productversion",
+        "title": "उत्पादन आवृत्ती",
+        "description": "प्रकाशन आवृत्ती."
+      },
+      {
+        "property": "width",
+        "title": "कॅनव्हास रुंदी",
+        "description": "कॅनव्हास CSS रुंदी (उदाहरणार्थ px किंवा em)."
+      },
+      {
+        "property": "height",
+        "title": "कॅनव्हास उंची",
+        "description": "कॅनव्हास CSS उंची (उदाहरणार्थ px किंवा em)."
+      },
+      {
+        "property": "background",
+        "title": "कॅनव्हास पार्श्वभूमी",
+        "description": "कॅनव्हास CSS पार्श्वभूमी."
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "סימון המילים",
+    "description": "זיהוי מושגים באמצעות לחיצה על מילים בתוך גוף טקסט."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "שאלה",
+        "description": "שאלה שהמשתמשים יגיבו עליה."
+      },
+      {
+        "property": "statement",
+        "title": "משפט",
+        "description": "המשפט שיומר לאינטראקציה של סימון המילים."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "פורמט ציון",
+        "description": "OER Schema: פורמט הציון להערכה זו (למשל נקודות, אות, אחוז, השלמה)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "מטרת למידה",
+        "description": "OER Schema: מטרת הלמידה המשויכת להערכה זו."
+      },
+      {
+        "property": "forCourse",
+        "title": "קורס",
+        "description": "OER Schema: הקורס שעבורו מיועדת הערכה זו."
+      },
+      {
+        "property": "answers",
+        "title": "תשובות"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "שם הבוחן",
+        "description": "שם הבוחן המועבר לשימוש בסביבות מבוססות xAPI לצורך זיהוי פריט זה"
+      }
+    ]
+  }
+}

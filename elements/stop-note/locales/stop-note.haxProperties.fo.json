@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Steðgviðmerking",
+    "description": "Boð, sum gera lesarar varugar við ávísar leiðbeiningar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Skriva heiti á steðgviðmerkingina."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Skriva ein uttanhýsis URL."
+      },
+      {
+        "property": "status",
+        "title": "Støða",
+        "description": "Tá støðan verður sett, broytast litir og ímyndir samsvarandi",
+        "options": {
+          "stop": "Steðga",
+          "warning": "Ávaring",
+          "success": "Váttan",
+          "info": "Fráboðan"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Viðmerkingartekstur",
+        "description": "Tekstur til steðgviðmerkingina."
+      }
+    ]
+  }
+}

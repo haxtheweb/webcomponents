@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Innebygd lyd",
+    "description": "Spill av lyd innebygd som supplement til sideinnholdet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "MP3-fil eller URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Aksentfarge for kortet."
+      },
+      {
+        "property": "shiny",
+        "title": "Skinnende",
+        "description": "Bruk en lysere aksentbakgrunn i stedet for grå."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Mørk",
+        "description": "Bruk mørk modus."
+      }
+    ]
+  }
+}

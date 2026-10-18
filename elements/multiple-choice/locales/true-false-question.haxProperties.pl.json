@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Pytanie prawda / fałsz",
+    "description": "Pytanie typu prawda/fałsz"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pytanie",
+        "description": "Pytanie, na które użytkownicy mają odpowiedzieć."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Prawidłowa odpowiedź"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nazwa quizu",
+        "description": "Nazwa quizu przekazywana do środowisk opartych na xAPI w celu identyfikacji tego elementu"
+      }
+    ]
+  }
+}

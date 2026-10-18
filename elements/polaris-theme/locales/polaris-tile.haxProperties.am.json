@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "የPolaris ሰድር",
+    "description": "ርዕስ፣ አማራጭ ደጋፊ ጽሑፍ እና አማራጭ አገናኝ ያለው የPolaris ሰድር አሳይ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "ዋና ጽሑፍ",
+        "description": "የሰድሩ ዋና ጽሑፍ።"
+      },
+      {
+        "property": "line2",
+        "title": "ሁለተኛ ጽሑፍ",
+        "description": "አማራጭ ደጋፊ ጽሑፍ።"
+      },
+      {
+        "property": "type",
+        "title": "የሰድር ቅጥ",
+        "description": "ቅድመ-ዝግጅት የሰድር ምስላዊ ቅጥ።",
+        "options": {
+          "1": "ቅጥ 1",
+          "2": "ቅጥ 2",
+          "3": "ቅጥ 3",
+          "4": "ቅጥ 4",
+          "5": "ቅጥ 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "የጀርባ ምስል",
+        "description": "ምስል በሚደግፉ የሰድር ቅጦች የሚውል የጀርባ ምስል URL።"
+      },
+      {
+        "property": "link",
+        "title": "አገናኝ",
+        "description": "ለሰድሩ ድርጊት አማራጭ የመድረሻ URL።"
+      }
+    ]
+  }
+}

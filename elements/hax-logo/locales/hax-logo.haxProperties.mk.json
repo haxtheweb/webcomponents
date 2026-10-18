@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX текстуална уметност",
+    "description": "Елемент со логото на HAX, се разбира, како елемент поддржан од HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Големина на логото на HAX што се поставува",
+        "options": {
+          "mini": "Мини",
+          "small": "Мала",
+          "normal": "Нормално",
+          "large": "Голема"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Дали логото да се претвори во големи букви"
+      }
+    ]
+  }
+}

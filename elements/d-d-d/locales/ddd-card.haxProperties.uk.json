@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Картка",
+    "description": "Компонент картки, стилізований за дизайн-системою DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Зображення",
+        "description": "Необов'язкове зображення."
+      },
+      {
+        "property": "alt",
+        "title": "Alt зображення",
+        "description": "Альтернативний текст, що описує зображення."
+      },
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Назва картки."
+      },
+      {
+        "slot": "",
+        "title": "Вміст",
+        "description": "Область вмісту картки."
+      },
+      {
+        "property": "href",
+        "title": "Посилання",
+        "description": "URL посилання кнопки."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Мітка",
+        "description": "Мітка кнопки."
+      },
+      {
+        "property": "noArrow",
+        "title": "Без стрілки",
+        "description": "Приховати стрілку кнопки."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Посилання: ціль",
+        "description": "Де відкривати посилання.",
+        "options": {
+          "": "Те саме вікно",
+          "_blank": "Нове вікно - _blank",
+          "_top": "Верхнє вікно - _top",
+          "_parent": "Батьківське вікно - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Посилання: rel",
+        "description": "Зв'язок між ресурсом за посиланням і поточним документом."
+      }
+    ]
+  }
+}

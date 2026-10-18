@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV جدول",
+    "description": "دا کولی شي له CSV فایل څخه جدول جوړ کړي، که هر چېرې وي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "سرچینه",
+        "description": "د دې CSV فایل URL."
+      },
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "د جوړېدونکي جدول سرلیک."
+      },
+      {
+        "property": "description",
+        "title": "تشریح",
+        "description": "د جدول د معلوماتو د ښه لاسرسي لپاره نوره مفصله تشریح."
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Dokezo la Kusimama",
+    "description": "Ujumbe wa kuwatahadharisha wasomaji kuhusu maelekezo mahususi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Weka kichwa cha dokezo la kusimama."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Weka URL ya nje."
+      },
+      {
+        "property": "status",
+        "title": "Hali",
+        "description": "Kuweka hali hubadilisha rangi na aikoni ili zilingane",
+        "options": {
+          "stop": "Simama",
+          "warning": "Onyo",
+          "success": "Uthibitisho",
+          "info": "Ilani"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Maandishi ya Dokezo",
+        "description": "Maandishi ya dokezo la kusimama."
+      }
+    ]
+  }
+}

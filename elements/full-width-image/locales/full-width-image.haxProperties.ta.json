@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "படப் பிரிவு",
+    "description": "பக்கப் பிரிவைப் பிரிக்கும் முழு அகலப் படம்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "பின்னணிப் படம்."
+      },
+      {
+        "property": "caption",
+        "description": "உரைத் தலைப்பு."
+      }
+    ]
+  }
+}

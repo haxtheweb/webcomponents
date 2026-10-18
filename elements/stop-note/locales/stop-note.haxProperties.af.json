@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Stopnota",
+    "description": "'n Boodskap om lesers op spesifieke instruksies attent te maak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Voer titel vir die stopnota in."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Voer 'n eksterne URL in."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Om die status te stel, verander die kleure en ikone om te pas",
+        "options": {
+          "stop": "Stop",
+          "warning": "Waarskuwing",
+          "success": "Bevestiging",
+          "info": "Kennisgewing"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Notateks",
+        "description": "Teks vir die stopnota."
+      }
+    ]
+  }
+}

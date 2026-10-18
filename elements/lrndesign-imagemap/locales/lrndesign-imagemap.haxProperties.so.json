@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Khariidad sawir",
+    "description": "Khariidad sawir oo la heli karo oo leh barro is-dhexgal leh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Calaamad",
+        "description": "Calaamadda khariidadda sawirka."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Faahfaahinta barta",
+        "description": "Barrooyinka is-dhexgalka leh ee khariidadda sawirka."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus-kommentarer",
+    "description": "Integrasjon med kommentartjenesten Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Kortnavn",
+        "description": "Nettstedets kortnavn på Disqus"
+      }
+    ]
+  }
+}

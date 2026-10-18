@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ਪੋਸਟ ਕਾਰਡ",
+    "description": "ਇੱਕ ਮਜ਼ੇਦਾਰ ਮੀਡੀਆ ਟੁਕੜਾ ਜੋ ਕਿਤੋਂ ਆਏ ਅਸਲੀ ਪੋਸਟ ਕਾਰਡ ਵਰਗਾ ਲੱਗਦਾ ਹੈ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "ਵੱਲ",
+        "description": "ਇਹ ਕਿਸ ਨੂੰ ਜਾ ਰਿਹਾ ਹੈ?"
+      },
+      {
+        "property": "from",
+        "title": "ਵੱਲੋਂ",
+        "description": "ਤੁਸੀਂ ਕੌਣ ਹੋ?"
+      },
+      {
+        "property": "message",
+        "title": "ਸੁਨੇਹਾ",
+        "description": "ਤੁਸੀਂ ਕੀ ਕਹਿਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "ਡਾਕ ਮੋਹਰ ਕਿੱਥੋਂ",
+        "description": "ਇਹ ਕਾਰਡ ਕਿੱਥੋਂ ਭੇਜਿਆ ਗਿਆ ਸੀ?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "ਮੁੱਖ ਫੋਟੋ ਸਰੋਤ",
+        "description": "ਤੁਹਾਡੀ ਫੋਟੋ ਕਿੱਥੇ ਸਥਿਤ ਹੈ?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "ਟਿਕਟ ਫੋਟੋ ਸਰੋਤ",
+        "description": "ਤੁਹਾਡੀ ਫੋਟੋ ਕਿੱਥੇ ਸਥਿਤ ਹੈ?"
+      }
+    ]
+  }
+}

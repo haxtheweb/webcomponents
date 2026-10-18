@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Wāhanga whārangi",
+    "description": "He ipu wāhanga mō ngā ihirangi whārangi me ngā tahora ā-mata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Maimoatanga hoahoa",
+        "description": "He kāhua kua tautuhi kē e whakahou ana i ngā tautuhinga e hāngai ana."
+      },
+      {
+        "property": "image",
+        "title": "Whakaahua",
+        "description": "Pāpāho papamuri mō te wāhanga."
+      },
+      {
+        "property": "bg",
+        "title": "Tae papamuri",
+        "description": "Tae papamuri ina kāore he whakaahua i tautuhia."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Pātene panuku",
+        "description": "Whakaaturia tētahi pātene e panuku ana ki te wāhanga e whai ake ana."
+      },
+      {
+        "property": "fold",
+        "title": "Whakaatu kōpaki",
+        "description": "Whakaaturia tētahi kōpaki ataata ki raro o te wāhanga."
+      },
+      {
+        "property": "full",
+        "title": "Rahi mata katoa",
+        "description": "Whakakīia te teitei o te mata o te kaimātakitaki."
+      },
+      {
+        "property": "filter",
+        "title": "Whakamahia te Tātari",
+        "description": "Whakamahia he tātari ataata ki te whakaahua papamuri."
+      },
+      {
+        "slot": "",
+        "title": "Ihirangi",
+        "description": "Ihirangi o te wāhanga."
+      },
+      {
+        "slot": "entice",
+        "title": "Whakawai",
+        "description": "He ihirangi whakawai kōwhiri."
+      },
+      {
+        "slot": "buttons",
+        "title": "Ngā Pātene",
+        "description": "Rōpū pātene ka whakaaturia i raro i te kupu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Kupu punga",
+        "description": "Tapanga punga ka whakaaturia i te whakaterenga."
+      }
+    ]
+  }
+}

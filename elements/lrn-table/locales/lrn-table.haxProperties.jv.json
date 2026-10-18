@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tabel CSV",
+    "description": "Iki bisa nggawe tabel saka berkas CSV ing ngendi wae panggonane."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Sumber",
+        "description": "URL kanggo berkas CSV iki."
+      },
+      {
+        "property": "title",
+        "title": "Judhul",
+        "description": "Judhul kanggo tabel sing arep digawe."
+      },
+      {
+        "property": "description",
+        "title": "Katrangan",
+        "description": "Katrangan sing luwih rinci kanggo aksesibilitas data tabel sing luwih apik."
+      }
+    ]
+  }
+}

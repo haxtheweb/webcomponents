@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Вградете Disqus коментари на страница."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Кратко име",
+        "description": "Краткото име на сајтот, кое го одредува хостот на Disqus скриптата."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL на страницата",
+        "description": "URL на страницата на која е закачена низата коментари."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Идентификатор на страницата",
+        "description": "Уникатниот идентификатор за низата коментари на страницата."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Наслов на страницата",
+        "description": "Насловот на страницата на која е закачена низата коментари."
+      },
+      {
+        "property": "loadingText",
+        "title": "Текст при вчитување",
+        "description": "Текст што се објавува додека се вчитуваат коментарите."
+      },
+      {
+        "property": "lang",
+        "title": "Јазик",
+        "description": "Код на јазикот за интерфејсот на Disqus, на пр. en."
+      }
+    ]
+  }
+}

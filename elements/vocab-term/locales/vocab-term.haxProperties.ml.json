@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "പദാവലി",
+    "description": "പദാവലി പദം."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "പദം"
+      },
+      {
+        "property": "information",
+        "title": "നിർവചനം",
+        "description": "പദത്തിൽ ക്ലിക്ക് ചെയ്യുമ്പോൾ കാണിക്കുന്ന നിർവചനം."
+      },
+      {
+        "property": "popoverMode",
+        "title": "പോപ്പ്ഓവർ",
+        "description": "നിർവചനം ഇൻലൈനായല്ലാതെ ഒരു പോപ്പ്ഓവറിൽ പ്രദർശിപ്പിക്കുക."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "ലിങ്കുകൾ",
+        "description": "ഈ പദവുമായി ബന്ധപ്പെട്ട അനുബന്ധ ലിങ്കുകളുടെ ലിസ്റ്റ്."
+      }
+    ]
+  }
+}

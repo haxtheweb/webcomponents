@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Ansichtkaart",
+    "description": "Een speels media-element dat eruitziet als een echte ansichtkaart van ergens"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Aan",
+        "description": "Voor wie is dit?"
+      },
+      {
+        "property": "from",
+        "title": "Van",
+        "description": "Wie ben je?"
+      },
+      {
+        "property": "message",
+        "title": "Bericht",
+        "description": "Wat wil je zeggen?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Afgestempeld in",
+        "description": "Waarvandaan is deze kaart verstuurd?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Bron van hoofdfoto",
+        "description": "Waar staat je foto?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Bron van postzegelfoto",
+        "description": "Waar staat je foto?"
+      }
+    ]
+  }
+}

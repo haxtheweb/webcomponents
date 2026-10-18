@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "שורת אוסף",
+    "description": "פריט בסגנון שורה לשימוש בתוך רשימת אוסף, עם טקסט, קישור, סמל, תגיות ותמונה אופציונלית."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "קישור",
+        "description": "כתובת URL של היעד עבור שורה זו."
+      },
+      {
+        "property": "image",
+        "title": "תמונה",
+        "description": "תמונה עבור השורה."
+      },
+      {
+        "property": "alt",
+        "title": "טקסט חלופי",
+        "description": "טקסט חלופי המתאר את התמונה."
+      },
+      {
+        "property": "line1",
+        "title": "שורה 1",
+        "description": "שורת הטקסט הראשונה."
+      },
+      {
+        "property": "line2",
+        "title": "שורה 2",
+        "description": "שורת הטקסט השנייה."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "סמל",
+        "description": "סמל המייצג את השורה."
+      },
+      {
+        "property": "saturate",
+        "title": "אפקט רוויה",
+        "description": "שינוי רוויית התמונה כשהמשתמש מתמקד בה."
+      },
+      {
+        "property": "tags",
+        "title": "תגיות",
+        "description": "רשימת תגיות מופרדות בפסיקים."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע",
+        "description": "הצבע המשמש לסמל ולתגיות."
+      }
+    ]
+  }
+}

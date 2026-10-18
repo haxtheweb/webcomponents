@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Amlap ar gyfer mewnosodiadau chwaraewr Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ffynhonnell",
+        "description": "Dolen fewnosod neu rannu o Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Thema",
+        "description": "Thema lliw cefndir ar gyfer y chwaraewr.",
+        "options": {
+          "": "Rhagosodiad",
+          "0": "Du"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Maint",
+        "description": "Maint y chwaraewr.",
+        "options": {
+          "normal": "Rhagosodiad",
+          "compact": "Cryno"
+        }
+      }
+    ]
+  }
+}

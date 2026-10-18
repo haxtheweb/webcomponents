@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Seção de imagem",
+    "description": "Imagem de largura total que divide uma seção da página."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Imagem de fundo."
+      },
+      {
+        "property": "caption",
+        "description": "Título do texto."
+      }
+    ]
+  }
+}

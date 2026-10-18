@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Mimhanzi yakanyorwa",
+    "description": "Inoratidza nekuridza mimhanzi yakanyorwa, mathebhu egitare, nemanyorerwo emimhanzi kuburikidza nealphaTex kana MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Manyorerwo eAlphaTex",
+        "description": "Manyorerwo ealphaTex ari mukati emimhanzi yakanyorwa. Gadzirisa pachako kunyora manotsi; anochengetwa mutemplate kuitira kuti nzvimbo dzichengetedzwe."
+      },
+      {
+        "property": "source",
+        "title": "Faira remimhanzi",
+        "description": "Isa kana batanidza kufaira reMusicXML (.xml/.musicxml/.mxl) kana reGuitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Rinotsiva alphaTex iri mukati kana rasetwa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Kuridza odhiyo",
+        "description": "Zvinenge zvakabatidzwa - teerera mimhanzi yakanyorwa ichiridzwa nesynthesizer yakavakirwa mukati. Dzima kuti uone chete (pasina odhiyo)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Ratidza sarudzo dzekuratidza",
+        "description": "Ratidza mabhatani ekukudza, ekutambanudza, nemarongerwo pabhawa remutambi."
+      },
+      {
+        "property": "showExport",
+        "title": "Ratidza mabhatani ekuburitsa",
+        "description": "Ratidza mabhatani ekudhaunirodha MIDI nekudhinda/PDF pabhawa remutambi."
+      }
+    ]
+  }
+}

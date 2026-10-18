@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Simpla bildo",
+    "description": "Manipuli bildojn per simplaj parametroj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Fonto",
+        "description": "Fonta URL de la bildo."
+      },
+      {
+        "property": "height",
+        "title": "Alteco",
+        "description": "Nedeviga alteco de la bildo."
+      },
+      {
+        "property": "width",
+        "title": "Larĝo",
+        "description": "Nedeviga larĝo de la bildo."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativa teksto",
+        "description": "Utila por ekranlegiloj kaj pli bona SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kvalito",
+        "description": "Bilda kvalito dum generado (nur JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Elŝuta prioritato",
+        "description": "Rendimenta sugesto por modernaj retumiloj.",
+        "options": {
+          "auto": "Aŭtomata",
+          "high": "Alta",
+          "low": "Malalta"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Malkodiga metodo",
+        "description": "Rendimenta sugesto por bildigo de bildoj en modernaj retumiloj.",
+        "options": {
+          "auto": "Aŭtomata",
+          "async": "Nesinkrona"
+        }
+      }
+    ]
+  }
+}

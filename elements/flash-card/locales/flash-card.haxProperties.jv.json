@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kertu apalan",
+    "description": "Latihan konsep nganggo kertu apalan ngarep-mburi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Ngarep Kertu",
+        "description": "Teks utawa pitakonan ngarep."
+      },
+      {
+        "slot": "back",
+        "title": "Mburi Kertu",
+        "description": "Wangsulan sing dikarepake."
+      },
+      {
+        "property": "imgSource",
+        "title": "Sumber Gambar",
+        "description": "Berkas gambar sing digunakake kanggo kertu. Ngganti Tembung Kunci Gambar."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Jinis Tumindak",
+        "description": "OER Schema: jinis tumindak ing latihan iki (contone Maca, Nulis, Nggawe, Riset, Ngrungokake, Nonton, Refleksi, Diskusi, Ngamati, Presentasi, Ngevaluasi)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan Sinau",
+        "description": "OER Schema: ID utawa URL tujuan sinau sing didhukung latihan iki."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Peteng",
+        "description": "Gunakake mode peteng."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna Aksen",
+        "description": "Werna aksen kertu."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Tembung Kunci Gambar",
+        "description": "Tembung kunci gambar acak. Diganti dening Sumber Gambar."
+      }
+    ]
+  }
+}

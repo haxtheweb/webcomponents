@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Semnalizare pagină",
+    "description": "Notă editorială pentru autorii paginii."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Culoarea de accent pentru semnalizarea paginii."
+      },
+      {
+        "property": "label",
+        "title": "Etichetă",
+        "description": "Textul etichetei pentru semnalizarea paginii."
+      }
+    ]
+  }
+}

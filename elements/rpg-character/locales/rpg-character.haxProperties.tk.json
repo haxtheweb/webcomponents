@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG gahrymany",
+    "description": "HAX-dan gyzykly gahryman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Ady",
+        "description": "Tötänleýin gahryman döretmek üçin ulanylýan söz."
+      },
+      {
+        "property": "hat",
+        "title": "Şlýapa",
+        "description": "Şlýapanyň stili.",
+        "options": {
+          "none": "Deslapky",
+          "random": "Tötänleýin",
+          "bunny": "Towşan",
+          "cowboy": "Kowboý",
+          "education": "Bilim",
+          "construction": "Gurluşyk",
+          "warning": "Duýduryş",
+          "watermelon": "Garpyz",
+          "coffee": "Kofe",
+          "knight": "Rysar",
+          "ninja": "Ninja",
+          "party": "Toý",
+          "error": "Ýalňyşlyk",
+          "edit": "Redaktirle"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Giňlik",
+        "description": "Gahrymanyň pikseldäki giňligi."
+      },
+      {
+        "property": "height",
+        "title": "Beýiklik",
+        "description": "Gahrymanyň pikseldäki beýikligi."
+      },
+      {
+        "property": "fire",
+        "title": "Ýanýarmy?",
+        "description": "Gahrymanyň ýanýandygy ýa-da däldigi."
+      },
+      {
+        "property": "walking",
+        "title": "Ýöreýärmi?",
+        "description": "Ýöreýiş animasiýasy; ýananda ylgaýar."
+      }
+    ]
+  }
+}

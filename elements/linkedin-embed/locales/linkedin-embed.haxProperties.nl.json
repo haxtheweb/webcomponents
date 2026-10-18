@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn-insluiting",
+    "description": "Sluit een LinkedIn-profielkaart in."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Vanity-naam",
+        "description": "Vanity-gebruikersnaamdeel van LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Landinstelling",
+        "description": "Metadatawaarde voor de landinstelling, zoals en_US."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "பக்கத்தில் Disqus கருத்துகளை உட்பொதிக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "குறும்பெயர்",
+        "description": "Disqus ஸ்கிரிப்ட் ஹோஸ்டைத் தீர்மானிக்கும் தளத்தின் குறும்பெயர்."
+      },
+      {
+        "property": "pageURL",
+        "title": "பக்க URL",
+        "description": "கருத்துத் தொடர் இணைக்கப்பட்டுள்ள பக்கத்தின் URL."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "பக்க அடையாளங்காட்டி",
+        "description": "பக்கக் கருத்துத் தொடருக்கான தனித்துவ அடையாளங்காட்டி."
+      },
+      {
+        "property": "pageTitle",
+        "title": "பக்கத் தலைப்பு",
+        "description": "கருத்துத் தொடர் இணைக்கப்பட்டுள்ள பக்கத்தின் தலைப்பு."
+      },
+      {
+        "property": "loadingText",
+        "title": "ஏற்றும் உரை",
+        "description": "கருத்துகள் ஏற்றப்படும்போது அறிவிக்கப்படும் உரை."
+      },
+      {
+        "property": "lang",
+        "title": "மொழி",
+        "description": "Disqus இடைமுகத்திற்கான மொழிக் குறியீடு, எ.கா. en."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Àpò H5P fún gbígbé wọlé àti fífi àwọn fáìlì .h5p hàn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Kóòdù ìfisínú iframe H5P"
+      }
+    ]
+  }
+}

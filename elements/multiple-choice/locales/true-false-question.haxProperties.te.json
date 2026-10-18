@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "సరి / తప్పు ప్రశ్న",
+    "description": "సరి తప్పు ప్రశ్న"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ప్రశ్న",
+        "description": "వినియోగదారులు సమాధానం ఇవ్వాల్సిన ప్రశ్న."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "సరైన సమాధానం"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "క్విజ్ పేరు",
+        "description": "xAPI ఆధారిత వాతావరణాలలో ఈ అంశాన్ని గుర్తించడానికి పంపబడే క్విజ్ పేరు"
+      }
+    ]
+  }
+}

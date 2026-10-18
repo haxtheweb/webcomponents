@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Myndasafn",
+    "description": "Myndasafn sem birtir myndir í hnitaneti, múrsteinsútliti eða myndasýningu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Birtingarhamur",
+        "description": "Hvernig birta á myndirnar í myndasafninu.",
+        "options": {
+          "grid": "Hnitanet",
+          "masonry": "Múrsteinsútlit",
+          "gallery": "Myndasafn"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Virkt númer",
+        "description": "Númer myndarinnar sem byrjað er á í myndasafnsham."
+      }
+    ]
+  }
+}

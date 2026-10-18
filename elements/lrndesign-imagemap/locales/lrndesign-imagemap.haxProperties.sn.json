@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mepu yemufananidzo",
+    "description": "Mepu yemufananidzo inowanikwa nevose ine nzvimbo dzinodyidzana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Zita",
+        "description": "Zita remepu yemufananidzo."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Ruzivo rwenzvimbo dzinodyidzana",
+        "description": "Nzvimbo dzinodyidzana pamepu yemufananidzo."
+      }
+    ]
+  }
+}

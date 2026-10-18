@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Irudi mapa",
+    "description": "Gune interaktiboak dituen irudi mapa irisgarria."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiketa",
+        "description": "Irudi maparen etiketa."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Guneen xehetasunak",
+        "description": "Irudi mapako gune interaktiboak."
+      }
+    ]
+  }
+}

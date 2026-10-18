@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Эчке аудио",
+    "description": "Бит эчтәлеген тулыландыру өчен аудионы текст эчендә уйнатырга."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Чыганак",
+        "description": "MP3 файлы яки URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Карточканың ассызык төсе."
+      },
+      {
+        "property": "shiny",
+        "title": "Ялтыравык",
+        "description": "Соры урынына яктырак ассызык фонын кулланырга."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Караңгы",
+        "description": "Караңгы режимны кулланырга."
+      }
+    ]
+  }
+}

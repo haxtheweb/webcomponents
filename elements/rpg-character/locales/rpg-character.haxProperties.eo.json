@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG-rolulo",
+    "description": "Amuza rolulo de HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Nomo",
+        "description": "Vorto uzata por generi hazardan rolulon."
+      },
+      {
+        "property": "hat",
+        "title": "Ĉapelo",
+        "description": "Ĉapela stilo.",
+        "options": {
+          "none": "Defaŭlta",
+          "random": "Hazarda",
+          "bunny": "Kunikleto",
+          "cowboy": "Vakera",
+          "education": "Edukado",
+          "construction": "Konstruado",
+          "warning": "Averto",
+          "watermelon": "Akvomelono",
+          "coffee": "Kafo",
+          "knight": "Kavaliro",
+          "ninja": "Ninĵo",
+          "party": "Festo",
+          "error": "Eraro",
+          "edit": "Redakti"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Larĝo",
+        "description": "Larĝo de la rolulo en rastrumeroj."
+      },
+      {
+        "property": "height",
+        "title": "Alteco",
+        "description": "Alteco de la rolulo en rastrumeroj."
+      },
+      {
+        "property": "fire",
+        "title": "Ĉu brulanta?",
+        "description": "Ĉu la rolulo brulas."
+      },
+      {
+        "property": "walking",
+        "title": "Ĉu promenanta?",
+        "description": "Promena animacio; funkcias kiam brulanta."
+      }
+    ]
+  }
+}

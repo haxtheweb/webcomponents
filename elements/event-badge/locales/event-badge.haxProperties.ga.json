@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Suaitheantas Ócáide",
+    "description": "Comhpháirt suaitheantais ócáide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Íomhá TV",
+        "description": "Íomhá a thaispeántar ar an TV."
+      },
+      {
+        "property": "logo",
+        "title": "Lógó",
+        "description": "Lógó a thaispeántar i gcúinne an tsuaitheantais."
+      },
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Teideal a thaispeántar ag barr an tsuaitheantais."
+      },
+      {
+        "property": "name",
+        "title": "Ainm",
+        "description": "Ainm a thaispeántar ar an suaitheantas."
+      },
+      {
+        "property": "position",
+        "title": "Post",
+        "description": "Ról nó teideal an duine."
+      },
+      {
+        "property": "organization",
+        "title": "Eagraíocht",
+        "description": "An eagraíocht a n-oibríonn an duine di."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Dath an TV",
+        "description": "Roghnaigh dath don TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath aibhsithe",
+        "description": "Príomhdhath cúlra nó téacs."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Dath na gcnaipí casta",
+        "description": "Dath chnaipí casta an TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Seipia",
+        "description": "Cuir maisíocht seipia i bhfeidhm."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Dubh agus bán",
+        "description": "Cuir maisíocht dubh agus bán i bhfeidhm."
+      }
+    ]
+  }
+}

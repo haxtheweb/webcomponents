@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Bloc-athfhriotal Íomhá",
+    "description": "Athfhriotal le stíl agus íomhá roghnach."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Íomhá",
+        "description": "Cuir íomhá leis an teistiméireacht."
+      },
+      {
+        "property": "name",
+        "title": "Ainm Iomlán",
+        "description": "Ainm an duine a thugann an teistiméireacht."
+      },
+      {
+        "property": "position",
+        "title": "Post nó Teideal Poist",
+        "description": "Post nó teideal poist an duine."
+      },
+      {
+        "slot": "",
+        "title": "Athfhriotal",
+        "description": "Athfhriotal ó údar na teistiméireachta."
+      }
+    ]
+  }
+}

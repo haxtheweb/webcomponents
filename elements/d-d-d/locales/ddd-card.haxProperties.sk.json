@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Karta",
+    "description": "Komponent karty štylizovaný dizajnovým systémom DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Obrázok",
+        "description": "Voliteľný obrázok."
+      },
+      {
+        "property": "alt",
+        "title": "Alt obrázka",
+        "description": "Alternatívny text popisujúci obrázok."
+      },
+      {
+        "property": "title",
+        "title": "Názov",
+        "description": "Názov karty."
+      },
+      {
+        "slot": "",
+        "title": "Obsah",
+        "description": "Oblasť obsahu karty."
+      },
+      {
+        "property": "href",
+        "title": "Odkaz",
+        "description": "URL odkazu tlačidla."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Označenie",
+        "description": "Označenie tlačidla."
+      },
+      {
+        "property": "noArrow",
+        "title": "Bez šípky",
+        "description": "Skryť šípku tlačidla."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Odkaz: cieľ",
+        "description": "Kde sa má odkaz otvoriť.",
+        "options": {
+          "": "Rovnaké okno",
+          "_blank": "Nové okno - _blank",
+          "_top": "Najvyššie okno - _top",
+          "_parent": "Nadradené okno - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Odkaz: rel",
+        "description": "Vzťah medzi odkazovaným zdrojom a aktuálnym dokumentom."
+      }
+    ]
+  }
+}

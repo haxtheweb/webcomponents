@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "ਕਾਰਡ",
+    "description": "DDD ਡਿਜ਼ਾਈਨ ਸਿਸਟਮ ਨਾਲ ਸਜਾਇਆ ਕਾਰਡ ਕੰਪੋਨੈਂਟ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ਚਿੱਤਰ",
+        "description": "ਵਿਕਲਪਿਕ ਚਿੱਤਰ।"
+      },
+      {
+        "property": "alt",
+        "title": "ਚਿੱਤਰ Alt",
+        "description": "ਚਿੱਤਰ ਦਾ ਵਰਣਨ ਕਰਨ ਵਾਲੀ ਵਿਕਲਪਿਕ ਲਿਖਤ।"
+      },
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਕਾਰਡ ਦਾ ਸਿਰਲੇਖ।"
+      },
+      {
+        "slot": "",
+        "title": "ਸਮੱਗਰੀ",
+        "description": "ਕਾਰਡ ਦਾ ਸਮੱਗਰੀ ਖੇਤਰ।"
+      },
+      {
+        "property": "href",
+        "title": "ਲਿੰਕ",
+        "description": "ਬਟਨ ਲਿੰਕ URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "ਲੇਬਲ",
+        "description": "ਬਟਨ ਲੇਬਲ।"
+      },
+      {
+        "property": "noArrow",
+        "title": "ਕੋਈ ਤੀਰ ਨਹੀਂ",
+        "description": "ਬਟਨ ਦਾ ਤੀਰ ਲੁਕਾਓ।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "ਲਿੰਕ: ਟੀਚਾ",
+        "description": "ਲਿੰਕ ਕਿੱਥੇ ਖੋਲ੍ਹਣਾ ਹੈ।",
+        "options": {
+          "": "ਉਹੀ ਵਿੰਡੋ",
+          "_blank": "ਨਵੀਂ ਵਿੰਡੋ - _blank",
+          "_top": "ਸਿਖਰਲੀ ਵਿੰਡੋ - _top",
+          "_parent": "ਮੂਲ ਵਿੰਡੋ - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "ਲਿੰਕ: rel",
+        "description": "ਲਿੰਕ ਕੀਤੇ ਸਰੋਤ ਅਤੇ ਮੌਜੂਦਾ ਦਸਤਾਵੇਜ਼ ਵਿਚਕਾਰ ਸਬੰਧ।"
+      }
+    ]
+  }
+}

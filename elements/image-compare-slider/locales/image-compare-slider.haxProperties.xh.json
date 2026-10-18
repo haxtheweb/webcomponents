@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ukuthelekisa imifanekiso",
+    "description": "Tyibilikisa umfanekiso omnye phezu komnye ukuze uthelekise."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Umfanekiso ophezulu",
+        "description": "Umfanekiso ophezulu otyibilika phezu komfanekiso ongezantsi."
+      },
+      {
+        "property": "topAlt",
+        "title": "Umbhalo ongenayo womfanekiso ophezulu",
+        "description": "Umbhalo ongenayo ofunekayo wokufikeleleka."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Umfanekiso ongezantsi",
+        "description": "Umfanekiso ongezantsi oboniswa phantsi komfanekiso ophezulu."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Umbhalo ongenayo womfanekiso ongezantsi",
+        "description": "Umbhalo ongenayo ofunekayo wokufikeleleka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Ukuziphatha",
+        "description": "Khetha imowudi yokusula (okungagqibekanga) okanye imowudi yokubonakala komfanekiso ophezulu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Ogqamisayo",
+        "description": "Umbala webha yesityibilikisi."
+      },
+      {
+        "property": "dark",
+        "title": "Mnyama",
+        "description": "Guqula umbala webha yesityibilikisi."
+      },
+      {
+        "property": "position",
+        "title": "Indawo yokuQala",
+        "description": "Indawo yokuqala ukusuka ku-0 ukuya ku-100."
+      }
+    ]
+  }
+}

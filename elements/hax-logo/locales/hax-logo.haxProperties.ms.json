@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Seni kata HAX",
+    "description": "Elemen logo untuk hax, tentunya sebagai elemen berkeupayaan hax."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Saiz logo HAX yang hendak diletakkan",
+        "options": {
+          "mini": "Mini",
+          "small": "Kecil",
+          "normal": "Biasa",
+          "large": "Besar"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Sama ada hendak menukar logo kepada huruf besar"
+      }
+    ]
+  }
+}

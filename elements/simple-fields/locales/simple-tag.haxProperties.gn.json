@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Teramoĩ / Píldora",
+    "description": "Teramoĩ michĩva píldora rekoichagua, sa'y ojehechaukavéva, votõ jeheja térã myandyha ikatúramo ndive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Teramoĩ",
+        "description": "Moñe'ẽrã ojehechaukáva píldora ryepýpe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "SimpleColors sa'y réra píldora hapykuegua peg̃uarã.",
+        "options": {
+          "": "-- ijypykuéva --",
+          "red": "Pytã",
+          "pink": "Pytãngy",
+          "purple": "Pytãhovy",
+          "deep-purple": "Pytãhovy hũ",
+          "indigo": "Índigo",
+          "blue": "Hovy",
+          "light-blue": "Hovy hesakã",
+          "cyan": "Hovy yguáicha",
+          "teal": "Hovyũ hovy",
+          "green": "Hovyũ",
+          "light-green": "Hovyũ hesakã",
+          "lime": "Limõ hovyũ",
+          "yellow": "Sa'yju",
+          "amber": "Ámbar",
+          "orange": "Narã sa'y",
+          "deep-orange": "Narã sa'y hũ",
+          "brown": "Marrõ",
+          "blue-grey": "Hovy hũngy",
+          "grey": "Hũngy"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Sa'y ojehechaukavéva ijeheguíva",
+        "description": "Eguenohẽ sa'y ojehechaukavéva teramoĩ moñe'ẽrãgui ijeheguiete."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Votõ jeheja",
+        "description": "Ehechauka votõ ta'ãnga'i mboguete/jeheja píldora ryepýpe."
+      },
+      {
+        "property": "readonly",
+        "title": "Moñe'ẽrã añoite",
+        "description": "Emokañy votõ jeheja ikatu hag̃uáicha píldora ojehechauka añoite."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Myandyha",
+        "description": "Píldora omyandy/ombogue ojejopy jave votõ."
+      },
+      {
+        "property": "toggled",
+        "title": "Hendýva",
+        "description": "Píldora hendýpa ko'ág̃a."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ta'ãnga'i hendy jave",
+        "description": "Ta'ãnga'i ojehechaukáva píldora hendy jave."
+      },
+      {
+        "property": "disabled",
+        "title": "Ojepe'apyre",
+        "description": "Embogue jeporu píldora ndive."
+      }
+    ]
+  }
+}

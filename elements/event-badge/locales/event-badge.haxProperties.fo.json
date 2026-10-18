@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Tiltaksmerki",
+    "description": "Partur til tiltaksmerki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Sjónvarpsmynd",
+        "description": "Mynd, sum verður víst á sjónvarpinum."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo, sum verður víst í horninum á merkinum."
+      },
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Heiti, sum verður víst ovast á merkinum."
+      },
+      {
+        "property": "name",
+        "title": "Navn",
+        "description": "Navn, sum verður víst á merkinum."
+      },
+      {
+        "property": "position",
+        "title": "Starv",
+        "description": "Leiklutur ella heiti hjá persóninum."
+      },
+      {
+        "property": "organization",
+        "title": "Felagsskapur",
+        "description": "Felagsskapur, sum persónurin arbeiðir fyri."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Sjónvarpslitur",
+        "description": "Vel lit á sjónvarpinum."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Høvuðslitur á bakgrund ella teksti."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Knappalitur",
+        "description": "Litur á knappunum á sjónvarpinum."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Nýt ein sepiaeffekt."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Svart og hvítt",
+        "description": "Nýt ein svart-hvítan effekt."
+      }
+    ]
+  }
+}

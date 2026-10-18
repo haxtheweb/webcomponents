@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris-marko",
+    "description": "Montri la PSU-identecan markon kun nedeviga kolegia nomo kaj cela URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Kolegia nomo",
+        "description": "Nomo montrata apud la marko."
+      },
+      {
+        "property": "name2",
+        "title": "Kolegia nomo 2",
+        "description": "Dua nomo montrata sub la unua kolegia nomo."
+      },
+      {
+        "property": "name3",
+        "title": "Kolegia nomo 3",
+        "description": "Tria nomo montrata sub la dua kolegia nomo."
+      },
+      {
+        "property": "url",
+        "title": "Ligilo",
+        "description": "Cela URL kiam oni klakas la markon."
+      },
+      {
+        "property": "type",
+        "title": "Varianto",
+        "description": "Vida varianto de la marko.",
+        "options": {
+          "default": "Defaŭlta",
+          "light": "Hela",
+          "dark": "Malhela"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Vertikala aranĝo",
+        "description": "Montri la trian nomon sub la dua nomo kun horizontala linio."
+      }
+    ]
+  }
+}

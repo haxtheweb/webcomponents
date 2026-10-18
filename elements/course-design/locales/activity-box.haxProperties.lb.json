@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Aktivitéitskëscht",
+    "description": "Klenge gestaltete Iwwerschrëftblock."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon, deen nieft der Aktivitéitskëscht ugewise gëtt."
+      },
+      {
+        "property": "tag",
+        "title": "Tag vun der Aktivitéitskëscht",
+        "description": "Tag, deen an der Aktivitéitskëscht ugewise gëtt."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Net faarwen",
+        "description": "Verhënneren, datt Faarwen op d'Ikon applizéiert ginn."
+      }
+    ]
+  }
+}

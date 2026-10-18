@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Bädda in externt webbinnehåll i en iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Resurs-URL",
+        "description": "Resurs-URL."
+      },
+      {
+        "property": "height",
+        "title": "Höjd",
+        "description": "Iframens höjd."
+      },
+      {
+        "property": "width",
+        "title": "Bredd",
+        "description": "Iframens bredd."
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "コレクション行",
+    "description": "コレクションリスト内で使う行形式の項目。テキスト、リンク、アイコン、タグ、任意の画像付き。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "リンク",
+        "description": "この行のリンク先URL。"
+      },
+      {
+        "property": "image",
+        "title": "画像",
+        "description": "行の画像。"
+      },
+      {
+        "property": "alt",
+        "title": "代替",
+        "description": "画像を説明する代替テキスト。"
+      },
+      {
+        "property": "line1",
+        "title": "1行目",
+        "description": "テキストの1行目。"
+      },
+      {
+        "property": "line2",
+        "title": "2行目",
+        "description": "テキストの2行目。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "アイコン",
+        "description": "行を表すアイコン。"
+      },
+      {
+        "property": "saturate",
+        "title": "彩度効果",
+        "description": "フォーカス時に画像の彩度を変化させます。"
+      },
+      {
+        "property": "tags",
+        "title": "タグ",
+        "description": "カンマ区切りのタグのリスト。"
+      },
+      {
+        "property": "accentColor",
+        "title": "色",
+        "description": "アイコンとタグに使う色。"
+      }
+    ]
+  }
+}

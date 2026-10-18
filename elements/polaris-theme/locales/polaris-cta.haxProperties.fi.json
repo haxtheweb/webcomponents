@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Näytä teemaan sopiva Polaris-toimintakehotuspainike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Painikkeen teksti",
+        "description": "Toimintakehotuspainikkeessa näytettävä teksti."
+      },
+      {
+        "property": "link",
+        "title": "Linkki",
+        "description": "Painikkeen kohde-URL."
+      },
+      {
+        "property": "type",
+        "title": "Muunnelma",
+        "description": "Visuaalisen tyylin muunnelma.",
+        "options": {
+          "primary": "Ensisijainen",
+          "tinted": "Sävytetty",
+          "light": "Vaalea"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Ääriviivatyyli",
+        "description": "Ota ääriviivatyyli käyttöön."
+      },
+      {
+        "property": "filled",
+        "title": "Täytetty tyyli",
+        "description": "Ota täytetty tyyli käyttöön."
+      }
+    ]
+  }
+}

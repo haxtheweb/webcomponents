@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Kujipima",
+    "description": "Watumiaji wanaweza kukamilisha zoezi la kujipima."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Picha",
+        "description": "Picha ya zoezi la kujipima."
+      },
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Kichwa cha zoezi la kujipima."
+      },
+      {
+        "property": "alt",
+        "title": "Maandishi Mbadala",
+        "description": "Maandishi mbadala ya picha."
+      },
+      {
+        "slot": "question",
+        "title": "Swali"
+      },
+      {
+        "slot": "",
+        "title": "Jibu"
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya Mandhari",
+        "description": "Chagua rangi ya mandhari kutoka kwa mfumo wa usanifu.",
+        "options": {
+          "primary": "Kuu",
+          "accent": "Msisitizo",
+          "success": "Mafanikio",
+          "warning": "Onyo",
+          "error": "Hitilafu",
+          "info": "Taarifa"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lengo la Kujifunza",
+        "description": "Rejeleo la lengo la kujifunza linalotolewa kama oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Kinachotathminiwa",
+        "description": "Rejeleo la shughuli linalotolewa kama oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Kiungo cha zaidi",
+        "description": "Kiungo cha taarifa za ziada."
+      }
+    ]
+  }
+}

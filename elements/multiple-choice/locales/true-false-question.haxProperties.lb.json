@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Richteg/Falsch-Fro",
+    "description": "Richteg-Falsch-Fro"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fro",
+        "description": "Fro, op déi d'Benotzer äntwere sollen."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Richteg Äntwert"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Numm vum Quiz",
+        "description": "Quiznumm, deen an xAPI-gesteierten Ëmfelder fir d'Identifikatioun vun dësem Element weiderginn gëtt"
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Szczegóły strony",
+    "description": "Zdefiniuj wizualny podział między stronami, którego systemy CMS mogą użyć do tworzenia stron."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tytuł",
+        "description": "Tytuł wyświetlany w motywie i jako pierwszy nagłówek."
+      },
+      {
+        "property": "pageType",
+        "title": "Typ",
+        "description": "Wizualna etykieta kontekstu strony.",
+        "options": {
+          "": "-- brak --",
+          "content": "Zawartość",
+          "assessment": "Ocena",
+          "quiz": "Quiz",
+          "submission": "Zgłoszenie",
+          "lesson": "Lekcja",
+          "module": "Moduł",
+          "task": "Zadanie",
+          "activity": "Aktywność",
+          "project": "Projekt",
+          "practice": "Ćwiczenie",
+          "unit": "Jednostka",
+          "objectives": "Cele uczenia się",
+          "connection": "Powiązanie",
+          "knowledge": "Czy wiesz, że?",
+          "strategy": "Strategia uczenia się",
+          "discuss": "Dyskutuj",
+          "listen": "Słuchaj",
+          "make": "Twórz",
+          "observe": "Obserwuj",
+          "present": "Prezentuj",
+          "reading": "Czytanie",
+          "reflect": "Zastanów się",
+          "research": "Badaj",
+          "watch": "Oglądaj",
+          "write": "Pisz"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tagi",
+        "description": "Lista tagów oddzielonych przecinkami."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL linku",
+        "description": "URL przekierowania wyświetlany zamiast zawartości strony."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Cel linku",
+        "description": "Otwieraj linki w tym samym lub nowym oknie.",
+        "options": {
+          "_self": "To samo okno",
+          "_blank": "Nowe okno"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Opublikowana",
+        "description": "Nieopublikowane strony są ukryte przed użytkownikami końcowymi."
+      },
+      {
+        "property": "locked",
+        "title": "Zablokuj stronę",
+        "description": "Zablokuj lub odblokuj wszystkie elementy na tej stronie."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Zastąp automatyczny slug",
+        "description": "Zablokuj slug przed automatyczną aktualizacją na podstawie tytułu lub strony nadrzędnej."
+      },
+      {
+        "property": "slug",
+        "title": "Ścieżka",
+        "description": "Slug URL tej strony."
+      },
+      {
+        "property": "image",
+        "title": "Multimedia",
+        "description": "Multimedia reprezentujące stronę, używane w niektórych motywach i widokach."
+      },
+      {
+        "property": "parent",
+        "title": "Strona nadrzędna",
+        "description": "Ścieżka strony nadrzędnej."
+      },
+      {
+        "property": "noderefs",
+        "title": "Powiązana zawartość",
+        "description": "Strony powiązane z tą stroną."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Opis",
+        "description": "Opis używany w kolekcjach i do optymalizacji pod kątem wyszukiwarek."
+      },
+      {
+        "property": "entityType",
+        "title": "Typ encji",
+        "description": "Domyślnie strona, chyba że ustawiono inaczej.",
+        "options": {
+          "page": "Strona (domyślnie)",
+          "taxonomy": "Taksonomia",
+          "taxonomyTerm": "Termin taksonomii",
+          "region": "Region"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona powiązana z tą stroną w witrynie."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Kolor powiązany z tą stroną w witrynie."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Ukryj w menu",
+        "description": "Ukryj tę stronę w menu, zachowując jej URL."
+      },
+      {
+        "property": "order",
+        "title": "Kolejność",
+        "description": "Kolejność względem stron na tym samym poziomie."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Motyw strony",
+        "description": "Zastąp motyw tylko dla tej strony."
+      },
+      {
+        "property": "author",
+        "title": "Autor",
+        "description": "Nazwa użytkownika osoby, która ostatnio modyfikowała tę stronę."
+      }
+    ]
+  }
+}

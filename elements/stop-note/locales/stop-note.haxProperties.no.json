@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Stoppmerknad",
+    "description": "En melding som gjør leserne oppmerksomme på bestemte instruksjoner."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Skriv inn tittel for stoppmerknaden."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Skriv inn en ekstern URL."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Når du angir status, endres farger og ikoner tilsvarende",
+        "options": {
+          "stop": "Stopp",
+          "warning": "Advarsel",
+          "success": "Bekreftelse",
+          "info": "Merknad"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Merknadstekst",
+        "description": "Tekst for stoppmerknaden."
+      }
+    ]
+  }
+}

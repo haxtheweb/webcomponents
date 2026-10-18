@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "പേജ് ഫ്ലാഗ്",
+    "description": "പേജ് രചയിതാക്കൾക്കുള്ള എഡിറ്റോറിയൽ കുറിപ്പ്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "പേജ് ഫ്ലാഗിനുള്ള ആക്സന്റ് നിറം."
+      },
+      {
+        "property": "label",
+        "title": "ലേബൽ",
+        "description": "പേജ് ഫ്ലാഗിനുള്ള ലേബൽ വാചകം."
+      }
+    ]
+  }
+}

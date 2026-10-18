@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Bicihkirina Twitter (X)",
+    "description": "Tweetekê ji X di çarçoveyê de bi cih bike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL ya Tweetê",
+        "description": "URL ya tweeta ku were bicihkirin."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Mijar",
+        "description": "Mijara ronî an tarî ji bo tweetên X.",
+        "options": {
+          "light": "Ronî",
+          "dark": "Tarî"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Dema tikandinê pencereya derketî asteng bike",
+        "description": "Nehêle bikarhêner tweetê li ser x.com vekin."
+      }
+    ]
+  }
+}

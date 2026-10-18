@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Ekitaldiko txapa",
+    "description": "Ekitaldiko txapa osagaia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV irudia",
+        "description": "Telebistan erakusten den irudia."
+      },
+      {
+        "property": "logo",
+        "title": "Logoa",
+        "description": "Txaparen izkinan erakusten den logoa."
+      },
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Txaparen goialdean erakusten den izenburua."
+      },
+      {
+        "property": "name",
+        "title": "Izena",
+        "description": "Txapan erakusten den izena."
+      },
+      {
+        "property": "position",
+        "title": "Kargua",
+        "description": "Pertsonaren rola edo kargua."
+      },
+      {
+        "property": "organization",
+        "title": "Erakundea",
+        "description": "Pertsonak lan egiten duen erakundea."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV kolorea",
+        "description": "Hautatu telebistaren kolorea."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Atzeko planoaren edo testuaren kolore nagusia."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Biratzaileen kolorea",
+        "description": "Telebistaren biratzaileen kolorea."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Aplikatu sepia efektua."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Zuri-beltza",
+        "description": "Aplikatu zuri-beltzeko efektua."
+      }
+    ]
+  }
+}

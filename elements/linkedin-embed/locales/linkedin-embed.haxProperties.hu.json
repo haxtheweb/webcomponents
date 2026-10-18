@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn-beágyazás",
+    "description": "LinkedIn-profilkártya beágyazása."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Egyéni név",
+        "description": "A LinkedIn egyéni felhasználónév-szegmense."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Területi beállítás",
+        "description": "Területi beállítás metaadat-értéke, például en_US."
+      }
+    ]
+  }
+}

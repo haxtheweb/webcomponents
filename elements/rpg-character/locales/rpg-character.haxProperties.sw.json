@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Mhusika wa RPG",
+    "description": "Mhusika wa kufurahisha kutoka HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Jina",
+        "description": "Neno linalotumika kuunda mhusika wa nasibu."
+      },
+      {
+        "property": "hat",
+        "title": "Kofia",
+        "description": "Mtindo wa kofia.",
+        "options": {
+          "none": "Chaguo-msingi",
+          "random": "Nasibu",
+          "bunny": "Sungura",
+          "cowboy": "Kaubois",
+          "education": "Elimu",
+          "construction": "Ujenzi",
+          "warning": "Onyo",
+          "watermelon": "Tikiti maji",
+          "coffee": "Kahawa",
+          "knight": "Shujaa",
+          "ninja": "Ninja",
+          "party": "Sherehe",
+          "error": "Hitilafu",
+          "edit": "Hariri"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Upana",
+        "description": "Upana wa mhusika kwa pikseli."
+      },
+      {
+        "property": "height",
+        "title": "Urefu",
+        "description": "Urefu wa mhusika kwa pikseli."
+      },
+      {
+        "property": "fire",
+        "title": "Anaungua moto?",
+        "description": "Ikiwa mhusika anaungua moto."
+      },
+      {
+        "property": "walking",
+        "title": "Anatembea?",
+        "description": "Uhuishaji wa kutembea; huendeshwa akiwa anaungua moto."
+      }
+    ]
+  }
+}

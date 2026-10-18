@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Заставица странице",
+    "description": "Уредничка белешка за ауторе странице."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Акцентна боја заставице странице."
+      },
+      {
+        "property": "label",
+        "title": "Ознака",
+        "description": "Текст ознаке заставице странице."
+      }
+    ]
+  }
+}

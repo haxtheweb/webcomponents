@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Арга хэмжээний энгэрийн тэмдэг",
+    "description": "Арга хэмжээний энгэрийн тэмдгийн бүрэлдэхүүн."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV зураг",
+        "description": "TV дээр харуулах зураг."
+      },
+      {
+        "property": "logo",
+        "title": "Лого",
+        "description": "Энгэрийн тэмдгийн буланд харуулах лого."
+      },
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Энгэрийн тэмдгийн дээд хэсэгт харуулах гарчиг."
+      },
+      {
+        "property": "name",
+        "title": "Нэр",
+        "description": "Энгэрийн тэмдэг дээр харуулах нэр."
+      },
+      {
+        "property": "position",
+        "title": "Албан тушаал",
+        "description": "Хүний үүрэг эсвэл албан тушаал."
+      },
+      {
+        "property": "organization",
+        "title": "Байгууллага",
+        "description": "Хүний ажилладаг байгууллага."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV өнгө",
+        "description": "TV-ийн өнгийг сонгоно уу."
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Үндсэн арын эсвэл текстийн өнгө."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Бариулын өнгө",
+        "description": "TV-ийн бариулын өнгө."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Сепиа",
+        "description": "Сепиа эффект хэрэглэх."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Хар цагаан",
+        "description": "Хар цагаан эффект хэрэглэх."
+      }
+    ]
+  }
+}

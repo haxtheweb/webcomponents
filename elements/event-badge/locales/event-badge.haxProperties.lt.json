@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Renginio ženklelis",
+    "description": "Renginio ženklelio komponentas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV vaizdas",
+        "description": "Televizoriuje rodomas vaizdas."
+      },
+      {
+        "property": "logo",
+        "title": "Logotipas",
+        "description": "Ženklelio kampe rodomas logotipas."
+      },
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Ženklelio viršuje rodomas pavadinimas."
+      },
+      {
+        "property": "name",
+        "title": "Vardas",
+        "description": "Ženklelyje rodomas vardas."
+      },
+      {
+        "property": "position",
+        "title": "Pareigos",
+        "description": "Asmens vaidmuo arba pareigos."
+      },
+      {
+        "property": "organization",
+        "title": "Organizacija",
+        "description": "Organizacija, kurioje asmuo dirba."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV spalva",
+        "description": "Pasirinkite televizoriaus spalvą."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Pagrindinė fono arba teksto spalva."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Rankenėlių spalva",
+        "description": "Televizoriaus rankenėlių spalva."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepija",
+        "description": "Taikyti sepijos efektą."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Nespalvotas",
+        "description": "Taikyti nespalvotą efektą."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Nótar",
+    "description": "Vísir og spælir nótar, gittartabulatur og partitur við alphaTex ella MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex-skrift",
+        "description": "Innbygd alphaTex-skrift til nótarnar. Rætta beinleiðis fyri at skriva nótar; tað verður goymt í eini skabelón, so millumrúm verða varðveitt."
+      },
+      {
+        "property": "source",
+        "title": "Partiturfíla",
+        "description": "Send upp ella leinkja til eina MusicXML- (.xml/.musicxml/.mxl) ella Guitar Pro-fílu (.gp3/.gp4/.gp5/.gpx/.gp). Gongur fram um innbygt alphaTex, tá ásett."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Ljóðavspæling",
+        "description": "Tendrað sum standard – lurta eftir nótunum spældar við innbygda synthesizaranum. Sløkk fyri bert at vísa (einki ljóð)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Vís vísingarmøguleikar",
+        "description": "Vís knøttar til zoom, strekking og snið á spælarabjálkanum."
+      },
+      {
+        "property": "showExport",
+        "title": "Vís útflutningsknøttar",
+        "description": "Vís knøttar til at taka MIDI niður og prenta/PDF á spælarabjálkanum."
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Ред от колекция",
+    "description": "Елемент тип ред за списък на колекция, с текст, връзка, икона, етикети и незадължително изображение."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Връзка",
+        "description": "Целеви URL за този ред."
+      },
+      {
+        "property": "image",
+        "title": "Изображение",
+        "description": "Изображение за реда."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Алтернативен текст, описващ изображението."
+      },
+      {
+        "property": "line1",
+        "title": "Ред 1",
+        "description": "Първи ред текст."
+      },
+      {
+        "property": "line2",
+        "title": "Ред 2",
+        "description": "Втори ред текст."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона, представяща реда."
+      },
+      {
+        "property": "saturate",
+        "title": "Ефект на наситеност",
+        "description": "Промяна на наситеността на изображението при фокус."
+      },
+      {
+        "property": "tags",
+        "title": "Етикети",
+        "description": "Списък с етикети, разделени със запетая."
+      },
+      {
+        "property": "accentColor",
+        "title": "Цвят",
+        "description": "Цвят за иконата и етикетите."
+      }
+    ]
+  }
+}

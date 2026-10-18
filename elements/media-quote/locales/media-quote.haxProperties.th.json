@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "คำพูดพร้อมสื่อ",
+    "description": "รูปภาพพร้อมคำพูด การอ้างอิง และคำบรรยายเสริม"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "คำพูด",
+        "description": "ข้อความคำพูด"
+      },
+      {
+        "slot": "author",
+        "title": "ผู้เขียน",
+        "description": "ผู้กล่าวคำพูด"
+      },
+      {
+        "slot": "author-detail",
+        "title": "รายละเอียดผู้เขียน",
+        "description": "รายละเอียดผู้เขียน"
+      },
+      {
+        "slot": "caption",
+        "title": "คำบรรยาย",
+        "description": "คำบรรยายรูปภาพ"
+      },
+      {
+        "property": "src",
+        "title": "แหล่งที่มาของรูปภาพ",
+        "description": "ไฟล์รูปภาพที่ใช้สำหรับคำพูดพร้อมสื่อ"
+      },
+      {
+        "property": "alt",
+        "title": "ข้อความแสดงแทน",
+        "description": "ข้อความแสดงแทนสำหรับรูปภาพ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีเน้นของการ์ด"
+      }
+    ]
+  }
+}

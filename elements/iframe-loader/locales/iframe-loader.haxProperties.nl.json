@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Sluit externe webinhoud in een iframe in."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Bron-URL",
+        "description": "Bron-URL."
+      },
+      {
+        "property": "height",
+        "title": "Hoogte",
+        "description": "Hoogte van het iframe."
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Breedte van het iframe."
+      }
+    ]
+  }
+}

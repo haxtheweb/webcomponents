@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ლექსიკა",
+    "description": "ლექსიკური ტერმინი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "ტერმინი"
+      },
+      {
+        "property": "information",
+        "title": "განმარტება",
+        "description": "ტერმინზე დაწკაპუნებისას ნაჩვენები განმარტება."
+      },
+      {
+        "property": "popoverMode",
+        "title": "ამომხტარი ფანჯარა",
+        "description": "განმარტების ჩვენება ამომხტარ ფანჯარაში ტექსტში ჩვენების ნაცვლად."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "ბმულები",
+        "description": "ამ ტერმინთან დაკავშირებული დამატებითი ბმულების სია."
+      }
+    ]
+  }
+}

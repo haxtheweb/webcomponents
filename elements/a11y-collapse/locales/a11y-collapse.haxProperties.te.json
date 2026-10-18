@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "కుదించగల కంటైనర్",
+    "description": "విస్తరించగల మరియు కుదించగల ఒకే కంటైనర్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "శీర్షిక",
+        "description": "కుదింపు కోసం వచనం."
+      },
+      {
+        "property": "expanded",
+        "title": "విస్తరించబడింది",
+        "description": "డిఫాల్ట్‌గా విస్తరించు."
+      },
+      {
+        "property": "headingButton",
+        "title": "శీర్షిక బటన్",
+        "description": "ఐకాన్ మాత్రమే కాకుండా మొత్తం శీర్షికను క్లిక్ చేయగలిగేలా చేయండి."
+      },
+      {
+        "property": "icon",
+        "title": "ఐకాన్",
+        "description": "విస్తరించు/కుదించు టోగుల్ బటన్ కోసం ఐకాన్."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "ఐకాన్ (విస్తరించినప్పుడు)",
+        "description": "విస్తరించిన స్థితి కోసం ఐచ్ఛిక ఐకాన్."
+      },
+      {
+        "slot": "",
+        "title": "కంటెంట్",
+        "description": "కుదింపు కోసం కంటెంట్."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "టూల్‌టిప్",
+        "description": "విస్తరించు/కుదించు టోగుల్ బటన్ కోసం టూల్‌టిప్."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "టూల్‌టిప్ (విస్తరించినప్పుడు)",
+        "description": "విస్తరించినప్పుడు విస్తరించు/కుదించు బటన్ కోసం టూల్‌టిప్."
+      }
+    ]
+  }
+}

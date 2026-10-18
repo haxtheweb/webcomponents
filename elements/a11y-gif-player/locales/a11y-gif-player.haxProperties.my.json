@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "လှုပ်ရှားသော GIF များကို အသုံးပြုရလွယ်ကူအောင် ပြုလုပ်ရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "လှုပ်ရှားသော GIF",
+        "description": "လှုပ်ရှားသော GIF ၏ URL။"
+      },
+      {
+        "property": "alt",
+        "title": "အစားထိုး စာသား",
+        "description": "ပုံအတွက် အစားထိုး စာသား။"
+      },
+      {
+        "property": "longdesc",
+        "title": "အသေးစိတ် ဖော်ပြချက်",
+        "description": "အသုံးပြုရလွယ်ကူစေရန် GIF ၏ အသေးစိတ် ဖော်ပြချက်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "ငြိမ်နေသော ပုံ",
+        "description": "GIF ၏ ငြိမ်နေသော ပုံဗားရှင်းအတွက် URL။"
+      }
+    ]
+  }
+}

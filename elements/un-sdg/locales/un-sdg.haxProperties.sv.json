@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "FN:s globala mål för hållbar utveckling."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Mål",
+        "description": "Nummer på UN SDG-målet."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Endast färg",
+        "description": "Visa endast målets färg."
+      }
+    ]
+  }
+}

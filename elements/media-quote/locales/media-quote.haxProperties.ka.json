@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "მედია-ციტატა",
+    "description": "სურათი ციტატით, წყაროთი და არასავალდებულო წარწერით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "ციტატა",
+        "description": "ციტატის ტექსტი."
+      },
+      {
+        "slot": "author",
+        "title": "ავტორი",
+        "description": "ციტატის ავტორი."
+      },
+      {
+        "slot": "author-detail",
+        "title": "ავტორის დეტალები",
+        "description": "ავტორის დეტალები."
+      },
+      {
+        "slot": "caption",
+        "title": "წარწერა",
+        "description": "სურათის წარწერა."
+      },
+      {
+        "property": "src",
+        "title": "სურათის წყარო",
+        "description": "მედია-ციტატისთვის გამოყენებული სურათის ფაილი."
+      },
+      {
+        "property": "alt",
+        "title": "ალტერნატიული ტექსტი",
+        "description": "სურათის ალტერნატიული ტექსტი."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "ბარათის აქცენტის ფერი."
+      }
+    ]
+  }
+}

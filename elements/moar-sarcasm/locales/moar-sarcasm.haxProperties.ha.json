@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Habaici",
+    "description": "Gabatar da rubutu ta hanyar ba'a"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Rubutu",
+        "description": "Rubutun da za a mayar habaici"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Siqi ukhupi uyarikuy",
+    "description": "Rapipi kaqta yapanapaq siqi ukhupi uyarikuyta puklliy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pukyu",
+        "description": "MP3 willañiqi utaq URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Tarjetapa rikchachiq llimpin."
+      },
+      {
+        "property": "shiny",
+        "title": "K'anchaq",
+        "description": "Uqi rantinpi aswan k'anchaq rikchachiq qhipa llimpita llamk'achiy."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tutayaq",
+        "description": "Tutayaq modota llamk'achiy."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Säitemarkéierung",
+    "description": "Redaktionell Notiz fir Säitenauteuren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Akzentfaarf fir d'Säitemarkéierung."
+      },
+      {
+        "property": "label",
+        "title": "Etikett",
+        "description": "Etiketttext fir d'Säitemarkéierung."
+      }
+    ]
+  }
+}

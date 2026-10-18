@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lembani m'malo opanda kanthu",
+    "description": "Ntchito yoyesa pomwe ophunzira amamaliza mawu osowa m'chiganizo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Funso",
+        "description": "Funso loti ogwiritsa ntchito ayankhe."
+      },
+      {
+        "property": "statement",
+        "title": "Chiganizo",
+        "description": "Chiganizo chomwe chidzasinthidwa kukhala ntchito yolemba mawu."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Njira yopatsira maksi",
+        "description": "OER Schema: njira yopatsira maksi pa mayeso awa (mwachitsanzo mfundo, chilembo, peresenti, kumaliza)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cholinga cha maphunziro",
+        "description": "OER Schema: cholinga cha maphunziro chokhudzana ndi mayeso awa."
+      },
+      {
+        "property": "forCourse",
+        "title": "Maphunziro",
+        "description": "OER Schema: maphunziro omwe mayeso awa akukonzedwera."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Dzina la mayeso",
+        "description": "Dzina la mayeso loperekedwa kuti ligwiritsidwe ntchito m'malo oyendetsedwa ndi xAPI pozindikira chinthuchi"
+      }
+    ]
+  }
+}

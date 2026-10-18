@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Gcwalisa izithuba",
+    "description": "Umsebenzi wovavanyo apho abafundi bagcwalisa amagama angekhoyo kwingxelo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Umbuzo",
+        "description": "Umbuzo abasebenzisi abaza kuwuphendula."
+      },
+      {
+        "property": "statement",
+        "title": "Ingxelo",
+        "description": "Ingxelo eza kuguqulwa ibe ngumsebenzi wokuphawula amagama."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ifomathi yokumakisha",
+        "description": "OER Schema: ifomathi yokumakisha yolu vavanyo (umz. amanqaku, unobumba, ipesenti, ukugqitywa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Injongo yokufunda",
+        "description": "OER Schema: injongo yokufunda enxulumene nolu vavanyo."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikhosi",
+        "description": "OER Schema: ikhosi olu vavanyo lwenzelwe yona."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Igama lekwizi",
+        "description": "Igama lekwizi elidluliselwa kwiindawo eziqhutywa yi-xAPI ukuze kuchongwe le nto"
+      }
+    ]
+  }
+}

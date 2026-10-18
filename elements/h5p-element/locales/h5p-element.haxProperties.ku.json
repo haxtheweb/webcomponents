@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Pêçeka h5p ji bo barkirin û pêşkêşkirina pelên .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Koda bicihkirinê ya iframe ya H5P"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kontainer yang dapat diciutkan",
+    "description": "Kontainer tunggal yang dapat dibentangkan dan diciutkan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Judul",
+        "description": "Teks untuk bagian yang dapat diciutkan."
+      },
+      {
+        "property": "expanded",
+        "title": "Terbentang",
+        "description": "Bentangkan secara bawaan."
+      },
+      {
+        "property": "headingButton",
+        "title": "Tombol Judul",
+        "description": "Jadikan seluruh judul dapat diklik, bukan hanya ikonnya."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon untuk tombol bentang/ciutkan."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikon (saat terbentang)",
+        "description": "Ikon opsional untuk status tombol saat terbentang."
+      },
+      {
+        "slot": "",
+        "title": "Konten",
+        "description": "Konten untuk bagian yang dapat diciutkan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Tooltip",
+        "description": "Tooltip untuk tombol bentang/ciutkan."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Tooltip (saat terbentang)",
+        "description": "Tooltip untuk tombol bentang/ciutkan saat terbentang."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Lühivastusega küsimus",
+    "description": "Lase kasutajal vastata lihtsale küsimusele"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Küsimus",
+        "description": "Küsimus, millele kasutajad vastavad."
+      },
+      {
+        "property": "answers",
+        "title": "Võimalikud vastused"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testi nimi",
+        "description": "Testi nimi, mida kasutatakse xAPI-põhistes keskkondades selle üksuse tuvastamiseks"
+      }
+    ]
+  }
+}

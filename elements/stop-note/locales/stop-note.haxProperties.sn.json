@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Chinyorwa Chekumira",
+    "description": "Meseji yekuyambira vaverengi nezve mirairo chaiyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Nyora musoro wechinyorwa chekumira."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Nyora URL yekunze."
+      },
+      {
+        "property": "status",
+        "title": "Mamiriro",
+        "description": "Kuseta mamiriro kunochinja mavara nemaaikoni kuti zvienderane",
+        "options": {
+          "stop": "Mira",
+          "warning": "Yambiro",
+          "success": "Kusimbisa",
+          "info": "Chiziviso"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Mavara eChinyorwa",
+        "description": "Mavara echinyorwa chekumira."
+      }
+    ]
+  }
+}

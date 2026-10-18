@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "छवि तुलना",
+    "description": "तुलना के लिए एक छवि को दूसरी के ऊपर स्वाइप करें।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "ऊपरी छवि",
+        "description": "निचली छवि के ऊपर स्वाइप की जाने वाली ऊपरी छवि।"
+      },
+      {
+        "property": "topAlt",
+        "title": "ऊपरी छवि का वैकल्पिक टेक्स्ट",
+        "description": "सुलभता के लिए आवश्यक वैकल्पिक टेक्स्ट।"
+      },
+      {
+        "property": "bottomSrc",
+        "title": "निचली छवि",
+        "description": "ऊपरी छवि के नीचे दिखाई जाने वाली निचली छवि।"
+      },
+      {
+        "property": "bottomAlt",
+        "title": "निचली छवि का वैकल्पिक टेक्स्ट",
+        "description": "सुलभता के लिए आवश्यक वैकल्पिक टेक्स्ट।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "व्यवहार",
+        "description": "वाइप मोड (डिफ़ॉल्ट) या ऊपरी छवि अपारदर्शिता मोड चुनें।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "स्लाइडर बार का रंग।"
+      },
+      {
+        "property": "dark",
+        "title": "डार्क",
+        "description": "स्लाइडर बार का रंग उलटें।"
+      },
+      {
+        "property": "position",
+        "title": "प्रारंभिक स्थिति",
+        "description": "0 से 100 तक प्रारंभिक स्थिति।"
+      }
+    ]
+  }
+}

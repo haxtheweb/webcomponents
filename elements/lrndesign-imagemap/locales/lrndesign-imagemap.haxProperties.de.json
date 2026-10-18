@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Imagemap",
+    "description": "Eine barrierefreie Imagemap mit interaktiven Hotspots."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Beschriftung",
+        "description": "Beschriftung der Imagemap."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Hotspot-Details",
+        "description": "Die interaktiven Hotspots der Imagemap."
+      }
+    ]
+  }
+}

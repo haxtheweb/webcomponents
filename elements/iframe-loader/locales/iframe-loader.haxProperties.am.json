@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "ውጫዊ የድር ይዘትን በiframe ውስጥ ክተት።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "የሀብት URL",
+        "description": "የሀብት URL።"
+      },
+      {
+        "property": "height",
+        "title": "ቁመት",
+        "description": "የiframe ቁመት።"
+      },
+      {
+        "property": "width",
+        "title": "ስፋት",
+        "description": "የiframe ስፋት።"
+      }
+    ]
+  }
+}

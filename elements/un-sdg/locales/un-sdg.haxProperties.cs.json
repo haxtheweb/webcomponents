@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Cíl udržitelného rozvoje OSN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Cíl",
+        "description": "Číslo UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Pouze barva",
+        "description": "Zobrazit pouze barvu cíle."
+      }
+    ]
+  }
+}

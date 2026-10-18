@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galeria obrazów",
+    "description": "Galeria prezentująca obrazy w układzie siatki, muru lub pokazu slajdów."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Tryb wyświetlania",
+        "description": "Sposób prezentacji obrazów w galerii.",
+        "options": {
+          "grid": "Siatka",
+          "masonry": "Mur",
+          "gallery": "Galeria"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktywny indeks",
+        "description": "Indeks obrazu, od którego zaczyna się tryb galerii."
+      }
+    ]
+  }
+}

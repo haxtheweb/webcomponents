@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "פיצוץ מדהים",
+    "description": "הנפשת פיצוץ אינטראקטיבית עם אפקטים קוליים אופציונליים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "גודל",
+        "description": "הגדרת גודל הפיצוץ.",
+        "options": {
+          "tiny": "זעיר",
+          "small": "קטן",
+          "medium": "בינוני",
+          "large": "גדול",
+          "epic": "אפי"
+        }
+      },
+      {
+        "property": "color",
+        "title": "צבע",
+        "description": "הגדרת ערכת הצבעים של הפיצוץ.",
+        "options": {
+          "": "ברירת מחדל",
+          "red": "אדום",
+          "blue": "כחול",
+          "purple": "סגול",
+          "orange": "כתום",
+          "yellow": "צהוב"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "אפקטים קוליים",
+        "description": "הפעלת אפקטים קוליים."
+      },
+      {
+        "property": "resetSound",
+        "title": "איפוס צליל",
+        "description": "הפעלת הצליל מחדש מההתחלה בכל פעם."
+      },
+      {
+        "property": "image",
+        "title": "תמונה מותאמת אישית",
+        "description": "URL אופציונלי לתמונת פיצוץ מותאמת אישית."
+      },
+      {
+        "property": "sound",
+        "title": "צליל מותאם אישית",
+        "description": "URL אופציונלי לאפקט קולי מותאם אישית."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "מושבת",
+        "description": "השבתת כל האינטראקציות."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ဝေါဟာရ",
+    "description": "ဝေါဟာရ စကားလုံး။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "ဝေါဟာရ"
+      },
+      {
+        "property": "information",
+        "title": "အဓိပ္ပာယ်",
+        "description": "ဝေါဟာရကို နှိပ်သောအခါ ပြသော အဓိပ္ပာယ်။"
+      },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "အဓိပ္ပာယ်ကို inline အစား popover တွင် ပြသရန်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "လင့်ခ်များ",
+        "description": "ဤဝေါဟာရနှင့် ဆက်စပ်သော ဖြည့်စွက် လင့်ခ်များ စာရင်း။"
+      }
+    ]
+  }
+}

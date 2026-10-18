@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Pitanje redoslijeda",
+    "description": "Poredajte stavke ispravnim redoslijedom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pitanje",
+        "description": "Zaglavlje pitanja."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format ocjenjivanja",
+        "description": "OER Schema: format ocjenjivanja za ovu procjenu (npr. bodovi, slovna ocjena, postotak, završenost)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ishod učenja",
+        "description": "OER Schema: ishod učenja povezan s ovom procjenom."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kurs kojem je ova procjena namijenjena."
+      },
+      {
+        "property": "answers",
+        "title": "Odgovori",
+        "description": "Redoslijed odgovora određuje ispravan slijed."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naziv kviza",
+        "description": "Naziv kviza koji se koristi za xAPI identifikaciju u analitičkim sistemima."
+      }
+    ]
+  }
+}

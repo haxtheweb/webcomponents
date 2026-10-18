@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bendera ya ukurasa",
+    "description": "Dokezo la uhariri kwa waandishi wa ukurasa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Rangi ya Msisitizo",
+        "description": "Rangi ya msisitizo ya bendera ya ukurasa."
+      },
+      {
+        "property": "label",
+        "title": "Lebo",
+        "description": "Maandishi ya lebo ya bendera ya ukurasa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kutia e aktivitetit",
+    "description": "Bllok i vogël titulli me stil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona e shfaqur pranë kutisë së aktivitetit."
+      },
+      {
+        "property": "tag",
+        "title": "Etiketa e kutisë së aktivitetit",
+        "description": "Etiketa e shfaqur në kutinë e aktivitetit."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Pa ngjyrosje",
+        "description": "Parandalo aplikimin e ngjyrave në ikonë."
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Cholemba Choyimitsa",
+    "description": "Uthenga wochenjeza owerenga za malangizo enieni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Lowetsani mutu wa cholemba choyimitsa."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Lowetsani URL yakunja."
+      },
+      {
+        "property": "status",
+        "title": "Mkhalidwe",
+        "description": "Kuika mkhalidwe kumasintha mitundu ndi zizindikiro kuti zigwirizane",
+        "options": {
+          "stop": "Imani",
+          "warning": "Chenjezo",
+          "success": "Chitsimikizo",
+          "info": "Chidziwitso"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Mawu a Cholemba",
+        "description": "Mawu a cholemba choyimitsa."
+      }
+    ]
+  }
+}

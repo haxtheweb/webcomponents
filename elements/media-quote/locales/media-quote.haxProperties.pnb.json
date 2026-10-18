@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "میڈیا اقتباس",
+    "description": "اقتباس، حوالے تے اختیاری کیپشن والی تصویر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "اقتباس",
+        "description": "اقتباس دا متن۔"
+      },
+      {
+        "slot": "author",
+        "title": "لکھاری",
+        "description": "اقتباس دا لکھاری۔"
+      },
+      {
+        "slot": "author-detail",
+        "title": "لکھاری دیاں تفصیلاں",
+        "description": "لکھاری دیاں تفصیلاں۔"
+      },
+      {
+        "slot": "caption",
+        "title": "کیپشن",
+        "description": "تصویر دا کیپشن۔"
+      },
+      {
+        "property": "src",
+        "title": "تصویر دا سرچشمہ",
+        "description": "میڈیا اقتباس لئی ورتی جاوݨ والی تصویر فائل۔"
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "تصویر لئی متبادل متن۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "کارڈ دا نمایاں رنگ۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF ಬ್ರೌಸರ್ ವೀಕ್ಷಕ",
+    "description": "ಐಚ್ಛಿಕ ಕಾರ್ಡ್ ಲೇಔಟ್ ಮತ್ತು ಡೌನ್‌ಲೋಡ್ ಬಟನ್‌ನೊಂದಿಗೆ PDF ಫೈಲ್ ಅನ್ನು ಇನ್‌ಲೈನ್ ಆಗಿ ಎಂಬೆಡ್ ಮಾಡಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF ಫೈಲ್‌ನ ಸ್ಥಳ."
+      },
+      {
+        "property": "heading",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಕಾರ್ಡ್ ಶೀರ್ಷಿಕೆ ಪಠ್ಯ."
+      },
+      {
+        "property": "card",
+        "title": "ಕಾರ್ಡ್ ಲೇಔಟ್",
+        "description": "ಡೌನ್‌ಲೋಡ್ ಬಟನ್‌ನೊಂದಿಗೆ ಕಾರ್ಡ್‌ನಲ್ಲಿ PDF ಪ್ರದರ್ಶಿಸಿ."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ಡೌನ್‌ಲೋಡ್ ಲೇಬಲ್",
+        "description": "ಡೌನ್‌ಲೋಡ್ ಬಟನ್‌ನ ಲೇಬಲ್."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "ಬೆಂಬಲಿತವಲ್ಲ ಸಂದೇಶ",
+        "description": "ಬ್ರೌಸರ್ PDF ಫೈಲ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಲು ಸಾಧ್ಯವಾಗದಿದ್ದಾಗ ಸಂದೇಶ."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "ಬೆಂಬಲಿತವಲ್ಲ ಲಿಂಕ್ ಸಂದೇಶ",
+        "description": "ಬ್ರೌಸರ್ PDF ಫೈಲ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಲು ಸಾಧ್ಯವಾಗದಿದ್ದಾಗ ಲಿಂಕ್ ಪಠ್ಯ."
+      },
+      {
+        "property": "width",
+        "title": "ಅಗಲ",
+        "description": "PDF ವೀಕ್ಷಕದ ಅಗಲ."
+      },
+      {
+        "property": "height",
+        "title": "ಎತ್ತರ",
+        "description": "PDF ವೀಕ್ಷಕದ ಎತ್ತರ."
+      }
+    ]
+  }
+}

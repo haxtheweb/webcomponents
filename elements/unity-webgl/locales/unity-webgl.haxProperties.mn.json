@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity тоглуулагч",
+    "description": "Unity WebGL тоглуулагч."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Зорилт",
+        "description": "Тоглоомын бүтээлийн зам."
+      },
+      {
+        "property": "compression",
+        "title": "Шахах арга",
+        "description": "Тоглоомын нөөц файлуудын шахалтын файлын өргөтгөл."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Дамжуулалтын URL",
+        "description": "Дамжуулах нөөцийн URL."
+      },
+      {
+        "property": "companyname",
+        "title": "Компанийн нэр",
+        "description": "Компанийн нэр."
+      },
+      {
+        "property": "productname",
+        "title": "Бүтээгдэхүүний нэр",
+        "description": "Тоглоомын гарчиг."
+      },
+      {
+        "property": "productversion",
+        "title": "Бүтээгдэхүүний хувилбар",
+        "description": "Гаргасан хувилбар."
+      },
+      {
+        "property": "width",
+        "title": "Зураг дэвсгэрийн өргөн",
+        "description": "Зураг дэвсгэрийн CSS өргөн (жишээ нь px эсвэл em)."
+      },
+      {
+        "property": "height",
+        "title": "Зураг дэвсгэрийн өндөр",
+        "description": "Зураг дэвсгэрийн CSS өндөр (жишээ нь px эсвэл em)."
+      },
+      {
+        "property": "background",
+        "title": "Зураг дэвсгэрийн арын өнгө",
+        "description": "Зураг дэвсгэрийн CSS арын өнгө."
+      }
+    ]
+  }
+}

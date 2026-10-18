@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Vizualizues MIDI",
+    "description": "Luaj MIDI në kontekst me vizualizim."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Burimi",
+        "description": "URL-ja e skedarit për t'u luajtur."
+      },
+      {
+        "property": "visualizer",
+        "title": "Vizualizimi",
+        "description": "Stili i vizualizimit për skedarin muzikor.",
+        "options": {
+          "staff": "Pentagram",
+          "piano-roll": "Rul pianoje",
+          "waterfall": "Piano + ujëvarë"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Fshih ujëvarën",
+        "description": "Fshih notat e ujëvarës në vizualizimin e pianos."
+      }
+    ]
+  }
+}

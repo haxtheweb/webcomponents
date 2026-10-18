@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Stavka zbirke",
+    "description": "Stavka u obliku kartice za upotrebu unutar popisa zbirke, s tekstom, poveznicom i neobaveznim medijem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Poveznica",
+        "description": "Odredišni URL ove kartice."
+      },
+      {
+        "property": "image",
+        "title": "Slika",
+        "description": "Pozadinska slika."
+      },
+      {
+        "property": "line1",
+        "title": "Redak 1",
+        "description": "Prvi redak teksta."
+      },
+      {
+        "property": "line2",
+        "title": "Redak 2",
+        "description": "Drugi redak teksta."
+      },
+      {
+        "property": "line3",
+        "title": "Redak 3",
+        "description": "Treći redak teksta."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona koja predstavlja karticu."
+      },
+      {
+        "property": "saturate",
+        "title": "Efekt zasićenosti",
+        "description": "Promijeni zasićenost slike kada je korisnik fokusira."
+      },
+      {
+        "property": "tags",
+        "title": "Oznake",
+        "description": "Popis oznaka odvojenih zarezima."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja",
+        "description": "Boja za oznake."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativni tekst koji opisuje poveznicu."
+      }
+    ]
+  }
+}

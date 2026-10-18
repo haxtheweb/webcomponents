@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "تفاصيل الصفحة",
+    "description": "تحديد فاصل مرئي بين الصفحات يمكن لأنظمة إدارة المحتوى استخدامه لإنشاء الصفحات."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "العنوان المعروض في السمة وفي العنوان الأول."
+      },
+      {
+        "property": "pageType",
+        "title": "النوع",
+        "description": "تسمية مرئية لسياق الصفحة.",
+        "options": {
+          "": "-- لا شيء --",
+          "content": "المحتوى",
+          "assessment": "تقييم",
+          "quiz": "اختبار قصير",
+          "submission": "تسليم",
+          "lesson": "درس",
+          "module": "وحدة نمطية",
+          "task": "مهمة",
+          "activity": "نشاط",
+          "project": "مشروع",
+          "practice": "تدريب",
+          "unit": "وحدة",
+          "objectives": "أهداف التعلّم",
+          "connection": "ربط",
+          "knowledge": "هل تعلم؟",
+          "strategy": "استراتيجية تعلّم",
+          "discuss": "ناقِش",
+          "listen": "استمع",
+          "make": "اصنع",
+          "observe": "لاحِظ",
+          "present": "اعرض",
+          "reading": "قراءة",
+          "reflect": "تأمَّل",
+          "research": "ابحث",
+          "watch": "شاهِد",
+          "write": "اكتب"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "الوسوم",
+        "description": "قائمة وسوم مفصولة بفواصل."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL الرابط",
+        "description": "URL إعادة توجيه يُعرض بدلًا من محتوى الصفحة."
+      },
+      {
+        "property": "linkTarget",
+        "title": "هدف الرابط",
+        "description": "فتح الروابط في النافذة نفسها أو في نافذة جديدة.",
+        "options": {
+          "_self": "النافذة نفسها",
+          "_blank": "نافذة جديدة"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "منشور",
+        "description": "الصفحات غير المنشورة مخفية عن المستخدمين النهائيين."
+      },
+      {
+        "property": "locked",
+        "title": "قفل الصفحة",
+        "description": "قفل جميع العناصر في هذه الصفحة أو إلغاء قفلها."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "تجاوز المسار التلقائي",
+        "description": "قفل المسار من التحديثات التلقائية المبنية على العنوان أو الصفحة الأم."
+      },
+      {
+        "property": "slug",
+        "title": "المسار",
+        "description": "مسار URL لهذه الصفحة."
+      },
+      {
+        "property": "image",
+        "title": "الوسائط",
+        "description": "الوسائط التي تمثل الصفحة، وتُستخدم في بعض السمات وطرق العرض."
+      },
+      {
+        "property": "parent",
+        "title": "الصفحة الأم",
+        "description": "مسار الصفحة الأم."
+      },
+      {
+        "property": "noderefs",
+        "title": "محتوى ذو صلة",
+        "description": "الصفحات المرتبطة بهذه الصفحة."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "الوصف",
+        "description": "الوصف المستخدم في المجموعات وتحسين محركات البحث."
+      },
+      {
+        "property": "entityType",
+        "title": "نوع الكيان",
+        "description": "القيمة الافتراضية صفحة ما لم يُحدَّد غير ذلك.",
+        "options": {
+          "page": "صفحة (افتراضي)",
+          "taxonomy": "تصنيف",
+          "taxonomyTerm": "مصطلح تصنيف",
+          "region": "منطقة"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "الأيقونة",
+        "description": "الأيقونة المرتبطة بهذه الصفحة في الموقع."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "اللون المرتبط بهذه الصفحة في الموقع."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "إخفاء من القائمة",
+        "description": "إخفاء هذه الصفحة من القوائم مع الإبقاء على URL الخاص بها."
+      },
+      {
+        "property": "order",
+        "title": "الترتيب",
+        "description": "الترتيب بالنسبة إلى الصفحات الشقيقة."
+      },
+      {
+        "property": "developerTheme",
+        "title": "سمة الصفحة",
+        "description": "تجاوز السمة لهذه الصفحة فقط."
+      },
+      {
+        "property": "author",
+        "title": "المؤلف",
+        "description": "اسم مستخدم آخر شخص عدَّل هذه الصفحة."
+      }
+    ]
+  }
+}

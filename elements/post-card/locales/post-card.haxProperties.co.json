@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Cartulina",
+    "description": "Un elementu media scherzosu chì s'assumiglia à una vera cartulina mandata da qualchì locu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "À",
+        "description": "À quale hè destinata?"
+      },
+      {
+        "property": "from",
+        "title": "Da",
+        "description": "Quale site?"
+      },
+      {
+        "property": "message",
+        "title": "Messaghju",
+        "description": "Chì vulete dì?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Timbru pustale di",
+        "description": "Da induve hè stata mandata sta cartulina?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Fonte di a foto principale",
+        "description": "Induve si trova a vostra foto?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Fonte di a foto di u francubollu",
+        "description": "Induve si trova a vostra foto?"
+      }
+    ]
+  }
+}

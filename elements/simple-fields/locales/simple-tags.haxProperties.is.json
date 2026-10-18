@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Merki",
+    "description": "Einfaldur merkjalisti til birtingar á síðunni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Merki",
+        "description": "Kommuaðgreindur listi af merkjum."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Sjálfvirkur áherslulitur",
+        "description": "Stilla áherslulit sjálfkrafa út frá merkinu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Litur",
+        "description": "Litur fyrir merki."
+      }
+    ]
+  }
+}

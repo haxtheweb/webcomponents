@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "ट्याग / पिल",
+    "description": "वैकल्पिक एक्सेन्ट रङ, रद्द बटन वा टगलसहितको सानो चक्की आकारको लेबल।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "लेबल",
+        "description": "पिलभित्र देखाइने पाठ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "पिलको पृष्ठभूमिका लागि SimpleColors एक्सेन्ट नाम।",
+        "options": {
+          "": "-- पूर्वनिर्धारित --",
+          "red": "रातो",
+          "pink": "गुलाबी",
+          "purple": "बैजनी",
+          "deep-purple": "गाढा बैजनी",
+          "indigo": "इन्डिगो",
+          "blue": "नीलो",
+          "light-blue": "हल्का नीलो",
+          "cyan": "सायन",
+          "teal": "टिल",
+          "green": "हरियो",
+          "light-green": "हल्का हरियो",
+          "lime": "कागती हरियो",
+          "yellow": "पहेँलो",
+          "amber": "एम्बर",
+          "orange": "सुन्तला",
+          "deep-orange": "गाढा सुन्तला",
+          "brown": "खैरो (ब्राउन)",
+          "blue-grey": "नीलो-खरानी",
+          "grey": "खरानी"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "स्वचालित एक्सेन्ट रङ",
+        "description": "लेबलको पाठबाट एक्सेन्ट रङ स्वचालित रूपमा निकाल्नुहोस्।"
+      },
+      {
+        "property": "cancelButton",
+        "title": "रद्द बटन",
+        "description": "पिलभित्र हटाउने/रद्द गर्ने आइकन बटन देखाउनुहोस्।"
+      },
+      {
+        "property": "readonly",
+        "title": "पढ्ने मात्र",
+        "description": "पिल देखाउने मात्र होस् भनेर रद्द बटन लुकाउनुहोस्।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "टगलहरू",
+        "description": "बटन क्लिक गर्दा पिल अन/अफ टगल होस्।"
+      },
+      {
+        "property": "toggled",
+        "title": "टगल गरिएको",
+        "description": "पिल अहिले अन अवस्थामा छ कि छैन।"
+      },
+      {
+        "property": "toggledIcon",
+        "title": "टगल गरिएको आइकन",
+        "description": "पिल अन हुँदा देखाइने आइकन।"
+      },
+      {
+        "property": "disabled",
+        "title": "निष्क्रिय",
+        "description": "पिलसँगको अन्तरक्रिया निष्क्रिय गर्नुहोस्।"
+      }
+    ]
+  }
+}

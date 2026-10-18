@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "છબી વિભાગ",
+    "description": "પૃષ્ઠ વિભાગને વિભાજિત કરતી પૂર્ણ-પહોળાઈની છબી."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "પૃષ્ઠભૂમિ છબી."
+      },
+      {
+        "property": "caption",
+        "description": "લખાણ મથાળું."
+      }
+    ]
+  }
+}

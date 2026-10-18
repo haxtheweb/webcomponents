@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Senarai main",
+    "description": "Paparkan apa-apa jenis kandungan dalam senarai main."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Sumber",
+        "description": "Kandungan yang dipaparkan dalam senarai main."
+      },
+      {
+        "property": "edit",
+        "title": "Mod sunting",
+        "description": "Togol antara mod sunting dan pratonton untuk senarai main."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigasi",
+        "description": "Paparkan butang navigasi ke hadapan dan ke belakang."
+      },
+      {
+        "property": "pagination",
+        "title": "Penomboran halaman",
+        "description": "Paparkan titik penomboran halaman."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientasi",
+        "description": "Orientasi slaid.",
+        "options": {
+          "horizontal": "Mendatar",
+          "vertical": "Menegak"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Slaid permulaan",
+        "description": "Indeks slaid untuk difokuskan pada mulanya."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Nisbah Aspek",
+        "description": "Nisbah aspek slaid.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

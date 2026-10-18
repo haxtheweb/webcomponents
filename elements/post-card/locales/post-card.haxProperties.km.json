@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "កាតប៉ុស្តាល់",
+    "description": "ធាតុមេឌៀកំសាន្តដែលមើលទៅដូចកាតប៉ុស្តាល់ពិតពីកន្លែងណាមួយ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "ជូនចំពោះ",
+        "description": "តើនេះផ្ញើទៅអ្នកណា?"
+      },
+      {
+        "property": "from",
+        "title": "ពី",
+        "description": "តើអ្នកជានរណា?"
+      },
+      {
+        "property": "message",
+        "title": "សារ",
+        "description": "តើអ្នកចង់និយាយអ្វី?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "ត្រាប្រៃសណីយ៍ពី",
+        "description": "តើកាតនេះត្រូវបានផ្ញើពីណា?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "ប្រភពរូបថតចម្បង",
+        "description": "តើរូបថតរបស់អ្នកនៅទីណា?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "ប្រភពរូបថតតែម",
+        "description": "តើរូបថតរបស់អ្នកនៅទីណា?"
+      }
+    ]
+  }
+}

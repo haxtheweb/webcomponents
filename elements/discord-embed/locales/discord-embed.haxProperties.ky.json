@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Бөлүшүү URL аркылуу Discord жамааттарын кыстаруу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ресурстун URL дареги",
+        "description": "Ресурстун URL дареги."
+      },
+      {
+        "property": "height",
+        "title": "Бийиктиги",
+        "description": "Мазмун алкагынын бийиктиги."
+      },
+      {
+        "property": "width",
+        "title": "Туурасы",
+        "description": "Мазмун алкагынын туурасы."
+      }
+    ]
+  }
+}

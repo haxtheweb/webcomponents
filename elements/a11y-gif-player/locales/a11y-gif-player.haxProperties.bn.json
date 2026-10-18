@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "অ্যানিমেটেড GIF-কে অ্যাক্সেসযোগ্য করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "অ্যানিমেটেড GIF",
+        "description": "অ্যানিমেটেড GIF-এর URL।"
+      },
+      {
+        "property": "alt",
+        "title": "বিকল্প টেক্সট",
+        "description": "ছবির বিকল্প টেক্সট।"
+      },
+      {
+        "property": "longdesc",
+        "title": "দীর্ঘ বিবরণ",
+        "description": "অ্যাক্সেসযোগ্যতার জন্য GIF-এর দীর্ঘ বিবরণ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "স্থির ছবি",
+        "description": "GIF-এর স্থির ছবি সংস্করণের URL।"
+      }
+    ]
+  }
+}

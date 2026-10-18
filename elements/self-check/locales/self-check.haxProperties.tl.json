@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Sariling Pagsusuri",
+    "description": "Maaaring kumpletuhin ng mga user ang sariling pagsusuri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Larawan",
+        "description": "Larawan para sa sariling pagsusuri."
+      },
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Pamagat ng sariling pagsusuri."
+      },
+      {
+        "property": "alt",
+        "title": "Alt Text",
+        "description": "Alt text para sa larawan."
+      },
+      {
+        "slot": "question",
+        "title": "Tanong"
+      },
+      {
+        "slot": "",
+        "title": "Sagot"
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulay ng Tema",
+        "description": "Pumili ng kulay ng tema mula sa design system.",
+        "options": {
+          "primary": "Pangunahin",
+          "accent": "Accent",
+          "success": "Tagumpay",
+          "warning": "Babala",
+          "error": "Error",
+          "info": "Impormasyon"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Layunin sa Pagkatuto",
+        "description": "Reference sa layunin sa pagkatuto na inilalabas bilang oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Tinatasa",
+        "description": "Reference sa aktibidad na inilalabas bilang oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Link para sa higit pa",
+        "description": "Link sa karagdagang impormasyon."
+      }
+    ]
+  }
+}

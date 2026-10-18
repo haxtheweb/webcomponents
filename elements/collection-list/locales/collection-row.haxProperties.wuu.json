@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "集合行",
+    "description": "放勒集合列表里个行式项目，有文字、链接、图标、标签搭可选图片。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "链接",
+        "description": "搿行个目标 URL。"
+      },
+      {
+        "property": "image",
+        "title": "图片",
+        "description": "搿行个图片。"
+      },
+      {
+        "property": "alt",
+        "title": "替代文字",
+        "description": "描述图片个替代文字。"
+      },
+      {
+        "property": "line1",
+        "title": "第 1 行",
+        "description": "第一行文字。"
+      },
+      {
+        "property": "line2",
+        "title": "第 2 行",
+        "description": "第二行文字。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "图标",
+        "description": "代表搿行个图标。"
+      },
+      {
+        "property": "saturate",
+        "title": "饱和度效果",
+        "description": "用户聚焦辰光变动图片饱和度。"
+      },
+      {
+        "property": "tags",
+        "title": "标签",
+        "description": "用逗号隔开个标签列表。"
+      },
+      {
+        "property": "accentColor",
+        "title": "颜色",
+        "description": "图标搭标签用个颜色。"
+      }
+    ]
+  }
+}

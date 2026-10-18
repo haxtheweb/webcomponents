@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Klausimas „Tiesa / netiesa“",
+    "description": "Klausimas „tiesa ar netiesa“"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Klausimas",
+        "description": "Klausimas, į kurį turi atsakyti naudotojai."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Teisingas atsakymas"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testo pavadinimas",
+        "description": "Testo pavadinimas, perduodamas xAPI pagrįstoms aplinkoms šiam elementui identifikuoti"
+      }
+    ]
+  }
+}

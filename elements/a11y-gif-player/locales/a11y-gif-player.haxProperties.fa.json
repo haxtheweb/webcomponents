@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "GIFهای متحرک را دسترس‌پذیر کنید."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF متحرک",
+        "description": "URL فایل GIF متحرک."
+      },
+      {
+        "property": "alt",
+        "title": "متن جایگزین",
+        "description": "متن جایگزین تصویر."
+      },
+      {
+        "property": "longdesc",
+        "title": "توضیح مفصل",
+        "description": "توضیح مفصل GIF برای دسترس‌پذیری."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "تصویر ثابت",
+        "description": "URL نسخهٔ تصویر ثابت GIF."
+      }
+    ]
+  }
+}

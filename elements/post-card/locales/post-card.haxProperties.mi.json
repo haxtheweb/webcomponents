@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Kāri Poutāpeta",
+    "description": "He pāpāho tākaro e rite ana ki tētahi kāri poutāpeta tūturu mai i tētahi wāhi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Ki",
+        "description": "Ka haere tēnei ki a wai?"
+      },
+      {
+        "property": "from",
+        "title": "Nā",
+        "description": "Ko wai koe?"
+      },
+      {
+        "property": "message",
+        "title": "Karere",
+        "description": "He aha tāu e hiahia ana ki te kī?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Tohu Poutāpeta Nō",
+        "description": "I tukuna mai tēnei kāri i hea?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Pūtake Whakaahua Matua",
+        "description": "Kei hea tō whakaahua?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Pūtake Whakaahua Pane Kuini",
+        "description": "Kei hea tō whakaahua?"
+      }
+    ]
+  }
+}

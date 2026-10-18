@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI wizualizatory",
+    "description": "MIDI-ni wizuallaşdyrma bilen kontekstde oýnadyň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çeşme",
+        "description": "Oýnadyljak faýlyň URL-i."
+      },
+      {
+        "property": "visualizer",
+        "title": "Wizuallaşdyrma",
+        "description": "Saz faýly üçin wizuallaşdyrma stili.",
+        "options": {
+          "staff": "Nota setiri",
+          "piano-roll": "Piano rulony",
+          "waterfall": "Piano + şaglawuk"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Şaglawugy gizle",
+        "description": "Piano wizuallaşdyrmasynda şaglawuk notalaryny gizle."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "แท็ก",
+    "description": "รายการแท็กอย่างง่ายสำหรับแสดงบนหน้า"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "แท็ก",
+        "description": "รายการแท็กที่คั่นด้วยเครื่องหมายจุลภาค"
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "สีเน้นอัตโนมัติ",
+        "description": "ตั้งค่าสีเน้นตามป้ายกำกับโดยอัตโนมัติ"
+      },
+      {
+        "property": "accentColor",
+        "title": "สี",
+        "description": "สีสำหรับแท็ก"
+      }
+    ]
+  }
+}

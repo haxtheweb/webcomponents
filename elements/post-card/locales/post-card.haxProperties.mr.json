@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "पोस्ट कार्ड",
+    "description": "कुठूनतरी आलेल्या खऱ्या पोस्ट कार्डसारखा दिसणारा खेळकर माध्यम घटक"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "प्रति",
+        "description": "हे कोणाला जात आहे?"
+      },
+      {
+        "property": "from",
+        "title": "प्रेषक",
+        "description": "तुम्ही कोण आहात?"
+      },
+      {
+        "property": "message",
+        "title": "संदेश",
+        "description": "तुम्हाला काय सांगायचे आहे?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "पोस्टमार्क ठिकाण",
+        "description": "हे कार्ड कुठून पाठवले गेले?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "मुख्य फोटोचा स्रोत",
+        "description": "तुमचा फोटो कुठे आहे?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "स्टॅम्प फोटोचा स्रोत",
+        "description": "तुमचा फोटो कुठे आहे?"
+      }
+    ]
+  }
+}

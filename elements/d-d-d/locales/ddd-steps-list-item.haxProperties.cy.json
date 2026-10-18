@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Eitem camau",
+    "description": "Eitem sy'n rhan o restr camau"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teitl"
+      }
+    ]
+  }
+}

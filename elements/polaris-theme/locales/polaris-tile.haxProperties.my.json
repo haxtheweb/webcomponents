@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris tile",
+    "description": "ခေါင်းစဉ်၊ ရွေးချယ်နိုင်သော ထောက်ကူစာသားနှင့် ရွေးချယ်နိုင်သော လင့်ခ်ပါသည့် Polaris tile ကို ပြသရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "အဓိက စာသား",
+        "description": "Tile ၏ အဓိက စာသား။"
+      },
+      {
+        "property": "line2",
+        "title": "ဒုတိယ စာသား",
+        "description": "ရွေးချယ်နိုင်သော ထောက်ကူ စာသား။"
+      },
+      {
+        "property": "type",
+        "title": "Tile ပုံစံ",
+        "description": "ကြိုတင်သတ်မှတ်ထားသော tile အမြင်ပုံစံ။",
+        "options": {
+          "1": "ပုံစံ 1",
+          "2": "ပုံစံ 2",
+          "3": "ပုံစံ 3",
+          "4": "ပုံစံ 4",
+          "5": "ပုံစံ 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "နောက်ခံ ပုံ",
+        "description": "ပုံပံ့ပိုးသော tile ပုံစံများက အသုံးပြုသည့် နောက်ခံပုံ URL။"
+      },
+      {
+        "property": "link",
+        "title": "လင့်ခ်",
+        "description": "Tile လုပ်ဆောင်ချက်အတွက် ရွေးချယ်နိုင်သော ဦးတည်ရာ URL။"
+      }
+    ]
+  }
+}

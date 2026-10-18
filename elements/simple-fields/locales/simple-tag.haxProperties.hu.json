@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Címke / tabletta",
+    "description": "Kompakt, tabletta alakú címke opcionális kiemelőszínnel, mégse gombbal vagy kapcsolóval."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Címke",
+        "description": "A tablettában megjelenő szöveg."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "A tabletta hátterének SimpleColors kiemelőszín-neve.",
+        "options": {
+          "": "-- alapértelmezett --",
+          "red": "Piros",
+          "pink": "Rózsaszín",
+          "purple": "Lila",
+          "deep-purple": "Sötétlila",
+          "indigo": "Indigó",
+          "blue": "Kék",
+          "light-blue": "Világoskék",
+          "cyan": "Cián",
+          "teal": "Kékeszöld",
+          "green": "Zöld",
+          "light-green": "Világoszöld",
+          "lime": "Lime",
+          "yellow": "Sárga",
+          "amber": "Borostyán",
+          "orange": "Narancs",
+          "deep-orange": "Sötétnarancs",
+          "brown": "Barna",
+          "blue-grey": "Kékesszürke",
+          "grey": "Szürke"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatikus kiemelőszín",
+        "description": "A kiemelőszín automatikus származtatása a címke szövegéből."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Mégse gomb",
+        "description": "Eltávolítás/mégse ikongomb megjelenítése a tablettában."
+      },
+      {
+        "property": "readonly",
+        "title": "Csak olvasható",
+        "description": "A mégse gomb elrejtése, hogy a tabletta csak megjelenítésre szolgáljon."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Kapcsolható",
+        "description": "A tabletta a gombra kattintva be- és kikapcsolható."
+      },
+      {
+        "property": "toggled",
+        "title": "Bekapcsolva",
+        "description": "Jelenleg be van-e kapcsolva a tabletta."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Bekapcsolt ikon",
+        "description": "A tabletta bekapcsolt állapotában megjelenő ikon."
+      },
+      {
+        "property": "disabled",
+        "title": "Letiltva",
+        "description": "Interakció letiltása a tablettával."
+      }
+    ]
+  }
+}

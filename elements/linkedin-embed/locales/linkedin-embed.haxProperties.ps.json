@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "د LinkedIn ځای پر ځای کول",
+    "description": "د LinkedIn د پروفایل کارت ځای پر ځای کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "ځانګړی نوم",
+        "description": "د LinkedIn د ځانګړي کارن نوم برخه."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "سیمه‌ییز تنظیم",
+        "description": "د سیمه‌ییز تنظیم میټاډېټا ارزښت لکه en_US."
+      }
+    ]
+  }
+}

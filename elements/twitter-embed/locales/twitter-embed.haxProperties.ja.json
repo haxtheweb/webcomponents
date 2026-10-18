@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) 埋め込み",
+    "description": "Xのツイートを文脈の中に埋め込みます。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ツイートのURL",
+        "description": "埋め込むツイートのURL。"
+      },
+      {
+        "attribute": "data-theme",
+        "title": "テーマ",
+        "description": "Xのツイートのライトまたはダークテーマ。",
+        "options": {
+          "light": "ライト",
+          "dark": "ダーク"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "クリック時のポップアップを防止",
+        "description": "ユーザーが x.com でツイートを開けないようにします。"
+      }
+    ]
+  }
+}

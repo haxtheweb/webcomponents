@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Sammu element",
+    "description": "Sammude loendi osaks olev element"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pealkiri"
+      }
+    ]
+  }
+}

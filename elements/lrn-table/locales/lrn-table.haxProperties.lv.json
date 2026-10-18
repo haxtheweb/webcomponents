@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV tabula",
+    "description": "Var ģenerēt tabulu no CSV faila neatkarīgi no tā atrašanās vietas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Avots",
+        "description": "Šī CSV faila URL."
+      },
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Ģenerējamās tabulas nosaukums."
+      },
+      {
+        "property": "description",
+        "title": "Apraksts",
+        "description": "Detalizētāks apraksts tabulas datu labākai piekļūstamībai."
+      }
+    ]
+  }
+}

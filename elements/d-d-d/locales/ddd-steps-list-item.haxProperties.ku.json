@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Hêmana gavan",
+    "description": "Hêmana ku beşek ji lîsteya gavan e"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sernav"
+      }
+    ]
+  }
+}

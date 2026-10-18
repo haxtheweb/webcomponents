@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "गतिविधि बक्स",
+    "description": "सानो शैलीबद्ध शीर्षक ब्लक।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "गतिविधि बक्ससँगै देखाइने आइकन।"
+      },
+      {
+        "property": "tag",
+        "title": "गतिविधि बक्स ट्याग",
+        "description": "गतिविधि बक्समा देखाइने ट्याग।"
+      },
+      {
+        "property": "nocolourize",
+        "title": "रङ नलगाउने",
+        "description": "आइकनमा रङ लाग्न नदिनुहोस्।"
+      }
+    ]
+  }
+}

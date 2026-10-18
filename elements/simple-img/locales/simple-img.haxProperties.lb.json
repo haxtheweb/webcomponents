@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Einfacht Bild",
+    "description": "Biller mat einfache Parameteren beaarbechten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Quell",
+        "description": "URL vun der Bildquell."
+      },
+      {
+        "property": "height",
+        "title": "Héicht",
+        "description": "Optional Bildhéicht."
+      },
+      {
+        "property": "width",
+        "title": "Breet",
+        "description": "Optional Bildbreet."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativtext",
+        "description": "Nëtzlech fir Ecranslieser a besser SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Qualitéit",
+        "description": "Bildqualitéit beim Generéieren (nëmme JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Luedprioritéit",
+        "description": "Performance-Hiwäis fir modern Browseren.",
+        "options": {
+          "auto": "Automatesch",
+          "high": "Héich",
+          "low": "Niddreg"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dekodéiermethod",
+        "description": "Performance-Hiwäis fir d'Bilddarstellung a modernen Browseren.",
+        "options": {
+          "auto": "Automatesch",
+          "async": "Asynchron"
+        }
+      }
+    ]
+  }
+}

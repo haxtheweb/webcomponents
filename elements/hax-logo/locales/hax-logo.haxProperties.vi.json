@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Chữ nghệ thuật HAX",
+    "description": "Phần tử logo của HAX, tất nhiên là một phần tử tương thích HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Kích thước logo HAX cần đặt",
+        "options": {
+          "mini": "Mini",
+          "small": "Nhỏ",
+          "normal": "Bình thường",
+          "large": "Lớn"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Có chuyển logo thành chữ hoa hay không"
+      }
+    ]
+  }
+}

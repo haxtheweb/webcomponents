@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Indlejr eksternt webindhold i en iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ressource-URL",
+        "description": "Ressource-URL."
+      },
+      {
+        "property": "height",
+        "title": "Højde",
+        "description": "Iframens højde."
+      },
+      {
+        "property": "width",
+        "title": "Bredde",
+        "description": "Iframens bredde."
+      }
+    ]
+  }
+}

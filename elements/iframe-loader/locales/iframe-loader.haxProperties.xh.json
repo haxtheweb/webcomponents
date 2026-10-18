@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Faka umxholo wewebhu wangaphandle kwi-iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "I-URL yesixhobo",
+        "description": "I-URL yesixhobo."
+      },
+      {
+        "property": "height",
+        "title": "Ubude",
+        "description": "Ubude be-iframe."
+      },
+      {
+        "property": "width",
+        "title": "Ububanzi",
+        "description": "Ububanzi be-iframe."
+      }
+    ]
+  }
+}

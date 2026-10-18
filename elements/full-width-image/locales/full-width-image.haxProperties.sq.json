@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Seksion imazhi",
+    "description": "Imazh me gjerësi të plotë që ndan një seksion të faqes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Imazhi i sfondit."
+      },
+      {
+        "property": "caption",
+        "description": "Titulli i tekstit."
+      }
+    ]
+  }
+}

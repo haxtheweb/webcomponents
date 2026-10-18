@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Merki / Pilla",
+    "description": "Þétt pillulaga merki með valfrjálsum áherslulit, hætta-við-hnappi eða víxlrofa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Merki",
+        "description": "Texti sem birtist í pillunni."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Heiti SimpleColors-áherslulitar fyrir bakgrunn pillunnar.",
+        "options": {
+          "": "-- sjálfgefið --",
+          "red": "Rauður",
+          "pink": "Bleikur",
+          "purple": "Fjólublár",
+          "deep-purple": "Dökkfjólublár",
+          "indigo": "Indigó",
+          "blue": "Blár",
+          "light-blue": "Ljósblár",
+          "cyan": "Blágrænn",
+          "teal": "Grænblár",
+          "green": "Grænn",
+          "light-green": "Ljósgrænn",
+          "lime": "Límónugrænn",
+          "yellow": "Gulur",
+          "amber": "Raf",
+          "orange": "Appelsínugulur",
+          "deep-orange": "Dökkappelsínugulur",
+          "brown": "Brúnn",
+          "blue-grey": "Blágrár",
+          "grey": "Grár"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Sjálfvirkur áherslulitur",
+        "description": "Leiða áherslulitinn sjálfkrafa af merkitextanum."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Hætta-við-hnappur",
+        "description": "Sýna fjarlægja/hætta við táknhnapp í pillunni."
+      },
+      {
+        "property": "readonly",
+        "title": "Aðeins lestur",
+        "description": "Fela hætta-við-hnappinn svo pillan sé aðeins til birtingar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Víxlast",
+        "description": "Láta pilluna víxlast af/á þegar smellt er á hnappinn."
+      },
+      {
+        "property": "toggled",
+        "title": "Virkt",
+        "description": "Hvort pillan sé núna virk."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Tákn þegar virkt",
+        "description": "Tákn sem birtist þegar kveikt er á pillunni."
+      },
+      {
+        "property": "disabled",
+        "title": "Óvirkt",
+        "description": "Gera samskipti við pilluna óvirk."
+      }
+    ]
+  }
+}

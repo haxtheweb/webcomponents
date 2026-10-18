@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "প্লে লিস্ট",
+    "description": "প্লেলিস্টে যেকোনো ধরনের বিষয়বস্তু দেখান।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "উৎস",
+        "description": "প্লেলিস্টে দেখানো বিষয়বস্তু।"
+      },
+      {
+        "property": "edit",
+        "title": "সম্পাদনা মোড",
+        "description": "প্লেলিস্টের সম্পাদনা ও প্রিভিউ মোডের মধ্যে পরিবর্তন করুন।"
+      },
+      {
+        "property": "navigation",
+        "title": "নেভিগেশন",
+        "description": "সামনে ও পেছনে যাওয়ার নেভিগেশন বোতাম দেখান।"
+      },
+      {
+        "property": "pagination",
+        "title": "পৃষ্ঠাঙ্কন",
+        "description": "পৃষ্ঠাঙ্কন বিন্দু দেখান।"
+      },
+      {
+        "property": "orientation",
+        "title": "অভিমুখ",
+        "description": "স্লাইডগুলোর অভিমুখ।",
+        "options": {
+          "horizontal": "অনুভূমিক",
+          "vertical": "উল্লম্ব"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "যে স্লাইড দিয়ে শুরু",
+        "description": "প্রথমে যে স্লাইডে ফোকাস হবে তার ইনডেক্স।"
+      },
+      {
+        "property": "aspectRatio",
+        "title": "আকৃতির অনুপাত",
+        "description": "স্লাইডগুলোর আকৃতির অনুপাত।",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

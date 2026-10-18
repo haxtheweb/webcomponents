@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Wanta tarkaanfii",
+    "description": "Wanta tarree tarkaanfiiwwanii keessaa tokko"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mata-duree"
+      }
+    ]
+  }
+}

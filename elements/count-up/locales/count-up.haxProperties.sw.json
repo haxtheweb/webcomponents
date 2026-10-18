@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Hesabu Kupanda",
+    "description": "Huisha nambari inayohesabu kupanda hadi thamani lengwa inapoingia kwenye mwonekano."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Thamani ya mwisho",
+        "description": "Nambari ya kuhesabu hadi kufikia."
+      },
+      {
+        "property": "start",
+        "title": "Thamani ya kuanzia",
+        "description": "Nambari ya kuanzia kuhesabu."
+      },
+      {
+        "property": "duration",
+        "title": "Muda",
+        "description": "Sekunde ambazo uhuishaji wa kuhesabu unapaswa kuchukua."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Maandishi ya kiambishi awali",
+        "description": "Maandishi yanayoonyeshwa kabla ya nambari (k.m. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Maandishi ya kiambishi tamati",
+        "description": "Maandishi yanayoonyeshwa baada ya nambari (k.m. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Nafasi ya kiambishi awali",
+        "description": "Maudhui ya hiari yaliyowekwa kabla ya nambari."
+      },
+      {
+        "slot": "suffix",
+        "title": "Nafasi ya kiambishi tamati",
+        "description": "Maudhui ya hiari yaliyowekwa baada ya nambari."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Nafasi za desimali",
+        "description": "Idadi ya nafasi za desimali za kuonyesha."
+      },
+      {
+        "property": "separator",
+        "title": "Kitenganishi cha maelfu",
+        "description": "Herufi inayotenganisha makundi ya maelfu."
+      },
+      {
+        "property": "decimal",
+        "title": "Herufi ya desimali",
+        "description": "Herufi inayotumika kama nukta ya desimali."
+      },
+      {
+        "property": "noeasing",
+        "title": "Bila ulainishaji",
+        "description": "Zima ulainishaji ili hesabu iwe ya mstari."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Mubvunzo weChokwadi / Nhema",
+    "description": "Mubvunzo wechokwadi kana nhema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Mubvunzo",
+        "description": "Mubvunzo unopindurwa nevashandisi."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Mhinduro Yakarurama"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Zita rekuedzwa",
+        "description": "Zita rekuedzwa rinoshandiswa munzvimbo dzinoshandisa xAPI kuziva chinhu ichi"
+      }
+    ]
+  }
+}

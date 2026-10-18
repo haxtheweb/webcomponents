@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Imagine simplice",
+    "description": "Trattà l'imagine cù paràmetri simplici."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Fonte",
+        "description": "URL di a fonte di l'imagine."
+      },
+      {
+        "property": "height",
+        "title": "Altezza",
+        "description": "Altezza facultativa di l'imagine."
+      },
+      {
+        "property": "width",
+        "title": "Larghezza",
+        "description": "Larghezza facultativa di l'imagine."
+      },
+      {
+        "property": "alt",
+        "title": "Testu alternativu",
+        "description": "Utile per i lettori di screnu è per migliurà u SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Qualità",
+        "description": "Qualità di l'imagine à a generazione (solu JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Priurità di caricamentu",
+        "description": "Indicazione di prestazione per i navigatori muderni.",
+        "options": {
+          "auto": "Autumatica",
+          "high": "Alta",
+          "low": "Bassa"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Metodu di decudificazione",
+        "description": "Indicazione di prestazione per a resa di l'imagine in i navigatori muderni.",
+        "options": {
+          "auto": "Autumatica",
+          "async": "Asincronu"
+        }
+      }
+    ]
+  }
+}

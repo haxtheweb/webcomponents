@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P ietvars .h5p failu ielādei un attēlošanai"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe iegulšanas kods"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "File",
+    "description": "Set de file."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etichetă (pentru accesibilitate)",
+        "description": "Etichetă accesibilă pentru setul de file."
+      },
+      {
+        "property": "disabled",
+        "title": "Dezactivat",
+        "description": "Dezactivează toate filele."
+      },
+      {
+        "property": "hidden",
+        "title": "Ascuns",
+        "description": "Ascunde setul de file."
+      },
+      {
+        "property": "sticky",
+        "title": "Fixat",
+        "description": "Păstrează filele orizontale în partea de sus la derulare."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Prag de aspect",
+        "description": "Pragul pentru file orizontale; folosiți -1 doar pentru vertical."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Prag pentru pictograme",
+        "description": "Pragul pentru afișarea textului cu pictograme. Implicit este 0; folosiți -1 pentru modul doar cu pictograme."
+      },
+      {
+        "slot": "",
+        "title": "File",
+        "description": "Serie de elemente <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID unic",
+        "description": "ID unic pentru acest set de file."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Iinkcukacha zekhasi",
+    "description": "Chaza ukwahlulwa okubonakalayo phakathi kwamakhasi ii-CMS ezinokukusebenzisa ukwenza amakhasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko esiboniswa kumxholo nakwisihloko sokuqala."
+      },
+      {
+        "property": "pageType",
+        "title": "Uhlobo",
+        "description": "Ileyibhile yemeko yekhasi ebonakalayo.",
+        "options": {
+          "": "-- akukho --",
+          "content": "Umxholo",
+          "assessment": "Uvavanyo",
+          "quiz": "Ikwizi",
+          "submission": "Ungeniso",
+          "lesson": "Isifundo",
+          "module": "Imodyuli",
+          "task": "Umsebenzi",
+          "activity": "Umsebenzi wokwenza",
+          "project": "Iprojekthi",
+          "practice": "Uqheliselo",
+          "unit": "Iyunithi",
+          "objectives": "Iinjongo zokuFunda",
+          "connection": "Unxibelelwano",
+          "knowledge": "Ubusazi?",
+          "strategy": "Isicwangciso sokuFunda",
+          "discuss": "Xoxa",
+          "listen": "Mamela",
+          "make": "Yenza",
+          "observe": "Qwalasela",
+          "present": "Bonisa",
+          "reading": "Ukufunda",
+          "reflect": "Cingisisa",
+          "research": "Phanda",
+          "watch": "Bukela",
+          "write": "Bhala"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Iithegi",
+        "description": "Uluhlu lweethegi ezahlulwe ngeekoma."
+      },
+      {
+        "property": "linkUrl",
+        "title": "I-URL yeKhonkco",
+        "description": "I-URL yokuqondisa kwakhona eboniswa endaweni yomxholo wekhasi."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Ekujoliswe kuko liKhonkco",
+        "description": "Vula amakhonkco kwifestile enye okanye kwifestile entsha.",
+        "options": {
+          "_self": "Ifestile enye",
+          "_blank": "Ifestile entsha"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Kupapashiwe",
+        "description": "Amakhasi angapapashwanga afihliwe kubasebenzisi bokugqibela."
+      },
+      {
+        "property": "locked",
+        "title": "Tshixa ikhasi",
+        "description": "Tshixa okanye vula zonke izinto kweli khasi."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Yeyisa i-slug ezenzekelayo",
+        "description": "Tshixa i-slug ukuze ingahlaziywa ngokuzenzekelayo ngokusekelwe kwisihloko okanye kumzali."
+      },
+      {
+        "property": "slug",
+        "title": "Indlela",
+        "description": "I-slug ye-URL yeli khasi."
+      },
+      {
+        "property": "image",
+        "title": "Imidiya",
+        "description": "Imidiya emele ikhasi, esetyenziswa kweminye imixholo nemiboniso."
+      },
+      {
+        "property": "parent",
+        "title": "Umzali",
+        "description": "Indlela yekhasi elingumzali."
+      },
+      {
+        "property": "noderefs",
+        "title": "Umxholo onxulumeneyo",
+        "description": "Amakhasi anxulumene neli khasi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Inkcazelo",
+        "description": "Inkcazelo esetyenziswa kwiingqokelela nakuphuculo lweenjini zokukhangela."
+      },
+      {
+        "property": "entityType",
+        "title": "Uhlobo lweNto",
+        "description": "Ngokungagqibekanga likhasi ngaphandle kokuba kusetwe ngenye indlela.",
+        "options": {
+          "page": "Ikhasi (okungagqibekanga)",
+          "taxonomy": "Uhlelo lokwahlula",
+          "taxonomyTerm": "Igama lohlelo lokwahlula",
+          "region": "Ummandla"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "I-icon",
+        "description": "I-icon enxulunyaniswe neli khasi kwisayithi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala ogqamisayo",
+        "description": "Umbala onxulunyaniswe neli khasi kwisayithi."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Fihla kwimenyu",
+        "description": "Fihla eli khasi kwiimenyu ugcine i-URL yalo."
+      },
+      {
+        "property": "order",
+        "title": "Ulandelelwano",
+        "description": "Ulandelelwano ngokunxulumene namakhasi angoodade."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Umxholo wekhasi",
+        "description": "Yeyisa umxholo weli khasi kuphela."
+      },
+      {
+        "property": "author",
+        "title": "Umbhali",
+        "description": "Igama lomsebenzisi lomntu wokugqibela olungise eli khasi."
+      }
+    ]
+  }
+}

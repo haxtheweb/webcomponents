@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kutipan Blok Bergambar",
+    "description": "Kutipan bergaya dengan gambar opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Gambar",
+        "description": "Tambahkan gambar ke testimoni."
+      },
+      {
+        "property": "name",
+        "title": "Nama Lengkap",
+        "description": "Nama orang yang memberikan testimoni."
+      },
+      {
+        "property": "position",
+        "title": "Posisi atau Jabatan",
+        "description": "Posisi atau jabatan orang tersebut."
+      },
+      {
+        "slot": "",
+        "title": "Kutipan",
+        "description": "Kutipan dari pemberi testimoni."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Frámerki",
+    "description": "Einfaldur frámerkjalisti at vísa á síðuni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Frámerki",
+        "description": "Listi av frámerkjum, skilt sundur við komma."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Sjálvvirkin dámlitur",
+        "description": "Set dámlit sjálvvirkið eftir heitinum."
+      },
+      {
+        "property": "accentColor",
+        "title": "Litur",
+        "description": "Litur á frámerkjum."
+      }
+    ]
+  }
+}

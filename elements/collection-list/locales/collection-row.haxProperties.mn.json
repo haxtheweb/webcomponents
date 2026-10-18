@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Цуглуулгын мөр",
+    "description": "Цуглуулгын жагсаалт дотор ашиглах мөр хэлбэрийн зүйл; текст, холбоос, дүрс тэмдэг, шошго болон нэмэлт зурагтай."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Холбоос",
+        "description": "Энэ мөрийн очих URL."
+      },
+      {
+        "property": "image",
+        "title": "Зураг",
+        "description": "Мөрийн зураг."
+      },
+      {
+        "property": "alt",
+        "title": "Орлуулах текст",
+        "description": "Зургийг тайлбарласан орлуулах текст."
+      },
+      {
+        "property": "line1",
+        "title": "Мөр 1",
+        "description": "Текстийн эхний мөр."
+      },
+      {
+        "property": "line2",
+        "title": "Мөр 2",
+        "description": "Текстийн хоёр дахь мөр."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Дүрс тэмдэг",
+        "description": "Мөрийг илэрхийлэх дүрс тэмдэг."
+      },
+      {
+        "property": "saturate",
+        "title": "Ханалтын эффект",
+        "description": "Хэрэглэгч фокуслах үед зургийн өнгөний ханалтыг өөрчлөх."
+      },
+      {
+        "property": "tags",
+        "title": "Шошгууд",
+        "description": "Таслалаар тусгаарласан шошгын жагсаалт."
+      },
+      {
+        "property": "accentColor",
+        "title": "Өнгө",
+        "description": "Дүрс тэмдэг ба шошгонд ашиглах өнгө."
+      }
+    ]
+  }
+}

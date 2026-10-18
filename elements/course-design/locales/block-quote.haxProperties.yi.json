@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ציטאַט־בלאָק",
+    "description": "סטיליזירטער ציטאַט־בלאָק."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "מראה־מקום",
+        "description": "טעקסט פֿון מראה־מקום."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "אַלטערנאַטיווער טעקסט פֿאַר דעם בילד."
+      },
+      {
+        "property": "image",
+        "title": "בילד",
+        "description": "בילד וואָס ווערט געוויזן מיטן ציטאַט."
+      }
+    ]
+  }
+}

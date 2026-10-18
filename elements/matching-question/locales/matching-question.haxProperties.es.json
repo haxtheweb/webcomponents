@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Pregunta de emparejamiento",
+    "description": "Actividad de emparejamiento de arrastrar y soltar que asocia enunciados con sus respuestas correctas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Pregunta para los usuarios. Marca los destinos y luego enumera las respuestas hasta el siguiente destino."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de calificación",
+        "description": "OER Schema: formato de calificación de esta evaluación (p. ej., puntos, letra, porcentaje, finalización)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objetivo de aprendizaje",
+        "description": "OER Schema: objetivo de aprendizaje asociado a esta evaluación."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso al que está destinada esta evaluación."
+      },
+      {
+        "property": "answers",
+        "title": "Respuestas"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nombre del cuestionario",
+        "description": "Nombre del cuestionario usado para la identificación xAPI en sistemas de analítica."
+      }
+    ]
+  }
+}

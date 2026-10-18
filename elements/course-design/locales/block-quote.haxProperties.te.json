@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "బ్లాక్ కోట్",
+    "description": "శైలీకృత ఉల్లేఖన బ్లాక్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "ఆధారం",
+        "description": "ఆధార వచనం."
+      },
+      {
+        "property": "alt",
+        "title": "ప్రత్యామ్నాయ వచనం",
+        "description": "చిత్రం కోసం ప్రత్యామ్నాయ వచనం."
+      },
+      {
+        "property": "image",
+        "title": "చిత్రం",
+        "description": "ఉల్లేఖనతో చూపబడే చిత్రం."
+      }
+    ]
+  }
+}

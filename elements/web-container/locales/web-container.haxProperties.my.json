@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS ကွန်တိန်နာ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Editor ဝှက်ရန်",
+        "description": "ဖိုင် တည်းဖြတ်ရေး interface ကို ဝှက်ရန်။"
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Terminal ဝှက်ရန်",
+        "description": "အလိုအလျောက် လည်ပတ်သော ပရိုဂရမ်များအတွက် terminal ကို ဝှက်ရန်။"
+      },
+      {
+        "property": "hideWindow",
+        "title": "ဝင်းဒိုး ဝှက်ရန်",
+        "description": "Terminal သာ အသုံးပြုရန် output ဝင်းဒိုးကို ဝှက်ရန်။"
+      },
+      {
+        "slot": "",
+        "title": "Command များ",
+        "description": "ဖွင့်ခြင်းမပြုမီ လုပ်ဆောင်မည့် command များ (တစ်ကြောင်းလျှင် တစ်ခု)။"
+      }
+    ]
+  }
+}

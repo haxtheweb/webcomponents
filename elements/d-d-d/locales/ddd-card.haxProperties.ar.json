@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "بطاقة",
+    "description": "مكوّن بطاقة منسَّق بنظام التصميم DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "الصورة",
+        "description": "صورة اختيارية."
+      },
+      {
+        "property": "alt",
+        "title": "النص البديل للصورة",
+        "description": "نص بديل يصف الصورة."
+      },
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "عنوان البطاقة."
+      },
+      {
+        "slot": "",
+        "title": "المحتوى",
+        "description": "منطقة محتوى البطاقة."
+      },
+      {
+        "property": "href",
+        "title": "الرابط",
+        "description": "URL رابط الزر."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "التسمية",
+        "description": "تسمية الزر."
+      },
+      {
+        "property": "noArrow",
+        "title": "بدون سهم",
+        "description": "إخفاء سهم الزر."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "الرابط: الهدف",
+        "description": "مكان فتح الرابط.",
+        "options": {
+          "": "النافذة نفسها",
+          "_blank": "نافذة جديدة - _blank",
+          "_top": "النافذة العليا - _top",
+          "_parent": "النافذة الأم - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "الرابط: rel",
+        "description": "العلاقة بين المورد المرتبط والمستند الحالي."
+      }
+    ]
+  }
+}

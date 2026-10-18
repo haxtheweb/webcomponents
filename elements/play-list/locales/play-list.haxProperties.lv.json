@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Atskaņošanas saraksts",
+    "description": "Rādīt jebkāda veida saturu atskaņošanas sarakstā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Avots",
+        "description": "Atskaņošanas sarakstā rādītais saturs."
+      },
+      {
+        "property": "edit",
+        "title": "Rediģēšanas režīms",
+        "description": "Pārslēgt atskaņošanas saraksta rediģēšanas un priekšskatījuma režīmu."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigācija",
+        "description": "Rādīt navigācijas pogas uz priekšu un atpakaļ."
+      },
+      {
+        "property": "pagination",
+        "title": "Lappušu numerācija",
+        "description": "Rādīt lappušu punktus."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientācija",
+        "description": "Slaidu orientācija.",
+        "options": {
+          "horizontal": "Horizontāla",
+          "vertical": "Vertikāla"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Sākuma slaids",
+        "description": "Sākotnēji fokusējamā slaida indekss."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Malu attiecība",
+        "description": "Slaidu malu attiecība.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

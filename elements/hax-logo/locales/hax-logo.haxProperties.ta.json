@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX சொல் கலை",
+    "description": "HAX-க்கான லோகோ கூறு, இயல்பாகவே HAX-திறன் கொண்ட கூறு."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "வைக்க வேண்டிய HAX லோகோவின் அளவு",
+        "options": {
+          "mini": "மிகச் சிறிய",
+          "small": "சிறியது",
+          "normal": "சாதாரண",
+          "large": "பெரியது"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "லோகோவைப் பெரிய எழுத்துகளாக மாற்ற வேண்டுமா"
+      }
+    ]
+  }
+}

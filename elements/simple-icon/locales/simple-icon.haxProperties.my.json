@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "အိုင်ကွန်",
+    "description": "အိုင်ကွန် စာကြည့်တိုက် အပြည့်အစုံမှ အိုင်ကွန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "အိုင်ကွန်",
+        "description": "ပြသမည့် အိုင်ကွန်။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "အိုင်ကွန်အတွက် အထူးပြု အရောင်။"
+      },
+      {
+        "property": "dark",
+        "title": "အမှောင်",
+        "description": "အမှောင် မုဒ်ကို သုံးရန် (ပြောင်းပြန် အရောင်အစုံ)။"
+      }
+    ]
+  }
+}

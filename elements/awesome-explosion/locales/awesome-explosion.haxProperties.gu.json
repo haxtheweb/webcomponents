@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "અદ્ભુત વિસ્ફોટ",
+    "description": "વૈકલ્પિક ધ્વનિ અસરો સાથે ઇન્ટરૅક્ટિવ વિસ્ફોટ એનિમેશન."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "કદ",
+        "description": "વિસ્ફોટનું કદ સેટ કરો.",
+        "options": {
+          "tiny": "અતિ નાનું",
+          "small": "નાનું",
+          "medium": "મધ્યમ",
+          "large": "મોટું",
+          "epic": "વિરાટ"
+        }
+      },
+      {
+        "property": "color",
+        "title": "રંગ",
+        "description": "વિસ્ફોટની રંગ થીમ સેટ કરો.",
+        "options": {
+          "": "ડિફૉલ્ટ",
+          "red": "લાલ",
+          "blue": "વાદળી",
+          "purple": "જાંબલી",
+          "orange": "નારંગી",
+          "yellow": "પીળો"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "ધ્વનિ અસરો",
+        "description": "ધ્વનિ અસરો સક્ષમ કરો."
+      },
+      {
+        "property": "resetSound",
+        "title": "ધ્વનિ રીસેટ કરો",
+        "description": "દર વખતે ધ્વનિ શરૂઆતથી ફરી વગાડો."
+      },
+      {
+        "property": "image",
+        "title": "કસ્ટમ છબી",
+        "description": "કસ્ટમ વિસ્ફોટ છબી માટે વૈકલ્પિક URL."
+      },
+      {
+        "property": "sound",
+        "title": "કસ્ટમ ધ્વનિ",
+        "description": "કસ્ટમ ધ્વનિ અસર માટે વૈકલ્પિક URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "નિષ્ક્રિય",
+        "description": "બધી ક્રિયાપ્રતિક્રિયાઓ નિષ્ક્રિય કરો."
+      }
+    ]
+  }
+}

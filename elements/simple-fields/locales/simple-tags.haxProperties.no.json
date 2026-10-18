@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Merker",
+    "description": "Enkel merkeliste til visning på siden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Merker",
+        "description": "Kommadelt liste med merker."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatisk aksentfarge",
+        "description": "Angi aksentfargen automatisk basert på etiketten."
+      },
+      {
+        "property": "accentColor",
+        "title": "Farge",
+        "description": "Farge for merker."
+      }
+    ]
+  }
+}

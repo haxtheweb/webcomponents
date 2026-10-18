@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub സംഭാവകരുടെ ലിസ്റ്റ്",
+    "description": "GitHub API ഉപയോഗിച്ച് RPG കഥാപാത്രങ്ങളായി പ്രദർശിപ്പിക്കുന്നു."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "സ്ഥാപനം",
+        "description": "github.com/ORG/REPO-ൽ നിന്നുള്ള സ്ഥാപനത്തിന്റെ പേര്."
+      },
+      {
+        "property": "repo",
+        "title": "റിപ്പോസിറ്ററി",
+        "description": "github.com/ORG/REPO-ൽ നിന്നുള്ള റിപ്പോസിറ്ററിയുടെ പേര്."
+      },
+      {
+        "property": "limit",
+        "title": "പരിധി",
+        "description": "കാണിക്കുന്ന സംഭാവകരുടെ എണ്ണം പരിമിതപ്പെടുത്തുക."
+      }
+    ]
+  }
+}

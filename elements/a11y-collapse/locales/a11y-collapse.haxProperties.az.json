@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Yığılan konteyner",
+    "description": "Genişləndirilə və yığıla bilən tək konteyner."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Başlıq",
+        "description": "Yığılan elementin mətni."
+      },
+      {
+        "property": "expanded",
+        "title": "Genişləndirilmiş",
+        "description": "Defolt olaraq genişləndir."
+      },
+      {
+        "property": "headingButton",
+        "title": "Başlıq düyməsi",
+        "description": "Yalnız ikonu deyil, bütün başlığı kliklənən et."
+      },
+      {
+        "property": "icon",
+        "title": "İkon",
+        "description": "Genişləndir/yığ keçid düyməsinin ikonu."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "İkon (genişləndirildikdə)",
+        "description": "Genişləndirilmiş vəziyyət üçün ixtiyari ikon."
+      },
+      {
+        "slot": "",
+        "title": "Məzmun",
+        "description": "Yığılan elementin məzmunu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "İpucu",
+        "description": "Genişləndir/yığ keçid düyməsi üçün ipucu."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "İpucu (genişləndirildikdə)",
+        "description": "Genişləndirildikdə genişləndir/yığ düyməsi üçün ipucu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "د انځور برخه",
+    "description": "د بشپړ پلنوالي انځور چې د پاڼې برخې سره جلا کوي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "د شالید انځور."
+      },
+      {
+        "property": "caption",
+        "description": "د متن سرلیک."
+      }
+    ]
+  }
+}

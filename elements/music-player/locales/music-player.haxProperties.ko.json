@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI 시각화 도구",
+    "description": "시각화와 함께 MIDI를 재생합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "소스",
+        "description": "재생할 파일 URL입니다."
+      },
+      {
+        "property": "visualizer",
+        "title": "시각화",
+        "description": "음악 파일의 시각화 스타일입니다.",
+        "options": {
+          "staff": "오선보",
+          "piano-roll": "피아노 롤",
+          "waterfall": "피아노 + 폭포"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "폭포 숨기기",
+        "description": "피아노 시각화에서 폭포 음표를 숨깁니다."
+      }
+    ]
+  }
+}

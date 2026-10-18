@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Sidedetails",
+    "description": "Definiearje in fisuele skieding tusken siden dy't CMS'en brûke kinne om siden te meitsjen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel yn it tema en as earste kop."
+      },
+      {
+        "property": "pageType",
+        "title": "Type",
+        "description": "Fisueel kontekstlabel foar de side.",
+        "options": {
+          "": "-- gjin --",
+          "content": "Ynhâld",
+          "assessment": "Toets",
+          "quiz": "Kwis",
+          "submission": "Ynlevering",
+          "lesson": "Les",
+          "module": "Module",
+          "task": "Taak",
+          "activity": "Aktiviteit",
+          "project": "Projekt",
+          "practice": "Oefening",
+          "unit": "Ienheid",
+          "objectives": "Leardoelen",
+          "connection": "Ferbining",
+          "knowledge": "Wisten jo dat?",
+          "strategy": "Learstrategy",
+          "discuss": "Beprate",
+          "listen": "Harkje",
+          "make": "Meitsje",
+          "observe": "Observearje",
+          "present": "Presintearje",
+          "reading": "Lêzen",
+          "reflect": "Reflektearje",
+          "research": "Undersykje",
+          "watch": "Sjoch",
+          "write": "Skriuw"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Labels",
+        "description": "Mei komma's skieden list fan labels."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Keppelings-URL",
+        "description": "Trochferwizings-URL dy't toand wurdt yn stee fan de side-ynhâld."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Keppelingsdoel",
+        "description": "Keppelings iepenje yn itselde finster of in nij finster.",
+        "options": {
+          "_self": "Itselde finster",
+          "_blank": "Nij finster"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Publisearre",
+        "description": "Net-publisearre siden binne ferburgen foar einbrûkers."
+      },
+      {
+        "property": "locked",
+        "title": "Side beskoattelje",
+        "description": "Alle eleminten op dizze side beskoattelje of ûntskoattelje."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Automatyske slug oerskriuwe",
+        "description": "De slug beskoattelje tsjin automatyske updates op basis fan titel of âlder."
+      },
+      {
+        "property": "slug",
+        "title": "Paad",
+        "description": "URL-slug foar dizze side."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Media dy't de side foarstelle, brûkt yn guon tema's en werjeften."
+      },
+      {
+        "property": "parent",
+        "title": "Alder",
+        "description": "Paad fan de âldersside."
+      },
+      {
+        "property": "noderefs",
+        "title": "Besibbe ynhâld",
+        "description": "Siden dy't mei dizze side te krijen hawwe."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Beskriuwing",
+        "description": "Beskriuwing brûkt yn kolleksjes en foar sykmasjine-optimalisaasje (SEO)."
+      },
+      {
+        "property": "entityType",
+        "title": "Entiteitstype",
+        "description": "Standert side, útsein oars ynsteld.",
+        "options": {
+          "page": "Side (standert)",
+          "taxonomy": "Taksonomy",
+          "taxonomyTerm": "Taksonomyterm",
+          "region": "Regio"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikoan",
+        "description": "Ikoan dat by dizze side op de webside heart."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Kleur dy't by dizze side op de webside heart."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Ferbergje yn menu",
+        "description": "Dizze side yn menu's ferbergje, mar de URL hâlde."
+      },
+      {
+        "property": "order",
+        "title": "Folchoarder",
+        "description": "Folchoarder ten opsichte fan sustersiden."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Sidetema",
+        "description": "It tema allinnich foar dizze side oerskriuwe."
+      },
+      {
+        "property": "author",
+        "title": "Auteur",
+        "description": "Brûkersnamme fan de lêste persoan dy't dizze side oanpast hat."
+      }
+    ]
+  }
+}

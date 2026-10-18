@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Сүрөттүү цитата",
+    "description": "Кошумча сүрөтү бар стилдештирилген цитата."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Сүрөт",
+        "description": "Сын-пикирге сүрөт кошуу."
+      },
+      {
+        "property": "name",
+        "title": "Толук аты",
+        "description": "Сын-пикир берген адамдын аты."
+      },
+      {
+        "property": "position",
+        "title": "Кызмат орду же наамы",
+        "description": "Адамдын кызмат орду же наамы."
+      },
+      {
+        "slot": "",
+        "title": "Цитата",
+        "description": "Сын-пикир авторунун цитатасы."
+      }
+    ]
+  }
+}

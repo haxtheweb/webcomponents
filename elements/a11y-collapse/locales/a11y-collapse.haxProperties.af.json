@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Invoubare houer",
+    "description": "Enkele uitvoubare en invoubare houer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Opskrif",
+        "description": "Teks vir die invouer."
+      },
+      {
+        "property": "expanded",
+        "title": "Uitgevou",
+        "description": "Standaard uitgevou."
+      },
+      {
+        "property": "headingButton",
+        "title": "Opskrifknoppie",
+        "description": "Maak die hele opskrif klikbaar in plaas van net die ikoon."
+      },
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Ikoon vir die uitvou-/invouwisselknoppie."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikoon (wanneer uitgevou)",
+        "description": "Opsionele ikoon vir die uitgevoude wisseltoestand."
+      },
+      {
+        "slot": "",
+        "title": "Inhoud",
+        "description": "Inhoud vir die invouer."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Wenk",
+        "description": "Wenk vir die uitvou-/invouwisselknoppie."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Wenk (wanneer uitgevou)",
+        "description": "Wenk vir die uitvou-/invouknoppie wanneer uitgevou."
+      }
+    ]
+  }
+}

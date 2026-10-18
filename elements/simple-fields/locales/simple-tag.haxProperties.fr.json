@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Étiquette / pastille",
+    "description": "Un libellé compact en forme de pastille avec couleur d'accent, bouton d'annulation ou bascule facultatifs."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Libellé",
+        "description": "Texte affiché dans la pastille."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Nom de l'accent SimpleColors pour l'arrière-plan de la pastille.",
+        "options": {
+          "": "-- par défaut --",
+          "red": "Rouge",
+          "pink": "Rose",
+          "purple": "Violet",
+          "deep-purple": "Violet foncé",
+          "indigo": "Indigo",
+          "blue": "Bleu",
+          "light-blue": "Bleu clair",
+          "cyan": "Cyan",
+          "teal": "Sarcelle",
+          "green": "Vert",
+          "light-green": "Vert clair",
+          "lime": "Citron vert",
+          "yellow": "Jaune",
+          "amber": "Ambre",
+          "orange": "Orange",
+          "deep-orange": "Orange foncé",
+          "brown": "Marron",
+          "blue-grey": "Gris bleu",
+          "grey": "Gris"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Couleur d'accent automatique",
+        "description": "Déduire automatiquement la couleur d'accent du texte du libellé."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Bouton d'annulation",
+        "description": "Afficher une icône de suppression/annulation dans la pastille."
+      },
+      {
+        "property": "readonly",
+        "title": "Lecture seule",
+        "description": "Masquer le bouton d'annulation pour que la pastille soit uniquement affichée."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Bascule",
+        "description": "Faire basculer la pastille entre activée et désactivée lors d'un clic sur le bouton."
+      },
+      {
+        "property": "toggled",
+        "title": "Activée",
+        "description": "Indique si la pastille est actuellement activée."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Icône activée",
+        "description": "Icône à afficher lorsque la pastille est activée."
+      },
+      {
+        "property": "disabled",
+        "title": "Désactivé",
+        "description": "Désactiver l'interaction avec la pastille."
+      }
+    ]
+  }
+}

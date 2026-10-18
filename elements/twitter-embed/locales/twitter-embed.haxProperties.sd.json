@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) ايمبيڊ",
+    "description": "X مان ٽويٽ حوالي ۾ شامل ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ٽويٽ URL",
+        "description": "شامل ڪرڻ واري ٽويٽ جو URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "ٿيم",
+        "description": "X ٽويٽس لاءِ هلڪو يا ڊارڪ ٿيم.",
+        "options": {
+          "light": "هلڪو",
+          "dark": "ڊارڪ"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "ڪلڪ تي پاپ اپ روڪيو",
+        "description": "يوزرن کي x.com تي ٽويٽ کولڻ کان روڪيو."
+      }
+    ]
+  }
+}

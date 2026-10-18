@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Popis za reprodukciju",
+    "description": "Prikažite bilo koju vrstu sadržaja na popisu za reprodukciju."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Izvor",
+        "description": "Sadržaj prikazan na popisu za reprodukciju."
+      },
+      {
+        "property": "edit",
+        "title": "Način uređivanja",
+        "description": "Prebacivanje između načina uređivanja i pretpregleda popisa za reprodukciju."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigacija",
+        "description": "Prikaži gumbe za navigaciju naprijed i natrag."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginacija",
+        "description": "Prikaži točke paginacije."
+      },
+      {
+        "property": "orientation",
+        "title": "Orijentacija",
+        "description": "Orijentacija slajdova.",
+        "options": {
+          "horizontal": "Vodoravno",
+          "vertical": "Okomito"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Početni slajd",
+        "description": "Indeks slajda koji je u početku u fokusu."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Omjer slike",
+        "description": "Omjer slike slajdova.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kartoçka",
+    "description": "DDD dizaýn ulgamy bilen bezelen kartoçka komponenti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Surat",
+        "description": "Goşmaça surat."
+      },
+      {
+        "property": "alt",
+        "title": "Suratyň alt teksti",
+        "description": "Suraty beýan edýän alternatiw tekst."
+      },
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Kartoçkanyň ady."
+      },
+      {
+        "slot": "",
+        "title": "Mazmun",
+        "description": "Kartoçkanyň mazmun meýdany."
+      },
+      {
+        "property": "href",
+        "title": "Baglanyşyk",
+        "description": "Düwmäniň baglanyşyk URL-i."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Belgi",
+        "description": "Düwmäniň belgisi."
+      },
+      {
+        "property": "noArrow",
+        "title": "Peýkamsyz",
+        "description": "Düwmäniň peýkamyny gizle."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Baglanyşyk: target",
+        "description": "Baglanyşygy nirede açmaly.",
+        "options": {
+          "": "Şol bir penjire",
+          "_blank": "Täze penjire - _blank",
+          "_top": "Ýokarky penjire - _top",
+          "_parent": "Ene penjire - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Baglanyşyk: rel",
+        "description": "Baglanyşykly çeşme bilen häzirki resminamanyň arasyndaky gatnaşyk."
+      }
+    ]
+  }
+}

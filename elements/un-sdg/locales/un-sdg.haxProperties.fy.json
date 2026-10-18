@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Doel foar duorsume ûntwikkeling fan de Feriene Naasjes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Doel",
+        "description": "UN SDG-nûmer."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Allinnich kleur",
+        "description": "Allinnich de kleur fan it doel toane."
+      }
+    ]
+  }
+}

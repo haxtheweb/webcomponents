@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "ਸਾਂਝਾ ਕਰਨ ਵਾਲੇ URL ਤੋਂ Discord ਭਾਈਚਾਰਿਆਂ ਨੂੰ ਏਮਬੈਡ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ URL",
+        "description": "ਸਰੋਤ URL।"
+      },
+      {
+        "property": "height",
+        "title": "ਉਚਾਈ",
+        "description": "ਸਮੱਗਰੀ ਫ੍ਰੇਮ ਦੀ ਉਚਾਈ।"
+      },
+      {
+        "property": "width",
+        "title": "ਚੌੜਾਈ",
+        "description": "ਸਮੱਗਰੀ ਫ੍ਰੇਮ ਦੀ ਚੌੜਾਈ।"
+      }
+    ]
+  }
+}

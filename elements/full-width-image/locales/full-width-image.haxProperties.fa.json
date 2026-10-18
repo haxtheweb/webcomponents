@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "بخش تصویر",
+    "description": "تصویر تمام‌عرض که بخشی از صفحه را جدا می‌کند."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "تصویر پس‌زمینه."
+      },
+      {
+        "property": "caption",
+        "description": "متن سرعنوان."
+      }
+    ]
+  }
+}

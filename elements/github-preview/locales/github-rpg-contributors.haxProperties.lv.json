@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub līdzautoru saraksts",
+    "description": "Attēloti kā RPG tēli, izmantojot GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizācija",
+        "description": "Organizācijas nosaukums no github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repozitorijs",
+        "description": "Repozitorija nosaukums no github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Ierobežojums",
+        "description": "Ierobežot rādīto līdzautoru skaitu."
+      }
+    ]
+  }
+}

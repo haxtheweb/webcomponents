@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS konteyneri"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Redaktoru gizlət",
+        "description": "Fayl redaktə interfeysini gizlət."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Terminalı gizlət",
+        "description": "Avtomatik işləyən proqramlar üçün terminalı gizlət."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Pəncərəni gizlət",
+        "description": "Yalnız terminal istifadəsi üçün çıxış pəncərəsini gizlət."
+      },
+      {
+        "slot": "",
+        "title": "Əmrlər",
+        "description": "Yükləmədən əvvəl işə salınacaq əmrlər (hər sətirdə bir)."
+      }
+    ]
+  }
+}

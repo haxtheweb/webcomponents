@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Cytat blokowy",
+    "description": "Stylizowany blok cytatu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Źródło cytatu",
+        "description": "Tekst źródła cytatu."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Tekst alternatywny obrazu."
+      },
+      {
+        "property": "image",
+        "title": "Obraz",
+        "description": "Obraz wyświetlany z cytatem."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "پخش‌کنندهٔ سه‌بعدی",
+    "description": "پخش‌کنندهٔ فایل سه‌بعدی / واقعیت افزوده."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "منبع",
+        "description": "URL این فایل AR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "موقعیت X عنصر در AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "موقعیت Y عنصر در AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "موقعیت Z عنصر در AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "رنگ آسمان",
+        "description": "رنگ آسمان صحنه را انتخاب کنید."
+      }
+    ]
+  }
+}

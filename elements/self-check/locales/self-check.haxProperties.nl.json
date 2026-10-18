@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Zelftoets",
+    "description": "Gebruikers kunnen een zelftoets maken."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Afbeelding",
+        "description": "Afbeelding voor de zelftoets."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel van de zelftoets."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-tekst",
+        "description": "Alt-tekst voor de afbeelding."
+      },
+      {
+        "slot": "question",
+        "title": "Vraag"
+      },
+      {
+        "slot": "",
+        "title": "Antwoord"
+      },
+      {
+        "property": "accentColor",
+        "title": "Themakleur",
+        "description": "Kies een themakleur uit het ontwerpsysteem.",
+        "options": {
+          "primary": "Primair",
+          "accent": "Accent",
+          "success": "Succes",
+          "warning": "Waarschuwing",
+          "error": "Fout",
+          "info": "Info"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leerdoel",
+        "description": "Verwijzing naar het leerdoel, uitgevoerd als oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Beoordeelt",
+        "description": "Verwijzing naar de activiteit, uitgevoerd als oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Meer-link",
+        "description": "Link naar aanvullende informatie."
+      }
+    ]
+  }
+}

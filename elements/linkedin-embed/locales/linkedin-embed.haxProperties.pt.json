@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Incorporação do LinkedIn",
+    "description": "Incorpore um cartão de perfil do LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Nome personalizado",
+        "description": "Segmento do nome de usuário personalizado do LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Localidade",
+        "description": "Valor de metadados de localidade, como en_US."
+      }
+    ]
+  }
+}

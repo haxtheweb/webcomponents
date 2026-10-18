@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P-omslag for lasting og visning av .h5p-filer"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P-innbyggingskode for iframe"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Faoliyat qutisi",
+    "description": "Kichik bezatilgan sarlavha bloki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Belgi",
+        "description": "Faoliyat qutisi yonida koʻrsatiladigan belgi."
+      },
+      {
+        "property": "tag",
+        "title": "Faoliyat qutisi tegi",
+        "description": "Faoliyat qutisida koʻrsatiladigan teg."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Ranglamaslik",
+        "description": "Belgiga ranglar qoʻllanilishining oldini olish."
+      }
+    ]
+  }
+}

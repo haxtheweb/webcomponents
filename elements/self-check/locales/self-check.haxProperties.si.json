@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "ස්වයං පරීක්ෂණය",
+    "description": "පරිශීලකයින්ට ස්වයං පරීක්ෂණයක් සම්පූර්ණ කළ හැක."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "රූපය",
+        "description": "ස්වයං පරීක්ෂණය සඳහා රූපය."
+      },
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "ස්වයං පරීක්ෂණයේ මාතෘකාව."
+      },
+      {
+        "property": "alt",
+        "title": "විකල්ප පෙළ",
+        "description": "රූපය සඳහා විකල්ප පෙළ."
+      },
+      {
+        "slot": "question",
+        "title": "ප්‍රශ්නය"
+      },
+      {
+        "slot": "",
+        "title": "පිළිතුර"
+      },
+      {
+        "property": "accentColor",
+        "title": "තේමා වර්ණය",
+        "description": "නිර්මාණ පද්ධතියෙන් තේමා වර්ණයක් තෝරන්න.",
+        "options": {
+          "primary": "ප්‍රාථමික",
+          "accent": "උච්චාරණය",
+          "success": "සාර්ථකත්වය",
+          "warning": "අවවාදය",
+          "error": "දෝෂය",
+          "info": "තොරතුරු"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ඉගෙනුම් අරමුණ",
+        "description": "oer:hasLearningObjective ලෙස නිකුත් වන ඉගෙනුම් අරමුණු යොමුව."
+      },
+      {
+        "property": "assessing",
+        "title": "තක්සේරු කරන්නේ",
+        "description": "oer:assessing ලෙස නිකුත් වන ක්‍රියාකාරකම් යොමුව."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "තවත් සබැඳිය",
+        "description": "අතිරේක තොරතුරු සඳහා සබැඳිය."
+      }
+    ]
+  }
+}

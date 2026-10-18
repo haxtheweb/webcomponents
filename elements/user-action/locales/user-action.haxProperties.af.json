@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Gebruikersaksie",
+    "description": "Volg gebruikersaksies en stuur data na xAPI-winkels."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Gebeurtenis om te volg",
+        "description": "Gebruikersaksie wat hierdie gebeurtenis aktiveer.",
+        "options": {
+          "visibility": "Kan dit sien",
+          "keydown": "Druk 'n sleutel hier",
+          "click": "Klik hierop",
+          "hover": "Beweeg oor hierdie"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Volg elke keer",
+        "description": "Standaard word slegs die eerste voorkoms gevolg."
+      }
+    ]
+  }
+}

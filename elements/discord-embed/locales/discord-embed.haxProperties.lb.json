@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Discord-Communautéiten iwwer eng Deelen-URL abannen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ressource-URL",
+        "description": "Ressource-URL."
+      },
+      {
+        "property": "height",
+        "title": "Héicht",
+        "description": "Héicht vum Inhaltsrumm."
+      },
+      {
+        "property": "width",
+        "title": "Breet",
+        "description": "Breet vum Inhaltsrumm."
+      }
+    ]
+  }
+}

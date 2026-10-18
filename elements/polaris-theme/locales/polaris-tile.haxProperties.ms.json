@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Jubin Polaris",
+    "description": "Paparkan jubin Polaris dengan tajuk, teks sokongan pilihan dan pautan pilihan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Teks utama",
+        "description": "Teks utama jubin."
+      },
+      {
+        "property": "line2",
+        "title": "Teks sekunder",
+        "description": "Teks sokongan pilihan."
+      },
+      {
+        "property": "type",
+        "title": "Gaya jubin",
+        "description": "Gaya visual jubin pratetap.",
+        "options": {
+          "1": "Gaya 1",
+          "2": "Gaya 2",
+          "3": "Gaya 3",
+          "4": "Gaya 4",
+          "5": "Gaya 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Imej latar belakang",
+        "description": "URL imej latar belakang yang digunakan oleh gaya jubin berkeupayaan imej."
+      },
+      {
+        "property": "link",
+        "title": "Pautan",
+        "description": "URL destinasi pilihan untuk tindakan jubin."
+      }
+    ]
+  }
+}

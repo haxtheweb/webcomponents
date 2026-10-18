@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "সংক্ষিপ্ত উত্তর প্রশ্ন",
+    "description": "ব্যবহারকারীকে একটি মৌলিক প্রশ্নের উত্তর দিতে দিন"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "প্রশ্ন",
+        "description": "ব্যবহারকারীদের উত্তর দেওয়ার প্রশ্ন।"
+      },
+      {
+        "property": "answers",
+        "title": "সম্ভাব্য উত্তর"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "কুইজের নাম",
+        "description": "xAPI-চালিত পরিবেশে এই আইটেম শনাক্ত করতে ব্যবহৃত কুইজের নাম"
+      }
+    ]
+  }
+}

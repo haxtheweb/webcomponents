@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Kifungashio cha vicheza vya Spotify vilivyopachikwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Chanzo",
+        "description": "Kiungo cha kupachika au kushiriki kutoka Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Mandhari",
+        "description": "Mandhari ya rangi ya usuli ya kicheza.",
+        "options": {
+          "": "Chaguo-msingi",
+          "0": "Nyeusi"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Ukubwa",
+        "description": "Ukubwa wa kicheza.",
+        "options": {
+          "normal": "Chaguo-msingi",
+          "compact": "Fupi"
+        }
+      }
+    ]
+  }
+}

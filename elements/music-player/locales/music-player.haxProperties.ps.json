@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "د MIDI لیدونکی",
+    "description": "MIDI له لیدنیز ښکارندې سره غږوئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "سرچینه",
+        "description": "د غږولو لپاره د فایل URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "لیدنیز ښکارنده",
+        "description": "د موسیقۍ فایل د لیدنیز ښکارندې بڼه.",
+        "options": {
+          "staff": "نوټ کرښې",
+          "piano-roll": "د پیانو رول",
+          "waterfall": "پیانو + آبشار"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "آبشار پټ کړئ",
+        "description": "د پیانو په لیدنیز ښکارنده کې د آبشار نوټونه پټ کړئ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Skjalaspilari vefeininga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Fela glugga",
+        "description": "Fela úttaksgluggann, gagnlegt þegar aðeins er notuð skipanalína"
+      }
+    ]
+  }
+}

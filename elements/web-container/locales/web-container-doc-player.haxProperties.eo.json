@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Dokumenta ludilo por retkomponantoj"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Kaŝi fenestron",
+        "description": "Kaŝi la eligan fenestron, utile kiam la celo estas nur la terminalo"
+      }
+    ]
+  }
+}

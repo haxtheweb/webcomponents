@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Анимациялық GIF-терді қолжетімді ету."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Анимациялық GIF",
+        "description": "Анимациялық GIF URL мекенжайы."
+      },
+      {
+        "property": "alt",
+        "title": "Балама мәтін",
+        "description": "Суреттің балама мәтіні."
+      },
+      {
+        "property": "longdesc",
+        "title": "Толық сипаттама",
+        "description": "Қолжетімділік үшін GIF-тің толық сипаттамасы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Қозғалмайтын сурет",
+        "description": "GIF-тің қозғалмайтын нұсқасының URL мекенжайы."
+      }
+    ]
+  }
+}

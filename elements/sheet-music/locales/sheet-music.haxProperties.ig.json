@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Akwụkwọ egwu",
+    "description": "Na-egosi ma na-akpọ akwụkwọ egwu, taabụ guitar, na ndetu egwu site na alphaTex ma ọ bụ MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Ndetu AlphaTex",
+        "description": "Ederede alphaTex n'ahịrị maka akwụkwọ egwu. Dezie ya ozugbo iji dee ndetu; e chekwara ya na template ka ohere wee dịgide."
+      },
+      {
+        "property": "source",
+        "title": "Faịlụ egwu",
+        "description": "Bulite ma ọ bụ jikọọ na faịlụ MusicXML (.xml/.musicxml/.mxl) ma ọ bụ Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Ọ na-anọchi alphaTex n'ahịrị mgbe edobere ya."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Ịkpọ ụda",
+        "description": "Agbanyere na ndabara - gee ntị n'akwụkwọ egwu a na-akpọ site na synthesizer arụnyere n'ime. Gbanyụọ ya maka ọnọdụ naanị nlele (enweghị ụda)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Gosi nhọrọ ngosi",
+        "description": "Gosi bọtịnụ mbugharị, ịgbatị, na nhazi na ogwe ihe ọkpụkpọ."
+      },
+      {
+        "property": "showExport",
+        "title": "Gosi bọtịnụ mbupụ",
+        "description": "Gosi bọtịnụ nbudata MIDI na mbipụta/PDF na ogwe ihe ọkpụkpọ."
+      }
+    ]
+  }
+}

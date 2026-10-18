@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sidesektion",
+    "description": "Sektionsbeholder til sideindhold og skærmbaserede layouts."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Designbehandling",
+        "description": "Forudindstillet stil, der opdaterer relaterede indstillinger."
+      },
+      {
+        "property": "image",
+        "title": "Billede",
+        "description": "Baggrundsmedier til sektionen."
+      },
+      {
+        "property": "bg",
+        "title": "Baggrundsfarve",
+        "description": "Baggrundsfarve, når der ikke er angivet et billede."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Rulleknap",
+        "description": "Vis en knap, der ruller til næste sektion."
+      },
+      {
+        "property": "fold",
+        "title": "Vis fold",
+        "description": "Vis en visuel fold nederst i sektionen."
+      },
+      {
+        "property": "full",
+        "title": "Fuld skærmstørrelse",
+        "description": "Udfyld hele højden af seerens skærm."
+      },
+      {
+        "property": "filter",
+        "title": "Anvend filter",
+        "description": "Anvend et visuelt filter på baggrundsbilledet."
+      },
+      {
+        "slot": "",
+        "title": "Indhold",
+        "description": "Sektionens indhold."
+      },
+      {
+        "slot": "entice",
+        "title": "Lokkemad",
+        "description": "Valgfrit indhold, der skal vække interesse."
+      },
+      {
+        "slot": "buttons",
+        "title": "Knapper",
+        "description": "Knapgruppe vist under teksten."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ankertekst",
+        "description": "Ankeretiket vist i navigationen."
+      }
+    ]
+  }
+}

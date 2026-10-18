@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Element kolekcji",
+    "description": "Element w formie karty do użycia na liście kolekcji, z tekstem, linkiem i opcjonalnymi multimediami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Docelowy URL tej karty."
+      },
+      {
+        "property": "image",
+        "title": "Obraz",
+        "description": "Obraz tła."
+      },
+      {
+        "property": "line1",
+        "title": "Wiersz 1",
+        "description": "Pierwszy wiersz tekstu."
+      },
+      {
+        "property": "line2",
+        "title": "Wiersz 2",
+        "description": "Drugi wiersz tekstu."
+      },
+      {
+        "property": "line3",
+        "title": "Wiersz 3",
+        "description": "Trzeci wiersz tekstu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona reprezentująca kartę."
+      },
+      {
+        "property": "saturate",
+        "title": "Efekt nasycenia",
+        "description": "Zmieniaj nasycenie obrazu, gdy użytkownik na nim się skupi."
+      },
+      {
+        "property": "tags",
+        "title": "Tagi",
+        "description": "Lista tagów oddzielonych przecinkami."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor",
+        "description": "Kolor używany dla tagów."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Tekst alternatywny opisujący link."
+      }
+    ]
+  }
+}

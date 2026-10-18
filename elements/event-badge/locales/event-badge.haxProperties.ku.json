@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Nîşana Bûyerê",
+    "description": "Pêkhateya nîşana bûyerê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Wêneyê TV",
+        "description": "Wêneyê li ser TV tê nîşandan."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logoya li quncika nîşanê tê nîşandan."
+      },
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê li jorê nîşanê tê nîşandan."
+      },
+      {
+        "property": "name",
+        "title": "Nav",
+        "description": "Navê li ser nîşanê tê nîşandan."
+      },
+      {
+        "property": "position",
+        "title": "Pozîsyon",
+        "description": "Rol an sernavê kesê."
+      },
+      {
+        "property": "organization",
+        "title": "Rêxistin",
+        "description": "Rêxistina ku kes tê de dixebite."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Rengê TV",
+        "description": "Rengê TV hilbijêre."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê balkêş",
+        "description": "Rengê sereke yê paşxanê an nivîsê."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Rengê bişkokên zivirandinê",
+        "description": "Rengê bişkokên zivirandinê yên TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepya",
+        "description": "Efekta sepya bisepîne."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Reş û spî",
+        "description": "Efekta reş û spî bisepîne."
+      }
+    ]
+  }
+}

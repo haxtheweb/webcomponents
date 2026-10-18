@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris tile",
+    "description": "Magpakita ng Polaris tile na may pamagat, opsyonal na pansuportang teksto, at opsyonal na link."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Pangunahing teksto",
+        "description": "Pangunahing teksto ng tile."
+      },
+      {
+        "property": "line2",
+        "title": "Pangalawang teksto",
+        "description": "Opsyonal na pansuportang teksto."
+      },
+      {
+        "property": "type",
+        "title": "Istilo ng tile",
+        "description": "Preset na biswal na istilo ng tile.",
+        "options": {
+          "1": "Istilo 1",
+          "2": "Istilo 2",
+          "3": "Istilo 3",
+          "4": "Istilo 4",
+          "5": "Istilo 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Larawan sa background",
+        "description": "URL ng larawan sa background na ginagamit ng mga istilo ng tile na sumusuporta sa larawan."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Opsyonal na destinasyong URL para sa aksyon ng tile."
+      }
+    ]
+  }
+}

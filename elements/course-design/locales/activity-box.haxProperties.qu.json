@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ruray kaxa",
+    "description": "Huch'uy sumaqchasqa uma qillqa t'aqa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Unancha",
+        "description": "Ruray kaxa kinrayninpi rikukuq unancha."
+      },
+      {
+        "property": "tag",
+        "title": "Ruray kaxa sutichay",
+        "description": "Ruray kaxapi rikukuq sutichay."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Mana llimpichay",
+        "description": "Unanchaman llimpikuna churakunanta hark'ay."
+      }
+    ]
+  }
+}

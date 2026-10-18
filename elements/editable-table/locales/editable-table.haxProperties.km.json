@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "តារាង",
+    "description": "ទិន្នន័យជាតារាងសម្រាប់បណ្តាញ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "ក្បាលជួរដេក",
+        "description": "ចាត់ទុកជួរដេកទីមួយជាក្បាល។"
+      },
+      {
+        "property": "columnHeader",
+        "title": "ក្បាលជួរឈរ",
+        "description": "ចាត់ទុកជួរឈរទីមួយជាក្បាល។"
+      },
+      {
+        "property": "footer",
+        "title": "បាតកថា",
+        "description": "ចាត់ទុកជួរដេកចុងក្រោយជាបាតកថា។"
+      },
+      {
+        "property": "sort",
+        "title": "អាចតម្រៀបបាន",
+        "description": "អនុញ្ញាតការតម្រៀបតាមតម្លៃជួរឈរ។"
+      },
+      {
+        "property": "filter",
+        "title": "អនុញ្ញាតការត្រង",
+        "description": "អនុញ្ញាតការត្រងតាមតម្លៃជួរឈរ។"
+      },
+      {
+        "property": "numericStyles",
+        "title": "រចនាប័ទ្មលេខ",
+        "description": "អនុវត្តរចនាប័ទ្មលេខលើជួរឈរលេខ។"
+      },
+      {
+        "property": "responsive",
+        "title": "ឆ្លើយតបតាមអេក្រង់",
+        "description": "កែសម្រួលប្លង់តារាងលើអេក្រង់តូច។"
+      },
+      {
+        "property": "rubricMode",
+        "title": "របៀបរូប្រិក",
+        "description": "បកស្រាយតារាងនេះជា OER Schema Rubric ដើម្បីបញ្ចេញទិន្នន័យមេតា Rubric, RubricScale, RubricCriterion និង RubricLevel។"
+      },
+      {
+        "property": "rubricType",
+        "title": "ប្រភេទរូប្រិក",
+        "description": "រចនាប័ទ្មរូប្រិកដែលបញ្ចេញជា oer:rubricType (មានន័យតែពេលបើករបៀបរូប្រិក)។",
+        "options": {
+          "": "(គ្មាន)",
+          "analytic": "វិភាគ",
+          "holistic": "រួម",
+          "single-point": "ចំណុចតែមួយ",
+          "checklist": "បញ្ជីត្រួតពិនិត្យ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "មានស៊ុម"
+      },
+      {
+        "property": "condensed",
+        "title": "បង្រួមជួរដេក",
+        "description": "បន្ថយកម្ពស់ជួរដេក។"
+      },
+      {
+        "property": "striped",
+        "title": "ជួរដេកឆ្នូត",
+        "description": "ដាក់ស្រមោលជួរដេកឆ្លាស់គ្នា។"
+      },
+      {
+        "property": "downloadable",
+        "title": "ប៊ូតុងទាញយក",
+        "description": "បន្ថែមប៊ូតុងដើម្បីទាញយកតារាង។"
+      },
+      {
+        "property": "copyable",
+        "title": "ប៊ូតុងចម្លង",
+        "description": "បន្ថែមប៊ូតុងដើម្បីចម្លងទិន្នន័យ CSV នៃតារាង។"
+      },
+      {
+        "property": "printable",
+        "title": "ប៊ូតុងបោះពុម្ព",
+        "description": "បន្ថែមប៊ូតុងដើម្បីបោះពុម្ពតែតារាង។"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "ទិន្នន័យ CSV",
+        "description": "បង្កើតតារាងពីឯកសារ CSV ដែលបានផ្ទុកឡើង។"
+      }
+    ]
+  }
+}

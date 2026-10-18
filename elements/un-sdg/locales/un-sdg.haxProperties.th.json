@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "เป้าหมายการพัฒนาที่ยั่งยืนแห่งสหประชาชาติ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "เป้าหมาย",
+        "description": "หมายเลข UN SDG"
+      },
+      {
+        "property": "colorOnly",
+        "title": "สีเท่านั้น",
+        "description": "แสดงเฉพาะสีของเป้าหมาย"
+      }
+    ]
+  }
+}

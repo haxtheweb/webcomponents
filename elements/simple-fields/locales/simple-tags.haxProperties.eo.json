@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Etikedoj",
+    "description": "Simpla etikedlisto por montri sur la paĝo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Etikedoj",
+        "description": "Komo-apartigita listo de etikedoj."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Aŭtomata akcenta koloro",
+        "description": "Aŭtomate agordi akcentan koloron laŭ la etikedo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Koloro",
+        "description": "Koloro por etikedoj."
+      }
+    ]
+  }
+}

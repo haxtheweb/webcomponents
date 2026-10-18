@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) кыстаруу",
+    "description": "X'теги твитти контекстте кыстаруу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Твиттин URL дареги",
+        "description": "Кыстарыла турган твиттин URL дареги."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Тема",
+        "description": "X твиттери үчүн ачык же караңгы тема.",
+        "options": {
+          "light": "Ачык",
+          "dark": "Караңгы"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Басканда калкыма терезеге жол бербөө",
+        "description": "Колдонуучулардын твитти x.com сайтында ачуусуна жол бербөө."
+      }
+    ]
+  }
+}

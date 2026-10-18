@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ટૅગિંગ પ્રશ્ન",
+    "description": "પ્રશ્નનો જવાબ આપવા ટૅગ્સ પસંદ કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "પ્રશ્ન",
+        "description": "વપરાશકર્તાઓએ જવાબ આપવાનો પ્રશ્ન."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ગ્રેડિંગ ફૉર્મેટ",
+        "description": "OER Schema: આ મૂલ્યાંકન માટે ગ્રેડિંગ ફૉર્મેટ (દા.ત. પોઇન્ટ, અક્ષર, ટકા, પૂર્ણતા)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "શીખવાનો ઉદ્દેશ",
+        "description": "OER Schema: આ મૂલ્યાંકન સાથે સંકળાયેલ શીખવાનો ઉદ્દેશ."
+      },
+      {
+        "property": "forCourse",
+        "title": "અભ્યાસક્રમ",
+        "description": "OER Schema: આ મૂલ્યાંકન જે અભ્યાસક્રમ માટે છે."
+      },
+      {
+        "property": "answers",
+        "title": "જવાબો"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ક્વિઝનું નામ",
+        "description": "વિશ્લેષણ સિસ્ટમમાં xAPI ઓળખ માટે વપરાતું ક્વિઝનું નામ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Bygg inn Discord-fellesskap fra en delings-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ressurs-URL",
+        "description": "Ressurs-URL."
+      },
+      {
+        "property": "height",
+        "title": "Høyde",
+        "description": "Høyden på innholdsrammen."
+      },
+      {
+        "property": "width",
+        "title": "Bredde",
+        "description": "Bredden på innholdsrammen."
+      }
+    ]
+  }
+}

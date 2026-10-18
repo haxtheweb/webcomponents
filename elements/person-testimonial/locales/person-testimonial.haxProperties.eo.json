@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Bilda citaĵbloko",
+    "description": "Stiligita citaĵo kun nedeviga bildo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bildo",
+        "description": "Aldoni bildon al la atesto."
+      },
+      {
+        "property": "name",
+        "title": "Plena nomo",
+        "description": "Nomo de la persono, kiu donas la ateston."
+      },
+      {
+        "property": "position",
+        "title": "Posteno aŭ laborpostena titolo",
+        "description": "Posteno aŭ laborpostena titolo de la persono."
+      },
+      {
+        "slot": "",
+        "title": "Citaĵo",
+        "description": "Citaĵo de la aŭtoro de la atesto."
+      }
+    ]
+  }
+}

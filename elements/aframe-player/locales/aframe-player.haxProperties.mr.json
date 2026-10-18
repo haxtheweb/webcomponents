@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D प्लेअर",
+    "description": "3D फाइल / ऑगमेंटेड रिअॅलिटी प्लेअर."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "या AR फाइलची URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR मधील घटकाचे X स्थान."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR मधील घटकाचे Y स्थान."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR मधील घटकाचे Z स्थान."
+      },
+      {
+        "property": "skyColor",
+        "title": "आकाशाचा रंग",
+        "description": "दृश्यातील आकाशाचा रंग निवडा."
+      }
+    ]
+  }
+}

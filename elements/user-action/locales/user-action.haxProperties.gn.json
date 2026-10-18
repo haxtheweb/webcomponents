@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Puruhára rembiapo",
+    "description": "Ehapykueho puruhára rembiapo ha emondo mba'ekuaarã xAPI ñongatuhápe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Jejapo ojehapykuehótava",
+        "description": "Puruhára rembiapo omyandýva ko jejapo.",
+        "options": {
+          "visibility": "Ikatu ohecha ko'ã",
+          "keydown": "Ejopy peteĩ tecla ko'ápe",
+          "click": "Ejopy ko'ã",
+          "hover": "Emboguata ári ko'ã"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Ehapykueho opa jey",
+        "description": "Ijypykuévape, ojehapykueho peteĩha añoite."
+      }
+    ]
+  }
+}

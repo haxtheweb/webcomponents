@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kibontható-összecsukható csoport",
+    "description": "Kibontható-összecsukható elemek csoportja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Csak egy kibontása",
+        "description": "Egyszerre csak egy elem bontható ki."
+      },
+      {
+        "slot": "",
+        "title": "Összecsukható elemek",
+        "description": "Az összecsukható elemek."
+      }
+    ]
+  }
+}

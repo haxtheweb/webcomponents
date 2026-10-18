@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Bosca Gníomhaíochta",
+    "description": "Bloc beag ceannteidil le stíl."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Deilbhín",
+        "description": "Deilbhín a thaispeántar in éineacht leis an mbosca gníomhaíochta."
+      },
+      {
+        "property": "tag",
+        "title": "Clib an bhosca gníomhaíochta",
+        "description": "Clib a thaispeántar sa bhosca gníomhaíochta."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Gan Dathú",
+        "description": "Cuir cosc ar dhathanna a chur i bhfeidhm ar an deilbhín."
+      }
+    ]
+  }
+}

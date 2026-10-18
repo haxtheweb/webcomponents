@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "کلمې نښه کړئ",
+    "description": "د متن په منځ کې پر کلمو کلیک کولو سره مفاهیم وپېژنئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "پوښتنه",
+        "description": "هغه پوښتنه چې کاروونکي یې باید ځواب کړي."
+      },
+      {
+        "property": "statement",
+        "title": "بیان",
+        "description": "هغه بیان چې د کلمو د نښه کولو په تعامل بدلېږي."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "د نمرو بڼه",
+        "description": "OER Schema: د دې ارزونې د نمرو بڼه (لکه نمرې، توری، سلنه، بشپړتیا)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "د زده کړې موخه",
+        "description": "OER Schema: د دې ارزونې پورې تړلې د زده کړې موخه."
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "OER Schema: هغه کورس چې دا ارزونه ورته ټاکل شوې."
+      },
+      {
+        "property": "answers",
+        "title": "ځوابونه"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "د ازموینې نوم",
+        "description": "د ازموینې نوم چې په xAPI چاپېریالونو کې د دې توکي د پېژندنې لپاره لېږل کېږي"
+      }
+    ]
+  }
+}

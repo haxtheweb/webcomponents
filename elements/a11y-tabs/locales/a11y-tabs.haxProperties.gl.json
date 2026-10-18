@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Lapelas",
+    "description": "Conxunto de lapelas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etiqueta (para a accesibilidade)",
+        "description": "Etiqueta accesible para o conxunto de lapelas."
+      },
+      {
+        "property": "disabled",
+        "title": "Desactivado",
+        "description": "Desactivar todas as lapelas."
+      },
+      {
+        "property": "hidden",
+        "title": "Oculto",
+        "description": "Ocultar o conxunto de lapelas."
+      },
+      {
+        "property": "sticky",
+        "title": "Fixo",
+        "description": "Manter as lapelas horizontais na parte superior ao desprazarse."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Punto de corte do deseño",
+        "description": "Punto de corte para as lapelas horizontais; usa -1 para só verticais."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Punto de corte das iconas",
+        "description": "Punto de corte para mostrar texto coas iconas. O valor predeterminado é 0; usa -1 para o modo só con iconas."
+      },
+      {
+        "slot": "",
+        "title": "Lapelas",
+        "description": "Serie de elementos <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID único",
+        "description": "ID único para este conxunto de lapelas."
+      }
+    ]
+  }
+}

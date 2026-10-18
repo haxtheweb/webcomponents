@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Елемент колекції",
+    "description": "Елемент у вигляді картки для списку колекції з текстом, посиланням і необов'язковими медіа."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Посилання",
+        "description": "URL призначення для цієї картки."
+      },
+      {
+        "property": "image",
+        "title": "Зображення",
+        "description": "Фонове зображення."
+      },
+      {
+        "property": "line1",
+        "title": "Рядок 1",
+        "description": "Перший рядок тексту."
+      },
+      {
+        "property": "line2",
+        "title": "Рядок 2",
+        "description": "Другий рядок тексту."
+      },
+      {
+        "property": "line3",
+        "title": "Рядок 3",
+        "description": "Третій рядок тексту."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Значок",
+        "description": "Значок, що представляє картку."
+      },
+      {
+        "property": "saturate",
+        "title": "Ефект насиченості",
+        "description": "Змінювати насиченість зображення, коли на ньому фокус."
+      },
+      {
+        "property": "tags",
+        "title": "Теги",
+        "description": "Список тегів через кому."
+      },
+      {
+        "property": "accentColor",
+        "title": "Колір",
+        "description": "Колір тегів."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Альтернативний текст, що описує посилання."
+      }
+    ]
+  }
+}

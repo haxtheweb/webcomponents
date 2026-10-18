@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Qaybta bogga",
+    "description": "Weel qayb oo loogu talagalay nuxurka bogga iyo qaabab shaashad ku salaysan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Naqshadda",
+        "description": "Qaab horay loo dejiyay oo cusboonaysiiya dejimaha la xiriira."
+      },
+      {
+        "property": "image",
+        "title": "Sawir",
+        "description": "Warbaahinta asalka qaybta."
+      },
+      {
+        "property": "bg",
+        "title": "Midabka asalka",
+        "description": "Midabka asalka marka aan sawir la dejin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Badhanka rogrogidda",
+        "description": "Muuji badhan u rogrogaya qaybta xigta."
+      },
+      {
+        "property": "fold",
+        "title": "Muuji laab",
+        "description": "Muuji laab muuqata xagga hoose ee qaybta."
+      },
+      {
+        "property": "full",
+        "title": "Cabbirka shaashadda buuxda",
+        "description": "Buuxi dhererka shaashadda daawadaha."
+      },
+      {
+        "property": "filter",
+        "title": "Dabaq Shaandhayn",
+        "description": "Ku dabaq shaandhayn muuqata sawirka asalka."
+      },
+      {
+        "slot": "",
+        "title": "Nuxur",
+        "description": "Nuxurka qaybta."
+      },
+      {
+        "slot": "entice",
+        "title": "Soo jiidasho",
+        "description": "Nuxur soo jiidasho oo ikhtiyaari ah."
+      },
+      {
+        "slot": "buttons",
+        "title": "Badhamada",
+        "description": "Koox badhamo ah oo ka muuqda qoraalka hoostiisa."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Qoraalka barroosinka",
+        "description": "Calaamadda barroosinka ee ka muuqata socodka."
+      }
+    ]
+  }
+}

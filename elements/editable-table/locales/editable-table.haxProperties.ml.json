@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "പട്ടിക",
+    "description": "വെബിനായുള്ള പട്ടിക അടിസ്ഥാനമാക്കിയ ഡാറ്റ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "നിര തലക്കെട്ട്",
+        "description": "ആദ്യ വരി തലക്കെട്ടായി കണക്കാക്കുക."
+      },
+      {
+        "property": "columnHeader",
+        "title": "കോളം തലക്കെട്ട്",
+        "description": "ആദ്യ കോളം തലക്കെട്ടായി കണക്കാക്കുക."
+      },
+      {
+        "property": "footer",
+        "title": "അടിക്കുറിപ്പ്",
+        "description": "അവസാന വരി അടിക്കുറിപ്പായി കണക്കാക്കുക."
+      },
+      {
+        "property": "sort",
+        "title": "ക്രമീകരിക്കാവുന്നത്",
+        "description": "കോളം മൂല്യങ്ങൾ അനുസരിച്ച് ക്രമീകരിക്കാൻ അനുവദിക്കുക."
+      },
+      {
+        "property": "filter",
+        "title": "ഫിൽട്ടർ അനുവദിക്കുക",
+        "description": "കോളം മൂല്യങ്ങൾ അനുസരിച്ച് ഫിൽട്ടർ ചെയ്യാൻ അനുവദിക്കുക."
+      },
+      {
+        "property": "numericStyles",
+        "title": "സംഖ്യാ ശൈലി",
+        "description": "സംഖ്യാ കോളങ്ങൾക്ക് സംഖ്യാ ശൈലി പ്രയോഗിക്കുക."
+      },
+      {
+        "property": "responsive",
+        "title": "റെസ്പോൺസീവ്",
+        "description": "ചെറിയ സ്ക്രീനുകളിൽ പട്ടികയുടെ ലേഔട്ട് ക്രമീകരിക്കുക."
+      },
+      {
+        "property": "rubricMode",
+        "title": "റൂബ്രിക് മോഡ്",
+        "description": "Rubric, RubricScale, RubricCriterion, RubricLevel മെറ്റാഡാറ്റ പുറപ്പെടുവിക്കാൻ ഈ പട്ടികയെ ഒരു OER Schema Rubric ആയി വ്യാഖ്യാനിക്കുക."
+      },
+      {
+        "property": "rubricType",
+        "title": "റൂബ്രിക് തരം",
+        "description": "oer:rubricType ആയി പുറപ്പെടുവിക്കുന്ന റൂബ്രിക് ശൈലി (റൂബ്രിക് മോഡ് ഓണായിരിക്കുമ്പോൾ മാത്രം അർത്ഥവത്ത്).",
+        "options": {
+          "": "(ഒന്നുമില്ല)",
+          "analytic": "വിശകലനാത്മകം",
+          "holistic": "സമഗ്രം",
+          "single-point": "ഒറ്റ പോയിന്റ്",
+          "checklist": "ചെക്ക്‌ലിസ്റ്റ്"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "അതിർവരയുള്ളത്"
+      },
+      {
+        "property": "condensed",
+        "title": "നിരകൾ ചുരുക്കുക",
+        "description": "നിരയുടെ ഉയരം കുറയ്ക്കുക."
+      },
+      {
+        "property": "striped",
+        "title": "വരയുള്ള നിരകൾ",
+        "description": "ഒന്നിടവിട്ട നിരകൾക്ക് നിഴൽ നൽകുക."
+      },
+      {
+        "property": "downloadable",
+        "title": "ഡൗൺലോഡ് ബട്ടൺ",
+        "description": "പട്ടിക ഡൗൺലോഡ് ചെയ്യാൻ ഒരു ബട്ടൺ ചേർക്കുക."
+      },
+      {
+        "property": "copyable",
+        "title": "പകർത്തൽ ബട്ടൺ",
+        "description": "പട്ടികയുടെ CSV ഡാറ്റ പകർത്താൻ ഒരു ബട്ടൺ ചേർക്കുക."
+      },
+      {
+        "property": "printable",
+        "title": "പ്രിന്റ് ബട്ടൺ",
+        "description": "പട്ടിക മാത്രം പ്രിന്റ് ചെയ്യാൻ ഒരു ബട്ടൺ ചേർക്കുക."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV ഡാറ്റ",
+        "description": "അപ്‌ലോഡ് ചെയ്ത CSV ഫയലിൽ നിന്ന് ഒരു പട്ടിക സൃഷ്ടിക്കുക."
+      }
+    ]
+  }
+}

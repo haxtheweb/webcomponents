@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Dátum",
+    "description": "Naptári dátum megjelenítése részletekkel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Hónap",
+        "description": "A kártyán megjelenő hónap."
+      },
+      {
+        "property": "date",
+        "title": "A hónap napja",
+        "description": "A hónap napja számmal."
+      },
+      {
+        "property": "day",
+        "title": "A hét napja",
+        "description": "A hét napja szöveggel."
+      },
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "Az esemény neve."
+      },
+      {
+        "property": "location",
+        "title": "Helyszín",
+        "description": "Az esemény helyszíne."
+      },
+      {
+        "property": "startTime",
+        "title": "Kezdés",
+        "description": "Kezdési időpont."
+      },
+      {
+        "property": "endTime",
+        "title": "Befejezés",
+        "description": "Befejezési időpont."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "Opcionális kiemelőszín."
+      },
+      {
+        "property": "dark",
+        "title": "Sötét téma",
+        "description": "Sötét téma engedélyezése."
+      }
+    ]
+  }
+}

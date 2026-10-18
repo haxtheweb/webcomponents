@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Fantastische Explosion",
+    "description": "Interaktive Explosionsanimation mit optionalen Soundeffekten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Größe",
+        "description": "Größe der Explosion festlegen.",
+        "options": {
+          "tiny": "Winzig",
+          "small": "Klein",
+          "medium": "Mittel",
+          "large": "Groß",
+          "epic": "Episch"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Farbe",
+        "description": "Farbschema der Explosion festlegen.",
+        "options": {
+          "": "Standard",
+          "red": "Rot",
+          "blue": "Blau",
+          "purple": "Lila",
+          "orange": "Orange",
+          "yellow": "Gelb"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Soundeffekte",
+        "description": "Soundeffekte aktivieren."
+      },
+      {
+        "property": "resetSound",
+        "title": "Sound zurücksetzen",
+        "description": "Sound jedes Mal von vorne starten."
+      },
+      {
+        "property": "image",
+        "title": "Eigenes Bild",
+        "description": "Optionale URL für ein eigenes Explosionsbild."
+      },
+      {
+        "property": "sound",
+        "title": "Eigener Sound",
+        "description": "Optionale URL für einen eigenen Soundeffekt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Deaktiviert",
+        "description": "Alle Interaktionen deaktivieren."
+      }
+    ]
+  }
+}

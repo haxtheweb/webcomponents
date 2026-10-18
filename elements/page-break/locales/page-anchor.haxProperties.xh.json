@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "I-ankile yeKhasi",
+    "description": "Qhagamshela kwiindawo ezithile zemidiya ekhasini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Ekujoliswe kuko ekhasini",
+        "description": "I-ID okanye isixhobo esalathwa yile ankile."
+      },
+      {
+        "property": "value",
+        "title": "Ixabiso lekhonkco elinzulu",
+        "description": "Ixabiso lekhonkco elinzulu (umzekelo, isitampu sexesha okanye i-ID yesilayidi)."
+      },
+      {
+        "property": "entityId",
+        "title": "Into yesayithi",
+        "description": "Into yesayithi ekhethwayo yokulawula ukuboniswa kweengqikelelo ezinxulumeneyo."
+      }
+    ]
+  }
+}

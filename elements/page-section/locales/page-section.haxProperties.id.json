@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Bagian halaman",
+    "description": "Kontainer bagian untuk konten halaman dan tata letak berbasis layar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Perlakuan desain",
+        "description": "Gaya prasetel yang memperbarui pengaturan terkait."
+      },
+      {
+        "property": "image",
+        "title": "Gambar",
+        "description": "Media latar belakang untuk bagian ini."
+      },
+      {
+        "property": "bg",
+        "title": "Warna latar belakang",
+        "description": "Warna latar belakang saat tidak ada gambar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Tombol gulir",
+        "description": "Tampilkan tombol yang menggulir ke bagian berikutnya."
+      },
+      {
+        "property": "fold",
+        "title": "Tampilkan lipatan",
+        "description": "Tampilkan lipatan visual di bagian bawah bagian ini."
+      },
+      {
+        "property": "full",
+        "title": "Ukuran layar penuh",
+        "description": "Isi tinggi layar penonton."
+      },
+      {
+        "property": "filter",
+        "title": "Terapkan Filter",
+        "description": "Terapkan filter visual pada gambar latar belakang."
+      },
+      {
+        "slot": "",
+        "title": "Konten",
+        "description": "Konten bagian."
+      },
+      {
+        "slot": "entice",
+        "title": "Pemikat",
+        "description": "Konten pemikat opsional."
+      },
+      {
+        "slot": "buttons",
+        "title": "Tombol",
+        "description": "Grup tombol yang ditampilkan di bawah teks."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Teks jangkar",
+        "description": "Label jangkar yang ditampilkan di navigasi."
+      }
+    ]
+  }
+}

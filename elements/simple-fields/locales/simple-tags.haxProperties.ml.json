@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ടാഗുകൾ",
+    "description": "പേജിൽ പ്രദർശിപ്പിക്കാനുള്ള ലളിതമായ ടാഗ് ലിസ്റ്റ്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ടാഗുകൾ",
+        "description": "കോമ കൊണ്ട് വേർതിരിച്ച ടാഗുകളുടെ ലിസ്റ്റ്."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "സ്വയമേവ ആക്സന്റ് നിറം",
+        "description": "ലേബലിനെ അടിസ്ഥാനമാക്കി ആക്സന്റ് നിറം സ്വയമേവ സജ്ജമാക്കുക."
+      },
+      {
+        "property": "accentColor",
+        "title": "നിറം",
+        "description": "ടാഗുകൾക്കുള്ള നിറം."
+      }
+    ]
+  }
+}

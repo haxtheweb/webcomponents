@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Проигрыватель Unity",
+    "description": "Проигрыватель Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Цель",
+        "description": "Путь к сборке игры."
+      },
+      {
+        "property": "compression",
+        "title": "Метод сжатия",
+        "description": "Расширение файлов сжатия для ресурсов игры."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL потоковой передачи",
+        "description": "URL потоковых ресурсов."
+      },
+      {
+        "property": "companyname",
+        "title": "Название компании",
+        "description": "Название компании."
+      },
+      {
+        "property": "productname",
+        "title": "Название продукта",
+        "description": "Название игры."
+      },
+      {
+        "property": "productversion",
+        "title": "Версия продукта",
+        "description": "Версия выпуска."
+      },
+      {
+        "property": "width",
+        "title": "Ширина холста",
+        "description": "CSS-ширина холста (например, px или em)."
+      },
+      {
+        "property": "height",
+        "title": "Высота холста",
+        "description": "CSS-высота холста (например, px или em)."
+      },
+      {
+        "property": "background",
+        "title": "Фон холста",
+        "description": "CSS-фон холста."
+      }
+    ]
+  }
+}

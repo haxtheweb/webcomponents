@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Soalan Betul / Salah",
+    "description": "Soalan betul salah"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Soalan",
+        "description": "Soalan untuk dijawab oleh pengguna."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Jawapan Betul"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nama kuiz",
+        "description": "Nama kuiz yang dihantar untuk digunakan dalam persekitaran dipacu xAPI bagi mengenal pasti item ini"
+      }
+    ]
+  }
+}

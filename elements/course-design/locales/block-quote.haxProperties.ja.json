@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "引用ブロック",
+    "description": "スタイル付きの引用ブロック。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "出典",
+        "description": "出典のテキスト。"
+      },
+      {
+        "property": "alt",
+        "title": "代替",
+        "description": "画像の代替テキスト。"
+      },
+      {
+        "property": "image",
+        "title": "画像",
+        "description": "引用と一緒に表示する画像。"
+      }
+    ]
+  }
+}

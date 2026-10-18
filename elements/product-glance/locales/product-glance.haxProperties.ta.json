@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "தயாரிப்பு சுருக்கப் பார்வை",
+    "description": "விரைவான தயாரிப்பு மேலோட்டத் தொகுதி."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ஐகான்",
+        "description": "கருத்தைக் குறிக்கும் ஐகான்."
+      },
+      {
+        "property": "title",
+        "title": "தலைப்பு",
+        "description": "ஒரே பார்வையில் முதன்மைக் கருத்து."
+      },
+      {
+        "property": "subtitle",
+        "title": "துணைத் தலைப்பு",
+        "description": "கூடுதல் விவரம்."
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "ஐகானுக்கான அழுத்த நிறம்."
+      }
+    ]
+  }
+}

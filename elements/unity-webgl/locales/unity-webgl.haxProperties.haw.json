@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Mea Pāʻani Unity",
+    "description": "Mea pāʻani Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Pahuhopu",
+        "description": "Ala i ke kūkulu pāʻani."
+      },
+      {
+        "property": "compression",
+        "title": "Ala hoʻopaʻapū",
+        "description": "Hope inoa faila hoʻopaʻapū no nā waiwai pāʻani."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL Kahe",
+        "description": "URL waiwai kahe."
+      },
+      {
+        "property": "companyname",
+        "title": "Inoa Hui ʻOihana",
+        "description": "Inoa hui ʻoihana."
+      },
+      {
+        "property": "productname",
+        "title": "Inoa Huahana",
+        "description": "Poʻo inoa pāʻani."
+      },
+      {
+        "property": "productversion",
+        "title": "Mana Huahana",
+        "description": "Mana hoʻokuʻu."
+      },
+      {
+        "property": "width",
+        "title": "Ākea Kanawaʻa",
+        "description": "Ākea CSS o ke kanawaʻa (e laʻa me px a em paha)."
+      },
+      {
+        "property": "height",
+        "title": "Kiʻekiʻe Kanawaʻa",
+        "description": "Kiʻekiʻe CSS o ke kanawaʻa (e laʻa me px a em paha)."
+      },
+      {
+        "property": "background",
+        "title": "Kāʻei Hope Kanawaʻa",
+        "description": "Kāʻei hope CSS o ke kanawaʻa."
+      }
+    ]
+  }
+}

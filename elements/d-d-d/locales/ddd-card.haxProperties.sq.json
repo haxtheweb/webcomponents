@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kartë",
+    "description": "Komponent karte me stilin e sistemit të dizajnit DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Imazhi",
+        "description": "Imazh opsional."
+      },
+      {
+        "property": "alt",
+        "title": "Alt i imazhit",
+        "description": "Tekst alternativ që përshkruan imazhin."
+      },
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Titulli i kartës."
+      },
+      {
+        "slot": "",
+        "title": "Përmbajtja",
+        "description": "Zona e përmbajtjes së kartës."
+      },
+      {
+        "property": "href",
+        "title": "Lidhja",
+        "description": "URL-ja e lidhjes së butonit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etiketa",
+        "description": "Etiketa e butonit."
+      },
+      {
+        "property": "noArrow",
+        "title": "Pa shigjetë",
+        "description": "Fshih shigjetën e butonit."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Lidhja: target",
+        "description": "Ku të hapet lidhja.",
+        "options": {
+          "": "E njëjta dritare",
+          "_blank": "Dritare e re - _blank",
+          "_top": "Dritarja e sipërme - _top",
+          "_parent": "Dritarja prind - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Lidhja: rel",
+        "description": "Marrëdhënia midis burimit të lidhur dhe dokumentit aktual."
+      }
+    ]
+  }
+}

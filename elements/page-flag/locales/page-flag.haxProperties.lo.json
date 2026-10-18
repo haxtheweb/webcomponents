@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ທຸງໜ້າ",
+    "description": "ບັນທຶກບັນນາທິການສຳລັບຜູ້ຂຽນໜ້າ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນສຳລັບທຸງໜ້າ."
+      },
+      {
+        "property": "label",
+        "title": "ປ້າຍກຳກັບ",
+        "description": "ຂໍ້ຄວາມປ້າຍກຳກັບສຳລັບທຸງໜ້າ."
+      }
+    ]
+  }
+}

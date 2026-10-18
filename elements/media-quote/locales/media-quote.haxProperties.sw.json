@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Nukuu ya midia",
+    "description": "Picha yenye nukuu, marejeleo na maelezo mafupi ya hiari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Nukuu",
+        "description": "Maandishi ya nukuu."
+      },
+      {
+        "slot": "author",
+        "title": "Mwandishi",
+        "description": "Mwandishi wa nukuu."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Maelezo ya mwandishi",
+        "description": "Maelezo ya mwandishi."
+      },
+      {
+        "slot": "caption",
+        "title": "Maelezo mafupi",
+        "description": "Maelezo mafupi ya picha."
+      },
+      {
+        "property": "src",
+        "title": "Chanzo cha Picha",
+        "description": "Faili ya picha inayotumika kwa nukuu ya midia."
+      },
+      {
+        "property": "alt",
+        "title": "Maandishi Mbadala",
+        "description": "Maandishi mbadala ya picha."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Rangi ya Msisitizo",
+        "description": "Rangi ya msisitizo ya kadi."
+      }
+    ]
+  }
+}

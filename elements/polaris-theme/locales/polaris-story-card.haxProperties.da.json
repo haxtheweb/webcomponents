@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris-historiekort",
+    "description": "Vis et Polaris-historiekort med baggrundsbillede, søjleetiket og overskriftstekst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Baggrundsbillede",
+        "description": "Billed-URL vist som kortets baggrund."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Baggrundsstørrelse",
+        "description": "Hvordan baggrundsbilledet udfylder kortet (CSS background-size).",
+        "options": {
+          "cover": "dæk (cover)",
+          "contain": "indeholde (contain)",
+          "auto": "automatisk (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Fastgørelse af baggrund",
+        "description": "Hvordan baggrundsbilledet opfører sig ved rulning (CSS background-attachment).",
+        "options": {
+          "scroll": "rul (scroll)",
+          "fixed": "fast (fixed)",
+          "local": "lokal (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Søjleetiket",
+        "description": "Kort etiket med store bogstaver vist øverst på kortet. Lad feltet være tomt for at skjule den."
+      },
+      {
+        "property": "label",
+        "title": "Korttekst",
+        "description": "Primær tekst vist i det nederste panel."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Valgfri destinations-URL, der omslutter hele kortet."
+      }
+    ]
+  }
+}

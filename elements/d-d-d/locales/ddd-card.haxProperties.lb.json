@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kaart",
+    "description": "Kaart-Komponent am DDD-Designsystem gestalt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Bild",
+        "description": "Optionaalt Bild."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativtext vum Bild",
+        "description": "Alternativen Text, deen d'Bild beschreift."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel vun der Kaart."
+      },
+      {
+        "slot": "",
+        "title": "Inhalt",
+        "description": "Inhaltsberäich vun der Kaart."
+      },
+      {
+        "property": "href",
+        "title": "Link",
+        "description": "Link-URL vum Knäppchen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etikett",
+        "description": "Etikett vum Knäppchen."
+      },
+      {
+        "property": "noArrow",
+        "title": "Kee Feil",
+        "description": "De Feil um Knäppchen verstoppen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Link: Zil",
+        "description": "Wou de Link opgemaach gëtt.",
+        "options": {
+          "": "Selwecht Fënster",
+          "_blank": "Nei Fënster - _blank",
+          "_top": "Iewescht Fënster - _top",
+          "_parent": "Iwwergeuerdent Fënster - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Link: rel",
+        "description": "Relatioun tëscht der verlinkter Ressource an dem aktuellen Dokument."
+      }
+    ]
+  }
+}

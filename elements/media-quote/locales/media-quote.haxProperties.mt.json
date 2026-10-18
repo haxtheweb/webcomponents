@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Kwotazzjoni tal-midja",
+    "description": "Immaġni b'kwotazzjoni, ċitazzjoni u didaskalija fakultattiva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Kwotazzjoni",
+        "description": "Test tal-kwotazzjoni."
+      },
+      {
+        "slot": "author",
+        "title": "Awtur",
+        "description": "L-awtur tal-kwotazzjoni."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Dettalji tal-awtur",
+        "description": "Dettalji tal-awtur."
+      },
+      {
+        "slot": "caption",
+        "title": "Didaskalija",
+        "description": "Didaskalija tal-immaġni."
+      },
+      {
+        "property": "src",
+        "title": "Sors tal-immaġni",
+        "description": "Fajl tal-immaġni użat għall-kwotazzjoni tal-midja."
+      },
+      {
+        "property": "alt",
+        "title": "Test alternattiv",
+        "description": "Test alternattiv għall-immaġni."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-enfasi tal-karta."
+      }
+    ]
+  }
+}

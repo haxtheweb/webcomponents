@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "मिलान प्रश्न",
+    "description": "ड्रैग-एंड-ड्रॉप मिलान गतिविधि जो संकेतों को उनके सही उत्तरों से जोड़ती है।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "प्रश्न",
+        "description": "उपयोगकर्ताओं के लिए प्रश्न। ड्रॉप लक्ष्य चिह्नित करें, फिर अगले लक्ष्य तक उत्तर सूचीबद्ध करें।"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ग्रेडिंग प्रारूप",
+        "description": "OER Schema: इस मूल्यांकन का ग्रेडिंग प्रारूप (जैसे अंक, अक्षर ग्रेड, प्रतिशत, पूर्णता)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "अधिगम उद्देश्य",
+        "description": "OER Schema: इस मूल्यांकन से जुड़ा अधिगम उद्देश्य।"
+      },
+      {
+        "property": "forCourse",
+        "title": "पाठ्यक्रम",
+        "description": "OER Schema: वह पाठ्यक्रम जिसके लिए यह मूल्यांकन है।"
+      },
+      {
+        "property": "answers",
+        "title": "उत्तर"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "क्विज़ का नाम",
+        "description": "एनालिटिक्स प्रणालियों में xAPI पहचान के लिए प्रयुक्त क्विज़ नाम।"
+      }
+    ]
+  }
+}

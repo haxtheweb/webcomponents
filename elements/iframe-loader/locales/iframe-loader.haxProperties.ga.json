@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Leabaigh ábhar gréasáin seachtrach in iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL na hAcmhainne",
+        "description": "URL na hacmhainne."
+      },
+      {
+        "property": "height",
+        "title": "Airde",
+        "description": "Airde an iframe."
+      },
+      {
+        "property": "width",
+        "title": "Leithead",
+        "description": "Leithead an iframe."
+      }
+    ]
+  }
+}

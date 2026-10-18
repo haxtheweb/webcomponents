@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Partituro",
+    "description": "Bildigas kaj ludas partiturojn, gitarajn tabulaturojn kaj muziknotacion per alphaTex aŭ MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex-notacio",
+        "description": "Enlinia alphaTex-markado por la partituro. Redaktu rekte por verki notacion; ĝi estas konservata en ŝablono, do la spacoj restas."
+      },
+      {
+        "property": "source",
+        "title": "Partitura dosiero",
+        "description": "Alŝutu aŭ ligu al MusicXML- (.xml/.musicxml/.mxl) aŭ Guitar Pro-dosiero (.gp3/.gp4/.gp5/.gpx/.gp). Kiam agordita, ĝi superregas la enlinian alphaTex."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Sonludado",
+        "description": "Ŝaltita defaŭlte - aŭskultu la partituron ludatan de la enkonstruita sintezilo. Malŝaltu por nur-montra reĝimo (sen sono)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Montri montrajn opciojn",
+        "description": "Montri butonojn de zomo, streĉo kaj aranĝo sur la ludila breto."
+      },
+      {
+        "property": "showExport",
+        "title": "Montri eksportajn butonojn",
+        "description": "Montri butonojn por elŝuti MIDI kaj presi/PDF sur la ludila breto."
+      }
+    ]
+  }
+}

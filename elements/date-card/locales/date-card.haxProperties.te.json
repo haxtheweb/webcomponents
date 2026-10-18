@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "తేదీ",
+    "description": "వివరాలతో క్యాలెండర్ తేదీని ప్రదర్శించండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "నెల",
+        "description": "కార్డ్‌పై చూపబడే నెల."
+      },
+      {
+        "property": "date",
+        "title": "నెలలో రోజు",
+        "description": "నెలలో రోజు (సంఖ్యగా)."
+      },
+      {
+        "property": "day",
+        "title": "వారంలో రోజు",
+        "description": "వారంలో రోజు (వచనంగా)."
+      },
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "ఈవెంట్ పేరు."
+      },
+      {
+        "property": "location",
+        "title": "స్థానం",
+        "description": "ఈవెంట్ జరిగే స్థానం."
+      },
+      {
+        "property": "startTime",
+        "title": "ప్రారంభం",
+        "description": "ప్రారంభ సమయం."
+      },
+      {
+        "property": "endTime",
+        "title": "ముగింపు",
+        "description": "ముగింపు సమయం."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "ఐచ్ఛిక యాక్సెంట్ రంగు."
+      },
+      {
+        "property": "dark",
+        "title": "డార్క్ థీమ్",
+        "description": "డార్క్ థీమ్‌ను ప్రారంభించండి."
+      }
+    ]
+  }
+}

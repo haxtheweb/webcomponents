@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Cod QR",
+    "description": "Cod de scanat cu un smartphone."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Date QR",
+        "description": "Sursa datelor pentru codul QR."
+      },
+      {
+        "property": "title",
+        "title": "Titlu alternativ",
+        "description": "Titlu alternativ legat de sursa codului QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Dimensiune",
+        "description": "Dimensiunea codului QR."
+      },
+      {
+        "property": "margin",
+        "title": "Margine",
+        "description": "Spațiul din jurul codului."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Format de ieșire",
+        "description": "Formatul în care este generat.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

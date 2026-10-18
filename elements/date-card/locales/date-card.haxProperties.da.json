@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Dato",
+    "description": "Vis en kalenderdato med detaljer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Måned",
+        "description": "Måned vist på kortet."
+      },
+      {
+        "property": "date",
+        "title": "Dag i måneden",
+        "description": "Dag i måneden som tal."
+      },
+      {
+        "property": "day",
+        "title": "Ugedag",
+        "description": "Ugedag som tekst."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Begivenhedens navn."
+      },
+      {
+        "property": "location",
+        "title": "Sted",
+        "description": "Begivenhedens sted."
+      },
+      {
+        "property": "startTime",
+        "title": "Start",
+        "description": "Starttidspunkt."
+      },
+      {
+        "property": "endTime",
+        "title": "Slut",
+        "description": "Sluttidspunkt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfarve",
+        "description": "En valgfri accentfarve."
+      },
+      {
+        "property": "dark",
+        "title": "Mørkt tema",
+        "description": "Aktivér mørkt tema."
+      }
+    ]
+  }
+}

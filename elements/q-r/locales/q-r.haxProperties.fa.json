@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "کد QR",
+    "description": "کدی برای اسکن با تلفن هوشمند."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "داده‌های QR",
+        "description": "منبع داده‌های کد QR."
+      },
+      {
+        "property": "title",
+        "title": "عنوان جایگزین",
+        "description": "عنوان جایگزین پیوندشده به منبع کد QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "اندازه",
+        "description": "اندازهٔ کد QR."
+      },
+      {
+        "property": "margin",
+        "title": "حاشیه",
+        "description": "فاصلهٔ پیرامون کد."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "قالب خروجی",
+        "description": "قالبی که خروجی در آن تولید شود.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

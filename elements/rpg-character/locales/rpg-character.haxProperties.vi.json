@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Nhân vật RPG",
+    "description": "Nhân vật vui nhộn từ HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Tên",
+        "description": "Từ dùng để tạo nhân vật ngẫu nhiên."
+      },
+      {
+        "property": "hat",
+        "title": "Mũ",
+        "description": "Kiểu mũ.",
+        "options": {
+          "none": "Mặc định",
+          "random": "Ngẫu nhiên",
+          "bunny": "Thỏ",
+          "cowboy": "Cao bồi",
+          "education": "Giáo dục",
+          "construction": "Công trường",
+          "warning": "Cảnh báo",
+          "watermelon": "Dưa hấu",
+          "coffee": "Cà phê",
+          "knight": "Hiệp sĩ",
+          "ninja": "Ninja",
+          "party": "Tiệc",
+          "error": "Lỗi",
+          "edit": "Chỉnh sửa"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Chiều rộng",
+        "description": "Chiều rộng nhân vật tính bằng pixel."
+      },
+      {
+        "property": "height",
+        "title": "Chiều cao",
+        "description": "Chiều cao nhân vật tính bằng pixel."
+      },
+      {
+        "property": "fire",
+        "title": "Đang cháy?",
+        "description": "Nhân vật có đang bốc cháy hay không."
+      },
+      {
+        "property": "walking",
+        "title": "Đang đi?",
+        "description": "Hoạt ảnh đi bộ; sẽ chạy khi đang cháy."
+      }
+    ]
+  }
+}

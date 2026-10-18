@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "He takai H5P hei uta, hei whakaatu i ngā kōnae .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Waehere tāmau iframe H5P"
+      }
+    ]
+  }
+}

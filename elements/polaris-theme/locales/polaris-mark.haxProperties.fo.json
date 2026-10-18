@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris-merki",
+    "description": "Vís PSU-eyðmerkið við valfríum skúlanavni og mál-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Skúlanavn",
+        "description": "Navn, sum verður víst við síðuna av merkinum."
+      },
+      {
+        "property": "name2",
+        "title": "Skúlanavn 2",
+        "description": "Annað navn, víst undir fyrsta skúlanavninum."
+      },
+      {
+        "property": "name3",
+        "title": "Skúlanavn 3",
+        "description": "Triðja navn, víst undir øðrum skúlanavninum."
+      },
+      {
+        "property": "url",
+        "title": "Leinki",
+        "description": "Mál-URL, tá klikt verður á merkið."
+      },
+      {
+        "property": "type",
+        "title": "Útgáva",
+        "description": "Sjónlig útgáva av merkinum.",
+        "options": {
+          "default": "Standard",
+          "light": "Ljóst",
+          "dark": "Myrkt"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Loddrætt snið",
+        "description": "Vís triðja navnið undir øðrum navninum við eini vatnrættari linju."
+      }
+    ]
+  }
+}

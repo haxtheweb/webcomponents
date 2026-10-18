@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Dangos botwm galw i weithredu Polaris â thema."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Testun y botwm",
+        "description": "Testun a ddangosir yn y botwm galw i weithredu."
+      },
+      {
+        "property": "link",
+        "title": "Dolen",
+        "description": "URL cyrchfan ar gyfer y botwm."
+      },
+      {
+        "property": "type",
+        "title": "Amrywiad",
+        "description": "Amrywiad arddull weledol.",
+        "options": {
+          "primary": "Cynradd",
+          "tinted": "Arlliwiedig",
+          "light": "Golau"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Arddull amlinellol",
+        "description": "Galluogi triniaeth amlinellol."
+      },
+      {
+        "property": "filled",
+        "title": "Arddull wedi'i llenwi",
+        "description": "Galluogi triniaeth wedi'i llenwi."
+      }
+    ]
+  }
+}

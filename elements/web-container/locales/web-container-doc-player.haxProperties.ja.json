@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "ウェブコンポーネントのドキュメントプレーヤー"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "ウィンドウを非表示",
+        "description": "出力ウィンドウを非表示にします。ターミナルのみを使う場合に便利です"
+      }
+    ]
+  }
+}

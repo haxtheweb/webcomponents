@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Notayên muzîkê",
+    "description": "Bi alphaTex an MusicXML notayên muzîkê, tabên gîtarê û nîşaneya partîturê nîşan dide û lê dide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Nîşaneya AlphaTex",
+        "description": "Nîşankirina alphaTex a di nav rêzê de ji bo notayên muzîkê. Ji bo nivîsîna nîşaneyê rasterast sererast bike; ew di şablonekê de tê tomarkirin da ku valahî werin parastin."
+      },
+      {
+        "property": "source",
+        "title": "Pela partîturê",
+        "description": "Pelek MusicXML (.xml/.musicxml/.mxl) an Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) bar bike an girêdana wê bide. Dema hatibe danîn, li şûna alphaTex a di nav rêzê de derbas dibe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Lêdana dengî",
+        "description": "Ji xwerû ve vekirî ye - guhdariya notayên muzîkê bike ku bi sentezkera hundirîn tên lêdan. Ji bo moda tenê temaşekirinê (bê deng) vemirîne."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Vebijarkên nîşandanê nîşan bide",
+        "description": "Bişkokên zoom, dirêjkirin û rûpelsazkirinê li ser darika lîstikvanê nîşan bide."
+      },
+      {
+        "property": "showExport",
+        "title": "Bişkokên derxistinê nîşan bide",
+        "description": "Bişkokên daxistina MIDI û çapkirin/PDF li ser darika lîstikvanê nîşan bide."
+      }
+    ]
+  }
+}

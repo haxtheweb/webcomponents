@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "سم / غلط پوښتنه",
+    "description": "سم یا غلط پوښتنه"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "پوښتنه",
+        "description": "هغه پوښتنه چې کاروونکي یې باید ځواب کړي."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "سم ځواب"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "د ازموینې نوم",
+        "description": "د ازموینې نوم چې په xAPI چاپېریالونو کې د دې توکي د پېژندنې لپاره لېږل کېږي"
+      }
+    ]
+  }
+}

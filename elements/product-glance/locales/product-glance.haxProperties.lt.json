@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Produkto apžvalga",
+    "description": "Greitos produkto apžvalgos blokas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Piktograma",
+        "description": "Sąvoką vaizduojanti piktograma."
+      },
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Pagrindinė sąvoka trumpai."
+      },
+      {
+        "property": "subtitle",
+        "title": "Paantraštė",
+        "description": "Papildoma informacija."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Piktogramos akcento spalva."
+      }
+    ]
+  }
+}

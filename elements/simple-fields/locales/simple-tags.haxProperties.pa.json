@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ਟੈਗ",
+    "description": "ਪੰਨੇ 'ਤੇ ਦਿਖਾਉਣ ਲਈ ਸਧਾਰਨ ਟੈਗ ਸੂਚੀ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ਟੈਗ",
+        "description": "ਕਾਮਿਆਂ ਨਾਲ ਵੱਖ ਕੀਤੀ ਟੈਗਾਂ ਦੀ ਸੂਚੀ।"
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ਸਵੈਚਲਿਤ ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਲੇਬਲ ਦੇ ਆਧਾਰ 'ਤੇ ਐਕਸੈਂਟ ਰੰਗ ਸਵੈਚਲਿਤ ਤੌਰ 'ਤੇ ਸੈੱਟ ਕਰੋ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਰੰਗ",
+        "description": "ਟੈਗਾਂ ਲਈ ਰੰਗ।"
+      }
+    ]
+  }
+}

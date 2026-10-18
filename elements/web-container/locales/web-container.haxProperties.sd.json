@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS ڪنٽينر"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "ايڊيٽر لڪايو",
+        "description": "فائل ايڊٽ ڪرڻ وارو انٽرفيس لڪايو."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "ٽرمينل لڪايو",
+        "description": "پاڻمرادو هلندڙ پروگرامن لاءِ ٽرمينل لڪايو."
+      },
+      {
+        "property": "hideWindow",
+        "title": "ونڊو لڪايو",
+        "description": "صرف ٽرمينل استعمال لاءِ آئوٽ پٽ ونڊو لڪايو."
+      },
+      {
+        "slot": "",
+        "title": "ڪمانڊون",
+        "description": "لوڊ ڪرڻ کان اڳ هلائڻ لاءِ ڪمانڊون (هر سٽ ۾ هڪ)."
+      }
+    ]
+  }
+}

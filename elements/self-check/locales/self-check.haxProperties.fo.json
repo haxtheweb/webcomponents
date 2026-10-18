@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Sjálvkanning",
+    "description": "Brúkarar kunnu gera eina sjálvkanning."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Mynd",
+        "description": "Mynd til sjálvkanningina."
+      },
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Heiti á sjálvkanningini."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativur tekstur",
+        "description": "Alternativur tekstur til myndina."
+      },
+      {
+        "slot": "question",
+        "title": "Spurningur"
+      },
+      {
+        "slot": "",
+        "title": "Svar"
+      },
+      {
+        "property": "accentColor",
+        "title": "Evnislitur",
+        "description": "Vel ein evnislit úr sniðskipanini.",
+        "options": {
+          "primary": "Høvuðs",
+          "accent": "Dámur",
+          "success": "Eydnast",
+          "warning": "Ávaring",
+          "error": "Villa",
+          "info": "Kunning"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lærumál",
+        "description": "Tilvísing til lærumál, útgivin sum oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Metir",
+        "description": "Tilvísing til virksemi, útgivin sum oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Leinki til meira",
+        "description": "Leinki til meiri upplýsingar."
+      }
+    ]
+  }
+}

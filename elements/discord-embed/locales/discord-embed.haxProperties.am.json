@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "የDiscord ማህበረሰቦችን ከማጋሪያ URL ክተት።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "የሀብት URL",
+        "description": "የሀብት URL።"
+      },
+      {
+        "property": "height",
+        "title": "ቁመት",
+        "description": "የይዘት ፍሬም ቁመት።"
+      },
+      {
+        "property": "width",
+        "title": "ስፋት",
+        "description": "የይዘት ፍሬም ስፋት።"
+      }
+    ]
+  }
+}

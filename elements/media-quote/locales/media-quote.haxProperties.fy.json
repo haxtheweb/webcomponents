@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Mediasitaat",
+    "description": "Ofbylding mei in sitaat, boarnefermelding en opsjonele ûnderskrift."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Sitaat",
+        "description": "Sitaattekst."
+      },
+      {
+        "slot": "author",
+        "title": "Auteur",
+        "description": "Auteur fan it sitaat."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Details fan de auteur",
+        "description": "Details fan de auteur."
+      },
+      {
+        "slot": "caption",
+        "title": "Underskrift",
+        "description": "Underskrift by de ôfbylding."
+      },
+      {
+        "property": "src",
+        "title": "Ofbyldingsboarne",
+        "description": "Ofbyldingsbestân foar it mediasitaat."
+      },
+      {
+        "property": "alt",
+        "title": "Alternative tekst",
+        "description": "Alternative tekst foar de ôfbylding."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Aksintkleur fan de kaart."
+      }
+    ]
+  }
+}

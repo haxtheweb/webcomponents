@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "გვერდის დროშა",
+    "description": "სარედაქციო შენიშვნა გვერდის ავტორებისთვის."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "გვერდის დროშის აქცენტის ფერი."
+      },
+      {
+        "property": "label",
+        "title": "იარლიყი",
+        "description": "გვერდის დროშის იარლიყის ტექსტი."
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "媒体引用",
+    "description": "带引用、出处搭可选说明个图片。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "引用",
+        "description": "引用文字。"
+      },
+      {
+        "slot": "author",
+        "title": "作者",
+        "description": "引用作者。"
+      },
+      {
+        "slot": "author-detail",
+        "title": "作者详情",
+        "description": "作者详情。"
+      },
+      {
+        "slot": "caption",
+        "title": "说明",
+        "description": "图片说明。"
+      },
+      {
+        "property": "src",
+        "title": "图片来源",
+        "description": "媒体引用用个图片文件。"
+      },
+      {
+        "property": "alt",
+        "title": "替代文字",
+        "description": "图片个替代文字。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "卡片强调色。"
+      }
+    ]
+  }
+}

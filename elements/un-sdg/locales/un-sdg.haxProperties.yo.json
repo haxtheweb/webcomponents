@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Àfojúsùn Ìdàgbàsókè Alágbero ti Àjọ Àgbáyé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Àfojúsùn",
+        "description": "Nọ́mbà UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Àwọ̀ nìkan",
+        "description": "Fi àwọ̀ àfojúsùn nìkan hàn."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Nhúng nội dung web bên ngoài vào iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL tài nguyên",
+        "description": "URL tài nguyên."
+      },
+      {
+        "property": "height",
+        "title": "Chiều cao",
+        "description": "Chiều cao iframe."
+      },
+      {
+        "property": "width",
+        "title": "Chiều rộng",
+        "description": "Chiều rộng iframe."
+      }
+    ]
+  }
+}

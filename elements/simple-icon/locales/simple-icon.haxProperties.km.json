@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "រូបតំណាង",
+    "description": "រូបតំណាងពីបណ្ណាល័យរូបតំណាងពេញលេញ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "រូបតំណាង",
+        "description": "រូបតំណាងដែលត្រូវបង្ហាញ។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌សង្កត់សម្រាប់រូបតំណាង។"
+      },
+      {
+        "property": "dark",
+        "title": "ងងឹត",
+        "description": "ប្រើរបៀបងងឹត (សំណុំពណ៌បញ្ច្រាស)។"
+      }
+    ]
+  }
+}

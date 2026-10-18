@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Paparkan butang seruan tindak Polaris bertema."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Teks butang",
+        "description": "Teks yang dipaparkan dalam butang seruan tindak."
+      },
+      {
+        "property": "link",
+        "title": "Pautan",
+        "description": "URL destinasi untuk butang."
+      },
+      {
+        "property": "type",
+        "title": "Varian",
+        "description": "Varian gaya visual.",
+        "options": {
+          "primary": "Utama",
+          "tinted": "Berona",
+          "light": "Cerah"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Gaya garis luar",
+        "description": "Dayakan rawatan garis luar."
+      },
+      {
+        "property": "filled",
+        "title": "Gaya berisi",
+        "description": "Dayakan rawatan berisi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tablar",
+    "description": "Tablar dəsti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etiket (əlçatanlıq üçün)",
+        "description": "Tab dəsti üçün əlçatan etiket."
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktiv",
+        "description": "Bütün tabları deaktiv et."
+      },
+      {
+        "property": "hidden",
+        "title": "Gizli",
+        "description": "Tab dəstini gizlət."
+      },
+      {
+        "property": "sticky",
+        "title": "Sabitlənmiş",
+        "description": "Sürüşdürmə zamanı üfüqi tabları yuxarıda saxla."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Düzən kəsilmə nöqtəsi",
+        "description": "Üfüqi tablar üçün kəsilmə nöqtəsi; yalnız şaquli görünüş üçün -1 istifadə edin."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "İkon kəsilmə nöqtəsi",
+        "description": "Mətnin ikonlarla göstərilməsi üçün kəsilmə nöqtəsi. Defolt 0-dır; yalnız ikon rejimi üçün -1 istifadə edin."
+      },
+      {
+        "slot": "",
+        "title": "Tablar",
+        "description": "<a11y-tab/> elementləri silsiləsi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unikal ID",
+        "description": "Bu tab dəsti üçün unikal ID."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Rapimanta willakuy",
+    "description": "Rapikuna chawpipi rikukuq t'aqayta riqsichin, CMS-kuna rapikunata ruranankupaq."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sutichay",
+        "description": "Temapi ñawpaq uma qillqapipas rikukuq sutichay."
+      },
+      {
+        "property": "pageType",
+        "title": "Laya",
+        "description": "Rapipa rikukuq sutichaynin.",
+        "options": {
+          "": "-- mana imapas --",
+          "content": "Ukhunpi kaq",
+          "assessment": "Chaninchay",
+          "quiz": "Tapukuykuna",
+          "submission": "Apachiy",
+          "lesson": "Yachachiy",
+          "module": "Módulo",
+          "task": "Llamk'ay",
+          "activity": "Ruray",
+          "project": "Proyecto",
+          "practice": "Yachanakuy",
+          "unit": "Unidad",
+          "objectives": "Yachana munaykuna",
+          "connection": "T'inkiy",
+          "knowledge": "Yacharqankichu?",
+          "strategy": "Yachana ñan",
+          "discuss": "Rimanakuy",
+          "listen": "Uyariy",
+          "make": "Ruray",
+          "observe": "Qhawapayay",
+          "present": "Rikuchiy",
+          "reading": "Ñawiriy",
+          "reflect": "Yuyaymanay",
+          "research": "Maskay",
+          "watch": "Qhaway",
+          "write": "Qillqay"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tagkuna",
+        "description": "Comawan t'aqasqa tagkunapa listan."
+      },
+      {
+        "property": "linkUrl",
+        "title": "T'inki URL",
+        "description": "Rapipi kaqpa rantinpi rikukuq pusay URL."
+      },
+      {
+        "property": "linkTarget",
+        "title": "T'inki maypi",
+        "description": "T'inkikunata kikin ventanapi utaq musuq ventanapi kichay.",
+        "options": {
+          "_self": "Kikin ventana",
+          "_blank": "Musuq ventana"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Rikuchisqa",
+        "description": "Mana rikuchisqa rapikuna ruraqkunamanta pakasqa kanku."
+      },
+      {
+        "property": "locked",
+        "title": "Rapita wichq'ay",
+        "description": "Kay rapipi llapan elementokunata wichq'ay utaq kichay."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Kikinmanta slugta rantiy",
+        "description": "Slugta wichq'ay, sutichaymanta utaq tayta rapimanta kikinmanta musuqyachinanta hark'anapaq."
+      },
+      {
+        "property": "slug",
+        "title": "Ñan",
+        "description": "Kay rapipa URL slugnin."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Rapita rikuchiq media, wakin temakunapi qhawaykunapipas llamk'achisqa."
+      },
+      {
+        "property": "parent",
+        "title": "Tayta",
+        "description": "Tayta rapipa ñannin."
+      },
+      {
+        "property": "noderefs",
+        "title": "Tupaq kaqkuna",
+        "description": "Kay rapiwan tupaq rapikuna."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Willakuy",
+        "description": "Huñukunapi maskana motorkunapaq allinchaypipas llamk'achisqa willakuy."
+      },
+      {
+        "property": "entityType",
+        "title": "Entidad laya",
+        "description": "Mana hukta churaqtinqa, rapim kanqa.",
+        "options": {
+          "page": "Rapi (kikinmanta)",
+          "taxonomy": "Taxonomía",
+          "taxonomyTerm": "Taxonomía simi",
+          "region": "Suyu"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Unancha",
+        "description": "Sitiopi kay rapiwan t'inkisqa unancha."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Sitiopi kay rapiwan t'inkisqa llimpi."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Menúpi pakay",
+        "description": "Kay rapita menúkunamanta pakay, URL-nin qhipakuspa."
+      },
+      {
+        "property": "order",
+        "title": "Siqi",
+        "description": "Wawqi rapikunawan tupachisqa siqi."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Rapi tema",
+        "description": "Kay rapillapaq temata rantiy."
+      },
+      {
+        "property": "author",
+        "title": "Qillqaq",
+        "description": "Kay rapita qhipa kutipi tikraq runapa ruraq sutin."
+      }
+    ]
+  }
+}

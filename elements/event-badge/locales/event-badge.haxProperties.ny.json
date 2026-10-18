@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Baji ya Mwambo",
+    "description": "Baji ya mwambo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Chithunzi cha TV",
+        "description": "Chithunzi chowonetsedwa pa TV."
+      },
+      {
+        "property": "logo",
+        "title": "Chizindikiro cha bungwe",
+        "description": "Chizindikiro chowonetsedwa pakona ya baji."
+      },
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mutu wowonetsedwa pamwamba pa baji."
+      },
+      {
+        "property": "name",
+        "title": "Dzina",
+        "description": "Dzina lowonetsedwa pa baji."
+      },
+      {
+        "property": "position",
+        "title": "Udindo",
+        "description": "Udindo kapena dzina la ntchito la munthuyo."
+      },
+      {
+        "property": "organization",
+        "title": "Bungwe",
+        "description": "Bungwe limene munthuyo amagwirako ntchito."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Mtundu wa TV",
+        "description": "Sankhani mtundu wa TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu wowonjezera",
+        "description": "Mtundu waukulu wakumbuyo kapena wa mawu."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Mtundu wa zozungulira",
+        "description": "Mtundu wa zozungulira za TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Ikani mawonekedwe a sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Wakuda ndi woyera",
+        "description": "Ikani mawonekedwe akuda ndi oyera."
+      }
+    ]
+  }
+}

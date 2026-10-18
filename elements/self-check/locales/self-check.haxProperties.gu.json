@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "સ્વ-ચકાસણી",
+    "description": "વપરાશકર્તાઓ સ્વ-ચકાસણી પૂર્ણ કરી શકે છે."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "છબી",
+        "description": "સ્વ-ચકાસણી માટેની છબી."
+      },
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "સ્વ-ચકાસણીનું શીર્ષક."
+      },
+      {
+        "property": "alt",
+        "title": "વૈકલ્પિક લખાણ",
+        "description": "છબી માટેનું વૈકલ્પિક લખાણ."
+      },
+      {
+        "slot": "question",
+        "title": "પ્રશ્ન"
+      },
+      {
+        "slot": "",
+        "title": "જવાબ"
+      },
+      {
+        "property": "accentColor",
+        "title": "થીમ રંગ",
+        "description": "ડિઝાઇન સિસ્ટમમાંથી થીમ રંગ પસંદ કરો.",
+        "options": {
+          "primary": "પ્રાથમિક",
+          "accent": "ઍક્સેન્ટ",
+          "success": "સફળતા",
+          "warning": "ચેતવણી",
+          "error": "ભૂલ",
+          "info": "માહિતી"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "શીખવાનો ઉદ્દેશ",
+        "description": "oer:hasLearningObjective તરીકે ઉત્પન્ન થતો શીખવાના ઉદ્દેશનો સંદર્ભ."
+      },
+      {
+        "property": "assessing",
+        "title": "મૂલ્યાંકન કરે છે",
+        "description": "oer:assessing તરીકે ઉત્પન્ન થતો પ્રવૃત્તિ સંદર્ભ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "વધુ લિંક",
+        "description": "વધારાની માહિતીની લિંક."
+      }
+    ]
+  }
+}

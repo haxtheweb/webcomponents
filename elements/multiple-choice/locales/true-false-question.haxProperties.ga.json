@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Ceist Fíor / Bréagach",
+    "description": "Ceist fíor nó bréagach"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ceist",
+        "description": "Ceist le freagairt ag úsáideoirí."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Freagra Ceart"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ainm an tráth na gceist",
+        "description": "Ainm an tráth na gceist a sheoltar isteach le húsáid i dtimpeallachtaí xAPI chun an mhír seo a aithint"
+      }
+    ]
+  }
+}

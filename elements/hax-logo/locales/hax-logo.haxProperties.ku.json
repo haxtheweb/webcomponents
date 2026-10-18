@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Hunera peyvan a HAX",
+    "description": "hêmana logoyê ji bo HAX, bê guman wekî hêmaneke ku bi HAX re dixebite."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Mezinahiya logoya HAX ya ku were danîn",
+        "options": {
+          "mini": "Pir piçûk",
+          "small": "Piçûk",
+          "normal": "Normal",
+          "large": "Mezin"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Gelo logo bo tîpên mezin were veguherandin"
+      }
+    ]
+  }
+}

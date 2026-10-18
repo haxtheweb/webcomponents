@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI காட்சிப்படுத்தி",
+    "description": "காட்சிப்படுத்தலுடன் சூழலில் MIDI-ஐ இயக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "மூலம்",
+        "description": "இயக்க வேண்டிய கோப்பு URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "காட்சிப்படுத்தல்",
+        "description": "இசைக் கோப்பிற்கான காட்சிப்படுத்தல் பாணி.",
+        "options": {
+          "staff": "இசைக்கோல்",
+          "piano-roll": "பியானோ ரோல்",
+          "waterfall": "பியானோ + நீர்வீழ்ச்சி"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "நீர்வீழ்ச்சியை மறை",
+        "description": "பியானோ காட்சிப்படுத்தலில் நீர்வீழ்ச்சி ஸ்வரங்களை மறைக்கவும்."
+      }
+    ]
+  }
+}

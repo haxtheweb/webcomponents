@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn-Abannung",
+    "description": "Eng LinkedIn-Profilkaart abannen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Profilnumm",
+        "description": "Benotzernumm-Segment vum LinkedIn-Profil."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokalisatioun",
+        "description": "Lokalisatiouns-Metadatewäert wéi en_US."
+      }
+    ]
+  }
+}

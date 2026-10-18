@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Letupan Hebat",
+    "description": "Animasi letupan interaktif dengan kesan bunyi pilihan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Saiz",
+        "description": "Tetapkan saiz letupan.",
+        "options": {
+          "tiny": "Sangat Kecil",
+          "small": "Kecil",
+          "medium": "Sederhana",
+          "large": "Besar",
+          "epic": "Epik"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Warna",
+        "description": "Tetapkan tema warna letupan.",
+        "options": {
+          "": "Lalai",
+          "red": "Merah",
+          "blue": "Biru",
+          "purple": "Ungu",
+          "orange": "Jingga",
+          "yellow": "Kuning"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Kesan Bunyi",
+        "description": "Dayakan kesan bunyi."
+      },
+      {
+        "property": "resetSound",
+        "title": "Set Semula Bunyi",
+        "description": "Mulakan semula bunyi dari awal setiap kali."
+      },
+      {
+        "property": "image",
+        "title": "Imej Tersuai",
+        "description": "URL pilihan untuk imej letupan tersuai."
+      },
+      {
+        "property": "sound",
+        "title": "Bunyi Tersuai",
+        "description": "URL pilihan untuk kesan bunyi tersuai."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Dilumpuhkan",
+        "description": "Lumpuhkan semua interaksi."
+      }
+    ]
+  }
+}

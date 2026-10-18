@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX ورڈ آرٹ",
+    "description": "HAX کا لوگو عنصر، ظاہر ہے HAX کے قابل عنصر کے طور پر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "رکھے جانے والے HAX لوگو کا سائز",
+        "options": {
+          "mini": "منی",
+          "small": "چھوٹا",
+          "normal": "عام",
+          "large": "بڑا"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "کیا لوگو کو بڑے حروف میں تبدیل کیا جائے"
+      }
+    ]
+  }
+}

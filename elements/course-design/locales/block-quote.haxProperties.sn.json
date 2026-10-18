@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Chirevo chakatorwa",
+    "description": "Bhuroka rechirevo rakashongedzwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Kwakatorwa",
+        "description": "Mavara ekwakatorwa."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Mavara anotsiva mufananidzo."
+      },
+      {
+        "property": "image",
+        "title": "Mufananidzo",
+        "description": "Mufananidzo unoratidzwa nechirevo."
+      }
+    ]
+  }
+}

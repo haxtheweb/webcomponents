@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Жинақ элементі",
+    "description": "Жинақ тізімінің ішінде қолданылатын мәтіні, сілтемесі және қосымша медиасы бар карта түріндегі элемент."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Сілтеме",
+        "description": "Осы картаның мақсатты URL мекенжайы."
+      },
+      {
+        "property": "image",
+        "title": "Сурет",
+        "description": "Фондық сурет."
+      },
+      {
+        "property": "line1",
+        "title": "1-жол",
+        "description": "Мәтіннің бірінші жолы."
+      },
+      {
+        "property": "line2",
+        "title": "2-жол",
+        "description": "Мәтіннің екінші жолы."
+      },
+      {
+        "property": "line3",
+        "title": "3-жол",
+        "description": "Мәтіннің үшінші жолы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Белгіше",
+        "description": "Картаны бейнелейтін белгіше."
+      },
+      {
+        "property": "saturate",
+        "title": "Қанықтық әсері",
+        "description": "Пайдаланушы назар аударғанда сурет қанықтығын өзгерту."
+      },
+      {
+        "property": "tags",
+        "title": "Тегтер",
+        "description": "Үтірмен бөлінген тегтер тізімі."
+      },
+      {
+        "property": "accentColor",
+        "title": "Түс",
+        "description": "Тегтер үшін қолданылатын түс."
+      },
+      {
+        "property": "alt",
+        "title": "Балама",
+        "description": "Сілтемені сипаттайтын балама мәтін."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ખાલી જગ્યા ભરો",
+    "description": "મૂલ્યાંકન પ્રવૃત્તિ જેમાં શીખનારાઓ વિધાનમાં ખૂટતા શબ્દો પૂર્ણ કરે છે."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "પ્રશ્ન",
+        "description": "વપરાશકર્તાઓએ જવાબ આપવાનો પ્રશ્ન."
+      },
+      {
+        "property": "statement",
+        "title": "વિધાન",
+        "description": "વિધાન જે શબ્દો ચિહ્નિત કરવાની ક્રિયાપ્રતિક્રિયામાં રૂપાંતરિત થશે."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ગ્રેડિંગ ફૉર્મેટ",
+        "description": "OER Schema: આ મૂલ્યાંકન માટે ગ્રેડિંગ ફૉર્મેટ (દા.ત. પોઇન્ટ, અક્ષર, ટકા, પૂર્ણતા)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "શીખવાનો ઉદ્દેશ",
+        "description": "OER Schema: આ મૂલ્યાંકન સાથે સંકળાયેલ શીખવાનો ઉદ્દેશ."
+      },
+      {
+        "property": "forCourse",
+        "title": "અભ્યાસક્રમ",
+        "description": "OER Schema: આ મૂલ્યાંકન જે અભ્યાસક્રમ માટે છે."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ક્વિઝનું નામ",
+        "description": "આ આઇટમની ઓળખ માટે xAPI આધારિત વાતાવરણમાં વાપરવા માટે પસાર કરાતું ક્વિઝનું નામ"
+      }
+    ]
+  }
+}

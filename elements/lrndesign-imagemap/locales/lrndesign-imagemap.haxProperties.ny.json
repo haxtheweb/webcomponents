@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mapu a chithunzi",
+    "description": "Mapu a chithunzi ofikika okhala ndi malo odina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Dzina",
+        "description": "Dzina la mapu a chithunzi."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Zambiri za malo odina",
+        "description": "Malo odina pa mapu a chithunzi."
+      }
+    ]
+  }
+}

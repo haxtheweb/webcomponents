@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Samopreverjanje",
+    "description": "Uporabniki lahko opravijo samopreverjanje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Slika",
+        "description": "Slika za samopreverjanje."
+      },
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov samopreverjanja."
+      },
+      {
+        "property": "alt",
+        "title": "Nadomestno besedilo",
+        "description": "Nadomestno besedilo za sliko."
+      },
+      {
+        "slot": "question",
+        "title": "Vprašanje"
+      },
+      {
+        "slot": "",
+        "title": "Odgovor"
+      },
+      {
+        "property": "accentColor",
+        "title": "Barva teme",
+        "description": "Izberite barvo teme iz sistema oblikovanja.",
+        "options": {
+          "primary": "Primarna",
+          "accent": "Poudarek",
+          "success": "Uspeh",
+          "warning": "Opozorilo",
+          "error": "Napaka",
+          "info": "Informacija"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Učni cilj",
+        "description": "Sklic na učni cilj, ustvarjen kot oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Ocenjuje",
+        "description": "Sklic na dejavnost, ustvarjen kot oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Povezava za več",
+        "description": "Povezava do dodatnih informacij."
+      }
+    ]
+  }
+}

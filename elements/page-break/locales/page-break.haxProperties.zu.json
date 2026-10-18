@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Imininingwane yekhasi",
+    "description": "Chaza ukuhlukaniswa okubonakalayo phakathi kwamakhasi ama-CMS angakusebenzisa ukudala amakhasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko esiboniswa etimini nasesihlokweni sokuqala."
+      },
+      {
+        "property": "pageType",
+        "title": "Uhlobo",
+        "description": "Ilebula yesimo esibonakalayo sekhasi.",
+        "options": {
+          "": "-- akukho --",
+          "content": "Okuqukethwe",
+          "assessment": "Ukuhlola",
+          "quiz": "Imibuzo",
+          "submission": "Ukuhambisa",
+          "lesson": "Isifundo",
+          "module": "Imojuli",
+          "task": "Umsebenzi",
+          "activity": "Umsebenzi wokwenza",
+          "project": "Iphrojekthi",
+          "practice": "Ukuzijwayeza",
+          "unit": "Iyunithi",
+          "objectives": "Izinhloso Zokufunda",
+          "connection": "Ukuxhumana",
+          "knowledge": "Ubuwazi Yini?",
+          "strategy": "Isu Lokufunda",
+          "discuss": "Xoxisana",
+          "listen": "Lalela",
+          "make": "Yenza",
+          "observe": "Qaphela",
+          "present": "Yethula",
+          "reading": "Ukufunda",
+          "reflect": "Zindla",
+          "research": "Cwaninga",
+          "watch": "Buka",
+          "write": "Bhala"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Omaka",
+        "description": "Uhlu lomaka oluhlukaniswe ngokhefana."
+      },
+      {
+        "property": "linkUrl",
+        "title": "I-URL Yesixhumanisi",
+        "description": "I-URL yokuqondisa kabusha eboniswa esikhundleni sokuqukethwe kwekhasi."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Okuhlosiwe Kwesixhumanisi",
+        "description": "Vula izixhumanisi ewindini elifanayo noma ewindini elisha.",
+        "options": {
+          "_self": "Iwindi elifanayo",
+          "_blank": "Iwindi elisha"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Kushicilelwe",
+        "description": "Amakhasi angashicilelwe afihliwe kubasebenzisi bokugcina."
+      },
+      {
+        "property": "locked",
+        "title": "Khiya ikhasi",
+        "description": "Khiya noma vula zonke izinto ezikuleli khasi."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Dlula i-slug ezenzakalelayo",
+        "description": "Khiya i-slug ukuze ingabuyekezwa ngokuzenzakalelayo ngokusekelwe esihlokweni noma kumzali."
+      },
+      {
+        "property": "slug",
+        "title": "Indlela",
+        "description": "I-slug ye-URL yaleli khasi."
+      },
+      {
+        "property": "image",
+        "title": "Imidiya",
+        "description": "Imidiya emele ikhasi, esetshenziswa kwamanye amatimu nokubuka."
+      },
+      {
+        "property": "parent",
+        "title": "Umzali",
+        "description": "Indlela yekhasi elingumzali."
+      },
+      {
+        "property": "noderefs",
+        "title": "Okuqukethwe okuhlobene",
+        "description": "Amakhasi ahlobene naleli khasi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Incazelo",
+        "description": "Incazelo esetshenziswa emaqoqweni nasekuthuthukisweni kwenjini yokusesha."
+      },
+      {
+        "property": "entityType",
+        "title": "Uhlobo Lwenhlangano",
+        "description": "Okuzenzakalelayo yikhasi ngaphandle uma kusethwe ngenye indlela.",
+        "options": {
+          "page": "Ikhasi (okuzenzakalelayo)",
+          "taxonomy": "Ukuhlukaniswa",
+          "taxonomyTerm": "Igama Lokuhlukaniswa",
+          "region": "Isifunda"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Isithonjana",
+        "description": "Isithonjana esihlobene naleli khasi esayithini."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala wokugcizelela",
+        "description": "Umbala ohlobene naleli khasi esayithini."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Fihla kumenyu",
+        "description": "Fihla leli khasi kumamenyu kodwa ugcine i-URL yalo."
+      },
+      {
+        "property": "order",
+        "title": "Ukulandelana",
+        "description": "Ukulandelana uma kuqhathaniswa namakhasi angabafowabo."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Itimu yekhasi",
+        "description": "Dlula itimu yaleli khasi kuphela."
+      },
+      {
+        "property": "author",
+        "title": "Umbhali",
+        "description": "Igama lomsebenzisi lomuntu wokugcina olungise leli khasi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Vís ein Polaris-knøtt við áheitan um handling í evnissniði."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Knøtttekstur",
+        "description": "Tekstur, sum verður vístur á knøttinum við áheitan um handling."
+      },
+      {
+        "property": "link",
+        "title": "Leinki",
+        "description": "Mál-URL til knøttin."
+      },
+      {
+        "property": "type",
+        "title": "Útgáva",
+        "description": "Útgáva av sjónligum sniði.",
+        "options": {
+          "primary": "Høvuðs",
+          "tinted": "Litað",
+          "light": "Ljóst"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Útlinjusnið",
+        "description": "Virkja útlinjusnið."
+      },
+      {
+        "property": "filled",
+        "title": "Fylt snið",
+        "description": "Virkja fylt snið."
+      }
+    ]
+  }
+}

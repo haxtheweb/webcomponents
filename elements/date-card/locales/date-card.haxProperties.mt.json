@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Data",
+    "description": "Uri data tal-kalendarju bid-dettalji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Xahar",
+        "description": "Ix-xahar muri fuq il-karta."
+      },
+      {
+        "property": "date",
+        "title": "Jum tax-xahar",
+        "description": "In-numru tal-jum tax-xahar."
+      },
+      {
+        "property": "day",
+        "title": "Jum tal-ġimgħa",
+        "description": "Il-jum tal-ġimgħa bil-kliem."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Isem l-avveniment."
+      },
+      {
+        "property": "location",
+        "title": "Post",
+        "description": "Il-post tal-avveniment."
+      },
+      {
+        "property": "startTime",
+        "title": "Bidu",
+        "description": "Ħin tal-bidu."
+      },
+      {
+        "property": "endTime",
+        "title": "Tmiem",
+        "description": "Ħin tat-tmiem."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-enfasi fakultattiv."
+      },
+      {
+        "property": "dark",
+        "title": "Tema skura",
+        "description": "Attiva t-tema skura."
+      }
+    ]
+  }
+}

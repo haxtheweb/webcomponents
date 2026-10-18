@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "बहुविकल्पीय",
+    "description": "बहुविकल्पीय स्व-जाँच प्रश्न।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "प्रश्न",
+        "description": "उपयोगकर्ताओं के उत्तर देने के लिए प्रश्न।"
+      },
+      {
+        "property": "randomize",
+        "title": "यादृच्छिक क्रम",
+        "description": "उत्तरों को गतिशील रूप से यादृच्छिक क्रम में रखें।"
+      },
+      {
+        "property": "singleOption",
+        "title": "एकल उत्तर",
+        "description": "केवल एक उत्तर की अनुमति दें।"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ग्रेडिंग प्रारूप",
+        "description": "OER Schema: इस मूल्यांकन का ग्रेडिंग प्रारूप (जैसे अंक, अक्षर ग्रेड, प्रतिशत, पूर्णता)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "अधिगम उद्देश्य",
+        "description": "OER Schema: इस मूल्यांकन से जुड़ा अधिगम उद्देश्य।"
+      },
+      {
+        "property": "forCourse",
+        "title": "पाठ्यक्रम",
+        "description": "OER Schema: वह पाठ्यक्रम जिसके लिए यह मूल्यांकन है।"
+      },
+      {
+        "property": "answers",
+        "title": "उत्तर"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "क्विज़ का नाम",
+        "description": "एनालिटिक्स प्रणालियों में xAPI पहचान के लिए प्रयुक्त क्विज़ नाम।"
+      }
+    ]
+  }
+}

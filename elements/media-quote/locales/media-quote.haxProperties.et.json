@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Meediatsitaat",
+    "description": "Pilt koos tsitaadi, viite ja valikulise pildiallkirjaga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Tsitaat",
+        "description": "Tsitaadi tekst."
+      },
+      {
+        "slot": "author",
+        "title": "Autor",
+        "description": "Tsitaadi autor."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Autori andmed",
+        "description": "Autori andmed."
+      },
+      {
+        "slot": "caption",
+        "title": "Pildiallkiri",
+        "description": "Pildi allkiri."
+      },
+      {
+        "property": "src",
+        "title": "Pildi allikas",
+        "description": "Meediatsitaadi pildifail."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatiivtekst",
+        "description": "Pildi alternatiivtekst."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Kaardi rõhuvärv."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Açyk hat",
+    "description": "Haýsydyr bir ýerden gelen hakyky açyk hat ýaly görünýän degişmeli media bölegi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Kime",
+        "description": "Bu kime iberilýär?"
+      },
+      {
+        "property": "from",
+        "title": "Kimden",
+        "description": "Siz kim?"
+      },
+      {
+        "property": "message",
+        "title": "Habar",
+        "description": "Näme diýesiňiz gelýär?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Poçta möhüri",
+        "description": "Bu açyk hat nireden iberildi?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Esasy suratyň çeşmesi",
+        "description": "Suratyňyz nirede ýerleşýär?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Marka suratynyň çeşmesi",
+        "description": "Suratyňyz nirede ýerleşýär?"
+      }
+    ]
+  }
+}

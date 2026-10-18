@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn churasqa",
+    "description": "LinkedIn perfil tarjetata churay."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Kikin suti",
+        "description": "LinkedIn-pi kikin ruraq sutipa t'aqan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Locale",
+        "description": "Locale metadata chanin, kayhina en_US."
+      }
+    ]
+  }
+}

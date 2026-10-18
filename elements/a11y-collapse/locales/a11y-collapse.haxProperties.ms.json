@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Bekas boleh kuncup",
+    "description": "Bekas tunggal yang boleh dikembangkan dan dikuncupkan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Tajuk",
+        "description": "Teks untuk bahagian kuncup."
+      },
+      {
+        "property": "expanded",
+        "title": "Dikembangkan",
+        "description": "Kembangkan secara lalai."
+      },
+      {
+        "property": "headingButton",
+        "title": "Butang Tajuk",
+        "description": "Jadikan seluruh tajuk boleh diklik, bukan ikon sahaja."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon untuk butang togol kembang/kuncup."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikon (apabila dikembangkan)",
+        "description": "Ikon pilihan untuk keadaan togol dikembangkan."
+      },
+      {
+        "slot": "",
+        "title": "Kandungan",
+        "description": "Kandungan untuk bahagian kuncup."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Petua alat",
+        "description": "Petua alat untuk butang togol kembang/kuncup."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Petua alat (apabila dikembangkan)",
+        "description": "Petua alat untuk butang kembang/kuncup apabila dikembangkan."
+      }
+    ]
+  }
+}

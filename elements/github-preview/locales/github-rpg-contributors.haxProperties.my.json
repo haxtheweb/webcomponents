@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub ပါဝင်ကူညီသူများ စာရင်း",
+    "description": "GitHub API ကို အသုံးပြု၍ RPG ဇာတ်ကောင်များအဖြစ် ပြသထားသည်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "အဖွဲ့အစည်း",
+        "description": "github.com/ORG/REPO မှ အဖွဲ့အစည်း အမည်။"
+      },
+      {
+        "property": "repo",
+        "title": "Repository",
+        "description": "github.com/ORG/REPO မှ repository အမည်။"
+      },
+      {
+        "property": "limit",
+        "title": "ကန့်သတ်ချက်",
+        "description": "ပြသမည့် ပါဝင်ကူညီသူ အရေအတွက်ကို ကန့်သတ်ရန်။"
+      }
+    ]
+  }
+}

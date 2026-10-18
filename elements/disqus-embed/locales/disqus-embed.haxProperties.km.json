@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "បង្កប់មតិយោបល់ Disqus លើទំព័រ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "ឈ្មោះខ្លី",
+        "description": "ឈ្មោះខ្លីរបស់គេហទំព័រ ដែលកំណត់ម៉ាស៊ីនស្គ្រីប Disqus។"
+      },
+      {
+        "property": "pageURL",
+        "title": "URL ទំព័រ",
+        "description": "URL នៃទំព័រដែលខ្សែមតិយោបល់ភ្ជាប់ទៅ។"
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "អត្តសញ្ញាណទំព័រ",
+        "description": "អត្តសញ្ញាណតែមួយគត់សម្រាប់ខ្សែមតិយោបល់ទំព័រ។"
+      },
+      {
+        "property": "pageTitle",
+        "title": "ចំណងជើងទំព័រ",
+        "description": "ចំណងជើងនៃទំព័រដែលខ្សែមតិយោបល់ភ្ជាប់ទៅ។"
+      },
+      {
+        "property": "loadingText",
+        "title": "អត្ថបទកំពុងផ្ទុក",
+        "description": "អត្ថបទប្រកាសពេលមតិយោបល់កំពុងផ្ទុក។"
+      },
+      {
+        "property": "lang",
+        "title": "ភាសា",
+        "description": "កូដភាសាសម្រាប់ចំណុចប្រទាក់ Disqus ឧ. en។"
+      }
+    ]
+  }
+}

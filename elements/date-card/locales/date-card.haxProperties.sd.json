@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "تاريخ",
+    "description": "تفصيلن سان گڏ ڪئلينڊر جي تاريخ ڏيکاريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "مهينو",
+        "description": "ڪارڊ تي ڏيکاريل مهينو."
+      },
+      {
+        "property": "date",
+        "title": "مهيني جو ڏينهن",
+        "description": "مهيني جو عددي ڏينهن."
+      },
+      {
+        "property": "day",
+        "title": "هفتي جو ڏينهن",
+        "description": "هفتي جو ڏينهن متن ۾."
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "تقريب جو نالو."
+      },
+      {
+        "property": "location",
+        "title": "جڳهه",
+        "description": "تقريب جي جڳهه."
+      },
+      {
+        "property": "startTime",
+        "title": "شروعات",
+        "description": "شروعاتي وقت."
+      },
+      {
+        "property": "endTime",
+        "title": "آخر",
+        "description": "آخري وقت."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "اختياري نمايان رنگ."
+      },
+      {
+        "property": "dark",
+        "title": "ڊارڪ ٿيم",
+        "description": "ڊارڪ ٿيم فعال ڪريو."
+      }
+    ]
+  }
+}

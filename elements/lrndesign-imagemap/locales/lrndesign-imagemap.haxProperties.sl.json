@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Slikovni zemljevid",
+    "description": "Dostopen slikovni zemljevid z interaktivnimi vročimi točkami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Oznaka",
+        "description": "Oznaka slikovnega zemljevida."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Podrobnosti vročih točk",
+        "description": "Interaktivne vroče točke na slikovnem zemljevidu."
+      }
+    ]
+  }
+}

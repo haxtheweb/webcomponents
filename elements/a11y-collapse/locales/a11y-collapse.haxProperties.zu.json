@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Isiqukathi esigoqekayo",
+    "description": "Isiqukathi esisodwa esingavulwa nesingagoqwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Isihloko",
+        "description": "Umbhalo wengxenye egoqekayo."
+      },
+      {
+        "property": "expanded",
+        "title": "Kuvuliwe",
+        "description": "Vula ngokuzenzakalelayo."
+      },
+      {
+        "property": "headingButton",
+        "title": "Inkinobho Yesihloko",
+        "description": "Yenza sonke isihloko sichofozeke esikhundleni sesithonjana kuphela."
+      },
+      {
+        "property": "icon",
+        "title": "Isithonjana",
+        "description": "Isithonjana senkinobho yokuvula/ukugoqa."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Isithonjana (uma kuvuliwe)",
+        "description": "Isithonjana ongasikhetha sesimo esivuliwe senkinobho."
+      },
+      {
+        "slot": "",
+        "title": "Okuqukethwe",
+        "description": "Okuqukethwe kwengxenye egoqekayo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Ithiphu",
+        "description": "Ithiphu yenkinobho yokuvula/ukugoqa."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Ithiphu (uma kuvuliwe)",
+        "description": "Ithiphu yenkinobho yokuvula/ukugoqa uma kuvuliwe."
+      }
+    ]
+  }
+}

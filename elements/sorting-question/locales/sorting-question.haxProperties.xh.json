@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Umbuzo wokuHlela",
+    "description": "Hlela izinto ngolandelelwano oluchanekileyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Umbuzo",
+        "description": "Isihloko soMbuzo."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ifomathi yokumakisha",
+        "description": "OER Schema: ifomathi yokumakisha yolu vavanyo (umz. amanqaku, unobumba, ipesenti, ukugqitywa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Injongo yokufunda",
+        "description": "OER Schema: injongo yokufunda enxulumene nolu vavanyo."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikhosi",
+        "description": "OER Schema: ikhosi olu vavanyo lwenzelwe yona."
+      },
+      {
+        "property": "answers",
+        "title": "Iimpendulo",
+        "description": "Ulandelelwano lweempendulo luchaza ulandelelwano oluchanekileyo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Igama lekwizi",
+        "description": "Igama lekwizi elisetyenziselwa ukuchonga kwe-xAPI kwiinkqubo zohlalutyo."
+      }
+    ]
+  }
+}

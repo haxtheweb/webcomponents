@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX शब्द कला",
+    "description": "HAX को लोगो तत्व, स्वाभाविक रूपमा HAX-सक्षम तत्वका रूपमा।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "राखिने HAX लोगोको आकार",
+        "options": {
+          "mini": "मिनी",
+          "small": "सानो",
+          "normal": "सामान्य",
+          "large": "ठूलो"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "लोगोलाई ठूला अक्षरमा बदल्ने कि नबदल्ने"
+      }
+    ]
+  }
+}

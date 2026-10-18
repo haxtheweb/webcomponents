@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Բազմընտրանքային",
+    "description": "Բազմընտրանքային ինքնաստուգման հարց։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Հարց",
+        "description": "Հարց, որին պետք է պատասխանեն օգտատերերը։"
+      },
+      {
+        "property": "randomize",
+        "title": "Խառնել",
+        "description": "Դինամիկ կերպով խառնել պատասխանները։"
+      },
+      {
+        "property": "singleOption",
+        "title": "Մեկ պատասխան",
+        "description": "Թույլատրել միայն մեկ պատասխան։"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Գնահատման ձևաչափ",
+        "description": "OER Schema՝ այս գնահատման ձևաչափը (օր.՝ միավորներ, տառ, տոկոս, ավարտվածություն)։"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ուսումնական նպատակ",
+        "description": "OER Schema՝ այս գնահատման հետ կապված ուսումնական նպատակը։"
+      },
+      {
+        "property": "forCourse",
+        "title": "Դասընթաց",
+        "description": "OER Schema՝ դասընթացը, որի համար նախատեսված է այս գնահատումը։"
+      },
+      {
+        "property": "answers",
+        "title": "Պատասխաններ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Թեստի անվանում",
+        "description": "Թեստի անվանում, որն օգտագործվում է վերլուծական համակարգերում xAPI նույնականացման համար։"
+      }
+    ]
+  }
+}

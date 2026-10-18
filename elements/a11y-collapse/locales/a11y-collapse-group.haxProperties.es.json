@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grupo expandible/contraíble",
+    "description": "Un grupo de elementos expandibles y contraíbles."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Expandir solo uno",
+        "description": "Solo se puede expandir un elemento."
+      },
+      {
+        "slot": "",
+        "title": "Elementos contraíbles",
+        "description": "Los elementos contraíbles."
+      }
+    ]
+  }
+}

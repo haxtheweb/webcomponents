@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "ተንቀሳቃሽ GIFዎችን ተደራሽ አድርግ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ተንቀሳቃሽ GIF",
+        "description": "ለተንቀሳቃሹ GIF የURL አድራሻ።"
+      },
+      {
+        "property": "alt",
+        "title": "አማራጭ ጽሑፍ",
+        "description": "ለምስሉ አማራጭ ጽሑፍ።"
+      },
+      {
+        "property": "longdesc",
+        "title": "ረጅም መግለጫ",
+        "description": "ለተደራሽነት የGIFው ረጅም መግለጫ።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "ቋሚ ምስል",
+        "description": "ለGIFው ቋሚ ምስል ስሪት የURL አድራሻ።"
+      }
+    ]
+  }
+}

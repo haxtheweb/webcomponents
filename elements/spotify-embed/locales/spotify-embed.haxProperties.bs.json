@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Omotač za ugrađene Spotify plejere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Izvor",
+        "description": "Link za ugrađivanje ili dijeljenje sa Spotifyja."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Tema boje pozadine plejera.",
+        "options": {
+          "": "Zadano",
+          "0": "Crna"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Veličina",
+        "description": "Veličina plejera.",
+        "options": {
+          "normal": "Zadano",
+          "compact": "Kompaktno"
+        }
+      }
+    ]
+  }
+}

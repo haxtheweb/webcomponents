@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "مجموعہ قطار",
+    "description": "مجموعے دی لسٹ وچ ورتݨ لئی قطار ورگا آئٹم، متن، لنک، آئیکن، ٹیگاں تے اختیاری تصویر نال۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "لنک",
+        "description": "ایس قطار لئی منزل URL۔"
+      },
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "قطار دی تصویر۔"
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "تصویر بیان کرن والا متبادل متن۔"
+      },
+      {
+        "property": "line1",
+        "title": "لائن 1",
+        "description": "متن دی پہلی لائن۔"
+      },
+      {
+        "property": "line2",
+        "title": "لائن 2",
+        "description": "متن دی دوجی لائن۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "قطار دی نمائندگی کرن والا آئیکن۔"
+      },
+      {
+        "property": "saturate",
+        "title": "رنگ گوڑھا کرن دا اثر",
+        "description": "صارف دے فوکس تے تصویر دے رنگ دی گوڑھائی بدلو۔"
+      },
+      {
+        "property": "tags",
+        "title": "ٹیگ",
+        "description": "کامے نال وکھرے کیتے ٹیگاں دی لسٹ۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ",
+        "description": "آئیکن تے ٹیگاں لئی ورتیا گیا رنگ۔"
+      }
+    ]
+  }
+}

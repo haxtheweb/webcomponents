@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D lejátszó",
+    "description": "3D fájl- / kiterjesztett valóság lejátszó."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Forrás",
+        "description": "Az AR-fájl URL-je."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Az elem X pozíciója az AR-ben."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Az elem Y pozíciója az AR-ben."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Az elem Z pozíciója az AR-ben."
+      },
+      {
+        "property": "skyColor",
+        "title": "Égbolt színe",
+        "description": "Válassza ki az égbolt színét a jelenetben."
+      }
+    ]
+  }
+}

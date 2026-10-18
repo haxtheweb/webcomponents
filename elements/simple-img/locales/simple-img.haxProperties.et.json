@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Lihtne pilt",
+    "description": "Töötle pilte lihtsate parameetritega."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Allikas",
+        "description": "Pildi allika URL."
+      },
+      {
+        "property": "height",
+        "title": "Kõrgus",
+        "description": "Valikuline pildi kõrgus."
+      },
+      {
+        "property": "width",
+        "title": "Laius",
+        "description": "Valikuline pildi laius."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatiivtekst",
+        "description": "Kasulik ekraanilugejatele ja parema SEO jaoks."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kvaliteet",
+        "description": "Pildi kvaliteet loomisel (ainult JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Laadimise prioriteet",
+        "description": "Jõudlusvihje tänapäevastele brauseritele.",
+        "options": {
+          "auto": "Automaatne",
+          "high": "Kõrge",
+          "low": "Madal"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dekodeerimisviis",
+        "description": "Jõudlusvihje piltide renderdamiseks tänapäevastes brauserites.",
+        "options": {
+          "auto": "Automaatne",
+          "async": "Asünkroonne"
+        }
+      }
+    ]
+  }
+}

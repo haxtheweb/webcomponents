@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "टॅग / पिल",
+    "description": "पर्यायी उठाव रंग, रद्द बटण किंवा टॉगलसह संक्षिप्त गोळी-आकाराचे लेबल."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "लेबल",
+        "description": "पिलमध्ये दाखवलेला मजकूर."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "पिलच्या पार्श्वभूमीसाठी SimpleColors उठाव नाव.",
+        "options": {
+          "": "-- डीफॉल्ट --",
+          "red": "लाल",
+          "pink": "गुलाबी",
+          "purple": "जांभळा",
+          "deep-purple": "गडद जांभळा",
+          "indigo": "निळी",
+          "blue": "निळा",
+          "light-blue": "फिकट निळा",
+          "cyan": "निळसर",
+          "teal": "हिरवट निळा",
+          "green": "हिरवा",
+          "light-green": "फिकट हिरवा",
+          "lime": "लिंबू हिरवा",
+          "yellow": "पिवळा",
+          "amber": "अंबर",
+          "orange": "नारिंगी",
+          "deep-orange": "गडद नारिंगी",
+          "brown": "तपकिरी",
+          "blue-grey": "निळसर राखाडी",
+          "grey": "राखाडी"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "स्वयं उठाव रंग",
+        "description": "लेबल मजकुरावरून उठाव रंग आपोआप ठरवा."
+      },
+      {
+        "property": "cancelButton",
+        "title": "रद्द बटण",
+        "description": "पिलमध्ये काढा/रद्द आयकॉन बटण दाखवा."
+      },
+      {
+        "property": "readonly",
+        "title": "फक्त वाचनीय",
+        "description": "पिल फक्त प्रदर्शनासाठी राहावी म्हणून रद्द बटण लपवा."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "टॉगल होते",
+        "description": "बटणावर क्लिक केल्यावर पिल चालू/बंद टॉगल होऊ द्या."
+      },
+      {
+        "property": "toggled",
+        "title": "टॉगल केलेले",
+        "description": "पिल सध्या चालू टॉगल आहे की नाही."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "टॉगल आयकॉन",
+        "description": "पिल चालू टॉगल असताना दाखवायचा आयकॉन."
+      },
+      {
+        "property": "disabled",
+        "title": "अक्षम",
+        "description": "पिलशी परस्परसंवाद अक्षम करा."
+      }
+    ]
+  }
+}

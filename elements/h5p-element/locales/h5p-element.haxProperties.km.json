@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "កម្មវិធីរុំ H5P សម្រាប់ផ្ទុក និងបង្ហាញឯកសារ .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "កូដបង្កប់ iframe របស់ H5P"
+      }
+    ]
+  }
+}

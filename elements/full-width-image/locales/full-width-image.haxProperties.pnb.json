@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "تصویر حصہ",
+    "description": "پوری چوڑائی والی تصویر جیہڑی صفحے دے حصیاں نوں وکھرا کردی اے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "پچھوکڑ دی تصویر۔"
+      },
+      {
+        "property": "caption",
+        "description": "متن دی سرخی۔"
+      }
+    ]
+  }
+}

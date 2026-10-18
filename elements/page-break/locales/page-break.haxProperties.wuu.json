@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "页面详情",
+    "description": "定义页面之间个视觉分隔，CMS 好用来生成页面。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "主题搭第一只标题里显示个标题。"
+      },
+      {
+        "property": "pageType",
+        "title": "类型",
+        "description": "可视化页面上下文标签。",
+        "options": {
+          "": "-- 无 --",
+          "content": "内容",
+          "assessment": "测评",
+          "quiz": "测验",
+          "submission": "提交",
+          "lesson": "课",
+          "module": "模块",
+          "task": "任务",
+          "activity": "活动",
+          "project": "项目",
+          "practice": "练习",
+          "unit": "单元",
+          "objectives": "学习目标",
+          "connection": "联系",
+          "knowledge": "侬晓得𠲎？",
+          "strategy": "学习策略",
+          "discuss": "讨论",
+          "listen": "听",
+          "make": "动手做",
+          "observe": "观察",
+          "present": "展示",
+          "reading": "阅读",
+          "reflect": "反思",
+          "research": "研究",
+          "watch": "看",
+          "write": "写"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "标签",
+        "description": "用逗号隔开个标签列表。"
+      },
+      {
+        "property": "linkUrl",
+        "title": "链接 URL",
+        "description": "代替页面内容显示个重定向 URL。"
+      },
+      {
+        "property": "linkTarget",
+        "title": "链接目标",
+        "description": "勒同一只窗口或者新窗口打开链接。",
+        "options": {
+          "_self": "同一只窗口",
+          "_blank": "新窗口"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "已发布",
+        "description": "未发布个页面对最终用户隐藏。"
+      },
+      {
+        "property": "locked",
+        "title": "锁定页面",
+        "description": "锁定或者解锁搿只页面浪所有元素。"
+      },
+      {
+        "property": "overridePathauto",
+        "title": "覆盖自动路径别名",
+        "description": "锁牢路径别名，勿根据标题或者上级自动更新。"
+      },
+      {
+        "property": "slug",
+        "title": "路径",
+        "description": "搿只页面个 URL 路径别名。"
+      },
+      {
+        "property": "image",
+        "title": "媒体",
+        "description": "代表页面个媒体，有种主题搭视图会用到。"
+      },
+      {
+        "property": "parent",
+        "title": "上级",
+        "description": "上级页面个路径。"
+      },
+      {
+        "property": "noderefs",
+        "title": "相关内容",
+        "description": "搭搿只页面相关个页面。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "描述",
+        "description": "用于集合搭搜索引擎优化个描述。"
+      },
+      {
+        "property": "entityType",
+        "title": "实体类型",
+        "description": "除非另外设定，默认是页面。",
+        "options": {
+          "page": "页面（默认）",
+          "taxonomy": "分类法",
+          "taxonomyTerm": "分类术语",
+          "region": "区域"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "图标",
+        "description": "站点里搭搿只页面关联个图标。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "站点里搭搿只页面关联个颜色。"
+      },
+      {
+        "property": "hideInMenu",
+        "title": "勒菜单里隐藏",
+        "description": "勒菜单里隐藏搿只页面，URL 保留。"
+      },
+      {
+        "property": "order",
+        "title": "顺序",
+        "description": "相对同级页面个顺序。"
+      },
+      {
+        "property": "developerTheme",
+        "title": "页面主题",
+        "description": "只为搿只页面覆盖主题。"
+      },
+      {
+        "property": "author",
+        "title": "作者",
+        "description": "最后修改搿只页面个人个用户名。"
+      }
+    ]
+  }
+}

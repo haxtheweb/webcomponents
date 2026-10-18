@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Geweldige explosie",
+    "description": "Interactieve explosieanimatie met optionele geluidseffecten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Grootte",
+        "description": "Stel de grootte van de explosie in.",
+        "options": {
+          "tiny": "Piepklein",
+          "small": "Klein",
+          "medium": "Middel",
+          "large": "Groot",
+          "epic": "Episch"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Kleur",
+        "description": "Stel het kleurthema van de explosie in.",
+        "options": {
+          "": "Standaard",
+          "red": "Rood",
+          "blue": "Blauw",
+          "purple": "Paars",
+          "orange": "Oranje",
+          "yellow": "Geel"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Geluidseffecten",
+        "description": "Geluidseffecten inschakelen."
+      },
+      {
+        "property": "resetSound",
+        "title": "Geluid resetten",
+        "description": "Start het geluid telkens opnieuw vanaf het begin."
+      },
+      {
+        "property": "image",
+        "title": "Eigen afbeelding",
+        "description": "Optionele URL voor een eigen explosieafbeelding."
+      },
+      {
+        "property": "sound",
+        "title": "Eigen geluid",
+        "description": "Optionele URL voor een eigen geluidseffect."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Uitgeschakeld",
+        "description": "Alle interacties uitschakelen."
+      }
+    ]
+  }
+}

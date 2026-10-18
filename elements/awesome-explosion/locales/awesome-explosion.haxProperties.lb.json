@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Genial Explosioun",
+    "description": "Interaktiv Explosiounsanimatioun mat optionalen Toneffekter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Gréisst",
+        "description": "D'Gréisst vun der Explosioun festleeën.",
+        "options": {
+          "tiny": "Wanzeg",
+          "small": "Kleng",
+          "medium": "Mëttel",
+          "large": "Grouss",
+          "epic": "Episch"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Faarf",
+        "description": "D'Faarfschema vun der Explosioun festleeën.",
+        "options": {
+          "": "Standard",
+          "red": "Rout",
+          "blue": "Blo",
+          "purple": "Mof",
+          "orange": "Orange",
+          "yellow": "Giel"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Toneffekter",
+        "description": "Toneffekter aktivéieren."
+      },
+      {
+        "property": "resetSound",
+        "title": "Toun zrécksetzen",
+        "description": "Den Toun all Kéier vu vir ufänken."
+      },
+      {
+        "property": "image",
+        "title": "Eegent Bild",
+        "description": "Optional URL fir en eegent Explosiounsbild."
+      },
+      {
+        "property": "sound",
+        "title": "Eegenen Toun",
+        "description": "Optional URL fir en eegenen Toneffekt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Desaktivéiert",
+        "description": "All Interaktiounen desaktivéieren."
+      }
+    ]
+  }
+}

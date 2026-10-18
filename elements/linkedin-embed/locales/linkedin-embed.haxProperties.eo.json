@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn-enkorpigo",
+    "description": "Enkorpigi LinkedIn-profilkarton."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Persona nomo",
+        "description": "Segmento de la persona LinkedIn-uzantnomo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokaĵaro",
+        "description": "Metadatuma valoro de lokaĵaro, ekz. en_US."
+      }
+    ]
+  }
+}

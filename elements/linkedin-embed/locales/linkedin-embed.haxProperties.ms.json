@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Benaman LinkedIn",
+    "description": "Benamkan kad profil LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Nama tersuai",
+        "description": "Segmen nama pengguna tersuai LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Tempatan",
+        "description": "Nilai metadata tempatan seperti en_US."
+      }
+    ]
+  }
+}

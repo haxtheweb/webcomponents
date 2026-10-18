@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI-vidigilo",
+    "description": "Ludi MIDI kun vidigo en la kunteksto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonto",
+        "description": "URL de ludota dosiero."
+      },
+      {
+        "property": "visualizer",
+        "title": "Vidigo",
+        "description": "Vidiga stilo por la muzikdosiero.",
+        "options": {
+          "staff": "Notliniaro",
+          "piano-roll": "Piana rulo",
+          "waterfall": "Piano + akvofalo"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Kaŝi akvofalon",
+        "description": "Kaŝi akvofalajn notojn en piana vidigo."
+      }
+    ]
+  }
+}

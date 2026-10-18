@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "标签题",
+    "description": "选标签来回答问题。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "问题",
+        "description": "让用户回答个问题。"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "评分格式",
+        "description": "OER Schema：搿只测评个评分格式（譬如分数、等级、百分比、完成度）。"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学习目标",
+        "description": "OER Schema：搭搿只测评相关个学习目标。"
+      },
+      {
+        "property": "forCourse",
+        "title": "课程",
+        "description": "OER Schema：搿只测评面向个课程。"
+      },
+      {
+        "property": "answers",
+        "title": "答案"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "测验名称",
+        "description": "分析系统里用于 xAPI 识别个测验名称。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) உட்பொதிவு",
+    "description": "X-இலிருந்து ஒரு ட்வீட்டைச் சூழலில் உட்பொதிக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ட்வீட் URL",
+        "description": "உட்பொதிக்க வேண்டிய ட்வீட்டின் URL."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "தீம்",
+        "description": "X ட்வீட்களுக்கான வெளிர் அல்லது இருண்ட தீம்.",
+        "options": {
+          "light": "வெளிர்",
+          "dark": "இருண்ட"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "கிளிக் செய்யும்போது பாப்அப்பைத் தடு",
+        "description": "பயனர்கள் x.com-இல் ட்வீட்டைத் திறப்பதைத் தடுக்கவும்."
+      }
+    ]
+  }
+}

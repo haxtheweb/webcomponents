@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "የUnity ማጫወቻ",
+    "description": "የUnity WebGL ማጫወቻ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "ዒላማ",
+        "description": "ወደ ጨዋታው ግንባታ የሚወስድ መንገድ።"
+      },
+      {
+        "property": "compression",
+        "title": "የመጭመቂያ ዘዴ",
+        "description": "ለጨዋታ ንብረቶች የመጭመቂያ ፋይል ቅጥያ።"
+      },
+      {
+        "property": "streamingurl",
+        "title": "የዥረት URL",
+        "description": "የዥረት ንብረቶች URL።"
+      },
+      {
+        "property": "companyname",
+        "title": "የኩባንያ ስም",
+        "description": "የኩባንያ ስም።"
+      },
+      {
+        "property": "productname",
+        "title": "የምርት ስም",
+        "description": "የጨዋታ ርዕስ።"
+      },
+      {
+        "property": "productversion",
+        "title": "የምርት ስሪት",
+        "description": "የልቀት ስሪት።"
+      },
+      {
+        "property": "width",
+        "title": "የሸራ ስፋት",
+        "description": "የሸራው CSS ስፋት (ለምሳሌ px ወይም em)።"
+      },
+      {
+        "property": "height",
+        "title": "የሸራ ቁመት",
+        "description": "የሸራው CSS ቁመት (ለምሳሌ px ወይም em)።"
+      },
+      {
+        "property": "background",
+        "title": "የሸራ ጀርባ",
+        "description": "የሸራው CSS ጀርባ።"
+      }
+    ]
+  }
+}

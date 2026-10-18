@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Simpleng Larawan",
+    "description": "Baguhin ang mga larawan gamit ang mga simpleng parameter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Pinagmulan",
+        "description": "URL ng pinagmulan ng larawan."
+      },
+      {
+        "property": "height",
+        "title": "Taas",
+        "description": "Opsyonal na taas ng larawan."
+      },
+      {
+        "property": "width",
+        "title": "Lapad",
+        "description": "Opsyonal na lapad ng larawan."
+      },
+      {
+        "property": "alt",
+        "title": "Alt text",
+        "description": "Kapaki-pakinabang para sa mga screen reader at mas mahusay na SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kalidad",
+        "description": "Kalidad ng larawan kapag binubuo (JPEG lamang)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Priyoridad sa Pag-fetch",
+        "description": "Pahiwatig sa performance para sa mga modernong browser.",
+        "options": {
+          "auto": "Awtomatiko",
+          "high": "Mataas",
+          "low": "Mababa"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Paraan ng pag-decode",
+        "description": "Pahiwatig sa performance para sa pag-render ng larawan sa mga modernong browser.",
+        "options": {
+          "auto": "Awtomatiko",
+          "async": "Async"
+        }
+      }
+    ]
+  }
+}

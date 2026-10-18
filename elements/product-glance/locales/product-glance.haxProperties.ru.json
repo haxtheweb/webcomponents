@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Продукт вкратце",
+    "description": "Блок краткого обзора продукта."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Значок",
+        "description": "Значок, представляющий понятие."
+      },
+      {
+        "property": "title",
+        "title": "Заголовок",
+        "description": "Основное понятие вкратце."
+      },
+      {
+        "property": "subtitle",
+        "title": "Подзаголовок",
+        "description": "Дополнительные сведения."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентный цвет",
+        "description": "Акцентный цвет значка."
+      }
+    ]
+  }
+}

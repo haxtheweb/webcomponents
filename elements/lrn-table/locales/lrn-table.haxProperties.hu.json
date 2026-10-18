@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV-táblázat",
+    "description": "Táblázatot hoz létre egy CSV-fájlból, bárhol is legyen az."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Forrás",
+        "description": "A CSV-fájl URL-je."
+      },
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "A létrehozandó táblázat címe."
+      },
+      {
+        "property": "description",
+        "title": "Leírás",
+        "description": "Részletesebb leírás a táblázat adatainak jobb akadálymentességéhez."
+      }
+    ]
+  }
+}

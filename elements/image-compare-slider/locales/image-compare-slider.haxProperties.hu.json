@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Képösszehasonlítás",
+    "description": "Az egyik kép áthúzása a másikon összehasonlítás céljából."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Felső kép",
+        "description": "Az alsó kép fölé húzható felső kép."
+      },
+      {
+        "property": "topAlt",
+        "title": "A felső kép helyettesítő szövege",
+        "description": "Kötelező helyettesítő szöveg az akadálymentesség érdekében."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Alsó kép",
+        "description": "A felső kép alatt megjelenő alsó kép."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Az alsó kép helyettesítő szövege",
+        "description": "Kötelező helyettesítő szöveg az akadálymentesség érdekében."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Viselkedés",
+        "description": "Válasszon törlő módot (alapértelmezett) vagy a felső kép átlátszóságán alapuló módot."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "A csúszkasáv színe."
+      },
+      {
+        "property": "dark",
+        "title": "Sötét",
+        "description": "A csúszkasáv színének invertálása."
+      },
+      {
+        "property": "position",
+        "title": "Kezdőpozíció",
+        "description": "Kezdőpozíció 0 és 100 között."
+      }
+    ]
+  }
+}

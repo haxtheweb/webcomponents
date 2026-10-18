@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) אײַנבעטונג",
+    "description": "אײַנבעטן אַ טוויט פֿון X אין קאָנטעקסט."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL פֿונעם טוויט",
+        "description": "URL פֿונעם טוויט צו אײַנבעטן."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "טעמע",
+        "description": "העלע אָדער טונקעלע טעמע פֿאַר טוויטס פֿון X.",
+        "options": {
+          "light": "העל",
+          "dark": "טונקל"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "פֿאַרהיטן אַ פּאָפּאַפּ בײַם דריקן",
+        "description": "ניט לאָזן באַניצער עפֿענען דעם טוויט אויף x.com."
+      }
+    ]
+  }
+}

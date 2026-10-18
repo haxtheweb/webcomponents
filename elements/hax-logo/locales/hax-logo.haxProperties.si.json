@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX වචන කලාව",
+    "description": "HAX සඳහා ලාංඡන මූලද්‍රව්‍යය, ඇත්තෙන්ම HAX හැකියාව සහිත මූලද්‍රව්‍යයක් ලෙස."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "තැබිය යුතු HAX ලාංඡනයේ ප්‍රමාණය",
+        "options": {
+          "mini": "කුඩා",
+          "small": "කුඩා",
+          "normal": "සාමාන්‍ය",
+          "large": "විශාල"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "ලාංඡනය කැපිටල් අකුරුවලට පරිවර්තනය කළ යුතුද යන්න"
+      }
+    ]
+  }
+}

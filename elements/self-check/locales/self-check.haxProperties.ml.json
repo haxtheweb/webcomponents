@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "സ്വയം പരിശോധന",
+    "description": "ഉപയോക്താക്കൾക്ക് ഒരു സ്വയം പരിശോധന പൂർത്തിയാക്കാം."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ചിത്രം",
+        "description": "സ്വയം പരിശോധനയ്ക്കുള്ള ചിത്രം."
+      },
+      {
+        "property": "title",
+        "title": "ശീർഷകം",
+        "description": "സ്വയം പരിശോധനയുടെ ശീർഷകം."
+      },
+      {
+        "property": "alt",
+        "title": "ആൾട്ട് ടെക്സ്റ്റ്",
+        "description": "ചിത്രത്തിനുള്ള ആൾട്ട് ടെക്സ്റ്റ്."
+      },
+      {
+        "slot": "question",
+        "title": "ചോദ്യം"
+      },
+      {
+        "slot": "",
+        "title": "ഉത്തരം"
+      },
+      {
+        "property": "accentColor",
+        "title": "തീം നിറം",
+        "description": "ഡിസൈൻ സിസ്റ്റത്തിൽ നിന്ന് ഒരു തീം നിറം തിരഞ്ഞെടുക്കുക.",
+        "options": {
+          "primary": "പ്രാഥമികം",
+          "accent": "ആക്സന്റ്",
+          "success": "വിജയം",
+          "warning": "മുന്നറിയിപ്പ്",
+          "error": "പിശക്",
+          "info": "വിവരം"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "പഠന ലക്ഷ്യം",
+        "description": "oer:hasLearningObjective ആയി പുറപ്പെടുവിക്കുന്ന പഠന ലക്ഷ്യ റഫറൻസ്."
+      },
+      {
+        "property": "assessing",
+        "title": "വിലയിരുത്തുന്നത്",
+        "description": "oer:assessing ആയി പുറപ്പെടുവിക്കുന്ന പ്രവർത്തന റഫറൻസ്."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "കൂടുതൽ ലിങ്ക്",
+        "description": "അധിക വിവരങ്ങളിലേക്കുള്ള ലിങ്ക്."
+      }
+    ]
+  }
+}

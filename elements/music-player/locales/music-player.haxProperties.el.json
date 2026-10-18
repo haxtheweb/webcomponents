@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Οπτικοποίηση MIDI",
+    "description": "Αναπαραγωγή MIDI στο πλαίσιο της σελίδας με οπτικοποίηση."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Πηγή",
+        "description": "URL αρχείου για αναπαραγωγή."
+      },
+      {
+        "property": "visualizer",
+        "title": "Οπτικοποίηση",
+        "description": "Στυλ οπτικοποίησης για το μουσικό αρχείο.",
+        "options": {
+          "staff": "Πεντάγραμμο",
+          "piano-roll": "Ρολό πιάνου",
+          "waterfall": "Πιάνο + καταρράκτης"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Απόκρυψη καταρράκτη",
+        "description": "Απόκρυψη των νοτών καταρράκτη στην οπτικοποίηση πιάνου."
+      }
+    ]
+  }
+}

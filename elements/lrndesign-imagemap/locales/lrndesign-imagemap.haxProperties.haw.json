@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Palapala ʻāina kiʻi",
+    "description": "He palapala ʻāina kiʻi hiki ke komo ʻia me nā kiko launa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Lepili",
+        "description": "Lepili no ka palapala ʻāina kiʻi."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Nā kikoʻī kiko launa",
+        "description": "Nā kiko launa ma ka palapala ʻāina kiʻi."
+      }
+    ]
+  }
+}

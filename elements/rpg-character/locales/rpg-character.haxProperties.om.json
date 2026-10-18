@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Taphataa RPG",
+    "description": "Taphataa bashannanaa HAX irraa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Maqaa",
+        "description": "Jecha taphataa akkasumaa uumuuf fayyadamu."
+      },
+      {
+        "property": "hat",
+        "title": "Koofiyaa",
+        "description": "Akkaataa koofiyaa.",
+        "options": {
+          "none": "Durtii",
+          "random": "Akkasumaa",
+          "bunny": "Hantuuta",
+          "cowboy": "Tiksee loonii",
+          "education": "Barnoota",
+          "construction": "Ijaarsa",
+          "warning": "Akeekkachiisa",
+          "watermelon": "Habbabii",
+          "coffee": "Buna",
+          "knight": "Loltuu durii",
+          "ninja": "Ninja",
+          "party": "Ayyaana",
+          "error": "Dogoggora",
+          "edit": "Gulaali"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Bal'ina",
+        "description": "Bal'ina taphataa piksaliin."
+      },
+      {
+        "property": "height",
+        "title": "Dheerina",
+        "description": "Dheerina taphataa piksaliin."
+      },
+      {
+        "property": "fire",
+        "title": "Ibiddaan gubataa?",
+        "description": "Taphataan ibiddaan gubachuu isaa."
+      },
+      {
+        "property": "walking",
+        "title": "Deemaa?",
+        "description": "Sochii deemsaa; yeroo ibiddaan gubatu fiiga."
+      }
+    ]
+  }
+}

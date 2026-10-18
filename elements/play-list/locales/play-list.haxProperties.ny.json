@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Mndandanda wosewera",
+    "description": "Onetsani zinthu zamtundu uliwonse mu mndandanda wosewera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Gwero",
+        "description": "Zomwe zili mu mndandanda wosewera."
+      },
+      {
+        "property": "edit",
+        "title": "Njira yosinthira",
+        "description": "Sinthani pakati pa njira yosinthira ndi yowoneratu ya mndandanda wosewera."
+      },
+      {
+        "property": "navigation",
+        "title": "Kuyenda",
+        "description": "Onetsani mabatani oyenda kutsogolo ndi kumbuyo."
+      },
+      {
+        "property": "pagination",
+        "title": "Manambala a masamba",
+        "description": "Onetsani madontho a masamba."
+      },
+      {
+        "property": "orientation",
+        "title": "Kayimidwe",
+        "description": "Kayimidwe ka masilaidi.",
+        "options": {
+          "horizontal": "Kopingasa",
+          "vertical": "Koima"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Silaidi yoyambira",
+        "description": "Nambala ya silaidi yoyambira kuwonetsa."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Chiyerekezo cha Mbali",
+        "description": "Chiyerekezo cha mbali za masilaidi.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

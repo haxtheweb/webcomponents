@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Pregunta de ordenación",
+    "description": "Ordena los elementos en el orden correcto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Encabezado de la pregunta."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de calificación",
+        "description": "OER Schema: formato de calificación de esta evaluación (p. ej., puntos, letra, porcentaje, finalización)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objetivo de aprendizaje",
+        "description": "OER Schema: objetivo de aprendizaje asociado a esta evaluación."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso al que está destinada esta evaluación."
+      },
+      {
+        "property": "answers",
+        "title": "Respuestas",
+        "description": "El orden de las respuestas define la secuencia correcta."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nombre del cuestionario",
+        "description": "Nombre del cuestionario usado para la identificación xAPI en sistemas de analítica."
+      }
+    ]
+  }
+}

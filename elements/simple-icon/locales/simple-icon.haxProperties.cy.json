@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Eicon",
+    "description": "Eicon o'r llyfrgell eiconau lawn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Eicon",
+        "description": "Eicon i'w ddangos."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw acen",
+        "description": "Lliw acen ar gyfer yr eicon."
+      },
+      {
+        "property": "dark",
+        "title": "Tywyll",
+        "description": "Defnyddio modd tywyll (set lliwiau wedi'i gwrthdroi)."
+      }
+    ]
+  }
+}

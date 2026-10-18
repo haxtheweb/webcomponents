@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris картичка со приказна",
+    "description": "Прикажи Polaris картичка со приказна со позадинска слика, ознака на столб и текст на наслов."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Позадинска слика",
+        "description": "URL на сликата прикажана како позадина на картичката."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Големина на позадината",
+        "description": "Како позадинската слика ја пополнува картичката (CSS background-size).",
+        "options": {
+          "cover": "Покривање (cover)",
+          "contain": "Содржење (contain)",
+          "auto": "Автоматски (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Прицврстување на позадината",
+        "description": "Како се однесува позадинската слика при лизгање (CSS background-attachment).",
+        "options": {
+          "scroll": "Лизгање (scroll)",
+          "fixed": "Фиксно (fixed)",
+          "local": "Локално (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Ознака на столб",
+        "description": "Кратка ознака со големи букви прикажана на врвот на картичката. Оставете празно за да се скрие."
+      },
+      {
+        "property": "label",
+        "title": "Текст на картичката",
+        "description": "Основен текст прикажан во долниот панел."
+      },
+      {
+        "property": "link",
+        "title": "Врска",
+        "description": "Изборен одредишен URL што ја опфаќа целата картичка."
+      }
+    ]
+  }
+}

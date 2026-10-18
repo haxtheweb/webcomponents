@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Obal pro vložené přehrávače Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Zdroj",
+        "description": "Odkaz pro vložení nebo sdílení ze Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Motiv",
+        "description": "Barevný motiv pozadí přehrávače.",
+        "options": {
+          "": "Výchozí",
+          "0": "Černá"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Velikost",
+        "description": "Velikost přehrávače.",
+        "options": {
+          "normal": "Výchozí",
+          "compact": "Kompaktní"
+        }
+      }
+    ]
+  }
+}

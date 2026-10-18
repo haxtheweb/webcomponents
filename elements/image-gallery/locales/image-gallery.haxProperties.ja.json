@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "画像ギャラリー",
+    "description": "画像をグリッド、メイソンリー、スライドショーのレイアウトで表示するギャラリー。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "表示モード",
+        "description": "ギャラリー内の画像の表示方法。",
+        "options": {
+          "grid": "グリッド",
+          "masonry": "メイソンリー",
+          "gallery": "ギャラリー"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "アクティブなインデックス",
+        "description": "ギャラリーモードで最初に表示する画像のインデックス。"
+      }
+    ]
+  }
+}

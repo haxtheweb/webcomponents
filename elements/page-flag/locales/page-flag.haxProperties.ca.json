@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Indicador de pàgina",
+    "description": "Nota editorial per als autors de la pàgina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Color d'accent de l'indicador de pàgina."
+      },
+      {
+        "property": "label",
+        "title": "Etiqueta",
+        "description": "Text de l'etiqueta de l'indicador de pàgina."
+      }
+    ]
+  }
+}

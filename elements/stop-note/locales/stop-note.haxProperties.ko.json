@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "정지 메모",
+    "description": "독자에게 특정 지침을 알리는 메시지입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "정지 메모의 제목을 입력하세요."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "외부 URL을 입력하세요."
+      },
+      {
+        "property": "status",
+        "title": "상태",
+        "description": "상태를 설정하면 색상과 아이콘이 그에 맞게 바뀝니다",
+        "options": {
+          "stop": "정지",
+          "warning": "경고",
+          "success": "확인",
+          "info": "알림"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "메모 텍스트",
+        "description": "정지 메모의 텍스트입니다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "မျှဝေ URL မှ Discord အသိုင်းအဝိုင်းများကို ထည့်သွင်းရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "အရင်းအမြစ် URL",
+        "description": "အရင်းအမြစ် URL။"
+      },
+      {
+        "property": "height",
+        "title": "အမြင့်",
+        "description": "အကြောင်းအရာ frame ၏ အမြင့်။"
+      },
+      {
+        "property": "width",
+        "title": "အကျယ်",
+        "description": "အကြောင်းအရာ frame ၏ အကျယ်။"
+      }
+    ]
+  }
+}

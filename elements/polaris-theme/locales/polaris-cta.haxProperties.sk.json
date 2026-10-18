@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Zobrazenie tematického tlačidla výzvy na akciu Polaris."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Text tlačidla",
+        "description": "Text zobrazený v tlačidle výzvy na akciu."
+      },
+      {
+        "property": "link",
+        "title": "Odkaz",
+        "description": "Cieľová URL tlačidla."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Variant vizuálneho štýlu.",
+        "options": {
+          "primary": "Primárny",
+          "tinted": "Tónovaný",
+          "light": "Svetlý"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Obrysový štýl",
+        "description": "Zapnúť obrysové spracovanie."
+      },
+      {
+        "property": "filled",
+        "title": "Vyplnený štýl",
+        "description": "Zapnúť vyplnené spracovanie."
+      }
+    ]
+  }
+}

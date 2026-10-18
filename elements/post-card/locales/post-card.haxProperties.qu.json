@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Postal tarjeta",
+    "description": "Maymantapas apachisqa chiqap postal tarjeta hina rikukuq pukllay media"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Pimanmi",
+        "description": "Pimanmi richkan?"
+      },
+      {
+        "property": "from",
+        "title": "Pimantam",
+        "description": "Pitaq kanki?"
+      },
+      {
+        "property": "message",
+        "title": "Willay",
+        "description": "Imatataq niyta munanki?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Maymanta sellasqa",
+        "description": "Maymantataq kay tarjeta apachisqa karqa?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Hatun foto pukyu",
+        "description": "Maypitaq fotoyki kachkan?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Sello foto pukyu",
+        "description": "Maypitaq fotoyki kachkan?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D پلیئر",
+    "description": "3D فائل / اضافی حقیقت (AR) پلیئر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ماخذ",
+        "description": "اس AR فائل کا URL۔"
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR میں عنصر کی X پوزیشن۔"
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR میں عنصر کی Y پوزیشن۔"
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR میں عنصر کی Z پوزیشن۔"
+      },
+      {
+        "property": "skyColor",
+        "title": "آسمان کا رنگ",
+        "description": "منظر میں آسمان کا رنگ منتخب کریں۔"
+      }
+    ]
+  }
+}

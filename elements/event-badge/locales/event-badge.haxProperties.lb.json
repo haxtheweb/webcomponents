@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Evenement-Badge",
+    "description": "Komponent fir en Evenement-Badge."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV-Bild",
+        "description": "Bild, dat op der TV ugewise gëtt."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo am Eck vum Badge."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel uewen um Badge."
+      },
+      {
+        "property": "name",
+        "title": "Numm",
+        "description": "Numm, deen um Badge ugewise gëtt."
+      },
+      {
+        "property": "position",
+        "title": "Positioun",
+        "description": "Roll oder Titel vun der Persoun."
+      },
+      {
+        "property": "organization",
+        "title": "Organisatioun",
+        "description": "Organisatioun, fir déi d'Persoun schafft."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV-Faarf",
+        "description": "Wielt d'Faarf fir d'TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Primär Hannergrond- oder Textfaarf."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Knäppfaarf",
+        "description": "Faarf vun de Knäpp vun der TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "E Sepia-Effekt uwenden."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Schwaarz-Wäiss",
+        "description": "E Schwaarz-Wäiss-Effekt uwenden."
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Kutipan media",
+    "description": "Gambar kanthi kutipan, sumber, lan katrangan gambar opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Kutipan",
+        "description": "Teks kutipan."
+      },
+      {
+        "slot": "author",
+        "title": "Panganggit",
+        "description": "Panganggit kutipan."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Rincian panganggit",
+        "description": "Rincian panganggit."
+      },
+      {
+        "slot": "caption",
+        "title": "Katrangan gambar",
+        "description": "Katrangan gambar."
+      },
+      {
+        "property": "src",
+        "title": "Sumber Gambar",
+        "description": "Berkas gambar sing digunakake kanggo kutipan media."
+      },
+      {
+        "property": "alt",
+        "title": "Teks Alt",
+        "description": "Teks alternatif kanggo gambar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Werna Aksen",
+        "description": "Werna aksen kertu."
+      }
+    ]
+  }
+}

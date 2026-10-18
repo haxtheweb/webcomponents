@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV പട്ടിക",
+    "description": "ഒരു CSV ഫയൽ എവിടെയായിരുന്നാലും അതിൽ നിന്ന് പട്ടിക സൃഷ്ടിക്കാൻ ഇതിന് കഴിയും."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "ഉറവിടം",
+        "description": "ഈ CSV ഫയലിന്റെ URL."
+      },
+      {
+        "property": "title",
+        "title": "ശീർഷകം",
+        "description": "സൃഷ്ടിക്കേണ്ട പട്ടികയുടെ ശീർഷകം."
+      },
+      {
+        "property": "description",
+        "title": "വിവരണം",
+        "description": "പട്ടിക ഡാറ്റയുടെ മെച്ചപ്പെട്ട പ്രാപ്യതയ്ക്കായി കൂടുതൽ വിശദമായ വിവരണം."
+      }
+    ]
+  }
+}

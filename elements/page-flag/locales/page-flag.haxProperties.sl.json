@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Zastavica strani",
+    "description": "Uredniška opomba za avtorje strani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Poudarna barva zastavice strani."
+      },
+      {
+        "property": "label",
+        "title": "Oznaka",
+        "description": "Besedilo oznake zastavice strani."
+      }
+    ]
+  }
+}

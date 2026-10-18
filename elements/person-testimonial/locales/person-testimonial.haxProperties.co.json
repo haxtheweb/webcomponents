@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Citazione cù imagine",
+    "description": "Citazione stilizata cù una imagine facultativa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagine",
+        "description": "Aghjunghje una imagine à a tistimunianza."
+      },
+      {
+        "property": "name",
+        "title": "Nome cumplettu",
+        "description": "Nome di a persona chì dà a tistimunianza."
+      },
+      {
+        "property": "position",
+        "title": "Funzione o impiegu",
+        "description": "Funzione o impiegu di a persona."
+      },
+      {
+        "slot": "",
+        "title": "Citazione",
+        "description": "Citazione di l'autore di a tistimunianza."
+      }
+    ]
+  }
+}

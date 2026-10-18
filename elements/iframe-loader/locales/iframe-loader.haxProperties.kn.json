@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "ಬಾಹ್ಯ ವೆಬ್ ವಿಷಯವನ್ನು iframe ನಲ್ಲಿ ಎಂಬೆಡ್ ಮಾಡಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ಸಂಪನ್ಮೂಲ URL",
+        "description": "ಸಂಪನ್ಮೂಲ URL."
+      },
+      {
+        "property": "height",
+        "title": "ಎತ್ತರ",
+        "description": "Iframe ಎತ್ತರ."
+      },
+      {
+        "property": "width",
+        "title": "ಅಗಲ",
+        "description": "Iframe ಅಗಲ."
+      }
+    ]
+  }
+}

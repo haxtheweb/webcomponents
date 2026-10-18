@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Hunanwirio",
+    "description": "Gall defnyddwyr gwblhau hunanwiriad."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Delwedd",
+        "description": "Delwedd ar gyfer yr hunanwiriad."
+      },
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Teitl yr hunanwiriad."
+      },
+      {
+        "property": "alt",
+        "title": "Testun Amgen",
+        "description": "Testun amgen ar gyfer y ddelwedd."
+      },
+      {
+        "slot": "question",
+        "title": "Cwestiwn"
+      },
+      {
+        "slot": "",
+        "title": "Ateb"
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw'r Thema",
+        "description": "Dewiswch liw thema o'r system ddylunio.",
+        "options": {
+          "primary": "Cynradd",
+          "accent": "Acen",
+          "success": "Llwyddiant",
+          "warning": "Rhybudd",
+          "error": "Gwall",
+          "info": "Gwybodaeth"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Amcan Dysgu",
+        "description": "Cyfeiriad at amcan dysgu a allyrrir fel oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Yn asesu",
+        "description": "Cyfeiriad at weithgaredd a allyrrir fel oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Dolen Mwy",
+        "description": "Dolen at ragor o wybodaeth."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Tujuan Pembangunan Lestari Perserikatan Bangsa-Bangsa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Tujuan",
+        "description": "Nomer UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Werna wae",
+        "description": "Tampilake werna tujuan wae."
+      }
+    ]
+  }
+}

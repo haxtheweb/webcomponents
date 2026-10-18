@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ఉత్పత్తి సంగ్రహ వీక్షణ",
+    "description": "త్వరిత ఉత్పత్తి అవలోకన బ్లాక్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ఐకాన్",
+        "description": "భావనను సూచించే ఐకాన్."
+      },
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "ఒక్క చూపులో ప్రధాన భావన."
+      },
+      {
+        "property": "subtitle",
+        "title": "ఉపశీర్షిక",
+        "description": "అదనపు వివరం."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "ఐకాన్ కోసం యాక్సెంట్ రంగు."
+      }
+    ]
+  }
+}

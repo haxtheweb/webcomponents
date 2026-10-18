@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Nhúng cộng đồng Discord từ URL chia sẻ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL tài nguyên",
+        "description": "URL tài nguyên."
+      },
+      {
+        "property": "height",
+        "title": "Chiều cao",
+        "description": "Chiều cao khung nội dung."
+      },
+      {
+        "property": "width",
+        "title": "Chiều rộng",
+        "description": "Chiều rộng khung nội dung."
+      }
+    ]
+  }
+}

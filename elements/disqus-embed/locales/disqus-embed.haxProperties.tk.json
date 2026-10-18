@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Sahypa Disqus teswirlerini ýerleşdiriň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Gysga ady",
+        "description": "Disqus skript hostuny kesgitleýän saýtyň gysga ady."
+      },
+      {
+        "property": "pageURL",
+        "title": "Sahypanyň URL-i",
+        "description": "Teswir zynjyry berkidilen sahypanyň URL-i."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Sahypanyň kesgitleýjisi",
+        "description": "Sahypanyň teswir zynjyry üçin özboluşly kesgitleýji."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Sahypanyň ady",
+        "description": "Teswir zynjyry berkidilen sahypanyň ady."
+      },
+      {
+        "property": "loadingText",
+        "title": "Ýüklenme teksti",
+        "description": "Teswirler ýüklenýän wagty yglan edilýän tekst."
+      },
+      {
+        "property": "lang",
+        "title": "Dil",
+        "description": "Disqus interfeýsi üçin dil kody, meselem, en."
+      }
+    ]
+  }
+}

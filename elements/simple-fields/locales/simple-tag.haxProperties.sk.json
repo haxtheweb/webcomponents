@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Značka / štítok",
+    "description": "Kompaktný štítok v tvare kapsuly s voliteľnou zvýrazňujúcou farbou, tlačidlom zrušenia alebo prepínačom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Označenie",
+        "description": "Text zobrazený vo vnútri štítku."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Názov zvýrazňujúcej farby SimpleColors pre pozadie štítku.",
+        "options": {
+          "": "-- predvolená --",
+          "red": "Červená",
+          "pink": "Ružová",
+          "purple": "Fialová",
+          "deep-purple": "Tmavofialová",
+          "indigo": "Indigová",
+          "blue": "Modrá",
+          "light-blue": "Svetlomodrá",
+          "cyan": "Azúrová",
+          "teal": "Modrozelená",
+          "green": "Zelená",
+          "light-green": "Svetlozelená",
+          "lime": "Limetková",
+          "yellow": "Žltá",
+          "amber": "Jantárová",
+          "orange": "Oranžová",
+          "deep-orange": "Tmavooranžová",
+          "brown": "Hnedá",
+          "blue-grey": "Modrosivá",
+          "grey": "Sivá"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatická zvýrazňujúca farba",
+        "description": "Automaticky odvodiť zvýrazňujúcu farbu z textu označenia."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Tlačidlo zrušenia",
+        "description": "Zobraziť v štítku ikonové tlačidlo na odstránenie/zrušenie."
+      },
+      {
+        "property": "readonly",
+        "title": "Iba na čítanie",
+        "description": "Skryť tlačidlo zrušenia, aby štítok slúžil iba na zobrazenie."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Prepína",
+        "description": "Po kliknutí na tlačidlo sa štítok zapne/vypne."
+      },
+      {
+        "property": "toggled",
+        "title": "Zapnutý",
+        "description": "Či je štítok práve zapnutý."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ikona zapnutia",
+        "description": "Ikona zobrazená, keď je štítok zapnutý."
+      },
+      {
+        "property": "disabled",
+        "title": "Zakázané",
+        "description": "Zakázať interakciu so štítkom."
+      }
+    ]
+  }
+}

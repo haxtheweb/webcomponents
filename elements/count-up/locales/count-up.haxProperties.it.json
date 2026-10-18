@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Contatore",
+    "description": "Anima un numero che conta fino a un valore obiettivo quando entra nella visuale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Valore finale",
+        "description": "Il numero fino a cui contare."
+      },
+      {
+        "property": "start",
+        "title": "Valore iniziale",
+        "description": "Il numero da cui iniziare a contare."
+      },
+      {
+        "property": "duration",
+        "title": "Durata",
+        "description": "Secondi di durata dell'animazione del conteggio."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Testo prefisso",
+        "description": "Testo mostrato prima del numero (es. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Testo suffisso",
+        "description": "Testo mostrato dopo il numero (es. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot prefisso",
+        "description": "Contenuto facoltativo inserito prima del numero."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot suffisso",
+        "description": "Contenuto facoltativo inserito dopo il numero."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Cifre decimali",
+        "description": "Numero di cifre decimali da mostrare."
+      },
+      {
+        "property": "separator",
+        "title": "Separatore delle migliaia",
+        "description": "Carattere che separa i gruppi di migliaia."
+      },
+      {
+        "property": "decimal",
+        "title": "Carattere decimale",
+        "description": "Carattere usato come separatore decimale."
+      },
+      {
+        "property": "noeasing",
+        "title": "Nessuna accelerazione",
+        "description": "Disattiva l'accelerazione per un conteggio lineare."
+      }
+    ]
+  }
+}

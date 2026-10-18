@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Jechoota",
+    "description": "Jecha jechootaa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Jecha"
+      },
+      {
+        "property": "information",
+        "title": "Hiika",
+        "description": "Hiika yeroo jechi tuqamu mul'atu."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Foddaa ol ka'u",
+        "description": "Hiika barreeffama keessatti osoo hin taane foddaa ol ka'u keessatti agarsiisi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Hidhoowwan",
+        "description": "Tarree hidhoowwan dabalataa jecha kana wajjin walqabatan."
+      }
+    ]
+  }
+}

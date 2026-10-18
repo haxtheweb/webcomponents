@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX სიტყვა-ხელოვნება",
+    "description": "ლოგოს ელემენტი HAX-ისთვის, ცხადია, HAX-თან თავსებადი ელემენტი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "განსათავსებელი HAX ლოგოს ზომა",
+        "options": {
+          "mini": "მინი",
+          "small": "პატარა",
+          "normal": "ჩვეულებრივი",
+          "large": "დიდი"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "გარდაიქმნას თუ არა ლოგო დიდ ასოებად"
+      }
+    ]
+  }
+}

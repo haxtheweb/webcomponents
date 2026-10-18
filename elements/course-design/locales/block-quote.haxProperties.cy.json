@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Dyfyniad bloc",
+    "description": "Bloc dyfyniad wedi'i steilio."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Cyfeiriad",
+        "description": "Testun y cyfeiriad."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Testun amgen ar gyfer y ddelwedd."
+      },
+      {
+        "property": "image",
+        "title": "Delwedd",
+        "description": "Delwedd a ddangosir gyda'r dyfyniad."
+      }
+    ]
+  }
+}

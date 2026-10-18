@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Liosta rannpháirtithe GitHub",
+    "description": "Léirithe mar charachtair RPG ag úsáid API GitHub."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Eagraíocht",
+        "description": "Ainm na heagraíochta ó github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Stór",
+        "description": "Ainm an stóir ó github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Teorainn",
+        "description": "Teorannaigh líon na rannpháirtithe a thaispeántar."
+      }
+    ]
+  }
+}

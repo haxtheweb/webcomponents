@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grupo de malfaldeblaj elementoj",
+    "description": "Grupo de malfaldeblaj/faldeblaj elementoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Malfaldi nur unu",
+        "description": "Nur unu elemento povas esti malfaldita."
+      },
+      {
+        "slot": "",
+        "title": "Faldeblaj elementoj",
+        "description": "La faldeblaj elementoj."
+      }
+    ]
+  }
+}

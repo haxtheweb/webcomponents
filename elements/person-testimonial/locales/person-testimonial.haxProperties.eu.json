@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Irudidun aipu blokea",
+    "description": "Estilodun aipua, aukerako irudiarekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Irudia",
+        "description": "Gehitu irudi bat testigantzari."
+      },
+      {
+        "property": "name",
+        "title": "Izen osoa",
+        "description": "Testigantza ematen duen pertsonaren izena."
+      },
+      {
+        "property": "position",
+        "title": "Kargua edo lanpostua",
+        "description": "Pertsonaren kargua edo lanpostua."
+      },
+      {
+        "slot": "",
+        "title": "Aipua",
+        "description": "Testigantzaren egilearen aipua."
+      }
+    ]
+  }
+}

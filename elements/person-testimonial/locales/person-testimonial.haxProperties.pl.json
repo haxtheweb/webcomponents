@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Cytat z obrazem",
+    "description": "Stylizowany cytat z opcjonalnym obrazem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Obraz",
+        "description": "Dodaj obraz do opinii."
+      },
+      {
+        "property": "name",
+        "title": "Imię i nazwisko",
+        "description": "Imię i nazwisko osoby wystawiającej opinię."
+      },
+      {
+        "property": "position",
+        "title": "Stanowisko lub tytuł zawodowy",
+        "description": "Stanowisko lub tytuł zawodowy osoby."
+      },
+      {
+        "slot": "",
+        "title": "Cytat",
+        "description": "Cytat autora opinii."
+      }
+    ]
+  }
+}

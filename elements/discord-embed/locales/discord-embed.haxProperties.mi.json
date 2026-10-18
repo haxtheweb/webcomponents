@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Tāmau i ngā hapori Discord mai i tētahi URL tiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL Rauemi",
+        "description": "URL rauemi."
+      },
+      {
+        "property": "height",
+        "title": "Teitei",
+        "description": "Teitei o te anga ihirangi."
+      },
+      {
+        "property": "width",
+        "title": "Whānui",
+        "description": "Whānui o te anga ihirangi."
+      }
+    ]
+  }
+}

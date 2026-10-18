@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X)-innebygging",
+    "description": "Bygg inn et innlegg fra X i kontekst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Tweet-URL",
+        "description": "URL til tweeten som skal bygges inn."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Lyst eller mørkt tema for tweets fra X.",
+        "options": {
+          "light": "Lys",
+          "dark": "Mørk"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Hindre popup ved klikk",
+        "description": "Hindre brukere i å åpne tweeten på x.com."
+      }
+    ]
+  }
+}
