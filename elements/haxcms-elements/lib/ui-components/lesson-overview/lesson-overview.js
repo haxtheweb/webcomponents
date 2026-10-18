@@ -36,6 +36,11 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
       minute: "minute",
       minutes: "minutes",
     };
+    this.registerLocalization({
+      context: this,
+      namespace: "haxcms",
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.ancestor = null;
   }
 

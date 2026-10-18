@@ -1,0 +1,11 @@
+{
+  "userAccess": "Felhasználói hozzáférés",
+  "enterUsername": "Adja meg a felhasználónevet a hozzáférés megadásához",
+  "usernamePlaceholder": "Felhasználónév",
+  "addUser": "Felhasználó hozzáadása",
+  "cancel": "Mégse",
+  "userAccessGranted": "A felhasználói hozzáférés sikeresen megadva!",
+  "userNotFound": "A felhasználó nem található vagy nincs jogosultsága",
+  "loadingAddingUser": "Felhasználó hozzáadása...",
+  "grantAccessTo": "Hozzáférés megadása neki:"
+}

@@ -1,0 +1,11 @@
+{
+  "userAccess": "גישת משתמשים",
+  "enterUsername": "הזינו שם משתמש כדי להעניק גישה",
+  "usernamePlaceholder": "שם משתמש",
+  "addUser": "הוספת משתמש",
+  "cancel": "ביטול",
+  "userAccessGranted": "הגישה הוענקה למשתמש בהצלחה!",
+  "userNotFound": "המשתמש לא נמצא או שאין הרשאה",
+  "loadingAddingUser": "מוסיף משתמש...",
+  "grantAccessTo": "הענקת גישה ל:"
+}
