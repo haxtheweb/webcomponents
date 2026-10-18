@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Загрузка",
+        "title": "Загрузка выявы",
         "description": "Выберыце, калі загружаецца выява.",
         "options": {
           "lazy": "Загружаць, калі бачна",

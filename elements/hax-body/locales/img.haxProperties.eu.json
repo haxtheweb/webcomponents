@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Kargatzen",
+        "title": "Irudiaren karga",
         "description": "Aukeratu noiz kargatzen den irudia.",
         "options": {
           "lazy": "Kargatu ikusgai dagoenean",

@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Nalaganje",
+        "title": "Nalaganje slike",
         "description": "Izberite, kdaj se slika naloži.",
         "options": {
           "lazy": "Naloži, ko je vidna",

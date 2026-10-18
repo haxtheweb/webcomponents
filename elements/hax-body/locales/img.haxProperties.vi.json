@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Đang tải",
+        "title": "Cách tải hình ảnh",
         "description": "Chọn thời điểm tải hình ảnh.",
         "options": {
           "lazy": "Tải khi hiển thị",

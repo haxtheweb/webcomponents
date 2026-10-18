@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Laadimine",
+        "title": "Pildi laadimine",
         "description": "Vali, millal pilt laaditakse.",
         "options": {
           "lazy": "Laadi, kui nähtav",

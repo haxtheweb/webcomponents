@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "लोड होत आहे",
+        "title": "प्रतिमा लोडिंग",
         "description": "प्रतिमा केव्हा लोड होईल ते निवडा.",
         "options": {
           "lazy": "दिसल्यावर लोड करा",

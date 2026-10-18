@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "লোড হচ্ছে",
+        "title": "ছবি লোডের ধরন",
         "description": "ছবি কখন লোড হবে বেছে নিন।",
         "options": {
           "lazy": "দৃশ্যমান হলে লোড করুন",

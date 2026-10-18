@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Се вчитува",
+        "title": "Вчитување на сликата",
         "description": "Изберете кога се вчитува сликата.",
         "options": {
           "lazy": "Вчитај кога е видлива",

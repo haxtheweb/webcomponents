@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Жүктөлүүдө",
+        "title": "Сүрөттү жүктөө",
         "description": "Сүрөт качан жүктөлөрүн тандаңыз.",
         "options": {
           "lazy": "Көрүнгөндө жүктөө",

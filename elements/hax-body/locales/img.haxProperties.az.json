@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Yüklənir",
+        "title": "Şəklin yüklənməsi",
         "description": "Şəklin nə vaxt yüklənəcəyini seçin.",
         "options": {
           "lazy": "Görünəndə yüklə",

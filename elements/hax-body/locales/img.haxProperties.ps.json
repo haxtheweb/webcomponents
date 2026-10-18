@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "پورته کېږي",
+        "title": "د انځور پورته کول",
         "description": "وټاکئ چې انځور کله پورته شي.",
         "options": {
           "lazy": "کله چې ښکاره شي پورته شي",

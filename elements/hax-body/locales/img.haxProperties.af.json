@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Laai tans",
+        "title": "Laaigedrag",
         "description": "Kies wanneer die prent laai.",
         "options": {
           "lazy": "Laai wanneer sigbaar",

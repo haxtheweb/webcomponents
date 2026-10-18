@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Ŝargante",
+        "title": "Ŝargado de bildo",
         "description": "Elektu kiam la bildo ŝargiĝas.",
         "options": {
           "lazy": "Ŝargi kiam videbla",

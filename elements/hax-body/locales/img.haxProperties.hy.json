@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Բեռնվում է",
+        "title": "Պատկերի բեռնում",
         "description": "Ընտրեք, թե երբ բեռնվի նկարը։",
         "options": {
           "lazy": "Բեռնել, երբ տեսանելի է",

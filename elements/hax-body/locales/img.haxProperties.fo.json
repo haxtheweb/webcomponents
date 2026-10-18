@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Innlesi",
+        "title": "Innlesing av mynd",
         "description": "Vel, nær myndin verður innlisin.",
         "options": {
           "lazy": "Innles, tá ið sjónlig",

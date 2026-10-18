@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "පූරණය වෙමින්",
+        "title": "රූප පූරණය",
         "description": "රූපය පූරණය වන විට තෝරන්න.",
         "options": {
           "lazy": "දෘශ්‍යමාන වූ විට පූරණය කරන්න",

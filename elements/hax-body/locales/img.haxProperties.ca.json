@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "S'està carregant",
+        "title": "Càrrega de la imatge",
         "description": "Tria quan es carrega la imatge.",
         "options": {
           "lazy": "Carrega quan sigui visible",

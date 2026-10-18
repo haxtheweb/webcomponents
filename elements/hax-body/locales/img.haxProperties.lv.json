@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Ielādē",
+        "title": "Attēla ielāde",
         "description": "Izvēlieties, kad attēls tiek ielādēts.",
         "options": {
           "lazy": "Ielādēt, kad redzams",

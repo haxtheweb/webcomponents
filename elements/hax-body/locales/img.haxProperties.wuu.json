@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "载入当中",
+        "title": "图片加载方式",
         "description": "选图片啥辰光载入。",
         "options": {
           "lazy": "看得见个辰光再载入",

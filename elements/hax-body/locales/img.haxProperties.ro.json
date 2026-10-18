@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Se încarcă",
+        "title": "Încărcarea imaginii",
         "description": "Alege când se încarcă imaginea.",
         "options": {
           "lazy": "Încarcă atunci când este vizibilă",

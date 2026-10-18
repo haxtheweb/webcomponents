@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "กำลังโหลด",
+        "title": "การโหลดรูปภาพ",
         "description": "เลือกว่าจะโหลดรูปภาพเมื่อใด",
         "options": {
           "lazy": "โหลดเมื่อมองเห็น",

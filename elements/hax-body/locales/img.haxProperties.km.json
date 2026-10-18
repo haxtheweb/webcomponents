@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "កំពុងផ្ទុក",
+        "title": "ការផ្ទុករូបភាព",
         "description": "ជ្រើសរើសពេលដែលរូបភាពផ្ទុក។",
         "options": {
           "lazy": "ផ្ទុកពេលមើលឃើញ",

@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "ಲೋಡ್ ಆಗುತ್ತಿದೆ",
+        "title": "ಚಿತ್ರ ಲೋಡಿಂಗ್",
         "description": "ಚಿತ್ರ ಯಾವಾಗ ಲೋಡ್ ಆಗಬೇಕೆಂದು ಆರಿಸಿ.",
         "options": {
           "lazy": "ಗೋಚರಿಸಿದಾಗ ಲೋಡ್ ಮಾಡಿ",

@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Načítání",
+        "title": "Načítání obrázku",
         "description": "Zvolte, kdy se obrázek načte.",
         "options": {
           "lazy": "Načíst, až bude viditelný",

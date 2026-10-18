@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Yükleniyor",
+        "title": "Görsel yükleme",
         "description": "Görselin ne zaman yükleneceğini seçin.",
         "options": {
           "lazy": "Görünür olduğunda yükle",

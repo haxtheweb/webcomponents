@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Ngemot",
+        "title": "Ngemot gambar",
         "description": "Pilih kapan gambar diemot.",
         "options": {
           "lazy": "Emot nalika katon",

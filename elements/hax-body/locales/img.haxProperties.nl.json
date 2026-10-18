@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Laden",
+        "title": "Laadgedrag",
         "description": "Kies wanneer de afbeelding wordt geladen.",
         "options": {
           "lazy": "Laden wanneer zichtbaar",

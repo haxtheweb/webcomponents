@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Ladataan",
+        "title": "Kuvan lataus",
         "description": "Valitse, milloin kuva latautuu.",
         "options": {
           "lazy": "Lataa, kun näkyvissä",

@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Betöltés",
+        "title": "Képbetöltés",
         "description": "Válaszd ki, mikor töltődjön be a kép.",
         "options": {
           "lazy": "Betöltés, amikor láthatóvá válik",

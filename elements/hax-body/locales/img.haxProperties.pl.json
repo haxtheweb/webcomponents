@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Wczytywanie",
+        "title": "Ładowanie obrazu",
         "description": "Wybierz, kiedy obraz ma się wczytać.",
         "options": {
           "lazy": "Wczytaj, gdy widoczny",

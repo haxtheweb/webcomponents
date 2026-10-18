@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Φόρτωση",
+        "title": "Φόρτωση εικόνας",
         "description": "Επιλέξτε πότε φορτώνεται η εικόνα.",
         "options": {
           "lazy": "Φόρτωση όταν είναι ορατή",

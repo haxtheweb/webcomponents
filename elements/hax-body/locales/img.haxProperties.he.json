@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "טוען",
+        "title": "טעינת תמונה",
         "description": "בחרו מתי התמונה נטענת.",
         "options": {
           "lazy": "טעינה כשהיא גלויה",

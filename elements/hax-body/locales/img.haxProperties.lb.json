@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Gëtt gelueden",
+        "title": "Lueden vum Bild",
         "description": "Wielt, wéini d'Bild gelueden gëtt.",
         "options": {
           "lazy": "Lueden, wann et siichtbar ass",

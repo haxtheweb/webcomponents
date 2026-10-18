@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "جارٍ التحميل",
+        "title": "طريقة تحميل الصورة",
         "description": "اختر متى يتم تحميل الصورة.",
         "options": {
           "lazy": "التحميل عند الظهور",

@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Indlæser",
+        "title": "Indlæsning af billede",
         "description": "Vælg, hvornår billedet indlæses.",
         "options": {
           "lazy": "Indlæs, når det er synligt",

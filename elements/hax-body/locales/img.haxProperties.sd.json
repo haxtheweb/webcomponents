@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "لوڊ ٿي رهيو آهي",
+        "title": "تصوير لوڊنگ",
         "description": "چونڊيو ته تصوير ڪڏهن لوڊ ٿئي.",
         "options": {
           "lazy": "نظر اچڻ تي لوڊ ڪريو",

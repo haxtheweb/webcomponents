@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Ýüklenýär",
+        "title": "Suraty ýüklemek",
         "description": "Suratyň haçan ýüklenjekdigini saýlaň.",
         "options": {
           "lazy": "Görnende ýükle",

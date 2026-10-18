@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Läser in",
+        "title": "Bildinläsning",
         "description": "Välj när bilden läses in.",
         "options": {
           "lazy": "Läs in när synlig",

@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Carregando",
+        "title": "Carregamento da imagem",
         "description": "Escolha quando a imagem é carregada.",
         "options": {
           "lazy": "Carregar quando visível",

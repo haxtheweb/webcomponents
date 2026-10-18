@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Laster",
+        "title": "Bildeinnlasting",
         "description": "Velg når bildet lastes inn.",
         "options": {
           "lazy": "Last inn når synlig",

@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "لوڈ ہو رہیا اے",
+        "title": "تصویر لوڈنگ",
         "description": "چݨو کہ تصویر کدوں لوڈ ہووے۔",
         "options": {
           "lazy": "نظر آؤݨ تے لوڈ کرو",

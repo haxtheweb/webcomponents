@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "ກຳລັງໂຫຼດ",
+        "title": "ການໂຫຼດຮູບພາບ",
         "description": "ເລືອກເວລາທີ່ຮູບພາບໂຫຼດ.",
         "options": {
           "lazy": "ໂຫຼດເມື່ອເບິ່ງເຫັນ",

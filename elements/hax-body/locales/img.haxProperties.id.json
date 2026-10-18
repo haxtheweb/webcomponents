@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Memuat",
+        "title": "Pemuatan gambar",
         "description": "Pilih kapan gambar dimuat.",
         "options": {
           "lazy": "Muat saat terlihat",

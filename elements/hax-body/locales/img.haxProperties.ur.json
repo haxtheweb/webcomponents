@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "لوڈ ہو رہا ہے",
+        "title": "تصویر لوڈنگ",
         "description": "منتخب کریں کہ تصویر کب لوڈ ہو۔",
         "options": {
           "lazy": "نظر آنے پر لوڈ کریں",

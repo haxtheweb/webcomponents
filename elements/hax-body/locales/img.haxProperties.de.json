@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Wird geladen",
+        "title": "Ladeverhalten",
         "description": "Wähle, wann das Bild geladen wird.",
         "options": {
           "lazy": "Laden, wenn sichtbar",

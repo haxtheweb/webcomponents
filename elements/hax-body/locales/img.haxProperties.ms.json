@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Memuatkan",
+        "title": "Pemuatan imej",
         "description": "Pilih bila imej dimuatkan.",
         "options": {
           "lazy": "Muatkan apabila kelihatan",

@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "በመጫን ላይ",
+        "title": "የምስል አጫጫን",
         "description": "ምስሉ መቼ እንደሚጫን ይምረጡ።",
         "options": {
           "lazy": "ሲታይ ጫን",

@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Hleður",
+        "title": "Hleðsla myndar",
         "description": "Veldu hvenær myndin hleðst.",
         "options": {
           "lazy": "Hlaða þegar sýnileg",

@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Nilo-load",
+        "title": "Paglo-load ng larawan",
         "description": "Piliin kung kailan maglo-load ang larawan.",
         "options": {
           "lazy": "I-load kapag nakikita",

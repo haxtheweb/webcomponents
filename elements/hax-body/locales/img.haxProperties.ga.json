@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Á lódáil",
+        "title": "Lódáil íomhá",
         "description": "Roghnaigh cathain a lódálann an íomhá.",
         "options": {
           "lazy": "Lódáil nuair atá sí infheicthe",

@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "लोड हो रहा है",
+        "title": "छवि लोडिंग",
         "description": "चुनें कि छवि कब लोड हो।",
         "options": {
           "lazy": "दिखाई देने पर लोड करें",

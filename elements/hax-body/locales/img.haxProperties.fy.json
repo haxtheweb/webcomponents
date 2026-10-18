@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Lade",
+        "title": "Ôfbylding lade",
         "description": "Kies wannear't de ôfbylding laden wurdt.",
         "options": {
           "lazy": "Lade as sichtber",

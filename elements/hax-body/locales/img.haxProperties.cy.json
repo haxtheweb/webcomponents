@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Wrthi'n llwytho",
+        "title": "Llwytho delwedd",
         "description": "Dewiswch pryd mae'r ddelwedd yn llwytho.",
         "options": {
           "lazy": "Llwytho pan fydd yn weladwy",

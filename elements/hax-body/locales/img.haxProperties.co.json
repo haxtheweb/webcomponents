@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Caricamentu",
+        "title": "Caricamentu di l'imagine",
         "description": "Sceglite quandu l'imagine si carica.",
         "options": {
           "lazy": "Caricà quandu hè visibile",

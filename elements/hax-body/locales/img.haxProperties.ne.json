@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "लोड हुँदैछ",
+        "title": "छवि लोडिङ",
         "description": "छवि कहिले लोड हुने छान्नुहोस्।",
         "options": {
           "lazy": "देखिँदा लोड गर्नुहोस्",

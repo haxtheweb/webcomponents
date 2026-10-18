@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Йөкләнә",
+        "title": "Рәсемне йөкләү",
         "description": "Рәсем кайчан йөкләнергә тиешлеген сайлагыз.",
         "options": {
           "lazy": "Күренгәч йөкләү",

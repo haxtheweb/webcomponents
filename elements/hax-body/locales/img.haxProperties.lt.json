@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Įkeliama",
+        "title": "Vaizdo įkėlimas",
         "description": "Pasirinkite, kada įkeliamas paveikslėlis.",
         "options": {
           "lazy": "Įkelti, kai matomas",

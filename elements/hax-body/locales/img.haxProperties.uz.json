@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Yuklanmoqda",
+        "title": "Rasmni yuklash",
         "description": "Rasm qachon yuklanishini tanlang.",
         "options": {
           "lazy": "Koʻringanda yuklash",

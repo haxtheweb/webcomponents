@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ",
+        "title": "ਚਿੱਤਰ ਲੋਡਿੰਗ",
         "description": "ਚੁਣੋ ਕਿ ਚਿੱਤਰ ਕਦੋਂ ਲੋਡ ਹੋਵੇ।",
         "options": {
           "lazy": "ਦਿਖਾਈ ਦੇਣ 'ਤੇ ਲੋਡ ਕਰੋ",

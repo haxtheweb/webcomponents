@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Ачаалж байна",
+        "title": "Зураг ачаалах",
         "description": "Зураг хэзээ ачаалагдахыг сонгоно уу.",
         "options": {
           "lazy": "Харагдах үед ачаалах",

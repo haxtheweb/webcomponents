@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "Duke u ngarkuar",
+        "title": "Ngarkimi i imazhit",
         "description": "Zgjidh kur ngarkohet imazhi.",
         "options": {
           "lazy": "Ngarko kur është i dukshëm",

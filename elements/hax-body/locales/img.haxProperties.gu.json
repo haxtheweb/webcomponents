@@ -24,7 +24,7 @@
     "advanced": [
       {
         "attribute": "loading",
-        "title": "લોડ થઈ રહ્યું છે",
+        "title": "છબી લોડિંગ",
         "description": "છબી ક્યારે લોડ થાય તે પસંદ કરો.",
         "options": {
           "lazy": "દેખાય ત્યારે લોડ કરો",
