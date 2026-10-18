@@ -43,5 +43,22 @@
   "emailAddress": "مراسلة هذا الطالب بالبريد الإلكتروني",
   "notes": "ملاحظات",
   "interests": "الاهتمامات",
-  "profileImageFor": "صورة الملف الشخصي لـ"
+  "profileImageFor": "صورة الملف الشخصي لـ",
+  "fileSystem": "نظام الملفات",
+  "googleDocs": "مستندات Google",
+  "urlEndpointJSON": "نقطة نهاية URL (JSON)",
+  "jsonDataBlob": "كتلة بيانات JSON",
+  "additionalCriteriaFeedback": "ملاحظات إضافية حول {criteria}",
+  "outOfPoints": "/ {points} نقطة",
+  "feedbackReport": "تقرير الملاحظات",
+  "criteriaDetails": "تفاصيل المعايير",
+  "yourFeedback": "ملاحظاتك",
+  "additionalCriteriaFeedbackHeading": "ملاحظات إضافية حول المعايير",
+  "yourTotalScore": "درجتك الإجمالية",
+  "scoreOutOfPoints": "{score} / {points} نقطة",
+  "studentAssignment": "واجب {student} {assignment}",
+  "downloadPDF": "تنزيل PDF",
+  "displayMode1": "الوضع 1",
+  "displayMode2": "الوضع 2",
+  "twoWindows": "نافذتان"
 }

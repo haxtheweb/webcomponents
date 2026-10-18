@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Пайдаланушы атын енгізіңіз",
+  "invalidUsernameOrPassword": "Пайдаланушы аты немесе құпиясөз қате",
+  "welcomeLetsGo": "Қош келдіңіз, {username}! Бастадық!",
+  "enterYourUsername": "Пайдаланушы атыңызды енгізіңіз",
+  "username": "Пайдаланушы аты",
+  "next": "Келесі",
+  "welcomeBack": "Қайта қош келдіңіз, {username}!",
+  "notYou": "Сіз емессіз бе?",
+  "enterYourPassword": "Құпиясөзіңізді енгізіңіз",
+  "password": "Құпиясөз",
+  "togglePasswordDisplay": "Құпиясөзді көрсету/жасыру",
+  "login": "Кіру"
+}

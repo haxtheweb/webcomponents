@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Nisunu risultatu",
+  "viewsRecordHeading": "Arregistrà",
+  "viewsTitleImage": "Imagine di {title}",
+  "viewsTitlePreview": "Anteprima di {title}",
+  "viewsNoTimelineRecords": "Nisuna registrazione cù data dispunibule per affissà una cronolugia.",
+  "viewsTimelineTitle": "Cronolugia di {title}",
+  "viewsNoChartField": "Nisunu campu numericu rilevatu per affissà un graficu.",
+  "viewsChartingValue": "Graficu di {value}",
+  "viewsChartingValueByLabel": "Graficu di {value} per {label}",
+  "viewsChartTitle": "Graficu di {title}",
+  "viewsNoTreeRecords": "Nisuna registrazione gerarchica dispunibule per affissà un arburu.",
+  "viewsNoGalleryRecords": "Nisuna registrazione d'imagine dispunibule per affissà una galleria.",
+  "viewsNoPlaylistRecords": "Nisuna registrazione di media dispunibule per affissà una lista di lettura.",
+  "fetchFailed": "Ricuperu fallitu ({status})",
+  "unableToLoadViewData": "Impussibule di caricà i dati di a vista.",
+  "noResultsFound": "Nisunu risultatu trovu.",
+  "refreshView": "Rinfriscà a vista",
+  "breakIntoStaticContent": "Spezzà in cuntenutu staticu",
+  "viewsOpenRecord": "Apre u registru"
+}

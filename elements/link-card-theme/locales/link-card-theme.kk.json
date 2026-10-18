@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Зәкір сілтемесі көшірілді!",
+  "skipToContent": "Мазмұнға өту",
+  "changePalette": "Палитраны өзгерту",
+  "primaryLinks": "Негізгі сілтемелер",
+  "socialLinks": "Әлеуметтік желі сілтемелері",
+  "myProfile": "Менің профилім",
+  "profileImageOf": "{name} профиль суреті",
+  "profileImage": "Профиль суреті",
+  "linkCardProfile": "Сілтеме картасы профилі",
+  "emptyStateLinks": "Сілтеме түймелерін көрсету үшін site.json файлына жоғарғы деңгейлі мәзір элементтерін қосыңыз.",
+  "titleOnPlatform": "{platform} желісіндегі {title}",
+  "openPlatform": "{platform} ашу",
+  "paletteUpdated": "Түс палитрасы {number}-нұсқаға өзгертілді."
+}

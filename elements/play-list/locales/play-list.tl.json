@@ -1,0 +1,11 @@
+{
+  "playlist": "Playlist",
+  "carousel": "carousel",
+  "slide": "slide",
+  "slideNumber": "Slide {number}",
+  "slideOfTotal": "Slide {number} ng {total}",
+  "previousSlide": "Nakaraang slide",
+  "nextSlide": "Susunod na slide",
+  "slidePages": "Mga pahina ng slide",
+  "goToSlide": "Pumunta sa slide {number}"
+}

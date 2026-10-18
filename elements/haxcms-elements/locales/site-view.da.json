@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Ingen resultater",
+  "viewsRecordHeading": "Optag",
+  "viewsTitleImage": "Billede af {title}",
+  "viewsTitlePreview": "Forhåndsvisning af {title}",
+  "viewsNoTimelineRecords": "Der er ingen datoorienterede poster tilgængelige til visning af tidslinje.",
+  "viewsTimelineTitle": "Tidslinje for {title}",
+  "viewsNoChartField": "Der blev ikke fundet noget numerisk felt til visning af diagram.",
+  "viewsChartingValue": "Diagram over {value}",
+  "viewsChartingValueByLabel": "Diagram over {value} efter {label}",
+  "viewsChartTitle": "Diagram over {title}",
+  "viewsNoTreeRecords": "Der er ingen hierarkiske poster tilgængelige til visning af træ.",
+  "viewsNoGalleryRecords": "Der er ingen billedposter tilgængelige til visning af galleri.",
+  "viewsNoPlaylistRecords": "Der er ingen medieposter tilgængelige til visning af afspilningsliste.",
+  "fetchFailed": "Hentning mislykkedes ({status})",
+  "unableToLoadViewData": "Kan ikke indlæse visningsdata.",
+  "noResultsFound": "Ingen resultater fundet.",
+  "refreshView": "Opdater visning",
+  "breakIntoStaticContent": "Omdan til statisk indhold",
+  "viewsOpenRecord": "Åbn post"
+}

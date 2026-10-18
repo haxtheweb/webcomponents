@@ -1,0 +1,18 @@
+{
+  "copy": "ສຳເນົາ",
+  "download": "ດາວໂຫຼດ",
+  "archive": "ເກັບເຂົ້າຄັງ",
+  "copyOperation": "ສຳເນົາ",
+  "downloadOperation": "ດາວໂຫຼດ",
+  "archiveOperation": "ເກັບເຂົ້າຄັງ",
+  "created": "ສ້າງເມື່ອ",
+  "updated": "ອັບເດດເມື່ອ",
+  "pages": "ໜ້າ",
+  "url": "URL",
+  "confirm": "ຢືນຢັນ",
+  "cancel": "ຍົກເລີກ",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການ{operation} {siteName}?",
+  "siteOperationSuccessful": "{operation} {siteName} ສຳເລັດ!",
+  "siteOperationFailed": "{operation} {siteName} ບໍ່ສຳເລັດ"
+}

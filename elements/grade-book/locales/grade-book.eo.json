@@ -43,5 +43,22 @@
   "emailAddress": "Retpoŝti al ĉi tiu lernanto",
   "notes": "Notoj",
   "interests": "Interesoj",
-  "profileImageFor": "Profila bildo de"
+  "profileImageFor": "Profila bildo de",
+  "fileSystem": "Dosiersistemo",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL-finpunkto (JSON)",
+  "jsonDataBlob": "JSON-datumblobo",
+  "additionalCriteriaFeedback": "Plia reago pri {criteria}",
+  "outOfPoints": "/ {points} poentoj",
+  "feedbackReport": "Reaga raporto",
+  "criteriaDetails": "Detaloj de kriterioj",
+  "yourFeedback": "Via reago",
+  "additionalCriteriaFeedbackHeading": "Plia reago pri kriterioj",
+  "yourTotalScore": "Via totala poentaro",
+  "scoreOutOfPoints": "{score} / {points} poentoj",
+  "studentAssignment": "Tasko {assignment} de {student}",
+  "downloadPDF": "Elŝuti PDF",
+  "displayMode1": "Reĝimo 1",
+  "displayMode2": "Reĝimo 2",
+  "twoWindows": "Du fenestroj"
 }

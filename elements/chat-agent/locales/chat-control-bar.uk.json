@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Завантажити журнал як txt",
+  "downloadChatLog": "Завантажити журнал чату",
+  "resetChat": "Скинути чат",
+  "toggleDataCollection": "Перемкнути збирання даних",
+  "dataCollection": "Збирання даних",
+  "toggleDeveloperMode": "Перемкнути режим розробника",
+  "exitFullView": "Вийти з повного подання",
+  "enterFullView": "Увійти в повне подання",
+  "hideInterface": "Приховати інтерфейс",
+  "resetChatConfirm": "Скинути чат?",
+  "downloadBeforeResetConfirm": "Завантажити журнал чату перед скиданням?",
+  "dataCollectionOn": "Ваші розмови використовуватимуться для навчання наших AI-моделей",
+  "dataCollectionOff": "Ваші розмови не використовуватимуться для навчання наших AI-моделей"
+}

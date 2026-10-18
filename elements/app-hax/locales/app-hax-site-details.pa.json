@@ -1,0 +1,18 @@
+{
+  "copy": "ਕਾਪੀ ਕਰੋ",
+  "download": "ਡਾਊਨਲੋਡ ਕਰੋ",
+  "archive": "ਆਰਕਾਈਵ ਕਰੋ",
+  "copyOperation": "ਕਾਪੀ ਕਰੋ",
+  "downloadOperation": "ਡਾਊਨਲੋਡ ਕਰੋ",
+  "archiveOperation": "ਆਰਕਾਈਵ ਕਰੋ",
+  "created": "ਬਣਾਈ ਗਈ",
+  "updated": "ਅੱਪਡੇਟ ਕੀਤੀ",
+  "pages": "ਪੰਨੇ",
+  "url": "URL",
+  "confirm": "ਪੁਸ਼ਟੀ ਕਰੋ",
+  "cancel": "ਰੱਦ ਕਰੋ",
+  "siteOperationConfirmTitle": "{siteName} {operationName}?",
+  "siteOperationConfirmMessage": "ਕੀ ਤੁਸੀਂ ਯਕੀਨਨ {siteName} ਨੂੰ {operation} ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?",
+  "siteOperationSuccessful": "{siteName} {operation} ਸਫਲ!",
+  "siteOperationFailed": "{siteName} {operation} ਅਸਫਲ"
+}

@@ -22,6 +22,13 @@
   "unpublish": "Бекор кардани нашр",
   "savePage": "Нигоҳ доштани саҳифа",
   "cancel": "Бекор кардан",
+  "delete": "Нест кардан",
+  "editTitle": "Таҳрири сарлавҳа",
+  "editIcon": "Таҳрири нишона",
+  "agent": "Агент",
+  "pageLockedUnlockToEdit": "Ин саҳифа қулф аст. Барои таҳрир аввал онро кушоед.",
+  "pageLockedUnlockToChangePublishStatus": "Ин саҳифа қулф аст. Барои тағйир додани ҳолати нашр аввал онро кушоед.",
+  "pageLockedUnlockToDelete": "Ин саҳифа қулф аст. Барои нест кардан аввал онро кушоед.",
   "pageDetails": "Тафсилоти саҳифа",
   "clickToUnlock": "Барои кушодан клик кунед"
 }

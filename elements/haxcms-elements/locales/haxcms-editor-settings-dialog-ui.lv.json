@@ -5,5 +5,9 @@
   "buttons": "Pogas",
   "futureButtonConfiguration": "Pielāgota redaktora pogu konfigurācija drīzumā būs pieejama.",
   "save": "Saglabāt",
-  "saving": "Saglabā…"
+  "saving": "Saglabā…",
+  "novice": "Iesācējs",
+  "expert": "Eksperts",
+  "toolbarPreviewAlt": "{audience} rediģēšanas rīkjoslas priekšskatījums",
+  "savingEditorSettingsFailed": "Redaktora iestatījumu saglabāšana neizdevās: {error}"
 }

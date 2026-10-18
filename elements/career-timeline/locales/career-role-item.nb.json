@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Rolletittel",
+  "describeYourRole": "Beskriv rollen din her ...",
+  "present": "Presenter",
+  "skills": "Ferdigheter:",
+  "skillsAndMore": "{skills} og +{count} til",
+  "yearShort": "{count} år",
+  "yearsShort": "{count} år",
+  "monthShort": "{count} md.",
+  "monthsShort": "{count} md."
+}

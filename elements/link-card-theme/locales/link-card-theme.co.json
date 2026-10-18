@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ligame d'ancura cupiatu!",
+  "skipToContent": "Andà à u cuntenutu",
+  "changePalette": "Cambià a tavuletta",
+  "primaryLinks": "Ligami principali",
+  "socialLinks": "Ligami suciali",
+  "myProfile": "U mo prufilu",
+  "profileImageOf": "Imagine di prufilu di {name}",
+  "profileImage": "Imagine di prufilu",
+  "linkCardProfile": "Prufilu di carta di ligami",
+  "emptyStateLinks": "Aghjunghjite elementi di menu di primu livellu in site.json per affissà i buttoni di ligame.",
+  "titleOnPlatform": "{title} nant'à {platform}",
+  "openPlatform": "Apre {platform}",
+  "paletteUpdated": "Tavuletta di culori aghjurnata à l'opzione {number}."
+}

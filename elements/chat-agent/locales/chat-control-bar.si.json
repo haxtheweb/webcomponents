@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "ලොගය txt ලෙස බාගන්න",
+  "downloadChatLog": "කතාබස් ලොගය බාගන්න",
+  "resetChat": "කතාබස යළි සකසන්න",
+  "toggleDataCollection": "දත්ත එකතු කිරීම මාරු කරන්න",
+  "dataCollection": "දත්ත එකතු කිරීම",
+  "toggleDeveloperMode": "සංවර්ධක ප්‍රකාරය මාරු කරන්න",
+  "exitFullView": "සම්පූර්ණ දසුනෙන් ඉවත් වන්න",
+  "enterFullView": "සම්පූර්ණ දසුනට ඇතුළු වන්න",
+  "hideInterface": "අතුරුමුහුණත සඟවන්න",
+  "resetChatConfirm": "කතාබස යළි සකසන්නද?",
+  "downloadBeforeResetConfirm": "යළි සැකසීමට පෙර කතාබස් ලොගය බාගන්නද?",
+  "dataCollectionOn": "ඔබේ සංවාද අපගේ AI ආකෘති පුහුණු කිරීමට භාවිත කෙරේ",
+  "dataCollectionOff": "ඔබේ සංවාද අපගේ AI ආකෘති පුහුණු කිරීමට භාවිත නොකෙරේ"
+}

@@ -1,0 +1,11 @@
+{
+  "playlist": "Erreprodukzio-zerrenda",
+  "carousel": "karrusela",
+  "slide": "diapositiba",
+  "slideNumber": "{number}. diapositiba",
+  "slideOfTotal": "{number}. diapositiba, guztira {total}",
+  "previousSlide": "Aurreko diapositiba",
+  "nextSlide": "Hurrengo diapositiba",
+  "slidePages": "Diapositiba-orriak",
+  "goToSlide": "Joan {number}. diapositibara"
+}

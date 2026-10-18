@@ -1,3 +1,8 @@
 {
-  "title": "Atsauces"
+  "title": "Atsauces",
+  "export": "Eksportēt",
+  "exportCitations": "Eksportēt citātus",
+  "copy": "Kopēt",
+  "exportCitationFormat": "Citēšanas formāta eksportēšana",
+  "selectCitationFormatBelow": "Zemāk izvēlieties citēšanas formātu"
 }

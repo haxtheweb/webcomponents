@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "קישור העוגן הועתק!",
+  "skipToContent": "דילוג לתוכן",
+  "changePalette": "שינוי פלטה",
+  "primaryLinks": "קישורים ראשיים",
+  "socialLinks": "קישורים חברתיים",
+  "myProfile": "הפרופיל שלי",
+  "profileImageOf": "תמונת הפרופיל של {name}",
+  "profileImage": "תמונת פרופיל",
+  "linkCardProfile": "פרופיל כרטיס קישורים",
+  "emptyStateLinks": "הוסיפו פריטי תפריט ברמה העליונה ב-site.json כדי להציג כפתורי קישור.",
+  "titleOnPlatform": "{title} ב-{platform}",
+  "openPlatform": "פתיחת {platform}",
+  "paletteUpdated": "פלטת הצבעים עודכנה לאפשרות {number}."
+}

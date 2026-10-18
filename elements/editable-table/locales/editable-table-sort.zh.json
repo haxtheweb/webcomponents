@@ -1,0 +1,6 @@
+{
+  "ascending": "（升序）",
+  "descending": "（降序）",
+  "toggleSortMode": "切换排序模式。",
+  "togglesSortingByColumn": "切换按此列排序。"
+}

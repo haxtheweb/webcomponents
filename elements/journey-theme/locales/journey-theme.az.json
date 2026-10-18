@@ -1,4 +1,11 @@
 {
   "readMore": "Ətraflı oxu",
-  "home": "Ana səhifə"
+  "home": "Ana səhifə",
+  "anchorLinkCopied": "Lövbər keçidi kopyalandı!",
+  "skipToContent": "Məzmuna keç",
+  "changeTheme": "Mövzunu dəyiş",
+  "siteSections": "Sayt bölmələri",
+  "pageOfTotal": "Səhifə {current} / {total}",
+  "siteGenerated": "Saytın yaradılma tarixi: {date}",
+  "licenseGraphic": "{license} qrafikası"
 }

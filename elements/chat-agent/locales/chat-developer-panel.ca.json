@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Taula de consola del registre de xat de l'usuari",
+  "consoleTableUserText": "console.table() registre de xat de l'usuari",
+  "consoleTableUserTooltip": "Imprimeix el registre de xat de l'usuari com a taula a la consola",
+  "consoleTableMerlinLabel": "Taula de consola del registre de xat de Merlin",
+  "consoleTableMerlinText": "console.table() registre de xat de Merlin",
+  "consoleTableMerlinTooltip": "Imprimeix el registre de xat de Merlin com a taula a la consola",
+  "consoleTableAllLabel": "Taula de consola de tot el registre de xat",
+  "consoleTableAllText": "console.table() tot el registre de xat",
+  "consoleTableAllTooltip": "Imprimeix tot el registre de xat com a taula a la consola",
+  "downloadChatLogJson": "Baixa el registre del xat com a .json",
+  "downloadChatLogJsonTooltip": "Baixa el registre del xat com a .json"
+}

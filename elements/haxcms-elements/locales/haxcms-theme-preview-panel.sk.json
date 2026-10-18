@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Zobraziť náhľad témy",
+  "hideThemePreview": "Skryť náhľad témy",
+  "themePreviewPanel": "Panel náhľadu témy",
+  "themePreview": "Náhľad témy",
+  "themePreviewDescription": "Počas prehliadania dočasne vyskúšajte tému a paletu. Tlačidlom Zrušiť obnovíte pôvodný vzhľad.",
+  "loadingThemes": "Načítavajú sa témy...",
+  "theme": "Téma",
+  "palette": "Paleta",
+  "cancel": "Zrušiť",
+  "openAppearanceSettings": "Otvoriť nastavenia vzhľadu"
+}

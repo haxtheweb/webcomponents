@@ -22,6 +22,13 @@
   "unpublish": "אָפּפֿאַרעפֿנטלעכן",
   "savePage": "אױפֿהיטן בלאַט",
   "cancel": "אָפּזאָגן",
+  "delete": "אויסמעקן",
+  "editTitle": "רעדאַקטירן טיטל",
+  "editIcon": "רעדאַגיר איקאָן",
+  "agent": "אַגענט",
+  "pageLockedUnlockToEdit": "די זײַט איז פֿאַרשלאָסן. עפֿן זי קודם צו רעדאַגירן.",
+  "pageLockedUnlockToChangePublishStatus": "די זײַט איז פֿאַרשלאָסן. עפֿן זי קודם צו בײַטן דעם פֿאַרעפֿנטלעכונג־סטאַטוס.",
+  "pageLockedUnlockToDelete": "די זײַט איז פֿאַרשלאָסן. עפֿן זי קודם צו אויסמעקן.",
   "pageDetails": "בלאַט פּרטים",
   "clickToUnlock": "קליק צו אַנלאַק"
 }

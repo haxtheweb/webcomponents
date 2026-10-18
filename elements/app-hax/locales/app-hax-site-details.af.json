@@ -1,0 +1,18 @@
+{
+  "copy": "Kopieer",
+  "download": "Laai af",
+  "archive": "Argiveer",
+  "copyOperation": "kopieer",
+  "downloadOperation": "aflaai",
+  "archiveOperation": "argiveer",
+  "created": "geskep",
+  "updated": "bygewerk",
+  "pages": "bladsye",
+  "url": "URL",
+  "confirm": "Bevestig",
+  "cancel": "Kanselleer",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Is jy seker jy wil {siteName} {operation}?",
+  "siteOperationSuccessful": "{siteName}: {operation} suksesvol!",
+  "siteOperationFailed": "{siteName}: {operation} het misluk"
+}

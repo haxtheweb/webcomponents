@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Fiascu di u caricamentu di i temi: {error}",
+  "noThemesForView": "Nisunu tema dispunibule per sta vista.",
+  "active": "Attiva",
+  "themeIsActive": "U tema {name} hè attivu",
+  "applyTheme": "Appiecà u tema {name}",
+  "apply": "Appiecà",
+  "preview": "Anteprima",
+  "name": "Nome",
+  "element": "Elementu",
+  "description": "Discrizzione",
+  "action": "Azzione",
+  "loadingThemes": "Caricamentu di i temi...",
+  "themesShown": "{count} temi mustrati",
+  "themesShownDefaults": "{count} temi mustrati (predefiniti app-hax)",
+  "availableHaxcmsThemes": "Temi HAXcms dispunibuli",
+  "gallery": "Galleria",
+  "table": "Tavula"
+}

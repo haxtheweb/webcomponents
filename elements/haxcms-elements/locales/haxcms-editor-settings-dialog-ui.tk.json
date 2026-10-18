@@ -5,5 +5,9 @@
   "buttons": "Düwmeler",
   "futureButtonConfiguration": "Redaktor düwmelerini aýratyn sazlamak ýakyn wagtda elýeterli bolar.",
   "save": "Ýatda saklamak",
-  "saving": "Ýatda saklanýar…"
+  "saving": "Ýatda saklanýar…",
+  "novice": "Täze başlaýan",
+  "expert": "Hünärmen",
+  "toolbarPreviewAlt": "{audience} redaktirleme gural paneliniň deslapky görnüşi",
+  "savingEditorSettingsFailed": "Redaktor sazlamalaryny ýatda saklamak şowsuz boldy: {error}"
 }

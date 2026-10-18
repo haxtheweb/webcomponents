@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "නැංගුරම් සබැඳිය පිටපත් කරන ලදී!",
+  "skipToContent": "අන්තර්ගතයට මඟහරින්න",
+  "siteHome": "අඩවි මුල් පිටුව",
+  "mainNavigation": "ප්‍රධාන සංචාලනය",
+  "toggleMenu": "මෙනුව මාරු කරන්න",
+  "changeTheme": "තේමාව වෙනස් කරන්න",
+  "breadcrumb": "බ්‍රෙඩ්ක්‍රම්බ්",
+  "tagFilter": "ටැග් පෙරහන:",
+  "all": "සියල්ල",
+  "pageNumberOfTotal": "පිටු අංකය: {total} න් {current}",
+  "siteGenerated": "අඩවිය උත්පාදනය කළේ: {date}",
+  "copyright": "ප්‍රකාශන හිමිකම: {year} {author}",
+  "viewContentByTag": "ටැගය අනුව අන්තර්ගතය බලන්න",
+  "licenseGraphic": "{license} ග්‍රැෆිකය"
+}

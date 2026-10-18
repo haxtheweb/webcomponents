@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Digite o nome de usuário",
+  "invalidUsernameOrPassword": "Nome de usuário ou senha inválidos",
+  "welcomeLetsGo": "Bem-vindo, {username}! Vamos lá!",
+  "enterYourUsername": "Digite seu nome de usuário",
+  "username": "Nome de usuário",
+  "next": "Próximo",
+  "welcomeBack": "Bem-vindo de volta, {username}!",
+  "notYou": "Não é você?",
+  "enterYourPassword": "Digite sua senha",
+  "password": "Senha",
+  "togglePasswordDisplay": "Alternar exibição da senha",
+  "login": "Entrar"
+}

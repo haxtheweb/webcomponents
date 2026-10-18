@@ -1,0 +1,9 @@
+{
+  "palette": "Палета",
+  "paletteSelection": "Избор палете",
+  "active": "Активна",
+  "selected": "Изабрана",
+  "currentlyActiveAndSelectedPalette": "Тренутно активна и изабрана палета",
+  "currentlyActivePalette": "Тренутно активна палета",
+  "selectedPaletteToApply": "Изабрана палета за примену"
+}

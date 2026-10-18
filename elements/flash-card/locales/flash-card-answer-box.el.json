@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Η απάντησή σας",
   "checkAnswer": "Έλεγχος απάντησης",
-  "retry": "Επανάληψη"
+  "retry": "Επανάληψη",
+  "correct": "Σωστό!",
+  "incorrect": "Λάθος!",
+  "correctAnswer": "Σωστή απάντηση: {answer}"
 }

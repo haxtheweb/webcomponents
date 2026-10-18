@@ -9,5 +9,7 @@
   "record": "녹화",
   "pause": "녹화 일시 정지",
   "stopSave": "중지 및 저장",
-  "clickToTakePhoto": "클릭하여 사진 찍기"
+  "clickToTakePhoto": "클릭하여 사진 찍기",
+  "url": "URL",
+  "open": "열기"
 }

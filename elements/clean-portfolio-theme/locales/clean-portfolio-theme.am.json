@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "የመልህቅ አገናኝ ተቀድቷል!",
+  "skipToContent": "ወደ ይዘቱ ዝለል",
+  "siteHome": "የድረ-ገጽ መነሻ",
+  "mainNavigation": "ዋና ዳሰሳ",
+  "toggleMenu": "ምናሌን ቀያይር",
+  "changeTheme": "ገጽታ ቀይር",
+  "breadcrumb": "የዳቦ ፍርፋሪ",
+  "tagFilter": "የመለያ ማጣሪያ:",
+  "all": "ሁሉም",
+  "pageNumberOfTotal": "የገጽ ቁጥር: {current} ከ{total}",
+  "siteGenerated": "ድረ-ገጹ የመነጨው: {date}",
+  "copyright": "የቅጂ መብት: {year} {author}",
+  "viewContentByTag": "ይዘትን በመለያ ተመልከት",
+  "licenseGraphic": "የ{license} ምስል"
+}

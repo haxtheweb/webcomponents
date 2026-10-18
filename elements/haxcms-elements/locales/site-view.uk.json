@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Немає результатів",
+  "viewsRecordHeading": "Записати",
+  "viewsTitleImage": "Зображення {title}",
+  "viewsTitlePreview": "Попередній перегляд {title}",
+  "viewsNoTimelineRecords": "Немає записів із датами для побудови хронології.",
+  "viewsTimelineTitle": "Хронологія {title}",
+  "viewsNoChartField": "Не виявлено числового поля для побудови діаграми.",
+  "viewsChartingValue": "Діаграма {value}",
+  "viewsChartingValueByLabel": "Діаграма {value} за {label}",
+  "viewsChartTitle": "Діаграма {title}",
+  "viewsNoTreeRecords": "Немає ієрархічних записів для побудови дерева.",
+  "viewsNoGalleryRecords": "Немає записів зображень для побудови галереї.",
+  "viewsNoPlaylistRecords": "Немає медіазаписів для побудови списку відтворення.",
+  "fetchFailed": "Помилка отримання ({status})",
+  "unableToLoadViewData": "Не вдалося завантажити дані подання.",
+  "noResultsFound": "Результатів не знайдено.",
+  "refreshView": "Оновити подання",
+  "breakIntoStaticContent": "Перетворити на статичний вміст",
+  "viewsOpenRecord": "Відкрити запис"
+}

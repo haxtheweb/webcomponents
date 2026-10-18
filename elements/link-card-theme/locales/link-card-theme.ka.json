@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "ღუზის ბმული დაკოპირდა!",
+  "skipToContent": "შიგთავსზე გადასვლა",
+  "changePalette": "პალიტრის შეცვლა",
+  "primaryLinks": "ძირითადი ბმულები",
+  "socialLinks": "სოციალური ბმულები",
+  "myProfile": "ჩემი პროფილი",
+  "profileImageOf": "{name}-ის პროფილის სურათი",
+  "profileImage": "პროფილის სურათი",
+  "linkCardProfile": "ბმულების ბარათის პროფილი",
+  "emptyStateLinks": "ბმულის ღილაკების საჩვენებლად დაამატეთ ზედა დონის მენიუს ელემენტები site.json-ში.",
+  "titleOnPlatform": "{title} — {platform}",
+  "openPlatform": "{platform}-ის გახსნა",
+  "paletteUpdated": "ფერთა პალიტრა შეიცვალა ვარიანტით {number}."
+}

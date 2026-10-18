@@ -1,0 +1,14 @@
+{
+  "licenseBy": "እውቅና",
+  "licenseBySa": "እውቅና በተመሳሳይ አጋራ",
+  "licenseByNd": "እውቅና ምንም ተዋጽኦዎች",
+  "licenseByNc": "እውቅና ንግድ ያልሆነ",
+  "licenseByNcSa": "እውቅና ንግድ ያልሆነ በተመሳሳይ አጋራ",
+  "licenseByNcNd": "እውቅና ንግድ ያልሆነ ምንም ተዋጽኦዎች",
+  "licenseGraphic": "የ{license} ምስል",
+  "workByCreator": "{title} በ{creator}",
+  "workByCreatorLicensed": "{title} በ{creator} በ{license} ፈቃድ ተሰጥቶታል።",
+  "permissionsBeyondScope": "ከዚህ ፈቃድ ወሰን በላይ የሆኑ ፈቃዶች {link} ይገኛሉ።",
+  "author": "(ደራሲ)",
+  "onTheLicensingDetailsPage": "በፈቃድ ዝርዝሮች ገጽ ላይ"
+}

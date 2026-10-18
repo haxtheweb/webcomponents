@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Нема резултати",
+  "viewsRecordHeading": "Снимај",
+  "viewsTitleImage": "Слика за {title}",
+  "viewsTitlePreview": "Преглед на {title}",
+  "viewsNoTimelineRecords": "Нема записи со датуми за прикажување на временската линија.",
+  "viewsTimelineTitle": "Временска линија за {title}",
+  "viewsNoChartField": "Не е откриено нумеричко поле за прикажување на графиконот.",
+  "viewsChartingValue": "Графикон за {value}",
+  "viewsChartingValueByLabel": "Графикон за {value} по {label}",
+  "viewsChartTitle": "Графикон за {title}",
+  "viewsNoTreeRecords": "Нема хиерархиски записи за прикажување на дрвото.",
+  "viewsNoGalleryRecords": "Нема записи со слики за прикажување на галеријата.",
+  "viewsNoPlaylistRecords": "Нема медиумски записи за прикажување на листата за репродукција.",
+  "fetchFailed": "Преземањето не успеа ({status})",
+  "unableToLoadViewData": "Не може да се вчитаат податоците за приказот.",
+  "noResultsFound": "Не се пронајдени резултати.",
+  "refreshView": "Освежи го приказот",
+  "breakIntoStaticContent": "Раздели во статична содржина",
+  "viewsOpenRecord": "Отвори запис"
+}

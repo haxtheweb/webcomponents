@@ -1,0 +1,14 @@
+{
+  "licenseBy": "श्रेयनिर्देश",
+  "licenseBySa": "श्रेयनिर्देश-समान वितरण",
+  "licenseByNd": "श्रेयनिर्देश-व्युत्पन्न नाही",
+  "licenseByNc": "श्रेयनिर्देश-अव्यावसायिक",
+  "licenseByNcSa": "श्रेयनिर्देश-अव्यावसायिक-समान वितरण",
+  "licenseByNcNd": "श्रेयनिर्देश-अव्यावसायिक-व्युत्पन्न नाही",
+  "licenseGraphic": "{license} चिन्ह",
+  "workByCreator": "{creator} यांचे {title}",
+  "workByCreatorLicensed": "{creator} यांचे {title} {license} अंतर्गत परवानाकृत आहे.",
+  "permissionsBeyondScope": "या परवान्याच्या कक्षेबाहेरील परवानग्या {link} उपलब्ध आहेत.",
+  "author": "(लेखक)",
+  "onTheLicensingDetailsPage": "परवाना तपशील पानावर"
+}

@@ -43,5 +43,22 @@
   "emailAddress": "Īmēra atu ki tēnei ākonga",
   "notes": "Ngā Tuhipoka",
   "interests": "Ngā Aronga",
-  "profileImageFor": "Atahanga kōtaha mō"
+  "profileImageFor": "Atahanga kōtaha mō",
+  "fileSystem": "Pūnaha kōnae",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Pito URL (JSON)",
+  "jsonDataBlob": "Pūranga raraunga JSON",
+  "additionalCriteriaFeedback": "Urupare {criteria} atu",
+  "outOfPoints": "/ {points} piro",
+  "feedbackReport": "Pūrongo urupare",
+  "criteriaDetails": "Taipitopito paearu",
+  "yourFeedback": "Tō urupare",
+  "additionalCriteriaFeedbackHeading": "Urupare Paearu atu",
+  "yourTotalScore": "Tō Kaute katoa",
+  "scoreOutOfPoints": "{score} / {points} piro",
+  "studentAssignment": "Te taumahi {assignment} a {student}",
+  "downloadPDF": "Tikiake PDF",
+  "displayMode1": "Aratau 1",
+  "displayMode2": "Aratau 2",
+  "twoWindows": "E rua ngā matapihi"
 }

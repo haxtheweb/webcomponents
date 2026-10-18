@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Aktibo",
+  "selected": "Napili",
+  "noPreview": "Walang preview",
+  "currentlyActiveAndSelected": "Kasalukuyang aktibo at napiling tema",
+  "currentlyActive": "Kasalukuyang aktibong tema",
+  "selectedToApplyOnSave": "Napiling temang ilalapat sa pag-save",
+  "themeSelection": "Pagpili ng tema",
+  "noThemesAvailable": "Walang available na tema."
+}

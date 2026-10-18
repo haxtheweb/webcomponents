@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Tải nhật ký dạng txt",
+  "downloadChatLog": "Tải nhật ký trò chuyện",
+  "resetChat": "Đặt lại cuộc trò chuyện",
+  "toggleDataCollection": "Bật/tắt thu thập dữ liệu",
+  "dataCollection": "Thu thập dữ liệu",
+  "toggleDeveloperMode": "Bật/tắt chế độ nhà phát triển",
+  "exitFullView": "Thoát chế độ xem toàn bộ",
+  "enterFullView": "Vào chế độ xem toàn bộ",
+  "hideInterface": "Ẩn giao diện",
+  "resetChatConfirm": "Đặt lại cuộc trò chuyện?",
+  "downloadBeforeResetConfirm": "Tải nhật ký trò chuyện xuống trước khi đặt lại?",
+  "dataCollectionOn": "Các cuộc trò chuyện của bạn sẽ được dùng để huấn luyện mô hình AI của chúng tôi",
+  "dataCollectionOff": "Các cuộc trò chuyện của bạn sẽ không được dùng để huấn luyện mô hình AI của chúng tôi"
+}

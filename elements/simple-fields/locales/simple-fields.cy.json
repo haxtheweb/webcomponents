@@ -9,5 +9,7 @@
   "record": "Recordio",
   "pause": "Oedi'r recordio",
   "stopSave": "Stopio a chadw",
-  "clickToTakePhoto": "Cliciwch i dynnu llun"
+  "clickToTakePhoto": "Cliciwch i dynnu llun",
+  "url": "URL",
+  "open": "agor"
 }

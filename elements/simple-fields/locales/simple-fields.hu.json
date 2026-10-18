@@ -9,5 +9,7 @@
   "record": "Felvétel",
   "pause": "Felvétel szüneteltetése",
   "stopSave": "Leállítás és mentés",
-  "clickToTakePhoto": "Kattintson fénykép készítéséhez"
+  "clickToTakePhoto": "Kattintson fénykép készítéséhez",
+  "url": "URL",
+  "open": "megnyitás"
 }

@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "加载中...",
   "youTubeStartLoading": "请按播放。",
   "youTubeTranscriptLabel": "媒体开始播放后将加载文稿。",
-  "audioDescriptionLabel": "音频描述"
+  "audioDescriptionLabel": "音频描述",
+  "openOnYouTube": "在 YouTube 上打开"
 }

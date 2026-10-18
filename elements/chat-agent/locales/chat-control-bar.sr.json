@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Преузми дневник као txt",
+  "downloadChatLog": "Преузми дневник ћаскања",
+  "resetChat": "Поништи ћаскање",
+  "toggleDataCollection": "Укључи/искључи прикупљање података",
+  "dataCollection": "Прикупљање података",
+  "toggleDeveloperMode": "Укључи/искључи режим за програмере",
+  "exitFullView": "Изађи из пуног приказа",
+  "enterFullView": "Уђи у пуни приказ",
+  "hideInterface": "Сакриј интерфејс",
+  "resetChatConfirm": "Поништити ћаскање?",
+  "downloadBeforeResetConfirm": "Преузети дневник ћаскања пре поништавања?",
+  "dataCollectionOn": "Ваши разговори ће се користити за обуку наших AI модела",
+  "dataCollectionOff": "Ваши разговори се неће користити за обуку наших AI модела"
+}

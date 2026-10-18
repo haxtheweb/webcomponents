@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Teitl y Rôl",
+  "describeYourRole": "Disgrifiwch eich rôl yma...",
+  "present": "Cyflwyno",
+  "skills": "Sgiliau:",
+  "skillsAndMore": "{skills} a +{count} arall",
+  "yearShort": "{count} bl",
+  "yearsShort": "{count} bl",
+  "monthShort": "{count} mis",
+  "monthsShort": "{count} mis"
+}

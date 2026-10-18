@@ -1,0 +1,14 @@
+{
+  "enterUserName": "صارف نالو داخل ڪريو",
+  "invalidUsernameOrPassword": "غلط صارف نالو يا پاسورڊ",
+  "welcomeLetsGo": "ڀليڪار {username}! اچو ته هلون!",
+  "enterYourUsername": "پنهنجو صارف نالو داخل ڪريو",
+  "username": "يوزرنيم",
+  "next": "اڳيون",
+  "welcomeBack": "ڀلي ڪري واپس آيا، {username}!",
+  "notYou": "توهان ناهيو؟",
+  "enterYourPassword": "پنهنجو پاسورڊ داخل ڪريو",
+  "password": "پاسورڊ",
+  "togglePasswordDisplay": "پاسورڊ ڏيکاريو/لڪايو",
+  "login": "لاگ ان"
+}

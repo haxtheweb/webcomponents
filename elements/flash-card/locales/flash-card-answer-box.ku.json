@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Bersiva te",
   "checkAnswer": "Bersivê kontrol bike",
-  "retry": "Dîsa biceribîne"
+  "retry": "Dîsa biceribîne",
+  "correct": "Rast e!",
+  "incorrect": "Şaş e!",
+  "correctAnswer": "Bersiva Rast: {answer}"
 }

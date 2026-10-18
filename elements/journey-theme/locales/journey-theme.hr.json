@@ -1,4 +1,11 @@
 {
   "readMore": "Pročitaj više",
-  "home": "Početna"
+  "home": "Početna",
+  "anchorLinkCopied": "Poveznica sidra kopirana!",
+  "skipToContent": "Preskoči na sadržaj",
+  "changeTheme": "Promijeni temu",
+  "siteSections": "Odjeljci mjesta",
+  "pageOfTotal": "Stranica {current} od {total}",
+  "siteGenerated": "Mjesto generirano: {date}",
+  "licenseGraphic": "Grafika licencije {license}"
 }

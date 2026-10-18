@@ -1,0 +1,18 @@
+{
+  "copy": "ቅዳ",
+  "download": "አውርድ",
+  "archive": "ማኅደር",
+  "copyOperation": "መቅዳት",
+  "downloadOperation": "ማውረድ",
+  "archiveOperation": "ማኅደር ማስቀመጥ",
+  "created": "የተፈጠረ",
+  "updated": "የዘመነ",
+  "pages": "ገጾች",
+  "url": "URL",
+  "confirm": "አረጋግጥ",
+  "cancel": "ሰርዝ",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "{siteName}ን {operation} እንደሚፈልጉ እርግጠኛ ነዎት?",
+  "siteOperationSuccessful": "የ{siteName} {operation} ተሳክቷል!",
+  "siteOperationFailed": "የ{siteName} {operation} አልተሳካም"
+}

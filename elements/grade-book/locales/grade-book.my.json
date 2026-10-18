@@ -43,5 +43,22 @@
   "emailAddress": "ဤကျောင်းသားထံ အီးမေးလ် ပို့ရန်",
   "notes": "မှတ်စုများ",
   "interests": "စိတ်ဝင်စားမှုများ",
-  "profileImageFor": "ပရိုဖိုင်ပုံ -"
+  "profileImageFor": "ပရိုဖိုင်ပုံ -",
+  "fileSystem": "ဖိုင်စနစ်",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL endpoint (JSON)",
+  "jsonDataBlob": "JSON ဒေတာ blob",
+  "additionalCriteriaFeedback": "နောက်ထပ် {criteria} တုံ့ပြန်ချက်",
+  "outOfPoints": "/ {points} မှတ်",
+  "feedbackReport": "တုံ့ပြန်ချက် အစီရင်ခံစာ",
+  "criteriaDetails": "စံနှုန်း အသေးစိတ်",
+  "yourFeedback": "သင့်တုံ့ပြန်ချက်",
+  "additionalCriteriaFeedbackHeading": "နောက်ထပ် စံနှုန်း တုံ့ပြန်ချက်",
+  "yourTotalScore": "သင့်စုစုပေါင်း ရမှတ်",
+  "scoreOutOfPoints": "{score} / {points} မှတ်",
+  "studentAssignment": "{student} ၏ အလုပ်အပ် {assignment}",
+  "downloadPDF": "PDF ဒေါင်းလုဒ်လုပ်ရန်",
+  "displayMode1": "မုဒ် ၁",
+  "displayMode2": "မုဒ် ၂",
+  "twoWindows": "ဝင်းဒိုး နှစ်ခု"
 }

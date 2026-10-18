@@ -1,3 +1,8 @@
 {
-  "title": "Tài liệu tham khảo"
+  "title": "Tài liệu tham khảo",
+  "export": "Xuất",
+  "exportCitations": "Xuất trích dẫn",
+  "copy": "Sao chép",
+  "exportCitationFormat": "Định dạng xuất trích dẫn",
+  "selectCitationFormatBelow": "Chọn một định dạng trích dẫn bên dưới"
 }

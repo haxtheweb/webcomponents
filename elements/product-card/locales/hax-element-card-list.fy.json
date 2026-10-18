@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Webkomponintregister trochsykje foar mear HAX-eleminten..",
+  "enabled": "Ynskeakele",
+  "disabled": "Utskeakele",
+  "details": "Details",
+  "tags": "Tags:",
+  "tagName": "Tagnamme:",
+  "developerUsage": "Gebrûk foar ûntwikkelers:",
+  "demo": "Demo",
+  "popUpDemo": "Pop-updemo",
+  "demoOf": "Demo fan {tag}"
+}

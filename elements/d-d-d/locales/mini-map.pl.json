@@ -1,0 +1,17 @@
+{
+  "editNodes": "Edytuj węzły",
+  "editLines": "Edytuj linie",
+  "reset": "Resetuj",
+  "save": "Zapisz",
+  "cancel": "Anuluj",
+  "delete": "Usuń",
+  "type": "Typ:",
+  "topic": "Temat",
+  "subsection": "Podsekcja",
+  "name": "Nazwa:",
+  "enterName": "Wpisz nazwę",
+  "url": "URL:",
+  "enterUrl": "Wpisz URL",
+  "activeNode": "Aktywny węzeł?",
+  "nodeId": "Węzeł {id}"
+}

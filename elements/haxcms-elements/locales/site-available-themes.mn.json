@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Загваруудыг ачаалж чадсангүй: {error}",
+  "noThemesForView": "Энэ харагдацад загвар байхгүй.",
+  "active": "Идэвхтэй",
+  "themeIsActive": "{name} загвар идэвхтэй байна",
+  "applyTheme": "{name} загварыг хэрэглэх",
+  "apply": "Хэрэглэх",
+  "preview": "Урьдчилан харах",
+  "name": "Нэр",
+  "element": "Элемент",
+  "description": "Тайлбар",
+  "action": "Үйлдэл",
+  "loadingThemes": "Загваруудыг ачаалж байна...",
+  "themesShown": "{count} загвар харуулж байна",
+  "themesShownDefaults": "{count} загвар харуулж байна (app-hax-ийн үндсэн)",
+  "availableHaxcmsThemes": "Боломжтой HAXcms загварууд",
+  "gallery": "Цомог",
+  "table": "Хүснэгт"
+}

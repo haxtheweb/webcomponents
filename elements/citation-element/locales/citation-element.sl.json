@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Priznanje avtorstva",
+  "licenseBySa": "Priznanje avtorstva-Deljenje pod enakimi pogoji",
+  "licenseByNd": "Priznanje avtorstva-Brez predelav",
+  "licenseByNc": "Priznanje avtorstva-Nekomercialno",
+  "licenseByNcSa": "Priznanje avtorstva-Nekomercialno-Deljenje pod enakimi pogoji",
+  "licenseByNcNd": "Priznanje avtorstva-Nekomercialno-Brez predelav",
+  "citationWithLicense": "{title}, avtor {creator}, licenca {license}. Dostopano {date}.",
+  "citationWithoutLicense": "{title}, avtor {creator}. Dostopano {date}.",
+  "licenseGraphic": "Grafika {license}"
+}

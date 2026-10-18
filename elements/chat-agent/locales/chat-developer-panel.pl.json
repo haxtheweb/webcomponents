@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tabela konsoli z dziennikiem czatu użytkownika",
+  "consoleTableUserText": "console.table() dziennik czatu użytkownika",
+  "consoleTableUserTooltip": "Wypisz dziennik czatu użytkownika jako tabelę w konsoli",
+  "consoleTableMerlinLabel": "Tabela konsoli z dziennikiem czatu Merlina",
+  "consoleTableMerlinText": "console.table() dziennik czatu Merlina",
+  "consoleTableMerlinTooltip": "Wypisz dziennik czatu Merlina jako tabelę w konsoli",
+  "consoleTableAllLabel": "Tabela konsoli z całym dziennikiem czatu",
+  "consoleTableAllText": "console.table() cały dziennik czatu",
+  "consoleTableAllTooltip": "Wypisz cały dziennik czatu jako tabelę w konsoli",
+  "downloadChatLogJson": "Pobierz dziennik czatu jako .json",
+  "downloadChatLogJsonTooltip": "Pobierz dziennik czatu jako .json"
+}

@@ -1,0 +1,18 @@
+{
+  "copy": "Kopiatu",
+  "download": "Deskargatu",
+  "archive": "Artxibatu",
+  "copyOperation": "kopiatu",
+  "downloadOperation": "deskargatu",
+  "archiveOperation": "artxibatu",
+  "created": "sortua",
+  "updated": "eguneratua",
+  "pages": "orri",
+  "url": "URL",
+  "confirm": "Berretsi",
+  "cancel": "Utzi",
+  "siteOperationConfirmTitle": "{operationName}: {siteName}?",
+  "siteOperationConfirmMessage": "Ziur {siteName} {operation} nahi duzula?",
+  "siteOperationSuccessful": "{siteName}: {operation} eragiketa ondo egin da!",
+  "siteOperationFailed": "{siteName}: {operation} eragiketak huts egin du"
+}

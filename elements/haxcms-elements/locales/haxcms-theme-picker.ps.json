@@ -1,0 +1,11 @@
+{
+  "theme": "تیم",
+  "active": "فعال",
+  "selected": "ټاکل شوی",
+  "noPreview": "مخکتنه نشته",
+  "currentlyActiveAndSelected": "اوسمهال فعاله او ټاکل شوې بڼه",
+  "currentlyActive": "اوسمهال فعاله بڼه",
+  "selectedToApplyOnSave": "په خوندي کولو د پلي کولو لپاره ټاکل شوې بڼه",
+  "themeSelection": "د بڼې ټاکنه",
+  "noThemesAvailable": "هېڅ بڼه شتون نه لري."
+}

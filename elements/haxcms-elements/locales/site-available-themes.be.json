@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Не ўдалося загрузіць тэмы: {error}",
+  "noThemesForView": "Для гэтага прагляду няма даступных тэм.",
+  "active": "Актыўная",
+  "themeIsActive": "Тэма {name} актыўная",
+  "applyTheme": "Ужыць тэму {name}",
+  "apply": "Ужыць",
+  "preview": "Папярэдні прагляд",
+  "name": "Імя",
+  "element": "Элемент",
+  "description": "Апісанне",
+  "action": "Дзеянне",
+  "loadingThemes": "Загрузка тэм...",
+  "themesShown": "Паказана тэм: {count}",
+  "themesShownDefaults": "Паказана тэм: {count} (па змаўчанні app-hax)",
+  "availableHaxcmsThemes": "Даступныя тэмы HAXcms",
+  "gallery": "Галерэя",
+  "table": "Табліца"
+}

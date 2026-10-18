@@ -22,6 +22,13 @@
   "unpublish": "ਪ੍ਰਕਾਸ਼ਨ ਹਟਾਓ",
   "savePage": "ਪੰਨਾ ਸੰਭਾਲੋ",
   "cancel": "ਰੱਦ ਕਰੋ",
+  "delete": "ਮਿਟਾਓ",
+  "editTitle": "ਸਿਰਲੇਖ ਸੋਧੋ",
+  "editIcon": "ਆਈਕਨ ਸੰਪਾਦਿਤ ਕਰੋ",
+  "agent": "ਏਜੰਟ",
+  "pageLockedUnlockToEdit": "ਇਹ ਪੰਨਾ ਲੌਕ ਹੈ। ਸੰਪਾਦਨ ਲਈ ਪਹਿਲਾਂ ਇਸਨੂੰ ਅਨਲੌਕ ਕਰੋ।",
+  "pageLockedUnlockToChangePublishStatus": "ਇਹ ਪੰਨਾ ਲੌਕ ਹੈ। ਪ੍ਰਕਾਸ਼ਨ ਸਥਿਤੀ ਬਦਲਣ ਲਈ ਪਹਿਲਾਂ ਇਸਨੂੰ ਅਨਲੌਕ ਕਰੋ।",
+  "pageLockedUnlockToDelete": "ਇਹ ਪੰਨਾ ਲੌਕ ਹੈ। ਮਿਟਾਉਣ ਲਈ ਪਹਿਲਾਂ ਇਸਨੂੰ ਅਨਲੌਕ ਕਰੋ।",
   "pageDetails": "ਪੰਨੇ ਦੇ ਵੇਰਵੇ",
   "clickToUnlock": "ਅਨਲਾਕ ਕਰਨ ਲਈ ਕਲਿੱਕ ਕਰੋ"
 }

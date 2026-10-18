@@ -1,3 +1,8 @@
 {
-  "title": "Reference"
+  "title": "Reference",
+  "export": "Exportovat",
+  "exportCitations": "Exportovat citace",
+  "copy": "Kopírovat",
+  "exportCitationFormat": "Formát exportu citací",
+  "selectCitationFormatBelow": "Níže vyberte formát citací"
 }

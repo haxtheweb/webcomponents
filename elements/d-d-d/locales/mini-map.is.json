@@ -1,0 +1,17 @@
+{
+  "editNodes": "Breyta hnútum",
+  "editLines": "Breyta línum",
+  "reset": "Endurstilla",
+  "save": "Vista",
+  "cancel": "Hætta við",
+  "delete": "Eyða",
+  "type": "Tegund:",
+  "topic": "Efni",
+  "subsection": "Undirkafli",
+  "name": "Nafn:",
+  "enterName": "Sláðu inn nafn",
+  "url": "URL:",
+  "enterUrl": "Sláðu inn URL",
+  "activeNode": "Virkur hnútur?",
+  "nodeId": "Hnútur {id}"
+}

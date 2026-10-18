@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "ټب {xOfY}",
+  "xOfY": "{order} له {total} څخه",
+  "endOfTab": "د {xOfY} ټب پای. بېرته {tabs} ته.",
+  "tabs": "ټبونو"
+}

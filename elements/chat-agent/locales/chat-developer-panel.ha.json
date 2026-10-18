@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Teburin console na tarihin taɗin mai amfani",
+  "consoleTableUserText": "console.table() tarihin taɗin mai amfani",
+  "consoleTableUserTooltip": "Buga Tarihin Taɗin Mai Amfani a matsayin Tebur zuwa Console",
+  "consoleTableMerlinLabel": "Teburin console na tarihin taɗin merlin",
+  "consoleTableMerlinText": "console.table() tarihin taɗin merlin",
+  "consoleTableMerlinTooltip": "Buga Tarihin Taɗin Merlin a matsayin Tebur zuwa Console",
+  "consoleTableAllLabel": "Teburin console na dukkan tarihin taɗi",
+  "consoleTableAllText": "console.table() dukkan tarihin taɗi",
+  "consoleTableAllTooltip": "Buga Dukkan Tarihin Taɗi a matsayin Tebur zuwa Console",
+  "downloadChatLogJson": "Sauke tarihin taɗi a matsayin .json",
+  "downloadChatLogJsonTooltip": "Sauke Tarihin Taɗi a matsayin .json"
+}

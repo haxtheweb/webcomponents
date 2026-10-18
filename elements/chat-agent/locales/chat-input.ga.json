@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Taispeáin teachtaireacht a seoladh roimhe seo (suas)",
+  "displayPreviousMessageDown": "Taispeáin teachtaireacht a seoladh roimhe seo (síos)",
+  "sendPrompt": "Seol an Leid",
+  "sendPromptToMerlin": "Seol an Leid chuig Merlin",
+  "shortenPrompt": "Giorraigh do leid go {limit} carachtar ar a mhéad."
+}

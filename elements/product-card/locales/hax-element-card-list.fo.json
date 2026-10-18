@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Leiti í skránni yvir vevkomponentar eftir fleiri HAX-elementum..",
+  "enabled": "Virkið",
+  "disabled": "Óvirkið",
+  "details": "Smálutir",
+  "tags": "Frámerki:",
+  "tagName": "Frámerkisnavn:",
+  "developerUsage": "Nýtsla fyri menningarfólk:",
+  "demo": "Demo",
+  "popUpDemo": "Sprettidemo",
+  "demoOf": "Demo av {tag}"
+}

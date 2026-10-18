@@ -9,5 +9,7 @@
   "record": "Opnemen",
   "pause": "Opname pauzeren",
   "stopSave": "Stoppen en opslaan",
-  "clickToTakePhoto": "Klik om een foto te maken"
+  "clickToTakePhoto": "Klik om een foto te maken",
+  "url": "URL",
+  "open": "openen"
 }

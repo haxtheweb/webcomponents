@@ -10,5 +10,9 @@
   "save": "Hifadhi",
   "noDescription": "Hakuna maelezo yanayopatikana.",
   "details": "Maelezo zaidi",
-  "loadingInventory": "Inapakia orodha kamili ya vizuizi…"
+  "loadingInventory": "Inapakia orodha kamili ya vizuizi…",
+  "selectAllButton": "Chagua Zote",
+  "deselectAllButton": "Ondoa Uteuzi Wote",
+  "selectedOfAvailable": "{selected} zimechaguliwa / {total} zinapatikana",
+  "savingBlocksFailed": "Kuhifadhi vizuizi kumeshindwa: {error}"
 }

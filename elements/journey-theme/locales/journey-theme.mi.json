@@ -1,4 +1,11 @@
 {
   "readMore": "Pānui atu",
-  "home": "Kāinga"
+  "home": "Kāinga",
+  "anchorLinkCopied": "Kua tāruatia te hono punga!",
+  "skipToContent": "Peke ki te ihirangi",
+  "changeTheme": "Huri kaupapa āhua",
+  "siteSections": "Ngā wāhanga pae",
+  "pageOfTotal": "Whārangi {current} o te {total}",
+  "siteGenerated": "I hangaia te pae: {date}",
+  "licenseGraphic": "Whakairoiro {license}"
 }

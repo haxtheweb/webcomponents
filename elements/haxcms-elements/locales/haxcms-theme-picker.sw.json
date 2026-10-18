@@ -1,0 +1,11 @@
+{
+  "theme": "Mandhari",
+  "active": "Amilifu",
+  "selected": "Imechaguliwa",
+  "noPreview": "Hakuna onyesho la kukagua",
+  "currentlyActiveAndSelected": "Mandhari amilifu na yaliyochaguliwa kwa sasa",
+  "currentlyActive": "Mandhari amilifu kwa sasa",
+  "selectedToApplyOnSave": "Mandhari yaliyochaguliwa kutumika wakati wa kuhifadhi",
+  "themeSelection": "Uteuzi wa mandhari",
+  "noThemesAvailable": "Hakuna mandhari yanayopatikana."
+}

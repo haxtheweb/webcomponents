@@ -54,5 +54,6 @@
   "requirementUppercase": "አንድ ትልቅ ፊደል",
   "requirementLowercase": "አንድ ትንሽ ፊደል",
   "requirementNumber": "አንድ ቁጥር",
-  "requirementSymbol": "አንድ ምልክት"
+  "requirementSymbol": "አንድ ምልክት",
+  "haxcmsMascotAlt": "የHAXcms ዓለም ተጓዥ ማስኮት"
 }

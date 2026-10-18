@@ -10,5 +10,9 @@
   "save": "Goym",
   "noDescription": "Eingin lýsing tøk.",
   "details": "Smálutir",
-  "loadingInventory": "Innlesur fulla blokkayvirlitið…"
+  "loadingInventory": "Innlesur fulla blokkayvirlitið…",
+  "selectAllButton": "Vel øll",
+  "deselectAllButton": "Fráveld øll",
+  "selectedOfAvailable": "{selected} vald / {total} tøk",
+  "savingBlocksFailed": "Goyming av blokkum miseydnaðist: {error}"
 }

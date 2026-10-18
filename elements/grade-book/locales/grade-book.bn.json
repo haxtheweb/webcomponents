@@ -43,5 +43,22 @@
   "emailAddress": "এই শিক্ষার্থীকে ইমেইল করুন",
   "notes": "নোট",
   "interests": "আগ্রহ",
-  "profileImageFor": "প্রোফাইল ছবি:"
+  "profileImageFor": "প্রোফাইল ছবি:",
+  "fileSystem": "ফাইল সিস্টেম",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL এন্ডপয়েন্ট (JSON)",
+  "jsonDataBlob": "JSON ডেটা ব্লব",
+  "additionalCriteriaFeedback": "অতিরিক্ত {criteria} ফিডব্যাক",
+  "outOfPoints": "/ {points} পয়েন্ট",
+  "feedbackReport": "ফিডব্যাক রিপোর্ট",
+  "criteriaDetails": "মানদণ্ডের বিবরণ",
+  "yourFeedback": "আপনার ফিডব্যাক",
+  "additionalCriteriaFeedbackHeading": "অতিরিক্ত মানদণ্ডের ফিডব্যাক",
+  "yourTotalScore": "আপনার মোট স্কোর",
+  "scoreOutOfPoints": "{score} / {points} পয়েন্ট",
+  "studentAssignment": "{student}-এর অ্যাসাইনমেন্ট {assignment}",
+  "downloadPDF": "PDF ডাউনলোড করুন",
+  "displayMode1": "মোড ১",
+  "displayMode2": "মোড ২",
+  "twoWindows": "দুটি উইন্ডো"
 }

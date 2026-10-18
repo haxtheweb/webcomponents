@@ -9,5 +9,7 @@
   "record": "Yazmaq",
   "pause": "Yazını dayandır",
   "stopSave": "Dayandır və saxla",
-  "clickToTakePhoto": "Foto çəkmək üçün klikləyin"
+  "clickToTakePhoto": "Foto çəkmək üçün klikləyin",
+  "url": "URL",
+  "open": "aç"
 }

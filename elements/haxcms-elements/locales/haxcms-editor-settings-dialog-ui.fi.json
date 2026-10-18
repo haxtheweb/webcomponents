@@ -5,5 +5,9 @@
   "buttons": "Painikkeet",
   "futureButtonConfiguration": "Editorin painikkeiden mukautus on tulossa pian.",
   "save": "Tallenna",
-  "saving": "Tallennetaan…"
+  "saving": "Tallennetaan…",
+  "novice": "Aloittelija",
+  "expert": "Asiantuntija",
+  "toolbarPreviewAlt": "{audience}: muokkaustyökalupalkin esikatselu",
+  "savingEditorSettingsFailed": "Editorin asetusten tallennus epäonnistui: {error}"
 }

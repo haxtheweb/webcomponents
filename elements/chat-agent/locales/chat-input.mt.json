@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Uri messaġġ mibgħut qabel ('il fuq)",
+  "displayPreviousMessageDown": "Uri messaġġ mibgħut qabel ('l isfel)",
+  "sendPrompt": "Ibgħat il-Prompt",
+  "sendPromptToMerlin": "Ibgħat il-Prompt lil Merlin",
+  "shortenPrompt": "Jekk jogħġbok qassar il-prompt tiegħek għal mhux aktar minn {limit} karattru."
+}

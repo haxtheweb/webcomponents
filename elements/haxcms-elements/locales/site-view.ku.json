@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Encam tune",
+  "viewsRecordHeading": "Tomar bike",
+  "viewsTitleImage": "Wêneyê {title}",
+  "viewsTitlePreview": "Pêşdîtina {title}",
+  "viewsNoTimelineRecords": "Ji bo nîşandana demjimêrê tomarên bi dîrok tune ne.",
+  "viewsTimelineTitle": "Demnameya {title}",
+  "viewsNoChartField": "Ji bo nîşandana grafîkê qadeke hejmarî nehat dîtin.",
+  "viewsChartingValue": "Grafîka {value}",
+  "viewsChartingValueByLabel": "Grafîka {value} li gorî {label}",
+  "viewsChartTitle": "Grafîka {title}",
+  "viewsNoTreeRecords": "Ji bo nîşandana darê tomarên hiyerarşîk tune ne.",
+  "viewsNoGalleryRecords": "Ji bo nîşandana galeriyê tomarên wêneyan tune ne.",
+  "viewsNoPlaylistRecords": "Ji bo nîşandana lîsteya lêdanê tomarên medyayê tune ne.",
+  "fetchFailed": "Anîn bi ser neket ({status})",
+  "unableToLoadViewData": "Daneyên dîtinê nehatin barkirin.",
+  "noResultsFound": "Tu encam nehat dîtin.",
+  "refreshView": "Dîtinê nû bike",
+  "breakIntoStaticContent": "Bike naveroka statîk",
+  "viewsOpenRecord": "Tomarê veke"
+}

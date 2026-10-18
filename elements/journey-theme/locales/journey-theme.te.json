@@ -1,4 +1,11 @@
 {
   "readMore": "మరింత చదవండి",
-  "home": "హోమ్"
+  "home": "హోమ్",
+  "anchorLinkCopied": "యాంకర్ లింక్ కాపీ చేయబడింది!",
+  "skipToContent": "కంటెంట్‌కు వెళ్లు",
+  "changeTheme": "థీమ్ మార్చండి",
+  "siteSections": "సైట్ విభాగాలు",
+  "pageOfTotal": "పేజీ {total}లో {current}",
+  "siteGenerated": "సైట్ రూపొందించబడింది: {date}",
+  "licenseGraphic": "{license} గ్రాఫిక్"
 }

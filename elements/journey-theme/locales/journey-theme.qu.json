@@ -1,4 +1,11 @@
 {
   "readMore": "Astawan ñawiriy",
-  "home": "Qallariy"
+  "home": "Qallariy",
+  "anchorLinkCopied": "Anchor t'inki kikinchasqa!",
+  "skipToContent": "Ukhunman phinkiy",
+  "changeTheme": "Rikch'ayta tikray",
+  "siteSections": "Tiyanap t'aqankuna",
+  "pageOfTotal": "{total}manta {current} p'anqa",
+  "siteGenerated": "Tiyana rurasqa: {date}",
+  "licenseGraphic": "{license} siq'i"
 }

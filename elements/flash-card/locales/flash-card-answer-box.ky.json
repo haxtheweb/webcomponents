@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Сиздин жообуңуз",
   "checkAnswer": "Жоопту текшерүү",
-  "retry": "Кайра аракет кылуу"
+  "retry": "Кайра аракет кылуу",
+  "correct": "Туура!",
+  "incorrect": "Туура эмес!",
+  "correctAnswer": "Туура жооп: {answer}"
 }

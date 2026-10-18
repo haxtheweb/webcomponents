@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Selehake berkas ing kene",
+  "uploadQueue": "Antrean unggahan",
+  "pending": "Nunggu",
+  "preparing": "Nyiapake",
+  "uploading": "Ngunggah",
+  "complete": "Rampung",
+  "aborted": "Diwurungake",
+  "cancelled": "Dibatalake",
+  "error": "Kasalahan",
+  "errorWithStatus": "Kesalahan: {status}",
+  "cancel": "Batal",
+  "cancelUploadOf": "Batalake unggahan {name}",
+  "retry": "Jajal maneh",
+  "retryUploadOf": "Coba maneh unggahan {name}",
+  "remove": "Busak",
+  "removeFromQueue": "Busak {name} saka antrean",
+  "fileTypeNotAccepted": "Jinis berkas ora ditampa: {name}",
+  "uploadFailed": "Unggahan gagal: {status}",
+  "networkError": "Kesalahan jaringan"
+}

@@ -5,5 +5,9 @@
   "buttons": "Cnaipí",
   "futureButtonConfiguration": "Beidh cumraíocht shaincheaptha do chnaipí an eagarthóra ar fáil go luath.",
   "save": "Sábháil",
-  "saving": "Á shábháil…"
+  "saving": "Á shábháil…",
+  "novice": "Nóibhíseach",
+  "expert": "Saineolaí",
+  "toolbarPreviewAlt": "Réamhamharc ar bharra uirlisí eagarthóireachta {audience}",
+  "savingEditorSettingsFailed": "Theip ar shábháil socruithe an eagarthóra: {error}"
 }

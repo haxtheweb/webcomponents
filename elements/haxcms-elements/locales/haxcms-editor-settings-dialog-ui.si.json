@@ -5,5 +5,9 @@
   "buttons": "බොත්තම්",
   "futureButtonConfiguration": "අභිරුචි සංස්කාරක බොත්තම් වින්‍යාසය ළඟදීම පැමිණේ.",
   "save": "සුරකින්න",
-  "saving": "සුරකිමින්…"
+  "saving": "සුරකිමින්…",
+  "novice": "ආධුනික",
+  "expert": "විශේෂඥ",
+  "toolbarPreviewAlt": "{audience} සංස්කරණ මෙවලම් තීරු පෙරදසුන",
+  "savingEditorSettingsFailed": "සංස්කාරක සැකසුම් සුරැකීම අසාර්ථක විය: {error}"
 }

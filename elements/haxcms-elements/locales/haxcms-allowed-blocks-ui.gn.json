@@ -10,5 +10,9 @@
   "save": "Ñongatu",
   "noDescription": "Ndaipóri myesakã.",
   "details": "Mba'emimi",
-  "loadingInventory": "Henyhẽhína pehẽ rysýi opaite…"
+  "loadingInventory": "Henyhẽhína pehẽ rysýi opaite…",
+  "selectAllButton": "Eiporavopa",
+  "deselectAllButton": "Ani eiporavo mba'eve",
+  "selectedOfAvailable": "{selected} poravopyre / {total} oĩva",
+  "savingBlocksFailed": "Pehẽ ñongatu ndoikói: {error}"
 }

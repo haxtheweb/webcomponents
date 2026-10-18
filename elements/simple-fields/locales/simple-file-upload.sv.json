@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Släpp filer här",
+  "uploadQueue": "Uppladdningskö",
+  "pending": "Väntar",
+  "preparing": "Förbereder",
+  "uploading": "Laddar upp",
+  "complete": "Klar",
+  "aborted": "Avbruten",
+  "cancelled": "Avbruten",
+  "error": "Fel",
+  "errorWithStatus": "Fel: {status}",
+  "cancel": "Avbryt",
+  "cancelUploadOf": "Avbryt uppladdning av {name}",
+  "retry": "Försök igen",
+  "retryUploadOf": "Försök ladda upp {name} igen",
+  "remove": "Ta bort",
+  "removeFromQueue": "Ta bort {name} från kön",
+  "fileTypeNotAccepted": "Filtypen accepteras inte: {name}",
+  "uploadFailed": "Uppladdningen misslyckades: {status}",
+  "networkError": "Nätverksfel"
+}

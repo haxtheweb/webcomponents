@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "اینکر لنک کاپی ہو گیا!",
+  "skipToContent": "مواد پر جائیں",
+  "changePalette": "پیلیٹ بدلیں",
+  "primaryLinks": "بنیادی لنکس",
+  "socialLinks": "سوشل لنکس",
+  "myProfile": "میری پروفائل",
+  "profileImageOf": "{name} کی پروفائل تصویر",
+  "profileImage": "پروفائل تصویر",
+  "linkCardProfile": "لنک کارڈ پروفائل",
+  "emptyStateLinks": "لنک بٹن دکھانے کے لیے site.json میں اعلیٰ سطح کے مینو آئٹمز شامل کریں۔",
+  "titleOnPlatform": "{platform} پر {title}",
+  "openPlatform": "{platform} کھولیں",
+  "paletteUpdated": "رنگ پیلیٹ اختیار {number} پر اپ ڈیٹ ہو گیا۔"
+}

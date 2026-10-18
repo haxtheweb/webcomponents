@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "ট্যাব {xOfY}",
+  "xOfY": "{total}-এর মধ্যে {order}",
+  "endOfTab": "ট্যাব {xOfY}-এর শেষ। {tabs}-এ ফিরে যান।",
+  "tabs": "ট্যাবসমূহ"
+}

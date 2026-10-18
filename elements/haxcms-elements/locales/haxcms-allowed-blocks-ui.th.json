@@ -10,5 +10,9 @@
   "save": "บันทึก",
   "noDescription": "ไม่มีคำอธิบาย",
   "details": "รายละเอียด",
-  "loadingInventory": "กำลังโหลดรายการบล็อกทั้งหมด…"
+  "loadingInventory": "กำลังโหลดรายการบล็อกทั้งหมด…",
+  "selectAllButton": "เลือกทั้งหมด",
+  "deselectAllButton": "ยกเลิกการเลือกทั้งหมด",
+  "selectedOfAvailable": "เลือก {selected} / มีทั้งหมด {total}",
+  "savingBlocksFailed": "บันทึกบล็อกไม่สำเร็จ: {error}"
 }

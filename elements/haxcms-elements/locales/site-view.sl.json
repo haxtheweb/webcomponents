@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Ni rezultatov",
+  "viewsRecordHeading": "Snemaj",
+  "viewsTitleImage": "Slika {title}",
+  "viewsTitlePreview": "Predogled {title}",
+  "viewsNoTimelineRecords": "Za prikaz časovnice ni na voljo zapisov z datumi.",
+  "viewsTimelineTitle": "Časovnica {title}",
+  "viewsNoChartField": "Za prikaz grafikona ni zaznano nobeno številsko polje.",
+  "viewsChartingValue": "Grafikon za {value}",
+  "viewsChartingValueByLabel": "Grafikon za {value} po {label}",
+  "viewsChartTitle": "Grafikon {title}",
+  "viewsNoTreeRecords": "Za prikaz drevesa ni na voljo hierarhičnih zapisov.",
+  "viewsNoGalleryRecords": "Za prikaz galerije ni na voljo zapisov slik.",
+  "viewsNoPlaylistRecords": "Za prikaz seznama predvajanja ni na voljo zapisov medijev.",
+  "fetchFailed": "Pridobivanje ni uspelo ({status})",
+  "unableToLoadViewData": "Podatkov pogleda ni mogoče naložiti.",
+  "noResultsFound": "Ni najdenih rezultatov.",
+  "refreshView": "Osveži pogled",
+  "breakIntoStaticContent": "Razbij v statično vsebino",
+  "viewsOpenRecord": "Odpri zapis"
+}

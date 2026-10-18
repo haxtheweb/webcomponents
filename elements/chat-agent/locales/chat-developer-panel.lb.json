@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Konsoltabell Benotzer-Chat-Log",
+  "consoleTableUserText": "console.table() Benotzer-Chat-Log",
+  "consoleTableUserTooltip": "Benotzer-Chat-Log als Tabell an der Konsol ausginn",
+  "consoleTableMerlinLabel": "Konsoltabell Merlin-Chat-Log",
+  "consoleTableMerlinText": "console.table() Merlin-Chat-Log",
+  "consoleTableMerlinTooltip": "Merlin-Chat-Log als Tabell an der Konsol ausginn",
+  "consoleTableAllLabel": "Konsoltabell ganze Chat-Log",
+  "consoleTableAllText": "console.table() ganze Chat-Log",
+  "consoleTableAllTooltip": "Ganze Chat-Log als Tabell an der Konsol ausginn",
+  "downloadChatLogJson": "Chat-Log als .json eroflueden",
+  "downloadChatLogJsonTooltip": "Chat-Log als .json eroflueden"
+}

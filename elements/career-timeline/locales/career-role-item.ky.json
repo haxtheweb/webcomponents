@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Ролдун аталышы",
+  "describeYourRole": "Ролуңузду бул жерде сүрөттөңүз...",
+  "present": "Сунуштоо",
+  "skills": "Көндүмдөр:",
+  "skillsAndMore": "{skills} жана дагы +{count}",
+  "yearShort": "{count} жыл",
+  "yearsShort": "{count} жыл",
+  "monthShort": "{count} ай",
+  "monthsShort": "{count} ай"
+}

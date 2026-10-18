@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "কনসোল টেবিলে ব্যবহারকারীর চ্যাট লগ",
+  "consoleTableUserText": "console.table() ব্যবহারকারীর চ্যাট লগ",
+  "consoleTableUserTooltip": "ব্যবহারকারীর চ্যাট লগ কনসোলে টেবিল আকারে প্রিন্ট করুন",
+  "consoleTableMerlinLabel": "কনসোল টেবিলে Merlin-এর চ্যাট লগ",
+  "consoleTableMerlinText": "console.table() Merlin-এর চ্যাট লগ",
+  "consoleTableMerlinTooltip": "Merlin-এর চ্যাট লগ কনসোলে টেবিল আকারে প্রিন্ট করুন",
+  "consoleTableAllLabel": "কনসোল টেবিলে সম্পূর্ণ চ্যাট লগ",
+  "consoleTableAllText": "console.table() সম্পূর্ণ চ্যাট লগ",
+  "consoleTableAllTooltip": "সম্পূর্ণ চ্যাট লগ কনসোলে টেবিল আকারে প্রিন্ট করুন",
+  "downloadChatLogJson": "চ্যাট লগ .json হিসেবে ডাউনলোড করুন",
+  "downloadChatLogJsonTooltip": "চ্যাট লগ .json হিসেবে ডাউনলোড করুন"
+}

@@ -1,5 +1,12 @@
 {
   "readMore": "Leer más",
   "home": "Inicio",
+  "anchorLinkCopied": "¡Enlace de anclaje copiado!",
+  "skipToContent": "Saltar al contenido",
+  "changeTheme": "Cambiar tema",
+  "siteSections": "Secciones del sitio",
+  "pageOfTotal": "Página {current} de {total}",
+  "siteGenerated": "Sitio generado: {date}",
+  "licenseGraphic": "Gráfico de {license}",
   "title": "título"
 }

@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "جدول وحدة التحكم لسجل محادثة المستخدم",
+  "consoleTableUserText": "console.table() لسجل محادثة المستخدم",
+  "consoleTableUserTooltip": "طباعة سجل محادثة المستخدم كجدول في وحدة التحكم",
+  "consoleTableMerlinLabel": "جدول وحدة التحكم لسجل محادثة Merlin",
+  "consoleTableMerlinText": "console.table() لسجل محادثة Merlin",
+  "consoleTableMerlinTooltip": "طباعة سجل محادثة Merlin كجدول في وحدة التحكم",
+  "consoleTableAllLabel": "جدول وحدة التحكم لسجل المحادثة بالكامل",
+  "consoleTableAllText": "console.table() لسجل المحادثة بالكامل",
+  "consoleTableAllTooltip": "طباعة سجل المحادثة بالكامل كجدول في وحدة التحكم",
+  "downloadChatLogJson": "تنزيل سجل المحادثة بصيغة .json",
+  "downloadChatLogJsonTooltip": "تنزيل سجل المحادثة بصيغة .json"
+}

@@ -10,5 +10,9 @@
   "save": "సేవ్ చేయి",
   "noDescription": "వివరణ అందుబాటులో లేదు.",
   "details": "వివరాలు",
-  "loadingInventory": "పూర్తి బ్లాక్ జాబితా లోడ్ అవుతోంది…"
+  "loadingInventory": "పూర్తి బ్లాక్ జాబితా లోడ్ అవుతోంది…",
+  "selectAllButton": "అన్నీ ఎంచుకోండి",
+  "deselectAllButton": "అన్నింటి ఎంపికను తీసివేయండి",
+  "selectedOfAvailable": "{selected} ఎంచుకోబడ్డాయి / {total} అందుబాటులో ఉన్నాయి",
+  "savingBlocksFailed": "బ్లాక్‌లను సేవ్ చేయడం విఫలమైంది: {error}"
 }

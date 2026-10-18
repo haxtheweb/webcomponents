@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Įveskite naudotojo vardą",
+  "invalidUsernameOrPassword": "Neteisingas naudotojo vardas arba slaptažodis",
+  "welcomeLetsGo": "Sveiki, {username}! Pirmyn!",
+  "enterYourUsername": "Įveskite savo naudotojo vardą",
+  "username": "Naudotojo vardas",
+  "next": "Kitas",
+  "welcomeBack": "Sveiki sugrįžę, {username}!",
+  "notYou": "Ne jūs?",
+  "enterYourPassword": "Įveskite savo slaptažodį",
+  "password": "Slaptažodis",
+  "togglePasswordDisplay": "Perjungti slaptažodžio rodymą",
+  "login": "Prisijungti"
+}

@@ -1,0 +1,11 @@
+{
+  "theme": "Թեմա",
+  "active": "Ակտիվ",
+  "selected": "Ընտրված",
+  "noPreview": "Նախադիտում չկա",
+  "currentlyActiveAndSelected": "Ներկայումս ակտիվ և ընտրված թեմա",
+  "currentlyActive": "Ներկայումս ակտիվ թեմա",
+  "selectedToApplyOnSave": "Պահպանելիս կիրառվելիք ընտրված թեմա",
+  "themeSelection": "Թեմայի ընտրություն",
+  "noThemesAvailable": "Հասանելի թեմաներ չկան։"
+}

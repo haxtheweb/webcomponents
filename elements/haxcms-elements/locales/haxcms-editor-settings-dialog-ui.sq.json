@@ -5,5 +5,9 @@
   "buttons": "Butonat",
   "futureButtonConfiguration": "Konfigurimi i personalizuar i butonave të redaktorit vjen së shpejti.",
   "save": "Ruaj",
-  "saving": "Po ruhet…"
+  "saving": "Po ruhet…",
+  "novice": "Fillestar",
+  "expert": "Ekspert",
+  "toolbarPreviewAlt": "Pamje paraprake e shiritit të redaktimit për {audience}",
+  "savingEditorSettingsFailed": "Ruajtja e cilësimeve të redaktorit dështoi: {error}"
 }

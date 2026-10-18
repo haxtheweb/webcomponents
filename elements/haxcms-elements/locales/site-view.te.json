@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "ఫలితాలు లేవు",
+  "viewsRecordHeading": "రికార్డ్ చేయి",
+  "viewsTitleImage": "{title} చిత్రం",
+  "viewsTitlePreview": "{title} ప్రివ్యూ",
+  "viewsNoTimelineRecords": "టైమ్‌లైన్ రెండరింగ్ కోసం తేదీ ఆధారిత రికార్డులు ఏవీ అందుబాటులో లేవు.",
+  "viewsTimelineTitle": "{title} టైమ్‌లైన్",
+  "viewsNoChartField": "చార్ట్ రెండరింగ్ కోసం సంఖ్యా ఫీల్డ్ ఏదీ గుర్తించబడలేదు.",
+  "viewsChartingValue": "{value} చార్ట్ చేయబడుతోంది",
+  "viewsChartingValueByLabel": "{label} వారీగా {value} చార్ట్ చేయబడుతోంది",
+  "viewsChartTitle": "{title} చార్ట్",
+  "viewsNoTreeRecords": "ట్రీ రెండరింగ్ కోసం క్రమానుగత రికార్డులు ఏవీ అందుబాటులో లేవు.",
+  "viewsNoGalleryRecords": "గ్యాలరీ రెండరింగ్ కోసం చిత్ర రికార్డులు ఏవీ అందుబాటులో లేవు.",
+  "viewsNoPlaylistRecords": "ప్లేలిస్ట్ రెండరింగ్ కోసం మీడియా రికార్డులు ఏవీ అందుబాటులో లేవు.",
+  "fetchFailed": "పొందడం విఫలమైంది ({status})",
+  "unableToLoadViewData": "వీక్షణ డేటాను లోడ్ చేయలేకపోయాము.",
+  "noResultsFound": "ఫలితాలు ఏవీ కనుగొనబడలేదు.",
+  "refreshView": "వీక్షణను రిఫ్రెష్ చేయండి",
+  "breakIntoStaticContent": "స్టాటిక్ కంటెంట్‌గా విభజించండి",
+  "viewsOpenRecord": "రికార్డ్‌ను తెరవండి"
+}

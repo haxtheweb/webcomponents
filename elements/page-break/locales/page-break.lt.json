@@ -22,6 +22,13 @@
   "unpublish": "Atšaukti paskelbimą",
   "savePage": "Išsaugoti puslapį",
   "cancel": "Atšaukti",
+  "delete": "Ištrinti",
+  "editTitle": "Redaguoti pavadinimą",
+  "editIcon": "Redaguoti piktogramą",
+  "agent": "Agentas",
+  "pageLockedUnlockToEdit": "Šis puslapis užrakintas. Kad galėtumėte redaguoti, pirmiausia jį atrakinkite.",
+  "pageLockedUnlockToChangePublishStatus": "Šis puslapis užrakintas. Kad galėtumėte keisti publikavimo būseną, pirmiausia jį atrakinkite.",
+  "pageLockedUnlockToDelete": "Šis puslapis užrakintas. Kad galėtumėte ištrinti, pirmiausia jį atrakinkite.",
   "pageDetails": "Puslapio informacija",
   "clickToUnlock": "Spustelėkite atrakinti"
 }

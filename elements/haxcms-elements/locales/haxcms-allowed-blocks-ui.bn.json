@@ -10,5 +10,9 @@
   "save": "সংরক্ষণ করুন",
   "noDescription": "কোনো বিবরণ উপলব্ধ নেই।",
   "details": "বিস্তারিত",
-  "loadingInventory": "সম্পূর্ণ ব্লক তালিকা লোড হচ্ছে…"
+  "loadingInventory": "সম্পূর্ণ ব্লক তালিকা লোড হচ্ছে…",
+  "selectAllButton": "সব নির্বাচন করুন",
+  "deselectAllButton": "সব নির্বাচন বাতিল করুন",
+  "selectedOfAvailable": "{selected}টি নির্বাচিত / {total}টি উপলভ্য",
+  "savingBlocksFailed": "ব্লক সেভ করা যায়নি: {error}"
 }

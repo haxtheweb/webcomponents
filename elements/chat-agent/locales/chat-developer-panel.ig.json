@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tebụl console ndekọ mkparịta ụka onye ọrụ",
+  "consoleTableUserText": "console.table() ndekọ mkparịta ụka onye ọrụ",
+  "consoleTableUserTooltip": "Bipụta ndekọ mkparịta ụka onye ọrụ dị ka tebụl na console",
+  "consoleTableMerlinLabel": "Tebụl console ndekọ mkparịta ụka merlin",
+  "consoleTableMerlinText": "console.table() ndekọ mkparịta ụka merlin",
+  "consoleTableMerlinTooltip": "Bipụta ndekọ mkparịta ụka Merlin dị ka tebụl na console",
+  "consoleTableAllLabel": "Tebụl console ndekọ mkparịta ụka niile",
+  "consoleTableAllText": "console.table() ndekọ mkparịta ụka niile",
+  "consoleTableAllTooltip": "Bipụta ndekọ mkparịta ụka niile dị ka tebụl na console",
+  "downloadChatLogJson": "Budata ndekọ mkparịta ụka dị ka .json",
+  "downloadChatLogJsonTooltip": "Budata ndekọ mkparịta ụka dị ka .json"
+}

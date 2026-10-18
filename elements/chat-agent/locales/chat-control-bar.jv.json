@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Undhuh Log minangka txt",
+  "downloadChatLog": "Undhuh Log Obrolan",
+  "resetChat": "Reset Obrolan",
+  "toggleDataCollection": "Ganti Pangumpulan Data",
+  "dataCollection": "Pangumpulan Data",
+  "toggleDeveloperMode": "Ganti Mode Pangembang",
+  "exitFullView": "Metu saka Tampilan Wutuh",
+  "enterFullView": "Mlebu Tampilan Wutuh",
+  "hideInterface": "Dhelikake Antarmuka",
+  "resetChatConfirm": "Reset obrolan?",
+  "downloadBeforeResetConfirm": "Undhuh log obrolan sadurunge direset?",
+  "dataCollectionOn": "Obrolanmu bakal dienggo nglatih model AI kita",
+  "dataCollectionOff": "Obrolanmu ora bakal dienggo nglatih model AI kita"
+}

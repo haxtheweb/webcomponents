@@ -7,5 +7,7 @@
   "userAccessGranted": "Brugeradgang er givet!",
   "userNotFound": "Brugeren blev ikke fundet eller er ikke autoriseret",
   "loadingAddingUser": "Tilføjer bruger...",
-  "grantAccessTo": "Giv adgang til:"
+  "grantAccessTo": "Giv adgang til:",
+  "networkErrorTryAgain": "Der opstod en netværksfejl. Prøv igen.",
+  "characterWillAppear": "Figuren vises, når du indtaster et brugernavn"
 }

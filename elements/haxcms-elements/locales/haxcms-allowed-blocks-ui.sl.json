@@ -10,5 +10,9 @@
   "save": "Shrani",
   "noDescription": "Opis ni na voljo.",
   "details": "Podrobnosti",
-  "loadingInventory": "Nalaganje celotnega seznama blokov …"
+  "loadingInventory": "Nalaganje celotnega seznama blokov …",
+  "selectAllButton": "Izberi vse",
+  "deselectAllButton": "Prekliči izbor vseh",
+  "selectedOfAvailable": "Izbrano: {selected} / na voljo: {total}",
+  "savingBlocksFailed": "Shranjevanje blokov ni uspelo: {error}"
 }

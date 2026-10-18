@@ -1,0 +1,18 @@
+{
+  "copy": "ចម្លង",
+  "download": "ទាញយក",
+  "archive": "ទុកក្នុងបណ្ណសារ",
+  "copyOperation": "ចម្លង",
+  "downloadOperation": "ទាញយក",
+  "archiveOperation": "ទុកក្នុងបណ្ណសារ",
+  "created": "បានបង្កើត",
+  "updated": "បានធ្វើបច្ចុប្បន្នភាព",
+  "pages": "ទំព័រ",
+  "url": "URL",
+  "confirm": "បញ្ជាក់",
+  "cancel": "បោះបង់",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "តើអ្នកប្រាកដថាចង់ {operation} {siteName} ឬ?",
+  "siteOperationSuccessful": "{operation} {siteName} បានជោគជ័យ!",
+  "siteOperationFailed": "{operation} {siteName} បានបរាជ័យ"
+}

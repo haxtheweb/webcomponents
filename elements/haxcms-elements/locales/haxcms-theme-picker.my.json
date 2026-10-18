@@ -1,0 +1,11 @@
+{
+  "theme": "Theme",
+  "active": "အသက်ဝင်",
+  "selected": "ရွေးထားသည်",
+  "noPreview": "အစမ်းကြည့်ရှုမှု မရှိပါ",
+  "currentlyActiveAndSelected": "လက်ရှိ အသက်ဝင်ပြီး ရွေးထားသော အပြင်အဆင်",
+  "currentlyActive": "လက်ရှိ အသက်ဝင် အပြင်အဆင်",
+  "selectedToApplyOnSave": "သိမ်းသောအခါ အသုံးချမည့် ရွေးထားသော အပြင်အဆင်",
+  "themeSelection": "အပြင်အဆင် ရွေးချယ်မှု",
+  "noThemesAvailable": "အပြင်အဆင် မရှိပါ။"
+}

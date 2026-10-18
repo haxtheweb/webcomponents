@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Inserisci il nome utente",
+  "invalidUsernameOrPassword": "Nome utente o password non validi",
+  "welcomeLetsGo": "Benvenuto {username}! Andiamo!",
+  "enterYourUsername": "Inserisci il tuo nome utente",
+  "username": "Nome utente",
+  "next": "Successivo",
+  "welcomeBack": "Bentornato, {username}!",
+  "notYou": "Non sei tu?",
+  "enterYourPassword": "Inserisci la tua password",
+  "password": "Password",
+  "togglePasswordDisplay": "Mostra/nascondi password",
+  "login": "Accedi"
+}

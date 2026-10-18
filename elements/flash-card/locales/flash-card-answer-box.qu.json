@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Kutichiyniyki",
   "checkAnswer": "Kutichiyta qhaway",
-  "retry": "Hukmanta kallpachakuy"
+  "retry": "Hukmanta kallpachakuy",
+  "correct": "Allin!",
+  "incorrect": "Mana allinchu!",
+  "correctAnswer": "Allin Kutichiy: {answer}"
 }

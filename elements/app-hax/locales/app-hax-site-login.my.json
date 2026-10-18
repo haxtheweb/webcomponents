@@ -1,0 +1,14 @@
+{
+  "enterUserName": "အသုံးပြုသူအမည် ထည့်ပါ",
+  "invalidUsernameOrPassword": "အသုံးပြုသူအမည် သို့မဟုတ် စကားဝှက် မမှန်ကန်ပါ",
+  "welcomeLetsGo": "ကြိုဆိုပါသည် {username}! စကြစို့!",
+  "enterYourUsername": "သင့်အသုံးပြုသူအမည် ထည့်ပါ",
+  "username": "အသုံးပြုသူအမည်",
+  "next": "နောက်တစ်ခု",
+  "welcomeBack": "ပြန်လည် ကြိုဆိုပါသည်၊ {username}!",
+  "notYou": "သင် မဟုတ်ဘူးလား?",
+  "enterYourPassword": "သင့်စကားဝှက် ထည့်ပါ",
+  "password": "စကားဝှက်",
+  "togglePasswordDisplay": "စကားဝှက် ပြသမှု ပြောင်းရန်",
+  "login": "ဝင်ရောက်ရန်"
+}

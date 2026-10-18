@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Idatzi erabiltzaile-izena",
+  "invalidUsernameOrPassword": "Erabiltzaile-izen edo pasahitz baliogabea",
+  "welcomeLetsGo": "Ongi etorri, {username}! Goazen!",
+  "enterYourUsername": "Idatzi zure erabiltzaile-izena",
+  "username": "Erabiltzaile-izena",
+  "next": "Hurrengoa",
+  "welcomeBack": "Ongi etorri berriro, {username}!",
+  "notYou": "Ez zara zu?",
+  "enterYourPassword": "Idatzi zure pasahitza",
+  "password": "Pasahitza",
+  "togglePasswordDisplay": "Erakutsi/ezkutatu pasahitza",
+  "login": "Hasi saioa"
+}

@@ -1,3 +1,8 @@
 {
-  "title": "מקורות"
+  "title": "מקורות",
+  "export": "ייצוא",
+  "exportCitations": "ייצוא מובאות",
+  "copy": "העתקה",
+  "exportCitationFormat": "תבנית ייצוא המובאות",
+  "selectCitationFormatBelow": "בחרו תבנית מובאה למטה"
 }

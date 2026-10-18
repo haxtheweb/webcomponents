@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Teemiiwwan fe'uu hin dandeenye: {error}",
+  "noThemesForView": "Ilaalcha kanaaf teemiin hin jiru.",
+  "active": "Hojii irra",
+  "themeIsActive": "Teemiin {name} hojii irra jira",
+  "applyTheme": "Teemii {name} raawwadhu",
+  "apply": "Raawwadhu",
+  "preview": "Dursa ilaali",
+  "name": "Maqaa",
+  "element": "Elementii",
+  "description": "Ibsa",
+  "action": "Gocha",
+  "loadingThemes": "Teemiiwwan fe'aa jira...",
+  "themesShown": "Teemiiwwan {count} agarsiifamaniiru",
+  "themesShownDefaults": "Teemiiwwan {count} agarsiifamaniiru (durtii app-hax)",
+  "availableHaxcmsThemes": "Teemiiwwan HAXcms Jiran",
+  "gallery": "Galmee suuraa",
+  "table": "Gabatee"
+}

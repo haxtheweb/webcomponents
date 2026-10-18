@@ -1,0 +1,14 @@
+{
+  "licenseBy": "ఆపాదింపు",
+  "licenseBySa": "ఆపాదింపు సమానంగా పంచుకోండి",
+  "licenseByNd": "ఆపాదింపు వ్యుత్పన్నాలు లేవు",
+  "licenseByNc": "ఆపాదింపు వాణిజ్యేతర",
+  "licenseByNcSa": "ఆపాదింపు వాణిజ్యేతర సమానంగా పంచుకోండి",
+  "licenseByNcNd": "ఆపాదింపు వాణిజ్యేతర వ్యుత్పన్నాలు లేవు",
+  "licenseGraphic": "{license} గ్రాఫిక్",
+  "workByCreator": "{creator} రచించిన {title}",
+  "workByCreatorLicensed": "{creator} రచించిన {title} {license} కింద లైసెన్స్ పొందింది.",
+  "permissionsBeyondScope": "ఈ లైసెన్స్ పరిధికి మించిన అనుమతులు {link} అందుబాటులో ఉన్నాయి.",
+  "author": "(రచయిత)",
+  "onTheLicensingDetailsPage": "లైసెన్సింగ్ వివరాల పేజీలో"
+}

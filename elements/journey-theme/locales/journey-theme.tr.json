@@ -1,4 +1,11 @@
 {
   "readMore": "Devamını oku",
-  "home": "Ana sayfa"
+  "home": "Ana sayfa",
+  "anchorLinkCopied": "Bağlantı adresi kopyalandı!",
+  "skipToContent": "İçeriğe geç",
+  "changeTheme": "Temayı değiştir",
+  "siteSections": "Site bölümleri",
+  "pageOfTotal": "Sayfa {current} / {total}",
+  "siteGenerated": "Site oluşturulma tarihi: {date}",
+  "licenseGraphic": "{license} grafiği"
 }

@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Sýna áður send skilaboð (upp)",
+  "displayPreviousMessageDown": "Sýna áður send skilaboð (niður)",
+  "sendPrompt": "Senda fyrirmæli",
+  "sendPromptToMerlin": "Senda fyrirmæli til Merlin",
+  "shortenPrompt": "Vinsamlegast styttu fyrirmælin í mest {limit} stafi."
+}

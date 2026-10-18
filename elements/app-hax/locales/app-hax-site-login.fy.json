@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Fier brûkersnamme yn",
+  "invalidUsernameOrPassword": "Unjildige brûkersnamme of wachtwurd",
+  "welcomeLetsGo": "Wolkom {username}! Lit ús gean!",
+  "enterYourUsername": "Fier jo brûkersnamme yn",
+  "username": "Brûkersnamme",
+  "next": "Folgjende",
+  "welcomeBack": "Wolkom werom, {username}!",
+  "notYou": "Net jo?",
+  "enterYourPassword": "Fier jo wachtwurd yn",
+  "password": "Wachtwurd",
+  "togglePasswordDisplay": "Wachtwurd toane/ferbergje",
+  "login": "Oanmelde"
+}

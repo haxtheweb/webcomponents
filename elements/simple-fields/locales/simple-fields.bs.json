@@ -9,5 +9,7 @@
   "record": "Snimaj",
   "pause": "Pauziraj snimanje",
   "stopSave": "Zaustavi i sačuvaj",
-  "clickToTakePhoto": "Kliknite da napravite fotografiju"
+  "clickToTakePhoto": "Kliknite da napravite fotografiju",
+  "url": "URL",
+  "open": "otvori"
 }

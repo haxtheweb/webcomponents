@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Etkin",
+  "selected": "Seçili",
+  "noPreview": "Önizleme yok",
+  "currentlyActiveAndSelected": "Şu anda etkin ve seçili tema",
+  "currentlyActive": "Şu anda etkin tema",
+  "selectedToApplyOnSave": "Kaydedildiğinde uygulanacak seçili tema",
+  "themeSelection": "Tema seçimi",
+  "noThemesAvailable": "Kullanılabilir tema yok."
+}

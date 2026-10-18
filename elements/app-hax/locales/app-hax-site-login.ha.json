@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Shigar da sunan Mai amfani",
+  "invalidUsernameOrPassword": "Sunan mai amfani ko Kalmar sirri ba daidai ba ce",
+  "welcomeLetsGo": "Barka da zuwa {username}! Mu tafi!",
+  "enterYourUsername": "Shigar da sunan mai amfaninka",
+  "username": "Sunan mai amfani",
+  "next": "Na gaba",
+  "welcomeBack": "Barka da dawowa, {username}!",
+  "notYou": "Ba kai ba ne?",
+  "enterYourPassword": "Shigar da kalmar sirrinka",
+  "password": "Kalmar sirri",
+  "togglePasswordDisplay": "Sauya nunin kalmar sirri",
+  "login": "Shiga"
+}

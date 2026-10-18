@@ -1,0 +1,14 @@
+{
+  "licenseBy": "श्रेय",
+  "licenseBySa": "श्रेय-समान रूपमा साझा",
+  "licenseByNd": "श्रेय-व्युत्पन्न निषेध",
+  "licenseByNc": "श्रेय-गैरव्यावसायिक",
+  "licenseByNcSa": "श्रेय-गैरव्यावसायिक-समान रूपमा साझा",
+  "licenseByNcNd": "श्रेय-गैरव्यावसायिक-व्युत्पन्न निषेध",
+  "licenseGraphic": "{license} ग्राफिक",
+  "workByCreator": "{creator} द्वारा {title}",
+  "workByCreatorLicensed": "{creator} द्वारा {title} {license} अन्तर्गत इजाजतप्राप्त छ।",
+  "permissionsBeyondScope": "यस इजाजतपत्रको दायराभन्दा बाहिरका अनुमतिहरू {link} उपलब्ध छन्।",
+  "author": "(लेखक)",
+  "onTheLicensingDetailsPage": "इजाजतपत्र विवरण पेजमा"
+}

@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Itlaq il-fajls hawn",
+  "uploadQueue": "Kju tat-tlugħ",
+  "pending": "Pendenti",
+  "preparing": "Qed jipprepara",
+  "uploading": "Qed jittella'",
+  "complete": "Lest",
+  "aborted": "Abbortit",
+  "cancelled": "Ikkanċellat",
+  "error": "Żball",
+  "errorWithStatus": "Żball: {status}",
+  "cancel": "Ikkanċella",
+  "cancelUploadOf": "Ikkanċella t-tlugħ ta' {name}",
+  "retry": "Erġa' pprova",
+  "retryUploadOf": "Erġa' pprova t-tlugħ ta' {name}",
+  "remove": "Neħħi",
+  "removeFromQueue": "Neħħi {name} mill-kju",
+  "fileTypeNotAccepted": "Tip ta' fajl mhux aċċettat: {name}",
+  "uploadFailed": "It-tlugħ falla: {status}",
+  "networkError": "Żball fin-netwerk"
+}

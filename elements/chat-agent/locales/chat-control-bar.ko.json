@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "로그를 txt로 다운로드",
+  "downloadChatLog": "채팅 로그 다운로드",
+  "resetChat": "채팅 초기화",
+  "toggleDataCollection": "데이터 수집 전환",
+  "dataCollection": "데이터 수집",
+  "toggleDeveloperMode": "개발자 모드 전환",
+  "exitFullView": "전체 보기 종료",
+  "enterFullView": "전체 보기",
+  "hideInterface": "인터페이스 숨기기",
+  "resetChatConfirm": "채팅을 초기화할까요?",
+  "downloadBeforeResetConfirm": "초기화하기 전에 채팅 로그를 다운로드할까요?",
+  "dataCollectionOn": "대화 내용이 AI 모델 학습에 사용됩니다",
+  "dataCollectionOff": "대화 내용이 AI 모델 학습에 사용되지 않습니다"
+}

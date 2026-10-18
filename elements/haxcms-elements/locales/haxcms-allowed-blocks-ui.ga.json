@@ -10,5 +10,9 @@
   "save": "Sábháil",
   "noDescription": "Níl cur síos ar fáil.",
   "details": "Sonraí",
-  "loadingInventory": "Fardal iomlán na mbloc á luchtú…"
+  "loadingInventory": "Fardal iomlán na mbloc á luchtú…",
+  "selectAllButton": "Roghnaigh Gach Rud",
+  "deselectAllButton": "Díroghnaigh Gach Rud",
+  "selectedOfAvailable": "{selected} roghnaithe / {total} ar fáil",
+  "savingBlocksFailed": "Theip ar shábháil na mblocanna: {error}"
 }

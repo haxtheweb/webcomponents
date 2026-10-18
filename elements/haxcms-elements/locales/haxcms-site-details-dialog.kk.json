@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- әдепкі бойынша бірінші бет --",
+  "details": "Толығырақ",
+  "title": "Тақырып",
+  "titleDescription": "Сайттың атауы",
+  "homePage": "Басты бет",
+  "homePageDescription": "Әдепкі кіру беті / басты бет ретінде пайдаланылатын бет",
+  "advanced": "Кеңейтілген",
+  "serviceWorker": "Динамикалық бетке service worker қосу",
+  "serviceWorkerDescription": "Пайдаланушылар сервердің соңғы нәтижесін әрдайым бірден көруі керек болса, мұны өшіріңіз.",
+  "forceBrowserUpgrade": "Браузерді жаңартуға мәжбүрлеу",
+  "forceBrowserUpgradeDescription": "Сайтты жүктемес бұрын үнемі жаңартылатын браузерлерді талап ету.",
+  "unableToLoadSiteDetails": "Сайт мәліметтерін жүктеу мүмкін емес.",
+  "noSiteDetails": "Сайт мәліметтері жоқ.",
+  "save": "Сақтау"
+}

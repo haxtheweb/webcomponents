@@ -1,0 +1,11 @@
+{
+  "theme": "ಥೀಮ್",
+  "active": "ಸಕ್ರಿಯ",
+  "selected": "ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ",
+  "noPreview": "ಪೂರ್ವವೀಕ್ಷಣೆ ಇಲ್ಲ",
+  "currentlyActiveAndSelected": "ಪ್ರಸ್ತುತ ಸಕ್ರಿಯ ಮತ್ತು ಆಯ್ಕೆಮಾಡಿದ ಥೀಮ್",
+  "currentlyActive": "ಪ್ರಸ್ತುತ ಸಕ್ರಿಯ ಥೀಮ್",
+  "selectedToApplyOnSave": "ಉಳಿಸಿದಾಗ ಅನ್ವಯಿಸಲು ಆಯ್ಕೆಮಾಡಿದ ಥೀಮ್",
+  "themeSelection": "ಥೀಮ್ ಆಯ್ಕೆ",
+  "noThemesAvailable": "ಯಾವುದೇ ಥೀಮ್‌ಗಳು ಲಭ್ಯವಿಲ್ಲ."
+}

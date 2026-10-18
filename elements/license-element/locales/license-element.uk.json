@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Зазначення авторства",
+  "licenseBySa": "Зазначення авторства — Поширення на тих самих умовах",
+  "licenseByNd": "Зазначення авторства — Без похідних творів",
+  "licenseByNc": "Зазначення авторства — Некомерційна",
+  "licenseByNcSa": "Зазначення авторства — Некомерційна — Поширення на тих самих умовах",
+  "licenseByNcNd": "Зазначення авторства — Некомерційна — Без похідних творів",
+  "licenseGraphic": "Графіка {license}",
+  "workByCreator": "{title}, автор: {creator}",
+  "workByCreatorLicensed": "{title}, автор: {creator}, ліцензовано за {license}.",
+  "permissionsBeyondScope": "Дозволи поза межами цієї ліцензії доступні {link}.",
+  "author": "(автор)",
+  "onTheLicensingDetailsPage": "на сторінці з подробицями ліцензування"
+}

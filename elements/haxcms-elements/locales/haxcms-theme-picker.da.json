@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Aktiv",
+  "selected": "Valgt",
+  "noPreview": "Ingen forhåndsvisning",
+  "currentlyActiveAndSelected": "Aktuelt aktivt og valgt tema",
+  "currentlyActive": "Aktuelt aktivt tema",
+  "selectedToApplyOnSave": "Valgt tema, der anvendes ved gem",
+  "themeSelection": "Valg af tema",
+  "noThemesAvailable": "Ingen temaer tilgængelige."
+}

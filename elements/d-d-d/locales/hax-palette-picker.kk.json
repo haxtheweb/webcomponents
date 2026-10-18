@@ -1,0 +1,9 @@
+{
+  "palette": "Палитра",
+  "paletteSelection": "Палитраны таңдау",
+  "active": "Белсенді",
+  "selected": "Таңдалған",
+  "currentlyActiveAndSelectedPalette": "Қазір белсенді және таңдалған палитра",
+  "currentlyActivePalette": "Қазір белсенді палитра",
+  "selectedPaletteToApply": "Қолдануға таңдалған палитра"
+}

@@ -43,5 +43,22 @@
   "emailAddress": "Fi ímeèlì ránṣẹ́ sí akẹ́kọ̀ọ́ yìí",
   "notes": "Àwọn àkọsílẹ̀",
   "interests": "Àwọn ìfẹ́-ọkàn",
-  "profileImageFor": "Àwòrán profaili ti"
+  "profileImageFor": "Àwòrán profaili ti",
+  "fileSystem": "Ètò fáìlì",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Ibi URL (JSON)",
+  "jsonDataBlob": "Àkójọ dátà JSON",
+  "additionalCriteriaFeedback": "Èsì {criteria} míràn",
+  "outOfPoints": "/ {points} máàkì",
+  "feedbackReport": "Ìjábọ̀ èsì",
+  "criteriaDetails": "Àwọn àlàyé àwọn òṣùwọ̀n",
+  "yourFeedback": "Èsì rẹ",
+  "additionalCriteriaFeedbackHeading": "Èsì Òṣùwọ̀n míràn",
+  "yourTotalScore": "Àpapọ̀ Máàkì rẹ",
+  "scoreOutOfPoints": "{score} / {points} máàkì",
+  "studentAssignment": "Iṣẹ́ àyànfúnni {assignment} ti {student}",
+  "downloadPDF": "Ṣe ìgbàsílẹ̀ PDF",
+  "displayMode1": "Ipò 1",
+  "displayMode2": "Ipò 2",
+  "twoWindows": "Fèrèsé méjì"
 }

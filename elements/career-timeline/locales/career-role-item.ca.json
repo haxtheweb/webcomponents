@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Títol del càrrec",
+  "describeYourRole": "Descriu el teu càrrec aquí...",
+  "present": "Presenta",
+  "skills": "Habilitats:",
+  "skillsAndMore": "{skills} i {count} més",
+  "yearShort": "{count} any",
+  "yearsShort": "{count} anys",
+  "monthShort": "{count} mes",
+  "monthsShort": "{count} mesos"
+}

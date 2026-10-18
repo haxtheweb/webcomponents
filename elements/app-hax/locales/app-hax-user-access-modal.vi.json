@@ -7,5 +7,7 @@
   "userAccessGranted": "Đã cấp quyền truy cập cho người dùng thành công!",
   "userNotFound": "Không tìm thấy người dùng hoặc không được phép",
   "loadingAddingUser": "Đang thêm người dùng...",
-  "grantAccessTo": "Cấp quyền truy cập cho:"
+  "grantAccessTo": "Cấp quyền truy cập cho:",
+  "networkErrorTryAgain": "Đã xảy ra lỗi mạng. Vui lòng thử lại.",
+  "characterWillAppear": "Nhân vật sẽ xuất hiện khi bạn nhập tên người dùng"
 }

@@ -1,0 +1,18 @@
+{
+  "copy": "Göçürmek",
+  "download": "Ýükläp al",
+  "archive": "Arhiw",
+  "copyOperation": "göçürmek",
+  "downloadOperation": "ýükläp almak",
+  "archiveOperation": "arhiwlemek",
+  "created": "döredildi",
+  "updated": "täzelendi",
+  "pages": "sahypa",
+  "url": "URL",
+  "confirm": "Tassykla",
+  "cancel": "Ýatyrmak",
+  "siteOperationConfirmTitle": "{siteName}: {operationName}?",
+  "siteOperationConfirmMessage": "{siteName} saýtyny {operation} isleýändigiňize ynanýarsyňyzmy?",
+  "siteOperationSuccessful": "{siteName}: {operation} üstünlikli boldy!",
+  "siteOperationFailed": "{siteName}: {operation} şowsuz boldy"
+}

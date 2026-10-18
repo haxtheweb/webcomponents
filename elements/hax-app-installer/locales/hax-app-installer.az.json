@@ -54,5 +54,6 @@
   "requirementUppercase": "Bir böyük hərf",
   "requirementLowercase": "Bir kiçik hərf",
   "requirementNumber": "Bir rəqəm",
-  "requirementSymbol": "Bir simvol"
+  "requirementSymbol": "Bir simvol",
+  "haxcmsMascotAlt": "HAXcms Dünya Səyyahı maskotu"
 }

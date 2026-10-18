@@ -1,0 +1,11 @@
+{
+  "theme": "السمة",
+  "active": "نشطة",
+  "selected": "محددة",
+  "noPreview": "لا توجد معاينة",
+  "currentlyActiveAndSelected": "السمة النشطة والمحددة حاليًا",
+  "currentlyActive": "السمة النشطة حاليًا",
+  "selectedToApplyOnSave": "السمة المحددة للتطبيق عند الحفظ",
+  "themeSelection": "اختيار السمة",
+  "noThemesAvailable": "لا توجد سمات متاحة."
+}

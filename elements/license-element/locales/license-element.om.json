@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Madda ibsuu",
+  "licenseBySa": "Madda ibsuu Akkasuma qoodi",
+  "licenseByNd": "Madda ibsuu Hojii irraa dhalate hin qabu",
+  "licenseByNc": "Madda ibsuu daldalaaf miti",
+  "licenseByNcSa": "Madda ibsuu daldalaaf miti akkasuma qoodi",
+  "licenseByNcNd": "Madda ibsuu Daldalaaf miti Hojii irraa dhalate hin qabu",
+  "licenseGraphic": "Fakkii {license}",
+  "workByCreator": "{title} kan {creator}",
+  "workByCreatorLicensed": "{title} kan {creator} hayyama {license} jalatti hayyamameera.",
+  "permissionsBeyondScope": "Hayyamni daangaa hayyama kanaa ol ta'e {link} ni argama.",
+  "author": "(barreessaa)",
+  "onTheLicensingDetailsPage": "fuula bal'ina hayyamaa irratti"
+}

@@ -54,5 +54,6 @@
   "requirementUppercase": "Як ҳарфи калон",
   "requirementLowercase": "Як ҳарфи хурд",
   "requirementNumber": "Як рақам",
-  "requirementSymbol": "Як аломати махсус"
+  "requirementSymbol": "Як аломати махсус",
+  "haxcmsMascotAlt": "Маскоти Сайёҳи ҷаҳонии HAXcms"
 }

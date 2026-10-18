@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ulalo wa nangula wakopedwa!",
+  "skipToContent": "Pitani ku zomwe zili mkati",
+  "changePalette": "Sinthani mitundu",
+  "primaryLinks": "Maulalo akuluakulu",
+  "socialLinks": "Maulalo a malo ochezera",
+  "myProfile": "Mbiri yanga",
+  "profileImageOf": "Chithunzi cha mbiri ya {name}",
+  "profileImage": "Chithunzi cha mbiri",
+  "linkCardProfile": "Mbiri ya khadi la maulalo",
+  "emptyStateLinks": "Onjezani zinthu za menyu za pamwamba mu site.json kuti muonetse mabatani a maulalo.",
+  "titleOnPlatform": "{title} pa {platform}",
+  "openPlatform": "Tsegulani {platform}",
+  "paletteUpdated": "Mitundu yasinthidwa kukhala njira {number}."
+}

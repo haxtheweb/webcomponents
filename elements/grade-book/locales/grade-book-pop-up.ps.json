@@ -1,5 +1,9 @@
 {
   "studentSubmission": "د زده کوونکي سپارنه",
   "openInNewWindow": "په نوې کړکۍ کې پرانیزئ",
-  "submitted": "سپارل شوی"
+  "submitted": "سپارل شوی",
+  "previousStudent": "پخوانی زده کوونکی",
+  "nextStudent": "بل زده کوونکی",
+  "previousAssignment": "پخوانۍ دنده",
+  "nextAssignment": "بله دنده"
 }

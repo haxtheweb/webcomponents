@@ -5,5 +5,9 @@
   "buttons": "Mabatani",
   "futureButtonConfiguration": "Kukonza mabatani a mkonzi mwakufuna kwanu kukubwera posachedwa.",
   "save": "Sungani",
-  "saving": "Ikusunga…"
+  "saving": "Ikusunga…",
+  "novice": "Woyamba kumene",
+  "expert": "Katswiri",
+  "toolbarPreviewAlt": "Chithunzithunzi cha bala la zida zosinthira la {audience}",
+  "savingEditorSettingsFailed": "Kusunga zokonda za mkonzi kwalephera: {error}"
 }

@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Erabiltzailearen txat-erregistroa kontsolako taulan",
+  "consoleTableUserText": "console.table() erabiltzailearen txat-erregistroa",
+  "consoleTableUserTooltip": "Inprimatu erabiltzailearen txat-erregistroa taula gisa kontsolan",
+  "consoleTableMerlinLabel": "Merlinen txat-erregistroa kontsolako taulan",
+  "consoleTableMerlinText": "console.table() Merlinen txat-erregistroa",
+  "consoleTableMerlinTooltip": "Inprimatu Merlinen txat-erregistroa taula gisa kontsolan",
+  "consoleTableAllLabel": "Txat-erregistro osoa kontsolako taulan",
+  "consoleTableAllText": "console.table() txat-erregistro osoa",
+  "consoleTableAllTooltip": "Inprimatu txat-erregistro osoa taula gisa kontsolan",
+  "downloadChatLogJson": "Deskargatu txataren erregistroa .json gisa",
+  "downloadChatLogJsonTooltip": "Deskargatu txataren erregistroa .json gisa"
+}

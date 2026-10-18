@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Konsoles tabula: lietotāja tērzēšanas žurnāls",
+  "consoleTableUserText": "console.table() lietotāja tērzēšanas žurnāls",
+  "consoleTableUserTooltip": "Izdrukāt lietotāja tērzēšanas žurnālu konsolē kā tabulu",
+  "consoleTableMerlinLabel": "Konsoles tabula: Merlin tērzēšanas žurnāls",
+  "consoleTableMerlinText": "console.table() Merlin tērzēšanas žurnāls",
+  "consoleTableMerlinTooltip": "Izdrukāt Merlin tērzēšanas žurnālu konsolē kā tabulu",
+  "consoleTableAllLabel": "Konsoles tabula: viss tērzēšanas žurnāls",
+  "consoleTableAllText": "console.table() viss tērzēšanas žurnāls",
+  "consoleTableAllTooltip": "Izdrukāt visu tērzēšanas žurnālu konsolē kā tabulu",
+  "downloadChatLogJson": "Lejupielādēt tērzēšanas žurnālu kā .json",
+  "downloadChatLogJsonTooltip": "Lejupielādēt tērzēšanas žurnālu kā .json"
+}

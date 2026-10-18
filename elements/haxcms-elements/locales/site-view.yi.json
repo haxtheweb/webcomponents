@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "קיין רעזולטאַטן",
+  "viewsRecordHeading": "רעקאָרדירן",
+  "viewsTitleImage": "בילד פֿון {title}",
+  "viewsTitlePreview": "פֿאָרויסבליק פֿון {title}",
+  "viewsNoTimelineRecords": "קיין דאַטע־באַזירטע רעקאָרדן נישטאָ פֿאַר אַ צײַט־ליניע.",
+  "viewsTimelineTitle": "צײַט־ליניע פֿון {title}",
+  "viewsNoChartField": "קיין נומערישער פֿעלד נישט געפֿונען פֿאַר אַ דיאַגראַם.",
+  "viewsChartingValue": "דיאַגראַם פֿון {value}",
+  "viewsChartingValueByLabel": "דיאַגראַם פֿון {value} לויט {label}",
+  "viewsChartTitle": "דיאַגראַם פֿון {title}",
+  "viewsNoTreeRecords": "קיין היעראַרכישע רעקאָרדן נישטאָ פֿאַר אַ בוים.",
+  "viewsNoGalleryRecords": "קיין בילד־רעקאָרדן נישטאָ פֿאַר אַ גאַלעריע.",
+  "viewsNoPlaylistRecords": "קיין מעדיע־רעקאָרדן נישטאָ פֿאַר אַ שפּיל־ליסטע.",
+  "fetchFailed": "אָנקריגן דורכגעפֿאַלן ({status})",
+  "unableToLoadViewData": "נישט געקענט לאָדן די אָנבליק־דאַטן.",
+  "noResultsFound": "קיין רעזולטאַטן נישט געפֿונען.",
+  "refreshView": "באַנײַ דעם אָנבליק",
+  "breakIntoStaticContent": "צעברעך אין סטאַטישן אינהאַלט",
+  "viewsOpenRecord": "עפֿן דעם רעקאָרד"
+}

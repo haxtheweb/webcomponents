@@ -1,0 +1,11 @@
+{
+  "playlist": "Grojaraštis",
+  "carousel": "karuselė",
+  "slide": "skaidrė",
+  "slideNumber": "{number} skaidrė",
+  "slideOfTotal": "{number} skaidrė iš {total}",
+  "previousSlide": "Ankstesnė skaidrė",
+  "nextSlide": "Kita skaidrė",
+  "slidePages": "Skaidrių puslapiai",
+  "goToSlide": "Eiti į {number} skaidrę"
+}

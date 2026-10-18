@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Hoʻoiho i ka moʻolelo ma ke ʻano txt",
+  "downloadChatLog": "Hoʻoiho i ka moʻolelo kamaʻilio",
+  "resetChat": "Hoʻonohonoho hou i ke kamaʻilio",
+  "toggleDataCollection": "Hoʻololi i ka hōʻiliʻili ʻikepili",
+  "dataCollection": "Hōʻiliʻili ʻikepili",
+  "toggleDeveloperMode": "Hoʻololi i ke ʻano mea hoʻomohala",
+  "exitFullView": "Haʻalele i ka hiʻohiʻona piha",
+  "enterFullView": "Komo i ka hiʻohiʻona piha",
+  "hideInterface": "Hūnā i ka mea launa",
+  "resetChatConfirm": "Hoʻonohonoho hou i ke kamaʻilio?",
+  "downloadBeforeResetConfirm": "Hoʻoiho i ka moʻolelo kamaʻilio ma mua o kou hoʻonohonoho hou ʻana?",
+  "dataCollectionOn": "E hoʻohana ʻia kāu mau kamaʻilio e aʻo i kā mākou mau kumu hoʻohālike AI",
+  "dataCollectionOff": "ʻAʻole e hoʻohana ʻia kāu mau kamaʻilio e aʻo i kā mākou mau kumu hoʻohālike AI"
+}

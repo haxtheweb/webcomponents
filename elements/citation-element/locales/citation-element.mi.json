@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Tohutoro",
+  "licenseBySa": "Tohutoro Tiri Ōrite",
+  "licenseByNd": "Tohutoro Kore Pārekereke",
+  "licenseByNc": "Tohutoro Kore Arumoni",
+  "licenseByNcSa": "Tohutoro Kore Arumoni Tiri Ōrite",
+  "licenseByNcNd": "Tohutoro Kore Arumoni Kore Pārekereke",
+  "citationWithLicense": "{title} nā {creator}, kua raihanatia i raro i te {license}. I torohia {date}.",
+  "citationWithoutLicense": "{title} nā {creator}. I torohia {date}.",
+  "licenseGraphic": "Whakairoiro {license}"
+}

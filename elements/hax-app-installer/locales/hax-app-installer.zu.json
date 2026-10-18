@@ -54,5 +54,6 @@
   "requirementUppercase": "Uhlamvu olulodwa olukhulu",
   "requirementLowercase": "Uhlamvu olulodwa oluncane",
   "requirementNumber": "Inombolo eyodwa",
-  "requirementSymbol": "Uphawu olulodwa"
+  "requirementSymbol": "Uphawu olulodwa",
+  "haxcmsMascotAlt": "Umfanekiso we-HAXcms World Traveler"
 }

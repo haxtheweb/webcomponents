@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Välilehti {xOfY}",
+  "xOfY": "{order}/{total}",
+  "endOfTab": "Välilehden {xOfY} loppu. Takaisin kohtaan {tabs}.",
+  "tabs": "välilehdet"
+}

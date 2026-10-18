@@ -5,5 +5,9 @@
   "buttons": "Przyciski",
   "futureButtonConfiguration": "Niestandardowa konfiguracja przycisków edytora już wkrótce.",
   "save": "Zapisz",
-  "saving": "Zapisywanie…"
+  "saving": "Zapisywanie…",
+  "novice": "Początkujący",
+  "expert": "Ekspert",
+  "toolbarPreviewAlt": "Podgląd paska narzędzi edycji: {audience}",
+  "savingEditorSettingsFailed": "Zapisywanie ustawień edytora nie powiodło się: {error}"
 }

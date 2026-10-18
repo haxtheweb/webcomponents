@@ -54,5 +54,6 @@
   "requirementUppercase": "Jedno velké písmeno",
   "requirementLowercase": "Jedno malé písmeno",
   "requirementNumber": "Jedna číslice",
-  "requirementSymbol": "Jeden symbol"
+  "requirementSymbol": "Jeden symbol",
+  "haxcmsMascotAlt": "Maskot HAXcms Světoběžník"
 }

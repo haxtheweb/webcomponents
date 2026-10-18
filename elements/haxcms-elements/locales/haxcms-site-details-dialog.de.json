@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- standardmäßig erste Seite --",
+  "details": "Details",
+  "title": "Titel",
+  "titleDescription": "Name der Website",
+  "homePage": "Startseite",
+  "homePageDescription": "Seite, die als Standard-Einstiegs-/Startseite verwendet wird",
+  "advanced": "Erweitert",
+  "serviceWorker": "Service Worker zur dynamischen Seite hinzufügen",
+  "serviceWorkerDescription": "Deaktiviere dies, wenn Benutzer immer sofort die neueste Serverausgabe sehen sollen.",
+  "forceBrowserUpgrade": "Browser-Upgrade erzwingen",
+  "forceBrowserUpgradeDescription": "Aktuelle (Evergreen-)Browser verlangen, bevor die Website geladen wird.",
+  "unableToLoadSiteDetails": "Website-Details konnten nicht geladen werden.",
+  "noSiteDetails": "Keine Website-Details verfügbar.",
+  "save": "Speichern"
+}

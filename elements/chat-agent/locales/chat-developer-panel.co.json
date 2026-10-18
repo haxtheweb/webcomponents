@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tavula di cunsola di u ghjurnale di chat di l'utilizatore",
+  "consoleTableUserText": "console.table() ghjurnale di chat di l'utilizatore",
+  "consoleTableUserTooltip": "Stampà u ghjurnale di chat di l'utilizatore cum'è tavula in a cunsola",
+  "consoleTableMerlinLabel": "Tavula di cunsola di u ghjurnale di chat di Merlin",
+  "consoleTableMerlinText": "console.table() ghjurnale di chat di Merlin",
+  "consoleTableMerlinTooltip": "Stampà u ghjurnale di chat di Merlin cum'è tavula in a cunsola",
+  "consoleTableAllLabel": "Tavula di cunsola di u ghjurnale di chat sanu",
+  "consoleTableAllText": "console.table() ghjurnale di chat sanu",
+  "consoleTableAllTooltip": "Stampà u ghjurnale di chat sanu cum'è tavula in a cunsola",
+  "downloadChatLogJson": "Scaricà u ghjurnale di chat in .json",
+  "downloadChatLogJsonTooltip": "Scaricà u ghjurnale di chat in .json"
+}

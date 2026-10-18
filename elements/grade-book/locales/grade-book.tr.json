@@ -43,5 +43,22 @@
   "emailAddress": "Bu öğrenciye e-posta gönder",
   "notes": "Notlar",
   "interests": "İlgi alanları",
-  "profileImageFor": "Profil resmi:"
+  "profileImageFor": "Profil resmi:",
+  "fileSystem": "Dosya sistemi",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL uç noktası (JSON)",
+  "jsonDataBlob": "JSON veri bloğu",
+  "additionalCriteriaFeedback": "Ek {criteria} geri bildirimi",
+  "outOfPoints": "/ {points} puan",
+  "feedbackReport": "Geri bildirim raporu",
+  "criteriaDetails": "Ölçüt ayrıntıları",
+  "yourFeedback": "Geri bildiriminiz",
+  "additionalCriteriaFeedbackHeading": "Ek ölçüt geri bildirimi",
+  "yourTotalScore": "Toplam Puanınız",
+  "scoreOutOfPoints": "{score} / {points} puan",
+  "studentAssignment": "{student} adlı öğrencinin {assignment} ödevi",
+  "downloadPDF": "PDF indir",
+  "displayMode1": "Mod 1",
+  "displayMode2": "Mod 2",
+  "twoWindows": "İki pencere"
 }

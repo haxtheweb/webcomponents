@@ -43,5 +43,22 @@
   "emailAddress": "Осы студентке хат жазу",
   "notes": "Ескертпелер",
   "interests": "Қызығушылықтары",
-  "profileImageFor": "Профиль суреті:"
+  "profileImageFor": "Профиль суреті:",
+  "fileSystem": "Файлдық жүйе",
+  "googleDocs": "Google құжаттары",
+  "urlEndpointJSON": "URL endpoint (JSON)",
+  "jsonDataBlob": "JSON деректер блогы",
+  "additionalCriteriaFeedback": "{criteria} бойынша қосымша кері байланыс",
+  "outOfPoints": "/ {points} ұпай",
+  "feedbackReport": "Кері байланыс есебі",
+  "criteriaDetails": "Критерийлер туралы мәліметтер",
+  "yourFeedback": "Сіздің кері байланысыңыз",
+  "additionalCriteriaFeedbackHeading": "Критерийлер бойынша қосымша кері байланыс",
+  "yourTotalScore": "Сіздің жалпы ұпайыңыз",
+  "scoreOutOfPoints": "{score} / {points} ұпай",
+  "studentAssignment": "{student} студентінің {assignment} тапсырмасы",
+  "downloadPDF": "PDF жүктеп алу",
+  "displayMode1": "1-режим",
+  "displayMode2": "2-режим",
+  "twoWindows": "Екі терезе"
 }

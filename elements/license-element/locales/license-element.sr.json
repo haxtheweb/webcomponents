@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Ауторство",
+  "licenseBySa": "Ауторство-Делити под истим условима",
+  "licenseByNd": "Ауторство-Без прерада",
+  "licenseByNc": "Ауторство-Некомерцијално",
+  "licenseByNcSa": "Ауторство-Некомерцијално-Делити под истим условима",
+  "licenseByNcNd": "Ауторство-Некомерцијално-Без прерада",
+  "licenseGraphic": "Графика лиценце {license}",
+  "workByCreator": "{title}, аутор: {creator}",
+  "workByCreatorLicensed": "Дело {title}, аутор: {creator}, лиценцирано је под лиценцом {license}.",
+  "permissionsBeyondScope": "Дозволе изван оквира ове лиценце доступне су {link}.",
+  "author": "(аутор)",
+  "onTheLicensingDetailsPage": "на страници са детаљима лиценцирања"
+}

@@ -7,5 +7,7 @@
   "userAccessGranted": "Juurdepääs edukalt antud!",
   "userNotFound": "Kasutajat ei leitud või puudub volitus",
   "loadingAddingUser": "Kasutaja lisamine...",
-  "grantAccessTo": "Anna juurdepääs:"
+  "grantAccessTo": "Anna juurdepääs:",
+  "networkErrorTryAgain": "Tekkis võrguviga. Proovi uuesti.",
+  "characterWillAppear": "Tegelaskuju ilmub, kui sisestad kasutajanime"
 }

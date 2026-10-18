@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "ٿيمز لوڊ ڪرڻ ۾ ناڪامي: {error}",
+  "noThemesForView": "هن ڏيک لاءِ ڪا ٿيم موجود ناهي.",
+  "active": "سرگرم",
+  "themeIsActive": "{name} ٿيم سرگرم آهي",
+  "applyTheme": "{name} ٿيم لاڳو ڪريو",
+  "apply": "لاڳو ڪريو",
+  "preview": "پريويو",
+  "name": "نالو",
+  "element": "عنصر",
+  "description": "وضاحت",
+  "action": "عمل",
+  "loadingThemes": "ٿيمز لوڊ ٿي رهيون آهن...",
+  "themesShown": "{count} ٿيمز ڏيکاريل",
+  "themesShownDefaults": "{count} ٿيمز ڏيکاريل (app-hax ڊفالٽ)",
+  "availableHaxcmsThemes": "موجود HAXcms ٿيمز",
+  "gallery": "گيلري",
+  "table": "ٽيبل"
+}

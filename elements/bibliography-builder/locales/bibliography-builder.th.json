@@ -1,3 +1,8 @@
 {
-  "title": "เอกสารอ้างอิง"
+  "title": "เอกสารอ้างอิง",
+  "export": "ส่งออก",
+  "exportCitations": "ส่งออกการอ้างอิง",
+  "copy": "คัดลอก",
+  "exportCitationFormat": "รูปแบบการอ้างอิงที่จะส่งออก",
+  "selectCitationFormatBelow": "เลือกรูปแบบการอ้างอิงด้านล่าง"
 }

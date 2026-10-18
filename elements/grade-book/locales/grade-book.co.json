@@ -43,5 +43,22 @@
   "emailAddress": "Mandà un e-mail à stu sculare",
   "notes": "Note",
   "interests": "Interessi",
-  "profileImageFor": "Fiura di prufilu di"
+  "profileImageFor": "Fiura di prufilu di",
+  "fileSystem": "Sistema di schedarii",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "Puntu d'accessu URL (JSON)",
+  "jsonDataBlob": "Bloccu di dati JSON",
+  "additionalCriteriaFeedback": "Riscontru supplementariu per {criteria}",
+  "outOfPoints": "/ {points} pti",
+  "feedbackReport": "Raportu di riscontru",
+  "criteriaDetails": "Dettagli di i criterii",
+  "yourFeedback": "U vostru riscontru",
+  "additionalCriteriaFeedbackHeading": "Riscontru supplementariu nant'à i criterii",
+  "yourTotalScore": "U vostru puntaghju tutale",
+  "scoreOutOfPoints": "{score} / {points} pti",
+  "studentAssignment": "Cumpitu {assignment} di {student}",
+  "downloadPDF": "Scaricà u PDF",
+  "displayMode1": "Modu 1",
+  "displayMode2": "Modu 2",
+  "twoWindows": "Duie finestre"
 }

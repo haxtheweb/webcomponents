@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Нет результатов",
+  "viewsRecordHeading": "Записать",
+  "viewsTitleImage": "Изображение: {title}",
+  "viewsTitlePreview": "Предпросмотр {title}",
+  "viewsNoTimelineRecords": "Нет записей с датами для построения временной шкалы.",
+  "viewsTimelineTitle": "Временная шкала: {title}",
+  "viewsNoChartField": "Не найдено числовое поле для построения диаграммы.",
+  "viewsChartingValue": "Диаграмма по {value}",
+  "viewsChartingValueByLabel": "Диаграмма {value} по {label}",
+  "viewsChartTitle": "Диаграмма: {title}",
+  "viewsNoTreeRecords": "Нет иерархических записей для построения дерева.",
+  "viewsNoGalleryRecords": "Нет записей изображений для построения галереи.",
+  "viewsNoPlaylistRecords": "Нет медиазаписей для построения плейлиста.",
+  "fetchFailed": "Сбой загрузки ({status})",
+  "unableToLoadViewData": "Не удалось загрузить данные представления.",
+  "noResultsFound": "Ничего не найдено.",
+  "refreshView": "Обновить представление",
+  "breakIntoStaticContent": "Преобразовать в статическое содержимое",
+  "viewsOpenRecord": "Открыть запись"
+}

@@ -7,5 +7,7 @@
   "userAccessGranted": "Ruraqman yaykuyqa allinta qusqa!",
   "userNotFound": "Ruraqqa mana tarikunchu utaq mana saqillisqachu",
   "loadingAddingUser": "Ruraqta yapachkan...",
-  "grantAccessTo": "Yaykuyta quy:"
+  "grantAccessTo": "Yaykuyta quy:",
+  "networkErrorTryAgain": "Llika pantay karqan. Hukmanta ruraykuy.",
+  "characterWillAppear": "Ruraq sutita qillqaptiyki runa rikch'ay rikhurinqa"
 }

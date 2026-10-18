@@ -5,5 +5,9 @@
   "buttons": "Buttuni",
   "futureButtonConfiguration": "Il-konfigurazzjoni personalizzata tal-buttuni tal-editur ġejja dalwaqt.",
   "save": "Issejvja",
-  "saving": "Qed jissejvja…"
+  "saving": "Qed jissejvja…",
+  "novice": "Prinċipjant",
+  "expert": "Espert",
+  "toolbarPreviewAlt": "Preview tat-toolbar tal-editjar għal {audience}",
+  "savingEditorSettingsFailed": "Is-salvataġġ tal-issettjar tal-editur falla: {error}"
 }

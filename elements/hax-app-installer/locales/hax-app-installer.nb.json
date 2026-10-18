@@ -54,5 +54,6 @@
   "requirementUppercase": "Én stor bokstav",
   "requirementLowercase": "Én liten bokstav",
   "requirementNumber": "Ett tall",
-  "requirementSymbol": "Ett symbol"
+  "requirementSymbol": "Ett symbol",
+  "haxcmsMascotAlt": "HAXcms-maskoten World Traveler"
 }

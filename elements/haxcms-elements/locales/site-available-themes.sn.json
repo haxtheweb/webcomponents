@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Zvakundikana kurodha madingindira: {error}",
+  "noThemesForView": "Hapana madingindira aripo pamaonero aya.",
+  "active": "Iri kushanda",
+  "themeIsActive": "Dingindira re{name} riri kushanda",
+  "applyTheme": "Shandisa dingindira re{name}",
+  "apply": "Shandisa",
+  "preview": "Ongorora kutanga",
+  "name": "Zita",
+  "element": "Chinhu",
+  "description": "Tsananguro",
+  "action": "Chiito",
+  "loadingThemes": "Kurodha madingindira...",
+  "themesShown": "Madingindira {count} anoratidzwa",
+  "themesShownDefaults": "Madingindira {count} anoratidzwa (zvakagara zviripo zve app-hax)",
+  "availableHaxcmsThemes": "Madingindira eHAXcms Aripo",
+  "gallery": "Muunganidzwa wemifananidzo",
+  "table": "Tafura"
+}

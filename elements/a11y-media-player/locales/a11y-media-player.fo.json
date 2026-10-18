@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Innlesur...",
   "youTubeStartLoading": "Trýst á spæl.",
   "youTubeTranscriptLabel": "Avskriftin verður innlisin, tá ið miðilin spælir.",
-  "audioDescriptionLabel": "Ljóðlýsing"
+  "audioDescriptionLabel": "Ljóðlýsing",
+  "openOnYouTube": "Opna á YouTube"
 }

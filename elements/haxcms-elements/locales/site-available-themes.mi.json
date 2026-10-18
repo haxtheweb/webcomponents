@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "I rahua te uta kaupapa āhua: {error}",
+  "noThemesForView": "Kāore he kaupapa āhua e wātea ana mō tēnei tirohanga.",
+  "active": "Hohe",
+  "themeIsActive": "Kei te hohe te kaupapa āhua {name}",
+  "applyTheme": "Hāngai i te kaupapa āhua {name}",
+  "apply": "Hāngai",
+  "preview": "Arokite",
+  "name": "Ingoa",
+  "element": "Huānga",
+  "description": "Whakaahuatanga",
+  "action": "Mahi",
+  "loadingThemes": "E uta ana i ngā kaupapa āhua...",
+  "themesShown": "{count} kaupapa āhua e whakaaturia ana",
+  "themesShownDefaults": "{count} kaupapa āhua e whakaaturia ana (ngā taunoa app-hax)",
+  "availableHaxcmsThemes": "Ngā Kaupapa Āhua HAXcms e Wātea Ana",
+  "gallery": "Taiwhanga",
+  "table": "Ripanga"
+}

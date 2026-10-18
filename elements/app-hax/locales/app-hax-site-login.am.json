@@ -1,0 +1,14 @@
+{
+  "enterUserName": "የተጠቃሚ ስም ያስገቡ",
+  "invalidUsernameOrPassword": "ልክ ያልሆነ የተጠቃሚ ስም ወይም የይለፍ ቃል",
+  "welcomeLetsGo": "እንኳን ደህና መጡ {username}! እንሂድ!",
+  "enterYourUsername": "የተጠቃሚ ስምዎን ያስገቡ",
+  "username": "የተጠቃሚ ስም",
+  "next": "ቀጣይ",
+  "welcomeBack": "እንኳን በደህና ተመለሱ፣ {username}!",
+  "notYou": "እርስዎ አይደሉም?",
+  "enterYourPassword": "የይለፍ ቃልዎን ያስገቡ",
+  "password": "የይለፍ ቃል",
+  "togglePasswordDisplay": "የይለፍ ቃል ማሳያን ቀያይር",
+  "login": "ግባ"
+}

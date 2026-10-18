@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Azịza gị",
   "checkAnswer": "Lelee azịza",
-  "retry": "Nwaa ọzọ"
+  "retry": "Nwaa ọzọ",
+  "correct": "Ọ dị mma!",
+  "incorrect": "Ezighi ezi!",
+  "correctAnswer": "Azịza ziri ezi: {answer}"
 }

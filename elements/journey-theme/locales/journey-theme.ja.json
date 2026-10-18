@@ -1,4 +1,11 @@
 {
   "readMore": "続きを読む",
-  "home": "ホーム"
+  "home": "ホーム",
+  "anchorLinkCopied": "アンカーリンクをコピーしました!",
+  "skipToContent": "コンテンツへスキップ",
+  "changeTheme": "テーマを変更",
+  "siteSections": "サイトのセクション",
+  "pageOfTotal": "{current} / {total} ページ",
+  "siteGenerated": "サイト生成日: {date}",
+  "licenseGraphic": "{license} のグラフィック"
 }

@@ -1,0 +1,9 @@
+{
+  "palette": "Palet",
+  "paletteSelection": "Dewis palet",
+  "active": "Gweithredol",
+  "selected": "Wedi'i ddewis",
+  "currentlyActiveAndSelectedPalette": "Palet gweithredol a dewisedig ar hyn o bryd",
+  "currentlyActivePalette": "Palet gweithredol ar hyn o bryd",
+  "selectedPaletteToApply": "Palet a ddewiswyd i'w gymhwyso"
+}

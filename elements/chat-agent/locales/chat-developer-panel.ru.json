@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Журнал чата пользователя в виде таблицы в консоли",
+  "consoleTableUserText": "console.table() журнала пользователя",
+  "consoleTableUserTooltip": "Вывести журнал чата пользователя таблицей в консоль",
+  "consoleTableMerlinLabel": "Журнал чата Merlin в виде таблицы в консоли",
+  "consoleTableMerlinText": "console.table() журнала Merlin",
+  "consoleTableMerlinTooltip": "Вывести журнал чата Merlin таблицей в консоль",
+  "consoleTableAllLabel": "Весь журнал чата в виде таблицы в консоли",
+  "consoleTableAllText": "console.table() всего журнала",
+  "consoleTableAllTooltip": "Вывести весь журнал чата таблицей в консоль",
+  "downloadChatLogJson": "Скачать журнал чата как .json",
+  "downloadChatLogJsonTooltip": "Скачать журнал чата как .json"
+}

@@ -7,5 +7,7 @@
   "userAccessGranted": "Доступ користувачу успішно надано!",
   "userNotFound": "Користувача не знайдено або немає дозволу",
   "loadingAddingUser": "Додавання користувача...",
-  "grantAccessTo": "Надати доступ:"
+  "grantAccessTo": "Надати доступ:",
+  "networkErrorTryAgain": "Сталася помилка мережі. Спробуйте ще раз.",
+  "characterWillAppear": "Персонаж з'явиться, коли ви введете ім'я користувача"
 }

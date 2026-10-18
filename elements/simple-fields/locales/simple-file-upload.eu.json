@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Jaregin fitxategiak hemen",
+  "uploadQueue": "Igoera-ilara",
+  "pending": "Zain",
+  "preparing": "Prestatzen",
+  "uploading": "Igotzen",
+  "complete": "Osatuta",
+  "aborted": "Abortatuta",
+  "cancelled": "Bertan behera utzita",
+  "error": "Errorea",
+  "errorWithStatus": "Errorea: {status}",
+  "cancel": "Utzi",
+  "cancelUploadOf": "Utzi {name} igotzeari",
+  "retry": "Saiatu berriro",
+  "retryUploadOf": "Saiatu berriro {name} igotzen",
+  "remove": "Kendu",
+  "removeFromQueue": "Kendu {name} ilaratik",
+  "fileTypeNotAccepted": "Fitxategi mota ez da onartzen: {name}",
+  "uploadFailed": "Igoerak huts egin du: {status}",
+  "networkError": "Sareko errorea"
+}

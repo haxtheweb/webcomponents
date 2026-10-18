@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "已在功能设置中禁用",
+  "appearance": "外观",
+  "structure": "结构",
+  "content": "内容",
+  "reports": "报告",
+  "about": "关于",
+  "files": "文件",
+  "views": "视图",
+  "features": "功能",
+  "editor": "编辑器",
+  "blocks": "区块",
+  "importExport": "导入 / 导出",
+  "details": "详情",
+  "advanced": "高级"
+}

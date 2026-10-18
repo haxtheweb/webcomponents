@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Aktiv",
+  "selected": "Valgt",
+  "noPreview": "Ingen forhåndsvisning",
+  "currentlyActiveAndSelected": "Aktivt og valgt tema",
+  "currentlyActive": "Aktivt tema",
+  "selectedToApplyOnSave": "Valgt tema som brukes ved lagring",
+  "themeSelection": "Temavalg",
+  "noThemesAvailable": "Ingen temaer tilgjengelig."
+}

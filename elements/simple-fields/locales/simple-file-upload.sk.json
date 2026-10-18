@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Sem pretiahnite súbory",
+  "uploadQueue": "Front nahrávania",
+  "pending": "Čaká",
+  "preparing": "Pripravuje sa",
+  "uploading": "Nahráva sa",
+  "complete": "Dokončené",
+  "aborted": "Prerušené",
+  "cancelled": "Zrušené",
+  "error": "Chyba",
+  "errorWithStatus": "Chyba: {status}",
+  "cancel": "Zrušiť",
+  "cancelUploadOf": "Zrušiť nahrávanie {name}",
+  "retry": "Skúsiť znova",
+  "retryUploadOf": "Zopakovať nahrávanie {name}",
+  "remove": "Odstrániť",
+  "removeFromQueue": "Odstrániť {name} z frontu",
+  "fileTypeNotAccepted": "Typ súboru nie je prijatý: {name}",
+  "uploadFailed": "Nahrávanie zlyhalo: {status}",
+  "networkError": "Chyba siete"
+}

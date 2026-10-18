@@ -1,0 +1,17 @@
+{
+  "editNodes": "Mudificà i nodi",
+  "editLines": "Mudificà e linee",
+  "reset": "Reinizializà",
+  "save": "Salvà",
+  "cancel": "Abbandunà",
+  "delete": "Squassà",
+  "type": "Tipu:",
+  "topic": "Sughjettu",
+  "subsection": "Sottusezzione",
+  "name": "Nome:",
+  "enterName": "Scrivite u nome",
+  "url": "URL:",
+  "enterUrl": "Scrivite l'URL",
+  "activeNode": "Nodu attivu?",
+  "nodeId": "Nodu {id}"
+}

@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Abgabe des Lernenden",
   "openInNewWindow": "In neuem Fenster öffnen",
-  "submitted": "Abgegeben"
+  "submitted": "Abgegeben",
+  "previousStudent": "Vorheriger Lernender",
+  "nextStudent": "Nächster Lernender",
+  "previousAssignment": "Vorherige Aufgabe",
+  "nextAssignment": "Nächste Aufgabe"
 }

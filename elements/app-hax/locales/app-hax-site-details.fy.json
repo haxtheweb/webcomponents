@@ -1,0 +1,18 @@
+{
+  "copy": "Kopiearje",
+  "download": "Downloade",
+  "archive": "Argivearje",
+  "copyOperation": "kopiearje",
+  "downloadOperation": "downloade",
+  "archiveOperation": "argivearje",
+  "created": "oanmakke",
+  "updated": "bywurke",
+  "pages": "siden",
+  "url": "URL",
+  "confirm": "Befêstigje",
+  "cancel": "Annulearje",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Binne jo der wis fan dat jo {siteName} {operation} wolle?",
+  "siteOperationSuccessful": "{siteName} {operation} slagge!",
+  "siteOperationFailed": "{siteName} {operation} mislearre"
+}

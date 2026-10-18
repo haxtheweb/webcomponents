@@ -1,0 +1,11 @@
+{
+  "theme": "Temă",
+  "active": "Activă",
+  "selected": "Selectată",
+  "noPreview": "Fără previzualizare",
+  "currentlyActiveAndSelected": "Tema activă și selectată în prezent",
+  "currentlyActive": "Tema activă în prezent",
+  "selectedToApplyOnSave": "Tema selectată pentru aplicare la salvare",
+  "themeSelection": "Selecția temei",
+  "noThemesAvailable": "Nu există teme disponibile."
+}

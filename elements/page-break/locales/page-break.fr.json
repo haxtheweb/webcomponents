@@ -22,6 +22,13 @@
   "unpublish": "Dépublier",
   "savePage": "Enregistrer la page",
   "cancel": "Annuler",
+  "delete": "Supprimer",
+  "editTitle": "Modifier le titre",
+  "editIcon": "Modifier l'icône",
+  "agent": "Agent",
+  "pageLockedUnlockToEdit": "Cette page est verrouillée. Déverrouillez-la d'abord pour la modifier.",
+  "pageLockedUnlockToChangePublishStatus": "Cette page est verrouillée. Déverrouillez-la d'abord pour changer son état de publication.",
+  "pageLockedUnlockToDelete": "Cette page est verrouillée. Déverrouillez-la d'abord pour la supprimer.",
   "pageDetails": "Détails de la page",
   "clickToUnlock": "Cliquer pour déverrouiller"
 }

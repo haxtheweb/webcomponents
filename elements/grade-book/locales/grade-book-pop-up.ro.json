@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Lucrarea studentului",
   "openInNewWindow": "Deschide într-o fereastră nouă",
-  "submitted": "Predat"
+  "submitted": "Predat",
+  "previousStudent": "Studentul anterior",
+  "nextStudent": "Studentul următor",
+  "previousAssignment": "Tema anterioară",
+  "nextAssignment": "Tema următoare"
 }

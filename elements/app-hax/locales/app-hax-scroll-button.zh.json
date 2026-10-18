@@ -1,0 +1,5 @@
+{
+  "navigateToSection": "{label} - 跳转到该部分",
+  "clickToScrollToSection": "点击滚动到 {label} 部分",
+  "navigatedToSection": "已跳转到 {label} 部分"
+}

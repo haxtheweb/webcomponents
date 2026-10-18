@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Ilagay ang User name",
+  "invalidUsernameOrPassword": "Hindi wastong Username o Password",
+  "welcomeLetsGo": "Maligayang pagdating, {username}! Tara na!",
+  "enterYourUsername": "Ilagay ang iyong username",
+  "username": "Username",
+  "next": "Susunod",
+  "welcomeBack": "Maligayang pagbabalik, {username}!",
+  "notYou": "Hindi ikaw?",
+  "enterYourPassword": "Ilagay ang iyong password",
+  "password": "Password",
+  "togglePasswordDisplay": "I-toggle ang pagpapakita ng password",
+  "login": "Mag-login"
+}

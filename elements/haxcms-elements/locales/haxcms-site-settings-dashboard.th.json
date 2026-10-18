@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "ปิดใช้งานในฟีเจอร์",
+  "appearance": "รูปลักษณ์",
+  "structure": "โครงสร้าง",
+  "content": "เนื้อหา",
+  "reports": "รายงาน",
+  "about": "เกี่ยวกับ",
+  "files": "ไฟล์",
+  "views": "มุมมอง",
+  "features": "ฟีเจอร์",
+  "editor": "ตัวแก้ไข",
+  "blocks": "บล็อก",
+  "importExport": "นำเข้า / ส่งออก",
+  "details": "รายละเอียด",
+  "advanced": "ขั้นสูง"
+}

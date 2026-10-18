@@ -1,0 +1,11 @@
+{
+  "playlist": "Puririsiti",
+  "carousel": "carousel",
+  "slide": "slide",
+  "slideNumber": "Slide {number}",
+  "slideOfTotal": "Slide {number} pa{total}",
+  "previousSlide": "Slide yapfuura",
+  "nextSlide": "Slide inotevera",
+  "slidePages": "Mapeji emaslide",
+  "goToSlide": "Enda kuslide {number}"
+}

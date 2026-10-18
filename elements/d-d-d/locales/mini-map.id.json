@@ -1,0 +1,17 @@
+{
+  "editNodes": "Edit Simpul",
+  "editLines": "Edit Garis",
+  "reset": "Atur ulang",
+  "save": "Simpan",
+  "cancel": "Batal",
+  "delete": "Hapus",
+  "type": "Jenis:",
+  "topic": "Topik",
+  "subsection": "Subbagian",
+  "name": "Nama:",
+  "enterName": "Masukkan Nama",
+  "url": "URL:",
+  "enterUrl": "Masukkan URL",
+  "activeNode": "Simpul Aktif?",
+  "nodeId": "Simpul {id}"
+}

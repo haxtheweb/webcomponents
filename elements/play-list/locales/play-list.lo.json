@@ -1,0 +1,11 @@
+{
+  "playlist": "ລາຍການຫຼິ້ນ",
+  "carousel": "ພາບໝູນວຽນ",
+  "slide": "ສະໄລ້",
+  "slideNumber": "ສະໄລ້ {number}",
+  "slideOfTotal": "ສະໄລ້ {number} ຈາກ {total}",
+  "previousSlide": "ສະໄລ້ກ່ອນໜ້າ",
+  "nextSlide": "ສະໄລ້ຖັດໄປ",
+  "slidePages": "ໜ້າສະໄລ້",
+  "goToSlide": "ໄປທີ່ສະໄລ້ {number}"
+}

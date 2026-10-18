@@ -9,5 +9,7 @@
   "record": "Registro",
   "pause": "Pausar registro",
   "stopSave": "Detener y guardar",
-  "clickToTakePhoto": "Haga clic para tomar la foto"
+  "clickToTakePhoto": "Haga clic para tomar la foto",
+  "url": "URL",
+  "open": "abrir"
 }

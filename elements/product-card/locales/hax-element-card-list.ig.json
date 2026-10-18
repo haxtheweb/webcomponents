@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Na-enyocha ndekọ Web Component maka ihe HAX ndị ọzọ..",
+  "enabled": "Agbanyere",
+  "disabled": "Agbanyụrụ",
+  "details": "Nkọwa",
+  "tags": "Mkpado:",
+  "tagName": "Aha mkpado:",
+  "developerUsage": "Ojiji onye mmepụta:",
+  "demo": "Ngosipụta",
+  "popUpDemo": "Ngosipụta mmapụta",
+  "demoOf": "Ngosipụta {tag}"
+}

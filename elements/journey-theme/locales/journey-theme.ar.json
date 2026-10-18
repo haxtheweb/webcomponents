@@ -1,5 +1,12 @@
 {
   "readMore": "اقرأ المزيد",
   "home": "الرئيسية",
+  "anchorLinkCopied": "تم نسخ رابط المرساة!",
+  "skipToContent": "الانتقال إلى المحتوى",
+  "changeTheme": "تغيير السمة",
+  "siteSections": "أقسام الموقع",
+  "pageOfTotal": "الصفحة {current} من {total}",
+  "siteGenerated": "تاريخ إنشاء الموقع: {date}",
+  "licenseGraphic": "رسم {license}",
   "title": "عنوان"
 }

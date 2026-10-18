@@ -10,5 +10,9 @@
   "save": "I-save",
   "noDescription": "Walang available na paglalarawan.",
   "details": "Mga Detalye",
-  "loadingInventory": "Nilo-load ang buong listahan ng block…"
+  "loadingInventory": "Nilo-load ang buong listahan ng block…",
+  "selectAllButton": "Piliin Lahat",
+  "deselectAllButton": "Alisin ang Pagpili sa Lahat",
+  "selectedOfAvailable": "{selected} ang napili / {total} ang available",
+  "savingBlocksFailed": "Nabigo ang pag-save ng mga block: {error}"
 }

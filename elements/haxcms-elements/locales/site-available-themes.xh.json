@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Akuphumelelanga ukulayisha imixholo: {error}",
+  "noThemesForView": "Akukho mixholo ikhoyo kulo mboniso.",
+  "active": "Iyasebenza",
+  "themeIsActive": "Umxholo we-{name} uyasebenza",
+  "applyTheme": "Sebenzisa umxholo we-{name}",
+  "apply": "Sebenzisa",
+  "preview": "Inkangeleko yangaphambili",
+  "name": "Igama",
+  "element": "Into",
+  "description": "Inkcazo",
+  "action": "Isenzo",
+  "loadingThemes": "Kulayishwa imixholo...",
+  "themesShown": "{count} imixholo iboniswe",
+  "themesShownDefaults": "{count} imixholo iboniswe (okungagqibekanga kwe-app-hax)",
+  "availableHaxcmsThemes": "Imixholo ye-HAXcms Ekhoyo",
+  "gallery": "Igalari",
+  "table": "Itheyibhile"
+}

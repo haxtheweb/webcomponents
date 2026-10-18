@@ -1,4 +1,11 @@
 {
   "readMore": "Magbasa pa",
-  "home": "Home"
+  "home": "Home",
+  "anchorLinkCopied": "Nakopya ang anchor link!",
+  "skipToContent": "Lumaktaw sa nilalaman",
+  "changeTheme": "Palitan ang tema",
+  "siteSections": "Mga seksyon ng site",
+  "pageOfTotal": "Pahina {current} sa {total}",
+  "siteGenerated": "Nabuo ang site: {date}",
+  "licenseGraphic": "Grapiko ng {license}"
 }

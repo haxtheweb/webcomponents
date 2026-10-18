@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Натиҷа нест",
+  "viewsRecordHeading": "Сабт",
+  "viewsTitleImage": "Тасвири {title}",
+  "viewsTitlePreview": "Пешнамоиши {title}",
+  "viewsNoTimelineRecords": "Барои намоиши хатти замон сабтҳои бо сана вуҷуд надоранд.",
+  "viewsTimelineTitle": "Хатти замони {title}",
+  "viewsNoChartField": "Барои намоиши диаграмма майдони рақамӣ ёфт нашуд.",
+  "viewsChartingValue": "Диаграммаи {value}",
+  "viewsChartingValueByLabel": "Диаграммаи {value} аз рӯи {label}",
+  "viewsChartTitle": "Диаграммаи {title}",
+  "viewsNoTreeRecords": "Барои намоиши дарахт сабтҳои иерархӣ вуҷуд надоранд.",
+  "viewsNoGalleryRecords": "Барои намоиши галерея сабтҳои тасвир вуҷуд надоранд.",
+  "viewsNoPlaylistRecords": "Барои намоиши рӯйхати пахш сабтҳои медиа вуҷуд надоранд.",
+  "fetchFailed": "Гирифтан муяссар нашуд ({status})",
+  "unableToLoadViewData": "Боркунии маълумоти намо имконнопазир аст.",
+  "noResultsFound": "Ягон натиҷа ёфт нашуд.",
+  "refreshView": "Навсозии намо",
+  "breakIntoStaticContent": "Табдил ба мундариҷаи статикӣ",
+  "viewsOpenRecord": "Кушодани сабт"
+}

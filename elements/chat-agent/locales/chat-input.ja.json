@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "以前に送信したメッセージを表示 (上)",
+  "displayPreviousMessageDown": "以前に送信したメッセージを表示 (下)",
+  "sendPrompt": "プロンプトを送信",
+  "sendPromptToMerlin": "Merlin にプロンプトを送信",
+  "shortenPrompt": "プロンプトを {limit} 文字以内に短くしてください。"
+}

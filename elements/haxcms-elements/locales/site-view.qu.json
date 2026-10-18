@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Mana tarisqakuna",
+  "viewsRecordHeading": "Grabay",
+  "viewsTitleImage": "{title} siq'i",
+  "viewsTitlePreview": "{title} qhawarichiy",
+  "viewsNoTimelineRecords": "Mana p'unchawman hina qillqasqakuna kanchu pacha siqi rikuchinapaq.",
+  "viewsTimelineTitle": "{title} pacha siqi",
+  "viewsNoChartField": "Mana yupay campo tarikunchu chart rikuchinapaq.",
+  "viewsChartingValue": "{value} siq'ichkan",
+  "viewsChartingValueByLabel": "{value}-ta {label}-man hina siq'ichkan",
+  "viewsChartTitle": "{title} chart",
+  "viewsNoTreeRecords": "Mana patanchasqa qillqasqakuna kanchu sach'a rikuchinapaq.",
+  "viewsNoGalleryRecords": "Mana siq'i qillqasqakuna kanchu galeria rikuchinapaq.",
+  "viewsNoPlaylistRecords": "Mana media qillqasqakuna kanchu playlist rikuchinapaq.",
+  "fetchFailed": "Apamuy pantarqan ({status})",
+  "unableToLoadViewData": "Mana atikunchu qhaway willakuykunata apamuyta.",
+  "noResultsFound": "Mana tarisqakuna kanchu.",
+  "refreshView": "Qhawayta musuqchay",
+  "breakIntoStaticContent": "Mana kuyuq ukhunman t'aqay",
+  "viewsOpenRecord": "Qillqasqata kichay"
+}

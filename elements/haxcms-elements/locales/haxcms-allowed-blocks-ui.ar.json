@@ -10,5 +10,9 @@
   "save": "حفظ",
   "noDescription": "لا يوجد وصف متاح.",
   "details": "التفاصيل",
-  "loadingInventory": "جارٍ تحميل قائمة الكتل الكاملة…"
+  "loadingInventory": "جارٍ تحميل قائمة الكتل الكاملة…",
+  "selectAllButton": "تحديد الكل",
+  "deselectAllButton": "إلغاء تحديد الكل",
+  "selectedOfAvailable": "{selected} محدد / {total} متاح",
+  "savingBlocksFailed": "فشل حفظ الكتل: {error}"
 }

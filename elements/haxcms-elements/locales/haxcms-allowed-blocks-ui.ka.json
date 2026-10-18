@@ -10,5 +10,9 @@
   "save": "შენახვა",
   "noDescription": "აღწერა არ არის.",
   "details": "დეტალები",
-  "loadingInventory": "ბლოკების სრული სია იტვირთება…"
+  "loadingInventory": "ბლოკების სრული სია იტვირთება…",
+  "selectAllButton": "ყველას არჩევა",
+  "deselectAllButton": "არჩევის მოხსნა ყველაზე",
+  "selectedOfAvailable": "არჩეულია {selected} / ხელმისაწვდომია {total}",
+  "savingBlocksFailed": "ბლოკების შენახვა ვერ მოხერხდა: {error}"
 }

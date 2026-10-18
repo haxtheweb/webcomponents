@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "ສະແດງຂໍ້ຄວາມທີ່ສົ່ງກ່ອນໜ້າ (ຂຶ້ນ)",
+  "displayPreviousMessageDown": "ສະແດງຂໍ້ຄວາມທີ່ສົ່ງກ່ອນໜ້າ (ລົງ)",
+  "sendPrompt": "ສົ່ງຄຳສັ່ງ",
+  "sendPromptToMerlin": "ສົ່ງຄຳສັ່ງໄປຫາ Merlin",
+  "shortenPrompt": "ກະລຸນາຫຍໍ້ຄຳສັ່ງຂອງທ່ານໃຫ້ບໍ່ເກີນ {limit} ຕົວອັກສອນ."
+}

@@ -1,0 +1,11 @@
+{
+  "playlist": "प्लेलिस्ट",
+  "carousel": "कैरोसेल",
+  "slide": "स्लाइड",
+  "slideNumber": "स्लाइड {number}",
+  "slideOfTotal": "{total} में से स्लाइड {number}",
+  "previousSlide": "पिछली स्लाइड",
+  "nextSlide": "अगली स्लाइड",
+  "slidePages": "स्लाइड पेज",
+  "goToSlide": "स्लाइड {number} पर जाएँ"
+}

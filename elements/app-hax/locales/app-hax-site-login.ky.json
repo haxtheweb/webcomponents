@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Колдонуучу атын киргизиңиз",
+  "invalidUsernameOrPassword": "Колдонуучу аты же сырсөз туура эмес",
+  "welcomeLetsGo": "Кош келиңиз, {username}! Баштадык!",
+  "enterYourUsername": "Колдонуучу атыңызды киргизиңиз",
+  "username": "Колдонуучу аты",
+  "next": "Кийинки",
+  "welcomeBack": "Кайра кош келиңиз, {username}!",
+  "notYou": "Сиз эмессизби?",
+  "enterYourPassword": "Сырсөзүңүздү киргизиңиз",
+  "password": "Сырсөз",
+  "togglePasswordDisplay": "Сырсөздү көрсөтүү/жашыруу",
+  "login": "Кирүү"
+}

@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- varsayılan olarak ilk sayfa --",
+  "details": "Ayrıntılar",
+  "title": "Başlık",
+  "titleDescription": "Sitenin adı",
+  "homePage": "Ana sayfa",
+  "homePageDescription": "Varsayılan açılış / ana sayfa olarak kullanılacak sayfa",
+  "advanced": "Gelişmiş",
+  "serviceWorker": "Dinamik sayfaya service worker ekle",
+  "serviceWorkerDescription": "Kullanıcıların en son sunucu çıktısını her zaman hemen görmesi gerekiyorsa bunu devre dışı bırakın.",
+  "forceBrowserUpgrade": "Tarayıcı yükseltmesini zorunlu kıl",
+  "forceBrowserUpgradeDescription": "Site deneyimini yüklemeden önce sürekli güncellenen tarayıcılar gerektir.",
+  "unableToLoadSiteDetails": "Site ayrıntıları yüklenemedi.",
+  "noSiteDetails": "Kullanılabilir site ayrıntısı yok.",
+  "save": "Kaydet"
+}

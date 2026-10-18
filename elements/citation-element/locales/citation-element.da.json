@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Kreditering",
+  "licenseBySa": "Kreditering-DelPåSammeVilkår",
+  "licenseByNd": "Kreditering-IngenBearbejdelser",
+  "licenseByNc": "Kreditering-IkkeKommerciel",
+  "licenseByNcSa": "Kreditering-IkkeKommerciel-DelPåSammeVilkår",
+  "licenseByNcNd": "Kreditering-IkkeKommerciel-IngenBearbejdelser",
+  "citationWithLicense": "{title} af {creator}, licenseret under {license}. Tilgået {date}.",
+  "citationWithoutLicense": "{title} af {creator}. Tilgået {date}.",
+  "licenseGraphic": "Grafik for {license}"
+}

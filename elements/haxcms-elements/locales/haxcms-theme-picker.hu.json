@@ -1,0 +1,11 @@
+{
+  "theme": "Téma",
+  "active": "Aktív",
+  "selected": "Kijelölt",
+  "noPreview": "Nincs előnézet",
+  "currentlyActiveAndSelected": "Jelenleg aktív és kijelölt téma",
+  "currentlyActive": "Jelenleg aktív téma",
+  "selectedToApplyOnSave": "Mentéskor alkalmazandó kijelölt téma",
+  "themeSelection": "Téma kiválasztása",
+  "noThemesAvailable": "Nincsenek elérhető témák."
+}

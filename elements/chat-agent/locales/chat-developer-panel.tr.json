@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Kullanıcı sohbet günlüğünü konsolda tablo olarak göster",
+  "consoleTableUserText": "console.table() kullanıcı sohbet günlüğü",
+  "consoleTableUserTooltip": "Kullanıcı Sohbet Günlüğünü Konsola Tablo Olarak Yazdır",
+  "consoleTableMerlinLabel": "Merlin sohbet günlüğünü konsolda tablo olarak göster",
+  "consoleTableMerlinText": "console.table() Merlin sohbet günlüğü",
+  "consoleTableMerlinTooltip": "Merlin Sohbet Günlüğünü Konsola Tablo Olarak Yazdır",
+  "consoleTableAllLabel": "Tüm sohbet günlüğünü konsolda tablo olarak göster",
+  "consoleTableAllText": "console.table() tüm sohbet günlüğü",
+  "consoleTableAllTooltip": "Tüm Sohbet Günlüğünü Konsola Tablo Olarak Yazdır",
+  "downloadChatLogJson": "Sohbet günlüğünü .json olarak indir",
+  "downloadChatLogJsonTooltip": "Sohbet Günlüğünü .json Olarak İndir"
+}

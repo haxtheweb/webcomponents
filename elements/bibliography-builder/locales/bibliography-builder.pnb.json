@@ -1,3 +1,8 @@
 {
-  "title": "حوالے"
+  "title": "حوالے",
+  "export": "ایکسپورٹ",
+  "exportCitations": "حوالے ایکسپورٹ کرو",
+  "copy": "کاپی کرو",
+  "exportCitationFormat": "حوالے دا فارمیٹ ایکسپورٹ کرو",
+  "selectCitationFormatBelow": "تھلے توں حوالے دا فارمیٹ چݨو"
 }

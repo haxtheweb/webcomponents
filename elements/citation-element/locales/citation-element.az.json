@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Müəllif göstərilməklə",
+  "licenseBySa": "Müəllif göstərilməklə – Eyni şərtlərlə paylaşma",
+  "licenseByNd": "Müəllif göstərilməklə – Törəmə əsərlər olmadan",
+  "licenseByNc": "Müəllif göstərilməklə – Qeyri-kommersiya",
+  "licenseByNcSa": "Müəllif göstərilməklə – Qeyri-kommersiya – Eyni şərtlərlə paylaşma",
+  "licenseByNcNd": "Müəllif göstərilməklə – Qeyri-kommersiya – Törəmə əsərlər olmadan",
+  "citationWithLicense": "{title}, müəllif: {creator}, {license} lisenziyası ilə. Müraciət tarixi: {date}.",
+  "citationWithoutLicense": "{title}, müəllif: {creator}. Müraciət tarixi: {date}.",
+  "licenseGraphic": "{license} qrafikası"
+}

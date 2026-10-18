@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "שחררו קבצים כאן",
+  "uploadQueue": "תור העלאה",
+  "pending": "ממתין",
+  "preparing": "בהכנה",
+  "uploading": "מעלה",
+  "complete": "הושלם",
+  "aborted": "הופסק",
+  "cancelled": "בוטל",
+  "error": "שגיאה",
+  "errorWithStatus": "שגיאה: {status}",
+  "cancel": "ביטול",
+  "cancelUploadOf": "ביטול ההעלאה של {name}",
+  "retry": "ניסיון חוזר",
+  "retryUploadOf": "ניסיון חוזר להעלאת {name}",
+  "remove": "הסרה",
+  "removeFromQueue": "הסרת {name} מהתור",
+  "fileTypeNotAccepted": "סוג הקובץ אינו מותר: {name}",
+  "uploadFailed": "ההעלאה נכשלה: {status}",
+  "networkError": "שגיאת רשת"
+}

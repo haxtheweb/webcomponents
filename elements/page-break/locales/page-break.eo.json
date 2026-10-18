@@ -22,6 +22,13 @@
   "unpublish": "Malpublikigi",
   "savePage": "Konservi paĝon",
   "cancel": "Nuligi",
+  "delete": "Forigi",
+  "editTitle": "Redakti titolon",
+  "editIcon": "Redakti piktogramon",
+  "agent": "Agento",
+  "pageLockedUnlockToEdit": "Ĉi tiu paĝo estas ŝlosita. Malŝlosu ĝin unue por redakti.",
+  "pageLockedUnlockToChangePublishStatus": "Ĉi tiu paĝo estas ŝlosita. Malŝlosu ĝin unue por ŝanĝi la publikigan staton.",
+  "pageLockedUnlockToDelete": "Ĉi tiu paĝo estas ŝlosita. Malŝlosu ĝin unue por forigi.",
   "pageDetails": "Paĝdetaloj",
   "clickToUnlock": "Klaku por malŝlosi"
 }

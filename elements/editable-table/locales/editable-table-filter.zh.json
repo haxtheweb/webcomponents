@@ -1,0 +1,5 @@
+{
+  "toggleFilter": "切换筛选。",
+  "toggleFilterForColumn": "切换此列的筛选。",
+  "toggleColumnFilter": "切换第 {column} 列的筛选。"
+}

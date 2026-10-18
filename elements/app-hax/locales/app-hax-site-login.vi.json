@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Nhập tên người dùng",
+  "invalidUsernameOrPassword": "Tên người dùng hoặc mật khẩu không hợp lệ",
+  "welcomeLetsGo": "Chào mừng {username}! Bắt đầu thôi!",
+  "enterYourUsername": "Nhập tên người dùng của bạn",
+  "username": "Tên người dùng",
+  "next": "Tiếp",
+  "welcomeBack": "Chào mừng trở lại, {username}!",
+  "notYou": "Không phải bạn?",
+  "enterYourPassword": "Nhập mật khẩu của bạn",
+  "password": "Mật khẩu",
+  "togglePasswordDisplay": "Bật/tắt hiển thị mật khẩu",
+  "login": "Đăng nhập"
+}

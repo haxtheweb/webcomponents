@@ -1,3 +1,8 @@
 {
-  "title": "Riferimenti bibliografici"
+  "title": "Riferimenti bibliografici",
+  "export": "Esporta",
+  "exportCitations": "Esporta citazioni",
+  "copy": "Copia",
+  "exportCitationFormat": "Formato di esportazione delle citazioni",
+  "selectCitationFormatBelow": "Seleziona un formato di citazione qui sotto"
 }

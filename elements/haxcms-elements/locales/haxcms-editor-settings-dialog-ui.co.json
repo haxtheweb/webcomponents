@@ -5,5 +5,9 @@
   "buttons": "Buttoni",
   "futureButtonConfiguration": "A cunfigurazione persunalizata di i buttoni di l'editore ghjunghjerà prestu.",
   "save": "Salvà",
-  "saving": "Salvamentu…"
+  "saving": "Salvamentu…",
+  "novice": "Principiante",
+  "expert": "Espertu",
+  "toolbarPreviewAlt": "Anteprima di a barra di mudifica {audience}",
+  "savingEditorSettingsFailed": "Fiascu di u salvamentu di i parametri di l'editore: {error}"
 }

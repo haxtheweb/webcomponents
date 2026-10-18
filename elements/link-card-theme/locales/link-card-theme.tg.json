@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Пайванди лангар нусхабардорӣ шуд!",
+  "skipToContent": "Гузаштан ба мундариҷа",
+  "changePalette": "Тағйир додани палитра",
+  "primaryLinks": "Пайвандҳои асосӣ",
+  "socialLinks": "Пайвандҳои иҷтимоӣ",
+  "myProfile": "Профили ман",
+  "profileImageOf": "Акси профили {name}",
+  "profileImage": "Акси профил",
+  "linkCardProfile": "Профили корти пайванд",
+  "emptyStateLinks": "Барои намоиши тугмаҳои пайванд дар site.json унсурҳои менюи сатҳи болоӣ илова кунед.",
+  "titleOnPlatform": "{title} дар {platform}",
+  "openPlatform": "Кушодани {platform}",
+  "paletteUpdated": "Палитраи ранг ба имконоти {number} навсозӣ шуд."
+}

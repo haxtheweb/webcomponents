@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- bruk første side som standard --",
+  "details": "Detaljer",
+  "title": "Tittel",
+  "titleDescription": "Navnet på nettstedet",
+  "homePage": "Startside",
+  "homePageDescription": "Side som skal brukes som standard landingsside / startside",
+  "advanced": "Avansert",
+  "serviceWorker": "Legg til service worker på dynamisk side",
+  "serviceWorkerDescription": "Slå av dette hvis brukerne alltid skal se nyeste serverutdata umiddelbart.",
+  "forceBrowserUpgrade": "Tving nettleseroppgradering",
+  "forceBrowserUpgradeDescription": "Krev oppdaterte nettlesere før nettstedet lastes inn.",
+  "unableToLoadSiteDetails": "Kan ikke laste nettstedsdetaljer.",
+  "noSiteDetails": "Ingen nettstedsdetaljer er tilgjengelige.",
+  "save": "Lagre"
+}

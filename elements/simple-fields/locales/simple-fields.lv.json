@@ -9,5 +9,7 @@
   "record": "Ierakstīt",
   "pause": "Pauzēt ierakstu",
   "stopSave": "Apturēt un saglabāt",
-  "clickToTakePhoto": "Noklikšķiniet, lai uzņemtu foto"
+  "clickToTakePhoto": "Noklikšķiniet, lai uzņemtu foto",
+  "url": "URL",
+  "open": "atvērt"
 }

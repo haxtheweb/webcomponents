@@ -1,0 +1,17 @@
+{
+  "editNodes": "แก้ไขโหนด",
+  "editLines": "แก้ไขเส้น",
+  "reset": "รีเซ็ต",
+  "save": "บันทึก",
+  "cancel": "ยกเลิก",
+  "delete": "ลบ",
+  "type": "ประเภท:",
+  "topic": "หัวข้อ",
+  "subsection": "หัวข้อย่อย",
+  "name": "ชื่อ:",
+  "enterName": "ป้อนชื่อ",
+  "url": "URL:",
+  "enterUrl": "ป้อน URL",
+  "activeNode": "โหนดที่ใช้งานอยู่?",
+  "nodeId": "โหนด {id}"
+}

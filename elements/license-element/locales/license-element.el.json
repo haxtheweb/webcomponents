@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Αναφορά Δημιουργού",
+  "licenseBySa": "Αναφορά Δημιουργού - Παρόμοια Διανομή",
+  "licenseByNd": "Αναφορά Δημιουργού - Όχι Παράγωγα Έργα",
+  "licenseByNc": "Αναφορά Δημιουργού - Μη Εμπορική Χρήση",
+  "licenseByNcSa": "Αναφορά Δημιουργού - Μη Εμπορική Χρήση - Παρόμοια Διανομή",
+  "licenseByNcNd": "Αναφορά Δημιουργού - Μη Εμπορική Χρήση - Όχι Παράγωγα Έργα",
+  "licenseGraphic": "Γραφικό {license}",
+  "workByCreator": "{title} από {creator}",
+  "workByCreatorLicensed": "Το έργο {title} από {creator} διατίθεται με άδεια {license}.",
+  "permissionsBeyondScope": "Άδειες πέραν του πεδίου αυτής της άδειας είναι διαθέσιμες {link}.",
+  "author": "(συγγραφέας)",
+  "onTheLicensingDetailsPage": "στη σελίδα λεπτομερειών αδειοδότησης"
+}

@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Lövbər keçidi kopyalandı!",
+  "skipToContent": "Məzmuna keç",
+  "changePalette": "Palitranı dəyiş",
+  "primaryLinks": "Əsas keçidlər",
+  "socialLinks": "Sosial keçidlər",
+  "myProfile": "Profilim",
+  "profileImageOf": "{name} profil şəkli",
+  "profileImage": "Profil şəkli",
+  "linkCardProfile": "Keçid kartı profili",
+  "emptyStateLinks": "Keçid düymələrini göstərmək üçün site.json faylına yuxarı səviyyəli menyu elementləri əlavə edin.",
+  "titleOnPlatform": "{platform} platformasında {title}",
+  "openPlatform": "{platform} aç",
+  "paletteUpdated": "Rəng palitrası {number} nömrəli seçimə yeniləndi."
+}

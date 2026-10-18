@@ -1,0 +1,11 @@
+{
+  "licenseBy": "انتساب",
+  "licenseBySa": "انتساب - یکساں شراکت",
+  "licenseByNd": "انتساب - کوئی ماخوذ کام نہیں",
+  "licenseByNc": "انتساب - غیر تجارتی",
+  "licenseByNcSa": "انتساب - غیر تجارتی - یکساں شراکت",
+  "licenseByNcNd": "انتساب - غیر تجارتی - کوئی ماخوذ کام نہیں",
+  "citationWithLicense": "{title} از {creator}، {license} کے تحت لائسنس یافتہ۔ رسائی {date}۔",
+  "citationWithoutLicense": "{title} از {creator}۔ رسائی {date}۔",
+  "licenseGraphic": "{license} گرافک"
+}

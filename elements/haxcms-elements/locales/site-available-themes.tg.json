@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Боркунии мавзӯъҳо муяссар нашуд: {error}",
+  "noThemesForView": "Барои ин намо ягон мавзӯъ дастрас нест.",
+  "active": "Фаъол",
+  "themeIsActive": "Мавзӯи {name} фаъол аст",
+  "applyTheme": "Татбиқи мавзӯи {name}",
+  "apply": "Татбиқ",
+  "preview": "Пешнамоиш",
+  "name": "Ном",
+  "element": "Унсур",
+  "description": "Тавсиф",
+  "action": "Амал",
+  "loadingThemes": "Боркунии мавзӯъҳо...",
+  "themesShown": "{count} мавзӯъ нишон дода шуд",
+  "themesShownDefaults": "{count} мавзӯъ нишон дода шуд (пешфарзҳои app-hax)",
+  "availableHaxcmsThemes": "Мавзӯъҳои дастраси HAXcms",
+  "gallery": "Галерея",
+  "table": "Ҷадвал"
+}

@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Stjórnborðstafla með spjallannál notanda",
+  "consoleTableUserText": "console.table() spjallannáll notanda",
+  "consoleTableUserTooltip": "Prenta spjallannál notanda sem töflu í stjórnborð",
+  "consoleTableMerlinLabel": "Stjórnborðstafla með spjallannál Merlin",
+  "consoleTableMerlinText": "console.table() spjallannáll Merlin",
+  "consoleTableMerlinTooltip": "Prenta spjallannál Merlin sem töflu í stjórnborð",
+  "consoleTableAllLabel": "Stjórnborðstafla með öllum spjallannálnum",
+  "consoleTableAllText": "console.table() allur spjallannállinn",
+  "consoleTableAllTooltip": "Prenta allan spjallannálinn sem töflu í stjórnborð",
+  "downloadChatLogJson": "Sækja spjallannál sem .json",
+  "downloadChatLogJsonTooltip": "Sækja spjallannál sem .json"
+}

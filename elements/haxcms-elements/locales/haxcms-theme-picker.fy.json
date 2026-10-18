@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Aktyf",
+  "selected": "Selektearre",
+  "noPreview": "Gjin foarbyld",
+  "currentlyActiveAndSelected": "Op it stuit aktyf en selektearre tema",
+  "currentlyActive": "Op it stuit aktyf tema",
+  "selectedToApplyOnSave": "Selektearre tema om ta te passen by it bewarjen",
+  "themeSelection": "Temaseleksje",
+  "noThemesAvailable": "Gjin tema's beskikber."
+}

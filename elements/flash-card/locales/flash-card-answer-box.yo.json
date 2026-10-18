@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Ìdáhùn rẹ",
   "checkAnswer": "Ṣàyẹ̀wò ìdáhùn",
-  "retry": "Tún gbìyànjú"
+  "retry": "Tún gbìyànjú",
+  "correct": "Ó tọ́!",
+  "incorrect": "Kò tọ́!",
+  "correctAnswer": "Ìdáhùn Tó Tọ́: {answer}"
 }

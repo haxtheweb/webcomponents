@@ -1,4 +1,11 @@
 {
   "readMore": "Бештар хонед",
-  "home": "Асосӣ"
+  "home": "Асосӣ",
+  "anchorLinkCopied": "Пайванди лангар нусхабардорӣ шуд!",
+  "skipToContent": "Гузаштан ба мундариҷа",
+  "changeTheme": "Тағйир додани мавзӯъ",
+  "siteSections": "Бахшҳои сомона",
+  "pageOfTotal": "Саҳифаи {current} аз {total}",
+  "siteGenerated": "Сомона тавлид шуд: {date}",
+  "licenseGraphic": "Тасвири {license}"
 }

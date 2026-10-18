@@ -1,5 +1,8 @@
 {
   "yourAnswer": "உங்கள் பதில்",
   "checkAnswer": "பதிலைச் சரிபார்",
-  "retry": "மீண்டும் முயல்"
+  "retry": "மீண்டும் முயல்",
+  "correct": "சரி!",
+  "incorrect": "தவறு!",
+  "correctAnswer": "சரியான விடை: {answer}"
 }

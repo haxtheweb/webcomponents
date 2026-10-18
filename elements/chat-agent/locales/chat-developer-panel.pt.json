@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tabela no console do registro de chat do usuário",
+  "consoleTableUserText": "console.table() do registro de chat do usuário",
+  "consoleTableUserTooltip": "Imprimir o registro de chat do usuário como tabela no console",
+  "consoleTableMerlinLabel": "Tabela no console do registro de chat do Merlin",
+  "consoleTableMerlinText": "console.table() do registro de chat do Merlin",
+  "consoleTableMerlinTooltip": "Imprimir o registro de chat do Merlin como tabela no console",
+  "consoleTableAllLabel": "Tabela no console do registro de chat completo",
+  "consoleTableAllText": "console.table() do registro de chat completo",
+  "consoleTableAllTooltip": "Imprimir o registro de chat completo como tabela no console",
+  "downloadChatLogJson": "Baixar registro do chat como .json",
+  "downloadChatLogJsonTooltip": "Baixar registro do chat como .json"
+}

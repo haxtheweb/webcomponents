@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Titlul rolului",
+  "describeYourRole": "Descrie rolul tău aici...",
+  "present": "Prezentați",
+  "skills": "Competențe:",
+  "skillsAndMore": "{skills} și încă +{count}",
+  "yearShort": "{count} an",
+  "yearsShort": "{count} ani",
+  "monthShort": "{count} lună",
+  "monthsShort": "{count} luni"
+}

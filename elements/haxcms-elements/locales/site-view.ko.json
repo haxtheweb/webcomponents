@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "결과 없음",
+  "viewsRecordHeading": "녹화",
+  "viewsTitleImage": "{title} 이미지",
+  "viewsTitlePreview": "{title} 미리보기",
+  "viewsNoTimelineRecords": "타임라인으로 표시할 날짜 기반 레코드가 없습니다.",
+  "viewsTimelineTitle": "{title} 타임라인",
+  "viewsNoChartField": "차트로 표시할 숫자 필드를 찾지 못했습니다.",
+  "viewsChartingValue": "{value} 차트 표시",
+  "viewsChartingValueByLabel": "{label}별 {value} 차트 표시",
+  "viewsChartTitle": "{title} 차트",
+  "viewsNoTreeRecords": "트리로 표시할 계층 레코드가 없습니다.",
+  "viewsNoGalleryRecords": "갤러리로 표시할 이미지 레코드가 없습니다.",
+  "viewsNoPlaylistRecords": "재생 목록으로 표시할 미디어 레코드가 없습니다.",
+  "fetchFailed": "가져오기 실패({status})",
+  "unableToLoadViewData": "보기 데이터를 불러올 수 없습니다.",
+  "noResultsFound": "결과가 없습니다.",
+  "refreshView": "보기 새로 고침",
+  "breakIntoStaticContent": "정적 콘텐츠로 분리",
+  "viewsOpenRecord": "레코드 열기"
+}

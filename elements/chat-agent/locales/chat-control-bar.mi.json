@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Tikiake Rangitaki hei txt",
+  "downloadChatLog": "Tikiake Rangitaki Kōrerorero",
+  "resetChat": "Tautuhi Anō i te Kōrerorero",
+  "toggleDataCollection": "Whakakā/Whakaweto Kohinga Raraunga",
+  "dataCollection": "Kohinga Raraunga",
+  "toggleDeveloperMode": "Whakakā/Whakaweto Aratau Kaiwhakawhanake",
+  "exitFullView": "Puta i te Tirohanga Katoa",
+  "enterFullView": "Tomo ki te Tirohanga Katoa",
+  "hideInterface": "Huna i te Atanga",
+  "resetChatConfirm": "Tautuhi anō i te kōrerorero?",
+  "downloadBeforeResetConfirm": "Tikiake i te rangitaki kōrerorero i mua i te tautuhi anō?",
+  "dataCollectionOn": "Ka whakamahia ō kōrerorero hei whakangungu i ā mātou tauira AI",
+  "dataCollectionOff": "Kāore ō kōrerorero e whakamahia hei whakangungu i ā mātou tauira AI"
+}

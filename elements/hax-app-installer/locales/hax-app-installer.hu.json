@@ -54,5 +54,6 @@
   "requirementUppercase": "Egy nagybetű",
   "requirementLowercase": "Egy kisbetű",
   "requirementNumber": "Egy szám",
-  "requirementSymbol": "Egy szimbólum"
+  "requirementSymbol": "Egy szimbólum",
+  "haxcmsMascotAlt": "HAXcms világutazó kabala"
 }

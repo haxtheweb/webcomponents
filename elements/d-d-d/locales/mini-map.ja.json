@@ -1,0 +1,17 @@
+{
+  "editNodes": "ノードを編集",
+  "editLines": "線を編集",
+  "reset": "リセット",
+  "save": "保存",
+  "cancel": "キャンセル",
+  "delete": "削除",
+  "type": "種類:",
+  "topic": "トピック",
+  "subsection": "サブセクション",
+  "name": "名前:",
+  "enterName": "名前を入力",
+  "url": "URL:",
+  "enterUrl": "URL を入力",
+  "activeNode": "アクティブなノード?",
+  "nodeId": "ノード {id}"
+}

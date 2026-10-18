@@ -1,4 +1,11 @@
 {
   "readMore": "Baca lagi",
-  "home": "Laman Utama"
+  "home": "Laman Utama",
+  "anchorLinkCopied": "Pautan sauh disalin!",
+  "skipToContent": "Langkau ke kandungan",
+  "changeTheme": "Tukar tema",
+  "siteSections": "Bahagian laman",
+  "pageOfTotal": "Halaman {current} daripada {total}",
+  "siteGenerated": "Laman dijana: {date}",
+  "licenseGraphic": "Grafik {license}"
 }

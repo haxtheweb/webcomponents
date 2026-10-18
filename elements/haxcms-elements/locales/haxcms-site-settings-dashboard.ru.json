@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "Отключено в разделе «Функции»",
+  "appearance": "Внешний вид",
+  "structure": "Структура",
+  "content": "Содержимое",
+  "reports": "Отчёты",
+  "about": "О сайте",
+  "files": "Файлы",
+  "views": "Представления",
+  "features": "Функции",
+  "editor": "Редактор",
+  "blocks": "Блоки",
+  "importExport": "Импорт / экспорт",
+  "details": "Подробности",
+  "advanced": "Дополнительно"
+}

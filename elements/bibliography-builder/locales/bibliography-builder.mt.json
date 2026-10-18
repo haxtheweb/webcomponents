@@ -1,3 +1,8 @@
 {
-  "title": "Referenzi"
+  "title": "Referenzi",
+  "export": "Esporta",
+  "exportCitations": "Esporta ċ-Ċitazzjonijiet",
+  "copy": "Ikkopja",
+  "exportCitationFormat": "Format tal-esportazzjoni taċ-ċitazzjonijiet",
+  "selectCitationFormatBelow": "Agħżel format taċ-ċitazzjoni hawn taħt"
 }

@@ -1,0 +1,14 @@
+{
+  "licenseBy": "കടപ്പാട്",
+  "licenseBySa": "കടപ്പാട് ഒരുപോലെ പങ്കിടുക",
+  "licenseByNd": "കടപ്പാട് വ്യുൽപ്പന്നങ്ങൾ പാടില്ല",
+  "licenseByNc": "കടപ്പാട് വാണിജ്യേതരം",
+  "licenseByNcSa": "കടപ്പാട് വാണിജ്യേതരം ഒരുപോലെ പങ്കിടുക",
+  "licenseByNcNd": "കടപ്പാട് വാണിജ്യേതരം വ്യുൽപ്പന്നങ്ങൾ പാടില്ല",
+  "licenseGraphic": "{license} ഗ്രാഫിക്",
+  "workByCreator": "{creator} രചിച്ച {title}",
+  "workByCreatorLicensed": "{creator} രചിച്ച {title} ഒരു {license} പ്രകാരം ലൈസൻസ് ചെയ്തിരിക്കുന്നു.",
+  "permissionsBeyondScope": "ഈ ലൈസൻസിന്റെ പരിധിക്കപ്പുറമുള്ള അനുമതികൾ {link} ലഭ്യമാണ്.",
+  "author": "(രചയിതാവ്)",
+  "onTheLicensingDetailsPage": "ലൈസൻസിംഗ് വിശദാംശ പേജിൽ"
+}

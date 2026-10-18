@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Sauke fayiloli a nan",
+  "uploadQueue": "Layin ɗorawa",
+  "pending": "Yana jira",
+  "preparing": "Ana shiryawa",
+  "uploading": "Ana ɗorawa",
+  "complete": "An kammala",
+  "aborted": "An katse",
+  "cancelled": "An soke",
+  "error": "Kuskure",
+  "errorWithStatus": "Kuskure: {status}",
+  "cancel": "Soke",
+  "cancelUploadOf": "Soke ɗora {name}",
+  "retry": "Sake gwadawa",
+  "retryUploadOf": "Sake gwada ɗora {name}",
+  "remove": "Cire",
+  "removeFromQueue": "Cire {name} daga layi",
+  "fileTypeNotAccepted": "Ba a karɓi nau'in fayil ba: {name}",
+  "uploadFailed": "Ɗorawa ta gaza: {status}",
+  "networkError": "Kuskuren hanyar sadarwa"
+}

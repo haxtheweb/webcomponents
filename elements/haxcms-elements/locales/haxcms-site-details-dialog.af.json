@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- verstek na eerste bladsy --",
+  "details": "Besonderhede",
+  "title": "Titel",
+  "titleDescription": "Naam van die webwerf",
+  "homePage": "Tuisblad",
+  "homePageDescription": "Bladsy om as die verstek-landingsbladsy / tuisblad te gebruik",
+  "advanced": "Gevorderd",
+  "serviceWorker": "Voeg dienswerker by dinamiese bladsy",
+  "serviceWorkerDescription": "Deaktiveer dit as gebruikers altyd onmiddellik die nuutste bedieneruitset moet sien.",
+  "forceBrowserUpgrade": "Dwing blaaieropgradering af",
+  "forceBrowserUpgradeDescription": "Vereis immergroen blaaiers voordat die webwerfervaring gelaai word.",
+  "unableToLoadSiteDetails": "Kan nie webwerfbesonderhede laai nie.",
+  "noSiteDetails": "Geen webwerfbesonderhede is beskikbaar nie.",
+  "save": "Stoor"
+}

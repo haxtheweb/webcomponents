@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Näytä teeman esikatselu",
+  "hideThemePreview": "Piilota teeman esikatselu",
+  "themePreviewPanel": "Teeman esikatselupaneeli",
+  "themePreview": "Teeman esikatselu",
+  "themePreviewDescription": "Kokeile teemaa ja palettia väliaikaisesti selatessasi. Palauta alkuperäinen ulkoasu valitsemalla Peruuta.",
+  "loadingThemes": "Ladataan teemoja...",
+  "theme": "Teema",
+  "palette": "Paletti",
+  "cancel": "Peruuta",
+  "openAppearanceSettings": "Avaa ulkoasuasetukset"
+}

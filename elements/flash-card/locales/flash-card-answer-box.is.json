@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Svarið þitt",
   "checkAnswer": "Athuga svar",
-  "retry": "Reyna aftur"
+  "retry": "Reyna aftur",
+  "correct": "Rétt!",
+  "incorrect": "Rangt!",
+  "correctAnswer": "Rétt svar: {answer}"
 }

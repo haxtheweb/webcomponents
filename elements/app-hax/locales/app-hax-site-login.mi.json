@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Tāurua te ingoa Kaiwhakamahi",
+  "invalidUsernameOrPassword": "He Ingoa Kaiwhakamahi, Kupuhipa Muhu rānei",
+  "welcomeLetsGo": "Nau mai {username}! Kia haere tātou!",
+  "enterYourUsername": "Tāurua tō ingoa kaiwhakamahi",
+  "username": "Ingoa kaiwhakamahi",
+  "next": "Panuku",
+  "welcomeBack": "Nau mai anō, {username}!",
+  "notYou": "Ehara i a koe?",
+  "enterYourPassword": "Tāurua tō kupuhipa",
+  "password": "Kupuhipa",
+  "togglePasswordDisplay": "Whakaatu/huna i te kupuhipa",
+  "login": "Takiuru"
+}

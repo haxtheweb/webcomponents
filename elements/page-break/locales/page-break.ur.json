@@ -22,6 +22,13 @@
   "unpublish": "اشاعت منسوخ کریں",
   "savePage": "صفحہ محفوظ کریں",
   "cancel": "منسوخ کریں",
+  "delete": "حذف کریں",
+  "editTitle": "عنوان میں ترمیم کریں",
+  "editIcon": "آئیکن میں ترمیم کریں",
+  "agent": "ایجنٹ",
+  "pageLockedUnlockToEdit": "یہ صفحہ مقفل ہے۔ ترمیم کے لیے پہلے اسے کھولیں۔",
+  "pageLockedUnlockToChangePublishStatus": "یہ صفحہ مقفل ہے۔ اشاعت کی حیثیت بدلنے کے لیے پہلے اسے کھولیں۔",
+  "pageLockedUnlockToDelete": "یہ صفحہ مقفل ہے۔ حذف کرنے کے لیے پہلے اسے کھولیں۔",
   "pageDetails": "صفحے کی تفصیلات",
   "clickToUnlock": "کھولنے کے لیے کلک کریں"
 }

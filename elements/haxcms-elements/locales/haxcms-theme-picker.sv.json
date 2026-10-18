@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Aktiv",
+  "selected": "Vald",
+  "noPreview": "Ingen förhandsvisning",
+  "currentlyActiveAndSelected": "Aktivt och valt tema",
+  "currentlyActive": "Aktivt tema",
+  "selectedToApplyOnSave": "Valt tema att tillämpa när du sparar",
+  "themeSelection": "Temaval",
+  "noThemesAvailable": "Inga teman tillgängliga."
+}

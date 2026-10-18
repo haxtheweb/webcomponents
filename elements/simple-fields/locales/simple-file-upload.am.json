@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "ፋይሎችን እዚህ ይጣሉ",
+  "uploadQueue": "የመስቀያ ወረፋ",
+  "pending": "በመጠባበቅ ላይ",
+  "preparing": "በማዘጋጀት ላይ",
+  "uploading": "በመስቀል ላይ",
+  "complete": "ተጠናቋል",
+  "aborted": "ተቋርጧል",
+  "cancelled": "ተሰርዟል",
+  "error": "ስህተት",
+  "errorWithStatus": "ስህተት: {status}",
+  "cancel": "ሰርዝ",
+  "cancelUploadOf": "የ{name} መስቀልን ሰርዝ",
+  "retry": "እንደገና ሞክር",
+  "retryUploadOf": "የ{name} መስቀልን እንደገና ሞክር",
+  "remove": "አስወግድ",
+  "removeFromQueue": "{name}ን ከወረፋው አስወግድ",
+  "fileTypeNotAccepted": "የፋይል ዓይነቱ ተቀባይነት የለውም: {name}",
+  "uploadFailed": "መስቀል አልተሳካም: {status}",
+  "networkError": "የአውታረ መረብ ስህተት"
+}

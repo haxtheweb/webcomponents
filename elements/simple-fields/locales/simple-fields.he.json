@@ -9,5 +9,7 @@
   "record": "הקלטה",
   "pause": "השהיית הקלטה",
   "stopSave": "עצירה ושמירה",
-  "clickToTakePhoto": "לחצו כדי לצלם תמונה"
+  "clickToTakePhoto": "לחצו כדי לצלם תמונה",
+  "url": "URL",
+  "open": "פתיחה"
 }

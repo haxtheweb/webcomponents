@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Cluaisín {xOfY}",
+  "xOfY": "{order} as {total}",
+  "endOfTab": "Deireadh chluaisín {xOfY}. Ar ais chuig {tabs}.",
+  "tabs": "cluaisíní"
+}

@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Neniuj rezultoj",
+  "viewsRecordHeading": "Registri",
+  "viewsTitleImage": "Bildo de {title}",
+  "viewsTitlePreview": "Antaŭrigardo de {title}",
+  "viewsNoTimelineRecords": "Neniuj dat-orientitaj registroj disponeblas por tempolinia montrado.",
+  "viewsTimelineTitle": "Tempolinio de {title}",
+  "viewsNoChartField": "Neniu nombra kampo detektita por diagrama montrado.",
+  "viewsChartingValue": "Diagramante {value}",
+  "viewsChartingValueByLabel": "Diagramante {value} laŭ {label}",
+  "viewsChartTitle": "Diagramo de {title}",
+  "viewsNoTreeRecords": "Neniuj hierarkiaj registroj disponeblas por arba montrado.",
+  "viewsNoGalleryRecords": "Neniuj bildaj registroj disponeblas por galeria montrado.",
+  "viewsNoPlaylistRecords": "Neniuj aŭdvidaĵaj registroj disponeblas por ludlista montrado.",
+  "fetchFailed": "Akiro malsukcesis ({status})",
+  "unableToLoadViewData": "Ne eblas ŝargi vidajn datumojn.",
+  "noResultsFound": "Neniuj rezultoj trovitaj.",
+  "refreshView": "Refreŝigi vidon",
+  "breakIntoStaticContent": "Rompi en statikan enhavon",
+  "viewsOpenRecord": "Malfermi rikordon"
+}

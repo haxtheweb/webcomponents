@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Ачаалж байна...",
   "youTubeStartLoading": "Тоглуулах товчийг дарна уу.",
   "youTubeTranscriptLabel": "Медиа тоглож эхэлмэгц бичвэр ачаалагдана.",
-  "audioDescriptionLabel": "Аудио тайлбар"
+  "audioDescriptionLabel": "Аудио тайлбар",
+  "openOnYouTube": "YouTube-д нээх"
 }

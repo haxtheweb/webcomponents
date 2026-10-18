@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Geen resultaten",
+  "viewsRecordHeading": "Opnemen",
+  "viewsTitleImage": "Afbeelding van {title}",
+  "viewsTitlePreview": "Voorbeeld van {title}",
+  "viewsNoTimelineRecords": "Geen datumgebonden records beschikbaar voor tijdlijnweergave.",
+  "viewsTimelineTitle": "Tijdlijn van {title}",
+  "viewsNoChartField": "Geen numeriek veld gevonden voor grafiekweergave.",
+  "viewsChartingValue": "Grafiek van {value}",
+  "viewsChartingValueByLabel": "Grafiek van {value} per {label}",
+  "viewsChartTitle": "Grafiek van {title}",
+  "viewsNoTreeRecords": "Geen hiërarchische records beschikbaar voor boomweergave.",
+  "viewsNoGalleryRecords": "Geen afbeeldingsrecords beschikbaar voor galerijweergave.",
+  "viewsNoPlaylistRecords": "Geen mediarecords beschikbaar voor afspeellijstweergave.",
+  "fetchFailed": "Ophalen mislukt ({status})",
+  "unableToLoadViewData": "Kan weergavegegevens niet laden.",
+  "noResultsFound": "Geen resultaten gevonden.",
+  "refreshView": "Weergave vernieuwen",
+  "breakIntoStaticContent": "Omzetten naar statische inhoud",
+  "viewsOpenRecord": "Record openen"
+}

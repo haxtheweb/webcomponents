@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "لاگ txt وجوں ڈاؤن لوڈ کرو",
+  "downloadChatLog": "چیٹ لاگ ڈاؤن لوڈ کرو",
+  "resetChat": "چیٹ ری سیٹ کرو",
+  "toggleDataCollection": "ڈیٹا اکٹھا کرنا بدلو",
+  "dataCollection": "ڈیٹا اکٹھا کرنا",
+  "toggleDeveloperMode": "ڈویلپر موڈ بدلو",
+  "exitFullView": "پورا ویو چھڈو",
+  "enterFullView": "پورا ویو کھولو",
+  "hideInterface": "انٹرفیس لُکاؤ",
+  "resetChatConfirm": "چیٹ ری سیٹ کرنی اے؟",
+  "downloadBeforeResetConfirm": "ری سیٹ توں پہلاں چیٹ لاگ ڈاؤن لوڈ کرنا اے؟",
+  "dataCollectionOn": "تہاڈیاں گلاں باتاں ساڈے AI ماڈلاں دی تربیت لئی ورتیاں جاݨ گیاں",
+  "dataCollectionOff": "تہاڈیاں گلاں باتاں ساڈے AI ماڈلاں دی تربیت لئی نئیں ورتیاں جاݨ گیاں"
+}

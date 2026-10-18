@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "",
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
-  "audioDescriptionLabel": "Аудио опис"
+  "audioDescriptionLabel": "Аудио опис",
+  "openOnYouTube": "Отвори на YouTube"
 }

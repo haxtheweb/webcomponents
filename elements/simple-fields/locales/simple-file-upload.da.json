@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Slip filer her",
+  "uploadQueue": "Uploadkø",
+  "pending": "Afventer",
+  "preparing": "Forbereder",
+  "uploading": "Uploader",
+  "complete": "Fuldført",
+  "aborted": "Afbrudt",
+  "cancelled": "Annulleret",
+  "error": "Fejl",
+  "errorWithStatus": "Fejl: {status}",
+  "cancel": "Annuller",
+  "cancelUploadOf": "Annuller upload af {name}",
+  "retry": "Prøv igen",
+  "retryUploadOf": "Prøv upload af {name} igen",
+  "remove": "Fjern",
+  "removeFromQueue": "Fjern {name} fra køen",
+  "fileTypeNotAccepted": "Filtypen accepteres ikke: {name}",
+  "uploadFailed": "Upload mislykkedes: {status}",
+  "networkError": "Netværksfejl"
+}

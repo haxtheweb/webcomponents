@@ -1,4 +1,11 @@
 {
   "readMore": "Կարդալ ավելին",
-  "home": "Գլխավոր"
+  "home": "Գլխավոր",
+  "anchorLinkCopied": "Խարիսխ հղումը պատճենվեց!",
+  "skipToContent": "Անցնել բովանդակությանը",
+  "changeTheme": "Փոխել թեման",
+  "siteSections": "Կայքի բաժիններ",
+  "pageOfTotal": "Էջ {current}՝ {total}-ից",
+  "siteGenerated": "Կայքը ստեղծվել է՝ {date}",
+  "licenseGraphic": "{license} պատկեր"
 }

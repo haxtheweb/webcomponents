@@ -1,0 +1,17 @@
+{
+  "editNodes": "Golygu Nodau",
+  "editLines": "Golygu Llinellau",
+  "reset": "Ailosod",
+  "save": "Cadw",
+  "cancel": "Canslo",
+  "delete": "Dileu",
+  "type": "Math:",
+  "topic": "Pwnc",
+  "subsection": "Is-adran",
+  "name": "Enw:",
+  "enterName": "Rhowch Enw",
+  "url": "URL:",
+  "enterUrl": "Rhowch URL",
+  "activeNode": "Nod Gweithredol?",
+  "nodeId": "Nod {id}"
+}

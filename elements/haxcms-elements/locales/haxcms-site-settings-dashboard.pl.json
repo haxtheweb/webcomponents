@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "Wyłączone w funkcjach",
+  "appearance": "Wygląd",
+  "structure": "Struktura",
+  "content": "Zawartość",
+  "reports": "Raporty",
+  "about": "Informacje",
+  "files": "Pliki",
+  "views": "Widoki",
+  "features": "Funkcje",
+  "editor": "Edytor",
+  "blocks": "Bloki",
+  "importExport": "Import / eksport",
+  "details": "Szczegóły",
+  "advanced": "Zaawansowane"
+}

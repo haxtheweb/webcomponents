@@ -1,0 +1,11 @@
+{
+  "roleTitle": "د دندې سرلیک",
+  "describeYourRole": "خپله دنده دلته تشریح کړئ...",
+  "present": "وړاندې کول",
+  "skills": "مهارتونه:",
+  "skillsAndMore": "{skills} او +{count} نور",
+  "yearShort": "{count} کال",
+  "yearsShort": "{count} کاله",
+  "monthShort": "{count} میاشت",
+  "monthsShort": "{count} میاشتې"
+}

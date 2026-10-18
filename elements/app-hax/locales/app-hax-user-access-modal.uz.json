@@ -7,5 +7,7 @@
   "userAccessGranted": "Foydalanuvchiga ruxsat muvaffaqiyatli berildi!",
   "userNotFound": "Foydalanuvchi topilmadi yoki ruxsatsiz",
   "loadingAddingUser": "Foydalanuvchi qo‘shilmoqda...",
-  "grantAccessTo": "Ruxsat berish:"
+  "grantAccessTo": "Ruxsat berish:",
+  "networkErrorTryAgain": "Tarmoq xatosi yuz berdi. Qaytadan urinib koʻring.",
+  "characterWillAppear": "Foydalanuvchi nomini kiritganingizda personaj paydo boʻladi"
 }

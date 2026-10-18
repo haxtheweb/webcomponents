@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Τίτλος ρόλου",
+  "describeYourRole": "Περιγράψτε τον ρόλο σας εδώ...",
+  "present": "Παρουσίαση",
+  "skills": "Δεξιότητες:",
+  "skillsAndMore": "{skills} και +{count} ακόμη",
+  "yearShort": "{count} έτος",
+  "yearsShort": "{count} έτη",
+  "monthShort": "{count} μήνας",
+  "monthsShort": "{count} μήνες"
+}

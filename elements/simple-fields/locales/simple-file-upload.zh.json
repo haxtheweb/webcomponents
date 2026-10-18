@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "将文件拖放到此处",
+  "uploadQueue": "上传队列",
+  "pending": "等待中",
+  "preparing": "准备中",
+  "uploading": "上传中",
+  "complete": "已完成",
+  "aborted": "已中止",
+  "cancelled": "已取消",
+  "error": "错误",
+  "errorWithStatus": "错误：{status}",
+  "cancel": "取消",
+  "cancelUploadOf": "取消上传 {name}",
+  "retry": "重试",
+  "retryUploadOf": "重试上传 {name}",
+  "remove": "删除",
+  "removeFromQueue": "从队列中移除 {name}",
+  "fileTypeNotAccepted": "不接受的文件类型：{name}",
+  "uploadFailed": "上传失败：{status}",
+  "networkError": "网络错误"
+}

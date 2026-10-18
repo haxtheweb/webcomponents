@@ -1,0 +1,11 @@
+{
+  "licenseBy": "แสดงที่มา",
+  "licenseBySa": "แสดงที่มา-อนุญาตแบบเดียวกัน",
+  "licenseByNd": "แสดงที่มา-ห้ามแก้ไข",
+  "licenseByNc": "แสดงที่มา-ไม่ใช้เพื่อการค้า",
+  "licenseByNcSa": "แสดงที่มา-ไม่ใช้เพื่อการค้า-อนุญาตแบบเดียวกัน",
+  "licenseByNcNd": "แสดงที่มา-ไม่ใช้เพื่อการค้า-ห้ามแก้ไข",
+  "citationWithLicense": "{title} โดย {creator} อยู่ภายใต้สัญญาอนุญาต {license} เข้าถึงเมื่อ {date}",
+  "citationWithoutLicense": "{title} โดย {creator} เข้าถึงเมื่อ {date}",
+  "licenseGraphic": "กราฟิก {license}"
+}

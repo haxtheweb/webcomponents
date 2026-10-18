@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Navngivelse",
+  "licenseBySa": "Navngivelse-DelPåSammeVilkår",
+  "licenseByNd": "Navngivelse-IngenBearbeidelse",
+  "licenseByNc": "Navngivelse-IkkeKommersiell",
+  "licenseByNcSa": "Navngivelse-IkkeKommersiell-DelPåSammeVilkår",
+  "licenseByNcNd": "Navngivelse-IkkeKommersiell-IngenBearbeidelse",
+  "licenseGraphic": "Grafikk for {license}",
+  "workByCreator": "{title} av {creator}",
+  "workByCreatorLicensed": "{title} av {creator} er lisensiert under {license}.",
+  "permissionsBeyondScope": "Tillatelser utover denne lisensen er tilgjengelige {link}.",
+  "author": "(forfatter)",
+  "onTheLicensingDetailsPage": "på siden med lisensdetaljer"
+}

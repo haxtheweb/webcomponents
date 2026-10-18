@@ -1,0 +1,11 @@
+{
+  "playlist": "Pleylist",
+  "carousel": "karusel",
+  "slide": "slayd",
+  "slideNumber": "{number}-slayd",
+  "slideOfTotal": "{number}-slayd, jami {total} ta",
+  "previousSlide": "Oldingi slayd",
+  "nextSlide": "Keyingi slayd",
+  "slidePages": "Slayd sahifalari",
+  "goToSlide": "{number}-slaydga oʻtish"
+}

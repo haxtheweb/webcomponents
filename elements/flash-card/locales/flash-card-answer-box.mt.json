@@ -1,5 +1,8 @@
 {
   "yourAnswer": "It-tweġiba tiegħek",
   "checkAnswer": "Iċċekkja t-tweġiba",
-  "retry": "Erġa' pprova"
+  "retry": "Erġa' pprova",
+  "correct": "Korrett!",
+  "incorrect": "Mhux korrett!",
+  "correctAnswer": "Tweġiba Korretta: {answer}"
 }

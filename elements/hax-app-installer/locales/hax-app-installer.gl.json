@@ -54,5 +54,6 @@
   "requirementUppercase": "Unha letra maiúscula",
   "requirementLowercase": "Unha letra minúscula",
   "requirementNumber": "Un número",
-  "requirementSymbol": "Un símbolo"
+  "requirementSymbol": "Un símbolo",
+  "haxcmsMascotAlt": "Mascota viaxeira mundial de HAXcms"
 }

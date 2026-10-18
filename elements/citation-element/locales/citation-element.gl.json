@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Recoñecemento",
+  "licenseBySa": "Recoñecemento-CompartirIgual",
+  "licenseByNd": "Recoñecemento-SenObraDerivada",
+  "licenseByNc": "Recoñecemento-NonComercial",
+  "licenseByNcSa": "Recoñecemento-NonComercial-CompartirIgual",
+  "licenseByNcNd": "Recoñecemento-NonComercial-SenObraDerivada",
+  "citationWithLicense": "{title} de {creator}, con licenza {license}. Consultado o {date}.",
+  "citationWithoutLicense": "{title} de {creator}. Consultado o {date}.",
+  "licenseGraphic": "Gráfico de {license}"
+}

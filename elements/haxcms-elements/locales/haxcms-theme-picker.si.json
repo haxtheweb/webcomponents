@@ -1,0 +1,11 @@
+{
+  "theme": "තේමාව",
+  "active": "සක්‍රිය",
+  "selected": "තෝරාගත්",
+  "noPreview": "පෙරදසුනක් නැත",
+  "currentlyActiveAndSelected": "දැනට සක්‍රිය සහ තෝරාගත් තේමාව",
+  "currentlyActive": "දැනට සක්‍රිය තේමාව",
+  "selectedToApplyOnSave": "සුරැකීමේදී යෙදීමට තෝරාගත් තේමාව",
+  "themeSelection": "තේමා තේරීම",
+  "noThemesAvailable": "තේමා නොමැත."
+}

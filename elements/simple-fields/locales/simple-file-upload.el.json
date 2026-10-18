@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Αφήστε αρχεία εδώ",
+  "uploadQueue": "Ουρά μεταφόρτωσης",
+  "pending": "Σε αναμονή",
+  "preparing": "Προετοιμασία",
+  "uploading": "Μεταφόρτωση",
+  "complete": "Ολοκληρώθηκε",
+  "aborted": "Διακόπηκε",
+  "cancelled": "Ακυρώθηκε",
+  "error": "Σφάλμα",
+  "errorWithStatus": "Σφάλμα: {status}",
+  "cancel": "Ακύρωση",
+  "cancelUploadOf": "Ακύρωση μεταφόρτωσης του {name}",
+  "retry": "Επανάληψη",
+  "retryUploadOf": "Επανάληψη μεταφόρτωσης του {name}",
+  "remove": "Αφαίρεση",
+  "removeFromQueue": "Αφαίρεση του {name} από την ουρά",
+  "fileTypeNotAccepted": "Μη αποδεκτός τύπος αρχείου: {name}",
+  "uploadFailed": "Η μεταφόρτωση απέτυχε: {status}",
+  "networkError": "Σφάλμα δικτύου"
+}

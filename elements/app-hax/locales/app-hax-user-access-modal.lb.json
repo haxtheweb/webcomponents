@@ -7,5 +7,7 @@
   "userAccessGranted": "Benotzerzougang erfollegräich ginn!",
   "userNotFound": "Benotzer net fonnt oder net autoriséiert",
   "loadingAddingUser": "Benotzer gëtt derbäigesat...",
-  "grantAccessTo": "Zougang ginn un:"
+  "grantAccessTo": "Zougang ginn un:",
+  "networkErrorTryAgain": "Et ass en Netzwierkfeeler opgetrueden. Probéiert w.e.g. nach eng Kéier.",
+  "characterWillAppear": "De Charakter erschéngt, wann Dir e Benotzernumm agitt"
 }

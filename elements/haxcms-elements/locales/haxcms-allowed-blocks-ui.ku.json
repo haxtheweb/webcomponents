@@ -10,5 +10,9 @@
   "save": "Tomar bike",
   "noDescription": "Danasîn tune ye.",
   "details": "Hûrgulî",
-  "loadingInventory": "Lîsteya tevahî ya blokan tê barkirin…"
+  "loadingInventory": "Lîsteya tevahî ya blokan tê barkirin…",
+  "selectAllButton": "Hemûyan Hilbijêre",
+  "deselectAllButton": "Hilbijartina Hemûyan Rake",
+  "selectedOfAvailable": "{selected} hilbijartî / {total} berdest",
+  "savingBlocksFailed": "Tomarkirina blokan bi ser neket: {error}"
 }

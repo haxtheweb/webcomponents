@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Tab {xOfY}",
+  "xOfY": "{order} / {total}",
+  "endOfTab": "{xOfY} tabının sonu. {tabs} siyahısına qayıt.",
+  "tabs": "tablar"
+}

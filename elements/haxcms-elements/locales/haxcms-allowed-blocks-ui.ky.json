@@ -10,5 +10,9 @@
   "save": "Сактоо",
   "noDescription": "Сүрөттөмө жок.",
   "details": "Толук маалымат",
-  "loadingInventory": "Блоктордун толук тизмеси жүктөлүүдө…"
+  "loadingInventory": "Блоктордун толук тизмеси жүктөлүүдө…",
+  "selectAllButton": "Баарын тандоо",
+  "deselectAllButton": "Тандоону алып салуу",
+  "selectedOfAvailable": "{selected} тандалды / {total} жеткиликтүү",
+  "savingBlocksFailed": "Блокторду сактоо ишке ашкан жок: {error}"
 }

@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Жүктелуде...",
   "youTubeStartLoading": "Ойнатуды басыңыз.",
   "youTubeTranscriptLabel": "Транскрипт медиа ойнатылғанда жүктеледі.",
-  "audioDescriptionLabel": "Аудиосипаттама"
+  "audioDescriptionLabel": "Аудиосипаттама",
+  "openOnYouTube": "YouTube-та ашу"
 }

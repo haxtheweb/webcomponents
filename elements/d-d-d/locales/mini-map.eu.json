@@ -1,0 +1,17 @@
+{
+  "editNodes": "Editatu nodoak",
+  "editLines": "Editatu lerroak",
+  "reset": "Berrezarri",
+  "save": "Gorde",
+  "cancel": "Utzi",
+  "delete": "Ezabatu",
+  "type": "Mota:",
+  "topic": "Gaia",
+  "subsection": "Azpiatala",
+  "name": "Izena:",
+  "enterName": "Idatzi izena",
+  "url": "URLa:",
+  "enterUrl": "Idatzi URLa",
+  "activeNode": "Nodo aktiboa?",
+  "nodeId": "{id} nodoa"
+}

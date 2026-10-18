@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "တက်ဘ် {xOfY}",
+  "xOfY": "{total} အနက် {order}",
+  "endOfTab": "တက်ဘ် {xOfY} ၏ အဆုံး။ {tabs} သို့ ပြန်သွားရန်။",
+  "tabs": "တက်ဘ်များ"
+}

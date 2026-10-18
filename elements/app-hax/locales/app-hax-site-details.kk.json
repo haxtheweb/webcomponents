@@ -1,0 +1,18 @@
+{
+  "copy": "Көшіру",
+  "download": "Жүктеп алу",
+  "archive": "Мұрағаттау",
+  "copyOperation": "көшіру",
+  "downloadOperation": "жүктеп алу",
+  "archiveOperation": "мұрағаттау",
+  "created": "жасалды",
+  "updated": "жаңартылды",
+  "pages": "бет",
+  "url": "URL",
+  "confirm": "Растау",
+  "cancel": "Бас тарту",
+  "siteOperationConfirmTitle": "{siteName}: {operationName}?",
+  "siteOperationConfirmMessage": "{siteName} сайтына {operation} әрекетін орындағыңыз келетініне сенімдісіз бе?",
+  "siteOperationSuccessful": "{siteName}: {operation} сәтті орындалды!",
+  "siteOperationFailed": "{siteName}: {operation} сәтсіз аяқталды"
+}

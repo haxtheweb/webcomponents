@@ -1,0 +1,14 @@
+{
+  "licenseBy": "ආරෝපණය",
+  "licenseBySa": "ආරෝපණය එලෙසම බෙදාගන්න",
+  "licenseByNd": "ආරෝපණය ව්‍යුත්පන්න නැත",
+  "licenseByNc": "ආරෝපණය වාණිජ නොවන",
+  "licenseByNcSa": "ආරෝපණය වාණිජ නොවන එලෙසම බෙදාගන්න",
+  "licenseByNcNd": "ආරෝපණය වාණිජ නොවන ව්‍යුත්පන්න නැත",
+  "licenseGraphic": "{license} ග්‍රැෆිකය",
+  "workByCreator": "{creator} විසින් {title}",
+  "workByCreatorLicensed": "{creator} විසින් රචිත {title} {license} යටතේ බලපත්‍ර ලබා ඇත.",
+  "permissionsBeyondScope": "මෙම බලපත්‍රයේ විෂය පථයෙන් ඔබ්බට අවසර {link} ලබා ගත හැක.",
+  "author": "(කතෘ)",
+  "onTheLicensingDetailsPage": "බලපත්‍ර විස්තර පිටුවේ"
+}

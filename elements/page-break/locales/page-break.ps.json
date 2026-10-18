@@ -22,6 +22,13 @@
   "unpublish": "له خپرېدو ایستل",
   "savePage": "پاڼه خوندي کړئ",
   "cancel": "لغوه کول",
+  "delete": "ړنګول",
+  "editTitle": "سرلیک سم کړئ",
+  "editIcon": "آیکون سم کړئ",
+  "agent": "اجنټ",
+  "pageLockedUnlockToEdit": "دا پاڼه تړل شوې ده. د سمون لپاره لومړی یې خلاصه کړئ.",
+  "pageLockedUnlockToChangePublishStatus": "دا پاڼه تړل شوې ده. د خپرېدو حالت د بدلولو لپاره لومړی یې خلاصه کړئ.",
+  "pageLockedUnlockToDelete": "دا پاڼه تړل شوې ده. د ړنګولو لپاره لومړی یې خلاصه کړئ.",
   "pageDetails": "د پاڼې توضیحات",
   "clickToUnlock": "د خلاصولو لپاره کلیک وکړئ"
 }

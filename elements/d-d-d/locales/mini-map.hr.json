@@ -1,0 +1,17 @@
+{
+  "editNodes": "Uredi čvorove",
+  "editLines": "Uredi linije",
+  "reset": "Poništi",
+  "save": "Spremi",
+  "cancel": "Odustani",
+  "delete": "Izbriši",
+  "type": "Vrsta:",
+  "topic": "Tema",
+  "subsection": "Pododjeljak",
+  "name": "Naziv:",
+  "enterName": "Unesite naziv",
+  "url": "URL:",
+  "enterUrl": "Unesite URL",
+  "activeNode": "Aktivni čvor?",
+  "nodeId": "Čvor {id}"
+}

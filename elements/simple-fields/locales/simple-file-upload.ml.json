@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "ഫയലുകൾ ഇവിടെ ഇടുക",
+  "uploadQueue": "അപ്‌ലോഡ് ക്യൂ",
+  "pending": "തീർപ്പാക്കാത്തത്",
+  "preparing": "തയ്യാറാക്കുന്നു",
+  "uploading": "അപ്‌ലോഡ് ചെയ്യുന്നു",
+  "complete": "പൂർത്തിയായി",
+  "aborted": "നിർത്തലാക്കി",
+  "cancelled": "റദ്ദാക്കി",
+  "error": "പിശക്",
+  "errorWithStatus": "പിശക്: {status}",
+  "cancel": "റദ്ദാക്കുക",
+  "cancelUploadOf": "{name}-ന്റെ അപ്‌ലോഡ് റദ്ദാക്കുക",
+  "retry": "വീണ്ടും ശ്രമിക്കുക",
+  "retryUploadOf": "{name}-ന്റെ അപ്‌ലോഡ് വീണ്ടും ശ്രമിക്കുക",
+  "remove": "നീക്കം ചെയ്യുക",
+  "removeFromQueue": "{name} ക്യൂവിൽ നിന്ന് നീക്കം ചെയ്യുക",
+  "fileTypeNotAccepted": "ഫയൽ തരം സ്വീകാര്യമല്ല: {name}",
+  "uploadFailed": "അപ്‌ലോഡ് പരാജയപ്പെട്ടു: {status}",
+  "networkError": "നെറ്റ്‌വർക്ക് പിശക്"
+}

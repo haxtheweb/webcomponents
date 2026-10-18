@@ -1,0 +1,14 @@
+{
+  "enterUserName": "صارف نام درج کریں",
+  "invalidUsernameOrPassword": "غلط صارف نام یا پاس ورڈ",
+  "welcomeLetsGo": "خوش آمدید {username}! چلیں!",
+  "enterYourUsername": "اپنا صارف نام درج کریں",
+  "username": "صارف نام",
+  "next": "اگلا",
+  "welcomeBack": "خوش آمدید، {username}!",
+  "notYou": "آپ نہیں ہیں؟",
+  "enterYourPassword": "اپنا پاس ورڈ درج کریں",
+  "password": "پاس ورڈ",
+  "togglePasswordDisplay": "پاس ورڈ دکھائیں/چھپائیں",
+  "login": "لاگ ان"
+}

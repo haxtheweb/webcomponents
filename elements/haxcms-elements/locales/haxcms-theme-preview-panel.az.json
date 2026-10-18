@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Mövzu önizləməsini göstər",
+  "hideThemePreview": "Mövzu önizləməsini gizlət",
+  "themePreviewPanel": "Mövzu önizləmə paneli",
+  "themePreview": "Mövzu önizləməsi",
+  "themePreviewDescription": "Gəzərkən mövzu və palitranı müvəqqəti sınayın. İlkin görünüşünüzü bərpa etmək üçün Ləğv et düyməsindən istifadə edin.",
+  "loadingThemes": "Mövzular yüklənir...",
+  "theme": "Tema",
+  "palette": "Palitra",
+  "cancel": "Ləğv et",
+  "openAppearanceSettings": "Görünüş parametrlərini aç"
+}

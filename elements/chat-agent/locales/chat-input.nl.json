@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Eerder verzonden bericht tonen (omhoog)",
+  "displayPreviousMessageDown": "Eerder verzonden bericht tonen (omlaag)",
+  "sendPrompt": "Prompt verzenden",
+  "sendPromptToMerlin": "Prompt naar Merlin verzenden",
+  "shortenPrompt": "Maak je prompt korter, tot maximaal {limit} tekens."
+}

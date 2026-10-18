@@ -5,5 +5,9 @@
   "buttons": "বোতাম",
   "futureButtonConfiguration": "কাস্টম এডিটর বোতাম কনফিগারেশন শীঘ্রই আসছে।",
   "save": "সংরক্ষণ করুন",
-  "saving": "সংরক্ষণ করা হচ্ছে…"
+  "saving": "সংরক্ষণ করা হচ্ছে…",
+  "novice": "নবীন",
+  "expert": "বিশেষজ্ঞ",
+  "toolbarPreviewAlt": "{audience} এডিটিং টুলবারের প্রিভিউ",
+  "savingEditorSettingsFailed": "এডিটর সেটিংস সেভ করা যায়নি: {error}"
 }

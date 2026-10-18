@@ -1,4 +1,11 @@
 {
   "readMore": "Funda kabanzi",
-  "home": "Ekhaya"
+  "home": "Ekhaya",
+  "anchorLinkCopied": "Isixhumanisi se-anchor sikopishiwe!",
+  "skipToContent": "Yeqela kokuqukethwe",
+  "changeTheme": "Shintsha ithimu",
+  "siteSections": "Izigaba zesayithi",
+  "pageOfTotal": "Ikhasi {current} kwangu-{total}",
+  "siteGenerated": "Isayithi lakhiwe: {date}",
+  "licenseGraphic": "Isithombe se-{license}"
 }

@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Failed to load themes: {error}",
+  "noThemesForView": "No themes available for this view.",
+  "active": "Active",
+  "themeIsActive": "{name} theme is active",
+  "applyTheme": "Apply {name} theme",
+  "apply": "Apply",
+  "preview": "Preview",
+  "name": "Name",
+  "element": "Element",
+  "description": "Description",
+  "action": "Action",
+  "loadingThemes": "Loading themes...",
+  "themesShown": "{count} themes shown",
+  "themesShownDefaults": "{count} themes shown (app-hax defaults)",
+  "availableHaxcmsThemes": "Available HAXcms Themes",
+  "gallery": "Gallery",
+  "table": "Table"
+}

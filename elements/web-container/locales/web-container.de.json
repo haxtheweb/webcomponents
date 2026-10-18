@@ -1,0 +1,8 @@
+{
+  "loading": "Wird geladen",
+  "settingUpContainer": "Container wird eingerichtet",
+  "runningCommands": "Befehle werden ausgeführt",
+  "installing": "Wird installiert..",
+  "runningStart": "Start wird ausgeführt..",
+  "webContainerPreview": "Web-Container-Vorschau"
+}

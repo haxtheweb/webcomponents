@@ -1,0 +1,11 @@
+{
+  "roleTitle": "ಪಾತ್ರದ ಶೀರ್ಷಿಕೆ",
+  "describeYourRole": "ನಿಮ್ಮ ಪಾತ್ರವನ್ನು ಇಲ್ಲಿ ವಿವರಿಸಿ...",
+  "present": "ಪ್ರಸ್ತುತಪಡಿಸಿ",
+  "skills": "ಕೌಶಲ್ಯಗಳು:",
+  "skillsAndMore": "{skills} ಮತ್ತು +{count} ಇನ್ನಷ್ಟು",
+  "yearShort": "{count} ವರ್ಷ",
+  "yearsShort": "{count} ವರ್ಷಗಳು",
+  "monthShort": "{count} ತಿಂ",
+  "monthsShort": "{count} ತಿಂಗಳು"
+}

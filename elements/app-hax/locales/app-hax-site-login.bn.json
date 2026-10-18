@@ -1,0 +1,14 @@
+{
+  "enterUserName": "ব্যবহারকারীর নাম লিখুন",
+  "invalidUsernameOrPassword": "ভুল ইউজারনেম বা পাসওয়ার্ড",
+  "welcomeLetsGo": "স্বাগতম {username}! চলুন শুরু করি!",
+  "enterYourUsername": "আপনার ইউজারনেম লিখুন",
+  "username": "ব্যবহারকারীর নাম",
+  "next": "পরবর্তী",
+  "welcomeBack": "আবার স্বাগতম, {username}!",
+  "notYou": "আপনি নন?",
+  "enterYourPassword": "আপনার পাসওয়ার্ড লিখুন",
+  "password": "পাসওয়ার্ড",
+  "togglePasswordDisplay": "পাসওয়ার্ড দেখানো টগল করুন",
+  "login": "লগইন"
+}

@@ -9,5 +9,7 @@
   "record": "ضبط",
   "pause": "توقف موقت ضبط",
   "stopSave": "توقف و ذخیره",
-  "clickToTakePhoto": "برای گرفتن عکس کلیک کنید"
+  "clickToTakePhoto": "برای گرفتن عکس کلیک کنید",
+  "url": "URL",
+  "open": "باز کردن"
 }

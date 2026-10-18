@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Título do cargo",
+  "describeYourRole": "Describe aquí o teu cargo...",
+  "present": "Presentar",
+  "skills": "Habilidades:",
+  "skillsAndMore": "{skills} e {count} máis",
+  "yearShort": "{count} ano",
+  "yearsShort": "{count} anos",
+  "monthShort": "{count} mes",
+  "monthsShort": "{count} meses"
+}

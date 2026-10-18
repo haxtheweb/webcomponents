@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Прикажи преглед теме",
+  "hideThemePreview": "Сакриј преглед теме",
+  "themePreviewPanel": "Панел за преглед теме",
+  "themePreview": "Преглед теме",
+  "themePreviewDescription": "Привремено испробајте тему и палету док прегледате. Користите Откажи да бисте вратили првобитни изглед.",
+  "loadingThemes": "Учитавање тема...",
+  "theme": "Тема",
+  "palette": "Палета",
+  "cancel": "Откажи",
+  "openAppearanceSettings": "Отвори подешавања изгледа"
+}

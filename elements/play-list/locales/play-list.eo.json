@@ -1,0 +1,11 @@
+{
+  "playlist": "Ludlisto",
+  "carousel": "karuselo",
+  "slide": "lumbildo",
+  "slideNumber": "Lumbildo {number}",
+  "slideOfTotal": "Lumbildo {number} el {total}",
+  "previousSlide": "Antaŭa lumbildo",
+  "nextSlide": "Sekva lumbildo",
+  "slidePages": "Lumbildaj paĝoj",
+  "goToSlide": "Iri al lumbildo {number}"
+}

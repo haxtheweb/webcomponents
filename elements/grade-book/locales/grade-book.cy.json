@@ -43,5 +43,22 @@
   "emailAddress": "E-bostio'r myfyriwr hwn",
   "notes": "Nodiadau",
   "interests": "Diddordebau",
-  "profileImageFor": "Llun proffil ar gyfer"
+  "profileImageFor": "Llun proffil ar gyfer",
+  "fileSystem": "System ffeiliau",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Pwynt terfyn URL (JSON)",
+  "jsonDataBlob": "Blob data JSON",
+  "additionalCriteriaFeedback": "Adborth {criteria} ychwanegol",
+  "outOfPoints": "/ {points} pwynt",
+  "feedbackReport": "Adroddiad adborth",
+  "criteriaDetails": "Manylion y meini prawf",
+  "yourFeedback": "Eich adborth",
+  "additionalCriteriaFeedbackHeading": "Adborth Meini Prawf ychwanegol",
+  "yourTotalScore": "Eich Sgôr gyfan",
+  "scoreOutOfPoints": "{score} / {points} pwynt",
+  "studentAssignment": "Aseiniad {assignment} {student}",
+  "downloadPDF": "Llwytho PDF i lawr",
+  "displayMode1": "Modd 1",
+  "displayMode2": "Modd 2",
+  "twoWindows": "Dwy ffenestr"
 }

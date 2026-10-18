@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Memuat...",
   "youTubeStartLoading": "Tekan putar.",
   "youTubeTranscriptLabel": "Transkrip akan dimuat setelah media diputar.",
-  "audioDescriptionLabel": "Deskripsi Audio"
+  "audioDescriptionLabel": "Deskripsi Audio",
+  "openOnYouTube": "Buka di YouTube"
 }

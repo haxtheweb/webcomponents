@@ -1,0 +1,17 @@
+{
+  "editNodes": "Edit Nod",
+  "editLines": "Edit Garisan",
+  "reset": "Tetapkan semula",
+  "save": "Simpan",
+  "cancel": "Batal",
+  "delete": "Padam",
+  "type": "Jenis:",
+  "topic": "Topik",
+  "subsection": "Subbahagian",
+  "name": "Nama:",
+  "enterName": "Masukkan Nama",
+  "url": "URL:",
+  "enterUrl": "Masukkan URL",
+  "activeNode": "Nod Aktif?",
+  "nodeId": "Nod {id}"
+}

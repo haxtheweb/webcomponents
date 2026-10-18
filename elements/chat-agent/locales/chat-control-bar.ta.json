@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "பதிவை txt ஆகப் பதிவிறக்கு",
+  "downloadChatLog": "அரட்டைப் பதிவைப் பதிவிறக்கு",
+  "resetChat": "அரட்டையை மீட்டமை",
+  "toggleDataCollection": "தரவுச் சேகரிப்பை மாற்று",
+  "dataCollection": "தரவுச் சேகரிப்பு",
+  "toggleDeveloperMode": "டெவலப்பர் பயன்முறையை மாற்று",
+  "exitFullView": "முழுக் காட்சியிலிருந்து வெளியேறு",
+  "enterFullView": "முழுக் காட்சிக்குச் செல்",
+  "hideInterface": "இடைமுகத்தை மறை",
+  "resetChatConfirm": "அரட்டையை மீட்டமைக்கவா?",
+  "downloadBeforeResetConfirm": "மீட்டமைக்கும் முன் அரட்டைப் பதிவைப் பதிவிறக்கவா?",
+  "dataCollectionOn": "உங்கள் உரையாடல்கள் எங்கள் AI மாதிரிகளைப் பயிற்றுவிக்கப் பயன்படுத்தப்படும்",
+  "dataCollectionOff": "உங்கள் உரையாடல்கள் எங்கள் AI மாதிரிகளைப் பயிற்றுவிக்கப் பயன்படுத்தப்படாது"
+}

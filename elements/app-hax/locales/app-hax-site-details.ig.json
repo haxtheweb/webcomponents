@@ -1,0 +1,18 @@
+{
+  "copy": "Detuo",
+  "download": "Budata",
+  "archive": "Debe n'ebe nchekwa",
+  "copyOperation": "detuo",
+  "downloadOperation": "budata",
+  "archiveOperation": "debe n'ebe nchekwa",
+  "created": "emepụtara",
+  "updated": "emelitere",
+  "pages": "peeji",
+  "url": "URL",
+  "confirm": "Kwado",
+  "cancel": "Kagbuo",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Ị ji n'aka na ị chọrọ {operation} {siteName}?",
+  "siteOperationSuccessful": "{operation} {siteName} gara nke ọma!",
+  "siteOperationFailed": "{operation} {siteName} dara"
+}

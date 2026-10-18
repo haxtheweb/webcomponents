@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Pagkilala",
+  "licenseBySa": "Pagkilala-Pagbabahagi nang Pareho",
+  "licenseByNd": "Pagkilala-Walang Hinangong Gawa",
+  "licenseByNc": "Pagkilala-Hindi Pangkomersyo",
+  "licenseByNcSa": "Pagkilala-Hindi Pangkomersyo-Pagbabahagi nang Pareho",
+  "licenseByNcNd": "Pagkilala-Hindi Pangkomersyo-Walang Hinangong Gawa",
+  "citationWithLicense": "{title} ni {creator}, lisensyado sa ilalim ng {license}. Na-access noong {date}.",
+  "citationWithoutLicense": "{title} ni {creator}. Na-access noong {date}.",
+  "licenseGraphic": "Grapiko ng {license}"
+}

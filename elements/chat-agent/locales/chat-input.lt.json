@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Rodyti anksčiau išsiųstą žinutę (aukštyn)",
+  "displayPreviousMessageDown": "Rodyti anksčiau išsiųstą žinutę (žemyn)",
+  "sendPrompt": "Siųsti užklausą",
+  "sendPromptToMerlin": "Siųsti užklausą Merlin",
+  "shortenPrompt": "Sutrumpinkite užklausą iki ne daugiau kaip {limit} simbolių."
+}

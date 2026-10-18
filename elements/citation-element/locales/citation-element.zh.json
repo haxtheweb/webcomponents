@@ -1,0 +1,11 @@
+{
+  "licenseBy": "署名",
+  "licenseBySa": "署名-相同方式共享",
+  "licenseByNd": "署名-禁止演绎",
+  "licenseByNc": "署名-非商业性使用",
+  "licenseByNcSa": "署名-非商业性使用-相同方式共享",
+  "licenseByNcNd": "署名-非商业性使用-禁止演绎",
+  "citationWithLicense": "{title}，作者 {creator}，采用 {license} 许可。访问于 {date}。",
+  "citationWithoutLicense": "{title}，作者 {creator}。访问于 {date}。",
+  "licenseGraphic": "{license} 图标"
+}

@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- ברירת מחדל: הדף הראשון --",
+  "details": "פרטים",
+  "title": "כותרת",
+  "titleDescription": "שם האתר",
+  "homePage": "דף הבית",
+  "homePageDescription": "הדף שישמש כדף הנחיתה / דף הבית כברירת מחדל",
+  "advanced": "מתקדם",
+  "serviceWorker": "הוספת service worker לדף דינמי",
+  "serviceWorkerDescription": "השביתו זאת אם המשתמשים צריכים לראות תמיד את פלט השרת העדכני ביותר מיד.",
+  "forceBrowserUpgrade": "אילוץ שדרוג דפדפן",
+  "forceBrowserUpgradeDescription": "דרישת דפדפנים מתעדכנים לפני טעינת חוויית האתר.",
+  "unableToLoadSiteDetails": "לא ניתן לטעון את פרטי האתר.",
+  "noSiteDetails": "אין פרטי אתר זמינים.",
+  "save": "שמירה"
+}

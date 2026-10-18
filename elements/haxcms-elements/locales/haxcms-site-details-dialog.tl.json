@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- default sa unang pahina --",
+  "details": "Mga detalye",
+  "title": "Pamagat",
+  "titleDescription": "Pangalan ng site",
+  "homePage": "Home page",
+  "homePageDescription": "Pahinang gagamitin bilang default na landing / home page",
+  "advanced": "Advanced",
+  "serviceWorker": "Magdagdag ng service worker sa dynamic na pahina",
+  "serviceWorkerDescription": "I-disable ito kung dapat palaging makita agad ng mga user ang pinakabagong output ng server.",
+  "forceBrowserUpgrade": "Pilitin ang pag-upgrade ng browser",
+  "forceBrowserUpgradeDescription": "Mangailangan ng mga evergreen na browser bago i-load ang karanasan sa site.",
+  "unableToLoadSiteDetails": "Hindi ma-load ang mga detalye ng site.",
+  "noSiteDetails": "Walang available na detalye ng site.",
+  "save": "I-save"
+}

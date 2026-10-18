@@ -5,5 +5,9 @@
   "buttons": "بٹن",
   "futureButtonConfiguration": "ایڈیٹر کے بٹنوں کی حسب ضرورت ترتیب جلد آ رہی ہے۔",
   "save": "محفوظ کریں",
-  "saving": "محفوظ ہو رہا ہے…"
+  "saving": "محفوظ ہو رہا ہے…",
+  "novice": "نوآموز",
+  "expert": "ماہر",
+  "toolbarPreviewAlt": "{audience} ترمیمی ٹول بار کا پیش منظر",
+  "savingEditorSettingsFailed": "ایڈیٹر کی ترتیبات محفوظ کرنا ناکام: {error}"
 }

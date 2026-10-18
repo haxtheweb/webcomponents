@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Malsukcesis ŝargi etosojn: {error}",
+  "noThemesForView": "Neniuj etosoj disponeblas por ĉi tiu vido.",
+  "active": "Aktiva",
+  "themeIsActive": "La etoso {name} estas aktiva",
+  "applyTheme": "Apliki la etoson {name}",
+  "apply": "Apliki",
+  "preview": "Antaŭrigardo",
+  "name": "Nomo",
+  "element": "Elemento",
+  "description": "Priskribo",
+  "action": "Ago",
+  "loadingThemes": "Ŝargante etosojn...",
+  "themesShown": "{count} etosoj montrataj",
+  "themesShownDefaults": "{count} etosoj montrataj (app-hax-defaŭltoj)",
+  "availableHaxcmsThemes": "Disponeblaj HAXcms-etosoj",
+  "gallery": "Galerio",
+  "table": "Tabelo"
+}

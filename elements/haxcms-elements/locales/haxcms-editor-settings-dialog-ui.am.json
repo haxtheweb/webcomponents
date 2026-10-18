@@ -5,5 +5,9 @@
   "buttons": "አዝራሮች",
   "futureButtonConfiguration": "ብጁ የአርታዒ አዝራር ውቅር በቅርቡ ይመጣል።",
   "save": "አስቀምጥ",
-  "saving": "በማስቀመጥ ላይ…"
+  "saving": "በማስቀመጥ ላይ…",
+  "novice": "ጀማሪ",
+  "expert": "ባለሙያ",
+  "toolbarPreviewAlt": "የ{audience} የአርትዖት መሣሪያ አሞሌ ቅድመ እይታ",
+  "savingEditorSettingsFailed": "የአርታዒ ቅንብሮችን ማስቀመጥ አልተሳካም: {error}"
 }

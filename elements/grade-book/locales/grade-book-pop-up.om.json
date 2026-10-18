@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Hojii barataa galfame",
   "openInNewWindow": "Foddaa haaraa keessatti bani",
-  "submitted": "Galfameera"
+  "submitted": "Galfameera",
+  "previousStudent": "Barataa duraa",
+  "nextStudent": "Barataa itti aanu",
+  "previousAssignment": "Hojii duraa",
+  "nextAssignment": "Hojii itti aanu"
 }

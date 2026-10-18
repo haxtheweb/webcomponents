@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Không có kết quả",
+  "viewsRecordHeading": "Ghi",
+  "viewsTitleImage": "Hình ảnh {title}",
+  "viewsTitlePreview": "Xem trước {title}",
+  "viewsNoTimelineRecords": "Không có bản ghi theo ngày để hiển thị dòng thời gian.",
+  "viewsTimelineTitle": "Dòng thời gian {title}",
+  "viewsNoChartField": "Không tìm thấy trường số để hiển thị biểu đồ.",
+  "viewsChartingValue": "Biểu đồ {value}",
+  "viewsChartingValueByLabel": "Biểu đồ {value} theo {label}",
+  "viewsChartTitle": "Biểu đồ {title}",
+  "viewsNoTreeRecords": "Không có bản ghi phân cấp để hiển thị dạng cây.",
+  "viewsNoGalleryRecords": "Không có bản ghi hình ảnh để hiển thị thư viện ảnh.",
+  "viewsNoPlaylistRecords": "Không có bản ghi đa phương tiện để hiển thị danh sách phát.",
+  "fetchFailed": "Tải thất bại ({status})",
+  "unableToLoadViewData": "Không thể tải dữ liệu chế độ xem.",
+  "noResultsFound": "Không tìm thấy kết quả.",
+  "refreshView": "Làm mới chế độ xem",
+  "breakIntoStaticContent": "Chuyển thành nội dung tĩnh",
+  "viewsOpenRecord": "Mở bản ghi"
+}

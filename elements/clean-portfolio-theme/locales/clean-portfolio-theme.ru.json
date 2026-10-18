@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Ссылка-якорь скопирована!",
+  "skipToContent": "Перейти к содержимому",
+  "siteHome": "Главная сайта",
+  "mainNavigation": "Главная навигация",
+  "toggleMenu": "Переключить меню",
+  "changeTheme": "Сменить тему",
+  "breadcrumb": "Навигационная цепочка",
+  "tagFilter": "Фильтр по тегу:",
+  "all": "Все",
+  "pageNumberOfTotal": "Номер страницы: {current} из {total}",
+  "siteGenerated": "Сайт сгенерирован: {date}",
+  "copyright": "Авторские права: {year} {author}",
+  "viewContentByTag": "Просмотр содержимого по тегам",
+  "licenseGraphic": "Значок {license}"
+}

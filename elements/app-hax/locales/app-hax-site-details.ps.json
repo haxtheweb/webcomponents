@@ -1,0 +1,18 @@
+{
+  "copy": "کاپي",
+  "download": "ښکته کول",
+  "archive": "آرشیف",
+  "copyOperation": "کاپي",
+  "downloadOperation": "ښکته کول",
+  "archiveOperation": "آرشیف",
+  "created": "جوړ شوی",
+  "updated": "تازه شوی",
+  "pages": "پاڼې",
+  "url": "URL",
+  "confirm": "تایید",
+  "cancel": "لغوه کول",
+  "siteOperationConfirmTitle": "{operationName} {siteName}؟",
+  "siteOperationConfirmMessage": "ایا ډاډه یاست چې غواړئ {siteName} {operation} کړئ؟",
+  "siteOperationSuccessful": "د {siteName} {operation} بریالی و!",
+  "siteOperationFailed": "د {siteName} {operation} ناکام شو"
+}

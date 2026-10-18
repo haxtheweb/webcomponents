@@ -54,5 +54,6 @@
   "requirementUppercase": "Viens lielais burts",
   "requirementLowercase": "Viens mazais burts",
   "requirementNumber": "Viens cipars",
-  "requirementSymbol": "Viens simbols"
+  "requirementSymbol": "Viens simbols",
+  "haxcmsMascotAlt": "HAXcms ceļotāja talismans"
 }

@@ -10,5 +10,9 @@
   "save": "ບັນທຶກ",
   "noDescription": "ບໍ່ມີຄຳອະທິບາຍ.",
   "details": "ລາຍລະອຽດ",
-  "loadingInventory": "ກຳລັງໂຫຼດລາຍການບລັອກທັງໝົດ…"
+  "loadingInventory": "ກຳລັງໂຫຼດລາຍການບລັອກທັງໝົດ…",
+  "selectAllButton": "ເລືອກທັງໝົດ",
+  "deselectAllButton": "ຍົກເລີກການເລືອກທັງໝົດ",
+  "selectedOfAvailable": "ເລືອກ {selected} / ມີ {total}",
+  "savingBlocksFailed": "ການບັນທຶກບລັອກລົ້ມເຫຼວ: {error}"
 }

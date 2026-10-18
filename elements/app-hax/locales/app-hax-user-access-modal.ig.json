@@ -7,5 +7,7 @@
   "userAccessGranted": "E nyela onye ọrụ ohere nke ọma!",
   "userNotFound": "Ahụghị onye ọrụ ma ọ bụ enweghị ikike",
   "loadingAddingUser": "Na-atinye onye ọrụ...",
-  "grantAccessTo": "Nye ohere na:"
+  "grantAccessTo": "Nye ohere na:",
+  "networkErrorTryAgain": "Njehie netwọk mere. Biko nwaa ọzọ.",
+  "characterWillAppear": "Agwa ga-apụta mgbe ị tinyere aha njirimara"
 }

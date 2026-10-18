@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "機能設定で無効化されています",
+  "appearance": "外観",
+  "structure": "構造",
+  "content": "コンテンツ",
+  "reports": "レポート",
+  "about": "概要",
+  "files": "ファイル",
+  "views": "ビュー",
+  "features": "機能",
+  "editor": "エディター",
+  "blocks": "ブロック",
+  "importExport": "インポート / エクスポート",
+  "details": "詳細",
+  "advanced": "詳細設定"
+}

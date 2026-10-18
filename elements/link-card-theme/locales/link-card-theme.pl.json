@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Skopiowano link do kotwicy!",
+  "skipToContent": "Przejdź do treści",
+  "changePalette": "Zmień paletę",
+  "primaryLinks": "Główne linki",
+  "socialLinks": "Linki społecznościowe",
+  "myProfile": "Mój profil",
+  "profileImageOf": "Zdjęcie profilowe {name}",
+  "profileImage": "Zdjęcie profilowe",
+  "linkCardProfile": "Profil karty linków",
+  "emptyStateLinks": "Dodaj pozycje menu najwyższego poziomu w site.json, aby wyświetlić przyciski linków.",
+  "titleOnPlatform": "{title} w serwisie {platform}",
+  "openPlatform": "Otwórz {platform}",
+  "paletteUpdated": "Zmieniono paletę kolorów na opcję {number}."
+}

@@ -1,0 +1,11 @@
+{
+  "playlist": "Atskaņošanas saraksts",
+  "carousel": "karuselis",
+  "slide": "slaids",
+  "slideNumber": "Slaids {number}",
+  "slideOfTotal": "Slaids {number} no {total}",
+  "previousSlide": "Iepriekšējais slaids",
+  "nextSlide": "Nākamais slaids",
+  "slidePages": "Slaidu lapas",
+  "goToSlide": "Doties uz slaidu {number}"
+}

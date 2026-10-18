@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Falha ao carregar temas: {error}",
+  "noThemesForView": "Nenhum tema disponível para esta visualização.",
+  "active": "Ativa",
+  "themeIsActive": "O tema {name} está ativo",
+  "applyTheme": "Aplicar tema {name}",
+  "apply": "Aplicar",
+  "preview": "Pré-visualização",
+  "name": "Nome",
+  "element": "Elemento",
+  "description": "Descrição",
+  "action": "Ação",
+  "loadingThemes": "Carregando temas...",
+  "themesShown": "{count} temas exibidos",
+  "themesShownDefaults": "{count} temas exibidos (padrões do app-hax)",
+  "availableHaxcmsThemes": "Temas HAXcms disponíveis",
+  "gallery": "Galeria",
+  "table": "Tabela"
+}

@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Bảng console nhật ký trò chuyện của người dùng",
+  "consoleTableUserText": "console.table() nhật ký trò chuyện của người dùng",
+  "consoleTableUserTooltip": "In nhật ký trò chuyện của người dùng dạng bảng ra console",
+  "consoleTableMerlinLabel": "Bảng console nhật ký trò chuyện của Merlin",
+  "consoleTableMerlinText": "console.table() nhật ký trò chuyện của Merlin",
+  "consoleTableMerlinTooltip": "In nhật ký trò chuyện của Merlin dạng bảng ra console",
+  "consoleTableAllLabel": "Bảng console toàn bộ nhật ký trò chuyện",
+  "consoleTableAllText": "console.table() toàn bộ nhật ký trò chuyện",
+  "consoleTableAllTooltip": "In toàn bộ nhật ký trò chuyện dạng bảng ra console",
+  "downloadChatLogJson": "Tải nhật ký trò chuyện dạng .json",
+  "downloadChatLogJsonTooltip": "Tải nhật ký trò chuyện dạng .json"
+}

@@ -5,5 +5,9 @@
   "buttons": "Düğmeler",
   "futureButtonConfiguration": "Özel düzenleyici düğmesi yapılandırması yakında geliyor.",
   "save": "Kaydet",
-  "saving": "Kaydediliyor…"
+  "saving": "Kaydediliyor…",
+  "novice": "Acemi",
+  "expert": "Uzman",
+  "toolbarPreviewAlt": "{audience} düzenleme araç çubuğu önizlemesi",
+  "savingEditorSettingsFailed": "Düzenleyici ayarları kaydedilemedi: {error}"
 }

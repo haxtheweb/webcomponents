@@ -43,5 +43,22 @@
   "emailAddress": "Mtumie mwanafunzi huyu barua pepe",
   "notes": "Madokezo",
   "interests": "Mambo Yanayompendeza",
-  "profileImageFor": "Picha ya wasifu ya"
+  "profileImageFor": "Picha ya wasifu ya",
+  "fileSystem": "Mfumo wa faili",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Sehemu ya mwisho ya URL (JSON)",
+  "jsonDataBlob": "Bonge la data ya JSON",
+  "additionalCriteriaFeedback": "Maoni ya ziada ya {criteria}",
+  "outOfPoints": "/ alama {points}",
+  "feedbackReport": "Ripoti ya maoni",
+  "criteriaDetails": "Maelezo ya vigezo",
+  "yourFeedback": "Maoni yako",
+  "additionalCriteriaFeedbackHeading": "Maoni ya ziada ya Vigezo",
+  "yourTotalScore": "Alama zako za jumla",
+  "scoreOutOfPoints": "{score} / alama {points}",
+  "studentAssignment": "Kazi {assignment} ya {student}",
+  "downloadPDF": "Pakua PDF",
+  "displayMode1": "Hali 1",
+  "displayMode2": "Hali 2",
+  "twoWindows": "Madirisha mawili"
 }

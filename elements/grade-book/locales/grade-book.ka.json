@@ -43,5 +43,22 @@
   "emailAddress": "ამ სტუდენტისთვის ელფოსტის გაგზავნა",
   "notes": "შენიშვნები",
   "interests": "ინტერესები",
-  "profileImageFor": "პროფილის სურათი:"
+  "profileImageFor": "პროფილის სურათი:",
+  "fileSystem": "ფაილური სისტემა",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL endpoint (JSON)",
+  "jsonDataBlob": "JSON მონაცემთა ბლოკი",
+  "additionalCriteriaFeedback": "დამატებითი უკუკავშირი: {criteria}",
+  "outOfPoints": "/ {points} ქულა",
+  "feedbackReport": "უკუკავშირის ანგარიში",
+  "criteriaDetails": "კრიტერიუმების დეტალები",
+  "yourFeedback": "თქვენი უკუკავშირი",
+  "additionalCriteriaFeedbackHeading": "დამატებითი უკუკავშირი კრიტერიუმებზე",
+  "yourTotalScore": "თქვენი საერთო ქულა",
+  "scoreOutOfPoints": "{score} / {points} ქულა",
+  "studentAssignment": "{student}-ის დავალება {assignment}",
+  "downloadPDF": "PDF-ის ჩამოტვირთვა",
+  "displayMode1": "რეჟიმი 1",
+  "displayMode2": "რეჟიმი 2",
+  "twoWindows": "ორი ფანჯარა"
 }

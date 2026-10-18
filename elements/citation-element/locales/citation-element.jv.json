@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Atribusi",
+  "licenseBySa": "Atribusi Berbagi Serupa",
+  "licenseByNd": "Atribusi Tanpa Turunan",
+  "licenseByNc": "Atribusi Nonkomersial",
+  "licenseByNcSa": "Atribusi Nonkomersial Berbagi Serupa",
+  "licenseByNcNd": "Atribusi Nonkomersial Tanpa Turunan",
+  "citationWithLicense": "{title} dening {creator}, dilisensèni miturut {license}. Diakses {date}.",
+  "citationWithoutLicense": "{title} dening {creator}. Diakses {date}.",
+  "licenseGraphic": "Gambar {license}"
+}

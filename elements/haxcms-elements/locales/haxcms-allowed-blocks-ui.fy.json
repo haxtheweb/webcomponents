@@ -10,5 +10,9 @@
   "save": "Bewarje",
   "noDescription": "Gjin beskriuwing beskikber.",
   "details": "Details",
-  "loadingInventory": "Folsleine blokynventaris lade…"
+  "loadingInventory": "Folsleine blokynventaris lade…",
+  "selectAllButton": "Alles selektearje",
+  "deselectAllButton": "Alles deselektearje",
+  "selectedOfAvailable": "{selected} selektearre / {total} beskikber",
+  "savingBlocksFailed": "Bewarjen fan blokken mislearre: {error}"
 }

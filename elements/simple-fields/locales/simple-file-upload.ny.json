@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Ponyani mafayilo apa",
+  "uploadQueue": "Mzere wokweza",
+  "pending": "Ikuyembekezera",
+  "preparing": "Ikukonzekera",
+  "uploading": "Ikukweza",
+  "complete": "Yatha",
+  "aborted": "Yaimitsidwa",
+  "cancelled": "Yathetsedwa",
+  "error": "Cholakwika",
+  "errorWithStatus": "Vuto: {status}",
+  "cancel": "Letsani",
+  "cancelUploadOf": "Lekani kukweza {name}",
+  "retry": "Yesaninso",
+  "retryUploadOf": "Yesaninso kukweza {name}",
+  "remove": "Chotsani",
+  "removeFromQueue": "Chotsani {name} pamzere",
+  "fileTypeNotAccepted": "Mtundu wa fayilo suvomerezeka: {name}",
+  "uploadFailed": "Kukweza kwalephera: {status}",
+  "networkError": "Vuto la netiweki"
+}

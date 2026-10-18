@@ -10,5 +10,9 @@
   "save": "Kaydi",
   "noDescription": "Sharaxaad lama hayo.",
   "details": "Faahfaahin",
-  "loadingInventory": "Liiska buuxa ee blokyada waa la soo rarayaa…"
+  "loadingInventory": "Liiska buuxa ee blokyada waa la soo rarayaa…",
+  "selectAllButton": "Dooro Dhammaan",
+  "deselectAllButton": "Ka Saar Doorashada Dhammaan",
+  "selectedOfAvailable": "{selected} la doortay / {total} la heli karo",
+  "savingBlocksFailed": "Kaydinta qaybaha way fashilantay: {error}"
 }

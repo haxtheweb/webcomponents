@@ -7,5 +7,7 @@
   "userAccessGranted": "Akses pengguna berjaya diberikan!",
   "userNotFound": "Pengguna tidak ditemui atau tidak dibenarkan",
   "loadingAddingUser": "Menambah pengguna...",
-  "grantAccessTo": "Beri akses kepada:"
+  "grantAccessTo": "Beri akses kepada:",
+  "networkErrorTryAgain": "Ralat rangkaian berlaku. Sila cuba lagi.",
+  "characterWillAppear": "Watak akan muncul apabila anda memasukkan nama pengguna"
 }

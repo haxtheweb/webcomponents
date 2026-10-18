@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Triemmen hjir delsette",
+  "uploadQueue": "Oplaadwachtrige",
+  "pending": "Yn ôfwachting",
+  "preparing": "Tariede",
+  "uploading": "Oplade",
+  "complete": "Foltôge",
+  "aborted": "Ofbrutsen",
+  "cancelled": "Annulearre",
+  "error": "Flater",
+  "errorWithStatus": "Flater: {status}",
+  "cancel": "Annulearje",
+  "cancelUploadOf": "Oplaad fan {name} annulearje",
+  "retry": "Opnij besykje",
+  "retryUploadOf": "Oplaad fan {name} opnij besykje",
+  "remove": "Fuortsmite",
+  "removeFromQueue": "{name} út wachtrige fuortsmite",
+  "fileTypeNotAccepted": "Triemtype net akseptearre: {name}",
+  "uploadFailed": "Oplade mislearre: {status}",
+  "networkError": "Netwurkflater"
+}

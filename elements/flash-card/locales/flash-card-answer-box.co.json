@@ -1,5 +1,8 @@
 {
   "yourAnswer": "A vostra risposta",
   "checkAnswer": "Verificà a risposta",
-  "retry": "Torna à pruvà"
+  "retry": "Torna à pruvà",
+  "correct": "Currettu!",
+  "incorrect": "Incurrettu!",
+  "correctAnswer": "Risposta curretta: {answer}"
 }

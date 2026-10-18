@@ -9,5 +9,7 @@
   "record": "Upptak",
   "pause": "Steðga upptøku",
   "stopSave": "Stoppa & goym",
-  "clickToTakePhoto": "Klikk fyri at taka mynd"
+  "clickToTakePhoto": "Klikk fyri at taka mynd",
+  "url": "URL",
+  "open": "opna"
 }

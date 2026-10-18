@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Ruraqpa rimanakuy qillqasqan consola tablapi",
+  "consoleTableUserText": "console.table() ruraqpa rimanakuy qillqasqan",
+  "consoleTableUserTooltip": "Ruraqpa Rimanakuy Qillqasqanta Tabla hina Consolaman Ch'ipachiy",
+  "consoleTableMerlinLabel": "Merlinpa rimanakuy qillqasqan consola tablapi",
+  "consoleTableMerlinText": "console.table() merlinpa rimanakuy qillqasqan",
+  "consoleTableMerlinTooltip": "Merlinpa Rimanakuy Qillqasqanta Tabla hina Consolaman Ch'ipachiy",
+  "consoleTableAllLabel": "Llapan rimanakuy qillqasqa consola tablapi",
+  "consoleTableAllText": "console.table() llapan rimanakuy qillqasqa",
+  "consoleTableAllTooltip": "Llapan Rimanakuy Qillqasqata Tabla hina Consolaman Ch'ipachiy",
+  "downloadChatLogJson": "Rimanakuy qillqasqata .json hina uraqachiy",
+  "downloadChatLogJsonTooltip": "Rimanakuy Qillqasqata .json hina Uraqachiy"
+}

@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "कोणतेही परिणाम नाहीत",
+  "viewsRecordHeading": "रेकॉर्ड करा",
+  "viewsTitleImage": "{title} प्रतिमा",
+  "viewsTitlePreview": "{title} पूर्वावलोकन",
+  "viewsNoTimelineRecords": "टाइमलाइन दाखवण्यासाठी तारीख-आधारित नोंदी उपलब्ध नाहीत.",
+  "viewsTimelineTitle": "{title} टाइमलाइन",
+  "viewsNoChartField": "चार्ट दाखवण्यासाठी कोणतेही संख्यात्मक क्षेत्र आढळले नाही.",
+  "viewsChartingValue": "{value} चा चार्ट",
+  "viewsChartingValueByLabel": "{label} नुसार {value} चा चार्ट",
+  "viewsChartTitle": "{title} चार्ट",
+  "viewsNoTreeRecords": "ट्री दाखवण्यासाठी श्रेणीबद्ध नोंदी उपलब्ध नाहीत.",
+  "viewsNoGalleryRecords": "गॅलरी दाखवण्यासाठी प्रतिमा नोंदी उपलब्ध नाहीत.",
+  "viewsNoPlaylistRecords": "प्लेलिस्ट दाखवण्यासाठी माध्यम नोंदी उपलब्ध नाहीत.",
+  "fetchFailed": "आणणे अयशस्वी ({status})",
+  "unableToLoadViewData": "दृश्य डेटा लोड करता आला नाही.",
+  "noResultsFound": "कोणतेही परिणाम आढळले नाहीत.",
+  "refreshView": "दृश्य रीफ्रेश करा",
+  "breakIntoStaticContent": "स्थिर मजकुरात विभाजित करा",
+  "viewsOpenRecord": "नोंद उघडा"
+}

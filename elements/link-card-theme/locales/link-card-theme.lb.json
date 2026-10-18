@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Anker-Link kopéiert!",
+  "skipToContent": "Op den Inhalt sprangen",
+  "changePalette": "Palette wiesselen",
+  "primaryLinks": "Primär Linken",
+  "socialLinks": "Sozial Linken",
+  "myProfile": "Mäi Profil",
+  "profileImageOf": "Profilbild vun {name}",
+  "profileImage": "Profilbild",
+  "linkCardProfile": "Link-Kaart-Profil",
+  "emptyStateLinks": "Setzt Menüpunkten op der ieweschter Ebene an site.json derbäi, fir Link-Knäppercher unzeweisen.",
+  "titleOnPlatform": "{title} op {platform}",
+  "openPlatform": "{platform} opmaachen",
+  "paletteUpdated": "Faarfpalette op Optioun {number} aktualiséiert."
+}

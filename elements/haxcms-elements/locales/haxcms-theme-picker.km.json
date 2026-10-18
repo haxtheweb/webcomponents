@@ -1,0 +1,11 @@
+{
+  "theme": "រចនាប័ទ្ម",
+  "active": "សកម្ម",
+  "selected": "បានជ្រើសរើស",
+  "noPreview": "គ្មានការមើលជាមុន",
+  "currentlyActiveAndSelected": "ធីមដែលសកម្ម និងបានជ្រើសរើសបច្ចុប្បន្ន",
+  "currentlyActive": "ធីមដែលសកម្មបច្ចុប្បន្ន",
+  "selectedToApplyOnSave": "ធីមដែលបានជ្រើសរើសដើម្បីអនុវត្តពេលរក្សាទុក",
+  "themeSelection": "ការជ្រើសរើសធីម",
+  "noThemesAvailable": "គ្មានធីមដែលអាចប្រើបានទេ។"
+}

@@ -43,5 +43,22 @@
   "emailAddress": "Написать этому учащемуся",
   "notes": "Заметки",
   "interests": "Интересы",
-  "profileImageFor": "Фото профиля:"
+  "profileImageFor": "Фото профиля:",
+  "fileSystem": "Файловая система",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL-адрес (JSON)",
+  "jsonDataBlob": "Блок данных JSON",
+  "additionalCriteriaFeedback": "Дополнительный отзыв по критерию «{criteria}»",
+  "outOfPoints": "/ {points} б.",
+  "feedbackReport": "Отчёт с отзывом",
+  "criteriaDetails": "Подробности критериев",
+  "yourFeedback": "Ваш отзыв",
+  "additionalCriteriaFeedbackHeading": "Дополнительный отзыв по критериям",
+  "yourTotalScore": "Ваш общий балл",
+  "scoreOutOfPoints": "{score} / {points} б.",
+  "studentAssignment": "Задание {assignment} учащегося {student}",
+  "downloadPDF": "Скачать PDF",
+  "displayMode1": "Режим 1",
+  "displayMode2": "Режим 2",
+  "twoWindows": "Два окна"
 }

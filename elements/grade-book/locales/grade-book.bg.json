@@ -43,5 +43,22 @@
   "emailAddress": "Изпращане на имейл до този ученик",
   "notes": "Бележки",
   "interests": "Интереси",
-  "profileImageFor": "Профилна снимка на"
+  "profileImageFor": "Профилна снимка на",
+  "fileSystem": "Файлова система",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL крайна точка (JSON)",
+  "jsonDataBlob": "JSON данни",
+  "additionalCriteriaFeedback": "Допълнителна обратна връзка за {criteria}",
+  "outOfPoints": "/ {points} т.",
+  "feedbackReport": "Отчет с обратна връзка",
+  "criteriaDetails": "Подробности за критериите",
+  "yourFeedback": "Вашата обратна връзка",
+  "additionalCriteriaFeedbackHeading": "Допълнителна обратна връзка по критериите",
+  "yourTotalScore": "Вашият общ резултат",
+  "scoreOutOfPoints": "{score} / {points} т.",
+  "studentAssignment": "Задание {assignment} на {student}",
+  "downloadPDF": "Изтегляне на PDF",
+  "displayMode1": "Режим 1",
+  "displayMode2": "Режим 2",
+  "twoWindows": "Два прозореца"
 }

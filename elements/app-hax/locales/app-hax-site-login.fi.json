@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Anna käyttäjänimi",
+  "invalidUsernameOrPassword": "Virheellinen käyttäjänimi tai salasana",
+  "welcomeLetsGo": "Tervetuloa {username}! Mennään!",
+  "enterYourUsername": "Kirjoita käyttäjänimesi",
+  "username": "Käyttäjänimi",
+  "next": "Seuraava",
+  "welcomeBack": "Tervetuloa takaisin, {username}!",
+  "notYou": "Etkö se ole sinä?",
+  "enterYourPassword": "Kirjoita salasanasi",
+  "password": "Salasana",
+  "togglePasswordDisplay": "Näytä/piilota salasana",
+  "login": "Kirjaudu"
+}

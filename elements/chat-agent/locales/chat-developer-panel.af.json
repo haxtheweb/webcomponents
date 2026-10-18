@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Konsoletabel van gebruiker-kletslog",
+  "consoleTableUserText": "console.table() gebruiker-kletslog",
+  "consoleTableUserTooltip": "Druk gebruiker-kletslog as tabel na konsole",
+  "consoleTableMerlinLabel": "Konsoletabel van Merlin-kletslog",
+  "consoleTableMerlinText": "console.table() Merlin-kletslog",
+  "consoleTableMerlinTooltip": "Druk Merlin-kletslog as tabel na konsole",
+  "consoleTableAllLabel": "Konsoletabel van hele kletslog",
+  "consoleTableAllText": "console.table() hele kletslog",
+  "consoleTableAllTooltip": "Druk hele kletslog as tabel na konsole",
+  "downloadChatLogJson": "Laai kletslog af as .json",
+  "downloadChatLogJsonTooltip": "Laai kletslog af as .json"
+}

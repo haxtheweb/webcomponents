@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Dhaunirodha Rekodhi se txt",
+  "downloadChatLog": "Dhaunirodha Rekodhi yeHurukuro",
+  "resetChat": "Tangazve Hurukuro",
+  "toggleDataCollection": "Batidza/dzima Kuunganidza Data",
+  "dataCollection": "Kuunganidza Data",
+  "toggleDeveloperMode": "Batidza/dzima Modhi yeMugadziri",
+  "exitFullView": "Buda muMaonero Akazara",
+  "enterFullView": "Pinda muMaonero Akazara",
+  "hideInterface": "Vanza Interface",
+  "resetChatConfirm": "Tangazve hurukuro?",
+  "downloadBeforeResetConfirm": "Dhaunirodha rekodhi yehurukuro usati watangazve?",
+  "dataCollectionOn": "Hurukuro dzako dzichashandiswa kudzidzisa mamodheru edu eAI",
+  "dataCollectionOff": "Hurukuro dzako hadzizoshandiswa kudzidzisa mamodheru edu eAI"
+}

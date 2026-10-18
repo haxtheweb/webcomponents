@@ -43,5 +43,22 @@
   "emailAddress": "שיקן אַן אימעיל דעם תּלמיד",
   "notes": "נאָטיצן",
   "interests": "אינטערעסן",
-  "profileImageFor": "פּראָפֿיל־בילד פֿון"
+  "profileImageFor": "פּראָפֿיל־בילד פֿון",
+  "fileSystem": "טעקע־סיסטעם",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL ענדפּונקט (JSON)",
+  "jsonDataBlob": "JSON דאַטן־בלאָב",
+  "additionalCriteriaFeedback": "נאָך אָפּרוף פֿאַר {criteria}",
+  "outOfPoints": "/ {points} פּונקטן",
+  "feedbackReport": "אָפּרוף־באַריכט",
+  "criteriaDetails": "פּרטים פֿון קריטעריעס",
+  "yourFeedback": "דײַן אָפּרוף",
+  "additionalCriteriaFeedbackHeading": "נאָך אָפּרוף אויף קריטעריעס",
+  "yourTotalScore": "דײַן גאַנצער רעזולטאַט",
+  "scoreOutOfPoints": "{score} / {points} פּונקטן",
+  "studentAssignment": "אויפֿגאַבע {assignment} פֿון {student}",
+  "downloadPDF": "אַראָפּלאָדן PDF",
+  "displayMode1": "מאָדוס 1",
+  "displayMode2": "מאָדוס 2",
+  "twoWindows": "צוויי פֿענצטער"
 }

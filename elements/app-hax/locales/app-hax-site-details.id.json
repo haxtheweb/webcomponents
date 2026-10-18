@@ -1,0 +1,18 @@
+{
+  "copy": "Salin",
+  "download": "Unduh",
+  "archive": "Arsipkan",
+  "copyOperation": "salin",
+  "downloadOperation": "unduh",
+  "archiveOperation": "arsipkan",
+  "created": "dibuat",
+  "updated": "diperbarui",
+  "pages": "halaman",
+  "url": "URL",
+  "confirm": "Konfirmasi",
+  "cancel": "Batal",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Yakin ingin {operation} {siteName}?",
+  "siteOperationSuccessful": "{operation} {siteName} berhasil!",
+  "siteOperationFailed": "{operation} {siteName} gagal"
+}

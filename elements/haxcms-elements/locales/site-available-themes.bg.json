@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Неуспешно зареждане на темите: {error}",
+  "noThemesForView": "Няма налични теми за този изглед.",
+  "active": "Активна",
+  "themeIsActive": "Темата {name} е активна",
+  "applyTheme": "Прилагане на темата {name}",
+  "apply": "Прилагане",
+  "preview": "Преглед",
+  "name": "Име",
+  "element": "Елемент",
+  "description": "Описание",
+  "action": "Действие",
+  "loadingThemes": "Зареждане на темите...",
+  "themesShown": "Показани теми: {count}",
+  "themesShownDefaults": "Показани теми: {count} (по подразбиране в app-hax)",
+  "availableHaxcmsThemes": "Налични теми за HAXcms",
+  "gallery": "Галерия",
+  "table": "Таблица"
+}

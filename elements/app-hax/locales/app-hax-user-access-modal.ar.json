@@ -7,5 +7,7 @@
   "userAccessGranted": "تم منح وصول المستخدم بنجاح!",
   "userNotFound": "المستخدم غير موجود أو غير مصرح له",
   "loadingAddingUser": "جارٍ إضافة المستخدم...",
-  "grantAccessTo": "منح الوصول إلى:"
+  "grantAccessTo": "منح الوصول إلى:",
+  "networkErrorTryAgain": "حدث خطأ في الشبكة. يُرجى المحاولة مرة أخرى.",
+  "characterWillAppear": "ستظهر الشخصية عند إدخال اسم مستخدم"
 }

@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "ഫലങ്ങളൊന്നുമില്ല",
+  "viewsRecordHeading": "റെക്കോർഡ് ചെയ്യുക",
+  "viewsTitleImage": "{title} ചിത്രം",
+  "viewsTitlePreview": "{title} പ്രിവ്യൂ",
+  "viewsNoTimelineRecords": "ടൈംലൈൻ റെൻഡറിംഗിനായി തീയതി അധിഷ്ഠിത രേഖകളൊന്നും ലഭ്യമല്ല.",
+  "viewsTimelineTitle": "{title} ടൈംലൈൻ",
+  "viewsNoChartField": "ചാർട്ട് റെൻഡറിംഗിനായി സംഖ്യാ ഫീൽഡൊന്നും കണ്ടെത്തിയില്ല.",
+  "viewsChartingValue": "{value} ചാർട്ട് ചെയ്യുന്നു",
+  "viewsChartingValueByLabel": "{label} അനുസരിച്ച് {value} ചാർട്ട് ചെയ്യുന്നു",
+  "viewsChartTitle": "{title} ചാർട്ട്",
+  "viewsNoTreeRecords": "ട്രീ റെൻഡറിംഗിനായി ശ്രേണീബദ്ധ രേഖകളൊന്നും ലഭ്യമല്ല.",
+  "viewsNoGalleryRecords": "ഗാലറി റെൻഡറിംഗിനായി ചിത്ര രേഖകളൊന്നും ലഭ്യമല്ല.",
+  "viewsNoPlaylistRecords": "പ്ലേലിസ്റ്റ് റെൻഡറിംഗിനായി മീഡിയ രേഖകളൊന്നും ലഭ്യമല്ല.",
+  "fetchFailed": "ലഭ്യമാക്കൽ പരാജയപ്പെട്ടു ({status})",
+  "unableToLoadViewData": "വ്യൂ ഡാറ്റ ലോഡ് ചെയ്യാനായില്ല.",
+  "noResultsFound": "ഫലങ്ങളൊന്നും കണ്ടെത്തിയില്ല.",
+  "refreshView": "വ്യൂ പുതുക്കുക",
+  "breakIntoStaticContent": "സ്ഥിര ഉള്ളടക്കമായി വിഭജിക്കുക",
+  "viewsOpenRecord": "രേഖ തുറക്കുക"
+}

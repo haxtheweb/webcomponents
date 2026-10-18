@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Ikaslearen entrega",
   "openInNewWindow": "Ireki leiho berrian",
-  "submitted": "Entregatuta"
+  "submitted": "Entregatuta",
+  "previousStudent": "Aurreko ikaslea",
+  "nextStudent": "Hurrengo ikaslea",
+  "previousAssignment": "Aurreko zeregina",
+  "nextAssignment": "Hurrengo zeregina"
 }

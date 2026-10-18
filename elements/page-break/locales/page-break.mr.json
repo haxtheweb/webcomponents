@@ -22,6 +22,13 @@
   "unpublish": "प्रकाशन रद्द करा",
   "savePage": "पृष्ठ जतन करा",
   "cancel": "रद्द करा",
+  "delete": "हटवा",
+  "editTitle": "शीर्षक संपादित करा",
+  "editIcon": "आयकॉन संपादित करा",
+  "agent": "एजंट",
+  "pageLockedUnlockToEdit": "हे पान लॉक केलेले आहे. संपादित करण्यासाठी आधी अनलॉक करा.",
+  "pageLockedUnlockToChangePublishStatus": "हे पान लॉक केलेले आहे. प्रकाशन स्थिती बदलण्यासाठी आधी अनलॉक करा.",
+  "pageLockedUnlockToDelete": "हे पान लॉक केलेले आहे. हटवण्यासाठी आधी अनलॉक करा.",
   "pageDetails": "पानाचे तपशील",
   "clickToUnlock": "अनलॉक करण्यासाठी क्लिक करा"
 }

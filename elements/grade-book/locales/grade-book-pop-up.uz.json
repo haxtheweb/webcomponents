@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Talaba topshirig‘i",
   "openInNewWindow": "Yangi oynada ochish",
-  "submitted": "Topshirilgan"
+  "submitted": "Topshirilgan",
+  "previousStudent": "Oldingi talaba",
+  "nextStudent": "Keyingi talaba",
+  "previousAssignment": "Oldingi topshiriq",
+  "nextAssignment": "Keyingi topshiriq"
 }

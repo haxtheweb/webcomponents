@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Якорь сылтамасы күчерелде!",
+  "skipToContent": "Эчтәлеккә күчү",
+  "changePalette": "Палитраны үзгәртү",
+  "primaryLinks": "Төп сылтамалар",
+  "socialLinks": "Социаль сылтамалар",
+  "myProfile": "Минем профиль",
+  "profileImageOf": "{name} профиль рәсеме",
+  "profileImage": "Профиль рәсеме",
+  "linkCardProfile": "Сылтама карточкасы профиле",
+  "emptyStateLinks": "Сылтама төймәләрен күрсәтү өчен site.json'га югары дәрәҗәдәге меню пунктлары өстәгез.",
+  "titleOnPlatform": "{platform} платформасында {title}",
+  "openPlatform": "{platform} ачу",
+  "paletteUpdated": "Төсләр палитрасы {number} вариантына яңартылды."
+}

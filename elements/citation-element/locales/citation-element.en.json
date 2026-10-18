@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Attribution",
+  "licenseBySa": "Attribution Share a like",
+  "licenseByNd": "Attribution No derivatives",
+  "licenseByNc": "Attribution non-commercial",
+  "licenseByNcSa": "Attribution non-commercial share a like",
+  "licenseByNcNd": "Attribution Non-commercial No derivatives",
+  "citationWithLicense": "{title} by {creator}, licensed under {license}. Accessed {date}.",
+  "citationWithoutLicense": "{title} by {creator}. Accessed {date}.",
+  "licenseGraphic": "{license} graphic"
+}

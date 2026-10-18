@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "लोड होत आहे...",
   "youTubeStartLoading": "प्ले दाबा.",
   "youTubeTranscriptLabel": "मीडिया प्ले झाल्यावर प्रतिलेख लोड होईल.",
-  "audioDescriptionLabel": "ऑडिओ वर्णन"
+  "audioDescriptionLabel": "ऑडिओ वर्णन",
+  "openOnYouTube": "YouTube वर उघडा"
 }

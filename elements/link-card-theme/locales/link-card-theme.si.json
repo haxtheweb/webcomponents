@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "නැංගුරම් සබැඳිය පිටපත් කරන ලදී!",
+  "skipToContent": "අන්තර්ගතයට මඟහරින්න",
+  "changePalette": "වර්ණ තලය වෙනස් කරන්න",
+  "primaryLinks": "ප්‍රාථමික සබැඳි",
+  "socialLinks": "සමාජ සබැඳි",
+  "myProfile": "මගේ පැතිකඩ",
+  "profileImageOf": "{name} පැතිකඩ රූපය",
+  "profileImage": "පැතිකඩ රූපය",
+  "linkCardProfile": "සබැඳි කාඩ් පැතිකඩ",
+  "emptyStateLinks": "සබැඳි බොත්තම් විදැහීමට site.json හි ඉහළ මට්ටමේ මෙනු අයිතම එක් කරන්න.",
+  "titleOnPlatform": "{platform} හි {title}",
+  "openPlatform": "{platform} විවෘත කරන්න",
+  "paletteUpdated": "වර්ණ තලය {number} විකල්පයට යාවත්කාලීන කරන ලදී."
+}

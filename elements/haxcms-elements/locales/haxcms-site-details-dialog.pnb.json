@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- ڈیفالٹ پہلا صفحہ --",
+  "details": "تفصیلاں",
+  "title": "سرناواں",
+  "titleDescription": "سائٹ دا ناں",
+  "homePage": "مُکھ صفحہ",
+  "homePageDescription": "ڈیفالٹ لینڈنگ / مُکھ صفحے وجوں ورتن والا صفحہ",
+  "advanced": "اگیرے",
+  "serviceWorker": "ڈائنامک صفحے وچ سروس ورکر پاؤ",
+  "serviceWorkerDescription": "جے صارفاں نوں ہمیشہ سرور دا تازہ نتیجہ فوراً ویکھنا چاہیدا اے تاں ایہنوں بند کرو۔",
+  "forceBrowserUpgrade": "براؤزر اپ گریڈ لازمی کرو",
+  "forceBrowserUpgradeDescription": "سائٹ دا تجربہ لوڈ کرن توں پہلاں ایور گرین براؤزر لازمی کرو۔",
+  "unableToLoadSiteDetails": "سائٹ دیاں تفصیلاں لوڈ نئیں ہو سکیاں۔",
+  "noSiteDetails": "کوئی سائٹ تفصیل دستیاب نئیں۔",
+  "save": "محفوظ کرو"
+}

@@ -1,4 +1,11 @@
 {
   "readMore": "Czytaj więcej",
-  "home": "Strona główna"
+  "home": "Strona główna",
+  "anchorLinkCopied": "Skopiowano link do kotwicy!",
+  "skipToContent": "Przejdź do treści",
+  "changeTheme": "Zmień motyw",
+  "siteSections": "Sekcje witryny",
+  "pageOfTotal": "Strona {current} z {total}",
+  "siteGenerated": "Wygenerowano witrynę: {date}",
+  "licenseGraphic": "Grafika licencji {license}"
 }

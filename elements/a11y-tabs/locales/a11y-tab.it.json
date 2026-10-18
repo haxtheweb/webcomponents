@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Scheda {xOfY}",
+  "xOfY": "{order} di {total}",
+  "endOfTab": "Fine della scheda {xOfY}. Torna a {tabs}.",
+  "tabs": "schede"
+}

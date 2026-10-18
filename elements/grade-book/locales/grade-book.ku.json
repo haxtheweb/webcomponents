@@ -43,5 +43,22 @@
   "emailAddress": "E-nameyê ji vê xwendekarê re bişîne",
   "notes": "Not",
   "interests": "Berjewendî",
-  "profileImageFor": "Wêneyê profîlê yê"
+  "profileImageFor": "Wêneyê profîlê yê",
+  "fileSystem": "Pergala pelan",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Endpointa URL (JSON)",
+  "jsonDataBlob": "Bloba daneyên JSON",
+  "additionalCriteriaFeedback": "Bersivdana zêde ya {criteria}",
+  "outOfPoints": "/ {points} xal",
+  "feedbackReport": "Rapora bersivdanê",
+  "criteriaDetails": "Hûrgiliyên pîvanan",
+  "yourFeedback": "Bersivdana te",
+  "additionalCriteriaFeedbackHeading": "Bersivdana zêde ya Pîvanan",
+  "yourTotalScore": "Pûana te ya giştî",
+  "scoreOutOfPoints": "{score} / {points} xal",
+  "studentAssignment": "Karê {assignment} ê {student}",
+  "downloadPDF": "PDF daxîne",
+  "displayMode1": "Mod 1",
+  "displayMode2": "Mod 2",
+  "twoWindows": "Du pencere"
 }

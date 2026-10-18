@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Napló letöltése txt-ként",
+  "downloadChatLog": "Csevegési napló letöltése",
+  "resetChat": "Csevegés visszaállítása",
+  "toggleDataCollection": "Adatgyűjtés váltása",
+  "dataCollection": "Adatgyűjtés",
+  "toggleDeveloperMode": "Fejlesztői mód váltása",
+  "exitFullView": "Kilépés a teljes nézetből",
+  "enterFullView": "Teljes nézet",
+  "hideInterface": "Felület elrejtése",
+  "resetChatConfirm": "Visszaállítod a csevegést?",
+  "downloadBeforeResetConfirm": "Letöltöd a csevegési naplót a visszaállítás előtt?",
+  "dataCollectionOn": "A beszélgetéseidet AI-modelljeink tanítására használjuk",
+  "dataCollectionOff": "A beszélgetéseidet nem használjuk AI-modelljeink tanítására"
+}

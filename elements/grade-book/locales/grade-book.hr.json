@@ -43,5 +43,22 @@
   "emailAddress": "Pošalji e-poruku ovom studentu",
   "notes": "Bilješke",
   "interests": "Interesi",
-  "profileImageFor": "Profilna slika za"
+  "profileImageFor": "Profilna slika za",
+  "fileSystem": "Datotečni sustav",
+  "googleDocs": "Google dokumenti",
+  "urlEndpointJSON": "URL krajnja točka (JSON)",
+  "jsonDataBlob": "JSON blok podataka",
+  "additionalCriteriaFeedback": "Dodatne povratne informacije za {criteria}",
+  "outOfPoints": "/ {points} bod.",
+  "feedbackReport": "Izvješće s povratnim informacijama",
+  "criteriaDetails": "Pojedinosti kriterija",
+  "yourFeedback": "Vaše povratne informacije",
+  "additionalCriteriaFeedbackHeading": "Dodatne povratne informacije po kriterijima",
+  "yourTotalScore": "Vaš ukupni rezultat",
+  "scoreOutOfPoints": "{score} / {points} bod.",
+  "studentAssignment": "Zadatak {assignment} učenika {student}",
+  "downloadPDF": "Preuzmi PDF",
+  "displayMode1": "Način 1",
+  "displayMode2": "Način 2",
+  "twoWindows": "Dva prozora"
 }

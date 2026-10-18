@@ -7,5 +7,7 @@
   "userAccessGranted": "Kua tukuna te urunga kaiwhakamahi!",
   "userNotFound": "Kāore i kitea te kaiwhakamahi, kāore rānei i whakamanatia",
   "loadingAddingUser": "E tāpiri ana i te kaiwhakamahi...",
-  "grantAccessTo": "Tuku urunga ki:"
+  "grantAccessTo": "Tuku urunga ki:",
+  "networkErrorTryAgain": "I puta he hapa whatunga. Me whakamātau anō.",
+  "characterWillAppear": "Ka puta mai te kiripuaki ina tāurua koe i tētahi ingoa kaiwhakamahi"
 }

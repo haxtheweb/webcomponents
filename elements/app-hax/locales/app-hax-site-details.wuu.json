@@ -1,0 +1,18 @@
+{
+  "copy": "复制",
+  "download": "下载",
+  "archive": "归档",
+  "copyOperation": "复制",
+  "downloadOperation": "下载",
+  "archiveOperation": "归档",
+  "created": "创建",
+  "updated": "更新",
+  "pages": "页面",
+  "url": "URL",
+  "confirm": "确认",
+  "cancel": "取消",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "侬确定要{operation} {siteName} 伐?",
+  "siteOperationSuccessful": "{siteName} {operation}成功!",
+  "siteOperationFailed": "{siteName} {operation}失败"
+}

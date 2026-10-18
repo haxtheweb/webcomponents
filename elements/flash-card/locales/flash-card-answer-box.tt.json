@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Сезнең җавап",
   "checkAnswer": "Җавапны тикшерү",
-  "retry": "Кабатлау"
+  "retry": "Кабатлау",
+  "correct": "Дөрес!",
+  "incorrect": "Дөрес түгел!",
+  "correctAnswer": "Дөрес җавап: {answer}"
 }

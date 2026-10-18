@@ -9,5 +9,7 @@
   "record": "Optag",
   "pause": "Sæt optagelse på pause",
   "stopSave": "Stop og gem",
-  "clickToTakePhoto": "Klik for at tage et foto"
+  "clickToTakePhoto": "Klik for at tage et foto",
+  "url": "URL",
+  "open": "åbn"
 }

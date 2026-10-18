@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Kundi ikki innlesa tema: {error}",
+  "noThemesForView": "Eingi tema tøk til hesa vísingina.",
+  "active": "Virkið",
+  "themeIsActive": "Temað {name} er virkið",
+  "applyTheme": "Nýt temað {name}",
+  "apply": "Nýt",
+  "preview": "Forsýning",
+  "name": "Navn",
+  "element": "Element",
+  "description": "Lýsing",
+  "action": "Gerð",
+  "loadingThemes": "Innlesi tema...",
+  "themesShown": "{count} tema víst",
+  "themesShownDefaults": "{count} tema víst (app-hax sjálvsett)",
+  "availableHaxcmsThemes": "Tøk HAXcms-tema",
+  "gallery": "Myndasavn",
+  "table": "Talva"
+}

@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "ਲੌਗ txt ਵਜੋਂ ਡਾਊਨਲੋਡ ਕਰੋ",
+  "downloadChatLog": "ਚੈਟ ਲੌਗ ਡਾਊਨਲੋਡ ਕਰੋ",
+  "resetChat": "ਚੈਟ ਰੀਸੈੱਟ ਕਰੋ",
+  "toggleDataCollection": "ਡਾਟਾ ਇਕੱਠਾ ਕਰਨਾ ਟੌਗਲ ਕਰੋ",
+  "dataCollection": "ਡਾਟਾ ਇਕੱਠਾ ਕਰਨਾ",
+  "toggleDeveloperMode": "ਡਿਵੈਲਪਰ ਮੋਡ ਟੌਗਲ ਕਰੋ",
+  "exitFullView": "ਪੂਰੇ ਦ੍ਰਿਸ਼ ਤੋਂ ਬਾਹਰ ਨਿਕਲੋ",
+  "enterFullView": "ਪੂਰੇ ਦ੍ਰਿਸ਼ ਵਿੱਚ ਜਾਓ",
+  "hideInterface": "ਇੰਟਰਫ਼ੇਸ ਲੁਕਾਓ",
+  "resetChatConfirm": "ਕੀ ਚੈਟ ਰੀਸੈੱਟ ਕਰਨੀ ਹੈ?",
+  "downloadBeforeResetConfirm": "ਕੀ ਰੀਸੈੱਟ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਚੈਟ ਲੌਗ ਡਾਊਨਲੋਡ ਕਰਨਾ ਹੈ?",
+  "dataCollectionOn": "ਤੁਹਾਡੀਆਂ ਗੱਲਬਾਤਾਂ ਸਾਡੇ AI ਮਾਡਲਾਂ ਨੂੰ ਸਿਖਲਾਈ ਦੇਣ ਲਈ ਵਰਤੀਆਂ ਜਾਣਗੀਆਂ",
+  "dataCollectionOff": "ਤੁਹਾਡੀਆਂ ਗੱਲਬਾਤਾਂ ਸਾਡੇ AI ਮਾਡਲਾਂ ਨੂੰ ਸਿਖਲਾਈ ਦੇਣ ਲਈ ਨਹੀਂ ਵਰਤੀਆਂ ਜਾਣਗੀਆਂ"
+}

@@ -5,5 +5,9 @@
   "buttons": "ボタン",
   "futureButtonConfiguration": "エディターボタンのカスタム設定は近日公開予定です。",
   "save": "保存",
-  "saving": "保存中…"
+  "saving": "保存中…",
+  "novice": "初心者",
+  "expert": "上級者",
+  "toolbarPreviewAlt": "{audience} 向け編集ツールバーのプレビュー",
+  "savingEditorSettingsFailed": "エディター設定の保存に失敗しました: {error}"
 }

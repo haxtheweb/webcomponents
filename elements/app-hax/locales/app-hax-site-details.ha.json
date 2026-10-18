@@ -1,0 +1,18 @@
+{
+  "copy": "Kwafi",
+  "download": "Sauke",
+  "archive": "Ajiye a ma'aji",
+  "copyOperation": "kwafi",
+  "downloadOperation": "sauke",
+  "archiveOperation": "ajiye a ma'aji",
+  "created": "an ƙirƙira",
+  "updated": "an sabunta",
+  "pages": "shafuka",
+  "url": "URL",
+  "confirm": "Tabbatar",
+  "cancel": "Soke",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Ka tabbata kana son {operation} {siteName}?",
+  "siteOperationSuccessful": "{operation} na {siteName} ya yi nasara!",
+  "siteOperationFailed": "{operation} na {siteName} ya gaza"
+}

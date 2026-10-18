@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "วางไฟล์ที่นี่",
+  "uploadQueue": "คิวการอัปโหลด",
+  "pending": "รอดำเนินการ",
+  "preparing": "กำลังเตรียม",
+  "uploading": "กำลังอัปโหลด",
+  "complete": "เสร็จสมบูรณ์",
+  "aborted": "ถูกยกเลิกกลางคัน",
+  "cancelled": "ยกเลิกแล้ว",
+  "error": "ข้อผิดพลาด",
+  "errorWithStatus": "ข้อผิดพลาด: {status}",
+  "cancel": "ยกเลิก",
+  "cancelUploadOf": "ยกเลิกการอัปโหลด {name}",
+  "retry": "ลองใหม่",
+  "retryUploadOf": "ลองอัปโหลด {name} อีกครั้ง",
+  "remove": "นำออก",
+  "removeFromQueue": "นำ {name} ออกจากคิว",
+  "fileTypeNotAccepted": "ไม่รองรับประเภทไฟล์: {name}",
+  "uploadFailed": "อัปโหลดไม่สำเร็จ: {status}",
+  "networkError": "ข้อผิดพลาดของเครือข่าย"
+}

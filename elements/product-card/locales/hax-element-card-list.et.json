@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Veebikomponentide registrist otsitakse rohkem HAX-i elemente..",
+  "enabled": "Lubatud",
+  "disabled": "Keelatud",
+  "details": "Üksikasjad",
+  "tags": "Sildid:",
+  "tagName": "Sildi nimi:",
+  "developerUsage": "Kasutamine arendajale:",
+  "demo": "Demo",
+  "popUpDemo": "Hüpikdemo",
+  "demoOf": "{tag} demo"
+}

@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Thẻ {xOfY}",
+  "xOfY": "{order} / {total}",
+  "endOfTab": "Kết thúc thẻ {xOfY}. Quay lại {tabs}.",
+  "tabs": "danh sách thẻ"
+}

@@ -1,0 +1,9 @@
+{
+  "palette": "ชุดสี",
+  "paletteSelection": "การเลือกชุดสี",
+  "active": "ใช้งานอยู่",
+  "selected": "เลือกแล้ว",
+  "currentlyActiveAndSelectedPalette": "ชุดสีที่ใช้งานอยู่และเลือกไว้",
+  "currentlyActivePalette": "ชุดสีที่ใช้งานอยู่",
+  "selectedPaletteToApply": "ชุดสีที่เลือกไว้เพื่อนำไปใช้"
+}

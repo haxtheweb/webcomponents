@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Укладка {xOfY}",
+  "xOfY": "{order} з {total}",
+  "endOfTab": "Канец укладкі {xOfY}. Назад да {tabs}.",
+  "tabs": "укладак"
+}

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Autorile viitamine",
+  "licenseBySa": "Autorile viitamine + Jagamine samadel tingimustel",
+  "licenseByNd": "Autorile viitamine + Tuletatud teoste keeld",
+  "licenseByNc": "Autorile viitamine + Mitteäriline eesmärk",
+  "licenseByNcSa": "Autorile viitamine + Mitteäriline eesmärk + Jagamine samadel tingimustel",
+  "licenseByNcNd": "Autorile viitamine + Mitteäriline eesmärk + Tuletatud teoste keeld",
+  "citationWithLicense": "{title}, autor {creator}, litsents {license}. Vaadatud {date}.",
+  "citationWithoutLicense": "{title}, autor {creator}. Vaadatud {date}.",
+  "licenseGraphic": "{license} graafika"
+}

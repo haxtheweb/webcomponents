@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Pakua Kumbukumbu kama txt",
+  "downloadChatLog": "Pakua Kumbukumbu ya Gumzo",
+  "resetChat": "Weka Upya Gumzo",
+  "toggleDataCollection": "Washa/zima Ukusanyaji wa Data",
+  "dataCollection": "Ukusanyaji wa Data",
+  "toggleDeveloperMode": "Washa/zima Hali ya Msanidi Programu",
+  "exitFullView": "Ondoka kwenye Mwonekano Kamili",
+  "enterFullView": "Ingia kwenye Mwonekano Kamili",
+  "hideInterface": "Ficha Kiolesura",
+  "resetChatConfirm": "Weka upya gumzo?",
+  "downloadBeforeResetConfirm": "Pakua kumbukumbu ya gumzo kabla ya kuweka upya?",
+  "dataCollectionOn": "Mazungumzo yako yatatumika kufunza miundo yetu ya AI",
+  "dataCollectionOff": "Mazungumzo yako hayatatumika kufunza miundo yetu ya AI"
+}

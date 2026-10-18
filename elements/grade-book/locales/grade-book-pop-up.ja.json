@@ -1,5 +1,9 @@
 {
   "studentSubmission": "学生の提出物",
   "openInNewWindow": "新しいウィンドウで開く",
-  "submitted": "提出日時"
+  "submitted": "提出日時",
+  "previousStudent": "前の学生",
+  "nextStudent": "次の学生",
+  "previousAssignment": "前の課題",
+  "nextAssignment": "次の課題"
 }

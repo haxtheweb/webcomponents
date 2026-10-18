@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "앵커 링크가 복사되었습니다!",
+  "skipToContent": "본문으로 건너뛰기",
+  "siteHome": "사이트 홈",
+  "mainNavigation": "주 탐색",
+  "toggleMenu": "메뉴 전환",
+  "changeTheme": "테마 변경",
+  "breadcrumb": "탐색 경로",
+  "tagFilter": "태그 필터:",
+  "all": "전체",
+  "pageNumberOfTotal": "페이지 번호: {current} / {total}",
+  "siteGenerated": "사이트 생성일: {date}",
+  "copyright": "저작권: {year} {author}",
+  "viewContentByTag": "태그별 콘텐츠 보기",
+  "licenseGraphic": "{license} 그래픽"
+}

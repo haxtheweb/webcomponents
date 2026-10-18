@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Laster inn...",
   "youTubeStartLoading": "Trykk på spill av.",
   "youTubeTranscriptLabel": "Transkripsjonen lastes inn når mediet spilles av.",
-  "audioDescriptionLabel": "Synstolking"
+  "audioDescriptionLabel": "Synstolking",
+  "openOnYouTube": "Åpne på YouTube"
 }

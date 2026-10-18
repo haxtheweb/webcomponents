@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Galmee akka txt tti buufadhu",
+  "downloadChatLog": "Galmee Haasawaa Buufadhu",
+  "resetChat": "Haasawa Irra Deebi'ii Jalqabi",
+  "toggleDataCollection": "Funaansa Daataa Jijjiiri",
+  "dataCollection": "Funaansa Daataa",
+  "toggleDeveloperMode": "Haalata Misoomsaa Jijjiiri",
+  "exitFullView": "Ilaalcha Guutuu keessaa Ba'i",
+  "enterFullView": "Ilaalcha Guutuu Seeni",
+  "hideInterface": "Interfeesii Dhoksi",
+  "resetChatConfirm": "Haasawa irra deebi'ii jalqabuu?",
+  "downloadBeforeResetConfirm": "Utuu irra deebi'ii hin jalqabiin dura galmee haasawaa buufachuu?",
+  "dataCollectionOn": "Haasawaawwan kee moodelota AI keenya leenjisuuf ni fayyadu",
+  "dataCollectionOff": "Haasawaawwan kee moodelota AI keenya leenjisuuf hin fayyadan"
+}

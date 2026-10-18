@@ -5,5 +5,9 @@
   "buttons": "Knapper",
   "futureButtonConfiguration": "Tilpasset konfigurasjon av redigeringsknapper kommer snart.",
   "save": "Lagre",
-  "saving": "Lagrer…"
+  "saving": "Lagrer…",
+  "novice": "Nybegynner",
+  "expert": "Ekspert",
+  "toolbarPreviewAlt": "Forhåndsvisning av redigeringsverktøylinje for {audience}",
+  "savingEditorSettingsFailed": "Lagring av redigeringsinnstillinger mislyktes: {error}"
 }

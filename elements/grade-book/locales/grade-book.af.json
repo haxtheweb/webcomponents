@@ -43,5 +43,22 @@
   "emailAddress": "E-pos hierdie student",
   "notes": "Notas",
   "interests": "Belangstellings",
-  "profileImageFor": "Profielfoto van"
+  "profileImageFor": "Profielfoto van",
+  "fileSystem": "Lêerstelsel",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL-eindpunt (JSON)",
+  "jsonDataBlob": "JSON-datablok",
+  "additionalCriteriaFeedback": "Bykomende {criteria}-terugvoer",
+  "outOfPoints": "/ {points} pte",
+  "feedbackReport": "Terugvoerverslag",
+  "criteriaDetails": "Kriteriabesonderhede",
+  "yourFeedback": "Jou terugvoer",
+  "additionalCriteriaFeedbackHeading": "Bykomende kriteria-terugvoer",
+  "yourTotalScore": "Jou totale telling",
+  "scoreOutOfPoints": "{score} / {points} pte",
+  "studentAssignment": "{student} se opdrag {assignment}",
+  "downloadPDF": "Laai PDF af",
+  "displayMode1": "Modus 1",
+  "displayMode2": "Modus 2",
+  "twoWindows": "Twee vensters"
 }

@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Skanante la registron de retkomponantoj por pliaj HAX-elementoj..",
+  "enabled": "Ŝaltita",
+  "disabled": "Malŝaltita",
+  "details": "Detaloj",
+  "tags": "Etikedoj:",
+  "tagName": "Etikeda nomo:",
+  "developerUsage": "Uzado por programistoj:",
+  "demo": "Demo",
+  "popUpDemo": "Ŝprucfenestra demo",
+  "demoOf": "Demo de {tag}"
+}

@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "タブ {xOfY}",
+  "xOfY": "{order} / {total}",
+  "endOfTab": "タブ {xOfY} の終わり。{tabs}に戻る。",
+  "tabs": "タブ一覧"
+}

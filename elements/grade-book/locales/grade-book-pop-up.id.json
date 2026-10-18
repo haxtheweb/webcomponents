@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Kiriman siswa",
   "openInNewWindow": "Buka di jendela baru",
-  "submitted": "Dikirim"
+  "submitted": "Dikirim",
+  "previousStudent": "Siswa sebelumnya",
+  "nextStudent": "Siswa berikutnya",
+  "previousAssignment": "Tugas sebelumnya",
+  "nextAssignment": "Tugas berikutnya"
 }

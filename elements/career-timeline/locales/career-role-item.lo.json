@@ -1,0 +1,11 @@
+{
+  "roleTitle": "ຊື່ຕຳແໜ່ງ",
+  "describeYourRole": "ອະທິບາຍບົດບາດຂອງທ່ານບ່ອນນີ້...",
+  "present": "ນຳສະເໜີ",
+  "skills": "ທັກສະ:",
+  "skillsAndMore": "{skills} ແລະ ອີກ +{count}",
+  "yearShort": "{count} ປີ",
+  "yearsShort": "{count} ປີ",
+  "monthShort": "{count} ເດືອນ",
+  "monthsShort": "{count} ເດືອນ"
+}

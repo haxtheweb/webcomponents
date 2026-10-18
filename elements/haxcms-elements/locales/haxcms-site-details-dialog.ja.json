@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- 既定では最初のページ --",
+  "details": "詳細",
+  "title": "タイトル",
+  "titleDescription": "サイトの名前",
+  "homePage": "ホームページ",
+  "homePageDescription": "既定のランディングページ / ホームページとして使用するページ",
+  "advanced": "詳細設定",
+  "serviceWorker": "動的ページに Service Worker を追加",
+  "serviceWorkerDescription": "ユーザーに常に最新のサーバー出力をすぐに表示したい場合は、これを無効にしてください。",
+  "forceBrowserUpgrade": "ブラウザーのアップグレードを強制",
+  "forceBrowserUpgradeDescription": "サイトを読み込む前にエバーグリーンブラウザーを必須にします。",
+  "unableToLoadSiteDetails": "サイトの詳細を読み込めません。",
+  "noSiteDetails": "利用できるサイトの詳細はありません。",
+  "save": "保存"
+}

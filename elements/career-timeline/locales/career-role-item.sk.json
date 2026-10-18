@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Názov roly",
+  "describeYourRole": "Sem opíšte svoju rolu...",
+  "present": "Prezentuj",
+  "skills": "Zručnosti:",
+  "skillsAndMore": "{skills} a +{count} ďalších",
+  "yearShort": "{count} r.",
+  "yearsShort": "{count} r.",
+  "monthShort": "{count} mes.",
+  "monthsShort": "{count} mes."
+}

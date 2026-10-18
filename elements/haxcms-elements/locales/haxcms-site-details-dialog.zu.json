@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- okuzenzakalelayo yikhasi lokuqala --",
+  "details": "Imininingwane",
+  "title": "Isihloko",
+  "titleDescription": "Igama lesayithi",
+  "homePage": "Ikhasi lasekhaya",
+  "homePageDescription": "Ikhasi okufanele lisetshenziswe njengekhasi lokufika / lasekhaya elizenzakalelayo",
+  "advanced": "Okuthuthukisiwe",
+  "serviceWorker": "Engeza i-service worker ekhasini eliguquguqukayo",
+  "serviceWorkerDescription": "Vala lokhu uma abasebenzisi kufanele bahlale bebona okukhishwa kwakamuva kweseva ngokushesha.",
+  "forceBrowserUpgrade": "Phoqa ukuthuthukiswa kwesiphequluli",
+  "forceBrowserUpgradeDescription": "Dinga iziphequluli ezihlala zibuyekezwa ngaphambi kokulayisha okuhlangenwe nakho kwesayithi.",
+  "unableToLoadSiteDetails": "Ayikwazi ukulayisha imininingwane yesayithi.",
+  "noSiteDetails": "Ayikho imininingwane yesayithi etholakalayo.",
+  "save": "Londoloza"
+}

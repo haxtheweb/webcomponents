@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Prikaži prej poslano sporočilo (gor)",
+  "displayPreviousMessageDown": "Prikaži prej poslano sporočilo (dol)",
+  "sendPrompt": "Pošlji poziv",
+  "sendPromptToMerlin": "Pošlji poziv Merlinu",
+  "shortenPrompt": "Skrajšajte poziv na največ {limit} znakov."
+}

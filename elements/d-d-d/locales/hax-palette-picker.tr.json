@@ -1,0 +1,9 @@
+{
+  "palette": "Palet",
+  "paletteSelection": "Palet seçimi",
+  "active": "Etkin",
+  "selected": "Seçili",
+  "currentlyActiveAndSelectedPalette": "Şu anda etkin ve seçili palet",
+  "currentlyActivePalette": "Şu anda etkin palet",
+  "selectedPaletteToApply": "Uygulanacak seçili palet"
+}

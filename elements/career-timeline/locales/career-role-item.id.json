@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Jabatan",
+  "describeYourRole": "Jelaskan peran Anda di sini...",
+  "present": "Presentasikan",
+  "skills": "Keterampilan:",
+  "skillsAndMore": "{skills} dan +{count} lainnya",
+  "yearShort": "{count} thn",
+  "yearsShort": "{count} thn",
+  "monthShort": "{count} bln",
+  "monthsShort": "{count} bln"
+}

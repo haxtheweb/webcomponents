@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Déposez les fichiers ici",
+  "uploadQueue": "File de téléversement",
+  "pending": "En attente",
+  "preparing": "Préparation",
+  "uploading": "Téléversement",
+  "complete": "Terminé",
+  "aborted": "Interrompu",
+  "cancelled": "Annulé",
+  "error": "Erreur",
+  "errorWithStatus": "Erreur : {status}",
+  "cancel": "Annuler",
+  "cancelUploadOf": "Annuler le téléversement de {name}",
+  "retry": "Réessayer",
+  "retryUploadOf": "Relancer le téléversement de {name}",
+  "remove": "Supprimer",
+  "removeFromQueue": "Retirer {name} de la file",
+  "fileTypeNotAccepted": "Type de fichier non accepté : {name}",
+  "uploadFailed": "Échec du téléversement : {status}",
+  "networkError": "Erreur réseau"
+}

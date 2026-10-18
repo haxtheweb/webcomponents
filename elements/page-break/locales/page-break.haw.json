@@ -22,6 +22,13 @@
   "unpublish": "Hoʻopau i ka paʻi ʻana",
   "savePage": "Mālama i ka ʻaoʻao",
   "cancel": "Hoʻopau",
+  "delete": "Holoi",
+  "editTitle": "Hoʻoponopono i ke poʻo inoa",
+  "editIcon": "Hoʻoponopono i ka ikona",
+  "agent": "Kōkua",
+  "pageLockedUnlockToEdit": "Ua laka ʻia kēia ʻaoʻao. E wehe mua i ka laka e hoʻoponopono ai.",
+  "pageLockedUnlockToChangePublishStatus": "Ua laka ʻia kēia ʻaoʻao. E wehe mua i ka laka e hoʻololi ai i ke kūlana paʻi.",
+  "pageLockedUnlockToDelete": "Ua laka ʻia kēia ʻaoʻao. E wehe mua i ka laka e holoi ai.",
   "pageDetails": "Nā kikowaena 'ao'ao",
   "clickToUnlock": "Kaomi no ka wehe 'ana"
 }

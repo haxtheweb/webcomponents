@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Heiti hlutverks",
+  "describeYourRole": "Lýstu hlutverki þínu hér...",
+  "present": "Kynna",
+  "skills": "Færni:",
+  "skillsAndMore": "{skills} og +{count} til viðbótar",
+  "yearShort": "{count} ár",
+  "yearsShort": "{count} ár",
+  "monthShort": "{count} mán.",
+  "monthsShort": "{count} mán."
+}

@@ -5,5 +5,9 @@
   "buttons": "Botoiak",
   "futureButtonConfiguration": "Editorearen botoien konfigurazio pertsonalizatua laster iritsiko da.",
   "save": "Gorde",
-  "saving": "Gordetzen…"
+  "saving": "Gordetzen…",
+  "novice": "Hasiberria",
+  "expert": "Aditua",
+  "toolbarPreviewAlt": "{audience} edizio-tresna-barraren aurrebista",
+  "savingEditorSettingsFailed": "Editorearen ezarpenak gordetzeak huts egin du: {error}"
 }

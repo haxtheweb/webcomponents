@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Skriva brúkaranavn",
+  "invalidUsernameOrPassword": "Ógyldugt brúkaranavn ella loyniorð",
+  "welcomeLetsGo": "Vælkomin {username}! Lat okkum fara!",
+  "enterYourUsername": "Skriva brúkaranavn títt",
+  "username": "Brúkaranavn",
+  "next": "Næsta",
+  "welcomeBack": "Vælkomin aftur, {username}!",
+  "notYou": "Ikki tú?",
+  "enterYourPassword": "Skriva loyniorð títt",
+  "password": "Loyniorð",
+  "togglePasswordDisplay": "Skift vísing av loyniorði",
+  "login": "Rita inn"
+}

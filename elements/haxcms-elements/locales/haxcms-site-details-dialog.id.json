@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- default ke halaman pertama --",
+  "details": "Detail",
+  "title": "Judul",
+  "titleDescription": "Nama situs",
+  "homePage": "Halaman beranda",
+  "homePageDescription": "Halaman yang digunakan sebagai halaman pendaratan / beranda default",
+  "advanced": "Lanjutan",
+  "serviceWorker": "Tambahkan service worker ke halaman dinamis",
+  "serviceWorkerDescription": "Nonaktifkan ini jika pengguna harus selalu melihat keluaran server terbaru dengan segera.",
+  "forceBrowserUpgrade": "Paksa pembaruan peramban",
+  "forceBrowserUpgradeDescription": "Wajibkan peramban evergreen sebelum memuat pengalaman situs.",
+  "unableToLoadSiteDetails": "Tidak dapat memuat detail situs.",
+  "noSiteDetails": "Tidak ada detail situs yang tersedia.",
+  "save": "Simpan"
+}

@@ -1,0 +1,11 @@
+{
+  "playlist": "Playlist",
+  "carousel": "karusel",
+  "slide": "snímka",
+  "slideNumber": "Snímka {number}",
+  "slideOfTotal": "Snímka {number} z {total}",
+  "previousSlide": "Predchádzajúca snímka",
+  "nextSlide": "Ďalšia snímka",
+  "slidePages": "Stránky snímok",
+  "goToSlide": "Prejsť na snímku {number}"
+}

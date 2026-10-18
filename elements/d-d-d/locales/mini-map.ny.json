@@ -1,0 +1,17 @@
+{
+  "editNodes": "Sinthani Mfundo",
+  "editLines": "Sinthani Mizere",
+  "reset": "Bwezeretsani",
+  "save": "Sungani",
+  "cancel": "Letsani",
+  "delete": "Fufutani",
+  "type": "Mtundu:",
+  "topic": "Mutu wankhani",
+  "subsection": "Kagawo",
+  "name": "Dzina:",
+  "enterName": "Lowetsani Dzina",
+  "url": "URL:",
+  "enterUrl": "Lowetsani URL",
+  "activeNode": "Mfundo Yogwira Ntchito?",
+  "nodeId": "Mfundo {id}"
+}

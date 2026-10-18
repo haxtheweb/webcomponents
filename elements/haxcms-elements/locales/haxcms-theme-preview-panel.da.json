@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Vis forhåndsvisning af tema",
+  "hideThemePreview": "Skjul forhåndsvisning af tema",
+  "themePreviewPanel": "Panel til forhåndsvisning af tema",
+  "themePreview": "Forhåndsvisning af tema",
+  "themePreviewDescription": "Prøv et tema og en palet midlertidigt, mens du browser. Brug Annuller for at gendanne dit oprindelige udseende.",
+  "loadingThemes": "Indlæser temaer...",
+  "theme": "Tema",
+  "palette": "Palet",
+  "cancel": "Annuller",
+  "openAppearanceSettings": "Åbn indstillinger for udseende"
+}

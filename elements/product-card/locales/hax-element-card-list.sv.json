@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Söker igenom webbkomponentregistret efter fler HAX-element..",
+  "enabled": "Aktiverad",
+  "disabled": "Inaktiverad",
+  "details": "Detaljer",
+  "tags": "Taggar:",
+  "tagName": "Taggnamn:",
+  "developerUsage": "Användning för utvecklare:",
+  "demo": "Demo",
+  "popUpDemo": "Popup-demo",
+  "demoOf": "Demo av {tag}"
+}

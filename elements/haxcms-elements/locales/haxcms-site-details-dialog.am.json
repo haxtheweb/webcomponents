@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- ነባሪው የመጀመሪያው ገጽ --",
+  "details": "ዝርዝሮች",
+  "title": "ርዕስ",
+  "titleDescription": "የድረ-ገጹ ስም",
+  "homePage": "መነሻ ገጽ",
+  "homePageDescription": "እንደ ነባሪ ማረፊያ / መነሻ ገጽ የሚያገለግል ገጽ",
+  "advanced": "የላቀ",
+  "serviceWorker": "ለተለዋዋጭ ገጽ service worker አክል",
+  "serviceWorkerDescription": "ተጠቃሚዎች የቅርብ ጊዜውን የአገልጋይ ውጤት ሁልጊዜ ወዲያውኑ ማየት ካለባቸው ይህን ያሰናክሉ።",
+  "forceBrowserUpgrade": "የአሳሽ ማሻሻያን አስገድድ",
+  "forceBrowserUpgradeDescription": "የድረ-ገጹን ተሞክሮ ከመጫንዎ በፊት ዘወትር የሚዘምኑ አሳሾችን ይጠይቁ።",
+  "unableToLoadSiteDetails": "የድረ-ገጽ ዝርዝሮችን መጫን አልተቻለም።",
+  "noSiteDetails": "ምንም የድረ-ገጽ ዝርዝሮች የሉም።",
+  "save": "አስቀምጥ"
+}

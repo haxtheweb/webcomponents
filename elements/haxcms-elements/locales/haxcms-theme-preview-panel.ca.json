@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Mostra la previsualització del tema",
+  "hideThemePreview": "Amaga la previsualització del tema",
+  "themePreviewPanel": "Panell de previsualització del tema",
+  "themePreview": "Previsualització del tema",
+  "themePreviewDescription": "Prova un tema i una paleta temporalment mentre navegues. Utilitza Cancel·la per restaurar l'aparença original.",
+  "loadingThemes": "S'estan carregant els temes...",
+  "theme": "Tema",
+  "palette": "Paleta",
+  "cancel": "Cancel·la",
+  "openAppearanceSettings": "Obre la configuració d'aparença"
+}

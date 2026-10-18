@@ -1,0 +1,18 @@
+{
+  "copy": "Kopiraj",
+  "download": "Prenesi",
+  "archive": "Arhiviraj",
+  "copyOperation": "kopiranje",
+  "downloadOperation": "prenos",
+  "archiveOperation": "arhiviranje",
+  "created": "ustvarjeno",
+  "updated": "posodobljeno",
+  "pages": "strani",
+  "url": "URL",
+  "confirm": "Potrdi",
+  "cancel": "Prekliči",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Ali ste prepričani, da želite izvesti dejanje {operation} za {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} uspešno!",
+  "siteOperationFailed": "{siteName}: {operation} ni uspelo"
+}

@@ -1,3 +1,8 @@
 {
-  "title": "Bronnen"
+  "title": "Bronnen",
+  "export": "Exporteren",
+  "exportCitations": "Bronvermeldingen exporteren",
+  "copy": "Kopiëren",
+  "exportCitationFormat": "Formaat voor bronvermelding exporteren",
+  "selectCitationFormatBelow": "Selecteer hieronder een formaat voor bronvermeldingen"
 }

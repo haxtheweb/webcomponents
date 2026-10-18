@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Картица {xOfY}",
+  "xOfY": "{order} од {total}",
+  "endOfTab": "Крај картице {xOfY}. Назад на {tabs}.",
+  "tabs": "картице"
+}

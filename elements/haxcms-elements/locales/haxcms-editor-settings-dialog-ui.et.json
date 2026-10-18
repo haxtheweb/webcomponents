@@ -5,5 +5,9 @@
   "buttons": "Nupud",
   "futureButtonConfiguration": "Redaktori nuppude kohandatud seadistamine on peagi tulekul.",
   "save": "Salvesta",
-  "saving": "Salvestamine…"
+  "saving": "Salvestamine…",
+  "novice": "Algaja",
+  "expert": "Ekspert",
+  "toolbarPreviewAlt": "{audience} muutmistööriistariba eelvaade",
+  "savingEditorSettingsFailed": "Redaktori seadete salvestamine ebaõnnestus: {error}"
 }

@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Nem sikerült betölteni a témákat: {error}",
+  "noThemesForView": "Ehhez a nézethez nincsenek elérhető témák.",
+  "active": "Aktív",
+  "themeIsActive": "A(z) {name} téma aktív",
+  "applyTheme": "{name} téma alkalmazása",
+  "apply": "Alkalmazás",
+  "preview": "Előnézet",
+  "name": "Név",
+  "element": "Elem",
+  "description": "Leírás",
+  "action": "Művelet",
+  "loadingThemes": "Témák betöltése...",
+  "themesShown": "{count} téma látható",
+  "themesShownDefaults": "{count} téma látható (app-hax alapértelmezések)",
+  "availableHaxcmsThemes": "Elérhető HAXcms témák",
+  "gallery": "Galéria",
+  "table": "Táblázat"
+}

@@ -1,0 +1,11 @@
+{
+  "playlist": "የአጫዋች ዝርዝር",
+  "carousel": "ካሩሰል",
+  "slide": "ስላይድ",
+  "slideNumber": "ስላይድ {number}",
+  "slideOfTotal": "ስላይድ {number} ከ{total}",
+  "previousSlide": "ቀዳሚ ስላይድ",
+  "nextSlide": "ቀጣይ ስላይድ",
+  "slidePages": "የስላይድ ገጾች",
+  "goToSlide": "ወደ ስላይድ {number} ሂድ"
+}

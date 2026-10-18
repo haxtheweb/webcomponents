@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Odkaz na kotvu bol skopírovaný!",
+  "skipToContent": "Preskočiť na obsah",
+  "siteHome": "Domov webu",
+  "mainNavigation": "Hlavná navigácia",
+  "toggleMenu": "Prepnúť ponuku",
+  "changeTheme": "Zmeniť tému",
+  "breadcrumb": "Navigačná cesta",
+  "tagFilter": "Filter značiek:",
+  "all": "Všetko",
+  "pageNumberOfTotal": "Číslo stránky: {current} z {total}",
+  "siteGenerated": "Web vygenerovaný: {date}",
+  "copyright": "Copyright: {year} {author}",
+  "viewContentByTag": "Zobraziť obsah podľa značky",
+  "licenseGraphic": "Grafika {license}"
+}

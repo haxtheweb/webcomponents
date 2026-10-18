@@ -10,5 +10,9 @@
   "save": "सुरक्षित गर्नुहोस्",
   "noDescription": "कुनै विवरण उपलब्ध छैन।",
   "details": "विवरणहरू",
-  "loadingInventory": "पूर्ण ब्लक सूची लोड हुँदैछ…"
+  "loadingInventory": "पूर्ण ब्लक सूची लोड हुँदैछ…",
+  "selectAllButton": "सबै चयन गर्नुहोस्",
+  "deselectAllButton": "सबै अचयन गर्नुहोस्",
+  "selectedOfAvailable": "{selected} चयन गरिएको / {total} उपलब्ध",
+  "savingBlocksFailed": "ब्लकहरू सेभ गर्न असफल: {error}"
 }

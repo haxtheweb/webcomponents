@@ -5,5 +5,9 @@
   "buttons": "Mga Button",
   "futureButtonConfiguration": "Malapit nang dumating ang custom na configuration ng button ng editor.",
   "save": "I-save",
-  "saving": "Sine-save…"
+  "saving": "Sine-save…",
+  "novice": "Baguhan",
+  "expert": "Eksperto",
+  "toolbarPreviewAlt": "Preview ng editing toolbar para sa {audience}",
+  "savingEditorSettingsFailed": "Nabigo ang pag-save ng mga setting ng editor: {error}"
 }

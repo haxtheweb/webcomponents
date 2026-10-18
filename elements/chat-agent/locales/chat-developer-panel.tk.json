@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Ulanyjynyň söhbetdeşlik ýazgysynyň konsol tablisasy",
+  "consoleTableUserText": "console.table() ulanyjynyň söhbetdeşlik ýazgysy",
+  "consoleTableUserTooltip": "Ulanyjynyň söhbetdeşlik ýazgysyny konsola tablisa hökmünde çykar",
+  "consoleTableMerlinLabel": "Merlin söhbetdeşlik ýazgysynyň konsol tablisasy",
+  "consoleTableMerlinText": "console.table() Merlin söhbetdeşlik ýazgysy",
+  "consoleTableMerlinTooltip": "Merlin söhbetdeşlik ýazgysyny konsola tablisa hökmünde çykar",
+  "consoleTableAllLabel": "Tutuş söhbetdeşlik ýazgysynyň konsol tablisasy",
+  "consoleTableAllText": "console.table() tutuş söhbetdeşlik ýazgysy",
+  "consoleTableAllTooltip": "Tutuş söhbetdeşlik ýazgysyny konsola tablisa hökmünde çykar",
+  "downloadChatLogJson": "Söhbetdeşlik ýazgysyny .json hökmünde ýükläp al",
+  "downloadChatLogJsonTooltip": "Söhbetdeşlik ýazgysyny .json hökmünde ýükläp al"
+}

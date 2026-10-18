@@ -1,3 +1,8 @@
 {
-  "title": "Hivatkozások"
+  "title": "Hivatkozások",
+  "export": "Exportálás",
+  "exportCitations": "Hivatkozások exportálása",
+  "copy": "Másolás",
+  "exportCitationFormat": "Hivatkozásformátum exportálása",
+  "selectCitationFormatBelow": "Válassz alább egy hivatkozásformátumot"
 }

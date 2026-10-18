@@ -1,0 +1,17 @@
+{
+  "editNodes": "编辑节点",
+  "editLines": "编辑连线",
+  "reset": "重置",
+  "save": "保存",
+  "cancel": "取消",
+  "delete": "删除",
+  "type": "类型：",
+  "topic": "主题",
+  "subsection": "子部分",
+  "name": "名称：",
+  "enterName": "输入名称",
+  "url": "URL：",
+  "enterUrl": "输入 URL",
+  "activeNode": "活动节点？",
+  "nodeId": "节点 {id}"
+}

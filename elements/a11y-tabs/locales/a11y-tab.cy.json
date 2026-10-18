@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Tab {xOfY}",
+  "xOfY": "{order} o {total}",
+  "endOfTab": "Diwedd tab {xOfY}. Yn ôl i {tabs}.",
+  "tabs": "y tabiau"
+}

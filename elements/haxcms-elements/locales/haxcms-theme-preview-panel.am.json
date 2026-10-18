@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "የገጽታ ቅድመ እይታን አሳይ",
+  "hideThemePreview": "የገጽታ ቅድመ እይታን ደብቅ",
+  "themePreviewPanel": "የገጽታ ቅድመ እይታ ፓነል",
+  "themePreview": "የገጽታ ቅድመ እይታ",
+  "themePreviewDescription": "በሚያስሱበት ጊዜ ገጽታን እና የቀለም ስብስብን ለጊዜው ይሞክሩ። የመጀመሪያውን መልክዎን ለመመለስ ሰርዝን ይጠቀሙ።",
+  "loadingThemes": "ገጽታዎችን በመጫን ላይ...",
+  "theme": "ገጽታ",
+  "palette": "የቀለም ስብስብ",
+  "cancel": "ሰርዝ",
+  "openAppearanceSettings": "የመልክ ቅንብሮችን ክፈት"
+}

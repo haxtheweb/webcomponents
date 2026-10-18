@@ -7,5 +7,7 @@
   "userAccessGranted": "Ufikelelo lomsebenzisi lunikwe ngempumelelo!",
   "userNotFound": "Umsebenzisi akafumanekanga okanye akagunyaziswanga",
   "loadingAddingUser": "Kongezwa umsebenzisi...",
-  "grantAccessTo": "Nika ufikelelo ku:"
+  "grantAccessTo": "Nika ufikelelo ku:",
+  "networkErrorTryAgain": "Kwenzeke impazamo yenethiwekhi. Nceda uzame kwakhona.",
+  "characterWillAppear": "Umlinganiswa uza kuvela xa ufaka igama lomsebenzisi"
 }

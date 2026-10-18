@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "कोई परिणाम नहीं",
+  "viewsRecordHeading": "रिकॉर्ड करें",
+  "viewsTitleImage": "{title} छवि",
+  "viewsTitlePreview": "{title} पूर्वावलोकन",
+  "viewsNoTimelineRecords": "टाइमलाइन दिखाने के लिए कोई तिथि-आधारित रिकॉर्ड उपलब्ध नहीं।",
+  "viewsTimelineTitle": "{title} टाइमलाइन",
+  "viewsNoChartField": "चार्ट दिखाने के लिए कोई संख्यात्मक फ़ील्ड नहीं मिला।",
+  "viewsChartingValue": "{value} का चार्ट",
+  "viewsChartingValueByLabel": "{label} के अनुसार {value} का चार्ट",
+  "viewsChartTitle": "{title} चार्ट",
+  "viewsNoTreeRecords": "ट्री दिखाने के लिए कोई पदानुक्रमित रिकॉर्ड उपलब्ध नहीं।",
+  "viewsNoGalleryRecords": "गैलरी दिखाने के लिए कोई छवि रिकॉर्ड उपलब्ध नहीं।",
+  "viewsNoPlaylistRecords": "प्लेलिस्ट दिखाने के लिए कोई मीडिया रिकॉर्ड उपलब्ध नहीं।",
+  "fetchFailed": "प्राप्त करना विफल ({status})",
+  "unableToLoadViewData": "व्यू डेटा लोड नहीं हो सका।",
+  "noResultsFound": "कोई परिणाम नहीं मिला।",
+  "refreshView": "व्यू रीफ़्रेश करें",
+  "breakIntoStaticContent": "स्थिर सामग्री में तोड़ें",
+  "viewsOpenRecord": "रिकॉर्ड खोलें"
+}

@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Темаларды жүктөө ишке ашкан жок: {error}",
+  "noThemesForView": "Бул көрүнүш үчүн темалар жок.",
+  "active": "Активдүү",
+  "themeIsActive": "{name} темасы активдүү",
+  "applyTheme": "{name} темасын колдонуу",
+  "apply": "Колдонуу",
+  "preview": "Алдын ала көрүү",
+  "name": "Аты",
+  "element": "Элемент",
+  "description": "Сүрөттөмө",
+  "action": "Аракет",
+  "loadingThemes": "Темалар жүктөлүүдө...",
+  "themesShown": "{count} тема көрсөтүлдү",
+  "themesShownDefaults": "{count} тема көрсөтүлдү (app-hax демейкилери)",
+  "availableHaxcmsThemes": "Жеткиликтүү HAXcms темалары",
+  "gallery": "Галерея",
+  "table": "Таблица"
+}

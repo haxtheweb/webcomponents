@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Papa console moʻolelo kamaʻilio mea hoʻohana",
+  "consoleTableUserText": "console.table() moʻolelo kamaʻilio mea hoʻohana",
+  "consoleTableUserTooltip": "Paʻi i ka moʻolelo kamaʻilio mea hoʻohana ma ke ʻano papa i ka console",
+  "consoleTableMerlinLabel": "Papa console moʻolelo kamaʻilio merlin",
+  "consoleTableMerlinText": "console.table() moʻolelo kamaʻilio merlin",
+  "consoleTableMerlinTooltip": "Paʻi i ka moʻolelo kamaʻilio Merlin ma ke ʻano papa i ka console",
+  "consoleTableAllLabel": "Papa console moʻolelo kamaʻilio holoʻokoʻa",
+  "consoleTableAllText": "console.table() moʻolelo kamaʻilio holoʻokoʻa",
+  "consoleTableAllTooltip": "Paʻi i ka moʻolelo kamaʻilio holoʻokoʻa ma ke ʻano papa i ka console",
+  "downloadChatLogJson": "Hoʻoiho i ka moʻolelo kamaʻilio ma ke ʻano .json",
+  "downloadChatLogJsonTooltip": "Hoʻoiho i ka moʻolelo kamaʻilio ma ke ʻano .json"
+}

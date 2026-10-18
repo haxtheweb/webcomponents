@@ -1,0 +1,17 @@
+{
+  "editNodes": "Düğümleri Düzenle",
+  "editLines": "Çizgileri Düzenle",
+  "reset": "Sıfırla",
+  "save": "Kaydet",
+  "cancel": "İptal",
+  "delete": "Sil",
+  "type": "Tür:",
+  "topic": "Konu",
+  "subsection": "Alt bölüm",
+  "name": "Ad:",
+  "enterName": "Ad Girin",
+  "url": "URL:",
+  "enterUrl": "URL Girin",
+  "activeNode": "Etkin Düğüm mü?",
+  "nodeId": "Düğüm {id}"
+}

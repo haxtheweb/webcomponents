@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Natija yoʻq",
+  "viewsRecordHeading": "Yozib olish",
+  "viewsTitleImage": "{title} rasmi",
+  "viewsTitlePreview": "{title} koʻrinishi",
+  "viewsNoTimelineRecords": "Vaqt chizigʻini koʻrsatish uchun sanaga oid yozuvlar mavjud emas.",
+  "viewsTimelineTitle": "{title} vaqt chizigʻi",
+  "viewsNoChartField": "Diagramma uchun raqamli maydon topilmadi.",
+  "viewsChartingValue": "{value} diagrammasi",
+  "viewsChartingValueByLabel": "{value} diagrammasi, {label} boʻyicha",
+  "viewsChartTitle": "{title} diagrammasi",
+  "viewsNoTreeRecords": "Daraxt koʻrinishi uchun ierarxik yozuvlar mavjud emas.",
+  "viewsNoGalleryRecords": "Galereya uchun rasm yozuvlari mavjud emas.",
+  "viewsNoPlaylistRecords": "Pleylist uchun media yozuvlari mavjud emas.",
+  "fetchFailed": "Yuklab olish muvaffaqiyatsiz ({status})",
+  "unableToLoadViewData": "Koʻrinish maʼlumotlarini yuklab boʻlmadi.",
+  "noResultsFound": "Hech narsa topilmadi.",
+  "refreshView": "Koʻrinishni yangilash",
+  "breakIntoStaticContent": "Statik kontentga aylantirish",
+  "viewsOpenRecord": "Yozuvni ochish"
+}

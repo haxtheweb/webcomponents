@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "אַנקער־לינק קאָפּירט!",
+  "skipToContent": "שפּרינגען צום אינהאַלט",
+  "changePalette": "בײַט די פּאַליטרע",
+  "primaryLinks": "הויפּט־לינקען",
+  "socialLinks": "סאָציאַלע לינקען",
+  "myProfile": "מײַן פּראָפֿיל",
+  "profileImageOf": "פּראָפֿיל־בילד פֿון {name}",
+  "profileImage": "פּראָפֿיל־בילד",
+  "linkCardProfile": "לינק־קאַרטל־פּראָפֿיל",
+  "emptyStateLinks": "לייג צו מעניו־פּונקטן אויפֿן העכסטן שטאַפּל אין site.json צו ווײַזן לינק־קנעפּלעך.",
+  "titleOnPlatform": "{title} אויף {platform}",
+  "openPlatform": "עפֿן {platform}",
+  "paletteUpdated": "קאָליר־פּאַליטרע דערהײַנטיקט צו אָפּציע {number}."
+}

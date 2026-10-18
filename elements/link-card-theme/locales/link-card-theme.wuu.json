@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "锚点链接已经复制!",
+  "skipToContent": "跳到内容",
+  "changePalette": "换调色板",
+  "primaryLinks": "主要链接",
+  "socialLinks": "社交链接",
+  "myProfile": "我个资料",
+  "profileImageOf": "{name} 个头像",
+  "profileImage": "头像",
+  "linkCardProfile": "链接卡片资料",
+  "emptyStateLinks": "辣 site.json 里加顶层菜单项,就会显示链接按钮。",
+  "titleOnPlatform": "{title} 辣 {platform} 上",
+  "openPlatform": "打开 {platform}",
+  "paletteUpdated": "调色板换成选项 {number} 了。"
+}

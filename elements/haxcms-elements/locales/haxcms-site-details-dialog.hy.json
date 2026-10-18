@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- լռելյայն՝ առաջին էջը --",
+  "details": "Մանրամասներ",
+  "title": "Վերնագիր",
+  "titleDescription": "Կայքի անվանումը",
+  "homePage": "Գլխավոր էջ",
+  "homePageDescription": "Էջ, որը կօգտագործվի որպես լռելյայն մուտքի / գլխավոր էջ",
+  "advanced": "Ընդլայնված",
+  "serviceWorker": "Ավելացնել service worker դինամիկ էջին",
+  "serviceWorkerDescription": "Անջատեք սա, եթե օգտատերերը միշտ պետք է անմիջապես տեսնեն սերվերի վերջին արդյունքը։",
+  "forceBrowserUpgrade": "Պարտադրել դիտարկիչի թարմացում",
+  "forceBrowserUpgradeDescription": "Պահանջել ժամանակակից դիտարկիչներ՝ նախքան կայքի բեռնումը։",
+  "unableToLoadSiteDetails": "Չհաջողվեց բեռնել կայքի մանրամասները։",
+  "noSiteDetails": "Կայքի մանրամասներ հասանելի չեն։",
+  "save": "Պահպանել"
+}

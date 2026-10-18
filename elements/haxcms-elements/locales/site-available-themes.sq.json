@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Ngarkimi i temave dështoi: {error}",
+  "noThemesForView": "Nuk ka tema të disponueshme për këtë pamje.",
+  "active": "Aktive",
+  "themeIsActive": "Tema {name} është aktive",
+  "applyTheme": "Zbato temën {name}",
+  "apply": "Zbato",
+  "preview": "Parapamje",
+  "name": "Emri",
+  "element": "Elementi",
+  "description": "Përshkrimi",
+  "action": "Veprimi",
+  "loadingThemes": "Duke ngarkuar temat...",
+  "themesShown": "{count} tema të shfaqura",
+  "themesShownDefaults": "{count} tema të shfaqura (parazgjedhjet e app-hax)",
+  "availableHaxcmsThemes": "Temat e disponueshme të HAXcms",
+  "gallery": "Galeria",
+  "table": "Tabelë"
+}

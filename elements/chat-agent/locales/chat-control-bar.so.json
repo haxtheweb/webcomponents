@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Soo deji Diiwaanka sida txt",
+  "downloadChatLog": "Soo deji Diiwaanka Sheekaysiga",
+  "resetChat": "Dib u deji Sheekaysiga",
+  "toggleDataCollection": "Beddel Ururinta Xogta",
+  "dataCollection": "Ururinta Xogta",
+  "toggleDeveloperMode": "Beddel Habka Horumariyaha",
+  "exitFullView": "Ka Bax Muuqaalka Buuxa",
+  "enterFullView": "Gal Muuqaalka Buuxa",
+  "hideInterface": "Qari Shaashadda",
+  "resetChatConfirm": "Ma dib u dejinaysaa sheekaysiga?",
+  "downloadBeforeResetConfirm": "Ma soo dejinaysaa diiwaanka sheekaysiga ka hor intaadan dib u dejin?",
+  "dataCollectionOn": "Wada-hadalladaada waxaa loo isticmaali doonaa tababarka moodellada AI-gayaga",
+  "dataCollectionOff": "Wada-hadalladaada looma isticmaali doono tababarka moodellada AI-gayaga"
+}

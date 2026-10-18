@@ -1,4 +1,11 @@
 {
   "readMore": "තවත් කියවන්න",
-  "home": "මුල් පිටුව"
+  "home": "මුල් පිටුව",
+  "anchorLinkCopied": "නැංගුරම් සබැඳිය පිටපත් කරන ලදී!",
+  "skipToContent": "අන්තර්ගතයට මඟහරින්න",
+  "changeTheme": "තේමාව වෙනස් කරන්න",
+  "siteSections": "අඩවි කොටස්",
+  "pageOfTotal": "පිටුව {total} න් {current}",
+  "siteGenerated": "අඩවිය උත්පාදනය කළේ: {date}",
+  "licenseGraphic": "{license} ග්‍රැෆිකය"
 }

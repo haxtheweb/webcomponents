@@ -5,5 +5,9 @@
   "buttons": "Votõ",
   "futureButtonConfiguration": "Mbosako'iha votõ ñemboheko oúta ag̃amive.",
   "save": "Ñongatu",
-  "saving": "Oñeñongatuhína…"
+  "saving": "Oñeñongatuhína…",
+  "novice": "Oñepyrũva",
+  "expert": "Ikatupyrýva",
+  "toolbarPreviewAlt": "{audience} mbosako'iha rysýi jehecha ypy",
+  "savingEditorSettingsFailed": "Mbosako'iha ñemboheko ñongatu ndoikói: {error}"
 }

@@ -1,3 +1,8 @@
 {
-  "title": "Nā kumu kuhikuhi"
+  "title": "Nā kumu kuhikuhi",
+  "export": "Hoʻopuka",
+  "exportCitations": "Hoʻopuka i nā kuhia",
+  "copy": "Kope",
+  "exportCitationFormat": "Hoʻopuka i ke ʻano kuhia",
+  "selectCitationFormatBelow": "Koho i kahi ʻano kuhia ma lalo"
 }

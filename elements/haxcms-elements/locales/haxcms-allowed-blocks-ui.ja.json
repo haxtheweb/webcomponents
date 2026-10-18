@@ -10,5 +10,9 @@
   "save": "保存",
   "noDescription": "説明はありません。",
   "details": "詳細",
-  "loadingInventory": "すべてのブロック一覧を読み込み中…"
+  "loadingInventory": "すべてのブロック一覧を読み込み中…",
+  "selectAllButton": "すべて選択",
+  "deselectAllButton": "すべて選択解除",
+  "selectedOfAvailable": "{selected} 件選択 / {total} 件利用可能",
+  "savingBlocksFailed": "ブロックの保存に失敗しました: {error}"
 }

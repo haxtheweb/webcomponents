@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Kiungo cha nanga kimenakiliwa!",
+  "skipToContent": "Ruka hadi maudhui",
+  "changePalette": "Badilisha paleti",
+  "primaryLinks": "Viungo vikuu",
+  "socialLinks": "Viungo vya kijamii",
+  "myProfile": "Wasifu wangu",
+  "profileImageOf": "Picha ya wasifu ya {name}",
+  "profileImage": "Picha ya wasifu",
+  "linkCardProfile": "Wasifu wa kadi ya viungo",
+  "emptyStateLinks": "Ongeza vipengee vya menyu ya kiwango cha juu katika site.json ili kuonyesha vitufe vya viungo.",
+  "titleOnPlatform": "{title} kwenye {platform}",
+  "openPlatform": "Fungua {platform}",
+  "paletteUpdated": "Paleti ya rangi imesasishwa kuwa chaguo {number}."
+}

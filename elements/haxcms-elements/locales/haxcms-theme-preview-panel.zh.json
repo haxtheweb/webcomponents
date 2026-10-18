@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "显示主题预览",
+  "hideThemePreview": "隐藏主题预览",
+  "themePreviewPanel": "主题预览面板",
+  "themePreview": "主题预览",
+  "themePreviewDescription": "浏览时临时试用主题和调色板。使用“取消”可恢复原来的外观。",
+  "loadingThemes": "正在加载主题...",
+  "theme": "主题",
+  "palette": "调色板",
+  "cancel": "取消",
+  "openAppearanceSettings": "打开外观设置"
+}

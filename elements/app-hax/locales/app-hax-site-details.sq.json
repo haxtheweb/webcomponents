@@ -1,0 +1,18 @@
+{
+  "copy": "Kopjo",
+  "download": "Shkarko",
+  "archive": "Arkivo",
+  "copyOperation": "kopjimi",
+  "downloadOperation": "shkarkimi",
+  "archiveOperation": "arkivimi",
+  "created": "krijuar",
+  "updated": "përditësuar",
+  "pages": "faqe",
+  "url": "URL",
+  "confirm": "Konfirmo",
+  "cancel": "Anulo",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Je i sigurt që dëshiron të bësh {operation} për {siteName}?",
+  "siteOperationSuccessful": "{operation} i {siteName} u krye me sukses!",
+  "siteOperationFailed": "{operation} i {siteName} dështoi"
+}

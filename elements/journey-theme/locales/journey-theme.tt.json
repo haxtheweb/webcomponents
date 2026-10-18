@@ -1,4 +1,11 @@
 {
   "readMore": "Дәвамын уку",
-  "home": "Баш бит"
+  "home": "Баш бит",
+  "anchorLinkCopied": "Якорь сылтамасы күчерелде!",
+  "skipToContent": "Эчтәлеккә күчү",
+  "changeTheme": "Теманы үзгәртү",
+  "siteSections": "Сайт бүлекләре",
+  "pageOfTotal": "Бит {current} / {total}",
+  "siteGenerated": "Сайт ясалды: {date}",
+  "licenseGraphic": "{license} графикасы"
 }

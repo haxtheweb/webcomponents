@@ -43,5 +43,22 @@
   "emailAddress": "I-email ang estudyanteng ito",
   "notes": "Mga Tala",
   "interests": "Mga Interes",
-  "profileImageFor": "Larawan sa profile ni"
+  "profileImageFor": "Larawan sa profile ni",
+  "fileSystem": "File system",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL endpoint (JSON)",
+  "jsonDataBlob": "JSON data blob",
+  "additionalCriteriaFeedback": "Karagdagang feedback sa {criteria}",
+  "outOfPoints": "/ {points} pts",
+  "feedbackReport": "Ulat ng feedback",
+  "criteriaDetails": "Mga detalye ng pamantayan",
+  "yourFeedback": "Ang iyong feedback",
+  "additionalCriteriaFeedbackHeading": "Karagdagang feedback sa Pamantayan",
+  "yourTotalScore": "Ang iyong kabuuang Iskor",
+  "scoreOutOfPoints": "{score} / {points} pts",
+  "studentAssignment": "Takdang-aralin na {assignment} ni {student}",
+  "downloadPDF": "I-download ang PDF",
+  "displayMode1": "Mode 1",
+  "displayMode2": "Mode 2",
+  "twoWindows": "Dalawang window"
 }

@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Nepodarilo sa načítať témy: {error}",
+  "noThemesForView": "Pre toto zobrazenie nie sú dostupné žiadne témy.",
+  "active": "Aktívna",
+  "themeIsActive": "Téma {name} je aktívna",
+  "applyTheme": "Použiť tému {name}",
+  "apply": "Použiť",
+  "preview": "Náhľad",
+  "name": "Meno",
+  "element": "Prvok",
+  "description": "Popis",
+  "action": "Akcia",
+  "loadingThemes": "Načítavajú sa témy...",
+  "themesShown": "Zobrazené témy: {count}",
+  "themesShownDefaults": "Zobrazené témy: {count} (predvolené app-hax)",
+  "availableHaxcmsThemes": "Dostupné témy HAXcms",
+  "gallery": "Galéria",
+  "table": "Tabuľka"
+}

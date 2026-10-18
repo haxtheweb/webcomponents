@@ -1,0 +1,11 @@
+{
+  "theme": "پوسته",
+  "active": "فعال",
+  "selected": "انتخاب‌شده",
+  "noPreview": "بدون پیش‌نمایش",
+  "currentlyActiveAndSelected": "پوسته فعال و انتخاب‌شده کنونی",
+  "currentlyActive": "پوسته فعال کنونی",
+  "selectedToApplyOnSave": "پوسته انتخاب‌شده برای اعمال هنگام ذخیره",
+  "themeSelection": "انتخاب پوسته",
+  "noThemesAvailable": "هیچ پوسته‌ای در دسترس نیست."
+}

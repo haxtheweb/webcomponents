@@ -1,0 +1,14 @@
+{
+  "enterUserName": "વપરાશકર્તા નામ દાખલ કરો",
+  "invalidUsernameOrPassword": "અમાન્ય વપરાશકર્તા નામ અથવા પાસવર્ડ",
+  "welcomeLetsGo": "સ્વાગત છે {username}! ચાલો શરૂ કરીએ!",
+  "enterYourUsername": "તમારું વપરાશકર્તા નામ દાખલ કરો",
+  "username": "વપરાશકર્તાનામ",
+  "next": "આગળનું",
+  "welcomeBack": "ફરી સ્વાગત છે, {username}!",
+  "notYou": "તમે નથી?",
+  "enterYourPassword": "તમારો પાસવર્ડ દાખલ કરો",
+  "password": "પાસવર્ડ",
+  "togglePasswordDisplay": "પાસવર્ડ પ્રદર્શન ટૉગલ કરો",
+  "login": "લૉગિન"
+}

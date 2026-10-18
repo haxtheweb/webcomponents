@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Файлдарды осында тастаңыз",
+  "uploadQueue": "Жүктеп салу кезегі",
+  "pending": "Күтуде",
+  "preparing": "Дайындалуда",
+  "uploading": "Жүктеп салынуда",
+  "complete": "Аяқталды",
+  "aborted": "Үзілді",
+  "cancelled": "Бас тартылды",
+  "error": "Қате",
+  "errorWithStatus": "Қате: {status}",
+  "cancel": "Бас тарту",
+  "cancelUploadOf": "{name} жүктеп салудан бас тарту",
+  "retry": "Қайталау",
+  "retryUploadOf": "{name} жүктеп салуды қайталау",
+  "remove": "Жою",
+  "removeFromQueue": "{name} файлын кезектен алып тастау",
+  "fileTypeNotAccepted": "Файл түрі қабылданбайды: {name}",
+  "uploadFailed": "Жүктеп салу сәтсіз аяқталды: {status}",
+  "networkError": "Желі қатесі"
+}

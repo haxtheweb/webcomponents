@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Bölüm {xOfY}",
+  "xOfY": "{total}-den {order}",
+  "endOfTab": "{xOfY} bölümiň soňy. {tabs} gaýdyp bar.",
+  "tabs": "bölümlere"
+}

@@ -22,6 +22,13 @@
   "unpublish": "ಪ್ರಕಟಣೆ ಹಿಂಪಡೆಯಿರಿ",
   "savePage": "ಪುಟ ಉಳಿಸಿ",
   "cancel": "ರದ್ದುಮಾಡಿ",
+  "delete": "ಅಳಿಸಿ",
+  "editTitle": "ಶೀರ್ಷಿಕೆ ಸಂಪಾದಿಸಿ",
+  "editIcon": "ಐಕಾನ್ ಸಂಪಾದಿಸಿ",
+  "agent": "ಏಜೆಂಟ್",
+  "pageLockedUnlockToEdit": "ಈ ಪುಟ ಲಾಕ್ ಆಗಿದೆ. ಸಂಪಾದಿಸಲು ಮೊದಲು ಅನ್‌ಲಾಕ್ ಮಾಡಿ.",
+  "pageLockedUnlockToChangePublishStatus": "ಈ ಪುಟ ಲಾಕ್ ಆಗಿದೆ. ಪ್ರಕಟಣೆ ಸ್ಥಿತಿಯನ್ನು ಬದಲಾಯಿಸಲು ಮೊದಲು ಅನ್‌ಲಾಕ್ ಮಾಡಿ.",
+  "pageLockedUnlockToDelete": "ಈ ಪುಟ ಲಾಕ್ ಆಗಿದೆ. ಅಳಿಸಲು ಮೊದಲು ಅನ್‌ಲಾಕ್ ಮಾಡಿ.",
   "pageDetails": "ಪುಟದ ವಿವರಗಳು",
   "clickToUnlock": "ಅನ್‌ಲಾಕ್ ಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ"
 }

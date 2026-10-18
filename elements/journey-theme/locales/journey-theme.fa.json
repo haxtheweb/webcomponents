@@ -1,4 +1,11 @@
 {
   "readMore": "بیشتر بخوانید",
-  "home": "خانه"
+  "home": "خانه",
+  "anchorLinkCopied": "پیوند لنگر کپی شد!",
+  "skipToContent": "پرش به محتوا",
+  "changeTheme": "تغییر پوسته",
+  "siteSections": "بخش‌های سایت",
+  "pageOfTotal": "صفحه {current} از {total}",
+  "siteGenerated": "تاریخ تولید سایت: {date}",
+  "licenseGraphic": "نشان {license}"
 }

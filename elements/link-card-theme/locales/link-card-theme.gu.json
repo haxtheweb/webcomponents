@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "એન્કર લિંક કૉપિ થઈ!",
+  "skipToContent": "સામગ્રી પર જાઓ",
+  "changePalette": "પેલેટ બદલો",
+  "primaryLinks": "પ્રાથમિક લિંક્સ",
+  "socialLinks": "સોશિયલ લિંક્સ",
+  "myProfile": "મારી પ્રોફાઇલ",
+  "profileImageOf": "{name} પ્રોફાઇલ છબી",
+  "profileImage": "પ્રોફાઇલ છબી",
+  "linkCardProfile": "લિંક કાર્ડ પ્રોફાઇલ",
+  "emptyStateLinks": "લિંક બટનો રેન્ડર કરવા માટે site.json માં ટોચના-સ્તરની મેનૂ આઇટમ્સ ઉમેરો.",
+  "titleOnPlatform": "{platform} પર {title}",
+  "openPlatform": "{platform} ખોલો",
+  "paletteUpdated": "રંગ પેલેટ વિકલ્પ {number} પર અપડેટ થયું."
+}

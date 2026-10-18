@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Ibudata isiokwu dara: {error}",
+  "noThemesForView": "Enweghị isiokwu dị maka nlele a.",
+  "active": "Na-arụ ọrụ",
+  "themeIsActive": "Isiokwu {name} na-arụ ọrụ",
+  "applyTheme": "Tinye isiokwu {name}",
+  "apply": "Tinye",
+  "preview": "Nlele mbụ",
+  "name": "Aha",
+  "element": "Mmewere",
+  "description": "Nkọwa",
+  "action": "Omume",
+  "loadingThemes": "Na-ebudata isiokwu...",
+  "themesShown": "Egosiri isiokwu {count}",
+  "themesShownDefaults": "Egosiri isiokwu {count} (ndabere app-hax)",
+  "availableHaxcmsThemes": "Isiokwu HAXcms dị",
+  "gallery": "Ebe ngosi foto",
+  "table": "Tebụl"
+}

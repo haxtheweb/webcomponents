@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Basa remudzidzi",
   "openInNewWindow": "Vhura muhwindo idzva",
-  "submitted": "Zvakaendeswa"
+  "submitted": "Zvakaendeswa",
+  "previousStudent": "Mudzidzi akapfuura",
+  "nextStudent": "Mudzidzi anotevera",
+  "previousAssignment": "Basa rakapfuura",
+  "nextAssignment": "Basa rinotevera"
 }

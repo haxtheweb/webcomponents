@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "ទម្លាក់ឯកសារនៅទីនេះ",
+  "uploadQueue": "ជួរផ្ទុកឡើង",
+  "pending": "កំពុងរង់ចាំ",
+  "preparing": "កំពុងរៀបចំ",
+  "uploading": "កំពុងផ្ទុកឡើង",
+  "complete": "បានបញ្ចប់",
+  "aborted": "បានបោះបង់",
+  "cancelled": "បានបោះបង់",
+  "error": "កំហុស",
+  "errorWithStatus": "កំហុស៖ {status}",
+  "cancel": "បោះបង់",
+  "cancelUploadOf": "បោះបង់ការផ្ទុកឡើង {name}",
+  "retry": "ព្យាយាមម្ដងទៀត",
+  "retryUploadOf": "ព្យាយាមផ្ទុកឡើង {name} ម្ដងទៀត",
+  "remove": "ដកចេញ",
+  "removeFromQueue": "ដក {name} ចេញពីជួរ",
+  "fileTypeNotAccepted": "ប្រភេទឯកសារមិនត្រូវបានទទួលយក៖ {name}",
+  "uploadFailed": "ការផ្ទុកឡើងបានបរាជ័យ៖ {status}",
+  "networkError": "កំហុសបណ្ដាញ"
+}

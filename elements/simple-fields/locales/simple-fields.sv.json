@@ -9,5 +9,7 @@
   "record": "Spela in",
   "pause": "Pausa inspelning",
   "stopSave": "Stoppa och spara",
-  "clickToTakePhoto": "Klicka för att ta ett foto"
+  "clickToTakePhoto": "Klicka för att ta ett foto",
+  "url": "URL",
+  "open": "öppna"
 }

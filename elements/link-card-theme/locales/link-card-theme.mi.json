@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Kua tāruatia te hono punga!",
+  "skipToContent": "Peke ki te ihirangi",
+  "changePalette": "Huri papatae",
+  "primaryLinks": "Ngā hono matua",
+  "socialLinks": "Ngā hono pāpori",
+  "myProfile": "Taku kōtaha",
+  "profileImageOf": "Atahanga kōtaha o {name}",
+  "profileImage": "Atahanga kōtaha",
+  "linkCardProfile": "Kōtaha kāri hono",
+  "emptyStateLinks": "Tāpirihia ngā tūemi tahua taumata-runga ki site.json hei whakaatu i ngā pātene hono.",
+  "titleOnPlatform": "{title} i {platform}",
+  "openPlatform": "Whakatuwhera {platform}",
+  "paletteUpdated": "Kua whakahoutia te papatae tae ki te kōwhiringa {number}."
+}

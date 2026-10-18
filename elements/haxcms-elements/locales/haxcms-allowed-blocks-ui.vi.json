@@ -10,5 +10,9 @@
   "save": "Lưu",
   "noDescription": "Không có mô tả.",
   "details": "Chi tiết",
-  "loadingInventory": "Đang tải toàn bộ danh mục khối…"
+  "loadingInventory": "Đang tải toàn bộ danh mục khối…",
+  "selectAllButton": "Chọn tất cả",
+  "deselectAllButton": "Bỏ chọn tất cả",
+  "selectedOfAvailable": "Đã chọn {selected} / {total} có sẵn",
+  "savingBlocksFailed": "Lưu khối thất bại: {error}"
 }

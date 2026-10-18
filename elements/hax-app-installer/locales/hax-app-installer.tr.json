@@ -54,5 +54,6 @@
   "requirementUppercase": "Bir büyük harf",
   "requirementLowercase": "Bir küçük harf",
   "requirementNumber": "Bir rakam",
-  "requirementSymbol": "Bir sembol"
+  "requirementSymbol": "Bir sembol",
+  "haxcmsMascotAlt": "HAXcms Dünya Gezgini maskotu"
 }

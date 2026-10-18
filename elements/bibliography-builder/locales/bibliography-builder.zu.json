@@ -1,3 +1,8 @@
 {
-  "title": "Izithenjwa"
+  "title": "Izithenjwa",
+  "export": "Thumela ngaphandle",
+  "exportCitations": "Thumela Izingcaphuno Ngaphandle",
+  "copy": "Kopisha",
+  "exportCitationFormat": "Ifomethi yokuthumela izingcaphuno ngaphandle",
+  "selectCitationFormatBelow": "Khetha ifomethi yezingcaphuno ngezansi"
 }

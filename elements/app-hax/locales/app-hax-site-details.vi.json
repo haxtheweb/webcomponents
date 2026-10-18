@@ -1,0 +1,18 @@
+{
+  "copy": "Sao chép",
+  "download": "Tải xuống",
+  "archive": "Lưu trữ",
+  "copyOperation": "sao chép",
+  "downloadOperation": "tải xuống",
+  "archiveOperation": "lưu trữ",
+  "created": "đã tạo",
+  "updated": "đã cập nhật",
+  "pages": "trang",
+  "url": "URL",
+  "confirm": "Xác nhận",
+  "cancel": "Hủy",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Bạn có chắc muốn {operation} {siteName}?",
+  "siteOperationSuccessful": "{operation} {siteName} thành công!",
+  "siteOperationFailed": "{operation} {siteName} thất bại"
+}

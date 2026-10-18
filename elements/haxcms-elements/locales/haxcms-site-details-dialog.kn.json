@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- ಡೀಫಾಲ್ಟ್ ಆಗಿ ಮೊದಲ ಪುಟ --",
+  "details": "ವಿವರಗಳು",
+  "title": "ಶೀರ್ಷಿಕೆ",
+  "titleDescription": "ಸೈಟ್‌ನ ಹೆಸರು",
+  "homePage": "ಮುಖಪುಟ",
+  "homePageDescription": "ಡೀಫಾಲ್ಟ್ ಲ್ಯಾಂಡಿಂಗ್ / ಮುಖಪುಟವಾಗಿ ಬಳಸಬೇಕಾದ ಪುಟ",
+  "advanced": "ಸುಧಾರಿತ",
+  "serviceWorker": "ಡೈನಾಮಿಕ್ ಪುಟಕ್ಕೆ ಸರ್ವೀಸ್ ವರ್ಕರ್ ಸೇರಿಸಿ",
+  "serviceWorkerDescription": "ಬಳಕೆದಾರರು ಯಾವಾಗಲೂ ಇತ್ತೀಚಿನ ಸರ್ವರ್ ಔಟ್‌ಪುಟ್ ಅನ್ನು ತಕ್ಷಣ ನೋಡಬೇಕಿದ್ದರೆ ಇದನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ.",
+  "forceBrowserUpgrade": "ಬ್ರೌಸರ್ ಅಪ್‌ಗ್ರೇಡ್ ಕಡ್ಡಾಯಗೊಳಿಸಿ",
+  "forceBrowserUpgradeDescription": "ಸೈಟ್ ಅನುಭವವನ್ನು ಲೋಡ್ ಮಾಡುವ ಮೊದಲು ಆಧುನಿಕ (evergreen) ಬ್ರೌಸರ್‌ಗಳನ್ನು ಕಡ್ಡಾಯಗೊಳಿಸಿ.",
+  "unableToLoadSiteDetails": "ಸೈಟ್ ವಿವರಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+  "noSiteDetails": "ಯಾವುದೇ ಸೈಟ್ ವಿವರಗಳು ಲಭ್ಯವಿಲ್ಲ.",
+  "save": "ಉಳಿಸಿ"
+}

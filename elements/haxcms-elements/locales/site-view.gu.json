@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "કોઈ પરિણામ નથી",
+  "viewsRecordHeading": "રેકોર્ડ કરો",
+  "viewsTitleImage": "{title} છબી",
+  "viewsTitlePreview": "{title} પૂર્વાવલોકન",
+  "viewsNoTimelineRecords": "ટાઇમલાઇન રેન્ડરિંગ માટે તારીખ-આધારિત કોઈ રેકોર્ડ ઉપલબ્ધ નથી.",
+  "viewsTimelineTitle": "{title} ટાઇમલાઇન",
+  "viewsNoChartField": "ચાર્ટ રેન્ડરિંગ માટે કોઈ આંકડાકીય ફીલ્ડ મળ્યું નથી.",
+  "viewsChartingValue": "{value} નો ચાર્ટ",
+  "viewsChartingValueByLabel": "{label} પ્રમાણે {value} નો ચાર્ટ",
+  "viewsChartTitle": "{title} ચાર્ટ",
+  "viewsNoTreeRecords": "ટ્રી રેન્ડરિંગ માટે કોઈ વંશવેલો રેકોર્ડ ઉપલબ્ધ નથી.",
+  "viewsNoGalleryRecords": "ગેલેરી રેન્ડરિંગ માટે કોઈ છબી રેકોર્ડ ઉપલબ્ધ નથી.",
+  "viewsNoPlaylistRecords": "પ્લેલિસ્ટ રેન્ડરિંગ માટે કોઈ મીડિયા રેકોર્ડ ઉપલબ્ધ નથી.",
+  "fetchFailed": "મેળવવું નિષ્ફળ ({status})",
+  "unableToLoadViewData": "વ્યૂ ડેટા લોડ કરી શકાયો નથી.",
+  "noResultsFound": "કોઈ પરિણામ મળ્યાં નથી.",
+  "refreshView": "વ્યૂ રિફ્રેશ કરો",
+  "breakIntoStaticContent": "સ્થિર સામગ્રીમાં ફેરવો",
+  "viewsOpenRecord": "રેકોર્ડ ખોલો"
+}

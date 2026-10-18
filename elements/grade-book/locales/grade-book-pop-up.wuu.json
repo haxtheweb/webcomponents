@@ -1,5 +1,9 @@
 {
   "studentSubmission": "学生提交",
   "openInNewWindow": "勒新窗口打开",
-  "submitted": "已提交"
+  "submitted": "已提交",
+  "previousStudent": "上一个学生",
+  "nextStudent": "下一个学生",
+  "previousAssignment": "上一个作业",
+  "nextAssignment": "下一个作业"
 }

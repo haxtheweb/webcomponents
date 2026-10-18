@@ -7,5 +7,7 @@
   "userAccessGranted": "Přístup uživateli byl úspěšně udělen!",
   "userNotFound": "Uživatel nebyl nalezen nebo nemá oprávnění",
   "loadingAddingUser": "Přidávání uživatele...",
-  "grantAccessTo": "Udělit přístup:"
+  "grantAccessTo": "Udělit přístup:",
+  "networkErrorTryAgain": "Došlo k chybě sítě. Zkuste to prosím znovu.",
+  "characterWillAppear": "Postava se zobrazí po zadání uživatelského jména"
 }

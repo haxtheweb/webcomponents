@@ -43,5 +43,22 @@
   "emailAddress": "Էլ. նամակ ուղարկել այս ուսանողին",
   "notes": "Նշումներ",
   "interests": "Հետաքրքրություններ",
-  "profileImageFor": "Պրոֆիլի նկար՝"
+  "profileImageFor": "Պրոֆիլի նկար՝",
+  "fileSystem": "Ֆայլային համակարգ",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL endpoint (JSON)",
+  "jsonDataBlob": "JSON տվյալների բլոկ",
+  "additionalCriteriaFeedback": "Լրացուցիչ կարծիք՝ {criteria}",
+  "outOfPoints": "/ {points} միավոր",
+  "feedbackReport": "Կարծիքի հաշվետվություն",
+  "criteriaDetails": "Չափանիշների մանրամասներ",
+  "yourFeedback": "Ձեր կարծիքը",
+  "additionalCriteriaFeedbackHeading": "Լրացուցիչ կարծիք ըստ չափանիշների",
+  "yourTotalScore": "Ձեր ընդհանուր միավորը",
+  "scoreOutOfPoints": "{score} / {points} միավոր",
+  "studentAssignment": "{student}-ի առաջադրանքը՝ {assignment}",
+  "downloadPDF": "Ներբեռնել PDF",
+  "displayMode1": "Ռեժիմ 1",
+  "displayMode2": "Ռեժիմ 2",
+  "twoWindows": "Երկու պատուհան"
 }

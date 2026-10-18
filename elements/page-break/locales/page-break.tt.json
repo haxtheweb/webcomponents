@@ -22,6 +22,13 @@
   "unpublish": "Бастырудан алу",
   "savePage": "Битне саклау",
   "cancel": "Баш тарту",
+  "delete": "Бетерү",
+  "editTitle": "Исемне үзгәртү",
+  "editIcon": "Иконканы мөхәррирләү",
+  "agent": "Агент",
+  "pageLockedUnlockToEdit": "Бу бит йозакланган. Мөхәррирләр өчен башта аны ачыгыз.",
+  "pageLockedUnlockToChangePublishStatus": "Бу бит йозакланган. Бастыру халәтен үзгәртү өчен башта аны ачыгыз.",
+  "pageLockedUnlockToDelete": "Бу бит йозакланган. Бетерү өчен башта аны ачыгыз.",
   "pageDetails": "Бит тулысыннан мәгълүматлары",
   "clickToUnlock": "Ачу өчен басыгыз"
 }

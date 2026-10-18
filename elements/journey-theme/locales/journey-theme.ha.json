@@ -1,4 +1,11 @@
 {
   "readMore": "Ƙara karantawa",
-  "home": "Gida"
+  "home": "Gida",
+  "anchorLinkCopied": "An kwafi hanyar haɗin anga!",
+  "skipToContent": "Tsallaka zuwa abun ciki",
+  "changeTheme": "Canza jigo",
+  "siteSections": "Sassan gidan yanar gizo",
+  "pageOfTotal": "Shafi {current} cikin {total}",
+  "siteGenerated": "An samar da gidan yanar gizo: {date}",
+  "licenseGraphic": "Hoton {license}"
 }

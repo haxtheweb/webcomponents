@@ -10,5 +10,9 @@
   "save": "ಉಳಿಸಿ",
   "noDescription": "ಯಾವುದೇ ವಿವರಣೆ ಲಭ್ಯವಿಲ್ಲ.",
   "details": "ವಿವರಗಳು",
-  "loadingInventory": "ಪೂರ್ಣ ಬ್ಲಾಕ್ ಪಟ್ಟಿ ಲೋಡ್ ಆಗುತ್ತಿದೆ…"
+  "loadingInventory": "ಪೂರ್ಣ ಬ್ಲಾಕ್ ಪಟ್ಟಿ ಲೋಡ್ ಆಗುತ್ತಿದೆ…",
+  "selectAllButton": "ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆಮಾಡಿ",
+  "deselectAllButton": "ಎಲ್ಲ ಆಯ್ಕೆ ರದ್ದುಮಾಡಿ",
+  "selectedOfAvailable": "{selected} ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ / {total} ಲಭ್ಯವಿದೆ",
+  "savingBlocksFailed": "ಬ್ಲಾಕ್‌ಗಳನ್ನು ಉಳಿಸುವುದು ವಿಫಲವಾಗಿದೆ: {error}"
 }

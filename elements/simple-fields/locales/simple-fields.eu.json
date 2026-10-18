@@ -9,5 +9,7 @@
   "record": "Grabatu",
   "pause": "Pausatu grabazioa",
   "stopSave": "Gelditu eta gorde",
-  "clickToTakePhoto": "Egin klik argazkia ateratzeko"
+  "clickToTakePhoto": "Egin klik argazkia ateratzeko",
+  "url": "URL",
+  "open": "ireki"
 }

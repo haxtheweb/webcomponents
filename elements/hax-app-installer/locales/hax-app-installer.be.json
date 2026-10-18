@@ -54,5 +54,6 @@
   "requirementUppercase": "Адна вялікая літара",
   "requirementLowercase": "Адна малая літара",
   "requirementNumber": "Адна лічба",
-  "requirementSymbol": "Адзін спецыяльны сімвал"
+  "requirementSymbol": "Адзін спецыяльны сімвал",
+  "haxcmsMascotAlt": "Талісман HAXcms «Падарожнік па свеце»"
 }

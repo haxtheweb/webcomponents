@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Sen resultados",
+  "viewsRecordHeading": "Gravar",
+  "viewsTitleImage": "Imaxe de {title}",
+  "viewsTitlePreview": "Vista previa de {title}",
+  "viewsNoTimelineRecords": "Non hai rexistros con datas dispoñibles para mostrar a liña do tempo.",
+  "viewsTimelineTitle": "Liña do tempo de {title}",
+  "viewsNoChartField": "Non se detectou ningún campo numérico para mostrar o gráfico.",
+  "viewsChartingValue": "Representando {value}",
+  "viewsChartingValueByLabel": "Representando {value} por {label}",
+  "viewsChartTitle": "Gráfico de {title}",
+  "viewsNoTreeRecords": "Non hai rexistros xerárquicos dispoñibles para mostrar a árbore.",
+  "viewsNoGalleryRecords": "Non hai rexistros de imaxes dispoñibles para mostrar a galería.",
+  "viewsNoPlaylistRecords": "Non hai rexistros multimedia dispoñibles para mostrar a lista de reprodución.",
+  "fetchFailed": "Fallou a obtención ({status})",
+  "unableToLoadViewData": "Non se puideron cargar os datos da vista.",
+  "noResultsFound": "Non se atoparon resultados.",
+  "refreshView": "Actualizar a vista",
+  "breakIntoStaticContent": "Converter en contido estático",
+  "viewsOpenRecord": "Abrir rexistro"
+}

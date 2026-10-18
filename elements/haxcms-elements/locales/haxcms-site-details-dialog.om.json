@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- durtiin fuula jalqabaa --",
+  "details": "Bal'ina",
+  "title": "Mata duree",
+  "titleDescription": "Maqaa marsariitii",
+  "homePage": "Fuula jalqabaa",
+  "homePageDescription": "Fuula akka fuula jalqabaa durtiitti fayyadamu",
+  "advanced": "Olaanaa",
+  "serviceWorker": "Fuula socho'aaf service worker dabali",
+  "serviceWorkerDescription": "Yoo fayyadamtoonni yeroo hunda bu'aa saarvarii haaraa battaluma arguu qaban kana dhorki.",
+  "forceBrowserUpgrade": "Biraawuzara humnaan haaromsi",
+  "forceBrowserUpgradeDescription": "Utuu muuxannoon marsariitii hin feeniin dura biraawuzaroota evergreen barbaadi.",
+  "unableToLoadSiteDetails": "Bal'ina marsariitii fe'uu hin dandeenye.",
+  "noSiteDetails": "Bal'inni marsariitii hin jiru.",
+  "save": "Olkaa'i"
+}

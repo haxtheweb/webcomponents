@@ -9,5 +9,7 @@
   "record": "Enregistra",
   "pause": "Posa en pausa l'enregistrament",
   "stopSave": "Atura i desa",
-  "clickToTakePhoto": "Feu clic per fer una foto"
+  "clickToTakePhoto": "Feu clic per fer una foto",
+  "url": "URL",
+  "open": "obre"
 }

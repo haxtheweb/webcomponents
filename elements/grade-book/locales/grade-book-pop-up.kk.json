@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Студент жұмысы",
   "openInNewWindow": "Жаңа терезеде ашу",
-  "submitted": "Тапсырылды"
+  "submitted": "Тапсырылды",
+  "previousStudent": "Алдыңғы студент",
+  "nextStudent": "Келесі студент",
+  "previousAssignment": "Алдыңғы тапсырма",
+  "nextAssignment": "Келесі тапсырма"
 }

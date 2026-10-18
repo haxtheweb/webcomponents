@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Չհաջողվեց բեռնել թեմաները՝ {error}",
+  "noThemesForView": "Այս դիտման համար հասանելի թեմաներ չկան։",
+  "active": "Ակտիվ",
+  "themeIsActive": "{name} թեման ակտիվ է",
+  "applyTheme": "Կիրառել {name} թեման",
+  "apply": "Կիրառել",
+  "preview": "Նախադիտում",
+  "name": "Անուն",
+  "element": "Տարր",
+  "description": "Նկարագրություն",
+  "action": "Գործողություն",
+  "loadingThemes": "Թեմաները բեռնվում են...",
+  "themesShown": "Ցուցադրված է {count} թեմա",
+  "themesShownDefaults": "Ցուցադրված է {count} թեմա (app-hax լռելյայններ)",
+  "availableHaxcmsThemes": "Հասանելի HAXcms թեմաներ",
+  "gallery": "Պատկերասրահ",
+  "table": "Աղյուսակ"
+}

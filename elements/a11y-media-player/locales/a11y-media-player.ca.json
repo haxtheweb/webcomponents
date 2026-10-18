@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "S'està carregant...",
   "youTubeStartLoading": "Premeu reprodueix.",
   "youTubeTranscriptLabel": "La transcripció es carregarà quan es reprodueixi el contingut.",
-  "audioDescriptionLabel": "Audiodescripció"
+  "audioDescriptionLabel": "Audiodescripció",
+  "openOnYouTube": "Obre a YouTube"
 }

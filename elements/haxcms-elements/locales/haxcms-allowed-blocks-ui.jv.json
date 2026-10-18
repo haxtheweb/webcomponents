@@ -10,5 +10,9 @@
   "save": "Simpen",
   "noDescription": "Ora ana katrangan.",
   "details": "Rincian",
-  "loadingInventory": "Lagi ngemot daftar blok lengkap…"
+  "loadingInventory": "Lagi ngemot daftar blok lengkap…",
+  "selectAllButton": "Pilih Kabeh",
+  "deselectAllButton": "Batalake Pilihan Kabeh",
+  "selectedOfAvailable": "{selected} dipilih / {total} kasedhiya",
+  "savingBlocksFailed": "Gagal nyimpen blok: {error}"
 }

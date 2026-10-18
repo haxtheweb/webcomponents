@@ -54,5 +54,6 @@
   "requirementUppercase": "Un briflythyren",
   "requirementLowercase": "Un llythyren fach",
   "requirementNumber": "Un rhif",
-  "requirementSymbol": "Un symbol"
+  "requirementSymbol": "Un symbol",
+  "haxcmsMascotAlt": "Masgot Teithiwr y Byd HAXcms"
 }

@@ -1,0 +1,18 @@
+{
+  "copy": "Αντιγραφή",
+  "download": "Λήψη",
+  "archive": "Αρχειοθέτηση",
+  "copyOperation": "αντιγραφή",
+  "downloadOperation": "λήψη",
+  "archiveOperation": "αρχειοθέτηση",
+  "created": "δημιουργήθηκε",
+  "updated": "ενημερώθηκε",
+  "pages": "σελίδες",
+  "url": "URL",
+  "confirm": "Επιβεβαίωση",
+  "cancel": "Ακύρωση",
+  "siteOperationConfirmTitle": "{operationName} {siteName};",
+  "siteOperationConfirmMessage": "Είστε βέβαιοι ότι θέλετε {operation} του {siteName};",
+  "siteOperationSuccessful": "{siteName}: επιτυχής {operation}!",
+  "siteOperationFailed": "{siteName}: αποτυχία ({operation})"
+}

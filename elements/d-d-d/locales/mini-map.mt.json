@@ -1,0 +1,17 @@
+{
+  "editNodes": "Editja n-Nodi",
+  "editLines": "Editja l-Linji",
+  "reset": "Irrisettja",
+  "save": "Issejvja",
+  "cancel": "Ikkanċella",
+  "delete": "Ħassar",
+  "type": "Tip:",
+  "topic": "Suġġett",
+  "subsection": "Sottosezzjoni",
+  "name": "Isem:",
+  "enterName": "Daħħal l-Isem",
+  "url": "URL:",
+  "enterUrl": "Daħħal URL",
+  "activeNode": "Nodu Attiv?",
+  "nodeId": "Nodu {id}"
+}

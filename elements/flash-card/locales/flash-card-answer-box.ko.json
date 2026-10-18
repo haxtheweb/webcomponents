@@ -1,5 +1,8 @@
 {
   "yourAnswer": "내 답변",
   "checkAnswer": "정답 확인",
-  "retry": "다시 시도"
+  "retry": "다시 시도",
+  "correct": "정답입니다!",
+  "incorrect": "오답입니다!",
+  "correctAnswer": "정답: {answer}"
 }

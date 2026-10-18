@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Tsitsani Zolemba ngati txt",
+  "downloadChatLog": "Tsitsani Zolemba za Macheza",
+  "resetChat": "Yambitsaninso Macheza",
+  "toggleDataCollection": "Sinthani Kusonkhanitsa Deta",
+  "dataCollection": "Kusonkhanitsa Deta",
+  "toggleDeveloperMode": "Sinthani Mawonekedwe a Opanga Mapulogalamu",
+  "exitFullView": "Tulukani mu Mawonekedwe Athunthu",
+  "enterFullView": "Lowani mu Mawonekedwe Athunthu",
+  "hideInterface": "Bisani Mawonekedwe",
+  "resetChatConfirm": "Yambitsaninso macheza?",
+  "downloadBeforeResetConfirm": "Tsitsani zolemba za macheza musanayambitsenso?",
+  "dataCollectionOn": "Zokambirana zanu zidzagwiritsidwa ntchito pophunzitsa ma model athu a AI",
+  "dataCollectionOff": "Zokambirana zanu sizidzagwiritsidwa ntchito pophunzitsa ma model athu a AI"
+}

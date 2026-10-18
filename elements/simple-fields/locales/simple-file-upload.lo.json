@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "ວາງໄຟລ໌ບ່ອນນີ້",
+  "uploadQueue": "ຄິວອັບໂຫຼດ",
+  "pending": "ລໍຖ້າ",
+  "preparing": "ກຳລັງກະກຽມ",
+  "uploading": "ກຳລັງອັບໂຫຼດ",
+  "complete": "ສຳເລັດ",
+  "aborted": "ຢຸດກາງຄັນ",
+  "cancelled": "ຍົກເລີກແລ້ວ",
+  "error": "ຂໍ້ຜິດພາດ",
+  "errorWithStatus": "ຂໍ້ຜິດພາດ: {status}",
+  "cancel": "ຍົກເລີກ",
+  "cancelUploadOf": "ຍົກເລີກການອັບໂຫຼດ {name}",
+  "retry": "ລອງໃໝ່",
+  "retryUploadOf": "ລອງອັບໂຫຼດ {name} ໃໝ່",
+  "remove": "ລຶບອອກ",
+  "removeFromQueue": "ລຶບ {name} ອອກຈາກຄິວ",
+  "fileTypeNotAccepted": "ບໍ່ຮັບປະເພດໄຟລ໌ນີ້: {name}",
+  "uploadFailed": "ການອັບໂຫຼດລົ້ມເຫຼວ: {status}",
+  "networkError": "ຂໍ້ຜິດພາດເຄືອຂ່າຍ"
+}

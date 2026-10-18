@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Vís áður send boð (upp)",
+  "displayPreviousMessageDown": "Vís áður send boð (niður)",
+  "sendPrompt": "Send áheitan",
+  "sendPromptToMerlin": "Send áheitan til Merlin",
+  "shortenPrompt": "Vinarliga stytt áheitanina til í mesta lagi {limit} tekn."
+}

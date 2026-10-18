@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Gan torthaí",
+  "viewsRecordHeading": "Taifead",
+  "viewsTitleImage": "Íomhá {title}",
+  "viewsTitlePreview": "Réamhamharc ar {title}",
+  "viewsNoTimelineRecords": "Níl taifid dhátabhunaithe ar fáil chun amlíne a thaispeáint.",
+  "viewsTimelineTitle": "Amlíne {title}",
+  "viewsNoChartField": "Níor aimsíodh réimse uimhriúil chun cairt a thaispeáint.",
+  "viewsChartingValue": "Cairt de {value}",
+  "viewsChartingValueByLabel": "Cairt de {value} de réir {label}",
+  "viewsChartTitle": "Cairt {title}",
+  "viewsNoTreeRecords": "Níl taifid ordlathacha ar fáil chun crann a thaispeáint.",
+  "viewsNoGalleryRecords": "Níl taifid íomhá ar fáil chun gailearaí a thaispeáint.",
+  "viewsNoPlaylistRecords": "Níl taifid meán ar fáil chun seinnliosta a thaispeáint.",
+  "fetchFailed": "Theip ar an bhfáil ({status})",
+  "unableToLoadViewData": "Ní féidir sonraí an amhairc a lódáil.",
+  "noResultsFound": "Níor aimsíodh torthaí.",
+  "refreshView": "Athnuaigh an t-amharc",
+  "breakIntoStaticContent": "Bris ina ábhar statach",
+  "viewsOpenRecord": "Oscail an taifead"
+}

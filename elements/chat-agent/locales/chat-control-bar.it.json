@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Scarica log come txt",
+  "downloadChatLog": "Scarica log della chat",
+  "resetChat": "Reimposta chat",
+  "toggleDataCollection": "Attiva/disattiva raccolta dati",
+  "dataCollection": "Raccolta dati",
+  "toggleDeveloperMode": "Attiva/disattiva modalità sviluppatore",
+  "exitFullView": "Esci dalla vista completa",
+  "enterFullView": "Vista completa",
+  "hideInterface": "Nascondi interfaccia",
+  "resetChatConfirm": "Reimpostare la chat?",
+  "downloadBeforeResetConfirm": "Scaricare il log della chat prima di reimpostare?",
+  "dataCollectionOn": "Le tue conversazioni verranno usate per addestrare i nostri modelli di AI",
+  "dataCollectionOff": "Le tue conversazioni non verranno usate per addestrare i nostri modelli di AI"
+}

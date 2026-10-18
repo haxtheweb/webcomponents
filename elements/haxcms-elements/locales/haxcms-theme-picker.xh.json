@@ -1,0 +1,11 @@
+{
+  "theme": "Umxholo",
+  "active": "Iyasebenza",
+  "selected": "Ikhethiwe",
+  "noPreview": "Akukho mboniso",
+  "currentlyActiveAndSelected": "Umxholo osebenzayo nokhethiweyo ngoku",
+  "currentlyActive": "Umxholo osebenzayo ngoku",
+  "selectedToApplyOnSave": "Umxholo okhethiweyo oza kusetyenziswa xa kugcinwa",
+  "themeSelection": "Ukhetho lomxholo",
+  "noThemesAvailable": "Akukho mixholo ikhoyo."
+}

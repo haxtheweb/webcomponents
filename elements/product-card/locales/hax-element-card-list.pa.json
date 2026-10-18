@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "ਹੋਰ HAX ਐਲੀਮੈਂਟਾਂ ਲਈ ਵੈੱਬ ਕੰਪੋਨੈਂਟ ਰਜਿਸਟਰੀ ਸਕੈਨ ਹੋ ਰਹੀ ਹੈ..",
+  "enabled": "ਚਾਲੂ",
+  "disabled": "ਅਯੋਗ",
+  "details": "ਵੇਰਵੇ",
+  "tags": "ਟੈਗ:",
+  "tagName": "ਟੈਗ ਨਾਮ:",
+  "developerUsage": "ਡਿਵੈਲਪਰ ਵਰਤੋਂ:",
+  "demo": "ਡੈਮੋ",
+  "popUpDemo": "ਪੌਪ ਅੱਪ ਡੈਮੋ",
+  "demoOf": "{tag} ਦਾ ਡੈਮੋ"
+}

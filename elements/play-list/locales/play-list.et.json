@@ -1,0 +1,11 @@
+{
+  "playlist": "Esitusloend",
+  "carousel": "karussell",
+  "slide": "slaid",
+  "slideNumber": "Slaid {number}",
+  "slideOfTotal": "Slaid {number} {total}-st",
+  "previousSlide": "Eelmine slaid",
+  "nextSlide": "Järgmine slaid",
+  "slidePages": "Slaidide lehed",
+  "goToSlide": "Mine slaidile {number}"
+}

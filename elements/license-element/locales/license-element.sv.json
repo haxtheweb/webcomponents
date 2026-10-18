@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Erkännande",
+  "licenseBySa": "Erkännande-DelaLika",
+  "licenseByNd": "Erkännande-IngaBearbetningar",
+  "licenseByNc": "Erkännande-IckeKommersiell",
+  "licenseByNcSa": "Erkännande-IckeKommersiell-DelaLika",
+  "licenseByNcNd": "Erkännande-IckeKommersiell-IngaBearbetningar",
+  "licenseGraphic": "Grafik för {license}",
+  "workByCreator": "{title} av {creator}",
+  "workByCreatorLicensed": "{title} av {creator} är licensierad under en {license}.",
+  "permissionsBeyondScope": "Behörigheter utöver denna licens finns tillgängliga {link}.",
+  "author": "(författare)",
+  "onTheLicensingDetailsPage": "på sidan med licensinformation"
+}

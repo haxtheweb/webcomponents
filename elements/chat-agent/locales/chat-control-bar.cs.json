@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Stáhnout záznam jako txt",
+  "downloadChatLog": "Stáhnout záznam chatu",
+  "resetChat": "Resetovat chat",
+  "toggleDataCollection": "Přepnout sběr dat",
+  "dataCollection": "Sběr dat",
+  "toggleDeveloperMode": "Přepnout režim vývojáře",
+  "exitFullView": "Ukončit celé zobrazení",
+  "enterFullView": "Celé zobrazení",
+  "hideInterface": "Skrýt rozhraní",
+  "resetChatConfirm": "Resetovat chat?",
+  "downloadBeforeResetConfirm": "Stáhnout záznam chatu před resetem?",
+  "dataCollectionOn": "Vaše konverzace budou použity k trénování našich modelů AI",
+  "dataCollectionOff": "Vaše konverzace nebudou použity k trénování našich modelů AI"
+}

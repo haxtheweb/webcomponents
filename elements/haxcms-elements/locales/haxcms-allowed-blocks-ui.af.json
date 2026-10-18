@@ -10,5 +10,9 @@
   "save": "Stoor",
   "noDescription": "Geen beskrywing beskikbaar nie.",
   "details": "Besonderhede",
-  "loadingInventory": "Laai tans volledige blokinventaris…"
+  "loadingInventory": "Laai tans volledige blokinventaris…",
+  "selectAllButton": "Kies alles",
+  "deselectAllButton": "Ontkies alles",
+  "selectedOfAvailable": "{selected} gekies / {total} beskikbaar",
+  "savingBlocksFailed": "Stoor van blokke het misluk: {error}"
 }

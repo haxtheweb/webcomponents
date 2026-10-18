@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Dateien hier ablegen",
+  "uploadQueue": "Upload-Warteschlange",
+  "pending": "Ausstehend",
+  "preparing": "Wird vorbereitet",
+  "uploading": "Wird hochgeladen",
+  "complete": "Abgeschlossen",
+  "aborted": "Abgebrochen",
+  "cancelled": "Storniert",
+  "error": "Fehler",
+  "errorWithStatus": "Fehler: {status}",
+  "cancel": "Abbrechen",
+  "cancelUploadOf": "Upload von {name} abbrechen",
+  "retry": "Erneut versuchen",
+  "retryUploadOf": "Upload von {name} erneut versuchen",
+  "remove": "Entfernen",
+  "removeFromQueue": "{name} aus der Warteschlange entfernen",
+  "fileTypeNotAccepted": "Dateityp nicht akzeptiert: {name}",
+  "uploadFailed": "Upload fehlgeschlagen: {status}",
+  "networkError": "Netzwerkfehler"
+}

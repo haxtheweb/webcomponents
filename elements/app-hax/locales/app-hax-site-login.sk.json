@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Zadajte používateľské meno",
+  "invalidUsernameOrPassword": "Neplatné používateľské meno alebo heslo",
+  "welcomeLetsGo": "Vitajte, {username}! Poďme na to!",
+  "enterYourUsername": "Zadajte svoje používateľské meno",
+  "username": "Meno používateľa",
+  "next": "Ďalší",
+  "welcomeBack": "Vitajte späť, {username}!",
+  "notYou": "Nie ste to vy?",
+  "enterYourPassword": "Zadajte svoje heslo",
+  "password": "Heslo",
+  "togglePasswordDisplay": "Prepnúť zobrazenie hesla",
+  "login": "Prihlásiť sa"
+}

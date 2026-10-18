@@ -1,4 +1,11 @@
 {
   "readMore": "Lees meer",
-  "home": "Home"
+  "home": "Home",
+  "anchorLinkCopied": "Ankerlink gekopieerd!",
+  "skipToContent": "Naar inhoud springen",
+  "changeTheme": "Thema wijzigen",
+  "siteSections": "Sitesecties",
+  "pageOfTotal": "Pagina {current} van {total}",
+  "siteGenerated": "Site gegenereerd: {date}",
+  "licenseGraphic": "Afbeelding van {license}"
 }

@@ -1,3 +1,8 @@
 {
-  "title": "ማጣቀሻዎች"
+  "title": "ማጣቀሻዎች",
+  "export": "ላክ",
+  "exportCitations": "ጥቅሶችን ላክ",
+  "copy": "ቅዳ",
+  "exportCitationFormat": "የጥቅስ ቅርጸት ላክ",
+  "selectCitationFormatBelow": "ከዚህ በታች የጥቅስ ቅርጸት ይምረጡ"
 }

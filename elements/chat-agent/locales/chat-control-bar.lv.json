@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Lejupielādēt žurnālu kā txt",
+  "downloadChatLog": "Lejupielādēt tērzēšanas žurnālu",
+  "resetChat": "Atiestatīt tērzēšanu",
+  "toggleDataCollection": "Pārslēgt datu vākšanu",
+  "dataCollection": "Datu vākšana",
+  "toggleDeveloperMode": "Pārslēgt izstrādātāja režīmu",
+  "exitFullView": "Iziet no pilnā skata",
+  "enterFullView": "Atvērt pilno skatu",
+  "hideInterface": "Paslēpt saskarni",
+  "resetChatConfirm": "Vai atiestatīt tērzēšanu?",
+  "downloadBeforeResetConfirm": "Vai pirms atiestatīšanas lejupielādēt tērzēšanas žurnālu?",
+  "dataCollectionOn": "Jūsu sarunas tiks izmantotas mūsu AI modeļu apmācībai",
+  "dataCollectionOff": "Jūsu sarunas netiks izmantotas mūsu AI modeļu apmācībai"
+}

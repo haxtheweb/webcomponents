@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "د لنګر لینک کاپي شو!",
+  "skipToContent": "منځپانګې ته ورشئ",
+  "changePalette": "رنګ ټولګه بدل کړئ",
+  "primaryLinks": "لومړني لینکونه",
+  "socialLinks": "ټولنیز لینکونه",
+  "myProfile": "زما پروفایل",
+  "profileImageOf": "د {name} د پروفایل انځور",
+  "profileImage": "د پروفایل انځور",
+  "linkCardProfile": "د لینک کارت پروفایل",
+  "emptyStateLinks": "د لینک تڼیو د ښودلو لپاره په site.json کې د پورتنۍ کچې د مینو توکي ورزیات کړئ.",
+  "titleOnPlatform": "{title} په {platform} کې",
+  "openPlatform": "{platform} پرانیزئ",
+  "paletteUpdated": "د رنګ ټولګه {number} انتخاب ته تازه شوه."
+}

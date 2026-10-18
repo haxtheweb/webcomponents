@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "តារាងកុងសូលកំណត់ហេតុជជែករបស់អ្នកប្រើ",
+  "consoleTableUserText": "console.table() កំណត់ហេតុជជែករបស់អ្នកប្រើ",
+  "consoleTableUserTooltip": "បោះពុម្ពកំណត់ហេតុជជែករបស់អ្នកប្រើជាតារាងទៅកុងសូល",
+  "consoleTableMerlinLabel": "តារាងកុងសូលកំណត់ហេតុជជែករបស់ Merlin",
+  "consoleTableMerlinText": "console.table() កំណត់ហេតុជជែករបស់ Merlin",
+  "consoleTableMerlinTooltip": "បោះពុម្ពកំណត់ហេតុជជែករបស់ Merlin ជាតារាងទៅកុងសូល",
+  "consoleTableAllLabel": "តារាងកុងសូលកំណត់ហេតុជជែកទាំងមូល",
+  "consoleTableAllText": "console.table() កំណត់ហេតុជជែកទាំងមូល",
+  "consoleTableAllTooltip": "បោះពុម្ពកំណត់ហេតុជជែកទាំងមូលជាតារាងទៅកុងសូល",
+  "downloadChatLogJson": "ទាញយកកំណត់ហេតុជជែកជា .json",
+  "downloadChatLogJsonTooltip": "ទាញយកកំណត់ហេតុជជែកជា .json"
+}

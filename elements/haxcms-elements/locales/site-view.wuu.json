@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "呒没结果",
+  "viewsRecordHeading": "录制",
+  "viewsTitleImage": "{title} 图片",
+  "viewsTitlePreview": "{title} 预览",
+  "viewsNoTimelineRecords": "呒没带日期个记录,做勿出时间线。",
+  "viewsTimelineTitle": "{title} 时间线",
+  "viewsNoChartField": "寻勿着数字字段,做勿出图表。",
+  "viewsChartingValue": "图表显示 {value}",
+  "viewsChartingValueByLabel": "按 {label} 图表显示 {value}",
+  "viewsChartTitle": "{title} 图表",
+  "viewsNoTreeRecords": "呒没分层个记录,做勿出树形图。",
+  "viewsNoGalleryRecords": "呒没图片记录,做勿出图库。",
+  "viewsNoPlaylistRecords": "呒没媒体记录,做勿出播放列表。",
+  "fetchFailed": "获取失败 ({status})",
+  "unableToLoadViewData": "视图数据载勿进来。",
+  "noResultsFound": "寻勿着结果。",
+  "refreshView": "刷新视图",
+  "breakIntoStaticContent": "拆成静态内容",
+  "viewsOpenRecord": "打开记录"
+}

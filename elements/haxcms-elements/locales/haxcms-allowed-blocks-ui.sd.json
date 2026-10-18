@@ -10,5 +10,9 @@
   "save": "محفوظ ڪريو",
   "noDescription": "ڪا وضاحت موجود ناهي.",
   "details": "تفصيل",
-  "loadingInventory": "بلاڪن جي مڪمل فهرست لوڊ ٿي رهي آهي…"
+  "loadingInventory": "بلاڪن جي مڪمل فهرست لوڊ ٿي رهي آهي…",
+  "selectAllButton": "سڀ چونڊيو",
+  "deselectAllButton": "سڀ اڻ چونڊيو",
+  "selectedOfAvailable": "{selected} چونڊيل / {total} موجود",
+  "savingBlocksFailed": "بلاڪ محفوظ ڪرڻ ناڪام: {error}"
 }

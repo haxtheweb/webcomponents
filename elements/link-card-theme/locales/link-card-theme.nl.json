@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ankerlink gekopieerd!",
+  "skipToContent": "Naar inhoud springen",
+  "changePalette": "Palet wijzigen",
+  "primaryLinks": "Primaire links",
+  "socialLinks": "Sociale links",
+  "myProfile": "Mijn profiel",
+  "profileImageOf": "Profielfoto van {name}",
+  "profileImage": "Profielfoto",
+  "linkCardProfile": "Linkkaartprofiel",
+  "emptyStateLinks": "Voeg menu-items op het hoogste niveau toe in site.json om linkknoppen weer te geven.",
+  "titleOnPlatform": "{title} op {platform}",
+  "openPlatform": "{platform} openen",
+  "paletteUpdated": "Kleurenpalet bijgewerkt naar optie {number}."
+}

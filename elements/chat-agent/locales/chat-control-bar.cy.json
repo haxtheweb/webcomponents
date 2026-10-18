@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Llwytho'r Log i lawr fel txt",
+  "downloadChatLog": "Llwytho Log y Sgwrs i lawr",
+  "resetChat": "Ailosod y Sgwrs",
+  "toggleDataCollection": "Toglo Casglu Data",
+  "dataCollection": "Casglu Data",
+  "toggleDeveloperMode": "Toglo'r Modd Datblygwr",
+  "exitFullView": "Gadael yr Olwg Lawn",
+  "enterFullView": "Mynd i'r Olwg Lawn",
+  "hideInterface": "Cuddio'r Rhyngwyneb",
+  "resetChatConfirm": "Ailosod y sgwrs?",
+  "downloadBeforeResetConfirm": "Llwytho log y sgwrs i lawr cyn i chi ailosod?",
+  "dataCollectionOn": "Bydd eich sgyrsiau'n cael eu defnyddio i hyfforddi ein modelau AI",
+  "dataCollectionOff": "Ni fydd eich sgyrsiau'n cael eu defnyddio i hyfforddi ein modelau AI"
+}

@@ -1,4 +1,11 @@
 {
   "readMore": "Funda ngakumbi",
-  "home": "Ekhaya"
+  "home": "Ekhaya",
+  "anchorLinkCopied": "Ikhonkco le-ankile likhutshelwe!",
+  "skipToContent": "Tsiba uye kumxholo",
+  "changeTheme": "Tshintsha umxholo",
+  "siteSections": "Amacandelo esayithi",
+  "pageOfTotal": "Iphepha {current} kwezi {total}",
+  "siteGenerated": "Isayithi yenziwe: {date}",
+  "licenseGraphic": "Umfanekiso we-{license}"
 }

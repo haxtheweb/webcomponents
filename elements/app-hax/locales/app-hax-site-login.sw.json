@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Ingiza jina la mtumiaji",
+  "invalidUsernameOrPassword": "Jina la Mtumiaji au Nenosiri si Sahihi",
+  "welcomeLetsGo": "Karibu {username}! Twende!",
+  "enterYourUsername": "Ingiza jina lako la mtumiaji",
+  "username": "Jina la mtumiaji",
+  "next": "Inayofuata",
+  "welcomeBack": "Karibu tena, {username}!",
+  "notYou": "Si wewe?",
+  "enterYourPassword": "Ingiza nenosiri lako",
+  "password": "Nenosiri",
+  "togglePasswordDisplay": "Onyesha/ficha nenosiri",
+  "login": "Ingia"
+}

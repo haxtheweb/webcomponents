@@ -7,5 +7,7 @@
   "userAccessGranted": "İstifadəçiyə giriş uğurla verildi!",
   "userNotFound": "İstifadəçi tapılmadı və ya icazəsi yoxdur",
   "loadingAddingUser": "İstifadəçi əlavə edilir...",
-  "grantAccessTo": "Giriş verilsin:"
+  "grantAccessTo": "Giriş verilsin:",
+  "networkErrorTryAgain": "Şəbəkə xətası baş verdi. Lütfən, yenidən cəhd edin.",
+  "characterWillAppear": "İstifadəçi adı daxil etdikdə personaj görünəcək"
 }

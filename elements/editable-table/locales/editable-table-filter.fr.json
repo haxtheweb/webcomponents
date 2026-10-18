@@ -1,0 +1,5 @@
+{
+  "toggleFilter": "Activer/désactiver le filtre.",
+  "toggleFilterForColumn": "Activer/désactiver le filtre de la colonne.",
+  "toggleColumnFilter": "Activer/désactiver le filtre de la colonne {column}."
+}

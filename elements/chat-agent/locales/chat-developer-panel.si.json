@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "කොන්සෝල වගු පරිශීලක කතාබස් ලොගය",
+  "consoleTableUserText": "console.table() පරිශීලක කතාබස් ලොගය",
+  "consoleTableUserTooltip": "පරිශීලක කතාබස් ලොගය වගුවක් ලෙස කොන්සෝලයට මුද්‍රණය කරන්න",
+  "consoleTableMerlinLabel": "කොන්සෝල වගු merlin කතාබස් ලොගය",
+  "consoleTableMerlinText": "console.table() merlin කතාබස් ලොගය",
+  "consoleTableMerlinTooltip": "Merlin කතාබස් ලොගය වගුවක් ලෙස කොන්සෝලයට මුද්‍රණය කරන්න",
+  "consoleTableAllLabel": "කොන්සෝල වගු සම්පූර්ණ කතාබස් ලොගය",
+  "consoleTableAllText": "console.table() සම්පූර්ණ කතාබස් ලොගය",
+  "consoleTableAllTooltip": "සම්පූර්ණ කතාබස් ලොගය වගුවක් ලෙස කොන්සෝලයට මුද්‍රණය කරන්න",
+  "downloadChatLogJson": "කතාබස් ලොගය .json ලෙස බාගන්න",
+  "downloadChatLogJsonTooltip": "කතාබස් ලොගය .json ලෙස බාගන්න"
+}

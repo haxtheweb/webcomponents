@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Plasează fișierele aici",
+  "uploadQueue": "Coada de încărcare",
+  "pending": "În așteptare",
+  "preparing": "Se pregătește",
+  "uploading": "Se încarcă",
+  "complete": "Finalizat",
+  "aborted": "Întrerupt",
+  "cancelled": "Anulat",
+  "error": "Eroare",
+  "errorWithStatus": "Eroare: {status}",
+  "cancel": "Anulează",
+  "cancelUploadOf": "Anulează încărcarea pentru {name}",
+  "retry": "Reîncearcă",
+  "retryUploadOf": "Reîncearcă încărcarea pentru {name}",
+  "remove": "Elimină",
+  "removeFromQueue": "Elimină {name} din coadă",
+  "fileTypeNotAccepted": "Tip de fișier neacceptat: {name}",
+  "uploadFailed": "Încărcarea a eșuat: {status}",
+  "networkError": "Eroare de rețea"
+}

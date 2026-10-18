@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Kutsvaga muRejista yeWeb Component kuti uwane zvimwe zvinhu zveHAX..",
+  "enabled": "Zvabatidzwa",
+  "disabled": "Zvakadzimwa",
+  "details": "Ruzivo rwakawanda",
+  "tags": "Zviratidzo:",
+  "tagName": "Zita retag:",
+  "developerUsage": "Kushandisa kwemugadziri:",
+  "demo": "Muenzaniso",
+  "popUpDemo": "Muenzaniso unobuda",
+  "demoOf": "Muenzaniso we{tag}"
+}

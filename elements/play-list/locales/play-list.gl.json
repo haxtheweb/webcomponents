@@ -1,0 +1,11 @@
+{
+  "playlist": "Lista de reprodución",
+  "carousel": "carrusel",
+  "slide": "diapositiva",
+  "slideNumber": "Diapositiva {number}",
+  "slideOfTotal": "Diapositiva {number} de {total}",
+  "previousSlide": "Diapositiva anterior",
+  "nextSlide": "Diapositiva seguinte",
+  "slidePages": "Páxinas de diapositivas",
+  "goToSlide": "Ir á diapositiva {number}"
+}

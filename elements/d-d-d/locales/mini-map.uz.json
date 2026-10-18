@@ -1,0 +1,17 @@
+{
+  "editNodes": "Tugunlarni tahrirlash",
+  "editLines": "Chiziqlarni tahrirlash",
+  "reset": "Tiklash",
+  "save": "Saqlash",
+  "cancel": "Bekor qilish",
+  "delete": "O‘chirish",
+  "type": "Turi:",
+  "topic": "Mavzu",
+  "subsection": "Kichik boʻlim",
+  "name": "Nomi:",
+  "enterName": "Nomni kiriting",
+  "url": "URL:",
+  "enterUrl": "URL manzilni kiriting",
+  "activeNode": "Faol tugunmi?",
+  "nodeId": "{id}-tugun"
+}

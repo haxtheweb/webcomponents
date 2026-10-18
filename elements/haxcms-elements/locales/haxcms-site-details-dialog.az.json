@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- standart olaraq birinci səhifə --",
+  "details": "Təfərrüatlar",
+  "title": "Başlıq",
+  "titleDescription": "Saytın adı",
+  "homePage": "Ana səhifə",
+  "homePageDescription": "Standart giriş / ana səhifə kimi istifadə ediləcək səhifə",
+  "advanced": "Təkmil",
+  "serviceWorker": "Dinamik səhifəyə service worker əlavə et",
+  "serviceWorkerDescription": "İstifadəçilər həmişə ən son server çıxışını dərhal görməlidirsə, bunu deaktiv edin.",
+  "forceBrowserUpgrade": "Brauzerin yenilənməsini məcbur et",
+  "forceBrowserUpgradeDescription": "Sayt təcrübəsini yükləməzdən əvvəl daim yenilənən brauzerlər tələb et.",
+  "unableToLoadSiteDetails": "Sayt təfərrüatlarını yükləmək mümkün olmadı.",
+  "noSiteDetails": "Heç bir sayt təfərrüatı mövcud deyil.",
+  "save": "Saxla"
+}

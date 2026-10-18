@@ -9,5 +9,7 @@
   "record": "تسجيل",
   "pause": "إيقاف التسجيل مؤقتًا",
   "stopSave": "إيقاف وحفظ",
-  "clickToTakePhoto": "انقر لالتقاط صورة"
+  "clickToTakePhoto": "انقر لالتقاط صورة",
+  "url": "URL",
+  "open": "فتح"
 }

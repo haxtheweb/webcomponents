@@ -22,6 +22,13 @@
   "unpublish": "게시 취소",
   "savePage": "페이지 저장",
   "cancel": "취소",
+  "delete": "삭제",
+  "editTitle": "제목 편집",
+  "editIcon": "아이콘 편집",
+  "agent": "에이전트",
+  "pageLockedUnlockToEdit": "이 페이지는 잠겨 있습니다. 편집하려면 먼저 잠금을 해제하세요.",
+  "pageLockedUnlockToChangePublishStatus": "이 페이지는 잠겨 있습니다. 게시 상태를 변경하려면 먼저 잠금을 해제하세요.",
+  "pageLockedUnlockToDelete": "이 페이지는 잠겨 있습니다. 삭제하려면 먼저 잠금을 해제하세요.",
   "pageDetails": "페이지 세부 정보",
   "clickToUnlock": "잠금 해제하려면 클릭"
 }

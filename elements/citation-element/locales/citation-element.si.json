@@ -1,0 +1,11 @@
+{
+  "licenseBy": "ආරෝපණය",
+  "licenseBySa": "ආරෝපණය එලෙසම බෙදාගන්න",
+  "licenseByNd": "ආරෝපණය ව්‍යුත්පන්න නැත",
+  "licenseByNc": "ආරෝපණය වාණිජ නොවන",
+  "licenseByNcSa": "ආරෝපණය වාණිජ නොවන එලෙසම බෙදාගන්න",
+  "licenseByNcNd": "ආරෝපණය වාණිජ නොවන ව්‍යුත්පන්න නැත",
+  "citationWithLicense": "{creator} විසින් රචිත {title}, {license} යටතේ බලපත්‍ර ලබා ඇත. ප්‍රවේශ වූයේ {date}.",
+  "citationWithoutLicense": "{creator} විසින් රචිත {title}. ප්‍රවේශ වූයේ {date}.",
+  "licenseGraphic": "{license} ග්‍රැෆිකය"
+}

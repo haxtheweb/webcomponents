@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Թողեք ֆայլերն այստեղ",
+  "uploadQueue": "Վերբեռնման հերթ",
+  "pending": "Սպասման մեջ",
+  "preparing": "Նախապատրաստվում է",
+  "uploading": "Վերբեռնվում է",
+  "complete": "Ավարտված",
+  "aborted": "Ընդհատված",
+  "cancelled": "Չեղարկված",
+  "error": "Սխալ",
+  "errorWithStatus": "Սխալ՝ {status}",
+  "cancel": "Չեղարկել",
+  "cancelUploadOf": "Չեղարկել {name}-ի վերբեռնումը",
+  "retry": "Կրկին փորձել",
+  "retryUploadOf": "Կրկին փորձել {name}-ի վերբեռնումը",
+  "remove": "Հեռացնել",
+  "removeFromQueue": "Հեռացնել {name}-ը հերթից",
+  "fileTypeNotAccepted": "Ֆայլի տեսակը չի ընդունվում՝ {name}",
+  "uploadFailed": "Վերբեռնումը ձախողվեց՝ {status}",
+  "networkError": "Ցանցային սխալ"
+}

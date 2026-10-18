@@ -1,0 +1,11 @@
+{
+  "playlist": "پلي لسٽ",
+  "carousel": "ڪيروسل",
+  "slide": "سلائيڊ",
+  "slideNumber": "سلائيڊ {number}",
+  "slideOfTotal": "سلائيڊ {total} مان {number}",
+  "previousSlide": "پوئين سلائيڊ",
+  "nextSlide": "ايندڙ سلائيڊ",
+  "slidePages": "سلائيڊ صفحا",
+  "goToSlide": "سلائيڊ {number} تي وڃو"
+}

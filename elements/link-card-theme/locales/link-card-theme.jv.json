@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Link jangkar disalin!",
+  "skipToContent": "Langsung menyang isi",
+  "changePalette": "Ganti palet",
+  "primaryLinks": "Link utama",
+  "socialLinks": "Link sosial",
+  "myProfile": "Profilku",
+  "profileImageOf": "Gambar profil {name}",
+  "profileImage": "Gambar profil",
+  "linkCardProfile": "Profil kertu link",
+  "emptyStateLinks": "Tambah item menu tingkat ndhuwur ing site.json kanggo nampilake tombol link.",
+  "titleOnPlatform": "{title} ing {platform}",
+  "openPlatform": "Bukak {platform}",
+  "paletteUpdated": "Palet warna dianyari dadi pilihan {number}."
+}

@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "No s'han pogut carregar els temes: {error}",
+  "noThemesForView": "No hi ha temes disponibles per a aquesta vista.",
+  "active": "Activa",
+  "themeIsActive": "El tema {name} està actiu",
+  "applyTheme": "Aplica el tema {name}",
+  "apply": "Aplica",
+  "preview": "Previsualització",
+  "name": "Nom",
+  "element": "Element",
+  "description": "Descripció",
+  "action": "Acció",
+  "loadingThemes": "S'estan carregant els temes...",
+  "themesShown": "{count} temes mostrats",
+  "themesShownDefaults": "{count} temes mostrats (valors per defecte d'app-hax)",
+  "availableHaxcmsThemes": "Temes de HAXcms disponibles",
+  "gallery": "Galeria",
+  "table": "Taula"
+}

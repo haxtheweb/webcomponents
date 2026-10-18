@@ -1,0 +1,11 @@
+{
+  "theme": "Evni",
+  "active": "Virkið",
+  "selected": "Valt",
+  "noPreview": "Eingin forsýning",
+  "currentlyActiveAndSelected": "Núverandi virkið og valt tema",
+  "currentlyActive": "Núverandi virkið tema",
+  "selectedToApplyOnSave": "Valt tema at nýta við goyming",
+  "themeSelection": "Val av tema",
+  "noThemesAvailable": "Eingi tema tøk."
+}

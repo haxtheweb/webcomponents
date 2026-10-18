@@ -1,0 +1,17 @@
+{
+  "editNodes": "노드 편집",
+  "editLines": "선 편집",
+  "reset": "재설정",
+  "save": "저장",
+  "cancel": "취소",
+  "delete": "삭제",
+  "type": "유형:",
+  "topic": "주제",
+  "subsection": "하위 섹션",
+  "name": "이름:",
+  "enterName": "이름 입력",
+  "url": "URL:",
+  "enterUrl": "URL 입력",
+  "activeNode": "활성 노드인가요?",
+  "nodeId": "노드 {id}"
+}

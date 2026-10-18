@@ -1,0 +1,9 @@
+{
+  "palette": "Палитр",
+  "paletteSelection": "Палитр сонгох",
+  "active": "Идэвхтэй",
+  "selected": "Сонгосон",
+  "currentlyActiveAndSelectedPalette": "Одоо идэвхтэй бөгөөд сонгосон палитр",
+  "currentlyActivePalette": "Одоо идэвхтэй палитр",
+  "selectedPaletteToApply": "Хэрэглэхээр сонгосон палитр"
+}

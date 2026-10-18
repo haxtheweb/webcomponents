@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "គ្មានលទ្ធផល",
+  "viewsRecordHeading": "ថត",
+  "viewsTitleImage": "រូបភាព {title}",
+  "viewsTitlePreview": "ការមើលជាមុន {title}",
+  "viewsNoTimelineRecords": "គ្មានកំណត់ត្រាតាមកាលបរិច្ឆេទសម្រាប់បង្ហាញបន្ទាត់ពេលវេលាទេ។",
+  "viewsTimelineTitle": "បន្ទាត់ពេលវេលា {title}",
+  "viewsNoChartField": "រកមិនឃើញវាលលេខសម្រាប់បង្ហាញគំនូសតាងទេ។",
+  "viewsChartingValue": "កំពុងគូសតាង {value}",
+  "viewsChartingValueByLabel": "កំពុងគូសតាង {value} តាម {label}",
+  "viewsChartTitle": "គំនូសតាង {title}",
+  "viewsNoTreeRecords": "គ្មានកំណត់ត្រាតាមឋានានុក្រមសម្រាប់បង្ហាញមែកធាងទេ។",
+  "viewsNoGalleryRecords": "គ្មានកំណត់ត្រារូបភាពសម្រាប់បង្ហាញវិចិត្រសាលទេ។",
+  "viewsNoPlaylistRecords": "គ្មានកំណត់ត្រាមេឌៀសម្រាប់បង្ហាញបញ្ជីចាក់ទេ។",
+  "fetchFailed": "ការទាញយកបរាជ័យ ({status})",
+  "unableToLoadViewData": "មិនអាចផ្ទុកទិន្នន័យទិដ្ឋភាពបានទេ។",
+  "noResultsFound": "រកមិនឃើញលទ្ធផលទេ។",
+  "refreshView": "ផ្ទុកទិដ្ឋភាពឡើងវិញ",
+  "breakIntoStaticContent": "បំបែកទៅជាមាតិកាឋិតិវន្ត",
+  "viewsOpenRecord": "បើកកំណត់ត្រា"
+}

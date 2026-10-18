@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Teideal an Róil",
+  "describeYourRole": "Déan cur síos ar do ról anseo...",
+  "present": "Cuir i láthair",
+  "skills": "Scileanna:",
+  "skillsAndMore": "{skills} agus +{count} eile",
+  "yearShort": "{count} bl",
+  "yearsShort": "{count} bl",
+  "monthShort": "{count} mí",
+  "monthsShort": "{count} mí"
+}

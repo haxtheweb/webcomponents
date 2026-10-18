@@ -5,5 +5,9 @@
   "buttons": "دکمه‌ها",
   "futureButtonConfiguration": "پیکربندی سفارشی دکمه‌های ویرایشگر به‌زودی در دسترس خواهد بود.",
   "save": "ذخیره",
-  "saving": "در حال ذخیره…"
+  "saving": "در حال ذخیره…",
+  "novice": "مبتدی",
+  "expert": "حرفه‌ای",
+  "toolbarPreviewAlt": "پیش‌نمایش نوار ابزار ویرایش {audience}",
+  "savingEditorSettingsFailed": "ذخیره تنظیمات ویرایشگر ناموفق بود: {error}"
 }

@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "অ্যাঙ্কর লিংক কপি হয়েছে!",
+  "skipToContent": "বিষয়বস্তুতে চলে যান",
+  "siteHome": "সাইটের হোম",
+  "mainNavigation": "প্রধান নেভিগেশন",
+  "toggleMenu": "মেনু টগল করুন",
+  "changeTheme": "থিম পরিবর্তন করুন",
+  "breadcrumb": "ব্রেডক্রাম্ব",
+  "tagFilter": "ট্যাগ ফিল্টার:",
+  "all": "সব",
+  "pageNumberOfTotal": "পেজ নম্বর: {total}-এর মধ্যে {current}",
+  "siteGenerated": "সাইট তৈরির তারিখ: {date}",
+  "copyright": "কপিরাইট: {year} {author}",
+  "viewContentByTag": "ট্যাগ অনুযায়ী কনটেন্ট দেখুন",
+  "licenseGraphic": "{license} গ্রাফিক"
+}

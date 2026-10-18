@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Ladda ner logg som txt",
+  "downloadChatLog": "Ladda ner chattlogg",
+  "resetChat": "Återställ chatt",
+  "toggleDataCollection": "Växla datainsamling",
+  "dataCollection": "Datainsamling",
+  "toggleDeveloperMode": "Växla utvecklarläge",
+  "exitFullView": "Avsluta helvy",
+  "enterFullView": "Öppna helvy",
+  "hideInterface": "Dölj gränssnitt",
+  "resetChatConfirm": "Återställa chatten?",
+  "downloadBeforeResetConfirm": "Vill du ladda ner chattloggen innan du återställer?",
+  "dataCollectionOn": "Dina konversationer kommer att användas för att träna våra AI-modeller",
+  "dataCollectionOff": "Dina konversationer kommer inte att användas för att träna våra AI-modeller"
+}

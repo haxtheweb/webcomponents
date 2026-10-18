@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Flik {xOfY}",
+  "xOfY": "{order} av {total}",
+  "endOfTab": "Slut på flik {xOfY}. Tillbaka till {tabs}.",
+  "tabs": "flikar"
+}

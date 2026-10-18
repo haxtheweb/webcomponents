@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- default għall-ewwel paġna --",
+  "details": "Dettalji",
+  "title": "Titlu",
+  "titleDescription": "Isem is-sit",
+  "homePage": "Paġna ewlenija",
+  "homePageDescription": "Paġna li tintuża bħala l-paġna default tal-wasla / ewlenija",
+  "advanced": "Avvanzat",
+  "serviceWorker": "Żid service worker mal-paġna dinamika",
+  "serviceWorkerDescription": "Itfi dan jekk l-utenti għandhom dejjem jaraw l-aħħar output tas-server immedjatament.",
+  "forceBrowserUpgrade": "Ġiegħel l-aġġornament tal-browser",
+  "forceBrowserUpgradeDescription": "Irrikjedi browsers evergreen qabel ma titgħabba l-esperjenza tas-sit.",
+  "unableToLoadSiteDetails": "Ma setgħux jitgħabbew id-dettalji tas-sit.",
+  "noSiteDetails": "M'hemm l-ebda dettall tas-sit disponibbli.",
+  "save": "Issejvja"
+}

@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "நங்கூர இணைப்பு நகலெடுக்கப்பட்டது!",
+  "skipToContent": "உள்ளடக்கத்திற்குச் செல்",
+  "siteHome": "தள முகப்பு",
+  "mainNavigation": "முதன்மை வழிசெலுத்தல்",
+  "toggleMenu": "மெனுவை மாற்று",
+  "changeTheme": "தீமை மாற்று",
+  "breadcrumb": "வழித்தடம்",
+  "tagFilter": "குறிச்சொல் வடிகட்டி:",
+  "all": "அனைத்தும்",
+  "pageNumberOfTotal": "பக்க எண்: {total} இல் {current}",
+  "siteGenerated": "தளம் உருவாக்கப்பட்டது: {date}",
+  "copyright": "பதிப்புரிமை: {year} {author}",
+  "viewContentByTag": "குறிச்சொல் வாரியாக உள்ளடக்கத்தைக் காண்",
+  "licenseGraphic": "{license} வரைகலை"
+}

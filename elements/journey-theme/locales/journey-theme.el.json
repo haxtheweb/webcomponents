@@ -1,4 +1,11 @@
 {
   "readMore": "Διαβάστε περισσότερα",
-  "home": "Αρχική"
+  "home": "Αρχική",
+  "anchorLinkCopied": "Ο σύνδεσμος αγκύρωσης αντιγράφηκε!",
+  "skipToContent": "Μετάβαση στο περιεχόμενο",
+  "changeTheme": "Αλλαγή θέματος",
+  "siteSections": "Ενότητες ιστοτόπου",
+  "pageOfTotal": "Σελίδα {current} από {total}",
+  "siteGenerated": "Ο ιστότοπος δημιουργήθηκε: {date}",
+  "licenseGraphic": "Γραφικό {license}"
 }

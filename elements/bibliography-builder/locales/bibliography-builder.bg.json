@@ -1,3 +1,8 @@
 {
-  "title": "Източници"
+  "title": "Източници",
+  "export": "Експорт",
+  "exportCitations": "Експорт на цитати",
+  "copy": "Копиране",
+  "exportCitationFormat": "Формат за експорт на цитати",
+  "selectCitationFormatBelow": "Изберете формат на цитиране по-долу"
 }

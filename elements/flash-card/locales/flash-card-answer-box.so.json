@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Jawaabtaada",
   "checkAnswer": "Hubi jawaabta",
-  "retry": "Isku day mar kale"
+  "retry": "Isku day mar kale",
+  "correct": "Sax!",
+  "incorrect": "Khalad!",
+  "correctAnswer": "Jawaabta Saxda ah: {answer}"
 }

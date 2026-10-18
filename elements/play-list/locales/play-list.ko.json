@@ -1,0 +1,11 @@
+{
+  "playlist": "재생 목록",
+  "carousel": "캐러셀",
+  "slide": "슬라이드",
+  "slideNumber": "슬라이드 {number}",
+  "slideOfTotal": "슬라이드 {number}/{total}",
+  "previousSlide": "이전 슬라이드",
+  "nextSlide": "다음 슬라이드",
+  "slidePages": "슬라이드 페이지",
+  "goToSlide": "슬라이드 {number}(으)로 이동"
+}

@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Via respondo",
   "checkAnswer": "Kontroli respondon",
-  "retry": "Reprovi"
+  "retry": "Reprovi",
+  "correct": "Ĝuste!",
+  "incorrect": "Malĝuste!",
+  "correctAnswer": "Ĝusta respondo: {answer}"
 }

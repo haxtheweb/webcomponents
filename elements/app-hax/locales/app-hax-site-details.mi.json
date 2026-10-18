@@ -1,0 +1,18 @@
+{
+  "copy": "Tārua",
+  "download": "Tikiake",
+  "archive": "Pūranga",
+  "copyOperation": "tārua",
+  "downloadOperation": "tikiake",
+  "archiveOperation": "puranga",
+  "created": "i waihangatia",
+  "updated": "i whakahoutia",
+  "pages": "whārangi",
+  "url": "URL",
+  "confirm": "Whakaū",
+  "cancel": "Whakakore",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Kei te tino hiahia koe ki te {operation} i a {siteName}?",
+  "siteOperationSuccessful": "I angitu te {operation} o {siteName}!",
+  "siteOperationFailed": "I rahua te {operation} o {siteName}"
+}

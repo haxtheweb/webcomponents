@@ -5,5 +5,9 @@
   "buttons": "बटन",
   "futureButtonConfiguration": "कस्टम संपादक बटन कॉन्फ़िगरेशन जल्द आ रहा है।",
   "save": "सहेजें",
-  "saving": "सहेजा जा रहा है…"
+  "saving": "सहेजा जा रहा है…",
+  "novice": "नौसिखिया",
+  "expert": "विशेषज्ञ",
+  "toolbarPreviewAlt": "{audience} संपादन टूलबार पूर्वावलोकन",
+  "savingEditorSettingsFailed": "संपादक सेटिंग्स सहेजना विफल: {error}"
 }

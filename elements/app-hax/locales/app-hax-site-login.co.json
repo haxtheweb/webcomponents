@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Scrivite u nome d'utilizatore",
+  "invalidUsernameOrPassword": "Nome d'utilizatore o parolla d'intesa micca validu",
+  "welcomeLetsGo": "Benvenutu {username}! Andemu!",
+  "enterYourUsername": "Scrivite u vostru nome d'utilizatore",
+  "username": "Nome d'utilizatore",
+  "next": "Seguente",
+  "welcomeBack": "Bentornu, {username}!",
+  "notYou": "Ùn site micca voi?",
+  "enterYourPassword": "Scrivite a vostra parolla d'intesa",
+  "password": "Parolla d'intesa",
+  "togglePasswordDisplay": "Mustrà/piattà a parolla d'intesa",
+  "login": "Cunnettesi"
+}

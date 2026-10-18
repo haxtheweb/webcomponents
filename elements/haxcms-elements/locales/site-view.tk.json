@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Netije ýok",
+  "viewsRecordHeading": "Ýazgy etmek",
+  "viewsTitleImage": "{title} suraty",
+  "viewsTitlePreview": "{title} deslapky görnüşi",
+  "viewsNoTimelineRecords": "Wagt çyzgysyny görkezmek üçin sene esasly ýazgylar ýok.",
+  "viewsTimelineTitle": "{title} wagt çyzgysy",
+  "viewsNoChartField": "Diagramma görkezmek üçin san meýdany tapylmady.",
+  "viewsChartingValue": "{value} diagrammasy",
+  "viewsChartingValueByLabel": "{label} boýunça {value} diagrammasy",
+  "viewsChartTitle": "{title} diagrammasy",
+  "viewsNoTreeRecords": "Agaç görnüşi üçin iýerarhik ýazgylar ýok.",
+  "viewsNoGalleryRecords": "Galereýa üçin surat ýazgylary ýok.",
+  "viewsNoPlaylistRecords": "Pleýlist üçin media ýazgylary ýok.",
+  "fetchFailed": "Almak şowsuz boldy ({status})",
+  "unableToLoadViewData": "Görnüş maglumatlaryny ýükläp bolmady.",
+  "noResultsFound": "Netije tapylmady.",
+  "refreshView": "Görnüşi täzele",
+  "breakIntoStaticContent": "Statik mazmuna böl",
+  "viewsOpenRecord": "Ýazgyny aç"
+}

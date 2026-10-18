@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Reconeixement",
+  "licenseBySa": "Reconeixement-CompartirIgual",
+  "licenseByNd": "Reconeixement-SenseObraDerivada",
+  "licenseByNc": "Reconeixement-NoComercial",
+  "licenseByNcSa": "Reconeixement-NoComercial-CompartirIgual",
+  "licenseByNcNd": "Reconeixement-NoComercial-SenseObraDerivada",
+  "licenseGraphic": "Gràfic de {license}",
+  "workByCreator": "{title} de {creator}",
+  "workByCreatorLicensed": "{title} de {creator} està subjecte a una llicència {license}.",
+  "permissionsBeyondScope": "Hi ha permisos addicionals a l'abast d'aquesta llicència disponibles {link}.",
+  "author": "(autor)",
+  "onTheLicensingDetailsPage": "a la pàgina de detalls de la llicència"
+}

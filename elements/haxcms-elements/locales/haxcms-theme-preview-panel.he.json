@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "הצגת תצוגה מקדימה של ערכת הנושא",
+  "hideThemePreview": "הסתרת התצוגה המקדימה של ערכת הנושא",
+  "themePreviewPanel": "חלונית תצוגה מקדימה של ערכת הנושא",
+  "themePreview": "תצוגה מקדימה של ערכת הנושא",
+  "themePreviewDescription": "נסו ערכת נושא ופלטה באופן זמני בזמן הגלישה. השתמשו בביטול כדי לשחזר את המראה המקורי.",
+  "loadingThemes": "טוען ערכות נושא...",
+  "theme": "ערכת נושא",
+  "palette": "פלטה",
+  "cancel": "ביטול",
+  "openAppearanceSettings": "פתיחת הגדרות המראה"
+}

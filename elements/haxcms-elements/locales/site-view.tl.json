@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Walang resulta",
+  "viewsRecordHeading": "Mag-record",
+  "viewsTitleImage": "Larawan ng {title}",
+  "viewsTitlePreview": "Preview ng {title}",
+  "viewsNoTimelineRecords": "Walang available na record na nakabatay sa petsa para sa pag-render ng timeline.",
+  "viewsTimelineTitle": "Timeline ng {title}",
+  "viewsNoChartField": "Walang natukoy na numerikong field para sa pag-render ng chart.",
+  "viewsChartingValue": "Ini-chart ang {value}",
+  "viewsChartingValueByLabel": "Ini-chart ang {value} ayon sa {label}",
+  "viewsChartTitle": "Chart ng {title}",
+  "viewsNoTreeRecords": "Walang available na hierarchical na record para sa pag-render ng tree.",
+  "viewsNoGalleryRecords": "Walang available na record ng larawan para sa pag-render ng gallery.",
+  "viewsNoPlaylistRecords": "Walang available na record ng media para sa pag-render ng playlist.",
+  "fetchFailed": "Nabigo ang pagkuha ({status})",
+  "unableToLoadViewData": "Hindi ma-load ang data ng view.",
+  "noResultsFound": "Walang nahanap na resulta.",
+  "refreshView": "I-refresh ang view",
+  "breakIntoStaticContent": "Gawing static na nilalaman",
+  "viewsOpenRecord": "Buksan ang record"
+}

@@ -1,3 +1,8 @@
 {
-  "title": "منابع"
+  "title": "منابع",
+  "export": "خروجی",
+  "exportCitations": "خروجی استنادها",
+  "copy": "کپی",
+  "exportCitationFormat": "قالب خروجی استناد",
+  "selectCitationFormatBelow": "یک قالب استناد را در زیر انتخاب کنید"
 }

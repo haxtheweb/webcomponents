@@ -1,4 +1,11 @@
 {
   "readMore": "Aqra aktar",
-  "home": "Paġna ewlenija"
+  "home": "Paġna ewlenija",
+  "anchorLinkCopied": "Il-link tal-ankra ġie kkupjat!",
+  "skipToContent": "Aqbeż għall-kontenut",
+  "changeTheme": "Ibdel it-tema",
+  "siteSections": "Sezzjonijiet tas-sit",
+  "pageOfTotal": "Paġna {current} minn {total}",
+  "siteGenerated": "Sit iġġenerat: {date}",
+  "licenseGraphic": "Grafika ta' {license}"
 }

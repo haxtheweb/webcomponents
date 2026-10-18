@@ -5,5 +5,9 @@
   "buttons": "Butonoj",
   "futureButtonConfiguration": "Propra agordo de redaktilaj butonoj baldaŭ venos.",
   "save": "Konservi",
-  "saving": "Konservante…"
+  "saving": "Konservante…",
+  "novice": "Komencanto",
+  "expert": "Spertulo",
+  "toolbarPreviewAlt": "Antaŭrigardo de redakta ilobreto por {audience}",
+  "savingEditorSettingsFailed": "Konservado de redaktilaj agordoj malsukcesis: {error}"
 }

@@ -1,0 +1,17 @@
+{
+  "editNodes": "I-edit ang mga Node",
+  "editLines": "I-edit ang mga Linya",
+  "reset": "I-reset",
+  "save": "I-save",
+  "cancel": "Kanselahin",
+  "delete": "Burahin",
+  "type": "Uri:",
+  "topic": "Paksa",
+  "subsection": "Subseksyon",
+  "name": "Pangalan:",
+  "enterName": "Ilagay ang Pangalan",
+  "url": "URL:",
+  "enterUrl": "Ilagay ang URL",
+  "activeNode": "Aktibong Node?",
+  "nodeId": "Node {id}"
+}

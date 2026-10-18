@@ -54,5 +54,6 @@
   "requirementUppercase": "ஒரு பெரிய எழுத்து",
   "requirementLowercase": "ஒரு சிறிய எழுத்து",
   "requirementNumber": "ஒரு எண்",
-  "requirementSymbol": "ஒரு குறியீடு"
+  "requirementSymbol": "ஒரு குறியீடு",
+  "haxcmsMascotAlt": "HAXcms உலகப் பயணி சின்னம்"
 }

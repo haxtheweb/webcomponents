@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Jibu lako",
   "checkAnswer": "Angalia jibu",
-  "retry": "Jaribu tena"
+  "retry": "Jaribu tena",
+  "correct": "Sahihi!",
+  "incorrect": "Si sahihi!",
+  "correctAnswer": "Jibu Sahihi: {answer}"
 }

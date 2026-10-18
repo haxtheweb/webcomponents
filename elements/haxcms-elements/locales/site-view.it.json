@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Nessun risultato",
+  "viewsRecordHeading": "Registra",
+  "viewsTitleImage": "Immagine di {title}",
+  "viewsTitlePreview": "Anteprima di {title}",
+  "viewsNoTimelineRecords": "Nessun record con date disponibile per la visualizzazione a cronologia.",
+  "viewsTimelineTitle": "Cronologia di {title}",
+  "viewsNoChartField": "Nessun campo numerico rilevato per la visualizzazione a grafico.",
+  "viewsChartingValue": "Grafico di {value}",
+  "viewsChartingValueByLabel": "Grafico di {value} per {label}",
+  "viewsChartTitle": "Grafico di {title}",
+  "viewsNoTreeRecords": "Nessun record gerarchico disponibile per la visualizzazione ad albero.",
+  "viewsNoGalleryRecords": "Nessun record di immagini disponibile per la visualizzazione a galleria.",
+  "viewsNoPlaylistRecords": "Nessun record multimediale disponibile per la visualizzazione a playlist.",
+  "fetchFailed": "Recupero non riuscito ({status})",
+  "unableToLoadViewData": "Impossibile caricare i dati della vista.",
+  "noResultsFound": "Nessun risultato trovato.",
+  "refreshView": "Aggiorna vista",
+  "breakIntoStaticContent": "Converti in contenuto statico",
+  "viewsOpenRecord": "Apri record"
+}

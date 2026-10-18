@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Нэр заах",
+  "licenseBySa": "Нэр заах-Ижил нөхцөлөөр түгээх",
+  "licenseByNd": "Нэр заах-Өөрчлөхгүй",
+  "licenseByNc": "Нэр заах-Арилжааны бус",
+  "licenseByNcSa": "Нэр заах-Арилжааны бус-Ижил нөхцөлөөр түгээх",
+  "licenseByNcNd": "Нэр заах-Арилжааны бус-Өөрчлөхгүй",
+  "citationWithLicense": "{creator}-ийн {title}, {license} лицензтэй. Хандсан огноо: {date}.",
+  "citationWithoutLicense": "{creator}-ийн {title}. Хандсан огноо: {date}.",
+  "licenseGraphic": "{license} график"
+}

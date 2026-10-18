@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Afficher l'aperçu du thème",
+  "hideThemePreview": "Masquer l'aperçu du thème",
+  "themePreviewPanel": "Panneau d'aperçu du thème",
+  "themePreview": "Aperçu du thème",
+  "themePreviewDescription": "Essayez temporairement un thème et une palette pendant votre navigation. Utilisez Annuler pour rétablir votre apparence d'origine.",
+  "loadingThemes": "Chargement des thèmes...",
+  "theme": "Thème",
+  "palette": "Palette",
+  "cancel": "Annuler",
+  "openAppearanceSettings": "Ouvrir les paramètres d'apparence"
+}

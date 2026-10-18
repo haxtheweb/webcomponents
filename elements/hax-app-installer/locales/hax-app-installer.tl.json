@@ -54,5 +54,6 @@
   "requirementUppercase": "Isang malaking titik",
   "requirementLowercase": "Isang maliit na titik",
   "requirementNumber": "Isang numero",
-  "requirementSymbol": "Isang simbolo"
+  "requirementSymbol": "Isang simbolo",
+  "haxcmsMascotAlt": "Mascot na HAXcms World Traveler"
 }

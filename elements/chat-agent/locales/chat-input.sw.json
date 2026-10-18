@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Onyesha ujumbe uliotumwa awali (juu)",
+  "displayPreviousMessageDown": "Onyesha ujumbe uliotumwa awali (chini)",
+  "sendPrompt": "Tuma Maagizo",
+  "sendPromptToMerlin": "Tuma Maagizo kwa Merlin",
+  "shortenPrompt": "Tafadhali fupisha maagizo yako yasizidi herufi {limit}."
+}

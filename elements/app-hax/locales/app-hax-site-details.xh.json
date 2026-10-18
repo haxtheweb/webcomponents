@@ -1,0 +1,18 @@
+{
+  "copy": "Kopa",
+  "download": "Khuphela",
+  "archive": "Gcina kuvimba",
+  "copyOperation": "kopa",
+  "downloadOperation": "khuphela",
+  "archiveOperation": "gcina kuvimba",
+  "created": "yenziwe",
+  "updated": "ihlaziyiwe",
+  "pages": "amaphepha",
+  "url": "URL",
+  "confirm": "Qinisekisa",
+  "cancel": "Rhoxisa",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Uqinisekile ukuba ufuna uku-{operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName} {operation} iphumelele!",
+  "siteOperationFailed": "{siteName} {operation} ayiphumelelanga"
+}

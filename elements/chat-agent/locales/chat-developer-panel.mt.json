@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tabella fil-console tal-log taċ-chat tal-utent",
+  "consoleTableUserText": "console.table() log taċ-chat tal-utent",
+  "consoleTableUserTooltip": "Ipprintja l-Log taċ-Chat tal-Utent bħala Tabella fil-Console",
+  "consoleTableMerlinLabel": "Tabella fil-console tal-log taċ-chat ta' Merlin",
+  "consoleTableMerlinText": "console.table() log taċ-chat ta' Merlin",
+  "consoleTableMerlinTooltip": "Ipprintja l-Log taċ-Chat ta' Merlin bħala Tabella fil-Console",
+  "consoleTableAllLabel": "Tabella fil-console tal-log taċ-chat kollu",
+  "consoleTableAllText": "console.table() log taċ-chat kollu",
+  "consoleTableAllTooltip": "Ipprintja l-Log taċ-Chat Kollu bħala Tabella fil-Console",
+  "downloadChatLogJson": "Niżżel il-log taċ-chat bħala .json",
+  "downloadChatLogJsonTooltip": "Niżżel il-Log taċ-Chat bħala .json"
+}

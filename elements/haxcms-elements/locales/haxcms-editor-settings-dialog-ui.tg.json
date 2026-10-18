@@ -5,5 +5,9 @@
   "buttons": "Тугмаҳо",
   "futureButtonConfiguration": "Танзими фардии тугмаҳои муҳаррир ба наздикӣ дастрас мешавад.",
   "save": "Нигоҳ доштан",
-  "saving": "Нигоҳ дошта истодааст…"
+  "saving": "Нигоҳ дошта истодааст…",
+  "novice": "Навкор",
+  "expert": "Коршинос",
+  "toolbarPreviewAlt": "Пешнамоиши панели таҳрири {audience}",
+  "savingEditorSettingsFailed": "Нигоҳ доштани танзимоти муҳаррир муяссар нашуд: {error}"
 }

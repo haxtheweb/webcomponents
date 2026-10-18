@@ -1,0 +1,14 @@
+{
+  "licenseBy": "ការដាក់ឈ្មោះ",
+  "licenseBySa": "ការដាក់ឈ្មោះ ចែករំលែកដូចគ្នា",
+  "licenseByNd": "ការដាក់ឈ្មោះ គ្មានការកែប្រែ",
+  "licenseByNc": "ការដាក់ឈ្មោះ មិនមែនពាណិជ្ជកម្ម",
+  "licenseByNcSa": "ការដាក់ឈ្មោះ មិនមែនពាណិជ្ជកម្ម ចែករំលែកដូចគ្នា",
+  "licenseByNcNd": "ការដាក់ឈ្មោះ មិនមែនពាណិជ្ជកម្ម គ្មានការកែប្រែ",
+  "licenseGraphic": "រូបភាព {license}",
+  "workByCreator": "{title} ដោយ {creator}",
+  "workByCreatorLicensed": "{title} ដោយ {creator} ត្រូវបានផ្ដល់អាជ្ញាប័ណ្ណក្រោម {license}។",
+  "permissionsBeyondScope": "ការអនុញ្ញាតលើសពីវិសាលភាពនៃអាជ្ញាប័ណ្ណនេះអាចរកបាន {link}។",
+  "author": "(អ្នកនិពន្ធ)",
+  "onTheLicensingDetailsPage": "នៅលើទំព័រព័ត៌មានលម្អិតអាជ្ញាប័ណ្ណ"
+}

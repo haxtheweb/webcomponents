@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "여기에 파일을 놓으세요",
+  "uploadQueue": "업로드 대기열",
+  "pending": "대기 중",
+  "preparing": "준비 중",
+  "uploading": "업로드 중",
+  "complete": "완료",
+  "aborted": "중단됨",
+  "cancelled": "취소됨",
+  "error": "오류",
+  "errorWithStatus": "오류: {status}",
+  "cancel": "취소",
+  "cancelUploadOf": "{name} 업로드 취소",
+  "retry": "다시 시도",
+  "retryUploadOf": "{name} 업로드 다시 시도",
+  "remove": "제거",
+  "removeFromQueue": "대기열에서 {name} 제거",
+  "fileTypeNotAccepted": "허용되지 않는 파일 형식: {name}",
+  "uploadFailed": "업로드 실패: {status}",
+  "networkError": "네트워크 오류"
+}

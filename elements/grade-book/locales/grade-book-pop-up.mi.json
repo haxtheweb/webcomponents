@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Tāpaetanga ākonga",
   "openInNewWindow": "Whakatuwhera i tētahi matapihi hou",
-  "submitted": "Kua tāpaea"
+  "submitted": "Kua tāpaea",
+  "previousStudent": "Ākonga tōmua",
+  "nextStudent": "Ākonga panuku",
+  "previousAssignment": "Mahi tōmua",
+  "nextAssignment": "Mahi panuku"
 }

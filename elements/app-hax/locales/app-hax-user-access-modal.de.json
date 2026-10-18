@@ -7,5 +7,7 @@
   "userAccessGranted": "Benutzerzugriff erfolgreich gewährt!",
   "userNotFound": "Benutzer nicht gefunden oder nicht berechtigt",
   "loadingAddingUser": "Benutzer wird hinzugefügt...",
-  "grantAccessTo": "Zugriff gewähren für:"
+  "grantAccessTo": "Zugriff gewähren für:",
+  "networkErrorTryAgain": "Ein Netzwerkfehler ist aufgetreten. Bitte versuche es erneut.",
+  "characterWillAppear": "Die Figur erscheint, wenn du einen Benutzernamen eingibst"
 }

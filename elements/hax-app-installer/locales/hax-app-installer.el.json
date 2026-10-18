@@ -54,5 +54,6 @@
   "requirementUppercase": "Ένα κεφαλαίο γράμμα",
   "requirementLowercase": "Ένα πεζό γράμμα",
   "requirementNumber": "Ένας αριθμός",
-  "requirementSymbol": "Ένα σύμβολο"
+  "requirementSymbol": "Ένα σύμβολο",
+  "haxcmsMascotAlt": "Μασκότ HAXcms World Traveler"
 }

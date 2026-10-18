@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Enkursaite nokopēta!",
+  "skipToContent": "Pāriet uz saturu",
+  "changePalette": "Mainīt paleti",
+  "primaryLinks": "Galvenās saites",
+  "socialLinks": "Sociālās saites",
+  "myProfile": "Mans profils",
+  "profileImageOf": "{name} profila attēls",
+  "profileImage": "Profila attēls",
+  "linkCardProfile": "Saišu kartītes profils",
+  "emptyStateLinks": "Pievienojiet augšējā līmeņa izvēlnes vienumus failā site.json, lai attēlotu saišu pogas.",
+  "titleOnPlatform": "{title} platformā {platform}",
+  "openPlatform": "Atvērt {platform}",
+  "paletteUpdated": "Krāsu palete nomainīta uz opciju {number}."
+}

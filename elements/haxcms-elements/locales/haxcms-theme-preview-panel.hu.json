@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Téma előnézetének megjelenítése",
+  "hideThemePreview": "Téma előnézetének elrejtése",
+  "themePreviewPanel": "Téma előnézeti panel",
+  "themePreview": "Téma előnézete",
+  "themePreviewDescription": "Próbálj ki ideiglenesen egy témát és palettát böngészés közben. A Mégse gombbal visszaállíthatod az eredeti megjelenést.",
+  "loadingThemes": "Témák betöltése...",
+  "theme": "Téma",
+  "palette": "Paletta",
+  "cancel": "Mégse",
+  "openAppearanceSettings": "Megjelenési beállítások megnyitása"
+}

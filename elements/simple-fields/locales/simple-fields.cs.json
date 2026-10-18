@@ -9,5 +9,7 @@
   "record": "Nahrát",
   "pause": "Pozastavit nahrávání",
   "stopSave": "Zastavit a uložit",
-  "clickToTakePhoto": "Klikněte pro pořízení fotografie"
+  "clickToTakePhoto": "Klikněte pro pořízení fotografie",
+  "url": "URL",
+  "open": "otevřít"
 }

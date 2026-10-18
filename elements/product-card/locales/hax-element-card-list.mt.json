@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Qed jiġi skennjat ir-Reġistru tal-Web Components għal aktar elementi HAX..",
+  "enabled": "Attivat",
+  "disabled": "Diżattivat",
+  "details": "Dettalji",
+  "tags": "Tikketti:",
+  "tagName": "Isem tat-tag:",
+  "developerUsage": "Użu għall-iżviluppaturi:",
+  "demo": "Demo",
+  "popUpDemo": "Demo f'pop-up",
+  "demoOf": "Demo ta' {tag}"
+}

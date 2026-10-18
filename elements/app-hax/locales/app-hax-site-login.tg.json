@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Номи корбарро ворид кунед",
+  "invalidUsernameOrPassword": "Номи корбар ё рамз нодуруст аст",
+  "welcomeLetsGo": "Хуш омадед, {username}! Биёед оғоз кунем!",
+  "enterYourUsername": "Номи корбарии худро ворид кунед",
+  "username": "Номи корбар",
+  "next": "Навбатӣ",
+  "welcomeBack": "Хуш омадед боз, {username}!",
+  "notYou": "Шумо нестед?",
+  "enterYourPassword": "Рамзи худро ворид кунед",
+  "password": "Рамз",
+  "togglePasswordDisplay": "Нишон додан/пинҳон кардани рамз",
+  "login": "Ворид шудан"
+}

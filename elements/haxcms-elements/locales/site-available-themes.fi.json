@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Teemojen lataus epäonnistui: {error}",
+  "noThemesForView": "Tälle näkymälle ei ole saatavilla teemoja.",
+  "active": "Aktiivinen",
+  "themeIsActive": "Teema {name} on aktiivinen",
+  "applyTheme": "Ota teema {name} käyttöön",
+  "apply": "Ota käyttöön",
+  "preview": "Esikatselu",
+  "name": "Nimi",
+  "element": "Elementti",
+  "description": "Kuvaus",
+  "action": "Toiminto",
+  "loadingThemes": "Ladataan teemoja...",
+  "themesShown": "{count} teemaa näytetty",
+  "themesShownDefaults": "{count} teemaa näytetty (app-hax-oletukset)",
+  "availableHaxcmsThemes": "Saatavilla olevat HAXcms-teemat",
+  "gallery": "Galleria",
+  "table": "Taulukko"
+}

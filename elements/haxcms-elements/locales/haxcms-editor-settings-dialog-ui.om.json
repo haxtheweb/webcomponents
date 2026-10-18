@@ -5,5 +5,9 @@
   "buttons": "Qabduuwwan",
   "futureButtonConfiguration": "Qindaa'inni qabduuwwan gulaalaa dhuunfaa dhiheenyatti ni dhufa.",
   "save": "Olkaa'i",
-  "saving": "Olkaa'aa jira…"
+  "saving": "Olkaa'aa jira…",
+  "novice": "Jalqabaa",
+  "expert": "Ogeessa",
+  "toolbarPreviewAlt": "Agarsiisa duraa meeshaa gulaallii {audience}",
+  "savingEditorSettingsFailed": "Qindaa'ina gulaalaa olkaa'uun hin milkoofne: {error}"
 }

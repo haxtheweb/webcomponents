@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "عرض الرسالة المرسلة سابقًا (لأعلى)",
+  "displayPreviousMessageDown": "عرض الرسالة المرسلة سابقًا (لأسفل)",
+  "sendPrompt": "إرسال الطلب",
+  "sendPromptToMerlin": "إرسال الطلب إلى Merlin",
+  "shortenPrompt": "يُرجى تقصير طلبك إلى {limit} حرفًا كحد أقصى."
+}

@@ -54,5 +54,6 @@
   "requirementUppercase": "حرف كبير واحد",
   "requirementLowercase": "حرف صغير واحد",
   "requirementNumber": "رقم واحد",
-  "requirementSymbol": "رمز واحد"
+  "requirementSymbol": "رمز واحد",
+  "haxcmsMascotAlt": "تميمة HAXcms المسافر حول العالم"
 }

@@ -1,4 +1,11 @@
 {
   "readMore": "Lire la suite",
-  "home": "Accueil"
+  "home": "Accueil",
+  "anchorLinkCopied": "Lien d'ancre copié !",
+  "skipToContent": "Aller au contenu",
+  "changeTheme": "Changer de thème",
+  "siteSections": "Sections du site",
+  "pageOfTotal": "Page {current} sur {total}",
+  "siteGenerated": "Site généré : {date}",
+  "licenseGraphic": "Logo {license}"
 }

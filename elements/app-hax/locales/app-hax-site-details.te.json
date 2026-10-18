@@ -1,0 +1,18 @@
+{
+  "copy": "కాపీ చేయి",
+  "download": "డౌన్‌లోడ్",
+  "archive": "ఆర్కైవ్",
+  "copyOperation": "కాపీ",
+  "downloadOperation": "డౌన్‌లోడ్",
+  "archiveOperation": "ఆర్కైవ్",
+  "created": "సృష్టించబడింది",
+  "updated": "నవీకరించబడింది",
+  "pages": "పేజీలు",
+  "url": "URL",
+  "confirm": "నిర్ధారించండి",
+  "cancel": "రద్దు చేయి",
+  "siteOperationConfirmTitle": "{siteName} {operationName}?",
+  "siteOperationConfirmMessage": "మీరు ఖచ్చితంగా {siteName}ను {operation} చేయాలనుకుంటున్నారా?",
+  "siteOperationSuccessful": "{siteName} {operation} విజయవంతమైంది!",
+  "siteOperationFailed": "{siteName} {operation} విఫలమైంది"
+}

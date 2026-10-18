@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Посилання-якір скопійовано!",
+  "skipToContent": "Перейти до вмісту",
+  "changePalette": "Змінити палітру",
+  "primaryLinks": "Основні посилання",
+  "socialLinks": "Соціальні посилання",
+  "myProfile": "Мій профіль",
+  "profileImageOf": "Зображення профілю {name}",
+  "profileImage": "Зображення профілю",
+  "linkCardProfile": "Профіль картки посилань",
+  "emptyStateLinks": "Додайте пункти меню верхнього рівня в site.json, щоб показати кнопки посилань.",
+  "titleOnPlatform": "{title} на {platform}",
+  "openPlatform": "Відкрити {platform}",
+  "paletteUpdated": "Палітру кольорів змінено на варіант {number}."
+}

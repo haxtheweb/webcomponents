@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Нишон додани паёми қаблан фиристодашуда (боло)",
+  "displayPreviousMessageDown": "Нишон додани паёми қаблан фиристодашуда (поён)",
+  "sendPrompt": "Фиристодани дархост",
+  "sendPromptToMerlin": "Фиристодани дархост ба Merlin",
+  "shortenPrompt": "Лутфан дархости худро то на бештар аз {limit} аломат кӯтоҳ кунед."
+}

@@ -1,0 +1,18 @@
+{
+  "copy": "Kopier",
+  "download": "Last ned",
+  "archive": "Arkiver",
+  "copyOperation": "kopiere",
+  "downloadOperation": "laste ned",
+  "archiveOperation": "arkivere",
+  "created": "opprettet",
+  "updated": "oppdatert",
+  "pages": "sider",
+  "url": "URL",
+  "confirm": "Bekreft",
+  "cancel": "Avbryt",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Er du sikker på at du vil {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} fullført!",
+  "siteOperationFailed": "{siteName}: {operation} mislyktes"
+}

@@ -1,4 +1,11 @@
 {
   "readMore": "Darllen mwy",
-  "home": "Hafan"
+  "home": "Hafan",
+  "anchorLinkCopied": "Dolen angor wedi'i chopïo!",
+  "skipToContent": "Neidio i'r cynnwys",
+  "changeTheme": "Newid thema",
+  "siteSections": "Adrannau'r wefan",
+  "pageOfTotal": "Tudalen {current} o {total}",
+  "siteGenerated": "Gwefan wedi'i chynhyrchu: {date}",
+  "licenseGraphic": "Graffig {license}"
 }

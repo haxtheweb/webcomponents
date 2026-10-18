@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Hapana mhinduro",
+  "viewsRecordHeading": "Rekodha",
+  "viewsTitleImage": "Mufananidzo we{title}",
+  "viewsTitlePreview": "Ongororo ye{title}",
+  "viewsNoTimelineRecords": "Hapana zvinyorwa zvine mazuva zviripo kuti zviratidzwe pamutsetse wenguva.",
+  "viewsTimelineTitle": "Mutsetse wenguva we{title}",
+  "viewsNoChartField": "Hapana munda wenhamba wawanikwa kuti ugadzire chati.",
+  "viewsChartingValue": "Kuratidza {value} pachati",
+  "viewsChartingValueByLabel": "Kuratidza {value} pachati ne{label}",
+  "viewsChartTitle": "Chati ye{title}",
+  "viewsNoTreeRecords": "Hapana zvinyorwa zvakarongwa nematanho zviripo kuti zviratidzwe semuti.",
+  "viewsNoGalleryRecords": "Hapana zvinyorwa zvemifananidzo zviripo kuti zviratidzwe mugalari.",
+  "viewsNoPlaylistRecords": "Hapana zvinyorwa zvemidhiya zviripo kuti zviratidzwe mupuririsiti.",
+  "fetchFailed": "Kutora kwakundikana ({status})",
+  "unableToLoadViewData": "Hazvigoneke kurodha data remaonero.",
+  "noResultsFound": "Hapana mhinduro dzawanikwa.",
+  "refreshView": "Vandudza maonero",
+  "breakIntoStaticContent": "Shandura kuita zvirimo zvisingachinji",
+  "viewsOpenRecord": "Vhura rekodhi"
+}

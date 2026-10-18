@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Isinumite ng estudyante",
   "openInNewWindow": "Buksan sa bagong window",
-  "submitted": "Naisumite"
+  "submitted": "Naisumite",
+  "previousStudent": "Nakaraang estudyante",
+  "nextStudent": "Susunod na estudyante",
+  "previousAssignment": "Nakaraang takdang-aralin",
+  "nextAssignment": "Susunod na takdang-aralin"
 }

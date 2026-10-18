@@ -5,5 +5,9 @@
   "buttons": "Botymau",
   "futureButtonConfiguration": "Bydd ffurfweddu botymau personol y golygydd ar gael cyn bo hir.",
   "save": "Cadw",
-  "saving": "Yn cadw…"
+  "saving": "Yn cadw…",
+  "novice": "Newydd-ddyfodiad",
+  "expert": "Arbenigwr",
+  "toolbarPreviewAlt": "Rhagolwg o far offer golygu {audience}",
+  "savingEditorSettingsFailed": "Methodd cadw gosodiadau'r golygydd: {error}"
 }

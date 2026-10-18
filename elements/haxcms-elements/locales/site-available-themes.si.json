@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "තේමා පූරණය කිරීම අසාර්ථක විය: {error}",
+  "noThemesForView": "මෙම දසුන සඳහා තේමා නොමැත.",
+  "active": "සක්‍රිය",
+  "themeIsActive": "{name} තේමාව සක්‍රියයි",
+  "applyTheme": "{name} තේමාව යොදන්න",
+  "apply": "යොදන්න",
+  "preview": "පෙරදසුන",
+  "name": "නම",
+  "element": "මූලද්‍රව්‍යය",
+  "description": "විස්තරය",
+  "action": "ක්‍රියාව",
+  "loadingThemes": "තේමා පූරණය වෙමින්...",
+  "themesShown": "තේමා {count} ක් පෙන්වයි",
+  "themesShownDefaults": "තේමා {count} ක් පෙන්වයි (app-hax පෙරනිමි)",
+  "availableHaxcmsThemes": "ලබා ගත හැකි HAXcms තේමා",
+  "gallery": "ගැලරිය",
+  "table": "වගුව"
+}

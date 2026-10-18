@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Якорь сылтамасы күчерелде!",
+  "skipToContent": "Эчтәлеккә күчү",
+  "siteHome": "Сайтның баш бите",
+  "mainNavigation": "Төп навигация",
+  "toggleMenu": "Менюны күчерү",
+  "changeTheme": "Теманы үзгәртү",
+  "breadcrumb": "Навигация чылбыры",
+  "tagFilter": "Тег фильтры:",
+  "all": "Барысы",
+  "pageNumberOfTotal": "Бит номеры: {total} эченнән {current}",
+  "siteGenerated": "Сайт ясалды: {date}",
+  "copyright": "Авторлык хокукы: {year} {author}",
+  "viewContentByTag": "Эчтәлекне тег буенча карау",
+  "licenseGraphic": "{license} графикасы"
+}

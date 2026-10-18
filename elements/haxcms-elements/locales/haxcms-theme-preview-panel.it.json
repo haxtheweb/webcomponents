@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Mostra anteprima tema",
+  "hideThemePreview": "Nascondi anteprima tema",
+  "themePreviewPanel": "Pannello di anteprima del tema",
+  "themePreview": "Anteprima tema",
+  "themePreviewDescription": "Prova temporaneamente un tema e una palette mentre navighi. Usa Annulla per ripristinare l'aspetto originale.",
+  "loadingThemes": "Caricamento dei temi...",
+  "theme": "Tema",
+  "palette": "Tavolozza",
+  "cancel": "Annulla",
+  "openAppearanceSettings": "Apri impostazioni aspetto"
+}

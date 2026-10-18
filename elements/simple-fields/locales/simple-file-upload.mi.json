@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Tukuna ngā kōnae ki konei",
+  "uploadQueue": "Rārangi tukuake",
+  "pending": "E tatari ana",
+  "preparing": "E whakarite ana",
+  "uploading": "E tukuake ana",
+  "complete": "Kua oti",
+  "aborted": "Kua whakamutua",
+  "cancelled": "Kua whakakorea",
+  "error": "Hapa",
+  "errorWithStatus": "Hapa: {status}",
+  "cancel": "Whakakore",
+  "cancelUploadOf": "Whakakore i te tukuake o {name}",
+  "retry": "Whakamātau anō",
+  "retryUploadOf": "Whakamātau anō i te tukuake o {name}",
+  "remove": "Tango",
+  "removeFromQueue": "Tango i a {name} i te rārangi",
+  "fileTypeNotAccepted": "Kāore i whakaaetia te momo kōnae: {name}",
+  "uploadFailed": "I rahua te tukuake: {status}",
+  "networkError": "Hapa whatunga"
+}

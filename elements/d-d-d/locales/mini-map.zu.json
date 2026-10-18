@@ -1,0 +1,17 @@
+{
+  "editNodes": "Hlela Amanodi",
+  "editLines": "Hlela Imigqa",
+  "reset": "Setha kabusha",
+  "save": "Londoloza",
+  "cancel": "Khansela",
+  "delete": "Susa",
+  "type": "Uhlobo:",
+  "topic": "Isihloko",
+  "subsection": "Isigatshana",
+  "name": "Igama:",
+  "enterName": "Faka Igama",
+  "url": "I-URL:",
+  "enterUrl": "Faka i-URL",
+  "activeNode": "Inodi Esebenzayo?",
+  "nodeId": "Inodi {id}"
+}

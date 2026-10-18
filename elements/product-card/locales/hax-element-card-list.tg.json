@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Ҷустуҷӯи феҳристи Web Component барои унсурҳои бештари HAX..",
+  "enabled": "Фаъол",
+  "disabled": "Ғайрифаъол",
+  "details": "Тафсилот",
+  "tags": "Тегҳо:",
+  "tagName": "Номи тег:",
+  "developerUsage": "Истифода барои таҳиягар:",
+  "demo": "Намоиш",
+  "popUpDemo": "Намоиши равзанаӣ",
+  "demoOf": "Намоиши {tag}"
+}

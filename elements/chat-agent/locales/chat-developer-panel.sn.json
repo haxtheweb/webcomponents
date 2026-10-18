@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Rekodhi yehurukuro yemushandisi patafura yeconsole",
+  "consoleTableUserText": "console.table() rekodhi yehurukuro yemushandisi",
+  "consoleTableUserTooltip": "Dhinda Rekodhi yeHurukuro yeMushandisi seTafura kuConsole",
+  "consoleTableMerlinLabel": "Rekodhi yehurukuro yaMerlin patafura yeconsole",
+  "consoleTableMerlinText": "console.table() rekodhi yehurukuro yaMerlin",
+  "consoleTableMerlinTooltip": "Dhinda Rekodhi yeHurukuro yaMerlin seTafura kuConsole",
+  "consoleTableAllLabel": "Rekodhi yehurukuro yose patafura yeconsole",
+  "consoleTableAllText": "console.table() rekodhi yehurukuro yose",
+  "consoleTableAllTooltip": "Dhinda Rekodhi yeHurukuro Yose seTafura kuConsole",
+  "downloadChatLogJson": "Dhaunirodha rekodhi yehurukuro se .json",
+  "downloadChatLogJsonTooltip": "Dhaunirodha Rekodhi yeHurukuro se .json"
+}

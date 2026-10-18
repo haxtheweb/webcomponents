@@ -1,0 +1,11 @@
+{
+  "licenseBy": "نسبت ورکول",
+  "licenseBySa": "نسبت ورکول ورته شریکول",
+  "licenseByNd": "نسبت ورکول بې مشتقاتو",
+  "licenseByNc": "نسبت ورکول غیر سوداګریز",
+  "licenseByNcSa": "نسبت ورکول غیر سوداګریز ورته شریکول",
+  "licenseByNcNd": "نسبت ورکول غیر سوداګریز بې مشتقاتو",
+  "citationWithLicense": "{title} د {creator} لخوا، د {license} لاندې جواز لري. لاسرسی: {date}.",
+  "citationWithoutLicense": "{title} د {creator} لخوا. لاسرسی: {date}.",
+  "licenseGraphic": "د {license} ګرافیک"
+}

@@ -1,0 +1,14 @@
+{
+  "enterUserName": "ഉപയോക്തൃനാമം നൽകുക",
+  "invalidUsernameOrPassword": "അസാധുവായ ഉപയോക്തൃനാമം അല്ലെങ്കിൽ പാസ്‌വേഡ്",
+  "welcomeLetsGo": "സ്വാഗതം {username}! നമുക്ക് പോകാം!",
+  "enterYourUsername": "നിങ്ങളുടെ ഉപയോക്തൃനാമം നൽകുക",
+  "username": "ഉപയോക്തൃനാമം",
+  "next": "അടുത്തത്",
+  "welcomeBack": "തിരികെ സ്വാഗതം, {username}!",
+  "notYou": "നിങ്ങളല്ലേ?",
+  "enterYourPassword": "നിങ്ങളുടെ പാസ്‌വേഡ് നൽകുക",
+  "password": "പാസ്‌വേഡ്",
+  "togglePasswordDisplay": "പാസ്‌വേഡ് പ്രദർശനം ടോഗിൾ ചെയ്യുക",
+  "login": "ലോഗിൻ"
+}

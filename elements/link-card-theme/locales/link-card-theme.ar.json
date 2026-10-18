@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "تم نسخ رابط المرساة!",
+  "skipToContent": "الانتقال إلى المحتوى",
+  "changePalette": "تغيير لوحة الألوان",
+  "primaryLinks": "الروابط الأساسية",
+  "socialLinks": "روابط التواصل الاجتماعي",
+  "myProfile": "ملفي الشخصي",
+  "profileImageOf": "صورة الملف الشخصي لـ {name}",
+  "profileImage": "صورة الملف الشخصي",
+  "linkCardProfile": "بطاقة روابط الملف الشخصي",
+  "emptyStateLinks": "أضف عناصر قائمة من المستوى الأعلى في site.json لعرض أزرار الروابط.",
+  "titleOnPlatform": "{title} على {platform}",
+  "openPlatform": "فتح {platform}",
+  "paletteUpdated": "تم تحديث لوحة الألوان إلى الخيار {number}."
+}

@@ -7,5 +7,7 @@
   "userAccessGranted": "Notanda var veittur aðgangur!",
   "userNotFound": "Notandi fannst ekki eða hefur ekki heimild",
   "loadingAddingUser": "Bætir við notanda...",
-  "grantAccessTo": "Veita aðgang að:"
+  "grantAccessTo": "Veita aðgang að:",
+  "networkErrorTryAgain": "Netvilla kom upp. Reyndu aftur.",
+  "characterWillAppear": "Persóna birtist þegar þú slærð inn notandanafn"
 }

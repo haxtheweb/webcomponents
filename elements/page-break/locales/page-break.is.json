@@ -22,6 +22,13 @@
   "unpublish": "Hætta birtingu",
   "savePage": "Vista síðu",
   "cancel": "Hætta við",
+  "delete": "Eyða",
+  "editTitle": "Breyta titli",
+  "editIcon": "Breyta tákni",
+  "agent": "Fulltrúi",
+  "pageLockedUnlockToEdit": "Þessi síða er læst. Taktu hana úr lás fyrst til að breyta.",
+  "pageLockedUnlockToChangePublishStatus": "Þessi síða er læst. Taktu hana úr lás fyrst til að breyta útgáfustöðu.",
+  "pageLockedUnlockToDelete": "Þessi síða er læst. Taktu hana úr lás fyrst til að eyða.",
   "pageDetails": "Síðuupplýsingar",
   "clickToUnlock": "Smelltu til að opna"
 }

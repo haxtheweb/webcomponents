@@ -5,5 +5,9 @@
   "buttons": "Tombol",
   "futureButtonConfiguration": "Konfigurasi tombol editor kustom akan segera hadir.",
   "save": "Simpan",
-  "saving": "Menyimpan…"
+  "saving": "Menyimpan…",
+  "novice": "Pemula",
+  "expert": "Ahli",
+  "toolbarPreviewAlt": "Pratinjau bilah alat edit {audience}",
+  "savingEditorSettingsFailed": "Gagal menyimpan pengaturan editor: {error}"
 }

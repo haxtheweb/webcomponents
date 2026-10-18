@@ -1,0 +1,17 @@
+{
+  "editNodes": "نوڈز میں ترمیم کریں",
+  "editLines": "لائنوں میں ترمیم کریں",
+  "reset": "ری سیٹ کریں",
+  "save": "محفوظ کریں",
+  "cancel": "منسوخ کریں",
+  "delete": "حذف کریں",
+  "type": "قسم:",
+  "topic": "موضوع",
+  "subsection": "ذیلی حصہ",
+  "name": "نام:",
+  "enterName": "نام درج کریں",
+  "url": "URL:",
+  "enterUrl": "URL درج کریں",
+  "activeNode": "فعال نوڈ؟",
+  "nodeId": "نوڈ {id}"
+}

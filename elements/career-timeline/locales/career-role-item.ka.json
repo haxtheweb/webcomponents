@@ -1,0 +1,11 @@
+{
+  "roleTitle": "როლის დასახელება",
+  "describeYourRole": "აღწერეთ თქვენი როლი აქ...",
+  "present": "პრეზენტაცია",
+  "skills": "უნარები:",
+  "skillsAndMore": "{skills} და კიდევ +{count}",
+  "yearShort": "{count} წ",
+  "yearsShort": "{count} წ",
+  "monthShort": "{count} თვე",
+  "monthsShort": "{count} თვე"
+}

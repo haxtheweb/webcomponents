@@ -54,5 +54,6 @@
   "requirementUppercase": "대문자 1개",
   "requirementLowercase": "소문자 1개",
   "requirementNumber": "숫자 1개",
-  "requirementSymbol": "기호 1개"
+  "requirementSymbol": "기호 1개",
+  "haxcmsMascotAlt": "HAXcms 세계 여행자 마스코트"
 }

@@ -22,6 +22,13 @@
   "unpublish": "ביטול פרסום",
   "savePage": "שמירת דף",
   "cancel": "ביטול",
+  "delete": "מחיקה",
+  "editTitle": "עריכת כותרת",
+  "editIcon": "עריכת סמל",
+  "agent": "סוכן",
+  "pageLockedUnlockToEdit": "דף זה נעול. בטלו את הנעילה קודם כדי לערוך.",
+  "pageLockedUnlockToChangePublishStatus": "דף זה נעול. בטלו את הנעילה קודם כדי לשנות את מצב הפרסום.",
+  "pageLockedUnlockToDelete": "דף זה נעול. בטלו את הנעילה קודם כדי למחוק.",
   "pageDetails": "פרטי עמוד",
   "clickToUnlock": "לחץ לפתיחת נעילה"
 }

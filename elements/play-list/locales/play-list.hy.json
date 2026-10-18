@@ -1,0 +1,11 @@
+{
+  "playlist": "Երգացանկ",
+  "carousel": "կարուսել",
+  "slide": "սլայդ",
+  "slideNumber": "Սլայդ {number}",
+  "slideOfTotal": "Սլայդ {number}՝ {total}-ից",
+  "previousSlide": "Նախորդ սլայդ",
+  "nextSlide": "Հաջորդ սլայդ",
+  "slidePages": "Սլայդների էջեր",
+  "goToSlide": "Անցնել {number} սլայդին"
+}

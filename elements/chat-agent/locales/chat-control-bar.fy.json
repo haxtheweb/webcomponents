@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Log downloade as txt",
+  "downloadChatLog": "Chatlog downloade",
+  "resetChat": "Chat weromsette",
+  "toggleDataCollection": "Gegevenssammeling skeakelje",
+  "dataCollection": "Gegevenssammeling",
+  "toggleDeveloperMode": "Untwikkelersmodus skeakelje",
+  "exitFullView": "Folsleine werjefte ferlitte",
+  "enterFullView": "Folsleine werjefte yngean",
+  "hideInterface": "Ynterface ferbergje",
+  "resetChatConfirm": "De chat weromsette?",
+  "downloadBeforeResetConfirm": "De chatlog downloade foardat jo weromsette?",
+  "dataCollectionOn": "Jo petearen wurde brûkt om ús AI-modellen te trenen",
+  "dataCollectionOff": "Jo petearen wurde net brûkt om ús AI-modellen te trenen"
+}

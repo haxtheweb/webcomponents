@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "បង្ហាញការមើលធីមជាមុន",
+  "hideThemePreview": "លាក់ការមើលធីមជាមុន",
+  "themePreviewPanel": "ផ្ទាំងមើលធីមជាមុន",
+  "themePreview": "មើលរចនាប័ទ្មជាមុន",
+  "themePreviewDescription": "សាកល្បងធីម និងក្ដារពណ៌ជាបណ្ដោះអាសន្នពេលអ្នករុករក។ ប្រើ បោះបង់ ដើម្បីស្ដាររូបរាងដើមរបស់អ្នក។",
+  "loadingThemes": "កំពុងផ្ទុកធីម...",
+  "theme": "រចនាប័ទ្ម",
+  "palette": "ក្ដារពណ៌",
+  "cancel": "បោះបង់",
+  "openAppearanceSettings": "បើកការកំណត់រូបរាង"
+}

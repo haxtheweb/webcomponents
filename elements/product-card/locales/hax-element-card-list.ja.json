@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Web コンポーネントレジストリをスキャンして HAX 要素を探しています..",
+  "enabled": "有効",
+  "disabled": "無効",
+  "details": "詳細",
+  "tags": "タグ:",
+  "tagName": "タグ名:",
+  "developerUsage": "開発者向けの使い方:",
+  "demo": "デモ",
+  "popUpDemo": "デモをポップアップ表示",
+  "demoOf": "{tag} のデモ"
+}

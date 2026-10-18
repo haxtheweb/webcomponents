@@ -43,5 +43,22 @@
   "emailAddress": "Dërgoji email këtij studenti",
   "notes": "Shënime",
   "interests": "Interesat",
-  "profileImageFor": "Imazhi i profilit për"
+  "profileImageFor": "Imazhi i profilit për",
+  "fileSystem": "Sistemi i skedarëve",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "Pikë fundore URL (JSON)",
+  "jsonDataBlob": "Bllok të dhënash JSON",
+  "additionalCriteriaFeedback": "Reagim shtesë për {criteria}",
+  "outOfPoints": "/ {points} pikë",
+  "feedbackReport": "Raporti i reagimit",
+  "criteriaDetails": "Detajet e kritereve",
+  "yourFeedback": "Reagimi për ty",
+  "additionalCriteriaFeedbackHeading": "Reagim shtesë për kriteret",
+  "yourTotalScore": "Pikët e tua gjithsej",
+  "scoreOutOfPoints": "{score} / {points} pikë",
+  "studentAssignment": "Detyra {assignment} e {student}",
+  "downloadPDF": "Shkarko PDF",
+  "displayMode1": "Modaliteti 1",
+  "displayMode2": "Modaliteti 2",
+  "twoWindows": "Dy dritare"
 }

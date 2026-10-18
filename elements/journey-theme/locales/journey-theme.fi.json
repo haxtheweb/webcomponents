@@ -1,4 +1,11 @@
 {
   "readMore": "Lue lisää",
-  "home": "Etusivu"
+  "home": "Etusivu",
+  "anchorLinkCopied": "Ankkurilinkki kopioitu!",
+  "skipToContent": "Siirry sisältöön",
+  "changeTheme": "Vaihda teemaa",
+  "siteSections": "Sivuston osiot",
+  "pageOfTotal": "Sivu {current}/{total}",
+  "siteGenerated": "Sivusto luotu: {date}",
+  "licenseGraphic": "{license}-kuva"
 }
