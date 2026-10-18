@@ -6489,7 +6489,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // so the `..` segments must collapse before we look for the package
     let resolved;
     try {
-      resolved = new URL(importPath, globalThis.document.baseURI).href;
+      const url = new URL(importPath, globalThis.document.baseURI);
+      // ignore any query / hash so only the path decides the package
+      resolved = url.href.split(/[?#]/)[0];
     } catch (e) {
       return null;
     }

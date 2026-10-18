@@ -164,6 +164,24 @@ describe("hax-store _registerHaxPropertiesLocales", () => {
     }
   });
 
+  it("ignores query strings when finding the package", () => {
+    const saved = HAXStore.__elementImportPaths;
+    HAXStore.__elementImportPaths = {
+      [INLINE_TAG]:
+        "https://cdn.example.com/build/@haxtheweb/probe-pkg/probe.js?from=@haxtheweb/other/x",
+    };
+    try {
+      HAXStore._registerHaxPropertiesLocales(INLINE_TAG);
+      const found = registered(INLINE_TAG);
+      expect(found.length).to.equal(1);
+      expect(found[0].localesPath).to.equal(
+        "https://cdn.example.com/build/@haxtheweb/probe-pkg/locales",
+      );
+    } finally {
+      HAXStore.__elementImportPaths = saved;
+    }
+  });
+
   it("ignores inline schemas from non-@haxtheweb packages", () => {
     const saved = HAXStore.__elementImportPaths;
     HAXStore.__elementImportPaths = {
