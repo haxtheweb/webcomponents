@@ -5,5 +5,6 @@
   "systemAudio": "Tizim audiosini kiritish",
   "microphoneAudio": "Mikrofonni kiritish",
   "recordingStarted": "Yozuv boshlandi",
-  "recordingStopped": "Yozuv toʻxtatildi"
+  "recordingStopped": "Yozuv toʻxtatildi",
+  "audioOptions": "Audio sozlamalari"
 }
