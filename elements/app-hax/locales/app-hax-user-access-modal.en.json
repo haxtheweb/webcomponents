@@ -1,0 +1,11 @@
+{
+  "userAccess": "User Access",
+  "enterUsername": "Enter username to grant access",
+  "usernamePlaceholder": "Username",
+  "addUser": "Add User",
+  "cancel": "Cancel",
+  "userAccessGranted": "User access granted successfully!",
+  "userNotFound": "User not found or unauthorized",
+  "loadingAddingUser": "Adding user...",
+  "grantAccessTo": "Grant access to:"
+}

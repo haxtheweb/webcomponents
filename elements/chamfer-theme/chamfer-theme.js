@@ -15,6 +15,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * @title Chamfer
@@ -53,6 +54,11 @@ class ChamferTheme extends HAXCMSThemeParts(
       ...this.t,
       skipToContent: "Skip to content",
     };
+    // no I18NMixin in this class chain, so register with the store directly
+    I18NManagerStore.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
       autorun((reaction) => {

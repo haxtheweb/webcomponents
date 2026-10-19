@@ -1,0 +1,11 @@
+{
+  "userAccess": "Acces utilizatori",
+  "enterUsername": "Introduceți numele de utilizator pentru a acorda acces",
+  "usernamePlaceholder": "Nume de utilizator",
+  "addUser": "Adaugă utilizator",
+  "cancel": "Anulează",
+  "userAccessGranted": "Accesul utilizatorului a fost acordat cu succes!",
+  "userNotFound": "Utilizator inexistent sau neautorizat",
+  "loadingAddingUser": "Se adaugă utilizatorul...",
+  "grantAccessTo": "Acordă acces pentru:"
+}

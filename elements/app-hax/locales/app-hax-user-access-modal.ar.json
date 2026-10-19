@@ -1,0 +1,11 @@
+{
+  "userAccess": "وصول المستخدم",
+  "enterUsername": "أدخل اسم المستخدم لمنح الوصول",
+  "usernamePlaceholder": "اسم المستخدم",
+  "addUser": "إضافة مستخدم",
+  "cancel": "إلغاء",
+  "userAccessGranted": "تم منح وصول المستخدم بنجاح!",
+  "userNotFound": "المستخدم غير موجود أو غير مصرح له",
+  "loadingAddingUser": "جارٍ إضافة المستخدم...",
+  "grantAccessTo": "منح الوصول إلى:"
+}

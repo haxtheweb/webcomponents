@@ -1,0 +1,11 @@
+{
+  "userAccess": "Rochtain úsáideora",
+  "enterUsername": "Cuir isteach ainm úsáideora chun rochtain a thabhairt",
+  "usernamePlaceholder": "Ainm úsáideora",
+  "addUser": "Cuir úsáideoir leis",
+  "cancel": "Cealaigh",
+  "userAccessGranted": "Tugadh rochtain don úsáideoir go rathúil!",
+  "userNotFound": "Úsáideoir gan aimsiú nó gan údarú",
+  "loadingAddingUser": "Úsáideoir á chur leis...",
+  "grantAccessTo": "Tabhair rochtain do:"
+}

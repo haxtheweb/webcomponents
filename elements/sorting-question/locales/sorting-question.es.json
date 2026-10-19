@@ -1,6 +1,7 @@
 {
-  "question": "ordenar lo siguiente en orden",
   "numCorrectLeft": "Tienes",
   "numCorrectRight": "Correcto.",
-  "checkAnswer": "entregar"
+  "checkAnswer": "entregar",
+  "tryAgain": "Intentar de nuevo",
+  "question": "ordenar lo siguiente en orden"
 }

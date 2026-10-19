@@ -1,0 +1,11 @@
+{
+  "userAccess": "د کارن لاسرسی",
+  "enterUsername": "د لاسرسي ورکولو لپاره کارن نوم ولیکئ",
+  "usernamePlaceholder": "کارن نوم",
+  "addUser": "کارن زیات کړئ",
+  "cancel": "لغوه کول",
+  "userAccessGranted": "کارن ته لاسرسی په بریالیتوب سره ورکړل شو!",
+  "userNotFound": "کارن ونه موندل شو یا اجازه نه لري",
+  "loadingAddingUser": "کارن زیاتېږي...",
+  "grantAccessTo": "لاسرسی ورکړئ:"
+}

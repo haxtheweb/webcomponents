@@ -76,6 +76,10 @@ class LearningComponent extends I18NMixin(DDD) {
       ...super.t,
       readMore: "Read More",
     };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
   }
 
   /**

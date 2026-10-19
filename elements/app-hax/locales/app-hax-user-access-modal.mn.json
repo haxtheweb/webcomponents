@@ -1,0 +1,11 @@
+{
+  "userAccess": "Хэрэглэгчийн эрх",
+  "enterUsername": "Эрх олгох хэрэглэгчийн нэрийг оруулна уу",
+  "usernamePlaceholder": "Хэрэглэгчийн нэр",
+  "addUser": "Хэрэглэгч нэмэх",
+  "cancel": "Цуцлах",
+  "userAccessGranted": "Хэрэглэгчид амжилттай эрх олголоо!",
+  "userNotFound": "Хэрэглэгч олдсонгүй эсвэл эрхгүй байна",
+  "loadingAddingUser": "Хэрэглэгч нэмж байна...",
+  "grantAccessTo": "Эрх олгох:"
+}
