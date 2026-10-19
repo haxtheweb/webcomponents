@@ -83,7 +83,7 @@
           "youtube": {
             "title": "YouTube",
             "type": "string",
-            "value": "AIzaSyAF9zKXv-fxus9GNqn40SHzTn6F8A7h-Yo",
+            "value": "",
             "component": {
               "slot": "<div slot=\"suffix\"><a href=\"https:\/\/developers.google.com\/youtube\/v3\/getting-started\" target=\"_blank\">See YouTube developer docs.<\/a><\/div>",
               "name": "paper-input",
@@ -113,7 +113,7 @@
           "vimeo": {
             "title": "Vimeo",
             "type": "string",
-            "value": "0a718b853bad87571d52e9fb554e0a43",
+            "value": "",
             "component": {
               "slot": "<div slot=\"suffix\"><a href=\"https:\/\/developer.vimeo.com\/\" target=\"_blank\">See Vimeo developer docs.<\/a><\/div>",
               "name": "paper-input",
@@ -123,7 +123,7 @@
           "giphy": {
             "title": "Giphy",
             "type": "string",
-            "value": "mr3blNkTT0HeTvtyPPT4TIftqUSgyHoO",
+            "value": "",
             "component": {
               "slot": "<div slot=\"suffix\"><a href=\"https:\/\/developers.giphy.com\/docs\/\" target=\"_blank\">See Giphy developer docs.<\/a><\/div>",
               "name": "paper-input",
@@ -133,7 +133,7 @@
           "unsplash": {
             "title": "Unsplash",
             "type": "string",
-            "value": "0e1fa3a203724415c10c03581e8db8a43e8bc8906ad934e0f321d28be16281ff",
+            "value": "",
             "component": {
               "slot": "<div slot=\"suffix\"><a href=\"https:\/\/unsplash.com\/developers\" target=\"_blank\">See Unsplash developer docs.<\/a><\/div>",
               "name": "paper-input",
@@ -143,7 +143,7 @@
           "flickr": {
             "title": "Flickr",
             "type": "string",
-            "value": "43ccc969703b7afd4e2a1b16f02ce84e",
+            "value": "",
             "component": {
               "slot": "<div slot=\"suffix\"><a href=\"https:\/\/www.flickr.com\/services\/developer\/api\/\" target=\"_blank\">See Flickr developer docs.<\/a><\/div>",
               "name": "paper-input",
