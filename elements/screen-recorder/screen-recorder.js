@@ -44,7 +44,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
       microphoneAudio: "Include Microphone",
       recordingStarted: "Recording started",
       recordingStopped: "Recording stopped",
-      audioOptions: "Audio options",
+      audioOptions: "Audio Options",
     };
     this.registerLocalization({
       context: this,
