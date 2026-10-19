@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "コレクション項目",
+    "description": "コレクションリスト内で使うカード形式の項目。テキスト、リンク、任意のメディア付き。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "リンク",
+        "description": "このカードのリンク先URL。"
+      },
+      {
+        "property": "image",
+        "title": "画像",
+        "description": "背景画像。"
+      },
+      {
+        "property": "line1",
+        "title": "1行目",
+        "description": "テキストの1行目。"
+      },
+      {
+        "property": "line2",
+        "title": "2行目",
+        "description": "テキストの2行目。"
+      },
+      {
+        "property": "line3",
+        "title": "3行目",
+        "description": "テキストの3行目。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "アイコン",
+        "description": "カードを表すアイコン。"
+      },
+      {
+        "property": "saturate",
+        "title": "彩度効果",
+        "description": "フォーカス時に画像の彩度を変化させます。"
+      },
+      {
+        "property": "tags",
+        "title": "タグ",
+        "description": "カンマ区切りのタグのリスト。"
+      },
+      {
+        "property": "accentColor",
+        "title": "色",
+        "description": "タグに使う色。"
+      },
+      {
+        "property": "alt",
+        "title": "代替",
+        "description": "リンクを説明する代替テキスト。"
+      }
+    ]
+  }
+}

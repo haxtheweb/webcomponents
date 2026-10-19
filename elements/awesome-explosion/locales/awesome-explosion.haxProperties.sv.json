@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Fantastisk explosion",
+    "description": "Interaktiv explosionsanimation med valfria ljudeffekter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Storlek",
+        "description": "Ange explosionens storlek.",
+        "options": {
+          "tiny": "Pytteliten",
+          "small": "Liten",
+          "medium": "Medel",
+          "large": "Stor",
+          "epic": "Episk"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Färg",
+        "description": "Ange explosionens färgtema.",
+        "options": {
+          "": "Standard",
+          "red": "Röd",
+          "blue": "Blå",
+          "purple": "Lila",
+          "orange": "Orange",
+          "yellow": "Gul"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Ljudeffekter",
+        "description": "Aktivera ljudeffekter."
+      },
+      {
+        "property": "resetSound",
+        "title": "Återställ ljud",
+        "description": "Starta om ljudet från början varje gång."
+      },
+      {
+        "property": "image",
+        "title": "Egen bild",
+        "description": "Valfri URL till en egen explosionsbild."
+      },
+      {
+        "property": "sound",
+        "title": "Eget ljud",
+        "description": "Valfri URL till en egen ljudeffekt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Inaktiverad",
+        "description": "Inaktivera all interaktion."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Tniżżil tal-Worksheet",
+    "description": "Buttuna għall-wiri ta' fajls disponibbli għat-tniżżil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "It-titlu tat-tniżżil."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Il-link għat-tniżżil."
+      }
+    ]
+  }
+}

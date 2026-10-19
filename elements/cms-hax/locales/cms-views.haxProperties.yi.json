@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS אָנבליק",
+    "description": "CMS אָנבליקן געשילדערט אויפֿן באַקענד"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "נאָמען",
+        "description": "נאָמען פֿונעם אָנבליק פֿון אונדזער CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "אויסזען",
+        "description": "אויסשטעלונג אין יענעם אָנבליק פֿון אונדזער CMS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Plakhâlder",
+    "description": "In plakhâlder dy't omset wurde kin yn it selektearre mediatype"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Type",
+        "description": "Type gizmo dat dit as ferfanging akseptearret.",
+        "options": {
+          "text": "Tekst / ynhâld",
+          "document": "Dokumint / triem",
+          "audio": "Lûd",
+          "video": "Fideo",
+          "image": "Ofbylding",
+          "math": "Wiskunde"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Tekst",
+        "description": "Beskriuw de winske plakhâlder yn mear detail"
+      }
+    ]
+  }
+}

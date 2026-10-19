@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Suuraa wal bira qabuu",
+    "description": "Wal bira qabuuf suuraa tokko kan biroo irra harkisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Suuraa olii",
+        "description": "Suuraa olii suuraa gadii irra harkifamu."
+      },
+      {
+        "property": "topAlt",
+        "title": "Barreeffama bakka bu'aa suuraa olii",
+        "description": "Barreeffama bakka bu'aa dhaqqabummaaf barbaachisu."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Suuraa gadii",
+        "description": "Suuraa gadii suuraa olii jalatti mul'atu."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Barreeffama bakka bu'aa suuraa gadii",
+        "description": "Barreeffama bakka bu'aa dhaqqabummaaf barbaachisu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Amala",
+        "description": "Haala haquu (durtii) ykn haala ifaa suuraa olii filadhu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu Calaqqee",
+        "description": "Halluu sarara harkifamuu."
+      },
+      {
+        "property": "dark",
+        "title": "Dukkana",
+        "description": "Halluu sarara harkifamuu garagalchi."
+      },
+      {
+        "property": "position",
+        "title": "Bakka Jalqabaa",
+        "description": "Bakka jalqabaa 0 hanga 100."
+      }
+    ]
+  }
+}

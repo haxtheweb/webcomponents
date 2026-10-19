@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "കരിയർ റോൾ",
+    "description": "ഒരു ഓർഗനൈസേഷനിലെ ഒരു വ്യക്തിഗത റോൾ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ശീർഷകം"
+      },
+      {
+        "property": "startDate",
+        "title": "ആരംഭ തീയതി"
+      },
+      {
+        "property": "endDate",
+        "title": "അവസാന തീയതി (ഓപ്ഷണൽ)"
+      },
+      {
+        "property": "skills",
+        "title": "ബന്ധപ്പെട്ട കഴിവുകൾ",
+        "description": "കഴിവുകൾ ചേർക്കാൻ തുടങ്ങാൻ + ബട്ടൺ തിരഞ്ഞെടുക്കുക"
+      }
+    ]
+  }
+}

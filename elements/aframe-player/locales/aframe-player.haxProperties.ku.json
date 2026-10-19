@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Lîstikvana 3D",
+    "description": "Lîstikvanek pelên 3D / rastiya zêdekirî."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çavkanî",
+        "description": "URL ya vê pela AR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Cihê X yê hêmanê di AR de."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Cihê Y yê hêmanê di AR de."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Cihê Z yê hêmanê di AR de."
+      },
+      {
+        "property": "skyColor",
+        "title": "Rengê ezmanan",
+        "description": "Rengê ezman di dîmenê de hilbijêre."
+      }
+    ]
+  }
+}

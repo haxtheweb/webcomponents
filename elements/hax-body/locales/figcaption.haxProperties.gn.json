@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ta'ãnga teratee",
+    "description": "Teratee peteĩ ta'ãngape g̃uarã."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Ñe'ẽ'i",
+        "description": "Moñe'ẽrã ojehechaukáva ta'ãnga guýpe."
+      }
+    ]
+  }
+}

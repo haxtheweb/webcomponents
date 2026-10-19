@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Цитата с изображением",
+    "description": "Оформленная цитата с необязательным изображением."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Изображение",
+        "description": "Добавить изображение к отзыву."
+      },
+      {
+        "property": "name",
+        "title": "Полное имя",
+        "description": "Имя автора отзыва."
+      },
+      {
+        "property": "position",
+        "title": "Должность",
+        "description": "Должность человека."
+      },
+      {
+        "slot": "",
+        "title": "Цитата",
+        "description": "Цитата автора отзыва."
+      }
+    ]
+  }
+}

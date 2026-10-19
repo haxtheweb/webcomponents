@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Vichupo",
+    "description": "Seti ya vichupo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Lebo (kwa ajili ya ufikivu)",
+        "description": "Lebo inayofikika ya seti ya vichupo."
+      },
+      {
+        "property": "disabled",
+        "title": "Imezimwa",
+        "description": "Zima vichupo vyote."
+      },
+      {
+        "property": "hidden",
+        "title": "Imefichwa",
+        "description": "Ficha seti ya vichupo."
+      },
+      {
+        "property": "sticky",
+        "title": "Kinachonata",
+        "description": "Weka vichupo vya mlalo juu wakati wa kusogeza."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Kiwango cha Kubadilisha Mpangilio",
+        "description": "Kiwango cha kubadilisha kwa vichupo vya mlalo; tumia -1 kwa wima pekee."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Kiwango cha Kubadilisha Aikoni",
+        "description": "Kiwango cha kubadilisha cha kuonyesha maandishi pamoja na aikoni. Chaguo-msingi ni 0; tumia -1 kwa hali ya aikoni pekee."
+      },
+      {
+        "slot": "",
+        "title": "Vichupo",
+        "description": "Mfululizo wa vipengele vya <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID ya Kipekee",
+        "description": "ID ya kipekee ya seti hii ya vichupo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Þrívíddarspilari",
+    "description": "Spilari fyrir þrívíddarskrár / viðbættan veruleika."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Uppruni",
+        "description": "URL fyrir þessa AR-skrá."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "X-staðsetning einingarinnar í AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Y-staðsetning einingarinnar í AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Z-staðsetning einingarinnar í AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Litur himins",
+        "description": "Veldu lit himinsins í senunni."
+      }
+    ]
+  }
+}

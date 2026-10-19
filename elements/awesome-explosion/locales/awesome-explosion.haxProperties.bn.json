@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "দারুণ বিস্ফোরণ",
+    "description": "ঐচ্ছিক সাউন্ড ইফেক্টসহ ইন্টারঅ্যাকটিভ বিস্ফোরণ অ্যানিমেশন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "আকার",
+        "description": "বিস্ফোরণের আকার নির্ধারণ করুন।",
+        "options": {
+          "tiny": "অতি ক্ষুদ্র",
+          "small": "ছোট",
+          "medium": "মাঝারি",
+          "large": "বড়",
+          "epic": "বিশাল"
+        }
+      },
+      {
+        "property": "color",
+        "title": "রং",
+        "description": "বিস্ফোরণের রঙের থিম নির্ধারণ করুন।",
+        "options": {
+          "": "ডিফল্ট",
+          "red": "লাল",
+          "blue": "নীল",
+          "purple": "বেগুনি",
+          "orange": "কমলা",
+          "yellow": "হলুদ"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "সাউন্ড ইফেক্ট",
+        "description": "সাউন্ড ইফেক্ট চালু করুন।"
+      },
+      {
+        "property": "resetSound",
+        "title": "সাউন্ড রিসেট",
+        "description": "প্রতিবার শুরু থেকে সাউন্ড আবার চালান।"
+      },
+      {
+        "property": "image",
+        "title": "কাস্টম ছবি",
+        "description": "কাস্টম বিস্ফোরণ ছবির ঐচ্ছিক URL।"
+      },
+      {
+        "property": "sound",
+        "title": "কাস্টম সাউন্ড",
+        "description": "কাস্টম সাউন্ড ইফেক্টের ঐচ্ছিক URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "নিষ্ক্রিয়",
+        "description": "সব ইন্টারঅ্যাকশন নিষ্ক্রিয় করুন।"
+      }
+    ]
+  }
+}

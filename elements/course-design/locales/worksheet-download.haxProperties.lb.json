@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Aarbechtsblat-Download",
+    "description": "E Knäppchen fir Fichieren unzeweisen, déi erofgeluede kënne ginn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Den Titel vum Download."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "De Link fir den Download."
+      }
+    ]
+  }
+}

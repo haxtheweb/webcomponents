@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "थीमनुसार Polaris कृती-आवाहन बटण दाखवा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "बटण मजकूर",
+        "description": "कृती-आवाहन बटणात दाखवलेला मजकूर."
+      },
+      {
+        "property": "link",
+        "title": "लिंक",
+        "description": "बटणासाठी गंतव्य URL."
+      },
+      {
+        "property": "type",
+        "title": "प्रकार",
+        "description": "दृश्य शैलीचा प्रकार.",
+        "options": {
+          "primary": "प्राथमिक",
+          "tinted": "छटायुक्त",
+          "light": "फिकट"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "बाह्यरेषा शैली",
+        "description": "बाह्यरेषा शैली सक्षम करा."
+      },
+      {
+        "property": "filled",
+        "title": "भरीव शैली",
+        "description": "भरीव शैली सक्षम करा."
+      }
+    ]
+  }
+}

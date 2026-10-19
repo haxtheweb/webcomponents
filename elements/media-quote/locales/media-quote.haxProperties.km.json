@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "សម្រង់មេឌៀ",
+    "description": "រូបភាពជាមួយសម្រង់ ឯកសារយោង និងចំណងជើងរូបជាជម្រើស។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "សម្រង់",
+        "description": "អត្ថបទសម្រង់។"
+      },
+      {
+        "slot": "author",
+        "title": "អ្នកនិពន្ធ",
+        "description": "អ្នកនិពន្ធសម្រង់។"
+      },
+      {
+        "slot": "author-detail",
+        "title": "ព័ត៌មានលម្អិតអ្នកនិពន្ធ",
+        "description": "ព័ត៌មានលម្អិតអ្នកនិពន្ធ។"
+      },
+      {
+        "slot": "caption",
+        "title": "ចំណងជើងរូប",
+        "description": "ចំណងជើងរូបភាព។"
+      },
+      {
+        "property": "src",
+        "title": "ប្រភពរូបភាព",
+        "description": "ឯកសាររូបភាពដែលប្រើសម្រាប់សម្រង់មេឌៀ។"
+      },
+      {
+        "property": "alt",
+        "title": "អត្ថបទជំនួស",
+        "description": "អត្ថបទជំនួសសម្រាប់រូបភាព។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌សង្កត់របស់កាត។"
+      }
+    ]
+  }
+}

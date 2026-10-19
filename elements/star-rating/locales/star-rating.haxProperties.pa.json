@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ਸਟਾਰ ਰੇਟਿੰਗ",
+    "description": "ਰੇਟਿੰਗ ਡਿਸਪਲੇ ਵਿਜੇਟ ਜਾਂ ਰੇਟਿੰਗ ਦੇਣ ਲਈ ਬਟਨ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "ਸਕੋਰ",
+        "description": "ਮੌਜੂਦਾ ਸਕੋਰ ਮੁੱਲ।"
+      },
+      {
+        "property": "possible",
+        "title": "ਸੰਭਵ",
+        "description": "ਵੱਧ ਤੋਂ ਵੱਧ ਸੰਭਵ ਸਕੋਰ।"
+      },
+      {
+        "property": "numStars",
+        "title": "ਤਾਰਿਆਂ ਦੀ ਗਿਣਤੀ",
+        "description": "ਦਿਖਾਉਣ ਲਈ ਤਾਰਿਆਂ ਦੀ ਗਿਣਤੀ।"
+      },
+      {
+        "property": "interactive",
+        "title": "ਇੰਟਰਐਕਟਿਵ",
+        "description": "ਰੇਟਿੰਗ ਸੈੱਟ ਕਰਨ ਲਈ ਵਰਤੋਂਕਾਰ ਪਰਸਪਰ ਕਿਰਿਆ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ।"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "ਰੂਬਰਿਕ ਪੈਮਾਨਾ ਮੋਡ",
+        "description": "ਹਰ ਤਾਰੇ ਲਈ OER ਸਕੀਮਾ RubricScale ਅਤੇ RubricLevel ਮੈਟਾਡਾਟਾ (levelOrdinal/levelPoints) ਜਾਰੀ ਕਰੋ।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Kolleksjerige",
+    "description": "Item yn rigestyl foar gebrûk yn in kolleksjelist, mei tekst, keppeling, ikoan, labels en opsjonele ôfbylding."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Keppeling",
+        "description": "Bestimmings-URL foar dizze rige."
+      },
+      {
+        "property": "image",
+        "title": "Ofbylding",
+        "description": "Ofbylding foar de rige."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternative tekst dy't de ôfbylding beskriuwt."
+      },
+      {
+        "property": "line1",
+        "title": "Rigel 1",
+        "description": "Earste tekstrigel."
+      },
+      {
+        "property": "line2",
+        "title": "Rigel 2",
+        "description": "Twadde tekstrigel."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikoan",
+        "description": "Ikoan dat de rige foarstelt."
+      },
+      {
+        "property": "saturate",
+        "title": "Sêdingseffekt",
+        "description": "Feroarje de kleursêding fan de ôfbylding by fokus."
+      },
+      {
+        "property": "tags",
+        "title": "Labels",
+        "description": "Mei komma's skieden list fan labels."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kleur",
+        "description": "Kleur foar ikoan en labels."
+      }
+    ]
+  }
+}

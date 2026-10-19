@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Hiztegia",
+    "description": "Hiztegiko terminoa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Terminoa"
+      },
+      {
+        "property": "information",
+        "title": "Definizioa",
+        "description": "Terminoan klik egitean erakusten den definizioa."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Leiho gainerakorra",
+        "description": "Bistaratu definizioa leiho gainerakor batean, lerroan beharrean."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Estekak",
+        "description": "Termino honi lotutako esteka osagarrien zerrenda."
+      }
+    ]
+  }
+}

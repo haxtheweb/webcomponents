@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Jigogin da Ke Akwai",
+    "description": "Nuna jigogin HAXcms da ke akwai tare da sauyawar samfoti kai tsaye"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Yanayin Kallo",
+        "description": "Zaɓi yadda za a nuna jigogi",
+        "options": {
+          "gallery": "Tarin hotuna",
+          "table": "Tebur"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Nuna Cikakkun Bayanai",
+        "description": "Nuna bayanin jigogi da ƙarin bayani"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Nuna Ɓoyayyun da Tsoffin Jigogi",
+        "description": "Nuna ɓoyayyun, tsoffi, da munanan jigogi baya ga tsoffin dashboard"
+      },
+      {
+        "property": "columns",
+        "title": "Ginshiƙai (Gidan Hotuna)",
+        "description": "Adadin ginshiƙai a kallon gidan hotuna"
+      }
+    ]
+  }
+}

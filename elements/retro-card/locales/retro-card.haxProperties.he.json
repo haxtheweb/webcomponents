@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "כרטיס רטרו",
+    "description": "כרטיס פשוט בעיצוב רטרו."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "הכותרת הראשית של הכרטיס."
+      },
+      {
+        "property": "url",
+        "description": "כתובת URL שתיפתח בלחיצה על הכרטיס."
+      },
+      {
+        "property": "subtitle",
+        "title": "כותרת משנה",
+        "description": "כותרת המשנה של הכרטיס."
+      },
+      {
+        "property": "tags",
+        "title": "תגיות",
+        "description": "תגיות מופרדות בפסיקים."
+      },
+      {
+        "property": "mediaSource",
+        "title": "מקור המדיה",
+        "description": "מקור המדיה הראשי."
+      },
+      {
+        "property": "hoverSource",
+        "title": "מקור בריחוף",
+        "description": "מקור המדיה המוצג כאשר מרחפים מעל הכרטיס או מפעילים אותו."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע הדגשה המוחל על כל הכרטיס."
+      },
+      {
+        "property": "dark",
+        "title": "כהה",
+        "description": "שימוש בצבעי בסיס של מצב כהה."
+      }
+    ]
+  }
+}

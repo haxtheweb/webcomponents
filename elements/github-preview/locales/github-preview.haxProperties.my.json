@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Github အစမ်းကြည့်ရှုမှု",
+    "description": "ရှည်လျားသော ဖော်ပြချက်ပါ လက်လှမ်းမီသော ပုံ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "အဖွဲ့အစည်း",
+        "description": "Github အဖွဲ့အစည်း စက်အမည်"
+      },
+      {
+        "property": "repo",
+        "title": "Repository",
+        "description": "Repo စက်အမည်"
+      },
+      {
+        "property": "extended",
+        "title": "ချဲ့ထားသော မြင်ကွင်း",
+        "description": "အစိတ်အပိုင်းတွင် readme ပါဝင်သည်"
+      }
+    ]
+  }
+}

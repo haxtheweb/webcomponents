@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "ಸರಿ / ತಪ್ಪು ಪ್ರಶ್ನೆ",
+    "description": "ಸರಿ ತಪ್ಪು ಪ್ರಶ್ನೆ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ಪ್ರಶ್ನೆ",
+        "description": "ಬಳಕೆದಾರರು ಉತ್ತರಿಸಬೇಕಾದ ಪ್ರಶ್ನೆ."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "ಸರಿಯಾದ ಉತ್ತರ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು",
+        "description": "xAPI ಆಧಾರಿತ ಪರಿಸರಗಳಲ್ಲಿ ಈ ಐಟಂ ಅನ್ನು ಗುರುತಿಸಲು ಬಳಸುವ ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು"
+      }
+    ]
+  }
+}

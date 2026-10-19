@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "بلٹ والی فہرست",
+    "description": "بلٹ والی فہرست بنائیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "بلٹ کا انداز",
+        "description": "غیر ترتیب وار فہرست کے بلٹس کے لیے استعمال ہونے والا انداز۔",
+        "options": {
+          "": "طے شدہ (مربع)",
+          "list-disc": "ٹکیہ",
+          "list-circle": "دائرہ",
+          "list-square": "مربع"
+        }
+      }
+    ]
+  }
+}

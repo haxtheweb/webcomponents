@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Maonero eCMS",
+    "description": "Maonero eCMS anoratidzwa pabackend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Zita",
+        "description": "Zita remaonero kubva kuCMS yedu"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Kuratidza",
+        "description": "Kuratidza mukati memaonero iwayo kubva kuCMS yedu"
+      }
+    ]
+  }
+}

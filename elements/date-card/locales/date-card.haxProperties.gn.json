@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Ára",
+    "description": "Ehechauka ára arange'ipegua mba'emimi ndive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Jasy",
+        "description": "Jasy ojehechaukáva kuatia'atãme."
+      },
+      {
+        "property": "date",
+        "title": "Jasy ára",
+        "description": "Jasy ára papapýpe."
+      },
+      {
+        "property": "day",
+        "title": "Arapokõindy ára",
+        "description": "Arapokõindy ára héra."
+      },
+      {
+        "property": "title",
+        "title": "Teratee",
+        "description": "Jejapo réra."
+      },
+      {
+        "property": "location",
+        "title": "Tenda",
+        "description": "Jejapo renda."
+      },
+      {
+        "property": "startTime",
+        "title": "Ñepyrũ",
+        "description": "Aravo ñepyrũ."
+      },
+      {
+        "property": "endTime",
+        "title": "Paha",
+        "description": "Aravo paha."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Sa'y ojehechaukavéva ikatúramo."
+      },
+      {
+        "property": "dark",
+        "title": "Ñemohenda pytũ",
+        "description": "Emyandy ñemohenda pytũ."
+      }
+    ]
+  }
+}

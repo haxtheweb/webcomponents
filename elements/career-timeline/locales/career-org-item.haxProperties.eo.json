@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Kariera ero",
+    "description": "Unuopa organizaĵo kaj ĝiaj rilataj roloj"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Nomo de organizaĵo"
+      },
+      {
+        "property": "location",
+        "title": "Loko"
+      },
+      {
+        "property": "source",
+        "title": "Fonto"
+      }
+    ]
+  }
+}

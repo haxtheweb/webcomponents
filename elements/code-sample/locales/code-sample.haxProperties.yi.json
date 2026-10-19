@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "קאָד־בײַשפּיל",
+    "description": "אַ בײַשפּיל פֿון קאָד אָנגעצייכנט אויף דער זײַט"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "קאָד־אָנצייכענונג",
+        "description": "סינטאַקס־אָנצייכענונג צו אָנווענדן אויפֿן קאָד־שטח",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON דאַטן",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "קנעפּל קאָפּירן אין קליפּבאָרד",
+        "description": "קנעפּל אויבן רעכטס וואָס זאָגט קאָפּירן אין קליפּבאָרד"
+      },
+      {
+        "property": "highlightStart",
+        "title": "אָנצייכענונג־אָנהייב",
+        "description": "שורה־נומער פֿון וואַנען אָנצוהייבן אָנצייכענען"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "אָנצייכענונג־סוף",
+        "description": "שורה וווּ צו ענדיקן אָנצייכענען"
+      }
+    ]
+  }
+}

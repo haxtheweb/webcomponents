@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Partitur musik",
+    "description": "Merender dan memutar partitur musik, tab gitar, dan notasi skor melalui alphaTex atau MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Notasi AlphaTex",
+        "description": "Markup alphaTex sebaris untuk partitur musik. Edit langsung untuk menulis notasi; disimpan dalam templat sehingga spasi dipertahankan."
+      },
+      {
+        "property": "source",
+        "title": "File skor",
+        "description": "Unggah atau tautkan ke file MusicXML (.xml/.musicxml/.mxl) atau Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Menggantikan alphaTex sebaris jika diatur."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Pemutaran audio",
+        "description": "Aktif secara bawaan - dengarkan partitur musik yang diputar melalui synthesizer bawaan. Nonaktifkan untuk mode hanya-lihat (tanpa audio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Tampilkan opsi tampilan",
+        "description": "Tampilkan tombol zoom, regangkan, dan tata letak di bilah pemutar."
+      },
+      {
+        "property": "showExport",
+        "title": "Tampilkan tombol ekspor",
+        "description": "Tampilkan tombol unduh MIDI dan cetak/PDF di bilah pemutar."
+      }
+    ]
+  }
+}

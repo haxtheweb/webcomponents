@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ліцензія",
+    "description": "Вкажіть ліцензію для своєї праці."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Назва цитованої праці."
+      },
+      {
+        "property": "source",
+        "title": "Посилання на джерело",
+        "description": "URL джерела ліцензованої праці."
+      },
+      {
+        "property": "license",
+        "title": "Ліцензія",
+        "description": "Ліцензія, застосована до цієї праці."
+      },
+      {
+        "property": "creator",
+        "title": "Автор",
+        "description": "Автор або власник цієї праці."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Посилання на джерело",
+        "description": "Посилання на додаткові відомості про ліцензування."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Мітка «Більше»",
+        "description": "Мітка для додаткових відомостей про ліцензування."
+      }
+    ]
+  }
+}

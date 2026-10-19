@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris کہاݨی کارڈ",
+    "description": "پچھوکڑ تصویر، ستون لیبل تے سرخی متن نال Polaris کہاݨی کارڈ وکھاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "پچھوکڑ دی تصویر",
+        "description": "کارڈ دے پچھوکڑ وجوں وکھائی جاوݨ والی تصویر دا URL۔"
+      },
+      {
+        "property": "backgroundSize",
+        "title": "پچھوکڑ دا سائز",
+        "description": "پچھوکڑ دی تصویر کارڈ نوں کیویں بھردی اے (CSS background-size)۔",
+        "options": {
+          "cover": "ڈھکو (cover)",
+          "contain": "اندر سماؤ (contain)",
+          "auto": "خودکار (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "پچھوکڑ دا جوڑ",
+        "description": "سکرول کرن ویلے پچھوکڑ دی تصویر کیویں رویہ رکھدی اے (CSS background-attachment)۔",
+        "options": {
+          "scroll": "سکرول (scroll)",
+          "fixed": "ثابت (fixed)",
+          "local": "مقامی (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "ستون لیبل",
+        "description": "کارڈ دے اُتے وکھایا جاوݨ والا وڈے حرفاں دا مختصر لیبل۔ لکاوݨ لئی خالی چھڈو۔"
+      },
+      {
+        "property": "label",
+        "title": "کارڈ متن",
+        "description": "ہیٹھلے پینل وچ وکھایا جاوݨ والا مڈھلا متن۔"
+      },
+      {
+        "property": "link",
+        "title": "لنک",
+        "description": "پورے کارڈ نوں گھیرن والا اختیاری منزل URL۔"
+      }
+    ]
+  }
+}

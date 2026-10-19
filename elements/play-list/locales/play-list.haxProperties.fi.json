@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Soittolista",
+    "description": "Näytä mitä tahansa sisältöä soittolistassa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Lähde",
+        "description": "Soittolistassa näytettävä sisältö."
+      },
+      {
+        "property": "edit",
+        "title": "Muokkaustila",
+        "description": "Vaihda soittolistan muokkaus- ja esikatselutilan välillä."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigointi",
+        "description": "Näytä eteen- ja taaksepäin siirtymisen painikkeet."
+      },
+      {
+        "property": "pagination",
+        "title": "Sivutus",
+        "description": "Näytä sivutuspisteet."
+      },
+      {
+        "property": "orientation",
+        "title": "Suunta",
+        "description": "Diojen suunta.",
+        "options": {
+          "horizontal": "Vaaka",
+          "vertical": "Pysty"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Aloitusdia",
+        "description": "Dian indeksi, johon kohdistetaan aluksi."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Kuvasuhde",
+        "description": "Diojen kuvasuhde.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

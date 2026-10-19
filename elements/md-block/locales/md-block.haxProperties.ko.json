@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "마크다운",
+    "description": "직접 입력하거나 원격으로 불러온 마크다운 콘텐츠 블록"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "마크다운",
+        "description": "원시 마크다운"
+      },
+      {
+        "property": "source",
+        "title": "소스",
+        "description": "마크다운 소스 파일"
+      }
+    ]
+  }
+}

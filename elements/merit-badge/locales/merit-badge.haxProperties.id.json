@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Lencana Prestasi",
+    "description": "Lencana visual untuk menunjukkan perolehan suatu keterampilan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Judul Lencana",
+        "description": "Judul yang ditampilkan pada lencana."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Gambar Lencana",
+        "description": "URL gambar untuk lencana."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Detail Lencana",
+        "description": "Detail tentang lencana."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlink",
+        "description": "Tautan yang terkait dengan lencana."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Keterampilan Lencana",
+        "description": "Keterampilan yang ditampilkan pada lencana."
+      },
+      {
+        "property": "skill",
+        "title": "Keterampilan (OER Schema)",
+        "description": "OER Schema: keterampilan yang dipelajari dan diperoleh dengan menyelesaikan tujuan pembelajaran ini."
+      }
+    ]
+  }
+}

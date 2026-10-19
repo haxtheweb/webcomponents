@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "K'anchachiy",
+    "description": "Siqi ukhupi qillqata k'anchachiy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Qillqa",
+        "description": "K'anchachisqa qillqa."
+      }
+    ]
+  }
+}

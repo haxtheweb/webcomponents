@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Stjørnumeting",
+    "description": "Vísingaramboð til meting ella knøttur til at meta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Stig",
+        "description": "Núverandi stigvirði."
+      },
+      {
+        "property": "possible",
+        "title": "Møguligt",
+        "description": "Hægsta møguliga stigatal."
+      },
+      {
+        "property": "numStars",
+        "title": "Tal av stjørnum",
+        "description": "Tal av stjørnum at vísa."
+      },
+      {
+        "property": "interactive",
+        "title": "Samvirkið",
+        "description": "Loyv brúkaranum at seta metingina."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Háttur við metingarleistaskala",
+        "description": "Send OER Schema RubricScale- og RubricLevel-metadátur (levelOrdinal/levelPoints) fyri hvørja stjørnu."
+      }
+    ]
+  }
+}

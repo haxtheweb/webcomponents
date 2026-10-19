@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Sekme",
+    "description": "Tek bir sekme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Sekme Simgesi"
+      },
+      {
+        "property": "disabled",
+        "title": "Devre dışı"
+      },
+      {
+        "property": "label",
+        "title": "Sekme Etiketi"
+      },
+      {
+        "slot": "",
+        "title": "Sekme İçeriği",
+        "description": "Sekmenin içeriği."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Benzersiz ID"
+      },
+      {
+        "property": "flag",
+        "title": "İsteğe Bağlı İşaret Metni"
+      },
+      {
+        "property": "flagIcon",
+        "title": "İsteğe Bağlı İşaret Simgesi"
+      }
+    ]
+  }
+}

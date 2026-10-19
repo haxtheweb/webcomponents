@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Ubuciko bamagama be-HAX",
+    "description": "Into yelogo ye-HAX, ngokusobala eyinto ekwazi ukusebenza ne-HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Usayizi welogo ye-HAX ozobekwa",
+        "options": {
+          "mini": "Okuncane",
+          "small": "Kuncane",
+          "normal": "Okujwayelekile",
+          "large": "Kukhulu"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Ukuthi ilogo iguqulelwe yini kumagama amakhulu"
+      }
+    ]
+  }
+}

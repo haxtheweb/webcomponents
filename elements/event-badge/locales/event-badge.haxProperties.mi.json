@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Tohu Takahanga",
+    "description": "Wāhanga tohu takahanga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Whakaahua TV",
+        "description": "Whakaahua ka whakaaturia ki te pouaka whakaata."
+      },
+      {
+        "property": "logo",
+        "title": "Moko",
+        "description": "Moko ka whakaaturia ki te kokonga o te tohu."
+      },
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Taitara ka whakaaturia ki runga o te tohu."
+      },
+      {
+        "property": "name",
+        "title": "Ingoa",
+        "description": "Ingoa ka whakaaturia ki te tohu."
+      },
+      {
+        "property": "position",
+        "title": "Tūranga",
+        "description": "Te tūranga, te taitara rānei o te tangata."
+      },
+      {
+        "property": "organization",
+        "title": "Whakahaere",
+        "description": "Te whakahaere e mahi ai te tangata."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Tae TV",
+        "description": "Kōwhiria te tae mō te pouaka whakaata."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae arotahi",
+        "description": "Te tae matua o te papamuri, o te kupu rānei."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Tae pōmuri",
+        "description": "Te tae o ngā pōmuri o te pouaka whakaata."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Hēpia",
+        "description": "Whakamahia he pānga hēpia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Pango mā",
+        "description": "Whakamahia he pānga pango-mā."
+      }
+    ]
+  }
+}

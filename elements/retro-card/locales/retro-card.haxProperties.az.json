@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro kart",
+    "description": "Retro dizaynlı sadə kart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Kartın əsas başlığı."
+      },
+      {
+        "property": "url",
+        "description": "Karta kliklədikdə açılacaq URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alt başlıq",
+        "description": "Kartın alt başlığı."
+      },
+      {
+        "property": "tags",
+        "title": "Teqlər",
+        "description": "Vergüllə ayrılmış teqlər."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Media mənbəyi",
+        "description": "Əsas media mənbəyi."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Üzərinə gəldikdə mənbə",
+        "description": "Kartın üzərinə gəldikdə və ya aktivləşdirildikdə göstərilən media mənbəyi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Kart boyunca tətbiq edilən vurğu rəngi."
+      },
+      {
+        "property": "dark",
+        "title": "Tünd",
+        "description": "Qaranlıq rejimin əsas rənglərindən istifadə et."
+      }
+    ]
+  }
+}

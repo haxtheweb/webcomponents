@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lisensya",
+    "description": "Magbigay ng lisensya para sa iyong akda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Pamagat ng siniping akda."
+      },
+      {
+        "property": "source",
+        "title": "Link ng source",
+        "description": "Source URL para sa lisensyadong akda."
+      },
+      {
+        "property": "license",
+        "title": "Lisensya",
+        "description": "Lisensyang inilapat sa akdang ito."
+      },
+      {
+        "property": "creator",
+        "title": "Lumikha",
+        "description": "Lumikha o may-ari ng akdang ito."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Link ng source",
+        "description": "Link sa karagdagang detalye ng paglilisensya."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Label ng higit pa",
+        "description": "Label para sa karagdagang detalye ng paglilisensya."
+      }
+    ]
+  }
+}

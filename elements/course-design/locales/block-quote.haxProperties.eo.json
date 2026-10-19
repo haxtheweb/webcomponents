@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Citaĵbloko",
+    "description": "Stiligita citaĵbloko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Fontindiko",
+        "description": "Teksto de fontindiko."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativa teksto por la bildo."
+      },
+      {
+        "property": "image",
+        "title": "Bildo",
+        "description": "Bildo montrata kun la citaĵo."
+      }
+    ]
+  }
+}

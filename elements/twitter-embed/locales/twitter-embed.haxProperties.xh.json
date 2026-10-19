@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Ukufaka i-Twitter (X)",
+    "description": "Faka i-tweet evela ku-X kwimeko yayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "I-URL ye-Tweet",
+        "description": "I-URL ye-tweet eza kufakwa."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Umxholo",
+        "description": "Umxholo okhanyayo okanye omnyama wee-tweet zika-X.",
+        "options": {
+          "light": "Ekhanyayo",
+          "dark": "Mnyama"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Thintela i-popup xa kucofwa",
+        "description": "Thintela abasebenzisi ekuvuleni i-tweet kwi-x.com."
+      }
+    ]
+  }
+}

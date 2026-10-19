@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Slovíčko",
+    "description": "Slovníkový pojem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Pojem"
+      },
+      {
+        "slot": "",
+        "title": "Definice",
+        "description": "Definice zobrazená po kliknutí na pojem."
+      },
+      {
+        "property": "description",
+        "title": "Popis (OER Schema)",
+        "description": "OER Schema: krátký popis slovníkového pojmu. Pokud je prázdný, doplní se automaticky z textu definice."
+      }
+    ]
+  }
+}

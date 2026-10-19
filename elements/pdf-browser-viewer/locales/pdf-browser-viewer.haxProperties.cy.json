@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Gwyliwr PDF yn y Porwr",
+    "description": "Mewnosod ffeil PDF yn y dudalen gyda chynllun cerdyn a botwm llwytho i lawr dewisol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL y PDF",
+        "description": "Lleoliad y ffeil PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Pennawd",
+        "description": "Testun pennawd y cerdyn."
+      },
+      {
+        "property": "card",
+        "title": "Cynllun cerdyn",
+        "description": "Dangos y PDF mewn cerdyn gyda botwm llwytho i lawr."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Label llwytho i lawr",
+        "description": "Label ar gyfer y botwm llwytho i lawr."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Neges dim cefnogaeth",
+        "description": "Neges pan na all y porwr ddangos ffeiliau PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Neges dolen dim cefnogaeth",
+        "description": "Testun y ddolen pan na all y porwr ddangos ffeiliau PDF."
+      },
+      {
+        "property": "width",
+        "title": "Lled",
+        "description": "Lled y gwyliwr PDF."
+      },
+      {
+        "property": "height",
+        "title": "Uchder",
+        "description": "Uchder y gwyliwr PDF."
+      }
+    ]
+  }
+}

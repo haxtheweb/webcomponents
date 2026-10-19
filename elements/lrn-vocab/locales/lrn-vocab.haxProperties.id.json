@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Kosakata",
+    "description": "Istilah kosakata"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Istilah"
+      },
+      {
+        "slot": "",
+        "title": "Definisi",
+        "description": "Definisi yang ditampilkan saat istilah diklik."
+      },
+      {
+        "property": "description",
+        "title": "Deskripsi (OER Schema)",
+        "description": "OER Schema: deskripsi singkat istilah kosakata. Diisi otomatis dari teks definisi jika dibiarkan kosong."
+      }
+    ]
+  }
+}

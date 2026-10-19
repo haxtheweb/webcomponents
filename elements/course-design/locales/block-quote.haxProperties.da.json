@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Blokcitat",
+    "description": "Formateret citatblok."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Kildehenvisning",
+        "description": "Tekst til kildehenvisning."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativ tekst til billedet."
+      },
+      {
+        "property": "image",
+        "title": "Billede",
+        "description": "Billede vist sammen med citatet."
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Rozšířený obrázek",
+    "description": "Způsob prezentace obrázků s různými vylepšeními."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Zdroj",
+        "description": "URL obrázku."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativní text",
+        "description": "Text popisující obrázek pro nevidomé uživatele."
+      },
+      {
+        "property": "link",
+        "title": "Odkaz",
+        "description": "Propojit obrázek s URL"
+      },
+      {
+        "property": "card",
+        "title": "Karta",
+        "description": "Použít vržený stín, aby obrázek vypadal jako vystouplá karta."
+      },
+      {
+        "property": "box",
+        "title": "Rámeček",
+        "description": "Použít vizuální rámeček kolem obrázku."
+      },
+      {
+        "property": "offset",
+        "title": "Odsazení",
+        "description": "Použít levé nebo pravé odsazení obrázku.",
+        "options": {
+          "none": "žádné",
+          "wide": "široké",
+          "narrow": "úzké"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Zdroj citace",
+        "description": "Citace obrázku."
+      },
+      {
+        "property": "caption",
+        "title": "Titulek",
+        "description": "Popisek obrázku."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Název obrázku",
+        "description": "Název popisku obrázku."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Popis obrázku",
+        "description": "Popis popisku obrázku."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Náhledový obrázek",
+        "description": "Zdroj náhledového obrázku. Zobrazí náhled, ale v modálním okně otevře plný zdroj."
+      },
+      {
+        "property": "round",
+        "title": "Kulatý obrázek",
+        "description": "Ořízne vzhled obrázku do tvaru kruhu."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Vypnout modální okno obrázku",
+        "description": "Vypnout otevírání obrázku kliknutím v dialogu inspektoru obrázků."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Vykreslit jako markdown",
+        "description": "Vykreslit popisek a citaci jako markdown."
+      }
+    ]
+  }
+}

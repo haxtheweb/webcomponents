@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "కౌంట్ అప్",
+    "description": "వీక్షణలోకి స్క్రోల్ అయినప్పుడు ఒక సంఖ్య లక్ష్య విలువ వరకు లెక్కించడాన్ని యానిమేట్ చేయండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "ముగింపు విలువ",
+        "description": "లెక్కించాల్సిన చివరి సంఖ్య."
+      },
+      {
+        "property": "start",
+        "title": "ప్రారంభ విలువ",
+        "description": "లెక్కించడం ప్రారంభించే సంఖ్య."
+      },
+      {
+        "property": "duration",
+        "title": "వ్యవధి",
+        "description": "లెక్కింపు యానిమేషన్ తీసుకోవలసిన సెకన్లు."
+      },
+      {
+        "property": "prefixtext",
+        "title": "ఉపసర్గ వచనం",
+        "description": "సంఖ్యకు ముందు చూపబడే వచనం (ఉదా. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "ప్రత్యయ వచనం",
+        "description": "సంఖ్య తర్వాత చూపబడే వచనం (ఉదా. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "ఉపసర్గ స్లాట్",
+        "description": "సంఖ్యకు ముందు ఐచ్ఛిక స్లాట్ కంటెంట్."
+      },
+      {
+        "slot": "suffix",
+        "title": "ప్రత్యయ స్లాట్",
+        "description": "సంఖ్య తర్వాత ఐచ్ఛిక స్లాట్ కంటెంట్."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "దశాంశ స్థానాలు",
+        "description": "ప్రదర్శించాల్సిన దశాంశ స్థానాల సంఖ్య."
+      },
+      {
+        "property": "separator",
+        "title": "వేల విభాజకం",
+        "description": "వేల సమూహాలను వేరు చేసే అక్షరం."
+      },
+      {
+        "property": "decimal",
+        "title": "దశాంశ అక్షరం",
+        "description": "దశాంశ బిందువు కోసం ఉపయోగించే అక్షరం."
+      },
+      {
+        "property": "noeasing",
+        "title": "ఈజింగ్ లేదు",
+        "description": "లెక్కింపు సరళంగా ఉండేలా ఈజింగ్‌ను నిలిపివేయండి."
+      }
+    ]
+  }
+}

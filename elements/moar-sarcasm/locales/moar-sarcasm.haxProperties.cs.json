@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkasmus",
+    "description": "Zobrazení textu trollovacím způsobem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Text",
+        "description": "Text, který má být sarkastický"
+      }
+    ]
+  }
+}

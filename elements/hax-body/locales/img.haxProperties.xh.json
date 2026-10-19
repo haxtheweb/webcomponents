@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Umfanekiso oSisiseko",
+    "description": "Into yomfanekiso esisiseko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Umthombo",
+        "description": "I-URL yomfanekiso."
+      },
+      {
+        "attribute": "alt",
+        "title": "Umbhalo ongenayo",
+        "description": "Umbhalo ongenye wokufikeleleka ne-SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Ukuphakama",
+        "description": "Ukuphakama ngeepixel. Shiya kungenanto ukuze kusetyenziswe ubungakanani bendalo."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Ukulayishwa komfanekiso",
+        "description": "Khetha xa umfanekiso ulayishwa.",
+        "options": {
+          "lazy": "Layisha xa ubonakala",
+          "auto": "Ngokuzenzekelayo"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Imithombo ephendulayo (srcset)",
+        "description": "Dwelisa ii-URL zemifanekiso kunye nezichazi (umz. 480w okanye 2x) ukuze izikhangeli zikhethe obona bungakanani bufanelekileyo besikrini. Igcinwa njengophawu oluqhelekileyo lwe-srcset."
+      }
+    ]
+  }
+}

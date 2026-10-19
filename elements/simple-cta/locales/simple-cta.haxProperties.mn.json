@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Үйлдэлд уриалах",
+    "description": "Үйлдэл хийх холбоос бүхий энгийн товчлуур."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Шошго",
+        "description": "Холбоосын шошго"
+      },
+      {
+        "property": "link",
+        "title": "Холбоос",
+        "description": "Дурын нөөц рүү холбоос оруулна уу"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Дүрс тэмдгийг нуух",
+        "description": "Текстийг онцлоход ашигласан дүрс тэмдгийг нуух"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Дүрс тэмдэг",
+        "description": "Үйлдлийн холбоосын дүрс тэмдэг"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Daftar kontributor GitHub",
+    "description": "Ditampilkan sebagai karakter RPG menggunakan API GitHub."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisasi",
+        "description": "Nama organisasi dari github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repositori",
+        "description": "Nama repositori dari github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Batas",
+        "description": "Batasi jumlah kontributor yang ditampilkan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Popuni praznine",
+    "description": "Aktivnost procjene u kojoj učenici dopunjavaju riječi koje nedostaju u izjavi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pitanje",
+        "description": "Pitanje na koje korisnici odgovaraju."
+      },
+      {
+        "property": "statement",
+        "title": "Izjava",
+        "description": "Izjava koja će se pretvoriti u interakciju označavanja riječi."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format ocjenjivanja",
+        "description": "OER Schema: format ocjenjivanja za ovu procjenu (npr. bodovi, slovna ocjena, postotak, završenost)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ishod učenja",
+        "description": "OER Schema: ishod učenja povezan s ovom procjenom."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kurs kojem je ova procjena namijenjena."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naziv kviza",
+        "description": "Naziv kviza koji se prosljeđuje za identifikaciju ove stavke u okruženjima zasnovanim na xAPI"
+      }
+    ]
+  }
+}

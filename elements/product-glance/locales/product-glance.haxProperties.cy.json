@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Cipolwg ar gynnyrch",
+    "description": "Bloc trosolwg cyflym o gynnyrch."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Eicon",
+        "description": "Eicon sy'n cynrychioli'r cysyniad."
+      },
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Prif gysyniad ar gipolwg."
+      },
+      {
+        "property": "subtitle",
+        "title": "Is-deitl",
+        "description": "Manylion ychwanegol."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw acen",
+        "description": "Lliw acen ar gyfer yr eicon."
+      }
+    ]
+  }
+}

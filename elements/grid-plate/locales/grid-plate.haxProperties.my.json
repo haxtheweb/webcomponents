@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ကော်လံ အပြင်အဆင်",
+    "description": "ရိုးရှင်းသော ကော်လံများဖြင့် ပစ္စည်းကို စီစဉ်ရန်"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "ကော်လံ အပြင်အဆင်",
+        "description": "ဤအရာများကို တင်ပြမည့် စတိုင် (ဖန်သားပြင်ငယ်များတွင် ပြောင်းနိုင်သည်)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "responsive ပိတ်ရန်",
+        "description": "အသေးဆုံး ဖန်သားပြင်များတွင် ဆက်လက် စီထပ်နေစဉ် ပိုကြီးသော ဖန်သားပြင်များတွင် ကော်လံများကို ထိန်းထားရန် အကွက်ကို အမှန်ခြစ်ပါ"
+      },
+      {
+        "property": "itemPadding",
+        "title": "အရာ Padding",
+        "description": "အရာတစ်ခုစီအတွင်း padding"
+      },
+      {
+        "property": "itemMargin",
+        "title": "အရာ margin များ",
+        "description": "အရာများကြား margin"
+      }
+    ]
+  }
+}

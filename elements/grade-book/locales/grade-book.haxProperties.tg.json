@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Дафтари баҳоҳо",
+    "description": "Дафтари баҳоҳои бе интерфейс, ки бэкендҳои гуногунро бо рубрикаҳо дастгирӣ мекунад."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Манбаъ",
+        "description": "Навъи манбаи маълумот (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Нуқтаи ниҳоии URL (JSON)",
+          "json": "Блоки маълумоти JSON",
+          "filesystem": "Системаи файлҳо"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Маълумоти манбаъ",
+        "description": "URL ё маълумоти JSON барои дафтари баҳоҳо."
+      },
+      {
+        "property": "forCourse",
+        "title": "Истинод ба курс",
+        "description": "Идентификатори курс, ки ҳамчун oer:forCourse дар ҳар манбаи арзёбӣ бароварда мешавад."
+      }
+    ]
+  }
+}

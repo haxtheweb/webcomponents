@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Gruppu chì si spiega",
+    "description": "Un gruppu d'elementi chì si spieganu è si pieganu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Spiegà unu solu",
+        "description": "Un solu elementu pò esse spiegatu."
+      },
+      {
+        "slot": "",
+        "title": "Elementi pieghevuli",
+        "description": "L'elementi pieghevuli."
+      }
+    ]
+  }
+}

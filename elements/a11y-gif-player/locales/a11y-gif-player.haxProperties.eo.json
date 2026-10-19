@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Igi movbildajn GIF-ojn alireblaj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Movbilda GIF",
+        "description": "URL de la movbilda GIF."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativa teksto",
+        "description": "Alternativa teksto por la bildo."
+      },
+      {
+        "property": "longdesc",
+        "title": "Longa priskribo",
+        "description": "Longa priskribo de la GIF por alirebleco."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Senmova bildo",
+        "description": "URL de senmova versio de la GIF."
+      }
+    ]
+  }
+}

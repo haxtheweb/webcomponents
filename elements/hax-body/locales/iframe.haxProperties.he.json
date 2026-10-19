@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "הטמעת תוכן אינטרנט חיצוני."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "מקור",
+        "description": "כתובת ה-URL של משאב זה."
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "કાર્ડ",
+    "description": "DDD ડિઝાઇન સિસ્ટમથી શૈલીયુક્ત કાર્ડ ઘટક."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "છબી",
+        "description": "વૈકલ્પિક છબી."
+      },
+      {
+        "property": "alt",
+        "title": "છબીનું વૈકલ્પિક લખાણ",
+        "description": "છબીનું વર્ણન કરતું વૈકલ્પિક લખાણ."
+      },
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "કાર્ડનું શીર્ષક."
+      },
+      {
+        "slot": "",
+        "title": "સામગ્રી",
+        "description": "કાર્ડ સામગ્રી વિસ્તાર."
+      },
+      {
+        "property": "href",
+        "title": "લિંક",
+        "description": "બટન લિંક URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "લેબલ",
+        "description": "બટન લેબલ."
+      },
+      {
+        "property": "noArrow",
+        "title": "તીર નહીં",
+        "description": "બટનનું તીર છુપાવો."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "લિંક: લક્ષ્ય",
+        "description": "લિંક ક્યાં ખોલવી.",
+        "options": {
+          "": "એ જ વિન્ડો",
+          "_blank": "નવી વિન્ડો - _blank",
+          "_top": "ટોચની વિન્ડો - _top",
+          "_parent": "પેરેન્ટ વિન્ડો - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "લિંક: rel",
+        "description": "લિંક કરેલા સંસાધન અને વર્તમાન દસ્તાવેજ વચ્ચેનો સંબંધ."
+      }
+    ]
+  }
+}

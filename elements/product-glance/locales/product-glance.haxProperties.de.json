@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Produkt auf einen Blick",
+    "description": "Block mit kurzem Produktüberblick."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Symbol",
+        "description": "Symbol, das das Konzept darstellt."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Hauptkonzept auf einen Blick."
+      },
+      {
+        "property": "subtitle",
+        "title": "Untertitel",
+        "description": "Zusätzliche Details."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Akzentfarbe für das Symbol."
+      }
+    ]
+  }
+}

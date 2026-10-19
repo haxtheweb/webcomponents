@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Nlele Onwe",
+    "description": "Ndị ọrụ nwere ike mezue nlele onwe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Onyonyo",
+        "description": "Onyonyo maka nlele onwe."
+      },
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Aha nlele onwe."
+      },
+      {
+        "property": "alt",
+        "title": "Ederede Alt",
+        "description": "Ederede alt maka onyonyo ahụ."
+      },
+      {
+        "slot": "question",
+        "title": "Ajụjụ"
+      },
+      {
+        "slot": "",
+        "title": "Azịza"
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba Isiokwu",
+        "description": "Họrọ agba isiokwu site na usoro imewe.",
+        "options": {
+          "primary": "Bụ isi",
+          "accent": "Mkpụrụ",
+          "success": "Ihe ịga nke ọma",
+          "warning": "Ịdọ aka na ntị",
+          "error": "Njehie",
+          "info": "Ozi"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ebumnuche Mmụta",
+        "description": "Ntụaka ebumnuche mmụta e wepụtara dịka oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Na-enyocha",
+        "description": "Ntụaka omume e wepụtara dịka oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Njikọ ọzọ",
+        "description": "Njikọ gaa n'ozi ndị ọzọ."
+      }
+    ]
+  }
+}

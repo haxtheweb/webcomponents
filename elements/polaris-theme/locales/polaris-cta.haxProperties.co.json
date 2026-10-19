@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Affissà un buttone d'appellu à l'azzione Polaris cù tema."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Testu di u buttone",
+        "description": "Testu affissatu in u buttone d'appellu à l'azzione."
+      },
+      {
+        "property": "link",
+        "title": "Ligame",
+        "description": "URL di destinazione di u buttone."
+      },
+      {
+        "property": "type",
+        "title": "Variante",
+        "description": "Variante di stile visuale.",
+        "options": {
+          "primary": "Principale",
+          "tinted": "Tintu",
+          "light": "Chjara"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Stile cuntornatu",
+        "description": "Attivà u stile cuntornatu."
+      },
+      {
+        "property": "filled",
+        "title": "Stile pienu",
+        "description": "Attivà u stile pienu."
+      }
+    ]
+  }
+}

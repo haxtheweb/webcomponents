@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Grojaraštis",
+    "description": "Rodyti bet kokį turinį grojaraštyje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Šaltinis",
+        "description": "Grojaraštyje rodomas turinys."
+      },
+      {
+        "property": "edit",
+        "title": "Redagavimo režimas",
+        "description": "Perjungti grojaraščio redagavimo ir peržiūros režimus."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigacija",
+        "description": "Rodyti pirmyn ir atgal naršymo mygtukus."
+      },
+      {
+        "property": "pagination",
+        "title": "Puslapiavimas",
+        "description": "Rodyti puslapiavimo taškelius."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientacija",
+        "description": "Skaidrių orientacija.",
+        "options": {
+          "horizontal": "Horizontali",
+          "vertical": "Vertikali"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Pradinė skaidrė",
+        "description": "Iš pradžių fokusuojamos skaidrės indeksas."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Kraštinių santykis",
+        "description": "Skaidrių kraštinių santykis.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Encja CMS",
+    "description": "Encja CMS renderowana po stronie backendu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Typ",
+        "description": "typ z naszego CMS",
+        "options": {
+          "node": "Węzeł",
+          "user": "Użytkownik",
+          "file": "Plik"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id z naszego CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Tryb wyświetlania",
+        "description": "tryb wyświetlania z naszego CMS"
+      }
+    ]
+  }
+}

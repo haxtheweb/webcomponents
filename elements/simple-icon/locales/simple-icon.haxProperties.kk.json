@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Белгіше",
+    "description": "Толық белгішелер кітапханасынан белгіше."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Белгіше",
+        "description": "Көрсетілетін белгіше."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Белгішенің екпін түсі."
+      },
+      {
+        "property": "dark",
+        "title": "Қараңғы",
+        "description": "Қараңғы режимді қолдану (кері түстер жиыны)."
+      }
+    ]
+  }
+}

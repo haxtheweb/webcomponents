@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "ಸಂಗ್ರಹ ಸಾಲು",
+    "description": "ಸಂಗ್ರಹ ಪಟ್ಟಿಯೊಳಗೆ ಬಳಸಲು ಸಾಲು ಶೈಲಿಯ ಐಟಂ, ಪಠ್ಯ, ಲಿಂಕ್, ಐಕಾನ್, ಟ್ಯಾಗ್‌ಗಳು ಮತ್ತು ಐಚ್ಛಿಕ ಚಿತ್ರದೊಂದಿಗೆ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "ಲಿಂಕ್",
+        "description": "ಈ ಸಾಲಿನ ಗಮ್ಯಸ್ಥಾನ URL."
+      },
+      {
+        "property": "image",
+        "title": "ಚಿತ್ರ",
+        "description": "ಸಾಲಿನ ಚಿತ್ರ."
+      },
+      {
+        "property": "alt",
+        "title": "ಪರ್ಯಾಯ ಪಠ್ಯ",
+        "description": "ಚಿತ್ರವನ್ನು ವಿವರಿಸುವ ಪರ್ಯಾಯ ಪಠ್ಯ."
+      },
+      {
+        "property": "line1",
+        "title": "ಸಾಲು 1",
+        "description": "ಮೊದಲ ಸಾಲಿನ ಪಠ್ಯ."
+      },
+      {
+        "property": "line2",
+        "title": "ಸಾಲು 2",
+        "description": "ಎರಡನೇ ಸಾಲಿನ ಪಠ್ಯ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ಐಕಾನ್",
+        "description": "ಸಾಲನ್ನು ಪ್ರತಿನಿಧಿಸುವ ಐಕಾನ್."
+      },
+      {
+        "property": "saturate",
+        "title": "ಸ್ಯಾಚುರೇಶನ್ ಪರಿಣಾಮ",
+        "description": "ಬಳಕೆದಾರ ಫೋಕಸ್ ಮಾಡಿದಾಗ ಚಿತ್ರದ ಸ್ಯಾಚುರೇಶನ್ ಬದಲಿಸಿ."
+      },
+      {
+        "property": "tags",
+        "title": "ಟ್ಯಾಗ್‌ಗಳು",
+        "description": "ಅಲ್ಪವಿರಾಮದಿಂದ ಬೇರ್ಪಡಿಸಿದ ಟ್ಯಾಗ್‌ಗಳ ಪಟ್ಟಿ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಬಣ್ಣ",
+        "description": "ಐಕಾನ್ ಮತ್ತು ಟ್ಯಾಗ್‌ಗಳಿಗೆ ಬಳಸುವ ಬಣ್ಣ."
+      }
+    ]
+  }
+}

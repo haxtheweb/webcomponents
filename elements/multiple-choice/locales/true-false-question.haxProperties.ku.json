@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Pirsa Rast / Şaş",
+    "description": "Pirsa rast an şaş"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pirs",
+        "description": "Pirsa ku bikarhêner bersiv bidin."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Bersiva Rast"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navê quizê",
+        "description": "Navê quizê ku ji bo naskirina vê hêmanê di hawîrdorên bi xAPI de tê bikaranîn"
+      }
+    ]
+  }
+}

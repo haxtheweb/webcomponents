@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kāleka",
+    "description": "He kāleka me ke kaila kiko koho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Poʻo",
+        "description": "He poʻomanaʻo no ke kāleka."
+      },
+      {
+        "slot": "subheading",
+        "title": "Poʻomanaʻo lalo",
+        "description": "He poʻomanaʻo lalo koho no ke kāleka."
+      },
+      {
+        "slot": "content",
+        "title": "Ka ʻIkepili",
+        "description": "ʻIke no ke kāleka."
+      },
+      {
+        "slot": "footer",
+        "title": "Wāwae",
+        "description": "He hope koho no ke kāleka."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Kiʻi",
+        "description": "Kiʻi koho"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Kikokikona alt kiʻi",
+        "description": "Kikokikona ʻē aʻe e wehewehe ana i ke kiʻi no nā mea heluhelu pakuhi. Waiho hakahaka wale nō inā he kiʻi hoʻonani wale ia."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Hoʻokaulike ākea o ke kiʻi",
+        "options": {
+          "left": "hema",
+          "center": "waena",
+          "right": "ʻākau"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Hoʻokaulike kū o ke kiʻi",
+        "options": {
+          "top": "luna",
+          "center": "waena",
+          "bottom": "lalo"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu Kiko",
+        "description": "He waihoʻoluʻu kiko koho."
+      },
+      {
+        "property": "dark",
+        "title": "Kumuhana Pōuliuli",
+        "description": "Hoʻā i ke kumuhana pōʻeleʻele"
+      },
+      {
+        "property": "horizontal",
+        "title": "Ākea",
+        "description": "Kau ākea?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Kiko poʻomanaʻo",
+        "description": "Kau i ka waihoʻoluʻu kiko ma ke poʻomanaʻo?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Kiko kahua hope",
+        "description": "Kau i ka waihoʻoluʻu kiko ma ke kahua hope o ke kāleka?"
+      },
+      {
+        "property": "noBorder",
+        "title": "ʻAʻohe kiko lihi",
+        "description": "Wehe i ke kiko lihi?"
+      },
+      {
+        "property": "flat",
+        "title": "Pālahalaha",
+        "description": "Wehe i ke aka pahu?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Kihi",
+        "description": "ʻIke no ke kihi kāleka."
+      }
+    ]
+  }
+}

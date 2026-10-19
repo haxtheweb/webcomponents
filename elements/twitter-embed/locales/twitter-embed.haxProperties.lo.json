@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "ຝັງ Twitter (X)",
+    "description": "ຝັງທວີດຈາກ X ໃນບໍລິບົດ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL ຂອງທວີດ",
+        "description": "URL ຂອງທວີດທີ່ຈະຝັງ."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "ຊຸດຮູບແບບ",
+        "description": "ຊຸດຮູບແບບແຈ້ງ ຫຼື ມືດສຳລັບທວີດ X.",
+        "options": {
+          "light": "ແຈ້ງ",
+          "dark": "ມືດ"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "ປ້ອງກັນປັອບອັບເມື່ອຄລິກ",
+        "description": "ປ້ອງກັນບໍ່ໃຫ້ຜູ້ໃຊ້ເປີດທວີດໃນ x.com."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Sözcük",
+    "description": "Sözcük terimi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Terim"
+      },
+      {
+        "property": "information",
+        "title": "Tanım",
+        "description": "Terime tıklandığında gösterilen tanım."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Açılır kutu",
+        "description": "Tanımı satır içi yerine açılır kutuda göster."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Bağlantılar",
+        "description": "Bu terimle ilişkili ek bağlantıların listesi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Курстун дизайны",
+    "description": "Окуу материалдары жана курстун дизайн элементтери үчүн контейнер."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Курстун идентификатору",
+        "description": "OER Schema: курстун идентификатору, мис. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Окутулуучу мөөнөт",
+        "description": "OER Schema: курс окутулуучу мөөнөт."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Окутуу формасы",
+        "description": "OER Schema: курсту өткөрүү формасы (мис. күндүзгү, онлайн, аралаш)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Негизги окутуучу",
+        "description": "OER Schema: курстун негизги окутуучусу."
+      },
+      {
+        "property": "syllabus",
+        "title": "Силлабустун URL дареги",
+        "description": "OER Schema: курстун силлабусуна URL."
+      }
+    ]
+  }
+}

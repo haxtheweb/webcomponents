@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ebook boton",
+    "description": "Ebook-man t'inkiq boton."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Suti",
+        "description": "Botonpa sutin."
+      },
+      {
+        "property": "link",
+        "title": "T'inki",
+        "description": "Ñit'iptin riy t'inki."
+      },
+      {
+        "property": "icon",
+        "title": "Unancha",
+        "description": "Kay t'inkita rikuchinapaq icono"
+      }
+    ]
+  }
+}

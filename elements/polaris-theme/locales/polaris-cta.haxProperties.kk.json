@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Тақырыптық Polaris әрекетке шақыру түймесін көрсету."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Түйме мәтіні",
+        "description": "Әрекетке шақыру түймесінде көрсетілетін мәтін."
+      },
+      {
+        "property": "link",
+        "title": "Сілтеме",
+        "description": "Түйменің мақсатты URL-і."
+      },
+      {
+        "property": "type",
+        "title": "Нұсқа",
+        "description": "Көрнекі стиль нұсқасы.",
+        "options": {
+          "primary": "Негізгі",
+          "tinted": "Реңкті",
+          "light": "Ашық"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Контурлы стиль",
+        "description": "Контурлы безендіруді қосу."
+      },
+      {
+        "property": "filled",
+        "title": "Толтырылған стиль",
+        "description": "Толтырылған безендіруді қосу."
+      }
+    ]
+  }
+}

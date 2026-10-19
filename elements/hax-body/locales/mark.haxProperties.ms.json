@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Serlahan",
+    "description": "Serlahkan teks sebaris."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teks",
+        "description": "Teks diserlahkan."
+      }
+    ]
+  }
+}

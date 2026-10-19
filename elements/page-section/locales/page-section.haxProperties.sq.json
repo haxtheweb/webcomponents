@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Seksion faqeje",
+    "description": "Kontejner seksioni për përmbajtjen e faqes dhe paraqitjet me bazë ekrani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Trajtimi i dizajnit",
+        "description": "Stil i paracaktuar që përditëson cilësimet e lidhura."
+      },
+      {
+        "property": "image",
+        "title": "Imazhi",
+        "description": "Media e sfondit për seksionin."
+      },
+      {
+        "property": "bg",
+        "title": "Ngjyra e sfondit",
+        "description": "Ngjyra e sfondit kur nuk është caktuar imazh."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Butoni i rrëshqitjes",
+        "description": "Shfaq një buton që rrëshqet te seksioni tjetër."
+      },
+      {
+        "property": "fold",
+        "title": "Shfaq palosjen",
+        "description": "Shfaq një palosje vizuale në fund të seksionit."
+      },
+      {
+        "property": "full",
+        "title": "Madhësi e plotë ekrani",
+        "description": "Mbush lartësinë e ekranit të shikuesit."
+      },
+      {
+        "property": "filter",
+        "title": "Apliko filtër",
+        "description": "Apliko një filtër vizual mbi imazhin e sfondit."
+      },
+      {
+        "slot": "",
+        "title": "Përmbajtja",
+        "description": "Përmbajtja e seksionit."
+      },
+      {
+        "slot": "entice",
+        "title": "Tërheqje",
+        "description": "Përmbajtje opsionale tërheqëse."
+      },
+      {
+        "slot": "buttons",
+        "title": "Butonat",
+        "description": "Grupi i butonave i shfaqur poshtë tekstit."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Teksti i spirancës",
+        "description": "Etiketa e spirancës e shfaqur në navigim."
+      }
+    ]
+  }
+}

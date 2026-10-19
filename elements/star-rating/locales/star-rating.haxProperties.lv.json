@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Zvaigžņu vērtējums",
+    "description": "Vērtējuma attēlošanas logrīks vai poga vērtēšanai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Rezultāts",
+        "description": "Pašreizējā rezultāta vērtība."
+      },
+      {
+        "property": "possible",
+        "title": "Iespējamais",
+        "description": "Maksimālais iespējamais rezultāts."
+      },
+      {
+        "property": "numStars",
+        "title": "Zvaigžņu skaits",
+        "description": "Attēlojamo zvaigžņu skaits."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktīvs",
+        "description": "Ļaut lietotājam iestatīt vērtējumu."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Vērtēšanas skalas režīms",
+        "description": "Izvadīt OER Schema RubricScale un RubricLevel metadatus (levelOrdinal/levelPoints) katrai zvaigznei."
+      }
+    ]
+  }
+}

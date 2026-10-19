@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify oynatıcı yerleştirmeleri için sarmalayıcı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kaynak",
+        "description": "Spotify'dan yerleştirme veya paylaşım bağlantısı."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Oynatıcının arka plan renk teması.",
+        "options": {
+          "": "Varsayılan",
+          "0": "Siyah"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Boyut",
+        "description": "Oynatıcı boyutu.",
+        "options": {
+          "normal": "Varsayılan",
+          "compact": "Kompakt"
+        }
+      }
+    ]
+  }
+}

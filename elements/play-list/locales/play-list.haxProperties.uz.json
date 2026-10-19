@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Pleylist",
+    "description": "Har qanday turdagi kontentni pleylistda koʻrsatish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Manba",
+        "description": "Pleylistda koʻrsatiladigan kontent."
+      },
+      {
+        "property": "edit",
+        "title": "Tahrirlash rejimi",
+        "description": "Pleylist uchun tahrirlash va oldindan koʻrish rejimlari oʻrtasida almashish."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigatsiya",
+        "description": "Oldinga va orqaga navigatsiya tugmalarini koʻrsatish."
+      },
+      {
+        "property": "pagination",
+        "title": "Sahifalash",
+        "description": "Sahifalash nuqtalarini koʻrsatish."
+      },
+      {
+        "property": "orientation",
+        "title": "Yoʻnalish",
+        "description": "Slaydlar yoʻnalishi.",
+        "options": {
+          "horizontal": "Gorizontal",
+          "vertical": "Vertikal"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Boshlanadigan slayd",
+        "description": "Dastlab fokuslanadigan slayd indeksi."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Tomonlar nisbati",
+        "description": "Slaydlarning tomonlar nisbati.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

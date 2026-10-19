@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "ప్రోగ్రెస్ డోనట్",
+    "description": "పురోగతి డోనట్"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "ఎలిమెంట్ యొక్క శీర్షిక"
+      },
+      {
+        "property": "desc",
+        "title": "వివరణ",
+        "description": "యాక్సెసిబుల్ దీర్ఘ వివరణ"
+      },
+      {
+        "property": "imageSrc",
+        "title": "చిత్ర మూలం",
+        "description": "డోనట్ లోపలి చిత్రం యొక్క మూలం."
+      },
+      {
+        "property": "imageAlt",
+        "title": "చిత్రం ప్రత్యామ్నాయ వచనం",
+        "description": "చిత్రం కోసం ప్రత్యామ్నాయ వచనం."
+      },
+      {
+        "property": "animated",
+        "title": "యానిమేటెడ్",
+        "description": "మొదటి లోడ్‌లో పురోగతి యానిమేట్ అవ్వాలో లేదో"
+      },
+      {
+        "property": "complete",
+        "title": "పూర్తయింది",
+        "description": "పూర్తయిన విలువల శ్రేణి."
+      },
+      {
+        "property": "total",
+        "title": "మొత్తం",
+        "description": "అన్ని అంశాలు పూర్తయినప్పుడు మొత్తం."
+      },
+      {
+        "property": "startAngle",
+        "title": "ప్రారంభ కోణం",
+        "description": "పురోగతి ప్రారంభమయ్యే డోనట్ కోణం"
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Палепшаная выява",
+    "description": "Спосаб прадстаўлення выяў з рознымі паляпшэннямі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Крыніца",
+        "description": "URL выявы."
+      },
+      {
+        "property": "alt",
+        "title": "Альтэрнатыўны тэкст",
+        "description": "Тэкст, які апісвае выяву для незрячых карыстальнікаў."
+      },
+      {
+        "property": "link",
+        "title": "Спасылка",
+        "description": "Звязаць выяву з URL"
+      },
+      {
+        "property": "card",
+        "title": "Картка",
+        "description": "Дадаць цень, каб выява выглядала як прыўзнятая картка."
+      },
+      {
+        "property": "box",
+        "title": "Рамка",
+        "description": "Дадаць візуальную рамку вакол выявы."
+      },
+      {
+        "property": "offset",
+        "title": "Зрух",
+        "description": "Зрушыць выяву ўлева або ўправа.",
+        "options": {
+          "none": "няма",
+          "wide": "шырокі",
+          "narrow": "вузкі"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Крыніца цытаты",
+        "description": "Крыніца выявы для цытавання."
+      },
+      {
+        "property": "caption",
+        "title": "Подпіс",
+        "description": "Подпіс да выявы."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Назва ілюстрацыі",
+        "description": "Назва для подпісу ілюстрацыі."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Апісанне ілюстрацыі",
+        "description": "Апісанне для подпісу ілюстрацыі."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Мініяцюра",
+        "description": "Крыніца мініяцюры. Паказвае мініяцюру, але адкрывае поўную выяву ў мадальным акне."
+      },
+      {
+        "property": "round",
+        "title": "Круглая выява",
+        "description": "Абразае выяву ў форме круга."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Адключыць мадальнае акно выявы",
+        "description": "Не адкрываць выяву ў дыялогу прагляду пры націсканні."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Адлюстроўваць як markdown",
+        "description": "Адлюстроўваць подпіс і цытату як markdown."
+      }
+    ]
+  }
+}

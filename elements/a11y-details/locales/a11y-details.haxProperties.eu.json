@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Xehetasun-botoi irisgarria",
+    "description": "Erakuspen progresibo irisgarria, details eta summary erabiliz"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Botoia",
+        "description": "Ezkutatuta dagoen edukiaren laburpena, adib. \"informazioa\", \"metadatuak\", etab."
+      },
+      {
+        "slot": "details",
+        "title": "Deskribapena",
+        "description": "Ezkutatu edo erakuts daitekeen deskribapen xehatua"
+      },
+      {
+        "slot": "",
+        "title": "Deskribapen-botoia",
+        "description": "Deskribapen-testua erakusten/ezkutatzen duen botoiaren lehenetsia, adib. \"informazioa\", \"metadatuak\", etab."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Xehetasunak irekita daudeneko aukerako laburpen-testua"
+      },
+      {
+        "property": "closeText",
+        "title": "Xehetasunak itxita daudeneko aukerako laburpen-testua"
+      }
+    ]
+  }
+}

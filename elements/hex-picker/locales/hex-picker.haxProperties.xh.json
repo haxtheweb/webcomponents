@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Umkhethi we-Hex",
+    "description": "Umkhethi wemibala wekhowudi ye-hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Ixabiso",
+        "description": "Ixabiso le-hex elingagqibekanga"
+      },
+      {
+        "property": "disabled",
+        "title": "Kuvaliwe",
+        "description": "Vala indawo yombhalo"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Umboniso oMkhulu",
+        "description": "Quka umbala kumboniso omkhulu"
+      }
+    ]
+  }
+}

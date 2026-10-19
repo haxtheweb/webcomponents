@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Miðlatilvitnun",
+    "description": "Mynd með tilvitnun, heimild og valfrjálsum myndatexta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Tilvitnun",
+        "description": "Texti tilvitnunar."
+      },
+      {
+        "slot": "author",
+        "title": "Höfundur",
+        "description": "Höfundur tilvitnunar."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Upplýsingar um höfund",
+        "description": "Upplýsingar um höfund."
+      },
+      {
+        "slot": "caption",
+        "title": "Myndatexti",
+        "description": "Myndatexti."
+      },
+      {
+        "property": "src",
+        "title": "Myndauppruni",
+        "description": "Myndskrá notuð fyrir miðlatilvitnun."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-texti",
+        "description": "Annar texti fyrir myndina."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Áherslulitur spjalds."
+      }
+    ]
+  }
+}

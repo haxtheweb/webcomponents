@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kosakata",
+    "description": "Istilah kosakata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Istilah"
+      },
+      {
+        "property": "information",
+        "title": "Definisi",
+        "description": "Definisi sing katon nalika istilah diklik."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "Tampilake definisi ing popover tinimbang sebaris."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Pranala",
+        "description": "Dhaptar pranala tambahan sing gegandhengan karo istilah iki."
+      }
+    ]
+  }
+}

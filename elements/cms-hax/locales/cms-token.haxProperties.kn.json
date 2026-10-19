@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS ಟೋಕನ್",
+    "description": "ಬ್ಯಾಕೆಂಡ್‌ನಲ್ಲಿ ಪ್ರದರ್ಶಿಸಲಾದ CMS ಟೋಕನ್"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "ಟೋಕನ್",
+        "description": "ನಮ್ಮ CMS ನಿಂದ ಟೋಕನ್"
+      }
+    ]
+  }
+}

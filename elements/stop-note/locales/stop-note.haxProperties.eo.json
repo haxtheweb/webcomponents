@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Halta noto",
+    "description": "Mesaĝo por atentigi legantojn pri specifaj instrukcioj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Enigu titolon por la halta noto."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Enigu eksteran URL."
+      },
+      {
+        "property": "status",
+        "title": "Stato",
+        "description": "Agordi la staton ŝanĝas la kolorojn kaj piktogramojn laŭe",
+        "options": {
+          "stop": "Halto",
+          "warning": "Averto",
+          "success": "Konfirmo",
+          "info": "Avizo"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Nota teksto",
+        "description": "Teksto por la halta noto."
+      }
+    ]
+  }
+}

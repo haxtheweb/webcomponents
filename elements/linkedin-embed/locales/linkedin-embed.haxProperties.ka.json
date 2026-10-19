@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn-ის ჩასმა",
+    "description": "LinkedIn-ის პროფილის ბარათის ჩასმა."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "პერსონალური სახელი",
+        "description": "LinkedIn-ის პერსონალური მომხმარებლის სახელის სეგმენტი."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "ლოკალი",
+        "description": "ლოკალის მეტამონაცემის მნიშვნელობა, მაგ. en_US."
+      }
+    ]
+  }
+}

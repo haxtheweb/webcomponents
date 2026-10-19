@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF બ્રાઉઝર વ્યૂઅર",
+    "description": "વૈકલ્પિક કાર્ડ લેઆઉટ અને ડાઉનલોડ બટન સાથે PDF ફાઇલ ઇનલાઇન એમ્બેડ કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF ફાઇલનું સ્થાન."
+      },
+      {
+        "property": "heading",
+        "title": "મથાળું",
+        "description": "કાર્ડ મથાળાનું લખાણ."
+      },
+      {
+        "property": "card",
+        "title": "કાર્ડ લેઆઉટ",
+        "description": "ડાઉનલોડ બટન સાથે કાર્ડમાં PDF બતાવો."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ડાઉનલોડ લેબલ",
+        "description": "ડાઉનલોડ બટન માટેનું લેબલ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "અસમર્થિત સંદેશ",
+        "description": "બ્રાઉઝર PDF ફાઇલો બતાવી ન શકે ત્યારેનો સંદેશ."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "અસમર્થિત લિંક સંદેશ",
+        "description": "બ્રાઉઝર PDF ફાઇલો બતાવી ન શકે ત્યારેનું લિંક લખાણ."
+      },
+      {
+        "property": "width",
+        "title": "પહોળાઈ",
+        "description": "PDF વ્યૂઅરની પહોળાઈ."
+      },
+      {
+        "property": "height",
+        "title": "ઊંચાઈ",
+        "description": "PDF વ્યૂઅરની ઊંચાઈ."
+      }
+    ]
+  }
+}

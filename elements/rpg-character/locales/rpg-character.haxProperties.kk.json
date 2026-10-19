@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG кейіпкері",
+    "description": "HAX-тың көңілді кейіпкері."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Аты",
+        "description": "Кездейсоқ кейіпкер жасау үшін қолданылатын сөз."
+      },
+      {
+        "property": "hat",
+        "title": "Бас киім",
+        "description": "Бас киім стилі.",
+        "options": {
+          "none": "Әдепкі",
+          "random": "Кездейсоқ",
+          "bunny": "Қоян",
+          "cowboy": "Ковбой",
+          "education": "Білім",
+          "construction": "Құрылыс",
+          "warning": "Ескерту",
+          "watermelon": "Қарбыз",
+          "coffee": "Кофе",
+          "knight": "Сері",
+          "ninja": "Ниндзя",
+          "party": "Мереке",
+          "error": "Қате",
+          "edit": "Өңдеу"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Ені",
+        "description": "Кейіпкердің пиксельмен ені."
+      },
+      {
+        "property": "height",
+        "title": "Биіктігі",
+        "description": "Кейіпкердің пиксельмен биіктігі."
+      },
+      {
+        "property": "fire",
+        "title": "Жанып тұр ма?",
+        "description": "Кейіпкер жанып тұр ма."
+      },
+      {
+        "property": "walking",
+        "title": "Жүріп келе ме?",
+        "description": "Жүру анимациясы; жанып тұрғанда жүгіреді."
+      }
+    ]
+  }
+}

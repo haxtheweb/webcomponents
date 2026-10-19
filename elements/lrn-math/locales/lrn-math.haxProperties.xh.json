@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Izibalo",
+    "description": "Bonisa izibalo ngendlela entle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Izibalo",
+        "description": "Faka i-equation njenge-LaTeX"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D grotuvas",
+    "description": "3D failų / papildytosios realybės grotuvas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Šaltinis",
+        "description": "Šio AR failo URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Elemento X padėtis AR erdvėje."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Elemento Y padėtis AR erdvėje."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Elemento Z padėtis AR erdvėje."
+      },
+      {
+        "property": "skyColor",
+        "title": "Dangaus spalva",
+        "description": "Pasirinkite dangaus spalvą scenoje."
+      }
+    ]
+  }
+}

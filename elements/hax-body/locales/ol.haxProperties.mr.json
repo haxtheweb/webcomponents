@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "क्रमांकित सूची",
+    "description": "क्रमांकित सूची तयार करा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "क्रमांक शैली",
+        "description": "क्रमित सूचीच्या क्रमांकनासाठी वापरलेली शैली.",
+        "options": {
+          "": "डीफॉल्ट (दशांश)",
+          "list-decimal-leading-zero": "आधी शून्य असलेले दशांश (01, 02, 03)",
+          "list-lower-alpha": "लहान अक्षरे (a, b, c)",
+          "list-upper-alpha": "मोठी अक्षरे (A, B, C)",
+          "list-lower-roman": "लहान रोमन (i, ii, iii)",
+          "list-upper-roman": "मोठे रोमन (I, II, III)"
+        }
+      }
+    ]
+  }
+}

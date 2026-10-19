@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Indlejret lyd",
+    "description": "Afspil lyd indlejret i teksten som supplement til sidens indhold."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "MP3-fil eller URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfarve",
+        "description": "Kortets accentfarve."
+      },
+      {
+        "property": "shiny",
+        "title": "Skinnende",
+        "description": "Brug en lysere accentbaggrund i stedet for grå."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Mørk",
+        "description": "Brug mørk tilstand."
+      }
+    ]
+  }
+}

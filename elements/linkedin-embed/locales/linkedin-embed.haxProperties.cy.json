@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Mewnosodiad LinkedIn",
+    "description": "Mewnosod cerdyn proffil LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Enw personol",
+        "description": "Segment enw defnyddiwr personol LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Locale",
+        "description": "Gwerth metadata locale megis en_US."
+      }
+    ]
+  }
+}

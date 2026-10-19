@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Rastgele Sayfa İçeriği",
+    "description": "Seçilen bir sayfadan rastgele bir üst düzey öğe göster"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Sayfa",
+        "description": "Rastgele içeriğin alınacağı sayfayı seçin. Öğe, bu sayfadaki üst düzey HTML öğelerinden birini rastgele gösterecektir."
+      }
+    ]
+  }
+}

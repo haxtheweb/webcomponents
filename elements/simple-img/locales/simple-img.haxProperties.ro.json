@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Imagine simplă",
+    "description": "Manipulați imagini cu parametri simpli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Sursă",
+        "description": "URL-ul sursei imaginii."
+      },
+      {
+        "property": "height",
+        "title": "Înălțime",
+        "description": "Înălțimea opțională a imaginii."
+      },
+      {
+        "property": "width",
+        "title": "Lățime",
+        "description": "Lățimea opțională a imaginii."
+      },
+      {
+        "property": "alt",
+        "title": "Text alternativ",
+        "description": "Util pentru cititoarele de ecran și pentru un SEO mai bun."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Calitate",
+        "description": "Calitatea imaginii la generare (doar JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Prioritate de preluare",
+        "description": "Indicație de performanță pentru browserele moderne.",
+        "options": {
+          "auto": "Automat",
+          "high": "Ridicată",
+          "low": "Scăzută"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Metodă de decodare",
+        "description": "Indicație de performanță pentru randarea imaginilor în browserele moderne.",
+        "options": {
+          "auto": "Automat",
+          "async": "Asincron"
+        }
+      }
+    ]
+  }
+}

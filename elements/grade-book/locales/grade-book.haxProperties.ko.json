@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "성적부",
+    "description": "루브릭과 함께 여러 백엔드를 지원하는 헤드리스 성적부."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "소스",
+        "description": "데이터 소스 유형 (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL 엔드포인트 (JSON)",
+          "json": "JSON 데이터 블롭",
+          "filesystem": "파일 시스템"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "소스 데이터",
+        "description": "성적부의 URL 또는 JSON 데이터."
+      },
+      {
+        "property": "forCourse",
+        "title": "강좌 참조",
+        "description": "각 평가 리소스에 oer:forCourse로 출력되는 강좌 식별자."
+      }
+    ]
+  }
+}

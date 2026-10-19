@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Pemutar dokumentasi komponen web"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Sembunyikan jendela",
+        "description": "Sembunyikan jendela keluaran, berguna jika tujuannya hanya terminal"
+      }
+    ]
+  }
+}

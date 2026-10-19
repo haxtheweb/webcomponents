@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Hoʻokomo LinkedIn",
+    "description": "E hoʻokomo i kekahi kāleka moʻolelo pilikino LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Inoa pilikino",
+        "description": "Ka māhele inoa mea hoʻohana pilikino o LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Kūloko",
+        "description": "Waiwai metadata kūloko e like me en_US."
+      }
+    ]
+  }
+}

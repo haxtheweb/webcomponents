@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Слоўнік",
+    "description": "Тэрмін са слоўніка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Тэрмін"
+      },
+      {
+        "property": "information",
+        "title": "Азначэнне",
+        "description": "Азначэнне, якое паказваецца пры націсканні на тэрмін."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Усплывальнае акно",
+        "description": "Паказваць азначэнне ва ўсплывальным акне, а не ў тэксце."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Спасылкі",
+        "description": "Спіс дадатковых спасылак, звязаных з гэтым тэрмінам."
+      }
+    ]
+  }
+}

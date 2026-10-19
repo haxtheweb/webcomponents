@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Eenvoudige afbeelding",
+    "description": "Bewerk afbeeldingen met eenvoudige parameters."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Bron",
+        "description": "Bron-URL van de afbeelding."
+      },
+      {
+        "property": "height",
+        "title": "Hoogte",
+        "description": "Optionele hoogte van de afbeelding."
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Optionele breedte van de afbeelding."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-tekst",
+        "description": "Handig voor schermlezers en betere SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kwaliteit",
+        "description": "Afbeeldingskwaliteit bij genereren (alleen JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Ophaalprioriteit",
+        "description": "Prestatiehint voor moderne browsers.",
+        "options": {
+          "auto": "Automatisch",
+          "high": "Hoog",
+          "low": "Laag"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Decodeermethode",
+        "description": "Prestatiehint voor het weergeven van afbeeldingen in moderne browsers.",
+        "options": {
+          "auto": "Automatisch",
+          "async": "Asynchroon"
+        }
+      }
+    ]
+  }
+}

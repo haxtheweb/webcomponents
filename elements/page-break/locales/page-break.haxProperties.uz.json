@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Sahifa tafsilotlari",
+    "description": "CMS lar sahifalar yaratish uchun foydalanishi mumkin boʻlgan sahifalar orasidagi vizual ajratishni belgilash."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Mavzuda va birinchi sarlavhada koʻrsatiladigan sarlavha."
+      },
+      {
+        "property": "pageType",
+        "title": "Tur",
+        "description": "Sahifaning vizual kontekst yorligʻi.",
+        "options": {
+          "": "-- yoʻq --",
+          "content": "Kontent",
+          "assessment": "Baholash",
+          "quiz": "Test",
+          "submission": "Topshiriq ishi",
+          "lesson": "Dars",
+          "module": "Modul",
+          "task": "Vazifa",
+          "activity": "Faoliyat",
+          "project": "Loyiha",
+          "practice": "Mashq",
+          "unit": "Boʻlim",
+          "objectives": "Oʻquv maqsadlari",
+          "connection": "Bogʻlanish",
+          "knowledge": "Bilasizmi?",
+          "strategy": "Oʻquv strategiyasi",
+          "discuss": "Muhokama",
+          "listen": "Tinglash",
+          "make": "Yaratish",
+          "observe": "Kuzatish",
+          "present": "Taqdim etish",
+          "reading": "Oʻqish",
+          "reflect": "Mulohaza",
+          "research": "Tadqiqot",
+          "watch": "Tomosha qilish",
+          "write": "Yozish"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Teglar",
+        "description": "Vergul bilan ajratilgan teglar roʻyxati."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Havola URL",
+        "description": "Sahifa kontenti oʻrniga koʻrsatiladigan yoʻnaltirish URL manzili."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Havola nishoni",
+        "description": "Havolalarni shu oynada yoki yangi oynada ochish.",
+        "options": {
+          "_self": "Shu oyna",
+          "_blank": "Yangi oyna"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Eʼlon qilingan",
+        "description": "Eʼlon qilinmagan sahifalar oxirgi foydalanuvchilardan yashiriladi."
+      },
+      {
+        "property": "locked",
+        "title": "Sahifani qulflash",
+        "description": "Ushbu sahifadagi barcha elementlarni qulflash yoki qulfdan chiqarish."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Avtomatik slugni bekor qilish",
+        "description": "Slugni sarlavha yoki ota sahifaga asoslangan avtomatik yangilanishlardan qulflash."
+      },
+      {
+        "property": "slug",
+        "title": "Yoʻl",
+        "description": "Ushbu sahifa uchun URL slug."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Sahifani ifodalovchi media, baʼzi mavzular va koʻrinishlarda ishlatiladi."
+      },
+      {
+        "property": "parent",
+        "title": "Ota sahifa",
+        "description": "Ota sahifaning yoʻli."
+      },
+      {
+        "property": "noderefs",
+        "title": "Tegishli kontent",
+        "description": "Ushbu sahifaga tegishli sahifalar."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Tavsif",
+        "description": "Toʻplamlarda va qidiruv tizimini optimallashtirishda ishlatiladigan tavsif."
+      },
+      {
+        "property": "entityType",
+        "title": "Obyekt turi",
+        "description": "Boshqacha belgilanmagan boʻlsa, standart holatda sahifa.",
+        "options": {
+          "page": "Sahifa (standart)",
+          "taxonomy": "Taksonomiya",
+          "taxonomyTerm": "Taksonomiya atamasi",
+          "region": "Hudud"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Belgi",
+        "description": "Saytda ushbu sahifa bilan bogʻliq belgi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Saytda ushbu sahifa bilan bogʻliq rang."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Menyuda yashirish",
+        "description": "URL manzilini saqlagan holda bu sahifani menyulardan yashirish."
+      },
+      {
+        "property": "order",
+        "title": "Tartib",
+        "description": "Bir darajadagi sahifalarga nisbatan tartib."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Sahifa mavzusi",
+        "description": "Faqat shu sahifa uchun mavzuni almashtirish."
+      },
+      {
+        "property": "author",
+        "title": "Muallif",
+        "description": "Ushbu sahifani oxirgi marta oʻzgartirgan shaxsning foydalanuvchi nomi."
+      }
+    ]
+  }
+}

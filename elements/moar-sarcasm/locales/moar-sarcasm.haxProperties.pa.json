@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ਵਿਅੰਗ",
+    "description": "ਲਿਖਤ ਨੂੰ ਮਜ਼ਾਕੀਆ ਛੇੜਛਾੜ ਵਾਲੇ ਢੰਗ ਨਾਲ ਪੇਸ਼ ਕਰਨਾ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "ਲਿਖਤ",
+        "description": "ਵਿਅੰਗਾਤਮਕ ਬਣਾਉਣ ਲਈ ਲਿਖਤ"
+      }
+    ]
+  }
+}

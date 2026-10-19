@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "कारकीर्द आयटम",
+    "description": "वैयक्तिक संस्था आणि तिच्याशी संबंधित भूमिका"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "संस्थेचे नाव"
+      },
+      {
+        "property": "location",
+        "title": "ठिकाण"
+      },
+      {
+        "property": "source",
+        "title": "स्रोत"
+      }
+    ]
+  }
+}

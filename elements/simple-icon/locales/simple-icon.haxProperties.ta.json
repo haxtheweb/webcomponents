@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ஐகான்",
+    "description": "முழு ஐகான் நூலகத்திலிருந்து ஐகான்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ஐகான்",
+        "description": "காட்ட வேண்டிய ஐகான்."
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "ஐகானுக்கான அழுத்த நிறம்."
+      },
+      {
+        "property": "dark",
+        "title": "இருண்ட",
+        "description": "இருண்ட பயன்முறையைப் பயன்படுத்தவும் (தலைகீழ் நிறத்தொகுப்பு)."
+      }
+    ]
+  }
+}

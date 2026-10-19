@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Akara ngosi",
+    "description": "Akara ngosi sitere n'ọbá akara ngosi zuru oke."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Akara ngosi",
+        "description": "Akara ngosi a ga-egosi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba mkpụrụ",
+        "description": "Agba mkpụrụ maka akara ngosi."
+      },
+      {
+        "property": "dark",
+        "title": "Ọchịchịrị",
+        "description": "Jiri ọnọdụ ọchịchịrị (agba agbanwere)."
+      }
+    ]
+  }
+}

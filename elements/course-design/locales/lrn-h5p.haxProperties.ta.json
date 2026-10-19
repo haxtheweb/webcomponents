@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P உறுப்பு",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "உரை",
+        "description": "பக்கக்குறிப்பின் உள்ளடக்கம்"
+      }
+    ]
+  }
+}

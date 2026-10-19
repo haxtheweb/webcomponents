@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "থিমযুক্ত Polaris কল-টু-অ্যাকশন বোতাম দেখান।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "বোতামের টেক্সট",
+        "description": "কল-টু-অ্যাকশন বোতামে দেখানো টেক্সট।"
+      },
+      {
+        "property": "link",
+        "title": "লিংক",
+        "description": "বোতামের গন্তব্য URL।"
+      },
+      {
+        "property": "type",
+        "title": "ভ্যারিয়েন্ট",
+        "description": "দৃশ্যমান স্টাইলের ভ্যারিয়েন্ট।",
+        "options": {
+          "primary": "প্রাথমিক",
+          "tinted": "আভাযুক্ত",
+          "light": "হালকা"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "আউটলাইন স্টাইল",
+        "description": "আউটলাইন রূপ চালু করুন।"
+      },
+      {
+        "property": "filled",
+        "title": "পূর্ণ স্টাইল",
+        "description": "পূর্ণ রূপ চালু করুন।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "कार्यपत्रिका डाउनलोड",
+    "description": "डाउनलोडसाठी उपलब्ध फाइल्स दाखवणारे बटण."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "डाउनलोडचे शीर्षक."
+      },
+      {
+        "property": "link",
+        "title": "लिंक",
+        "description": "डाउनलोडची लिंक."
+      }
+    ]
+  }
+}

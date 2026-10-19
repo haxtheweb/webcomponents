@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lisinsje",
+    "description": "Jou in lisinsje foar jo wurk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel fan it oanhelle wurk."
+      },
+      {
+        "property": "source",
+        "title": "Boarnekeppeling",
+        "description": "Boarne-URL fan it lisinsearre wurk."
+      },
+      {
+        "property": "license",
+        "title": "Lisinsje",
+        "description": "Lisinsje tapast op dit wurk."
+      },
+      {
+        "property": "creator",
+        "title": "Makker",
+        "description": "Makker of eigner fan dit wurk."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Boarnekeppeling",
+        "description": "Keppeling nei ekstra lisinsjedetails."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Label foar mear",
+        "description": "Label foar ekstra lisinsjedetails."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Kartolina",
+    "description": "Biċċa midja divertenti li tidher qisha kartolina vera minn xi post"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Lil",
+        "description": "Lil min sejra?"
+      },
+      {
+        "property": "from",
+        "title": "Minn",
+        "description": "Min int?"
+      },
+      {
+        "property": "message",
+        "title": "Messaġġ",
+        "description": "X'trid tgħid?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Ittimbrata minn",
+        "description": "Minn fejn intbagħtet din il-kartolina?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Sors tar-ritratt ewlieni",
+        "description": "Fejn jinsab ir-ritratt tiegħek?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Sors tar-ritratt tat-timbru",
+        "description": "Fejn jinsab ir-ritratt tiegħek?"
+      }
+    ]
+  }
+}

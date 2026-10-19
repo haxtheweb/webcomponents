@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Veranstaltungsabzeichen",
+    "description": "Komponente für Veranstaltungsabzeichen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV-Bild",
+        "description": "Auf dem TV angezeigtes Bild."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "In der Ecke des Abzeichens angezeigtes Logo."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Oben auf dem Abzeichen angezeigter Titel."
+      },
+      {
+        "property": "name",
+        "title": "Name",
+        "description": "Auf dem Abzeichen angezeigter Name."
+      },
+      {
+        "property": "position",
+        "title": "Position",
+        "description": "Rolle oder Titel der Person."
+      },
+      {
+        "property": "organization",
+        "title": "Organisation",
+        "description": "Organisation, für die die Person arbeitet."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV-Farbe",
+        "description": "Farbe für den TV auswählen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Primäre Hintergrund- oder Textfarbe."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Knopffarbe",
+        "description": "Farbe der TV-Drehknöpfe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Einen Sepia-Effekt anwenden."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Schwarz-Weiß",
+        "description": "Einen Schwarz-Weiß-Effekt anwenden."
+      }
+    ]
+  }
+}

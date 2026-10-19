@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Xiriirka HAX",
+    "description": "Xiriir ku xidhan ilo gaar ah oo ku jira goobta aad ka shaqaynayso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Shay",
+        "description": "Shayga loo muujinayo xogta xiriirka / cinwaanka"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Sauti ndani ya maandishi",
+    "description": "Cheza sauti ndani ya maandishi ili kuongeza maudhui ya ukurasa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Chanzo",
+        "description": "Faili ya MP3 au URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya Msisitizo",
+        "description": "Rangi ya msisitizo ya kadi."
+      },
+      {
+        "property": "shiny",
+        "title": "Inayong'aa",
+        "description": "Tumia usuli wa msisitizo mwepesi badala ya kijivu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Meusi",
+        "description": "Tumia hali ya giza."
+      }
+    ]
+  }
+}

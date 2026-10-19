@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Çeşme",
+        "description": "Bu serişde üçin URL."
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify puklliq churasqakunapaq p'istuq."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pukyu",
+        "description": "Spotify-manta churana utaq rakinakuy t'inki."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Puklliqpaq qhipa llimpi tema.",
+        "options": {
+          "": "Kikinmanta",
+          "0": "Yana"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Sayay",
+        "description": "Puklliqpa sayaynin.",
+        "options": {
+          "normal": "Kikinmanta",
+          "compact": "K'iski"
+        }
+      }
+    ]
+  }
+}

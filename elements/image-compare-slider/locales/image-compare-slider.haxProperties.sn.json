@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kuenzanisa mifananidzo",
+    "description": "Kwesha mufananidzo mumwe pamusoro peumwe kuti uenzanise."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Mufananidzo wepamusoro",
+        "description": "Mufananidzo wepamusoro unokweshwa pamusoro pemufananidzo wepazasi."
+      },
+      {
+        "property": "topAlt",
+        "title": "Mavara anotsiva mufananidzo wepamusoro",
+        "description": "Mavara anotsiva anodiwa ekuwanikwa nevose."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Mufananidzo wepazasi",
+        "description": "Mufananidzo wepazasi unoratidzwa pasi pemufananidzo wepamusoro."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Mavara anotsiva mufananidzo wepazasi",
+        "description": "Mavara anotsiva anodiwa ekuwanikwa nevose."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Maitiro",
+        "description": "Sarudza mamiriro ekupukuta (zvakajairwa) kana mamiriro ekuoneka kwemufananidzo wepamusoro."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rwebhawa rekutsvedza."
+      },
+      {
+        "property": "dark",
+        "title": "Rima",
+        "description": "Pindura ruvara rwebhawa rekutsvedza."
+      },
+      {
+        "property": "position",
+        "title": "Nzvimbo yeKutanga",
+        "description": "Nzvimbo yekutanga kubva pa0 kusvika pa100."
+      }
+    ]
+  }
+}

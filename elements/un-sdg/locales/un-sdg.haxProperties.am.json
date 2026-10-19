@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "የተባበሩት መንግሥታት ዘላቂ የልማት ግብ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "ግብ",
+        "description": "የUN SDG ቁጥር።"
+      },
+      {
+        "property": "colorOnly",
+        "title": "ቀለም ብቻ",
+        "description": "የግቡን ቀለም ብቻ አሳይ።"
+      }
+    ]
+  }
+}

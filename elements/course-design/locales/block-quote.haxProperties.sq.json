@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Citat në bllok",
+    "description": "Bllok citati me stil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Burimi i citatit",
+        "description": "Teksti i burimit të citatit."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Teksti alternativ për imazhin."
+      },
+      {
+        "property": "image",
+        "title": "Imazhi",
+        "description": "Imazhi i shfaqur me citatin."
+      }
+    ]
+  }
+}

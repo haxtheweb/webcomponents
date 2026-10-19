@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "饼图",
+    "description": "根据 CSV 做一张无障碍图表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "强调色",
+        "description": "可选个强调色。"
+      },
+      {
+        "title": "深色主题",
+        "description": "启用深色主题"
+      },
+      {
+        "title": "CSV 文件",
+        "description": "从 CSV 载入数据。"
+      },
+      {
+        "title": "图表标题",
+        "description": "侬图表个无障碍替代文字。"
+      },
+      {
+        "title": "图表描述",
+        "description": "侬图表个无障碍描述。"
+      },
+      {
+        "title": "比例名称",
+        "description": "图表个宽:高比例(看 https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings 里向个 $ct-scales 搭 $ct-scales-names)。",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "环形"
+      },
+      {
+        "title": "显示标签"
+      },
+      {
+        "title": "起始角度"
+      },
+      {
+        "title": "内边距"
+      },
+      {
+        "title": "总数",
+        "description": "侬可以指定个可选总数。指定总数以后,系列里数值个和要等于搿只总数再会画出一只完整个饼。可以用搿只参数只画饼图或者仪表图个一部分。"
+      },
+      {
+        "title": "忽略空值",
+        "description": "忽略空值,免得画出用勿着个扇区搭标签。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "数据倒过来",
+        "description": "拿数据倒过来,包括标签、系列顺序搭整只系列数据数组。"
+      },
+      {
+        "title": "HTML 表格",
+        "description": "可选:用 HTML 表格载入数据。"
+      },
+      {
+        "title": "环形线宽"
+      },
+      {
+        "title": "实心环形",
+        "description": "拿环形分段画成形状,勿是描边。"
+      },
+      {
+        "title": "标签方向",
+        "description": "拿环形分段画成形状,勿是描边。",
+        "options": {
+          "neutral": "中性",
+          "explode": "向外",
+          "implode": "向内"
+        }
+      },
+      {
+        "title": "标签偏移",
+        "description": "标签位置相对标准位置(半径个一半)个偏移。搿个值可以是正个也可以是负个。正值会得拿标签往离开中心个方向放。"
+      },
+      {
+        "title": "标签位置",
+        "options": {
+          "inside": "里向",
+          "outside": "外头",
+          "center": "居中"
+        }
+      }
+    ]
+  }
+}

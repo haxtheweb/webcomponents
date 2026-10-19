@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Yıldız Puanı",
+    "description": "Puan gösterme aracı veya puan verme düğmesi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Puan",
+        "description": "Geçerli puan değeri."
+      },
+      {
+        "property": "possible",
+        "title": "Olası",
+        "description": "Olası en yüksek puan."
+      },
+      {
+        "property": "numStars",
+        "title": "Yıldız Sayısı",
+        "description": "Gösterilecek yıldız sayısı."
+      },
+      {
+        "property": "interactive",
+        "title": "Etkileşimli",
+        "description": "Kullanıcının puanı belirlemek için etkileşimde bulunmasına izin verin."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Değerlendirme Ölçeği Modu",
+        "description": "Her yıldız için OER Şeması RubricScale ve RubricLevel meta verilerini (levelOrdinal/levelPoints) yayınlayın."
+      }
+    ]
+  }
+}

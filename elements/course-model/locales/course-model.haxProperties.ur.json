@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "کورس ماڈل",
+    "description": "تفصیلات، اینیمیشن اور علم کی جانچ کے ساتھ کورس کے تصورات کے لیے تعاملی لے آؤٹ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "title"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "معلومات کا حصہ"
+      },
+      {
+        "title": "تفصیلات کا حصہ"
+      },
+      {
+        "title": "اینیمیشن کا حصہ"
+      },
+      {
+        "title": "علم کی جانچ کا حصہ"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "لوگو کا حصہ"
+      }
+    ]
+  }
+}

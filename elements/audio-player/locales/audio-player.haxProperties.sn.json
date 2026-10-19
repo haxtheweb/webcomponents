@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Odhiyo",
+    "description": "Izvi zvinogona kuratidza vhidhiyo nenzira inowanikwa nevose zvisinei nekwainobva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kwakabva",
+        "description": "URL yemidhiya iyi."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Musoro",
+        "description": "Zita rakareruka riri pasi pevhidhiyo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara rwekusimbisa",
+        "description": "Sarudza ruvara rweaccent rwemutambi."
+      },
+      {
+        "property": "track",
+        "title": "Ma caption akavharwa",
+        "description": "URL yefaira remacaption."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Mufananidzo mudiki",
+        "description": "Hazvimanikidzwe. URL yemufananidzo mudiki/poster."
+      },
+      {
+        "property": "learningMode",
+        "title": "Batidza modhi yekudzidza",
+        "description": "Inodzima kumhanyisa mberi nekudzosera shure."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Bvisa bhatani rekuvhura paYouTube",
+        "description": "Inobvisa bhatani rekuvhura vhidhiyo paYouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Isa chinongedzo chekugovera?",
+        "description": "Inopa chinongedzo chekugovera vhidhiyo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Inoratidza kana CORS ichishandiswa.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Bvumira kutamba kumashure",
+        "description": "Mavhidhiyo anomira / anotamba ega kana tebhu yarasa kutariswa; izvi zvinobvumira vhidhiyo kutamba tebhu isina kutariswa"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Dingindira rerima retranscript",
+        "description": "Batidza dingindira rerima retranscript."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Dzima Kupindurana",
+        "description": "Dzima modhi yekupindurana inoita kuti transcript idzvanyike."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Vanza nguva",
+        "description": "Vanza nguva dziri patranscript."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Vanza Transcript",
+        "description": "Vanza transcript sezvakagara."
+      },
+      {
+        "property": "lang",
+        "title": "Mutauro",
+        "description": "Mutauro wemidhiya."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ímynd",
+    "description": "Ímynd úr fulla ímyndasavninum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ímynd",
+        "description": "Ímynd at vísa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Dámlitur á ímyndini."
+      },
+      {
+        "property": "dark",
+        "title": "Myrkt",
+        "description": "Nýt myrkan stilling (umvendir litir)."
+      }
+    ]
+  }
+}

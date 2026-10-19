@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Detail halaman",
+    "description": "Tentukan pemisah visual antarhalaman yang dapat digunakan CMS untuk membuat halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Judul yang ditampilkan di tema dan judul pertama."
+      },
+      {
+        "property": "pageType",
+        "title": "Jenis",
+        "description": "Label konteks visual halaman.",
+        "options": {
+          "": "-- tidak ada --",
+          "content": "Konten",
+          "assessment": "Asesmen",
+          "quiz": "Kuis",
+          "submission": "Pengumpulan",
+          "lesson": "Pelajaran",
+          "module": "Modul",
+          "task": "Tugas",
+          "activity": "Aktivitas",
+          "project": "Proyek",
+          "practice": "Latihan",
+          "unit": "Unit",
+          "objectives": "Tujuan Pembelajaran",
+          "connection": "Koneksi",
+          "knowledge": "Tahukah Anda?",
+          "strategy": "Strategi Pembelajaran",
+          "discuss": "Diskusikan",
+          "listen": "Dengarkan",
+          "make": "Buat",
+          "observe": "Amati",
+          "present": "Presentasikan",
+          "reading": "Bacaan",
+          "reflect": "Refleksikan",
+          "research": "Teliti",
+          "watch": "Tonton",
+          "write": "Tulis"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Daftar tag yang dipisahkan koma."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL Tautan",
+        "description": "URL pengalihan yang ditampilkan sebagai ganti konten halaman."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Target Tautan",
+        "description": "Buka tautan di jendela yang sama atau jendela baru.",
+        "options": {
+          "_self": "Jendela yang sama",
+          "_blank": "Jendela baru"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Diterbitkan",
+        "description": "Halaman yang tidak diterbitkan disembunyikan dari pengguna akhir."
+      },
+      {
+        "property": "locked",
+        "title": "Kunci halaman",
+        "description": "Kunci atau buka kunci semua elemen di halaman ini."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Ganti slug otomatis",
+        "description": "Kunci slug dari pembaruan otomatis berdasarkan judul atau induk."
+      },
+      {
+        "property": "slug",
+        "title": "Jalur",
+        "description": "Slug URL untuk halaman ini."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Media yang mewakili halaman, digunakan di beberapa tema dan tampilan."
+      },
+      {
+        "property": "parent",
+        "title": "Induk",
+        "description": "Jalur halaman induk."
+      },
+      {
+        "property": "noderefs",
+        "title": "Konten terkait",
+        "description": "Halaman yang terkait dengan halaman ini."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Deskripsi",
+        "description": "Deskripsi yang digunakan dalam koleksi dan optimisasi mesin pencari."
+      },
+      {
+        "property": "entityType",
+        "title": "Jenis Entitas",
+        "description": "Bawaannya halaman kecuali diatur lain.",
+        "options": {
+          "page": "Halaman (bawaan)",
+          "taxonomy": "Taksonomi",
+          "taxonomyTerm": "Istilah Taksonomi",
+          "region": "Wilayah"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon yang terkait dengan halaman ini di situs."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Warna yang terkait dengan halaman ini di situs."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Sembunyikan di menu",
+        "description": "Sembunyikan halaman ini dari menu dengan tetap mempertahankan URL-nya."
+      },
+      {
+        "property": "order",
+        "title": "Urutan",
+        "description": "Urutan relatif terhadap halaman sejajar."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Tema halaman",
+        "description": "Ganti tema untuk halaman ini saja."
+      },
+      {
+        "property": "author",
+        "title": "Penulis",
+        "description": "Nama pengguna orang terakhir yang mengubah halaman ini."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Ցուցադրել Polaris թեմայով գործողության կոչի կոճակ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Կոճակի տեքստ",
+        "description": "Գործողության կոչի կոճակում ցուցադրվող տեքստ։"
+      },
+      {
+        "property": "link",
+        "title": "Հղում",
+        "description": "Կոճակի նպատակակետի URL-ը։"
+      },
+      {
+        "property": "type",
+        "title": "Տարբերակ",
+        "description": "Տեսողական ոճի տարբերակ։",
+        "options": {
+          "primary": "Հիմնական",
+          "tinted": "Երանգավորված",
+          "light": "Բաց"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Եզրագծային ոճ",
+        "description": "Միացնել եզրագծային ձևավորումը։"
+      },
+      {
+        "property": "filled",
+        "title": "Լցված ոճ",
+        "description": "Միացնել լցված ձևավորումը։"
+      }
+    ]
+  }
+}

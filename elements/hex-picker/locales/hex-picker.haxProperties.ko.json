@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "16진수 색상 선택기",
+    "description": "16진수 코드 색상 선택기"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "값",
+        "description": "기본 16진수 값"
+      },
+      {
+        "property": "disabled",
+        "title": "비활성화",
+        "description": "텍스트 필드 비활성화"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "큰 표시",
+        "description": "큰 표시 영역에 색상 포함"
+      }
+    ]
+  }
+}

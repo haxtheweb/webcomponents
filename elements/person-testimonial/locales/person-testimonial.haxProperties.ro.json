@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Citat cu imagine",
+    "description": "Citat stilizat cu imagine opțională."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagine",
+        "description": "Adaugă o imagine la mărturie."
+      },
+      {
+        "property": "name",
+        "title": "Nume complet",
+        "description": "Numele persoanei care oferă mărturia."
+      },
+      {
+        "property": "position",
+        "title": "Funcție sau post",
+        "description": "Funcția sau postul persoanei."
+      },
+      {
+        "slot": "",
+        "title": "Citat",
+        "description": "Citat de la autorul mărturiei."
+      }
+    ]
+  }
+}

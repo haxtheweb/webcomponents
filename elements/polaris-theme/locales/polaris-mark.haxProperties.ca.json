@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Marca Polaris",
+    "description": "Mostra la marca d'identitat de PSU amb el nom opcional del centre i un URL de destinació."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Nom del centre",
+        "description": "Nom que es mostra al costat de la marca."
+      },
+      {
+        "property": "name2",
+        "title": "Nom del centre 2",
+        "description": "Segon nom que es mostra sota el primer nom del centre."
+      },
+      {
+        "property": "name3",
+        "title": "Nom del centre 3",
+        "description": "Tercer nom que es mostra sota el segon nom del centre."
+      },
+      {
+        "property": "url",
+        "title": "Enllaç",
+        "description": "URL de destinació en fer clic a la marca."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Variant visual de la marca.",
+        "options": {
+          "default": "Per defecte",
+          "light": "Clara",
+          "dark": "Fosc"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Disposició vertical",
+        "description": "Mostra el tercer nom sota el segon amb una línia horitzontal."
+      }
+    ]
+  }
+}

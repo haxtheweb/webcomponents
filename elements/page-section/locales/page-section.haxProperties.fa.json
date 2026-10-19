@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "بخش صفحه",
+    "description": "محفظهٔ بخش برای محتوای صفحه و چیدمان‌های مبتنی بر صفحه‌نمایش."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "پرداخت طراحی",
+        "description": "سبک ازپیش‌تعیین‌شده که تنظیمات مرتبط را به‌روز می‌کند."
+      },
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "رسانهٔ پس‌زمینهٔ بخش."
+      },
+      {
+        "property": "bg",
+        "title": "رنگ پس‌زمینه",
+        "description": "رنگ پس‌زمینه وقتی تصویری تنظیم نشده است."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "دکمهٔ پیمایش",
+        "description": "نمایش دکمه‌ای که به بخش بعدی پیمایش می‌کند."
+      },
+      {
+        "property": "fold",
+        "title": "نمایش تاخوردگی",
+        "description": "نمایش یک تاخوردگی دیداری در پایین بخش."
+      },
+      {
+        "property": "full",
+        "title": "اندازهٔ تمام‌صفحه",
+        "description": "پر کردن ارتفاع صفحه‌نمایش بیننده."
+      },
+      {
+        "property": "filter",
+        "title": "اعمال پالایه",
+        "description": "اعمال یک پالایهٔ دیداری روی تصویر پس‌زمینه."
+      },
+      {
+        "slot": "",
+        "title": "محتوا",
+        "description": "محتوای بخش."
+      },
+      {
+        "slot": "entice",
+        "title": "جذب",
+        "description": "محتوای جذاب‌کنندهٔ اختیاری."
+      },
+      {
+        "slot": "buttons",
+        "title": "دکمه‌ها",
+        "description": "گروه دکمه‌هایی که زیر متن نمایش داده می‌شود."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "متن لنگر",
+        "description": "برچسب لنگر که در ناوبری نمایش داده می‌شود."
+      }
+    ]
+  }
+}

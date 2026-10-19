@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pihi Ebook",
+    "description": "He pihi e loulou ana i kahi Ebook."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Poʻo inoa",
+        "description": "Ke poʻo inoa o ka pihi."
+      },
+      {
+        "property": "link",
+        "title": "Loulou",
+        "description": "Ka loulou e hoʻihoʻi ai ke kaomi ʻia."
+      },
+      {
+        "property": "icon",
+        "title": "Hōʻailona",
+        "description": "Ikona e hōʻike ai i kēia loulou"
+      }
+    ]
+  }
+}

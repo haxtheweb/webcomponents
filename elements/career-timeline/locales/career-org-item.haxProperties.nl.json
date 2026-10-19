@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Loopbaanitem",
+    "description": "Een afzonderlijke organisatie en de bijbehorende functies"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Naam organisatie"
+      },
+      {
+        "property": "location",
+        "title": "Locatie"
+      },
+      {
+        "property": "source",
+        "title": "Bron"
+      }
+    ]
+  }
+}

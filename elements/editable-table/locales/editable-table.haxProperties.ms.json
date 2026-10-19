@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Jadual",
+    "description": "Data berasaskan jadual untuk web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Pengepala Baris",
+        "description": "Anggap baris pertama sebagai pengepala."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Pengepala Lajur",
+        "description": "Anggap lajur pertama sebagai pengepala."
+      },
+      {
+        "property": "footer",
+        "title": "Pengaki",
+        "description": "Anggap baris terakhir sebagai pengaki."
+      },
+      {
+        "property": "sort",
+        "title": "Boleh Diisih",
+        "description": "Benarkan pengisihan mengikut nilai lajur."
+      },
+      {
+        "property": "filter",
+        "title": "Benarkan Penapis",
+        "description": "Benarkan penapisan mengikut nilai lajur."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Gaya Angka",
+        "description": "Gunakan gaya angka pada lajur berangka."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsif",
+        "description": "Laraskan susun atur jadual pada skrin kecil."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mod Rubrik",
+        "description": "Tafsirkan jadual ini sebagai OER Schema Rubric supaya metadata Rubric, RubricScale, RubricCriterion dan RubricLevel dikeluarkan."
+      },
+      {
+        "property": "rubricType",
+        "title": "Jenis Rubrik",
+        "description": "Gaya rubrik yang dikeluarkan sebagai oer:rubricType (hanya bermakna apabila Mod Rubrik dihidupkan).",
+        "options": {
+          "": "(tiada)",
+          "analytic": "Analitik",
+          "holistic": "Holistik",
+          "single-point": "Titik Tunggal",
+          "checklist": "Senarai Semak"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Berbingkai"
+      },
+      {
+        "property": "condensed",
+        "title": "Padatkan Baris",
+        "description": "Kurangkan ketinggian baris."
+      },
+      {
+        "property": "striped",
+        "title": "Baris Berjalur",
+        "description": "Lorekkan setiap baris berselang."
+      },
+      {
+        "property": "downloadable",
+        "title": "Butang Muat Turun",
+        "description": "Tambah butang untuk memuat turun jadual."
+      },
+      {
+        "property": "copyable",
+        "title": "Butang Salin",
+        "description": "Tambah butang untuk menyalin data CSV jadual."
+      },
+      {
+        "property": "printable",
+        "title": "Butang Cetak",
+        "description": "Tambah butang untuk mencetak jadual sahaja."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Data CSV",
+        "description": "Cipta jadual daripada fail CSV yang dimuat naik."
+      }
+    ]
+  }
+}

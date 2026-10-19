@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Kauwhata Porowhita",
+    "description": "Ka waihanga i tētahi kauwhata wātea i runga i tētahi CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tae Arotahi",
+        "description": "He tae arotahi kōwhiri."
+      },
+      {
+        "title": "Kaupapa Pōuri",
+        "description": "Whakahohe Kaupapa Āhua Pōuri"
+      },
+      {
+        "title": "Kōnae CSV",
+        "description": "Uta raraunga mai i tētahi CSV."
+      },
+      {
+        "title": "Taitara Kauwhata",
+        "description": "Kuputuhi alt wātea mō tō kauwhata."
+      },
+      {
+        "title": "Whakaahuatanga Kauwhata",
+        "description": "Whakaahuatanga wātea o tō kauwhata."
+      },
+      {
+        "title": "Ingoa Tauine",
+        "description": "Te ōwehenga whānui:teitei o te kauwhata (Tirohia https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings mō $ct-scales me $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Tōnati"
+      },
+      {
+        "title": "Whakaatu Tapanga"
+      },
+      {
+        "title": "Koki Tīmata"
+      },
+      {
+        "title": "Whakakī"
+      },
+      {
+        "title": "Tapeke",
+        "description": "Tapeke kōwhiringa ka taea e koe te tohu. Mā te tohu i tētahi uara tapeke, me ōrite te tapeke o ngā uara i te raupapa ki tēnei tapeke kia tuhia he porowhita katoa. Ka taea e koe te whakamahi i tēnei tawhā hei tuhi i ētahi wāhanga anake o tētahi kauwhata porowhita, ine rānei."
+      },
+      {
+        "title": "Waiho ngā Uara Kau",
+        "description": "Ka waihotia ngā uara kau kia kore ai e tuhia ngā poro me ngā tapanga kāore e hiahiatia ana."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kōaro Raraunga",
+        "description": "Kōaro i ngā raraunga tae atu ki ngā tapanga, te raupapa raupapa me ngā huānga raraunga raupapa katoa."
+      },
+      {
+        "title": "Ripanga HTML",
+        "description": "Kōwhiringa: Uta raraunga hei ripanga HTML."
+      },
+      {
+        "title": "Whānui Whiu Tōnati"
+      },
+      {
+        "title": "Tōnati Totoka",
+        "description": "Tuhia ngā wāhanga tōnati hei āhua, kaua hei whiu."
+      },
+      {
+        "title": "Ahunga Tapanga",
+        "description": "Tuhia ngā wāhanga tōnati hei āhua, kaua hei whiu.",
+        "options": {
+          "neutral": "kūpapa",
+          "explode": "pahū atu",
+          "implode": "pahū mai"
+        }
+      },
+      {
+        "title": "Neke Tapanga",
+        "description": "Te neke o te tūranga tapanga mai i te tūranga paerewa, arā, te haurua o te tawhiti o te pūtoro. Ka taea tēnei uara te tōrunga, te tōraro rānei. Ka whakatakoto ngā uara tōrunga i te tapanga kia matara atu i te pokapū."
+      },
+      {
+        "title": "Tūranga Tapanga",
+        "options": {
+          "inside": "i roto",
+          "outside": "i waho",
+          "center": "waenganui"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "کتابیات آئٹم",
+    "description": "کتابیات وچ اک حوالے دی نمائندگی کرن والی آئٹم، کئی فارمیٹاں تے ایکسپورٹ آپشناں دی حمایت نال۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "قسم",
+        "description": "حوالے دی قسم",
+        "options": {
+          "web": "ویب",
+          "journal": "رسالہ",
+          "book": "کتاب"
+        }
+      },
+      {
+        "property": "title",
+        "title": "سرناواں",
+        "description": "آئٹم دا سرناواں"
+      },
+      {
+        "property": "authors",
+        "title": "لکھاری",
+        "description": "ٹائم لائن دے واقعے"
+      },
+      {
+        "property": "publisher",
+        "title": "ناشر",
+        "description": "اصل ویب سائٹ"
+      }
+    ]
+  }
+}

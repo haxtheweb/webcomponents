@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Safnatriði",
+    "description": "Spjaldeining til notkunar í safnlista, með texta, tengli og valfrjálsum miðli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Tengill",
+        "description": "Áfangastaðar-URL fyrir þetta spjald."
+      },
+      {
+        "property": "image",
+        "title": "Mynd",
+        "description": "Bakgrunnsmynd."
+      },
+      {
+        "property": "line1",
+        "title": "Lína 1",
+        "description": "Fyrsta textalína."
+      },
+      {
+        "property": "line2",
+        "title": "Lína 2",
+        "description": "Önnur textalína."
+      },
+      {
+        "property": "line3",
+        "title": "Lína 3",
+        "description": "Þriðja textalína."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Tákn",
+        "description": "Tákn sem táknar spjaldið."
+      },
+      {
+        "property": "saturate",
+        "title": "Mettunaráhrif",
+        "description": "Breyta mettun myndar þegar notandi beinir fókus að henni."
+      },
+      {
+        "property": "tags",
+        "title": "Merki",
+        "description": "Kommuaðgreindur listi af merkjum."
+      },
+      {
+        "property": "accentColor",
+        "title": "Litur",
+        "description": "Litur fyrir merki."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Annar texti sem lýsir tenglinum."
+      }
+    ]
+  }
+}

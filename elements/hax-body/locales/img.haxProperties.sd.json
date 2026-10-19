@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "بنيادي تصوير",
+    "description": "بنيادي تصوير عنصر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ذريعو",
+        "description": "تصوير جو URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "متبادل متن",
+        "description": "رسائي ۽ SEO لاءِ متبادل متن."
+      },
+      {
+        "attribute": "height",
+        "title": "اوچائي",
+        "description": "پڪسلن ۾ اوچائي. قدرتي ماپ استعمال ڪرڻ لاءِ خالي ڇڏيو."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "تصوير لوڊنگ",
+        "description": "چونڊيو ته تصوير ڪڏهن لوڊ ٿئي.",
+        "options": {
+          "lazy": "نظر اچڻ تي لوڊ ڪريو",
+          "auto": "خودڪار"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "جوابده ذريعا (srcset)",
+        "description": "تصويرن جا URLs ۽ وضاحت ڪندڙ (مثال طور 480w يا 2x) لکو ته جيئن براؤزر اسڪرين لاءِ بهترين ماپ چونڊين. معياري srcset خاصيت طور محفوظ ٿئي ٿو."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "دعوة إلى إجراء",
+    "description": "زر بسيط مع رابط لاتخاذ إجراء."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "التسمية",
+        "description": "تسمية الرابط"
+      },
+      {
+        "property": "link",
+        "title": "الرابط",
+        "description": "أدخل رابطًا إلى أي مورد"
+      },
+      {
+        "property": "hideIcon",
+        "title": "إخفاء الأيقونة",
+        "description": "إخفاء الأيقونة المستخدمة لتمييز النص"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "الأيقونة",
+        "description": "أيقونة رابط الإجراء"
+      }
+    ]
+  }
+}

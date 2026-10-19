@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "خالی جگہیں پُر کریں",
+    "description": "جانچ کی سرگرمی جس میں سیکھنے والے کسی بیان میں غائب الفاظ مکمل کرتے ہیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "سوال",
+        "description": "وہ سوال جس کا صارفین جواب دیں۔"
+      },
+      {
+        "property": "statement",
+        "title": "بیان",
+        "description": "وہ بیان جسے الفاظ نشان زد کرنے والی سرگرمی میں تبدیل کیا جائے گا۔"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "درجہ بندی کا فارمیٹ",
+        "description": "OER Schema: اس جانچ کا درجہ بندی فارمیٹ (مثلاً پوائنٹس، حرفی گریڈ، فیصد، تکمیل)۔"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "تعلیمی مقصد",
+        "description": "OER Schema: اس جانچ سے وابستہ تعلیمی مقصد۔"
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "OER Schema: وہ کورس جس کے لیے یہ جانچ ہے۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "کوئز کا نام",
+        "description": "xAPI پر مبنی ماحول میں اس آئٹم کی شناخت کے لیے دیا جانے والا کوئز کا نام"
+      }
+    ]
+  }
+}

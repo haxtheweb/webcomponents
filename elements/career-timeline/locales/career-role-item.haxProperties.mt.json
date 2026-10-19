@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Rwol fil-Karriera",
+    "description": "Rwol individwali fi ħdan organizzazzjoni"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu"
+      },
+      {
+        "property": "startDate",
+        "title": "Data tal-Bidu"
+      },
+      {
+        "property": "endDate",
+        "title": "Data tat-Tmiem (Opzjonali)"
+      },
+      {
+        "property": "skills",
+        "title": "Ħiliet Assoċjati",
+        "description": "Agħżel il-buttuna + biex tibda żżid il-ħiliet"
+      }
+    ]
+  }
+}

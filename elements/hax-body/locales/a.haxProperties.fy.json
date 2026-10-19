@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Basiskeppeling",
+    "description": "Basis-keppelingselemint."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Keppeling",
+        "description": "Bestimmings-URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Sichtbere keppelingstekst."
+      },
+      {
+        "attribute": "target",
+        "title": "Doel",
+        "description": "Wêr't de keppeling iepene wurdt.",
+        "options": {
+          "": "Itselde finster",
+          "_blank": "Nij finster - _blank",
+          "_top": "Boppeste finster - _top",
+          "_parent": "Aldersfinster - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Titeltekst",
+        "description": "Advysttitel foar tagonklikens en SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Relaasje mei de bestimming (feiligens/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

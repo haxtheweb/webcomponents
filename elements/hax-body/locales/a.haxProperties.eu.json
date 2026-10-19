@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Oinarrizko esteka",
+    "description": "Oinarrizko esteka-elementua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Esteka",
+        "description": "Helmugaren URLa."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Testua",
+        "description": "Estekaren testu ikusgaia."
+      },
+      {
+        "attribute": "target",
+        "title": "Helburua",
+        "description": "Non ireki esteka.",
+        "options": {
+          "": "Leiho berean",
+          "_blank": "Leiho berria - _blank",
+          "_top": "Goiko leihoa - _top",
+          "_parent": "Leiho gurasoa - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Izenburu-testua",
+        "description": "Irisgarritasunerako eta SEOrako aholku-izenburua."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Helmugarekiko erlazioa (segurtasuna/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

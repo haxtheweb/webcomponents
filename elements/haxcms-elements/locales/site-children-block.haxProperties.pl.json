@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: blok podrzędnych",
+    "description": "Dynamiczny blok pokazujący strony podrzędne bieżącej strony"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Metoda dynamiczna",
+        "description": "Jak wyznaczać strony podrzędne względem tego elementu",
+        "options": {
+          "active": "Aktywne strony podrzędne",
+          "parent": "Strony podrzędne rodzica",
+          "ancestor": "Wszystkie strony podrzędne od najwyższego przodka"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Poziom początkowy"
+      },
+      {
+        "property": "end",
+        "title": "Poziom końcowy"
+      }
+    ]
+  }
+}

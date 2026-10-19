@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Dyfyniad bloc gyda delwedd",
+    "description": "Dyfyniad wedi'i steilio gyda delwedd ddewisol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Delwedd",
+        "description": "Ychwanegu delwedd at y tysteb."
+      },
+      {
+        "property": "name",
+        "title": "Enw Llawn",
+        "description": "Enw'r person sy'n rhoi'r tysteb."
+      },
+      {
+        "property": "position",
+        "title": "Swydd neu Deitl Swydd",
+        "description": "Swydd neu deitl swydd yr unigolyn."
+      },
+      {
+        "slot": "",
+        "title": "Dyfyniad",
+        "description": "Dyfyniad gan awdur y tysteb."
+      }
+    ]
+  }
+}

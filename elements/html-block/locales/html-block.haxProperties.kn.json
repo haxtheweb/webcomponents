@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html ಬ್ಲಾಕ್",
+    "description": "HAXschema ಸಂಪರ್ಕವನ್ನು ಒದಗಿಸುವ ಮೂಲ HTML ಬ್ಲಾಕ್"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "ವಿಷಯದಲ್ಲಿ ನೀವು ಪ್ರಸ್ತುತಪಡಿಸಲು ಬಯಸುವ HTML ಕೋಡ್"
+      }
+    ]
+  }
+}

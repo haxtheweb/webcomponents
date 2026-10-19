@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Isilinganiso Sezinkanyezi",
+    "description": "Iwijethi yokubonisa isilinganiso noma inkinobho yokulinganisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Amaphuzu",
+        "description": "Inani lamaphuzu lamanje."
+      },
+      {
+        "property": "possible",
+        "title": "Okungenzeka",
+        "description": "Amaphuzu aphezulu angenzeka."
+      },
+      {
+        "property": "numStars",
+        "title": "Inani Lezinkanyezi",
+        "description": "Inani lezinkanyezi okufanele ziboniswe."
+      },
+      {
+        "property": "interactive",
+        "title": "Kuyasebenzisana",
+        "description": "Vumela umsebenzisi ukuthi asebenzisane ukuze asethe isilinganiso."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Imodi Yesikali Se-Rubric",
+        "description": "Khipha imethadatha ye-OER Schema RubricScale ne-RubricLevel (levelOrdinal/levelPoints) yenkanyezi ngayinye."
+      }
+    ]
+  }
+}

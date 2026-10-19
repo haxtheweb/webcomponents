@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "רישיון",
+    "description": "ציינו רישיון ליצירה שלכם."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "כותרת היצירה המצוטטת."
+      },
+      {
+        "property": "source",
+        "title": "קישור למקור",
+        "description": "כתובת URL של המקור ליצירה המורשית."
+      },
+      {
+        "property": "license",
+        "title": "רישיון",
+        "description": "הרישיון המוחל על יצירה זו."
+      },
+      {
+        "property": "creator",
+        "title": "יוצר",
+        "description": "היוצר או הבעלים של יצירה זו."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "קישור למקור",
+        "description": "קישור לפרטי רישוי נוספים."
+      },
+      {
+        "property": "moreLabel",
+        "title": "תווית \"עוד\"",
+        "description": "תווית לפרטי רישוי נוספים."
+      }
+    ]
+  }
+}

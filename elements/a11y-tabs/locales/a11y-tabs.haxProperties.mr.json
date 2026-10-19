@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "टॅब",
+    "description": "टॅबचा संच."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "लेबल (सुलभतेसाठी)",
+        "description": "टॅब संचासाठी सुलभ लेबल."
+      },
+      {
+        "property": "disabled",
+        "title": "अक्षम",
+        "description": "सर्व टॅब अक्षम करा."
+      },
+      {
+        "property": "hidden",
+        "title": "लपवलेले",
+        "description": "टॅब संच लपवा."
+      },
+      {
+        "property": "sticky",
+        "title": "चिकटलेले",
+        "description": "स्क्रोल करताना आडवे टॅब वर ठेवा."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "लेआउट ब्रेकपॉइंट",
+        "description": "आडव्या टॅबसाठी ब्रेकपॉइंट; फक्त उभ्या टॅबसाठी -1 वापरा."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "आयकॉन ब्रेकपॉइंट",
+        "description": "आयकॉनसह मजकूर दाखवण्यासाठी ब्रेकपॉइंट. डीफॉल्ट 0 आहे; फक्त-आयकॉन मोडसाठी -1 वापरा."
+      },
+      {
+        "slot": "",
+        "title": "टॅब",
+        "description": "<a11y-tab/> घटकांची मालिका."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "अद्वितीय ID",
+        "description": "या टॅब संचासाठी अद्वितीय ID."
+      }
+    ]
+  }
+}

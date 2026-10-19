@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Matlamat Pembangunan Mampan Pertubuhan Bangsa-Bangsa Bersatu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Matlamat",
+        "description": "Nombor UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Warna sahaja",
+        "description": "Paparkan warna matlamat sahaja."
+      }
+    ]
+  }
+}

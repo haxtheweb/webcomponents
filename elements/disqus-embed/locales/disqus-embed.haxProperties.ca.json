@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Insereix comentaris de Disqus en una pàgina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Nom curt",
+        "description": "El nom curt del lloc, que determina l'amfitrió de l'script de Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL de la pàgina",
+        "description": "L'URL de la pàgina a la qual s'adjunta el fil de comentaris."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Identificador de la pàgina",
+        "description": "L'identificador únic del fil de comentaris de la pàgina."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Títol de la pàgina",
+        "description": "El títol de la pàgina a la qual s'adjunta el fil de comentaris."
+      },
+      {
+        "property": "loadingText",
+        "title": "Text de càrrega",
+        "description": "Text que s'anuncia mentre es carreguen els comentaris."
+      },
+      {
+        "property": "lang",
+        "title": "Idioma",
+        "description": "Codi d'idioma per a la interfície de Disqus, p. ex. en."
+      }
+    ]
+  }
+}

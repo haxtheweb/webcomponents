@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ordforråd",
+    "description": "Ordforrådsterm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Term"
+      },
+      {
+        "property": "information",
+        "title": "Definition",
+        "description": "Definition, der vises, når der klikkes på termen."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "Vis definitionen i en popover i stedet for i teksten."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Links",
+        "description": "Liste over supplerende links knyttet til denne term."
+      }
+    ]
+  }
+}

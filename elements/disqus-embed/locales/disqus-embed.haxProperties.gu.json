@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "પૃષ્ઠ પર Disqus ટિપ્પણીઓ એમ્બેડ કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "ટૂંકું નામ",
+        "description": "સાઇટનું ટૂંકું નામ, જે Disqus સ્ક્રિપ્ટ હોસ્ટ નક્કી કરે છે."
+      },
+      {
+        "property": "pageURL",
+        "title": "પૃષ્ઠ URL",
+        "description": "જે પૃષ્ઠ સાથે ટિપ્પણી થ્રેડ જોડાયેલ છે તેનું URL."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "પૃષ્ઠ ઓળખકર્તા",
+        "description": "પૃષ્ઠના ટિપ્પણી થ્રેડ માટે અનન્ય ઓળખકર્તા."
+      },
+      {
+        "property": "pageTitle",
+        "title": "પૃષ્ઠ શીર્ષક",
+        "description": "જે પૃષ્ઠ સાથે ટિપ્પણી થ્રેડ જોડાયેલ છે તેનું શીર્ષક."
+      },
+      {
+        "property": "loadingText",
+        "title": "લોડિંગ લખાણ",
+        "description": "ટિપ્પણીઓ લોડ થતી હોય ત્યારે જાહેર કરાતું લખાણ."
+      },
+      {
+        "property": "lang",
+        "title": "ભાષા",
+        "description": "Disqus ઇન્ટરફેસ માટે ભાષા કોડ, દા.ત. en."
+      }
+    ]
+  }
+}

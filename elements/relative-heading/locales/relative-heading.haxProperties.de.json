@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relative Überschrift",
+    "description": "gibt die korrekte Überschriftenhierarchie basierend auf der übergeordneten Überschrift aus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Ressourcen-ID der übergeordneten Überschrift"
+      },
+      {
+        "property": "disableLink",
+        "description": "Deaktiviert die Link-Button-Funktion."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Richtet den Button „Link kopieren“ ganz rechts an der Überschrift aus."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Überschriftenebene, falls keine übergeordnete gefunden wird."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Überschreibt den Standardtext der Toast-Meldung beim Kopieren des Links."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Überschreibt die Standardbeschriftung des Buttons „Link kopieren“."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Überschreibt das Standardsymbol des Buttons „Link kopieren“."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Überschreibt die Standardbeschriftung des Schließen-Buttons der Toast-Meldung beim Kopieren des Links."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Überschreibt das Standardsymbol des Schließen-Buttons der Toast-Meldung beim Kopieren des Links."
+      }
+    ]
+  }
+}

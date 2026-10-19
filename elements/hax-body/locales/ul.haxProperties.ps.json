@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "ټکي لرونکی لېست",
+    "description": "ټکي لرونکی لېست جوړ کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "د ټکي سټایل",
+        "description": "د بې ترتیبه لېست د ټکو لپاره کارول شوی سټایل.",
+        "options": {
+          "": "تلواله (مربع)",
+          "list-disc": "ډکه دایره",
+          "list-circle": "دایره",
+          "list-square": "مربع"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Rolu di carriera",
+    "description": "Un rolu individuale in un'urganizazione"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulu"
+      },
+      {
+        "property": "startDate",
+        "title": "Data d'iniziu"
+      },
+      {
+        "property": "endDate",
+        "title": "Data di fine (facultativa)"
+      },
+      {
+        "property": "skills",
+        "title": "Cumpetenze assuciate",
+        "description": "Selezziunate u buttone + per cumincià à aghjunghje cumpetenze"
+      }
+    ]
+  }
+}

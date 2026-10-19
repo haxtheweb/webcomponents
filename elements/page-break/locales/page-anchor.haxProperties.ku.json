@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lengera Rûpelê",
+    "description": "Girêdan bi xalên taybet ên medyayê li ser rûpelê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Armanca rûpelê",
+        "description": "ID an çavkaniya ku ev lenger nîşan dide."
+      },
+      {
+        "property": "value",
+        "title": "Nirxa girêdana kûr",
+        "description": "Nirxa girêdana kûr (mînak mohra demê an ID ya slaytê)."
+      },
+      {
+        "property": "entityId",
+        "title": "Hebûna malperê",
+        "description": "Hebûna malperê ya vebijarkî ji bo kontrolkirina pêşkêşkirina têgehên têkildar."
+      }
+    ]
+  }
+}

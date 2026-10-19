@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Agħmel il-GIFs animati aċċessibbli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF animat",
+        "description": "URL għall-GIF animat."
+      },
+      {
+        "property": "alt",
+        "title": "Test alternattiv",
+        "description": "Test alternattiv għall-immaġni."
+      },
+      {
+        "property": "longdesc",
+        "title": "Deskrizzjoni twila",
+        "description": "Deskrizzjoni twila tal-GIF għall-aċċessibbiltà."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Immaġni wieqfa",
+        "description": "URL għal verżjoni wieqfa tal-GIF."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "د موسیقۍ نوټ پاڼه",
+    "description": "د موسیقۍ نوټونه، د ګیتار ټبونه او د سکور نښې د alphaTex یا MusicXML له لارې ښیي او غږوي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "د AlphaTex نښې",
+        "description": "د موسیقۍ نوټونو لپاره کرښه‌یز alphaTex نښه‌ګذاري. د نښو د لیکلو لپاره یې مستقیم سم کړئ؛ دا په یوه کينډۍ کې ساتل کېږي نو واټنونه خوندي پاتې کېږي."
+      },
+      {
+        "property": "source",
+        "title": "د سکور فایل",
+        "description": "یو MusicXML (.xml/.musicxml/.mxl) یا Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) فایل پورته کړئ یا ورته لینک ورکړئ. کله چې ټاکل شوی وي، پر کرښه‌یز alphaTex غالب دی."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "غږیز غږول",
+        "description": "په ډیفالټ ډول فعال - د موسیقۍ نوټونه د جوړ شوي سنتېسایزر له لارې واورئ. یوازې د لیدو (بې غږه) حالت لپاره یې بند کړئ."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "د ښودلو انتخابونه وښایئ",
+        "description": "د پلیر په پټۍ کې د زوم، غځولو او ترتیب تڼۍ وښایئ."
+      },
+      {
+        "property": "showExport",
+        "title": "د صادرولو تڼۍ وښایئ",
+        "description": "د پلیر په پټۍ کې د MIDI ډاونلوډ او چاپ/PDF تڼۍ وښایئ."
+      }
+    ]
+  }
+}

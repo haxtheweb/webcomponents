@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Ẹ̀yà Ẹ̀kọ́",
+    "description": "Káàdì fún àwọn olùkọ́ láti ṣàlàyé ọgbọ́n ìkọ́ni àti àwọn ọ̀nà ìkọ́ni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Irú",
+        "description": "Irú káàdì tí a ó lò."
+      },
+      {
+        "property": "subtitle",
+        "title": "Àkọlé-kékeré",
+        "description": "Àkọlé-kékeré káàdì náà."
+      },
+      {
+        "property": "url",
+        "title": "Ìjápọ̀",
+        "description": "Ìjápọ̀ (àṣàyàn) fún káàdì náà (Ìjápọ̀ kò sí fún Àwọn Èrèdí Ẹ̀kọ́)."
+      },
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Ṣètò Àkọlé, èyí ń rọ́pò àkọlé tó dá lórí irú"
+      },
+      {
+        "property": "icon",
+        "title": "Àmì",
+        "description": "Ṣètò àmì, èyí ń rọ́pò àmì tó dá lórí irú"
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Ṣètò àwọ̀ àfikún, èyí ń rọ́pò àwọ̀ tó dá lórí irú"
+      },
+      {
+        "slot": "",
+        "title": "Àwọn àkóónú"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS بلاک",
+    "description": "بیک اینڈ پر رینڈر ہونے والا CMS بلاک"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "ماڈیول",
+        "description": "ہمارے CMS سے لوڈ کرنے کے لیے ماڈیول"
+      },
+      {
+        "property": "blockDelta",
+        "title": "ڈیلٹا",
+        "description": "ہمارے CMS سے لوڈ کرنے کے لیے بلاک کا ڈیلٹا"
+      }
+    ]
+  }
+}

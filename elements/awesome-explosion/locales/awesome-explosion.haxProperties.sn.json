@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Kuputika Kunoshamisa",
+    "description": "Mufambiro wekuputika unodyidzana une manzwi asingamanikidzwi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Saizi",
+        "description": "Seta saizi yekuputika.",
+        "options": {
+          "tiny": "Diki-diki",
+          "small": "Diki",
+          "medium": "Pakati",
+          "large": "Hombe",
+          "epic": "Hombe zvikuru"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Ruvara",
+        "description": "Seta dingindira reruvara rwekuputika.",
+        "options": {
+          "": "Zvakajairwa",
+          "red": "Tsvuku",
+          "blue": "Bhuruu",
+          "purple": "Pepuru",
+          "orange": "Orenji",
+          "yellow": "Yero"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Manzwi",
+        "description": "Batidza manzwi."
+      },
+      {
+        "property": "resetSound",
+        "title": "Tangazve Inzwi",
+        "description": "Tangazve inzwi kubva pakutanga nguva dzose."
+      },
+      {
+        "property": "image",
+        "title": "Mufananidzo Wako",
+        "description": "URL isingamanikidzwi yemufananidzo wako wekuputika."
+      },
+      {
+        "property": "sound",
+        "title": "Inzwi Rako",
+        "description": "URL isingamanikidzwi yeinzwi rako."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Zvakadzimwa",
+        "description": "Dzima kudyidzana kwose."
+      }
+    ]
+  }
+}

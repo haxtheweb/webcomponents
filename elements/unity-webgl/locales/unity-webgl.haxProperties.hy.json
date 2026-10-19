@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity նվագարկիչ",
+    "description": "Unity WebGL նվագարկիչ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Թիրախ",
+        "description": "Խաղի կառուցվածքի ուղին։"
+      },
+      {
+        "property": "compression",
+        "title": "Սեղմման եղանակ",
+        "description": "Խաղի ակտիվների սեղմման ֆայլի ընդլայնումը։"
+      },
+      {
+        "property": "streamingurl",
+        "title": "Հոսքային URL",
+        "description": "Հոսքային ակտիվների URL-ը։"
+      },
+      {
+        "property": "companyname",
+        "title": "Ընկերության անուն",
+        "description": "Ընկերության անունը։"
+      },
+      {
+        "property": "productname",
+        "title": "Ապրանքի անուն",
+        "description": "Խաղի անվանումը։"
+      },
+      {
+        "property": "productversion",
+        "title": "Ապրանքի տարբերակ",
+        "description": "Թողարկման տարբերակը։"
+      },
+      {
+        "property": "width",
+        "title": "Կտավի լայնություն",
+        "description": "Կտավի CSS լայնությունը (օրինակ՝ px կամ em)։"
+      },
+      {
+        "property": "height",
+        "title": "Կտավի բարձրություն",
+        "description": "Կտավի CSS բարձրությունը (օրինակ՝ px կամ em)։"
+      },
+      {
+        "property": "background",
+        "title": "Կտավի ֆոն",
+        "description": "Կտավի CSS ֆոնը։"
+      }
+    ]
+  }
+}

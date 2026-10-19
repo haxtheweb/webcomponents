@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Pachika jumuiya za Discord kutoka URL ya kushiriki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ya Rasilimali",
+        "description": "URL ya rasilimali."
+      },
+      {
+        "property": "height",
+        "title": "Urefu",
+        "description": "Urefu wa fremu ya maudhui."
+      },
+      {
+        "property": "width",
+        "title": "Upana",
+        "description": "Upana wa fremu ya maudhui."
+      }
+    ]
+  }
+}

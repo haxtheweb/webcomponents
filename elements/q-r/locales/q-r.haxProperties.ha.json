@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR Code",
+    "description": "Lambar da za a duba daga wayar salula."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Bayanan QR",
+        "description": "Tushen bayanan QR code ɗin."
+      },
+      {
+        "property": "title",
+        "title": "Madadin take",
+        "description": "Madadin take da aka haɗa da tushen QR code."
+      },
+      {
+        "property": "modulesize",
+        "title": "Girma",
+        "description": "Girman QR code."
+      },
+      {
+        "property": "margin",
+        "title": "Gefe",
+        "description": "Mai naɗe lambar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Tsarin fitarwa",
+        "description": "Tsarin da za a fitar da shi.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tabel CSV",
+    "description": "Ini dapat membuat tabel dari file CSV di mana pun lokasinya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Sumber",
+        "description": "URL untuk file CSV ini."
+      },
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Judul untuk tabel yang akan dibuat."
+      },
+      {
+        "property": "description",
+        "title": "Deskripsi",
+        "description": "Deskripsi lebih rinci untuk meningkatkan aksesibilitas data tabel."
+      }
+    ]
+  }
+}

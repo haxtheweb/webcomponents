@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "ነጥብ ያለው ዝርዝር",
+    "description": "ነጥብ ያለው ዝርዝር ፍጠር።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "የነጥብ ቅጥ",
+        "description": "ላልተደረደረ ዝርዝር ነጥቦች የሚያገለግል ቅጥ።",
+        "options": {
+          "": "ነባሪ (ካሬ)",
+          "list-disc": "ዲስክ",
+          "list-circle": "ክብ",
+          "list-square": "ካሬ"
+        }
+      }
+    ]
+  }
+}

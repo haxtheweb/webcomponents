@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Spilunarlisti",
+    "description": "Birta hvers kyns efni í spilunarlista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Uppruni",
+        "description": "Efni sem birtist í spilunarlistanum."
+      },
+      {
+        "property": "edit",
+        "title": "Breytingarhamur",
+        "description": "Skipta milli breytingar- og forskoðunarhams fyrir spilunarlistann."
+      },
+      {
+        "property": "navigation",
+        "title": "Leiðsögn",
+        "description": "Sýna hnappa til að fara áfram og aftur á bak."
+      },
+      {
+        "property": "pagination",
+        "title": "Síðuskipting",
+        "description": "Sýna síðuskiptingarpunkta."
+      },
+      {
+        "property": "orientation",
+        "title": "Stefna",
+        "description": "Stefna glæranna.",
+        "options": {
+          "horizontal": "Lárétt",
+          "vertical": "Lóðrétt"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Upphafsglæra",
+        "description": "Númer glærunnar sem fókus er settur á í upphafi."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Myndhlutfall",
+        "description": "Myndhlutfall glæranna.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "ແຜນພູມວົງມົນ",
+    "description": "ສ້າງແຜນພູມທີ່ເຂົ້າເຖິງໄດ້ຈາກ CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນທາງເລືອກ."
+      },
+      {
+        "title": "ຊຸດຮູບແບບມືດ",
+        "description": "ເປີດໃຊ້ທີມມືດ"
+      },
+      {
+        "title": "ໄຟລ໌ CSV",
+        "description": "ໂຫຼດຂໍ້ມູນຈາກ CSV."
+      },
+      {
+        "title": "ຫົວຂໍ້ແຜນພູມ",
+        "description": "ຂໍ້ຄວາມແທນທີ່ເຂົ້າເຖິງໄດ້ສຳລັບແຜນພູມຂອງທ່ານ."
+      },
+      {
+        "title": "ຄຳອະທິບາຍແຜນພູມ",
+        "description": "ຄຳອະທິບາຍທີ່ເຂົ້າເຖິງໄດ້ຂອງແຜນພູມຂອງທ່ານ."
+      },
+      {
+        "title": "ຊື່ມາດຕາສ່ວນ",
+        "description": "ອັດຕາສ່ວນ ກວ້າງ:ສູງ ຂອງແຜນພູມ (ເບິ່ງ https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings ສຳລັບ $ct-scales ແລະ $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "ໂດນັດ"
+      },
+      {
+        "title": "ສະແດງປ້າຍ"
+      },
+      {
+        "title": "ມຸມເລີ່ມຕົ້ນ"
+      },
+      {
+        "title": "ໄລຍະຫ່າງພາຍໃນ"
+      },
+      {
+        "title": "ທັງໝົດ",
+        "description": "ຜົນລວມທີ່ທ່ານສາມາດກຳນົດໄດ້ (ບໍ່ບັງຄັບ). ໂດຍການກຳນົດຄ່າຜົນລວມ, ຜົນບວກຂອງຄ່າໃນຊຸດຂໍ້ມູນຕ້ອງເທົ່າກັບຜົນລວມນີ້ ເພື່ອແຕ້ມວົງມົນເຕັມ. ທ່ານສາມາດໃຊ້ພາຣາມິເຕີນີ້ເພື່ອແຕ້ມພຽງບາງສ່ວນຂອງແຜນພູມວົງມົນ ຫຼື ແຜນພູມມາດວັດ."
+      },
+      {
+        "title": "ບໍ່ສົນໃຈຄ່າຫວ່າງ",
+        "description": "ຄ່າຫວ່າງຈະຖືກລະເວັ້ນ ເພື່ອຫຼີກລ່ຽງການແຕ້ມສ່ວນ ແລະ ປ້າຍທີ່ບໍ່ຈຳເປັນ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "ປີ້ນຂໍ້ມູນ",
+        "description": "ປີ້ນຂໍ້ມູນລວມທັງປ້າຍ, ລຳດັບຊຸດຂໍ້ມູນ ແລະ ອາເຣຂໍ້ມູນຊຸດທັງໝົດ."
+      },
+      {
+        "title": "ຕາຕະລາງ HTML",
+        "description": "ບໍ່ບັງຄັບ: ໂຫຼດຂໍ້ມູນເປັນຕາຕະລາງ HTML."
+      },
+      {
+        "title": "ຄວາມກວ້າງເສັ້ນໂດນັດ"
+      },
+      {
+        "title": "ໂດນັດແບບທຶບ",
+        "description": "ແຕ້ມສ່ວນໂດນັດເປັນຮູບຮ່າງ ແທນທີ່ຈະເປັນເສັ້ນ."
+      },
+      {
+        "title": "ທິດທາງປ້າຍ",
+        "description": "ແຕ້ມສ່ວນໂດນັດເປັນຮູບຮ່າງ ແທນທີ່ຈະເປັນເສັ້ນ.",
+        "options": {
+          "neutral": "ກາງ",
+          "explode": "ກະຈາຍອອກ",
+          "implode": "ຫົດເຂົ້າ"
+        }
+      },
+      {
+        "title": "ການເລື່ອນປ້າຍ",
+        "description": "ການເລື່ອນຕຳແໜ່ງປ້າຍຈາກຕຳແໜ່ງມາດຕະຖານ ເຊິ່ງແມ່ນເຄິ່ງໜຶ່ງຂອງລັດສະໝີ. ຄ່ານີ້ສາມາດເປັນບວກ ຫຼື ລົບ. ຄ່າບວກຈະວາງປ້າຍຫ່າງອອກຈາກຈຸດກາງ."
+      },
+      {
+        "title": "ຕຳແໜ່ງປ້າຍ",
+        "options": {
+          "inside": "ພາຍໃນ",
+          "outside": "ພາຍນອກ",
+          "center": "ກາງ"
+        }
+      }
+    ]
+  }
+}

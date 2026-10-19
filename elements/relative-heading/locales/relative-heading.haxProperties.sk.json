@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relatívny nadpis",
+    "description": "vytvára správnu hierarchiu nadpisov na základe nadpisu rodiča"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID zdroja nadradeného nadpisu"
+      },
+      {
+        "property": "disableLink",
+        "description": "Vypne funkciu tlačidla odkazu."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Zarovná tlačidlo kopírovania odkazu úplne doprava od nadpisu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Úroveň nadpisu, ak sa rodič nenájde."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Prepíše predvolený text oznámenia pri kopírovaní odkazu."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Prepíše predvolené označenie tlačidla kopírovania odkazu."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Prepíše predvolenú ikonu tlačidla kopírovania odkazu."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Prepíše predvolené označenie tlačidla zatvorenia oznámenia pri kopírovaní odkazu."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Prepíše predvolenú ikonu tlačidla zatvorenia oznámenia pri kopírovaní odkazu."
+      }
+    ]
+  }
+}

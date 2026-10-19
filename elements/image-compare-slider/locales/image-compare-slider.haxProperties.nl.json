@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Afbeeldingen vergelijken",
+    "description": "Schuif de ene afbeelding over de andere om ze te vergelijken."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Bovenste afbeelding",
+        "description": "Bovenste afbeelding die over de onderste schuift."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alt-tekst bovenste afbeelding",
+        "description": "Verplichte alt-tekst voor toegankelijkheid."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Onderste afbeelding",
+        "description": "Onderste afbeelding onder de bovenste afbeelding."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alt-tekst onderste afbeelding",
+        "description": "Verplichte alt-tekst voor toegankelijkheid."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Gedrag",
+        "description": "Kies de veegmodus (standaard) of de dekkingsmodus voor de bovenste afbeelding."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Kleur van de schuifbalk."
+      },
+      {
+        "property": "dark",
+        "title": "Donker",
+        "description": "Keer de kleur van de schuifbalk om."
+      },
+      {
+        "property": "position",
+        "title": "Beginpositie",
+        "description": "Beginpositie van 0 tot 100."
+      }
+    ]
+  }
+}

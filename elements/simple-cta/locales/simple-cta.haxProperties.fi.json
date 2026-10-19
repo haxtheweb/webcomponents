@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Toimintakehote",
+    "description": "Yksinkertainen painike, jossa on linkki toimintaan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Nimi",
+        "description": "Linkin nimi"
+      },
+      {
+        "property": "link",
+        "title": "Linkki",
+        "description": "Anna linkki mihin tahansa resurssiin"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Piilota kuvake",
+        "description": "Piilota tekstiä korostava kuvake"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Kuvake",
+        "description": "Toimintolinkin kuvake"
+      }
+    ]
+  }
+}

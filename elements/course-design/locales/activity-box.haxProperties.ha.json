@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Akwatin Aiki",
+    "description": "Ƙaramin akwatin kanu mai salo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Alama",
+        "description": "Alamar da ake nunawa tare da akwatin aikin."
+      },
+      {
+        "property": "tag",
+        "title": "Tag na akwatin aiki",
+        "description": "Tag ɗin da ake nunawa a cikin akwatin aikin."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Kada a Sa Launi",
+        "description": "Hana sanya launuka a kan alamar."
+      }
+    ]
+  }
+}

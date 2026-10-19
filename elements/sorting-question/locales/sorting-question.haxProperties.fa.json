@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "پرسش مرتب‌سازی",
+    "description": "موارد را به ترتیب درست مرتب کنید."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "پرسش",
+        "description": "سرعنوان پرسش."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "قالب نمره‌دهی",
+        "description": "OER Schema: قالب نمره‌دهی این ارزشیابی (مثلاً امتیاز، حرفی، درصدی، تکمیل)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "هدف یادگیری",
+        "description": "OER Schema: هدف یادگیری مرتبط با این ارزشیابی."
+      },
+      {
+        "property": "forCourse",
+        "title": "درس",
+        "description": "OER Schema: درسی که این ارزشیابی برای آن در نظر گرفته شده است."
+      },
+      {
+        "property": "answers",
+        "title": "پاسخ‌ها",
+        "description": "ترتیب پاسخ‌ها توالی درست را تعیین می‌کند."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "نام آزمونک",
+        "description": "نام آزمونک برای شناسایی xAPI در سامانه‌های تحلیلی."
+      }
+    ]
+  }
+}

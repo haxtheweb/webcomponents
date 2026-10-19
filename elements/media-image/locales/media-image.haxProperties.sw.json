@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Picha Iliyoboreshwa",
+    "description": "Njia ya kuwasilisha picha kwa maboresho mbalimbali."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Chanzo",
+        "description": "URL ya picha."
+      },
+      {
+        "property": "alt",
+        "title": "Maandishi mbadala",
+        "description": "Maandishi ya kuelezea picha kwa watumiaji wasioona."
+      },
+      {
+        "property": "link",
+        "title": "Kiungo",
+        "description": "Unganisha picha na URL"
+      },
+      {
+        "property": "card",
+        "title": "Kadi",
+        "description": "Weka kivuli ili ionekane kama kadi iliyoinuliwa."
+      },
+      {
+        "property": "box",
+        "title": "Kisanduku",
+        "description": "Weka kisanduku kinachoonekana kuzunguka picha."
+      },
+      {
+        "property": "offset",
+        "title": "Msogeo",
+        "description": "Sogeza picha kushoto au kulia.",
+        "options": {
+          "none": "hakuna",
+          "wide": "pana",
+          "narrow": "nyembamba"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Marejeleo",
+        "description": "Nukuu ya picha."
+      },
+      {
+        "property": "caption",
+        "title": "Maelezo mafupi",
+        "description": "Maelezo mafupi ya picha."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Kichwa cha Kielelezo",
+        "description": "Kichwa cha lebo ya kielelezo."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Maelezo ya Kielelezo",
+        "description": "Maelezo ya lebo ya kielelezo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Picha ndogo",
+        "description": "Chanzo cha picha ndogo. Huonyesha picha ndogo lakini hufungua chanzo kamili katika modali."
+      },
+      {
+        "property": "round",
+        "title": "Picha ya duara",
+        "description": "Hukata mwonekano wa picha uwe na umbo la duara."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Zima modali ya picha",
+        "description": "Zima mibofyo inayofungua picha katika kidirisha cha kikaguzi cha picha."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Onyesha kama markdown",
+        "description": "Onyesha maelezo mafupi na nukuu kama markdown."
+      }
+    ]
+  }
+}

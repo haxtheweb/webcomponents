@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Codice QR",
+    "description": "Codice da scannà cù un telefonu intelligente."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Dati QR",
+        "description": "Fonte di i dati per u codice QR."
+      },
+      {
+        "property": "title",
+        "title": "Titulu alternativu",
+        "description": "Titulu alternativu ligatu à a fonte di u codice QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Dimensione",
+        "description": "Dimensione di u codice QR."
+      },
+      {
+        "property": "margin",
+        "title": "Margine",
+        "description": "Spaziu intornu à u codice."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Furmatu di surtita",
+        "description": "Furmatu in u quale hè generatu.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "جاسازی محتوای وب خارجی در یک iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL منبع",
+        "description": "URL منبع."
+      },
+      {
+        "property": "height",
+        "title": "ارتفاع",
+        "description": "ارتفاع iframe."
+      },
+      {
+        "property": "width",
+        "title": "عرض",
+        "description": "عرض iframe."
+      }
+    ]
+  }
+}

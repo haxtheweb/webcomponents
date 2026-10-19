@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "د زده کړې برخه",
+    "description": "د ښوونکو لپاره یو کارت ترڅو د ښوونې طریقه او تدریسي ستراتیژۍ شریکې کړي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "ډول",
+        "description": "د کارولو لپاره د کارت ډول."
+      },
+      {
+        "property": "subtitle",
+        "title": "فرعي سرلیک",
+        "description": "د کارت فرعي سرلیک."
+      },
+      {
+        "property": "url",
+        "title": "لینک",
+        "description": "د کارت لپاره اختیاري لینک (لینک د زده کړې موخو لپاره شتون نه لري)."
+      },
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "سرلیک وټاکئ، دا د ډول پر بنسټ سرلیک بدلوي"
+      },
+      {
+        "property": "icon",
+        "title": "آیکن",
+        "description": "آیکون وټاکئ، دا د ډول پر بنسټ آیکون بدلوي"
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د ټینګار رنګ وټاکئ، دا د ډول پر بنسټ رنګ بدلوي"
+      },
+      {
+        "slot": "",
+        "title": "منځپانګې"
+      }
+    ]
+  }
+}

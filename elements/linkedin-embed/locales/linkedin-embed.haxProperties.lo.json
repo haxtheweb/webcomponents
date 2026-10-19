@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "ຝັງ LinkedIn",
+    "description": "ຝັງບັດໂປຣໄຟລ໌ LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "ຊື່ໂປຣໄຟລ໌",
+        "description": "ສ່ວນຊື່ຜູ້ໃຊ້ໂປຣໄຟລ໌ LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "ທ້ອງຖິ່ນ",
+        "description": "ຄ່າ metadata ທ້ອງຖິ່ນ ເຊັ່ນ en_US."
+      }
+    ]
+  }
+}

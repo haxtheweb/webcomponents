@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "מעטפת להטמעות של נגן Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "קישור הטמעה או שיתוף מ-Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "ערכת נושא",
+        "description": "ערכת צבע הרקע של הנגן.",
+        "options": {
+          "": "ברירת מחדל",
+          "0": "שחור"
+        }
+      },
+      {
+        "property": "size",
+        "title": "גודל",
+        "description": "גודל הנגן.",
+        "options": {
+          "normal": "ברירת מחדל",
+          "compact": "קומפקטי"
+        }
+      }
+    ]
+  }
+}

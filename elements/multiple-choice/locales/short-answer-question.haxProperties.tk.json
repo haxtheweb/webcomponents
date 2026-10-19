@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Gysga jogaply sorag",
+    "description": "Ulanyja ýönekeý soraga jogap berdiriň"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Sorag",
+        "description": "Ulanyjylaryň jogap bermeli soragy."
+      },
+      {
+        "property": "answers",
+        "title": "Mümkin jogaplar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testiň ady",
+        "description": "Bu elementi kesgitlemek üçin xAPI esasly gurşawlarda ulanylýan testiň ady"
+      }
+    ]
+  }
+}

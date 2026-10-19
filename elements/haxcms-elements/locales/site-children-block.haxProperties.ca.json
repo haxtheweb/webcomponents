@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: bloc de fills",
+    "description": "Bloc dinàmic per mostrar els fills de la pàgina actual"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Mètode dinàmic",
+        "description": "Com calcular els fills en relació amb aquest element",
+        "options": {
+          "active": "Fills actius",
+          "parent": "Fills del pare",
+          "ancestor": "Tots els fills des de l'avantpassat més alt"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Nivell inicial"
+      },
+      {
+        "property": "end",
+        "title": "Nivell final"
+      }
+    ]
+  }
+}

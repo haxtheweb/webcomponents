@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Тарҳи курс",
+    "description": "Контейнер барои маводҳои таълимӣ ва унсурҳои тарҳи курс."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Идентификатори курс",
+        "description": "OER Schema: идентификатори курс, мас. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Давраи пешниҳод",
+        "description": "OER Schema: давраи таҳсиле, ки дар он курс пешниҳод мешавад."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Формати пешниҳод",
+        "description": "OER Schema: формате, ки барои пешниҳоди курс истифода мешавад (мас. ҳузурӣ, онлайн, омехта)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Омӯзгори асосӣ",
+        "description": "OER Schema: омӯзгори асосии курс."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL-и барномаи таълимӣ",
+        "description": "OER Schema: URL ба барномаи таълимии курс."
+      }
+    ]
+  }
+}

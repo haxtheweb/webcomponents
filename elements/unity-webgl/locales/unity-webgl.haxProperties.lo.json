@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "ເຄື່ອງຫຼິ້ນ Unity",
+    "description": "ເຄື່ອງຫຼິ້ນ Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "ເປົ້າໝາຍ",
+        "description": "ເສັ້ນທາງໄປຫາບິວຂອງເກມ."
+      },
+      {
+        "property": "compression",
+        "title": "ວິທີບີບອັດ",
+        "description": "ນາມສະກຸນໄຟລ໌ການບີບອັດສຳລັບຊັບສິນຂອງເກມ."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL ສະຕຣີມມິງ",
+        "description": "URL ຂອງຊັບສິນສະຕຣີມມິງ."
+      },
+      {
+        "property": "companyname",
+        "title": "ຊື່ບໍລິສັດ",
+        "description": "ຊື່ບໍລິສັດ."
+      },
+      {
+        "property": "productname",
+        "title": "ຊື່ຜະລິດຕະພັນ",
+        "description": "ຊື່ເກມ."
+      },
+      {
+        "property": "productversion",
+        "title": "ເວີຊັນຜະລິດຕະພັນ",
+        "description": "ເວີຊັນທີ່ເຜີຍແຜ່."
+      },
+      {
+        "property": "width",
+        "title": "ຄວາມກວ້າງຂອງ Canvas",
+        "description": "ຄວາມກວ້າງ CSS ຂອງ Canvas (ເຊັ່ນ: px ຫຼື em)."
+      },
+      {
+        "property": "height",
+        "title": "ຄວາມສູງຂອງ Canvas",
+        "description": "ຄວາມສູງ CSS ຂອງ Canvas (ເຊັ່ນ: px ຫຼື em)."
+      },
+      {
+        "property": "background",
+        "title": "ພື້ນຫຼັງຂອງ Canvas",
+        "description": "ພື້ນຫຼັງ CSS ຂອງ Canvas."
+      }
+    ]
+  }
+}

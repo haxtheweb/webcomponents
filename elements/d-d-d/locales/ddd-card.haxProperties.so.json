@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kaar",
+    "description": "Qayb kaar ah oo lagu qurxiyay nidaamka naqshadda DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Sawir",
+        "description": "Sawir ikhtiyaari ah."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-ka sawirka",
+        "description": "Qoraal beddel ah oo sharaxaya sawirka."
+      },
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Cinwaanka kaarka."
+      },
+      {
+        "slot": "",
+        "title": "Nuxur",
+        "description": "Goobta nuxurka kaarka."
+      },
+      {
+        "property": "href",
+        "title": "Xiriiriye",
+        "description": "URL-ka xiriiriyaha badhanka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Calaamad",
+        "description": "Calaamadda badhanka."
+      },
+      {
+        "property": "noArrow",
+        "title": "Fallaar La'aan",
+        "description": "Qari fallaarta badhanka."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Xiriiriye: target",
+        "description": "Meesha laga furayo xiriiriyaha.",
+        "options": {
+          "": "Isla daaqadda",
+          "_blank": "Daaqad cusub - _blank",
+          "_top": "Daaqadda sare - _top",
+          "_parent": "Daaqadda waalidka - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Xiriiriye: rel",
+        "description": "Xiriirka u dhexeeya kheyraadka la xiriiriyay iyo dukumentiga hadda."
+      }
+    ]
+  }
+}

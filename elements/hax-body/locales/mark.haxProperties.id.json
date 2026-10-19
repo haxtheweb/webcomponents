@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sorotan",
+    "description": "Sorot teks sebaris."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teks",
+        "description": "Teks yang disorot."
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS કન્ટેનર"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "એડિટર છુપાવો",
+        "description": "ફાઇલ સંપાદન ઇન્ટરફેસ છુપાવો."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "ટર્મિનલ છુપાવો",
+        "description": "આપમેળે ચાલતા પ્રોગ્રામ માટે ટર્મિનલ છુપાવો."
+      },
+      {
+        "property": "hideWindow",
+        "title": "વિન્ડો છુપાવો",
+        "description": "ફક્ત-ટર્મિનલ ઉપયોગ માટે આઉટપુટ વિન્ડો છુપાવો."
+      },
+      {
+        "slot": "",
+        "title": "આદેશો",
+        "description": "લોડ કરતા પહેલાં ચલાવવાના આદેશો (દરેક પંક્તિમાં એક)."
+      }
+    ]
+  }
+}

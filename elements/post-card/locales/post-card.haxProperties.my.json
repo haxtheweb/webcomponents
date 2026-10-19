@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ပို့စကတ်",
+    "description": "တစ်နေရာရာမှ ပို့သော ပို့စကတ်အစစ်နှင့် တူစေရန် ရည်ရွယ်ထားသော ပျော်စရာ မီဒီယာ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "သို့",
+        "description": "မည်သူ့ထံ ပို့မည်နည်း?"
+      },
+      {
+        "property": "from",
+        "title": "မှ",
+        "description": "သင် မည်သူနည်း?"
+      },
+      {
+        "property": "message",
+        "title": "မက်ဆေ့ချ်",
+        "description": "သင် ဘာပြောချင်သနည်း?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "စာတိုက်တံဆိပ် နေရာ",
+        "description": "ဤကတ်ကို မည်သည့်နေရာမှ ပို့ခဲ့သနည်း?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "အဓိက ဓာတ်ပုံ ရင်းမြစ်",
+        "description": "သင့်ဓာတ်ပုံ မည်သည့်နေရာတွင် ရှိသနည်း?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "တံဆိပ်ခေါင်း ဓာတ်ပုံ ရင်းမြစ်",
+        "description": "သင့်ဓာတ်ပုံ မည်သည့်နေရာတွင် ရှိသနည်း?"
+      }
+    ]
+  }
+}

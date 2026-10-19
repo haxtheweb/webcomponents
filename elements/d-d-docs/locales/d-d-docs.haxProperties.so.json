@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Naqshee, Horumari, Burburi",
+    "description": "Hirgelinta nidaamka naqshadda ee HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Ikhtiyaarka la muujinayo",
+        "options": {
+          "*": "Hagaha qaabka oo buuxa"
+        }
+      }
+    ]
+  }
+}

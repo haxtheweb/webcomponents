@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS բլոկ",
+    "description": "CMS բլոկ՝ ցուցադրված սերվերի կողմում"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Մոդուլ",
+        "description": "Մեր CMS-ից բեռնվող մոդուլ"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Մեր CMS-ից բեռնվող բլոկի delta-ն"
+      }
+    ]
+  }
+}

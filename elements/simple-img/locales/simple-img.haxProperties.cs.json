@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Jednoduchý obrázek",
+    "description": "Upravujte obrázky pomocí jednoduchých parametrů."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Zdroj",
+        "description": "URL zdroje obrázku."
+      },
+      {
+        "property": "height",
+        "title": "Výška",
+        "description": "Volitelná výška obrázku."
+      },
+      {
+        "property": "width",
+        "title": "Šířka",
+        "description": "Volitelná šířka obrázku."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativní text",
+        "description": "Užitečné pro čtečky obrazovky a lepší SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kvalita",
+        "description": "Kvalita obrázku při generování (pouze JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Priorita načítání",
+        "description": "Nápověda k výkonu pro moderní prohlížeče.",
+        "options": {
+          "auto": "Automaticky",
+          "high": "Vysoká",
+          "low": "Nízká"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Způsob dekódování",
+        "description": "Nápověda k výkonu vykreslování obrázků v moderních prohlížečích.",
+        "options": {
+          "auto": "Automaticky",
+          "async": "Asynchronně"
+        }
+      }
+    ]
+  }
+}

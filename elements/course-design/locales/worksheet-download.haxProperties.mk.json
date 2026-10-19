@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Преземање работен лист",
+    "description": "Копче за прикажување датотеки достапни за преземање."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов на преземањето."
+      },
+      {
+        "property": "link",
+        "title": "Врска",
+        "description": "Врска за преземањето."
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Đánh dấu từ",
+    "description": "Xác định khái niệm thông qua các từ bằng cách nhấp vào trong một đoạn văn bản."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Câu hỏi",
+        "description": "Câu hỏi để người dùng trả lời."
+      },
+      {
+        "property": "statement",
+        "title": "Câu",
+        "description": "Câu sẽ được chuyển thành tương tác đánh dấu từ."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Hình thức chấm điểm",
+        "description": "OER Schema: hình thức chấm điểm cho bài đánh giá này (ví dụ: điểm số, điểm chữ, phần trăm, hoàn thành)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mục tiêu học tập",
+        "description": "OER Schema: mục tiêu học tập gắn với bài đánh giá này."
+      },
+      {
+        "property": "forCourse",
+        "title": "Khóa học",
+        "description": "OER Schema: khóa học mà bài đánh giá này dành cho."
+      },
+      {
+        "property": "answers",
+        "title": "Đáp án"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tên bài kiểm tra",
+        "description": "Tên bài kiểm tra được truyền vào để nhận dạng mục này trong các môi trường dựa trên xAPI"
+      }
+    ]
+  }
+}

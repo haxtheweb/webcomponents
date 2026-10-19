@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kartë retro",
+    "description": "Kartë e thjeshtë me dizajn retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Titulli kryesor i kartës."
+      },
+      {
+        "property": "url",
+        "description": "URL-ja që hapet kur klikohet karta."
+      },
+      {
+        "property": "subtitle",
+        "title": "Nëntitulli",
+        "description": "Nëntitulli i kartës."
+      },
+      {
+        "property": "tags",
+        "title": "Etiketat",
+        "description": "Etiketa të ndara me presje."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Burimi i medias",
+        "description": "Burimi kryesor i medias."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Burimi gjatë kalimit të miut",
+        "description": "Burimi i medias që shfaqet kur kalon miu mbi kartë ose kur aktivizohet."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra theksuese e zbatuar në të gjithë kartën."
+      },
+      {
+        "property": "dark",
+        "title": "E errët",
+        "description": "Përdor ngjyrat bazë të modalitetit të errët."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mapa de imaxe",
+    "description": "Un mapa de imaxe accesible con puntos interactivos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiqueta",
+        "description": "Etiqueta para o mapa de imaxe."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Detalles dos puntos interactivos",
+        "description": "Os puntos interactivos do mapa de imaxe."
+      }
+    ]
+  }
+}

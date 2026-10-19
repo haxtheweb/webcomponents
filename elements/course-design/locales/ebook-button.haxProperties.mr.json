@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ई-पुस्तक बटण",
+    "description": "ई-पुस्तकाशी लिंक करणारे बटण."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "बटणाचे शीर्षक."
+      },
+      {
+        "property": "link",
+        "title": "लिंक",
+        "description": "क्लिक केल्यावर पुनर्निर्देशित करायची लिंक."
+      },
+      {
+        "property": "icon",
+        "title": "आयकॉन",
+        "description": "या लिंकचे प्रतिनिधित्व करणारा आयकॉन"
+      }
+    ]
+  }
+}

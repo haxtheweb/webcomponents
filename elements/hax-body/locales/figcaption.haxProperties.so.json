@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Cinwaan-hoosaadka sawirka",
+    "description": "Cinwaan-hoosaad sawir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Qoraal hoosaad",
+        "description": "Qoraalka lagu muujiyo sawirka hoostiisa."
+      }
+    ]
+  }
+}

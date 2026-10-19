@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "samfurin kwas",
+    "description": "Tsari mai mu'amala don ra'ayoyin kwas tare da cikakkun bayanai, motsi, da gwaje-gwajen ilimi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "take"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Wurin bayani"
+      },
+      {
+        "title": "Wurin cikakkun bayanai"
+      },
+      {
+        "title": "Wurin motsi"
+      },
+      {
+        "title": "Wurin Gwajin Ilimi"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Wurin tambari"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Azzione d'utilizatore",
+    "description": "Seguità l'azzioni di l'utilizatori è mandà i dati à i magazini xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Avvenimentu à seguità",
+        "description": "Azzione di l'utilizatore chì attiva st'avvenimentu.",
+        "options": {
+          "visibility": "Pò vede questu",
+          "keydown": "Pressà un tastu quì",
+          "click": "Cliccà quì",
+          "hover": "Passà sopra à questu"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Seguità ogni volta",
+        "description": "Per difettu, solu a prima occurrenza hè seguitata."
+      }
+    ]
+  }
+}

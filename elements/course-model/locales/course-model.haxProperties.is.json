@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "námskeiðslíkan",
+    "description": "Gagnvirk uppsetning fyrir hugtök námskeiðs með upplýsingum, hreyfimyndum og þekkingarprófum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "titill"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Upplýsingasvæði"
+      },
+      {
+        "title": "Ítarsvæði"
+      },
+      {
+        "title": "Hreyfimyndasvæði"
+      },
+      {
+        "title": "Svæði þekkingarprófs"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Svæði merkis"
+      }
+    ]
+  }
+}

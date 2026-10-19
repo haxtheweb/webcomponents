@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kāri",
+    "description": "He wāhanga kāri kua whakarākeitia ki te pūnaha hoahoa DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Whakaahua",
+        "description": "Whakaahua kōwhiri."
+      },
+      {
+        "property": "alt",
+        "title": "Kupu kē o te whakaahua",
+        "description": "Kupu kē e whakaahua ana i te whakaahua."
+      },
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Taitara o te kāri."
+      },
+      {
+        "slot": "",
+        "title": "Ihirangi",
+        "description": "Wāhi ihirangi o te kāri."
+      },
+      {
+        "property": "href",
+        "title": "Hono",
+        "description": "URL hono o te pātene."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Tapanga",
+        "description": "Tapanga o te pātene."
+      },
+      {
+        "property": "noArrow",
+        "title": "Kāore he Pere",
+        "description": "Hunaia te pere o te pātene."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Hono: whāinga",
+        "description": "Me whakatuwhera te hono ki hea.",
+        "options": {
+          "": "Te matapihi ōrite",
+          "_blank": "Matapihi hou - _blank",
+          "_top": "Matapihi runga - _top",
+          "_parent": "Matapihi matua - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Hono: rel",
+        "description": "Te hononga i waenga i te rauemi kua honoa me te tuhinga o nāianei."
+      }
+    ]
+  }
+}

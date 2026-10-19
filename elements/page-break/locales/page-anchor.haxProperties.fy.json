@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sideanker",
+    "description": "Keppelje nei spesifike punten yn media op de side."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Sidedoel",
+        "description": "ID of boarne dêr't dit anker nei ferwiist."
+      },
+      {
+        "property": "value",
+        "title": "Wearde djippe keppeling",
+        "description": "Wearde fan de djippe keppeling (bygelyks tiidstimpel of dia-ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Side-entiteit",
+        "description": "Opsjonele side-entiteit foar it stjoeren fan de presintaasje fan besibbe begripen."
+      }
+    ]
+  }
+}

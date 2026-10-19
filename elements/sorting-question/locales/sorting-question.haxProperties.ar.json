@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "سؤال ترتيب",
+    "description": "رتِّب العناصر بالترتيب الصحيح."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "السؤال",
+        "description": "رأس السؤال."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "صيغة التقدير",
+        "description": "OER Schema: صيغة تقدير هذا التقييم (مثل النقاط أو الحرف أو النسبة المئوية أو الإكمال)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "هدف التعلّم",
+        "description": "OER Schema: هدف التعلّم المرتبط بهذا التقييم."
+      },
+      {
+        "property": "forCourse",
+        "title": "المقرر",
+        "description": "OER Schema: المقرر المخصص له هذا التقييم."
+      },
+      {
+        "property": "answers",
+        "title": "الإجابات",
+        "description": "ترتيب الإجابات يحدد التسلسل الصحيح."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "اسم الاختبار",
+        "description": "اسم الاختبار المستخدم لتعريف xAPI في أنظمة التحليلات."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Sauti a layi",
+    "description": "Kunna sauti a cikin layi don ƙarin abun cikin shafi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Tushe",
+        "description": "Fayil ɗin MP3 ko URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin Ƙawa",
+        "description": "Launin ƙawa na katin."
+      },
+      {
+        "property": "shiny",
+        "title": "Mai sheƙi",
+        "description": "Yi amfani da bangon ƙawa mai haske maimakon toka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Duhu",
+        "description": "Yi amfani da yanayin duhu."
+      }
+    ]
+  }
+}

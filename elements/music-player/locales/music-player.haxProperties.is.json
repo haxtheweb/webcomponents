@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI-myndgerving",
+    "description": "Spila MIDI í samhengi með myndgervingu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Uppruni",
+        "description": "URL skrár til að spila."
+      },
+      {
+        "property": "visualizer",
+        "title": "Myndgerving",
+        "description": "Stíll myndgervingar fyrir tónlistarskrána.",
+        "options": {
+          "staff": "Nótnastrengur",
+          "piano-roll": "Píanórúlla",
+          "waterfall": "Píanó + foss"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Fela foss",
+        "description": "Fela fossnótur í píanómyndgervingu."
+      }
+    ]
+  }
+}

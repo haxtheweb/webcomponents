@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sideanker",
+    "description": "Link til bestemte steder i medier på siden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Sidemål",
+        "description": "ID eller ressource, som dette anker peger på."
+      },
+      {
+        "property": "value",
+        "title": "Dybdelinkværdi",
+        "description": "Dybdelinkværdi (f.eks. tidsstempel eller dias-ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Webstedsenhed",
+        "description": "Valgfri webstedsenhed til styring af visningen af relaterede begreber."
+      }
+    ]
+  }
+}

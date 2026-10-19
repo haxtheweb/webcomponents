@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Mpangilio wa safu",
+    "description": "Panga nyenzo katika safu rahisi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Mpangilio wa Safu",
+        "description": "Mtindo wa kuwasilisha vipengee hivi (unaweza kubadilika kwenye skrini ndogo)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Zima ujibadilishaji",
+        "description": "Teua kisanduku ili kudumisha safu kwenye skrini kubwa huku zikipangwa juu ya nyingine kwenye skrini ndogo kabisa"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Nafasi ya Ndani ya Kipengee",
+        "description": "Nafasi ndani ya kila kipengee"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Pambizo za vipengee",
+        "description": "Pambizo kati ya vipengee"
+      }
+    ]
+  }
+}

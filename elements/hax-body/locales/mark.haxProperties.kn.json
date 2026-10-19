@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ಹೈಲೈಟ್",
+    "description": "ಇನ್‌ಲೈನ್ ಪಠ್ಯವನ್ನು ಹೈಲೈಟ್ ಮಾಡಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "ಪಠ್ಯ",
+        "description": "ಹೈಲೈಟ್ ಮಾಡಿದ ಪಠ್ಯ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ຮູບພາບ Parallax",
+    "description": "ຮູບພາບເລື່ອນຕາມ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "ຮູບພາບ",
+        "description": "ຮູບພາບທີ່ໃຊ້ເປັນພື້ນຫຼັງ"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "ພື້ນທີ່ຫົວເລື່ອງ",
+        "description": "ພື້ນທີ່ຂໍ້ຄວາມຫົວເລື່ອງ"
+      }
+    ]
+  }
+}

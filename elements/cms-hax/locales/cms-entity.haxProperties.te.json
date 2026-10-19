@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS ఎంటిటీ",
+    "description": "బ్యాకెండ్‌లో రెండర్ చేయబడిన CMS ఎంటిటీ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "రకం",
+        "description": "మా CMS నుండి రకం",
+        "options": {
+          "node": "నోడ్",
+          "user": "వినియోగదారు",
+          "file": "ఫైల్"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "మా CMS నుండి id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "ప్రదర్శన మోడ్",
+        "description": "మా CMS నుండి ప్రదర్శన మోడ్"
+      }
+    ]
+  }
+}

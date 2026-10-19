@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub-antaŭrigardo",
+    "description": "Alirebla figuro kun longa priskribo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizo",
+        "description": "Maŝina nomo de la GitHub-organizaĵo"
+      },
+      {
+        "property": "repo",
+        "title": "Deponejo",
+        "description": "Maŝina nomo de la deponejo"
+      },
+      {
+        "property": "extended",
+        "title": "Plilarĝigita vido",
+        "description": "Inkluzivas readme en la elemento"
+      }
+    ]
+  }
+}

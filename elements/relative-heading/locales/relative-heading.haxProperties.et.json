@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Suhteline pealkiri",
+    "description": "väljastab õige pealkirjahierarhia ülemelemendi pealkirja põhjal"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Ülemelemendi pealkirja ressursi ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "Keelab lingi nupu funktsiooni."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Joondab lingi kopeerimise nupu pealkirjast paremale servale."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Pealkirja tase, kui ülemelementi ei leita."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Asendab lingi kopeerimise teate vaiketeksti."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Asendab lingi kopeerimise nupu vaikesildi."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Asendab lingi kopeerimise nupu vaikeikooni."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Asendab lingi kopeerimise teate sulgemisnupu vaikesildi."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Asendab lingi kopeerimise teate sulgemisnupu vaikeikooni."
+      }
+    ]
+  }
+}

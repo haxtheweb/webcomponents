@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ithayela le-Polaris",
+    "description": "Bonisa ithayela le-Polaris elinesihloko, umbhalo osekelayo ongawukhetha, nesixhumanisi ongasikhetha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Umbhalo oyinhloko",
+        "description": "Umbhalo oyinhloko wethayela."
+      },
+      {
+        "property": "line2",
+        "title": "Umbhalo wesibili",
+        "description": "Umbhalo osekelayo ongawukhetha."
+      },
+      {
+        "property": "type",
+        "title": "Isitayela sethayela",
+        "description": "Isitayela esibonakalayo sethayela esisethwe ngaphambili.",
+        "options": {
+          "1": "Isitayela 1",
+          "2": "Isitayela 2",
+          "3": "Isitayela 3",
+          "4": "Isitayela 4",
+          "5": "Isitayela 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Isithombe sangemuva",
+        "description": "I-URL yesithombe sangemuva esetshenziswa yizitayela zamathayela ezisekela izithombe."
+      },
+      {
+        "property": "link",
+        "title": "Isixhumanisi",
+        "description": "I-URL okuyiwa kuyo ongayikhetha yesenzo sethayela."
+      }
+    ]
+  }
+}

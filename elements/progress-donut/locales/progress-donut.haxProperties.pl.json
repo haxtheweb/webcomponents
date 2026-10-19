@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Pierścień postępu",
+    "description": "Pierścieniowy wskaźnik postępu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tytuł",
+        "description": "Tytuł elementu"
+      },
+      {
+        "property": "desc",
+        "title": "Opis",
+        "description": "Dostępny długi opis"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Źródło obrazu",
+        "description": "Źródło obrazu wewnątrz pierścienia."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Tekst alternatywny obrazu",
+        "description": "Tekst alternatywny obrazu."
+      },
+      {
+        "property": "animated",
+        "title": "Animowany",
+        "description": "Czy postęp jest animowany przy pierwszym wczytaniu"
+      },
+      {
+        "property": "complete",
+        "title": "Ukończono",
+        "description": "Tablica ukończonych wartości."
+      },
+      {
+        "property": "total",
+        "title": "Suma",
+        "description": "Suma, gdy wszystkie elementy są ukończone."
+      },
+      {
+        "property": "startAngle",
+        "title": "Kąt początkowy",
+        "description": "Kąt pierścienia, od którego zaczyna się postęp"
+      }
+    ]
+  }
+}

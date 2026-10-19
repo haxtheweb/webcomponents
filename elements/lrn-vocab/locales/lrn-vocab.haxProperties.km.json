@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "វាក្យសព្ទ",
+    "description": "ពាក្យវាក្យសព្ទ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "ពាក្យ"
+      },
+      {
+        "slot": "",
+        "title": "និយមន័យ",
+        "description": "និយមន័យដែលត្រូវបង្ហាញពេលចុចលើពាក្យ។"
+      },
+      {
+        "property": "description",
+        "title": "ការពិពណ៌នា (OER Schema)",
+        "description": "OER Schema៖ ការពិពណ៌នាខ្លីនៃពាក្យវាក្យសព្ទ។ បំពេញដោយស្វ័យប្រវត្តិពីអត្ថបទនិយមន័យ ប្រសិនបើទុកទទេ។"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Temas dispoñibles",
+    "description": "Mostrar os temas de HAXcms dispoñibles con cambio en vista previa en directo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Modo de vista",
+        "description": "Escolle como mostrar os temas",
+        "options": {
+          "gallery": "Galería",
+          "table": "Táboa"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Mostrar detalles",
+        "description": "Mostrar as descricións dos temas e información adicional"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Mostrar temas ocultos e herdados",
+        "description": "Mostrar temas ocultos, herdados e terribles ademais dos predeterminados do panel"
+      },
+      {
+        "property": "columns",
+        "title": "Columnas (galería)",
+        "description": "Número de columnas na vista de galería"
+      }
+    ]
+  }
+}

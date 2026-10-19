@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D oynatıcı",
+    "description": "3D dosya / artırılmış gerçeklik oynatıcısı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kaynak",
+        "description": "Bu AR dosyasının URL'si."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Öğenin AR'deki X konumu."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Öğenin AR'deki Y konumu."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Öğenin AR'deki Z konumu."
+      },
+      {
+        "property": "skyColor",
+        "title": "Gökyüzü rengi",
+        "description": "Sahnedeki gökyüzünün rengini seçin."
+      }
+    ]
+  }
+}

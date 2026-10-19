@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Tīmekļa komponentu dokumentācijas atskaņotājs"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Paslēpt logu",
+        "description": "Paslēpt izvades logu; noderīgi, ja nepieciešams tikai terminālis"
+      }
+    ]
+  }
+}

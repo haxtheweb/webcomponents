@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris-rakontkarto",
+    "description": "Montri Polaris-rakontkarton kun fona bildo, kolona etikedo kaj titola teksto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Fona bildo",
+        "description": "URL de bildo montrata kiel fono de la karto."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Fona grandeco",
+        "description": "Kiel la fona bildo plenigas la karton (CSS background-size).",
+        "options": {
+          "cover": "Kovri (cover)",
+          "contain": "Enteni (contain)",
+          "auto": "Aŭtomata (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Fona alligo",
+        "description": "Kiel la fona bildo kondutas dum rulumado (CSS background-attachment).",
+        "options": {
+          "scroll": "Rulumi (scroll)",
+          "fixed": "Fiksita (fixed)",
+          "local": "Loka (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Kolona etikedo",
+        "description": "Mallonga majuskla etikedo montrata supre de la karto. Lasu malplena por kaŝi."
+      },
+      {
+        "property": "label",
+        "title": "Karta teksto",
+        "description": "Ĉefa teksto montrata en la malsupra panelo."
+      },
+      {
+        "property": "link",
+        "title": "Ligilo",
+        "description": "Nedeviga cela URL, kiu ĉirkaŭas la tutan karton."
+      }
+    ]
+  }
+}

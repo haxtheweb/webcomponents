@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Placeholder",
+    "description": "Placeholder sing bisa diowahi dadi jinis media sing dipilih"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Jinis",
+        "description": "Jinis gizmo sing ditampa kanggo panggantos.",
+        "options": {
+          "text": "Teks / isi",
+          "document": "Dokumen / berkas",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Gambar",
+          "math": "Matematika"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Teks",
+        "description": "Rincikake placeholder sing dikarepake kanthi luwih jangkep"
+      }
+    ]
+  }
+}

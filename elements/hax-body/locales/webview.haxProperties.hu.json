@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Forrás",
+        "description": "Az erőforrás URL-je."
+      }
+    ]
+  }
+}

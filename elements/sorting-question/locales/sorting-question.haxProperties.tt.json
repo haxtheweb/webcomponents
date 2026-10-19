@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Тәртипкә салу соравы",
+    "description": "Элементларны дөрес тәртипкә куегыз."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Сорау",
+        "description": "Сорау башлыгы."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Бәяләү форматы",
+        "description": "OER Schema: бу бәяләүнең бәяләү форматы (мәс., баллар, хәреф, процент, үтәлү)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Уку максаты",
+        "description": "OER Schema: бу бәяләү белән бәйле уку максаты."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: бу бәяләү билгеләнгән курс."
+      },
+      {
+        "property": "answers",
+        "title": "Җаваплар",
+        "description": "Җаваплар тәртибе дөрес эзлеклелекне билгели."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Тест исеме",
+        "description": "Аналитика системаларында xAPI аша танып белү өчен кулланыла торган тест исеме."
+      }
+    ]
+  }
+}

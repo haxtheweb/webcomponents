@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hộp hoạt động",
+    "description": "Khối tiêu đề nhỏ có định dạng."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Biểu tượng",
+        "description": "Biểu tượng hiển thị cạnh hộp hoạt động."
+      },
+      {
+        "property": "tag",
+        "title": "Nhãn hộp hoạt động",
+        "description": "Nhãn hiển thị trong hộp hoạt động."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Không tô màu",
+        "description": "Ngăn áp dụng màu cho biểu tượng."
+      }
+    ]
+  }
+}

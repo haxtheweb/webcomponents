@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub öňünden görmek",
+    "description": "Uzyn düşündirişli elýeterli şekil"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Gurama",
+        "description": "GitHub guramasynyň maşyn ady"
+      },
+      {
+        "property": "repo",
+        "title": "Repozitoriý",
+        "description": "Repozitoriýanyň maşyn ady"
+      },
+      {
+        "property": "extended",
+        "title": "Giňeldilen görnüş",
+        "description": "Elemente readme goşýar"
+      }
+    ]
+  }
+}

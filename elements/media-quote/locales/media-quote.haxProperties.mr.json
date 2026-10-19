@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "माध्यम अवतरण",
+    "description": "अवतरण, संदर्भ आणि पर्यायी मथळ्यासह प्रतिमा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "अवतरण",
+        "description": "अवतरणाचा मजकूर."
+      },
+      {
+        "slot": "author",
+        "title": "लेखक",
+        "description": "अवतरणाचा लेखक."
+      },
+      {
+        "slot": "author-detail",
+        "title": "लेखकाचा तपशील",
+        "description": "लेखकाचा तपशील."
+      },
+      {
+        "slot": "caption",
+        "title": "मथळा",
+        "description": "प्रतिमेचा मथळा."
+      },
+      {
+        "property": "src",
+        "title": "प्रतिमा स्रोत",
+        "description": "माध्यम अवतरणासाठी वापरलेली प्रतिमा फाइल."
+      },
+      {
+        "property": "alt",
+        "title": "पर्यायी मजकूर",
+        "description": "प्रतिमेसाठी पर्यायी मजकूर."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "कार्डचा उठाव रंग."
+      }
+    ]
+  }
+}

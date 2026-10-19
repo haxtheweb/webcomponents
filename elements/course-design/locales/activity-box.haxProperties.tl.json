@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Activity Box",
+    "description": "Maliit na naka-istilong block ng heading."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Icon na ipinapakita sa tabi ng activity box."
+      },
+      {
+        "property": "tag",
+        "title": "Tag ng activity box",
+        "description": "Tag na ipinapakita sa activity box."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Walang Pagkukulay",
+        "description": "Pigilan ang paglalapat ng mga kulay sa icon."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "테마가 적용된 Polaris 행동 유도 버튼을 표시합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "버튼 텍스트",
+        "description": "행동 유도 버튼에 표시되는 텍스트입니다."
+      },
+      {
+        "property": "link",
+        "title": "링크",
+        "description": "버튼의 대상 URL입니다."
+      },
+      {
+        "property": "type",
+        "title": "변형",
+        "description": "시각적 스타일 변형입니다.",
+        "options": {
+          "primary": "기본",
+          "tinted": "색조",
+          "light": "밝게"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "외곽선 스타일",
+        "description": "외곽선 처리를 사용합니다."
+      },
+      {
+        "property": "filled",
+        "title": "채움 스타일",
+        "description": "채움 처리를 사용합니다."
+      }
+    ]
+  }
+}

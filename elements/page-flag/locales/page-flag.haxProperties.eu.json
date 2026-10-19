@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Orriko bandera",
+    "description": "Orriaren egileentzako ohar editoriala."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Orriko banderaren nabarmentze kolorea."
+      },
+      {
+        "property": "label",
+        "title": "Etiketa",
+        "description": "Orriko banderaren etiketa testua."
+      }
+    ]
+  }
+}

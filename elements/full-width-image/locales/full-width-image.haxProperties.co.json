@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Sezzione d'imagine",
+    "description": "Imagine in larghezza sana chì spartisce una sezzione di a pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Imagine di fondu."
+      },
+      {
+        "property": "caption",
+        "description": "Intestatura di testu."
+      }
+    ]
+  }
+}

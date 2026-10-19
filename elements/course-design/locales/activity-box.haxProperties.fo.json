@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Virksemiskassi",
+    "description": "Lítil sniðgivin yvirskriftarblokkur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ímynd",
+        "description": "Ímynd, sum verður víst við virksemiskassan."
+      },
+      {
+        "property": "tag",
+        "title": "Frámerki á virksemiskassa",
+        "description": "Frámerki, sum verður víst í virksemiskassanum."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Ongin litur",
+        "description": "Forða fyri, at litir verða nýttir á ímyndina."
+      }
+    ]
+  }
+}

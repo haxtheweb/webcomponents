@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Citata su vaizdu",
+    "description": "Stilizuota citata su pasirenkamu vaizdu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Vaizdas",
+        "description": "Pridėti vaizdą prie atsiliepimo."
+      },
+      {
+        "property": "name",
+        "title": "Vardas ir pavardė",
+        "description": "Atsiliepimą pateikiančio asmens vardas."
+      },
+      {
+        "property": "position",
+        "title": "Pareigos",
+        "description": "Asmens pareigos."
+      },
+      {
+        "slot": "",
+        "title": "Citata",
+        "description": "Atsiliepimo autoriaus citata."
+      }
+    ]
+  }
+}

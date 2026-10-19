@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kort",
+    "description": "Eitt kort við valfríum dámsniði."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Yvirskrift",
+        "description": "Ein yvirskrift til kortið."
+      },
+      {
+        "slot": "subheading",
+        "title": "Undiryvirskrift",
+        "description": "Ein valfrí undiryvirskrift til kortið."
+      },
+      {
+        "slot": "content",
+        "title": "Innihald",
+        "description": "Innihald til kortið."
+      },
+      {
+        "slot": "footer",
+        "title": "Fótur",
+        "description": "Ein valfrír fótur til kortið."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Mynd",
+        "description": "Valfrí mynd"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt-tekstur til mynd",
+        "description": "Alternativur tekstur, ið lýsir myndina fyri skíggjalesarum. Lat bara vera tómt, um myndin er reint til prýði."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Vatnrøtt uppstilling av mynd",
+        "options": {
+          "left": "vinstra",
+          "center": "miðja",
+          "right": "høgra"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Lodrøtt uppstilling av mynd",
+        "options": {
+          "top": "ovast",
+          "center": "miðja",
+          "bottom": "niðast"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Ein valfríur dámlitur."
+      },
+      {
+        "property": "dark",
+        "title": "Myrkt evni",
+        "description": "Tendra myrkt tema"
+      },
+      {
+        "property": "horizontal",
+        "title": "Vatnrætt",
+        "description": "Vatnrøtt leiting?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Dámur á yvirskrift",
+        "description": "Nýta dámlit á yvirskrift?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Dámur á bakgrund",
+        "description": "Nýta dámlit á bakgrund kortsins?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Eingin rammudámur",
+        "description": "Taka rammudám burtur?"
+      },
+      {
+        "property": "flat",
+        "title": "Flatt",
+        "description": "Taka boksskugga burtur?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Horn",
+        "description": "Innihald til hornið á kortinum."
+      }
+    ]
+  }
+}

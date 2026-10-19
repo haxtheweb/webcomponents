@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Аерып күрсәтү",
+    "description": "Юл эчендәге текстны аерып күрсәтү."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Аерып күрсәтелгән текст."
+      }
+    ]
+  }
+}

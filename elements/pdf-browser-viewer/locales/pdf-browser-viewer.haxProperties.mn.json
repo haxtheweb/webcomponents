@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF хөтөч үзэгч",
+    "description": "PDF файлыг нэмэлт картын байршил болон татах товчтой шугам дотор суулгах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF файлын байршил."
+      },
+      {
+        "property": "heading",
+        "title": "Гарчиг",
+        "description": "Картын гарчгийн текст."
+      },
+      {
+        "property": "card",
+        "title": "Картын байршил",
+        "description": "PDF-ийг татах товчтой карт дотор харуулах."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Татах шошго",
+        "description": "Татах товчны шошго."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Дэмжигдээгүй үеийн мессеж",
+        "description": "Хөтөч PDF файл харуулж чадахгүй үеийн мессеж."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Дэмжигдээгүй үеийн холбоосын мессеж",
+        "description": "Хөтөч PDF файл харуулж чадахгүй үеийн холбоосын текст."
+      },
+      {
+        "property": "width",
+        "title": "Өргөн",
+        "description": "PDF үзэгчийн өргөн."
+      },
+      {
+        "property": "height",
+        "title": "Өндөр",
+        "description": "PDF үзэгчийн өндөр."
+      }
+    ]
+  }
+}

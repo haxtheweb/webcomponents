@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Sarara yeroo",
+    "description": "Yeroo-tarreeffama taateewwanii suuraalee fi barreeffama wajjin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Mata duree sarara yeroo",
+        "description": "Mata duree yeroo-tarreeffamaaf."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu Calaqqee",
+        "description": "Halluu calaqqee filannoo."
+      },
+      {
+        "property": "dark",
+        "title": "Haala Dukkanaa",
+        "description": "Teemii Dukkanaa Dandeessisi"
+      },
+      {
+        "slot": "",
+        "title": "Ibsa Yeroo-tarreeffamaa",
+        "description": "Barreeffama dirqama hin taane yeroo-tarreeffama ibsu."
+      },
+      {
+        "property": "events",
+        "title": "Taateewwan Yeroo-tarreeffamaa",
+        "description": "Taateewwan yeroo-tarreeffama keessaa"
+      }
+    ]
+  }
+}

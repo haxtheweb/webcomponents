@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ìṣètò òpó",
+    "description": "To ohun èlò sínú àwọn òpó rírọrùn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Ìṣètò Òpó",
+        "description": "Ara láti ṣàfihàn àwọn ohun wọ̀nyí (ó lè yípadà fún àwọn ojú-iboju kékeré)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Pa ìdáhùnpadà",
+        "description": "Sàmì sí àpótí láti pa àwọn òpó mọ́ lórí àwọn ojú-iboju ńlá nígbà tí wọ́n ṣì ń tò lé ara wọn lórí àwọn ojú-iboju tó kéré jùlọ"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Àlàfo Inú Ohun",
+        "description": "Àlàfo nínú ohun kọ̀ọ̀kan"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Àlàfo ààlà ohun",
+        "description": "Àlàfo láàárín àwọn ohun"
+      }
+    ]
+  }
+}

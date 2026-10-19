@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Mandhari Yanayopatikana",
+    "description": "Onyesha mandhari ya HAXcms yanayopatikana kwa kubadilisha onyesho la kukagua moja kwa moja"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Hali ya Mwonekano",
+        "description": "Chagua jinsi ya kuonyesha mandhari",
+        "options": {
+          "gallery": "Matunzio",
+          "table": "Jedwali"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Onyesha Maelezo",
+        "description": "Onyesha maelezo ya mandhari na taarifa za ziada"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Onyesha Mandhari Yaliyofichwa na ya Zamani",
+        "description": "Onyesha mandhari yaliyofichwa, ya zamani, na mabaya pamoja na chaguomsingi za dashibodi"
+      },
+      {
+        "property": "columns",
+        "title": "Safu (Matunzio)",
+        "description": "Idadi ya safu katika mwonekano wa matunzio"
+      }
+    ]
+  }
+}

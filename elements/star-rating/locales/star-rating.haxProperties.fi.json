@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Tähtiarvio",
+    "description": "Arvion näyttöelementti tai painike arvion antamiseen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Pisteet",
+        "description": "Nykyinen pistemäärä."
+      },
+      {
+        "property": "possible",
+        "title": "Mahdollinen",
+        "description": "Suurin mahdollinen pistemäärä."
+      },
+      {
+        "property": "numStars",
+        "title": "Tähtien määrä",
+        "description": "Näytettävien tähtien määrä."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktiivinen",
+        "description": "Salli käyttäjän asettaa arvio."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Arviointiasteikkotila",
+        "description": "Lisää jokaiselle tähdelle OER Scheman RubricScale- ja RubricLevel-metatiedot (levelOrdinal/levelPoints)."
+      }
+    ]
+  }
+}

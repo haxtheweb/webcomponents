@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Padarykite animuotus GIF prieinamus."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Animuotas GIF",
+        "description": "Animuoto GIF URL."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatyvusis tekstas",
+        "description": "Alternatyvusis vaizdo tekstas."
+      },
+      {
+        "property": "longdesc",
+        "title": "Išsamus aprašymas",
+        "description": "Išsamus GIF aprašymas prieinamumui užtikrinti."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Statinis vaizdas",
+        "description": "Statinės GIF versijos URL."
+      }
+    ]
+  }
+}

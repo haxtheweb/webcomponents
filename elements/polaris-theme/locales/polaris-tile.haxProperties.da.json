@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris-felt",
+    "description": "Vis et Polaris-felt med titel, valgfri understøttende tekst og valgfrit link."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Primær tekst",
+        "description": "Feltets hovedtekst."
+      },
+      {
+        "property": "line2",
+        "title": "Sekundær tekst",
+        "description": "Valgfri understøttende tekst."
+      },
+      {
+        "property": "type",
+        "title": "Feltstil",
+        "description": "Forudindstillet visuel stil for feltet.",
+        "options": {
+          "1": "Stil 1",
+          "2": "Stil 2",
+          "3": "Stil 3",
+          "4": "Stil 4",
+          "5": "Stil 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Baggrundsbillede",
+        "description": "URL til baggrundsbillede, som bruges af feltstile med billeder."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Valgfri destinations-URL for feltets handling."
+      }
+    ]
+  }
+}

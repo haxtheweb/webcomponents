@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "シンプル画像",
+    "description": "簡単なパラメーターで画像を加工します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ソース",
+        "description": "画像のソースURL。"
+      },
+      {
+        "property": "height",
+        "title": "高さ",
+        "description": "任意の画像の高さ。"
+      },
+      {
+        "property": "width",
+        "title": "幅",
+        "description": "任意の画像の幅。"
+      },
+      {
+        "property": "alt",
+        "title": "代替テキスト",
+        "description": "スクリーンリーダーやSEOの向上に役立ちます。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "画質",
+        "description": "生成時の画質（JPEGのみ）。"
+      },
+      {
+        "property": "fetchpriority",
+        "title": "取得の優先度",
+        "description": "最新ブラウザー向けのパフォーマンスのヒント。",
+        "options": {
+          "auto": "自動",
+          "high": "高",
+          "low": "低"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "デコード方法",
+        "description": "最新ブラウザーでの画像レンダリングに関するパフォーマンスのヒント。",
+        "options": {
+          "auto": "自動",
+          "async": "非同期"
+        }
+      }
+    ]
+  }
+}

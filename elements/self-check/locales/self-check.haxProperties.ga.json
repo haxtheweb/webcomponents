@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Féinseiceáil",
+    "description": "Is féidir le húsáideoirí féinseiceáil a dhéanamh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Íomhá",
+        "description": "Íomhá don fhéinseiceáil."
+      },
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Teideal na féinseiceála."
+      },
+      {
+        "property": "alt",
+        "title": "Téacs Malartach",
+        "description": "Téacs malartach don íomhá."
+      },
+      {
+        "slot": "question",
+        "title": "Ceist"
+      },
+      {
+        "slot": "",
+        "title": "Freagra"
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath an Téama",
+        "description": "Roghnaigh dath téama ón gcóras dearaidh.",
+        "options": {
+          "primary": "Príomha",
+          "accent": "Aibhsiú",
+          "success": "Rath",
+          "warning": "Rabhadh",
+          "error": "Earráid",
+          "info": "Eolas"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cuspóir Foghlama",
+        "description": "Tagairt do chuspóir foghlama a astaítear mar oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Ag measúnú",
+        "description": "Tagairt do ghníomhaíocht a astaítear mar oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Nasc breise",
+        "description": "Nasc chuig tuilleadh eolais."
+      }
+    ]
+  }
+}

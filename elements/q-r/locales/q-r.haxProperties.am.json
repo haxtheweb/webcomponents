@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR ኮድ",
+    "description": "ከስማርትፎን የሚቃኝ ኮድ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "የQR ውሂብ",
+        "description": "ለQR ኮዱ የውሂብ ምንጭ።"
+      },
+      {
+        "property": "title",
+        "title": "አማራጭ ርዕስ",
+        "description": "ከQR ኮዱ ምንጭ ጋር የተገናኘ አማራጭ ርዕስ።"
+      },
+      {
+        "property": "modulesize",
+        "title": "መጠን",
+        "description": "የQR ኮዱ መጠን።"
+      },
+      {
+        "property": "margin",
+        "title": "ህዳግ",
+        "description": "በኮዱ ዙሪያ ያለ መጠቅለያ።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "የውጤት ቅርጸት",
+        "description": "የሚወጣበት ቅርጸት።",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Madingindira Aripo",
+    "description": "Ratidza madingindira eHAXcms aripo nekuchinja ongororo mhenyu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Modhi yeKuona",
+        "description": "Sarudza kuti ungaratidza sei madingindira",
+        "options": {
+          "gallery": "Muunganidzwa wemifananidzo",
+          "table": "Tafura"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Ratidza Ruzivo",
+        "description": "Ratidza tsananguro dzemadingindira nerumwe ruzivo"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Ratidza Madingindira Akavanzika neEkare",
+        "description": "Ratidza madingindira akavanzika, ekare, uye akaipa pamwe chete nezvakagara zviripo zvedhashibhodhi"
+      },
+      {
+        "property": "columns",
+        "title": "Makoramu (Galari)",
+        "description": "Nhamba yemakoramu mumaonero egalari"
+      }
+    ]
+  }
+}

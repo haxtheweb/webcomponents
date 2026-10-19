@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ट्याबहरू",
+    "description": "ट्याबहरूको सेट।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "लेबल (पहुँचयोग्यताका लागि)",
+        "description": "ट्याब सेटको पहुँचयोग्य लेबल।"
+      },
+      {
+        "property": "disabled",
+        "title": "निष्क्रिय",
+        "description": "सबै ट्याबहरू निष्क्रिय गर्नुहोस्।"
+      },
+      {
+        "property": "hidden",
+        "title": "लुकाइएको",
+        "description": "ट्याब सेट लुकाउनुहोस्।"
+      },
+      {
+        "property": "sticky",
+        "title": "टाँसिने",
+        "description": "स्क्रोल गर्दा तेर्सो ट्याबहरूलाई माथि नै राख्नुहोस्।"
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "लेआउट ब्रेकपोइन्ट",
+        "description": "तेर्सो ट्याबहरूको ब्रेकपोइन्ट; ठाडो मात्रका लागि -1 प्रयोग गर्नुहोस्।"
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "आइकन ब्रेकपोइन्ट",
+        "description": "आइकनसँग पाठ देखाउने ब्रेकपोइन्ट। पूर्वनिर्धारित 0 हो; आइकन मात्र मोडका लागि -1 प्रयोग गर्नुहोस्।"
+      },
+      {
+        "slot": "",
+        "title": "ट्याबहरू",
+        "description": "<a11y-tab/> तत्वहरूको शृङ्खला।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "अद्वितीय ID",
+        "description": "यस ट्याब सेटको अद्वितीय ID।"
+      }
+    ]
+  }
+}

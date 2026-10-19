@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity ప్లేయర్",
+    "description": "Unity WebGL ప్లేయర్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "లక్ష్యం",
+        "description": "గేమ్ బిల్డ్‌కు మార్గం."
+      },
+      {
+        "property": "compression",
+        "title": "కుదింపు పద్ధతి",
+        "description": "గేమ్ ఆస్తుల కోసం కుదింపు ఫైల్ ఎక్స్‌టెన్షన్."
+      },
+      {
+        "property": "streamingurl",
+        "title": "స్ట్రీమింగ్ URL",
+        "description": "స్ట్రీమింగ్ ఆస్తుల URL."
+      },
+      {
+        "property": "companyname",
+        "title": "కంపెనీ పేరు",
+        "description": "కంపెనీ పేరు."
+      },
+      {
+        "property": "productname",
+        "title": "ఉత్పత్తి పేరు",
+        "description": "గేమ్ శీర్షిక."
+      },
+      {
+        "property": "productversion",
+        "title": "ఉత్పత్తి వెర్షన్",
+        "description": "విడుదల వెర్షన్."
+      },
+      {
+        "property": "width",
+        "title": "కాన్వాస్ వెడల్పు",
+        "description": "కాన్వాస్ CSS వెడల్పు (ఉదాహరణకు px లేదా em)."
+      },
+      {
+        "property": "height",
+        "title": "కాన్వాస్ ఎత్తు",
+        "description": "కాన్వాస్ CSS ఎత్తు (ఉదాహరణకు px లేదా em)."
+      },
+      {
+        "property": "background",
+        "title": "కాన్వాస్ నేపథ్యం",
+        "description": "కాన్వాస్ CSS నేపథ్యం."
+      }
+    ]
+  }
+}

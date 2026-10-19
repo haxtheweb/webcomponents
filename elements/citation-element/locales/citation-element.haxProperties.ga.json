@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Lua",
+    "description": "Eilimint luanna le trí mhód cur i láthair."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Teideal an tsaothair a luaitear."
+      },
+      {
+        "property": "source",
+        "title": "Nasc foinse",
+        "description": "URL foinse an tsaothair a luaitear."
+      },
+      {
+        "property": "date",
+        "title": "Dáta rochtana",
+        "description": "An dáta ar rochtanaíodh an fhoinse."
+      },
+      {
+        "property": "scope",
+        "title": "Scóip",
+        "description": "Scóip na heiliminte le lua.",
+        "options": {
+          "sibling": "Eilimint chomhghaoil",
+          "parent": "Eilimint tuismitheora"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Ceadúnas",
+        "description": "Ceadúnas don saothar a luaitear."
+      },
+      {
+        "property": "creator",
+        "title": "Cruthaitheoir",
+        "description": "Cruthaitheoir nó úinéir an tsaothair a luaitear."
+      },
+      {
+        "property": "typeof",
+        "title": "Cineál Scéimre OER",
+        "description": "Aicme Scéimre OER don lua seo. Is é oer:ReferencedMaterial an réamhshocrú; ná sáraigh é ach le haicme OER bhailí (m.sh. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS Kapsayıcısı"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Düzenleyiciyi gizle",
+        "description": "Dosya düzenleme arayüzünü gizle."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Terminali gizle",
+        "description": "Otomatik çalışan programlar için terminali gizle."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Pencereyi gizle",
+        "description": "Yalnızca terminal kullanımı için çıktı penceresini gizle."
+      },
+      {
+        "slot": "",
+        "title": "Komutlar",
+        "description": "Yüklemeden önce çalıştırılacak komutlar (her satıra bir tane)."
+      }
+    ]
+  }
+}

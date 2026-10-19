@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Stór focal",
+    "description": "Téarma foclóra"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Téarma"
+      },
+      {
+        "slot": "",
+        "title": "Sainmhíniú",
+        "description": "An sainmhíniú le taispeáint nuair a chliceáiltear ar an téarma."
+      },
+      {
+        "property": "description",
+        "title": "Cur síos (Scéimre OER)",
+        "description": "Scéimre OER: cur síos gearr ar an téarma foclóra. Líontar go huathoibríoch é ó théacs an tsainmhínithe má fhágtar folamh é."
+      }
+    ]
+  }
+}

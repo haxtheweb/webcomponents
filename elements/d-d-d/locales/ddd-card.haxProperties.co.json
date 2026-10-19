@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Carta",
+    "description": "Cumpunente di carta cù u stile di u sistema di cuncezzione DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Imagine",
+        "description": "Imagine facultativa."
+      },
+      {
+        "property": "alt",
+        "title": "Testu alternativu di l'imagine",
+        "description": "Testu alternativu chì discrive l'imagine."
+      },
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Titulu di a carta."
+      },
+      {
+        "slot": "",
+        "title": "Cuntenutu",
+        "description": "Spaziu di cuntenutu di a carta."
+      },
+      {
+        "property": "href",
+        "title": "Ligame",
+        "description": "URL di u ligame di u buttone."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etichetta",
+        "description": "Etichetta di u buttone."
+      },
+      {
+        "property": "noArrow",
+        "title": "Senza freccia",
+        "description": "Piattà a freccia di u buttone."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Ligame: destinazione",
+        "description": "Induve apre u ligame.",
+        "options": {
+          "": "Listessa finestra",
+          "_blank": "Finestra nova - _blank",
+          "_top": "Finestra superiore - _top",
+          "_parent": "Finestra parente - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Ligame: rel",
+        "description": "Rilazione trà a risorsa ligata è u documentu attuale."
+      }
+    ]
+  }
+}

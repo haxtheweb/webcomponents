@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "करियर आइटम",
+    "description": "एक व्यक्तिगत संगठन और उससे संबद्ध भूमिकाएँ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "संगठन का नाम"
+      },
+      {
+        "property": "location",
+        "title": "स्थान"
+      },
+      {
+        "property": "source",
+        "title": "स्रोत"
+      }
+    ]
+  }
+}

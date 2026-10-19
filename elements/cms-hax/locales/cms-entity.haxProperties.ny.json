@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Chinthu cha CMS",
+    "description": "Chinthu cha CMS choonetsedwa kumbuyo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Mtundu",
+        "description": "mtundu kuchokera ku CMS yathu",
+        "options": {
+          "node": "Node",
+          "user": "Wogwiritsa ntchito",
+          "file": "Fayilo"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id kuchokera ku CMS yathu"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Njira yowonetsera",
+        "description": "njira yoonetsera kuchokera ku CMS yathu"
+      }
+    ]
+  }
+}

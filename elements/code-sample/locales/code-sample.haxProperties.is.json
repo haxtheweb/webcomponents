@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kóðadæmi",
+    "description": "Kóðadæmi auðkennt á síðunni"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kóðalitun",
+        "description": "Málskipunarlitun sem á að nota á kóðasvæðið",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-gögn",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Hnappur til að afrita á klippispjald",
+        "description": "hnappur efst til hægri sem segir afrita á klippispjald"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Upphaf auðkenningar",
+        "description": "Línunúmer þar sem auðkenning hefst"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Lok auðkenningar",
+        "description": "Lína þar sem auðkenningu lýkur"
+      }
+    ]
+  }
+}

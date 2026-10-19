@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikona",
+    "description": "Ikona no pilnās ikonu bibliotēkas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Attēlojamā ikona."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Ikonas akcenta krāsa."
+      },
+      {
+        "property": "dark",
+        "title": "Tumšs",
+        "description": "Izmantot tumšo režīmu (invertētas krāsas)."
+      }
+    ]
+  }
+}

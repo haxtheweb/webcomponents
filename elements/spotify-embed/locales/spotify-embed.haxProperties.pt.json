@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Contêiner para players incorporados do Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origem",
+        "description": "Link de incorporação ou compartilhamento do Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Tema de cor de fundo do player.",
+        "options": {
+          "": "Padrão",
+          "0": "Preto"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Tamanho",
+        "description": "Tamanho do player.",
+        "options": {
+          "normal": "Padrão",
+          "compact": "Compacto"
+        }
+      }
+    ]
+  }
+}

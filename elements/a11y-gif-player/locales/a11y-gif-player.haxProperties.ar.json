@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "اجعل صور GIF المتحركة سهلة الوصول."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "صورة GIF متحركة",
+        "description": "URL صورة GIF المتحركة."
+      },
+      {
+        "property": "alt",
+        "title": "النص البديل",
+        "description": "نص بديل للصورة."
+      },
+      {
+        "property": "longdesc",
+        "title": "الوصف المطوَّل",
+        "description": "وصف مطوَّل لصورة GIF لإمكانية الوصول."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "صورة ثابتة",
+        "description": "URL نسخة ثابتة من صورة GIF."
+      }
+    ]
+  }
+}

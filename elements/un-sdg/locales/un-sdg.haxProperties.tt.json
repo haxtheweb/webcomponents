@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Берләшкән Милләтләр Оешмасының Тотрыклы үсеш максаты."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Максат",
+        "description": "UN SDG номеры."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Төс кенә",
+        "description": "Максатның төсен генә күрсәтергә."
+      }
+    ]
+  }
+}

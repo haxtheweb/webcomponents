@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Àpótí NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Fi olóòtú pamọ́",
+        "description": "Fi ojú-iṣẹ́ àtúnṣe fáìlì pamọ́."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Fi ìtẹ̀wé-àṣẹ pamọ́",
+        "description": "Fi ìtẹ̀wé-àṣẹ pamọ́ fún àwọn ètò tí ó ń ṣiṣẹ́ láìfọwọ́yí."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Fi fèrèsé pamọ́",
+        "description": "Fi fèrèsé ìjáde pamọ́ fún lílò ìtẹ̀wé-àṣẹ nìkan."
+      },
+      {
+        "slot": "",
+        "title": "Àwọn àṣẹ",
+        "description": "Àwọn àṣẹ (ọ̀kan ní ìlà kọ̀ọ̀kan) láti ṣiṣẹ́ ṣáájú gbígbé wọlé."
+      }
+    ]
+  }
+}

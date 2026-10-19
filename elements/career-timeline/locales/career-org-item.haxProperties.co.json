@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Elementu di carriera",
+    "description": "Un'urganizazione individuale è i so roli assuciati"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Nome di l'urganizazione"
+      },
+      {
+        "property": "location",
+        "title": "Locu"
+      },
+      {
+        "property": "source",
+        "title": "Fonte"
+      }
+    ]
+  }
+}

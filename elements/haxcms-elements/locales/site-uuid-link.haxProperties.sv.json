@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX-länk",
+    "description": "En länk till en specifik resurs på webbplatsen du arbetar med."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Objekt",
+        "description": "Objekt att visa för länk-/titeldata"
+      }
+    ]
+  }
+}

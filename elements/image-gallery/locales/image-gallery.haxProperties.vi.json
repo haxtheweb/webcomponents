@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Thư viện ảnh",
+    "description": "Thư viện trình bày hình ảnh theo bố cục lưới, xếp gạch hoặc trình chiếu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Chế độ hiển thị",
+        "description": "Cách trình bày hình ảnh trong thư viện.",
+        "options": {
+          "grid": "Lưới",
+          "masonry": "Xếp gạch",
+          "gallery": "Thư viện ảnh"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Chỉ mục hiện hoạt",
+        "description": "Chỉ mục của hình ảnh bắt đầu ở chế độ thư viện ảnh."
+      }
+    ]
+  }
+}

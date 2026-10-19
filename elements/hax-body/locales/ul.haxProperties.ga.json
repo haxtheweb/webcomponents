@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Liosta urchar",
+    "description": "Cruthaigh liosta urchar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stíl urchair",
+        "description": "Stíl a úsáidtear d'urchair liosta neamhordaithe.",
+        "options": {
+          "": "Réamhshocrú (cearnóg)",
+          "list-disc": "Diosca",
+          "list-circle": "Ciorcal",
+          "list-square": "Cearnóg"
+        }
+      }
+    ]
+  }
+}

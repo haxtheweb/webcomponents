@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Veb-komponent hujjat pleyeri"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Oynani yashirish",
+        "description": "Chiqish oynasini yashirish, faqat terminal kerak boʻlganda foydali"
+      }
+    ]
+  }
+}

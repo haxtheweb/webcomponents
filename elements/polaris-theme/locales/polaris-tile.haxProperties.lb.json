@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris-Kachel",
+    "description": "Eng Polaris-Kachel mat Titel, optionalem Zousazztext an optionalem Link uweisen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Haapttext",
+        "description": "Haapttext vun der Kachel."
+      },
+      {
+        "property": "line2",
+        "title": "Niewentext",
+        "description": "Optionalen Zousazztext."
+      },
+      {
+        "property": "type",
+        "title": "Kachelstil",
+        "description": "Virastellte visuelle Stil vun der Kachel.",
+        "options": {
+          "1": "Stil 1",
+          "2": "Stil 2",
+          "3": "Stil 3",
+          "4": "Stil 4",
+          "5": "Stil 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Hannergrondbild",
+        "description": "URL vum Hannergrondbild fir Kachelstiler, déi Biller ënnerstëtzen."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Optional Zil-URL fir d'Aktioun vun der Kachel."
+      }
+    ]
+  }
+}

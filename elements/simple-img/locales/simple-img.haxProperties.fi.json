@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Yksinkertainen kuva",
+    "description": "Muokkaa kuvia yksinkertaisilla parametreilla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Lähde",
+        "description": "Kuvan lähde-URL."
+      },
+      {
+        "property": "height",
+        "title": "Korkeus",
+        "description": "Valinnainen kuvan korkeus."
+      },
+      {
+        "property": "width",
+        "title": "Leveys",
+        "description": "Valinnainen kuvan leveys."
+      },
+      {
+        "property": "alt",
+        "title": "Vaihtoehtoinen teksti",
+        "description": "Hyödyllinen ruudunlukijoille ja parantaa hakukoneoptimointia (SEO)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Laatu",
+        "description": "Kuvan laatu luotaessa (vain JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Noutoprioriteetti",
+        "description": "Suorituskykyvihje nykyaikaisille selaimille.",
+        "options": {
+          "auto": "Automaattinen",
+          "high": "Korkea",
+          "low": "Matala"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dekoodausmenetelmä",
+        "description": "Suorituskykyvihje kuvien piirtämiseen nykyaikaisissa selaimissa.",
+        "options": {
+          "auto": "Automaattinen",
+          "async": "Asynkroninen"
+        }
+      }
+    ]
+  }
+}

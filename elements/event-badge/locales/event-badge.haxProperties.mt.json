@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Badge tal-Avveniment",
+    "description": "Komponent ta' badge tal-avveniment."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Immaġni tat-TV",
+        "description": "Immaġni murija fuq it-TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo muri fil-kantuniera tal-badge."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlu muri fin-naħa ta' fuq tal-badge."
+      },
+      {
+        "property": "name",
+        "title": "Isem",
+        "description": "Isem muri fuq il-badge."
+      },
+      {
+        "property": "position",
+        "title": "Pożizzjoni",
+        "description": "Ir-rwol jew it-titlu tal-persuna."
+      },
+      {
+        "property": "organization",
+        "title": "Organizzazzjoni",
+        "description": "L-organizzazzjoni fejn taħdem il-persuna."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Kulur tat-TV",
+        "description": "Agħżel il-kulur għat-TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur primarju tal-isfond jew tat-test."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Kulur tal-pomi",
+        "description": "Kulur tal-pomi tat-TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepja",
+        "description": "Applika effett sepja."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Iswed u abjad",
+        "description": "Applika effett iswed u abjad."
+      }
+    ]
+  }
+}

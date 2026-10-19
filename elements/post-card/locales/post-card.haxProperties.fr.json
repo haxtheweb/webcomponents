@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Carte postale",
+    "description": "Un média ludique imitant une vraie carte postale envoyée d'ailleurs"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "À",
+        "description": "À qui est-elle destinée ?"
+      },
+      {
+        "property": "from",
+        "title": "De",
+        "description": "Qui êtes-vous ?"
+      },
+      {
+        "property": "message",
+        "title": "Message",
+        "description": "Que voulez-vous dire ?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Oblitérée à",
+        "description": "D'où cette carte a-t-elle été envoyée ?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Source de la photo principale",
+        "description": "Où se trouve votre photo ?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Source de la photo du timbre",
+        "description": "Où se trouve votre photo ?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Cita con imagen",
+    "description": "Cita con estilo y una imagen opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagen",
+        "description": "Añade una imagen al testimonio."
+      },
+      {
+        "property": "name",
+        "title": "Nombre completo",
+        "description": "Nombre de la persona que da el testimonio."
+      },
+      {
+        "property": "position",
+        "title": "Cargo o puesto de trabajo",
+        "description": "Cargo o puesto de trabajo de la persona."
+      },
+      {
+        "slot": "",
+        "title": "Cita",
+        "description": "Cita del autor del testimonio."
+      }
+    ]
+  }
+}

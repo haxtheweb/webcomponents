@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub priekšskatījums",
+    "description": "Pieejams attēls ar garu aprakstu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizācija",
+        "description": "GitHub organizācijas mašīnnosaukums"
+      },
+      {
+        "property": "repo",
+        "title": "Repozitorijs",
+        "description": "Repozitorija mašīnnosaukums"
+      },
+      {
+        "property": "extended",
+        "title": "Paplašināts skats",
+        "description": "Iekļauj elementā readme"
+      }
+    ]
+  }
+}

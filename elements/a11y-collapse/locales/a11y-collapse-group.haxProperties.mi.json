@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Rōpū Whakaroha Tiango",
+    "description": "He rōpū huānga whakaroha, tiango hoki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Kotahi anake e whakaroha",
+        "description": "Kotahi noa te tūemi ka taea te whakaroha."
+      },
+      {
+        "slot": "",
+        "title": "Ngā Tūemi Tiango",
+        "description": "Ngā tūemi tiango."
+      }
+    ]
+  }
+}

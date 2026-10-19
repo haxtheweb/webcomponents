@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Dopolnjevanje vrzeli",
+    "description": "Ocenjevalna dejavnost, v kateri učenci dopolnijo manjkajoče besede v izjavi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vprašanje",
+        "description": "Vprašanje, na katerega naj odgovorijo uporabniki."
+      },
+      {
+        "property": "statement",
+        "title": "Izjava",
+        "description": "Izjava, ki bo pretvorjena v interakcijo označevanja besed."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Oblika ocenjevanja",
+        "description": "OER Schema: oblika ocenjevanja za to preverjanje (npr. točke, ocena, odstotki, dokončanje)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Učni cilj",
+        "description": "OER Schema: učni cilj, povezan s tem preverjanjem."
+      },
+      {
+        "property": "forCourse",
+        "title": "Tečaj",
+        "description": "OER Schema: tečaj, za katerega je to preverjanje namenjeno."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ime kviza",
+        "description": "Ime kviza, posredovano za identifikacijo tega elementa v okoljih, ki jih poganja xAPI"
+      }
+    ]
+  }
+}

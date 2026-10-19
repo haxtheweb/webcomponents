@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Attēla sadaļa",
+    "description": "Pilna platuma attēls, kas sadala lapas sadaļas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Fona attēls."
+      },
+      {
+        "property": "caption",
+        "description": "Teksta virsraksts."
+      }
+    ]
+  }
+}

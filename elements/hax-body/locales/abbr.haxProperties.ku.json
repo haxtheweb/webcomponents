@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kurtenivîs",
+    "description": "Kurtenivîs bi şîreta têgîna tevahî."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Nivîs",
+        "description": "Nivîsa kurtenivîsê ya xuya."
+      },
+      {
+        "attribute": "title",
+        "title": "Peyv",
+        "description": "Têgîna tevahî ku dema mişk li ser e tê nîşandan."
+      }
+    ]
+  }
+}

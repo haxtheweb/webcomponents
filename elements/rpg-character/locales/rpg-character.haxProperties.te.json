@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG పాత్ర",
+    "description": "HAX నుండి సరదా పాత్ర."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "పేరు",
+        "description": "యాదృచ్ఛిక పాత్రను రూపొందించడానికి ఉపయోగించే పదం."
+      },
+      {
+        "property": "hat",
+        "title": "టోపీ",
+        "description": "టోపీ శైలి.",
+        "options": {
+          "none": "డిఫాల్ట్",
+          "random": "యాదృచ్ఛికం",
+          "bunny": "కుందేలు",
+          "cowboy": "కౌబాయ్",
+          "education": "విద్య",
+          "construction": "నిర్మాణం",
+          "warning": "హెచ్చరిక",
+          "watermelon": "పుచ్చకాయ",
+          "coffee": "కాఫీ",
+          "knight": "యోధుడు",
+          "ninja": "నింజా",
+          "party": "పార్టీ",
+          "error": "లోపం",
+          "edit": "సవరించు"
+        }
+      },
+      {
+        "property": "width",
+        "title": "వెడల్పు",
+        "description": "పిక్సెల్‌లలో పాత్ర వెడల్పు."
+      },
+      {
+        "property": "height",
+        "title": "ఎత్తు",
+        "description": "పిక్సెల్‌లలో పాత్ర ఎత్తు."
+      },
+      {
+        "property": "fire",
+        "title": "మంటల్లో ఉందా?",
+        "description": "పాత్ర మంటల్లో ఉందా లేదా."
+      },
+      {
+        "property": "walking",
+        "title": "నడుస్తోందా?",
+        "description": "నడక యానిమేషన్; మంటల్లో ఉన్నప్పుడు పరుగెత్తుతుంది."
+      }
+    ]
+  }
+}

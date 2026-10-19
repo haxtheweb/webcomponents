@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Dumanda d'assuciazione",
+    "description": "Attività di trascinà è lascià chì assucia l'enunciati cù e so risposte ghjuste."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Dumanda",
+        "description": "Dumanda per l'utilizatori. Marcà e zone di destinazione, po listà e risposte finu à a destinazione dopu."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Furmatu di nutazione",
+        "description": "OER Schema: furmatu di nutazione di sta valutazione (per esempiu punti, lettera, percentuale, cumpimentu)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ughjettivu d'amparera",
+        "description": "OER Schema: ughjettivu d'amparera assuciatu à sta valutazione."
+      },
+      {
+        "property": "forCourse",
+        "title": "Corsu",
+        "description": "OER Schema: corsu per u quale hè destinata sta valutazione."
+      },
+      {
+        "property": "answers",
+        "title": "Risposte"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome di u quiz",
+        "description": "Nome di u quiz adupratu per l'identificazione xAPI in i sistemi d'analitica."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Chidule",
+    "description": "Chidule chokhala ndi mawu athunthu cholozera chikaikidwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Mawu",
+        "description": "Mawu achidule ooneka."
+      },
+      {
+        "attribute": "title",
+        "title": "Liwu",
+        "description": "Mawu athunthu oonetsedwa cholozera chikaikidwa."
+      }
+    ]
+  }
+}

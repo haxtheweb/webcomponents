@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Дереккөз сілтемесі",
+    "description": "Үш көрсету режимі бар дәйексөз элементі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Тақырып",
+        "description": "Дәйексөз алынған жұмыстың атауы."
+      },
+      {
+        "property": "source",
+        "title": "Дереккөз сілтемесі",
+        "description": "Дәйексөз алынған жұмыстың URL мекенжайы."
+      },
+      {
+        "property": "date",
+        "title": "Қаралған күні",
+        "description": "Дереккөз қаралған күн."
+      },
+      {
+        "property": "scope",
+        "title": "Аумақ",
+        "description": "Дәйексөз келтірілетін элемент аумағы.",
+        "options": {
+          "sibling": "Көршілес элемент",
+          "parent": "Ата-ана элемент"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Лицензия",
+        "description": "Дәйексөз алынған жұмыстың лицензиясы."
+      },
+      {
+        "property": "creator",
+        "title": "Авторы",
+        "description": "Дәйексөз алынған жұмыстың авторы немесе иесі."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema түрі",
+        "description": "Осы дәйексөзге арналған OER Schema класы. Әдепкі бойынша oer:ReferencedMaterial; тек жарамды OER класымен ауыстырыңыз (мысалы, oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

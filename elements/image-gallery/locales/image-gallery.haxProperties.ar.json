@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "معرض الصور",
+    "description": "معرض يعرض الصور بتخطيط شبكي أو متراص أو عرض شرائح."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "وضع العرض",
+        "description": "طريقة عرض الصور في المعرض.",
+        "options": {
+          "grid": "شبكة",
+          "masonry": "متراص",
+          "gallery": "معرض"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "الفهرس النشط",
+        "description": "فهرس الصورة النشطة التي يبدأ بها وضع المعرض."
+      }
+    ]
+  }
+}

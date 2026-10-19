@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kuvion kuvateksti",
+    "description": "Kuvion kuvateksti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Kuvateksti",
+        "description": "Kuvion alla näytettävä teksti."
+      }
+    ]
+  }
+}

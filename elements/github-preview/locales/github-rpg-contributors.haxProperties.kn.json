@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub ಕೊಡುಗೆದಾರರ ಪಟ್ಟಿ",
+    "description": "GitHub API ಬಳಸಿ RPG ಪಾತ್ರಗಳಾಗಿ ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತದೆ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ಸಂಸ್ಥೆ",
+        "description": "github.com/ORG/REPO ನಿಂದ ಸಂಸ್ಥೆಯ ಹೆಸರು."
+      },
+      {
+        "property": "repo",
+        "title": "ರೆಪೊಸಿಟರಿ",
+        "description": "github.com/ORG/REPO ನಿಂದ ರೆಪೊಸಿಟರಿ ಹೆಸರು."
+      },
+      {
+        "property": "limit",
+        "title": "ಮಿತಿ",
+        "description": "ತೋರಿಸುವ ಕೊಡುಗೆದಾರರ ಸಂಖ್ಯೆಯನ್ನು ಮಿತಿಗೊಳಿಸಿ."
+      }
+    ]
+  }
+}

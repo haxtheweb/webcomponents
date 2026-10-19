@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pictogram",
+    "description": "Pictogram uit de volledige pictogrambibliotheek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Pictogram",
+        "description": "Weer te geven pictogram."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Accentkleur voor het pictogram."
+      },
+      {
+        "property": "dark",
+        "title": "Donker",
+        "description": "Donkere modus gebruiken (omgekeerde kleurenset)."
+      }
+    ]
+  }
+}

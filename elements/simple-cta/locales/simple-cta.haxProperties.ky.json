@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Аракетке чакыруу",
+    "description": "Аракет кылуу үчүн шилтемеси бар жөнөкөй баскыч."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Энбелги",
+        "description": "Шилтеменин белгиси"
+      },
+      {
+        "property": "link",
+        "title": "Шилтеме",
+        "description": "Каалаган ресурска шилтеме киргизиңиз"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Сөлөкөттү жашыруу",
+        "description": "Текстти белгилөө үчүн колдонулган сөлөкөттү жашыруу"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Сөлөкөт",
+        "description": "Аракет шилтемесинин сөлөкөтү"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Seznam sodelavcev GitHub",
+    "description": "Prikazani kot RPG liki z uporabo GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizacija",
+        "description": "Ime organizacije iz github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repozitorij",
+        "description": "Ime repozitorija iz github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Omejitev",
+        "description": "Omeji število prikazanih sodelavcev."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Teenetemärk",
+    "description": "Visuaalne märk oskuse omandamise näitamiseks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Märgi pealkiri",
+        "description": "Märgil kuvatav pealkiri."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Märgi pilt",
+        "description": "Märgi pildi URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Märgi üksikasjad",
+        "description": "Märgi üksikasjad."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hüperlink",
+        "description": "Märgiga seotud link."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Märgi oskused",
+        "description": "Märgil kuvatavad oskused."
+      },
+      {
+        "property": "skill",
+        "title": "Oskus (OER Schema)",
+        "description": "OER Schema: selle õpieesmärgi täitmisega omandatud oskus."
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Нумараваны спіс",
+    "description": "Стварыць нумараваны спіс."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Стыль нумарацыі",
+        "description": "Стыль нумарацыі ўпарадкаванага спіса.",
+        "options": {
+          "": "Па змаўчанні (дзесятковыя)",
+          "list-decimal-leading-zero": "Дзесятковыя з вядучым нулём (01, 02, 03)",
+          "list-lower-alpha": "Малыя літары (a, b, c)",
+          "list-upper-alpha": "Вялікія літары (A, B, C)",
+          "list-lower-roman": "Малыя рымскія (i, ii, iii)",
+          "list-upper-roman": "Вялікія рымскія (I, II, III)"
+        }
+      }
+    ]
+  }
+}

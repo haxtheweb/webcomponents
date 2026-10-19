@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Zkratka",
+    "description": "Zkratka s tooltipem plného výrazu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Viditelný text zkratky."
+      },
+      {
+        "attribute": "title",
+        "title": "Slovo",
+        "description": "Plný výraz zobrazený při najetí myší."
+      }
+    ]
+  }
+}

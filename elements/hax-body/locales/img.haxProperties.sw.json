@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Picha ya Msingi",
+    "description": "Kipengele cha msingi cha picha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Chanzo",
+        "description": "URL ya picha."
+      },
+      {
+        "attribute": "alt",
+        "title": "Maandishi mbadala",
+        "description": "Maandishi mbadala kwa ufikivu na SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Urefu",
+        "description": "Urefu kwa pikseli. Acha tupu ili kutumia ukubwa asilia."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Upakiaji wa picha",
+        "description": "Chagua wakati picha inapakiwa.",
+        "options": {
+          "lazy": "Pakia inapoonekana",
+          "auto": "Kiotomatiki"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Vyanzo vinavyojibadilisha (srcset)",
+        "description": "Orodhesha URL za picha na vielezi (mf. 480w au 2x) ili vivinjari vichague ukubwa bora kwa skrini. Huhifadhiwa kama sifa ya kawaida ya srcset."
+      }
+    ]
+  }
+}

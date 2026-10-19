@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ໂຄງຮ່າງຖັນ",
+    "description": "ຈັດວາງເນື້ອຫາເປັນຖັນແບບງ່າຍ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "ໂຄງຮ່າງຖັນ",
+        "description": "ຮູບແບບການນຳສະເໜີລາຍການເຫຼົ່ານີ້ (ອາດປ່ຽນສຳລັບໜ້າຈໍນ້ອຍ)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "ປິດການຕອບສະໜອງ",
+        "description": "ໝາຍໃສ່ກ່ອງເພື່ອຮັກສາຖັນໃນໜ້າຈໍໃຫຍ່ ໃນຂະນະທີ່ຍັງຊ້ອນກັນໃນໜ້າຈໍນ້ອຍທີ່ສຸດ"
+      },
+      {
+        "property": "itemPadding",
+        "title": "ໄລຍະຫ່າງພາຍໃນລາຍການ",
+        "description": "ໄລຍະຫ່າງພາຍໃນແຕ່ລະລາຍການ"
+      },
+      {
+        "property": "itemMargin",
+        "title": "ຂອບລາຍການ",
+        "description": "ໄລຍະຫ່າງລະຫວ່າງລາຍການ"
+      }
+    ]
+  }
+}

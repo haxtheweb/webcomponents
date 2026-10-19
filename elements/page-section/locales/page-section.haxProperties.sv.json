@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sidsektion",
+    "description": "Sektionsbehållare för sidinnehåll och skärmbaserade layouter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Designbehandling",
+        "description": "Förinställd stil som uppdaterar relaterade inställningar."
+      },
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Bakgrundsmedia för sektionen."
+      },
+      {
+        "property": "bg",
+        "title": "Bakgrundsfärg",
+        "description": "Bakgrundsfärg när ingen bild är angiven."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Rullningsknapp",
+        "description": "Visa en knapp som rullar till nästa sektion."
+      },
+      {
+        "property": "fold",
+        "title": "Visa veck",
+        "description": "Visa ett visuellt veck längst ned i sektionen."
+      },
+      {
+        "property": "full",
+        "title": "Helskärmsstorlek",
+        "description": "Fyll hela höjden på betraktarens skärm."
+      },
+      {
+        "property": "filter",
+        "title": "Använd filter",
+        "description": "Tillämpa ett visuellt filter på bakgrundsbilden."
+      },
+      {
+        "slot": "",
+        "title": "Innehåll",
+        "description": "Sektionens innehåll."
+      },
+      {
+        "slot": "entice",
+        "title": "Lockelse",
+        "description": "Valfritt lockande innehåll."
+      },
+      {
+        "slot": "buttons",
+        "title": "Knappar",
+        "description": "Knappgrupp som visas under texten."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ankartext",
+        "description": "Ankaretikett som visas i navigeringen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Гамәлгә чакыру",
+    "description": "Гамәл кылу өчен сылтамалы гади төймә."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Билге",
+        "description": "Сылтама исеме"
+      },
+      {
+        "property": "link",
+        "title": "Сылтама",
+        "description": "Теләсә нинди ресурска сылтама кертегез"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Иконканы яшерү",
+        "description": "Текстны аерып күрсәтү өчен кулланылган иконканы яшерү"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Иконка",
+        "description": "Гамәл сылтамасы иконкасы"
+      }
+    ]
+  }
+}

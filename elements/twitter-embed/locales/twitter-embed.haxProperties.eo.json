@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X)-enkorpigo",
+    "description": "Enkorpigi afiŝon el X en la kunteksto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL de la afiŝo",
+        "description": "URL de la enkorpigota afiŝo."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Temo",
+        "description": "Hela aŭ malhela temo por X-afiŝoj.",
+        "options": {
+          "light": "Hela",
+          "dark": "Malhela"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Malhelpi ŝprucfenestron je klako",
+        "description": "Malhelpi uzantojn malfermi la afiŝon ĉe x.com."
+      }
+    ]
+  }
+}

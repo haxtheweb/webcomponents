@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P Elemento",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Qillqa",
+        "description": "Ladu willakuypa ukhun"
+      }
+    ]
+  }
+}

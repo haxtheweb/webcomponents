@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "참/거짓 문제",
+    "description": "참 거짓 문제"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "질문",
+        "description": "사용자가 답할 질문입니다."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "정답"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "퀴즈 이름",
+        "description": "xAPI 기반 환경에서 이 항목을 식별하는 데 사용되는 퀴즈 이름"
+      }
+    ]
+  }
+}

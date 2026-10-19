@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Chiqanmanta utaq karumanta apamusqa markdown ukhun t'aqa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Ch'uya markdown"
+      },
+      {
+        "property": "source",
+        "title": "Pukyu",
+        "description": "Markdownpaq pukyu willañiqi"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "사이트 보기",
+    "description": "조건에 따라 사이트 데이터를 조회하고 표시하는 동적 블록"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "보기 URL",
+        "description": "보기 데이터 피드의 쿼리 매개변수입니다. 보기 대시보드에서 가져올 수 있습니다."
+      },
+      {
+        "property": "renderer",
+        "title": "표시 모드",
+        "description": "보기 결과를 렌더링하는 방식"
+      },
+      {
+        "property": "entity",
+        "title": "엔터티 유형",
+        "description": "응답 구문 분석에 사용할 엔터티 유형",
+        "options": {
+          "": "기본값 (항목)",
+          "item": "항목",
+          "page": "페이지",
+          "file": "파일",
+          "tag": "태그",
+          "block": "블록",
+          "view": "보기",
+          "theme": "테마",
+          "region": "영역",
+          "customElement": "사용자 지정 요소"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "사이트 보기 분리",
+        "description": "직접 편집할 수 있도록 정적 콘텐츠로 변환합니다. 소스로부터의 자동 업데이트가 중지됩니다."
+      }
+    ]
+  }
+}

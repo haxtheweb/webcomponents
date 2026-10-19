@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "പങ്കിടൽ URL-ൽ നിന്ന് Discord കമ്മ്യൂണിറ്റികൾ ഉൾച്ചേർക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ഉറവിട URL",
+        "description": "ഉറവിട URL."
+      },
+      {
+        "property": "height",
+        "title": "ഉയരം",
+        "description": "ഉള്ളടക്ക ഫ്രെയിമിന്റെ ഉയരം."
+      },
+      {
+        "property": "width",
+        "title": "വീതി",
+        "description": "ഉള്ളടക്ക ഫ്രെയിമിന്റെ വീതി."
+      }
+    ]
+  }
+}

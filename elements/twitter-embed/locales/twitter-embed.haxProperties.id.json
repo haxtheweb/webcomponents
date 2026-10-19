@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Sematan Twitter (X)",
+    "description": "Sematkan tweet dari X dalam konteks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL Tweet",
+        "description": "URL tweet yang akan disematkan."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Tema terang atau gelap untuk tweet X.",
+        "options": {
+          "light": "Terang",
+          "dark": "Gelap"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Cegah popup saat diklik",
+        "description": "Cegah pengguna membuka tweet di x.com."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D പ്ലെയർ",
+    "description": "ഒരു 3D ഫയൽ / ഓഗ്മെന്റഡ് റിയാലിറ്റി പ്ലെയർ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ഉറവിടം",
+        "description": "ഈ AR ഫയലിന്റെ URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR-ൽ ഘടകത്തിന്റെ X സ്ഥാനം."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR-ൽ ഘടകത്തിന്റെ Y സ്ഥാനം."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR-ൽ ഘടകത്തിന്റെ Z സ്ഥാനം."
+      },
+      {
+        "property": "skyColor",
+        "title": "ആകാശ നിറം",
+        "description": "ദൃശ്യത്തിലെ ആകാശത്തിന്റെ നിറം തിരഞ്ഞെടുക്കുക."
+      }
+    ]
+  }
+}

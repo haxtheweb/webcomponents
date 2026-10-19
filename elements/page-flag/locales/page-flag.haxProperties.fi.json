@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Sivumerkintä",
+    "description": "Toimituksellinen huomautus sivun tekijöille."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Sivumerkinnän korostusväri."
+      },
+      {
+        "property": "label",
+        "title": "Nimike",
+        "description": "Sivumerkinnän nimiketeksti."
+      }
+    ]
+  }
+}

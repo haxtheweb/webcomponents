@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Geleentheidskenteken",
+    "description": "Geleentheidskenteken-komponent."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV-prent",
+        "description": "Prent wat op die TV gewys word."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo wat in die kenteken se hoek gewys word."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel wat bo-aan die kenteken gewys word."
+      },
+      {
+        "property": "name",
+        "title": "Naam",
+        "description": "Naam wat op die kenteken gewys word."
+      },
+      {
+        "property": "position",
+        "title": "Posisie",
+        "description": "Persoon se rol of titel."
+      },
+      {
+        "property": "organization",
+        "title": "Organisasie",
+        "description": "Organisasie waarvoor die persoon werk."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV-kleur",
+        "description": "Kies die kleur vir die TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "Primêre agtergrond- of tekskleur."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Knopkleur",
+        "description": "Kleur van die TV-knoppe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Pas 'n sepia-effek toe."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Swart en wit",
+        "description": "Pas 'n swart-en-wit-effek toe."
+      }
+    ]
+  }
+}

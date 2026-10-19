@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Lühend",
+    "description": "Lühend täieliku termini kohtspikriga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Nähtav lühendi tekst."
+      },
+      {
+        "attribute": "title",
+        "title": "Sõna",
+        "description": "Hõljutamisel kuvatav täielik termin."
+      }
+    ]
+  }
+}

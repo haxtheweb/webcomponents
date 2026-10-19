@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "कॉलम लेआउट",
+    "description": "सरल कॉलम में सामग्री का लेआउट"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "कॉलम लेआउट",
+        "description": "इन आइटम को प्रस्तुत करने की शैली (छोटी स्क्रीन पर बदल सकती है)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "रिस्पॉन्सिव अक्षम करें",
+        "description": "बड़ी स्क्रीन पर कॉलम बनाए रखने और सबसे छोटी स्क्रीन पर फिर भी स्टैक करने के लिए बॉक्स चेक करें"
+      },
+      {
+        "property": "itemPadding",
+        "title": "आइटम पैडिंग",
+        "description": "हर आइटम के अंदर पैडिंग"
+      },
+      {
+        "property": "itemMargin",
+        "title": "आइटम मार्जिन",
+        "description": "आइटम के बीच मार्जिन"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lîsans",
+    "description": "Lîsansekê ji bo berhema xwe peyda bike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê berhema jêgirtî."
+      },
+      {
+        "property": "source",
+        "title": "Girêdana çavkaniyê",
+        "description": "URLa çavkaniyê ji bo berhema lîsanskirî."
+      },
+      {
+        "property": "license",
+        "title": "Lîsans",
+        "description": "Lîsansa ku li ser vê berhemê tê sepandin."
+      },
+      {
+        "property": "creator",
+        "title": "Afirîner",
+        "description": "Afirîner an xwediyê vê berhemê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Girêdana çavkaniyê",
+        "description": "Girêdan ji bo hûrgiliyên zêde yên lîsansê."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Etîketa zêdetir",
+        "description": "Etîket ji bo hûrgiliyên zêde yên lîsansê."
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "ಸ್ವಯಂ ಪರಿಶೀಲನೆ",
+    "description": "ಬಳಕೆದಾರರು ಸ್ವಯಂ ಪರಿಶೀಲನೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಬಹುದು."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ಚಿತ್ರ",
+        "description": "ಸ್ವಯಂ ಪರಿಶೀಲನೆಯ ಚಿತ್ರ."
+      },
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಸ್ವಯಂ ಪರಿಶೀಲನೆಯ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "alt",
+        "title": "ಪರ್ಯಾಯ ಪಠ್ಯ",
+        "description": "ಚಿತ್ರದ ಪರ್ಯಾಯ ಪಠ್ಯ."
+      },
+      {
+        "slot": "question",
+        "title": "ಪ್ರಶ್ನೆ"
+      },
+      {
+        "slot": "",
+        "title": "ಉತ್ತರ"
+      },
+      {
+        "property": "accentColor",
+        "title": "ಥೀಮ್ ಬಣ್ಣ",
+        "description": "ವಿನ್ಯಾಸ ವ್ಯವಸ್ಥೆಯಿಂದ ಥೀಮ್ ಬಣ್ಣವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+        "options": {
+          "primary": "ಪ್ರಾಥಮಿಕ",
+          "accent": "ಒತ್ತು",
+          "success": "ಯಶಸ್ಸು",
+          "warning": "ಎಚ್ಚರಿಕೆ",
+          "error": "ದೋಷ",
+          "info": "ಮಾಹಿತಿ"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ಕಲಿಕಾ ಉದ್ದೇಶ",
+        "description": "oer:hasLearningObjective ಆಗಿ ಹೊರಸೂಸುವ ಕಲಿಕಾ ಉದ್ದೇಶದ ಉಲ್ಲೇಖ."
+      },
+      {
+        "property": "assessing",
+        "title": "ಮೌಲ್ಯಮಾಪನ ಮಾಡುತ್ತಿರುವುದು",
+        "description": "oer:assessing ಆಗಿ ಹೊರಸೂಸುವ ಚಟುವಟಿಕೆಯ ಉಲ್ಲೇಖ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "ಇನ್ನಷ್ಟು ಲಿಂಕ್",
+        "description": "ಹೆಚ್ಚುವರಿ ಮಾಹಿತಿಗೆ ಲಿಂಕ್."
+      }
+    ]
+  }
+}

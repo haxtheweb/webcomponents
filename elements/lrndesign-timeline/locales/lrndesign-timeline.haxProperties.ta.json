@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "காலவரிசை",
+    "description": "படங்கள் மற்றும் உரையுடன் கூடிய நிகழ்வுகளின் காலவரிசை"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "காலவரிசைத் தலைப்பு",
+        "description": "காலவரிசைக்கான தலைப்பு."
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "விருப்ப அழுத்த நிறம்."
+      },
+      {
+        "property": "dark",
+        "title": "இருண்ட தீம்",
+        "description": "இருண்ட தீமை இயக்கு"
+      },
+      {
+        "slot": "",
+        "title": "காலவரிசை விவரம்",
+        "description": "காலவரிசையை விவரிக்கும் விருப்ப உரை."
+      },
+      {
+        "property": "events",
+        "title": "காலவரிசை நிகழ்வுகள்",
+        "description": "காலவரிசையில் உள்ள நிகழ்வுகள்"
+      }
+    ]
+  }
+}

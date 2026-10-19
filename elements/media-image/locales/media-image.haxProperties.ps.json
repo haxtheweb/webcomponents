@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "پرمختللی انځور",
+    "description": "د بېلابېلو پرمختګونو سره د انځورونو د وړاندې کولو یوه لاره."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "سرچینه",
+        "description": "د انځور لپاره URL."
+      },
+      {
+        "property": "alt",
+        "title": "بدیل متن",
+        "description": "هغه متن چې نابینا کارنانو ته انځور تشریح کوي."
+      },
+      {
+        "property": "link",
+        "title": "لینک",
+        "description": "انځور یو URL ته لینک کړئ"
+      },
+      {
+        "property": "card",
+        "title": "کارت",
+        "description": "د پورته شوي کارت د بڼې ورکولو لپاره سیوری پلي کړئ."
+      },
+      {
+        "property": "box",
+        "title": "بکس",
+        "description": "د انځور شاوخوا یو لیدنی بکس پلي کړئ."
+      },
+      {
+        "property": "offset",
+        "title": "واټن",
+        "description": "انځور ته چپ یا ښي واټن پلي کړئ.",
+        "options": {
+          "none": "هېڅ",
+          "wide": "پلن",
+          "narrow": "تنګ"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "حواله",
+        "description": "د انځور لپاره حواله."
+      },
+      {
+        "property": "caption",
+        "title": "عنوان",
+        "description": "د انځور لپاره سرلیک."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "د شکل سرلیک",
+        "description": "د شکل لېبل لپاره سرلیک."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "د شکل تشریح",
+        "description": "د شکل لېبل لپاره تشریح."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "کوچنی انځور",
+        "description": "د کوچني انځور سرچینه. کوچنی انځور ښیي خو بشپړه سرچینه په مودال کې پرانیزي."
+      },
+      {
+        "property": "round",
+        "title": "ګرد انځور",
+        "description": "د انځور بڼه د دایرې په شکل پرې کوي."
+      },
+      {
+        "property": "disableZoom",
+        "title": "د انځور مودال غیر فعال کړئ",
+        "description": "هغه کلیکونه غیر فعال کړئ چې انځور د انځور کتونکي ډیالوګ کې پرانیزي."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "د markdown په توګه وښایاست",
+        "description": "سرلیک او حواله د markdown په توګه وښایاست."
+      }
+    ]
+  }
+}

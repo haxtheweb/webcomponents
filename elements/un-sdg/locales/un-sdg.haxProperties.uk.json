@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Ціль сталого розвитку ООН."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Ціль",
+        "description": "Номер UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Лише колір",
+        "description": "Показувати лише колір цілі."
+      }
+    ]
+  }
+}

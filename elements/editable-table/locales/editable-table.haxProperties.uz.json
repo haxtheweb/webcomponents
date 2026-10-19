@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Jadval",
+    "description": "Veb uchun jadval koʻrinishidagi maʼlumotlar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Qator sarlavhasi",
+        "description": "Birinchi qatorni sarlavha sifatida koʻrish."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Ustun sarlavhasi",
+        "description": "Birinchi ustunni sarlavha sifatida koʻrish."
+      },
+      {
+        "property": "footer",
+        "title": "Pastki qism",
+        "description": "Oxirgi qatorni pastki qism sifatida koʻrish."
+      },
+      {
+        "property": "sort",
+        "title": "Saralanadigan",
+        "description": "Ustun qiymatlari boʻyicha saralashga ruxsat berish."
+      },
+      {
+        "property": "filter",
+        "title": "Filtrlashga ruxsat",
+        "description": "Ustun qiymatlari boʻyicha filtrlashga ruxsat berish."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Raqamli uslub",
+        "description": "Raqamli ustunlarga raqamli uslubni qoʻllash."
+      },
+      {
+        "property": "responsive",
+        "title": "Moslashuvchan",
+        "description": "Kichik ekranlarda jadval maketini moslashtirish."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubric rejimi",
+        "description": "Ushbu jadvalni OER Schema Rubric sifatida talqin qilish, shunda Rubric, RubricScale, RubricCriterion va RubricLevel metamaʼlumotlari chiqariladi."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubric turi",
+        "description": "oer:rubricType sifatida chiqariladigan rubrika uslubi (faqat Rubric rejimi yoqilganda maʼnoga ega).",
+        "options": {
+          "": "(yoʻq)",
+          "analytic": "Analitik",
+          "holistic": "Yaxlit",
+          "single-point": "Bir nuqtali",
+          "checklist": "Nazorat roʻyxati"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Hoshiyali"
+      },
+      {
+        "property": "condensed",
+        "title": "Qatorlarni zichlash",
+        "description": "Qator balandligini kamaytirish."
+      },
+      {
+        "property": "striped",
+        "title": "Yoʻl-yoʻl qatorlar",
+        "description": "Har ikkinchi qatorni soyalash."
+      },
+      {
+        "property": "downloadable",
+        "title": "Yuklab olish tugmasi",
+        "description": "Jadvalni yuklab olish uchun tugma qoʻshish."
+      },
+      {
+        "property": "copyable",
+        "title": "Nusxalash tugmasi",
+        "description": "Jadvalning CSV maʼlumotlarini nusxalash uchun tugma qoʻshish."
+      },
+      {
+        "property": "printable",
+        "title": "Chop etish tugmasi",
+        "description": "Faqat jadvalni chop etish uchun tugma qoʻshish."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV maʼlumotlari",
+        "description": "Yuklangan CSV faylidan jadval yaratish."
+      }
+    ]
+  }
+}

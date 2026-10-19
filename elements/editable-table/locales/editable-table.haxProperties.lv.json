@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabula",
+    "description": "Tabulas formas dati tīmeklim."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Rindas galvene",
+        "description": "Uzskatīt pirmo rindu par galveni."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Kolonnas galvene",
+        "description": "Uzskatīt pirmo kolonnu par galveni."
+      },
+      {
+        "property": "footer",
+        "title": "Kājene",
+        "description": "Uzskatīt pēdējo rindu par kājeni."
+      },
+      {
+        "property": "sort",
+        "title": "Kārtojama",
+        "description": "Atļaut kārtot pēc kolonnu vērtībām."
+      },
+      {
+        "property": "filter",
+        "title": "Atļaut filtrēšanu",
+        "description": "Atļaut filtrēt pēc kolonnu vērtībām."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Skaitliskais stils",
+        "description": "Piemērot skaitlisko stilu skaitliskām kolonnām."
+      },
+      {
+        "property": "responsive",
+        "title": "Adaptīva",
+        "description": "Pielāgot tabulas izkārtojumu maziem ekrāniem."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Vērtēšanas kritēriju režīms",
+        "description": "Interpretēt šo tabulu kā OER Schema Rubric, lai tiktu izvadīti Rubric, RubricScale, RubricCriterion un RubricLevel metadati."
+      },
+      {
+        "property": "rubricType",
+        "title": "Vērtēšanas kritēriju veids",
+        "description": "Vērtēšanas kritēriju stils, kas tiek izvadīts kā oer:rubricType (nozīmīgs tikai tad, ja ieslēgts vērtēšanas kritēriju režīms).",
+        "options": {
+          "": "(nav)",
+          "analytic": "Analītisks",
+          "holistic": "Holistisks",
+          "single-point": "Viena punkta",
+          "checklist": "Kontrolsaraksts"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Ar apmalēm"
+      },
+      {
+        "property": "condensed",
+        "title": "Saspiest rindas",
+        "description": "Samazināt rindu augstumu."
+      },
+      {
+        "property": "striped",
+        "title": "Svītrotas rindas",
+        "description": "Iekrāsot katru otro rindu."
+      },
+      {
+        "property": "downloadable",
+        "title": "Lejupielādes poga",
+        "description": "Pievienot pogu tabulas lejupielādei."
+      },
+      {
+        "property": "copyable",
+        "title": "Kopēšanas poga",
+        "description": "Pievienot pogu tabulas CSV datu kopēšanai."
+      },
+      {
+        "property": "printable",
+        "title": "Drukāšanas poga",
+        "description": "Pievienot pogu, kas drukā tikai tabulu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV dati",
+        "description": "Izveidot tabulu no augšupielādēta CSV faila."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Badhanka buugga elektaroonigga ah",
+    "description": "Badhan ku xidhan buug elektarooni ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Cinwaanka badhanka."
+      },
+      {
+        "property": "link",
+        "title": "Xiriiriye",
+        "description": "Xiriirka loo gudbinayo marka la gujiyo."
+      },
+      {
+        "property": "icon",
+        "title": "Astaan",
+        "description": "Astaanta matalaysa xiriirkan"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "عنصر H5P",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "النص",
+        "description": "محتوى الملاحظة الجانبية"
+      }
+    ]
+  }
+}

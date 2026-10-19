@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Github урьдчилсан харагдац",
+    "description": "Урт тайлбартай хүртээмжтэй зураг"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Байгууллага",
+        "description": "Github байгууллагын машин нэр"
+      },
+      {
+        "property": "repo",
+        "title": "Репозитори",
+        "description": "Репозиторийн машин нэр"
+      },
+      {
+        "property": "extended",
+        "title": "Өргөтгөсөн харагдац",
+        "description": "Элементэд readme оруулна"
+      }
+    ]
+  }
+}

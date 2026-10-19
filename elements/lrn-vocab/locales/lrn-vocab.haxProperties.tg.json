@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Луғат",
+    "description": "Истилоҳи луғат"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Истилоҳ"
+      },
+      {
+        "slot": "",
+        "title": "Таъриф",
+        "description": "Таърифе, ки ҳангоми клик бар истилоҳ нишон дода мешавад."
+      },
+      {
+        "property": "description",
+        "title": "Тавсиф (OER Schema)",
+        "description": "OER Schema: тавсифи кӯтоҳи истилоҳи луғат. Агар холӣ монад, аз матни таъриф худкор пур карда мешавад."
+      }
+    ]
+  }
+}

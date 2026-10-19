@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Цитата блогу",
+    "description": "Стилдештирилген цитата блогу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Шилтеме булагы",
+        "description": "Цитата булагынын тексти."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Сүрөт үчүн альтернативдик текст."
+      },
+      {
+        "property": "image",
+        "title": "Сүрөт",
+        "description": "Цитата менен көрсөтүлгөн сүрөт."
+      }
+    ]
+  }
+}

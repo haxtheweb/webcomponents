@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Datum",
+    "description": "Toan in kalinderdatum mei details."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Moanne",
+        "description": "Moanne op de kaart."
+      },
+      {
+        "property": "date",
+        "title": "Dei fan de moanne",
+        "description": "Dei fan de moanne as getal."
+      },
+      {
+        "property": "day",
+        "title": "Dei fan de wike",
+        "description": "Dei fan de wike as tekst."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Namme fan it evenemint."
+      },
+      {
+        "property": "location",
+        "title": "Lokaasje",
+        "description": "Lokaasje fan it evenemint."
+      },
+      {
+        "property": "startTime",
+        "title": "Begjin",
+        "description": "Begjintiid."
+      },
+      {
+        "property": "endTime",
+        "title": "Ein",
+        "description": "Eintiid."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "In opsjonele aksintkleur."
+      },
+      {
+        "property": "dark",
+        "title": "Tsjuster tema",
+        "description": "Tsjuster tema ynskeakelje."
+      }
+    ]
+  }
+}

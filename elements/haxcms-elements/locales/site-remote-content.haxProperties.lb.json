@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Remote-Inhalt",
+    "description": "Inhalt vun engem Site an engem aneren erëmbenotzen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Site-Adress",
+        "description": "Adress afügen, vun där den Inhalt referenzéiert gëtt, wann et net den aktuelle Site ass"
+      },
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Element, dat fir de Link / d'Titeldonnéeë gerendert gëtt"
+      },
+      {
+        "property": "breakreference",
+        "title": "Referenz opléisen",
+        "description": "Wann Dir dës Këscht ukräizt, gëtt de Remote-Inhalt fir lokal Beaarbechtung kopéiert, mä d'Verbindung gëtt ewechgeholl. En kritt keng Aktualiséierunge méi, wann d'Referenzmaterial aktualiséiert gëtt."
+      },
+      {
+        "property": "showTitle",
+        "title": "Titel uweisen",
+        "description": "Aschalten, fir den Titel vun der ugewisener Ressource unzeweisen"
+      }
+    ]
+  }
+}

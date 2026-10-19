@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Markdown مواد جو بلاڪ، سڌو يا ريموٽ طور لوڊ ٿيل"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "خام Markdown"
+      },
+      {
+        "property": "source",
+        "title": "ذريعو",
+        "description": "Markdown لاءِ سورس فائل"
+      }
+    ]
+  }
+}

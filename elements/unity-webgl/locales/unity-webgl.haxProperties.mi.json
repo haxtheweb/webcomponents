@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Kaipurei Unity",
+    "description": "Kaipurei Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Whāinga",
+        "description": "Ara ki te hanganga kēmu."
+      },
+      {
+        "property": "compression",
+        "title": "Tikanga kōpeke",
+        "description": "Kōnae toronga kōpeke mō ngā rawa kēmu."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL Rere",
+        "description": "URL rawa rere."
+      },
+      {
+        "property": "companyname",
+        "title": "Ingoa Kamupene",
+        "description": "Ingoa kamupene."
+      },
+      {
+        "property": "productname",
+        "title": "Ingoa Hua",
+        "description": "Taitara kēmu."
+      },
+      {
+        "property": "productversion",
+        "title": "Putanga Hua",
+        "description": "Putanga tuku."
+      },
+      {
+        "property": "width",
+        "title": "Whānui Kānawehi",
+        "description": "Whānui CSS o te kānawehi (hei tauira px, em rānei)."
+      },
+      {
+        "property": "height",
+        "title": "Teitei Kānawehi",
+        "description": "Teitei CSS o te kānawehi (hei tauira px, em rānei)."
+      },
+      {
+        "property": "background",
+        "title": "Papamuri Kānawehi",
+        "description": "Papamuri CSS o te kānawehi."
+      }
+    ]
+  }
+}

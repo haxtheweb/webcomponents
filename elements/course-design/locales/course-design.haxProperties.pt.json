@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Design de curso",
+    "description": "Contêiner para materiais educacionais e elementos de design de curso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Identificador do curso",
+        "description": "OER Schema: o identificador do curso, ex.: MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Período de oferta",
+        "description": "OER Schema: o período em que o curso é oferecido."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Formato de oferta",
+        "description": "OER Schema: o formato usado para ministrar o curso (ex.: presencial, online, híbrido)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Instrutor principal",
+        "description": "OER Schema: o instrutor principal do curso."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL do plano de ensino",
+        "description": "OER Schema: URL do plano de ensino do curso."
+      }
+    ]
+  }
+}

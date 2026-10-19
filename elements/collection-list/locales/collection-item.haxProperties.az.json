@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Kolleksiya elementi",
+    "description": "Kolleksiya siyahısında istifadə üçün mətn, keçid və ixtiyari media olan kart tipli element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Keçid",
+        "description": "Bu kart üçün hədəf URL."
+      },
+      {
+        "property": "image",
+        "title": "Şəkil",
+        "description": "Fon şəkli."
+      },
+      {
+        "property": "line1",
+        "title": "Sətir 1",
+        "description": "Mətnin birinci sətri."
+      },
+      {
+        "property": "line2",
+        "title": "Sətir 2",
+        "description": "Mətnin ikinci sətri."
+      },
+      {
+        "property": "line3",
+        "title": "Sətir 3",
+        "description": "Mətnin üçüncü sətri."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "İkon",
+        "description": "Kartı təmsil edən ikon."
+      },
+      {
+        "property": "saturate",
+        "title": "Doyma effekti",
+        "description": "İstifadəçi fokuslandıqda şəklin doymasını dəyiş."
+      },
+      {
+        "property": "tags",
+        "title": "Teqlər",
+        "description": "Vergüllə ayrılmış teqlər siyahısı."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rəng",
+        "description": "Teqlər üçün istifadə olunan rəng."
+      },
+      {
+        "property": "alt",
+        "title": "Alt mətn",
+        "description": "Keçidi təsvir edən alternativ mətn."
+      }
+    ]
+  }
+}

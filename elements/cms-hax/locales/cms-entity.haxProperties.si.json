@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS ආයතනය",
+    "description": "පසුබිමේ විදැහූ CMS ආයතනය"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "වර්ගය",
+        "description": "අපගේ CMS වෙතින් වර්ගය",
+        "options": {
+          "node": "නෝඩය",
+          "user": "පරිශීලක",
+          "file": "ගොනුව"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "අපගේ CMS වෙතින් id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "දර්ශන ප්‍රකාරය",
+        "description": "අපගේ CMS වෙතින් සංදර්ශන ප්‍රකාරය"
+      }
+    ]
+  }
+}

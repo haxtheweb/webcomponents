@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Imephu yomfanekiso",
+    "description": "Imephu yomfanekiso efikelelekayo eneendawo ezisebenzisanayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Ileyibhile",
+        "description": "Ileyibhile yemephu yomfanekiso."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Iinkcukacha zeendawo ezisebenzayo",
+        "description": "Iindawo ezisebenzisanayo kwimephu yomfanekiso."
+      }
+    ]
+  }
+}

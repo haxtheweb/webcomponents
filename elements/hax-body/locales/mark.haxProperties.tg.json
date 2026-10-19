@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ҷудокунӣ",
+    "description": "Ҷудо кардани матни дохилисатрӣ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Матн",
+        "description": "Матни ҷудокардашуда."
+      }
+    ]
+  }
+}

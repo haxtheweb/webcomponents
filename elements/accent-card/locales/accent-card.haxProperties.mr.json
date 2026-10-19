@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "कार्ड",
+    "description": "पर्यायी अ‍ॅक्सेंट शैलीसह कार्ड."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "मथळा",
+        "description": "कार्डसाठी शीर्षक."
+      },
+      {
+        "slot": "subheading",
+        "title": "उपशीर्षक",
+        "description": "कार्डसाठी पर्यायी उपशीर्षक."
+      },
+      {
+        "slot": "content",
+        "title": "सामग्री",
+        "description": "कार्डसाठी मजकूर."
+      },
+      {
+        "slot": "footer",
+        "title": "तळटीप",
+        "description": "कार्डसाठी पर्यायी तळटीप."
+      },
+      {
+        "property": "imageSrc",
+        "title": "प्रतिमा",
+        "description": "पर्यायी प्रतिमा"
+      },
+      {
+        "property": "imageAlt",
+        "title": "प्रतिमा पर्यायी मजकूर",
+        "description": "स्क्रीन रीडरसाठी प्रतिमेचे वर्णन करणारा पर्यायी मजकूर. प्रतिमा पूर्णपणे सजावटीसाठी असेल तरच रिकामा ठेवा."
+      },
+      {
+        "property": "imageAlign",
+        "title": "प्रतिमा संरेखन",
+        "description": "प्रतिमेचे आडवे संरेखन",
+        "options": {
+          "left": "डावीकडे",
+          "center": "मध्यभागी",
+          "right": "उजवीकडे"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "प्रतिमा उभे संरेखन",
+        "description": "प्रतिमेचे उभे संरेखन",
+        "options": {
+          "top": "वर",
+          "center": "मध्यभागी",
+          "bottom": "खाली"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "पर्यायी उठाव रंग."
+      },
+      {
+        "property": "dark",
+        "title": "गडद थीम",
+        "description": "डार्क थीम सक्षम करा"
+      },
+      {
+        "property": "horizontal",
+        "title": "आडवी",
+        "description": "आडवी मांडणी?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "शीर्षक अ‍ॅक्सेंट",
+        "description": "शीर्षकाला अ‍ॅक्सेंट रंग लागू करायचा?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "पार्श्वभूमी अ‍ॅक्सेंट",
+        "description": "कार्डच्या पार्श्वभूमीला अ‍ॅक्सेंट रंग लागू करायचा?"
+      },
+      {
+        "property": "noBorder",
+        "title": "किनारी अ‍ॅक्सेंट नाही",
+        "description": "किनारी अ‍ॅक्सेंट काढायचा?"
+      },
+      {
+        "property": "flat",
+        "title": "सपाट",
+        "description": "बॉक्स सावली काढायची?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "कोपरा",
+        "description": "कार्डच्या कोपऱ्यासाठी मजकूर."
+      }
+    ]
+  }
+}

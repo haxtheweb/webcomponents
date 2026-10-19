@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "利用可能なテーマ",
+    "description": "利用可能な HAXcms テーマをライブプレビューの切り替え付きで表示します"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "表示モード",
+        "description": "テーマの表示方法を選択します",
+        "options": {
+          "gallery": "ギャラリー",
+          "table": "表"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "詳細を表示",
+        "description": "テーマの説明と追加情報を表示します"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "非表示およびレガシーテーマを表示",
+        "description": "ダッシュボードの既定テーマに加えて、非表示、レガシー、低品質なテーマも表示します"
+      },
+      {
+        "property": "columns",
+        "title": "列数 (ギャラリー)",
+        "description": "ギャラリー表示の列数"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Rondedzero yevabatsiri veGitHub",
+    "description": "Vanoratidzwa sevatambi veRPG vachishandisa GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Sangano",
+        "description": "Zita resangano kubva pagithub.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Dura",
+        "description": "Zita redura kubva pagithub.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Muganhu",
+        "description": "Ganhurira huwandu hwevabatsiri vanoratidzwa."
+      }
+    ]
+  }
+}

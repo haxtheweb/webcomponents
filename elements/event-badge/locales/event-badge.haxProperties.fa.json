@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "نشان رویداد",
+    "description": "مؤلفهٔ نشان رویداد."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "تصویر TV",
+        "description": "تصویری که روی تلویزیون نمایش داده می‌شود."
+      },
+      {
+        "property": "logo",
+        "title": "لوگو",
+        "description": "لوگویی که در گوشهٔ نشان نمایش داده می‌شود."
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنوانی که بالای نشان نمایش داده می‌شود."
+      },
+      {
+        "property": "name",
+        "title": "نام",
+        "description": "نامی که روی نشان نمایش داده می‌شود."
+      },
+      {
+        "property": "position",
+        "title": "سمت",
+        "description": "نقش یا عنوان شغلی فرد."
+      },
+      {
+        "property": "organization",
+        "title": "سازمان",
+        "description": "سازمانی که فرد در آن کار می‌کند."
+      },
+      {
+        "property": "tvcolor",
+        "title": "رنگ TV",
+        "description": "رنگ تلویزیون را انتخاب کنید."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ اصلی پس‌زمینه یا متن."
+      },
+      {
+        "property": "knobcolor",
+        "title": "رنگ پیچ‌ها",
+        "description": "رنگ پیچ‌های تلویزیون."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "قهوه‌ای کهنه (سپیا)",
+        "description": "اعمال جلوهٔ سپیا."
+      },
+      {
+        "property": "blackwhite",
+        "title": "سیاه‌وسفید",
+        "description": "اعمال جلوهٔ سیاه‌وسفید."
+      }
+    ]
+  }
+}

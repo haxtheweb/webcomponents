@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris ਕਹਾਣੀ ਕਾਰਡ",
+    "description": "ਪਿਛੋਕੜ ਚਿੱਤਰ, ਥੰਮ੍ਹ ਲੇਬਲ ਅਤੇ ਸੁਰਖੀ ਲਿਖਤ ਨਾਲ Polaris ਕਹਾਣੀ ਕਾਰਡ ਦਿਖਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ਪਿਛੋਕੜ ਚਿੱਤਰ",
+        "description": "ਕਾਰਡ ਦੇ ਪਿਛੋਕੜ ਵਜੋਂ ਦਿਖਾਇਆ ਚਿੱਤਰ URL।"
+      },
+      {
+        "property": "backgroundSize",
+        "title": "ਪਿਛੋਕੜ ਆਕਾਰ",
+        "description": "ਪਿਛੋਕੜ ਚਿੱਤਰ ਕਾਰਡ ਨੂੰ ਕਿਵੇਂ ਭਰਦਾ ਹੈ (CSS background-size)।",
+        "options": {
+          "cover": "ਢਕੋ (cover)",
+          "contain": "ਸਮਾਓ (contain)",
+          "auto": "ਸਵੈਚਲਿਤ (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "ਪਿਛੋਕੜ ਜੁੜਾਵ",
+        "description": "ਸਕ੍ਰੋਲ ਕਰਨ ਵੇਲੇ ਪਿਛੋਕੜ ਚਿੱਤਰ ਕਿਵੇਂ ਵਿਹਾਰ ਕਰਦਾ ਹੈ (CSS background-attachment)।",
+        "options": {
+          "scroll": "ਸਕ੍ਰੋਲ (scroll)",
+          "fixed": "ਸਥਿਰ (fixed)",
+          "local": "ਸਥਾਨਕ (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "ਥੰਮ੍ਹ ਲੇਬਲ",
+        "description": "ਕਾਰਡ ਦੇ ਸਿਖਰ 'ਤੇ ਦਿਖਾਇਆ ਛੋਟਾ ਵੱਡੇ-ਅੱਖਰਾਂ ਵਾਲਾ ਲੇਬਲ। ਲੁਕਾਉਣ ਲਈ ਖਾਲੀ ਛੱਡੋ।"
+      },
+      {
+        "property": "label",
+        "title": "ਕਾਰਡ ਲਿਖਤ",
+        "description": "ਹੇਠਲੇ ਪੈਨਲ ਵਿੱਚ ਦਿਖਾਈ ਮੁੱਖ ਲਿਖਤ।"
+      },
+      {
+        "property": "link",
+        "title": "ਲਿੰਕ",
+        "description": "ਪੂਰੇ ਕਾਰਡ ਨੂੰ ਘੇਰਨ ਵਾਲਾ ਵਿਕਲਪਿਕ ਮੰਜ਼ਿਲ URL।"
+      }
+    ]
+  }
+}

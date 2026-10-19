@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "ページにDisqusコメントを埋め込みます。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "ショートネーム",
+        "description": "Disqusスクリプトのホストを決めるサイトのショートネーム。"
+      },
+      {
+        "property": "pageURL",
+        "title": "ページURL",
+        "description": "コメントスレッドが紐づくページのURL。"
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "ページ識別子",
+        "description": "ページのコメントスレッドの一意の識別子。"
+      },
+      {
+        "property": "pageTitle",
+        "title": "ページタイトル",
+        "description": "コメントスレッドが紐づくページのタイトル。"
+      },
+      {
+        "property": "loadingText",
+        "title": "読み込み中のテキスト",
+        "description": "コメントの読み込み中に読み上げるテキスト。"
+      },
+      {
+        "property": "lang",
+        "title": "言語",
+        "description": "Disqusインターフェースの言語コード（例: en）。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS-kassi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Fjal ritilin",
+        "description": "Fjal fílurættingarmarkamótið."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Fjal terminalin",
+        "description": "Fjal terminalin fyri sjálvkoyrandi forrit."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Fjal vindeyga",
+        "description": "Fjal úttaksvindeygað til bert terminalnýtslu."
+      },
+      {
+        "slot": "",
+        "title": "Boð",
+        "description": "Boð (eitt á hvørja linju), sum skulu koyrast áðrenn innlesing."
+      }
+    ]
+  }
+}

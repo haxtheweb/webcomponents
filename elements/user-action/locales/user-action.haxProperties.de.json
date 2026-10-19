@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Benutzeraktion",
+    "description": "Benutzeraktionen verfolgen und Daten an xAPI-Speicher senden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Zu verfolgendes Ereignis",
+        "description": "Benutzeraktion, die dieses Ereignis auslöst.",
+        "options": {
+          "visibility": "Kann dies sehen",
+          "keydown": "Hier eine Taste drücken",
+          "click": "Hier klicken",
+          "hover": "Mit der Maus hierüber fahren"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Jedes Mal verfolgen",
+        "description": "Standardmäßig wird nur das erste Auftreten verfolgt."
+      }
+    ]
+  }
+}

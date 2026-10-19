@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Boolokii qabiyyee markdown kallattiin yookaan fagoodhaa fe'ame"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown dheedhii"
+      },
+      {
+        "property": "source",
+        "title": "Madda",
+        "description": "Faayilii madda markdown"
+      }
+    ]
+  }
+}

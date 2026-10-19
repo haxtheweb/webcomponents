@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Tíðarlinja",
+    "description": "Ein tíðarlinja við hendingum við myndum og teksti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Heiti á tíðarlinju",
+        "description": "Eitt heiti til tíðarlinjuna."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Ein valfríur dámlitur."
+      },
+      {
+        "property": "dark",
+        "title": "Myrkt evni",
+        "description": "Tendra myrkt tema"
+      },
+      {
+        "slot": "",
+        "title": "Lýsing av tíðarlinju",
+        "description": "Valfrír tekstur, ið lýsir tíðarlinjuna."
+      },
+      {
+        "property": "events",
+        "title": "Hendingar á tíðarlinju",
+        "description": "Hendingarnar á tíðarlinjuni"
+      }
+    ]
+  }
+}

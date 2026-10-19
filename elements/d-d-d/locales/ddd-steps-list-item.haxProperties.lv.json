@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Soļa elements",
+    "description": "Soļu saraksta elements"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Nosaukums"
+      }
+    ]
+  }
+}

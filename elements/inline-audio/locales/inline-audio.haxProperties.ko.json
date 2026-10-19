@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "인라인 오디오",
+    "description": "페이지 콘텐츠를 보충하는 오디오를 인라인으로 재생합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "소스",
+        "description": "MP3 파일 또는 URL입니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "카드 강조 색상입니다."
+      },
+      {
+        "property": "shiny",
+        "title": "반짝임",
+        "description": "회색 대신 밝은 강조 배경을 사용합니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "어둡게",
+        "description": "다크 모드를 사용합니다."
+      }
+    ]
+  }
+}

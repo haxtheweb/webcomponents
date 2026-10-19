@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Ithegi / Ipilisi",
+    "description": "Ileyibhile emile okwepilisi ecinezelekileyo enombala ogqamisayo okhethwayo, iqhosha lokurhoxisa, okanye ukutshintsha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Ileyibhile",
+        "description": "Umbhalo oboniswa ngaphakathi kwepilisi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala ogqamisayo",
+        "description": "Igama lombala ogqamisayo we-SimpleColors womva wepilisi.",
+        "options": {
+          "": "-- okungagqibekanga --",
+          "red": "Bomvu",
+          "pink": "Pinki",
+          "purple": "Mfusa",
+          "deep-purple": "Mfusa omnzulu",
+          "indigo": "Indigo",
+          "blue": "Luhlaza okwesibhakabhaka",
+          "light-blue": "Luhlaza okwesibhakabhaka okhanyayo",
+          "cyan": "Cyan",
+          "teal": "Teal",
+          "green": "Luhlaza",
+          "light-green": "Luhlaza okhanyayo",
+          "lime": "Lime",
+          "yellow": "Mthubi",
+          "amber": "Amber",
+          "orange": "Orenji",
+          "deep-orange": "Orenji omnzulu",
+          "brown": "Mdaka",
+          "blue-grey": "Ngwevu eluhlaza okwesibhakabhaka",
+          "grey": "Ngwevu"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Umbala ogqamisayo ozenzekelayo",
+        "description": "Fumana umbala ogqamisayo kumbhalo weleyibhile ngokuzenzekelayo."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Iqhosha lokurhoxisa",
+        "description": "Bonisa iqhosha le-icon lokususa/lokurhoxisa ngaphakathi kwepilisi."
+      },
+      {
+        "property": "readonly",
+        "title": "Ukufunda kuphela",
+        "description": "Fihla iqhosha lokurhoxisa ukuze ipilisi ibe yeyokubonisa kuphela."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Iyatshintsha",
+        "description": "Yenza ipilisi itshintshe ivule/ivale xa iqhosha licofwa."
+      },
+      {
+        "property": "toggled",
+        "title": "Itshintshiwe",
+        "description": "Ukuba ipilisi ivuliwe na ngoku."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "I-icon yokutshintshwa",
+        "description": "I-icon eboniswa xa ipilisi ivuliwe."
+      },
+      {
+        "property": "disabled",
+        "title": "Kuvaliwe",
+        "description": "Vala ukusebenzisana nepilisi."
+      }
+    ]
+  }
+}

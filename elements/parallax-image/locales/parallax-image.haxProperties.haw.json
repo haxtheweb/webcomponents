@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kiʻi parallax",
+    "description": "ʻŌwili kiʻi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Kiʻi",
+        "description": "kiʻi e komo ana ma ke kahua hope"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Wahi poʻomanaʻo",
+        "description": "Wahi kikokikona poʻomanaʻo"
+      }
+    ]
+  }
+}

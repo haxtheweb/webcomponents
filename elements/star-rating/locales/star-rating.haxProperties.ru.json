@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Оценка звёздами",
+    "description": "Виджет отображения оценки или кнопка для оценивания."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Балл",
+        "description": "Текущее значение балла."
+      },
+      {
+        "property": "possible",
+        "title": "Максимум",
+        "description": "Максимально возможный балл."
+      },
+      {
+        "property": "numStars",
+        "title": "Количество звёзд",
+        "description": "Количество отображаемых звёзд."
+      },
+      {
+        "property": "interactive",
+        "title": "Интерактивно",
+        "description": "Разрешить пользователю выставлять оценку."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Режим шкалы рубрики",
+        "description": "Выводить метаданные OER Schema RubricScale и RubricLevel (levelOrdinal/levelPoints) для каждой звезды."
+      }
+    ]
+  }
+}

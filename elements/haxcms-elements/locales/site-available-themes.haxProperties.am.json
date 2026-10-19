@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "የሚገኙ ገጽታዎች",
+    "description": "የሚገኙ የHAXcms ገጽታዎችን በቀጥታ የቅድመ እይታ መቀያየር አሳይ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "የእይታ ሁነታ",
+        "description": "ገጽታዎቹን እንዴት እንደሚያሳዩ ይምረጡ",
+        "options": {
+          "gallery": "ማዕከለ-ስዕላት",
+          "table": "ሰንጠረዥ"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "ዝርዝሮችን አሳይ",
+        "description": "የገጽታ መግለጫዎችን እና ተጨማሪ መረጃዎችን አሳይ"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "የተደበቁ እና የቆዩ ገጽታዎችን አሳይ",
+        "description": "ከዳሽቦርድ ነባሪዎች በተጨማሪ የተደበቁ፣ የቆዩ እና አስከፊ ገጽታዎችን አሳይ"
+      },
+      {
+        "property": "columns",
+        "title": "ዓምዶች (ማዕከለ-ስዕላት)",
+        "description": "በማዕከለ-ስዕላት እይታ ውስጥ ያሉ የዓምዶች ብዛት"
+      }
+    ]
+  }
+}

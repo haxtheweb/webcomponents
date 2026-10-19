@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Saatavilla olevat teemat",
+    "description": "Näytä saatavilla olevat HAXcms-teemat ja vaihda niitä reaaliaikaisella esikatselulla"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Näkymätila",
+        "description": "Valitse, miten teemat näytetään",
+        "options": {
+          "gallery": "Galleria",
+          "table": "Taulukko"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Näytä tiedot",
+        "description": "Näytä teemojen kuvaukset ja lisätiedot"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Näytä piilotetut ja vanhat teemat",
+        "description": "Näytä piilotetut, vanhat ja kamalat teemat hallintapaneelin oletusten lisäksi"
+      },
+      {
+        "property": "columns",
+        "title": "Sarakkeet (galleria)",
+        "description": "Sarakkeiden määrä gallerianäkymässä"
+      }
+    ]
+  }
+}

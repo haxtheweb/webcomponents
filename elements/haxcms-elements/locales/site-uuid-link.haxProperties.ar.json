@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "رابط HAX",
+    "description": "رابط إلى مورد محدد في الموقع الذي تعمل عليه."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "عنصر",
+        "description": "العنصر المراد عرضه لبيانات الرابط / العنوان"
+      }
+    ]
+  }
+}

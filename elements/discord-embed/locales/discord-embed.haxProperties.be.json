@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Убудаваць суполкі Discord па спасылцы-запрашэнні."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL рэсурсу",
+        "description": "URL рэсурсу."
+      },
+      {
+        "property": "height",
+        "title": "Вышыня",
+        "description": "Вышыня фрэйма змесціва."
+      },
+      {
+        "property": "width",
+        "title": "Шырыня",
+        "description": "Шырыня фрэйма змесціва."
+      }
+    ]
+  }
+}

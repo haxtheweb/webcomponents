@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Ачык кат",
+    "description": "Кайсы бир жерден келген чыныгы ачык катка окшош кызыктуу медиа элементи"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Кимге",
+        "description": "Бул кимге жөнөтүлөт?"
+      },
+      {
+        "property": "from",
+        "title": "Кимден",
+        "description": "Сиз кимсиз?"
+      },
+      {
+        "property": "message",
+        "title": "Билдирүү",
+        "description": "Эмне айткыңыз келет?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Почта мөөрү кайдан",
+        "description": "Бул карта кайдан жөнөтүлгөн?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Негизги сүрөттүн булагы",
+        "description": "Сүрөтүңүз кайда жайгашкан?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Марканын сүрөтүнүн булагы",
+        "description": "Сүрөтүңүз кайда жайгашкан?"
+      }
+    ]
+  }
+}

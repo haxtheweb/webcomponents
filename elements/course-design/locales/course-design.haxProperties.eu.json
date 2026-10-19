@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Ikastaroaren diseinua",
+    "description": "Hezkuntza-materialen eta ikastaro-diseinuko elementuen edukiontzia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Ikastaroaren identifikatzailea",
+        "description": "OER Schema: ikastaroaren identifikatzailea, adib. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Eskaintza-epea",
+        "description": "OER Schema: ikastaroa eskaintzen den epea."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Emate-formatua",
+        "description": "OER Schema: ikastaroa emateko erabilitako formatua (adib. aurrez aurrekoa, linean, hibridoa)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Irakasle nagusia",
+        "description": "OER Schema: ikastaroaren irakasle nagusia."
+      },
+      {
+        "property": "syllabus",
+        "title": "Ikasgai-programaren URLa",
+        "description": "OER Schema: ikastaroaren ikasgai-programaren URLa."
+      }
+    ]
+  }
+}

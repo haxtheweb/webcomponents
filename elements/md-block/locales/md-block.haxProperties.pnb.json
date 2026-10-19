@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "سدھا یا دوروں لوڈ کیتا markdown مواد دا بلاک"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "کچا markdown"
+      },
+      {
+        "property": "source",
+        "title": "ذریعہ",
+        "description": "markdown لئی سورس فائل"
+      }
+    ]
+  }
+}

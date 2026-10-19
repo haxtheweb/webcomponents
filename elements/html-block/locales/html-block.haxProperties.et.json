@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML-plokk",
+    "description": "Lihtne HTML-plokk, mis pakub HAXschema ühendust"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML-kood, mida soovid sisus esitada"
+      }
+    ]
+  }
+}

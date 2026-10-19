@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Whakaaturia tētahi pātene karanga-ki-te-mahi Polaris whai kaupapa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Kupu pātene",
+        "description": "Kupu ka whakaaturia i te pātene karanga-ki-te-mahi."
+      },
+      {
+        "property": "link",
+        "title": "Hono",
+        "description": "URL taunga mō te pātene."
+      },
+      {
+        "property": "type",
+        "title": "Momo kē",
+        "description": "Momo kē o te kāhua ataata.",
+        "options": {
+          "primary": "Matua",
+          "tinted": "Kua tāwahia",
+          "light": "Mārama"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Kāhua tuaka",
+        "description": "Whakahohea te maimoatanga tuaka."
+      },
+      {
+        "property": "filled",
+        "title": "Kāhua kua whakakīia",
+        "description": "Whakahohea te maimoatanga kua whakakīia."
+      }
+    ]
+  }
+}

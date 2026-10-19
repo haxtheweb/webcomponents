@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Treść zdalna",
+    "description": "Wykorzystaj ponownie treść z jednej witryny w innej."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Adres witryny",
+        "description": "Wklej adres, z którego ma pochodzić treść, jeśli to nie bieżąca witryna"
+      },
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Element do wyświetlenia dla danych linku / tytułu"
+      },
+      {
+        "property": "breakreference",
+        "title": "Zerwij odniesienie",
+        "description": "Zaznaczenie tego pola kopiuje zdalną treść do lokalnej edycji, ale usuwa powiązanie. Treść przestanie otrzymywać aktualizacje, gdy zmieni się materiał źródłowy."
+      },
+      {
+        "property": "showTitle",
+        "title": "Pokaż tytuł",
+        "description": "Włącz, aby wyświetlić tytuł prezentowanego zasobu"
+      }
+    ]
+  }
+}

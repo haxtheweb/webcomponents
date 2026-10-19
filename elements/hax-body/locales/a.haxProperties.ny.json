@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Ulalo woyambira",
+    "description": "Chinthu choyambira cha ulalo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Ulalo",
+        "description": "URL yopitako."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Mawu",
+        "description": "Mawu ooneka a ulalo."
+      },
+      {
+        "attribute": "target",
+        "title": "Kopita",
+        "description": "Komwe ulalo ungatsegukire.",
+        "options": {
+          "": "Zenera lomwelo",
+          "_blank": "Zenera latsopano - _blank",
+          "_top": "Zenera lapamwamba - _top",
+          "_parent": "Zenera la kholo - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Mawu a mutu",
+        "description": "Mutu wothandizira wopezeka kwa onse ndi wa SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Ubale ndi kopitako (chitetezo/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

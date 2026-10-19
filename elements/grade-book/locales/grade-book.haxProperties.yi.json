@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "צייכנס־בוך",
+    "description": "אַ קאָפּלאָזער צייכנס־בוך וואָס שטיצט עטלעכע באַקענדס מיט רובריקן."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "טיפּ פֿון דאַטן־מקור (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL ענדפּונקט (JSON)",
+          "json": "JSON דאַטן־בלאָב",
+          "filesystem": "טעקע־סיסטעם"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "מקור־דאַטן",
+        "description": "URL אָדער JSON דאַטן פֿאַרן צייכנס־בוך."
+      },
+      {
+        "property": "forCourse",
+        "title": "קורס־רעפֿערענץ",
+        "description": "קורס־אידענטיפֿיקאַטאָר אַרויסגעגעבן ווי oer:forCourse אויף יעדן אָפּשאַצונג־רעסורס."
+      }
+    ]
+  }
+}

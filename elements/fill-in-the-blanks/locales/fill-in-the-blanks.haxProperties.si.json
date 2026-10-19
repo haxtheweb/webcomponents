@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "හිස්තැන් පුරවන්න",
+    "description": "ප්‍රකාශයක අඩුපාඩු වචන ඉගෙනුම්කරුවන් සම්පූර්ණ කරන තක්සේරු ක්‍රියාකාරකම."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ප්‍රශ්නය",
+        "description": "පරිශීලකයින් පිළිතුරු දිය යුතු ප්‍රශ්නය."
+      },
+      {
+        "property": "statement",
+        "title": "ප්‍රකාශය",
+        "description": "වචන සලකුණු කිරීමේ අන්තර්ක්‍රියාවට පරිවර්තනය වන ප්‍රකාශය."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ශ්‍රේණිගත කිරීමේ ආකෘතිය",
+        "description": "OER Schema: මෙම තක්සේරුව සඳහා ශ්‍රේණිගත කිරීමේ ආකෘතිය (උදා. ලකුණු, අකුරු ශ්‍රේණිය, ප්‍රතිශතය, සම්පූර්ණ කිරීම)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ඉගෙනුම් අරමුණ",
+        "description": "OER Schema: මෙම තක්සේරුවට සම්බන්ධ ඉගෙනුම් අරමුණ."
+      },
+      {
+        "property": "forCourse",
+        "title": "පාඨමාලාව",
+        "description": "OER Schema: මෙම තක්සේරුව අදහස් කරන පාඨමාලාව."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ප්‍රශ්නාවලියේ නම",
+        "description": "මෙම අයිතමය හඳුනා ගැනීම සඳහා xAPI පදනම් වූ පරිසරවල භාවිතයට ලබා දෙන ප්‍රශ්නාවලි නම"
+      }
+    ]
+  }
+}

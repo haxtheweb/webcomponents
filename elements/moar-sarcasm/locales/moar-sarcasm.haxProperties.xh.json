@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Isigculelo",
+    "description": "Ukubonisa umbhalo ngendlela yokuqhula"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Umbhalo",
+        "description": "Umbhalo oza kwenziwa isigculelo"
+      }
+    ]
+  }
+}

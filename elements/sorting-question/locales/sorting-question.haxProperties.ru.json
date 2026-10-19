@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Вопрос на упорядочивание",
+    "description": "Расставьте элементы в правильном порядке."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Вопрос",
+        "description": "Заголовок вопроса."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат оценивания",
+        "description": "OER Schema: формат оценивания для этого задания (например, баллы, буква, процент, выполнение)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Учебная цель",
+        "description": "OER Schema: учебная цель, связанная с этим заданием."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, для которого предназначено это задание."
+      },
+      {
+        "property": "answers",
+        "title": "Ответы",
+        "description": "Порядок ответов задаёт правильную последовательность."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Название теста",
+        "description": "Название теста для идентификации xAPI в системах аналитики."
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Ihe Ọkpụkpọ Unity",
+    "description": "Ihe ọkpụkpọ Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Ebumnuche",
+        "description": "Ụzọ gaa na nrụpụta egwuregwu ahụ."
+      },
+      {
+        "property": "compression",
+        "title": "Usoro mkpakọ",
+        "description": "Ndọtị faịlụ mkpakọ maka akụrụngwa egwuregwu."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL Nsụgharị",
+        "description": "URL akụrụngwa nsụgharị."
+      },
+      {
+        "property": "companyname",
+        "title": "Aha Ụlọ Ọrụ",
+        "description": "Aha ụlọ ọrụ."
+      },
+      {
+        "property": "productname",
+        "title": "Aha Ngwaahịa",
+        "description": "Aha egwuregwu."
+      },
+      {
+        "property": "productversion",
+        "title": "Ụdị Ngwaahịa",
+        "description": "Ụdị ntọhapụ."
+      },
+      {
+        "property": "width",
+        "title": "Obosara Kanvas",
+        "description": "Obosara CSS kanvas (dịka px ma ọ bụ em)."
+      },
+      {
+        "property": "height",
+        "title": "Ogo Kanvas",
+        "description": "Ogo CSS kanvas (dịka px ma ọ bụ em)."
+      },
+      {
+        "property": "background",
+        "title": "Azụ Kanvas",
+        "description": "Azụ CSS kanvas."
+      }
+    ]
+  }
+}

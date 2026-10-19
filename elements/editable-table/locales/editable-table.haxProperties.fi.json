@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Taulukko",
+    "description": "Taulukkomuotoista dataa verkkoon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Riviotsikko",
+        "description": "Käsittele ensimmäistä riviä otsikkona."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Sarakeotsikko",
+        "description": "Käsittele ensimmäistä saraketta otsikkona."
+      },
+      {
+        "property": "footer",
+        "title": "Alatunniste",
+        "description": "Käsittele viimeistä riviä alatunnisteena."
+      },
+      {
+        "property": "sort",
+        "title": "Lajiteltava",
+        "description": "Salli lajittelu sarakkeiden arvojen mukaan."
+      },
+      {
+        "property": "filter",
+        "title": "Salli suodatus",
+        "description": "Salli suodatus sarakkeiden arvojen mukaan."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numeerinen muotoilu",
+        "description": "Käytä numeerista muotoilua numeerisissa sarakkeissa."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsiivinen",
+        "description": "Mukauta taulukon asettelua pienillä näytöillä."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Arviointimatriisitila",
+        "description": "Tulkitse tämä taulukko OER Schema -arviointimatriisina (Rubric), jolloin tuotetaan Rubric-, RubricScale-, RubricCriterion- ja RubricLevel-metatiedot."
+      },
+      {
+        "property": "rubricType",
+        "title": "Arviointimatriisin tyyppi",
+        "description": "Arviointimatriisin tyyli, joka tuotetaan muodossa oer:rubricType (merkityksellinen vain, kun arviointimatriisitila on käytössä).",
+        "options": {
+          "": "(ei mitään)",
+          "analytic": "Analyyttinen",
+          "holistic": "Holistinen",
+          "single-point": "Yksipisteinen",
+          "checklist": "Tarkistuslista"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Reunukset"
+      },
+      {
+        "property": "condensed",
+        "title": "Tiivistä rivit",
+        "description": "Pienennä rivien korkeutta."
+      },
+      {
+        "property": "striped",
+        "title": "Raidalliset rivit",
+        "description": "Varjosta joka toinen rivi."
+      },
+      {
+        "property": "downloadable",
+        "title": "Latauspainike",
+        "description": "Lisää painike taulukon lataamiseen."
+      },
+      {
+        "property": "copyable",
+        "title": "Kopiointipainike",
+        "description": "Lisää painike taulukon CSV-datan kopioimiseen."
+      },
+      {
+        "property": "printable",
+        "title": "Tulostuspainike",
+        "description": "Lisää painike vain taulukon tulostamiseen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV-data",
+        "description": "Luo taulukko ladatusta CSV-tiedostosta."
+      }
+    ]
+  }
+}

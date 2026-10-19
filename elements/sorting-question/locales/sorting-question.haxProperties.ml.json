@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ക്രമീകരണ ചോദ്യം",
+    "description": "ഇനങ്ങൾ ശരിയായ ക്രമത്തിൽ അടുക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ചോദ്യം",
+        "description": "ചോദ്യ തലക്കെട്ട്."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ഗ്രേഡിംഗ് ഫോർമാറ്റ്",
+        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയത്തിനുള്ള ഗ്രേഡിംഗ് ഫോർമാറ്റ് (ഉദാ. പോയിന്റുകൾ, അക്ഷരം, ശതമാനം, പൂർത്തീകരണം)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "പഠന ലക്ഷ്യം",
+        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയവുമായി ബന്ധപ്പെട്ട പഠന ലക്ഷ്യം."
+      },
+      {
+        "property": "forCourse",
+        "title": "കോഴ്സ്",
+        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയം ഉദ്ദേശിച്ചിരിക്കുന്ന കോഴ്സ്."
+      },
+      {
+        "property": "answers",
+        "title": "ഉത്തരങ്ങൾ",
+        "description": "ഉത്തരങ്ങളുടെ ക്രമം ശരിയായ ശ്രേണി നിർവചിക്കുന്നു."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ക്വിസിന്റെ പേര്",
+        "description": "അനലിറ്റിക്സ് സിസ്റ്റങ്ങളിൽ xAPI തിരിച്ചറിയലിനായി ഉപയോഗിക്കുന്ന ക്വിസ് പേര്."
+      }
+    ]
+  }
+}

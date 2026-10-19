@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Oddiy havola",
+    "description": "Oddiy havola elementi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Havola",
+        "description": "Manzil URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Matn",
+        "description": "Koʻrinadigan havola matni."
+      },
+      {
+        "attribute": "target",
+        "title": "Nishon",
+        "description": "Havolani qayerda ochish.",
+        "options": {
+          "": "Shu oyna",
+          "_blank": "Yangi oyna - _blank",
+          "_top": "Yuqori oyna - _top",
+          "_parent": "Ota oyna - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Sarlavha matni",
+        "description": "Qulaylik va SEO uchun maslahat sarlavhasi."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Manzil bilan munosabat (xavfsizlik/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

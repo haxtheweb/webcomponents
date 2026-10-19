@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ການອ້າງອີງ",
+    "description": "ອົງປະກອບການອ້າງອີງທີ່ມີສາມໂໝດການນຳສະເໜີ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ຂອງຜົນງານທີ່ອ້າງອີງ."
+      },
+      {
+        "property": "source",
+        "title": "ລິ້ງແຫຼ່ງທີ່ມາ",
+        "description": "URL ແຫຼ່ງທີ່ມາຂອງຜົນງານທີ່ອ້າງອີງ."
+      },
+      {
+        "property": "date",
+        "title": "ວັນທີເຂົ້າເຖິງ",
+        "description": "ວັນທີທີ່ເຂົ້າເຖິງແຫຼ່ງທີ່ມາ."
+      },
+      {
+        "property": "scope",
+        "title": "ຂອບເຂດ",
+        "description": "ຂອບເຂດອົງປະກອບທີ່ຈະອ້າງອີງ.",
+        "options": {
+          "sibling": "ອົງປະກອບພີ່ນ້ອງ",
+          "parent": "ອົງປະກອບແມ່"
+        }
+      },
+      {
+        "property": "license",
+        "title": "ໃບອະນຸຍາດ",
+        "description": "ໃບອະນຸຍາດສຳລັບຜົນງານທີ່ອ້າງອີງ."
+      },
+      {
+        "property": "creator",
+        "title": "ຜູ້ສ້າງ",
+        "description": "ຜູ້ສ້າງ ຫຼື ເຈົ້າຂອງຜົນງານທີ່ອ້າງອີງ."
+      },
+      {
+        "property": "typeof",
+        "title": "ປະເພດ OER Schema",
+        "description": "ຄລາສ OER Schema ສຳລັບການອ້າງອີງນີ້. ຄ່າເລີ່ມຕົ້ນແມ່ນ oer:ReferencedMaterial; ແທນທີ່ດ້ວຍຄລາສ OER ທີ່ຖືກຕ້ອງເທົ່ານັ້ນ (ເຊັ່ນ: oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

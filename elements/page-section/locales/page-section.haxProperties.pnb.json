@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "صفحہ حصہ",
+    "description": "صفحے دے مواد تے سکرین والیاں ترتیباں لئی حصہ کنٹینر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "ڈیزائن انداز",
+        "description": "پہلاں توں طے سٹائل جیہڑا متعلقہ سیٹنگاں اپڈیٹ کردا اے۔"
+      },
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "حصے لئی پچھوکڑ میڈیا۔"
+      },
+      {
+        "property": "bg",
+        "title": "پچھوکڑ دا رنگ",
+        "description": "جدوں کوئی تصویر نہ ہووے تاں پچھوکڑ دا رنگ۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "سکرول بٹن",
+        "description": "اگلے حصے ول سکرول کرن والا بٹن وکھاؤ۔"
+      },
+      {
+        "property": "fold",
+        "title": "تہہ وکھاؤ",
+        "description": "حصے دے تھلے بصری تہہ وکھاؤ۔"
+      },
+      {
+        "property": "full",
+        "title": "پوری سکرین سائز",
+        "description": "ویکھݨ والے دی سکرین دی پوری اُچائی بھرو۔"
+      },
+      {
+        "property": "filter",
+        "title": "فلٹر لاؤ",
+        "description": "پچھوکڑ دی تصویر اُتے بصری فلٹر لاؤ۔"
+      },
+      {
+        "slot": "",
+        "title": "مواد",
+        "description": "حصے دا مواد۔"
+      },
+      {
+        "slot": "entice",
+        "title": "کھچ",
+        "description": "اختیاری کھچ پاوݨ والا مواد۔"
+      },
+      {
+        "slot": "buttons",
+        "title": "بٹن",
+        "description": "متن دے تھلے وکھایا جاوݨ والا بٹناں دا گروپ۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "اینکر متن",
+        "description": "نیویگیشن وچ وکھایا جاوݨ والا اینکر لیبل۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ٹیگ",
+    "description": "صفحے اُتے وکھاوݨ لئی ٹیگاں دی سادہ لسٹ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ٹیگ",
+        "description": "کامے نال وکھرے کیتے ٹیگاں دی لسٹ۔"
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "خودکار نمایاں رنگ",
+        "description": "لیبل دی بنیاد تے نمایاں رنگ آپوں مقرر کرو۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ",
+        "description": "ٹیگاں دا رنگ۔"
+      }
+    ]
+  }
+}

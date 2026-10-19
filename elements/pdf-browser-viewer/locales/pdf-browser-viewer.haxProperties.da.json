@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF-fremviser i browseren",
+    "description": "Indlejr en PDF-fil direkte på siden med valgfrit kortlayout og downloadknap."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF-URL",
+        "description": "Placering af PDF-filen."
+      },
+      {
+        "property": "heading",
+        "title": "Overskrift",
+        "description": "Kortets overskriftstekst."
+      },
+      {
+        "property": "card",
+        "title": "Kortlayout",
+        "description": "Vis PDF'en i et kort med en downloadknap."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Downloadetiket",
+        "description": "Etiket til downloadknappen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Besked om manglende understøttelse",
+        "description": "Besked, når browseren ikke kan vise PDF-filer."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Linkbesked om manglende understøttelse",
+        "description": "Linktekst, når browseren ikke kan vise PDF-filer."
+      },
+      {
+        "property": "width",
+        "title": "Bredde",
+        "description": "Bredde på PDF-fremviseren."
+      },
+      {
+        "property": "height",
+        "title": "Højde",
+        "description": "Højde på PDF-fremviseren."
+      }
+    ]
+  }
+}

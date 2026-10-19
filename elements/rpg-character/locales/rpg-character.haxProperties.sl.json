@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG lik",
+    "description": "Zabaven lik iz HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Ime",
+        "description": "Beseda, uporabljena za ustvarjanje naključnega lika."
+      },
+      {
+        "property": "hat",
+        "title": "Klobuk",
+        "description": "Slog klobuka.",
+        "options": {
+          "none": "Privzeto",
+          "random": "Naključno",
+          "bunny": "Zajček",
+          "cowboy": "Kavboj",
+          "education": "Izobraževanje",
+          "construction": "Gradbena čelada",
+          "warning": "Opozorilo",
+          "watermelon": "Lubenica",
+          "coffee": "Kava",
+          "knight": "Vitez",
+          "ninja": "Nindža",
+          "party": "Zabava",
+          "error": "Napaka",
+          "edit": "Urejanje"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Širina",
+        "description": "Širina lika v slikovnih pikah."
+      },
+      {
+        "property": "height",
+        "title": "Višina",
+        "description": "Višina lika v slikovnih pikah."
+      },
+      {
+        "property": "fire",
+        "title": "V ognju?",
+        "description": "Ali lik gori."
+      },
+      {
+        "property": "walking",
+        "title": "Hodi?",
+        "description": "Animacija hoje; ko gori, teče."
+      }
+    ]
+  }
+}

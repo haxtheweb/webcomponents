@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "صفحے پر Disqus تبصرے ایمبیڈ کریں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "مختصر نام",
+        "description": "سائٹ کا مختصر نام، جو Disqus اسکرپٹ ہوسٹ طے کرتا ہے۔"
+      },
+      {
+        "property": "pageURL",
+        "title": "صفحے کا URL",
+        "description": "اس صفحے کا URL جس سے تبصروں کا سلسلہ منسلک ہے۔"
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "صفحے کا شناخت کنندہ",
+        "description": "صفحے کے تبصروں کے سلسلے کا منفرد شناخت کنندہ۔"
+      },
+      {
+        "property": "pageTitle",
+        "title": "صفحے کا عنوان",
+        "description": "اس صفحے کا عنوان جس سے تبصروں کا سلسلہ منسلک ہے۔"
+      },
+      {
+        "property": "loadingText",
+        "title": "لوڈنگ متن",
+        "description": "تبصرے لوڈ ہوتے وقت اعلان کیا جانے والا متن۔"
+      },
+      {
+        "property": "lang",
+        "title": "زبان",
+        "description": "Disqus انٹرفیس کی زبان کا کوڈ، مثلاً en۔"
+      }
+    ]
+  }
+}

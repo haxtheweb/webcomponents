@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "การ์ดเรื่องราว Polaris",
+    "description": "แสดงการ์ดเรื่องราว Polaris พร้อมรูปภาพพื้นหลัง ป้ายกำกับหมวด และข้อความพาดหัว"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "รูปภาพพื้นหลัง",
+        "description": "URL ของรูปภาพที่แสดงเป็นพื้นหลังของการ์ด"
+      },
+      {
+        "property": "backgroundSize",
+        "title": "ขนาดพื้นหลัง",
+        "description": "วิธีที่รูปภาพพื้นหลังเติมเต็มการ์ด (CSS background-size)",
+        "options": {
+          "cover": "ครอบคลุม (cover)",
+          "contain": "พอดีภายใน (contain)",
+          "auto": "อัตโนมัติ (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "การยึดพื้นหลัง",
+        "description": "ลักษณะการทำงานของรูปภาพพื้นหลังเมื่อเลื่อน (CSS background-attachment)",
+        "options": {
+          "scroll": "เลื่อน (scroll)",
+          "fixed": "คงที่ (fixed)",
+          "local": "เฉพาะที่ (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "ป้ายกำกับหมวด",
+        "description": "ป้ายกำกับตัวพิมพ์ใหญ่แบบสั้นที่แสดงที่ด้านบนของการ์ด เว้นว่างไว้เพื่อซ่อน"
+      },
+      {
+        "property": "label",
+        "title": "ข้อความการ์ด",
+        "description": "ข้อความหลักที่แสดงในแผงด้านล่าง"
+      },
+      {
+        "property": "link",
+        "title": "ลิงก์",
+        "description": "URL ปลายทางเสริมที่ครอบการ์ดทั้งใบ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ಪದಕೋಶ",
+    "description": "ಪದಕೋಶದ ಪದ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "ಪದ"
+      },
+      {
+        "property": "information",
+        "title": "ವ್ಯಾಖ್ಯಾನ",
+        "description": "ಪದವನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ ತೋರಿಸುವ ವ್ಯಾಖ್ಯಾನ."
+      },
+      {
+        "property": "popoverMode",
+        "title": "ಪಾಪ್‌ಓವರ್",
+        "description": "ವ್ಯಾಖ್ಯಾನವನ್ನು ಇನ್‌ಲೈನ್ ಬದಲು ಪಾಪ್‌ಓವರ್‌ನಲ್ಲಿ ಪ್ರದರ್ಶಿಸಿ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "ಲಿಂಕ್‌ಗಳು",
+        "description": "ಈ ಪದಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಪೂರಕ ಲಿಂಕ್‌ಗಳ ಪಟ್ಟಿ."
+      }
+    ]
+  }
+}

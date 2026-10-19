@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Ders Tasarımı",
+    "description": "Eğitim materyalleri ve ders tasarımı öğeleri için kapsayıcı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Ders Tanımlayıcısı",
+        "description": "OER Şeması: dersin tanımlayıcısı, ör. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Sunulduğu Dönem",
+        "description": "OER Şeması: dersin sunulduğu dönem."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Sunum Biçimi",
+        "description": "OER Şeması: dersin sunulduğu biçim (ör. yüz yüze, çevrimiçi, karma)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Birincil Eğitmen",
+        "description": "OER Şeması: dersin birincil eğitmeni."
+      },
+      {
+        "property": "syllabus",
+        "title": "Ders İzlencesi URL'si",
+        "description": "OER Şeması: ders izlencesinin URL'si."
+      }
+    ]
+  }
+}

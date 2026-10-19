@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Markdown բովանդակության բլոկ՝ ուղղակի կամ հեռակա բեռնված"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Հում markdown"
+      },
+      {
+        "property": "source",
+        "title": "Աղբյուր",
+        "description": "Markdown-ի աղբյուր ֆայլ"
+      }
+    ]
+  }
+}

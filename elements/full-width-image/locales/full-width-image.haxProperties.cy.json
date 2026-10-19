@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Adran delwedd",
+    "description": "Delwedd lled llawn sy'n rhannu adran o'r dudalen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Delwedd gefndir."
+      },
+      {
+        "property": "caption",
+        "description": "Pennawd testun."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ടൈംലൈൻ",
+    "description": "ചിത്രങ്ങളും ടെക്സ്റ്റുമുള്ള സംഭവങ്ങളുടെ ഒരു ടൈംലൈൻ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "ടൈംലൈൻ ശീർഷകം",
+        "description": "ടൈംലൈനിനുള്ള ഒരു തലക്കെട്ട്."
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "ഒരു ഐച്ഛിക ആക്സന്റ് നിറം."
+      },
+      {
+        "property": "dark",
+        "title": "ഇരുണ്ട തീം",
+        "description": "ഡാർക്ക് തീം പ്രവർത്തനക്ഷമമാക്കുക"
+      },
+      {
+        "slot": "",
+        "title": "ടൈംലൈൻ വിവരണം",
+        "description": "ടൈംലൈനിനെ വിവരിക്കുന്ന ഓപ്ഷണൽ ടെക്സ്റ്റ്."
+      },
+      {
+        "property": "events",
+        "title": "ടൈംലൈൻ സംഭവങ്ങൾ",
+        "description": "ടൈംലൈനിലെ സംഭവങ്ങൾ"
+      }
+    ]
+  }
+}

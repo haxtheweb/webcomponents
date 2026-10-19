@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "پیش‌نمایش Github",
+    "description": "شکل دسترس‌پذیر با توضیح طولانی"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "سازمان",
+        "description": "نام ماشینی سازمان Github"
+      },
+      {
+        "property": "repo",
+        "title": "مخزن",
+        "description": "نام ماشینی مخزن"
+      },
+      {
+        "property": "extended",
+        "title": "نمای گسترده",
+        "description": "شامل readme در عنصر"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Burimi",
+        "description": "URL-ja e këtij burimi."
+      }
+    ]
+  }
+}

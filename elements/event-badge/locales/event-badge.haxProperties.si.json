@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "සිදුවීම් ලාංඡනය",
+    "description": "සිදුවීම් ලාංඡන සංරචකය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV රූපය",
+        "description": "TV එකේ පෙන්වන රූපය."
+      },
+      {
+        "property": "logo",
+        "title": "ලාංඡනය",
+        "description": "ලාංඡන පත්‍රයේ කොනේ පෙන්වන ලාංඡනය."
+      },
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "ලාංඡන පත්‍රයේ ඉහළින් පෙන්වන මාතෘකාව."
+      },
+      {
+        "property": "name",
+        "title": "නම",
+        "description": "ලාංඡන පත්‍රයේ පෙන්වන නම."
+      },
+      {
+        "property": "position",
+        "title": "තනතුර",
+        "description": "පුද්ගලයාගේ භූමිකාව හෝ තනතුර."
+      },
+      {
+        "property": "organization",
+        "title": "සංවිධානය",
+        "description": "පුද්ගලයා සේවය කරන සංවිධානය."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV වර්ණය",
+        "description": "TV එක සඳහා වර්ණය තෝරන්න."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "ප්‍රාථමික පසුබිම් හෝ පෙළ වර්ණය."
+      },
+      {
+        "property": "knobcolor",
+        "title": "බොත්තම් වර්ණය",
+        "description": "TV බොත්තම්වල වර්ණය."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "සීපියා",
+        "description": "සීපියා ප්‍රයෝගයක් යොදන්න."
+      },
+      {
+        "property": "blackwhite",
+        "title": "කළු සුදු",
+        "description": "කළු-සුදු ප්‍රයෝගයක් යොදන්න."
+      }
+    ]
+  }
+}

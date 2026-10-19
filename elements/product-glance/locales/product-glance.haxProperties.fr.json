@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Aperçu du produit",
+    "description": "Bloc de présentation rapide d'un produit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icône",
+        "description": "Icône représentant la notion."
+      },
+      {
+        "property": "title",
+        "title": "Titre",
+        "description": "Notion principale en un coup d'œil."
+      },
+      {
+        "property": "subtitle",
+        "title": "Sous-titre",
+        "description": "Détail supplémentaire."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Couleur d'accent de l'icône."
+      }
+    ]
+  }
+}

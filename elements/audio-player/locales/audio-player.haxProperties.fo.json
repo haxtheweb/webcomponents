@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Ljóð",
+    "description": "Hetta kann vísa sjónband á ein sera atkomiligan hátt, óansæð kelduna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kelda",
+        "description": "URL til henda miðilin."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Heiti",
+        "description": "Einfalt heiti undir sjónbandinum"
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Vel dámlitin fyri spælaran."
+      },
+      {
+        "property": "track",
+        "title": "Teksting",
+        "description": "URL til tekstingarfíluna."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Smámynd",
+        "description": "Valfrítt. URL til smámynd/plakatmynd."
+      },
+      {
+        "property": "learningMode",
+        "title": "Tendra lærihátt",
+        "description": "Slókkir skjótt fram og aftur."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Tak knøttin 'opna á YouTube' burtur",
+        "description": "Tekur burtur knøttin til at opna sjónbandið á YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Taka við eitt deilileinki?",
+        "description": "Gevur eitt leinki til at deila sjónbandið."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Vísir, um CORS skal nýtast.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Loyv avspæling í bakgrundini",
+        "description": "Sjónbond steðga / spæla sjálvvirkandi, tá ið teigurin missir fokus; hetta loyvir sjónbandinum at spæla, uttan at teigurin hevur fokus"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Myrkt tema til uppskrift",
+        "description": "Tendra myrkt tema til uppskriftina."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Slókk samvirkni",
+        "description": "Slókk samvirknan hátt, ið ger uppskriftina klikkiliga."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Fjal tíðarmerki",
+        "description": "Fjal tíðarmerkini í uppskriftini."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Fjal uppskrift",
+        "description": "Fjal uppskrift sum sjálvsett."
+      },
+      {
+        "property": "lang",
+        "title": "Mál",
+        "description": "Mál miðilsins."
+      }
+    ]
+  }
+}

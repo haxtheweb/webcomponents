@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "缩写",
+    "description": "带有完整术语提示的缩写。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "文本",
+        "description": "可见的缩写文本。"
+      },
+      {
+        "attribute": "title",
+        "title": "全称",
+        "description": "悬停时显示的完整术语。"
+      }
+    ]
+  }
+}

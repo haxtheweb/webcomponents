@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Chữ viết tắt",
+    "description": "Chữ viết tắt kèm chú giải đầy đủ khi di chuột."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Văn bản",
+        "description": "Văn bản viết tắt hiển thị."
+      },
+      {
+        "attribute": "title",
+        "title": "Từ",
+        "description": "Thuật ngữ đầy đủ hiển thị khi di chuột."
+      }
+    ]
+  }
+}

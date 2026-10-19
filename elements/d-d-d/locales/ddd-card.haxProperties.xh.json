@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Ikhadi",
+    "description": "Icandelo lekhadi elinesitayile senkqubo yoyilo ye-DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Umfanekiso",
+        "description": "Umfanekiso okhethwayo."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo ongenayo womfanekiso",
+        "description": "Umbhalo ongenayo ochaza umfanekiso."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko sekhadi."
+      },
+      {
+        "slot": "",
+        "title": "Umxholo",
+        "description": "Indawo yomxholo wekhadi."
+      },
+      {
+        "property": "href",
+        "title": "Ikhonkco",
+        "description": "I-URL yekhonkco leqhosha."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Ileyibhile",
+        "description": "Ileyibhile yeqhosha."
+      },
+      {
+        "property": "noArrow",
+        "title": "Akukho Tolo",
+        "description": "Fihla utolo lweqhosha."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Ikhonkco: ekujoliswe kuko",
+        "description": "Apho ikhonkco liza kuvulelwa khona.",
+        "options": {
+          "": "Ifestile enye",
+          "_blank": "Ifestile entsha - _blank",
+          "_top": "Ifestile ephezulu - _top",
+          "_parent": "Ifestile engumzali - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Ikhonkco: rel",
+        "description": "Ubudlelwane phakathi kwesixhobo esinxulunyaniswe noxwebhu lwangoku."
+      }
+    ]
+  }
+}

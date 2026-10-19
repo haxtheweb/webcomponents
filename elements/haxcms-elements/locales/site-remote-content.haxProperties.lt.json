@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Nuotolinis turinys",
+    "description": "Pakartotinai naudoti vienos svetainės turinį kitoje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Svetainės adresas",
+        "description": "Įklijuokite adresą, iš kurio imti turinį, jei tai ne dabartinė svetainė"
+      },
+      {
+        "property": "uuid",
+        "title": "Elementas",
+        "description": "Elementas, kurio duomenys naudojami nuorodai / pavadinimui"
+      },
+      {
+        "property": "breakreference",
+        "title": "Nutraukti susiejimą",
+        "description": "Pažymėjus šį langelį nuotolinis turinys nukopijuojamas redaguoti vietoje, bet susiejimas pašalinamas. Jis nebebus atnaujinamas, kai atnaujinama šaltinio medžiaga."
+      },
+      {
+        "property": "showTitle",
+        "title": "Rodyti pavadinimą",
+        "description": "Įjunkite, kad būtų rodomas rodomo ištekliaus pavadinimas"
+      }
+    ]
+  }
+}

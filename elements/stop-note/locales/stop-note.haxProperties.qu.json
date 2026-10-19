@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Sayay willay",
+    "description": "Ñawiriqkunata sapanka kamachikunamanta yuyarichinapaq willay."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sutichay",
+        "description": "Sayay willaypaq sutichayta qillqay."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Hawa URL-ta qillqay."
+      },
+      {
+        "property": "status",
+        "title": "Kaynin",
+        "description": "Kayninta churaspa llimpikunata unanchakunatapas tupachin",
+        "options": {
+          "stop": "Sayay",
+          "warning": "Paqtataq",
+          "success": "Chiqanchay",
+          "info": "Willakuy"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Willay qillqa",
+        "description": "Sayay willaypaq qillqa."
+      }
+    ]
+  }
+}

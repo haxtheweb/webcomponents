@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Vokabel",
+    "description": "Vokabelbegriff"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Begriff"
+      },
+      {
+        "slot": "",
+        "title": "Definition",
+        "description": "Die Definition, die beim Klick auf den Begriff angezeigt wird."
+      },
+      {
+        "property": "description",
+        "title": "Beschreibung (OER Schema)",
+        "description": "OER Schema: eine kurze Beschreibung des Vokabelbegriffs. Wird aus dem Definitionstext übernommen, wenn leer gelassen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relativ overskrift",
+    "description": "gir riktig overskriftshierarki basert på overordnet overskrift"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Ressurs-ID for overordnet overskrift"
+      },
+      {
+        "property": "disableLink",
+        "description": "Deaktiverer funksjonen med lenkeknapp."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Justerer knappen for å kopiere lenke helt til høyre i overskriften."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Overskriftsnivå hvis overordnet ikke blir funnet."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Overstyrer standardteksten i varselet for kopiering av lenke."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Overstyrer standardetiketten på knappen for å kopiere lenke."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Overstyrer standardikonet på knappen for å kopiere lenke."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Overstyrer standardetiketten på lukkeknappen i varselet for kopiering av lenke."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Overstyrer standardikonet på lukkeknappen i varselet for kopiering av lenke."
+      }
+    ]
+  }
+}

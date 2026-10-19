@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Koox Fur iyo Laab",
+    "description": "Koox walxo la furi karo oo la laabi karo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Fur mid keliya",
+        "description": "Hal shay oo keliya ayaa la furi karaa."
+      },
+      {
+        "slot": "",
+        "title": "Walxaha la Laabo",
+        "description": "Walxaha la laabo."
+      }
+    ]
+  }
+}

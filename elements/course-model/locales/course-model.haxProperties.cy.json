@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "model cwrs",
+    "description": "Cynllun rhyngweithiol ar gyfer cysyniadau cwrs gyda manylion, animeiddio, a gwiriadau gwybodaeth."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "teitl"
+      },
+      {
+        "property": "src",
+        "title": "ffynhonnell"
+      },
+      {
+        "property": "alt",
+        "title": "testun amgen"
+      },
+      {
+        "title": "Ardal wybodaeth"
+      },
+      {
+        "title": "Ardal manylion"
+      },
+      {
+        "title": "Ardal animeiddio"
+      },
+      {
+        "title": "Ardal Gwirio Gwybodaeth"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Ardal logo"
+      }
+    ]
+  }
+}

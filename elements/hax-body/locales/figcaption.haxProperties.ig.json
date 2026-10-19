@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Nkọwa ọgụgụ",
+    "description": "Nkọwa maka ọgụgụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Nkọwa onyonyo",
+        "description": "Ederede egosiri n'okpuru ọgụgụ."
+      }
+    ]
+  }
+}

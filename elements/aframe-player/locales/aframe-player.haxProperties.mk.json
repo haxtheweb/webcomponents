@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D плеер",
+    "description": "Плеер за 3D датотеки / проширена реалност."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Извор",
+        "description": "URL на оваа AR датотека."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "X позиција на елементот во AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Y позиција на елементот во AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Z позиција на елементот во AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Боја на небото",
+        "description": "Изберете ја бојата на небото во сцената."
+      }
+    ]
+  }
+}

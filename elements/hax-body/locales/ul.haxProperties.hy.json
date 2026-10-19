@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Կետավոր ցուցակ",
+    "description": "Ստեղծել կետանշված ցանկ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Կետանշման ոճ",
+        "description": "Չհամարակալված ցանկի կետանշումների ոճը։",
+        "options": {
+          "": "Լռելյայն (քառակուսի)",
+          "list-disc": "Սկավառակ",
+          "list-circle": "Շրջան",
+          "list-square": "Քառակուսի"
+        }
+      }
+    ]
+  }
+}

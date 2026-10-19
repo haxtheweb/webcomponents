@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Mahtava räjähdys",
+    "description": "Interaktiivinen räjähdysanimaatio valinnaisilla äänitehosteilla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Koko",
+        "description": "Aseta räjähdyksen koko.",
+        "options": {
+          "tiny": "Pienen pieni",
+          "small": "Pieni",
+          "medium": "Keskikokoinen",
+          "large": "Suuri",
+          "epic": "Eeppinen"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Väri",
+        "description": "Aseta räjähdyksen väriteema.",
+        "options": {
+          "": "Oletus",
+          "red": "Punainen",
+          "blue": "Sininen",
+          "purple": "Violetti",
+          "orange": "Oranssi",
+          "yellow": "Keltainen"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Äänitehosteet",
+        "description": "Ota äänitehosteet käyttöön."
+      },
+      {
+        "property": "resetSound",
+        "title": "Nollaa ääni",
+        "description": "Aloita ääni alusta joka kerta."
+      },
+      {
+        "property": "image",
+        "title": "Mukautettu kuva",
+        "description": "Valinnainen URL mukautetulle räjähdyskuvalle."
+      },
+      {
+        "property": "sound",
+        "title": "Mukautettu ääni",
+        "description": "Valinnainen URL mukautetulle äänitehosteelle."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Pois käytöstä",
+        "description": "Poista kaikki vuorovaikutukset käytöstä."
+      }
+    ]
+  }
+}

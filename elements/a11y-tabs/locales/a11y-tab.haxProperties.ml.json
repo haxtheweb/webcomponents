@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ടാബ്",
+    "description": "ഒരൊറ്റ ടാബ്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ടാബ് ഐക്കൺ"
+      },
+      {
+        "property": "disabled",
+        "title": "പ്രവർത്തനരഹിതം"
+      },
+      {
+        "property": "label",
+        "title": "ടാബ് ലേബൽ"
+      },
+      {
+        "slot": "",
+        "title": "ടാബ് ഉള്ളടക്കം",
+        "description": "ടാബിന്റെ ഉള്ളടക്കം."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "അദ്വിതീയ ID"
+      },
+      {
+        "property": "flag",
+        "title": "ഓപ്ഷണൽ ഫ്ലാഗ് ടെക്സ്റ്റ്"
+      },
+      {
+        "property": "flagIcon",
+        "title": "ഓപ്ഷണൽ ഫ്ലാഗ് ഐക്കൺ"
+      }
+    ]
+  }
+}

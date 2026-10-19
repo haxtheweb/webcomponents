@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris-merk",
+    "description": "Toan it PSU-identiteitsmerk mei opsjonele kolleezjenamme en bestimmings-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Kolleezjenamme",
+        "description": "Namme neist it merk."
+      },
+      {
+        "property": "name2",
+        "title": "Kolleezjenamme 2",
+        "description": "Twadde namme ûnder de earste kolleezjenamme."
+      },
+      {
+        "property": "name3",
+        "title": "Kolleezjenamme 3",
+        "description": "Tredde namme ûnder de twadde kolleezjenamme."
+      },
+      {
+        "property": "url",
+        "title": "Keppeling",
+        "description": "Bestimmings-URL as der op it merk klikt wurdt."
+      },
+      {
+        "property": "type",
+        "title": "Fariant",
+        "description": "Fisuele fariant fan it merk.",
+        "options": {
+          "default": "Standert",
+          "light": "Ljocht",
+          "dark": "Tsjuster"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Fertikale opmaak",
+        "description": "Toan de tredde namme ûnder de twadde namme mei in horizontale line."
+      }
+    ]
+  }
+}

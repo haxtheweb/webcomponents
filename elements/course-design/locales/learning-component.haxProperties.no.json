@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Læringskomponent",
+    "description": "Et kort der undervisere kan formidle pedagogikk og undervisningsstrategier."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Type",
+        "description": "Korttypen som skal brukes."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undertittel",
+        "description": "Kortets undertittel."
+      },
+      {
+        "property": "url",
+        "title": "Lenke",
+        "description": "En valgfri lenke for kortet (lenke er ikke tilgjengelig for læringsmål)."
+      },
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Angi tittel; dette overstyrer typebasert tittel"
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Angi ikon; dette overstyrer typebasert ikon"
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Angi aksentfarge; dette overstyrer typebasert farge"
+      },
+      {
+        "slot": "",
+        "title": "Innhold"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ميرٽ بيج",
+    "description": "ڪا مهارت حاصل ڪرڻ ظاهر ڪرڻ لاءِ بصري بيج."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "بيج جو عنوان",
+        "description": "بيج تي ڏيکاريل عنوان."
+      },
+      {
+        "property": "badgeImage",
+        "title": "بيج جي تصوير",
+        "description": "بيج لاءِ تصوير جو URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "بيج جا تفصيل",
+        "description": "بيج بابت تفصيل."
+      },
+      {
+        "property": "hyperLink",
+        "title": "هائپر لنڪ",
+        "description": "بيج سان لاڳاپيل لنڪ."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "بيج جون مهارتون",
+        "description": "بيج تي ڏيکاريل مهارتون."
+      },
+      {
+        "property": "skill",
+        "title": "مهارت (OER Schema)",
+        "description": "OER Schema: هن سکيا جي مقصد کي مڪمل ڪرڻ سان حاصل ڪيل سکيل مهارت."
+      }
+    ]
+  }
+}

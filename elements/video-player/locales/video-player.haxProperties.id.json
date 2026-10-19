@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Pemutaran video yang aksesibel dari berbagai sumber."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "URL untuk media ini."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Judul",
+        "description": "Judul yang ditampilkan di bawah video."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Gambar poster",
+        "description": "URL gambar poster."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Trek teks",
+        "description": "Teks tertutup, subtitel, deskripsi, dan trek teks lain untuk video."
+      },
+      {
+        "property": "startTime",
+        "title": "Waktu mulai",
+        "description": "Mulai video pada waktu tertentu (detik)."
+      },
+      {
+        "property": "endTime",
+        "title": "Waktu selesai",
+        "description": "Akhiri video pada waktu tertentu (detik), memerlukan waktu mulai."
+      },
+      {
+        "property": "learningMode",
+        "title": "Aktifkan mode belajar",
+        "description": "Menonaktifkan maju cepat dan mundur."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Hapus tombol buka di YouTube",
+        "description": "Menghapus tombol untuk membuka video di YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Sertakan tautan berbagi?",
+        "description": "Menyediakan tautan untuk membagikan video."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Sembunyikan stempel waktu",
+        "description": "Sembunyikan stempel waktu pada transkrip."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Sembunyikan Transkrip",
+        "description": "Sembunyikan transkrip secara default."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Trek Deskripsi Audio",
+        "description": "URL ke trek deskripsi audio (berkas MP3) yang menarasikan elemen visual."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Menunjukkan apakah akan menggunakan CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Izinkan pemutaran latar belakang",
+        "description": "Tetap memutar saat tab peramban kehilangan fokus."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema gelap untuk transkrip",
+        "description": "Aktifkan tema gelap untuk transkrip."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Nonaktifkan Interaktif",
+        "description": "Nonaktifkan mode interaktif yang membuat transkrip dapat diklik."
+      },
+      {
+        "property": "lang",
+        "title": "Bahasa",
+        "description": "Bahasa media."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "(usang) Pilih warna aksen untuk pemutar."
+      }
+    ]
+  }
+}

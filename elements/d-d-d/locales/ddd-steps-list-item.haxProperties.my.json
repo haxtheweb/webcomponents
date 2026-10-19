@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "အဆင့် အရာ",
+    "description": "အဆင့်စာရင်း၏ အစိတ်အပိုင်းဖြစ်သော အရာ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်"
+      }
+    ]
+  }
+}

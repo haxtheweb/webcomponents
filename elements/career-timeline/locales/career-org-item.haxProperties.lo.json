@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "ລາຍການອາຊີບ",
+    "description": "ອົງກອນໜຶ່ງ ແລະ ບົດບາດທີ່ກ່ຽວຂ້ອງ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "ຊື່ອົງກອນ"
+      },
+      {
+        "property": "location",
+        "title": "ສະຖານທີ່"
+      },
+      {
+        "property": "source",
+        "title": "ແຫຼ່ງທີ່ມາ"
+      }
+    ]
+  }
+}

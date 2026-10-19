@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ספירה עולה",
+    "description": "הנפשת מספר הסופר כלפי מעלה עד לערך יעד כשהוא נגלל לתצוגה."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "ערך סיום",
+        "description": "המספר שאליו סופרים."
+      },
+      {
+        "property": "start",
+        "title": "ערך התחלה",
+        "description": "המספר שממנו מתחילים לספור."
+      },
+      {
+        "property": "duration",
+        "title": "משך",
+        "description": "משך הנפשת הספירה בשניות."
+      },
+      {
+        "property": "prefixtext",
+        "title": "טקסט קידומת",
+        "description": "טקסט המוצג לפני המספר (למשל '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "טקסט סיומת",
+        "description": "טקסט המוצג אחרי המספר (למשל '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "משבצת קידומת",
+        "description": "תוכן משובץ אופציונלי לפני המספר."
+      },
+      {
+        "slot": "suffix",
+        "title": "משבצת סיומת",
+        "description": "תוכן משובץ אופציונלי אחרי המספר."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "ספרות אחרי הנקודה",
+        "description": "מספר הספרות שיוצגו אחרי הנקודה העשרונית."
+      },
+      {
+        "property": "separator",
+        "title": "מפריד אלפים",
+        "description": "התו המפריד בין קבוצות האלפים."
+      },
+      {
+        "property": "decimal",
+        "title": "תו עשרוני",
+        "description": "התו המשמש כנקודה העשרונית."
+      },
+      {
+        "property": "noeasing",
+        "title": "ללא האטה",
+        "description": "ביטול ההאטה כך שהספירה תהיה ליניארית."
+      }
+    ]
+  }
+}

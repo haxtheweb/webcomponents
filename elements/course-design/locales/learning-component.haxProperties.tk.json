@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Okuw komponenti",
+    "description": "Mugallymlaryň pedagogikany we okatmak strategiýalaryny habar bermegi üçin kart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Görnüşi",
+        "description": "Ulanyljak kartyň görnüşi."
+      },
+      {
+        "property": "subtitle",
+        "title": "Kiçi at",
+        "description": "Kartyň kiçi ady."
+      },
+      {
+        "property": "url",
+        "title": "Baglanyşyk",
+        "description": "Kart üçin goşmaça salgy (Okuw maksatlary üçin salgy elýeterli däl)."
+      },
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Ady belläň, bu görnüşe esaslanýan ady çalyşýar"
+      },
+      {
+        "property": "icon",
+        "title": "Nyşan",
+        "description": "Nyşany belläň, bu görnüşe esaslanýan nyşany çalyşýar"
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Aksent reňkini belläň, bu görnüşe esaslanýan reňki çalyşýar"
+      },
+      {
+        "slot": "",
+        "title": "Mazmuny"
+      }
+    ]
+  }
+}

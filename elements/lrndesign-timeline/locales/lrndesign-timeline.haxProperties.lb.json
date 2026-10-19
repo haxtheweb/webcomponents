@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Zäitstrahl",
+    "description": "Eng Zäitlinn vun Evenementer mat Biller an Text"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Titel vum Zäitstrahl",
+        "description": "En Titel fir d'Zäitlinn."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Eng optional Akzentfaarf."
+      },
+      {
+        "property": "dark",
+        "title": "Däischtert Thema",
+        "description": "Däischtert Theme aktivéieren"
+      },
+      {
+        "slot": "",
+        "title": "Beschreiwung vun der Zäitlinn",
+        "description": "Optionalen Text, deen d'Zäitlinn beschreift."
+      },
+      {
+        "property": "events",
+        "title": "Evenementer vun der Zäitlinn",
+        "description": "D'Evenementer an der Zäitlinn"
+      }
+    ]
+  }
+}

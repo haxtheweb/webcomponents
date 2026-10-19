@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: ບລັອກລູກ",
+    "description": "ບລັອກໄດນາມິກເພື່ອສະແດງລູກຂອງໜ້າປັດຈຸບັນ"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "ວິທີໄດນາມິກ",
+        "description": "ວິທີຄິດໄລ່ລູກທຽບກັບອົງປະກອບນີ້",
+        "options": {
+          "active": "ລູກທີ່ໃຊ້ງານ",
+          "parent": "ລູກຂອງແມ່",
+          "ancestor": "ລູກທັງໝົດຈາກບັນພະບຸລຸດສູງສຸດ"
+        }
+      },
+      {
+        "property": "start",
+        "title": "ລະດັບເລີ່ມຕົ້ນ"
+      },
+      {
+        "property": "end",
+        "title": "ລະດັບສິ້ນສຸດ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "غلاف لتضمين مشغّل Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "المصدر",
+        "description": "رابط تضمين أو مشاركة من Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "السمة",
+        "description": "سمة لون خلفية المشغّل.",
+        "options": {
+          "": "افتراضي",
+          "0": "أسود"
+        }
+      },
+      {
+        "property": "size",
+        "title": "الحجم",
+        "description": "حجم المشغّل.",
+        "options": {
+          "normal": "افتراضي",
+          "compact": "مضغوط"
+        }
+      }
+    ]
+  }
+}

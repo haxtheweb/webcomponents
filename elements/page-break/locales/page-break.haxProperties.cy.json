@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Manylion y dudalen",
+    "description": "Diffinio rhaniad gweledol rhwng tudalennau y gall systemau CMS ei ddefnyddio i greu tudalennau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Teitl a ddangosir yn y thema a'r pennawd cyntaf."
+      },
+      {
+        "property": "pageType",
+        "title": "Math",
+        "description": "Label gweledol cyd-destun y dudalen.",
+        "options": {
+          "": "-- dim --",
+          "content": "Cynnwys",
+          "assessment": "Asesiad",
+          "quiz": "Cwis",
+          "submission": "Cyflwyniad gwaith",
+          "lesson": "Gwers",
+          "module": "Modiwl",
+          "task": "Tasg",
+          "activity": "Gweithgaredd",
+          "project": "Prosiect",
+          "practice": "Ymarfer",
+          "unit": "Uned",
+          "objectives": "Amcanion Dysgu",
+          "connection": "Cysylltiad",
+          "knowledge": "Oeddech Chi'n Gwybod?",
+          "strategy": "Strategaeth Ddysgu",
+          "discuss": "Trafod",
+          "listen": "Gwrando",
+          "make": "Gwneud",
+          "observe": "Arsylwi",
+          "present": "Cyflwyno",
+          "reading": "Darllen",
+          "reflect": "Myfyrio",
+          "research": "Ymchwilio",
+          "watch": "Gwylio",
+          "write": "Ysgrifennu"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tagiau",
+        "description": "Rhestr o dagiau wedi'u gwahanu gan atalnodau."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL y Ddolen",
+        "description": "URL ailgyfeirio a ddangosir yn lle cynnwys y dudalen."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Targed y Ddolen",
+        "description": "Agor dolenni yn yr un ffenestr neu mewn ffenestr newydd.",
+        "options": {
+          "_self": "Yr un ffenestr",
+          "_blank": "Ffenestr newydd"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Wedi'i chyhoeddi",
+        "description": "Mae tudalennau heb eu cyhoeddi wedi'u cuddio rhag defnyddwyr terfynol."
+      },
+      {
+        "property": "locked",
+        "title": "Cloi'r dudalen",
+        "description": "Cloi neu ddatgloi pob elfen ar y dudalen hon."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Diystyru'r slug awtomatig",
+        "description": "Cloi'r slug rhag diweddariadau awtomatig yn seiliedig ar y teitl neu'r rhiant."
+      },
+      {
+        "property": "slug",
+        "title": "Llwybr",
+        "description": "Slug URL ar gyfer y dudalen hon."
+      },
+      {
+        "property": "image",
+        "title": "Cyfryngau",
+        "description": "Cyfryngau sy'n cynrychioli'r dudalen, a ddefnyddir mewn rhai themâu a golygon."
+      },
+      {
+        "property": "parent",
+        "title": "Rhiant",
+        "description": "Llwybr y dudalen rhiant."
+      },
+      {
+        "property": "noderefs",
+        "title": "Cynnwys cysylltiedig",
+        "description": "Tudalennau sy'n gysylltiedig â'r dudalen hon."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Disgrifiad",
+        "description": "Disgrifiad a ddefnyddir mewn casgliadau ac ar gyfer optimeiddio peiriannau chwilio."
+      },
+      {
+        "property": "entityType",
+        "title": "Math o Endid",
+        "description": "Tudalen yw'r rhagosodiad oni bai ei fod wedi'i osod fel arall.",
+        "options": {
+          "page": "Tudalen (rhagosodiad)",
+          "taxonomy": "Tacsonomeg",
+          "taxonomyTerm": "Term Tacsonomeg",
+          "region": "Rhanbarth"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Eicon",
+        "description": "Eicon sy'n gysylltiedig â'r dudalen hon ar y wefan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw acen",
+        "description": "Lliw sy'n gysylltiedig â'r dudalen hon ar y wefan."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Cuddio yn y ddewislen",
+        "description": "Cuddio'r dudalen hon o ddewislenni gan gadw ei URL."
+      },
+      {
+        "property": "order",
+        "title": "Trefn",
+        "description": "Trefn o'i chymharu â thudalennau cyfatebol."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Thema'r dudalen",
+        "description": "Diystyru'r thema ar gyfer y dudalen hon yn unig."
+      },
+      {
+        "property": "author",
+        "title": "Awdur",
+        "description": "Enw defnyddiwr y person olaf i addasu'r dudalen hon."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "छवि मानचित्र",
+    "description": "इंटरैक्टिव हॉटस्पॉट वाला एक सुलभ छवि मानचित्र।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "लेबल",
+        "description": "छवि मानचित्र के लिए लेबल।"
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "हॉटस्पॉट विवरण",
+        "description": "छवि मानचित्र पर इंटरैक्टिव हॉटस्पॉट।"
+      }
+    ]
+  }
+}

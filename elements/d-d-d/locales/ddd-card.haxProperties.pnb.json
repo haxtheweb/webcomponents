@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "کارڈ",
+    "description": "DDD ڈیزائن سسٹم نال سجایا کارڈ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "تصویر",
+        "description": "اختیاری تصویر۔"
+      },
+      {
+        "property": "alt",
+        "title": "تصویر دا متبادل متن",
+        "description": "تصویر بیان کرن والا متبادل متن۔"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "کارڈ دا عنوان۔"
+      },
+      {
+        "slot": "",
+        "title": "مواد",
+        "description": "کارڈ دے مواد دا حصہ۔"
+      },
+      {
+        "property": "href",
+        "title": "لنک",
+        "description": "بٹن دے لنک دا URL۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "لیبل",
+        "description": "بٹن دا لیبل۔"
+      },
+      {
+        "property": "noArrow",
+        "title": "تیر نہیں",
+        "description": "بٹن دا تیر لکاؤ۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "لنک: ٹارگٹ",
+        "description": "لنک کتھے کھولݨا اے۔",
+        "options": {
+          "": "ایہو ونڈو",
+          "_blank": "نویں ونڈو - _blank",
+          "_top": "اُتلی ونڈو - _top",
+          "_parent": "پیرنٹ ونڈو - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "لنک: rel",
+        "description": "لنک کیتے وسیلے تے موجودہ دستاویز دا تعلق۔"
+      }
+    ]
+  }
+}

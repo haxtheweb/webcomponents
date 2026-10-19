@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Etiket / Hap",
+    "description": "İsteğe bağlı vurgu rengi, iptal düğmesi veya açma/kapama içeren kompakt, hap biçimli etiket."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etiket",
+        "description": "Hapın içinde gösterilen metin."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu rengi",
+        "description": "Hap arka planı için SimpleColors vurgu adı.",
+        "options": {
+          "": "-- varsayılan --",
+          "red": "Kırmızı",
+          "pink": "Pembe",
+          "purple": "Mor",
+          "deep-purple": "Koyu Mor",
+          "indigo": "Çivit",
+          "blue": "Mavi",
+          "light-blue": "Açık Mavi",
+          "cyan": "Camgöbeği",
+          "teal": "Deniz Mavisi",
+          "green": "Yeşil",
+          "light-green": "Açık Yeşil",
+          "lime": "Limon Yeşili",
+          "yellow": "Sarı",
+          "amber": "Kehribar",
+          "orange": "Turuncu",
+          "deep-orange": "Koyu Turuncu",
+          "brown": "Kahverengi",
+          "blue-grey": "Mavi Gri",
+          "grey": "Gri"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Otomatik vurgu rengi",
+        "description": "Vurgu rengini etiket metninden otomatik olarak türet."
+      },
+      {
+        "property": "cancelButton",
+        "title": "İptal düğmesi",
+        "description": "Hapın içinde bir kaldır/iptal simge düğmesi göster."
+      },
+      {
+        "property": "readonly",
+        "title": "Salt okunur",
+        "description": "Hap yalnızca görüntülensin diye iptal düğmesini gizle."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Açılıp kapanır",
+        "description": "Düğmeye tıklandığında hapın açılıp kapanmasını sağla."
+      },
+      {
+        "property": "toggled",
+        "title": "Açık",
+        "description": "Hapın şu anda açık olup olmadığı."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Açık durum simgesi",
+        "description": "Hap açıkken gösterilecek simge."
+      },
+      {
+        "property": "disabled",
+        "title": "Devre dışı",
+        "description": "Hapla etkileşimi devre dışı bırak."
+      }
+    ]
+  }
+}

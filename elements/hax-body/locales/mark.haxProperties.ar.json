@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "تمييز",
+    "description": "تمييز نص مضمّن."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "النص",
+        "description": "النص المميز."
+      }
+    ]
+  }
+}

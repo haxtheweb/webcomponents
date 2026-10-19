@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Açylýan-ýygnalýan topar",
+    "description": "Açylýan-ýygnalýan elementleriň topary."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Diňe birini aç",
+        "description": "Diňe bir element açylyp bilner."
+      },
+      {
+        "slot": "",
+        "title": "Ýygnalýan elementler",
+        "description": "Ýygnalýan elementler."
+      }
+    ]
+  }
+}

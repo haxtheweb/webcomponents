@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML-lohko",
+    "description": "Perus-HTML-lohko, joka tarjoaa HAXschema-kytkennän"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Sisällössä esitettävä HTML-koodi"
+      }
+    ]
+  }
+}

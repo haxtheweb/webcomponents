@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "محفظهٔ بسته‌شونده",
+    "description": "یک محفظهٔ باز و بسته‌شونده."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "سرعنوان",
+        "description": "متن بخش بسته‌شونده."
+      },
+      {
+        "property": "expanded",
+        "title": "باز",
+        "description": "به‌طور پیش‌فرض باز باشد."
+      },
+      {
+        "property": "headingButton",
+        "title": "دکمهٔ سرعنوان",
+        "description": "کل سرعنوان به‌جای فقط نماد قابل کلیک شود."
+      },
+      {
+        "property": "icon",
+        "title": "نماد",
+        "description": "نماد دکمهٔ باز/بسته کردن."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "نماد (در حالت باز)",
+        "description": "نماد اختیاری برای حالت باز."
+      },
+      {
+        "slot": "",
+        "title": "محتوا",
+        "description": "محتوای بخش بسته‌شونده."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "راهنمای ابزار",
+        "description": "راهنمای ابزار دکمهٔ باز/بسته کردن."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "راهنمای ابزار (در حالت باز)",
+        "description": "راهنمای ابزار دکمهٔ باز/بسته کردن در حالت باز."
+      }
+    ]
+  }
+}

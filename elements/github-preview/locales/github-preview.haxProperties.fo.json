@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Github-forsýning",
+    "description": "Atkomilig mynd við langari lýsing"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Felagsskapur",
+        "description": "Maskinnavn á Github-felagsskapi"
+      },
+      {
+        "property": "repo",
+        "title": "Goymsla",
+        "description": "Maskinnavn á goymslusavni"
+      },
+      {
+        "property": "extended",
+        "title": "Víðkað vísing",
+        "description": "Tekur readme við í elementið"
+      }
+    ]
+  }
+}

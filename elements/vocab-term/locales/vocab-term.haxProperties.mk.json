@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Речник",
+    "description": "Поим од речникот."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Поим"
+      },
+      {
+        "property": "information",
+        "title": "Дефиниција",
+        "description": "Дефиниција прикажана кога ќе се кликне поимот."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Скокачки прозорец",
+        "description": "Прикажи ја дефиницијата во скокачки прозорец наместо во текстот."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Врски",
+        "description": "Список на дополнителни врски поврзани со овој поим."
+      }
+    ]
+  }
+}

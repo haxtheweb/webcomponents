@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Mbojoapy",
+    "description": "Jehechauka pehẽ mbohapy jehechauka reko reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Téra",
+        "description": "Tembiapo ojehechaukáva réra."
+      },
+      {
+        "property": "source",
+        "title": "Ypykue joajuha",
+        "description": "Ypykue URL tembiapo ojehechaukávape g̃uarã."
+      },
+      {
+        "property": "date",
+        "title": "Arange ojeikehápe",
+        "description": "Arange ojeikehague ypykuépe."
+      },
+      {
+        "property": "scope",
+        "title": "Rembe'y",
+        "description": "Pehẽ rembe'y ojehechaukátava.",
+        "options": {
+          "sibling": "Pehẽ ryvy",
+          "parent": "Pehẽ túva"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Ñemoneĩ",
+        "description": "Ñemoneĩ tembiapo ojehechaukávape g̃uarã."
+      },
+      {
+        "property": "creator",
+        "title": "Apohára",
+        "description": "Tembiapo ojehechaukáva apohára térã jára."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema reko",
+        "description": "OER Schema class ko jehechaukápe g̃uarã. Ypyguáva ha'e oer:ReferencedMaterial; emyengovia OER class oikóvandi añoite (techapyrã: oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

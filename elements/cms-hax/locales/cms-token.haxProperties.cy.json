@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tocyn CMS",
+    "description": "Tocyn CMS wedi'i rendro ar yr ôl-wyneb"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Tocyn",
+        "description": "Tocyn o'n CMS"
+      }
+    ]
+  }
+}

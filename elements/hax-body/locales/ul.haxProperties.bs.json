@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Lista s tačkama",
+    "description": "Napravite listu s tačkama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stil oznaka",
+        "description": "Stil koji se koristi za oznake neuređene liste.",
+        "options": {
+          "": "Zadano (kvadrat)",
+          "list-disc": "Disk",
+          "list-circle": "Krug",
+          "list-square": "Kvadrat"
+        }
+      }
+    ]
+  }
+}

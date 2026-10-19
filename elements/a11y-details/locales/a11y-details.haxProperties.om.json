@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Qabduu Bal'inaa Dhaqqabamaa",
+    "description": "Saaxiluu tarkaanfataa dhaqqabamaa bal'inaa fi cuunfaa wajjin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Qabduu",
+        "description": "Cuunfaa qabiyyee yoo dhokate, fkn. \"odeeffannoo\", \"metaadaataa\", kkf."
+      },
+      {
+        "slot": "details",
+        "title": "Ibsa",
+        "description": "Ibsa bal'aa dhokachuu yookaan mul'achuu danda'u"
+      },
+      {
+        "slot": "",
+        "title": "Qabduu Ibsaa",
+        "description": "Durtii qabduu barreeffama ibsaa agarsiisu/dhoksuuf, fkn. \"odeeffannoo\", \"metaadaataa\", kkf."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Barreeffama cuunfaa dirqama hin taane yeroo bal'inni banamu"
+      },
+      {
+        "property": "closeText",
+        "title": "Barreeffama cuunfaa dirqama hin taane yeroo bal'inni cufamu"
+      }
+    ]
+  }
+}

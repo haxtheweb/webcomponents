@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Werkkaart-aflaai",
+    "description": "'n Knoppie om lêers te vertoon wat beskikbaar is vir aflaai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Die titel van die aflaai."
+      },
+      {
+        "property": "link",
+        "title": "Skakel",
+        "description": "Die skakel vir die aflaai."
+      }
+    ]
+  }
+}

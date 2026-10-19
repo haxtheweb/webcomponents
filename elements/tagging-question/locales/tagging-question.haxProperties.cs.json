@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Otázka se štítky",
+    "description": "Vyberte štítky jako odpověď na otázku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Otázka",
+        "description": "Otázka, na kterou mají uživatelé odpovědět."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formát hodnocení",
+        "description": "OER Schema: formát hodnocení tohoto testu (např. body, známka, procenta, splnění)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Výukový cíl",
+        "description": "OER Schema: výukový cíl spojený s tímto hodnocením."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurz",
+        "description": "OER Schema: kurz, pro který je toto hodnocení určeno."
+      },
+      {
+        "property": "answers",
+        "title": "Odpovědi"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Název kvízu",
+        "description": "Název kvízu používaný k identifikaci v analytických systémech xAPI."
+      }
+    ]
+  }
+}

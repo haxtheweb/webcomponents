@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "ويب جزو دستاويز پليئر"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "ونڊو لڪايو",
+        "description": "آئوٽ پٽ ونڊو لڪايو، ڪارائتو جڏهن مقصد صرف ٽرمينل هجي"
+      }
+    ]
+  }
+}

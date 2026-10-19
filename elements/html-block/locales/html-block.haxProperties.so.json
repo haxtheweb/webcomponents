@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Qaybta Html",
+    "description": "Qayb HTML aasaasi ah oo bixisa xiriirinta HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Koodhka HTML ee aad rabto inaad ku soo bandhigto waxyaabaha"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kallon samfur",
+    "description": "Akwatin taƙaitaccen bayanin samfur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Alama",
+        "description": "Alamar da ke wakiltar ra'ayin."
+      },
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Babban ra'ayi a kallo ɗaya."
+      },
+      {
+        "property": "subtitle",
+        "title": "Ƙaramin take",
+        "description": "Ƙarin bayani."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin ƙawa",
+        "description": "Launin ƙawa na alamar."
+      }
+    ]
+  }
+}

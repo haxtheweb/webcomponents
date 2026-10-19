@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "ບັດເລື່ອງລາວ Polaris",
+    "description": "ສະແດງບັດເລື່ອງລາວ Polaris ພ້ອມຮູບພາບພື້ນຫຼັງ, ປ້າຍເສົາຫຼັກ ແລະ ຂໍ້ຄວາມພາດຫົວ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ຮູບພາບພື້ນຫຼັງ",
+        "description": "URL ຮູບພາບທີ່ສະແດງເປັນພື້ນຫຼັງຂອງບັດ."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "ຂະໜາດພື້ນຫຼັງ",
+        "description": "ວິທີທີ່ຮູບພາບພື້ນຫຼັງເຕັມບັດ (CSS background-size).",
+        "options": {
+          "cover": "ປົກຄຸມ (cover)",
+          "contain": "ບັນຈຸ (contain)",
+          "auto": "ອັດຕະໂນມັດ (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "ການຕິດພື້ນຫຼັງ",
+        "description": "ພຶດຕິກຳຂອງຮູບພາບພື້ນຫຼັງເມື່ອເລື່ອນ (CSS background-attachment).",
+        "options": {
+          "scroll": "ເລື່ອນ (scroll)",
+          "fixed": "ຄົງທີ່ (fixed)",
+          "local": "ທ້ອງຖິ່ນ (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "ປ້າຍເສົາຫຼັກ",
+        "description": "ປ້າຍສັ້ນຕົວພິມໃຫຍ່ທີ່ສະແດງຢູ່ດ້ານເທິງຂອງບັດ. ປະຫວ່າງໄວ້ເພື່ອເຊື່ອງ."
+      },
+      {
+        "property": "label",
+        "title": "ຂໍ້ຄວາມບັດ",
+        "description": "ຂໍ້ຄວາມຫຼັກທີ່ສະແດງໃນແຜງດ້ານລຸ່ມ."
+      },
+      {
+        "property": "link",
+        "title": "ລິ້ງ",
+        "description": "URL ປາຍທາງທາງເລືອກທີ່ຄຸມບັດທັງໝົດ."
+      }
+    ]
+  }
+}

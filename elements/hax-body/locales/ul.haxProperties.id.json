@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Daftar berpoin",
+    "description": "Buat daftar berpoin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Gaya poin",
+        "description": "Gaya yang digunakan untuk poin daftar tidak berurutan.",
+        "options": {
+          "": "Default (persegi)",
+          "list-disc": "Cakram",
+          "list-circle": "Lingkaran",
+          "list-square": "Persegi"
+        }
+      }
+    ]
+  }
+}

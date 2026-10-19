@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ಹೊಂದಿಸುವ ಪ್ರಶ್ನೆ",
+    "description": "ಪ್ರಾಂಪ್ಟ್‌ಗಳನ್ನು ಅವುಗಳ ಸರಿಯಾದ ಉತ್ತರಗಳೊಂದಿಗೆ ಜೋಡಿಸುವ ಎಳೆದು-ಬಿಡುವ ಹೊಂದಿಸುವ ಚಟುವಟಿಕೆ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ಪ್ರಶ್ನೆ",
+        "description": "ಬಳಕೆದಾರರಿಗೆ ಪ್ರಶ್ನೆ. ಬಿಡುವ ಗುರಿಗಳನ್ನು ಗುರುತಿಸಿ, ನಂತರ ಮುಂದಿನ ಗುರಿಯವರೆಗೆ ಉತ್ತರಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ಶ್ರೇಣೀಕರಣ ಸ್ವರೂಪ",
+        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನದ ಶ್ರೇಣೀಕರಣ ಸ್ವರೂಪ (ಉದಾ. ಅಂಕಗಳು, ಗ್ರೇಡ್ ಅಕ್ಷರ, ಶೇಕಡಾ, ಪೂರ್ಣಗೊಳಿಕೆ)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ಕಲಿಕಾ ಉದ್ದೇಶ",
+        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಕಲಿಕಾ ಉದ್ದೇಶ."
+      },
+      {
+        "property": "forCourse",
+        "title": "ಕೋರ್ಸ್",
+        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನ ಉದ್ದೇಶಿಸಿರುವ ಕೋರ್ಸ್."
+      },
+      {
+        "property": "answers",
+        "title": "ಉತ್ತರಗಳು"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು",
+        "description": "ವಿಶ್ಲೇಷಣಾ ವ್ಯವಸ್ಥೆಗಳಲ್ಲಿ xAPI ಗುರುತಿಸುವಿಕೆಗೆ ಬಳಸುವ ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು."
+      }
+    ]
+  }
+}

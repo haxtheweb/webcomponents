@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Kikin qhawakuy",
+    "description": "Ruraqkuna kikin qhawakuyta tukuyta atinku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Rikch'a",
+        "description": "Kikin qhawakuypaq rikch'a."
+      },
+      {
+        "property": "title",
+        "title": "Sutichay",
+        "description": "Kikin qhawakuypa sutichaynin."
+      },
+      {
+        "property": "alt",
+        "title": "Hukniray qillqa",
+        "description": "Rikch'apaq hukniray qillqa."
+      },
+      {
+        "slot": "question",
+        "title": "Tapukuy"
+      },
+      {
+        "slot": "",
+        "title": "Kutichiy"
+      },
+      {
+        "property": "accentColor",
+        "title": "Tema llimpi",
+        "description": "Diseño sistemamanta tema llimpita akllay.",
+        "options": {
+          "primary": "Ñawpaq kaq",
+          "accent": "Rikchachiq",
+          "success": "Atipay",
+          "warning": "Paqtataq",
+          "error": "Pantay",
+          "info": "Willakuy"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Yachana munay",
+        "description": "oer:hasLearningObjective hina lluqsiq yachana munay rikuchiy."
+      },
+      {
+        "property": "assessing",
+        "title": "Chaninchachkan",
+        "description": "oer:assessing hina lluqsiq ruray rikuchiy."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Aswan t'inki",
+        "description": "Yapa willakuykunaman t'inki."
+      }
+    ]
+  }
+}

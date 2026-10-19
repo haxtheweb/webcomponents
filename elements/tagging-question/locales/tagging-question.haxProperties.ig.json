@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Ajụjụ Mkpado",
+    "description": "Họrọ mkpado iji zaa ajụjụ ahụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ajụjụ",
+        "description": "Ajụjụ ndị ọrụ ga-aza."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Usoro akara",
+        "description": "OER Schema: usoro akara maka nyocha a (dịka akara, mkpụrụedemede, pasentị, mmecha)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ebumnuche mmụta",
+        "description": "OER Schema: ebumnuche mmụta jikọtara na nyocha a."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kọọsị",
+        "description": "OER Schema: kọọsị e mere nyocha a maka ya."
+      },
+      {
+        "property": "answers",
+        "title": "Azịza"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Aha ule",
+        "description": "Aha ule eji maka njirimara xAPI na usoro nyocha data."
+      }
+    ]
+  }
+}

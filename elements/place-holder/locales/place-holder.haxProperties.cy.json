@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Dalfan",
+    "description": "Dalfan y gellir ei throsi i'r math o gyfryngau a ddewiswyd"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Math",
+        "description": "Math o declyn y mae hwn yn ei dderbyn i'w ddisodli.",
+        "options": {
+          "text": "Testun / cynnwys",
+          "document": "Dogfen / ffeil",
+          "audio": "Sain",
+          "video": "Fideo",
+          "image": "Delwedd",
+          "math": "Mathemateg"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Testun",
+        "description": "Nodwch y ddalfan a ddymunir yn fanylach"
+      }
+    ]
+  }
+}

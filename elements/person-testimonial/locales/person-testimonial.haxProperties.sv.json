@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Bildcitat",
+    "description": "Stiliserat citat med valfri bild."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Lägg till en bild i omdömet."
+      },
+      {
+        "property": "name",
+        "title": "Fullständigt namn",
+        "description": "Namn på personen som ger omdömet."
+      },
+      {
+        "property": "position",
+        "title": "Befattning eller yrkestitel",
+        "description": "Personens befattning eller yrkestitel."
+      },
+      {
+        "slot": "",
+        "title": "Citat",
+        "description": "Citat från omdömets författare."
+      }
+    ]
+  }
+}

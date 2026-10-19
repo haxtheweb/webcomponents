@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Componente de aprendizagem",
+    "description": "Um cartão para os instrutores comunicarem a pedagogia e as estratégias instrucionais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipo",
+        "description": "O tipo de cartão a ser usado."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtítulo",
+        "description": "O subtítulo do cartão."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Um link opcional para o cartão (link não disponível para Objetivos de aprendizagem)."
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Defina o título; isto substitui o título baseado no tipo"
+      },
+      {
+        "property": "icon",
+        "title": "Ícone",
+        "description": "Defina o ícone; isto substitui o ícone baseado no tipo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Defina a cor de destaque; isto substitui a cor baseada no tipo"
+      },
+      {
+        "slot": "",
+        "title": "Conteúdo"
+      }
+    ]
+  }
+}

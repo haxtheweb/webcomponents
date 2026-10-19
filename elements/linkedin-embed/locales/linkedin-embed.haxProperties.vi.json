@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Nhúng LinkedIn",
+    "description": "Nhúng thẻ hồ sơ LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Tên tùy chỉnh",
+        "description": "Phần tên người dùng tùy chỉnh trên LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Ngôn ngữ vùng",
+        "description": "Giá trị siêu dữ liệu ngôn ngữ vùng, ví dụ: en_US."
+      }
+    ]
+  }
+}

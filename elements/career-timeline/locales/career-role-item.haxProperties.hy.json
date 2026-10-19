@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Կարիերայի դեր",
+    "description": "Առանձին դեր կազմակերպության ներսում"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Վերնագիր"
+      },
+      {
+        "property": "startDate",
+        "title": "Սկզբի ամսաթիվ"
+      },
+      {
+        "property": "endDate",
+        "title": "Ավարտի ամսաթիվ (ընտրովի)"
+      },
+      {
+        "property": "skills",
+        "title": "Կապված հմտություններ",
+        "description": "Սեղմեք + կոճակը՝ հմտություններ ավելացնելու համար"
+      }
+    ]
+  }
+}

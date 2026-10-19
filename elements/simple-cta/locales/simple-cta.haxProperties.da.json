@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Opfordring til handling",
+    "description": "En simpel knap med et link til at handle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Linketiket"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Indtast et link til en vilkårlig ressource"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Skjul ikon",
+        "description": "Skjul ikonet, der bruges til at fremhæve teksten"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon for handlingslink"
+      }
+    ]
+  }
+}

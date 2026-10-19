@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Бетке Disqus комментарийлерин кыстаруу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Кыска аталыш",
+        "description": "Сайттын кыска аталышы, ал Disqus скриптинин хостун аныктайт."
+      },
+      {
+        "property": "pageURL",
+        "title": "Беттин URL дареги",
+        "description": "Комментарийлер жиби байланган беттин URL дареги."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Бет идентификатору",
+        "description": "Беттин комментарийлер жибинин уникалдуу идентификатору."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Беттин аталышы",
+        "description": "Комментарийлер жиби байланган беттин аталышы."
+      },
+      {
+        "property": "loadingText",
+        "title": "Жүктөө тексти",
+        "description": "Комментарийлер жүктөлүп жатканда билдирилген текст."
+      },
+      {
+        "property": "lang",
+        "title": "Тил",
+        "description": "Disqus интерфейсинин тил коду, мисалы, en."
+      }
+    ]
+  }
+}

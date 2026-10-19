@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ફ્લૅશ કાર્ડ",
+    "description": "આગળ-પાછળવાળા ફ્લૅશ કાર્ડ વડે ખ્યાલોનો અભ્યાસ કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "કાર્ડની આગળની બાજુ",
+        "description": "આગળનું લખાણ અથવા પ્રશ્ન."
+      },
+      {
+        "slot": "back",
+        "title": "કાર્ડની પાછળની બાજુ",
+        "description": "અપેક્ષિત જવાબ."
+      },
+      {
+        "property": "imgSource",
+        "title": "છબી સ્રોત",
+        "description": "કાર્ડ માટે વપરાતી છબી ફાઇલ. છબી કીવર્ડને ઓવરરાઇડ કરે છે."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "ક્રિયાનો પ્રકાર",
+        "description": "OER Schema: આ અભ્યાસમાં સમાવિષ્ટ ક્રિયાનો પ્રકાર (દા.ત. વાંચન, લેખન, નિર્માણ, સંશોધન, સાંભળવું, જોવું, ચિંતન, ચર્ચા, નિરીક્ષણ, પ્રસ્તુતિ, મૂલ્યાંકન)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "શીખવાનો ઉદ્દેશ",
+        "description": "OER Schema: આ અભ્યાસ જે શીખવાના ઉદ્દેશને સમર્થન આપે છે તેનું ID અથવા URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ડાર્ક",
+        "description": "ડાર્ક મોડ વાપરો."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "કાર્ડનો ઍક્સેન્ટ રંગ."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "છબી કીવર્ડ",
+        "description": "રેન્ડમ છબી કીવર્ડ. છબી સ્રોત દ્વારા ઓવરરાઇડ થાય છે."
+      }
+    ]
+  }
+}

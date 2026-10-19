@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "用户操作",
+    "description": "跟踪用户操作，拿数据送到 xAPI 存储。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "要跟踪个事件",
+        "description": "触发搿只事件个用户操作。",
+        "options": {
+          "visibility": "看得到搿个",
+          "keydown": "勒搿搭按一只键",
+          "click": "点搿个",
+          "hover": "鼠标停勒搿个浪"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "每趟侪跟踪",
+        "description": "默认只跟踪第一趟。"
+      }
+    ]
+  }
+}

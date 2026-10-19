@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Cirkeldiagram",
+    "description": "Opretter et tilgængeligt diagram baseret på en CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Accentfarve",
+        "description": "En valgfri accentfarve."
+      },
+      {
+        "title": "Mørkt tema",
+        "description": "Aktivér mørkt tema"
+      },
+      {
+        "title": "CSV-fil",
+        "description": "Indlæs data fra en CSV."
+      },
+      {
+        "title": "Diagramtitel",
+        "description": "Tilgængelig alternativ tekst til dit diagram."
+      },
+      {
+        "title": "Diagrambeskrivelse",
+        "description": "Tilgængelig beskrivelse af dit diagram."
+      },
+      {
+        "title": "Skalanavn",
+        "description": "Forholdet bredde:højde for diagrammet (se https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings for $ct-scales og $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Donut"
+      },
+      {
+        "title": "Vis etiket"
+      },
+      {
+        "title": "Startvinkel"
+      },
+      {
+        "title": "Udfyldning"
+      },
+      {
+        "title": "I alt",
+        "description": "Valgfri total, du kan angive. Når du angiver en totalværdi, skal summen af værdierne i serien være denne total for at tegne en hel cirkel. Du kan bruge denne parameter til kun at tegne dele af en cirkel eller målerdiagrammer."
+      },
+      {
+        "title": "Ignorer tomme værdier",
+        "description": "Tomme værdier ignoreres for at undgå at tegne unødvendige udsnit og etiketter."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vend data om",
+        "description": "Vend data om, herunder etiketter, seriernes rækkefølge samt hele seriernes dataarrays."
+      },
+      {
+        "title": "HTML-tabel",
+        "description": "Valgfrit: Indlæs data som en HTML-tabel."
+      },
+      {
+        "title": "Donuttens stregbredde"
+      },
+      {
+        "title": "Massiv donut",
+        "description": "Tegn donutsegmenter som figurer i stedet for streger."
+      },
+      {
+        "title": "Etiketretning",
+        "description": "Tegn donutsegmenter som figurer i stedet for streger.",
+        "options": {
+          "neutral": "neutral",
+          "explode": "udad",
+          "implode": "indad"
+        }
+      },
+      {
+        "title": "Etiketforskydning",
+        "description": "Forskydning af etiketplaceringen fra standardplaceringen, som er halvdelen af radius. Værdien kan være enten positiv eller negativ. Positive værdier placerer etiketten væk fra midten."
+      },
+      {
+        "title": "Etiketplacering",
+        "options": {
+          "inside": "indvendig",
+          "outside": "udvendig",
+          "center": "centreret"
+        }
+      }
+    ]
+  }
+}

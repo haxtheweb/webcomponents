@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Stig",
+    "description": "Lutur, sum er partur av einum stigalista"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Heiti"
+      }
+    ]
+  }
+}

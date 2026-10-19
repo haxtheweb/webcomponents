@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ڳڻپ مٿي",
+    "description": "جڏهن نظر ۾ اسڪرول ٿئي ته هڪ عدد کي ٽارگيٽ قيمت تائين ڳڻندي اينيميٽ ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "آخري قيمت",
+        "description": "اهو عدد جنهن تائين ڳڻڻو آهي."
+      },
+      {
+        "property": "start",
+        "title": "شروعاتي قيمت",
+        "description": "اهو عدد جتان ڳڻپ شروع ٿيڻي آهي."
+      },
+      {
+        "property": "duration",
+        "title": "مدو",
+        "description": "ڳڻپ جي اينيميشن کي لڳڻ وارا سيڪنڊ."
+      },
+      {
+        "property": "prefixtext",
+        "title": "اڳياڙي متن",
+        "description": "عدد کان اڳ ڏيکاريل متن (مثال طور '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "پڇاڙي متن",
+        "description": "عدد کان پوءِ ڏيکاريل متن (مثال طور '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "اڳياڙي سلاٽ",
+        "description": "عدد کان اڳ اختياري سلاٽ مواد."
+      },
+      {
+        "slot": "suffix",
+        "title": "پڇاڙي سلاٽ",
+        "description": "عدد کان پوءِ اختياري سلاٽ مواد."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "ڏهائي جايون",
+        "description": "ڏيکارڻ لاءِ ڏهائي جاين جو تعداد."
+      },
+      {
+        "property": "separator",
+        "title": "هزارن جو جدا ڪندڙ",
+        "description": "هزارن جي گروپن کي ڌار ڪندڙ اکر."
+      },
+      {
+        "property": "decimal",
+        "title": "ڏهائي اکر",
+        "description": "ڏهائي نقطي لاءِ استعمال ٿيندڙ اکر."
+      },
+      {
+        "property": "noeasing",
+        "title": "ايزنگ ناهي",
+        "description": "ايزنگ غير فعال ڪريو ته جيئن ڳڻپ سڌي ليڪ ۾ ٿئي."
+      }
+    ]
+  }
+}

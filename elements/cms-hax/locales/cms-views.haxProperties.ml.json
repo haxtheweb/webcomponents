@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS വ്യൂ",
+    "description": "ബാക്കെൻഡിൽ റെൻഡർ ചെയ്യുന്ന CMS വ്യൂകൾ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "പേര്",
+        "description": "ഞങ്ങളുടെ CMS-ൽ നിന്നുള്ള വ്യൂവിന്റെ പേര്"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "പ്രദർശനം",
+        "description": "ഞങ്ങളുടെ CMS-ൽ നിന്നുള്ള ആ വ്യൂവിനുള്ളിലെ ഡിസ്പ്ലേ"
+      }
+    ]
+  }
+}

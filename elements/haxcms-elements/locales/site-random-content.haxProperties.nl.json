@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Willekeurige pagina-inhoud",
+    "description": "Een willekeurig element op het hoogste niveau van een geselecteerde pagina tonen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Pagina",
+        "description": "Selecteer de pagina waaruit willekeurige inhoud wordt gehaald. Het element toont willekeurig een van de HTML-elementen op het hoogste niveau van deze pagina."
+      }
+    ]
+  }
+}

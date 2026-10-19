@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grupo expansível",
+    "description": "Um grupo de elementos expansíveis e recolhíveis."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Expandir apenas um",
+        "description": "Apenas um item pode ser expandido."
+      },
+      {
+        "slot": "",
+        "title": "Itens recolhíveis",
+        "description": "Os itens recolhíveis."
+      }
+    ]
+  }
+}

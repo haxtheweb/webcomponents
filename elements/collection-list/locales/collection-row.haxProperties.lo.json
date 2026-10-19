@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "ແຖວຄໍເລັກຊັນ",
+    "description": "ລາຍການແບບແຖວສຳລັບໃຊ້ໃນລາຍການຄໍເລັກຊັນ ພ້ອມຂໍ້ຄວາມ, ລິ້ງ, ໄອຄອນ, ແທັກ ແລະ ຮູບພາບທາງເລືອກ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "ລິ້ງ",
+        "description": "URL ປາຍທາງສຳລັບແຖວນີ້."
+      },
+      {
+        "property": "image",
+        "title": "ຮູບພາບ",
+        "description": "ຮູບພາບສຳລັບແຖວ."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "ຂໍ້ຄວາມທົດແທນທີ່ອະທິບາຍຮູບພາບ."
+      },
+      {
+        "property": "line1",
+        "title": "ແຖວທີ 1",
+        "description": "ຂໍ້ຄວາມແຖວທຳອິດ."
+      },
+      {
+        "property": "line2",
+        "title": "ແຖວທີ 2",
+        "description": "ຂໍ້ຄວາມແຖວທີສອງ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ໄອຄອນ",
+        "description": "ໄອຄອນທີ່ເປັນຕົວແທນຂອງແຖວ."
+      },
+      {
+        "property": "saturate",
+        "title": "ເອັບເຟັກຄວາມອີ່ມຕົວ",
+        "description": "ປ່ຽນຄວາມອີ່ມຕົວຂອງຮູບພາບເມື່ອຜູ້ໃຊ້ໂຟກັສ."
+      },
+      {
+        "property": "tags",
+        "title": "ແທັກ",
+        "description": "ລາຍການແທັກທີ່ຂັ້ນດ້ວຍຈຸດ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີ",
+        "description": "ສີທີ່ໃຊ້ສຳລັບໄອຄອນ ແລະ ແທັກ."
+      }
+    ]
+  }
+}

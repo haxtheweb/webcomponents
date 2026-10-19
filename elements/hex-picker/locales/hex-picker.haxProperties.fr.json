@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sélecteur hexadécimal",
+    "description": "Sélecteur de couleur en code hexadécimal"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Valeur",
+        "description": "Valeur hexadécimale par défaut"
+      },
+      {
+        "property": "disabled",
+        "title": "Désactivé",
+        "description": "Désactiver le champ de texte"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Grand affichage",
+        "description": "Inclure la couleur dans un grand affichage"
+      }
+    ]
+  }
+}

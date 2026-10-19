@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG tapicha",
+    "description": "Tapicha ñembosaráiva HAX-gui."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Téra",
+        "description": "Ñe'ẽ ojeporúva ojejapo hag̃ua tapicha oimeraẽva."
+      },
+      {
+        "property": "hat",
+        "title": "Akãngao",
+        "description": "Akãngao reko.",
+        "options": {
+          "none": "Ijypykuéva",
+          "random": "Oimeraẽ",
+          "bunny": "Tapiti",
+          "cowboy": "Vaqueiro",
+          "education": "Tekombo'e",
+          "construction": "Ñemopu'ã",
+          "warning": "Ñemomarandu",
+          "watermelon": "Sandía",
+          "coffee": "Kafe",
+          "knight": "Kavaju ári ñorãirõhára",
+          "ninja": "Ninja",
+          "party": "Vy'aguasu",
+          "error": "Jejavy",
+          "edit": "Ñembosako'i"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Pekue",
+        "description": "Tapicha pekue píxel-pe."
+      },
+      {
+        "property": "height",
+        "title": "Yvatekue",
+        "description": "Tapicha yvatekue píxel-pe."
+      },
+      {
+        "property": "fire",
+        "title": "¿Hendýpa?",
+        "description": "Tapicha hendýpa térã nahániri."
+      },
+      {
+        "property": "walking",
+        "title": "¿Oguatápa?",
+        "description": "Jeguata ñemomýi; oñani hendy jave."
+      }
+    ]
+  }
+}

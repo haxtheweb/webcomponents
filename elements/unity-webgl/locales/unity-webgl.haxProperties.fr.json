@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Lecteur Unity",
+    "description": "Lecteur Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cible",
+        "description": "Chemin vers le build du jeu."
+      },
+      {
+        "property": "compression",
+        "title": "Méthode de compression",
+        "description": "Extension de fichier de compression des ressources du jeu."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL de streaming",
+        "description": "URL des ressources en streaming."
+      },
+      {
+        "property": "companyname",
+        "title": "Nom de l'entreprise",
+        "description": "Nom de l'entreprise."
+      },
+      {
+        "property": "productname",
+        "title": "Nom du produit",
+        "description": "Titre du jeu."
+      },
+      {
+        "property": "productversion",
+        "title": "Version du produit",
+        "description": "Version de publication."
+      },
+      {
+        "property": "width",
+        "title": "Largeur du canevas",
+        "description": "Largeur CSS du canevas (par exemple en px ou em)."
+      },
+      {
+        "property": "height",
+        "title": "Hauteur du canevas",
+        "description": "Hauteur CSS du canevas (par exemple en px ou em)."
+      },
+      {
+        "property": "background",
+        "title": "Arrière-plan du canevas",
+        "description": "Arrière-plan CSS du canevas."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "SDG di l'UN",
+    "description": "Ughjettivu di sviluppu sustenibile di e Nazioni Unite."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Ughjettivu",
+        "description": "Numeru di l'SDG di l'UN."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Solu culore",
+        "description": "Affissà solu u culore di l'ughjettivu."
+      }
+    ]
+  }
+}

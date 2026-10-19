@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kartīte",
+    "description": "Kartīte ar neobligātu akcenta stilu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Virsraksts",
+        "description": "Kartītes virsraksts."
+      },
+      {
+        "slot": "subheading",
+        "title": "Apakšvirsraksts",
+        "description": "Neobligāts kartītes apakšvirsraksts."
+      },
+      {
+        "slot": "content",
+        "title": "Saturs",
+        "description": "Kartītes saturs."
+      },
+      {
+        "slot": "footer",
+        "title": "Kājene",
+        "description": "Neobligāta kartītes kājene."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Attēls",
+        "description": "Neobligāts attēls"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Attēla alternatīvais teksts",
+        "description": "Alternatīvais teksts, kas apraksta attēlu ekrāna lasītājiem. Atstājiet tukšu tikai tad, ja attēls ir tīri dekoratīvs."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Attēla horizontālā līdzināšana",
+        "options": {
+          "left": "pa kreisi",
+          "center": "centrā",
+          "right": "pa labi"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Attēla vertikālā līdzināšana",
+        "options": {
+          "top": "augšā",
+          "center": "centrā",
+          "bottom": "apakšā"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Neobligāta akcenta krāsa."
+      },
+      {
+        "property": "dark",
+        "title": "Tumšais motīvs",
+        "description": "Iespējot tumšo motīvu"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontāla",
+        "description": "Horizontāla orientācija?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Virsraksta akcents",
+        "description": "Piemērot akcenta krāsu virsrakstam?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Fona akcents",
+        "description": "Piemērot akcenta krāsu kartītes fonam?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Bez apmales akcenta",
+        "description": "Noņemt apmales akcentu?"
+      },
+      {
+        "property": "flat",
+        "title": "Plakans",
+        "description": "Noņemt lodziņa ēnu?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Stūris",
+        "description": "Kartītes stūra saturs."
+      }
+    ]
+  }
+}

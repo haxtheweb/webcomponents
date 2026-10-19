@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sección de páxina",
+    "description": "Contedor de sección para o contido da páxina e deseños baseados en pantallas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Tratamento de deseño",
+        "description": "Estilo predefinido que actualiza a configuración relacionada."
+      },
+      {
+        "property": "image",
+        "title": "Imaxe",
+        "description": "Contido multimedia de fondo para a sección."
+      },
+      {
+        "property": "bg",
+        "title": "Cor de fondo",
+        "description": "Cor de fondo cando non hai ningunha imaxe definida."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Botón de desprazamento",
+        "description": "Mostrar un botón que despraza á seguinte sección."
+      },
+      {
+        "property": "fold",
+        "title": "Mostrar dobra",
+        "description": "Mostrar unha dobra visual na parte inferior da sección."
+      },
+      {
+        "property": "full",
+        "title": "Tamaño de pantalla completa",
+        "description": "Ocupar a altura da pantalla do visitante."
+      },
+      {
+        "property": "filter",
+        "title": "Aplicar filtro",
+        "description": "Aplicar un filtro visual á imaxe de fondo."
+      },
+      {
+        "slot": "",
+        "title": "Contido",
+        "description": "Contido da sección."
+      },
+      {
+        "slot": "entice",
+        "title": "Gancho",
+        "description": "Contido de gancho opcional."
+      },
+      {
+        "slot": "buttons",
+        "title": "Botóns",
+        "description": "Grupo de botóns que se mostra debaixo do texto."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Texto da áncora",
+        "description": "Etiqueta da áncora que se mostra na navegación."
+      }
+    ]
+  }
+}

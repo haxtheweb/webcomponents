@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "আইকন",
+    "description": "সম্পূর্ণ আইকন লাইব্রেরি থেকে আইকন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "আইকন",
+        "description": "প্রদর্শনের আইকন।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "আইকনের অ্যাকসেন্ট রং।"
+      },
+      {
+        "property": "dark",
+        "title": "ডার্ক",
+        "description": "ডার্ক মোড ব্যবহার করুন (উল্টানো রঙের সেট)।"
+      }
+    ]
+  }
+}

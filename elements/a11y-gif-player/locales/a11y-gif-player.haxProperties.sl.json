@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Naredite animirane GIF-e dostopne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Animirani GIF",
+        "description": "URL animiranega GIF-a."
+      },
+      {
+        "property": "alt",
+        "title": "Nadomestno besedilo",
+        "description": "Nadomestno besedilo za sliko."
+      },
+      {
+        "property": "longdesc",
+        "title": "Dolgi opis",
+        "description": "Dolgi opis GIF-a za dostopnost."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Mirujoča slika",
+        "description": "URL mirujoče različice GIF-a."
+      }
+    ]
+  }
+}

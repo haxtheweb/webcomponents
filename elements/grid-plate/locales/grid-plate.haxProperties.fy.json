@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kolomopmaak",
+    "description": "Materiaal yn ienfâldige kolommen opmeitsje"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Kolomopmaak",
+        "description": "Styl om dizze items te presintearjen (kin feroarje op lytse skermen)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Responsyf útskeakelje",
+        "description": "Finkje oan om kolommen te hâlden op gruttere skermen, wylst se op de lytste skermen dochs stapele wurde"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Item-opfolling",
+        "description": "Opfolling yn elk item"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Itemmarzjes",
+        "description": "Marzje tusken items"
+      }
+    ]
+  }
+}

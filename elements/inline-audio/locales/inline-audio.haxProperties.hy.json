@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ներտողային աուդիո",
+    "description": "Նվագարկել աուդիո տեքստի մեջ՝ էջի բովանդակությունը լրացնելու համար։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Աղբյուր",
+        "description": "MP3 ֆայլ կամ URL։"
+      },
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Քարտի շեշտադրման գույնը։"
+      },
+      {
+        "property": "shiny",
+        "title": "Փայլուն",
+        "description": "Մոխրագույնի փոխարեն օգտագործել ավելի բաց շեշտադրման ֆոն։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Մուգ",
+        "description": "Օգտագործել մուգ ռեժիմը։"
+      }
+    ]
+  }
+}

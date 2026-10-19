@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Тоо өсгөх",
+    "description": "Харагдах хэсэгт орж ирэхэд тоог зорилтот утга хүртэл өсгөн тоолох хөдөлгөөнт дүрс."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Эцсийн утга",
+        "description": "Тоолж хүрэх тоо."
+      },
+      {
+        "property": "start",
+        "title": "Эхлэх утга",
+        "description": "Тоолж эхлэх тоо."
+      },
+      {
+        "property": "duration",
+        "title": "Үргэлжлэх хугацаа",
+        "description": "Тоолох хөдөлгөөнт дүрсний үргэлжлэх секунд."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Өмнөх текст",
+        "description": "Тооны өмнө харуулах текст (жишээ нь '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Дараах текст",
+        "description": "Тооны дараа харуулах текст (жишээ нь '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Өмнөх слот",
+        "description": "Тооны өмнөх нэмэлт слот агуулга."
+      },
+      {
+        "slot": "suffix",
+        "title": "Дараах слот",
+        "description": "Тооны дараах нэмэлт слот агуулга."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Аравтын оронгийн тоо",
+        "description": "Харуулах аравтын оронгийн тоо."
+      },
+      {
+        "property": "separator",
+        "title": "Мянгатын тусгаарлагч",
+        "description": "Мянгатын бүлгийг тусгаарлах тэмдэгт."
+      },
+      {
+        "property": "decimal",
+        "title": "Аравтын тэмдэгт",
+        "description": "Аравтын бутархайн цэгт ашиглах тэмдэгт."
+      },
+      {
+        "property": "noeasing",
+        "title": "Зөөлрүүлэлтгүй",
+        "description": "Тоолох нь шугаман байхаар зөөлрүүлэлтийг идэвхгүй болгох."
+      }
+    ]
+  }
+}

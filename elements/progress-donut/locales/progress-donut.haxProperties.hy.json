@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Առաջընթացի օղակ",
+    "description": "Առաջընթացի օղակաձև գծապատկեր"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Տարրի վերնագիրը"
+      },
+      {
+        "property": "desc",
+        "title": "Նկարագրություն",
+        "description": "Մատչելի երկար նկարագրություն"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Պատկերի աղբյուր",
+        "description": "Օղակի ներսում գտնվող նկարի աղբյուրը։"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Նկարի այլընտրանքային տեքստ",
+        "description": "Նկարի այլընտրանքային տեքստ։"
+      },
+      {
+        "property": "animated",
+        "title": "Անիմացիոն",
+        "description": "Արդյոք առաջընթացն անիմացիայով է ցուցադրվում առաջին բեռնման ժամանակ"
+      },
+      {
+        "property": "complete",
+        "title": "Ավարտված",
+        "description": "Ավարտված արժեքների զանգված։"
+      },
+      {
+        "property": "total",
+        "title": "Ընդամենը",
+        "description": "Ընդհանուր արժեքը, երբ բոլոր տարրերն ավարտված են։"
+      },
+      {
+        "property": "startAngle",
+        "title": "Սկզբնական անկյուն",
+        "description": "Օղակի անկյունը, որտեղից սկսվում է առաջընթացը"
+      }
+    ]
+  }
+}

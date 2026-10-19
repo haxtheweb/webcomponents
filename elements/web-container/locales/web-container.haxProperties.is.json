@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS-gámur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Fela ritil",
+        "description": "Fela skráaritunarviðmótið."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Fela skipanalínu",
+        "description": "Fela skipanalínuna fyrir sjálfkeyrandi forrit."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Fela glugga",
+        "description": "Fela úttaksgluggann þegar aðeins er notuð skipanalína."
+      },
+      {
+        "slot": "",
+        "title": "Skipanir",
+        "description": "Skipanir (ein í hverri línu) sem keyra á fyrir hleðslu."
+      }
+    ]
+  }
+}

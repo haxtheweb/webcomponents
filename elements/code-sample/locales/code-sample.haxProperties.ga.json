@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Sampla cóid",
+    "description": "Sampla cóid aibhsithe sa leathanach"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Aibhsiú cóid",
+        "description": "Aibhsiú comhréire le cur i bhfeidhm ar an limistéar cóid",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Sonraí JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Cnaipe cóipeála chuig an ngearrthaisce",
+        "description": "cnaipe ag an mbarr ar dheis a deir cóipeáil chuig an ngearrthaisce"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Tús an aibhsithe",
+        "description": "Uimhir na líne ag a dtosaíonn an t-aibhsiú"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Deireadh an aibhsithe",
+        "description": "An líne ag a gcríochnaíonn an t-aibhsiú"
+      }
+    ]
+  }
+}

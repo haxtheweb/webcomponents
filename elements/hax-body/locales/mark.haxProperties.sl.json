@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Označitev",
+    "description": "Označi besedilo v vrstici."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Besedilo",
+        "description": "Označeno besedilo."
+      }
+    ]
+  }
+}

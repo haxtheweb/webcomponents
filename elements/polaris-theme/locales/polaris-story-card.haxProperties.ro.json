@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Card de poveste Polaris",
+    "description": "Afișează un card de poveste Polaris cu imagine de fundal, etichetă de pilon și text de titlu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagine de fundal",
+        "description": "URL-ul imaginii afișate ca fundal al cardului."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Dimensiunea fundalului",
+        "description": "Cum umple imaginea de fundal cardul (CSS background-size).",
+        "options": {
+          "cover": "Acoperire (cover)",
+          "contain": "Încadrare (contain)",
+          "auto": "Automat (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Atașarea fundalului",
+        "description": "Cum se comportă imaginea de fundal la derulare (CSS background-attachment).",
+        "options": {
+          "scroll": "Derulare (scroll)",
+          "fixed": "Fix (fixed)",
+          "local": "Local (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Etichetă de pilon",
+        "description": "Etichetă scurtă cu majuscule afișată în partea de sus a cardului. Lăsați gol pentru a o ascunde."
+      },
+      {
+        "property": "label",
+        "title": "Textul cardului",
+        "description": "Textul principal afișat în panoul inferior."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "URL de destinație opțional care cuprinde întregul card."
+      }
+    ]
+  }
+}

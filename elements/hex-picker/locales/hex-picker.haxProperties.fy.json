@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex-kiezer",
+    "description": "Hexkoade-kleurkiezer"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Wearde",
+        "description": "Standert hexwearde"
+      },
+      {
+        "property": "disabled",
+        "title": "Utskeakele",
+        "description": "It tekstfjild útskeakelje"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Grutte werjefte",
+        "description": "Kleur opnimme yn grutte werjefte"
+      }
+    ]
+  }
+}

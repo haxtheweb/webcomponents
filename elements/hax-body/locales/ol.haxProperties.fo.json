@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Talmerktur listi",
+    "description": "Stovna ein talmerktan lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Talsnið",
+        "description": "Snið nýtt til talmerking av raðaðum lista.",
+        "options": {
+          "": "Sjálvsett (desimal)",
+          "list-decimal-leading-zero": "Desimal við forfylgjandi null (01, 02, 03)",
+          "list-lower-alpha": "Smáir bókstavir (a, b, c)",
+          "list-upper-alpha": "Stórir bókstavir (A, B, C)",
+          "list-lower-roman": "Smá rómartøl (i, ii, iii)",
+          "list-upper-roman": "Stór rómartøl (I, II, III)"
+        }
+      }
+    ]
+  }
+}

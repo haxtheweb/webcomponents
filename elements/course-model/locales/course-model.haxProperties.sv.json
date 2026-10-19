@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kursmodell",
+    "description": "Interaktiv layout för kursbegrepp med detaljer, animering och kunskapskontroller."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "titel"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Informationsområde"
+      },
+      {
+        "title": "Detaljområde"
+      },
+      {
+        "title": "Animationsområde"
+      },
+      {
+        "title": "Område för kunskapskontroll"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logotypområde"
+      }
+    ]
+  }
+}

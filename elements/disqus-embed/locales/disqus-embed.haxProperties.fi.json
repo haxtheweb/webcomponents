@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Upota Disqus-kommentit sivulle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Lyhytnimi",
+        "description": "Sivuston lyhytnimi, joka määrää Disqus-skriptin isännän."
+      },
+      {
+        "property": "pageURL",
+        "title": "Sivun URL",
+        "description": "Sen sivun URL, johon kommenttiketju liittyy."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Sivun tunniste",
+        "description": "Sivun kommenttiketjun yksilöllinen tunniste."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Sivun otsikko",
+        "description": "Sen sivun otsikko, johon kommenttiketju liittyy."
+      },
+      {
+        "property": "loadingText",
+        "title": "Latausteksti",
+        "description": "Teksti, joka ilmoitetaan kommenttien latautuessa."
+      },
+      {
+        "property": "lang",
+        "title": "Kieli",
+        "description": "Disqus-käyttöliittymän kielikoodi, esim. en."
+      }
+    ]
+  }
+}

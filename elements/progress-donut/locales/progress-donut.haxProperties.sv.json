@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Förloppsmunk",
+    "description": "Förloppsmunk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Elementets titel"
+      },
+      {
+        "property": "desc",
+        "title": "Beskrivning",
+        "description": "Tillgänglig lång beskrivning"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Bildkälla",
+        "description": "Källa för bilden inuti munken."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alternativtext för bild",
+        "description": "Alternativtext för bilden."
+      },
+      {
+        "property": "animated",
+        "title": "Animerad",
+        "description": "Om förloppet animeras vid första inläsningen"
+      },
+      {
+        "property": "complete",
+        "title": "Klar",
+        "description": "En matris med slutförda värden."
+      },
+      {
+        "property": "total",
+        "title": "Totalt",
+        "description": "Totalt när alla objekt är slutförda."
+      },
+      {
+        "property": "startAngle",
+        "title": "Startvinkel",
+        "description": "Munkens vinkel där förloppet börjar"
+      }
+    ]
+  }
+}

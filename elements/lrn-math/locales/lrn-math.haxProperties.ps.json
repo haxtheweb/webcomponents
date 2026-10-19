@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ریاضي",
+    "description": "ریاضي په ښکلي ډول وړاندې کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "ریاضي",
+        "description": "معادله د LaTeX په توګه ولیکئ"
+      }
+    ]
+  }
+}

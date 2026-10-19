@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: poraka tamaiti",
+    "description": "Poraka hihiri hei whakaatu i te tamaiti o te whārangi o nāianei"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Tikanga hihiri",
+        "description": "Me pēhea te tātai i ngā tamariki e hāngai ana ki tēnei huānga",
+        "options": {
+          "active": "Ngā tamariki hohe",
+          "parent": "Ngā tamariki o te matua",
+          "ancestor": "Ngā tamariki katoa mai i te tupuna teitei rawa"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Taumata tīmata"
+      },
+      {
+        "property": "end",
+        "title": "Taumata mutunga"
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris 标识",
+    "description": "显示 PSU 标识，可选学院名搭目标 URL。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "学院名",
+        "description": "标识边浪显示个名字。"
+      },
+      {
+        "property": "name2",
+        "title": "学院名 2",
+        "description": "第一只学院名下头显示个第二只名字。"
+      },
+      {
+        "property": "name3",
+        "title": "学院名 3",
+        "description": "第二只学院名下头显示个第三只名字。"
+      },
+      {
+        "property": "url",
+        "title": "链接",
+        "description": "点标识辰光个目标 URL。"
+      },
+      {
+        "property": "type",
+        "title": "变体",
+        "description": "标识个视觉变体。",
+        "options": {
+          "default": "默认",
+          "light": "浅色",
+          "dark": "深色"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "竖向布局",
+        "description": "拿第三只名字显示勒第二只名字下头，中间一条横线。"
+      }
+    ]
+  }
+}

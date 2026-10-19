@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "الوسوم",
+    "description": "قائمة وسوم بسيطة للعرض على الصفحة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "الوسوم",
+        "description": "قائمة وسوم مفصولة بفواصل."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "لون تمييز تلقائي",
+        "description": "تعيين لون التمييز تلقائيًا بناءً على التسمية."
+      },
+      {
+        "property": "accentColor",
+        "title": "اللون",
+        "description": "لون الوسوم."
+      }
+    ]
+  }
+}

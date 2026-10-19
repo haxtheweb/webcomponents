@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Enkorpigi eksteran retan enhavon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Fonto",
+        "description": "URL por ĉi tiu rimedo."
+      }
+    ]
+  }
+}

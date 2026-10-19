@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Súlurit",
+    "description": "Stovnar eitt atkomiligt diagram grundað á eina CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dámlitur",
+        "description": "Ein valfríur dámlitur."
+      },
+      {
+        "title": "Myrkt evni",
+        "description": "Tendra myrkt tema"
+      },
+      {
+        "title": "CSV-fíla",
+        "description": "Innles dátur úr eini CSV."
+      },
+      {
+        "title": "Heiti á diagrammi",
+        "description": "Atkomiligur alt-tekstur til diagrammið hjá tær."
+      },
+      {
+        "title": "Lýsing av diagrammi",
+        "description": "Atkomilig lýsing av diagramminum hjá tær."
+      },
+      {
+        "title": "Navn á skala",
+        "description": "Lutfallið breidd:hædd á diagramminum (Sí https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings fyri $ct-scales og $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Vís netbakgrund"
+      },
+      {
+        "title": "Vatnrættar súlur",
+        "description": "Vendir ásunum á súluritinum fyri at tekna eitt vatnrætt súlurit. Ver tilvitað/ur um, at tú eisini mást venda ásastillingunum, tí Y-ásin fer nú at vísa spjøldrini og X-ásin virðini."
+      },
+      {
+        "title": "Stabla súlur",
+        "description": "Um sett til true, ger henda eginleikin, at súlurnar í røðunum verða stablaðar."
+      },
+      {
+        "title": "Být røðir",
+        "description": "Um sett til true, umboðar hvør súla eina røð, og væntað verður, at dáturøðin er ein eindimensjonel røð av dátuvirðum heldur enn ein røð av røðum."
+      },
+      {
+        "title": "Innanfráskot í diagrammi (ovast)"
+      },
+      {
+        "title": "Innanfráskot í diagrammi (niðast)"
+      },
+      {
+        "title": "Innanfráskot í diagrammi (vinstra)"
+      },
+      {
+        "title": "Innanfráskot í diagrammi (høgra)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vend dátum við",
+        "description": "Vend dátum við, íroknað spjøldur, raðfylgju av røðum og allar dátutalrøðir."
+      },
+      {
+        "title": "HTML-talva",
+        "description": "Valfrítt: Innles dátur sum HTML-talvu."
+      },
+      {
+        "title": "Minsta virði í diagrammi",
+        "description": "At skriva yvir náttúrliga lægsta virðið í diagramminum loyvir tær at forstørra ella avmarka lægsta víst virði í diagramminum"
+      },
+      {
+        "title": "Hægsta virði í diagrammi",
+        "description": "At skriva yvir náttúrliga hægsta virðið í diagramminum loyvir tær at forstørra ella avmarka hægsta víst virði í diagramminum"
+      },
+      {
+        "title": "X-ás vís net",
+        "description": "Vís netið hjá X-ásinum."
+      },
+      {
+        "title": "X-ás frávik"
+      },
+      {
+        "title": "X-ás støða",
+        "description": "Støða, har spjøldrini verða sett. Kann setast til \"start\" ella \"end\", har \"start\" svarar til vinstra ella ovast á lodrøttum ási og \"end\" svarar til høgra ella niðast á vatnrøttum ási"
+      },
+      {
+        "title": "X-ás vís spjaldur",
+        "description": "Vís spjaldrið hjá X-ásinum."
+      },
+      {
+        "title": "X-ás spjaldur (vatnrætt frávik)",
+        "description": "Vatnrøtt støða á spjøldrunum hjá X-ásinum."
+      },
+      {
+        "title": "X-ás spjaldur (lodrætt frávik)",
+        "description": "Lodrøtt støða á spjøldrunum hjá X-ásinum."
+      },
+      {
+        "title": "X-ás heiti",
+        "description": "Valfrítt heiti til X-ásin."
+      },
+      {
+        "title": "X-ás heiti (vatnrætt frávik)",
+        "description": "Vatnrøtt støða á heitinum hjá X-ásinum."
+      },
+      {
+        "title": "X-ás heiti (lodrætt frávik)",
+        "description": "Lodrøtt støða á heitinum hjá X-ásinum."
+      },
+      {
+        "title": "X-ás heitisakker",
+        "description": "Valfrítt akker til heitið hjá X-ásinum.",
+        "options": {
+          "middle": "miðja",
+          "end": "endi",
+          "start": "byrjan"
+        }
+      },
+      {
+        "title": "X-ás minsta skalarúm",
+        "description": "Ásetur minstu hædd í pixlum á skalastigum."
+      },
+      {
+        "title": "X-ás skali (bara heiltøl)",
+        "description": "Nýt bara heiltalsvirði (heil tøl) til skalastigini."
+      },
+      {
+        "title": "Y-ás: Vís net",
+        "description": "Vís netið hjá Y-ásinum."
+      },
+      {
+        "title": "Y-ás frávik"
+      },
+      {
+        "title": "Y-ás støða",
+        "description": "Støða, har spjøldrini verða sett. Kann setast til \"start\" ella \"end\", har \"start\" svarar til vinstra ella ovast á lodrøttum ási og \"end\" svarar til høgra ella niðast á vatnrøttum ási"
+      },
+      {
+        "title": "Y-ás vís spjaldur",
+        "description": "Vís spjaldrið hjá Y-ásinum."
+      },
+      {
+        "title": "Y-ás spjaldur (vatnrætt frávik)",
+        "description": "Vatnrøtt støða á spjaldrinum hjá Y-ásinum."
+      },
+      {
+        "title": "Y-ás spjaldur (lodrætt frávik)",
+        "description": "Lodrøtt støða á spjaldrinum hjá Y-ásinum."
+      },
+      {
+        "title": "Y-ás minsta skalarúm",
+        "description": "Ásetur minstu hædd í pixlum á skalastigum."
+      },
+      {
+        "title": "Y-ás skali (bara heiltøl)",
+        "description": "Nýt bara heiltalsvirði (heil tøl) til skalastigini."
+      },
+      {
+        "title": "Y-ás heiti",
+        "description": "Valfrítt heiti til Y-ásin."
+      },
+      {
+        "title": "Y-ás heiti (lodrætt frávik)",
+        "description": "Vatnrøtt støða á heitinum hjá Y-ásinum."
+      },
+      {
+        "title": "Y-ás heiti (vatnrætt frávik)",
+        "description": "Vatnrøtt støða á heitinum hjá Y-ásinum."
+      },
+      {
+        "title": "Y-ás heitisakker",
+        "description": "Valfrítt akker til heitið hjá Y-ásinum.",
+        "options": {
+          "middle": "miðja",
+          "end": "endi",
+          "start": "byrjan"
+        }
+      },
+      {
+        "title": "Y-ás vend heiti",
+        "description": "Venda heitinum til Y-ásin?"
+      },
+      {
+        "title": "Tilvísingarvirði",
+        "description": "Uttan so at lágt/høgt eru greitt sett, verður súluritið sum sjálvsett miðsett um null."
+      },
+      {
+        "title": "Fjarstøða millum súlur í røð",
+        "description": "Áset fjarstøðuna í pixlum millum súlur í einum bólki."
+      },
+      {
+        "title": "Stablingarháttur",
+        "description": "Um sett til \"true\", myndar henda eginleikin eina samlaða upphædd fyri hvønn punkt í røðini. Hetta ávirkar eisini y-ásin og samlaðu markini á diagramminum. Um sett til \"false\", tvingar henda eginleikin stablaðu súlurnar at verða teknaðar frá nulllinjuni. Í stablingarhátti hevur eginleikin \"seriesBarDistance\" onga ávirkan."
+      }
+    ]
+  }
+}

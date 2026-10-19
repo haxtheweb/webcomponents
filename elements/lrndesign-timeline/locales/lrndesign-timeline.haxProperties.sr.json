@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Хронологија",
+    "description": "Временска линија догађаја са сликама и текстом"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Наслов хронологије",
+        "description": "Наслов временске линије."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Опционална акцентна боја."
+      },
+      {
+        "property": "dark",
+        "title": "Тамна тема",
+        "description": "Омогући тамну тему"
+      },
+      {
+        "slot": "",
+        "title": "Опис временске линије",
+        "description": "Опциони текст који описује временску линију."
+      },
+      {
+        "property": "events",
+        "title": "Догађаји временске линије",
+        "description": "Догађаји на временској линији"
+      }
+    ]
+  }
+}

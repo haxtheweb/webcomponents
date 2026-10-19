@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "ਕਰੀਅਰ ਭੂਮਿਕਾ",
+    "description": "ਕਿਸੇ ਸੰਗਠਨ ਅੰਦਰ ਇੱਕ ਵਿਅਕਤੀਗਤ ਭੂਮਿਕਾ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ"
+      },
+      {
+        "property": "startDate",
+        "title": "ਸ਼ੁਰੂਆਤੀ ਮਿਤੀ"
+      },
+      {
+        "property": "endDate",
+        "title": "ਅੰਤਮ ਮਿਤੀ (ਵਿਕਲਪਿਕ)"
+      },
+      {
+        "property": "skills",
+        "title": "ਸੰਬੰਧਿਤ ਹੁਨਰ",
+        "description": "ਹੁਨਰ ਜੋੜਨਾ ਸ਼ੁਰੂ ਕਰਨ ਲਈ + ਬਟਨ ਚੁਣੋ"
+      }
+    ]
+  }
+}

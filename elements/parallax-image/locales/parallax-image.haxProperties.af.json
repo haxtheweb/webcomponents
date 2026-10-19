@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallaksprent",
+    "description": "Prent rol verby"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Prent",
+        "description": "prent wat in die agtergrond betrokke is"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Opskrifarea",
+        "description": "Opskrif-teksarea"
+      }
+    ]
+  }
+}

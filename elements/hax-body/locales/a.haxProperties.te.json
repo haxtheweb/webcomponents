@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "ప్రాథమిక లింక్",
+    "description": "ప్రాథమిక లింక్ ఎలిమెంట్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "లింక్",
+        "description": "గమ్యస్థాన URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "వచనం",
+        "description": "కనిపించే లింక్ వచనం."
+      },
+      {
+        "attribute": "target",
+        "title": "లక్ష్యం",
+        "description": "లింక్‌ను ఎక్కడ తెరవాలి.",
+        "options": {
+          "": "అదే విండో",
+          "_blank": "కొత్త విండో - _blank",
+          "_top": "పై విండో - _top",
+          "_parent": "పేరెంట్ విండో - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "శీర్షిక వచనం",
+        "description": "యాక్సెసిబిలిటీ మరియు SEO కోసం సలహా శీర్షిక."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "గమ్యస్థానంతో సంబంధం (భద్రత/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

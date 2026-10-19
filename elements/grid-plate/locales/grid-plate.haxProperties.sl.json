@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Postavitev v stolpcih",
+    "description": "Postavite gradivo v preproste stolpce"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Postavitev v stolpcih",
+        "description": "Slog predstavitve teh elementov (na majhnih zaslonih se lahko spremeni)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Onemogoči odzivnost",
+        "description": "Označite polje, da ohranite stolpce na večjih zaslonih, na najmanjših pa se še vedno zložijo"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Notranji odmik elementov",
+        "description": "Notranji odmik v vsakem elementu"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Robovi elementov",
+        "description": "Rob med elementi"
+      }
+    ]
+  }
+}

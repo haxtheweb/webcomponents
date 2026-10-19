@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Vucabulariu",
+    "description": "Termine di vucabulariu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termine"
+      },
+      {
+        "slot": "",
+        "title": "Definizione",
+        "description": "A definizione da affissà quandu si clicca nant'à u termine."
+      },
+      {
+        "property": "description",
+        "title": "Descrizzione (OER Schema)",
+        "description": "OER Schema: una breve descrizzione di u termine di vucabulariu. Riempita autumaticamente da u testu di a definizione s'ella hè lasciata biota."
+      }
+    ]
+  }
+}

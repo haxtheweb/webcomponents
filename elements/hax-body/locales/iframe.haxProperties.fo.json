@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Innfell uttanhýsis vevinnihald."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Kelda",
+        "description": "URL til hetta tilfeingið."
+      }
+    ]
+  }
+}

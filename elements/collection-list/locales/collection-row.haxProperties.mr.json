@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "संग्रह पंक्ती",
+    "description": "संग्रह सूचीमध्ये वापरण्यासाठी पंक्ती-शैलीचा आयटम, मजकूर, लिंक, आयकॉन, टॅग आणि पर्यायी प्रतिमेसह."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "लिंक",
+        "description": "या पंक्तीसाठी गंतव्य URL."
+      },
+      {
+        "property": "image",
+        "title": "प्रतिमा",
+        "description": "पंक्तीसाठी प्रतिमा."
+      },
+      {
+        "property": "alt",
+        "title": "पर्यायी मजकूर",
+        "description": "प्रतिमेचे वर्णन करणारा पर्यायी मजकूर."
+      },
+      {
+        "property": "line1",
+        "title": "ओळ 1",
+        "description": "मजकुराची पहिली ओळ."
+      },
+      {
+        "property": "line2",
+        "title": "ओळ 2",
+        "description": "मजकुराची दुसरी ओळ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "आयकॉन",
+        "description": "पंक्ती दर्शवणारा आयकॉन."
+      },
+      {
+        "property": "saturate",
+        "title": "संपृक्तता प्रभाव",
+        "description": "वापरकर्ता फोकस केल्यावर प्रतिमेची संपृक्तता बदला."
+      },
+      {
+        "property": "tags",
+        "title": "टॅग",
+        "description": "स्वल्पविरामाने विभक्त टॅगची सूची."
+      },
+      {
+        "property": "accentColor",
+        "title": "रंग",
+        "description": "आयकॉन आणि टॅगसाठी वापरलेला रंग."
+      }
+    ]
+  }
+}

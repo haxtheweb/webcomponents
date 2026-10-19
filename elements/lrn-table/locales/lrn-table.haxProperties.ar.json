@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "جدول CSV",
+    "description": "يمكنه إنشاء جدول من ملف CSV أيًّا كان موقعه."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "المصدر",
+        "description": "URL ملف CSV هذا."
+      },
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "عنوان الجدول المراد إنشاؤه."
+      },
+      {
+        "property": "description",
+        "title": "الوصف",
+        "description": "وصف أكثر تفصيلًا لتحسين إمكانية الوصول إلى بيانات الجدول."
+      }
+    ]
+  }
+}

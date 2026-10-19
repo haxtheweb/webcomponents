@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Харьцангуй гарчиг",
+    "description": "эцгийн гарчигт тулгуурлан зөв гарчгийн шатлалыг гаргана"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Эцэг гарчгийн нөөцийн ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "Холбоосын товчлуурын боломжийг идэвхгүй болгоно."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Холбоос хуулах товчлуурыг гарчгийн хамгийн баруун талд тэгшилнэ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Эцэг олдохгүй үеийн гарчгийн түвшин."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Холбоос хуулах мэдэгдлийн анхдагч текстийг дарж бичнэ."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Холбоос хуулах товчлуурын анхдагч шошгыг дарж бичнэ."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Холбоос хуулах товчлуурын анхдагч дүрс тэмдгийг дарж бичнэ."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Холбоос хуулах мэдэгдлийн хаах товчлуурын анхдагч шошгыг дарж бичнэ."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Холбоос хуулах мэдэгдлийн хаах товчлуурын анхдагч дүрс тэмдгийг дарж бичнэ."
+      }
+    ]
+  }
+}

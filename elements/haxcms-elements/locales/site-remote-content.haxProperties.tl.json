@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Remote na Nilalaman",
+    "description": "Muling gamitin ang nilalaman mula sa isang site sa iba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Address ng site",
+        "description": "I-paste ang address na pagkukunan ng nilalaman kung hindi ang kasalukuyang site"
+      },
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item na ire-render para sa link / data ng pamagat"
+      },
+      {
+        "property": "breakreference",
+        "title": "Putulin ang reference",
+        "description": "Ang pag-check sa kahong ito ay kumokopya sa remote na nilalaman para ma-edit nang lokal pero inaalis ang kaugnayan. Hindi na ito makakatanggap ng mga update kapag na-update ang reference na materyal."
+      },
+      {
+        "property": "showTitle",
+        "title": "Ipakita ang pamagat",
+        "description": "I-on para i-render ang pamagat ng resource na ipinapakita"
+      }
+    ]
+  }
+}

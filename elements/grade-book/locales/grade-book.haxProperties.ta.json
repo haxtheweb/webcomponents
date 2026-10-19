@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "மதிப்பெண் புத்தகம்",
+    "description": "rubric களுடன் பல backend களை ஆதரிக்கும் headless மதிப்பெண் புத்தகம்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "மூலம்",
+        "description": "தரவு மூல வகை (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "JSON தரவுத் தொகுப்பு",
+          "filesystem": "கோப்பு முறைமை"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "மூலத் தரவு",
+        "description": "மதிப்பெண் புத்தகத்திற்கான URL அல்லது JSON தரவு."
+      },
+      {
+        "property": "forCourse",
+        "title": "பாடக் குறிப்பு",
+        "description": "ஒவ்வொரு Assessment வளத்திலும் oer:forCourse ஆக வெளியிடப்படும் பாட அடையாளங்காட்டி."
+      }
+    ]
+  }
+}

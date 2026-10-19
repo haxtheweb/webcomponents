@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "ಸಂಖ್ಯೆಯ ಪಟ್ಟಿ",
+    "description": "ಸಂಖ್ಯೆಯ ಪಟ್ಟಿ ರಚಿಸಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "ಸಂಖ್ಯೆ ಶೈಲಿ",
+        "description": "ಕ್ರಮಬದ್ಧ ಪಟ್ಟಿಯ ಸಂಖ್ಯೆಗೆ ಬಳಸುವ ಶೈಲಿ.",
+        "options": {
+          "": "ಡೀಫಾಲ್ಟ್ (ದಶಮಾಂಶ)",
+          "list-decimal-leading-zero": "ಮುಂಚೂಣಿ ಸೊನ್ನೆಯೊಂದಿಗೆ ದಶಮಾಂಶ (01, 02, 03)",
+          "list-lower-alpha": "ಸಣ್ಣ ಅಕ್ಷರ (a, b, c)",
+          "list-upper-alpha": "ದೊಡ್ಡ ಅಕ್ಷರ (A, B, C)",
+          "list-lower-roman": "ಸಣ್ಣ ರೋಮನ್ (i, ii, iii)",
+          "list-upper-roman": "ದೊಡ್ಡ ರೋಮನ್ (I, II, III)"
+        }
+      }
+    ]
+  }
+}

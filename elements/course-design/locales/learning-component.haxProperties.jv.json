@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Komponen Sinau",
+    "description": "Kertu kanggo instruktur kanggo nyampekake pedagogi lan strategi pamulangan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Jinis",
+        "description": "Jinis kertu sing dienggo."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subjudhul",
+        "description": "Subjudhul kertu."
+      },
+      {
+        "property": "url",
+        "title": "Pranala",
+        "description": "Link opsional kanggo kertu (Link ora kasedhiya kanggo Tujuan Sinau)."
+      },
+      {
+        "property": "title",
+        "title": "Irah-irahan",
+        "description": "Setel Judhul, iki ngganti judhul adhedhasar jinis"
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Setel lambang, iki ngganti lambang adhedhasar jinis"
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna aksen",
+        "description": "Setel warna aksen, iki ngganti warna adhedhasar jinis"
+      },
+      {
+        "slot": "",
+        "title": "Isi"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Nā kumuhana i loaʻa",
+    "description": "Hōʻike i nā kumuhana HAXcms i loaʻa me ka hoʻololi hōʻike mua ola"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "ʻAno nānā",
+        "description": "Koho pehea e hōʻike ai i nā kumuhana",
+        "options": {
+          "gallery": "Hōʻikeʻike kiʻi",
+          "table": "Papa"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Hōʻike i nā kikoʻī",
+        "description": "Hōʻike i nā wehewehe kumuhana a me ka ʻike hou aku"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Hōʻike i nā kumuhana huna a kahiko",
+        "description": "Hōʻike i nā kumuhana huna, kahiko, a weliweli me nā paʻamau o ka papa hana"
+      },
+      {
+        "property": "columns",
+        "title": "Nā kolamu (Hale kiʻi)",
+        "description": "Helu o nā kolamu ma ka hiʻohiʻona hale kiʻi"
+      }
+    ]
+  }
+}

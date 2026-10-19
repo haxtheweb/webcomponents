@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Žodynas",
+    "description": "Žodyno terminas"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Terminas"
+      },
+      {
+        "slot": "",
+        "title": "Apibrėžtis",
+        "description": "Apibrėžtis, rodoma spustelėjus terminą."
+      },
+      {
+        "property": "description",
+        "title": "Aprašas (OER Schema)",
+        "description": "OER Schema: trumpas žodyno termino aprašas. Jei paliksite tuščią, bus užpildytas automatiškai pagal apibrėžties tekstą."
+      }
+    ]
+  }
+}

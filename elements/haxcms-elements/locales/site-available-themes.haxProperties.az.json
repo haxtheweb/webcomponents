@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Mövcud mövzular",
+    "description": "Mövcud HAXcms mövzularını canlı önizləmə keçidi ilə göstərin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Görünüş rejimi",
+        "description": "Mövzuların necə göstəriləcəyini seçin",
+        "options": {
+          "gallery": "Qalereya",
+          "table": "Cədvəl"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Təfərrüatları göstər",
+        "description": "Mövzu təsvirlərini və əlavə məlumatları göstər"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Gizli və köhnə mövzuları göstər",
+        "description": "İdarə paneli standartlarına əlavə olaraq gizli, köhnə və dəhşətli mövzuları göstər"
+      },
+      {
+        "property": "columns",
+        "title": "Sütunlar (qalereya)",
+        "description": "Qalereya görünüşündə sütunların sayı"
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Mutu wogwirizana",
+    "description": "imatulutsa kutsatana koyenera kwa mitu molingana ndi mutu wa kholo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID ya Chinthu cha Mutu wa Kholo"
+      },
+      {
+        "property": "disableLink",
+        "description": "Imazimitsa batani la ulalo."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Imaika batani lokopera ulalo kumanja kwenikweni kwa mutu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Mlingo wa mutu ngati kholo silinapezeke."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Imasintha mawu okhazikika a uthenga wa kukopera ulalo."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Imasintha dzina lokhazikika la batani lokopera ulalo."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Imasintha chizindikiro chokhazikika cha batani lokopera ulalo."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Imasintha dzina lokhazikika la batani lotseka la uthenga wa kukopera ulalo."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Imasintha chizindikiro chokhazikika cha batani lotseka la uthenga wa kukopera ulalo."
+      }
+    ]
+  }
+}

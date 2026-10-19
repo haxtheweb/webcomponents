@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Pākaʻa",
+    "description": "He pākaʻa hoʻokahi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona pākaʻa"
+      },
+      {
+        "property": "disabled",
+        "title": "Hoʻopio ʻia"
+      },
+      {
+        "property": "label",
+        "title": "Lepili pākaʻa"
+      },
+      {
+        "slot": "",
+        "title": "ʻIke pākaʻa",
+        "description": "ʻIke o ka pākaʻa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Kū Hoʻokahi"
+      },
+      {
+        "property": "flag",
+        "title": "Kikokikona hae koho"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Ikona hae koho"
+      }
+    ]
+  }
+}

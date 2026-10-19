@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI දෘශ්‍යකරණය",
+    "description": "දෘශ්‍යකරණය සමඟ සන්දර්භය තුළ MIDI වාදනය කරන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "මූලාශ්‍රය",
+        "description": "වාදනය කළ යුතු ගොනු URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "දෘශ්‍යකරණය",
+        "description": "සංගීත ගොනුව සඳහා දෘශ්‍යකරණ ශෛලිය.",
+        "options": {
+          "staff": "ස්වර ප්‍රස්ථාරය",
+          "piano-roll": "පියානෝ රෝලය",
+          "waterfall": "පියානෝ + දිය ඇල්ල"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "දිය ඇල්ල සඟවන්න",
+        "description": "පියානෝ දෘශ්‍යකරණයේ දිය ඇලි ස්වර සඟවන්න."
+      }
+    ]
+  }
+}

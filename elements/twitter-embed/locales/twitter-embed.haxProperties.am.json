@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "የTwitter (X) መክተቻ",
+    "description": "ከX የተገኘ ትዊትን በዐውድ ውስጥ ክተት።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "የትዊት URL",
+        "description": "የሚከተተው ትዊት URL።"
+      },
+      {
+        "attribute": "data-theme",
+        "title": "ገጽታ",
+        "description": "ለX ትዊቶች ብሩህ ወይም ጨለማ ገጽታ።",
+        "options": {
+          "light": "ብሩህ",
+          "dark": "ጨለማ"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "ጠቅ ሲደረግ ብቅ-ባይን ከልክል",
+        "description": "ተጠቃሚዎች ትዊቱን በx.com ላይ እንዳይከፍቱ ከልክል።"
+      }
+    ]
+  }
+}

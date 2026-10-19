@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabel",
+    "description": "Data adhedhasar tabel kanggo web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Header Baris",
+        "description": "Anggep baris kapisan minangka header."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Header Kolom",
+        "description": "Anggep kolom kapisan minangka header."
+      },
+      {
+        "property": "footer",
+        "title": "Footer",
+        "description": "Anggep baris pungkasan minangka footer."
+      },
+      {
+        "property": "sort",
+        "title": "Bisa diurutake",
+        "description": "Idini ngurutake miturut nilai kolom."
+      },
+      {
+        "property": "filter",
+        "title": "Idini Saringan",
+        "description": "Idini nyaring miturut nilai kolom."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Gaya Angka",
+        "description": "Trapake gaya angka marang kolom angka."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsif",
+        "description": "Atur tata letak tabel ing layar cilik."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mode Rubrik",
+        "description": "Tafsirake tabel iki minangka Rubric OER Schema supaya metadata Rubric, RubricScale, RubricCriterion, lan RubricLevel diasilake."
+      },
+      {
+        "property": "rubricType",
+        "title": "Jinis Rubrik",
+        "description": "Gaya rubrik sing diasilake minangka oer:rubricType (mung migunani nalika Mode Rubrik urip).",
+        "options": {
+          "": "(ora ana)",
+          "analytic": "Analitik",
+          "holistic": "Holistik",
+          "single-point": "Titik Tunggal",
+          "checklist": "Dhaptar priksa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Mawa wates"
+      },
+      {
+        "property": "condensed",
+        "title": "Padhetake Baris",
+        "description": "Suda dhuwure baris."
+      },
+      {
+        "property": "striped",
+        "title": "Baris Belang",
+        "description": "Wenehi warna saben baris selang-seling."
+      },
+      {
+        "property": "downloadable",
+        "title": "Tombol Undhuh",
+        "description": "Tambahake tombol kanggo ngundhuh tabel."
+      },
+      {
+        "property": "copyable",
+        "title": "Tombol Salin",
+        "description": "Tambahake tombol kanggo nyalin data CSV tabel."
+      },
+      {
+        "property": "printable",
+        "title": "Tombol Cithak",
+        "description": "Tambahake tombol kanggo nyithak tabel wae."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Data CSV",
+        "description": "Gawe tabel saka berkas CSV sing diunggah."
+      }
+    ]
+  }
+}

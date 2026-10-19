@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Kiʻi wehewehe",
+    "description": "Kiʻi hiki ke komo ʻia me ka wehewehe lōʻihi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Kiʻi"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Kikokikona Pani"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Kākau kiʻi",
+        "description": "Kikokikona kākau kiʻi i ʻike mau ʻia."
+      },
+      {
+        "slot": "details",
+        "title": "Wehewehe",
+        "description": "Wehewehe kiʻi kikoʻī hiki ke hūnā ʻia a hōʻike ʻia paha"
+      },
+      {
+        "slot": "summary",
+        "title": "Pihi wehewehe",
+        "description": "Paʻamau no ka pihi e hōʻike/hūnā ana i ke kikokikona wehewehe, e laʻa me \"ʻike\", \"metadata\", a pēlā aku."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Kikokikona hōʻuluʻulu koho ke wehe ʻia nā kikoʻī"
+      },
+      {
+        "property": "closeText",
+        "title": "Kikokikona hōʻuluʻulu koho ke pani ʻia nā kikoʻī"
+      }
+    ]
+  }
+}

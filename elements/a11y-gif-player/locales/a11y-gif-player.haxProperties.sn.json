@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Ita kuti maGIF anofamba awanikwe nevose."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF inofamba",
+        "description": "URL yeGIF inofamba."
+      },
+      {
+        "property": "alt",
+        "title": "Mavara Anotsiva Mufananidzo",
+        "description": "Mavara anotsiva mufananidzo."
+      },
+      {
+        "property": "longdesc",
+        "title": "Tsananguro Yakareba",
+        "description": "Tsananguro yakareba yeGIF yekuwanikwa nevose."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Mufananidzo Wakamira",
+        "description": "URL yemufananidzo wakamira weGIF."
+      }
+    ]
+  }
+}

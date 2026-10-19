@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Isakhi se-H5P",
+    "description": "I-LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Umbhalo",
+        "description": "Okuqukethwe kwenothi eseceleni"
+      }
+    ]
+  }
+}

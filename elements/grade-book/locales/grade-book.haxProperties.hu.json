@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Osztályzatkönyv",
+    "description": "Fej nélküli osztályzatkönyv, amely több háttérrendszert és értékelési szempontrendszert támogat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Forrás",
+        "description": "Adatforrás típusa (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-végpont (JSON)",
+          "json": "JSON-adatblob",
+          "filesystem": "Fájlrendszer"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Forrásadatok",
+        "description": "URL vagy JSON-adatok az osztályzatkönyvhöz."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurzushivatkozás",
+        "description": "Minden Assessment erőforráson oer:forCourse értékként kiadott kurzusazonosító."
+      }
+    ]
+  }
+}

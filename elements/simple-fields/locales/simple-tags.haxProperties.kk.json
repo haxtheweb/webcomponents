@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Тегтер",
+    "description": "Бетте көрсетуге арналған қарапайым тегтер тізімі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Тегтер",
+        "description": "Үтірмен бөлінген тегтер тізімі."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Автоматты екпін түсі",
+        "description": "Екпін түсін белгі негізінде автоматты түрде орнату."
+      },
+      {
+        "property": "accentColor",
+        "title": "Түс",
+        "description": "Тегтердің түсі."
+      }
+    ]
+  }
+}

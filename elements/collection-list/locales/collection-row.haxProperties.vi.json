@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Hàng bộ sưu tập",
+    "description": "Mục dạng hàng dùng trong danh sách bộ sưu tập, có văn bản, liên kết, biểu tượng, thẻ và hình ảnh tùy chọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Liên kết",
+        "description": "URL đích cho hàng này."
+      },
+      {
+        "property": "image",
+        "title": "Hình ảnh",
+        "description": "Hình ảnh cho hàng."
+      },
+      {
+        "property": "alt",
+        "title": "Văn bản thay thế",
+        "description": "Văn bản thay thế mô tả hình ảnh."
+      },
+      {
+        "property": "line1",
+        "title": "Dòng 1",
+        "description": "Dòng văn bản thứ nhất."
+      },
+      {
+        "property": "line2",
+        "title": "Dòng 2",
+        "description": "Dòng văn bản thứ hai."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Biểu tượng",
+        "description": "Biểu tượng đại diện cho hàng."
+      },
+      {
+        "property": "saturate",
+        "title": "Hiệu ứng bão hòa",
+        "description": "Thay đổi độ bão hòa của hình ảnh khi người dùng chọn."
+      },
+      {
+        "property": "tags",
+        "title": "Thẻ",
+        "description": "Danh sách thẻ phân tách bằng dấu phẩy."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu sắc",
+        "description": "Màu dùng cho biểu tượng và thẻ."
+      }
+    ]
+  }
+}

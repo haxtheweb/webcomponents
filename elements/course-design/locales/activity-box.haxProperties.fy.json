@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Aktiviteitskast",
+    "description": "Lyts opmakke kopblok."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikoan",
+        "description": "Ikoan neist de aktiviteitskast."
+      },
+      {
+        "property": "tag",
+        "title": "Label fan aktiviteitskast",
+        "description": "Label yn de aktiviteitskast."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Net kleurje",
+        "description": "Foarkom dat kleuren op it ikoan tapast wurde."
+      }
+    ]
+  }
+}

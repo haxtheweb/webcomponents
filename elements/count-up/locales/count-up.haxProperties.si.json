@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ඉහළට ගණනය",
+    "description": "දර්ශනයට අනුචලනය වන විට ඉලක්ක අගයක් දක්වා ඉහළට ගණන් කරන අංකයක් සජීවී කරන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "අවසාන අගය",
+        "description": "ගණන් කළ යුතු අවසාන අංකය."
+      },
+      {
+        "property": "start",
+        "title": "ආරම්භක අගය",
+        "description": "ගණන් කිරීම ආරම්භ වන අංකය."
+      },
+      {
+        "property": "duration",
+        "title": "කාලසීමාව",
+        "description": "ගණන් කිරීමේ සජීවිකරණයට ගත විය යුතු තත්පර ගණන."
+      },
+      {
+        "property": "prefixtext",
+        "title": "උපසර්ග පෙළ",
+        "description": "අංකයට පෙර පෙන්වන පෙළ (උදා. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "ප්‍රත්‍යය පෙළ",
+        "description": "අංකයට පසු පෙන්වන පෙළ (උදා. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "උපසර්ග ස්ලොට්",
+        "description": "අංකයට පෙර විකල්ප ස්ලොට් අන්තර්ගතය."
+      },
+      {
+        "slot": "suffix",
+        "title": "ප්‍රත්‍යය ස්ලොට්",
+        "description": "අංකයට පසු විකල්ප ස්ලොට් අන්තර්ගතය."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "දශම ස්ථාන",
+        "description": "පෙන්විය යුතු දශම ස්ථාන ගණන."
+      },
+      {
+        "property": "separator",
+        "title": "දහස් වෙන්කරුව",
+        "description": "දහස් කාණ්ඩ වෙන් කරන අක්ෂරය."
+      },
+      {
+        "property": "decimal",
+        "title": "දශම අක්ෂරය",
+        "description": "දශම ලක්ෂ්‍යය සඳහා භාවිත අක්ෂරය."
+      },
+      {
+        "property": "noeasing",
+        "title": "ලිහිල් කිරීමක් නැත",
+        "description": "ගණන් කිරීම රේඛීය වන ලෙස ලිහිල් කිරීම අබල කරන්න."
+      }
+    ]
+  }
+}

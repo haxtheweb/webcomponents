@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ਸਰੋਤ",
+        "description": "ਇਸ ਸਰੋਤ ਲਈ URL।"
+      }
+    ]
+  }
+}

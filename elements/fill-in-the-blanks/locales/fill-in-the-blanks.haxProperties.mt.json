@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Imla l-vojt",
+    "description": "Attività ta' valutazzjoni fejn l-istudenti jimlew kliem nieqes fi stqarrija."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Mistoqsija",
+        "description": "Mistoqsija biex l-utenti jwieġbu għaliha."
+      },
+      {
+        "property": "statement",
+        "title": "Stqarrija",
+        "description": "Stqarrija li tiġi kkonvertita fl-interazzjoni ta' mmarka l-kliem."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format tal-gradi",
+        "description": "OER Schema: format tal-gradi għal din il-valutazzjoni (eż. punti, ittra, perċentwal, tlestija)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Għan tat-tagħlim",
+        "description": "OER Schema: għan tat-tagħlim assoċjat ma' din il-valutazzjoni."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kors",
+        "description": "OER Schema: il-kors li għalih hija maħsuba din il-valutazzjoni."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Isem il-kwizz",
+        "description": "Isem il-kwizz mgħoddi għall-użu f'ambjenti mmexxija minn xAPI għall-identifikazzjoni ta' dan l-oġġett"
+      }
+    ]
+  }
+}

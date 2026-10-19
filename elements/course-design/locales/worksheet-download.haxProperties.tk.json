@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Iş kagyzyny ýükle",
+    "description": "Ýüklemek üçin elýeterli faýllary görkezýän düwme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Ýüklemäniň ady."
+      },
+      {
+        "property": "link",
+        "title": "Baglanyşyk",
+        "description": "Ýükleme üçin salgy."
+      }
+    ]
+  }
+}

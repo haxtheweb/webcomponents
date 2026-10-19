@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grupp Espandi u Għalaq",
+    "description": "Grupp ta' elementi li jespandu u jingħalqu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Espandi wieħed biss",
+        "description": "Oġġett wieħed biss jista' jiġi espanż."
+      },
+      {
+        "slot": "",
+        "title": "Oġġetti li jingħalqu",
+        "description": "L-oġġetti li jingħalqu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) ایمبیڈ",
+    "description": "X توں اک ٹویٹ سیاق وچ ایمبیڈ کرو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "ٹویٹ URL",
+        "description": "ایمبیڈ کرن والے ٹویٹ دا URL۔"
+      },
+      {
+        "attribute": "data-theme",
+        "title": "تھیم",
+        "description": "X ٹویٹاں لئی ہلکا یا گوڑھا تھیم۔",
+        "options": {
+          "light": "ہلکا",
+          "dark": "گوڑھا"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "کلک تے پاپ اپ روکو",
+        "description": "صارفاں نوں x.com اُتے ٹویٹ کھولن توں روکو۔"
+      }
+    ]
+  }
+}

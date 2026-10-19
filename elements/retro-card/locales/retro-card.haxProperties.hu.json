@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retró kártya",
+    "description": "Egyszerű kártya retró dizájnnal."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "A kártya fő címe."
+      },
+      {
+        "property": "url",
+        "description": "A kártyára kattintáskor megnyitandó URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alcím",
+        "description": "A kártya alcíme."
+      },
+      {
+        "property": "tags",
+        "title": "Címkék",
+        "description": "Vesszővel elválasztott címkék."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Médiaforrás",
+        "description": "Elsődleges médiaforrás."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Forrás rámutatáskor",
+        "description": "A kártyára mutatáskor vagy aktiváláskor megjelenő médiaforrás."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "A kártya egészére alkalmazott kiemelőszín."
+      },
+      {
+        "property": "dark",
+        "title": "Sötét",
+        "description": "Sötét mód alapszíneinek használata."
+      }
+    ]
+  }
+}

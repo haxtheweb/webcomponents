@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Tūemi hipanga",
+    "description": "He tūemi o tētahi rārangi hipanga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Taitara"
+      }
+    ]
+  }
+}

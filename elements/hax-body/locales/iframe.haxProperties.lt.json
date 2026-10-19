@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Įterpti išorinį žiniatinklio turinį."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Šaltinis",
+        "description": "Šio ištekliaus URL."
+      }
+    ]
+  }
+}

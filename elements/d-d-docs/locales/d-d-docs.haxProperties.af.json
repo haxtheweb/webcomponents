@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Ontwerp, Ontwikkel, Vernietig",
+    "description": "Ontwerpstelsel-implementering vir HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Opsie om te vertoon",
+        "options": {
+          "*": "Volledige stylgids"
+        }
+      }
+    ]
+  }
+}

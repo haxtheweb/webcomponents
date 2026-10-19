@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Saanduqa Sochii",
+    "description": "Saanduqa mata-duree xiqqaa miidhagfame."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Mallattoo",
+        "description": "Mallattoo saanduqa sochii cinatti mul'atu."
+      },
+      {
+        "property": "tag",
+        "title": "Mallattoo saanduqa sochii",
+        "description": "Mallattoo saanduqa sochii keessatti mul'atu."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Halluu Malee",
+        "description": "Halluun mallattoo irratti akka hin dibamne dhoowwi."
+      }
+    ]
+  }
+}

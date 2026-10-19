@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Toshen abun cikin markdown kai tsaye ko wanda aka loda daga nesa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown ɗanye"
+      },
+      {
+        "property": "source",
+        "title": "Tushe",
+        "description": "Fayil ɗin tushe don markdown"
+      }
+    ]
+  }
+}

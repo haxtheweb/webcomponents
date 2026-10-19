@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Attēla paraksts",
+    "description": "Attēla paraksts."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Paraksts",
+        "description": "Teksts, kas parādīts zem attēla."
+      }
+    ]
+  }
+}

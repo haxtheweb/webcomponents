@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Loyvi",
+    "description": "Veit eitt loyvi til verkið hjá tær."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Heiti á verkinum, ið verður víst til."
+      },
+      {
+        "property": "source",
+        "title": "Leinki til keldu",
+        "description": "Keldu-URL til loyvisskipaða verkið."
+      },
+      {
+        "property": "license",
+        "title": "Loyvi",
+        "description": "Loyvi nýtt á hetta verkið."
+      },
+      {
+        "property": "creator",
+        "title": "Skapari",
+        "description": "Skapari ella eigari av hesum verkinum."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Leinki til keldu",
+        "description": "Leinki til eyka loyvisupplýsingar."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Meira-spjaldur",
+        "description": "Spjaldur til eyka loyvisupplýsingar."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Surlignage",
+    "description": "Surligner du texte en ligne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Texte",
+        "description": "Texte surligné."
+      }
+    ]
+  }
+}

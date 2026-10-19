@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Cilne",
+    "description": "Viena cilne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Cilnes ikona"
+      },
+      {
+        "property": "disabled",
+        "title": "Atspējots"
+      },
+      {
+        "property": "label",
+        "title": "Cilnes etiķete"
+      },
+      {
+        "slot": "",
+        "title": "Cilnes saturs",
+        "description": "Cilnes saturs."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unikāls ID"
+      },
+      {
+        "property": "flag",
+        "title": "Neobligāts karodziņa teksts"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Neobligāta karodziņa ikona"
+      }
+    ]
+  }
+}

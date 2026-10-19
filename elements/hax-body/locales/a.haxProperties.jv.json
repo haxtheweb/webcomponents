@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Link dhasar",
+    "description": "Elemen link dhasar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Pranala",
+        "description": "URL tujuan."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Teks",
+        "description": "Teks link sing katon."
+      },
+      {
+        "attribute": "target",
+        "title": "Target",
+        "description": "Ing ngendi pranala dibukak.",
+        "options": {
+          "": "Jendhela padha",
+          "_blank": "Jendhela anyar - _blank",
+          "_top": "Jendhela paling ndhuwur - _top",
+          "_parent": "Jendhela induk - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Teks judhul",
+        "description": "Judhul pitutur kanggo aksesibilitas lan SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Hubungan karo tujuan (keamanan/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

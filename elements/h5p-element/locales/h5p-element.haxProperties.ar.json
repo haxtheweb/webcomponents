@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "غلاف H5P لتحميل ملفات .h5p وعرضها"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "شيفرة تضمين iframe الخاصة بـ H5P"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Véletlenszerű oldaltartalom",
+    "description": "Véletlenszerű legfelső szintű elem megjelenítése egy kiválasztott oldalról"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Oldal",
+        "description": "Válaszd ki az oldalt, ahonnan a véletlenszerű tartalom származik. Az elem véletlenszerűen megjeleníti az oldal egyik legfelső szintű HTML-elemét."
+      }
+    ]
+  }
+}

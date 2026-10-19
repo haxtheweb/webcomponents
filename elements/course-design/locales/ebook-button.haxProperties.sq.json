@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Butoni i librit elektronik",
+    "description": "Një buton që lidhet me një libër elektronik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Titulli i butonit."
+      },
+      {
+        "property": "link",
+        "title": "Lidhja",
+        "description": "Lidhja ku ridrejtohet pas klikimit."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona që përfaqëson këtë lidhje"
+      }
+    ]
+  }
+}

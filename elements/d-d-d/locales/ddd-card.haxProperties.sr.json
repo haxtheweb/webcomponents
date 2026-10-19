@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Картица",
+    "description": "Компонента картице стилизована DDD системом дизајна."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Слика",
+        "description": "Опционална слика."
+      },
+      {
+        "property": "alt",
+        "title": "Alt слике",
+        "description": "Алтернативни текст који описује слику."
+      },
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов картице."
+      },
+      {
+        "slot": "",
+        "title": "Садржај",
+        "description": "Област садржаја картице."
+      },
+      {
+        "property": "href",
+        "title": "Веза",
+        "description": "URL везе дугмета."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Ознака",
+        "description": "Ознака дугмета."
+      },
+      {
+        "property": "noArrow",
+        "title": "Без стрелице",
+        "description": "Сакриј стрелицу дугмета."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Веза: target",
+        "description": "Где отворити везу.",
+        "options": {
+          "": "Исти прозор",
+          "_blank": "Нови прозор - _blank",
+          "_top": "Највиши прозор - _top",
+          "_parent": "Родитељски прозор - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Веза: rel",
+        "description": "Однос између повезаног ресурса и тренутног документа."
+      }
+    ]
+  }
+}

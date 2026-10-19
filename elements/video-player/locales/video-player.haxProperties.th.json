@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "วิดีโอ",
+    "description": "การเล่นวิดีโอที่เข้าถึงได้จากหลายแหล่ง"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "แหล่งที่มา",
+        "description": "URL ของสื่อนี้"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อเรื่องที่แสดงใต้วิดีโอ"
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "ภาพโปสเตอร์",
+        "description": "URL ของภาพโปสเตอร์"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "แทร็กข้อความ",
+        "description": "คำบรรยายแบบปิด คำบรรยาย คำอธิบาย และแทร็กข้อความอื่นๆ สำหรับวิดีโอ"
+      },
+      {
+        "property": "startTime",
+        "title": "เวลาเริ่มต้น",
+        "description": "เริ่มวิดีโอ ณ เวลาที่กำหนด (วินาที)"
+      },
+      {
+        "property": "endTime",
+        "title": "เวลาสิ้นสุด",
+        "description": "สิ้นสุดวิดีโอ ณ เวลาที่กำหนด (วินาที) ต้องระบุเวลาเริ่มต้น"
+      },
+      {
+        "property": "learningMode",
+        "title": "เปิดใช้โหมดการเรียนรู้",
+        "description": "ปิดใช้งานการกรอไปข้างหน้าและย้อนกลับ"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "นำปุ่มเปิดบน YouTube ออก",
+        "description": "นำปุ่มสำหรับเปิดวิดีโอบน YouTube ออก"
+      },
+      {
+        "property": "linkable",
+        "title": "รวมลิงก์แชร์หรือไม่?",
+        "description": "ให้ลิงก์สำหรับแชร์วิดีโอ"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ซ่อนการประทับเวลา",
+        "description": "ซ่อนการประทับเวลาในบทถอดความ"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ซ่อนบทถอดความ",
+        "description": "ซ่อนบทถอดความโดยค่าเริ่มต้น"
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "แทร็กเสียงบรรยายภาพ",
+        "description": "URL ของแทร็กเสียงบรรยายภาพ (ไฟล์ MP3) ที่บรรยายองค์ประกอบด้านภาพ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "ระบุว่าจะใช้ CORS หรือไม่",
+        "options": {
+          "anonymous": "ไม่ระบุตัวตน (anonymous)",
+          "use-credentials": "ใช้ข้อมูลรับรอง (use-credentials)"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "อนุญาตให้เล่นในเบื้องหลัง",
+        "description": "เล่นต่อไปเมื่อแท็บเบราว์เซอร์ไม่ได้อยู่ในโฟกัส"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ธีมมืดสำหรับบทถอดความ",
+        "description": "เปิดใช้ธีมมืดสำหรับบทถอดความ"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ปิดใช้การโต้ตอบ",
+        "description": "ปิดใช้โหมดโต้ตอบที่ทำให้คลิกบทถอดความได้"
+      },
+      {
+        "property": "lang",
+        "title": "ภาษา",
+        "description": "ภาษาของสื่อ"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "(เลิกใช้แล้ว) เลือกสีเน้นสำหรับเครื่องเล่น"
+      }
+    ]
+  }
+}

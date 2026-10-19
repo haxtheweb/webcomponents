@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Jadawalin Fanke",
+    "description": "Yana ƙirƙirar jadawali mai sauƙin isa bisa CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Launin Ƙawa",
+        "description": "Launin ƙawa na zaɓi."
+      },
+      {
+        "title": "Jigo Mai Duhu",
+        "description": "Kunna Jigon Duhu"
+      },
+      {
+        "title": "Fayil ɗin CSV",
+        "description": "Loda bayanai daga CSV."
+      },
+      {
+        "title": "Taken Jadawali",
+        "description": "Madadin rubutu mai sauƙin isa don jadawalinka."
+      },
+      {
+        "title": "Bayanin Jadawali",
+        "description": "Bayani mai sauƙin isa na jadawalinka."
+      },
+      {
+        "title": "Sunan Sikeli",
+        "description": "Ma'aunin faɗi:tsawo na jadawalin (Duba https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings don $ct-scales da $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Donut"
+      },
+      {
+        "title": "Nuna Lakabi"
+      },
+      {
+        "title": "Kusurwar Farawa"
+      },
+      {
+        "title": "Cike"
+      },
+      {
+        "title": "Jimilla",
+        "description": "Jimilla na zaɓi da za ka iya ƙayyadewa. Ta ƙayyade jimillar ƙima, jimlar ƙimomin a jerin dole ta zama wannan jimilla don zana cikakken fanke. Kana iya amfani da wannan siga don zana wani ɓangare na fanke ko jadawalin ma'auni kawai."
+      },
+      {
+        "title": "Yi Watsi da Ƙimomi Marasa Komai",
+        "description": "Za a yi watsi da ƙimomi marasa komai don guje wa zana yanka da lakabi marasa amfani."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Juya Bayanai",
+        "description": "Juya bayanai gami da lakabi, tsarin jerin da kuma dukkan tarin bayanan jerin."
+      },
+      {
+        "title": "Teburin HTML",
+        "description": "Na zaɓi: Loda bayanai a matsayin teburin HTML."
+      },
+      {
+        "title": "Faɗin Layin Donut"
+      },
+      {
+        "title": "Donut Mai Cike",
+        "description": "Zana sassan donut a matsayin siffofi maimakon layuka."
+      },
+      {
+        "title": "Alƙiblar Lakabi",
+        "description": "Zana sassan donut a matsayin siffofi maimakon layuka.",
+        "options": {
+          "neutral": "tsaka-tsaki",
+          "explode": "fashe waje",
+          "implode": "fashe ciki"
+        }
+      },
+      {
+        "title": "Kaucewar Lakabi",
+        "description": "Kaucewar matsayin lakabi daga daidaitaccen matsayi wanda shi ne rabin tazarar radius. Wannan ƙima na iya zama tabbatacciya ko korau. Ƙimomi tabbatattu za su sanya lakabin nesa da tsakiya."
+      },
+      {
+        "title": "Matsayin Lakabi",
+        "options": {
+          "inside": "ciki",
+          "outside": "waje",
+          "center": "tsakiya"
+        }
+      }
+    ]
+  }
+}

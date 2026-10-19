@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ñemoneĩ",
+    "description": "Eme'ẽ peteĩ ñemoneĩ nde rembiapópe g̃uarã."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Téra",
+        "description": "Tembiapo ojehechaukáva réra."
+      },
+      {
+        "property": "source",
+        "title": "Ypykue joajuha",
+        "description": "Ypykue URL tembiapo oguerekóvape ñemoneĩ."
+      },
+      {
+        "property": "license",
+        "title": "Ñemoneĩ",
+        "description": "Ñemoneĩ oñemoĩva ko tembiapópe."
+      },
+      {
+        "property": "creator",
+        "title": "Apohára",
+        "description": "Ko tembiapo apohára térã jára."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Ypykue joajuha",
+        "description": "Joajuha ñemoneĩ mba'emimi ambuépe."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Hetave réra",
+        "description": "Téra ñemoneĩ mba'emimi ambuépe g̃uarã."
+      }
+    ]
+  }
+}

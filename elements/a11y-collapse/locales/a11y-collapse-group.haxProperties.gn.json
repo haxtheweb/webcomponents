@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Aty mbotuicha/momichĩ",
+    "description": "Mba'e oñembotuicha ha oñemomichĩva aty."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Embotuicha peteĩnte",
+        "description": "Peteĩ mba'énte ikatu oñembotuicha."
+      },
+      {
+        "slot": "",
+        "title": "Mba'e oñemomichĩva",
+        "description": "Umi mba'e oñemomichĩva."
+      }
+    ]
+  }
+}

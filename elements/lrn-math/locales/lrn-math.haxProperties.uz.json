@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematika",
+    "description": "Matematikani chiroyli koʻrinishda taqdim eting."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematika",
+        "description": "Tenglamani LaTeX koʻrinishida kiriting"
+      }
+    ]
+  }
+}

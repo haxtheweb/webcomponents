@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "కోర్సు రూపకల్పన",
+    "description": "విద్యా సామగ్రి మరియు కోర్సు రూపకల్పన అంశాల కోసం కంటైనర్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "కోర్సు ఐడెంటిఫైయర్",
+        "description": "OER Schema: కోర్సు యొక్క ఐడెంటిఫైయర్, ఉదా. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "అందించే టర్మ్",
+        "description": "OER Schema: కోర్సు అందించబడే టర్మ్."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "బోధన ఫార్మాట్",
+        "description": "OER Schema: కోర్సును అందించడానికి ఉపయోగించే ఫార్మాట్ (ఉదా. ప్రత్యక్షంగా, ఆన్‌లైన్, హైబ్రిడ్)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "ప్రాథమిక బోధకుడు",
+        "description": "OER Schema: కోర్సు కోసం ప్రాథమిక బోధకుడు."
+      },
+      {
+        "property": "syllabus",
+        "title": "సిలబస్ URL",
+        "description": "OER Schema: కోర్సు సిలబస్‌కు URL."
+      }
+    ]
+  }
+}

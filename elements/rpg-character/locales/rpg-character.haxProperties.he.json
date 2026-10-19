@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "דמות RPG",
+    "description": "דמות משעשעת מבית HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "שם",
+        "description": "מילה המשמשת ליצירת דמות אקראית."
+      },
+      {
+        "property": "hat",
+        "title": "כובע",
+        "description": "סגנון הכובע.",
+        "options": {
+          "none": "ברירת מחדל",
+          "random": "אקראי",
+          "bunny": "ארנב",
+          "cowboy": "בוקר",
+          "education": "חינוך",
+          "construction": "בנייה",
+          "warning": "אזהרה",
+          "watermelon": "אבטיח",
+          "coffee": "קפה",
+          "knight": "אביר",
+          "ninja": "נינג'ה",
+          "party": "מסיבה",
+          "error": "שגיאה",
+          "edit": "עריכה"
+        }
+      },
+      {
+        "property": "width",
+        "title": "רוחב",
+        "description": "רוחב הדמות בפיקסלים."
+      },
+      {
+        "property": "height",
+        "title": "גובה",
+        "description": "גובה הדמות בפיקסלים."
+      },
+      {
+        "property": "fire",
+        "title": "בוערת?",
+        "description": "האם הדמות בוערת."
+      },
+      {
+        "property": "walking",
+        "title": "הולכת?",
+        "description": "הנפשת הליכה; רצה כשהדמות בוערת."
+      }
+    ]
+  }
+}

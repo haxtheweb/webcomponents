@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Medialainaus",
+    "description": "Kuva, jossa on lainaus, lähdeviite ja valinnainen kuvateksti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Lainaus",
+        "description": "Lainauksen teksti."
+      },
+      {
+        "slot": "author",
+        "title": "Tekijä",
+        "description": "Lainauksen tekijä."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Tekijän tiedot",
+        "description": "Tekijän tiedot."
+      },
+      {
+        "slot": "caption",
+        "title": "Kuvateksti",
+        "description": "Kuvan kuvateksti."
+      },
+      {
+        "property": "src",
+        "title": "Kuvan lähde",
+        "description": "Medialainauksessa käytettävä kuvatiedosto."
+      },
+      {
+        "property": "alt",
+        "title": "Vaihtoehtoinen teksti",
+        "description": "Kuvan vaihtoehtoinen teksti."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Kortin korostusväri."
+      }
+    ]
+  }
+}

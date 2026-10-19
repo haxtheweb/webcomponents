@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Secció d'imatge",
+    "description": "Imatge a amplada completa que separa una secció de la pàgina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Imatge de fons."
+      },
+      {
+        "property": "caption",
+        "description": "Encapçalament de text."
+      }
+    ]
+  }
+}

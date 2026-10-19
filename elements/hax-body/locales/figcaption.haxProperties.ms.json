@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kapsyen rajah",
+    "description": "Kapsyen untuk rajah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Kapsyen",
+        "description": "Teks yang ditunjukkan di bawah rajah."
+      }
+    ]
+  }
+}

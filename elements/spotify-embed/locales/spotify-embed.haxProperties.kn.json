@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify ಪ್ಲೇಯರ್ ಎಂಬೆಡ್‌ಗಳಿಗಾಗಿ ವ್ರ್ಯಾಪರ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ಮೂಲ",
+        "description": "Spotify ನಿಂದ ಎಂಬೆಡ್ ಅಥವಾ ಹಂಚಿಕೆ ಲಿಂಕ್."
+      },
+      {
+        "property": "theme",
+        "title": "ಥೀಮ್",
+        "description": "ಪ್ಲೇಯರ್‌ನ ಹಿನ್ನೆಲೆ ಬಣ್ಣದ ಥೀಮ್.",
+        "options": {
+          "": "ಪೂರ್ವನಿಯೋಜಿತ",
+          "0": "ಕಪ್ಪು"
+        }
+      },
+      {
+        "property": "size",
+        "title": "ಗಾತ್ರ",
+        "description": "ಪ್ಲೇಯರ್ ಗಾತ್ರ.",
+        "options": {
+          "normal": "ಪೂರ್ವನಿಯೋಜಿತ",
+          "compact": "ಸಂಕ್ಷಿಪ್ತ"
+        }
+      }
+    ]
+  }
+}

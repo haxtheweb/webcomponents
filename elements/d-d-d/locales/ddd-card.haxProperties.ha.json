@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kati",
+    "description": "Kati mai salon tsarin zane na DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Hoto",
+        "description": "Hoton zaɓi."
+      },
+      {
+        "property": "alt",
+        "title": "Madadin hoto",
+        "description": "Rubutun madadi mai bayyana hoton."
+      },
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Taken katin."
+      },
+      {
+        "slot": "",
+        "title": "Abun ciki",
+        "description": "Wurin abun cikin katin."
+      },
+      {
+        "property": "href",
+        "title": "Mahaɗi",
+        "description": "URL na mahaɗin maɓalli."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Lakabi",
+        "description": "Lakabin maɓalli."
+      },
+      {
+        "property": "noArrow",
+        "title": "Babu Kibiya",
+        "description": "Ɓoye kibiyar maɓallin."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Mahaɗi: manufa",
+        "description": "Inda za a buɗe mahaɗin.",
+        "options": {
+          "": "Taga ɗaya",
+          "_blank": "Sabuwar taga - _blank",
+          "_top": "Taga ta sama - _top",
+          "_parent": "Taga uwa - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Mahaɗi: rel",
+        "description": "Dangantaka tsakanin albarkatun da aka haɗa da takardar yanzu."
+      }
+    ]
+  }
+}

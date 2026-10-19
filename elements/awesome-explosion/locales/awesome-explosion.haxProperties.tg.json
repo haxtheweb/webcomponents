@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Таркиши аҷиб",
+    "description": "Аниматсияи интерактивии таркиш бо эффектҳои садоии ихтиёрӣ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Андоза",
+        "description": "Андозаи таркишро муайян кунед.",
+        "options": {
+          "tiny": "Хеле хурд",
+          "small": "Хурд",
+          "medium": "Миёна",
+          "large": "Калон",
+          "epic": "Азим"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Ранг",
+        "description": "Мавзӯи ранги таркишро муайян кунед.",
+        "options": {
+          "": "Пешфарз",
+          "red": "Сурх",
+          "blue": "Кабуд",
+          "purple": "Бунафш",
+          "orange": "Норанҷӣ",
+          "yellow": "Зард"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Эффектҳои садоӣ",
+        "description": "Эффектҳои садоиро фаъол кунед."
+      },
+      {
+        "property": "resetSound",
+        "title": "Аз нав оғоз кардани садо",
+        "description": "Ҳар дафъа садоро аз аввал оғоз кунед."
+      },
+      {
+        "property": "image",
+        "title": "Тасвири фардӣ",
+        "description": "URL-и ихтиёрӣ барои тасвири фардии таркиш."
+      },
+      {
+        "property": "sound",
+        "title": "Садои фардӣ",
+        "description": "URL-и ихтиёрӣ барои эффекти садоии фардӣ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Ғайрифаъол",
+        "description": "Ҳамаи амалҳои мутақобиларо ғайрифаъол кунед."
+      }
+    ]
+  }
+}

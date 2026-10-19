@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Paikkamerkki",
+    "description": "Paikkamerkki, joka voidaan muuntaa valituksi mediatyypiksi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tyyppi",
+        "description": "Gizmon tyyppi, jonka tämä hyväksyy korvaajaksi.",
+        "options": {
+          "text": "Teksti / sisältö",
+          "document": "Asiakirja / tiedosto",
+          "audio": "Ääni",
+          "video": "Video",
+          "image": "Kuva",
+          "math": "Matematiikka"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Teksti",
+        "description": "Määrittele haluttu paikkamerkki tarkemmin"
+      }
+    ]
+  }
+}

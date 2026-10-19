@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "音频",
+    "description": "勿管来源,都可以用无障碍性老好个方式展示视频。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "来源",
+        "description": "搿只媒体个 URL。"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "标题",
+        "description": "视频下头个简单标题"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "选播放器个强调色。"
+      },
+      {
+        "property": "track",
+        "title": "隐藏式字幕",
+        "description": "字幕文件个 URL。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "缩略图",
+        "description": "可选。缩略图/封面图个 URL。"
+      },
+      {
+        "property": "learningMode",
+        "title": "启用学习模式",
+        "description": "停用快进搭快退。"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "移脱「辣 YouTube 打开」按钮",
+        "description": "移脱辣 YouTube 上打开视频个按钮。"
+      },
+      {
+        "property": "linkable",
+        "title": "包含分享链接?",
+        "description": "提供一只分享视频个链接。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "跨域",
+        "description": "表示用勿用 CORS。",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "允许后台播放",
+        "description": "标签页呒没焦点个辰光视频会自动暂停/播放;搿个让视频辣标签页呒没焦点个辰光也好播放"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "字幕稿深色主题",
+        "description": "字幕稿启用深色主题。"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "停用互动",
+        "description": "停用让字幕稿可以点个互动模式。"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "隐藏时间戳",
+        "description": "隐藏字幕稿上个时间戳。"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "隐藏字幕稿",
+        "description": "默认隐藏字幕稿。"
+      },
+      {
+        "property": "lang",
+        "title": "语言",
+        "description": "媒体个语言。"
+      }
+    ]
+  }
+}

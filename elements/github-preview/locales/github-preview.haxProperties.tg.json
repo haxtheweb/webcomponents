@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Пешнамоиши Github",
+    "description": "Расми дастрас бо тавсифи дароз"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Ташкилот",
+        "description": "Номи мошинии ташкилоти Github"
+      },
+      {
+        "property": "repo",
+        "title": "Анбор",
+        "description": "Номи мошинии анбор"
+      },
+      {
+        "property": "extended",
+        "title": "Намои васеъ",
+        "description": "Readme-ро ба унсур дохил мекунад"
+      }
+    ]
+  }
+}

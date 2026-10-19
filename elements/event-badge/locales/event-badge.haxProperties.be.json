@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Значок падзеі",
+    "description": "Кампанент значка падзеі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Выява TV",
+        "description": "Выява, якая паказваецца на тэлевізары."
+      },
+      {
+        "property": "logo",
+        "title": "Лагатып",
+        "description": "Лагатып у куце значка."
+      },
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Назва, якая паказваецца ўверсе значка."
+      },
+      {
+        "property": "name",
+        "title": "Імя",
+        "description": "Імя, якое паказваецца на значку."
+      },
+      {
+        "property": "position",
+        "title": "Пасада",
+        "description": "Роля або пасада чалавека."
+      },
+      {
+        "property": "organization",
+        "title": "Арганізацыя",
+        "description": "Арганізацыя, у якой працуе чалавек."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Колер TV",
+        "description": "Выберыце колер тэлевізара."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Асноўны колер фону або тэксту."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Колер ручак",
+        "description": "Колер ручак тэлевізара."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Сэпія",
+        "description": "Прымяніць эфект сэпіі."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Чорна-белы",
+        "description": "Прымяніць чорна-белы эфект."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "اينيميٽيڊ GIF کي رسائي لائق بڻايو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "اينيميٽيڊ GIF",
+        "description": "اينيميٽيڊ GIF جو URL."
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "تصوير لاءِ متبادل متن."
+      },
+      {
+        "property": "longdesc",
+        "title": "تفصيلي وضاحت",
+        "description": "رسائي لاءِ GIF جي تفصيلي وضاحت."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "ساڪن تصوير",
+        "description": "GIF جي ساڪن تصوير واري ورزن جو URL."
+      }
+    ]
+  }
+}

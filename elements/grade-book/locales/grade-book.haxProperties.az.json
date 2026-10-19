@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Qiymət jurnalı",
+    "description": "Rubrikalarla bir neçə backend-i dəstəkləyən interfeyssiz qiymət jurnalı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Mənbə",
+        "description": "Məlumat mənbəyinin növü (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL son nöqtəsi (JSON)",
+          "json": "JSON məlumat bloku",
+          "filesystem": "Fayl sistemi"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Mənbə məlumatları",
+        "description": "Qiymət jurnalı üçün URL və ya JSON məlumatları."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursa istinad",
+        "description": "Hər Qiymətləndirmə resursunda oer:forCourse kimi ötürülən kurs identifikatoru."
+      }
+    ]
+  }
+}

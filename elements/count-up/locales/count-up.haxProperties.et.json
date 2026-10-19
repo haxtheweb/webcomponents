@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Loendur",
+    "description": "Animeeri arv, mis loeb nähtavale ilmudes sihtväärtuseni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Lõppväärtus",
+        "description": "Arv, milleni loendatakse."
+      },
+      {
+        "property": "start",
+        "title": "Algväärtus",
+        "description": "Arv, millest loendamist alustatakse."
+      },
+      {
+        "property": "duration",
+        "title": "Kestus",
+        "description": "Mitu sekundit loendamise animatsioon kestab."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Eesliide",
+        "description": "Arvu ees kuvatav tekst (nt '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Järelliide",
+        "description": "Arvu järel kuvatav tekst (nt '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Eesliite pesa",
+        "description": "Valikuline arvu ette lisatav sisu."
+      },
+      {
+        "slot": "suffix",
+        "title": "Järelliite pesa",
+        "description": "Valikuline arvu järele lisatav sisu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Kümnendkohad",
+        "description": "Kuvatavate kümnendkohtade arv."
+      },
+      {
+        "property": "separator",
+        "title": "Tuhandete eraldaja",
+        "description": "Tuhandete rühmi eraldav märk."
+      },
+      {
+        "property": "decimal",
+        "title": "Kümnendmärk",
+        "description": "Kümnendkohtade eraldamiseks kasutatav märk."
+      },
+      {
+        "property": "noeasing",
+        "title": "Sujuvuseta",
+        "description": "Keela sujuvus, et loendamine oleks lineaarne."
+      }
+    ]
+  }
+}

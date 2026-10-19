@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Ƙira, Haɓakawa, Rushewa",
+    "description": "Aiwatar da tsarin ƙira don HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Zaɓin da za a nuna",
+        "options": {
+          "*": "Cikakken jagorar salo"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Καλλιγραφία HAX",
+    "description": "Στοιχείο λογοτύπου για το HAX, προφανώς ως στοιχείο συμβατό με το HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Μέγεθος του λογοτύπου HAX που θα τοποθετηθεί",
+        "options": {
+          "mini": "Μίνι",
+          "small": "Μικρό",
+          "normal": "Κανονικό",
+          "large": "Μεγάλο"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Αν θα μετατραπεί το λογότυπο σε κεφαλαία"
+      }
+    ]
+  }
+}

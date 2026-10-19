@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Element de col·lecció",
+    "description": "Element en format de targeta per a una llista de col·lecció, amb text, enllaç i contingut multimèdia opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Enllaç",
+        "description": "URL de destinació d'aquesta targeta."
+      },
+      {
+        "property": "image",
+        "title": "Imatge",
+        "description": "Imatge de fons."
+      },
+      {
+        "property": "line1",
+        "title": "Línia 1",
+        "description": "Primera línia de text."
+      },
+      {
+        "property": "line2",
+        "title": "Línia 2",
+        "description": "Segona línia de text."
+      },
+      {
+        "property": "line3",
+        "title": "Línia 3",
+        "description": "Tercera línia de text."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona que representa la targeta."
+      },
+      {
+        "property": "saturate",
+        "title": "Efecte de saturació",
+        "description": "Canvia la saturació de la imatge quan rep el focus."
+      },
+      {
+        "property": "tags",
+        "title": "Etiquetes",
+        "description": "Llista d'etiquetes separades per comes."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color",
+        "description": "Color de les etiquetes."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Text alternatiu que descriu l'enllaç."
+      }
+    ]
+  }
+}

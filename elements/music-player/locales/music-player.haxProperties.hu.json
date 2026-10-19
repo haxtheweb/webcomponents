@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI-vizualizáló",
+    "description": "MIDI lejátszása kontextusban, vizualizációval."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Forrás",
+        "description": "A lejátszandó fájl URL-je."
+      },
+      {
+        "property": "visualizer",
+        "title": "Vizualizáció",
+        "description": "A zenei fájl vizualizációs stílusa.",
+        "options": {
+          "staff": "Kotta",
+          "piano-roll": "Zongoratekercs",
+          "waterfall": "Zongora + vízesés"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Vízesés elrejtése",
+        "description": "A lehulló hangjegyek elrejtése a zongoravizualizációban."
+      }
+    ]
+  }
+}

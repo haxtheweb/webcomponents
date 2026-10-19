@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "गणित",
+    "description": "गणितलाई राम्रो देखिने तरिकाले प्रस्तुत गर्नुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "गणित",
+        "description": "समीकरण LaTeX को रूपमा प्रविष्ट गर्नुहोस्"
+      }
+    ]
+  }
+}

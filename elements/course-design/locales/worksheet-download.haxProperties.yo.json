@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ìgbàsílẹ̀ Ìwé Iṣẹ́",
+    "description": "Bọ́tìnnì fún fífi àwọn fáìlì tó wà fún ìgbàsílẹ̀ hàn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Àkọlé ìgbàsílẹ̀."
+      },
+      {
+        "property": "link",
+        "title": "Ìjápọ̀",
+        "description": "Ìjápọ̀ fún ìgbàsílẹ̀."
+      }
+    ]
+  }
+}

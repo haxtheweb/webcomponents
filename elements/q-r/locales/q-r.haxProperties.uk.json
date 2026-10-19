@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR-код",
+    "description": "Код для сканування смартфоном."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Дані QR",
+        "description": "Джерело даних для QR-коду."
+      },
+      {
+        "property": "title",
+        "title": "Альтернативна назва",
+        "description": "Альтернативна назва, пов'язана з джерелом QR-коду."
+      },
+      {
+        "property": "modulesize",
+        "title": "Розмір",
+        "description": "Розмір QR-коду."
+      },
+      {
+        "property": "margin",
+        "title": "Поле",
+        "description": "Відступ навколо коду."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Формат виводу",
+        "description": "Формат для виводу.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

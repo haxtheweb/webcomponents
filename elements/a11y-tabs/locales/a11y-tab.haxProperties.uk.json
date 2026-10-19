@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Вкладка",
+    "description": "Окрема вкладка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Значок вкладки"
+      },
+      {
+        "property": "disabled",
+        "title": "Вимкнено"
+      },
+      {
+        "property": "label",
+        "title": "Мітка вкладки"
+      },
+      {
+        "slot": "",
+        "title": "Вміст вкладки",
+        "description": "Вміст вкладки."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Унікальний ID"
+      },
+      {
+        "property": "flag",
+        "title": "Необов'язковий текст позначки"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Необов'язковий значок позначки"
+      }
+    ]
+  }
+}

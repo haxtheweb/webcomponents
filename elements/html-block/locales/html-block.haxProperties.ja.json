@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML ブロック",
+    "description": "HAXschema 連携を備えた基本的な HTML ブロック"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "コンテンツに表示したい HTML コード"
+      }
+    ]
+  }
+}

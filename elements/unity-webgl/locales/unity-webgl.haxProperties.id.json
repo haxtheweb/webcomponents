@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Pemutar Unity",
+    "description": "Pemutar Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Target",
+        "description": "Jalur ke build game."
+      },
+      {
+        "property": "compression",
+        "title": "Metode kompresi",
+        "description": "Ekstensi file kompresi untuk aset game."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL Streaming",
+        "description": "URL aset streaming."
+      },
+      {
+        "property": "companyname",
+        "title": "Nama Perusahaan",
+        "description": "Nama perusahaan."
+      },
+      {
+        "property": "productname",
+        "title": "Nama Produk",
+        "description": "Judul game."
+      },
+      {
+        "property": "productversion",
+        "title": "Versi Produk",
+        "description": "Versi rilis."
+      },
+      {
+        "property": "width",
+        "title": "Lebar Kanvas",
+        "description": "Lebar CSS kanvas (misalnya px atau em)."
+      },
+      {
+        "property": "height",
+        "title": "Tinggi Kanvas",
+        "description": "Tinggi CSS kanvas (misalnya px atau em)."
+      },
+      {
+        "property": "background",
+        "title": "Latar Belakang Kanvas",
+        "description": "Latar belakang CSS kanvas."
+      }
+    ]
+  }
+}

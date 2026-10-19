@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Prstenec průběhu",
+    "description": "Prstencový graf průběhu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Název",
+        "description": "Název prvku"
+      },
+      {
+        "property": "desc",
+        "title": "Popis",
+        "description": "Přístupný dlouhý popis"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Zdroj obrázku",
+        "description": "Zdroj obrázku uvnitř prstence."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alternativní text obrázku",
+        "description": "Alternativní text obrázku."
+      },
+      {
+        "property": "animated",
+        "title": "Animovaný",
+        "description": "Zda se průběh při prvním načtení animuje"
+      },
+      {
+        "property": "complete",
+        "title": "Dokončeno",
+        "description": "Pole dokončených hodnot."
+      },
+      {
+        "property": "total",
+        "title": "Celkem",
+        "description": "Celková hodnota, když jsou všechny položky dokončeny."
+      },
+      {
+        "property": "startAngle",
+        "title": "Počáteční úhel",
+        "description": "Úhel prstence, kde průběh začíná"
+      }
+    ]
+  }
+}

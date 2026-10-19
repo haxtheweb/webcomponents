@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI ਵਿਜ਼ੂਅਲਾਈਜ਼ਰ",
+    "description": "ਵਿਜ਼ੂਅਲਾਈਜ਼ੇਸ਼ਨ ਨਾਲ ਸੰਦਰਭ ਵਿੱਚ MIDI ਚਲਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ",
+        "description": "ਚਲਾਉਣ ਲਈ ਫ਼ਾਈਲ URL।"
+      },
+      {
+        "property": "visualizer",
+        "title": "ਵਿਜ਼ੂਅਲਾਈਜ਼ੇਸ਼ਨ",
+        "description": "ਸੰਗੀਤ ਫ਼ਾਈਲ ਲਈ ਵਿਜ਼ੂਅਲਾਈਜ਼ੇਸ਼ਨ ਸ਼ੈਲੀ।",
+        "options": {
+          "staff": "ਸਟਾਫ਼ (ਸੁਰਲਿਪੀ)",
+          "piano-roll": "ਪਿਆਨੋ ਰੋਲ",
+          "waterfall": "ਪਿਆਨੋ + ਝਰਨਾ"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "ਝਰਨਾ ਲੁਕਾਓ",
+        "description": "ਪਿਆਨੋ ਵਿਜ਼ੂਅਲਾਈਜ਼ੇਸ਼ਨ ਵਿੱਚ ਝਰਨੇ ਵਾਲੇ ਸੁਰ ਲੁਕਾਓ।"
+      }
+    ]
+  }
+}

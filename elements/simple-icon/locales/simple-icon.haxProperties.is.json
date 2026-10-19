@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tákn",
+    "description": "Tákn úr öllu táknasafninu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Tákn",
+        "description": "Tákn sem á að birta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Áherslulitur táknsins."
+      },
+      {
+        "property": "dark",
+        "title": "Dökkt",
+        "description": "Nota dökka stillingu (öfugt litasett)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS обект",
+    "description": "CMS обект, визуализиран на сървъра"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Тип",
+        "description": "тип от нашата CMS",
+        "options": {
+          "node": "Възел",
+          "user": "Потребител",
+          "file": "Файл"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID от нашата CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Режим на показване",
+        "description": "режим на показване от нашата CMS"
+      }
+    ]
+  }
+}

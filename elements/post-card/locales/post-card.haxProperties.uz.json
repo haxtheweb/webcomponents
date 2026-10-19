@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Pochta otkritkasi",
+    "description": "Biror joydan yuborilgan haqiqiy pochta otkritkasiga oʻxshash qiziqarli media element"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Kimga",
+        "description": "Bu kimga yuboriladi?"
+      },
+      {
+        "property": "from",
+        "title": "Kimdan",
+        "description": "Siz kimsiz?"
+      },
+      {
+        "property": "message",
+        "title": "Xabar",
+        "description": "Nima demoqchisiz?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Pochta muhri joyi",
+        "description": "Bu otkritka qayerdan yuborilgan?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Asosiy rasm manbasi",
+        "description": "Rasmingiz qayerda joylashgan?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Marka rasmi manbasi",
+        "description": "Rasmingiz qayerda joylashgan?"
+      }
+    ]
+  }
+}

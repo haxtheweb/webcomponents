@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "තැපැල් පත",
+    "description": "කොතැනක හෝ සිට එවූ භෞතික තැපැල් පතක් ලෙස පෙනෙන විනෝදජනක මාධ්‍ය කොටසක්"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "වෙත",
+        "description": "මෙය යවන්නේ කාටද?"
+      },
+      {
+        "property": "from",
+        "title": "වෙතින්",
+        "description": "ඔබ කවුද?"
+      },
+      {
+        "property": "message",
+        "title": "පණිවිඩය",
+        "description": "ඔබට කීමට අවශ්‍ය කුමක්ද?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "තැපැල් මුද්‍රාව තැබූ ස්ථානය",
+        "description": "මෙම පත එවා ඇත්තේ කොහේ සිටද?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "ප්‍රධාන ඡායාරූප මූලාශ්‍රය",
+        "description": "ඔබේ ඡායාරූපය පිහිටා ඇත්තේ කොහේද?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "මුද්දර ඡායාරූප මූලාශ්‍රය",
+        "description": "ඔබේ ඡායාරූපය පිහිටා ඇත්තේ කොහේද?"
+      }
+    ]
+  }
+}

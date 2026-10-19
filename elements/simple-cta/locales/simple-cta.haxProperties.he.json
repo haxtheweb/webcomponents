@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "קריאה לפעולה",
+    "description": "כפתור פשוט עם קישור לביצוע פעולה."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "תווית",
+        "description": "תווית הקישור"
+      },
+      {
+        "property": "link",
+        "title": "קישור",
+        "description": "הזינו קישור לכל משאב"
+      },
+      {
+        "property": "hideIcon",
+        "title": "הסתרת סמל",
+        "description": "הסתרת הסמל המשמש להדגשת הטקסט"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "סמל",
+        "description": "סמל קישור הפעולה"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "פריט אוסף",
+    "description": "פריט בסגנון כרטיס לשימוש בתוך רשימת אוסף, עם טקסט, קישור ומדיה אופציונלית."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "קישור",
+        "description": "כתובת URL של היעד עבור כרטיס זה."
+      },
+      {
+        "property": "image",
+        "title": "תמונה",
+        "description": "תמונת רקע."
+      },
+      {
+        "property": "line1",
+        "title": "שורה 1",
+        "description": "שורת הטקסט הראשונה."
+      },
+      {
+        "property": "line2",
+        "title": "שורה 2",
+        "description": "שורת הטקסט השנייה."
+      },
+      {
+        "property": "line3",
+        "title": "שורה 3",
+        "description": "שורת הטקסט השלישית."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "סמל",
+        "description": "סמל המייצג את הכרטיס."
+      },
+      {
+        "property": "saturate",
+        "title": "אפקט רוויה",
+        "description": "שינוי רוויית התמונה כשהמשתמש מתמקד בה."
+      },
+      {
+        "property": "tags",
+        "title": "תגיות",
+        "description": "רשימת תגיות מופרדות בפסיקים."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע",
+        "description": "הצבע המשמש לתגיות."
+      },
+      {
+        "property": "alt",
+        "title": "טקסט חלופי",
+        "description": "טקסט חלופי המתאר את הקישור."
+      }
+    ]
+  }
+}

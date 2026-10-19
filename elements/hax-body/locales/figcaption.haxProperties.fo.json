@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Myndatekstur",
+    "description": "Tekstur til eina mynd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Myndatekstur",
+        "description": "Tekstur víst undir myndini."
+      }
+    ]
+  }
+}

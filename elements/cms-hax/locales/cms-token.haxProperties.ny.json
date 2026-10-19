@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Token ya CMS",
+    "description": "Token ya CMS yoonetsedwa kumbuyo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Token",
+        "description": "Token yochokera ku CMS yathu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "اختصار",
+    "description": "اختصار مع تلميح بالمصطلح الكامل."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "النص",
+        "description": "نص الاختصار الظاهر."
+      },
+      {
+        "attribute": "title",
+        "title": "الكلمة",
+        "description": "المصطلح الكامل المعروض عند التمرير."
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "标签 / 胶囊",
+    "description": "紧凑的胶囊形标签，可选强调色、取消按钮或切换功能。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "标签",
+        "description": "胶囊内显示的文本。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "胶囊背景的 SimpleColors 强调色名称。",
+        "options": {
+          "": "-- 默认 --",
+          "red": "红色",
+          "pink": "粉色",
+          "purple": "紫色",
+          "deep-purple": "深紫色",
+          "indigo": "靛蓝色",
+          "blue": "蓝色",
+          "light-blue": "浅蓝色",
+          "cyan": "青色",
+          "teal": "蓝绿色",
+          "green": "绿色",
+          "light-green": "浅绿色",
+          "lime": "青柠色",
+          "yellow": "黄色",
+          "amber": "琥珀色",
+          "orange": "橙色",
+          "deep-orange": "深橙色",
+          "brown": "棕色",
+          "blue-grey": "蓝灰色",
+          "grey": "灰色"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "自动强调色",
+        "description": "根据标签文本自动生成强调色。"
+      },
+      {
+        "property": "cancelButton",
+        "title": "取消按钮",
+        "description": "在胶囊内显示移除/取消图标按钮。"
+      },
+      {
+        "property": "readonly",
+        "title": "只读",
+        "description": "隐藏取消按钮，使胶囊仅用于显示。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "可切换",
+        "description": "点击按钮时切换胶囊的开/关状态。"
+      },
+      {
+        "property": "toggled",
+        "title": "已切换",
+        "description": "胶囊当前是否处于开启状态。"
+      },
+      {
+        "property": "toggledIcon",
+        "title": "切换后图标",
+        "description": "胶囊开启时显示的图标。"
+      },
+      {
+        "property": "disabled",
+        "title": "已禁用",
+        "description": "禁用与胶囊的交互。"
+      }
+    ]
+  }
+}

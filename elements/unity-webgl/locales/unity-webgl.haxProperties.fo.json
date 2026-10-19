@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity-spælari",
+    "description": "Unity WebGL-spælari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Mál",
+        "description": "Slóð til spælbygningin."
+      },
+      {
+        "property": "compression",
+        "title": "Samanpakkingarháttur",
+        "description": "Fíluending fyri samanpakking av tilfeingi til spælið."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Streymingar-URL",
+        "description": "URL til streymingartilfeingi."
+      },
+      {
+        "property": "companyname",
+        "title": "Fyritøkunavn",
+        "description": "Navn á fyritøkuni."
+      },
+      {
+        "property": "productname",
+        "title": "Vørunavn",
+        "description": "Heiti á spælinum."
+      },
+      {
+        "property": "productversion",
+        "title": "Vøruútgáva",
+        "description": "Útgávunummar."
+      },
+      {
+        "property": "width",
+        "title": "Breidd á lørifti",
+        "description": "CSS-breidd á lørifti (til dømis px ella em)."
+      },
+      {
+        "property": "height",
+        "title": "Hædd á lørifti",
+        "description": "CSS-hædd á lørifti (til dømis px ella em)."
+      },
+      {
+        "property": "background",
+        "title": "Bakgrund á lørifti",
+        "description": "CSS-bakgrund á lørifti."
+      }
+    ]
+  }
+}

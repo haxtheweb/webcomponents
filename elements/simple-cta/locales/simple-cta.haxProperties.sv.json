@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Uppmaning till handling",
+    "description": "En enkel knapp med en länk för att agera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etikett",
+        "description": "Länketikett"
+      },
+      {
+        "property": "link",
+        "title": "Länk",
+        "description": "Ange en länk till valfri resurs"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Dölj ikon",
+        "description": "Dölj ikonen som används för att framhäva texten"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon för åtgärdslänken"
+      }
+    ]
+  }
+}

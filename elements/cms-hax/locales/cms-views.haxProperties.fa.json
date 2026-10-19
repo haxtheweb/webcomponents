@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "نمای CMS",
+    "description": "نماهای CMS که در بک‌اند نمایش داده می‌شوند"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "نام",
+        "description": "نام نما از CMS ما"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "نمایش",
+        "description": "نمایش درون آن نما از CMS ما"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ta'ãnga mapa",
+    "description": "Ta'ãnga mapa opavavépe g̃uarã, tenda omýiva ndive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Teramoĩ",
+        "description": "Teramoĩ ta'ãnga mapápe g̃uarã."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Tenda omýiva mba'emimi",
+        "description": "Tenda omýiva ta'ãnga mapápe."
+      }
+    ]
+  }
+}

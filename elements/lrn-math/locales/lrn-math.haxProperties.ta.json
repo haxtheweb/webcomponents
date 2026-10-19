@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "கணிதம்",
+    "description": "கணிதத்தை அழகான முறையில் காட்டு."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "கணிதம்",
+        "description": "சமன்பாட்டை LaTeX ஆக உள்ளிடவும்"
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Нишони чорабинӣ",
+    "description": "Ҷузъи нишони чорабинӣ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Тасвири TV",
+        "description": "Тасвире, ки дар TV нишон дода мешавад."
+      },
+      {
+        "property": "logo",
+        "title": "Логотип",
+        "description": "Логотипе, ки дар кунҷи нишон нишон дода мешавад."
+      },
+      {
+        "property": "title",
+        "title": "Унвон",
+        "description": "Унвоне, ки дар болои нишон нишон дода мешавад."
+      },
+      {
+        "property": "name",
+        "title": "Ном",
+        "description": "Номе, ки дар нишон нишон дода мешавад."
+      },
+      {
+        "property": "position",
+        "title": "Вазифа",
+        "description": "Нақш ё унвони шахс."
+      },
+      {
+        "property": "organization",
+        "title": "Ташкилот",
+        "description": "Ташкилоте, ки шахс дар он кор мекунад."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Ранги TV",
+        "description": "Рангро барои TV интихоб кунед."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги асосии замина ё матн."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Ранги дастакҳо",
+        "description": "Ранги дастакҳои TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Сепия",
+        "description": "Эффекти сепияро татбиқ кунед."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Сиёҳу сафед",
+        "description": "Эффекти сиёҳу сафедро татбиқ кунед."
+      }
+    ]
+  }
+}

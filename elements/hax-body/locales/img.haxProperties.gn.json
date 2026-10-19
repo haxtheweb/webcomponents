@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Ta'ãnga Ypy",
+    "description": "Ta'ãnga pehẽ ypy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Reñoiha",
+        "description": "Ta'ãnga URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Moñe'ẽrã mokõiha",
+        "description": "Moñe'ẽrã mbohekoviarã jeikekuaa ha SEO-pe g̃uarã."
+      },
+      {
+        "attribute": "height",
+        "title": "Yvatekue",
+        "description": "Yvatekue píxel-pe. Eheja nandi reiporu hag̃ua tuichakue ypyguáva."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Ta'ãnga myenyhẽ",
+        "description": "Eiporavo araka'épa oñemyenyhẽta ta'ãnga.",
+        "options": {
+          "lazy": "Emyenyhẽ ojehecha jave",
+          "auto": "Ijeheguíva"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Ypykue ojeguerovakuaáva (srcset)",
+        "description": "Emoĩ ta'ãnga URL ha mombe'uha (techapyrã 480w térã 2x) kundahára oiporavo hag̃ua tuichakue iporãvéva mba'erechahápe g̃uarã. Oñeñongatu srcset attribute jepiguáicha."
+      }
+    ]
+  }
+}

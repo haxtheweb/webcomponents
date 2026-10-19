@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Bővített kép",
+    "description": "Képek megjelenítése különféle bővítésekkel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Forrás",
+        "description": "A kép URL-je."
+      },
+      {
+        "property": "alt",
+        "title": "Helyettesítő szöveg",
+        "description": "A képet látássérült felhasználóknak leíró szöveg."
+      },
+      {
+        "property": "link",
+        "title": "Hivatkozás",
+        "description": "A kép hivatkozása egy URL-re"
+      },
+      {
+        "property": "card",
+        "title": "Kártya",
+        "description": "Vetett árnyék alkalmazása, hogy kiemelt kártyának tűnjön."
+      },
+      {
+        "property": "box",
+        "title": "Doboz",
+        "description": "Látható doboz a kép körül."
+      },
+      {
+        "property": "offset",
+        "title": "Eltolás",
+        "description": "Bal vagy jobb oldali eltolás alkalmazása a képre.",
+        "options": {
+          "none": "nincs",
+          "wide": "széles",
+          "narrow": "keskeny"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Forrásmegjelölés",
+        "description": "A kép forrásmegjelölése."
+      },
+      {
+        "property": "caption",
+        "title": "Képaláírás",
+        "description": "A kép felirata."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Ábra címe",
+        "description": "Az ábracímke címe."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Ábra leírása",
+        "description": "Az ábracímke leírása."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Bélyegkép",
+        "description": "Bélyegkép forrása. A bélyegkép látszik, de a teljes forrás párbeszédablakban nyílik meg."
+      },
+      {
+        "property": "round",
+        "title": "Kerek kép",
+        "description": "A kép megjelenését kör alakúra vágja."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Képablak letiltása",
+        "description": "Letiltja, hogy kattintásra a kép egy képvizsgáló párbeszédablakban nyíljon meg."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Megjelenítés Markdownként",
+        "description": "A felirat és a forrásmegjelölés megjelenítése Markdownként."
+      }
+    ]
+  }
+}

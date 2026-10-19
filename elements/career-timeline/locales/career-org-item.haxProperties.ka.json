@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "კარიერის ელემენტი",
+    "description": "ცალკეული ორგანიზაცია და მასთან დაკავშირებული როლები"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "ორგანიზაციის სახელი"
+      },
+      {
+        "property": "location",
+        "title": "მდებარეობა"
+      },
+      {
+        "property": "source",
+        "title": "წყარო"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "כיתוב איור",
+    "description": "כיתוב לאיור."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "כיתוב",
+        "description": "הטקסט המוצג מתחת לאיור."
+      }
+    ]
+  }
+}

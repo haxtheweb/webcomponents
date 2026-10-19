@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Mathemateg",
+    "description": "Cyflwyno mathemateg mewn ffordd sy'n edrych yn dda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Mathemateg",
+        "description": "Rhowch yr hafaliad fel LaTeX"
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "ಮಾಧ್ಯಮ ಉದ್ಧರಣ",
+    "description": "ಉದ್ಧರಣ, ಉಲ್ಲೇಖ ಮತ್ತು ಐಚ್ಛಿಕ ಶೀರ್ಷಿಕೆಯೊಂದಿಗೆ ಚಿತ್ರ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "ಉದ್ಧರಣ",
+        "description": "ಉದ್ಧರಣ ಪಠ್ಯ."
+      },
+      {
+        "slot": "author",
+        "title": "ಲೇಖಕ",
+        "description": "ಉದ್ಧರಣದ ಲೇಖಕ."
+      },
+      {
+        "slot": "author-detail",
+        "title": "ಲೇಖಕರ ವಿವರಗಳು",
+        "description": "ಲೇಖಕರ ವಿವರಗಳು."
+      },
+      {
+        "slot": "caption",
+        "title": "ಚಿತ್ರ ಶೀರ್ಷಿಕೆ",
+        "description": "ಚಿತ್ರದ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "src",
+        "title": "ಚಿತ್ರದ ಮೂಲ",
+        "description": "ಮಾಧ್ಯಮ ಉದ್ಧರಣಕ್ಕೆ ಬಳಸುವ ಚಿತ್ರ ಫೈಲ್."
+      },
+      {
+        "property": "alt",
+        "title": "ಪರ್ಯಾಯ ಪಠ್ಯ",
+        "description": "ಚಿತ್ರದ ಪರ್ಯಾಯ ಪಠ್ಯ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಕಾರ್ಡ್‌ನ ಒತ್ತು ಬಣ್ಣ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Abas",
+    "description": "Conjunto de abas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Rótulo (para acessibilidade)",
+        "description": "Rótulo acessível do conjunto de abas."
+      },
+      {
+        "property": "disabled",
+        "title": "Desativado",
+        "description": "Desativar todas as abas."
+      },
+      {
+        "property": "hidden",
+        "title": "Oculto",
+        "description": "Ocultar o conjunto de abas."
+      },
+      {
+        "property": "sticky",
+        "title": "Fixo",
+        "description": "Manter as abas horizontais no topo ao rolar."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Ponto de quebra do layout",
+        "description": "Ponto de quebra para abas horizontais; use -1 para somente vertical."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Ponto de quebra dos ícones",
+        "description": "Ponto de quebra para mostrar texto com ícones. O padrão é 0; use -1 para o modo somente ícones."
+      },
+      {
+        "slot": "",
+        "title": "Abas",
+        "description": "Série de elementos <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID único",
+        "description": "ID único deste conjunto de abas."
+      }
+    ]
+  }
+}

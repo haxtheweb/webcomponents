@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG ਪਾਤਰ",
+    "description": "HAX ਦਾ ਮਜ਼ੇਦਾਰ ਪਾਤਰ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "ਨਾਮ",
+        "description": "ਬੇਤਰਤੀਬ ਪਾਤਰ ਬਣਾਉਣ ਲਈ ਵਰਤਿਆ ਸ਼ਬਦ।"
+      },
+      {
+        "property": "hat",
+        "title": "ਟੋਪੀ",
+        "description": "ਟੋਪੀ ਦੀ ਸ਼ੈਲੀ।",
+        "options": {
+          "none": "ਮੂਲ",
+          "random": "ਬੇਤਰਤੀਬ",
+          "bunny": "ਖ਼ਰਗੋਸ਼",
+          "cowboy": "ਕਾਊਬੌਏ",
+          "education": "ਸਿੱਖਿਆ",
+          "construction": "ਉਸਾਰੀ",
+          "warning": "ਚੇਤਾਵਨੀ",
+          "watermelon": "ਤਰਬੂਜ਼",
+          "coffee": "ਕੌਫ਼ੀ",
+          "knight": "ਯੋਧਾ",
+          "ninja": "ਨਿੰਜਾ",
+          "party": "ਪਾਰਟੀ",
+          "error": "ਗਲਤੀ",
+          "edit": "ਸੰਪਾਦਨ"
+        }
+      },
+      {
+        "property": "width",
+        "title": "ਚੌੜਾਈ",
+        "description": "ਪਿਕਸਲਾਂ ਵਿੱਚ ਪਾਤਰ ਦੀ ਚੌੜਾਈ।"
+      },
+      {
+        "property": "height",
+        "title": "ਉਚਾਈ",
+        "description": "ਪਿਕਸਲਾਂ ਵਿੱਚ ਪਾਤਰ ਦੀ ਉਚਾਈ।"
+      },
+      {
+        "property": "fire",
+        "title": "ਅੱਗ ਲੱਗੀ ਹੈ?",
+        "description": "ਕੀ ਪਾਤਰ ਨੂੰ ਅੱਗ ਲੱਗੀ ਹੈ।"
+      },
+      {
+        "property": "walking",
+        "title": "ਤੁਰ ਰਿਹਾ ਹੈ?",
+        "description": "ਤੁਰਨ ਦੀ ਐਨੀਮੇਸ਼ਨ; ਅੱਗ ਲੱਗਣ 'ਤੇ ਦੌੜਦਾ ਹੈ।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML блогы",
+    "description": "HAXschema бәйләүләрен тәэмин итүче гади HTML блогы"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Эчтәлектә күрсәтергә теләгән HTML кодыгыз"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Huaʻōlelo",
+    "description": "Huaʻōlelo papa wehewehe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Huaʻōlelo"
+      },
+      {
+        "property": "information",
+        "title": "Wehewehe",
+        "description": "Wehewehe i hōʻike ʻia ke kōmi ʻia ka huaʻōlelo."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Puka ʻōlali",
+        "description": "E hōʻike i ka wehewehe ma kekahi puka ʻōlali ma kahi o ka laina."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Nā Loulou",
+        "description": "Papa o nā loulou kākoʻo e pili ana i kēia huaʻōlelo."
+      }
+    ]
+  }
+}

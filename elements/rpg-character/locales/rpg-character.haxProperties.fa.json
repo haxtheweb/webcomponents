@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "شخصیت RPG",
+    "description": "شخصیت بامزه از HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "نام",
+        "description": "واژه‌ای که برای ساخت شخصیت تصادفی استفاده می‌شود."
+      },
+      {
+        "property": "hat",
+        "title": "کلاه",
+        "description": "سبک کلاه.",
+        "options": {
+          "none": "پیش‌فرض",
+          "random": "تصادفی",
+          "bunny": "خرگوش",
+          "cowboy": "کابوی",
+          "education": "آموزش",
+          "construction": "ساختمان‌سازی",
+          "warning": "هشدار",
+          "watermelon": "هندوانه",
+          "coffee": "قهوه",
+          "knight": "شوالیه",
+          "ninja": "نینجا",
+          "party": "جشن",
+          "error": "خطا",
+          "edit": "ویرایش"
+        }
+      },
+      {
+        "property": "width",
+        "title": "عرض",
+        "description": "عرض شخصیت به پیکسل."
+      },
+      {
+        "property": "height",
+        "title": "ارتفاع",
+        "description": "ارتفاع شخصیت به پیکسل."
+      },
+      {
+        "property": "fire",
+        "title": "در آتش؟",
+        "description": "آیا شخصیت در آتش است."
+      },
+      {
+        "property": "walking",
+        "title": "در حال راه رفتن؟",
+        "description": "پویانمایی راه رفتن؛ وقتی در آتش است می‌دود."
+      }
+    ]
+  }
+}

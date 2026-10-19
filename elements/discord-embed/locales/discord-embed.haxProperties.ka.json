@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Discord-ის საზოგადოებების ჩასმა გაზიარების URL-იდან."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "რესურსის URL",
+        "description": "რესურსის URL."
+      },
+      {
+        "property": "height",
+        "title": "სიმაღლე",
+        "description": "შიგთავსის ჩარჩოს სიმაღლე."
+      },
+      {
+        "property": "width",
+        "title": "სიგანე",
+        "description": "შიგთავსის ჩარჩოს სიგანე."
+      }
+    ]
+  }
+}

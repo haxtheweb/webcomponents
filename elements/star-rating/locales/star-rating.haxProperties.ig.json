@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ọkwa kpakpando",
+    "description": "Widget ngosi ọkwa ma ọ bụ bọtịnụ iji nye ọkwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Akara",
+        "description": "Uru akara dị ugbu a."
+      },
+      {
+        "property": "possible",
+        "title": "Enwere ike",
+        "description": "Akara kachasị enwere ike."
+      },
+      {
+        "property": "numStars",
+        "title": "Ọnụọgụ kpakpando",
+        "description": "Ọnụọgụ kpakpando a ga-egosi."
+      },
+      {
+        "property": "interactive",
+        "title": "Mmekọrịta",
+        "description": "Kwe ka onye ọrụ mekọrịta iji tọọ ọkwa."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Ọnọdụ ọ̀tụ̀tụ̀ rubric",
+        "description": "Wepụta metadata OER Schema RubricScale na RubricLevel (levelOrdinal/levelPoints) maka kpakpando ọ bụla."
+      }
+    ]
+  }
+}

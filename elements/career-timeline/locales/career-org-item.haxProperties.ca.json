@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Element de trajectòria",
+    "description": "Una organització individual i els seus càrrecs associats"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Nom de l'organització"
+      },
+      {
+        "property": "location",
+        "title": "Ubicació"
+      },
+      {
+        "property": "source",
+        "title": "Origen"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Apvienoto Nāciju Organizācijas ilgtspējīgas attīstības mērķis."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Mērķis",
+        "description": "UN SDG numurs."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Tikai krāsa",
+        "description": "Rādīt tikai mērķa krāsu."
+      }
+    ]
+  }
+}

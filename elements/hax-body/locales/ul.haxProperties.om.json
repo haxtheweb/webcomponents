@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Tarree tuqaa",
+    "description": "Tarree tuqaa uumi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Haala tuqaa",
+        "description": "Haala tuqaalee tarree tartiiba hin qabneef fayyadamu.",
+        "options": {
+          "": "Durtii (iskuweerii)",
+          "list-disc": "Geengoo guutuu",
+          "list-circle": "Geengoo",
+          "list-square": "Iskuweerii"
+        }
+      }
+    ]
+  }
+}

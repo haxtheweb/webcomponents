@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Nota di arresto",
+    "description": "Un messaggio per richiamare l'attenzione dei lettori su indicazioni specifiche."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Inserisci il titolo della nota di arresto."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Inserisci un URL esterno."
+      },
+      {
+        "property": "status",
+        "title": "Stato",
+        "description": "Impostare lo stato cambia di conseguenza i colori e le icone",
+        "options": {
+          "stop": "Stop",
+          "warning": "Avviso",
+          "success": "Conferma",
+          "info": "Avviso"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Testo della nota",
+        "description": "Testo della nota di arresto."
+      }
+    ]
+  }
+}

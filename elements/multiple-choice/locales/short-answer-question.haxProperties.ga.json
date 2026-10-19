@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Ceist Ghearrfhreagra",
+    "description": "Iarr ar an úsáideoir ceist bhunúsach a fhreagairt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ceist",
+        "description": "Ceist le freagairt ag úsáideoirí."
+      },
+      {
+        "property": "answers",
+        "title": "Freagraí Féideartha"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ainm an tráth na gceist",
+        "description": "Ainm an tráth na gceist a sheoltar isteach le húsáid i dtimpeallachtaí xAPI chun an mhír seo a aithint"
+      }
+    ]
+  }
+}

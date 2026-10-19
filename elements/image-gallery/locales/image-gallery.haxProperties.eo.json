@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Bildgalerio",
+    "description": "Galerio, kiu prezentas bildojn en krada, masonaĵa aŭ lumbilda aranĝo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Montra reĝimo",
+        "description": "Kiel prezenti la bildojn en la galerio.",
+        "options": {
+          "grid": "Krado",
+          "masonry": "Masonaĵo",
+          "gallery": "Galerio"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktiva indekso",
+        "description": "Indekso de la aktiva bildo, ĉe kiu komenci en galeria reĝimo."
+      }
+    ]
+  }
+}

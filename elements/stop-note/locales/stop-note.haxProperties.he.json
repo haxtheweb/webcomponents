@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "הערת עצירה",
+    "description": "הודעה המסבה את תשומת לב הקוראים להנחיות מסוימות."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "הזינו כותרת להערת העצירה."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "הזינו כתובת URL חיצונית."
+      },
+      {
+        "property": "status",
+        "title": "סטטוס",
+        "description": "הגדרת הסטטוס משנה את הצבעים והסמלים בהתאם",
+        "options": {
+          "stop": "עצירה",
+          "warning": "אזהרה",
+          "success": "אישור",
+          "info": "הודעה"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "טקסט ההערה",
+        "description": "הטקסט של הערת העצירה."
+      }
+    ]
+  }
+}

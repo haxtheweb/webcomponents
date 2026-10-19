@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Kushandiswa kwesisitimu yedhizaini yeHAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Sarudzo yekuratidza",
+        "options": {
+          "*": "Gwara remaitiro rakazara"
+        }
+      }
+    ]
+  }
+}

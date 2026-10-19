@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ورک شیٹ ڈاؤن لوڈ",
+    "description": "ڈاؤن لوڈ لئی دستیاب فائلاں وکھاؤن والا بٹن۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرناواں",
+        "description": "ڈاؤن لوڈ دا سرناواں۔"
+      },
+      {
+        "property": "link",
+        "title": "لنک",
+        "description": "ڈاؤن لوڈ دا لنک۔"
+      }
+    ]
+  }
+}

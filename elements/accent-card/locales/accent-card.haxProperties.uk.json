@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Картка",
+    "description": "Картка з необов'язковим акцентним оформленням."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Заголовок",
+        "description": "Заголовок картки."
+      },
+      {
+        "slot": "subheading",
+        "title": "Підзаголовок",
+        "description": "Необов'язковий підзаголовок картки."
+      },
+      {
+        "slot": "content",
+        "title": "Вміст",
+        "description": "Вміст картки."
+      },
+      {
+        "slot": "footer",
+        "title": "Нижній колонтитул",
+        "description": "Необов'язковий нижній колонтитул картки."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Зображення",
+        "description": "Необов'язкове зображення"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Альтернативний текст зображення",
+        "description": "Альтернативний текст, що описує зображення для програм зчитування з екрана. Залишайте порожнім, лише якщо зображення суто декоративне."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Горизонтальне вирівнювання зображення",
+        "options": {
+          "left": "ліворуч",
+          "center": "по центру",
+          "right": "праворуч"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Вертикальне вирівнювання зображення",
+        "options": {
+          "top": "вгорі",
+          "center": "по центру",
+          "bottom": "внизу"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "Необов'язковий акцентний колір."
+      },
+      {
+        "property": "dark",
+        "title": "Темна тема",
+        "description": "Увімкнути темну тему"
+      },
+      {
+        "property": "horizontal",
+        "title": "Горизонтальна",
+        "description": "Горизонтальна орієнтація?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Акцент заголовка",
+        "description": "Застосувати акцентний колір до заголовка?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Акцент тла",
+        "description": "Застосувати акцентний колір до тла картки?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Без акцентної рамки",
+        "description": "Прибрати акцентну рамку?"
+      },
+      {
+        "property": "flat",
+        "title": "Пласка",
+        "description": "Прибрати тінь?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Кут",
+        "description": "Вміст для кута картки."
+      }
+    ]
+  }
+}

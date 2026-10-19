@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "فراخوان اقدام",
+    "description": "یک دکمه ساده با پیوند برای انجام اقدام."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "برچسب",
+        "description": "برچسب پیوند"
+      },
+      {
+        "property": "link",
+        "title": "پیوند",
+        "description": "پیوندی به هر منبعی وارد کنید"
+      },
+      {
+        "property": "hideIcon",
+        "title": "پنهان کردن نماد",
+        "description": "پنهان کردن نمادی که برای تأکید متن استفاده می‌شود"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "نماد",
+        "description": "نماد پیوند اقدام"
+      }
+    ]
+  }
+}

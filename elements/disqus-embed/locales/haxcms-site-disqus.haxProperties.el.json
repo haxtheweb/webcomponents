@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Σχόλια Disqus",
+    "description": "Ενσωμάτωση με την υπηρεσία σχολίων Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Σύντομο όνομα",
+        "description": "Σύντομο όνομα ιδιοκτησίας στο Disqus"
+      }
+    ]
+  }
+}

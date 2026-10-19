@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Benaman Twitter (X)",
+    "description": "Benamkan tweet daripada X dalam konteks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL Tweet",
+        "description": "URL tweet yang hendak dibenamkan."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Tema cerah atau gelap untuk tweet X.",
+        "options": {
+          "light": "Cerah",
+          "dark": "Gelap"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Halang tetingkap timbul apabila diklik",
+        "description": "Halang pengguna daripada membuka tweet di x.com."
+      }
+    ]
+  }
+}

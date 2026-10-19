@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Yachana tarjeta",
+    "description": "Ñawpaq qhipa yachana tarjetakunawan yuyaykunata yachakuy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Tarjetapa ñawpaqnin",
+        "description": "Ñawpaq qillqa utaq tapukuy."
+      },
+      {
+        "slot": "back",
+        "title": "Tarjetapa qhipan",
+        "description": "Suyakusqa kutichiy."
+      },
+      {
+        "property": "imgSource",
+        "title": "Rikch'a pukyu",
+        "description": "Tarjetapi rikch'a willañiqi. Rikch'a simi chaninta rantin."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Ruray laya",
+        "description": "OER Schema: kay yachanakuypi ruray laya (kayhina Ñawiriy, Qillqay, Ruray, Maskay, Uyariy, Qhaway, Yuyaymanay, Rimanakuy, Qhawapayay, Rikuchiy, Chaninchay)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Yachana munay",
+        "description": "OER Schema: kay yachanakuy yanapasqan yachana munaypa ID-n utaq URL-nin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tutayaq",
+        "description": "Tutayaq modota llamk'achiy."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Tarjetapa rikchachiq llimpin."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Rikch'a simi",
+        "description": "Mana yuyasqa rikch'apaq simi. Rikch'a pukyuwan rantikun."
+      }
+    ]
+  }
+}

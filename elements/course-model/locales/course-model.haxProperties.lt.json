@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kurso modelis",
+    "description": "Interaktyvus kurso sąvokų išdėstymas su detalėmis, animacija ir žinių patikrinimais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "pavadinimas"
+      },
+      {
+        "property": "src",
+        "title": "šaltinis"
+      },
+      {
+        "property": "alt",
+        "title": "alternatyvusis tekstas"
+      },
+      {
+        "title": "Informacijos sritis"
+      },
+      {
+        "title": "Detalių sritis"
+      },
+      {
+        "title": "Animacijos sritis"
+      },
+      {
+        "title": "Žinių patikrinimo sritis"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logotipo sritis"
+      }
+    ]
+  }
+}

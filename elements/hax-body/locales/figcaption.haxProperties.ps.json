@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "د شکل سرلیک",
+    "description": "د یو شکل لپاره سرلیک."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "عنوان",
+        "description": "د شکل لاندې ښودل شوی متن."
+      }
+    ]
+  }
+}

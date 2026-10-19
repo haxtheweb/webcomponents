@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPGキャラクター",
+    "description": "HAXの楽しいキャラクター。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "名前",
+        "description": "ランダムなキャラクターを生成するための単語。"
+      },
+      {
+        "property": "hat",
+        "title": "帽子",
+        "description": "帽子のスタイル。",
+        "options": {
+          "none": "既定",
+          "random": "ランダム",
+          "bunny": "うさぎ",
+          "cowboy": "カウボーイ",
+          "education": "教育",
+          "construction": "工事",
+          "warning": "警告",
+          "watermelon": "スイカ",
+          "coffee": "コーヒー",
+          "knight": "騎士",
+          "ninja": "忍者",
+          "party": "パーティー",
+          "error": "エラー",
+          "edit": "編集"
+        }
+      },
+      {
+        "property": "width",
+        "title": "幅",
+        "description": "キャラクターの幅（ピクセル）。"
+      },
+      {
+        "property": "height",
+        "title": "高さ",
+        "description": "キャラクターの高さ（ピクセル）。"
+      },
+      {
+        "property": "fire",
+        "title": "燃えている？",
+        "description": "キャラクターが燃えているかどうか。"
+      },
+      {
+        "property": "walking",
+        "title": "歩いている？",
+        "description": "歩行アニメーション。燃えているときは走ります。"
+      }
+    ]
+  }
+}

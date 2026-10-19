@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Indlejr Disqus-kommentarer på en side."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Kort navn",
+        "description": "Webstedets korte navn, som bestemmer værten for Disqus-scriptet."
+      },
+      {
+        "property": "pageURL",
+        "title": "Side-URL",
+        "description": "URL'en til den side, kommentartråden hører til."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Side-id",
+        "description": "Det unikke id for sidens kommentartråd."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Sidetitel",
+        "description": "Titlen på den side, kommentartråden hører til."
+      },
+      {
+        "property": "loadingText",
+        "title": "Indlæsningstekst",
+        "description": "Tekst, der oplæses, mens kommentarerne indlæses."
+      },
+      {
+        "property": "lang",
+        "title": "Sprog",
+        "description": "Sprogkode til Disqus-brugerfladen, f.eks. en."
+      }
+    ]
+  }
+}

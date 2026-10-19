@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Grade Book",
+    "description": "Isang headless na gradebook na sumusuporta sa maraming backend na may mga rubric."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pinagmulan",
+        "description": "Uri ng pinagmulan ng data (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "JSON data blob",
+          "filesystem": "File system"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Source Data",
+        "description": "URL o JSON data para sa gradebook."
+      },
+      {
+        "property": "forCourse",
+        "title": "Sanggunian ng Kurso",
+        "description": "Identifier ng kurso na inilalabas bilang oer:forCourse sa bawat Assessment resource."
+      }
+    ]
+  }
+}

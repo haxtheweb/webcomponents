@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Cirkeldiagram",
+    "description": "Maakt een toegankelijke grafiek op basis van een CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Accentkleur",
+        "description": "Een optionele accentkleur."
+      },
+      {
+        "title": "Donker thema",
+        "description": "Donker thema inschakelen"
+      },
+      {
+        "title": "CSV-bestand",
+        "description": "Gegevens laden uit een CSV."
+      },
+      {
+        "title": "Grafiektitel",
+        "description": "Toegankelijke alt-tekst voor je grafiek."
+      },
+      {
+        "title": "Grafiekbeschrijving",
+        "description": "Toegankelijke beschrijving van je grafiek."
+      },
+      {
+        "title": "Schaalnaam",
+        "description": "De verhouding breedte:hoogte van de grafiek (zie https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings voor $ct-scales en $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Donut"
+      },
+      {
+        "title": "Label tonen"
+      },
+      {
+        "title": "Beginhoek"
+      },
+      {
+        "title": "Binnenmarge"
+      },
+      {
+        "title": "Totaal",
+        "description": "Optioneel totaal dat je kunt opgeven. Als je een totaalwaarde opgeeft, moet de som van de waarden in de reeks dit totaal zijn om een volledige cirkel te tekenen. Je kunt deze parameter gebruiken om slechts delen van een cirkel of meterdiagrammen te tekenen."
+      },
+      {
+        "title": "Lege waarden negeren",
+        "description": "Lege waarden worden genegeerd om onnodige segmenten en labels te voorkomen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gegevens omkeren",
+        "description": "Gegevens omkeren, inclusief labels, de volgorde van de reeksen en de volledige gegevensarrays van de reeksen."
+      },
+      {
+        "title": "HTML-tabel",
+        "description": "Optioneel: gegevens laden als HTML-tabel."
+      },
+      {
+        "title": "Lijndikte donut"
+      },
+      {
+        "title": "Massieve donut",
+        "description": "Donutsegmenten tekenen als vormen in plaats van lijnen."
+      },
+      {
+        "title": "Labelrichting",
+        "description": "Donutsegmenten tekenen als vormen in plaats van lijnen.",
+        "options": {
+          "neutral": "neutraal",
+          "explode": "naar buiten",
+          "implode": "naar binnen"
+        }
+      },
+      {
+        "title": "Labelverschuiving",
+        "description": "Verschuiving van de labelpositie ten opzichte van de standaardpositie, die op de helft van de straal ligt. Deze waarde kan positief of negatief zijn. Positieve waarden plaatsen het label verder van het midden."
+      },
+      {
+        "title": "Labelpositie",
+        "options": {
+          "inside": "binnen",
+          "outside": "buiten",
+          "center": "midden"
+        }
+      }
+    ]
+  }
+}

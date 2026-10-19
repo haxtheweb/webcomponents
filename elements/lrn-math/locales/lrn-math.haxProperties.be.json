@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Матэматыка",
+    "description": "Прыгожае прадстаўленне матэматыкі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Матэматыка",
+        "description": "Увядзіце ўраўненне ў LaTeX"
+      }
+    ]
+  }
+}

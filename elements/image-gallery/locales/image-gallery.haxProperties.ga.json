@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Gailearaí Íomhánna",
+    "description": "Gailearaí a chuireann íomhánna i láthair i leagan amach greille, saoirseachta nó taispeántais sleamhnán."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Mód taispeána",
+        "description": "Conas na híomhánna sa ghailearaí a chur i láthair.",
+        "options": {
+          "grid": "Greille",
+          "masonry": "Saoirseacht",
+          "gallery": "Gailearaí"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Innéacs gníomhach",
+        "description": "Innéacs na híomhá gníomhaí le tosú léi i mód gailearaí."
+      }
+    ]
+  }
+}

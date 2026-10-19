@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Muuji badhan CTA Polaris ah oo mawduuc leh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Qoraalka badhanka",
+        "description": "Qoraalka ka muuqda badhanka CTA."
+      },
+      {
+        "property": "link",
+        "title": "Xiriiriye",
+        "description": "URL-ka loo socdo ee badhanka."
+      },
+      {
+        "property": "type",
+        "title": "Nooc",
+        "description": "Nooca qaabka muuqaalka.",
+        "options": {
+          "primary": "Koowaad",
+          "tinted": "Midab khafiif ah",
+          "light": "Iftiin"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Qaab xuduud leh",
+        "description": "Daar muuqaalka xuduudda leh."
+      },
+      {
+        "property": "filled",
+        "title": "Qaab buuxa",
+        "description": "Daar muuqaalka buuxa."
+      }
+    ]
+  }
+}

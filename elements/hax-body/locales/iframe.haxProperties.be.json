@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Убудаваць знешняе вэб-змесціва."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Крыніца",
+        "description": "URL гэтага рэсурсу."
+      }
+    ]
+  }
+}

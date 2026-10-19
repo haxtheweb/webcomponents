@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "نسبتي هيڊنگ",
+    "description": "مٿئين عنصر جي هيڊنگ جي بنياد تي صحيح هيڊنگ درجيبندي ڏئي ٿو"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "مٿئين هيڊنگ جي وسيلي جي ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "لنڪ بٽڻ واري خاصيت بند ڪري ٿو."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "لنڪ ڪاپي ڪرڻ واري بٽڻ کي هيڊنگ جي بلڪل ساڄي پاسي رکي ٿو."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "جيڪڏهن مٿيون عنصر نه ملي ته هيڊنگ جي سطح."
+      },
+      {
+        "property": "copyMessage",
+        "description": "لنڪ ڪاپي ڪرڻ واري ٽوسٽ پيغام جو ڊفالٽ متن مٽائي ٿو."
+      },
+      {
+        "property": "linkLabel",
+        "description": "لنڪ ڪاپي ڪرڻ واري بٽڻ جو ڊفالٽ ليبل مٽائي ٿو."
+      },
+      {
+        "property": "linkIcon",
+        "description": "لنڪ ڪاپي ڪرڻ واري بٽڻ جو ڊفالٽ آئڪن مٽائي ٿو."
+      },
+      {
+        "property": "closeLabel",
+        "description": "لنڪ ڪاپي ڪرڻ واري ٽوسٽ جي بند ڪرڻ واري بٽڻ جو ڊفالٽ ليبل مٽائي ٿو."
+      },
+      {
+        "property": "closeIcon",
+        "description": "لنڪ ڪاپي ڪرڻ واري ٽوسٽ جي بند ڪرڻ واري بٽڻ جو ڊفالٽ آئڪن مٽائي ٿو."
+      }
+    ]
+  }
+}

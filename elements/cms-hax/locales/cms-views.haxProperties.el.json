@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Προβολή CMS",
+    "description": "Προβολές CMS που αποδίδονται στο backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Όνομα",
+        "description": "Όνομα της προβολής από το CMS μας"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Εμφάνιση",
+        "description": "Εμφάνιση εντός αυτής της προβολής από το CMS μας"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Kääre Spotify-soitinupotuksille."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Lähde",
+        "description": "Upotus- tai jakolinkki Spotifysta."
+      },
+      {
+        "property": "theme",
+        "title": "Teema",
+        "description": "Soittimen taustavärin teema.",
+        "options": {
+          "": "Oletus",
+          "0": "Musta"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Koko",
+        "description": "Soittimen koko.",
+        "options": {
+          "normal": "Oletus",
+          "compact": "Tiivis"
+        }
+      }
+    ]
+  }
+}

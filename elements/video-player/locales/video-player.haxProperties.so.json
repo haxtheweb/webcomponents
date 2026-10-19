@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Fiidiyow",
+    "description": "Ciyaarista fiidiyowga oo la heli karo oo ka timaadda ilo badan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isha",
+        "description": "URL-ka warbaahintan."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Cinwaan",
+        "description": "Cinwaanka lagu muujiyo fiidiyowga hoostiisa."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Sawirka boodhka",
+        "description": "URL-ka sawirka boodhka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Raadadka qoraalka",
+        "description": "Qoraal-hoosaadyo, turjumaado, sharaxaado, iyo raadad kale oo qoraal ah oo fiidiyowga ah."
+      },
+      {
+        "property": "startTime",
+        "title": "Waqtiga bilowga",
+        "description": "Ka bilow fiidiyowga waqti gaar ah (ilbiriqsiyo)."
+      },
+      {
+        "property": "endTime",
+        "title": "Waqtiga dhammaadka",
+        "description": "Ku dhammee fiidiyowga waqti gaar ah (ilbiriqsiyo), waxay u baahan tahay waqti bilow."
+      },
+      {
+        "property": "learningMode",
+        "title": "Daar habka waxbarashada",
+        "description": "Wuxuu damiyaa hor-u-socodsiinta degdegga ah iyo dib-u-celinta."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Ka saar badhanka ka fur YouTube",
+        "description": "Wuxuu ka saaraa badhanka fiidiyowga lagu furo YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Ma ku daraysaa xiriir wadaag?",
+        "description": "Wuxuu bixiyaa xiriir lagu wadaago fiidiyowga."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Qari shaabadaha waqtiga",
+        "description": "Qari shaabadaha waqtiga ee qoraalka."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Qari Qoraalka",
+        "description": "Qari qoraalka si caadi ah."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Raadka sharaxaadda codka",
+        "description": "URL-ka raadka sharaxaadda codka (fayl MP3 ah) oo sharxaya waxyaabaha muuqda."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Wuxuu muujiyaa in la isticmaalayo CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Oggolow ciyaarista gadaasha",
+        "description": "Sii ciyaar marka tab-ka baadhaha uu diiradda lumiyo."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Naqshad mugdi ah oo qoraalka",
+        "description": "Daar naqshadda mugdiga ee qoraalka."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Dami Isdhexgalka",
+        "description": "Dami habka isdhexgalka ee ka dhiga qoraalka mid la gujin karo."
+      },
+      {
+        "property": "lang",
+        "title": "Luuqad",
+        "description": "Luqadda warbaahinta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka xoojinta",
+        "description": "(duugoobay) Dooro midabka xoojinta ee ciyaaraha."
+      }
+    ]
+  }
+}

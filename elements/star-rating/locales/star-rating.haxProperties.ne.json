@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "तारा मूल्याङ्कन",
+    "description": "मूल्याङ्कन देखाउने विजेट वा मूल्याङ्कन गर्ने बटन।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "अङ्क",
+        "description": "हालको अङ्क मान।"
+      },
+      {
+        "property": "possible",
+        "title": "सम्भावित",
+        "description": "अधिकतम सम्भावित अङ्क।"
+      },
+      {
+        "property": "numStars",
+        "title": "ताराहरूको सङ्ख्या",
+        "description": "देखाउने ताराहरूको सङ्ख्या।"
+      },
+      {
+        "property": "interactive",
+        "title": "अन्तरक्रियात्मक",
+        "description": "मूल्याङ्कन सेट गर्न प्रयोगकर्ता अन्तरक्रिया अनुमति दिनुहोस्।"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "रुब्रिक मापन मोड",
+        "description": "हरेक ताराका लागि OER Schema RubricScale र RubricLevel मेटाडेटा (levelOrdinal/levelPoints) उत्सर्जन गर्नुहोस्।"
+      }
+    ]
+  }
+}

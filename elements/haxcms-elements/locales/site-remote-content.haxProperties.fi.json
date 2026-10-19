@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Etäsisältö",
+    "description": "Käytä yhden sivuston sisältöä uudelleen toisessa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Sivuston osoite",
+        "description": "Liitä osoite, josta sisältöön viitataan, jos se ei ole nykyinen sivusto"
+      },
+      {
+        "property": "uuid",
+        "title": "Kohde",
+        "description": "Kohde, jota käytetään linkin / otsikkotietojen näyttämiseen"
+      },
+      {
+        "property": "breakreference",
+        "title": "Katkaise viittaus",
+        "description": "Tämän ruudun valitseminen kopioi etäsisällön paikallisesti muokattavaksi mutta poistaa yhteyden. Se ei enää päivity, kun lähdemateriaali päivittyy."
+      },
+      {
+        "property": "showTitle",
+        "title": "Näytä otsikko",
+        "description": "Ota käyttöön näyttääksesi näytettävän resurssin otsikon"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Un tab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Eicon y Tab"
+      },
+      {
+        "property": "disabled",
+        "title": "Wedi'i analluogi"
+      },
+      {
+        "property": "label",
+        "title": "Label y Tab"
+      },
+      {
+        "slot": "",
+        "title": "Cynnwys y Tab",
+        "description": "Cynnwys y tab."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Unigryw"
+      },
+      {
+        "property": "flag",
+        "title": "Testun Baner Dewisol"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Eicon Baner Dewisol"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Disponeblaj etosoj",
+    "description": "Montri disponeblajn HAXcms-etosojn kun viva antaŭrigarda ŝanĝado"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Vida reĝimo",
+        "description": "Elektu kiel montri la etosojn",
+        "options": {
+          "gallery": "Galerio",
+          "table": "Tabelo"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Montri detalojn",
+        "description": "Montri etosajn priskribojn kaj pliajn informojn"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Montri kaŝitajn kaj malnovajn etosojn",
+        "description": "Montri kaŝitajn, malnovajn kaj terurajn etosojn krom la stirpanelaj defaŭltoj"
+      },
+      {
+        "property": "columns",
+        "title": "Kolumnoj (galerio)",
+        "description": "Nombro de kolumnoj en galeria vido"
+      }
+    ]
+  }
+}

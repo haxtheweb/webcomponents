@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS エンティティ",
+    "description": "バックエンドでレンダリングされる CMS エンティティ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "種類",
+        "description": "CMS の種類",
+        "options": {
+          "node": "ノード",
+          "user": "ユーザー",
+          "file": "ファイル"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "CMS の ID"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "表示モード",
+        "description": "CMS の表示モード"
+      }
+    ]
+  }
+}

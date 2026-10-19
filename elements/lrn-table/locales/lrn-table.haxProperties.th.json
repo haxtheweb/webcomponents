@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ตาราง CSV",
+    "description": "สามารถสร้างตารางจากไฟล์ CSV ได้ไม่ว่าไฟล์จะอยู่ที่ใด"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "แหล่งที่มา",
+        "description": "URL ของไฟล์ CSV นี้"
+      },
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อของตารางที่จะสร้าง"
+      },
+      {
+        "property": "description",
+        "title": "คำอธิบาย",
+        "description": "คำอธิบายโดยละเอียดเพิ่มเติมเพื่อปรับปรุงการเข้าถึงข้อมูลในตาราง"
+      }
+    ]
+  }
+}

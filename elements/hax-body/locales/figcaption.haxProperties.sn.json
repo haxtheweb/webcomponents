@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Caption yemufananidzo",
+    "description": "Caption yemufananidzo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Tsananguro yemufananidzo",
+        "description": "Mavara anoratidzwa pasi pemufananidzo."
+      }
+    ]
+  }
+}

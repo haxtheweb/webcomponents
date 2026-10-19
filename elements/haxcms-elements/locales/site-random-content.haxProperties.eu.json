@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ausazko orri-edukia",
+    "description": "Bistaratu hautatutako orri bateko goi-mailako elementu bat ausaz"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Orria",
+        "description": "Hautatu ausazko edukia ateratzeko orria. Elementuak orri honetako goi-mailako HTML elementuetako bat bistaratuko du ausaz."
+      }
+    ]
+  }
+}

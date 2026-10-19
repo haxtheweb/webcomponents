@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Postać RPG",
+    "description": "Zabawna postać z HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Imię i nazwisko",
+        "description": "Słowo używane do wygenerowania losowej postaci."
+      },
+      {
+        "property": "hat",
+        "title": "Kapelusz",
+        "description": "Styl kapelusza.",
+        "options": {
+          "none": "Domyślny",
+          "random": "Losowy",
+          "bunny": "Króliczek",
+          "cowboy": "Kowboj",
+          "education": "Edukacja",
+          "construction": "Budowlany",
+          "warning": "Ostrzeżenie",
+          "watermelon": "Arbuz",
+          "coffee": "Kawa",
+          "knight": "Rycerz",
+          "ninja": "Ninja",
+          "party": "Impreza",
+          "error": "Błąd",
+          "edit": "Edycja"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Szerokość",
+        "description": "Szerokość postaci w pikselach."
+      },
+      {
+        "property": "height",
+        "title": "Wysokość",
+        "description": "Wysokość postaci w pikselach."
+      },
+      {
+        "property": "fire",
+        "title": "Płonie?",
+        "description": "Czy postać płonie."
+      },
+      {
+        "property": "walking",
+        "title": "Idzie?",
+        "description": "Animacja chodu; działa, gdy postać płonie."
+      }
+    ]
+  }
+}

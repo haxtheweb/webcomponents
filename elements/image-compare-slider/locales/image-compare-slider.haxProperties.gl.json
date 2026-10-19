@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Comparación de imaxes",
+    "description": "Desliza unha imaxe sobre outra para comparalas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Imaxe superior",
+        "description": "Imaxe superior que se desliza sobre a imaxe inferior."
+      },
+      {
+        "property": "topAlt",
+        "title": "Texto alternativo da imaxe superior",
+        "description": "Texto alternativo obrigatorio para a accesibilidade."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Imaxe inferior",
+        "description": "Imaxe inferior que se mostra debaixo da imaxe superior."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Texto alternativo da imaxe inferior",
+        "description": "Texto alternativo obrigatorio para a accesibilidade."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Comportamento",
+        "description": "Escolle o modo de barrido (predeterminado) ou o modo de opacidade da imaxe superior."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Cor da barra do control deslizante."
+      },
+      {
+        "property": "dark",
+        "title": "Escuro",
+        "description": "Inverter a cor da barra do control deslizante."
+      },
+      {
+        "property": "position",
+        "title": "Posición inicial",
+        "description": "Posición de inicio de 0 a 100."
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Şəkil bölməsi",
+    "description": "Səhifə bölməsini ayıran tam enli şəkil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Fon şəkli."
+      },
+      {
+        "property": "caption",
+        "description": "Mətn başlığı."
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Fakkii Ibsamaa",
+    "description": "Fakkii dhaqqabamaa ibsa dheeraa qabu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Suuraa"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Barreeffama Bakka Bu'aa"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Ibsa Fakkii",
+        "description": "Barreeffama ibsa fakkii yeroo hunda mul'atu."
+      },
+      {
+        "slot": "details",
+        "title": "Ibsa",
+        "description": "Ibsa suuraa bal'aa dhokachuu yookaan mul'achuu danda'u"
+      },
+      {
+        "slot": "summary",
+        "title": "Qabduu Ibsaa",
+        "description": "Durtii qabduu barreeffama ibsaa agarsiisu/dhoksuuf, fkn. \"odeeffannoo\", \"metaadaataa\", kkf."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Barreeffama cuunfaa dirqama hin taane yeroo bal'inni banamu"
+      },
+      {
+        "property": "closeText",
+        "title": "Barreeffama cuunfaa dirqama hin taane yeroo bal'inni cufamu"
+      }
+    ]
+  }
+}

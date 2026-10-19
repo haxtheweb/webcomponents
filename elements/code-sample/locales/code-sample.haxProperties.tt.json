@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Код үрнәге",
+    "description": "Биттә аерып күрсәтелгән код үрнәге"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Кодны яктырту",
+        "description": "Код өлкәсенә кулланыла торган синтаксис яктыртуы",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON мәгълүматлары",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Алмашу буферына күчерү төймәсе",
+        "description": "уң өске почмакта «алмашу буферына күчерү» дигән төймә"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Яктырту башы",
+        "description": "Яктырта башлый торган юл номеры"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Яктырту ахыры",
+        "description": "Яктыртуны тәмамлый торган юл"
+      }
+    ]
+  }
+}

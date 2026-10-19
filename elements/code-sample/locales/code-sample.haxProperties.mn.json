@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Кодын жишээ",
+    "description": "Хуудсанд тодруулсан кодын жишээ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Кодын тодруулга",
+        "description": "Кодын хэсэгт хэрэглэх синтакс тодруулга",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON өгөгдөл",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Санах ойд хуулах товчлуур",
+        "description": "баруун дээд буланд санах ойд хуулах гэсэн товчлуур"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Тодруулгын эхлэл",
+        "description": "Тодруулж эхлэх мөрийн дугаар"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Тодруулгын төгсгөл",
+        "description": "Тодруулж дуусгах мөр"
+      }
+    ]
+  }
+}

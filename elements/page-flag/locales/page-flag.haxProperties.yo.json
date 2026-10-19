@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Àsíá ojú-ìwé",
+    "description": "Àkíyèsí olóòtú fún àwọn òǹkọ̀wé ojú-ìwé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ Ìtẹnumọ́",
+        "description": "Àwọ̀ ìtẹnumọ́ fún àsíá ojú-ìwé."
+      },
+      {
+        "property": "label",
+        "title": "Àmì-orúkọ",
+        "description": "Ọ̀rọ̀ àmì-orúkọ fún àsíá ojú-ìwé."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "कृतीसाठी आवाहन",
+    "description": "कृती करण्यासाठी लिंकसह साधे बटण."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "लेबल",
+        "description": "लिंक लेबल"
+      },
+      {
+        "property": "link",
+        "title": "लिंक",
+        "description": "कोणत्याही संसाधनाची लिंक प्रविष्ट करा"
+      },
+      {
+        "property": "hideIcon",
+        "title": "आयकॉन लपवा",
+        "description": "मजकुराला उठाव देण्यासाठी वापरलेला आयकॉन लपवा"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "आयकॉन",
+        "description": "कृती लिंक आयकॉन"
+      }
+    ]
+  }
+}

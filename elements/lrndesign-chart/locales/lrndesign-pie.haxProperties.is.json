@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Kökurit",
+    "description": "Býr til aðgengilegt graf út frá CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Áherslulitur",
+        "description": "Valfrjáls áherslulitur."
+      },
+      {
+        "title": "Dökkt þema",
+        "description": "Virkja dökkt þema"
+      },
+      {
+        "title": "CSV-skrá",
+        "description": "Hlaða gögnum úr CSV."
+      },
+      {
+        "title": "Titill grafs",
+        "description": "Aðgengilegur alt-texti fyrir grafið þitt."
+      },
+      {
+        "title": "Lýsing grafs",
+        "description": "Aðgengileg lýsing á grafinu þínu."
+      },
+      {
+        "title": "Heiti kvarða",
+        "description": "Hlutfall breiddar:hæðar grafsins (sjá https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings fyrir $ct-scales og $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Kleinuhringur"
+      },
+      {
+        "title": "Sýna merki"
+      },
+      {
+        "title": "Upphafshorn"
+      },
+      {
+        "title": "Spássía"
+      },
+      {
+        "title": "Samtals",
+        "description": "Valfrjáls samtala sem þú getur tilgreint. Ef samtala er tilgreind verður summa gildanna í gagnaröðinni að vera þessi samtala til að teikna heila köku. Þú getur notað þessa færibreytu til að teikna aðeins hluta af köku eða mælarit."
+      },
+      {
+        "title": "Hunsa tóm gildi",
+        "description": "Tóm gildi verða hunsuð til að forðast að teikna óþarfa sneiðar og merki."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Snúa gögnum við",
+        "description": "Snúa gögnum við, þar með talið merkjum, röð gagnaraða og öllum gagnafylkjum raðanna."
+      },
+      {
+        "title": "HTML-tafla",
+        "description": "Valfrjálst: Hlaða gögnum sem HTML-töflu."
+      },
+      {
+        "title": "Strikbreidd kleinuhrings"
+      },
+      {
+        "title": "Gegnheill kleinuhringur",
+        "description": "Teikna hluta kleinuhrings sem form í stað strika."
+      },
+      {
+        "title": "Stefna merkja",
+        "description": "Teikna hluta kleinuhrings sem form í stað strika.",
+        "options": {
+          "neutral": "hlutlaus",
+          "explode": "út á við",
+          "implode": "inn á við"
+        }
+      },
+      {
+        "title": "Hliðrun merkja",
+        "description": "Hliðrun staðsetningar merkis frá stöðluðu staðsetningunni sem er hálf fjarlægð radíussins. Þetta gildi getur verið jákvætt eða neikvætt. Jákvæð gildi staðsetja merkið fjær miðjunni."
+      },
+      {
+        "title": "Staðsetning merkja",
+        "options": {
+          "inside": "innan",
+          "outside": "utan",
+          "center": "miðja"
+        }
+      }
+    ]
+  }
+}

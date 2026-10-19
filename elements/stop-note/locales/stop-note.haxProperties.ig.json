@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Ndetu Nkwụsị",
+    "description": "Ozi iji dọọ ndị na-agụ ya aka na ntị maka ntuziaka akọwapụtara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Tinye aha maka ndetu nkwụsị."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Tinye URL mpụga."
+      },
+      {
+        "property": "status",
+        "title": "Ọnọdụ",
+        "description": "Ịdebe ọnọdụ na-agbanwe agba na akara ngosi ka ha kwekọọ",
+        "options": {
+          "stop": "Kwụsị",
+          "warning": "Ịdọ aka na ntị",
+          "success": "Nkwenye",
+          "info": "Ọkwa"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Ederede Ndetu",
+        "description": "Ederede maka ndetu nkwụsị."
+      }
+    ]
+  }
+}

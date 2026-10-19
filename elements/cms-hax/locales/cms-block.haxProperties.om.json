@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Boolokii CMS",
+    "description": "Boolokii CMS backend irratti agarsiifame"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Moojuula",
+        "description": "Moojuulii CMS keenya irraa fe'amu"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta boolokii CMS keenya irraa fe'amu"
+      }
+    ]
+  }
+}

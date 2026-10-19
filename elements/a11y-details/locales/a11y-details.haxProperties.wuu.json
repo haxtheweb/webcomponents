@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "无障碍详情按钮",
+    "description": "用 details 搭 summary 做个无障碍渐进展开"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "按钮",
+        "description": "隐藏内容个摘要,比方「信息」、「元数据」等等。"
+      },
+      {
+        "slot": "details",
+        "title": "描述",
+        "description": "可以隐藏或者显示个详细描述"
+      },
+      {
+        "slot": "",
+        "title": "描述按钮",
+        "description": "显示/隐藏描述文字个按钮默认值,比方「信息」、「元数据」等等。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "详情打开辰光个可选摘要文字"
+      },
+      {
+        "property": "closeText",
+        "title": "详情关牢辰光个可选摘要文字"
+      }
+    ]
+  }
+}

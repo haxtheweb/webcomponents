@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Citat sa slikom",
+    "description": "Stilizovani citat s opcionalnom slikom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Slika",
+        "description": "Dodajte sliku uz izjavu."
+      },
+      {
+        "property": "name",
+        "title": "Puno ime",
+        "description": "Ime osobe koja daje izjavu."
+      },
+      {
+        "property": "position",
+        "title": "Pozicija ili radno mjesto",
+        "description": "Pozicija ili radno mjesto osobe."
+      },
+      {
+        "slot": "",
+        "title": "Citat",
+        "description": "Citat autora izjave."
+      }
+    ]
+  }
+}

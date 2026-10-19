@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Imagine parallax",
+    "description": "Imagine chì scorre"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Imagine",
+        "description": "imagine da mette in u fondu"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Zona d'intestatura",
+        "description": "Zona di testu d'intestatura"
+      }
+    ]
+  }
+}

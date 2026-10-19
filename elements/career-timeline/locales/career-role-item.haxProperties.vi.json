@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Vai trò nghề nghiệp",
+    "description": "Một vai trò cụ thể trong tổ chức"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tiêu đề"
+      },
+      {
+        "property": "startDate",
+        "title": "Ngày bắt đầu"
+      },
+      {
+        "property": "endDate",
+        "title": "Ngày kết thúc (tùy chọn)"
+      },
+      {
+        "property": "skills",
+        "title": "Kỹ năng liên quan",
+        "description": "Chọn nút + để bắt đầu thêm kỹ năng"
+      }
+    ]
+  }
+}

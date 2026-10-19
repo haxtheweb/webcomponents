@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "প্যারালাক্স ছবি",
+    "description": "স্ক্রল করলে সরে যাওয়া ছবি"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "ছবি",
+        "description": "ব্যাকগ্রাউন্ডে ব্যবহৃত হবে এমন ছবি"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "হেডিং এলাকা",
+        "description": "হেডিং টেক্সট এলাকা"
+      }
+    ]
+  }
+}

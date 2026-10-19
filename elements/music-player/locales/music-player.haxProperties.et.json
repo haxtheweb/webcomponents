@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI visualiseerija",
+    "description": "Esita MIDI-d kontekstis koos visualiseeringuga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Allikas",
+        "description": "Esitatava faili URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualiseering",
+        "description": "Muusikafaili visualiseeringu stiil.",
+        "options": {
+          "staff": "Noodijoonestik",
+          "piano-roll": "Klaverirull",
+          "waterfall": "Klaver + kosk"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Peida kosk",
+        "description": "Peida klaveri visualiseeringus langevad noodid."
+      }
+    ]
+  }
+}

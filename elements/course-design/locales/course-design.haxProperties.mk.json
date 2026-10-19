@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Дизајн на курс",
+    "description": "Контејнер за образовни материјали и елементи за дизајн на курс."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Идентификатор на курсот",
+        "description": "OER Schema: идентификаторот на курсот, на пр. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Семестар на понуда",
+        "description": "OER Schema: семестарот во кој се нуди курсот."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Формат на изведба",
+        "description": "OER Schema: форматот што се користи за изведба на курсот (на пр. со физичко присуство, онлајн, хибридно)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Главен инструктор",
+        "description": "OER Schema: главниот инструктор за курсот."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL на силабусот",
+        "description": "OER Schema: URL до силабусот на курсот."
+      }
+    ]
+  }
+}

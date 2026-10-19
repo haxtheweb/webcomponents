@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Merke",
+    "description": "Visuelt merke som viser at en ferdighet er oppnådd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Merketittel",
+        "description": "Tittel som vises på merket."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Merkebilde",
+        "description": "Bilde-URL for merket."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Merkedetaljer",
+        "description": "Detaljer om merket."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlenke",
+        "description": "Lenke knyttet til merket."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Merkeferdigheter",
+        "description": "Ferdigheter som vises på merket."
+      },
+      {
+        "property": "skill",
+        "title": "Ferdighet (OER Schema)",
+        "description": "OER Schema: en ferdighet som oppnås ved å fullføre dette læringsmålet."
+      }
+    ]
+  }
+}

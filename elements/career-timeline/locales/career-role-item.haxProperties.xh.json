@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Indima yoMsebenzi",
+    "description": "Indima enye ngaphakathi kombutho"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko"
+      },
+      {
+        "property": "startDate",
+        "title": "Umhla wokuQala"
+      },
+      {
+        "property": "endDate",
+        "title": "Umhla wokuGqibela (Akunyanzelekanga)"
+      },
+      {
+        "property": "skills",
+        "title": "Izakhono eziNxulumeneyo",
+        "description": "Khetha iqhosha elithi + ukuqala ukongeza izakhono"
+      }
+    ]
+  }
+}

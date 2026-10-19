@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sayfa Çapası",
+    "description": "Sayfadaki medyanın belirli noktalarına bağlantı verin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Sayfa hedefi",
+        "description": "Bu çapanın işaret ettiği ID veya kaynak."
+      },
+      {
+        "property": "value",
+        "title": "Derin bağlantı değeri",
+        "description": "Derin bağlantı değeri (örneğin zaman damgası veya slayt ID'si)."
+      },
+      {
+        "property": "entityId",
+        "title": "Site varlığı",
+        "description": "İlgili kavramın sunumunu denetlemek için isteğe bağlı site varlığı."
+      }
+    ]
+  }
+}

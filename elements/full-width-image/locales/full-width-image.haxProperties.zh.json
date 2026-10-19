@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "图像区块",
+    "description": "分隔页面区块的全宽图像。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "背景图像。"
+      },
+      {
+        "property": "caption",
+        "description": "文本标题。"
+      }
+    ]
+  }
+}

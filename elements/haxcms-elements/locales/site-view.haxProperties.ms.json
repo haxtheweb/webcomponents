@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Paparan Laman",
+    "description": "Blok dinamik yang membuat pertanyaan dan memaparkan data laman berdasarkan kriteria"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Paparan",
+        "description": "Parameter pertanyaan untuk suapan data paparan. Anda boleh mendapatkannya daripada papan pemuka Views."
+      },
+      {
+        "property": "renderer",
+        "title": "Mod paparan",
+        "description": "Cara hasil paparan sepatutnya dipaparkan"
+      },
+      {
+        "property": "entity",
+        "title": "Jenis entiti",
+        "description": "Jenis entiti yang digunakan untuk menghuraikan respons",
+        "options": {
+          "": "Lalai (item)",
+          "item": "Item",
+          "page": "Halaman",
+          "file": "Fail",
+          "tag": "Tag",
+          "block": "Blok",
+          "view": "Paparan",
+          "theme": "Tema",
+          "region": "Rantau",
+          "customElement": "Elemen Tersuai"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Putuskan paparan laman",
+        "description": "Tukar kepada kandungan statik untuk penyuntingan langsung; berhenti mengemas kini secara automatik daripada sumber."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "गतिविधि बॉक्स",
+    "description": "छोटा शैलीबद्ध शीर्षक ब्लॉक।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "गतिविधि बॉक्स के साथ प्रदर्शित आइकन।"
+      },
+      {
+        "property": "tag",
+        "title": "गतिविधि बॉक्स टैग",
+        "description": "गतिविधि बॉक्स में दिखाया गया टैग।"
+      },
+      {
+        "property": "nocolourize",
+        "title": "रंग न लगाएँ",
+        "description": "आइकन पर रंग लागू होने से रोकें।"
+      }
+    ]
+  }
+}

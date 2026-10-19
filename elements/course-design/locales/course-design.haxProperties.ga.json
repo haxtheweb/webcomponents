@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Dearadh Cúrsa",
+    "description": "Coimeádán d'ábhair oideachais agus d'eilimintí dearaidh cúrsa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Aitheantóir an Chúrsa",
+        "description": "Scéimre OER: aitheantóir an chúrsa, m.sh. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Téarma Tairgthe",
+        "description": "Scéimre OER: an téarma ina dtairgtear an cúrsa."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Formáid Seachadta",
+        "description": "Scéimre OER: an fhormáid a úsáidtear chun an cúrsa a sheachadadh (m.sh. go pearsanta, ar líne, hibrideach)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Príomhtheagascóir",
+        "description": "Scéimre OER: príomhtheagascóir an chúrsa."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL na Siollabais",
+        "description": "Scéimre OER: URL chuig siollabas an chúrsa."
+      }
+    ]
+  }
+}

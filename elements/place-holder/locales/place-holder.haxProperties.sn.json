@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Chibatiso nzvimbo",
+    "description": "Chibatiso nzvimbo chinogona kushandurwa kuita mhando yemidhiya yasarudzwa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Rudzi",
+        "description": "Mhando yegizmo inogamuchirwa kuti itsive.",
+        "options": {
+          "text": "Mavara / zvirimo",
+          "document": "Gwaro / faira",
+          "audio": "Odhiyo",
+          "video": "Vhidhiyo",
+          "image": "Mufananidzo",
+          "math": "Masvomhu"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Mavara",
+        "description": "Tsanangura chibatiso nzvimbo chaunoda zvakadzama"
+      }
+    ]
+  }
+}

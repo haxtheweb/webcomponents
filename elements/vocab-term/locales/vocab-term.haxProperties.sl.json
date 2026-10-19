@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Besedišče",
+    "description": "Izraz iz besedišča."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Izraz"
+      },
+      {
+        "property": "information",
+        "title": "Definicija",
+        "description": "Definicija, prikazana ob kliku na izraz."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Pojavni oblaček",
+        "description": "Prikaži definicijo v pojavnem oblačku namesto v besedilu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Povezave",
+        "description": "Seznam dodatnih povezav, povezanih s tem izrazom."
+      }
+    ]
+  }
+}

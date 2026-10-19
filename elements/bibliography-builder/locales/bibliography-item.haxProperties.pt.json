@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Item de bibliografia",
+    "description": "Item que representa uma única citação em uma bibliografia, com suporte a vários formatos e opções de exportação."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tipo",
+        "description": "Tipo de citação",
+        "options": {
+          "web": "Web",
+          "journal": "Periódico",
+          "book": "Livro"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título do item"
+      },
+      {
+        "property": "authors",
+        "title": "Autor(es)",
+        "description": "Os eventos da linha do tempo"
+      },
+      {
+        "property": "publisher",
+        "title": "Editora",
+        "description": "Site original"
+      }
+    ]
+  }
+}

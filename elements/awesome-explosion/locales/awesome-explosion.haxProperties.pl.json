@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Niesamowita eksplozja",
+    "description": "Interaktywna animacja eksplozji z opcjonalnymi efektami dźwiękowymi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Rozmiar",
+        "description": "Ustaw rozmiar eksplozji.",
+        "options": {
+          "tiny": "Malutki",
+          "small": "Mały",
+          "medium": "Średni",
+          "large": "Duży",
+          "epic": "Epicki"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Kolor",
+        "description": "Ustaw motyw kolorystyczny eksplozji.",
+        "options": {
+          "": "Domyślny",
+          "red": "Czerwony",
+          "blue": "Niebieski",
+          "purple": "Fioletowy",
+          "orange": "Pomarańczowy",
+          "yellow": "Żółty"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Efekty dźwiękowe",
+        "description": "Włącz efekty dźwiękowe."
+      },
+      {
+        "property": "resetSound",
+        "title": "Resetuj dźwięk",
+        "description": "Za każdym razem odtwarzaj dźwięk od początku."
+      },
+      {
+        "property": "image",
+        "title": "Własny obraz",
+        "description": "Opcjonalny URL własnego obrazu eksplozji."
+      },
+      {
+        "property": "sound",
+        "title": "Własny dźwięk",
+        "description": "Opcjonalny URL własnego efektu dźwiękowego."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Wyłączone",
+        "description": "Wyłącz wszystkie interakcje."
+      }
+    ]
+  }
+}

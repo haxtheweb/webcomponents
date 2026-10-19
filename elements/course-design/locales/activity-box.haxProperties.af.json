@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Aktiwiteitsblok",
+    "description": "Klein gestileerde opskrifblok."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Ikoon wat langs die aktiwiteitsblok vertoon word."
+      },
+      {
+        "property": "tag",
+        "title": "Aktiwiteitsblok-etiket",
+        "description": "Etiket wat in die aktiwiteitsblok gewys word."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Geen inkleuring",
+        "description": "Verhoed dat kleure op die ikoon toegepas word."
+      }
+    ]
+  }
+}

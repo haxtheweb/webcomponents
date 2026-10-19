@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ກ່ອງທີ່ຫຍໍ້ໄດ້",
+    "description": "ກ່ອງດຽວທີ່ຂະຫຍາຍ ແລະ ຫຍໍ້ໄດ້."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "ຫົວຂໍ້",
+        "description": "ຂໍ້ຄວາມສຳລັບສ່ວນຫຍໍ້."
+      },
+      {
+        "property": "expanded",
+        "title": "ຂະຫຍາຍແລ້ວ",
+        "description": "ຂະຫຍາຍໂດຍຄ່າເລີ່ມຕົ້ນ."
+      },
+      {
+        "property": "headingButton",
+        "title": "ປຸ່ມຫົວຂໍ້",
+        "description": "ເຮັດໃຫ້ຫົວຂໍ້ທັງໝົດຄລິກໄດ້ ແທນທີ່ຈະເປັນພຽງໄອຄອນ."
+      },
+      {
+        "property": "icon",
+        "title": "ໄອຄອນ",
+        "description": "ໄອຄອນສຳລັບປຸ່ມຂະຫຍາຍ/ຫຍໍ້."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "ໄອຄອນ (ເມື່ອຂະຫຍາຍ)",
+        "description": "ໄອຄອນທາງເລືອກສຳລັບສະຖານະທີ່ຂະຫຍາຍແລ້ວ."
+      },
+      {
+        "slot": "",
+        "title": "ເນື້ອຫາ",
+        "description": "ເນື້ອຫາສຳລັບສ່ວນຫຍໍ້."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "ຄຳແນະນຳເຄື່ອງມື",
+        "description": "ຄຳແນະນຳເຄື່ອງມືສຳລັບປຸ່ມຂະຫຍາຍ/ຫຍໍ້."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "ຄຳແນະນຳເຄື່ອງມື (ເມື່ອຂະຫຍາຍ)",
+        "description": "ຄຳແນະນຳເຄື່ອງມືສຳລັບປຸ່ມຂະຫຍາຍ/ຫຍໍ້ ເມື່ອຂະຫຍາຍແລ້ວ."
+      }
+    ]
+  }
+}

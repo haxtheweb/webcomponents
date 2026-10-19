@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Förbättrad bild",
+    "description": "Ett sätt att presentera bilder med olika förbättringar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Källa",
+        "description": "URL:en för bilden."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ text",
+        "description": "Text som beskriver bilden för användare med synnedsättning."
+      },
+      {
+        "property": "link",
+        "title": "Länk",
+        "description": "Länka bilden till en URL"
+      },
+      {
+        "property": "card",
+        "title": "Kort",
+        "description": "Lägg till en skugga för att ge intryck av ett upphöjt kort."
+      },
+      {
+        "property": "box",
+        "title": "Ruta",
+        "description": "Lägg till en visuell ruta runt bilden."
+      },
+      {
+        "property": "offset",
+        "title": "Förskjutning",
+        "description": "Förskjut bilden åt vänster eller höger.",
+        "options": {
+          "none": "ingen",
+          "wide": "bred",
+          "narrow": "smal"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Källhänvisning",
+        "description": "Källhänvisning för bilden."
+      },
+      {
+        "property": "caption",
+        "title": "Bildtext",
+        "description": "Bildtext för bilden."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figurtitel",
+        "description": "Titel för figuretiketten."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figurbeskrivning",
+        "description": "Beskrivning för figuretiketten."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Miniatyrbild",
+        "description": "Källa för miniatyrbild. Visar miniatyren men öppnar hela källan i en dialogruta."
+      },
+      {
+        "property": "round",
+        "title": "Rund bild",
+        "description": "Beskär bilden så att den ser cirkelformad ut."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Inaktivera bilddialog",
+        "description": "Förhindra att klick öppnar bilden i en dialogruta för bildgranskning."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Rendera som Markdown",
+        "description": "Rendera bildtext och källhänvisning som Markdown."
+      }
+    ]
+  }
+}

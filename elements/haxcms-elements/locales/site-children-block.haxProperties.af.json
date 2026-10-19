@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: kindblok",
+    "description": "Dinamiese blok om kinders van die huidige bladsy te wys"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dinamiese metode",
+        "description": "Hoe om die kinders relatief tot hierdie element te bereken",
+        "options": {
+          "active": "Aktiewe kinders",
+          "parent": "Ouer se kinders",
+          "ancestor": "Alle kinders van die hoogste voorouer"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Beginvlak"
+      },
+      {
+        "property": "end",
+        "title": "Eindvlak"
+      }
+    ]
+  }
+}

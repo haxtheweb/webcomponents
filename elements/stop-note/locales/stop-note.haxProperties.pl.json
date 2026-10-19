@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Notatka ostrzegawcza",
+    "description": "Komunikat zwracający uwagę czytelników na konkretne wskazówki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tytuł",
+        "description": "Wpisz tytuł notatki ostrzegawczej."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Wpisz zewnętrzny URL."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Ustawienie statusu odpowiednio zmienia kolory i ikony",
+        "options": {
+          "stop": "Stop",
+          "warning": "Ostrzeżenie",
+          "success": "Potwierdzenie",
+          "info": "Uwaga"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Tekst notatki",
+        "description": "Tekst notatki ostrzegawczej."
+      }
+    ]
+  }
+}

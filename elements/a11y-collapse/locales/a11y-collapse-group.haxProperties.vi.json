@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Nhóm mở rộng/thu gọn",
+    "description": "Một nhóm các phần tử mở rộng/thu gọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Chỉ mở rộng một mục",
+        "description": "Chỉ có thể mở rộng một mục."
+      },
+      {
+        "slot": "",
+        "title": "Các mục thu gọn",
+        "description": "Các mục thu gọn."
+      }
+    ]
+  }
+}

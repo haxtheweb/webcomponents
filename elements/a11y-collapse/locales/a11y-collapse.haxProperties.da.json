@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Sammenklappelig beholder",
+    "description": "Enkelt beholder, der kan udvides og skjules."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Overskrift",
+        "description": "Tekst til det sammenklappelige element."
+      },
+      {
+        "property": "expanded",
+        "title": "Udvidet",
+        "description": "Udvid som standard."
+      },
+      {
+        "property": "headingButton",
+        "title": "Overskriftsknap",
+        "description": "Gør hele overskriften klikbar i stedet for kun ikonet."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon til knappen, der udvider/skjuler."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikon (når udvidet)",
+        "description": "Valgfrit ikon til den udvidede tilstand."
+      },
+      {
+        "slot": "",
+        "title": "Indhold",
+        "description": "Indhold til det sammenklappelige element."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Værktøjstip",
+        "description": "Værktøjstip til knappen, der udvider/skjuler."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Værktøjstip (når udvidet)",
+        "description": "Værktøjstip til udvid/skjul-knappen, når den er udvidet."
+      }
+    ]
+  }
+}

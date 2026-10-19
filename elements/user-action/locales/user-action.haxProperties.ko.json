@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "사용자 동작",
+    "description": "사용자 동작을 추적하고 데이터를 xAPI 저장소로 전송합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "추적할 이벤트",
+        "description": "이 이벤트를 발생시키는 사용자 동작입니다.",
+        "options": {
+          "visibility": "이것을 볼 수 있음",
+          "keydown": "여기서 키 누르기",
+          "click": "이것을 클릭",
+          "hover": "이것 위에 마우스 올리기"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "매번 추적",
+        "description": "기본적으로 첫 번째 발생만 추적됩니다."
+      }
+    ]
+  }
+}

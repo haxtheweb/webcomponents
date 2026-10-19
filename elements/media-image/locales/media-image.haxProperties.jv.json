@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Gambar Ditingkatake",
+    "description": "Cara nampilake gambar kanthi macem-macem paningkatan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "URL kanggo gambar."
+      },
+      {
+        "property": "alt",
+        "title": "Teks alternatif",
+        "description": "Teks kanggo njlèntrèhake gambar marang panganggo tunanetra."
+      },
+      {
+        "property": "link",
+        "title": "Pranala",
+        "description": "Sambungake gambar menyang URL"
+      },
+      {
+        "property": "card",
+        "title": "Kertu",
+        "description": "Trapake bayangan supaya katon kaya kertu sing munggah."
+      },
+      {
+        "property": "box",
+        "title": "Kothak",
+        "description": "Trapake kothak visual ing sakubenge gambar."
+      },
+      {
+        "property": "offset",
+        "title": "Offset",
+        "description": "Trapake offset kiwa utawa tengen ing gambar.",
+        "options": {
+          "none": "ora ana",
+          "wide": "amba",
+          "narrow": "ciut"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Kutipan sumber",
+        "description": "Kutipan kanggo gambar."
+      },
+      {
+        "property": "caption",
+        "title": "Katrangan gambar",
+        "description": "Katrangan kanggo gambar."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Judhul Gambar",
+        "description": "Judhul kanggo label gambar."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Katrangan Gambar",
+        "description": "Katrangan kanggo label gambar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Gambar thumbnail",
+        "description": "Sumber gambar thumbnail. Nampilake thumbnail nanging mbukak sumber lengkap ing modal."
+      },
+      {
+        "property": "round",
+        "title": "Gambar bunder",
+        "description": "Ngethok tampilan gambar dadi wujud bunderan."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Pateni modal gambar",
+        "description": "Pateni klik sing mbukak gambar ing dialog pamriksa gambar."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Render minangka markdown",
+        "description": "Render katrangan lan kutipan minangka markdown."
+      }
+    ]
+  }
+}

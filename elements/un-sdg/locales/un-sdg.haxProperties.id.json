@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "SDG UN",
+    "description": "Tujuan Pembangunan Berkelanjutan Perserikatan Bangsa-Bangsa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Tujuan",
+        "description": "Nomor SDG UN."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Warna saja",
+        "description": "Tampilkan hanya warna tujuan."
+      }
+    ]
+  }
+}

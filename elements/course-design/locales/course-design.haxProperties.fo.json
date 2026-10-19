@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Skeiðssniðgeving",
+    "description": "Hylki til undirvísingartilfar og element í skeiðssniðgeving."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Skeiðsdámkenni",
+        "description": "OER Schema: dámkennið á skeiðnum, t.d. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Útboðið hálvár",
+        "description": "OER Schema: hálvárið, tá ið skeiðið verður útboðið."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Undirvísingarháttur",
+        "description": "OER Schema: hátturin, ið verður nýttur at veita skeiðið (t.d. við fremmøtingi, á netinum, blandað)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Høvuðslærari",
+        "description": "OER Schema: høvuðslærarin á skeiðnum."
+      },
+      {
+        "property": "syllabus",
+        "title": "Lærutilskipan URL",
+        "description": "OER Schema: URL til lærutilskipanina hjá skeiðnum."
+      }
+    ]
+  }
+}

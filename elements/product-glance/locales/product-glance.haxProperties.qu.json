@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Producto usqhay qhaway",
+    "description": "Productomanta usqhay qhaway t'aqa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Unancha",
+        "description": "Yuyayta rikuchiq unancha."
+      },
+      {
+        "property": "title",
+        "title": "Sutichay",
+        "description": "Hatun yuyay huk qhawaypi."
+      },
+      {
+        "property": "subtitle",
+        "title": "Uchuy sutichay",
+        "description": "Yapa willakuy."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Unanchapaq rikchachiq llimpi."
+      }
+    ]
+  }
+}

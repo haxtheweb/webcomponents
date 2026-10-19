@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P-elemint",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Tekst",
+        "description": "Ynhâld fan de sydnotysje"
+      }
+    ]
+  }
+}

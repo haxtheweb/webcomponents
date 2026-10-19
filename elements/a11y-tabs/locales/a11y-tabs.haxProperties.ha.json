@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Shafuka",
+    "description": "Saitin shafuka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Lakabi (don sauƙin isa)",
+        "description": "Lakabin sauƙin isa na saitin shafukan."
+      },
+      {
+        "property": "disabled",
+        "title": "An kashe",
+        "description": "Kashe dukan shafukan."
+      },
+      {
+        "property": "hidden",
+        "title": "A ɓoye",
+        "description": "Ɓoye saitin shafukan."
+      },
+      {
+        "property": "sticky",
+        "title": "Manne",
+        "description": "Ajiye shafukan kwance a sama yayin gungurawa."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Iyakar Tsari",
+        "description": "Iyakar shafukan kwance; yi amfani da -1 don a tsaye kawai."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Iyakar Alama",
+        "description": "Iyakar nuna rubutu tare da alamomi. Tsoho shi ne 0; yi amfani da -1 don yanayin alama kawai."
+      },
+      {
+        "slot": "",
+        "title": "Shafuka",
+        "description": "Jerin abubuwan <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID na Musamman",
+        "description": "ID na musamman na wannan saitin shafuka."
+      }
+    ]
+  }
+}

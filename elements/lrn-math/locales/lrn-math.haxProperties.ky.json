@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Математика",
+    "description": "Математиканы кооз түрдө көрсөтүү."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Математика",
+        "description": "Теңдемени LaTeX түрүндө киргизиңиз"
+      }
+    ]
+  }
+}

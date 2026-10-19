@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kāri ako",
+    "description": "Whakaharatau ariā mā ngā kāri ako he mua, he muri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Mua o te Kāri",
+        "description": "Kupu mua, pātai rānei."
+      },
+      {
+        "slot": "back",
+        "title": "Muri o te Kāri",
+        "description": "Whakautu e tūmanakohia ana."
+      },
+      {
+        "property": "imgSource",
+        "title": "Pūtake Whakaahua",
+        "description": "Kōnae whakaahua mō te kāri. Ka whakakapi i te Kupu Matua Whakaahua."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Momo Mahi",
+        "description": "OER Schema: te momo mahi o tēnei whakaharatau (hei tauira, Pānui, Tuhi, Hanga, Rangahau, Whakarongo, Mātakitaki, Huritao, Matapaki, Mātai, Whakaatu, Aromatawai)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Whāinga Ako",
+        "description": "OER Schema: te ID, te URL rānei o te whāinga ako e tautokona ana e tēnei whakaharatau."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Pōuri",
+        "description": "Whakamahia te aratau pōuri."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae Arotahi",
+        "description": "Tae arotahi o te kāri."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Kupu Matua Whakaahua",
+        "description": "Kupu matua mō tētahi whakaahua matapōkere. Ka whakakapia e te Pūtake Whakaahua."
+      }
+    ]
+  }
+}

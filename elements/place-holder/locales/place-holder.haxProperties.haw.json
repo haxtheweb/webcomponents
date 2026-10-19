@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Mea hoʻopaʻa wahi",
+    "description": "He mea hoʻopaʻa wahi hiki ke hoʻololi ʻia i ke ʻano media i koho ʻia"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "ʻAno",
+        "description": "ʻAno mea e ʻae ʻia ai no ka pani.",
+        "options": {
+          "text": "Kikokikona / ʻike",
+          "document": "Palapala / faila",
+          "audio": "Leo",
+          "video": "Wikiō",
+          "image": "Kiʻi",
+          "math": "Makemakika"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Kikokikona",
+        "description": "Hōʻike kikoʻī hou aku i ka mea hoʻopaʻa wahi i makemake ʻia"
+      }
+    ]
+  }
+}

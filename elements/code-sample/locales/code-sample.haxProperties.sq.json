@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Shembull kodi",
+    "description": "Një shembull kodi i theksuar në faqe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Theksimi i kodit",
+        "description": "Theksimi i sintaksës që do të zbatohet në zonën e kodit",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Të dhëna JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Butoni i kopjimit në kujtesën e fragmenteve",
+        "description": "buton lart djathtas që thotë kopjo në kujtesën e fragmenteve"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Fillimi i theksimit",
+        "description": "Numri i rreshtit ku fillon theksimi"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Fundi i theksimit",
+        "description": "Rreshti ku mbaron theksimi"
+      }
+    ]
+  }
+}

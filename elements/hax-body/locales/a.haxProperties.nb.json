@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Enkel lenke",
+    "description": "Enkelt lenkeelement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Lenke",
+        "description": "Mål-URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Synlig lenketekst."
+      },
+      {
+        "attribute": "target",
+        "title": "Mål",
+        "description": "Hvor lenken skal åpnes.",
+        "options": {
+          "": "Samme vindu",
+          "_blank": "Nytt vindu - _blank",
+          "_top": "Øverste vindu - _top",
+          "_parent": "Overordnet vindu - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Tittel-tekst",
+        "description": "Veiledende tittel for tilgjengelighet og SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Forholdet til målet (sikkerhet/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Βίντεο",
+    "description": "Προσβάσιμη αναπαραγωγή βίντεο από πολλαπλές πηγές."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Πηγή",
+        "description": "URL για αυτό το πολυμέσο."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Τίτλος",
+        "description": "Τίτλος που εμφανίζεται κάτω από το βίντεο."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Εικόνα αφίσας",
+        "description": "URL εικόνας αφίσας."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Κομμάτια κειμένου",
+        "description": "Υπότιτλοι για κωφούς, υπότιτλοι, περιγραφές και άλλα κομμάτια κειμένου για το βίντεο."
+      },
+      {
+        "property": "startTime",
+        "title": "Χρόνος έναρξης",
+        "description": "Έναρξη βίντεο σε συγκεκριμένο χρόνο (δευτερόλεπτα)."
+      },
+      {
+        "property": "endTime",
+        "title": "Χρόνος λήξης",
+        "description": "Λήξη βίντεο σε συγκεκριμένο χρόνο (δευτερόλεπτα), απαιτεί χρόνο έναρξης."
+      },
+      {
+        "property": "learningMode",
+        "title": "Ενεργοποίηση λειτουργίας μάθησης",
+        "description": "Απενεργοποιεί τη γρήγορη κίνηση εμπρός και πίσω."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Αφαίρεση κουμπιού ανοίγματος στο YouTube",
+        "description": "Αφαιρεί το κουμπί ανοίγματος του βίντεο στο YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Συμπερίληψη συνδέσμου κοινοποίησης;",
+        "description": "Παρέχει έναν σύνδεσμο για κοινοποίηση του βίντεο."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Απόκρυψη χρονοσημάνσεων",
+        "description": "Απόκρυψη των χρονοσημάνσεων στην απομαγνητοφώνηση."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Απόκρυψη απομαγνητοφώνησης",
+        "description": "Απόκρυψη απομαγνητοφώνησης από προεπιλογή."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Κομμάτι ακουστικής περιγραφής",
+        "description": "URL προς ένα κομμάτι ακουστικής περιγραφής (αρχείο MP3) που αφηγείται τα οπτικά στοιχεία."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Υποδεικνύει αν θα χρησιμοποιηθεί CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Να επιτρέπεται η αναπαραγωγή στο παρασκήνιο",
+        "description": "Συνέχιση αναπαραγωγής όταν η καρτέλα του προγράμματος περιήγησης χάνει την εστίαση."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Σκοτεινό θέμα για την απομαγνητοφώνηση",
+        "description": "Ενεργοποίηση σκοτεινού θέματος για την απομαγνητοφώνηση."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Απενεργοποίηση διαδραστικότητας",
+        "description": "Απενεργοποίηση της διαδραστικής λειτουργίας που κάνει την απομαγνητοφώνηση επιλέξιμη."
+      },
+      {
+        "property": "lang",
+        "title": "Γλώσσα",
+        "description": "Γλώσσα του πολυμέσου."
+      },
+      {
+        "property": "accentColor",
+        "title": "Χρώμα έμφασης",
+        "description": "(καταργημένο) Επιλέξτε το χρώμα έμφασης για τη συσκευή αναπαραγωγής."
+      }
+    ]
+  }
+}

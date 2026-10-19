@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "तारांकित रेटिंग",
+    "description": "रेटिंग प्रदर्शन विजेट किंवा रेटिंग देण्यासाठी बटण."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "गुण",
+        "description": "सध्याचे गुण मूल्य."
+      },
+      {
+        "property": "possible",
+        "title": "शक्य",
+        "description": "कमाल शक्य गुण."
+      },
+      {
+        "property": "numStars",
+        "title": "तारकांची संख्या",
+        "description": "दाखवायच्या तारकांची संख्या."
+      },
+      {
+        "property": "interactive",
+        "title": "परस्परसंवादी",
+        "description": "रेटिंग सेट करण्यासाठी वापरकर्त्याला परस्परसंवादाची परवानगी द्या."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "रुब्रिक स्केल मोड",
+        "description": "प्रत्येक तारकेसाठी OER Schema RubricScale आणि RubricLevel मेटाडेटा (levelOrdinal/levelPoints) उत्सर्जित करा."
+      }
+    ]
+  }
+}

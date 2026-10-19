@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lista e kontribuuesve në GitHub",
+    "description": "Shfaqur si personazhe RPG duke përdorur GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizata",
+        "description": "Emri i organizatës nga github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Depoja",
+        "description": "Emri i depos nga github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Kufiri",
+        "description": "Kufizo numrin e kontribuuesve të shfaqur."
+      }
+    ]
+  }
+}

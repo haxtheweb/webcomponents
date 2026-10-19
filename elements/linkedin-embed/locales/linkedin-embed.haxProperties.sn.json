@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Kuisa LinkedIn",
+    "description": "Isa kadhi reprofile reLinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Zita rakasarudzwa",
+        "description": "Chikamu chezita remushandisi rakasarudzwa reLinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Nzvimbo nemutauro",
+        "description": "Kukosha kwemetadata yenzvimbo nemutauro, se en_US."
+      }
+    ]
+  }
+}

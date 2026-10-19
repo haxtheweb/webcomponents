@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Harici web içeriği yerleştirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Kaynak",
+        "description": "Bu kaynağın URL'si."
+      }
+    ]
+  }
+}

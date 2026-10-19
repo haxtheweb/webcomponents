@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Filă",
+    "description": "O singură filă."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Pictograma filei"
+      },
+      {
+        "property": "disabled",
+        "title": "Dezactivat"
+      },
+      {
+        "property": "label",
+        "title": "Eticheta filei"
+      },
+      {
+        "slot": "",
+        "title": "Conținutul filei",
+        "description": "Conținutul filei."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID unic"
+      },
+      {
+        "property": "flag",
+        "title": "Text opțional de marcaj"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Pictogramă opțională de marcaj"
+      }
+    ]
+  }
+}

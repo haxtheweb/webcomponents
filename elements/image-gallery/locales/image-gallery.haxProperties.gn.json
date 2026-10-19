@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Ta'ãnga ñembyaty",
+    "description": "Ta'ãnga ñembyaty ohechaukáva ta'ãnga kora, ita'ỹi térã jehechauka ñembohasa rekópe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Jehechauka reko",
+        "description": "Mba'éichapa ojehechaukáta ta'ãnga ñembyatýpe.",
+        "options": {
+          "grid": "Kora",
+          "masonry": "Ita'ỹi",
+          "gallery": "Ñembyaty"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Papapy hendýva",
+        "description": "Ta'ãnga hendýva papapy oñepyrũ hag̃ua ñembyaty rekópe."
+      }
+    ]
+  }
+}

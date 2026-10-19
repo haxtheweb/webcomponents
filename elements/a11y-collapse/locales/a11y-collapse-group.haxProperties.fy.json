@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Groep útklapbere seksjes",
+    "description": "In groep út- en ynklapbere eleminten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Mar ien útklappe",
+        "description": "Mar ien item kin tagelyk útklapt wurde."
+      },
+      {
+        "slot": "",
+        "title": "Ynklapbere items",
+        "description": "De ynklapbere items."
+      }
+    ]
+  }
+}

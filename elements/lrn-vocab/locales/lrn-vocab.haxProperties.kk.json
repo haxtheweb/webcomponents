@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Сөздік",
+    "description": "Сөздік термині"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Термин"
+      },
+      {
+        "slot": "",
+        "title": "Анықтама",
+        "description": "Терминді басқанда көрсетілетін анықтама."
+      },
+      {
+        "property": "description",
+        "title": "Сипаттама (OER Schema)",
+        "description": "OER Schema: сөздік терминінің қысқаша сипаттамасы. Бос қалдырылса, анықтама мәтінінен автоматты түрде толтырылады."
+      }
+    ]
+  }
+}

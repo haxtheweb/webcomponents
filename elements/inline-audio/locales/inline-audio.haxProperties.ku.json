@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Dengê navnivîsê",
+    "description": "Ji bo temamkirina naveroka rûpelê dengê di nav nivîsê de lê bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çavkanî",
+        "description": "Pela MP3 an URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê Balkêş",
+        "description": "Rengê balkêş ê kartê."
+      },
+      {
+        "property": "shiny",
+        "title": "Biriqok",
+        "description": "Li şûna gewr paşxaneyeke balkêş a ronîtir bikar bîne."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tarî",
+        "description": "Moda tarî bikar bîne."
+      }
+    ]
+  }
+}

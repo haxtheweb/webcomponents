@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Mata",
+    "description": "Cuir mata i láthair ar bhealach deas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Mata",
+        "description": "Cuir isteach cothromóid mar LaTeX"
+      }
+    ]
+  }
+}

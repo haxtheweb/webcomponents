@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Merkelapp / pille",
+    "description": "En kompakt pilleformet etikett med valgfri aksentfarge, avbryt-knapp eller av/på-bryter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etikett",
+        "description": "Tekst som vises inne i pillen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "SimpleColors-aksentnavn for pillens bakgrunn.",
+        "options": {
+          "": "-- standard --",
+          "red": "Rød",
+          "pink": "Rosa",
+          "purple": "Lilla",
+          "deep-purple": "Dyp lilla",
+          "indigo": "Indigo",
+          "blue": "Blå",
+          "light-blue": "Lyseblå",
+          "cyan": "Cyan",
+          "teal": "Blågrønn",
+          "green": "Grønn",
+          "light-green": "Lysegrønn",
+          "lime": "Limegrønn",
+          "yellow": "Gul",
+          "amber": "Rav",
+          "orange": "Oransje",
+          "deep-orange": "Dyp oransje",
+          "brown": "Brun",
+          "blue-grey": "Blågrå",
+          "grey": "Grå"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatisk aksentfarge",
+        "description": "Utled aksentfargen automatisk fra etikettteksten."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Avbryt-knapp",
+        "description": "Vis en ikonknapp for fjern/avbryt inne i pillen."
+      },
+      {
+        "property": "readonly",
+        "title": "Skrivebeskyttet",
+        "description": "Skjul avbryt-knappen slik at pillen bare er til visning."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Av/på",
+        "description": "La pillen slås av og på når knappen klikkes."
+      },
+      {
+        "property": "toggled",
+        "title": "Slått på",
+        "description": "Om pillen er slått på nå."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ikon når slått på",
+        "description": "Ikon som vises når pillen er slått på."
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktivert",
+        "description": "Deaktiver interaksjon med pillen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "页面分区",
+    "description": "页面内容搭屏幕布局个分区容器。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "设计处理",
+        "description": "会更新相关设置个预设样式。"
+      },
+      {
+        "property": "image",
+        "title": "图片",
+        "description": "分区个背景媒体。"
+      },
+      {
+        "property": "bg",
+        "title": "背景色",
+        "description": "无没图片辰光个背景色。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "滚动按钮",
+        "description": "显示一只滚到下一分区个按钮。"
+      },
+      {
+        "property": "fold",
+        "title": "显示折痕",
+        "description": "勒分区底下显示视觉折痕。"
+      },
+      {
+        "property": "full",
+        "title": "全屏尺寸",
+        "description": "填满观看者个屏幕高度。"
+      },
+      {
+        "property": "filter",
+        "title": "应用滤镜",
+        "description": "拨背景图片加视觉滤镜。"
+      },
+      {
+        "slot": "",
+        "title": "内容",
+        "description": "分区内容。"
+      },
+      {
+        "slot": "entice",
+        "title": "吸引",
+        "description": "可选个吸引内容。"
+      },
+      {
+        "slot": "buttons",
+        "title": "按钮",
+        "description": "文字下头显示个按钮组。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "锚点文字",
+        "description": "导航里显示个锚点标签。"
+      }
+    ]
+  }
+}

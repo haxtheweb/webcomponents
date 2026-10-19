@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: podriadený blok",
+    "description": "Dynamický blok na zobrazenie podstránok aktuálnej stránky"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dynamická metóda",
+        "description": "Ako vypočítať podriadené položky vzhľadom na tento prvok",
+        "options": {
+          "active": "Aktívne podriadené",
+          "parent": "Podriadené nadradenej",
+          "ancestor": "Všetky podriadené od najvyššieho predka"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Začiatočná úroveň"
+      },
+      {
+        "property": "end",
+        "title": "Koncová úroveň"
+      }
+    ]
+  }
+}

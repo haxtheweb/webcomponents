@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS Entidad",
+    "description": "Backend-pi rikuchisqa CMS entidad"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Laya",
+        "description": "CMS-nchikmanta rikch'ay",
+        "options": {
+          "node": "Nodo",
+          "user": "Ruraq",
+          "file": "Willañiqi"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "CMS-nchikmanta id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Rikuchiy modo",
+        "description": "CMS-nchikmanta rikuchiy kay"
+      }
+    ]
+  }
+}

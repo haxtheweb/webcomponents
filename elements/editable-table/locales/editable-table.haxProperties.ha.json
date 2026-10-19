@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tebur",
+    "description": "Bayanai a tsarin tebur don yanar gizo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Kanun Layi",
+        "description": "Ɗauki layin farko a matsayin kanu."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Kanun Shafi",
+        "description": "Ɗauki shafi na farko a matsayin kanu."
+      },
+      {
+        "property": "footer",
+        "title": "Ƙafa",
+        "description": "Ɗauki layin ƙarshe a matsayin ƙafa."
+      },
+      {
+        "property": "sort",
+        "title": "Mai jeruwa",
+        "description": "Ba da damar jera ta ƙimomin shafi."
+      },
+      {
+        "property": "filter",
+        "title": "Ba da Damar Tacewa",
+        "description": "Ba da damar tacewa ta ƙimomin shafi."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Salon Lambobi",
+        "description": "Sanya salon lambobi a shafukan lambobi."
+      },
+      {
+        "property": "responsive",
+        "title": "Mai daidaitawa",
+        "description": "Daidaita tsarin tebur a ƙananan allo."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Yanayin Rubric",
+        "description": "Fassara wannan tebur a matsayin OER Schema Rubric domin a fitar da metadata na Rubric, RubricScale, RubricCriterion, da RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Nau'in Rubric",
+        "description": "Salon rubric da ake fitarwa a matsayin oer:rubricType (yana da ma'ana ne kawai idan Yanayin Rubric yana kunne).",
+        "options": {
+          "": "(babu)",
+          "analytic": "Mai nazari",
+          "holistic": "Gaba ɗaya",
+          "single-point": "Maki Ɗaya",
+          "checklist": "Jerin dubawa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Mai iyaka"
+      },
+      {
+        "property": "condensed",
+        "title": "Matse Layuka",
+        "description": "Rage tsawon layi."
+      },
+      {
+        "property": "striped",
+        "title": "Layuka Masu Ratsi",
+        "description": "Sanya inuwa a kowane layi na biyu."
+      },
+      {
+        "property": "downloadable",
+        "title": "Maɓallin Saukewa",
+        "description": "Ƙara maɓalli don sauke teburin."
+      },
+      {
+        "property": "copyable",
+        "title": "Maɓallin Kwafi",
+        "description": "Ƙara maɓalli don kwafin bayanan CSV na teburin."
+      },
+      {
+        "property": "printable",
+        "title": "Maɓallin Bugawa",
+        "description": "Ƙara maɓalli don buga teburin kawai."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Bayanan CSV",
+        "description": "Ƙirƙiri tebur daga fayil ɗin CSV da aka ɗora."
+      }
+    ]
+  }
+}

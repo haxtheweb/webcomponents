@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Tohu Kairangi",
+    "description": "He tohu ā-kanohi hei whakaatu i te whiwhi pūkenga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Taitara Tohu",
+        "description": "Taitara e whakaaturia ana ki te tohu."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Atahanga Tohu",
+        "description": "URL atahanga mō te tohu."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Taipitopito Tohu",
+        "description": "Taipitopito mō te tohu."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hononga Tukutuku",
+        "description": "Hono e hāngai ana ki te tohu."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Ngā Pūkenga Tohu",
+        "description": "Ngā pūkenga e whakaaturia ana ki te tohu."
+      },
+      {
+        "property": "skill",
+        "title": "Pūkenga (OER Schema)",
+        "description": "OER Schema: he pūkenga kua akohia i te whakaotinga o tēnei whāinga ako."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "약어",
+    "description": "전체 용어 툴팁이 있는 약어."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "텍스트",
+        "description": "표시되는 약어 텍스트."
+      },
+      {
+        "attribute": "title",
+        "title": "단어",
+        "description": "마우스를 올리면 표시되는 전체 용어."
+      }
+    ]
+  }
+}

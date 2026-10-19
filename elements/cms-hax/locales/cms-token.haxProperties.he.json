@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "אסימון CMS",
+    "description": "אסימון CMS המעובד בצד השרת"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "אסימון",
+        "description": "אסימון מה-CMS שלנו"
+      }
+    ]
+  }
+}

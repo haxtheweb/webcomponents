@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Isikhongozeli esivalekayo",
+    "description": "Isikhongozeli esinye esivulekayo nesivalekayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Isihloko",
+        "description": "Umbhalo wesivali."
+      },
+      {
+        "property": "expanded",
+        "title": "Kuvuliwe",
+        "description": "Vula ngokungagqibekanga."
+      },
+      {
+        "property": "headingButton",
+        "title": "Iqhosha leSihloko",
+        "description": "Yenza sonke isihloko sicofeke endaweni ye-icon kuphela."
+      },
+      {
+        "property": "icon",
+        "title": "I-icon",
+        "description": "I-icon yeqhosha lokuvula/ukuvala."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "I-icon (xa kuvuliwe)",
+        "description": "I-icon ekhethwayo yemeko evuliweyo."
+      },
+      {
+        "slot": "",
+        "title": "Umxholo",
+        "description": "Umxholo wesivali."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Ingcebiso",
+        "description": "Ingcebiso yeqhosha lokuvula/ukuvala."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Ingcebiso (xa kuvuliwe)",
+        "description": "Ingcebiso yeqhosha lokuvula/ukuvala xa kuvuliwe."
+      }
+    ]
+  }
+}

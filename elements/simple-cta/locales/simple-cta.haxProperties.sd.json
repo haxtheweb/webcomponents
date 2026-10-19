@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "عمل لاءِ سڏ",
+    "description": "عمل ڪرڻ لاءِ لنڪ سان سادو بٽڻ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "ليبل",
+        "description": "لنڪ ليبل"
+      },
+      {
+        "property": "link",
+        "title": "لنڪ",
+        "description": "ڪنهن به وسيلي جي لنڪ داخل ڪريو"
+      },
+      {
+        "property": "hideIcon",
+        "title": "آئڪن لڪايو",
+        "description": "متن کي نمايان ڪرڻ لاءِ استعمال ٿيل آئڪن لڪايو"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "آئڪن",
+        "description": "عمل واري لنڪ جو آئڪن"
+      }
+    ]
+  }
+}

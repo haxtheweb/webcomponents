@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "เหรียญตราความสามารถ",
+    "description": "เหรียญตราภาพสำหรับสื่อถึงการได้รับทักษะ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "ชื่อเหรียญตรา",
+        "description": "ชื่อที่แสดงบนเหรียญตรา"
+      },
+      {
+        "property": "badgeImage",
+        "title": "รูปภาพเหรียญตรา",
+        "description": "URL รูปภาพของเหรียญตรา"
+      },
+      {
+        "property": "badgeDetails",
+        "title": "รายละเอียดเหรียญตรา",
+        "description": "รายละเอียดเกี่ยวกับเหรียญตรา"
+      },
+      {
+        "property": "hyperLink",
+        "title": "ไฮเปอร์ลิงก์",
+        "description": "ลิงก์ที่เชื่อมโยงกับเหรียญตรา"
+      },
+      {
+        "property": "badgeSkills",
+        "title": "ทักษะของเหรียญตรา",
+        "description": "ทักษะที่แสดงบนเหรียญตรา"
+      },
+      {
+        "property": "skill",
+        "title": "ทักษะ (OER Schema)",
+        "description": "OER Schema: ทักษะที่ได้เรียนรู้จากการบรรลุวัตถุประสงค์การเรียนรู้นี้"
+      }
+    ]
+  }
+}

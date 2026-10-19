@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Аудио",
+    "description": "Энэ нь эх сурвалжаас үл хамааран видеог өндөр хүртээмжтэй байдлаар харуулж чадна."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Эх сурвалж",
+        "description": "Энэ медиагийн URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Гарчиг",
+        "description": "Видеоны доорх энгийн гарчиг"
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Тоглуулагчийн онцлох өнгийг сонгоно уу."
+      },
+      {
+        "property": "track",
+        "title": "Хадмал",
+        "description": "Хадмалын файлын URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Жижиг зураг",
+        "description": "Заавал биш. Жижиг зураг/постер зургийн URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "Суралцах горимыг идэвхжүүлэх",
+        "description": "Урагш болон хойш гүйлгэхийг идэвхгүй болгоно."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube-д нээх товчлуурыг хасах",
+        "description": "Видеог YouTube-д нээх товчлуурыг хасна."
+      },
+      {
+        "property": "linkable",
+        "title": "Хуваалцах холбоос оруулах уу?",
+        "description": "Видеог хуваалцах холбоос өгнө."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS ашиглах эсэхийг заана.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Арын горимд тоглуулахыг зөвшөөрөх",
+        "description": "Таб фокусаа алдахад видео автоматаар зогсох / тоглох; энэ нь таб фокусгүй үед видеог тоглуулах боломж олгоно"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Транскриптийн бараан загвар",
+        "description": "Транскриптэд бараан загварыг идэвхжүүлэх."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Интерактивыг идэвхгүй болгох",
+        "description": "Транскриптийг товших боломжтой болгодог интерактив горимыг идэвхгүй болгох."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Цагийн тэмдэглэгээг нуух",
+        "description": "Транскрипт дээрх цагийн тэмдэглэгээг нуух."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Транскриптийг нуух",
+        "description": "Транскриптийг анхдагчаар нуух."
+      },
+      {
+        "property": "lang",
+        "title": "Хэл",
+        "description": "Медиагийн хэл."
+      }
+    ]
+  }
+}

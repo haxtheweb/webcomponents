@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Ró bailiúcháin",
+    "description": "Mír i stíl ró le húsáid laistigh de liosta bailiúcháin, le téacs, nasc, deilbhín, clibeanna agus íomhá roghnach."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Nasc",
+        "description": "URL cinn scríbe don ró seo."
+      },
+      {
+        "property": "image",
+        "title": "Íomhá",
+        "description": "Íomhá don ró."
+      },
+      {
+        "property": "alt",
+        "title": "Téacs malartach",
+        "description": "Téacs malartach a chuireann síos ar an íomhá."
+      },
+      {
+        "property": "line1",
+        "title": "Líne 1",
+        "description": "An chéad líne téacs."
+      },
+      {
+        "property": "line2",
+        "title": "Líne 2",
+        "description": "An dara líne téacs."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Deilbhín",
+        "description": "Deilbhín a léiríonn an ró."
+      },
+      {
+        "property": "saturate",
+        "title": "Maisíocht sháithithe",
+        "description": "Athraigh sáithiú na híomhá nuair a dhíríonn an t-úsáideoir air."
+      },
+      {
+        "property": "tags",
+        "title": "Clibeanna",
+        "description": "Liosta clibeanna scartha le camóga."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath",
+        "description": "Dath a úsáidtear don deilbhín agus do na clibeanna."
+      }
+    ]
+  }
+}

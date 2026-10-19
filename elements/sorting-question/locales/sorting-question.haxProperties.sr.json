@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Питање редоследа",
+    "description": "Поређајте ставке правилним редоследом."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Питање",
+        "description": "Заглавље питања."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат оцењивања",
+        "description": "OER Schema: формат оцењивања за ову проверу знања (нпр. бодови, слово, проценат, завршеност)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Циљ учења",
+        "description": "OER Schema: циљ учења повезан са овом провером знања."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс за који је ова провера знања намењена."
+      },
+      {
+        "property": "answers",
+        "title": "Одговори",
+        "description": "Редослед одговора одређује тачан низ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Назив квиза",
+        "description": "Назив квиза за xAPI идентификацију у системима аналитике."
+      }
+    ]
+  }
+}

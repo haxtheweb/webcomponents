@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Sakumpulan tab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Label (kanggo aksesibilitas)",
+        "description": "Label sing bisa diakses kanggo kumpulan tab."
+      },
+      {
+        "property": "disabled",
+        "title": "Dipateni",
+        "description": "Pateni kabeh tab."
+      },
+      {
+        "property": "hidden",
+        "title": "Didhelikake",
+        "description": "Dhelikake kumpulan tab."
+      },
+      {
+        "property": "sticky",
+        "title": "Nempel",
+        "description": "Tetepake tab horisontal ing ndhuwur nalika nggulung."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Breakpoint Tata Letak",
+        "description": "Breakpoint kanggo tab horisontal; gunakake -1 kanggo vertikal wae."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Breakpoint Ikon",
+        "description": "Breakpoint kanggo nampilake teks karo ikon. Gawane 0; gunakake -1 kanggo mode ikon wae."
+      },
+      {
+        "slot": "",
+        "title": "Tab",
+        "description": "Urutan unsur <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Unik",
+        "description": "ID unik kanggo kumpulan tab iki."
+      }
+    ]
+  }
+}

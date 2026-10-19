@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Bişkoka Ebook",
+    "description": "Bişkokek ku girê dide Ebookekê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê bişkokê."
+      },
+      {
+        "property": "link",
+        "title": "Girêdan",
+        "description": "Girêdana ku dema tikandinê lê were veguhastin."
+      },
+      {
+        "property": "icon",
+        "title": "Îkon",
+        "description": "Îkon ji bo temsîlkirina vê girêdanê"
+      }
+    ]
+  }
+}

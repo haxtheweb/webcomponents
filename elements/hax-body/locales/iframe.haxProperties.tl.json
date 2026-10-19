@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Mag-embed ng panlabas na nilalaman mula sa web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Pinagmulan",
+        "description": "URL para sa resource na ito."
+      }
+    ]
+  }
+}

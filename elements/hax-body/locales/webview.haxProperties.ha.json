@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Tushe",
+        "description": "URL na wannan albarka."
+      }
+    ]
+  }
+}

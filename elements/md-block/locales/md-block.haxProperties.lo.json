@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "ບລັອກເນື້ອຫາ markdown ໂດຍກົງ ຫຼື ໂຫຼດຈາກທາງໄກ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "markdown ດິບ"
+      },
+      {
+        "property": "source",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "ໄຟລ໌ຕົ້ນສະບັບສຳລັບ markdown"
+      }
+    ]
+  }
+}

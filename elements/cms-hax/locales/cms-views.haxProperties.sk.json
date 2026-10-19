@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Zobrazenie CMS",
+    "description": "Zobrazenia CMS vykreslené na backende"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Meno",
+        "description": "Názov zobrazenia z nášho CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Zobrazenie",
+        "description": "Displej v rámci tohto zobrazenia z nášho CMS"
+      }
+    ]
+  }
+}

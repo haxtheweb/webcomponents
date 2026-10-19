@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Өнімге шолу",
+    "description": "Өнімге жылдам шолу блогы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Белгіше",
+        "description": "Ұғымды бейнелейтін белгіше."
+      },
+      {
+        "property": "title",
+        "title": "Атауы",
+        "description": "Бір қарағандағы негізгі ұғым."
+      },
+      {
+        "property": "subtitle",
+        "title": "Тақырыпша",
+        "description": "Қосымша мәлімет."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Белгішенің екпін түсі."
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Takai mō ngā kaipurei Spotify tāmau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pūtake",
+        "description": "Hono tāmau, tiri rānei mai i Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Kaupapa",
+        "description": "Kaupapa tae papamuri mō te kaipurei.",
+        "options": {
+          "": "Taunoa",
+          "0": "Pango"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Rahi",
+        "description": "Rahi o te kaipurei.",
+        "options": {
+          "normal": "Taunoa",
+          "compact": "Kiato"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ñe'ẽ jeguerupyre",
+    "description": "Ñe'ẽ jeguerupyre jehaipyrã porã."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Mbojoapy",
+        "description": "Moñe'ẽrã mbojoapy."
+      },
+      {
+        "property": "alt",
+        "title": "Moñe'ẽrã mokõiha",
+        "description": "Moñe'ẽrã mokõiha ta'ãngape g̃uarã."
+      },
+      {
+        "property": "image",
+        "title": "Ta'ãnga",
+        "description": "Ta'ãnga ojehechaukáva ñe'ẽ jeguerupyre ndive."
+      }
+    ]
+  }
+}

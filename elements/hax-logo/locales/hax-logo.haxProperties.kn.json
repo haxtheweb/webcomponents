@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX ಪದ ಕಲೆ",
+    "description": "HAX ಗಾಗಿ ಲೋಗೋ ಅಂಶ, ಸಹಜವಾಗಿ HAX ಸಾಮರ್ಥ್ಯದ ಅಂಶವಾಗಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "ಇರಿಸಬೇಕಾದ HAX ಲೋಗೋದ ಗಾತ್ರ",
+        "options": {
+          "mini": "ಮಿನಿ",
+          "small": "ಚಿಕ್ಕ",
+          "normal": "ಸಾಮಾನ್ಯ",
+          "large": "ದೊಡ್ಡ"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "ಲೋಗೋವನ್ನು ದೊಡ್ಡಕ್ಷರಕ್ಕೆ ಪರಿವರ್ತಿಸಬೇಕೇ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tag",
+    "description": "Semplice elenco di tag da mostrare nella pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Elenco di tag separati da virgole."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Colore di accento automatico",
+        "description": "Imposta automaticamente il colore di accento in base all'etichetta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore",
+        "description": "Colore per i tag."
+      }
+    ]
+  }
+}

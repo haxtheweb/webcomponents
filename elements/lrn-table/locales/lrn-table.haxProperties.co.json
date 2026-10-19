@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tavula CSV",
+    "description": "Pò generà una tavula da un schedariu CSV induve ch'ellu sia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Fonte",
+        "description": "URL di stu schedariu CSV."
+      },
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Titulu di a tavula à generà."
+      },
+      {
+        "property": "description",
+        "title": "Discrizzione",
+        "description": "Discrizzione più detagliata per migliurà l'accessibilità di i dati di a tavula."
+      }
+    ]
+  }
+}

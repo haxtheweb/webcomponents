@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "የመልመጃ ሉህ ማውረጃ",
+    "description": "ለማውረድ የሚገኙ ፋይሎችን ለማሳየት የሚያገለግል አዝራር።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "የማውረጃው ርዕስ።"
+      },
+      {
+        "property": "link",
+        "title": "አገናኝ",
+        "description": "የማውረጃው አገናኝ።"
+      }
+    ]
+  }
+}

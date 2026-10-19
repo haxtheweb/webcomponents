@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "බෙදාගැනීමේ URL එකකින් Discord ප්‍රජාවන් කාවද්දන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "සම්පත් URL",
+        "description": "සම්පත් URL."
+      },
+      {
+        "property": "height",
+        "title": "උස",
+        "description": "අන්තර්ගත රාමුවේ උස."
+      },
+      {
+        "property": "width",
+        "title": "පළල",
+        "description": "අන්තර්ගත රාමුවේ පළල."
+      }
+    ]
+  }
+}

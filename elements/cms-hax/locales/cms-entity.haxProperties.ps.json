@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS واحد",
+    "description": "په بیک اینډ کې ښودل شوی CMS واحد"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "ډول",
+        "description": "زموږ له CMS څخه ډول",
+        "options": {
+          "node": "غوټه",
+          "user": "کارن",
+          "file": "فایل"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "زموږ له CMS څخه id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "د ښودلو حالت",
+        "description": "زموږ له CMS څخه د ښودنې حالت"
+      }
+    ]
+  }
+}

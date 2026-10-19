@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Zvok",
+    "description": "To lahko predstavi video na zelo dostopen način ne glede na vir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Vir",
+        "description": "URL tega medija."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Naslov",
+        "description": "Preprost naslov pod videom"
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Izberite poudarjeno barvo predvajalnika."
+      },
+      {
+        "property": "track",
+        "title": "Podnapisi",
+        "description": "URL datoteke s podnapisi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Sličica",
+        "description": "Neobvezno. URL sličice/naslovne slike."
+      },
+      {
+        "property": "learningMode",
+        "title": "Omogoči učni način",
+        "description": "Onemogoči previjanje naprej in nazaj."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Odstrani gumb za odpiranje v YouTube",
+        "description": "Odstrani gumb za odpiranje videa v YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Vključim povezavo za deljenje?",
+        "description": "Zagotovi povezavo za deljenje videa."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Določa, ali se uporablja CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Dovoli predvajanje v ozadju",
+        "description": "Videi se samodejno zaustavijo / predvajajo, ko zavihek izgubi fokus; to omogoča predvajanje videa, tudi ko zavihek ni v fokusu"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Temna tema za prepis",
+        "description": "Omogoči temno temo za prepis."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Onemogoči interaktivnost",
+        "description": "Onemogoči interaktivni način, v katerem je prepis mogoče klikniti."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Skrij časovne žige",
+        "description": "Skrij časovne žige v prepisu."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Skrij prepis",
+        "description": "Privzeto skrij prepis."
+      },
+      {
+        "property": "lang",
+        "title": "Jezik",
+        "description": "Jezik medija."
+      }
+    ]
+  }
+}

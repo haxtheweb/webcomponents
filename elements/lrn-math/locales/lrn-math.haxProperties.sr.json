@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Математика",
+    "description": "Прикажите математику на леп начин."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Математика",
+        "description": "Унесите једначину као LaTeX"
+      }
+    ]
+  }
+}

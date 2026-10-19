@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub-bydraerslys",
+    "description": "Weergegee as RPG-karakters met die GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisasie",
+        "description": "Organisasienaam uit github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Bewaarplek",
+        "description": "Bewaarpleknaam uit github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Limiet",
+        "description": "Beperk die aantal bydraers wat gewys word."
+      }
+    ]
+  }
+}

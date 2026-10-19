@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "مقارنة الصور",
+    "description": "تمرير صورة فوق أخرى للمقارنة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "الصورة العلوية",
+        "description": "الصورة العلوية التي تُمرَّر فوق الصورة السفلية."
+      },
+      {
+        "property": "topAlt",
+        "title": "النص البديل للصورة العلوية",
+        "description": "نص بديل مطلوب لإمكانية الوصول."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "الصورة السفلية",
+        "description": "الصورة السفلية المعروضة تحت الصورة العلوية."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "النص البديل للصورة السفلية",
+        "description": "نص بديل مطلوب لإمكانية الوصول."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "السلوك",
+        "description": "اختر وضع المسح (افتراضي) أو وضع شفافية الصورة العلوية."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون شريط التمرير."
+      },
+      {
+        "property": "dark",
+        "title": "داكن",
+        "description": "عكس لون شريط التمرير."
+      },
+      {
+        "property": "position",
+        "title": "الموضع الابتدائي",
+        "description": "موضع البداية من 0 إلى 100."
+      }
+    ]
+  }
+}

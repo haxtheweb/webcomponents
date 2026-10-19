@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Hadafka Horumarka Waara ee Qaramada Midoobay."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Hadaf",
+        "description": "Lambarka UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Midab keliya",
+        "description": "Muuji midabka hadafka oo keliya."
+      }
+    ]
+  }
+}

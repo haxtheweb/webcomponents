@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Audio intégré",
+    "description": "Lire de l'audio dans le texte pour compléter le contenu de la page."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "Fichier MP3 ou URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Couleur d'accent de la carte."
+      },
+      {
+        "property": "shiny",
+        "title": "Brillant",
+        "description": "Utiliser un arrière-plan d'accent plus clair au lieu du gris."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Sombre",
+        "description": "Utiliser le mode sombre."
+      }
+    ]
+  }
+}

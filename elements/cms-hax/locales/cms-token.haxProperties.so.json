@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Calaamadda CMS",
+    "description": "Calaamadda CMS ee lagu muujiyo backend-ka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Calaamad",
+        "description": "Calaamad ka timid CMS-kayaga"
+      }
+    ]
+  }
+}

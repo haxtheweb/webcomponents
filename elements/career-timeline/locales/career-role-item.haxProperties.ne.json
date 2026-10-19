@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "करियर भूमिका",
+    "description": "संस्थाभित्रको एउटा भूमिका"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक"
+      },
+      {
+        "property": "startDate",
+        "title": "सुरु मिति"
+      },
+      {
+        "property": "endDate",
+        "title": "अन्त्य मिति (वैकल्पिक)"
+      },
+      {
+        "property": "skills",
+        "title": "सम्बद्ध सीपहरू",
+        "description": "सीपहरू थप्न सुरु गर्न + बटन चयन गर्नुहोस्"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "గణితం",
+    "description": "గణితాన్ని చక్కగా కనిపించే విధంగా ప్రదర్శించండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "గణితం",
+        "description": "సమీకరణాన్ని LaTeXగా నమోదు చేయండి"
+      }
+    ]
+  }
+}

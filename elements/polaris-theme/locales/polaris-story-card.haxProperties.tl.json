@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris story card",
+    "description": "Magpakita ng Polaris story card na may larawan sa background, label ng pillar, at teksto ng headline."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Larawan sa background",
+        "description": "URL ng larawang ipinapakita bilang background ng card."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Laki ng background",
+        "description": "Kung paano pinupuno ng larawan sa background ang card (CSS background-size).",
+        "options": {
+          "cover": "Takpan (cover)",
+          "contain": "Ipagkasya (contain)",
+          "auto": "Awtomatiko (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Pagkakakabit ng background",
+        "description": "Kung paano kumikilos ang larawan sa background kapag nag-i-scroll (CSS background-attachment).",
+        "options": {
+          "scroll": "Nag-i-scroll (scroll)",
+          "fixed": "Nakapirmi (fixed)",
+          "local": "Lokal (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Label ng pillar",
+        "description": "Maikling label na malalaking titik na ipinapakita sa itaas ng card. Iwanang blangko para itago."
+      },
+      {
+        "property": "label",
+        "title": "Teksto ng card",
+        "description": "Pangunahing tekstong ipinapakita sa ibabang panel."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Opsyonal na destinasyong URL na bumabalot sa buong card."
+      }
+    ]
+  }
+}

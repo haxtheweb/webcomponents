@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Mewnosod sylwadau Disqus ar dudalen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Enw byr",
+        "description": "Enw byr y wefan, sy'n pennu gwesteiwr sgript Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL y dudalen",
+        "description": "URL y dudalen y mae'r edefyn sylwadau ynghlwm wrthi."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Dynodwr tudalen",
+        "description": "Y dynodwr unigryw ar gyfer edefyn sylwadau'r dudalen."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Teitl y dudalen",
+        "description": "Teitl y dudalen y mae'r edefyn sylwadau ynghlwm wrthi."
+      },
+      {
+        "property": "loadingText",
+        "title": "Testun llwytho",
+        "description": "Testun a gyhoeddir tra bo'r sylwadau'n llwytho."
+      },
+      {
+        "property": "lang",
+        "title": "Iaith",
+        "description": "Cod iaith ar gyfer rhyngwyneb Disqus, e.e. en."
+      }
+    ]
+  }
+}

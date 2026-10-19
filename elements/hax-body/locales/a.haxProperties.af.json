@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Basiese skakel",
+    "description": "Basiese skakelelement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Skakel",
+        "description": "Bestemming-URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Teks",
+        "description": "Sigbare skakelteks."
+      },
+      {
+        "attribute": "target",
+        "title": "Teiken",
+        "description": "Waar om die skakel oop te maak.",
+        "options": {
+          "": "Dieselfde venster",
+          "_blank": "Nuwe venster - _blank",
+          "_top": "Boonste venster - _top",
+          "_parent": "Ouervenster - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Titelteks",
+        "description": "Adviserende titel vir toeganklikheid en SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Verhouding met die bestemming (sekuriteit/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

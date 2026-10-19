@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Not Defteri",
+    "description": "Değerlendirme ölçütleriyle birden çok arka ucu destekleyen arayüzsüz bir not defteri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kaynak",
+        "description": "Veri kaynağı türü (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL uç noktası (JSON)",
+          "json": "JSON veri bloğu",
+          "filesystem": "Dosya sistemi"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Kaynak Veri",
+        "description": "Not defteri için URL veya JSON verisi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ders Referansı",
+        "description": "Her Değerlendirme kaynağında oer:forCourse olarak yayılan ders tanımlayıcısı."
+      }
+    ]
+  }
+}

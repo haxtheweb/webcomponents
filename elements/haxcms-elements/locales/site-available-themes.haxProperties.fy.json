@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Beskikbere tema's",
+    "description": "Beskikbere HAXcms-tema's toane mei live foarbyldwikseling"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Werjeftemodus",
+        "description": "Kies hoe't de tema's toand wurde",
+        "options": {
+          "gallery": "Galerij",
+          "table": "Tabel"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Details toane",
+        "description": "Temabeskriuwingen en ekstra ynformaasje toane"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Ferburgen en âlde tema's toane",
+        "description": "Ferburgen, âlde en ferskriklike tema's toane neist de dashboardstanderts"
+      },
+      {
+        "property": "columns",
+        "title": "Kolommen (galery)",
+        "description": "Tal kolommen yn galerywerjefte"
+      }
+    ]
+  }
+}

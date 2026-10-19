@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Iliustracijos antraštė",
+    "description": "Iliustracijos antraštė."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Paveikslėlio aprašas",
+        "description": "Tekstas, rodomas po iliustracija."
+      }
+    ]
+  }
+}

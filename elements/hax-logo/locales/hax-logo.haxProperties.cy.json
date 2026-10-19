@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Celf geiriau HAX",
+    "description": "Elfen logo ar gyfer HAX, yn amlwg fel elfen sy'n gydnaws â HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Maint y logo HAX i'w osod",
+        "options": {
+          "mini": "Mini",
+          "small": "Bach",
+          "normal": "Arferol",
+          "large": "Mawr"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "A ddylid trawsnewid y logo i briflythrennau"
+      }
+    ]
+  }
+}

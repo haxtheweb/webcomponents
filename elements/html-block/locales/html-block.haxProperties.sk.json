@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Blok HTML",
+    "description": "Základný blok HTML, ktorý poskytuje napojenie HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Kód HTML, ktorý chcete prezentovať v obsahu"
+      }
+    ]
+  }
+}

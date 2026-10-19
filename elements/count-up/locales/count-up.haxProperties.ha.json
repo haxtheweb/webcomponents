@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Ƙidaya Sama",
+    "description": "Nuna lamba tana ƙidaya sama zuwa ƙimar manufa idan ta bayyana a allo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Ƙimar ƙarshe",
+        "description": "Lambar da za a ƙidaya har zuwa gare ta."
+      },
+      {
+        "property": "start",
+        "title": "Ƙimar farawa",
+        "description": "Lambar da za a fara ƙidaya daga gare ta."
+      },
+      {
+        "property": "duration",
+        "title": "Tsawon lokaci",
+        "description": "Daƙiƙun da motsin ƙidayar zai ɗauka."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Rubutun gaba",
+        "description": "Rubutun da ake nunawa kafin lambar (misali '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Rubutun baya",
+        "description": "Rubutun da ake nunawa bayan lambar (misali '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Ramin gaba",
+        "description": "Abun ciki na zaɓi a gaban lambar."
+      },
+      {
+        "slot": "suffix",
+        "title": "Ramin baya",
+        "description": "Abun ciki na zaɓi bayan lambar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Wuraren goma",
+        "description": "Adadin wuraren goma da za a nuna."
+      },
+      {
+        "property": "separator",
+        "title": "Mai raba dubbai",
+        "description": "Harafin da ke raba rukunin dubbai."
+      },
+      {
+        "property": "decimal",
+        "title": "Harafin goma",
+        "description": "Harafin da ake amfani da shi a matsayin digon goma."
+      },
+      {
+        "property": "noeasing",
+        "title": "Babu sassauci",
+        "description": "Kashe sassauci domin ƙidayar ta tafi daidai."
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Πηγή",
+        "description": "URL για αυτόν τον πόρο."
+      }
+    ]
+  }
+}

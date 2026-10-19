@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ریاضی",
+    "description": "نمایش ریاضی به شکلی زیبا."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "ریاضی",
+        "description": "معادله را به‌صورت LaTeX وارد کنید"
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Autoverifica",
+    "description": "Gli utenti possono completare un'autoverifica."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Immagine",
+        "description": "Immagine per l'autoverifica."
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo dell'autoverifica."
+      },
+      {
+        "property": "alt",
+        "title": "Testo alternativo",
+        "description": "Testo alternativo per l'immagine."
+      },
+      {
+        "slot": "question",
+        "title": "Domanda"
+      },
+      {
+        "slot": "",
+        "title": "Risposta"
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore del tema",
+        "description": "Scegli un colore del tema dal design system.",
+        "options": {
+          "primary": "Primario",
+          "accent": "Accento",
+          "success": "Successo",
+          "warning": "Avviso",
+          "error": "Errore",
+          "info": "Informazioni"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiettivo di apprendimento",
+        "description": "Riferimento all'obiettivo di apprendimento emesso come oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Valuta",
+        "description": "Riferimento all'attività emesso come oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Link di approfondimento",
+        "description": "Link a informazioni aggiuntive."
+      }
+    ]
+  }
+}

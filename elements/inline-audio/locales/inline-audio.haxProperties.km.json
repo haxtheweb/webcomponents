@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "សំឡេងក្នុងជួរ",
+    "description": "ចាក់សំឡេងក្នុងជួរដើម្បីបំពេញខ្លឹមសារទំព័រ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ប្រភព",
+        "description": "ឯកសារ MP3 ឬ URL។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌សង្កត់របស់កាត។"
+      },
+      {
+        "property": "shiny",
+        "title": "ភ្លឺចាំង",
+        "description": "ប្រើផ្ទៃខាងក្រោយពណ៌សង្កត់ស្រាលជំនួសឱ្យពណ៌ប្រផេះ។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ងងឹត",
+        "description": "ប្រើរបៀបងងឹត។"
+      }
+    ]
+  }
+}

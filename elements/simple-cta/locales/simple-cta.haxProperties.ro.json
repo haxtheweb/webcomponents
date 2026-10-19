@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Îndemn la acțiune",
+    "description": "Un buton simplu cu un link pentru a acționa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etichetă",
+        "description": "Eticheta linkului"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Introdu un link către orice resursă"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Ascunde pictograma",
+        "description": "Ascunde pictograma folosită pentru a accentua textul"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Pictogramă",
+        "description": "Pictograma linkului de acțiune"
+      }
+    ]
+  }
+}

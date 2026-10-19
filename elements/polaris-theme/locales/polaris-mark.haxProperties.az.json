@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris nişanı",
+    "description": "PSU identifikasiya nişanını ixtiyari kollec adı və hədəf URL ilə göstər."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Kollec adı",
+        "description": "Nişanın yanında göstərilən ad."
+      },
+      {
+        "property": "name2",
+        "title": "Kollec adı 2",
+        "description": "Birinci kollec adının altında göstərilən ikinci ad."
+      },
+      {
+        "property": "name3",
+        "title": "Kollec adı 3",
+        "description": "İkinci kollec adının altında göstərilən üçüncü ad."
+      },
+      {
+        "property": "url",
+        "title": "Keçid",
+        "description": "Nişana kliklədikdə hədəf URL."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Nişanın vizual variantı.",
+        "options": {
+          "default": "Defolt",
+          "light": "Açıq",
+          "dark": "Tünd"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Şaquli düzən",
+        "description": "Üçüncü adı ikinci adın altında üfüqi xətlə göstər."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Цитата із зображенням",
+    "description": "Стилізована цитата з необов'язковим зображенням."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Зображення",
+        "description": "Додати зображення до відгуку."
+      },
+      {
+        "property": "name",
+        "title": "Повне ім'я",
+        "description": "Ім'я людини, яка дає відгук."
+      },
+      {
+        "property": "position",
+        "title": "Посада",
+        "description": "Посада людини."
+      },
+      {
+        "slot": "",
+        "title": "Цитата",
+        "description": "Цитата автора відгуку."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Raginimas veikti",
+    "description": "Paprastas mygtukas su nuoroda veiksmui atlikti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiketė",
+        "description": "Nuorodos užrašas"
+      },
+      {
+        "property": "link",
+        "title": "Nuoroda",
+        "description": "Įveskite nuorodą į bet kokį išteklių"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Slėpti piktogramą",
+        "description": "Slėpti tekstą paryškinančią piktogramą"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Piktograma",
+        "description": "Veiksmo nuorodos piktograma"
+      }
+    ]
+  }
+}

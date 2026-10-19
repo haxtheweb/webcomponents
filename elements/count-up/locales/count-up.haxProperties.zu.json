@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Ukubala Kunyuka",
+    "description": "Yenza inombolo ibale inyuke iye enanini elihlosiwe lapho iskrolelwa ekubukeni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Inani lokugcina",
+        "description": "Inombolo okubalwa kuyiwa kuyo."
+      },
+      {
+        "property": "start",
+        "title": "Inani lokuqala",
+        "description": "Inombolo okuqalwa kuyo ukubala."
+      },
+      {
+        "property": "duration",
+        "title": "Isikhathi",
+        "description": "Imizuzwana okufanele ithathwe ukunyakaza kokubala."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Umbhalo wesiqalo",
+        "description": "Umbhalo oboniswa ngaphambi kwenombolo (isb. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Umbhalo wesijobelelo",
+        "description": "Umbhalo oboniswa ngemuva kwenombolo (isb. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Isikhala sesiqalo",
+        "description": "Okuqukethwe ongakukhetha ngaphambi kwenombolo."
+      },
+      {
+        "slot": "suffix",
+        "title": "Isikhala sesijobelelo",
+        "description": "Okuqukethwe ongakukhetha ngemuva kwenombolo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Izindawo zedesimali",
+        "description": "Inani lezindawo zedesimali ezizoboniswa."
+      },
+      {
+        "property": "separator",
+        "title": "Isihlukanisi sezinkulungwane",
+        "description": "Uhlamvu oluhlukanisa amaqembu ezinkulungwane."
+      },
+      {
+        "property": "decimal",
+        "title": "Uhlamvu lwedesimali",
+        "description": "Uhlamvu olusetshenziselwa iphoyinti ledesimali."
+      },
+      {
+        "property": "noeasing",
+        "title": "Akukho ukwehlisa ijubane",
+        "description": "Khubaza ukwehlisa ijubane ukuze ukubala kuhambe ngokulinganayo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "عنصر المراجع",
+    "description": "عنصر يمثل استشهادًا واحدًا في قائمة المراجع، يدعم صيغًا متعددة وخيارات تصدير."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "النوع",
+        "description": "نوع الاستشهاد",
+        "options": {
+          "web": "الويب",
+          "journal": "مجلة علمية",
+          "book": "كتاب"
+        }
+      },
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "عنوان العنصر"
+      },
+      {
+        "property": "authors",
+        "title": "المؤلف (المؤلفون)",
+        "description": "الأحداث في المخطط الزمني"
+      },
+      {
+        "property": "publisher",
+        "title": "الناشر",
+        "description": "الموقع الأصلي"
+      }
+    ]
+  }
+}

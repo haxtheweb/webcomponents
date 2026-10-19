@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "ຕົວຫໍ່ສຳລັບການຝັງເຄື່ອງຫຼິ້ນ Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "ລິ້ງຝັງ ຫຼື ລິ້ງແບ່ງປັນຈາກ Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "ຊຸດຮູບແບບ",
+        "description": "ຊຸດສີພື້ນຫຼັງສຳລັບເຄື່ອງຫຼິ້ນ.",
+        "options": {
+          "": "ຄ່າເລີ່ມຕົ້ນ",
+          "0": "ດຳ"
+        }
+      },
+      {
+        "property": "size",
+        "title": "ຂະໜາດ",
+        "description": "ຂະໜາດເຄື່ອງຫຼິ້ນ.",
+        "options": {
+          "normal": "ຄ່າເລີ່ມຕົ້ນ",
+          "compact": "ກະທັດຮັດ"
+        }
+      }
+    ]
+  }
+}

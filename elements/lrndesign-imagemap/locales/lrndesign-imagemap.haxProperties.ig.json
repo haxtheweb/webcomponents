@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Maapụ onyonyo",
+    "description": "Maapụ onyonyo dị mfe ịnweta nwere ebe ọkụ na-emekọrịta ihe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Akara aha",
+        "description": "Akara aha maka maapụ onyonyo ahụ."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Nkọwa ebe ọkụ",
+        "description": "Ebe ọkụ na-emekọrịta ihe na maapụ onyonyo ahụ."
+      }
+    ]
+  }
+}

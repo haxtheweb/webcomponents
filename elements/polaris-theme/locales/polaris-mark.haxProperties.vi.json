@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Dấu hiệu Polaris",
+    "description": "Hiển thị dấu hiệu nhận diện PSU kèm tên trường và URL đích tùy chọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Tên trường",
+        "description": "Tên hiển thị cạnh dấu hiệu."
+      },
+      {
+        "property": "name2",
+        "title": "Tên trường 2",
+        "description": "Tên thứ hai hiển thị bên dưới tên trường đầu tiên."
+      },
+      {
+        "property": "name3",
+        "title": "Tên trường 3",
+        "description": "Tên thứ ba hiển thị bên dưới tên trường thứ hai."
+      },
+      {
+        "property": "url",
+        "title": "Liên kết",
+        "description": "URL đích khi nhấp vào dấu hiệu."
+      },
+      {
+        "property": "type",
+        "title": "Biến thể",
+        "description": "Biến thể trực quan của dấu hiệu.",
+        "options": {
+          "default": "Mặc định",
+          "light": "Sáng",
+          "dark": "Tối"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Bố cục dọc",
+        "description": "Hiển thị tên thứ ba bên dưới tên thứ hai với một đường kẻ ngang."
+      }
+    ]
+  }
+}

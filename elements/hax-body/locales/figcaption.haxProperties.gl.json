@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Pé de figura",
+    "description": "Pé para unha figura."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Lenda",
+        "description": "Texto mostrado debaixo da figura."
+      }
+    ]
+  }
+}

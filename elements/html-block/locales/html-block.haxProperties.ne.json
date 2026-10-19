@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html ब्लक",
+    "description": "HAXschema जडान दिने आधारभूत HTML ब्लक"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "सामग्रीमा प्रस्तुत गर्न चाहनुभएको HTML कोड"
+      }
+    ]
+  }
+}

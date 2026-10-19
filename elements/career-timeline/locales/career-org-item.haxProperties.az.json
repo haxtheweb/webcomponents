@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Karyera elementi",
+    "description": "Ayrıca təşkilat və ona aid vəzifələr"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Təşkilatın adı"
+      },
+      {
+        "property": "location",
+        "title": "Məkan"
+      },
+      {
+        "property": "source",
+        "title": "Mənbə"
+      }
+    ]
+  }
+}

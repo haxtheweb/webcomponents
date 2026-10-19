@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Chinhu cheBasa",
+    "description": "Sangano rimwe nemabasa ane chekuita naro"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Zita reSangano"
+      },
+      {
+        "property": "location",
+        "title": "Nzvimbo"
+      },
+      {
+        "property": "source",
+        "title": "Kwakabva"
+      }
+    ]
+  }
+}

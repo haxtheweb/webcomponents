@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Прикажи тематско Polaris копче за повик на дејство."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Текст на копчето",
+        "description": "Текст прикажан во копчето за повик на дејство."
+      },
+      {
+        "property": "link",
+        "title": "Врска",
+        "description": "Одредишен URL за копчето."
+      },
+      {
+        "property": "type",
+        "title": "Варијанта",
+        "description": "Варијанта на визуелниот стил.",
+        "options": {
+          "primary": "Основно",
+          "tinted": "Затемнето",
+          "light": "Светло"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Стил со контура",
+        "description": "Овозможи изглед со контура."
+      },
+      {
+        "property": "filled",
+        "title": "Пополнет стил",
+        "description": "Овозможи пополнет изглед."
+      }
+    ]
+  }
+}

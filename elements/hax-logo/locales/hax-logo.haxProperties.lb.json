@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX-Wuertkonscht",
+    "description": "Logo-Element fir HAX, natierlech als HAX-fäegt Element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Gréisst vum HAX-Logo, dat agesat gëtt",
+        "options": {
+          "mini": "Mini",
+          "small": "Kleng",
+          "normal": "Normal",
+          "large": "Grouss"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Ob de Logo a Groussbuschtawen ëmgewandelt gëtt"
+      }
+    ]
+  }
+}

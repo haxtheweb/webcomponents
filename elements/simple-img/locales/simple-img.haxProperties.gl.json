@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Imaxe simple",
+    "description": "Manipula imaxes con parámetros simples."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Orixe",
+        "description": "URL de orixe da imaxe."
+      },
+      {
+        "property": "height",
+        "title": "Altura",
+        "description": "Altura opcional da imaxe."
+      },
+      {
+        "property": "width",
+        "title": "Largura",
+        "description": "Largura opcional da imaxe."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo",
+        "description": "Útil para os lectores de pantalla e para mellorar o SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Calidade",
+        "description": "Calidade da imaxe ao xerala (só JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Prioridade de obtención",
+        "description": "Indicación de rendemento para navegadores modernos.",
+        "options": {
+          "auto": "Automática",
+          "high": "Alta",
+          "low": "Baixa"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Método de descodificación",
+        "description": "Indicación de rendemento para a representación de imaxes en navegadores modernos.",
+        "options": {
+          "auto": "Automática",
+          "async": "Asíncrono"
+        }
+      }
+    ]
+  }
+}

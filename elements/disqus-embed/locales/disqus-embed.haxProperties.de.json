@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Disqus-Kommentare in eine Seite einbetten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Kurzname",
+        "description": "Der Kurzname der Website, der den Host des Disqus-Skripts bestimmt."
+      },
+      {
+        "property": "pageURL",
+        "title": "Seiten-URL",
+        "description": "Die URL der Seite, zu der der Kommentar-Thread gehört."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Seitenkennung",
+        "description": "Die eindeutige Kennung des Kommentar-Threads der Seite."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Seitentitel",
+        "description": "Der Titel der Seite, zu der der Kommentar-Thread gehört."
+      },
+      {
+        "property": "loadingText",
+        "title": "Ladetext",
+        "description": "Text, der angesagt wird, während die Kommentare geladen werden."
+      },
+      {
+        "property": "lang",
+        "title": "Sprache",
+        "description": "Sprachcode für die Disqus-Oberfläche, z. B. en."
+      }
+    ]
+  }
+}

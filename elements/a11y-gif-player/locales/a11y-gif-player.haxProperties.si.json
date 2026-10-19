@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "සජීවිකරණ GIF ප්‍රවේශ්‍ය කරන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "සජීවිකරණ GIF",
+        "description": "සජීවිකරණ GIF සඳහා URL."
+      },
+      {
+        "property": "alt",
+        "title": "විකල්ප පෙළ",
+        "description": "රූපය සඳහා විකල්ප පෙළ."
+      },
+      {
+        "property": "longdesc",
+        "title": "දීර්ඝ විස්තරය",
+        "description": "ප්‍රවේශ්‍යතාව සඳහා GIF හි දීර්ඝ විස්තරය."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "නිශ්චල රූපය",
+        "description": "GIF හි නිශ්චල රූප අනුවාදයක් සඳහා URL."
+      }
+    ]
+  }
+}

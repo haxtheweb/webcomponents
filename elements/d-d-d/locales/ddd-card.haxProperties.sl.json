@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kartica",
+    "description": "Komponenta kartice, oblikovana s sistemom oblikovanja DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Slika",
+        "description": "Neobvezna slika."
+      },
+      {
+        "property": "alt",
+        "title": "Alt slike",
+        "description": "Nadomestno besedilo, ki opisuje sliko."
+      },
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov kartice."
+      },
+      {
+        "slot": "",
+        "title": "Vsebina",
+        "description": "Območje vsebine kartice."
+      },
+      {
+        "property": "href",
+        "title": "Povezava",
+        "description": "URL povezave gumba."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Oznaka",
+        "description": "Oznaka gumba."
+      },
+      {
+        "property": "noArrow",
+        "title": "Brez puščice",
+        "description": "Skrij puščico gumba."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Povezava: cilj",
+        "description": "Kje naj se povezava odpre.",
+        "options": {
+          "": "Isto okno",
+          "_blank": "Novo okno - _blank",
+          "_top": "Najvišje okno - _top",
+          "_parent": "Nadrejeno okno - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Povezava: rel",
+        "description": "Razmerje med povezanim virom in trenutnim dokumentom."
+      }
+    ]
+  }
+}

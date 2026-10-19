@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "کارڈ",
+    "description": "اختیاری ایکسنٹ سٹائل والا کارڈ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "سرخی",
+        "description": "کارڈ لئی سرخی۔"
+      },
+      {
+        "slot": "subheading",
+        "title": "ذیلی سرخی",
+        "description": "کارڈ لئی اختیاری ذیلی سرخی۔"
+      },
+      {
+        "slot": "content",
+        "title": "مواد",
+        "description": "کارڈ لئی مواد۔"
+      },
+      {
+        "slot": "footer",
+        "title": "فُٹر",
+        "description": "کارڈ لئی اختیاری فُٹر۔"
+      },
+      {
+        "property": "imageSrc",
+        "title": "تصویر",
+        "description": "اختیاری تصویر"
+      },
+      {
+        "property": "imageAlt",
+        "title": "تصویر دا متبادل متن",
+        "description": "سکرین ریڈراں لئی تصویر بیان کرن والا متبادل متن۔ صرف اوس ویلے خالی چھڈو جدوں تصویر بس سجاوٹ لئی ہووے۔"
+      },
+      {
+        "property": "imageAlign",
+        "title": "تصویر دی ترتیب",
+        "description": "تصویر دی لیٹویں ترتیب",
+        "options": {
+          "left": "کھبے",
+          "center": "وچکار",
+          "right": "سجے"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "تصویر دی کھلوتی ترتیب",
+        "description": "تصویر دی کھلوتی ترتیب",
+        "options": {
+          "top": "اُتے",
+          "center": "وچکار",
+          "bottom": "تھلے"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "اختیاری نمایاں رنگ۔"
+      },
+      {
+        "property": "dark",
+        "title": "گوڑھا تھیم",
+        "description": "ڈارک تھیم چالو کرو"
+      },
+      {
+        "property": "horizontal",
+        "title": "افقی",
+        "description": "لیٹواں رخ؟"
+      },
+      {
+        "property": "accentHeading",
+        "title": "سرخی ایکسنٹ",
+        "description": "سرخی تے ایکسنٹ رنگ لاؤݨا اے؟"
+      },
+      {
+        "property": "accentBackground",
+        "title": "پس منظر ایکسنٹ",
+        "description": "کارڈ دے پس منظر تے ایکسنٹ رنگ لاؤݨا اے؟"
+      },
+      {
+        "property": "noBorder",
+        "title": "بارڈر ایکسنٹ نئیں",
+        "description": "بارڈر ایکسنٹ ہٹاؤݨا اے؟"
+      },
+      {
+        "property": "flat",
+        "title": "پدھرا",
+        "description": "بکس دا پرچھاواں ہٹاؤݨا اے؟"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "کونا",
+        "description": "کارڈ دے کونے لئی مواد۔"
+      }
+    ]
+  }
+}

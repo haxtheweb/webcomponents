@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Sitaat mei ôfbylding",
+    "description": "Opmakke sitaat mei in opsjonele ôfbylding."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Ofbylding",
+        "description": "In ôfbylding oan it tsjûgenis tafoegje."
+      },
+      {
+        "property": "name",
+        "title": "Folsleine namme",
+        "description": "Namme fan de persoan dy't it tsjûgenis jout."
+      },
+      {
+        "property": "position",
+        "title": "Funksje of baantitel",
+        "description": "Funksje of baantitel fan de persoan."
+      },
+      {
+        "slot": "",
+        "title": "Sitaat",
+        "description": "Sitaat fan de auteur fan it tsjûgenis."
+      }
+    ]
+  }
+}

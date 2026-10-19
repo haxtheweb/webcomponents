@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "تاریخ",
+    "description": "تفصیلاں نال کیلنڈر دی تاریخ وکھاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "مہینہ",
+        "description": "کارڈ اُتے وکھایا جاوݨ والا مہینہ۔"
+      },
+      {
+        "property": "date",
+        "title": "مہینے دا دن",
+        "description": "مہینے دے دن دا نمبر۔"
+      },
+      {
+        "property": "day",
+        "title": "ہفتے دا دن",
+        "description": "ہفتے دے دن دا ناں۔"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "تقریب دا ناں۔"
+      },
+      {
+        "property": "location",
+        "title": "تھاں",
+        "description": "تقریب دی تھاں۔"
+      },
+      {
+        "property": "startTime",
+        "title": "شروع",
+        "description": "شروع ہوݨ دا ویلا۔"
+      },
+      {
+        "property": "endTime",
+        "title": "اخیر",
+        "description": "مکݨ دا ویلا۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "اختیاری نمایاں رنگ۔"
+      },
+      {
+        "property": "dark",
+        "title": "گوڑھا تھیم",
+        "description": "گوڑھا تھیم فعال کرو۔"
+      }
+    ]
+  }
+}

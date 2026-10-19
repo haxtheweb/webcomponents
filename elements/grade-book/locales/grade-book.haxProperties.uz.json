@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Baholar jurnali",
+    "description": "Rubrikalar bilan bir nechta backendni qoʻllab-quvvatlaydigan interfeyssiz baholar jurnali."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manba",
+        "description": "Maʼlumotlar manbai turi (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "JSON maʼlumotlar bloki",
+          "filesystem": "Fayl tizimi"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Manba maʼlumotlari",
+        "description": "Baholar jurnali uchun URL yoki JSON maʼlumotlari."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursga havola",
+        "description": "Har bir Assessment resursida oer:forCourse sifatida chiqariladigan kurs identifikatori."
+      }
+    ]
+  }
+}

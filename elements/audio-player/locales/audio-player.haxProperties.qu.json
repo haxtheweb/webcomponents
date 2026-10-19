@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Uyarina",
+    "description": "Kayqa videota ancha haykunalla hinata rikuchiyta atin, maymantapas kachun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pukyu",
+        "description": "Kay mediap URL-nin."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Suti",
+        "description": "Video urayninpaq sapalla suti"
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Puklachiqpaq accent llimpita akllay."
+      },
+      {
+        "property": "track",
+        "title": "Subtitulokuna",
+        "description": "Subtitulo willañiqip URL-nin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Huch'uy siq'i",
+        "description": "Munaspalla. Huch'uy siq'ip/poster siq'ip URL-nin."
+      },
+      {
+        "property": "learningMode",
+        "title": "Yachay kayta hap'ichiy",
+        "description": "Utqaylla ñawpaqman qhipaman puriyta wañuchin."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube-pi kichay botonta hurquy",
+        "description": "Videota YouTube-pi kichana botonta hurqun."
+      },
+      {
+        "property": "linkable",
+        "title": "Rakinakuy t'inkita yapankichu?",
+        "description": "Videota rakinakunapaq t'inkita qun."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS llamk'achinachus kasqanta willan.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Qhipapi puklachiyta saqiy",
+        "description": "Videokunaqa kikillanmanta sayanku / puklanku pestaña mana akllasqa kaptin; kayqa videota puklachin pestaña mana akllasqa kaptinpas"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Qillqasqapaq tuta rikch'ay",
+        "description": "Qillqasqapaq tuta rikch'ayta hap'ichiy."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Kuyuqta Wañuchiy",
+        "description": "Qillqasqata ñit'inalla ruraq kuyuq kayta wañuchiy."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Pacha unanchakunata pakay",
+        "description": "Qillqasqapi pacha unanchakunata pakay."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Qillqasqata Pakay",
+        "description": "Qillqasqata kikinmanta pakay."
+      },
+      {
+        "property": "lang",
+        "title": "Simi",
+        "description": "Mediap simin."
+      }
+    ]
+  }
+}

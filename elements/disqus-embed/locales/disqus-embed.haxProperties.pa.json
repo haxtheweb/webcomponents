@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "ਪੰਨੇ 'ਤੇ Disqus ਟਿੱਪਣੀਆਂ ਏਮਬੈਡ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "ਛੋਟਾ ਨਾਮ",
+        "description": "ਸਾਈਟ ਦਾ ਛੋਟਾ ਨਾਮ, ਜੋ Disqus ਸਕ੍ਰਿਪਟ ਹੋਸਟ ਨਿਰਧਾਰਤ ਕਰਦਾ ਹੈ।"
+      },
+      {
+        "property": "pageURL",
+        "title": "ਪੰਨਾ URL",
+        "description": "ਉਸ ਪੰਨੇ ਦਾ URL ਜਿਸ ਨਾਲ ਟਿੱਪਣੀ ਥ੍ਰੈੱਡ ਜੁੜਿਆ ਹੈ।"
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "ਪੰਨਾ ਪਛਾਣਕਰਤਾ",
+        "description": "ਪੰਨੇ ਦੇ ਟਿੱਪਣੀ ਥ੍ਰੈੱਡ ਲਈ ਵਿਲੱਖਣ ਪਛਾਣਕਰਤਾ।"
+      },
+      {
+        "property": "pageTitle",
+        "title": "ਪੰਨੇ ਦਾ ਸਿਰਲੇਖ",
+        "description": "ਉਸ ਪੰਨੇ ਦਾ ਸਿਰਲੇਖ ਜਿਸ ਨਾਲ ਟਿੱਪਣੀ ਥ੍ਰੈੱਡ ਜੁੜਿਆ ਹੈ।"
+      },
+      {
+        "property": "loadingText",
+        "title": "ਲੋਡ ਹੋਣ ਦੀ ਲਿਖਤ",
+        "description": "ਟਿੱਪਣੀਆਂ ਲੋਡ ਹੋਣ ਦੌਰਾਨ ਸੁਣਾਈ ਜਾਣ ਵਾਲੀ ਲਿਖਤ।"
+      },
+      {
+        "property": "lang",
+        "title": "ਭਾਸ਼ਾ",
+        "description": "Disqus ਇੰਟਰਫੇਸ ਲਈ ਭਾਸ਼ਾ ਕੋਡ, ਜਿਵੇਂ en।"
+      }
+    ]
+  }
+}

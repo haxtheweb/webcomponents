@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Siteweergave",
+    "description": "Een dynamisch blok dat sitegegevens opvraagt en toont op basis van criteria"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Weergave-URL",
+        "description": "Queryparameters voor de datafeed van de weergave. Deze kun je verkrijgen via het dashboard Weergaven."
+      },
+      {
+        "property": "renderer",
+        "title": "Weergavemodus",
+        "description": "Hoe de resultaten van de weergave moeten worden weergegeven"
+      },
+      {
+        "property": "entity",
+        "title": "Entiteitstype",
+        "description": "Entiteitstype dat wordt gebruikt om het antwoord te verwerken",
+        "options": {
+          "": "Standaard (items)",
+          "item": "Item",
+          "page": "Pagina",
+          "file": "Bestand",
+          "tag": "Tag",
+          "block": "Blok",
+          "view": "Weergave",
+          "theme": "Thema",
+          "region": "Regio",
+          "customElement": "Aangepast element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Siteweergave loskoppelen",
+        "description": "Omzetten naar statische inhoud om direct te bewerken; stopt automatische updates vanuit de bron."
+      }
+    ]
+  }
+}

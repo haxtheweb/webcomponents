@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Ĉirkaŭaĵo por enkorpigoj de la Spotify-ludilo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonto",
+        "description": "Enkorpiga aŭ kunhaviga ligilo el Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Temo",
+        "description": "Fona kolora temo por la ludilo.",
+        "options": {
+          "": "Defaŭlta",
+          "0": "Nigra"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Grandeco",
+        "description": "Grandeco de la ludilo.",
+        "options": {
+          "normal": "Defaŭlta",
+          "compact": "Kompakta"
+        }
+      }
+    ]
+  }
+}

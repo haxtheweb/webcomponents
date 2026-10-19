@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Bloc HTML",
+    "description": "Un bloc HTML de base qui fournit le câblage HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Code HTML que vous voulez présenter dans le contenu"
+      }
+    ]
+  }
+}

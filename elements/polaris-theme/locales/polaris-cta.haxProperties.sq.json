@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Shfaq një buton thirrjeje për veprim Polaris me temë."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Teksti i butonit",
+        "description": "Teksti i shfaqur në butonin e thirrjes për veprim."
+      },
+      {
+        "property": "link",
+        "title": "Lidhja",
+        "description": "URL-ja e destinacionit për butonin."
+      },
+      {
+        "property": "type",
+        "title": "Varianti",
+        "description": "Varianti i stilit vizual.",
+        "options": {
+          "primary": "Kryesor",
+          "tinted": "I ngjyrosur",
+          "light": "E çelët"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Stil me kontur",
+        "description": "Aktivizo trajtimin me kontur."
+      },
+      {
+        "property": "filled",
+        "title": "Stil i mbushur",
+        "description": "Aktivizo trajtimin e mbushur."
+      }
+    ]
+  }
+}

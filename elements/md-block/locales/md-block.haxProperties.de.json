@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Ein Block mit Markdown-Inhalt, direkt oder extern geladen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Roher Markdown-Text"
+      },
+      {
+        "property": "source",
+        "title": "Quelle",
+        "description": "Quelldatei für Markdown"
+      }
+    ]
+  }
+}

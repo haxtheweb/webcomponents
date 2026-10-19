@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Rosca de progresso",
+    "description": "Rosca de progressão"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "O título do elemento"
+      },
+      {
+        "property": "desc",
+        "title": "Descrição",
+        "description": "Descrição longa acessível"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Origem da imagem",
+        "description": "Origem da imagem dentro da rosca."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Texto alternativo da imagem",
+        "description": "Texto alternativo da imagem."
+      },
+      {
+        "property": "animated",
+        "title": "Animado",
+        "description": "Se o progresso é animado no primeiro carregamento"
+      },
+      {
+        "property": "complete",
+        "title": "Concluído",
+        "description": "Um array de valores concluídos."
+      },
+      {
+        "property": "total",
+        "title": "Total",
+        "description": "Total quando todos os itens estiverem concluídos."
+      },
+      {
+        "property": "startAngle",
+        "title": "Ângulo inicial",
+        "description": "Ângulo da rosca onde o progresso começa"
+      }
+    ]
+  }
+}

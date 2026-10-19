@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "አስደናቂ ፍንዳታ",
+    "description": "አማራጭ የድምፅ ውጤቶች ያሉት በይነተገናኝ የፍንዳታ እነማ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "መጠን",
+        "description": "የፍንዳታውን መጠን አዘጋጅ።",
+        "options": {
+          "tiny": "በጣም ትንሽ",
+          "small": "ትንሽ",
+          "medium": "መካከለኛ",
+          "large": "ትልቅ",
+          "epic": "ግዙፍ"
+        }
+      },
+      {
+        "property": "color",
+        "title": "ቀለም",
+        "description": "የፍንዳታውን የቀለም ገጽታ አዘጋጅ።",
+        "options": {
+          "": "ነባሪ",
+          "red": "ቀይ",
+          "blue": "ሰማያዊ",
+          "purple": "ሐምራዊ",
+          "orange": "ብርቱካናማ",
+          "yellow": "ቢጫ"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "የድምፅ ውጤቶች",
+        "description": "የድምፅ ውጤቶችን አንቃ።"
+      },
+      {
+        "property": "resetSound",
+        "title": "ድምፅ ዳግም አስጀምር",
+        "description": "ድምፁን በእያንዳንዱ ጊዜ ከመጀመሪያው እንደገና ጀምር።"
+      },
+      {
+        "property": "image",
+        "title": "ብጁ ምስል",
+        "description": "ለብጁ የፍንዳታ ምስል አማራጭ URL።"
+      },
+      {
+        "property": "sound",
+        "title": "ብጁ ድምፅ",
+        "description": "ለብጁ የድምፅ ውጤት አማራጭ URL።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "ተሰናክሏል",
+        "description": "ሁሉንም መስተጋብሮች አሰናክል።"
+      }
+    ]
+  }
+}

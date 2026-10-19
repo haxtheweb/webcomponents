@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF preglednik u pregledniku",
+    "description": "Ugradite PDF datoteku unutar stranice s opcionalnim rasporedom kartice i dugmetom za preuzimanje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "Lokacija PDF datoteke."
+      },
+      {
+        "property": "heading",
+        "title": "Naslov",
+        "description": "Tekst naslova kartice."
+      },
+      {
+        "property": "card",
+        "title": "Raspored kartice",
+        "description": "Prikaži PDF u kartici s dugmetom za preuzimanje."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Oznaka preuzimanja",
+        "description": "Oznaka dugmeta za preuzimanje."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Poruka o nepodržanosti",
+        "description": "Poruka kada preglednik ne može prikazati PDF datoteke."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Poruka linka o nepodržanosti",
+        "description": "Tekst linka kada preglednik ne može prikazati PDF datoteke."
+      },
+      {
+        "property": "width",
+        "title": "Širina",
+        "description": "Širina PDF preglednika."
+      },
+      {
+        "property": "height",
+        "title": "Visina",
+        "description": "Visina PDF preglednika."
+      }
+    ]
+  }
+}

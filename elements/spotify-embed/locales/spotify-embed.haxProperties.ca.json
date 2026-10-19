@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Contenidor per a reproductors de Spotify inserits."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Font",
+        "description": "Enllaç per inserir o compartir de Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Tema de color de fons del reproductor.",
+        "options": {
+          "": "Per defecte",
+          "0": "Negre"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Mida",
+        "description": "Mida del reproductor.",
+        "options": {
+          "normal": "Per defecte",
+          "compact": "Compacte"
+        }
+      }
+    ]
+  }
+}

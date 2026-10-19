@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Hoto Mai Sauƙi",
+    "description": "Sarrafa hotuna da ma'auni masu sauƙi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tushe",
+        "description": "URL na tushen hoto."
+      },
+      {
+        "property": "height",
+        "title": "Tsawo",
+        "description": "Tsawon hoto na zaɓi."
+      },
+      {
+        "property": "width",
+        "title": "Faɗi",
+        "description": "Faɗin hoto na zaɓi."
+      },
+      {
+        "property": "alt",
+        "title": "Rubutun madadi",
+        "description": "Yana da amfani ga masu karanta allo da inganta SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Inganci",
+        "description": "Ingancin hoto lokacin ƙirƙira (JPEG kawai)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Fifikon Ɗauko",
+        "description": "Alamar aiki ga burauzoji na zamani.",
+        "options": {
+          "auto": "Atomatik",
+          "high": "Babba",
+          "low": "Ƙasa"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Hanyar fassara hoto",
+        "description": "Alamar aiki don nuna hoto a burauzoji na zamani.",
+        "options": {
+          "auto": "Atomatik",
+          "async": "Ba tare da jira ba"
+        }
+      }
+    ]
+  }
+}

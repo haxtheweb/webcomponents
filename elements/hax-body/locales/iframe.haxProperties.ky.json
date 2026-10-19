@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Тышкы веб мазмунду кыстаруу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Булак",
+        "description": "Бул ресурстун URL дареги."
+      }
+    ]
+  }
+}

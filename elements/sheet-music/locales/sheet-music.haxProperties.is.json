@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Nótur",
+    "description": "Birtir og spilar nótur, gítartabúlatúrur og nótnaskrift með alphaTex eða MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex-nótnaskrift",
+        "description": "Innfellt alphaTex-mál fyrir nóturnar. Breyttu beint til að skrifa nótur; það er geymt í sniðmáti svo bil haldast."
+      },
+      {
+        "property": "source",
+        "title": "Nótnaskrá",
+        "description": "Hladdu upp eða tengdu í MusicXML (.xml/.musicxml/.mxl) eða Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) skrá. Hnekkir innfelldu alphaTex þegar stillt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Hljóðspilun",
+        "description": "Virkt sjálfgefið - hlustaðu á nóturnar spilaðar með innbyggða hljóðgervlinum. Slökktu fyrir aðeins skoðun (án hljóðs)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Sýna birtingarvalkosti",
+        "description": "Sýna hnappa fyrir aðdrátt, teygju og útlit á spilarastikunni."
+      },
+      {
+        "property": "showExport",
+        "title": "Sýna útflutningshnappa",
+        "description": "Sýna hnappa til að sækja MIDI og prenta/PDF á spilarastikunni."
+      }
+    ]
+  }
+}

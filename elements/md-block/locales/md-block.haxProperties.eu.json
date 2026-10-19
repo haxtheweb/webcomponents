@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Zuzenean edo urrunetik kargatutako markdown eduki-blokea"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown gordina"
+      },
+      {
+        "property": "source",
+        "title": "Iturria",
+        "description": "Markdownaren iturburu-fitxategia"
+      }
+    ]
+  }
+}

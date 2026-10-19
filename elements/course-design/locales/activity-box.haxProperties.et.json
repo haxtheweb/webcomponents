@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tegevuskast",
+    "description": "Väike kujundatud pealkirjaplokk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Tegevuskasti kõrval kuvatav ikoon."
+      },
+      {
+        "property": "tag",
+        "title": "Tegevuskasti silt",
+        "description": "Tegevuskastis kuvatav silt."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Värvimata",
+        "description": "Ära rakenda ikoonile värve."
+      }
+    ]
+  }
+}

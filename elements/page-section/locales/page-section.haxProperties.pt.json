@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Seção de página",
+    "description": "Contêiner de seção para conteúdo da página e layouts baseados em tela."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Tratamento visual",
+        "description": "Estilo predefinido que atualiza as configurações relacionadas."
+      },
+      {
+        "property": "image",
+        "title": "Imagem",
+        "description": "Mídia de fundo da seção."
+      },
+      {
+        "property": "bg",
+        "title": "Cor de fundo",
+        "description": "Cor de fundo quando nenhuma imagem está definida."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Botão de rolagem",
+        "description": "Mostrar um botão que rola até a próxima seção."
+      },
+      {
+        "property": "fold",
+        "title": "Exibir dobra",
+        "description": "Mostrar uma dobra visual na parte inferior da seção."
+      },
+      {
+        "property": "full",
+        "title": "Tela cheia",
+        "description": "Preencher a altura da tela do visitante."
+      },
+      {
+        "property": "filter",
+        "title": "Aplicar filtro",
+        "description": "Aplicar um filtro visual à imagem de fundo."
+      },
+      {
+        "slot": "",
+        "title": "Conteúdo",
+        "description": "Conteúdo da seção."
+      },
+      {
+        "slot": "entice",
+        "title": "Chamariz",
+        "description": "Conteúdo opcional para atrair a atenção."
+      },
+      {
+        "slot": "buttons",
+        "title": "Botões",
+        "description": "Grupo de botões mostrado abaixo do texto."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Texto da âncora",
+        "description": "Rótulo da âncora mostrado na navegação."
+      }
+    ]
+  }
+}

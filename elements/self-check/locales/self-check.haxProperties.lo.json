@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "ກວດສອບຕົນເອງ",
+    "description": "ຜູ້ໃຊ້ສາມາດເຮັດການກວດສອບຕົນເອງ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ຮູບພາບ",
+        "description": "ຮູບພາບສຳລັບການກວດສອບຕົນເອງ."
+      },
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ຂອງການກວດສອບຕົນເອງ."
+      },
+      {
+        "property": "alt",
+        "title": "ຂໍ້ຄວາມທົດແທນ",
+        "description": "ຂໍ້ຄວາມທົດແທນສຳລັບຮູບພາບ."
+      },
+      {
+        "slot": "question",
+        "title": "ຄຳຖາມ"
+      },
+      {
+        "slot": "",
+        "title": "ຄຳຕອບ"
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີຊຸດຮູບແບບ",
+        "description": "ເລືອກສີຊຸດຮູບແບບຈາກລະບົບອອກແບບ.",
+        "options": {
+          "primary": "ຫຼັກ",
+          "accent": "ເນັ້ນ",
+          "success": "ສຳເລັດ",
+          "warning": "ຄຳເຕືອນ",
+          "error": "ຂໍ້ຜິດພາດ",
+          "info": "ຂໍ້ມູນ"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ຈຸດປະສົງການຮຽນຮູ້",
+        "description": "ການອ້າງອີງຈຸດປະສົງການຮຽນຮູ້ທີ່ສົ່ງອອກເປັນ oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "ການປະເມີນ",
+        "description": "ການອ້າງອີງກິດຈະກຳທີ່ສົ່ງອອກເປັນ oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "ລິ້ງເພີ່ມເຕີມ",
+        "description": "ລິ້ງໄປຫາຂໍ້ມູນເພີ່ມເຕີມ."
+      }
+    ]
+  }
+}

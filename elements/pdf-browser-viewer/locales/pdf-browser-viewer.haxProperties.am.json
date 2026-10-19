@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "የPDF አሳሽ መመልከቻ",
+    "description": "የPDF ፋይልን ከአማራጭ የካርድ አቀማመጥ እና የማውረጃ አዝራር ጋር በመስመር ውስጥ ክተት።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "የPDF URL",
+        "description": "የPDF ፋይሉ ቦታ።"
+      },
+      {
+        "property": "heading",
+        "title": "ርዕስ",
+        "description": "የካርድ ርዕስ ጽሑፍ።"
+      },
+      {
+        "property": "card",
+        "title": "የካርድ አቀማመጥ",
+        "description": "PDFውን የማውረጃ አዝራር ባለው ካርድ ውስጥ አሳይ።"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "የማውረጃ መለያ",
+        "description": "ለማውረጃ አዝራሩ መለያ።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "የማይደገፍ መልእክት",
+        "description": "አሳሹ PDF ፋይሎችን ማሳየት በማይችልበት ጊዜ የሚታይ መልእክት።"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "የማይደገፍ የአገናኝ መልእክት",
+        "description": "አሳሹ PDF ፋይሎችን ማሳየት በማይችልበት ጊዜ የአገናኝ ጽሑፍ።"
+      },
+      {
+        "property": "width",
+        "title": "ስፋት",
+        "description": "የPDF መመልከቻው ስፋት።"
+      },
+      {
+        "property": "height",
+        "title": "ቁመት",
+        "description": "የPDF መመልከቻው ቁመት።"
+      }
+    ]
+  }
+}

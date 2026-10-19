@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "တိုက်ရိုက် သို့မဟုတ် အဝေးမှ ဖွင့်ထားသော markdown အကြောင်းအရာ ဘလော့ခ်"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "ကုန်ကြမ်း markdown"
+      },
+      {
+        "property": "source",
+        "title": "ရင်းမြစ်",
+        "description": "markdown အတွက် ရင်းမြစ် ဖိုင်"
+      }
+    ]
+  }
+}

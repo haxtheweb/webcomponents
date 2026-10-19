@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Rôl Gyrfa",
+    "description": "Rôl unigol o fewn sefydliad"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teitl"
+      },
+      {
+        "property": "startDate",
+        "title": "Dyddiad Dechrau"
+      },
+      {
+        "property": "endDate",
+        "title": "Dyddiad Gorffen (Dewisol)"
+      },
+      {
+        "property": "skills",
+        "title": "Sgiliau Cysylltiedig",
+        "description": "Dewiswch y botwm + i ddechrau ychwanegu sgiliau"
+      }
+    ]
+  }
+}

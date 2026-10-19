@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "skeiðsmodell",
+    "description": "Samvirkin uppseting til skeiðshugtøk við smálutum, teknifilmi og vitanarkanningum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "heiti"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Kunningarøki"
+      },
+      {
+        "title": "Smálutaøki"
+      },
+      {
+        "title": "Teknifilmsøki"
+      },
+      {
+        "title": "Øki til vitanarkanning"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Merkisøki"
+      }
+    ]
+  }
+}

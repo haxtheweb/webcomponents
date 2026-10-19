@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex পিকার",
+    "description": "হেক্সকোড রং পিকার"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "মান",
+        "description": "ডিফল্ট hex মান"
+      },
+      {
+        "property": "disabled",
+        "title": "নিষ্ক্রিয়",
+        "description": "টেক্সট ফিল্ড বন্ধ করুন"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "বড় প্রদর্শন",
+        "description": "বড় প্রদর্শনে রং অন্তর্ভুক্ত করুন"
+      }
+    ]
+  }
+}

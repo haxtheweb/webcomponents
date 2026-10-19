@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "نقشهٔ تصویری",
+    "description": "نقشهٔ تصویری دسترس‌پذیر با نقاط تعاملی."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "برچسب",
+        "description": "برچسب نقشهٔ تصویری."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "جزئیات نقاط تعاملی",
+        "description": "نقاط تعاملی روی نقشهٔ تصویری."
+      }
+    ]
+  }
+}

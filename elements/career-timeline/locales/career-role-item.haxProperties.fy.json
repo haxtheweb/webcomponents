@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Karriêrerol",
+    "description": "In yndividuele rol binnen in organisaasje"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel"
+      },
+      {
+        "property": "startDate",
+        "title": "Begjindatum"
+      },
+      {
+        "property": "endDate",
+        "title": "Eindatum (opsjoneel)"
+      },
+      {
+        "property": "skills",
+        "title": "Byhearrende feardichheden",
+        "description": "Selektearje de knop + om feardichheden ta te foegjen"
+      }
+    ]
+  }
+}

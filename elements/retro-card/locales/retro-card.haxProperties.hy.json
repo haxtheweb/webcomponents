@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ռետրո քարտ",
+    "description": "Պարզ քարտ ռետրո դիզայնով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Քարտի հիմնական վերնագիր։"
+      },
+      {
+        "property": "url",
+        "description": "URL, որը կբացվի քարտի վրա սեղմելիս։"
+      },
+      {
+        "property": "subtitle",
+        "title": "Ենթավերնագիր",
+        "description": "Քարտի ենթավերնագիր։"
+      },
+      {
+        "property": "tags",
+        "title": "Պիտակներ",
+        "description": "Ստորակետերով բաժանված պիտակներ։"
+      },
+      {
+        "property": "mediaSource",
+        "title": "Մեդիայի աղբյուր",
+        "description": "Հիմնական մեդիայի աղբյուր։"
+      },
+      {
+        "property": "hoverSource",
+        "title": "Աղբյուր սավառնելիս",
+        "description": "Մեդիայի աղբյուր, որը ցուցադրվում է քարտի վրա սավառնելիս կամ ակտիվացնելիս։"
+      },
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Ամբողջ քարտի վրա կիրառվող շեշտադրող գույն։"
+      },
+      {
+        "property": "dark",
+        "title": "Մուգ",
+        "description": "Օգտագործել մութ ռեժիմի հիմնական գույները։"
+      }
+    ]
+  }
+}

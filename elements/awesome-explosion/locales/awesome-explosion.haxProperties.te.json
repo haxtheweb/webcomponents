@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "అద్భుత విస్ఫోటనం",
+    "description": "ఐచ్ఛిక శబ్ద ప్రభావాలతో ఇంటరాక్టివ్ విస్ఫోటన యానిమేషన్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "పరిమాణం",
+        "description": "విస్ఫోటన పరిమాణాన్ని సెట్ చేయండి.",
+        "options": {
+          "tiny": "అతి చిన్నది",
+          "small": "చిన్నది",
+          "medium": "మధ్యస్థం",
+          "large": "పెద్దది",
+          "epic": "భారీ"
+        }
+      },
+      {
+        "property": "color",
+        "title": "రంగు",
+        "description": "విస్ఫోటన రంగు థీమ్‌ను సెట్ చేయండి.",
+        "options": {
+          "": "డిఫాల్ట్",
+          "red": "ఎరుపు",
+          "blue": "నీలం",
+          "purple": "ఊదా",
+          "orange": "నారింజ",
+          "yellow": "పసుపు"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "శబ్ద ప్రభావాలు",
+        "description": "శబ్ద ప్రభావాలను ప్రారంభించండి."
+      },
+      {
+        "property": "resetSound",
+        "title": "శబ్దాన్ని రీసెట్ చేయి",
+        "description": "ప్రతిసారీ శబ్దాన్ని మొదటి నుండి పునఃప్రారంభించండి."
+      },
+      {
+        "property": "image",
+        "title": "అనుకూల చిత్రం",
+        "description": "అనుకూల విస్ఫోటన చిత్రం కోసం ఐచ్ఛిక URL."
+      },
+      {
+        "property": "sound",
+        "title": "అనుకూల శబ్దం",
+        "description": "అనుకూల శబ్ద ప్రభావం కోసం ఐచ్ఛిక URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "నిలిపివేయబడింది",
+        "description": "అన్ని పరస్పర చర్యలను నిలిపివేయండి."
+      }
+    ]
+  }
+}

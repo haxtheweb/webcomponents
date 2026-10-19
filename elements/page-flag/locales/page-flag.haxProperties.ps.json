@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "د پاڼې بیرغ",
+    "description": "د پاڼې لیکوالانو لپاره سمونیز یادښت."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د پاڼې د بیرغ تاکیدي رنګ."
+      },
+      {
+        "property": "label",
+        "title": "لیبل",
+        "description": "د پاڼې د بیرغ د لیبل متن."
+      }
+    ]
+  }
+}

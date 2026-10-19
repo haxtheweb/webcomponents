@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Besedišče",
+    "description": "Izraz iz besedišča"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Izraz"
+      },
+      {
+        "slot": "",
+        "title": "Definicija",
+        "description": "Definicija, prikazana ob kliku na izraz."
+      },
+      {
+        "property": "description",
+        "title": "Opis (OER Schema)",
+        "description": "OER Schema: kratek opis izraza iz besedišča. Če ostane prazno, se samodejno izpolni iz besedila definicije."
+      }
+    ]
+  }
+}

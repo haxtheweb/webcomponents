@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Placeholder",
+    "description": "Isang placeholder na maaaring i-convert sa uri ng media na napili"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Uri",
+        "description": "Uri ng gizmo na tinatanggap nito bilang kapalit.",
+        "options": {
+          "text": "Teksto / nilalaman",
+          "document": "Dokumento / file",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Larawan",
+          "math": "Math"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Teksto",
+        "description": "Tukuyin nang mas detalyado ang nais na placeholder"
+      }
+    ]
+  }
+}

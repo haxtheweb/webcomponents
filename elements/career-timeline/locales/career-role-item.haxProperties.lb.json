@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Karriärroll",
+    "description": "Eng eenzel Roll bannent enger Organisatioun"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel"
+      },
+      {
+        "property": "startDate",
+        "title": "Ufanksdatum"
+      },
+      {
+        "property": "endDate",
+        "title": "Enndatum (optional)"
+      },
+      {
+        "property": "skills",
+        "title": "Zougehéiereg Kompetenzen",
+        "description": "Wielt de +-Knäppchen, fir Kompetenzen derbäizesetzen"
+      }
+    ]
+  }
+}

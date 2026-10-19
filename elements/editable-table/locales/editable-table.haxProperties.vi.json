@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Bảng",
+    "description": "Dữ liệu dạng bảng cho web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Tiêu đề hàng",
+        "description": "Coi hàng đầu tiên là tiêu đề."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Tiêu đề cột",
+        "description": "Coi cột đầu tiên là tiêu đề."
+      },
+      {
+        "property": "footer",
+        "title": "Chân bảng",
+        "description": "Coi hàng cuối cùng là chân bảng."
+      },
+      {
+        "property": "sort",
+        "title": "Có thể sắp xếp",
+        "description": "Cho phép sắp xếp theo giá trị cột."
+      },
+      {
+        "property": "filter",
+        "title": "Cho phép lọc",
+        "description": "Cho phép lọc theo giá trị cột."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Định dạng số",
+        "description": "Áp dụng định dạng số cho các cột số."
+      },
+      {
+        "property": "responsive",
+        "title": "Thích ứng",
+        "description": "Điều chỉnh bố cục bảng trên màn hình nhỏ."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Chế độ Rubric",
+        "description": "Diễn giải bảng này như một Rubric của OER Schema để xuất siêu dữ liệu Rubric, RubricScale, RubricCriterion và RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Loại Rubric",
+        "description": "Kiểu rubric được xuất dưới dạng oer:rubricType (chỉ có ý nghĩa khi Chế độ Rubric được bật).",
+        "options": {
+          "": "(không có)",
+          "analytic": "Phân tích",
+          "holistic": "Tổng thể",
+          "single-point": "Một điểm",
+          "checklist": "Danh sách kiểm tra"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Có viền"
+      },
+      {
+        "property": "condensed",
+        "title": "Thu gọn hàng",
+        "description": "Giảm chiều cao hàng."
+      },
+      {
+        "property": "striped",
+        "title": "Hàng xen màu",
+        "description": "Tô bóng xen kẽ các hàng."
+      },
+      {
+        "property": "downloadable",
+        "title": "Nút tải xuống",
+        "description": "Thêm nút để tải bảng xuống."
+      },
+      {
+        "property": "copyable",
+        "title": "Nút sao chép",
+        "description": "Thêm nút để sao chép dữ liệu CSV của bảng."
+      },
+      {
+        "property": "printable",
+        "title": "Nút in",
+        "description": "Thêm nút để chỉ in bảng."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Dữ liệu CSV",
+        "description": "Tạo bảng từ tệp CSV được tải lên."
+      }
+    ]
+  }
+}

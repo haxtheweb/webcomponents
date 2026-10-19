@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "רשימת השמעה",
+    "description": "הצגת כל סוג של תוכן ברשימת השמעה."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "מקור",
+        "description": "התוכן המוצג ברשימת ההשמעה."
+      },
+      {
+        "property": "edit",
+        "title": "מצב עריכה",
+        "description": "מעבר בין מצב עריכה למצב תצוגה מקדימה של רשימת ההשמעה."
+      },
+      {
+        "property": "navigation",
+        "title": "ניווט",
+        "description": "הצגת כפתורי ניווט קדימה ואחורה."
+      },
+      {
+        "property": "pagination",
+        "title": "עימוד",
+        "description": "הצגת נקודות עימוד."
+      },
+      {
+        "property": "orientation",
+        "title": "כיוון",
+        "description": "כיוון השקופיות.",
+        "options": {
+          "horizontal": "אופקי",
+          "vertical": "אנכי"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "שקופית התחלה",
+        "description": "אינדקס השקופית שבה יתמקדו בתחילה."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "יחס גובה־רוחב",
+        "description": "יחס הגובה־רוחב של השקופיות.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

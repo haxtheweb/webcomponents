@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Įterpti išorinį žiniatinklio turinį į iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ištekliaus URL",
+        "description": "Ištekliaus URL."
+      },
+      {
+        "property": "height",
+        "title": "Aukštis",
+        "description": "Iframe aukštis."
+      },
+      {
+        "property": "width",
+        "title": "Plotis",
+        "description": "Iframe plotis."
+      }
+    ]
+  }
+}

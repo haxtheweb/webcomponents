@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kartica",
+    "description": "Kartica s opcionalnim stilom naglaska."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Naslov",
+        "description": "Naslov kartice."
+      },
+      {
+        "slot": "subheading",
+        "title": "Podnaslov",
+        "description": "Opcionalni podnaslov kartice."
+      },
+      {
+        "slot": "content",
+        "title": "Sadržaj",
+        "description": "Sadržaj kartice."
+      },
+      {
+        "slot": "footer",
+        "title": "Podnožje",
+        "description": "Opcionalno podnožje kartice."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Slika",
+        "description": "Opcionalna slika"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alternativni tekst slike",
+        "description": "Alternativni tekst koji opisuje sliku za čitače ekrana. Ostavite prazno samo ako je slika čisto dekorativna."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Vodoravno poravnanje slike",
+        "options": {
+          "left": "lijevo",
+          "center": "centar",
+          "right": "desno"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Okomito poravnanje slike",
+        "options": {
+          "top": "vrh",
+          "center": "centar",
+          "bottom": "dno"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Opcionalna boja naglaska."
+      },
+      {
+        "property": "dark",
+        "title": "Tamna tema",
+        "description": "Omogući tamnu temu"
+      },
+      {
+        "property": "horizontal",
+        "title": "Vodoravno",
+        "description": "Vodoravna orijentacija?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Naglasak naslova",
+        "description": "Primijeniti boju naglaska na naslov?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Naglasak pozadine",
+        "description": "Primijeniti boju naglaska na pozadinu kartice?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Bez naglaska ivice",
+        "description": "Ukloniti naglasak ivice?"
+      },
+      {
+        "property": "flat",
+        "title": "Ravno",
+        "description": "Ukloniti sjenu okvira?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Ugao",
+        "description": "Sadržaj za ugao kartice."
+      }
+    ]
+  }
+}

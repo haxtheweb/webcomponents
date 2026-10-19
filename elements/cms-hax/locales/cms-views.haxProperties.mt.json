@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Veduta tas-CMS",
+    "description": "Vedute tas-CMS irrenderjati fuq il-backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Isem",
+        "description": "Isem il-veduta mis-CMS tagħna"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Wiri",
+        "description": "Wiri f'dik il-veduta mis-CMS tagħna"
+      }
+    ]
+  }
+}

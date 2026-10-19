@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "برچسب‌ها",
+    "description": "فهرست ساده‌ای از برچسب‌ها برای نمایش در صفحه."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "برچسب‌ها",
+        "description": "فهرست برچسب‌ها جداشده با ویرگول."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "رنگ تأکیدی خودکار",
+        "description": "تنظیم خودکار رنگ تأکیدی بر اساس برچسب."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ",
+        "description": "رنگ برچسب‌ها."
+      }
+    ]
+  }
+}

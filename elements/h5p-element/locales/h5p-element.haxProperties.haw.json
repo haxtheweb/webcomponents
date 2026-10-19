@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "He wahī H5P no ka hoʻouka a hōʻike ʻana i nā faila .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Pāʻālua hoʻokomo iframe H5P"
+      }
+    ]
+  }
+}

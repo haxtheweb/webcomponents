@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Ansiomerkki",
+    "description": "Visuaalinen merkki taidon saavuttamisen osoittamiseen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Merkin otsikko",
+        "description": "Merkissä näytettävä otsikko."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Merkin kuva",
+        "description": "Merkin kuvan URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Merkin tiedot",
+        "description": "Tietoja merkistä."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlinkki",
+        "description": "Merkkiin liittyvä linkki."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Merkin taidot",
+        "description": "Merkissä näytettävät taidot."
+      },
+      {
+        "property": "skill",
+        "title": "Taito (OER Schema)",
+        "description": "OER Schema: opittu taito, joka saavutetaan suorittamalla tämä oppimistavoite."
+      }
+    ]
+  }
+}

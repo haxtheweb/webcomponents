@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Aibhsiú",
+    "description": "Aibhsigh téacs inlíne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Téacs",
+        "description": "Téacs aibhsithe."
+      }
+    ]
+  }
+}

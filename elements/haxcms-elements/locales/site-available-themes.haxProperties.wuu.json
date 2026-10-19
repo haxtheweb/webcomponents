@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "可用主题",
+    "description": "显示可用个 HAXcms 主题,可以实时预览切换"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "查看模式",
+        "description": "选主题个显示方式",
+        "options": {
+          "gallery": "图库",
+          "table": "表格"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "显示详情",
+        "description": "显示主题描述搭别个信息"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "显示隐藏搭老式主题",
+        "description": "除脱仪表板默认主题,还显示隐藏个、老式个搭蹩脚个主题"
+      },
+      {
+        "property": "columns",
+        "title": "列数(图库)",
+        "description": "图库视图个列数"
+      }
+    ]
+  }
+}

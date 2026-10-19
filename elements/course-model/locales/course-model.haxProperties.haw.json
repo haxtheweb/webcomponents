@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kumu hoʻohālike papa",
+    "description": "Hoʻolālā launa no nā manaʻo papa me nā kikoʻī, ka hoʻonaueue, a me nā loiloi ʻike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "poʻo inoa"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Wahi ʻike"
+      },
+      {
+        "title": "Wahi kikoʻī"
+      },
+      {
+        "title": "Wahi hoʻonaueue"
+      },
+      {
+        "title": "Wahi loiloi ʻike"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Wahi lōkō"
+      }
+    ]
+  }
+}

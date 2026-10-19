@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kad",
+    "description": "Komponen kad yang digayakan dengan sistem reka bentuk DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Imej",
+        "description": "Imej pilihan."
+      },
+      {
+        "property": "alt",
+        "title": "Alt imej",
+        "description": "Teks alternatif yang menerangkan imej."
+      },
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tajuk kad."
+      },
+      {
+        "slot": "",
+        "title": "Kandungan",
+        "description": "Kawasan kandungan kad."
+      },
+      {
+        "property": "href",
+        "title": "Pautan",
+        "description": "URL pautan butang."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label butang."
+      },
+      {
+        "property": "noArrow",
+        "title": "Tanpa Anak Panah",
+        "description": "Sembunyikan anak panah butang."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Pautan: sasaran",
+        "description": "Tempat untuk membuka pautan.",
+        "options": {
+          "": "Tetingkap yang sama",
+          "_blank": "Tetingkap baharu - _blank",
+          "_top": "Tetingkap teratas - _top",
+          "_parent": "Tetingkap induk - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Pautan: rel",
+        "description": "Hubungan antara sumber yang dipautkan dengan dokumen semasa."
+      }
+    ]
+  }
+}

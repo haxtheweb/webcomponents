@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Penanda halaman",
+    "description": "Catatan editorial untuk penulis halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen untuk penanda halaman."
+      },
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Teks label untuk penanda halaman."
+      }
+    ]
+  }
+}

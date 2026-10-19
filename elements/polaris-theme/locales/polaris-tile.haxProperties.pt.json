@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Bloco Polaris",
+    "description": "Exibe um bloco Polaris com título, texto de apoio opcional e link opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Texto principal",
+        "description": "Texto principal do bloco."
+      },
+      {
+        "property": "line2",
+        "title": "Texto secundário",
+        "description": "Texto de apoio opcional."
+      },
+      {
+        "property": "type",
+        "title": "Estilo do bloco",
+        "description": "Estilo visual predefinido do bloco.",
+        "options": {
+          "1": "Estilo 1",
+          "2": "Estilo 2",
+          "3": "Estilo 3",
+          "4": "Estilo 4",
+          "5": "Estilo 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Imagem de fundo",
+        "description": "URL da imagem de fundo usada pelos estilos de bloco que aceitam imagem."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "URL de destino opcional para a ação do bloco."
+      }
+    ]
+  }
+}

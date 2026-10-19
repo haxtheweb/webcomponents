@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus-ის კომენტარები",
+    "description": "ინტეგრაცია Disqus-ის კომენტარების ვებსერვისთან"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "მოკლე სახელი",
+        "description": "თვისების მოკლე სახელი Disqus-ზე"
+      }
+    ]
+  }
+}

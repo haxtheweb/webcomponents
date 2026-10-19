@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Përmbajtje e largët",
+    "description": "Ripërdor përmbajtje nga një sajt në një tjetër."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Adresa e sajtit",
+        "description": "Ngjit adresën nga e cila do të referohet përmbajtja nëse nuk është sajti aktual"
+      },
+      {
+        "property": "uuid",
+        "title": "Elementi",
+        "description": "Elementi që do të shfaqet për të dhënat e lidhjes / titullit"
+      },
+      {
+        "property": "breakreference",
+        "title": "Prish referencën",
+        "description": "Shënimi i kësaj kutie e kopjon përmbajtjen e largët për redaktim lokal, por heq lidhjen. Nuk do të marrë më përditësime kur materiali referues përditësohet."
+      },
+      {
+        "property": "showTitle",
+        "title": "Shfaq titullin",
+        "description": "Aktivizoje për të shfaqur titullin e burimit që po shfaqet"
+      }
+    ]
+  }
+}

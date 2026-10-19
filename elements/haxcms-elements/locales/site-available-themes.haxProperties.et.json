@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Saadaolevad teemad",
+    "description": "Kuva saadaolevad HAXcms-i teemad reaalajas eelvaate vahetamisega"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Vaaterežiim",
+        "description": "Vali, kuidas teemasid kuvada",
+        "options": {
+          "gallery": "Galerii",
+          "table": "Tabel"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Näita üksikasju",
+        "description": "Näita teemade kirjeldusi ja lisateavet"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Näita peidetud ja pärandteemasid",
+        "description": "Näita lisaks töölaua vaiketeemadele ka peidetud, pärand- ja kohutavaid teemasid"
+      },
+      {
+        "property": "columns",
+        "title": "Veerud (galerii)",
+        "description": "Veergude arv galeriivaates"
+      }
+    ]
+  }
+}

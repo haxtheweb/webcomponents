@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "アクティビティボックス",
+    "description": "スタイル付きの小さな見出しブロック。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "アイコン",
+        "description": "アクティビティボックスの横に表示するアイコン。"
+      },
+      {
+        "property": "tag",
+        "title": "アクティビティボックスのタグ",
+        "description": "アクティビティボックスに表示するタグ。"
+      },
+      {
+        "property": "nocolourize",
+        "title": "色付けなし",
+        "description": "アイコンに色が適用されないようにします。"
+      }
+    ]
+  }
+}

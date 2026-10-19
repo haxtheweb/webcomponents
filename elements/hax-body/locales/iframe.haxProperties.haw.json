@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Hoʻokomo pili i ka ʻike pūnaewele o waho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Kumu",
+        "description": "URL no kēia kumuwaiwai."
+      }
+    ]
+  }
+}

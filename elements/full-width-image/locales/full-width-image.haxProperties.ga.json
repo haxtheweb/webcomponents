@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Rannán íomhá",
+    "description": "Íomhá lánleithid a bhriseann suas rannán leathanaigh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Íomhá chúlra."
+      },
+      {
+        "property": "caption",
+        "description": "Ceannteideal téacs."
+      }
+    ]
+  }
+}

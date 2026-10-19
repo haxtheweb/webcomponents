@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Vurgu",
+    "description": "Satır içi metni vurgulayın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Metin",
+        "description": "Vurgulanan metin."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Anchor ng Pahina",
+    "description": "Mag-link sa mga partikular na punto ng media sa pahina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Target sa pahina",
+        "description": "ID o resource na itinuturo ng anchor na ito."
+      },
+      {
+        "property": "value",
+        "title": "Halaga ng deep link",
+        "description": "Halaga ng deep link (halimbawa, timestamp o ID ng slide)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entity ng site",
+        "description": "Opsyonal na entity ng site para kontrolin ang pagpapakita ng kaugnay na konsepto."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ساده انځور",
+    "description": "انځورونه په ساده پارامیټرونو بدل کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "سرچینه",
+        "description": "د انځور د سرچینې URL."
+      },
+      {
+        "property": "height",
+        "title": "لوړوالی",
+        "description": "د انځور اختیاري لوړوالی."
+      },
+      {
+        "property": "width",
+        "title": "پلنوالی",
+        "description": "د انځور اختیاري پلنوالی."
+      },
+      {
+        "property": "alt",
+        "title": "بدیل متن",
+        "description": "د سکرین لوستونکو او ښه SEO لپاره ګټور."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "کیفیت",
+        "description": "د جوړولو پر مهال د انځور کیفیت (یوازې JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "د راوړلو لومړیتوب",
+        "description": "د عصري براوزرونو لپاره د فعالیت اشاره.",
+        "options": {
+          "auto": "اتومات",
+          "high": "لوړ",
+          "low": "ټیټ"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "د ډیکوډ کولو طریقه",
+        "description": "په عصري براوزرونو کې د انځور د ښودلو لپاره د فعالیت اشاره.",
+        "options": {
+          "auto": "اتومات",
+          "async": "غیر همزمانه"
+        }
+      }
+    ]
+  }
+}

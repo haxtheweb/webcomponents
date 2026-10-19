@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Mathematik",
+    "description": "Mathematik op eng schéin Manéier presentéieren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Mathematik",
+        "description": "Equatioun als LaTeX aginn"
+      }
+    ]
+  }
+}

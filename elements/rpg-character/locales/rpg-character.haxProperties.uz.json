@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG qahramoni",
+    "description": "HAX dan qiziqarli qahramon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Ism",
+        "description": "Tasodifiy qahramon yaratish uchun ishlatiladigan soʻz."
+      },
+      {
+        "property": "hat",
+        "title": "Shlyapa",
+        "description": "Shlyapa uslubi.",
+        "options": {
+          "none": "Standart",
+          "random": "Tasodifiy",
+          "bunny": "Quyon",
+          "cowboy": "Kovboy",
+          "education": "Taʼlim",
+          "construction": "Qurilish",
+          "warning": "Ogohlantirish",
+          "watermelon": "Tarvuz",
+          "coffee": "Qahva",
+          "knight": "Ritsar",
+          "ninja": "Ninja",
+          "party": "Bayram",
+          "error": "Xato",
+          "edit": "Tahrirlash"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Kenglik",
+        "description": "Qahramon kengligi pikselda."
+      },
+      {
+        "property": "height",
+        "title": "Balandlik",
+        "description": "Qahramon balandligi pikselda."
+      },
+      {
+        "property": "fire",
+        "title": "Yonyaptimi?",
+        "description": "Qahramon yonayotganmi yoki yoʻqmi."
+      },
+      {
+        "property": "walking",
+        "title": "Yuryaptimi?",
+        "description": "Yurish animatsiyasi; yonayotganda yuguradi."
+      }
+    ]
+  }
+}

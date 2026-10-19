@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV పట్టిక",
+    "description": "CSV ఫైల్ ఎక్కడ ఉన్నా దాని నుండి పట్టికను రూపొందించగలదు."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "మూలం",
+        "description": "ఈ CSV ఫైల్ కోసం URL."
+      },
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "రూపొందించబడే పట్టిక కోసం శీర్షిక."
+      },
+      {
+        "property": "description",
+        "title": "వివరణ",
+        "description": "పట్టిక డేటా ప్రాప్యతను మెరుగుపరచడానికి మరింత వివరణాత్మక వివరణ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mfano wa msimbo",
+    "description": "Mfano wa msimbo ulioangaziwa kwenye ukurasa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Uangaziaji wa msimbo",
+        "description": "Uangaziaji wa sintaksia wa kutumia kwenye eneo la msimbo",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Data ya JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Kitufe cha kunakili kwenye ubao wa kunakili",
+        "description": "kitufe kilicho juu kulia kinachosema nakili kwenye ubao wa kunakili"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Mwanzo wa uangaziaji",
+        "description": "Nambari ya mstari wa kuanza kuangazia"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Mwisho wa uangaziaji",
+        "description": "Mstari wa kumalizia kuangazia"
+      }
+    ]
+  }
+}

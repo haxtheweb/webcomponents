@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "职业职位",
+    "description": "组织内的单个职位"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题"
+      },
+      {
+        "property": "startDate",
+        "title": "开始日期"
+      },
+      {
+        "property": "endDate",
+        "title": "结束日期（可选）"
+      },
+      {
+        "property": "skills",
+        "title": "相关技能",
+        "description": "选择 + 按钮开始添加技能"
+      }
+    ]
+  }
+}

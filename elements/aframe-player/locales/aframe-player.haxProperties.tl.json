@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D player",
+    "description": "Isang player ng 3D file / augmented reality."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pinagmulan",
+        "description": "Ang URL para sa AR file na ito."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "X na posisyon ng elemento sa AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Y na posisyon ng elemento sa AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Z na posisyon ng elemento sa AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Kulay ng langit",
+        "description": "Piliin ang kulay ng langit sa eksena."
+      }
+    ]
+  }
+}

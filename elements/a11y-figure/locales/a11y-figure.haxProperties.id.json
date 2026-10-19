@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Gambar Deskriptif",
+    "description": "Gambar aksesibel dengan deskripsi panjang"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Gambar"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Teks Alt"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Keterangan Gambar",
+        "description": "Teks keterangan gambar yang selalu terlihat."
+      },
+      {
+        "slot": "details",
+        "title": "Deskripsi",
+        "description": "Deskripsi gambar terperinci yang dapat disembunyikan atau ditampilkan"
+      },
+      {
+        "slot": "summary",
+        "title": "Tombol Deskripsi",
+        "description": "Default untuk tombol yang menampilkan/menyembunyikan teks deskripsi, mis. \"info\", \"metadata\", dll."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Teks ringkasan opsional saat detail terbuka"
+      },
+      {
+        "property": "closeText",
+        "title": "Teks ringkasan opsional saat detail tertutup"
+      }
+    ]
+  }
+}

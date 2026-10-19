@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Teramoĩ",
+    "description": "Teramoĩ rysýi hasy'ỹva ojehechauka hag̃ua kuatiaroguépe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Teramoĩ",
+        "description": "Teramoĩ rysýi ojei'ãva kóma rupive."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Sa'y ojehechaukavéva ijeheguíva",
+        "description": "Emoĩ sa'y ojehechaukavéva ijeheguiete teramoĩ rehe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y",
+        "description": "Sa'y teramoĩme g̃uarã."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Suuraa Salphaa",
+    "description": "Suuraalee qindaa'ina salphaadhaan jijjiiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Madda",
+        "description": "URL madda suuraa."
+      },
+      {
+        "property": "height",
+        "title": "Dheerina",
+        "description": "Dheerina suuraa filannoo."
+      },
+      {
+        "property": "width",
+        "title": "Bal'ina",
+        "description": "Bal'ina suuraa filannoo."
+      },
+      {
+        "property": "alt",
+        "title": "Barreeffama bakka bu'aa",
+        "description": "Dubbistoota iskiriiniitii fi SEO fooyya'eef gargaara."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Qulqullina",
+        "description": "Qulqullina suuraa yeroo uumamu (JPEG qofa)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Dursa Fiduu",
+        "description": "Akeekkachiisa raawwii biraawzarota ammayyaatiif.",
+        "options": {
+          "auto": "Ofumaan",
+          "high": "Ol'aanaa",
+          "low": "Gadi aanaa"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Mala hiikuu",
+        "description": "Akeekkachiisa raawwii agarsiisa suuraa biraawzarota ammayyaa keessatti.",
+        "options": {
+          "auto": "Ofumaan",
+          "async": "Osoo hin eegin"
+        }
+      }
+    ]
+  }
+}

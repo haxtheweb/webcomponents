@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ਗਣਿਤ",
+    "description": "ਗਣਿਤ ਨੂੰ ਸੋਹਣੇ ਢੰਗ ਨਾਲ ਪੇਸ਼ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "ਗਣਿਤ",
+        "description": "ਸਮੀਕਰਨ LaTeX ਵਜੋਂ ਦਰਜ ਕਰੋ"
+      }
+    ]
+  }
+}

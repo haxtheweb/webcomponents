@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Valutazione à stelle",
+    "description": "Widget d'affissera di valutazione o buttone per valutà."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Puntaghju",
+        "description": "Valore attuale di u puntaghju."
+      },
+      {
+        "property": "possible",
+        "title": "Pussibule",
+        "description": "Puntaghju massimu pussibule."
+      },
+      {
+        "property": "numStars",
+        "title": "Numeru di stelle",
+        "description": "Numeru di stelle da affissà."
+      },
+      {
+        "property": "interactive",
+        "title": "Interattivu",
+        "description": "Permette à l'utilizatore di definisce a valutazione."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Modu di scala di griglia di valutazione",
+        "description": "Emette metadati OER Schema RubricScale è RubricLevel (levelOrdinal/levelPoints) per ogni stella."
+      }
+    ]
+  }
+}

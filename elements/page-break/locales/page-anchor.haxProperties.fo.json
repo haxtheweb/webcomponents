@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Síðuakker",
+    "description": "Leinkja til ávís støð í miðlum á síðuni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Síðumál",
+        "description": "ID ella tilfeingi, sum hetta akkerið vísir á."
+      },
+      {
+        "property": "value",
+        "title": "Virði á djúpleinki",
+        "description": "Virði á djúpleinki (til dømis tíðarstempul ella ID á glæru)."
+      },
+      {
+        "property": "entityId",
+        "title": "Heimasíðueind",
+        "description": "Valfrí heimasíðueind til at stýra framseting av skyldum hugtøkum."
+      }
+    ]
+  }
+}

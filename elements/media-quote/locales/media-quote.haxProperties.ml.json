@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "മീഡിയ ഉദ്ധരണി",
+    "description": "ഉദ്ധരണി, അവലംബം, ഐച്ഛിക അടിക്കുറിപ്പ് എന്നിവയുള്ള ചിത്രം."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "ഉദ്ധരണി",
+        "description": "ഉദ്ധരണി വാചകം."
+      },
+      {
+        "slot": "author",
+        "title": "രചയിതാവ്",
+        "description": "ഉദ്ധരണിയുടെ രചയിതാവ്."
+      },
+      {
+        "slot": "author-detail",
+        "title": "രചയിതാവിന്റെ വിശദാംശങ്ങൾ",
+        "description": "രചയിതാവിന്റെ വിശദാംശങ്ങൾ."
+      },
+      {
+        "slot": "caption",
+        "title": "അടിക്കുറിപ്പ്",
+        "description": "ചിത്ര അടിക്കുറിപ്പ്."
+      },
+      {
+        "property": "src",
+        "title": "ചിത്ര ഉറവിടം",
+        "description": "മീഡിയ ഉദ്ധരണിക്കായി ഉപയോഗിക്കുന്ന ചിത്ര ഫയൽ."
+      },
+      {
+        "property": "alt",
+        "title": "ആൾട്ട് ടെക്സ്റ്റ്",
+        "description": "ചിത്രത്തിനുള്ള പകരം വാചകം."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "കാർഡിന്റെ ആക്സന്റ് നിറം."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Seinnteoir doiciméad comhpháirte gréasáin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Folaigh an fhuinneog",
+        "description": "Folaigh an fhuinneog aschuir, úsáideach nuair is don teirminéal amháin é"
+      }
+    ]
+  }
+}

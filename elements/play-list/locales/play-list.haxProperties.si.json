@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "වාදන ලැයිස්තුව",
+    "description": "ඕනෑම ආකාරයක අන්තර්ගතයක් වාදන ලැයිස්තුවක පෙන්වන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "මූලාශ්‍රය",
+        "description": "වාදන ලැයිස්තුවේ පෙන්වන අන්තර්ගතය."
+      },
+      {
+        "property": "edit",
+        "title": "සංස්කරණ ප්‍රකාරය",
+        "description": "වාදන ලැයිස්තුව සඳහා සංස්කරණ සහ පෙරදසුන් ප්‍රකාර අතර මාරු වන්න."
+      },
+      {
+        "property": "navigation",
+        "title": "සංචාලනය",
+        "description": "ඉදිරියට සහ පසුපසට සංචාලන බොත්තම් පෙන්වන්න."
+      },
+      {
+        "property": "pagination",
+        "title": "පිටුකරණය",
+        "description": "පිටුකරණ තිත් පෙන්වන්න."
+      },
+      {
+        "property": "orientation",
+        "title": "දිශානතිය",
+        "description": "ස්ලයිඩවල දිශානතිය.",
+        "options": {
+          "horizontal": "තිරස්",
+          "vertical": "සිරස්"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "ආරම්භ කළ යුතු ස්ලයිඩය",
+        "description": "මුලින් නාභිගත කළ යුතු ස්ලයිඩ දර්ශකය."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "දර්ශන අනුපාතය",
+        "description": "ස්ලයිඩවල දර්ශන අනුපාතය.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

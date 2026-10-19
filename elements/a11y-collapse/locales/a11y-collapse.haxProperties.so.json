@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Weel la laabi karo",
+    "description": "Hal weel oo la furi karo oo la laabi karo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Cinwaan",
+        "description": "Qoraalka qaybta la laabo."
+      },
+      {
+        "property": "expanded",
+        "title": "La furay",
+        "description": "Ku fur si caadi ah."
+      },
+      {
+        "property": "headingButton",
+        "title": "Badhanka Cinwaanka",
+        "description": "Ka dhig cinwaanka oo dhan mid la gujin karo halkii astaanta keliya."
+      },
+      {
+        "property": "icon",
+        "title": "Astaan",
+        "description": "Astaanta badhanka fur/laab."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Astaan (marka la furo)",
+        "description": "Astaan ikhtiyaari ah oo xaaladda furan."
+      },
+      {
+        "slot": "",
+        "title": "Nuxur",
+        "description": "Nuxurka qaybta la laabo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Tilmaan kooban",
+        "description": "Tilmaan kooban oo badhanka fur/laab."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Tilmaan kooban (marka la furo)",
+        "description": "Tilmaan kooban oo badhanka fur/laab marka uu furan yahay."
+      }
+    ]
+  }
+}

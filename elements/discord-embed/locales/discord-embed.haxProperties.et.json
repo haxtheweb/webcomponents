@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Manusta Discordi kogukondi jagamis-URL-i kaudu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ressursi URL",
+        "description": "Ressursi URL."
+      },
+      {
+        "property": "height",
+        "title": "Kõrgus",
+        "description": "Sisuraami kõrgus."
+      },
+      {
+        "property": "width",
+        "title": "Laius",
+        "description": "Sisuraami laius."
+      }
+    ]
+  }
+}

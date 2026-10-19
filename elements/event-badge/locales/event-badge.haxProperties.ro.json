@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Ecuson de eveniment",
+    "description": "Componentă ecuson de eveniment."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagine TV",
+        "description": "Imaginea afișată pe TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logoul afișat în colțul ecusonului."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlul afișat în partea de sus a ecusonului."
+      },
+      {
+        "property": "name",
+        "title": "Nume",
+        "description": "Numele afișat pe ecuson."
+      },
+      {
+        "property": "position",
+        "title": "Funcție",
+        "description": "Rolul sau funcția persoanei."
+      },
+      {
+        "property": "organization",
+        "title": "Organizație",
+        "description": "Organizația pentru care lucrează persoana."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Culoare TV",
+        "description": "Selectați culoarea pentru TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Culoarea principală a fundalului sau a textului."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Culoarea butoanelor",
+        "description": "Culoarea butoanelor rotative ale TV-ului."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Aplică un efect sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Alb-negru",
+        "description": "Aplică un efect alb-negru."
+      }
+    ]
+  }
+}

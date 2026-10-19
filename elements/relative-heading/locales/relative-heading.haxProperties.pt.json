@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Cabeçalho relativo",
+    "description": "gera a hierarquia de cabeçalhos correta com base no cabeçalho do pai"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID do recurso do cabeçalho pai"
+      },
+      {
+        "property": "disableLink",
+        "description": "Desativa o recurso de botão de link."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Alinha o botão de copiar link à extrema direita do cabeçalho."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Nível do cabeçalho se o pai não for encontrado."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Substitui o texto padrão da mensagem de notificação ao copiar o link."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Substitui o rótulo padrão do botão de copiar link."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Substitui o ícone padrão do botão de copiar link."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Substitui o rótulo padrão do botão de fechar da notificação de copiar link."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Substitui o ícone padrão do botão de fechar da notificação de copiar link."
+      }
+    ]
+  }
+}

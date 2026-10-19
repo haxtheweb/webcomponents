@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity-speler",
+    "description": "Unity WebGL-speler."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Teiken",
+        "description": "Pad na die speletjiebou."
+      },
+      {
+        "property": "compression",
+        "title": "Kompressiemetode",
+        "description": "Kompressie-lêeruitbreiding vir speletjiebates."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Stroom-URL",
+        "description": "URL vir stroombates."
+      },
+      {
+        "property": "companyname",
+        "title": "Maatskappynaam",
+        "description": "Maatskappynaam."
+      },
+      {
+        "property": "productname",
+        "title": "Produknaam",
+        "description": "Speletjietitel."
+      },
+      {
+        "property": "productversion",
+        "title": "Produkweergawe",
+        "description": "Vrystellingsweergawe."
+      },
+      {
+        "property": "width",
+        "title": "Doekbreedte",
+        "description": "CSS-breedte van die doek (byvoorbeeld px of em)."
+      },
+      {
+        "property": "height",
+        "title": "Doekhoogte",
+        "description": "CSS-hoogte van die doek (byvoorbeeld px of em)."
+      },
+      {
+        "property": "background",
+        "title": "Doekagtergrond",
+        "description": "CSS-agtergrond van die doek."
+      }
+    ]
+  }
+}

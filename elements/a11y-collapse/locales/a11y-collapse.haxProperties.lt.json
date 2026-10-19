@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Suskleidžiamas konteineris",
+    "description": "Vienas išskleidžiamas ir suskleidžiamas konteineris."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Antraštė",
+        "description": "Suskleidžiamo elemento tekstas."
+      },
+      {
+        "property": "expanded",
+        "title": "Išskleista",
+        "description": "Išskleisti pagal numatytuosius nustatymus."
+      },
+      {
+        "property": "headingButton",
+        "title": "Antraštės mygtukas",
+        "description": "Padaryti spustelėjamą visą antraštę, o ne tik piktogramą."
+      },
+      {
+        "property": "icon",
+        "title": "Piktograma",
+        "description": "Išskleidimo / suskleidimo mygtuko piktograma."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Piktograma (kai išskleista)",
+        "description": "Pasirenkama piktograma išskleistai būsenai."
+      },
+      {
+        "slot": "",
+        "title": "Turinys",
+        "description": "Suskleidžiamo elemento turinys."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Paaiškinimas",
+        "description": "Išskleidimo / suskleidimo mygtuko paaiškinimas."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Paaiškinimas (kai išskleista)",
+        "description": "Išskleidimo / suskleidimo mygtuko paaiškinimas, kai išskleista."
+      }
+    ]
+  }
+}

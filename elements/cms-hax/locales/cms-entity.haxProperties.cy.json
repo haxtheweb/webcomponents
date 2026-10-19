@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Endid CMS",
+    "description": "Endid CMS wedi'i rendro ar yr ôl-wyneb"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Math",
+        "description": "math o'n CMS",
+        "options": {
+          "node": "Nod",
+          "user": "Defnyddiwr",
+          "file": "Ffeil"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id o'n CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Modd dangos",
+        "description": "modd dangos o'n CMS"
+      }
+    ]
+  }
+}

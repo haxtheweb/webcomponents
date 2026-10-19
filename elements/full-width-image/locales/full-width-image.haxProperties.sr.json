@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Одељак са сликом",
+    "description": "Слика пуне ширине која раздваја одељак странице."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Позадинска слика."
+      },
+      {
+        "property": "caption",
+        "description": "Текстуални наслов."
+      }
+    ]
+  }
+}

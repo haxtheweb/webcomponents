@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sylwadau Disqus",
+    "description": "Integreiddio â gwasanaeth gwe sylwadau Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Enw byr",
+        "description": "Enw byr yr eiddo ar Disqus"
+      }
+    ]
+  }
+}

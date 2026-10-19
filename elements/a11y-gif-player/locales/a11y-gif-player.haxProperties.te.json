@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "యానిమేటెడ్ GIF‌లను అందుబాటులోకి తీసుకురండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "యానిమేటెడ్ GIF",
+        "description": "యానిమేటెడ్ GIF కోసం URL."
+      },
+      {
+        "property": "alt",
+        "title": "ప్రత్యామ్నాయ వచనం",
+        "description": "చిత్రం కోసం ప్రత్యామ్నాయ వచనం."
+      },
+      {
+        "property": "longdesc",
+        "title": "దీర్ఘ వివరణ",
+        "description": "ప్రాప్యత కోసం GIF యొక్క దీర్ఘ వివరణ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "స్థిర చిత్రం",
+        "description": "GIF యొక్క స్థిర చిత్ర వెర్షన్ కోసం URL."
+      }
+    ]
+  }
+}

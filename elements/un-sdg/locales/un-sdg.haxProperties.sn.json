@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Chinangwa cheUnited Nations cheKusimudzira Kunogara Kwenguva Refu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Chinangwa",
+        "description": "Nhamba yeUN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Ruvara chete",
+        "description": "Ratidza ruvara rwechinangwa chete."
+      }
+    ]
+  }
+}

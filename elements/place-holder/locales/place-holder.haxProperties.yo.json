@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Àyè àfirọ́pò",
+    "description": "Àyè àfirọ́pò tí a lè yí padà sí irú mídíà tí a ti yàn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Irú",
+        "description": "Irú gizmo tí èyí ń gbà fún ìrọ́pò.",
+        "options": {
+          "text": "Ọ̀rọ̀ / àkóónú",
+          "document": "Ìwé / fáìlì",
+          "audio": "Ohùn",
+          "video": "Fídíò",
+          "image": "Àwòrán",
+          "math": "Ìṣirò"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Ọ̀rọ̀",
+        "description": "Ṣàpèjúwe àyè àfirọ́pò tí o fẹ́ ní kíkún sí i"
+      }
+    ]
+  }
+}

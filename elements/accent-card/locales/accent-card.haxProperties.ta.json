@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "அட்டை",
+    "description": "விருப்ப உச்சரிப்புப் பாணியுடன் கூடிய அட்டை."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "தலைப்பு",
+        "description": "அட்டைக்கான தலைப்பு."
+      },
+      {
+        "slot": "subheading",
+        "title": "துணைத் தலைப்பு",
+        "description": "அட்டைக்கான விருப்பத் துணைத் தலைப்பு."
+      },
+      {
+        "slot": "content",
+        "title": "உள்ளடக்கம்",
+        "description": "அட்டைக்கான உள்ளடக்கம்."
+      },
+      {
+        "slot": "footer",
+        "title": "அடிக்குறிப்பு",
+        "description": "அட்டைக்கான விருப்ப அடிக்குறிப்பு."
+      },
+      {
+        "property": "imageSrc",
+        "title": "படம்",
+        "description": "விருப்பப் படம்"
+      },
+      {
+        "property": "imageAlt",
+        "title": "பட மாற்று உரை",
+        "description": "திரை வாசிப்பான்களுக்காகப் படத்தை விவரிக்கும் மாற்று உரை. படம் முழுவதும் அலங்காரத்திற்கானதாக இருந்தால் மட்டுமே வெற்றாக விடவும்."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "படக் கிடைமட்டச் சீரமைப்பு",
+        "options": {
+          "left": "இடது",
+          "center": "மையம்",
+          "right": "வலது"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "படச் செங்குத்துச் சீரமைப்பு",
+        "options": {
+          "top": "மேல்",
+          "center": "மையம்",
+          "bottom": "கீழ்"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "விருப்ப அழுத்த நிறம்."
+      },
+      {
+        "property": "dark",
+        "title": "இருண்ட தீம்",
+        "description": "இருண்ட தீமை இயக்கு"
+      },
+      {
+        "property": "horizontal",
+        "title": "கிடைமட்டம்",
+        "description": "கிடைமட்ட நோக்குநிலையா?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "தலைப்பு உச்சரிப்பு",
+        "description": "தலைப்புக்கு உச்சரிப்பு நிறத்தைப் பயன்படுத்தவா?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "பின்னணி உச்சரிப்பு",
+        "description": "அட்டைப் பின்னணிக்கு உச்சரிப்பு நிறத்தைப் பயன்படுத்தவா?"
+      },
+      {
+        "property": "noBorder",
+        "title": "எல்லை உச்சரிப்பு இல்லை",
+        "description": "எல்லை உச்சரிப்பை அகற்றவா?"
+      },
+      {
+        "property": "flat",
+        "title": "தட்டையானது",
+        "description": "பெட்டி நிழலை அகற்றவா?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "மூலை",
+        "description": "அட்டை மூலைக்கான உள்ளடக்கம்."
+      }
+    ]
+  }
+}

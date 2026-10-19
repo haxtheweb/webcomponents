@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Spjald",
+    "description": "Spjaldeining stíluð með DDD-hönnunarkerfinu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Mynd",
+        "description": "Valfrjáls mynd."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-texti myndar",
+        "description": "Annar texti sem lýsir myndinni."
+      },
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Titill spjalds."
+      },
+      {
+        "slot": "",
+        "title": "Efni",
+        "description": "Efnissvæði spjalds."
+      },
+      {
+        "property": "href",
+        "title": "Tengill",
+        "description": "URL tengils hnapps."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Merki",
+        "description": "Merki hnapps."
+      },
+      {
+        "property": "noArrow",
+        "title": "Engin ör",
+        "description": "Fela ör hnappsins."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Tengill: markmið",
+        "description": "Hvar á að opna tengilinn.",
+        "options": {
+          "": "Sami gluggi",
+          "_blank": "Nýr gluggi - _blank",
+          "_top": "Efsti gluggi - _top",
+          "_parent": "Yfirgluggi - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Tengill: rel",
+        "description": "Tengsl milli tengdu auðlindarinnar og núverandi skjals."
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "تصویر پیشرفته",
+    "description": "روشی برای نمایش تصاویر با بهبودهای گوناگون."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "منبع",
+        "description": "URL تصویر."
+      },
+      {
+        "property": "alt",
+        "title": "متن جایگزین",
+        "description": "متنی برای توصیف تصویر برای کاربران نابینا."
+      },
+      {
+        "property": "link",
+        "title": "پیوند",
+        "description": "پیوند دادن تصویر به یک URL"
+      },
+      {
+        "property": "card",
+        "title": "کارت",
+        "description": "اعمال سایه برای ایجاد ظاهر یک کارت برجسته."
+      },
+      {
+        "property": "box",
+        "title": "کادر",
+        "description": "اعمال یک کادر بصری دور تصویر."
+      },
+      {
+        "property": "offset",
+        "title": "جابه‌جایی",
+        "description": "اعمال جابه‌جایی به چپ یا راست روی تصویر.",
+        "options": {
+          "none": "هیچ",
+          "wide": "پهن",
+          "narrow": "باریک"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "ارجاع",
+        "description": "استناد برای تصویر."
+      },
+      {
+        "property": "caption",
+        "title": "زیرنویس",
+        "description": "زیرنویس برای تصویر."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "عنوان شکل",
+        "description": "عنوان برای برچسب شکل."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "توضیحات شکل",
+        "description": "توضیحات برای برچسب شکل."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "تصویر بندانگشتی",
+        "description": "منبع تصویر بندانگشتی. بندانگشتی را نشان می‌دهد اما منبع کامل را در پنجره باز می‌کند."
+      },
+      {
+        "property": "round",
+        "title": "تصویر گرد",
+        "description": "ظاهر تصویر را به شکل دایره برش می‌دهد."
+      },
+      {
+        "property": "disableZoom",
+        "title": "غیرفعال کردن پنجره تصویر",
+        "description": "غیرفعال کردن باز شدن تصویر در پنجره بازرس تصویر با کلیک."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "نمایش به‌صورت markdown",
+        "description": "نمایش زیرنویس و استناد به‌صورت markdown."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Flaga strony",
+    "description": "Notatka redakcyjna dla autorów strony."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Kolor akcentu flagi strony."
+      },
+      {
+        "property": "label",
+        "title": "Etykieta",
+        "description": "Tekst etykiety flagi strony."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kaardii seenaa Polaris",
+    "description": "Kaardii seenaa Polaris suuraa duubaa, maqaa utubaa fi barreeffama mata-duree qabu agarsiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Suuraa duubaa",
+        "description": "URL suuraa akka duuba kaardiitti mul'atu."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Hamma duubaa",
+        "description": "Akkaataa suuraan duubaa kaardii itti guutu (CSS background-size).",
+        "options": {
+          "cover": "Haguuguu (cover)",
+          "contain": "Keessatti qabachuu (contain)",
+          "auto": "Ofumaan (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Maxxansa duubaa",
+        "description": "Akkaataa suuraan duubaa yeroo gadi buufamu itti socho'u (CSS background-attachment).",
+        "options": {
+          "scroll": "Gadi buusuu (scroll)",
+          "fixed": "Kan dhaabbate (fixed)",
+          "local": "Naannoo (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Maqaa utubaa",
+        "description": "Maqaa gabaabaa qubee guddaa gubbaa kaardii irratti mul'atu. Dhoksuuf duwwaa dhiisi."
+      },
+      {
+        "property": "label",
+        "title": "Barreeffama kaardii",
+        "description": "Barreeffama ijoo kutaa gadii keessatti mul'atu."
+      },
+      {
+        "property": "link",
+        "title": "Hidhoo",
+        "description": "URL gahiinsaa filannoo kan kaardii guutuu marsu."
+      }
+    ]
+  }
+}

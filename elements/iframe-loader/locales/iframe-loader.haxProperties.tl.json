@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Mag-embed ng panlabas na web content sa isang iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ng Resource",
+        "description": "URL ng resource."
+      },
+      {
+        "property": "height",
+        "title": "Taas",
+        "description": "Taas ng iframe."
+      },
+      {
+        "property": "width",
+        "title": "Lapad",
+        "description": "Lapad ng iframe."
+      }
+    ]
+  }
+}

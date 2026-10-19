@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Pirsa Bersiva Kurt",
+    "description": "Bila bikarhêner bersiva pirseke bingehîn bide"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pirs",
+        "description": "Pirsa ku bikarhêner bersiv bidin."
+      },
+      {
+        "property": "answers",
+        "title": "Bersivên Gengaz"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navê quizê",
+        "description": "Navê quizê ku ji bo naskirina vê hêmanê di hawîrdorên bi xAPI de tê bikaranîn"
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Бет чоо-жайы",
+    "description": "CMS бет түзүү үчүн колдоно турган беттердин ортосундагы визуалдык бөлүнүүнү аныктоо."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Аталыш",
+        "description": "Темада жана биринчи аталышта көрсөтүлгөн аталыш."
+      },
+      {
+        "property": "pageType",
+        "title": "Түрү",
+        "description": "Беттин визуалдык контекст энбелгиси.",
+        "options": {
+          "": "-- жок --",
+          "content": "Мазмун",
+          "assessment": "Баалоо",
+          "quiz": "Тест",
+          "submission": "Тапшыруу",
+          "lesson": "Сабак",
+          "module": "Модуль",
+          "task": "Тапшырма",
+          "activity": "Иш-аракет",
+          "project": "Долбоор",
+          "practice": "Машыгуу",
+          "unit": "Бөлүм",
+          "objectives": "Окуу максаттары",
+          "connection": "Байланыш",
+          "knowledge": "Билесизби?",
+          "strategy": "Окуу стратегиясы",
+          "discuss": "Талкуулоо",
+          "listen": "Угуу",
+          "make": "Жасоо",
+          "observe": "Байкоо",
+          "present": "Сунуштоо",
+          "reading": "Окуу",
+          "reflect": "Ой жүгүртүү",
+          "research": "Изилдөө",
+          "watch": "Көрүү",
+          "write": "Жазуу"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Тегдер",
+        "description": "Үтүр менен бөлүнгөн тегдердин тизмеси."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Шилтеме URL",
+        "description": "Беттин мазмунунун ордуна көрсөтүлгөн багыттоо URL дареги."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Шилтеме максаты",
+        "description": "Шилтемелерди ошол эле терезеде же жаңы терезеде ачуу.",
+        "options": {
+          "_self": "Ошол эле терезе",
+          "_blank": "Жаңы терезе"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Жарыяланган",
+        "description": "Жарыяланбаган беттер акыркы колдонуучулардан жашырылат."
+      },
+      {
+        "property": "locked",
+        "title": "Бетти кулпулоо",
+        "description": "Бул беттеги бардык элементтерди кулпулоо же кулпусун ачуу."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Автоматтык slug'ту алмаштыруу",
+        "description": "Slug'ту аталышка же ата бетке негизделген автоматтык жаңыртуулардан кулпулоо."
+      },
+      {
+        "property": "slug",
+        "title": "Жол",
+        "description": "Бул беттин URL slug'у."
+      },
+      {
+        "property": "image",
+        "title": "Медиа",
+        "description": "Бетти билдирген медиа, айрым темаларда жана көрүнүштөрдө колдонулат."
+      },
+      {
+        "property": "parent",
+        "title": "Ата бет",
+        "description": "Ата беттин жолу."
+      },
+      {
+        "property": "noderefs",
+        "title": "Байланыштуу мазмун",
+        "description": "Бул бетке байланыштуу беттер."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Сүрөттөмө",
+        "description": "Коллекцияларда жана SEO үчүн колдонулган сүрөттөмө."
+      },
+      {
+        "property": "entityType",
+        "title": "Объект түрү",
+        "description": "Башкача коюлбаса, демейки боюнча бет.",
+        "options": {
+          "page": "Бет (демейки)",
+          "taxonomy": "Таксономия",
+          "taxonomyTerm": "Таксономия термини",
+          "region": "Аймак"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Сөлөкөт",
+        "description": "Сайтта бул бетке байланыштуу сөлөкөт."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Сайтта бул бетке байланыштуу түс."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Менюда жашыруу",
+        "description": "URL дарегин сактап, бул бетти менюлардан жашыруу."
+      },
+      {
+        "property": "order",
+        "title": "Тартиби",
+        "description": "Тууган беттерге карата тартиби."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Бет темасы",
+        "description": "Теманы ушул бет үчүн гана алмаштыруу."
+      },
+      {
+        "property": "author",
+        "title": "Автор",
+        "description": "Бул бетти акыркы жолу өзгөрткөн адамдын колдонуучу аты."
+      }
+    ]
+  }
+}

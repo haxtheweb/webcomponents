@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify प्लेयर एम्बेड के लिए रैपर।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "Spotify से एम्बेड या शेयर लिंक।"
+      },
+      {
+        "property": "theme",
+        "title": "थीम",
+        "description": "प्लेयर के लिए पृष्ठभूमि रंग थीम।",
+        "options": {
+          "": "डिफ़ॉल्ट",
+          "0": "काला"
+        }
+      },
+      {
+        "property": "size",
+        "title": "आकार",
+        "description": "प्लेयर का आकार।",
+        "options": {
+          "normal": "डिफ़ॉल्ट",
+          "compact": "कॉम्पैक्ट"
+        }
+      }
+    ]
+  }
+}

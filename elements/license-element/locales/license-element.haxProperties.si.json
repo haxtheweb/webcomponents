@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "බලපත්‍රය",
+    "description": "ඔබේ කෘතිය සඳහා බලපත්‍රයක් සපයන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "උපුටා දක්වන ලද කෘතියේ මාතෘකාව."
+      },
+      {
+        "property": "source",
+        "title": "මූලාශ්‍ර සබැඳිය",
+        "description": "බලපත්‍රලාභී කෘතිය සඳහා මූලාශ්‍ර URL."
+      },
+      {
+        "property": "license",
+        "title": "බලපත්‍රය",
+        "description": "මෙම කෘතියට යොදන බලපත්‍රය."
+      },
+      {
+        "property": "creator",
+        "title": "නිර්මාතෘ",
+        "description": "මෙම කෘතියේ නිර්මාතෘ හෝ හිමිකරු."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "මූලාශ්‍ර සබැඳිය",
+        "description": "අමතර බලපත්‍ර විස්තර වෙත සබැඳිය."
+      },
+      {
+        "property": "moreLabel",
+        "title": "තවත් ලේබලය",
+        "description": "අමතර බලපත්‍ර විස්තර සඳහා ලේබලය."
+      }
+    ]
+  }
+}

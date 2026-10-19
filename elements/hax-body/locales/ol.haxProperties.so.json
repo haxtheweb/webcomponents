@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Liis tirsan",
+    "description": "Abuur liis tirsan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Qaabka tirada",
+        "description": "Qaabka loo isticmaalo tirinta liiska la kala horraysiiyay.",
+        "options": {
+          "": "Caadi (tobanle)",
+          "list-decimal-leading-zero": "Tobanle leh eber hore (01, 02, 03)",
+          "list-lower-alpha": "Xarfo yaryar (a, b, c)",
+          "list-upper-alpha": "Xarfo waaweyn (A, B, C)",
+          "list-lower-roman": "Roomaan yar (i, ii, iii)",
+          "list-upper-roman": "Roomaan weyn (I, II, III)"
+        }
+      }
+    ]
+  }
+}

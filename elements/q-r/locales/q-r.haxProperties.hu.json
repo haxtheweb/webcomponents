@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR-kód",
+    "description": "Okostelefonnal beolvasható kód."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR-adatok",
+        "description": "A QR-kód adatainak forrása."
+      },
+      {
+        "property": "title",
+        "title": "Alternatív cím",
+        "description": "A QR-kód forrásához kapcsolt alternatív cím."
+      },
+      {
+        "property": "modulesize",
+        "title": "Méret",
+        "description": "A QR-kód mérete."
+      },
+      {
+        "property": "margin",
+        "title": "Margó",
+        "description": "A kód körüli keret."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Kimeneti formátum",
+        "description": "A kimenet formátuma.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

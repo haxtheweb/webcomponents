@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ตัวดู PDF ในเบราว์เซอร์",
+    "description": "ฝังไฟล์ PDF แบบอินไลน์พร้อมเลย์เอาต์การ์ดและปุ่มดาวน์โหลดเสริม"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL ของ PDF",
+        "description": "ตำแหน่งของไฟล์ PDF"
+      },
+      {
+        "property": "heading",
+        "title": "หัวข้อ",
+        "description": "ข้อความหัวข้อของการ์ด"
+      },
+      {
+        "property": "card",
+        "title": "เลย์เอาต์การ์ด",
+        "description": "แสดง PDF ในการ์ดพร้อมปุ่มดาวน์โหลด"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ป้ายกำกับดาวน์โหลด",
+        "description": "ป้ายกำกับสำหรับปุ่มดาวน์โหลด"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "ข้อความเมื่อไม่รองรับ",
+        "description": "ข้อความเมื่อเบราว์เซอร์ไม่สามารถแสดงไฟล์ PDF ได้"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "ข้อความลิงก์เมื่อไม่รองรับ",
+        "description": "ข้อความลิงก์เมื่อเบราว์เซอร์ไม่สามารถแสดงไฟล์ PDF ได้"
+      },
+      {
+        "property": "width",
+        "title": "ความกว้าง",
+        "description": "ความกว้างของตัวดู PDF"
+      },
+      {
+        "property": "height",
+        "title": "ความสูง",
+        "description": "ความสูงของตัวดู PDF"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Composant d'apprentissage",
+    "description": "Une carte permettant aux enseignants de communiquer la pédagogie et les stratégies d'enseignement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Type",
+        "description": "Le type de carte à utiliser."
+      },
+      {
+        "property": "subtitle",
+        "title": "Sous-titre",
+        "description": "Le sous-titre de la carte."
+      },
+      {
+        "property": "url",
+        "title": "Lien",
+        "description": "Un lien facultatif pour la carte (lien non disponible pour les objectifs d'apprentissage)."
+      },
+      {
+        "property": "title",
+        "title": "Titre",
+        "description": "Définir le titre ; remplace le titre basé sur le type"
+      },
+      {
+        "property": "icon",
+        "title": "Icône",
+        "description": "Définir l'icône ; remplace l'icône basée sur le type"
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Définir la couleur d'accent ; remplace la couleur basée sur le type"
+      },
+      {
+        "slot": "",
+        "title": "Sommaire"
+      }
+    ]
+  }
+}

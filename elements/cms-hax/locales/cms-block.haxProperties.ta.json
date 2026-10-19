@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS தொகுதி",
+    "description": "backend இல் காட்சிப்படுத்தப்படும் CMS தொகுதி"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "தொகுதி",
+        "description": "எங்கள் CMS இலிருந்து ஏற்ற வேண்டிய module"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "எங்கள் CMS இலிருந்து ஏற்ற வேண்டிய தொகுதியின் delta"
+      }
+    ]
+  }
+}

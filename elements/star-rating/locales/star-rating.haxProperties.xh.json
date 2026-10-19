@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ukulinganisa ngeeNkwenkwezi",
+    "description": "Iwijethi yokubonisa ulinganiselo okanye iqhosha lokulinganisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Amanqaku",
+        "description": "Ixabiso lamanqaku langoku."
+      },
+      {
+        "property": "possible",
+        "title": "Okunokwenzeka",
+        "description": "Amanqaku aphezulu anokwenzeka."
+      },
+      {
+        "property": "numStars",
+        "title": "Inani leeNkwenkwezi",
+        "description": "Inani leenkwenkwezi eziza kuboniswa."
+      },
+      {
+        "property": "interactive",
+        "title": "Iyasebenzisana",
+        "description": "Vumela umsebenzisi ukuba asete ulinganiselo."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Imo yeSikali seRubrikhi",
+        "description": "Khupha imethadatha ye-RubricScale ne-RubricLevel yeSkimu se-OER (levelOrdinal/levelPoints) kwinkwenkwezi nganye."
+      }
+    ]
+  }
+}

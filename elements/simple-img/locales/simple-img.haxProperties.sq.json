@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Imazh i thjeshtë",
+    "description": "Manipulo imazhet me parametra të thjeshtë."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Burimi",
+        "description": "URL-ja e burimit të imazhit."
+      },
+      {
+        "property": "height",
+        "title": "Lartësia",
+        "description": "Lartësia opsionale e imazhit."
+      },
+      {
+        "property": "width",
+        "title": "Gjerësia",
+        "description": "Gjerësia opsionale e imazhit."
+      },
+      {
+        "property": "alt",
+        "title": "Teksti alt",
+        "description": "I dobishëm për lexuesit e ekranit dhe për SEO më të mirë."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Cilësia",
+        "description": "Cilësia e imazhit gjatë gjenerimit (vetëm JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Përparësia e marrjes",
+        "description": "Sugjerim performance për shfletuesit modernë.",
+        "options": {
+          "auto": "Automatike",
+          "high": "E lartë",
+          "low": "E ulët"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Metoda e dekodimit",
+        "description": "Sugjerim performance për shfaqjen e imazheve në shfletuesit modernë.",
+        "options": {
+          "auto": "Automatike",
+          "async": "Asinkron"
+        }
+      }
+    ]
+  }
+}

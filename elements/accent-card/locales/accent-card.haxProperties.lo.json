@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "ບັດ",
+    "description": "ບັດທີ່ມີຮູບແບບສີເນັ້ນ (ບໍ່ບັງຄັບ)."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "ຫົວເລື່ອງ",
+        "description": "ຫົວເລື່ອງສຳລັບບັດ."
+      },
+      {
+        "slot": "subheading",
+        "title": "ຫົວເລື່ອງຍ່ອຍ",
+        "description": "ຫົວເລື່ອງຍ່ອຍສຳລັບບັດ (ບໍ່ບັງຄັບ)."
+      },
+      {
+        "slot": "content",
+        "title": "ເນື້ອຫາ",
+        "description": "ເນື້ອຫາສຳລັບບັດ."
+      },
+      {
+        "slot": "footer",
+        "title": "ສ່ວນທ້າຍ",
+        "description": "ສ່ວນທ້າຍສຳລັບບັດ (ບໍ່ບັງຄັບ)."
+      },
+      {
+        "property": "imageSrc",
+        "title": "ຮູບພາບ",
+        "description": "ຮູບພາບ (ບໍ່ບັງຄັບ)"
+      },
+      {
+        "property": "imageAlt",
+        "title": "ຂໍ້ຄວາມແທນຮູບພາບ",
+        "description": "ຂໍ້ຄວາມແທນທີ່ອະທິບາຍຮູບພາບສຳລັບໂປຣແກຣມອ່ານໜ້າຈໍ. ປ່ອຍຫວ່າງໄວ້ສະເພາະເມື່ອຮູບພາບເປັນພຽງການຕົກແຕ່ງເທົ່ານັ້ນ."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "ການຈັດວາງຮູບພາບແນວນອນ",
+        "options": {
+          "left": "ຊ້າຍ",
+          "center": "ກາງ",
+          "right": "ຂວາ"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "ການຈັດວາງຮູບພາບແນວຕັ້ງ",
+        "options": {
+          "top": "ເທິງ",
+          "center": "ກາງ",
+          "bottom": "ລຸ່ມ"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນທາງເລືອກ."
+      },
+      {
+        "property": "dark",
+        "title": "ຊຸດຮູບແບບມືດ",
+        "description": "ເປີດໃຊ້ທີມມືດ"
+      },
+      {
+        "property": "horizontal",
+        "title": "ແນວນອນ",
+        "description": "ແນວນອນບໍ?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "ສີເນັ້ນຫົວເລື່ອງ",
+        "description": "ນຳໃຊ້ສີເນັ້ນກັບຫົວເລື່ອງບໍ?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "ສີເນັ້ນພື້ນຫຼັງ",
+        "description": "ນຳໃຊ້ສີເນັ້ນກັບພື້ນຫຼັງບັດບໍ?"
+      },
+      {
+        "property": "noBorder",
+        "title": "ບໍ່ມີສີເນັ້ນຂອບ",
+        "description": "ລຶບສີເນັ້ນຂອບອອກບໍ?"
+      },
+      {
+        "property": "flat",
+        "title": "ແບນ",
+        "description": "ລຶບເງົາກ່ອງອອກບໍ?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "ມຸມ",
+        "description": "ເນື້ອຫາສຳລັບມຸມບັດ."
+      }
+    ]
+  }
+}

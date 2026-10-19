@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Dostupne teme",
+    "description": "Prikaz dostupnih HAXcms tema s prebacivanjem uz pregled uživo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Način prikaza",
+        "description": "Odaberite kako prikazati teme",
+        "options": {
+          "gallery": "Galerija",
+          "table": "Tabela"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Prikaži detalje",
+        "description": "Prikaži opise tema i dodatne informacije"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Prikaži skrivene i zastarjele teme",
+        "description": "Prikaži skrivene, zastarjele i užasne teme pored zadanih tema kontrolne table"
+      },
+      {
+        "property": "columns",
+        "title": "Kolone (galerija)",
+        "description": "Broj kolona u prikazu galerije"
+      }
+    ]
+  }
+}

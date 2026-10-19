@@ -61,7 +61,7 @@
       {
         "slot": "message",
         "title": "Note Text",
-        "description": "IText for the stop-note.",
+        "description": "Text for the stop-note.",
         "inputMethod": "textfield",
         "slotWrapper": "p",
         "allowedSlotWrappers": ["p", "div"]

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "บล็อกคำพูด",
+    "description": "บล็อกคำพูดที่จัดรูปแบบ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "การอ้างอิง",
+        "description": "ข้อความอ้างอิง"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "ข้อความแสดงแทนสำหรับรูปภาพ"
+      },
+      {
+        "property": "image",
+        "title": "รูปภาพ",
+        "description": "รูปภาพที่แสดงพร้อมคำพูด"
+      }
+    ]
+  }
+}

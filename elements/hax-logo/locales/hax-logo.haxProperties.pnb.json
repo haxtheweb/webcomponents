@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX لفظی آرٹ",
+    "description": "HAX دا لوگو عنصر، ظاہر اے HAX جوگا عنصر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "رکھے جاوݨ والے HAX لوگو دا سائز",
+        "options": {
+          "mini": "منی",
+          "small": "نکا",
+          "normal": "عام",
+          "large": "وڈا"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "کیہ لوگو نوں وڈے حرفاں وچ بدلنا اے"
+      }
+    ]
+  }
+}

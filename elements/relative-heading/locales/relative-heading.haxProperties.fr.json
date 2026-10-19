@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Titre relatif",
+    "description": "produit la bonne hiérarchie de titres en fonction du titre parent"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID de ressource du titre parent"
+      },
+      {
+        "property": "disableLink",
+        "description": "Désactive la fonction de bouton de lien."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Aligne le bouton de copie du lien à l'extrême droite du titre."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Niveau de titre si le parent est introuvable."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Remplace le texte par défaut du message de notification de copie du lien."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Remplace le libellé par défaut du bouton de copie du lien."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Remplace l'icône par défaut du bouton de copie du lien."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Remplace le libellé par défaut du bouton de fermeture de la notification de copie du lien."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Remplace l'icône par défaut du bouton de fermeture de la notification de copie du lien."
+      }
+    ]
+  }
+}

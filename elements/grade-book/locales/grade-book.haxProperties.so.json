@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Buugga Dhibcaha",
+    "description": "Buug dhibcood oo aan madax lahayn oo taageera backend-yo badan oo leh rubrics."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isha",
+        "description": "Nooca isha xogta (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Barta URL (JSON)",
+          "json": "Xog JSON ah",
+          "filesystem": "Nidaamka faylasha"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Xogta Isha",
+        "description": "URL ama xog JSON ah oo loogu talagalay buugga dhibcaha."
+      },
+      {
+        "property": "forCourse",
+        "title": "Tixraaca Koorsada",
+        "description": "Aqoonsiga koorsada ee loo soo saaro sida oer:forCourse ilo kasta oo Qiimayn ah."
+      }
+    ]
+  }
+}

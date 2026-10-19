@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "description": "根据 CSV 做一张无障碍图表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "可选个强调色。"
+      },
+      {
+        "property": "dark",
+        "title": "深色主题",
+        "description": "启用深色主题"
+      },
+      {
+        "property": "dataSource",
+        "title": "CSV 文件",
+        "description": "从 CSV 载入数据。"
+      },
+      {
+        "slot": "heading",
+        "title": "图表标题",
+        "description": "侬图表个无障碍替代文字。"
+      },
+      {
+        "slot": "desc",
+        "title": "图表描述",
+        "description": "侬图表个无障碍描述。"
+      },
+      {
+        "property": "scale",
+        "title": "比例名称",
+        "description": "图表个宽:高比例(看 https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings 里向个 $ct-scales 搭 $ct-scales-names)。",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "reverseData",
+        "title": "数据倒过来",
+        "description": "拿数据倒过来,包括标签、系列顺序搭整只系列数据数组。"
+      },
+      {
+        "slot": "",
+        "title": "HTML 表格",
+        "description": "可选:用 HTML 表格载入数据。"
+      }
+    ]
+  }
+}

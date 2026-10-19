@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "طنز",
+    "description": "متن نوں مخولیا انداز وچ پیش کرنا"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "متن",
+        "description": "طنزیہ بناوݨ والا متن"
+      }
+    ]
+  }
+}

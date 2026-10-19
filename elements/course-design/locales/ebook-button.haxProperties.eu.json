@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Liburu elektronikoaren botoia",
+    "description": "Liburu elektroniko batera estekatzen duen botoia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Botoiaren izenburua."
+      },
+      {
+        "property": "link",
+        "title": "Esteka",
+        "description": "Klik egitean birbideratzeko esteka."
+      },
+      {
+        "property": "icon",
+        "title": "Ikonoa",
+        "description": "Esteka hau irudikatzeko ikonoa"
+      }
+    ]
+  }
+}

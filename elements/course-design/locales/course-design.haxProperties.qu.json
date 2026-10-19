@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Yachay Wakichiy",
+    "description": "Yachachina kaqkunapaq yachay wakichiy elementokunapaq ima wasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Yachaypa Riqsichiqnin",
+        "description": "OER Schema: yachaypa riqsichiqnin, rikch'anachiy MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Quykusqa Pacha",
+        "description": "OER Schema: yachay quykusqa pacha."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Chayachiy Rikch'ay",
+        "description": "OER Schema: yachayta chayachinapaq rikch'ay (rikch'anachiy, kikinpi, internetpi, chaqrusqa)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Ñawpaq Yachachiq",
+        "description": "OER Schema: yachaypa ñawpaq yachachiqnin."
+      },
+      {
+        "property": "syllabus",
+        "title": "Sílabo URL",
+        "description": "OER Schema: yachaypa sílabonman URL."
+      }
+    ]
+  }
+}

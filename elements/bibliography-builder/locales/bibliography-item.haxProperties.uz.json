@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliografiya bandi",
+    "description": "Bibliografiyadagi bitta iqtibosni ifodalovchi band, bir nechta format va eksport imkoniyatlarini qoʻllab-quvvatlaydi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Turi",
+        "description": "Iqtibos turi",
+        "options": {
+          "web": "Veb",
+          "journal": "Jurnal",
+          "book": "Kitob"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Bandning sarlavhasi"
+      },
+      {
+        "property": "authors",
+        "title": "Muallif(lar)",
+        "description": "Vaqt chizigʻidagi voqealar"
+      },
+      {
+        "property": "publisher",
+        "title": "Nashriyot",
+        "description": "Asl veb-sayt"
+      }
+    ]
+  }
+}

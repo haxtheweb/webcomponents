@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ఈబుక్ బటన్",
+    "description": "ఈబుక్‌కు లింక్ చేసే బటన్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "బటన్ యొక్క శీర్షిక."
+      },
+      {
+        "property": "link",
+        "title": "లింక్",
+        "description": "క్లిక్ చేసినప్పుడు దారి మళ్లించాల్సిన లింక్."
+      },
+      {
+        "property": "icon",
+        "title": "ఐకాన్",
+        "description": "ఈ లింక్‌ను సూచించే చిహ్నం"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Szószedet",
+    "description": "Szószedeti kifejezés."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Kifejezés"
+      },
+      {
+        "property": "information",
+        "title": "Meghatározás",
+        "description": "A kifejezésre kattintáskor megjelenő meghatározás."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Felugró panel",
+        "description": "A meghatározás megjelenítése felugró panelen a szövegbe ágyazás helyett."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Hivatkozások",
+        "description": "A kifejezéshez tartozó kiegészítő hivatkozások listája."
+      }
+    ]
+  }
+}

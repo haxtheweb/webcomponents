@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Buttone di libru elettronicu",
+    "description": "Un buttone chì ligheghja à un libru elettronicu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "U titulu di u buttone."
+      },
+      {
+        "property": "link",
+        "title": "Ligame",
+        "description": "U ligame versu u quale ridirige à u cliccu."
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona per riprisentà stu ligame"
+      }
+    ]
+  }
+}

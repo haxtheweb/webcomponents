@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Veprim i përdoruesit",
+    "description": "Gjurmo veprimet e përdoruesit dhe dërgo të dhëna te depot xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Ngjarja për t'u gjurmuar",
+        "description": "Veprimi i përdoruesit që shkakton këtë ngjarje.",
+        "options": {
+          "visibility": "E sheh këtë",
+          "keydown": "Shtyp një tast këtu",
+          "click": "Kliko këtu",
+          "hover": "Kalo kursorin mbi këtë"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Gjurmo çdo herë",
+        "description": "Si parazgjedhje, gjurmohet vetëm ndodhia e parë."
+      }
+    ]
+  }
+}

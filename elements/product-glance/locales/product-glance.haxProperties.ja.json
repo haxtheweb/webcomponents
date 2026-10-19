@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "製品の概要",
+    "description": "製品の概要をすばやく示すブロック。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "アイコン",
+        "description": "概念を表すアイコン。"
+      },
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "ひと目でわかる主要な概念。"
+      },
+      {
+        "property": "subtitle",
+        "title": "サブタイトル",
+        "description": "追加の詳細。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "アイコンのアクセントカラー。"
+      }
+    ]
+  }
+}

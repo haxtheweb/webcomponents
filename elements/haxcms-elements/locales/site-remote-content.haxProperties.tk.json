@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Daşky mazmun",
+    "description": "Bir saýtyň mazmunyny başga saýtda gaýtadan ulan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Saýtyň salgysy",
+        "description": "Häzirki saýt bolmasa, mazmuny salgylanjak salgyny goýuň"
+      },
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Salgy / at maglumatlary üçin görkeziljek element"
+      },
+      {
+        "property": "breakreference",
+        "title": "Salgylanmany üz",
+        "description": "Bu gutyny bellemek daşky mazmuny ýerli redaktirlemek üçin göçürýär, ýöne baglanyşygy aýyrýar. Salgylanýan material täzelenende, ol indi täzelenmeler almaz."
+      },
+      {
+        "property": "showTitle",
+        "title": "Ady görkez",
+        "description": "Görkezilýän serişdäniň adyny görkezmek üçin açyň"
+      }
+    ]
+  }
+}

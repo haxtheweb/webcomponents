@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Spilleliste",
+    "description": "Vis alle typer innhold i en spilleliste."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Kilde",
+        "description": "Innhold som vises i spillelisten."
+      },
+      {
+        "property": "edit",
+        "title": "Redigeringsmodus",
+        "description": "Bytt mellom redigerings- og forhåndsvisningsmodus for spillelisten."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigasjon",
+        "description": "Vis navigasjonsknapper for frem og tilbake."
+      },
+      {
+        "property": "pagination",
+        "title": "Sideinndeling",
+        "description": "Vis sideprikker."
+      },
+      {
+        "property": "orientation",
+        "title": "Retning",
+        "description": "Retningen til lysbildene.",
+        "options": {
+          "horizontal": "Horisontal",
+          "vertical": "Vertikal"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Startlysbilde",
+        "description": "Indeksen til lysbildet som skal vises først."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Sideforhold",
+        "description": "Sideforholdet til lysbildene.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

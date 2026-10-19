@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Dugme e-knjige",
+    "description": "Dugme koje vodi na e-knjigu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov dugmeta."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Link na koji se preusmjerava pri kliku."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona koja predstavlja ovaj link"
+      }
+    ]
+  }
+}

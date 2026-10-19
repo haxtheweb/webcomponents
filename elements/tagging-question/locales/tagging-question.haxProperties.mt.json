@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Mistoqsija tat-Tikketti",
+    "description": "Agħżel tikketti biex twieġeb il-mistoqsija."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Mistoqsija",
+        "description": "Mistoqsija biex l-utenti jwieġbu għaliha."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format tal-gradi",
+        "description": "OER Schema: format tal-gradi għal din il-valutazzjoni (eż. punti, ittra, perċentwal, tlestija)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Għan tat-tagħlim",
+        "description": "OER Schema: għan tat-tagħlim assoċjat ma' din il-valutazzjoni."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kors",
+        "description": "OER Schema: il-kors li għalih hija maħsuba din il-valutazzjoni."
+      },
+      {
+        "property": "answers",
+        "title": "Tweġibiet"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Isem il-kwizz",
+        "description": "Isem il-kwizz użat għall-identifikazzjoni xAPI f'sistemi tal-analitika."
+      }
+    ]
+  }
+}

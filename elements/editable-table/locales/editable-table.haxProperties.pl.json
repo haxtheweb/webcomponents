@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabela",
+    "description": "Dane w formie tabeli dla sieci."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Nagłówek wiersza",
+        "description": "Traktuj pierwszy wiersz jako nagłówek."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Nagłówek kolumny",
+        "description": "Traktuj pierwszą kolumnę jako nagłówek."
+      },
+      {
+        "property": "footer",
+        "title": "Stopka",
+        "description": "Traktuj ostatni wiersz jako stopkę."
+      },
+      {
+        "property": "sort",
+        "title": "Sortowanie",
+        "description": "Zezwól na sortowanie według wartości kolumn."
+      },
+      {
+        "property": "filter",
+        "title": "Zezwól na filtrowanie",
+        "description": "Zezwól na filtrowanie według wartości kolumn."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Styl liczbowy",
+        "description": "Zastosuj styl liczbowy do kolumn liczbowych."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsywna",
+        "description": "Dostosuj układ tabeli na małych ekranach."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Tryb rubryki",
+        "description": "Interpretuj tę tabelę jako OER Schema Rubric, aby emitowane były metadane Rubric, RubricScale, RubricCriterion i RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Typ rubryki",
+        "description": "Styl rubryki emitowany jako oer:rubricType (ma znaczenie tylko przy włączonym trybie rubryki).",
+        "options": {
+          "": "(brak)",
+          "analytic": "Analityczna",
+          "holistic": "Holistyczna",
+          "single-point": "Jednopunktowa",
+          "checklist": "Lista kontrolna"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Z obramowaniem"
+      },
+      {
+        "property": "condensed",
+        "title": "Zagęść wiersze",
+        "description": "Zmniejsz wysokość wierszy."
+      },
+      {
+        "property": "striped",
+        "title": "Wiersze w paski",
+        "description": "Cieniuj co drugi wiersz."
+      },
+      {
+        "property": "downloadable",
+        "title": "Przycisk pobierania",
+        "description": "Dodaj przycisk do pobrania tabeli."
+      },
+      {
+        "property": "copyable",
+        "title": "Przycisk kopiowania",
+        "description": "Dodaj przycisk do kopiowania danych CSV tabeli."
+      },
+      {
+        "property": "printable",
+        "title": "Przycisk drukowania",
+        "description": "Dodaj przycisk do drukowania tylko tabeli."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Dane CSV",
+        "description": "Utwórz tabelę z przesłanego pliku CSV."
+      }
+    ]
+  }
+}

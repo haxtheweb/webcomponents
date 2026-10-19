@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Токен CMS",
+    "description": "Токен CMS, отображаемый на бэкенде"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Токен",
+        "description": "Токен из нашей CMS"
+      }
+    ]
+  }
+}

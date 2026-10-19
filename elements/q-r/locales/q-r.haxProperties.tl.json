@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR Code",
+    "description": "Code na isa-scan mula sa smartphone."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR data",
+        "description": "Pinagmulan ng datos para sa QR code."
+      },
+      {
+        "property": "title",
+        "title": "Alternatibong pamagat",
+        "description": "Alternatibong pamagat na naka-link sa pinagmulan ng QR code."
+      },
+      {
+        "property": "modulesize",
+        "title": "Laki",
+        "description": "Laki ng QR code."
+      },
+      {
+        "property": "margin",
+        "title": "Margin",
+        "description": "Palibot ng code."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Format ng output",
+        "description": "Format ng ilalabas.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

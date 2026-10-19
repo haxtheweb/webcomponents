@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Персонаж RPG",
+    "description": "Забавный персонаж от HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Имя",
+        "description": "Слово для генерации случайного персонажа."
+      },
+      {
+        "property": "hat",
+        "title": "Шляпа",
+        "description": "Стиль шляпы.",
+        "options": {
+          "none": "По умолчанию",
+          "random": "Случайная",
+          "bunny": "Кролик",
+          "cowboy": "Ковбой",
+          "education": "Образование",
+          "construction": "Стройка",
+          "warning": "Предупреждение",
+          "watermelon": "Арбуз",
+          "coffee": "Кофе",
+          "knight": "Рыцарь",
+          "ninja": "Ниндзя",
+          "party": "Вечеринка",
+          "error": "Ошибка",
+          "edit": "Правка"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина персонажа в пикселях."
+      },
+      {
+        "property": "height",
+        "title": "Высота",
+        "description": "Высота персонажа в пикселях."
+      },
+      {
+        "property": "fire",
+        "title": "Горит?",
+        "description": "Горит ли персонаж."
+      },
+      {
+        "property": "walking",
+        "title": "Идёт?",
+        "description": "Анимация ходьбы; запускается, когда персонаж горит."
+      }
+    ]
+  }
+}

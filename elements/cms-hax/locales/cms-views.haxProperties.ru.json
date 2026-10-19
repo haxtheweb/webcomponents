@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Представление CMS",
+    "description": "Представления CMS, отображаемые на бэкенде"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Имя",
+        "description": "Имя представления из нашей CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Отображение",
+        "description": "Отображение внутри этого представления из нашей CMS"
+      }
+    ]
+  }
+}

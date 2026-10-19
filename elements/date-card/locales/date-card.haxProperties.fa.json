@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "تاریخ",
+    "description": "نمایش یک تاریخ تقویمی همراه جزئیات."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "ماه",
+        "description": "ماهی که روی کارت نمایش داده می‌شود."
+      },
+      {
+        "property": "date",
+        "title": "روز ماه",
+        "description": "روز ماه به عدد."
+      },
+      {
+        "property": "day",
+        "title": "روز هفته",
+        "description": "روز هفته به متن."
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "نام رویداد."
+      },
+      {
+        "property": "location",
+        "title": "مکان",
+        "description": "مکان رویداد."
+      },
+      {
+        "property": "startTime",
+        "title": "شروع",
+        "description": "زمان شروع."
+      },
+      {
+        "property": "endTime",
+        "title": "پایان",
+        "description": "زمان پایان."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی اختیاری."
+      },
+      {
+        "property": "dark",
+        "title": "پوستهٔ تیره",
+        "description": "پوستهٔ تیره فعال شود."
+      }
+    ]
+  }
+}

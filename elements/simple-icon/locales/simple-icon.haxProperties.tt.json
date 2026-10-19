@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Иконка",
+    "description": "Тулы иконкалар китапханәсеннән иконка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Иконка",
+        "description": "Күрсәтеләсе иконка."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Иконканың ассызык төсе."
+      },
+      {
+        "property": "dark",
+        "title": "Караңгы",
+        "description": "Караңгы режимны кулланырга (кире төсләр җыелмасы)."
+      }
+    ]
+  }
+}

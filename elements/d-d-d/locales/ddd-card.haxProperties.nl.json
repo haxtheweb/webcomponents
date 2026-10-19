@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kaart",
+    "description": "Kaartcomponent opgemaakt met het DDD-ontwerpsysteem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Afbeelding",
+        "description": "Optionele afbeelding."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-tekst afbeelding",
+        "description": "Alternatieve tekst die de afbeelding beschrijft."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel van de kaart."
+      },
+      {
+        "slot": "",
+        "title": "Inhoud",
+        "description": "Inhoudsgebied van de kaart."
+      },
+      {
+        "property": "href",
+        "title": "Link",
+        "description": "URL van de knoplink."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Knoplabel."
+      },
+      {
+        "property": "noArrow",
+        "title": "Geen pijl",
+        "description": "Verberg de pijl op de knop."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Link: doel",
+        "description": "Waar de link wordt geopend.",
+        "options": {
+          "": "Zelfde venster",
+          "_blank": "Nieuw venster - _blank",
+          "_top": "Bovenste venster - _top",
+          "_parent": "Bovenliggend venster - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Link: rel",
+        "description": "Relatie tussen de gelinkte bron en het huidige document."
+      }
+    ]
+  }
+}

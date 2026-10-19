@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ټب",
+    "description": "یو واحد ټب."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "د ټب آیکون"
+      },
+      {
+        "property": "disabled",
+        "title": "غیر فعال"
+      },
+      {
+        "property": "label",
+        "title": "د ټب لېبل"
+      },
+      {
+        "slot": "",
+        "title": "د ټب منځپانګه",
+        "description": "د ټب منځپانګه."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ځانګړی ID"
+      },
+      {
+        "property": "flag",
+        "title": "د بیرغ اختیاري متن"
+      },
+      {
+        "property": "flagIcon",
+        "title": "د بیرغ اختیاري آیکون"
+      }
+    ]
+  }
+}

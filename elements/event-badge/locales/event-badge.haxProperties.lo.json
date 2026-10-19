@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ປ້າຍງານ",
+    "description": "ອົງປະກອບປ້າຍງານ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ຮູບພາບ TV",
+        "description": "ຮູບພາບທີ່ສະແດງໃນ TV."
+      },
+      {
+        "property": "logo",
+        "title": "ໂລໂກ້",
+        "description": "ໂລໂກ້ທີ່ສະແດງຢູ່ມຸມຂອງປ້າຍ."
+      },
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ທີ່ສະແດງຢູ່ດ້ານເທິງຂອງປ້າຍ."
+      },
+      {
+        "property": "name",
+        "title": "ຊື່",
+        "description": "ຊື່ທີ່ສະແດງໃນປ້າຍ."
+      },
+      {
+        "property": "position",
+        "title": "ຕຳແໜ່ງ",
+        "description": "ບົດບາດ ຫຼື ຕຳແໜ່ງຂອງບຸກຄົນ."
+      },
+      {
+        "property": "organization",
+        "title": "ອົງກອນ",
+        "description": "ອົງກອນທີ່ບຸກຄົນເຮັດວຽກໃຫ້."
+      },
+      {
+        "property": "tvcolor",
+        "title": "ສີ TV",
+        "description": "ເລືອກສີສຳລັບ TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີພື້ນຫຼັງ ຫຼື ສີຂໍ້ຄວາມຫຼັກ."
+      },
+      {
+        "property": "knobcolor",
+        "title": "ສີປຸ່ມໝູນ",
+        "description": "ສີຂອງປຸ່ມໝູນ TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "ເຊເປຍ",
+        "description": "ນຳໃຊ້ເອັບເຟັກເຊເປຍ."
+      },
+      {
+        "property": "blackwhite",
+        "title": "ຂາວດຳ",
+        "description": "ນຳໃຊ້ເອັບເຟັກຂາວດຳ."
+      }
+    ]
+  }
+}

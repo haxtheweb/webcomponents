@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "የCMS ብሎክ",
+    "description": "በጀርባ የሚሰራ የCMS ብሎክ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "ሞጁል",
+        "description": "ከCMSችን የሚጫን ሞጁል"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "ከCMSችን የሚጫነው የብሎክ Delta"
+      }
+    ]
+  }
+}

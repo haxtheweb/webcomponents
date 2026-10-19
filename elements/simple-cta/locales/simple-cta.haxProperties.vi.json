@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Kêu gọi hành động",
+    "description": "Nút đơn giản có liên kết để thực hiện hành động."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Nhãn",
+        "description": "Nhãn liên kết"
+      },
+      {
+        "property": "link",
+        "title": "Liên kết",
+        "description": "Nhập liên kết đến bất kỳ tài nguyên nào"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Ẩn biểu tượng",
+        "description": "Ẩn biểu tượng dùng để nhấn mạnh văn bản"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Biểu tượng",
+        "description": "Biểu tượng liên kết hành động"
+      }
+    ]
+  }
+}

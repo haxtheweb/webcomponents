@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Дата",
+    "description": "Отображение календарной даты с подробностями."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Месяц",
+        "description": "Месяц, отображаемый на карточке."
+      },
+      {
+        "property": "date",
+        "title": "День месяца",
+        "description": "День месяца числом."
+      },
+      {
+        "property": "day",
+        "title": "День недели",
+        "description": "День недели текстом."
+      },
+      {
+        "property": "title",
+        "title": "Заголовок",
+        "description": "Название события."
+      },
+      {
+        "property": "location",
+        "title": "Место",
+        "description": "Место проведения события."
+      },
+      {
+        "property": "startTime",
+        "title": "Начало",
+        "description": "Время начала."
+      },
+      {
+        "property": "endTime",
+        "title": "Окончание",
+        "description": "Время окончания."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентный цвет",
+        "description": "Необязательный акцентный цвет."
+      },
+      {
+        "property": "dark",
+        "title": "Тёмная тема",
+        "description": "Включить тёмную тему."
+      }
+    ]
+  }
+}

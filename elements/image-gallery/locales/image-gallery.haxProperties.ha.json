@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Tarin Hotuna",
+    "description": "Tarin hotuna da ke gabatar da hotuna a tsarin grid, masonry, ko nunin faifai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Yanayin nuni",
+        "description": "Yadda za a gabatar da hotunan a cikin tarin.",
+        "options": {
+          "grid": "Raga",
+          "masonry": "Tsarin bulo",
+          "gallery": "Tarin hotuna"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Fihirisa mai aiki",
+        "description": "Fihirisar hoton da za a fara da shi a yanayin tarin hotuna."
+      }
+    ]
+  }
+}

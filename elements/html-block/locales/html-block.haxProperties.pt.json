@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Bloco HTML",
+    "description": "Um bloco HTML básico que fornece a integração com o HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Código HTML que você deseja apresentar no conteúdo"
+      }
+    ]
+  }
+}

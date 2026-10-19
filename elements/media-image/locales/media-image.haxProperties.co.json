@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Imagine migliurata",
+    "description": "Una manera di prisentà imagine cù diversi miglioramenti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonte",
+        "description": "L'URL di l'imagine."
+      },
+      {
+        "property": "alt",
+        "title": "Testu alternativu",
+        "description": "Testu per discrive l'imagine à l'utilizatori chì ùn vedenu micca."
+      },
+      {
+        "property": "link",
+        "title": "Ligame",
+        "description": "Ligà l'imagine à un URL"
+      },
+      {
+        "property": "card",
+        "title": "Carta",
+        "description": "Appiecà un'ombra per dà l'aspettu d'una carta rialzata."
+      },
+      {
+        "property": "box",
+        "title": "Casella",
+        "description": "Appiecà una casella visuale intornu à l'imagine."
+      },
+      {
+        "property": "offset",
+        "title": "Scartu",
+        "description": "Appiecà un scartu à manca o à diritta à l'imagine.",
+        "options": {
+          "none": "nisunu",
+          "wide": "largu",
+          "narrow": "strettu"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Riferimentu",
+        "description": "Citazione per l'imagine."
+      },
+      {
+        "property": "caption",
+        "title": "Legenda",
+        "description": "Legenda per l'imagine."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titulu di a figura",
+        "description": "Titulu per l'etichetta di figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descrizzione di a figura",
+        "description": "Descrizzione per l'etichetta di figura."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Imagine miniatura",
+        "description": "Fonte di l'imagine miniatura. Mostra a miniatura ma apre a fonte cumpleta in una finestra."
+      },
+      {
+        "property": "round",
+        "title": "Imagine tonda",
+        "description": "Taglia l'aspettu di l'imagine in forma di cerchju."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Disattivà a finestra di l'imagine",
+        "description": "Disattivà i clicchi chì aprenu l'imagine in un dialogu d'ispezzione d'imagine."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Affissà cum'è markdown",
+        "description": "Affissà a legenda è a citazione cum'è markdown."
+      }
+    ]
+  }
+}

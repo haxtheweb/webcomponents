@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Sorteringsfråga",
+    "description": "Sortera objekt i rätt ordning."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fråga",
+        "description": "Frågerubrik."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bedömningsformat",
+        "description": "OER Schema: bedömningsformat för den här bedömningen (t.ex. poäng, betyg, procent, slutförande)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lärandemål",
+        "description": "OER Schema: lärandemål som hör till den här bedömningen."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kurs som den här bedömningen är avsedd för."
+      },
+      {
+        "property": "answers",
+        "title": "Svar",
+        "description": "Svarens ordning anger den rätta sekvensen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Quizets namn",
+        "description": "Quiznamn som används för xAPI-identifiering i analyssystem."
+      }
+    ]
+  }
+}

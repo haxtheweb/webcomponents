@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Klama, Thuthukisa, Bhubhisa",
+    "description": "Ukusetshenziswa kwesistimu yokuklama ye-HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Inketho okufanele iboniswe",
+        "options": {
+          "*": "Umhlahlandlela wesitayela ophelele"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Cerdyn retro",
+    "description": "Cerdyn syml gyda dyluniad retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Prif deitl y cerdyn."
+      },
+      {
+        "property": "url",
+        "description": "URL i'w agor pan gaiff y cerdyn ei glicio."
+      },
+      {
+        "property": "subtitle",
+        "title": "Is-deitl",
+        "description": "Is-deitl y cerdyn."
+      },
+      {
+        "property": "tags",
+        "title": "Tagiau",
+        "description": "Tagiau wedi'u gwahanu gan atalnodau."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Ffynhonnell cyfryngau",
+        "description": "Prif ffynhonnell cyfryngau."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Ffynhonnell wrth hofran",
+        "description": "Ffynhonnell cyfryngau a ddangosir pan fo'r cerdyn yn cael ei hofran neu ei weithredu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw Acen",
+        "description": "Lliw acen a gymhwysir ar draws y cerdyn."
+      },
+      {
+        "property": "dark",
+        "title": "Tywyll",
+        "description": "Defnyddio lliwiau sylfaen modd tywyll."
+      }
+    ]
+  }
+}

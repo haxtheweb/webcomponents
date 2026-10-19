@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris-reitur",
+    "description": "Birta Polaris-reit með titli, valfrjálsum stuðningstexta og valfrjálsum tengli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Aðaltexti",
+        "description": "Aðaltexti reitsins."
+      },
+      {
+        "property": "line2",
+        "title": "Aukatexti",
+        "description": "Valfrjáls stuðningstexti."
+      },
+      {
+        "property": "type",
+        "title": "Stíll reits",
+        "description": "Forstilltur sjónrænn stíll reits.",
+        "options": {
+          "1": "Stíll 1",
+          "2": "Stíll 2",
+          "3": "Stíll 3",
+          "4": "Stíll 4",
+          "5": "Stíll 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Bakgrunnsmynd",
+        "description": "URL bakgrunnsmyndar sem notað er af reitstílum sem styðja myndir."
+      },
+      {
+        "property": "link",
+        "title": "Tengill",
+        "description": "Valfrjálst áfangastaðar-URL fyrir aðgerð reitsins."
+      }
+    ]
+  }
+}

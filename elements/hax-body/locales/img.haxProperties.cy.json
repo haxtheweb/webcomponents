@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Delwedd Sylfaenol",
+    "description": "Elfen delwedd sylfaenol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Ffynhonnell",
+        "description": "URL y ddelwedd."
+      },
+      {
+        "attribute": "alt",
+        "title": "Testun amgen",
+        "description": "Testun amgen ar gyfer hygyrchedd a SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Uchder",
+        "description": "Uchder mewn picseli. Gadewch yn wag i ddefnyddio'r maint naturiol."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Llwytho delwedd",
+        "description": "Dewiswch pryd mae'r ddelwedd yn llwytho.",
+        "options": {
+          "lazy": "Llwytho pan fydd yn weladwy",
+          "auto": "Awtomatig"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Ffynonellau ymatebol (srcset)",
+        "description": "Rhestrwch URLs delweddau a disgrifyddion (e.e. 480w neu 2x) fel bod porwyr yn dewis y maint gorau ar gyfer y sgrin. Caiff ei storio fel y briodwedd srcset safonol."
+      }
+    ]
+  }
+}

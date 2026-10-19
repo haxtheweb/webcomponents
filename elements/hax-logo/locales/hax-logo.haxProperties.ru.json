@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Надпись HAX",
+    "description": "Элемент логотипа HAX, разумеется, совместимый с HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Размер размещаемого логотипа HAX",
+        "options": {
+          "mini": "Мини",
+          "small": "Маленький",
+          "normal": "Обычный",
+          "large": "Большой"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Преобразовывать ли логотип в верхний регистр"
+      }
+    ]
+  }
+}

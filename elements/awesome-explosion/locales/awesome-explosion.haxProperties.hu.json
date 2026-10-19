@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Fantasztikus robbanás",
+    "description": "Interaktív robbanásanimáció opcionális hangeffektusokkal."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Méret",
+        "description": "A robbanás méretének beállítása.",
+        "options": {
+          "tiny": "Apró",
+          "small": "Kicsi",
+          "medium": "Közepes",
+          "large": "Nagy",
+          "epic": "Epikus"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Szín",
+        "description": "A robbanás színtémájának beállítása.",
+        "options": {
+          "": "Alapértelmezett",
+          "red": "Piros",
+          "blue": "Kék",
+          "purple": "Lila",
+          "orange": "Narancs",
+          "yellow": "Sárga"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Hangeffektusok",
+        "description": "Hangeffektusok engedélyezése."
+      },
+      {
+        "property": "resetSound",
+        "title": "Hang újraindítása",
+        "description": "A hang minden alkalommal az elejéről indul."
+      },
+      {
+        "property": "image",
+        "title": "Egyéni kép",
+        "description": "Opcionális URL egyéni robbanásképhez."
+      },
+      {
+        "property": "sound",
+        "title": "Egyéni hang",
+        "description": "Opcionális URL egyéni hangeffektushoz."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Letiltva",
+        "description": "Minden interakció letiltása."
+      }
+    ]
+  }
+}

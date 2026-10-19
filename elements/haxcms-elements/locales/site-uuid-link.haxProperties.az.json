@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX keçidi",
+    "description": "Üzərində işlədiyiniz saytdakı konkret resursa keçid."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Keçid / başlıq məlumatları üçün göstəriləcək element"
+      }
+    ]
+  }
+}

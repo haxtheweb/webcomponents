@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Značka zaslug",
+    "description": "Vizualna značka, ki sporoča pridobitev veščine."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Naslov značke",
+        "description": "Naslov, prikazan na znački."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Slika značke",
+        "description": "URL slike značke."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Podrobnosti značke",
+        "description": "Podrobnosti o znački."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hiperpovezava",
+        "description": "Povezava, povezana z značko."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Veščine značke",
+        "description": "Veščine, prikazane na znački."
+      },
+      {
+        "property": "skill",
+        "title": "Veščina (OER Schema)",
+        "description": "OER Schema: naučena veščina, pridobljena z izpolnitvijo tega učnega cilja."
+      }
+    ]
+  }
+}

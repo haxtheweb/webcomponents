@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Ukuzihlola",
+    "description": "Abasebenzisi bangaqeda ukuzihlola."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Isithombe",
+        "description": "Isithombe sokuzihlola."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko sokuzihlola."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo Ongenye",
+        "description": "Umbhalo ongenye wesithombe."
+      },
+      {
+        "slot": "question",
+        "title": "Umbuzo"
+      },
+      {
+        "slot": "",
+        "title": "Impendulo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Wetimu",
+        "description": "Khetha umbala wetimu ohlelweni lokuklama.",
+        "options": {
+          "primary": "Okuyinhloko",
+          "accent": "Okugcizelelayo",
+          "success": "Impumelelo",
+          "warning": "Isexwayiso",
+          "error": "Iphutha",
+          "info": "Ulwazi"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Inhloso Yokufunda",
+        "description": "Inkomba yenhloso yokufunda ekhishwa njenge-oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Okuhlolwayo",
+        "description": "Inkomba yomsebenzi ekhishwa njenge-oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Isixhumanisi esengeziwe",
+        "description": "Isixhumanisi solwazi olwengeziwe."
+      }
+    ]
+  }
+}

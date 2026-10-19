@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Gabatee",
+    "description": "Daataa gabatee irratti hundaa'e weebiif."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Mata-duree Tarree",
+        "description": "Tarree jalqabaa akka mata-dureetti fudhadhu."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Mata-duree Utubaa",
+        "description": "Utubaa jalqabaa akka mata-dureetti fudhadhu."
+      },
+      {
+        "property": "footer",
+        "title": "Miila",
+        "description": "Tarree dhumaa akka miila gabateetti fudhadhu."
+      },
+      {
+        "property": "sort",
+        "title": "Kan tartiibaa'u",
+        "description": "Gatii utubaatiin tartiibessuu hayyami."
+      },
+      {
+        "property": "filter",
+        "title": "Calaluu Hayyami",
+        "description": "Gatii utubaatiin calaluu hayyami."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Miidhagina Lakkoofsaa",
+        "description": "Utubaawwan lakkoofsaa irratti miidhagina lakkoofsaa dibi."
+      },
+      {
+        "property": "responsive",
+        "title": "Kan walsimu",
+        "description": "Iskiriinii xixiqqaa irratti qindaa'ina gabatee sirreessi."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Haala Rubric",
+        "description": "Gabatee kana akka Rubric OER Schema tti hiiki, akka meetaadaataan Rubric, RubricScale, RubricCriterion fi RubricLevel ba'uuf."
+      },
+      {
+        "property": "rubricType",
+        "title": "Gosa Rubric",
+        "description": "Akkaataa rubric kan akka oer:rubricType tti ba'u (yoo Haalli Rubric bane qofa hiika qaba).",
+        "options": {
+          "": "(homaa)",
+          "analytic": "Xiinxalaa",
+          "holistic": "Guutuu",
+          "single-point": "Qabxii Tokko",
+          "checklist": "Tarree Mirkaneessaa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Daangaa Qabu"
+      },
+      {
+        "property": "condensed",
+        "title": "Tarreewwan Gabaabsi",
+        "description": "Dheerina tarree xiqqeessi."
+      },
+      {
+        "property": "striped",
+        "title": "Tarreewwan Sarara Qaban",
+        "description": "Tarree lamaan lamaan gaaddisa godhi."
+      },
+      {
+        "property": "downloadable",
+        "title": "Qabduu Buufachuu",
+        "description": "Gabatee buufachuuf qabduu dabali."
+      },
+      {
+        "property": "copyable",
+        "title": "Qabduu Garagalchuu",
+        "description": "Daataa CSV gabatee garagalchuuf qabduu dabali."
+      },
+      {
+        "property": "printable",
+        "title": "Qabduu Maxxansuu",
+        "description": "Gabatee qofa maxxansuuf qabduu dabali."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Daataa CSV",
+        "description": "Faayilii CSV ol fe'ame irraa gabatee uumi."
+      }
+    ]
+  }
+}

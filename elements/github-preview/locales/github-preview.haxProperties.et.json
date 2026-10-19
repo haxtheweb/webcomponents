@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHubi eelvaade",
+    "description": "Ligipääsetav joonis pika kirjeldusega"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisatsioon",
+        "description": "GitHubi organisatsiooni masinnimi"
+      },
+      {
+        "property": "repo",
+        "title": "Hoidla",
+        "description": "Hoidla masinnimi"
+      },
+      {
+        "property": "extended",
+        "title": "Laiendatud vaade",
+        "description": "Lisab elemendile readme"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Contenitore comprimibile",
+    "description": "Singolo contenitore espandibile e comprimibile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Intestazione",
+        "description": "Testo per l'elemento comprimibile."
+      },
+      {
+        "property": "expanded",
+        "title": "Espanso",
+        "description": "Espandi per impostazione predefinita."
+      },
+      {
+        "property": "headingButton",
+        "title": "Pulsante intestazione",
+        "description": "Rendi cliccabile l'intera intestazione invece della sola icona."
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona per il pulsante espandi/comprimi."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Icona (quando espanso)",
+        "description": "Icona facoltativa per lo stato espanso del pulsante."
+      },
+      {
+        "slot": "",
+        "title": "Contenuto",
+        "description": "Contenuto dell'elemento comprimibile."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Descrizione comando",
+        "description": "Descrizione comando per il pulsante espandi/comprimi."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Descrizione comando (quando espanso)",
+        "description": "Descrizione comando per il pulsante espandi/comprimi quando è espanso."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Notlibro",
+    "description": "Senkapa notlibro, kiu subtenas plurajn backend-ojn kun rubrikoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonto",
+        "description": "Tipo de datumfonto (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-finpunkto (JSON)",
+          "json": "JSON-datumblobo",
+          "filesystem": "Dosiersistemo"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Fontaj datumoj",
+        "description": "URL aŭ JSON-datumoj por la notlibro."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursa referenco",
+        "description": "Kursa identigilo eligata kiel oer:forCourse ĉe ĉiu Assessment-rimedo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "탭",
+    "description": "탭 모음입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "레이블(접근성용)",
+        "description": "탭 모음의 접근성 레이블입니다."
+      },
+      {
+        "property": "disabled",
+        "title": "비활성화",
+        "description": "모든 탭을 비활성화합니다."
+      },
+      {
+        "property": "hidden",
+        "title": "숨김",
+        "description": "탭 모음을 숨깁니다."
+      },
+      {
+        "property": "sticky",
+        "title": "고정",
+        "description": "스크롤하는 동안 가로 탭을 상단에 고정합니다."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "레이아웃 중단점",
+        "description": "가로 탭의 중단점입니다. 세로 전용은 -1을 사용하세요."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "아이콘 중단점",
+        "description": "아이콘과 함께 텍스트를 표시하는 중단점입니다. 기본값은 0이며, 아이콘 전용 모드는 -1을 사용하세요."
+      },
+      {
+        "slot": "",
+        "title": "탭",
+        "description": "<a11y-tab/> 요소의 연속입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "고유 ID",
+        "description": "이 탭 모음의 고유 ID입니다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Temi Disponibbli",
+    "description": "Uri t-temi HAXcms disponibbli b'bidla ta' preview live"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Mod tal-Veduta",
+        "description": "Agħżel kif jintwerew it-temi",
+        "options": {
+          "gallery": "Gallerija",
+          "table": "Tabella"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Uri d-Dettalji",
+        "description": "Uri d-deskrizzjonijiet tat-temi u informazzjoni addizzjonali"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Uri t-Temi Moħbija u Antiki",
+        "description": "Uri temi moħbija, antiki, u koroh minbarra d-defaults tad-dashboard"
+      },
+      {
+        "property": "columns",
+        "title": "Kolonni (Gallerija)",
+        "description": "Numru ta' kolonni fil-veduta tal-gallerija"
+      }
+    ]
+  }
+}

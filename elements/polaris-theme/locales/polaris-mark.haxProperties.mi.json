@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Tohu Polaris",
+    "description": "Whakaaturia te tohu tuakiri PSU me tētahi ingoa kāreti kōwhiri me tētahi URL taunga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Ingoa kāreti",
+        "description": "Ingoa ka whakaaturia i te taha o te tohu."
+      },
+      {
+        "property": "name2",
+        "title": "Ingoa kāreti 2",
+        "description": "Ingoa tuarua ka whakaaturia i raro i te ingoa kāreti tuatahi."
+      },
+      {
+        "property": "name3",
+        "title": "Ingoa kāreti 3",
+        "description": "Ingoa tuatoru ka whakaaturia i raro i te ingoa kāreti tuarua."
+      },
+      {
+        "property": "url",
+        "title": "Hono",
+        "description": "URL taunga ina pāwhiritia te tohu."
+      },
+      {
+        "property": "type",
+        "title": "Momo kē",
+        "description": "Momo kē ataata o te tohu.",
+        "options": {
+          "default": "Taunoa",
+          "light": "Mārama",
+          "dark": "Pōuri"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Tahora poutū",
+        "description": "Whakaaturia te ingoa tuatoru i raro i te ingoa tuarua me tētahi rārangi whakapae."
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris marka",
+    "description": "Bistaratu PSU identitate marka, aukerako ikastegiaren izenarekin eta helburuko URLarekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Ikastegiaren izena",
+        "description": "Markaren ondoan bistaratzen den izena."
+      },
+      {
+        "property": "name2",
+        "title": "Ikastegiaren 2. izena",
+        "description": "Ikastegiaren lehen izenaren azpian bistaratzen den bigarren izena."
+      },
+      {
+        "property": "name3",
+        "title": "Ikastegiaren 3. izena",
+        "description": "Ikastegiaren bigarren izenaren azpian bistaratzen den hirugarren izena."
+      },
+      {
+        "property": "url",
+        "title": "Esteka",
+        "description": "Markan klik egitean joateko URLa."
+      },
+      {
+        "property": "type",
+        "title": "Aldaera",
+        "description": "Markaren aldaera bisuala.",
+        "options": {
+          "default": "Lehenetsia",
+          "light": "Argia",
+          "dark": "Iluna"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Diseinu bertikala",
+        "description": "Bistaratu hirugarren izena bigarrenaren azpian, marra horizontal batekin."
+      }
+    ]
+  }
+}

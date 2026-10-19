@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Tasarla, Geliştir, Yok Et",
+    "description": "HAX için tasarım sistemi uygulaması"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Görüntülenecek seçenek",
+        "options": {
+          "*": "Tam stil kılavuzu"
+        }
+      }
+    ]
+  }
+}

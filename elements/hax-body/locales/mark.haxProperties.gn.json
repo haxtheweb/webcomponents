@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Jehechaukave",
+    "description": "Ehechaukave moñe'ẽrã tysýipe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Moñe'ẽrã",
+        "description": "Moñe'ẽrã ojehechaukavéva."
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "ໂດນັດຄວາມຄືບໜ້າ",
+    "description": "ໂດນັດຄວາມຄືບໜ້າ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ຂອງອົງປະກອບ"
+      },
+      {
+        "property": "desc",
+        "title": "ຄຳອະທິບາຍ",
+        "description": "ຄຳອະທິບາຍຍາວທີ່ເຂົ້າເຖິງໄດ້"
+      },
+      {
+        "property": "imageSrc",
+        "title": "ແຫຼ່ງຮູບພາບ",
+        "description": "ແຫຼ່ງຂອງຮູບພາບພາຍໃນໂດນັດ."
+      },
+      {
+        "property": "imageAlt",
+        "title": "ຂໍ້ຄວາມແທນຮູບພາບ",
+        "description": "ຂໍ້ຄວາມແທນສຳລັບຮູບພາບ."
+      },
+      {
+        "property": "animated",
+        "title": "ມີພາບເຄື່ອນໄຫວ",
+        "description": "ຄວາມຄືບໜ້າຈະເຄື່ອນໄຫວເມື່ອໂຫຼດຄັ້ງທຳອິດຫຼືບໍ່"
+      },
+      {
+        "property": "complete",
+        "title": "ສຳເລັດ",
+        "description": "ອາເຣຂອງຄ່າທີ່ສຳເລັດແລ້ວ."
+      },
+      {
+        "property": "total",
+        "title": "ທັງໝົດ",
+        "description": "ຈຳນວນທັງໝົດເມື່ອທຸກລາຍການສຳເລັດ."
+      },
+      {
+        "property": "startAngle",
+        "title": "ມຸມເລີ່ມຕົ້ນ",
+        "description": "ມຸມຂອງໂດນັດທີ່ຄວາມຄືບໜ້າເລີ່ມຕົ້ນ"
+      }
+    ]
+  }
+}

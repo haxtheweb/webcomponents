@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Mahsulotga qisqa nazar",
+    "description": "Mahsulotning qisqa sharhi bloki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Belgi",
+        "description": "Tushunchani ifodalovchi belgi."
+      },
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Asosiy tushuncha bir qarashda."
+      },
+      {
+        "property": "subtitle",
+        "title": "Kichik sarlavha",
+        "description": "Qoʻshimcha tafsilot."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Belgi uchun urgʻu rangi."
+      }
+    ]
+  }
+}

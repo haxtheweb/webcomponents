@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grupo despregable",
+    "description": "Un grupo de elementos despregables."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Despregar só un",
+        "description": "Só se pode despregar un elemento."
+      },
+      {
+        "slot": "",
+        "title": "Elementos despregables",
+        "description": "Os elementos despregables."
+      }
+    ]
+  }
+}

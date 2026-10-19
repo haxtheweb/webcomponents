@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Eitem casgliad",
+    "description": "Eitem ar ffurf cerdyn i'w defnyddio mewn rhestr casgliad, gyda thestun, dolen a chyfryngau dewisol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Dolen",
+        "description": "URL cyrchfan ar gyfer y cerdyn hwn."
+      },
+      {
+        "property": "image",
+        "title": "Delwedd",
+        "description": "Delwedd gefndir."
+      },
+      {
+        "property": "line1",
+        "title": "Llinell 1",
+        "description": "Llinell gyntaf y testun."
+      },
+      {
+        "property": "line2",
+        "title": "Llinell 2",
+        "description": "Ail linell y testun."
+      },
+      {
+        "property": "line3",
+        "title": "Llinell 3",
+        "description": "Trydedd llinell y testun."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Eicon",
+        "description": "Eicon sy'n cynrychioli'r cerdyn."
+      },
+      {
+        "property": "saturate",
+        "title": "Effaith dirlawnder",
+        "description": "Newid dirlawnder y ddelwedd pan fydd y defnyddiwr yn ffocysu."
+      },
+      {
+        "property": "tags",
+        "title": "Tagiau",
+        "description": "Rhestr o dagiau wedi'u gwahanu gan atalnodau."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw",
+        "description": "Lliw a ddefnyddir ar gyfer tagiau."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Testun amgen sy'n disgrifio'r ddolen."
+      }
+    ]
+  }
+}

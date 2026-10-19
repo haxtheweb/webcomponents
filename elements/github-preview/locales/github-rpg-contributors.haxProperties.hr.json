@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Popis GitHub suradnika",
+    "description": "Prikazani kao RPG likovi pomoću GitHub API-ja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizacija",
+        "description": "Naziv organizacije iz github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repozitorij",
+        "description": "Naziv repozitorija iz github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Ograničenje",
+        "description": "Ograniči broj prikazanih suradnika."
+      }
+    ]
+  }
+}

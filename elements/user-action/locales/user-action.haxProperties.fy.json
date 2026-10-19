@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Brûkersaksje",
+    "description": "Brûkersaksjes folgje en gegevens nei xAPI-opslach stjoere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Barren om te folgjen",
+        "description": "Brûkersaksje dy't dit barren útlûkt.",
+        "options": {
+          "visibility": "Kin dit sjen",
+          "keydown": "Druk hjir op in toets",
+          "click": "Klik hjirop",
+          "hover": "Hâld de mûs hjirboppe"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Elke kear folgje",
+        "description": "Standert wurdt allinnich de earste kear folge."
+      }
+    ]
+  }
+}

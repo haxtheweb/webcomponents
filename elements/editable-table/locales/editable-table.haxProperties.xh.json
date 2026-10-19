@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Itheyibhile",
+    "description": "Idatha esekwe kwitheyibhile yewebhu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Isihloko soMqolo",
+        "description": "Phatha umqolo wokuqala njengesihloko."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Isihloko soKholamu",
+        "description": "Phatha ikholamu yokuqala njengesihloko."
+      },
+      {
+        "property": "footer",
+        "title": "Ezantsi",
+        "description": "Phatha umqolo wokugqibela njengezantsi."
+      },
+      {
+        "property": "sort",
+        "title": "Kunokuhlelwa",
+        "description": "Vumela ukuhlela ngamaxabiso ekholamu."
+      },
+      {
+        "property": "filter",
+        "title": "Vumela ukuHluza",
+        "description": "Vumela ukuhluza ngamaxabiso ekholamu."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Isitayile samaNani",
+        "description": "Sebenzisa isitayile samanani kwiikholamu zamanani."
+      },
+      {
+        "property": "responsive",
+        "title": "Iyaziqhelanisa",
+        "description": "Lungelelanisa ulwakhiwo lwetheyibhile kwizikrini ezincinci."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Imowudi ye-Rubric",
+        "description": "Tolika le theyibhile njenge-OER Schema Rubric ukuze kukhutshwe imetadata ye-Rubric, RubricScale, RubricCriterion, ne-RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Uhlobo lwe-Rubric",
+        "description": "Isitayile se-rubric esikhutshwa njenge-oer:rubricType (sinentsingiselo kuphela xa iMowudi ye-Rubric ivuliwe).",
+        "options": {
+          "": "(akukho)",
+          "analytic": "Yohlalutyo",
+          "holistic": "Epheleleyo",
+          "single-point": "Yenqaku elinye",
+          "checklist": "Uluhlu lokujonga"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Enemida"
+      },
+      {
+        "property": "condensed",
+        "title": "Cinezela iMiqolo",
+        "description": "Nciphisa ubude bomqolo."
+      },
+      {
+        "property": "striped",
+        "title": "Imiqolo enemigca",
+        "description": "Faka umthunzi kumqolo omnye ngamnye."
+      },
+      {
+        "property": "downloadable",
+        "title": "Iqhosha lokuKhuphela",
+        "description": "Yongeza iqhosha lokukhuphela itheyibhile."
+      },
+      {
+        "property": "copyable",
+        "title": "Iqhosha lokuKopa",
+        "description": "Yongeza iqhosha lokukopa idatha ye-CSV yetheyibhile."
+      },
+      {
+        "property": "printable",
+        "title": "Iqhosha lokuPrinta",
+        "description": "Yongeza iqhosha lokuprinta itheyibhile kuphela."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Idatha ye-CSV",
+        "description": "Yenza itheyibhile ukusuka kwifayile ye-CSV efakiweyo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Stärebewäertung",
+    "description": "Widget fir Bewäertungen unzeweisen oder Knäppchen fir ze bewäerten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Punktzuel",
+        "description": "Aktuelle Punktewäert."
+      },
+      {
+        "property": "possible",
+        "title": "Méiglech",
+        "description": "Maximal méiglech Punktzuel."
+      },
+      {
+        "property": "numStars",
+        "title": "Zuel vu Stären",
+        "description": "Zuel vu Stären, déi ugewise ginn."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktiv",
+        "description": "Dem Benotzer erlaben, d'Bewäertung festzeleeën."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Bewäertungsskala-Modus",
+        "description": "OER Schema RubricScale- a RubricLevel-Metadaten (levelOrdinal/levelPoints) fir all Stär ausginn."
+      }
+    ]
+  }
+}

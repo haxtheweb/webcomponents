@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Гадны вэб агуулгыг iframe-д суулгах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Нөөцийн URL",
+        "description": "Нөөцийн URL."
+      },
+      {
+        "property": "height",
+        "title": "Өндөр",
+        "description": "Iframe-ийн өндөр."
+      },
+      {
+        "property": "width",
+        "title": "Өргөн",
+        "description": "Iframe-ийн өргөн."
+      }
+    ]
+  }
+}

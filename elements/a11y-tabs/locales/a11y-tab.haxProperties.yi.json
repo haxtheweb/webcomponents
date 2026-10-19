@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "טאַב",
+    "description": "איין טאַב."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "טאַב־איקאָן"
+      },
+      {
+        "property": "disabled",
+        "title": "אויסגעשאַלטן"
+      },
+      {
+        "property": "label",
+        "title": "טאַב־עטיקעט"
+      },
+      {
+        "slot": "",
+        "title": "טאַב־אינהאַלט",
+        "description": "אינהאַלט פֿונעם טאַב."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "אייגנאַרטיקער ID"
+      },
+      {
+        "property": "flag",
+        "title": "אָפּציאָנעלער פֿאָן־טעקסט"
+      },
+      {
+        "property": "flagIcon",
+        "title": "אָפּציאָנעלער פֿאָן־איקאָן"
+      }
+    ]
+  }
+}

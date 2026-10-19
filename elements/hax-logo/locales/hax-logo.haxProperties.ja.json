@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAXワードアート",
+    "description": "HAXのロゴ要素。もちろんHAX対応の要素です。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "配置するHAXロゴのサイズ",
+        "options": {
+          "mini": "ミニ",
+          "small": "小",
+          "normal": "標準",
+          "large": "大"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "ロゴを大文字に変換するかどうか"
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "ʻŌlelo media",
+    "description": "He kiʻi me ka ʻōlelo, ke kuhikuhina, a me ka lepili koho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "ʻŌlelo",
+        "description": "Kikokikona o ka ʻōlelo."
+      },
+      {
+        "slot": "author",
+        "title": "Mea kākau",
+        "description": "Mea kākau o ka ʻōlelo."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Nā kikoʻī mea kākau",
+        "description": "Nā kikoʻī mea kākau."
+      },
+      {
+        "slot": "caption",
+        "title": "Lepili kiʻi",
+        "description": "Lepili o ke kiʻi."
+      },
+      {
+        "property": "src",
+        "title": "Kumu Kiʻi",
+        "description": "Faila kiʻi i hoʻohana ʻia no ka ʻōlelo media."
+      },
+      {
+        "property": "alt",
+        "title": "Kikokikona Pani",
+        "description": "Kikokikona pani no ke kiʻi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu Kiko",
+        "description": "Waihoʻoluʻu kiko o ke kāleka."
+      }
+    ]
+  }
+}

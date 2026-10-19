@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Inline audio",
+    "description": "Speel audio inline af als aanvulling op de pagina-inhoud."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Bron",
+        "description": "MP3-bestand of URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Accentkleur van de kaart."
+      },
+      {
+        "property": "shiny",
+        "title": "Glanzend",
+        "description": "Gebruik een lichtere accentachtergrond in plaats van grijs."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Donker",
+        "description": "Donkere modus gebruiken."
+      }
+    ]
+  }
+}

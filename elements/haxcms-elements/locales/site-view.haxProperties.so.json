@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Muuqaalka Goobta",
+    "description": "Qayb firfircoon oo weydiisa oo muujisa xogta goobta iyadoo lagu salaynayo shuruudo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL-ka Muuqaalka",
+        "description": "Halbeegyada weydiinta ee quudinta xogta muuqaalka. Tan waxaad ka heli kartaa looxa Muuqaallada."
+      },
+      {
+        "property": "renderer",
+        "title": "Habka muujinta",
+        "description": "Sida natiijooyinka muuqaalka loo muujinayo"
+      },
+      {
+        "property": "entity",
+        "title": "Nooca hay'adda",
+        "description": "Nooca hay'adda loo isticmaalo falanqaynta jawaabta",
+        "options": {
+          "": "Caadi (shayada)",
+          "item": "Shay",
+          "page": "Bogga",
+          "file": "Fayl",
+          "tag": "Calaamad",
+          "block": "Blok",
+          "view": "Muuqaal",
+          "theme": "Mawduuc",
+          "region": "Gobol",
+          "customElement": "Curiye Gaar ah"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Jebi muuqaalka goobta",
+        "description": "U beddel waxyaabo taagan si toos ah loo tafatiro; wuxuu joojiyaa cusboonaysiinta tooska ah ee isha."
+      }
+    ]
+  }
+}

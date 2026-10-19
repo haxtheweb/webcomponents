@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ancaire Leathanaigh",
+    "description": "Nasc chuig pointí ar leith i meáin ar an leathanach."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Sprioc an leathanaigh",
+        "description": "ID nó acmhainn a dtagraíonn an t-ancaire seo di."
+      },
+      {
+        "property": "value",
+        "title": "Luach an domhainnaisc",
+        "description": "Luach an domhainnaisc (mar shampla stampa ama nó ID sleamhnáin)."
+      },
+      {
+        "property": "entityId",
+        "title": "Aonán suímh",
+        "description": "Aonán suímh roghnach chun cur i láthair coincheapa gaolmhara a rialú."
+      }
+    ]
+  }
+}

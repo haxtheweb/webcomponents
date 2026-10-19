@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Rasmlarni solishtirish",
+    "description": "Solishtirish uchun bir rasmni boshqasi ustiga surish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Yuqori rasm",
+        "description": "Pastki rasm ustiga suriladigan yuqori rasm."
+      },
+      {
+        "property": "topAlt",
+        "title": "Yuqori rasm muqobil matni",
+        "description": "Qulaylik uchun majburiy muqobil matn."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Pastki rasm",
+        "description": "Yuqori rasm ostida koʻrsatiladigan pastki rasm."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Pastki rasm muqobil matni",
+        "description": "Qulaylik uchun majburiy muqobil matn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Xatti-harakat",
+        "description": "Surish rejimini (standart) yoki yuqori rasm shaffoflik rejimini tanlang."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Slayder chizigʻi rangi."
+      },
+      {
+        "property": "dark",
+        "title": "Qorongʻi",
+        "description": "Slayder chizigʻi rangini teskari qilish."
+      },
+      {
+        "property": "position",
+        "title": "Boshlangʻich joylashuv",
+        "description": "0 dan 100 gacha boshlangʻich joylashuv."
+      }
+    ]
+  }
+}

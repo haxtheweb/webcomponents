@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Umxholo wePhepha ongaKhethwanga",
+    "description": "Bonisa into yenqanaba eliphezulu engakhethwanga evela kwiphepha elikhethiweyo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Iphepha",
+        "description": "Khetha iphepha lokuthatha umxholo ongakhethwanga kulo. Into iza kubonisa enye yezinto ze-HTML zenqanaba eliphezulu kweli phepha ngokungakhethwanga."
+      }
+    ]
+  }
+}

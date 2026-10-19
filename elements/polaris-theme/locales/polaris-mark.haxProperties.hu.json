@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris jelzés",
+    "description": "A PSU arculati jelzésének megjelenítése opcionális kari névvel és cél-URL-lel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Kar neve",
+        "description": "A jelzés mellett megjelenő név."
+      },
+      {
+        "property": "name2",
+        "title": "Kar neve 2",
+        "description": "Az első kari név alatt megjelenő második név."
+      },
+      {
+        "property": "name3",
+        "title": "Kar neve 3",
+        "description": "A második kari név alatt megjelenő harmadik név."
+      },
+      {
+        "property": "url",
+        "title": "Hivatkozás",
+        "description": "Cél-URL, amikor a jelzésre kattintanak."
+      },
+      {
+        "property": "type",
+        "title": "Változat",
+        "description": "A jelzés vizuális változata.",
+        "options": {
+          "default": "Alapértelmezett",
+          "light": "Világos",
+          "dark": "Sötét"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Függőleges elrendezés",
+        "description": "A harmadik név megjelenítése a második alatt, vízszintes vonallal."
+      }
+    ]
+  }
+}

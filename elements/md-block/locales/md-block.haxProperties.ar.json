@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "كتلة من محتوى Markdown مباشرة أو محمّلة عن بُعد"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown خام"
+      },
+      {
+        "property": "source",
+        "title": "المصدر",
+        "description": "الملف المصدر لـ Markdown"
+      }
+    ]
+  }
+}

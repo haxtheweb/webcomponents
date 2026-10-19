@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI-visualisering",
+    "description": "Spill av MIDI i kontekst med visualisering."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "URL til filen som skal spilles av."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualisering",
+        "description": "Visualiseringsstil for musikkfilen.",
+        "options": {
+          "staff": "Notesystem",
+          "piano-roll": "Pianorull",
+          "waterfall": "Piano + foss"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Skjul foss",
+        "description": "Skjul fallende noter i pianovisualiseringen."
+      }
+    ]
+  }
+}

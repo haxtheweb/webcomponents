@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Paralaksna slika",
+    "description": "Pomicanje slike"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Slika",
+        "description": "slika koja će biti u pozadini"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Područje naslova",
+        "description": "Tekstualno područje naslova"
+      }
+    ]
+  }
+}

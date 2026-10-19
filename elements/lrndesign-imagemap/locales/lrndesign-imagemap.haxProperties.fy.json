@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ofbyldingskaart",
+    "description": "In tagonklike ôfbyldingskaart mei ynteraktive hotspots."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label foar de ôfbyldingskaart."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Details fan hotspots",
+        "description": "De ynteraktive hotspots op de ôfbyldingskaart."
+      }
+    ]
+  }
+}

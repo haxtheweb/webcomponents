@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Dizaayinii Koorsii",
+    "description": "Kuusaa meeshaalee barnootaa fi elementoota dizaayinii koorsii."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Eenyummeessaa Koorsii",
+        "description": "OER Schema: eenyummeessaa koorsii, fkn. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Semisteera Kennamu",
+        "description": "OER Schema: semisteera koorsiin itti kennamu."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Foormaatii Dhiyeessaa",
+        "description": "OER Schema: foormaatii koorsii dhiyeessuuf fayyadamu (fkn. fuulaa fuulatti, toora interneetii, walmakaa)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Barsiisaa Ijoo",
+        "description": "OER Schema: barsiisaa ijoo koorsichaa."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL Saayilabasii",
+        "description": "OER Schema: URL gara saayilabasii koorsichaa."
+      }
+    ]
+  }
+}

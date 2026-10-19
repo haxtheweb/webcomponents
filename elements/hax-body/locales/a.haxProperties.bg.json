@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Основна връзка",
+    "description": "Основен елемент за връзка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Връзка",
+        "description": "URL на местоназначението."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Видим текст на връзката."
+      },
+      {
+        "attribute": "target",
+        "title": "Цел",
+        "description": "Къде да се отвори връзката.",
+        "options": {
+          "": "Същия прозорец",
+          "_blank": "Нов прозорец - _blank",
+          "_top": "Горен прозорец - _top",
+          "_parent": "Родителски прозорец - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Текст на заглавието",
+        "description": "Пояснително заглавие за достъпност и SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Връзка с местоназначението (сигурност/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

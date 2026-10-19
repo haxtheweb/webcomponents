@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bloc CMS",
+    "description": "Bloc CMS rendu côté serveur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Module",
+        "description": "Module à charger depuis notre CMS"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta du bloc à charger depuis notre CMS"
+      }
+    ]
+  }
+}

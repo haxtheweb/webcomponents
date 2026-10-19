@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Forbedret bilde",
+    "description": "En måte å presentere bilder på med ulike forbedringer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "URL-en til bildet."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ tekst",
+        "description": "Tekst som beskriver bildet for brukere som ikke kan se det."
+      },
+      {
+        "property": "link",
+        "title": "Lenke",
+        "description": "Lenk bildet til en URL"
+      },
+      {
+        "property": "card",
+        "title": "Kort",
+        "description": "Legg til en skygge for å gi inntrykk av et hevet kort."
+      },
+      {
+        "property": "box",
+        "title": "Boks",
+        "description": "Legg en visuell boks rundt bildet."
+      },
+      {
+        "property": "offset",
+        "title": "Forskyvning",
+        "description": "Forskyv bildet mot venstre eller høyre.",
+        "options": {
+          "none": "ingen",
+          "wide": "bred",
+          "narrow": "smal"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Kildehenvisning",
+        "description": "Kildehenvisning for bildet."
+      },
+      {
+        "property": "caption",
+        "title": "Bildetekst",
+        "description": "Bildetekst for bildet."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figurtittel",
+        "description": "Tittel for figuretiketten."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figurbeskrivelse",
+        "description": "Beskrivelse for figuretiketten."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Miniatyrbilde",
+        "description": "Kilde for miniatyrbilde. Viser miniatyrbildet, men åpner hele kilden i en dialogboks."
+      },
+      {
+        "property": "round",
+        "title": "Rundt bilde",
+        "description": "Beskjærer bildet så det ser sirkelformet ut."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Deaktiver bildedialog",
+        "description": "Hindrer at klikk åpner bildet i en dialogboks for bildeinspeksjon."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Vis som Markdown",
+        "description": "Vis bildeteksten og kildehenvisningen som Markdown."
+      }
+    ]
+  }
+}

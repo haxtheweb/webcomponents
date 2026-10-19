@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Giúp ảnh GIF động dễ tiếp cận."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Ảnh GIF động",
+        "description": "URL của ảnh GIF động."
+      },
+      {
+        "property": "alt",
+        "title": "Văn bản thay thế",
+        "description": "Văn bản thay thế cho hình ảnh."
+      },
+      {
+        "property": "longdesc",
+        "title": "Mô tả chi tiết",
+        "description": "Mô tả chi tiết về ảnh GIF để hỗ trợ khả năng tiếp cận."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Ảnh tĩnh",
+        "description": "URL của phiên bản ảnh tĩnh của GIF."
+      }
+    ]
+  }
+}

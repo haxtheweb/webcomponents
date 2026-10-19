@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Kicheza Unity",
+    "description": "Kicheza Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Lengo",
+        "description": "Njia ya muundo wa mchezo."
+      },
+      {
+        "property": "compression",
+        "title": "Mbinu ya kubana",
+        "description": "Kiendelezi cha faili cha kubana rasilimali za mchezo."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL ya Kutiririsha",
+        "description": "URL ya rasilimali zinazotiririshwa."
+      },
+      {
+        "property": "companyname",
+        "title": "Jina la Kampuni",
+        "description": "Jina la kampuni."
+      },
+      {
+        "property": "productname",
+        "title": "Jina la Bidhaa",
+        "description": "Kichwa cha mchezo."
+      },
+      {
+        "property": "productversion",
+        "title": "Toleo la Bidhaa",
+        "description": "Toleo lililotolewa."
+      },
+      {
+        "property": "width",
+        "title": "Upana wa Turubai",
+        "description": "Upana wa CSS wa turubai (kwa mfano px au em)."
+      },
+      {
+        "property": "height",
+        "title": "Urefu wa Turubai",
+        "description": "Urefu wa CSS wa turubai (kwa mfano px au em)."
+      },
+      {
+        "property": "background",
+        "title": "Usuli wa Turubai",
+        "description": "Usuli wa CSS wa turubai."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Siji tab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Lambang Tab"
+      },
+      {
+        "property": "disabled",
+        "title": "Dipateni"
+      },
+      {
+        "property": "label",
+        "title": "Label Tab"
+      },
+      {
+        "slot": "",
+        "title": "Isi Tab",
+        "description": "Isi saka tab."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Unik"
+      },
+      {
+        "property": "flag",
+        "title": "Teks Gendera Opsional"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Lambang Gendera Opsional"
+      }
+    ]
+  }
+}

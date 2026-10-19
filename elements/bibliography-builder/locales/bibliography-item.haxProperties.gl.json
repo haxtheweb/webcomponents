@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Elemento de bibliografía",
+    "description": "Elemento que representa unha única cita nunha bibliografía, compatible con varios formatos e opcións de exportación."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tipo",
+        "description": "Tipo de cita",
+        "options": {
+          "web": "Web",
+          "journal": "Revista",
+          "book": "Libro"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título do elemento"
+      },
+      {
+        "property": "authors",
+        "title": "Autor(es)",
+        "description": "Os eventos da liña do tempo"
+      },
+      {
+        "property": "publisher",
+        "title": "Editorial",
+        "description": "Sitio web orixinal"
+      }
+    ]
+  }
+}

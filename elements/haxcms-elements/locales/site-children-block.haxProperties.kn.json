@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: ಉಪ ಬ್ಲಾಕ್",
+    "description": "ಪ್ರಸ್ತುತ ಪುಟದ ಉಪಪುಟಗಳನ್ನು ತೋರಿಸುವ ಡೈನಾಮಿಕ್ ಬ್ಲಾಕ್"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "ಡೈನಾಮಿಕ್ ವಿಧಾನ",
+        "description": "ಈ ಘಟಕಕ್ಕೆ ಸಾಪೇಕ್ಷವಾಗಿ ಉಪಪುಟಗಳನ್ನು ಹೇಗೆ ಲೆಕ್ಕಹಾಕಬೇಕು",
+        "options": {
+          "active": "ಸಕ್ರಿಯ ಉಪಪುಟಗಳು",
+          "parent": "ಮೂಲ ಪುಟದ ಉಪಪುಟಗಳು",
+          "ancestor": "ಅತ್ಯುನ್ನತ ಪೂರ್ವಜನಿಂದ ಎಲ್ಲಾ ಉಪಪುಟಗಳು"
+        }
+      },
+      {
+        "property": "start",
+        "title": "ಪ್ರಾರಂಭ ಮಟ್ಟ"
+      },
+      {
+        "property": "end",
+        "title": "ಅಂತಿಮ ಮಟ್ಟ"
+      }
+    ]
+  }
+}

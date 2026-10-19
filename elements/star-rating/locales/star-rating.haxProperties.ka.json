@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ვარსკვლავებით შეფასება",
+    "description": "შეფასების საჩვენებელი ვიჯეტი ან შეფასების ღილაკი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "ქულა",
+        "description": "მიმდინარე ქულის მნიშვნელობა."
+      },
+      {
+        "property": "possible",
+        "title": "შესაძლო",
+        "description": "მაქსიმალური შესაძლო ქულა."
+      },
+      {
+        "property": "numStars",
+        "title": "ვარსკვლავების რაოდენობა",
+        "description": "საჩვენებელი ვარსკვლავების რაოდენობა."
+      },
+      {
+        "property": "interactive",
+        "title": "ინტერაქტიული",
+        "description": "მომხმარებლისთვის შეფასების მინიჭების დაშვება."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "რუბრიკის სკალის რეჟიმი",
+        "description": "თითოეული ვარსკვლავისთვის OER Schema RubricScale და RubricLevel მეტამონაცემების (levelOrdinal/levelPoints) გამოტანა."
+      }
+    ]
+  }
+}

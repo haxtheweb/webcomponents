@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Rasm xaritasi",
+    "description": "Interaktiv faol nuqtalarga ega qulay rasm xaritasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Yorliq",
+        "description": "Rasm xaritasi uchun yorliq."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Faol nuqta tafsilotlari",
+        "description": "Rasm xaritasidagi interaktiv faol nuqtalar."
+      }
+    ]
+  }
+}

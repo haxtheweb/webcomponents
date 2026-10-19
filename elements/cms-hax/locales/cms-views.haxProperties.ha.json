@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kallon CMS",
+    "description": "Kallon CMS da aka nuna a baya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Suna",
+        "description": "Sunan kallo daga CMS ɗinmu"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Nuni",
+        "description": "Nuni a cikin wannan kallo daga CMS ɗinmu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "पोस्टकार्ड",
+    "description": "कतैबाट आएको वास्तविक पोस्टकार्डजस्तो देखिने रमाइलो मिडिया"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "प्रापक",
+        "description": "यो कसलाई पठाउँदै हुनुहुन्छ?"
+      },
+      {
+        "property": "from",
+        "title": "प्रेषक",
+        "description": "तपाईं को हुनुहुन्छ?"
+      },
+      {
+        "property": "message",
+        "title": "सन्देश",
+        "description": "तपाईं के भन्न चाहनुहुन्छ?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "हुलाक छाप लागेको स्थान",
+        "description": "यो कार्ड कहाँबाट पठाइएको हो?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "मुख्य फोटोको स्रोत",
+        "description": "तपाईंको फोटो कहाँ छ?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "टिकटको फोटोको स्रोत",
+        "description": "तपाईंको फोटो कहाँ छ?"
+      }
+    ]
+  }
+}

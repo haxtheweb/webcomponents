@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Chipika cha zomwe zili mu markdown cholembedwa mwachindunji kapena chotsegulidwa kuchokera kutali"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown yaiwisi"
+      },
+      {
+        "property": "source",
+        "title": "Gwero",
+        "description": "Fayilo ya gwero la markdown"
+      }
+    ]
+  }
+}

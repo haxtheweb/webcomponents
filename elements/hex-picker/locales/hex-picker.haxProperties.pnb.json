@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex چوݨ والا",
+    "description": "Hexcode رنگ چوݨ والا"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "قدر",
+        "description": "ڈیفالٹ hex قدر"
+      },
+      {
+        "property": "disabled",
+        "title": "غیر فعال",
+        "description": "متن خانہ بند کرو"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "وڈا وکھالا",
+        "description": "وڈے وکھالے وچ رنگ شامل کرو"
+      }
+    ]
+  }
+}

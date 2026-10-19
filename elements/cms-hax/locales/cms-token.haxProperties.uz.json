@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS tokeni",
+    "description": "Backendda koʻrsatiladigan CMS tokeni"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Token",
+        "description": "CMS imizdagi token"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "فهرست شماره‌دار",
+    "description": "ایجاد فهرست شماره‌دار."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "سبک شماره",
+        "description": "سبک مورد استفاده برای شماره‌گذاری فهرست مرتب.",
+        "options": {
+          "": "پیش‌فرض (اعشاری)",
+          "list-decimal-leading-zero": "اعشاری با صفر پیشرو (01، 02، 03)",
+          "list-lower-alpha": "حروف کوچک (a، b، c)",
+          "list-upper-alpha": "حروف بزرگ (A، B، C)",
+          "list-lower-roman": "رومی کوچک (i، ii، iii)",
+          "list-upper-roman": "رومی بزرگ (I، II، III)"
+        }
+      }
+    ]
+  }
+}

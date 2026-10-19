@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Osadzenie Twitter (X)",
+    "description": "Osadź wpis z X w kontekście."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL wpisu",
+        "description": "URL wpisu do osadzenia."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Motyw",
+        "description": "Jasny lub ciemny motyw wpisów z X.",
+        "options": {
+          "light": "Jasny",
+          "dark": "Ciemny"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Blokuj wyskakujące okno po kliknięciu",
+        "description": "Nie pozwalaj użytkownikom otwierać wpisu w x.com."
+      }
+    ]
+  }
+}

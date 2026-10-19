@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Wiskunde",
+    "description": "Wiskunde mooi weergeven."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Wiskunde",
+        "description": "Voer de vergelijking in als LaTeX"
+      }
+    ]
+  }
+}

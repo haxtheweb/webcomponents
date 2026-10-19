@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Scritta HAX",
+    "description": "Elementu di logo per HAX, benintesa cum'è elementu cumpatibile HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Dimensione di u logo HAX à piazzà",
+        "options": {
+          "mini": "Mini",
+          "small": "Chjuca",
+          "normal": "Nurmale",
+          "large": "Grande"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "S'ellu ci vole à mette u logo in maiuscule"
+      }
+    ]
+  }
+}

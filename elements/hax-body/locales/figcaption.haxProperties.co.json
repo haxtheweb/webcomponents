@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Legenda di figura",
+    "description": "Legenda per una figura."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Legenda",
+        "description": "Testu mustratu sottu à a figura."
+      }
+    ]
+  }
+}

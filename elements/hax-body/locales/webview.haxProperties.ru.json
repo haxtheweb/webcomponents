@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Источник",
+        "description": "URL этого ресурса."
+      }
+    ]
+  }
+}

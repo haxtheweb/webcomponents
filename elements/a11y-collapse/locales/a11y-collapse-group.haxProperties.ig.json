@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Otu Mgbasa na Mpịaji",
+    "description": "Otu ihe ndị a na-agbasa ma na-apịaji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Gbasaa naanị otu",
+        "description": "Naanị otu ihe nwere ike ịgbasa."
+      },
+      {
+        "slot": "",
+        "title": "Ihe ndị a na-apịaji",
+        "description": "Ihe ndị a na-apịaji."
+      }
+    ]
+  }
+}

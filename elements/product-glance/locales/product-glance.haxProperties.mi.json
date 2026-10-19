@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Tirohanga hua",
+    "description": "He poraka tirohanga poto mō tētahi hua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ata tohu",
+        "description": "Ata tohu e tohu ana i te ariā."
+      },
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Te ariā matua i te tirohanga tuatahi."
+      },
+      {
+        "property": "subtitle",
+        "title": "Taitara iti",
+        "description": "He taipitopito anō."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae arotahi",
+        "description": "Tae arotahi mō te ata tohu."
+      }
+    ]
+  }
+}

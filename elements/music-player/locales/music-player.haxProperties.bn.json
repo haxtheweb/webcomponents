@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI ভিজুয়ালাইজার",
+    "description": "ভিজুয়ালাইজেশনসহ প্রেক্ষাপটে MIDI চালান।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "উৎস",
+        "description": "চালানোর ফাইলের URL।"
+      },
+      {
+        "property": "visualizer",
+        "title": "ভিজুয়ালাইজেশন",
+        "description": "সংগীত ফাইলের ভিজুয়ালাইজেশন স্টাইল।",
+        "options": {
+          "staff": "স্বরলিপি",
+          "piano-roll": "পিয়ানো রোল",
+          "waterfall": "পিয়ানো + জলপ্রপাত"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "জলপ্রপাত লুকান",
+        "description": "পিয়ানো ভিজুয়ালাইজেশনে জলপ্রপাত নোটগুলো লুকান।"
+      }
+    ]
+  }
+}

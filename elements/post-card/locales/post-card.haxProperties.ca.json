@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Postal",
+    "description": "Un element multimèdia divertit que sembla una postal física enviada des d'algun lloc"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Per a",
+        "description": "A qui va adreçada?"
+      },
+      {
+        "property": "from",
+        "title": "De",
+        "description": "Qui ets?"
+      },
+      {
+        "property": "message",
+        "title": "Missatge",
+        "description": "Què vols dir?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Matasegells de",
+        "description": "Des d'on s'ha enviat aquesta postal?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Font de la foto principal",
+        "description": "On és la teva foto?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Font de la foto del segell",
+        "description": "On és la teva foto?"
+      }
+    ]
+  }
+}

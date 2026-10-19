@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Ingantaccen Hoto",
+    "description": "Hanyar gabatar da hotuna tare da ingantawa iri-iri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Tushe",
+        "description": "URL na hoton."
+      },
+      {
+        "property": "alt",
+        "title": "Madadin rubutu",
+        "description": "Rubutu don bayyana hoton ga masu amfani da ba sa gani."
+      },
+      {
+        "property": "link",
+        "title": "Mahaɗi",
+        "description": "Haɗa hoton zuwa URL"
+      },
+      {
+        "property": "card",
+        "title": "Kati",
+        "description": "Saka inuwa don ba da kamannin kati da aka ɗaga."
+      },
+      {
+        "property": "box",
+        "title": "Akwati",
+        "description": "Saka akwati na gani kewaye da hoton."
+      },
+      {
+        "property": "offset",
+        "title": "Kauce",
+        "description": "Saka kaucewa ta hagu ko dama ga hoton.",
+        "options": {
+          "none": "babu",
+          "wide": "faɗi",
+          "narrow": "kunkuntar"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Ambato",
+        "description": "Ambato don hoton."
+      },
+      {
+        "property": "caption",
+        "title": "Taken hoto",
+        "description": "Taken bayani don hoton."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Taken Hoto",
+        "description": "Take don lakabin hoto."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Bayanin Hoto",
+        "description": "Bayani don lakabin hoto."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Hoton ɗan yatsa",
+        "description": "Tushen hoton ɗan yatsa. Yana nuna ɗan yatsa amma yana buɗe cikakken tushe a taga."
+      },
+      {
+        "property": "round",
+        "title": "Hoto mai zagaye",
+        "description": "Yana yanke kamannin hoton ya zama da siffar da'ira."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Kashe tagar hoto",
+        "description": "Kashe dannawa da ke buɗe hoton a akwatin mai duba hoto."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Nuna a matsayin markdown",
+        "description": "Nuna taken bayani da ambato a matsayin markdown."
+      }
+    ]
+  }
+}

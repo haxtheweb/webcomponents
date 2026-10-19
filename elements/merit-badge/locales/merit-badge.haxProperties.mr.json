@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "गुणवत्ता बॅज",
+    "description": "कौशल्य प्राप्त केल्याचे दर्शवणारा दृश्य बॅज."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "बॅज शीर्षक",
+        "description": "बॅजवर दाखवलेले शीर्षक."
+      },
+      {
+        "property": "badgeImage",
+        "title": "बॅज प्रतिमा",
+        "description": "बॅजसाठी प्रतिमा URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "बॅज तपशील",
+        "description": "बॅजबद्दल तपशील."
+      },
+      {
+        "property": "hyperLink",
+        "title": "हायपरलिंक",
+        "description": "बॅजशी संबंधित लिंक."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "बॅज कौशल्ये",
+        "description": "बॅजवर दाखवलेली कौशल्ये."
+      },
+      {
+        "property": "skill",
+        "title": "कौशल्य (OER Schema)",
+        "description": "OER Schema: हे अध्ययन उद्दिष्ट पूर्ण करून मिळवलेले कौशल्य."
+      }
+    ]
+  }
+}

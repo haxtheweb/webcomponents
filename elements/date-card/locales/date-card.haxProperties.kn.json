@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "ದಿನಾಂಕ",
+    "description": "ವಿವರಗಳೊಂದಿಗೆ ಕ್ಯಾಲೆಂಡರ್ ದಿನಾಂಕವನ್ನು ಪ್ರದರ್ಶಿಸಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "ತಿಂಗಳು",
+        "description": "ಕಾರ್ಡ್‌ನಲ್ಲಿ ತೋರಿಸುವ ತಿಂಗಳು."
+      },
+      {
+        "property": "date",
+        "title": "ತಿಂಗಳ ದಿನ",
+        "description": "ತಿಂಗಳ ದಿನದ ಸಂಖ್ಯೆ."
+      },
+      {
+        "property": "day",
+        "title": "ವಾರದ ದಿನ",
+        "description": "ಪಠ್ಯ ರೂಪದ ವಾರದ ದಿನ."
+      },
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಕಾರ್ಯಕ್ರಮದ ಹೆಸರು."
+      },
+      {
+        "property": "location",
+        "title": "ಸ್ಥಳ",
+        "description": "ಕಾರ್ಯಕ್ರಮದ ಸ್ಥಳ."
+      },
+      {
+        "property": "startTime",
+        "title": "ಆರಂಭ",
+        "description": "ಆರಂಭದ ಸಮಯ."
+      },
+      {
+        "property": "endTime",
+        "title": "ಅಂತ್ಯ",
+        "description": "ಅಂತ್ಯದ ಸಮಯ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ."
+      },
+      {
+        "property": "dark",
+        "title": "ಡಾರ್ಕ್ ಥೀಮ್",
+        "description": "ಡಾರ್ಕ್ ಥೀಮ್ ಸಕ್ರಿಯಗೊಳಿಸಿ."
+      }
+    ]
+  }
+}

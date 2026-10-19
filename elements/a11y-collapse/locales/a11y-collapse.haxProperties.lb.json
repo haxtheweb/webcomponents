@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Klappbare Container",
+    "description": "Eenzelen op- an zouklappbare Container."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Iwwerschrëft",
+        "description": "Text fir de Klappberäich."
+      },
+      {
+        "property": "expanded",
+        "title": "Opgeklappt",
+        "description": "Standardméisseg opgeklappt."
+      },
+      {
+        "property": "headingButton",
+        "title": "Iwwerschrëft als Knäppchen",
+        "description": "Déi ganz Iwwerschrëft klickbar maachen amplaz nëmmen d'Ikon."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon fir de Knäppchen zum Op- an Zouklappen."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikon (wann opgeklappt)",
+        "description": "Optional Ikon fir den opgeklappten Zoustand."
+      },
+      {
+        "slot": "",
+        "title": "Inhalt",
+        "description": "Inhalt fir de Klappberäich."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Tooltip",
+        "description": "Tooltip fir de Knäppchen zum Op- an Zouklappen."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Tooltip (wann opgeklappt)",
+        "description": "Tooltip fir de Knäppchen, wann en opgeklappt ass."
+      }
+    ]
+  }
+}

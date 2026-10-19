@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Blêdmuzyk",
+    "description": "Toant en spilet blêdmuzyk, gitaartabs en partituernotaasje fia alphaTex of MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex-notaasje",
+        "description": "Ynline alphaTex-opmaak foar de blêdmuzyk. Bewurkje direkt om notaasje te skriuwen; it wurdt yn in sjabloan bewarre, sadat de romte behâlden bliuwt."
+      },
+      {
+        "property": "source",
+        "title": "Partituerbestân",
+        "description": "Laad in MusicXML- (.xml/.musicxml/.mxl) of Guitar Pro-bestân (.gp3/.gp4/.gp5/.gpx/.gp) op of keppelje dernei. Giet foar ynline alphaTex as it ynsteld is."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Audio ôfspylje",
+        "description": "Standert oan - harkje nei de blêdmuzyk spile troch de ynboude synthesizer. Skeakelje út foar allinnich besjen (sûnder audio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Werjefte-opsjes toane",
+        "description": "Knoppen foar zoomen, útrekken en opmaak yn de spilerbalke toane."
+      },
+      {
+        "property": "showExport",
+        "title": "Eksportknoppen toane",
+        "description": "Knoppen foar MIDI downloaden en printsje/PDF yn de spilerbalke toane."
+      }
+    ]
+  }
+}

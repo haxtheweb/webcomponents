@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematika",
+    "description": "Matematikany owadan görnüşde görkez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematika",
+        "description": "Deňlemäni LaTeX görnüşinde giriziň"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bọtịnụ nkọwa enweghị ihe mgbochi",
+    "description": "Ngosipụta nke nta nke nta enweghị ihe mgbochi nwere nkọwa na nchịkọta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Bọtịnụ",
+        "description": "Nchịkọta ọdịnaya ma ọ bụrụ na ezoro ya, dịka \"ozi\", \"metadata\", wdg."
+      },
+      {
+        "slot": "details",
+        "title": "Nkọwa",
+        "description": "Nkọwa zuru ezu enwere ike izo ma ọ bụ igosi"
+      },
+      {
+        "slot": "",
+        "title": "Bọtịnụ nkọwa",
+        "description": "Ndabere maka bọtịnụ na-egosi/na-ezo ederede nkọwa, dịka \"ozi\", \"metadata\", wdg."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Ederede nchịkọta nhọrọ mgbe nkọwa mepere emepe"
+      },
+      {
+        "property": "closeText",
+        "title": "Ederede nchịkọta nhọrọ mgbe nkọwa mechiri emechi"
+      }
+    ]
+  }
+}

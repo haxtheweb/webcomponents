@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Incrustà cummenti Disqus in una pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Nome cortu",
+        "description": "U nome cortu di u situ, chì determina l'ospite di u script Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL di a pagina",
+        "description": "L'URL di a pagina à a quale hè assuciatu u filu di cummenti."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Identificatore di a pagina",
+        "description": "L'identificatore unicu di u filu di cummenti di a pagina."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Titulu di a pagina",
+        "description": "U titulu di a pagina à a quale hè assuciatu u filu di cummenti."
+      },
+      {
+        "property": "loadingText",
+        "title": "Testu di caricamentu",
+        "description": "Testu annunziatu mentre i cummenti si caricanu."
+      },
+      {
+        "property": "lang",
+        "title": "Lingua",
+        "description": "Codice di lingua per l'interfaccia Disqus, per esempiu en."
+      }
+    ]
+  }
+}

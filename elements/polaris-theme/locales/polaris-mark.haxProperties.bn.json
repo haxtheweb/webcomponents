@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris চিহ্ন",
+    "description": "ঐচ্ছিক কলেজের নাম ও গন্তব্য URL-সহ PSU পরিচয় চিহ্ন দেখান।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "কলেজের নাম",
+        "description": "চিহ্নের পাশে প্রদর্শিত নাম।"
+      },
+      {
+        "property": "name2",
+        "title": "কলেজের নাম ২",
+        "description": "প্রথম কলেজের নামের নিচে প্রদর্শিত দ্বিতীয় নাম।"
+      },
+      {
+        "property": "name3",
+        "title": "কলেজের নাম ৩",
+        "description": "দ্বিতীয় কলেজের নামের নিচে প্রদর্শিত তৃতীয় নাম।"
+      },
+      {
+        "property": "url",
+        "title": "লিংক",
+        "description": "চিহ্নে ক্লিক করলে গন্তব্য URL।"
+      },
+      {
+        "property": "type",
+        "title": "ভ্যারিয়েন্ট",
+        "description": "দৃশ্যমান চিহ্নের ভ্যারিয়েন্ট।",
+        "options": {
+          "default": "ডিফল্ট",
+          "light": "হালকা",
+          "dark": "ডার্ক"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "উল্লম্ব লেআউট",
+        "description": "একটি অনুভূমিক রেখাসহ দ্বিতীয় নামের নিচে তৃতীয় নাম দেখান।"
+      }
+    ]
+  }
+}

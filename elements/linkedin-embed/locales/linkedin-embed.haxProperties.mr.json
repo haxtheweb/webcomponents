@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn एम्बेड",
+    "description": "LinkedIn प्रोफाइल कार्ड एम्बेड करा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "व्हॅनिटी नाव",
+        "description": "LinkedIn व्हॅनिटी वापरकर्तानाव भाग."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "लोकेल",
+        "description": "लोकेल मेटाडेटा मूल्य, जसे en_US."
+      }
+    ]
+  }
+}

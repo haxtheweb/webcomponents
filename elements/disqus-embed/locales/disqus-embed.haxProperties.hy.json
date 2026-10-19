@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Ներկառուցել Disqus մեկնաբանություններ էջում։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Կարճ անուն",
+        "description": "Կայքի կարճ անունը, որով որոշվում է Disqus սկրիպտի հոսթը։"
+      },
+      {
+        "property": "pageURL",
+        "title": "Էջի URL",
+        "description": "Էջի URL-ը, որին կցված է մեկնաբանությունների շարանը։"
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Էջի նույնացուցիչ",
+        "description": "Էջի մեկնաբանությունների շարանի եզակի նույնացուցիչը։"
+      },
+      {
+        "property": "pageTitle",
+        "title": "Էջի վերնագիր",
+        "description": "Էջի վերնագիրը, որին կցված է մեկնաբանությունների շարանը։"
+      },
+      {
+        "property": "loadingText",
+        "title": "Բեռնման տեքստ",
+        "description": "Տեքստ, որը հայտարարվում է մեկնաբանությունների բեռնման ընթացքում։"
+      },
+      {
+        "property": "lang",
+        "title": "Լեզու",
+        "description": "Disqus միջերեսի լեզվի կոդը, օր.՝ en։"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ibhloko ye-Html",
+    "description": "Ibhloko ye-HTML esisiseko enika unxibelelwano lwe-HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Ikhowudi ye-HTML ofuna ukuyibonisa kumxholo"
+      }
+    ]
+  }
+}

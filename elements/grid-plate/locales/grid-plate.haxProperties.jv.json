@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Tata letak kolom",
+    "description": "Tata materi ing kolom prasaja"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Tata Letak Kolom",
+        "description": "Gaya kanggo nampilake item iki (bisa owah ing layar cilik)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Pateni responsif",
+        "description": "Centhang kothak kanggo njaga kolom ing layar gedhe nanging tetep numpuk ing layar paling cilik"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Padding Item",
+        "description": "Padding ing njero saben item"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Margin item",
+        "description": "Margin antarane item"
+      }
+    ]
+  }
+}

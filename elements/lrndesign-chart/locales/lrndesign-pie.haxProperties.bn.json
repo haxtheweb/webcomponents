@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "পাই চার্ট",
+    "description": "একটি CSV-এর ভিত্তিতে অ্যাক্সেসযোগ্য চার্ট তৈরি করে।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "অ্যাকসেন্ট রং",
+        "description": "একটি ঐচ্ছিক অ্যাকসেন্ট রং।"
+      },
+      {
+        "title": "ডার্ক থিম",
+        "description": "ডার্ক থিম চালু করুন"
+      },
+      {
+        "title": "CSV ফাইল",
+        "description": "একটি CSV থেকে ডেটা লোড করুন।"
+      },
+      {
+        "title": "চার্টের শিরোনাম",
+        "description": "আপনার চার্টের অ্যাক্সেসযোগ্য বিকল্প টেক্সট।"
+      },
+      {
+        "title": "চার্টের বিবরণ",
+        "description": "আপনার চার্টের অ্যাক্সেসযোগ্য বিবরণ।"
+      },
+      {
+        "title": "স্কেলের নাম",
+        "description": "চার্টের প্রস্থ:উচ্চতার অনুপাত ($ct-scales ও $ct-scales-names-এর জন্য https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings দেখুন)।",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "ডোনাট"
+      },
+      {
+        "title": "লেবেল দেখান"
+      },
+      {
+        "title": "শুরুর কোণ"
+      },
+      {
+        "title": "প্যাডিং"
+      },
+      {
+        "title": "মোট",
+        "description": "আপনি চাইলে একটি ঐচ্ছিক মোট নির্দিষ্ট করতে পারেন। মোট মান নির্দিষ্ট করলে পূর্ণ পাই আঁকতে সিরিজের মানগুলোর যোগফল এই মোটের সমান হতে হবে। এই প্যারামিটার ব্যবহার করে পাই বা গেজ চার্টের শুধু অংশবিশেষ আঁকতে পারেন।"
+      },
+      {
+        "title": "খালি মান উপেক্ষা করুন",
+        "description": "অপ্রয়োজনীয় স্লাইস ও লেবেল আঁকা এড়াতে খালি মান উপেক্ষা করা হবে।"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "ডেটা উল্টে দিন",
+        "description": "লেবেল, সিরিজের ক্রম এবং পুরো সিরিজ ডেটা অ্যারেসহ ডেটা উল্টে দিন।"
+      },
+      {
+        "title": "HTML টেবিল",
+        "description": "ঐচ্ছিক: HTML টেবিল হিসেবে ডেটা লোড করুন।"
+      },
+      {
+        "title": "ডোনাট স্ট্রোকের প্রস্থ"
+      },
+      {
+        "title": "নিরেট ডোনাট",
+        "description": "ডোনাটের অংশগুলো স্ট্রোকের বদলে আকৃতি হিসেবে আঁকুন।"
+      },
+      {
+        "title": "লেবেলের দিক",
+        "description": "ডোনাটের অংশগুলো স্ট্রোকের বদলে আকৃতি হিসেবে আঁকুন।",
+        "options": {
+          "neutral": "নিরপেক্ষ",
+          "explode": "বাইরের দিকে",
+          "implode": "ভেতরের দিকে"
+        }
+      },
+      {
+        "title": "লেবেল অফসেট",
+        "description": "ব্যাসার্ধের অর্ধেক দূরত্বের মানক অবস্থান থেকে লেবেলের অবস্থানের অফসেট। এই মান ধনাত্মক বা ঋণাত্মক হতে পারে। ধনাত্মক মান লেবেলকে কেন্দ্র থেকে দূরে বসাবে।"
+      },
+      {
+        "title": "লেবেলের অবস্থান",
+        "options": {
+          "inside": "ভেতরে",
+          "outside": "বাইরে",
+          "center": "মাঝখানে"
+        }
+      }
+    ]
+  }
+}

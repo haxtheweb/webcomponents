@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS ટોકન",
+    "description": "બેકએન્ડ પર રેન્ડર થયેલું CMS ટોકન"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "ટોકન",
+        "description": "અમારા CMS માંથી ટોકન"
+      }
+    ]
+  }
+}

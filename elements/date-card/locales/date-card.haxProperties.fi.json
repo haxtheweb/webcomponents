@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Päivämäärä",
+    "description": "Näytä kalenteripäivämäärä tietoineen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Kuukausi",
+        "description": "Kortissa näytettävä kuukausi."
+      },
+      {
+        "property": "date",
+        "title": "Kuukauden päivä",
+        "description": "Kuukauden päivä numerona."
+      },
+      {
+        "property": "day",
+        "title": "Viikonpäivä",
+        "description": "Viikonpäivä tekstinä."
+      },
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Tapahtuman nimi."
+      },
+      {
+        "property": "location",
+        "title": "Sijainti",
+        "description": "Tapahtuman sijainti."
+      },
+      {
+        "property": "startTime",
+        "title": "Alku",
+        "description": "Alkamisaika."
+      },
+      {
+        "property": "endTime",
+        "title": "Loppu",
+        "description": "Päättymisaika."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Valinnainen korostusväri."
+      },
+      {
+        "property": "dark",
+        "title": "Tumma teema",
+        "description": "Ota tumma teema käyttöön."
+      }
+    ]
+  }
+}

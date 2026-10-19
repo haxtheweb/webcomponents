@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "កម្មវិធីមើល PDF ក្នុងកម្មវិធីរុករក",
+    "description": "បង្កប់ឯកសារ PDF ក្នុងជួរ ជាមួយប្លង់កាត និងប៊ូតុងទាញយកជាជម្រើស។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "ទីតាំងឯកសារ PDF។"
+      },
+      {
+        "property": "heading",
+        "title": "ចំណងជើង",
+        "description": "អត្ថបទចំណងជើងកាត។"
+      },
+      {
+        "property": "card",
+        "title": "ប្លង់កាត",
+        "description": "បង្ហាញ PDF ក្នុងកាតជាមួយប៊ូតុងទាញយក។"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "ស្លាកទាញយក",
+        "description": "ស្លាកសម្រាប់ប៊ូតុងទាញយក។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "សារមិនគាំទ្រ",
+        "description": "សារពេលកម្មវិធីរុករកមិនអាចបង្ហាញឯកសារ PDF។"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "សារតំណមិនគាំទ្រ",
+        "description": "អត្ថបទតំណពេលកម្មវិធីរុករកមិនអាចបង្ហាញឯកសារ PDF។"
+      },
+      {
+        "property": "width",
+        "title": "ទទឹង",
+        "description": "ទទឹងកម្មវិធីមើល PDF។"
+      },
+      {
+        "property": "height",
+        "title": "កម្ពស់",
+        "description": "កម្ពស់កម្មវិធីមើល PDF។"
+      }
+    ]
+  }
+}

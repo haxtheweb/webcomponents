@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Amanothi omculo",
+    "description": "Ibonisa futhi idlale amanothi omculo, amathebhu esiginci, nokubhalwa kwamaphuzu ngo-alphaTex noma i-MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Ukubhalwa kwe-AlphaTex",
+        "description": "Umaka we-alphaTex ophakathi nombhalo wamanothi omculo. Hlela ngqo ukuze ubhale amanothi; kugcinwa kuthempulethi ukuze izikhala zigcinwe."
+      },
+      {
+        "property": "source",
+        "title": "Ifayela lamaphuzu",
+        "description": "Layisha noma uxhumanise nefayela le-MusicXML (.xml/.musicxml/.mxl) noma le-Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Lidlula i-alphaTex ephakathi nombhalo uma lisethiwe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Ukudlala umsindo",
+        "description": "Kuvuliwe ngokuzenzakalelayo - lalela amanothi omculo edlalwa ngesisinthesayiza esakhelwe ngaphakathi. Vala ukuze kube imodi yokubuka kuphela (ngaphandle komsindo)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Bonisa izinketho zokubonisa",
+        "description": "Bonisa izinkinobho zokusondeza, zokwelula, nezesakhiwo ebheni lesidlali."
+      },
+      {
+        "property": "showExport",
+        "title": "Bonisa izinkinobho zokuthumela",
+        "description": "Bonisa izinkinobho zokulanda i-MIDI nezokuphrinta/i-PDF ebheni lesidlali."
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sideseksje",
+    "description": "Seksjekontener foar side-ynhâld en skermbasearre opmaak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Untwerpbehanneling",
+        "description": "Foarynstelde styl dy't besibbe ynstellings bywurket."
+      },
+      {
+        "property": "image",
+        "title": "Ofbylding",
+        "description": "Eftergrûnmedia foar de seksje."
+      },
+      {
+        "property": "bg",
+        "title": "Eftergrûnkleur",
+        "description": "Eftergrûnkleur as der gjin ôfbylding ynsteld is."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Skowknop",
+        "description": "In knop toane dy't nei de folgjende seksje skowt."
+      },
+      {
+        "property": "fold",
+        "title": "Fâld toane",
+        "description": "In fisuele fâld ûnderoan de seksje toane."
+      },
+      {
+        "property": "full",
+        "title": "Folslein skerm",
+        "description": "De folsleine skermhichte fan de besjogger folje."
+      },
+      {
+        "property": "filter",
+        "title": "Filter tapasse",
+        "description": "In fisueel filter op de eftergrûnôfbylding tapasse."
+      },
+      {
+        "slot": "",
+        "title": "Ynhâld",
+        "description": "Seksje-ynhâld."
+      },
+      {
+        "slot": "entice",
+        "title": "Lokje",
+        "description": "Opsjonele lokjende ynhâld."
+      },
+      {
+        "slot": "buttons",
+        "title": "Knoppen",
+        "description": "Knoppegroep ûnder de tekst."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ankertekst",
+        "description": "Ankerlabel yn de navigaasje."
+      }
+    ]
+  }
+}

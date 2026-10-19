@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "ਮੀਡੀਆ ਹਵਾਲਾ",
+    "description": "ਹਵਾਲੇ, ਸਰੋਤ ਅਤੇ ਵਿਕਲਪਿਕ ਕੈਪਸ਼ਨ ਵਾਲਾ ਚਿੱਤਰ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "ਹਵਾਲਾ",
+        "description": "ਹਵਾਲੇ ਦੀ ਲਿਖਤ।"
+      },
+      {
+        "slot": "author",
+        "title": "ਲੇਖਕ",
+        "description": "ਹਵਾਲੇ ਦਾ ਲੇਖਕ।"
+      },
+      {
+        "slot": "author-detail",
+        "title": "ਲੇਖਕ ਦੇ ਵੇਰਵੇ",
+        "description": "ਲੇਖਕ ਦੇ ਵੇਰਵੇ।"
+      },
+      {
+        "slot": "caption",
+        "title": "ਕੈਪਸ਼ਨ",
+        "description": "ਚਿੱਤਰ ਕੈਪਸ਼ਨ।"
+      },
+      {
+        "property": "src",
+        "title": "ਚਿੱਤਰ ਸਰੋਤ",
+        "description": "ਮੀਡੀਆ ਹਵਾਲੇ ਲਈ ਵਰਤੀ ਚਿੱਤਰ ਫ਼ਾਈਲ।"
+      },
+      {
+        "property": "alt",
+        "title": "ਵਿਕਲਪਿਕ ਲਿਖਤ (Alt)",
+        "description": "ਚਿੱਤਰ ਲਈ ਵਿਕਲਪਿਕ ਲਿਖਤ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਕਾਰਡ ਦਾ ਐਕਸੈਂਟ ਰੰਗ।"
+      }
+    ]
+  }
+}

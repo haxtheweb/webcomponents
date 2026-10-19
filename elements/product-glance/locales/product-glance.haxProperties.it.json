@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Prodotto in breve",
+    "description": "Blocco di panoramica rapida del prodotto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona che rappresenta il concetto."
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Concetto principale in breve."
+      },
+      {
+        "property": "subtitle",
+        "title": "Sottotitolo",
+        "description": "Dettaglio aggiuntivo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Colore di accento per l'icona."
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Карьера вазифасы",
+    "description": "Оешма эчендәге аерым вазифа"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Исем"
+      },
+      {
+        "property": "startDate",
+        "title": "Башлану датасы"
+      },
+      {
+        "property": "endDate",
+        "title": "Тәмамлану датасы (ихтыяри)"
+      },
+      {
+        "property": "skills",
+        "title": "Бәйле күнекмәләр",
+        "description": "Күнекмәләр өсти башлау өчен + төймәсен сайлагыз"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS tokeni",
+    "description": "Arka tarapda görkezilýän CMS tokeni"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Token",
+        "description": "Biziň CMS-den token"
+      }
+    ]
+  }
+}

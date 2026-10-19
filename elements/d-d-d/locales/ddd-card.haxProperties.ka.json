@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "ბარათი",
+    "description": "DDD დიზაინ-სისტემით სტილიზებული ბარათის კომპონენტი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "სურათი",
+        "description": "არასავალდებულო სურათი."
+      },
+      {
+        "property": "alt",
+        "title": "სურათის alt",
+        "description": "სურათის აღმწერი ალტერნატიული ტექსტი."
+      },
+      {
+        "property": "title",
+        "title": "სათაური",
+        "description": "ბარათის სათაური."
+      },
+      {
+        "slot": "",
+        "title": "შიგთავსი",
+        "description": "ბარათის შიგთავსის არე."
+      },
+      {
+        "property": "href",
+        "title": "ბმული",
+        "description": "ღილაკის ბმულის URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "იარლიყი",
+        "description": "ღილაკის იარლიყი."
+      },
+      {
+        "property": "noArrow",
+        "title": "ისრის გარეშე",
+        "description": "ღილაკის ისრის დამალვა."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "ბმული: target",
+        "description": "სად გაიხსნას ბმული.",
+        "options": {
+          "": "იმავე ფანჯარაში",
+          "_blank": "ახალი ფანჯარა - _blank",
+          "_top": "ზედა ფანჯარა - _top",
+          "_parent": "მშობელი ფანჯარა - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "ბმული: rel",
+        "description": "კავშირი დაკავშირებულ რესურსსა და მიმდინარე დოკუმენტს შორის."
+      }
+    ]
+  }
+}

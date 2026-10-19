@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Flash card",
+    "description": "Ipprattika kunċetti b'flash cards b'quddiem u wara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "In-naħa ta' quddiem tal-karta",
+        "description": "Test jew mistoqsija ta' quddiem."
+      },
+      {
+        "slot": "back",
+        "title": "In-naħa ta' wara tal-karta",
+        "description": "It-tweġiba mistennija."
+      },
+      {
+        "property": "imgSource",
+        "title": "Sors tal-immaġni",
+        "description": "Fajl tal-immaġni użat għall-karta. Jissostitwixxi l-Kelma ewlenija tal-immaġni."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tip ta' azzjoni",
+        "description": "OER Schema: it-tip ta' azzjoni li tinvolvi din il-prattika (eż. Qari, Kitba, Ħolqien, Riċerka, Smigħ, Tara, Riflessjoni, Diskussjoni, Osservazzjoni, Preżentazzjoni, Valutazzjoni)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Għan tat-tagħlim",
+        "description": "OER Schema: ID jew URL tal-għan tat-tagħlim li din il-prattika tappoġġja."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Skur",
+        "description": "Uża l-modalità skura."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-enfasi tal-karta."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Kelma ewlenija tal-immaġni",
+        "description": "Kelma ewlenija għal immaġni każwali. Tiġi sostitwita mis-Sors tal-immaġni."
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Таблица",
+    "description": "Веб өчен таблица рәвешендәге мәгълүматлар."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Юл башлыгы",
+        "description": "Беренче юлны башлык итеп санарга."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Багана башлыгы",
+        "description": "Беренче багананы башлык итеп санарга."
+      },
+      {
+        "property": "footer",
+        "title": "Аскы өлеш",
+        "description": "Соңгы юлны аскы өлеш итеп санарга."
+      },
+      {
+        "property": "sort",
+        "title": "Тәртипкә салына торган",
+        "description": "Багана кыйммәтләре буенча тәртипкә салырга рөхсәт итәргә."
+      },
+      {
+        "property": "filter",
+        "title": "Фильтрлауга рөхсәт",
+        "description": "Багана кыйммәтләре буенча фильтрларга рөхсәт итәргә."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Санлы бизәү",
+        "description": "Санлы баганаларга санлы бизәү кулланырга."
+      },
+      {
+        "property": "responsive",
+        "title": "Җайлашучан",
+        "description": "Кечкенә экраннарда таблица макетын җайлаштырырга."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Рубрика режимы",
+        "description": "Бу таблицаны OER Schema Rubric итеп аңларга, шулай итеп Rubric, RubricScale, RubricCriterion һәм RubricLevel метамәгълүматлары чыгарыла."
+      },
+      {
+        "property": "rubricType",
+        "title": "Рубрика төре",
+        "description": "oer:rubricType итеп чыгарыла торган рубрика стиле (Рубрика режимы кабызылганда гына мәгънәле).",
+        "options": {
+          "": "(юк)",
+          "analytic": "Аналитик",
+          "holistic": "Гомуми",
+          "single-point": "Бер нокталы",
+          "checklist": "Тикшерү исемлеге"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Чикләре белән"
+      },
+      {
+        "property": "condensed",
+        "title": "Юлларны кысарга",
+        "description": "Юл биеклеген киметергә."
+      },
+      {
+        "property": "striped",
+        "title": "Буйлы юллар",
+        "description": "Юлларны аша-аша караңгыртырга."
+      },
+      {
+        "property": "downloadable",
+        "title": "Йөкләп алу төймәсе",
+        "description": "Таблицаны йөкләп алу өчен төймә өстәргә."
+      },
+      {
+        "property": "copyable",
+        "title": "Күчермә төймәсе",
+        "description": "Таблицаның CSV мәгълүматларын күчереп алу өчен төймә өстәргә."
+      },
+      {
+        "property": "printable",
+        "title": "Бастыру төймәсе",
+        "description": "Таблицаны гына бастыру өчен төймә өстәргә."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV мәгълүматлары",
+        "description": "Йөкләнгән CSV файлыннан таблица ясарга."
+      }
+    ]
+  }
+}

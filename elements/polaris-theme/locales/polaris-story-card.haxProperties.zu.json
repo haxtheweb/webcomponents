@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Ikhadi lendaba le-Polaris",
+    "description": "Bonisa ikhadi lendaba le-Polaris elinesithombe sangemuva, ilebula yensika, nombhalo wesihloko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Isithombe sangemuva",
+        "description": "I-URL yesithombe eboniswa njengengemuva lekhadi."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Usayizi wangemuva",
+        "description": "Indlela isithombe sangemuva esigcwalisa ngayo ikhadi (CSS background-size).",
+        "options": {
+          "cover": "Mboza (cover)",
+          "contain": "Qukatha (contain)",
+          "auto": "Okuzenzakalelayo (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Ukunamathela kwangemuva",
+        "description": "Indlela isithombe sangemuva esiziphatha ngayo lapho uskrola (CSS background-attachment).",
+        "options": {
+          "scroll": "Skrola (scroll)",
+          "fixed": "Kulungisiwe (fixed)",
+          "local": "Okwasendaweni (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Ilebula yensika",
+        "description": "Ilebula emfushane enamagama amakhulu eboniswa phezulu ekhadini. Shiya kungenalutho ukuze ifihlwe."
+      },
+      {
+        "property": "label",
+        "title": "Umbhalo wekhadi",
+        "description": "Umbhalo oyinhloko oboniswa ephaneli engezansi."
+      },
+      {
+        "property": "link",
+        "title": "Isixhumanisi",
+        "description": "I-URL okuyiwa kuyo ongayikhetha esonga lonke ikhadi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Mutambi weRPG",
+    "description": "Mutambi anonakidza kubva kuHAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Zita",
+        "description": "Izwi rinoshandiswa kugadzira mutambi asina kurongwa."
+      },
+      {
+        "property": "hat",
+        "title": "Ngowani",
+        "description": "Mhando yengowani.",
+        "options": {
+          "none": "Zvakajairwa",
+          "random": "Chero",
+          "bunny": "Tsuro",
+          "cowboy": "Mufudzi wemombe",
+          "education": "Dzidzo",
+          "construction": "Kuvaka",
+          "warning": "Yambiro",
+          "watermelon": "Vharanzi",
+          "coffee": "Kofi",
+          "knight": "Murwi",
+          "ninja": "Ninja",
+          "party": "Mabiko",
+          "error": "Kukanganisa",
+          "edit": "Gadzirisa"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Upamhi",
+        "description": "Upamhi hwemutambi mumapikiseri."
+      },
+      {
+        "property": "height",
+        "title": "Kureba",
+        "description": "Kureba kwemutambi mumapikiseri."
+      },
+      {
+        "property": "fire",
+        "title": "Ari kupisa?",
+        "description": "Kana mutambi ari kupisa nemoto."
+      },
+      {
+        "property": "walking",
+        "title": "Ari kufamba?",
+        "description": "Mufambiro wekufamba; unomhanya kana ari kupisa."
+      }
+    ]
+  }
+}

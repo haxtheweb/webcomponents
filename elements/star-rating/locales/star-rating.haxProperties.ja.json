@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "星評価",
+    "description": "評価を表示するウィジェット、または評価を行うボタン。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "スコア",
+        "description": "現在のスコア値。"
+      },
+      {
+        "property": "possible",
+        "title": "満点",
+        "description": "取り得る最大スコア。"
+      },
+      {
+        "property": "numStars",
+        "title": "星の数",
+        "description": "表示する星の数。"
+      },
+      {
+        "property": "interactive",
+        "title": "インタラクティブ",
+        "description": "ユーザーが操作して評価を設定できるようにします。"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "ルーブリック尺度モード",
+        "description": "各星について OER Schema の RubricScale と RubricLevel メタデータ（levelOrdinal/levelPoints）を出力します。"
+      }
+    ]
+  }
+}

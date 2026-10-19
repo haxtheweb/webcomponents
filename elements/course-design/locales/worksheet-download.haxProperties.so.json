@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Soo Dejinta Xaashida Shaqada",
+    "description": "Badhan lagu muujiyo faylasha la soo dejin karo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Cinwaanka soo dejinta."
+      },
+      {
+        "property": "link",
+        "title": "Xiriiriye",
+        "description": "Xiriirka soo dejinta."
+      }
+    ]
+  }
+}

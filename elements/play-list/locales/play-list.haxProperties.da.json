@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Afspilningsliste",
+    "description": "Vis enhver form for indhold i en afspilningsliste."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Kilde",
+        "description": "Indhold vist i afspilningslisten."
+      },
+      {
+        "property": "edit",
+        "title": "Redigeringstilstand",
+        "description": "Skift mellem redigerings- og forhåndsvisningstilstand for afspilningslisten."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigation",
+        "description": "Vis navigationsknapper frem og tilbage."
+      },
+      {
+        "property": "pagination",
+        "title": "Sideinddeling",
+        "description": "Vis sideinddelingsprikker."
+      },
+      {
+        "property": "orientation",
+        "title": "Retning",
+        "description": "Diassenes retning.",
+        "options": {
+          "horizontal": "Vandret",
+          "vertical": "Lodret"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Startdias",
+        "description": "Indeks for det dias, der først skal have fokus."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Billedformat",
+        "description": "Diassenes billedformat.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

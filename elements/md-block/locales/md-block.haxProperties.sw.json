@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Kizuizi cha maudhui ya markdown moja kwa moja au yaliyopakiwa kutoka mbali"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown ghafi"
+      },
+      {
+        "property": "source",
+        "title": "Chanzo",
+        "description": "Faili chanzo ya markdown"
+      }
+    ]
+  }
+}

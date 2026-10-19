@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Alıntı bloğu",
+    "description": "Biçimlendirilmiş alıntı bloğu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Kaynak",
+        "description": "Kaynak metni."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Görselin alternatif metni."
+      },
+      {
+        "property": "image",
+        "title": "Görsel",
+        "description": "Alıntıyla birlikte gösterilen görsel."
+      }
+    ]
+  }
+}

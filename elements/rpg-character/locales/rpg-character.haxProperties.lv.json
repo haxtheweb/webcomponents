@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG tēls",
+    "description": "Jautrs tēls no HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Vārds",
+        "description": "Vārds, ko izmanto nejauša tēla ģenerēšanai."
+      },
+      {
+        "property": "hat",
+        "title": "Cepure",
+        "description": "Cepures stils.",
+        "options": {
+          "none": "Noklusējums",
+          "random": "Nejauša",
+          "bunny": "Zaķis",
+          "cowboy": "Kovbojs",
+          "education": "Izglītība",
+          "construction": "Būvniecība",
+          "warning": "Brīdinājums",
+          "watermelon": "Arbūzs",
+          "coffee": "Kafija",
+          "knight": "Bruņinieks",
+          "ninja": "Nindzja",
+          "party": "Ballīte",
+          "error": "Kļūda",
+          "edit": "Rediģēšana"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Platums",
+        "description": "Tēla platums pikseļos."
+      },
+      {
+        "property": "height",
+        "title": "Augstums",
+        "description": "Tēla augstums pikseļos."
+      },
+      {
+        "property": "fire",
+        "title": "Deg?",
+        "description": "Vai tēls deg."
+      },
+      {
+        "property": "walking",
+        "title": "Iet?",
+        "description": "Iešanas animācija; darbojas, kad deg."
+      }
+    ]
+  }
+}

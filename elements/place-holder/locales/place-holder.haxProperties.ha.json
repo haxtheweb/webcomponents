@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Wurin riƙe matsayi",
+    "description": "Wurin riƙe matsayi da za a iya mayar da shi zuwa nau'in kafofin watsa labarai da aka zaɓa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Nau'i",
+        "description": "Nau'in gizmo da wannan ke karɓa don maye gurbi.",
+        "options": {
+          "text": "Rubutu / abun ciki",
+          "document": "Takarda / fayil",
+          "audio": "Sauti",
+          "video": "Bidiyo",
+          "image": "Hoto",
+          "math": "Lissafi"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Rubutu",
+        "description": "Bayyana wurin riƙe matsayin da ake so dalla-dalla"
+      }
+    ]
+  }
+}

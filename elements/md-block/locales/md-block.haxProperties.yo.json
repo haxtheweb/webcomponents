@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Búlọ́ọ̀kù àkóónú markdown tààrà tàbí tí a gbé wọlé láti ọ̀nà jíjìn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown aláìṣètò"
+      },
+      {
+        "property": "source",
+        "title": "Orísun",
+        "description": "Fáìlì orísun fún markdown"
+      }
+    ]
+  }
+}

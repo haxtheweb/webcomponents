@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Spjald",
+    "description": "Spjald með valfrjálsri áherslumótun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Fyrirsögn",
+        "description": "Fyrirsögn spjalds."
+      },
+      {
+        "slot": "subheading",
+        "title": "Undirfyrirsögn",
+        "description": "Valfrjáls undirfyrirsögn spjalds."
+      },
+      {
+        "slot": "content",
+        "title": "Efni",
+        "description": "Efni spjalds."
+      },
+      {
+        "slot": "footer",
+        "title": "Fótur",
+        "description": "Valfrjáls fótur spjalds."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Mynd",
+        "description": "Valfrjáls mynd"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt-texti myndar",
+        "description": "Annar texti sem lýsir myndinni fyrir skjálesara. Skildu aðeins eftir tómt ef myndin er eingöngu til skrauts."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Lárétt jöfnun myndar",
+        "options": {
+          "left": "vinstri",
+          "center": "miðja",
+          "right": "hægri"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Lóðrétt jöfnun myndar",
+        "options": {
+          "top": "efst",
+          "center": "miðja",
+          "bottom": "neðst"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Valfrjáls áherslulitur."
+      },
+      {
+        "property": "dark",
+        "title": "Dökkt þema",
+        "description": "Virkja dökkt þema"
+      },
+      {
+        "property": "horizontal",
+        "title": "Lárétt",
+        "description": "Lárétt stefna?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Áhersla á fyrirsögn",
+        "description": "Nota áherslulit á fyrirsögn?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Áhersla á bakgrunn",
+        "description": "Nota áherslulit á bakgrunn spjalds?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Engin áhersla á ramma",
+        "description": "Fjarlægja áherslu á ramma?"
+      },
+      {
+        "property": "flat",
+        "title": "Flatt",
+        "description": "Fjarlægja skugga?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Horn",
+        "description": "Efni fyrir horn spjalds."
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "ลิงก์พื้นฐาน",
+    "description": "องค์ประกอบลิงก์พื้นฐาน"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "ลิงก์",
+        "description": "URL ปลายทาง"
+      },
+      {
+        "attribute": "innerText",
+        "title": "ข้อความ",
+        "description": "ข้อความลิงก์ที่มองเห็นได้"
+      },
+      {
+        "attribute": "target",
+        "title": "เป้าหมาย",
+        "description": "ตำแหน่งที่จะเปิดลิงก์",
+        "options": {
+          "": "หน้าต่างเดียวกัน",
+          "_blank": "หน้าต่างใหม่ - _blank",
+          "_top": "หน้าต่างบนสุด - _top",
+          "_parent": "หน้าต่างหลัก - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "ข้อความชื่อเรื่อง",
+        "description": "ชื่อเรื่องคำแนะนำสำหรับการเข้าถึงได้และ SEO"
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "ความสัมพันธ์กับปลายทาง (ความปลอดภัย/SEO)",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

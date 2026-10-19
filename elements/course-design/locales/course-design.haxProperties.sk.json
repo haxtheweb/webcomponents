@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Dizajn kurzu",
+    "description": "Kontajner pre vzdelávacie materiály a prvky dizajnu kurzu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Identifikátor kurzu",
+        "description": "OER Schema: identifikátor kurzu, napr. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Ponúkaný semester",
+        "description": "OER Schema: semester, počas ktorého sa kurz ponúka."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Forma výučby",
+        "description": "OER Schema: forma, ktorou sa kurz vyučuje (napr. prezenčne, online, hybridne)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Hlavný vyučujúci",
+        "description": "OER Schema: hlavný vyučujúci kurzu."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL sylabu",
+        "description": "OER Schema: URL sylabu kurzu."
+      }
+    ]
+  }
+}

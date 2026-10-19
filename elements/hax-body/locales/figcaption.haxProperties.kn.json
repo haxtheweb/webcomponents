@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ಚಿತ್ರದ ಶೀರ್ಷಿಕೆ",
+    "description": "figure ಗಾಗಿ ಶೀರ್ಷಿಕೆ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ಚಿತ್ರ ಶೀರ್ಷಿಕೆ",
+        "description": "ಚಿತ್ರದ ಕೆಳಗೆ ತೋರಿಸುವ ಪಠ್ಯ."
+      }
+    ]
+  }
+}

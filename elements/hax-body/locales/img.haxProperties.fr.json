@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Image de base",
+    "description": "Élément image de base."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Source",
+        "description": "URL de l'image."
+      },
+      {
+        "attribute": "alt",
+        "title": "Texte alternatif",
+        "description": "Texte alternatif pour l'accessibilité et le SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Hauteur",
+        "description": "Hauteur en pixels. Laissez vide pour utiliser la taille naturelle."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Chargement de l'image",
+        "description": "Choisissez quand l'image se charge.",
+        "options": {
+          "lazy": "Charger lorsqu'elle est visible",
+          "auto": "Automatique"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Sources adaptatives (srcset)",
+        "description": "Listez les URL des images et leurs descripteurs (p. ex. 480w ou 2x) pour que les navigateurs choisissent la meilleure taille pour l'écran. Stocké dans l'attribut standard srcset."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Sivun tiedot",
+    "description": "Määritä sivujen välinen visuaalinen jako, jonka avulla sisällönhallintajärjestelmät voivat luoda sivuja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Teemassa ja ensimmäisenä otsikkona näytettävä otsikko."
+      },
+      {
+        "property": "pageType",
+        "title": "Tyyppi",
+        "description": "Sivun visuaalinen kontekstinimike.",
+        "options": {
+          "": "-- ei mitään --",
+          "content": "Sisältö",
+          "assessment": "Arviointi",
+          "quiz": "Tietovisa",
+          "submission": "Palautus",
+          "lesson": "Oppitunti",
+          "module": "Moduuli",
+          "task": "Tehtävä",
+          "activity": "Aktiviteetti",
+          "project": "Projekti",
+          "practice": "Harjoitus",
+          "unit": "Jakso",
+          "objectives": "Oppimistavoitteet",
+          "connection": "Yhteys",
+          "knowledge": "Tiesitkö?",
+          "strategy": "Oppimisstrategia",
+          "discuss": "Keskustele",
+          "listen": "Kuuntele",
+          "make": "Tee",
+          "observe": "Havainnoi",
+          "present": "Esitä",
+          "reading": "Lukeminen",
+          "reflect": "Pohdi",
+          "research": "Tutki",
+          "watch": "Katso",
+          "write": "Kirjoita"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tunnisteet",
+        "description": "Pilkuilla eroteltu luettelo tunnisteista."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Linkin URL",
+        "description": "Uudelleenohjaus-URL, joka näytetään sivun sisällön sijaan."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Linkin kohde",
+        "description": "Avaa linkit samassa tai uudessa ikkunassa.",
+        "options": {
+          "_self": "Sama ikkuna",
+          "_blank": "Uusi ikkuna"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Julkaistu",
+        "description": "Julkaisemattomat sivut on piilotettu loppukäyttäjiltä."
+      },
+      {
+        "property": "locked",
+        "title": "Lukitse sivu",
+        "description": "Lukitse tai avaa kaikki tämän sivun elementit."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Ohita automaattinen polkutunnus",
+        "description": "Estä polkutunnuksen automaattinen päivitys otsikon tai yläsivun perusteella."
+      },
+      {
+        "property": "slug",
+        "title": "Polku",
+        "description": "Tämän sivun URL-polkutunnus."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Sivua edustava media, jota käytetään joissakin teemoissa ja näkymissä."
+      },
+      {
+        "property": "parent",
+        "title": "Yläsivu",
+        "description": "Yläsivun polku."
+      },
+      {
+        "property": "noderefs",
+        "title": "Liittyvä sisältö",
+        "description": "Tähän sivuun liittyvät sivut."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Kuvaus",
+        "description": "Kokoelmissa ja hakukoneoptimoinnissa käytettävä kuvaus."
+      },
+      {
+        "property": "entityType",
+        "title": "Entiteetin tyyppi",
+        "description": "Oletuksena sivu, ellei toisin määritetä.",
+        "options": {
+          "page": "Sivu (oletus)",
+          "taxonomy": "Taksonomia",
+          "taxonomyTerm": "Taksonomian termi",
+          "region": "Alue"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Kuvake",
+        "description": "Tähän sivuun sivustolla liitetty kuvake."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Tähän sivuun sivustolla liitetty väri."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Piilota valikosta",
+        "description": "Piilota tämä sivu valikoista, mutta säilytä sen URL."
+      },
+      {
+        "property": "order",
+        "title": "Järjestys",
+        "description": "Järjestys suhteessa sisarsivuihin."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Sivun teema",
+        "description": "Ohita teema vain tällä sivulla."
+      },
+      {
+        "property": "author",
+        "title": "Tekijä",
+        "description": "Viimeisimmän tätä sivua muokanneen henkilön käyttäjänimi."
+      }
+    ]
+  }
+}

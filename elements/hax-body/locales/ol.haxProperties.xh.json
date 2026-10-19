@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Uluhlu olunamanani",
+    "description": "Yenza uluhlu olunamanani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Isitayile senani",
+        "description": "Isitayile esisetyenziswa kumanani oluhlu olulandelelanisiweyo.",
+        "options": {
+          "": "Okungagqibekanga (desimali)",
+          "list-decimal-leading-zero": "Idesimali ene-zero phambili (01, 02, 03)",
+          "list-lower-alpha": "Oonobumba abancinci (a, b, c)",
+          "list-upper-alpha": "Oonobumba abakhulu (A, B, C)",
+          "list-lower-roman": "IsiRoma esincinci (i, ii, iii)",
+          "list-upper-roman": "IsiRoma esikhulu (I, II, III)"
+        }
+      }
+    ]
+  }
+}

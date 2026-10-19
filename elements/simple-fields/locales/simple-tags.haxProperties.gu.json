@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ટૅગ્સ",
+    "description": "પૃષ્ઠ પર બતાવવા માટે સરળ ટૅગ સૂચિ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ટૅગ્સ",
+        "description": "અલ્પવિરામથી અલગ કરેલી ટૅગ્સની સૂચિ."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "સ્વચાલિત ઍક્સેન્ટ રંગ",
+        "description": "લેબલના આધારે ઍક્સેન્ટ રંગ આપમેળે સેટ કરો."
+      },
+      {
+        "property": "accentColor",
+        "title": "રંગ",
+        "description": "ટૅગ્સ માટેનો રંગ."
+      }
+    ]
+  }
+}

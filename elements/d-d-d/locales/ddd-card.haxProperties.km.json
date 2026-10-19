@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "កាត",
+    "description": "សមាសភាគកាតដែលមានរចនាប័ទ្មតាមប្រព័ន្ធរចនា DDD។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "រូបភាព",
+        "description": "រូបភាពជាជម្រើស។"
+      },
+      {
+        "property": "alt",
+        "title": "អត្ថបទជំនួសរូបភាព",
+        "description": "អត្ថបទជំនួសដែលពិពណ៌នារូបភាព។"
+      },
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងកាត។"
+      },
+      {
+        "slot": "",
+        "title": "ខ្លឹមសារ",
+        "description": "តំបន់ខ្លឹមសារកាត។"
+      },
+      {
+        "property": "href",
+        "title": "តំណ",
+        "description": "URL តំណប៊ូតុង។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "ស្លាក",
+        "description": "ស្លាកប៊ូតុង។"
+      },
+      {
+        "property": "noArrow",
+        "title": "គ្មានព្រួញ",
+        "description": "លាក់ព្រួញប៊ូតុង។"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "តំណ: target",
+        "description": "កន្លែងត្រូវបើកតំណ។",
+        "options": {
+          "": "បង្អួចដដែល",
+          "_blank": "បង្អួចថ្មី - _blank",
+          "_top": "បង្អួចខាងលើ - _top",
+          "_parent": "បង្អួចមេ - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "តំណ: rel",
+        "description": "ទំនាក់ទំនងរវាងធនធានដែលបានភ្ជាប់ និងឯកសារបច្ចុប្បន្ន។"
+      }
+    ]
+  }
+}

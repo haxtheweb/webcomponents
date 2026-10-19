@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "HAX க்கான வடிவமைப்பு அமைப்புச் செயலாக்கம்"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "காட்ட வேண்டிய விருப்பம்",
+        "options": {
+          "*": "முழு பாணி வழிகாட்டி"
+        }
+      }
+    ]
+  }
+}

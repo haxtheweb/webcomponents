@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Картка",
+    "description": "Картка, аформленая ў дызайн-сістэме DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Выява",
+        "description": "Неабавязковая выява."
+      },
+      {
+        "property": "alt",
+        "title": "Alt выявы",
+        "description": "Альтэрнатыўны тэкст, які апісвае выяву."
+      },
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Назва карткі."
+      },
+      {
+        "slot": "",
+        "title": "Змесціва",
+        "description": "Вобласць змесціва карткі."
+      },
+      {
+        "property": "href",
+        "title": "Спасылка",
+        "description": "URL спасылкі кнопкі."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Метка",
+        "description": "Метка кнопкі."
+      },
+      {
+        "property": "noArrow",
+        "title": "Без стрэлкі",
+        "description": "Схаваць стрэлку кнопкі."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Спасылка: target",
+        "description": "Дзе адкрываць спасылку.",
+        "options": {
+          "": "Тое ж акно",
+          "_blank": "Новае акно - _blank",
+          "_top": "Верхняе акно - _top",
+          "_parent": "Бацькоўскае акно - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Спасылка: rel",
+        "description": "Сувязь паміж рэсурсам па спасылцы і бягучым дакументам."
+      }
+    ]
+  }
+}

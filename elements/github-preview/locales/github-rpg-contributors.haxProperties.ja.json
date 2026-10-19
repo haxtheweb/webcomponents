@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHubコントリビューター一覧",
+    "description": "GitHub APIを使ってRPGキャラクターとして表示します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "組織",
+        "description": "github.com/ORG/REPO の組織名。"
+      },
+      {
+        "property": "repo",
+        "title": "リポジトリ",
+        "description": "github.com/ORG/REPO のリポジトリ名。"
+      },
+      {
+        "property": "limit",
+        "title": "上限",
+        "description": "表示するコントリビューターの数を制限します。"
+      }
+    ]
+  }
+}

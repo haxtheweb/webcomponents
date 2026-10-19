@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Mufananidzo Wakareruka",
+    "description": "Chinhu chemufananidzo chakareruka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Kwakabva",
+        "description": "URL yemufananidzo."
+      },
+      {
+        "attribute": "alt",
+        "title": "Mavara anotsiva",
+        "description": "Mavara ekutsiva ekuwanikwa nevose neSEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Kureba",
+        "description": "Hurefu mumapikseli. Siya pasina chinhu kuti ushandise saizi chaiyo."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Kurodha mufananidzo",
+        "description": "Sarudza kuti mufananidzo urodhwe rini.",
+        "options": {
+          "lazy": "Rodha kana uchioneka",
+          "auto": "Otomatiki"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Sosi dzinochinja nesikirini (srcset)",
+        "description": "Nyora URL dzemifananidzo nevatsananguri (semuenzaniso 480w kana 2x) kuitira kuti mabhurawuza asarudze saizi yakanakisa yesikirini. Inochengetwa se srcset attribute yenguva dzose."
+      }
+    ]
+  }
+}

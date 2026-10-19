@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Ku dhex darka LinkedIn",
+    "description": "Ku dhex dar kaarka astaanta LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Magaca gaarka ah",
+        "description": "Qaybta magaca isticmaalaha gaarka ah ee LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Deegaan",
+        "description": "Qiimaha xogta deegaanka sida en_US."
+      }
+    ]
+  }
+}

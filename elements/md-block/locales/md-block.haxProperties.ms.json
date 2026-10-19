@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Blok kandungan markdown secara langsung atau dimuatkan dari jauh"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown mentah"
+      },
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "Fail sumber untuk markdown"
+      }
+    ]
+  }
+}

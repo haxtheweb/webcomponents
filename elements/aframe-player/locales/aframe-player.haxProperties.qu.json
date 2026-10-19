@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D puklliq",
+    "description": "3D willañiqi / yapasqa chiqap kaq (AR) puklliq."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pukyu",
+        "description": "Kay AR willañiqipa URL-nin."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Elementopa X kaqnin AR-pi."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Elementopa Y kaqnin AR-pi."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Elementopa Z kaqnin AR-pi."
+      },
+      {
+        "property": "skyColor",
+        "title": "Hanaq pacha llimpi",
+        "description": "Rikuypi hanaq pachapa llimpinta akllay."
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Розширене зображення",
+    "description": "Спосіб показу зображень із різними покращеннями."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Джерело",
+        "description": "URL зображення."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернативний текст",
+        "description": "Текст, що описує зображення для незрячих користувачів."
+      },
+      {
+        "property": "link",
+        "title": "Посилання",
+        "description": "Зробити зображення посиланням на URL"
+      },
+      {
+        "property": "card",
+        "title": "Картка",
+        "description": "Застосувати тінь, щоб зображення виглядало як піднята картка."
+      },
+      {
+        "property": "box",
+        "title": "Рамка",
+        "description": "Додати візуальну рамку навколо зображення."
+      },
+      {
+        "property": "offset",
+        "title": "Зсув",
+        "description": "Застосувати зсув зображення ліворуч або праворуч.",
+        "options": {
+          "none": "немає",
+          "wide": "широкий",
+          "narrow": "вузький"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Джерело цитати",
+        "description": "Джерело зображення."
+      },
+      {
+        "property": "caption",
+        "title": "Підпис",
+        "description": "Підпис зображення."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Назва ілюстрації",
+        "description": "Назва для мітки ілюстрації."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Опис ілюстрації",
+        "description": "Опис для мітки ілюстрації."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Мініатюра",
+        "description": "Джерело мініатюри. Показує мініатюру, але відкриває повне зображення в модальному вікні."
+      },
+      {
+        "property": "round",
+        "title": "Кругле зображення",
+        "description": "Обрізає зображення до форми кола."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Вимкнути модальне вікно зображення",
+        "description": "Вимкнути відкриття зображення в діалозі перегляду після натискання."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Обробляти як Markdown",
+        "description": "Обробляти підпис і джерело як Markdown."
+      }
+    ]
+  }
+}

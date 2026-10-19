@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "курс модели",
+    "description": "Чоо-жайы, анимациясы жана билимди текшерүүлөрү бар курс түшүнүктөрү үчүн интерактивдүү макет."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "аталыш"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Маалымат аймагы"
+      },
+      {
+        "title": "Чоо-жай аймагы"
+      },
+      {
+        "title": "Анимация аймагы"
+      },
+      {
+        "title": "Билимди текшерүү аймагы"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Логотип аймагы"
+      }
+    ]
+  }
+}

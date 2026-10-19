@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Licens",
+    "description": "Ange en licens för ditt verk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel på det citerade verket."
+      },
+      {
+        "property": "source",
+        "title": "Källänk",
+        "description": "Käll-URL för det licensierade verket."
+      },
+      {
+        "property": "license",
+        "title": "Licens",
+        "description": "Licens som tillämpas på verket."
+      },
+      {
+        "property": "creator",
+        "title": "Upphovsperson",
+        "description": "Upphovsperson eller ägare till verket."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Källänk",
+        "description": "Länk till ytterligare licensinformation."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Etikett för mer",
+        "description": "Etikett för ytterligare licensinformation."
+      }
+    ]
+  }
+}

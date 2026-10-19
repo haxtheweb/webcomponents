@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "번호 매기기 목록",
+    "description": "번호 매기기 목록을 만듭니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "번호 스타일",
+        "description": "순서 있는 목록 번호에 사용할 스타일.",
+        "options": {
+          "": "기본값 (십진수)",
+          "list-decimal-leading-zero": "앞에 0이 붙은 십진수 (01, 02, 03)",
+          "list-lower-alpha": "소문자 알파벳 (a, b, c)",
+          "list-upper-alpha": "대문자 알파벳 (A, B, C)",
+          "list-lower-roman": "소문자 로마 숫자 (i, ii, iii)",
+          "list-upper-roman": "대문자 로마 숫자 (I, II, III)"
+        }
+      }
+    ]
+  }
+}

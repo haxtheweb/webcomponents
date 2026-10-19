@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML 块",
+    "description": "提供 HAXschema 接线个基本 HTML 块"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "侬想辣内容里展示个 HTML 代码"
+      }
+    ]
+  }
+}

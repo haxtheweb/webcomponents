@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ਪੈਰਾਲੈਕਸ ਚਿੱਤਰ",
+    "description": "ਸਕ੍ਰੋਲ ਨਾਲ ਚੱਲਦਾ ਚਿੱਤਰ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "ਚਿੱਤਰ",
+        "description": "ਪਿਛੋਕੜ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਣ ਵਾਲਾ ਚਿੱਤਰ"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "ਸਿਰਲੇਖ ਖੇਤਰ",
+        "description": "ਸਿਰਲੇਖ ਟੈਕਸਟ ਖੇਤਰ"
+      }
+    ]
+  }
+}

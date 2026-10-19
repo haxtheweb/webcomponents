@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Әрекетке шақыру",
+    "description": "Әрекет жасауға арналған сілтемесі бар қарапайым түйме."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Белгі",
+        "description": "Сілтеме белгісі"
+      },
+      {
+        "property": "link",
+        "title": "Сілтеме",
+        "description": "Кез келген ресурсқа сілтеме енгізіңіз"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Белгішені жасыру",
+        "description": "Мәтінді ерекшелеуге арналған белгішені жасыру"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Белгіше",
+        "description": "Әрекет сілтемесінің белгішесі"
+      }
+    ]
+  }
+}

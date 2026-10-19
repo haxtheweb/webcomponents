@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Աղյուսակ",
+    "description": "Աղյուսակային տվյալներ վեբի համար։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Տողի վերնագիր",
+        "description": "Առաջին տողը համարել վերնագիր։"
+      },
+      {
+        "property": "columnHeader",
+        "title": "Սյունակի վերնագիր",
+        "description": "Առաջին սյունակը համարել վերնագիր։"
+      },
+      {
+        "property": "footer",
+        "title": "Ստորագիր",
+        "description": "Վերջին տողը համարել ստորագիր։"
+      },
+      {
+        "property": "sort",
+        "title": "Տեսակավորելի",
+        "description": "Թույլատրել տեսակավորումն ըստ սյունակի արժեքների։"
+      },
+      {
+        "property": "filter",
+        "title": "Թույլատրել զտումը",
+        "description": "Թույլատրել զտումն ըստ սյունակի արժեքների։"
+      },
+      {
+        "property": "numericStyles",
+        "title": "Թվային ձևավորում",
+        "description": "Կիրառել թվային ձևավորում թվային սյունակների վրա։"
+      },
+      {
+        "property": "responsive",
+        "title": "Հարմարվող",
+        "description": "Հարմարեցնել աղյուսակի դասավորությունը փոքր էկրանների համար։"
+      },
+      {
+        "property": "rubricMode",
+        "title": "Ռուբրիկայի ռեժիմ",
+        "description": "Մեկնաբանել այս աղյուսակը որպես OER Schema Rubric, որպեսզի ստեղծվեն Rubric, RubricScale, RubricCriterion և RubricLevel մետատվյալներ։"
+      },
+      {
+        "property": "rubricType",
+        "title": "Ռուբրիկայի տեսակ",
+        "description": "Ռուբրիկայի ոճը, որը ստեղծվում է որպես oer:rubricType (իմաստ ունի միայն, երբ Ռուբրիկայի ռեժիմը միացված է)։",
+        "options": {
+          "": "(ոչ մեկը)",
+          "analytic": "Վերլուծական",
+          "holistic": "Ամբողջական",
+          "single-point": "Մեկ միավոր",
+          "checklist": "Ստուգաթերթ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Եզրագծված"
+      },
+      {
+        "property": "condensed",
+        "title": "Սեղմ տողեր",
+        "description": "Նվազեցնել տողերի բարձրությունը։"
+      },
+      {
+        "property": "striped",
+        "title": "Գոտավոր տողեր",
+        "description": "Ստվերել յուրաքանչյուր երկրորդ տողը։"
+      },
+      {
+        "property": "downloadable",
+        "title": "Ներբեռնման կոճակ",
+        "description": "Ավելացնել աղյուսակը ներբեռնելու կոճակ։"
+      },
+      {
+        "property": "copyable",
+        "title": "Պատճենման կոճակ",
+        "description": "Ավելացնել աղյուսակի CSV տվյալները պատճենելու կոճակ։"
+      },
+      {
+        "property": "printable",
+        "title": "Տպման կոճակ",
+        "description": "Ավելացնել միայն աղյուսակը տպելու կոճակ։"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV տվյալներ",
+        "description": "Ստեղծել աղյուսակ վերբեռնված CSV ֆայլից։"
+      }
+    ]
+  }
+}

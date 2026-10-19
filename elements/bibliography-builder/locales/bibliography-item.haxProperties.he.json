@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "פריט ביבליוגרפיה",
+    "description": "פריט המייצג מובאה בודדת בביבליוגרפיה, עם תמיכה בתבניות מרובות ובאפשרויות ייצוא."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "סוג",
+        "description": "סוג המובאה",
+        "options": {
+          "web": "אינטרנט",
+          "journal": "כתב עת",
+          "book": "ספר"
+        }
+      },
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "כותרת הפריט"
+      },
+      {
+        "property": "authors",
+        "title": "מחבר/ים",
+        "description": "האירועים בציר הזמן"
+      },
+      {
+        "property": "publisher",
+        "title": "מוציא לאור",
+        "description": "האתר המקורי"
+      }
+    ]
+  }
+}

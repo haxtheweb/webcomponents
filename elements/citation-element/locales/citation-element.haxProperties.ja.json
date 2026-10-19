@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "出典",
+    "description": "3つの表示モードを持つ引用要素。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "引用する作品のタイトル。"
+      },
+      {
+        "property": "source",
+        "title": "ソースリンク",
+        "description": "引用する作品のソースURL。"
+      },
+      {
+        "property": "date",
+        "title": "アクセス日",
+        "description": "ソースにアクセスした日付。"
+      },
+      {
+        "property": "scope",
+        "title": "スコープ",
+        "description": "引用する要素のスコープ。",
+        "options": {
+          "sibling": "兄弟要素",
+          "parent": "親要素"
+        }
+      },
+      {
+        "property": "license",
+        "title": "ライセンス",
+        "description": "引用する作品のライセンス。"
+      },
+      {
+        "property": "creator",
+        "title": "作成者",
+        "description": "引用する作品の作成者または所有者。"
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schemaタイプ",
+        "description": "この引用の OER Schema クラス。既定は oer:ReferencedMaterial です。上書きする場合は有効な OER クラス（例：oer:SupportingMaterial）のみを使用してください。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Compteur",
+    "description": "Animer un nombre qui compte jusqu'à une valeur cible lorsqu'il apparaît à l'écran."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Valeur finale",
+        "description": "Le nombre jusqu'auquel compter."
+      },
+      {
+        "property": "start",
+        "title": "Valeur de départ",
+        "description": "Le nombre à partir duquel compter."
+      },
+      {
+        "property": "duration",
+        "title": "Durée",
+        "description": "Durée de l'animation du compteur, en secondes."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Texte du préfixe",
+        "description": "Texte affiché avant le nombre (p. ex. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Texte du suffixe",
+        "description": "Texte affiché après le nombre (p. ex. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Emplacement du préfixe",
+        "description": "Contenu facultatif inséré avant le nombre."
+      },
+      {
+        "slot": "suffix",
+        "title": "Emplacement du suffixe",
+        "description": "Contenu facultatif inséré après le nombre."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Décimales",
+        "description": "Nombre de décimales à afficher."
+      },
+      {
+        "property": "separator",
+        "title": "Séparateur des milliers",
+        "description": "Caractère séparant les groupes de milliers."
+      },
+      {
+        "property": "decimal",
+        "title": "Caractère décimal",
+        "description": "Caractère utilisé comme séparateur décimal."
+      },
+      {
+        "property": "noeasing",
+        "title": "Sans accélération",
+        "description": "Désactiver l'accélération pour un comptage linéaire."
+      }
+    ]
+  }
+}

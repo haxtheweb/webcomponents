@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn yerləşdirməsi",
+    "description": "LinkedIn profil kartını yerləşdir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Fərdi ad",
+        "description": "LinkedIn fərdi istifadəçi adı seqmenti."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokal",
+        "description": "en_US kimi lokal metaməlumat dəyəri."
+      }
+    ]
+  }
+}

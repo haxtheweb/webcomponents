@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ດາວໂຫຼດແບບຝຶກຫັດ",
+    "description": "ປຸ່ມສຳລັບສະແດງໄຟລ໌ທີ່ມີໃຫ້ດາວໂຫຼດ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ຂອງການດາວໂຫຼດ."
+      },
+      {
+        "property": "link",
+        "title": "ລິ້ງ",
+        "description": "ລິ້ງສຳລັບການດາວໂຫຼດ."
+      }
+    ]
+  }
+}

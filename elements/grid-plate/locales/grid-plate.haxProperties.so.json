@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Qaabka tiirarka",
+    "description": "Ku habee agabka tiirar fudud"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Qaabka Tiirarka",
+        "description": "Qaabka lagu soo bandhigayo shayadan (wuu isbeddeli karaa shaashadaha yaryar)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Dami jawaab-celinta",
+        "description": "Calaamadee sanduuqa si aad u haysato tiirarka shaashadaha waaweyn iyadoo weli lagu kala dul dhigayo shaashadaha ugu yar"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Buuxinta Shayga",
+        "description": "Buuxinta gudaha shay kasta"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Hamashyada shayga",
+        "description": "Hamashka u dhexeeya shayada"
+      }
+    ]
+  }
+}

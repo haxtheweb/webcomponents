@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Langeto",
+    "description": "Unuopa langeto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Langeta piktogramo"
+      },
+      {
+        "property": "disabled",
+        "title": "Malŝaltita"
+      },
+      {
+        "property": "label",
+        "title": "Langeta etikedo"
+      },
+      {
+        "slot": "",
+        "title": "Langeta enhavo",
+        "description": "Enhavo de la langeto."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unika ID"
+      },
+      {
+        "property": "flag",
+        "title": "Nedeviga flaga teksto"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Nedeviga flaga piktogramo"
+      }
+    ]
+  }
+}

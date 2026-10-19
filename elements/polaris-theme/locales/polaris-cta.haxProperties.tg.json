@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA-и Polaris",
+    "description": "Тугмаи даъват ба амали Polaris-ро бо мавзӯъ нишон диҳед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Матни тугма",
+        "description": "Матне, ки дар тугмаи даъват ба амал нишон дода мешавад."
+      },
+      {
+        "property": "link",
+        "title": "Пайванд",
+        "description": "URL-и таъинот барои тугма."
+      },
+      {
+        "property": "type",
+        "title": "Вариант",
+        "description": "Варианти услуби визуалӣ.",
+        "options": {
+          "primary": "Асосӣ",
+          "tinted": "Рангшуда",
+          "light": "Равшан"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Услуби контурӣ",
+        "description": "Ороиши контуриро фаъол кунед."
+      },
+      {
+        "property": "filled",
+        "title": "Услуби пуршуда",
+        "description": "Ороиши пуршударо фаъол кунед."
+      }
+    ]
+  }
+}

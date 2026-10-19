@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Teqlər",
+    "description": "Səhifədə göstərmək üçün sadə teq siyahısı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Teqlər",
+        "description": "Vergüllə ayrılmış teqlər siyahısı."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Avtomatik vurğu rəngi",
+        "description": "Vurğu rəngini etiketə əsasən avtomatik təyin et."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rəng",
+        "description": "Teqlər üçün rəng."
+      }
+    ]
+  }
+}

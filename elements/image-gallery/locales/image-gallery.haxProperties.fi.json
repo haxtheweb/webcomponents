@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Kuvagalleria",
+    "description": "Galleria, joka esittää kuvat ruudukko-, tiili- tai diaesitysasettelussa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Näyttötila",
+        "description": "Miten kuvat esitetään galleriassa.",
+        "options": {
+          "grid": "Ruudukko",
+          "masonry": "Tiiliasettelu",
+          "gallery": "Galleria"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktiivinen indeksi",
+        "description": "Aktiivisen kuvan indeksi, josta galleriatila alkaa."
+      }
+    ]
+  }
+}

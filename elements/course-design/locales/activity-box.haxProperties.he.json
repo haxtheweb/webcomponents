@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "תיבת פעילות",
+    "description": "בלוק כותרת קטן ומעוצב."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "סמל",
+        "description": "סמל המוצג לצד תיבת הפעילות."
+      },
+      {
+        "property": "tag",
+        "title": "תגית תיבת פעילות",
+        "description": "התגית המוצגת בתיבת הפעילות."
+      },
+      {
+        "property": "nocolourize",
+        "title": "ללא צביעה",
+        "description": "מניעת החלת צבעים על הסמל."
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Soʻzlarni belgilang",
+    "description": "Matn ichida bosish orqali soʻzlar yordamida tushunchalarni aniqlash."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Savol",
+        "description": "Foydalanuvchilar javob beradigan savol."
+      },
+      {
+        "property": "statement",
+        "title": "Gap",
+        "description": "Soʻzlarni belgilash mashgʻulotiga aylantiriladigan gap."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Baholash formati",
+        "description": "OER Schema: ushbu baholash uchun baholash formati (masalan, ball, harf, foiz, bajarilganlik)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oʻquv maqsadi",
+        "description": "OER Schema: ushbu baholash bilan bogʻliq oʻquv maqsadi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: ushbu baholash moʻljallangan kurs."
+      },
+      {
+        "property": "answers",
+        "title": "Javoblar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Test nomi",
+        "description": "xAPI asosidagi muhitlarda ushbu elementni aniqlash uchun uzatiladigan test nomi"
+      }
+    ]
+  }
+}

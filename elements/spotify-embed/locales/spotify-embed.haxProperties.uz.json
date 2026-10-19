@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Joylashtirilgan Spotify pleyerlari uchun qobiq."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manba",
+        "description": "Spotify dan joylashtirish yoki ulashish havolasi."
+      },
+      {
+        "property": "theme",
+        "title": "Mavzu",
+        "description": "Pleyer uchun fon rangi mavzusi.",
+        "options": {
+          "": "Standart",
+          "0": "Qora"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Oʻlcham",
+        "description": "Pleyer oʻlchami.",
+        "options": {
+          "normal": "Standart",
+          "compact": "Ixcham"
+        }
+      }
+    ]
+  }
+}

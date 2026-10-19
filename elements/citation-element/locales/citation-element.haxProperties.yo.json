@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ìtọ́kasí",
+    "description": "Ẹ̀yà ìtọ́kasí pẹ̀lú ipò ìgbékalẹ̀ mẹ́ta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Àkọlé iṣẹ́ tí a tọ́ka sí."
+      },
+      {
+        "property": "source",
+        "title": "Ìjápọ̀ orísun",
+        "description": "URL orísun fún iṣẹ́ tí a tọ́ka sí."
+      },
+      {
+        "property": "date",
+        "title": "Ọjọ́ ìwọlé",
+        "description": "Ọjọ́ tí a wọlé sí orísun náà."
+      },
+      {
+        "property": "scope",
+        "title": "Ààlà",
+        "description": "Ààlà ẹ̀yà láti tọ́ka sí.",
+        "options": {
+          "sibling": "Ẹ̀yà ẹ̀gbọ́n-àbúrò",
+          "parent": "Ẹ̀yà òbí"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Ìwé-àṣẹ",
+        "description": "Ìwé àṣẹ fún iṣẹ́ tí a tọ́ka sí."
+      },
+      {
+        "property": "creator",
+        "title": "Olùṣẹ̀dá",
+        "description": "Olùṣẹ̀dá tàbí olóhun iṣẹ́ tí a tọ́ka sí."
+      },
+      {
+        "property": "typeof",
+        "title": "Irú OER Schema",
+        "description": "Kíláàsì OER Schema fún ìtọ́kasí yìí. Àkọ́kọ́ rẹ̀ ni oer:ReferencedMaterial; rọ́pò rẹ̀ nìkan pẹ̀lú kíláàsì OER tó tọ́ (fún àpẹẹrẹ oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

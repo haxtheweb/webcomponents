@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "正誤問題",
+    "description": "正誤問題"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "問題",
+        "description": "ユーザーが回答する問題。"
+      },
+      {
+        "property": "_tfanswer",
+        "title": "正解"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "クイズ名",
+        "description": "xAPI環境でこの項目を識別するために渡されるクイズ名"
+      }
+    ]
+  }
+}

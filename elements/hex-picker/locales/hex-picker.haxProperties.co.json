@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Selettore Hex",
+    "description": "Selettore di culore in codice hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Valore",
+        "description": "Valore hex predefinitu"
+      },
+      {
+        "property": "disabled",
+        "title": "Disattivatu",
+        "description": "Disattivà u campu di testu"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Affissera grande",
+        "description": "Include u culore in un'affissera grande"
+      }
+    ]
+  }
+}

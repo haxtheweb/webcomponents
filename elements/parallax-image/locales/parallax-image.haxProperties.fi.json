@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallaksikuva",
+    "description": "Kuva vierittyy ohi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Kuva",
+        "description": "taustalla käytettävä kuva"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Otsikkoalue",
+        "description": "Otsikon tekstialue"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Element bibliografije",
+    "description": "Element, ki predstavlja posamezen citat v bibliografiji, s podporo za več formatov in možnosti izvoza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Vrsta",
+        "description": "Vrsta citata",
+        "options": {
+          "web": "Splet",
+          "journal": "Revija",
+          "book": "Knjiga"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov elementa"
+      },
+      {
+        "property": "authors",
+        "title": "Avtor(ji)",
+        "description": "Dogodki na časovnici"
+      },
+      {
+        "property": "publisher",
+        "title": "Založnik",
+        "description": "Izvirno spletno mesto"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "جای خالی را پر کنید",
+    "description": "فعالیت ارزشیابی که در آن یادگیرندگان واژه‌های جاافتادهٔ یک جمله را کامل می‌کنند."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "پرسش",
+        "description": "پرسشی که کاربران باید به آن پاسخ دهند."
+      },
+      {
+        "property": "statement",
+        "title": "جمله",
+        "description": "جمله‌ای که به تعامل «علامت‌گذاری واژه‌ها» تبدیل می‌شود."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "قالب نمره‌دهی",
+        "description": "OER Schema: قالب نمره‌دهی این ارزشیابی (مثلاً امتیاز، حرفی، درصدی، تکمیل)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "هدف یادگیری",
+        "description": "OER Schema: هدف یادگیری مرتبط با این ارزشیابی."
+      },
+      {
+        "property": "forCourse",
+        "title": "درس",
+        "description": "OER Schema: درسی که این ارزشیابی برای آن در نظر گرفته شده است."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "نام آزمونک",
+        "description": "نام آزمونک که در محیط‌های مبتنی بر xAPI برای شناسایی این مورد ارسال می‌شود"
+      }
+    ]
+  }
+}

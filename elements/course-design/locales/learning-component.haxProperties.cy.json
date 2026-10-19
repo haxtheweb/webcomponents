@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Cydran Ddysgu",
+    "description": "Cerdyn i hyfforddwyr gyfleu addysgeg a strategaethau hyfforddi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Math",
+        "description": "Y math o gerdyn i'w ddefnyddio."
+      },
+      {
+        "property": "subtitle",
+        "title": "Is-deitl",
+        "description": "Is-deitl y cerdyn."
+      },
+      {
+        "property": "url",
+        "title": "Dolen",
+        "description": "Dolen ddewisol ar gyfer y cerdyn (Nid yw dolen ar gael ar gyfer Amcanion Dysgu)."
+      },
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Gosod Teitl, mae hyn yn diystyru'r teitl seiliedig ar fath"
+      },
+      {
+        "property": "icon",
+        "title": "Eicon",
+        "description": "Gosod eicon, mae hyn yn diystyru'r eicon seiliedig ar fath"
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw acen",
+        "description": "Gosod lliw acen, mae hyn yn diystyru'r lliw seiliedig ar fath"
+      },
+      {
+        "slot": "",
+        "title": "Cynnwys"
+      }
+    ]
+  }
+}

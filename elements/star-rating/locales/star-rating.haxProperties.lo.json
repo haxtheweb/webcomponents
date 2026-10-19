@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ການໃຫ້ຄະແນນດາວ",
+    "description": "ວິດເຈັດສະແດງຄະແນນ ຫຼື ປຸ່ມເພື່ອໃຫ້ຄະແນນ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "ຄະແນນ",
+        "description": "ຄ່າຄະແນນປັດຈຸບັນ."
+      },
+      {
+        "property": "possible",
+        "title": "ຄະແນນເຕັມ",
+        "description": "ຄະແນນສູງສຸດທີ່ເປັນໄປໄດ້."
+      },
+      {
+        "property": "numStars",
+        "title": "ຈຳນວນດາວ",
+        "description": "ຈຳນວນດາວທີ່ຈະສະແດງ."
+      },
+      {
+        "property": "interactive",
+        "title": "ໂຕ້ຕອບໄດ້",
+        "description": "ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ໂຕ້ຕອບເພື່ອຕັ້ງຄະແນນ."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "ໂໝດມາດຕາສ່ວນເກນ",
+        "description": "ສົ່ງອອກຂໍ້ມູນເມຕາ OER Schema RubricScale ແລະ RubricLevel (levelOrdinal/levelPoints) ສຳລັບແຕ່ລະດາວ."
+      }
+    ]
+  }
+}

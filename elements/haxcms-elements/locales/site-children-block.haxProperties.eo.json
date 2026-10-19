@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: ida bloko",
+    "description": "Dinamika bloko por montri idojn de la nuna paĝo"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dinamika metodo",
+        "description": "Kiel kalkuli la idojn rilate al ĉi tiu elemento",
+        "options": {
+          "active": "Aktivaj idoj",
+          "parent": "Idoj de la gepatro",
+          "ancestor": "Ĉiuj idoj de la plej alta praulo"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Komenca nivelo"
+      },
+      {
+        "property": "end",
+        "title": "Fina nivelo"
+      }
+    ]
+  }
+}

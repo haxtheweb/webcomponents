@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Skeda",
+    "description": "Një skedë e vetme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona e skedës"
+      },
+      {
+        "property": "disabled",
+        "title": "I çaktivizuar"
+      },
+      {
+        "property": "label",
+        "title": "Etiketa e skedës"
+      },
+      {
+        "slot": "",
+        "title": "Përmbajtja e skedës",
+        "description": "Përmbajtja e skedës."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID unike"
+      },
+      {
+        "property": "flag",
+        "title": "Tekst opsional flamuri"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Ikonë opsionale flamuri"
+      }
+    ]
+  }
+}

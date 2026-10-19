@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Visualisasi MIDI",
+    "description": "Puter MIDI ing konteks kanthi visualisasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "URL berkas sing arep diputer."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualisasi",
+        "description": "Gaya visualisasi kanggo berkas musik.",
+        "options": {
+          "staff": "Paranada",
+          "piano-roll": "Gulungan piano",
+          "waterfall": "Piano + grojogan"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Dhelikake grojogan",
+        "description": "Dhelikake not grojogan ing visualisasi piano."
+      }
+    ]
+  }
+}

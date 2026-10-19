@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Toote ülevaade",
+    "description": "Kiire tooteülevaate plokk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Mõistet esindav ikoon."
+      },
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Põhimõiste lühidalt."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alapealkiri",
+        "description": "Täiendav üksikasi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Ikooni rõhuvärv."
+      }
+    ]
+  }
+}

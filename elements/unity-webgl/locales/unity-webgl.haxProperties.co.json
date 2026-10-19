@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Lettore Unity",
+    "description": "Lettore WebGL Unity."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Destinazione",
+        "description": "Percorsu versu a cumpilazione di u ghjocu."
+      },
+      {
+        "property": "compression",
+        "title": "Metodu di cumpressione",
+        "description": "Estensione di schedariu di cumpressione per e risorse di u ghjocu."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL di streaming",
+        "description": "URL di e risorse di streaming."
+      },
+      {
+        "property": "companyname",
+        "title": "Nome di a sucietà",
+        "description": "Nome di a sucietà."
+      },
+      {
+        "property": "productname",
+        "title": "Nome di u pruduttu",
+        "description": "Titulu di u ghjocu."
+      },
+      {
+        "property": "productversion",
+        "title": "Versione di u pruduttu",
+        "description": "Versione di publicazione."
+      },
+      {
+        "property": "width",
+        "title": "Larghezza di a tela",
+        "description": "Larghezza CSS di a tela (per esempiu px o em)."
+      },
+      {
+        "property": "height",
+        "title": "Altezza di a tela",
+        "description": "Altezza CSS di a tela (per esempiu px o em)."
+      },
+      {
+        "property": "background",
+        "title": "Fondu di a tela",
+        "description": "Fondu CSS di a tela."
+      }
+    ]
+  }
+}

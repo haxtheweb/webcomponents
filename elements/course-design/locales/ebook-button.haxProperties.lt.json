@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E. knygos mygtukas",
+    "description": "Mygtukas, nukreipiantis į e. knygą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Mygtuko pavadinimas."
+      },
+      {
+        "property": "link",
+        "title": "Nuoroda",
+        "description": "Nuoroda, į kurią nukreipiama spustelėjus."
+      },
+      {
+        "property": "icon",
+        "title": "Piktograma",
+        "description": "Šią nuorodą vaizduojanti piktograma"
+      }
+    ]
+  }
+}

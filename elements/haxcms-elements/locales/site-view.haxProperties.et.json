@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Saidi vaade",
+    "description": "Dünaamiline plokk, mis pärib ja kuvab saidi andmeid kriteeriumide alusel"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Vaate URL",
+        "description": "Vaate andmevoo päringu parameetrid. Saad need vaadete töölaualt."
+      },
+      {
+        "property": "renderer",
+        "title": "Kuvarežiim",
+        "description": "Kuidas vaate tulemusi kuvada"
+      },
+      {
+        "property": "entity",
+        "title": "Olemi tüüp",
+        "description": "Vastuse parsimiseks kasutatav olemi tüüp",
+        "options": {
+          "": "Vaikimisi (üksused)",
+          "item": "Üksus",
+          "page": "Leht",
+          "file": "Fail",
+          "tag": "Silt",
+          "block": "Plokk",
+          "view": "Vaade",
+          "theme": "Teema",
+          "region": "Piirkond",
+          "customElement": "Kohandatud element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Katkesta saidi vaade",
+        "description": "Teisenda staatiliseks sisuks otseseks muutmiseks; lõpetab automaatse uuendamise allikast."
+      }
+    ]
+  }
+}

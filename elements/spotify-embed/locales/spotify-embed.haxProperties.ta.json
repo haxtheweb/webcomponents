@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify பிளேயர் உட்பொதிவுகளுக்கான உறை."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "மூலம்",
+        "description": "Spotify-இலிருந்து உட்பொதி அல்லது பகிர்வு இணைப்பு."
+      },
+      {
+        "property": "theme",
+        "title": "தீம்",
+        "description": "பிளேயருக்கான பின்னணி நிறத் தீம்.",
+        "options": {
+          "": "இயல்புநிலை",
+          "0": "கருப்பு"
+        }
+      },
+      {
+        "property": "size",
+        "title": "அளவு",
+        "description": "பிளேயர் அளவு.",
+        "options": {
+          "normal": "இயல்புநிலை",
+          "compact": "கச்சிதமான"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Card",
+    "description": "Un card cu stil de accent opțional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Titlu",
+        "description": "Un titlu pentru card."
+      },
+      {
+        "slot": "subheading",
+        "title": "Subtitlu",
+        "description": "Un subtitlu opțional pentru card."
+      },
+      {
+        "slot": "content",
+        "title": "Conținut",
+        "description": "Conținutul cardului."
+      },
+      {
+        "slot": "footer",
+        "title": "Subsol",
+        "description": "Un subsol opțional pentru card."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Imagine",
+        "description": "Imagine opțională"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Text alternativ al imaginii",
+        "description": "Text alternativ care descrie imaginea pentru cititoarele de ecran. Lasă gol doar dacă imaginea este pur decorativă."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Alinierea orizontală a imaginii",
+        "options": {
+          "left": "stânga",
+          "center": "centru",
+          "right": "dreapta"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Alinierea verticală a imaginii",
+        "options": {
+          "top": "sus",
+          "center": "centru",
+          "bottom": "jos"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "O culoare de accent opțională."
+      },
+      {
+        "property": "dark",
+        "title": "Temă întunecată",
+        "description": "Activează tema întunecată"
+      },
+      {
+        "property": "horizontal",
+        "title": "Orizontal",
+        "description": "Orientare orizontală?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Accent pe titlu",
+        "description": "Aplici culoarea de accent titlului?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Accent pe fundal",
+        "description": "Aplici culoarea de accent fundalului cardului?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Fără accent pe bordură",
+        "description": "Elimini accentul de pe bordură?"
+      },
+      {
+        "property": "flat",
+        "title": "Plat",
+        "description": "Elimini umbra casetei?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Colț",
+        "description": "Conținut pentru colțul cardului."
+      }
+    ]
+  }
+}

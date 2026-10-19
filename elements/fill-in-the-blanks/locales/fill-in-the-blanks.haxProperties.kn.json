@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ಬಿಟ್ಟ ಸ್ಥಳ ತುಂಬಿ",
+    "description": "ಕಲಿಯುವವರು ವಾಕ್ಯದಲ್ಲಿ ಕಾಣೆಯಾದ ಪದಗಳನ್ನು ತುಂಬುವ ಮೌಲ್ಯಮಾಪನ ಚಟುವಟಿಕೆ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ಪ್ರಶ್ನೆ",
+        "description": "ಬಳಕೆದಾರರು ಉತ್ತರಿಸಬೇಕಾದ ಪ್ರಶ್ನೆ."
+      },
+      {
+        "property": "statement",
+        "title": "ಹೇಳಿಕೆ",
+        "description": "ಪದಗಳನ್ನು ಗುರುತಿಸಿ ಸಂವಾದವಾಗಿ ಪರಿವರ್ತಿಸಲಾಗುವ ಹೇಳಿಕೆ."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ಶ್ರೇಣೀಕರಣ ಸ್ವರೂಪ",
+        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನದ ಶ್ರೇಣೀಕರಣ ಸ್ವರೂಪ (ಉದಾ. ಅಂಕಗಳು, ಗ್ರೇಡ್ ಅಕ್ಷರ, ಶೇಕಡಾ, ಪೂರ್ಣಗೊಳಿಕೆ)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ಕಲಿಕಾ ಉದ್ದೇಶ",
+        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಕಲಿಕಾ ಉದ್ದೇಶ."
+      },
+      {
+        "property": "forCourse",
+        "title": "ಕೋರ್ಸ್",
+        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನ ಉದ್ದೇಶಿಸಿರುವ ಕೋರ್ಸ್."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು",
+        "description": "xAPI ಆಧಾರಿತ ಪರಿಸರಗಳಲ್ಲಿ ಈ ಐಟಂ ಅನ್ನು ಗುರುತಿಸಲು ಬಳಸುವ ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು"
+      }
+    ]
+  }
+}

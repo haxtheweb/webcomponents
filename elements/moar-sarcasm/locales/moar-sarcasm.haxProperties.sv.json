@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkasm",
+    "description": "Presenterar text på ett trollande sätt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Text",
+        "description": "Text som ska göras sarkastisk"
+      }
+    ]
+  }
+}

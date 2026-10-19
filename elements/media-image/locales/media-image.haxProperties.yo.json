@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Àwòrán Tí A Mú Dára Sí i",
+    "description": "Ọ̀nà kan láti ṣàfihàn àwọn àwòrán pẹ̀lú oríṣiríṣi ìmúdára."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orísun",
+        "description": "URL fún àwòrán náà."
+      },
+      {
+        "property": "alt",
+        "title": "Ọ̀rọ̀ àfidípò",
+        "description": "Ọ̀rọ̀ láti ṣàpèjúwe àwòrán fún àwọn olùmúlò tí kò ríran."
+      },
+      {
+        "property": "link",
+        "title": "Ìjápọ̀",
+        "description": "So àwòrán náà mọ́ URL kan"
+      },
+      {
+        "property": "card",
+        "title": "Káàdì",
+        "description": "Fi òjìji sí i kí ó dàbí káàdì tí a gbé sókè."
+      },
+      {
+        "property": "box",
+        "title": "Àpótí",
+        "description": "Fi àpótí tí a lè rí yí àwòrán náà ká."
+      },
+      {
+        "property": "offset",
+        "title": "Ìyàsípò",
+        "description": "Fi ìyàsípò òsì tàbí ọ̀tún sí àwòrán náà.",
+        "options": {
+          "none": "kò sí",
+          "wide": "fífẹ̀",
+          "narrow": "tóóró"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Ìtọ́kasí",
+        "description": "Ìtọ́kasí fún àwòrán náà."
+      },
+      {
+        "property": "caption",
+        "title": "Àkọlé àwòrán",
+        "description": "Àkọlé-àlàyé fún àwòrán náà."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Àkọlé Àwòrán",
+        "description": "Àkọlé fún àmì àwòrán."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Àpèjúwe Àwòrán",
+        "description": "Àpèjúwe fún àmì àwòrán."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Àwòrán kékeré",
+        "description": "Orísun àwòrán kékeré. Ó ń fi àwòrán kékeré hàn ṣùgbọ́n ó ń ṣí orísun kíkún nínú fèrèsé."
+      },
+      {
+        "property": "round",
+        "title": "Àwòrán oníròbótó",
+        "description": "Ó ń gé ìrísí àwòrán kí ó rí bí òbìrí."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Pa fèrèsé àwòrán",
+        "description": "Pa títẹ̀ tó ń ṣí àwòrán nínú fèrèsé olùyẹ̀wò àwòrán."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Ṣàfihàn bí markdown",
+        "description": "Ṣàfihàn àkọlé-àlàyé àti ìtọ́kasí bí markdown."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Vështrim i produktit",
+    "description": "Bllok për përmbledhje të shpejtë të produktit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona që përfaqëson konceptin."
+      },
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Koncepti kryesor me një vështrim."
+      },
+      {
+        "property": "subtitle",
+        "title": "Nëntitulli",
+        "description": "Detaj shtesë."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra theksuese për ikonën."
+      }
+    ]
+  }
+}

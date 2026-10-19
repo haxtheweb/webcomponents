@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Contenidor desplegable",
+    "description": "Contenidor únic que es pot desplegar i plegar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Encapçalament",
+        "description": "Text per al desplegable."
+      },
+      {
+        "property": "expanded",
+        "title": "Desplegat",
+        "description": "Desplega per defecte."
+      },
+      {
+        "property": "headingButton",
+        "title": "Botó d'encapçalament",
+        "description": "Fes que tot l'encapçalament sigui clicable en lloc de només la icona."
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona per al botó de desplegar/plegar."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Icona (quan està desplegat)",
+        "description": "Icona opcional per a l'estat desplegat del botó."
+      },
+      {
+        "slot": "",
+        "title": "Contingut",
+        "description": "Contingut del desplegable."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Indicació emergent",
+        "description": "Indicació emergent per al botó de desplegar/plegar."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Indicació emergent (quan està desplegat)",
+        "description": "Indicació emergent per al botó de desplegar/plegar quan està desplegat."
+      }
+    ]
+  }
+}

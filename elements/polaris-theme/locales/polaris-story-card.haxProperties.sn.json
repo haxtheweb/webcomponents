@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kadhi renyaya rePolaris",
+    "description": "Ratidza kadhi renyaya rePolaris rine mufananidzo wekumashure, zita rembiru, nemavara emusoro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Mufananidzo wekumashure",
+        "description": "URL yemufananidzo unoratidzwa sekumashure kwekadhi."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Saizi yekumashure",
+        "description": "Mazadzirwo anoita mufananidzo wekumashure kadhi (CSS background-size).",
+        "options": {
+          "cover": "Fukidza (cover)",
+          "contain": "Kwanisa (contain)",
+          "auto": "Otomatiki (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Kunamatira kwekumashure",
+        "description": "Maitiro emufananidzo wekumashure paunenge uchikwesha (CSS background-attachment).",
+        "options": {
+          "scroll": "Kukwesha (scroll)",
+          "fixed": "Kwakagadzikwa (fixed)",
+          "local": "Kwemuno (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Zita rembiru",
+        "description": "Zita pfupi rine mavara makuru rinoratidzwa kumusoro kwekadhi. Siya risina chinhu kuti rivigwe."
+      },
+      {
+        "property": "label",
+        "title": "Mavara ekadhi",
+        "description": "Mavara makuru anoratidzwa muchikamu chepazasi."
+      },
+      {
+        "property": "link",
+        "title": "Chinongedzo",
+        "description": "URL isingamanikidzwi yekuenda inofukidza kadhi rose."
+      }
+    ]
+  }
+}

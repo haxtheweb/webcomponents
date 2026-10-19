@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ملائڻ وارو سوال",
+    "description": "ڇڪي ڇڏڻ واري ملائڻ جي سرگرمي جيڪا سوالن کي سندن صحيح جوابن سان جوڙي ٿي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "سوال",
+        "description": "يوزرن لاءِ سوال. ڇڏڻ وارا ٽارگيٽ نشان لڳايو، پوءِ ايندڙ ٽارگيٽ تائين جواب لسٽ ڪريو."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "گريڊنگ فارميٽ",
+        "description": "OER Schema: هن جائزي لاءِ گريڊنگ فارميٽ (مثال طور پوائنٽس، اکر، سيڪڙو، مڪمل ٿيڻ)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "سکيا جو مقصد",
+        "description": "OER Schema: هن جائزي سان لاڳاپيل سکيا جو مقصد."
+      },
+      {
+        "property": "forCourse",
+        "title": "ڪورس",
+        "description": "OER Schema: اهو ڪورس جنهن لاءِ هي جائزو آهي."
+      },
+      {
+        "property": "answers",
+        "title": "جواب"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ڪوئز جو نالو",
+        "description": "اينالٽڪس سسٽمن ۾ xAPI سڃاڻپ لاءِ استعمال ٿيندڙ ڪوئز جو نالو."
+      }
+    ]
+  }
+}

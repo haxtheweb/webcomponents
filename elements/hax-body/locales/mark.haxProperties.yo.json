@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ìfàmìsí",
+    "description": "Fàmì sí ọ̀rọ̀ inú ìlà."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Ọ̀rọ̀",
+        "description": "Ọ̀rọ̀ tí a fàmì sí."
+      }
+    ]
+  }
+}

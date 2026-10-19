@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "ਸ਼ਬਦਾਂ 'ਤੇ ਨਿਸ਼ਾਨ ਲਗਾਓ",
+    "description": "ਲਿਖਤ ਦੇ ਅੰਦਰ ਕਲਿੱਕ ਕਰਕੇ ਸ਼ਬਦਾਂ ਰਾਹੀਂ ਸੰਕਲਪਾਂ ਦੀ ਪਛਾਣ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ਸਵਾਲ",
+        "description": "ਉਪਭੋਗਤਾਵਾਂ ਦੇ ਜਵਾਬ ਦੇਣ ਲਈ ਸਵਾਲ।"
+      },
+      {
+        "property": "statement",
+        "title": "ਕਥਨ",
+        "description": "ਕਥਨ ਜੋ ਸ਼ਬਦ-ਨਿਸ਼ਾਨ ਲਗਾਓ ਪਰਸਪਰ ਕਿਰਿਆ ਵਿੱਚ ਬਦਲਿਆ ਜਾਵੇਗਾ।"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ਗ੍ਰੇਡਿੰਗ ਫਾਰਮੈਟ",
+        "description": "OER Schema: ਇਸ ਮੁਲਾਂਕਣ ਲਈ ਗ੍ਰੇਡਿੰਗ ਫਾਰਮੈਟ (ਜਿਵੇਂ ਅੰਕ, ਅੱਖਰ, ਪ੍ਰਤੀਸ਼ਤ, ਪੂਰਤੀ)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼",
+        "description": "OER Schema: ਇਸ ਮੁਲਾਂਕਣ ਨਾਲ ਜੁੜਿਆ ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼।"
+      },
+      {
+        "property": "forCourse",
+        "title": "ਕੋਰਸ",
+        "description": "OER Schema: ਉਹ ਕੋਰਸ ਜਿਸ ਲਈ ਇਹ ਮੁਲਾਂਕਣ ਹੈ।"
+      },
+      {
+        "property": "answers",
+        "title": "ਜਵਾਬ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ਕੁਇਜ਼ ਦਾ ਨਾਮ",
+        "description": "xAPI-ਆਧਾਰਿਤ ਵਾਤਾਵਰਣਾਂ ਵਿੱਚ ਇਸ ਆਈਟਮ ਦੀ ਪਛਾਣ ਲਈ ਭੇਜਿਆ ਕੁਇਜ਼ ਨਾਮ"
+      }
+    ]
+  }
+}

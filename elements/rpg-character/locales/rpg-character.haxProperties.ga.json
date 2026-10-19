@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Carachtar RPG",
+    "description": "Carachtar spraíúil ó HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Ainm",
+        "description": "Focal a úsáidtear chun carachtar randamach a ghiniúint."
+      },
+      {
+        "property": "hat",
+        "title": "Hata",
+        "description": "Stíl an hata.",
+        "options": {
+          "none": "Réamhshocrú",
+          "random": "Randamach",
+          "bunny": "Coinín",
+          "cowboy": "Buachaill bó",
+          "education": "Oideachas",
+          "construction": "Tógáil",
+          "warning": "Rabhadh",
+          "watermelon": "Mealbhacán uisce",
+          "coffee": "Caife",
+          "knight": "Ridire",
+          "ninja": "Nionja",
+          "party": "Cóisir",
+          "error": "Earráid",
+          "edit": "Cuir in eagar"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Leithead",
+        "description": "Leithead an charachtair i bpicteilíní."
+      },
+      {
+        "property": "height",
+        "title": "Airde",
+        "description": "Airde an charachtair i bpicteilíní."
+      },
+      {
+        "property": "fire",
+        "title": "Trí thine?",
+        "description": "Cé acu an bhfuil an carachtar trí thine nó nach bhfuil."
+      },
+      {
+        "property": "walking",
+        "title": "Ag siúl?",
+        "description": "Beochan siúil; ritheann sí nuair atá sé trí thine."
+      }
+    ]
+  }
+}

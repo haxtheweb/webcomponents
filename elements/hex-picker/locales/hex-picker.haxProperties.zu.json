@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Isikhethi se-Hex",
+    "description": "Isikhethi sombala sekhodi ye-Hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Inani",
+        "description": "Inani le-hex elizenzakalelayo"
+      },
+      {
+        "property": "disabled",
+        "title": "Kukhutshaziwe",
+        "description": "Vala inkambu yombhalo"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Ukubonisa Okukhulu",
+        "description": "Faka umbala ekuboniseni okukhulu"
+      }
+    ]
+  }
+}

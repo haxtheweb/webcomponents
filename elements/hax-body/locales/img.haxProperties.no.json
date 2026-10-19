@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Enkelt bilde",
+    "description": "Enkelt bildeelement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Kilde",
+        "description": "Bilde-URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alternativ tekst",
+        "description": "Alternativ tekst for tilgjengelighet og SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Høyde",
+        "description": "Høyde i piksler. La stå tom for å bruke naturlig størrelse."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Bildeinnlasting",
+        "description": "Velg når bildet skal lastes inn.",
+        "options": {
+          "lazy": "Last inn når synlig",
+          "auto": "Automatisk"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Responsive kilder (srcset)",
+        "description": "List opp bilde-URL-er og beskrivelser (f.eks. 480w eller 2x) slik at nettlesere velger beste størrelse for skjermen. Lagres som standard srcset-attributt."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI визуализатору",
+    "description": "MIDI файлын визуализация менен контекстте ойнотуу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Булак",
+        "description": "Ойнотула турган файлдын URL дареги."
+      },
+      {
+        "property": "visualizer",
+        "title": "Визуализация",
+        "description": "Музыка файлы үчүн визуализация стили.",
+        "options": {
+          "staff": "Нота сызыгы",
+          "piano-roll": "Пианино ролик",
+          "waterfall": "Пианино + шаркыратма"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Шаркыратманы жашыруу",
+        "description": "Пианино визуализациясында шаркыратма ноталарын жашыруу."
+      }
+    ]
+  }
+}

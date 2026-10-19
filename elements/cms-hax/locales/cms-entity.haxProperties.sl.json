@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Entiteta CMS",
+    "description": "Entiteta CMS, upodobljena v zaledju"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Vrsta",
+        "description": "vrsta iz našega CMS",
+        "options": {
+          "node": "Vozlišče",
+          "user": "Uporabnik",
+          "file": "Datoteka"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID iz našega CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Način prikaza",
+        "description": "način prikaza iz našega CMS"
+      }
+    ]
+  }
+}

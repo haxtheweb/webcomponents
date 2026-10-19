@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "간단한 이미지",
+    "description": "간단한 매개변수로 이미지를 조작합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "소스",
+        "description": "이미지 소스 URL입니다."
+      },
+      {
+        "property": "height",
+        "title": "높이",
+        "description": "선택적 이미지 높이입니다."
+      },
+      {
+        "property": "width",
+        "title": "너비",
+        "description": "선택적 이미지 너비입니다."
+      },
+      {
+        "property": "alt",
+        "title": "대체 텍스트",
+        "description": "화면 낭독기와 SEO 향상에 유용합니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "품질",
+        "description": "생성 시 이미지 품질입니다(JPEG만 해당)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "가져오기 우선순위",
+        "description": "최신 브라우저를 위한 성능 힌트입니다.",
+        "options": {
+          "auto": "자동",
+          "high": "높음",
+          "low": "낮음"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "디코딩 방식",
+        "description": "최신 브라우저에서 이미지 렌더링을 위한 성능 힌트입니다.",
+        "options": {
+          "auto": "자동",
+          "async": "비동기"
+        }
+      }
+    ]
+  }
+}

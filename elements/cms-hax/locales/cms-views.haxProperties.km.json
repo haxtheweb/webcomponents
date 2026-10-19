@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ទិដ្ឋភាព CMS",
+    "description": "ទិដ្ឋភាព CMS ដែលបង្ហាញនៅផ្នែកខាងក្រោយ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "ឈ្មោះ",
+        "description": "ឈ្មោះទិដ្ឋភាពពី CMS របស់យើង"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "ការបង្ហាញ",
+        "description": "ការបង្ហាញនៅក្នុងទិដ្ឋភាពនោះពី CMS របស់យើង"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Ìfisínú LinkedIn",
+    "description": "Fi káàdì profáìlì LinkedIn sínú ojú-ìwé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Orúkọ àdáni",
+        "description": "Apá orúkọ olùlò àdáni LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Àgbègbè èdè",
+        "description": "Iye dátà-àpèjúwe àgbègbè èdè bí en_US."
+      }
+    ]
+  }
+}

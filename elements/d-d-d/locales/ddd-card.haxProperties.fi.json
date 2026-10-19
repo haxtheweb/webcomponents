@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kortti",
+    "description": "DDD-suunnittelujärjestelmällä muotoiltu korttikomponentti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Kuva",
+        "description": "Valinnainen kuva."
+      },
+      {
+        "property": "alt",
+        "title": "Kuvan vaihtoehtoinen teksti",
+        "description": "Kuvaa kuvaava vaihtoehtoinen teksti."
+      },
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Kortin otsikko."
+      },
+      {
+        "slot": "",
+        "title": "Sisältö",
+        "description": "Kortin sisältöalue."
+      },
+      {
+        "property": "href",
+        "title": "Linkki",
+        "description": "Painikkeen linkin URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Nimike",
+        "description": "Painikkeen nimike."
+      },
+      {
+        "property": "noArrow",
+        "title": "Ei nuolta",
+        "description": "Piilota painikkeen nuoli."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Linkki: kohde",
+        "description": "Missä linkki avataan.",
+        "options": {
+          "": "Sama ikkuna",
+          "_blank": "Uusi ikkuna - _blank",
+          "_top": "Ylin ikkuna - _top",
+          "_parent": "Yläikkuna - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Linkki: rel",
+        "description": "Linkitetyn resurssin ja nykyisen asiakirjan välinen suhde."
+      }
+    ]
+  }
+}

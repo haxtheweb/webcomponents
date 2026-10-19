@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Žodynas",
+    "description": "Žodyno terminas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Terminas"
+      },
+      {
+        "property": "information",
+        "title": "Apibrėžtis",
+        "description": "Apibrėžtis, rodoma spustelėjus terminą."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Iššokantis langas",
+        "description": "Rodyti apibrėžtį iššokančiame lange, o ne tekste."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Nuorodos",
+        "description": "Su šiuo terminu susijusių papildomų nuorodų sąrašas."
+      }
+    ]
+  }
+}

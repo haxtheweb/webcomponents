@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-näkymä",
+    "description": "Taustapalvelussa renderöidyt CMS-näkymät"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Nimi",
+        "description": "Näkymän nimi CMS:stämme"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Näyttö",
+        "description": "Näyttö kyseisen näkymän sisällä CMS:stämme"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ulduz reytinqi",
+    "description": "Reytinqi göstərən vidjet və ya qiymət vermək üçün düymə."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Bal",
+        "description": "Cari bal dəyəri."
+      },
+      {
+        "property": "possible",
+        "title": "Mümkün",
+        "description": "Mümkün maksimum bal."
+      },
+      {
+        "property": "numStars",
+        "title": "Ulduzların sayı",
+        "description": "Göstəriləcək ulduzların sayı."
+      },
+      {
+        "property": "interactive",
+        "title": "İnteraktiv",
+        "description": "İstifadəçiyə reytinq təyin etməyə icazə ver."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Rubrika şkalası rejimi",
+        "description": "Hər ulduz üçün OER Schema RubricScale və RubricLevel metaməlumatlarını (levelOrdinal/levelPoints) ötür."
+      }
+    ]
+  }
+}

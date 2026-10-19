@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-bogsknap",
+    "description": "En knap, der linker til en e-bog."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Knappens titel."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Linket, der omdirigeres til ved klik."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon, der repræsenterer dette link"
+      }
+    ]
+  }
+}

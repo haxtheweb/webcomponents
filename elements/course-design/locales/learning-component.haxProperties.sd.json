@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "سکيا جو جزو",
+    "description": "استادن لاءِ تدريسي طريقا ۽ هدايتي حڪمت عمليون ٻڌائڻ وارو ڪارڊ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "قسم",
+        "description": "استعمال ٿيندڙ ڪارڊ جو قسم."
+      },
+      {
+        "property": "subtitle",
+        "title": "ذيلي عنوان",
+        "description": "ڪارڊ جو ذيلي عنوان."
+      },
+      {
+        "property": "url",
+        "title": "لنڪ",
+        "description": "ڪارڊ لاءِ اختياري لنڪ (سکيا جي مقصدن لاءِ لنڪ موجود ناهي)."
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنوان مقرر ڪريو، هي قسم تي ٻڌل عنوان کي مٽائي ٿو"
+      },
+      {
+        "property": "icon",
+        "title": "آئڪن",
+        "description": "آئڪن مقرر ڪريو، هي قسم تي ٻڌل آئڪن کي مٽائي ٿو"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "ايڪسينٽ رنگ مقرر ڪريو، هي قسم تي ٻڌل رنگ کي مٽائي ٿو"
+      },
+      {
+        "slot": "",
+        "title": "مواد"
+      }
+    ]
+  }
+}

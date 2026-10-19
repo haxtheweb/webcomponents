@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Tandha Polaris",
+    "description": "Tampilake tandha identitas PSU kanthi jeneng kolese lan URL tujuan opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Jeneng kolese",
+        "description": "Jeneng sing katon ing sandhinge tandha."
+      },
+      {
+        "property": "name2",
+        "title": "Jeneng kolese 2",
+        "description": "Jeneng kapindho sing katon ing sangisore jeneng kolese kapisan."
+      },
+      {
+        "property": "name3",
+        "title": "Jeneng kolese 3",
+        "description": "Jeneng katelu sing katon ing sangisore jeneng kolese kapindho."
+      },
+      {
+        "property": "url",
+        "title": "Pranala",
+        "description": "URL tujuan nalika tandha diklik."
+      },
+      {
+        "property": "type",
+        "title": "Varian",
+        "description": "Varian tandha visual.",
+        "options": {
+          "default": "Gawan",
+          "light": "Padhang",
+          "dark": "Peteng"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Tata letak vertikal",
+        "description": "Tampilake jeneng katelu ing sangisore jeneng kapindho kanthi garis horisontal."
+      }
+    ]
+  }
+}

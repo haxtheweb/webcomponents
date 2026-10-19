@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ඉස්මතු කිරීම",
+    "description": "පේළිගත පෙළ ඉස්මතු කරන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "පෙළ",
+        "description": "ඉස්මතු කළ පෙළ."
+      }
+    ]
+  }
+}

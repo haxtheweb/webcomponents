@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "mudellu di corsu",
+    "description": "Layout interattivu per i cuncetti di corsu cù dettagli, animazione è verificazioni di e cunniscenze."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "titulu"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Zona d'infurmazioni"
+      },
+      {
+        "title": "Zona di dettagli"
+      },
+      {
+        "title": "Zona d'animazione"
+      },
+      {
+        "title": "Zona di verificazione di e cunniscenze"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Zona di logo"
+      }
+    ]
+  }
+}

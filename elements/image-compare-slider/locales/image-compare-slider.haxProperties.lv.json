@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Attēlu salīdzināšana",
+    "description": "Pārvelciet vienu attēlu pāri otram, lai salīdzinātu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Augšējais attēls",
+        "description": "Augšējais attēls, ko pārvilkt pāri apakšējam attēlam."
+      },
+      {
+        "property": "topAlt",
+        "title": "Augšējā attēla alternatīvais teksts",
+        "description": "Obligāts alternatīvais teksts piekļūstamībai."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Apakšējais attēls",
+        "description": "Apakšējais attēls, kas redzams zem augšējā attēla."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Apakšējā attēla alternatīvais teksts",
+        "description": "Obligāts alternatīvais teksts piekļūstamībai."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Darbība",
+        "description": "Izvēlieties pārvilkšanas režīmu (noklusējums) vai augšējā attēla necaurredzamības režīmu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Slīdņa joslas krāsa."
+      },
+      {
+        "property": "dark",
+        "title": "Tumšs",
+        "description": "Invertēt slīdņa joslas krāsu."
+      },
+      {
+        "property": "position",
+        "title": "Sākotnējā pozīcija",
+        "description": "Sākuma pozīcija no 0 līdz 100."
+      }
+    ]
+  }
+}

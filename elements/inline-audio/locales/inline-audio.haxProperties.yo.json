@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ohùn inú ọ̀rọ̀",
+    "description": "Ṣe ohùn láàrín ọ̀rọ̀ láti ṣàfikún àkóónú ojú-ìwé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orísun",
+        "description": "Fáìlì MP3 tàbí URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ Ìtẹnumọ́",
+        "description": "Àwọ̀ ìtẹnumọ́ káàdì."
+      },
+      {
+        "property": "shiny",
+        "title": "Dídán",
+        "description": "Lo ẹ̀yìn ìtẹnumọ́ tí ó mọ́lẹ̀ jù dípò eérú."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Dúdú",
+        "description": "Lo ipò dúdú."
+      }
+    ]
+  }
+}

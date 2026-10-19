@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "تضمين LinkedIn",
+    "description": "تضمين بطاقة ملف شخصي على LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "الاسم المخصص",
+        "description": "جزء اسم المستخدم المخصص في LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "الإعدادات المحلية",
+        "description": "قيمة بيانات الإعدادات المحلية مثل en_US."
+      }
+    ]
+  }
+}

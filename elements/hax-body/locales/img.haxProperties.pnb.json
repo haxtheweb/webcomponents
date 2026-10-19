@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "مُڈھلی تصویر",
+    "description": "مُڈھلا تصویر عنصر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ذریعہ",
+        "description": "تصویر URL۔"
+      },
+      {
+        "attribute": "alt",
+        "title": "متبادل متن",
+        "description": "پہنچ تے SEO لئی متبادل متن۔"
+      },
+      {
+        "attribute": "height",
+        "title": "اُچائی",
+        "description": "اُچائی پکسلاں وچ۔ قدرتی سائز لئی خالی چھڈو۔"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "تصویر لوڈنگ",
+        "description": "چݨو کہ تصویر کدوں لوڈ ہووے۔",
+        "options": {
+          "lazy": "نظر آؤݨ تے لوڈ کرو",
+          "auto": "خودکار"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "ریسپانسو ذریعے (srcset)",
+        "description": "تصویر URLs تے بیان کنندہ (مثلاً 480w یا 2x) لسٹ کرو تاں جے براؤزر سکرین لئی سب توں چنگا سائز چݨن۔ معیاری srcset خاصیت وجوں سانبھیا جاندا اے۔"
+      }
+    ]
+  }
+}

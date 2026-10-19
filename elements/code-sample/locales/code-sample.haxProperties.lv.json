@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Koda paraugs",
+    "description": "Lapā izcelts koda paraugs"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Koda izcelšana",
+        "description": "Sintakses izcelšana, ko piemērot koda apgabalam",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON dati",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Poga Kopēt starpliktuvē",
+        "description": "poga augšējā labajā stūrī ar uzrakstu kopēt starpliktuvē"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Izcelšanas sākums",
+        "description": "Rindas numurs, no kura sākt izcelšanu"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Izcelšanas beigas",
+        "description": "Rinda, kurā beigt izcelšanu"
+      }
+    ]
+  }
+}

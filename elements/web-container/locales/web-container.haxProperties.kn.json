@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS ಕಂಟೇನರ್"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "ಸಂಪಾದಕ ಮರೆಮಾಡಿ",
+        "description": "ಫೈಲ್ ಸಂಪಾದನೆ ಇಂಟರ್‌ಫೇಸ್ ಮರೆಮಾಡಿ."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "ಟರ್ಮಿನಲ್ ಮರೆಮಾಡಿ",
+        "description": "ಸ್ವಯಂ ಚಾಲನೆಯ ಪ್ರೋಗ್ರಾಂಗಳಿಗಾಗಿ ಟರ್ಮಿನಲ್ ಮರೆಮಾಡಿ."
+      },
+      {
+        "property": "hideWindow",
+        "title": "ವಿಂಡೋ ಮರೆಮಾಡಿ",
+        "description": "ಟರ್ಮಿನಲ್ ಮಾತ್ರ ಬಳಕೆಗಾಗಿ ಔಟ್‌ಪುಟ್ ವಿಂಡೋ ಮರೆಮಾಡಿ."
+      },
+      {
+        "slot": "",
+        "title": "ಆಜ್ಞೆಗಳು",
+        "description": "ಲೋಡ್ ಮಾಡುವ ಮೊದಲು ಚಲಾಯಿಸಬೇಕಾದ ಆಜ್ಞೆಗಳು (ಪ್ರತಿ ಸಾಲಿಗೆ ಒಂದು)."
+      }
+    ]
+  }
+}

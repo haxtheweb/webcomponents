@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "ລາຍລະອຽດໜ້າ",
+    "description": "ກຳນົດການແບ່ງໜ້າແບບເຫັນໄດ້ ທີ່ CMS ສາມາດໃຊ້ເພື່ອສ້າງໜ້າ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ທີ່ສະແດງໃນຊຸດຮູບແບບ ແລະ ຫົວຂໍ້ທຳອິດ."
+      },
+      {
+        "property": "pageType",
+        "title": "ປະເພດ",
+        "description": "ປ້າຍກຳກັບບໍລິບົດໜ້າແບບເຫັນໄດ້.",
+        "options": {
+          "": "-- ບໍ່ມີ --",
+          "content": "ເນື້ອຫາ",
+          "assessment": "ການປະເມີນ",
+          "quiz": "ແບບທົດສອບ",
+          "submission": "ການສົ່ງວຽກ",
+          "lesson": "ບົດຮຽນ",
+          "module": "ໂມດູນ",
+          "task": "ໜ້າວຽກ",
+          "activity": "ກິດຈະກຳ",
+          "project": "ໂຄງການ",
+          "practice": "ການຝຶກ",
+          "unit": "ໜ່ວຍຮຽນ",
+          "objectives": "ຈຸດປະສົງການຮຽນຮູ້",
+          "connection": "ການເຊື່ອມໂຍງ",
+          "knowledge": "ທ່ານຮູ້ບໍ່?",
+          "strategy": "ຍຸດທະສາດການຮຽນຮູ້",
+          "discuss": "ສົນທະນາ",
+          "listen": "ຟັງ",
+          "make": "ສ້າງ",
+          "observe": "ສັງເກດ",
+          "present": "ນຳສະເໜີ",
+          "reading": "ການອ່ານ",
+          "reflect": "ໄຕ່ຕອງ",
+          "research": "ຄົ້ນຄວ້າ",
+          "watch": "ເບິ່ງ",
+          "write": "ຂຽນ"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ແທັກ",
+        "description": "ລາຍການແທັກທີ່ຂັ້ນດ້ວຍຈຸດ."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL ລິ້ງ",
+        "description": "URL ປ່ຽນທາງທີ່ສະແດງແທນເນື້ອຫາຂອງໜ້າ."
+      },
+      {
+        "property": "linkTarget",
+        "title": "ເປົ້າໝາຍລິ້ງ",
+        "description": "ເປີດລິ້ງໃນໜ້າຕ່າງດຽວກັນ ຫຼື ໜ້າຕ່າງໃໝ່.",
+        "options": {
+          "_self": "ໜ້າຕ່າງດຽວກັນ",
+          "_blank": "ໜ້າຕ່າງໃໝ່"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "ເຜີຍແຜ່ແລ້ວ",
+        "description": "ໜ້າທີ່ບໍ່ໄດ້ເຜີຍແຜ່ຈະຖືກເຊື່ອງຈາກຜູ້ໃຊ້ທົ່ວໄປ."
+      },
+      {
+        "property": "locked",
+        "title": "ລັອກໜ້າ",
+        "description": "ລັອກ ຫຼື ປົດລັອກອົງປະກອບທັງໝົດໃນໜ້ານີ້."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "ລົບລ້າງ slug ອັດຕະໂນມັດ",
+        "description": "ລັອກ slug ບໍ່ໃຫ້ອັບເດດອັດຕະໂນມັດຕາມຫົວຂໍ້ ຫຼື ໜ້າແມ່."
+      },
+      {
+        "property": "slug",
+        "title": "ເສັ້ນທາງ",
+        "description": "URL slug ສຳລັບໜ້ານີ້."
+      },
+      {
+        "property": "image",
+        "title": "ສື່",
+        "description": "ສື່ທີ່ເປັນຕົວແທນຂອງໜ້າ, ໃຊ້ໃນບາງຊຸດຮູບແບບ ແລະ ມຸມມອງ."
+      },
+      {
+        "property": "parent",
+        "title": "ໜ້າແມ່",
+        "description": "ເສັ້ນທາງຂອງໜ້າແມ່."
+      },
+      {
+        "property": "noderefs",
+        "title": "ເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+        "description": "ໜ້າທີ່ກ່ຽວຂ້ອງກັບໜ້ານີ້."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "ຄຳອະທິບາຍ",
+        "description": "ຄຳອະທິບາຍທີ່ໃຊ້ໃນຄໍເລັກຊັນ ແລະ ການເພີ່ມປະສິດທິພາບເຄື່ອງມືຄົ້ນຫາ."
+      },
+      {
+        "property": "entityType",
+        "title": "ປະເພດເອັນທິຕີ",
+        "description": "ຄ່າເລີ່ມຕົ້ນແມ່ນໜ້າ ເວັ້ນແຕ່ຈະກຳນົດເປັນຢ່າງອື່ນ.",
+        "options": {
+          "page": "ໜ້າ (ຄ່າເລີ່ມຕົ້ນ)",
+          "taxonomy": "ອະນຸກົມວິທານ",
+          "taxonomyTerm": "ຄຳສັບອະນຸກົມວິທານ",
+          "region": "ພາກພື້ນ"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "ໄອຄອນ",
+        "description": "ໄອຄອນທີ່ກ່ຽວຂ້ອງກັບໜ້ານີ້ໃນເວັບໄຊ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີທີ່ກ່ຽວຂ້ອງກັບໜ້ານີ້ໃນເວັບໄຊ."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "ເຊື່ອງໃນເມນູ",
+        "description": "ເຊື່ອງໜ້ານີ້ຈາກເມນູ ໂດຍຍັງຮັກສາ URL ໄວ້."
+      },
+      {
+        "property": "order",
+        "title": "ລຳດັບ",
+        "description": "ລຳດັບທຽບກັບໜ້າພີ່ນ້ອງ."
+      },
+      {
+        "property": "developerTheme",
+        "title": "ຊຸດຮູບແບບໜ້າ",
+        "description": "ລົບລ້າງຊຸດຮູບແບບສຳລັບໜ້ານີ້ເທົ່ານັ້ນ."
+      },
+      {
+        "property": "author",
+        "title": "ຜູ້ຂຽນ",
+        "description": "ຊື່ຜູ້ໃຊ້ຂອງຄົນສຸດທ້າຍທີ່ແກ້ໄຂໜ້ານີ້."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "බාහිර වෙබ් අන්තර්ගතය කාවද්දන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "මූලාශ්‍රය",
+        "description": "මෙම සම්පත සඳහා URL."
+      }
+    ]
+  }
+}

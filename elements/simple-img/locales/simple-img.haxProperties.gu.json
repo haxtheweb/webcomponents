@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "સરળ છબી",
+    "description": "સરળ પરિમાણો વડે છબીઓમાં ફેરફાર કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "સ્રોત",
+        "description": "છબી સ્રોત URL."
+      },
+      {
+        "property": "height",
+        "title": "ઊંચાઈ",
+        "description": "વૈકલ્પિક છબી ઊંચાઈ."
+      },
+      {
+        "property": "width",
+        "title": "પહોળાઈ",
+        "description": "વૈકલ્પિક છબી પહોળાઈ."
+      },
+      {
+        "property": "alt",
+        "title": "વૈકલ્પિક લખાણ",
+        "description": "સ્ક્રીન રીડર અને વધુ સારા SEO માટે ઉપયોગી."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "ગુણવત્તા",
+        "description": "બનાવતી વખતે છબીની ગુણવત્તા (ફક્ત JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "મેળવવાની પ્રાથમિકતા",
+        "description": "આધુનિક બ્રાઉઝર માટે પ્રદર્શન સંકેત.",
+        "options": {
+          "auto": "સ્વચાલિત",
+          "high": "ઉચ્ચ",
+          "low": "નીચી"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "ડીકોડિંગ પદ્ધતિ",
+        "description": "આધુનિક બ્રાઉઝરમાં છબી રેન્ડરિંગ માટે પ્રદર્શન સંકેત.",
+        "options": {
+          "auto": "સ્વચાલિત",
+          "async": "અસમકાલીન"
+        }
+      }
+    ]
+  }
+}

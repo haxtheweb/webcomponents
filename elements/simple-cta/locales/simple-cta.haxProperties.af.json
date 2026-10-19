@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Oproep tot aksie",
+    "description": "'n Eenvoudige knoppie met 'n skakel om aksie te neem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Skakeletiket"
+      },
+      {
+        "property": "link",
+        "title": "Skakel",
+        "description": "Voer 'n skakel na enige hulpbron in"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Versteek ikoon",
+        "description": "Versteek die ikoon wat gebruik word om teks te beklemtoon"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Aksieskakel-ikoon"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Áheitan um gerð",
+    "description": "Ein einfaldur knøttur við leinki til at gera okkurt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Heiti",
+        "description": "Leinkispjaldur"
+      },
+      {
+        "property": "link",
+        "title": "Leinki",
+        "description": "Skriva eitt leinki til hvørt tilfeingi sum helst"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Fjal ikon",
+        "description": "Fjal ikonið, ið verður nýtt til at framhevja tekst"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ímynd",
+        "description": "Ikon til gerðarleinki"
+      }
+    ]
+  }
+}

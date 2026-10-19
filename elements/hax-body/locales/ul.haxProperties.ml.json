@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "ബുള്ളറ്റ് ലിസ്റ്റ്",
+    "description": "ഒരു ബുള്ളറ്റ് ലിസ്റ്റ് സൃഷ്ടിക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "ബുള്ളറ്റ് ശൈലി",
+        "description": "ക്രമമില്ലാത്ത ലിസ്റ്റ് ബുള്ളറ്റുകൾക്ക് ഉപയോഗിക്കുന്ന ശൈലി.",
+        "options": {
+          "": "ഡിഫോൾട്ട് (ചതുരം)",
+          "list-disc": "ഡിസ്ക്",
+          "list-circle": "വൃത്തം",
+          "list-square": "ചതുരം"
+        }
+      }
+    ]
+  }
+}

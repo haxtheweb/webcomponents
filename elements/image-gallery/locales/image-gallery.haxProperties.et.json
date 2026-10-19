@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Pildigalerii",
+    "description": "Galerii, mis esitab pilte ruudustiku, müürilaotuse või slaidiesitluse paigutuses."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Kuvarežiim",
+        "description": "Kuidas pilte galeriis esitada.",
+        "options": {
+          "grid": "Ruudustik",
+          "masonry": "Müürilaotus",
+          "gallery": "Galerii"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktiivne indeks",
+        "description": "Galeriirežiimis esimesena kuvatava aktiivse pildi indeks."
+      }
+    ]
+  }
+}

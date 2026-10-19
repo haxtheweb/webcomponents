@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Item langkah",
+    "description": "Item yang merupakan sebahagian daripada senarai langkah"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tajuk"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ইমেজ ম্যাপ",
+    "description": "ইন্টারঅ্যাকটিভ হটস্পটসহ অ্যাক্সেসযোগ্য ইমেজ ম্যাপ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "লেবেল",
+        "description": "ইমেজ ম্যাপের লেবেল।"
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "হটস্পটের বিবরণ",
+        "description": "ইমেজ ম্যাপের ইন্টারঅ্যাকটিভ হটস্পটগুলো।"
+      }
+    ]
+  }
+}

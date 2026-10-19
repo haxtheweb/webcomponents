@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Māhele ʻaoʻao",
+    "description": "Pahu māhele no ka ʻikepili ʻaoʻao a me nā hoʻonohonoho ma ka pākaukau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Hoʻolālā kaila",
+        "description": "Kaila i hoʻomākaukau mua ʻia e hōʻano hou ana i nā hoʻonohonoho pili."
+      },
+      {
+        "property": "image",
+        "title": "Kiʻi",
+        "description": "Media kāʻei hope no ka māhele."
+      },
+      {
+        "property": "bg",
+        "title": "Waihoʻoluʻu kāʻei hope",
+        "description": "Waihoʻoluʻu kāʻei hope ke hoʻonoho ʻole ʻia kekahi kiʻi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Pihi kaʻa",
+        "description": "E hōʻike i kekahi pihi e kaʻa ai i ka māhele aʻe."
+      },
+      {
+        "property": "fold",
+        "title": "Hōʻike pelu",
+        "description": "E hōʻike i kekahi pelu ʻike ʻia ma lalo o ka māhele."
+      },
+      {
+        "property": "full",
+        "title": "Nui pākaukau piha",
+        "description": "E hoʻopiha i ke kiʻekiʻe o ka pākaukau o ka mea nānā."
+      },
+      {
+        "property": "filter",
+        "title": "Hoʻopili Kānana",
+        "description": "E hoʻopili i kekahi kānana ʻike ʻia i ke kiʻi kāʻei hope."
+      },
+      {
+        "slot": "",
+        "title": "Ka ʻIkepili",
+        "description": "ʻIkepili o ka māhele."
+      },
+      {
+        "slot": "entice",
+        "title": "Hoʻowalewale",
+        "description": "ʻIkepili hoʻowalewale koho."
+      },
+      {
+        "slot": "buttons",
+        "title": "Nā Pihi",
+        "description": "Pūʻulu pihi i hōʻike ʻia ma lalo o ka kikokikona."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Kikokikona heleuma",
+        "description": "Lepili heleuma i hōʻike ʻia ma ka hoʻokele."
+      }
+    ]
+  }
+}

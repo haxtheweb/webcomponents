@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkazëm",
+    "description": "Paraqitja e tekstit në mënyrë tallëse"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Teksti",
+        "description": "Teksti që do të bëhet sarkastik"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "ಮೂಲ ಲಿಂಕ್",
+    "description": "ಮೂಲ ಲಿಂಕ್ ಘಟಕ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "ಲಿಂಕ್",
+        "description": "ಗಮ್ಯಸ್ಥಾನ URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "ಪಠ್ಯ",
+        "description": "ಗೋಚರಿಸುವ ಲಿಂಕ್ ಪಠ್ಯ."
+      },
+      {
+        "attribute": "target",
+        "title": "ಗುರಿ",
+        "description": "ಲಿಂಕ್ ಅನ್ನು ಎಲ್ಲಿ ತೆರೆಯಬೇಕು.",
+        "options": {
+          "": "ಅದೇ ವಿಂಡೋ",
+          "_blank": "ಹೊಸ ವಿಂಡೋ - _blank",
+          "_top": "ಮೇಲಿನ ವಿಂಡೋ - _top",
+          "_parent": "ಮೂಲ ವಿಂಡೋ - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "ಶೀರ್ಷಿಕೆ ಪಠ್ಯ",
+        "description": "ಪ್ರವೇಶಸಾಧ್ಯತೆ ಮತ್ತು SEO ಗಾಗಿ ಸಲಹಾ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "ಗಮ್ಯಸ್ಥಾನದೊಂದಿಗಿನ ಸಂಬಂಧ (ಭದ್ರತೆ/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

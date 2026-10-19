@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Temel bağlantı",
+    "description": "Temel bağlantı öğesi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Bağlantı",
+        "description": "Hedef URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Metin",
+        "description": "Görünür bağlantı metni."
+      },
+      {
+        "attribute": "target",
+        "title": "Hedef",
+        "description": "Bağlantının nerede açılacağı.",
+        "options": {
+          "": "Aynı pencere",
+          "_blank": "Yeni pencere - _blank",
+          "_top": "Üst pencere - _top",
+          "_parent": "Ana pencere - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Başlık metni",
+        "description": "Erişilebilirlik ve SEO için bilgilendirici başlık."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Hedefle ilişki (güvenlik/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Piktograma",
+    "description": "Piktograma iš visos piktogramų bibliotekos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Piktograma",
+        "description": "Atvaizduojama piktograma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Piktogramos akcento spalva."
+      },
+      {
+        "property": "dark",
+        "title": "Tamsus",
+        "description": "Naudoti tamsųjį režimą (invertuotos spalvos)."
+      }
+    ]
+  }
+}

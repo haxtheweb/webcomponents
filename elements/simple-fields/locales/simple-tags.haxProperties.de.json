@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tags",
+    "description": "Einfache Tag-Liste zur Anzeige auf der Seite."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Kommagetrennte Liste von Tags."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatische Akzentfarbe",
+        "description": "Akzentfarbe automatisch anhand der Beschriftung festlegen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Farbe",
+        "description": "Farbe für Tags."
+      }
+    ]
+  }
+}

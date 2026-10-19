@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Беџ за заслуга",
+    "description": "Визуелен беџ за соопштување на стекнување вештина."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Наслов на беџот",
+        "description": "Наслов прикажан на беџот."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Слика на беџот",
+        "description": "URL на сликата за беџот."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Детали за беџот",
+        "description": "Детали за беџот."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Хиперврска",
+        "description": "Врска поврзана со беџот."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Вештини на беџот",
+        "description": "Вештини прикажани на беџот."
+      },
+      {
+        "property": "skill",
+        "title": "Вештина (OER Schema)",
+        "description": "OER Schema: научена вештина стекната со исполнување на оваа цел за учење."
+      }
+    ]
+  }
+}

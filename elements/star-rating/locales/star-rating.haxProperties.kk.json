@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Жұлдызша рейтинг",
+    "description": "Рейтингті көрсету виджеті немесе рейтинг беру түймесі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Ұпай",
+        "description": "Ағымдағы ұпай мәні."
+      },
+      {
+        "property": "possible",
+        "title": "Мүмкін",
+        "description": "Ең жоғары мүмкін ұпай."
+      },
+      {
+        "property": "numStars",
+        "title": "Жұлдызшалар саны",
+        "description": "Көрсетілетін жұлдызшалар саны."
+      },
+      {
+        "property": "interactive",
+        "title": "Интерактивті",
+        "description": "Пайдаланушыға рейтинг қоюға рұқсат беру."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Рубрика шкаласы режимі",
+        "description": "Әрбір жұлдызша үшін OER Schema RubricScale және RubricLevel метадеректерін (levelOrdinal/levelPoints) шығару."
+      }
+    ]
+  }
+}

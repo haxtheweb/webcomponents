@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Прагляд CMS",
+    "description": "Прагляды CMS, якія адлюстроўваюцца на бэкендзе"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Імя",
+        "description": "Назва прагляду з нашай CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Адлюстраванне",
+        "description": "Адлюстраванне ў межах гэтага прагляду з нашай CMS"
+      }
+    ]
+  }
+}

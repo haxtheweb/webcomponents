@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "चरण आइटम",
+    "description": "चरण सूची का हिस्सा बनने वाला आइटम"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक"
+      }
+    ]
+  }
+}

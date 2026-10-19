@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Baris koleksi",
+    "description": "Item gaya baris untuk digunakan dalam senarai koleksi, dengan teks, pautan, ikon, tag dan imej pilihan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Pautan",
+        "description": "URL destinasi untuk baris ini."
+      },
+      {
+        "property": "image",
+        "title": "Imej",
+        "description": "Imej untuk baris."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Teks alternatif yang menerangkan imej."
+      },
+      {
+        "property": "line1",
+        "title": "Baris 1",
+        "description": "Baris pertama teks."
+      },
+      {
+        "property": "line2",
+        "title": "Baris 2",
+        "description": "Baris kedua teks."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon yang mewakili baris."
+      },
+      {
+        "property": "saturate",
+        "title": "Kesan ketepuan",
+        "description": "Ubah ketepuan imej apabila pengguna memfokus."
+      },
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Senarai tag dipisahkan koma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna",
+        "description": "Warna yang digunakan untuk ikon dan tag."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Satunnainen sivusisältö",
+    "description": "Näytä satunnainen ylätason elementti valitulta sivulta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Sivu",
+        "description": "Valitse sivu, jolta satunnainen sisältö haetaan. Elementti näyttää satunnaisesti yhden tämän sivun ylätason HTML-elementeistä."
+      }
+    ]
+  }
+}

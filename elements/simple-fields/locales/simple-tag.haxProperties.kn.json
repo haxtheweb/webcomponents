@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "ಟ್ಯಾಗ್ / ಪಿಲ್",
+    "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ, ರದ್ದು ಬಟನ್ ಅಥವಾ ಟಾಗಲ್‌ನೊಂದಿಗೆ ಮಾತ್ರೆ ಆಕಾರದ ಸಣ್ಣ ಲೇಬಲ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ಲೇಬಲ್",
+        "description": "ಪಿಲ್ ಒಳಗೆ ತೋರಿಸುವ ಪಠ್ಯ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಪಿಲ್ ಹಿನ್ನೆಲೆಗಾಗಿ SimpleColors ಒತ್ತು ಬಣ್ಣದ ಹೆಸರು.",
+        "options": {
+          "": "-- ಪೂರ್ವನಿಯೋಜಿತ --",
+          "red": "ಕೆಂಪು",
+          "pink": "ಗುಲಾಬಿ",
+          "purple": "ನೇರಳೆ",
+          "deep-purple": "ಗಾಢ ನೇರಳೆ",
+          "indigo": "ಇಂಡಿಗೊ",
+          "blue": "ನೀಲಿ",
+          "light-blue": "ತಿಳಿ ನೀಲಿ",
+          "cyan": "ಸಯಾನ್",
+          "teal": "ಟೀಲ್",
+          "green": "ಹಸಿರು",
+          "light-green": "ತಿಳಿ ಹಸಿರು",
+          "lime": "ಲೈಮ್",
+          "yellow": "ಹಳದಿ",
+          "amber": "ಅಂಬರ್",
+          "orange": "ಕಿತ್ತಳೆ",
+          "deep-orange": "ಗಾಢ ಕಿತ್ತಳೆ",
+          "brown": "ಕಂದು",
+          "blue-grey": "ನೀಲಿ ಬೂದು",
+          "grey": "ಬೂದು"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ಸ್ವಯಂ ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಲೇಬಲ್ ಪಠ್ಯದಿಂದ ಒತ್ತು ಬಣ್ಣವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪಡೆಯಿರಿ."
+      },
+      {
+        "property": "cancelButton",
+        "title": "ರದ್ದು ಬಟನ್",
+        "description": "ಪಿಲ್ ಒಳಗೆ ತೆಗೆದುಹಾಕು/ರದ್ದು ಐಕಾನ್ ಬಟನ್ ತೋರಿಸಿ."
+      },
+      {
+        "property": "readonly",
+        "title": "ಓದಲು ಮಾತ್ರ",
+        "description": "ಪಿಲ್ ಪ್ರದರ್ಶನಕ್ಕೆ ಮಾತ್ರ ಆಗುವಂತೆ ರದ್ದು ಬಟನ್ ಮರೆಮಾಡಿ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "ಟಾಗಲ್ ಆಗುತ್ತದೆ",
+        "description": "ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ ಪಿಲ್ ಆನ್/ಆಫ್ ಟಾಗಲ್ ಆಗುವಂತೆ ಮಾಡಿ."
+      },
+      {
+        "property": "toggled",
+        "title": "ಟಾಗಲ್ ಆಗಿದೆ",
+        "description": "ಪಿಲ್ ಪ್ರಸ್ತುತ ಆನ್ ಆಗಿದೆಯೇ ಎಂಬುದು."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "ಟಾಗಲ್ ಐಕಾನ್",
+        "description": "ಪಿಲ್ ಆನ್ ಆಗಿದ್ದಾಗ ತೋರಿಸುವ ಐಕಾನ್."
+      },
+      {
+        "property": "disabled",
+        "title": "ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ",
+        "description": "ಪಿಲ್‌ನೊಂದಿಗಿನ ಸಂವಹನವನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ."
+      }
+    ]
+  }
+}

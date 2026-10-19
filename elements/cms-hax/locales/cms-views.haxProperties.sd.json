@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ڏيک",
+    "description": "بيڪ اينڊ تي ڏيکاريل CMS ڏيک"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "نالو",
+        "description": "اسان جي CMS مان ڏيک جو نالو"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "ڏيک",
+        "description": "اسان جي CMS مان ان ڏيک اندر ڊسپلي"
+      }
+    ]
+  }
+}

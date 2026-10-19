@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "علامات التبويب",
+    "description": "مجموعة من علامات التبويب."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "التسمية (لإمكانية الوصول)",
+        "description": "تسمية مجموعة علامات التبويب لإمكانية الوصول."
+      },
+      {
+        "property": "disabled",
+        "title": "معطَّل",
+        "description": "تعطيل جميع علامات التبويب."
+      },
+      {
+        "property": "hidden",
+        "title": "مخفي",
+        "description": "إخفاء مجموعة علامات التبويب."
+      },
+      {
+        "property": "sticky",
+        "title": "مثبَّت",
+        "description": "إبقاء علامات التبويب الأفقية في الأعلى أثناء التمرير."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "نقطة توقف التخطيط",
+        "description": "نقطة التوقف لعلامات التبويب الأفقية؛ استخدم -1 للعرض العمودي فقط."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "نقطة توقف الأيقونات",
+        "description": "نقطة التوقف لإظهار النص مع الأيقونات. القيمة الافتراضية 0؛ استخدم -1 لوضع الأيقونات فقط."
+      },
+      {
+        "slot": "",
+        "title": "علامات التبويب",
+        "description": "سلسلة من عناصر <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID فريد",
+        "description": "ID فريد لمجموعة علامات التبويب هذه."
+      }
+    ]
+  }
+}

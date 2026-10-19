@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Sakļaujams konteiners",
+    "description": "Viens izvēršams un sakļaujams konteiners."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Virsraksts",
+        "description": "Sakļaujamā elementa teksts."
+      },
+      {
+        "property": "expanded",
+        "title": "Izvērsts",
+        "description": "Izvērst pēc noklusējuma."
+      },
+      {
+        "property": "headingButton",
+        "title": "Virsraksta poga",
+        "description": "Padarīt noklikšķināmu visu virsrakstu, nevis tikai ikonu."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Izvēršanas/sakļaušanas pogas ikona."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikona (kad izvērsts)",
+        "description": "Neobligāta ikona izvērstajam stāvoklim."
+      },
+      {
+        "slot": "",
+        "title": "Saturs",
+        "description": "Sakļaujamā elementa saturs."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Rīka padoms",
+        "description": "Izvēršanas/sakļaušanas pogas rīka padoms."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Rīka padoms (kad izvērsts)",
+        "description": "Izvēršanas/sakļaušanas pogas rīka padoms, kad elements ir izvērsts."
+      }
+    ]
+  }
+}

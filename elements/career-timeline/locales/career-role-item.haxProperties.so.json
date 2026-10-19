@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Doorka Xirfadda",
+    "description": "Door gaar ah oo ka dhex jira urur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cinwaan"
+      },
+      {
+        "property": "startDate",
+        "title": "Taariikhda Bilowga"
+      },
+      {
+        "property": "endDate",
+        "title": "Taariikhda Dhammaadka (Ikhtiyaari)"
+      },
+      {
+        "property": "skills",
+        "title": "Xirfadaha La Xidhiidha",
+        "description": "Dooro badhanka + si aad u bilowdo ku darista xirfadaha"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Figiúr Tuairisciúil",
+    "description": "Figiúr inrochtana le cur síos fada"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Íomhá"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Téacs Malartach"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Fotheideal an Fhigiúir",
+        "description": "Téacs fotheidil an fhigiúir a bhíonn le feiceáil i gcónaí."
+      },
+      {
+        "slot": "details",
+        "title": "Cur síos",
+        "description": "Cur síos mionsonraithe ar an íomhá ar féidir é a cheilt nó a thaispeáint"
+      },
+      {
+        "slot": "summary",
+        "title": "Cnaipe Cur Síos",
+        "description": "Réamhshocrú don chnaipe a thaispeánann/a cheileann téacs an chur síos, m.sh. \"eolas\", \"meiteashonraí\", srl."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Téacs achoimre roghnach nuair atá na sonraí oscailte"
+      },
+      {
+        "property": "closeText",
+        "title": "Téacs achoimre roghnach nuair atá na sonraí dúnta"
+      }
+    ]
+  }
+}

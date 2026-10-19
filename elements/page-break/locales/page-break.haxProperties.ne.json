@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "पृष्ठ विवरण",
+    "description": "पृष्ठहरूबीच दृश्य विभाजन परिभाषित गर्नुहोस्, जसलाई CMS हरूले पृष्ठ बनाउन प्रयोग गर्न सक्छन्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "थिममा र पहिलो शीर्षकमा देखाइने शीर्षक।"
+      },
+      {
+        "property": "pageType",
+        "title": "प्रकार",
+        "description": "पृष्ठको दृश्य सन्दर्भ लेबल।",
+        "options": {
+          "": "-- कुनै पनि छैन --",
+          "content": "सामग्री",
+          "assessment": "मूल्याङ्कन",
+          "quiz": "क्विज",
+          "submission": "पेस गरिएको काम",
+          "lesson": "पाठ",
+          "module": "मोड्युल",
+          "task": "कार्य",
+          "activity": "गतिविधि",
+          "project": "परियोजना",
+          "practice": "अभ्यास",
+          "unit": "एकाइ",
+          "objectives": "सिकाइ उद्देश्यहरू",
+          "connection": "सम्बन्ध",
+          "knowledge": "के तपाईंलाई थाहा छ?",
+          "strategy": "सिकाइ रणनीति",
+          "discuss": "छलफल गर्नुहोस्",
+          "listen": "सुन्नुहोस्",
+          "make": "बनाउनुहोस्",
+          "observe": "अवलोकन गर्नुहोस्",
+          "present": "प्रस्तुत गर्नुहोस्",
+          "reading": "पठन",
+          "reflect": "मनन गर्नुहोस्",
+          "research": "अनुसन्धान गर्नुहोस्",
+          "watch": "हेर्नुहोस्",
+          "write": "लेख्नुहोस्"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ट्यागहरू",
+        "description": "अल्पविरामले छुट्याइएको ट्यागहरूको सूची।"
+      },
+      {
+        "property": "linkUrl",
+        "title": "लिङ्क URL",
+        "description": "पृष्ठको सामग्रीको सट्टा देखाइने रिडाइरेक्ट URL।"
+      },
+      {
+        "property": "linkTarget",
+        "title": "लिङ्क लक्ष्य",
+        "description": "लिङ्कहरू उही विन्डोमा वा नयाँ विन्डोमा खोल्नुहोस्।",
+        "options": {
+          "_self": "उही विन्डो",
+          "_blank": "नयाँ विन्डो"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "प्रकाशित",
+        "description": "अप्रकाशित पृष्ठहरू अन्तिम प्रयोगकर्ताहरूबाट लुकाइन्छन्।"
+      },
+      {
+        "property": "locked",
+        "title": "पृष्ठ लक गर्नुहोस्",
+        "description": "यस पृष्ठका सबै तत्वहरू लक वा अनलक गर्नुहोस्।"
+      },
+      {
+        "property": "overridePathauto",
+        "title": "स्वचालित स्लग ओभरराइड गर्नुहोस्",
+        "description": "शीर्षक वा मूल पृष्ठका आधारमा हुने स्वचालित अद्यावधिकबाट स्लगलाई लक गर्नुहोस्।"
+      },
+      {
+        "property": "slug",
+        "title": "पथ",
+        "description": "यस पृष्ठको URL स्लग।"
+      },
+      {
+        "property": "image",
+        "title": "मिडिया",
+        "description": "पृष्ठलाई प्रतिनिधित्व गर्ने मिडिया, केही थिम र दृश्यहरूमा प्रयोग हुने।"
+      },
+      {
+        "property": "parent",
+        "title": "मूल पृष्ठ",
+        "description": "मूल पृष्ठको पथ।"
+      },
+      {
+        "property": "noderefs",
+        "title": "सम्बन्धित सामग्री",
+        "description": "यस पृष्ठसँग सम्बन्धित पृष्ठहरू।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "विवरण",
+        "description": "सङ्ग्रहहरू र खोज इन्जिन अनुकूलन (SEO) मा प्रयोग हुने विवरण।"
+      },
+      {
+        "property": "entityType",
+        "title": "एकाइ प्रकार",
+        "description": "अन्यथा सेट नगरेसम्म पूर्वनिर्धारित रूपमा पृष्ठ हुन्छ।",
+        "options": {
+          "page": "पृष्ठ (पूर्वनिर्धारित)",
+          "taxonomy": "वर्गीकरण",
+          "taxonomyTerm": "वर्गीकरण शब्द",
+          "region": "क्षेत्र"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "साइटमा यस पृष्ठसँग सम्बन्धित आइकन।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "साइटमा यस पृष्ठसँग सम्बन्धित रङ।"
+      },
+      {
+        "property": "hideInMenu",
+        "title": "मेनुमा लुकाउनुहोस्",
+        "description": "URL कायम राख्दै यस पृष्ठलाई मेनुहरूबाट लुकाउनुहोस्।"
+      },
+      {
+        "property": "order",
+        "title": "क्रम",
+        "description": "सहोदर पृष्ठहरूको तुलनामा क्रम।"
+      },
+      {
+        "property": "developerTheme",
+        "title": "पृष्ठ थिम",
+        "description": "यस पृष्ठका लागि मात्र थिम ओभरराइड गर्नुहोस्।"
+      },
+      {
+        "property": "author",
+        "title": "लेखक",
+        "description": "यो पृष्ठ अन्तिम पटक परिमार्जन गर्ने व्यक्तिको प्रयोगकर्ता नाम।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "E hoʻokomo i nā kaiāulu Discord mai kekahi URL kaʻana like."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL Kumuwaiwai",
+        "description": "URL kumuwaiwai."
+      },
+      {
+        "property": "height",
+        "title": "Kiʻekiʻe",
+        "description": "Kiʻekiʻe o ke kiʻi ʻikepili."
+      },
+      {
+        "property": "width",
+        "title": "Ākea",
+        "description": "Ākea o ke kiʻi ʻikepili."
+      }
+    ]
+  }
+}

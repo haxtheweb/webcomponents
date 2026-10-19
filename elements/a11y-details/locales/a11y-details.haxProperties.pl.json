@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Dostępny przycisk szczegółów",
+    "description": "Dostępne stopniowe ujawnianie treści za pomocą details i summary"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Przycisk",
+        "description": "Podsumowanie ukrywanej treści, np. „info”, „metadane” itp."
+      },
+      {
+        "slot": "details",
+        "title": "Opis",
+        "description": "Szczegółowy opis, który można ukryć lub pokazać"
+      },
+      {
+        "slot": "",
+        "title": "Przycisk opisu",
+        "description": "Domyślny tekst przycisku, który pokazuje/ukrywa opis, np. „info”, „metadane” itp."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Opcjonalny tekst podsumowania, gdy szczegóły są rozwinięte"
+      },
+      {
+        "property": "closeText",
+        "title": "Opcjonalny tekst podsumowania, gdy szczegóły są zwinięte"
+      }
+    ]
+  }
+}

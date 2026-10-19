@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Substituent",
+    "description": "Un substituent care poate fi convertit în tipul de media selectat"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tip",
+        "description": "Tipul de gizmo pe care îl acceptă pentru înlocuire.",
+        "options": {
+          "text": "Text / conținut",
+          "document": "Document / fișier",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Imagine",
+          "math": "Matematică"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Text",
+        "description": "Identifică mai detaliat substituentul dorit"
+      }
+    ]
+  }
+}

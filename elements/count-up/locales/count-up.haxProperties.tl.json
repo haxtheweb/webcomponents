@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Pabilang Pataas",
+    "description": "I-animate ang numerong bumibilang pataas hanggang sa target na halaga kapag lumitaw ito sa view."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Huling halaga",
+        "description": "Ang numerong pagbibilangan hanggang dito."
+      },
+      {
+        "property": "start",
+        "title": "Panimulang halaga",
+        "description": "Ang numerong pagsisimulan ng pagbilang."
+      },
+      {
+        "property": "duration",
+        "title": "Tagal",
+        "description": "Ilang segundo ang itatagal ng animation ng pagbilang."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Teksto sa unahan",
+        "description": "Tekstong ipinapakita bago ang numero (hal. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Teksto sa hulihan",
+        "description": "Tekstong ipinapakita pagkatapos ng numero (hal. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot sa unahan",
+        "description": "Opsyonal na nilalaman sa slot bago ang numero."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot sa hulihan",
+        "description": "Opsyonal na nilalaman sa slot pagkatapos ng numero."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Mga decimal place",
+        "description": "Bilang ng mga decimal place na ipapakita."
+      },
+      {
+        "property": "separator",
+        "title": "Pang-hiwalay ng libo",
+        "description": "Karakter na naghihiwalay sa mga pangkat ng libo."
+      },
+      {
+        "property": "decimal",
+        "title": "Karakter ng decimal",
+        "description": "Karakter na ginagamit para sa decimal point."
+      },
+      {
+        "property": "noeasing",
+        "title": "Walang easing",
+        "description": "I-disable ang easing para linear ang pagbilang."
+      }
+    ]
+  }
+}

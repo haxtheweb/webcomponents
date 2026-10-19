@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Inlyn-oudio",
+    "description": "Speel oudio inlyn om bladsyinhoud aan te vul."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Bron",
+        "description": "MP3-lêer of URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "Kaart se aksentkleur."
+      },
+      {
+        "property": "shiny",
+        "title": "Blink",
+        "description": "Gebruik 'n ligter aksentagtergrond in plaas van grys."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Donker",
+        "description": "Gebruik donker modus."
+      }
+    ]
+  }
+}

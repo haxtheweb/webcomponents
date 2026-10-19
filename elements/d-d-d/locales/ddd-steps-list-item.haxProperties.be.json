@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Крок",
+    "description": "Элемент, які ўваходзіць у спіс крокаў"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Назва"
+      }
+    ]
+  }
+}

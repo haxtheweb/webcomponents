@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Ibilbideko rola",
+    "description": "Erakunde bateko rol bat"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Izenburua"
+      },
+      {
+        "property": "startDate",
+        "title": "Hasiera-data"
+      },
+      {
+        "property": "endDate",
+        "title": "Amaiera-data (aukerakoa)"
+      },
+      {
+        "property": "skills",
+        "title": "Lotutako trebetasunak",
+        "description": "Hautatu + botoia trebetasunak gehitzen hasteko"
+      }
+    ]
+  }
+}

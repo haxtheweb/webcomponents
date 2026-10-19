@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Բառապաշար",
+    "description": "Բառապաշարի տերմին։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Տերմին"
+      },
+      {
+        "property": "information",
+        "title": "Սահմանում",
+        "description": "Տերմինի վրա սեղմելիս ցուցադրվող սահմանումը։"
+      },
+      {
+        "property": "popoverMode",
+        "title": "Թռուցիկ",
+        "description": "Ցուցադրել սահմանումը թռուցիկում՝ տեքստի մեջ ցուցադրելու փոխարեն։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Հղումներ",
+        "description": "Այս տերմինի հետ կապված լրացուցիչ հղումների ցանկ։"
+      }
+    ]
+  }
+}

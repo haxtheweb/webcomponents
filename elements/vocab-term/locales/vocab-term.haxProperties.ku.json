@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Peyvnasî",
+    "description": "Têgeha ferhengê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Têgeh"
+      },
+      {
+        "property": "information",
+        "title": "Pênase",
+        "description": "Pênaseya ku dema li têgehê tê tikandin tê nîşandan."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Pencereya derketî",
+        "description": "Pênaseyê li şûna di nav rêzê de, di pencereyeke derketî de nîşan bide."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Girêdan",
+        "description": "Lîsteya girêdanên zêde yên bi vê têgehê ve girêdayî."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Şəkilli blok sitat",
+    "description": "İxtiyari şəkli olan üslublu sitat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Şəkil",
+        "description": "Rəyə şəkil əlavə et."
+      },
+      {
+        "property": "name",
+        "title": "Tam ad",
+        "description": "Rəy verən şəxsin adı."
+      },
+      {
+        "property": "position",
+        "title": "Vəzifə və ya iş adı",
+        "description": "Şəxsin vəzifəsi və ya iş adı."
+      },
+      {
+        "slot": "",
+        "title": "Sitat",
+        "description": "Rəy müəllifindən sitat."
+      }
+    ]
+  }
+}

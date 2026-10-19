@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Saka Twitter (X)",
+    "description": "Saka tweet daga X a cikin mahallin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL na Tweet",
+        "description": "URL na tweet ɗin da za a saka."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Jigo",
+        "description": "Jigo mai haske ko duhu don tweet-tweet na X.",
+        "options": {
+          "light": "Haske",
+          "dark": "Duhu"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Hana buɗewar taga idan an danna",
+        "description": "Hana masu amfani buɗe tweet ɗin a x.com."
+      }
+    ]
+  }
+}

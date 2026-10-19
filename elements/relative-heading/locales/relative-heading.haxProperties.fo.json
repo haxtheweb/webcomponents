@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Lutfallslig yvirskrift",
+    "description": "gevur røttu yvirskriftarstigskipanina grundað á yvirskriftina hjá yvirlutinum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Tilfeingis-ID hjá yvirskrift yvirlutsins"
+      },
+      {
+        "property": "disableLink",
+        "description": "Slókkir funktiónina við leinkiknøtti."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Stillir knøttin til at avrita leinki heilt til høgru á yvirskriftini."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Yvirskriftarstig, um yvirluturin ikki verður funnin."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Skrivar yvir sjálvsetta tekstin í boðunum fyri at avrita leinki."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Skrivar yvir sjálvsetta spjaldrið á knøttinum til at avrita leinki."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Skrivar yvir sjálvsetta ikonið á knøttinum til at avrita leinki."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Skrivar yvir sjálvsetta spjaldrið á afturlatingarknøttinum í boðunum fyri at avrita leinki."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Skrivar yvir sjálvsetta ikonið á afturlatingarknøttinum í boðunum fyri at avrita leinki."
+      }
+    ]
+  }
+}

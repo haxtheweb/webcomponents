@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Arte de palabras HAX",
+    "description": "Elemento de logotipo para HAX, obviamente como elemento compatible con HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Tamaño do logotipo de HAX que se vai colocar",
+        "options": {
+          "mini": "Mini",
+          "small": "Pequeno",
+          "normal": "Normal",
+          "large": "Grande"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Se o logotipo se transforma en maiúsculas"
+      }
+    ]
+  }
+}

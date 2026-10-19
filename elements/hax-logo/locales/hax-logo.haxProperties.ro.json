@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Text artistic HAX",
+    "description": "Element logo pentru HAX, evident ca element compatibil HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Dimensiunea logoului HAX care va fi plasat",
+        "options": {
+          "mini": "Mini",
+          "small": "Mică",
+          "normal": "Normal",
+          "large": "Mare"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Dacă logoul trebuie transformat în majuscule"
+      }
+    ]
+  }
+}

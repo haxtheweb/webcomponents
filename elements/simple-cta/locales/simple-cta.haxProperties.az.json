@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Fəaliyyətə çağırış",
+    "description": "Fəaliyyət üçün keçidi olan sadə düymə."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Keçid etiketi"
+      },
+      {
+        "property": "link",
+        "title": "Keçid",
+        "description": "İstənilən resursa keçid daxil edin"
+      },
+      {
+        "property": "hideIcon",
+        "title": "İkonu gizlət",
+        "description": "Mətni vurğulamaq üçün istifadə olunan ikonu gizlət"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "İkon",
+        "description": "Fəaliyyət keçidinin ikonu"
+      }
+    ]
+  }
+}

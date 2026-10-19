@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF brauzer görkezijisi",
+    "description": "PDF faýlyny goşmaça kartoçka ýerleşişi we ýükläp almak düwmesi bilen setiriň içinde ýerleşdiriň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL-i",
+        "description": "PDF faýlynyň ýerleşýän ýeri."
+      },
+      {
+        "property": "heading",
+        "title": "Sözbaşy",
+        "description": "Kartoçkanyň sözbaşy teksti."
+      },
+      {
+        "property": "card",
+        "title": "Kartoçka ýerleşişi",
+        "description": "PDF-i ýükläp almak düwmeli kartoçkada görkez."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Ýükläp almak belgisi",
+        "description": "Ýükläp almak düwmesiniň belgisi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Goldanmaýar habary",
+        "description": "Brauzer PDF faýllaryny görkezip bilmeýän wagty habar."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Goldanmaýar baglanyşyk habary",
+        "description": "Brauzer PDF faýllaryny görkezip bilmeýän wagty baglanyşyk teksti."
+      },
+      {
+        "property": "width",
+        "title": "Giňlik",
+        "description": "PDF görkezijisiniň giňligi."
+      },
+      {
+        "property": "height",
+        "title": "Beýiklik",
+        "description": "PDF görkezijisiniň beýikligi."
+      }
+    ]
+  }
+}

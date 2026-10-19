@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Numrerad lista",
+    "description": "Skapa en numrerad lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Numreringsstil",
+        "description": "Stil som används för numrering av ordnade listor.",
+        "options": {
+          "": "Standard (decimal)",
+          "list-decimal-leading-zero": "Decimal med inledande nolla (01, 02, 03)",
+          "list-lower-alpha": "Små bokstäver (a, b, c)",
+          "list-upper-alpha": "Stora bokstäver (A, B, C)",
+          "list-lower-roman": "Små romerska siffror (i, ii, iii)",
+          "list-upper-roman": "Stora romerska siffror (I, II, III)"
+        }
+      }
+    ]
+  }
+}

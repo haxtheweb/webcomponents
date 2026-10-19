@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kortti",
+    "description": "Kortti valinnaisella korostetyylillä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Otsikko",
+        "description": "Kortin otsikko."
+      },
+      {
+        "slot": "subheading",
+        "title": "Alaotsikko",
+        "description": "Kortin valinnainen alaotsikko."
+      },
+      {
+        "slot": "content",
+        "title": "Sisältö",
+        "description": "Kortin sisältö."
+      },
+      {
+        "slot": "footer",
+        "title": "Alatunniste",
+        "description": "Kortin valinnainen alatunniste."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Kuva",
+        "description": "Valinnainen kuva"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Kuvan vaihtoehtoinen teksti",
+        "description": "Vaihtoehtoinen teksti, joka kuvailee kuvan ruudunlukijoille. Jätä tyhjäksi vain, jos kuva on puhtaasti koristeellinen."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Kuvan vaakasuuntainen tasaus",
+        "options": {
+          "left": "vasen",
+          "center": "keskellä",
+          "right": "oikea"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Kuvan pystysuuntainen tasaus",
+        "options": {
+          "top": "ylä",
+          "center": "keskellä",
+          "bottom": "ala"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Valinnainen korostusväri."
+      },
+      {
+        "property": "dark",
+        "title": "Tumma teema",
+        "description": "Ota tumma teema käyttöön"
+      },
+      {
+        "property": "horizontal",
+        "title": "Vaaka",
+        "description": "Vaakasuuntainen asettelu?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Otsikon korostus",
+        "description": "Käytetäänkö korosteväriä otsikossa?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Taustan korostus",
+        "description": "Käytetäänkö korosteväriä kortin taustassa?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Ei reunakorostusta",
+        "description": "Poistetaanko reunakorostus?"
+      },
+      {
+        "property": "flat",
+        "title": "Litteä",
+        "description": "Poistetaanko laatikon varjo?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Kulma",
+        "description": "Kortin kulman sisältö."
+      }
+    ]
+  }
+}

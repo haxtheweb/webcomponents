@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Položka kolekcie",
+    "description": "Položka v tvare karty na použitie v zozname kolekcie, s textom, odkazom a voliteľnými médiami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Odkaz",
+        "description": "Cieľová URL tejto karty."
+      },
+      {
+        "property": "image",
+        "title": "Obrázok",
+        "description": "Obrázok na pozadí."
+      },
+      {
+        "property": "line1",
+        "title": "Riadok 1",
+        "description": "Prvý riadok textu."
+      },
+      {
+        "property": "line2",
+        "title": "Riadok 2",
+        "description": "Druhý riadok textu."
+      },
+      {
+        "property": "line3",
+        "title": "Riadok 3",
+        "description": "Tretí riadok textu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona predstavujúca kartu."
+      },
+      {
+        "property": "saturate",
+        "title": "Efekt sýtosti",
+        "description": "Zmeniť sýtosť obrázka pri zameraní používateľom."
+      },
+      {
+        "property": "tags",
+        "title": "Značky",
+        "description": "Zoznam značiek oddelených čiarkami."
+      },
+      {
+        "property": "accentColor",
+        "title": "Farba",
+        "description": "Farba značiek."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternatívny text popisujúci odkaz."
+      }
+    ]
+  }
+}

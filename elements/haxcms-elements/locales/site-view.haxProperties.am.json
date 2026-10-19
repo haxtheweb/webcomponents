@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "የድረ-ገጽ እይታ",
+    "description": "በመስፈርቶች ላይ በመመስረት የድረ-ገጽ ውሂብን የሚጠይቅ እና የሚያሳይ ተለዋዋጭ ብሎክ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "የእይታ URL",
+        "description": "ለእይታ ውሂብ ምግቡ የመጠይቅ መለኪያዎች። ይህንን ከእይታዎች ዳሽቦርድ ማግኘት ይችላሉ።"
+      },
+      {
+        "property": "renderer",
+        "title": "የማሳያ ሁነታ",
+        "description": "የእይታ ውጤቶቹ እንዴት መታየት እንዳለባቸው"
+      },
+      {
+        "property": "entity",
+        "title": "የአካል ዓይነት",
+        "description": "ምላሹን ለመተንተን የሚያገለግል የአካል ዓይነት",
+        "options": {
+          "": "ነባሪ (ንጥሎች)",
+          "item": "ንጥል",
+          "page": "ገጽ",
+          "file": "ፋይል",
+          "tag": "መለያ",
+          "block": "ብሎክ",
+          "view": "እይታ",
+          "theme": "ገጽታ",
+          "region": "ክልል",
+          "customElement": "ብጁ አካል"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "የድረ-ገጽ እይታን አቋርጥ",
+        "description": "ለቀጥታ አርትዖት ወደ ቋሚ ይዘት ቀይር፤ ከምንጩ በራስ-ሰር መዘመንን ያቆማል።"
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "جدول",
+    "description": "ويب لاءِ جدول تي ٻڌل ڊيٽا."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "قطار سرخي",
+        "description": "پهرين قطار کي سرخي طور سمجهو."
+      },
+      {
+        "property": "columnHeader",
+        "title": "ڪالم سرخي",
+        "description": "پهرين ڪالم کي سرخي طور سمجهو."
+      },
+      {
+        "property": "footer",
+        "title": "فوٽر",
+        "description": "آخري قطار کي فوٽر طور سمجهو."
+      },
+      {
+        "property": "sort",
+        "title": "ترتيب لائق",
+        "description": "ڪالم جي قيمتن موجب ترتيب ڏيڻ جي اجازت ڏيو."
+      },
+      {
+        "property": "filter",
+        "title": "فلٽر جي اجازت",
+        "description": "ڪالم جي قيمتن موجب فلٽر ڪرڻ جي اجازت ڏيو."
+      },
+      {
+        "property": "numericStyles",
+        "title": "عددي انداز",
+        "description": "عددي ڪالمن تي عددي انداز لاڳو ڪريو."
+      },
+      {
+        "property": "responsive",
+        "title": "رسپانسِو",
+        "description": "ننڍين اسڪرينن تي جدول جي ترتيب ٺيڪ ڪريو."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubric موڊ",
+        "description": "هن جدول کي OER Schema Rubric طور سمجهو ته جيئن Rubric، RubricScale، RubricCriterion ۽ RubricLevel ميٽاڊيٽا جاري ٿئي."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubric قسم",
+        "description": "oer:rubricType طور جاري ٿيندڙ rubric انداز (صرف تڏهن بامعنيٰ جڏهن Rubric موڊ آن هجي).",
+        "options": {
+          "": "(ڪوبه نه)",
+          "analytic": "تجزياتي",
+          "holistic": "مجموعي",
+          "single-point": "هڪ نقطو",
+          "checklist": "چيڪ لسٽ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "سرحد سان"
+      },
+      {
+        "property": "condensed",
+        "title": "قطارون سوڙهيون ڪريو",
+        "description": "قطار جي اوچائي گهٽايو."
+      },
+      {
+        "property": "striped",
+        "title": "پٽيدار قطارون",
+        "description": "هر ٻي قطار کي ڇانو ڏيو."
+      },
+      {
+        "property": "downloadable",
+        "title": "ڊائون لوڊ بٽڻ",
+        "description": "جدول ڊائون لوڊ ڪرڻ لاءِ بٽڻ شامل ڪريو."
+      },
+      {
+        "property": "copyable",
+        "title": "ڪاپي بٽڻ",
+        "description": "جدول جو CSV ڊيٽا ڪاپي ڪرڻ لاءِ بٽڻ شامل ڪريو."
+      },
+      {
+        "property": "printable",
+        "title": "پرنٽ بٽڻ",
+        "description": "صرف جدول پرنٽ ڪرڻ لاءِ بٽڻ شامل ڪريو."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV ڊيٽا",
+        "description": "اپلوڊ ڪيل CSV فائل مان جدول ٺاهيو."
+      }
+    ]
+  }
+}

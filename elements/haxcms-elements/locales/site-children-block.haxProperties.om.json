@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: boolokii ijoollee",
+    "description": "Boolokii socho'aa ijoollee fuula ammaa agarsiisu"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Mala socho'aa",
+        "description": "Ijoollee elementii kanaan walbira qabuun akkamitti akka shallagamu",
+        "options": {
+          "active": "Ijoollee hojii irra jiran",
+          "parent": "Ijoollee maatii",
+          "ancestor": "Ijoollee hunda akaakayyuu olaanaa irraa"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Sadarkaa jalqabaa"
+      },
+      {
+        "property": "end",
+        "title": "Sadarkaa xumuraa"
+      }
+    ]
+  }
+}

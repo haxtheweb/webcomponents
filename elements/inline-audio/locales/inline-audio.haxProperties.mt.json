@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Awdjo inline",
+    "description": "Doqq awdjo inline biex jissupplimenta l-kontenut tal-paġna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sors",
+        "description": "Fajl MP3 jew URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-enfasi tal-karta."
+      },
+      {
+        "property": "shiny",
+        "title": "Tleqq",
+        "description": "Uża sfond tal-enfasi eħfef minflok griż."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Skur",
+        "description": "Uża l-modalità skura."
+      }
+    ]
+  }
+}

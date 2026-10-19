@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Вкладки",
+    "description": "Набір вкладок."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Мітка (для доступності)",
+        "description": "Доступна мітка для набору вкладок."
+      },
+      {
+        "property": "disabled",
+        "title": "Вимкнено",
+        "description": "Вимкнути всі вкладки."
+      },
+      {
+        "property": "hidden",
+        "title": "Приховано",
+        "description": "Приховати набір вкладок."
+      },
+      {
+        "property": "sticky",
+        "title": "Закріплені",
+        "description": "Утримувати горизонтальні вкладки вгорі під час прокручування."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Точка перелому макета",
+        "description": "Точка перелому для горизонтальних вкладок; -1 — лише вертикальні."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Точка перелому значків",
+        "description": "Точка перелому для показу тексту зі значками. За замовчуванням 0; -1 — режим лише значків."
+      },
+      {
+        "slot": "",
+        "title": "Вкладки",
+        "description": "Послідовність елементів <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Унікальний ID",
+        "description": "Унікальний ID цього набору вкладок."
+      }
+    ]
+  }
+}

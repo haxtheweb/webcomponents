@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Licenza",
+    "description": "Indica unha licenza para a túa obra."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título da obra citada."
+      },
+      {
+        "property": "source",
+        "title": "Ligazón da fonte",
+        "description": "URL da fonte da obra licenciada."
+      },
+      {
+        "property": "license",
+        "title": "Licenza",
+        "description": "Licenza aplicada a esta obra."
+      },
+      {
+        "property": "creator",
+        "title": "Creador",
+        "description": "Creador ou propietario desta obra."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Ligazón da fonte",
+        "description": "Ligazón a detalles adicionais da licenza."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Etiqueta de máis información",
+        "description": "Etiqueta para os detalles adicionais da licenza."
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Nhãn / Viên thuốc",
+    "description": "Nhãn nhỏ gọn hình viên thuốc với màu nhấn, nút hủy hoặc nút bật/tắt tùy chọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Nhãn",
+        "description": "Văn bản hiển thị bên trong nhãn."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Tên màu nhấn SimpleColors cho nền nhãn.",
+        "options": {
+          "": "-- mặc định --",
+          "red": "Đỏ",
+          "pink": "Hồng",
+          "purple": "Tím",
+          "deep-purple": "Tím đậm",
+          "indigo": "Chàm",
+          "blue": "Xanh dương",
+          "light-blue": "Xanh nhạt",
+          "cyan": "Lục lam",
+          "teal": "Xanh mòng két",
+          "green": "Xanh lá",
+          "light-green": "Xanh lá nhạt",
+          "lime": "Xanh chanh",
+          "yellow": "Vàng",
+          "amber": "Hổ phách",
+          "orange": "Cam",
+          "deep-orange": "Cam đậm",
+          "brown": "Nâu",
+          "blue-grey": "Xám xanh",
+          "grey": "Xám"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Màu nhấn tự động",
+        "description": "Tự động lấy màu nhấn từ văn bản nhãn."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Nút hủy",
+        "description": "Hiện nút biểu tượng xóa/hủy bên trong nhãn."
+      },
+      {
+        "property": "readonly",
+        "title": "Chỉ đọc",
+        "description": "Ẩn nút hủy để nhãn chỉ dùng để hiển thị."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Bật/tắt",
+        "description": "Cho phép nhãn bật/tắt khi nhấp vào nút."
+      },
+      {
+        "property": "toggled",
+        "title": "Đã bật",
+        "description": "Nhãn hiện có đang được bật hay không."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Biểu tượng khi bật",
+        "description": "Biểu tượng hiển thị khi nhãn được bật."
+      },
+      {
+        "property": "disabled",
+        "title": "Vô hiệu hóa",
+        "description": "Vô hiệu hóa tương tác với nhãn."
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Прайгравальнік Unity",
+    "description": "Прайгравальнік Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Мэта",
+        "description": "Шлях да зборкі гульні."
+      },
+      {
+        "property": "compression",
+        "title": "Спосаб сціскання",
+        "description": "Пашырэнне файла сціскання для рэсурсаў гульні."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL струменевай перадачы",
+        "description": "URL струменевых рэсурсаў."
+      },
+      {
+        "property": "companyname",
+        "title": "Назва кампаніі",
+        "description": "Назва кампаніі."
+      },
+      {
+        "property": "productname",
+        "title": "Назва прадукту",
+        "description": "Назва гульні."
+      },
+      {
+        "property": "productversion",
+        "title": "Версія прадукту",
+        "description": "Версія выпуску."
+      },
+      {
+        "property": "width",
+        "title": "Шырыня палатна",
+        "description": "CSS-шырыня палатна (напрыклад, px або em)."
+      },
+      {
+        "property": "height",
+        "title": "Вышыня палатна",
+        "description": "CSS-вышыня палатна (напрыклад, px або em)."
+      },
+      {
+        "property": "background",
+        "title": "Фон палатна",
+        "description": "CSS-фон палатна."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Áitchoinneálaí",
+    "description": "Áitchoinneálaí ar féidir é a thiontú go dtí an cineál meán atá roghnaithe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Cineál",
+        "description": "Cineál giuirléide a nglacann sé seo leis le haghaidh athsholáthair.",
+        "options": {
+          "text": "Téacs / ábhar",
+          "document": "Cáipéis / comhad",
+          "audio": "Fuaim",
+          "video": "Físeán",
+          "image": "Íomhá",
+          "math": "Mata"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Téacs",
+        "description": "Sainaithin an t-áitchoinneálaí atá uait níos mionsonraithe"
+      }
+    ]
+  }
+}

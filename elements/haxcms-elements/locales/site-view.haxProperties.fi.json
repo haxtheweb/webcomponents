@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Sivustonäkymä",
+    "description": "Dynaaminen lohko, joka hakee ja näyttää sivuston dataa ehtojen perusteella"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Näkymän URL",
+        "description": "Näkymän tietosyötteen kyselyparametrit. Saat ne Näkymät-hallintapaneelista."
+      },
+      {
+        "property": "renderer",
+        "title": "Näyttötila",
+        "description": "Miten näkymän tulokset renderöidään"
+      },
+      {
+        "property": "entity",
+        "title": "Entiteettityyppi",
+        "description": "Vastauksen jäsentämiseen käytettävä entiteettityyppi",
+        "options": {
+          "": "Oletus (kohteet)",
+          "item": "Kohde",
+          "page": "Sivu",
+          "file": "Tiedosto",
+          "tag": "Tunniste",
+          "block": "Lohko",
+          "view": "Näkymä",
+          "theme": "Teema",
+          "region": "Alue",
+          "customElement": "Mukautettu elementti"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Katkaise sivustonäkymä",
+        "description": "Muunna staattiseksi sisällöksi suoraa muokkausta varten; lopettaa automaattisen päivittymisen lähteestä."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Badge evento",
+    "description": "Componente badge per eventi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Immagine TV",
+        "description": "Immagine mostrata sulla TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo mostrato nell'angolo del badge."
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo mostrato in cima al badge."
+      },
+      {
+        "property": "name",
+        "title": "Nome",
+        "description": "Nome mostrato sul badge."
+      },
+      {
+        "property": "position",
+        "title": "Ruolo",
+        "description": "Ruolo o qualifica della persona."
+      },
+      {
+        "property": "organization",
+        "title": "Organizzazione",
+        "description": "Organizzazione per cui lavora la persona."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Colore TV",
+        "description": "Seleziona il colore della TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Colore principale di sfondo o del testo."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Colore delle manopole",
+        "description": "Colore delle manopole della TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Seppia",
+        "description": "Applica un effetto seppia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Bianco e nero",
+        "description": "Applica un effetto bianco e nero."
+      }
+    ]
+  }
+}

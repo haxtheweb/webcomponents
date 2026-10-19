@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "پیش رفت ڈونٹ",
+    "description": "پیش رفت کا ڈونٹ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنصر کا عنوان"
+      },
+      {
+        "property": "desc",
+        "title": "تفصیل",
+        "description": "قابل رسائی طویل وضاحت"
+      },
+      {
+        "property": "imageSrc",
+        "title": "تصویر کا ماخذ",
+        "description": "ڈونٹ کے اندر تصویر کا سورس۔"
+      },
+      {
+        "property": "imageAlt",
+        "title": "تصویر کا متبادل متن",
+        "description": "تصویر کا متبادل متن۔"
+      },
+      {
+        "property": "animated",
+        "title": "متحرک",
+        "description": "کیا پہلی بار لوڈ ہونے پر پیش رفت متحرک ہو"
+      },
+      {
+        "property": "complete",
+        "title": "مکمل",
+        "description": "مکمل شدہ قدروں کا ارے۔"
+      },
+      {
+        "property": "total",
+        "title": "کل",
+        "description": "تمام آئٹمز مکمل ہونے پر کل۔"
+      },
+      {
+        "property": "startAngle",
+        "title": "ابتدائی زاویہ",
+        "description": "ڈونٹ کا زاویہ جہاں سے پیش رفت شروع ہوتی ہے"
+      }
+    ]
+  }
+}

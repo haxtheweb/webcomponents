@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Silt / pill",
+    "description": "Kompaktne pillikujuline silt valikulise rõhuvärvi, tühistamisnupu või lülitiga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Silt",
+        "description": "Pilli sees kuvatav tekst."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "SimpleColorsi rõhuvärvi nimi pilli tausta jaoks.",
+        "options": {
+          "": "-- vaikimisi --",
+          "red": "Punane",
+          "pink": "Roosa",
+          "purple": "Lilla",
+          "deep-purple": "Tumelilla",
+          "indigo": "Indigo",
+          "blue": "Sinine",
+          "light-blue": "Helesinine",
+          "cyan": "Tsüaan",
+          "teal": "Sinakasroheline",
+          "green": "Roheline",
+          "light-green": "Heleroheline",
+          "lime": "Laim",
+          "yellow": "Kollane",
+          "amber": "Merevaik",
+          "orange": "Oranž",
+          "deep-orange": "Tumeoranž",
+          "brown": "Pruun",
+          "blue-grey": "Sinakashall",
+          "grey": "Hall"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automaatne rõhuvärv",
+        "description": "Tuleta rõhuvärv automaatselt sildi tekstist."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Tühistamisnupp",
+        "description": "Kuva pilli sees eemaldamise/tühistamise ikoonnupp."
+      },
+      {
+        "property": "readonly",
+        "title": "Kirjutuskaitstud",
+        "description": "Peida tühistamisnupp, et pill oleks ainult kuvamiseks."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Lülitatav",
+        "description": "Muuda pill nupule klõpsamisel sisse/välja lülitatavaks."
+      },
+      {
+        "property": "toggled",
+        "title": "Sisse lülitatud",
+        "description": "Kas pill on praegu sisse lülitatud."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Sisselülitatud oleku ikoon",
+        "description": "Ikoon, mida kuvatakse, kui pill on sisse lülitatud."
+      },
+      {
+        "property": "disabled",
+        "title": "Keelatud",
+        "description": "Keela pilliga suhtlemine."
+      }
+    ]
+  }
+}

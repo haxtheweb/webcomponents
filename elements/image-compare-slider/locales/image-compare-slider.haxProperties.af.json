@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Prentvergelyking",
+    "description": "Swiep een prent oor 'n ander om te vergelyk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Boonste prent",
+        "description": "Boonste prent om oor die onderste prent te swiep."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alt-teks van boonste prent",
+        "description": "Vereiste alt-teks vir toeganklikheid."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Onderste prent",
+        "description": "Onderste prent wat onder die boonste prent gewys word."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alt-teks van onderste prent",
+        "description": "Vereiste alt-teks vir toeganklikheid."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Gedrag",
+        "description": "Kies vee-modus (standaard) of deursigtigheidsmodus vir die boonste prent."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "Kleur van die skuifbalk."
+      },
+      {
+        "property": "dark",
+        "title": "Donker",
+        "description": "Keer die skuifbalk se kleur om."
+      },
+      {
+        "property": "position",
+        "title": "Beginposisie",
+        "description": "Beginposisie van 0 tot 100."
+      }
+    ]
+  }
+}

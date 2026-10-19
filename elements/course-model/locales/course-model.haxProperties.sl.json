@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "model predmeta",
+    "description": "Interaktivna postavitev za koncepte predmeta s podrobnostmi, animacijo in preverjanji znanja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "naslov"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Območje informacij"
+      },
+      {
+        "title": "Območje podrobnosti"
+      },
+      {
+        "title": "Območje animacije"
+      },
+      {
+        "title": "Območje preverjanja znanja"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Območje logotipa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D erreproduzigailua",
+    "description": "3D fitxategien / errealitate areagotuaren erreproduzigailua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Iturburua",
+        "description": "AR fitxategi honen URLa."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Elementuaren X posizioa AR-n."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Elementuaren Y posizioa AR-n."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Elementuaren Z posizioa AR-n."
+      },
+      {
+        "property": "skyColor",
+        "title": "Zeruaren kolorea",
+        "description": "Hautatu eszenako zeruaren kolorea."
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "اسٹاپ نوٹ",
+    "description": "قارئین کو مخصوص ہدایات سے آگاہ کرنے کا پیغام۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "اسٹاپ نوٹ کا عنوان درج کریں۔"
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "بیرونی URL درج کریں۔"
+      },
+      {
+        "property": "status",
+        "title": "حالت",
+        "description": "حالت مقرر کرنے سے رنگ اور آئیکنز اس کے مطابق بدل جاتے ہیں",
+        "options": {
+          "stop": "رکیں",
+          "warning": "انتباہ",
+          "success": "تصدیق",
+          "info": "اطلاع"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "نوٹ کا متن",
+        "description": "اسٹاپ نوٹ کا متن۔"
+      }
+    ]
+  }
+}

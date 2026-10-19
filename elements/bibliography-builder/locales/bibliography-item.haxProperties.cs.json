@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Položka bibliografie",
+    "description": "Položka představující jednu citaci v bibliografii, podporující více formátů a možností exportu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Typ",
+        "description": "Typ citace",
+        "options": {
+          "web": "Web",
+          "journal": "Časopis",
+          "book": "Kniha"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Název",
+        "description": "Název položky"
+      },
+      {
+        "property": "authors",
+        "title": "Autor(ři)",
+        "description": "Události na časové ose"
+      },
+      {
+        "property": "publisher",
+        "title": "Vydavatel",
+        "description": "Původní web"
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Delwedd Well",
+    "description": "Ffordd o gyflwyno delweddau gyda gwelliannau amrywiol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ffynhonnell",
+        "description": "URL y ddelwedd."
+      },
+      {
+        "property": "alt",
+        "title": "Testun amgen",
+        "description": "Testun i ddisgrifio'r ddelwedd i ddefnyddwyr dall."
+      },
+      {
+        "property": "link",
+        "title": "Dolen",
+        "description": "Cysylltu'r ddelwedd ag URL"
+      },
+      {
+        "property": "card",
+        "title": "Cerdyn",
+        "description": "Rhoi cysgod gollwng i roi golwg cerdyn wedi'i godi."
+      },
+      {
+        "property": "box",
+        "title": "Blwch",
+        "description": "Rhoi blwch gweledol o amgylch y ddelwedd."
+      },
+      {
+        "property": "offset",
+        "title": "Gwrthbwyso",
+        "description": "Rhoi gwrthbwyso i'r chwith neu'r dde i'r ddelwedd.",
+        "options": {
+          "none": "dim",
+          "wide": "llydan",
+          "narrow": "cul"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Cyfeiriad",
+        "description": "Dyfyniad ar gyfer y ddelwedd."
+      },
+      {
+        "property": "caption",
+        "title": "Capsiwn",
+        "description": "Capsiwn ar gyfer y ddelwedd."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Teitl y Ffigur",
+        "description": "Teitl ar gyfer label y ffigur."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Disgrifiad y Ffigur",
+        "description": "Disgrifiad ar gyfer label y ffigur."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Delwedd fawdlun",
+        "description": "Ffynhonnell y ddelwedd fawdlun. Yn dangos y mân-lun ond yn agor y ffynhonnell lawn mewn moddol."
+      },
+      {
+        "property": "round",
+        "title": "Delwedd gron",
+        "description": "Yn tocio golwg y ddelwedd i fod ar siâp cylch."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Analluogi moddol y ddelwedd",
+        "description": "Analluogi cliciau sy'n agor y ddelwedd mewn deialog archwilio delweddau."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Rendro fel markdown",
+        "description": "Rendro'r capsiwn a'r dyfyniad fel markdown."
+      }
+    ]
+  }
+}

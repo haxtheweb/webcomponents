@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Qaama CMS",
+    "description": "Qaama CMS backend irratti agarsiifame"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Gosa",
+        "description": "gosa CMS keenya irraa",
+        "options": {
+          "node": "Node",
+          "user": "Fayyadamaa",
+          "file": "Faayilii"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id CMS keenya irraa"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Haala agarsiisaa",
+        "description": "haalata agarsiisaa CMS keenya irraa"
+      }
+    ]
+  }
+}

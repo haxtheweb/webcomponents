@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Ставка за кариера",
+    "description": "Поединечна организација и нејзините поврзани улоги"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Име на организацијата"
+      },
+      {
+        "property": "location",
+        "title": "Локација"
+      },
+      {
+        "property": "source",
+        "title": "Извор"
+      }
+    ]
+  }
+}

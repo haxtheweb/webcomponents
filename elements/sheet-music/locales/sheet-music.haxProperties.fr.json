@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Partition",
+    "description": "Affiche et joue des partitions, des tablatures de guitare et de la notation musicale via alphaTex ou MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Notation AlphaTex",
+        "description": "Balisage alphaTex intégré pour la partition. Modifiez-le directement pour écrire la notation ; il est stocké dans un modèle afin de préserver les espacements."
+      },
+      {
+        "property": "source",
+        "title": "Fichier de partition",
+        "description": "Téléversez ou liez un fichier MusicXML (.xml/.musicxml/.mxl) ou Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Remplace l'alphaTex intégré lorsqu'il est défini."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Lecture audio",
+        "description": "Activée par défaut : écoutez la partition jouée par le synthétiseur intégré. Désactivez-la pour un mode visionnage seul (sans audio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Afficher les options d'affichage",
+        "description": "Afficher les boutons de zoom, d'étirement et de mise en page dans la barre du lecteur."
+      },
+      {
+        "property": "showExport",
+        "title": "Afficher les boutons d'export",
+        "description": "Afficher les boutons de téléchargement MIDI et d'impression/PDF dans la barre du lecteur."
+      }
+    ]
+  }
+}

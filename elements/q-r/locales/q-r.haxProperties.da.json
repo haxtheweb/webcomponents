@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR-kode",
+    "description": "Kode, der kan scannes med en smartphone."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR-data",
+        "description": "Kilde til dataene i QR-koden."
+      },
+      {
+        "property": "title",
+        "title": "Alternativ titel",
+        "description": "Alternativ titel, der linker til QR-kodens kilde."
+      },
+      {
+        "property": "modulesize",
+        "title": "Størrelse",
+        "description": "QR-kodens størrelse."
+      },
+      {
+        "property": "margin",
+        "title": "Margen",
+        "description": "Ramme omkring koden."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Outputformat",
+        "description": "Format, der skal udskrives i.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

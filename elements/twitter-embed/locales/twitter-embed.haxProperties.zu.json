@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Ukushumeka kwe-Twitter (X)",
+    "description": "Shumeka ithweti evela ku-X esimweni sayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "I-URL Yethweti",
+        "description": "I-URL yethweti ezoshumekwa."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Itimu",
+        "description": "Itimu ekhanyayo noma emnyama yamathweti e-X.",
+        "options": {
+          "light": "Okukhanyayo",
+          "dark": "Okumnyama"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Vimbela iwindi elivelayo lapho uchofoza",
+        "description": "Vimbela abasebenzisi ekuvuleni ithweti ku-x.com."
+      }
+    ]
+  }
+}

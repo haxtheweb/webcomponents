@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Burkoló beágyazott Spotify-lejátszókhoz."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Forrás",
+        "description": "Beágyazási vagy megosztási hivatkozás a Spotifyról."
+      },
+      {
+        "property": "theme",
+        "title": "Téma",
+        "description": "A lejátszó háttérszín-témája.",
+        "options": {
+          "": "Alapértelmezett",
+          "0": "Fekete"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Méret",
+        "description": "A lejátszó mérete.",
+        "options": {
+          "normal": "Alapértelmezett",
+          "compact": "Kompakt"
+        }
+      }
+    ]
+  }
+}

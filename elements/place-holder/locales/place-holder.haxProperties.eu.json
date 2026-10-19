@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Leku-marka",
+    "description": "Hautatutako multimedia motara bihur daitekeen leku-marka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Mota",
+        "description": "Ordezkatzeko onartzen duen gizmo mota.",
+        "options": {
+          "text": "Testua / edukia",
+          "document": "Dokumentua / fitxategia",
+          "audio": "Audioa",
+          "video": "Bideoa",
+          "image": "Irudia",
+          "math": "Matematika"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Testua",
+        "description": "Identifikatu nahi den leku-marka xehetasun handiagoz"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "کتابیات کا آئٹم",
+    "description": "کتابیات میں ایک واحد حوالے کی نمائندگی کرنے والا آئٹم، جو متعدد فارمیٹس اور برآمد کے اختیارات کو سپورٹ کرتا ہے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "قسم",
+        "description": "حوالے کی قسم",
+        "options": {
+          "web": "ویب",
+          "journal": "جریدہ",
+          "book": "کتاب"
+        }
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "آئٹم کا عنوان"
+      },
+      {
+        "property": "authors",
+        "title": "مصنف(ین)",
+        "description": "ٹائم لائن میں واقعات"
+      },
+      {
+        "property": "publisher",
+        "title": "ناشر",
+        "description": "اصل ویب سائٹ"
+      }
+    ]
+  }
+}

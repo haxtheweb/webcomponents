@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Flamur faqeje",
+    "description": "Shënim editorial për autorët e faqes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra theksuese për flamurin e faqes."
+      },
+      {
+        "property": "label",
+        "title": "Etiketa",
+        "description": "Teksti i etiketës për flamurin e faqes."
+      }
+    ]
+  }
+}

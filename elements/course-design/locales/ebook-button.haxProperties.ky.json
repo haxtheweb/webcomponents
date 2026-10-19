@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Электрондук китеп баскычы",
+    "description": "Электрондук китепке шилтеме берүүчү баскыч."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Аталышы",
+        "description": "Баскычтын аталышы."
+      },
+      {
+        "property": "link",
+        "title": "Шилтеме",
+        "description": "Басканда багытталуучу шилтеме."
+      },
+      {
+        "property": "icon",
+        "title": "Сөлөкөт",
+        "description": "Бул шилтемени билдирүүчү сөлөкөт"
+      }
+    ]
+  }
+}

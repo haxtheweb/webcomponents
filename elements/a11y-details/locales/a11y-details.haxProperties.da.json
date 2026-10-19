@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Tilgængelig detaljeknap",
+    "description": "Tilgængelig gradvis visning med detaljer og resumé"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Knap",
+        "description": "Resumé af indholdet, hvis det er skjult, f.eks. \"info\", \"metadata\" osv."
+      },
+      {
+        "slot": "details",
+        "title": "Beskrivelse",
+        "description": "Detaljeret beskrivelse, der kan skjules eller vises"
+      },
+      {
+        "slot": "",
+        "title": "Beskrivelsesknap",
+        "description": "Standard for knappen, der viser/skjuler beskrivelsesteksten, f.eks. \"info\", \"metadata\" osv."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Valgfri resumétekst, når detaljerne er åbne"
+      },
+      {
+        "property": "closeText",
+        "title": "Valgfri resumétekst, når detaljerne er lukkede"
+      }
+    ]
+  }
+}

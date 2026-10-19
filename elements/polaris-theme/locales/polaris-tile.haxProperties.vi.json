@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ô Polaris",
+    "description": "Hiển thị ô Polaris với tiêu đề, văn bản bổ sung tùy chọn và liên kết tùy chọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Văn bản chính",
+        "description": "Văn bản chính của ô."
+      },
+      {
+        "property": "line2",
+        "title": "Văn bản phụ",
+        "description": "Văn bản bổ sung tùy chọn."
+      },
+      {
+        "property": "type",
+        "title": "Kiểu ô",
+        "description": "Kiểu trực quan đặt sẵn của ô.",
+        "options": {
+          "1": "Kiểu 1",
+          "2": "Kiểu 2",
+          "3": "Kiểu 3",
+          "4": "Kiểu 4",
+          "5": "Kiểu 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Hình nền",
+        "description": "URL hình nền được dùng bởi các kiểu ô hỗ trợ hình ảnh."
+      },
+      {
+        "property": "link",
+        "title": "Liên kết",
+        "description": "URL đích tùy chọn cho hành động của ô."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Khối nội dung markdown nhập trực tiếp hoặc tải từ xa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown thô"
+      },
+      {
+        "property": "source",
+        "title": "Nguồn",
+        "description": "Tệp nguồn markdown"
+      }
+    ]
+  }
+}

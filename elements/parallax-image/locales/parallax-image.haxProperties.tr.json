@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Paralaks görsel",
+    "description": "Kaydırmalı görsel"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Görsel",
+        "description": "arka planda kullanılacak görsel"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Başlık alanı",
+        "description": "Başlık metni alanı"
+      }
+    ]
+  }
+}

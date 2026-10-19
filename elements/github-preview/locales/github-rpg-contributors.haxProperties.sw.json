@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Orodha ya wachangiaji wa GitHub",
+    "description": "Huonyeshwa kama wahusika wa RPG kwa kutumia GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Shirika",
+        "description": "Jina la shirika kutoka github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Hazina",
+        "description": "Jina la hazina kutoka github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Kikomo",
+        "description": "Weka kikomo cha idadi ya wachangiaji wanaoonyeshwa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Obxectivo de Desenvolvemento Sustentable das Nacións Unidas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Obxectivo",
+        "description": "Número do UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Só cor",
+        "description": "Mostrar só a cor do obxectivo."
+      }
+    ]
+  }
+}

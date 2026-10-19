@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Bar Chart",
+    "description": "Gumagawa ng accessible na chart batay sa isang CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Accent na Kulay",
+        "description": "Opsyonal na accent na kulay."
+      },
+      {
+        "title": "Madilim na Tema",
+        "description": "I-enable ang Madilim na Tema"
+      },
+      {
+        "title": "CSV File",
+        "description": "Mag-load ng data mula sa isang CSV."
+      },
+      {
+        "title": "Pamagat ng Chart",
+        "description": "Accessible na alt text para sa iyong chart."
+      },
+      {
+        "title": "Paglalarawan ng Chart",
+        "description": "Accessible na paglalarawan ng iyong chart."
+      },
+      {
+        "title": "Pangalan ng Scale",
+        "description": "Ang ratio ng lapad:taas ng chart (Tingnan ang https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings para sa $ct-scales at $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Ipakita ang Grid sa Background"
+      },
+      {
+        "title": "Pahalang na mga Bar",
+        "description": "Binabaligtad ang mga axis ng bar chart para gumuhit ng pahalang na bar chart. Tandaan na kailangan mo ring baligtarin ang mga setting ng axis dahil ang Y Axis na ang magpapakita ng mga label at ang X Axis ang mga value."
+      },
+      {
+        "title": "Isalansan ang mga Bar",
+        "description": "Kapag naka-set sa true, isasalansan ng property na ito ang mga bar ng serye."
+      },
+      {
+        "title": "Ipamahagi ang Serye",
+        "description": "Kapag naka-set sa true, bawat bar ay kakatawan sa isang serye at inaasahang ang data array ay isang one-dimensional na array ng mga value ng data sa halip na array ng mga serye."
+      },
+      {
+        "title": "Padding ng Chart (itaas)"
+      },
+      {
+        "title": "Padding ng Chart (ibaba)"
+      },
+      {
+        "title": "Padding ng Chart (kaliwa)"
+      },
+      {
+        "title": "Padding ng Chart (kanan)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Baligtarin ang Data",
+        "description": "Baligtarin ang data kasama ang mga label, ang pagkakasunod-sunod ng serye pati na rin ang buong array ng data ng serye."
+      },
+      {
+        "title": "HTML Table",
+        "description": "Opsyonal: I-load ang data bilang isang HTML table."
+      },
+      {
+        "title": "Minimum ng Chart",
+        "description": "Sa pag-override ng natural na pinakamababang value ng chart, maaari kang mag-zoom in o limitahan ang pinakamababang ipinapakitang value ng chart"
+      },
+      {
+        "title": "Maximum ng Chart",
+        "description": "Sa pag-override ng natural na pinakamataas na value ng chart, maaari kang mag-zoom in o limitahan ang pinakamataas na ipinapakitang value ng chart"
+      },
+      {
+        "title": "Ipakita ang Grid ng X-Axis",
+        "description": "Ipakita ang grid ng X-Axis."
+      },
+      {
+        "title": "Offset ng X-Axis"
+      },
+      {
+        "title": "Posisyon ng X-Axis",
+        "description": "Posisyon kung saan inilalagay ang mga label. Maaaring i-set sa \"start\" o \"end\" kung saan ang \"start\" ay katumbas ng kaliwa o itaas sa patayong axis at ang \"end\" ay katumbas ng kanan o ibaba sa pahalang na axis"
+      },
+      {
+        "title": "Ipakita ang Label ng X-Axis",
+        "description": "Ipakita ang label ng X-Axis."
+      },
+      {
+        "title": "Label ng X-Axis (pahalang na offset)",
+        "description": "Pahalang na posisyon ng mga label ng X-Axis."
+      },
+      {
+        "title": "Label ng X-Axis (patayong offset)",
+        "description": "Patayong posisyon ng mga label ng X-Axis."
+      },
+      {
+        "title": "Pamagat ng X-Axis",
+        "description": "Opsyonal na pamagat para sa X-axis."
+      },
+      {
+        "title": "Pamagat ng X-Axis (pahalang na offset)",
+        "description": "Pahalang na posisyon ng pamagat ng X-Axis."
+      },
+      {
+        "title": "Pamagat ng X-Axis (patayong offset)",
+        "description": "Patayong posisyon ng pamagat ng X-Axis."
+      },
+      {
+        "title": "Anchor ng Pamagat ng X-Axis",
+        "description": "Opsyonal na anchor para sa pamagat ng X-axis.",
+        "options": {
+          "middle": "gitna",
+          "end": "dulo",
+          "start": "simula"
+        }
+      },
+      {
+        "title": "Minimum na Espasyo ng Scale ng X-Axis",
+        "description": "Tinutukoy ang minimum na taas sa pixel ng mga hakbang ng scale."
+      },
+      {
+        "title": "Scale ng X-Axis (integer lamang)",
+        "description": "Gumamit lamang ng mga integer (buong numero) para sa mga hakbang ng scale."
+      },
+      {
+        "title": "Y-Axis: Ipakita ang Grid",
+        "description": "Ipakita ang grid ng Y-Axis."
+      },
+      {
+        "title": "Offset ng Y-Axis"
+      },
+      {
+        "title": "Posisyon ng Y-Axis",
+        "description": "Posisyon kung saan inilalagay ang mga label. Maaaring i-set sa \"start\" o \"end\" kung saan ang \"start\" ay katumbas ng kaliwa o itaas sa patayong axis at ang \"end\" ay katumbas ng kanan o ibaba sa pahalang na axis"
+      },
+      {
+        "title": "Ipakita ang Label ng Y-Axis",
+        "description": "Ipakita ang label ng Y-Axis."
+      },
+      {
+        "title": "Label ng Y-Axis (pahalang na offset)",
+        "description": "Pahalang na posisyon ng label ng Y-Axis."
+      },
+      {
+        "title": "Label ng Y-Axis (patayong offset)",
+        "description": "Patayong posisyon ng label ng Y-Axis."
+      },
+      {
+        "title": "Minimum na Espasyo ng Scale ng Y-Axis",
+        "description": "Tinutukoy ang minimum na taas sa pixel ng mga hakbang ng scale."
+      },
+      {
+        "title": "Scale ng Y-Axis (integer lamang)",
+        "description": "Gumamit lamang ng mga integer (buong numero) para sa mga hakbang ng scale."
+      },
+      {
+        "title": "Pamagat ng Y-Axis",
+        "description": "Opsyonal na pamagat para sa Y-axis."
+      },
+      {
+        "title": "Pamagat ng Y-Axis (patayong offset)",
+        "description": "Pahalang na posisyon ng pamagat ng Y-Axis."
+      },
+      {
+        "title": "Pamagat ng Y-Axis (pahalang na offset)",
+        "description": "Pahalang na posisyon ng pamagat ng Y-Axis."
+      },
+      {
+        "title": "Anchor ng Pamagat ng Y-Axis",
+        "description": "Opsyonal na anchor para sa pamagat ng Y-axis.",
+        "options": {
+          "middle": "gitna",
+          "end": "dulo",
+          "start": "simula"
+        }
+      },
+      {
+        "title": "Baligtarin ang Pamagat ng Y-Axis",
+        "description": "Baligtarin ang pamagat para sa Y-axis?"
+      },
+      {
+        "title": "Reference Value",
+        "description": "Maliban kung tahasang naka-set ang low/high, ang bar chart ay nakasentro sa zero bilang default."
+      },
+      {
+        "title": "Distansya ng Bar ng Serye",
+        "description": "Tukuyin ang distansya sa pixel ng mga bar sa isang grupo."
+      },
+      {
+        "title": "Stack Mode",
+        "description": "Kapag naka-set sa \"true\", bubuo ang property na ito ng kabuuan para sa bawat punto ng serye. Makakaapekto rin ito sa y-axis at sa kabuuang hangganan ng chart. Kapag naka-set sa \"false\", pipilitin ng property na ito na iguhit ang mga nakasalansang bar mula sa zero line. Sa stacked mode, walang epekto ang property na \"seriesBarDistance\"."
+      }
+    ]
+  }
+}

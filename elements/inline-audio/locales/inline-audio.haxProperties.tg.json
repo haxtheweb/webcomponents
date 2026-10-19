@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Аудиои дохилисатрӣ",
+    "description": "Барои пурра кардани мундариҷаи саҳифа аудиоро дар дохили сатр пахш кунед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Манбаъ",
+        "description": "Файли MP3 ё URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидии корт."
+      },
+      {
+        "property": "shiny",
+        "title": "Дурахшон",
+        "description": "Ба ҷои хокистарӣ заминаи таъкидии равшантарро истифода баред."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Торик",
+        "description": "Реҷаи торикро истифода баред."
+      }
+    ]
+  }
+}

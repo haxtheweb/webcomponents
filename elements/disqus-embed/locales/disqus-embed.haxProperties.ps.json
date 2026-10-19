@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "په پاڼه کې د Disqus تبصرې ځای پر ځای کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "لنډ نوم",
+        "description": "د سایټ لنډ نوم، چې د Disqus د سکرېپټ کوربه ټاکي."
+      },
+      {
+        "property": "pageURL",
+        "title": "د پاڼې URL",
+        "description": "د هغې پاڼې URL چې د تبصرو لړۍ ورسره تړلې ده."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "د پاڼې پېژندونکی",
+        "description": "د پاڼې د تبصرو د لړۍ ځانګړی پېژندونکی."
+      },
+      {
+        "property": "pageTitle",
+        "title": "د پاڼې سرلیک",
+        "description": "د هغې پاڼې سرلیک چې د تبصرو لړۍ ورسره تړلې ده."
+      },
+      {
+        "property": "loadingText",
+        "title": "د بارېدو متن",
+        "description": "هغه متن چې د تبصرو د بارېدو پر مهال اعلانېږي."
+      },
+      {
+        "property": "lang",
+        "title": "ژبه",
+        "description": "د Disqus د انټرفېس لپاره د ژبې کوډ، لکه en."
+      }
+    ]
+  }
+}

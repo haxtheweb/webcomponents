@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Dhoo'insa Ajaa'ibaa",
+    "description": "Sochii dhoo'insaa walqunnamtii qabu, sagalee filannoo wajjin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Hamma",
+        "description": "Hamma dhoo'insaa murteessi.",
+        "options": {
+          "tiny": "Baay'ee xiqqaa",
+          "small": "Xiqqaa",
+          "medium": "Giddugaleessa",
+          "large": "Guddaa",
+          "epic": "Baay'ee guddaa"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Halluu",
+        "description": "Halluu dhoo'insaa murteessi.",
+        "options": {
+          "": "Durtii",
+          "red": "Diimaa",
+          "blue": "Cuquliisa",
+          "purple": "Dhiilgee",
+          "orange": "Burtukaana",
+          "yellow": "Keelloo"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Sagalee Dabalataa",
+        "description": "Sagalee dabalataa banuu."
+      },
+      {
+        "property": "resetSound",
+        "title": "Sagalee Haaromsi",
+        "description": "Yeroo hunda sagalee jalqabaa irraa deebisii jalqabi."
+      },
+      {
+        "property": "image",
+        "title": "Suuraa Dhuunfaa",
+        "description": "URL filannoo suuraa dhoo'insaa dhuunfaaf."
+      },
+      {
+        "property": "sound",
+        "title": "Sagalee Dhuunfaa",
+        "description": "URL filannoo sagalee dabalataa dhuunfaaf."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Kan dhaabbate",
+        "description": "Walqunnamtii hunda dhaabi."
+      }
+    ]
+  }
+}

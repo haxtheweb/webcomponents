@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Litsenziya",
+    "description": "Ishingiz uchun litsenziya koʻrsating."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Iqtibos keltirilgan asar sarlavhasi."
+      },
+      {
+        "property": "source",
+        "title": "Manba havolasi",
+        "description": "Litsenziyalangan asarning manba URL manzili."
+      },
+      {
+        "property": "license",
+        "title": "Litsenziya",
+        "description": "Ushbu asarga qoʻllangan litsenziya."
+      },
+      {
+        "property": "creator",
+        "title": "Muallif",
+        "description": "Ushbu asar muallifi yoki egasi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Manba havolasi",
+        "description": "Qoʻshimcha litsenziya tafsilotlariga havola."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Qoʻshimcha yorliq",
+        "description": "Qoʻshimcha litsenziya tafsilotlari uchun yorliq."
+      }
+    ]
+  }
+}

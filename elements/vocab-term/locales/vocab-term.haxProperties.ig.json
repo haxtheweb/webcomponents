@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Okwu",
+    "description": "Okwu nkọwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Okwu"
+      },
+      {
+        "property": "information",
+        "title": "Nkọwa",
+        "description": "Nkọwa a na-egosi mgbe a pịrị okwu ahụ."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Igbe mpụta",
+        "description": "Gosi nkọwa ahụ n'igbe mpụta kama n'ahịrị."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Njikọ",
+        "description": "Ndepụta njikọ mgbakwunye jikọtara na okwu a."
+      }
+    ]
+  }
+}

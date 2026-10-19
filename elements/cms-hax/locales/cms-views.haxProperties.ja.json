@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ビュー",
+    "description": "バックエンドでレンダリングされる CMS ビュー"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "名前",
+        "description": "CMS のビューの名前"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "表示",
+        "description": "CMS のそのビュー内のディスプレイ"
+      }
+    ]
+  }
+}

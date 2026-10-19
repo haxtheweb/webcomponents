@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Hoton parallax",
+    "description": "Gungurawar hoto ta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Hoto",
+        "description": "hoton da za a sanya a bango"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Wurin kanu",
+        "description": "Wurin rubutun kanu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Ihe ọkpụkpọ akwụkwọ akụrụngwa webụ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Zoo windo",
+        "description": "Zoo windo mmepụta, bara uru mgbe ebumnuche bụ naanị ọnụ ọdụ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Nā manaʻo Disqus",
+    "description": "Hoʻohui me ka lawelawe manaʻo pūnaewele Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Inoa pōkole",
+        "description": "Inoa pōkole o ka waiwai ma disqus"
+      }
+    ]
+  }
+}

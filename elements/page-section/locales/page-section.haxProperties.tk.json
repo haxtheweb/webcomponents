@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sahypa bölümi",
+    "description": "Sahypa mazmuny we ekran esasly ýerleşişler üçin bölüm konteýneri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Dizaýn bezegi",
+        "description": "Baglanyşykly sazlamalary täzeleýän taýýar stil."
+      },
+      {
+        "property": "image",
+        "title": "Surat",
+        "description": "Bölüm üçin fon mediasy."
+      },
+      {
+        "property": "bg",
+        "title": "Fon reňki",
+        "description": "Surat bellenmedik wagty fon reňki."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Aýlaw düwmesi",
+        "description": "Indiki bölüme aýlaýan düwmäni görkez."
+      },
+      {
+        "property": "fold",
+        "title": "Epini görkez",
+        "description": "Bölümiň aşagynda wizual epini görkez."
+      },
+      {
+        "property": "full",
+        "title": "Doly ekran ölçegi",
+        "description": "Tomaşaçynyň ekranynyň beýikligini doldur."
+      },
+      {
+        "property": "filter",
+        "title": "Süzgüç ulan",
+        "description": "Fon suratyna wizual süzgüç ulan."
+      },
+      {
+        "slot": "",
+        "title": "Mazmun",
+        "description": "Bölümiň mazmuny."
+      },
+      {
+        "slot": "entice",
+        "title": "Özüne çekiji",
+        "description": "Goşmaça özüne çekiji mazmun."
+      },
+      {
+        "slot": "buttons",
+        "title": "Düwmeler",
+        "description": "Tekstiň aşagynda görkezilýän düwmeler topary."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Çapa teksti",
+        "description": "Nawigasiýada görkezilýän çapa belgisi."
+      }
+    ]
+  }
+}

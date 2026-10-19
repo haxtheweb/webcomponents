@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Media rimasqa",
+    "description": "Rikch'a rimasqawan, pukyu willaywan, akllanalla willakuywanpas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Rimasqa",
+        "description": "Rimasqapa qillqan."
+      },
+      {
+        "slot": "author",
+        "title": "Qillqaq",
+        "description": "Rimasqapa qillqaqnin."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Qillqaqmanta willakuy",
+        "description": "Qillqaqmanta willakuy."
+      },
+      {
+        "slot": "caption",
+        "title": "Rikch'a willay",
+        "description": "Rikch'apa willaynin."
+      },
+      {
+        "property": "src",
+        "title": "Rikch'a pukyu",
+        "description": "Media rimasqapaq rikch'a willañiqi."
+      },
+      {
+        "property": "alt",
+        "title": "Hukniray qillqa",
+        "description": "Rikch'apaq hukniray qillqa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Tarjetapa rikchachiq llimpin."
+      }
+    ]
+  }
+}

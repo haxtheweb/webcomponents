@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Yaada Disqus fuula irratti galchi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Maqaa gabaabaa",
+        "description": "Maqaa gabaabaa marsariitii, kan keessummeessaa skriptii Disqus murteessu."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL Fuulaa",
+        "description": "URL fuula marii yaadaa itti hidhame."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Eenyummeessaa fuulaa",
+        "description": "Eenyummeessaa addaa marii yaada fuulaa."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Mata-duree fuulaa",
+        "description": "Mata-duree fuula marii yaadaa itti hidhame."
+      },
+      {
+        "property": "loadingText",
+        "title": "Barreeffama fe'iinsaa",
+        "description": "Barreeffama yeroo yaadni fe'amu beeksifamu."
+      },
+      {
+        "property": "lang",
+        "title": "Afaan",
+        "description": "Koodii afaanii fuula Disqus, fkn. en."
+      }
+    ]
+  }
+}

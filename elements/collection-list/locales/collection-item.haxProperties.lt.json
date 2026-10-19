@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Kolekcijos elementas",
+    "description": "Kortelės tipo elementas kolekcijos sąraše su tekstu, nuoroda ir pasirenkama medija."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Nuoroda",
+        "description": "Šios kortelės paskirties URL."
+      },
+      {
+        "property": "image",
+        "title": "Vaizdas",
+        "description": "Fono vaizdas."
+      },
+      {
+        "property": "line1",
+        "title": "1 eilutė",
+        "description": "Pirmoji teksto eilutė."
+      },
+      {
+        "property": "line2",
+        "title": "2 eilutė",
+        "description": "Antroji teksto eilutė."
+      },
+      {
+        "property": "line3",
+        "title": "3 eilutė",
+        "description": "Trečioji teksto eilutė."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Piktograma",
+        "description": "Kortelę vaizduojanti piktograma."
+      },
+      {
+        "property": "saturate",
+        "title": "Sodrumo efektas",
+        "description": "Keisti vaizdo sodrumą, kai naudotojas sufokusuoja."
+      },
+      {
+        "property": "tags",
+        "title": "Žymės",
+        "description": "Kableliais atskirtas žymių sąrašas."
+      },
+      {
+        "property": "accentColor",
+        "title": "Spalva",
+        "description": "Žymių spalva."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatyvusis tekstas",
+        "description": "Nuorodą apibūdinantis alternatyvusis tekstas."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA ya Polaris",
+    "description": "Bişkoka banga çalakiyê ya Polaris a bi mijar nîşan bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Nivîsa bişkokê",
+        "description": "Nivîsa ku di bişkoka banga çalakiyê de tê nîşandan."
+      },
+      {
+        "property": "link",
+        "title": "Girêdan",
+        "description": "URL ya armanc ji bo bişkokê."
+      },
+      {
+        "property": "type",
+        "title": "Guhertox",
+        "description": "Guhertoxa şêweya dîtbarî.",
+        "options": {
+          "primary": "Sereke",
+          "tinted": "Rengkirî",
+          "light": "Ronî"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Şêweya bi xêza derve",
+        "description": "Şêwaza bi xêza derve çalak bike."
+      },
+      {
+        "property": "filled",
+        "title": "Şêweya tijî",
+        "description": "Şêwaza tijî çalak bike."
+      }
+    ]
+  }
+}

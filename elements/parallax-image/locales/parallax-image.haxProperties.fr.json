@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Image en parallaxe",
+    "description": "Image défilante"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Image",
+        "description": "image utilisée en arrière-plan"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Zone de titre",
+        "description": "Zone de texte du titre"
+      }
+    ]
+  }
+}

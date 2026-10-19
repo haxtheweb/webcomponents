@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Sampl cod",
+    "description": "Sampl o god wedi'i amlygu yn y dudalen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Amlygu cod",
+        "description": "Amlygu cystrawen i'w gymhwyso i'r ardal god",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Data JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Botwm copïo i'r clipfwrdd",
+        "description": "botwm yn y gornel dde uchaf sy'n dweud copïo i'r clipfwrdd"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Dechrau amlygu",
+        "description": "Rhif y llinell i ddechrau amlygu"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Diwedd amlygu",
+        "description": "Llinell i orffen amlygu arni"
+      }
+    ]
+  }
+}

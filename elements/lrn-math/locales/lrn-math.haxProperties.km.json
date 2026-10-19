@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "គណិតវិទ្យា",
+    "description": "បង្ហាញគណិតវិទ្យាតាមរបៀបស្អាត។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "គណិតវិទ្យា",
+        "description": "បញ្ចូលសមីការជា LaTeX"
+      }
+    ]
+  }
+}

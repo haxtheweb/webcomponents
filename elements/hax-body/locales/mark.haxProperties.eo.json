@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Emfazo",
+    "description": "Emfazi enlinian tekston."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teksto",
+        "description": "Emfazita teksto."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Знак заслугі",
+    "description": "Візуальны значок, які сведчыць пра набыццё навыку."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Назва значка",
+        "description": "Назва, што паказваецца на значку."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Выява значка",
+        "description": "URL выявы для значка."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Падрабязнасці значка",
+        "description": "Падрабязнасці пра значок."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Гіперспасылка",
+        "description": "Спасылка, звязаная са значком."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Навыкі значка",
+        "description": "Навыкі, што паказваюцца на значку."
+      },
+      {
+        "property": "skill",
+        "title": "Навык (OER Schema)",
+        "description": "OER Schema: навык, набыты пасля выканання гэтай навучальнай мэты."
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "קאַרטל",
+    "description": "קאַרטל־קאָמפּאָנענט סטיליזירט מיט דער DDD־דיזײַן־סיסטעם."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "בילד",
+        "description": "אָפּציאָנעלער בילד."
+      },
+      {
+        "property": "alt",
+        "title": "Alt פֿון בילד",
+        "description": "אַלטערנאַטיווער טעקסט וואָס באַשרײַבט דאָס בילד."
+      },
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "טיטל פֿון קאַרטל."
+      },
+      {
+        "slot": "",
+        "title": "אינהאַלט",
+        "description": "אינהאַלט־געגנט פֿון קאַרטל."
+      },
+      {
+        "property": "href",
+        "title": "לינק",
+        "description": "URL פֿון קנעפּל־לינק."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "באַצייכענונג",
+        "description": "באַצייכענונג פֿון קנעפּל."
+      },
+      {
+        "property": "noArrow",
+        "title": "אָן פֿײַל",
+        "description": "באַהאַלטן דעם פֿײַל פֿון קנעפּל."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "לינק: ציל",
+        "description": "וווּ צו עפֿענען דעם לינק.",
+        "options": {
+          "": "זעלבער פֿענצטער",
+          "_blank": "נײַער פֿענצטער - _blank",
+          "_top": "אייבערשטער פֿענצטער - _top",
+          "_parent": "עלטערן־פֿענצטער - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "לינק: rel",
+        "description": "באַציִונג צווישן דער פֿאַרלינקטער רעסורס און דעם איצטיקן דאָקומענט."
+      }
+    ]
+  }
+}

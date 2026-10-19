@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Ulashish URL manzilidan Discord hamjamiyatlarini joylashtirish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Resurs URL",
+        "description": "Resurs URL."
+      },
+      {
+        "property": "height",
+        "title": "Balandlik",
+        "description": "Kontent ramkasi balandligi."
+      },
+      {
+        "property": "width",
+        "title": "Kenglik",
+        "description": "Kontent ramkasi kengligi."
+      }
+    ]
+  }
+}

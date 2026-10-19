@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "કોડ નમૂનો",
+    "description": "પેજમાં હાઇલાઇટ કરેલો કોડનો નમૂનો"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "કોડ હાઇલાઇટિંગ",
+        "description": "કોડ વિસ્તાર પર લાગુ કરવાનું સિન્ટેક્સ હાઇલાઇટિંગ",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON ડેટા",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "ક્લિપબોર્ડ પર કૉપિ કરો બટન",
+        "description": "ઉપર જમણી બાજુનું બટન જે ક્લિપબોર્ડ પર કૉપિ કરો કહે છે"
+      },
+      {
+        "property": "highlightStart",
+        "title": "હાઇલાઇટ શરૂઆત",
+        "description": "હાઇલાઇટિંગ શરૂ કરવા માટેનો લાઇન નંબર"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "હાઇલાઇટ અંત",
+        "description": "હાઇલાઇટિંગ સમાપ્ત કરવા માટેની લાઇન"
+      }
+    ]
+  }
+}

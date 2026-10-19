@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Starvsleiklutur",
+    "description": "Ein einstakur leiklutur í einum felagsskapi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Heiti"
+      },
+      {
+        "property": "startDate",
+        "title": "Byrjanardagur"
+      },
+      {
+        "property": "endDate",
+        "title": "Endadagur (valfrítt)"
+      },
+      {
+        "property": "skills",
+        "title": "Tilknýttir førleikar",
+        "description": "Vel +-knøttin fyri at byrja at leggja førleikar afturat"
+      }
+    ]
+  }
+}

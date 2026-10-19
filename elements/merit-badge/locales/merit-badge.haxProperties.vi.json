@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Huy hiệu thành tích",
+    "description": "Huy hiệu trực quan thể hiện việc đạt được một kỹ năng."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Tiêu đề huy hiệu",
+        "description": "Tiêu đề hiển thị trên huy hiệu."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Hình ảnh huy hiệu",
+        "description": "URL hình ảnh của huy hiệu."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Chi tiết huy hiệu",
+        "description": "Thông tin chi tiết về huy hiệu."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Siêu liên kết",
+        "description": "Liên kết gắn với huy hiệu."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Kỹ năng của huy hiệu",
+        "description": "Các kỹ năng hiển thị trên huy hiệu."
+      },
+      {
+        "property": "skill",
+        "title": "Kỹ năng (OER Schema)",
+        "description": "OER Schema: kỹ năng đạt được khi hoàn thành mục tiêu học tập này."
+      }
+    ]
+  }
+}

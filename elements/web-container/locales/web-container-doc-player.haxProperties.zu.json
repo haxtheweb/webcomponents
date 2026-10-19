@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Isidlali semibhalo sezingxenye zewebhu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Fihla iwindi",
+        "description": "Fihla iwindi lokukhipha, kuyasiza uma inhloso kuyitheminali kuphela"
+      }
+    ]
+  }
+}

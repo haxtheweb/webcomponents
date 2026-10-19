@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Liste numérotée",
+    "description": "Créer une liste numérotée."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Style de numérotation",
+        "description": "Style utilisé pour la numérotation de la liste ordonnée.",
+        "options": {
+          "": "Par défaut (décimal)",
+          "list-decimal-leading-zero": "Décimal avec zéro initial (01, 02, 03)",
+          "list-lower-alpha": "Lettres minuscules (a, b, c)",
+          "list-upper-alpha": "Lettres majuscules (A, B, C)",
+          "list-lower-roman": "Chiffres romains minuscules (i, ii, iii)",
+          "list-upper-roman": "Chiffres romains majuscules (I, II, III)"
+        }
+      }
+    ]
+  }
+}

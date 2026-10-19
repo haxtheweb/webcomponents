@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tag / pil",
+    "description": "Een compact pilvormig label met optionele accentkleur, annuleerknop of schakelaar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Label",
+        "description": "Tekst in de pil."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Naam van de SimpleColors-accentkleur voor de achtergrond van de pil.",
+        "options": {
+          "": "-- standaard --",
+          "red": "Rood",
+          "pink": "Roze",
+          "purple": "Paars",
+          "deep-purple": "Dieppaars",
+          "indigo": "Indigo",
+          "blue": "Blauw",
+          "light-blue": "Lichtblauw",
+          "cyan": "Cyaan",
+          "teal": "Blauwgroen",
+          "green": "Groen",
+          "light-green": "Lichtgroen",
+          "lime": "Limoen",
+          "yellow": "Geel",
+          "amber": "Amber",
+          "orange": "Oranje",
+          "deep-orange": "Dieporanje",
+          "brown": "Bruin",
+          "blue-grey": "Blauwgrijs",
+          "grey": "Grijs"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatische accentkleur",
+        "description": "Leid de accentkleur automatisch af uit de labeltekst."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Annuleerknop",
+        "description": "Toon een verwijder-/annuleerpictogramknop in de pil."
+      },
+      {
+        "property": "readonly",
+        "title": "Alleen-lezen",
+        "description": "Verberg de annuleerknop zodat de pil alleen ter weergave is."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Schakelt",
+        "description": "Laat de pil aan/uit schakelen wanneer op de knop wordt geklikt."
+      },
+      {
+        "property": "toggled",
+        "title": "Ingeschakeld",
+        "description": "Of de pil momenteel ingeschakeld is."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Pictogram bij ingeschakeld",
+        "description": "Pictogram dat wordt getoond als de pil ingeschakeld is."
+      },
+      {
+        "property": "disabled",
+        "title": "Uitgeschakeld",
+        "description": "Interactie met de pil uitschakelen."
+      }
+    ]
+  }
+}

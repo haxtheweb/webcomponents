@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Hoʻoiho pepa hana",
+    "description": "He pihi no ka hōʻike ʻana i nā faila i loaʻa no ka hoʻoiho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Poʻo inoa",
+        "description": "Ke poʻo inoa o ka hoʻoiho."
+      },
+      {
+        "property": "link",
+        "title": "Loulou",
+        "description": "Ka loulou no ka hoʻoiho."
+      }
+    ]
+  }
+}

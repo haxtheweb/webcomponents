@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro tarjeta",
+    "description": "Retro rikch'ayniyuq sapalla tarjeta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Suti",
+        "description": "Tarjetap hatun sutin."
+      },
+      {
+        "property": "url",
+        "description": "Tarjeta ñit'isqa kaptin kichanapaq URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "Uku suti",
+        "description": "Tarjetap uku sutin."
+      },
+      {
+        "property": "tags",
+        "title": "Tagkuna",
+        "description": "Comakunawan t'aqasqa etiquetakuna."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Media pukyu",
+        "description": "Ñawpaq media pukyu."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Hanaqninpi kaptin pukyu",
+        "description": "Tarjetap hanaqninpi kaptin utaq hap'ichisqa kaptin rikuchisqa media pukyu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Llapan tarjetapi churasqa accent llimpi."
+      },
+      {
+        "property": "dark",
+        "title": "Tutayaq",
+        "description": "Tuta rikch'ay saphi llimpikunata llamk'achiy."
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Картка",
+    "description": "Картка з неабавязковым акцэнтным афармленнем."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Загаловак",
+        "description": "Загаловак карткі."
+      },
+      {
+        "slot": "subheading",
+        "title": "Падзагаловак",
+        "description": "Неабавязковы падзагаловак карткі."
+      },
+      {
+        "slot": "content",
+        "title": "Змесціва",
+        "description": "Змесціва карткі."
+      },
+      {
+        "slot": "footer",
+        "title": "Ніжні калантытул",
+        "description": "Неабавязковы ніжні калантытул карткі."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Выява",
+        "description": "Неабавязковая выява"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Альтэрнатыўны тэкст выявы",
+        "description": "Альтэрнатыўны тэкст, які апісвае выяву для чытачоў экрана. Пакідайце пустым, толькі калі выява чыста дэкаратыўная."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Гарызантальнае выраўноўванне выявы",
+        "options": {
+          "left": "злева",
+          "center": "па цэнтры",
+          "right": "справа"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Вертыкальнае выраўноўванне выявы",
+        "options": {
+          "top": "уверсе",
+          "center": "па цэнтры",
+          "bottom": "унізе"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Неабавязковы акцэнтны колер."
+      },
+      {
+        "property": "dark",
+        "title": "Цёмная тэма",
+        "description": "Уключыць цёмную тэму"
+      },
+      {
+        "property": "horizontal",
+        "title": "Гарызантальная",
+        "description": "Гарызантальная арыентацыя?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Акцэнт загалоўка",
+        "description": "Ужыць акцэнтны колер да загалоўка?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Акцэнт фону",
+        "description": "Ужыць акцэнтны колер да фону карткі?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Без акцэнтнай рамкі",
+        "description": "Прыбраць акцэнтную рамку?"
+      },
+      {
+        "property": "flat",
+        "title": "Плоская",
+        "description": "Прыбраць цень?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Кут",
+        "description": "Змесціва для кута карткі."
+      }
+    ]
+  }
+}

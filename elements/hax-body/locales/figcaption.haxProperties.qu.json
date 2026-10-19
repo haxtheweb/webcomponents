@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Siq'ip willakuy qillqan",
+    "description": "Siq'ipaq willakuy qillqa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Rikch'a willay",
+        "description": "Siq'ip urayninpi rikuchisqa qillqa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Leo i ka laina",
+    "description": "E hoʻokani i ka leo ma ka laina e kākoʻo ai i ka ʻikepili o ka ʻaoʻao."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kumu",
+        "description": "Faila MP3 a URL paha."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu Kiko",
+        "description": "Waihoʻoluʻu kiko o ke kāleka."
+      },
+      {
+        "property": "shiny",
+        "title": "ʻAlohilohi",
+        "description": "E hoʻohana i kahi kāʻei hope kiko māmā ma kahi o ka hina."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Pōuliuli",
+        "description": "E hoʻohana i ke ʻano pōuliuli."
+      }
+    ]
+  }
+}

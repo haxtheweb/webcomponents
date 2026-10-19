@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "I-Iframe",
+    "description": "Shumeka okuqukethwe kwewebhu kwangaphandle ku-iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "I-URL Yensiza",
+        "description": "I-URL yensiza."
+      },
+      {
+        "property": "height",
+        "title": "Ubude",
+        "description": "Ubude be-iframe."
+      },
+      {
+        "property": "width",
+        "title": "Ububanzi",
+        "description": "Ububanzi be-iframe."
+      }
+    ]
+  }
+}

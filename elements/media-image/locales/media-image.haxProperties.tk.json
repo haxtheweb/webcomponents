@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Kämilleşdirilen surat",
+    "description": "Suratlary dürli goşmaçalar bilen görkezmegiň usuly."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çeşme",
+        "description": "Suratyň URL-i."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatiw tekst",
+        "description": "Suraty görüş ukyby bolmadyk ulanyjylara düşündirýän tekst."
+      },
+      {
+        "property": "link",
+        "title": "Baglanyşyk",
+        "description": "Suraty URL-e baglanyşdyr"
+      },
+      {
+        "property": "card",
+        "title": "Kartoçka",
+        "description": "Galdyrylan kart görnüşini bermek üçin kölege ulan."
+      },
+      {
+        "property": "box",
+        "title": "Guty",
+        "description": "Suratyň daşyna görünýän guty ulan."
+      },
+      {
+        "property": "offset",
+        "title": "Süýşme",
+        "description": "Surata çepe ýa-da saga süýşme ulan.",
+        "options": {
+          "none": "ýok",
+          "wide": "giň",
+          "narrow": "dar"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Salgylanma",
+        "description": "Surat üçin salgylanma."
+      },
+      {
+        "property": "caption",
+        "title": "Ýazgy",
+        "description": "Surat üçin ýazgy."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Şekiliň ady",
+        "description": "Şekil belligi üçin at."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Şekiliň düşündirişi",
+        "description": "Şekil belligi üçin düşündiriş."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Kiçi surat",
+        "description": "Kiçi suratyň çeşmesi. Kiçi suraty görkezýär, ýöne doly çeşmäni modal penjirede açýar."
+      },
+      {
+        "property": "round",
+        "title": "Tegelek surat",
+        "description": "Suratyň görnüşini tegelek şekilde kesýär."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Surat modalyny öçür",
+        "description": "Basylanda suratyň surat gözden geçiriji dialogda açylmagyny öçür."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Markdown hökmünde görkez",
+        "description": "Ýazgyny we salgylanmany markdown hökmünde görkez."
+      }
+    ]
+  }
+}

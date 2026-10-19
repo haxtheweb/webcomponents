@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Dîtbarkera MIDI",
+    "description": "MIDI bi dîtbarkirinê di çarçoveyê de lê bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çavkanî",
+        "description": "URL ya pela ku were lêdan."
+      },
+      {
+        "property": "visualizer",
+        "title": "Dîtbarkirin",
+        "description": "Şêweya dîtbarkirinê ji bo pela muzîkê.",
+        "options": {
+          "staff": "Xetên notayan",
+          "piano-roll": "Rola piyanoyê",
+          "waterfall": "Piyano + şelale"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Şelaleyê veşêre",
+        "description": "Notayên şelaleyê di dîtbarkirina piyanoyê de veşêre."
+      }
+    ]
+  }
+}

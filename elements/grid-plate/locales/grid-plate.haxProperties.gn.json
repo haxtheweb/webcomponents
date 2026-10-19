@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ysyry ñemohenda",
+    "description": "Emohenda mba'e ysyry mbykymíme"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Ysyry Ñemohenda",
+        "description": "Reko ojehechauka hag̃ua ko'ã mba'e (ikatu oñemoambue mba'erechaha michĩvape)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Embogue jeguerovakuaa",
+        "description": "Ejopy kora eñongatu hag̃ua ysyry mba'erechaha tuichavévape ha katu oñembohyruguái gueteri mba'erechaha michĩvévape"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Mba'e Pa'ũ Pypegua",
+        "description": "Pa'ũ peteĩ teĩ mba'e ryepýpe"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Mba'e rembe'y",
+        "description": "Pa'ũ mba'e mbytépe"
+      }
+    ]
+  }
+}

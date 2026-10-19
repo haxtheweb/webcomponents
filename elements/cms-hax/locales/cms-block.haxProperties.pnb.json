@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS بلاک",
+    "description": "بیک اینڈ تے بݨیا CMS بلاک"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "ماڈیول",
+        "description": "ساڈے CMS توں لوڈ کرن والا ماڈیول"
+      },
+      {
+        "property": "blockDelta",
+        "title": "ڈیلٹا",
+        "description": "ساڈے CMS توں لوڈ کرن والے بلاک دا ڈیلٹا"
+      }
+    ]
+  }
+}

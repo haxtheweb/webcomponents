@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Erweitertes Bild",
+    "description": "Eine Möglichkeit, Bilder mit verschiedenen Erweiterungen darzustellen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quelle",
+        "description": "Die URL des Bildes."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativtext",
+        "description": "Text, der das Bild für blinde und sehbehinderte Benutzer beschreibt."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Das Bild mit einer URL verlinken"
+      },
+      {
+        "property": "card",
+        "title": "Karte",
+        "description": "Einen Schlagschatten anwenden, damit es wie eine erhabene Karte wirkt."
+      },
+      {
+        "property": "box",
+        "title": "Kasten",
+        "description": "Einen sichtbaren Kasten um das Bild anwenden."
+      },
+      {
+        "property": "offset",
+        "title": "Versatz",
+        "description": "Einen Versatz nach links oder rechts auf das Bild anwenden.",
+        "options": {
+          "none": "keiner",
+          "wide": "breit",
+          "narrow": "schmal"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Quellenangabe",
+        "description": "Quellenangabe für das Bild."
+      },
+      {
+        "property": "caption",
+        "title": "Bildunterschrift",
+        "description": "Bildunterschrift für das Bild."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Abbildungstitel",
+        "description": "Titel für die Abbildungsbeschriftung."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Abbildungsbeschreibung",
+        "description": "Beschreibung für die Abbildungsbeschriftung."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Vorschaubild",
+        "description": "Quelle des Vorschaubilds. Zeigt das Vorschaubild, öffnet aber die volle Quelle in einem Dialog."
+      },
+      {
+        "property": "round",
+        "title": "Rundes Bild",
+        "description": "Beschneidet die Darstellung des Bildes zu einem Kreis."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Bilddialog deaktivieren",
+        "description": "Verhindert, dass ein Klick das Bild in einem Bildinspektor-Dialog öffnet."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Als Markdown darstellen",
+        "description": "Bildunterschrift und Quellenangabe als Markdown darstellen."
+      }
+    ]
+  }
+}

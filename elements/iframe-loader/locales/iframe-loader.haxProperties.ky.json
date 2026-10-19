@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Тышкы веб мазмунду iframe ичине кыстаруу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ресурстун URL дареги",
+        "description": "Ресурстун URL дареги."
+      },
+      {
+        "property": "height",
+        "title": "Бийиктиги",
+        "description": "Iframe бийиктиги."
+      },
+      {
+        "property": "width",
+        "title": "Туурасы",
+        "description": "Iframe туурасы."
+      }
+    ]
+  }
+}

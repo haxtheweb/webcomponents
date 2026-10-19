@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Thẻ ghi nhớ",
+    "description": "Luyện tập khái niệm bằng thẻ ghi nhớ hai mặt trước và sau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Mặt trước của thẻ",
+        "description": "Văn bản hoặc câu hỏi mặt trước."
+      },
+      {
+        "slot": "back",
+        "title": "Mặt sau của thẻ",
+        "description": "Câu trả lời mong đợi."
+      },
+      {
+        "property": "imgSource",
+        "title": "Nguồn hình ảnh",
+        "description": "Tệp hình ảnh dùng cho thẻ. Ghi đè Từ khóa hình ảnh."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Loại hành động",
+        "description": "OER Schema: loại hành động mà bài luyện tập này bao gồm (ví dụ: Đọc, Viết, Làm, Nghiên cứu, Nghe, Xem, Suy ngẫm, Thảo luận, Quan sát, Trình bày, Đánh giá)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mục tiêu học tập",
+        "description": "OER Schema: ID hoặc URL của mục tiêu học tập mà bài luyện tập này hỗ trợ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tối",
+        "description": "Dùng chế độ tối."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nhấn của thẻ."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Từ khóa hình ảnh",
+        "description": "Từ khóa hình ảnh ngẫu nhiên. Bị ghi đè bởi Nguồn hình ảnh."
+      }
+    ]
+  }
+}

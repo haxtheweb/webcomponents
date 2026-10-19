@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Гади рәсем",
+    "description": "Рәсемнәрне гади параметрлар белән үзгәртергә."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Чыганак",
+        "description": "Рәсем чыганагының URL адресы."
+      },
+      {
+        "property": "height",
+        "title": "Биеклек",
+        "description": "Рәсемнең өстәмә биеклеге."
+      },
+      {
+        "property": "width",
+        "title": "Киңлек",
+        "description": "Рәсемнең өстәмә киңлеге."
+      },
+      {
+        "property": "alt",
+        "title": "Alt текст",
+        "description": "Экран укыгычлары һәм яхшырак SEO өчен файдалы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Сыйфат",
+        "description": "Ясаганда рәсем сыйфаты (JPEG өчен генә)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Алу өстенлеге",
+        "description": "Заманча браузерлар өчен җитештерүчәнлек киңәше.",
+        "options": {
+          "auto": "Автоматик",
+          "high": "Югары",
+          "low": "Түбән"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Декодлау ысулы",
+        "description": "Заманча браузерларда рәсем күрсәтү өчен җитештерүчәнлек киңәше.",
+        "options": {
+          "auto": "Автоматик",
+          "async": "Асинхрон"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Websteewerjefte",
+    "description": "In dynamysk blok dat websteegegevens opfreget en toant op basis fan kritearia"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Werjefte-URL",
+        "description": "Queryparameters foar de gegevensfeed fan de werjefte. Jo kinne dit krije fan it Werjeften-dashboard."
+      },
+      {
+        "property": "renderer",
+        "title": "Werjeftemodus",
+        "description": "Hoe't de resultaten fan de werjefte werjûn wurde moatte"
+      },
+      {
+        "property": "entity",
+        "title": "Entiteitstype",
+        "description": "Entiteitstype brûkt foar it parsen fan it antwurd",
+        "options": {
+          "": "Standert (items)",
+          "item": "Item",
+          "page": "Side",
+          "file": "Triem",
+          "tag": "Tag",
+          "block": "Blok",
+          "view": "Werjefte",
+          "theme": "Tema",
+          "region": "Regio",
+          "customElement": "Oanpast elemint"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Websteewerjefte ferbrekke",
+        "description": "Omsette nei statyske ynhâld foar direkt bewurkjen; hâldt op mei automatysk bywurkjen fan de boarne."
+      }
+    ]
+  }
+}

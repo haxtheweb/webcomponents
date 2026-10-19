@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Externen Webinhalt an engem iframe abannen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ressource-URL",
+        "description": "Ressource-URL."
+      },
+      {
+        "property": "height",
+        "title": "Héicht",
+        "description": "Héicht vum iframe."
+      },
+      {
+        "property": "width",
+        "title": "Breet",
+        "description": "Breet vum iframe."
+      }
+    ]
+  }
+}

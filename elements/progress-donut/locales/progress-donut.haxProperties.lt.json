@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Pažangos žiedas",
+    "description": "Pažangos žiedinė diagrama"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Elemento pavadinimas"
+      },
+      {
+        "property": "desc",
+        "title": "Aprašymas",
+        "description": "Prieinamas išsamus aprašas"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Vaizdo šaltinis",
+        "description": "Paveikslėlio žiedo viduje šaltinis."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alternatyvusis paveikslėlio tekstas",
+        "description": "Alternatyvusis paveikslėlio tekstas."
+      },
+      {
+        "property": "animated",
+        "title": "Animuotas",
+        "description": "Ar pažanga animuojama pirmą kartą įkeliant"
+      },
+      {
+        "property": "complete",
+        "title": "Baigta",
+        "description": "Užbaigtų reikšmių masyvas."
+      },
+      {
+        "property": "total",
+        "title": "Iš viso",
+        "description": "Bendra suma, kai visi elementai užbaigti."
+      },
+      {
+        "property": "startAngle",
+        "title": "Pradžios kampas",
+        "description": "Žiedo kampas, nuo kurio prasideda pažanga"
+      }
+    ]
+  }
+}

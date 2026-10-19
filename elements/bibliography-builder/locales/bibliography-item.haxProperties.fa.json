@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "مورد کتاب‌شناسی",
+    "description": "موردی که یک استناد را در کتاب‌شناسی نشان می‌دهد و از قالب‌های متعدد و گزینه‌های خروجی پشتیبانی می‌کند."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "نوع",
+        "description": "نوع استناد",
+        "options": {
+          "web": "وب",
+          "journal": "نشریه",
+          "book": "کتاب"
+        }
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنوان مورد"
+      },
+      {
+        "property": "authors",
+        "title": "نویسنده(ها)",
+        "description": "رویدادهای خط زمانی"
+      },
+      {
+        "property": "publisher",
+        "title": "ناشر",
+        "description": "وب‌سایت اصلی"
+      }
+    ]
+  }
+}

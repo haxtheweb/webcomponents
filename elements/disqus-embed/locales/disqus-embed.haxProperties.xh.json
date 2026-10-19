@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Faka izimvo ze-Disqus ekhasini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Igama elifutshane",
+        "description": "Igama elifutshane lesayithi, elimisela umamkeli weskripthi se-Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "I-URL yekhasi",
+        "description": "I-URL yekhasi elinxulunyaniswe nomsonto wezimvo."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Isazisi sekhasi",
+        "description": "Isazisi esikhethekileyo somsonto wezimvo wekhasi."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Isihloko sekhasi",
+        "description": "Isihloko sekhasi elinxulunyaniswe nomsonto wezimvo."
+      },
+      {
+        "property": "loadingText",
+        "title": "Umbhalo wokulayisha",
+        "description": "Umbhalo obhengezwayo ngelixa izimvo zilayisha."
+      },
+      {
+        "property": "lang",
+        "title": "Ulwimi",
+        "description": "Ikhowudi yolwimi yojongano lwe-Disqus, umz. en."
+      }
+    ]
+  }
+}

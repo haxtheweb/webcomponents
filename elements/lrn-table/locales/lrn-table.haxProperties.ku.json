@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tabloya CSV",
+    "description": "Ev dikare ji pela CSV tabloyekê çêke, çi cihê ku be."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Çavkanî",
+        "description": "URL ya vê pela CSV."
+      },
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê tabloya ku dê were çêkirin."
+      },
+      {
+        "property": "description",
+        "title": "Danasîn",
+        "description": "Danasîneke berfirehtir ji bo baştirkirina gihîştbariya daneyên tabloyê."
+      }
+    ]
+  }
+}

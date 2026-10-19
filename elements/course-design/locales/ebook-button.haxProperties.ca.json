@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Botó de llibre electrònic",
+    "description": "Un botó que enllaça a un llibre electrònic."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "El títol del botó."
+      },
+      {
+        "property": "link",
+        "title": "Enllaç",
+        "description": "L'enllaç al qual redirigir en fer clic."
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona que representa aquest enllaç"
+      }
+    ]
+  }
+}

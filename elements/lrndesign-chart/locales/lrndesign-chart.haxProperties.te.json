@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "description": "CSV ఆధారంగా యాక్సెసిబుల్ చార్ట్‌ను సృష్టిస్తుంది."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "ఐచ్ఛిక యాక్సెంట్ రంగు."
+      },
+      {
+        "property": "dark",
+        "title": "డార్క్ థీమ్",
+        "description": "డార్క్ థీమ్‌ను ప్రారంభించండి"
+      },
+      {
+        "property": "dataSource",
+        "title": "CSV ఫైల్",
+        "description": "CSV నుండి డేటాను లోడ్ చేయండి."
+      },
+      {
+        "slot": "heading",
+        "title": "చార్ట్ శీర్షిక",
+        "description": "మీ చార్ట్ కోసం యాక్సెసిబుల్ ప్రత్యామ్నాయ వచనం."
+      },
+      {
+        "slot": "desc",
+        "title": "చార్ట్ వివరణ",
+        "description": "మీ చార్ట్ యొక్క యాక్సెసిబుల్ వివరణ."
+      },
+      {
+        "property": "scale",
+        "title": "స్కేల్ పేరు",
+        "description": "చార్ట్ యొక్క వెడల్పు:ఎత్తు నిష్పత్తి ($ct-scales మరియు $ct-scales-names కోసం https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings చూడండి).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "reverseData",
+        "title": "డేటాను తిప్పండి",
+        "description": "లేబుల్‌లు, సిరీస్ క్రమం అలాగే మొత్తం సిరీస్ డేటా శ్రేణులతో సహా డేటాను తిప్పండి."
+      },
+      {
+        "slot": "",
+        "title": "HTML పట్టిక",
+        "description": "ఐచ్ఛికం: డేటాను HTML పట్టికగా లోడ్ చేయండి."
+      }
+    ]
+  }
+}

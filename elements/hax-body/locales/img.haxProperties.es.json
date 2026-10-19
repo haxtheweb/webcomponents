@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Imagen básica",
+    "description": "Elemento de imagen básico."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Origen",
+        "description": "URL de la imagen."
+      },
+      {
+        "attribute": "alt",
+        "title": "Texto alternativo",
+        "description": "Texto alternativo para accesibilidad y SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Altura",
+        "description": "Altura en píxeles. Déjalo en blanco para usar el tamaño natural."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Carga de la imagen",
+        "description": "Elige cuándo se carga la imagen.",
+        "options": {
+          "lazy": "Cargar cuando sea visible",
+          "auto": "Automática"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Fuentes adaptables (srcset)",
+        "description": "Enumera las URL de las imágenes y sus descriptores (p. ej., 480w o 2x) para que los navegadores elijan el mejor tamaño para la pantalla. Se almacena como el atributo estándar srcset."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Contingut remot",
+    "description": "Reutilitza contingut d'un lloc en un altre."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Adreça del lloc",
+        "description": "Enganxa l'adreça d'on vols referenciar el contingut si no és el lloc actual"
+      },
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Element que es mostrarà per a les dades de l'enllaç / títol"
+      },
+      {
+        "property": "breakreference",
+        "title": "Trenca la referència",
+        "description": "Marcar aquesta casella copia el contingut remot per editar-lo localment, però en suprimeix l'associació. Ja no rebrà actualitzacions quan s'actualitzi el material de referència."
+      },
+      {
+        "property": "showTitle",
+        "title": "Mostra el títol",
+        "description": "Activa-ho per mostrar el títol del recurs que es visualitza"
+      }
+    ]
+  }
+}

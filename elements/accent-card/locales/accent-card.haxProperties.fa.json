@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "کارت",
+    "description": "کارتی با سبک تأکیدی اختیاری."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "سرعنوان",
+        "description": "سرعنوانی برای کارت."
+      },
+      {
+        "slot": "subheading",
+        "title": "زیرعنوان",
+        "description": "زیرعنوان اختیاری برای کارت."
+      },
+      {
+        "slot": "content",
+        "title": "محتوا",
+        "description": "محتوای کارت."
+      },
+      {
+        "slot": "footer",
+        "title": "پانویس",
+        "description": "پانویس اختیاری برای کارت."
+      },
+      {
+        "property": "imageSrc",
+        "title": "تصویر",
+        "description": "تصویر اختیاری"
+      },
+      {
+        "property": "imageAlt",
+        "title": "متن جایگزین تصویر",
+        "description": "متن جایگزینی که تصویر را برای صفحه‌خوان‌ها توصیف می‌کند. فقط اگر تصویر صرفاً تزئینی است خالی بگذارید."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "تراز افقی تصویر",
+        "options": {
+          "left": "چپ",
+          "center": "وسط",
+          "right": "راست"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "تراز عمودی تصویر",
+        "options": {
+          "top": "بالا",
+          "center": "وسط",
+          "bottom": "پایین"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی اختیاری."
+      },
+      {
+        "property": "dark",
+        "title": "پوستهٔ تیره",
+        "description": "فعال کردن پوسته تاریک"
+      },
+      {
+        "property": "horizontal",
+        "title": "افقی",
+        "description": "جهت افقی؟"
+      },
+      {
+        "property": "accentHeading",
+        "title": "تأکید سرعنوان",
+        "description": "رنگ تأکیدی روی سرعنوان اعمال شود؟"
+      },
+      {
+        "property": "accentBackground",
+        "title": "تأکید پس‌زمینه",
+        "description": "رنگ تأکیدی روی پس‌زمینه کارت اعمال شود؟"
+      },
+      {
+        "property": "noBorder",
+        "title": "بدون تأکید حاشیه",
+        "description": "تأکید حاشیه حذف شود؟"
+      },
+      {
+        "property": "flat",
+        "title": "تخت",
+        "description": "سایه کادر حذف شود؟"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "گوشه",
+        "description": "محتوای گوشه کارت."
+      }
+    ]
+  }
+}

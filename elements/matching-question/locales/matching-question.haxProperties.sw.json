@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Swali la Kuoanisha",
+    "description": "Shughuli ya kuburuta na kudondosha inayooanisha vidokezo na majibu yao sahihi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Swali",
+        "description": "Swali kwa watumiaji. Weka alama kwenye maeneo ya kudondosha, kisha orodhesha majibu hadi eneo linalofuata."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Muundo wa kupanga alama",
+        "description": "OER Schema: muundo wa kupanga alama wa tathmini hii (k.m. pointi, herufi, asilimia, ukamilishaji)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lengo la kujifunza",
+        "description": "OER Schema: lengo la kujifunza linalohusiana na tathmini hii."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kozi",
+        "description": "OER Schema: kozi ambayo tathmini hii imekusudiwa."
+      },
+      {
+        "property": "answers",
+        "title": "Majibu"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jina la jaribio",
+        "description": "Jina la jaribio linalotumika kwa utambulisho wa xAPI katika mifumo ya uchanganuzi."
+      }
+    ]
+  }
+}

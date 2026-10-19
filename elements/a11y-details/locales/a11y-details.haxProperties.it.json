@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Pulsante dettagli accessibile",
+    "description": "Divulgazione progressiva accessibile con details e summary"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Pulsante",
+        "description": "Riepilogo del contenuto se nascosto, ad es. \"info\", \"metadati\", ecc."
+      },
+      {
+        "slot": "details",
+        "title": "Descrizione",
+        "description": "Descrizione dettagliata che può essere nascosta o mostrata"
+      },
+      {
+        "slot": "",
+        "title": "Pulsante descrizione",
+        "description": "Valore predefinito per il pulsante che mostra/nasconde il testo della descrizione, ad es. \"info\", \"metadati\", ecc."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Testo di riepilogo facoltativo quando i dettagli sono aperti"
+      },
+      {
+        "property": "closeText",
+        "title": "Testo di riepilogo facoltativo quando i dettagli sono chiusi"
+      }
+    ]
+  }
+}

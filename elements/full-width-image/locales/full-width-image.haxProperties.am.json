@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "የምስል ክፍል",
+    "description": "የገጽ ክፍልን የሚከፍል ሙሉ ስፋት ያለው ምስል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "የጀርባ ምስል።"
+      },
+      {
+        "property": "caption",
+        "description": "የጽሑፍ ርዕስ።"
+      }
+    ]
+  }
+}

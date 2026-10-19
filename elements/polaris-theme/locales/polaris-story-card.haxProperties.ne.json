@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris कथा कार्ड",
+    "description": "पृष्ठभूमि तस्बिर, स्तम्भ लेबल र मुख्य शीर्षकसहित Polaris कथा कार्ड देखाउनुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "पृष्ठभूमि तस्बिर",
+        "description": "कार्डको पृष्ठभूमिका रूपमा देखाइने तस्बिरको URL।"
+      },
+      {
+        "property": "backgroundSize",
+        "title": "पृष्ठभूमि आकार",
+        "description": "पृष्ठभूमि तस्बिरले कार्ड कसरी भर्छ (CSS background-size)।",
+        "options": {
+          "cover": "ढाक्ने (cover)",
+          "contain": "समेट्ने (contain)",
+          "auto": "स्वचालित (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "पृष्ठभूमि संलग्नता",
+        "description": "स्क्रोल गर्दा पृष्ठभूमि तस्बिरले कस्तो व्यवहार गर्छ (CSS background-attachment)।",
+        "options": {
+          "scroll": "स्क्रोल हुने (scroll)",
+          "fixed": "स्थिर (fixed)",
+          "local": "स्थानीय (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "स्तम्भ लेबल",
+        "description": "कार्डको माथि देखाइने ठूला अक्षरको छोटो लेबल। लुकाउन खाली छोड्नुहोस्।"
+      },
+      {
+        "property": "label",
+        "title": "कार्ड पाठ",
+        "description": "तल्लो प्यानलमा देखाइने मुख्य पाठ।"
+      },
+      {
+        "property": "link",
+        "title": "लिङ्क",
+        "description": "सम्पूर्ण कार्डलाई समेट्ने वैकल्पिक गन्तव्य URL।"
+      }
+    ]
+  }
+}

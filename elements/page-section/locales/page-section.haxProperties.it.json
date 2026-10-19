@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sezione di pagina",
+    "description": "Contenitore di sezione per il contenuto della pagina e layout a schermo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Trattamento grafico",
+        "description": "Stile predefinito che aggiorna le impostazioni correlate."
+      },
+      {
+        "property": "image",
+        "title": "Immagine",
+        "description": "Contenuto multimediale di sfondo per la sezione."
+      },
+      {
+        "property": "bg",
+        "title": "Colore di sfondo",
+        "description": "Colore di sfondo quando non è impostata un'immagine."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Pulsante di scorrimento",
+        "description": "Mostra un pulsante che scorre alla sezione successiva."
+      },
+      {
+        "property": "fold",
+        "title": "Mostra piega",
+        "description": "Mostra una piega visiva in fondo alla sezione."
+      },
+      {
+        "property": "full",
+        "title": "Dimensione a schermo intero",
+        "description": "Occupa l'intera altezza dello schermo."
+      },
+      {
+        "property": "filter",
+        "title": "Applica filtro",
+        "description": "Applica un filtro visivo all'immagine di sfondo."
+      },
+      {
+        "slot": "",
+        "title": "Contenuto",
+        "description": "Contenuto della sezione."
+      },
+      {
+        "slot": "entice",
+        "title": "Invito",
+        "description": "Contenuto di invito facoltativo."
+      },
+      {
+        "slot": "buttons",
+        "title": "Pulsanti",
+        "description": "Gruppo di pulsanti mostrato sotto il testo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Testo dell'ancora",
+        "description": "Etichetta dell'ancora mostrata nella navigazione."
+      }
+    ]
+  }
+}

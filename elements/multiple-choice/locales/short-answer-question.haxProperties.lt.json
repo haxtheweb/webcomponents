@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Trumpo atsakymo klausimas",
+    "description": "Naudotojas atsako į paprastą klausimą"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Klausimas",
+        "description": "Klausimas, į kurį turi atsakyti naudotojai."
+      },
+      {
+        "property": "answers",
+        "title": "Galimi atsakymai"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testo pavadinimas",
+        "description": "Testo pavadinimas, perduodamas xAPI pagrįstoms aplinkoms šiam elementui identifikuoti"
+      }
+    ]
+  }
+}

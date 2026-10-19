@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallax රූපය",
+    "description": "රූපය අනුචලනය වේ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "රූපය",
+        "description": "පසුබිමට සම්බන්ධ විය යුතු රූපය"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "ශීර්ෂ ප්‍රදේශය",
+        "description": "ශීර්ෂ පෙළ ප්‍රදේශය"
+      }
+    ]
+  }
+}

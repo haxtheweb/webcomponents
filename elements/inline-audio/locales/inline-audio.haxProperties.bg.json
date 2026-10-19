@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Вградено аудио",
+    "description": "Възпроизвеждане на аудио в текста като допълнение към съдържанието на страницата."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Източник",
+        "description": "MP3 файл или URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентен цвят",
+        "description": "Акцентен цвят на картата."
+      },
+      {
+        "property": "shiny",
+        "title": "Лъскав",
+        "description": "Използване на по-светъл акцентен фон вместо сив."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Тъмен",
+        "description": "Използване на тъмен режим."
+      }
+    ]
+  }
+}

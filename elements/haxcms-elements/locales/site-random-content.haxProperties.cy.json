@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Cynnwys Tudalen ar Hap",
+    "description": "Dangos elfen lefel uchaf ar hap o dudalen a ddewiswyd"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Tudalen",
+        "description": "Dewiswch y dudalen i dynnu cynnwys ar hap ohoni. Bydd yr elfen yn dangos un o elfennau HTML lefel uchaf y dudalen hon ar hap."
+      }
+    ]
+  }
+}

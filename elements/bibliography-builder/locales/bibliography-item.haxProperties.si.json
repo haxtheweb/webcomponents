@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ග්‍රන්ථ නාමාවලි අයිතමය",
+    "description": "ආකෘති කිහිපයක් සහ අපනයන විකල්ප සඳහා සහාය දක්වමින්, ග්‍රන්ථ නාමාවලියක තනි උපුටා දැක්වීමක් නියෝජනය කරන අයිතමය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "වර්ගය",
+        "description": "උපුටා දැක්වීම් වර්ගය",
+        "options": {
+          "web": "වෙබ්",
+          "journal": "සඟරාව",
+          "book": "පොත"
+        }
+      },
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "අයිතමයේ මාතෘකාව"
+      },
+      {
+        "property": "authors",
+        "title": "කතෘ(වරු)",
+        "description": "කාලරේඛාවේ සිදුවීම්"
+      },
+      {
+        "property": "publisher",
+        "title": "ප්‍රකාශක",
+        "description": "මුල් වෙබ් අඩවිය"
+      }
+    ]
+  }
+}

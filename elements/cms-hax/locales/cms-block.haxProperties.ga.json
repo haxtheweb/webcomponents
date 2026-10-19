@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bloc CMS",
+    "description": "Bloc CMS rindreáilte ar an inneall"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modúl",
+        "description": "Modúl le lódáil ónár CMS"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta an bhloic le lódáil ónár CMS"
+      }
+    ]
+  }
+}

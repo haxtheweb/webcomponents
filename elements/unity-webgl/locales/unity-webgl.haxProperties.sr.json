@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity плејер",
+    "description": "Unity WebGL плејер."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Циљ",
+        "description": "Путања до верзије игре."
+      },
+      {
+        "property": "compression",
+        "title": "Метод компресије",
+        "description": "Екстензија датотеке компресије за ресурсе игре."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL за стримовање",
+        "description": "URL ресурса за стримовање."
+      },
+      {
+        "property": "companyname",
+        "title": "Назив компаније",
+        "description": "Назив компаније."
+      },
+      {
+        "property": "productname",
+        "title": "Назив производа",
+        "description": "Наслов игре."
+      },
+      {
+        "property": "productversion",
+        "title": "Верзија производа",
+        "description": "Верзија издања."
+      },
+      {
+        "property": "width",
+        "title": "Ширина платна",
+        "description": "CSS ширина платна (на пример px или em)."
+      },
+      {
+        "property": "height",
+        "title": "Висина платна",
+        "description": "CSS висина платна (на пример px или em)."
+      },
+      {
+        "property": "background",
+        "title": "Позадина платна",
+        "description": "CSS позадина платна."
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "בילד־אָפּטייל",
+    "description": "בילד אויף דער גאַנצער ברייט וואָס צעטיילט אַן אָפּטייל פֿון דער זײַט."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "הינטערגרונט־בילד."
+      },
+      {
+        "property": "caption",
+        "description": "טעקסט־קעפּל."
+      }
+    ]
+  }
+}

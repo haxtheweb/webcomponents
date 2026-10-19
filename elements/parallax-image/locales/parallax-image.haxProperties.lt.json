@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Paralakso paveikslėlis",
+    "description": "Paveikslėlio slinkimas"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Vaizdas",
+        "description": "fone naudojamas paveikslėlis"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Antraštės sritis",
+        "description": "Antraštės teksto sritis"
+      }
+    ]
+  }
+}

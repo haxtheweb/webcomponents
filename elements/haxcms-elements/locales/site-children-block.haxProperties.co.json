@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: bloccu di figlioli",
+    "description": "Bloccu dinamicu per mustrà i figlioli di a pagina attuale"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Metodu dinamicu",
+        "description": "Cumu calculà i figlioli in relazione à st'elementu",
+        "options": {
+          "active": "Figlioli attivi",
+          "parent": "Figlioli di u parente",
+          "ancestor": "Tutti i figlioli da l'antenatu più altu"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Livellu d'iniziu"
+      },
+      {
+        "property": "end",
+        "title": "Livellu di fine"
+      }
+    ]
+  }
+}

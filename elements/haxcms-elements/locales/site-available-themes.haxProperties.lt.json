@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Galimos temos",
+    "description": "Rodyti galimas HAXcms temas su tiesioginės peržiūros perjungimu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Rodinio režimas",
+        "description": "Pasirinkite, kaip rodyti temas",
+        "options": {
+          "gallery": "Galerija",
+          "table": "Lentelė"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Rodyti informaciją",
+        "description": "Rodyti temų aprašus ir papildomą informaciją"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Rodyti paslėptas ir pasenusias temas",
+        "description": "Be numatytųjų skydelio temų rodyti ir paslėptas, pasenusias bei prastas temas"
+      },
+      {
+        "property": "columns",
+        "title": "Stulpeliai (galerija)",
+        "description": "Stulpelių skaičius galerijos rodinyje"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "સંક્ષેપ",
+    "description": "પૂર્ણ-શબ્દ ટૂલટિપ સાથે સંક્ષેપ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "લખાણ",
+        "description": "દૃશ્યમાન સંક્ષેપ ટેક્સ્ટ."
+      },
+      {
+        "attribute": "title",
+        "title": "શબ્દ",
+        "description": "હોવર પર બતાવાતો પૂર્ણ શબ્દ."
+      }
+    ]
+  }
+}

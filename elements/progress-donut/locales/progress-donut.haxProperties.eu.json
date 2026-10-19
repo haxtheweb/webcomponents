@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Aurrerapen-erroskila",
+    "description": "Aurrerapen-erroskila"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Elementuaren izenburua"
+      },
+      {
+        "property": "desc",
+        "title": "Deskribapena",
+        "description": "Deskribapen luze irisgarria"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Irudiaren iturburua",
+        "description": "Erroskilaren barruko irudiaren iturburua."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Irudiaren testu alternatiboa",
+        "description": "Irudiaren testu alternatiboa."
+      },
+      {
+        "property": "animated",
+        "title": "Animatua",
+        "description": "Aurrerapena lehen kargan animatzen den ala ez"
+      },
+      {
+        "property": "complete",
+        "title": "Osatuta",
+        "description": "Osatutako balioen matrizea."
+      },
+      {
+        "property": "total",
+        "title": "Guztira",
+        "description": "Elementu guztiak osatuta daudenean guztizkoa."
+      },
+      {
+        "property": "startAngle",
+        "title": "Hasierako angelua",
+        "description": "Aurrerapena hasten den erroskilaren angelua"
+      }
+    ]
+  }
+}

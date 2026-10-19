@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Ενσωμάτωση κοινοτήτων Discord από URL κοινής χρήσης."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL πόρου",
+        "description": "URL πόρου."
+      },
+      {
+        "property": "height",
+        "title": "Ύψος",
+        "description": "Ύψος πλαισίου περιεχομένου."
+      },
+      {
+        "property": "width",
+        "title": "Πλάτος",
+        "description": "Πλάτος πλαισίου περιεχομένου."
+      }
+    ]
+  }
+}

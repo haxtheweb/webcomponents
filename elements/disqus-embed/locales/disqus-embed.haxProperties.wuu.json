@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "勒页面浪嵌入 Disqus 评论。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "短名",
+        "description": "站点短名，决定 Disqus 脚本主机。"
+      },
+      {
+        "property": "pageURL",
+        "title": "页面 URL",
+        "description": "评论串所属页面个 URL。"
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "页面标识",
+        "description": "页面评论串个唯一标识。"
+      },
+      {
+        "property": "pageTitle",
+        "title": "页面标题",
+        "description": "评论串所属页面个标题。"
+      },
+      {
+        "property": "loadingText",
+        "title": "加载文字",
+        "description": "评论加载辰光播报个文字。"
+      },
+      {
+        "property": "lang",
+        "title": "语言",
+        "description": "Disqus 界面个语言代码，譬如 en。"
+      }
+    ]
+  }
+}

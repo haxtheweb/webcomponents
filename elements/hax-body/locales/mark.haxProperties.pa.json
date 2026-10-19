@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ਉਭਾਰ",
+    "description": "ਇਨਲਾਈਨ ਟੈਕਸਟ ਉਭਾਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "ਲਿਖਤ",
+        "description": "ਉਭਾਰਿਆ ਟੈਕਸਟ।"
+      }
+    ]
+  }
+}

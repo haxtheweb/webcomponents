@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Giao diện có sẵn",
+    "description": "Hiển thị các giao diện HAXcms có sẵn với chuyển đổi xem trước trực tiếp"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Chế độ xem",
+        "description": "Chọn cách hiển thị các giao diện",
+        "options": {
+          "gallery": "Thư viện ảnh",
+          "table": "Bảng"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Hiện chi tiết",
+        "description": "Hiện mô tả giao diện và thông tin bổ sung"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Hiện giao diện ẩn và cũ",
+        "description": "Hiện các giao diện ẩn, cũ và kém chất lượng bên cạnh các giao diện mặc định của bảng điều khiển"
+      },
+      {
+        "property": "columns",
+        "title": "Số cột (Thư viện)",
+        "description": "Số cột trong chế độ xem thư viện"
+      }
+    ]
+  }
+}

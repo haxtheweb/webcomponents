@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Descărcare fișă de lucru",
+    "description": "Un buton pentru afișarea fișierelor disponibile pentru descărcare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlul descărcării."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Linkul pentru descărcare."
+      }
+    ]
+  }
+}

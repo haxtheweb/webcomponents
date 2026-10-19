@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Pregunta de vertader o fals",
+    "description": "Pregunta de vertader o fals"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Pregunta a la qual han de respondre els usuaris."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Resposta correcta"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nom del qüestionari",
+        "description": "Nom del qüestionari que es passa per identificar aquest element en entorns basats en xAPI"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Faner",
+    "description": "Sett med faner."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etikett (for tilgjengelighet)",
+        "description": "Tilgjengelig etikett for fanesettet."
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktivert",
+        "description": "Deaktiver alle faner."
+      },
+      {
+        "property": "hidden",
+        "title": "Skjult",
+        "description": "Skjul fanesettet."
+      },
+      {
+        "property": "sticky",
+        "title": "Fast",
+        "description": "Hold horisontale faner øverst under rulling."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Bruddpunkt for oppsett",
+        "description": "Bruddpunkt for horisontale faner; bruk -1 for kun vertikale."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Bruddpunkt for ikoner",
+        "description": "Bruddpunkt for å vise tekst sammen med ikoner. Standard er 0; bruk -1 for kun ikoner."
+      },
+      {
+        "slot": "",
+        "title": "Faner",
+        "description": "Serie med <a11y-tab/>-elementer."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unik ID",
+        "description": "Unik ID for dette fanesettet."
+      }
+    ]
+  }
+}

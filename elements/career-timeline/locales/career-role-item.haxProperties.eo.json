@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Kariera rolo",
+    "description": "Unuopa rolo ene de organizaĵo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo"
+      },
+      {
+        "property": "startDate",
+        "title": "Komenca dato"
+      },
+      {
+        "property": "endDate",
+        "title": "Fina dato (nedeviga)"
+      },
+      {
+        "property": "skills",
+        "title": "Rilataj kapabloj",
+        "description": "Elektu la butonon + por komenci aldoni kapablojn"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tags",
+    "description": "Einfach Lëscht vun Tags fir op der Säit unzeweisen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Mat Komma getrennte Lëscht vun Tags."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatesch Akzentfaarf",
+        "description": "Akzentfaarf automatesch op Basis vum Etikett festleeën."
+      },
+      {
+        "property": "accentColor",
+        "title": "Faarf",
+        "description": "Faarf fir d'Tags."
+      }
+    ]
+  }
+}

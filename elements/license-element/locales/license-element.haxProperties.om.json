@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Hayyama",
+    "description": "Hojii keetiif hayyama kenni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mata duree",
+        "description": "Mata duree hojii wabeeffamee."
+      },
+      {
+        "property": "source",
+        "title": "Liinkii maddaa",
+        "description": "URL madda hojii hayyamamee."
+      },
+      {
+        "property": "license",
+        "title": "Hayyama",
+        "description": "Hayyama hojii kanaaf raawwatame."
+      },
+      {
+        "property": "creator",
+        "title": "Uumaa",
+        "description": "Uumaa yookaan abbaa hojii kanaa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Liinkii maddaa",
+        "description": "Liinkii bal'ina hayyamaa dabalataa."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Maqaa dabalataa",
+        "description": "Maqaa bal'ina hayyamaa dabalataa."
+      }
+    ]
+  }
+}

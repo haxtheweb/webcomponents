@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) beágyazás",
+    "description": "X-bejegyzés beágyazása kontextusban."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Bejegyzés URL-je",
+        "description": "A beágyazandó bejegyzés URL-je."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Téma",
+        "description": "Világos vagy sötét téma az X-bejegyzésekhez.",
+        "options": {
+          "light": "Világos",
+          "dark": "Sötét"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Felugró ablak tiltása kattintáskor",
+        "description": "Megakadályozza, hogy a felhasználók megnyissák a bejegyzést az x.com oldalon."
+      }
+    ]
+  }
+}

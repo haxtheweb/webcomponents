@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Umboniso we-Github",
+    "description": "Umzobo ofikelelekayo onenkcazo ende"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Umbutho",
+        "description": "Igama lomatshini lombutho we-Github"
+      },
+      {
+        "property": "repo",
+        "title": "Indawo yokugcina",
+        "description": "Igama lomatshini levimba"
+      },
+      {
+        "property": "extended",
+        "title": "Umboniso Owandisiweyo",
+        "description": "Iquka i-readme kwinto"
+      }
+    ]
+  }
+}

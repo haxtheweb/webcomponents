@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Naglalarawang Figure",
+    "description": "Accessible na figure na may mahabang paglalarawan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Larawan"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alt Text"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Caption ng Figure",
+        "description": "Teksto ng caption ng figure na palaging nakikita."
+      },
+      {
+        "slot": "details",
+        "title": "Paglalarawan",
+        "description": "Detalyadong paglalarawan ng larawan na maaaring itago o ipakita"
+      },
+      {
+        "slot": "summary",
+        "title": "Button ng Paglalarawan",
+        "description": "Default para sa button na nagpapakita/nagtatago ng tekstong paglalarawan, hal. \"info\", \"medatadata\", atbp."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Opsyonal na buod na teksto kapag bukas ang mga detalye"
+      },
+      {
+        "property": "closeText",
+        "title": "Opsyonal na buod na teksto kapag sarado ang mga detalye"
+      }
+    ]
+  }
+}

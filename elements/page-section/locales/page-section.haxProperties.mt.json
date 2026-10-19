@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sezzjoni tal-paġna",
+    "description": "Kontenitur tas-sezzjoni għall-kontenut tal-paġna u tqassim ibbażat fuq l-iskrin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Trattament tad-disinn",
+        "description": "Stil predefinit li jaġġorna s-settings relatati."
+      },
+      {
+        "property": "image",
+        "title": "Immaġni",
+        "description": "Midja tal-isfond għas-sezzjoni."
+      },
+      {
+        "property": "bg",
+        "title": "Kulur tal-isfond",
+        "description": "Kulur tal-isfond meta ma tkunx issettjata immaġni."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Buttuna tal-iskrollar",
+        "description": "Uri buttuna li tiskrollja għas-sezzjoni li jmiss."
+      },
+      {
+        "property": "fold",
+        "title": "Uri t-tinja",
+        "description": "Uri tinja viżiva fin-naħa t'isfel tas-sezzjoni."
+      },
+      {
+        "property": "full",
+        "title": "Daqs tal-iskrin sħiħ",
+        "description": "Imla l-għoli tal-iskrin tal-utent."
+      },
+      {
+        "property": "filter",
+        "title": "Applika filtru",
+        "description": "Applika filtru viżiv fuq l-immaġni tal-isfond."
+      },
+      {
+        "slot": "",
+        "title": "Kontenut",
+        "description": "Kontenut tas-sezzjoni."
+      },
+      {
+        "slot": "entice",
+        "title": "Ħajjar",
+        "description": "Kontenut fakultattiv biex iħajjar."
+      },
+      {
+        "slot": "buttons",
+        "title": "Buttuni",
+        "description": "Grupp ta' buttuni muri taħt it-test."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Test tal-ankra",
+        "description": "Tikketta tal-ankra murija fin-navigazzjoni."
+      }
+    ]
+  }
+}

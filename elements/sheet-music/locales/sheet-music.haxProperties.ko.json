@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "악보",
+    "description": "alphaTex 또는 MusicXML을 통해 악보, 기타 타브, 총보 표기를 렌더링하고 재생합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex 표기",
+        "description": "악보용 인라인 alphaTex 마크업입니다. 직접 편집하여 표기를 작성하세요. 템플릿에 저장되므로 공백이 유지됩니다."
+      },
+      {
+        "property": "source",
+        "title": "악보 파일",
+        "description": "MusicXML(.xml/.musicxml/.mxl) 또는 Guitar Pro(.gp3/.gp4/.gp5/.gpx/.gp) 파일을 업로드하거나 링크하세요. 설정하면 인라인 alphaTex보다 우선합니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "오디오 재생",
+        "description": "기본적으로 켜져 있습니다. 내장 신디사이저로 재생되는 악보를 들을 수 있습니다. 보기 전용(오디오 없음) 모드로 사용하려면 끄세요."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "표시 옵션 보기",
+        "description": "플레이어 막대에 확대/축소, 늘이기, 레이아웃 버튼을 표시합니다."
+      },
+      {
+        "property": "showExport",
+        "title": "내보내기 버튼 보기",
+        "description": "플레이어 막대에 MIDI 다운로드 및 인쇄/PDF 버튼을 표시합니다."
+      }
+    ]
+  }
+}

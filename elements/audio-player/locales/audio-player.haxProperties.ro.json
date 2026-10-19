@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Acesta poate prezenta video într-un mod foarte accesibil, indiferent de sursă."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sursă",
+        "description": "URL-ul acestui fișier media."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titlu",
+        "description": "Titlu simplu sub video"
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Selectează culoarea de accent pentru player."
+      },
+      {
+        "property": "track",
+        "title": "Subtitrări",
+        "description": "URL-ul fișierului de subtitrări."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Imagine miniatură",
+        "description": "Opțional. URL-ul unei imagini miniatură/poster."
+      },
+      {
+        "property": "learningMode",
+        "title": "Activează modul de învățare",
+        "description": "Dezactivează derularea înainte și înapoi."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Elimină butonul de deschidere pe YouTube",
+        "description": "Elimină butonul pentru deschiderea videoclipului pe YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Incluzi un link de partajare?",
+        "description": "Oferă un link pentru partajarea videoclipului."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indică dacă se folosește CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Permite redarea în fundal",
+        "description": "Videoclipurile se întrerup / pornesc automat când fila pierde focusul; această opțiune permite redarea videoclipului fără ca fila să aibă focusul"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Temă întunecată pentru transcriere",
+        "description": "Activează tema întunecată pentru transcriere."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Dezactivează interactivitatea",
+        "description": "Dezactivează modul interactiv care face transcrierea clicabilă."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Ascunde marcajele de timp",
+        "description": "Ascunde marcajele de timp din transcriere."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Ascunde transcrierea",
+        "description": "Ascunde transcrierea în mod implicit."
+      },
+      {
+        "property": "lang",
+        "title": "Limbă",
+        "description": "Limba fișierului media."
+      }
+    ]
+  }
+}

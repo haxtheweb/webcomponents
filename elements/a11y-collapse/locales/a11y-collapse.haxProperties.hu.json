@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Összecsukható tároló",
+    "description": "Egyetlen kibontható és összecsukható tároló."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Címsor",
+        "description": "Az összecsukható elem szövege."
+      },
+      {
+        "property": "expanded",
+        "title": "Kibontva",
+        "description": "Alapértelmezés szerint kibontva."
+      },
+      {
+        "property": "headingButton",
+        "title": "Címsorgomb",
+        "description": "A teljes címsor legyen kattintható, ne csak az ikon."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "A kibontás/összecsukás gomb ikonja."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikon (kibontott állapotban)",
+        "description": "Opcionális ikon a kibontott állapothoz."
+      },
+      {
+        "slot": "",
+        "title": "Tartalom",
+        "description": "Az összecsukható elem tartalma."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Elemleírás",
+        "description": "A kibontás/összecsukás gomb elemleírása."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Elemleírás (kibontott állapotban)",
+        "description": "A kibontás/összecsukás gomb elemleírása kibontott állapotban."
+      }
+    ]
+  }
+}

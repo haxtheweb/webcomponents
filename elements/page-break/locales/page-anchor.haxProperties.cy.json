@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Angor Tudalen",
+    "description": "Cysylltu â phwyntiau penodol mewn cyfryngau ar y dudalen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Targed ar y dudalen",
+        "description": "ID neu adnodd y mae'r angor hwn yn pwyntio ato."
+      },
+      {
+        "property": "value",
+        "title": "Gwerth dolen ddofn",
+        "description": "Gwerth dolen ddofn (er enghraifft stamp amser neu ID sleid)."
+      },
+      {
+        "property": "entityId",
+        "title": "Endid gwefan",
+        "description": "Endid gwefan dewisol ar gyfer rheoli sut y cyflwynir cysyniadau cysylltiedig."
+      }
+    ]
+  }
+}

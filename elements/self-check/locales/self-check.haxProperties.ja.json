@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "セルフチェック",
+    "description": "ユーザーがセルフチェックを行えます。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "画像",
+        "description": "セルフチェックの画像。"
+      },
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "セルフチェックのタイトル。"
+      },
+      {
+        "property": "alt",
+        "title": "代替テキスト",
+        "description": "画像の代替テキスト。"
+      },
+      {
+        "slot": "question",
+        "title": "問題"
+      },
+      {
+        "slot": "",
+        "title": "答え"
+      },
+      {
+        "property": "accentColor",
+        "title": "テーマカラー",
+        "description": "デザインシステムからテーマカラーを選択します。",
+        "options": {
+          "primary": "プライマリ",
+          "accent": "アクセント",
+          "success": "成功",
+          "warning": "警告",
+          "error": "エラー",
+          "info": "情報"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学習目標",
+        "description": "oer:hasLearningObjective として出力される学習目標の参照。"
+      },
+      {
+        "property": "assessing",
+        "title": "評価対象",
+        "description": "oer:assessing として出力されるアクティビティの参照。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "詳細リンク",
+        "description": "追加情報へのリンク。"
+      }
+    ]
+  }
+}

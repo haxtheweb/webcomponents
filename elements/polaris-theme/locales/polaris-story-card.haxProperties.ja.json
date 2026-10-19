@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polarisストーリーカード",
+    "description": "背景画像、ピラーラベル、見出しテキスト付きのPolarisストーリーカードを表示します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "背景画像",
+        "description": "カードの背景として表示する画像のURL。"
+      },
+      {
+        "property": "backgroundSize",
+        "title": "背景のサイズ",
+        "description": "背景画像がカードをどう埋めるか（CSS background-size）。",
+        "options": {
+          "cover": "全体を覆う (cover)",
+          "contain": "全体を収める (contain)",
+          "auto": "自動 (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "背景の固定",
+        "description": "スクロール時の背景画像の動作（CSS background-attachment）。",
+        "options": {
+          "scroll": "スクロール (scroll)",
+          "fixed": "固定 (fixed)",
+          "local": "ローカル (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "ピラーラベル",
+        "description": "カードの上部に表示する短い大文字のラベル。非表示にするには空欄のままにします。"
+      },
+      {
+        "property": "label",
+        "title": "カードのテキスト",
+        "description": "下部パネルに表示するメインテキスト。"
+      },
+      {
+        "property": "link",
+        "title": "リンク",
+        "description": "カード全体をリンクにする任意のリンク先URL。"
+      }
+    ]
+  }
+}

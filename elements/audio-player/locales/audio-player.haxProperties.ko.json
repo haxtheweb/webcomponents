@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "오디오",
+    "description": "출처와 관계없이 동영상을 높은 접근성으로 표시할 수 있습니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "소스",
+        "description": "이 미디어의 URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "제목",
+        "description": "동영상 아래에 표시할 간단한 제목"
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "플레이어의 강조 색상을 선택하세요."
+      },
+      {
+        "property": "track",
+        "title": "자막",
+        "description": "자막 파일의 URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "미리 보기 이미지",
+        "description": "선택 사항. 미리 보기/포스터 이미지의 URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "학습 모드 사용",
+        "description": "빨리 감기와 되감기를 비활성화합니다."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube에서 열기 버튼 제거",
+        "description": "YouTube에서 동영상을 여는 버튼을 제거합니다."
+      },
+      {
+        "property": "linkable",
+        "title": "공유 링크를 포함할까요?",
+        "description": "동영상을 공유할 수 있는 링크를 제공합니다."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS 사용 여부를 지정합니다.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "백그라운드 재생 허용",
+        "description": "탭이 포커스를 잃으면 동영상이 자동으로 일시 정지/재생됩니다. 이 옵션을 사용하면 탭에 포커스가 없어도 동영상이 재생됩니다"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "대본 다크 테마",
+        "description": "대본에 다크 테마를 사용합니다."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "상호작용 비활성화",
+        "description": "대본을 클릭할 수 있게 하는 상호작용 모드를 비활성화합니다."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "타임스탬프 숨기기",
+        "description": "대본의 타임스탬프를 숨깁니다."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "대본 숨기기",
+        "description": "기본적으로 대본을 숨깁니다."
+      },
+      {
+        "property": "lang",
+        "title": "언어",
+        "description": "미디어의 언어."
+      }
+    ]
+  }
+}

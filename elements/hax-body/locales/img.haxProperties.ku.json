@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Wêneyê Bingehîn",
+    "description": "Hêmana wêneyê ya bingehîn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Çavkanî",
+        "description": "URLa wêneyê."
+      },
+      {
+        "attribute": "alt",
+        "title": "Nivîsa alt",
+        "description": "Nivîsa alternatîf ji bo gihîştbarî û SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Bilindahî",
+        "description": "Bilindahî bi pîkselan. Ji bo bikaranîna mezinahiya xwezayî vala bihêle."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Barkirina wêneyê",
+        "description": "Hilbijêre ka wêne kengê bar dibe.",
+        "options": {
+          "lazy": "Dema xuya bibe bar bike",
+          "auto": "Otomatîk"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Çavkaniyên responsive (srcset)",
+        "description": "URLên wêneyan û danasîneran (mînak 480w an 2x) lîste bike da ku gerok mezinahiya herî baş ji bo ekranê hilbijêrin. Wekî taybetmendiya standard a srcset tê tomarkirin."
+      }
+    ]
+  }
+}

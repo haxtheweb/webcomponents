@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Bu, mənbəyindən asılı olmayaraq videonu yüksək əlçatan şəkildə təqdim edə bilər."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Mənbə",
+        "description": "Bu medianın URL-i."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Başlıq",
+        "description": "Videonun altında sadə başlıq"
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Pleyer üçün vurğu rəngini seçin."
+      },
+      {
+        "property": "track",
+        "title": "Subtitrlər",
+        "description": "Subtitr faylının URL-i."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Miniatür şəkli",
+        "description": "İstəyə bağlı. Miniatür/poster şəklinin URL-i."
+      },
+      {
+        "property": "learningMode",
+        "title": "Təlim rejimini aktivləşdir",
+        "description": "İrəli və geri çəkməni deaktiv edir."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube-da aç düyməsini sil",
+        "description": "Videonu YouTube-da açmaq üçün düyməni silir."
+      },
+      {
+        "property": "linkable",
+        "title": "Paylaşım keçidi əlavə edilsin?",
+        "description": "Videonu paylaşmaq üçün keçid təqdim edir."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS-dan istifadə edilib-edilməyəcəyini göstərir.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Fonda oynatmaya icazə ver",
+        "description": "Tab fokusu itirdikdə videolar avtomatik dayanır / oynayır; bu, tab fokusda olmadan videonun oynamasına imkan verir"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Transkript üçün qaranlıq mövzu",
+        "description": "Transkript üçün qaranlıq mövzunu aktivləşdirin."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "İnteraktivliyi deaktiv et",
+        "description": "Transkripti kliklənə bilən edən interaktiv rejimi deaktiv edin."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Vaxt nişanlarını gizlət",
+        "description": "Transkriptdəki vaxt nişanlarını gizlədin."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkripti gizlət",
+        "description": "Transkripti standart olaraq gizlədin."
+      },
+      {
+        "property": "lang",
+        "title": "Dil",
+        "description": "Medianın dili."
+      }
+    ]
+  }
+}

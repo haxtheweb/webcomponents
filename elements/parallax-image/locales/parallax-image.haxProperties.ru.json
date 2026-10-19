@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Параллакс-изображение",
+    "description": "Изображение с прокруткой"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Изображение",
+        "description": "изображение для фона"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Область заголовка",
+        "description": "Текстовая область заголовка"
+      }
+    ]
+  }
+}

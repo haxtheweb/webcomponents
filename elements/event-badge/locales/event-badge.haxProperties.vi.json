@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Huy hiệu sự kiện",
+    "description": "Thành phần huy hiệu sự kiện."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Hình ảnh TV",
+        "description": "Hình ảnh hiển thị trên TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo hiển thị ở góc huy hiệu."
+      },
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề hiển thị ở đầu huy hiệu."
+      },
+      {
+        "property": "name",
+        "title": "Tên",
+        "description": "Tên hiển thị trên huy hiệu."
+      },
+      {
+        "property": "position",
+        "title": "Chức vụ",
+        "description": "Vai trò hoặc chức danh của người đó."
+      },
+      {
+        "property": "organization",
+        "title": "Tổ chức",
+        "description": "Tổ chức nơi người đó làm việc."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Màu TV",
+        "description": "Chọn màu cho TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nền hoặc màu chữ chính."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Màu núm vặn",
+        "description": "Màu của các núm vặn TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Nâu đỏ cổ điển",
+        "description": "Áp dụng hiệu ứng nâu đỏ cổ điển (sepia)."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Đen trắng",
+        "description": "Áp dụng hiệu ứng đen trắng."
+      }
+    ]
+  }
+}

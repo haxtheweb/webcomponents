@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Chikamu chemufananidzo",
+    "description": "Mufananidzo une upamhi hwose unopatsanura chikamu chepeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Mufananidzo wekumashure."
+      },
+      {
+        "property": "caption",
+        "description": "Musoro wemavara."
+      }
+    ]
+  }
+}

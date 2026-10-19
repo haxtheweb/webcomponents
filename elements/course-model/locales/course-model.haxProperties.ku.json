@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "modela kursê",
+    "description": "Rêxistineke înteraktîf ji bo têgînên kursê bi hûrgilî, anîmasyon û kontrolên zanînê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "sernav"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Qada agahiyê"
+      },
+      {
+        "title": "Qada hûrgiliyan"
+      },
+      {
+        "title": "Qada anîmasyonê"
+      },
+      {
+        "title": "Qada Kontrola Zanînê"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Qada logoyê"
+      }
+    ]
+  }
+}

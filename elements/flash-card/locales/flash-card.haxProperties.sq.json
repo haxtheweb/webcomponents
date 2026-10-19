@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kartë mësimore",
+    "description": "Praktiko konceptet me karta mësimore me dy anë."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Pjesa e përparme e kartës",
+        "description": "Teksti ose pyetja e përparme."
+      },
+      {
+        "slot": "back",
+        "title": "Pjesa e pasme e kartës",
+        "description": "Përgjigjja e pritur."
+      },
+      {
+        "property": "imgSource",
+        "title": "Burimi i imazhit",
+        "description": "Skedari i imazhit i përdorur për kartën. Mbishkruan Fjalën kyçe të imazhit."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Lloji i veprimit",
+        "description": "OER Schema: lloji i veprimit që përfshin kjo praktikë (p.sh. Leximi, Shkrimi, Krijimi, Kërkimi, Dëgjimi, Shikimi, Reflektimi, Diskutimi, Vëzhgimi, Prezantimi, Vlerësimi)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objektivi mësimor",
+        "description": "OER Schema: ID ose URL e objektivit mësimor që mbështet kjo praktikë."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "E errët",
+        "description": "Përdor modalitetin e errët."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra theksuese e kartës."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Fjala kyçe e imazhit",
+        "description": "Fjalë kyçe për imazh të rastësishëm. Mbishkruhet nga Burimi i imazhit."
+      }
+    ]
+  }
+}

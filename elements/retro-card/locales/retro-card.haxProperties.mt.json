@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Karta retro",
+    "description": "Karta sempliċi b'disinn retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlu ewlieni tal-karta."
+      },
+      {
+        "property": "url",
+        "description": "URL li jinfetaħ meta tiġi kklikkjata l-karta."
+      },
+      {
+        "property": "subtitle",
+        "title": "Sottotitlu",
+        "description": "Sottotitlu tal-karta."
+      },
+      {
+        "property": "tags",
+        "title": "Tikketti",
+        "description": "Tikketti separati b'virgoli."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Sors tal-midja",
+        "description": "Sors primarju tal-midja."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Sors meta tgħaddi l-maws",
+        "description": "Sors tal-midja muri meta tgħaddi l-maws fuq il-karta jew meta tiġi attivata."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-aċċent applikat fuq il-karta kollha."
+      },
+      {
+        "property": "dark",
+        "title": "Skur",
+        "description": "Uża l-kuluri bażi tal-mod skur."
+      }
+    ]
+  }
+}

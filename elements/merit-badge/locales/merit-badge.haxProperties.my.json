@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ဂုဏ်ထူး တံဆိပ်",
+    "description": "ကျွမ်းကျင်မှု ရရှိခြင်းကို ဖော်ပြရန် မြင်သာသော တံဆိပ်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "တံဆိပ် ခေါင်းစဉ်",
+        "description": "တံဆိပ်ပေါ်တွင် ပြသော ခေါင်းစဉ်။"
+      },
+      {
+        "property": "badgeImage",
+        "title": "တံဆိပ် ပုံ",
+        "description": "တံဆိပ်အတွက် ပုံ URL။"
+      },
+      {
+        "property": "badgeDetails",
+        "title": "တံဆိပ် အသေးစိတ်",
+        "description": "တံဆိပ်အကြောင်း အသေးစိတ်။"
+      },
+      {
+        "property": "hyperLink",
+        "title": "ဟိုက်ပါလင့်ခ်",
+        "description": "တံဆိပ်နှင့် ဆက်စပ်သော လင့်ခ်။"
+      },
+      {
+        "property": "badgeSkills",
+        "title": "တံဆိပ် ကျွမ်းကျင်မှုများ",
+        "description": "တံဆိပ်ပေါ်တွင် ပြသော ကျွမ်းကျင်မှုများ။"
+      },
+      {
+        "property": "skill",
+        "title": "ကျွမ်းကျင်မှု (OER Schema)",
+        "description": "OER Schema: ဤသင်ယူမှု ရည်မှန်းချက် ပြီးမြောက်ခြင်းဖြင့် ရရှိသော သင်ယူထားသည့် ကျွမ်းကျင်မှု။"
+      }
+    ]
+  }
+}

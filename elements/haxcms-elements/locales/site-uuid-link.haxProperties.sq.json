@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Lidhje HAX",
+    "description": "Një lidhje te një burim i caktuar në sajtin ku po punon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Elementi",
+        "description": "Elementi që do të shfaqet për të dhënat e lidhjes / titullit"
+      }
+    ]
+  }
+}

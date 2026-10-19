@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Видео",
+    "description": "Олон эх сурвалжаас хүртээмжтэй видео тоглуулах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Эх сурвалж",
+        "description": "Энэ медиагийн URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Гарчиг",
+        "description": "Видеоны доор харагдах гарчиг."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Постер зураг",
+        "description": "Постер зургийн URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Текст замууд",
+        "description": "Видеоны хаалттай хадмал, хадмал орчуулга, тайлбар болон бусад текст замууд."
+      },
+      {
+        "property": "startTime",
+        "title": "Эхлэх хугацаа",
+        "description": "Видеог тодорхой хугацаанаас эхлүүлэх (секунд)."
+      },
+      {
+        "property": "endTime",
+        "title": "Дуусах хугацаа",
+        "description": "Видеог тодорхой хугацаанд дуусгах (секунд), эхлэх хугацаа шаардлагатай."
+      },
+      {
+        "property": "learningMode",
+        "title": "Суралцах горимыг идэвхжүүлэх",
+        "description": "Урагш болон хойш гүйлгэхийг идэвхгүй болгоно."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube-д нээх товчлуурыг хасах",
+        "description": "Видеог YouTube-д нээх товчлуурыг хасна."
+      },
+      {
+        "property": "linkable",
+        "title": "Хуваалцах холбоос оруулах уу?",
+        "description": "Видеог хуваалцах холбоос өгнө."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Цагийн тэмдэглэгээг нуух",
+        "description": "Транскрипт дээрх цагийн тэмдэглэгээг нуух."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Транскриптийг нуух",
+        "description": "Транскриптийг анхдагчаар нуух."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Аудио тайлбарын зам",
+        "description": "Дүрслэлийн элементүүдийг өгүүлэн тайлбарладаг аудио тайлбарын зам (MP3 файл)-ын URL."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS ашиглах эсэхийг заана.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Арын горимд тоглуулахыг зөвшөөрөх",
+        "description": "Хөтчийн таб фокусаа алдсан ч тоглуулсаар байх."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Транскриптийн бараан загвар",
+        "description": "Транскриптэд бараан загварыг идэвхжүүлэх."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Интерактивыг идэвхгүй болгох",
+        "description": "Транскриптийг товших боломжтой болгодог интерактив горимыг идэвхгүй болгох."
+      },
+      {
+        "property": "lang",
+        "title": "Хэл",
+        "description": "Медиагийн хэл."
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "(хуучирсан) Тоглуулагчийн онцлох өнгийг сонгоно уу."
+      }
+    ]
+  }
+}

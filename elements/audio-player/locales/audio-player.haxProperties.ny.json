@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Mawu",
+    "description": "Izi zitha kuonetsa kanema m'njira yopezeka kwambiri kwa onse mosasamala kanthu za gwero."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Gwero",
+        "description": "URL ya zofalitsa izi."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Mutu",
+        "description": "Mutu wosavuta wa pansi pa kanema"
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu wowonjezera",
+        "description": "Sankhani mtundu wowonjezera wa chosewerera."
+      },
+      {
+        "property": "track",
+        "title": "Mawu otsatira kanema",
+        "description": "URL ya fayilo ya mawu otsatira kanema."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Chithunzi chaching'ono",
+        "description": "Chosankha. URL ya chithunzi chaching'ono/chikwangwani."
+      },
+      {
+        "property": "learningMode",
+        "title": "Yatsani njira yophunzirira",
+        "description": "Imazimitsa kupititsa patsogolo ndi kubweza m'mbuyo."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Chotsani batani lotsegula pa YouTube",
+        "description": "Imachotsa batani lotsegula kanema pa YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Phatikizani ulalo wogawana?",
+        "description": "Imapereka ulalo wogawana kanema."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Imasonyeza ngati mugwiritse ntchito CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Lolani kusewera kumbuyo",
+        "description": "Makanema amaima / kusewera okha tabu ikasiya kusankhidwa; izi zimalola kanema kusewera ngakhale tabu sinasankhidwe"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Mawonekedwe amdima a zolembedwa",
+        "description": "Yatsani mawonekedwe amdima a zolembedwa."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Zimitsani Kuchita Nawo",
+        "description": "Zimitsani njira yochita nawo yomwe imapangitsa zolembedwa kudinika."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Bisani nthawi",
+        "description": "Bisani nthawi pa zolembedwa."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Bisani Zolembedwa",
+        "description": "Bisani zolembedwa mwachisawawa."
+      },
+      {
+        "property": "lang",
+        "title": "Chilankhulo",
+        "description": "Chilankhulo cha zofalitsa."
+      }
+    ]
+  }
+}

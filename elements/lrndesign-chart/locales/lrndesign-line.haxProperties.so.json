@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Jaantuska Xariiqda",
+    "description": "Wuxuu abuuraa jaantus la heli karo oo ku salaysan CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Midabka Xoojinta",
+        "description": "Midab xoojin oo ikhtiyaari ah."
+      },
+      {
+        "title": "Mawduuc Madow",
+        "description": "Daar Naqshadda Mugdiga"
+      },
+      {
+        "title": "Faylka CSV",
+        "description": "Ka soo rar xogta CSV."
+      },
+      {
+        "title": "Cinwaanka Jaantuska",
+        "description": "Qoraal beddel ah oo la heli karo oo jaantuskaaga ah."
+      },
+      {
+        "title": "Sharraxaadda Jaantuska",
+        "description": "Sharraxaad la heli karo oo jaantuskaaga ah."
+      },
+      {
+        "title": "Magaca Miisaanka",
+        "description": "Saamiga ballac:dherer ee jaantuska (Eeg https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings si aad u aragto $ct-scales iyo $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Muuji Asalka Shabagga"
+      },
+      {
+        "title": "Muuji Bedka"
+      },
+      {
+        "title": "Muuji Xariiqda"
+      },
+      {
+        "title": "Muuji Barta"
+      },
+      {
+        "title": "Ballac Buuxa"
+      },
+      {
+        "title": "Muuji Calaamadaha Barta"
+      },
+      {
+        "title": "Buuxinta Jaantuska (kor)"
+      },
+      {
+        "title": "Buuxinta Jaantuska (hoos)"
+      },
+      {
+        "title": "Buuxinta Jaantuska (bidix)"
+      },
+      {
+        "title": "Buuxinta Jaantuska (midig)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rog Xogta",
+        "description": "Rog xogta oo ay ku jiraan calaamadaha, kala horraynta taxanaha iyo sidoo kale dhammaan safafka xogta taxanaha."
+      },
+      {
+        "title": "Shaxda HTML",
+        "description": "Ikhtiyaari: Soo rar xogta sida shax HTML."
+      },
+      {
+        "title": "Ugu Yaraanta Jaantuska",
+        "description": "Beddelidda heerka hoose ee dabiiciga ah ee jaantuska waxay kuu oggolaanaysaa inaad weyneeyso ama xaddiddo qiimaha ugu hooseeya ee jaantuska la muujiyo"
+      },
+      {
+        "title": "Ugu Badnaanta Jaantuska",
+        "description": "Beddelidda heerka sare ee dabiiciga ah ee jaantuska waxay kuu oggolaanaysaa inaad weyneeyso ama xaddiddo qiimaha ugu sarreeya ee jaantuska la muujiyo"
+      },
+      {
+        "title": "Muuji Calaamadaha Barta",
+        "options": {
+          "middle": "Dhexda",
+          "start": "Bilow",
+          "end": "Dhammaad"
+        }
+      },
+      {
+        "title": "Leexinta X ee Calaamadaha Barta"
+      },
+      {
+        "title": "Leexinta Y ee Calaamadaha Barta"
+      },
+      {
+        "title": "Xariiq Siman"
+      },
+      {
+        "title": "Saldhigga Bedka",
+        "description": "Saldhigga jaantuska bedka ee loo isticmaali doono xidhitaanka qaabka bedka (caadi ahaan waa 0)."
+      },
+      {
+        "title": "Dhidibka X Muuji Shabagga",
+        "description": "Muuji shabagga Dhidibka X."
+      },
+      {
+        "title": "Leexinta Dhidibka X"
+      },
+      {
+        "title": "Booska Dhidibka X",
+        "description": "Booska calaamadaha la dhigo. Waxaa loo dejin karaa \"start\" ama \"end\" halkaas oo \"start\" u dhigma bidix ama kor dhidibka taagan, \"end\"-na u dhigma midig ama hoos dhidibka jiifka ah"
+      },
+      {
+        "title": "Dhidibka X Muuji Calaamadda",
+        "description": "Muuji calaamadda Dhidibka X."
+      },
+      {
+        "title": "Calaamadda Dhidibka X (leexin jiif ah)",
+        "description": "Booska jiifka ah ee calaamadaha Dhidibka X."
+      },
+      {
+        "title": "Calaamadda Dhidibka X (leexin taagan)",
+        "description": "Booska taagan ee calaamadaha Dhidibka X."
+      },
+      {
+        "title": "Cinwaanka Dhidibka X",
+        "description": "Cinwaan ikhtiyaari ah oo dhidibka X."
+      },
+      {
+        "title": "Cinwaanka Dhidibka X (leexin jiif ah)",
+        "description": "Booska jiifka ah ee cinwaanka Dhidibka X."
+      },
+      {
+        "title": "Cinwaanka Dhidibka X (leexin taagan)",
+        "description": "Booska taagan ee cinwaanka Dhidibka X."
+      },
+      {
+        "title": "Barroosinka Cinwaanka Dhidibka X",
+        "description": "Barroosin ikhtiyaari ah oo cinwaanka dhidibka X.",
+        "options": {
+          "middle": "dhexda",
+          "end": "dhammaadka",
+          "start": "bilowga"
+        }
+      },
+      {
+        "title": "Dhidibka Y: Muuji Shabagga",
+        "description": "Muuji shabagga Dhidibka Y."
+      },
+      {
+        "title": "Leexinta Dhidibka Y"
+      },
+      {
+        "title": "Booska Dhidibka Y",
+        "description": "Booska calaamadaha la dhigo. Waxaa loo dejin karaa \"start\" ama \"end\" halkaas oo \"start\" u dhigma bidix ama kor dhidibka taagan, \"end\"-na u dhigma midig ama hoos dhidibka jiifka ah"
+      },
+      {
+        "title": "Dhidibka Y Muuji Calaamadda",
+        "description": "Muuji calaamadda Dhidibka Y."
+      },
+      {
+        "title": "Calaamadda Dhidibka Y (leexin jiif ah)",
+        "description": "Booska jiifka ah ee calaamadda Dhidibka Y."
+      },
+      {
+        "title": "Calaamadda Dhidibka Y (leexin taagan)",
+        "description": "Booska taagan ee calaamadda Dhidibka Y."
+      },
+      {
+        "title": "Meesha Ugu Yar ee Miisaanka Dhidibka Y",
+        "description": "Wuxuu qeexaa dhererka ugu yar ee pixel ee tallaabooyinka miisaanka."
+      },
+      {
+        "title": "Miisaanka Dhidibka Y (tirooyin dhan oo keliya)",
+        "description": "Isticmaal oo keliya qiimayaal tiro dhan ah tallaabooyinka miisaanka."
+      },
+      {
+        "title": "Cinwaanka Dhidibka Y",
+        "description": "Cinwaan ikhtiyaari ah oo dhidibka Y."
+      },
+      {
+        "title": "Cinwaanka Dhidibka Y (leexin taagan)",
+        "description": "Booska jiifka ah ee cinwaanka Dhidibka Y."
+      },
+      {
+        "title": "Cinwaanka Dhidibka Y (leexin jiif ah)",
+        "description": "Booska jiifka ah ee cinwaanka Dhidibka Y."
+      },
+      {
+        "title": "Barroosinka Cinwaanka Dhidibka Y",
+        "description": "Barroosin ikhtiyaari ah oo cinwaanka dhidibka Y.",
+        "options": {
+          "middle": "dhexda",
+          "end": "dhammaadka",
+          "start": "bilowga"
+        }
+      },
+      {
+        "title": "Rogidda Cinwaanka Dhidibka Y",
+        "description": "Ma rogaysaa cinwaanka dhidibka Y?"
+      }
+    ]
+  }
+}

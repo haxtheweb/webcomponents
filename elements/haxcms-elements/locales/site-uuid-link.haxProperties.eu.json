@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX esteka",
+    "description": "Lantzen ari zaren guneko baliabide zehatz baterako esteka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Elementua",
+        "description": "Estekarako / izenburu-datuetarako errendatu beharreko elementua"
+      }
+    ]
+  }
+}

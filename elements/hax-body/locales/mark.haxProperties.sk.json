@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Zvýraznenie",
+    "description": "Zvýrazniť vložený text."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Zvýraznený text."
+      }
+    ]
+  }
+}

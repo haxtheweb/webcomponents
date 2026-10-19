@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Видео",
+    "description": "Достапна репродукција на видео од повеќе извори."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Извор",
+        "description": "URL за овој медиум."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Наслов",
+        "description": "Наслов прикажан под видеото."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Слика-постер",
+        "description": "URL на сликата-постер."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Текстуални записи",
+        "description": "Затворени титлови, преводи, описи и други текстуални записи за видеото."
+      },
+      {
+        "property": "startTime",
+        "title": "Време на почеток",
+        "description": "Започни го видеото во одредено време (секунди)."
+      },
+      {
+        "property": "endTime",
+        "title": "Време на крај",
+        "description": "Заврши го видеото во одредено време (секунди), бара време на почеток."
+      },
+      {
+        "property": "learningMode",
+        "title": "Овозможи режим за учење",
+        "description": "Ги оневозможува брзото премотување напред и назад."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Отстрани го копчето за отворање на YouTube",
+        "description": "Го отстранува копчето за отворање на видеото на YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Да се вклучи врска за споделување?",
+        "description": "Обезбедува врска за споделување на видеото."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Скриј временски ознаки",
+        "description": "Скриј ги временските ознаки на транскриптот."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Скриј транскрипт",
+        "description": "Скриј го транскриптот стандардно."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Запис со аудио опис",
+        "description": "URL до запис со аудио опис (MP3 датотека) што дава нарација на визуелните елементи."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Означува дали да се користи CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Дозволи репродукција во позадина",
+        "description": "Продолжи со репродукција кога картичката на прелистувачот ќе го изгуби фокусот."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Темна тема за транскриптот",
+        "description": "Овозможи темна тема за транскриптот."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Оневозможи интерактивност",
+        "description": "Оневозможи го интерактивниот режим што го прави транскриптот кликлив."
+      },
+      {
+        "property": "lang",
+        "title": "Јазик",
+        "description": "Јазик на медиумот."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "(застарено) Изберете ја бојата за акцент на плеерот."
+      }
+    ]
+  }
+}

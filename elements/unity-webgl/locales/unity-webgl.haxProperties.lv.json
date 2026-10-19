@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity atskaņotājs",
+    "description": "Unity WebGL atskaņotājs."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Mērķis",
+        "description": "Ceļš uz spēles būvējumu."
+      },
+      {
+        "property": "compression",
+        "title": "Saspiešanas metode",
+        "description": "Spēles resursu saspiešanas faila paplašinājums."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Straumēšanas URL",
+        "description": "Straumēšanas resursu URL."
+      },
+      {
+        "property": "companyname",
+        "title": "Uzņēmuma nosaukums",
+        "description": "Uzņēmuma nosaukums."
+      },
+      {
+        "property": "productname",
+        "title": "Produkta nosaukums",
+        "description": "Spēles nosaukums."
+      },
+      {
+        "property": "productversion",
+        "title": "Produkta versija",
+        "description": "Laidiena versija."
+      },
+      {
+        "property": "width",
+        "title": "Audekla platums",
+        "description": "Audekla CSS platums (piemēram, px vai em)."
+      },
+      {
+        "property": "height",
+        "title": "Audekla augstums",
+        "description": "Audekla CSS augstums (piemēram, px vai em)."
+      },
+      {
+        "property": "background",
+        "title": "Audekla fons",
+        "description": "Audekla CSS fons."
+      }
+    ]
+  }
+}

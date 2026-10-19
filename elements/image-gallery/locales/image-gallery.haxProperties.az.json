@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Şəkil qalereyası",
+    "description": "Şəkilləri şəbəkə, mozaika və ya slayd şou düzənində təqdim edən qalereya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Göstərmə rejimi",
+        "description": "Şəkillərin qalereyada necə təqdim olunacağı.",
+        "options": {
+          "grid": "Şəbəkə",
+          "masonry": "Mozaika",
+          "gallery": "Qalereya"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktiv indeks",
+        "description": "Qalereya rejimində başlanacaq aktiv şəklin indeksi."
+      }
+    ]
+  }
+}

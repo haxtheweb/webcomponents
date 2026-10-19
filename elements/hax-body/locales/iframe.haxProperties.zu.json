@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Shumeka okuqukethwe kwewebhu kwangaphandle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Umthombo",
+        "description": "I-URL yale nsiza."
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "शानदार विस्फोट",
+    "description": "वैकल्पिक ध्वनि प्रभावों के साथ इंटरैक्टिव विस्फोट एनिमेशन।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "आकार",
+        "description": "विस्फोट का आकार सेट करें।",
+        "options": {
+          "tiny": "बहुत छोटा",
+          "small": "छोटा",
+          "medium": "मध्यम",
+          "large": "बड़ा",
+          "epic": "विशाल"
+        }
+      },
+      {
+        "property": "color",
+        "title": "रंग",
+        "description": "विस्फोट की रंग थीम सेट करें।",
+        "options": {
+          "": "डिफ़ॉल्ट",
+          "red": "लाल",
+          "blue": "नीला",
+          "purple": "बैंगनी",
+          "orange": "नारंगी",
+          "yellow": "पीला"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "ध्वनि प्रभाव",
+        "description": "ध्वनि प्रभाव सक्षम करें।"
+      },
+      {
+        "property": "resetSound",
+        "title": "ध्वनि रीसेट करें",
+        "description": "हर बार ध्वनि को शुरुआत से फिर से चलाएँ।"
+      },
+      {
+        "property": "image",
+        "title": "कस्टम छवि",
+        "description": "कस्टम विस्फोट छवि के लिए वैकल्पिक URL।"
+      },
+      {
+        "property": "sound",
+        "title": "कस्टम ध्वनि",
+        "description": "कस्टम ध्वनि प्रभाव के लिए वैकल्पिक URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "अक्षम",
+        "description": "सभी इंटरैक्शन अक्षम करें।"
+      }
+    ]
+  }
+}

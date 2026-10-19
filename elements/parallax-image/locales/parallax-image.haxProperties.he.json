@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "תמונת פרלקסה",
+    "description": "גלילת תמונה"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "תמונה",
+        "description": "התמונה שתשמש ברקע"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "אזור הכותרת",
+        "description": "אזור טקסט הכותרת"
+      }
+    ]
+  }
+}

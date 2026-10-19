@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Koodii QR",
+    "description": "Koodii bilbila ismaartiin iskaanii gochuuf."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Daataa QR",
+        "description": "Madda daataa koodii QR."
+      },
+      {
+        "property": "title",
+        "title": "Mata-duree bakka bu'aa",
+        "description": "Mata-duree bakka bu'aa madda koodii QR wajjin hidhame."
+      },
+      {
+        "property": "modulesize",
+        "title": "Hamma",
+        "description": "Hamma koodii QR."
+      },
+      {
+        "property": "margin",
+        "title": "Qarqara",
+        "description": "Iddoo koodii marsu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Akkaataa ba'uu",
+        "description": "Akkaataa itti baafamu.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

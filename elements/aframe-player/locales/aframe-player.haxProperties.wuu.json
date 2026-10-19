@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D 播放器",
+    "description": "3D 文件 / 增强现实播放器。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "来源",
+        "description": "搿只 AR 文件个 URL。"
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "元素勒 AR 里向个 X 位置。"
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "元素勒 AR 里向个 Y 位置。"
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "元素勒 AR 里向个 Z 位置。"
+      },
+      {
+        "property": "skyColor",
+        "title": "天空颜色",
+        "description": "选场景里天空个颜色。"
+      }
+    ]
+  }
+}

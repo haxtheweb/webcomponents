@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polarisタイル",
+    "description": "タイトル、任意の補足テキスト、任意のリンク付きのPolarisタイルを表示します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "メインテキスト",
+        "description": "タイルのメインテキスト。"
+      },
+      {
+        "property": "line2",
+        "title": "サブテキスト",
+        "description": "任意の補足テキスト。"
+      },
+      {
+        "property": "type",
+        "title": "タイルのスタイル",
+        "description": "タイルのプリセット表示スタイル。",
+        "options": {
+          "1": "スタイル1",
+          "2": "スタイル2",
+          "3": "スタイル3",
+          "4": "スタイル4",
+          "5": "スタイル5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "背景画像",
+        "description": "画像対応のタイルスタイルで使う背景画像のURL。"
+      },
+      {
+        "property": "link",
+        "title": "リンク",
+        "description": "タイルのアクション用の任意のリンク先URL。"
+      }
+    ]
+  }
+}

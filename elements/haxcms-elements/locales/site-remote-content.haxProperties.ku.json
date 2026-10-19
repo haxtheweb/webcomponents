@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Naveroka Dûr",
+    "description": "Naverokê ji malperekê di malpereke din de dîsa bi kar bîne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Navnîşana malperê",
+        "description": "Heke ne malpera niha be, navnîşana ku naverok jê were referanskirin bi cih bike"
+      },
+      {
+        "property": "uuid",
+        "title": "Hêman",
+        "description": "Tişta ku ji bo daneyên girêdan / sernavê were nîşandan"
+      },
+      {
+        "property": "breakreference",
+        "title": "Referansê bişkîne",
+        "description": "Nîşankirina vê qutiyê naveroka dûr ji bo guherandina herêmî kopî dike lê girêdanê radike. Dema materyala referansê were nûkirin, êdî nûkirinan nastîne."
+      },
+      {
+        "property": "showTitle",
+        "title": "Sernavê nîşan bide",
+        "description": "Ji bo nîşandana sernavê çavkaniya tê nîşandan veke"
+      }
+    ]
+  }
+}

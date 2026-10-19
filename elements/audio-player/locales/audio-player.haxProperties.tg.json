@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Аудио",
+    "description": "Ин метавонад видеоро новобаста аз манбаъ бо дастрасии баланд пешниҳод кунад."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Манбаъ",
+        "description": "URL-и ин медиа."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Сарлавҳа",
+        "description": "Сарлавҳаи оддӣ дар зери видео"
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги аксентро барои плеер интихоб кунед."
+      },
+      {
+        "property": "track",
+        "title": "Субтитрҳо",
+        "description": "URL-и файли субтитрҳо."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Тасвири хурд",
+        "description": "Ихтиёрӣ. URL-и тасвири хурд/постер."
+      },
+      {
+        "property": "learningMode",
+        "title": "Фаъол кардани реҷаи омӯзиш",
+        "description": "Пешгардонӣ ва баргардониро ғайрифаъол мекунад."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Хориҷ кардани тугмаи кушодан дар YouTube",
+        "description": "Тугмаи кушодани видеоро дар YouTube хориҷ мекунад."
+      },
+      {
+        "property": "linkable",
+        "title": "Пайванди мубодила илова кунем?",
+        "description": "Пайванд барои мубодилаи видео пешниҳод мекунад."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Нишон медиҳад, ки CORS истифода шавад ё не.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Иҷозати пахш дар замина",
+        "description": "Видеоҳо ҳангоми аз даст додани фокуси ҷадвалак худкор таваққуф/пахш мешаванд; ин имкон медиҳад, ки видео бе фокуси ҷадвалак пахш шавад"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Мавзӯи торик барои транскрипт",
+        "description": "Фаъол кардани мавзӯи торик барои транскрипт."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Ғайрифаъол кардани интерактивӣ",
+        "description": "Ғайрифаъол кардани реҷаи интерактивӣ, ки транскриптро клик шаванда мекунад."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Пинҳон кардани тамғаҳои вақт",
+        "description": "Пинҳон кардани тамғаҳои вақт дар транскрипт."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Пинҳон кардани транскрипт",
+        "description": "Пинҳон кардани транскрипт ба таври пешфарз."
+      },
+      {
+        "property": "lang",
+        "title": "Забон",
+        "description": "Забони медиа."
+      }
+    ]
+  }
+}

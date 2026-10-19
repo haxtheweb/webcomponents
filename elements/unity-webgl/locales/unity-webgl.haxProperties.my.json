@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity ပလေယာ",
+    "description": "Unity WebGL ပလေယာ။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "ပစ်မှတ်",
+        "description": "ဂိမ်း build သို့ လမ်းကြောင်း။"
+      },
+      {
+        "property": "compression",
+        "title": "ချုံ့ခြင်း နည်းလမ်း",
+        "description": "ဂိမ်း asset များအတွက် ချုံ့ဖိုင် extension။"
+      },
+      {
+        "property": "streamingurl",
+        "title": "Streaming URL",
+        "description": "Streaming asset များ၏ URL။"
+      },
+      {
+        "property": "companyname",
+        "title": "ကုမ္ပဏီ အမည်",
+        "description": "ကုမ္ပဏီ အမည်။"
+      },
+      {
+        "property": "productname",
+        "title": "ထုတ်ကုန် အမည်",
+        "description": "ဂိမ်း ခေါင်းစဉ်။"
+      },
+      {
+        "property": "productversion",
+        "title": "ထုတ်ကုန် ဗားရှင်း",
+        "description": "ထုတ်ဝေမှု ဗားရှင်း။"
+      },
+      {
+        "property": "width",
+        "title": "Canvas အကျယ်",
+        "description": "Canvas ၏ CSS အကျယ် (ဥပမာ px သို့မဟုတ် em)။"
+      },
+      {
+        "property": "height",
+        "title": "Canvas အမြင့်",
+        "description": "Canvas ၏ CSS အမြင့် (ဥပမာ px သို့မဟုတ် em)။"
+      },
+      {
+        "property": "background",
+        "title": "Canvas နောက်ခံ",
+        "description": "Canvas ၏ CSS နောက်ခံ။"
+      }
+    ]
+  }
+}

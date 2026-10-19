@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Hawa web ukhunta k'askachiy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Pukyu",
+        "description": "Kay recursop URL-nin."
+      }
+    ]
+  }
+}

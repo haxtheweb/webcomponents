@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Entîteya CMS",
+    "description": "Entîteya CMS ku li backendê tê nîşandan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Cure",
+        "description": "cure ji CMS a me",
+        "options": {
+          "node": "Node",
+          "user": "Bikarhêner",
+          "file": "Pel"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id ji CMS a me"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Moda nîşandanê",
+        "description": "moda nîşandanê ji CMS a me"
+      }
+    ]
+  }
+}

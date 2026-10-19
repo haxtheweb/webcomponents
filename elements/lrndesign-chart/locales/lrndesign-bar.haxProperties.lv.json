@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Joslu diagramma",
+    "description": "Izveido pieejamu diagrammu, pamatojoties uz CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Akcenta krāsa",
+        "description": "Neobligāta akcenta krāsa."
+      },
+      {
+        "title": "Tumšais motīvs",
+        "description": "Iespējot tumšo motīvu"
+      },
+      {
+        "title": "CSV fails",
+        "description": "Ielādēt datus no CSV."
+      },
+      {
+        "title": "Diagrammas nosaukums",
+        "description": "Pieejams alternatīvais teksts jūsu diagrammai."
+      },
+      {
+        "title": "Diagrammas apraksts",
+        "description": "Pieejams jūsu diagrammas apraksts."
+      },
+      {
+        "title": "Mēroga nosaukums",
+        "description": "Diagrammas platuma un augstuma attiecība (skatiet https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings par $ct-scales un $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Rādīt režģa fonu"
+      },
+      {
+        "title": "Horizontālas joslas",
+        "description": "Apgriež joslu diagrammas asis, lai uzzīmētu horizontālu joslu diagrammu. Ņemiet vērā, ka jāapgriež arī asu iestatījumi, jo Y ass tagad rādīs etiķetes, bet X ass – vērtības."
+      },
+      {
+        "title": "Sakraut joslas",
+        "description": "Ja iestatīts uz true, šis rekvizīts sakraus sēriju joslas."
+      },
+      {
+        "title": "Sadalīt sērijas",
+        "description": "Ja iestatīts uz true, katra josla attēlos sēriju, un datu masīvam jābūt viendimensijas datu vērtību masīvam, nevis sēriju masīvam."
+      },
+      {
+        "title": "Diagrammas atkāpe (augšā)"
+      },
+      {
+        "title": "Diagrammas atkāpe (apakšā)"
+      },
+      {
+        "title": "Diagrammas atkāpe (kreisajā pusē)"
+      },
+      {
+        "title": "Diagrammas atkāpe (labajā pusē)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Apgriezt datus",
+        "description": "Apgriezt datus, ieskaitot etiķetes, sēriju secību, kā arī visu sēriju datu masīvus."
+      },
+      {
+        "title": "HTML tabula",
+        "description": "Neobligāti: ielādēt datus kā HTML tabulu."
+      },
+      {
+        "title": "Diagrammas minimums",
+        "description": "Aizstājot diagrammas dabisko zemāko vērtību, varat tuvināt vai ierobežot diagrammas zemāko attēloto vērtību"
+      },
+      {
+        "title": "Diagrammas maksimums",
+        "description": "Aizstājot diagrammas dabisko augstāko vērtību, varat tuvināt vai ierobežot diagrammas augstāko attēloto vērtību"
+      },
+      {
+        "title": "X ass: rādīt režģi",
+        "description": "Rādīt X ass režģi."
+      },
+      {
+        "title": "X ass nobīde"
+      },
+      {
+        "title": "X ass novietojums",
+        "description": "Vieta, kur novietotas etiķetes. Var iestatīt uz \"start\" vai \"end\", kur \"start\" atbilst kreisajai vai augšējai pusei uz vertikālās ass, bet \"end\" atbilst labajai vai apakšējai pusei uz horizontālās ass"
+      },
+      {
+        "title": "X ass: rādīt etiķeti",
+        "description": "Rādīt X ass etiķeti."
+      },
+      {
+        "title": "X ass etiķete (horizontālā nobīde)",
+        "description": "X ass etiķešu horizontālais novietojums."
+      },
+      {
+        "title": "X ass etiķete (vertikālā nobīde)",
+        "description": "X ass etiķešu vertikālais novietojums."
+      },
+      {
+        "title": "X ass nosaukums",
+        "description": "Neobligāts X ass nosaukums."
+      },
+      {
+        "title": "X ass nosaukums (horizontālā nobīde)",
+        "description": "X ass nosaukuma horizontālais novietojums."
+      },
+      {
+        "title": "X ass nosaukums (vertikālā nobīde)",
+        "description": "X ass nosaukuma vertikālais novietojums."
+      },
+      {
+        "title": "X ass nosaukuma enkurs",
+        "description": "Neobligāts X ass nosaukuma enkurs.",
+        "options": {
+          "middle": "vidus",
+          "end": "beigas",
+          "start": "sākums"
+        }
+      },
+      {
+        "title": "X ass skalas minimālā atstarpe",
+        "description": "Norāda skalas soļu minimālo augstumu pikseļos."
+      },
+      {
+        "title": "X ass skala (tikai veseli skaitļi)",
+        "description": "Izmantot skalas soļiem tikai veselu skaitļu vērtības."
+      },
+      {
+        "title": "Y ass: rādīt režģi",
+        "description": "Rādīt Y ass režģi."
+      },
+      {
+        "title": "Y ass nobīde"
+      },
+      {
+        "title": "Y ass novietojums",
+        "description": "Vieta, kur novietotas etiķetes. Var iestatīt uz \"start\" vai \"end\", kur \"start\" atbilst kreisajai vai augšējai pusei uz vertikālās ass, bet \"end\" atbilst labajai vai apakšējai pusei uz horizontālās ass"
+      },
+      {
+        "title": "Y ass: rādīt etiķeti",
+        "description": "Rādīt Y ass etiķeti."
+      },
+      {
+        "title": "Y ass etiķete (horizontālā nobīde)",
+        "description": "Y ass etiķetes horizontālais novietojums."
+      },
+      {
+        "title": "Y ass etiķete (vertikālā nobīde)",
+        "description": "Y ass etiķetes vertikālais novietojums."
+      },
+      {
+        "title": "Y ass skalas minimālā atstarpe",
+        "description": "Norāda skalas soļu minimālo augstumu pikseļos."
+      },
+      {
+        "title": "Y ass skala (tikai veseli skaitļi)",
+        "description": "Izmantot skalas soļiem tikai veselu skaitļu vērtības."
+      },
+      {
+        "title": "Y ass nosaukums",
+        "description": "Neobligāts Y ass nosaukums."
+      },
+      {
+        "title": "Y ass nosaukums (vertikālā nobīde)",
+        "description": "Y ass nosaukuma horizontālais novietojums."
+      },
+      {
+        "title": "Y ass nosaukums (horizontālā nobīde)",
+        "description": "Y ass nosaukuma horizontālais novietojums."
+      },
+      {
+        "title": "Y ass nosaukuma enkurs",
+        "description": "Neobligāts Y ass nosaukuma enkurs.",
+        "options": {
+          "middle": "vidus",
+          "end": "beigas",
+          "start": "sākums"
+        }
+      },
+      {
+        "title": "Y ass nosaukuma apgriešana",
+        "description": "Apgriezt Y ass nosaukumu?"
+      },
+      {
+        "title": "Atsauces vērtība",
+        "description": "Ja zemākā/augstākā vērtība nav skaidri iestatīta, joslu diagramma pēc noklusējuma tiks centrēta pie nulles."
+      },
+      {
+        "title": "Sēriju joslu atstatums",
+        "description": "Norādiet joslu atstatumu grupā pikseļos."
+      },
+      {
+        "title": "Sakraušanas režīms",
+        "description": "Ja iestatīts uz \"true\", šis rekvizīts veidos kopsummu katram sērijas punktam. Tas ietekmēs arī y asi un diagrammas kopējās robežas. Ja iestatīts uz \"false\", šis rekvizīts liks sakrautajām joslām zīmēties no nulles līnijas. Sakraušanas režīmā rekvizītam \"seriesBarDistance\" nebūs nekādas ietekmes."
+      }
+    ]
+  }
+}

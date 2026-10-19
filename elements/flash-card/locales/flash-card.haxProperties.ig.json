@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kaadị mmụta",
+    "description": "Mụọ echiche site na kaadị mmụta nwere ihu na azụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Ihu Kaadị",
+        "description": "Ederede ma ọ bụ ajụjụ dị n'ihu."
+      },
+      {
+        "slot": "back",
+        "title": "Azụ Kaadị",
+        "description": "Azịza a na-atụ anya ya."
+      },
+      {
+        "property": "imgSource",
+        "title": "Isi Mmalite Onyonyo",
+        "description": "Faịlụ onyonyo eji maka kaadị ahụ. Ọ na-anọchi Okwu Isi Onyonyo."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Ụdị Omume",
+        "description": "OER Schema: ụdị omume mmụta a gụnyere (dịka Ịgụ, Ide, Ịmepụta, Nchọpụta, Ige ntị, Ilele, Ntụgharị uche, Mkparịta ụka, Ilegide anya, Ngosipụta, Nyocha)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ebumnuche Mmụta",
+        "description": "OER Schema: ID ma ọ bụ URL nke ebumnuche mmụta mmụta a na-akwado."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Ọchịchịrị",
+        "description": "Jiri ọnọdụ ọchịchịrị."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba Mkpụrụ",
+        "description": "Agba mkpụrụ kaadị."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Okwu Isi Onyonyo",
+        "description": "Okwu isi onyonyo na-enweghị usoro. Isi Mmalite Onyonyo na-anọchi ya."
+      }
+    ]
+  }
+}

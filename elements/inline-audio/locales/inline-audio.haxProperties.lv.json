@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Iekļauts audio",
+    "description": "Atskaņot audio tekstā kā lapas satura papildinājumu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Avots",
+        "description": "MP3 fails vai URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Kartītes akcenta krāsa."
+      },
+      {
+        "property": "shiny",
+        "title": "Spīdīgs",
+        "description": "Izmantot gaišāku akcenta fonu pelēkā vietā."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tumšs",
+        "description": "Izmantot tumšo režīmu."
+      }
+    ]
+  }
+}

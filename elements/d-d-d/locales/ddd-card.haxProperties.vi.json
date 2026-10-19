@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Thẻ",
+    "description": "Thành phần thẻ được tạo kiểu theo hệ thống thiết kế DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Hình ảnh",
+        "description": "Hình ảnh tùy chọn."
+      },
+      {
+        "property": "alt",
+        "title": "Văn bản thay thế ảnh",
+        "description": "Văn bản thay thế mô tả hình ảnh."
+      },
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề thẻ."
+      },
+      {
+        "slot": "",
+        "title": "Nội dung",
+        "description": "Vùng nội dung thẻ."
+      },
+      {
+        "property": "href",
+        "title": "Liên kết",
+        "description": "URL liên kết của nút."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Nhãn",
+        "description": "Nhãn nút."
+      },
+      {
+        "property": "noArrow",
+        "title": "Không có mũi tên",
+        "description": "Ẩn mũi tên của nút."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Liên kết: đích",
+        "description": "Nơi mở liên kết.",
+        "options": {
+          "": "Cùng cửa sổ",
+          "_blank": "Cửa sổ mới - _blank",
+          "_top": "Cửa sổ trên cùng - _top",
+          "_parent": "Cửa sổ cha - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Liên kết: rel",
+        "description": "Mối quan hệ giữa tài nguyên được liên kết và tài liệu hiện tại."
+      }
+    ]
+  }
+}

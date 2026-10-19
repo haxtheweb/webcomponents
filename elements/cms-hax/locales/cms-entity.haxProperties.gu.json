@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS એન્ટિટી",
+    "description": "બેકએન્ડ પર રેન્ડર થયેલી CMS એન્ટિટી"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "પ્રકાર",
+        "description": "અમારા CMS માંથી પ્રકાર",
+        "options": {
+          "node": "નોડ",
+          "user": "વપરાશકર્તા",
+          "file": "ફાઇલ"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "અમારા CMS માંથી id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "પ્રદર્શન મોડ",
+        "description": "અમારા CMS માંથી પ્રદર્શન મોડ"
+      }
+    ]
+  }
+}

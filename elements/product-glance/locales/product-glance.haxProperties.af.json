@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Produkoorsig",
+    "description": "Blok vir 'n vinnige produkoorsig."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Ikoon wat die begrip voorstel."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Primêre begrip in 'n oogopslag."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtitel",
+        "description": "Bykomende besonderhede."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "Aksentkleur vir die ikoon."
+      }
+    ]
+  }
+}

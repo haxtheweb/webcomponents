@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris csempe",
+    "description": "Polaris csempe megjelenítése címmel, opcionális kiegészítő szöveggel és opcionális hivatkozással."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Elsődleges szöveg",
+        "description": "A csempe fő szövege."
+      },
+      {
+        "property": "line2",
+        "title": "Másodlagos szöveg",
+        "description": "Opcionális kiegészítő szöveg."
+      },
+      {
+        "property": "type",
+        "title": "Csempe stílusa",
+        "description": "Előre beállított vizuális csempestílus.",
+        "options": {
+          "1": "1. stílus",
+          "2": "2. stílus",
+          "3": "3. stílus",
+          "4": "4. stílus",
+          "5": "5. stílus"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Háttérkép",
+        "description": "A képet támogató csempestílusok által használt háttérkép URL-je."
+      },
+      {
+        "property": "link",
+        "title": "Hivatkozás",
+        "description": "Opcionális cél-URL a csempe műveletéhez."
+      }
+    ]
+  }
+}

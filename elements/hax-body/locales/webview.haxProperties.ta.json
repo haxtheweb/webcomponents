@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "மூலம்",
+        "description": "இந்த வளத்திற்கான URL."
+      }
+    ]
+  }
+}

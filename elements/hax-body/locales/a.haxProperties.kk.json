@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Қарапайым сілтеме",
+    "description": "Қарапайым сілтеме элементі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Сілтеме",
+        "description": "Мақсатты URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Мәтін",
+        "description": "Көрінетін сілтеме мәтіні."
+      },
+      {
+        "attribute": "target",
+        "title": "Нысана",
+        "description": "Сілтемені қайда ашу керек.",
+        "options": {
+          "": "Сол терезе",
+          "_blank": "Жаңа терезе - _blank",
+          "_top": "Жоғарғы терезе - _top",
+          "_parent": "Аталық терезе - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Атау мәтіні",
+        "description": "Қолжетімділік пен SEO үшін кеңес беретін атау."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Мақсатпен байланыс (қауіпсіздік/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

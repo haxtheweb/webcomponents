@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "פּאָסט־קאַרטל",
+    "description": "א שפּילעוודיקע מעדיע־שטיק וואָס זעט אויס ווי אַ פֿיזיש פּאָסט־קאַרטל פֿון ערגעץ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "צו",
+        "description": "צו וועמען גייט עס?"
+      },
+      {
+        "property": "from",
+        "title": "פֿון",
+        "description": "ווער ביסטו?"
+      },
+      {
+        "property": "message",
+        "title": "מעלדונג",
+        "description": "וואָס ווילסטו זאָגן?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "געשטעמפּלט פֿון",
+        "description": "פֿון וואַנען איז דאָס קאַרטל געשיקט געוואָרן?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "מקור פֿון הויפּט־פֿאָטאָ",
+        "description": "וווּ געפֿינט זיך דײַן פֿאָטאָ?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "מקור פֿון מאַרקע־פֿאָטאָ",
+        "description": "וווּ געפֿינט זיך דײַן פֿאָטאָ?"
+      }
+    ]
+  }
+}

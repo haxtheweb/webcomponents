@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ретро карт",
+    "description": "Ретро дизайнтай энгийн карт."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Картын үндсэн гарчиг."
+      },
+      {
+        "property": "url",
+        "description": "Картыг товшиход нээх URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "Дэд гарчиг",
+        "description": "Картын дэд гарчиг."
+      },
+      {
+        "property": "tags",
+        "title": "Шошгууд",
+        "description": "Таслалаар тусгаарласан шошгууд."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Медиагийн эх сурвалж",
+        "description": "Үндсэн медиагийн эх сурвалж."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Курсор аваачих үеийн эх сурвалж",
+        "description": "Картан дээр курсор аваачих эсвэл идэвхжүүлэх үед харагдах медиагийн эх сурвалж."
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Картад бүхэлд нь хэрэглэх онцлох өнгө."
+      },
+      {
+        "property": "dark",
+        "title": "Бараан",
+        "description": "Бараан горимын үндсэн өнгийг ашиглах."
+      }
+    ]
+  }
+}

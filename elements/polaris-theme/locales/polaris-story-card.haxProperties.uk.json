@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Картка історії Polaris",
+    "description": "Показати картку історії Polaris із фоновим зображенням, міткою напряму та текстом заголовка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Фонове зображення",
+        "description": "URL зображення для фону картки."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Розмір фону",
+        "description": "Як фонове зображення заповнює картку (CSS background-size).",
+        "options": {
+          "cover": "Покрити (cover)",
+          "contain": "Вмістити (contain)",
+          "auto": "Автоматично (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Прикріплення фону",
+        "description": "Як поводиться фонове зображення під час прокручування (CSS background-attachment).",
+        "options": {
+          "scroll": "Прокручується (scroll)",
+          "fixed": "Фіксоване (fixed)",
+          "local": "Локальне (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Мітка напряму",
+        "description": "Коротка мітка великими літерами вгорі картки. Залиште порожнім, щоб приховати."
+      },
+      {
+        "property": "label",
+        "title": "Текст картки",
+        "description": "Основний текст у нижній панелі."
+      },
+      {
+        "property": "link",
+        "title": "Посилання",
+        "description": "Необов'язковий URL призначення, що охоплює всю картку."
+      }
+    ]
+  }
+}

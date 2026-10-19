@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris mark",
+    "description": "Ipakita ang identity mark ng PSU na may opsyonal na pangalan ng kolehiyo at destinasyong URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Pangalan ng kolehiyo",
+        "description": "Pangalang ipinapakita sa tabi ng mark."
+      },
+      {
+        "property": "name2",
+        "title": "Pangalan ng kolehiyo 2",
+        "description": "Ikalawang pangalan na ipinapakita sa ibaba ng unang pangalan ng kolehiyo."
+      },
+      {
+        "property": "name3",
+        "title": "Pangalan ng kolehiyo 3",
+        "description": "Ikatlong pangalan na ipinapakita sa ibaba ng ikalawang pangalan ng kolehiyo."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Destinasyong URL kapag na-click ang mark."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Biswal na variant ng mark.",
+        "options": {
+          "default": "Default",
+          "light": "Maliwanag",
+          "dark": "Madilim"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Patayong layout",
+        "description": "Ipakita ang ikatlong pangalan sa ibaba ng ikalawang pangalan na may pahalang na linya."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Карьера элементи",
+    "description": "Жеке уюм жана ага байланыштуу ролдор"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Уюмдун аталышы"
+      },
+      {
+        "property": "location",
+        "title": "Орду"
+      },
+      {
+        "property": "source",
+        "title": "Булак"
+      }
+    ]
+  }
+}

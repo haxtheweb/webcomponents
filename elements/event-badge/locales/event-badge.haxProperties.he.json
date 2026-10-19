@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "תג אירוע",
+    "description": "רכיב תג אירוע."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "תמונת TV",
+        "description": "התמונה המוצגת בטלוויזיה."
+      },
+      {
+        "property": "logo",
+        "title": "לוגו",
+        "description": "הלוגו המוצג בפינת התג."
+      },
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "הכותרת המוצגת בראש התג."
+      },
+      {
+        "property": "name",
+        "title": "שם",
+        "description": "השם המוצג על התג."
+      },
+      {
+        "property": "position",
+        "title": "תפקיד",
+        "description": "התפקיד או התואר של האדם."
+      },
+      {
+        "property": "organization",
+        "title": "ארגון",
+        "description": "הארגון שבו האדם עובד."
+      },
+      {
+        "property": "tvcolor",
+        "title": "צבע ה-TV",
+        "description": "בחרו את צבע הטלוויזיה."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע רקע או טקסט ראשי."
+      },
+      {
+        "property": "knobcolor",
+        "title": "צבע הכפתורים",
+        "description": "צבע כפתורי הסיבוב של הטלוויזיה."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "ספיה",
+        "description": "החלת אפקט ספיה."
+      },
+      {
+        "property": "blackwhite",
+        "title": "שחור־לבן",
+        "description": "החלת אפקט שחור־לבן."
+      }
+    ]
+  }
+}

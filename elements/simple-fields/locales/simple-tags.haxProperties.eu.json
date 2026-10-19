@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Etiketak",
+    "description": "Orrian bistaratzeko etiketa zerrenda sinplea."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Etiketak",
+        "description": "Komaz bereizitako etiketen zerrenda."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Nabarmentze kolore automatikoa",
+        "description": "Ezarri nabarmentze kolorea automatikoki etiketaren arabera."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolorea",
+        "description": "Etiketen kolorea."
+      }
+    ]
+  }
+}

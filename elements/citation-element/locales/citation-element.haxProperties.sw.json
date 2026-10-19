@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Marejeleo",
+    "description": "Kipengele cha nukuu chenye hali tatu za uwasilishaji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Kichwa cha kazi iliyonukuliwa."
+      },
+      {
+        "property": "source",
+        "title": "Kiungo cha chanzo",
+        "description": "URL ya chanzo cha kazi iliyonukuliwa."
+      },
+      {
+        "property": "date",
+        "title": "Tarehe ya kufikiwa",
+        "description": "Tarehe chanzo kilipofikiwa."
+      },
+      {
+        "property": "scope",
+        "title": "Upeo",
+        "description": "Upeo wa kipengele cha kunukuu.",
+        "options": {
+          "sibling": "Kipengele cha kando",
+          "parent": "Kipengele mzazi"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Leseni",
+        "description": "Leseni ya kazi iliyonukuliwa."
+      },
+      {
+        "property": "creator",
+        "title": "Mtayarishi",
+        "description": "Mtayarishi au mmiliki wa kazi iliyonukuliwa."
+      },
+      {
+        "property": "typeof",
+        "title": "Aina ya OER Schema",
+        "description": "Darasa la OER Schema kwa nukuu hii. Chaguomsingi ni oer:ReferencedMaterial; badilisha tu kwa darasa halali la OER (mf. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

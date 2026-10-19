@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Карта",
+    "description": "Қосымша акцент безендіруі бар карта."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Тақырып",
+        "description": "Картаның тақырыбы."
+      },
+      {
+        "slot": "subheading",
+        "title": "Тақырыпша",
+        "description": "Картаның қосымша тақырыпшасы."
+      },
+      {
+        "slot": "content",
+        "title": "Мазмұн",
+        "description": "Картаның мазмұны."
+      },
+      {
+        "slot": "footer",
+        "title": "Төменгі деректеме",
+        "description": "Картаның қосымша төменгі деректемесі."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Сурет",
+        "description": "Қосымша сурет"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Суреттің балама мәтіні",
+        "description": "Экраннан оқу құралдары үшін суретті сипаттайтын балама мәтін. Сурет тек сәндік болса ғана бос қалдырыңыз."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Суретті көлденең туралау",
+        "options": {
+          "left": "сол жақ",
+          "center": "орта",
+          "right": "оң жақ"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Суретті тік туралау",
+        "options": {
+          "top": "жоғары",
+          "center": "орта",
+          "bottom": "төмен"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Қосымша екпін түсі."
+      },
+      {
+        "property": "dark",
+        "title": "Қараңғы тақырып",
+        "description": "Қараңғы тақырыпты қосу"
+      },
+      {
+        "property": "horizontal",
+        "title": "Көлденең",
+        "description": "Көлденең бағдар ма?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Тақырып акценті",
+        "description": "Тақырыпқа акцент түсін қолдану керек пе?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Фон акценті",
+        "description": "Карта фонына акцент түсін қолдану керек пе?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Жиек акцентінсіз",
+        "description": "Жиек акцентін алып тастау керек пе?"
+      },
+      {
+        "property": "flat",
+        "title": "Жалпақ",
+        "description": "Көлеңкені алып тастау керек пе?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Бұрыш",
+        "description": "Карта бұрышының мазмұны."
+      }
+    ]
+  }
+}

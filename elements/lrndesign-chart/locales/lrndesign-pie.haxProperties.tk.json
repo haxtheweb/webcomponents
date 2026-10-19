@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Tegelek diagramma",
+    "description": "CSV esasynda elýeterli diagramma döredýär."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aksent reňki",
+        "description": "Goşmaça aksent reňki."
+      },
+      {
+        "title": "Garaňky tema",
+        "description": "Garaňky temany işjeňleşdir"
+      },
+      {
+        "title": "CSV faýly",
+        "description": "Maglumatlary CSV-den ýükle."
+      },
+      {
+        "title": "Diagrammanyň ady",
+        "description": "Diagrammaňyz üçin elýeterli alternatiw tekst."
+      },
+      {
+        "title": "Diagrammanyň düşündirişi",
+        "description": "Diagrammaňyzyň elýeterli düşündirişi."
+      },
+      {
+        "title": "Masştabyň ady",
+        "description": "Diagrammanyň ini:beýiklik gatnaşygy ($ct-scales we $ct-scales-names üçin https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings serediň).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Halka"
+      },
+      {
+        "title": "Belligi görkez"
+      },
+      {
+        "title": "Başlangyç burç"
+      },
+      {
+        "title": "Içki boşluk"
+      },
+      {
+        "title": "Jemi",
+        "description": "Kesgitläp bilýän goşmaça jemiňiz. Jemi bahany kesgitlemek bilen, doly tegelegi çyzmak üçin seriýadaky bahalaryň jemi şu jeme deň bolmaly. Bu parametri tegelegiň ýa-da ölçeg diagrammalarynyň diňe böleklerini çyzmak üçin ulanyp bilersiňiz."
+      },
+      {
+        "title": "Boş bahalary äsgerme",
+        "description": "Gereksiz bölekleri we bellikleri çyzmazlyk üçin boş bahalar äsgerilmez."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Maglumatlary tersine öwür",
+        "description": "Maglumatlary, şol sanda bellikleri, seriýalaryň tertibini we ähli seriýa maglumat massiwlerini tersine öwür."
+      },
+      {
+        "title": "HTML tablisa",
+        "description": "Hökmany däl: maglumatlary HTML tablisa hökmünde ýükle."
+      },
+      {
+        "title": "Halka çyzygynyň ini"
+      },
+      {
+        "title": "Doly halka",
+        "description": "Halka böleklerini çyzyk däl-de, şekil hökmünde çyz."
+      },
+      {
+        "title": "Bellik ugry",
+        "description": "Halka böleklerini çyzyk däl-de, şekil hökmünde çyz.",
+        "options": {
+          "neutral": "bitarap",
+          "explode": "daşaryk",
+          "implode": "içerik"
+        }
+      },
+      {
+        "title": "Bellik süýşmesi",
+        "description": "Bellik ýagdaýynyň radiusyň ýarysyna deň bolan adaty ýagdaýdan süýşmesi. Bu baha položitel ýa-da otrisatel bolup biler. Položitel bahalar belligi merkezden daşlaşdyrar."
+      },
+      {
+        "title": "Belligiň ýerleşişi",
+        "options": {
+          "inside": "içinde",
+          "outside": "daşynda",
+          "center": "orta"
+        }
+      }
+    ]
+  }
+}

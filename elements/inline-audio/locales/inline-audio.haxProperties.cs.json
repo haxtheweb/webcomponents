@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Vložený zvuk",
+    "description": "Přehrávejte zvuk přímo v textu jako doplněk obsahu stránky."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Zdroj",
+        "description": "Soubor MP3 nebo URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňující barva",
+        "description": "Zvýrazňující barva kartičky."
+      },
+      {
+        "property": "shiny",
+        "title": "Lesklé",
+        "description": "Použít světlejší zvýrazňující pozadí místo šedého."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tmavý",
+        "description": "Použít tmavý režim."
+      }
+    ]
+  }
+}

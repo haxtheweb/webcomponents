@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kishikilia nafasi",
+    "description": "Kishikilia nafasi kinachoweza kugeuzwa kuwa aina ya midia iliyochaguliwa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Aina",
+        "description": "Aina ya kifaa ambacho hiki hukubali kwa ubadilishaji.",
+        "options": {
+          "text": "Maandishi / maudhui",
+          "document": "Hati / faili",
+          "audio": "Sauti",
+          "video": "Video",
+          "image": "Picha",
+          "math": "Hisabati"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Maandishi",
+        "description": "Bainisha kishikilia nafasi kinachotakiwa kwa undani zaidi"
+      }
+    ]
+  }
+}

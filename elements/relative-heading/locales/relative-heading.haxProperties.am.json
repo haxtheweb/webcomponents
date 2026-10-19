@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "አንጻራዊ ርዕስ",
+    "description": "በወላጁ ርዕስ ላይ በመመስረት ትክክለኛውን የርዕስ ተዋረድ ያወጣል"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "የወላጅ ርዕስ የሀብት ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "የአገናኝ አዝራር ባህሪን ያሰናክላል።"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "የአገናኝ ቅዳ አዝራሩን ወደ ርዕሱ የቀኝ ጫፍ ያሰልፋል።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "ወላጅ ካልተገኘ የርዕስ ደረጃ።"
+      },
+      {
+        "property": "copyMessage",
+        "description": "ለአገናኝ ቅዳ የማሳወቂያ መልእክት ነባሪ ጽሑፍን ይሽራል።"
+      },
+      {
+        "property": "linkLabel",
+        "description": "የአገናኝ ቅዳ አዝራሩን ነባሪ መለያ ይሽራል።"
+      },
+      {
+        "property": "linkIcon",
+        "description": "የአገናኝ ቅዳ አዝራሩን ነባሪ አዶ ይሽራል።"
+      },
+      {
+        "property": "closeLabel",
+        "description": "ለአገናኝ ቅዳ ማሳወቂያ የመዝጊያ አዝራር ነባሪ መለያን ይሽራል።"
+      },
+      {
+        "property": "closeIcon",
+        "description": "ለአገናኝ ቅዳ ማሳወቂያ የመዝጊያ አዝራር ነባሪ አዶን ይሽራል።"
+      }
+    ]
+  }
+}

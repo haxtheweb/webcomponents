@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: လက်အောက်ခံ ဘလော့ခ်",
+    "description": "လက်ရှိ စာမျက်နှာ၏ လက်အောက်ခံကို ပြသော dynamic ဘလော့ခ်"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dynamic နည်းလမ်း",
+        "description": "ဤအစိတ်အပိုင်းနှင့် နှိုင်းယှဉ်၍ လက်အောက်ခံများကို မည်သို့ တွက်ချက်မည်",
+        "options": {
+          "active": "လက်ရှိ၏ လက်အောက်ခံများ",
+          "parent": "မိခင်၏ လက်အောက်ခံများ",
+          "ancestor": "အမြင့်ဆုံး ဘိုးဘေးမှ လက်အောက်ခံအားလုံး"
+        }
+      },
+      {
+        "property": "start",
+        "title": "စတင်အဆင့်"
+      },
+      {
+        "property": "end",
+        "title": "ပြီးဆုံးအဆင့်"
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "மேம்படுத்தப்பட்ட படம்",
+    "description": "பல்வேறு மேம்பாடுகளுடன் படங்களைக் காட்டும் ஒரு வழி."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "மூலம்",
+        "description": "படத்திற்கான URL."
+      },
+      {
+        "property": "alt",
+        "title": "மாற்று உரை",
+        "description": "பார்வையற்ற பயனர்களுக்குப் படத்தை விவரிக்கும் உரை."
+      },
+      {
+        "property": "link",
+        "title": "இணைப்பு",
+        "description": "படத்தை ஒரு URL உடன் இணைக்கவும்"
+      },
+      {
+        "property": "card",
+        "title": "அட்டை",
+        "description": "உயர்த்தப்பட்ட அட்டை போலத் தோன்ற நிழலைப் பயன்படுத்தவும்."
+      },
+      {
+        "property": "box",
+        "title": "பெட்டி",
+        "description": "படத்தைச் சுற்றி ஒரு காட்சிப் பெட்டியைப் பயன்படுத்தவும்."
+      },
+      {
+        "property": "offset",
+        "title": "இடப்பெயர்ச்சி",
+        "description": "படத்திற்கு இடது அல்லது வலது இடப்பெயர்ச்சியைப் பயன்படுத்தவும்.",
+        "options": {
+          "none": "ஏதுமில்லை",
+          "wide": "அகலம்",
+          "narrow": "குறுகியது"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "மேற்கோள் மூலம்",
+        "description": "படத்திற்கான மேற்கோள்."
+      },
+      {
+        "property": "caption",
+        "title": "படக்குறிப்பு",
+        "description": "படத்திற்கான தலைப்புரை."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "உருவத் தலைப்பு",
+        "description": "உருவ லேபிளுக்கான தலைப்பு."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "உருவ விவரம்",
+        "description": "உருவ லேபிளுக்கான விவரம்."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "சிறுபடம்",
+        "description": "சிறுபட மூலம். சிறுபடத்தைக் காட்டும், ஆனால் முழு மூலத்தை மோடலில் திறக்கும்."
+      },
+      {
+        "property": "round",
+        "title": "வட்டப் படம்",
+        "description": "படத்தின் தோற்றத்தை வட்ட வடிவில் செதுக்குகிறது."
+      },
+      {
+        "property": "disableZoom",
+        "title": "பட மோடலை முடக்கு",
+        "description": "சொடுக்கினால் படம் பட ஆய்வு உரையாடலில் திறப்பதை முடக்கவும்."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "markdown ஆகக் காட்டு",
+        "description": "தலைப்புரை மற்றும் மேற்கோளை markdown ஆகக் காட்டவும்."
+      }
+    ]
+  }
+}

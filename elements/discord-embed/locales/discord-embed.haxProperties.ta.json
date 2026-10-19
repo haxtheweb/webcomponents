@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "பகிர்வு URL மூலம் Discord சமூகங்களை உட்பொதிக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "வள URL",
+        "description": "வள URL."
+      },
+      {
+        "property": "height",
+        "title": "உயரம்",
+        "description": "உள்ளடக்கச் சட்டகத்தின் உயரம்."
+      },
+      {
+        "property": "width",
+        "title": "அகலம்",
+        "description": "உள்ளடக்கச் சட்டகத்தின் அகலம்."
+      }
+    ]
+  }
+}

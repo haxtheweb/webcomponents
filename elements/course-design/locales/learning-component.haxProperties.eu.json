@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Ikaskuntza-osagaia",
+    "description": "Irakasleek pedagogia eta irakaskuntza-estrategiak komunikatzeko txartela."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Mota",
+        "description": "Erabili beharreko txartel mota."
+      },
+      {
+        "property": "subtitle",
+        "title": "Azpititulua",
+        "description": "Txartelaren azpititulua."
+      },
+      {
+        "property": "url",
+        "title": "Esteka",
+        "description": "Txartelaren aukerako esteka (esteka ez dago erabilgarri ikaskuntza-helburuetarako)."
+      },
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Ezarri izenburua; honek motaren araberako izenburua gainidazten du"
+      },
+      {
+        "property": "icon",
+        "title": "Ikonoa",
+        "description": "Ezarri ikonoa; honek motaren araberako ikonoa gainidazten du"
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Ezarri azentu-kolorea; honek motaren araberako kolorea gainidazten du"
+      },
+      {
+        "slot": "",
+        "title": "Edukiak"
+      }
+    ]
+  }
+}

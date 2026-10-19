@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Wyświetl przycisk wezwania do działania w motywie Polaris."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Tekst przycisku",
+        "description": "Tekst wyświetlany na przycisku wezwania do działania."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Docelowy URL przycisku."
+      },
+      {
+        "property": "type",
+        "title": "Wariant",
+        "description": "Wariant stylu wizualnego.",
+        "options": {
+          "primary": "Główny",
+          "tinted": "Przyciemniony",
+          "light": "Jasny"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Styl z obrysem",
+        "description": "Włącz wygląd z obrysem."
+      },
+      {
+        "property": "filled",
+        "title": "Styl wypełniony",
+        "description": "Włącz wygląd wypełniony."
+      }
+    ]
+  }
+}

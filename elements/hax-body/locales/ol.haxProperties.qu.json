@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Yupasqa lista",
+    "description": "Yupasqa listata ruray."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Yupay rikch'ay",
+        "description": "Ch'uyanchasqa lista yupaypaq llamk'achisqa rikch'ay.",
+        "options": {
+          "": "Kikin (decimal)",
+          "list-decimal-leading-zero": "Ñawpaqpi ch'usaqniyuq decimal (01, 02, 03)",
+          "list-lower-alpha": "Huch'uy alfa (a, b, c)",
+          "list-upper-alpha": "Hatun alfa (A, B, C)",
+          "list-lower-roman": "Huch'uy romano (i, ii, iii)",
+          "list-upper-roman": "Hatun romano (I, II, III)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Shpërthim i mrekullueshëm",
+    "description": "Animacion interaktiv shpërthimi me efekte zanore opsionale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Madhësia",
+        "description": "Cakto madhësinë e shpërthimit.",
+        "options": {
+          "tiny": "Shumë i vogël",
+          "small": "I vogël",
+          "medium": "Mesatar",
+          "large": "I madh",
+          "epic": "Epik"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Ngjyra",
+        "description": "Cakto temën e ngjyrave të shpërthimit.",
+        "options": {
+          "": "Parazgjedhje",
+          "red": "E kuqe",
+          "blue": "Blu",
+          "purple": "Vjollcë",
+          "orange": "Portokalli",
+          "yellow": "E verdhë"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Efektet zanore",
+        "description": "Aktivizo efektet zanore."
+      },
+      {
+        "property": "resetSound",
+        "title": "Rinis tingullin",
+        "description": "Riniso tingullin nga fillimi çdo herë."
+      },
+      {
+        "property": "image",
+        "title": "Imazh i personalizuar",
+        "description": "URL opsionale për një imazh shpërthimi të personalizuar."
+      },
+      {
+        "property": "sound",
+        "title": "Tingull i personalizuar",
+        "description": "URL opsionale për një efekt zanor të personalizuar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "I çaktivizuar",
+        "description": "Çaktivizo të gjitha ndërveprimet."
+      }
+    ]
+  }
+}

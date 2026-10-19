@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV-tabel",
+    "description": "Loob tabeli CSV-failist, ükskõik kus see asub."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Allikas",
+        "description": "Selle CSV-faili URL."
+      },
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Loodava tabeli pealkiri."
+      },
+      {
+        "property": "description",
+        "title": "Kirjeldus",
+        "description": "Põhjalikum kirjeldus tabeli andmete parema ligipääsetavuse jaoks."
+      }
+    ]
+  }
+}

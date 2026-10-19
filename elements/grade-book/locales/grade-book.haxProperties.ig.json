@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Akwụkwọ akara",
+    "description": "Akwụkwọ akara enweghị isi na-akwado ọtụtụ backend nwere rubric."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isi mmalite",
+        "description": "Ụdị isi iyi data (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "Ngwugwu data JSON",
+          "filesystem": "Sistemu faịlụ"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Data isi iyi",
+        "description": "URL ma ọ bụ data JSON maka akwụkwọ akara."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ntụaka ọmụmụ",
+        "description": "Njirimara ọmụmụ ewepụtara dị ka oer:forCourse na akụrụngwa Assessment ọ bụla."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Sejħa għall-azzjoni",
+    "description": "Buttuna sempliċi b'link biex tieħu azzjoni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Tikketta",
+        "description": "Tikketta tal-link"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Daħħal link għal kwalunkwe riżors"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Aħbi l-ikona",
+        "description": "Aħbi l-ikona użata biex tenfasizza t-test"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona tal-link tal-azzjoni"
+      }
+    ]
+  }
+}

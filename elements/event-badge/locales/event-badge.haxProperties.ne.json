@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "कार्यक्रम ब्याज",
+    "description": "कार्यक्रम ब्याज कम्पोनेन्ट।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV तस्बिर",
+        "description": "TV मा देखाइने तस्बिर।"
+      },
+      {
+        "property": "logo",
+        "title": "लोगो",
+        "description": "ब्याजको कुनामा देखाइने लोगो।"
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "ब्याजको माथि देखाइने शीर्षक।"
+      },
+      {
+        "property": "name",
+        "title": "नाम",
+        "description": "ब्याजमा देखाइने नाम।"
+      },
+      {
+        "property": "position",
+        "title": "पद",
+        "description": "व्यक्तिको भूमिका वा पद।"
+      },
+      {
+        "property": "organization",
+        "title": "संस्था",
+        "description": "व्यक्ति काम गर्ने संस्था।"
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV को रङ",
+        "description": "TV को रङ छान्नुहोस्।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "मुख्य पृष्ठभूमि वा पाठको रङ।"
+      },
+      {
+        "property": "knobcolor",
+        "title": "नबको रङ",
+        "description": "TV का नबहरूको रङ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "सेपिया",
+        "description": "सेपिया प्रभाव लागू गर्नुहोस्।"
+      },
+      {
+        "property": "blackwhite",
+        "title": "कालो र सेतो",
+        "description": "कालो-सेतो प्रभाव लागू गर्नुहोस्।"
+      }
+    ]
+  }
+}

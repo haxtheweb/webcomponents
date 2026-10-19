@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Vorderingsdonut",
+    "description": "Vorderingsdonut"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Die titel van die element"
+      },
+      {
+        "property": "desc",
+        "title": "Beskrywing",
+        "description": "Toeganklike lang beskrywing"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Prentbron",
+        "description": "Bron van prent binne donut."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Prent-alt-teks",
+        "description": "Alt-teks vir prent."
+      },
+      {
+        "property": "animated",
+        "title": "Geanimeer",
+        "description": "Of vordering by eerste laai animeer"
+      },
+      {
+        "property": "complete",
+        "title": "Voltooi",
+        "description": "'n Skikking van voltooide waardes."
+      },
+      {
+        "property": "total",
+        "title": "Totaal",
+        "description": "Totaal wanneer alle items voltooi is."
+      },
+      {
+        "property": "startAngle",
+        "title": "Beginhoek",
+        "description": "Donuthoek waar vordering begin"
+      }
+    ]
+  }
+}

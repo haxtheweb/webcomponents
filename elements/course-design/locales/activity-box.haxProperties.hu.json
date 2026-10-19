@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tevékenységdoboz",
+    "description": "Kis formázott címsorblokk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "A tevékenységdoboz mellett megjelenő ikon."
+      },
+      {
+        "property": "tag",
+        "title": "Tevékenységdoboz címkéje",
+        "description": "A tevékenységdobozban megjelenő címke."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Színezés nélkül",
+        "description": "Megakadályozza, hogy az ikon színezést kapjon."
+      }
+    ]
+  }
+}

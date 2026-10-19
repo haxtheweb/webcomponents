@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "छोटो उत्तर प्रश्न",
+    "description": "प्रयोगकर्तालाई एउटा आधारभूत प्रश्नको उत्तर दिन लगाउनुहोस्"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "प्रश्न",
+        "description": "प्रयोगकर्ताहरूले जवाफ दिने प्रश्न।"
+      },
+      {
+        "property": "answers",
+        "title": "सम्भावित उत्तरहरू"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "क्विजको नाम",
+        "description": "xAPI-सञ्चालित वातावरणमा यस वस्तुको पहिचानका लागि पठाइने क्विजको नाम"
+      }
+    ]
+  }
+}

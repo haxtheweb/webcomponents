@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "進捗ドーナツ",
+    "description": "進捗ドーナツグラフ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "要素のタイトル"
+      },
+      {
+        "property": "desc",
+        "title": "説明",
+        "description": "アクセシブルな詳細説明"
+      },
+      {
+        "property": "imageSrc",
+        "title": "画像ソース",
+        "description": "ドーナツ内の画像のソース。"
+      },
+      {
+        "property": "imageAlt",
+        "title": "画像の代替テキスト",
+        "description": "画像の代替テキスト。"
+      },
+      {
+        "property": "animated",
+        "title": "アニメーション",
+        "description": "初回読み込み時に進捗をアニメーション表示するかどうか"
+      },
+      {
+        "property": "complete",
+        "title": "完了",
+        "description": "完了した値の配列。"
+      },
+      {
+        "property": "total",
+        "title": "合計",
+        "description": "すべての項目が完了したときの合計。"
+      },
+      {
+        "property": "startAngle",
+        "title": "開始角度",
+        "description": "進捗が始まるドーナツの角度"
+      }
+    ]
+  }
+}

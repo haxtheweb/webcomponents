@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Oprop ta aksje",
+    "description": "In ienfâldige knop mei in keppeling om aksje te nimmen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Keppelingslabel"
+      },
+      {
+        "property": "link",
+        "title": "Keppeling",
+        "description": "Fier in keppeling nei in boarne yn"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Ikoan ferbergje",
+        "description": "It ikoan ferbergje dat brûkt wurdt om tekst te aksintuearjen"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikoan",
+        "description": "Ikoan fan aksjekeppeling"
+      }
+    ]
+  }
+}

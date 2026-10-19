@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Codebeispiel",
+    "description": "Ein auf der Seite hervorgehobenes Codebeispiel"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Code-Hervorhebung",
+        "description": "Syntaxhervorhebung für den Codebereich",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-Daten",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Button „In Zwischenablage kopieren“",
+        "description": "Button oben rechts mit der Aufschrift „In Zwischenablage kopieren“"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Hervorhebung Beginn",
+        "description": "Zeilennummer, ab der hervorgehoben wird"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Hervorhebung Ende",
+        "description": "Zeile, bis zu der hervorgehoben wird"
+      }
+    ]
+  }
+}

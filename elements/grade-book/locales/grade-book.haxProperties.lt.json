@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pažymių knyga",
+    "description": "Pažymių knyga be sąsajos, palaikanti kelias vidines sistemas ir vertinimo kriterijų lenteles."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Šaltinis",
+        "description": "Duomenų šaltinio tipas (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL galinis taškas (JSON)",
+          "json": "JSON duomenų blokas",
+          "filesystem": "Failų sistema"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Šaltinio duomenys",
+        "description": "Pažymių knygos URL arba JSON duomenys."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurso nuoroda",
+        "description": "Kurso identifikatorius, pateikiamas kaip oer:forCourse kiekviename vertinimo (Assessment) ištekliuje."
+      }
+    ]
+  }
+}

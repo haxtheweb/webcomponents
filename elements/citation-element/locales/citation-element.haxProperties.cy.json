@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Cyfeiriad",
+    "description": "Elfen ddyfynnu gyda thri modd cyflwyno."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Teitl y gwaith a ddyfynnir."
+      },
+      {
+        "property": "source",
+        "title": "Dolen y ffynhonnell",
+        "description": "URL ffynhonnell y gwaith a ddyfynnir."
+      },
+      {
+        "property": "date",
+        "title": "Dyddiad cyrchu",
+        "description": "Y dyddiad y cyrchwyd y ffynhonnell."
+      },
+      {
+        "property": "scope",
+        "title": "Cwmpas",
+        "description": "Cwmpas yr elfen i'w dyfynnu.",
+        "options": {
+          "sibling": "Elfen gyfochrog",
+          "parent": "Elfen riant"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Trwydded",
+        "description": "Trwydded y gwaith a ddyfynnir."
+      },
+      {
+        "property": "creator",
+        "title": "Crëwr",
+        "description": "Crëwr neu berchennog y gwaith a ddyfynnir."
+      },
+      {
+        "property": "typeof",
+        "title": "Math OER Schema",
+        "description": "Dosbarth OER Schema ar gyfer y dyfyniad hwn. Y rhagosodiad yw oer:ReferencedMaterial; diystyrwch dim ond gyda dosbarth OER dilys (e.e. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

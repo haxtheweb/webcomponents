@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Upota ulkoista verkkosisältöä iframeen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Resurssin URL",
+        "description": "Resurssin URL."
+      },
+      {
+        "property": "height",
+        "title": "Korkeus",
+        "description": "Iframen korkeus."
+      },
+      {
+        "property": "width",
+        "title": "Leveys",
+        "description": "Iframen leveys."
+      }
+    ]
+  }
+}

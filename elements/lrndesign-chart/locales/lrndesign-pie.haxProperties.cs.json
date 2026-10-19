@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Koláčový graf",
+    "description": "Vytvoří přístupný graf na základě CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zvýrazňující barva",
+        "description": "Volitelná zvýrazňující barva."
+      },
+      {
+        "title": "Tmavý motiv",
+        "description": "Zapnout tmavý motiv"
+      },
+      {
+        "title": "Soubor CSV",
+        "description": "Načíst data z CSV."
+      },
+      {
+        "title": "Název grafu",
+        "description": "Přístupný alternativní text grafu."
+      },
+      {
+        "title": "Popis grafu",
+        "description": "Přístupný popis grafu."
+      },
+      {
+        "title": "Název měřítka",
+        "description": "Poměr šířka:výška grafu (viz https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings pro $ct-scales a $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Prstenec"
+      },
+      {
+        "title": "Zobrazit popisek"
+      },
+      {
+        "title": "Počáteční úhel"
+      },
+      {
+        "title": "Vnitřní okraj"
+      },
+      {
+        "title": "Celkem",
+        "description": "Volitelný celkový součet. Pokud zadáte celkovou hodnotu, součet hodnot v řadě musí být roven tomuto součtu, aby se vykreslil celý koláč. Tento parametr můžete použít k vykreslení jen částí koláče nebo budíkových grafů."
+      },
+      {
+        "title": "Ignorovat prázdné hodnoty",
+        "description": "Prázdné hodnoty budou ignorovány, aby se nevykreslovaly zbytečné výseče a popisky."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Obrátit data",
+        "description": "Obrátit data včetně popisků, pořadí řad i celých datových polí řad."
+      },
+      {
+        "title": "Tabulka HTML",
+        "description": "Volitelné: Načíst data jako tabulku HTML."
+      },
+      {
+        "title": "Šířka tahu prstence"
+      },
+      {
+        "title": "Plný prstenec",
+        "description": "Vykreslit segmenty prstence jako tvary místo tahů."
+      },
+      {
+        "title": "Směr popisků",
+        "description": "Vykreslit segmenty prstence jako tvary místo tahů.",
+        "options": {
+          "neutral": "neutrální",
+          "explode": "ven",
+          "implode": "dovnitř"
+        }
+      },
+      {
+        "title": "Posun popisků",
+        "description": "Posun pozice popisku od standardní pozice, která je v polovině poloměru. Hodnota může být kladná i záporná. Kladné hodnoty umístí popisek dál od středu."
+      },
+      {
+        "title": "Pozice popisků",
+        "options": {
+          "inside": "uvnitř",
+          "outside": "vně",
+          "center": "na střed"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "خال ڀريو",
+    "description": "جائزي جي سرگرمي جنهن ۾ سکندڙ بيان ۾ گم ٿيل لفظ مڪمل ڪن ٿا."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "سوال",
+        "description": "يوزرن لاءِ جواب ڏيڻ وارو سوال."
+      },
+      {
+        "property": "statement",
+        "title": "بيان",
+        "description": "اهو بيان جيڪو لفظ نشان لڳايو انٽرايڪشن ۾ تبديل ٿيندو."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "گريڊنگ فارميٽ",
+        "description": "OER Schema: هن جائزي لاءِ گريڊنگ فارميٽ (مثال طور پوائنٽس، اکر، سيڪڙو، مڪمل ٿيڻ)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "سکيا جو مقصد",
+        "description": "OER Schema: هن جائزي سان لاڳاپيل سکيا جو مقصد."
+      },
+      {
+        "property": "forCourse",
+        "title": "ڪورس",
+        "description": "OER Schema: اهو ڪورس جنهن لاءِ هي جائزو آهي."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ڪوئز جو نالو",
+        "description": "xAPI تي ٻڌل ماحول ۾ هن شيءِ جي سڃاڻپ لاءِ موڪليل ڪوئز جو نالو"
+      }
+    ]
+  }
+}

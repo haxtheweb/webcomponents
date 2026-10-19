@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Вопрос «Верно / Неверно»",
+    "description": "Вопрос «верно/неверно»"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Вопрос",
+        "description": "Вопрос, на который отвечают пользователи."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Правильный ответ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Название теста",
+        "description": "Название теста, передаваемое для идентификации этого элемента в средах на основе xAPI"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "თარიღი",
+    "description": "კალენდარული თარიღის ჩვენება დეტალებით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "თვე",
+        "description": "ბარათზე ნაჩვენები თვე."
+      },
+      {
+        "property": "date",
+        "title": "თვის რიცხვი",
+        "description": "თვის დღე რიცხვით."
+      },
+      {
+        "property": "day",
+        "title": "კვირის დღე",
+        "description": "კვირის დღე ტექსტით."
+      },
+      {
+        "property": "title",
+        "title": "სათაური",
+        "description": "ღონისძიების სახელი."
+      },
+      {
+        "property": "location",
+        "title": "მდებარეობა",
+        "description": "ღონისძიების მდებარეობა."
+      },
+      {
+        "property": "startTime",
+        "title": "დაწყება",
+        "description": "დაწყების დრო."
+      },
+      {
+        "property": "endTime",
+        "title": "დასრულება",
+        "description": "დასრულების დრო."
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "არასავალდებულო აქცენტის ფერი."
+      },
+      {
+        "property": "dark",
+        "title": "მუქი თემა",
+        "description": "მუქი თემის ჩართვა."
+      }
+    ]
+  }
+}

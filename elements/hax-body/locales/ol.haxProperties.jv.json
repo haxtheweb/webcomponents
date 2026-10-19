@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Dhaftar angka",
+    "description": "Gawe dhaptar nomer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Gaya nomer",
+        "description": "Gaya sing dienggo kanggo panomeran dhaptar urut.",
+        "options": {
+          "": "Gawan (desimal)",
+          "list-decimal-leading-zero": "Desimal kanthi nol ing ngarep (01, 02, 03)",
+          "list-lower-alpha": "Aksara cilik (a, b, c)",
+          "list-upper-alpha": "Aksara gedhe (A, B, C)",
+          "list-lower-roman": "Romawi cilik (i, ii, iii)",
+          "list-upper-roman": "Romawi gedhe (I, II, III)"
+        }
+      }
+    ]
+  }
+}

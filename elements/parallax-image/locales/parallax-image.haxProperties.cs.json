@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Paralaxní obrázek",
+    "description": "Obrázek posouvaný při rolování"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Obrázek",
+        "description": "obrázek použitý na pozadí"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Oblast nadpisu",
+        "description": "Textová oblast nadpisu"
+      }
+    ]
+  }
+}

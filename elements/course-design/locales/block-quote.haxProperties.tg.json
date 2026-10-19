@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Иқтибоси блокӣ",
+    "description": "Блоки иқтибоси ороёфта."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Иқтибос",
+        "description": "Матни иқтибос."
+      },
+      {
+        "property": "alt",
+        "title": "Алт",
+        "description": "Матни алтернативӣ барои тасвир."
+      },
+      {
+        "property": "image",
+        "title": "Тасвир",
+        "description": "Тасвире, ки бо иқтибос нишон дода мешавад."
+      }
+    ]
+  }
+}

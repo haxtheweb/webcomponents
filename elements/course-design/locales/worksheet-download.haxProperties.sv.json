@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Nedladdning av arbetsblad",
+    "description": "En knapp för att visa filer som finns att ladda ner."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Nedladdningens titel."
+      },
+      {
+        "property": "link",
+        "title": "Länk",
+        "description": "Länken för nedladdningen."
+      }
+    ]
+  }
+}

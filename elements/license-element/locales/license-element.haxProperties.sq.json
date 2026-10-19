@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Licenca",
+    "description": "Jep një licencë për punën tënde."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Titulli i veprës së cituar."
+      },
+      {
+        "property": "source",
+        "title": "Lidhja e burimit",
+        "description": "URL-ja burimore e veprës së licencuar."
+      },
+      {
+        "property": "license",
+        "title": "Licenca",
+        "description": "Licenca e zbatuar për këtë vepër."
+      },
+      {
+        "property": "creator",
+        "title": "Krijuesi",
+        "description": "Krijuesi ose pronari i kësaj vepre."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Lidhja e burimit",
+        "description": "Lidhje te detaje shtesë të licencimit."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Etiketa \"Më shumë\"",
+        "description": "Etiketa për detajet shtesë të licencimit."
+      }
+    ]
+  }
+}

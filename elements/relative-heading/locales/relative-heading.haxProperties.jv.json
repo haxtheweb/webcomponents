@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Judhul relatif",
+    "description": "ngasilake hierarki judhul sing bener adhedhasar judhul induk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID Sumber Judhul Induk"
+      },
+      {
+        "property": "disableLink",
+        "description": "Mateni fitur tombol link."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Nyelarasake tombol salin link ing sisih tengen judhul."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Tingkat judhul yen induk ora ditemokake."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Ngganti teks gawan kanggo pesen toast salin link."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Ngganti label gawan tombol salin link."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Ngganti lambang gawan tombol salin link."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Ngganti label gawan kanggo tombol tutup toast salin link."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Ngganti lambang gawan kanggo tombol tutup toast salin link."
+      }
+    ]
+  }
+}

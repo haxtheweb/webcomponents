@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Karta çîrokê ya Polaris",
+    "description": "Karta çîrokê ya Polaris bi wêneyê paşxanê, etîketa stûnê û nivîsa manşetê nîşan bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Wêneyê paşxanê",
+        "description": "URL ya wêneyê ku wekî paşxaneya kartê tê nîşandan."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Mezinahiya paşxanê",
+        "description": "Wêneyê paşxanê kartê çawa tije dike (CSS background-size).",
+        "options": {
+          "cover": "Dapoşîn (cover)",
+          "contain": "Tê de bihewîne (contain)",
+          "auto": "Otomatîk (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Girêdana paşxanê",
+        "description": "Wêneyê paşxanê dema gerandinê çawa tevdigere (CSS background-attachment).",
+        "options": {
+          "scroll": "Gerandin (scroll)",
+          "fixed": "Sabît (fixed)",
+          "local": "Herêmî (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Etîketa stûnê",
+        "description": "Etîketa kurt a bi tîpên mezin ku li jorê kartê tê nîşandan. Ji bo veşartinê vala bihêle."
+      },
+      {
+        "property": "label",
+        "title": "Nivîsa kartê",
+        "description": "Nivîsa sereke ku di panela jêrîn de tê nîşandan."
+      },
+      {
+        "property": "link",
+        "title": "Girêdan",
+        "description": "URL ya armanc a vebijarkî ku hemû kartê dorpêç dike."
+      }
+    ]
+  }
+}

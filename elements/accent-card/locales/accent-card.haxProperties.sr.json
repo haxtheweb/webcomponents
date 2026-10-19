@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Картица",
+    "description": "Картица са опционим стилом акцента."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Наслов",
+        "description": "Наслов картице."
+      },
+      {
+        "slot": "subheading",
+        "title": "Поднаслов",
+        "description": "Опциони поднаслов картице."
+      },
+      {
+        "slot": "content",
+        "title": "Садржај",
+        "description": "Садржај картице."
+      },
+      {
+        "slot": "footer",
+        "title": "Подножје",
+        "description": "Опционо подножје картице."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Слика",
+        "description": "Опциона слика"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt текст слике",
+        "description": "Алтернативни текст који описује слику за читаче екрана. Оставите празно само ако је слика искључиво декоративна."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Хоризонтално поравнање слике",
+        "options": {
+          "left": "лево",
+          "center": "центар",
+          "right": "десно"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Вертикално поравнање слике",
+        "options": {
+          "top": "врх",
+          "center": "центар",
+          "bottom": "дно"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Опционална акцентна боја."
+      },
+      {
+        "property": "dark",
+        "title": "Тамна тема",
+        "description": "Омогући тамну тему"
+      },
+      {
+        "property": "horizontal",
+        "title": "Хоризонтално",
+        "description": "Хоризонтална оријентација?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Акцент наслова",
+        "description": "Применити боју акцента на наслов?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Акцент позадине",
+        "description": "Применити боју акцента на позадину картице?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Без акцента ивице",
+        "description": "Уклонити акцент ивице?"
+      },
+      {
+        "property": "flat",
+        "title": "Равно",
+        "description": "Уклонити сенку оквира?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Угао",
+        "description": "Садржај за угао картице."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ліцэнзія",
+    "description": "Укажыце ліцэнзію для вашай працы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Загаловак",
+        "description": "Назва цытаванай працы."
+      },
+      {
+        "property": "source",
+        "title": "Спасылка на крыніцу",
+        "description": "URL крыніцы ліцэнзаванай працы."
+      },
+      {
+        "property": "license",
+        "title": "Ліцэнзія",
+        "description": "Ліцэнзія, ужытая да гэтай працы."
+      },
+      {
+        "property": "creator",
+        "title": "Аўтар",
+        "description": "Аўтар або ўладальнік гэтай працы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Спасылка на крыніцу",
+        "description": "Спасылка на дадатковыя звесткі пра ліцэнзію."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Подпіс «Больш»",
+        "description": "Подпіс для дадатковых звестак пра ліцэнзію."
+      }
+    ]
+  }
+}

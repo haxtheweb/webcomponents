@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Picha Rahisi",
+    "description": "Badilisha picha kwa vigezo rahisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Chanzo",
+        "description": "URL ya chanzo cha picha."
+      },
+      {
+        "property": "height",
+        "title": "Urefu",
+        "description": "Urefu wa hiari wa picha."
+      },
+      {
+        "property": "width",
+        "title": "Upana",
+        "description": "Upana wa hiari wa picha."
+      },
+      {
+        "property": "alt",
+        "title": "Maandishi mbadala",
+        "description": "Muhimu kwa visoma skrini na SEO bora."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Ubora",
+        "description": "Ubora wa picha wakati wa kuunda (JPEG pekee)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Kipaumbele cha Kuleta",
+        "description": "Dokezo la utendaji kwa vivinjari vya kisasa.",
+        "options": {
+          "auto": "Kiotomatiki",
+          "high": "Juu",
+          "low": "Chini"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Mbinu ya kusimbua",
+        "description": "Dokezo la utendaji kwa uonyeshaji wa picha katika vivinjari vya kisasa.",
+        "options": {
+          "auto": "Kiotomatiki",
+          "async": "Isiyosawazishwa"
+        }
+      }
+    ]
+  }
+}

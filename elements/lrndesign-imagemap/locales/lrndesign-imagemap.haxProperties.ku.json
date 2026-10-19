@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Nexşeya wêneyê",
+    "description": "Nexşeya wêneyê ya gihîştbar bi xalên germ ên înteraktîf."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etîket",
+        "description": "Etîketa nexşeya wêneyê."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Hûrguliyên xalên germ",
+        "description": "Xalên germ ên înteraktîf li ser nexşeya wêneyê."
+      }
+    ]
+  }
+}

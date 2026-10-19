@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "ویڈیو",
+    "description": "متعدد ذرائع سے قابل رسائی ویڈیو پلے بیک۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ماخذ",
+        "description": "اس میڈیا کا URL۔"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "عنوان",
+        "description": "ویڈیو کے نیچے دکھایا جانے والا عنوان۔"
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "پوسٹر تصویر",
+        "description": "پوسٹر تصویر کا URL۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "ٹیکسٹ ٹریکس",
+        "description": "ویڈیو کے لیے بند کیپشنز، سب ٹائٹلز، وضاحتیں اور دیگر ٹیکسٹ ٹریکس۔"
+      },
+      {
+        "property": "startTime",
+        "title": "آغاز کا وقت",
+        "description": "ویڈیو کو مخصوص وقت (سیکنڈز) سے شروع کریں۔"
+      },
+      {
+        "property": "endTime",
+        "title": "اختتام کا وقت",
+        "description": "ویڈیو کو مخصوص وقت (سیکنڈز) پر ختم کریں، آغاز کا وقت درکار ہے۔"
+      },
+      {
+        "property": "learningMode",
+        "title": "تعلیمی موڈ فعال کریں",
+        "description": "آگے اور پیچھے کرنا غیر فعال کرتا ہے۔"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube پر کھولنے کا بٹن ہٹائیں",
+        "description": "ویڈیو کو YouTube پر کھولنے کا بٹن ہٹاتا ہے۔"
+      },
+      {
+        "property": "linkable",
+        "title": "شیئر لنک شامل کریں؟",
+        "description": "ویڈیو شیئر کرنے کے لیے لنک فراہم کرتا ہے۔"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ٹائم اسٹیمپس چھپائیں",
+        "description": "ٹرانسکرپٹ پر وقت کی مہریں چھپائیں۔"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ٹرانسکرپٹ چھپائیں",
+        "description": "ٹرانسکرپٹ طے شدہ طور پر چھپائیں۔"
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "آڈیو وضاحت ٹریک",
+        "description": "آڈیو وضاحت ٹریک (MP3 فائل) کا URL جو بصری عناصر کی بیان کاری فراہم کرتا ہے۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "بتاتا ہے کہ CORS استعمال کرنا ہے یا نہیں۔",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "پس منظر میں چلانے کی اجازت دیں",
+        "description": "براؤزر ٹیب سے فوکس ہٹنے پر بھی چلتا رہے۔"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ٹرانسکرپٹ کے لیے ڈارک تھیم",
+        "description": "ٹرانسکرپٹ کے لیے ڈارک تھیم فعال کریں۔"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "تعاملی موڈ غیر فعال کریں",
+        "description": "وہ تعاملی موڈ غیر فعال کریں جو ٹرانسکرپٹ کو قابل کلک بناتا ہے۔"
+      },
+      {
+        "property": "lang",
+        "title": "زبان",
+        "description": "میڈیا کی زبان۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "(فرسودہ) پلیئر کے لیے ایکسنٹ رنگ منتخب کریں۔"
+      }
+    ]
+  }
+}

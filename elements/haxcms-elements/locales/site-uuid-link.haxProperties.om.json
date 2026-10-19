@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Liinkii HAX",
+    "description": "Liinkii qabeenya murtaa'e marsariitii irratti hojjechaa jirtu keessaa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Wanta",
+        "description": "Wanta liinkii / daataa mata dureetiif agarsiifamu"
+      }
+    ]
+  }
+}

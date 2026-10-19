@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS görnüşi",
+    "description": "Arka tarapda görkezilýän CMS görnüşleri"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Ady",
+        "description": "Biziň CMS-däki görnüşiň ady"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Görkeziş",
+        "description": "Biziň CMS-däki şol görnüşiň içindäki displeý"
+      }
+    ]
+  }
+}

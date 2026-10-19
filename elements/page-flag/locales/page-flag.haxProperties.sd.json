@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "صفحي جو جھنڊو",
+    "description": "صفحي جي ليکڪن لاءِ ادارتي نوٽ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "صفحي جي جھنڊي لاءِ نمايان رنگ."
+      },
+      {
+        "property": "label",
+        "title": "ليبل",
+        "description": "صفحي جي جھنڊي لاءِ ليبل متن."
+      }
+    ]
+  }
+}

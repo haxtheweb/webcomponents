@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Chamada á acción",
+    "description": "Un botón simple cunha ligazón para pasar á acción."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiqueta",
+        "description": "Etiqueta da ligazón"
+      },
+      {
+        "property": "link",
+        "title": "Ligazón",
+        "description": "Introduce unha ligazón a calquera recurso"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Ocultar icona",
+        "description": "Ocultar a icona usada para destacar o texto"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona da ligazón de acción"
+      }
+    ]
+  }
+}

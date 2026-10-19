@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Պարալաքս նկար",
+    "description": "Նկարի ոլորում"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Պատկեր",
+        "description": "ֆոնում օգտագործվող նկար"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Վերնագրի հատված",
+        "description": "Վերնագրի տեքստային հատված"
+      }
+    ]
+  }
+}

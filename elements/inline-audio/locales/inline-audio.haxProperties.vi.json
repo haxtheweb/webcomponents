@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Âm thanh nội tuyến",
+    "description": "Phát âm thanh nội tuyến để bổ sung cho nội dung trang."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Nguồn",
+        "description": "Tệp hoặc URL MP3."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nhấn của thẻ."
+      },
+      {
+        "property": "shiny",
+        "title": "Sáng bóng",
+        "description": "Dùng nền màu nhấn nhạt hơn thay vì màu xám."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tối",
+        "description": "Dùng chế độ tối."
+      }
+    ]
+  }
+}

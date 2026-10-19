@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "შეფასებების ჟურნალი",
+    "description": "უინტერფეისო შეფასებების ჟურნალი, რომელიც მრავალ backend-სა და რუბრიკებს უჭერს მხარს."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "წყარო",
+        "description": "მონაცემთა წყაროს ტიპი (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "JSON მონაცემთა ბლოკი",
+          "filesystem": "ფაილური სისტემა"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "წყაროს მონაცემები",
+        "description": "URL ან JSON მონაცემები შეფასებების ჟურნალისთვის."
+      },
+      {
+        "property": "forCourse",
+        "title": "კურსის მითითება",
+        "description": "კურსის იდენტიფიკატორი, რომელიც თითოეულ Assessment რესურსზე oer:forCourse-ად გამოიტანება."
+      }
+    ]
+  }
+}

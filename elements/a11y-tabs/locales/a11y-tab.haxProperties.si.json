@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ටැබය",
+    "description": "තනි ටැබයක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ටැබ නිරූපකය"
+      },
+      {
+        "property": "disabled",
+        "title": "අබල කර ඇත"
+      },
+      {
+        "property": "label",
+        "title": "ටැබ ලේබලය"
+      },
+      {
+        "slot": "",
+        "title": "ටැබ අන්තර්ගතය",
+        "description": "ටැබයේ අන්තර්ගතයක්."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "අනන්‍ය ID"
+      },
+      {
+        "property": "flag",
+        "title": "විකල්ප ධජ පෙළ"
+      },
+      {
+        "property": "flagIcon",
+        "title": "විකල්ප ධජ නිරූපකය"
+      }
+    ]
+  }
+}

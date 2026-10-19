@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "远程内容",
+    "description": "在一个站点中复用另一个站点的内容。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "站点地址",
+        "description": "如果不是当前站点，请粘贴要引用内容的站点地址"
+      },
+      {
+        "property": "uuid",
+        "title": "项目",
+        "description": "用于呈现链接 / 标题数据的项目"
+      },
+      {
+        "property": "breakreference",
+        "title": "断开引用",
+        "description": "勾选此框会复制远程内容以便在本地编辑，但会移除关联。引用的源内容更新时，此处将不再同步更新。"
+      },
+      {
+        "property": "showTitle",
+        "title": "显示标题",
+        "description": "开启后显示所展示资源的标题"
+      }
+    ]
+  }
+}

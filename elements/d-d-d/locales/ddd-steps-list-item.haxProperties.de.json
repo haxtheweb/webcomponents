@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Schrittelement",
+    "description": "Element, das Teil einer Schrittliste ist"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel"
+      }
+    ]
+  }
+}

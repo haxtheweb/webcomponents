@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Välilehti",
+    "description": "Yksittäinen välilehti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Välilehden kuvake"
+      },
+      {
+        "property": "disabled",
+        "title": "Pois käytöstä"
+      },
+      {
+        "property": "label",
+        "title": "Välilehden nimi"
+      },
+      {
+        "slot": "",
+        "title": "Välilehden sisältö",
+        "description": "Välilehden sisältö."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Yksilöllinen ID"
+      },
+      {
+        "property": "flag",
+        "title": "Valinnainen merkintäteksti"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Valinnainen merkintäkuvake"
+      }
+    ]
+  }
+}

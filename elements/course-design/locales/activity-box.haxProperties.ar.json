@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "صندوق النشاط",
+    "description": "كتلة عنوان صغيرة منسَّقة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "الأيقونة",
+        "description": "أيقونة تُعرض بجانب صندوق النشاط."
+      },
+      {
+        "property": "tag",
+        "title": "وسم صندوق النشاط",
+        "description": "الوسم المعروض في صندوق النشاط."
+      },
+      {
+        "property": "nocolourize",
+        "title": "بدون تلوين",
+        "description": "منع تطبيق الألوان على الأيقونة."
+      }
+    ]
+  }
+}

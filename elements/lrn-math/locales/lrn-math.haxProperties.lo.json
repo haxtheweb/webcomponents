@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ຄະນິດສາດ",
+    "description": "ນຳສະເໜີຄະນິດສາດໃນແບບທີ່ສວຍງາມ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "ຄະນິດສາດ",
+        "description": "ໃສ່ສົມຜົນເປັນ LaTeX"
+      }
+    ]
+  }
+}

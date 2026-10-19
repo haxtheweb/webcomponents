@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Blok sitat",
+    "description": "Üslublu sitat bloku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "İstinad",
+        "description": "İstinad mətni."
+      },
+      {
+        "property": "alt",
+        "title": "Alt mətn",
+        "description": "Şəkil üçün alternativ mətn."
+      },
+      {
+        "property": "image",
+        "title": "Şəkil",
+        "description": "Sitatla birlikdə göstərilən şəkil."
+      }
+    ]
+  }
+}

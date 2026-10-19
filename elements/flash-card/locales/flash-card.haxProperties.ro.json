@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Fișă de memorare",
+    "description": "Exersați concepte cu fișe de memorare cu față și verso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Fața fișei",
+        "description": "Textul sau întrebarea de pe față."
+      },
+      {
+        "slot": "back",
+        "title": "Versoul fișei",
+        "description": "Răspunsul așteptat."
+      },
+      {
+        "property": "imgSource",
+        "title": "Sursa imaginii",
+        "description": "Fișierul imagine folosit pentru fișă. Înlocuiește Cuvântul cheie pentru imagine."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tipul acțiunii",
+        "description": "OER Schema: tipul de acțiune implicat de această exersare (de ex. Reading, Writing, Making, Researching, Listening, Watching, Reflecting, Discussing, Observing, Presenting, Assess)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiectiv de învățare",
+        "description": "OER Schema: ID-ul sau URL-ul obiectivului de învățare susținut de această exersare."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Întunecat",
+        "description": "Folosește modul întunecat."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Culoarea de accent a fișei."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Cuvânt cheie pentru imagine",
+        "description": "Cuvânt cheie pentru o imagine aleatorie. Înlocuit de Sursa imaginii."
+      }
+    ]
+  }
+}

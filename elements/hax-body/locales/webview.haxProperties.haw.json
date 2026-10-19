@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Kumu",
+        "description": "URL no kēia kumuwaiwai."
+      }
+    ]
+  }
+}

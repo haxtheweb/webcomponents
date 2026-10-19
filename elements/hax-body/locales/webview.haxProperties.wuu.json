@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "来源",
+        "description": "搿只资源个 URL。"
+      }
+    ]
+  }
+}

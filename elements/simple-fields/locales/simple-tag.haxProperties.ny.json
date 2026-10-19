@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tagi / Piritsi",
+    "description": "Dzina laling'ono looneka ngati piritsi lokhala ndi mtundu wowonjezera, batani loletsa, kapena chosinthira chosankha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Dzina",
+        "description": "Mawu owonetsedwa mkati mwa piritsi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu wowonjezera",
+        "description": "Dzina la mtundu wowonjezera wa SimpleColors wa kumbuyo kwa piritsi.",
+        "options": {
+          "": "-- mwachisawawa --",
+          "red": "Wofiira",
+          "pink": "Pinki",
+          "purple": "Wofiirira",
+          "deep-purple": "Wofiirira Wakuda",
+          "indigo": "Indigo",
+          "blue": "Wabuluu",
+          "light-blue": "Buluu Wowala",
+          "cyan": "Sayani",
+          "teal": "Buluu Wobiriwira",
+          "green": "Wobiriwira",
+          "light-green": "Wobiriwira Wowala",
+          "lime": "Laimu",
+          "yellow": "Wachikasu",
+          "amber": "Amber",
+          "orange": "Walalanje",
+          "deep-orange": "Lalanje Lakuda",
+          "brown": "Bulauni",
+          "blue-grey": "Imvi ya Buluu",
+          "grey": "Imvi"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Mtundu wowonjezera wokha",
+        "description": "Pezani mtundu wowonjezera kuchokera m'mawu a dzina lokha."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Batani loletsa",
+        "description": "Onetsani batani la chizindikiro chochotsa/kuletsa mkati mwa piritsi."
+      },
+      {
+        "property": "readonly",
+        "title": "Kuwerenga kokha",
+        "description": "Bisani batani loletsa kuti piritsi likhale lowonetsa lokha."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Zosinthira",
+        "description": "Pangani piritsi kuyatsa/kuzimitsa batani likadindidwa."
+      },
+      {
+        "property": "toggled",
+        "title": "Loyatsidwa",
+        "description": "Kaya piritsi layatsidwa panopa."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Chizindikiro choyatsidwa",
+        "description": "Chizindikiro chowonetsedwa piritsi likayatsidwa."
+      },
+      {
+        "property": "disabled",
+        "title": "Zoletsedwa",
+        "description": "Letsani zochita ndi piritsi."
+      }
+    ]
+  }
+}

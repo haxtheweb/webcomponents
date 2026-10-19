@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ハイライト",
+    "description": "インラインテキストをハイライトします。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "テキスト",
+        "description": "ハイライトされたテキスト。"
+      }
+    ]
+  }
+}

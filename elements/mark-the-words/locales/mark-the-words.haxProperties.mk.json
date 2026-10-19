@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Означете ги зборовите",
+    "description": "Препознајте поими преку зборови со кликнување во текстот."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Прашање",
+        "description": "Прашање на кое корисниците треба да одговорат."
+      },
+      {
+        "property": "statement",
+        "title": "Исказ",
+        "description": "Исказ што ќе се претвори во интеракција за означување зборови."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат на оценување",
+        "description": "OER Schema: формат на оценување за оваа проценка (на пр. поени, буква, процент, завршеност)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Цел на учење",
+        "description": "OER Schema: цел на учење поврзана со оваа проценка."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс за кој е наменета оваа проценка."
+      },
+      {
+        "property": "answers",
+        "title": "Одговори"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Име на квизот",
+        "description": "Име на квизот што се предава за употреба во средини водени од xAPI, за идентификација на оваа ставка"
+      }
+    ]
+  }
+}

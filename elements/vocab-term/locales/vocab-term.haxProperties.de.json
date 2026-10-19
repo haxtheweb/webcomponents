@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Vokabel",
+    "description": "Vokabelbegriff."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Begriff"
+      },
+      {
+        "property": "information",
+        "title": "Definition",
+        "description": "Definition, die beim Anklicken des Begriffs angezeigt wird."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "Die Definition in einem Popover statt inline anzeigen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Links",
+        "description": "Liste ergänzender Links zu diesem Begriff."
+      }
+    ]
+  }
+}

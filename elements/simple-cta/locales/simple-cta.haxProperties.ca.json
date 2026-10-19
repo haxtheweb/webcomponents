@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Crida a l'acció",
+    "description": "Un botó senzill amb un enllaç per actuar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiqueta",
+        "description": "Etiqueta de l'enllaç"
+      },
+      {
+        "property": "link",
+        "title": "Enllaç",
+        "description": "Introdueix un enllaç a qualsevol recurs"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Amaga la icona",
+        "description": "Amaga la icona utilitzada per destacar el text"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona de l'enllaç d'acció"
+      }
+    ]
+  }
+}

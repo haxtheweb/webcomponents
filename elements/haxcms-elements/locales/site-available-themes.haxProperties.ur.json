@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "دستیاب تھیمز",
+    "description": "براہ راست پیش منظر کی تبدیلی کے ساتھ دستیاب HAXcms تھیمز دکھائیں"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "ویو موڈ",
+        "description": "تھیمز دکھانے کا طریقہ منتخب کریں",
+        "options": {
+          "gallery": "گیلری",
+          "table": "جدول"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "تفصیلات دکھائیں",
+        "description": "تھیم کی وضاحتیں اور اضافی معلومات دکھائیں"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "پوشیدہ اور پرانے تھیمز دکھائیں",
+        "description": "ڈیش بورڈ کے طے شدہ کے علاوہ پوشیدہ، پرانے اور ناقص تھیمز بھی دکھائیں"
+      },
+      {
+        "property": "columns",
+        "title": "کالم (گیلری)",
+        "description": "گیلری ویو میں کالموں کی تعداد"
+      }
+    ]
+  }
+}

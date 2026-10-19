@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Bhatani reEbook",
+    "description": "Bhatani rinongedzera kuEbook."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Zita rebhatani."
+      },
+      {
+        "property": "link",
+        "title": "Chinongedzo",
+        "description": "Chinongedzo chekuendeswa kwachiri kana chadzvanywa."
+      },
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni inomiririra chinongedzo ichi"
+      }
+    ]
+  }
+}

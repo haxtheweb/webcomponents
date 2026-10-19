@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Видео",
+    "description": "Берничә чыганактан үтемле видео уйнату."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Чыганак",
+        "description": "Бу медиа өчен URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Исем",
+        "description": "Видео астында күрсәтелә торган исем."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Постер рәсеме",
+        "description": "Постер рәсеменең URL'ы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Текст юллары",
+        "description": "Видео өчен яшерен субтитрлар, субтитрлар, тасвирламалар һәм башка текст юллары."
+      },
+      {
+        "property": "startTime",
+        "title": "Башлану вакыты",
+        "description": "Видеоны билгеле бер вакыттан башлау (секундларда)."
+      },
+      {
+        "property": "endTime",
+        "title": "Тәмамлану вакыты",
+        "description": "Видеоны билгеле бер вакытта тәмамлау (секундларда), башлану вакыты таләп ителә."
+      },
+      {
+        "property": "learningMode",
+        "title": "Уку режимын кабызу",
+        "description": "Алга һәм артка тиз әйләндерүне сүндерә."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube'та ачу төймәсен бетерү",
+        "description": "Видеоны YouTube'та ачу төймәсен бетерә."
+      },
+      {
+        "property": "linkable",
+        "title": "Бүлешү сылтамасы кертергәме?",
+        "description": "Видео белән бүлешү өчен сылтама бирә."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Вакыт билгеләрен яшерү",
+        "description": "Транскрипттагы вакыт билгеләрен яшерү."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Транскриптны яшерү",
+        "description": "Килешү буенча транскриптны яшерү."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Аудиотасвирлама юлы",
+        "description": "Визуаль элементларны сөйләп бирүче аудиотасвирлама юлының (MP3 файлы) URL'ы."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS кулланырга кирәклеген күрсәтә.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Фонда уйнатуга рөхсәт итү",
+        "description": "Браузер кыстыргычы фокусны югалтканда да уйнатуны дәвам итү."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Транскрипт өчен караңгы тема",
+        "description": "Транскрипт өчен караңгы теманы кабызу."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Интерактивлыкны сүндерү",
+        "description": "Транскриптны басып була торган итә торган интерактив режимны сүндерү."
+      },
+      {
+        "property": "lang",
+        "title": "Тел",
+        "description": "Медиа теле."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "(искергән) Плеер өчен акцент төсен сайлагыз."
+      }
+    ]
+  }
+}

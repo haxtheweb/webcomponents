@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Hodnotiaci hárok",
+    "description": "Hodnotiaci hárok bez rozhrania, ktorý podporuje viaceré backendy s hodnotiacimi tabuľkami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Zdroj",
+        "description": "Typ zdroja dát (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Koncový bod URL (JSON)",
+          "json": "Blob dát JSON",
+          "filesystem": "Súborový systém"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Zdrojové dáta",
+        "description": "URL alebo dáta JSON pre hodnotiaci hárok."
+      },
+      {
+        "property": "forCourse",
+        "title": "Odkaz na kurz",
+        "description": "Identifikátor kurzu emitovaný ako oer:forCourse v každom zdroji Assessment."
+      }
+    ]
+  }
+}

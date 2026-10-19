@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kwakatorwa",
+    "description": "Chinhu chekududza chine maitiro matatu ekuratidza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Zita rebasa riri kududzwa."
+      },
+      {
+        "property": "source",
+        "title": "Chinongedzo chesosi",
+        "description": "URL yesosi yebasa riri kududzwa."
+      },
+      {
+        "property": "date",
+        "title": "Zuva rakawanikwa",
+        "description": "Zuva iro sosi yakawanikwa."
+      },
+      {
+        "property": "scope",
+        "title": "Huwandu",
+        "description": "Huwandu hwechinhu chekududza.",
+        "options": {
+          "sibling": "Chinhu chehama",
+          "parent": "Chinhu chemubereki"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Rezinesi",
+        "description": "Rezinesi rebasa riri kududzwa."
+      },
+      {
+        "property": "creator",
+        "title": "Mugadziri",
+        "description": "Mugadziri kana muridzi webasa riri kududzwa."
+      },
+      {
+        "property": "typeof",
+        "title": "Mhando yeOER Schema",
+        "description": "Kirasi yeOER Schema yekududza uku. Inogara iri oer:ReferencedMaterial; tsiva chete nekirasi yeOER yakakodzera (semuenzaniso oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

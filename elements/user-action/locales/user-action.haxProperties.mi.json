@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Mahi kaiwhakamahi",
+    "description": "Aroturukihia ngā mahi a ngā kaiwhakamahi, tukuna ngā raraunga ki ngā pātaka xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Takahanga hei aroturuki",
+        "description": "Te mahi a te kaiwhakamahi e whakaoho ana i tēnei takahanga.",
+        "options": {
+          "visibility": "Ka kite i tēnei",
+          "keydown": "Pēhia tētahi pātuhi ki konei",
+          "click": "Pāwhiritia tēnei",
+          "hover": "Tīrewa ki runga i tēnei"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Aroturuki i ia wā",
+        "description": "Hei taunoa, ko te puta tuatahi anake ka aroturukihia."
+      }
+    ]
+  }
+}

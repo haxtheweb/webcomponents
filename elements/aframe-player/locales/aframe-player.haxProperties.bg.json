@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D плейър",
+    "description": "Плейър за 3D файлове / добавена реалност."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Източник",
+        "description": "URL на този AR файл."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Позиция по X на елемента в AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Позиция по Y на елемента в AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Позиция по Z на елемента в AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Цвят на небето",
+        "description": "Изберете цвета на небето в сцената."
+      }
+    ]
+  }
+}

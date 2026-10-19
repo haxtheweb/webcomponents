@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "ٹیگ / گولی",
+    "description": "گولی ورگا اک سنگھیڑیا لیبل، اختیاری نمایاں رنگ، منسوخ بٹن یا ٹوگل نال۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "لیبل",
+        "description": "گولی اندر وکھایا جاوݨ والا متن۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "گولی دے پچھوکڑ لئی SimpleColors نمایاں رنگ دا ناں۔",
+        "options": {
+          "": "-- ڈیفالٹ --",
+          "red": "لال",
+          "pink": "گلابی",
+          "purple": "جامنی",
+          "deep-purple": "گوڑھا جامنی",
+          "indigo": "نیلم",
+          "blue": "نیلا",
+          "light-blue": "ہلکا نیلا",
+          "cyan": "فیروزی",
+          "teal": "ٹیل",
+          "green": "ساوا",
+          "light-green": "ہلکا ساوا",
+          "lime": "لیموں رنگا",
+          "yellow": "پیلا",
+          "amber": "کہربائی",
+          "orange": "سنگتری",
+          "deep-orange": "گوڑھا سنگتری",
+          "brown": "بھورا",
+          "blue-grey": "نیلا سلیٹی",
+          "grey": "سلیٹی"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "خودکار نمایاں رنگ",
+        "description": "لیبل دے متن توں نمایاں رنگ آپوں کڈھو۔"
+      },
+      {
+        "property": "cancelButton",
+        "title": "منسوخ بٹن",
+        "description": "گولی اندر ہٹاؤ/منسوخ والا آئیکن بٹن وکھاؤ۔"
+      },
+      {
+        "property": "readonly",
+        "title": "صرف پڑھن لئی",
+        "description": "منسوخ بٹن لکاؤ تاں جے گولی صرف وکھاوݨ لئی ہووے۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "ٹوگل ہوندا اے",
+        "description": "بٹن اُتے کلک ہوݨ تے گولی نوں چالو/بند کرو۔"
+      },
+      {
+        "property": "toggled",
+        "title": "چالو",
+        "description": "کیہ گولی ایس ویلے چالو اے۔"
+      },
+      {
+        "property": "toggledIcon",
+        "title": "چالو آئیکن",
+        "description": "گولی چالو ہوݨ تے وکھایا جاوݨ والا آئیکن۔"
+      },
+      {
+        "property": "disabled",
+        "title": "غیر فعال",
+        "description": "گولی نال تعامل غیر فعال کرو۔"
+      }
+    ]
+  }
+}

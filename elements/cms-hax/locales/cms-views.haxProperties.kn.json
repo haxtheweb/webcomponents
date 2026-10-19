@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ವೀಕ್ಷಣೆ",
+    "description": "ಬ್ಯಾಕೆಂಡ್‌ನಲ್ಲಿ ಪ್ರದರ್ಶಿಸಲಾದ CMS ವೀಕ್ಷಣೆಗಳು"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "ಹೆಸರು",
+        "description": "ನಮ್ಮ CMS ನಿಂದ ವೀಕ್ಷಣೆಯ ಹೆಸರು"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "ಪ್ರದರ್ಶನ",
+        "description": "ನಮ್ಮ CMS ನಿಂದ ಆ ವೀಕ್ಷಣೆಯೊಳಗಿನ ಪ್ರದರ್ಶನ"
+      }
+    ]
+  }
+}

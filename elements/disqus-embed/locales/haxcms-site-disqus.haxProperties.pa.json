@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus ਟਿੱਪਣੀਆਂ",
+    "description": "Disqus ਟਿੱਪਣੀ ਵੈੱਬ ਸੇਵਾ ਨਾਲ ਏਕੀਕਰਨ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "ਛੋਟਾ ਨਾਮ",
+        "description": "Disqus 'ਤੇ ਪ੍ਰਾਪਰਟੀ ਦਾ ਛੋਟਾ ਨਾਮ"
+      }
+    ]
+  }
+}

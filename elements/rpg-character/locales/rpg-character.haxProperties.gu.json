@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG પાત્ર",
+    "description": "HAX નું મજેદાર પાત્ર."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "નામ",
+        "description": "રેન્ડમ પાત્ર બનાવવા માટે વપરાતો શબ્દ."
+      },
+      {
+        "property": "hat",
+        "title": "ટોપી",
+        "description": "ટોપીની શૈલી.",
+        "options": {
+          "none": "ડિફૉલ્ટ",
+          "random": "રેન્ડમ",
+          "bunny": "સસલું",
+          "cowboy": "કાઉબૉય",
+          "education": "શિક્ષણ",
+          "construction": "બાંધકામ",
+          "warning": "ચેતવણી",
+          "watermelon": "તરબૂચ",
+          "coffee": "કૉફી",
+          "knight": "યોદ્ધો",
+          "ninja": "નિન્જા",
+          "party": "પાર્ટી",
+          "error": "ભૂલ",
+          "edit": "સંપાદન"
+        }
+      },
+      {
+        "property": "width",
+        "title": "પહોળાઈ",
+        "description": "પિક્સેલમાં પાત્રની પહોળાઈ."
+      },
+      {
+        "property": "height",
+        "title": "ઊંચાઈ",
+        "description": "પિક્સેલમાં પાત્રની ઊંચાઈ."
+      },
+      {
+        "property": "fire",
+        "title": "આગમાં?",
+        "description": "પાત્ર આગમાં છે કે નહીં."
+      },
+      {
+        "property": "walking",
+        "title": "ચાલે છે?",
+        "description": "ચાલવાનું એનિમેશન; આગમાં હોય ત્યારે દોડે છે."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Word art ta' HAX",
+    "description": "Element tal-logo għal HAX, ovvjament bħala element kompatibbli ma' HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Id-daqs tal-logo ta' HAX li għandu jitqiegħed",
+        "options": {
+          "mini": "Mini",
+          "small": "Żgħir",
+          "normal": "Normali",
+          "large": "Kbir"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Jekk il-logo għandux jinbidel f'ittri kbar"
+      }
+    ]
+  }
+}

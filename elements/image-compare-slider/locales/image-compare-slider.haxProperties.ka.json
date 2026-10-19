@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "სურათების შედარება",
+    "description": "ერთი სურათის მეორეზე გადასმა შესადარებლად."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "ზედა სურათი",
+        "description": "ზედა სურათი, რომელიც ქვედა სურათზე გადაისმება."
+      },
+      {
+        "property": "topAlt",
+        "title": "ზედა სურათის alt ტექსტი",
+        "description": "სავალდებულო alt ტექსტი ხელმისაწვდომობისთვის."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "ქვედა სურათი",
+        "description": "ზედა სურათის ქვეშ ნაჩვენები ქვედა სურათი."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "ქვედა სურათის alt ტექსტი",
+        "description": "სავალდებულო alt ტექსტი ხელმისაწვდომობისთვის."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "ქცევა",
+        "description": "აირჩიეთ წაშლის რეჟიმი (ნაგულისხმევი) ან ზედა სურათის გამჭვირვალობის რეჟიმი."
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "სლაიდერის ზოლის ფერი."
+      },
+      {
+        "property": "dark",
+        "title": "მუქი",
+        "description": "სლაიდერის ზოლის ფერის ინვერსია."
+      },
+      {
+        "property": "position",
+        "title": "საწყისი პოზიცია",
+        "description": "საწყისი პოზიცია 0-დან 100-მდე."
+      }
+    ]
+  }
+}

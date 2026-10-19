@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn ýerleşdirmesi",
+    "description": "LinkedIn profil kartoçkasyny ýerleşdiriň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Ýörite at",
+        "description": "LinkedIn ýörite ulanyjy adynyň bölegi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Ýerli sazlama",
+        "description": "en_US ýaly ýerli sazlama metamaglumat bahasy."
+      }
+    ]
+  }
+}

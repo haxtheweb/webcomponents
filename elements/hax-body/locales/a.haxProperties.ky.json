@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Жөнөкөй шилтеме",
+    "description": "Жөнөкөй шилтеме элементи."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Шилтеме",
+        "description": "Көздөлгөн URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Шилтеменин көрүнүүчү тексти."
+      },
+      {
+        "attribute": "target",
+        "title": "Максат",
+        "description": "Шилтемени кайда ачуу.",
+        "options": {
+          "": "Ошол эле терезе",
+          "_blank": "Жаңы терезе - _blank",
+          "_top": "Жогорку терезе - _top",
+          "_parent": "Ата терезе - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Аталыш тексти",
+        "description": "Жеткиликтүүлүк жана SEO үчүн кеңеш берүүчү аталыш."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Көздөлгөн дарек менен байланыш (коопсуздук/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

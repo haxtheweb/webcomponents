@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "చర్యకు పిలుపు",
+    "description": "చర్య తీసుకోవడానికి లింక్‌తో కూడిన సాధారణ బటన్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "లేబుల్",
+        "description": "లింక్ లేబుల్"
+      },
+      {
+        "property": "link",
+        "title": "లింక్",
+        "description": "ఏదైనా వనరుకు లింక్‌ను నమోదు చేయండి"
+      },
+      {
+        "property": "hideIcon",
+        "title": "చిహ్నాన్ని దాచండి",
+        "description": "వచనాన్ని ఉద్ఘాటించడానికి ఉపయోగించే చిహ్నాన్ని దాచండి"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ఐకాన్",
+        "description": "చర్య లింక్ చిహ్నం"
+      }
+    ]
+  }
+}

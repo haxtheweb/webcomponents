@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG дүр",
+    "description": "HAX-ийн хөгжилтэй дүр."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Нэр",
+        "description": "Санамсаргүй дүр үүсгэхэд ашиглах үг."
+      },
+      {
+        "property": "hat",
+        "title": "Малгай",
+        "description": "Малгайн загвар.",
+        "options": {
+          "none": "Анхдагч",
+          "random": "Санамсаргүй",
+          "bunny": "Туулай",
+          "cowboy": "Ковбой",
+          "education": "Боловсрол",
+          "construction": "Барилга",
+          "warning": "Анхааруулга",
+          "watermelon": "Тарвас",
+          "coffee": "Кофе",
+          "knight": "Баатар",
+          "ninja": "Нинжа",
+          "party": "Үдэшлэг",
+          "error": "Алдаа",
+          "edit": "Засах"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Өргөн",
+        "description": "Дүрийн өргөн пикселээр."
+      },
+      {
+        "property": "height",
+        "title": "Өндөр",
+        "description": "Дүрийн өндөр пикселээр."
+      },
+      {
+        "property": "fire",
+        "title": "Шатаж байна уу?",
+        "description": "Дүр шатаж байгаа эсэх."
+      },
+      {
+        "property": "walking",
+        "title": "Алхаж байна уу?",
+        "description": "Алхах хөдөлгөөнт дүрс; шатаж байх үед гүйнэ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS žetonas",
+    "description": "CMS žetonas, atvaizduojamas serveryje"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Žetonas",
+        "description": "Žetonas iš mūsų CMS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Comentários do Disqus",
+    "description": "Integração com o serviço web de comentários Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Nome curto",
+        "description": "Nome curto da propriedade no Disqus"
+      }
+    ]
+  }
+}

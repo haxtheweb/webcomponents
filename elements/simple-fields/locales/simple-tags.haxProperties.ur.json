@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ٹیگز",
+    "description": "صفحے پر دکھانے کے لیے ٹیگز کی سادہ فہرست۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ٹیگز",
+        "description": "کوما سے الگ ٹیگز کی فہرست۔"
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "خودکار نمایاں رنگ",
+        "description": "لیبل کی بنیاد پر نمایاں رنگ خود بخود مقرر کریں۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ",
+        "description": "ٹیگز کا رنگ۔"
+      }
+    ]
+  }
+}

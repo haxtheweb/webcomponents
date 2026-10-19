@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Sluit Discord-community's in via een deel-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Bron-URL",
+        "description": "Bron-URL."
+      },
+      {
+        "property": "height",
+        "title": "Hoogte",
+        "description": "Hoogte van het inhoudsframe."
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Breedte van het inhoudsframe."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kaiwhakaatu MIDI",
+    "description": "Pāho MIDI i tōna horopaki me te whakaaturanga ataata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pūtake",
+        "description": "URL o te kōnae hei pāho."
+      },
+      {
+        "property": "visualizer",
+        "title": "Whakaaturanga ataata",
+        "description": "Te kāhua whakaaturanga ataata mō te kōnae puoro.",
+        "options": {
+          "staff": "Rārangi puoro",
+          "piano-roll": "Panuku piana",
+          "waterfall": "Piana + wairere"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Hunaia te wairere",
+        "description": "Hunaia ngā nota wairere i te whakaaturanga piana."
+      }
+    ]
+  }
+}

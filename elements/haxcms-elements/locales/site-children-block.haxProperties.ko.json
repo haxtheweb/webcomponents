@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: 하위 블록",
+    "description": "현재 페이지의 하위 항목을 표시하는 동적 블록"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "동적 방식",
+        "description": "이 요소를 기준으로 하위 항목을 계산하는 방법",
+        "options": {
+          "active": "활성 하위 항목",
+          "parent": "상위 항목의 하위 항목",
+          "ancestor": "최상위 조상의 모든 하위 항목"
+        }
+      },
+      {
+        "property": "start",
+        "title": "시작 수준"
+      },
+      {
+        "property": "end",
+        "title": "끝 수준"
+      }
+    ]
+  }
+}

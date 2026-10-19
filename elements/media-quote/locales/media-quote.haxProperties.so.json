@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Xigasho warbaahin",
+    "description": "Sawir leh xigasho, tixraac, iyo qoraal hoosaad ikhtiyaari ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Xigasho",
+        "description": "Qoraalka xigashada."
+      },
+      {
+        "slot": "author",
+        "title": "Qoraa",
+        "description": "Qoraaga xigashada."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Faahfaahinta qoraaga",
+        "description": "Faahfaahinta qoraaga."
+      },
+      {
+        "slot": "caption",
+        "title": "Qoraal hoosaad",
+        "description": "Qoraalka hoose ee sawirka."
+      },
+      {
+        "property": "src",
+        "title": "Isha Sawirka",
+        "description": "Faylka sawirka loo isticmaalo xigashada warbaahinta."
+      },
+      {
+        "property": "alt",
+        "title": "Qoraalka Beddelka",
+        "description": "Qoraal beddel u ah sawirka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Midabka Xoojinta",
+        "description": "Midabka xoojinta kaarka."
+      }
+    ]
+  }
+}

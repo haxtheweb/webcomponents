@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Orriaren atala",
+    "description": "Orriaren edukirako eta pantailan oinarritutako diseinuetarako atal edukiontzia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Diseinu tratamendua",
+        "description": "Lotutako ezarpenak eguneratzen dituen aurrezarritako estiloa."
+      },
+      {
+        "property": "image",
+        "title": "Irudia",
+        "description": "Atalaren atzeko multimedia."
+      },
+      {
+        "property": "bg",
+        "title": "Atzeko kolorea",
+        "description": "Atzeko kolorea irudirik ezarrita ez dagoenean."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Korritze botoia",
+        "description": "Erakutsi hurrengo atalera korritzen duen botoi bat."
+      },
+      {
+        "property": "fold",
+        "title": "Bistaratu tolestura",
+        "description": "Erakutsi tolestura bisual bat atalaren behealdean."
+      },
+      {
+        "property": "full",
+        "title": "Pantaila osoko tamaina",
+        "description": "Bete ikuslearen pantailaren altuera."
+      },
+      {
+        "property": "filter",
+        "title": "Aplikatu iragazkia",
+        "description": "Aplikatu iragazki bisual bat atzeko irudiari."
+      },
+      {
+        "slot": "",
+        "title": "Edukia",
+        "description": "Atalaren edukia."
+      },
+      {
+        "slot": "entice",
+        "title": "Erakarpena",
+        "description": "Aukerako erakarpen edukia."
+      },
+      {
+        "slot": "buttons",
+        "title": "Botoiak",
+        "description": "Testuaren azpian erakusten den botoi taldea."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Aingura testua",
+        "description": "Nabigazioan erakusten den aingura etiketa."
+      }
+    ]
+  }
+}

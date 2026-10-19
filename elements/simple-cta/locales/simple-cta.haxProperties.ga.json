@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Glao chun gnímh",
+    "description": "Cnaipe simplí le nasc chun gníomh a dhéanamh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Lipéad",
+        "description": "Lipéad an naisc"
+      },
+      {
+        "property": "link",
+        "title": "Nasc",
+        "description": "Cuir isteach nasc chuig aon acmhainn"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Folaigh an deilbhín",
+        "description": "Folaigh an deilbhín a úsáidtear chun téacs a aiceannú"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Deilbhín",
+        "description": "Deilbhín an naisc gnímh"
+      }
+    ]
+  }
+}

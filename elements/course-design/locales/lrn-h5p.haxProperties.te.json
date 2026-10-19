@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P ఎలిమెంట్",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "వచనం",
+        "description": "సైడ్‌నోట్ యొక్క కంటెంట్"
+      }
+    ]
+  }
+}

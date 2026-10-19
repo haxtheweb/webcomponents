@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Pohľadnica",
+    "description": "Hravý mediálny prvok, ktorý vyzerá ako skutočná pohľadnica odniekiaľ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Komu",
+        "description": "Komu je určená?"
+      },
+      {
+        "property": "from",
+        "title": "Od",
+        "description": "Kto ste?"
+      },
+      {
+        "property": "message",
+        "title": "Správa",
+        "description": "Čo chcete povedať?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Poštová pečiatka z",
+        "description": "Odkiaľ bola táto pohľadnica odoslaná?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Zdroj hlavnej fotografie",
+        "description": "Kde sa nachádza vaša fotografia?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Zdroj fotografie známky",
+        "description": "Kde sa nachádza vaša fotografia?"
+      }
+    ]
+  }
+}

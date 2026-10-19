@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kora retro",
+    "description": "Kora mbykymi jeguakaha retro reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Téra",
+        "description": "Kora réra tenondegua."
+      },
+      {
+        "property": "url",
+        "description": "URL ojejurujátava kora ojejopy jave."
+      },
+      {
+        "property": "subtitle",
+        "title": "Téra'i",
+        "description": "Kora téra'i."
+      },
+      {
+        "property": "tags",
+        "title": "Teramoĩ",
+        "description": "Techaukaha ojepe'áva kóma reheve."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Momarandu ñemyasãi ypykue",
+        "description": "Momarandu ñemyasãi ypykue tenondegua."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Ypykue mouse ári",
+        "description": "Momarandu ñemyasãi ypykue ojehechaukáva mouse oĩ jave kora ári térã oñemyendy jave."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Sa'y jehechaukaha oñemoĩva kora tuichakuére."
+      },
+      {
+        "property": "dark",
+        "title": "Pytũ",
+        "description": "Eiporu ypytũ reko sa'y ypy."
+      }
+    ]
+  }
+}

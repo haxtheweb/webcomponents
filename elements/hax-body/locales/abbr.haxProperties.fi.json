@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Lyhenne",
+    "description": "Lyhenne, jonka koko termi näkyy työkaluvihjeenä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teksti",
+        "description": "Näkyvä lyhenneteksti."
+      },
+      {
+        "attribute": "title",
+        "title": "Sana",
+        "description": "Koko termi, joka näytetään osoitettaessa."
+      }
+    ]
+  }
+}

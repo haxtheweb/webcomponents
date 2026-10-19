@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Búlọ́ọ̀kù CMS",
+    "description": "Búlọ́ọ̀kù CMS tí a ṣe àfihàn rẹ̀ ní backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Mọ́dúù",
+        "description": "Módù láti gbé wọlé láti CMS wa"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta búlọ́ọ̀kù láti gbé wọlé láti CMS wa"
+      }
+    ]
+  }
+}

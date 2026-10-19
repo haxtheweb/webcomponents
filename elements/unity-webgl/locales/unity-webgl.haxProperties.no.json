@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity-spiller",
+    "description": "Unity WebGL-spiller."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Mål",
+        "description": "Sti til spillbygget."
+      },
+      {
+        "property": "compression",
+        "title": "Komprimeringsmetode",
+        "description": "Filtype for komprimering av spillressurser."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Strømme-URL",
+        "description": "URL for strømmeressurser."
+      },
+      {
+        "property": "companyname",
+        "title": "Firmanavn",
+        "description": "Firmanavn."
+      },
+      {
+        "property": "productname",
+        "title": "Produktnavn",
+        "description": "Spilltittel."
+      },
+      {
+        "property": "productversion",
+        "title": "Produktversjon",
+        "description": "Utgivelsesversjon."
+      },
+      {
+        "property": "width",
+        "title": "Lerretsbredde",
+        "description": "CSS-bredde for lerretet (for eksempel px eller em)."
+      },
+      {
+        "property": "height",
+        "title": "Lerretshøyde",
+        "description": "CSS-høyde for lerretet (for eksempel px eller em)."
+      },
+      {
+        "property": "background",
+        "title": "Lerretsbakgrunn",
+        "description": "CSS-bakgrunn for lerretet."
+      }
+    ]
+  }
+}

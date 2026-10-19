@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "সময়রেখা",
+    "description": "ছবি ও টেক্সটসহ ঘটনাবলির একটি টাইমলাইন"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "সময়রেখার শিরোনাম",
+        "description": "টাইমলাইনের একটি শিরোনাম।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "একটি ঐচ্ছিক অ্যাকসেন্ট রং।"
+      },
+      {
+        "property": "dark",
+        "title": "ডার্ক থিম",
+        "description": "ডার্ক থিম চালু করুন"
+      },
+      {
+        "slot": "",
+        "title": "টাইমলাইনের বিবরণ",
+        "description": "টাইমলাইন বর্ণনাকারী ঐচ্ছিক টেক্সট।"
+      },
+      {
+        "property": "events",
+        "title": "টাইমলাইনের ঘটনাবলি",
+        "description": "টাইমলাইনের ঘটনাগুলো"
+      }
+    ]
+  }
+}

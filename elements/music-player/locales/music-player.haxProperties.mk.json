@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI визуелизатор",
+    "description": "Пуштете MIDI во контекст со визуелизација."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Извор",
+        "description": "URL на датотеката за пуштање."
+      },
+      {
+        "property": "visualizer",
+        "title": "Визуелизација",
+        "description": "Стил на визуелизација за музичката датотека.",
+        "options": {
+          "staff": "Нотен систем",
+          "piano-roll": "Пијано-ролна",
+          "waterfall": "Пијано + водопад"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Скриј водопад",
+        "description": "Скриј ги нотите во водопад во визуелизацијата со пијано."
+      }
+    ]
+  }
+}

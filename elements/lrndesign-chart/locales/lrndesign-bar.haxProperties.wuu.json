@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "柱状图",
+    "description": "根据 CSV 做一张无障碍图表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "强调色",
+        "description": "可选个强调色。"
+      },
+      {
+        "title": "深色主题",
+        "description": "启用深色主题"
+      },
+      {
+        "title": "CSV 文件",
+        "description": "从 CSV 载入数据。"
+      },
+      {
+        "title": "图表标题",
+        "description": "侬图表个无障碍替代文字。"
+      },
+      {
+        "title": "图表描述",
+        "description": "侬图表个无障碍描述。"
+      },
+      {
+        "title": "比例名称",
+        "description": "图表个宽:高比例(看 https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings 里向个 $ct-scales 搭 $ct-scales-names)。",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "显示网格背景"
+      },
+      {
+        "title": "横向柱子",
+        "description": "拿柱状图个坐标轴对调,画成横向柱状图。要注意侬也要对调坐标轴设置,因为 Y 轴现在显示标签,X 轴显示数值。"
+      },
+      {
+        "title": "柱子堆叠",
+        "description": "设成 true 个话,系列柱子会得堆叠起来。"
+      },
+      {
+        "title": "分散系列",
+        "description": "设成 true 个话,每根柱子代表一只系列,数据数组应该是一维个数值数组,勿是系列数组。"
+      },
+      {
+        "title": "图表内边距(上)"
+      },
+      {
+        "title": "图表内边距(下)"
+      },
+      {
+        "title": "图表内边距(左)"
+      },
+      {
+        "title": "图表内边距(右)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "数据倒过来",
+        "description": "拿数据倒过来,包括标签、系列顺序搭整只系列数据数组。"
+      },
+      {
+        "title": "HTML 表格",
+        "description": "可选:用 HTML 表格载入数据。"
+      },
+      {
+        "title": "图表最小值",
+        "description": "覆盖图表自然个最低值,可以放大或者限制图表显示个最低值"
+      },
+      {
+        "title": "图表最大值",
+        "description": "覆盖图表自然个最高值,可以放大或者限制图表显示个最高值"
+      },
+      {
+        "title": "X 轴显示网格",
+        "description": "显示 X 轴个网格。"
+      },
+      {
+        "title": "X 轴偏移"
+      },
+      {
+        "title": "X 轴位置",
+        "description": "标签放个位置。可以设成 \"start\" 或者 \"end\",\"start\" 相当于竖轴上个左边或者顶上,\"end\" 相当于横轴上个右边或者底下"
+      },
+      {
+        "title": "X 轴显示标签",
+        "description": "显示 X 轴个标签。"
+      },
+      {
+        "title": "X 轴标签(水平偏移)",
+        "description": "X 轴标签个水平位置。"
+      },
+      {
+        "title": "X 轴标签(垂直偏移)",
+        "description": "X 轴标签个垂直位置。"
+      },
+      {
+        "title": "X 轴标题",
+        "description": "X 轴个可选标题。"
+      },
+      {
+        "title": "X 轴标题(水平偏移)",
+        "description": "X 轴标题个水平位置。"
+      },
+      {
+        "title": "X 轴标题(垂直偏移)",
+        "description": "X 轴标题个垂直位置。"
+      },
+      {
+        "title": "X 轴标题锚点",
+        "description": "X 轴标题个可选锚点。",
+        "options": {
+          "middle": "中间",
+          "end": "结尾",
+          "start": "开头"
+        }
+      },
+      {
+        "title": "X 轴刻度最小间距",
+        "description": "指定刻度步长个最小高度(像素)。"
+      },
+      {
+        "title": "X 轴刻度(只用整数)",
+        "description": "刻度步长只用整数值。"
+      },
+      {
+        "title": "Y 轴:显示网格",
+        "description": "显示 Y 轴个网格。"
+      },
+      {
+        "title": "Y 轴偏移"
+      },
+      {
+        "title": "Y 轴位置",
+        "description": "标签放个位置。可以设成 \"start\" 或者 \"end\",\"start\" 相当于竖轴上个左边或者顶上,\"end\" 相当于横轴上个右边或者底下"
+      },
+      {
+        "title": "Y 轴显示标签",
+        "description": "显示 Y 轴个标签。"
+      },
+      {
+        "title": "Y 轴标签(水平偏移)",
+        "description": "Y 轴标签个水平位置。"
+      },
+      {
+        "title": "Y 轴标签(垂直偏移)",
+        "description": "Y 轴标签个垂直位置。"
+      },
+      {
+        "title": "Y 轴刻度最小间距",
+        "description": "指定刻度步长个最小高度(像素)。"
+      },
+      {
+        "title": "Y 轴刻度(只用整数)",
+        "description": "刻度步长只用整数值。"
+      },
+      {
+        "title": "Y 轴标题",
+        "description": "Y 轴个可选标题。"
+      },
+      {
+        "title": "Y 轴标题(垂直偏移)",
+        "description": "Y 轴标题个水平位置。"
+      },
+      {
+        "title": "Y 轴标题(水平偏移)",
+        "description": "Y 轴标题个水平位置。"
+      },
+      {
+        "title": "Y 轴标题锚点",
+        "description": "Y 轴标题个可选锚点。",
+        "options": {
+          "middle": "中间",
+          "end": "结尾",
+          "start": "开头"
+        }
+      },
+      {
+        "title": "Y 轴标题翻转",
+        "description": "翻转 Y 轴个标题?"
+      },
+      {
+        "title": "参考值",
+        "description": "除非明确设了最低/最高值,柱状图默认会以零为中心。"
+      },
+      {
+        "title": "系列柱子间距",
+        "description": "指定一组里向柱子之间个距离(像素)。"
+      },
+      {
+        "title": "堆叠模式",
+        "description": "设成 \"true\" 个话,会为每只系列点算出一只总数。搿个也会影响 y 轴搭图表个整体范围。设成 \"false\" 个话,会强制堆叠柱子从零线开始画。辣堆叠模式下头,\"seriesBarDistance\" 属性勿起作用。"
+      }
+    ]
+  }
+}

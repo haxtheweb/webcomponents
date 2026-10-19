@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Pakuhi laina",
+    "description": "Hana i kahi pakuhi hiki ke komo ʻia ma muli o kahi CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Waihoʻoluʻu Kiko",
+        "description": "He waihoʻoluʻu kiko koho."
+      },
+      {
+        "title": "Kumuhana Pōuliuli",
+        "description": "Hoʻā i ke kumuhana pōʻeleʻele"
+      },
+      {
+        "title": "Faila CSV",
+        "description": "Hoʻouka i ka ʻikepili mai kahi CSV."
+      },
+      {
+        "title": "Poʻo inoa pakuhi",
+        "description": "Kikokikona alt hiki ke komo ʻia no kāu pakuhi."
+      },
+      {
+        "title": "Wehewehe pakuhi",
+        "description": "Wehewehe hiki ke komo ʻia o kāu pakuhi."
+      },
+      {
+        "title": "Inoa pālākiō",
+        "description": "Ka lākiō o ka laulā:kiʻekiʻe o ka pakuhi (E nānā iā https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings no $ct-scales a me $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Hōʻike i ke kahua hope mākia"
+      },
+      {
+        "title": "Hōʻike i ka ʻāpana"
+      },
+      {
+        "title": "Hōʻike i ka laina"
+      },
+      {
+        "title": "Hōʻike i ke kiko"
+      },
+      {
+        "title": "Laulā piha"
+      },
+      {
+        "title": "Hōʻike i nā lepili kiko"
+      },
+      {
+        "title": "Pale pakuhi (luna)"
+      },
+      {
+        "title": "Pale pakuhi (lalo)"
+      },
+      {
+        "title": "Pale pakuhi (hema)"
+      },
+      {
+        "title": "Pale pakuhi (ʻākau)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Hoʻohuli i ka ʻikepili",
+        "description": "Hoʻohuli i ka ʻikepili me nā lepili, ke kaʻina o nā pūʻulu a me nā papa ʻikepili pūʻulu holoʻokoʻa."
+      },
+      {
+        "title": "Papa HTML",
+        "description": "Koho: Hoʻouka i ka ʻikepili ma ke ʻano papa HTML."
+      },
+      {
+        "title": "Haʻahaʻa loa o ka pakuhi",
+        "description": "Ma ka pani ʻana i ka haʻahaʻa maoli o ka pakuhi, hiki iā ʻoe ke hoʻonui a i ʻole ke kaupalena i ka waiwai haʻahaʻa loa i hōʻike ʻia o ka pakuhi"
+      },
+      {
+        "title": "Kiʻekiʻe loa o ka pakuhi",
+        "description": "Ma ka pani ʻana i ke kiʻekiʻe maoli o ka pakuhi, hiki iā ʻoe ke hoʻonui a i ʻole ke kaupalena i ka waiwai kiʻekiʻe loa i hōʻike ʻia o ka pakuhi"
+      },
+      {
+        "title": "Hōʻike i nā lepili kiko",
+        "options": {
+          "middle": "Waena",
+          "start": "Hoʻomaka",
+          "end": "Pau"
+        }
+      },
+      {
+        "title": "Kaʻawale X o nā lepili kiko"
+      },
+      {
+        "title": "Kaʻawale Y o nā lepili kiko"
+      },
+      {
+        "title": "Laina maʻalahi"
+      },
+      {
+        "title": "Kumu ʻāpana",
+        "description": "Ke kumu no ka pakuhi ʻāpana e hoʻohana ʻia e pani ai i ke kinona ʻāpana (ʻo 0 maʻamau)."
+      },
+      {
+        "title": "Iho X: Hōʻike i ka mākia",
+        "description": "Hōʻike i ka mākia o ka iho X."
+      },
+      {
+        "title": "Kaʻawale iho X"
+      },
+      {
+        "title": "Kūlana iho X",
+        "description": "Kūlana kahi e kau ʻia ai nā lepili. Hiki ke hoʻonoho ʻia i \"start\" a i ʻole \"end\", kahi e like ai ʻo \"start\" me ka hema a i ʻole ka luna ma ka iho kū a e like ai ʻo \"end\" me ka ʻākau a i ʻole ka lalo ma ka iho ākea"
+      },
+      {
+        "title": "Iho X: Hōʻike i ka lepili",
+        "description": "Hōʻike i ka lepili o ka iho X."
+      },
+      {
+        "title": "Lepili iho X (kaʻawale ākea)",
+        "description": "Kūlana ākea o nā lepili o ka iho X."
+      },
+      {
+        "title": "Lepili iho X (kaʻawale kū)",
+        "description": "Kūlana kū o nā lepili o ka iho X."
+      },
+      {
+        "title": "Poʻo inoa iho X",
+        "description": "Poʻo inoa koho no ka iho X."
+      },
+      {
+        "title": "Poʻo inoa iho X (kaʻawale ākea)",
+        "description": "Kūlana ākea o ke poʻo inoa o ka iho X."
+      },
+      {
+        "title": "Poʻo inoa iho X (kaʻawale kū)",
+        "description": "Kūlana kū o ke poʻo inoa o ka iho X."
+      },
+      {
+        "title": "Heleuma poʻo inoa iho X",
+        "description": "Heleuma koho no ke poʻo inoa o ka iho X.",
+        "options": {
+          "middle": "waena",
+          "end": "hope",
+          "start": "hoʻomaka"
+        }
+      },
+      {
+        "title": "Iho Y: Hōʻike i ka mākia",
+        "description": "Hōʻike i ka mākia o ka iho Y."
+      },
+      {
+        "title": "Kaʻawale iho Y"
+      },
+      {
+        "title": "Kūlana iho Y",
+        "description": "Kūlana kahi e kau ʻia ai nā lepili. Hiki ke hoʻonoho ʻia i \"start\" a i ʻole \"end\", kahi e like ai ʻo \"start\" me ka hema a i ʻole ka luna ma ka iho kū a e like ai ʻo \"end\" me ka ʻākau a i ʻole ka lalo ma ka iho ākea"
+      },
+      {
+        "title": "Iho Y: Hōʻike i ka lepili",
+        "description": "Hōʻike i ka lepili o ka iho Y."
+      },
+      {
+        "title": "Lepili iho Y (kaʻawale ākea)",
+        "description": "Kūlana ākea o ka lepili o ka iho Y."
+      },
+      {
+        "title": "Lepili iho Y (kaʻawale kū)",
+        "description": "Kūlana kū o ka lepili o ka iho Y."
+      },
+      {
+        "title": "Kaʻawale liʻiliʻi loa o ka pālākiō iho Y",
+        "description": "Hōʻike i ke kiʻekiʻe liʻiliʻi loa ma ka pika o nā kapuaʻi pālākiō."
+      },
+      {
+        "title": "Pālākiō iho Y (nā helu piha wale nō)",
+        "description": "Hoʻohana i nā waiwai helu piha wale nō no nā kapuaʻi pālākiō."
+      },
+      {
+        "title": "Poʻo inoa iho Y",
+        "description": "Poʻo inoa koho no ka iho Y."
+      },
+      {
+        "title": "Poʻo inoa iho Y (kaʻawale kū)",
+        "description": "Kūlana ākea o ke poʻo inoa o ka iho Y."
+      },
+      {
+        "title": "Poʻo inoa iho Y (kaʻawale ākea)",
+        "description": "Kūlana ākea o ke poʻo inoa o ka iho Y."
+      },
+      {
+        "title": "Heleuma poʻo inoa iho Y",
+        "description": "Heleuma koho no ke poʻo inoa o ka iho Y.",
+        "options": {
+          "middle": "waena",
+          "end": "hope",
+          "start": "hoʻomaka"
+        }
+      },
+      {
+        "title": "Hoʻohuli i ke poʻo inoa iho Y",
+        "description": "Hoʻohuli i ke poʻo inoa no ka iho Y?"
+      }
+    ]
+  }
+}

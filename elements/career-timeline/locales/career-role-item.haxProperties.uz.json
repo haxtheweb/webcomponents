@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Kasbiy lavozim",
+    "description": "Tashkilot ichidagi alohida lavozim"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sarlavha"
+      },
+      {
+        "property": "startDate",
+        "title": "Boshlanish sanasi"
+      },
+      {
+        "property": "endDate",
+        "title": "Tugash sanasi (ixtiyoriy)"
+      },
+      {
+        "property": "skills",
+        "title": "Tegishli koʻnikmalar",
+        "description": "Koʻnikmalar qoʻshishni boshlash uchun + tugmasini tanlang"
+      }
+    ]
+  }
+}

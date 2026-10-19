@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "HAX өчен дизайн системасын гамәлгә ашыру"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Күрсәтелә торган вариант",
+        "options": {
+          "*": "Тулы стиль кулланмасы"
+        }
+      }
+    ]
+  }
+}

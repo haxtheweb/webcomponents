@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ឯកសារយោង",
+    "description": "ធាតុការដកស្រង់ជាមួយរបៀបបង្ហាញបី។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងនៃស្នាដៃដែលបានដកស្រង់។"
+      },
+      {
+        "property": "source",
+        "title": "តំណប្រភព",
+        "description": "URL ប្រភពសម្រាប់ស្នាដៃដែលបានដកស្រង់។"
+      },
+      {
+        "property": "date",
+        "title": "កាលបរិច្ឆេទចូលមើល",
+        "description": "កាលបរិច្ឆេទដែលបានចូលមើលប្រភព។"
+      },
+      {
+        "property": "scope",
+        "title": "វិសាលភាព",
+        "description": "វិសាលភាពធាតុដែលត្រូវដកស្រង់។",
+        "options": {
+          "sibling": "ធាតុបងប្អូន",
+          "parent": "ធាតុមេ"
+        }
+      },
+      {
+        "property": "license",
+        "title": "អាជ្ញាប័ណ្ណ",
+        "description": "អាជ្ញាប័ណ្ណសម្រាប់ស្នាដៃដែលបានដកស្រង់។"
+      },
+      {
+        "property": "creator",
+        "title": "អ្នកបង្កើត",
+        "description": "អ្នកបង្កើត ឬម្ចាស់នៃស្នាដៃដែលបានដកស្រង់។"
+      },
+      {
+        "property": "typeof",
+        "title": "ប្រភេទ OER Schema",
+        "description": "ថ្នាក់ OER Schema សម្រាប់ការដកស្រង់នេះ។ លំនាំដើមគឺ oer:ReferencedMaterial; ជំនួសតែជាមួយថ្នាក់ OER ត្រឹមត្រូវប៉ុណ្ណោះ (ឧ. oer:SupportingMaterial)។"
+      }
+    ]
+  }
+}

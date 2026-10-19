@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalifikazio-liburua",
+    "description": "Hainbat backend eta errubrika onartzen dituen interfazerik gabeko kalifikazio-liburua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Iturria",
+        "description": "Datu-iturri mota (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL amaiera-puntua (JSON)",
+          "json": "JSON datu-bloba",
+          "filesystem": "Fitxategi-sistema"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Iturriko datuak",
+        "description": "Kalifikazio-liburuaren URLa edo JSON datuak."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikastaroaren erreferentzia",
+        "description": "Ebaluazio-baliabide bakoitzean oer:forCourse gisa igorritako ikastaro-identifikatzailea."
+      }
+    ]
+  }
+}

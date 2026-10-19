@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Vista del lloc",
+    "description": "Un bloc dinàmic que consulta i mostra dades del lloc segons uns criteris"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL de la vista",
+        "description": "Paràmetres de consulta per al canal de dades de la vista. Els pots obtenir des del tauler de Vistes."
+      },
+      {
+        "property": "renderer",
+        "title": "Mode de visualització",
+        "description": "Com s'han de mostrar els resultats de la vista"
+      },
+      {
+        "property": "entity",
+        "title": "Tipus d'entitat",
+        "description": "Tipus d'entitat utilitzat per analitzar la resposta",
+        "options": {
+          "": "Per defecte (elements)",
+          "item": "Element",
+          "page": "Pàgina",
+          "file": "Fitxer",
+          "tag": "Etiqueta",
+          "block": "Bloc",
+          "view": "Vista",
+          "theme": "Tema",
+          "region": "Regió",
+          "customElement": "Element personalitzat"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Trenca la vista del lloc",
+        "description": "Converteix en contingut estàtic per editar-lo directament; deixa d'actualitzar-se automàticament des de la font."
+      }
+    ]
+  }
+}

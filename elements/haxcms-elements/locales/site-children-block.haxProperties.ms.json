@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: blok anak",
+    "description": "Blok dinamik untuk menunjukkan anak halaman semasa"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Kaedah dinamik",
+        "description": "Cara mengira anak berbanding elemen ini",
+        "options": {
+          "active": "Anak aktif",
+          "parent": "Anak induk",
+          "ancestor": "Semua anak daripada leluhur tertinggi"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Aras mula"
+      },
+      {
+        "property": "end",
+        "title": "Aras tamat"
+      }
+    ]
+  }
+}

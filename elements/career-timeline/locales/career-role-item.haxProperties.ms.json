@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Peranan Kerjaya",
+    "description": "Peranan individu dalam organisasi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tajuk"
+      },
+      {
+        "property": "startDate",
+        "title": "Tarikh Mula"
+      },
+      {
+        "property": "endDate",
+        "title": "Tarikh Tamat (Pilihan)"
+      },
+      {
+        "property": "skills",
+        "title": "Kemahiran Berkaitan",
+        "description": "Pilih butang + untuk mula menambah kemahiran"
+      }
+    ]
+  }
+}

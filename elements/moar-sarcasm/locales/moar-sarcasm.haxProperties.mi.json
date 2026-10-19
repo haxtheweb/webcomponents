@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tāwai",
+    "description": "Te whakaatu kupu i runga i te āhua whakatoi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Kupu",
+        "description": "Kupu hei whakatāwai"
+      }
+    ]
+  }
+}

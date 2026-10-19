@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Kiraan Naik",
+    "description": "Animasikan nombor yang mengira naik hingga nilai sasaran apabila ditatal ke dalam paparan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Nilai akhir",
+        "description": "Nombor yang hendak dikira hingga."
+      },
+      {
+        "property": "start",
+        "title": "Nilai mula",
+        "description": "Nombor permulaan kiraan."
+      },
+      {
+        "property": "duration",
+        "title": "Tempoh",
+        "description": "Bilangan saat yang diambil oleh animasi kiraan."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Teks awalan",
+        "description": "Teks yang dipaparkan sebelum nombor (cth. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Teks akhiran",
+        "description": "Teks yang dipaparkan selepas nombor (cth. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot awalan",
+        "description": "Kandungan slot pilihan sebelum nombor."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot akhiran",
+        "description": "Kandungan slot pilihan selepas nombor."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Tempat perpuluhan",
+        "description": "Bilangan tempat perpuluhan untuk dipaparkan."
+      },
+      {
+        "property": "separator",
+        "title": "Pemisah ribuan",
+        "description": "Aksara yang memisahkan kumpulan ribuan."
+      },
+      {
+        "property": "decimal",
+        "title": "Aksara perpuluhan",
+        "description": "Aksara yang digunakan untuk titik perpuluhan."
+      },
+      {
+        "property": "noeasing",
+        "title": "Tiada pelonggaran",
+        "description": "Lumpuhkan pelonggaran supaya kiraan adalah linear."
+      }
+    ]
+  }
+}

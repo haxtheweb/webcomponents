@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Mea papa kuhia",
+    "description": "He mea e hōʻike ana i hoʻokahi kuhia ma kahi papa kuhia, e kākoʻo ana i nā ʻano he nui a me nā koho hoʻopuka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "ʻAno",
+        "description": "ʻAno kuhia",
+        "options": {
+          "web": "Pūnaewele",
+          "journal": "Nūpepa ʻepekema",
+          "book": "Puke"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Poʻo inoa",
+        "description": "Poʻo inoa o ka mea"
+      },
+      {
+        "property": "authors",
+        "title": "Nā mea kākau",
+        "description": "Nā hanana ma ka laina manawa"
+      },
+      {
+        "property": "publisher",
+        "title": "Mea hoʻopuka",
+        "description": "Pūnaewele kumu"
+      }
+    ]
+  }
+}

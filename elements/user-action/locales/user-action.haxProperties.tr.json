@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Kullanıcı eylemi",
+    "description": "Kullanıcı eylemlerini izleyin ve verileri xAPI depolarına gönderin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "İzlenecek olay",
+        "description": "Bu olayı tetikleyen kullanıcı eylemi.",
+        "options": {
+          "visibility": "Bunu görebilir",
+          "keydown": "Burada bir tuşa basın",
+          "click": "Buna tıklayın",
+          "hover": "Bunun üzerine gelin"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Her seferinde izle",
+        "description": "Varsayılan olarak yalnızca ilk gerçekleşme izlenir."
+      }
+    ]
+  }
+}

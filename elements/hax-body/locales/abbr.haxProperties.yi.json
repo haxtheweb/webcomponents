@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ראשי־תּיבֿות",
+    "description": "ראשי־תּיבֿות מיט אַ טיפּ פֿונעם פֿולן טערמין."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "טעקסט",
+        "description": "קענטיקער טעקסט פֿון די ראשי־תּיבֿות."
+      },
+      {
+        "attribute": "title",
+        "title": "וואָרט",
+        "description": "פֿולער טערמין געוויזן בײַם דורכפֿירן."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Punga Whārangi",
+    "description": "Hono ki ngā wāhi motuhake i ngā pāpāho o te whārangi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Whāinga whārangi",
+        "description": "Te ID, te rauemi rānei e tohu ana tēnei punga."
+      },
+      {
+        "property": "value",
+        "title": "Uara hono hōhonu",
+        "description": "Uara hono hōhonu (hei tauira, he tohu wā, he ID kiriata rānei)."
+      },
+      {
+        "property": "entityId",
+        "title": "Hinonga pae",
+        "description": "He hinonga pae kōwhiri hei whakahaere i te whakaatu ariā e hāngai ana."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-i plokk",
+    "description": "Taustsüsteemis renderdatud CMS-i plokk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Moodul",
+        "description": "Meie CMS-ist laaditav moodul"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Meie CMS-ist laaditava ploki delta"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Omaka",
+    "description": "Uhlu olulula lomaka lokubonisa ekhasini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Omaka",
+        "description": "Uhlu lomaka oluhlukaniswe ngokhefana."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Umbala Wokugcizelela Ozenzakalelayo",
+        "description": "Setha ngokuzenzakalelayo umbala wokugcizelela ngokusekelwe kulebula."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala",
+        "description": "Umbala womaka."
+      }
+    ]
+  }
+}

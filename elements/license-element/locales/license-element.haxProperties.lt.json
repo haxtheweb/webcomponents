@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Licencija",
+    "description": "Nurodykite savo kūrinio licenciją."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Cituojamo kūrinio pavadinimas."
+      },
+      {
+        "property": "source",
+        "title": "Šaltinio nuoroda",
+        "description": "Licencijuoto kūrinio šaltinio URL."
+      },
+      {
+        "property": "license",
+        "title": "Licencija",
+        "description": "Šiam kūriniui taikoma licencija."
+      },
+      {
+        "property": "creator",
+        "title": "Kūrėjas",
+        "description": "Šio kūrinio kūrėjas arba savininkas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Šaltinio nuoroda",
+        "description": "Nuoroda į papildomą licencijavimo informaciją."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Užrašas „Daugiau“",
+        "description": "Papildomos licencijavimo informacijos užrašas."
+      }
+    ]
+  }
+}

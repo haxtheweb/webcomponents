@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "সাধারণ ছবি",
+    "description": "সাধারণ প্যারামিটার দিয়ে ছবি পরিবর্তন করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "উৎস",
+        "description": "ছবির উৎস URL।"
+      },
+      {
+        "property": "height",
+        "title": "উচ্চতা",
+        "description": "ছবির ঐচ্ছিক উচ্চতা।"
+      },
+      {
+        "property": "width",
+        "title": "প্রস্থ",
+        "description": "ছবির ঐচ্ছিক প্রস্থ।"
+      },
+      {
+        "property": "alt",
+        "title": "বিকল্প টেক্সট",
+        "description": "স্ক্রিন রিডার ও উন্নত SEO-র জন্য উপযোগী।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "মান",
+        "description": "তৈরির সময় ছবির মান (শুধু JPEG)।"
+      },
+      {
+        "property": "fetchpriority",
+        "title": "লোডের অগ্রাধিকার",
+        "description": "আধুনিক ব্রাউজারের জন্য পারফরম্যান্স ইঙ্গিত।",
+        "options": {
+          "auto": "স্বয়ংক্রিয়",
+          "high": "উচ্চ",
+          "low": "নিম্ন"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "ডিকোডিং পদ্ধতি",
+        "description": "আধুনিক ব্রাউজারে ছবি রেন্ডারিংয়ের পারফরম্যান্স ইঙ্গিত।",
+        "options": {
+          "auto": "স্বয়ংক্রিয়",
+          "async": "অ্যাসিঙ্ক্রোনাস"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Àwòrán Rírọrùn",
+    "description": "Ṣàtúnṣe àwọn àwòrán pẹ̀lú àwọn ìpele rírọrùn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Orísun",
+        "description": "URL orísun àwòrán."
+      },
+      {
+        "property": "height",
+        "title": "Gíga",
+        "description": "Gíga àwòrán àṣàyàn."
+      },
+      {
+        "property": "width",
+        "title": "Ìbú",
+        "description": "Ìbú àwòrán àṣàyàn."
+      },
+      {
+        "property": "alt",
+        "title": "Ọ̀rọ̀ alt",
+        "description": "Ó wúlò fún àwọn olùka ojú-ìbòjú àti SEO tí ó dára jù."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Dídára",
+        "description": "Dídára àwòrán nígbà ìṣẹ̀dá (JPEG nìkan)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Ìṣáájú Gbígbà",
+        "description": "Ìtọ́kasí iṣẹ́ fún àwọn aṣàwákiri òde-òní.",
+        "options": {
+          "auto": "Aládàáṣe",
+          "high": "Gíga",
+          "low": "Kékeré"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Ọ̀nà ìtúmọ̀-kóòdù",
+        "description": "Ìtọ́kasí iṣẹ́ fún fífi àwòrán hàn nínú àwọn aṣàwákiri òde-òní.",
+        "options": {
+          "auto": "Aládàáṣe",
+          "async": "Àìbáramu-àkókò"
+        }
+      }
+    ]
+  }
+}

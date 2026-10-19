@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Image interactive",
+    "description": "Une image interactive accessible avec des zones cliquables."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Libellé",
+        "description": "Libellé de l'image interactive."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Détails des zones cliquables",
+        "description": "Les zones cliquables interactives de l'image."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "አዶ",
+    "description": "ከሙሉው የአዶ ቤተ-መጽሐፍት የተገኘ አዶ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "አዶ",
+        "description": "የሚታየው አዶ።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "ለአዶው የአጽንዖት ቀለም።"
+      },
+      {
+        "property": "dark",
+        "title": "ጨለማ",
+        "description": "ጨለማ ሁነታን ተጠቀም (የተገለበጠ የቀለም ስብስብ)።"
+      }
+    ]
+  }
+}

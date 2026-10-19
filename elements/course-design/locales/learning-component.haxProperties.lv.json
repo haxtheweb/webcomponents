@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Mācību komponents",
+    "description": "Kartīte pasniedzējiem pedagoģijas un mācīšanas stratēģiju komunicēšanai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tips",
+        "description": "Izmantojamās kartītes veids."
+      },
+      {
+        "property": "subtitle",
+        "title": "Apakšvirsraksts",
+        "description": "Kartītes apakšvirsraksts."
+      },
+      {
+        "property": "url",
+        "title": "Saite",
+        "description": "Neobligāta kartītes saite (saite nav pieejama mācību mērķiem)."
+      },
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Iestatīt nosaukumu; tas aizstāj uz veidu balstīto nosaukumu"
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Iestatīt ikonu; tā aizstāj uz veidu balstīto ikonu"
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Iestatīt akcenta krāsu; tā aizstāj uz veidu balstīto krāsu"
+      },
+      {
+        "slot": "",
+        "title": "Saturs"
+      }
+    ]
+  }
+}

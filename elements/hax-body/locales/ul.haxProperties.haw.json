@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Papa helu kiko",
+    "description": "Hana i papa helu kiko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Kaila kiko",
+        "description": "Kaila i hoʻohana ʻia no nā kiko papa helu kaʻina ʻole.",
+        "options": {
+          "": "Paʻamau (huinahā)",
+          "list-disc": "Pā",
+          "list-circle": "Pōʻai",
+          "list-square": "Huinahā"
+        }
+      }
+    ]
+  }
+}

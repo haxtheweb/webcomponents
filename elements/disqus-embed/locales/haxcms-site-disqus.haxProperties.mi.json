@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ngā tākupu Disqus",
+    "description": "Tūhonotanga ki te ratonga tākupu tukutuku Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Ingoa poto",
+        "description": "Ingoa poto o te rawa i Disqus"
+      }
+    ]
+  }
+}

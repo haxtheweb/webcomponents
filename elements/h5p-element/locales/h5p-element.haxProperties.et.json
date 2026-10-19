@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P ümbris .h5p-failide laadimiseks ja esitamiseks"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe'i manustamiskood"
+      }
+    ]
+  }
+}

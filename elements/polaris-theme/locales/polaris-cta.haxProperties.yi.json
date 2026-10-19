@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "ווײַזן אַ Polaris־קנעפּל פֿאַר אַ רוף צו אַקציע לויט דער טעמע."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "קנעפּל־טעקסט",
+        "description": "טעקסט געוויזן אינעם קנעפּל פֿאַר אַ רוף צו אַקציע."
+      },
+      {
+        "property": "link",
+        "title": "לינק",
+        "description": "ציל־URL פֿאַרן קנעפּל."
+      },
+      {
+        "property": "type",
+        "title": "וואַריאַנט",
+        "description": "וואַריאַנט פֿון וויזועלן סטיל.",
+        "options": {
+          "primary": "הויפּט",
+          "tinted": "געטענט",
+          "light": "העל"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "אָפּגערעמלטער סטיל",
+        "description": "אײַנשאַלטן דעם אָפּגערעמלטן אויסזע."
+      },
+      {
+        "property": "filled",
+        "title": "אָנגעפֿילטער סטיל",
+        "description": "אײַנשאַלטן דעם אָנגעפֿילטן אויסזע."
+      }
+    ]
+  }
+}

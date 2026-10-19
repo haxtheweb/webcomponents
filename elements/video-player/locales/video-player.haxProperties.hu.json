@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Videó",
+    "description": "Akadálymentes videolejátszás több forrásból."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Forrás",
+        "description": "A média URL-je."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Cím",
+        "description": "A videó alatt megjelenő cím."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Poszterkép",
+        "description": "A poszterkép URL-je."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Szövegsávok",
+        "description": "Feliratok, leírások és egyéb szövegsávok a videóhoz."
+      },
+      {
+        "property": "startTime",
+        "title": "Kezdési idő",
+        "description": "A videó indítása egy adott időpontban (másodperc)."
+      },
+      {
+        "property": "endTime",
+        "title": "Befejezési idő",
+        "description": "A videó leállítása egy adott időpontban (másodperc); kezdési időt igényel."
+      },
+      {
+        "property": "learningMode",
+        "title": "Tanulási mód engedélyezése",
+        "description": "Letiltja az előre- és visszatekerést."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Megnyitás YouTube-on gomb eltávolítása",
+        "description": "Eltávolítja a videó YouTube-on való megnyitására szolgáló gombot."
+      },
+      {
+        "property": "linkable",
+        "title": "Megosztási hivatkozással?",
+        "description": "Hivatkozást biztosít a videó megosztásához."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Időbélyegek elrejtése",
+        "description": "Az időbélyegek elrejtése az átiratban."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Átirat elrejtése",
+        "description": "Átirat alapértelmezett elrejtése."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Hangalámondásos leírás sávja",
+        "description": "Egy hangalámondásos leírás sávjának (MP3-fájl) URL-je, amely a vizuális elemeket narrálja."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Jelzi, hogy használjon-e CORS-t.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Háttérlejátszás engedélyezése",
+        "description": "Lejátszás folytatása, ha a böngészőlap elveszíti a fókuszt."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Sötét téma az átirathoz",
+        "description": "Sötét téma engedélyezése az átirathoz."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Interaktivitás letiltása",
+        "description": "Az átiratot kattinthatóvá tevő interaktív mód letiltása."
+      },
+      {
+        "property": "lang",
+        "title": "Nyelv",
+        "description": "A média nyelve."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "(elavult) Válaszd ki a lejátszó kiemelőszínét."
+      }
+    ]
+  }
+}

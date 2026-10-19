@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX စာလုံးအနုပညာ",
+    "description": "HAX အတွက် လိုဂို အစိတ်အပိုင်း၊ HAX နှင့် တွဲသုံးနိုင်သော အစိတ်အပိုင်းအဖြစ်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "ထည့်မည့် HAX လိုဂို၏ အရွယ်အစား",
+        "options": {
+          "mini": "အသေးစား",
+          "small": "သေး",
+          "normal": "ပုံမှန်",
+          "large": "ကြီး"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "လိုဂိုကို စာလုံးကြီးအဖြစ် ပြောင်းမပြောင်း"
+      }
+    ]
+  }
+}

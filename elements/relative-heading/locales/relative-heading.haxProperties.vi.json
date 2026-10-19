@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Tiêu đề tương đối",
+    "description": "xuất ra cấp tiêu đề đúng dựa trên tiêu đề cha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID tài nguyên của tiêu đề cha"
+      },
+      {
+        "property": "disableLink",
+        "description": "Tắt tính năng nút liên kết."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Căn nút sao chép liên kết về phía ngoài cùng bên phải của tiêu đề."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Cấp tiêu đề nếu không tìm thấy tiêu đề cha."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Ghi đè văn bản mặc định của thông báo khi sao chép liên kết."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Ghi đè nhãn mặc định của nút sao chép liên kết."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Ghi đè biểu tượng mặc định của nút sao chép liên kết."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Ghi đè nhãn mặc định của nút đóng trên thông báo sao chép liên kết."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Ghi đè biểu tượng mặc định của nút đóng trên thông báo sao chép liên kết."
+      }
+    ]
+  }
+}

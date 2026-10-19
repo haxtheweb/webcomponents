@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Seznam přispěvatelů GitHub",
+    "description": "Zobrazeno jako RPG postavy pomocí GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizace",
+        "description": "Název organizace z github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repozitář",
+        "description": "Název repozitáře z github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Limit",
+        "description": "Omezit počet zobrazených přispěvatelů."
+      }
+    ]
+  }
+}

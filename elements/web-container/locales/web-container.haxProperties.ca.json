@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Contenidor NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Amaga l'editor",
+        "description": "Amaga la interfície d'edició de fitxers."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Amaga el terminal",
+        "description": "Amaga el terminal per als programes que s'executen automàticament."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Amaga la finestra",
+        "description": "Amaga la finestra de sortida quan només s'utilitza el terminal."
+      },
+      {
+        "slot": "",
+        "title": "Ordres",
+        "description": "Ordres (una per línia) que s'executen abans de carregar."
+      }
+    ]
+  }
+}

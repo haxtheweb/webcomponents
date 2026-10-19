@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "GIF sochootu hundaaf akka argaman godhi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF Sochootu",
+        "description": "URL GIF sochootu."
+      },
+      {
+        "property": "alt",
+        "title": "Barreeffama Bakka Bu'aa",
+        "description": "Barreeffama bakka bu'aa suuraa."
+      },
+      {
+        "property": "longdesc",
+        "title": "Ibsa Dheeraa",
+        "description": "Ibsa dheeraa GIF dhaqqabummaaf."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Suuraa Hin Sochoone",
+        "description": "URL suuraa hin sochoone kan GIF."
+      }
+    ]
+  }
+}

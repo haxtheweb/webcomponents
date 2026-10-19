@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "រូបភាព Parallax",
+    "description": "រូបភាពរំកិលតាម"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "រូបភាព",
+        "description": "រូបភាពដែលត្រូវប្រើនៅផ្ទៃខាងក្រោយ"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "តំបន់ចំណងជើង",
+        "description": "តំបន់អត្ថបទចំណងជើង"
+      }
+    ]
+  }
+}

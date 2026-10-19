@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "炫酷爆炸",
+    "description": "互动爆炸动画，好加音效。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "尺寸",
+        "description": "设定爆炸个尺寸。",
+        "options": {
+          "tiny": "老小",
+          "small": "小",
+          "medium": "中",
+          "large": "大",
+          "epic": "史诗级"
+        }
+      },
+      {
+        "property": "color",
+        "title": "颜色",
+        "description": "设定爆炸个颜色主题。",
+        "options": {
+          "": "默认",
+          "red": "红",
+          "blue": "蓝",
+          "purple": "紫",
+          "orange": "橙",
+          "yellow": "黄"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "音效",
+        "description": "开启音效。"
+      },
+      {
+        "property": "resetSound",
+        "title": "重置声音",
+        "description": "每趟侪从头开始放声音。"
+      },
+      {
+        "property": "image",
+        "title": "自定义图片",
+        "description": "自定义爆炸图片个可选 URL。"
+      },
+      {
+        "property": "sound",
+        "title": "自定义声音",
+        "description": "自定义音效个可选 URL。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "禁用",
+        "description": "禁用所有互动。"
+      }
+    ]
+  }
+}

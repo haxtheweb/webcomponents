@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Nasc HAX",
+    "description": "Nasc chuig acmhainn ar leith sa suíomh a bhfuil tú ag obair air."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Mír",
+        "description": "Mír le taispeáint do shonraí an naisc / an teidil"
+      }
+    ]
+  }
+}

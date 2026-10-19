@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "የውጤት መዝገብ",
+    "description": "ከመመዘኛዎች ጋር በርካታ ጀርባዎችን የሚደግፍ ራስ-አልባ የውጤት መዝገብ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ምንጭ",
+        "description": "የውሂብ ምንጭ ዓይነት (googledocs, url, json, filesystem)።",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "የURL የመጨረሻ ነጥብ (JSON)",
+          "json": "የJSON ውሂብ ስብስብ",
+          "filesystem": "የፋይል ሥርዓት"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "የምንጭ ውሂብ",
+        "description": "ለውጤት መዝገቡ URL ወይም JSON ውሂብ።"
+      },
+      {
+        "property": "forCourse",
+        "title": "የኮርስ ማጣቀሻ",
+        "description": "በእያንዳንዱ የምዘና ሀብት ላይ እንደ oer:forCourse የሚወጣ የኮርስ መለያ።"
+      }
+    ]
+  }
+}

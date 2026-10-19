@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Mewnosodiad Twitter (X)",
+    "description": "Mewnosod neges o X yn ei chyd-destun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL y neges",
+        "description": "URL y neges i'w mewnosod."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Thema",
+        "description": "Thema golau neu dywyll ar gyfer negeseuon X.",
+        "options": {
+          "light": "Golau",
+          "dark": "Tywyll"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Atal naidlen wrth glicio",
+        "description": "Atal defnyddwyr rhag agor y neges ar x.com."
+      }
+    ]
+  }
+}

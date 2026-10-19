@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Riadok kolekcie",
+    "description": "Položka v tvare riadka na použitie v zozname kolekcie, s textom, odkazom, ikonou, značkami a voliteľným obrázkom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Odkaz",
+        "description": "Cieľová URL tohto riadka."
+      },
+      {
+        "property": "image",
+        "title": "Obrázok",
+        "description": "Obrázok riadka."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternatívny text popisujúci obrázok."
+      },
+      {
+        "property": "line1",
+        "title": "Riadok 1",
+        "description": "Prvý riadok textu."
+      },
+      {
+        "property": "line2",
+        "title": "Riadok 2",
+        "description": "Druhý riadok textu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona predstavujúca riadok."
+      },
+      {
+        "property": "saturate",
+        "title": "Efekt sýtosti",
+        "description": "Zmeniť sýtosť obrázka pri zameraní používateľom."
+      },
+      {
+        "property": "tags",
+        "title": "Značky",
+        "description": "Zoznam značiek oddelených čiarkami."
+      },
+      {
+        "property": "accentColor",
+        "title": "Farba",
+        "description": "Farba ikony a značiek."
+      }
+    ]
+  }
+}

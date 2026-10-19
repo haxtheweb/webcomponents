@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "ቦታ ያዢ",
+    "description": "ወደ ተመረጠው የሚዲያ ዓይነት ሊቀየር የሚችል ቦታ ያዢ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "ዓይነት",
+        "description": "ይህ ለመተካት የሚቀበለው የመግብር ዓይነት።",
+        "options": {
+          "text": "ጽሑፍ / ይዘት",
+          "document": "ሰነድ / ፋይል",
+          "audio": "ድምፅ",
+          "video": "ቪዲዮ",
+          "image": "ምስል",
+          "math": "ሂሳብ"
+        }
+      },
+      {
+        "property": "text",
+        "title": "ጽሑፍ",
+        "description": "የሚፈለገውን ቦታ ያዢ በበለጠ ዝርዝር ይለዩ"
+      }
+    ]
+  }
+}

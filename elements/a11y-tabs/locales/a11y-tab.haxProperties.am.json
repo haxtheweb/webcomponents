@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ትር",
+    "description": "ነጠላ ትር።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "የትር አዶ"
+      },
+      {
+        "property": "disabled",
+        "title": "ተሰናክሏል"
+      },
+      {
+        "property": "label",
+        "title": "የትር መለያ"
+      },
+      {
+        "slot": "",
+        "title": "የትር ይዘት",
+        "description": "የትሩ ይዘት።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ልዩ ID"
+      },
+      {
+        "property": "flag",
+        "title": "አማራጭ የምልክት ጽሑፍ"
+      },
+      {
+        "property": "flagIcon",
+        "title": "አማራጭ የምልክት አዶ"
+      }
+    ]
+  }
+}

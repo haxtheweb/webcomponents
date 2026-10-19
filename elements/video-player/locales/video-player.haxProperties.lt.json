@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Vaizdo įrašai",
+    "description": "Prieinamas vaizdo įrašų atkūrimas iš įvairių šaltinių."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Šaltinis",
+        "description": "Šios medijos URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Pavadinimas",
+        "description": "Pavadinimas, rodomas po vaizdo įrašu."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Plakato paveikslėlis",
+        "description": "Plakato paveikslėlio URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Teksto takeliai",
+        "description": "Vaizdo įrašo titrai, subtitrai, aprašymai ir kiti teksto takeliai."
+      },
+      {
+        "property": "startTime",
+        "title": "Pradžios laikas",
+        "description": "Pradėti vaizdo įrašą nuo konkretaus laiko (sekundėmis)."
+      },
+      {
+        "property": "endTime",
+        "title": "Pabaigos laikas",
+        "description": "Baigti vaizdo įrašą konkrečiu laiku (sekundėmis); reikalingas pradžios laikas."
+      },
+      {
+        "property": "learningMode",
+        "title": "Įjungti mokymosi režimą",
+        "description": "Išjungia prasukimą pirmyn ir atgal."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Pašalinti mygtuką „Atidaryti YouTube“",
+        "description": "Pašalina mygtuką, kuriuo vaizdo įrašas atidaromas YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Įtraukti bendrinimo nuorodą?",
+        "description": "Pateikia nuorodą vaizdo įrašui bendrinti."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Slėpti laiko žymas",
+        "description": "Slėpti laiko žymas nuoraše."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Slėpti nuorašą",
+        "description": "Pagal numatytuosius nustatymus slėpti nuorašą."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Garsinio vaizdavimo takelis",
+        "description": "Garsinio vaizdavimo takelio (MP3 failo), kuriame įgarsinami vaizdiniai elementai, URL."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Nurodo, ar naudoti CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Leisti atkūrimą fone",
+        "description": "Toliau groti, kai naršyklės skirtukas praranda fokusą."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tamsi tema nuorašui",
+        "description": "Įjungti tamsiąją temą nuorašui."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Išjungti interaktyvumą",
+        "description": "Išjungti interaktyvų režimą, kuriame nuorašą galima spustelėti."
+      },
+      {
+        "property": "lang",
+        "title": "Kalba",
+        "description": "Medijos kalba."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "(nebenaudojama) Pasirinkite grotuvo akcento spalvą."
+      }
+    ]
+  }
+}

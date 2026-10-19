@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Whakatairite whakaahua",
+    "description": "Kauwhiu i tētahi whakaahua ki runga i tētahi atu hei whakatairite."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Whakaahua runga",
+        "description": "Whakaahua runga ka kauwhiutia ki runga i te whakaahua raro."
+      },
+      {
+        "property": "topAlt",
+        "title": "Kupu kē o te whakaahua runga",
+        "description": "He kupu kē e hiahiatia ana kia wātea ki te katoa."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Whakaahua raro",
+        "description": "Whakaahua raro ka whakaaturia i raro i te whakaahua runga."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Kupu kē o te whakaahua raro",
+        "description": "He kupu kē e hiahiatia ana kia wātea ki te katoa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Whanonga",
+        "description": "Kōwhiria te aratau muku (taunoa), te aratau puata o te whakaahua runga rānei."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae Arotahi",
+        "description": "Tae o te pae rēti."
+      },
+      {
+        "property": "dark",
+        "title": "Pōuri",
+        "description": "Kōaro te tae o te pae rēti."
+      },
+      {
+        "property": "position",
+        "title": "Tūnga Tīmatanga",
+        "description": "Tūnga tīmatanga mai i te 0 ki te 100."
+      }
+    ]
+  }
+}

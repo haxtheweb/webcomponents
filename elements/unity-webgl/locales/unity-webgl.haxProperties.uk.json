@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Програвач Unity",
+    "description": "Програвач Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Ціль",
+        "description": "Шлях до збірки гри."
+      },
+      {
+        "property": "compression",
+        "title": "Метод стиснення",
+        "description": "Розширення файлів стиснення для ресурсів гри."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL потокової передачі",
+        "description": "URL ресурсів потокової передачі."
+      },
+      {
+        "property": "companyname",
+        "title": "Назва компанії",
+        "description": "Назва компанії."
+      },
+      {
+        "property": "productname",
+        "title": "Назва продукту",
+        "description": "Назва гри."
+      },
+      {
+        "property": "productversion",
+        "title": "Версія продукту",
+        "description": "Версія випуску."
+      },
+      {
+        "property": "width",
+        "title": "Ширина полотна",
+        "description": "Ширина полотна в CSS (напр. px або em)."
+      },
+      {
+        "property": "height",
+        "title": "Висота полотна",
+        "description": "Висота полотна в CSS (напр. px або em)."
+      },
+      {
+        "property": "background",
+        "title": "Фон полотна",
+        "description": "Фон полотна в CSS."
+      }
+    ]
+  }
+}

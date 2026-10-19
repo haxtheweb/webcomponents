@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Evaluare cu stele",
+    "description": "Widget de afișare a evaluării sau buton pentru evaluare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Scor",
+        "description": "Valoarea curentă a scorului."
+      },
+      {
+        "property": "possible",
+        "title": "Posibil",
+        "description": "Scorul maxim posibil."
+      },
+      {
+        "property": "numStars",
+        "title": "Numărul de stele",
+        "description": "Numărul de stele de afișat."
+      },
+      {
+        "property": "interactive",
+        "title": "Interactiv",
+        "description": "Permite interacțiunea utilizatorului pentru setarea evaluării."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Mod scară de rubrică",
+        "description": "Emite metadate OER Schema RubricScale și RubricLevel (levelOrdinal/levelPoints) pentru fiecare stea."
+      }
+    ]
+  }
+}

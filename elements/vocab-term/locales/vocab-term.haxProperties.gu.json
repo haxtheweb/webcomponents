@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "શબ્દભંડોળ",
+    "description": "શબ્દભંડોળનો શબ્દ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "શબ્દ"
+      },
+      {
+        "property": "information",
+        "title": "વ્યાખ્યા",
+        "description": "શબ્દ પર ક્લિક કરવામાં આવે ત્યારે બતાવાતી વ્યાખ્યા."
+      },
+      {
+        "property": "popoverMode",
+        "title": "પૉપઓવર",
+        "description": "વ્યાખ્યાને ઇનલાઇનને બદલે પૉપઓવરમાં બતાવો."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "લિંક્સ",
+        "description": "આ શબ્દ સાથે સંકળાયેલ પૂરક લિંક્સની સૂચિ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Leabú LinkedIn",
+    "description": "Leabaigh cárta próifíle LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Ainm pearsantaithe",
+        "description": "Cuid ainm úsáideora pearsantaithe LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Logchaighdeán",
+        "description": "Luach meiteashonraí logchaighdeáin, mar shampla en_US."
+      }
+    ]
+  }
+}

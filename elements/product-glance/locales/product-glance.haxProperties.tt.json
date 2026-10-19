@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Продуктка күзәтү",
+    "description": "Продуктка кыскача күзәтү блогы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Иконка",
+        "description": "Төшенчәне белдерүче иконка."
+      },
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Бер карашта төп төшенчә."
+      },
+      {
+        "property": "subtitle",
+        "title": "Өстәмә исем",
+        "description": "Өстәмә мәгълүмат."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Иконканың ассызык төсе."
+      }
+    ]
+  }
+}

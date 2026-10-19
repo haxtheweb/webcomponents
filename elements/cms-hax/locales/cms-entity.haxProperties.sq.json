@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Entitet CMS",
+    "description": "Entitet CMS i shfaqur në backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Lloji",
+        "description": "lloji nga CMS-ja jonë",
+        "options": {
+          "node": "Nyje",
+          "user": "Përdoruesi",
+          "file": "Skedari"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id nga CMS-ja jonë"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Modaliteti i shfaqjes",
+        "description": "modaliteti i shfaqjes nga CMS-ja jonë"
+      }
+    ]
+  }
+}

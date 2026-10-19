@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkazmus",
+    "description": "Prezentovanie textu provokatívnym spôsobom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Text",
+        "description": "Text, ktorý sa má zmeniť na sarkastický"
+      }
+    ]
+  }
+}

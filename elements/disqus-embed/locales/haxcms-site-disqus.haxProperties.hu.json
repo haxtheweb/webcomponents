@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus-hozzászólások",
+    "description": "Integráció a Disqus hozzászólási webszolgáltatással"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Rövid név",
+        "description": "A tulajdon rövid neve a Disquson"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV tabla",
+    "description": "Maypipas kachun, CSV willañiqimanta tablata rurayta atin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Pukyu",
+        "description": "Kay CSV willañiqipa URL-nin."
+      },
+      {
+        "property": "title",
+        "title": "Sutichay",
+        "description": "Rurakunan tablapa sutichaynin."
+      },
+      {
+        "property": "description",
+        "title": "Willakuy",
+        "description": "Tablapa willakuyninkuna aswan aypanalla kananpaq aswan hunt'asqa willakuy."
+      }
+    ]
+  }
+}

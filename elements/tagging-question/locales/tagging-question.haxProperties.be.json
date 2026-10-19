@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Пытанне з тэгамі",
+    "description": "Выберыце тэгі, каб адказаць на пытанне."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Пытанне",
+        "description": "Пытанне, на якое адказваюць карыстальнікі."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Фармат ацэньвання",
+        "description": "OER Schema: фармат ацэньвання для гэтага задання (напр. балы, літара, працэнт, выкананне)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Вучэбная мэта",
+        "description": "OER Schema: вучэбная мэта, звязаная з гэтым заданнем."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, для якога прызначана гэта заданне."
+      },
+      {
+        "property": "answers",
+        "title": "Адказы"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Назва тэста",
+        "description": "Назва тэста для ідэнтыфікацыі xAPI у сістэмах аналітыкі."
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Marcar palavras",
+    "description": "Identifique conceitos clicando em palavras dentro de um texto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pergunta",
+        "description": "Pergunta para os usuários responderem."
+      },
+      {
+        "property": "statement",
+        "title": "Enunciado",
+        "description": "Enunciado que será convertido na interação de marcar palavras."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de avaliação",
+        "description": "OER Schema: formato de avaliação desta atividade (ex.: pontos, letra, porcentagem, conclusão)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objetivo de aprendizagem",
+        "description": "OER Schema: objetivo de aprendizagem associado a esta avaliação."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso ao qual esta avaliação se destina."
+      },
+      {
+        "property": "answers",
+        "title": "Respostas"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome do questionário",
+        "description": "Nome do questionário repassado para identificar este item em ambientes baseados em xAPI"
+      }
+    ]
+  }
+}

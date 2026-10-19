@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Ụda",
+    "description": "Nke a nwere ike igosi vidiyo n'ụzọ dị mfe iru maka onye ọ bụla n'agbanyeghị ebe o si."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isi mmalite",
+        "description": "URL maka mgbasa ozi a."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Aha",
+        "description": "Aha dị mfe n'okpuru vidiyo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba mkpụrụ",
+        "description": "Họrọ agba accent maka ihe ọkpụkpọ."
+      },
+      {
+        "property": "track",
+        "title": "Ndepụta okwu",
+        "description": "URL maka faịlụ ndepụta okwu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Onyonyo nta",
+        "description": "Nhọrọ. URL maka onyonyo nta/poster."
+      },
+      {
+        "property": "learningMode",
+        "title": "Gbanye ọnọdụ mmụta",
+        "description": "Na-egbochi ịga n'ihu ngwa ngwa na ịlaghachi azụ."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Wepụ bọtịnụ mepee na YouTube",
+        "description": "Na-ewepụ bọtịnụ maka imepe vidiyo na YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Tinye njikọ nkekọrịta?",
+        "description": "Na-enye njikọ iji kekọrịta vidiyo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Na-egosi ma a ga-eji CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Kwe ka ọ kpọọ n'azụ",
+        "description": "Vidiyo na-akwụsịtụ / na-akpọ na-akpaghị aka mgbe taabụ tufuru nlebara anya; nke a na-eme ka vidiyo kpọọ n'agbanyeghị na taabụ enweghị nlebara anya"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Isiokwu ọchịchịrị maka ederede",
+        "description": "Gbanye isiokwu ọchịchịrị maka ederede."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Gbanyụọ mmekọrịta",
+        "description": "Gbanyụọ ọnọdụ mmekọrịta na-eme ka ederede bụrụ ihe enwere ike ịpị."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Zoo oge",
+        "description": "Zoo oge dị na ederede."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Zoo ederede",
+        "description": "Zoo ederede na ndabere."
+      },
+      {
+        "property": "lang",
+        "title": "Asụsụ",
+        "description": "Asụsụ nke mgbasa ozi."
+      }
+    ]
+  }
+}

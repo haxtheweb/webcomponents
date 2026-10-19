@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D ойноткуч",
+    "description": "3D файл / толукталган чындык ойноткучу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Булак",
+        "description": "Бул AR файлынын URL дареги."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Элементтин AR ичиндеги X абалы."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Элементтин AR ичиндеги Y абалы."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Элементтин AR ичиндеги Z абалы."
+      },
+      {
+        "property": "skyColor",
+        "title": "Асмандын түсү",
+        "description": "Сахнадагы асмандын түсүн тандаңыз."
+      }
+    ]
+  }
+}

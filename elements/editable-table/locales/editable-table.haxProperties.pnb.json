@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "ٹیبل",
+    "description": "ویب لئی ٹیبل والا ڈیٹا۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "قطار سرخی",
+        "description": "پہلی قطار نوں سرخی سمجھو۔"
+      },
+      {
+        "property": "columnHeader",
+        "title": "کالم سرخی",
+        "description": "پہلے کالم نوں سرخی سمجھو۔"
+      },
+      {
+        "property": "footer",
+        "title": "فُٹر",
+        "description": "آخری قطار نوں فُٹر سمجھو۔"
+      },
+      {
+        "property": "sort",
+        "title": "ترتیب جوگا",
+        "description": "کالم دیاں قدراں نال ترتیب دین دی اجازت دیو۔"
+      },
+      {
+        "property": "filter",
+        "title": "فلٹر دی اجازت",
+        "description": "کالم دیاں قدراں نال فلٹر کرن دی اجازت دیو۔"
+      },
+      {
+        "property": "numericStyles",
+        "title": "عددی سٹائل",
+        "description": "عددی کالماں تے عددی سٹائل لاؤ۔"
+      },
+      {
+        "property": "responsive",
+        "title": "ریسپانسو",
+        "description": "نکیاں سکریناں اُتے ٹیبل دی ترتیب ٹھیک کرو۔"
+      },
+      {
+        "property": "rubricMode",
+        "title": "روبرک موڈ",
+        "description": "ایس ٹیبل نوں OER Schema Rubric سمجھو تاں جے Rubric، RubricScale، RubricCriterion تے RubricLevel میٹاڈیٹا جاری ہووے۔"
+      },
+      {
+        "property": "rubricType",
+        "title": "روبرک دی قسم",
+        "description": "روبرک سٹائل جیہڑا oer:rubricType وجوں جاری ہوندا اے (صرف روبرک موڈ چالو ہوݨ تے معنی رکھدا اے)۔",
+        "options": {
+          "": "(کوئی نہیں)",
+          "analytic": "تجزیاتی",
+          "holistic": "مجموعی",
+          "single-point": "اک نکتہ",
+          "checklist": "چیک لسٹ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "بارڈر والا"
+      },
+      {
+        "property": "condensed",
+        "title": "قطاراں سنگھیڑو",
+        "description": "قطار دی اُچائی گھٹاؤ۔"
+      },
+      {
+        "property": "striped",
+        "title": "دھاری دار قطاراں",
+        "description": "ہر دوجی قطار نوں رنگو۔"
+      },
+      {
+        "property": "downloadable",
+        "title": "ڈاؤن لوڈ بٹن",
+        "description": "ٹیبل ڈاؤن لوڈ کرن لئی بٹن جوڑو۔"
+      },
+      {
+        "property": "copyable",
+        "title": "کاپی بٹن",
+        "description": "ٹیبل دا CSV ڈیٹا کاپی کرن لئی بٹن جوڑو۔"
+      },
+      {
+        "property": "printable",
+        "title": "پرنٹ بٹن",
+        "description": "صرف ٹیبل پرنٹ کرن لئی بٹن جوڑو۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV ڈیٹا",
+        "description": "اپ لوڈ کیتی CSV فائل توں ٹیبل بناؤ۔"
+      }
+    ]
+  }
+}

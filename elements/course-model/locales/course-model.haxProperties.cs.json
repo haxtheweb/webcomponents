@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "model kurzu",
+    "description": "Interaktivní rozvržení pro koncepty kurzu s podrobnostmi, animací a ověřením znalostí."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "název"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Informační oblast"
+      },
+      {
+        "title": "Oblast podrobností"
+      },
+      {
+        "title": "Oblast animace"
+      },
+      {
+        "title": "Oblast ověření znalostí"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Oblast loga"
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "የዝግጅት ባጅ",
+    "description": "የዝግጅት ባጅ ክፍል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "የTV ምስል",
+        "description": "በTVው ላይ የሚታይ ምስል።"
+      },
+      {
+        "property": "logo",
+        "title": "አርማ",
+        "description": "በባጁ ጥግ ላይ የሚታይ አርማ።"
+      },
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "በባጁ አናት ላይ የሚታይ ርዕስ።"
+      },
+      {
+        "property": "name",
+        "title": "ስም",
+        "description": "በባጁ ላይ የሚታይ ስም።"
+      },
+      {
+        "property": "position",
+        "title": "ቦታ",
+        "description": "የሰውየው ሚና ወይም ማዕረግ።"
+      },
+      {
+        "property": "organization",
+        "title": "ድርጅት",
+        "description": "ሰውየው የሚሠራበት ድርጅት።"
+      },
+      {
+        "property": "tvcolor",
+        "title": "የTV ቀለም",
+        "description": "ለTVው ቀለም ምረጥ።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "ዋና የጀርባ ወይም የጽሑፍ ቀለም።"
+      },
+      {
+        "property": "knobcolor",
+        "title": "የመዘውር ቀለም",
+        "description": "የTVው መዘውሮች ቀለም።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "ሴፒያ",
+        "description": "የሴፒያ ውጤት ተግብር።"
+      },
+      {
+        "property": "blackwhite",
+        "title": "ጥቁር እና ነጭ",
+        "description": "የጥቁር እና ነጭ ውጤት ተግብር።"
+      }
+    ]
+  }
+}

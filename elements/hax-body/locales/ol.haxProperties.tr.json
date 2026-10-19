@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Numaralı liste",
+    "description": "Numaralı bir liste oluşturun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Numara stili",
+        "description": "Sıralı liste numaralandırması için kullanılan stil.",
+        "options": {
+          "": "Varsayılan (ondalık)",
+          "list-decimal-leading-zero": "Başında sıfır olan ondalık (01, 02, 03)",
+          "list-lower-alpha": "Küçük harf (a, b, c)",
+          "list-upper-alpha": "Büyük harf (A, B, C)",
+          "list-lower-roman": "Küçük Roma rakamı (i, ii, iii)",
+          "list-upper-roman": "Büyük Roma rakamı (I, II, III)"
+        }
+      }
+    ]
+  }
+}

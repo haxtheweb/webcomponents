@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "শব্দভান্ডার",
+    "description": "শব্দভান্ডারের পরিভাষা"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "পরিভাষা"
+      },
+      {
+        "slot": "",
+        "title": "সংজ্ঞা",
+        "description": "পরিভাষায় ক্লিক করলে যে সংজ্ঞা দেখানো হবে।"
+      },
+      {
+        "property": "description",
+        "title": "বিবরণ (OER Schema)",
+        "description": "OER Schema: শব্দভান্ডারের পরিভাষার সংক্ষিপ্ত বিবরণ। খালি রাখলে সংজ্ঞার টেক্সট থেকে স্বয়ংক্রিয়ভাবে পূরণ হয়।"
+      }
+    ]
+  }
+}

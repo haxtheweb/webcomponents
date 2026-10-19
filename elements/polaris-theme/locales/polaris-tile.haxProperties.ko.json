@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris 타일",
+    "description": "제목, 선택적 보조 텍스트, 선택적 링크가 있는 Polaris 타일을 표시합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "기본 텍스트",
+        "description": "타일의 주요 텍스트입니다."
+      },
+      {
+        "property": "line2",
+        "title": "보조 텍스트",
+        "description": "선택적 보조 텍스트입니다."
+      },
+      {
+        "property": "type",
+        "title": "타일 스타일",
+        "description": "사전 설정된 타일 시각 스타일입니다.",
+        "options": {
+          "1": "스타일 1",
+          "2": "스타일 2",
+          "3": "스타일 3",
+          "4": "스타일 4",
+          "5": "스타일 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "배경 이미지",
+        "description": "이미지를 지원하는 타일 스타일에서 사용하는 배경 이미지 URL입니다."
+      },
+      {
+        "property": "link",
+        "title": "링크",
+        "description": "타일 동작의 선택적 대상 URL입니다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Sêwirandina Kursê",
+    "description": "Konteynir ji bo materyalên perwerdehiyê û hêmanên sêwirandina kursê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Nasnameya Kursê",
+        "description": "OER Schema: nasnameya kursê, mînak MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Dema Pêşkêşkirinê",
+        "description": "OER Schema: dema ku kurs tê de tê pêşkêşkirin."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Formata Pêşkêşkirinê",
+        "description": "OER Schema: formata ku ji bo pêşkêşkirina kursê tê bikaranîn (mînak rû bi rû, online, hîbrîd)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Mamosteyê Sereke",
+        "description": "OER Schema: mamosteyê sereke yê kursê."
+      },
+      {
+        "property": "syllabus",
+        "title": "URLa Bernameya Kursê",
+        "description": "OER Schema: URL ji bo bernameya kursê."
+      }
+    ]
+  }
+}

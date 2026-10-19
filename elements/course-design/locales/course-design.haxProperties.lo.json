@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "ການອອກແບບຫຼັກສູດ",
+    "description": "ບ່ອນບັນຈຸສຳລັບສື່ການສຶກສາ ແລະ ອົງປະກອບການອອກແບບຫຼັກສູດ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "ລະຫັດຫຼັກສູດ",
+        "description": "OER Schema: ລະຫັດຂອງຫຼັກສູດ, ເຊັ່ນ: MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "ພາກຮຽນທີ່ເປີດສອນ",
+        "description": "OER Schema: ພາກຮຽນທີ່ເປີດສອນຫຼັກສູດ."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "ຮູບແບບການສອນ",
+        "description": "OER Schema: ຮູບແບບທີ່ໃຊ້ສອນຫຼັກສູດ (ເຊັ່ນ: ໃນຫ້ອງຮຽນ, ອອນລາຍ, ແບບປະສົມ)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "ຜູ້ສອນຫຼັກ",
+        "description": "OER Schema: ຜູ້ສອນຫຼັກຂອງຫຼັກສູດ."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL ປະມວນການສອນ",
+        "description": "OER Schema: URL ໄປຫາປະມວນການສອນຂອງຫຼັກສູດ."
+      }
+    ]
+  }
+}

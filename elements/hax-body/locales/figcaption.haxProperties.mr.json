@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "आकृती मथळा",
+    "description": "आकृतीसाठी मथळा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "मथळा",
+        "description": "आकृतीखाली दाखवलेला मजकूर."
+      }
+    ]
+  }
+}

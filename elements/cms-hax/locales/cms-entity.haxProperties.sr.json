@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS ентитет",
+    "description": "CMS ентитет приказан на бекенду"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Тип",
+        "description": "тип из нашег CMS-а",
+        "options": {
+          "node": "Чвор",
+          "user": "Корисник",
+          "file": "Датотека"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id из нашег CMS-а"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Режим приказа",
+        "description": "режим приказа из нашег CMS-а"
+      }
+    ]
+  }
+}

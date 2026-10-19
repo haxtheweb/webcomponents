@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "دونات پیشرفت",
+    "description": "دونات پیشرفت"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنوان عنصر"
+      },
+      {
+        "property": "desc",
+        "title": "توضیحات",
+        "description": "توضیح طولانی دسترس‌پذیر"
+      },
+      {
+        "property": "imageSrc",
+        "title": "منبع تصویر",
+        "description": "منبع تصویر درون دونات."
+      },
+      {
+        "property": "imageAlt",
+        "title": "متن جایگزین تصویر",
+        "description": "متن جایگزین تصویر."
+      },
+      {
+        "property": "animated",
+        "title": "متحرک",
+        "description": "آیا پیشرفت در اولین بارگذاری متحرک باشد"
+      },
+      {
+        "property": "complete",
+        "title": "کامل",
+        "description": "آرایه‌ای از مقادیر تکمیل‌شده."
+      },
+      {
+        "property": "total",
+        "title": "کل",
+        "description": "مقدار کل وقتی همه موارد کامل شده‌اند."
+      },
+      {
+        "property": "startAngle",
+        "title": "زاویه شروع",
+        "description": "زاویه دونات که پیشرفت از آن شروع می‌شود"
+      }
+    ]
+  }
+}

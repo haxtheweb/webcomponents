@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Cartão retrô",
+    "description": "Cartão simples com design retrô."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título principal do cartão."
+      },
+      {
+        "property": "url",
+        "description": "URL a abrir quando o cartão for clicado."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtítulo",
+        "description": "Subtítulo do cartão."
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Tags separadas por vírgulas."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Origem da mídia",
+        "description": "Origem da mídia principal."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Origem ao passar o mouse",
+        "description": "Origem da mídia exibida quando o mouse passa sobre o cartão ou ele é ativado."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Cor de destaque aplicada em todo o cartão."
+      },
+      {
+        "property": "dark",
+        "title": "Escuro",
+        "description": "Usar as cores base do modo escuro."
+      }
+    ]
+  }
+}

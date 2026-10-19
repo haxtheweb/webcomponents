@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "حواله",
+    "description": "د درې وړاندې کولو حالتونو سره د حوالې عنصر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "د حواله شوي کار سرلیک."
+      },
+      {
+        "property": "source",
+        "title": "د سرچینې لینک",
+        "description": "د حواله شوي کار سرچینه URL."
+      },
+      {
+        "property": "date",
+        "title": "د لاسرسي نېټه",
+        "description": "هغه نېټه چې سرچینې ته لاسرسی شوی."
+      },
+      {
+        "property": "scope",
+        "title": "ساحه",
+        "description": "د حوالې لپاره د عنصر ساحه.",
+        "options": {
+          "sibling": "همکچه عنصر",
+          "parent": "اصلي عنصر"
+        }
+      },
+      {
+        "property": "license",
+        "title": "جواز",
+        "description": "د حواله شوي کار جواز."
+      },
+      {
+        "property": "creator",
+        "title": "جوړوونکی",
+        "description": "د حواله شوي کار جوړوونکی یا مالک."
+      },
+      {
+        "property": "typeof",
+        "title": "د OER سکیما ډول",
+        "description": "د دې حوالې لپاره د OER سکیما کلاس. تلواله یې oer:ReferencedMaterial دی؛ یوازې د سم OER کلاس سره یې بدل کړئ (لکه oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

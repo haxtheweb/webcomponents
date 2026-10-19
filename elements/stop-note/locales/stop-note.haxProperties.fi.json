@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Pysähdyshuomautus",
+    "description": "Viesti, joka kiinnittää lukijoiden huomion tiettyihin ohjeisiin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Anna pysähdyshuomautuksen otsikko."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Anna ulkoinen URL."
+      },
+      {
+        "property": "status",
+        "title": "Tila",
+        "description": "Tilan asettaminen muuttaa värit ja kuvakkeet vastaaviksi",
+        "options": {
+          "stop": "Pysähdy",
+          "warning": "Varoitus",
+          "success": "Vahvistus",
+          "info": "Huomautus"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Huomautuksen teksti",
+        "description": "Pysähdyshuomautuksen teksti."
+      }
+    ]
+  }
+}

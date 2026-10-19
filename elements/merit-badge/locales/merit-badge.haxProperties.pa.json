@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ਯੋਗਤਾ ਬੈਜ",
+    "description": "ਹੁਨਰ ਪ੍ਰਾਪਤੀ ਦੱਸਣ ਲਈ ਦ੍ਰਿਸ਼ਟੀ ਬੈਜ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "ਬੈਜ ਸਿਰਲੇਖ",
+        "description": "ਬੈਜ 'ਤੇ ਦਿਖਾਇਆ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "badgeImage",
+        "title": "ਬੈਜ ਚਿੱਤਰ",
+        "description": "ਬੈਜ ਲਈ ਚਿੱਤਰ URL।"
+      },
+      {
+        "property": "badgeDetails",
+        "title": "ਬੈਜ ਵੇਰਵੇ",
+        "description": "ਬੈਜ ਬਾਰੇ ਵੇਰਵੇ।"
+      },
+      {
+        "property": "hyperLink",
+        "title": "ਹਾਈਪਰਲਿੰਕ",
+        "description": "ਬੈਜ ਨਾਲ ਜੁੜਿਆ ਲਿੰਕ।"
+      },
+      {
+        "property": "badgeSkills",
+        "title": "ਬੈਜ ਹੁਨਰ",
+        "description": "ਬੈਜ 'ਤੇ ਦਿਖਾਏ ਹੁਨਰ।"
+      },
+      {
+        "property": "skill",
+        "title": "ਹੁਨਰ (OER ਸਕੀਮਾ)",
+        "description": "OER ਸਕੀਮਾ: ਇਸ ਸਿੱਖਣ ਉਦੇਸ਼ ਨੂੰ ਪੂਰਾ ਕਰਕੇ ਪ੍ਰਾਪਤ ਕੀਤਾ ਸਿੱਖਿਆ ਹੁਨਰ।"
+      }
+    ]
+  }
+}

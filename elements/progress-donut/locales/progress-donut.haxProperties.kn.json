@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "ಪ್ರಗತಿ ಡೋನಟ್",
+    "description": "ಪ್ರಗತಿಯ ಡೋನಟ್"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಘಟಕದ ಶೀರ್ಷಿಕೆ"
+      },
+      {
+        "property": "desc",
+        "title": "ವಿವರಣೆ",
+        "description": "ಪ್ರವೇಶಿಸಬಹುದಾದ ದೀರ್ಘ ವಿವರಣೆ"
+      },
+      {
+        "property": "imageSrc",
+        "title": "ಚಿತ್ರದ ಮೂಲ",
+        "description": "ಡೋನಟ್ ಒಳಗಿನ ಚಿತ್ರದ ಮೂಲ."
+      },
+      {
+        "property": "imageAlt",
+        "title": "ಚಿತ್ರದ ಪರ್ಯಾಯ ಪಠ್ಯ",
+        "description": "ಚಿತ್ರಕ್ಕೆ ಪರ್ಯಾಯ ಪಠ್ಯ."
+      },
+      {
+        "property": "animated",
+        "title": "ಅನಿಮೇಟೆಡ್",
+        "description": "ಮೊದಲ ಲೋಡ್‌ನಲ್ಲಿ ಪ್ರಗತಿ ಅನಿಮೇಟ್ ಆಗಬೇಕೇ"
+      },
+      {
+        "property": "complete",
+        "title": "ಪೂರ್ಣಗೊಂಡಿದೆ",
+        "description": "ಪೂರ್ಣಗೊಂಡ ಮೌಲ್ಯಗಳ ಅರೇ."
+      },
+      {
+        "property": "total",
+        "title": "ಒಟ್ಟು",
+        "description": "ಎಲ್ಲಾ ಐಟಂಗಳು ಪೂರ್ಣಗೊಂಡಾಗಿನ ಒಟ್ಟು."
+      },
+      {
+        "property": "startAngle",
+        "title": "ಪ್ರಾರಂಭ ಕೋನ",
+        "description": "ಪ್ರಗತಿ ಪ್ರಾರಂಭವಾಗುವ ಡೋನಟ್ ಕೋನ"
+      }
+    ]
+  }
+}

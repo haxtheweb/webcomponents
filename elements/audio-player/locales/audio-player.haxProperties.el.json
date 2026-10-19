@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Ήχος",
+    "description": "Μπορεί να παρουσιάσει βίντεο με ιδιαίτερα προσβάσιμο τρόπο, ανεξάρτητα από την πηγή."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Πηγή",
+        "description": "Το URL για αυτό το πολυμέσο."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Τίτλος",
+        "description": "Απλός τίτλος κάτω από το βίντεο"
+      },
+      {
+        "property": "accentColor",
+        "title": "Χρώμα έμφασης",
+        "description": "Επιλέξτε το χρώμα έμφασης για τη συσκευή αναπαραγωγής."
+      },
+      {
+        "property": "track",
+        "title": "Υπότιτλοι",
+        "description": "Το URL για το αρχείο υποτίτλων."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Μικρογραφία",
+        "description": "Προαιρετικό. Το URL για μια μικρογραφία/εικόνα αφίσας."
+      },
+      {
+        "property": "learningMode",
+        "title": "Ενεργοποίηση λειτουργίας μάθησης",
+        "description": "Απενεργοποιεί τη γρήγορη κίνηση εμπρός και πίσω."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Αφαίρεση κουμπιού ανοίγματος στο YouTube",
+        "description": "Αφαιρεί το κουμπί ανοίγματος του βίντεο στο YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Συμπερίληψη συνδέσμου κοινοποίησης;",
+        "description": "Παρέχει έναν σύνδεσμο για κοινοποίηση του βίντεο."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Υποδεικνύει αν θα χρησιμοποιηθεί CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Να επιτρέπεται η αναπαραγωγή στο παρασκήνιο",
+        "description": "Τα βίντεο σταματούν / ξεκινούν αυτόματα όταν η καρτέλα χάνει την εστίαση· αυτό επιτρέπει στο βίντεο να παίζει χωρίς η καρτέλα να έχει την εστίαση"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Σκοτεινό θέμα για την απομαγνητοφώνηση",
+        "description": "Ενεργοποίηση σκοτεινού θέματος για την απομαγνητοφώνηση."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Απενεργοποίηση διαδραστικότητας",
+        "description": "Απενεργοποίηση της διαδραστικής λειτουργίας που κάνει την απομαγνητοφώνηση επιλέξιμη."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Απόκρυψη χρονοσημάνσεων",
+        "description": "Απόκρυψη των χρονοσημάνσεων στην απομαγνητοφώνηση."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Απόκρυψη απομαγνητοφώνησης",
+        "description": "Απόκρυψη απομαγνητοφώνησης από προεπιλογή."
+      },
+      {
+        "property": "lang",
+        "title": "Γλώσσα",
+        "description": "Γλώσσα του πολυμέσου."
+      }
+    ]
+  }
+}

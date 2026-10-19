@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Fakkeenya koodii",
+    "description": "Fakkeenya koodii fuula keessatti calaqqifame"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Calaqqisiisa koodii",
+        "description": "Calaqqisiisa caasaa naannoo koodiitti raawwatamu",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Daataa JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Qabduu gara kilippiboorditti garagalchuu",
+        "description": "qabduu gubbaa mirgaa irratti gara kilippiboorditti garagalchi jedhu"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Jalqaba calaqqisiisaa",
+        "description": "Lakkoofsa sararaa calaqqisiisuu itti jalqabu"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Dhuma calaqqisiisaa",
+        "description": "Sarara calaqqisiisuu itti xumuru"
+      }
+    ]
+  }
+}

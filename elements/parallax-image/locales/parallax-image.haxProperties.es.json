@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Imagen con paralaje",
+    "description": "Imagen que se desplaza"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Imagen",
+        "description": "imagen que se usará en el fondo"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Área del encabezado",
+        "description": "Área de texto del encabezado"
+      }
+    ]
+  }
+}

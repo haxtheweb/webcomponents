@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ಕೋರ್ಸ್ ಮಾದರಿ",
+    "description": "ವಿವರಗಳು, ಅನಿಮೇಶನ್ ಮತ್ತು ಜ್ಞಾನ ಪರಿಶೀಲನೆಗಳೊಂದಿಗೆ ಕೋರ್ಸ್ ಪರಿಕಲ್ಪನೆಗಳಿಗಾಗಿ ಸಂವಾದಾತ್ಮಕ ವಿನ್ಯಾಸ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "ಶೀರ್ಷಿಕೆ"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "ಮಾಹಿತಿ ಪ್ರದೇಶ"
+      },
+      {
+        "title": "ವಿವರಗಳ ಪ್ರದೇಶ"
+      },
+      {
+        "title": "ಅನಿಮೇಶನ್ ಪ್ರದೇಶ"
+      },
+      {
+        "title": "ಜ್ಞಾನ ಪರಿಶೀಲನೆ ಪ್ರದೇಶ"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "ಲೋಗೋ ಪ್ರದೇಶ"
+      }
+    ]
+  }
+}

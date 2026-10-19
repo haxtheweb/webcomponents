@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Selettur Hex",
+    "description": "Selettur tal-kulur bil-kodiċi hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Valur",
+        "description": "Valur hex default"
+      },
+      {
+        "property": "disabled",
+        "title": "Diżattivat",
+        "description": "Iddiżattiva l-qasam tat-test"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Wiri Kbir",
+        "description": "Inkludi l-kulur f'wiri kbir"
+      }
+    ]
+  }
+}

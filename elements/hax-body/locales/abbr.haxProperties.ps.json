@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "لنډیز",
+    "description": "د بشپړې اصطلاح د لارښوونې سره لنډیز."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "د لنډیز ښکاره متن."
+      },
+      {
+        "attribute": "title",
+        "title": "کلمه",
+        "description": "بشپړه اصطلاح چې د هوور پر مهال ښودل کېږي."
+      }
+    ]
+  }
+}

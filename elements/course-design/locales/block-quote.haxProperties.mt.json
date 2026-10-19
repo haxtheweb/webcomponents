@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kwotazzjoni",
+    "description": "Blokk ta' kwotazzjoni bi stil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Ċitazzjoni",
+        "description": "Test taċ-ċitazzjoni."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Test alternattiv għall-immaġni."
+      },
+      {
+        "property": "image",
+        "title": "Immaġni",
+        "description": "Immaġni murija mal-kwotazzjoni."
+      }
+    ]
+  }
+}

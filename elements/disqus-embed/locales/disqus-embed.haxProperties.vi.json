@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Nhúng bình luận Disqus vào trang."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Tên ngắn",
+        "description": "Tên ngắn của trang web, xác định máy chủ tập lệnh Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL trang",
+        "description": "URL của trang mà chuỗi bình luận được gắn vào."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Mã định danh trang",
+        "description": "Mã định danh duy nhất cho chuỗi bình luận của trang."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Tiêu đề trang",
+        "description": "Tiêu đề của trang mà chuỗi bình luận được gắn vào."
+      },
+      {
+        "property": "loadingText",
+        "title": "Văn bản khi tải",
+        "description": "Văn bản được thông báo trong khi đang tải bình luận."
+      },
+      {
+        "property": "lang",
+        "title": "Ngôn ngữ",
+        "description": "Mã ngôn ngữ cho giao diện Disqus, ví dụ: en."
+      }
+    ]
+  }
+}

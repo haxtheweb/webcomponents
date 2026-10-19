@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Nhazi ọmụmụ",
+    "description": "Ihe nkwakọ maka ihe mmụta na ihe nhazi ọmụmụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Njirimara ọmụmụ",
+        "description": "OER Schema: njirimara nke ọmụmụ ahụ, dịka MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Oge enyere ya",
+        "description": "OER Schema: oge a na-enye ọmụmụ ahụ."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Ụdị nnyefe",
+        "description": "OER Schema: ụdị e ji enye ọmụmụ ahụ (dịka ihu na ihu, n'ịntanetị, ngwakọ)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Onye nkuzi bụ isi",
+        "description": "OER Schema: onye nkuzi bụ isi maka ọmụmụ ahụ."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL usoro ọmụmụ",
+        "description": "OER Schema: URL gaa na usoro ọmụmụ."
+      }
+    ]
+  }
+}

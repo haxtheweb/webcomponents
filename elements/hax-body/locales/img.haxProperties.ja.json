@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "基本画像",
+    "description": "基本的な画像要素。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ソース",
+        "description": "画像のURL。"
+      },
+      {
+        "attribute": "alt",
+        "title": "代替テキスト",
+        "description": "アクセシビリティとSEOのための代替テキスト。"
+      },
+      {
+        "attribute": "height",
+        "title": "高さ",
+        "description": "高さ（ピクセル）。空欄にすると本来のサイズを使用します。"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "画像の読み込み方法",
+        "description": "画像を読み込むタイミングを選択します。",
+        "options": {
+          "lazy": "表示されたときに読み込む",
+          "auto": "自動"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "レスポンシブソース（srcset）",
+        "description": "画像のURLと記述子（例：480w や 2x）を列挙すると、ブラウザーが画面に最適なサイズを選択します。標準の srcset 属性として保存されます。"
+      }
+    ]
+  }
+}

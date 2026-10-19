@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Alaphivatkozás",
+    "description": "Alapvető hivatkozáselem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Hivatkozás",
+        "description": "Cél-URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Szöveg",
+        "description": "Látható hivatkozásszöveg."
+      },
+      {
+        "attribute": "target",
+        "title": "Cél",
+        "description": "Hol nyíljon meg a hivatkozás.",
+        "options": {
+          "": "Ugyanaz az ablak",
+          "_blank": "Új ablak - _blank",
+          "_top": "Legfelső ablak - _top",
+          "_parent": "Szülőablak - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Cím szövege",
+        "description": "Tájékoztató cím az akadálymentességhez és a SEO-hoz."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Kapcsolat a céllal (biztonság/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

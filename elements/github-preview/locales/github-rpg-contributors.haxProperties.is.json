@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Listi yfir GitHub-þátttakendur",
+    "description": "Birtir sem RPG-persónur með GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Stofnun",
+        "description": "Heiti stofnunar úr github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Geymsla",
+        "description": "Heiti geymslu úr github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Hámark",
+        "description": "Takmarka fjölda þátttakenda sem birtast."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Teglash savoli",
+    "description": "Savolga javob berish uchun teglarni tanlang."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Savol",
+        "description": "Foydalanuvchilar javob beradigan savol."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Baholash formati",
+        "description": "OER Schema: ushbu baholash uchun baholash formati (masalan, ball, harf, foiz, bajarilganlik)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oʻquv maqsadi",
+        "description": "OER Schema: ushbu baholash bilan bogʻliq oʻquv maqsadi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: ushbu baholash moʻljallangan kurs."
+      },
+      {
+        "property": "answers",
+        "title": "Javoblar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Test nomi",
+        "description": "Analitika tizimlarida xAPI identifikatsiyasi uchun ishlatiladigan test nomi."
+      }
+    ]
+  }
+}

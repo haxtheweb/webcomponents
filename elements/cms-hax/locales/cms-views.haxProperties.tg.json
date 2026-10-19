@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Намои CMS",
+    "description": "Намоҳои CMS, ки дар бэкенд намоиш дода мешаванд"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Ном",
+        "description": "Номи намо аз CMS-и мо"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Намоиш",
+        "description": "Намоиш дар дохили он намо аз CMS-и мо"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Λεξιλόγιο",
+    "description": "Όρος λεξιλογίου."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Όρος"
+      },
+      {
+        "property": "information",
+        "title": "Ορισμός",
+        "description": "Ορισμός που εμφανίζεται όταν γίνεται κλικ στον όρο."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Αναδυόμενο πλαίσιο",
+        "description": "Εμφάνιση του ορισμού σε αναδυόμενο πλαίσιο αντί μέσα στο κείμενο."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Σύνδεσμοι",
+        "description": "Λίστα συμπληρωματικών συνδέσμων που σχετίζονται με αυτόν τον όρο."
+      }
+    ]
+  }
+}

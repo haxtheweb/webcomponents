@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Riyaziyyat",
+    "description": "Riyaziyyatı gözəl görünüşdə təqdim edin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Riyaziyyat",
+        "description": "Tənliyi LaTeX kimi daxil edin"
+      }
+    ]
+  }
+}

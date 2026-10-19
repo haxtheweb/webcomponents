@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Papa hoʻokani",
+    "description": "E hōʻike i kēlā me kēia ʻano ʻikepili i loko o ka papa hoʻokani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Kumu",
+        "description": "ʻIkepili i hōʻike ʻia ma ka papa hoʻokani."
+      },
+      {
+        "property": "edit",
+        "title": "ʻAno hoʻoponopono",
+        "description": "E hoʻololi ma waena o ke ʻano hoʻoponopono a me ke ʻano nānā mua no ka papa hoʻokani."
+      },
+      {
+        "property": "navigation",
+        "title": "Hoʻokele",
+        "description": "E hōʻike i nā pihi hoʻokele i mua a i hope."
+      },
+      {
+        "property": "pagination",
+        "title": "Helu ʻaoʻao",
+        "description": "E hōʻike i nā kiko helu ʻaoʻao."
+      },
+      {
+        "property": "orientation",
+        "title": "Kuhi",
+        "description": "Kuhi o nā paheʻe.",
+        "options": {
+          "horizontal": "Ākea",
+          "vertical": "Kū pololei"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Paheʻe e hoʻomaka ai",
+        "description": "Helu kuhi o ka paheʻe e kālele mua ai."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Lakio ʻAoʻao",
+        "description": "Lakio ākea a kiʻekiʻe o nā paheʻe.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Ligne de collection",
+    "description": "Élément en ligne à utiliser dans une liste de collection, avec texte, lien, icône, étiquettes et image facultative."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Lien",
+        "description": "URL de destination de cette ligne."
+      },
+      {
+        "property": "image",
+        "title": "Image",
+        "description": "Image de la ligne."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Texte alternatif décrivant l'image."
+      },
+      {
+        "property": "line1",
+        "title": "Ligne 1",
+        "description": "Première ligne de texte."
+      },
+      {
+        "property": "line2",
+        "title": "Ligne 2",
+        "description": "Deuxième ligne de texte."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icône",
+        "description": "Icône représentant la ligne."
+      },
+      {
+        "property": "saturate",
+        "title": "Effet de saturation",
+        "description": "Modifier la saturation de l'image lors du focus."
+      },
+      {
+        "property": "tags",
+        "title": "Étiquettes",
+        "description": "Liste d'étiquettes séparées par des virgules."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur",
+        "description": "Couleur utilisée pour l'icône et les étiquettes."
+      }
+    ]
+  }
+}

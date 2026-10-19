@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Nodyn Stop",
+    "description": "Neges i dynnu sylw darllenwyr at gyfarwyddiadau penodol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Rhowch deitl ar gyfer y nodyn stop."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Rhowch URL allanol."
+      },
+      {
+        "property": "status",
+        "title": "Statws",
+        "description": "Mae gosod y statws yn newid y lliwiau a'r eiconau i gyd-fynd",
+        "options": {
+          "stop": "Stop",
+          "warning": "Rhybudd",
+          "success": "Cadarnhad",
+          "info": "Hysbysiad"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Testun y Nodyn",
+        "description": "Testun ar gyfer y nodyn stop."
+      }
+    ]
+  }
+}

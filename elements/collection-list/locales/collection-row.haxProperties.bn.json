@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "সংগ্রহ সারি",
+    "description": "সংগ্রহ তালিকার ভেতরে ব্যবহারের জন্য সারি-ধাঁচের আইটেম, টেক্সট, লিংক, আইকন, ট্যাগ ও ঐচ্ছিক ছবিসহ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "লিংক",
+        "description": "এই সারির গন্তব্য URL।"
+      },
+      {
+        "property": "image",
+        "title": "ছবি",
+        "description": "সারির ছবি।"
+      },
+      {
+        "property": "alt",
+        "title": "বিকল্প টেক্সট",
+        "description": "ছবির বর্ণনামূলক বিকল্প টেক্সট।"
+      },
+      {
+        "property": "line1",
+        "title": "লাইন ১",
+        "description": "টেক্সটের প্রথম লাইন।"
+      },
+      {
+        "property": "line2",
+        "title": "লাইন ২",
+        "description": "টেক্সটের দ্বিতীয় লাইন।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "আইকন",
+        "description": "সারিটির প্রতিনিধিত্বকারী আইকন।"
+      },
+      {
+        "property": "saturate",
+        "title": "স্যাচুরেশন ইফেক্ট",
+        "description": "ব্যবহারকারী ফোকাস করলে ছবির স্যাচুরেশন পরিবর্তন করুন।"
+      },
+      {
+        "property": "tags",
+        "title": "ট্যাগ",
+        "description": "কমা দিয়ে আলাদা করা ট্যাগের তালিকা।"
+      },
+      {
+        "property": "accentColor",
+        "title": "রং",
+        "description": "আইকন ও ট্যাগের জন্য ব্যবহৃত রং।"
+      }
+    ]
+  }
+}

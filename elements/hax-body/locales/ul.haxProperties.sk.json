@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Zoznam s odrážkami",
+    "description": "Vytvoriť zoznam s odrážkami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Štýl odrážok",
+        "description": "Štýl použitý pre odrážky neusporiadaného zoznamu.",
+        "options": {
+          "": "Predvolené (štvorec)",
+          "list-disc": "Disk",
+          "list-circle": "Kruh",
+          "list-square": "Štvorec"
+        }
+      }
+    ]
+  }
+}

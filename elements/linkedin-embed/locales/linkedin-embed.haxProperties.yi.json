@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn־אײַנבעטונג",
+    "description": "אײַנבעטן אַ LinkedIn־פּראָפֿיל־קאַרטל."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "פּערזענלעכער נאָמען",
+        "description": "פּערזענלעכער באַניצער־נאָמען־טייל אויף LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "לאָקאַל",
+        "description": "לאָקאַל־מעטאַדאַטן־ווערט, למשל en_US."
+      }
+    ]
+  }
+}

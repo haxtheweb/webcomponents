@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV-tabel",
+    "description": "Dit kan 'n tabel genereer uit 'n CSV-lêer, maak nie saak waar dit geleë is nie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Bron",
+        "description": "URL vir hierdie CSV-lêer."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel vir die tabel wat gegenereer word."
+      },
+      {
+        "property": "description",
+        "title": "Beskrywing",
+        "description": "Meer gedetailleerde beskrywing vir beter toeganklikheid van die tabeldata."
+      }
+    ]
+  }
+}

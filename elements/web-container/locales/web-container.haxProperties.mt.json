@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Kontenitur NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Aħbi l-editur",
+        "description": "Aħbi l-interfaċċja tal-editjar tal-fajls."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Aħbi t-terminal",
+        "description": "Aħbi t-terminal għal programmi li jibdew awtomatikament."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Aħbi t-tieqa",
+        "description": "Aħbi t-tieqa tal-output għall-użu tat-terminal biss."
+      },
+      {
+        "slot": "",
+        "title": "Kmandi",
+        "description": "Kmandi (wieħed f'kull linja) li għandhom jitħaddmu qabel it-tagħbija."
+      }
+    ]
+  }
+}

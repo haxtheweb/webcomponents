@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Qabduu Ebook",
+    "description": "Qabduu gara Ebook tti geessu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mata duree",
+        "description": "Mata duree qabduu."
+      },
+      {
+        "property": "link",
+        "title": "Hidhoo",
+        "description": "Liinkii yeroo cuqaasamu itti geeffamu."
+      },
+      {
+        "property": "icon",
+        "title": "Mallattoo",
+        "description": "Aayikoonii liinkii kana bakka bu'u"
+      }
+    ]
+  }
+}

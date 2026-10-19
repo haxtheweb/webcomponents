@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "播放列表",
+    "description": "在播放列表中显示任意类型的内容。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "来源",
+        "description": "播放列表中显示的内容。"
+      },
+      {
+        "property": "edit",
+        "title": "编辑模式",
+        "description": "在播放列表的编辑和预览模式之间切换。"
+      },
+      {
+        "property": "navigation",
+        "title": "导航",
+        "description": "显示前进和后退导航按钮。"
+      },
+      {
+        "property": "pagination",
+        "title": "分页",
+        "description": "显示分页圆点。"
+      },
+      {
+        "property": "orientation",
+        "title": "方向",
+        "description": "幻灯片的方向。",
+        "options": {
+          "horizontal": "水平",
+          "vertical": "垂直"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "起始幻灯片",
+        "description": "初始聚焦的幻灯片索引。"
+      },
+      {
+        "property": "aspectRatio",
+        "title": "宽高比",
+        "description": "幻灯片的宽高比。",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

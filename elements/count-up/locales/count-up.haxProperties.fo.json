@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Teljari",
+    "description": "Lat eitt tal telja upp til eitt málvirði, tá tað verður rullað inn í sjónina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Endavirði",
+        "description": "Talið, sum talt verður upp til."
+      },
+      {
+        "property": "start",
+        "title": "Byrjanarvirði",
+        "description": "Talið, sum talt verður upp frá."
+      },
+      {
+        "property": "duration",
+        "title": "Tíðarbil",
+        "description": "Sekund, sum teljianimatiónin skal taka."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Forteksti",
+        "description": "Tekstur, ið verður vístur undan talinum (t.d. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Eftirteksti",
+        "description": "Tekstur, ið verður vístur aftaná talið (t.d. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Forrúm",
+        "description": "Valfrítt innihald undan talinum."
+      },
+      {
+        "slot": "suffix",
+        "title": "Eftirrúm",
+        "description": "Valfrítt innihald aftaná talið."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Desimalpláss",
+        "description": "Tal av desimalplássum at vísa."
+      },
+      {
+        "property": "separator",
+        "title": "Túsundskiljari",
+        "description": "Tekin, sum skilir túsundsbólkar sundur."
+      },
+      {
+        "property": "decimal",
+        "title": "Desimaltekin",
+        "description": "Tekin, sum verður brúkt sum desimalkomma."
+      },
+      {
+        "property": "noeasing",
+        "title": "Ongin javning",
+        "description": "Ger javning óvirkna, so teljingin verður lineer."
+      }
+    ]
+  }
+}

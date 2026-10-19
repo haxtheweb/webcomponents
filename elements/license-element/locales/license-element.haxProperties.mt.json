@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Liċenzja",
+    "description": "Ipprovdi liċenzja għax-xogħol tiegħek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlu tax-xogħol iċċitat."
+      },
+      {
+        "property": "source",
+        "title": "Link tas-sors",
+        "description": "URL tas-sors għax-xogħol liċenzjat."
+      },
+      {
+        "property": "license",
+        "title": "Liċenzja",
+        "description": "Liċenzja applikata għal dan ix-xogħol."
+      },
+      {
+        "property": "creator",
+        "title": "Kreatur",
+        "description": "Kreatur jew sid ta' dan ix-xogħol."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Link tas-sors",
+        "description": "Link għal dettalji addizzjonali tal-liċenzja."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Tikketta għal aktar",
+        "description": "Tikketta għal dettalji addizzjonali tal-liċenzja."
+      }
+    ]
+  }
+}

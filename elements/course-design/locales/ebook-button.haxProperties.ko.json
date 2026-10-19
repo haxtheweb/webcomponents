@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "전자책 버튼",
+    "description": "전자책으로 연결되는 버튼."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "버튼의 제목."
+      },
+      {
+        "property": "link",
+        "title": "링크",
+        "description": "클릭 시 이동할 링크."
+      },
+      {
+        "property": "icon",
+        "title": "아이콘",
+        "description": "이 링크를 나타내는 아이콘"
+      }
+    ]
+  }
+}

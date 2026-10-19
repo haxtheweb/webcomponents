@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Container pentru playere Spotify încorporate."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sursă",
+        "description": "Link de încorporare sau de partajare de la Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Temă",
+        "description": "Tema culorii de fundal pentru player.",
+        "options": {
+          "": "Implicit",
+          "0": "Negru"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Dimensiune",
+        "description": "Dimensiunea playerului.",
+        "options": {
+          "normal": "Implicit",
+          "compact": "Compact"
+        }
+      }
+    ]
+  }
+}

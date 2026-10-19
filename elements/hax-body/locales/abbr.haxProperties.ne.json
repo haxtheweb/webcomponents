@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "संक्षिप्त रूप",
+    "description": "पूर्ण शब्दको टुलटिपसहित संक्षिप्त रूप।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "पाठ",
+        "description": "देखिने संक्षिप्त पाठ।"
+      },
+      {
+        "attribute": "title",
+        "title": "शब्द",
+        "description": "होभर गर्दा देखाइने पूर्ण शब्द।"
+      }
+    ]
+  }
+}

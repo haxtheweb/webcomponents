@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "mfano wa kozi",
+    "description": "Mpangilio shirikishi wa dhana za kozi wenye maelezo, uhuishaji, na majaribio ya maarifa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "kichwa"
+      },
+      {
+        "property": "src",
+        "title": "chanzo"
+      },
+      {
+        "property": "alt",
+        "title": "maandishi mbadala"
+      },
+      {
+        "title": "Eneo la maelezo"
+      },
+      {
+        "title": "Eneo la maelezo ya kina"
+      },
+      {
+        "title": "Eneo la uhuishaji"
+      },
+      {
+        "title": "Eneo la Jaribio la Maarifa"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Eneo la nembo"
+      }
+    ]
+  }
+}

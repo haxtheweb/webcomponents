@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Image map",
+    "description": "Isang accessible na image map na may mga interactive na hotspot."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label para sa image map."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Mga detalye ng hotspot",
+        "description": "Ang mga interactive na hotspot sa image map."
+      }
+    ]
+  }
+}

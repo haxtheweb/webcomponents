@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Жинақ жолы",
+    "description": "Жинақ тізімінің ішінде қолданылатын мәтіні, сілтемесі, белгішесі, тегтері және қосымша суреті бар жол түріндегі элемент."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Сілтеме",
+        "description": "Осы жолдың мақсатты URL мекенжайы."
+      },
+      {
+        "property": "image",
+        "title": "Сурет",
+        "description": "Жолға арналған сурет."
+      },
+      {
+        "property": "alt",
+        "title": "Балама",
+        "description": "Суретті сипаттайтын балама мәтін."
+      },
+      {
+        "property": "line1",
+        "title": "1-жол",
+        "description": "Мәтіннің бірінші жолы."
+      },
+      {
+        "property": "line2",
+        "title": "2-жол",
+        "description": "Мәтіннің екінші жолы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Белгіше",
+        "description": "Жолды бейнелейтін белгіше."
+      },
+      {
+        "property": "saturate",
+        "title": "Қанықтық әсері",
+        "description": "Пайдаланушы назар аударғанда сурет қанықтығын өзгерту."
+      },
+      {
+        "property": "tags",
+        "title": "Тегтер",
+        "description": "Үтірмен бөлінген тегтер тізімі."
+      },
+      {
+        "property": "accentColor",
+        "title": "Түс",
+        "description": "Белгіше мен тегтер үшін қолданылатын түс."
+      }
+    ]
+  }
+}

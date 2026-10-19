@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Laiendatavate ja ahendatavate rühm",
+    "description": "Laiendatavate ja ahendatavate elementide rühm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Laienda ainult üks",
+        "description": "Korraga saab laiendada ainult ühte elementi."
+      },
+      {
+        "slot": "",
+        "title": "Ahendatavad elemendid",
+        "description": "Ahendatavad elemendid."
+      }
+    ]
+  }
+}

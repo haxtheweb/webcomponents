@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI дүрслэгч",
+    "description": "MIDI-г дүрслэлтэйгээр нөхцөлд нь тоглуулах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Эх сурвалж",
+        "description": "Тоглуулах файлын URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "Дүрслэл",
+        "description": "Хөгжмийн файлын дүрслэлийн хэв маяг.",
+        "options": {
+          "staff": "Нотны шугам",
+          "piano-roll": "Төгөлдөр хуурын өнхрүүлэг",
+          "waterfall": "Төгөлдөр хуур + хүрхрээ"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Хүрхрээг нуух",
+        "description": "Төгөлдөр хуурын дүрслэл дэх хүрхрээ нотуудыг нуух."
+      }
+    ]
+  }
+}

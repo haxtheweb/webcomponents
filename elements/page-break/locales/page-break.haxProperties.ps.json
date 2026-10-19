@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "د پاڼې جزییات",
+    "description": "د پاڼو ترمنځ لیدنیز وېش وټاکئ چې CMS ګانې یې د پاڼو د جوړولو لپاره کارولی شي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "هغه سرلیک چې په تیم او لومړي سرلیک کې ښودل کېږي."
+      },
+      {
+        "property": "pageType",
+        "title": "ډول",
+        "description": "د پاڼې د لیدنیز شرایطو لیبل.",
+        "options": {
+          "": "-- هېڅ --",
+          "content": "منځپانګه",
+          "assessment": "ارزونه",
+          "quiz": "ازموینه",
+          "submission": "سپارنه",
+          "lesson": "لوست",
+          "module": "ماډول",
+          "task": "دنده",
+          "activity": "فعالیت",
+          "project": "پروژه",
+          "practice": "تمرین",
+          "unit": "واحد",
+          "objectives": "د زده کړې موخې",
+          "connection": "اړیکه",
+          "knowledge": "ایا پوهېږئ؟",
+          "strategy": "د زده کړې ستراتیژي",
+          "discuss": "بحث",
+          "listen": "اورېدل",
+          "make": "جوړول",
+          "observe": "مشاهده",
+          "present": "وړاندې کول",
+          "reading": "لوستل",
+          "reflect": "فکر کول",
+          "research": "څېړنه",
+          "watch": "کتل",
+          "write": "لیکل"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ټګونه",
+        "description": "د کامې په واسطه جلا شوو ټګونو لېست."
+      },
+      {
+        "property": "linkUrl",
+        "title": "د لینک URL",
+        "description": "د بیا لارښوونې URL چې د پاڼې د منځپانګې پر ځای ښودل کېږي."
+      },
+      {
+        "property": "linkTarget",
+        "title": "د لینک هدف",
+        "description": "لینکونه په همدې کړکۍ یا نوې کړکۍ کې پرانیزئ.",
+        "options": {
+          "_self": "همدا کړکۍ",
+          "_blank": "نوې کړکۍ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "خپور شوی",
+        "description": "ناخپرې پاڼې له وروستیو کاروونکو پټې وي."
+      },
+      {
+        "property": "locked",
+        "title": "پاڼه قلف کړئ",
+        "description": "په دې پاڼه کې ټول عناصر قلف یا خلاص کړئ."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "اتومات سلګ بدل کړئ",
+        "description": "سلګ د سرلیک یا مور پاڼې پر بنسټ له اتوماتو تازه کېدو قلف کړئ."
+      },
+      {
+        "property": "slug",
+        "title": "لار",
+        "description": "د دې پاڼې URL سلګ."
+      },
+      {
+        "property": "image",
+        "title": "رسنۍ",
+        "description": "هغه رسنۍ چې د پاڼې استازیتوب کوي، په ځینو تیمونو او لیدونو کې کارول کېږي."
+      },
+      {
+        "property": "parent",
+        "title": "مور پاڼه",
+        "description": "د مور پاڼې لار."
+      },
+      {
+        "property": "noderefs",
+        "title": "اړونده منځپانګه",
+        "description": "هغه پاڼې چې له دې پاڼې سره تړاو لري."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "تشریح",
+        "description": "هغه تشریح چې په ټولګو او د لټون انجن اصلاح (SEO) کې کارول کېږي."
+      },
+      {
+        "property": "entityType",
+        "title": "د موجودیت ډول",
+        "description": "که بل څه نه وي ټاکل شوي، پاڼه به وي.",
+        "options": {
+          "page": "پاڼه (ډیفالټ)",
+          "taxonomy": "طبقه‌بندي",
+          "taxonomyTerm": "د طبقه‌بندۍ اصطلاح",
+          "region": "سیمه"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "آیکن",
+        "description": "هغه آیکن چې په سایټ کې له دې پاڼې سره تړلی دی."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "هغه رنګ چې په سایټ کې له دې پاڼې سره تړلی دی."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "په مینو کې پټ",
+        "description": "دا پاڼه له مینوګانو پټه کړئ خو URL یې وساتئ."
+      },
+      {
+        "property": "order",
+        "title": "ترتیب",
+        "description": "د خور پاڼو په پرتله ترتیب."
+      },
+      {
+        "property": "developerTheme",
+        "title": "د پاڼې تیم",
+        "description": "یوازې د دې پاڼې لپاره تیم بدل کړئ."
+      },
+      {
+        "property": "author",
+        "title": "لیکوال",
+        "description": "د هغه وروستي کس کارن نوم چې دا پاڼه یې بدله کړې."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "आइकन",
+    "description": "पूरा आइकन पुस्तकालयबाट आइकन।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "देखाउने आइकन।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "आइकनको एक्सेन्ट रङ।"
+      },
+      {
+        "property": "dark",
+        "title": "गाढा",
+        "description": "गाढा मोड प्रयोग गर्नुहोस् (उल्टाइएको रङ सेट)।"
+      }
+    ]
+  }
+}

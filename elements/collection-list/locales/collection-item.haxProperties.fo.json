@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Savnslutur",
+    "description": "Lutur í kortsniði til brúks í einum savnslista, við teksti, leinki og valfríum miðli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Leinki",
+        "description": "Mál-URL til hetta kortið."
+      },
+      {
+        "property": "image",
+        "title": "Mynd",
+        "description": "Bakgrundsmynd."
+      },
+      {
+        "property": "line1",
+        "title": "Linja 1",
+        "description": "Fyrsta tekstlinja."
+      },
+      {
+        "property": "line2",
+        "title": "Linja 2",
+        "description": "Onnur tekstlinja."
+      },
+      {
+        "property": "line3",
+        "title": "Linja 3",
+        "description": "Triðja tekstlinja."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ímynd",
+        "description": "Ímynd, sum umboðar kortið."
+      },
+      {
+        "property": "saturate",
+        "title": "Mettingareffektur",
+        "description": "Broyt litmetting á myndini, tá brúkarin fokuserar."
+      },
+      {
+        "property": "tags",
+        "title": "Frámerki",
+        "description": "Listi av frámerkjum, skilt sundur við komma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Litur",
+        "description": "Litur til frámerki."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativur tekstur, sum lýsir leinkið."
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "کارڈ",
+    "description": "اختیاری ایکسنٹ اسٹائلنگ والا کارڈ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "سرخی",
+        "description": "کارڈ کے لیے سرخی۔"
+      },
+      {
+        "slot": "subheading",
+        "title": "ذیلی سرخی",
+        "description": "کارڈ کے لیے اختیاری ذیلی سرخی۔"
+      },
+      {
+        "slot": "content",
+        "title": "مواد",
+        "description": "کارڈ کا مواد۔"
+      },
+      {
+        "slot": "footer",
+        "title": "فُٹر",
+        "description": "کارڈ کے لیے اختیاری فوٹر۔"
+      },
+      {
+        "property": "imageSrc",
+        "title": "تصویر",
+        "description": "اختیاری تصویر"
+      },
+      {
+        "property": "imageAlt",
+        "title": "تصویر کا متبادل متن",
+        "description": "اسکرین ریڈرز کے لیے تصویر کو بیان کرنے والا متبادل متن۔ صرف اس صورت میں خالی چھوڑیں جب تصویر محض آرائشی ہو۔"
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "تصویر کی افقی سیدھ",
+        "options": {
+          "left": "بائیں",
+          "center": "درمیان",
+          "right": "دائیں"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "تصویر کی عمودی سیدھ",
+        "options": {
+          "top": "اوپر",
+          "center": "درمیان",
+          "bottom": "نیچے"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "اختیاری نمایاں رنگ۔"
+      },
+      {
+        "property": "dark",
+        "title": "گہری تھیم",
+        "description": "ڈارک تھیم فعال کریں"
+      },
+      {
+        "property": "horizontal",
+        "title": "افقی",
+        "description": "افقی سمت؟"
+      },
+      {
+        "property": "accentHeading",
+        "title": "سرخی کا ایکسنٹ",
+        "description": "سرخی پر ایکسنٹ رنگ لاگو کریں؟"
+      },
+      {
+        "property": "accentBackground",
+        "title": "پس منظر کا ایکسنٹ",
+        "description": "کارڈ کے پس منظر پر ایکسنٹ رنگ لاگو کریں؟"
+      },
+      {
+        "property": "noBorder",
+        "title": "بارڈر ایکسنٹ نہیں",
+        "description": "بارڈر ایکسنٹ ہٹائیں؟"
+      },
+      {
+        "property": "flat",
+        "title": "سپاٹ",
+        "description": "باکس کا سایہ ہٹائیں؟"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "کونا",
+        "description": "کارڈ کے کونے کا مواد۔"
+      }
+    ]
+  }
+}

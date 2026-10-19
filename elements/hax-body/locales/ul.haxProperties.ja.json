@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "箇条書きリスト",
+    "description": "箇条書きリストを作成します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "行頭記号のスタイル",
+        "description": "箇条書きリストの行頭記号に使用するスタイル。",
+        "options": {
+          "": "既定（四角）",
+          "list-disc": "黒丸",
+          "list-circle": "白丸",
+          "list-square": "四角"
+        }
+      }
+    ]
+  }
+}

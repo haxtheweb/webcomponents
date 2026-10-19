@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ትሮች",
+    "description": "የትሮች ስብስብ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "መለያ (ለተደራሽነት)",
+        "description": "ለትሮች ስብስብ ተደራሽ መለያ።"
+      },
+      {
+        "property": "disabled",
+        "title": "ተሰናክሏል",
+        "description": "ሁሉንም ትሮች አሰናክል።"
+      },
+      {
+        "property": "hidden",
+        "title": "የተደበቀ",
+        "description": "የትሮችን ስብስብ ደብቅ።"
+      },
+      {
+        "property": "sticky",
+        "title": "ተጣባቂ",
+        "description": "በሚሸበለልበት ጊዜ አግድም ትሮችን ከላይ አቆይ።"
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "የአቀማመጥ መቋረጫ ነጥብ",
+        "description": "ለአግድም ትሮች መቋረጫ ነጥብ፤ ቁልቁል-ብቻ ለማድረግ -1 ተጠቀም።"
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "የአዶ መቋረጫ ነጥብ",
+        "description": "ጽሑፍን ከአዶዎች ጋር ለማሳየት መቋረጫ ነጥብ። ነባሪው 0 ነው፤ ለአዶ-ብቻ ሁነታ -1 ተጠቀም።"
+      },
+      {
+        "slot": "",
+        "title": "ትሮች",
+        "description": "ተከታታይ <a11y-tab/> አካላት።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ልዩ ID",
+        "description": "ለዚህ የትሮች ስብስብ ልዩ ID።"
+      }
+    ]
+  }
+}

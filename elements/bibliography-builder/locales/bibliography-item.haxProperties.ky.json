@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Библиография элементи",
+    "description": "Библиографиядагы бир цитатаны билдирген, бир нече форматты жана экспорттоо параметрлерин колдогон элемент."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Түрү",
+        "description": "Цитатанын түрү",
+        "options": {
+          "web": "Веб",
+          "journal": "Журнал",
+          "book": "Китеп"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Аталышы",
+        "description": "Элементтин аталышы"
+      },
+      {
+        "property": "authors",
+        "title": "Автор(лор)",
+        "description": "Убакыт тасмасындагы окуялар"
+      },
+      {
+        "property": "publisher",
+        "title": "Басмакана",
+        "description": "Баштапкы веб-сайт"
+      }
+    ]
+  }
+}

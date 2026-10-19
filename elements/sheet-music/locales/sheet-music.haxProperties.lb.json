@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Nouten",
+    "description": "Weist a spillt Nouten, Gittarentabulaturen a Partituren iwwer alphaTex oder MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex-Notatioun",
+        "description": "Inline-alphaTex-Markup fir d'Nouten. Direkt beaarbechte fir Notatioun ze schreiwen; et gëtt an enger Schabloun gespäichert, sou datt d'Ofstänn erhale bleiwen."
+      },
+      {
+        "property": "source",
+        "title": "Partiturfichier",
+        "description": "E MusicXML- (.xml/.musicxml/.mxl) oder Guitar-Pro-Fichier (.gp3/.gp4/.gp5/.gpx/.gp) eroplueden oder verlinken. Huet Virrang virum Inline-alphaTex, wann agestallt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Audio-Ofspillen",
+        "description": "Standardméisseg un - lauschtert d'Nouten, gespillt vum agebaute Synthesizer. Ausschalte fir e Modus nëmme fir ze kucken (ouni Audio)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Uweisoptioune weisen",
+        "description": "Zoom-, Streck- a Layout-Knäppercher an der Player-Läischt weisen."
+      },
+      {
+        "property": "showExport",
+        "title": "Export-Knäppercher weisen",
+        "description": "Knäppercher fir MIDI-Download an Drécken/PDF an der Player-Läischt weisen."
+      }
+    ]
+  }
+}

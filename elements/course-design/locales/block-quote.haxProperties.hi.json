@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ब्लॉक उद्धरण",
+    "description": "शैलीबद्ध उद्धरण ब्लॉक।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "संदर्भ",
+        "description": "संदर्भ टेक्स्ट।"
+      },
+      {
+        "property": "alt",
+        "title": "वैकल्पिक टेक्स्ट",
+        "description": "छवि के लिए वैकल्पिक टेक्स्ट।"
+      },
+      {
+        "property": "image",
+        "title": "छवि",
+        "description": "उद्धरण के साथ दिखाई जाने वाली छवि।"
+      }
+    ]
+  }
+}

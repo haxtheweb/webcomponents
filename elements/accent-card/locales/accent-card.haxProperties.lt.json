@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kortelė",
+    "description": "Kortelė su neprivalomu akcentiniu stiliumi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Antraštė",
+        "description": "Kortelės antraštė."
+      },
+      {
+        "slot": "subheading",
+        "title": "Paantraštė",
+        "description": "Neprivaloma kortelės paantraštė."
+      },
+      {
+        "slot": "content",
+        "title": "Turinys",
+        "description": "Kortelės turinys."
+      },
+      {
+        "slot": "footer",
+        "title": "Poraštė",
+        "description": "Neprivaloma kortelės poraštė."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Vaizdas",
+        "description": "Neprivalomas paveikslėlis"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alternatyvusis paveikslėlio tekstas",
+        "description": "Alternatyvusis tekstas, aprašantis paveikslėlį ekrano skaitytuvams. Palikite tuščią tik tada, jei paveikslėlis yra grynai dekoratyvinis."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Paveikslėlio horizontalusis lygiavimas",
+        "options": {
+          "left": "kairėje",
+          "center": "centre",
+          "right": "dešinėje"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Paveikslėlio vertikalusis lygiavimas",
+        "options": {
+          "top": "viršuje",
+          "center": "centre",
+          "bottom": "apačioje"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Pasirenkama akcento spalva."
+      },
+      {
+        "property": "dark",
+        "title": "Tamsi tema",
+        "description": "Įjungti tamsiąją temą"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontali",
+        "description": "Horizontali orientacija?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Antraštės akcentas",
+        "description": "Taikyti akcento spalvą antraštei?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Fono akcentas",
+        "description": "Taikyti akcento spalvą kortelės fonui?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Be rėmelio akcento",
+        "description": "Pašalinti rėmelio akcentą?"
+      },
+      {
+        "property": "flat",
+        "title": "Plokščias",
+        "description": "Pašalinti šešėlį?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Kampas",
+        "description": "Kortelės kampo turinys."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV-tabell",
+    "description": "Kan generera en tabell från en CSV-fil oavsett var den finns."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Källa",
+        "description": "URL till den här CSV-filen."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel för tabellen som ska genereras."
+      },
+      {
+        "property": "description",
+        "title": "Beskrivning",
+        "description": "Mer detaljerad beskrivning för bättre tillgänglighet till tabelldatan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "הורדת דף עבודה",
+    "description": "כפתור להצגת קבצים הזמינים להורדה."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "כותרת ההורדה."
+      },
+      {
+        "property": "link",
+        "title": "קישור",
+        "description": "הקישור להורדה."
+      }
+    ]
+  }
+}

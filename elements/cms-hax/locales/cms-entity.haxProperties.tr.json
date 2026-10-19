@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS Varlığı",
+    "description": "Arka uçta işlenen CMS varlığı"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Tür",
+        "description": "CMS'imizden tür",
+        "options": {
+          "node": "Düğüm",
+          "user": "Kullanıcı",
+          "file": "Dosya"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "CMS'imizden kimlik"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Görüntüleme modu",
+        "description": "CMS'imizden görüntüleme modu"
+      }
+    ]
+  }
+}

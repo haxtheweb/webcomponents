@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity-spelare",
+    "description": "Unity WebGL-spelare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Mål",
+        "description": "Sökväg till spelets build."
+      },
+      {
+        "property": "compression",
+        "title": "Komprimeringsmetod",
+        "description": "Filändelse för komprimering av spelresurser."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Strömnings-URL",
+        "description": "URL för strömmade resurser."
+      },
+      {
+        "property": "companyname",
+        "title": "Företagsnamn",
+        "description": "Företagets namn."
+      },
+      {
+        "property": "productname",
+        "title": "Produktnamn",
+        "description": "Spelets titel."
+      },
+      {
+        "property": "productversion",
+        "title": "Produktversion",
+        "description": "Versionsnummer."
+      },
+      {
+        "property": "width",
+        "title": "Canvasbredd",
+        "description": "Canvasens CSS-bredd (till exempel px eller em)."
+      },
+      {
+        "property": "height",
+        "title": "Canvashöjd",
+        "description": "Canvasens CSS-höjd (till exempel px eller em)."
+      },
+      {
+        "property": "background",
+        "title": "Canvasbakgrund",
+        "description": "Canvasens CSS-bakgrund."
+      }
+    ]
+  }
+}

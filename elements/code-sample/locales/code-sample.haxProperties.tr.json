@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kod örneği",
+    "description": "Sayfada vurgulanan bir kod örneği"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kod vurgulama",
+        "description": "Kod alanına uygulanacak sözdizimi vurgulaması",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON verisi",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Panoya kopyala düğmesi",
+        "description": "sağ üstte panoya kopyala yazan düğme"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Vurgulama başlangıcı",
+        "description": "Vurgulamanın başlayacağı satır numarası"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Vurgulama sonu",
+        "description": "Vurgulamanın biteceği satır"
+      }
+    ]
+  }
+}

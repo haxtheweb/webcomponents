@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "גלריית תמונות",
+    "description": "גלריה המציגה תמונות בפריסת רשת, לבנים או מצגת."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "מצב תצוגה",
+        "description": "אופן הצגת התמונות בגלריה.",
+        "options": {
+          "grid": "רשת",
+          "masonry": "לבנים",
+          "gallery": "גלריה"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "אינדקס פעיל",
+        "description": "האינדקס של התמונה הפעילה שממנה מתחילים במצב גלריה."
+      }
+    ]
+  }
+}

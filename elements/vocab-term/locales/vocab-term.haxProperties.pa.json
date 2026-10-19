@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ਸ਼ਬਦਾਵਲੀ",
+    "description": "ਸ਼ਬਦਾਵਲੀ ਸ਼ਬਦ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "ਸ਼ਬਦ"
+      },
+      {
+        "property": "information",
+        "title": "ਪਰਿਭਾਸ਼ਾ",
+        "description": "ਸ਼ਬਦ 'ਤੇ ਕਲਿੱਕ ਕਰਨ 'ਤੇ ਦਿਖਾਈ ਪਰਿਭਾਸ਼ਾ।"
+      },
+      {
+        "property": "popoverMode",
+        "title": "ਪੌਪਓਵਰ",
+        "description": "ਪਰਿਭਾਸ਼ਾ ਨੂੰ ਇਨਲਾਈਨ ਦੀ ਥਾਂ ਪੌਪਓਵਰ ਵਿੱਚ ਦਿਖਾਓ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "ਲਿੰਕ",
+        "description": "ਇਸ ਸ਼ਬਦ ਨਾਲ ਜੁੜੇ ਪੂਰਕ ਲਿੰਕਾਂ ਦੀ ਸੂਚੀ।"
+      }
+    ]
+  }
+}

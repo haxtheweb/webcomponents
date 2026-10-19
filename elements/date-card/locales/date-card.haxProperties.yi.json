@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "דאַטע",
+    "description": "ווײַזן אַ קאַלענדאַר־דאַטע מיט פּרטים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "חודש",
+        "description": "חודש געוויזן אויפֿן קאַרטל."
+      },
+      {
+        "property": "date",
+        "title": "טאָג אין חודש",
+        "description": "נומער פֿון טאָג אין חודש."
+      },
+      {
+        "property": "day",
+        "title": "טאָג אין דער וואָך",
+        "description": "נאָמען פֿון טאָג אין דער וואָך."
+      },
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "נאָמען פֿון דער געשעעניש."
+      },
+      {
+        "property": "location",
+        "title": "אָרט",
+        "description": "אָרט פֿון דער געשעעניש."
+      },
+      {
+        "property": "startTime",
+        "title": "אָנהייב",
+        "description": "אָנהייב־צײַט."
+      },
+      {
+        "property": "endTime",
+        "title": "סוף",
+        "description": "סוף־צײַט."
+      },
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "אַן אָפּציאָנעלער אַקצענט־קאָליר."
+      },
+      {
+        "property": "dark",
+        "title": "טונקעלע טעמע",
+        "description": "אײַנשאַלטן די טונקעלע טעמע."
+      }
+    ]
+  }
+}

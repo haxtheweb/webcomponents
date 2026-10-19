@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Zavihek",
+    "description": "En zavihek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona zavihka"
+      },
+      {
+        "property": "disabled",
+        "title": "Onemogočeno"
+      },
+      {
+        "property": "label",
+        "title": "Oznaka zavihka"
+      },
+      {
+        "slot": "",
+        "title": "Vsebina zavihka",
+        "description": "Vsebina zavihka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Enolični ID"
+      },
+      {
+        "property": "flag",
+        "title": "Neobvezno besedilo zastavice"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Neobvezna ikona zastavice"
+      }
+    ]
+  }
+}

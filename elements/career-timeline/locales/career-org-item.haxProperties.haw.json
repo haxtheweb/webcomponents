@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Mea ʻoihana",
+    "description": "He hui hoʻokahi a me kona mau kuleana pili"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Inoa hui"
+      },
+      {
+        "property": "location",
+        "title": "Wahi"
+      },
+      {
+        "property": "source",
+        "title": "Kumu"
+      }
+    ]
+  }
+}

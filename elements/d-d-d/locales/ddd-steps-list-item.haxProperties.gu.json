@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "પગલાં આઇટમ",
+    "description": "પગલાંની સૂચિનો ભાગ હોય તેવી આઇટમ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "શીર્ષક"
+      }
+    ]
+  }
+}

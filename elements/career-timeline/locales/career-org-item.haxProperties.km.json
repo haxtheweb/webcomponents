@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "ធាតុអាជីព",
+    "description": "ស្ថាប័នមួយ និងតួនាទីពាក់ព័ន្ធរបស់វា"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "ឈ្មោះស្ថាប័ន"
+      },
+      {
+        "property": "location",
+        "title": "ទីតាំង"
+      },
+      {
+        "property": "source",
+        "title": "ប្រភព"
+      }
+    ]
+  }
+}

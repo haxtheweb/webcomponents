@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Laajennettava ryhmä",
+    "description": "Ryhmä laajennettavia ja tiivistettäviä elementtejä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Laajenna vain yksi",
+        "description": "Vain yksi kohde voi olla laajennettuna."
+      },
+      {
+        "slot": "",
+        "title": "Tiivistettävät kohteet",
+        "description": "Tiivistettävät kohteet."
+      }
+    ]
+  }
+}

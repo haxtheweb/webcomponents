@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS էություն",
+    "description": "CMS էություն՝ ցուցադրված սերվերի կողմում"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Տեսակ",
+        "description": "տեսակը մեր CMS-ից",
+        "options": {
+          "node": "Հանգույց",
+          "user": "Օգտատեր",
+          "file": "Ֆայլ"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID մեր CMS-ից"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Ցուցադրման ռեժիմ",
+        "description": "ցուցադրման ռեժիմը մեր CMS-ից"
+      }
+    ]
+  }
+}

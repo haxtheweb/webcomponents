@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Sluit Disqus-reacties in op een pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Korte naam",
+        "description": "De korte naam van de site, die de Disqus-scripthost bepaalt."
+      },
+      {
+        "property": "pageURL",
+        "title": "Pagina-URL",
+        "description": "De URL van de pagina waaraan de reactiethread is gekoppeld."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Pagina-ID",
+        "description": "De unieke ID van de reactiethread van de pagina."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Paginatitel",
+        "description": "De titel van de pagina waaraan de reactiethread is gekoppeld."
+      },
+      {
+        "property": "loadingText",
+        "title": "Laadtekst",
+        "description": "Tekst die wordt voorgelezen terwijl de reacties laden."
+      },
+      {
+        "property": "lang",
+        "title": "Taal",
+        "description": "Taalcode voor de Disqus-interface, bijv. en."
+      }
+    ]
+  }
+}

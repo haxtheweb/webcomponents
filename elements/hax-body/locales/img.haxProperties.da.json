@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Grundlæggende billede",
+    "description": "Grundlæggende billedelement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Kilde",
+        "description": "Billed-URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alt-tekst",
+        "description": "Alternativ tekst til tilgængelighed og SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Højde",
+        "description": "Højde i pixel. Lad stå tomt for at bruge naturlig størrelse."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Indlæsning af billede",
+        "description": "Vælg, hvornår billedet indlæses.",
+        "options": {
+          "lazy": "Indlæs, når det er synligt",
+          "auto": "Automatisk"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Responsive kilder (srcset)",
+        "description": "Angiv billed-URL'er og deskriptorer (f.eks. 480w eller 2x), så browsere vælger den bedste størrelse til skærmen. Gemmes som standardattributten srcset."
+      }
+    ]
+  }
+}

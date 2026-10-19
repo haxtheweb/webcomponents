@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "কার্ড",
+    "description": "ঐচ্ছিক অ্যাকসেন্ট স্টাইলসহ একটি কার্ড।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "শিরোনাম",
+        "description": "কার্ডের জন্য একটি হেডিং।"
+      },
+      {
+        "slot": "subheading",
+        "title": "উপশিরোনাম",
+        "description": "কার্ডের জন্য একটি ঐচ্ছিক উপশিরোনাম।"
+      },
+      {
+        "slot": "content",
+        "title": "বিষয়বস্তু",
+        "description": "কার্ডের কনটেন্ট।"
+      },
+      {
+        "slot": "footer",
+        "title": "ফুটার",
+        "description": "কার্ডের জন্য একটি ঐচ্ছিক ফুটার।"
+      },
+      {
+        "property": "imageSrc",
+        "title": "ছবি",
+        "description": "ঐচ্ছিক ছবি"
+      },
+      {
+        "property": "imageAlt",
+        "title": "ছবির বিকল্প টেক্সট",
+        "description": "স্ক্রিন রিডারের জন্য ছবির বর্ণনামূলক বিকল্প টেক্সট। ছবিটি শুধু সাজসজ্জার জন্য হলেই খালি রাখুন।"
+      },
+      {
+        "property": "imageAlign",
+        "title": "ছবির সারিবদ্ধতা",
+        "description": "ছবির আনুভূমিক সারিবদ্ধতা",
+        "options": {
+          "left": "বাম",
+          "center": "মাঝখানে",
+          "right": "ডান"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "ছবির উল্লম্ব সারিবদ্ধতা",
+        "description": "ছবির উল্লম্ব সারিবদ্ধতা",
+        "options": {
+          "top": "উপরে",
+          "center": "মাঝখানে",
+          "bottom": "নিচে"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "একটি ঐচ্ছিক অ্যাকসেন্ট রং।"
+      },
+      {
+        "property": "dark",
+        "title": "ডার্ক থিম",
+        "description": "ডার্ক থিম চালু করুন"
+      },
+      {
+        "property": "horizontal",
+        "title": "অনুভূমিক",
+        "description": "আনুভূমিক বিন্যাস?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "হেডিং অ্যাকসেন্ট",
+        "description": "হেডিংয়ে অ্যাকসেন্ট রং প্রয়োগ করবেন?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "ব্যাকগ্রাউন্ড অ্যাকসেন্ট",
+        "description": "কার্ডের ব্যাকগ্রাউন্ডে অ্যাকসেন্ট রং প্রয়োগ করবেন?"
+      },
+      {
+        "property": "noBorder",
+        "title": "বর্ডার অ্যাকসেন্ট নেই",
+        "description": "বর্ডার অ্যাকসেন্ট সরাবেন?"
+      },
+      {
+        "property": "flat",
+        "title": "ফ্ল্যাট",
+        "description": "বক্স শ্যাডো সরাবেন?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "কোণা",
+        "description": "কার্ডের কোণার কনটেন্ট।"
+      }
+    ]
+  }
+}

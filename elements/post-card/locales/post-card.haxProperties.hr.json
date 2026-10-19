@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Razglednica",
+    "description": "Zaigrani medijski element koji izgleda kao prava razglednica s nekog mjesta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Za",
+        "description": "Kome je namijenjena?"
+      },
+      {
+        "property": "from",
+        "title": "Od",
+        "description": "Tko ste vi?"
+      },
+      {
+        "property": "message",
+        "title": "Poruka",
+        "description": "Što želite reći?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Poštanski žig iz",
+        "description": "Odakle je ova razglednica poslana?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Izvor glavne fotografije",
+        "description": "Gdje se nalazi vaša fotografija?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Izvor fotografije marke",
+        "description": "Gdje se nalazi vaša fotografija?"
+      }
+    ]
+  }
+}

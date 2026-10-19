@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kursuse kujundus",
+    "description": "Konteiner õppematerjalide ja kursuse kujunduse elementide jaoks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kursuse tunnus",
+        "description": "OER Schema: kursuse tunnus, nt MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Toimumise periood",
+        "description": "OER Schema: periood, mille jooksul kursust pakutakse."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Läbiviimise vorm",
+        "description": "OER Schema: kursuse läbiviimise vorm (nt kontaktõpe, veebiõpe, hübriidõpe)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Peamine õppejõud",
+        "description": "OER Schema: kursuse peamine õppejõud."
+      },
+      {
+        "property": "syllabus",
+        "title": "Ainekava URL",
+        "description": "OER Schema: kursuse ainekava URL."
+      }
+    ]
+  }
+}

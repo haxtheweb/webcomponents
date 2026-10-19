@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI визуализаторы",
+    "description": "MIDI-ді визуализациямен бірге ойнату."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Дереккөз",
+        "description": "Ойнатылатын файлдың URL-і."
+      },
+      {
+        "property": "visualizer",
+        "title": "Визуализация",
+        "description": "Музыка файлының визуализация стилі.",
+        "options": {
+          "staff": "Нота жолы",
+          "piano-roll": "Пианино ролигі",
+          "waterfall": "Пианино + сарқырама"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Сарқыраманы жасыру",
+        "description": "Пианино визуализациясында сарқырама ноталарын жасыру."
+      }
+    ]
+  }
+}

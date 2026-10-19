@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lesen",
+    "description": "Berikan lesen untuk karya anda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tajuk karya yang dipetik."
+      },
+      {
+        "property": "source",
+        "title": "Pautan sumber",
+        "description": "URL sumber untuk karya berlesen."
+      },
+      {
+        "property": "license",
+        "title": "Lesen",
+        "description": "Lesen yang digunakan pada karya ini."
+      },
+      {
+        "property": "creator",
+        "title": "Pencipta",
+        "description": "Pencipta atau pemilik karya ini."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Pautan sumber",
+        "description": "Pautan ke butiran pelesenan tambahan."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Label lanjut",
+        "description": "Label untuk butiran pelesenan tambahan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Аудио",
+    "description": "Ово може приказати видео на веома приступачан начин без обзира на извор."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Извор",
+        "description": "URL овог медија."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Наслов",
+        "description": "Једноставан наслов испод видеа"
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Изаберите боју акцента за плејер."
+      },
+      {
+        "property": "track",
+        "title": "Титлови",
+        "description": "URL датотеке са титловима."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Сличица",
+        "description": "Опционо. URL сличице/постер слике."
+      },
+      {
+        "property": "learningMode",
+        "title": "Омогући режим учења",
+        "description": "Онемогућава премотавање унапред и уназад."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Уклони дугме за отварање на YouTube-у",
+        "description": "Уклања дугме за отварање видеа на YouTube-у."
+      },
+      {
+        "property": "linkable",
+        "title": "Укључити везу за дељење?",
+        "description": "Пружа везу за дељење видеа."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Означава да ли се користи CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Дозволи репродукцију у позадини",
+        "description": "Видео снимци се аутоматски паузирају / пуштају када картица изгуби фокус; ово омогућава репродукцију видеа без фокуса на картици"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Тамна тема за транскрипт",
+        "description": "Омогући тамну тему за транскрипт."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Онемогући интерактивност",
+        "description": "Онемогући интерактивни режим који транскрипт чини кликабилним."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Сакриј временске ознаке",
+        "description": "Сакриј временске ознаке у транскрипту."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Сакриј транскрипт",
+        "description": "Подразумевано сакриј транскрипт."
+      },
+      {
+        "property": "lang",
+        "title": "Језик",
+        "description": "Језик медија."
+      }
+    ]
+  }
+}

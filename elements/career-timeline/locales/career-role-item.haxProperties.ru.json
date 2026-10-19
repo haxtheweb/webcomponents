@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Должность",
+    "description": "Отдельная должность в организации"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Название"
+      },
+      {
+        "property": "startDate",
+        "title": "Дата начала"
+      },
+      {
+        "property": "endDate",
+        "title": "Дата окончания (необязательно)"
+      },
+      {
+        "property": "skills",
+        "title": "Связанные навыки",
+        "description": "Нажмите кнопку +, чтобы начать добавлять навыки"
+      }
+    ]
+  }
+}

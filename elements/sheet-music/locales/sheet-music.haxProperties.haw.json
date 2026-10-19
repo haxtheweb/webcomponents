@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Pepa mele",
+    "description": "Hōʻike a hoʻokani i ka pepa mele, nā lepe kīkā, a me ka hōʻailona mele ma o alphaTex a MusicXML paha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Hōʻailona AlphaTex",
+        "description": "Kikokikona alphaTex ma ka laina no ka pepa mele. E hoʻoponopono pololei no ke kākau ʻana i ka hōʻailona; mālama ʻia ia i loko o kekahi anakuhi i mālama ʻia ai ka hakahaka."
+      },
+      {
+        "property": "source",
+        "title": "Faila mele",
+        "description": "E hoʻouka a loulou paha i kekahi faila MusicXML (.xml/.musicxml/.mxl) a i ʻole Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Pani ʻo ia i ka alphaTex ma ka laina ke hoʻonoho ʻia."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Hoʻokani leo",
+        "description": "Hoʻā ʻia ma ka paʻamau - e hoʻolohe i ka pepa mele i hoʻokani ʻia e ka mīkini hoʻopuka leo i kūkulu ʻia. E hoʻopio no ke ʻano nānā wale nō (ʻaʻohe leo)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Hōʻike i nā koho hōʻike",
+        "description": "E hōʻike i nā pihi hoʻonui, hoʻolōʻihi, a hoʻonohonoho ma ke kaola mea hoʻokani."
+      },
+      {
+        "property": "showExport",
+        "title": "Hōʻike i nā pihi hoʻopuka",
+        "description": "E hōʻike i nā pihi hoʻoiho MIDI a paʻi/PDF ma ke kaola mea hoʻokani."
+      }
+    ]
+  }
+}

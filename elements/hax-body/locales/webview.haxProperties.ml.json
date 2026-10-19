@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ഉറവിടം",
+        "description": "ഈ റിസോഴ്സിന്റെ URL."
+      }
+    ]
+  }
+}

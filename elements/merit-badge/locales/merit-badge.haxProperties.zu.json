@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Ibheji Lokufanelekela",
+    "description": "Ibheji elibonakalayo lokukhombisa ukuthola ikhono."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Isihloko Sebheji",
+        "description": "Isihloko esiboniswa ebhejini."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Isithombe Sebheji",
+        "description": "I-URL yesithombe sebheji."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Imininingwane Yebheji",
+        "description": "Imininingwane mayelana nebheji."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Isixhumanisi",
+        "description": "Isixhumanisi esihlobene nebheji."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Amakhono Ebheji",
+        "description": "Amakhono aboniswa ebhejini."
+      },
+      {
+        "property": "skill",
+        "title": "Ikhono (OER Schema)",
+        "description": "I-OER Schema: ikhono elifundiwe elitholwe ngokuqedela le nhloso yokufunda."
+      }
+    ]
+  }
+}

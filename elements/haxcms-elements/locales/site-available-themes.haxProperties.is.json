@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Tiltæk þemu",
+    "description": "Birta tiltæk HAXcms-þemu með lifandi forskoðun"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Sýnarhamur",
+        "description": "Veldu hvernig þemun eru birt",
+        "options": {
+          "gallery": "Myndasafn",
+          "table": "Tafla"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Sýna upplýsingar",
+        "description": "Sýna lýsingar þema og viðbótarupplýsingar"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Sýna falin og eldri þemu",
+        "description": "Sýna falin, eldri og hræðileg þemu til viðbótar við sjálfgefin þemu stjórnborðsins"
+      },
+      {
+        "property": "columns",
+        "title": "Dálkar (myndasafn)",
+        "description": "Fjöldi dálka í myndasafnssýn"
+      }
+    ]
+  }
+}

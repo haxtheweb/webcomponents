@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Sawir Sharraxaad Leh",
+    "description": "Sawir la heli karo oo leh sharraxaad dheer"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Sawir"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Qoraalka Beddelka"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Cinwaan-hoosaadka Sawirka",
+        "description": "Qoraalka cinwaan-hoosaadka sawirka oo had iyo jeer muuqda."
+      },
+      {
+        "slot": "details",
+        "title": "Sharraxaad",
+        "description": "Sharraxaad faahfaahsan oo sawirka ah oo la qarin karo ama la muujin karo"
+      },
+      {
+        "slot": "summary",
+        "title": "Badhanka Sharraxaadda",
+        "description": "Caadiga badhanka muujiya/qariya qoraalka sharraxaadda, tusaale \"info\", \"medatadata\", iwm."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Qoraal soo koobid ikhtiyaari ah marka faahfaahintu furan tahay"
+      },
+      {
+        "property": "closeText",
+        "title": "Qoraal soo koobid ikhtiyaari ah marka faahfaahintu xidhan tahay"
+      }
+    ]
+  }
+}

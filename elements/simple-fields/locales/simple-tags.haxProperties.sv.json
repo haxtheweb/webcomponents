@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Taggar",
+    "description": "Enkel tagglista för visning på sidan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Taggar",
+        "description": "Kommaseparerad lista med taggar."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatisk accentfärg",
+        "description": "Ange accentfärg automatiskt utifrån etiketten."
+      },
+      {
+        "property": "accentColor",
+        "title": "Färg",
+        "description": "Färg för taggar."
+      }
+    ]
+  }
+}

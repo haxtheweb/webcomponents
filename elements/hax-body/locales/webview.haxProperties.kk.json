@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Дереккөз",
+        "description": "Осы ресурстың URL мекенжайы."
+      }
+    ]
+  }
+}

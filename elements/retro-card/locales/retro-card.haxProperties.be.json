@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Рэтра-картка",
+    "description": "Простая картка ў рэтра-стылі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Загаловак",
+        "description": "Асноўная назва карткі."
+      },
+      {
+        "property": "url",
+        "description": "URL, які адкрываецца пры націсканні на картку."
+      },
+      {
+        "property": "subtitle",
+        "title": "Падзагаловак",
+        "description": "Падзагаловак карткі."
+      },
+      {
+        "property": "tags",
+        "title": "Тэгі",
+        "description": "Тэгі праз коску."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Крыніца медыя",
+        "description": "Асноўная крыніца медыя."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Крыніца пры навядзенні",
+        "description": "Крыніца медыя, якая паказваецца пры навядзенні на картку або яе актывацыі."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Акцэнтны колер для ўсёй карткі."
+      },
+      {
+        "property": "dark",
+        "title": "Цёмная",
+        "description": "Выкарыстоўваць базавыя колеры цёмнага рэжыму."
+      }
+    ]
+  }
+}

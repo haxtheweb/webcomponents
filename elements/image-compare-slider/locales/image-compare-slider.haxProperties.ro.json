@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Comparare imagini",
+    "description": "Glisați o imagine peste alta pentru comparare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Imaginea de sus",
+        "description": "Imaginea de sus care se glisează peste imaginea de jos."
+      },
+      {
+        "property": "topAlt",
+        "title": "Text alternativ imagine de sus",
+        "description": "Text alternativ obligatoriu pentru accesibilitate."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Imaginea de jos",
+        "description": "Imaginea de jos, afișată sub imaginea de sus."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Text alternativ imagine de jos",
+        "description": "Text alternativ obligatoriu pentru accesibilitate."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Comportament",
+        "description": "Alegeți modul de ștergere (implicit) sau modul de opacitate a imaginii de sus."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Culoarea barei glisorului."
+      },
+      {
+        "property": "dark",
+        "title": "Întunecat",
+        "description": "Inversează culoarea barei glisorului."
+      },
+      {
+        "property": "position",
+        "title": "Poziția inițială",
+        "description": "Poziția de pornire, de la 0 la 100."
+      }
+    ]
+  }
+}

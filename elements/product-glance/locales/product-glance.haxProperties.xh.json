@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ukujonga imveliso",
+    "description": "Ibhloko yokushwankathela imveliso ngokukhawuleza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "I-icon",
+        "description": "I-icon emele ingqikelelo."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Ingqikelelo ephambili ngokukhawuleza."
+      },
+      {
+        "property": "subtitle",
+        "title": "Isihlokwana",
+        "description": "Iinkcukacha ezongezelelweyo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala ogqamisayo",
+        "description": "Umbala ogqamisayo we-icon."
+      }
+    ]
+  }
+}

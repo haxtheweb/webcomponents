@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Bloková citace",
+    "description": "Stylovaný blok citace."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Zdroj citace",
+        "description": "Text zdroje citace."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativní text obrázku."
+      },
+      {
+        "property": "image",
+        "title": "Obrázek",
+        "description": "Obrázek zobrazený s citací."
+      }
+    ]
+  }
+}

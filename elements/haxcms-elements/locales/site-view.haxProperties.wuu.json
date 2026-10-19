@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "网站视图",
+    "description": "按条件查询搭显示网站数据个动态块"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "视图 URL",
+        "description": "视图数据源个查询参数。可以从视图仪表板里拿到。"
+      },
+      {
+        "property": "renderer",
+        "title": "显示模式",
+        "description": "视图结果哪能渲染"
+      },
+      {
+        "property": "entity",
+        "title": "实体类型",
+        "description": "解析响应用个实体类型",
+        "options": {
+          "": "默认(项目)",
+          "item": "项目",
+          "page": "页",
+          "file": "文件",
+          "tag": "标签",
+          "block": "区块",
+          "view": "视图",
+          "theme": "主题",
+          "region": "区域",
+          "customElement": "自定义元素"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "断开网站视图",
+        "description": "转成静态内容直接编辑;勿再从来源自动更新。"
+      }
+    ]
+  }
+}

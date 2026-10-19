@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV-Tabelle",
+    "description": "Kann eine Tabelle aus einer CSV-Datei erzeugen, egal wo sie gespeichert ist."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Quelle",
+        "description": "URL dieser CSV-Datei."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel der zu erzeugenden Tabelle."
+      },
+      {
+        "property": "description",
+        "title": "Beschreibung",
+        "description": "Ausführlichere Beschreibung für eine bessere Barrierefreiheit der Tabellendaten."
+      }
+    ]
+  }
+}

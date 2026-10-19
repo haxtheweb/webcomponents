@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Значок досягнення",
+    "description": "Візуальний значок, що засвідчує здобуття навички."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Назва значка",
+        "description": "Назва, що відображається на значку."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Зображення значка",
+        "description": "URL зображення значка."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Подробиці значка",
+        "description": "Подробиці про значок."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Гіперпосилання",
+        "description": "Посилання, пов'язане зі значком."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Навички значка",
+        "description": "Навички, що відображаються на значку."
+      },
+      {
+        "property": "skill",
+        "title": "Навичка (OER Schema)",
+        "description": "OER Schema: навичка, здобута внаслідок досягнення цієї навчальної цілі."
+      }
+    ]
+  }
+}

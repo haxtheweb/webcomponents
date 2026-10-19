@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: poloka keiki",
+    "description": "Poloka loli e hōʻike ai i ke keiki o ka ʻaoʻao o kēia manawa"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Ala loli",
+        "description": "Pehea e helu ai i nā keiki e pili ana i kēia mea",
+        "options": {
+          "active": "Nā keiki e hana nei",
+          "parent": "Nā keiki o ka makua",
+          "ancestor": "Nā keiki a pau mai ke kupuna kiʻekiʻe loa"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Pae hoʻomaka"
+      },
+      {
+        "property": "end",
+        "title": "Pae hope"
+      }
+    ]
+  }
+}

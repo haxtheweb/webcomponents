@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Nîşana Serkeftinê",
+    "description": "Nîşaneke dîtbarî ji bo ragihandina bidestxistina jêhatîbûnekê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Sernavê Nîşanê",
+        "description": "Sernavê ku li ser nîşanê tê nîşandan."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Wêneyê Nîşanê",
+        "description": "URLa wêneyê ji bo nîşanê."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Hûrgiliyên Nîşanê",
+        "description": "Hûrgilî derbarê nîşanê de."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hîpergirêdan",
+        "description": "Girêdana bi nîşanê ve têkildar."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Jêhatîbûnên Nîşanê",
+        "description": "Jêhatîbûnên ku li ser nîşanê têne nîşandan."
+      },
+      {
+        "property": "skill",
+        "title": "Jêhatîbûn (OER Schema)",
+        "description": "OER Schema: jêhatîbûneke fêrbûyî ku bi qedandina vê armanca fêrbûnê tê bidestxistin."
+      }
+    ]
+  }
+}

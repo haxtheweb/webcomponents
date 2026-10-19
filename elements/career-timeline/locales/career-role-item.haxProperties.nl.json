@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Loopbaanfunctie",
+    "description": "Een afzonderlijke functie binnen een organisatie"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel"
+      },
+      {
+        "property": "startDate",
+        "title": "Begindatum"
+      },
+      {
+        "property": "endDate",
+        "title": "Einddatum (optioneel)"
+      },
+      {
+        "property": "skills",
+        "title": "Bijbehorende vaardigheden",
+        "description": "Selecteer de knop + om vaardigheden toe te voegen"
+      }
+    ]
+  }
+}

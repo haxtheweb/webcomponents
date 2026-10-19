@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris kuatia'i",
+    "description": "Ehechauka Polaris kuatia'i teratee, moñe'ẽrã pytyvõrã ha joajuha ikatúramo ndive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Moñe'ẽrã tenondegua",
+        "description": "Kuatia'i moñe'ẽrã tenondegua."
+      },
+      {
+        "property": "line2",
+        "title": "Moñe'ẽrã mokõiha",
+        "description": "Moñe'ẽrã pytyvõrã ikatúramo."
+      },
+      {
+        "property": "type",
+        "title": "Kuatia'i reko",
+        "description": "Kuatia'i reko ojehecháva oñembosako'ipyre.",
+        "options": {
+          "1": "Reko 1",
+          "2": "Reko 2",
+          "3": "Reko 3",
+          "4": "Reko 4",
+          "5": "Reko 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Ta'ãnga hapykuegua",
+        "description": "URL ta'ãnga hapykuegua ojeporúva kuatia'i reko ta'ãnga oguerekóvape."
+      },
+      {
+        "property": "link",
+        "title": "Joajuha",
+        "description": "URL ohohápe kuatia'i rembiapo, ikatúramo."
+      }
+    ]
+  }
+}

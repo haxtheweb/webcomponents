@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn суулгац",
+    "description": "LinkedIn профайлын карт суулгах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Хувийн нэр",
+        "description": "LinkedIn хувийн хэрэглэгчийн нэрийн хэсэг."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Локаль",
+        "description": "en_US зэрэг локалийн мета өгөгдлийн утга."
+      }
+    ]
+  }
+}

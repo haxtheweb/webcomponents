@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Main balik video boleh akses merentas pelbagai sumber."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "URL untuk media ini."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Tajuk",
+        "description": "Tajuk yang ditunjukkan di bawah video."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Imej poster",
+        "description": "URL imej poster."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Trek teks",
+        "description": "Kapsyen tertutup, sari kata, penerangan dan trek teks lain untuk video."
+      },
+      {
+        "property": "startTime",
+        "title": "Masa mula",
+        "description": "Mulakan video pada masa tertentu (saat)."
+      },
+      {
+        "property": "endTime",
+        "title": "Masa tamat",
+        "description": "Tamatkan video pada masa tertentu (saat), memerlukan masa mula."
+      },
+      {
+        "property": "learningMode",
+        "title": "Dayakan mod pembelajaran",
+        "description": "Melumpuhkan mara laju dan undur."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Alih keluar butang buka di YouTube",
+        "description": "Mengalih keluar butang untuk membuka video di YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Sertakan pautan kongsi?",
+        "description": "Menyediakan pautan untuk berkongsi video."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Sembunyikan cap masa",
+        "description": "Sembunyikan cap masa pada transkrip."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Sembunyikan Transkrip",
+        "description": "Sembunyikan transkrip secara lalai."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Trek Penerangan Audio",
+        "description": "URL ke trek penerangan audio (fail MP3) yang menyediakan naratif bagi elemen visual."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Menunjukkan sama ada untuk menggunakan CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Benarkan main balik di latar belakang",
+        "description": "Teruskan bermain apabila tab pelayar hilang fokus."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema gelap untuk transkrip",
+        "description": "Dayakan tema gelap untuk transkrip."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Lumpuhkan Interaktif",
+        "description": "Lumpuhkan mod interaktif yang menjadikan transkrip boleh diklik."
+      },
+      {
+        "property": "lang",
+        "title": "Bahasa",
+        "description": "Bahasa media."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "(lapuk) Pilih warna aksen untuk pemain."
+      }
+    ]
+  }
+}

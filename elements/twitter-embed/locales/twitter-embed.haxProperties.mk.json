@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Вградување од Twitter (X)",
+    "description": "Вградете објава од X во контекст."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL на објавата",
+        "description": "URL на објавата што се вградува."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Тема",
+        "description": "Светла или темна тема за објавите од X.",
+        "options": {
+          "light": "Светло",
+          "dark": "Темно"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Спречи скокачки прозорец при клик",
+        "description": "Спречи корисниците да ја отвораат објавата на x.com."
+      }
+    ]
+  }
+}

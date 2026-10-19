@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Mai kunna 3D",
+    "description": "Mai kunna fayil ɗin 3D / haƙiƙanin ƙari (AR)."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Tushe",
+        "description": "URL na wannan fayil ɗin AR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Matsayin X na abin a cikin AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Matsayin Y na abin a cikin AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Matsayin Z na abin a cikin AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Launin sama",
+        "description": "Zaɓi launin sama a cikin wurin."
+      }
+    ]
+  }
+}

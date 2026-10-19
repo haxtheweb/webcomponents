@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kursdesign",
+    "description": "Container für Lehrmaterialien und Elemente des Kursdesigns."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kurskennung",
+        "description": "OER Schema: die Kennung des Kurses, z. B. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Angebotenes Semester",
+        "description": "OER Schema: das Semester, in dem der Kurs angeboten wird."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Durchführungsformat",
+        "description": "OER Schema: das Format, in dem der Kurs durchgeführt wird (z. B. Präsenz, online, hybrid)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Hauptlehrkraft",
+        "description": "OER Schema: die Hauptlehrkraft des Kurses."
+      },
+      {
+        "property": "syllabus",
+        "title": "Syllabus-URL",
+        "description": "OER Schema: URL zum Kurs-Syllabus."
+      }
+    ]
+  }
+}

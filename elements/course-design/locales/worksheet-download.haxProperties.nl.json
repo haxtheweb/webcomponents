@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Werkblad downloaden",
+    "description": "Een knop om bestanden te tonen die beschikbaar zijn om te downloaden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "De titel van de download."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "De link voor de download."
+      }
+    ]
+  }
+}

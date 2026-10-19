@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Ithebula",
+    "description": "Idatha esethebuleni yewebhu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Isihloko Somugqa",
+        "description": "Thatha umugqa wokuqala njengesihloko."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Isihloko Sekholomu",
+        "description": "Thatha ikholomu yokuqala njengesihloko."
+      },
+      {
+        "property": "footer",
+        "title": "Unyawo",
+        "description": "Thatha umugqa wokugcina njengonyawo."
+      },
+      {
+        "property": "sort",
+        "title": "Kuyahleleka",
+        "description": "Vumela ukuhlela ngamanani ekholomu."
+      },
+      {
+        "property": "filter",
+        "title": "Vumela Isihlungi",
+        "description": "Vumela ukuhlunga ngamanani ekholomu."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Isitayela Sezinombolo",
+        "description": "Faka isitayela sezinombolo kumakholomu ezinombolo."
+      },
+      {
+        "property": "responsive",
+        "title": "Okuzivumelanisayo",
+        "description": "Lungisa isakhiwo sethebula ezikrinini ezincane."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Imodi Yerubrikhi",
+        "description": "Hunyusha leli thebula njenge-OER Schema Rubric ukuze kukhishwe imethadatha ye-Rubric, RubricScale, RubricCriterion, ne-RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Uhlobo Lwerubrikhi",
+        "description": "Isitayela serubrikhi esikhishwa njenge-oer:rubricType (sinomqondo kuphela uma iModi Yerubrikhi ivuliwe).",
+        "options": {
+          "": "(akukho)",
+          "analytic": "Ehlaziyayo",
+          "holistic": "Ephelele",
+          "single-point": "Iphoyinti Elilodwa",
+          "checklist": "Uhlu lokuhlola"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Kunemingcele"
+      },
+      {
+        "property": "condensed",
+        "title": "Nciphisa Imigqa",
+        "description": "Nciphisa ubude bomugqa."
+      },
+      {
+        "property": "striped",
+        "title": "Imigqa Enemigqa",
+        "description": "Faka umthunzi kuwo wonke omunye umugqa."
+      },
+      {
+        "property": "downloadable",
+        "title": "Inkinobho Yokulanda",
+        "description": "Engeza inkinobho yokulanda ithebula."
+      },
+      {
+        "property": "copyable",
+        "title": "Inkinobho Yokukopisha",
+        "description": "Engeza inkinobho yokukopisha idatha ye-CSV yethebula."
+      },
+      {
+        "property": "printable",
+        "title": "Inkinobho Yokuphrinta",
+        "description": "Engeza inkinobho yokuphrinta ithebula kuphela."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Idatha ye-CSV",
+        "description": "Dala ithebula kusuka efayeleni le-CSV elilayishiwe."
+      }
+    ]
+  }
+}

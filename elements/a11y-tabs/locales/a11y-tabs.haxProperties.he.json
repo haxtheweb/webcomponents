@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "כרטיסיות",
+    "description": "ערכת כרטיסיות."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "תווית (לנגישות)",
+        "description": "תווית נגישה לערכת הכרטיסיות."
+      },
+      {
+        "property": "disabled",
+        "title": "מושבת",
+        "description": "השבתת כל הכרטיסיות."
+      },
+      {
+        "property": "hidden",
+        "title": "מוסתר",
+        "description": "הסתרת ערכת הכרטיסיות."
+      },
+      {
+        "property": "sticky",
+        "title": "נעוץ",
+        "description": "השארת הכרטיסיות האופקיות בראש העמוד בזמן גלילה."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "נקודת שבירה לפריסה",
+        "description": "נקודת שבירה לכרטיסיות אופקיות; השתמשו ב--1 לתצוגה אנכית בלבד."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "נקודת שבירה לסמלים",
+        "description": "נקודת שבירה להצגת טקסט עם סמלים. ברירת המחדל היא 0; השתמשו ב--1 למצב סמלים בלבד."
+      },
+      {
+        "slot": "",
+        "title": "כרטיסיות",
+        "description": "סדרה של רכיבי <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "מזהה ייחודי",
+        "description": "מזהה ייחודי לערכת כרטיסיות זו."
+      }
+    ]
+  }
+}

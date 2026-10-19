@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Webwerfaansig",
+    "description": "'n Dinamiese blok wat webwerfdata volgens kriteria navra en vertoon"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Aansig-URL",
+        "description": "Navraagparameters vir die aansig-datavoer. Jy kan dit van die Aansigte-paneelbord kry."
+      },
+      {
+        "property": "renderer",
+        "title": "Vertoonmodus",
+        "description": "Hoe die aansigresultate weergegee moet word"
+      },
+      {
+        "property": "entity",
+        "title": "Entiteittipe",
+        "description": "Entiteittipe wat gebruik word om die antwoord te ontleed",
+        "options": {
+          "": "Verstek (items)",
+          "item": "Item",
+          "page": "Bladsy",
+          "file": "Lêer",
+          "tag": "Etiket",
+          "block": "Blok",
+          "view": "Aansig",
+          "theme": "Tema",
+          "region": "Streek",
+          "customElement": "Pasgemaakte element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Breek webwerfaansig",
+        "description": "Skakel om na statiese inhoud vir direkte redigering; hou op om outomaties vanaf die bron by te werk."
+      }
+    ]
+  }
+}

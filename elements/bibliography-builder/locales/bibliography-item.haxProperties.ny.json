@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Chinthu cha mndandanda wa mabuku",
+    "description": "Chinthu choimira mawu ogwidwa amodzi m'mndandanda wa mabuku, chothandizira mitundu yosiyanasiyana ndi njira zotumizira."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Mtundu",
+        "description": "Mtundu wa mawu ogwidwa",
+        "options": {
+          "web": "Intaneti",
+          "journal": "Magazini",
+          "book": "Buku"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mutu wa chinthu"
+      },
+      {
+        "property": "authors",
+        "title": "Wolemba (Olemba)",
+        "description": "Zochitika m'mndandanda wa nthawi"
+      },
+      {
+        "property": "publisher",
+        "title": "Wofalitsa",
+        "description": "Webusayiti yoyambirira"
+      }
+    ]
+  }
+}

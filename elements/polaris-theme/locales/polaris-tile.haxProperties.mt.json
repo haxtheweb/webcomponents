@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Madum Polaris",
+    "description": "Uri madum Polaris b'titlu, test ta' appoġġ fakultattiv u link fakultattiv."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Test primarju",
+        "description": "It-test ewlieni tal-madum."
+      },
+      {
+        "property": "line2",
+        "title": "Test sekondarju",
+        "description": "Test ta' appoġġ fakultattiv."
+      },
+      {
+        "property": "type",
+        "title": "Stil tal-madum",
+        "description": "Stil viżiv predefinit tal-madum.",
+        "options": {
+          "1": "Stil 1",
+          "2": "Stil 2",
+          "3": "Stil 3",
+          "4": "Stil 4",
+          "5": "Stil 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Immaġni tal-isfond",
+        "description": "URL tal-immaġni tal-isfond użat mill-istili tal-madum li jappoġġjaw l-immaġni."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "URL tad-destinazzjoni fakultattiv għall-azzjoni tal-madum."
+      }
+    ]
+  }
+}

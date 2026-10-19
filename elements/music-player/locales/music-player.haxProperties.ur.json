@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI ویژولائزر",
+    "description": "ویژولائزیشن کے ساتھ سیاق میں MIDI چلائیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ماخذ",
+        "description": "چلانے کے لیے فائل کا URL۔"
+      },
+      {
+        "property": "visualizer",
+        "title": "ویژولائزیشن",
+        "description": "موسیقی فائل کا ویژولائزیشن انداز۔",
+        "options": {
+          "staff": "اسٹاف",
+          "piano-roll": "پیانو رول",
+          "waterfall": "پیانو + آبشار"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "آبشار چھپائیں",
+        "description": "پیانو ویژولائزیشن میں آبشار نوٹس چھپائیں۔"
+      }
+    ]
+  }
+}

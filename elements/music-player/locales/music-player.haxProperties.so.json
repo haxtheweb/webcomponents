@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Muujiyaha MIDI",
+    "description": "Ku shid MIDI oo leh muuqaal."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isha",
+        "description": "URL-ka faylka la shidayo."
+      },
+      {
+        "property": "visualizer",
+        "title": "Muuqaal",
+        "description": "Qaabka muuqaalka faylka muusigga.",
+        "options": {
+          "staff": "Xariiqyada muusigga",
+          "piano-roll": "Piano roll",
+          "waterfall": "Biyaano + biyo-dhac"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Qari biyo-dhaca",
+        "description": "Qari noodhadhka biyo-dhaca ee muuqaalka biyaanada."
+      }
+    ]
+  }
+}

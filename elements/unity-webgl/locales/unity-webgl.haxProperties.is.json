@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity-spilari",
+    "description": "Unity WebGL-spilari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Markmið",
+        "description": "Slóð að leikjasmíðinni."
+      },
+      {
+        "property": "compression",
+        "title": "Þjöppunaraðferð",
+        "description": "Skráarending þjöppunar fyrir leikjaskrár."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL streymis",
+        "description": "URL streymisskráa."
+      },
+      {
+        "property": "companyname",
+        "title": "Heiti fyrirtækis",
+        "description": "Heiti fyrirtækis."
+      },
+      {
+        "property": "productname",
+        "title": "Heiti vöru",
+        "description": "Titill leiks."
+      },
+      {
+        "property": "productversion",
+        "title": "Útgáfa vöru",
+        "description": "Útgáfunúmer."
+      },
+      {
+        "property": "width",
+        "title": "Breidd striga",
+        "description": "CSS-breidd striga (t.d. px eða em)."
+      },
+      {
+        "property": "height",
+        "title": "Hæð striga",
+        "description": "CSS-hæð striga (t.d. px eða em)."
+      },
+      {
+        "property": "background",
+        "title": "Bakgrunnur striga",
+        "description": "CSS-bakgrunnur striga."
+      }
+    ]
+  }
+}

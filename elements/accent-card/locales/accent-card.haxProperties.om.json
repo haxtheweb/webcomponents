@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kaardii",
+    "description": "Kaardii haala cimsaa dirqama hin taane qabu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Mata duree",
+        "description": "Mata duree kaardiif."
+      },
+      {
+        "slot": "subheading",
+        "title": "Mata duree xiqqaa",
+        "description": "Mata duree xiqqaa dirqama hin taane kaardiif."
+      },
+      {
+        "slot": "content",
+        "title": "Qabiyyee",
+        "description": "Qabiyyee kaardiif."
+      },
+      {
+        "slot": "footer",
+        "title": "Miila",
+        "description": "Miila dirqama hin taane kaardiif."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Suuraa",
+        "description": "Suuraa dirqama hin taane"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Barreeffama Alt Suuraa",
+        "description": "Barreeffama bakka bu'aa dubbistoota iskiriiniitiif suuraa ibsu. Yoo suuraan miidhagina qofaaf ta'e qofa duwwaa dhiisi."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Sirreeffama Gama Gamaa Suuraa",
+        "options": {
+          "left": "bitaa",
+          "center": "gidduu",
+          "right": "mirga"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Sirreeffama Olka'aa Suuraa",
+        "options": {
+          "top": "gubbaa",
+          "center": "gidduu",
+          "bottom": "jala"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu Calaqqee",
+        "description": "Halluu calaqqee filannoo."
+      },
+      {
+        "property": "dark",
+        "title": "Haala Dukkanaa",
+        "description": "Teemii Dukkanaa Dandeessisi"
+      },
+      {
+        "property": "horizontal",
+        "title": "Dalgaa",
+        "description": "Kallattii gama gamaa?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Cimsaa Mata Duree",
+        "description": "Halluu cimsaa mata dureetti raawwachuu?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Cimsaa Duubaa",
+        "description": "Halluu cimsaa duuba kaardiitti raawwachuu?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Cimsaa Daangaa Hin Qabu",
+        "description": "Cimsaa daangaa balleessuu?"
+      },
+      {
+        "property": "flat",
+        "title": "Diriiraa",
+        "description": "Gaaddidduu saanduqaa balleessuu?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Golboo",
+        "description": "Qabiyyee golboo kaardiif."
+      }
+    ]
+  }
+}

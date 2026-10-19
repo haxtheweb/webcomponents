@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Fråga med kort svar",
+    "description": "Låt användaren svara på en enkel fråga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fråga",
+        "description": "Fråga som användarna ska svara på."
+      },
+      {
+        "property": "answers",
+        "title": "Möjliga svar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Quizets namn",
+        "description": "Quiznamn som skickas med för att identifiera objektet i xAPI-drivna miljöer"
+      }
+    ]
+  }
+}

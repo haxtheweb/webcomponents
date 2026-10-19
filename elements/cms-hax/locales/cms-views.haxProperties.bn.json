@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ভিউ",
+    "description": "ব্যাকএন্ডে রেন্ডার হওয়া CMS ভিউ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "নাম",
+        "description": "আমাদের CMS থেকে ভিউয়ের নাম"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "প্রদর্শন",
+        "description": "আমাদের CMS-এর সেই ভিউয়ের মধ্যে ডিসপ্লে"
+      }
+    ]
+  }
+}

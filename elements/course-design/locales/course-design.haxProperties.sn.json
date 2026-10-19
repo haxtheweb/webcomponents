@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Dhizaini yeKosi",
+    "description": "Mudziyo wezvidzidzo nezvinhu zvedhizaini yekosi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Chiziviso cheKosi",
+        "description": "OER Schema: chiziviso chekosi, semuenzaniso MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Temu Yainopiwa",
+        "description": "OER Schema: temu iyo kosi inopiwa."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Nzira yeKuendesa",
+        "description": "OER Schema: nzira inoshandiswa kuendesa kosi (semuenzaniso, pachena, paindaneti, zvakasanganiswa)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Mudzidzisi Mukuru",
+        "description": "OER Schema: mudzidzisi mukuru wekosi."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL yeSyllabus",
+        "description": "OER Schema: URL kusyllabus yekosi."
+      }
+    ]
+  }
+}

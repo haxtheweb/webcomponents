@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Playlist",
+    "description": "Zobrazte jakýkoli obsah v playlistu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Zdroj",
+        "description": "Obsah zobrazený v playlistu."
+      },
+      {
+        "property": "edit",
+        "title": "Režim úprav",
+        "description": "Přepínat mezi režimem úprav a náhledu playlistu."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigace",
+        "description": "Zobrazit navigační tlačítka vpřed a zpět."
+      },
+      {
+        "property": "pagination",
+        "title": "Stránkování",
+        "description": "Zobrazit stránkovací tečky."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientace",
+        "description": "Orientace snímků.",
+        "options": {
+          "horizontal": "Vodorovná",
+          "vertical": "Svislá"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Počáteční snímek",
+        "description": "Index snímku, na který se má na začátku zaměřit."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Poměr stran",
+        "description": "Poměr stran snímků.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

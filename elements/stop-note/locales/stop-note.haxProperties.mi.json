@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Tuhipoka Kati",
+    "description": "He karere hei whakamōhio i ngā kaipānui ki ētahi tohutohu motuhake."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Tāurua he taitara mō te tuhipoka kati."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Tāurua he URL o waho."
+      },
+      {
+        "property": "status",
+        "title": "Tūnga",
+        "description": "Mā te tautuhi tūnga ka huri ngā tae me ngā ata tohu kia hāngai",
+        "options": {
+          "stop": "Kati",
+          "warning": "Whakatūpato",
+          "success": "Whakaūnga",
+          "info": "Pānui"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Kupu Tuhipoka",
+        "description": "Kupu mō te tuhipoka kati."
+      }
+    ]
+  }
+}

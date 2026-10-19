@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Temi dispunibuli",
+    "description": "Affissà i temi HAXcms dispunibuli cù cambiamentu d'anteprima in diretta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Modu di visualizazione",
+        "description": "Sceglite cumu affissà i temi",
+        "options": {
+          "gallery": "Galleria",
+          "table": "Tavula"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Mustrà i dettagli",
+        "description": "Mustrà e descrizzioni di i temi è infurmazioni supplementarie"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Mustrà i temi piatti è antichi",
+        "description": "Mustrà i temi piatti, antichi è terribili in più di quelli predefiniti di u pannellu"
+      },
+      {
+        "property": "columns",
+        "title": "Colonne (galleria)",
+        "description": "Numeru di colonne in a vista galleria"
+      }
+    ]
+  }
+}

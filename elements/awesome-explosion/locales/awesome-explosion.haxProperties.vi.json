@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Vụ nổ tuyệt vời",
+    "description": "Hoạt ảnh vụ nổ tương tác với hiệu ứng âm thanh tùy chọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Kích thước",
+        "description": "Đặt kích thước vụ nổ.",
+        "options": {
+          "tiny": "Rất nhỏ",
+          "small": "Nhỏ",
+          "medium": "Vừa",
+          "large": "Lớn",
+          "epic": "Hoành tráng"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Màu sắc",
+        "description": "Đặt chủ đề màu cho vụ nổ.",
+        "options": {
+          "": "Mặc định",
+          "red": "Đỏ",
+          "blue": "Xanh dương",
+          "purple": "Tím",
+          "orange": "Cam",
+          "yellow": "Vàng"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Hiệu ứng âm thanh",
+        "description": "Bật hiệu ứng âm thanh."
+      },
+      {
+        "property": "resetSound",
+        "title": "Đặt lại âm thanh",
+        "description": "Phát lại âm thanh từ đầu mỗi lần."
+      },
+      {
+        "property": "image",
+        "title": "Hình ảnh tùy chỉnh",
+        "description": "URL tùy chọn cho hình ảnh vụ nổ tùy chỉnh."
+      },
+      {
+        "property": "sound",
+        "title": "Âm thanh tùy chỉnh",
+        "description": "URL tùy chọn cho hiệu ứng âm thanh tùy chỉnh."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Vô hiệu hóa",
+        "description": "Vô hiệu hóa mọi tương tác."
+      }
+    ]
+  }
+}

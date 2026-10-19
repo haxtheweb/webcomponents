@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "星级评分",
+    "description": "评分显示小部件或者打分按钮。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "分数",
+        "description": "当前分数。"
+      },
+      {
+        "property": "possible",
+        "title": "满分",
+        "description": "最高可能分数。"
+      },
+      {
+        "property": "numStars",
+        "title": "星个数量",
+        "description": "要显示几颗星。"
+      },
+      {
+        "property": "interactive",
+        "title": "互动",
+        "description": "允许用户互动来打分。"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "评分量规模式",
+        "description": "拨每颗星输出 OER Schema RubricScale 搭 RubricLevel 元数据(levelOrdinal/levelPoints)。"
+      }
+    ]
+  }
+}

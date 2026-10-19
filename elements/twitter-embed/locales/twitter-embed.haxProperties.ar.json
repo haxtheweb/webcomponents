@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "تضمين Twitter (X)",
+    "description": "تضمين تغريدة من X في سياقها."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL التغريدة",
+        "description": "URL التغريدة المراد تضمينها."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "السمة",
+        "description": "سمة فاتحة أو داكنة لتغريدات X.",
+        "options": {
+          "light": "فاتح",
+          "dark": "داكن"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "منع النافذة المنبثقة عند النقر",
+        "description": "منع المستخدمين من فتح التغريدة على x.com."
+      }
+    ]
+  }
+}

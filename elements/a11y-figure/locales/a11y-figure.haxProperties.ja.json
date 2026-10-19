@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "説明付き図",
+    "description": "長い説明付きのアクセシブルな図"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "画像"
+      },
+      {
+        "property": "imgAlt",
+        "title": "代替テキスト"
+      },
+      {
+        "slot": "figcaption",
+        "title": "図のキャプション",
+        "description": "常に表示される図のキャプションテキスト。"
+      },
+      {
+        "slot": "details",
+        "title": "説明",
+        "description": "表示・非表示を切り替えられる画像の詳細な説明"
+      },
+      {
+        "slot": "summary",
+        "title": "説明ボタン",
+        "description": "説明テキストの表示・非表示を切り替えるボタンの既定値 (例: 「情報」、「メタデータ」など)。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "詳細を開いているときの概要テキスト (任意)"
+      },
+      {
+        "property": "closeText",
+        "title": "詳細を閉じているときの概要テキスト (任意)"
+      }
+    ]
+  }
+}

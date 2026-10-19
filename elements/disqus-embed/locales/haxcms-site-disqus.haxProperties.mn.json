@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus сэтгэгдэл",
+    "description": "Disqus сэтгэгдлийн вэб үйлчилгээтэй холболт"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Богино нэр",
+        "description": "Disqus дээрх сайтын богино нэр"
+      }
+    ]
+  }
+}

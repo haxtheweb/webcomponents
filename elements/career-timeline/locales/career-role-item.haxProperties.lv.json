@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Karjeras amats",
+    "description": "Atsevišķs amats organizācijā"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Nosaukums"
+      },
+      {
+        "property": "startDate",
+        "title": "Sākuma datums"
+      },
+      {
+        "property": "endDate",
+        "title": "Beigu datums (neobligāts)"
+      },
+      {
+        "property": "skills",
+        "title": "Saistītās prasmes",
+        "description": "Izvēlieties pogu +, lai sāktu pievienot prasmes"
+      }
+    ]
+  }
+}

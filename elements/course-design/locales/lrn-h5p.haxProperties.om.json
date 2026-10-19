@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Elementii H5P",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Barreeffama",
+        "description": "Qabiyyee yaadannoo cinaa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Regjistri i notave",
+    "description": "Një regjistër notash pa ndërfaqe që mbështet backend-e të shumta me rubrika."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Burimi",
+        "description": "Lloji i burimit të të dhënave (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Pikë fundore URL (JSON)",
+          "json": "Bllok të dhënash JSON",
+          "filesystem": "Sistemi i skedarëve"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Të dhënat burimore",
+        "description": "URL ose të dhëna JSON për regjistrin e notave."
+      },
+      {
+        "property": "forCourse",
+        "title": "Referenca e kursit",
+        "description": "Identifikuesi i kursit që jepet si oer:forCourse në çdo burim vlerësimi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabela",
+    "description": "Tabelarni podatki za splet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Glava vrstice",
+        "description": "Prvo vrstico obravnavaj kot glavo."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Glava stolpca",
+        "description": "Prvi stolpec obravnavaj kot glavo."
+      },
+      {
+        "property": "footer",
+        "title": "Noga",
+        "description": "Zadnjo vrstico obravnavaj kot nogo."
+      },
+      {
+        "property": "sort",
+        "title": "Razvrstljivo",
+        "description": "Dovoli razvrščanje po vrednostih stolpca."
+      },
+      {
+        "property": "filter",
+        "title": "Dovoli filter",
+        "description": "Dovoli filtriranje po vrednostih stolpca."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Številsko oblikovanje",
+        "description": "Uporabi številsko oblikovanje za številske stolpce."
+      },
+      {
+        "property": "responsive",
+        "title": "Odzivno",
+        "description": "Prilagodi postavitev tabele na majhnih zaslonih."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Način ocenjevalne lestvice",
+        "description": "To tabelo obravnavaj kot OER Schema Rubric, da se ustvarijo metapodatki Rubric, RubricScale, RubricCriterion in RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Vrsta ocenjevalne lestvice",
+        "description": "Slog ocenjevalne lestvice, ustvarjen kot oer:rubricType (smiselno le, ko je vklopljen način ocenjevalne lestvice).",
+        "options": {
+          "": "(brez)",
+          "analytic": "Analitična",
+          "holistic": "Celostna",
+          "single-point": "Enotočkovna",
+          "checklist": "Kontrolni seznam"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Z robovi"
+      },
+      {
+        "property": "condensed",
+        "title": "Zgosti vrstice",
+        "description": "Zmanjšaj višino vrstic."
+      },
+      {
+        "property": "striped",
+        "title": "Črtaste vrstice",
+        "description": "Osenči vsako drugo vrstico."
+      },
+      {
+        "property": "downloadable",
+        "title": "Gumb za prenos",
+        "description": "Dodaj gumb za prenos tabele."
+      },
+      {
+        "property": "copyable",
+        "title": "Gumb za kopiranje",
+        "description": "Dodaj gumb za kopiranje podatkov tabele v obliki CSV."
+      },
+      {
+        "property": "printable",
+        "title": "Gumb za tiskanje",
+        "description": "Dodaj gumb za tiskanje samo tabele."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Podatki CSV",
+        "description": "Ustvari tabelo iz naložene datoteke CSV."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Chaguo nyingi",
+    "description": "Swali la kujipima lenye chaguo nyingi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Swali",
+        "description": "Swali ambalo watumiaji watajibu."
+      },
+      {
+        "property": "randomize",
+        "title": "Changanya",
+        "description": "Changanya majibu kwa nasibu."
+      },
+      {
+        "property": "singleOption",
+        "title": "Jibu moja",
+        "description": "Ruhusu jibu moja tu."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Muundo wa kupanga alama",
+        "description": "OER Schema: muundo wa kupanga alama wa tathmini hii (k.m. pointi, herufi, asilimia, ukamilishaji)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lengo la kujifunza",
+        "description": "OER Schema: lengo la kujifunza linalohusiana na tathmini hii."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kozi",
+        "description": "OER Schema: kozi ambayo tathmini hii imekusudiwa."
+      },
+      {
+        "property": "answers",
+        "title": "Majibu"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jina la jaribio",
+        "description": "Jina la jaribio linalotumika kwa utambulisho wa xAPI katika mifumo ya uchanganuzi."
+      }
+    ]
+  }
+}

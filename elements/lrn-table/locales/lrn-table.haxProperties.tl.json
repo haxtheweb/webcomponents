@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV na talahanayan",
+    "description": "Makakagawa ito ng talahanayan mula sa CSV file saanman ito naroroon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Pinagmulan",
+        "description": "URL para sa CSV file na ito."
+      },
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Pamagat para sa talahanayang bubuuin."
+      },
+      {
+        "property": "description",
+        "title": "Paglalarawan",
+        "description": "Mas detalyadong paglalarawan para sa mas mahusay na accessibility ng datos ng talahanayan."
+      }
+    ]
+  }
+}

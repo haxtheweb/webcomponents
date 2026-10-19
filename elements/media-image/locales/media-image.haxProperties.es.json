@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Imagen mejorada",
+    "description": "Una forma de presentar imágenes con varias mejoras."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origen",
+        "description": "La URL de la imagen."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo",
+        "description": "Texto que describe la imagen para usuarios con discapacidad visual."
+      },
+      {
+        "property": "link",
+        "title": "Enlace",
+        "description": "Enlazar la imagen a una URL"
+      },
+      {
+        "property": "card",
+        "title": "Tarjeta",
+        "description": "Aplica una sombra para dar la apariencia de una tarjeta elevada."
+      },
+      {
+        "property": "box",
+        "title": "Recuadro",
+        "description": "Aplica un recuadro visual alrededor de la imagen."
+      },
+      {
+        "property": "offset",
+        "title": "Desplazamiento",
+        "description": "Aplica un desplazamiento a la izquierda o a la derecha a la imagen.",
+        "options": {
+          "none": "ninguno",
+          "wide": "ancho",
+          "narrow": "estrecho"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Cita bibliográfica",
+        "description": "Cita de la imagen."
+      },
+      {
+        "property": "caption",
+        "title": "Pie de foto",
+        "description": "Pie de la imagen."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Título de la figura",
+        "description": "Título de la etiqueta de figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descripción de la figura",
+        "description": "Descripción de la etiqueta de figura."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Imagen en miniatura",
+        "description": "Origen de la imagen en miniatura. Muestra la miniatura, pero abre el original en una ventana modal."
+      },
+      {
+        "property": "round",
+        "title": "Imagen redonda",
+        "description": "Recorta la apariencia de la imagen en forma de círculo."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Desactivar la ventana modal de la imagen",
+        "description": "Desactiva que los clics abran la imagen en un diálogo de inspección de imágenes."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Mostrar como markdown",
+        "description": "Muestra el pie y la cita como markdown."
+      }
+    ]
+  }
+}

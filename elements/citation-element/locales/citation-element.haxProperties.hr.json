@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Navod izvora",
+    "description": "Element citata s tri načina prikaza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov citiranog djela."
+      },
+      {
+        "property": "source",
+        "title": "Poveznica na izvor",
+        "description": "URL izvora citiranog djela."
+      },
+      {
+        "property": "date",
+        "title": "Datum pristupa",
+        "description": "Datum kada je izvoru pristupljeno."
+      },
+      {
+        "property": "scope",
+        "title": "Opseg",
+        "description": "Opseg elementa za citiranje.",
+        "options": {
+          "sibling": "Susjedni element",
+          "parent": "Nadređeni element"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licenca",
+        "description": "Licencija citiranog djela."
+      },
+      {
+        "property": "creator",
+        "title": "Autor",
+        "description": "Autor ili vlasnik citiranog djela."
+      },
+      {
+        "property": "typeof",
+        "title": "Vrsta OER Schema",
+        "description": "OER Schema klasa za ovaj citat. Zadano je oer:ReferencedMaterial; nadjačajte samo valjanom OER klasom (npr. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

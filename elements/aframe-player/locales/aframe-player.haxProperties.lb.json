@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D-Player",
+    "description": "E Player fir 3D-Fichieren / Augmented Reality."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quell",
+        "description": "D'URL fir dësen AR-Fichier."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "X-Positioun vum Element an AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Y-Positioun vum Element an AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Z-Positioun vum Element an AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Himmelfaarf",
+        "description": "Wielt d'Faarf vum Himmel an der Zeen."
+      }
+    ]
+  }
+}

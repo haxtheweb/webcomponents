@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ແຖບ",
+    "description": "ແຖບດຽວ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ໄອຄອນແຖບ"
+      },
+      {
+        "property": "disabled",
+        "title": "ປິດໃຊ້ງານ"
+      },
+      {
+        "property": "label",
+        "title": "ປ້າຍແຖບ"
+      },
+      {
+        "slot": "",
+        "title": "ເນື້ອຫາແຖບ",
+        "description": "ເນື້ອຫາຂອງແຖບ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID ທີ່ບໍ່ຊ້ຳກັນ"
+      },
+      {
+        "property": "flag",
+        "title": "ຂໍ້ຄວາມທຸງ (ບໍ່ບັງຄັບ)"
+      },
+      {
+        "property": "flagIcon",
+        "title": "ໄອຄອນທຸງ (ບໍ່ບັງຄັບ)"
+      }
+    ]
+  }
+}

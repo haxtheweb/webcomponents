@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Suuraa Bu'uuraa",
+    "description": "Elementii suuraa bu'uuraa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Madda",
+        "description": "URL suuraa."
+      },
+      {
+        "attribute": "alt",
+        "title": "Barreeffama bakka bu'aa",
+        "description": "Barreeffama bakka bu'aa dhaqqabamummaa fi SEO f."
+      },
+      {
+        "attribute": "height",
+        "title": "Dheerina",
+        "description": "Dheerina pikseliin. Hamma uumamaa fayyadamuuf duwwaa dhiisi."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Fe'iinsa suuraa",
+        "description": "Suuraan yoom akka fe'amu fili.",
+        "options": {
+          "lazy": "Yeroo mul'atu fe'i",
+          "auto": "Ofumaan"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Maddoota deebii-kennan (srcset)",
+        "description": "Biraawuzaroonni hamma iskiriiniif caalu akka filataniif URL suuraa fi ibsitoota (fkn. 480w yookaan 2x) tarreessi. Akka amala srcset idileetti kuufama."
+      }
+    ]
+  }
+}

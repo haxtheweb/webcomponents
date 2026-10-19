@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "דונאט התקדמות",
+    "description": "דונאט התקדמות"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "כותרת הרכיב"
+      },
+      {
+        "property": "desc",
+        "title": "תיאור",
+        "description": "תיאור ארוך נגיש"
+      },
+      {
+        "property": "imageSrc",
+        "title": "מקור התמונה",
+        "description": "מקור התמונה שבתוך הדונאט."
+      },
+      {
+        "property": "imageAlt",
+        "title": "טקסט חלופי לתמונה",
+        "description": "טקסט חלופי לתמונה."
+      },
+      {
+        "property": "animated",
+        "title": "מונפש",
+        "description": "האם ההתקדמות מונפשת בטעינה הראשונה"
+      },
+      {
+        "property": "complete",
+        "title": "הושלם",
+        "description": "מערך של ערכים שהושלמו."
+      },
+      {
+        "property": "total",
+        "title": "סך הכול",
+        "description": "הסך הכולל כאשר כל הפריטים הושלמו."
+      },
+      {
+        "property": "startAngle",
+        "title": "זווית התחלה",
+        "description": "הזווית בדונאט שבה מתחילה ההתקדמות"
+      }
+    ]
+  }
+}

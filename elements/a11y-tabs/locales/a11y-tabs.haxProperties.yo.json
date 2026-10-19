@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Táàbù",
+    "description": "Àkójọ àwọn táàbù."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Àmì-orúkọ (fún ìráyèsí)",
+        "description": "Àmì-orúkọ tí ó ṣeé ráyè sí fún àkójọ táàbù."
+      },
+      {
+        "property": "disabled",
+        "title": "Àìṣiṣẹ́",
+        "description": "Mú gbogbo táàbù kúrò ní iṣẹ́."
+      },
+      {
+        "property": "hidden",
+        "title": "Pípamọ́",
+        "description": "Fi àkójọ táàbù pamọ́."
+      },
+      {
+        "property": "sticky",
+        "title": "Dídúró sí òkè",
+        "description": "Jẹ́ kí àwọn táàbù ìdábùú dúró sí òkè nígbà yíyí ojú-ìwé."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Ojú-ààlà ìtò",
+        "description": "Ojú-ààlà fún àwọn táàbù ìdábùú; lo -1 fún inaro nìkan."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Ojú-ààlà àmì",
+        "description": "Ojú-ààlà fún fífi ọ̀rọ̀ hàn pẹ̀lú àwọn àmì. Àtilẹ̀wá jẹ́ 0; lo -1 fún ipò àmì nìkan."
+      },
+      {
+        "slot": "",
+        "title": "Táàbù",
+        "description": "Ọ̀wọ́ àwọn èròjà <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID aláìlẹ́gbẹ́",
+        "description": "ID aláìlẹ́gbẹ́ fún àkójọ táàbù yìí."
+      }
+    ]
+  }
+}

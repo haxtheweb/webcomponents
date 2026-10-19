@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tabblad",
+    "description": "Eén tabblad."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Tabbladpictogram"
+      },
+      {
+        "property": "disabled",
+        "title": "Uitgeschakeld"
+      },
+      {
+        "property": "label",
+        "title": "Tabbladlabel"
+      },
+      {
+        "slot": "",
+        "title": "Tabbladinhoud",
+        "description": "Inhoud van het tabblad."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unieke ID"
+      },
+      {
+        "property": "flag",
+        "title": "Optionele markeringstekst"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Optioneel markeringspictogram"
+      }
+    ]
+  }
+}

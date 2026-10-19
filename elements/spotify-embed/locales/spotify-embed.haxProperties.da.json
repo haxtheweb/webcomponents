@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Indpakning til indlejrede Spotify-afspillere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "Indlejrings- eller delingslink fra Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Baggrundsfarvetema for afspilleren.",
+        "options": {
+          "": "Standard",
+          "0": "Sort"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Størrelse",
+        "description": "Afspillerens størrelse.",
+        "options": {
+          "normal": "Standard",
+          "compact": "Kompakt"
+        }
+      }
+    ]
+  }
+}

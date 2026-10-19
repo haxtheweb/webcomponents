@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Betrað mynd",
+    "description": "Ein háttur at vísa myndir við ymiskum betringum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kelda",
+        "description": "URL til myndina."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativur tekstur",
+        "description": "Tekstur, ið lýsir myndina fyri brúkarum, sum ikki síggja."
+      },
+      {
+        "property": "link",
+        "title": "Leinki",
+        "description": "Leinkja myndina til ein URL"
+      },
+      {
+        "property": "card",
+        "title": "Kort",
+        "description": "Legg ein fallskugga á fyri at geva útsjónd av einum upphøgdum korti."
+      },
+      {
+        "property": "box",
+        "title": "Boks",
+        "description": "Legg eina sjónliga boks rundan um myndina."
+      },
+      {
+        "property": "offset",
+        "title": "Frávik",
+        "description": "Legg eitt vinstra ella høgra frávik á myndina.",
+        "options": {
+          "none": "einki",
+          "wide": "breitt",
+          "narrow": "smalt"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Keldutilvísing",
+        "description": "Tilvísing til myndina."
+      },
+      {
+        "property": "caption",
+        "title": "Myndatekstur",
+        "description": "Myndatekstur til myndina."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Heiti á mynd",
+        "description": "Heiti til myndaspjaldrið."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Lýsing av mynd",
+        "description": "Lýsing til myndaspjaldrið."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Smámynd",
+        "description": "Kelda til smámynd. Vísir smámynd, men opnar fullu kelduna í modalum glugga."
+      },
+      {
+        "property": "round",
+        "title": "Rund mynd",
+        "description": "Sker myndina til, so hon sær út sum ein ringur."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Slókk myndaglugga",
+        "description": "Slókk, at klikk opna myndina í einum myndakanningarglugga."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Vís sum markdown",
+        "description": "Vís myndatekst og tilvísing sum markdown."
+      }
+    ]
+  }
+}

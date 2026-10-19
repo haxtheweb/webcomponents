@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Тасвири параллакс",
+    "description": "Ҳаракати тасвир ҳангоми варақзанӣ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Тасвир",
+        "description": "тасвире, ки дар замина истифода мешавад"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Минтақаи сарлавҳа",
+        "description": "Минтақаи матни сарлавҳа"
+      }
+    ]
+  }
+}

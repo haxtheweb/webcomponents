@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Porandu mbohovái mbykýva",
+    "description": "Puruhára ombohovái peteĩ porandu hasy'ỹva"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Porandu",
+        "description": "Porandu puruhára ombohovái hag̃ua."
+      },
+      {
+        "property": "answers",
+        "title": "Mbohovái ikatúva"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ñeha'ã réra",
+        "description": "Ñeha'ã réra oñembohasáva ojeporu hag̃ua tenda xAPI rehegua ojeikuaa hag̃ua ko mba'e"
+      }
+    ]
+  }
+}

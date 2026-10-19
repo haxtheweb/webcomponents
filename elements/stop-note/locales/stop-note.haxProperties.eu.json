@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Geldiune oharra",
+    "description": "Irakurleei jarraibide zehatzei buruz ohartarazteko mezua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Idatzi geldiune oharraren izenburua."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Idatzi kanpoko URL bat."
+      },
+      {
+        "property": "status",
+        "title": "Egoera",
+        "description": "Egoera ezartzean, koloreak eta ikonoak bat etortzeko aldatzen dira",
+        "options": {
+          "stop": "Gelditu",
+          "warning": "Abisua",
+          "success": "Berrespena",
+          "info": "Oharra"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Oharraren testua",
+        "description": "Geldiune oharraren testua."
+      }
+    ]
+  }
+}

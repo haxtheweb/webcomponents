@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Турыдан-туры яки читтән йөкләнгән markdown эчтәлеге блогы"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Чимал markdown"
+      },
+      {
+        "property": "source",
+        "title": "Чыганак",
+        "description": "Markdown өчен чыганак файл"
+      }
+    ]
+  }
+}

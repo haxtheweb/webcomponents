@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ọkọlọtọ peeji",
+    "description": "Ndetu ndezi maka ndị dere peeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Agba Mkpụrụ",
+        "description": "Agba mkpụrụ maka ọkọlọtọ peeji."
+      },
+      {
+        "property": "label",
+        "title": "Akara aha",
+        "description": "Ederede akara aha maka ọkọlọtọ peeji."
+      }
+    ]
+  }
+}

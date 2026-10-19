@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Pukllana lista",
+    "description": "Ima laya kaqtapas pukllana listapi rikuchiy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Pukyu",
+        "description": "Pukllana listapi rikukuq kaq."
+      },
+      {
+        "property": "edit",
+        "title": "Allichana modo",
+        "description": "Pukllana listapaq allichana modowan qhawana modowan tikray."
+      },
+      {
+        "property": "navigation",
+        "title": "Puriy",
+        "description": "Ñawpaqman qhipamanpas puriy ñit'inakunata rikuchiy."
+      },
+      {
+        "property": "pagination",
+        "title": "Rapichay",
+        "description": "Rapichay chimpukunata rikuchiy."
+      },
+      {
+        "property": "orientation",
+        "title": "Siriynin",
+        "description": "Diapositivakunapa siriynin.",
+        "options": {
+          "horizontal": "Siriq",
+          "vertical": "Sayaq"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Qallarinapaq diapositiva",
+        "description": "Qallariypi qhawanapaq diapositivapa índicen."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Tupu kaq",
+        "description": "Diapositivakunapa tupu kaqnin.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kaart",
+    "description": "Een kaart met optionele accentopmaak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Kop",
+        "description": "Een kop voor de kaart."
+      },
+      {
+        "slot": "subheading",
+        "title": "Subkop",
+        "description": "Een optionele subkop voor de kaart."
+      },
+      {
+        "slot": "content",
+        "title": "Inhoud",
+        "description": "Inhoud van de kaart."
+      },
+      {
+        "slot": "footer",
+        "title": "Voettekst",
+        "description": "Een optionele voettekst voor de kaart."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Afbeelding",
+        "description": "Optionele afbeelding"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt-tekst afbeelding",
+        "description": "Alternatieve tekst die de afbeelding beschrijft voor schermlezers. Laat alleen leeg als de afbeelding puur decoratief is."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Horizontale uitlijning van afbeelding",
+        "options": {
+          "left": "links",
+          "center": "midden",
+          "right": "rechts"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Verticale uitlijning van afbeelding",
+        "options": {
+          "top": "boven",
+          "center": "midden",
+          "bottom": "onder"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Een optionele accentkleur."
+      },
+      {
+        "property": "dark",
+        "title": "Donker thema",
+        "description": "Donker thema inschakelen"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontaal",
+        "description": "Horizontale oriëntatie?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Kopaccent",
+        "description": "Accentkleur op kop toepassen?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Achtergrondaccent",
+        "description": "Accentkleur op kaartachtergrond toepassen?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Geen randaccent",
+        "description": "Randaccent verwijderen?"
+      },
+      {
+        "property": "flat",
+        "title": "Plat",
+        "description": "Slagschaduw verwijderen?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Hoek",
+        "description": "Inhoud voor de kaarthoek."
+      }
+    ]
+  }
+}

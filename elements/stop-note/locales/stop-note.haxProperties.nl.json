@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Stopnotitie",
+    "description": "Een bericht om lezers te wijzen op specifieke aanwijzingen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Voer een titel in voor de stopnotitie."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Voer een externe URL in."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Het instellen van de status past kleuren en pictogrammen daarop aan",
+        "options": {
+          "stop": "Stop",
+          "warning": "Waarschuwing",
+          "success": "Bevestiging",
+          "info": "Mededeling"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Notitietekst",
+        "description": "Tekst voor de stopnotitie."
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "បង្កប់ Twitter (X)",
+    "description": "បង្កប់ទ្វីតពី X តាមបរិបទ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL ទ្វីត",
+        "description": "URL នៃទ្វីតដែលត្រូវបង្កប់។"
+      },
+      {
+        "attribute": "data-theme",
+        "title": "រចនាប័ទ្ម",
+        "description": "រចនាប័ទ្មភ្លឺ ឬងងឹតសម្រាប់ទ្វីត X។",
+        "options": {
+          "light": "ភ្លឺ",
+          "dark": "ងងឹត"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "ការពារផ្ទាំងលេចឡើងពេលចុច",
+        "description": "ការពារអ្នកប្រើមិនឱ្យបើកទ្វីតលើ x.com។"
+      }
+    ]
+  }
+}

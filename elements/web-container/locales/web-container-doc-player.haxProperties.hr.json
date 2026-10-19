@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Reproduktor dokumentacije web-komponenti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Sakrij prozor",
+        "description": "Sakrij izlazni prozor, korisno kada je svrha samo terminal"
+      }
+    ]
+  }
+}

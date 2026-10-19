@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ìpè sí ìṣe",
+    "description": "Bọ́tìnnì rírọrùn pẹ̀lú ìjápọ̀ láti gbé ìgbésẹ̀."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Àmì-orúkọ",
+        "description": "Àkọlé ìjápọ̀"
+      },
+      {
+        "property": "link",
+        "title": "Ìjápọ̀",
+        "description": "Tẹ ìjápọ̀ sí ohun èlò èyíkéyìí"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Fi àmì pamọ́",
+        "description": "Fi àmì tí a ń lò láti ṣe ọ̀ṣọ́ ọ̀rọ̀ pamọ́"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Àmì",
+        "description": "Àmì ìjápọ̀ ìṣe"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Ενσωμάτωση εξωτερικού περιεχομένου ιστού σε iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL πόρου",
+        "description": "URL πόρου."
+      },
+      {
+        "property": "height",
+        "title": "Ύψος",
+        "description": "Ύψος iframe."
+      },
+      {
+        "property": "width",
+        "title": "Πλάτος",
+        "description": "Πλάτος iframe."
+      }
+    ]
+  }
+}

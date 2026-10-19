@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ປຸ່ມ Ebook",
+    "description": "ປຸ່ມທີ່ລິ້ງໄປຫາ Ebook."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ຂອງປຸ່ມ."
+      },
+      {
+        "property": "link",
+        "title": "ລິ້ງ",
+        "description": "ລິ້ງທີ່ຈະປ່ຽນເສັ້ນທາງໄປເມື່ອຄລິກ."
+      },
+      {
+        "property": "icon",
+        "title": "ໄອຄອນ",
+        "description": "ໄອຄອນເພື່ອສະແດງລິ້ງນີ້"
+      }
+    ]
+  }
+}

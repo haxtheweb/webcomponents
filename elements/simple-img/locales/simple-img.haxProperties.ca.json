@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Imatge senzilla",
+    "description": "Manipula imatges amb paràmetres senzills."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Font",
+        "description": "URL d'origen de la imatge."
+      },
+      {
+        "property": "height",
+        "title": "Alçada",
+        "description": "Alçada opcional de la imatge."
+      },
+      {
+        "property": "width",
+        "title": "Amplada",
+        "description": "Amplada opcional de la imatge."
+      },
+      {
+        "property": "alt",
+        "title": "Text alternatiu",
+        "description": "Útil per als lectors de pantalla i per millorar el SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Qualitat",
+        "description": "Qualitat de la imatge en generar-la (només JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Prioritat de càrrega",
+        "description": "Indicació de rendiment per als navegadors moderns.",
+        "options": {
+          "auto": "Automàtica",
+          "high": "Alta",
+          "low": "Baixa"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Mètode de descodificació",
+        "description": "Indicació de rendiment per a la representació d'imatges als navegadors moderns.",
+        "options": {
+          "auto": "Automàtica",
+          "async": "Asíncron"
+        }
+      }
+    ]
+  }
+}

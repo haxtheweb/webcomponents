@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Llamk'ay Kaq",
+    "description": "Huk organizacion, tupaq ruranankunapas"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Organizacionpa Sutin"
+      },
+      {
+        "property": "location",
+        "title": "Maypi"
+      },
+      {
+        "property": "source",
+        "title": "Pukyu"
+      }
+    ]
+  }
+}

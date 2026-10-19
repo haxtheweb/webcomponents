@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) ներկառուցում",
+    "description": "Ներկառուցել X-ի թվիթ համատեքստում։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Թվիթի URL",
+        "description": "Ներկառուցվող թվիթի URL-ը։"
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Թեմա",
+        "description": "Բաց կամ մուգ թեմա X-ի թվիթերի համար։",
+        "options": {
+          "light": "Բաց",
+          "dark": "Մուգ"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Արգելել թռուցիկը սեղմելիս",
+        "description": "Թույլ չտալ օգտատերերին բացել թվիթը x.com-ում։"
+      }
+    ]
+  }
+}

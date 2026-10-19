@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Imenik ocjena",
+    "description": "Imenik ocjena bez sučelja koji podržava više pozadinskih sustava s rubrikama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Izvor",
+        "description": "Vrsta izvora podataka (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google dokumenti",
+          "url": "URL krajnja točka (JSON)",
+          "json": "JSON blok podataka",
+          "filesystem": "Datotečni sustav"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Izvorni podaci",
+        "description": "URL ili JSON podaci za imenik ocjena."
+      },
+      {
+        "property": "forCourse",
+        "title": "Referenca kolegija",
+        "description": "Identifikator kolegija koji se emitira kao oer:forCourse na svakom resursu procjene."
+      }
+    ]
+  }
+}

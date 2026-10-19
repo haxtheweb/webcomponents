@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "ຝັງຄຳເຫັນ Disqus ໃນໜ້າ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "ຊື່ຫຍໍ້",
+        "description": "ຊື່ຫຍໍ້ຂອງເວັບໄຊ ເຊິ່ງກຳນົດໂຮສສະຄຣິບ Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL ຂອງໜ້າ",
+        "description": "URL ຂອງໜ້າທີ່ກະທູ້ຄຳເຫັນຕິດຢູ່."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "ຕົວລະບຸໜ້າ",
+        "description": "ຕົວລະບຸທີ່ບໍ່ຊ້ຳກັນສຳລັບກະທູ້ຄຳເຫັນຂອງໜ້າ."
+      },
+      {
+        "property": "pageTitle",
+        "title": "ຫົວຂໍ້ໜ້າ",
+        "description": "ຫົວຂໍ້ຂອງໜ້າທີ່ກະທູ້ຄຳເຫັນຕິດຢູ່."
+      },
+      {
+        "property": "loadingText",
+        "title": "ຂໍ້ຄວາມກຳລັງໂຫຼດ",
+        "description": "ຂໍ້ຄວາມທີ່ປະກາດຂະນະກຳລັງໂຫຼດຄຳເຫັນ."
+      },
+      {
+        "property": "lang",
+        "title": "ພາສາ",
+        "description": "ລະຫັດພາສາສຳລັບສ່ວນຕິດຕໍ່ Disqus, ເຊັ່ນ: en."
+      }
+    ]
+  }
+}

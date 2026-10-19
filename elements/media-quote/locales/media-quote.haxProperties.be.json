@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Медыяцытата",
+    "description": "Выява з цытатай, крыніцай і неабавязковым подпісам."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Цытата",
+        "description": "Тэкст цытаты."
+      },
+      {
+        "slot": "author",
+        "title": "Аўтар",
+        "description": "Аўтар цытаты."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Звесткі пра аўтара",
+        "description": "Звесткі пра аўтара."
+      },
+      {
+        "slot": "caption",
+        "title": "Подпіс",
+        "description": "Подпіс да выявы."
+      },
+      {
+        "property": "src",
+        "title": "Крыніца выявы",
+        "description": "Файл выявы для медыяцытаты."
+      },
+      {
+        "property": "alt",
+        "title": "Альтэрнатыўны тэкст",
+        "description": "Альтэрнатыўны тэкст для выявы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Акцэнтны колер карткі."
+      }
+    ]
+  }
+}

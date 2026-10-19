@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "ვიდეო",
+    "description": "ხელმისაწვდომი ვიდეოს დაკვრა სხვადასხვა წყაროდან."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "წყარო",
+        "description": "ამ მედიის URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "სათაური",
+        "description": "ვიდეოს ქვემოთ ნაჩვენები სათაური."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "პოსტერის სურათი",
+        "description": "პოსტერის სურათის URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "ტექსტური ტრეკები",
+        "description": "ვიდეოს დახურული ტიტრები, სუბტიტრები, აღწერები და სხვა ტექსტური ტრეკები."
+      },
+      {
+        "property": "startTime",
+        "title": "დაწყების დრო",
+        "description": "ვიდეოს დაწყება კონკრეტული დროიდან (წამებში)."
+      },
+      {
+        "property": "endTime",
+        "title": "დასრულების დრო",
+        "description": "ვიდეოს დასრულება კონკრეტულ დროზე (წამებში); საჭიროებს დაწყების დროს."
+      },
+      {
+        "property": "learningMode",
+        "title": "სასწავლო რეჟიმის ჩართვა",
+        "description": "თიშავს წინ და უკან გადახვევას."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "„YouTube-ზე გახსნის“ ღილაკის მოშორება",
+        "description": "შლის ღილაკს, რომელიც ვიდეოს YouTube-ზე ხსნის."
+      },
+      {
+        "property": "linkable",
+        "title": "დავამატოთ გაზიარების ბმული?",
+        "description": "იძლევა ვიდეოს გასაზიარებელ ბმულს."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "დროის ნიშნულების დამალვა",
+        "description": "ტრანსკრიპტში დროის ნიშნულების დამალვა."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ტრანსკრიპტის დამალვა",
+        "description": "ტრანსკრიპტის ნაგულისხმევად დამალვა."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "აუდიოაღწერის ტრეკი",
+        "description": "აუდიოაღწერის ტრეკის (MP3 ფაილი) URL, რომელიც ვიზუალურ ელემენტებს ახმოვანებს."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "მიუთითებს, გამოიყენოს თუ არა CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "ფონური დაკვრის დაშვება",
+        "description": "დაკვრის გაგრძელება, როცა ბრაუზერის ჩანართი ფოკუსს კარგავს."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ტრანსკრიპტის მუქი თემა",
+        "description": "ტრანსკრიპტისთვის მუქი თემის ჩართვა."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ინტერაქტიულობის გამორთვა",
+        "description": "ინტერაქტიული რეჟიმის გამორთვა, რომელიც ტრანსკრიპტს დაწკაპუნებადს ხდის."
+      },
+      {
+        "property": "lang",
+        "title": "ენა",
+        "description": "მედიის ენა."
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "(მოძველებული) აირჩიეთ პლეერის აქცენტის ფერი."
+      }
+    ]
+  }
+}

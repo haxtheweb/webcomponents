@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Sjajna eksplozija",
+    "description": "Interaktivna animacija eksplozije s neobaveznim zvučnim efektima."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Veličina",
+        "description": "Postavite veličinu eksplozije.",
+        "options": {
+          "tiny": "Sićušna",
+          "small": "Mala",
+          "medium": "Srednja",
+          "large": "Velika",
+          "epic": "Epska"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Boja",
+        "description": "Postavite temu boja eksplozije.",
+        "options": {
+          "": "Zadano",
+          "red": "Crvena",
+          "blue": "Plava",
+          "purple": "Ljubičasta",
+          "orange": "Narančasta",
+          "yellow": "Žuta"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Zvučni efekti",
+        "description": "Omogući zvučne efekte."
+      },
+      {
+        "property": "resetSound",
+        "title": "Ponovno pokreni zvuk",
+        "description": "Svaki put pokreni zvuk ispočetka."
+      },
+      {
+        "property": "image",
+        "title": "Prilagođena slika",
+        "description": "Neobavezni URL prilagođene slike eksplozije."
+      },
+      {
+        "property": "sound",
+        "title": "Prilagođeni zvuk",
+        "description": "Neobavezni URL prilagođenog zvučnog efekta."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Onemogućeno",
+        "description": "Onemogući sve interakcije."
+      }
+    ]
+  }
+}

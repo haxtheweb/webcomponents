@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Magpakita ng naka-temang Polaris call-to-action na button."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Teksto ng button",
+        "description": "Tekstong ipinapakita sa call-to-action na button."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Destinasyong URL para sa button."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Variant ng biswal na istilo.",
+        "options": {
+          "primary": "Pangunahin",
+          "tinted": "May tint",
+          "light": "Maliwanag"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Istilong may outline",
+        "description": "I-enable ang trato na may outline."
+      },
+      {
+        "property": "filled",
+        "title": "Istilong puno",
+        "description": "I-enable ang trato na puno."
+      }
+    ]
+  }
+}

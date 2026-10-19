@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex seçici",
+    "description": "Hex kodlu rəng seçici"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Dəyər",
+        "description": "Standart hex dəyəri"
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktiv",
+        "description": "Mətn sahəsini deaktiv et"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Böyük ekran",
+        "description": "Rəngi böyük ekranda göstər"
+      }
+    ]
+  }
+}

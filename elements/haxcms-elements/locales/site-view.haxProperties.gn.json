@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Tenda Jehecha",
+    "description": "Peteĩ pehẽ oku'éva oporandu ha ohechaukáva tenda mba'ekuaarã jehechakuaarã rupi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Jehecha URL",
+        "description": "Porandu rehegua jehecha mba'ekuaarã ñemyasãirã. Ikatu rehupyty kóva Jehecha ñemboguatarendágui."
+      },
+      {
+        "property": "renderer",
+        "title": "Jehechauka reko",
+        "description": "Mba'éichapa ojehechaukáta jehecha rembiapokue"
+      },
+      {
+        "property": "entity",
+        "title": "Mba'e rekoha",
+        "description": "Mba'e reko ojepurúva mbohovái ñemohenda hag̃ua",
+        "options": {
+          "": "Ypyguáva (mba'e)",
+          "item": "Mba'e",
+          "page": "Kuatiarogue",
+          "file": "Marandurenda",
+          "tag": "Techaukaha",
+          "block": "Pehẽ",
+          "view": "Jehecha",
+          "theme": "Ñemohenda",
+          "region": "Tendaguasu",
+          "customElement": "Pehẽ Ñemomba'e"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Emboja'o tenda jehecha",
+        "description": "Embohasa tetepy oku'e'ỹvape rembosako'i hag̃ua; ndojembohekopyahuvéi ijeheguíkuri ypykuégui."
+      }
+    ]
+  }
+}

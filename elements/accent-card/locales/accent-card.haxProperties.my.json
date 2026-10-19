@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "ကတ်",
+    "description": "ရွေးချယ်နိုင်သော accent စတိုင်ပါ ကတ်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "ခေါင်းစီး",
+        "description": "ကတ်အတွက် ခေါင်းစီး။"
+      },
+      {
+        "slot": "subheading",
+        "title": "ခေါင်းစီးခွဲ",
+        "description": "ကတ်အတွက် ရွေးချယ်နိုင်သော ခေါင်းစီးခွဲ။"
+      },
+      {
+        "slot": "content",
+        "title": "အကြောင်းအရာ",
+        "description": "ကတ်အတွက် အကြောင်းအရာ။"
+      },
+      {
+        "slot": "footer",
+        "title": "အောက်ခြေ",
+        "description": "ကတ်အတွက် ရွေးချယ်နိုင်သော အောက်ခြေစာ။"
+      },
+      {
+        "property": "imageSrc",
+        "title": "ပုံ",
+        "description": "ရွေးချယ်နိုင်သော ပုံ"
+      },
+      {
+        "property": "imageAlt",
+        "title": "ပုံ Alt စာသား",
+        "description": "ဖန်သားပြင်ဖတ်စက်များအတွက် ပုံကို ဖော်ပြသော အစားထိုး စာသား။ ပုံသည် အလှဆင်ရန်သက်သက်သာ ဖြစ်မှသာ အလွတ်ထားပါ။"
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "ပုံ အလျားလိုက် ချိန်ညှိမှု",
+        "options": {
+          "left": "ဘယ်",
+          "center": "အလယ်",
+          "right": "ညာ"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "ပုံ ဒေါင်လိုက် ချိန်ညှိမှု",
+        "options": {
+          "top": "အပေါ်",
+          "center": "အလယ်",
+          "bottom": "အောက်"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "ရွေးချယ်နိုင်သော အထူးပြု အရောင်။"
+      },
+      {
+        "property": "dark",
+        "title": "အမှောင် Theme",
+        "description": "အမှောင် အပြင်အဆင် ဖွင့်ရန်"
+      },
+      {
+        "property": "horizontal",
+        "title": "အလျားလိုက်",
+        "description": "အလျားလိုက် ဦးတည်ချက်လား?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "ခေါင်းစီး Accent",
+        "description": "ခေါင်းစီးတွင် accent အရောင် အသုံးချမလား?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "နောက်ခံ Accent",
+        "description": "ကတ် နောက်ခံတွင် accent အရောင် အသုံးချမလား?"
+      },
+      {
+        "property": "noBorder",
+        "title": "ဘောင် Accent မရှိ",
+        "description": "ဘောင် accent ကို ဖယ်ရှားမလား?"
+      },
+      {
+        "property": "flat",
+        "title": "ပြား",
+        "description": "အကွက် အရိပ်ကို ဖယ်ရှားမလား?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "ထောင့်",
+        "description": "ကတ် ထောင့်အတွက် အကြောင်းအရာ။"
+      }
+    ]
+  }
+}

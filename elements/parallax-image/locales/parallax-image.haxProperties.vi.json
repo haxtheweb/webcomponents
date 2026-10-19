@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ảnh parallax",
+    "description": "Ảnh cuộn theo trang"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Hình ảnh",
+        "description": "hình ảnh dùng làm nền"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Vùng tiêu đề",
+        "description": "Vùng văn bản tiêu đề"
+      }
+    ]
+  }
+}

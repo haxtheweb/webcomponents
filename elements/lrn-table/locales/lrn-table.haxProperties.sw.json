@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Jedwali la CSV",
+    "description": "Hiki kinaweza kutengeneza jedwali kutoka kwa faili ya CSV popote ilipo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Chanzo",
+        "description": "URL ya faili hii ya CSV."
+      },
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Kichwa cha jedwali litakalotengenezwa."
+      },
+      {
+        "property": "description",
+        "title": "Maelezo",
+        "description": "Maelezo ya kina zaidi ili kuboresha ufikivu wa data ya jedwali."
+      }
+    ]
+  }
+}

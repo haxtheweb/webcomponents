@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Msamiati",
+    "description": "Istilahi ya msamiati."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Istilahi"
+      },
+      {
+        "property": "information",
+        "title": "Ufafanuzi",
+        "description": "Ufafanuzi unaoonyeshwa istilahi inapobofywa."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Kidirisha ibukizi",
+        "description": "Onyesha ufafanuzi katika kidirisha ibukizi badala ya ndani ya maandishi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Viungo",
+        "description": "Orodha ya viungo vya ziada vinavyohusiana na istilahi hii."
+      }
+    ]
+  }
+}

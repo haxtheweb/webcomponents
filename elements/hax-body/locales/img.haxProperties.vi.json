@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Hình ảnh cơ bản",
+    "description": "Phần tử hình ảnh cơ bản."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Nguồn",
+        "description": "URL hình ảnh."
+      },
+      {
+        "attribute": "alt",
+        "title": "Văn bản thay thế",
+        "description": "Văn bản thay thế phục vụ khả năng tiếp cận và SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Chiều cao",
+        "description": "Chiều cao tính bằng pixel. Để trống để dùng kích thước gốc."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Cách tải hình ảnh",
+        "description": "Chọn thời điểm tải hình ảnh.",
+        "options": {
+          "lazy": "Tải khi hiển thị",
+          "auto": "Tự động"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Nguồn đáp ứng (srcset)",
+        "description": "Liệt kê URL hình ảnh và bộ mô tả (ví dụ: 480w hoặc 2x) để trình duyệt chọn kích thước phù hợp nhất với màn hình. Được lưu dưới dạng thuộc tính srcset tiêu chuẩn."
+      }
+    ]
+  }
+}

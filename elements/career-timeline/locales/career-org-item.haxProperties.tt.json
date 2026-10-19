@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Карьера элементы",
+    "description": "Аерым оешма һәм аңа бәйле вазифалар"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Оешма исеме"
+      },
+      {
+        "property": "location",
+        "title": "Урын"
+      },
+      {
+        "property": "source",
+        "title": "Чыганак"
+      }
+    ]
+  }
+}

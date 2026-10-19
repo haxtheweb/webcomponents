@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Kóòdù QR",
+    "description": "Kóòdù láti ṣàyẹ̀wò láti fóònù alágbèéká."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Dátà QR",
+        "description": "Orísun dátà fún kóòdù QR."
+      },
+      {
+        "property": "title",
+        "title": "Àkọlé àfirọ́pò",
+        "description": "Àkọlé àfirọ́pò tí a jápọ̀ mọ́ orísun kóòdù QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Ìwọ̀n",
+        "description": "Ìwọ̀n kóòdù QR."
+      },
+      {
+        "property": "margin",
+        "title": "Ààyè etí",
+        "description": "Ààyè tí ó yí kóòdù náà ká."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Ọ̀nà ìjáde",
+        "description": "Ọ̀nà tí a ó gbé e jáde.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

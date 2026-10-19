@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Ordforråd",
+    "description": "Ordforrådsbegrep"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Begrep"
+      },
+      {
+        "slot": "",
+        "title": "Definisjon",
+        "description": "Definisjonen som vises når begrepet klikkes."
+      },
+      {
+        "property": "description",
+        "title": "Beskrivelse (OER Schema)",
+        "description": "OER Schema: en kort beskrivelse av begrepet. Fylles automatisk ut fra definisjonsteksten hvis feltet står tomt."
+      }
+    ]
+  }
+}

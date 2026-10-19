@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sivuankkuri",
+    "description": "Linkitä sivun median tiettyihin kohtiin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Sivun kohde",
+        "description": "ID tai resurssi, johon tämä ankkuri osoittaa."
+      },
+      {
+        "property": "value",
+        "title": "Syvälinkin arvo",
+        "description": "Syvälinkin arvo (esimerkiksi aikaleima tai dian ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Sivuston entiteetti",
+        "description": "Valinnainen sivuston entiteetti liittyvien käsitteiden esityksen ohjaamiseen."
+      }
+    ]
+  }
+}

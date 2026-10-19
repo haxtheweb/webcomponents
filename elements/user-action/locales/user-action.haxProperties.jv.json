@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Tumindak pangguna",
+    "description": "Lacak tumindak pangguna lan kirim data menyang panyimpenan xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Acara sing dilacak",
+        "description": "Tumindak pangguna sing micu acara iki.",
+        "options": {
+          "visibility": "Bisa ndeleng iki",
+          "keydown": "Pencet tombol ing kene",
+          "click": "Klik iki",
+          "hover": "Arahake kursor ing kene"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Lacak saben wektu",
+        "description": "Kanthi gawan, mung kedadeyan kapisan sing dilacak."
+      }
+    ]
+  }
+}

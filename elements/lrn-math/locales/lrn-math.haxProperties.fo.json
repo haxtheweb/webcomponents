@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Støddfrøði",
+    "description": "Vís støddfrøði á ein vakran hátt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Støddfrøði",
+        "description": "Skriva líkning sum LaTeX"
+      }
+    ]
+  }
+}

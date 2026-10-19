@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Карьерын зүйл",
+    "description": "Нэг байгууллага болон түүнтэй холбоотой үүргүүд"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Байгууллагын нэр"
+      },
+      {
+        "property": "location",
+        "title": "Байршил"
+      },
+      {
+        "property": "source",
+        "title": "Эх сурвалж"
+      }
+    ]
+  }
+}

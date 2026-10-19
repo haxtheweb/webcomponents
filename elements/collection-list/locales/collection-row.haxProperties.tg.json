@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Сатри коллексия",
+    "description": "Унсури сатрӣ барои истифода дар рӯйхати коллексия, бо матн, пайванд, нишона, тегҳо ва тасвири ихтиёрӣ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Пайванд",
+        "description": "URL-и таъинот барои ин сатр."
+      },
+      {
+        "property": "image",
+        "title": "Тасвир",
+        "description": "Тасвир барои сатр."
+      },
+      {
+        "property": "alt",
+        "title": "Алт",
+        "description": "Матни алтернативие, ки тасвирро тавсиф мекунад."
+      },
+      {
+        "property": "line1",
+        "title": "Сатри 1",
+        "description": "Сатри якуми матн."
+      },
+      {
+        "property": "line2",
+        "title": "Сатри 2",
+        "description": "Сатри дуюми матн."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Нишона",
+        "description": "Нишонае, ки сатрро ифода мекунад."
+      },
+      {
+        "property": "saturate",
+        "title": "Эффекти серӣ",
+        "description": "Ҳангоми фокуси корбар серии тасвирро тағйир диҳед."
+      },
+      {
+        "property": "tags",
+        "title": "Тегҳо",
+        "description": "Рӯйхати тегҳо, ки бо вергул ҷудо шудаанд."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранг",
+        "description": "Ранге, ки барои нишона ва тегҳо истифода мешавад."
+      }
+    ]
+  }
+}

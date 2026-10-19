@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "경력 항목",
+    "description": "개별 조직 및 관련 역할"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "조직 이름"
+      },
+      {
+        "property": "location",
+        "title": "장소"
+      },
+      {
+        "property": "source",
+        "title": "소스"
+      }
+    ]
+  }
+}

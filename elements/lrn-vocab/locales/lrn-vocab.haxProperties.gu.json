@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "શબ્દભંડોળ",
+    "description": "શબ્દભંડોળ શબ્દ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "શબ્દ"
+      },
+      {
+        "slot": "",
+        "title": "વ્યાખ્યા",
+        "description": "શબ્દ પર ક્લિક કરવામાં આવે ત્યારે પ્રદર્શિત કરવાની વ્યાખ્યા."
+      },
+      {
+        "property": "description",
+        "title": "વર્ણન (OER Schema)",
+        "description": "OER Schema: શબ્દભંડોળ શબ્દનું ટૂંકું વર્ણન. ખાલી છોડવામાં આવે તો વ્યાખ્યા ટેક્સ્ટમાંથી આપમેળે ભરાય છે."
+      }
+    ]
+  }
+}

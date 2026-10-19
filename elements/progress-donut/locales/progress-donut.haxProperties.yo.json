@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Dónút Ìlọsíwájú",
+    "description": "Dónút ìlọsíwájú"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Àkọlé ẹ̀yà náà"
+      },
+      {
+        "property": "desc",
+        "title": "Àpèjúwe",
+        "description": "Àpèjúwe gígùn tó ṣeé wọlé sí"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Orísun àwòrán",
+        "description": "Orísun àwòrán nínú dónút."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Ọ̀rọ̀ Àfirọ́pò Àwòrán",
+        "description": "Ọ̀rọ̀ àfirọ́pò fún àwòrán."
+      },
+      {
+        "property": "animated",
+        "title": "Oníṣípòpadà",
+        "description": "Bóyá ìlọsíwájú yóò ṣípòpadà nígbà ìgbéwọlé àkọ́kọ́"
+      },
+      {
+        "property": "complete",
+        "title": "Ó ti parí",
+        "description": "Àkójọ àwọn iye tí a ti parí."
+      },
+      {
+        "property": "total",
+        "title": "Àpapọ̀",
+        "description": "Àpapọ̀ nígbà tí gbogbo ohun bá parí."
+      },
+      {
+        "property": "startAngle",
+        "title": "Igun Ìbẹ̀rẹ̀",
+        "description": "Igun dónút níbi tí ìlọsíwájú ti bẹ̀rẹ̀"
+      }
+    ]
+  }
+}

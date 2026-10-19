@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kitabu cha Alama",
+    "description": "Kitabu cha alama kisicho na kiolesura kinachotumia backend mbalimbali pamoja na rubriki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Chanzo",
+        "description": "Aina ya chanzo cha data (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Sehemu ya mwisho ya URL (JSON)",
+          "json": "Bonge la data ya JSON",
+          "filesystem": "Mfumo wa faili"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Data ya Chanzo",
+        "description": "URL au data ya JSON kwa kitabu cha alama."
+      },
+      {
+        "property": "forCourse",
+        "title": "Rejeleo la Kozi",
+        "description": "Kitambulisho cha kozi kinachotolewa kama oer:forCourse kwenye kila rasilimali ya Tathmini."
+      }
+    ]
+  }
+}

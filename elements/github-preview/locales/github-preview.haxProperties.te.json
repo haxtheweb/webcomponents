@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub ప్రివ్యూ",
+    "description": "దీర్ఘ వివరణతో యాక్సెసిబుల్ చిత్రం"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "సంస్థ",
+        "description": "GitHub సంస్థ మెషిన్ పేరు"
+      },
+      {
+        "property": "repo",
+        "title": "రిపోజిటరీ",
+        "description": "రెపో మెషిన్ పేరు"
+      },
+      {
+        "property": "extended",
+        "title": "విస్తరించిన వీక్షణ",
+        "description": "ఎలిమెంట్‌లో readmeను చేర్చుతుంది"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Seitenanker",
+    "description": "Zu bestimmten Stellen in Medien auf der Seite verlinken."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Seitenziel",
+        "description": "ID oder Ressource, auf die dieser Anker verweist."
+      },
+      {
+        "property": "value",
+        "title": "Deeplink-Wert",
+        "description": "Deeplink-Wert (zum Beispiel Zeitstempel oder Folien-ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Website-Entität",
+        "description": "Optionale Website-Entität zur Steuerung der Darstellung verwandter Konzepte."
+      }
+    ]
+  }
+}

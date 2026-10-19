@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Jedwali",
+    "description": "Data ya jedwali kwa ajili ya wavuti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Kichwa cha Safu Mlalo",
+        "description": "Chukulia safu mlalo ya kwanza kama kichwa."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Kichwa cha Safu Wima",
+        "description": "Chukulia safu wima ya kwanza kama kichwa."
+      },
+      {
+        "property": "footer",
+        "title": "Sehemu ya Chini",
+        "description": "Chukulia safu mlalo ya mwisho kama sehemu ya chini."
+      },
+      {
+        "property": "sort",
+        "title": "Inayopangika",
+        "description": "Ruhusu kupanga kwa thamani za safu wima."
+      },
+      {
+        "property": "filter",
+        "title": "Ruhusu Kichujio",
+        "description": "Ruhusu kuchuja kwa thamani za safu wima."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Mtindo wa Nambari",
+        "description": "Tumia mtindo wa nambari kwenye safu wima za nambari."
+      },
+      {
+        "property": "responsive",
+        "title": "Inayojibadilisha",
+        "description": "Rekebisha mpangilio wa jedwali kwenye skrini ndogo."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Hali ya Rubriki",
+        "description": "Tafsiri jedwali hili kama Rubric ya OER Schema ili metadata ya Rubric, RubricScale, RubricCriterion na RubricLevel itolewe."
+      },
+      {
+        "property": "rubricType",
+        "title": "Aina ya Rubriki",
+        "description": "Mtindo wa rubriki unaotolewa kama oer:rubricType (una maana tu Hali ya Rubriki ikiwa imewashwa).",
+        "options": {
+          "": "(hakuna)",
+          "analytic": "Kichanganuzi",
+          "holistic": "Kijumla",
+          "single-point": "Nukta Moja",
+          "checklist": "Orodha hakiki"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Yenye mipaka"
+      },
+      {
+        "property": "condensed",
+        "title": "Bana Safu Mlalo",
+        "description": "Punguza urefu wa safu mlalo."
+      },
+      {
+        "property": "striped",
+        "title": "Safu Mlalo zenye Mistari",
+        "description": "Tia kivuli kila safu mlalo ya pili."
+      },
+      {
+        "property": "downloadable",
+        "title": "Kitufe cha Kupakua",
+        "description": "Ongeza kitufe cha kupakua jedwali."
+      },
+      {
+        "property": "copyable",
+        "title": "Kitufe cha Kunakili",
+        "description": "Ongeza kitufe cha kunakili data ya CSV ya jedwali."
+      },
+      {
+        "property": "printable",
+        "title": "Kitufe cha Kuchapisha",
+        "description": "Ongeza kitufe cha kuchapisha jedwali pekee."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Data ya CSV",
+        "description": "Unda jedwali kutoka kwa faili ya CSV iliyopakiwa."
+      }
+    ]
+  }
+}

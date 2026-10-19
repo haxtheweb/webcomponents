@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris ਟਾਈਲ",
+    "description": "ਸਿਰਲੇਖ, ਵਿਕਲਪਿਕ ਸਹਾਇਕ ਲਿਖਤ ਅਤੇ ਵਿਕਲਪਿਕ ਲਿੰਕ ਨਾਲ Polaris ਟਾਈਲ ਦਿਖਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "ਮੁੱਖ ਲਿਖਤ",
+        "description": "ਟਾਈਲ ਦੀ ਮੁੱਖ ਲਿਖਤ।"
+      },
+      {
+        "property": "line2",
+        "title": "ਸਹਾਇਕ ਲਿਖਤ",
+        "description": "ਵਿਕਲਪਿਕ ਸਹਾਇਕ ਲਿਖਤ।"
+      },
+      {
+        "property": "type",
+        "title": "ਟਾਈਲ ਸ਼ੈਲੀ",
+        "description": "ਪਹਿਲਾਂ ਤੋਂ ਸੈੱਟ ਟਾਈਲ ਦਿੱਖ ਸ਼ੈਲੀ।",
+        "options": {
+          "1": "ਸ਼ੈਲੀ 1",
+          "2": "ਸ਼ੈਲੀ 2",
+          "3": "ਸ਼ੈਲੀ 3",
+          "4": "ਸ਼ੈਲੀ 4",
+          "5": "ਸ਼ੈਲੀ 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "ਪਿਛੋਕੜ ਚਿੱਤਰ",
+        "description": "ਚਿੱਤਰ-ਸਮਰੱਥ ਟਾਈਲ ਸ਼ੈਲੀਆਂ ਦੁਆਰਾ ਵਰਤਿਆ ਪਿਛੋਕੜ ਚਿੱਤਰ URL।"
+      },
+      {
+        "property": "link",
+        "title": "ਲਿੰਕ",
+        "description": "ਟਾਈਲ ਕਾਰਵਾਈ ਲਈ ਵਿਕਲਪਿਕ ਮੰਜ਼ਿਲ URL।"
+      }
+    ]
+  }
+}

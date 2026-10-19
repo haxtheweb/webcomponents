@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "荣誉徽章",
+    "description": "表示掌握某种技能个视觉徽章。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "徽章标题",
+        "description": "徽章上显示个标题。"
+      },
+      {
+        "property": "badgeImage",
+        "title": "徽章图片",
+        "description": "徽章个图片 URL。"
+      },
+      {
+        "property": "badgeDetails",
+        "title": "徽章详情",
+        "description": "徽章个详细信息。"
+      },
+      {
+        "property": "hyperLink",
+        "title": "超链接",
+        "description": "搭徽章关联个链接。"
+      },
+      {
+        "property": "badgeSkills",
+        "title": "徽章技能",
+        "description": "徽章上显示个技能。"
+      },
+      {
+        "property": "skill",
+        "title": "技能(OER Schema)",
+        "description": "OER Schema:完成搿只学习目标以后学到个技能。"
+      }
+    ]
+  }
+}

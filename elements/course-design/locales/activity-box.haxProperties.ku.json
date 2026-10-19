@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Qutiya Çalakiyê",
+    "description": "Bloka sernivîsê ya piçûk a bi şêwe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Îkon",
+        "description": "Îkona li kêleka qutiya çalakiyê tê nîşandan."
+      },
+      {
+        "property": "tag",
+        "title": "Etîketa qutiya çalakiyê",
+        "description": "Etîketa di qutiya çalakiyê de tê nîşandan."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Bê Rengkirin",
+        "description": "Nehêle reng li îkonê werin sepandin."
+      }
+    ]
+  }
+}

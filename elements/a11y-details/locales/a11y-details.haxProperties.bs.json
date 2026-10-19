@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Pristupačno dugme za detalje",
+    "description": "Pristupačno postepeno otkrivanje s detaljima i sažetkom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Dugme",
+        "description": "Sažetak sadržaja koji je sakriven, npr. \"info\", \"metapodaci\" itd."
+      },
+      {
+        "slot": "details",
+        "title": "Opis",
+        "description": "Detaljan opis koji se može sakriti ili prikazati"
+      },
+      {
+        "slot": "",
+        "title": "Dugme opisa",
+        "description": "Zadano za dugme koje prikazuje/sakriva tekst opisa, npr. \"info\", \"metapodaci\" itd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Opcionalni tekst sažetka kada su detalji otvoreni"
+      },
+      {
+        "property": "closeText",
+        "title": "Opcionalni tekst sažetka kada su detalji zatvoreni"
+      }
+    ]
+  }
+}

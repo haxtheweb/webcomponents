@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Cumpunente d'apprendimentu",
+    "description": "Una carta per chì l'insignanti cumunichinu a pedagugia è e strategie d'insignamentu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipu",
+        "description": "U tipu di carta da aduprà."
+      },
+      {
+        "property": "subtitle",
+        "title": "Sottutitulu",
+        "description": "U sottutitulu di a carta."
+      },
+      {
+        "property": "url",
+        "title": "Ligame",
+        "description": "Un ligame facultativu per a carta (ligame micca dispunibule per l'obiettivi d'apprendimentu)."
+      },
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Definisce u titulu, questu rimpiazza u titulu basatu nant'à u tipu"
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Definisce l'icona, questu rimpiazza l'icona basata nant'à u tipu"
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Definisce u culore d'accentu, questu rimpiazza u culore basatu nant'à u tipu"
+      },
+      {
+        "slot": "",
+        "title": "Cuntenuti"
+      }
+    ]
+  }
+}

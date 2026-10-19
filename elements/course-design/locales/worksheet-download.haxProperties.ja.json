@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ワークシートのダウンロード",
+    "description": "ダウンロード可能なファイルを表示するボタン。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "ダウンロードのタイトル。"
+      },
+      {
+        "property": "link",
+        "title": "リンク",
+        "description": "ダウンロードのリンク。"
+      }
+    ]
+  }
+}

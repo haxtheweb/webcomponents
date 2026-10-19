@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "የGithub ቅድመ እይታ",
+    "description": "ረጅም መግለጫ ያለው ተደራሽ ምስል"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ድርጅት",
+        "description": "የGithub ድርጅት የማሽን ስም"
+      },
+      {
+        "property": "repo",
+        "title": "ማከማቻ",
+        "description": "የማከማቻ የማሽን ስም"
+      },
+      {
+        "property": "extended",
+        "title": "የተዘረጋ እይታ",
+        "description": "readmeን በአካሉ ውስጥ ያካትታል"
+      }
+    ]
+  }
+}

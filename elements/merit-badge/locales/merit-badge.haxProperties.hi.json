@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "मेरिट बैज",
+    "description": "कौशल प्राप्त करने को दर्शाने वाला दृश्य बैज।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "बैज शीर्षक",
+        "description": "बैज पर दिखाया जाने वाला शीर्षक।"
+      },
+      {
+        "property": "badgeImage",
+        "title": "बैज छवि",
+        "description": "बैज के लिए छवि URL।"
+      },
+      {
+        "property": "badgeDetails",
+        "title": "बैज विवरण",
+        "description": "बैज के बारे में विवरण।"
+      },
+      {
+        "property": "hyperLink",
+        "title": "हाइपरलिंक",
+        "description": "बैज से जुड़ा लिंक।"
+      },
+      {
+        "property": "badgeSkills",
+        "title": "बैज कौशल",
+        "description": "बैज पर दिखाए जाने वाले कौशल।"
+      },
+      {
+        "property": "skill",
+        "title": "कौशल (OER स्कीमा)",
+        "description": "OER स्कीमा: इस सीखने के उद्देश्य को पूरा करके प्राप्त सीखा गया कौशल।"
+      }
+    ]
+  }
+}

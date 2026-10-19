@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Улога во кариерата",
+    "description": "Поединечна улога во организација"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Наслов"
+      },
+      {
+        "property": "startDate",
+        "title": "Датум на почеток"
+      },
+      {
+        "property": "endDate",
+        "title": "Датум на крај (изборно)"
+      },
+      {
+        "property": "skills",
+        "title": "Поврзани вештини",
+        "description": "Изберете го копчето + за да започнете да додавате вештини"
+      }
+    ]
+  }
+}

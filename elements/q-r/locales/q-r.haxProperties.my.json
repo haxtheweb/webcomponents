@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR ကုဒ်",
+    "description": "စမတ်ဖုန်းဖြင့် စကင်ဖတ်ရန် ကုဒ်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR ဒေတာ",
+        "description": "QR ကုဒ်အတွက် ဒေတာ ရင်းမြစ်။"
+      },
+      {
+        "property": "title",
+        "title": "အစားထိုး ခေါင်းစဉ်",
+        "description": "QR ကုဒ် ရင်းမြစ်နှင့် ချိတ်ဆက်ထားသော အစားထိုး ခေါင်းစဉ်။"
+      },
+      {
+        "property": "modulesize",
+        "title": "အရွယ်အစား",
+        "description": "QR ကုဒ်၏ အရွယ်အစား။"
+      },
+      {
+        "property": "margin",
+        "title": "အနားသတ်",
+        "description": "ကုဒ်ပတ်လည်ရှိ နေရာလွတ်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "ထုတ်လွှင့် ပုံစံ",
+        "description": "ထုတ်ပေးမည့် ပုံစံ။",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Indlejr eksternt webindhold."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Kilde",
+        "description": "URL til denne ressource."
+      }
+    ]
+  }
+}

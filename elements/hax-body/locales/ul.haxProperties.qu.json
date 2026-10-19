@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Unanchasqa lista",
+    "description": "Unanchasqa listata ruray."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Unancha rikch'ay",
+        "description": "Mana ch'uyanchasqa lista unanchakunapaq llamk'achisqa rikch'ay.",
+        "options": {
+          "": "Kikin (tawa k'uchu)",
+          "list-disc": "Disco",
+          "list-circle": "Muyu",
+          "list-square": "Tawa k'uchu"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Побољшана слика",
+    "description": "Начин приказивања слика са разним побољшањима."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Извор",
+        "description": "URL слике."
+      },
+      {
+        "property": "alt",
+        "title": "Алтернативни текст",
+        "description": "Текст који описује слику корисницима са оштећеним видом."
+      },
+      {
+        "property": "link",
+        "title": "Веза",
+        "description": "Повежи слику са URL-ом"
+      },
+      {
+        "property": "card",
+        "title": "Картица",
+        "description": "Примени сенку да изгледа као издигнута картица."
+      },
+      {
+        "property": "box",
+        "title": "Оквир",
+        "description": "Примени визуелни оквир око слике."
+      },
+      {
+        "property": "offset",
+        "title": "Помак",
+        "description": "Примени леви или десни помак на слику.",
+        "options": {
+          "none": "ништа",
+          "wide": "широко",
+          "narrow": "уско"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Навод извора",
+        "description": "Цитат за слику."
+      },
+      {
+        "property": "caption",
+        "title": "Натпис",
+        "description": "Натпис за слику."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Наслов слике",
+        "description": "Наслов за ознаку слике."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Опис слике",
+        "description": "Опис за ознаку слике."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Сличица",
+        "description": "Извор сличице. Приказује сличицу, али отвара пуни извор у модалном прозору."
+      },
+      {
+        "property": "round",
+        "title": "Округла слика",
+        "description": "Исеца изглед слике у облик круга."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Онемогући модални прозор слике",
+        "description": "Онемогући да клик отвара слику у дијалогу инспектора слике."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Прикажи као markdown",
+        "description": "Прикажи натпис и цитат као markdown."
+      }
+    ]
+  }
+}

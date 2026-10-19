@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Kuyeza ndi Nyenyezi",
+    "description": "Chida choonetsa kuyeza kapena batani loyezera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Zigoli",
+        "description": "Mtengo wa zigoli zapano."
+      },
+      {
+        "property": "possible",
+        "title": "Zotheka",
+        "description": "Zigoli zapamwamba kwambiri zotheka."
+      },
+      {
+        "property": "numStars",
+        "title": "Chiwerengero cha Nyenyezi",
+        "description": "Chiwerengero cha nyenyezi zoti zionetsedwe."
+      },
+      {
+        "property": "interactive",
+        "title": "Zochita nawo",
+        "description": "Lolani wogwiritsa ntchito kuika muyeso."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Njira ya Muyeso wa Rubric",
+        "description": "Tulutsani metadata ya OER Schema ya RubricScale ndi RubricLevel (levelOrdinal/levelPoints) pa nyenyezi iliyonse."
+      }
+    ]
+  }
+}

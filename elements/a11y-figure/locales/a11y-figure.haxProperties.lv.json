@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Aprakstošs attēls",
+    "description": "Pieejams attēls ar garu aprakstu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Attēls"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alternatīvais teksts"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Attēla paraksts",
+        "description": "Attēla paraksta teksts, kas vienmēr ir redzams."
+      },
+      {
+        "slot": "details",
+        "title": "Apraksts",
+        "description": "Detalizēts attēla apraksts, ko var paslēpt vai parādīt"
+      },
+      {
+        "slot": "summary",
+        "title": "Apraksta poga",
+        "description": "Noklusējums pogai, kas rāda/paslēpj apraksta tekstu, piem., \"info\", \"metadati\" u.c."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Neobligāts kopsavilkuma teksts, kad detaļas ir atvērtas"
+      },
+      {
+        "property": "closeText",
+        "title": "Neobligāts kopsavilkuma teksts, kad detaļas ir aizvērtas"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kurssimalli",
+    "description": "Interaktiivinen asettelu kurssin käsitteille yksityiskohtineen, animaatioineen ja tietovisoineen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "otsikko"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Tietoalue"
+      },
+      {
+        "title": "Yksityiskohta-alue"
+      },
+      {
+        "title": "Animaatioalue"
+      },
+      {
+        "title": "Tietovisa-alue"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logoalue"
+      }
+    ]
+  }
+}

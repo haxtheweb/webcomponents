@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Embed ta' Twitter (X)",
+    "description": "Daħħal tweet minn X fil-kuntest."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL tat-tweet",
+        "description": "URL tat-tweet li għandu jiddaħħal."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Tema ċara jew skura għat-tweets ta' X.",
+        "options": {
+          "light": "Ċar",
+          "dark": "Skur"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Evita l-popup meta tikklikkja",
+        "description": "Evita li l-utenti jiftħu t-tweet fuq x.com."
+      }
+    ]
+  }
+}

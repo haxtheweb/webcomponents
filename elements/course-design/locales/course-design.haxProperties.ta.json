@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "பாட வடிவமைப்பு",
+    "description": "கல்விப் பொருட்கள் மற்றும் பாட வடிவமைப்பு உறுப்புகளுக்கான கொள்கலன்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "பாட அடையாளங்காட்டி",
+        "description": "OER Schema: பாடத்தின் அடையாளங்காட்டி, எ.கா. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "வழங்கப்படும் பருவம்",
+        "description": "OER Schema: பாடம் வழங்கப்படும் பருவம்."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "வழங்கல் வடிவம்",
+        "description": "OER Schema: பாடத்தை வழங்கப் பயன்படும் வடிவம் (எ.கா. நேரடி, இணையவழி, கலப்பு)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "முதன்மை பயிற்றுநர்",
+        "description": "OER Schema: பாடத்திற்கான முதன்மை பயிற்றுநர்."
+      },
+      {
+        "property": "syllabus",
+        "title": "பாடத்திட்ட URL",
+        "description": "OER Schema: பாடத்திட்டத்திற்கான URL."
+      }
+    ]
+  }
+}

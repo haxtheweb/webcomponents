@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR կոդ",
+    "description": "Սմարթֆոնով սկանավորելու կոդ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR տվյալներ",
+        "description": "QR կոդի տվյալների աղբյուրը։"
+      },
+      {
+        "property": "title",
+        "title": "Այլընտրանքային վերնագիր",
+        "description": "QR կոդի աղբյուրին կապված այլընտրանքային վերնագիր։"
+      },
+      {
+        "property": "modulesize",
+        "title": "Չափ",
+        "description": "QR կոդի չափը։"
+      },
+      {
+        "property": "margin",
+        "title": "Լուսանցք",
+        "description": "Կոդի շուրջը եղած տարածքը։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Ելքային ձևաչափ",
+        "description": "Արտածման ձևաչափը։",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Стоп-нататка",
+    "description": "Паведамленне, якое звяртае ўвагу чытачоў на пэўныя ўказанні."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Увядзіце назву для стоп-нататкі."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Увядзіце знешні URL."
+      },
+      {
+        "property": "status",
+        "title": "Статус",
+        "description": "Змена статусу адпаведна змяняе колеры і значкі",
+        "options": {
+          "stop": "Стоп",
+          "warning": "Папярэджанне",
+          "success": "Пацвярджэнне",
+          "info": "Апавяшчэнне"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Тэкст нататкі",
+        "description": "Тэкст для стоп-нататкі."
+      }
+    ]
+  }
+}

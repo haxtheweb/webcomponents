@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Өтмөк",
+    "description": "Бир өтмөк."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Өтмөктүн сөлөкөтү"
+      },
+      {
+        "property": "disabled",
+        "title": "Өчүрүлгөн"
+      },
+      {
+        "property": "label",
+        "title": "Өтмөктүн белгиси"
+      },
+      {
+        "slot": "",
+        "title": "Өтмөктүн мазмуну",
+        "description": "Өтмөктүн мазмуну."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Уникалдуу ID"
+      },
+      {
+        "property": "flag",
+        "title": "Кошумча белги тексти"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Кошумча белги сөлөкөтү"
+      }
+    ]
+  }
+}

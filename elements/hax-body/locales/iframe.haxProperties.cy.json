@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Mewnblannu cynnwys gwe allanol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Ffynhonnell",
+        "description": "URL yr adnodd hwn."
+      }
+    ]
+  }
+}

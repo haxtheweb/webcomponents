@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Сутність CMS",
+    "description": "Сутність CMS, що обробляється на сервері"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Тип",
+        "description": "тип із нашої CMS",
+        "options": {
+          "node": "Вузол",
+          "user": "Користувач",
+          "file": "Файл"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID з нашої CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Режим показу",
+        "description": "режим відображення з нашої CMS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Pò prisentà video in modu assai accessibile qualunque sia a fonte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonte",
+        "description": "L'URL di stu media."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titulu",
+        "description": "Titulu simplice sottu à u video"
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Selezziunate u culore d'accentu di u lettore."
+      },
+      {
+        "property": "track",
+        "title": "Sottutituli",
+        "description": "L'URL di u schedariu di sottutituli."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Imagine miniatura",
+        "description": "Facultativu. L'URL d'una imagine miniatura/affissu."
+      },
+      {
+        "property": "learningMode",
+        "title": "Attivà u modu d'apprendimentu",
+        "description": "Disattiva l'avanzata è a ritornata rapide."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Caccià u buttone Apre nant'à YouTube",
+        "description": "Caccia u buttone per apre u video nant'à YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Include un ligame di spartera?",
+        "description": "Furnisce un ligame per sparte u video."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indica s'è CORS deve esse adupratu.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Permette a lettura in fondu",
+        "description": "I video si mettenu in pausa / ripiglianu autumaticamente quandu l'unghjetta perde u focu; questu permette à u video di ghjucà senza chì l'unghjetta abbia u focu"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema bughju per a trascrizzione",
+        "description": "Attivà u tema bughju per a trascrizzione."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Disattivà l'interattività",
+        "description": "Disattivà u modu interattivu chì rende a trascrizzione cliccabile."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Piattà l'indicazioni d'ora",
+        "description": "Piattà l'indicazioni d'ora nant'à a trascrizzione."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Piattà a trascrizzione",
+        "description": "Piattà a trascrizzione per difettu."
+      },
+      {
+        "property": "lang",
+        "title": "Lingua",
+        "description": "Lingua di u media."
+      }
+    ]
+  }
+}

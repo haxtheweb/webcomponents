@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Tupaq umanchay",
+    "description": "taytap umanchayninman hina allin umanchay patanchayta lluqsichin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Tayta Umanchaypa Recurso ID-nin"
+      },
+      {
+        "property": "disableLink",
+        "description": "T'inki boton atiyta wañuchin."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "T'inki kikinchay botonta umanchaypa aswan paña ladunman churan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Tayta mana tarikuptin umanchay pata."
+      },
+      {
+        "property": "copyMessage",
+        "description": "T'inki kikinchaypa toast willakuyninpa kikin qillqanta rantin."
+      },
+      {
+        "property": "linkLabel",
+        "description": "T'inki kikinchay botonpa kikin sutinta rantin."
+      },
+      {
+        "property": "linkIcon",
+        "description": "T'inki kikinchay botonpa kikin iconnta rantin."
+      },
+      {
+        "property": "closeLabel",
+        "description": "T'inki kikinchaypa toast wichq'ana botonninpa kikin sutinta rantin."
+      },
+      {
+        "property": "closeIcon",
+        "description": "T'inki kikinchaypa toast wichq'ana botonninpa kikin iconnta rantin."
+      }
+    ]
+  }
+}

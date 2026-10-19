@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Registru di voti",
+    "description": "Un registru di voti senza interfaccia chì sustene parechji backend cù griglie di valutazione."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonte",
+        "description": "Tipu di fonte di dati (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Puntu d'accessu URL (JSON)",
+          "json": "Bloccu di dati JSON",
+          "filesystem": "Sistema di schedarii"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Dati di fonte",
+        "description": "URL o dati JSON per u registru di voti."
+      },
+      {
+        "property": "forCourse",
+        "title": "Riferenza di u corsu",
+        "description": "Identificadore di u corsu emessu cum'è oer:forCourse nant'à ogni risorsa di valutazione."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Imej Ringkas",
+    "description": "Manipulasi imej dengan parameter ringkas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Sumber",
+        "description": "URL sumber imej."
+      },
+      {
+        "property": "height",
+        "title": "Ketinggian",
+        "description": "Ketinggian imej pilihan."
+      },
+      {
+        "property": "width",
+        "title": "Lebar",
+        "description": "Lebar imej pilihan."
+      },
+      {
+        "property": "alt",
+        "title": "Teks alt",
+        "description": "Berguna untuk pembaca skrin dan SEO yang lebih baik."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kualiti",
+        "description": "Kualiti imej semasa menjana (JPEG sahaja)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Keutamaan Ambil",
+        "description": "Petunjuk prestasi untuk pelayar moden.",
+        "options": {
+          "auto": "Automatik",
+          "high": "Tinggi",
+          "low": "Rendah"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Kaedah penyahkodan",
+        "description": "Petunjuk prestasi untuk pemaparan imej dalam pelayar moden.",
+        "options": {
+          "auto": "Automatik",
+          "async": "Tak segerak"
+        }
+      }
+    ]
+  }
+}

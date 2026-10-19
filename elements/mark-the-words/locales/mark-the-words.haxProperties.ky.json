@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Сөздөрдү белгилөө",
+    "description": "Текст ичинде басып, сөздөр аркылуу түшүнүктөрдү аныктоо."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Суроо",
+        "description": "Колдонуучулар жооп бере турган суроо."
+      },
+      {
+        "property": "statement",
+        "title": "Сүйлөм",
+        "description": "Сөздөрдү белгилөө аракеттешүүсүнө айландырыла турган сүйлөм."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Баалоо форматы",
+        "description": "OER Schema: бул баалоонун баалоо форматы (мисалы, упайлар, тамга, пайыз, аткаруу)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Окуу максаты",
+        "description": "OER Schema: бул баалоого байланыштуу окуу максаты."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: бул баалоо арналган курс."
+      },
+      {
+        "property": "answers",
+        "title": "Жооптор"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Тесттин аталышы",
+        "description": "xAPI негизиндеги чөйрөлөрдө бул элементти аныктоо үчүн берилген тест аталышы"
+      }
+    ]
+  }
+}

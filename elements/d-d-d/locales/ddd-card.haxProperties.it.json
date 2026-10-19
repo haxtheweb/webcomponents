@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Scheda",
+    "description": "Componente scheda con lo stile del design system DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Immagine",
+        "description": "Immagine facoltativa."
+      },
+      {
+        "property": "alt",
+        "title": "Alt dell'immagine",
+        "description": "Testo alternativo che descrive l'immagine."
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo della scheda."
+      },
+      {
+        "slot": "",
+        "title": "Contenuto",
+        "description": "Area del contenuto della scheda."
+      },
+      {
+        "property": "href",
+        "title": "Link",
+        "description": "URL del link del pulsante."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etichetta",
+        "description": "Etichetta del pulsante."
+      },
+      {
+        "property": "noArrow",
+        "title": "Nessuna freccia",
+        "description": "Nascondi la freccia del pulsante."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Link: destinazione",
+        "description": "Dove aprire il link.",
+        "options": {
+          "": "Stessa finestra",
+          "_blank": "Nuova finestra - _blank",
+          "_top": "Finestra principale - _top",
+          "_parent": "Finestra padre - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Link: rel",
+        "description": "Relazione tra la risorsa collegata e il documento corrente."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Attēla karte",
+    "description": "Piekļūstama attēla karte ar interaktīviem karstajiem punktiem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiķete",
+        "description": "Attēla kartes etiķete."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Karsto punktu informācija",
+        "description": "Interaktīvie karstie punkti attēla kartē."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Karjeros įrašas",
+    "description": "Atskira organizacija ir su ja susijusios pareigos"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Organizacijos pavadinimas"
+      },
+      {
+        "property": "location",
+        "title": "Vieta"
+      },
+      {
+        "property": "source",
+        "title": "Šaltinis"
+      }
+    ]
+  }
+}

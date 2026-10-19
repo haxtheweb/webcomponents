@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ustunli maket",
+    "description": "Materialni oddiy ustunlarga joylashtirish"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Ustunli maket",
+        "description": "Bu elementlarni taqdim etish uslubi (kichik ekranlarda oʻzgarishi mumkin)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Moslashuvchanlikni oʻchirish",
+        "description": "Kattaroq ekranlarda ustunlarni saqlab, eng kichik ekranlarda ustma-ust joylash uchun belgilang"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Element ichki chekinishi",
+        "description": "Har bir element ichidagi chekinish"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Element tashqi chekinishlari",
+        "description": "Elementlar orasidagi masofa"
+      }
+    ]
+  }
+}

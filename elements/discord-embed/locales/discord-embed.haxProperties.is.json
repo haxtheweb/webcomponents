@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Ívefja Discord-samfélög út frá deilingar-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL auðlindar",
+        "description": "URL auðlindar."
+      },
+      {
+        "property": "height",
+        "title": "Hæð",
+        "description": "Hæð efnisramma."
+      },
+      {
+        "property": "width",
+        "title": "Breidd",
+        "description": "Breidd efnisramma."
+      }
+    ]
+  }
+}

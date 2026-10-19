@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Hiztegia",
+    "description": "Hiztegiko terminoa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Terminoa"
+      },
+      {
+        "slot": "",
+        "title": "Definizioa",
+        "description": "Terminoan klik egitean bistaratu beharreko definizioa."
+      },
+      {
+        "property": "description",
+        "title": "Deskribapena (OER Schema)",
+        "description": "OER Schema: hiztegiko terminoaren deskribapen laburra. Hutsik utziz gero, definizio-testutik automatikoki betetzen da."
+      }
+    ]
+  }
+}

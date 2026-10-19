@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Параллакс рәсем",
+    "description": "Әйләндергәндә күчә торган рәсем"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Рәсем",
+        "description": "фонда кулланыла торган рәсем"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Башлам өлкәсе",
+        "description": "Башлам тексты өлкәсе"
+      }
+    ]
+  }
+}

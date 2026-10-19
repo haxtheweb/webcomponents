@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Piktogramo",
+    "description": "Piktogramo el la plena piktograma biblioteko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Piktogramo",
+        "description": "Bildigota piktogramo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Akcenta koloro por la piktogramo."
+      },
+      {
+        "property": "dark",
+        "title": "Malhela",
+        "description": "Uzi malhelan reĝimon (inversigitaj koloroj)."
+      }
+    ]
+  }
+}

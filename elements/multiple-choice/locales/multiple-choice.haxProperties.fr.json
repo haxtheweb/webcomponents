@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Choix multiple",
+    "description": "Question d'autoévaluation à choix multiple."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "Question à laquelle les utilisateurs doivent répondre."
+      },
+      {
+        "property": "randomize",
+        "title": "Ordre aléatoire",
+        "description": "Mélanger les réponses de façon dynamique."
+      },
+      {
+        "property": "singleOption",
+        "title": "Réponse unique",
+        "description": "N'autoriser qu'une seule réponse."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de notation",
+        "description": "OER Schema : format de notation de cette évaluation (p. ex. points, lettre, pourcentage, achèvement)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objectif d'apprentissage",
+        "description": "OER Schema : objectif d'apprentissage associé à cette évaluation."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cours",
+        "description": "OER Schema : cours auquel cette évaluation est destinée."
+      },
+      {
+        "property": "answers",
+        "title": "Réponses"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nom du quiz",
+        "description": "Nom du quiz utilisé pour l'identification xAPI dans les systèmes d'analyse."
+      }
+    ]
+  }
+}

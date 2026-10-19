@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ramka aktywności",
+    "description": "Mały stylizowany blok nagłówka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona wyświetlana obok ramki aktywności."
+      },
+      {
+        "property": "tag",
+        "title": "Etykieta ramki aktywności",
+        "description": "Etykieta wyświetlana w ramce aktywności."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Bez kolorowania",
+        "description": "Nie stosuj kolorów do ikony."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "স্টার রেটিং",
+    "description": "রেটিং দেখানোর উইজেট বা রেটিং দেওয়ার বাটন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "স্কোর",
+        "description": "বর্তমান স্কোরের মান।"
+      },
+      {
+        "property": "possible",
+        "title": "সম্ভাব্য",
+        "description": "সর্বোচ্চ সম্ভাব্য স্কোর।"
+      },
+      {
+        "property": "numStars",
+        "title": "তারার সংখ্যা",
+        "description": "দেখানোর জন্য তারার সংখ্যা।"
+      },
+      {
+        "property": "interactive",
+        "title": "ইন্টারঅ্যাকটিভ",
+        "description": "ব্যবহারকারীকে রেটিং দেওয়ার অনুমতি দিন।"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "রুব্রিক স্কেল মোড",
+        "description": "প্রতিটি তারার জন্য OER Schema RubricScale ও RubricLevel মেটাডেটা (levelOrdinal/levelPoints) প্রকাশ করুন।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Activiteitenblok",
+    "description": "Klein opgemaakt kopblok."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Pictogram",
+        "description": "Pictogram naast het activiteitenblok."
+      },
+      {
+        "property": "tag",
+        "title": "Tag van activiteitenblok",
+        "description": "Tag die in het activiteitenblok wordt getoond."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Niet inkleuren",
+        "description": "Voorkom dat kleuren op het pictogram worden toegepast."
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Maka amagama",
+    "description": "Hlonza imiqondo ngamagama ngokuchofoza phakathi kombhalo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Umbuzo",
+        "description": "Umbuzo abasebenzisi okufanele bawuphendule."
+      },
+      {
+        "property": "statement",
+        "title": "Isitatimende",
+        "description": "Isitatimende esizoguqulwa sibe ukusebenzisana kokumaka amagama."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ifomethi yokumaka",
+        "description": "OER Schema: ifomethi yokumaka yalokhu kuhlola (isb. amaphuzu, uhlamvu, iphesenti, ukuphothula)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Inhloso yokufunda",
+        "description": "OER Schema: inhloso yokufunda ehlobene nalokhu kuhlola."
+      },
+      {
+        "property": "forCourse",
+        "title": "Isifundo",
+        "description": "OER Schema: isifundo lokhu kuhlola okuhloselwe sona."
+      },
+      {
+        "property": "answers",
+        "title": "Izimpendulo"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Igama lemibuzo",
+        "description": "Igama lemibuzo elidluliselwayo ukuze lisetshenziswe ezindaweni eziqhutshwa yi-xAPI ukuhlonza le nto"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ишлэлийн блок",
+    "description": "Загварчилсан ишлэлийн блок."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Эш татлага",
+        "description": "Эш татлагын текст."
+      },
+      {
+        "property": "alt",
+        "title": "Орлуулах текст",
+        "description": "Зургийн орлуулах текст."
+      },
+      {
+        "property": "image",
+        "title": "Зураг",
+        "description": "Ишлэлтэй хамт харуулах зураг."
+      }
+    ]
+  }
+}

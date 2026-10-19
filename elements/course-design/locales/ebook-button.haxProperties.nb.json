@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-bok-knapp",
+    "description": "En knapp som lenker til en e-bok."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Tittelen på knappen."
+      },
+      {
+        "property": "link",
+        "title": "Lenke",
+        "description": "Lenken det skal videresendes til ved klikk."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon som representerer denne lenken"
+      }
+    ]
+  }
+}

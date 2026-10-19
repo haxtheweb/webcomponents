@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Cabeceira relativa",
+    "description": "xera a xerarquía de cabeceiras correcta segundo a cabeceira pai"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID do recurso da cabeceira pai"
+      },
+      {
+        "property": "disableLink",
+        "description": "Desactiva a función do botón de ligazón."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Aliña o botón de copiar ligazón no extremo dereito da cabeceira."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Nivel de cabeceira se non se atopa o pai."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Substitúe o texto predeterminado da mensaxe emerxente de copiar ligazón."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Substitúe a etiqueta predeterminada do botón de copiar ligazón."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Substitúe a icona predeterminada do botón de copiar ligazón."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Substitúe a etiqueta predeterminada do botón de pechar da mensaxe emerxente de copiar ligazón."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Substitúe a icona predeterminada do botón de pechar da mensaxe emerxente de copiar ligazón."
+      }
+    ]
+  }
+}

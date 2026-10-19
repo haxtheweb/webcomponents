@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Gallerija tal-immaġni",
+    "description": "Gallerija li tippreżenta l-immaġni fi grilja, masonry jew slideshow."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Modalità tal-wiri",
+        "description": "Kif jiġu ppreżentati l-immaġni fil-gallerija.",
+        "options": {
+          "grid": "Grilja",
+          "masonry": "Masonry",
+          "gallery": "Gallerija"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Indiċi attiv",
+        "description": "Indiċi tal-immaġni attiva li biha tibda fil-modalità tal-gallerija."
+      }
+    ]
+  }
+}

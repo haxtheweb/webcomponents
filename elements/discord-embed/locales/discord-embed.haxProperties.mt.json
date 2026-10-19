@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Daħħal komunitajiet ta' Discord minn URL ta' qsim."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL tar-riżorsa",
+        "description": "URL tar-riżorsa."
+      },
+      {
+        "property": "height",
+        "title": "Għoli",
+        "description": "L-għoli tal-qafas tal-kontenut."
+      },
+      {
+        "property": "width",
+        "title": "Wisa'",
+        "description": "Il-wisa' tal-qafas tal-kontenut."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ธงหน้า",
+    "description": "บันทึกด้านบรรณาธิการสำหรับผู้เขียนหน้า"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีเน้นสำหรับธงหน้า"
+      },
+      {
+        "property": "label",
+        "title": "ป้ายกำกับ",
+        "description": "ข้อความป้ายกำกับสำหรับธงหน้า"
+      }
+    ]
+  }
+}

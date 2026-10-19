@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Machetă pe coloane",
+    "description": "Așază materialul în coloane simple"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Macheta coloanelor",
+        "description": "Stilul de prezentare a acestor elemente (se poate schimba pe ecranele mici)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Dezactivează comportamentul responsive",
+        "description": "Bifează caseta pentru a păstra coloanele pe ecranele mai mari, stivuindu-le totuși pe cele mai mici ecrane"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Spațiere interioară element",
+        "description": "Spațierea din interiorul fiecărui element"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Margini element",
+        "description": "Marginea dintre elemente"
+      }
+    ]
+  }
+}

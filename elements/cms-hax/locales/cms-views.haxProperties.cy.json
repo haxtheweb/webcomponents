@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Golwg CMS",
+    "description": "Golygon CMS wedi'u rendro ar yr ôl-wyneb"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Enw",
+        "description": "Enw'r olwg o'n CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Dangosiad",
+        "description": "Dangosiad o fewn yr olwg honno o'n CMS"
+      }
+    ]
+  }
+}

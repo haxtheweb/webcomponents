@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG-tegelane",
+    "description": "Lõbus tegelane HAX-ist."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Nimi",
+        "description": "Sõna, mille põhjal luuakse juhuslik tegelane."
+      },
+      {
+        "property": "hat",
+        "title": "Müts",
+        "description": "Mütsi stiil.",
+        "options": {
+          "none": "Vaikimisi",
+          "random": "Juhuslik",
+          "bunny": "Jänes",
+          "cowboy": "Kauboi",
+          "education": "Haridus",
+          "construction": "Ehitus",
+          "warning": "Hoiatus",
+          "watermelon": "Arbuus",
+          "coffee": "Kohv",
+          "knight": "Rüütel",
+          "ninja": "Ninja",
+          "party": "Pidu",
+          "error": "Viga",
+          "edit": "Muuda"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Laius",
+        "description": "Tegelase laius pikslites."
+      },
+      {
+        "property": "height",
+        "title": "Kõrgus",
+        "description": "Tegelase kõrgus pikslites."
+      },
+      {
+        "property": "fire",
+        "title": "Leekides?",
+        "description": "Kas tegelane on leekides."
+      },
+      {
+        "property": "walking",
+        "title": "Kõnnib?",
+        "description": "Kõnnianimatsioon; jookseb, kui on leekides."
+      }
+    ]
+  }
+}

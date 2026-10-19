@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Képgaléria",
+    "description": "Galéria, amely rácsos, falazott vagy diavetítéses elrendezésben jeleníti meg a képeket."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Megjelenítési mód",
+        "description": "A képek megjelenítésének módja a galériában.",
+        "options": {
+          "grid": "Rács",
+          "masonry": "Falazott",
+          "gallery": "Galéria"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktív index",
+        "description": "A galéria módban kezdő aktív kép indexe."
+      }
+    ]
+  }
+}

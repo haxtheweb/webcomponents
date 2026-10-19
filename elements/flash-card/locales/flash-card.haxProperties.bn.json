@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ফ্ল্যাশ কার্ড",
+    "description": "সামনে-পেছনের ফ্ল্যাশ কার্ড দিয়ে ধারণা অনুশীলন করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "কার্ডের সামনের দিক",
+        "description": "সামনের টেক্সট বা প্রশ্ন।"
+      },
+      {
+        "slot": "back",
+        "title": "কার্ডের পেছনের দিক",
+        "description": "প্রত্যাশিত উত্তর।"
+      },
+      {
+        "property": "imgSource",
+        "title": "ছবির উৎস",
+        "description": "কার্ডে ব্যবহৃত ছবির ফাইল। এটি ছবির কীওয়ার্ডকে অগ্রাহ্য করে।"
+      },
+      {
+        "property": "typeOfAction",
+        "title": "কার্যের ধরন",
+        "description": "OER Schema: এই অনুশীলনে যে ধরনের কাজ জড়িত (যেমন পড়া, লেখা, তৈরি করা, গবেষণা, শোনা, দেখা, প্রতিফলন, আলোচনা, পর্যবেক্ষণ, উপস্থাপন, মূল্যায়ন)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "শিখনফল",
+        "description": "OER Schema: এই অনুশীলন যে শিখনফলকে সমর্থন করে তার ID বা URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ডার্ক",
+        "description": "ডার্ক মোড ব্যবহার করুন।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "কার্ডের অ্যাকসেন্ট রং।"
+      },
+      {
+        "property": "imgKeyword",
+        "title": "ছবির কীওয়ার্ড",
+        "description": "এলোমেলো ছবির কীওয়ার্ড। ছবির উৎস দিলে এটি অগ্রাহ্য হয়।"
+      }
+    ]
+  }
+}

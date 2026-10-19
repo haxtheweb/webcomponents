@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS ერთეული",
+    "description": "CMS ერთეული, რომელიც backend-ზე რენდერდება"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "ტიპი",
+        "description": "ტიპი ჩვენი CMS-იდან",
+        "options": {
+          "node": "კვანძი",
+          "user": "მომხმარებელი",
+          "file": "ფაილი"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID ჩვენი CMS-იდან"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "ჩვენების რეჟიმი",
+        "description": "ჩვენების რეჟიმი ჩვენი CMS-იდან"
+      }
+    ]
+  }
+}

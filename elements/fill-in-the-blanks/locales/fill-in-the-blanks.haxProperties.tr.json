@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Boşluk doldurma",
+    "description": "Öğrencilerin bir ifadedeki eksik sözcükleri tamamladığı değerlendirme etkinliği."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Soru",
+        "description": "Kullanıcıların yanıtlayacağı soru."
+      },
+      {
+        "property": "statement",
+        "title": "İfade",
+        "description": "Sözcükleri işaretleme etkileşimine dönüştürülecek ifade."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Notlandırma biçimi",
+        "description": "OER Schema: bu değerlendirmenin notlandırma biçimi (ör. puan, harf, yüzde, tamamlama)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Öğrenme hedefi",
+        "description": "OER Schema: bu değerlendirmeyle ilişkili öğrenme hedefi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ders",
+        "description": "OER Schema: bu değerlendirmenin amaçlandığı ders."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Sınavın adı",
+        "description": "Bu öğenin tanımlanması için xAPI tabanlı ortamlarda kullanılan sınav adı"
+      }
+    ]
+  }
+}

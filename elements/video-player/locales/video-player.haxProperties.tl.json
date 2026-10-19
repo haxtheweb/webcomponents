@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Accessible na pag-play ng video mula sa maraming source."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pinagmulan",
+        "description": "URL para sa media na ito."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Pamagat",
+        "description": "Pamagat na ipinapakita sa ibaba ng video."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Poster na larawan",
+        "description": "URL ng poster na larawan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Mga text track",
+        "description": "Mga closed caption, subtitle, paglalarawan, at iba pang text track para sa video."
+      },
+      {
+        "property": "startTime",
+        "title": "Oras ng simula",
+        "description": "Simulan ang video sa partikular na oras (segundo)."
+      },
+      {
+        "property": "endTime",
+        "title": "Oras ng pagtatapos",
+        "description": "Tapusin ang video sa partikular na oras (segundo), kailangan ng oras ng simula."
+      },
+      {
+        "property": "learningMode",
+        "title": "Paganahin ang learning mode",
+        "description": "Dini-disable ang fast forward at rewind."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Alisin ang button na buksan sa YouTube",
+        "description": "Inaalis ang button para buksan ang video sa YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Isama ang share link?",
+        "description": "Nagbibigay ng link para ibahagi ang video."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Itago ang mga timestamp",
+        "description": "Itago ang mga timestamp sa transcript."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Itago ang Transcript",
+        "description": "Itago ang transcript bilang default."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Track ng Audio Description",
+        "description": "URL sa isang audio description track (MP3 file) na nagsasalaysay ng mga biswal na elemento."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Ipinapahiwatig kung gagamit ng CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Payagan ang pag-play sa background",
+        "description": "Patuloy na mag-play kapag nawala ang focus sa tab ng browser."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Madilim na tema para sa transcript",
+        "description": "Paganahin ang madilim na tema para sa transcript."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "I-disable ang Interactive",
+        "description": "I-disable ang interactive mode na ginagawang maki-click ang transcript."
+      },
+      {
+        "property": "lang",
+        "title": "Wika",
+        "description": "Wika ng media."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na kulay",
+        "description": "(deprecated) Piliin ang accent na kulay para sa player."
+      }
+    ]
+  }
+}

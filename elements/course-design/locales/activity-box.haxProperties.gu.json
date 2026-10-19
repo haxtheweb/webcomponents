@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "પ્રવૃત્તિ બૉક્સ",
+    "description": "નાનો શૈલીયુક્ત મથાળા બ્લૉક."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "આઇકન",
+        "description": "પ્રવૃત્તિ બૉક્સની સાથે બતાવાતું આઇકન."
+      },
+      {
+        "property": "tag",
+        "title": "પ્રવૃત્તિ બૉક્સ ટૅગ",
+        "description": "પ્રવૃત્તિ બૉક્સમાં બતાવાતો ટૅગ."
+      },
+      {
+        "property": "nocolourize",
+        "title": "રંગ લાગુ ન કરો",
+        "description": "આઇકન પર રંગો લાગુ થતા અટકાવો."
+      }
+    ]
+  }
+}

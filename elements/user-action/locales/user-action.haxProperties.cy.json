@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Gweithred defnyddiwr",
+    "description": "Olrhain gweithredoedd defnyddwyr ac anfon data i storfeydd xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Digwyddiad i'w olrhain",
+        "description": "Gweithred defnyddiwr sy'n sbarduno'r digwyddiad hwn.",
+        "options": {
+          "visibility": "Yn gallu gweld hwn",
+          "keydown": "Pwyso bysell yma",
+          "click": "Clicio hwn",
+          "hover": "Hofran dros hwn"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Olrhain bob tro",
+        "description": "Yn ddiofyn, dim ond y digwyddiad cyntaf sy'n cael ei olrhain."
+      }
+    ]
+  }
+}

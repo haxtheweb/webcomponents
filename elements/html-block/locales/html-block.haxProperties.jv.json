@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Blok HTML",
+    "description": "Blok HTML dhasar sing nyedhiyakake sambungan HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Kode HTML sing arep ditampilake ing isi"
+      }
+    ]
+  }
+}

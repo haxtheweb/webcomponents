@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Блок содержимого Markdown, заданного напрямую или загруженного удалённо"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Исходный markdown"
+      },
+      {
+        "property": "source",
+        "title": "Источник",
+        "description": "Исходный файл markdown"
+      }
+    ]
+  }
+}

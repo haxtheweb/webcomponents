@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "वर्कशीट डाउनलोड",
+    "description": "डाउनलोड के लिए उपलब्ध फ़ाइलें दिखाने वाला बटन।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "डाउनलोड का शीर्षक।"
+      },
+      {
+        "property": "link",
+        "title": "लिंक",
+        "description": "डाउनलोड का लिंक।"
+      }
+    ]
+  }
+}

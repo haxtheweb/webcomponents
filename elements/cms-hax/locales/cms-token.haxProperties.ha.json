@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Alamar CMS",
+    "description": "Alamar CMS da aka nuna a baya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Alama",
+        "description": "Alama daga CMS ɗinmu"
+      }
+    ]
+  }
+}

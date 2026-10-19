@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Հարաբերական վերնագիր",
+    "description": "արտածում է վերնագրերի ճիշտ հիերարխիան՝ ծնողի վերնագրի հիման վրա"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Ծնող վերնագրի ռեսուրսի ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "Անջատում է հղման կոճակի գործառույթը։"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Հավասարեցնում է հղումը պատճենելու կոճակը վերնագրի աջ ծայրին։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Վերնագրի մակարդակը, եթե ծնողը չի գտնվել։"
+      },
+      {
+        "property": "copyMessage",
+        "description": "Փոխարինում է հղման պատճենման ծանուցման լռելյայն տեքստը։"
+      },
+      {
+        "property": "linkLabel",
+        "description": "Փոխարինում է հղումը պատճենելու կոճակի լռելյայն պիտակը։"
+      },
+      {
+        "property": "linkIcon",
+        "description": "Փոխարինում է հղումը պատճենելու կոճակի լռելյայն պատկերակը։"
+      },
+      {
+        "property": "closeLabel",
+        "description": "Փոխարինում է հղման պատճենման ծանուցման փակման կոճակի լռելյայն պիտակը։"
+      },
+      {
+        "property": "closeIcon",
+        "description": "Փոխարինում է հղման պատճենման ծանուցման փակման կոճակի լռելյայն պատկերակը։"
+      }
+    ]
+  }
+}

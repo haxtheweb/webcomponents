@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "צייכנט אָן די ווערטער",
+    "description": "אידענטיפֿיצירן באַגריפֿן דורך דריקן אויף ווערטער אין אַ טעקסט."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "פֿראַגע",
+        "description": "פֿראַגע אויף וועלכער די באַניצער זאָלן ענטפֿערן."
+      },
+      {
+        "property": "statement",
+        "title": "זאַץ",
+        "description": "זאַץ וואָס וועט פֿאַרוואַנדלט ווערן אין דער אינטעראַקציע „צייכנט אָן די ווערטער“."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "צייכענונג־פֿאָרמאַט",
+        "description": "OER Schema: צייכענונג־פֿאָרמאַט פֿאַר דער אָפּשאַצונג (למשל פּונקטן, אות, פּראָצענט, דורכפֿירונג)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "לערן־ציל",
+        "description": "OER Schema: לערן־ציל פֿאַרבונדן מיט דער אָפּשאַצונג."
+      },
+      {
+        "property": "forCourse",
+        "title": "קורס",
+        "description": "OER Schema: קורס פֿאַר וועלכן די אָפּשאַצונג איז באַשטימט."
+      },
+      {
+        "property": "answers",
+        "title": "ענטפֿערס"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "נאָמען פֿון דעם קוויז",
+        "description": "קוויז־נאָמען איבערגעגעבן פֿאַר ניצן אין xAPI־סבֿיבֿות צו אידענטיפֿיצירן דעם עלעמענט"
+      }
+    ]
+  }
+}

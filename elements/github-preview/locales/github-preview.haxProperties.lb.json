@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub-Virschau",
+    "description": "Accessibel Figur mat laanger Beschreiwung"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisatioun",
+        "description": "Maschinnennumm vun der GitHub-Organisatioun"
+      },
+      {
+        "property": "repo",
+        "title": "Repository",
+        "description": "Maschinnennumm vum Repo"
+      },
+      {
+        "property": "extended",
+        "title": "Erweidert Usiicht",
+        "description": "Bannt d'README an d'Element an"
+      }
+    ]
+  }
+}

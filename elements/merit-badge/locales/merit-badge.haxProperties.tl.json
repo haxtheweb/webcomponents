@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Merit Badge",
+    "description": "Biswal na badge para ipakita ang pagkakamit ng isang kasanayan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Pamagat ng Badge",
+        "description": "Pamagat na ipinapakita sa badge."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Larawan ng Badge",
+        "description": "URL ng larawan para sa badge."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Mga Detalye ng Badge",
+        "description": "Mga detalye tungkol sa badge."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlink",
+        "description": "Link na nauugnay sa badge."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Mga Kasanayan ng Badge",
+        "description": "Mga kasanayang ipinapakita sa badge."
+      },
+      {
+        "property": "skill",
+        "title": "Kasanayan (OER Schema)",
+        "description": "OER Schema: isang natutunang kasanayan na nakamit sa pagkumpleto ng learning objective na ito."
+      }
+    ]
+  }
+}

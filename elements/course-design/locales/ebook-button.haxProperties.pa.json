@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ਈ-ਕਿਤਾਬ ਬਟਨ",
+    "description": "ਈ-ਕਿਤਾਬ ਨਾਲ ਲਿੰਕ ਕਰਨ ਵਾਲਾ ਬਟਨ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਬਟਨ ਦਾ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "link",
+        "title": "ਲਿੰਕ",
+        "description": "ਕਲਿੱਕ ਕਰਨ 'ਤੇ ਰੀਡਾਇਰੈਕਟ ਕਰਨ ਵਾਲਾ ਲਿੰਕ।"
+      },
+      {
+        "property": "icon",
+        "title": "ਆਈਕਨ",
+        "description": "ਇਸ ਲਿੰਕ ਨੂੰ ਦਰਸਾਉਣ ਵਾਲਾ ਆਈਕਨ"
+      }
+    ]
+  }
+}

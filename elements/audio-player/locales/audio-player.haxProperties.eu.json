@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audioa",
+    "description": "Honek bideoa modu oso irisgarrian aurkez dezake, iturria edozein dela ere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Iturria",
+        "description": "Multimedia honen URLa."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Izenburua",
+        "description": "Bideoaren azpiko izenburu sinplea"
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Hautatu erreproduzigailuaren azentu-kolorea."
+      },
+      {
+        "property": "track",
+        "title": "Azpitituluak",
+        "description": "Azpititulu-fitxategiaren URLa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Koadro txikiko irudia",
+        "description": "Aukerakoa. Koadro txikiko/kartel-irudiaren URLa."
+      },
+      {
+        "property": "learningMode",
+        "title": "Gaitu ikaskuntza modua",
+        "description": "Aurrera eta atzera azkar egitea desgaitzen du."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Kendu YouTuben ireki botoia",
+        "description": "Bideoa YouTuben irekitzeko botoia kentzen du."
+      },
+      {
+        "property": "linkable",
+        "title": "Partekatzeko esteka bat sartu?",
+        "description": "Bideoa partekatzeko esteka bat ematen du."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS erabili behar den adierazten du.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Baimendu atzeko planoko erreprodukzioa",
+        "description": "Bideoak automatikoki pausatu / erreproduzitzen dira fitxak fokua galtzean; honek bideoa fitxak fokua izan gabe erreproduzitzea ahalbidetzen du"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Gai iluna transkripziorako",
+        "description": "Gaitu gai iluna transkripziorako."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Desgaitu interaktibotasuna",
+        "description": "Desgaitu transkripzioa klik egingarri bihurtzen duen modu interaktiboa."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Ezkutatu denbora-markak",
+        "description": "Ezkutatu transkripzioko denbora-markak."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Ezkutatu transkripzioa",
+        "description": "Ezkutatu transkripzioa lehenespenez."
+      },
+      {
+        "property": "lang",
+        "title": "Hizkuntza",
+        "description": "Multimediaren hizkuntza."
+      }
+    ]
+  }
+}

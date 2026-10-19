@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Кесте",
+    "description": "Веб үшін кестелік деректер."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Жол тақырыбы",
+        "description": "Бірінші жолды тақырып ретінде қарастыру."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Баған тақырыбы",
+        "description": "Бірінші бағанды тақырып ретінде қарастыру."
+      },
+      {
+        "property": "footer",
+        "title": "Төменгі деректеме",
+        "description": "Соңғы жолды төменгі деректеме ретінде қарастыру."
+      },
+      {
+        "property": "sort",
+        "title": "Сұрыпталатын",
+        "description": "Баған мәндері бойынша сұрыптауға рұқсат беру."
+      },
+      {
+        "property": "filter",
+        "title": "Сүзуге рұқсат беру",
+        "description": "Баған мәндері бойынша сүзуге рұқсат беру."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Сандық безендіру",
+        "description": "Сандық бағандарға сандық безендіруді қолдану."
+      },
+      {
+        "property": "responsive",
+        "title": "Бейімделгіш",
+        "description": "Шағын экрандарда кесте макетін бейімдеу."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Рубрика режимі",
+        "description": "Rubric, RubricScale, RubricCriterion және RubricLevel метадеректері шығарылуы үшін осы кестені OER Schema Rubric ретінде түсіндіру."
+      },
+      {
+        "property": "rubricType",
+        "title": "Рубрика түрі",
+        "description": "oer:rubricType ретінде шығарылатын рубрика стилі (тек Рубрика режимі қосулы болғанда маңызды).",
+        "options": {
+          "": "(жоқ)",
+          "analytic": "Аналитикалық",
+          "holistic": "Тұтас",
+          "single-point": "Бір нүктелі",
+          "checklist": "Бақылау тізімі"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Жиектелген"
+      },
+      {
+        "property": "condensed",
+        "title": "Жолдарды тығыздау",
+        "description": "Жол биіктігін азайту."
+      },
+      {
+        "property": "striped",
+        "title": "Жолақты жолдар",
+        "description": "Әр екінші жолды көлеңкелеу."
+      },
+      {
+        "property": "downloadable",
+        "title": "Жүктеп алу түймесі",
+        "description": "Кестені жүктеп алу түймесін қосу."
+      },
+      {
+        "property": "copyable",
+        "title": "Көшіру түймесі",
+        "description": "Кестенің CSV деректерін көшіру түймесін қосу."
+      },
+      {
+        "property": "printable",
+        "title": "Басып шығару түймесі",
+        "description": "Тек кестені басып шығару түймесін қосу."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV деректері",
+        "description": "Жүктелген CSV файлынан кесте жасау."
+      }
+    ]
+  }
+}

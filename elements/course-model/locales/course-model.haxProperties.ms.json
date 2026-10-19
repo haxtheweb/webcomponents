@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "model kursus",
+    "description": "Susun atur interaktif untuk konsep kursus dengan butiran, animasi dan semakan pengetahuan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "tajuk"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Kawasan maklumat"
+      },
+      {
+        "title": "Kawasan butiran"
+      },
+      {
+        "title": "Kawasan animasi"
+      },
+      {
+        "title": "Kawasan Semakan Pengetahuan"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Kawasan logo"
+      }
+    ]
+  }
+}

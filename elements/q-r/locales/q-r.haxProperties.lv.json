@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR kods",
+    "description": "Ar viedtālruni skenējams kods."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR dati",
+        "description": "QR koda datu avots."
+      },
+      {
+        "property": "title",
+        "title": "Alternatīvais nosaukums",
+        "description": "Alternatīvais nosaukums, kas saistīts ar QR koda avotu."
+      },
+      {
+        "property": "modulesize",
+        "title": "Izmērs",
+        "description": "QR koda izmērs."
+      },
+      {
+        "property": "margin",
+        "title": "Mala",
+        "description": "Atstarpe ap kodu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Izvades formāts",
+        "description": "Formāts, kādā izvadīt.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

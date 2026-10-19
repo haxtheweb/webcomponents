@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematikë",
+    "description": "Paraqit matematikën në mënyrë të bukur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematikë",
+        "description": "Fut ekuacionin si LaTeX"
+      }
+    ]
+  }
+}

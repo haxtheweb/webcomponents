@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro kart",
+    "description": "Retro tasarımlı basit kart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Ana kart başlığı."
+      },
+      {
+        "property": "url",
+        "description": "Karta tıklandığında açılacak URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alt başlık",
+        "description": "Kart alt başlığı."
+      },
+      {
+        "property": "tags",
+        "title": "Etiketler",
+        "description": "Virgülle ayrılmış etiketler."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Medya kaynağı",
+        "description": "Birincil medya kaynağı."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Üzerine gelindiğindeki kaynak",
+        "description": "Kartın üzerine gelindiğinde veya kart etkinleştirildiğinde gösterilen medya kaynağı."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu Rengi",
+        "description": "Kartın tamamına uygulanan vurgu rengi."
+      },
+      {
+        "property": "dark",
+        "title": "Koyu",
+        "description": "Koyu mod temel renklerini kullan."
+      }
+    ]
+  }
+}

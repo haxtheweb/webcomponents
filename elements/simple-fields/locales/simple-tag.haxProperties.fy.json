@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Label / pil",
+    "description": "In kompakt pilfoarmich label mei opsjonele aksintkleur, annulearknop of skeakelder."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Label",
+        "description": "Tekst yn de pil."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "SimpleColors-aksintnamme foar de eftergrûn fan de pil.",
+        "options": {
+          "": "-- standert --",
+          "red": "Read",
+          "pink": "Roze",
+          "purple": "Pears",
+          "deep-purple": "Djippears",
+          "indigo": "Indigo",
+          "blue": "Blau",
+          "light-blue": "Ljochtblau",
+          "cyan": "Syaan",
+          "teal": "Blaugrien",
+          "green": "Grien",
+          "light-green": "Ljochtgrien",
+          "lime": "Limoen",
+          "yellow": "Giel",
+          "amber": "Amber",
+          "orange": "Oranje",
+          "deep-orange": "Djiporanje",
+          "brown": "Brún",
+          "blue-grey": "Blaugriis",
+          "grey": "Griis"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatyske aksintkleur",
+        "description": "Lei de aksintkleur automatysk ôf út de labeltekst."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Annulearknop",
+        "description": "In ikoanknop foar fuortsmite/annulearje yn de pil toane."
+      },
+      {
+        "property": "readonly",
+        "title": "Allinnich lêze",
+        "description": "Ferbergje de annulearknop, sadat de pil allinnich werjûn wurdt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Skeakelt",
+        "description": "Lit de pil oan/út skeakelje as der op de knop klikt wurdt."
+      },
+      {
+        "property": "toggled",
+        "title": "Ynskeakele",
+        "description": "Oft de pil op dit stuit ynskeakele is."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ikoan by ynskeakele",
+        "description": "Ikoan om te toanen as de pil ynskeakele is."
+      },
+      {
+        "property": "disabled",
+        "title": "Utskeakele",
+        "description": "Ynteraksje mei de pil útskeakelje."
+      }
+    ]
+  }
+}

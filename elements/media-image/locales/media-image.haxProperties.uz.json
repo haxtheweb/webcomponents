@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Kengaytirilgan rasm",
+    "description": "Rasmlarni turli yaxshilanishlar bilan taqdim etish usuli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manba",
+        "description": "Rasm URL manzili."
+      },
+      {
+        "property": "alt",
+        "title": "Muqobil matn",
+        "description": "Ko‘rish imkoniyati cheklangan foydalanuvchilar uchun rasmni tavsiflovchi matn."
+      },
+      {
+        "property": "link",
+        "title": "Havola",
+        "description": "Rasmni URL manzilga bogʻlash"
+      },
+      {
+        "property": "card",
+        "title": "Karta",
+        "description": "Koʻtarilgan karta koʻrinishini berish uchun soya qoʻllash."
+      },
+      {
+        "property": "box",
+        "title": "Quti",
+        "description": "Rasm atrofida vizual quti qoʻllash."
+      },
+      {
+        "property": "offset",
+        "title": "Siljish",
+        "description": "Rasmga chap yoki oʻng siljish qoʻllash.",
+        "options": {
+          "none": "yoʻq",
+          "wide": "keng",
+          "narrow": "tor"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Manba koʻrsatkichi",
+        "description": "Rasm uchun iqtibos."
+      },
+      {
+        "property": "caption",
+        "title": "Izoh",
+        "description": "Rasm uchun izoh."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Rasm sarlavhasi",
+        "description": "Rasm yorligʻi uchun sarlavha."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Rasm tavsifi",
+        "description": "Rasm yorligʻi uchun tavsif."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Eskiz rasmi",
+        "description": "Eskiz rasm manbasi. Eskizni koʻrsatadi, lekin toʻliq manbani modal oynada ochadi."
+      },
+      {
+        "property": "round",
+        "title": "Dumaloq rasm",
+        "description": "Rasm koʻrinishini doira shaklida kesadi."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Rasm modal oynasini oʻchirish",
+        "description": "Bosilganda rasmni rasm koʻruvchi oynasida ochishni oʻchirish."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Markdown sifatida koʻrsatish",
+        "description": "Izoh va iqtibosni markdown sifatida koʻrsatish."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: блоки фаръӣ",
+    "description": "Блоки динамикӣ барои нишон додани фаръиҳои саҳифаи ҷорӣ"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Усули динамикӣ",
+        "description": "Чӣ тавр фаръиҳо нисбат ба ин унсур ҳисоб карда шаванд",
+        "options": {
+          "active": "Фаръиҳои фаъол",
+          "parent": "Фаръиҳои волидайн",
+          "ancestor": "Ҳамаи фаръиҳо аз аҷдоди болотарин"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Сатҳи оғоз"
+      },
+      {
+        "property": "end",
+        "title": "Сатҳи анҷом"
+      }
+    ]
+  }
+}

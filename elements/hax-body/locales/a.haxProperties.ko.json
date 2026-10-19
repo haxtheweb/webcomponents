@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "기본 링크",
+    "description": "기본 링크 요소."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "링크",
+        "description": "대상 URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "텍스트",
+        "description": "표시되는 링크 텍스트."
+      },
+      {
+        "attribute": "target",
+        "title": "대상",
+        "description": "링크를 열 위치입니다.",
+        "options": {
+          "": "같은 창",
+          "_blank": "새 창 - _blank",
+          "_top": "최상위 창 - _top",
+          "_parent": "상위 창 - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "제목 텍스트",
+        "description": "접근성과 SEO를 위한 보조 제목."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "대상과의 관계(보안/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

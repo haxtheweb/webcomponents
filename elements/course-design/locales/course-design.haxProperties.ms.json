@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Reka Bentuk Kursus",
+    "description": "Bekas untuk bahan pendidikan dan elemen reka bentuk kursus."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Pengecam Kursus",
+        "description": "OER Schema: pengecam kursus, cth. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Penggal Ditawarkan",
+        "description": "OER Schema: penggal semasa kursus ditawarkan."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Format Penyampaian",
+        "description": "OER Schema: format yang digunakan untuk menyampaikan kursus (cth. bersemuka, dalam talian, hibrid)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Pengajar Utama",
+        "description": "OER Schema: pengajar utama bagi kursus."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL Sukatan Pelajaran",
+        "description": "OER Schema: URL ke sukatan pelajaran kursus."
+      }
+    ]
+  }
+}

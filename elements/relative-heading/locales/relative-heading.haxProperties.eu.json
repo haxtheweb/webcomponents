@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Goiburu erlatiboa",
+    "description": "goiburu-hierarkia zuzena sortzen du gurasoaren goiburuan oinarrituta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Goiburu gurasoaren baliabide-IDa"
+      },
+      {
+        "property": "disableLink",
+        "description": "Esteka-botoiaren eginbidea desgaitzen du."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Esteka kopiatzeko botoia goiburuaren eskuin muturrean lerrokatzen du."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Goiburu-maila gurasoa aurkitzen ez bada."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Esteka kopiatzearen jakinarazpen-mezuaren testu lehenetsia gainidazten du."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Esteka kopiatzeko botoiaren etiketa lehenetsia gainidazten du."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Esteka kopiatzeko botoiaren ikono lehenetsia gainidazten du."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Esteka kopiatzearen jakinarazpeneko itxi-botoiaren etiketa lehenetsia gainidazten du."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Esteka kopiatzearen jakinarazpeneko itxi-botoiaren ikono lehenetsia gainidazten du."
+      }
+    ]
+  }
+}

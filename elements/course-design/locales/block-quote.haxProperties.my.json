@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ကိုးကားချက် ဘလော့",
+    "description": "ပုံစံချထားသော ကိုးကားချက် ဘလော့။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "ကိုးကားမှု",
+        "description": "ကိုးကားမှု စာသား။"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "ပုံအတွက် အစားထိုး စာသား။"
+      },
+      {
+        "property": "image",
+        "title": "ပုံ",
+        "description": "ကိုးကားချက်နှင့်အတူ ပြသော ပုံ။"
+      }
+    ]
+  }
+}

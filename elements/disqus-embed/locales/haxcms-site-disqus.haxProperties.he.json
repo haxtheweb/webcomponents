@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "תגובות Disqus",
+    "description": "שילוב עם שירות התגובות המקוון Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "שם מקוצר",
+        "description": "השם המקוצר של הנכס ב-Disqus"
+      }
+    ]
+  }
+}

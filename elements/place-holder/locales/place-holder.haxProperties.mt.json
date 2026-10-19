@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Placeholder",
+    "description": "Placeholder li jista' jiġi kkonvertit fit-tip ta' midja li ntgħażel"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tip",
+        "description": "Tip ta' gizmo li dan jaċċetta għas-sostituzzjoni.",
+        "options": {
+          "text": "Test / kontenut",
+          "document": "Dokument / fajl",
+          "audio": "Awdjo",
+          "video": "Vidjo",
+          "image": "Immaġni",
+          "math": "Matematika"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Test",
+        "description": "Identifika l-placeholder mixtieq f'aktar dettall"
+      }
+    ]
+  }
+}

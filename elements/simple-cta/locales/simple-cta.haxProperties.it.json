@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Invito all'azione",
+    "description": "Un semplice pulsante con un link per agire."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etichetta",
+        "description": "Etichetta del link"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Inserisci un link a qualsiasi risorsa"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Nascondi icona",
+        "description": "Nasconde l'icona usata per mettere in risalto il testo"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona del link di azione"
+      }
+    ]
+  }
+}

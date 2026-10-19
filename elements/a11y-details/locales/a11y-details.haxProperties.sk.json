@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Prístupné tlačidlo podrobností",
+    "description": "Prístupné postupné odkrývanie s podrobnosťami a súhrnom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Tlačidlo",
+        "description": "Súhrn obsahu, ktorý je skrytý, napr. „info“, „metadáta“ atď."
+      },
+      {
+        "slot": "details",
+        "title": "Popis",
+        "description": "Podrobný popis, ktorý možno skryť alebo zobraziť"
+      },
+      {
+        "slot": "",
+        "title": "Tlačidlo popisu",
+        "description": "Predvolený text tlačidla, ktoré zobrazuje/skrýva text popisu, napr. „info“, „metadáta“ atď."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Voliteľný text súhrnu, keď sú podrobnosti otvorené"
+      },
+      {
+        "property": "closeText",
+        "title": "Voliteľný text súhrnu, keď sú podrobnosti zatvorené"
+      }
+    ]
+  }
+}

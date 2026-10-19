@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Citāts ar attēlu",
+    "description": "Stilizēts citāts ar neobligātu attēlu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Attēls",
+        "description": "Pievienot atsauksmei attēlu."
+      },
+      {
+        "property": "name",
+        "title": "Pilns vārds",
+        "description": "Atsauksmes sniedzēja vārds."
+      },
+      {
+        "property": "position",
+        "title": "Amats",
+        "description": "Personas amats."
+      },
+      {
+        "slot": "",
+        "title": "Citāts",
+        "description": "Atsauksmes autora citāts."
+      }
+    ]
+  }
+}

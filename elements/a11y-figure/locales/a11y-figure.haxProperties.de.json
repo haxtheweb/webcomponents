@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Beschreibende Abbildung",
+    "description": "Barrierefreie Abbildung mit ausführlicher Beschreibung"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Bild"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alternativtext"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Abbildungsunterschrift",
+        "description": "Text der Abbildungsunterschrift, der immer sichtbar ist."
+      },
+      {
+        "slot": "details",
+        "title": "Beschreibung",
+        "description": "Ausführliche Bildbeschreibung, die aus- oder eingeblendet werden kann"
+      },
+      {
+        "slot": "summary",
+        "title": "Beschreibungs-Button",
+        "description": "Standardtext für den Button, der den Beschreibungstext ein-/ausblendet, z. B. „Info“, „Metadaten“ usw."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Optionaler Zusammenfassungstext bei geöffneten Details"
+      },
+      {
+        "property": "closeText",
+        "title": "Optionaler Zusammenfassungstext bei geschlossenen Details"
+      }
+    ]
+  }
+}

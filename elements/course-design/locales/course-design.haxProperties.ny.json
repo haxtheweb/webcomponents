@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kapangidwe ka Maphunziro",
+    "description": "Chosungira zipangizo za maphunziro ndi zinthu za kapangidwe ka maphunziro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Chizindikiro cha Maphunziro",
+        "description": "OER Schema: chizindikiro cha maphunziro, mwachitsanzo MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Nthawi Yoperekedwa",
+        "description": "OER Schema: nthawi ya maphunziro yomwe maphunzirowa amaperekedwa."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Njira Yoperekera",
+        "description": "OER Schema: njira yoperekera maphunziro (mwachitsanzo maso ndi maso, pa intaneti, osakaniza)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Mphunzitsi Wamkulu",
+        "description": "OER Schema: mphunzitsi wamkulu wa maphunziro."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL ya Ndondomeko ya Maphunziro",
+        "description": "OER Schema: URL ya ndondomeko ya maphunziro."
+      }
+    ]
+  }
+}

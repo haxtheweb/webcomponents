@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Érdemjelvény",
+    "description": "Egy készség megszerzését jelző vizuális jelvény."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Jelvény címe",
+        "description": "A jelvényen megjelenő cím."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Jelvény képe",
+        "description": "A jelvény képének URL-je."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Jelvény részletei",
+        "description": "A jelvény részletei."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hivatkozás",
+        "description": "A jelvényhez tartozó hivatkozás."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Jelvény készségei",
+        "description": "A jelvényen megjelenő készségek."
+      },
+      {
+        "property": "skill",
+        "title": "Készség (OER Schema)",
+        "description": "OER Schema: a tanulási cél teljesítésével megszerzett készség."
+      }
+    ]
+  }
+}

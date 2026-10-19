@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS ٹوکن",
+    "description": "بیک اینڈ تے بݨیا CMS ٹوکن"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "ٹوکن",
+        "description": "ساڈے CMS دا ٹوکن"
+      }
+    ]
+  }
+}

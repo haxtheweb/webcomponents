@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "代码示例",
+    "description": "页面里向高亮显示个一段代码"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "代码高亮",
+        "description": "代码区域要用个语法高亮",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON 数据",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "复制到剪贴板按钮",
+        "description": "右上角写「复制到剪贴板」个按钮"
+      },
+      {
+        "property": "highlightStart",
+        "title": "高亮开始",
+        "description": "开始高亮个行号"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "高亮结束",
+        "description": "结束高亮个行"
+      }
+    ]
+  }
+}

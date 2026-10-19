@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "طعنه",
+    "description": "نمایش متن به شیوه‌ای شیطنت‌آمیز"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "متن",
+        "description": "متنی که باید طعنه‌آمیز شود"
+      }
+    ]
+  }
+}

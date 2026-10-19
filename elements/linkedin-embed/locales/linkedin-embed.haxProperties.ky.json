@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn кыстаруу",
+    "description": "LinkedIn профиль картасын кыстаруу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Жеке аталыш",
+        "description": "LinkedIn жеке колдонуучу атынын бөлүгү."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Локаль",
+        "description": "en_US сыяктуу локаль метамаалымат мааниси."
+      }
+    ]
+  }
+}

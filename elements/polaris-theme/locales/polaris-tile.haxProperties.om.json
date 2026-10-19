@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Taayilii Polaris",
+    "description": "Taayilii Polaris mata-duree, barreeffama deeggarsaa filannoo fi hidhoo filannoo qabu agarsiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Barreeffama ijoo",
+        "description": "Barreeffama ijoo taayilii."
+      },
+      {
+        "property": "line2",
+        "title": "Barreeffama lammaffaa",
+        "description": "Barreeffama deeggarsaa filannoo."
+      },
+      {
+        "property": "type",
+        "title": "Akkaataa taayilii",
+        "description": "Akkaataa mul'ataa taayilii dursa qophaa'e.",
+        "options": {
+          "1": "Akkaataa 1",
+          "2": "Akkaataa 2",
+          "3": "Akkaataa 3",
+          "4": "Akkaataa 4",
+          "5": "Akkaataa 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Suuraa duubaa",
+        "description": "URL suuraa duubaa akkaataalee taayilii suuraa fudhatan fayyadaman."
+      },
+      {
+        "property": "link",
+        "title": "Hidhoo",
+        "description": "URL gahiinsaa filannoo gocha taayiliitiif."
+      }
+    ]
+  }
+}

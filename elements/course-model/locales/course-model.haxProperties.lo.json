@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ແບບຈຳລອງຫຼັກສູດ",
+    "description": "ໂຄງຮ່າງແບບໂຕ້ຕອບສຳລັບແນວຄິດຫຼັກສູດ ພ້ອມລາຍລະອຽດ, ພາບເຄື່ອນໄຫວ ແລະ ການກວດສອບຄວາມຮູ້."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "ຫົວຂໍ້"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "ພື້ນທີ່ຂໍ້ມູນ"
+      },
+      {
+        "title": "ພື້ນທີ່ລາຍລະອຽດ"
+      },
+      {
+        "title": "ພື້ນທີ່ພາບເຄື່ອນໄຫວ"
+      },
+      {
+        "title": "ພື້ນທີ່ກວດສອບຄວາມຮູ້"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "ພື້ນທີ່ໂລໂກ້"
+      }
+    ]
+  }
+}

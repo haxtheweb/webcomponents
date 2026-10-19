@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Pozycja bibliografii",
+    "description": "Element reprezentujący pojedyncze cytowanie w bibliografii, obsługujący wiele formatów i opcji eksportu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Typ",
+        "description": "Typ cytowania",
+        "options": {
+          "web": "Strona internetowa",
+          "journal": "Czasopismo",
+          "book": "Książka"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Tytuł",
+        "description": "Tytuł pozycji"
+      },
+      {
+        "property": "authors",
+        "title": "Autor(zy)",
+        "description": "Wydarzenia na osi czasu"
+      },
+      {
+        "property": "publisher",
+        "title": "Wydawca",
+        "description": "Oryginalna witryna"
+      }
+    ]
+  }
+}

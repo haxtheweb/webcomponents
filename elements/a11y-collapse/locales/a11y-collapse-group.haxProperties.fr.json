@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Groupe de sections repliables",
+    "description": "Un groupe d'éléments dépliables et repliables."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Déplier un seul élément",
+        "description": "Un seul élément peut être déplié à la fois."
+      },
+      {
+        "slot": "",
+        "title": "Éléments repliables",
+        "description": "Les éléments repliables."
+      }
+    ]
+  }
+}

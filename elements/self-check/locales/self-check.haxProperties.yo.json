@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Àyẹ̀wò Ara-ẹni",
+    "description": "Àwọn olùlò lè parí àyẹ̀wò ara-ẹni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Àwòrán",
+        "description": "Àwòrán fún àyẹ̀wò ara-ẹni."
+      },
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Àkọlé àyẹ̀wò ara-ẹni."
+      },
+      {
+        "property": "alt",
+        "title": "Ọ̀rọ̀ àfirọ́pò",
+        "description": "Ọ̀rọ̀ alt fún àwòrán náà."
+      },
+      {
+        "slot": "question",
+        "title": "Ìbéèrè"
+      },
+      {
+        "slot": "",
+        "title": "Ìdáhùn"
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ Àkòrí",
+        "description": "Yan àwọ̀ àkòrí láti inú ètò àpẹẹrẹ.",
+        "options": {
+          "primary": "Àkọ́kọ́",
+          "accent": "Ìtẹnumọ́",
+          "success": "Àṣeyọrí",
+          "warning": "Ìkìlọ̀",
+          "error": "Àṣìṣe",
+          "info": "Ìfitónilétí"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Àfojúsùn Ẹ̀kọ́",
+        "description": "Ìtọ́kasí àfojúsùn ẹ̀kọ́ tí a gbé jáde gẹ́gẹ́ bí oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Ìgbéléwọ̀n",
+        "description": "Ìtọ́kasí iṣẹ́ tí a gbé jáde gẹ́gẹ́ bí oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Ìjápọ̀ síwájú síi",
+        "description": "Ìjápọ̀ sí ìsọfúnni àfikún."
+      }
+    ]
+  }
+}

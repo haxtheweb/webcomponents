@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "रेट्रो कार्ड",
+    "description": "रेट्रो डिझाइनसह साधे कार्ड."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "मुख्य कार्ड शीर्षक."
+      },
+      {
+        "property": "url",
+        "description": "कार्डवर क्लिक केल्यावर उघडायची URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "उपशीर्षक",
+        "description": "कार्ड उपशीर्षक."
+      },
+      {
+        "property": "tags",
+        "title": "टॅग",
+        "description": "स्वल्पविरामाने वेगळे केलेले टॅग."
+      },
+      {
+        "property": "mediaSource",
+        "title": "माध्यम स्रोत",
+        "description": "प्राथमिक माध्यम स्रोत."
+      },
+      {
+        "property": "hoverSource",
+        "title": "होव्हरवरील स्रोत",
+        "description": "कार्डवर होव्हर केल्यावर किंवा सक्रिय केल्यावर दाखवला जाणारा माध्यम स्रोत."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "संपूर्ण कार्डवर लागू होणारा अ‍ॅक्सेंट रंग."
+      },
+      {
+        "property": "dark",
+        "title": "गडद",
+        "description": "डार्क मोडचे मूळ रंग वापरा."
+      }
+    ]
+  }
+}

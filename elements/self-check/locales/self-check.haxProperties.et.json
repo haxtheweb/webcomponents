@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Enesekontroll",
+    "description": "Kasutajad saavad teha enesekontrolli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Pilt",
+        "description": "Enesekontrolli pilt."
+      },
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Enesekontrolli pealkiri."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatiivtekst",
+        "description": "Pildi alternatiivtekst."
+      },
+      {
+        "slot": "question",
+        "title": "Küsimus"
+      },
+      {
+        "slot": "",
+        "title": "Vastus"
+      },
+      {
+        "property": "accentColor",
+        "title": "Teema värv",
+        "description": "Vali disainisüsteemist teema värv.",
+        "options": {
+          "primary": "Esmane",
+          "accent": "Rõhk",
+          "success": "Õnnestumine",
+          "warning": "Hoiatus",
+          "error": "Viga",
+          "info": "Teave"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Õpieesmärk",
+        "description": "Õpieesmärgi viide, mis väljastatakse kui oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Hinnatav",
+        "description": "Tegevuse viide, mis väljastatakse kui oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Lisateabe link",
+        "description": "Link lisateabele."
+      }
+    ]
+  }
+}

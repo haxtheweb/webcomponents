@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS blokk",
+    "description": "A háttérrendszeren megjelenített CMS blokk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modul",
+        "description": "A CMS-ünkből betöltendő modul"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "A CMS-ünkből betöltendő blokk deltája"
+      }
+    ]
+  }
+}

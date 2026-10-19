@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX link",
+    "description": "Isang link sa isang partikular na resource sa site na ginagawa mo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item na ire-render para sa link / data ng pamagat"
+      }
+    ]
+  }
+}

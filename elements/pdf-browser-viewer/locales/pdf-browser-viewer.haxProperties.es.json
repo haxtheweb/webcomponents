@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Visor de PDF del navegador",
+    "description": "Inserta un archivo PDF en línea con un diseño de tarjeta opcional y un botón de descarga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL del PDF",
+        "description": "Ubicación del archivo PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Encabezado",
+        "description": "Texto del encabezado de la tarjeta."
+      },
+      {
+        "property": "card",
+        "title": "Diseño de tarjeta",
+        "description": "Mostrar el PDF en una tarjeta con un botón de descarga."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Etiqueta de descarga",
+        "description": "Etiqueta del botón de descarga."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mensaje de no compatible",
+        "description": "Mensaje que se muestra cuando el navegador no puede mostrar archivos PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mensaje del enlace de no compatible",
+        "description": "Texto del enlace cuando el navegador no puede mostrar archivos PDF."
+      },
+      {
+        "property": "width",
+        "title": "Ancho",
+        "description": "Ancho del visor de PDF."
+      },
+      {
+        "property": "height",
+        "title": "Altura",
+        "description": "Altura del visor de PDF."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Fellanlegur gámur",
+    "description": "Stakur gámur sem hægt er að opna og fella saman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Fyrirsögn",
+        "description": "Texti fyrir fellanlega gáminn."
+      },
+      {
+        "property": "expanded",
+        "title": "Opið",
+        "description": "Opið sjálfgefið."
+      },
+      {
+        "property": "headingButton",
+        "title": "Fyrirsagnarhnappur",
+        "description": "Gera alla fyrirsögnina smellanlega í stað aðeins táknsins."
+      },
+      {
+        "property": "icon",
+        "title": "Tákn",
+        "description": "Tákn fyrir opna/fella hnappinn."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Tákn (þegar opið)",
+        "description": "Valfrjálst tákn fyrir opna stöðu hnappsins."
+      },
+      {
+        "slot": "",
+        "title": "Efni",
+        "description": "Efni fellanlega gámsins."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Vísbending",
+        "description": "Vísbending fyrir opna/fella hnappinn."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Vísbending (þegar opið)",
+        "description": "Vísbending fyrir opna/fella hnappinn þegar opið er."
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Dostupné motivy",
+    "description": "Zobrazení dostupných motivů HAXcms s živým přepínáním náhledu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Režim zobrazení",
+        "description": "Zvolte, jak zobrazit motivy",
+        "options": {
+          "gallery": "Galerie",
+          "table": "Tabulka"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Zobrazit podrobnosti",
+        "description": "Zobrazit popisy motivů a další informace"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Zobrazit skryté a starší motivy",
+        "description": "Kromě výchozích motivů nástěnky zobrazit i skryté, starší a příšerné motivy"
+      },
+      {
+        "property": "columns",
+        "title": "Sloupce (galerie)",
+        "description": "Počet sloupců v zobrazení galerie"
+      }
+    ]
+  }
+}

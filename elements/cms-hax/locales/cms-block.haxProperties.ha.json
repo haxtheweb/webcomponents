@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Toshen CMS",
+    "description": "Toshen CMS da aka nuna a baya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Kashi",
+        "description": "Module da za a loda daga CMS ɗinmu"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta na toshen da za a loda daga CMS ɗinmu"
+      }
+    ]
+  }
+}

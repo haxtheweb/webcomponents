@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Нумерованный список",
+    "description": "Создать нумерованный список."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Стиль нумерации",
+        "description": "Стиль нумерации упорядоченного списка.",
+        "options": {
+          "": "По умолчанию (десятичные)",
+          "list-decimal-leading-zero": "Десятичные с ведущим нулём (01, 02, 03)",
+          "list-lower-alpha": "Строчные латинские (a, b, c)",
+          "list-upper-alpha": "Прописные латинские (A, B, C)",
+          "list-lower-roman": "Строчные римские (i, ii, iii)",
+          "list-upper-roman": "Прописные римские (I, II, III)"
+        }
+      }
+    ]
+  }
+}

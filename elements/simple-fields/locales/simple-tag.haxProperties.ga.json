@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Clib / Piollaire",
+    "description": "Lipéad dlúth i gcruth piollaire le dath aibhsithe roghnach, cnaipe cealaithe nó scoránú."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Lipéad",
+        "description": "Téacs a thaispeántar laistigh den phiollaire."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath aibhsithe",
+        "description": "Ainm aibhsithe SimpleColors do chúlra an phiollaire.",
+        "options": {
+          "": "-- réamhshocrú --",
+          "red": "Dearg",
+          "pink": "Bándearg",
+          "purple": "Corcra",
+          "deep-purple": "Corcra Domhain",
+          "indigo": "Indeagó",
+          "blue": "Gorm",
+          "light-blue": "Bánghorm",
+          "cyan": "Cian",
+          "teal": "Glasghorm",
+          "green": "Glas",
+          "light-green": "Glas Éadrom",
+          "lime": "Líoma",
+          "yellow": "Buí",
+          "amber": "Ómra",
+          "orange": "Oráiste",
+          "deep-orange": "Oráiste Domhain",
+          "brown": "Donn",
+          "blue-grey": "Liathghorm",
+          "grey": "Liath"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Dath aibhsithe uathoibríoch",
+        "description": "Faigh an dath aibhsithe ó théacs an lipéid go huathoibríoch."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Cnaipe cealaithe",
+        "description": "Taispeáin cnaipe deilbhín bainte/cealaithe laistigh den phiollaire."
+      },
+      {
+        "property": "readonly",
+        "title": "Inléite amháin",
+        "description": "Folaigh an cnaipe cealaithe ionas nach mbeidh an piollaire ann ach le taispeáint."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Scoránaíonn",
+        "description": "Déan an piollaire a scoránú air/as nuair a chliceáiltear an cnaipe."
+      },
+      {
+        "property": "toggled",
+        "title": "Scoránaithe",
+        "description": "Cé acu atá an piollaire scoránaithe air faoi láthair nó nach bhfuil."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Deilbhín scoránaithe",
+        "description": "Deilbhín le taispeáint nuair atá an piollaire scoránaithe air."
+      },
+      {
+        "property": "disabled",
+        "title": "Díchumasaithe",
+        "description": "Díchumasaigh idirghníomhaíocht leis an bpiollaire."
+      }
+    ]
+  }
+}

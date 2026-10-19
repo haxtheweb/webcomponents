@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "फ़्लैश कार्ड",
+    "description": "आगे-पीछे वाले फ़्लैश कार्ड से अवधारणाओं का अभ्यास करें।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "कार्ड का अगला भाग",
+        "description": "सामने का टेक्स्ट या प्रश्न।"
+      },
+      {
+        "slot": "back",
+        "title": "कार्ड का पिछला भाग",
+        "description": "अपेक्षित उत्तर।"
+      },
+      {
+        "property": "imgSource",
+        "title": "छवि स्रोत",
+        "description": "कार्ड के लिए प्रयुक्त छवि फ़ाइल। छवि कीवर्ड को ओवरराइड करती है।"
+      },
+      {
+        "property": "typeOfAction",
+        "title": "क्रिया का प्रकार",
+        "description": "OER Schema: इस अभ्यास में शामिल क्रिया का प्रकार (जैसे पढ़ना, लिखना, बनाना, शोध करना, सुनना, देखना, चिंतन करना, चर्चा करना, अवलोकन करना, प्रस्तुत करना, मूल्यांकन)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "अधिगम उद्देश्य",
+        "description": "OER Schema: उस अधिगम उद्देश्य का ID या URL जिसे यह अभ्यास समर्थन देता है।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "डार्क",
+        "description": "डार्क मोड का उपयोग करें।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "कार्ड का एक्सेंट रंग।"
+      },
+      {
+        "property": "imgKeyword",
+        "title": "छवि कीवर्ड",
+        "description": "यादृच्छिक छवि कीवर्ड। छवि स्रोत द्वारा ओवरराइड किया जाता है।"
+      }
+    ]
+  }
+}

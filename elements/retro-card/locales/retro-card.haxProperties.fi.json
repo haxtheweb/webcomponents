@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retrokortti",
+    "description": "Yksinkertainen kortti retrotyylillä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Kortin pääotsikko."
+      },
+      {
+        "property": "url",
+        "description": "URL, joka avataan korttia napsautettaessa."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alaotsikko",
+        "description": "Kortin alaotsikko."
+      },
+      {
+        "property": "tags",
+        "title": "Tunnisteet",
+        "description": "Pilkuilla erotetut tunnisteet."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Medialähde",
+        "description": "Ensisijainen medialähde."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Lähde osoitettaessa",
+        "description": "Medialähde, joka näytetään, kun korttia osoitetaan tai se aktivoidaan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Koko korttiin sovellettava korosteväri."
+      },
+      {
+        "property": "dark",
+        "title": "Tumma",
+        "description": "Käytä tumman tilan perusvärejä."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Tetepy Mombyrygua",
+    "description": "Eiporujey tetepy peteĩ tendágui ambuépe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Tenda kundaharape",
+        "description": "Emboja kundaharape rehechauka hag̃ua tetepy ndaha'éiramo tenda ko'ag̃agua"
+      },
+      {
+        "property": "uuid",
+        "title": "Mba'e",
+        "description": "Mba'e ojehechaukátava joajuha / téra mba'ekuaarãme g̃uarã"
+      },
+      {
+        "property": "breakreference",
+        "title": "Emboja'o joajuha",
+        "description": "Ejopývo ko kora omonguatia tetepy mombyrygua rembosako'i hag̃ua ko'ápe ha katu omboguete joajuha. Nohupytymo'ãvéima ñembohekopyahu mba'erepy ypykue oñembohekopyahu jave."
+      },
+      {
+        "property": "showTitle",
+        "title": "Ehechauka téra",
+        "description": "Emyendy rehechauka hag̃ua mba'erepy ojehechaukáva réra"
+      }
+    ]
+  }
+}

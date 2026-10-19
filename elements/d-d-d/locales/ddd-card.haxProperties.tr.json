@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kart",
+    "description": "DDD tasarım sistemiyle biçimlendirilmiş kart bileşeni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Görsel",
+        "description": "İsteğe bağlı görsel."
+      },
+      {
+        "property": "alt",
+        "title": "Görsel alt metni",
+        "description": "Görseli açıklayan alternatif metin."
+      },
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Kart başlığı."
+      },
+      {
+        "slot": "",
+        "title": "İçerik",
+        "description": "Kart içerik alanı."
+      },
+      {
+        "property": "href",
+        "title": "Bağlantı",
+        "description": "Düğme bağlantı URL'si."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Düğme etiketi."
+      },
+      {
+        "property": "noArrow",
+        "title": "Ok Yok",
+        "description": "Düğme okunu gizle."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Bağlantı: hedef",
+        "description": "Bağlantının nerede açılacağı.",
+        "options": {
+          "": "Aynı pencere",
+          "_blank": "Yeni pencere - _blank",
+          "_top": "Üst pencere - _top",
+          "_parent": "Ana pencere - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Bağlantı: rel",
+        "description": "Bağlantılı kaynak ile geçerli belge arasındaki ilişki."
+      }
+    ]
+  }
+}

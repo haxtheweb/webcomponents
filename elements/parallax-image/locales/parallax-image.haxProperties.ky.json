@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Параллакс сүрөт",
+    "description": "Сүрөттүн жылышы"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Сүрөт",
+        "description": "фондо колдонулуучу сүрөт"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Аталыш аймагы",
+        "description": "Аталыш текстинин аймагы"
+      }
+    ]
+  }
+}

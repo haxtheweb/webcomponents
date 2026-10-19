@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "රෙට්‍රෝ කාඩ්පත",
+    "description": "රෙට්‍රෝ නිර්මාණයක් සහිත සරල කාඩ්පත."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "ප්‍රධාන කාඩ් මාතෘකාව."
+      },
+      {
+        "property": "url",
+        "description": "කාඩ්පත ක්ලික් කළ විට විවෘත කළ යුතු URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "උප මාතෘකාව",
+        "description": "කාඩ් උප මාතෘකාව."
+      },
+      {
+        "property": "tags",
+        "title": "ටැග",
+        "description": "කොමා මගින් වෙන් කළ ටැග්."
+      },
+      {
+        "property": "mediaSource",
+        "title": "මාධ්‍ය මූලාශ්‍රය",
+        "description": "ප්‍රාථමික මාධ්‍ය මූලාශ්‍රය."
+      },
+      {
+        "property": "hoverSource",
+        "title": "හෝවර් කිරීමේදී මූලාශ්‍රය",
+        "description": "කාඩ්පත හෝවර් කළ විට හෝ සක්‍රිය කළ විට පෙන්වන මාධ්‍ය මූලාශ්‍රය."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "කාඩ්පත පුරා යොදන උච්චාරණ වර්ණය."
+      },
+      {
+        "property": "dark",
+        "title": "අඳුරු",
+        "description": "අඳුරු ප්‍රකාර මූලික වර්ණ භාවිත කරන්න."
+      }
+    ]
+  }
+}

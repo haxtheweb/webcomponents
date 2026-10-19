@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Хронологія",
+    "description": "Хронологія подій із зображеннями й текстом"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Назва хронології",
+        "description": "Назва хронології."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "Необов'язковий акцентний колір."
+      },
+      {
+        "property": "dark",
+        "title": "Темна тема",
+        "description": "Увімкнути темну тему"
+      },
+      {
+        "slot": "",
+        "title": "Опис хронології",
+        "description": "Необов'язковий текст, що описує хронологію."
+      },
+      {
+        "property": "events",
+        "title": "Події хронології",
+        "description": "Події на хронології"
+      }
+    ]
+  }
+}

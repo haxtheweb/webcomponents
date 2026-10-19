@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Huluki ya CMS",
+    "description": "Huluki ya CMS inayoonyeshwa upande wa backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Aina",
+        "description": "aina kutoka CMS yetu",
+        "options": {
+          "node": "Nodi",
+          "user": "Mtumiaji",
+          "file": "Faili"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id kutoka CMS yetu"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Hali ya kuonyesha",
+        "description": "hali ya kuonyesha kutoka CMS yetu"
+      }
+    ]
+  }
+}

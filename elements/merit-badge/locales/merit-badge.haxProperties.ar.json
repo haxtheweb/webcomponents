@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "شارة الجدارة",
+    "description": "شارة مرئية للتعبير عن اكتساب مهارة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "عنوان الشارة",
+        "description": "العنوان المعروض على الشارة."
+      },
+      {
+        "property": "badgeImage",
+        "title": "صورة الشارة",
+        "description": "URL صورة الشارة."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "تفاصيل الشارة",
+        "description": "تفاصيل حول الشارة."
+      },
+      {
+        "property": "hyperLink",
+        "title": "ارتباط تشعبي",
+        "description": "الرابط المرتبط بالشارة."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "مهارات الشارة",
+        "description": "المهارات المعروضة على الشارة."
+      },
+      {
+        "property": "skill",
+        "title": "المهارة (OER Schema)",
+        "description": "OER Schema: مهارة مكتسبة يتم الحصول عليها بإكمال هدف التعلّم هذا."
+      }
+    ]
+  }
+}

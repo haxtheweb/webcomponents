@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "سخرية",
+    "description": "عرض النص بأسلوب ساخر"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "النص",
+        "description": "النص المراد جعله ساخرًا"
+      }
+    ]
+  }
+}

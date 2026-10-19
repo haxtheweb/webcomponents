@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Nīnau Pane Pōkole",
+    "description": "E pane ka mea hoʻohana i kekahi nīnau maʻalahi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Nīnau",
+        "description": "Nīnau e pane ai nā mea hoʻohana."
+      },
+      {
+        "property": "answers",
+        "title": "Nā Pane Kūpono"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Inoa o ka hōʻike",
+        "description": "Inoa hōʻike i hoʻouna ʻia no ka hoʻohana ʻana ma nā kaiapuni xAPI no ka ʻike ʻana i kēia mea"
+      }
+    ]
+  }
+}

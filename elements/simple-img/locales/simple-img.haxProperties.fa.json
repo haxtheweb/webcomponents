@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "تصویر ساده",
+    "description": "دست‌کاری تصاویر با پارامترهای ساده."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "منبع",
+        "description": "URL منبع تصویر."
+      },
+      {
+        "property": "height",
+        "title": "ارتفاع",
+        "description": "ارتفاع اختیاری تصویر."
+      },
+      {
+        "property": "width",
+        "title": "عرض",
+        "description": "عرض اختیاری تصویر."
+      },
+      {
+        "property": "alt",
+        "title": "متن جایگزین",
+        "description": "برای صفحه‌خوان‌ها و بهبود SEO مفید است."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "کیفیت",
+        "description": "کیفیت تصویر هنگام تولید (فقط JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "اولویت واکشی",
+        "description": "راهنمای کارایی برای مرورگرهای مدرن.",
+        "options": {
+          "auto": "خودکار",
+          "high": "بالا",
+          "low": "پایین"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "روش رمزگشایی",
+        "description": "راهنمای کارایی برای نمایش تصویر در مرورگرهای مدرن.",
+        "options": {
+          "auto": "خودکار",
+          "async": "ناهمگام"
+        }
+      }
+    ]
+  }
+}

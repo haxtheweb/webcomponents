@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS 实体",
+    "description": "在后端渲染的 CMS 实体"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "类型",
+        "description": "我们 CMS 中的类型",
+        "options": {
+          "node": "节点",
+          "user": "用户",
+          "file": "文件"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "我们 CMS 中的 ID"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "显示模式",
+        "description": "我们 CMS 中的显示模式"
+      }
+    ]
+  }
+}

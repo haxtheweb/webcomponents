@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "بلٹ والی لسٹ",
+    "description": "بلٹ والی لسٹ بݨاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "بلٹ سٹائل",
+        "description": "بے ترتیب لسٹ دے بلٹاں لئی ورتیا سٹائل۔",
+        "options": {
+          "": "ڈیفالٹ (چوکور)",
+          "list-disc": "ٹکی",
+          "list-circle": "گول",
+          "list-square": "چوکور"
+        }
+      }
+    ]
+  }
+}

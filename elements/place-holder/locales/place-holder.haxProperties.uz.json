@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Oʻrinbosar",
+    "description": "Tanlangan media turiga aylantirilishi mumkin boʻlgan oʻrinbosar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Turi",
+        "description": "Almashtirish uchun qabul qilinadigan gizmo turi.",
+        "options": {
+          "text": "Matn / kontent",
+          "document": "Hujjat / fayl",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Rasm",
+          "math": "Matematika"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Matn",
+        "description": "Kerakli oʻrinbosarni batafsilroq belgilang"
+      }
+    ]
+  }
+}

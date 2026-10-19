@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "توکن CMS",
+    "description": "توکن CMS که در بک‌اند نمایش داده می‌شود"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "توکن",
+        "description": "توکن از CMS ما"
+      }
+    ]
+  }
+}

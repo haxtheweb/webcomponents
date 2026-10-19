@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "កាត",
+    "description": "កាតជាមួយរចនាប័ទ្មសង្កត់ (ស្រេចចិត្ត)។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងសម្រាប់កាត។"
+      },
+      {
+        "slot": "subheading",
+        "title": "ចំណងជើងរង",
+        "description": "ចំណងជើងរង (ស្រេចចិត្ត) សម្រាប់កាត។"
+      },
+      {
+        "slot": "content",
+        "title": "ខ្លឹមសារ",
+        "description": "មាតិកាសម្រាប់កាត។"
+      },
+      {
+        "slot": "footer",
+        "title": "បាតកថា",
+        "description": "បាតកថា (ស្រេចចិត្ត) សម្រាប់កាត។"
+      },
+      {
+        "property": "imageSrc",
+        "title": "រូបភាព",
+        "description": "រូបភាព (ស្រេចចិត្ត)"
+      },
+      {
+        "property": "imageAlt",
+        "title": "អត្ថបទជំនួសរូបភាព",
+        "description": "អត្ថបទជំនួសដែលពិពណ៌នារូបភាពសម្រាប់កម្មវិធីអានអេក្រង់។ ទុកទទេតែក្នុងករណីរូបភាពសម្រាប់តុបតែងសុទ្ធសាធប៉ុណ្ណោះ។"
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "ការតម្រឹមផ្ដេករូបភាព",
+        "options": {
+          "left": "ឆ្វេង",
+          "center": "កណ្ដាល",
+          "right": "ស្ដាំ"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "ការតម្រឹមបញ្ឈររូបភាព",
+        "options": {
+          "top": "ខាងលើ",
+          "center": "កណ្ដាល",
+          "bottom": "ខាងក្រោម"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌សង្កត់ជាជម្រើស។"
+      },
+      {
+        "property": "dark",
+        "title": "រចនាប័ទ្មងងឹត",
+        "description": "បើកធីមងងឹត"
+      },
+      {
+        "property": "horizontal",
+        "title": "ផ្តេក",
+        "description": "ទិសដៅផ្ដេក?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "សង្កត់ចំណងជើង",
+        "description": "អនុវត្តពណ៌សង្កត់ទៅចំណងជើង?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "សង្កត់ផ្ទៃខាងក្រោយ",
+        "description": "អនុវត្តពណ៌សង្កត់ទៅផ្ទៃខាងក្រោយកាត?"
+      },
+      {
+        "property": "noBorder",
+        "title": "គ្មានស៊ុមសង្កត់",
+        "description": "ដកស៊ុមសង្កត់ចេញ?"
+      },
+      {
+        "property": "flat",
+        "title": "រាបស្មើ",
+        "description": "ដកស្រមោលប្រអប់ចេញ?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "ជ្រុង",
+        "description": "មាតិកាសម្រាប់ជ្រុងកាត។"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Сана",
+    "description": "Санаи тақвимиро бо тафсилот нишон диҳед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Моҳ",
+        "description": "Моҳе, ки дар корт нишон дода мешавад."
+      },
+      {
+        "property": "date",
+        "title": "Рӯзи моҳ",
+        "description": "Рӯзи моҳ бо рақам."
+      },
+      {
+        "property": "day",
+        "title": "Рӯзи ҳафта",
+        "description": "Рӯзи ҳафта бо матн."
+      },
+      {
+        "property": "title",
+        "title": "Унвон",
+        "description": "Номи чорабинӣ."
+      },
+      {
+        "property": "location",
+        "title": "Макон",
+        "description": "Макони чорабинӣ."
+      },
+      {
+        "property": "startTime",
+        "title": "Оғоз",
+        "description": "Вақти оғоз."
+      },
+      {
+        "property": "endTime",
+        "title": "Анҷом",
+        "description": "Вақти анҷом."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидии ихтиёрӣ."
+      },
+      {
+        "property": "dark",
+        "title": "Мавзӯи торик",
+        "description": "Мавзӯи торикро фаъол кунед."
+      }
+    ]
+  }
+}

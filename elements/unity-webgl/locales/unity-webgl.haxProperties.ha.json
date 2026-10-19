@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Mai Kunna Unity",
+    "description": "Mai kunna Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Manufa",
+        "description": "Hanyar zuwa ginin wasan."
+      },
+      {
+        "property": "compression",
+        "title": "Hanyar matsawa",
+        "description": "Ƙarin sunan fayil na matsawa don kadarorin wasa."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL na Yawo",
+        "description": "URL na kadarorin yawo."
+      },
+      {
+        "property": "companyname",
+        "title": "Sunan Kamfani",
+        "description": "Sunan kamfani."
+      },
+      {
+        "property": "productname",
+        "title": "Sunan Samfur",
+        "description": "Taken wasa."
+      },
+      {
+        "property": "productversion",
+        "title": "Sigar Samfur",
+        "description": "Sigar fitarwa."
+      },
+      {
+        "property": "width",
+        "title": "Faɗin Zane",
+        "description": "Faɗin CSS na zane (misali px ko em)."
+      },
+      {
+        "property": "height",
+        "title": "Tsawon Zane",
+        "description": "Tsawon CSS na zane (misali px ko em)."
+      },
+      {
+        "property": "background",
+        "title": "Bangon Zane",
+        "description": "Bangon CSS na zane."
+      }
+    ]
+  }
+}

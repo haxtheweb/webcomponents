@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris kutucuğu",
+    "description": "Başlık, isteğe bağlı destekleyici metin ve isteğe bağlı bağlantı içeren bir Polaris kutucuğu gösterin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Birincil metin",
+        "description": "Kutucuğun ana metni."
+      },
+      {
+        "property": "line2",
+        "title": "İkincil metin",
+        "description": "İsteğe bağlı destekleyici metin."
+      },
+      {
+        "property": "type",
+        "title": "Kutucuk stili",
+        "description": "Hazır kutucuk görsel stili.",
+        "options": {
+          "1": "Stil 1",
+          "2": "Stil 2",
+          "3": "Stil 3",
+          "4": "Stil 4",
+          "5": "Stil 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Arka plan görseli",
+        "description": "Görsel destekleyen kutucuk stillerinin kullandığı arka plan görseli URL'si."
+      },
+      {
+        "property": "link",
+        "title": "Bağlantı",
+        "description": "Kutucuk eylemi için isteğe bağlı hedef URL."
+      }
+    ]
+  }
+}

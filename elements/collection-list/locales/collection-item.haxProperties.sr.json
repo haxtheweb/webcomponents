@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Ставка колекције",
+    "description": "Ставка у облику картице за употребу у листи колекције, са текстом, везом и опционалним медијем."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Веза",
+        "description": "Одредишни URL за ову картицу."
+      },
+      {
+        "property": "image",
+        "title": "Слика",
+        "description": "Позадинска слика."
+      },
+      {
+        "property": "line1",
+        "title": "Ред 1",
+        "description": "Први ред текста."
+      },
+      {
+        "property": "line2",
+        "title": "Ред 2",
+        "description": "Други ред текста."
+      },
+      {
+        "property": "line3",
+        "title": "Ред 3",
+        "description": "Трећи ред текста."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона која представља картицу."
+      },
+      {
+        "property": "saturate",
+        "title": "Ефекат засићености",
+        "description": "Промени засићеност слике при фокусу корисника."
+      },
+      {
+        "property": "tags",
+        "title": "Ознаке",
+        "description": "Листа ознака одвојених зарезима."
+      },
+      {
+        "property": "accentColor",
+        "title": "Боја",
+        "description": "Боја за ознаке."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Алтернативни текст који описује везу."
+      }
+    ]
+  }
+}

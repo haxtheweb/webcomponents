@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Berhevdana wêneyan",
+    "description": "Ji bo berhevdanê wêneyekî li ser yê din bikişîne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Wêneyê jorîn",
+        "description": "Wêneyê jorîn ku li ser wêneyê jêrîn tê kişandin."
+      },
+      {
+        "property": "topAlt",
+        "title": "Nivîsa alt a wêneyê jorîn",
+        "description": "Nivîsa alt a pêwîst ji bo gihîştbariyê."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Wêneyê jêrîn",
+        "description": "Wêneyê jêrîn ku di bin wêneyê jorîn de tê nîşandan."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Nivîsa alt a wêneyê jêrîn",
+        "description": "Nivîsa alt a pêwîst ji bo gihîştbariyê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Tevger",
+        "description": "Moda paqijkirinê (xwerû) an moda zelaliya wêneyê jorîn hilbijêre."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê Balkêş",
+        "description": "Rengê darika şemitokê."
+      },
+      {
+        "property": "dark",
+        "title": "Tarî",
+        "description": "Rengê darika şemitokê berevajî bike."
+      },
+      {
+        "property": "position",
+        "title": "Cihê Destpêkê",
+        "description": "Cihê destpêkê ji 0 heta 100."
+      }
+    ]
+  }
+}

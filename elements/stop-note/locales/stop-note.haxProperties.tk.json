@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Duruz belligi",
+    "description": "Okyjylary belli görkezmelere üns bermäge çagyrýan habar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Duruz belligi üçin at giriziň."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Daşky URL giriziň."
+      },
+      {
+        "property": "status",
+        "title": "Ýagdaý",
+        "description": "Ýagdaýy bellemek reňkleri we nyşanlary oňa laýyklykda üýtgedýär",
+        "options": {
+          "stop": "Duruz",
+          "warning": "Duýduryş",
+          "success": "Tassyklama",
+          "info": "Bildiriş"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Belligiň teksti",
+        "description": "Duruz belligi üçin tekst."
+      }
+    ]
+  }
+}

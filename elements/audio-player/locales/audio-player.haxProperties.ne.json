@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "अडियो",
+    "description": "यसले स्रोत जुनसुकै भए पनि भिडियोलाई अत्यन्त पहुँचयोग्य तरिकाले प्रस्तुत गर्न सक्छ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "यस मिडियाको URL।"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "शीर्षक",
+        "description": "भिडियोको तल राख्ने साधारण शीर्षक"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "प्लेयरका लागि एक्सेन्ट रङ चयन गर्नुहोस्।"
+      },
+      {
+        "property": "track",
+        "title": "क्याप्सनहरू",
+        "description": "क्याप्सन फाइलको URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "थम्बनेल छवि",
+        "description": "वैकल्पिक। थम्बनेल/पोस्टर छविको URL।"
+      },
+      {
+        "property": "learningMode",
+        "title": "सिकाइ मोड सक्षम गर्नुहोस्",
+        "description": "अगाडि बढाउने र पछाडि फर्काउने असक्षम गर्छ।"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube मा खोल्ने बटन हटाउनुहोस्",
+        "description": "भिडियो YouTube मा खोल्ने बटन हटाउँछ।"
+      },
+      {
+        "property": "linkable",
+        "title": "साझा लिङ्क समावेश गर्ने?",
+        "description": "भिडियो साझा गर्न लिङ्क दिन्छ।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS प्रयोग गर्ने कि नगर्ने जनाउँछ।",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "पृष्ठभूमिमा प्लेब्याक अनुमति दिनुहोस्",
+        "description": "ट्याबबाट फोकस हट्दा भिडियोहरू स्वतः रोकिन्छन् / चल्छन्; यसले ट्याबमा फोकस नभए पनि भिडियो चलाउन दिन्छ"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ट्रान्सक्रिप्टका लागि डार्क थिम",
+        "description": "ट्रान्सक्रिप्टका लागि डार्क थिम सक्षम गर्नुहोस्।"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "अन्तरक्रिया असक्षम गर्नुहोस्",
+        "description": "ट्रान्सक्रिप्टलाई क्लिक गर्न मिल्ने बनाउने अन्तरक्रियात्मक मोड असक्षम गर्नुहोस्।"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "समय चिन्हहरू लुकाउनुहोस्",
+        "description": "ट्रान्सक्रिप्टमा समय चिन्हहरू लुकाउनुहोस्।"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ट्रान्सक्रिप्ट लुकाउनुहोस्",
+        "description": "पूर्वनिर्धारित रूपमा ट्रान्सक्रिप्ट लुकाउनुहोस्।"
+      },
+      {
+        "property": "lang",
+        "title": "भाषा",
+        "description": "मिडियाको भाषा।"
+      }
+    ]
+  }
+}

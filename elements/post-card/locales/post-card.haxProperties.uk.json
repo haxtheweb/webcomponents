@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Листівка",
+    "description": "Грайливий медіаелемент, що виглядає як справжня листівка звідкись"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Кому",
+        "description": "Кому адресовано?"
+      },
+      {
+        "property": "from",
+        "title": "Від кого",
+        "description": "Хто ви?"
+      },
+      {
+        "property": "message",
+        "title": "Повідомлення",
+        "description": "Що ви хочете сказати?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Поштовий штемпель",
+        "description": "Звідки надіслано цю листівку?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Джерело головного фото",
+        "description": "Де розміщено ваше фото?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Джерело фото марки",
+        "description": "Де розміщено ваше фото?"
+      }
+    ]
+  }
+}

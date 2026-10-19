@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Partiturak",
+    "description": "Partiturak, gitarra tablaturak eta notazioa bistaratu eta erreproduzitzen ditu alphaTex edo MusicXML bidez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex notazioa",
+        "description": "Partituraren lerroko alphaTex markaketa. Editatu zuzenean notazioa idazteko; txantiloi batean gordetzen da, tarteak mantentzeko."
+      },
+      {
+        "property": "source",
+        "title": "Partitura fitxategia",
+        "description": "Igo edo estekatu MusicXML (.xml/.musicxml/.mxl) edo Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) fitxategi bat. Ezarrita dagoenean, lerroko alphaTex gainidazten du."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Audio erreprodukzioa",
+        "description": "Lehenespenez aktibatuta - entzun partitura barneko sintetizadorearekin jotzen. Desaktibatu ikusteko soilik den modurako (audiorik gabe)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Erakutsi bistaratze aukerak",
+        "description": "Erakutsi zoom, luzatze eta diseinu botoiak erreproduzigailuaren barran."
+      },
+      {
+        "property": "showExport",
+        "title": "Erakutsi esportatzeko botoiak",
+        "description": "Erakutsi MIDI deskargatzeko eta inprimatzeko/PDF botoiak erreproduzigailuaren barran."
+      }
+    ]
+  }
+}

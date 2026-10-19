@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Výstražná poznámka",
+    "description": "Zpráva upozorňující čtenáře na konkrétní pokyny."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Název",
+        "description": "Zadejte název výstražné poznámky."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Zadejte externí URL."
+      },
+      {
+        "property": "status",
+        "title": "Stav",
+        "description": "Nastavení stavu změní barvy a ikony tak, aby odpovídaly",
+        "options": {
+          "stop": "Stop",
+          "warning": "Varování",
+          "success": "Potvrzení",
+          "info": "Upozornění"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Text poznámky",
+        "description": "Text výstražné poznámky."
+      }
+    ]
+  }
+}

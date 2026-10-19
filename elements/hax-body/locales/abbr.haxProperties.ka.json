@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "აბრევიატურა",
+    "description": "აბრევიატურა სრული ტერმინის მინიშნებით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "ტექსტი",
+        "description": "აბრევიატურის ხილული ტექსტი."
+      },
+      {
+        "attribute": "title",
+        "title": "სიტყვა",
+        "description": "სრული ტერმინი, რომელიც კურსორის მიტანისას ჩანს."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliografía kaq",
+    "description": "Bibliografíapi huk citallata rikuchiq kaq, askha rikch'aykunata lluqsichiy akllanakunatapas yanapan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Laya",
+        "description": "Cita rikch'ay",
+        "options": {
+          "web": "Web",
+          "journal": "Revista",
+          "book": "Liwru"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Suti",
+        "description": "Kaqpa sutin"
+      },
+      {
+        "property": "authors",
+        "title": "Qillqaq(kuna)",
+        "description": "Pacha siqipi ruraykuna"
+      },
+      {
+        "property": "publisher",
+        "title": "Uyarichiq",
+        "description": "Ñawpaq web tiyana"
+      }
+    ]
+  }
+}

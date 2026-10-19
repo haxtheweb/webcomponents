@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "图像热区图",
+    "description": "带交互式热点的无障碍图像热区图。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "标签",
+        "description": "图像热区图的标签。"
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "热点详情",
+        "description": "图像热区图上的交互式热点。"
+      }
+    ]
+  }
+}

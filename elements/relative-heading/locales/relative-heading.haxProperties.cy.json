@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Pennawd perthynol",
+    "description": "yn allbynnu'r hierarchaeth penawdau gywir yn seiliedig ar bennawd y rhiant"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID Adnodd Pennawd y Rhiant"
+      },
+      {
+        "property": "disableLink",
+        "description": "Yn analluogi nodwedd y botwm dolen."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Yn alinio'r botwm copïo dolen i ochr dde bellaf y pennawd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Lefel y pennawd os na cheir hyd i'r rhiant."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Yn diystyru'r testun diofyn ar gyfer neges hysbysu copïo dolen."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Yn diystyru label diofyn y botwm copïo dolen."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Yn diystyru eicon diofyn y botwm copïo dolen."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Yn diystyru'r label diofyn ar gyfer botwm cau neges hysbysu copïo dolen."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Yn diystyru'r eicon diofyn ar gyfer botwm cau neges hysbysu copïo dolen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Seznam predvajanja",
+    "description": "Prikaz kakršne koli vsebine v seznamu predvajanja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Vir",
+        "description": "Vsebina, prikazana v seznamu predvajanja."
+      },
+      {
+        "property": "edit",
+        "title": "Način urejanja",
+        "description": "Preklopi med načinom urejanja in predogleda seznama predvajanja."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigacija",
+        "description": "Prikaži gumba za pomik naprej in nazaj."
+      },
+      {
+        "property": "pagination",
+        "title": "Številčenje strani",
+        "description": "Prikaži pike za številčenje strani."
+      },
+      {
+        "property": "orientation",
+        "title": "Usmerjenost",
+        "description": "Usmerjenost diapozitivov.",
+        "options": {
+          "horizontal": "Vodoravno",
+          "vertical": "Navpično"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Začetni diapozitiv",
+        "description": "Indeks diapozitiva, na katerega se na začetku osredotoči."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Razmerje stranic",
+        "description": "Razmerje stranic diapozitivov.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Lernkomponente",
+    "description": "Eine Karte, mit der Lehrende Pädagogik und didaktische Strategien vermitteln."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Typ",
+        "description": "Die Art der zu verwendenden Karte."
+      },
+      {
+        "property": "subtitle",
+        "title": "Untertitel",
+        "description": "Der Untertitel der Karte."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Ein optionaler Link für die Karte (für Lernziele nicht verfügbar)."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel festlegen; überschreibt den typbasierten Titel"
+      },
+      {
+        "property": "icon",
+        "title": "Symbol",
+        "description": "Symbol festlegen; überschreibt das typbasierte Symbol"
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Akzentfarbe festlegen; überschreibt die typbasierte Farbe"
+      },
+      {
+        "slot": "",
+        "title": "Inhalt"
+      }
+    ]
+  }
+}

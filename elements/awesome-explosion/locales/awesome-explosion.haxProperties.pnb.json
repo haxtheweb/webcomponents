@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "زبردست دھماکا",
+    "description": "اختیاری آواز اثراں نال انٹرایکٹو دھماکا اینیمیشن۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "سائز",
+        "description": "دھماکے دا سائز مقرر کرو۔",
+        "options": {
+          "tiny": "بہت نکا",
+          "small": "نکا",
+          "medium": "درمیانہ",
+          "large": "وڈا",
+          "epic": "زبردست"
+        }
+      },
+      {
+        "property": "color",
+        "title": "رنگ",
+        "description": "دھماکے دا رنگ تھیم مقرر کرو۔",
+        "options": {
+          "": "ڈیفالٹ",
+          "red": "لال",
+          "blue": "نیلا",
+          "purple": "جامنی",
+          "orange": "سنگتری",
+          "yellow": "پیلا"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "آواز اثرات",
+        "description": "آواز اثرات فعال کرو۔"
+      },
+      {
+        "property": "resetSound",
+        "title": "آواز دوبارہ شروع",
+        "description": "ہر واری آواز شروع توں دوبارہ چلاؤ۔"
+      },
+      {
+        "property": "image",
+        "title": "اپنی تصویر",
+        "description": "دھماکے دی اپنی تصویر لئی اختیاری URL۔"
+      },
+      {
+        "property": "sound",
+        "title": "اپنی آواز",
+        "description": "اپنے آواز اثر لئی اختیاری URL۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "غیر فعال",
+        "description": "سارے تعامل غیر فعال کرو۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Повеќекратен избор",
+    "description": "Прашање за самопроверка со повеќекратен избор."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Прашање",
+        "description": "Прашање на кое корисниците треба да одговорат."
+      },
+      {
+        "property": "randomize",
+        "title": "Случаен редослед",
+        "description": "Динамично измешај го редоследот на одговорите."
+      },
+      {
+        "property": "singleOption",
+        "title": "Еден одговор",
+        "description": "Дозволи само еден одговор."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат на оценување",
+        "description": "OER Schema: формат на оценување за оваа проценка (на пр. поени, буква, процент, завршеност)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Цел на учење",
+        "description": "OER Schema: цел на учење поврзана со оваа проценка."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс за кој е наменета оваа проценка."
+      },
+      {
+        "property": "answers",
+        "title": "Одговори"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Име на квизот",
+        "description": "Име на квизот што се користи за xAPI идентификација во аналитичките системи."
+      }
+    ]
+  }
+}

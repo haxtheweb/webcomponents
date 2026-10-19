@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "תצוגה מקדימה של GitHub",
+    "description": "איור נגיש עם תיאור ארוך"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ארגון",
+        "description": "השם המכונתי של הארגון ב-GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "מאגר",
+        "description": "השם המכונתי של המאגר"
+      },
+      {
+        "property": "extended",
+        "title": "תצוגה מורחבת",
+        "description": "כולל את ה-readme ברכיב"
+      }
+    ]
+  }
+}

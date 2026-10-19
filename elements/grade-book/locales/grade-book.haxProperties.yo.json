@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ìwé Máàkì",
+    "description": "Ìwé máàkì aláìlórí tó ń ṣe àtìlẹ́yìn fún oríṣiríṣi backend pẹ̀lú àwọn rubric."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orísun",
+        "description": "Irú orísun dátà (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Ibi URL (JSON)",
+          "json": "Àkójọ dátà JSON",
+          "filesystem": "Ètò fáìlì"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Dátà Orísun",
+        "description": "URL tàbí dátà JSON fún ìwé máàkì."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ìtọ́kasí Ẹ̀kọ́",
+        "description": "Ìdánimọ̀ ẹ̀kọ́ tí a gbé jáde bí oer:forCourse lórí ohun èlò Ìdánwò kọ̀ọ̀kan."
+      }
+    ]
+  }
+}

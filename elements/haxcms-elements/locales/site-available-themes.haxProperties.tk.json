@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Elýeterli temalar",
+    "description": "Elýeterli HAXcms temalaryny göni öňünden görmek bilen görkez"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Görkeziş tertibi",
+        "description": "Temalaryň nähili görkeziljekdigini saýlaň",
+        "options": {
+          "gallery": "Galereýa",
+          "table": "Tablisa"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Jikme-jiklikleri görkez",
+        "description": "Tema düşündirişlerini we goşmaça maglumatlary görkez"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Gizlin we köne temalary görkez",
+        "description": "Dolandyryş paneliniň deslapkylaryndan başga gizlin, köne we erbet temalary hem görkez"
+      },
+      {
+        "property": "columns",
+        "title": "Sütünler (galereýa)",
+        "description": "Galereýa görnüşindäki sütünleriň sany"
+      }
+    ]
+  }
+}

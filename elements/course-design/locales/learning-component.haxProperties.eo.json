@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Lerna komponanto",
+    "description": "Karto por ke instruistoj komuniku pedagogion kaj instruajn strategiojn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipo",
+        "description": "La tipo de karto uzota."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtitolo",
+        "description": "La subtitolo de la karto."
+      },
+      {
+        "property": "url",
+        "title": "Ligilo",
+        "description": "Nedeviga ligilo por la karto (ligilo ne disponeblas por lerncelaj kartoj)."
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Agordi titolon; ĉi tio anstataŭigas la tip-bazitan titolon"
+      },
+      {
+        "property": "icon",
+        "title": "Piktogramo",
+        "description": "Agordi piktogramon; ĉi tio anstataŭigas la tip-bazitan piktogramon"
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Agordi akcentan koloron; ĉi tio anstataŭigas la tip-bazitan koloron"
+      },
+      {
+        "slot": "",
+        "title": "Enhavo"
+      }
+    ]
+  }
+}

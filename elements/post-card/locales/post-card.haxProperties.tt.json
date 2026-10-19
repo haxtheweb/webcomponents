@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Открытка",
+    "description": "Кайдандыр җибәрелгән чын открытка кебек күренә торган күңелле медиа әйбер"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Кемгә",
+        "description": "Бу кемгә җибәрелә?"
+      },
+      {
+        "property": "from",
+        "title": "Кемнән",
+        "description": "Сез кем?"
+      },
+      {
+        "property": "message",
+        "title": "Хәбәр",
+        "description": "Нәрсә әйтергә телисез?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Почта штампы урыны",
+        "description": "Бу открытка кайдан җибәрелгән?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Төп фото чыганагы",
+        "description": "Фотоның кайда урнашкан?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Марка фотосы чыганагы",
+        "description": "Фотоның кайда урнашкан?"
+      }
+    ]
+  }
+}

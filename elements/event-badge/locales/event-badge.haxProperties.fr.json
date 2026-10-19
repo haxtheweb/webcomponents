@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Badge d'événement",
+    "description": "Composant de badge d'événement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Image TV",
+        "description": "Image affichée sur la TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo affiché dans le coin du badge."
+      },
+      {
+        "property": "title",
+        "title": "Titre",
+        "description": "Titre affiché en haut du badge."
+      },
+      {
+        "property": "name",
+        "title": "Nom",
+        "description": "Nom affiché sur le badge."
+      },
+      {
+        "property": "position",
+        "title": "Poste",
+        "description": "Rôle ou titre de la personne."
+      },
+      {
+        "property": "organization",
+        "title": "Organisation",
+        "description": "Organisation pour laquelle la personne travaille."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Couleur de la TV",
+        "description": "Choisissez la couleur de la TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Couleur principale d'arrière-plan ou de texte."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Couleur des boutons",
+        "description": "Couleur des boutons de la TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sépia",
+        "description": "Appliquer un effet sépia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Noir et blanc",
+        "description": "Appliquer un effet noir et blanc."
+      }
+    ]
+  }
+}

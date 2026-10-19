@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Temas disponíveis",
+    "description": "Exibir os temas HAXcms disponíveis com troca de pré-visualização ao vivo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Modo de visualização",
+        "description": "Escolha como exibir os temas",
+        "options": {
+          "gallery": "Galeria",
+          "table": "Tabela"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Mostrar detalhes",
+        "description": "Mostrar descrições dos temas e informações adicionais"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Mostrar temas ocultos e legados",
+        "description": "Mostrar temas ocultos, legados e terríveis além dos padrões do painel"
+      },
+      {
+        "property": "columns",
+        "title": "Colunas (galeria)",
+        "description": "Número de colunas na visualização em galeria"
+      }
+    ]
+  }
+}

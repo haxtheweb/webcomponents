@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "کورس ماڈل",
+    "description": "کورس دے تصوراں لئی تفصیلاں، اینیمیشن تے علم دی جانچ والا انٹرایکٹو لے آؤٹ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "سرناواں"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "معلومات والا حصہ"
+      },
+      {
+        "title": "تفصیلاں والا حصہ"
+      },
+      {
+        "title": "اینیمیشن والا حصہ"
+      },
+      {
+        "title": "علم دی جانچ والا حصہ"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "لوگو والا حصہ"
+      }
+    ]
+  }
+}

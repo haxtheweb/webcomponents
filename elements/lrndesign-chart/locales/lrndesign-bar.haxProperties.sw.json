@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Chati ya Pau",
+    "description": "Huunda chati inayofikika kulingana na CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rangi ya Msisitizo",
+        "description": "Rangi ya msisitizo ya hiari."
+      },
+      {
+        "title": "Mandhari Meusi",
+        "description": "Washa Mandhari ya Giza"
+      },
+      {
+        "title": "Faili ya CSV",
+        "description": "Pakia data kutoka CSV."
+      },
+      {
+        "title": "Kichwa cha Chati",
+        "description": "Maandishi mbadala yanayofikika kwa chati yako."
+      },
+      {
+        "title": "Maelezo ya Chati",
+        "description": "Maelezo yanayofikika ya chati yako."
+      },
+      {
+        "title": "Jina la Kipimo",
+        "description": "Uwiano wa upana:urefu wa chati (Tazama https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings kwa $ct-scales na $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Onyesha Mandharinyuma ya Gridi"
+      },
+      {
+        "title": "Pau Mlalo",
+        "description": "Hugeuza mihimili ya chati ya pau ili kuchora chati ya pau mlalo. Fahamu kuwa pia unahitaji kugeuza mipangilio ya mihimili kwa kuwa Mhimili Y sasa utaonyesha lebo na Mhimili X thamani."
+      },
+      {
+        "title": "Panga Pau Juu ya Nyingine",
+        "description": "Ikiwekwa kuwa true sifa hii itasababisha pau za mfululizo kupangwa juu ya nyingine."
+      },
+      {
+        "title": "Sambaza Mfululizo",
+        "description": "Ikiwekwa kuwa true basi kila pau itawakilisha mfululizo na safu ya data inatarajiwa kuwa safu ya mwelekeo mmoja ya thamani za data badala ya safu ya mifululizo."
+      },
+      {
+        "title": "Nafasi ya Ndani ya Chati (juu)"
+      },
+      {
+        "title": "Nafasi ya Ndani ya Chati (chini)"
+      },
+      {
+        "title": "Nafasi ya Ndani ya Chati (kushoto)"
+      },
+      {
+        "title": "Nafasi ya Ndani ya Chati (kulia)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Geuza Data",
+        "description": "Geuza data ikijumuisha lebo, mpangilio wa mfululizo pamoja na safu nzima za data za mfululizo."
+      },
+      {
+        "title": "Jedwali la HTML",
+        "description": "Hiari: Pakia data kama jedwali la HTML."
+      },
+      {
+        "title": "Kiwango cha Chini cha Chati",
+        "description": "Kubatilisha kiwango cha chini asilia cha chati hukuruhusu kukuza au kuweka kikomo cha thamani ya chini kabisa inayoonyeshwa kwenye chati"
+      },
+      {
+        "title": "Kiwango cha Juu cha Chati",
+        "description": "Kubatilisha kiwango cha juu asilia cha chati hukuruhusu kukuza au kuweka kikomo cha thamani ya juu kabisa inayoonyeshwa kwenye chati"
+      },
+      {
+        "title": "Mhimili X Onyesha Gridi",
+        "description": "Onyesha gridi ya Mhimili X."
+      },
+      {
+        "title": "Msogeo wa Mhimili X"
+      },
+      {
+        "title": "Nafasi ya Mhimili X",
+        "description": "Nafasi ambapo lebo zinawekwa. Inaweza kuwekwa kuwa \"start\" au \"end\" ambapo \"start\" ni sawa na kushoto au juu kwenye mhimili wima na \"end\" ni sawa na kulia au chini kwenye mhimili mlalo"
+      },
+      {
+        "title": "Mhimili X Onyesha Lebo",
+        "description": "Onyesha lebo ya Mhimili X."
+      },
+      {
+        "title": "Lebo ya Mhimili X (msogeo mlalo)",
+        "description": "Nafasi mlalo ya lebo za Mhimili X."
+      },
+      {
+        "title": "Lebo ya Mhimili X (msogeo wima)",
+        "description": "Nafasi wima ya lebo za Mhimili X."
+      },
+      {
+        "title": "Kichwa cha Mhimili X",
+        "description": "Kichwa cha hiari cha mhimili X."
+      },
+      {
+        "title": "Kichwa cha Mhimili X (msogeo mlalo)",
+        "description": "Nafasi mlalo ya kichwa cha Mhimili X."
+      },
+      {
+        "title": "Kichwa cha Mhimili X (msogeo wima)",
+        "description": "Nafasi wima ya kichwa cha Mhimili X."
+      },
+      {
+        "title": "Nanga ya Kichwa cha Mhimili X",
+        "description": "Nanga ya hiari ya kichwa cha mhimili X.",
+        "options": {
+          "middle": "katikati",
+          "end": "mwisho",
+          "start": "mwanzo"
+        }
+      },
+      {
+        "title": "Nafasi ya Chini ya Kipimo cha Mhimili X",
+        "description": "Hubainisha urefu wa chini kwa pikseli wa hatua za kipimo."
+      },
+      {
+        "title": "Kipimo cha Mhimili X (nambari kamili pekee)",
+        "description": "Tumia thamani za nambari kamili pekee kwa hatua za kipimo."
+      },
+      {
+        "title": "Mhimili Y: Onyesha Gridi",
+        "description": "Onyesha gridi ya Mhimili Y."
+      },
+      {
+        "title": "Msogeo wa Mhimili Y"
+      },
+      {
+        "title": "Nafasi ya Mhimili Y",
+        "description": "Nafasi ambapo lebo zinawekwa. Inaweza kuwekwa kuwa \"start\" au \"end\" ambapo \"start\" ni sawa na kushoto au juu kwenye mhimili wima na \"end\" ni sawa na kulia au chini kwenye mhimili mlalo"
+      },
+      {
+        "title": "Mhimili Y Onyesha Lebo",
+        "description": "Onyesha lebo ya Mhimili Y."
+      },
+      {
+        "title": "Lebo ya Mhimili Y (msogeo mlalo)",
+        "description": "Nafasi mlalo ya lebo ya Mhimili Y."
+      },
+      {
+        "title": "Lebo ya Mhimili Y (msogeo wima)",
+        "description": "Nafasi wima ya lebo ya Mhimili Y."
+      },
+      {
+        "title": "Nafasi ya Chini ya Kipimo cha Mhimili Y",
+        "description": "Hubainisha urefu wa chini kwa pikseli wa hatua za kipimo."
+      },
+      {
+        "title": "Kipimo cha Mhimili Y (nambari kamili pekee)",
+        "description": "Tumia thamani za nambari kamili pekee kwa hatua za kipimo."
+      },
+      {
+        "title": "Kichwa cha Mhimili Y",
+        "description": "Kichwa cha hiari cha mhimili Y."
+      },
+      {
+        "title": "Kichwa cha Mhimili Y (msogeo wima)",
+        "description": "Nafasi mlalo ya kichwa cha Mhimili Y."
+      },
+      {
+        "title": "Kichwa cha Mhimili Y (msogeo mlalo)",
+        "description": "Nafasi mlalo ya kichwa cha Mhimili Y."
+      },
+      {
+        "title": "Nanga ya Kichwa cha Mhimili Y",
+        "description": "Nanga ya hiari ya kichwa cha mhimili Y.",
+        "options": {
+          "middle": "katikati",
+          "end": "mwisho",
+          "start": "mwanzo"
+        }
+      },
+      {
+        "title": "Geuza Kichwa cha Mhimili Y",
+        "description": "Geuza kichwa cha mhimili Y?"
+      },
+      {
+        "title": "Thamani ya Marejeleo",
+        "description": "Isipokuwa chini/juu zimewekwa waziwazi, chati ya pau itawekwa katikati kwenye sifuri kwa chaguomsingi."
+      },
+      {
+        "title": "Umbali wa Pau za Mfululizo",
+        "description": "Bainisha umbali kwa pikseli wa pau katika kikundi."
+      },
+      {
+        "title": "Hali ya Kupanga Juu",
+        "description": "Ikiwekwa kuwa \"true\" sifa hii itaunda jumla kwa kila nukta ya mfululizo. Hii pia itaathiri mhimili y na mipaka ya jumla ya chati. Ikiwekwa kuwa \"false\" sifa hii italazimisha pau zilizopangwa juu kuchorwa kuanzia mstari wa sifuri. Katika hali ya kupanga juu sifa ya \"seriesBarDistance\" haitakuwa na athari."
+      }
+    ]
+  }
+}

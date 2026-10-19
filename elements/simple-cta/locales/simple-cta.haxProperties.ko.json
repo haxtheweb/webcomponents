@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "행동 유도 버튼",
+    "description": "행동을 유도하는 링크가 있는 간단한 버튼."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "레이블",
+        "description": "링크 레이블"
+      },
+      {
+        "property": "link",
+        "title": "링크",
+        "description": "리소스 링크를 입력하세요"
+      },
+      {
+        "property": "hideIcon",
+        "title": "아이콘 숨기기",
+        "description": "텍스트를 강조하는 아이콘을 숨깁니다"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "아이콘",
+        "description": "작업 링크 아이콘"
+      }
+    ]
+  }
+}

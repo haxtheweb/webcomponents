@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Rādīt Polaris aicinājuma uz darbību pogu motīva stilā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Pogas teksts",
+        "description": "Aicinājuma uz darbību pogā rādītais teksts."
+      },
+      {
+        "property": "link",
+        "title": "Saite",
+        "description": "Pogas mērķa URL."
+      },
+      {
+        "property": "type",
+        "title": "Variants",
+        "description": "Vizuālā stila variants.",
+        "options": {
+          "primary": "Primārais",
+          "tinted": "Tonēts",
+          "light": "Gaišs"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Kontūras stils",
+        "description": "Iespējot kontūras noformējumu."
+      },
+      {
+        "property": "filled",
+        "title": "Aizpildīts stils",
+        "description": "Iespējot aizpildītu noformējumu."
+      }
+    ]
+  }
+}

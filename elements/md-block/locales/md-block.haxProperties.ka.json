@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Markdown კონტენტის ბლოკი, პირდაპირ ან დისტანციურად ჩატვირთული"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "დაუმუშავებელი markdown"
+      },
+      {
+        "property": "source",
+        "title": "წყარო",
+        "description": "markdown-ის წყარო ფაილი"
+      }
+    ]
+  }
+}

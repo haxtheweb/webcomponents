@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tarxeta de memoria",
+    "description": "Practica conceptos con tarxetas de memoria de anverso e reverso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Anverso da tarxeta",
+        "description": "Texto ou pregunta do anverso."
+      },
+      {
+        "slot": "back",
+        "title": "Reverso da tarxeta",
+        "description": "Resposta esperada."
+      },
+      {
+        "property": "imgSource",
+        "title": "Orixe da imaxe",
+        "description": "Ficheiro de imaxe usado para a tarxeta. Substitúe a palabra clave da imaxe."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tipo de acción",
+        "description": "OER Schema: o tipo de acción que implica esta práctica (p. ex. ler, escribir, facer, investigar, escoitar, ver, reflexionar, debater, observar, presentar, avaliar)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obxectivo de aprendizaxe",
+        "description": "OER Schema: ID ou URL do obxectivo de aprendizaxe que apoia esta práctica."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Escuro",
+        "description": "Usar o modo escuro."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Cor de realce da tarxeta."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Palabra clave da imaxe",
+        "description": "Palabra clave para unha imaxe aleatoria. A orixe da imaxe ten prioridade sobre ela."
+      }
+    ]
+  }
+}

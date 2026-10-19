@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lîsteya beşdarên GitHub",
+    "description": "Bi API ya GitHub wekî karakterên RPG tê nîşandan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Rêxistin",
+        "description": "Navê rêxistinê ji github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Depo",
+        "description": "Navê depoyê ji github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Sînor",
+        "description": "Hejmara beşdarên tên nîşandan sînordar bike."
+      }
+    ]
+  }
+}

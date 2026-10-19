@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn ynslute",
+    "description": "In LinkedIn-profylkaart ynslute."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Persoanlike namme",
+        "description": "Diel fan de persoanlike LinkedIn-brûkersnamme."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokale ynstelling",
+        "description": "Metadatawearde foar de lokale ynstelling, lykas en_US."
+      }
+    ]
+  }
+}

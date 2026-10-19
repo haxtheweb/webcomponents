@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ই-বুক বাটন",
+    "description": "একটি ই-বুকের লিংকযুক্ত বাটন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "বাটনের শিরোনাম।"
+      },
+      {
+        "property": "link",
+        "title": "লিংক",
+        "description": "ক্লিক করলে যে লিংকে রিডাইরেক্ট হবে।"
+      },
+      {
+        "property": "icon",
+        "title": "আইকন",
+        "description": "এই লিংক উপস্থাপনের আইকন"
+      }
+    ]
+  }
+}

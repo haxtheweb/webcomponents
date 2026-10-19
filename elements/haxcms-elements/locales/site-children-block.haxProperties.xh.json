@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: ibhloko yomntwana",
+    "description": "Ibhloko etshintshayo yokubonisa umntwana wephepha langoku"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Indlela etshintshayo",
+        "description": "Indlela yokubala abantwana ngokunxulumene nale nto",
+        "options": {
+          "active": "Abantwana abasebenzayo",
+          "parent": "Abantwana bomzali",
+          "ancestor": "Bonke abantwana ukusuka kukhokho ophezulu"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Inqanaba lokuqala"
+      },
+      {
+        "property": "end",
+        "title": "Inqanaba lokugqibela"
+      }
+    ]
+  }
+}

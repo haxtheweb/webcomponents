@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mureza wepeji",
+    "description": "Chinyorwa chekugadzirisa chevanyori vepeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rwekusimbisa rwemureza wepeji."
+      },
+      {
+        "property": "label",
+        "title": "Zita",
+        "description": "Mavara ezita remureza wepeji."
+      }
+    ]
+  }
+}

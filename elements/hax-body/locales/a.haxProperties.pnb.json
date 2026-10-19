@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "مُڈھلا لنک",
+    "description": "مُڈھلا لنک عنصر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "لنک",
+        "description": "منزل URL۔"
+      },
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "نظر آؤݨ والا لنک متن۔"
+      },
+      {
+        "attribute": "target",
+        "title": "ٹارگٹ",
+        "description": "لنک کتھے کھولݨا اے۔",
+        "options": {
+          "": "ایہو ونڈو",
+          "_blank": "نویں ونڈو - _blank",
+          "_top": "اُتلی ونڈو - _top",
+          "_parent": "پیرنٹ ونڈو - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "سرناواں متن",
+        "description": "پہنچ تے SEO لئی صلاحی سرناواں۔"
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "منزل نال تعلق (سکیورٹی/SEO)۔",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

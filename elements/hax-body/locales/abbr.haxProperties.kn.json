@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ಸಂಕ್ಷೇಪಣ",
+    "description": "ಪೂರ್ಣ ಪದದ ಟೂಲ್‌ಟಿಪ್‌ನೊಂದಿಗೆ ಸಂಕ್ಷೇಪಣ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "ಪಠ್ಯ",
+        "description": "ಗೋಚರಿಸುವ ಸಂಕ್ಷೇಪಣ ಪಠ್ಯ."
+      },
+      {
+        "attribute": "title",
+        "title": "ಪದ",
+        "description": "ಹೋವರ್ ಮಾಡಿದಾಗ ತೋರಿಸುವ ಪೂರ್ಣ ಪದ."
+      }
+    ]
+  }
+}

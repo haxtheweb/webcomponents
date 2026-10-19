@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X)-Abannung",
+    "description": "En Tweet vun X am Kontext abannen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "Tweet-URL",
+        "description": "URL vum Tweet, deen agebonne gëtt."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Thema",
+        "description": "Hellt oder däischtert Thema fir Tweete vun X.",
+        "options": {
+          "light": "Hell",
+          "dark": "Däischter"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Popup beim Klick verhënneren",
+        "description": "Verhënneren, datt Benotzer den Tweet op x.com opmaachen."
+      }
+    ]
+  }
+}

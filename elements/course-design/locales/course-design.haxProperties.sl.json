@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Zasnova predmeta",
+    "description": "Vsebnik za izobraževalna gradiva in elemente zasnove predmeta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Identifikator predmeta",
+        "description": "OER Schema: identifikator predmeta, npr. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Ponujeno v obdobju",
+        "description": "OER Schema: obdobje, v katerem se predmet izvaja."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Oblika izvedbe",
+        "description": "OER Schema: oblika izvedbe predmeta (npr. v živo, na spletu, hibridno)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Glavni predavatelj",
+        "description": "OER Schema: glavni predavatelj predmeta."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL učnega načrta",
+        "description": "OER Schema: URL do učnega načrta predmeta."
+      }
+    ]
+  }
+}

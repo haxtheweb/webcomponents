@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Gawe GIF animasi bisa diakses."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF Animasi",
+        "description": "URL kanggo GIF animasi."
+      },
+      {
+        "property": "alt",
+        "title": "Teks Alt",
+        "description": "Teks alternatif kanggo gambar."
+      },
+      {
+        "property": "longdesc",
+        "title": "Katrangan Dawa",
+        "description": "Katrangan dawa babagan GIF kanggo aksesibilitas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Gambar Meneng",
+        "description": "URL kanggo versi gambar meneng saka GIF."
+      }
+    ]
+  }
+}

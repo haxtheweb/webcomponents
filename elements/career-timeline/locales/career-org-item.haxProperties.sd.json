@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "ڪيريئر شيءِ",
+    "description": "هڪ تنظيم ۽ ان سان لاڳاپيل ڪردار"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "تنظيم جو نالو"
+      },
+      {
+        "property": "location",
+        "title": "جڳهه"
+      },
+      {
+        "property": "source",
+        "title": "ذريعو"
+      }
+    ]
+  }
+}

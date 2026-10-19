@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Odtwarzacz 3D",
+    "description": "Odtwarzacz plików 3D / rozszerzonej rzeczywistości."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Źródło",
+        "description": "URL tego pliku AR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Pozycja X elementu w AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Pozycja Y elementu w AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Pozycja Z elementu w AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Kolor nieba",
+        "description": "Wybierz kolor nieba w scenie."
+      }
+    ]
+  }
+}

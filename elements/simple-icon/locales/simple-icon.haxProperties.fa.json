@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "نماد",
+    "description": "نماد از کتابخانهٔ کامل نمادها."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "نماد",
+        "description": "نمادی که نمایش داده شود."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی نماد."
+      },
+      {
+        "property": "dark",
+        "title": "تیره",
+        "description": "استفاده از حالت تیره (مجموعه‌رنگ وارونه)."
+      }
+    ]
+  }
+}
