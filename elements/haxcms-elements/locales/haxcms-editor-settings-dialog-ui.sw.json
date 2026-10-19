@@ -5,5 +5,9 @@
   "buttons": "Vitufe",
   "futureButtonConfiguration": "Usanidi maalum wa vitufe vya kihariri unakuja hivi karibuni.",
   "save": "Hifadhi",
-  "saving": "Inahifadhi…"
+  "saving": "Inahifadhi…",
+  "novice": "Mwanzilishi",
+  "expert": "Mtaalamu",
+  "toolbarPreviewAlt": "Onyesho la kukagua upau wa zana wa kuhariri wa {audience}",
+  "savingEditorSettingsFailed": "Kuhifadhi mipangilio ya kihariri kumeshindwa: {error}"
 }

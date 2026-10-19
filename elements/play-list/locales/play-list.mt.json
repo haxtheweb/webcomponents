@@ -1,0 +1,11 @@
+{
+  "playlist": "Playlist",
+  "carousel": "karużell",
+  "slide": "slajd",
+  "slideNumber": "Slajd {number}",
+  "slideOfTotal": "Slajd {number} minn {total}",
+  "previousSlide": "Slajd preċedenti",
+  "nextSlide": "Slajd li jmiss",
+  "slidePages": "Paġni tas-slajds",
+  "goToSlide": "Mur għas-slajd {number}"
+}

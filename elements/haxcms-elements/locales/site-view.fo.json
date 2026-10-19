@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Eingi úrslit",
+  "viewsRecordHeading": "Upptak",
+  "viewsTitleImage": "{title} mynd",
+  "viewsTitlePreview": "{title} forsýning",
+  "viewsNoTimelineRecords": "Ongar dagfestingarmiðaðar skrásetingar tøkar til tíðarlinjuvísing.",
+  "viewsTimelineTitle": "{title} tíðarlinja",
+  "viewsNoChartField": "Eingin taltteigur funnin til diagramvísing.",
+  "viewsChartingValue": "Diagram av {value}",
+  "viewsChartingValueByLabel": "Diagram av {value} eftir {label}",
+  "viewsChartTitle": "{title} diagram",
+  "viewsNoTreeRecords": "Ongar stigskipaðar skrásetingar tøkar til trævísing.",
+  "viewsNoGalleryRecords": "Ongar myndskrásetingar tøkar til myndasavnsvísing.",
+  "viewsNoPlaylistRecords": "Ongar miðilsskrásetingar tøkar til spælilistavísing.",
+  "fetchFailed": "Heinting miseydnaðist ({status})",
+  "unableToLoadViewData": "Kundi ikki innlesa vísingardátur.",
+  "noResultsFound": "Eingi úrslit funnin.",
+  "refreshView": "Endurnýggja vísing",
+  "breakIntoStaticContent": "Bróta sundur í støðugt innihald",
+  "viewsOpenRecord": "Opna skráseting"
+}

@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- pēc noklusējuma pirmā lapa --",
+  "details": "Detaļas",
+  "title": "Nosaukums",
+  "titleDescription": "Vietnes nosaukums",
+  "homePage": "Sākumlapa",
+  "homePageDescription": "Lapa, ko izmantot kā noklusējuma galveno lapu / sākumlapu",
+  "advanced": "Papildu",
+  "serviceWorker": "Pievienot dinamiskajai lapai pakalpojumu darbinieku (service worker)",
+  "serviceWorkerDescription": "Atspējojiet šo, ja lietotājiem vienmēr nekavējoties jāredz jaunākā servera izvade.",
+  "forceBrowserUpgrade": "Piespiedu pārlūka jaunināšana",
+  "forceBrowserUpgradeDescription": "Pieprasīt pastāvīgi atjauninātus pārlūkus pirms vietnes ielādes.",
+  "unableToLoadSiteDetails": "Nevar ielādēt vietnes detaļas.",
+  "noSiteDetails": "Nav pieejamu vietnes detaļu.",
+  "save": "Saglabāt"
+}

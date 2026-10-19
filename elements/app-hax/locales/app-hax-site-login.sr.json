@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Унесите корисничко име",
+  "invalidUsernameOrPassword": "Неважеће корисничко име или лозинка",
+  "welcomeLetsGo": "Добро дошли, {username}! Кренимо!",
+  "enterYourUsername": "Унесите своје корисничко име",
+  "username": "Корисничко име",
+  "next": "Следеће",
+  "welcomeBack": "Добро дошли назад, {username}!",
+  "notYou": "Нисте ви?",
+  "enterYourPassword": "Унесите своју лозинку",
+  "password": "Лозинка",
+  "togglePasswordDisplay": "Прикажи/сакриј лозинку",
+  "login": "Пријава"
+}

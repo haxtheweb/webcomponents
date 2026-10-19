@@ -1,0 +1,14 @@
+{
+  "enterUserName": "İstifadəçi adını daxil edin",
+  "invalidUsernameOrPassword": "Yanlış istifadəçi adı və ya şifrə",
+  "welcomeLetsGo": "Xoş gəldin, {username}! Başlayaq!",
+  "enterYourUsername": "İstifadəçi adınızı daxil edin",
+  "username": "İstifadəçi adı",
+  "next": "Növbəti",
+  "welcomeBack": "Yenidən xoş gəldin, {username}!",
+  "notYou": "Siz deyilsiniz?",
+  "enterYourPassword": "Şifrənizi daxil edin",
+  "password": "Şifrə",
+  "togglePasswordDisplay": "Şifrəni göstər/gizlət",
+  "login": "Daxil ol"
+}

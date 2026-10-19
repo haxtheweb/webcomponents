@@ -9,5 +9,8 @@
   "record": "Gravar",
   "pause": "Pausar gravación",
   "stopSave": "Deter e gardar",
-  "clickToTakePhoto": "Fai clic para sacar unha foto"
+  "clickToTakePhoto": "Fai clic para sacar unha foto",
+  "url": "URL",
+  "open": "abrir",
+  "removeValue": "Quitar {value}"
 }

@@ -1,0 +1,11 @@
+{
+  "theme": "Theme",
+  "active": "Active",
+  "selected": "Selected",
+  "noPreview": "No preview",
+  "currentlyActiveAndSelected": "Currently active and selected theme",
+  "currentlyActive": "Currently active theme",
+  "selectedToApplyOnSave": "Selected theme to apply on save",
+  "themeSelection": "Theme selection",
+  "noThemesAvailable": "No themes available."
+}

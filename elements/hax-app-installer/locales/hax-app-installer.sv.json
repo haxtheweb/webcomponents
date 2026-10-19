@@ -54,5 +54,6 @@
   "requirementUppercase": "En versal",
   "requirementLowercase": "En gemen",
   "requirementNumber": "En siffra",
-  "requirementSymbol": "En symbol"
+  "requirementSymbol": "En symbol",
+  "haxcmsMascotAlt": "HAXcms-maskoten World Traveler"
 }

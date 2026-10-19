@@ -54,5 +54,6 @@
   "requirementUppercase": "Бир баш тамга",
   "requirementLowercase": "Бир кичине тамга",
   "requirementNumber": "Бир сан",
-  "requirementSymbol": "Бир символ"
+  "requirementSymbol": "Бир символ",
+  "haxcmsMascotAlt": "HAXcms Дүйнө кыдыруучу маскоту"
 }

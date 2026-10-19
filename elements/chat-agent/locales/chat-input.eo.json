@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Montri antaŭe senditan mesaĝon (supren)",
+  "displayPreviousMessageDown": "Montri antaŭe senditan mesaĝon (malsupren)",
+  "sendPrompt": "Sendi instigon",
+  "sendPromptToMerlin": "Sendi instigon al Merlin",
+  "shortenPrompt": "Bonvolu mallongigi vian instigon al ne pli ol {limit} signoj."
+}

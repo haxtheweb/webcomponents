@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Zadejte uživatelské jméno",
+  "invalidUsernameOrPassword": "Neplatné uživatelské jméno nebo heslo",
+  "welcomeLetsGo": "Vítejte, {username}! Jdeme na to!",
+  "enterYourUsername": "Zadejte své uživatelské jméno",
+  "username": "Uživatelské jméno",
+  "next": "Další",
+  "welcomeBack": "Vítejte zpět, {username}!",
+  "notYou": "Nejste to vy?",
+  "enterYourPassword": "Zadejte své heslo",
+  "password": "Heslo",
+  "togglePasswordDisplay": "Přepnout zobrazení hesla",
+  "login": "Přihlásit se"
+}

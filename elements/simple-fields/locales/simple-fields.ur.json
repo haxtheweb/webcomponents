@@ -9,5 +9,8 @@
   "record": "ریکارڈ کریں",
   "pause": "ریکارڈنگ روکیں",
   "stopSave": "روکیں اور محفوظ کریں",
-  "clickToTakePhoto": "تصویر لینے کے لیے کلک کریں"
+  "clickToTakePhoto": "تصویر لینے کے لیے کلک کریں",
+  "url": "URL",
+  "open": "کھولیں",
+  "removeValue": "{value} ہٹائیں"
 }

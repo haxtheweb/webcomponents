@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Tanulói beadás",
   "openInNewWindow": "Megnyitás új ablakban",
-  "submitted": "Beadva"
+  "submitted": "Beadva",
+  "previousStudent": "Előző tanuló",
+  "nextStudent": "Következő tanuló",
+  "previousAssignment": "Előző feladat",
+  "nextAssignment": "Következő feladat"
 }

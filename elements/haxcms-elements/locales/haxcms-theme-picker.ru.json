@@ -1,0 +1,11 @@
+{
+  "theme": "Тема",
+  "active": "Активна",
+  "selected": "Выбрана",
+  "noPreview": "Нет предпросмотра",
+  "currentlyActiveAndSelected": "Активная и выбранная тема",
+  "currentlyActive": "Активная тема",
+  "selectedToApplyOnSave": "Тема, выбранная для применения при сохранении",
+  "themeSelection": "Выбор темы",
+  "noThemesAvailable": "Нет доступных тем."
+}

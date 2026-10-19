@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "بارگذاری پوسته‌ها ناموفق بود: {error}",
+  "noThemesForView": "هیچ پوسته‌ای برای این نما در دسترس نیست.",
+  "active": "فعال",
+  "themeIsActive": "پوسته {name} فعال است",
+  "applyTheme": "اعمال پوسته {name}",
+  "apply": "اعمال",
+  "preview": "پیش‌نمایش",
+  "name": "نام",
+  "element": "عنصر",
+  "description": "توضیحات",
+  "action": "اقدام",
+  "loadingThemes": "در حال بارگذاری پوسته‌ها...",
+  "themesShown": "{count} پوسته نمایش داده شد",
+  "themesShownDefaults": "{count} پوسته نمایش داده شد (پیش‌فرض‌های app-hax)",
+  "availableHaxcmsThemes": "پوسته‌های موجود HAXcms",
+  "gallery": "گالری",
+  "table": "جدول"
+}

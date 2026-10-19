@@ -36,5 +36,7 @@
   "clickToDoAnything": "Klik for at gøre hvad som helst!",
   "moreDetails": "Flere detaljer",
   "details": "Detaljer",
-  "saved": "Gemt"
+  "saved": "Gemt",
+  "opensInNewWindow": "Åbner i et nyt vindue",
+  "resultsCount": "{count} resultater"
 }

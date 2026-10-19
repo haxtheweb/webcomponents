@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "{xOfY}. lap",
+  "xOfY": "{order} / {total}",
+  "endOfTab": "{xOfY}. lap vége. Vissza ide: {tabs}.",
+  "tabs": "lapok"
+}

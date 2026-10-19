@@ -3,17 +3,28 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { css, html } from "lit";
 import { autorun, toJS } from "mobx";
 import { ChatStore } from "./chat-agent-store.js";
 
-class ChatButton extends DDD {
+class ChatButton extends I18NMixin(DDD) {
   static get tag() {
     return "chat-button";
   }
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      openInterface: "Open Interface",
+      closeInterface: "Close Interface",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
 
     this.buttonIcon = null;
     this.darkMode = null;
@@ -161,8 +172,8 @@ class ChatButton extends DDD {
         @keydown=${this.keyPress}
         tabindex="0"
         aria-label="${this.isInterfaceHidden
-          ? "Open Interface"
-          : "Close Interface"}"
+          ? this.t.openInterface
+          : this.t.closeInterface}"
       >
         <div class="icon-wrapper">
           <simple-icon-lite icon="${this.buttonIcon}"></simple-icon-lite>

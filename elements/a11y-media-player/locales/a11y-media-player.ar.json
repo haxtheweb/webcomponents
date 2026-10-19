@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "جارٍ التحميل...",
   "youTubeStartLoading": "اضغط على تشغيل.",
   "youTubeTranscriptLabel": "سيتم تحميل النص المكتوب بمجرد تشغيل الوسائط.",
-  "audioDescriptionLabel": "الوصف الصوتي"
+  "audioDescriptionLabel": "الوصف الصوتي",
+  "openOnYouTube": "فتح على YouTube"
 }

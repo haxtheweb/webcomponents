@@ -36,5 +36,7 @@
   "clickToDoAnything": "Danna don yin komai!",
   "moreDetails": "Ƙarin bayani",
   "details": "Cikakkun bayanai",
-  "saved": "An adana"
+  "saved": "An adana",
+  "opensInNewWindow": "Yana buɗewa a sabuwar taga",
+  "resultsCount": "Sakamako {count}"
 }

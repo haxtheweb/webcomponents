@@ -1,0 +1,18 @@
+{
+  "copy": "Kopa",
+  "download": "Dhaunirodha",
+  "archive": "Chengeta mudura",
+  "copyOperation": "kopa",
+  "downloadOperation": "dhaunirodha",
+  "archiveOperation": "chengeta mudura",
+  "created": "yakagadzirwa",
+  "updated": "yakagadziridzwa",
+  "pages": "mapeji",
+  "url": "URL",
+  "confirm": "Simbisa",
+  "cancel": "Kanzura",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Une chokwadi here kuti unoda ku{operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName} {operation} zvabudirira!",
+  "siteOperationFailed": "{siteName} {operation} zvakundikana"
+}

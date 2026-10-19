@@ -1,4 +1,11 @@
 {
   "readMore": "Gụkwuo",
-  "home": "Ụlọ"
+  "home": "Ụlọ",
+  "anchorLinkCopied": "Edetuola njikọ arịlịka!",
+  "skipToContent": "Gafee gaa na ọdịnaya",
+  "changeTheme": "Gbanwee isiokwu",
+  "siteSections": "Ngalaba saịtị",
+  "pageOfTotal": "Ibe {current} n'ime {total}",
+  "siteGenerated": "Emepụtara saịtị: {date}",
+  "licenseGraphic": "Eserese {license}"
 }

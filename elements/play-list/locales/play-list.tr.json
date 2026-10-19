@@ -1,0 +1,11 @@
+{
+  "playlist": "Oynatma listesi",
+  "carousel": "döngü",
+  "slide": "slayt",
+  "slideNumber": "Slayt {number}",
+  "slideOfTotal": "Slayt {number} / {total}",
+  "previousSlide": "Önceki slayt",
+  "nextSlide": "Sonraki slayt",
+  "slidePages": "Slayt sayfaları",
+  "goToSlide": "{number}. slayta git"
+}

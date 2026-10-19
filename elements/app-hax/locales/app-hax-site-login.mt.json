@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Daħħal l-isem tal-utent",
+  "invalidUsernameOrPassword": "Isem tal-Utent jew Password Invalidi",
+  "welcomeLetsGo": "Merħba {username}! Ejja!",
+  "enterYourUsername": "Daħħal l-isem tal-utent tiegħek",
+  "username": "Isem l-utent",
+  "next": "Li jmiss",
+  "welcomeBack": "Merħba lura, {username}!",
+  "notYou": "Mhux int?",
+  "enterYourPassword": "Daħħal il-password tiegħek",
+  "password": "Password",
+  "togglePasswordDisplay": "Aqleb il-wiri tal-password",
+  "login": "Idħol"
+}

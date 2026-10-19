@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Themen konnten net geluede ginn: {error}",
+  "noThemesForView": "Keng Themen fir dës Usiicht disponibel.",
+  "active": "Aktiv",
+  "themeIsActive": "Theme {name} ass aktiv",
+  "applyTheme": "Theme {name} applizéieren",
+  "apply": "Applizéieren",
+  "preview": "Virschau",
+  "name": "Numm",
+  "element": "Element",
+  "description": "Beschreiwung",
+  "action": "Aktioun",
+  "loadingThemes": "Themë gi gelueden...",
+  "themesShown": "{count} Themen ugewisen",
+  "themesShownDefaults": "{count} Themen ugewisen (app-hax-Standarden)",
+  "availableHaxcmsThemes": "Disponibel HAXcms-Themen",
+  "gallery": "Galerie",
+  "table": "Tabell"
+}

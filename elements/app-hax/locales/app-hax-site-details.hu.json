@@ -1,0 +1,18 @@
+{
+  "copy": "Másolás",
+  "download": "Letöltés",
+  "archive": "Archiválás",
+  "copyOperation": "másolás",
+  "downloadOperation": "letöltés",
+  "archiveOperation": "archiválás",
+  "created": "létrehozva",
+  "updated": "frissítve",
+  "pages": "oldal",
+  "url": "URL",
+  "confirm": "Megerősítés",
+  "cancel": "Mégse",
+  "siteOperationConfirmTitle": "{operationName}: {siteName}?",
+  "siteOperationConfirmMessage": "Biztosan végrehajtod a következő műveletet: {operation} – {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} sikeres!",
+  "siteOperationFailed": "{siteName}: {operation} sikertelen"
+}

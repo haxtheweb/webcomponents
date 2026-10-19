@@ -1,4 +1,11 @@
 {
   "readMore": "Léigh tuilleadh",
-  "home": "Baile"
+  "home": "Baile",
+  "anchorLinkCopied": "Nasc ancaire cóipeáilte!",
+  "skipToContent": "Léim go dtí an t-ábhar",
+  "changeTheme": "Athraigh an téama",
+  "siteSections": "Rannóga an tsuímh",
+  "pageOfTotal": "Leathanach {current} as {total}",
+  "siteGenerated": "Suíomh ginte: {date}",
+  "licenseGraphic": "Grafaic {license}"
 }

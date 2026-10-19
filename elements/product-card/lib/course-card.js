@@ -1,9 +1,10 @@
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { html, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 
-class CourseCard extends SimpleColors {
+class CourseCard extends I18NMixin(SimpleColors) {
   static get properties() {
     return {
       ...super.properties,
@@ -20,6 +21,15 @@ class CourseCard extends SimpleColors {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      byAuthor: "By: {author}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.zoom = false;
     this.url = "";
     this.image = "";
@@ -183,7 +193,7 @@ class CourseCard extends SimpleColors {
           <div id="course_number">${this.number}</div>
           <div id="course_name">${this.name}</div>
           ${this.author
-            ? html` <div id="course_author">By: ${this.author}</div> `
+            ? html` <div id="course_author">${this.t.byAuthor.replace("{author}", () => this.author)}</div> `
             : ``}
         </div>
       </a>

@@ -10,5 +10,9 @@
   "save": "Saglabāt",
   "noDescription": "Apraksts nav pieejams.",
   "details": "Detaļas",
-  "loadingInventory": "Ielādē pilnu bloku sarakstu…"
+  "loadingInventory": "Ielādē pilnu bloku sarakstu…",
+  "selectAllButton": "Atlasīt visu",
+  "deselectAllButton": "Noņemt visu atlasi",
+  "selectedOfAvailable": "Atlasīti {selected} / pieejami {total}",
+  "savingBlocksFailed": "Bloku saglabāšana neizdevās: {error}"
 }

@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Перацягніце файлы сюды",
+  "uploadQueue": "Чарга загрузкі",
+  "pending": "У чаканні",
+  "preparing": "Падрыхтоўка",
+  "uploading": "Загрузка",
+  "complete": "Выканана",
+  "aborted": "Перапынена",
+  "cancelled": "Скасавана",
+  "error": "Памылка",
+  "errorWithStatus": "Памылка: {status}",
+  "cancel": "Скасаваць",
+  "cancelUploadOf": "Скасаваць загрузку {name}",
+  "retry": "Паспрабаваць зноў",
+  "retryUploadOf": "Паўтарыць загрузку {name}",
+  "remove": "Выдаліць",
+  "removeFromQueue": "Выдаліць {name} з чаргі",
+  "fileTypeNotAccepted": "Тып файла не прымаецца: {name}",
+  "uploadFailed": "Збой загрузкі: {status}",
+  "networkError": "Памылка сеткі"
+}

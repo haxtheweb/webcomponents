@@ -1,0 +1,5 @@
+{
+  "navigateToSection": "{label} - Иди на одељак",
+  "clickToScrollToSection": "Кликните да бисте се померили до одељка {label}",
+  "navigatedToSection": "Прешли сте на одељак {label}"
+}

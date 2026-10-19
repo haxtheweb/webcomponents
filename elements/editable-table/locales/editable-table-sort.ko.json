@@ -1,0 +1,6 @@
+{
+  "ascending": "(오름차순)",
+  "descending": "(내림차순)",
+  "toggleSortMode": "정렬 모드 전환.",
+  "togglesSortingByColumn": "이 열을 기준으로 정렬을 전환합니다."
+}

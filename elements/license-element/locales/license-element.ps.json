@@ -1,0 +1,14 @@
+{
+  "licenseBy": "نسبت ورکول",
+  "licenseBySa": "نسبت ورکول ورته شریکول",
+  "licenseByNd": "نسبت ورکول بې مشتقاتو",
+  "licenseByNc": "نسبت ورکول غیر سوداګریز",
+  "licenseByNcSa": "نسبت ورکول غیر سوداګریز ورته شریکول",
+  "licenseByNcNd": "نسبت ورکول غیر سوداګریز بې مشتقاتو",
+  "licenseGraphic": "د {license} ګرافیک",
+  "workByCreator": "{title} د {creator} لخوا",
+  "workByCreatorLicensed": "{title} د {creator} لخوا د {license} لاندې جواز لري.",
+  "permissionsBeyondScope": "د دې جواز له حدودو هاخوا اجازې {link} شتون لري.",
+  "author": "(لیکوال)",
+  "onTheLicensingDetailsPage": "د جواز د جزیاتو په پاڼه کې"
+}

@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Атрибуция",
+  "licenseBySa": "Атрибуция — На тех же условиях",
+  "licenseByNd": "Атрибуция — Без производных произведений",
+  "licenseByNc": "Атрибуция — Некоммерческое использование",
+  "licenseByNcSa": "Атрибуция — Некоммерческое использование — На тех же условиях",
+  "licenseByNcNd": "Атрибуция — Некоммерческое использование — Без производных произведений",
+  "licenseGraphic": "Значок {license}",
+  "workByCreator": "{title}, автор: {creator}",
+  "workByCreatorLicensed": "{title}, автор: {creator}, распространяется по лицензии {license}.",
+  "permissionsBeyondScope": "Разрешения сверх этой лицензии доступны {link}.",
+  "author": "(автор)",
+  "onTheLicensingDetailsPage": "на странице сведений о лицензировании"
+}

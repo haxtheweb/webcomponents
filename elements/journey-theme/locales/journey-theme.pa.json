@@ -1,4 +1,11 @@
 {
   "readMore": "ਹੋਰ ਪੜ੍ਹੋ",
-  "home": "ਮੁੱਖ ਪੰਨਾ"
+  "home": "ਮੁੱਖ ਪੰਨਾ",
+  "anchorLinkCopied": "ਐਂਕਰ ਲਿੰਕ ਕਾਪੀ ਹੋ ਗਿਆ!",
+  "skipToContent": "ਸਮੱਗਰੀ 'ਤੇ ਜਾਓ",
+  "changeTheme": "ਥੀਮ ਬਦਲੋ",
+  "siteSections": "ਸਾਈਟ ਭਾਗ",
+  "pageOfTotal": "{total} ਵਿੱਚੋਂ ਪੰਨਾ {current}",
+  "siteGenerated": "ਸਾਈਟ ਤਿਆਰ ਕੀਤੀ: {date}",
+  "licenseGraphic": "{license} ਗ੍ਰਾਫ਼ਿਕ"
 }

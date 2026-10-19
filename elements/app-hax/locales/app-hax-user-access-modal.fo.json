@@ -7,5 +7,7 @@
   "userAccessGranted": "Brúkaraatgongd givin!",
   "userNotFound": "Brúkari ikki funnin ella ikki loyvdur",
   "loadingAddingUser": "Leggur brúkara afturat...",
-  "grantAccessTo": "Gev atgongd til:"
+  "grantAccessTo": "Gev atgongd til:",
+  "networkErrorTryAgain": "Netverksfeilur hendi. Vinarliga royn aftur.",
+  "characterWillAppear": "Persónurin sæst, tá ið tú skrivar eitt brúkaranavn"
 }

@@ -1,0 +1,17 @@
+{
+  "editNodes": "Edita els nodes",
+  "editLines": "Edita les línies",
+  "reset": "Restableix",
+  "save": "Desa",
+  "cancel": "Cancel·la",
+  "delete": "Suprimeix",
+  "type": "Tipus:",
+  "topic": "Tema",
+  "subsection": "Subsecció",
+  "name": "Nom:",
+  "enterName": "Introdueix el nom",
+  "url": "URL:",
+  "enterUrl": "Introdueix l'URL",
+  "activeNode": "Node actiu?",
+  "nodeId": "Node {id}"
+}

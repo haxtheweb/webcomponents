@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Okuwçynyň tabşyran işi",
   "openInNewWindow": "Täze penjirede açmak",
-  "submitted": "Tabşyryldy"
+  "submitted": "Tabşyryldy",
+  "previousStudent": "Öňki okuwçy",
+  "nextStudent": "Indiki okuwçy",
+  "previousAssignment": "Öňki tabşyryk",
+  "nextAssignment": "Indiki tabşyryk"
 }

@@ -43,5 +43,22 @@
   "emailAddress": "Deze student e-mailen",
   "notes": "Notities",
   "interests": "Interesses",
-  "profileImageFor": "Profielfoto van"
+  "profileImageFor": "Profielfoto van",
+  "fileSystem": "Bestandssysteem",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL-eindpunt (JSON)",
+  "jsonDataBlob": "JSON-gegevensblob",
+  "additionalCriteriaFeedback": "Aanvullende feedback voor {criteria}",
+  "outOfPoints": "/ {points} ptn",
+  "feedbackReport": "Feedbackrapport",
+  "criteriaDetails": "Details van criteria",
+  "yourFeedback": "Jouw feedback",
+  "additionalCriteriaFeedbackHeading": "Aanvullende feedback per criterium",
+  "yourTotalScore": "Jouw totaalscore",
+  "scoreOutOfPoints": "{score} / {points} ptn",
+  "studentAssignment": "Opdracht {assignment} van {student}",
+  "downloadPDF": "PDF downloaden",
+  "displayMode1": "Modus 1",
+  "displayMode2": "Modus 2",
+  "twoWindows": "Twee vensters"
 }

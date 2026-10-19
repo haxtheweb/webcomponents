@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- zadano na prvu stranicu --",
+  "details": "Detalji",
+  "title": "Naslov",
+  "titleDescription": "Naziv sajta",
+  "homePage": "Početna stranica",
+  "homePageDescription": "Stranica koja se koristi kao zadana početna stranica",
+  "advanced": "Napredno",
+  "serviceWorker": "Dodaj service worker dinamičkoj stranici",
+  "serviceWorkerDescription": "Onemogućite ovo ako korisnici uvijek trebaju odmah vidjeti najnoviji izlaz servera.",
+  "forceBrowserUpgrade": "Prisili nadogradnju preglednika",
+  "forceBrowserUpgradeDescription": "Zahtijevaj stalno ažurirane preglednike prije učitavanja sajta.",
+  "unableToLoadSiteDetails": "Nije moguće učitati detalje sajta.",
+  "noSiteDetails": "Nema dostupnih detalja sajta.",
+  "save": "Sačuvaj"
+}

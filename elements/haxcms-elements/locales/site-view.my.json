@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "ရလဒ် မရှိပါ",
+  "viewsRecordHeading": "မှတ်တမ်းတင်ရန်",
+  "viewsTitleImage": "{title} ပုံ",
+  "viewsTitlePreview": "{title} အစမ်းကြည့်ရှုမှု",
+  "viewsNoTimelineRecords": "အချိန်ဇယား ပြသရန် ရက်စွဲဆိုင်ရာ မှတ်တမ်းများ မရှိပါ။",
+  "viewsTimelineTitle": "{title} အချိန်ဇယား",
+  "viewsNoChartField": "ဇယားကွက် ပြသရန် ဂဏန်း အကွက် ရှာမတွေ့ပါ။",
+  "viewsChartingValue": "{value} ကို ဇယားကွက်ဖြင့် ပြနေသည်",
+  "viewsChartingValueByLabel": "{label} အလိုက် {value} ကို ဇယားကွက်ဖြင့် ပြနေသည်",
+  "viewsChartTitle": "{title} ဇယားကွက်",
+  "viewsNoTreeRecords": "သစ်ပင်ပုံ ပြသရန် အဆင့်ဆင့် မှတ်တမ်းများ မရှိပါ။",
+  "viewsNoGalleryRecords": "ပြခန်း ပြသရန် ပုံ မှတ်တမ်းများ မရှိပါ။",
+  "viewsNoPlaylistRecords": "ဖွင့်စာရင်း ပြသရန် မီဒီယာ မှတ်တမ်းများ မရှိပါ။",
+  "fetchFailed": "ရယူမှု မအောင်မြင်ပါ ({status})",
+  "unableToLoadViewData": "မြင်ကွင်း ဒေတာ ဖွင့်၍ မရပါ။",
+  "noResultsFound": "ရလဒ် မတွေ့ပါ။",
+  "refreshView": "မြင်ကွင်းကို ပြန်လည်ဆန်းသစ်ရန်",
+  "breakIntoStaticContent": "ပုံသေ အကြောင်းအရာအဖြစ် ခွဲထုတ်ရန်",
+  "viewsOpenRecord": "မှတ်တမ်း ဖွင့်ရန်"
+}

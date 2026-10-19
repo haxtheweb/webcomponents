@@ -1,0 +1,5 @@
+{
+  "toggleFilter": "Näytä/piilota suodatin.",
+  "toggleFilterForColumn": "Näytä/piilota sarakkeen suodatin.",
+  "toggleColumnFilter": "Näytä/piilota sarakkeen {column} suodatin."
+}

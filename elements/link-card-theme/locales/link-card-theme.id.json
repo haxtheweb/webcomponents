@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Tautan jangkar disalin!",
+  "skipToContent": "Lompat ke konten",
+  "changePalette": "Ganti palet",
+  "primaryLinks": "Tautan utama",
+  "socialLinks": "Tautan sosial",
+  "myProfile": "Profil saya",
+  "profileImageOf": "Gambar profil {name}",
+  "profileImage": "Gambar profil",
+  "linkCardProfile": "Profil kartu tautan",
+  "emptyStateLinks": "Tambahkan item menu tingkat atas di site.json untuk menampilkan tombol tautan.",
+  "titleOnPlatform": "{title} di {platform}",
+  "openPlatform": "Buka {platform}",
+  "paletteUpdated": "Palet warna diperbarui ke opsi {number}."
+}

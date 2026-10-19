@@ -1,0 +1,11 @@
+{
+  "playlist": "Wiedergabeliste",
+  "carousel": "Karussell",
+  "slide": "Folie",
+  "slideNumber": "Folie {number}",
+  "slideOfTotal": "Folie {number} von {total}",
+  "previousSlide": "Vorherige Folie",
+  "nextSlide": "Nächste Folie",
+  "slidePages": "Folienseiten",
+  "goToSlide": "Zu Folie {number} wechseln"
+}

@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Solte os arquivos aqui",
+  "uploadQueue": "Fila de envio",
+  "pending": "Pendente",
+  "preparing": "Preparando",
+  "uploading": "Enviando",
+  "complete": "Concluído",
+  "aborted": "Interrompido",
+  "cancelled": "Cancelado",
+  "error": "Erro",
+  "errorWithStatus": "Erro: {status}",
+  "cancel": "Cancelar",
+  "cancelUploadOf": "Cancelar envio de {name}",
+  "retry": "Tentar novamente",
+  "retryUploadOf": "Tentar novamente o envio de {name}",
+  "remove": "Remover",
+  "removeFromQueue": "Remover {name} da fila",
+  "fileTypeNotAccepted": "Tipo de arquivo não aceito: {name}",
+  "uploadFailed": "Falha no envio: {status}",
+  "networkError": "Erro de rede"
+}

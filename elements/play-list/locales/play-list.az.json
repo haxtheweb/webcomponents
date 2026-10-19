@@ -1,0 +1,11 @@
+{
+  "playlist": "Oynatma siyahısı",
+  "carousel": "karusel",
+  "slide": "slayd",
+  "slideNumber": "Slayd {number}",
+  "slideOfTotal": "Slayd {number} / {total}",
+  "previousSlide": "Əvvəlki slayd",
+  "nextSlide": "Növbəti slayd",
+  "slidePages": "Slayd səhifələri",
+  "goToSlide": "{number} nömrəli slayda keç"
+}

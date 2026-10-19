@@ -167,6 +167,13 @@ class MatchingQuestion extends QuestionElement {
     this.t = {
       ...this.t,
       matchRegion: "Matching interface",
+      close: "Close",
+      matchItemTo: "Match {item} to:",
+      possibleOptions: "-- Possible options --",
+      target: "Target",
+      match: "Match",
+      selectAllDirections:
+        "Select all that apply. When you are done, press {checkAnswer}. You will get feedback indicating correctness of your answer and how to proceed.",
     };
     // QuestionElement's shared strings live in each question type's own namespace
     this.registerLocalization({
@@ -280,11 +287,15 @@ class MatchingQuestion extends QuestionElement {
           @click="${() => {
             this.shadowRoot.querySelector("dialog").close();
           }}"
-          >Close</simple-icon-button-lite
+          >${this.t.close}</simple-icon-button-lite
         >
-        <label>Match <em>${this.__activeOption.label}</em> to:</label>
+        <label
+          >${this._tParts(this.t.matchItemTo, {
+            item: html`<em>${this.__activeOption.label}</em>`,
+          })}</label
+        >
         <select @change="${this.selectTargetChange}" autofocus>
-          <option value="">-- Possible options --</option>
+          <option value="">${this.t.possibleOptions}</option>
           ${this.answers
             .filter((answer) => answer.target)
             .map(
@@ -300,8 +311,8 @@ class MatchingQuestion extends QuestionElement {
       >
         <table class="top">
           <thead>
-            <th>Target</th>
-            <th>Match</th>
+            <th>${this.t.target}</th>
+            <th>${this.t.match}</th>
           </thead>
           <tbody>
             ${this.answers
@@ -471,9 +482,9 @@ class MatchingQuestion extends QuestionElement {
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      Select all that apply. When you are done, press
-      <strong>${this.t.checkAnswer}</strong>. You will get feedback indicating
-      correctness of your answer and how to proceed.
+      ${this._tParts(this.t.selectAllDirections, {
+        checkAnswer: html`<strong>${this.t.checkAnswer}</strong>`,
+      })}
     </p>`;
   }
 

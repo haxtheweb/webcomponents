@@ -7,5 +7,7 @@
   "userAccessGranted": "Пайдаланушыға қатынас сәтті берілді!",
   "userNotFound": "Пайдаланушы табылмады немесе рұқсат жоқ",
   "loadingAddingUser": "Пайдаланушы қосылуда...",
-  "grantAccessTo": "Қатынас беру:"
+  "grantAccessTo": "Қатынас беру:",
+  "networkErrorTryAgain": "Желі қатесі орын алды. Қайталап көріңіз.",
+  "characterWillAppear": "Пайдаланушы атын енгізгенде кейіпкер пайда болады"
 }

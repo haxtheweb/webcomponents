@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Link de ancoră copiat!",
+  "skipToContent": "Salt la conținut",
+  "changePalette": "Schimbă paleta",
+  "primaryLinks": "Linkuri principale",
+  "socialLinks": "Linkuri sociale",
+  "myProfile": "Profilul meu",
+  "profileImageOf": "Imaginea de profil a lui {name}",
+  "profileImage": "Imagine de profil",
+  "linkCardProfile": "Profil card de linkuri",
+  "emptyStateLinks": "Adaugă elemente de meniu de nivel superior în site.json pentru a afișa butoanele de link.",
+  "titleOnPlatform": "{title} pe {platform}",
+  "openPlatform": "Deschide {platform}",
+  "paletteUpdated": "Paleta de culori a fost actualizată la opțiunea {number}."
+}

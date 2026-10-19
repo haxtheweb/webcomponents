@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Vahekaart {xOfY}",
+  "xOfY": "{order} / {total}",
+  "endOfTab": "Vahekaardi {xOfY} lõpp. Tagasi: {tabs}.",
+  "tabs": "vahekaardid"
+}

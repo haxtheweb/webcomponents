@@ -1,0 +1,17 @@
+{
+  "editNodes": "Edit Nodes",
+  "editLines": "Edit Lines",
+  "reset": "Reset",
+  "save": "Save",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "type": "Type:",
+  "topic": "Topic",
+  "subsection": "Subsection",
+  "name": "Name:",
+  "enterName": "Enter Name",
+  "url": "URL:",
+  "enterUrl": "Enter URL",
+  "activeNode": "Active Node?",
+  "nodeId": "Node {id}"
+}

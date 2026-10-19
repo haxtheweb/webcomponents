@@ -36,5 +36,7 @@
   "clickToDoAnything": "کلیک کنید تا هر کاری انجام دهید!",
   "moreDetails": "جزئیات بیشتر",
   "details": "جزئیات",
-  "saved": "ذخیره شد"
+  "saved": "ذخیره شد",
+  "opensInNewWindow": "در پنجره جدید باز می‌شود",
+  "resultsCount": "{count} نتیجه"
 }

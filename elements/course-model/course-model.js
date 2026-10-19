@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./lib/model-option.js";
 import "./lib/model-info.js";
 /**
@@ -12,7 +13,7 @@ import "./lib/model-info.js";
  * @demo demo/index.html
  * @element course-model
  */
-class CourseModel extends SchemaBehaviors(LitElement) {
+class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
   static get tag() {
     return "course-model";
   }
@@ -148,6 +149,18 @@ class CourseModel extends SchemaBehaviors(LitElement) {
     this.title = "";
     this.src = "";
     this.poster = "";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      exploreModels: "Explore Models",
+      moreInformation: "More Information",
+      playAnimation: "Play Animation",
+      knowledgeCheck: "Knowledge Check",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     if (globalThis.HaxStore) {
       globalThis.ModelViewerController = new AbortController();
       globalThis.addEventListener(
@@ -390,7 +403,7 @@ class CourseModel extends SchemaBehaviors(LitElement) {
         <div id="toolbar-wrap">
           <div id="nav">
             <button
-              title="Explore Models"
+              title="${this.t.exploreModels}"
               id="explore"
               class="tool-button"
               @click="${this._openInfo}"
@@ -402,7 +415,7 @@ class CourseModel extends SchemaBehaviors(LitElement) {
               </svg>
             </button>
             <button
-              title="More Information"
+              title="${this.t.moreInformation}"
               id="moreinfo"
               class="tool-button"
               @click="${this._openText}"
@@ -414,7 +427,7 @@ class CourseModel extends SchemaBehaviors(LitElement) {
               </svg>
             </button>
             <button
-              title="Play Animation"
+              title="${this.t.playAnimation}"
               id="animation"
               class="tool-button"
               @click="${this._openAnimation}"
@@ -426,7 +439,7 @@ class CourseModel extends SchemaBehaviors(LitElement) {
               </svg>
             </button>
             <button
-              title="Knowledge Check"
+              title="${this.t.knowledgeCheck}"
               id="check"
               class="tool-button"
               @click="${this._openCheck}"

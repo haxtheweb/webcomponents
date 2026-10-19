@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Log downloaden als txt",
+  "downloadChatLog": "Chatlog downloaden",
+  "resetChat": "Chat opnieuw instellen",
+  "toggleDataCollection": "Gegevensverzameling aan/uit",
+  "dataCollection": "Gegevensverzameling",
+  "toggleDeveloperMode": "Ontwikkelaarsmodus aan/uit",
+  "exitFullView": "Volledige weergave verlaten",
+  "enterFullView": "Volledige weergave openen",
+  "hideInterface": "Interface verbergen",
+  "resetChatConfirm": "De chat opnieuw instellen?",
+  "downloadBeforeResetConfirm": "Het chatlog downloaden voordat je opnieuw instelt?",
+  "dataCollectionOn": "Je gesprekken worden gebruikt om onze AI-modellen te trainen",
+  "dataCollectionOff": "Je gesprekken worden niet gebruikt om onze AI-modellen te trainen"
+}

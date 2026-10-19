@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- parazgjedhur faqja e parë --",
+  "details": "Detajet",
+  "title": "Titulli",
+  "titleDescription": "Emri i sajtit",
+  "homePage": "Faqja kryesore",
+  "homePageDescription": "Faqja që përdoret si faqe e parazgjedhur hyrëse / kryesore",
+  "advanced": "Të avancuara",
+  "serviceWorker": "Shto service worker në faqen dinamike",
+  "serviceWorkerDescription": "Çaktivizoje këtë nëse përdoruesit duhet të shohin gjithmonë menjëherë daljen më të fundit të serverit.",
+  "forceBrowserUpgrade": "Detyro përditësimin e shfletuesit",
+  "forceBrowserUpgradeDescription": "Kërko shfletues të përditësuar para ngarkimit të përvojës së sajtit.",
+  "unableToLoadSiteDetails": "Detajet e sajtit nuk mund të ngarkohen.",
+  "noSiteDetails": "Nuk ka detaje sajti të disponueshme.",
+  "save": "Ruaj"
+}

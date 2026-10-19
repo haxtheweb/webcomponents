@@ -1,0 +1,11 @@
+{
+  "playlist": "Lîsteya lêdanê",
+  "carousel": "karûsel",
+  "slide": "slayd",
+  "slideNumber": "Slayd {number}",
+  "slideOfTotal": "Slayd {number} ji {total}",
+  "previousSlide": "Slayda berê",
+  "nextSlide": "Slayda paşê",
+  "slidePages": "Rûpelên slaydan",
+  "goToSlide": "Here slayda {number}"
+}

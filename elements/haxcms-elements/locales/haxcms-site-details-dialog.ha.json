@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- tsoho shafi na farko --",
+  "details": "Cikakkun bayanai",
+  "title": "Take",
+  "titleDescription": "Sunan gidan yanar gizo",
+  "homePage": "Shafin farko",
+  "homePageDescription": "Shafin da za a yi amfani da shi a matsayin tsohon shafin sauka / na farko",
+  "advanced": "Na ci gaba",
+  "serviceWorker": "Ƙara service worker ga shafi mai motsi",
+  "serviceWorkerDescription": "Kashe wannan idan ya kamata masu amfani su riƙa ganin sabon sakamakon sabar nan take.",
+  "forceBrowserUpgrade": "Tilasta haɓaka burauza",
+  "forceBrowserUpgradeDescription": "Buƙaci burauzoji masu sabuntawa koyaushe kafin a loda ƙwarewar gidan yanar gizo.",
+  "unableToLoadSiteDetails": "Ba a iya loda cikakkun bayanan gidan yanar gizo ba.",
+  "noSiteDetails": "Babu cikakkun bayanan gidan yanar gizo.",
+  "save": "Ajiye"
+}

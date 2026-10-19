@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Атрибутсия",
+  "licenseBySa": "Атрибутсия — Мубодила дар ҳамон шароит",
+  "licenseByNd": "Атрибутсия — Бе асарҳои ҳосилавӣ",
+  "licenseByNc": "Атрибутсия — Ғайритиҷоратӣ",
+  "licenseByNcSa": "Атрибутсия — Ғайритиҷоратӣ — Мубодила дар ҳамон шароит",
+  "licenseByNcNd": "Атрибутсия — Ғайритиҷоратӣ — Бе асарҳои ҳосилавӣ",
+  "licenseGraphic": "Тасвири {license}",
+  "workByCreator": "{title} аз ҷониби {creator}",
+  "workByCreatorLicensed": "{title} аз ҷониби {creator} таҳти {license} иҷозатнома дода шудааст.",
+  "permissionsBeyondScope": "Иҷозатҳо берун аз доираи ин иҷозатнома {link} дастрасанд.",
+  "author": "(муаллиф)",
+  "onTheLicensingDetailsPage": "дар саҳифаи тафсилоти иҷозатнома"
+}

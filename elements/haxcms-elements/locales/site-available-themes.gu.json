@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "થીમ્સ લોડ કરવામાં નિષ્ફળ: {error}",
+  "noThemesForView": "આ વ્યૂ માટે કોઈ થીમ્સ ઉપલબ્ધ નથી.",
+  "active": "સક્રિય",
+  "themeIsActive": "{name} થીમ સક્રિય છે",
+  "applyTheme": "{name} થીમ લાગુ કરો",
+  "apply": "લાગુ કરો",
+  "preview": "પૂર્વાવલોકન",
+  "name": "નામ",
+  "element": "એલિમેન્ટ",
+  "description": "વર્ણન",
+  "action": "ક્રિયા",
+  "loadingThemes": "થીમ્સ લોડ થઈ રહી છે...",
+  "themesShown": "{count} થીમ્સ બતાવી",
+  "themesShownDefaults": "{count} થીમ્સ બતાવી (app-hax ડિફૉલ્ટ્સ)",
+  "availableHaxcmsThemes": "ઉપલબ્ધ HAXcms થીમ્સ",
+  "gallery": "ગૅલેરી",
+  "table": "કોષ્ટક"
+}

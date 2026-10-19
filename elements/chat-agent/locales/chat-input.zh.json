@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "显示之前发送的消息（上）",
+  "displayPreviousMessageDown": "显示之前发送的消息（下）",
+  "sendPrompt": "发送提示",
+  "sendPromptToMerlin": "将提示发送给 Merlin",
+  "shortenPrompt": "请将提示缩短至不超过 {limit} 个字符。"
+}

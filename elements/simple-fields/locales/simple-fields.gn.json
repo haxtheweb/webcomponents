@@ -9,5 +9,8 @@
   "record": "Mbopyahẽ",
   "pause": "Mombyta ñembopyahẽ",
   "stopSave": "Mombyta ha ñongatu",
-  "clickToTakePhoto": "Ejopy ejapo hag̃ua ta'ãnga"
+  "clickToTakePhoto": "Ejopy ejapo hag̃ua ta'ãnga",
+  "url": "URL",
+  "open": "embojuruja",
+  "removeValue": "Emboguete {value}"
 }

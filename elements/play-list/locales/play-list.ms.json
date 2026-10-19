@@ -1,0 +1,11 @@
+{
+  "playlist": "Senarai main",
+  "carousel": "karusel",
+  "slide": "slaid",
+  "slideNumber": "Slaid {number}",
+  "slideOfTotal": "Slaid {number} daripada {total}",
+  "previousSlide": "Slaid sebelumnya",
+  "nextSlide": "Slaid seterusnya",
+  "slidePages": "Halaman slaid",
+  "goToSlide": "Pergi ke slaid {number}"
+}

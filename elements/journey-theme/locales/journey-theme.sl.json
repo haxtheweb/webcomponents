@@ -1,4 +1,11 @@
 {
   "readMore": "Preberi več",
-  "home": "Domov"
+  "home": "Domov",
+  "anchorLinkCopied": "Povezava sidra je kopirana!",
+  "skipToContent": "Skoči na vsebino",
+  "changeTheme": "Spremeni temo",
+  "siteSections": "Razdelki spletnega mesta",
+  "pageOfTotal": "Stran {current} od {total}",
+  "siteGenerated": "Spletno mesto ustvarjeno: {date}",
+  "licenseGraphic": "Grafika {license}"
 }

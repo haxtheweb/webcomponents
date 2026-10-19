@@ -1,0 +1,11 @@
+{
+  "roleTitle": "ਭੂਮਿਕਾ ਦਾ ਸਿਰਲੇਖ",
+  "describeYourRole": "ਆਪਣੀ ਭੂਮਿਕਾ ਦਾ ਇੱਥੇ ਵਰਣਨ ਕਰੋ...",
+  "present": "ਪੇਸ਼ ਕਰੋ",
+  "skills": "ਹੁਨਰ:",
+  "skillsAndMore": "{skills} ਅਤੇ +{count} ਹੋਰ",
+  "yearShort": "{count} ਸਾਲ",
+  "yearsShort": "{count} ਸਾਲ",
+  "monthShort": "{count} ਮਹੀਨਾ",
+  "monthsShort": "{count} ਮਹੀਨੇ"
+}

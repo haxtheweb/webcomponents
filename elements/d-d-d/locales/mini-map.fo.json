@@ -1,0 +1,17 @@
+{
+  "editNodes": "Rætta knútar",
+  "editLines": "Rætta linjur",
+  "reset": "Nullstilla",
+  "save": "Goym",
+  "cancel": "Angra",
+  "delete": "Strika",
+  "type": "Slag:",
+  "topic": "Evni",
+  "subsection": "Undirpartur",
+  "name": "Navn:",
+  "enterName": "Skriva navn",
+  "url": "URL:",
+  "enterUrl": "Skriva URL",
+  "activeNode": "Virkin knútur?",
+  "nodeId": "Knútur {id}"
+}

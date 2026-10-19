@@ -9,5 +9,8 @@
   "record": "Yozib olish",
   "pause": "Yozishni to‘xtatib turish",
   "stopSave": "To‘xtatish va saqlash",
-  "clickToTakePhoto": "Surat olish uchun bosing"
+  "clickToTakePhoto": "Surat olish uchun bosing",
+  "url": "URL",
+  "open": "ochish",
+  "removeValue": "{value} ni olib tashlash"
 }

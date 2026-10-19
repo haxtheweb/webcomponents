@@ -1,0 +1,17 @@
+{
+  "editNodes": "Knooppunten bewerken",
+  "editLines": "Lijnen bewerken",
+  "reset": "Opnieuw instellen",
+  "save": "Opslaan",
+  "cancel": "Annuleren",
+  "delete": "Verwijderen",
+  "type": "Type:",
+  "topic": "Onderwerp",
+  "subsection": "Subsectie",
+  "name": "Naam:",
+  "enterName": "Voer naam in",
+  "url": "URL:",
+  "enterUrl": "Voer URL in",
+  "activeNode": "Actief knooppunt?",
+  "nodeId": "Knooppunt {id}"
+}

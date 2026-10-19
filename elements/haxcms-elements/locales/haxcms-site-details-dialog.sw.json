@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- chaguomsingi ni ukurasa wa kwanza --",
+  "details": "Maelezo",
+  "title": "Kichwa",
+  "titleDescription": "Jina la tovuti",
+  "homePage": "Ukurasa wa nyumbani",
+  "homePageDescription": "Ukurasa wa kutumia kama ukurasa chaguomsingi wa kutua / nyumbani",
+  "advanced": "Mahiri",
+  "serviceWorker": "Ongeza service worker kwenye ukurasa unaobadilika",
+  "serviceWorkerDescription": "Zima hii ikiwa watumiaji wanapaswa kuona matokeo ya hivi karibuni ya seva papo hapo kila wakati.",
+  "forceBrowserUpgrade": "Lazimisha kusasisha kivinjari",
+  "forceBrowserUpgradeDescription": "Hitaji vivinjari vinavyojisasisha kabla ya kupakia uzoefu wa tovuti.",
+  "unableToLoadSiteDetails": "Imeshindwa kupakia maelezo ya tovuti.",
+  "noSiteDetails": "Hakuna maelezo ya tovuti yanayopatikana.",
+  "save": "Hifadhi"
+}

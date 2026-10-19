@@ -1,4 +1,11 @@
 {
   "readMore": "Прочетете още",
-  "home": "Начало"
+  "home": "Начало",
+  "anchorLinkCopied": "Връзката към котвата е копирана!",
+  "skipToContent": "Към съдържанието",
+  "changeTheme": "Смяна на темата",
+  "siteSections": "Раздели на сайта",
+  "pageOfTotal": "Страница {current} от {total}",
+  "siteGenerated": "Сайтът е генериран: {date}",
+  "licenseGraphic": "Графика на {license}"
 }

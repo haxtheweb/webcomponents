@@ -36,5 +36,7 @@
   "clickToDoAnything": "Kattints bármihez!",
   "moreDetails": "További részletek",
   "details": "Részletek",
-  "saved": "Mentve"
+  "saved": "Mentve",
+  "opensInNewWindow": "Új ablakban nyílik meg",
+  "resultsCount": "{count} találat"
 }

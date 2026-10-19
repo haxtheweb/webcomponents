@@ -54,5 +54,6 @@
   "requirementUppercase": "Jedno veľké písmeno",
   "requirementLowercase": "Jedno malé písmeno",
   "requirementNumber": "Jedna číslica",
-  "requirementSymbol": "Jeden symbol"
+  "requirementSymbol": "Jeden symbol",
+  "haxcmsMascotAlt": "Maskot HAXcms World Traveler"
 }

@@ -1,0 +1,17 @@
+{
+  "editNodes": "Wysig nodusse",
+  "editLines": "Wysig lyne",
+  "reset": "Stel terug",
+  "save": "Stoor",
+  "cancel": "Kanselleer",
+  "delete": "Skrap",
+  "type": "Tipe:",
+  "topic": "Onderwerp",
+  "subsection": "Onderafdeling",
+  "name": "Naam:",
+  "enterName": "Voer naam in",
+  "url": "URL:",
+  "enterUrl": "Voer URL in",
+  "activeNode": "Aktiewe nodus?",
+  "nodeId": "Nodus {id}"
+}

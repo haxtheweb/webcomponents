@@ -36,5 +36,7 @@
   "clickToDoAnything": "Biron narsa qilish uchun bosing!",
   "moreDetails": "Batafsil ma'lumot",
   "details": "Tafsilotlar",
-  "saved": "Saqlandi"
+  "saved": "Saqlandi",
+  "opensInNewWindow": "Yangi oynada ochiladi",
+  "resultsCount": "{count} ta natija"
 }

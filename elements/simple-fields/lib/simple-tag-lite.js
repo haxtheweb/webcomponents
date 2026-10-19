@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 /**
  *
@@ -9,7 +10,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
  * @demo ./demo/tags.html Demo
  */
 export const SimpleTagLiteSuper = function (SuperClass) {
-  return class extends SuperClass {
+  return class extends I18NMixin(SuperClass) {
     static get properties() {
       let props = {};
       if (super.properties) {
@@ -49,6 +50,16 @@ export const SimpleTagLiteSuper = function (SuperClass) {
     }
     constructor() {
       super();
+      this.t = this.t || {};
+      this.t = {
+        ...this.t,
+        removeValue: "Remove {value}",
+      };
+      this.registerLocalization({
+        context: this,
+        namespace: "simple-fields",
+        localesPath: new URL("../locales/", import.meta.url).href,
+      });
       this.data = {};
       this.icon = "cancel";
       this.cancelButton = false;
@@ -115,7 +126,7 @@ export const SimpleTagLiteSuper = function (SuperClass) {
                 icon="${!!this.toggles && !!this.toggled && !!this.toggledIcon
                   ? this.toggledIcon
                   : this.icon}"
-                label="Remove ${this.value}"
+                label="${this.t.removeValue.replace("{value}", () => this.value)}"
                 ?hidden="${!this.cancelButton}"
                 @click="${this.clickEvent}"
                 ?disabled="${this.disabled}"

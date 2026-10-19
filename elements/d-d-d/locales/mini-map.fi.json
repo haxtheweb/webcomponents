@@ -1,0 +1,17 @@
+{
+  "editNodes": "Muokkaa solmuja",
+  "editLines": "Muokkaa viivoja",
+  "reset": "Nollaa",
+  "save": "Tallenna",
+  "cancel": "Peruuta",
+  "delete": "Poista",
+  "type": "Tyyppi:",
+  "topic": "Aihe",
+  "subsection": "Alaosio",
+  "name": "Nimi:",
+  "enterName": "Anna nimi",
+  "url": "URL:",
+  "enterUrl": "Anna URL",
+  "activeNode": "Aktiivinen solmu?",
+  "nodeId": "Solmu {id}"
+}

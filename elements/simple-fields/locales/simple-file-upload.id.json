@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Letakkan file di sini",
+  "uploadQueue": "Antrean unggahan",
+  "pending": "Menunggu",
+  "preparing": "Menyiapkan",
+  "uploading": "Mengunggah",
+  "complete": "Selesai",
+  "aborted": "Dihentikan",
+  "cancelled": "Dibatalkan",
+  "error": "Galat",
+  "errorWithStatus": "Kesalahan: {status}",
+  "cancel": "Batal",
+  "cancelUploadOf": "Batalkan unggahan {name}",
+  "retry": "Coba lagi",
+  "retryUploadOf": "Coba lagi unggahan {name}",
+  "remove": "Hapus",
+  "removeFromQueue": "Hapus {name} dari antrean",
+  "fileTypeNotAccepted": "Jenis file tidak diterima: {name}",
+  "uploadFailed": "Unggahan gagal: {status}",
+  "networkError": "Kesalahan jaringan"
+}

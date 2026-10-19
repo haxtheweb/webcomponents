@@ -36,5 +36,7 @@
   "clickToDoAnything": "Klikka fyri at gera nakað!",
   "moreDetails": "Fleiri lýsingar",
   "details": "Lýsingar",
-  "saved": "Goymt"
+  "saved": "Goymt",
+  "opensInNewWindow": "Opnast í nýggjum glugga",
+  "resultsCount": "{count} úrslit"
 }

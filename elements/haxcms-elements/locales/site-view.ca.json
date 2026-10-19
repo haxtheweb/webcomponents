@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "No hi ha resultats",
+  "viewsRecordHeading": "Enregistra",
+  "viewsTitleImage": "Imatge de {title}",
+  "viewsTitlePreview": "Previsualització de {title}",
+  "viewsNoTimelineRecords": "No hi ha registres amb dates disponibles per mostrar la cronologia.",
+  "viewsTimelineTitle": "Cronologia de {title}",
+  "viewsNoChartField": "No s'ha detectat cap camp numèric per mostrar el gràfic.",
+  "viewsChartingValue": "Gràfic de {value}",
+  "viewsChartingValueByLabel": "Gràfic de {value} per {label}",
+  "viewsChartTitle": "Gràfic de {title}",
+  "viewsNoTreeRecords": "No hi ha registres jeràrquics disponibles per mostrar l'arbre.",
+  "viewsNoGalleryRecords": "No hi ha registres d'imatges disponibles per mostrar la galeria.",
+  "viewsNoPlaylistRecords": "No hi ha registres multimèdia disponibles per mostrar la llista de reproducció.",
+  "fetchFailed": "Ha fallat l'obtenció ({status})",
+  "unableToLoadViewData": "No s'han pogut carregar les dades de la vista.",
+  "noResultsFound": "No s'han trobat resultats.",
+  "refreshView": "Actualitza la vista",
+  "breakIntoStaticContent": "Converteix en contingut estàtic",
+  "viewsOpenRecord": "Obre el registre"
+}

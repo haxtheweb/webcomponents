@@ -10,5 +10,9 @@
   "save": "Spremi",
   "noDescription": "Opis nije dostupan.",
   "details": "Pojedinosti",
-  "loadingInventory": "Učitavanje potpunog popisa blokova…"
+  "loadingInventory": "Učitavanje potpunog popisa blokova…",
+  "selectAllButton": "Odaberi sve",
+  "deselectAllButton": "Poništi odabir svega",
+  "selectedOfAvailable": "Odabrano {selected} / dostupno {total}",
+  "savingBlocksFailed": "Spremanje blokova nije uspjelo: {error}"
 }

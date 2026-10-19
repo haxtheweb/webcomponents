@@ -1,0 +1,8 @@
+{
+  "loading": "लोड हो रहा है",
+  "settingUpContainer": "कंटेनर सेट किया जा रहा है",
+  "runningCommands": "कमांड चलाए जा रहे हैं",
+  "installing": "इंस्टॉल हो रहा है..",
+  "runningStart": "प्रारंभ चलाया जा रहा है..",
+  "webContainerPreview": "वेब कंटेनर पूर्वावलोकन"
+}

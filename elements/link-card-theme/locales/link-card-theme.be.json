@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Спасылка-якар скапіравана!",
+  "skipToContent": "Перайсці да змесціва",
+  "changePalette": "Змяніць палітру",
+  "primaryLinks": "Асноўныя спасылкі",
+  "socialLinks": "Сацыяльныя спасылкі",
+  "myProfile": "Мой профіль",
+  "profileImageOf": "Выява профілю {name}",
+  "profileImage": "Выява профілю",
+  "linkCardProfile": "Профіль-картка спасылак",
+  "emptyStateLinks": "Дадайце пункты меню верхняга ўзроўню ў site.json, каб паказаць кнопкі-спасылкі.",
+  "titleOnPlatform": "{title} у {platform}",
+  "openPlatform": "Адкрыць {platform}",
+  "paletteUpdated": "Каляровая палітра зменена на варыянт {number}."
+}

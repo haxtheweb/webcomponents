@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Tab {xOfY}",
+  "xOfY": "{order} saka {total}",
+  "endOfTab": "Pungkasan tab {xOfY}. Bali menyang {tabs}.",
+  "tabs": "tab"
+}

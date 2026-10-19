@@ -36,5 +36,7 @@
   "clickToDoAnything": "ఏదైనా చేయడానికి క్లిక్ చేయండి!",
   "moreDetails": "మరిన్ని వివరాలు",
   "details": "వివరాలు",
-  "saved": "సేవ్ చేయబడింది"
+  "saved": "సేవ్ చేయబడింది",
+  "opensInNewWindow": "కొత్త విండోలో తెరుచుకుంటుంది",
+  "resultsCount": "{count} ఫలితాలు"
 }

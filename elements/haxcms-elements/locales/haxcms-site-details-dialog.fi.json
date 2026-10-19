@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- oletuksena ensimmäinen sivu --",
+  "details": "Tiedot",
+  "title": "Otsikko",
+  "titleDescription": "Sivuston nimi",
+  "homePage": "Etusivu",
+  "homePageDescription": "Oletusaloitussivuna / etusivuna käytettävä sivu",
+  "advanced": "Lisäasetukset",
+  "serviceWorker": "Lisää service worker dynaamiseen sivuun",
+  "serviceWorkerDescription": "Poista tämä käytöstä, jos käyttäjien tulee aina nähdä palvelimen uusin tuloste välittömästi.",
+  "forceBrowserUpgrade": "Pakota selaimen päivitys",
+  "forceBrowserUpgradeDescription": "Vaadi ajantasainen selain ennen sivustokokemuksen lataamista.",
+  "unableToLoadSiteDetails": "Sivuston tietoja ei voitu ladata.",
+  "noSiteDetails": "Sivuston tietoja ei ole saatavilla.",
+  "save": "Tallenna"
+}

@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Показать ранее отправленное сообщение (вверх)",
+  "displayPreviousMessageDown": "Показать ранее отправленное сообщение (вниз)",
+  "sendPrompt": "Отправить запрос",
+  "sendPromptToMerlin": "Отправить запрос Merlin",
+  "shortenPrompt": "Сократите запрос до {limit} символов или меньше."
+}

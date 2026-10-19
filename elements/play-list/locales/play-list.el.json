@@ -1,0 +1,11 @@
+{
+  "playlist": "Λίστα αναπαραγωγής",
+  "carousel": "καρουζέλ",
+  "slide": "διαφάνεια",
+  "slideNumber": "Διαφάνεια {number}",
+  "slideOfTotal": "Διαφάνεια {number} από {total}",
+  "previousSlide": "Προηγούμενη διαφάνεια",
+  "nextSlide": "Επόμενη διαφάνεια",
+  "slidePages": "Σελίδες διαφανειών",
+  "goToSlide": "Μετάβαση στη διαφάνεια {number}"
+}

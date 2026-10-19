@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import { SimpleFilterMixin } from "@haxtheweb/simple-filter/simple-filter.js";
 import { getRange } from "@haxtheweb/utils/lib/selection.js";
 import "@haxtheweb/simple-popover/simple-popover.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `simple-autocomplete`
@@ -13,7 +14,7 @@ import "@haxtheweb/simple-popover/simple-popover.js";
  * @demo demo/index.html
  * @element simple-autocomplete
  */
-class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
+class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
   /**
    * LitElement convention
    */
@@ -139,7 +140,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
             aria-expanded="${this.opened}"
             aria-controls="list"
             aria-autocomplete="list"
-            aria-label="${this.inputLabel || "Search"}"
+            aria-label="${this.inputLabel || this.t.search}"
             @input="${this.inputChanged}"
             contenteditable
             @keydown="${this.a11yInputKeys}"
@@ -149,7 +150,10 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
         part="popover"
         auto
         part="simple-popover"
-        aria-label="${this.inputLabel} suggestions"
+        aria-label="${this.t.labelSuggestions.replace(
+          "{label}",
+          () => this.inputLabel,
+        )}"
         ?hidden="${!this.opened || this.filtered.length === 0}"
         position="bottom"
         for="input"
@@ -194,7 +198,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
               )}
             </ul>`
           : html`<div class="no-results" part="no-result" role="status">
-              No results
+              ${this.t.noResults}
             </div>`}
       </simple-popover>
     `;
@@ -282,9 +286,20 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      search: "Search",
+      labelSuggestions: "{label} suggestions",
+      noResults: "No results",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     // default limit of items to show even if there are more results
     this.itemLimit = 6;
-    this.inputLabel = "Search";
+    this.i18nDefault("inputLabel", "search");
     // flag to hide input; useful if something else is implementing this tag w/ own input
     this.hideInput = false;
     this.selectionPosition = false;

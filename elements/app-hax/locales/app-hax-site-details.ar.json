@@ -1,0 +1,18 @@
+{
+  "copy": "نسخ",
+  "download": "تنزيل",
+  "archive": "أرشفة",
+  "copyOperation": "نسخ",
+  "downloadOperation": "تنزيل",
+  "archiveOperation": "أرشفة",
+  "created": "تاريخ الإنشاء",
+  "updated": "تاريخ التحديث",
+  "pages": "الصفحات",
+  "url": "URL",
+  "confirm": "تأكيد",
+  "cancel": "إلغاء",
+  "siteOperationConfirmTitle": "{operationName} {siteName}؟",
+  "siteOperationConfirmMessage": "هل أنت متأكد من أنك تريد {operation} {siteName}؟",
+  "siteOperationSuccessful": "نجحت عملية {operation} لـ {siteName}!",
+  "siteOperationFailed": "فشلت عملية {operation} لـ {siteName}"
+}

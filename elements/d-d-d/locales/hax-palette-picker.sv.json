@@ -1,0 +1,9 @@
+{
+  "palette": "Palett",
+  "paletteSelection": "Palettval",
+  "active": "Aktiv",
+  "selected": "Vald",
+  "currentlyActiveAndSelectedPalette": "Aktiv och vald palett",
+  "currentlyActivePalette": "Aktiv palett",
+  "selectedPaletteToApply": "Vald palett att tillämpa"
+}

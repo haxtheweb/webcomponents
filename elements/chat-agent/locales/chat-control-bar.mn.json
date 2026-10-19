@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Бүртгэлийг txt-ээр татах",
+  "downloadChatLog": "Чатын бүртгэлийг татах",
+  "resetChat": "Чатыг дахин эхлүүлэх",
+  "toggleDataCollection": "Өгөгдөл цуглуулалтыг солих",
+  "dataCollection": "Өгөгдөл цуглуулалт",
+  "toggleDeveloperMode": "Хөгжүүлэгчийн горимыг солих",
+  "exitFullView": "Бүтэн харагдацаас гарах",
+  "enterFullView": "Бүтэн харагдацад орох",
+  "hideInterface": "Интерфейсийг нуух",
+  "resetChatConfirm": "Чатыг дахин эхлүүлэх үү?",
+  "downloadBeforeResetConfirm": "Дахин эхлүүлэхээс өмнө чатын бүртгэлийг татах уу?",
+  "dataCollectionOn": "Таны харилцан яриаг манай AI загваруудыг сургахад ашиглана",
+  "dataCollectionOff": "Таны харилцан яриаг манай AI загваруудыг сургахад ашиглахгүй"
+}

@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Download log som txt",
+  "downloadChatLog": "Download chatlog",
+  "resetChat": "Nulstil chat",
+  "toggleDataCollection": "Slå dataindsamling til/fra",
+  "dataCollection": "Dataindsamling",
+  "toggleDeveloperMode": "Slå udviklertilstand til/fra",
+  "exitFullView": "Afslut fuld visning",
+  "enterFullView": "Gå til fuld visning",
+  "hideInterface": "Skjul brugerflade",
+  "resetChatConfirm": "Nulstil chatten?",
+  "downloadBeforeResetConfirm": "Vil du downloade chatloggen, før du nulstiller?",
+  "dataCollectionOn": "Dine samtaler bruges til at træne vores AI-modeller",
+  "dataCollectionOff": "Dine samtaler bruges ikke til at træne vores AI-modeller"
+}

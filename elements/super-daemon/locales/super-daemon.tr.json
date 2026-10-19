@@ -36,5 +36,7 @@
   "clickToDoAnything": "Her şeyi yapmak için tıklayın!",
   "moreDetails": "Daha fazla ayrıntı",
   "details": "Ayrıntılar",
-  "saved": "Kaydedildi"
+  "saved": "Kaydedildi",
+  "opensInNewWindow": "Yeni pencerede açılır",
+  "resultsCount": "{count} sonuç"
 }

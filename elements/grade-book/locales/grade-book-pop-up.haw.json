@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Hāʻawi a ka haumāna",
   "openInNewWindow": "Wehe ma ka puka aniani hou",
-  "submitted": "Ua hāʻawi ʻia"
+  "submitted": "Ua hāʻawi ʻia",
+  "previousStudent": "Haumāna ma mua",
+  "nextStudent": "Haumāna aʻe",
+  "previousAssignment": "Haʻawina ma mua",
+  "nextAssignment": "Haʻawina aʻe"
 }

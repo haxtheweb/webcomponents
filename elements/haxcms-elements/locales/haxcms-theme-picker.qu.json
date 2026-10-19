@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Kawsaq",
+  "selected": "Akllasqa",
+  "noPreview": "Mana qhawarichiy kanchu",
+  "currentlyActiveAndSelected": "Kunan kawsaq akllasqa rikch'ay",
+  "currentlyActive": "Kunan kawsaq rikch'ay",
+  "selectedToApplyOnSave": "Waqaychaspa churanapaq akllasqa rikch'ay",
+  "themeSelection": "Rikch'ay akllay",
+  "noThemesAvailable": "Mana rikch'aykuna kanchu."
+}

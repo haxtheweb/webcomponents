@@ -1,0 +1,17 @@
+{
+  "editNodes": "নোড এডিট করুন",
+  "editLines": "লাইন এডিট করুন",
+  "reset": "রিসেট",
+  "save": "সংরক্ষণ করুন",
+  "cancel": "বাতিল করুন",
+  "delete": "মুছুন",
+  "type": "ধরন:",
+  "topic": "বিষয়",
+  "subsection": "উপ-অনুচ্ছেদ",
+  "name": "নাম:",
+  "enterName": "নাম লিখুন",
+  "url": "URL:",
+  "enterUrl": "URL লিখুন",
+  "activeNode": "সক্রিয় নোড?",
+  "nodeId": "নোড {id}"
+}

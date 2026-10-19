@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "မှတ်တမ်းကို txt အဖြစ် ဒေါင်းလုဒ်လုပ်ရန်",
+  "downloadChatLog": "ချတ် မှတ်တမ်း ဒေါင်းလုဒ်လုပ်ရန်",
+  "resetChat": "ချတ် ပြန်စရန်",
+  "toggleDataCollection": "ဒေတာ စုဆောင်းမှု ပြောင်းရန်",
+  "dataCollection": "ဒေတာ စုဆောင်းမှု",
+  "toggleDeveloperMode": "Developer မုဒ် ပြောင်းရန်",
+  "exitFullView": "မြင်ကွင်းအပြည့်မှ ထွက်ရန်",
+  "enterFullView": "မြင်ကွင်းအပြည့်သို့ ဝင်ရန်",
+  "hideInterface": "အင်တာဖေ့စ်ကို ဝှက်ရန်",
+  "resetChatConfirm": "ချတ်ကို ပြန်စမလား?",
+  "downloadBeforeResetConfirm": "ပြန်မစမီ ချတ် မှတ်တမ်းကို ဒေါင်းလုဒ်လုပ်မလား?",
+  "dataCollectionOn": "သင့်စကားဝိုင်းများကို ကျွန်ုပ်တို့၏ AI မော်ဒယ်များ လေ့ကျင့်ရန် အသုံးပြုမည်",
+  "dataCollectionOff": "သင့်စကားဝိုင်းများကို ကျွန်ုပ်တို့၏ AI မော်ဒယ်များ လေ့ကျင့်ရန် အသုံးပြုမည် မဟုတ်ပါ"
+}

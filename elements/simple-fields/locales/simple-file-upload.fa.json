@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "فایل‌ها را اینجا رها کنید",
+  "uploadQueue": "صف بارگذاری",
+  "pending": "در انتظار",
+  "preparing": "در حال آماده‌سازی",
+  "uploading": "در حال بارگذاری",
+  "complete": "کامل",
+  "aborted": "متوقف شد",
+  "cancelled": "لغو شد",
+  "error": "خطا",
+  "errorWithStatus": "خطا: {status}",
+  "cancel": "لغو",
+  "cancelUploadOf": "لغو بارگذاری {name}",
+  "retry": "تلاش دوباره",
+  "retryUploadOf": "تلاش دوباره برای بارگذاری {name}",
+  "remove": "حذف",
+  "removeFromQueue": "حذف {name} از صف",
+  "fileTypeNotAccepted": "نوع فایل پذیرفته نیست: {name}",
+  "uploadFailed": "بارگذاری ناموفق بود: {status}",
+  "networkError": "خطای شبکه"
+}

@@ -1,0 +1,17 @@
+{
+  "editNodes": "ਨੋਡ ਸੰਪਾਦਿਤ ਕਰੋ",
+  "editLines": "ਲਾਈਨਾਂ ਸੰਪਾਦਿਤ ਕਰੋ",
+  "reset": "ਰੀਸੈੱਟ ਕਰੋ",
+  "save": "ਸੰਭਾਲੋ",
+  "cancel": "ਰੱਦ ਕਰੋ",
+  "delete": "ਮਿਟਾਓ",
+  "type": "ਕਿਸਮ:",
+  "topic": "ਵਿਸ਼ਾ",
+  "subsection": "ਉਪ-ਭਾਗ",
+  "name": "ਨਾਮ:",
+  "enterName": "ਨਾਮ ਦਰਜ ਕਰੋ",
+  "url": "URL:",
+  "enterUrl": "URL ਦਰਜ ਕਰੋ",
+  "activeNode": "ਸਰਗਰਮ ਨੋਡ?",
+  "nodeId": "ਨੋਡ {id}"
+}

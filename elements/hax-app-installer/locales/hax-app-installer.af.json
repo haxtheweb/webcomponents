@@ -54,5 +54,6 @@
   "requirementUppercase": "Een hoofletter",
   "requirementLowercase": "Een kleinletter",
   "requirementNumber": "Een syfer",
-  "requirementSymbol": "Een simbool"
+  "requirementSymbol": "Een simbool",
+  "haxcmsMascotAlt": "HAXcms Wêreldreisiger-gelukbringer"
 }

@@ -36,5 +36,7 @@
   "clickToDoAnything": "ڪجهه به ڪرڻ لاءِ ڪلڪ ڪريو!",
   "moreDetails": "وڌيڪ تفصيل",
   "details": "تفصيل",
-  "saved": "محفوظ ٿيو"
+  "saved": "محفوظ ٿيو",
+  "opensInNewWindow": "نئين ونڊو ۾ کلي ٿو",
+  "resultsCount": "{count} نتيجا"
 }

@@ -41,6 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/absolute-position-behavior": "^26.8.0",
+    "@haxtheweb/i18n-manager": "^26.8.0",
     "lit": "3.3.3"
   },
   "devDependencies": {

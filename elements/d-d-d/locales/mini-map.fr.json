@@ -1,0 +1,17 @@
+{
+  "editNodes": "Modifier les nœuds",
+  "editLines": "Modifier les lignes",
+  "reset": "Réinitialiser",
+  "save": "Enregistrer",
+  "cancel": "Annuler",
+  "delete": "Supprimer",
+  "type": "Type :",
+  "topic": "Sujet",
+  "subsection": "Sous-section",
+  "name": "Nom :",
+  "enterName": "Saisissez un nom",
+  "url": "URL :",
+  "enterUrl": "Saisissez une URL",
+  "activeNode": "Nœud actif ?",
+  "nodeId": "Nœud {id}"
+}

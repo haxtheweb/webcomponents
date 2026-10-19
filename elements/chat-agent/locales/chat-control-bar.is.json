@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Sækja annál sem txt",
+  "downloadChatLog": "Sækja spjallannál",
+  "resetChat": "Endurstilla spjall",
+  "toggleDataCollection": "Víxla gagnasöfnun",
+  "dataCollection": "Gagnasöfnun",
+  "toggleDeveloperMode": "Víxla forritarahami",
+  "exitFullView": "Hætta í fullri sýn",
+  "enterFullView": "Opna fulla sýn",
+  "hideInterface": "Fela viðmót",
+  "resetChatConfirm": "Endurstilla spjallið?",
+  "downloadBeforeResetConfirm": "Sækja spjallannálinn áður en þú endurstillir?",
+  "dataCollectionOn": "Samtöl þín verða notuð til að þjálfa AI-líkönin okkar",
+  "dataCollectionOff": "Samtöl þín verða ekki notuð til að þjálfa AI-líkönin okkar"
+}

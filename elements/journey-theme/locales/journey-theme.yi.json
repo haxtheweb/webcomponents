@@ -1,4 +1,11 @@
 {
   "readMore": "לייענען מער",
-  "home": "הײם"
+  "home": "הײם",
+  "anchorLinkCopied": "אַנקער־לינק קאָפּירט!",
+  "skipToContent": "שפּרינגען צום אינהאַלט",
+  "changeTheme": "בײַט די טעמע",
+  "siteSections": "וועבזײַטל־אָפּטיילן",
+  "pageOfTotal": "זײַט {current} פֿון {total}",
+  "siteGenerated": "וועבזײַטל גענערירט: {date}",
+  "licenseGraphic": "גראַפֿיק פֿון {license}"
 }

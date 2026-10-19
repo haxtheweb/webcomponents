@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Shfaq mesazhin e dërguar më parë (lart)",
+  "displayPreviousMessageDown": "Shfaq mesazhin e dërguar më parë (poshtë)",
+  "sendPrompt": "Dërgo kërkesën",
+  "sendPromptToMerlin": "Dërgo kërkesën te Merlin",
+  "shortenPrompt": "Të lutem shkurtoje kërkesën në jo më shumë se {limit} karaktere."
+}

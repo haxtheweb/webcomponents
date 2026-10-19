@@ -6,6 +6,7 @@ import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "./simple-fields-array-item.js";
 import "@haxtheweb/responsive-utility/responsive-utility.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `simple-fields-array` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
@@ -17,7 +18,9 @@ import "@haxtheweb/responsive-utility/responsive-utility.js";
  * @class SimpleFieldsArray
  * @extends {SimpleFieldsFieldsetBehaviors(LitElement)}
  */
-class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
+class SimpleFieldsArray extends I18NMixin(
+  SimpleFieldsFieldsetBehaviors(LitElement),
+) {
   static get tag() {
     return "simple-fields-array";
   }
@@ -107,7 +110,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
           ?toggled="${this.expanded}"
           ?hidden="${this.hideExpand}"
           toggles
-          label="${this.expanded ? "Collapse All" : "Expand All"}"
+          label="${this.expanded ? this.t.collapseAll : this.t.expandAll}"
           part="expand"
         >
         </simple-toolbar-button>
@@ -124,7 +127,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
           icon="more-vert"
           ?toggled="${this.expanded}"
           toggles
-          label="Add Item"
+          label="${this.t.addItem}"
         >
         </simple-toolbar-button>
       </div>
@@ -139,6 +142,17 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
     this.expanded = false;
     this.disableAdd = false;
     this.responsiveSize = "sm";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      collapseAll: "Collapse All",
+      expandAll: "Expand All",
+      addItem: "Add Item",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);

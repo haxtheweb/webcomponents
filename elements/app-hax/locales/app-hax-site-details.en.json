@@ -1,0 +1,18 @@
+{
+  "copy": "Copy",
+  "download": "Download",
+  "archive": "Archive",
+  "copyOperation": "copy",
+  "downloadOperation": "download",
+  "archiveOperation": "archive",
+  "created": "created",
+  "updated": "updated",
+  "pages": "pages",
+  "url": "URL",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Are you sure you want to {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName} {operation} successful!",
+  "siteOperationFailed": "{siteName} {operation} failed"
+}

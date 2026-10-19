@@ -1,0 +1,17 @@
+{
+  "editNodes": "Hoʻoponopono i nā kiko",
+  "editLines": "Hoʻoponopono i nā laina",
+  "reset": "Hoʻonohonoho hou",
+  "save": "Mālama",
+  "cancel": "Hoʻopau",
+  "delete": "Holoi",
+  "type": "ʻAno:",
+  "topic": "Kumuhana",
+  "subsection": "Māhele lalo",
+  "name": "Inoa:",
+  "enterName": "Hoʻokomo i ka inoa",
+  "url": "URL:",
+  "enterUrl": "Hoʻokomo i ka URL",
+  "activeNode": "Kiko e hana nei?",
+  "nodeId": "Kiko {id}"
+}

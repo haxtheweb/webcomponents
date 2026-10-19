@@ -5,5 +5,9 @@
   "buttons": "Maɓallai",
   "futureButtonConfiguration": "Saitin maɓallan edita na musamman yana zuwa nan ba da daɗewa ba.",
   "save": "Ajiye",
-  "saving": "Ana ajiyewa…"
+  "saving": "Ana ajiyewa…",
+  "novice": "Mafari",
+  "expert": "Ƙwararre",
+  "toolbarPreviewAlt": "Samfotin sandar kayan aikin gyara na {audience}",
+  "savingEditorSettingsFailed": "Adana saitunan edita ya gaza: {error}"
 }

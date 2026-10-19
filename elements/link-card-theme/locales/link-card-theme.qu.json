@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Anchor t'inki kikinchasqa!",
+  "skipToContent": "Ukhunman phinkiy",
+  "changePalette": "Llimpikunata tikray",
+  "primaryLinks": "Ñawpaq t'inkikuna",
+  "socialLinks": "Social t'inkikuna",
+  "myProfile": "Ñuqap perfilniy",
+  "profileImageOf": "{name}-pa perfil siq'in",
+  "profileImage": "Perfil siq'i",
+  "linkCardProfile": "T'inki tarjeta perfil",
+  "emptyStateLinks": "site.json-pi hanaq pata akllana kaqkunata yapay t'inki botonkunata rikuchinapaq.",
+  "titleOnPlatform": "{title} {platform}-pi",
+  "openPlatform": "{platform}-ta kichay",
+  "paletteUpdated": "Llimpikuna {number} akllanaman tikrasqa."
+}

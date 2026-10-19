@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ankra ligilo kopiita!",
+  "skipToContent": "Salti al enhavo",
+  "changePalette": "Ŝanĝi paletron",
+  "primaryLinks": "Ĉefaj ligiloj",
+  "socialLinks": "Sociaj ligiloj",
+  "myProfile": "Mia profilo",
+  "profileImageOf": "Profila bildo de {name}",
+  "profileImage": "Profila bildo",
+  "linkCardProfile": "Ligilkarta profilo",
+  "emptyStateLinks": "Aldonu suprnivelajn menuerojn en site.json por montri ligilbutonojn.",
+  "titleOnPlatform": "{title} ĉe {platform}",
+  "openPlatform": "Malfermi {platform}",
+  "paletteUpdated": "Kolorpaletro ŝanĝita al opcio {number}."
+}

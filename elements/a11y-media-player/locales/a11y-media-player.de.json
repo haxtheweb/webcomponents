@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Wird geladen...",
   "youTubeStartLoading": "Drücken Sie auf Abspielen.",
   "youTubeTranscriptLabel": "Das Transkript wird geladen, sobald die Wiedergabe startet.",
-  "audioDescriptionLabel": "Audiodeskription"
+  "audioDescriptionLabel": "Audiodeskription",
+  "openOnYouTube": "Auf YouTube öffnen"
 }

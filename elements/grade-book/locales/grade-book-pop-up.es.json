@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Entrega del estudiante",
   "openInNewWindow": "Abrir en una ventana nueva",
-  "submitted": "Entregado"
+  "submitted": "Entregado",
+  "previousStudent": "Estudiante anterior",
+  "nextStudent": "Estudiante siguiente",
+  "previousAssignment": "Tarea anterior",
+  "nextAssignment": "Tarea siguiente"
 }

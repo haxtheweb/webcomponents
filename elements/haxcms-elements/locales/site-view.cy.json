@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Dim canlyniadau",
+  "viewsRecordHeading": "Recordio",
+  "viewsTitleImage": "Delwedd {title}",
+  "viewsTitlePreview": "Rhagolwg {title}",
+  "viewsNoTimelineRecords": "Dim cofnodion seiliedig ar ddyddiad ar gael i lunio llinell amser.",
+  "viewsTimelineTitle": "Llinell amser {title}",
+  "viewsNoChartField": "Ni chanfuwyd maes rhifol i lunio siart.",
+  "viewsChartingValue": "Siartio {value}",
+  "viewsChartingValueByLabel": "Siartio {value} yn ôl {label}",
+  "viewsChartTitle": "Siart {title}",
+  "viewsNoTreeRecords": "Dim cofnodion hierarchaidd ar gael i lunio coeden.",
+  "viewsNoGalleryRecords": "Dim cofnodion delwedd ar gael i lunio oriel.",
+  "viewsNoPlaylistRecords": "Dim cofnodion cyfryngau ar gael i lunio rhestr chwarae.",
+  "fetchFailed": "Methodd y nôl ({status})",
+  "unableToLoadViewData": "Methu llwytho data'r olwg.",
+  "noResultsFound": "Heb ddod o hyd i ganlyniadau.",
+  "refreshView": "Adnewyddu'r olwg",
+  "breakIntoStaticContent": "Torri'n gynnwys statig",
+  "viewsOpenRecord": "Agor cofnod"
+}

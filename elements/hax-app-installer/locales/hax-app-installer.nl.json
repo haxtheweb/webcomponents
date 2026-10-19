@@ -54,5 +54,6 @@
   "requirementUppercase": "Eén hoofdletter",
   "requirementLowercase": "Eén kleine letter",
   "requirementNumber": "Eén cijfer",
-  "requirementSymbol": "Eén symbool"
+  "requirementSymbol": "Eén symbool",
+  "haxcmsMascotAlt": "HAXcms-mascotte World Traveler"
 }

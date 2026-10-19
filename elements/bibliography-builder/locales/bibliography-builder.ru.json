@@ -1,3 +1,8 @@
 {
-  "title": "Список литературы"
+  "title": "Список литературы",
+  "export": "Экспорт",
+  "exportCitations": "Экспорт ссылок на источники",
+  "copy": "Копировать",
+  "exportCitationFormat": "Формат экспорта ссылок",
+  "selectCitationFormatBelow": "Выберите формат ссылок ниже"
 }

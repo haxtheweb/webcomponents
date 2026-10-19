@@ -48,6 +48,10 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
         "Custom editor button configuration is coming soon.",
       save: "Save",
       saving: "Saving…",
+      novice: "Novice",
+      expert: "Expert",
+      toolbarPreviewAlt: "{audience} editing toolbar preview",
+      savingEditorSettingsFailed: "Saving editor settings failed: {error}",
     };
 
     this.registerLocalization({
@@ -405,7 +409,7 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
                   <img
                     class="toolbar-preview"
                     src="${toolbarImgPath}"
-                    alt="${this.audience} editing toolbar preview"
+                    alt="${this.t.toolbarPreviewAlt.replace("{audience}", () => this.audience)}"
                   />
                 </div>
               </div>
@@ -444,8 +448,8 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
         title: this.t.experienceLevel,
         inputMethod: "select",
         options: {
-          novice: "Novice",
-          expert: "Expert",
+          novice: this.t.novice,
+          expert: this.t.expert,
         },
       },
     ];
@@ -487,7 +491,7 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
     } catch (error) {
       console.error("Saving editor settings failed:", error);
       HAXStore.toast(
-        `Saving editor settings failed: ${error.message}`,
+        this.t.savingEditorSettingsFailed.replace("{error}", () => error.message),
         5000,
         {},
         "fit-bottom",

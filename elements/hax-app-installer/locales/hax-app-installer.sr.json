@@ -54,5 +54,6 @@
   "requirementUppercase": "Једно велико слово",
   "requirementLowercase": "Једно мало слово",
   "requirementNumber": "Један број",
-  "requirementSymbol": "Један симбол"
+  "requirementSymbol": "Један симбол",
+  "haxcmsMascotAlt": "Маскота HAXcms светски путник"
 }

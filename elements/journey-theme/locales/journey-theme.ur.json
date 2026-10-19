@@ -1,4 +1,11 @@
 {
   "readMore": "مزید پڑھیں",
-  "home": "ہوم"
+  "home": "ہوم",
+  "anchorLinkCopied": "اینکر لنک کاپی ہو گیا!",
+  "skipToContent": "مواد پر جائیں",
+  "changeTheme": "تھیم بدلیں",
+  "siteSections": "سائٹ کے حصے",
+  "pageOfTotal": "صفحہ {current} از {total}",
+  "siteGenerated": "سائٹ تیار کی گئی: {date}",
+  "licenseGraphic": "{license} گرافک"
 }

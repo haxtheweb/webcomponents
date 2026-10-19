@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Ankerlink gekopieerd!",
+  "skipToContent": "Naar inhoud springen",
+  "siteHome": "Startpagina van site",
+  "mainNavigation": "Hoofdnavigatie",
+  "toggleMenu": "Menu aan/uit",
+  "changeTheme": "Thema wijzigen",
+  "breadcrumb": "Kruimelpad",
+  "tagFilter": "Tagfilter:",
+  "all": "Alle",
+  "pageNumberOfTotal": "Paginanummer: {current} van {total}",
+  "siteGenerated": "Site gegenereerd: {date}",
+  "copyright": "Copyright: {year} {author}",
+  "viewContentByTag": "Inhoud bekijken per tag",
+  "licenseGraphic": "Afbeelding van {license}"
+}

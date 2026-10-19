@@ -5,5 +5,9 @@
   "buttons": "Дугмад",
   "futureButtonConfiguration": "Прилагођена конфигурација дугмади уређивача ускоро стиже.",
   "save": "Сачувај",
-  "saving": "Чување…"
+  "saving": "Чување…",
+  "novice": "Почетник",
+  "expert": "Стручњак",
+  "toolbarPreviewAlt": "Преглед траке за уређивање за публику {audience}",
+  "savingEditorSettingsFailed": "Чување подешавања уређивача није успело: {error}"
 }

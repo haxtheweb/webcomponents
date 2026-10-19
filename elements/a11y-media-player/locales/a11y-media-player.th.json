@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "กำลังโหลด...",
   "youTubeStartLoading": "กดเล่น",
   "youTubeTranscriptLabel": "บทถอดความจะโหลดเมื่อเริ่มเล่นสื่อ",
-  "audioDescriptionLabel": "เสียงบรรยายภาพ"
+  "audioDescriptionLabel": "เสียงบรรยายภาพ",
+  "openOnYouTube": "เปิดบน YouTube"
 }

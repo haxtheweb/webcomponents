@@ -1,5 +1,8 @@
 {
   "yourAnswer": "تہاڈا جواب",
   "checkAnswer": "جواب چیک کرو",
-  "retry": "فیر کوشش کرو"
+  "retry": "فیر کوشش کرو",
+  "correct": "ٹھیک!",
+  "incorrect": "غلط!",
+  "correctAnswer": "ٹھیک جواب: {answer}"
 }

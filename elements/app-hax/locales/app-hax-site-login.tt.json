@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Кулланучы исемен кертегез",
+  "invalidUsernameOrPassword": "Кулланучы исеме яки серсүз дөрес түгел",
+  "welcomeLetsGo": "Рәхим итегез, {username}! Киттек!",
+  "enterYourUsername": "Кулланучы исемегезне кертегез",
+  "username": "Кулланучы исеме",
+  "next": "Киләсе",
+  "welcomeBack": "Кире рәхим итегез, {username}!",
+  "notYou": "Сез түгелме?",
+  "enterYourPassword": "Серсүзегезне кертегез",
+  "password": "Серсүз",
+  "togglePasswordDisplay": "Серсүзне күрсәтүне күчерү",
+  "login": "Керү"
+}

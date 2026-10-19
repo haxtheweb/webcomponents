@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Връзката към котвата е копирана!",
+  "skipToContent": "Към съдържанието",
+  "changePalette": "Смяна на палитрата",
+  "primaryLinks": "Основни връзки",
+  "socialLinks": "Социални връзки",
+  "myProfile": "Моят профил",
+  "profileImageOf": "Профилна снимка на {name}",
+  "profileImage": "Профилна снимка",
+  "linkCardProfile": "Профил с карти с връзки",
+  "emptyStateLinks": "Добавете елементи от най-горно ниво на менюто в site.json, за да се покажат бутони с връзки.",
+  "titleOnPlatform": "{title} в {platform}",
+  "openPlatform": "Отваряне на {platform}",
+  "paletteUpdated": "Цветовата палитра е променена на опция {number}."
+}

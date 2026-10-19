@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "فائلاں ایتھے سٹو",
+  "uploadQueue": "اپ لوڈ قطار",
+  "pending": "باقی",
+  "preparing": "تیار ہو رہیا اے",
+  "uploading": "اپ لوڈ ہو رہیا اے",
+  "complete": "پورا",
+  "aborted": "روک دتا گیا",
+  "cancelled": "منسوخ",
+  "error": "غلطی",
+  "errorWithStatus": "غلطی: {status}",
+  "cancel": "منسوخ کرو",
+  "cancelUploadOf": "{name} دا اپ لوڈ منسوخ کرو",
+  "retry": "فیر کوشش کرو",
+  "retryUploadOf": "{name} دا اپ لوڈ فیر کرو",
+  "remove": "ہٹاؤ",
+  "removeFromQueue": "{name} نوں قطار وچوں ہٹاؤ",
+  "fileTypeNotAccepted": "فائل دی قسم منظور نئیں: {name}",
+  "uploadFailed": "اپ لوڈ ناکام: {status}",
+  "networkError": "نیٹ ورک غلطی"
+}

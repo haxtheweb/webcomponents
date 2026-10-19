@@ -7,5 +7,7 @@
   "userAccessGranted": "Pristup korisniku je uspješno odobren!",
   "userNotFound": "Korisnik nije pronađen ili nije ovlašten",
   "loadingAddingUser": "Dodavanje korisnika...",
-  "grantAccessTo": "Odobri pristup za:"
+  "grantAccessTo": "Odobri pristup za:",
+  "networkErrorTryAgain": "Došlo je do mrežne greške. Pokušajte ponovo.",
+  "characterWillAppear": "Lik će se pojaviti kada unesete korisničko ime"
 }

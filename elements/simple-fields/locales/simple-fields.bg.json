@@ -9,5 +9,8 @@
   "record": "Запис",
   "pause": "Пауза на записа",
   "stopSave": "Спиране и запазване",
-  "clickToTakePhoto": "Щракнете, за да направите снимка"
+  "clickToTakePhoto": "Щракнете, за да направите снимка",
+  "url": "URL",
+  "open": "отваряне",
+  "removeValue": "Премахване на {value}"
 }

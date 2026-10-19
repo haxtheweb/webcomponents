@@ -36,5 +36,7 @@
   "clickToDoAnything": "คลิกเพื่อทำอะไรก็ได้!",
   "moreDetails": "รายละเอียดเพิ่มเติม",
   "details": "รายละเอียด",
-  "saved": "บันทึกแล้ว"
+  "saved": "บันทึกแล้ว",
+  "opensInNewWindow": "เปิดในหน้าต่างใหม่",
+  "resultsCount": "{count} ผลลัพธ์"
 }

@@ -1,0 +1,11 @@
+{
+  "roleTitle": "عنوان نقش",
+  "describeYourRole": "نقش خود را اینجا توصیف کنید...",
+  "present": "ارائه دهید",
+  "skills": "مهارت‌ها:",
+  "skillsAndMore": "{skills} و +{count} مورد دیگر",
+  "yearShort": "{count} سال",
+  "yearsShort": "{count} سال",
+  "monthShort": "{count} ماه",
+  "monthsShort": "{count} ماه"
+}

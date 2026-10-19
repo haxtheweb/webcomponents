@@ -1,7 +1,8 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-class HAXConfirmDialog extends DDD {
+class HAXConfirmDialog extends I18NMixin(DDD) {
   static get tag() {
     return "hax-confirm-dialog";
   }
@@ -40,8 +41,19 @@ class HAXConfirmDialog extends DDD {
   constructor() {
     super();
     this.message = "";
-    this.confirmLabel = "Confirm";
-    this.cancelLabel = "Cancel";
+    // labels fall back to translatable defaults in render when not provided
+    this.confirmLabel = null;
+    this.cancelLabel = null;
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      confirm: "Confirm",
+      cancel: "Cancel",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.destructive = false;
     this.closeOnConfirm = true;
     this.closeOnCancel = true;
@@ -149,7 +161,7 @@ class HAXConfirmDialog extends DDD {
             autofocus
             @click=${this._cancelTap}
           >
-            ${this.cancelLabel}
+            ${this.cancelLabel || this.t.cancel}
           </button>
           <button
             type="button"
@@ -157,7 +169,7 @@ class HAXConfirmDialog extends DDD {
             class="${this.destructive ? "destructive" : ""}"
             @click=${this._confirmTap}
           >
-            ${this.confirmLabel}
+            ${this.confirmLabel || this.t.confirm}
           </button>
         </div>
       </div>

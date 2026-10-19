@@ -5,5 +5,9 @@
   "buttons": "按钮",
   "futureButtonConfiguration": "自定义编辑器按钮配置即将推出。",
   "save": "保存",
-  "saving": "正在保存…"
+  "saving": "正在保存…",
+  "novice": "新手",
+  "expert": "专家",
+  "toolbarPreviewAlt": "{audience}编辑工具栏预览",
+  "savingEditorSettingsFailed": "保存编辑器设置失败：{error}"
 }

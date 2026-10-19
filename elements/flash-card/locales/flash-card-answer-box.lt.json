@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Jūsų atsakymas",
   "checkAnswer": "Tikrinti atsakymą",
-  "retry": "Bandyti dar kartą"
+  "retry": "Bandyti dar kartą",
+  "correct": "Teisingai!",
+  "incorrect": "Neteisingai!",
+  "correctAnswer": "Teisingas atsakymas: {answer}"
 }

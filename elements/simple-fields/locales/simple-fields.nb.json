@@ -9,5 +9,8 @@
   "record": "Ta opp",
   "pause": "Sett opptak på pause",
   "stopSave": "Stopp og lagre",
-  "clickToTakePhoto": "Klikk for å ta bilde"
+  "clickToTakePhoto": "Klikk for å ta bilde",
+  "url": "URL",
+  "open": "åpne",
+  "removeValue": "Fjern {value}"
 }

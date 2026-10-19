@@ -1,0 +1,14 @@
+{
+  "licenseBy": "نسب المصنَّف",
+  "licenseBySa": "نسب المصنَّف - الترخيص بالمثل",
+  "licenseByNd": "نسب المصنَّف - منع الاشتقاق",
+  "licenseByNc": "نسب المصنَّف - غير تجاري",
+  "licenseByNcSa": "نسب المصنَّف - غير تجاري - الترخيص بالمثل",
+  "licenseByNcNd": "نسب المصنَّف - غير تجاري - منع الاشتقاق",
+  "licenseGraphic": "رسم {license}",
+  "workByCreator": "{title} بواسطة {creator}",
+  "workByCreatorLicensed": "{title} بواسطة {creator} مرخّص بموجب {license}.",
+  "permissionsBeyondScope": "تتوفر أذونات تتجاوز نطاق هذا الترخيص {link}.",
+  "author": "(المؤلف)",
+  "onTheLicensingDetailsPage": "في صفحة تفاصيل الترخيص"
+}

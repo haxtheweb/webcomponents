@@ -1,0 +1,5 @@
+{
+  "navigateToSection": "{label} - Navega a la secció",
+  "clickToScrollToSection": "Fes clic per desplaçar-te a la secció {label}",
+  "navigatedToSection": "Has navegat a la secció {label}"
+}

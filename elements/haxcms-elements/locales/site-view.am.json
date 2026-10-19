@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "ምንም ውጤቶች የሉም",
+  "viewsRecordHeading": "ቅረጽ",
+  "viewsTitleImage": "የ{title} ምስል",
+  "viewsTitlePreview": "የ{title} ቅድመ እይታ",
+  "viewsNoTimelineRecords": "ለጊዜ መስመር ማሳያ ቀን ተኮር መዛግብት የሉም።",
+  "viewsTimelineTitle": "የ{title} የጊዜ መስመር",
+  "viewsNoChartField": "ለገበታ ማሳያ የቁጥር መስክ አልተገኘም።",
+  "viewsChartingValue": "{value}ን በገበታ ላይ በማሳየት ላይ",
+  "viewsChartingValueByLabel": "{value}ን በ{label} በገበታ ላይ በማሳየት ላይ",
+  "viewsChartTitle": "የ{title} ገበታ",
+  "viewsNoTreeRecords": "ለዛፍ ማሳያ ተዋረዳዊ መዛግብት የሉም።",
+  "viewsNoGalleryRecords": "ለማዕከለ-ስዕላት ማሳያ የምስል መዛግብት የሉም።",
+  "viewsNoPlaylistRecords": "ለአጫዋች ዝርዝር ማሳያ የሚዲያ መዛግብት የሉም።",
+  "fetchFailed": "ማምጣት አልተሳካም ({status})",
+  "unableToLoadViewData": "የእይታ ውሂብን መጫን አልተቻለም።",
+  "noResultsFound": "ምንም ውጤቶች አልተገኙም።",
+  "refreshView": "እይታን አድስ",
+  "breakIntoStaticContent": "ወደ ቋሚ ይዘት ከፋፍል",
+  "viewsOpenRecord": "መዝገብ ክፈት"
+}

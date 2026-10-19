@@ -7,5 +7,7 @@
   "userAccessGranted": "User access granted successfully!",
   "userNotFound": "User not found or unauthorized",
   "loadingAddingUser": "Adding user...",
-  "grantAccessTo": "Grant access to:"
+  "grantAccessTo": "Grant access to:",
+  "networkErrorTryAgain": "Network error occurred. Please try again.",
+  "characterWillAppear": "Character will appear when you enter a username"
 }

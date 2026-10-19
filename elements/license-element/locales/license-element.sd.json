@@ -1,0 +1,14 @@
+{
+  "licenseBy": "انتساب",
+  "licenseBySa": "انتساب ساڳيءَ طرح شيئر ڪريو",
+  "licenseByNd": "انتساب ڪا به ماخوذ تخليق نه",
+  "licenseByNc": "انتساب غير تجارتي",
+  "licenseByNcSa": "انتساب غير تجارتي ساڳيءَ طرح شيئر ڪريو",
+  "licenseByNcNd": "انتساب غير تجارتي ڪا به ماخوذ تخليق نه",
+  "licenseGraphic": "{license} گرافڪ",
+  "workByCreator": "{creator} جو {title}",
+  "workByCreatorLicensed": "{creator} جو {title} {license} تحت لائسنس يافته آهي.",
+  "permissionsBeyondScope": "هن لائسنس جي دائري کان ٻاهر اجازتون {link} موجود آهن.",
+  "author": "(ليکڪ)",
+  "onTheLicensingDetailsPage": "لائسنس جي تفصيلن واري صفحي تي"
+}

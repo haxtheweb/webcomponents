@@ -5,6 +5,15 @@
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
 
+// English defaults for the labels this program shows; translations come from
+// the context element's this.t (haxcms-site-editor-ui, haxcms namespace)
+const EDIT_TITLE_T = {
+  noActivePageFound: "No active page found",
+  saveTitleValue: "Save title: {title}",
+};
+const _t = (context, key) =>
+  context && context.t && context.t[key] ? context.t[key] : EDIT_TITLE_T[key];
+
 /**
  * Creates the edit title program for use in SuperDaemon
  * @param {Object} context - The context object (typically the haxcms-site-editor-ui instance)
@@ -18,7 +27,7 @@ export const createEditTitleProgram = (context) => {
     if (!activeItem || !activeItem.id) {
       return [
         {
-          title: "No active page found",
+          title: _t(context, "noActivePageFound"),
           icon: "icons:warning",
           tags: ["error"],
           value: { disabled: true },
@@ -34,7 +43,7 @@ export const createEditTitleProgram = (context) => {
     if (!input || input.trim() === "") {
       if (currentTitle) {
         results.push({
-          title: `Save title: ${currentTitle}`,
+          title: _t(context, "saveTitleValue").replace("{title}", () => currentTitle),
           icon: "icons:check",
           tags: ["confirm", "save"],
           value: {
@@ -63,7 +72,7 @@ export const createEditTitleProgram = (context) => {
 
     // User has typed something - show save option with their input
     results.push({
-      title: `Save title: ${input}`,
+      title: _t(context, "saveTitleValue").replace("{title}", () => input),
       icon: "icons:check",
       tags: ["confirm", "save"],
       value: {

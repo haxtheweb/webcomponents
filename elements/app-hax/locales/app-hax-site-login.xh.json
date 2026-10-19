@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Faka igama lomsebenzisi",
+  "invalidUsernameOrPassword": "Igama lomsebenzisi okanye iPhasiwedi Ayichanekanga",
+  "welcomeLetsGo": "Wamkelekile {username}! Masihambe!",
+  "enterYourUsername": "Faka igama lakho lomsebenzisi",
+  "username": "Igama lomsebenzisi",
+  "next": "Okulandelayo",
+  "welcomeBack": "Wamkelekile kwakhona, {username}!",
+  "notYou": "Asinguwe?",
+  "enterYourPassword": "Faka iphasiwedi yakho",
+  "password": "Iphasiwedi",
+  "togglePasswordDisplay": "Tshintsha ukuboniswa kwephasiwedi",
+  "login": "Ngena"
+}

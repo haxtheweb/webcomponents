@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Akkerleinki avritað!",
+  "skipToContent": "Far til innihaldið",
+  "siteHome": "Forsíða vevstaðsins",
+  "mainNavigation": "Høvuðsleiðing",
+  "toggleMenu": "Skift valmynd",
+  "changeTheme": "Broyt tema",
+  "breadcrumb": "Brauðkrummuleið",
+  "tagFilter": "Frámerkisfiltur:",
+  "all": "Øll",
+  "pageNumberOfTotal": "Síðunummar: {current} av {total}",
+  "siteGenerated": "Vevstaður framleiddur: {date}",
+  "copyright": "Upphavsrættur: {year} {author}",
+  "viewContentByTag": "Vís innihald eftir frámerki",
+  "licenseGraphic": "{license} grafikkur"
+}

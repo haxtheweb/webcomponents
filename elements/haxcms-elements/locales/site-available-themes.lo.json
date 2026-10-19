@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "ໂຫຼດທີມລົ້ມເຫຼວ: {error}",
+  "noThemesForView": "ບໍ່ມີທີມສຳລັບມຸມມອງນີ້.",
+  "active": "ໃຊ້ງານຢູ່",
+  "themeIsActive": "ທີມ {name} ກຳລັງໃຊ້ງານຢູ່",
+  "applyTheme": "ນຳໃຊ້ທີມ {name}",
+  "apply": "ນຳໃຊ້",
+  "preview": "ຕົວຢ່າງ",
+  "name": "ຊື່",
+  "element": "ອົງປະກອບ",
+  "description": "ຄຳອະທິບາຍ",
+  "action": "ການດຳເນີນການ",
+  "loadingThemes": "ກຳລັງໂຫຼດທີມ...",
+  "themesShown": "ສະແດງ {count} ທີມ",
+  "themesShownDefaults": "ສະແດງ {count} ທີມ (ຄ່າເລີ່ມຕົ້ນຂອງ app-hax)",
+  "availableHaxcmsThemes": "ທີມ HAXcms ທີ່ມີໃຫ້",
+  "gallery": "ຄັງຮູບ",
+  "table": "ຕາຕະລາງ"
+}

@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Kiriman siswa",
   "openInNewWindow": "Bukak ing jendhéla anyar",
-  "submitted": "Dikirim"
+  "submitted": "Dikirim",
+  "previousStudent": "Siswa sadurunge",
+  "nextStudent": "Siswa sabanjure",
+  "previousAssignment": "Tugas sadurunge",
+  "nextAssignment": "Tugas sabanjure"
 }

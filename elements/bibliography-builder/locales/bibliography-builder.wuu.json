@@ -1,3 +1,8 @@
 {
-  "title": "参考文献"
+  "title": "参考文献",
+  "export": "导出",
+  "exportCitations": "导出引用",
+  "copy": "复制",
+  "exportCitationFormat": "导出引用格式",
+  "selectCitationFormatBelow": "辣下头选一种引用格式"
 }

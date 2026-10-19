@@ -1,0 +1,17 @@
+{
+  "editNodes": "Uredi vozlišča",
+  "editLines": "Uredi črte",
+  "reset": "Ponastavi",
+  "save": "Shrani",
+  "cancel": "Prekliči",
+  "delete": "Izbriši",
+  "type": "Vrsta:",
+  "topic": "Tema",
+  "subsection": "Pododdelek",
+  "name": "Ime:",
+  "enterName": "Vnesite ime",
+  "url": "URL:",
+  "enterUrl": "Vnesite URL",
+  "activeNode": "Aktivno vozlišče?",
+  "nodeId": "Vozlišče {id}"
+}

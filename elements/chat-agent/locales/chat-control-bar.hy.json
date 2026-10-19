@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Ներբեռնել գրանցամատյանը որպես txt",
+  "downloadChatLog": "Ներբեռնել զրույցի գրանցամատյանը",
+  "resetChat": "Վերակայել զրույցը",
+  "toggleDataCollection": "Միացնել/անջատել տվյալների հավաքագրումը",
+  "dataCollection": "Տվյալների հավաքագրում",
+  "toggleDeveloperMode": "Միացնել/անջատել մշակողի ռեժիմը",
+  "exitFullView": "Դուրս գալ ամբողջական տեսքից",
+  "enterFullView": "Անցնել ամբողջական տեսքի",
+  "hideInterface": "Թաքցնել միջերեսը",
+  "resetChatConfirm": "Վերակայե՞լ զրույցը։",
+  "downloadBeforeResetConfirm": "Ներբեռնե՞լ զրույցի գրանցամատյանը վերակայելուց առաջ։",
+  "dataCollectionOn": "Ձեր զրույցները կօգտագործվեն մեր AI մոդելները մարզելու համար",
+  "dataCollectionOff": "Ձեր զրույցները չեն օգտագործվի մեր AI մոդելները մարզելու համար"
+}

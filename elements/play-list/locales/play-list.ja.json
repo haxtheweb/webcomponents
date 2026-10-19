@@ -1,0 +1,11 @@
+{
+  "playlist": "プレイリスト",
+  "carousel": "カルーセル",
+  "slide": "スライド",
+  "slideNumber": "スライド {number}",
+  "slideOfTotal": "スライド {number}/{total}",
+  "previousSlide": "前のスライド",
+  "nextSlide": "次のスライド",
+  "slidePages": "スライドページ",
+  "goToSlide": "スライド {number} に移動"
+}

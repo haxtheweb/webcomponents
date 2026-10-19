@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "యాంకర్ లింక్ కాపీ చేయబడింది!",
+  "skipToContent": "కంటెంట్‌కు వెళ్లు",
+  "changePalette": "ప్యాలెట్ మార్చండి",
+  "primaryLinks": "ప్రాథమిక లింక్‌లు",
+  "socialLinks": "సోషల్ లింక్‌లు",
+  "myProfile": "నా ప్రొఫైల్",
+  "profileImageOf": "{name} ప్రొఫైల్ చిత్రం",
+  "profileImage": "ప్రొఫైల్ చిత్రం",
+  "linkCardProfile": "లింక్ కార్డ్ ప్రొఫైల్",
+  "emptyStateLinks": "లింక్ బటన్‌లను రెండర్ చేయడానికి site.jsonలో ఉన్నత-స్థాయి మెనూ అంశాలను జోడించండి.",
+  "titleOnPlatform": "{platform}లో {title}",
+  "openPlatform": "{platform}ను తెరవండి",
+  "paletteUpdated": "రంగుల ప్యాలెట్ ఎంపిక {number}కు నవీకరించబడింది."
+}

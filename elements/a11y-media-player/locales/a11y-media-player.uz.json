@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Yuklanmoqda...",
   "youTubeStartLoading": "Ijro tugmasini bosing.",
   "youTubeTranscriptLabel": "Transkript media ijro etilgach yuklanadi.",
-  "audioDescriptionLabel": "Audio tavsif"
+  "audioDescriptionLabel": "Audio tavsif",
+  "openOnYouTube": "YouTube’da ochish"
 }

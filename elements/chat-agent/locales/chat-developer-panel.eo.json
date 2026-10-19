@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Konzola tabelo de uzanta babilprotokolo",
+  "consoleTableUserText": "console.table() uzanta babilprotokolo",
+  "consoleTableUserTooltip": "Presi la uzantan babilprotokolon kiel tabelon al la konzolo",
+  "consoleTableMerlinLabel": "Konzola tabelo de Merlin-babilprotokolo",
+  "consoleTableMerlinText": "console.table() Merlin-babilprotokolo",
+  "consoleTableMerlinTooltip": "Presi la Merlin-babilprotokolon kiel tabelon al la konzolo",
+  "consoleTableAllLabel": "Konzola tabelo de la tuta babilprotokolo",
+  "consoleTableAllText": "console.table() tuta babilprotokolo",
+  "consoleTableAllTooltip": "Presi la tutan babilprotokolon kiel tabelon al la konzolo",
+  "downloadChatLogJson": "Elŝuti babilprotokolon kiel .json",
+  "downloadChatLogJsonTooltip": "Elŝuti babilprotokolon kiel .json"
+}

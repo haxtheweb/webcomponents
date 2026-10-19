@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Zita reBasa",
+  "describeYourRole": "Tsanangura basa rako pano...",
+  "present": "Ratidza",
+  "skills": "Unyanzvi:",
+  "skillsAndMore": "{skills} ne+{count} zvimwe",
+  "yearShort": "gore {count}",
+  "yearsShort": "makore {count}",
+  "monthShort": "mwedzi {count}",
+  "monthsShort": "mwedzi {count}"
+}

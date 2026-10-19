@@ -1,0 +1,18 @@
+{
+  "copy": "Kopyahin",
+  "download": "I-download",
+  "archive": "I-archive",
+  "copyOperation": "kopyahin",
+  "downloadOperation": "i-download",
+  "archiveOperation": "i-archive",
+  "created": "ginawa",
+  "updated": "na-update",
+  "pages": "mga pahina",
+  "url": "URL",
+  "confirm": "Kumpirmahin",
+  "cancel": "Kanselahin",
+  "siteOperationConfirmTitle": "{operationName} ang {siteName}?",
+  "siteOperationConfirmMessage": "Sigurado ka bang gusto mong {operation} ang {siteName}?",
+  "siteOperationSuccessful": "Matagumpay ang {operation} ng {siteName}!",
+  "siteOperationFailed": "Nabigo ang {operation} ng {siteName}"
+}

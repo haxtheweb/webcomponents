@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Skirtukas {xOfY}",
+  "xOfY": "{order} iš {total}",
+  "endOfTab": "Skirtuko {xOfY} pabaiga. Grįžti į {tabs}.",
+  "tabs": "skirtukus"
+}

@@ -1,0 +1,11 @@
+{
+  "playlist": "Spilunarlisti",
+  "carousel": "hringekja",
+  "slide": "glæra",
+  "slideNumber": "Glæra {number}",
+  "slideOfTotal": "Glæra {number} af {total}",
+  "previousSlide": "Fyrri glæra",
+  "nextSlide": "Næsta glæra",
+  "slidePages": "Glærusíður",
+  "goToSlide": "Fara á glæru {number}"
+}

@@ -9,5 +9,8 @@
   "record": "ቅረጽ",
   "pause": "ቀረጻን ለአፍታ አቁም",
   "stopSave": "አቁም እና አስቀምጥ",
-  "clickToTakePhoto": "ፎቶ ለማንሳት ጠቅ ያድርጉ"
+  "clickToTakePhoto": "ፎቶ ለማንሳት ጠቅ ያድርጉ",
+  "url": "URL",
+  "open": "ክፈት",
+  "removeValue": "{value}ን አስወግድ"
 }

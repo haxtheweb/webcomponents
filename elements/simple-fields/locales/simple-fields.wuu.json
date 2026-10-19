@@ -9,5 +9,8 @@
   "record": "录制",
   "pause": "暂停录制",
   "stopSave": "停止搭保存",
-  "clickToTakePhoto": "揿一记拍照"
+  "clickToTakePhoto": "揿一记拍照",
+  "url": "URL",
+  "open": "打开",
+  "removeValue": "拿{value}去脱"
 }

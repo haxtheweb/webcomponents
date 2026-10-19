@@ -1,0 +1,17 @@
+{
+  "editNodes": "Knuete beaarbechten",
+  "editLines": "Linne beaarbechten",
+  "reset": "Zrécksetzen",
+  "save": "Späicheren",
+  "cancel": "Ofbriechen",
+  "delete": "Läschen",
+  "type": "Typ:",
+  "topic": "Theema",
+  "subsection": "Ënnersektioun",
+  "name": "Numm:",
+  "enterName": "Numm aginn",
+  "url": "URL:",
+  "enterUrl": "URL aginn",
+  "activeNode": "Aktive Knuet?",
+  "nodeId": "Knuet {id}"
+}

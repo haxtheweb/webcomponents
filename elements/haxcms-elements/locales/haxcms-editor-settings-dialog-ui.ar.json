@@ -5,5 +5,9 @@
   "buttons": "الأزرار",
   "futureButtonConfiguration": "تخصيص أزرار المحرر قادم قريبًا.",
   "save": "حفظ",
-  "saving": "جارٍ الحفظ…"
+  "saving": "جارٍ الحفظ…",
+  "novice": "مبتدئ",
+  "expert": "خبير",
+  "toolbarPreviewAlt": "معاينة شريط أدوات التحرير لـ {audience}",
+  "savingEditorSettingsFailed": "فشل حفظ إعدادات المحرر: {error}"
 }

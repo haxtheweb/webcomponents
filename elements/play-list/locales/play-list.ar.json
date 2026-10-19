@@ -1,0 +1,11 @@
+{
+  "playlist": "قائمة التشغيل",
+  "carousel": "عرض دوّار",
+  "slide": "شريحة",
+  "slideNumber": "الشريحة {number}",
+  "slideOfTotal": "الشريحة {number} من {total}",
+  "previousSlide": "الشريحة السابقة",
+  "nextSlide": "الشريحة التالية",
+  "slidePages": "صفحات الشرائح",
+  "goToSlide": "الانتقال إلى الشريحة {number}"
+}

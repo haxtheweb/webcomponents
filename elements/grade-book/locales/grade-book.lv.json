@@ -43,5 +43,22 @@
   "emailAddress": "Sūtīt e-pastu šim studentam",
   "notes": "Piezīmes",
   "interests": "Intereses",
-  "profileImageFor": "Profila attēls:"
+  "profileImageFor": "Profila attēls:",
+  "fileSystem": "Failu sistēma",
+  "googleDocs": "Google dokumenti",
+  "urlEndpointJSON": "URL galapunkts (JSON)",
+  "jsonDataBlob": "JSON datu bloks",
+  "additionalCriteriaFeedback": "Papildu atsauksme par kritēriju {criteria}",
+  "outOfPoints": "/ {points} p.",
+  "feedbackReport": "Atsauksmju pārskats",
+  "criteriaDetails": "Kritēriju detaļas",
+  "yourFeedback": "Jūsu atsauksme",
+  "additionalCriteriaFeedbackHeading": "Papildu atsauksme par kritērijiem",
+  "yourTotalScore": "Jūsu kopējais rezultāts",
+  "scoreOutOfPoints": "{score} / {points} p.",
+  "studentAssignment": "{student} uzdevums {assignment}",
+  "downloadPDF": "Lejupielādēt PDF",
+  "displayMode1": "1. režīms",
+  "displayMode2": "2. režīms",
+  "twoWindows": "Divi logi"
 }

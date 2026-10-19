@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "テーマの読み込みに失敗しました: {error}",
+  "noThemesForView": "このビューで利用できるテーマはありません。",
+  "active": "使用中",
+  "themeIsActive": "{name} テーマは有効です",
+  "applyTheme": "{name} テーマを適用",
+  "apply": "適用",
+  "preview": "プレビュー",
+  "name": "名前",
+  "element": "要素",
+  "description": "説明",
+  "action": "操作",
+  "loadingThemes": "テーマを読み込み中...",
+  "themesShown": "{count} 件のテーマを表示中",
+  "themesShownDefaults": "{count} 件のテーマを表示中 (app-hax の既定)",
+  "availableHaxcmsThemes": "利用可能な HAXcms テーマ",
+  "gallery": "ギャラリー",
+  "table": "表"
+}

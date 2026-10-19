@@ -36,5 +36,7 @@
   "clickToDoAnything": "എന്ത് ചെയ്യാനും ക്ലിക്ക് ചെയ്യുക!",
   "moreDetails": "കൂടുതൽ വിശദാംശങ്ങൾ",
   "details": "വിശദാംശങ്ങൾ",
-  "saved": "സംരക്ഷിച്ചു"
+  "saved": "സംരക്ഷിച്ചു",
+  "opensInNewWindow": "പുതിയ വിൻഡോയിൽ തുറക്കുന്നു",
+  "resultsCount": "{count} ഫലങ്ങൾ"
 }

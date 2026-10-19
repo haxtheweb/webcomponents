@@ -22,6 +22,13 @@
   "unpublish": "اشاعت ہٹاؤ",
   "savePage": "صفحہ محفوظ کرو",
   "cancel": "منسوخ کرو",
+  "delete": "مٹاؤ",
+  "editTitle": "سرخی سودھو",
+  "editIcon": "آئیکن ایڈٹ کرو",
+  "agent": "ایجنٹ",
+  "pageLockedUnlockToEdit": "ایہہ صفحہ لاک اے۔ ایڈٹ کرن لئی پہلاں ایہنوں کھولو۔",
+  "pageLockedUnlockToChangePublishStatus": "ایہہ صفحہ لاک اے۔ شائع ہوݨ دی حالت بدلن لئی پہلاں ایہنوں کھولو۔",
+  "pageLockedUnlockToDelete": "ایہہ صفحہ لاک اے۔ مٹاؤن لئی پہلاں ایہنوں کھولو۔",
   "pageDetails": "صفحے دی تفصیلاں",
   "clickToUnlock": "کھولن واسطے کلک کرو"
 }

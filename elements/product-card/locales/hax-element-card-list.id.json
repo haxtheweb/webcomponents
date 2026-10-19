@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Memindai Registri Komponen Web untuk elemen HAX lainnya..",
+  "enabled": "Diaktifkan",
+  "disabled": "Nonaktif",
+  "details": "Detail",
+  "tags": "Tag:",
+  "tagName": "Nama tag:",
+  "developerUsage": "Penggunaan pengembang:",
+  "demo": "Demo",
+  "popUpDemo": "Demo pop-up",
+  "demoOf": "Demo {tag}"
+}

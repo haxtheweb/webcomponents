@@ -1,4 +1,11 @@
 {
   "readMore": "Llegiu-ne més",
-  "home": "Inici"
+  "home": "Inici",
+  "anchorLinkCopied": "Enllaç d'ancoratge copiat!",
+  "skipToContent": "Salta al contingut",
+  "changeTheme": "Canvia el tema",
+  "siteSections": "Seccions del lloc",
+  "pageOfTotal": "Pàgina {current} de {total}",
+  "siteGenerated": "Lloc generat: {date}",
+  "licenseGraphic": "Gràfic de {license}"
 }

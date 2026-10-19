@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Atribuite",
+  "licenseBySa": "Atribuite-Samkondiĉe",
+  "licenseByNd": "Atribuite-Nemodifite",
+  "licenseByNc": "Atribuite-Nekomerce",
+  "licenseByNcSa": "Atribuite-Nekomerce-Samkondiĉe",
+  "licenseByNcNd": "Atribuite-Nekomerce-Nemodifite",
+  "citationWithLicense": "{title} de {creator}, permesita laŭ {license}. Alirita {date}.",
+  "citationWithoutLicense": "{title} de {creator}. Alirita {date}.",
+  "licenseGraphic": "Grafikaĵo de {license}"
+}

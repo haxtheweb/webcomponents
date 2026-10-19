@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "የመልህቅ አገናኝ ተቀድቷል!",
+  "skipToContent": "ወደ ይዘቱ ዝለል",
+  "changePalette": "የቀለም ስብስብ ቀይር",
+  "primaryLinks": "ዋና አገናኞች",
+  "socialLinks": "የማኅበራዊ አገናኞች",
+  "myProfile": "የእኔ መገለጫ",
+  "profileImageOf": "የ{name} የመገለጫ ምስል",
+  "profileImage": "የመገለጫ ምስል",
+  "linkCardProfile": "የአገናኝ ካርድ መገለጫ",
+  "emptyStateLinks": "የአገናኝ አዝራሮችን ለማሳየት በsite.json ውስጥ ከፍተኛ ደረጃ የምናሌ ንጥሎችን ያክሉ።",
+  "titleOnPlatform": "{title} በ{platform} ላይ",
+  "openPlatform": "{platform}ን ክፈት",
+  "paletteUpdated": "የቀለም ስብስቡ ወደ አማራጭ {number} ተዘምኗል።"
+}

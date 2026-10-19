@@ -1,0 +1,18 @@
+{
+  "copy": "Cupià",
+  "download": "Scaricà",
+  "archive": "Archivià",
+  "copyOperation": "cupià",
+  "downloadOperation": "scaricà",
+  "archiveOperation": "archivià",
+  "created": "creatu",
+  "updated": "aghjurnatu",
+  "pages": "pagine",
+  "url": "URL",
+  "confirm": "Cunfirmà",
+  "cancel": "Abbandunà",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Site sicuri di vulè {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} riesciutu!",
+  "siteOperationFailed": "{siteName}: {operation} fallitu"
+}

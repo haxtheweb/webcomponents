@@ -1,0 +1,11 @@
+{
+  "theme": "Téma",
+  "active": "Aktívna",
+  "selected": "Vybraná",
+  "noPreview": "Bez náhľadu",
+  "currentlyActiveAndSelected": "Aktuálne aktívna a vybraná téma",
+  "currentlyActive": "Aktuálne aktívna téma",
+  "selectedToApplyOnSave": "Vybraná téma, ktorá sa použije po uložení",
+  "themeSelection": "Výber témy",
+  "noThemesAvailable": "Nie sú dostupné žiadne témy."
+}

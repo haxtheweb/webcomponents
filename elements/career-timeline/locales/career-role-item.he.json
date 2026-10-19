@@ -1,0 +1,11 @@
+{
+  "roleTitle": "שם התפקיד",
+  "describeYourRole": "תארו את התפקיד שלכם כאן...",
+  "present": "הצגה",
+  "skills": "מיומנויות:",
+  "skillsAndMore": "{skills} ועוד +{count}",
+  "yearShort": "{count} שנה",
+  "yearsShort": "{count} שנים",
+  "monthShort": "{count} חודש",
+  "monthsShort": "{count} חודשים"
+}

@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Dosyaları buraya bırakın",
+  "uploadQueue": "Yükleme kuyruğu",
+  "pending": "Beklemede",
+  "preparing": "Hazırlanıyor",
+  "uploading": "Yükleniyor",
+  "complete": "Tamamlandı",
+  "aborted": "Durduruldu",
+  "cancelled": "İptal edildi",
+  "error": "Hata",
+  "errorWithStatus": "Hata: {status}",
+  "cancel": "İptal",
+  "cancelUploadOf": "{name} yüklemesini iptal et",
+  "retry": "Tekrar dene",
+  "retryUploadOf": "{name} yüklemesini yeniden dene",
+  "remove": "Kaldır",
+  "removeFromQueue": "{name} dosyasını kuyruktan kaldır",
+  "fileTypeNotAccepted": "Dosya türü kabul edilmiyor: {name}",
+  "uploadFailed": "Yükleme başarısız: {status}",
+  "networkError": "Ağ hatası"
+}

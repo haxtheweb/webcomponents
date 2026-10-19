@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "فائلیں یہاں چھوڑیں",
+  "uploadQueue": "اپ لوڈ کی قطار",
+  "pending": "زیر التوا",
+  "preparing": "تیاری جاری",
+  "uploading": "اپ لوڈ ہو رہا ہے",
+  "complete": "مکمل",
+  "aborted": "روک دیا گیا",
+  "cancelled": "منسوخ",
+  "error": "خرابی",
+  "errorWithStatus": "خرابی: {status}",
+  "cancel": "منسوخ کریں",
+  "cancelUploadOf": "{name} کا اپ لوڈ منسوخ کریں",
+  "retry": "دوبارہ کوشش کریں",
+  "retryUploadOf": "{name} کا اپ لوڈ دوبارہ کوشش کریں",
+  "remove": "ہٹائیں",
+  "removeFromQueue": "{name} کو قطار سے ہٹائیں",
+  "fileTypeNotAccepted": "فائل کی قسم قابل قبول نہیں: {name}",
+  "uploadFailed": "اپ لوڈ ناکام: {status}",
+  "networkError": "نیٹ ورک کی خرابی"
+}

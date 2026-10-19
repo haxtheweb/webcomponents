@@ -10,5 +10,9 @@
   "save": "Պահպանել",
   "noDescription": "Նկարագրություն չկա։",
   "details": "Մանրամասներ",
-  "loadingInventory": "Բլոկների ամբողջական ցանկը բեռնվում է…"
+  "loadingInventory": "Բլոկների ամբողջական ցանկը բեռնվում է…",
+  "selectAllButton": "Ընտրել բոլորը",
+  "deselectAllButton": "Ապաընտրել բոլորը",
+  "selectedOfAvailable": "Ընտրված է {selected} / հասանելի է {total}",
+  "savingBlocksFailed": "Բլոկների պահպանումը ձախողվեց՝ {error}"
 }

@@ -1,0 +1,17 @@
+{
+  "editNodes": "Sửa nút",
+  "editLines": "Sửa đường nối",
+  "reset": "Đặt lại",
+  "save": "Lưu",
+  "cancel": "Hủy",
+  "delete": "Xóa",
+  "type": "Loại:",
+  "topic": "Chủ đề",
+  "subsection": "Mục con",
+  "name": "Tên:",
+  "enterName": "Nhập tên",
+  "url": "URL:",
+  "enterUrl": "Nhập URL",
+  "activeNode": "Nút đang hoạt động?",
+  "nodeId": "Nút {id}"
+}

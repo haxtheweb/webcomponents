@@ -1,0 +1,14 @@
+{
+  "licenseBy": "署名",
+  "licenseBySa": "署名-相同方式共享",
+  "licenseByNd": "署名-禁止演绎",
+  "licenseByNc": "署名-非商业性使用",
+  "licenseByNcSa": "署名-非商业性使用-相同方式共享",
+  "licenseByNcNd": "署名-非商业性使用-禁止演绎",
+  "licenseGraphic": "{license} 图标",
+  "workByCreator": "{title}，作者 {creator}",
+  "workByCreatorLicensed": "{title}，作者 {creator}，采用 {license} 许可。",
+  "permissionsBeyondScope": "超出本许可范围的权限可{link}获取。",
+  "author": "（作者）",
+  "onTheLicensingDetailsPage": "在许可详情页面"
+}

@@ -1,0 +1,18 @@
+{
+  "copy": "පිටපත් කරන්න",
+  "download": "බාගන්න",
+  "archive": "සංරක්ෂණය කරන්න",
+  "copyOperation": "පිටපත් කරන්න",
+  "downloadOperation": "බාගන්න",
+  "archiveOperation": "සංරක්ෂණය කරන්න",
+  "created": "සාදන ලදී",
+  "updated": "යාවත්කාලීන කරන ලදී",
+  "pages": "පිටු",
+  "url": "URL",
+  "confirm": "තහවුරු කරන්න",
+  "cancel": "අවලංගු කරන්න",
+  "siteOperationConfirmTitle": "{siteName} {operationName}?",
+  "siteOperationConfirmMessage": "ඔබට {siteName} {operation} අවශ්‍ය බව විශ්වාසද?",
+  "siteOperationSuccessful": "{siteName} {operation} සාර්ථකයි!",
+  "siteOperationFailed": "{siteName} {operation} අසාර්ථකයි"
+}

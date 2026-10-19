@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Κανένα αποτέλεσμα",
+  "viewsRecordHeading": "Εγγραφή",
+  "viewsTitleImage": "Εικόνα {title}",
+  "viewsTitlePreview": "Προεπισκόπηση {title}",
+  "viewsNoTimelineRecords": "Δεν υπάρχουν διαθέσιμες εγγραφές με ημερομηνίες για απόδοση χρονολογίου.",
+  "viewsTimelineTitle": "Χρονολόγιο {title}",
+  "viewsNoChartField": "Δεν εντοπίστηκε αριθμητικό πεδίο για απόδοση γραφήματος.",
+  "viewsChartingValue": "Γράφημα για {value}",
+  "viewsChartingValueByLabel": "Γράφημα για {value} ανά {label}",
+  "viewsChartTitle": "Γράφημα {title}",
+  "viewsNoTreeRecords": "Δεν υπάρχουν διαθέσιμες ιεραρχικές εγγραφές για απόδοση δέντρου.",
+  "viewsNoGalleryRecords": "Δεν υπάρχουν διαθέσιμες εγγραφές εικόνων για απόδοση συλλογής.",
+  "viewsNoPlaylistRecords": "Δεν υπάρχουν διαθέσιμες εγγραφές πολυμέσων για απόδοση λίστας αναπαραγωγής.",
+  "fetchFailed": "Η ανάκτηση απέτυχε ({status})",
+  "unableToLoadViewData": "Δεν ήταν δυνατή η φόρτωση των δεδομένων προβολής.",
+  "noResultsFound": "Δεν βρέθηκαν αποτελέσματα.",
+  "refreshView": "Ανανέωση προβολής",
+  "breakIntoStaticContent": "Διάσπαση σε στατικό περιεχόμενο",
+  "viewsOpenRecord": "Άνοιγμα εγγραφής"
+}

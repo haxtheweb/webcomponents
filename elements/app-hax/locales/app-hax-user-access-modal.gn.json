@@ -7,5 +7,7 @@
   "userAccessGranted": "Puruhára jeike oñeme'ẽ porã!",
   "userNotFound": "Puruhára ndojejuhúi térã ndoguerekói tembiaporã",
   "loadingAddingUser": "Ojembojoapyhína puruhára...",
-  "grantAccessTo": "Eme'ẽ jeike:"
+  "grantAccessTo": "Eme'ẽ jeike:",
+  "networkErrorTryAgain": "Oiko jejavy ñandutípe. Eñeha'ã jey.",
+  "characterWillAppear": "Tapicha'i ojehechaukáta rehaírõ puruhára réra"
 }

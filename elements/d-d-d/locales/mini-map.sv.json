@@ -1,0 +1,17 @@
+{
+  "editNodes": "Redigera noder",
+  "editLines": "Redigera linjer",
+  "reset": "Återställ",
+  "save": "Spara",
+  "cancel": "Avbryt",
+  "delete": "Ta bort",
+  "type": "Typ:",
+  "topic": "Ämne",
+  "subsection": "Underavsnitt",
+  "name": "Namn:",
+  "enterName": "Ange namn",
+  "url": "URL:",
+  "enterUrl": "Ange URL",
+  "activeNode": "Aktiv nod?",
+  "nodeId": "Nod {id}"
+}

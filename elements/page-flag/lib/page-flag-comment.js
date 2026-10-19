@@ -5,8 +5,9 @@ import "@haxtheweb/rpg-character/rpg-character.js";
 import "@haxtheweb/simple-datetime/simple-datetime.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-picker/lib/simple-emoji-picker.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-export class PageFlagComment extends LitElement {
+export class PageFlagComment extends I18NMixin(LitElement) {
   static get tag() {
     return "page-flag-comment";
   }
@@ -47,6 +48,20 @@ export class PageFlagComment extends LitElement {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      reaction: "Reaction",
+      comment: "Comment",
+      edit: "Edit",
+      update: "Update",
+      reply: "Reply",
+      delete: "Delete",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.mood = null;
     this.seed = "abc123";
     this.timestamp = Date.now() / 1000;
@@ -89,7 +104,7 @@ export class PageFlagComment extends LitElement {
         ${this.editMode
           ? html`<simple-emoji-picker
               align-right
-              label="Reaction"
+              label="${this.t.reaction}"
               value="${this.mood}"
               @value-changed="${this.emojiChanged}"
             ></simple-emoji-picker>`
@@ -117,7 +132,7 @@ export class PageFlagComment extends LitElement {
         <div class="comment__body">
           <simple-fields-field
             type="textarea"
-            label="Comment"
+            label="${this.t.comment}"
           ></simple-fields-field>
           <slot></slot>
         </div>
@@ -128,19 +143,19 @@ export class PageFlagComment extends LitElement {
                   ${this.canEdit
                     ? html`<simple-icon-button
                         icon="${this.editMode ? "save" : "editor:mode-edit"}"
-                        title="${this.editMode ? "Edit" : "Update"}"
+                        title="${this.editMode ? this.t.edit : this.t.update}"
                         @click="${this.editOp}"
                       ></simple-icon-button> `
                     : ``}
                   <simple-icon-button
                     icon="reply"
-                    title="Reply"
+                    title="${this.t.reply}"
                     @click="${this.replyOp}"
                   ></simple-icon-button>
                   ${this.canEdit
                     ? html`<simple-icon-button
                         icon="delete"
-                        title="Delete"
+                        title="${this.t.delete}"
                         @click="${this.deleteOp}"
                       ></simple-icon-button>`
                     : ``}

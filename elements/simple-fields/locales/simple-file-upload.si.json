@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "ගොනු මෙහි දමන්න",
+  "uploadQueue": "උඩුගත පෝලිම",
+  "pending": "පොරොත්තුවෙන්",
+  "preparing": "සූදානම් කරමින්",
+  "uploading": "උඩුගත කරමින්",
+  "complete": "සම්පූර්ණයි",
+  "aborted": "නවතා දමන ලදී",
+  "cancelled": "අවලංගු කරන ලදී",
+  "error": "දෝෂය",
+  "errorWithStatus": "දෝෂය: {status}",
+  "cancel": "අවලංගු කරන්න",
+  "cancelUploadOf": "{name} උඩුගත කිරීම අවලංගු කරන්න",
+  "retry": "නැවත උත්සාහ කරන්න",
+  "retryUploadOf": "{name} උඩුගත කිරීම නැවත උත්සාහ කරන්න",
+  "remove": "ඉවත් කරන්න",
+  "removeFromQueue": "{name} පෝලිමෙන් ඉවත් කරන්න",
+  "fileTypeNotAccepted": "ගොනු වර්ගය පිළිගනු නොලැබේ: {name}",
+  "uploadFailed": "උඩුගත කිරීම අසාර්ථක විය: {status}",
+  "networkError": "ජාල දෝෂය"
+}

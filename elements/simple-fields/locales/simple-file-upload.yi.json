@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "לאָז אַראָפּ טעקעס דאָ",
+  "uploadQueue": "אַרויפֿלאָד־ריי",
+  "pending": "וואַרט",
+  "preparing": "גרייט צו",
+  "uploading": "לאָדט אַרויף",
+  "complete": "פֿאַרטיק",
+  "aborted": "אָפּגעבראָכן",
+  "cancelled": "אָפּגערופֿן",
+  "error": "טעות",
+  "errorWithStatus": "טעות: {status}",
+  "cancel": "אָפּזאָגן",
+  "cancelUploadOf": "רוף אָפּ דאָס אַרויפֿלאָדן פֿון {name}",
+  "retry": "פּרוּוון נאָך אַ מאָל",
+  "retryUploadOf": "פּרוּוו נאָך אַ מאָל אַרויפֿלאָדן {name}",
+  "remove": "נעם אַוועק",
+  "removeFromQueue": "נעם אַוועק {name} פֿון דער ריי",
+  "fileTypeNotAccepted": "טעקע־טיפּ נישט אָנגענומען: {name}",
+  "uploadFailed": "אַרויפֿלאָדן דורכגעפֿאַלן: {status}",
+  "networkError": "נעץ־טעות"
+}

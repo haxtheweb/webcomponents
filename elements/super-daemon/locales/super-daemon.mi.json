@@ -36,5 +36,7 @@
   "clickToDoAnything": "Pāwhirihia hei mahi i ngā mea katoa!",
   "moreDetails": "Ētahi atu taipitopito",
   "details": "Ngā taipitopito",
-  "saved": "Kua tiakina"
+  "saved": "Kua tiakina",
+  "opensInNewWindow": "Ka tuwhera i tētahi matapihi hou",
+  "resultsCount": "{count} hua"
 }

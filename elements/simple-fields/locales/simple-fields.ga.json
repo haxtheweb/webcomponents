@@ -9,5 +9,8 @@
   "record": "Taifead",
   "pause": "Cuir an taifeadadh ar sos",
   "stopSave": "Stop agus sábháil",
-  "clickToTakePhoto": "Cliceáil chun grianghraf a ghlacadh"
+  "clickToTakePhoto": "Cliceáil chun grianghraf a ghlacadh",
+  "url": "URL",
+  "open": "oscail",
+  "removeValue": "Bain {value}"
 }

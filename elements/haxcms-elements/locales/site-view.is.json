@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Engar niðurstöður",
+  "viewsRecordHeading": "Taka upp",
+  "viewsTitleImage": "Mynd: {title}",
+  "viewsTitlePreview": "Forskoðun {title}",
+  "viewsNoTimelineRecords": "Engar dagsetningabundnar færslur tiltækar til að birta tímalínu.",
+  "viewsTimelineTitle": "Tímalína: {title}",
+  "viewsNoChartField": "Enginn tölureitur fannst til að birta graf.",
+  "viewsChartingValue": "Graf af {value}",
+  "viewsChartingValueByLabel": "Graf af {value} eftir {label}",
+  "viewsChartTitle": "Graf: {title}",
+  "viewsNoTreeRecords": "Engar stigskiptar færslur tiltækar til að birta tré.",
+  "viewsNoGalleryRecords": "Engar myndafærslur tiltækar til að birta myndasafn.",
+  "viewsNoPlaylistRecords": "Engar miðlafærslur tiltækar til að birta spilunarlista.",
+  "fetchFailed": "Sókn mistókst ({status})",
+  "unableToLoadViewData": "Ekki tókst að hlaða gögnum yfirlits.",
+  "noResultsFound": "Engar niðurstöður fundust.",
+  "refreshView": "Endurnýja yfirlit",
+  "breakIntoStaticContent": "Breyta í kyrrstætt efni",
+  "viewsOpenRecord": "Opna færslu"
+}

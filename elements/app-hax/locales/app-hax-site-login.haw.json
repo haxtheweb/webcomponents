@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Hoʻokomo i ka inoa mea hoʻohana",
+  "invalidUsernameOrPassword": "Inoa mea hoʻohana a ʻōlelo huna kūpono ʻole",
+  "welcomeLetsGo": "Welina mai {username}! E hele kākou!",
+  "enterYourUsername": "Hoʻokomo i kou inoa mea hoʻohana",
+  "username": "Inoa mea hoʻohana",
+  "next": "Aʻe",
+  "welcomeBack": "Welina hou, {username}!",
+  "notYou": "ʻAʻole ʻo ʻoe?",
+  "enterYourPassword": "Hoʻokomo i kou ʻōlelo huna",
+  "password": "ʻŌlelo huna",
+  "togglePasswordDisplay": "Hoʻololi i ka hōʻike ʻōlelo huna",
+  "login": "Komo"
+}

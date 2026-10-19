@@ -1,0 +1,11 @@
+{
+  "playlist": "დასაკრავი სია",
+  "carousel": "კარუსელი",
+  "slide": "სლაიდი",
+  "slideNumber": "სლაიდი {number}",
+  "slideOfTotal": "სლაიდი {number} / {total}",
+  "previousSlide": "წინა სლაიდი",
+  "nextSlide": "შემდეგი სლაიდი",
+  "slidePages": "სლაიდის გვერდები",
+  "goToSlide": "გადასვლა სლაიდზე {number}"
+}

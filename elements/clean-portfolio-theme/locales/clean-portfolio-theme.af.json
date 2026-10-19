@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Ankerskakel gekopieer!",
+  "skipToContent": "Spring na inhoud",
+  "siteHome": "Webwerf-tuis",
+  "mainNavigation": "Hoofnavigasie",
+  "toggleMenu": "Wissel kieslys",
+  "changeTheme": "Verander tema",
+  "breadcrumb": "Broodkrummels",
+  "tagFilter": "Etiketfilter:",
+  "all": "Alles",
+  "pageNumberOfTotal": "Bladsynommer: {current} van {total}",
+  "siteGenerated": "Webwerf gegenereer: {date}",
+  "copyright": "Kopiereg: {year} {author}",
+  "viewContentByTag": "Bekyk inhoud volgens etiket",
+  "licenseGraphic": "{license}-grafika"
+}

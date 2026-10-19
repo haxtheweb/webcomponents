@@ -1,0 +1,14 @@
+{
+  "enterUserName": "ਵਰਤੋਂਕਾਰ ਨਾਮ ਦਰਜ ਕਰੋ",
+  "invalidUsernameOrPassword": "ਅਵੈਧ ਵਰਤੋਂਕਾਰ ਨਾਮ ਜਾਂ ਪਾਸਵਰਡ",
+  "welcomeLetsGo": "ਜੀ ਆਇਆਂ ਨੂੰ {username}! ਚੱਲੋ ਸ਼ੁਰੂ ਕਰੀਏ!",
+  "enterYourUsername": "ਆਪਣਾ ਵਰਤੋਂਕਾਰ ਨਾਮ ਦਰਜ ਕਰੋ",
+  "username": "ਵਰਤੋਂਕਾਰ ਨਾਂ",
+  "next": "ਅਗਲਾ",
+  "welcomeBack": "ਮੁੜ ਜੀ ਆਇਆਂ ਨੂੰ, {username}!",
+  "notYou": "ਤੁਸੀਂ ਨਹੀਂ?",
+  "enterYourPassword": "ਆਪਣਾ ਪਾਸਵਰਡ ਦਰਜ ਕਰੋ",
+  "password": "ਪਾਸਵਰਡ",
+  "togglePasswordDisplay": "ਪਾਸਵਰਡ ਦਿਖਾਓ/ਲੁਕਾਓ",
+  "login": "ਲੌਗਇਨ"
+}

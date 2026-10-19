@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Ankerlink kopieret!",
+  "skipToContent": "Spring til indhold",
+  "siteHome": "Webstedets startside",
+  "mainNavigation": "Hovednavigation",
+  "toggleMenu": "Vis/skjul menu",
+  "changeTheme": "Skift tema",
+  "breadcrumb": "Brødkrummesti",
+  "tagFilter": "Tagfilter:",
+  "all": "Alle",
+  "pageNumberOfTotal": "Sidenummer: {current} af {total}",
+  "siteGenerated": "Websted genereret: {date}",
+  "copyright": "Ophavsret: {year} {author}",
+  "viewContentByTag": "Vis indhold efter tag",
+  "licenseGraphic": "Grafik for {license}"
+}

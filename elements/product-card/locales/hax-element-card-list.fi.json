@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Haetaan verkkokomponenttirekisteristä lisää HAX-elementtejä..",
+  "enabled": "Käytössä",
+  "disabled": "Pois käytöstä",
+  "details": "Tiedot",
+  "tags": "Tunnisteet:",
+  "tagName": "Tagin nimi:",
+  "developerUsage": "Kehittäjäkäyttö:",
+  "demo": "Esittely",
+  "popUpDemo": "Ponnahdusesittely",
+  "demoOf": "Esittely: {tag}"
+}

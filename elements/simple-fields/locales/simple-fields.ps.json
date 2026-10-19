@@ -9,5 +9,8 @@
   "record": "ثبتول",
   "pause": "ثبت ودروئ",
   "stopSave": "ودروئ او خوندي کړئ",
-  "clickToTakePhoto": "د انځور اخیستلو لپاره کلیک وکړئ"
+  "clickToTakePhoto": "د انځور اخیستلو لپاره کلیک وکړئ",
+  "url": "URL",
+  "open": "پرانیستل",
+  "removeValue": "{value} لرې کړئ"
 }

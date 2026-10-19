@@ -10,5 +10,9 @@
   "save": "Save",
   "noDescription": "No description available.",
   "details": "Details",
-  "loadingInventory": "Loading full block inventory…"
+  "loadingInventory": "Loading full block inventory…",
+  "selectAllButton": "Select All",
+  "deselectAllButton": "Deselect All",
+  "selectedOfAvailable": "{selected} selected / {total} available",
+  "savingBlocksFailed": "Saving blocks failed: {error}"
 }

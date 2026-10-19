@@ -9,5 +9,8 @@
   "record": "Arregistrà",
   "pause": "Mette in pausa l'arregistramentu",
   "stopSave": "Piantà è salvà",
-  "clickToTakePhoto": "Cliccate per piglià una foto"
+  "clickToTakePhoto": "Cliccate per piglià una foto",
+  "url": "URL",
+  "open": "apre",
+  "removeValue": "Caccià {value}"
 }

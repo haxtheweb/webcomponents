@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Il-link tal-ankra ġie kkupjat!",
+  "skipToContent": "Aqbeż għall-kontenut",
+  "siteHome": "Paġna ewlenija tas-sit",
+  "mainNavigation": "Navigazzjoni ewlenija",
+  "toggleMenu": "Aqleb il-menu",
+  "changeTheme": "Ibdel it-tema",
+  "breadcrumb": "Breadcrumb",
+  "tagFilter": "Filtru tat-tikketti:",
+  "all": "Kollha",
+  "pageNumberOfTotal": "Numru tal-paġna: {current} minn {total}",
+  "siteGenerated": "Sit iġġenerat: {date}",
+  "copyright": "Copyright: {year} {author}",
+  "viewContentByTag": "Ara l-Kontenut skont it-Tikketta",
+  "licenseGraphic": "Grafika ta' {license}"
+}

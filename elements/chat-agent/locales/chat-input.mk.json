@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Прикажи претходно испратена порака (нагоре)",
+  "displayPreviousMessageDown": "Прикажи претходно испратена порака (надолу)",
+  "sendPrompt": "Испрати барање",
+  "sendPromptToMerlin": "Испрати барање до Merlin",
+  "shortenPrompt": "Скратете го барањето на најмногу {limit} знаци."
+}

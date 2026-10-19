@@ -9,5 +9,8 @@
   "record": "Rekodi",
   "pause": "Sitisha kurekodi",
   "stopSave": "Simamisha na uhifadhi",
-  "clickToTakePhoto": "Bofya ili kupiga picha"
+  "clickToTakePhoto": "Bofya ili kupiga picha",
+  "url": "URL",
+  "open": "fungua",
+  "removeValue": "Ondoa {value}"
 }

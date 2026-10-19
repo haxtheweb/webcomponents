@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Log als txt eroflueden",
+  "downloadChatLog": "Chat-Log eroflueden",
+  "resetChat": "Chat zrécksetzen",
+  "toggleDataCollection": "Datesammlung ëmschalten",
+  "dataCollection": "Datesammlung",
+  "toggleDeveloperMode": "Entwécklermodus ëmschalten",
+  "exitFullView": "Vollusiicht verloossen",
+  "enterFullView": "Vollusiicht opmaachen",
+  "hideInterface": "Interface verstoppen",
+  "resetChatConfirm": "Chat zrécksetzen?",
+  "downloadBeforeResetConfirm": "De Chat-Log eroflueden, ier Dir zrécksetzt?",
+  "dataCollectionOn": "Är Gespréicher gi benotzt fir eis AI-Modeller ze trainéieren",
+  "dataCollectionOff": "Är Gespréicher gi net benotzt fir eis AI-Modeller ze trainéieren"
+}

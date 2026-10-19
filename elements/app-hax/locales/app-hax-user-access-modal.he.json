@@ -7,5 +7,7 @@
   "userAccessGranted": "הגישה הוענקה למשתמש בהצלחה!",
   "userNotFound": "המשתמש לא נמצא או שאין הרשאה",
   "loadingAddingUser": "מוסיף משתמש...",
-  "grantAccessTo": "הענקת גישה ל:"
+  "grantAccessTo": "הענקת גישה ל:",
+  "networkErrorTryAgain": "אירעה שגיאת רשת. נסו שוב.",
+  "characterWillAppear": "הדמות תופיע כשתזינו שם משתמש"
 }

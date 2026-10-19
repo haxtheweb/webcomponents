@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Sizning javobingiz",
   "checkAnswer": "Javobni tekshirish",
-  "retry": "Qayta urinish"
+  "retry": "Qayta urinish",
+  "correct": "Toʻgʻri!",
+  "incorrect": "Notoʻgʻri!",
+  "correctAnswer": "Toʻgʻri javob: {answer}"
 }

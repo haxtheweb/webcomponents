@@ -3,6 +3,12 @@ export const UIRenderPieces = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
+      this.t = {
+        ...this.t,
+        displayMode1: "Mode 1",
+        displayMode2: "Mode 2",
+        twoWindows: "Two windows",
+      };
       this.hideGradeScale = true;
       this.hideActiveStudentOverview = true;
       this.hideActiveAssignment = true;
@@ -321,9 +327,9 @@ export const UIRenderPieces = function (SuperClass) {
     }
     displayModeData() {
       return [
-        { label: "Mode 1", icon: "view-array", layout: "1-1-2" },
-        { label: "Mode 2", icon: "view-carousel", layout: "1-2-1" },
-        { label: "Two windows", icon: "open-in-new", layout: "1-2" },
+        { label: this.t.displayMode1, icon: "view-array", layout: "1-1-2" },
+        { label: this.t.displayMode2, icon: "view-carousel", layout: "1-2-1" },
+        { label: this.t.twoWindows, icon: "open-in-new", layout: "1-2" },
       ];
     }
 

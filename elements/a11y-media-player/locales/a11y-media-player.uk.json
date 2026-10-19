@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Завантаження...",
   "youTubeStartLoading": "Натисніть «Відтворити».",
   "youTubeTranscriptLabel": "Транскрипт завантажиться після початку відтворення.",
-  "audioDescriptionLabel": "Аудіоопис"
+  "audioDescriptionLabel": "Аудіоопис",
+  "openOnYouTube": "Відкрити на YouTube"
 }

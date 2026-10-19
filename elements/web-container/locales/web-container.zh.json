@@ -1,0 +1,8 @@
+{
+  "loading": "加载中",
+  "settingUpContainer": "正在设置容器",
+  "runningCommands": "正在运行命令",
+  "installing": "正在安装..",
+  "runningStart": "正在运行启动..",
+  "webContainerPreview": "Web 容器预览"
+}

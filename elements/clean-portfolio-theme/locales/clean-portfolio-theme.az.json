@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Lövbər keçidi kopyalandı!",
+  "skipToContent": "Məzmuna keç",
+  "siteHome": "Saytın ana səhifəsi",
+  "mainNavigation": "Əsas naviqasiya",
+  "toggleMenu": "Menyunu aç/bağla",
+  "changeTheme": "Mövzunu dəyiş",
+  "breadcrumb": "Naviqasiya zənciri",
+  "tagFilter": "Teq süzgəci:",
+  "all": "Hamısı",
+  "pageNumberOfTotal": "Səhifə nömrəsi: {current} / {total}",
+  "siteGenerated": "Saytın yaradılma tarixi: {date}",
+  "copyright": "Müəllif hüquqları: {year} {author}",
+  "viewContentByTag": "Məzmuna teqlərə görə bax",
+  "licenseGraphic": "{license} qrafikası"
+}

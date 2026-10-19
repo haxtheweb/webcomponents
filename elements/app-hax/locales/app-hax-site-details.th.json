@@ -1,0 +1,18 @@
+{
+  "copy": "คัดลอก",
+  "download": "ดาวน์โหลด",
+  "archive": "เก็บถาวร",
+  "copyOperation": "คัดลอก",
+  "downloadOperation": "ดาวน์โหลด",
+  "archiveOperation": "เก็บถาวร",
+  "created": "สร้างเมื่อ",
+  "updated": "อัปเดตเมื่อ",
+  "pages": "หน้า",
+  "url": "URL",
+  "confirm": "ยืนยัน",
+  "cancel": "ยกเลิก",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "คุณแน่ใจหรือไม่ว่าต้องการ{operation} {siteName}?",
+  "siteOperationSuccessful": "{operation} {siteName} สำเร็จ!",
+  "siteOperationFailed": "{operation} {siteName} ไม่สำเร็จ"
+}

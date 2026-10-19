@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- ndabara bụ ibe mbụ --",
+  "details": "Nkọwa",
+  "title": "Aha",
+  "titleDescription": "Aha saịtị ahụ",
+  "homePage": "Ibe mbido",
+  "homePageDescription": "Ibe a ga-eji dị ka ibe ndabere / ibe mbido",
+  "advanced": "Nke dị elu",
+  "serviceWorker": "Tinye service worker na ibe na-agbanwe agbanwe",
+  "serviceWorkerDescription": "Gbanyụọ nke a ma ọ bụrụ na ndị ọrụ kwesịrị ịhụ mmepụta sava kachasị ọhụrụ ozugbo.",
+  "forceBrowserUpgrade": "Manye nkwalite ihe nchọgharị",
+  "forceBrowserUpgradeDescription": "Chọọ ihe nchọgharị evergreen tupu ebudata ahụmịhe saịtị.",
+  "unableToLoadSiteDetails": "Enweghị ike ibudata nkọwa saịtị.",
+  "noSiteDetails": "Enweghị nkọwa saịtị dị.",
+  "save": "Chekwaa"
+}

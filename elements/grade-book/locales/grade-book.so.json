@@ -43,5 +43,22 @@
   "emailAddress": "U dir iimayl ardaygan",
   "notes": "Qoraallo",
   "interests": "Xiisaha",
-  "profileImageFor": "Sawirka astaanta ee"
+  "profileImageFor": "Sawirka astaanta ee",
+  "fileSystem": "Nidaamka faylasha",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Barta URL (JSON)",
+  "jsonDataBlob": "Xog JSON ah",
+  "additionalCriteriaFeedback": "Jawaab-celin dheeraad ah oo {criteria}",
+  "outOfPoints": "/ {points} dhibcood",
+  "feedbackReport": "Warbixinta jawaab-celinta",
+  "criteriaDetails": "Faahfaahinta shuruudaha",
+  "yourFeedback": "Jawaab-celintaada",
+  "additionalCriteriaFeedbackHeading": "Jawaab-celinta Shuruudaha Dheeraadka ah",
+  "yourTotalScore": "Dhibcahaaga guud",
+  "scoreOutOfPoints": "{score} / {points} dhibcood",
+  "studentAssignment": "Hawsha {assignment} ee {student}",
+  "downloadPDF": "Soo dejiso PDF",
+  "displayMode1": "Habka 1",
+  "displayMode2": "Habka 2",
+  "twoWindows": "Laba daaqadood"
 }

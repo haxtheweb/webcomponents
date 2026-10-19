@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Atribusi",
+  "licenseBySa": "Atribusi Berbagi Serupa",
+  "licenseByNd": "Atribusi Tanpa Turunan",
+  "licenseByNc": "Atribusi Nonkomersial",
+  "licenseByNcSa": "Atribusi Nonkomersial Berbagi Serupa",
+  "licenseByNcNd": "Atribusi Nonkomersial Tanpa Turunan",
+  "licenseGraphic": "Gambar {license}",
+  "workByCreator": "{title} dening {creator}",
+  "workByCreatorLicensed": "{title} dening {creator} dilisensèni miturut {license}.",
+  "permissionsBeyondScope": "Idin ngluwihi cakupan lisensi iki kasedhiya {link}.",
+  "author": "(penulis)",
+  "onTheLicensingDetailsPage": "ing kaca rincian lisensi"
+}

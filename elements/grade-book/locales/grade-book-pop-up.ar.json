@@ -1,5 +1,9 @@
 {
   "studentSubmission": "تسليم الطالب",
   "openInNewWindow": "فتح في نافذة جديدة",
-  "submitted": "تم التسليم"
+  "submitted": "تم التسليم",
+  "previousStudent": "الطالب السابق",
+  "nextStudent": "الطالب التالي",
+  "previousAssignment": "الواجب السابق",
+  "nextAssignment": "الواجب التالي"
 }

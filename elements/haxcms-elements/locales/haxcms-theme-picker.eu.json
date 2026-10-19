@@ -1,0 +1,11 @@
+{
+  "theme": "Gaia",
+  "active": "Aktiboa",
+  "selected": "Hautatua",
+  "noPreview": "Aurrebistarik ez",
+  "currentlyActiveAndSelected": "Une honetan aktibo eta hautatuta dagoen gaia",
+  "currentlyActive": "Une honetan aktibo dagoen gaia",
+  "selectedToApplyOnSave": "Gordetzean aplikatzeko hautatutako gaia",
+  "themeSelection": "Gai-hautapena",
+  "noThemesAvailable": "Ez dago gairik erabilgarri."
+}

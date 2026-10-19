@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Enkursaite nokopēta!",
+  "skipToContent": "Pāriet uz saturu",
+  "siteHome": "Vietnes sākums",
+  "mainNavigation": "Galvenā navigācija",
+  "toggleMenu": "Pārslēgt izvēlni",
+  "changeTheme": "Mainīt motīvu",
+  "breadcrumb": "Navigācijas ceļš",
+  "tagFilter": "Birku filtrs:",
+  "all": "Visi",
+  "pageNumberOfTotal": "Lapas numurs: {current} no {total}",
+  "siteGenerated": "Vietne ģenerēta: {date}",
+  "copyright": "Autortiesības: {year} {author}",
+  "viewContentByTag": "Skatīt saturu pēc birkas",
+  "licenseGraphic": "{license} grafika"
+}

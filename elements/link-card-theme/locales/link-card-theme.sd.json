@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "اينڪر لنڪ ڪاپي ٿي وئي!",
+  "skipToContent": "مواد ڏانهن وڃو",
+  "changePalette": "پيليٽ بدلايو",
+  "primaryLinks": "مکيه لنڪون",
+  "socialLinks": "سوشل لنڪون",
+  "myProfile": "منهنجو پروفائل",
+  "profileImageOf": "{name} جي پروفائل تصوير",
+  "profileImage": "پروفائل تصوير",
+  "linkCardProfile": "لنڪ ڪارڊ پروفائل",
+  "emptyStateLinks": "لنڪ بٽڻ ڏيکارڻ لاءِ site.json ۾ مٿين سطح جون مينيو شيون شامل ڪريو.",
+  "titleOnPlatform": "{platform} تي {title}",
+  "openPlatform": "{platform} کوليو",
+  "paletteUpdated": "رنگ پيليٽ آپشن {number} تي اپڊيٽ ٿي وئي."
+}

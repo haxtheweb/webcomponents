@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "ດາວໂຫຼດບັນທຶກເປັນ txt",
+  "downloadChatLog": "ດາວໂຫຼດບັນທຶກການສົນທະນາ",
+  "resetChat": "ຣີເຊັດການສົນທະນາ",
+  "toggleDataCollection": "ສະຫຼັບການເກັບກຳຂໍ້ມູນ",
+  "dataCollection": "ການເກັບກຳຂໍ້ມູນ",
+  "toggleDeveloperMode": "ສະຫຼັບໂໝດນັກພັດທະນາ",
+  "exitFullView": "ອອກຈາກມຸມມອງເຕັມ",
+  "enterFullView": "ເຂົ້າສູ່ມຸມມອງເຕັມ",
+  "hideInterface": "ເຊື່ອງສ່ວນຕິດຕໍ່",
+  "resetChatConfirm": "ຣີເຊັດການສົນທະນາບໍ?",
+  "downloadBeforeResetConfirm": "ດາວໂຫຼດບັນທຶກການສົນທະນາກ່ອນຣີເຊັດບໍ?",
+  "dataCollectionOn": "ການສົນທະນາຂອງທ່ານຈະຖືກນຳໃຊ້ເພື່ອຝຶກແບບຈຳລອງ AI ຂອງພວກເຮົາ",
+  "dataCollectionOff": "ການສົນທະນາຂອງທ່ານຈະບໍ່ຖືກນຳໃຊ້ເພື່ອຝຶກແບບຈຳລອງ AI ຂອງພວກເຮົາ"
+}

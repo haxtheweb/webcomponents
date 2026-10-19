@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Темаларны йөкләп булмады: {error}",
+  "noThemesForView": "Бу күренеш өчен темалар юк.",
+  "active": "Актив",
+  "themeIsActive": "{name} темасы актив",
+  "applyTheme": "{name} темасын куллану",
+  "apply": "Куллану",
+  "preview": "Алдан карау",
+  "name": "Исем",
+  "element": "Элемент",
+  "description": "Тасвирлама",
+  "action": "Гамәл",
+  "loadingThemes": "Темалар йөкләнә...",
+  "themesShown": "{count} тема күрсәтелгән",
+  "themesShownDefaults": "{count} тема күрсәтелгән (app-hax килешү буенча)",
+  "availableHaxcmsThemes": "Булган HAXcms темалары",
+  "gallery": "Галерея",
+  "table": "Таблица"
+}

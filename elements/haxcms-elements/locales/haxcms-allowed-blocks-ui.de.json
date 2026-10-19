@@ -10,5 +10,9 @@
   "save": "Speichern",
   "noDescription": "Keine Beschreibung verfügbar.",
   "details": "Details",
-  "loadingInventory": "Vollständiges Blockverzeichnis wird geladen…"
+  "loadingInventory": "Vollständiges Blockverzeichnis wird geladen…",
+  "selectAllButton": "Alle auswählen",
+  "deselectAllButton": "Auswahl aufheben",
+  "selectedOfAvailable": "{selected} ausgewählt / {total} verfügbar",
+  "savingBlocksFailed": "Speichern der Blöcke fehlgeschlagen: {error}"
 }

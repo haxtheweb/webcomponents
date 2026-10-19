@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Zuvor gesendete Nachricht anzeigen (hoch)",
+  "displayPreviousMessageDown": "Zuvor gesendete Nachricht anzeigen (runter)",
+  "sendPrompt": "Prompt senden",
+  "sendPromptToMerlin": "Prompt an Merlin senden",
+  "shortenPrompt": "Bitte kürze deinen Prompt auf höchstens {limit} Zeichen."
+}

@@ -1,0 +1,14 @@
+{
+  "licenseBy": "உரிமைக்குறிப்பு",
+  "licenseBySa": "உரிமைக்குறிப்பு - அதே உரிமத்தில் பகிர்",
+  "licenseByNd": "உரிமைக்குறிப்பு - வழிப்படைப்புகள் இல்லை",
+  "licenseByNc": "உரிமைக்குறிப்பு - வணிகமற்றது",
+  "licenseByNcSa": "உரிமைக்குறிப்பு - வணிகமற்றது - அதே உரிமத்தில் பகிர்",
+  "licenseByNcNd": "உரிமைக்குறிப்பு - வணிகமற்றது - வழிப்படைப்புகள் இல்லை",
+  "licenseGraphic": "{license} வரைகலை",
+  "workByCreator": "{creator} இன் {title}",
+  "workByCreatorLicensed": "{creator} இன் {title} {license} இன் கீழ் உரிமம் பெற்றது.",
+  "permissionsBeyondScope": "இந்த உரிமத்தின் வரம்பிற்கு அப்பாற்பட்ட அனுமதிகள் {link} கிடைக்கின்றன.",
+  "author": "(ஆசிரியர்)",
+  "onTheLicensingDetailsPage": "உரிம விவரங்கள் பக்கத்தில்"
+}

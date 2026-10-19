@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "கோப்புகளை இங்கே விடவும்",
+  "uploadQueue": "பதிவேற்ற வரிசை",
+  "pending": "நிலுவையில்",
+  "preparing": "தயாராகிறது",
+  "uploading": "பதிவேற்றப்படுகிறது",
+  "complete": "முடிந்தது",
+  "aborted": "நிறுத்தப்பட்டது",
+  "cancelled": "ரத்துசெய்யப்பட்டது",
+  "error": "பிழை",
+  "errorWithStatus": "பிழை: {status}",
+  "cancel": "ரத்துசெய்",
+  "cancelUploadOf": "{name} இன் பதிவேற்றத்தை ரத்துசெய்",
+  "retry": "மீண்டும் முயல்",
+  "retryUploadOf": "{name} இன் பதிவேற்றத்தை மீண்டும் முயற்சி செய்",
+  "remove": "அகற்று",
+  "removeFromQueue": "{name} ஐ வரிசையிலிருந்து அகற்று",
+  "fileTypeNotAccepted": "கோப்பு வகை ஏற்கப்படவில்லை: {name}",
+  "uploadFailed": "பதிவேற்றம் தோல்வியடைந்தது: {status}",
+  "networkError": "பிணையப் பிழை"
+}

@@ -1,0 +1,14 @@
+{
+  "enterUserName": "ಬಳಕೆದಾರ ಹೆಸರನ್ನು ನಮೂದಿಸಿ",
+  "invalidUsernameOrPassword": "ಅಮಾನ್ಯ ಬಳಕೆದಾರ ಹೆಸರು ಅಥವಾ ಪಾಸ್‌ವರ್ಡ್",
+  "welcomeLetsGo": "ಸ್ವಾಗತ {username}! ಪ್ರಾರಂಭಿಸೋಣ!",
+  "enterYourUsername": "ನಿಮ್ಮ ಬಳಕೆದಾರ ಹೆಸರನ್ನು ನಮೂದಿಸಿ",
+  "username": "ಬಳಕೆದಾರಹೆಸರು",
+  "next": "ಮುಂದಿನದು",
+  "welcomeBack": "ಮರಳಿ ಸ್ವಾಗತ, {username}!",
+  "notYou": "ನೀವಲ್ಲವೇ?",
+  "enterYourPassword": "ನಿಮ್ಮ ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ",
+  "password": "ಪಾಸ್‌ವರ್ಡ್",
+  "togglePasswordDisplay": "ಪಾಸ್‌ವರ್ಡ್ ಪ್ರದರ್ಶನ ಟಾಗಲ್ ಮಾಡಿ",
+  "login": "ಲಾಗಿನ್"
+}

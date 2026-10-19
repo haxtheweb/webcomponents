@@ -7,5 +7,7 @@
   "userAccessGranted": "صارف نوں کامیابی نال رسائی دے دتی گئی!",
   "userNotFound": "صارف نہیں لبھیا یا اجازت نہیں",
   "loadingAddingUser": "صارف شامل کیتا جا رہیا اے...",
-  "grantAccessTo": "ایہناں نوں رسائی دیو:"
+  "grantAccessTo": "ایہناں نوں رسائی دیو:",
+  "networkErrorTryAgain": "نیٹ ورک غلطی ہو گئی۔ مہربانی کر کے فیر کوشش کرو۔",
+  "characterWillAppear": "صارف ناں لکھن تے کردار نظر آوے گا"
 }

@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Laadi logi alla txt-failina",
+  "downloadChatLog": "Laadi vestluse logi alla",
+  "resetChat": "Lähtesta vestlus",
+  "toggleDataCollection": "Lülita andmete kogumine",
+  "dataCollection": "Andmete kogumine",
+  "toggleDeveloperMode": "Lülita arendajarežiim",
+  "exitFullView": "Välju täisvaatest",
+  "enterFullView": "Ava täisvaade",
+  "hideInterface": "Peida liides",
+  "resetChatConfirm": "Kas lähtestada vestlus?",
+  "downloadBeforeResetConfirm": "Kas laadida vestluse logi enne lähtestamist alla?",
+  "dataCollectionOn": "Sinu vestlusi kasutatakse meie AI-mudelite treenimiseks",
+  "dataCollectionOff": "Sinu vestlusi ei kasutata meie AI-mudelite treenimiseks"
+}

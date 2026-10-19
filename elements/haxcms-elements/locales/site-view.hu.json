@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Nincs találat",
+  "viewsRecordHeading": "Felvétel",
+  "viewsTitleImage": "{title} kép",
+  "viewsTitlePreview": "{title} előnézete",
+  "viewsNoTimelineRecords": "Nincsenek dátumalapú rekordok az idővonal megjelenítéséhez.",
+  "viewsTimelineTitle": "{title} idővonal",
+  "viewsNoChartField": "Nem található numerikus mező a diagram megjelenítéséhez.",
+  "viewsChartingValue": "Diagram: {value}",
+  "viewsChartingValueByLabel": "Diagram: {value} {label} szerint",
+  "viewsChartTitle": "{title} diagram",
+  "viewsNoTreeRecords": "Nincsenek hierarchikus rekordok a fa megjelenítéséhez.",
+  "viewsNoGalleryRecords": "Nincsenek képrekordok a galéria megjelenítéséhez.",
+  "viewsNoPlaylistRecords": "Nincsenek médiarekordok a lejátszási lista megjelenítéséhez.",
+  "fetchFailed": "A lekérés sikertelen ({status})",
+  "unableToLoadViewData": "Nem sikerült betölteni a nézet adatait.",
+  "noResultsFound": "Nincs találat.",
+  "refreshView": "Nézet frissítése",
+  "breakIntoStaticContent": "Szétbontás statikus tartalommá",
+  "viewsOpenRecord": "Rekord megnyitása"
+}

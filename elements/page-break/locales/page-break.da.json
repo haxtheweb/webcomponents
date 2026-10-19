@@ -22,6 +22,13 @@
   "unpublish": "Afpublicér",
   "savePage": "Gem side",
   "cancel": "Annuller",
+  "delete": "Slet",
+  "editTitle": "Redigér titel",
+  "editIcon": "Redigér ikon",
+  "agent": "Agent",
+  "pageLockedUnlockToEdit": "Denne side er låst. Lås den op først for at redigere.",
+  "pageLockedUnlockToChangePublishStatus": "Denne side er låst. Lås den op først for at ændre publiceringsstatus.",
+  "pageLockedUnlockToDelete": "Denne side er låst. Lås den op først for at slette.",
   "pageDetails": "Sidedetaljer",
   "clickToUnlock": "Klik for at låse op"
 }

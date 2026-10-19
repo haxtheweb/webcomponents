@@ -1,3 +1,8 @@
 {
-  "title": "Àwọn ìtọ́kasí"
+  "title": "Àwọn ìtọ́kasí",
+  "export": "Gbé jáde",
+  "exportCitations": "Gbé Àwọn Ìtọ́kasí Jáde",
+  "copy": "Ṣe àdàkọ",
+  "exportCitationFormat": "Ìlànà ìtọ́kasí fún gbígbéjáde",
+  "selectCitationFormatBelow": "Yan ìlànà ìtọ́kasí kan ní ìsàlẹ̀"
 }

@@ -1,4 +1,11 @@
 {
   "readMore": "Číst dále",
-  "home": "Domů"
+  "home": "Domů",
+  "anchorLinkCopied": "Odkaz na kotvu zkopírován!",
+  "skipToContent": "Přeskočit na obsah",
+  "changeTheme": "Změnit motiv",
+  "siteSections": "Sekce webu",
+  "pageOfTotal": "Stránka {current} z {total}",
+  "siteGenerated": "Web vygenerován: {date}",
+  "licenseGraphic": "Grafika {license}"
 }

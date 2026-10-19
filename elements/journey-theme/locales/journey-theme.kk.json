@@ -1,4 +1,11 @@
 {
   "readMore": "Толығырақ оқу",
-  "home": "Басты бет"
+  "home": "Басты бет",
+  "anchorLinkCopied": "Зәкір сілтемесі көшірілді!",
+  "skipToContent": "Мазмұнға өту",
+  "changeTheme": "Тақырыпты өзгерту",
+  "siteSections": "Сайт бөлімдері",
+  "pageOfTotal": "Бет {current} / {total}",
+  "siteGenerated": "Сайт жасалған уақыты: {date}",
+  "licenseGraphic": "{license} графикасы"
 }

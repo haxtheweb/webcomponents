@@ -1,0 +1,17 @@
+{
+  "editNodes": "Knopen bewurkje",
+  "editLines": "Linen bewurkje",
+  "reset": "Weromsette",
+  "save": "Bewarje",
+  "cancel": "Annulearje",
+  "delete": "Wiskje",
+  "type": "Type:",
+  "topic": "Underwerp",
+  "subsection": "Underseksje",
+  "name": "Namme:",
+  "enterName": "Fier namme yn",
+  "url": "URL:",
+  "enterUrl": "Fier URL yn",
+  "activeNode": "Aktive knooppunt?",
+  "nodeId": "Knooppunt {id}"
+}

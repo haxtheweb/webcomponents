@@ -36,5 +36,7 @@
   "clickToDoAnything": "Klikkaa tehdäksesi mitä tahansa!",
   "moreDetails": "Lisää yksityiskohtia",
   "details": "Yksityiskohdat",
-  "saved": "Tallennettu"
+  "saved": "Tallennettu",
+  "opensInNewWindow": "Avautuu uuteen ikkunaan",
+  "resultsCount": "{count} tulosta"
 }

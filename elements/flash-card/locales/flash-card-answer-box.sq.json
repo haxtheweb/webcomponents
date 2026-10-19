@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Përgjigjja jote",
   "checkAnswer": "Kontrollo përgjigjen",
-  "retry": "Provo përsëri"
+  "retry": "Provo përsëri",
+  "correct": "E saktë!",
+  "incorrect": "E pasaktë!",
+  "correctAnswer": "Përgjigjja e saktë: {answer}"
 }

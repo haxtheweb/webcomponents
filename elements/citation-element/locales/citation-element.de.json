@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Namensnennung",
+  "licenseBySa": "Namensnennung - Weitergabe unter gleichen Bedingungen",
+  "licenseByNd": "Namensnennung - Keine Bearbeitungen",
+  "licenseByNc": "Namensnennung - Nicht kommerziell",
+  "licenseByNcSa": "Namensnennung - Nicht kommerziell - Weitergabe unter gleichen Bedingungen",
+  "licenseByNcNd": "Namensnennung - Nicht kommerziell - Keine Bearbeitungen",
+  "citationWithLicense": "{title} von {creator}, lizenziert unter {license}. Abgerufen am {date}.",
+  "citationWithoutLicense": "{title} von {creator}. Abgerufen am {date}.",
+  "licenseGraphic": "Grafik zu {license}"
+}

@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Нәтиже жоқ",
+  "viewsRecordHeading": "Жазу",
+  "viewsTitleImage": "{title} суреті",
+  "viewsTitlePreview": "{title} алдын ала қарауы",
+  "viewsNoTimelineRecords": "Уақыт шкаласын көрсету үшін күнге негізделген жазбалар жоқ.",
+  "viewsTimelineTitle": "{title} уақыт шкаласы",
+  "viewsNoChartField": "Диаграмма құру үшін сандық өріс табылмады.",
+  "viewsChartingValue": "{value} диаграммасы",
+  "viewsChartingValueByLabel": "{label} бойынша {value} диаграммасы",
+  "viewsChartTitle": "{title} диаграммасы",
+  "viewsNoTreeRecords": "Ағашты көрсету үшін иерархиялық жазбалар жоқ.",
+  "viewsNoGalleryRecords": "Галереяны көрсету үшін сурет жазбалары жоқ.",
+  "viewsNoPlaylistRecords": "Ойнату тізімін көрсету үшін медиа жазбалары жоқ.",
+  "fetchFailed": "Алу сәтсіз аяқталды ({status})",
+  "unableToLoadViewData": "Көрініс деректерін жүктеу мүмкін емес.",
+  "noResultsFound": "Нәтиже табылмады.",
+  "refreshView": "Көріністі жаңарту",
+  "breakIntoStaticContent": "Статикалық мазмұнға бөлу",
+  "viewsOpenRecord": "Жазбаны ашу"
+}

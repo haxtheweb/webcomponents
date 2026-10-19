@@ -22,6 +22,13 @@
   "unpublish": "Cofnij publikację",
   "savePage": "Zapisz stronę",
   "cancel": "Anuluj",
+  "delete": "Usuń",
+  "editTitle": "Edytuj tytuł",
+  "editIcon": "Edytuj ikonę",
+  "agent": "Agent",
+  "pageLockedUnlockToEdit": "Ta strona jest zablokowana. Najpierw ją odblokuj, aby edytować.",
+  "pageLockedUnlockToChangePublishStatus": "Ta strona jest zablokowana. Najpierw ją odblokuj, aby zmienić stan publikacji.",
+  "pageLockedUnlockToDelete": "Ta strona jest zablokowana. Najpierw ją odblokuj, aby usunąć.",
   "pageDetails": "Szczegóły strony",
   "clickToUnlock": "Kliknij, aby odblokować"
 }

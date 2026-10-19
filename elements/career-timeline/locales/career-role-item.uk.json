@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Назва посади",
+  "describeYourRole": "Опишіть свою посаду тут...",
+  "present": "Презентуйте",
+  "skills": "Навички:",
+  "skillsAndMore": "{skills} і ще +{count}",
+  "yearShort": "{count} р.",
+  "yearsShort": "{count} р.",
+  "monthShort": "{count} міс.",
+  "monthsShort": "{count} міс."
+}

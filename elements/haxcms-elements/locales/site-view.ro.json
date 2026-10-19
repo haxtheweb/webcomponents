@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Niciun rezultat",
+  "viewsRecordHeading": "Înregistrează",
+  "viewsTitleImage": "Imagine {title}",
+  "viewsTitlePreview": "Previzualizare {title}",
+  "viewsNoTimelineRecords": "Nu există înregistrări cu date calendaristice pentru afișarea cronologiei.",
+  "viewsTimelineTitle": "Cronologie {title}",
+  "viewsNoChartField": "Nu a fost detectat niciun câmp numeric pentru afișarea graficului.",
+  "viewsChartingValue": "Grafic pentru {value}",
+  "viewsChartingValueByLabel": "Grafic pentru {value} după {label}",
+  "viewsChartTitle": "Grafic {title}",
+  "viewsNoTreeRecords": "Nu există înregistrări ierarhice pentru afișarea arborelui.",
+  "viewsNoGalleryRecords": "Nu există înregistrări de imagini pentru afișarea galeriei.",
+  "viewsNoPlaylistRecords": "Nu există înregistrări media pentru afișarea listei de redare.",
+  "fetchFailed": "Preluarea a eșuat ({status})",
+  "unableToLoadViewData": "Nu se pot încărca datele vizualizării.",
+  "noResultsFound": "Nu s-au găsit rezultate.",
+  "refreshView": "Reîmprospătează vizualizarea",
+  "breakIntoStaticContent": "Transformă în conținut static",
+  "viewsOpenRecord": "Deschide înregistrarea"
+}

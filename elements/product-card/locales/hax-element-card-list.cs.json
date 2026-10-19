@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Prohledávání registru webových komponent kvůli dalším prvkům HAX..",
+  "enabled": "Povoleno",
+  "disabled": "Zakázáno",
+  "details": "Podrobnosti",
+  "tags": "Štítky:",
+  "tagName": "Název značky:",
+  "developerUsage": "Použití pro vývojáře:",
+  "demo": "Ukázka",
+  "popUpDemo": "Vyskakovací ukázka",
+  "demoOf": "Ukázka {tag}"
+}

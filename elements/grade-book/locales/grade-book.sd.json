@@ -43,5 +43,22 @@
   "emailAddress": "هن شاگرد کي اي ميل ڪريو",
   "notes": "نوٽس",
   "interests": "دلچسپيون",
-  "profileImageFor": "پروفائل تصوير:"
+  "profileImageFor": "پروفائل تصوير:",
+  "fileSystem": "فائل سسٽم",
+  "googleDocs": "Google دستاويز",
+  "urlEndpointJSON": "URL اينڊ پوائنٽ (JSON)",
+  "jsonDataBlob": "JSON ڊيٽا بلاب",
+  "additionalCriteriaFeedback": "اضافي {criteria} راءِ",
+  "outOfPoints": "/ {points} پوائنٽ",
+  "feedbackReport": "راءِ جي رپورٽ",
+  "criteriaDetails": "معيار جا تفصيل",
+  "yourFeedback": "توهان جي راءِ",
+  "additionalCriteriaFeedbackHeading": "اضافي معيار جي راءِ",
+  "yourTotalScore": "توهان جو ڪل اسڪور",
+  "scoreOutOfPoints": "{score} / {points} پوائنٽ",
+  "studentAssignment": "{student} جي اسائنمينٽ {assignment}",
+  "downloadPDF": "PDF ڊائونلوڊ ڪريو",
+  "displayMode1": "موڊ 1",
+  "displayMode2": "موڊ 2",
+  "twoWindows": "ٻه ونڊوز"
 }

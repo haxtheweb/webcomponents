@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Sonuç yok",
+  "viewsRecordHeading": "Kaydet",
+  "viewsTitleImage": "{title} görseli",
+  "viewsTitlePreview": "{title} önizlemesi",
+  "viewsNoTimelineRecords": "Zaman çizelgesi oluşturmak için tarih odaklı kayıt yok.",
+  "viewsTimelineTitle": "{title} zaman çizelgesi",
+  "viewsNoChartField": "Grafik oluşturmak için sayısal alan algılanmadı.",
+  "viewsChartingValue": "{value} grafiği çiziliyor",
+  "viewsChartingValueByLabel": "{label} bazında {value} grafiği çiziliyor",
+  "viewsChartTitle": "{title} grafiği",
+  "viewsNoTreeRecords": "Ağaç görünümü oluşturmak için hiyerarşik kayıt yok.",
+  "viewsNoGalleryRecords": "Galeri oluşturmak için görsel kaydı yok.",
+  "viewsNoPlaylistRecords": "Oynatma listesi oluşturmak için medya kaydı yok.",
+  "fetchFailed": "Getirme başarısız ({status})",
+  "unableToLoadViewData": "Görünüm verileri yüklenemedi.",
+  "noResultsFound": "Sonuç bulunamadı.",
+  "refreshView": "Görünümü yenile",
+  "breakIntoStaticContent": "Statik içeriğe dönüştür",
+  "viewsOpenRecord": "Kaydı aç"
+}

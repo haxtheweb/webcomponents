@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Lepaskan fail di sini",
+  "uploadQueue": "Baris gilir muat naik",
+  "pending": "Belum selesai",
+  "preparing": "Menyediakan",
+  "uploading": "Memuat naik",
+  "complete": "Selesai",
+  "aborted": "Dihentikan",
+  "cancelled": "Dibatalkan",
+  "error": "Ralat",
+  "errorWithStatus": "Ralat: {status}",
+  "cancel": "Batal",
+  "cancelUploadOf": "Batalkan muat naik {name}",
+  "retry": "Cuba semula",
+  "retryUploadOf": "Cuba semula muat naik {name}",
+  "remove": "Alih keluar",
+  "removeFromQueue": "Alih keluar {name} daripada baris gilir",
+  "fileTypeNotAccepted": "Jenis fail tidak diterima: {name}",
+  "uploadFailed": "Muat naik gagal: {status}",
+  "networkError": "Ralat rangkaian"
+}

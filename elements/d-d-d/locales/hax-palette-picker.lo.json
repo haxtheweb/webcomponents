@@ -1,0 +1,9 @@
+{
+  "palette": "ຊຸດສີ",
+  "paletteSelection": "ການເລືອກຊຸດສີ",
+  "active": "ໃຊ້ງານຢູ່",
+  "selected": "ເລືອກແລ້ວ",
+  "currentlyActiveAndSelectedPalette": "ຊຸດສີທີ່ໃຊ້ງານຢູ່ ແລະ ເລືອກແລ້ວ",
+  "currentlyActivePalette": "ຊຸດສີທີ່ໃຊ້ງານຢູ່",
+  "selectedPaletteToApply": "ຊຸດສີທີ່ເລືອກເພື່ອນຳໃຊ້"
+}

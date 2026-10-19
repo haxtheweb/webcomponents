@@ -1,10 +1,21 @@
 import { autorun, toJS } from "mobx";
 import { store } from "./haxcms-site-store.js";
 import { DarkmodeToggle } from "./ui/darkmode-toggle/darkmode-toggle.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-export class HAXCMSDarkmodeToggle extends DarkmodeToggle {
+export class HAXCMSDarkmodeToggle extends I18NMixin(DarkmodeToggle) {
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      darkModeToast: "I'm ascared of the dark",
+      lightModeToast: "Sunny day it is",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     autorun(() => {
       const _mobx_val_0 = toJS(store.darkMode);
       Promise.resolve().then(() => {
@@ -36,9 +47,9 @@ export class HAXCMSDarkmodeToggle extends DarkmodeToggle {
           store.darkMode = this[propName];
           store.playSound("click");
           if (this[propName]) {
-            store.toast("I'm ascared of the dark", 2000, { fire: true });
+            store.toast(this.t.darkModeToast, 2000, { fire: true });
           } else {
-            store.toast("Sunny day it is", 2000, { hat: "random" });
+            store.toast(this.t.lightModeToast, 2000, { hat: "random" });
           }
         });
       }

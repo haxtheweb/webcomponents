@@ -17,6 +17,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-top-menu.js
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * @title Design docs
@@ -25,7 +26,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  * @demo index.html
  * @element haxma-theme
  */
-export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
+export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme))) {
 
   static get tag() {
     return "haxma-theme";
@@ -33,6 +34,27 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      closeNavigationMenu: "Close navigation menu",
+      primary: "Primary",
+      search: "Search",
+      toggleNavigation: "Toggle navigation",
+      mobile: "Mobile",
+      closeNavigation: "Close navigation",
+      page: "Page",
+      previousArrow: "← Previous",
+      nextArrow: "Next →",
+      inThisArticle: "In this article",
+      defaultSiteDescription: "Empowering web creation through HAX",
+      siteNavigation: "Site Navigation",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this._items = [];
     this.activeItem = {};
     this.manifest = {};
@@ -739,18 +761,18 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
     
     return html`
       <div class="app-container">
-        <a class="skip-link" href="#contentcontainer">Skip to content</a>
+        <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
         <!-- Mobile nav overlay -->
         <button
           class="mobile-nav-overlay"
           type="button"
           @click="${this.closeMobileNav}"
-          aria-label="Close navigation menu"
+          aria-label="${this.t.closeNavigationMenu}"
         ></button>
         
         <!-- Fixed Header -->
         <header class="site-header">
-          <nav class="header-nav" aria-label="Primary">
+          <nav class="header-nav" aria-label="${this.t.primary}">
             <!-- Brand/Logo -->
             <a href="" class="nav-brand">
               <span>${site.name || 'HAXma'}</span>
@@ -765,9 +787,9 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
             <div class="header-controls">
               <!-- Search -->
               <site-modal 
-                title="Search" 
+                title="${this.t.search}" 
                 @click="${this.toggleSearch}" 
-                button-label="Search"
+                button-label="${this.t.search}"
                 icon="search"
                 position="bottom"
                 class="search-button">
@@ -778,7 +800,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
               <button 
                 class="mobile-menu-btn" 
                 @click="${this.toggleMobileNav}"
-                aria-label="Toggle navigation">
+                aria-label="${this.t.toggleNavigation}">
                 <svg fill="none" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -788,11 +810,11 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         </header>
         
         <!-- Mobile Navigation -->
-        <nav class="mobile-nav" aria-label="Mobile">
+        <nav class="mobile-nav" aria-label="${this.t.mobile}">
           <button 
             class="mobile-close-btn" 
             @click="${this.closeMobileNav}"
-            aria-label="Close navigation">
+            aria-label="${this.t.closeNavigation}">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -825,7 +847,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
             </div>
             
             <!-- Page Navigation -->
-            <nav class="page-navigation" aria-label="Page">
+            <nav class="page-navigation" aria-label="${this.t.page}">
               <div class="nav-item">
                 <site-menu-button 
                   type="prev" 
@@ -833,7 +855,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
                   class="nav-link"
                   @label-changed="${this.__prevPageLabelChanged}">
                   ${this.prevPage ? html`
-                    <div class="nav-direction">← Previous</div>
+                    <div class="nav-direction">${this.t.previousArrow}</div>
                     <div class="nav-title">${this.prevPage}</div>
                   ` : ''}
                 </site-menu-button>
@@ -846,7 +868,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
                   class="nav-link"
                   @label-changed="${this.__nextPageLabelChanged}">
                   ${this.nextPage ? html`
-                    <div class="nav-direction">Next →</div>
+                    <div class="nav-direction">${this.t.nextArrow}</div>
                     <div class="nav-title">${this.nextPage}</div>
                   ` : ''}
                 </site-menu-button>
@@ -865,7 +887,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
                 <line x1="3" y1="12" x2="3.01" y2="12"></line>
                 <line x1="3" y1="18" x2="3.01" y2="18"></line>
               </svg>
-              In this article
+              ${this.t.inThisArticle}
             </div>
             <site-menu-content></site-menu-content>
           </aside>
@@ -878,13 +900,13 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
             <div class="footer-brand">
               <div class="brand-title">${site.name || 'HAXma'}</div>
               <div class="brand-description">
-                ${manifest.description || 'Empowering web creation through HAX'}
+                ${manifest.description || this.t.defaultSiteDescription}
               </div>
             </div>
             
             <!-- Generated Site Links -->
             <div class="footer-section">
-              <h3>Site Navigation</h3>
+              <h3>${this.t.siteNavigation}</h3>
               <div class="footer-page-grid">
                 ${this._items.map((item) => html`
                   <a href="${item.slug}" class="footer-page-link">

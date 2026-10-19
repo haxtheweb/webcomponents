@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
@@ -13,7 +14,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
  *
  * @demo demo/index.html
  */
-class SiteOutlineBlock extends LitElement {
+class SiteOutlineBlock extends I18NMixin(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -22,6 +23,15 @@ class SiteOutlineBlock extends LitElement {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      goToPage: "Go to {title}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.windowControllers = new AbortController();
     this.__items = [];
     this.sticky = false;
@@ -118,7 +128,7 @@ class SiteOutlineBlock extends LitElement {
                 data-id="${item.id}"
                 class="link"
                 tabindex="-1"
-                title="Go to ${item.title}"
+                title="${this.t.goToPage.replace("{title}", () => item.title)}"
                 href="${item.slug}"
                 ><button ?noink="${this.noink}">
                   <span class="link-index">${this._humanIndex(index)}</span

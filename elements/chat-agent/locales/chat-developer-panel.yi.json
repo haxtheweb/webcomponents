@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "קאָנסאָל־טאַבעלע פֿונעם באַניצער־שמועס־לאָג",
+  "consoleTableUserText": "console.table() באַניצער־שמועס־לאָג",
+  "consoleTableUserTooltip": "דרוק דעם באַניצער־שמועס־לאָג ווי אַ טאַבעלע אין דער קאָנסאָל",
+  "consoleTableMerlinLabel": "קאָנסאָל־טאַבעלע פֿונעם merlin שמועס־לאָג",
+  "consoleTableMerlinText": "console.table() merlin שמועס־לאָג",
+  "consoleTableMerlinTooltip": "דרוק דעם Merlin שמועס־לאָג ווי אַ טאַבעלע אין דער קאָנסאָל",
+  "consoleTableAllLabel": "קאָנסאָל־טאַבעלע פֿונעם גאַנצן שמועס־לאָג",
+  "consoleTableAllText": "console.table() גאַנצער שמועס־לאָג",
+  "consoleTableAllTooltip": "דרוק דעם גאַנצן שמועס־לאָג ווי אַ טאַבעלע אין דער קאָנסאָל",
+  "downloadChatLogJson": "לאָד אַראָפּ דעם שמועס־לאָג ווי .json",
+  "downloadChatLogJsonTooltip": "לאָד אַראָפּ דעם שמועס־לאָג ווי .json"
+}

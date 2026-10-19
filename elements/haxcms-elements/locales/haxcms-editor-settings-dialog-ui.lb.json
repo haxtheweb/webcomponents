@@ -5,5 +5,9 @@
   "buttons": "Knäppercher",
   "futureButtonConfiguration": "Eng personaliséiert Konfiguratioun vun den Editor-Knäppercher kënnt geschwënn.",
   "save": "Späicheren",
-  "saving": "Gëtt gespäichert…"
+  "saving": "Gëtt gespäichert…",
+  "novice": "Ufänker",
+  "expert": "Expert",
+  "toolbarPreviewAlt": "Virschau vun der Beaarbechtungs-Toolbar fir {audience}",
+  "savingEditorSettingsFailed": "Späichere vun den Editor-Astellungen ass feelgeschloen: {error}"
 }

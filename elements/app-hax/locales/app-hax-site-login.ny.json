@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Lowetsani dzina la wogwiritsa ntchito",
+  "invalidUsernameOrPassword": "Dzina la Wogwiritsa Ntchito kapena Mawu Achinsinsi Si Olondola",
+  "welcomeLetsGo": "Takulandirani {username}! Tiyeni!",
+  "enterYourUsername": "Lowetsani dzina lanu la wogwiritsa ntchito",
+  "username": "Dzina la wogwiritsa ntchito",
+  "next": "Chotsatira",
+  "welcomeBack": "Takulandiraninso, {username}!",
+  "notYou": "Si inu?",
+  "enterYourPassword": "Lowetsani mawu anu achinsinsi",
+  "password": "Mawu achinsinsi",
+  "togglePasswordDisplay": "Onetsani kapena bisani mawu achinsinsi",
+  "login": "Lowani"
+}

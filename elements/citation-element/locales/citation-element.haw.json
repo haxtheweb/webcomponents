@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Hōʻaiʻē",
+  "licenseBySa": "Hōʻaiʻē Kaʻana Like",
+  "licenseByNd": "Hōʻaiʻē ʻAʻohe Mea Hoʻololi",
+  "licenseByNc": "Hōʻaiʻē ʻAʻole Kālepa",
+  "licenseByNcSa": "Hōʻaiʻē ʻAʻole Kālepa Kaʻana Like",
+  "licenseByNcNd": "Hōʻaiʻē ʻAʻole Kālepa ʻAʻohe Mea Hoʻololi",
+  "citationWithLicense": "{title} na {creator}, i laikini ʻia ma lalo o {license}. Ua komo ʻia ma {date}.",
+  "citationWithoutLicense": "{title} na {creator}. Ua komo ʻia ma {date}.",
+  "licenseGraphic": "Kiʻi {license}"
+}

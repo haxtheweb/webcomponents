@@ -1,0 +1,14 @@
+{
+  "licenseBy": "ייחוס",
+  "licenseBySa": "ייחוס-שיתוף זהה",
+  "licenseByNd": "ייחוס-ללא יצירות נגזרות",
+  "licenseByNc": "ייחוס-שימוש לא מסחרי",
+  "licenseByNcSa": "ייחוס-שימוש לא מסחרי-שיתוף זהה",
+  "licenseByNcNd": "ייחוס-שימוש לא מסחרי-ללא יצירות נגזרות",
+  "licenseGraphic": "סמל {license}",
+  "workByCreator": "{title} מאת {creator}",
+  "workByCreatorLicensed": "{title} מאת {creator} מוגש בכפוף לרישיון {license}.",
+  "permissionsBeyondScope": "הרשאות מעבר להיקף רישיון זה זמינות {link}.",
+  "author": "(מחבר)",
+  "onTheLicensingDetailsPage": "בדף פרטי הרישוי"
+}

@@ -5,5 +5,9 @@
   "buttons": "Κουμπιά",
   "futureButtonConfiguration": "Η προσαρμογή των κουμπιών του επεξεργαστή έρχεται σύντομα.",
   "save": "Αποθήκευση",
-  "saving": "Αποθήκευση…"
+  "saving": "Αποθήκευση…",
+  "novice": "Αρχάριος",
+  "expert": "Έμπειρος",
+  "toolbarPreviewAlt": "Προεπισκόπηση γραμμής εργαλείων επεξεργασίας για {audience}",
+  "savingEditorSettingsFailed": "Η αποθήκευση ρυθμίσεων επεξεργαστή απέτυχε: {error}"
 }

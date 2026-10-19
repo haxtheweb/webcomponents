@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Atribuire",
+  "licenseBySa": "Atribuire-Distribuire în condiții identice",
+  "licenseByNd": "Atribuire-Fără opere derivate",
+  "licenseByNc": "Atribuire-Necomercial",
+  "licenseByNcSa": "Atribuire-Necomercial-Distribuire în condiții identice",
+  "licenseByNcNd": "Atribuire-Necomercial-Fără opere derivate",
+  "licenseGraphic": "Grafica {license}",
+  "workByCreator": "{title} de {creator}",
+  "workByCreatorLicensed": "{title} de {creator} este licențiat sub {license}.",
+  "permissionsBeyondScope": "Permisiuni dincolo de scopul acestei licențe sunt disponibile {link}.",
+  "author": "(autor)",
+  "onTheLicensingDetailsPage": "pe pagina cu detaliile licenței"
+}

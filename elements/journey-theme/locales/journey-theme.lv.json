@@ -1,4 +1,11 @@
 {
   "readMore": "Lasīt vairāk",
-  "home": "Sākums"
+  "home": "Sākums",
+  "anchorLinkCopied": "Enkursaite nokopēta!",
+  "skipToContent": "Pāriet uz saturu",
+  "changeTheme": "Mainīt motīvu",
+  "siteSections": "Vietnes sadaļas",
+  "pageOfTotal": "Lapa {current} no {total}",
+  "siteGenerated": "Vietne ģenerēta: {date}",
+  "licenseGraphic": "{license} grafika"
 }

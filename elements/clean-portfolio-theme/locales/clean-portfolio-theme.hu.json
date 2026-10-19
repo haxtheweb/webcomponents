@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Horgonyhivatkozás másolva!",
+  "skipToContent": "Ugrás a tartalomra",
+  "siteHome": "Webhely kezdőlapja",
+  "mainNavigation": "Fő navigáció",
+  "toggleMenu": "Menü váltása",
+  "changeTheme": "Téma módosítása",
+  "breadcrumb": "Navigációs útvonal",
+  "tagFilter": "Címkeszűrő:",
+  "all": "Összes",
+  "pageNumberOfTotal": "Oldalszám: {current} / {total}",
+  "siteGenerated": "Webhely generálva: {date}",
+  "copyright": "Szerzői jog: {year} {author}",
+  "viewContentByTag": "Tartalom megtekintése címke szerint",
+  "licenseGraphic": "{license} ábra"
+}

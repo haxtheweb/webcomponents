@@ -1,4 +1,11 @@
 {
   "readMore": "ອ່ານເພີ່ມເຕີມ",
-  "home": "ໜ້າຫຼັກ"
+  "home": "ໜ້າຫຼັກ",
+  "anchorLinkCopied": "ສຳເນົາລິ້ງສະມໍແລ້ວ!",
+  "skipToContent": "ຂ້າມໄປຫາເນື້ອຫາ",
+  "changeTheme": "ປ່ຽນທີມ",
+  "siteSections": "ພາກສ່ວນເວັບໄຊ",
+  "pageOfTotal": "ໜ້າ {current} ຈາກ {total}",
+  "siteGenerated": "ສ້າງເວັບໄຊເມື່ອ: {date}",
+  "licenseGraphic": "ກຣາຟິກ {license}"
 }

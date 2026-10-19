@@ -1,4 +1,11 @@
 {
   "readMore": "Baca selengkapnya",
-  "home": "Beranda"
+  "home": "Beranda",
+  "anchorLinkCopied": "Tautan jangkar disalin!",
+  "skipToContent": "Lompat ke konten",
+  "changeTheme": "Ganti tema",
+  "siteSections": "Bagian situs",
+  "pageOfTotal": "Halaman {current} dari {total}",
+  "siteGenerated": "Situs dibuat: {date}",
+  "licenseGraphic": "Grafis {license}"
 }

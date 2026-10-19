@@ -1,3 +1,8 @@
 {
-  "title": "Сарчашмаҳо"
+  "title": "Сарчашмаҳо",
+  "export": "Содирот",
+  "exportCitations": "Содироти иқтибосҳо",
+  "copy": "Нусха бардоштан",
+  "exportCitationFormat": "Формати содироти иқтибос",
+  "selectCitationFormatBelow": "Дар поён формати иқтибосро интихоб кунед"
 }

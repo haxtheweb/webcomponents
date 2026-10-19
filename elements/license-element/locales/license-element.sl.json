@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Priznanje avtorstva",
+  "licenseBySa": "Priznanje avtorstva-Deljenje pod enakimi pogoji",
+  "licenseByNd": "Priznanje avtorstva-Brez predelav",
+  "licenseByNc": "Priznanje avtorstva-Nekomercialno",
+  "licenseByNcSa": "Priznanje avtorstva-Nekomercialno-Deljenje pod enakimi pogoji",
+  "licenseByNcNd": "Priznanje avtorstva-Nekomercialno-Brez predelav",
+  "licenseGraphic": "Grafika {license}",
+  "workByCreator": "{title}, avtor {creator}",
+  "workByCreatorLicensed": "{title}, avtor {creator}, je objavljeno pod licenco {license}.",
+  "permissionsBeyondScope": "Dovoljenja, ki presegajo obseg te licence, so na voljo {link}.",
+  "author": "(avtor)",
+  "onTheLicensingDetailsPage": "na strani s podrobnostmi licence"
+}

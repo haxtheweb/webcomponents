@@ -1,0 +1,14 @@
+{
+  "licenseBy": "저작자표시",
+  "licenseBySa": "저작자표시-동일조건변경허락",
+  "licenseByNd": "저작자표시-변경금지",
+  "licenseByNc": "저작자표시-비영리",
+  "licenseByNcSa": "저작자표시-비영리-동일조건변경허락",
+  "licenseByNcNd": "저작자표시-비영리-변경금지",
+  "licenseGraphic": "{license} 그래픽",
+  "workByCreator": "{creator}의 {title}",
+  "workByCreatorLicensed": "{creator}의 {title}은(는) {license}에 따라 이용할 수 있습니다.",
+  "permissionsBeyondScope": "이 라이선스 범위를 넘어서는 권한은 {link}에서 확인할 수 있습니다.",
+  "author": "(작성자)",
+  "onTheLicensingDetailsPage": "라이선스 세부 정보 페이지"
+}

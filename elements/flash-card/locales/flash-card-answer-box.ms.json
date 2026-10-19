@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Jawapan anda",
   "checkAnswer": "Semak jawapan",
-  "retry": "Cuba semula"
+  "retry": "Cuba semula",
+  "correct": "Betul!",
+  "incorrect": "Salah!",
+  "correctAnswer": "Jawapan Betul: {answer}"
 }

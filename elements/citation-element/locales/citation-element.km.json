@@ -1,0 +1,11 @@
+{
+  "licenseBy": "ការដាក់ឈ្មោះ",
+  "licenseBySa": "ការដាក់ឈ្មោះ ចែករំលែកដូចគ្នា",
+  "licenseByNd": "ការដាក់ឈ្មោះ គ្មានការកែប្រែ",
+  "licenseByNc": "ការដាក់ឈ្មោះ មិនមែនពាណិជ្ជកម្ម",
+  "licenseByNcSa": "ការដាក់ឈ្មោះ មិនមែនពាណិជ្ជកម្ម ចែករំលែកដូចគ្នា",
+  "licenseByNcNd": "ការដាក់ឈ្មោះ មិនមែនពាណិជ្ជកម្ម គ្មានការកែប្រែ",
+  "citationWithLicense": "{title} ដោយ {creator} ផ្ដល់អាជ្ញាប័ណ្ណក្រោម {license}។ បានចូលមើលនៅ {date}។",
+  "citationWithoutLicense": "{title} ដោយ {creator}។ បានចូលមើលនៅ {date}។",
+  "licenseGraphic": "រូបភាព {license}"
+}

@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Раздел {xOfY}",
+  "xOfY": "{order} от {total}",
+  "endOfTab": "Край на раздел {xOfY}. Обратно към {tabs}.",
+  "tabs": "разделите"
+}

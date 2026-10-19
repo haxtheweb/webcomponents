@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Navngivelse",
+  "licenseBySa": "Navngivelse-DelPåSammeVilkår",
+  "licenseByNd": "Navngivelse-IngenBearbeidelse",
+  "licenseByNc": "Navngivelse-IkkeKommersiell",
+  "licenseByNcSa": "Navngivelse-IkkeKommersiell-DelPåSammeVilkår",
+  "licenseByNcNd": "Navngivelse-IkkeKommersiell-IngenBearbeidelse",
+  "citationWithLicense": "{title} av {creator}, lisensiert under {license}. Hentet {date}.",
+  "citationWithoutLicense": "{title} av {creator}. Hentet {date}.",
+  "licenseGraphic": "Grafikk for {license}"
+}

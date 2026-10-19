@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Zavihek {xOfY}",
+  "xOfY": "{order} od {total}",
+  "endOfTab": "Konec zavihka {xOfY}. Nazaj na {tabs}.",
+  "tabs": "zavihke"
+}

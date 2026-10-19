@@ -1,0 +1,11 @@
+{
+  "theme": "ערכת נושא",
+  "active": "פעילה",
+  "selected": "נבחרה",
+  "noPreview": "אין תצוגה מקדימה",
+  "currentlyActiveAndSelected": "ערכת הנושא הפעילה והנבחרת כעת",
+  "currentlyActive": "ערכת הנושא הפעילה כעת",
+  "selectedToApplyOnSave": "ערכת הנושא שנבחרה להחלה בשמירה",
+  "themeSelection": "בחירת ערכת נושא",
+  "noThemesAvailable": "אין ערכות נושא זמינות."
+}

@@ -43,5 +43,22 @@
   "emailAddress": "이 학생에게 이메일 보내기",
   "notes": "메모",
   "interests": "관심사",
-  "profileImageFor": "프로필 이미지:"
+  "profileImageFor": "프로필 이미지:",
+  "fileSystem": "파일 시스템",
+  "googleDocs": "Google 문서",
+  "urlEndpointJSON": "URL 엔드포인트 (JSON)",
+  "jsonDataBlob": "JSON 데이터 블롭",
+  "additionalCriteriaFeedback": "{criteria} 추가 피드백",
+  "outOfPoints": "/ {points}점",
+  "feedbackReport": "피드백 보고서",
+  "criteriaDetails": "평가 기준 세부 정보",
+  "yourFeedback": "피드백",
+  "additionalCriteriaFeedbackHeading": "평가 기준 추가 피드백",
+  "yourTotalScore": "총점",
+  "scoreOutOfPoints": "{score} / {points}점",
+  "studentAssignment": "{student}의 과제 {assignment}",
+  "downloadPDF": "PDF 다운로드",
+  "displayMode1": "모드 1",
+  "displayMode2": "모드 2",
+  "twoWindows": "두 개의 창"
 }

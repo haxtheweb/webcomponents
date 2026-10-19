@@ -1,0 +1,11 @@
+{
+  "playlist": "Orodha ya kucheza",
+  "carousel": "jukwa",
+  "slide": "slaidi",
+  "slideNumber": "Slaidi {number}",
+  "slideOfTotal": "Slaidi {number} kati ya {total}",
+  "previousSlide": "Slaidi iliyotangulia",
+  "nextSlide": "Slaidi inayofuata",
+  "slidePages": "Kurasa za slaidi",
+  "goToSlide": "Nenda kwenye slaidi {number}"
+}

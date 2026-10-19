@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "زبانه {xOfY}",
+  "xOfY": "{order} از {total}",
+  "endOfTab": "پایان زبانه {xOfY}. بازگشت به {tabs}.",
+  "tabs": "زبانه‌ها"
+}

@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Rādīt motīva priekšskatījumu",
+  "hideThemePreview": "Paslēpt motīva priekšskatījumu",
+  "themePreviewPanel": "Motīva priekšskatījuma panelis",
+  "themePreview": "Motīva priekšskatījums",
+  "themePreviewDescription": "Pārlūkošanas laikā īslaicīgi izmēģiniet motīvu un paleti. Izmantojiet Atcelt, lai atjaunotu sākotnējo izskatu.",
+  "loadingThemes": "Ielādē motīvus...",
+  "theme": "Motīvs",
+  "palette": "Palete",
+  "cancel": "Atcelt",
+  "openAppearanceSettings": "Atvērt izskata iestatījumus"
+}

@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- implicit prima pagină --",
+  "details": "Detalii",
+  "title": "Titlu",
+  "titleDescription": "Numele site-ului",
+  "homePage": "Pagina principală",
+  "homePageDescription": "Pagina folosită ca pagină de destinație / principală implicită",
+  "advanced": "Avansat",
+  "serviceWorker": "Adaugă service worker la pagina dinamică",
+  "serviceWorkerDescription": "Dezactivează această opțiune dacă utilizatorii trebuie să vadă întotdeauna imediat cel mai recent rezultat al serverului.",
+  "forceBrowserUpgrade": "Forțează actualizarea browserului",
+  "forceBrowserUpgradeDescription": "Solicită browsere actualizate automat înainte de încărcarea experienței site-ului.",
+  "unableToLoadSiteDetails": "Nu se pot încărca detaliile site-ului.",
+  "noSiteDetails": "Nu există detalii ale site-ului disponibile.",
+  "save": "Salvează"
+}

@@ -7,5 +7,7 @@
   "userAccessGranted": "የተጠቃሚ መዳረሻ በተሳካ ሁኔታ ተሰጥቷል!",
   "userNotFound": "ተጠቃሚው አልተገኘም ወይም ፈቃድ የለውም",
   "loadingAddingUser": "ተጠቃሚ በማከል ላይ...",
-  "grantAccessTo": "መዳረሻ ስጥ ለ:"
+  "grantAccessTo": "መዳረሻ ስጥ ለ:",
+  "networkErrorTryAgain": "የአውታረ መረብ ስህተት ተከስቷል። እባክዎ እንደገና ይሞክሩ።",
+  "characterWillAppear": "የተጠቃሚ ስም ሲያስገቡ ገጸ-ባህሪው ይታያል"
 }

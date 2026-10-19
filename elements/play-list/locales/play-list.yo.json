@@ -1,0 +1,11 @@
+{
+  "playlist": "Àkójọ ìṣeré",
+  "carousel": "àtẹ ìyípo",
+  "slide": "ìfàwòránhàn",
+  "slideNumber": "Ìfàwòránhàn {number}",
+  "slideOfTotal": "Ìfàwòránhàn {number} nínú {total}",
+  "previousSlide": "Ìfàwòránhàn tẹ́lẹ̀",
+  "nextSlide": "Ìfàwòránhàn tó kàn",
+  "slidePages": "Àwọn ojú-ìwé ìfàwòránhàn",
+  "goToSlide": "Lọ sí ìfàwòránhàn {number}"
+}

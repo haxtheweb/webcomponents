@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Εισαγάγετε όνομα χρήστη",
+  "invalidUsernameOrPassword": "Μη έγκυρο όνομα χρήστη ή κωδικός πρόσβασης",
+  "welcomeLetsGo": "Καλώς ήρθες {username}! Πάμε!",
+  "enterYourUsername": "Εισαγάγετε το όνομα χρήστη σας",
+  "username": "Όνομα χρήστη",
+  "next": "Επόμενο",
+  "welcomeBack": "Καλώς ήρθες ξανά, {username}!",
+  "notYou": "Δεν είστε εσείς;",
+  "enterYourPassword": "Εισαγάγετε τον κωδικό πρόσβασής σας",
+  "password": "Κωδικός πρόσβασης",
+  "togglePasswordDisplay": "Εναλλαγή εμφάνισης κωδικού πρόσβασης",
+  "login": "Σύνδεση"
+}

@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Pudota tiedostot tähän",
+  "uploadQueue": "Latausjono",
+  "pending": "Odottaa",
+  "preparing": "Valmistellaan",
+  "uploading": "Ladataan",
+  "complete": "Valmis",
+  "aborted": "Keskeytetty",
+  "cancelled": "Peruutettu",
+  "error": "Virhe",
+  "errorWithStatus": "Virhe: {status}",
+  "cancel": "Peruuta",
+  "cancelUploadOf": "Peruuta tiedoston {name} lataus",
+  "retry": "Yritä uudelleen",
+  "retryUploadOf": "Yritä tiedoston {name} latausta uudelleen",
+  "remove": "Poista",
+  "removeFromQueue": "Poista {name} jonosta",
+  "fileTypeNotAccepted": "Tiedostotyyppiä ei hyväksytä: {name}",
+  "uploadFailed": "Lataus epäonnistui: {status}",
+  "networkError": "Verkkovirhe"
+}

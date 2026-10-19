@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ankerlenke kopiert!",
+  "skipToContent": "Hopp til innhold",
+  "changePalette": "Bytt palett",
+  "primaryLinks": "Primære lenker",
+  "socialLinks": "Sosiale lenker",
+  "myProfile": "Min profil",
+  "profileImageOf": "Profilbilde av {name}",
+  "profileImage": "Profilbilde",
+  "linkCardProfile": "Lenkekortprofil",
+  "emptyStateLinks": "Legg til menyelementer på toppnivå i site.json for å vise lenkeknapper.",
+  "titleOnPlatform": "{title} på {platform}",
+  "openPlatform": "Åpne {platform}",
+  "paletteUpdated": "Fargepaletten er oppdatert til alternativ {number}."
+}

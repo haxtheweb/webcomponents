@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tabel console log obrolan pangguna",
+  "consoleTableUserText": "console.table() log obrolan pangguna",
+  "consoleTableUserTooltip": "Cithak Log Obrolan Pangguna minangka Tabel menyang Console",
+  "consoleTableMerlinLabel": "Tabel console log obrolan merlin",
+  "consoleTableMerlinText": "console.table() log obrolan merlin",
+  "consoleTableMerlinTooltip": "Cithak Log Obrolan Merlin minangka Tabel menyang Console",
+  "consoleTableAllLabel": "Tabel console kabeh log obrolan",
+  "consoleTableAllText": "console.table() kabeh log obrolan",
+  "consoleTableAllTooltip": "Cithak Kabeh Log Obrolan minangka Tabel menyang Console",
+  "downloadChatLogJson": "Undhuh log obrolan minangka .json",
+  "downloadChatLogJsonTooltip": "Undhuh Log Obrolan minangka .json"
+}

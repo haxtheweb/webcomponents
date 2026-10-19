@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Teigur {xOfY}",
+  "xOfY": "{order} av {total}",
+  "endOfTab": "Endi á teigi {xOfY}. Aftur til {tabs}.",
+  "tabs": "teigar"
+}

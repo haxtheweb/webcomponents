@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Priskyrimas",
+  "licenseBySa": "Priskyrimas – Analogiškas platinimas",
+  "licenseByNd": "Priskyrimas – Jokių išvestinių kūrinių",
+  "licenseByNc": "Priskyrimas – Nekomercinis",
+  "licenseByNcSa": "Priskyrimas – Nekomercinis – Analogiškas platinimas",
+  "licenseByNcNd": "Priskyrimas – Nekomercinis – Jokių išvestinių kūrinių",
+  "licenseGraphic": "{license} ženklas",
+  "workByCreator": "{title}, autorius: {creator}",
+  "workByCreatorLicensed": "{title}, autorius: {creator}, licencijuotas pagal {license}.",
+  "permissionsBeyondScope": "Leidimai, viršijantys šios licencijos ribas, pateikiami {link}.",
+  "author": "(autorius)",
+  "onTheLicensingDetailsPage": "licencijavimo informacijos puslapyje"
+}

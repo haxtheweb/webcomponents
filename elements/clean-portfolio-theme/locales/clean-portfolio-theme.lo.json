@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "ສຳເນົາລິ້ງສະມໍແລ້ວ!",
+  "skipToContent": "ຂ້າມໄປຫາເນື້ອຫາ",
+  "siteHome": "ໜ້າຫຼັກເວັບໄຊ",
+  "mainNavigation": "ການນຳທາງຫຼັກ",
+  "toggleMenu": "ສະຫຼັບເມນູ",
+  "changeTheme": "ປ່ຽນທີມ",
+  "breadcrumb": "ເສັ້ນທາງນຳທາງ",
+  "tagFilter": "ກັ່ນຕອງແທັກ:",
+  "all": "ທັງໝົດ",
+  "pageNumberOfTotal": "ໜ້າທີ: {current} ຈາກ {total}",
+  "siteGenerated": "ສ້າງເວັບໄຊເມື່ອ: {date}",
+  "copyright": "ລິຂະສິດ: {year} {author}",
+  "viewContentByTag": "ເບິ່ງເນື້ອຫາຕາມແທັກ",
+  "licenseGraphic": "ກຣາຟິກ {license}"
+}

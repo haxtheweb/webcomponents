@@ -1,0 +1,18 @@
+{
+  "copy": "コピー",
+  "download": "ダウンロード",
+  "archive": "アーカイブ",
+  "copyOperation": "コピー",
+  "downloadOperation": "ダウンロード",
+  "archiveOperation": "アーカイブ",
+  "created": "作成",
+  "updated": "更新",
+  "pages": "ページ",
+  "url": "URL",
+  "confirm": "確認",
+  "cancel": "キャンセル",
+  "siteOperationConfirmTitle": "{siteName} を{operationName}しますか?",
+  "siteOperationConfirmMessage": "{siteName} を{operation}してもよろしいですか?",
+  "siteOperationSuccessful": "{siteName} の{operation}に成功しました!",
+  "siteOperationFailed": "{siteName} の{operation}に失敗しました"
+}

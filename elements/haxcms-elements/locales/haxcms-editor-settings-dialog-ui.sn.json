@@ -5,5 +5,9 @@
   "buttons": "Mabhatani",
   "futureButtonConfiguration": "Kurongwa kwemabhatani emupepeti kuri kuuya munguva pfupi.",
   "save": "Chengeta",
-  "saving": "Kuchengeta…"
+  "saving": "Kuchengeta…",
+  "novice": "Mutangi",
+  "expert": "Nyanzvi",
+  "toolbarPreviewAlt": "Ongororo yetoolbar yekugadzirisa ye{audience}",
+  "savingEditorSettingsFailed": "Kuchengetedza marongerwo emugadziri kwakundikana: {error}"
 }

@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Attiva",
+  "selected": "Magħżula",
+  "noPreview": "L-ebda preview",
+  "currentlyActiveAndSelected": "Tema attiva u magħżula bħalissa",
+  "currentlyActive": "Tema attiva bħalissa",
+  "selectedToApplyOnSave": "Tema magħżula biex tiġi applikata meta tissejvja",
+  "themeSelection": "Għażla tat-tema",
+  "noThemesAvailable": "M'hemm l-ebda tema disponibbli."
+}

@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Emoĩ marandurenda ko'ápe",
+  "uploadQueue": "Ñehupi rysýi",
+  "pending": "Oha'arõhína",
+  "preparing": "Oñembosako'ihína",
+  "uploading": "Ohupihína",
+  "complete": "Opáma",
+  "aborted": "Ojejoko",
+  "cancelled": "Oñemboyke",
+  "error": "Jejavy",
+  "errorWithStatus": "Jejavy: {status}",
+  "cancel": "Heja",
+  "cancelUploadOf": "Ejoko {name} ñehupi",
+  "retry": "Ñeha'ã jey",
+  "retryUploadOf": "Eñeha'ãjey {name} ñehupi",
+  "remove": "Embogue",
+  "removeFromQueue": "Embogue {name} rysýigui",
+  "fileTypeNotAccepted": "Marandurenda reko ojeguerohory'ỹva: {name}",
+  "uploadFailed": "Ñehupi ndoikói: {status}",
+  "networkError": "Ñanduti jejavy"
+}

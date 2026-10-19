@@ -1,3 +1,8 @@
 {
-  "title": "Lähteet"
+  "title": "Lähteet",
+  "export": "Vie",
+  "exportCitations": "Vie lähdeviitteet",
+  "copy": "Kopioi",
+  "exportCitationFormat": "Lähdeviitteiden vientimuoto",
+  "selectCitationFormatBelow": "Valitse lähdeviitemuoto alta"
 }

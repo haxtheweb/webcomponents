@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "ലോഡ് ചെയ്യുന്നു...",
   "youTubeStartLoading": "പ്ലേ അമർത്തുക.",
   "youTubeTranscriptLabel": "മീഡിയ പ്ലേ ചെയ്തു തുടങ്ങുമ്പോൾ ട്രാൻസ്ക്രിപ്റ്റ് ലോഡ് ആകും.",
-  "audioDescriptionLabel": "ഓഡിയോ വിവരണം"
+  "audioDescriptionLabel": "ഓഡിയോ വിവരണം",
+  "openOnYouTube": "YouTube-ൽ തുറക്കുക"
 }

@@ -10,5 +10,9 @@
   "save": "Ruaj",
   "noDescription": "Nuk ka përshkrim.",
   "details": "Detajet",
-  "loadingInventory": "Po ngarkohet inventari i plotë i blloqeve…"
+  "loadingInventory": "Po ngarkohet inventari i plotë i blloqeve…",
+  "selectAllButton": "Përzgjidh të gjitha",
+  "deselectAllButton": "Hiq përzgjedhjen nga të gjitha",
+  "selectedOfAvailable": "{selected} të përzgjedhura / {total} të disponueshme",
+  "savingBlocksFailed": "Ruajtja e blloqeve dështoi: {error}"
 }

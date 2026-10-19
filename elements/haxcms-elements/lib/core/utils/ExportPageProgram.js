@@ -15,22 +15,45 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { PAGE_EXPORT_FORMATS } from "./import-export-options.js";
 
+// English defaults for messages these helpers show. They run with `this`
+// bound to haxcms-site-editor-ui, so translations come from its (haxcms
+// namespace) this.t when present, falling back to these strings.
+const EXPORT_PAGE_T = {
+  exportFormatNotSupported: 'Export format "{format}" not supported',
+  exportFailed: "Export failed: {error}",
+  formatFileDownloadedSuccessfully: "{format} file downloaded successfully",
+  pageFormatExportNotAvailable: "Page {format} export not available",
+  formatExportServiceNotAvailable: "{format} export service not available",
+  haxSchemaJsonCopiedToClipboard: "HAX schema JSON copied to clipboard",
+  failedToExportHaxSchemaJson: "Failed to export HAX schema JSON",
+};
+function _t(context, key) {
+  return context && context.t && context.t[key]
+    ? context.t[key]
+    : EXPORT_PAGE_T[key];
+}
+
 export function createExportPageProgram(context) {
   return async (input, values) => {
     let results = [];
 
     // Filter results based on input
     PAGE_EXPORT_FORMATS.forEach((format) => {
+      const formatTitle =
+        _t(context, `${format.tKey}Title`) || format.title;
+      const formatDescription =
+        _t(context, `${format.tKey}Description`) || format.description;
       if (
         input === "" ||
+        formatTitle.toLowerCase().includes(input.toLowerCase()) ||
         format.title.toLowerCase().includes(input.toLowerCase()) ||
         format.format.includes(input.toLowerCase())
       ) {
         results.push({
-          title: format.title,
+          title: formatTitle,
           icon: format.icon,
           tags: ["export", "page", format.format],
-          more: format.description,
+          more: formatDescription,
           value: {
             target: context,
             method: "exportPageAs",
@@ -84,14 +107,18 @@ export async function exportPageAs(format) {
 
       default:
         HAXStore.toast(
-          `Export format "${format}" not supported`,
+          _t(this, "exportFormatNotSupported").replace("{format}", () => format),
           3000,
           "fit-bottom",
         );
     }
   } catch (error) {
     console.error("Export error:", error);
-    HAXStore.toast(`Export failed: ${error.message}`, 3000, "fit-bottom");
+    HAXStore.toast(
+      _t(this, "exportFailed").replace("{error}", () => error.message),
+      3000,
+      "fit-bottom",
+    );
   }
 }
 
@@ -179,14 +206,21 @@ export async function _exportPageRouteVariant(format, title) {
     this._downloadFile(content, `${title}.${ext}`, mime);
     this.clearProcessingVisual();
     HAXStore.toast(
-      `${ext.toUpperCase()} file downloaded successfully`,
+      _t(this, "formatFileDownloadedSuccessfully").replace(
+        "{format}",
+        () => (ext.toUpperCase()),
+      ),
       3000,
       "fit-bottom",
     );
   } catch (error) {
     console.error(`Page ${format} export error:`, error);
     this.clearProcessingVisual();
-    HAXStore.toast(`Page ${format} export not available`, 3000, "fit-bottom");
+    HAXStore.toast(
+      _t(this, "pageFormatExportNotAvailable").replace("{format}", () => format),
+      3000,
+      "fit-bottom",
+    );
   }
 }
 
@@ -202,14 +236,22 @@ export async function _exportPageAsDOCX(title) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.docx`);
       this.clearProcessingVisual();
-      HAXStore.toast("DOCX file downloaded successfully", 3000, "fit-bottom");
+      HAXStore.toast(
+        _t(this, "formatFileDownloadedSuccessfully").replace("{format}", "DOCX"),
+        3000,
+        "fit-bottom",
+      );
     } else {
       throw new Error(`Failed to export page as DOCX: ${response.status}`);
     }
   } catch (error) {
     console.error("DOCX export error:", error);
     this.clearProcessingVisual();
-    HAXStore.toast("DOCX export service not available", 3000, "fit-bottom");
+    HAXStore.toast(
+      _t(this, "formatExportServiceNotAvailable").replace("{format}", "DOCX"),
+      3000,
+      "fit-bottom",
+    );
   }
 }
 
@@ -225,14 +267,22 @@ export async function _exportPageAsPDF(title) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.pdf`);
       this.clearProcessingVisual();
-      HAXStore.toast("PDF file downloaded successfully", 3000, "fit-bottom");
+      HAXStore.toast(
+        _t(this, "formatFileDownloadedSuccessfully").replace("{format}", "PDF"),
+        3000,
+        "fit-bottom",
+      );
     } else {
       throw new Error(`Failed to export page as PDF: ${response.status}`);
     }
   } catch (error) {
     console.error("PDF export error:", error);
     this.clearProcessingVisual();
-    HAXStore.toast("PDF export service not available", 3000, "fit-bottom");
+    HAXStore.toast(
+      _t(this, "formatExportServiceNotAvailable").replace("{format}", "PDF"),
+      3000,
+      "fit-bottom",
+    );
   }
 }
 
@@ -248,14 +298,22 @@ export async function _exportPageAsEPUB(title) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.epub`);
       this.clearProcessingVisual();
-      HAXStore.toast("EPUB file downloaded successfully", 3000, "fit-bottom");
+      HAXStore.toast(
+        _t(this, "formatFileDownloadedSuccessfully").replace("{format}", "EPUB"),
+        3000,
+        "fit-bottom",
+      );
     } else {
       throw new Error(`Failed to export page as EPUB: ${response.status}`);
     }
   } catch (error) {
     console.error("EPUB export error:", error);
     this.clearProcessingVisual();
-    HAXStore.toast("EPUB export service not available", 3000, "fit-bottom");
+    HAXStore.toast(
+      _t(this, "formatExportServiceNotAvailable").replace("{format}", "EPUB"),
+      3000,
+      "fit-bottom",
+    );
   }
 }
 
@@ -294,11 +352,15 @@ export async function _exportPageAsHAXSchema() {
     // Copy to clipboard
     await navigator.clipboard.writeText(haxSchema);
     this.clearProcessingVisual();
-    HAXStore.toast("HAX schema JSON copied to clipboard", 3000, "fit-bottom");
+    HAXStore.toast(
+      _t(this, "haxSchemaJsonCopiedToClipboard"),
+      3000,
+      "fit-bottom",
+    );
   } catch (error) {
     console.error("HAX schema export error:", error);
     this.clearProcessingVisual();
-    HAXStore.toast("Failed to export HAX schema JSON", 3000, "fit-bottom");
+    HAXStore.toast(_t(this, "failedToExportHaxSchemaJson"), 3000, "fit-bottom");
   }
 }
 

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Namensnennung",
+  "licenseBySa": "Namensnennung – Weidergab ënner gläiche Bedingungen",
+  "licenseByNd": "Namensnennung – Keng Bearbechtungen",
+  "licenseByNc": "Namensnennung – Net kommerziell",
+  "licenseByNcSa": "Namensnennung – Net kommerziell – Weidergab ënner gläiche Bedingungen",
+  "licenseByNcNd": "Namensnennung – Net kommerziell – Keng Bearbechtungen",
+  "citationWithLicense": "{title} vu(n) {creator}, lizenzéiert ënner {license}. Opgeruff de(n) {date}.",
+  "citationWithoutLicense": "{title} vu(n) {creator}. Opgeruff de(n) {date}.",
+  "licenseGraphic": "Grafik {license}"
+}

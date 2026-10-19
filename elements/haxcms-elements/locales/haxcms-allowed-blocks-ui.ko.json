@@ -10,5 +10,9 @@
   "save": "저장",
   "noDescription": "설명이 없습니다.",
   "details": "세부 정보",
-  "loadingInventory": "전체 블록 목록을 불러오는 중…"
+  "loadingInventory": "전체 블록 목록을 불러오는 중…",
+  "selectAllButton": "모두 선택",
+  "deselectAllButton": "모두 선택 해제",
+  "selectedOfAvailable": "{selected}개 선택됨 / {total}개 사용 가능",
+  "savingBlocksFailed": "블록 저장 실패: {error}"
 }

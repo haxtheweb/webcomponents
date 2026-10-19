@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Признание",
+  "licenseBySa": "Признание-Споделяне на споделеното",
+  "licenseByNd": "Признание-Без производни",
+  "licenseByNc": "Признание-Некомерсиално",
+  "licenseByNcSa": "Признание-Некомерсиално-Споделяне на споделеното",
+  "licenseByNcNd": "Признание-Некомерсиално-Без производни",
+  "citationWithLicense": "{title} от {creator}, лицензирано под {license}. Достъпено на {date}.",
+  "citationWithoutLicense": "{title} от {creator}. Достъпено на {date}.",
+  "licenseGraphic": "Графика на {license}"
+}

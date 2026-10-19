@@ -54,5 +54,6 @@
   "requirementUppercase": "Ét stort bogstav",
   "requirementLowercase": "Ét lille bogstav",
   "requirementNumber": "Ét tal",
-  "requirementSymbol": "Ét symbol"
+  "requirementSymbol": "Ét symbol",
+  "haxcmsMascotAlt": "HAXcms World Traveler-maskot"
 }

@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Introdueix el nom d'usuari",
+  "invalidUsernameOrPassword": "Nom d'usuari o contrasenya no vàlids",
+  "welcomeLetsGo": "Benvingut, {username}! Som-hi!",
+  "enterYourUsername": "Introdueix el teu nom d'usuari",
+  "username": "Nom d'usuari",
+  "next": "Següent",
+  "welcomeBack": "Benvingut de nou, {username}!",
+  "notYou": "No ets tu?",
+  "enterYourPassword": "Introdueix la contrasenya",
+  "password": "Contrasenya",
+  "togglePasswordDisplay": "Mostra o amaga la contrasenya",
+  "login": "Inicia la sessió"
+}

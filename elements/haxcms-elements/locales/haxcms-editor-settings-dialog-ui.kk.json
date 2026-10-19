@@ -5,5 +5,9 @@
   "buttons": "Түймелер",
   "futureButtonConfiguration": "Редактор түймелерін баптау жақында қолжетімді болады.",
   "save": "Сақтау",
-  "saving": "Сақталуда…"
+  "saving": "Сақталуда…",
+  "novice": "Бастаушы",
+  "expert": "Сарапшы",
+  "toolbarPreviewAlt": "{audience} өңдеу құралдар тақтасының алдын ала көрінісі",
+  "savingEditorSettingsFailed": "Өңдегіш параметрлерін сақтау сәтсіз аяқталды: {error}"
 }

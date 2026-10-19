@@ -1,0 +1,17 @@
+{
+  "editNodes": "ແກ້ໄຂໂນດ",
+  "editLines": "ແກ້ໄຂເສັ້ນ",
+  "reset": "ຣີເຊັດ",
+  "save": "ບັນທຶກ",
+  "cancel": "ຍົກເລີກ",
+  "delete": "ລຶບ",
+  "type": "ປະເພດ:",
+  "topic": "ຫົວຂໍ້",
+  "subsection": "ພາກຍ່ອຍ",
+  "name": "ຊື່:",
+  "enterName": "ໃສ່ຊື່",
+  "url": "URL:",
+  "enterUrl": "ໃສ່ URL",
+  "activeNode": "ໂນດທີ່ໃຊ້ງານ?",
+  "nodeId": "ໂນດ {id}"
+}

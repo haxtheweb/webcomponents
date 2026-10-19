@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Ukunikezwa udumo",
+  "licenseBySa": "Ukunikezwa udumo Yabelana ngendlela efanayo",
+  "licenseByNd": "Ukunikezwa udumo Akukho okuphuma kukho",
+  "licenseByNc": "Ukunikezwa udumo okungezona ezohwebo",
+  "licenseByNcSa": "Ukunikezwa udumo okungezona ezohwebo yabelana ngendlela efanayo",
+  "licenseByNcNd": "Ukunikezwa udumo Okungezona ezohwebo Akukho okuphuma kukho",
+  "licenseGraphic": "Isithombe se-{license}",
+  "workByCreator": "{title} ngu-{creator}",
+  "workByCreatorLicensed": "{title} ngu-{creator} inelayisensi ye-{license}.",
+  "permissionsBeyondScope": "Izimvume ezingaphezu kobubanzi bale layisensi ziyatholakala {link}.",
+  "author": "(umbhali)",
+  "onTheLicensingDetailsPage": "ekhasini lemininingwane yelayisensi"
+}

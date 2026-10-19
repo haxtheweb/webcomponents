@@ -45,6 +45,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/absolute-position-behavior": "^26.8.0",
+    "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/rpg-character": "^26.8.0",
     "@haxtheweb/simple-colors": "^26.8.0",
     "@haxtheweb/simple-datetime": "^26.8.0",

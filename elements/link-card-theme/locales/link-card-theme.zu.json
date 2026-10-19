@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Isixhumanisi se-anchor sikopishiwe!",
+  "skipToContent": "Yeqela kokuqukethwe",
+  "changePalette": "Shintsha iphalethi",
+  "primaryLinks": "Izixhumanisi eziyinhloko",
+  "socialLinks": "Izixhumanisi zezinkundla zokuxhumana",
+  "myProfile": "Iphrofayela yami",
+  "profileImageOf": "Isithombe sephrofayela sika-{name}",
+  "profileImage": "Isithombe sephrofayela",
+  "linkCardProfile": "Iphrofayela yekhadi lesixhumanisi",
+  "emptyStateLinks": "Engeza izinto zemenyu yezinga eliphezulu ku-site.json ukuze kuboniswe izinkinobho zezixhumanisi.",
+  "titleOnPlatform": "{title} ku-{platform}",
+  "openPlatform": "Vula i-{platform}",
+  "paletteUpdated": "Iphalethi yemibala ibuyekezelwe enketho {number}."
+}

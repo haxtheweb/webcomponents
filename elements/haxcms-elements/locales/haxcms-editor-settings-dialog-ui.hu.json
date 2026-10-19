@@ -5,5 +5,9 @@
   "buttons": "Gombok",
   "futureButtonConfiguration": "Az egyéni szerkesztőgomb-beállítás hamarosan elérhető.",
   "save": "Mentés",
-  "saving": "Mentés…"
+  "saving": "Mentés…",
+  "novice": "Kezdő",
+  "expert": "Szakértő",
+  "toolbarPreviewAlt": "{audience} szerkesztő-eszköztár előnézete",
+  "savingEditorSettingsFailed": "A szerkesztőbeállítások mentése sikertelen: {error}"
 }

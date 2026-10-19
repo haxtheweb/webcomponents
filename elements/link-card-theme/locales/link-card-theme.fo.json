@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Akkerleinki avritað!",
+  "skipToContent": "Far til innihaldið",
+  "changePalette": "Broyt litaspjald",
+  "primaryLinks": "Høvuðsleinki",
+  "socialLinks": "Sosial leinki",
+  "myProfile": "Mín vangamynd",
+  "profileImageOf": "{name} vangamynd",
+  "profileImage": "Vangamynd",
+  "linkCardProfile": "Leinkikort-vangamynd",
+  "emptyStateLinks": "Legg valmyndarlutir á ovasta stigi afturat í site.json fyri at vísa leinkiknøttar.",
+  "titleOnPlatform": "{title} á {platform}",
+  "openPlatform": "Opna {platform}",
+  "paletteUpdated": "Litaspjald dagført til møguleika {number}."
+}

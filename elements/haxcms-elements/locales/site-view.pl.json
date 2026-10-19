@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Brak wyników",
+  "viewsRecordHeading": "Nagrywaj",
+  "viewsTitleImage": "Obraz: {title}",
+  "viewsTitlePreview": "Podgląd {title}",
+  "viewsNoTimelineRecords": "Brak rekordów z datami do wyświetlenia na osi czasu.",
+  "viewsTimelineTitle": "Oś czasu: {title}",
+  "viewsNoChartField": "Nie wykryto pola liczbowego do wyświetlenia wykresu.",
+  "viewsChartingValue": "Wykres: {value}",
+  "viewsChartingValueByLabel": "Wykres: {value} według {label}",
+  "viewsChartTitle": "Wykres: {title}",
+  "viewsNoTreeRecords": "Brak rekordów hierarchicznych do wyświetlenia drzewa.",
+  "viewsNoGalleryRecords": "Brak rekordów obrazów do wyświetlenia galerii.",
+  "viewsNoPlaylistRecords": "Brak rekordów multimediów do wyświetlenia playlisty.",
+  "fetchFailed": "Pobieranie nie powiodło się ({status})",
+  "unableToLoadViewData": "Nie można wczytać danych widoku.",
+  "noResultsFound": "Nie znaleziono wyników.",
+  "refreshView": "Odśwież widok",
+  "breakIntoStaticContent": "Zamień na treść statyczną",
+  "viewsOpenRecord": "Otwórz rekord"
+}

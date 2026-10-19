@@ -1,0 +1,11 @@
+{
+  "licenseBy": "உரிமைக்குறிப்பு",
+  "licenseBySa": "உரிமைக்குறிப்பு - அதே உரிமத்தில் பகிர்",
+  "licenseByNd": "உரிமைக்குறிப்பு - வழிப்படைப்புகள் இல்லை",
+  "licenseByNc": "உரிமைக்குறிப்பு - வணிகமற்றது",
+  "licenseByNcSa": "உரிமைக்குறிப்பு - வணிகமற்றது - அதே உரிமத்தில் பகிர்",
+  "licenseByNcNd": "உரிமைக்குறிப்பு - வணிகமற்றது - வழிப்படைப்புகள் இல்லை",
+  "citationWithLicense": "{creator} இன் {title}, {license} இன் கீழ் உரிமம் பெற்றது. அணுகப்பட்டது {date}.",
+  "citationWithoutLicense": "{creator} இன் {title}. அணுகப்பட்டது {date}.",
+  "licenseGraphic": "{license} வரைகலை"
+}

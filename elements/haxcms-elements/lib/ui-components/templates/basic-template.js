@@ -13,6 +13,15 @@ let BasicTemplate = (superclass) =>
   class extends superclass {
     constructor() {
       super();
+      this.t = this.t || {};
+      this.t = {
+        ...this.t,
+        viewSiteMap: "View site map",
+        siteMap: "Site map",
+        searchSite: "Search site",
+        search: "Search",
+        backToTop: "Back to top",
+      };
       import("@haxtheweb/simple-icon/simple-icon.js");
       import("@haxtheweb/simple-icon/lib/simple-icons.js");
       import("@haxtheweb/scroll-button/scroll-button.js");
@@ -97,16 +106,16 @@ let BasicTemplate = (superclass) =>
           <site-modal
             slot="suffix"
             icon="maps:directions"
-            title="View site map"
-            button-label="Site map"
+            title="${this.t.viewSiteMap}"
+            button-label="${this.t.siteMap}"
           >
             <site-menu></site-menu>
           </site-modal>
           <site-modal
             slot="suffix"
             icon="icons:search"
-            title="Search site"
-            button-label="Search"
+            title="${this.t.searchSite}"
+            button-label="${this.t.search}"
           >
             <site-search></site-search>
           </site-modal>
@@ -141,7 +150,7 @@ let BasicTemplate = (superclass) =>
           </grid-plate>
         </div>
         <site-footer></site-footer>
-        <scroll-button position="right" label="Back to top"></scroll-button>
+        <scroll-button position="right" label="${this.t.backToTop}"></scroll-button>
       `;
     }
   };

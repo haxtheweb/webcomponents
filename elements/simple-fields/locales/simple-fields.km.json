@@ -9,5 +9,8 @@
   "record": "ថត",
   "pause": "ផ្អាកការថត",
   "stopSave": "បញ្ឈប់ និងរក្សាទុក",
-  "clickToTakePhoto": "ចុចដើម្បីថតរូប"
+  "clickToTakePhoto": "ចុចដើម្បីថតរូប",
+  "url": "URL",
+  "open": "បើក",
+  "removeValue": "លុប {value}"
 }

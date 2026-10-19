@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Перетягніть файли сюди",
+  "uploadQueue": "Черга завантаження",
+  "pending": "Очікує",
+  "preparing": "Підготовка",
+  "uploading": "Завантаження",
+  "complete": "Завершено",
+  "aborted": "Перервано",
+  "cancelled": "Скасовано",
+  "error": "Помилка",
+  "errorWithStatus": "Помилка: {status}",
+  "cancel": "Скасувати",
+  "cancelUploadOf": "Скасувати завантаження {name}",
+  "retry": "Спробувати ще",
+  "retryUploadOf": "Повторити завантаження {name}",
+  "remove": "Вилучити",
+  "removeFromQueue": "Вилучити {name} з черги",
+  "fileTypeNotAccepted": "Тип файлу не приймається: {name}",
+  "uploadFailed": "Помилка завантаження: {status}",
+  "networkError": "Помилка мережі"
+}

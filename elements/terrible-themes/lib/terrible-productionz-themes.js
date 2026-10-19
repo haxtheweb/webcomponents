@@ -33,6 +33,16 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      sitesOfInterest: "Sites of Interest",
+      acidScorpioWebsite: "Acid Scorpio website",
+      posted: "Posted:",
+      titleLabel: "Title:",
+      byAuthor: "By: {author}",
+    };
     // do NOT reassign this.__disposer here: the constructor chain
     // (HAXCMSLitElementTheme + HAXCMSThemeParts + HAXCMSRememberRoute)
     // already pushed its constructor-time autoruns into it; a fresh array
@@ -211,7 +221,9 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer"
+        >${this.t.skipToContent}</a
+      >
       <div align="center">
         <table
           role="presentation"
@@ -244,7 +256,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
               <td width="128" valign="top">
                 <site-menu></site-menu>
                 <hr />
-                &nbsp;Sites of Interest
+                &nbsp;${this.t.sitesOfInterest}
                 <hr />
                 <div align="center">
                   <a
@@ -258,7 +270,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                       width="88"
                       height="31"
                       vspace="3"
-                      alt="Acid Scorpio website"
+                      alt="${this.t.acidScorpioWebsite}"
                       loading="lazy"
                       decoding="async" /></a
                   ><br />
@@ -298,7 +310,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                               <tr>
                                 <td align="left">
                                   <p class="posted">
-                                    Posted:
+                                    ${this.t.posted}
                                     ${this.activeItem &&
                                     this.activeItem.metadata &&
                                     this.activeItem.metadata.created
@@ -312,14 +324,19 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                                 </td>
                                 <td>
                                   <p class="posted">
-                                    Title:
+                                    ${this.t.titleLabel}
                                     ${this.activeItem && this.activeItem.title
                                       ? this.activeItem.title
                                       : ``}
                                   </p>
                                 </td>
                                 <td align="right">
-                                  <p class="posted">By: ${this.author}</p>
+                                  <p class="posted">
+                                    ${this.t.byAuthor.replace(
+                                      "{author}",
+                                      () => (this.author || ""),
+                                    )}
+                                  </p>
                                 </td>
                               </tr>
                             </tbody>

@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "థీమ్‌లను లోడ్ చేయడం విఫలమైంది: {error}",
+  "noThemesForView": "ఈ వీక్షణకు థీమ్‌లు ఏవీ అందుబాటులో లేవు.",
+  "active": "సక్రియం",
+  "themeIsActive": "{name} థీమ్ సక్రియంగా ఉంది",
+  "applyTheme": "{name} థీమ్‌ను వర్తింపజేయండి",
+  "apply": "వర్తింపజేయండి",
+  "preview": "ప్రివ్యూ",
+  "name": "పేరు",
+  "element": "ఎలిమెంట్",
+  "description": "వివరణ",
+  "action": "చర్య",
+  "loadingThemes": "థీమ్‌లు లోడ్ అవుతున్నాయి...",
+  "themesShown": "{count} థీమ్‌లు చూపబడ్డాయి",
+  "themesShownDefaults": "{count} థీమ్‌లు చూపబడ్డాయి (app-hax డిఫాల్ట్‌లు)",
+  "availableHaxcmsThemes": "అందుబాటులో ఉన్న HAXcms థీమ్‌లు",
+  "gallery": "గ్యాలరీ",
+  "table": "పట్టిక"
+}

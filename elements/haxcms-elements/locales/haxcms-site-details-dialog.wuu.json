@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- 默认用第一只页面 --",
+  "details": "详细",
+  "title": "标题",
+  "titleDescription": "网站个名字",
+  "homePage": "首页",
+  "homePageDescription": "当默认落地页 / 首页用个页面",
+  "advanced": "高级",
+  "serviceWorker": "拨动态页面加 service worker",
+  "serviceWorkerDescription": "要是用户应该一直马上看到服务器最新个输出,就拿搿个停用。",
+  "forceBrowserUpgrade": "强制升级浏览器",
+  "forceBrowserUpgradeDescription": "载入网站之前要求用常新版浏览器。",
+  "unableToLoadSiteDetails": "网站详情载勿进来。",
+  "noSiteDetails": "呒没可用个网站详情。",
+  "save": "保存"
+}

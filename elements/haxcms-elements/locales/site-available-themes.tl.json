@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Nabigong i-load ang mga tema: {error}",
+  "noThemesForView": "Walang available na tema para sa view na ito.",
+  "active": "Aktibo",
+  "themeIsActive": "Aktibo ang temang {name}",
+  "applyTheme": "Ilapat ang temang {name}",
+  "apply": "Ilapat",
+  "preview": "Preview",
+  "name": "Pangalan",
+  "element": "Element",
+  "description": "Paglalarawan",
+  "action": "Aksyon",
+  "loadingThemes": "Nilo-load ang mga tema...",
+  "themesShown": "{count} tema ang ipinapakita",
+  "themesShownDefaults": "{count} tema ang ipinapakita (mga default ng app-hax)",
+  "availableHaxcmsThemes": "Mga Available na Tema ng HAXcms",
+  "gallery": "Gallery",
+  "table": "Talahanayan"
+}

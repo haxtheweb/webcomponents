@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Priskyrimas",
+  "licenseBySa": "Priskyrimas – Analogiškas platinimas",
+  "licenseByNd": "Priskyrimas – Jokių išvestinių kūrinių",
+  "licenseByNc": "Priskyrimas – Nekomercinis",
+  "licenseByNcSa": "Priskyrimas – Nekomercinis – Analogiškas platinimas",
+  "licenseByNcNd": "Priskyrimas – Nekomercinis – Jokių išvestinių kūrinių",
+  "citationWithLicense": "{title}, autorius: {creator}, licencijuota pagal {license}. Žiūrėta {date}.",
+  "citationWithoutLicense": "{title}, autorius: {creator}. Žiūrėta {date}.",
+  "licenseGraphic": "{license} ženklas"
+}

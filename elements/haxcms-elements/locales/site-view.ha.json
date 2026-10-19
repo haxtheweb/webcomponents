@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Babu sakamako",
+  "viewsRecordHeading": "Naɗa",
+  "viewsTitleImage": "Hoton {title}",
+  "viewsTitlePreview": "Samfotin {title}",
+  "viewsNoTimelineRecords": "Babu bayanai masu alaƙa da kwanan wata don nuna jadawalin lokaci.",
+  "viewsTimelineTitle": "Jadawalin lokaci na {title}",
+  "viewsNoChartField": "Ba a gano filin lamba don nuna jadawali ba.",
+  "viewsChartingValue": "Ana zana {value}",
+  "viewsChartingValueByLabel": "Ana zana {value} ta {label}",
+  "viewsChartTitle": "Jadawalin {title}",
+  "viewsNoTreeRecords": "Babu bayanai masu matsayi don nuna bishiya.",
+  "viewsNoGalleryRecords": "Babu bayanan hotuna don nuna gidan hotuna.",
+  "viewsNoPlaylistRecords": "Babu bayanan kafofin watsa labarai don nuna jerin waƙoƙi.",
+  "fetchFailed": "Ɗauko ya gaza ({status})",
+  "unableToLoadViewData": "Ba a iya loda bayanan kallo ba.",
+  "noResultsFound": "Ba a sami sakamako ba.",
+  "refreshView": "Sabunta kallo",
+  "breakIntoStaticContent": "Raba zuwa abun ciki tsayayye",
+  "viewsOpenRecord": "Buɗe bayanan"
+}

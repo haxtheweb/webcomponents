@@ -1,5 +1,9 @@
 {
   "studentSubmission": "სტუდენტის ნაშრომი",
   "openInNewWindow": "ახალ ფანჯარაში გახსნა",
-  "submitted": "გაგზავნილია"
+  "submitted": "გაგზავნილია",
+  "previousStudent": "წინა სტუდენტი",
+  "nextStudent": "შემდეგი სტუდენტი",
+  "previousAssignment": "წინა დავალება",
+  "nextAssignment": "შემდეგი დავალება"
 }

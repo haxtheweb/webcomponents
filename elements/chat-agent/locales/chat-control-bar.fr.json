@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Télécharger le journal en txt",
+  "downloadChatLog": "Télécharger le journal de discussion",
+  "resetChat": "Réinitialiser la discussion",
+  "toggleDataCollection": "Activer/désactiver la collecte de données",
+  "dataCollection": "Collecte de données",
+  "toggleDeveloperMode": "Activer/désactiver le mode développeur",
+  "exitFullView": "Quitter la vue complète",
+  "enterFullView": "Passer en vue complète",
+  "hideInterface": "Masquer l'interface",
+  "resetChatConfirm": "Réinitialiser la discussion ?",
+  "downloadBeforeResetConfirm": "Télécharger le journal de discussion avant de réinitialiser ?",
+  "dataCollectionOn": "Vos conversations seront utilisées pour entraîner nos modèles d'IA",
+  "dataCollectionOff": "Vos conversations ne seront pas utilisées pour entraîner nos modèles d'IA"
+}

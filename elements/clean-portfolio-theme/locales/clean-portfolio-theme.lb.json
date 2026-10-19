@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Anker-Link kopéiert!",
+  "skipToContent": "Op den Inhalt sprangen",
+  "siteHome": "Site-Ufank",
+  "mainNavigation": "Haaptnavigatioun",
+  "toggleMenu": "Menü ëmschalten",
+  "changeTheme": "Theme wiesselen",
+  "breadcrumb": "Breadcrumb",
+  "tagFilter": "Tag-Filter:",
+  "all": "All",
+  "pageNumberOfTotal": "Säitenzuel: {current} vun {total}",
+  "siteGenerated": "Site generéiert: {date}",
+  "copyright": "Copyright: {year} {author}",
+  "viewContentByTag": "Inhalt no Tag uweisen",
+  "licenseGraphic": "Grafik {license}"
+}

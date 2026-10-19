@@ -36,5 +36,7 @@
   "clickToDoAnything": "Click to do anything!",
   "moreDetails": "More details",
   "details": "Details",
-  "saved": "Saved"
+  "saved": "Saved",
+  "opensInNewWindow": "Opens in a new window",
+  "resultsCount": "{count} results"
 }

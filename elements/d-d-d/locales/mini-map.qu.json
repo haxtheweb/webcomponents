@@ -1,0 +1,17 @@
+{
+  "editNodes": "Nodokunata Allichay",
+  "editLines": "Siqikunata Allichay",
+  "reset": "Kutichiy",
+  "save": "Waqaychay",
+  "cancel": "Chinkachiy",
+  "delete": "Qulluchiy",
+  "type": "Rikch'ay:",
+  "topic": "Yachana",
+  "subsection": "Uku t'aqa",
+  "name": "Suti:",
+  "enterName": "Sutita qillqay",
+  "url": "URL:",
+  "enterUrl": "URL-ta qillqay",
+  "activeNode": "Kawsaq Nodochu?",
+  "nodeId": "Nodo {id}"
+}

@@ -1,0 +1,11 @@
+{
+  "playlist": "પ્લેલિસ્ટ",
+  "carousel": "કેરોસેલ",
+  "slide": "સ્લાઇડ",
+  "slideNumber": "સ્લાઇડ {number}",
+  "slideOfTotal": "{total} માંથી સ્લાઇડ {number}",
+  "previousSlide": "અગાઉની સ્લાઇડ",
+  "nextSlide": "આગળની સ્લાઇડ",
+  "slidePages": "સ્લાઇડ પેજ",
+  "goToSlide": "સ્લાઇડ {number} પર જાઓ"
+}

@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "యాంకర్ లింక్ కాపీ చేయబడింది!",
+  "skipToContent": "కంటెంట్‌కు వెళ్లు",
+  "siteHome": "సైట్ హోమ్",
+  "mainNavigation": "ప్రధాన నావిగేషన్",
+  "toggleMenu": "మెనూను టోగుల్ చేయండి",
+  "changeTheme": "థీమ్ మార్చండి",
+  "breadcrumb": "బ్రెడ్‌క్రంబ్",
+  "tagFilter": "ట్యాగ్ ఫిల్టర్:",
+  "all": "అన్నీ",
+  "pageNumberOfTotal": "పేజీ సంఖ్య: {total}లో {current}",
+  "siteGenerated": "సైట్ రూపొందించబడింది: {date}",
+  "copyright": "కాపీరైట్: {year} {author}",
+  "viewContentByTag": "ట్యాగ్ వారీగా కంటెంట్ చూడండి",
+  "licenseGraphic": "{license} గ్రాఫిక్"
+}

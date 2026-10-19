@@ -1,0 +1,11 @@
+{
+  "playlist": "Ofspyllist",
+  "carousel": "karrousel",
+  "slide": "dia",
+  "slideNumber": "Dia {number}",
+  "slideOfTotal": "Dia {number} fan {total}",
+  "previousSlide": "Foarige dia",
+  "nextSlide": "Folgjende dia",
+  "slidePages": "Diasiden",
+  "goToSlide": "Gean nei dia {number}"
+}

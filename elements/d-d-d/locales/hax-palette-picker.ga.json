@@ -1,0 +1,9 @@
+{
+  "palette": "Pailéad",
+  "paletteSelection": "Roghnú pailéid",
+  "active": "Gníomhach",
+  "selected": "Roghnaithe",
+  "currentlyActiveAndSelectedPalette": "Pailéad gníomhach agus roghnaithe faoi láthair",
+  "currentlyActivePalette": "Pailéad gníomhach faoi láthair",
+  "selectedPaletteToApply": "Pailéad roghnaithe le cur i bhfeidhm"
+}

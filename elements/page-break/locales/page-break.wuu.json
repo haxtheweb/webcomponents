@@ -22,6 +22,13 @@
   "unpublish": "取消发布",
   "savePage": "保存页面",
   "cancel": "取消",
+  "delete": "删除",
+  "editTitle": "编辑标题",
+  "editIcon": "编辑图标",
+  "agent": "代理",
+  "pageLockedUnlockToEdit": "搿只页面锁牢了。先解锁再编辑。",
+  "pageLockedUnlockToChangePublishStatus": "搿只页面锁牢了。先解锁再改发布状态。",
+  "pageLockedUnlockToDelete": "搿只页面锁牢了。先解锁再删除。",
   "pageDetails": "頁面詳情",
   "clickToUnlock": "點擊解鎖"
 }

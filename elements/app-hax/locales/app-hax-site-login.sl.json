@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Vnesite uporabniško ime",
+  "invalidUsernameOrPassword": "Neveljavno uporabniško ime ali geslo",
+  "welcomeLetsGo": "Dobrodošli, {username}! Gremo!",
+  "enterYourUsername": "Vnesite svoje uporabniško ime",
+  "username": "Uporabniško ime",
+  "next": "Naslednji",
+  "welcomeBack": "Dobrodošli nazaj, {username}!",
+  "notYou": "Niste vi?",
+  "enterYourPassword": "Vnesite svoje geslo",
+  "password": "Geslo",
+  "togglePasswordDisplay": "Preklopi prikaz gesla",
+  "login": "Prijava"
+}

@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "以控制台表格显示用户聊天记录",
+  "consoleTableUserText": "console.table() 用户聊天记录",
+  "consoleTableUserTooltip": "将用户聊天记录以表格形式输出到控制台",
+  "consoleTableMerlinLabel": "以控制台表格显示 Merlin 聊天记录",
+  "consoleTableMerlinText": "console.table() Merlin 聊天记录",
+  "consoleTableMerlinTooltip": "将 Merlin 聊天记录以表格形式输出到控制台",
+  "consoleTableAllLabel": "以控制台表格显示完整聊天记录",
+  "consoleTableAllText": "console.table() 完整聊天记录",
+  "consoleTableAllTooltip": "将完整聊天记录以表格形式输出到控制台",
+  "downloadChatLogJson": "将聊天记录下载为 .json",
+  "downloadChatLogJsonTooltip": "将聊天记录下载为 .json"
+}

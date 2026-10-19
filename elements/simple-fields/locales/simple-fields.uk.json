@@ -9,5 +9,8 @@
   "record": "Записати",
   "pause": "Призупинити запис",
   "stopSave": "Зупинити й зберегти",
-  "clickToTakePhoto": "Натисніть, щоб зробити фото"
+  "clickToTakePhoto": "Натисніть, щоб зробити фото",
+  "url": "URL",
+  "open": "відкрити",
+  "removeValue": "Вилучити {value}"
 }

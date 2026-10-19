@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Название должности",
+  "describeYourRole": "Опишите свою роль здесь...",
+  "present": "Представьте",
+  "skills": "Навыки:",
+  "skillsAndMore": "{skills} и ещё {count}",
+  "yearShort": "{count} г.",
+  "yearsShort": "{count} г.",
+  "monthShort": "{count} мес.",
+  "monthsShort": "{count} мес."
+}

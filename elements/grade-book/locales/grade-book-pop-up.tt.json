@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Студент эше",
   "openInNewWindow": "Яңа тәрәзәдә ачу",
-  "submitted": "Тапшырылды"
+  "submitted": "Тапшырылды",
+  "previousStudent": "Алдагы студент",
+  "nextStudent": "Киләсе студент",
+  "previousAssignment": "Алдагы бирем",
+  "nextAssignment": "Киләсе бирем"
 }

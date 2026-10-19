@@ -1,4 +1,11 @@
 {
   "readMore": "Dabalataan dubbisi",
-  "home": "Mana"
+  "home": "Mana",
+  "anchorLinkCopied": "Liinkiin qabduu garagalfameera!",
+  "skipToContent": "Gara qabiyyeetti darbi",
+  "changeTheme": "Teemii jijjiiri",
+  "siteSections": "Kutaalee marsariitii",
+  "pageOfTotal": "Fuula {total} keessaa {current}",
+  "siteGenerated": "Marsariitiin kan uumame: {date}",
+  "licenseGraphic": "Fakkii {license}"
 }

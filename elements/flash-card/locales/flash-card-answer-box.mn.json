@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Таны хариулт",
   "checkAnswer": "Хариултыг шалгах",
-  "retry": "Дахин оролдох"
+  "retry": "Дахин оролдох",
+  "correct": "Зөв!",
+  "incorrect": "Буруу!",
+  "correctAnswer": "Зөв хариулт: {answer}"
 }

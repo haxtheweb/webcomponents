@@ -43,5 +43,22 @@
   "emailAddress": "இந்த மாணவருக்கு மின்னஞ்சல் அனுப்பு",
   "notes": "குறிப்புகள்",
   "interests": "ஆர்வங்கள்",
-  "profileImageFor": "சுயவிவரப் படம்:"
+  "profileImageFor": "சுயவிவரப் படம்:",
+  "fileSystem": "கோப்பு முறைமை",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL endpoint (JSON)",
+  "jsonDataBlob": "JSON தரவுத் தொகுப்பு",
+  "additionalCriteriaFeedback": "கூடுதல் {criteria} பின்னூட்டம்",
+  "outOfPoints": "/ {points} புள்ளிகள்",
+  "feedbackReport": "பின்னூட்ட அறிக்கை",
+  "criteriaDetails": "அளவுகோல் விவரங்கள்",
+  "yourFeedback": "உங்கள் பின்னூட்டம்",
+  "additionalCriteriaFeedbackHeading": "கூடுதல் அளவுகோல் பின்னூட்டம்",
+  "yourTotalScore": "உங்கள் மொத்த மதிப்பெண்",
+  "scoreOutOfPoints": "{score} / {points} புள்ளிகள்",
+  "studentAssignment": "{student} இன் பணி {assignment}",
+  "downloadPDF": "PDF பதிவிறக்கு",
+  "displayMode1": "பயன்முறை 1",
+  "displayMode2": "பயன்முறை 2",
+  "twoWindows": "இரண்டு சாளரங்கள்"
 }

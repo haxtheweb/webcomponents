@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Атрибуция",
+  "licenseBySa": "Атрибуция — Ушундай эле шарттарда",
+  "licenseByNd": "Атрибуция — Өзгөртүүсүз",
+  "licenseByNc": "Атрибуция — Коммерциялык эмес",
+  "licenseByNcSa": "Атрибуция — Коммерциялык эмес — Ушундай эле шарттарда",
+  "licenseByNcNd": "Атрибуция — Коммерциялык эмес — Өзгөртүүсүз",
+  "citationWithLicense": "{title}, автору {creator}, {license} боюнча лицензияланган. Кирүү күнү: {date}.",
+  "citationWithoutLicense": "{title}, автору {creator}. Кирүү күнү: {date}.",
+  "licenseGraphic": "{license} сүрөтү"
+}

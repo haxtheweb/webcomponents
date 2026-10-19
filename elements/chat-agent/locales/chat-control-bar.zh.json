@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "将日志下载为 txt",
+  "downloadChatLog": "下载聊天记录",
+  "resetChat": "重置聊天",
+  "toggleDataCollection": "切换数据收集",
+  "dataCollection": "数据收集",
+  "toggleDeveloperMode": "切换开发者模式",
+  "exitFullView": "退出全屏视图",
+  "enterFullView": "进入全屏视图",
+  "hideInterface": "隐藏界面",
+  "resetChatConfirm": "重置聊天？",
+  "downloadBeforeResetConfirm": "重置之前要下载聊天记录吗？",
+  "dataCollectionOn": "你的对话将用于训练我们的 AI 模型",
+  "dataCollectionOff": "你的对话不会用于训练我们的 AI 模型"
+}

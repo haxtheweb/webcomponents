@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Pestaña {xOfY}",
+  "xOfY": "{order} de {total}",
+  "endOfTab": "Fin de la pestaña {xOfY}. Volver a {tabs}.",
+  "tabs": "pestañas"
+}

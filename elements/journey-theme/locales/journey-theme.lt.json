@@ -1,4 +1,11 @@
 {
   "readMore": "Skaityti daugiau",
-  "home": "Pradžia"
+  "home": "Pradžia",
+  "anchorLinkCopied": "Inkaro nuoroda nukopijuota!",
+  "skipToContent": "Pereiti prie turinio",
+  "changeTheme": "Keisti temą",
+  "siteSections": "Svetainės skyriai",
+  "pageOfTotal": "Puslapis {current} iš {total}",
+  "siteGenerated": "Svetainė sugeneruota: {date}",
+  "licenseGraphic": "{license} ženklas"
 }

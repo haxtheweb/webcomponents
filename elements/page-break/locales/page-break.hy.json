@@ -22,6 +22,13 @@
   "unpublish": "Չեղարկել հրապարակումը",
   "savePage": "Պահպանել էջը",
   "cancel": "Չեղարկել",
+  "delete": "Ջնջել",
+  "editTitle": "Խմբագրել վերնագիրը",
+  "editIcon": "Խմբագրել պատկերակը",
+  "agent": "Գործակալ",
+  "pageLockedUnlockToEdit": "Այս էջը կողպված է. Խմբագրելու համար նախ բացեք այն.",
+  "pageLockedUnlockToChangePublishStatus": "Այս էջը կողպված է. Հրապարակման կարգավիճակը փոխելու համար նախ բացեք այն.",
+  "pageLockedUnlockToDelete": "Այս էջը կողպված է. Ջնջելու համար նախ բացեք այն.",
   "pageDetails": "Էջի մանրամասները",
   "clickToUnlock": "Սեղմեք ապակողպելու համար"
 }

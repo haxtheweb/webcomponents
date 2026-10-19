@@ -43,5 +43,22 @@
   "emailAddress": "ಈ ವಿದ್ಯಾರ್ಥಿಗೆ ಇಮೇಲ್ ಮಾಡಿ",
   "notes": "ಟಿಪ್ಪಣಿಗಳು",
   "interests": "ಆಸಕ್ತಿಗಳು",
-  "profileImageFor": "ಪ್ರೊಫೈಲ್ ಚಿತ್ರ:"
+  "profileImageFor": "ಪ್ರೊಫೈಲ್ ಚಿತ್ರ:",
+  "fileSystem": "ಫೈಲ್ ಸಿಸ್ಟಮ್",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL ಎಂಡ್‌ಪಾಯಿಂಟ್ (JSON)",
+  "jsonDataBlob": "JSON ಡೇಟಾ ಬ್ಲಾಬ್",
+  "additionalCriteriaFeedback": "ಹೆಚ್ಚುವರಿ {criteria} ಪ್ರತಿಕ್ರಿಯೆ",
+  "outOfPoints": "/ {points} ಅಂಕಗಳು",
+  "feedbackReport": "ಪ್ರತಿಕ್ರಿಯೆ ವರದಿ",
+  "criteriaDetails": "ಮಾನದಂಡಗಳ ವಿವರಗಳು",
+  "yourFeedback": "ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆ",
+  "additionalCriteriaFeedbackHeading": "ಹೆಚ್ಚುವರಿ ಮಾನದಂಡ ಪ್ರತಿಕ್ರಿಯೆ",
+  "yourTotalScore": "ನಿಮ್ಮ ಒಟ್ಟು ಅಂಕ",
+  "scoreOutOfPoints": "{score} / {points} ಅಂಕಗಳು",
+  "studentAssignment": "{student} ಅವರ ನಿಯೋಜನೆ {assignment}",
+  "downloadPDF": "PDF ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+  "displayMode1": "ಮೋಡ್ 1",
+  "displayMode2": "ಮೋಡ್ 2",
+  "twoWindows": "ಎರಡು ವಿಂಡೋಗಳು"
 }

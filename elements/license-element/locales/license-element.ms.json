@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Atribusi",
+  "licenseBySa": "Atribusi Perkongsian Serupa",
+  "licenseByNd": "Atribusi Tiada Terbitan",
+  "licenseByNc": "Atribusi Bukan Komersial",
+  "licenseByNcSa": "Atribusi Bukan Komersial Perkongsian Serupa",
+  "licenseByNcNd": "Atribusi Bukan Komersial Tiada Terbitan",
+  "licenseGraphic": "Grafik {license}",
+  "workByCreator": "{title} oleh {creator}",
+  "workByCreatorLicensed": "{title} oleh {creator} dilesenkan di bawah {license}.",
+  "permissionsBeyondScope": "Kebenaran di luar skop lesen ini boleh didapati {link}.",
+  "author": "(pengarang)",
+  "onTheLicensingDetailsPage": "di halaman butiran pelesenan"
+}

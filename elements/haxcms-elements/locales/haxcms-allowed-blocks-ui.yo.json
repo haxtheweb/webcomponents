@@ -10,5 +10,9 @@
   "save": "Fi pamọ́",
   "noDescription": "Kò sí àpèjúwe.",
   "details": "Àlàyé",
-  "loadingInventory": "Ó ń gbé àkójọ búlọ́ọ̀kù kíkún wọlé…"
+  "loadingInventory": "Ó ń gbé àkójọ búlọ́ọ̀kù kíkún wọlé…",
+  "selectAllButton": "Yan Gbogbo Rẹ̀",
+  "deselectAllButton": "Yọ Gbogbo Yíyàn Kúrò",
+  "selectedOfAvailable": "A yan {selected} / {total} ló wà",
+  "savingBlocksFailed": "Fífi àwọn búlọ́ọ̀kù pamọ́ kùnà: {error}"
 }

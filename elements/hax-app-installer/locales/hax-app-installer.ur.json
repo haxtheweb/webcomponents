@@ -54,5 +54,6 @@
   "requirementUppercase": "ایک بڑا حرف",
   "requirementLowercase": "ایک چھوٹا حرف",
   "requirementNumber": "ایک عدد",
-  "requirementSymbol": "ایک علامت"
+  "requirementSymbol": "ایک علامت",
+  "haxcmsMascotAlt": "HAXcms ورلڈ ٹریولر میسکوٹ"
 }

@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Roolin nimike",
+  "describeYourRole": "Kuvaile rooliasi tässä...",
+  "present": "Esitä",
+  "skills": "Taidot:",
+  "skillsAndMore": "{skills} ja +{count} muuta",
+  "yearShort": "{count} v",
+  "yearsShort": "{count} v",
+  "monthShort": "{count} kk",
+  "monthsShort": "{count} kk"
+}

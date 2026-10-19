@@ -1,0 +1,11 @@
+{
+  "playlist": "Playlist",
+  "carousel": "Karussell",
+  "slide": "Folie",
+  "slideNumber": "Folie {number}",
+  "slideOfTotal": "Folie {number} vun {total}",
+  "previousSlide": "Vireg Folie",
+  "nextSlide": "Nächst Folie",
+  "slidePages": "Foliesäiten",
+  "goToSlide": "Op Folie {number} goen"
+}

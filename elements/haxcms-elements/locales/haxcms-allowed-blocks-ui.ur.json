@@ -10,5 +10,9 @@
   "save": "محفوظ کریں",
   "noDescription": "کوئی تفصیل دستیاب نہیں۔",
   "details": "تفصیلات",
-  "loadingInventory": "بلاکس کی مکمل فہرست لوڈ ہو رہی ہے…"
+  "loadingInventory": "بلاکس کی مکمل فہرست لوڈ ہو رہی ہے…",
+  "selectAllButton": "سب منتخب کریں",
+  "deselectAllButton": "سب غیر منتخب کریں",
+  "selectedOfAvailable": "{selected} منتخب / {total} دستیاب",
+  "savingBlocksFailed": "بلاکس محفوظ کرنا ناکام: {error}"
 }

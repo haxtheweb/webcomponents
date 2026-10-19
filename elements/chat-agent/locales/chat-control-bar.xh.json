@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Khuphela iLog njenge-txt",
+  "downloadChatLog": "Khuphela iLog yeNgxoxo",
+  "resetChat": "Seta kwakhona iNgxoxo",
+  "toggleDataCollection": "Tshintsha ukuQokelelwa kweDatha",
+  "dataCollection": "Ukuqokelelwa kweDatha",
+  "toggleDeveloperMode": "Tshintsha iMo yoMphuhlisi",
+  "exitFullView": "Phuma kuMboniso oPheleleyo",
+  "enterFullView": "Ngena kuMboniso oPheleleyo",
+  "hideInterface": "Fihla uJongano",
+  "resetChatConfirm": "Seta kwakhona ingxoxo?",
+  "downloadBeforeResetConfirm": "Khuphela ilog yengxoxo ngaphambi kokuba useta kwakhona?",
+  "dataCollectionOn": "Iincoko zakho ziza kusetyenziswa ukuqeqesha iimodeli zethu ze-AI",
+  "dataCollectionOff": "Iincoko zakho aziyi kusetyenziswa ukuqeqesha iimodeli zethu ze-AI"
+}

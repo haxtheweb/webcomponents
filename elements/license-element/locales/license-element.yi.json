@@ -1,0 +1,14 @@
+{
+  "licenseBy": "אַטריבוציע",
+  "licenseBySa": "אַטריבוציע גלײַך־טיילן",
+  "licenseByNd": "אַטריבוציע קיין דעריוואַטן",
+  "licenseByNc": "אַטריבוציע נישט־קאָמערציעל",
+  "licenseByNcSa": "אַטריבוציע נישט־קאָמערציעל גלײַך־טיילן",
+  "licenseByNcNd": "אַטריבוציע נישט־קאָמערציעל קיין דעריוואַטן",
+  "licenseGraphic": "גראַפֿיק פֿון {license}",
+  "workByCreator": "{title} פֿון {creator}",
+  "workByCreatorLicensed": "{title} פֿון {creator} איז ליצענצירט אונטער אַ {license}.",
+  "permissionsBeyondScope": "דערלויבענישן ווײַטער פֿונעם פֿאַרנעם פֿון דער ליצענץ זענען פֿאַראַן {link}.",
+  "author": "(מחבר)",
+  "onTheLicensingDetailsPage": "אויף דער זײַט מיט ליצענץ־פּרטים"
+}

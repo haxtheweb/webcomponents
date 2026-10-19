@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Web-Component-Registry gëtt no weideren HAX-Elementer duerchsicht..",
+  "enabled": "Aktivéiert",
+  "disabled": "Desaktivéiert",
+  "details": "Detailer",
+  "tags": "Tags:",
+  "tagName": "Tag-Numm:",
+  "developerUsage": "Benotzung fir Entwéckler:",
+  "demo": "Demo",
+  "popUpDemo": "Demo als Pop-up",
+  "demoOf": "Demo vu(n) {tag}"
+}

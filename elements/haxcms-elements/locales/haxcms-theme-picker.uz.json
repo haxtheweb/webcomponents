@@ -1,0 +1,11 @@
+{
+  "theme": "Mavzu",
+  "active": "Faol",
+  "selected": "Tanlangan",
+  "noPreview": "Koʻrinish yoʻq",
+  "currentlyActiveAndSelected": "Hozir faol va tanlangan mavzu",
+  "currentlyActive": "Hozir faol mavzu",
+  "selectedToApplyOnSave": "Saqlashda qoʻllanadigan tanlangan mavzu",
+  "themeSelection": "Mavzu tanlash",
+  "noThemesAvailable": "Mavzular mavjud emas."
+}

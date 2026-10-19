@@ -1,4 +1,11 @@
 {
   "readMore": "আরও পড়ুন",
-  "home": "হোম"
+  "home": "হোম",
+  "anchorLinkCopied": "অ্যাঙ্কর লিংক কপি হয়েছে!",
+  "skipToContent": "বিষয়বস্তুতে চলে যান",
+  "changeTheme": "থিম পরিবর্তন করুন",
+  "siteSections": "সাইটের সেকশন",
+  "pageOfTotal": "পেজ {current} / {total}",
+  "siteGenerated": "সাইট তৈরির তারিখ: {date}",
+  "licenseGraphic": "{license} গ্রাফিক"
 }

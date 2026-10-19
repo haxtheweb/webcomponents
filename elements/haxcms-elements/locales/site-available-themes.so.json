@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Naqshadaha lama soo rari karin: {error}",
+  "noThemesForView": "Naqshado looma hayo muuqaalkan.",
+  "active": "Firfircoon",
+  "themeIsActive": "Naqshadda {name} waa firfircoon tahay",
+  "applyTheme": "Dabaq naqshadda {name}",
+  "apply": "Dabaq",
+  "preview": "Hordhac",
+  "name": "Magac",
+  "element": "Curiye",
+  "description": "Sharaxaad",
+  "action": "Ficil",
+  "loadingThemes": "Naqshadaha waa la soo rarayaa...",
+  "themesShown": "{count} naqshadood ayaa la muujiyay",
+  "themesShownDefaults": "{count} naqshadood ayaa la muujiyay (caadiyada app-hax)",
+  "availableHaxcmsThemes": "Naqshadaha HAXcms ee La Heli Karo",
+  "gallery": "Sawir-gale",
+  "table": "Shax"
+}

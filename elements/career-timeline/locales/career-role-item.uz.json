@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Lavozim nomi",
+  "describeYourRole": "Lavozimingizni shu yerda tavsiflang...",
+  "present": "Taqdim etish",
+  "skills": "Koʻnikmalar:",
+  "skillsAndMore": "{skills} va yana +{count} ta",
+  "yearShort": "{count} yil",
+  "yearsShort": "{count} yil",
+  "monthShort": "{count} oy",
+  "monthsShort": "{count} oy"
+}

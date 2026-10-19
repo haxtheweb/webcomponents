@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- paʻamau i ka ʻaoʻao mua --",
+  "details": "Nā kikoʻī",
+  "title": "Poʻo inoa",
+  "titleDescription": "Inoa o ka pūnaewele",
+  "homePage": "ʻAoʻao home",
+  "homePageDescription": "ʻAoʻao e hoʻohana ʻia ma ke ʻano ʻaoʻao home paʻamau",
+  "advanced": "Kiʻekiʻe",
+  "serviceWorker": "Hoʻohui i ka service worker i ka ʻaoʻao loli",
+  "serviceWorkerDescription": "Hoʻopio i kēia inā pono nā mea hoʻohana e ʻike koke mau i ka hua kikowaena hou loa.",
+  "forceBrowserUpgrade": "Koi i ka hoʻokiʻekiʻe polokalamu mākaʻikaʻi",
+  "forceBrowserUpgradeDescription": "Koi i nā polokalamu mākaʻikaʻi hou mau ma mua o ka hoʻouka ʻana i ka pūnaewele.",
+  "unableToLoadSiteDetails": "ʻAʻole hiki ke hoʻouka i nā kikoʻī pūnaewele.",
+  "noSiteDetails": "ʻAʻohe kikoʻī pūnaewele i loaʻa.",
+  "save": "Mālama"
+}

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Uveďte původ",
+  "licenseBySa": "Uveďte původ-Zachovejte licenci",
+  "licenseByNd": "Uveďte původ-Nezpracovávejte",
+  "licenseByNc": "Uveďte původ-Neužívejte komerčně",
+  "licenseByNcSa": "Uveďte původ-Neužívejte komerčně-Zachovejte licenci",
+  "licenseByNcNd": "Uveďte původ-Neužívejte komerčně-Nezpracovávejte",
+  "citationWithLicense": "{title}, autor: {creator}, licencováno pod {license}. Citováno {date}.",
+  "citationWithoutLicense": "{title}, autor: {creator}. Citováno {date}.",
+  "licenseGraphic": "Grafika {license}"
+}

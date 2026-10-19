@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Sláðu inn notandanafn",
+  "invalidUsernameOrPassword": "Ógilt notandanafn eða lykilorð",
+  "welcomeLetsGo": "Velkomin(n) {username}! Af stað!",
+  "enterYourUsername": "Sláðu inn notandanafnið þitt",
+  "username": "Notandanafn",
+  "next": "Næsta",
+  "welcomeBack": "Velkomin(n) aftur, {username}!",
+  "notYou": "Ekki þú?",
+  "enterYourPassword": "Sláðu inn lykilorðið þitt",
+  "password": "Lykilorð",
+  "togglePasswordDisplay": "Víxla birtingu lykilorðs",
+  "login": "Innskráning"
+}

@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- пешфарз саҳифаи аввал --",
+  "details": "Тафсилот",
+  "title": "Сарлавҳа",
+  "titleDescription": "Номи сомона",
+  "homePage": "Саҳифаи асосӣ",
+  "homePageDescription": "Саҳифае, ки ҳамчун саҳифаи вурудӣ / асосии пешфарз истифода мешавад",
+  "advanced": "Иловагӣ",
+  "serviceWorker": "Илова кардани service worker ба саҳифаи динамикӣ",
+  "serviceWorkerDescription": "Агар корбарон бояд ҳамеша натиҷаи охирини серверро фавран бинанд, инро ғайрифаъол кунед.",
+  "forceBrowserUpgrade": "Навсозии маҷбурии браузер",
+  "forceBrowserUpgradeDescription": "Пеш аз боркунии сомона браузерҳои ҳамешасабзро талаб кунед.",
+  "unableToLoadSiteDetails": "Боркунии тафсилоти сомона имконнопазир аст.",
+  "noSiteDetails": "Ягон тафсилоти сомона дастрас нест.",
+  "save": "Нигоҳ доштан"
+}

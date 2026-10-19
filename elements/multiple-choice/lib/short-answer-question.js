@@ -12,6 +12,13 @@ class ShortAnswerQuestion extends QuestionElement {
   }
   constructor() {
     super();
+    this.t = {
+      ...this.t,
+      shortAnswerDirections:
+        "Type the answer you feel answers the question. When you are done, select {checkAnswer}. You will get feedback indicating correctness of your answer.",
+      yourAnswer: "Your answer",
+      typeYourAnswerHere: "Type your answer here..",
+    };
     // QuestionElement's shared strings live in each question type's own namespace
     this.registerLocalization({
       context: this,
@@ -43,9 +50,9 @@ class ShortAnswerQuestion extends QuestionElement {
 
   renderDirections() {
     return html`<p>
-      Type the answer you feel answers the question. When you are done, select
-      <strong>${this.t.checkAnswer}</strong>. You will get feedback indicating
-      correctness of your answer.
+      ${this._tParts(this.t.shortAnswerDirections, {
+        checkAnswer: html`<strong>${this.t.checkAnswer}</strong>`,
+      })}
     </p>`;
   }
 
@@ -70,8 +77,8 @@ class ShortAnswerQuestion extends QuestionElement {
         }}"
         @value-changed="${this.valueUpdate}"
         .value="${this.shortanswer}"
-        aria-label="Your answer"
-        placeholder="Type your answer here.."
+        aria-label="${this.t.yourAnswer}"
+        placeholder="${this.t.typeYourAnswerHere}"
       ></simple-fields-field>
     `;
   }

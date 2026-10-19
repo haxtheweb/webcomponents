@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Aktivna",
+  "selected": "Odabrana",
+  "noPreview": "Nema pretpregleda",
+  "currentlyActiveAndSelected": "Trenutačno aktivna i odabrana tema",
+  "currentlyActive": "Trenutačno aktivna tema",
+  "selectedToApplyOnSave": "Odabrana tema za primjenu pri spremanju",
+  "themeSelection": "Odabir teme",
+  "noThemesAvailable": "Nema dostupnih tema."
+}

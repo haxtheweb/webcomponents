@@ -1,0 +1,18 @@
+{
+  "copy": "복사",
+  "download": "다운로드",
+  "archive": "보관",
+  "copyOperation": "복사",
+  "downloadOperation": "다운로드",
+  "archiveOperation": "보관",
+  "created": "생성됨",
+  "updated": "업데이트됨",
+  "pages": "페이지",
+  "url": "URL",
+  "confirm": "확인",
+  "cancel": "취소",
+  "siteOperationConfirmTitle": "{siteName} {operationName}?",
+  "siteOperationConfirmMessage": "{siteName}을(를) {operation}하시겠습니까?",
+  "siteOperationSuccessful": "{siteName} {operation} 성공!",
+  "siteOperationFailed": "{siteName} {operation} 실패"
+}

@@ -10,5 +10,9 @@
   "save": "Gcina",
   "noDescription": "Akukho nkcazo ifumanekayo.",
   "details": "Iinkcukacha",
-  "loadingInventory": "Kulayishwa uluhlu olupheleleyo lweebhloko…"
+  "loadingInventory": "Kulayishwa uluhlu olupheleleyo lweebhloko…",
+  "selectAllButton": "Khetha Zonke",
+  "deselectAllButton": "Ungakhethi Nanye",
+  "selectedOfAvailable": "{selected} ezikhethiweyo / {total} ezikhoyo",
+  "savingBlocksFailed": "Ukugcina iibhloko akuphumelelanga: {error}"
 }

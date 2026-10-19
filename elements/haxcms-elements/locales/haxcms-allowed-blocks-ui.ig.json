@@ -10,5 +10,9 @@
   "save": "Chekwaa",
   "noDescription": "Enweghị nkọwa dị.",
   "details": "Nkọwa zuru ezu",
-  "loadingInventory": "Na-ebugo ndepụta blọọkụ niile…"
+  "loadingInventory": "Na-ebugo ndepụta blọọkụ niile…",
+  "selectAllButton": "Họrọ ha niile",
+  "deselectAllButton": "Wepụ nhọrọ niile",
+  "selectedOfAvailable": "Ahọrọ {selected} / {total} dị",
+  "savingBlocksFailed": "Ichekwa ngọngọ dara: {error}"
 }

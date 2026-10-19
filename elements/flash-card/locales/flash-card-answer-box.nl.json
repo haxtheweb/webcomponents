@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Je antwoord",
   "checkAnswer": "Antwoord controleren",
-  "retry": "Opnieuw proberen"
+  "retry": "Opnieuw proberen",
+  "correct": "Juist!",
+  "incorrect": "Onjuist!",
+  "correctAnswer": "Juiste antwoord: {answer}"
 }

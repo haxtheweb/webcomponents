@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "הורדת היומן כ-txt",
+  "downloadChatLog": "הורדת יומן הצ'אט",
+  "resetChat": "איפוס הצ'אט",
+  "toggleDataCollection": "החלפת איסוף נתונים",
+  "dataCollection": "איסוף נתונים",
+  "toggleDeveloperMode": "החלפת מצב מפתחים",
+  "exitFullView": "יציאה מתצוגה מלאה",
+  "enterFullView": "כניסה לתצוגה מלאה",
+  "hideInterface": "הסתרת הממשק",
+  "resetChatConfirm": "לאפס את הצ'אט?",
+  "downloadBeforeResetConfirm": "להוריד את יומן הצ'אט לפני האיפוס?",
+  "dataCollectionOn": "השיחות שלכם ישמשו לאימון מודלי ה-AI שלנו",
+  "dataCollectionOff": "השיחות שלכם לא ישמשו לאימון מודלי ה-AI שלנו"
+}

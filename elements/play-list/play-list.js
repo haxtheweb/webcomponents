@@ -3,6 +3,7 @@
  * @license , see License.md for full text.
  */
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "./lib/play-list-slide.js";
@@ -19,12 +20,29 @@ import {
  * @demo demo/index.html
  * @element play-list
  */
-class PlayList extends DDD {
+class PlayList extends I18NMixin(DDD) {
   /**
    * HTMLElement
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      playlist: "Playlist",
+      carousel: "carousel",
+      slide: "slide",
+      slideNumber: "Slide {number}",
+      slideOfTotal: "Slide {number} of {total}",
+      previousSlide: "Previous slide",
+      nextSlide: "Next slide",
+      slidePages: "Slide pages",
+      goToSlide: "Go to slide {number}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.items = [];
     this.loop = false;
     this.edit = false;
@@ -80,7 +98,7 @@ class PlayList extends DDD {
 
   _getSlideTitle(item, index) {
     if (!item) {
-      return `Slide ${index + 1}`;
+      return this.t.slideNumber.replace("{number}", () => (index + 1));
     }
     if (item.properties) {
       if (item.properties.alt) {
@@ -99,7 +117,7 @@ class PlayList extends DDD {
         return text.length > 60 ? text.substring(0, 60) + "..." : text;
       }
     }
-    return `Slide ${index + 1}`;
+    return this.t.slideNumber.replace("{number}", () => (index + 1));
   }
 
   disconnectedCallback() {
@@ -339,8 +357,8 @@ class PlayList extends DDD {
             <div
               class="carousel"
               role="region"
-              aria-roledescription="carousel"
-              aria-label="Playlist"
+              aria-roledescription="${this.t.carousel}"
+              aria-label="${this.t.playlist}"
               tabindex="0"
               @keydown="${this._handleKeydown}"
               @touchstart="${this._handleTouchStart}"
@@ -362,8 +380,8 @@ class PlayList extends DDD {
                       <play-list-slide
                         class="carousel-item"
                         role="group"
-                        aria-roledescription="slide"
-                        aria-label="Slide ${index + 1} of ${this.items.length}"
+                        aria-roledescription="${this.t.slide}"
+                        aria-label="${this.t.slideOfTotal.replace("{number}", () => (index + 1)).replace("{total}", () => this.items.length)}"
                         ?active="${index === this.slide}"
                       >
                         ${this.renderHAXItem(item)}
@@ -377,14 +395,14 @@ class PlayList extends DDD {
                     <div class="carousel-nav">
                       <simple-icon-button-lite
                         icon="hardware:keyboard-arrow-left"
-                        label="Previous slide"
-                        title="Previous slide"
+                        label="${this.t.previousSlide}"
+                        title="${this.t.previousSlide}"
                         @click="${this._goToPrevious}"
                       ></simple-icon-button-lite>
                       <simple-icon-button-lite
                         icon="hardware:keyboard-arrow-right"
-                        label="Next slide"
-                        title="Next slide"
+                        label="${this.t.nextSlide}"
+                        title="${this.t.nextSlide}"
                         @click="${this._goToNext}"
                       ></simple-icon-button-lite>
                     </div>
@@ -395,14 +413,14 @@ class PlayList extends DDD {
                     <div
                       class="carousel-pagination"
                       role="tablist"
-                      aria-label="Slide pages"
+                      aria-label="${this.t.slidePages}"
                     >
                       ${this.items.map(
                         (item, index) => html`
                           <button
                             class="pagination-dot"
                             role="tab"
-                            aria-label="Go to slide ${index + 1}"
+                            aria-label="${this.t.goToSlide.replace("{number}", () => (index + 1))}"
                             title="${this._getSlideTitle(item, index)}"
                             aria-selected="${index === this.slide}"
                             tabindex="0"

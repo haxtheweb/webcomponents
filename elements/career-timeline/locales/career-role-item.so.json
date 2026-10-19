@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Cinwaanka Doorka",
+  "describeYourRole": "Halkan ku sharax doorkaaga...",
+  "present": "Soo bandhig",
+  "skills": "Xirfado:",
+  "skillsAndMore": "{skills} iyo +{count} kale",
+  "yearShort": "{count} sano",
+  "yearsShort": "{count} sano",
+  "monthShort": "{count} bil",
+  "monthsShort": "{count} bilood"
+}

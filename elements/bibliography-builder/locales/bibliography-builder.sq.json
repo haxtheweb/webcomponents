@@ -1,3 +1,8 @@
 {
-  "title": "Referencat"
+  "title": "Referencat",
+  "export": "Eksporto",
+  "exportCitations": "Eksporto citimet",
+  "copy": "Kopjo",
+  "exportCitationFormat": "Formati i eksportit të citimeve",
+  "selectCitationFormatBelow": "Zgjidh një format citimi më poshtë"
 }

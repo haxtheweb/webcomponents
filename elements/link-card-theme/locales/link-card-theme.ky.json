@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Анкер шилтемеси көчүрүлдү!",
+  "skipToContent": "Мазмунга өтүү",
+  "changePalette": "Палитраны өзгөртүү",
+  "primaryLinks": "Негизги шилтемелер",
+  "socialLinks": "Социалдык шилтемелер",
+  "myProfile": "Менин профилим",
+  "profileImageOf": "{name} профиль сүрөтү",
+  "profileImage": "Профиль сүрөтү",
+  "linkCardProfile": "Шилтеме карточкасынын профили",
+  "emptyStateLinks": "Шилтеме баскычтарын көрсөтүү үчүн site.json ичине жогорку деңгээлдеги меню пункттарын кошуңуз.",
+  "titleOnPlatform": "{platform} тармагындагы {title}",
+  "openPlatform": "{platform} ачуу",
+  "paletteUpdated": "Түс палитрасы {number}-вариантка жаңыртылды."
+}

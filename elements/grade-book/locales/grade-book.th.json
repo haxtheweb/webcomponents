@@ -43,5 +43,22 @@
   "emailAddress": "ส่งอีเมลถึงนักเรียนคนนี้",
   "notes": "บันทึก",
   "interests": "ความสนใจ",
-  "profileImageFor": "รูปโปรไฟล์ของ"
+  "profileImageFor": "รูปโปรไฟล์ของ",
+  "fileSystem": "ระบบไฟล์",
+  "googleDocs": "Google เอกสาร",
+  "urlEndpointJSON": "URL endpoint (JSON)",
+  "jsonDataBlob": "ก้อนข้อมูล JSON",
+  "additionalCriteriaFeedback": "ข้อเสนอแนะเพิ่มเติมสำหรับ {criteria}",
+  "outOfPoints": "/ {points} คะแนน",
+  "feedbackReport": "รายงานข้อเสนอแนะ",
+  "criteriaDetails": "รายละเอียดเกณฑ์",
+  "yourFeedback": "ข้อเสนอแนะของคุณ",
+  "additionalCriteriaFeedbackHeading": "ข้อเสนอแนะเพิ่มเติมตามเกณฑ์",
+  "yourTotalScore": "คะแนนรวมของคุณ",
+  "scoreOutOfPoints": "{score} / {points} คะแนน",
+  "studentAssignment": "งาน {assignment} ของ {student}",
+  "downloadPDF": "ดาวน์โหลด PDF",
+  "displayMode1": "โหมด 1",
+  "displayMode2": "โหมด 2",
+  "twoWindows": "สองหน้าต่าง"
 }

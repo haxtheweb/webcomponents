@@ -10,5 +10,9 @@
   "save": "Gorde",
   "noDescription": "Ez dago deskribapenik.",
   "details": "Xehetasunak",
-  "loadingInventory": "Bloke-inbentario osoa kargatzen…"
+  "loadingInventory": "Bloke-inbentario osoa kargatzen…",
+  "selectAllButton": "Hautatu guztiak",
+  "deselectAllButton": "Desautatu guztiak",
+  "selectedOfAvailable": "{selected} hautatuta / {total} erabilgarri",
+  "savingBlocksFailed": "Blokeak gordetzeak huts egin du: {error}"
 }

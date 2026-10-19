@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Мурда жөнөтүлгөн билдирүүнү көрсөтүү (жогору)",
+  "displayPreviousMessageDown": "Мурда жөнөтүлгөн билдирүүнү көрсөтүү (төмөн)",
+  "sendPrompt": "Сурамды жөнөтүү",
+  "sendPromptToMerlin": "Сурамды Merlin'ге жөнөтүү",
+  "shortenPrompt": "Сурамыңызды {limit} белгиден ашпагандай кыскартыңыз."
+}

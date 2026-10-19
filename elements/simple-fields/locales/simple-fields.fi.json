@@ -9,5 +9,8 @@
   "record": "Tallenna",
   "pause": "Keskeytä tallennus",
   "stopSave": "Lopeta ja tallenna",
-  "clickToTakePhoto": "Ota kuva napsauttamalla"
+  "clickToTakePhoto": "Ota kuva napsauttamalla",
+  "url": "URL",
+  "open": "avaa",
+  "removeValue": "Poista {value}"
 }

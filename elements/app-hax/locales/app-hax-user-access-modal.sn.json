@@ -7,5 +7,7 @@
   "userAccessGranted": "Mvumo yemushandisi yapihwa zvakanaka!",
   "userNotFound": "Mushandisi haana kuwanikwa kana haana mvumo",
   "loadingAddingUser": "Kuwedzera mushandisi...",
-  "grantAccessTo": "Pa mvumo ku:"
+  "grantAccessTo": "Pa mvumo ku:",
+  "networkErrorTryAgain": "Chikanganiso chenetiweki chaitika. Ndapota edza zvakare.",
+  "characterWillAppear": "Mutambi achaonekwa kana waisa zita remushandisi"
 }

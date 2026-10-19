@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "தீம்களை ஏற்ற முடியவில்லை: {error}",
+  "noThemesForView": "இந்தக் காட்சிக்குத் தீம்கள் எதுவும் கிடைக்கவில்லை.",
+  "active": "செயலில்",
+  "themeIsActive": "{name} தீம் செயலில் உள்ளது",
+  "applyTheme": "{name} தீமைப் பயன்படுத்து",
+  "apply": "பயன்படுத்து",
+  "preview": "முன்னோட்டம்",
+  "name": "பெயர்",
+  "element": "உறுப்பு",
+  "description": "விளக்கம்",
+  "action": "செயல்",
+  "loadingThemes": "தீம்கள் ஏற்றப்படுகின்றன...",
+  "themesShown": "{count} தீம்கள் காட்டப்படுகின்றன",
+  "themesShownDefaults": "{count} தீம்கள் காட்டப்படுகின்றன (app-hax இயல்புநிலைகள்)",
+  "availableHaxcmsThemes": "கிடைக்கும் HAXcms தீம்கள்",
+  "gallery": "படத்தொகுப்பு",
+  "table": "அட்டவணை"
+}

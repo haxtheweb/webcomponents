@@ -3,17 +3,37 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { css, html } from "lit";
 import { autorun, toJS } from "mobx";
 import { ChatStore } from "./chat-agent-store.js";
 
-class ChatDeveloperPanel extends DDD {
+class ChatDeveloperPanel extends I18NMixin(DDD) {
   static get tag() {
     return "chat-developer-panel";
   }
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      consoleTableUserLabel: "Console table user chat log",
+      consoleTableUserText: "console.table() user chat log",
+      consoleTableUserTooltip: "Print User Chat Log as Table to Console",
+      consoleTableMerlinLabel: "Console table merlin chat log",
+      consoleTableMerlinText: "console.table() merlin chat log",
+      consoleTableMerlinTooltip: "Print Merlin Chat Log as Table to Console",
+      consoleTableAllLabel: "Console table entire chat log",
+      consoleTableAllText: "console.table() entire chat log",
+      consoleTableAllTooltip: "Print Entire Chat Log as Table to Console",
+      downloadChatLogJson: "Download chat log as .json",
+      downloadChatLogJsonTooltip: "Download Chat Log as .json",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.chatLog = [];
     this.context = null;
     this.engine = null;
@@ -155,77 +175,77 @@ class ChatDeveloperPanel extends DDD {
           <button
             id="console-table-user"
             @click=${this.handleConsoleTableButton}
-            aria-label="Console table user chat log"
+            aria-label="${this.t.consoleTableUserLabel}"
           >
             <div class="button-icon">
               <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
               <simple-icon-lite icon="lrn:user"></simple-icon-lite>
             </div>
             <div class="button-text">
-              <span class="btn-txt">console.table() user chat log</span>
+              <span class="btn-txt">${this.t.consoleTableUserText}</span>
             </div>
           </button>
           <simple-tooltip
             for="console-table-user"
             position="${this.isFullView ? "right" : "top"}"
-            >Print User Chat Log as Table to Console</simple-tooltip
+            >${this.t.consoleTableUserTooltip}</simple-tooltip
           >
 
           <button
             id="console-table-merlin"
             @click=${this.handleConsoleTableButton}
-            aria-label="Console table merlin chat log"
+            aria-label="${this.t.consoleTableMerlinLabel}"
           >
             <div class="button-icon">
               <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
               <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
             </div>
             <div class="button-text">
-              <span class="btn-txt">console.table() merlin chat log</span>
+              <span class="btn-txt">${this.t.consoleTableMerlinText}</span>
             </div>
           </button>
           <simple-tooltip
             for="console-table-merlin"
             position="${this.isFullView ? "right" : "top"}"
-            >Print Merlin Chat Log as Table to Console</simple-tooltip
+            >${this.t.consoleTableMerlinTooltip}</simple-tooltip
           >
 
           <button
             id="console-table-all"
             @click=${this.handleConsoleTableButton}
-            aria-label="Console table entire chat log"
+            aria-label="${this.t.consoleTableAllLabel}"
           >
             <div class="button-icon">
               <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
               <simple-icon-lite icon="book"></simple-icon-lite>
             </div>
             <div class="button-text">
-              <span class="btn-txt">console.table() entire chat log</span>
+              <span class="btn-txt">${this.t.consoleTableAllText}</span>
             </div>
           </button>
           <simple-tooltip
             for="console-table-all"
             position="${this.isFullView ? "left" : "top"}"
-            >Print Entire Chat Log as Table to Console</simple-tooltip
+            >${this.t.consoleTableAllTooltip}</simple-tooltip
           >
 
           <button
             id="download-as-json"
             @click=${this.handleDownloadAsJsonButton}
-            aria-label="Download chat log as .json"
+            aria-label="${this.t.downloadChatLogJson}"
           >
             <div class="button-icon">
               <simple-icon-lite icon="icons:file-download"></simple-icon-lite>
               <simple-icon-lite icon="hax:code-json"></simple-icon-lite>
             </div>
             <div class="button-text">
-              <span class="btn-txt">Download chat log as .json</span>
+              <span class="btn-txt">${this.t.downloadChatLogJson}</span>
             </div>
           </button>
           <simple-tooltip
             for="download-as-json"
             position="${this.isFullView ? "left" : "top"}"
-            >Download Chat Log as .json</simple-tooltip
+            >${this.t.downloadChatLogJsonTooltip}</simple-tooltip
           >
         </div>
 

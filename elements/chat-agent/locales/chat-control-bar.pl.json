@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Pobierz dziennik jako txt",
+  "downloadChatLog": "Pobierz dziennik czatu",
+  "resetChat": "Resetuj czat",
+  "toggleDataCollection": "Przełącz zbieranie danych",
+  "dataCollection": "Zbieranie danych",
+  "toggleDeveloperMode": "Przełącz tryb programisty",
+  "exitFullView": "Zamknij widok pełny",
+  "enterFullView": "Otwórz widok pełny",
+  "hideInterface": "Ukryj interfejs",
+  "resetChatConfirm": "Zresetować czat?",
+  "downloadBeforeResetConfirm": "Pobrać dziennik czatu przed resetem?",
+  "dataCollectionOn": "Twoje rozmowy będą wykorzystywane do trenowania naszych modeli AI",
+  "dataCollectionOff": "Twoje rozmowy nie będą wykorzystywane do trenowania naszych modeli AI"
+}

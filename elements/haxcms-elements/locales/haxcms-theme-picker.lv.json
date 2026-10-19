@@ -1,0 +1,11 @@
+{
+  "theme": "Motīvs",
+  "active": "Aktīva",
+  "selected": "Atlasīta",
+  "noPreview": "Nav priekšskatījuma",
+  "currentlyActiveAndSelected": "Pašlaik aktīvais un atlasītais motīvs",
+  "currentlyActive": "Pašlaik aktīvais motīvs",
+  "selectedToApplyOnSave": "Motīvs, kas tiks piemērots saglabājot",
+  "themeSelection": "Motīva atlase",
+  "noThemesAvailable": "Nav pieejamu motīvu."
+}

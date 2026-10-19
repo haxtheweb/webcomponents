@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Đã sao chép liên kết neo!",
+  "skipToContent": "Chuyển đến nội dung",
+  "siteHome": "Trang chủ trang web",
+  "mainNavigation": "Điều hướng chính",
+  "toggleMenu": "Bật/tắt menu",
+  "changeTheme": "Đổi giao diện",
+  "breadcrumb": "Đường dẫn breadcrumb",
+  "tagFilter": "Lọc theo thẻ:",
+  "all": "Tất cả",
+  "pageNumberOfTotal": "Số trang: {current} / {total}",
+  "siteGenerated": "Trang web được tạo: {date}",
+  "copyright": "Bản quyền: {year} {author}",
+  "viewContentByTag": "Xem nội dung theo thẻ",
+  "licenseGraphic": "Hình {license}"
+}

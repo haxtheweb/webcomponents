@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Qeyda Pêkhateyên Webê ji bo hêmanên HAX yên zêdetir tê lêgerîn..",
+  "enabled": "Çalak",
+  "disabled": "Neçalak",
+  "details": "Hûrgulî",
+  "tags": "Etîket:",
+  "tagName": "Navê etîketê:",
+  "developerUsage": "Bikaranîna pêşdebiran:",
+  "demo": "Nimûne",
+  "popUpDemo": "Nimûneyê di pencereyê de veke",
+  "demoOf": "Nimûneya {tag}"
+}

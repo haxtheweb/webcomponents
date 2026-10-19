@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Lidhja e ankorës u kopjua!",
+  "skipToContent": "Kalo te përmbajtja",
+  "siteHome": "Kreu i sajtit",
+  "mainNavigation": "Navigimi kryesor",
+  "toggleMenu": "Hap/mbyll menynë",
+  "changeTheme": "Ndrysho temën",
+  "breadcrumb": "Rruga e navigimit",
+  "tagFilter": "Filtri i etiketave:",
+  "all": "Të gjitha",
+  "pageNumberOfTotal": "Numri i faqes: {current} nga {total}",
+  "siteGenerated": "Sajti u gjenerua: {date}",
+  "copyright": "E drejta e autorit: {year} {author}",
+  "viewContentByTag": "Shiko përmbajtjen sipas etiketës",
+  "licenseGraphic": "Grafika e {license}"
+}

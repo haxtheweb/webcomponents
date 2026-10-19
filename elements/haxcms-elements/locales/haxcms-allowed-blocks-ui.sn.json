@@ -10,5 +10,9 @@
   "save": "Chengeta",
   "noDescription": "Hapana tsananguro iripo.",
   "details": "Ruzivo",
-  "loadingInventory": "Kurodha mabhuroko ese…"
+  "loadingInventory": "Kurodha mabhuroko ese…",
+  "selectAllButton": "Sarudza Zvose",
+  "deselectAllButton": "Bvisa Kusarudza Zvose",
+  "selectedOfAvailable": "{selected} zvasarudzwa / {total} zviripo",
+  "savingBlocksFailed": "Kuchengetedza mabhuroko kwakundikana: {error}"
 }

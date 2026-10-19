@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   displayBehaviors,
   editBehaviors,
@@ -30,7 +31,7 @@ import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button-group.js";
  * @extends ResponsiveUtilityBehaviors
  * @extends editableTableStyles
  */
-class EditableTableEdit extends editBehaviors(DDD) {
+class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
   static get styles() {
     return [
       ...(super.styles || []),
@@ -242,7 +243,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
       <simple-toolbar-button
         id="columnHeader"
         icon="editable-table:column-headers"
-        label="First row has column headers."
+        label="${this.t.firstRowColumnHeaders}"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.columnHeader}"
@@ -256,7 +257,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
       <simple-toolbar-button
         id="rowHeader"
         icon="editable-table:row-headers"
-        label="First column has row headers."
+        label="${this.t.firstColumnRowHeaders}"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.rowHeader}"
@@ -270,7 +271,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
       <simple-toolbar-button
         id="footer"
         icon="editable-table:footer"
-        label="Last row is a footer."
+        label="${this.t.lastRowFooter}"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.footer}"
@@ -283,7 +284,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
     return html`
       <div class="group" part="simple-toolbar-section">
         <div class="label" part="simple-toolbar-section-label">
-          Headers and footers
+          ${this.t.headersAndFooters}
         </div>
         ${this.columnHeaderButton} ${this.rowHeaderButton} ${this.footerButton}
       </div>
@@ -296,7 +297,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         ?disabled="${this.hideBordered}"
         ?hidden="${this.hideBordered}"
         icon="image:grid-on"
-        label="Borders."
+        label="${this.t.borders}"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.bordered}"
@@ -312,7 +313,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         ?disabled="${this.hideStriped}"
         ?hidden="${this.hideStriped}"
         icon="editable-table:row-striped"
-        label="Alternating rows."
+        label="${this.t.alternatingRows}"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.striped}"
@@ -329,7 +330,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         ?disabled="${this.hideStriped}"
         ?hidden="${this.hideStriped}"
         icon="editable-table:col-striped"
-        label="Alternating columns."
+        label="${this.t.alternatingColumns}"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.columnStriped}"
@@ -346,7 +347,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         ?disabled="${this.hideCondensed}"
         ?hidden="${this.hideCondensed}"
         icon="editable-table:row-condensed"
-        label="Condensed rows."
+        label="${this.t.condensedRows}"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.condensed}"
@@ -362,7 +363,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         ?disabled="${this.hideNumericStyles}"
         ?hidden="${this.hideNumericStyles}"
         icon="editable-table:numbers"
-        label="Style numeric cells."
+        label="${this.t.styleNumericCells}"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.numericStyles}"
@@ -378,7 +379,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         ?disabled="${this.hideResponsive}"
         ?hidden="${this.hideResponsive}"
         icon="device:devices"
-        label="Adjust width to screen size."
+        label="${this.t.adjustWidthToScreenSize}"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.responsive}"
@@ -394,7 +395,9 @@ class EditableTableEdit extends editBehaviors(DDD) {
         ?hidden="${this.hideDisplay}"
         part="simple-toolbar-section"
       >
-        <div class="label" part="simple-toolbar-section-label">Display</div>
+        <div class="label" part="simple-toolbar-section-label">
+          ${this.t.display}
+        </div>
         ${this.borderButton} ${this.condenseButton}
         <simple-toolbar-button-group>
           ${this.stripeButton} ${this.columnStripeButton}
@@ -409,7 +412,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         id="sort"
         ?disabled="${this._isSortDisabled(this.hideSort, this.columnHeader)}"
         ?hidden="${this._isSortDisabled(this.hideSort, this.columnHeader)}"
-        label="Column sorting (for tables with column headers)."
+        label="${this.t.columnSorting}"
         icon="editable-table:sortable"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
@@ -426,7 +429,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         ?disabled="${this.hideFilter}"
         ?hidden="${this.hideFilter}"
         icon="editable-table:filter"
-        label="Column filtering."
+        label="${this.t.columnFiltering}"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.filter}"
@@ -442,7 +445,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         ?disabled="${this.hideDownloadable}"
         ?hidden="${this.hideDownloadable}"
         icon="file-download"
-        label="Allow downloading as CSV."
+        label="${this.t.allowDownloadingCSV}"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.downloadable}"
@@ -458,7 +461,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         ?disabled="${this.hideCopyable}"
         ?hidden="${this.hideCopyable}"
         icon="content-copy"
-        label="Allow copying as CSV."
+        label="${this.t.allowCopyingCSV}"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.copyable}"
@@ -474,7 +477,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         ?disabled="${this.hidePrintable}"
         ?hidden="${this.hidePrintable}"
         icon="print"
-        label="Allow printing."
+        label="${this.t.allowPrinting}"
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.printable}"
@@ -490,7 +493,9 @@ class EditableTableEdit extends editBehaviors(DDD) {
         ?hidden="${this.hideSortFilter}"
         part="simple-toolbar-section"
       >
-        <div class="label" part="simple-toolbar-section-label">Data</div>
+        <div class="label" part="simple-toolbar-section-label">
+          ${this.t.data}
+        </div>
         ${this.sortButton} ${this.filterButton} ${this.downloadButton}
         ${this.copyButton} ${this.printButton}
       </div>
@@ -507,15 +512,15 @@ class EditableTableEdit extends editBehaviors(DDD) {
   get editableCaption() {
     return html`
       <caption>
-        <p class="offscreen">Edit Mode for</p>
+        <p class="offscreen">${this.t.editModeFor}</p>
         <div class="caption-flex">
           <rich-text-editor
             autofocus
             @blur="${this._captionChanged}"
             id="caption"
-            aria-label="Caption"
-            label="Caption"
-            placeholder="Name your table by adding a caption here."
+            aria-label="${this.t.caption}"
+            label="${this.t.caption}"
+            placeholder="${this.t.captionPlaceholder}"
             rawhtml="${this.caption}"
             toolbar="editable-table-toolbar"
             type="rich-text-editor-toolbar-mini"
@@ -619,8 +624,14 @@ class EditableTableEdit extends editBehaviors(DDD) {
         disable-mouseover
         toolbar="editable-table-toolbar"
         id="cell-${rowIndex}-${colIndex}"
-        aria-label="${`Cell ${this._getLabel(colIndex, false)}${rowIndex}`}"
-        label="${`Cell ${this._getLabel(colIndex, false)}${rowIndex}`}"
+        aria-label="${this.t.cellLabel.replace(
+          "{cell}",
+          () => (`${this._getLabel(colIndex, false)}${rowIndex}`),
+        )}"
+        label="${this.t.cellLabel.replace(
+          "{cell}",
+          () => (`${this._getLabel(colIndex, false)}${rowIndex}`),
+        )}"
         rawhtml="${contents}"
         type="rich-text-editor-toolbar-mini"
         contenteditable="true"
@@ -661,7 +672,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
       <thead>
         <tr class="tr">
           <th scope="row">
-            <span class="offscreen">Insert/Delete Controls</span>
+            <span class="offscreen">${this.t.insertDeleteControls}</span>
           </th>
           ${(this.data[0] || []).map((cellData, th) => this.editableColumn(th))}
         </tr>
@@ -678,7 +689,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
   render() {
     return html`
       ${this.textEditorToolbar}
-      <p class="offscreen">Table Editor</p>
+      <p class="offscreen">${this.t.tableEditor}</p>
       <table
         id="table-editmode"
         ?bordered="${this.bordered}"
@@ -709,6 +720,37 @@ class EditableTableEdit extends editBehaviors(DDD) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      firstRowColumnHeaders: "First row has column headers.",
+      firstColumnRowHeaders: "First column has row headers.",
+      lastRowFooter: "Last row is a footer.",
+      borders: "Borders.",
+      alternatingRows: "Alternating rows.",
+      alternatingColumns: "Alternating columns.",
+      condensedRows: "Condensed rows.",
+      styleNumericCells: "Style numeric cells.",
+      adjustWidthToScreenSize: "Adjust width to screen size.",
+      columnSorting: "Column sorting (for tables with column headers).",
+      columnFiltering: "Column filtering.",
+      allowDownloadingCSV: "Allow downloading as CSV.",
+      allowCopyingCSV: "Allow copying as CSV.",
+      allowPrinting: "Allow printing.",
+      headersAndFooters: "Headers and footers",
+      display: "Display",
+      data: "Data",
+      editModeFor: "Edit Mode for",
+      caption: "Caption",
+      captionPlaceholder: "Name your table by adding a caption here.",
+      cellLabel: "Cell {cell}",
+      insertDeleteControls: "Insert/Delete Controls",
+      tableEditor: "Table Editor",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
   }
 
   static get properties() {

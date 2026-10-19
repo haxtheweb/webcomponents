@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Sannadh",
+  "licenseBySa": "Sannadh-Comhroinn Mar an gCéanna",
+  "licenseByNd": "Sannadh-Gan Saothair Dhíorthacha",
+  "licenseByNc": "Sannadh-Neamhthráchtálach",
+  "licenseByNcSa": "Sannadh-Neamhthráchtálach-Comhroinn Mar an gCéanna",
+  "licenseByNcNd": "Sannadh-Neamhthráchtálach-Gan Saothair Dhíorthacha",
+  "licenseGraphic": "Grafaic {license}",
+  "workByCreator": "{title} le {creator}",
+  "workByCreatorLicensed": "Tá {title} le {creator} ceadúnaithe faoi {license}.",
+  "permissionsBeyondScope": "Tá ceadanna lasmuigh de raon feidhme an cheadúnais seo ar fáil {link}.",
+  "author": "(údar)",
+  "onTheLicensingDetailsPage": "ar leathanach sonraí an cheadúnaithe"
+}

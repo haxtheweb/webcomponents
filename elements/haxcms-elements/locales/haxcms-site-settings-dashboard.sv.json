@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "Inaktiverad i Funktioner",
+  "appearance": "Utseende",
+  "structure": "Struktur",
+  "content": "Innehåll",
+  "reports": "Rapporter",
+  "about": "Om",
+  "files": "Filer",
+  "views": "Vyer",
+  "features": "Funktioner",
+  "editor": "Redigerare",
+  "blocks": "Block",
+  "importExport": "Import / export",
+  "details": "Detaljer",
+  "advanced": "Avancerat"
+}

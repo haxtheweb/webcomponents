@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Console ဇယား အသုံးပြုသူ ချတ် မှတ်တမ်း",
+  "consoleTableUserText": "console.table() အသုံးပြုသူ ချတ် မှတ်တမ်း",
+  "consoleTableUserTooltip": "အသုံးပြုသူ ချတ် မှတ်တမ်းကို Console တွင် ဇယားအဖြစ် ပုံနှိပ်ရန်",
+  "consoleTableMerlinLabel": "Console ဇယား merlin ချတ် မှတ်တမ်း",
+  "consoleTableMerlinText": "console.table() merlin ချတ် မှတ်တမ်း",
+  "consoleTableMerlinTooltip": "Merlin ချတ် မှတ်တမ်းကို Console တွင် ဇယားအဖြစ် ပုံနှိပ်ရန်",
+  "consoleTableAllLabel": "Console ဇယား ချတ် မှတ်တမ်း အပြည့်",
+  "consoleTableAllText": "console.table() ချတ် မှတ်တမ်း အပြည့်",
+  "consoleTableAllTooltip": "ချတ် မှတ်တမ်း အပြည့်ကို Console တွင် ဇယားအဖြစ် ပုံနှိပ်ရန်",
+  "downloadChatLogJson": "ချတ် မှတ်တမ်းကို .json အဖြစ် ဒေါင်းလုဒ်လုပ်ရန်",
+  "downloadChatLogJsonTooltip": "ချတ် မှတ်တမ်းကို .json အဖြစ် ဒေါင်းလုဒ်လုပ်ရန်"
+}

@@ -1,4 +1,11 @@
 {
   "readMore": "थप पढ्नुहोस्",
-  "home": "गृहपृष्ठ"
+  "home": "गृहपृष्ठ",
+  "anchorLinkCopied": "एंकर लिङ्क प्रतिलिपि गरियो!",
+  "skipToContent": "सामग्रीमा जानुहोस्",
+  "changeTheme": "थिम परिवर्तन गर्नुहोस्",
+  "siteSections": "साइट खण्डहरू",
+  "pageOfTotal": "{total} मध्ये पेज {current}",
+  "siteGenerated": "साइट उत्पन्न मिति: {date}",
+  "licenseGraphic": "{license} ग्राफिक"
 }

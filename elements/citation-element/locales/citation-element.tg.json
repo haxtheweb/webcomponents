@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Атрибутсия",
+  "licenseBySa": "Атрибутсия — Мубодила дар ҳамон шароит",
+  "licenseByNd": "Атрибутсия — Бе асарҳои ҳосилавӣ",
+  "licenseByNc": "Атрибутсия — Ғайритиҷоратӣ",
+  "licenseByNcSa": "Атрибутсия — Ғайритиҷоратӣ — Мубодила дар ҳамон шароит",
+  "licenseByNcNd": "Атрибутсия — Ғайритиҷоратӣ — Бе асарҳои ҳосилавӣ",
+  "citationWithLicense": "{title} аз ҷониби {creator}, таҳти иҷозатномаи {license}. Санаи дастрасӣ: {date}.",
+  "citationWithoutLicense": "{title} аз ҷониби {creator}. Санаи дастрасӣ: {date}.",
+  "licenseGraphic": "Тасвири {license}"
+}

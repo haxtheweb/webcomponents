@@ -10,5 +10,9 @@
   "save": "Simpan",
   "noDescription": "Tiada penerangan tersedia.",
   "details": "Butiran",
-  "loadingInventory": "Memuatkan inventori blok penuh…"
+  "loadingInventory": "Memuatkan inventori blok penuh…",
+  "selectAllButton": "Pilih Semua",
+  "deselectAllButton": "Nyahpilih Semua",
+  "selectedOfAvailable": "{selected} dipilih / {total} tersedia",
+  "savingBlocksFailed": "Menyimpan blok gagal: {error}"
 }

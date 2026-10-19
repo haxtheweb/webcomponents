@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "লগ txt হিসেবে ডাউনলোড করুন",
+  "downloadChatLog": "চ্যাট লগ ডাউনলোড করুন",
+  "resetChat": "চ্যাট রিসেট করুন",
+  "toggleDataCollection": "ডেটা সংগ্রহ টগল করুন",
+  "dataCollection": "ডেটা সংগ্রহ",
+  "toggleDeveloperMode": "ডেভেলপার মোড টগল করুন",
+  "exitFullView": "পূর্ণ ভিউ থেকে বের হন",
+  "enterFullView": "পূর্ণ ভিউতে যান",
+  "hideInterface": "ইন্টারফেস লুকান",
+  "resetChatConfirm": "চ্যাট রিসেট করবেন?",
+  "downloadBeforeResetConfirm": "রিসেট করার আগে চ্যাট লগ ডাউনলোড করবেন?",
+  "dataCollectionOn": "আপনার কথোপকথন আমাদের AI মডেল প্রশিক্ষণে ব্যবহার করা হবে",
+  "dataCollectionOff": "আপনার কথোপকথন আমাদের AI মডেল প্রশিক্ষণে ব্যবহার করা হবে না"
+}

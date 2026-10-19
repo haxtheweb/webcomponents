@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Temalary ýükläp bolmady: {error}",
+  "noThemesForView": "Bu görnüş üçin elýeterli tema ýok.",
+  "active": "Işjeň",
+  "themeIsActive": "{name} temasy işjeň",
+  "applyTheme": "{name} temasyny ulan",
+  "apply": "Ulan",
+  "preview": "Öňünden görmek",
+  "name": "Ady",
+  "element": "Element",
+  "description": "Düşündiriş",
+  "action": "Hereket",
+  "loadingThemes": "Temalar ýüklenýär...",
+  "themesShown": "{count} tema görkezildi",
+  "themesShownDefaults": "{count} tema görkezildi (app-hax deslapkylary)",
+  "availableHaxcmsThemes": "Elýeterli HAXcms temalary",
+  "gallery": "Galereýa",
+  "table": "Tablisa"
+}

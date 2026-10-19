@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- kikin ñawpaq p'anqa --",
+  "details": "Sut'inchaykuna",
+  "title": "Suti",
+  "titleDescription": "Tiyanap sutin",
+  "homePage": "Qallariy p'anqa",
+  "homePageDescription": "Kikin chayana / qallariy p'anqa hina llamk'achinapaq p'anqa",
+  "advanced": "Aswan yachaq",
+  "serviceWorker": "Kuyuq p'anqaman service worker-ta yapay",
+  "serviceWorkerDescription": "Kayta wañuchiy ruraqkuna servidorpa qhipa lluqsiyninta utqaylla rikunanku kaptinqa.",
+  "forceBrowserUpgrade": "Navegador musuqchayta kamachiy",
+  "forceBrowserUpgradeDescription": "Tiyanata manaraq apamuchkaspa evergreen navegadorkunata mañay.",
+  "unableToLoadSiteDetails": "Mana atikunchu tiyanap detallenkunata apamuyta.",
+  "noSiteDetails": "Mana tiyanap detallenkuna kanchu.",
+  "save": "Waqaychay"
+}

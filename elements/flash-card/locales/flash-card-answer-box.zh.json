@@ -1,5 +1,8 @@
 {
   "yourAnswer": "你的答案",
   "checkAnswer": "检查答案",
-  "retry": "重试"
+  "retry": "重试",
+  "correct": "正确！",
+  "incorrect": "错误！",
+  "correctAnswer": "正确答案：{answer}"
 }

@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Höfundargreining",
+  "licenseBySa": "Höfundargreining – Deilist eins",
+  "licenseByNd": "Höfundargreining – Engin afleidd verk",
+  "licenseByNc": "Höfundargreining – Ekki í hagnaðarskyni",
+  "licenseByNcSa": "Höfundargreining – Ekki í hagnaðarskyni – Deilist eins",
+  "licenseByNcNd": "Höfundargreining – Ekki í hagnaðarskyni – Engin afleidd verk",
+  "licenseGraphic": "Merki {license}",
+  "workByCreator": "{title} eftir {creator}",
+  "workByCreatorLicensed": "{title} eftir {creator} er gefið út með leyfinu {license}.",
+  "permissionsBeyondScope": "Heimildir umfram gildissvið þessa leyfis eru fáanlegar {link}.",
+  "author": "(höfundur)",
+  "onTheLicensingDetailsPage": "á síðu með upplýsingum um leyfið"
+}

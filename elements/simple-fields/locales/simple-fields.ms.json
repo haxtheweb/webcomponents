@@ -9,5 +9,8 @@
   "record": "Rakam",
   "pause": "Jeda rakaman",
   "stopSave": "Henti & Simpan",
-  "clickToTakePhoto": "Klik untuk mengambil foto"
+  "clickToTakePhoto": "Klik untuk mengambil foto",
+  "url": "URL",
+  "open": "buka",
+  "removeValue": "Alih keluar {value}"
 }

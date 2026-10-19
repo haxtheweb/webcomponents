@@ -34,6 +34,15 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.title = "";
     this.HAXCMSThemeSettings.autoScroll = true;
     this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
@@ -330,7 +339,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     
     return html`
     <!-- temporary margin-top  -->
-    <a class="skip-link" href="#contentcontainer">Skip to content</a>
+    <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
     <glossy-portfolio-header></glossy-portfolio-header>
 
     <div class="body-wrapper"> 

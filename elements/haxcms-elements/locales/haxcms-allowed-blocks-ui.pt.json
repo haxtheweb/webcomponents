@@ -10,5 +10,9 @@
   "save": "Salvar",
   "noDescription": "Nenhuma descrição disponível.",
   "details": "Detalhes",
-  "loadingInventory": "Carregando inventário completo de blocos…"
+  "loadingInventory": "Carregando inventário completo de blocos…",
+  "selectAllButton": "Selecionar tudo",
+  "deselectAllButton": "Desmarcar tudo",
+  "selectedOfAvailable": "{selected} selecionados / {total} disponíveis",
+  "savingBlocksFailed": "Falha ao salvar os blocos: {error}"
 }

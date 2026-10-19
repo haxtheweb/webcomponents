@@ -7,5 +7,7 @@
   "userAccessGranted": "Naudotojo prieiga sėkmingai suteikta!",
   "userNotFound": "Naudotojas nerastas arba neturi teisių",
   "loadingAddingUser": "Pridedamas naudotojas...",
-  "grantAccessTo": "Suteikti prieigą:"
+  "grantAccessTo": "Suteikti prieigą:",
+  "networkErrorTryAgain": "Įvyko tinklo klaida. Bandykite dar kartą.",
+  "characterWillAppear": "Veikėjas atsiras, kai įvesite naudotojo vardą"
 }

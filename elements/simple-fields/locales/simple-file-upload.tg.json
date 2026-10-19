@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Файлҳоро ба ин ҷо партоед",
+  "uploadQueue": "Навбати боргузорӣ",
+  "pending": "Дар интизор",
+  "preparing": "Омодасозӣ",
+  "uploading": "Боргузорӣ",
+  "complete": "Анҷом ёфт",
+  "aborted": "Қатъ шуд",
+  "cancelled": "Бекор шуд",
+  "error": "Хато",
+  "errorWithStatus": "Хато: {status}",
+  "cancel": "Бекор кардан",
+  "cancelUploadOf": "Бекор кардани боргузории {name}",
+  "retry": "Аз нав кӯшиш кардан",
+  "retryUploadOf": "Такрори боргузории {name}",
+  "remove": "Хориҷ кардан",
+  "removeFromQueue": "Хориҷ кардани {name} аз навбат",
+  "fileTypeNotAccepted": "Навъи файл қабул нашуд: {name}",
+  "uploadFailed": "Боргузорӣ муяссар нашуд: {status}",
+  "networkError": "Хатои шабака"
+}

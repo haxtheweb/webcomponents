@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "結果なし",
+  "viewsRecordHeading": "録画",
+  "viewsTitleImage": "{title} の画像",
+  "viewsTitlePreview": "{title} のプレビュー",
+  "viewsNoTimelineRecords": "タイムライン表示に使える日付付きのレコードがありません。",
+  "viewsTimelineTitle": "{title} のタイムライン",
+  "viewsNoChartField": "グラフ表示に使える数値フィールドが見つかりません。",
+  "viewsChartingValue": "{value} をグラフ化",
+  "viewsChartingValueByLabel": "{label} 別に {value} をグラフ化",
+  "viewsChartTitle": "{title} のグラフ",
+  "viewsNoTreeRecords": "ツリー表示に使える階層レコードがありません。",
+  "viewsNoGalleryRecords": "ギャラリー表示に使える画像レコードがありません。",
+  "viewsNoPlaylistRecords": "プレイリスト表示に使えるメディアレコードがありません。",
+  "fetchFailed": "取得に失敗しました({status})",
+  "unableToLoadViewData": "ビューのデータを読み込めません。",
+  "noResultsFound": "結果が見つかりません。",
+  "refreshView": "ビューを更新",
+  "breakIntoStaticContent": "静的コンテンツに分解",
+  "viewsOpenRecord": "レコードを開く"
+}

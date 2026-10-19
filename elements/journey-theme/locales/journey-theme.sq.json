@@ -1,4 +1,11 @@
 {
   "readMore": "Lexo më shumë",
-  "home": "Kreu"
+  "home": "Kreu",
+  "anchorLinkCopied": "Lidhja e ankorës u kopjua!",
+  "skipToContent": "Kalo te përmbajtja",
+  "changeTheme": "Ndrysho temën",
+  "siteSections": "Seksionet e sajtit",
+  "pageOfTotal": "Faqja {current} nga {total}",
+  "siteGenerated": "Sajti u gjenerua: {date}",
+  "licenseGraphic": "Grafika e {license}"
 }

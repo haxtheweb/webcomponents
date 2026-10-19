@@ -748,6 +748,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       useSearchToLocateTheContentYouAreLookingFor:
         "Use Search to locate the content you are looking for",
       goToTheHomePage: "Go to the home page",
+      redirectHint: "If the redirect doesn't work, please click the link above.",
+      styleGuideTemplate: "Template",
+      styleGuideTemplateDescription: "Choose a predefined style template for this element",
+      styleGuideTemplateCustom: "Custom",
     };
     this.registerLocalization({
       context: this,
@@ -1189,8 +1193,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         linkParagraph.appendChild(link);
         const hintParagraph = globalThis.document.createElement("p");
         const hint = globalThis.document.createElement("small");
-        hint.textContent =
-          "If the redirect doesn't work, please click the link above.";
+        hint.textContent = this.t.redirectHint;
         hintParagraph.appendChild(hint);
         wrapper.appendChild(linkParagraph);
         wrapper.appendChild(hintParagraph);
@@ -1505,12 +1508,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         // Create template selector field
         const templateField = {
           attribute: "data-haxsg-id",
-          title: "Template",
-          description: "Choose a predefined style template for this element",
+          title: this.t.styleGuideTemplate,
+          description: this.t.styleGuideTemplateDescription,
           inputMethod: "select",
           icon: "icons:style",
           options: {
-            "": "Custom",
+            "": this.t.styleGuideTemplateCustom,
           },
         };
 

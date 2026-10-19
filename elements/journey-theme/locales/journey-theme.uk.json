@@ -1,4 +1,11 @@
 {
   "readMore": "Читати далі",
-  "home": "Головна"
+  "home": "Головна",
+  "anchorLinkCopied": "Посилання-якір скопійовано!",
+  "skipToContent": "Перейти до вмісту",
+  "changeTheme": "Змінити тему",
+  "siteSections": "Розділи сайту",
+  "pageOfTotal": "Сторінка {current} з {total}",
+  "siteGenerated": "Сайт згенеровано: {date}",
+  "licenseGraphic": "Графіка {license}"
 }

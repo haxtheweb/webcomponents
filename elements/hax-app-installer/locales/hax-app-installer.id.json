@@ -54,5 +54,6 @@
   "requirementUppercase": "Satu huruf kapital",
   "requirementLowercase": "Satu huruf kecil",
   "requirementNumber": "Satu angka",
-  "requirementSymbol": "Satu simbol"
+  "requirementSymbol": "Satu simbol",
+  "haxcmsMascotAlt": "Maskot HAXcms World Traveler"
 }

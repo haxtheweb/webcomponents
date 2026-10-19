@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "{xOfY} fitxa",
+  "xOfY": "{order} / {total}",
+  "endOfTab": "{xOfY} fitxaren amaiera. Itzuli hona: {tabs}.",
+  "tabs": "fitxak"
+}

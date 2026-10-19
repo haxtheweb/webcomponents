@@ -10,5 +10,9 @@
   "save": "ਸੰਭਾਲੋ",
   "noDescription": "ਕੋਈ ਵੇਰਵਾ ਉਪਲਬਧ ਨਹੀਂ।",
   "details": "ਵੇਰਵੇ",
-  "loadingInventory": "ਪੂਰੀ ਬਲਾਕ ਸੂਚੀ ਲੋਡ ਹੋ ਰਹੀ ਹੈ…"
+  "loadingInventory": "ਪੂਰੀ ਬਲਾਕ ਸੂਚੀ ਲੋਡ ਹੋ ਰਹੀ ਹੈ…",
+  "selectAllButton": "ਸਭ ਚੁਣੋ",
+  "deselectAllButton": "ਸਭ ਦੀ ਚੋਣ ਹਟਾਓ",
+  "selectedOfAvailable": "{selected} ਚੁਣੇ / {total} ਉਪਲਬਧ",
+  "savingBlocksFailed": "ਬਲਾਕ ਸੰਭਾਲਣਾ ਅਸਫਲ: {error}"
 }

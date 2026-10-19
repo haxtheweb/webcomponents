@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "ຕາຕະລາງ console ບັນທຶກການສົນທະນາຂອງຜູ້ໃຊ້",
+  "consoleTableUserText": "console.table() ບັນທຶກການສົນທະນາຂອງຜູ້ໃຊ້",
+  "consoleTableUserTooltip": "ພິມບັນທຶກການສົນທະນາຂອງຜູ້ໃຊ້ເປັນຕາຕະລາງໄປທີ່ Console",
+  "consoleTableMerlinLabel": "ຕາຕະລາງ console ບັນທຶກການສົນທະນາຂອງ merlin",
+  "consoleTableMerlinText": "console.table() ບັນທຶກການສົນທະນາຂອງ merlin",
+  "consoleTableMerlinTooltip": "ພິມບັນທຶກການສົນທະນາຂອງ Merlin ເປັນຕາຕະລາງໄປທີ່ Console",
+  "consoleTableAllLabel": "ຕາຕະລາງ console ບັນທຶກການສົນທະນາທັງໝົດ",
+  "consoleTableAllText": "console.table() ບັນທຶກການສົນທະນາທັງໝົດ",
+  "consoleTableAllTooltip": "ພິມບັນທຶກການສົນທະນາທັງໝົດເປັນຕາຕະລາງໄປທີ່ Console",
+  "downloadChatLogJson": "ດາວໂຫຼດບັນທຶກການສົນທະນາເປັນ .json",
+  "downloadChatLogJsonTooltip": "ດາວໂຫຼດບັນທຶກການສົນທະນາເປັນ .json"
+}

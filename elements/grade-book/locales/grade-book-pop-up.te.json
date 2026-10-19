@@ -1,5 +1,9 @@
 {
   "studentSubmission": "విద్యార్థి సమర్పణ",
   "openInNewWindow": "కొత్త విండోలో తెరవండి",
-  "submitted": "సమర్పించబడింది"
+  "submitted": "సమర్పించబడింది",
+  "previousStudent": "మునుపటి విద్యార్థి",
+  "nextStudent": "తదుపరి విద్యార్థి",
+  "previousAssignment": "మునుపటి అసైన్‌మెంట్",
+  "nextAssignment": "తదుపరి అసైన్‌మెంట్"
 }

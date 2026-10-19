@@ -1,5 +1,6 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
@@ -10,7 +11,7 @@ import {
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
-class HAXCMSSEOAdminDialog extends DDD {
+class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-seo-admin-dialog";
   }
@@ -27,6 +28,57 @@ class HAXCMSSEOAdminDialog extends DDD {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      author: "Author",
+      description: "Description",
+      descriptionDescription: "Simple description of the site",
+      favicon: "Favicon",
+      faviconDescription: "Browser tab image / used on phones as small site logo",
+      domain: "Domain",
+      domainDescription: "Domain of this website",
+      language: "Language",
+      languageDescription: "ISO 639-1 language code for this site (for example, en, es, fr).",
+      googleAnalyticsId: "Google Analytics ID",
+      googleAnalyticsIdDescription: "Tracking ID used for analytics integrations",
+      privateSite: "Private site",
+      privateSiteDescription: "Prevent indexing and require authentication to access content",
+      canonical: "Canonical",
+      canonicalDescription: "Treat domain as canonical to improve SEO consistency",
+      pathauto: "Pathauto",
+      pathautoDescription: "Automatically maintain and update page paths",
+      hideUnpublishedPages: "Hide unpublished pages",
+      hideUnpublishedPagesDescription: "Check the box to hide unpublished pages",
+      license: "License",
+      licenseDescription: "License applied to your site content",
+      image: "Image",
+      imageDescription: "Photo path or URL",
+      name: "Name",
+      nameDescription: "Author name",
+      email: "Email",
+      emailDescription: "Primary email for author contact",
+      socialMediaLink: "Social media link",
+      socialMediaLinkDescription: "A primary social space or point of contact",
+      socialMediaLink2: "Social media link 2",
+      socialMediaLink2Description: "An additional social space or point of contact",
+      phone: "Phone",
+      phoneDescription: "Phone number for contact",
+      location: "Location",
+      locationDescription: "Author location or address",
+      website: "Website",
+      websiteDescription: "Personal website or portfolio URL",
+      website2: "Website 2",
+      website2Description: "Additional website URL",
+      unableToLoadSeoSettings: "Unable to load SEO settings.",
+      noSeoSettings: "No SEO settings are available.",
+      normalizeSlugs: "Normalize slugs",
+      save: "Save",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.groups = [];
     this.values = {};
     this.errorMessage = "";
@@ -341,16 +393,15 @@ class HAXCMSSEOAdminDialog extends DDD {
         fields: [
           {
             property: "manifest-description",
-            title: "Description",
-            description: "Simple description of the site",
+            title: this.t.description,
+            description: this.t.descriptionDescription,
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "manifest-metadata-site-logo",
-            title: "Favicon",
-            description:
-              "Browser tab image / used on phones as small site logo",
+            title: this.t.favicon,
+            description: this.t.faviconDescription,
             inputMethod: "haxupload",
             required: false,
             fileActions: true,
@@ -359,52 +410,50 @@ class HAXCMSSEOAdminDialog extends DDD {
           },
           {
             property: "manifest-metadata-site-domain",
-            title: "Domain",
-            description: "Domain of this website",
+            title: this.t.domain,
+            description: this.t.domainDescription,
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "manifest-metadata-site-settings-lang",
-            title: "Language",
-            description:
-              "ISO 639-1 language code for this site (for example, en, es, fr).",
+            title: this.t.language,
+            description: this.t.languageDescription,
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "manifest-metadata-site-settings-gaID",
-            title: "Google Analytics ID",
-            description: "Tracking ID used for analytics integrations",
+            title: this.t.googleAnalyticsId,
+            description: this.t.googleAnalyticsIdDescription,
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "manifest-metadata-site-settings-private",
-            title: "Private site",
-            description:
-              "Prevent indexing and require authentication to access content",
+            title: this.t.privateSite,
+            description: this.t.privateSiteDescription,
             inputMethod: "boolean",
             required: false,
           },
           {
             property: "manifest-metadata-site-settings-canonical",
-            title: "Canonical",
-            description: "Treat domain as canonical to improve SEO consistency",
+            title: this.t.canonical,
+            description: this.t.canonicalDescription,
             inputMethod: "boolean",
             required: false,
           },
           {
             property: "manifest-metadata-site-settings-pathauto",
-            title: "Pathauto",
-            description: "Automatically maintain and update page paths",
+            title: this.t.pathauto,
+            description: this.t.pathautoDescription,
             inputMethod: "boolean",
             required: false,
           },
           {
             property: "manifest-metadata-site-settings-publishPagesOn",
-            title: "Hide unpublished pages",
-            description: "Check the box to hide unpublished pages",
+            title: this.t.hideUnpublishedPages,
+            description: this.t.hideUnpublishedPagesDescription,
             inputMethod: "boolean",
             required: false,
           },
@@ -412,22 +461,22 @@ class HAXCMSSEOAdminDialog extends DDD {
       },
       {
         key: "author",
-        label: "Author",
+        label: this.t.author,
         icon: "social:person",
         open: activeGroup === "author",
         fields: [
           {
             property: "manifest-license",
-            title: "License",
-            description: "License applied to your site content",
+            title: this.t.license,
+            description: this.t.licenseDescription,
             inputMethod: "select",
             options: options,
             required: false,
           },
           {
             property: "manifest-metadata-author-image",
-            title: "Image",
-            description: "Photo path or URL",
+            title: this.t.image,
+            description: this.t.imageDescription,
             inputMethod: "haxupload",
             required: false,
             fileActions: true,
@@ -436,57 +485,57 @@ class HAXCMSSEOAdminDialog extends DDD {
           },
           {
             property: "manifest-metadata-author-name",
-            title: "Name",
-            description: "Author name",
+            title: this.t.name,
+            description: this.t.nameDescription,
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "manifest-metadata-author-email",
-            title: "Email",
-            description: "Primary email for author contact",
+            title: this.t.email,
+            description: this.t.emailDescription,
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "manifest-metadata-author-socialLink",
-            title: "Social media link",
-            description: "A primary social space or point of contact",
+            title: this.t.socialMediaLink,
+            description: this.t.socialMediaLinkDescription,
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "manifest-metadata-author-socialLink2",
-            title: "Social media link 2",
-            description: "An additional social space or point of contact",
+            title: this.t.socialMediaLink2,
+            description: this.t.socialMediaLink2Description,
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "manifest-metadata-author-phone",
-            title: "Phone",
-            description: "Phone number for contact",
+            title: this.t.phone,
+            description: this.t.phoneDescription,
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "manifest-metadata-author-location",
-            title: "Location",
-            description: "Author location or address",
+            title: this.t.location,
+            description: this.t.locationDescription,
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "manifest-metadata-author-website",
-            title: "Website",
-            description: "Personal website or portfolio URL",
+            title: this.t.website,
+            description: this.t.websiteDescription,
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "manifest-metadata-author-website2",
-            title: "Website 2",
-            description: "Additional website URL",
+            title: this.t.website2,
+            description: this.t.website2Description,
             inputMethod: "textfield",
             required: false,
           },
@@ -653,7 +702,7 @@ class HAXCMSSEOAdminDialog extends DDD {
       this.groups = [];
       this.values = {};
       this.__groupValues = {};
-      this.errorMessage = "Unable to load SEO settings.";
+      this.errorMessage = this.t.unableToLoadSeoSettings;
       return;
     }
     this.__valueChangeLock = true;
@@ -828,7 +877,7 @@ class HAXCMSSEOAdminDialog extends DDD {
             ? html`<p class="error">${this.errorMessage}</p>`
             : ``}
           ${!this.errorMessage && this.groups.length === 0
-            ? html`<p class="status">No SEO settings are available.</p>`
+            ? html`<p class="status">${this.t.noSeoSettings}</p>`
             : ``}
           ${!this.errorMessage
             ? this.groups.map(
@@ -860,14 +909,14 @@ class HAXCMSSEOAdminDialog extends DDD {
         </div>
         <div class="actions">
           <button class="action" @click="${this._normalizeSlugsTap}">
-            Normalize slugs
+            ${this.t.normalizeSlugs}
           </button>
           <button
             class="action"
             @click="${this._saveSEOSettingsTap}"
             ?disabled="${this.groups.length === 0}"
           >
-            Save
+            ${this.t.save}
           </button>
         </div>
       </div>

@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "ສະແດງຕົວຢ່າງທີມ",
+  "hideThemePreview": "ເຊື່ອງຕົວຢ່າງທີມ",
+  "themePreviewPanel": "ແຜງຕົວຢ່າງທີມ",
+  "themePreview": "ຕົວຢ່າງທີມ",
+  "themePreviewDescription": "ລອງໃຊ້ທີມ ແລະ ຊຸດສີຊົ່ວຄາວໃນຂະນະທ່ອງເວັບ. ໃຊ້ ຍົກເລີກ ເພື່ອກັບຄືນຮູບລັກສະນະເດີມຂອງທ່ານ.",
+  "loadingThemes": "ກຳລັງໂຫຼດທີມ...",
+  "theme": "ຊຸດຮູບແບບ",
+  "palette": "ຊຸດສີ",
+  "cancel": "ຍົກເລີກ",
+  "openAppearanceSettings": "ເປີດການຕັ້ງຄ່າຮູບລັກສະນະ"
+}

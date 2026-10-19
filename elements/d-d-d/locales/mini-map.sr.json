@@ -1,0 +1,17 @@
+{
+  "editNodes": "Уреди чворове",
+  "editLines": "Уреди линије",
+  "reset": "Поништи",
+  "save": "Сачувај",
+  "cancel": "Откажи",
+  "delete": "Обриши",
+  "type": "Тип:",
+  "topic": "Тема",
+  "subsection": "Пододељак",
+  "name": "Назив:",
+  "enterName": "Унесите назив",
+  "url": "URL:",
+  "enterUrl": "Унесите URL",
+  "activeNode": "Активан чвор?",
+  "nodeId": "Чвор {id}"
+}

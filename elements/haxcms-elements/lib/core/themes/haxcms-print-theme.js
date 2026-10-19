@@ -11,16 +11,25 @@ import "../../ui-components/layout/site-footer.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 // a print theme that extends the conventions of CleanTwo bootstrap but can output a very clean print document
 class HAXCMSPrintTheme extends CleanTwo {
+  constructor() {
+    super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      printThisPage: "Print this page",
+    };
+  }
   render() {
     return html`
-      <a class="skip-link" href="#main-content">Skip to content</a>
+      <a class="skip-link" href="#main-content">${this.t.skipToContent}</a>
       <header>
         <simple-icon-button-lite
           @click="${this.print}"
           id="printbtn"
           icon="print"
-          label="Print this page"
-          title="Print this page"
+          label="${this.t.printThisPage}"
+          title="${this.t.printThisPage}"
         ></simple-icon-button-lite>
       </header>
       <main id="main-content" tabindex="-1">

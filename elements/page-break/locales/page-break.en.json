@@ -21,5 +21,12 @@
   "publish": "Publish",
   "unpublish": "Unpublish",
   "savePage": "Save page",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "editTitle": "Edit title",
+  "editIcon": "Edit Icon",
+  "agent": "Agent",
+  "pageLockedUnlockToEdit": "This page is locked. Unlock it first to edit.",
+  "pageLockedUnlockToChangePublishStatus": "This page is locked. Unlock it first to change publish status.",
+  "pageLockedUnlockToDelete": "This page is locked. Unlock it first to delete."
 }

@@ -1,0 +1,14 @@
+{
+  "enterUserName": "کارن نوم ولیکئ",
+  "invalidUsernameOrPassword": "ناسم کارن نوم یا پټنوم",
+  "welcomeLetsGo": "ښه راغلاست {username}! راځئ چې پیل وکړو!",
+  "enterYourUsername": "خپل کارن نوم ولیکئ",
+  "username": "کارن نوم",
+  "next": "بل",
+  "welcomeBack": "بېرته ښه راغلاست، {username}!",
+  "notYou": "تاسو نه یاست؟",
+  "enterYourPassword": "خپل پټنوم ولیکئ",
+  "password": "پټنوم",
+  "togglePasswordDisplay": "د پټنوم ښودل بدل کړئ",
+  "login": "ننوتل"
+}

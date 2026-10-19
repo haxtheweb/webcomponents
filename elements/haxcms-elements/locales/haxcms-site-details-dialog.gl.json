@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- predeterminado á primeira páxina --",
+  "details": "Detalles",
+  "title": "Título",
+  "titleDescription": "Nome do sitio",
+  "homePage": "Páxina de inicio",
+  "homePageDescription": "Páxina que se usará como páxina de inicio / de destino predeterminada",
+  "advanced": "Avanzado",
+  "serviceWorker": "Engadir service worker á páxina dinámica",
+  "serviceWorkerDescription": "Desactiva isto se os usuarios deben ver sempre a saída máis recente do servidor de inmediato.",
+  "forceBrowserUpgrade": "Forzar a actualización do navegador",
+  "forceBrowserUpgradeDescription": "Requirir navegadores actualizados antes de cargar a experiencia do sitio.",
+  "unableToLoadSiteDetails": "Non se puideron cargar os detalles do sitio.",
+  "noSiteDetails": "Non hai detalles do sitio dispoñibles.",
+  "save": "Gardar"
+}

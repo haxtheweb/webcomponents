@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Խարիսխ հղումը պատճենվեց!",
+  "skipToContent": "Անցնել բովանդակությանը",
+  "siteHome": "Կայքի գլխավոր էջ",
+  "mainNavigation": "Հիմնական նավիգացիա",
+  "toggleMenu": "Բացել/փակել ընտրացանկը",
+  "changeTheme": "Փոխել թեման",
+  "breadcrumb": "Ուղեցույց (breadcrumb)",
+  "tagFilter": "Պիտակի զտիչ՝",
+  "all": "Բոլորը",
+  "pageNumberOfTotal": "Էջի համար՝ {current}՝ {total}-ից",
+  "siteGenerated": "Կայքը ստեղծվել է՝ {date}",
+  "copyright": "Հեղինակային իրավունք՝ {year} {author}",
+  "viewContentByTag": "Դիտել բովանդակությունն ըստ պիտակի",
+  "licenseGraphic": "{license} պատկեր"
+}

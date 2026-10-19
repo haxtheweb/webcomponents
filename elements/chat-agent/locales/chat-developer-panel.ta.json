@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "பயனர் அரட்டைப் பதிவின் console அட்டவணை",
+  "consoleTableUserText": "console.table() பயனர் அரட்டைப் பதிவு",
+  "consoleTableUserTooltip": "பயனர் அரட்டைப் பதிவை அட்டவணையாக Console இல் அச்சிடு",
+  "consoleTableMerlinLabel": "Merlin அரட்டைப் பதிவின் console அட்டவணை",
+  "consoleTableMerlinText": "console.table() Merlin அரட்டைப் பதிவு",
+  "consoleTableMerlinTooltip": "Merlin அரட்டைப் பதிவை அட்டவணையாக Console இல் அச்சிடு",
+  "consoleTableAllLabel": "முழு அரட்டைப் பதிவின் console அட்டவணை",
+  "consoleTableAllText": "console.table() முழு அரட்டைப் பதிவு",
+  "consoleTableAllTooltip": "முழு அரட்டைப் பதிவை அட்டவணையாக Console இல் அச்சிடு",
+  "downloadChatLogJson": "அரட்டைப் பதிவை .json ஆகப் பதிவிறக்கு",
+  "downloadChatLogJsonTooltip": "அரட்டைப் பதிவை .json ஆகப் பதிவிறக்கு"
+}

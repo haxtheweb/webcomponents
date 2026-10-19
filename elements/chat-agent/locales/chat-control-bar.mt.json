@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Niżżel il-Log bħala txt",
+  "downloadChatLog": "Niżżel il-Log taċ-Chat",
+  "resetChat": "Irrisettja ċ-Chat",
+  "toggleDataCollection": "Aqleb il-Ġbir tad-Data",
+  "dataCollection": "Ġbir tad-Data",
+  "toggleDeveloperMode": "Aqleb il-Mod tal-Iżviluppatur",
+  "exitFullView": "Oħroġ mill-Veduta Sħiħa",
+  "enterFullView": "Idħol fil-Veduta Sħiħa",
+  "hideInterface": "Aħbi l-Interfaċċa",
+  "resetChatConfirm": "Tirrisettja ċ-chat?",
+  "downloadBeforeResetConfirm": "Tniżżel il-log taċ-chat qabel ma tirrisettja?",
+  "dataCollectionOn": "Il-konversazzjonijiet tiegħek se jintużaw biex jitħarrġu l-mudelli tal-AI tagħna",
+  "dataCollectionOff": "Il-konversazzjonijiet tiegħek mhux se jintużaw biex jitħarrġu l-mudelli tal-AI tagħna"
+}

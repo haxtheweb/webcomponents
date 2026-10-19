@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Rodyti temos peržiūrą",
+  "hideThemePreview": "Slėpti temos peržiūrą",
+  "themePreviewPanel": "Temos peržiūros skydelis",
+  "themePreview": "Temos peržiūra",
+  "themePreviewDescription": "Naršydami laikinai išbandykite temą ir paletę. Spustelėkite Atšaukti, kad atkurtumėte pradinę išvaizdą.",
+  "loadingThemes": "Įkeliamos temos...",
+  "theme": "Tema",
+  "palette": "Paletė",
+  "cancel": "Atšaukti",
+  "openAppearanceSettings": "Atidaryti išvaizdos nustatymus"
+}

@@ -1,0 +1,18 @@
+{
+  "copy": "Պատճենել",
+  "download": "Ներբեռնել",
+  "archive": "Արխիվացնել",
+  "copyOperation": "պատճենել",
+  "downloadOperation": "ներբեռնել",
+  "archiveOperation": "արխիվացնել",
+  "created": "ստեղծված",
+  "updated": "թարմացված",
+  "pages": "էջեր",
+  "url": "URL",
+  "confirm": "Հաստատել",
+  "cancel": "Չեղարկել",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Վստա՞հ եք, որ ցանկանում եք {operation} {siteName}-ը?",
+  "siteOperationSuccessful": "{siteName}. «{operation}» գործողությունը հաջողվեց!",
+  "siteOperationFailed": "{siteName}. «{operation}» գործողությունը ձախողվեց"
+}

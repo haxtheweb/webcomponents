@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Last ned logg som txt",
+  "downloadChatLog": "Last ned chattelogg",
+  "resetChat": "Tilbakestill chat",
+  "toggleDataCollection": "Slå datainnsamling av/på",
+  "dataCollection": "Datainnsamling",
+  "toggleDeveloperMode": "Slå utviklermodus av/på",
+  "exitFullView": "Avslutt fullvisning",
+  "enterFullView": "Gå til fullvisning",
+  "hideInterface": "Skjul grensesnitt",
+  "resetChatConfirm": "Tilbakestille chatten?",
+  "downloadBeforeResetConfirm": "Laste ned chatteloggen før du tilbakestiller?",
+  "dataCollectionOn": "Samtalene dine blir brukt til å trene AI-modellene våre",
+  "dataCollectionOff": "Samtalene dine blir ikke brukt til å trene AI-modellene våre"
+}

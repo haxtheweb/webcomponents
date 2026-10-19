@@ -1,0 +1,5 @@
+{
+  "navigateToSection": "{label} - セクションへ移動",
+  "clickToScrollToSection": "クリックして {label} セクションへスクロール",
+  "navigatedToSection": "{label} セクションへ移動しました"
+}

@@ -1,0 +1,8 @@
+{
+  "loading": "読み込み中",
+  "settingUpContainer": "コンテナーを準備しています",
+  "runningCommands": "コマンドを実行しています",
+  "installing": "インストールしています..",
+  "runningStart": "Startを実行しています..",
+  "webContainerPreview": "ウェブコンテナーのプレビュー"
+}

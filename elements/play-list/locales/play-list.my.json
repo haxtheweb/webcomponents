@@ -1,0 +1,11 @@
+{
+  "playlist": "ဖွင့်စာရင်း",
+  "carousel": "ကာရိုဆယ်",
+  "slide": "ဆလိုက်",
+  "slideNumber": "ဆလိုက် {number}",
+  "slideOfTotal": "ဆလိုက် {total} အနက် {number}",
+  "previousSlide": "ယခင် ဆလိုက်",
+  "nextSlide": "နောက် ဆလိုက်",
+  "slidePages": "ဆလိုက် စာမျက်နှာများ",
+  "goToSlide": "ဆလိုက် {number} သို့ သွားရန်"
+}

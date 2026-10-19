@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Õpilase esitus",
   "openInNewWindow": "Ava uues aknas",
-  "submitted": "Esitatud"
+  "submitted": "Esitatud",
+  "previousStudent": "Eelmine õpilane",
+  "nextStudent": "Järgmine õpilane",
+  "previousAssignment": "Eelmine ülesanne",
+  "nextAssignment": "Järgmine ülesanne"
 }

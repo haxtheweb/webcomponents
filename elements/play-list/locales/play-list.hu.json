@@ -1,0 +1,11 @@
+{
+  "playlist": "Lejátszási lista",
+  "carousel": "körhinta",
+  "slide": "dia",
+  "slideNumber": "{number}. dia",
+  "slideOfTotal": "{number}. dia (összesen {total})",
+  "previousSlide": "Előző dia",
+  "nextSlide": "Következő dia",
+  "slidePages": "Diaoldalak",
+  "goToSlide": "Ugrás a(z) {number}. diára"
+}

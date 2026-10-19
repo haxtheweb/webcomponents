@@ -1,0 +1,18 @@
+{
+  "copy": "Garagalchi",
+  "download": "Buufadhu",
+  "archive": "Kuusi",
+  "copyOperation": "garagalchi",
+  "downloadOperation": "buufadhu",
+  "archiveOperation": "kuusi",
+  "created": "kan uumame",
+  "updated": "kan haaromfame",
+  "pages": "fuulota",
+  "url": "URL",
+  "confirm": "Mirkaneessi",
+  "cancel": "Haqi",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Dhugumaan {siteName} {operation} barbaaddaa?",
+  "siteOperationSuccessful": "{siteName} {operation} milkaa'eera!",
+  "siteOperationFailed": "{siteName} {operation} hin milkoofne"
+}

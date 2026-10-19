@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Признание",
+  "licenseBySa": "Признание-Споделяне на споделеното",
+  "licenseByNd": "Признание-Без производни",
+  "licenseByNc": "Признание-Некомерсиално",
+  "licenseByNcSa": "Признание-Некомерсиално-Споделяне на споделеното",
+  "licenseByNcNd": "Признание-Некомерсиално-Без производни",
+  "licenseGraphic": "Графика на {license}",
+  "workByCreator": "{title} от {creator}",
+  "workByCreatorLicensed": "{title} от {creator} е лицензирано под {license}.",
+  "permissionsBeyondScope": "Разрешения извън обхвата на този лиценз са налични {link}.",
+  "author": "(автор)",
+  "onTheLicensingDetailsPage": "на страницата с подробности за лицензирането"
+}

@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Wangsulanmu",
   "checkAnswer": "Priksa wangsulan",
-  "retry": "Jajal maneh"
+  "retry": "Jajal maneh",
+  "correct": "Bener!",
+  "incorrect": "Salah!",
+  "correctAnswer": "Wangsulan Sing Bener: {answer}"
 }

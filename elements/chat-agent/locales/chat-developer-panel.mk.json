@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Конзолна табела на корисничкиот дневник на разговорот",
+  "consoleTableUserText": "console.table() кориснички дневник на разговорот",
+  "consoleTableUserTooltip": "Испечати го корисничкиот дневник на разговорот како табела во конзолата",
+  "consoleTableMerlinLabel": "Конзолна табела на дневникот на разговорот на Merlin",
+  "consoleTableMerlinText": "console.table() дневник на разговорот на Merlin",
+  "consoleTableMerlinTooltip": "Испечати го дневникот на разговорот на Merlin како табела во конзолата",
+  "consoleTableAllLabel": "Конзолна табела на целиот дневник на разговорот",
+  "consoleTableAllText": "console.table() целиот дневник на разговорот",
+  "consoleTableAllTooltip": "Испечати го целиот дневник на разговорот како табела во конзолата",
+  "downloadChatLogJson": "Преземи го дневникот на разговорот како .json",
+  "downloadChatLogJsonTooltip": "Преземи го дневникот на разговорот како .json"
+}

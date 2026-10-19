@@ -35,6 +35,12 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      subPages: "Sub-pages",
+    };
     // do NOT reassign this.__disposer here: the constructor chain
     // (HAXCMSLitElementTheme + HAXCMSThemeParts + HAXCMSRememberRoute)
     // already pushed its constructor-time autoruns into it; a fresh array
@@ -169,7 +175,9 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer"
+        >${this.t.skipToContent}</a
+      >
       <table
         role="presentation"
         align="center"
@@ -247,7 +255,7 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
                           </tr>
                         </tbody>
                       </table>
-                      <aside aria-label="Sub-pages">
+                      <aside aria-label="${this.t.subPages}">
                         <site-children-block
                           dynamic-methodology="ancestor"
                         ></site-children-block>

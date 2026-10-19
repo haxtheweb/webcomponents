@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Vaše odpověď",
   "checkAnswer": "Zkontrolovat odpověď",
-  "retry": "Zkusit znovu"
+  "retry": "Zkusit znovu",
+  "correct": "Správně!",
+  "incorrect": "Nesprávně!",
+  "correctAnswer": "Správná odpověď: {answer}"
 }

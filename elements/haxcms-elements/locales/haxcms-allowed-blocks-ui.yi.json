@@ -10,5 +10,9 @@
   "save": "אױפֿהיטן",
   "noDescription": "קײן באַשרײַבונג נישט בנימצא.",
   "details": "פּרטים",
-  "loadingInventory": "לאָדט דעם פֿולן בלאָק־אינווענטאַר…"
+  "loadingInventory": "לאָדט דעם פֿולן בלאָק־אינווענטאַר…",
+  "selectAllButton": "קלײַב אויס אַלץ",
+  "deselectAllButton": "באַפֿרײַ אַלץ",
+  "selectedOfAvailable": "{selected} אויסגעקליבן / {total} פֿאַראַן",
+  "savingBlocksFailed": "אָפּהיטן בלאָקן דורכגעפֿאַלן: {error}"
 }

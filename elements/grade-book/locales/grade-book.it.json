@@ -43,5 +43,22 @@
   "emailAddress": "Invia un'email a questo studente",
   "notes": "Note",
   "interests": "Interessi",
-  "profileImageFor": "Immagine del profilo di"
+  "profileImageFor": "Immagine del profilo di",
+  "fileSystem": "File system",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Endpoint URL (JSON)",
+  "jsonDataBlob": "Blob di dati JSON",
+  "additionalCriteriaFeedback": "Feedback aggiuntivo su {criteria}",
+  "outOfPoints": "/ {points} pt",
+  "feedbackReport": "Report di feedback",
+  "criteriaDetails": "Dettagli dei criteri",
+  "yourFeedback": "Il tuo feedback",
+  "additionalCriteriaFeedbackHeading": "Feedback aggiuntivo sui criteri",
+  "yourTotalScore": "Il tuo punteggio totale",
+  "scoreOutOfPoints": "{score} / {points} pt",
+  "studentAssignment": "Compito {assignment} di {student}",
+  "downloadPDF": "Scarica PDF",
+  "displayMode1": "Modalità 1",
+  "displayMode2": "Modalità 2",
+  "twoWindows": "Due finestre"
 }

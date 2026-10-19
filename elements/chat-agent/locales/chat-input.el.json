@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Εμφάνιση προηγουμένως σταλμένου μηνύματος (πάνω)",
+  "displayPreviousMessageDown": "Εμφάνιση προηγουμένως σταλμένου μηνύματος (κάτω)",
+  "sendPrompt": "Αποστολή προτροπής",
+  "sendPromptToMerlin": "Αποστολή προτροπής στον Merlin",
+  "shortenPrompt": "Συντομεύστε την προτροπή σας σε έως {limit} χαρακτήρες."
+}

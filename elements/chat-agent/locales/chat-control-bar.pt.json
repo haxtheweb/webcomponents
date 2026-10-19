@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Baixar registro como txt",
+  "downloadChatLog": "Baixar registro do chat",
+  "resetChat": "Redefinir chat",
+  "toggleDataCollection": "Alternar coleta de dados",
+  "dataCollection": "Coleta de dados",
+  "toggleDeveloperMode": "Alternar modo de desenvolvedor",
+  "exitFullView": "Sair da visualização completa",
+  "enterFullView": "Entrar na visualização completa",
+  "hideInterface": "Ocultar interface",
+  "resetChatConfirm": "Redefinir o chat?",
+  "downloadBeforeResetConfirm": "Baixar o registro do chat antes de redefinir?",
+  "dataCollectionOn": "Suas conversas serão usadas para treinar nossos modelos de IA",
+  "dataCollectionOff": "Suas conversas não serão usadas para treinar nossos modelos de IA"
+}

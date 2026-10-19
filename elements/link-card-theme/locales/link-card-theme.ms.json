@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Pautan sauh disalin!",
+  "skipToContent": "Langkau ke kandungan",
+  "changePalette": "Tukar palet",
+  "primaryLinks": "Pautan utama",
+  "socialLinks": "Pautan sosial",
+  "myProfile": "Profil saya",
+  "profileImageOf": "Imej profil {name}",
+  "profileImage": "Imej profil",
+  "linkCardProfile": "Profil kad pautan",
+  "emptyStateLinks": "Tambah item menu peringkat atas dalam site.json untuk memaparkan butang pautan.",
+  "titleOnPlatform": "{title} di {platform}",
+  "openPlatform": "Buka {platform}",
+  "paletteUpdated": "Palet warna dikemas kini kepada pilihan {number}."
+}

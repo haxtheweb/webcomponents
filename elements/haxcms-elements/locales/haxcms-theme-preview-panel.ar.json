@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "إظهار معاينة السمة",
+  "hideThemePreview": "إخفاء معاينة السمة",
+  "themePreviewPanel": "لوحة معاينة السمة",
+  "themePreview": "معاينة السمة",
+  "themePreviewDescription": "جرّب سمة ولوحة ألوان مؤقتًا أثناء التصفح. استخدم إلغاء لاستعادة مظهرك الأصلي.",
+  "loadingThemes": "جارٍ تحميل السمات...",
+  "theme": "السمة",
+  "palette": "لوحة الألوان",
+  "cancel": "إلغاء",
+  "openAppearanceSettings": "فتح إعدادات المظهر"
+}

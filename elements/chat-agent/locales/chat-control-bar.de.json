@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Protokoll als txt herunterladen",
+  "downloadChatLog": "Chatprotokoll herunterladen",
+  "resetChat": "Chat zurücksetzen",
+  "toggleDataCollection": "Datenerfassung umschalten",
+  "dataCollection": "Datenerfassung",
+  "toggleDeveloperMode": "Entwicklermodus umschalten",
+  "exitFullView": "Vollansicht verlassen",
+  "enterFullView": "Vollansicht öffnen",
+  "hideInterface": "Oberfläche ausblenden",
+  "resetChatConfirm": "Chat zurücksetzen?",
+  "downloadBeforeResetConfirm": "Chatprotokoll vor dem Zurücksetzen herunterladen?",
+  "dataCollectionOn": "Deine Unterhaltungen werden zum Training unserer KI-Modelle verwendet",
+  "dataCollectionOff": "Deine Unterhaltungen werden nicht zum Training unserer KI-Modelle verwendet"
+}

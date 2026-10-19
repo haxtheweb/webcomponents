@@ -1,4 +1,11 @@
 {
   "readMore": "Soma zaidi",
-  "home": "Mwanzo"
+  "home": "Mwanzo",
+  "anchorLinkCopied": "Kiungo cha nanga kimenakiliwa!",
+  "skipToContent": "Ruka hadi maudhui",
+  "changeTheme": "Badilisha mandhari",
+  "siteSections": "Sehemu za tovuti",
+  "pageOfTotal": "Ukurasa {current} kati ya {total}",
+  "siteGenerated": "Tovuti ilizalishwa: {date}",
+  "licenseGraphic": "Mchoro wa {license}"
 }

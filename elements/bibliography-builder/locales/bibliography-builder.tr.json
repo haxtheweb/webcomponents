@@ -1,3 +1,8 @@
 {
-  "title": "Kaynakça"
+  "title": "Kaynakça",
+  "export": "Dışa aktar",
+  "exportCitations": "Kaynakçaları Dışa Aktar",
+  "copy": "Kopyala",
+  "exportCitationFormat": "Kaynakça dışa aktarma biçimi",
+  "selectCitationFormatBelow": "Aşağıdan bir kaynakça biçimi seçin"
 }

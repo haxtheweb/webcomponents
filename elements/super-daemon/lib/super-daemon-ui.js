@@ -23,6 +23,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       typeToSeeResults: "Type something to see results",
       voiceSearch: "Voice search",
       results: "Results",
+      resultsCount: "{count} results",
       loadingResults: "Loading results",
       insertBlocks: "Insert blocks",
       findMedia: "Find media",
@@ -1049,7 +1050,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         </div>
         ${this.mini && this.filtered.length > 1
           ? html`<div class="mini-results-counter">
-              ${this.filtered.length} results
+              ${this.t.resultsCount.replace("{count}", () => this.filtered.length)}
             </div>`
           : nothing}
       </div>

@@ -1,0 +1,18 @@
+{
+  "copy": "Капіраваць",
+  "download": "Спампаваць",
+  "archive": "Архіваваць",
+  "copyOperation": "копія",
+  "downloadOperation": "спампаваць",
+  "archiveOperation": "архіваваць",
+  "created": "створана",
+  "updated": "абноўлена",
+  "pages": "старонкі",
+  "url": "URL",
+  "confirm": "Пацвердзіць",
+  "cancel": "Скасаваць",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Вы ўпэўнены, што хочаце {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} — паспяхова!",
+  "siteOperationFailed": "{siteName}: {operation} — не ўдалося"
+}

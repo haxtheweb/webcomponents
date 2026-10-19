@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Rādīt iepriekš nosūtīto ziņojumu (uz augšu)",
+  "displayPreviousMessageDown": "Rādīt iepriekš nosūtīto ziņojumu (uz leju)",
+  "sendPrompt": "Sūtīt uzvedni",
+  "sendPromptToMerlin": "Sūtīt uzvedni Merlin",
+  "shortenPrompt": "Lūdzu, saīsiniet uzvedni līdz ne vairāk kā {limit} rakstzīmēm."
+}

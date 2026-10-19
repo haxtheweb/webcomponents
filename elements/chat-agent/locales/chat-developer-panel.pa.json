@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "ਕੰਸੋਲ ਟੇਬਲ ਵਰਤੋਂਕਾਰ ਚੈਟ ਲੌਗ",
+  "consoleTableUserText": "console.table() ਵਰਤੋਂਕਾਰ ਚੈਟ ਲੌਗ",
+  "consoleTableUserTooltip": "ਵਰਤੋਂਕਾਰ ਚੈਟ ਲੌਗ ਨੂੰ ਟੇਬਲ ਵਜੋਂ ਕੰਸੋਲ 'ਤੇ ਛਾਪੋ",
+  "consoleTableMerlinLabel": "ਕੰਸੋਲ ਟੇਬਲ Merlin ਚੈਟ ਲੌਗ",
+  "consoleTableMerlinText": "console.table() Merlin ਚੈਟ ਲੌਗ",
+  "consoleTableMerlinTooltip": "Merlin ਚੈਟ ਲੌਗ ਨੂੰ ਟੇਬਲ ਵਜੋਂ ਕੰਸੋਲ 'ਤੇ ਛਾਪੋ",
+  "consoleTableAllLabel": "ਕੰਸੋਲ ਟੇਬਲ ਪੂਰਾ ਚੈਟ ਲੌਗ",
+  "consoleTableAllText": "console.table() ਪੂਰਾ ਚੈਟ ਲੌਗ",
+  "consoleTableAllTooltip": "ਪੂਰੇ ਚੈਟ ਲੌਗ ਨੂੰ ਟੇਬਲ ਵਜੋਂ ਕੰਸੋਲ 'ਤੇ ਛਾਪੋ",
+  "downloadChatLogJson": "ਚੈਟ ਲੌਗ .json ਵਜੋਂ ਡਾਊਨਲੋਡ ਕਰੋ",
+  "downloadChatLogJsonTooltip": "ਚੈਟ ਲੌਗ .json ਵਜੋਂ ਡਾਊਨਲੋਡ ਕਰੋ"
+}

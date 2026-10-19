@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Пуснете файловете тук",
+  "uploadQueue": "Опашка за качване",
+  "pending": "Изчакващ",
+  "preparing": "Подготовка",
+  "uploading": "Качване",
+  "complete": "Завършено",
+  "aborted": "Прекратено",
+  "cancelled": "Отменено",
+  "error": "Грешка",
+  "errorWithStatus": "Грешка: {status}",
+  "cancel": "Отказ",
+  "cancelUploadOf": "Отказ от качването на {name}",
+  "retry": "Опитай отново",
+  "retryUploadOf": "Повторен опит за качване на {name}",
+  "remove": "Премахване",
+  "removeFromQueue": "Премахване на {name} от опашката",
+  "fileTypeNotAccepted": "Неприет тип файл: {name}",
+  "uploadFailed": "Качването е неуспешно: {status}",
+  "networkError": "Мрежова грешка"
+}

@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Tabu {xOfY}",
+  "xOfY": "{order} mwa {total}",
+  "endOfTab": "Kumapeto kwa tabu {xOfY}. Bwererani ku {tabs}.",
+  "tabs": "ma tabu"
+}

@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- الافتراضي هو الصفحة الأولى --",
+  "details": "التفاصيل",
+  "title": "العنوان",
+  "titleDescription": "اسم الموقع",
+  "homePage": "الصفحة الرئيسية",
+  "homePageDescription": "الصفحة المستخدمة كصفحة الهبوط / الرئيسية الافتراضية",
+  "advanced": "متقدم",
+  "serviceWorker": "إضافة عامل خدمة (service worker) إلى الصفحة الديناميكية",
+  "serviceWorkerDescription": "عطّل هذا إذا كان يجب أن يرى المستخدمون أحدث مخرجات الخادم فورًا دائمًا.",
+  "forceBrowserUpgrade": "فرض ترقية المتصفح",
+  "forceBrowserUpgradeDescription": "اشتراط متصفحات محدّثة تلقائيًا قبل تحميل تجربة الموقع.",
+  "unableToLoadSiteDetails": "تعذّر تحميل تفاصيل الموقع.",
+  "noSiteDetails": "لا توجد تفاصيل متاحة للموقع.",
+  "save": "حفظ"
+}

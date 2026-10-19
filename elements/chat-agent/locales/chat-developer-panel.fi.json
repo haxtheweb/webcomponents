@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Käyttäjän keskustelulokin konsolitaulukko",
+  "consoleTableUserText": "console.table() käyttäjän keskusteluloki",
+  "consoleTableUserTooltip": "Tulosta käyttäjän keskusteluloki taulukkona konsoliin",
+  "consoleTableMerlinLabel": "Merlinin keskustelulokin konsolitaulukko",
+  "consoleTableMerlinText": "console.table() Merlinin keskusteluloki",
+  "consoleTableMerlinTooltip": "Tulosta Merlinin keskusteluloki taulukkona konsoliin",
+  "consoleTableAllLabel": "Koko keskustelulokin konsolitaulukko",
+  "consoleTableAllText": "console.table() koko keskusteluloki",
+  "consoleTableAllTooltip": "Tulosta koko keskusteluloki taulukkona konsoliin",
+  "downloadChatLogJson": "Lataa keskusteluloki .json-muodossa",
+  "downloadChatLogJsonTooltip": "Lataa keskusteluloki .json-muodossa"
+}

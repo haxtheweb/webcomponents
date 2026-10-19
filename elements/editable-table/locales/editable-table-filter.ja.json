@@ -1,0 +1,5 @@
+{
+  "toggleFilter": "フィルターを切り替え。",
+  "toggleFilterForColumn": "列のフィルターを切り替え。",
+  "toggleColumnFilter": "列 {column} のフィルターを切り替え。"
+}

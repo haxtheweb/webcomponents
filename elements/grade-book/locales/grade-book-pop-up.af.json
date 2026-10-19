@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Studente-inhandiging",
   "openInNewWindow": "Maak oop in nuwe venster",
-  "submitted": "Ingedien"
+  "submitted": "Ingedien",
+  "previousStudent": "Vorige student",
+  "nextStudent": "Volgende student",
+  "previousAssignment": "Vorige opdrag",
+  "nextAssignment": "Volgende opdrag"
 }

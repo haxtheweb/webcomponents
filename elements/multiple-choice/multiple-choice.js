@@ -12,6 +12,13 @@ class MultipleChoice extends QuestionElement {
   }
   constructor() {
     super();
+    this.t = {
+      ...this.t,
+      selectAllThatApply: "Select all that apply",
+      selectTheAnswer: "Select the answer",
+      multipleChoiceDirections:
+        "{selection}, then press {checkAnswer}. You will get feedback indicating correctness of your answer and how to proceed.",
+    };
     // QuestionElement's shared strings live in each question type's own namespace
     this.registerLocalization({
       context: this,
@@ -22,12 +29,14 @@ class MultipleChoice extends QuestionElement {
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      <strong>
-        ${!this.singleOption
-          ? html`Select all that apply`
-          : html`Select the answer`}</strong
-      >, then press <strong>${this.t.checkAnswer}</strong>. You will get
-      feedback indicating correctness of your answer and how to proceed.
+      ${this._tParts(this.t.multipleChoiceDirections, {
+        selection: html`<strong
+          >${!this.singleOption
+            ? this.t.selectAllThatApply
+            : this.t.selectTheAnswer}</strong
+        >`,
+        checkAnswer: html`<strong>${this.t.checkAnswer}</strong>`,
+      })}
     </p>`;
   }
 
@@ -47,17 +56,17 @@ class MultipleChoice extends QuestionElement {
       {
         icon: "icons:add",
         callback: "haxClickInlineAdd",
-        label: "Add answer",
+        label: this.t.addAnswer,
       },
       {
         icon: "icons:remove",
         callback: "haxClickInlineRemove",
-        label: "Remove answer",
+        label: this.t.removeAnswer,
       },
       {
         icon: "lrn:edit",
         callback: "haxToggleEdit",
-        label: "Toggle editing feedback blocks",
+        label: this.t.toggleEditingFeedbackBlocks,
       },
     ];
   }

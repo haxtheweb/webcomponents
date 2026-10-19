@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Atsisiųsti žurnalą kaip txt",
+  "downloadChatLog": "Atsisiųsti pokalbio žurnalą",
+  "resetChat": "Atkurti pokalbį",
+  "toggleDataCollection": "Perjungti duomenų rinkimą",
+  "dataCollection": "Duomenų rinkimas",
+  "toggleDeveloperMode": "Perjungti kūrėjo režimą",
+  "exitFullView": "Išeiti iš viso rodinio",
+  "enterFullView": "Įjungti visą rodinį",
+  "hideInterface": "Slėpti sąsają",
+  "resetChatConfirm": "Atkurti pokalbį?",
+  "downloadBeforeResetConfirm": "Ar prieš atkuriant atsisiųsti pokalbio žurnalą?",
+  "dataCollectionOn": "Jūsų pokalbiai bus naudojami mūsų AI modeliams mokyti",
+  "dataCollectionOff": "Jūsų pokalbiai nebus naudojami mūsų AI modeliams mokyti"
+}

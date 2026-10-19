@@ -1,0 +1,11 @@
+{
+  "licenseBy": "انتساب",
+  "licenseBySa": "انتساب ایکو جیہا شیئر",
+  "licenseByNd": "انتساب کوئی ماخوذ کم نئیں",
+  "licenseByNc": "انتساب غیر تجارتی",
+  "licenseByNcSa": "انتساب غیر تجارتی ایکو جیہا شیئر",
+  "licenseByNcNd": "انتساب غیر تجارتی کوئی ماخوذ کم نئیں",
+  "citationWithLicense": "{creator} دا {title}، {license} تحت لائسنس شدہ۔ رسائی {date}۔",
+  "citationWithoutLicense": "{creator} دا {title}۔ رسائی {date}۔",
+  "licenseGraphic": "{license} گرافک"
+}

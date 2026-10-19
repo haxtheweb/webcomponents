@@ -43,5 +43,22 @@
   "emailAddress": "Бул окуучуга кат жөнөтүү",
   "notes": "Эскертмелер",
   "interests": "Кызыкчылыктар",
-  "profileImageFor": "Профиль сүрөтү:"
+  "profileImageFor": "Профиль сүрөтү:",
+  "fileSystem": "Файл системасы",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL акыркы чекити (JSON)",
+  "jsonDataBlob": "JSON маалымат блогу",
+  "additionalCriteriaFeedback": "{criteria} боюнча кошумча пикир",
+  "outOfPoints": "/ {points} упай",
+  "feedbackReport": "Пикир отчету",
+  "criteriaDetails": "Критерийлердин чоо-жайы",
+  "yourFeedback": "Сизге пикир",
+  "additionalCriteriaFeedbackHeading": "Критерийлер боюнча кошумча пикир",
+  "yourTotalScore": "Сиздин жалпы упайыңыз",
+  "scoreOutOfPoints": "{score} / {points} упай",
+  "studentAssignment": "{student} студенттин {assignment} тапшырмасы",
+  "downloadPDF": "PDF жүктөп алуу",
+  "displayMode1": "1-режим",
+  "displayMode2": "2-режим",
+  "twoWindows": "Эки терезе"
 }

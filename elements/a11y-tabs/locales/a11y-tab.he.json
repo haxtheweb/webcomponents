@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "כרטיסייה {xOfY}",
+  "xOfY": "{order} מתוך {total}",
+  "endOfTab": "סוף כרטיסייה {xOfY}. חזרה אל {tabs}.",
+  "tabs": "הכרטיסיות"
+}

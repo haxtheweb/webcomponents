@@ -5,5 +5,9 @@
   "buttons": "Knoppies",
   "futureButtonConfiguration": "Pasgemaakte redigeerderknoppie-opstelling kom binnekort.",
   "save": "Stoor",
-  "saving": "Stoor tans…"
+  "saving": "Stoor tans…",
+  "novice": "Beginner",
+  "expert": "Kenner",
+  "toolbarPreviewAlt": "{audience}-redigeernutsbalk-voorskou",
+  "savingEditorSettingsFailed": "Stoor van redigeerderinstellings het misluk: {error}"
 }

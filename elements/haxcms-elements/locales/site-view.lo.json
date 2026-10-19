@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "ບໍ່ມີຜົນ",
+  "viewsRecordHeading": "ບັນທຶກ",
+  "viewsTitleImage": "ຮູບພາບ {title}",
+  "viewsTitlePreview": "ຕົວຢ່າງ {title}",
+  "viewsNoTimelineRecords": "ບໍ່ມີບັນທຶກທີ່ອີງຕາມວັນທີສຳລັບສະແດງເສັ້ນເວລາ.",
+  "viewsTimelineTitle": "ເສັ້ນເວລາ {title}",
+  "viewsNoChartField": "ບໍ່ພົບຊ່ອງຂໍ້ມູນຕົວເລກສຳລັບສະແດງແຜນພູມ.",
+  "viewsChartingValue": "ແຜນພູມຂອງ {value}",
+  "viewsChartingValueByLabel": "ແຜນພູມຂອງ {value} ຕາມ {label}",
+  "viewsChartTitle": "ແຜນພູມ {title}",
+  "viewsNoTreeRecords": "ບໍ່ມີບັນທຶກແບບລຳດັບຊັ້ນສຳລັບສະແດງແຜນຜັງຕົ້ນໄມ້.",
+  "viewsNoGalleryRecords": "ບໍ່ມີບັນທຶກຮູບພາບສຳລັບສະແດງຄັງຮູບ.",
+  "viewsNoPlaylistRecords": "ບໍ່ມີບັນທຶກສື່ສຳລັບສະແດງລາຍການຫຼິ້ນ.",
+  "fetchFailed": "ການດຶງຂໍ້ມູນລົ້ມເຫຼວ ({status})",
+  "unableToLoadViewData": "ບໍ່ສາມາດໂຫຼດຂໍ້ມູນມຸມມອງໄດ້.",
+  "noResultsFound": "ບໍ່ພົບຜົນລັບ.",
+  "refreshView": "ໂຫຼດມຸມມອງຄືນໃໝ່",
+  "breakIntoStaticContent": "ແຍກເປັນເນື້ອຫາຄົງທີ່",
+  "viewsOpenRecord": "ເປີດບັນທຶກ"
+}

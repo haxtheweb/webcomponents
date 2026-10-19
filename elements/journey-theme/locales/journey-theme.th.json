@@ -1,4 +1,11 @@
 {
   "readMore": "อ่านเพิ่มเติม",
-  "home": "หน้าแรก"
+  "home": "หน้าแรก",
+  "anchorLinkCopied": "คัดลอกลิงก์ยึดแล้ว!",
+  "skipToContent": "ข้ามไปยังเนื้อหา",
+  "changeTheme": "เปลี่ยนธีม",
+  "siteSections": "ส่วนต่างๆ ของไซต์",
+  "pageOfTotal": "หน้า {current} จาก {total}",
+  "siteGenerated": "สร้างไซต์เมื่อ: {date}",
+  "licenseGraphic": "กราฟิก {license}"
 }

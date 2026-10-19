@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Add meg a felhasználónevet",
+  "invalidUsernameOrPassword": "Érvénytelen felhasználónév vagy jelszó",
+  "welcomeLetsGo": "Üdv, {username}! Gyerünk!",
+  "enterYourUsername": "Add meg a felhasználóneved",
+  "username": "Felhasználónév",
+  "next": "Következő",
+  "welcomeBack": "Üdv újra, {username}!",
+  "notYou": "Nem te vagy az?",
+  "enterYourPassword": "Add meg a jelszavad",
+  "password": "Jelszó",
+  "togglePasswordDisplay": "Jelszó megjelenítésének váltása",
+  "login": "Bejelentkezés"
+}

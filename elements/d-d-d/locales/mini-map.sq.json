@@ -1,0 +1,17 @@
+{
+  "editNodes": "Redakto nyjet",
+  "editLines": "Redakto vijat",
+  "reset": "Rivendos",
+  "save": "Ruaj",
+  "cancel": "Anulo",
+  "delete": "Fshi",
+  "type": "Lloji:",
+  "topic": "Tema",
+  "subsection": "Nënseksion",
+  "name": "Emri:",
+  "enterName": "Fut emrin",
+  "url": "URL:",
+  "enterUrl": "Fut URL-në",
+  "activeNode": "Nyje aktive?",
+  "nodeId": "Nyja {id}"
+}

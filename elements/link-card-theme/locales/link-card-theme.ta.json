@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "நங்கூர இணைப்பு நகலெடுக்கப்பட்டது!",
+  "skipToContent": "உள்ளடக்கத்திற்குச் செல்",
+  "changePalette": "வண்ணத் தட்டை மாற்று",
+  "primaryLinks": "முதன்மை இணைப்புகள்",
+  "socialLinks": "சமூக இணைப்புகள்",
+  "myProfile": "என் சுயவிவரம்",
+  "profileImageOf": "{name} சுயவிவரப் படம்",
+  "profileImage": "சுயவிவரப் படம்",
+  "linkCardProfile": "இணைப்பு அட்டைச் சுயவிவரம்",
+  "emptyStateLinks": "இணைப்புப் பொத்தான்களைக் காட்ட site.json இல் மேல்நிலை மெனு உருப்படிகளைச் சேர்க்கவும்.",
+  "titleOnPlatform": "{platform} இல் {title}",
+  "openPlatform": "{platform} ஐத் திற",
+  "paletteUpdated": "வண்ணத் தட்டு விருப்பம் {number} க்குப் புதுப்பிக்கப்பட்டது."
+}

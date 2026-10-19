@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 /**
  * `lesson-highlight`
@@ -11,7 +12,7 @@ import "@haxtheweb/simple-icon/simple-icon.js";
  * @demo demo/index.html
  * @element lesson-highlight
  */
-class LessonHighlight extends SimpleColors {
+class LessonHighlight extends I18NMixin(SimpleColors) {
   /**
    * Convention we use
    */
@@ -23,6 +24,15 @@ class LessonHighlight extends SimpleColors {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      updatingData: "Updating {type} data..",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../../locales/", import.meta.url).href,
+    });
     this.title = "";
     this.subtitle = "";
     this.icon = "star";
@@ -197,7 +207,7 @@ class LessonHighlight extends SimpleColors {
     changedProperties.forEach((oldValue, propName) => {
       // if we go into a loading state, disable the item until loading finishes
       if (propName === "loading" && this[propName] && this.smart) {
-        this.title = `Updating ${this.smart} data..`;
+        this.title = this.t.updatingData.replace("{type}", () => this.smart);
       }
     });
   }

@@ -1,5 +1,8 @@
 {
   "yourAnswer": "توهان جو جواب",
   "checkAnswer": "جواب چيڪ ڪريو",
-  "retry": "ٻيهر ڪوشش ڪريو"
+  "retry": "ٻيهر ڪوشش ڪريو",
+  "correct": "صحيح!",
+  "incorrect": "غلط!",
+  "correctAnswer": "صحيح جواب: {answer}"
 }

@@ -1,0 +1,17 @@
+{
+  "editNodes": "Upravit uzly",
+  "editLines": "Upravit čáry",
+  "reset": "Obnovit",
+  "save": "Uložit",
+  "cancel": "Zrušit",
+  "delete": "Smazat",
+  "type": "Typ:",
+  "topic": "Téma",
+  "subsection": "Podsekce",
+  "name": "Název:",
+  "enterName": "Zadejte název",
+  "url": "URL:",
+  "enterUrl": "Zadejte URL",
+  "activeNode": "Aktivní uzel?",
+  "nodeId": "Uzel {id}"
+}

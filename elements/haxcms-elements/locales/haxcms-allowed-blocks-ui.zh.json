@@ -10,5 +10,9 @@
   "save": "保存",
   "noDescription": "暂无描述。",
   "details": "详细信息",
-  "loadingInventory": "正在加载完整区块清单…"
+  "loadingInventory": "正在加载完整区块清单…",
+  "selectAllButton": "全选",
+  "deselectAllButton": "取消全选",
+  "selectedOfAvailable": "已选 {selected} / 可用 {total}",
+  "savingBlocksFailed": "保存区块失败：{error}"
 }

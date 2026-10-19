@@ -1,4 +1,11 @@
 {
   "readMore": "Has köp okamak",
-  "home": "Baş sahypa"
+  "home": "Baş sahypa",
+  "anchorLinkCopied": "Labyr baglanyşygy göçürildi!",
+  "skipToContent": "Mazmuna geçmek",
+  "changeTheme": "Temany üýtget",
+  "siteSections": "Saýtyň bölümleri",
+  "pageOfTotal": "Sahypa {current} / {total}",
+  "siteGenerated": "Saýt döredildi: {date}",
+  "licenseGraphic": "{license} grafikasy"
 }

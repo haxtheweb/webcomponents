@@ -9,5 +9,8 @@
   "record": "Сабт",
   "pause": "Таваққуфи сабт",
   "stopSave": "Қатъ ва нигоҳ доштан",
-  "clickToTakePhoto": "Барои гирифтани акс клик кунед"
+  "clickToTakePhoto": "Барои гирифтани акс клик кунед",
+  "url": "URL",
+  "open": "кушодан",
+  "removeValue": "Хориҷ кардани {value}"
 }

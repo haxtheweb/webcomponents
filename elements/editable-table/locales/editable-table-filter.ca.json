@@ -1,0 +1,5 @@
+{
+  "toggleFilter": "Commuta el filtre.",
+  "toggleFilterForColumn": "Commuta el filtre de la columna.",
+  "toggleColumnFilter": "Commuta el filtre de la columna {column}."
+}

@@ -7,5 +7,7 @@
   "userAccessGranted": "Gihîştina bikarhêner bi serkeftî hat dayîn!",
   "userNotFound": "Bikarhêner nehat dîtin an destûr tune ye",
   "loadingAddingUser": "Bikarhêner tê zêdekirin...",
-  "grantAccessTo": "Gihîştinê bide:"
+  "grantAccessTo": "Gihîştinê bide:",
+  "networkErrorTryAgain": "Çewtiya torê çêbû. Ji kerema xwe dîsa biceribîne.",
+  "characterWillAppear": "Dema ku navê bikarhêner binivîsî karakter dê xuya bibe"
 }

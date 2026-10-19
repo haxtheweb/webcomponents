@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Console table ng chat log ng user",
+  "consoleTableUserText": "console.table() chat log ng user",
+  "consoleTableUserTooltip": "I-print ang Chat Log ng User bilang Table sa Console",
+  "consoleTableMerlinLabel": "Console table ng chat log ni merlin",
+  "consoleTableMerlinText": "console.table() chat log ni merlin",
+  "consoleTableMerlinTooltip": "I-print ang Chat Log ni Merlin bilang Table sa Console",
+  "consoleTableAllLabel": "Console table ng buong chat log",
+  "consoleTableAllText": "console.table() buong chat log",
+  "consoleTableAllTooltip": "I-print ang Buong Chat Log bilang Table sa Console",
+  "downloadChatLogJson": "I-download ang chat log bilang .json",
+  "downloadChatLogJsonTooltip": "I-download ang Chat Log bilang .json"
+}

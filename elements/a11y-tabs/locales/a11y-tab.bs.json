@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Kartica {xOfY}",
+  "xOfY": "{order} od {total}",
+  "endOfTab": "Kraj kartice {xOfY}. Nazad na {tabs}.",
+  "tabs": "kartice"
+}

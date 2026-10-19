@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Dolen angor wedi'i chopïo!",
+  "skipToContent": "Neidio i'r cynnwys",
+  "changePalette": "Newid palet",
+  "primaryLinks": "Dolenni cynradd",
+  "socialLinks": "Dolenni cymdeithasol",
+  "myProfile": "Fy mhroffil",
+  "profileImageOf": "Delwedd proffil {name}",
+  "profileImage": "Delwedd proffil",
+  "linkCardProfile": "Proffil cerdyn dolenni",
+  "emptyStateLinks": "Ychwanegwch eitemau dewislen lefel uchaf yn site.json i ddangos botymau dolenni.",
+  "titleOnPlatform": "{title} ar {platform}",
+  "openPlatform": "Agor {platform}",
+  "paletteUpdated": "Palet lliw wedi'i ddiweddaru i opsiwn {number}."
+}

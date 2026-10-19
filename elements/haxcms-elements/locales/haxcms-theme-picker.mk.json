@@ -1,0 +1,11 @@
+{
+  "theme": "Тема",
+  "active": "Активна",
+  "selected": "Избрана",
+  "noPreview": "Нема преглед",
+  "currentlyActiveAndSelected": "Моментално активна и избрана тема",
+  "currentlyActive": "Моментално активна тема",
+  "selectedToApplyOnSave": "Избрана тема за примена при зачувување",
+  "themeSelection": "Избор на тема",
+  "noThemesAvailable": "Нема достапни теми."
+}

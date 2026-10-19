@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Kunne ikke indlæse temaer: {error}",
+  "noThemesForView": "Ingen temaer tilgængelige for denne visning.",
+  "active": "Aktiv",
+  "themeIsActive": "Temaet {name} er aktivt",
+  "applyTheme": "Anvend temaet {name}",
+  "apply": "Anvend",
+  "preview": "Forhåndsvisning",
+  "name": "Navn",
+  "element": "Element",
+  "description": "Beskrivelse",
+  "action": "Handling",
+  "loadingThemes": "Indlæser temaer...",
+  "themesShown": "{count} temaer vist",
+  "themesShownDefaults": "{count} temaer vist (app-hax-standarder)",
+  "availableHaxcmsThemes": "Tilgængelige HAXcms-temaer",
+  "gallery": "Galleri",
+  "table": "Tabel"
+}

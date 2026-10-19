@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "ለተጨማሪ የHAX አካላት የድር አካላት መዝገብን በመቃኘት ላይ..",
+  "enabled": "ነቅቷል",
+  "disabled": "ተሰናክሏል",
+  "details": "ዝርዝሮች",
+  "tags": "መለያዎች:",
+  "tagName": "የመለያ ስም:",
+  "developerUsage": "የገንቢ አጠቃቀም:",
+  "demo": "ማሳያ",
+  "popUpDemo": "ብቅ-ባይ ማሳያ",
+  "demoOf": "የ{tag} ማሳያ"
+}

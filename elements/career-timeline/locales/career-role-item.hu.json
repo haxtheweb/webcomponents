@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Szerepkör megnevezése",
+  "describeYourRole": "Írd le itt a szerepkörödet...",
+  "present": "Mutasd be",
+  "skills": "Készségek:",
+  "skillsAndMore": "{skills} és további {count}",
+  "yearShort": "{count} év",
+  "yearsShort": "{count} év",
+  "monthShort": "{count} hó",
+  "monthsShort": "{count} hó"
+}

@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Skriv inn brukernavn",
+  "invalidUsernameOrPassword": "Ugyldig brukernavn eller passord",
+  "welcomeLetsGo": "Velkommen, {username}! Kjør på!",
+  "enterYourUsername": "Skriv inn brukernavnet ditt",
+  "username": "Brukernavn",
+  "next": "Neste",
+  "welcomeBack": "Velkommen tilbake, {username}!",
+  "notYou": "Ikke deg?",
+  "enterYourPassword": "Skriv inn passordet ditt",
+  "password": "Passord",
+  "togglePasswordDisplay": "Vis/skjul passord",
+  "login": "Logg inn"
+}

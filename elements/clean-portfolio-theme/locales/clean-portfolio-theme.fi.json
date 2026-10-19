@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Ankkurilinkki kopioitu!",
+  "skipToContent": "Siirry sisältöön",
+  "siteHome": "Sivuston etusivu",
+  "mainNavigation": "Päänavigointi",
+  "toggleMenu": "Näytä/piilota valikko",
+  "changeTheme": "Vaihda teemaa",
+  "breadcrumb": "Murupolku",
+  "tagFilter": "Tunnistesuodatin:",
+  "all": "Kaikki",
+  "pageNumberOfTotal": "Sivunumero: {current}/{total}",
+  "siteGenerated": "Sivusto luotu: {date}",
+  "copyright": "Tekijänoikeus: {year} {author}",
+  "viewContentByTag": "Näytä sisältö tunnisteittain",
+  "licenseGraphic": "{license}-kuva"
+}

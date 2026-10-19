@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Näita teema eelvaadet",
+  "hideThemePreview": "Peida teema eelvaade",
+  "themePreviewPanel": "Teema eelvaate paneel",
+  "themePreview": "Teema eelvaade",
+  "themePreviewDescription": "Proovi sirvimise ajal ajutiselt teemat ja paletti. Algse välimuse taastamiseks kasuta nuppu Tühista.",
+  "loadingThemes": "Teemade laadimine...",
+  "theme": "Teema",
+  "palette": "Palett",
+  "cancel": "Tühista",
+  "openAppearanceSettings": "Ava välimuse seaded"
+}

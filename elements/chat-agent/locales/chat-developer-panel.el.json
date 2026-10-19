@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Πίνακας κονσόλας αρχείου καταγραφής συνομιλίας χρήστη",
+  "consoleTableUserText": "console.table() αρχείο καταγραφής συνομιλίας χρήστη",
+  "consoleTableUserTooltip": "Εκτύπωση αρχείου καταγραφής συνομιλίας χρήστη ως πίνακα στην κονσόλα",
+  "consoleTableMerlinLabel": "Πίνακας κονσόλας αρχείου καταγραφής συνομιλίας merlin",
+  "consoleTableMerlinText": "console.table() αρχείο καταγραφής συνομιλίας merlin",
+  "consoleTableMerlinTooltip": "Εκτύπωση αρχείου καταγραφής συνομιλίας Merlin ως πίνακα στην κονσόλα",
+  "consoleTableAllLabel": "Πίνακας κονσόλας ολόκληρου του αρχείου καταγραφής συνομιλίας",
+  "consoleTableAllText": "console.table() ολόκληρο το αρχείο καταγραφής συνομιλίας",
+  "consoleTableAllTooltip": "Εκτύπωση ολόκληρου του αρχείου καταγραφής συνομιλίας ως πίνακα στην κονσόλα",
+  "downloadChatLogJson": "Λήψη αρχείου καταγραφής συνομιλίας ως .json",
+  "downloadChatLogJsonTooltip": "Λήψη αρχείου καταγραφής συνομιλίας ως .json"
+}

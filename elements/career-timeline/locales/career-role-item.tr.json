@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Rol Başlığı",
+  "describeYourRole": "Rolünüzü burada açıklayın...",
+  "present": "Sun",
+  "skills": "Beceriler:",
+  "skillsAndMore": "{skills} ve +{count} tane daha",
+  "yearShort": "{count} yıl",
+  "yearsShort": "{count} yıl",
+  "monthShort": "{count} ay",
+  "monthsShort": "{count} ay"
+}

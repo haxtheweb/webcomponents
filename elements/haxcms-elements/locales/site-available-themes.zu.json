@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Kwehlulekile ukulayisha amathimu: {error}",
+  "noThemesForView": "Awekho amathimu atholakalayo kulokhu kubuka.",
+  "active": "Kuyasebenza",
+  "themeIsActive": "Ithimu ye-{name} iyasebenza",
+  "applyTheme": "Sebenzisa ithimu ye-{name}",
+  "apply": "Sebenzisa",
+  "preview": "Buka kuqala",
+  "name": "Igama",
+  "element": "Isakhi",
+  "description": "Incazelo",
+  "action": "Isenzo",
+  "loadingThemes": "Kulayishwa amathimu...",
+  "themesShown": "Amathimu angu-{count} aboniswe",
+  "themesShownDefaults": "Amathimu angu-{count} aboniswe (okuzenzakalelayo kwe-app-hax)",
+  "availableHaxcmsThemes": "Amathimu e-HAXcms Atholakalayo",
+  "gallery": "Igalari",
+  "table": "Ithebula"
+}

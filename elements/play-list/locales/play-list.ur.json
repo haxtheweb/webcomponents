@@ -1,0 +1,11 @@
+{
+  "playlist": "پلے لسٹ",
+  "carousel": "کیروسل",
+  "slide": "سلائیڈ",
+  "slideNumber": "سلائیڈ {number}",
+  "slideOfTotal": "سلائیڈ {number} از {total}",
+  "previousSlide": "پچھلی سلائیڈ",
+  "nextSlide": "اگلی سلائیڈ",
+  "slidePages": "سلائیڈ صفحات",
+  "goToSlide": "سلائیڈ {number} پر جائیں"
+}

@@ -15,6 +15,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * @title Space Book
@@ -31,6 +32,25 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      closeNavigationMenu: "Close navigation menu",
+      main: "Main",
+      siteTitle: "Site Title",
+      search: "Search",
+      toggleDarkMode: "Toggle dark mode",
+      showNavigation: "Show navigation",
+      siteNavigation: "Site navigation",
+      closeNavigation: "Close navigation",
+      updated: "Updated",
+    };
+    // no I18NMixin in this class chain, so register with the store directly
+    I18NManagerStore.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this._items = [];
     this.activeItem = {};
     this.manifest = {};
@@ -871,23 +891,23 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
     
     return html`
       <div class="app-container">
-        <a class="skip-link" href="#main-content">Skip to content</a>
+        <a class="skip-link" href="#main-content">${this.t.skipToContent}</a>
         <!-- Mobile nav overlay -->
         <button
           class="mobile-nav-overlay"
           type="button"
           @click="${this.closeMobileNav}"
-          aria-label="Close navigation menu"
+          aria-label="${this.t.closeNavigationMenu}"
         ></button>
         
         <!-- Fixed Header -->
         <div class="site-header">
-          <nav class="header-nav" aria-label="Main">
+          <nav class="header-nav" aria-label="${this.t.main}">
             <!-- Mobile site info (hidden on desktop) -->
             <div class="header-content">
               <a href="${this.homeLink}" class="site-title-link">
                 <div>
-                  <span class="site-title">${site.name || 'Site Title'}</span>
+                  <span class="site-title">${site.name || this.t.siteTitle}</span>
                   ${manifest.description ? html`<span class="site-subtitle">${manifest.description}</span>` : ''}
                 </div>
               </a>
@@ -898,9 +918,9 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
             <!-- Search Button -->
               <div class="header-buttons">
                 <site-modal 
-                title="Search" 
+                title="${this.t.search}" 
                   @click="${this.toggleSearch}" 
-                  button-label="Search"
+                  button-label="${this.t.search}"
                   icon="search"
                   position="bottom"
                   class="search-button">
@@ -912,8 +932,8 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
                 <button 
                   class="dark-mode-toggle" 
                   @click="${this.toggleDarkMode}"
-                  title="Toggle dark mode"
-                  aria-label="Toggle dark mode">
+                  title="${this.t.toggleDarkMode}"
+                  aria-label="${this.t.toggleDarkMode}">
                   <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="24" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M11.67 8.658a3.661 3.661 0 0 0-.781 1.114 3.28 3.28 0 0 0-.268 1.329v1.6a1.304 1.304 0 0 1-.794 1.197 1.282 1.282 0 0 1-.509.102H7.712a1.285 1.285 0 0 1-.922-.379 1.303 1.303 0 0 1-.38-.92v-1.6c0-.479-.092-.921-.274-1.329a3.556 3.556 0 0 0-.776-1.114 4.689 4.689 0 0 1-1.006-1.437A4.187 4.187 0 0 1 4 5.5a4.432 4.432 0 0 1 .616-2.27c.197-.336.432-.64.705-.914a4.6 4.6 0 0 1 .911-.702c.338-.196.7-.348 1.084-.454a4.45 4.45 0 0 1 1.2-.16 4.476 4.476 0 0 1 2.276.614 4.475 4.475 0 0 1 1.622 1.616 4.438 4.438 0 0 1 .616 2.27c0 .617-.117 1.191-.353 1.721a4.69 4.69 0 0 1-1.006 1.437zM9.623 10.5H7.409v2.201c0 .081.028.15.09.212a.29.29 0 0 0 .213.09h1.606a.289.289 0 0 0 .213-.09.286.286 0 0 0 .09-.212V10.5z"></path>
                   </svg>
@@ -926,8 +946,8 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
               <button 
                 class="mobile-menu-btn" 
                 @click="${this.toggleMobileNav}"
-                title="Show navigation"
-                aria-label="Show navigation"
+                title="${this.t.showNavigation}"
+                aria-label="${this.t.showNavigation}"
                 aria-expanded="${this.mobileNavOpen}"
                 aria-controls="sidebar-nav">
                 <svg fill="none" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor">
@@ -939,11 +959,11 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         </div>
         
         <!-- Sidebar Navigation -->
-        <nav class="sidebar-nav" id="sidebar-nav" aria-label="Site navigation">
+        <nav class="sidebar-nav" id="sidebar-nav" aria-label="${this.t.siteNavigation}">
           <button 
             class="sidebar-close-btn" 
             @click="${this.closeMobileNav}"
-            aria-label="Close navigation">
+            aria-label="${this.t.closeNavigation}">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
               <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
             </svg>
@@ -966,7 +986,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
                   <div class="page-meta">
                     ${activeItem && activeItem.metadata && activeItem.metadata.updated ? html`
                       <div class="page-meta-item">
-                        Updated <time datetime="${new Date(activeItem.metadata.updated * 1000).toISOString()}">
+                        ${this.t.updated} <time datetime="${new Date(activeItem.metadata.updated * 1000).toISOString()}">
                           ${new Date(activeItem.metadata.updated * 1000).toLocaleDateString()}
                         </time>
                       </div>

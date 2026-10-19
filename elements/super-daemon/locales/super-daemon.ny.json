@@ -36,5 +36,7 @@
   "clickToDoAnything": "Dinani kuchita chilichonse!",
   "moreDetails": "Zambiri",
   "details": "Tsatanetsatane",
-  "saved": "Yasungidwa"
+  "saved": "Yasungidwa",
+  "opensInNewWindow": "Imatseguka pa zenera latsopano",
+  "resultsCount": "Zotsatira {count}"
 }

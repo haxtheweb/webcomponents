@@ -36,5 +36,7 @@
   "clickToDoAnything": "ಏನನ್ನಾದರೂ ಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ!",
   "moreDetails": "ಹೆಚ್ಚಿನ ವಿವರಗಳು",
   "details": "ವಿವರಗಳು",
-  "saved": "ಉಳಿಸಲಾಗಿದೆ"
+  "saved": "ಉಳಿಸಲಾಗಿದೆ",
+  "opensInNewWindow": "ಹೊಸ ವಿಂಡೋದಲ್ಲಿ ತೆರೆಯುತ್ತದೆ",
+  "resultsCount": "{count} ಫಲಿತಾಂಶಗಳು"
 }

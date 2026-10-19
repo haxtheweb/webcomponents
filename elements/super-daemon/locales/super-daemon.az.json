@@ -36,5 +36,7 @@
   "clickToDoAnything": "Hər hansı şey etmək üçün klikləyin!",
   "moreDetails": "Daha çox təfərrüat",
   "details": "Təfərrüatlar",
-  "saved": "Saxlanıldı"
+  "saved": "Saxlanıldı",
+  "opensInNewWindow": "Yeni pəncərədə açılır",
+  "resultsCount": "{count} nəticə"
 }

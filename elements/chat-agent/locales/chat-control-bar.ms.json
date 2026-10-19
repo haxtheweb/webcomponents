@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Muat turun Log sebagai txt",
+  "downloadChatLog": "Muat Turun Log Sembang",
+  "resetChat": "Tetapkan Semula Sembang",
+  "toggleDataCollection": "Togol Pengumpulan Data",
+  "dataCollection": "Pengumpulan Data",
+  "toggleDeveloperMode": "Togol Mod Pembangun",
+  "exitFullView": "Keluar Paparan Penuh",
+  "enterFullView": "Masuk Paparan Penuh",
+  "hideInterface": "Sembunyikan Antara Muka",
+  "resetChatConfirm": "Tetapkan semula sembang?",
+  "downloadBeforeResetConfirm": "Muat turun log sembang sebelum anda menetapkan semula?",
+  "dataCollectionOn": "Perbualan anda akan digunakan untuk melatih model AI kami",
+  "dataCollectionOff": "Perbualan anda tidak akan digunakan untuk melatih model AI kami"
+}

@@ -36,5 +36,7 @@
   "clickToDoAnything": "कुछ भी करने के लिए क्लिक करें!",
   "moreDetails": "अधिक विवरण",
   "details": "विवरण",
-  "saved": "सहेजा गया"
+  "saved": "सहेजा गया",
+  "opensInNewWindow": "नई विंडो में खुलता है",
+  "resultsCount": "{count} परिणाम"
 }

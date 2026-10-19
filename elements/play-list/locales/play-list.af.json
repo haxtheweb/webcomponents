@@ -1,0 +1,11 @@
+{
+  "playlist": "Speellys",
+  "carousel": "karrousel",
+  "slide": "skyfie",
+  "slideNumber": "Skyfie {number}",
+  "slideOfTotal": "Skyfie {number} van {total}",
+  "previousSlide": "Vorige skyfie",
+  "nextSlide": "Volgende skyfie",
+  "slidePages": "Skyfiebladsye",
+  "goToSlide": "Gaan na skyfie {number}"
+}

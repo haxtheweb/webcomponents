@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Functietitel",
+  "describeYourRole": "Beschrijf hier je functie...",
+  "present": "Presenteren",
+  "skills": "Vaardigheden:",
+  "skillsAndMore": "{skills} en nog +{count}",
+  "yearShort": "{count} jr",
+  "yearsShort": "{count} jr",
+  "monthShort": "{count} mnd",
+  "monthsShort": "{count} mnd"
+}

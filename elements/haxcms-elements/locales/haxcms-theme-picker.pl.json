@@ -1,0 +1,11 @@
+{
+  "theme": "Motyw",
+  "active": "Aktywna",
+  "selected": "Wybrana",
+  "noPreview": "Brak podglądu",
+  "currentlyActiveAndSelected": "Obecnie aktywny i wybrany motyw",
+  "currentlyActive": "Obecnie aktywny motyw",
+  "selectedToApplyOnSave": "Motyw wybrany do zastosowania po zapisaniu",
+  "themeSelection": "Wybór motywu",
+  "noThemesAvailable": "Brak dostępnych motywów."
+}

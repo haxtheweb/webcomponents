@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Kon nie temas laai nie: {error}",
+  "noThemesForView": "Geen temas beskikbaar vir hierdie aansig nie.",
+  "active": "Aktief",
+  "themeIsActive": "{name}-tema is aktief",
+  "applyTheme": "Pas {name}-tema toe",
+  "apply": "Pas toe",
+  "preview": "Voorskou",
+  "name": "Naam",
+  "element": "Element",
+  "description": "Beskrywing",
+  "action": "Aksie",
+  "loadingThemes": "Laai tans temas...",
+  "themesShown": "{count} temas gewys",
+  "themesShownDefaults": "{count} temas gewys (app-hax-verstekwaardes)",
+  "availableHaxcmsThemes": "Beskikbare HAXcms-temas",
+  "gallery": "Galery",
+  "table": "Tabel"
+}

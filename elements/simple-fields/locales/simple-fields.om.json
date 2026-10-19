@@ -9,5 +9,8 @@
   "record": "Waraabi",
   "pause": "Waraabbii dhaabi",
   "stopSave": "Dhaabii olkaa'i",
-  "clickToTakePhoto": "Suuraa kaasuuf cuqaasi"
+  "clickToTakePhoto": "Suuraa kaasuuf cuqaasi",
+  "url": "URL",
+  "open": "bani",
+  "removeValue": "{value} haqi"
 }

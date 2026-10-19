@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "标签页 {xOfY}",
+  "xOfY": "第 {order} 个，共 {total} 个",
+  "endOfTab": "标签页 {xOfY} 结束。返回{tabs}。",
+  "tabs": "标签页列表"
+}

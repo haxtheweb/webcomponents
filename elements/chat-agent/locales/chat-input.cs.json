@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Zobrazit dříve odeslanou zprávu (nahoru)",
+  "displayPreviousMessageDown": "Zobrazit dříve odeslanou zprávu (dolů)",
+  "sendPrompt": "Odeslat prompt",
+  "sendPromptToMerlin": "Odeslat prompt Merlinovi",
+  "shortenPrompt": "Zkraťte prosím svůj prompt na nejvýše {limit} znaků."
+}

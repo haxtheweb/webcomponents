@@ -1,3 +1,8 @@
 {
-  "title": "حوالہ جات"
+  "title": "حوالہ جات",
+  "export": "برآمد کریں",
+  "exportCitations": "حوالہ جات برآمد کریں",
+  "copy": "کاپی کریں",
+  "exportCitationFormat": "حوالے کا فارمیٹ برآمد کریں",
+  "selectCitationFormatBelow": "نیچے سے حوالے کا فارمیٹ منتخب کریں"
 }

@@ -1,0 +1,11 @@
+{
+  "theme": "თემა",
+  "active": "აქტიური",
+  "selected": "არჩეული",
+  "noPreview": "გადახედვა არ არის",
+  "currentlyActiveAndSelected": "ამჟამად აქტიური და არჩეული თემა",
+  "currentlyActive": "ამჟამად აქტიური თემა",
+  "selectedToApplyOnSave": "შენახვისას გამოსაყენებლად არჩეული თემა",
+  "themeSelection": "თემის არჩევა",
+  "noThemesAvailable": "თემები ხელმისაწვდომი არ არის."
+}

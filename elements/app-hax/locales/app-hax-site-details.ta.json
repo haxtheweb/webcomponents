@@ -1,0 +1,18 @@
+{
+  "copy": "நகலெடு",
+  "download": "பதிவிறக்கு",
+  "archive": "காப்பகப்படுத்து",
+  "copyOperation": "நகலெடு",
+  "downloadOperation": "பதிவிறக்கு",
+  "archiveOperation": "காப்பகப்படுத்து",
+  "created": "உருவாக்கப்பட்டது",
+  "updated": "புதுப்பிக்கப்பட்டது",
+  "pages": "பக்கங்கள்",
+  "url": "URL",
+  "confirm": "உறுதிசெய்",
+  "cancel": "ரத்துசெய்",
+  "siteOperationConfirmTitle": "{siteName}: {operationName}?",
+  "siteOperationConfirmMessage": "{siteName} ஐ {operation} செய்ய விரும்புகிறீர்களா?",
+  "siteOperationSuccessful": "{siteName} {operation} வெற்றிகரமாக முடிந்தது!",
+  "siteOperationFailed": "{siteName} {operation} தோல்வியடைந்தது"
+}

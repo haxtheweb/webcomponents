@@ -1,0 +1,11 @@
+{
+  "playlist": "Daftar putar",
+  "carousel": "korsel",
+  "slide": "slide",
+  "slideNumber": "Slide {number}",
+  "slideOfTotal": "Slide {number} dari {total}",
+  "previousSlide": "Slide sebelumnya",
+  "nextSlide": "Slide berikutnya",
+  "slidePages": "Halaman slide",
+  "goToSlide": "Buka slide {number}"
+}

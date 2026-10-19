@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Inachanganua Sajili ya Vijenzi vya Wavuti kwa vipengele zaidi vya HAX..",
+  "enabled": "Imewezeshwa",
+  "disabled": "Imezimwa",
+  "details": "Maelezo",
+  "tags": "Lebo:",
+  "tagName": "Jina la lebo:",
+  "developerUsage": "Matumizi ya msanidi programu:",
+  "demo": "Onyesho",
+  "popUpDemo": "Onyesho ibukizi",
+  "demoOf": "Onyesho la {tag}"
+}

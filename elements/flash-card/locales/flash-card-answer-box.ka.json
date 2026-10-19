@@ -1,5 +1,8 @@
 {
   "yourAnswer": "თქვენი პასუხი",
   "checkAnswer": "პასუხის შემოწმება",
-  "retry": "ხელახლა ცდა"
+  "retry": "ხელახლა ცდა",
+  "correct": "სწორია!",
+  "incorrect": "არასწორია!",
+  "correctAnswer": "სწორი პასუხი: {answer}"
 }

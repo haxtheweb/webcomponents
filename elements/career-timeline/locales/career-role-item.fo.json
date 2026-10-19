@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Leikluts heiti",
+  "describeYourRole": "Lýs leiklut tín her...",
+  "present": "Legg fram",
+  "skills": "Førleikar:",
+  "skillsAndMore": "{skills} og +{count} afturat",
+  "yearShort": "{count} ár",
+  "yearsShort": "{count} ár",
+  "monthShort": "{count} mán",
+  "monthsShort": "{count} mán"
+}

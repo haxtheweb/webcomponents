@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "ምዝግብ ማስታወሻን እንደ txt አውርድ",
+  "downloadChatLog": "የውይይት ምዝግብ ማስታወሻ አውርድ",
+  "resetChat": "ውይይትን ዳግም አስጀምር",
+  "toggleDataCollection": "የውሂብ ስብሰባን ቀያይር",
+  "dataCollection": "የውሂብ ስብሰባ",
+  "toggleDeveloperMode": "የገንቢ ሁነታን ቀያይር",
+  "exitFullView": "ከሙሉ እይታ ውጣ",
+  "enterFullView": "ወደ ሙሉ እይታ ግባ",
+  "hideInterface": "በይነገጽን ደብቅ",
+  "resetChatConfirm": "ውይይቱ ዳግም ይጀመር?",
+  "downloadBeforeResetConfirm": "ዳግም ከማስጀመርዎ በፊት የውይይት ምዝግብ ማስታወሻውን ያውርዱ?",
+  "dataCollectionOn": "ውይይቶችዎ የAI ሞዴሎቻችንን ለማሰልጠን ጥቅም ላይ ይውላሉ",
+  "dataCollectionOff": "ውይይቶችዎ የAI ሞዴሎቻችንን ለማሰልጠን ጥቅም ላይ አይውሉም"
+}

@@ -1,3 +1,8 @@
 {
-  "title": "Әдебиеттер"
+  "title": "Әдебиеттер",
+  "export": "Экспорттау",
+  "exportCitations": "Дәйексөздерді экспорттау",
+  "copy": "Көшіру",
+  "exportCitationFormat": "Дәйексөз пішімін экспорттау",
+  "selectCitationFormatBelow": "Төменнен дәйексөз пішімін таңдаңыз"
 }

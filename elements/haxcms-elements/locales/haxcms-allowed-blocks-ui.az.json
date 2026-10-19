@@ -10,5 +10,9 @@
   "save": "Saxla",
   "noDescription": "Təsvir mövcud deyil.",
   "details": "Təfərrüatlar",
-  "loadingInventory": "Blokların tam siyahısı yüklənir…"
+  "loadingInventory": "Blokların tam siyahısı yüklənir…",
+  "selectAllButton": "Hamısını seç",
+  "deselectAllButton": "Seçimi ləğv et",
+  "selectedOfAvailable": "{selected} seçilib / {total} mövcuddur",
+  "savingBlocksFailed": "Blokları saxlamaq alınmadı: {error}"
 }

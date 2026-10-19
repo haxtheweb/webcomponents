@@ -1,0 +1,11 @@
+{
+  "theme": "Teema",
+  "active": "Aktiivinen",
+  "selected": "Valittu",
+  "noPreview": "Ei esikatselua",
+  "currentlyActiveAndSelected": "Tällä hetkellä aktiivinen ja valittu teema",
+  "currentlyActive": "Tällä hetkellä aktiivinen teema",
+  "selectedToApplyOnSave": "Tallennettaessa käyttöön otettavaksi valittu teema",
+  "themeSelection": "Teeman valinta",
+  "noThemesAvailable": "Teemoja ei ole saatavilla."
+}

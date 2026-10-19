@@ -1,4 +1,11 @@
 {
   "readMore": "Lesa meira",
-  "home": "Forsíða"
+  "home": "Forsíða",
+  "anchorLinkCopied": "Akkeristengill afritaður!",
+  "skipToContent": "Fara beint í efni",
+  "changeTheme": "Skipta um þema",
+  "siteSections": "Hlutar vefsins",
+  "pageOfTotal": "Síða {current} af {total}",
+  "siteGenerated": "Vefur búinn til: {date}",
+  "licenseGraphic": "Merki {license}"
 }

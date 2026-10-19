@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "ປິດໃຊ້ງານໃນຄຸນສົມບັດ",
+  "appearance": "ຮູບລັກສະນະ",
+  "structure": "ໂຄງສ້າງ",
+  "content": "ເນື້ອຫາ",
+  "reports": "ລາຍງານ",
+  "about": "ກ່ຽວກັບ",
+  "files": "ໄຟລ໌",
+  "views": "ມຸມມອງ",
+  "features": "ຄຸນສົມບັດ",
+  "editor": "ຕົວແກ້ໄຂ",
+  "blocks": "ບລັອກ",
+  "importExport": "ນຳເຂົ້າ / ສົ່ງອອກ",
+  "details": "ລາຍລະອຽດ",
+  "advanced": "ຂັ້ນສູງ"
+}

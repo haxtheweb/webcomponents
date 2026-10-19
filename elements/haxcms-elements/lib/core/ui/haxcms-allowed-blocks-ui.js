@@ -73,6 +73,10 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       noDescription: "No description available.",
       details: "Details",
       loadingInventory: "Loading full block inventory…",
+      selectAllButton: "Select All",
+      deselectAllButton: "Deselect All",
+      selectedOfAvailable: "{selected} selected / {total} available",
+      savingBlocksFailed: "Saving blocks failed: {error}",
     };
 
     this.registerLocalization({
@@ -711,7 +715,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                   ?disabled=${!this.inventoryReady}
                   data-category="all-blocks"
                   @click="${this._selectAll}"
-                  >Select All</simple-icon-button-lite
+                  >${this.t.selectAllButton}</simple-icon-button-lite
                 >
                 <simple-icon-button-lite
                   icon="icons:select-all"
@@ -720,14 +724,15 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                   ?disabled=${!this.inventoryReady}
                   data-category="all-blocks"
                   @click="${this._deselectAll}"
-                  >Deselect All</simple-icon-button-lite
+                  >${this.t.deselectAllButton}</simple-icon-button-lite
                 >
               </div>
             </div>
             <div class="note">
               ${this.inventoryReady
-                ? html`${toggleableSelected} selected / ${toggleableTotal}
-                  available
+                ? html`${this.t.selectedOfAvailable
+                    .replace("{selected}", () => toggleableSelected)
+                    .replace("{total}", () => toggleableTotal)}
                   ${HAXStore.requiredPrimitives.size
                     ? html`<span> • ${this.t.requiredTextNote}</span>`
                     : ""}`
@@ -807,7 +812,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                                   group.category,
                                 )}"
                                 @click="${this._selectAll}"
-                                >Select All</simple-icon-button-lite
+                                >${this.t.selectAllButton}</simple-icon-button-lite
                               >
                               <simple-icon-button-lite
                                 icon="icons:select-all"
@@ -817,7 +822,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                                   group.category,
                                 )}"
                                 @click="${this._deselectAll}"
-                                >Deselect All</simple-icon-button-lite
+                                >${this.t.deselectAllButton}</simple-icon-button-lite
                               >
                             </div>
                           `}
@@ -1329,7 +1334,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     } catch (error) {
       console.error("Saving blocks failed:", error);
       HAXStore.toast(
-        `Saving blocks failed: ${error.message}`,
+        this.t.savingBlocksFailed.replace("{error}", () => error.message),
         5000,
         {},
         "fit-bottom",

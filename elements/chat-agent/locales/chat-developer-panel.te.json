@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "కన్సోల్ టేబుల్ వినియోగదారు చాట్ లాగ్",
+  "consoleTableUserText": "console.table() వినియోగదారు చాట్ లాగ్",
+  "consoleTableUserTooltip": "వినియోగదారు చాట్ లాగ్‌ను కన్సోల్‌కు టేబుల్‌గా ముద్రించండి",
+  "consoleTableMerlinLabel": "కన్సోల్ టేబుల్ Merlin చాట్ లాగ్",
+  "consoleTableMerlinText": "console.table() merlin చాట్ లాగ్",
+  "consoleTableMerlinTooltip": "Merlin చాట్ లాగ్‌ను కన్సోల్‌కు టేబుల్‌గా ముద్రించండి",
+  "consoleTableAllLabel": "కన్సోల్ టేబుల్ మొత్తం చాట్ లాగ్",
+  "consoleTableAllText": "console.table() మొత్తం చాట్ లాగ్",
+  "consoleTableAllTooltip": "మొత్తం చాట్ లాగ్‌ను కన్సోల్‌కు టేబుల్‌గా ముద్రించండి",
+  "downloadChatLogJson": "చాట్ లాగ్‌ను .jsonగా డౌన్‌లోడ్ చేయండి",
+  "downloadChatLogJsonTooltip": "చాట్ లాగ్‌ను .jsonగా డౌన్‌లోడ్ చేయండి"
+}

@@ -1,0 +1,11 @@
+{
+  "theme": "Тақырып",
+  "active": "Белсенді",
+  "selected": "Таңдалған",
+  "noPreview": "Алдын ала қарау жоқ",
+  "currentlyActiveAndSelected": "Қазір белсенді және таңдалған тақырып",
+  "currentlyActive": "Қазір белсенді тақырып",
+  "selectedToApplyOnSave": "Сақтағанда қолданылатын таңдалған тақырып",
+  "themeSelection": "Тақырыпты таңдау",
+  "noThemesAvailable": "Қолжетімді тақырыптар жоқ."
+}

@@ -54,5 +54,6 @@
   "requirementUppercase": "Jedno veliko slovo",
   "requirementLowercase": "Jedno malo slovo",
   "requirementNumber": "Jedan broj",
-  "requirementSymbol": "Jedan simbol"
+  "requirementSymbol": "Jedan simbol",
+  "haxcmsMascotAlt": "HAXcms maskota Svjetski putnik"
 }

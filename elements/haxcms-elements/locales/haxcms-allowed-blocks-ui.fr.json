@@ -10,5 +10,9 @@
   "save": "Enregistrer",
   "noDescription": "Aucune description disponible.",
   "details": "Détails",
-  "loadingInventory": "Chargement de l'inventaire complet des blocs…"
+  "loadingInventory": "Chargement de l'inventaire complet des blocs…",
+  "selectAllButton": "Tout sélectionner",
+  "deselectAllButton": "Tout désélectionner",
+  "selectedOfAvailable": "{selected} sélectionnés / {total} disponibles",
+  "savingBlocksFailed": "Échec de l'enregistrement des blocs : {error}"
 }

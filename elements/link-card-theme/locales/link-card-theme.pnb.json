@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "اینکر لنک کاپی ہو گیا!",
+  "skipToContent": "مواد تے جاؤ",
+  "changePalette": "رنگ پٹی بدلو",
+  "primaryLinks": "مُڈھلے لنک",
+  "socialLinks": "سوشل لنک",
+  "myProfile": "میرا پروفائل",
+  "profileImageOf": "{name} دی پروفائل تصویر",
+  "profileImage": "پروفائل تصویر",
+  "linkCardProfile": "لنک کارڈ پروفائل",
+  "emptyStateLinks": "لنک بٹن وکھاؤن لئی site.json وچ اُتلے درجے دیاں مینیو آئٹماں پاؤ۔",
+  "titleOnPlatform": "{platform} تے {title}",
+  "openPlatform": "{platform} کھولو",
+  "paletteUpdated": "رنگ پٹی آپشن {number} تے بدل گئی۔"
+}

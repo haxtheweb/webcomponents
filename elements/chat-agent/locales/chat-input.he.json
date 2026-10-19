@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "הצגת הודעה שנשלחה קודם (למעלה)",
+  "displayPreviousMessageDown": "הצגת הודעה שנשלחה קודם (למטה)",
+  "sendPrompt": "שליחת הנחיה",
+  "sendPromptToMerlin": "שליחת הנחיה ל-Merlin",
+  "shortenPrompt": "קצרו את ההנחיה לכל היותר {limit} תווים."
+}

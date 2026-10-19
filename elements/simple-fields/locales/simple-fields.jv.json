@@ -9,5 +9,8 @@
   "record": "Rekam",
   "pause": "Ngaso ngrekam",
   "stopSave": "Mandheg & Simpen",
-  "clickToTakePhoto": "Klik kanggo njupuk foto"
+  "clickToTakePhoto": "Klik kanggo njupuk foto",
+  "url": "URL",
+  "open": "bukak",
+  "removeValue": "Busak {value}"
 }

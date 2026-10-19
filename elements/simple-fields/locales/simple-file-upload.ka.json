@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "ჩააგდეთ ფაილები აქ",
+  "uploadQueue": "ატვირთვის რიგი",
+  "pending": "მოლოდინში",
+  "preparing": "მზადდება",
+  "uploading": "იტვირთება",
+  "complete": "დასრულებული",
+  "aborted": "შეწყვეტილი",
+  "cancelled": "გაუქმებული",
+  "error": "შეცდომა",
+  "errorWithStatus": "შეცდომა: {status}",
+  "cancel": "გაუქმება",
+  "cancelUploadOf": "{name}-ის ატვირთვის გაუქმება",
+  "retry": "ხელახლა ცდა",
+  "retryUploadOf": "{name}-ის ატვირთვის ხელახლა ცდა",
+  "remove": "წაშლა",
+  "removeFromQueue": "{name}-ის რიგიდან ამოღება",
+  "fileTypeNotAccepted": "ფაილის ტიპი მიუღებელია: {name}",
+  "uploadFailed": "ატვირთვა ვერ მოხერხდა: {status}",
+  "networkError": "ქსელის შეცდომა"
+}

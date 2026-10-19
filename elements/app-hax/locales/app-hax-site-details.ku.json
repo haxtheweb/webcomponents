@@ -1,0 +1,18 @@
+{
+  "copy": "Kopî bike",
+  "download": "Daxîne",
+  "archive": "Arşîv bike",
+  "copyOperation": "kopî bike",
+  "downloadOperation": "daxîne",
+  "archiveOperation": "arşîv bike",
+  "created": "hat afirandin",
+  "updated": "hat nûkirin",
+  "pages": "rûpel",
+  "url": "URL",
+  "confirm": "Bipejirîne",
+  "cancel": "Betal bike",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Tu bawer î ku dixwazî {siteName} {operation}?",
+  "siteOperationSuccessful": "{siteName} {operation} bi serkeftî bû!",
+  "siteOperationFailed": "{siteName} {operation} bi ser neket"
+}

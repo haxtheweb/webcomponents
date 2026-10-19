@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Gjin resultaten",
+  "viewsRecordHeading": "Opnimme",
+  "viewsTitleImage": "Ofbylding fan {title}",
+  "viewsTitlePreview": "Foarbyld fan {title}",
+  "viewsNoTimelineRecords": "Gjin datumrjochte records beskikber foar in tiidline.",
+  "viewsTimelineTitle": "Tiidline fan {title}",
+  "viewsNoChartField": "Gjin numeryk fjild fûn foar in diagram.",
+  "viewsChartingValue": "Diagram fan {value}",
+  "viewsChartingValueByLabel": "Diagram fan {value} per {label}",
+  "viewsChartTitle": "Diagram fan {title}",
+  "viewsNoTreeRecords": "Gjin hiërargyske records beskikber foar in beamwerjefte.",
+  "viewsNoGalleryRecords": "Gjin ôfbyldingsrecords beskikber foar in galery.",
+  "viewsNoPlaylistRecords": "Gjin mediarecords beskikber foar in ôfspyllist.",
+  "fetchFailed": "Opheljen mislearre ({status})",
+  "unableToLoadViewData": "Kin werjeftegegevens net lade.",
+  "noResultsFound": "Gjin resultaten fûn.",
+  "refreshView": "Werjefte ferfarskje",
+  "breakIntoStaticContent": "Omsette yn statyske ynhâld",
+  "viewsOpenRecord": "Record iepenje"
+}

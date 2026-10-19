@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "ဖိုင်များကို ဤနေရာတွင် ချပါ",
+  "uploadQueue": "အပ်လုဒ် တန်းစီ",
+  "pending": "ဆိုင်းငံ့ထားသည်",
+  "preparing": "ပြင်ဆင်နေသည်",
+  "uploading": "အပ်လုဒ်လုပ်နေသည်",
+  "complete": "ပြီးစီး",
+  "aborted": "ရပ်တန့်ခဲ့သည်",
+  "cancelled": "ပယ်ဖျက်ခဲ့သည်",
+  "error": "အမှား",
+  "errorWithStatus": "အမှား: {status}",
+  "cancel": "မလုပ်တော့ပါ",
+  "cancelUploadOf": "{name} ၏ အပ်လုဒ်ကို ပယ်ဖျက်ရန်",
+  "retry": "ထပ်ကြိုးစားရန်",
+  "retryUploadOf": "{name} ၏ အပ်လုဒ်ကို ထပ်စမ်းရန်",
+  "remove": "ဖယ်ရှားရန်",
+  "removeFromQueue": "{name} ကို တန်းစီမှ ဖယ်ရှားရန်",
+  "fileTypeNotAccepted": "ဖိုင် အမျိုးအစား လက်မခံပါ: {name}",
+  "uploadFailed": "အပ်လုဒ် မအောင်မြင်ပါ: {status}",
+  "networkError": "ကွန်ရက် အမှား"
+}

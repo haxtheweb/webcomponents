@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Ievadiet lietotājvārdu",
+  "invalidUsernameOrPassword": "Nederīgs lietotājvārds vai parole",
+  "welcomeLetsGo": "Sveicināti, {username}! Aiziet!",
+  "enterYourUsername": "Ievadiet savu lietotājvārdu",
+  "username": "Lietotājvārds",
+  "next": "Nākamais",
+  "welcomeBack": "Laipni lūdzam atpakaļ, {username}!",
+  "notYou": "Tas neesat jūs?",
+  "enterYourPassword": "Ievadiet savu paroli",
+  "password": "Parole",
+  "togglePasswordDisplay": "Pārslēgt paroles rādīšanu",
+  "login": "Pieteikties"
+}

@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Kò sí èsì",
+  "viewsRecordHeading": "Gba sílẹ̀",
+  "viewsTitleImage": "Àwòrán {title}",
+  "viewsTitlePreview": "Àwòtẹ́lẹ̀ {title}",
+  "viewsNoTimelineRecords": "Kò sí àkọsílẹ̀ tó ní ọjọ́ fún fífi ìlà àkókò hàn.",
+  "viewsTimelineTitle": "Ìlà àkókò {title}",
+  "viewsNoChartField": "A kò rí pápá nọ́mbà kankan fún fífi àtẹ hàn.",
+  "viewsChartingValue": "Ń ṣe àtẹ {value}",
+  "viewsChartingValueByLabel": "Ń ṣe àtẹ {value} gẹ́gẹ́ bí {label}",
+  "viewsChartTitle": "Àtẹ {title}",
+  "viewsNoTreeRecords": "Kò sí àkọsílẹ̀ onípele fún fífi igi hàn.",
+  "viewsNoGalleryRecords": "Kò sí àkọsílẹ̀ àwòrán fún fífi àkójọ àwòrán hàn.",
+  "viewsNoPlaylistRecords": "Kò sí àkọsílẹ̀ mídíà fún fífi àkójọ ìṣeré hàn.",
+  "fetchFailed": "Gbígbà kùnà ({status})",
+  "unableToLoadViewData": "Kò ṣeé ṣe láti gbé dátà ìwò wọlé.",
+  "noResultsFound": "A kò rí èsì kankan.",
+  "refreshView": "Sọ ìwò di tuntun",
+  "breakIntoStaticContent": "Pín sí àkóónú àìyípadà",
+  "viewsOpenRecord": "Ṣí àkọsílẹ̀"
+}

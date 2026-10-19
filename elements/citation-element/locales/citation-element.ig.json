@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Nkwanye ugwu",
+  "licenseBySa": "Nkwanye ugwu Kesaa n'otu ụzọ",
+  "licenseByNd": "Nkwanye ugwu Enweghị mgbanwe",
+  "licenseByNc": "Nkwanye ugwu Abụghị maka azụmahịa",
+  "licenseByNcSa": "Nkwanye ugwu Abụghị maka azụmahịa Kesaa n'otu ụzọ",
+  "licenseByNcNd": "Nkwanye ugwu Abụghị maka azụmahịa Enweghị mgbanwe",
+  "citationWithLicense": "{title} nke {creator}, nwere ikikere n'okpuru {license}. Enwetara ya {date}.",
+  "citationWithoutLicense": "{title} nke {creator}. Enwetara ya {date}.",
+  "licenseGraphic": "Eserese {license}"
+}

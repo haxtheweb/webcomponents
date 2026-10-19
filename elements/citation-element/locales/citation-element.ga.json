@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Sannadh",
+  "licenseBySa": "Sannadh-Comhroinn Mar an gCéanna",
+  "licenseByNd": "Sannadh-Gan Saothair Dhíorthacha",
+  "licenseByNc": "Sannadh-Neamhthráchtálach",
+  "licenseByNcSa": "Sannadh-Neamhthráchtálach-Comhroinn Mar an gCéanna",
+  "licenseByNcNd": "Sannadh-Neamhthráchtálach-Gan Saothair Dhíorthacha",
+  "citationWithLicense": "{title} le {creator}, ceadúnaithe faoi {license}. Rochtain: {date}.",
+  "citationWithoutLicense": "{title} le {creator}. Rochtain: {date}.",
+  "licenseGraphic": "Grafaic {license}"
+}

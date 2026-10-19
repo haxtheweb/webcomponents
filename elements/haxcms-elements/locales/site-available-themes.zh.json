@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "加载主题失败：{error}",
+  "noThemesForView": "此视图没有可用的主题。",
+  "active": "当前使用",
+  "themeIsActive": "{name} 主题已启用",
+  "applyTheme": "应用 {name} 主题",
+  "apply": "应用",
+  "preview": "预览",
+  "name": "姓名",
+  "element": "元素",
+  "description": "描述",
+  "action": "操作",
+  "loadingThemes": "正在加载主题...",
+  "themesShown": "显示 {count} 个主题",
+  "themesShownDefaults": "显示 {count} 个主题（app-hax 默认）",
+  "availableHaxcmsThemes": "可用的 HAXcms 主题",
+  "gallery": "图库",
+  "table": "表格"
+}

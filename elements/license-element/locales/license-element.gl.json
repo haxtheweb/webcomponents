@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Recoñecemento",
+  "licenseBySa": "Recoñecemento-CompartirIgual",
+  "licenseByNd": "Recoñecemento-SenObraDerivada",
+  "licenseByNc": "Recoñecemento-NonComercial",
+  "licenseByNcSa": "Recoñecemento-NonComercial-CompartirIgual",
+  "licenseByNcNd": "Recoñecemento-NonComercial-SenObraDerivada",
+  "licenseGraphic": "Gráfico de {license}",
+  "workByCreator": "{title} de {creator}",
+  "workByCreatorLicensed": "{title} de {creator} está baixo unha licenza {license}.",
+  "permissionsBeyondScope": "Os permisos máis alá do ámbito desta licenza están dispoñibles {link}.",
+  "author": "(autor)",
+  "onTheLicensingDetailsPage": "na páxina de detalles da licenza"
+}

@@ -22,6 +22,12 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
 ) {
   constructor() {
     super();
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      sectionNavigation: "Section navigation",
+      top: "Top",
+    };
     this.sectionLoad = false;
     this._observer = new MutationObserver((mutations) => {
       this.sectionLoad = true;
@@ -54,14 +60,16 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
   }
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer"
+        >${this.t.skipToContent}</a
+      >
       <header itemscope itemtype="http://schema.org/WPHeader">
         <div class="logo-wrapper">
           <site-region name="header"></site-region>
         </div>
         <nav
           class="menu"
-          aria-label="Section navigation"
+          aria-label="${this.t.sectionNavigation}"
           .part="site-nav ${this.editMode ? `edit-mode-active` : ``}"
           itemscope
           itemtype="http://schema.org/SiteNavigationElement"
@@ -101,7 +109,7 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
         <scroll-button
           .part="${this.editMode ? `edit-mode-active` : ``}"
           id="top"
-          label="Top"
+          label="${this.t.top}"
         ></scroll-button>
       </footer>
     `;

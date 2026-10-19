@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ankerskakel gekopieer!",
+  "skipToContent": "Spring na inhoud",
+  "changePalette": "Verander palet",
+  "primaryLinks": "Primêre skakels",
+  "socialLinks": "Sosiale skakels",
+  "myProfile": "My profiel",
+  "profileImageOf": "{name} se profielfoto",
+  "profileImage": "Profielfoto",
+  "linkCardProfile": "Skakelkaartprofiel",
+  "emptyStateLinks": "Voeg topvlak-kieslysitems in site.json by om skakelknoppies te vertoon.",
+  "titleOnPlatform": "{title} op {platform}",
+  "openPlatform": "Open {platform}",
+  "paletteUpdated": "Kleurpalet bygewerk na opsie {number}."
+}

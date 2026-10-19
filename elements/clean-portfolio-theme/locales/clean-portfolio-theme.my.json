@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "ကျောက်ဆူး လင့်ခ်ကို ကူးယူပြီးပါပြီ!",
+  "skipToContent": "အကြောင်းအရာသို့ ကျော်သွားရန်",
+  "siteHome": "ဆိုက် ပင်မ",
+  "mainNavigation": "အဓိက လမ်းညွှန်",
+  "toggleMenu": "မီနူး ပြောင်းရန်",
+  "changeTheme": "အပြင်အဆင် ပြောင်းရန်",
+  "breadcrumb": "Breadcrumb",
+  "tagFilter": "တဂ် စစ်ထုတ်မှု:",
+  "all": "အားလုံး",
+  "pageNumberOfTotal": "စာမျက်နှာ နံပါတ်: {total} အနက် {current}",
+  "siteGenerated": "ဆိုက် ထုတ်လုပ်သည့်နေ့: {date}",
+  "copyright": "မူပိုင်ခွင့်: {year} {author}",
+  "viewContentByTag": "တဂ်အလိုက် အကြောင်းအရာ ကြည့်ရန်",
+  "licenseGraphic": "{license} ရုပ်ပုံ"
+}

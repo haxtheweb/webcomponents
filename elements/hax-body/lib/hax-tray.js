@@ -107,6 +107,9 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       pages: "Pages",
       templates: "Templates",
       width: "Width",
+      content: "Content",
+      linkHtmlContentDescription:
+        "HTML inside this link. Nested elements like images are preserved; edit carefully.",
     };
     this.registerLocalization({
       context: this,
@@ -1502,9 +1505,8 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
               return {
                 ...field,
                 attribute: "innerHTML",
-                title: "Content",
-                description:
-                  "HTML inside this link. Nested elements like images are preserved; edit carefully.",
+                title: this.t.content,
+                description: this.t.linkHtmlContentDescription,
                 inputMethod: "code-editor",
                 required: false,
               };

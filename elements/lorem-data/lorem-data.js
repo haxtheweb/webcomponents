@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { LoremDataBehaviors } from "./lib/lorem-data-behaviors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 // all random* generators, date helpers and text helpers live in
 // lib/lorem-data-behaviors.js; the element no longer shadows them
 // (haxtheweb/issues#3105)
@@ -20,7 +21,7 @@ Custom property | Description | Default
  * @demo demo/index.html demo
  */
 
-class LoremData extends LoremDataBehaviors(LitElement) {
+class LoremData extends I18NMixin(LoremDataBehaviors(LitElement)) {
   static get styles() {
     return [
       css`
@@ -65,13 +66,23 @@ class LoremData extends LoremDataBehaviors(LitElement) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      saveAll: "Save All",
+      saveTheFollowing: "Save the following: {list}?",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.schemas = {};
     this.__downloadUrls = {};
   }
 
   render() {
     return html`
-      <button @click="${this.saveAll}">Save All</button>
+      <button @click="${this.saveAll}">${this.t.saveAll}</button>
       ${Object.keys(this.schemas || []).map(
         (key) => html`
           <p>
@@ -87,7 +98,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
           </p>
         `,
       )}
-      <button @click="${this.saveAll}">Save All</button>
+      <button @click="${this.saveAll}">${this.t.saveAll}</button>
     `;
   }
   /**
@@ -99,7 +110,12 @@ class LoremData extends LoremDataBehaviors(LitElement) {
     if (
       this.shadowRoot &&
       this.shadowRoot.querySelectorAll("a") &&
-      confirm(`Save the following: ${Object.keys(this.schemas).join(", ")}?`)
+      confirm(
+        this.t.saveTheFollowing.replace(
+          "{list}",
+          () => (Object.keys(this.schemas).join(", ")),
+        ),
+      )
     ) {
       this.shadowRoot.querySelectorAll("a").forEach((a) => a.click());
     }

@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "로드 중...",
   "youTubeStartLoading": "재생을 누르세요.",
   "youTubeTranscriptLabel": "미디어가 재생되면 스크립트가 로드됩니다.",
-  "audioDescriptionLabel": "화면 해설"
+  "audioDescriptionLabel": "화면 해설",
+  "openOnYouTube": "YouTube에서 열기"
 }

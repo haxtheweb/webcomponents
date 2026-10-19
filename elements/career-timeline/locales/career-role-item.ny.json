@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Dzina la Udindo",
+  "describeYourRole": "Fotokozani udindo wanu apa...",
+  "present": "Fotokozani",
+  "skills": "Maluso:",
+  "skillsAndMore": "{skills} ndi +{count} ena",
+  "yearShort": "chaka {count}",
+  "yearsShort": "zaka {count}",
+  "monthShort": "mwezi {count}",
+  "monthsShort": "miyezi {count}"
+}

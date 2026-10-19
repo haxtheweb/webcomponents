@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Link de ancoră copiat!",
+  "skipToContent": "Salt la conținut",
+  "siteHome": "Pagina principală a site-ului",
+  "mainNavigation": "Navigare principală",
+  "toggleMenu": "Comută meniul",
+  "changeTheme": "Schimbă tema",
+  "breadcrumb": "Fir de navigare",
+  "tagFilter": "Filtru după etichetă:",
+  "all": "Toate",
+  "pageNumberOfTotal": "Numărul paginii: {current} din {total}",
+  "siteGenerated": "Site generat: {date}",
+  "copyright": "Drepturi de autor: {year} {author}",
+  "viewContentByTag": "Vezi conținutul după etichetă",
+  "licenseGraphic": "Grafica {license}"
+}

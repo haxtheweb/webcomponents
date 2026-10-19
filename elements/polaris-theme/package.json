@@ -46,6 +46,7 @@
   "dependencies": {
     "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/haxcms-elements": "^26.8.0",
+    "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/scroll-button": "^26.8.0",
     "lit": "3.3.3",
     "mobx": "6.13.7"

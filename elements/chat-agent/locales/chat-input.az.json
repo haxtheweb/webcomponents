@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Əvvəl göndərilmiş mesajı göstər (yuxarı)",
+  "displayPreviousMessageDown": "Əvvəl göndərilmiş mesajı göstər (aşağı)",
+  "sendPrompt": "Sorğunu göndər",
+  "sendPromptToMerlin": "Sorğunu Merlin-ə göndər",
+  "shortenPrompt": "Lütfən, sorğunuzu {limit} simvoldan çox olmayacaq şəkildə qısaldın."
+}

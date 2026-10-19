@@ -1,0 +1,18 @@
+{
+  "copy": "ڪاپي ڪريو",
+  "download": "ڊائونلوڊ",
+  "archive": "آرڪائيو",
+  "copyOperation": "ڪاپي",
+  "downloadOperation": "ڊائونلوڊ",
+  "archiveOperation": "آرڪائيو",
+  "created": "ٺهيل",
+  "updated": "اپڊيٽ ٿيل",
+  "pages": "صفحا",
+  "url": "URL",
+  "confirm": "تصديق ڪريو",
+  "cancel": "منسوخ ڪريو",
+  "siteOperationConfirmTitle": "{operationName} {siteName}؟",
+  "siteOperationConfirmMessage": "ڇا توهان پڪ سان {siteName} کي {operation} ڪرڻ چاهيو ٿا؟",
+  "siteOperationSuccessful": "{siteName} {operation} ڪامياب!",
+  "siteOperationFailed": "{siteName} {operation} ناڪام"
+}

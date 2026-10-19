@@ -36,5 +36,7 @@
   "clickToDoAnything": "Кликнете за да направите било што!",
   "moreDetails": "Повеќе детали",
   "details": "Детали",
-  "saved": "Зачувано"
+  "saved": "Зачувано",
+  "opensInNewWindow": "Се отвора во нов прозорец",
+  "resultsCount": "{count} резултати"
 }

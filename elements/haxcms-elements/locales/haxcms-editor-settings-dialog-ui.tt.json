@@ -5,5 +5,9 @@
   "buttons": "Төймәләр",
   "futureButtonConfiguration": "Редактор төймәләрен үз теләгең буенча көйләү тиздән булачак.",
   "save": "Саклау",
-  "saving": "Саклана…"
+  "saving": "Саклана…",
+  "novice": "Башлангыч",
+  "expert": "Эксперт",
+  "toolbarPreviewAlt": "{audience} мөхәррирләү кораллары панелен алдан карау",
+  "savingEditorSettingsFailed": "Мөхәррир көйләүләрен саклау барып чыкмады: {error}"
 }

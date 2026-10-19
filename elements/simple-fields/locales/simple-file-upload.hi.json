@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "फ़ाइलें यहाँ छोड़ें",
+  "uploadQueue": "अपलोड कतार",
+  "pending": "लंबित",
+  "preparing": "तैयार हो रहा है",
+  "uploading": "अपलोड हो रहा है",
+  "complete": "पूर्ण",
+  "aborted": "निरस्त",
+  "cancelled": "रद्द",
+  "error": "त्रुटि",
+  "errorWithStatus": "त्रुटि: {status}",
+  "cancel": "रद्द करें",
+  "cancelUploadOf": "{name} का अपलोड रद्द करें",
+  "retry": "पुनः प्रयास करें",
+  "retryUploadOf": "{name} का अपलोड फिर से प्रयास करें",
+  "remove": "हटाएँ",
+  "removeFromQueue": "{name} को कतार से हटाएँ",
+  "fileTypeNotAccepted": "फ़ाइल प्रकार स्वीकार्य नहीं: {name}",
+  "uploadFailed": "अपलोड विफल: {status}",
+  "networkError": "नेटवर्क त्रुटि"
+}

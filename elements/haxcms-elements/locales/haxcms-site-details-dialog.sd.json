@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- ڊفالٽ پهريون صفحو --",
+  "details": "تفصيل",
+  "title": "عنوان",
+  "titleDescription": "سائيٽ جو نالو",
+  "homePage": "مکيه صفحو",
+  "homePageDescription": "ڊفالٽ لينڊنگ / مکيه صفحي طور استعمال ٿيندڙ صفحو",
+  "advanced": "جديد",
+  "serviceWorker": "متحرڪ صفحي ۾ سروس ورڪر شامل ڪريو",
+  "serviceWorkerDescription": "جيڪڏهن صارفن کي هميشه فوري طور سرور جو تازو نتيجو ڏسڻ گهرجي ته هي بند ڪريو.",
+  "forceBrowserUpgrade": "براؤزر اپگريڊ لازمي ڪريو",
+  "forceBrowserUpgradeDescription": "سائيٽ جو تجربو لوڊ ڪرڻ کان اڳ جديد براؤزر لازمي ڪريو.",
+  "unableToLoadSiteDetails": "سائيٽ جا تفصيل لوڊ نه ٿي سگهيا.",
+  "noSiteDetails": "سائيٽ جا ڪي تفصيل موجود ناهن.",
+  "save": "محفوظ ڪريو"
+}

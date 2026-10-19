@@ -1,0 +1,11 @@
+{
+  "playlist": "Liiska ciyaarta",
+  "carousel": "wareeg",
+  "slide": "bandhig",
+  "slideNumber": "Bandhigga {number}",
+  "slideOfTotal": "Bandhigga {number} ka mid ah {total}",
+  "previousSlide": "Bandhiggii hore",
+  "nextSlide": "Bandhigga xiga",
+  "slidePages": "Bogagga bandhigga",
+  "goToSlide": "U gudub bandhigga {number}"
+}

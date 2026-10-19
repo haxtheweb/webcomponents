@@ -26,6 +26,11 @@ export class SitePrintRoute extends HAXCMSI18NMixin(DDD) {
     this.t.redirectingToPrint = "Redirecting to print mode...";
     this.t.noPageSpecified = "No page specified for printing";
     this.t.pageNotFound = "The specified page could not be found";
+    this.t.printError = "Print Error";
+    this.t.printYouCanTry = "You can try:";
+    this.t.printTryGoingBack = "Going back to a specific page and using the print function there";
+    this.t.printUsingTheFormat = "Using the format:";
+    this.t.printTryCheckingPage = "Checking that the page exists and is published";
 
     // Redirect immediately using the existing format=print-page functionality
     this.redirectToPrintMode();
@@ -144,15 +149,16 @@ export class SitePrintRoute extends HAXCMSI18NMixin(DDD) {
     if (this.errorMessage) {
       return html`
         <div role="alert" aria-live="assertive">
-          <h2>Print Error</h2>
+          <h2>${this.t.printError}</h2>
           <p>${this.errorMessage}</p>
-          <p>You can try:</p>
+          <p>${this.t.printYouCanTry}</p>
           <ul>
+            <li>${this.t.printTryGoingBack}</li>
             <li>
-              Going back to a specific page and using the print function there
+              ${this.t.printUsingTheFormat}
+              <code>x/print?page=your-page-slug</code>
             </li>
-            <li>Using the format: <code>x/print?page=your-page-slug</code></li>
-            <li>Checking that the page exists and is published</li>
+            <li>${this.t.printTryCheckingPage}</li>
           </ul>
         </div>
       `;

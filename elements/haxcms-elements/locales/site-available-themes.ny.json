@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Sitinathe kutsegula mawonekedwe: {error}",
+  "noThemesForView": "Palibe mawonekedwe omwe alipo pa mawonedwe awa.",
+  "active": "Ikugwira ntchito",
+  "themeIsActive": "Mawonekedwe a {name} akugwira ntchito",
+  "applyTheme": "Ikani mawonekedwe a {name}",
+  "apply": "Ikani",
+  "preview": "Onani kaye",
+  "name": "Dzina",
+  "element": "Chinthu",
+  "description": "Kufotokozera",
+  "action": "Chochita",
+  "loadingThemes": "Ikutsegula mawonekedwe...",
+  "themesShown": "Mawonekedwe {count} aonetsedwa",
+  "themesShownDefaults": "Mawonekedwe {count} aonetsedwa (zokhazikika za app-hax)",
+  "availableHaxcmsThemes": "Mawonekedwe a HAXcms Omwe Alipo",
+  "gallery": "Malo a zithunzi",
+  "table": "Tebulo"
+}

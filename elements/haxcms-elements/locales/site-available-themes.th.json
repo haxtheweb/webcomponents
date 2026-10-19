@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "โหลดธีมไม่สำเร็จ: {error}",
+  "noThemesForView": "ไม่มีธีมให้ใช้งานสำหรับมุมมองนี้",
+  "active": "ใช้งานอยู่",
+  "themeIsActive": "ธีม {name} ใช้งานอยู่",
+  "applyTheme": "ใช้ธีม {name}",
+  "apply": "ใช้",
+  "preview": "ตัวอย่าง",
+  "name": "ชื่อ",
+  "element": "องค์ประกอบ",
+  "description": "คำอธิบาย",
+  "action": "การดำเนินการ",
+  "loadingThemes": "กำลังโหลดธีม...",
+  "themesShown": "แสดง {count} ธีม",
+  "themesShownDefaults": "แสดง {count} ธีม (ค่าเริ่มต้นของ app-hax)",
+  "availableHaxcmsThemes": "ธีม HAXcms ที่มีให้ใช้งาน",
+  "gallery": "แกลเลอรี",
+  "table": "ตาราง"
+}

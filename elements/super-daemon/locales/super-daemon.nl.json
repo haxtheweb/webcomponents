@@ -36,5 +36,7 @@
   "clickToDoAnything": "Klik om alles te doen!",
   "moreDetails": "Meer details",
   "details": "Details",
-  "saved": "Opgeslagen"
+  "saved": "Opgeslagen",
+  "opensInNewWindow": "Opent in een nieuw venster",
+  "resultsCount": "{count} resultaten"
 }

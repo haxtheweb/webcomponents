@@ -1,0 +1,11 @@
+{
+  "roleTitle": "ভূমিকার শিরোনাম",
+  "describeYourRole": "এখানে আপনার ভূমিকার বর্ণনা দিন...",
+  "present": "উপস্থাপন",
+  "skills": "দক্ষতা:",
+  "skillsAndMore": "{skills} এবং আরও +{count}টি",
+  "yearShort": "{count} বছর",
+  "yearsShort": "{count} বছর",
+  "monthShort": "{count} মাস",
+  "monthsShort": "{count} মাস"
+}

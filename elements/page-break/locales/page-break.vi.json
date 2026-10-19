@@ -22,6 +22,13 @@
   "unpublish": "Hủy xuất bản",
   "savePage": "Lưu trang",
   "cancel": "Hủy",
+  "delete": "Xóa",
+  "editTitle": "Chỉnh sửa tiêu đề",
+  "editIcon": "Sửa biểu tượng",
+  "agent": "Tác tử",
+  "pageLockedUnlockToEdit": "Trang này đã bị khóa. Hãy mở khóa trước để chỉnh sửa.",
+  "pageLockedUnlockToChangePublishStatus": "Trang này đã bị khóa. Hãy mở khóa trước để thay đổi trạng thái xuất bản.",
+  "pageLockedUnlockToDelete": "Trang này đã bị khóa. Hãy mở khóa trước để xóa.",
   "pageDetails": "Chi tiết trang",
   "clickToUnlock": "Nhấp để mở khóa"
 }

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "მითითება",
+  "licenseBySa": "მითითება — ანალოგიური გავრცელება",
+  "licenseByNd": "მითითება — ნაწარმოების შეცვლის გარეშე",
+  "licenseByNc": "მითითება — არაკომერციული",
+  "licenseByNcSa": "მითითება — არაკომერციული — ანალოგიური გავრცელება",
+  "licenseByNcNd": "მითითება — არაკომერციული — ნაწარმოების შეცვლის გარეშე",
+  "citationWithLicense": "{title}, ავტორი: {creator}, ლიცენზია: {license}. ნანახია {date}.",
+  "citationWithoutLicense": "{title}, ავტორი: {creator}. ნანახია {date}.",
+  "licenseGraphic": "{license} — გრაფიკა"
+}

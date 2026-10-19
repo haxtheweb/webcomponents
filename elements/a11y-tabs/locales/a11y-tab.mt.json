@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Tab {xOfY}",
+  "xOfY": "{order} minn {total}",
+  "endOfTab": "Tmiem it-tab {xOfY}. Lura għal {tabs}.",
+  "tabs": "tabs"
+}

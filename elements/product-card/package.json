@@ -44,6 +44,7 @@
     "@haxtheweb/accent-card": "^26.8.0",
     "@haxtheweb/code-sample": "^26.8.0",
     "@haxtheweb/grid-plate": "^26.8.0",
+    "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/simple-colors": "^26.8.0",
     "@haxtheweb/utils": "^26.8.0",
     "lit": "3.3.3"

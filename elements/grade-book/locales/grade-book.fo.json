@@ -43,5 +43,22 @@
   "emailAddress": "Send hesum næminginum teldupost",
   "notes": "Notur",
   "interests": "Áhugamál",
-  "profileImageFor": "Vangamynd av"
+  "profileImageFor": "Vangamynd av",
+  "fileSystem": "Fílukervi",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL-endapunkt (JSON)",
+  "jsonDataBlob": "JSON-dátublob",
+  "additionalCriteriaFeedback": "Eyka afturmelding fyri {criteria}",
+  "outOfPoints": "/ {points} stig",
+  "feedbackReport": "Afturmeldingarfrágreiðing",
+  "criteriaDetails": "Smálutir um metingarstig",
+  "yourFeedback": "Tín afturmelding",
+  "additionalCriteriaFeedbackHeading": "Eyka afturmelding um metingarstig",
+  "yourTotalScore": "Títt samlaða stigatal",
+  "scoreOutOfPoints": "{score} / {points} stig",
+  "studentAssignment": "Uppgáva {assignment} hjá {student}",
+  "downloadPDF": "Tak PDF niður",
+  "displayMode1": "Háttur 1",
+  "displayMode2": "Háttur 2",
+  "twoWindows": "Tveir gluggar"
 }

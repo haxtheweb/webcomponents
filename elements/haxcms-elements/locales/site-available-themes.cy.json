@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Methwyd llwytho themâu: {error}",
+  "noThemesForView": "Dim themâu ar gael ar gyfer yr olwg hon.",
+  "active": "Gweithredol",
+  "themeIsActive": "Mae'r thema {name} yn weithredol",
+  "applyTheme": "Cymhwyso'r thema {name}",
+  "apply": "Cymhwyso",
+  "preview": "Rhagolwg",
+  "name": "Enw",
+  "element": "Elfen",
+  "description": "Disgrifiad",
+  "action": "Gweithred",
+  "loadingThemes": "Wrthi'n llwytho themâu...",
+  "themesShown": "{count} thema'n cael eu dangos",
+  "themesShownDefaults": "{count} thema'n cael eu dangos (rhagosodiadau app-hax)",
+  "availableHaxcmsThemes": "Themâu HAXcms Sydd ar Gael",
+  "gallery": "Oriel",
+  "table": "Tabl"
+}

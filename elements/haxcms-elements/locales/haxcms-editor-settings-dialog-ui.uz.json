@@ -5,5 +5,9 @@
   "buttons": "Tugmalar",
   "futureButtonConfiguration": "Muharrir tugmalarini moslashtirish tez orada qo‘shiladi.",
   "save": "Saqlash",
-  "saving": "Saqlanmoqda…"
+  "saving": "Saqlanmoqda…",
+  "novice": "Boshlovchi",
+  "expert": "Tajribali",
+  "toolbarPreviewAlt": "{audience} uchun tahrirlash asboblar paneli koʻrinishi",
+  "savingEditorSettingsFailed": "Muharrir sozlamalarini saqlab boʻlmadi: {error}"
 }

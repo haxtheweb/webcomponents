@@ -1,0 +1,8 @@
+{
+  "loading": "Loading",
+  "settingUpContainer": "Setting up container",
+  "runningCommands": "Running commands",
+  "installing": "Installing..",
+  "runningStart": "Running Start..",
+  "webContainerPreview": "Web container preview"
+}

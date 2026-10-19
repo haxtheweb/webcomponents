@@ -10,5 +10,9 @@
   "save": "Gardar",
   "noDescription": "Non hai descrición dispoñible.",
   "details": "Detalles",
-  "loadingInventory": "Cargando o inventario completo de bloques…"
+  "loadingInventory": "Cargando o inventario completo de bloques…",
+  "selectAllButton": "Seleccionar todo",
+  "deselectAllButton": "Deseleccionar todo",
+  "selectedOfAvailable": "{selected} seleccionados / {total} dispoñibles",
+  "savingBlocksFailed": "Fallou o gardado dos bloques: {error}"
 }

@@ -1,5 +1,9 @@
 {
   "studentSubmission": "የተማሪ ማስረከቢያ",
   "openInNewWindow": "በአዲስ መስኮት ክፈት",
-  "submitted": "ገብቷል"
+  "submitted": "ገብቷል",
+  "previousStudent": "ቀዳሚ ተማሪ",
+  "nextStudent": "ቀጣይ ተማሪ",
+  "previousAssignment": "ቀዳሚ የቤት ሥራ",
+  "nextAssignment": "ቀጣይ የቤት ሥራ"
 }

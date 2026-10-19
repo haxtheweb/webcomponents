@@ -43,5 +43,22 @@
   "emailAddress": "Dësem Schüler eng E-Mail schécken",
   "notes": "Notizen",
   "interests": "Interessen",
-  "profileImageFor": "Profilbild vun"
+  "profileImageFor": "Profilbild vun",
+  "fileSystem": "Fichierssystem",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL-Endpunkt (JSON)",
+  "jsonDataBlob": "JSON-Dateblob",
+  "additionalCriteriaFeedback": "Zousätzleche Feedback zu {criteria}",
+  "outOfPoints": "/ {points} Pkt.",
+  "feedbackReport": "Feedback-Bericht",
+  "criteriaDetails": "Detailer zu de Critèren",
+  "yourFeedback": "Äre Feedback",
+  "additionalCriteriaFeedbackHeading": "Zousätzleche Feedback zu de Critèren",
+  "yourTotalScore": "Är Gesamtpunktzuel",
+  "scoreOutOfPoints": "{score} / {points} Pkt.",
+  "studentAssignment": "Aufgab {assignment} vun {student}",
+  "downloadPDF": "PDF eroflueden",
+  "displayMode1": "Modus 1",
+  "displayMode2": "Modus 2",
+  "twoWindows": "Zwou Fënsteren"
 }

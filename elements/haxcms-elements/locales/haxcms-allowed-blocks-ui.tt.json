@@ -10,5 +10,9 @@
   "save": "Саклау",
   "noDescription": "Тасвирлама юк.",
   "details": "Тулырак",
-  "loadingInventory": "Блокларның тулы исемлеге йөкләнә…"
+  "loadingInventory": "Блокларның тулы исемлеге йөкләнә…",
+  "selectAllButton": "Барысын да сайлау",
+  "deselectAllButton": "Барысыннан да сайлауны алу",
+  "selectedOfAvailable": "{selected} сайланды / {total} бар",
+  "savingBlocksFailed": "Блокларны саклау барып чыкмады: {error}"
 }

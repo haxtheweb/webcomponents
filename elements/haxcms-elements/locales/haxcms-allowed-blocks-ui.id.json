@@ -10,5 +10,9 @@
   "save": "Simpan",
   "noDescription": "Tidak ada deskripsi.",
   "details": "Detail",
-  "loadingInventory": "Memuat inventaris blok lengkap…"
+  "loadingInventory": "Memuat inventaris blok lengkap…",
+  "selectAllButton": "Pilih Semua",
+  "deselectAllButton": "Batalkan Pilihan Semua",
+  "selectedOfAvailable": "{selected} dipilih / {total} tersedia",
+  "savingBlocksFailed": "Gagal menyimpan blok: {error}"
 }

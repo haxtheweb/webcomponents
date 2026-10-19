@@ -9,6 +9,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * @title Outline Player
  * @element outline-player
@@ -17,8 +18,10 @@ import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js
  * @haxcms-theme-hidden true
  * @demo demo/index.html
  */
-class OutlinePlayer extends SchemaBehaviors(
-  LTIResizingMixin(SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme))),
+class OutlinePlayer extends I18NMixin(
+  SchemaBehaviors(
+    LTIResizingMixin(SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme))),
+  ),
 ) {
   /**
    * LitElement style render
@@ -319,6 +322,19 @@ class OutlinePlayer extends SchemaBehaviors(
     // array would orphan them so disconnectedCallback never disposes them
     this.closed = false;
     this.opened = true;
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      siteNavigation: "Site navigation",
+      toggleNavigation: "Toggle navigation",
+      searchSite: "Search site",
+      search: "Search",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     // prettier-ignore
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
@@ -392,10 +408,15 @@ class OutlinePlayer extends SchemaBehaviors(
   // render function
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer"
+        >${this.t.skipToContent}</a
+      >
       <site-git-corner part="git-corner-btn"></site-git-corner>
       <div class="layout">
-        <nav aria-label="Site navigation" typeof="oer:TableOfContents">
+        <nav
+          aria-label="${this.t.siteNavigation}"
+          typeof="oer:TableOfContents"
+        >
           <div
             class="drawer ${this.opened ? "opened" : ""} ${this.closed
               ? "closed"
@@ -415,7 +436,7 @@ class OutlinePlayer extends SchemaBehaviors(
               <simple-icon-button-lite
                 class="menu-toggle"
                 icon="menu"
-                label="Toggle navigation"
+                label="${this.t.toggleNavigation}"
                 aria-expanded="${this.opened}"
                 aria-controls="drawer"
                 @click="${this._toggleMenu}"
@@ -425,8 +446,8 @@ class OutlinePlayer extends SchemaBehaviors(
                 ?disabled="${this.editMode}"
                 id="searchmodalbtn"
                 icon="icons:search"
-                title="Search site"
-                button-label="Search"
+                title="${this.t.searchSite}"
+                button-label="${this.t.search}"
                 part="search-btn"
               >
                 <site-search></site-search>

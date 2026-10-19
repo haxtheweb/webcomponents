@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Namensnennung",
+  "licenseBySa": "Namensnennung - Weitergabe unter gleichen Bedingungen",
+  "licenseByNd": "Namensnennung - Keine Bearbeitungen",
+  "licenseByNc": "Namensnennung - Nicht kommerziell",
+  "licenseByNcSa": "Namensnennung - Nicht kommerziell - Weitergabe unter gleichen Bedingungen",
+  "licenseByNcNd": "Namensnennung - Nicht kommerziell - Keine Bearbeitungen",
+  "licenseGraphic": "Grafik zu {license}",
+  "workByCreator": "{title} von {creator}",
+  "workByCreatorLicensed": "{title} von {creator} ist lizenziert unter einer {license}.",
+  "permissionsBeyondScope": "Über den Umfang dieser Lizenz hinausgehende Berechtigungen sind {link} verfügbar.",
+  "author": "(Autor)",
+  "onTheLicensingDetailsPage": "auf der Seite mit den Lizenzdetails"
+}

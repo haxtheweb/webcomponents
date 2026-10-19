@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "In den Funktionen deaktiviert",
+  "appearance": "Erscheinungsbild",
+  "structure": "Struktur",
+  "content": "Inhalt",
+  "reports": "Berichte",
+  "about": "Info",
+  "files": "Dateien",
+  "views": "Ansichten",
+  "features": "Funktionen",
+  "editor": "Editor",
+  "blocks": "Blöcke",
+  "importExport": "Import / Export",
+  "details": "Details",
+  "advanced": "Erweitert"
+}

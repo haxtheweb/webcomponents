@@ -5,5 +5,9 @@
   "buttons": "Bọtịnụ",
   "futureButtonConfiguration": "Nhazi bọtịnụ ndezi ahaziri onwe ya na-abịa n'oge na-adịghị anya.",
   "save": "Chekwaa",
-  "saving": "Na-echekwa…"
+  "saving": "Na-echekwa…",
+  "novice": "Onye mbido",
+  "expert": "Ọkachamara",
+  "toolbarPreviewAlt": "Nlele ogwe ngwaọrụ edezi {audience}",
+  "savingEditorSettingsFailed": "Ichekwa ntọala ndezi dara: {error}"
 }

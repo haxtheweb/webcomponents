@@ -4,6 +4,7 @@
  */
 import { css, html } from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
@@ -36,6 +37,17 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
   // set defaults or tie into the store
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      pageNavigation: "Page navigation",
+    };
+    // no I18NMixin in this class chain, so register with the store directly
+    I18NManagerStore.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.dataPalette = 11;
     this._items = [];
     this.activeId = null;
@@ -97,10 +109,10 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
   // render function
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <header>
       <div class="topbar-container">
-        <nav class="topbar-scroll" aria-label="Page navigation">
+        <nav class="topbar-scroll" aria-label="${this.t.pageNavigation}">
           <ul>
             ${this._items.map(
               (item) => html`

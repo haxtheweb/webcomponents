@@ -35,6 +35,11 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+    };
     // do NOT reassign this.__disposer here: the constructor chain
     // (HAXCMSLitElementTheme + HAXCMSThemeParts + HAXCMSRememberRoute)
     // already pushed its constructor-time autoruns into it; a fresh array
@@ -153,7 +158,9 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer"
+        >${this.t.skipToContent}</a
+      >
       <table
         role="presentation"
         width="100%"

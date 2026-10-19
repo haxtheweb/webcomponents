@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Preuzmi zapisnik kao txt",
+  "downloadChatLog": "Preuzmi zapisnik razgovora",
+  "resetChat": "Poništi razgovor",
+  "toggleDataCollection": "Uključi/isključi prikupljanje podataka",
+  "dataCollection": "Prikupljanje podataka",
+  "toggleDeveloperMode": "Uključi/isključi način za programere",
+  "exitFullView": "Izađi iz punog prikaza",
+  "enterFullView": "Uđi u puni prikaz",
+  "hideInterface": "Sakrij interfejs",
+  "resetChatConfirm": "Poništiti razgovor?",
+  "downloadBeforeResetConfirm": "Preuzeti zapisnik razgovora prije poništavanja?",
+  "dataCollectionOn": "Vaši razgovori će se koristiti za treniranje naših AI modela",
+  "dataCollectionOff": "Vaši razgovori se neće koristiti za treniranje naših AI modela"
+}

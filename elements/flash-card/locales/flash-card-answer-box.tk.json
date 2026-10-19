@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Siziň jogabyňyz",
   "checkAnswer": "Jogaby barlamak",
-  "retry": "Gaýtadan synanyşmak"
+  "retry": "Gaýtadan synanyşmak",
+  "correct": "Dogry!",
+  "incorrect": "Nädogry!",
+  "correctAnswer": "Dogry jogap: {answer}"
 }

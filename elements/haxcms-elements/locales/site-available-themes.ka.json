@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "თემების ჩატვირთვა ვერ მოხერხდა: {error}",
+  "noThemesForView": "ამ ხედისთვის თემები ხელმისაწვდომი არ არის.",
+  "active": "აქტიური",
+  "themeIsActive": "თემა {name} აქტიურია",
+  "applyTheme": "თემის {name} გამოყენება",
+  "apply": "გამოყენება",
+  "preview": "გადახედვა",
+  "name": "სახელი",
+  "element": "ელემენტი",
+  "description": "აღწერა",
+  "action": "მოქმედება",
+  "loadingThemes": "თემები იტვირთება...",
+  "themesShown": "ნაჩვენებია {count} თემა",
+  "themesShownDefaults": "ნაჩვენებია {count} თემა (app-hax-ის ნაგულისხმევი)",
+  "availableHaxcmsThemes": "ხელმისაწვდომი HAXcms თემები",
+  "gallery": "გალერეა",
+  "table": "ცხრილი"
+}

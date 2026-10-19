@@ -77,6 +77,8 @@ class Store {
     this.appMode = "search";
     this.activeSiteOp = null;
     this.activeSiteId = null;
+    // English route text lives here; app-hax translates it at display time
+    // via the keys in tKeys (defined in app-hax's this.t)
     this.baseRoutes = [
       {
         path: "home",
@@ -85,6 +87,11 @@ class Store {
         label: "Welcome back",
         statement: "Let's go on a HAX Journey",
         title: "Home",
+        tKeys: {
+          label: "welcomeBack",
+          statement: "letsGoOnAHaxJourney",
+          title: "home",
+        },
       },
       {
         path: "index.html",
@@ -93,6 +100,11 @@ class Store {
         label: "Welcome back",
         statement: "Let's go on a HAX Journey",
         title: "Home",
+        tKeys: {
+          label: "welcomeBack",
+          statement: "letsGoOnAHaxJourney",
+          title: "home",
+        },
       },
       {
         path: "index.php",
@@ -101,6 +113,11 @@ class Store {
         label: "Welcome back",
         statement: "Let's go on a HAX Journey",
         title: "Home",
+        tKeys: {
+          label: "welcomeBack",
+          statement: "letsGoOnAHaxJourney",
+          title: "home",
+        },
       },
       {
         path: "search",
@@ -109,6 +126,11 @@ class Store {
         label: "Search",
         statement: "Discover active adventures",
         title: "Search sites",
+        tKeys: {
+          label: "search",
+          statement: "discoverActiveAdventures",
+          title: "searchSites",
+        },
       },
       {
         path: "/",
@@ -117,6 +139,11 @@ class Store {
         label: "Welcome",
         statement: "Let's build something awesome!",
         title: "Home",
+        tKeys: {
+          label: "welcome",
+          statement: "letsBuildSomethingAwesome",
+          title: "home",
+        },
       },
       {
         path: "/(.*)",
@@ -125,6 +152,10 @@ class Store {
         label: "404 :[",
         statement: "it's not you.. it's me",
         title: "FoUr Oh FoUr",
+        tKeys: {
+          statement: "notFoundStatement",
+          title: "notFoundTitle",
+        },
       },
     ];
     this.routes = this.baseRoutes;

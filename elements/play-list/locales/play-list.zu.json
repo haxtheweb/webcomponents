@@ -1,0 +1,11 @@
+{
+  "playlist": "Uhlu lokudlala",
+  "carousel": "i-carousel",
+  "slide": "isilayidi",
+  "slideNumber": "Isilayidi {number}",
+  "slideOfTotal": "Isilayidi {number} kwangu-{total}",
+  "previousSlide": "Isilayidi esidlule",
+  "nextSlide": "Isilayidi esilandelayo",
+  "slidePages": "Amakhasi ezilayidi",
+  "goToSlide": "Iya esilayidini {number}"
+}

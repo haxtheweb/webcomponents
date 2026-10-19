@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Studenta iesniegums",
   "openInNewWindow": "Atvērt jaunā logā",
-  "submitted": "Iesniegts"
+  "submitted": "Iesniegts",
+  "previousStudent": "Iepriekšējais students",
+  "nextStudent": "Nākamais students",
+  "previousAssignment": "Iepriekšējais uzdevums",
+  "nextAssignment": "Nākamais uzdevums"
 }

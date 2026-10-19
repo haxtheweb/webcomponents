@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Attiecinājums",
+  "licenseBySa": "Attiecinājums-Līdzīga koplietošana",
+  "licenseByNd": "Attiecinājums-Bez atvasinājumiem",
+  "licenseByNc": "Attiecinājums-Nekomerciāls",
+  "licenseByNcSa": "Attiecinājums-Nekomerciāls-Līdzīga koplietošana",
+  "licenseByNcNd": "Attiecinājums-Nekomerciāls-Bez atvasinājumiem",
+  "licenseGraphic": "{license} grafika",
+  "workByCreator": "{title}, autors: {creator}",
+  "workByCreatorLicensed": "{title}, autors: {creator}, ir licencēts saskaņā ar {license}.",
+  "permissionsBeyondScope": "Atļaujas, kas pārsniedz šīs licences darbības jomu, ir pieejamas {link}.",
+  "author": "(autors)",
+  "onTheLicensingDetailsPage": "licencēšanas informācijas lapā"
+}

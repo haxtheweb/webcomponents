@@ -1,6 +1,7 @@
 import { LitElement, html, css, svg } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-class PolarisMark extends LitElement {
+class PolarisMark extends I18NMixin(LitElement) {
   static get properties() {
     return {
       type: { type: String },
@@ -18,6 +19,15 @@ class PolarisMark extends LitElement {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      visitPsuEdu: "{name} — visit psu.edu",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this._haxstate = false;
     this.type = "default";
     this.name = null;
@@ -109,7 +119,11 @@ class PolarisMark extends LitElement {
           href="${this.url}"
           target="_blank"
           rel="noopener"
-          aria-label="${[this.name, this.name2, this.name3].filter(Boolean).join(" ") || "Penn State"} — visit psu.edu"
+          aria-label="${this.t.visitPsuEdu.replace(
+            "{name}",
+            () => ([this.name, this.name2, this.name3].filter(Boolean).join(" ") ||
+              "Penn State"),
+          )}"
           @click="${this._clickPrevent}"
         >
           ${this.renderSource(this.type)}

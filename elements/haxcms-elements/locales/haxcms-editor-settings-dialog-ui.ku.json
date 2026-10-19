@@ -5,5 +5,9 @@
   "buttons": "Bişkok",
   "futureButtonConfiguration": "Mîhengkirina taybet a bişkokên edîtorê di demeke nêzîk de tê.",
   "save": "Tomar bike",
-  "saving": "Tê tomarkirin…"
+  "saving": "Tê tomarkirin…",
+  "novice": "Destpêker",
+  "expert": "Pispor",
+  "toolbarPreviewAlt": "Pêşdîtina darikê amûrên guherandinê yê {audience}",
+  "savingEditorSettingsFailed": "Tomarkirina mîhengên edîtorê bi ser neket: {error}"
 }

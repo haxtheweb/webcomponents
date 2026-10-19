@@ -1,0 +1,18 @@
+{
+  "copy": "Копіювати",
+  "download": "Завантажити",
+  "archive": "Архівувати",
+  "copyOperation": "копіювати",
+  "downloadOperation": "завантажити",
+  "archiveOperation": "архівувати",
+  "created": "створено",
+  "updated": "оновлено",
+  "pages": "сторінки",
+  "url": "URL",
+  "confirm": "Підтвердити",
+  "cancel": "Скасувати",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Ви впевнені, що хочете {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: операція «{operation}» успішна!",
+  "siteOperationFailed": "{siteName}: операція «{operation}» не вдалася"
+}

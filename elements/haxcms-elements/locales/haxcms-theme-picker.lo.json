@@ -1,0 +1,11 @@
+{
+  "theme": "ຊຸດຮູບແບບ",
+  "active": "ໃຊ້ງານຢູ່",
+  "selected": "ເລືອກແລ້ວ",
+  "noPreview": "ບໍ່ມີຕົວຢ່າງ",
+  "currentlyActiveAndSelected": "ທີມທີ່ໃຊ້ງານຢູ່ ແລະ ເລືອກແລ້ວ",
+  "currentlyActive": "ທີມທີ່ໃຊ້ງານຢູ່",
+  "selectedToApplyOnSave": "ທີມທີ່ເລືອກເພື່ອນຳໃຊ້ເມື່ອບັນທຶກ",
+  "themeSelection": "ການເລືອກທີມ",
+  "noThemesAvailable": "ບໍ່ມີທີມ."
+}

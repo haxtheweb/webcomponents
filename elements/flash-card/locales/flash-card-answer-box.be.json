@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Ваш адказ",
   "checkAnswer": "Праверыць адказ",
-  "retry": "Паспрабаваць зноў"
+  "retry": "Паспрабаваць зноў",
+  "correct": "Правільна!",
+  "incorrect": "Няправільна!",
+  "correctAnswer": "Правільны адказ: {answer}"
 }

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "অ্যাট্রিবিউশন",
+  "licenseBySa": "অ্যাট্রিবিউশন শেয়ার-অ্যালাইক",
+  "licenseByNd": "অ্যাট্রিবিউশন নো-ডেরিভেটিভস",
+  "licenseByNc": "অ্যাট্রিবিউশন নন-কমার্শিয়াল",
+  "licenseByNcSa": "অ্যাট্রিবিউশন নন-কমার্শিয়াল শেয়ার-অ্যালাইক",
+  "licenseByNcNd": "অ্যাট্রিবিউশন নন-কমার্শিয়াল নো-ডেরিভেটিভস",
+  "citationWithLicense": "{creator}-এর {title}, {license}-এর অধীনে লাইসেন্সকৃত। দেখা হয়েছে {date}।",
+  "citationWithoutLicense": "{creator}-এর {title}। দেখা হয়েছে {date}।",
+  "licenseGraphic": "{license} গ্রাফিক"
+}

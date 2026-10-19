@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Opiskelijan palautus",
   "openInNewWindow": "Avaa uudessa ikkunassa",
-  "submitted": "Palautettu"
+  "submitted": "Palautettu",
+  "previousStudent": "Edellinen opiskelija",
+  "nextStudent": "Seuraava opiskelija",
+  "previousAssignment": "Edellinen tehtävä",
+  "nextAssignment": "Seuraava tehtävä"
 }

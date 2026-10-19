@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Afișează mesajul trimis anterior (sus)",
+  "displayPreviousMessageDown": "Afișează mesajul trimis anterior (jos)",
+  "sendPrompt": "Trimite solicitarea",
+  "sendPromptToMerlin": "Trimite solicitarea către Merlin",
+  "shortenPrompt": "Scurtează solicitarea la cel mult {limit} caractere."
+}

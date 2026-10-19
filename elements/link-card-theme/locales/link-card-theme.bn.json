@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "অ্যাঙ্কর লিংক কপি হয়েছে!",
+  "skipToContent": "বিষয়বস্তুতে চলে যান",
+  "changePalette": "প্যালেট পরিবর্তন করুন",
+  "primaryLinks": "প্রধান লিংক",
+  "socialLinks": "সোশ্যাল লিংক",
+  "myProfile": "আমার প্রোফাইল",
+  "profileImageOf": "{name}-এর প্রোফাইল ছবি",
+  "profileImage": "প্রোফাইল ছবি",
+  "linkCardProfile": "লিংক কার্ড প্রোফাইল",
+  "emptyStateLinks": "লিংক বাটন দেখাতে site.json-এ শীর্ষ-স্তরের মেনু আইটেম যোগ করুন।",
+  "titleOnPlatform": "{platform}-এ {title}",
+  "openPlatform": "{platform} খুলুন",
+  "paletteUpdated": "রঙের প্যালেট অপশন {number}-এ আপডেট হয়েছে।"
+}

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Nimeä",
+  "licenseBySa": "Nimeä-JaaSamoin",
+  "licenseByNd": "Nimeä-EiMuutoksia",
+  "licenseByNc": "Nimeä-EiKaupallinen",
+  "licenseByNcSa": "Nimeä-EiKaupallinen-JaaSamoin",
+  "licenseByNcNd": "Nimeä-EiKaupallinen-EiMuutoksia",
+  "citationWithLicense": "{title}, tekijä {creator}, lisensoitu lisenssillä {license}. Luettu {date}.",
+  "citationWithoutLicense": "{title}, tekijä {creator}. Luettu {date}.",
+  "licenseGraphic": "{license}-kuva"
+}

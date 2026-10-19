@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Jurnalni txt sifatida yuklab olish",
+  "downloadChatLog": "Chat jurnalini yuklab olish",
+  "resetChat": "Chatni tiklash",
+  "toggleDataCollection": "Maʼlumot yigʻishni almashtirish",
+  "dataCollection": "Maʼlumot yigʻish",
+  "toggleDeveloperMode": "Dasturchi rejimini almashtirish",
+  "exitFullView": "Toʻliq koʻrinishdan chiqish",
+  "enterFullView": "Toʻliq koʻrinishga oʻtish",
+  "hideInterface": "Interfeysni yashirish",
+  "resetChatConfirm": "Chat tiklansinmi?",
+  "downloadBeforeResetConfirm": "Tiklashdan oldin chat jurnalini yuklab olasizmi?",
+  "dataCollectionOn": "Suhbatlaringiz AI modellarimizni oʻqitish uchun ishlatiladi",
+  "dataCollectionOff": "Suhbatlaringiz AI modellarimizni oʻqitish uchun ishlatilmaydi"
+}

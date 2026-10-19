@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Kazi ya mwanafunzi",
   "openInNewWindow": "Fungua kwenye dirisha jipya",
-  "submitted": "Imewasilishwa"
+  "submitted": "Imewasilishwa",
+  "previousStudent": "Mwanafunzi aliyetangulia",
+  "nextStudent": "Mwanafunzi anayefuata",
+  "previousAssignment": "Zoezi lililotangulia",
+  "nextAssignment": "Zoezi linalofuata"
 }

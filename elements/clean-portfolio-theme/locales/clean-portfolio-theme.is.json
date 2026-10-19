@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Akkeristengill afritaður!",
+  "skipToContent": "Fara beint í efni",
+  "siteHome": "Forsíða vefs",
+  "mainNavigation": "Aðalvalmynd",
+  "toggleMenu": "Opna/loka valmynd",
+  "changeTheme": "Skipta um þema",
+  "breadcrumb": "Brauðmolaslóð",
+  "tagFilter": "Sía eftir merki:",
+  "all": "Allt",
+  "pageNumberOfTotal": "Síðunúmer: {current} af {total}",
+  "siteGenerated": "Vefur búinn til: {date}",
+  "copyright": "Höfundarréttur: {year} {author}",
+  "viewContentByTag": "Skoða efni eftir merki",
+  "licenseGraphic": "Merki {license}"
+}

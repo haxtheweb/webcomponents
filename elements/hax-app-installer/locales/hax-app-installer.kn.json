@@ -54,5 +54,6 @@
   "requirementUppercase": "ಒಂದು ದೊಡ್ಡಕ್ಷರ",
   "requirementLowercase": "ಒಂದು ಸಣ್ಣಕ್ಷರ",
   "requirementNumber": "ಒಂದು ಸಂಖ್ಯೆ",
-  "requirementSymbol": "ಒಂದು ಚಿಹ್ನೆ"
+  "requirementSymbol": "ಒಂದು ಚಿಹ್ನೆ",
+  "haxcmsMascotAlt": "HAXcms ವಿಶ್ವ ಪ್ರವಾಸಿ ಮ್ಯಾಸ್ಕಾಟ್"
 }

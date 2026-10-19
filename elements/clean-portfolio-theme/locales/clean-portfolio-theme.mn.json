@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Зангуу холбоосыг хууллаа!",
+  "skipToContent": "Агуулга руу шилжих",
+  "siteHome": "Сайтын нүүр",
+  "mainNavigation": "Үндсэн навигаци",
+  "toggleMenu": "Цэс солих",
+  "changeTheme": "Загвар солих",
+  "breadcrumb": "Замын мөр",
+  "tagFilter": "Шошгын шүүлтүүр:",
+  "all": "Бүгд",
+  "pageNumberOfTotal": "Хуудасны дугаар: {total}-аас {current}",
+  "siteGenerated": "Сайт үүсгэсэн: {date}",
+  "copyright": "Зохиогчийн эрх: {year} {author}",
+  "viewContentByTag": "Агуулгыг шошгоор харах",
+  "licenseGraphic": "{license} график"
+}

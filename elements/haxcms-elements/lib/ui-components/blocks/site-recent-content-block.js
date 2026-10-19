@@ -2,6 +2,7 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
 import { LitElement, css, html } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `site-recent-content-block`
@@ -15,16 +16,25 @@ import { LitElement, css, html } from "lit";
  * @customElement site-recent-content-block
  * @demo demo/index.html
  */
-class SiteRecentContentBlock extends LitElement {
+class SiteRecentContentBlock extends I18NMixin(LitElement) {
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      recentContent: "Recent content",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.limit = 10;
     this.startIndex = 0;
     this.sort = {
       "metadata.created": "ASC",
     };
     this.conditions = {};
-    this.title = "Recent content";
+    this.i18nDefault("title", "recentContent");
     this.__disposer = autorun(() => {
       const _mobx_val_0 = toJS(store.activeId);
       Promise.resolve().then(() => {

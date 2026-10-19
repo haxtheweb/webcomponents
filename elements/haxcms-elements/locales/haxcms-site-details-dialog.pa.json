@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- ਪੂਰਵ-ਨਿਰਧਾਰਤ ਪਹਿਲਾ ਪੰਨਾ --",
+  "details": "ਵੇਰਵੇ",
+  "title": "ਸਿਰਲੇਖ",
+  "titleDescription": "ਸਾਈਟ ਦਾ ਨਾਮ",
+  "homePage": "ਮੁੱਖ ਪੰਨਾ",
+  "homePageDescription": "ਪੂਰਵ-ਨਿਰਧਾਰਤ ਆਮਦ / ਮੁੱਖ ਪੰਨੇ ਵਜੋਂ ਵਰਤਣ ਲਈ ਪੰਨਾ",
+  "advanced": "ਉੱਨਤ",
+  "serviceWorker": "ਗਤੀਸ਼ੀਲ ਪੰਨੇ ਵਿੱਚ ਸਰਵਿਸ ਵਰਕਰ ਸ਼ਾਮਲ ਕਰੋ",
+  "serviceWorkerDescription": "ਜੇ ਵਰਤੋਂਕਾਰਾਂ ਨੂੰ ਹਮੇਸ਼ਾ ਤੁਰੰਤ ਸਰਵਰ ਦਾ ਨਵੀਨਤਮ ਆਉਟਪੁੱਟ ਦਿਖਣਾ ਚਾਹੀਦਾ ਹੈ ਤਾਂ ਇਸਨੂੰ ਬੰਦ ਕਰੋ।",
+  "forceBrowserUpgrade": "ਬ੍ਰਾਊਜ਼ਰ ਅੱਪਗ੍ਰੇਡ ਲਾਜ਼ਮੀ ਕਰੋ",
+  "forceBrowserUpgradeDescription": "ਸਾਈਟ ਤਜਰਬਾ ਲੋਡ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਸਦਾ-ਨਵੇਂ ਬ੍ਰਾਊਜ਼ਰ ਲਾਜ਼ਮੀ ਕਰੋ।",
+  "unableToLoadSiteDetails": "ਸਾਈਟ ਵੇਰਵੇ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੇ।",
+  "noSiteDetails": "ਕੋਈ ਸਾਈਟ ਵੇਰਵੇ ਉਪਲਬਧ ਨਹੀਂ।",
+  "save": "ਸੰਭਾਲੋ"
+}

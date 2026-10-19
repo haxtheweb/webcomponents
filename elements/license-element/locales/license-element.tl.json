@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Pagkilala",
+  "licenseBySa": "Pagkilala-Pagbabahagi nang Pareho",
+  "licenseByNd": "Pagkilala-Walang Hinangong Gawa",
+  "licenseByNc": "Pagkilala-Hindi Pangkomersyo",
+  "licenseByNcSa": "Pagkilala-Hindi Pangkomersyo-Pagbabahagi nang Pareho",
+  "licenseByNcNd": "Pagkilala-Hindi Pangkomersyo-Walang Hinangong Gawa",
+  "licenseGraphic": "Grapiko ng {license}",
+  "workByCreator": "{title} ni {creator}",
+  "workByCreatorLicensed": "Ang {title} ni {creator} ay lisensyado sa ilalim ng {license}.",
+  "permissionsBeyondScope": "Ang mga pahintulot na lampas sa saklaw ng lisensyang ito ay available {link}.",
+  "author": "(may-akda)",
+  "onTheLicensingDetailsPage": "sa pahina ng mga detalye ng paglilisensya"
+}

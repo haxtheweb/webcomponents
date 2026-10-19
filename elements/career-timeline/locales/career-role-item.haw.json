@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Poʻo inoa kuleana",
+  "describeYourRole": "E wehewehe i kou kuleana ma ʻaneʻi...",
+  "present": "Hōʻike",
+  "skills": "Nā mākau:",
+  "skillsAndMore": "{skills} a me +{count} hou aku",
+  "yearShort": "{count} makahiki",
+  "yearsShort": "{count} makahiki",
+  "monthShort": "{count} mahina",
+  "monthsShort": "{count} mahina"
+}

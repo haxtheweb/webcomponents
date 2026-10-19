@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "تم نسخ رابط المرساة!",
+  "skipToContent": "الانتقال إلى المحتوى",
+  "siteHome": "الصفحة الرئيسية للموقع",
+  "mainNavigation": "التنقل الرئيسي",
+  "toggleMenu": "تبديل القائمة",
+  "changeTheme": "تغيير السمة",
+  "breadcrumb": "مسار التنقل",
+  "tagFilter": "تصفية الوسوم:",
+  "all": "الكل",
+  "pageNumberOfTotal": "رقم الصفحة: {current} من {total}",
+  "siteGenerated": "تاريخ إنشاء الموقع: {date}",
+  "copyright": "حقوق النشر: {year} {author}",
+  "viewContentByTag": "عرض المحتوى حسب الوسم",
+  "licenseGraphic": "رسم {license}"
+}

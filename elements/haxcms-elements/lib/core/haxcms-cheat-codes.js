@@ -9,6 +9,72 @@
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "./haxcms-site-store.js";
 
+// English defaults for cheat code toasts and Merlin speech. These methods are
+// attached to haxcms-site-editor-ui, so translations come from its this.t
+// (haxcms namespace) when present, falling back to these strings.
+const CHEAT_CODES_T = {
+  cheatDkModeActivated: "🍌 DK MODE ACTIVATED! Big head engaged!",
+  cheatDkModeNoCharacter: "🍌 DK MODE: No character found!",
+  cheatDkModeSpeak: "Big head mode activated! Welcome to DK Island!",
+  cheatBarrelRoll: "✈️ DO A BARREL ROLL!",
+  cheatBarrelRollSpeak: "Use the boost to get through!",
+  cheatZombieSummoned: "🧟‍♀️ ZOMBIE PIRATE GIRL SUMMONED!",
+  cheatZombieSummonFailed: "🧟‍♀️ SUMMON FAILED: No character found!",
+  cheatZombieSpeak: "Arrr! The undead seas await ye matey!",
+  cheatDanceDanceRevolution: "🎵 DANCE DANCE REVOLUTION!",
+  cheatDanceDanceRevolutionSpeak: "Left, down, up, right! Keep the beat!",
+  cheatSantaModeActivated: "🎅 HO HO HO! Santa mode activated!",
+  cheatSantaModeDeactivated: "🎅 Santa mode deactivated. Back to normal voice.",
+  cheatSantaModeUnavailable: "🎅 Santa mode unavailable",
+  cheatSantaSpeak: "Ho ho ho! Have you been naughty or nice?",
+  cheatTimeTravelDisabled: "⏳ Time travel disabled - Welcome back to the present!",
+  cheatTimeTravelActivated: "⏳ TIME TRAVEL ACTIVATED! Welcome to the past!",
+  cheatTimeTravelExpired: "⏳ Time travel expired - Returned to present",
+  cheatTimeTravelSpeak: "Great Scott! We have traveled through time itself!",
+  cheatBeepsDisabled: "🔊 BEEPS disabled - Silence restored",
+  cheatBeepsActivated: "🔊 BEEPS ACTIVATED! Every click makes a sound!",
+  cheatBeepsSpeak: "Beep boop! Every click is now a symphony of chaos!",
+  cheatMatrixDisabled: "🕵️ Matrix disabled - Back to reality",
+  cheatDarkWebActivated: "🕵️ DARK WEB ACTIVATED - Welcome to the Matrix!",
+  cheatMatrixSessionTerminated: "🕵️ Matrix session terminated",
+  cheatMatrixSpeak: "Welcome to the Matrix! Red pill or blue pill?",
+  cheatRickRolled: "🎤 RICK ROLLED! Never gonna give you up!",
+  cheatRickRollSpeak: "Never gonna give you up, never gonna let you down!",
+  cheatNyanCatActivated: "🐈 NYAN CAT ACTIVATED! Rainbow cats incoming!",
+  cheatNyanCatSpeak: "Nyan nyan nyan! Rainbow cats are taking over the internet!",
+  cheatWorldChangerActivated: "🌍 WORLD CHANGER ACTIVATED! Be the change!",
+  cheatWorldChangerSpeak: "You must be the change you wish to see in the world",
+  cheatTechnoPartyStopped: "🎵 Techno party stopped!",
+  cheatTechnoTime: "🎵 TECHNO TIME! Get ready to party!",
+  cheatTechnoSpeak: "The system is down!",
+  cheatTechnoPartyOver: "🎵 Techno party over! Back to reality.",
+  cheatCreditsLoadFailed: "🎬 Failed to load contributors component",
+  cheatCreditsRoll: "🎬 CREDITS ROLL! Thank you contributors!",
+  cheatCreditsSpeak: "Thank you for helping to build something amazing, free, and ubiquitous",
+  cheatJokerSubsided: "🃏 Joker chaos subsided... for now",
+  cheatJokerActivated: "🃏 JOKER ACTIVATED! Chaos unleashed!",
+  cheatJokerSpeak: "It's not about the money, it's about sending a message",
+  cheatFurbyAttackEnded: "👾 Furby attack ended! They returned to the digital realm!",
+  cheatFurbyAttack: "👾 FURBY TRADING CARD ATTACK! Close one, two more appear!",
+  cheatFurbySpeak: "Me-dah-loo-loo! Each Furby carries ancient trading card wisdom!",
+  cheatWindows95Activated: "💻 WINDOWS 95 ACTIVATED! Welcome to the future!",
+  cheatWindows95Speak: "Welcome to Windows 95! The operating system of tomorrow, today!",
+  cheatEternalDarknessDisabled: "🌙 ETERNAL DARKNESS DISABLED - Sanity restored!",
+  cheatEternalDarknessEndsSpeak: "The nightmare ends... for now.",
+  cheatEternalDarknessSpeak: "This. Can't. Be. Happening.",
+  cheatEternalDarknessActivated: "🌙 ETERNAL DARKNESS - Your sanity slips away...",
+  cheatYtmndActivated: "🎵 YTMND ACTIVATED! You're the man now, dog!",
+  cheatYtmndSpeak: "You're the man now, dog! Welcome to the golden age of internet memes!",
+  cheatGeocitiesActivated: "🌈 GEOCITIES ACTIVATED! Welcome to 1999!",
+  cheatGeocitiesSpeak: "Welcome to the information superhighway! Don't forget to sign the guestbook!",
+  cheatClippyActivated: "📎 CLIPPY ACTIVATED! I'm here to help!",
+  cheatClippySpeak: "It looks like you're trying to activate an assistant. I can help with that!",
+  cheatChickenButtActivated: "🐔 CHICKEN BUTT FREEZE RAY RAWR! Find the three special items!",
+  cheatChickenButtSpeak: "I love you to the moon and back! Can you find the chicken, freeze ray, and rawr monster?",
+};
+const _t = (context, key) =>
+  context && context.t && context.t[key] ? context.t[key] : CHEAT_CODES_T[key];
+
 /**
  * Define all cheat code programs for Merlin
  * @param {Object} editorInstance - The HAXcms site editor UI instance
@@ -410,14 +476,14 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         "hue-rotate(30deg) saturate(1.3) brightness(1.2)";
       rpgCharacter.style.transition = "all 0.3s ease-in-out";
 
-      HAXStore.toast("🍌 DK MODE ACTIVATED! Big head engaged!");
+      HAXStore.toast(_t(editorInstance, "cheatDkModeActivated"));
       store.playSound("success");
     } else {
-      HAXStore.toast("🍌 DK MODE: No character found!");
+      HAXStore.toast(_t(editorInstance, "cheatDkModeNoCharacter"));
     }
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "Big head mode activated! Welcome to DK Island!",
+      _t(editorInstance, "cheatDkModeSpeak"),
     );
     SuperDaemonInstance.close();
   };
@@ -430,7 +496,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     body.style.transition = "transform 2s ease-in-out";
     body.style.transform = "rotate(720deg)";
 
-    HAXStore.toast("✈️ DO A BARREL ROLL!");
+    HAXStore.toast(_t(editorInstance, "cheatBarrelRoll"));
 
     setTimeout(() => {
       body.style.transform = "rotate(0deg)";
@@ -440,7 +506,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     }, 2000);
 
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak("Use the boost to get through!");
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatBarrelRollSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -470,13 +536,13 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         }
       }, 1000);
 
-      HAXStore.toast("🧟‍♀️ ZOMBIE PIRATE GIRL SUMMONED!");
+      HAXStore.toast(_t(editorInstance, "cheatZombieSummoned"));
       store.playSound("success");
     } else {
-      HAXStore.toast("🧟‍♀️ SUMMON FAILED: No character found!");
+      HAXStore.toast(_t(editorInstance, "cheatZombieSummonFailed"));
     }
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak("Arrr! The undead seas await ye matey!");
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatZombieSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -503,8 +569,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       body.style.filter = originalFilter;
     }, 300);
 
-    HAXStore.toast("🎵 DANCE DANCE REVOLUTION!");
-    SuperDaemonInstance.merlinSpeak("Left, down, up, right! Keep the beat!");
+    HAXStore.toast(_t(editorInstance, "cheatDanceDanceRevolution"));
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatDanceDanceRevolutionSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -517,15 +583,15 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       SuperDaemon.manager.santa = !SuperDaemon.manager.santa;
       HAXStore.toast(
         SuperDaemon.manager.santa
-          ? "🎅 HO HO HO! Santa mode activated!"
-          : "🎅 Santa mode deactivated. Back to normal voice.",
+          ? _t(editorInstance, "cheatSantaModeActivated")
+          : _t(editorInstance, "cheatSantaModeDeactivated"),
       );
     } else {
-      HAXStore.toast("🎅 Santa mode unavailable");
+      HAXStore.toast(_t(editorInstance, "cheatSantaModeUnavailable"));
     }
 
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak("Ho ho ho! Have you been naughty or nice?");
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatSantaSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -539,14 +605,14 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     if (existingFilter.includes("sepia")) {
       // Remove time travel effect
       body.style.filter = existingFilter.replace(/sepia\([^)]*\)/g, "").trim();
-      HAXStore.toast("⏳ Time travel disabled - Welcome back to the present!");
+      HAXStore.toast(_t(editorInstance, "cheatTimeTravelDisabled"));
     } else {
       // Add sepia time travel effect
       body.style.filter =
         (existingFilter || "") + " sepia(0.8) contrast(1.2) brightness(0.9)";
       body.style.transition = "filter 2s ease-in-out";
 
-      HAXStore.toast("⏳ TIME TRAVEL ACTIVATED! Welcome to the past!");
+      HAXStore.toast(_t(editorInstance, "cheatTimeTravelActivated"));
 
       // Auto-remove after 30 seconds
       setTimeout(() => {
@@ -555,14 +621,14 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           body.style.filter = currentFilter
             .replace(/sepia\([^)]*\)/g, "")
             .trim();
-          HAXStore.toast("⏳ Time travel expired - Returned to present");
+          HAXStore.toast(_t(editorInstance, "cheatTimeTravelExpired"));
         }
       }, 30000);
     }
 
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "Great Scott! We have traveled through time itself!",
+      _t(editorInstance, "cheatTimeTravelSpeak"),
     );
     SuperDaemonInstance.close();
   };
@@ -581,7 +647,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         "click",
         globalThis.beepClickHandler,
       );
-      HAXStore.toast("🔊 BEEPS disabled - Silence restored");
+      HAXStore.toast(_t(editorInstance, "cheatBeepsDisabled"));
     } else {
       // Add beep mode
       globalThis.document.body.setAttribute("data-beeps-active", "true");
@@ -618,12 +684,12 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         "click",
         globalThis.beepClickHandler,
       );
-      HAXStore.toast("🔊 BEEPS ACTIVATED! Every click makes a sound!");
+      HAXStore.toast(_t(editorInstance, "cheatBeepsActivated"));
     }
 
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "Beep boop! Every click is now a symphony of chaos!",
+      _t(editorInstance, "cheatBeepsSpeak"),
     );
     SuperDaemonInstance.close();
   };
@@ -637,7 +703,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     if (existingMatrix) {
       // Remove matrix effect
       existingMatrix.remove();
-      HAXStore.toast("🕵️ Matrix disabled - Back to reality");
+      HAXStore.toast(_t(editorInstance, "cheatMatrixDisabled"));
     } else {
       // Add matrix effect as overlay
       const matrixContainer = globalThis.document.createElement("div");
@@ -700,21 +766,21 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       }
 
       globalThis.document.body.appendChild(matrixContainer);
-      HAXStore.toast("🕵️ DARK WEB ACTIVATED - Welcome to the Matrix!");
+      HAXStore.toast(_t(editorInstance, "cheatDarkWebActivated"));
 
       // Auto-remove after 20 seconds
       setTimeout(() => {
         const matrix = globalThis.document.getElementById("matrix-effect");
         if (matrix) {
           matrix.remove();
-          HAXStore.toast("🕵️ Matrix session terminated");
+          HAXStore.toast(_t(editorInstance, "cheatMatrixSessionTerminated"));
         }
       }, 20000);
     }
 
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "Welcome to the Matrix! Red pill or blue pill?",
+      _t(editorInstance, "cheatMatrixSpeak"),
     );
     SuperDaemonInstance.close();
   };
@@ -827,10 +893,10 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       }
     });
 
-    HAXStore.toast("🎤 RICK ROLLED! Never gonna give you up!");
+    HAXStore.toast(_t(editorInstance, "cheatRickRolled"));
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "Never gonna give you up, never gonna let you down!",
+      _t(editorInstance, "cheatRickRollSpeak"),
     );
     SuperDaemonInstance.close();
   };
@@ -904,10 +970,10 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       globalThis.document.head.appendChild(style);
     }
 
-    HAXStore.toast("🐈 NYAN CAT ACTIVATED! Rainbow cats incoming!");
+    HAXStore.toast(_t(editorInstance, "cheatNyanCatActivated"));
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "Nyan nyan nyan! Rainbow cats are taking over the internet!",
+      _t(editorInstance, "cheatNyanCatSpeak"),
     );
     SuperDaemonInstance.close();
   };
@@ -981,10 +1047,10 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       }
     }, 15000);
 
-    HAXStore.toast("🌍 WORLD CHANGER ACTIVATED! Be the change!");
+    HAXStore.toast(_t(editorInstance, "cheatWorldChangerActivated"));
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "You must be the change you wish to see in the world",
+      _t(editorInstance, "cheatWorldChangerSpeak"),
     );
     SuperDaemonInstance.close();
   };
@@ -1050,7 +1116,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         const body = globalThis.document.body;
         body.style.backgroundColor = "";
         body.style.filter = "";
-        HAXStore.toast("🎵 Techno party stopped!");
+        HAXStore.toast(_t(editorInstance, "cheatTechnoPartyStopped"));
       }
     };
 
@@ -1062,9 +1128,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       }
     });
 
-    HAXStore.toast("🎵 TECHNO TIME! Get ready to party!");
+    HAXStore.toast(_t(editorInstance, "cheatTechnoTime"));
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak("The system is down!");
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatTechnoSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -1115,7 +1181,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       clearInterval(effectInterval);
       body.style.backgroundColor = "";
       body.style.filter = "";
-      HAXStore.toast("🎵 Techno party over! Back to reality.");
+      HAXStore.toast(_t(editorInstance, "cheatTechnoPartyOver"));
     }, 30000);
 
     // Return intervals for external cleanup
@@ -1135,7 +1201,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       await import("@haxtheweb/github-preview/lib/github-rpg-contributors.js");
     } catch (error) {
       console.warn("Failed to load github-rpg-contributors:", error);
-      HAXStore.toast("🎬 Failed to load contributors component");
+      HAXStore.toast(_t(editorInstance, "cheatCreditsLoadFailed"));
       return;
     }
 
@@ -1234,10 +1300,10 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       }
     });
 
-    HAXStore.toast("🎬 CREDITS ROLL! Thank you contributors!");
+    HAXStore.toast(_t(editorInstance, "cheatCreditsRoll"));
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "Thank you for helping to build something amazing, free, and ubiquitous",
+      _t(editorInstance, "cheatCreditsSpeak"),
     );
     SuperDaemonInstance.close();
   };
@@ -1335,13 +1401,13 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       if (hiddenVideo.parentNode) {
         hiddenVideo.remove();
       }
-      HAXStore.toast("🃏 Joker chaos subsided... for now");
+      HAXStore.toast(_t(editorInstance, "cheatJokerSubsided"));
     }, 10000);
 
-    HAXStore.toast("🃏 JOKER ACTIVATED! Chaos unleashed!");
+    HAXStore.toast(_t(editorInstance, "cheatJokerActivated"));
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "It's not about the money, it's about sending a message",
+      _t(editorInstance, "cheatJokerSpeak"),
     );
     SuperDaemonInstance.close();
   };
@@ -1601,14 +1667,14 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       popupWindows.length = 0;
 
       HAXStore.toast(
-        "👾 Furby attack ended! They returned to the digital realm!",
+        _t(editorInstance, "cheatFurbyAttackEnded"),
       );
     }, 20000);
 
-    HAXStore.toast("👾 FURBY TRADING CARD ATTACK! Close one, two more appear!");
+    HAXStore.toast(_t(editorInstance, "cheatFurbyAttack"));
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "Me-dah-loo-loo! Each Furby carries ancient trading card wisdom!",
+      _t(editorInstance, "cheatFurbySpeak"),
     );
     SuperDaemonInstance.close();
   };
@@ -2009,10 +2075,10 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     playStartupSound();
 
-    HAXStore.toast("💻 WINDOWS 95 ACTIVATED! Welcome to the future!");
+    HAXStore.toast(_t(editorInstance, "cheatWindows95Activated"));
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "Welcome to Windows 95! The operating system of tomorrow, today!",
+      _t(editorInstance, "cheatWindows95Speak"),
     );
     SuperDaemonInstance.close();
   };
@@ -2095,8 +2161,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         flash.remove();
       }, 500);
 
-      HAXStore.toast("🌙 ETERNAL DARKNESS DISABLED - Sanity restored!");
-      SuperDaemonInstance.merlinSpeak("The nightmare ends... for now.");
+      HAXStore.toast(_t(editorInstance, "cheatEternalDarknessDisabled"));
+      SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatEternalDarknessEndsSpeak"));
       SuperDaemonInstance.close();
       return;
     }
@@ -2680,7 +2746,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         }, 800);
 
         // Play the signature voice line
-        SuperDaemonInstance.merlinSpeak("This. Can't. Be. Happening.");
+        SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatEternalDarknessSpeak"));
 
         // Cleanup current effect but keep the system active
         if (effectCleanup) {
@@ -2689,7 +2755,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       }, 5000);
     }
 
-    HAXStore.toast("🌙 ETERNAL DARKNESS - Your sanity slips away...");
+    HAXStore.toast(_t(editorInstance, "cheatEternalDarknessActivated"));
     store.playSound("success");
     SuperDaemonInstance.close();
   };
@@ -2837,10 +2903,10 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       ytmndOverlay.remove();
     });
 
-    HAXStore.toast("🎵 YTMND ACTIVATED! You're the man now, dog!");
+    HAXStore.toast(_t(editorInstance, "cheatYtmndActivated"));
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "You're the man now, dog! Welcome to the golden age of internet memes!",
+      _t(editorInstance, "cheatYtmndSpeak"),
     );
     SuperDaemonInstance.close();
   };
@@ -3003,10 +3069,10 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       geocitiesOverlay.remove();
     });
 
-    HAXStore.toast("🌈 GEOCITIES ACTIVATED! Welcome to 1999!");
+    HAXStore.toast(_t(editorInstance, "cheatGeocitiesActivated"));
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "Welcome to the information superhighway! Don't forget to sign the guestbook!",
+      _t(editorInstance, "cheatGeocitiesSpeak"),
     );
     SuperDaemonInstance.close();
   };
@@ -3266,10 +3332,10 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       }, 2000);
     });
 
-    HAXStore.toast("📎 CLIPPY ACTIVATED! I'm here to help!");
+    HAXStore.toast(_t(editorInstance, "cheatClippyActivated"));
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "It looks like you're trying to activate an assistant. I can help with that!",
+      _t(editorInstance, "cheatClippySpeak"),
     );
     SuperDaemonInstance.close();
   };
@@ -3569,11 +3635,11 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     globalThis.document.body.appendChild(gameOverlay);
 
     HAXStore.toast(
-      "🐔 CHICKEN BUTT FREEZE RAY RAWR! Find the three special items!",
+      _t(editorInstance, "cheatChickenButtActivated"),
     );
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      "I love you to the moon and back! Can you find the chicken, freeze ray, and rawr monster?",
+      _t(editorInstance, "cheatChickenButtSpeak"),
     );
     SuperDaemonInstance.close();
   };

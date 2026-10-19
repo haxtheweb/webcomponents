@@ -336,14 +336,14 @@ class CollectionsTheme extends HAXCMSOperationButtons(
   // render function
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <header itemscope itemtype="http://schema.org/WPHeader">
         <site-region name="header"></site-region>
       </header>
       <nav
         id="nav"
         part="site-top-menu"
-        aria-label="Site"
+        aria-label="${this.t.site}"
         itemscope
         itemtype="http://schema.org/SiteNavigationElement"
       >
@@ -403,6 +403,12 @@ class CollectionsTheme extends HAXCMSOperationButtons(
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      site: "Site",
+    };
     this.HAXCMSThemeSettings.autoScroll = true;
     autorun(() => {
       const _mobx_val_0 = toJS(store.badDevice);

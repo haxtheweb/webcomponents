@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- डीफॉल्ट म्हणून पहिले पान --",
+  "details": "तपशील",
+  "title": "शीर्षक",
+  "titleDescription": "साइटचे नाव",
+  "homePage": "मुख्यपृष्ठ",
+  "homePageDescription": "डीफॉल्ट लँडिंग / मुख्यपृष्ठ म्हणून वापरायचे पान",
+  "advanced": "प्रगत",
+  "serviceWorker": "डायनॅमिक पानात सर्व्हिस वर्कर जोडा",
+  "serviceWorkerDescription": "वापरकर्त्यांना नेहमी सर्व्हरचे नवीनतम आउटपुट लगेच दिसायला हवे असल्यास हे अक्षम करा.",
+  "forceBrowserUpgrade": "ब्राउझर अपग्रेड सक्तीचे करा",
+  "forceBrowserUpgradeDescription": "साइट अनुभव लोड करण्यापूर्वी अद्ययावत (evergreen) ब्राउझर आवश्यक करा.",
+  "unableToLoadSiteDetails": "साइट तपशील लोड करता आले नाहीत.",
+  "noSiteDetails": "कोणतेही साइट तपशील उपलब्ध नाहीत.",
+  "save": "जतन करा"
+}

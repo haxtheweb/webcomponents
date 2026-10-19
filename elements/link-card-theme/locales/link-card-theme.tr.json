@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Bağlantı adresi kopyalandı!",
+  "skipToContent": "İçeriğe geç",
+  "changePalette": "Paleti değiştir",
+  "primaryLinks": "Birincil bağlantılar",
+  "socialLinks": "Sosyal bağlantılar",
+  "myProfile": "Profilim",
+  "profileImageOf": "{name} profil görseli",
+  "profileImage": "Profil görseli",
+  "linkCardProfile": "Bağlantı kartı profili",
+  "emptyStateLinks": "Bağlantı düğmelerini görüntülemek için site.json dosyasına üst düzey menü öğeleri ekleyin.",
+  "titleOnPlatform": "{platform} üzerinde {title}",
+  "openPlatform": "{platform} aç",
+  "paletteUpdated": "Renk paleti {number}. seçeneğe güncellendi."
+}

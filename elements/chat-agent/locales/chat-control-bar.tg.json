@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Боргирии сабт ҳамчун txt",
+  "downloadChatLog": "Боргирии сабти чат",
+  "resetChat": "Аз нав оғоз кардани чат",
+  "toggleDataCollection": "Гузариши ҷамъоварии маълумот",
+  "dataCollection": "Ҷамъоварии маълумот",
+  "toggleDeveloperMode": "Гузариши реҷаи таҳиягар",
+  "exitFullView": "Баромадан аз намои пурра",
+  "enterFullView": "Ворид шудан ба намои пурра",
+  "hideInterface": "Пинҳон кардани интерфейс",
+  "resetChatConfirm": "Чатро аз нав оғоз кунем?",
+  "downloadBeforeResetConfirm": "Пеш аз аз нав оғоз кардан сабти чатро боргирӣ мекунед?",
+  "dataCollectionOn": "Сӯҳбатҳои шумо барои омӯзонидани моделҳои AI-и мо истифода мешаванд",
+  "dataCollectionOff": "Сӯҳбатҳои шумо барои омӯзонидани моделҳои AI-и мо истифода намешаванд"
+}

@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Aktif",
+  "selected": "Dipilih",
+  "noPreview": "Tidak ada pratinjau",
+  "currentlyActiveAndSelected": "Tema yang sedang aktif dan dipilih",
+  "currentlyActive": "Tema yang sedang aktif",
+  "selectedToApplyOnSave": "Tema yang dipilih untuk diterapkan saat menyimpan",
+  "themeSelection": "Pemilihan tema",
+  "noThemesAvailable": "Tidak ada tema yang tersedia."
+}

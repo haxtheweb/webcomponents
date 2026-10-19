@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Lien d'ancre copié !",
+  "skipToContent": "Aller au contenu",
+  "siteHome": "Accueil du site",
+  "mainNavigation": "Navigation principale",
+  "toggleMenu": "Afficher/masquer le menu",
+  "changeTheme": "Changer de thème",
+  "breadcrumb": "Fil d'Ariane",
+  "tagFilter": "Filtre par étiquette :",
+  "all": "Tous",
+  "pageNumberOfTotal": "Numéro de page : {current} sur {total}",
+  "siteGenerated": "Site généré : {date}",
+  "copyright": "Copyright : {year} {author}",
+  "viewContentByTag": "Voir le contenu par étiquette",
+  "licenseGraphic": "Logo {license}"
+}

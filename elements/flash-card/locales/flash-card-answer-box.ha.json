@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Amsarka",
   "checkAnswer": "Duba amsa",
-  "retry": "Sake gwadawa"
+  "retry": "Sake gwadawa",
+  "correct": "Daidai!",
+  "incorrect": "Ba daidai ba!",
+  "correctAnswer": "Amsa Daidai: {answer}"
 }

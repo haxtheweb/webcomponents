@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "ສຳເນົາລິ້ງສະມໍແລ້ວ!",
+  "skipToContent": "ຂ້າມໄປຫາເນື້ອຫາ",
+  "changePalette": "ປ່ຽນຊຸດສີ",
+  "primaryLinks": "ລິ້ງຫຼັກ",
+  "socialLinks": "ລິ້ງສັງຄົມ",
+  "myProfile": "ໂປຣໄຟລ໌ຂອງຂ້ອຍ",
+  "profileImageOf": "ຮູບໂປຣໄຟລ໌ຂອງ {name}",
+  "profileImage": "ຮູບໂປຣໄຟລ໌",
+  "linkCardProfile": "ໂປຣໄຟລ໌ບັດລິ້ງ",
+  "emptyStateLinks": "ເພີ່ມລາຍການເມນູລະດັບສູງສຸດໃນ site.json ເພື່ອສະແດງປຸ່ມລິ້ງ.",
+  "titleOnPlatform": "{title} ໃນ {platform}",
+  "openPlatform": "ເປີດ {platform}",
+  "paletteUpdated": "ອັບເດດຊຸດສີເປັນຕົວເລືອກ {number} ແລ້ວ."
+}

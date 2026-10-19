@@ -54,5 +54,6 @@
   "requirementUppercase": "Нэг том үсэг",
   "requirementLowercase": "Нэг жижиг үсэг",
   "requirementNumber": "Нэг тоо",
-  "requirementSymbol": "Нэг тэмдэг"
+  "requirementSymbol": "Нэг тэмдэг",
+  "haxcmsMascotAlt": "HAXcms Дэлхийн аялагч сахиус"
 }

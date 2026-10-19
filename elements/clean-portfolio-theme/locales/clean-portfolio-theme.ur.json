@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "اینکر لنک کاپی ہو گیا!",
+  "skipToContent": "مواد پر جائیں",
+  "siteHome": "سائٹ ہوم",
+  "mainNavigation": "مرکزی نیویگیشن",
+  "toggleMenu": "مینو ٹوگل کریں",
+  "changeTheme": "تھیم بدلیں",
+  "breadcrumb": "بریڈکرمب",
+  "tagFilter": "ٹیگ فلٹر:",
+  "all": "سب",
+  "pageNumberOfTotal": "صفحہ نمبر: {total} میں سے {current}",
+  "siteGenerated": "سائٹ تیار کی گئی: {date}",
+  "copyright": "کاپی رائٹ: {year} {author}",
+  "viewContentByTag": "ٹیگ کے لحاظ سے مواد دیکھیں",
+  "licenseGraphic": "{license} گرافک"
+}

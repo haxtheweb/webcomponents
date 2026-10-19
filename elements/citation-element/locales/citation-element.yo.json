@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Ìdánimọ̀",
+  "licenseBySa": "Ìdánimọ̀ Pín bákan náà",
+  "licenseByNd": "Ìdánimọ̀ Kò sí àtúnṣe",
+  "licenseByNc": "Ìdánimọ̀ kì í ṣe fún òwò",
+  "licenseByNcSa": "Ìdánimọ̀ kì í ṣe fún òwò pín bákan náà",
+  "licenseByNcNd": "Ìdánimọ̀ Kì í ṣe fún òwò Kò sí àtúnṣe",
+  "citationWithLicense": "{title} látọwọ́ {creator}, ní ìwé àṣẹ lábẹ́ {license}. A wọlé sí i ní {date}.",
+  "citationWithoutLicense": "{title} látọwọ́ {creator}. A wọlé sí i ní {date}.",
+  "licenseGraphic": "Àwòrán {license}"
+}

@@ -10,5 +10,9 @@
   "save": "Vista",
   "noDescription": "Engin lýsing tiltæk.",
   "details": "Nánar",
-  "loadingInventory": "Hleð öllum kubbalistanum…"
+  "loadingInventory": "Hleð öllum kubbalistanum…",
+  "selectAllButton": "Velja allt",
+  "deselectAllButton": "Afvelja allt",
+  "selectedOfAvailable": "{selected} valdir / {total} tiltækir",
+  "savingBlocksFailed": "Vistun bálka mistókst: {error}"
 }

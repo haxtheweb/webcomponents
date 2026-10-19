@@ -1,5 +1,8 @@
 {
   "yourAnswer": "התשובה שלך",
   "checkAnswer": "בדיקת תשובה",
-  "retry": "ניסיון חוזר"
+  "retry": "ניסיון חוזר",
+  "correct": "נכון!",
+  "incorrect": "שגוי!",
+  "correctAnswer": "התשובה הנכונה: {answer}"
 }

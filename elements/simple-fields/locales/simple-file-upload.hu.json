@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Húzd ide a fájlokat",
+  "uploadQueue": "Feltöltési sor",
+  "pending": "Függőben",
+  "preparing": "Előkészítés",
+  "uploading": "Feltöltés",
+  "complete": "Kész",
+  "aborted": "Megszakítva",
+  "cancelled": "Visszavonva",
+  "error": "Hiba",
+  "errorWithStatus": "Hiba: {status}",
+  "cancel": "Mégse",
+  "cancelUploadOf": "{name} feltöltésének megszakítása",
+  "retry": "Újra",
+  "retryUploadOf": "{name} feltöltésének újrapróbálása",
+  "remove": "Eltávolítás",
+  "removeFromQueue": "{name} eltávolítása a sorból",
+  "fileTypeNotAccepted": "Nem elfogadott fájltípus: {name}",
+  "uploadFailed": "A feltöltés sikertelen: {status}",
+  "networkError": "Hálózati hiba"
+}

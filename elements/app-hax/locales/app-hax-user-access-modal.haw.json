@@ -7,5 +7,7 @@
   "userAccessGranted": "Ua hāʻawi maikaʻi ʻia ke komo i ka mea hoʻohana!",
   "userNotFound": "ʻAʻole i loaʻa ka mea hoʻohana a i ʻole ʻaʻole ʻae ʻia",
   "loadingAddingUser": "Ke hoʻohui nei i ka mea hoʻohana...",
-  "grantAccessTo": "Hāʻawi i ke komo iā:"
+  "grantAccessTo": "Hāʻawi i ke komo iā:",
+  "networkErrorTryAgain": "Ua loaʻa kahi hewa pūnaewele. E ʻoluʻolu e hoʻāʻo hou.",
+  "characterWillAppear": "E ʻike ʻia ke kiʻi kanaka ke hoʻokomo ʻoe i inoa mea hoʻohana"
 }

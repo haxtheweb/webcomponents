@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Răspunsul tău",
   "checkAnswer": "Verifică răspunsul",
-  "retry": "Reîncearcă"
+  "retry": "Reîncearcă",
+  "correct": "Corect!",
+  "incorrect": "Incorect!",
+  "correctAnswer": "Răspunsul corect: {answer}"
 }

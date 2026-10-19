@@ -5,5 +5,9 @@
   "buttons": "Knappar",
   "futureButtonConfiguration": "Anpassad konfiguration av redigerarknappar kommer snart.",
   "save": "Spara",
-  "saving": "Sparar…"
+  "saving": "Sparar…",
+  "novice": "Nybörjare",
+  "expert": "Expert",
+  "toolbarPreviewAlt": "Förhandsvisning av redigeringsverktygsfältet för {audience}",
+  "savingEditorSettingsFailed": "Det gick inte att spara redigerarinställningar: {error}"
 }

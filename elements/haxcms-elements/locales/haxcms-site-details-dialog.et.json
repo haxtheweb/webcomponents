@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- vaikimisi esimene leht --",
+  "details": "Üksikasjad",
+  "title": "Pealkiri",
+  "titleDescription": "Saidi nimi",
+  "homePage": "Avaleht",
+  "homePageDescription": "Leht, mida kasutatakse vaikimisi sihtlehe / avalehena",
+  "advanced": "Täpsemad",
+  "serviceWorker": "Lisa dünaamilisele lehele service worker",
+  "serviceWorkerDescription": "Keela see, kui kasutajad peaksid alati kohe nägema serveri uusimat väljundit.",
+  "forceBrowserUpgrade": "Sunni brauseri uuendamist",
+  "forceBrowserUpgradeDescription": "Nõua enne saidi laadimist pidevalt uuenevat brauserit.",
+  "unableToLoadSiteDetails": "Saidi üksikasju ei õnnestunud laadida.",
+  "noSiteDetails": "Saidi üksikasju pole saadaval.",
+  "save": "Salvesta"
+}

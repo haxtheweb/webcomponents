@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Kuyamikira",
+  "licenseBySa": "Kuyamikira Kugawana Chimodzimodzi",
+  "licenseByNd": "Kuyamikira Osasintha",
+  "licenseByNc": "Kuyamikira Osati Zamalonda",
+  "licenseByNcSa": "Kuyamikira Osati Zamalonda Kugawana Chimodzimodzi",
+  "licenseByNcNd": "Kuyamikira Osati Zamalonda Osasintha",
+  "licenseGraphic": "Chithunzi cha {license}",
+  "workByCreator": "{title} lolembedwa ndi {creator}",
+  "workByCreatorLicensed": "{title} lolembedwa ndi {creator} lili ndi chilolezo cha {license}.",
+  "permissionsBeyondScope": "Zilolezo zopitirira malire a chilolezo ichi zilipo {link}.",
+  "author": "(wolemba)",
+  "onTheLicensingDetailsPage": "pa tsamba la zambiri za chilolezo"
+}

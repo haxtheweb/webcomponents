@@ -1,0 +1,11 @@
+{
+  "playlist": "Плэй-ліст",
+  "carousel": "карусель",
+  "slide": "слайд",
+  "slideNumber": "Слайд {number}",
+  "slideOfTotal": "Слайд {number} з {total}",
+  "previousSlide": "Папярэдні слайд",
+  "nextSlide": "Наступны слайд",
+  "slidePages": "Старонкі слайдаў",
+  "goToSlide": "Перайсці да слайда {number}"
+}

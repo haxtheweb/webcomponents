@@ -1,0 +1,11 @@
+{
+  "roleTitle": "పాత్ర శీర్షిక",
+  "describeYourRole": "మీ పాత్రను ఇక్కడ వివరించండి...",
+  "present": "ప్రదర్శించు",
+  "skills": "నైపుణ్యాలు:",
+  "skillsAndMore": "{skills} మరియు +{count} మరిన్ని",
+  "yearShort": "{count} సం.",
+  "yearsShort": "{count} సం.",
+  "monthShort": "{count} నెల",
+  "monthsShort": "{count} నెలలు"
+}

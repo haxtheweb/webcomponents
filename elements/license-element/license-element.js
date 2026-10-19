@@ -1,5 +1,7 @@
 /**
  * A list of licenses that we support the references for.
+ * `name` is the English label; elements that display it translate via
+ * `this.t[tKey]` (see license-element / citation-element _licenseDisplayName)
  */
 export class licenseList {
   constructor(mode = "full") {
@@ -7,31 +9,37 @@ export class licenseList {
     let list = {
       by: {
         name: "Attribution",
+        tKey: "licenseBy",
         link: "https://creativecommons.org/licenses/by/4.0/",
         image: "https://i.creativecommons.org/l/by/4.0/88x31.png",
       },
       "by-sa": {
         name: "Attribution Share a like",
+        tKey: "licenseBySa",
         link: "https://creativecommons.org/licenses/by-sa/4.0/",
         image: "https://i.creativecommons.org/l/by-sa/4.0/88x31.png",
       },
       "by-nd": {
         name: "Attribution No derivatives",
+        tKey: "licenseByNd",
         link: "https://creativecommons.org/licenses/by-nd/4.0/",
         image: "https://i.creativecommons.org/l/by-nd/4.0/88x31.png",
       },
       "by-nc": {
         name: "Attribution non-commercial",
+        tKey: "licenseByNc",
         link: "https://creativecommons.org/licenses/by-nc/4.0/",
         image: "https://i.creativecommons.org/l/by-nc/4.0/88x31.png",
       },
       "by-nc-sa": {
         name: "Attribution non-commercial share a like",
+        tKey: "licenseByNcSa",
         link: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
         image: "https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png",
       },
       "by-nc-nd": {
         name: "Attribution Non-commercial No derivatives",
+        tKey: "licenseByNcNd",
         link: "https://creativecommons.org/licenses/by-nc-nd/4.0/",
         image: "https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png",
       },
@@ -51,13 +59,14 @@ export class licenseList {
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `license-element`
  * `A simple way of applying a semantically accurate license to work.`
  * @demo demo/index.html
  * @element license-element
  */
-class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
+class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -137,39 +146,49 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
                 rel="noopener noreferrer"
                 ><img
                   loading="lazy"
-                  alt="${this.licenseName} graphic"
+                  alt="${this.t.licenseGraphic.replace(
+                    "{license}",
+                    () => (this._licenseDisplayName()),
+                  )}"
                   src="${this.licenseImage}"
               /></a>
             `
           : ``}
-        <a
-          class="work-title license-link"
-          rel="dc:type"
-          href="${this.source}"
-          property="dc:title"
-          >${this.title}</a
-        >
-        by
-        <span rel="cc:attributionURL" property="cc:attributionName"
-          >${this.creator}</span
-        >
-        ${this.license
-          ? html`is licensed under a
-              <a class="license-link" target="_blank" href="${this.licenseLink}"
-                >${this.licenseName}</a
-              >.`
-          : ``} <span rel="dc:source" href="${this.source}"></span>
+        ${this._fillTemplate(
+          this.license ? this.t.workByCreatorLicensed : this.t.workByCreator,
+          {
+            title: html`<a
+              class="work-title license-link"
+              rel="dc:type"
+              href="${this.source}"
+              property="dc:title"
+              >${this.title}</a
+            >`,
+            creator: html`<span
+              rel="cc:attributionURL"
+              property="cc:attributionName"
+              >${this.creator}</span
+            >`,
+            license: html`<a
+              class="license-link"
+              target="_blank"
+              href="${this.licenseLink}"
+              >${this._licenseDisplayName()}</a
+            >`,
+          },
+        )} <span rel="dc:source" href="${this.source}"></span>
         ${this.hasMore
           ? html`
               <span
-                >Permissions beyond the scope of this license are available
-                <a
-                  rel="cc:morePermissions"
-                  target="_blank"
-                  href="${this.moreLink}"
-                  rel="noopener noreferrer"
-                  >${this.moreLabel}</a
-                >.</span
+                >${this._fillTemplate(this.t.permissionsBeyondScope, {
+                  link: html`<a
+                    rel="cc:morePermissions"
+                    target="_blank"
+                    href="${this.moreLink}"
+                    rel="noopener noreferrer"
+                    >${this.moreLabel}</a
+                  >`,
+                })}</span
               >
             `
           : ``}
@@ -177,6 +196,19 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     `;
   }
 
+  /**
+   * splits a translated sentence on {placeholders} and swaps in the
+   * matching values (strings or templates) so links stay inside one string
+   */
+  _fillTemplate(str, values) {
+    return str.split(/(\{[a-zA-Z]+\})/).map((part) => {
+      const match = part.match(/^\{([a-zA-Z]+)\}$/);
+      if (match && Object.prototype.hasOwnProperty.call(values, match[1])) {
+        return values[match[1]];
+      }
+      return part;
+    });
+  }
   static get tag() {
     return "license-element";
   }
@@ -250,10 +282,32 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      licenseGraphic: "{license} graphic",
+      workByCreator: "{title} by {creator}",
+      workByCreatorLicensed:
+        "{title} by {creator} is licensed under a {license}.",
+      permissionsBeyondScope:
+        "Permissions beyond the scope of this license are available {link}.",
+      author: "(author)",
+      onTheLicensingDetailsPage: "on the licensing details page",
+      licenseBy: "Attribution",
+      licenseBySa: "Attribution Share a like",
+      licenseByNd: "Attribution No derivatives",
+      licenseByNc: "Attribution non-commercial",
+      licenseByNcSa: "Attribution non-commercial share a like",
+      licenseByNcNd: "Attribution Non-commercial No derivatives",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.licenseList = new licenseList();
-    this.creator = "(author)";
+    this.i18nDefault("creator", "author");
     this.source = null;
-    this.moreLabel = "on the licensing details page";
+    this.i18nDefault("moreLabel", "onTheLicensingDetailsPage");
   }
   willUpdate(changedProperties) {
     if (super.willUpdate) super.willUpdate(changedProperties);
@@ -380,6 +434,24 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       return true;
     }
     return false;
+  }
+  /**
+   * translated license name for display; custom licenseName values pass through
+   */
+  _licenseDisplayName() {
+    const entry =
+      this.license && new licenseList()[this.license]
+        ? new licenseList()[this.license]
+        : null;
+    if (
+      entry &&
+      entry.tKey &&
+      entry.name === this.licenseName &&
+      this.t[entry.tKey]
+    ) {
+      return this.t[entry.tKey];
+    }
+    return this.licenseName;
   }
   /**
    * License was updated, time to update license name and link.

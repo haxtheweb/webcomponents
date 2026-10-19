@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tableau console du journal de discussion de l'utilisateur",
+  "consoleTableUserText": "console.table() du journal de discussion de l'utilisateur",
+  "consoleTableUserTooltip": "Afficher le journal de discussion de l'utilisateur sous forme de tableau dans la console",
+  "consoleTableMerlinLabel": "Tableau console du journal de discussion de Merlin",
+  "consoleTableMerlinText": "console.table() du journal de discussion de Merlin",
+  "consoleTableMerlinTooltip": "Afficher le journal de discussion de Merlin sous forme de tableau dans la console",
+  "consoleTableAllLabel": "Tableau console du journal de discussion complet",
+  "consoleTableAllText": "console.table() du journal de discussion complet",
+  "consoleTableAllTooltip": "Afficher le journal de discussion complet sous forme de tableau dans la console",
+  "downloadChatLogJson": "Télécharger le journal de discussion en .json",
+  "downloadChatLogJsonTooltip": "Télécharger le journal de discussion en .json"
+}

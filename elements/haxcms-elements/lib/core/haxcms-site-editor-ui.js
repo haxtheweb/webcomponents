@@ -589,7 +589,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               type: type,
             },
             "hax-agent",
-            "Upload a file",
+            this.t.uploadAFile,
           ],
           this.shadowRoot.querySelector("#merlin"),
           "coin2",
@@ -613,13 +613,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             data: url,
           },
           "hax-link-agent",
-          "Create block from Link",
+          this.t.createBlockFromLink,
         ],
         this.shadowRoot.querySelector("#merlin"),
         "coin2",
       );
     } else {
-      store.toast("Invalid URL provided", 3000, { hat: "construction" });
+      store.toast(this.t.invalidUrlProvided, 3000, { hat: "construction" });
     }
   }
 
@@ -731,7 +731,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         case "insert-image":
           elementToInsert = HAXStore.activeHaxBody.haxInsert("img", "", {
             src: url,
-            alt: "Image from URL",
+            alt: this.t.imageFromUrl,
             loading: "lazy",
           });
           break;
@@ -806,7 +806,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 selection.addRange(range);
               }, 0);
 
-              store.toast("Link applied to selected text!", 3000, {
+              store.toast(this.t.linkAppliedToSelectedText, 3000, {
                 hat: "construction",
                 walking: true,
               });
@@ -832,7 +832,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
 
       if (elementToInsert) {
-        store.toast("URL processed successfully!", 3000, {
+        store.toast(this.t.urlProcessedSuccessfully, 3000, {
           hat: "construction",
           walking: true,
         });
@@ -859,7 +859,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     loadingIcon.style.setProperty("--simple-icon-height", "40px");
     loadingIcon.style.setProperty("--simple-icon-width", "40px");
     loadingIcon.style.marginLeft = "8px";
-    store.toast(`Processing`, duration, {
+    store.toast(this.t.processing, duration, {
       hat: "construction",
       speed: 150,
       walking: true,
@@ -1019,7 +1019,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                       },
                     }),
                   );
-                  store.toast("Page media updated successfully!", 3000, {
+                  store.toast(this.t.pageMediaUpdatedSuccessfully, 3000, {
                     hat: "construction",
                     walking: true,
                   });
@@ -1129,7 +1129,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     tableElement.innerHTML,
                     {},
                   );
-                  store.toast("Excel converted to table successfully!", 3000, {
+                  store.toast(this.t.excelConvertedToTable, 3000, {
                     hat: "construction",
                     walking: true,
                   });
@@ -1141,7 +1141,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   csvData,
                   {},
                 );
-                store.toast("Excel converted to CSV text!", 3000, {
+                store.toast(this.t.excelConvertedToCsv, 3000, {
                   hat: "construction",
                   walking: true,
                 });
@@ -1149,7 +1149,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             }, 300);
           } else {
             store.toast(
-              `Error converting Excel file: ${excelResponse.data.error || "Unknown error"}`,
+              this.t.errorConvertingExcelFile.replace(
+                "{error}",
+                () => (excelResponse.data.error || this.t.unknownError),
+              ),
               4000,
               {
                 hat: "construction",
@@ -1158,9 +1161,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
         } catch (error) {
           console.error("Excel conversion error:", error);
-          store.toast(`Error processing Excel file: ${error.message}`, 4000, {
-            hat: "construction",
-          });
+          store.toast(
+            this.t.errorProcessingExcelFile.replace("{error}", () => error.message),
+            4000,
+            {
+              hat: "construction",
+            },
+          );
         }
         break;
       case "insert-html":
@@ -1308,7 +1315,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   this._openImportHierarchy(response.data.items, false, {});
                 } else {
                   store.toast(
-                    "No valid items found in import response.",
+                    this.t.noValidItemsFoundInImportResponse,
                     4000,
                     {
                       hat: "construction",
@@ -1340,7 +1347,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   // create node w/ title and contents passed in
   async createNewNode(
     type,
-    title = "New page",
+    title = this.t.newPageDefaultTitle,
     contents = "<p></p>",
     contextItemId = null,
   ) {
@@ -1380,7 +1387,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
     }
     if (title == "") {
-      title = "New page";
+      title = this.t.newPageDefaultTitle;
     }
     var payload = {
       node: {
@@ -1607,14 +1614,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
 
     // Provide user feedback
-    let message = `Page "${title}" created successfully!`;
+    let message = this.t.pageCreatedSuccessfully.replace("{title}", () => title);
     if (type === "child") {
-      message = `Child page "${title}" created successfully!`;
+      message = this.t.childPageCreatedSuccessfully.replace("{title}", () => title);
     } else if (type === "duplicate") {
-      message = `Page "${title}" duplicated successfully!`;
+      message = this.t.pageDuplicatedSuccessfully.replace("{title}", () => title);
     }
     if (templateContent) {
-      message += " Template applied.";
+      message += " " + this.t.templateApplied;
     }
 
     store.playSound("success");
@@ -1627,14 +1634,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   // Move page under a new parent - method called by Move Page Merlin program
   async movePageUnderParent(pageId, newParentId) {
     if (!pageId) {
-      store.toast("Error: No page to move", 3000, { fire: true });
+      store.toast(this.t.errorNoPageToMove, 3000, { fire: true });
       return;
     }
 
     // Get the page being moved
     const pageToMove = await store.findItem(pageId);
     if (!pageToMove) {
-      store.toast("Error: Page not found", 3000, { fire: true });
+      store.toast(this.t.errorPageNotFound, 3000, { fire: true });
       return;
     }
 
@@ -1673,8 +1680,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // Provide user feedback
     const parentTitle = newParentId
       ? (await store.findItem(newParentId)).title
-      : "Root Level";
-    store.toast(`Page moved under "${parentTitle}"`, 3000, {
+      : this.t.rootLevel;
+    store.toast(this.t.pageMovedUnder.replace("{parent}", () => parentTitle), 3000, {
       hat: "construction",
       walking: true,
     });
@@ -1713,6 +1720,205 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.__themePreviewImporting = null;
     this.__appearancePreviewSelection = null;
     this.t = this.t || {};
+    // defined up front since Merlin programs below read these while the
+    // constructor is still running
+    this.t = {
+      ...this.t,
+      uploadAFile: "Upload a file",
+      createBlockFromLink: "Create block from Link",
+      invalidUrlProvided: "Invalid URL provided",
+      imageFromUrl: "Image from URL",
+      linkAppliedToSelectedText: "Link applied to selected text!",
+      urlProcessedSuccessfully: "URL processed successfully!",
+      processing: "Processing",
+      pageMediaUpdatedSuccessfully: "Page media updated successfully!",
+      excelConvertedToTable: "Excel converted to table successfully!",
+      excelConvertedToCsv: "Excel converted to CSV text!",
+      errorConvertingExcelFile: "Error converting Excel file: {error}",
+      unknownError: "Unknown error",
+      errorProcessingExcelFile: "Error processing Excel file: {error}",
+      noValidItemsFoundInImportResponse:
+        "No valid items found in import response.",
+      newPageDefaultTitle: "New page",
+      pageCreatedSuccessfully: "Page \"{title}\" created successfully!",
+      childPageCreatedSuccessfully:
+        "Child page \"{title}\" created successfully!",
+      pageDuplicatedSuccessfully: "Page \"{title}\" duplicated successfully!",
+      templateApplied: "Template applied.",
+      errorNoPageToMove: "Error: No page to move",
+      errorPageNotFound: "Error: Page not found",
+      rootLevel: "Root Level",
+      pageMovedUnder: "Page moved under \"{parent}\"",
+      expectingToSeeAnOptionMerlinDidntProvide:
+        "Expecting to see an option Merlin didn't provide?",
+      makeASuggestionToImproveResults: "Make a suggestion to improve results",
+      createAPage: "Create a page",
+      typePageTitleToCreatePage: "Type page title to create page",
+      createNewPage: "Create New Page",
+      newPageCapitalized: "New Page",
+      createTitleWithView: "Create {title} with view",
+      createTitle: "Create {title}",
+      createTemplateNamedTitle: "Create {template} named {title}",
+      duplicateAsTitle: "Duplicate as {title}",
+      errorMessage: "Error: {error}",
+      movePage: "Move Page",
+      typeToFilterPages: "Type to filter pages",
+      errorNoPageSelectedToMove: "Error: No page selected to move",
+      moveToRootLevel: "Move to Root Level",
+      noMatchingPagesFound: "No matching pages found",
+      newSiblingPageFromType: "New Sibling Page from {type}",
+      newChildPageFromType: "New Child Page from {type}",
+      createOutlineFromType: "Create outline from {type}",
+      insertTypeContentsInPage: "Insert {type} contents in Page",
+      embedTypeInPage: "Embed {type} in page",
+      insertTypeInPage: "Insert {type} in page",
+      insertTypeAsTable: "Insert {type} as table",
+      insertTypeAsCsvText: "Insert {type} as CSV text",
+      linkToTypeFile: "Link to {type} file",
+      justUploadTypeFile: "Just Upload {type} file",
+      embedSlideDeckInPage: "Embed slide deck in page",
+      setAsTheMediaForTheActivePage: "Set as the media for the active page",
+      pageCreatedNextToCurrent: "Page created next to current",
+      pageCreatedUnderCurrent: "Page created under current",
+      h1H2TagsCreateMenuPages: "H1,H2 tags create menu pages",
+      contentConvertedToHtmlAndInserted:
+        "Content converted to HTML and inserted",
+      pdfEmbeddedInAFrameElement: "PDF embedded in a frame element",
+      powerPointConvertedToSlideDeck:
+        "PowerPoint converted to a slide-deck element",
+      imageEmbeddedInPage: "Image embedded in page",
+      imageSetAsPageMedia: "Image set as page media",
+      videoEmbeddedInPage: "Video embedded in page",
+      audioEmbeddedInPage: "Audio embedded in page",
+      spreadsheetConvertedToHtmlTable: "Spreadsheet converted to HTML table",
+      spreadsheetConvertedToCsvText: "Spreadsheet converted to CSV text",
+      fileUploadedAndLinkedTo: "File uploaded and linked to",
+      fileUploadedForLaterUse: "File uploaded for later use",
+      watchMerlinWorkHisMagic: "Watch Merlin work his magic!",
+      youtubeVideoEmbeddedInPage: "YouTube video embedded in page",
+      kalturaMediaEmbeddedInPage: "Kaltura media embedded in page",
+      imageFromUrlEmbeddedInPage: "Image from URL embedded in page",
+      pdfDocumentEmbeddedInPage: "PDF document embedded in page",
+      richLinkWithPreviewInserted: "Rich link with preview inserted",
+      simpleHyperlinkInserted: "Simple hyperlink inserted",
+      haxAutomaticallyDetectsBestElementType:
+        "HAX automatically detects best element type",
+      urlAppliedAsLinkToSelectedText: "URL applied as link to selected text",
+      enterAnyUrlToSeeProcessingOptions:
+        "Enter any URL to see processing options",
+      embedYoutubeVideo: "Embed YouTube Video",
+      embedKalturaMedia: "Embed Kaltura Media",
+      insertImageFromUrl: "Insert Image from URL",
+      embedPdfDocument: "Embed PDF Document",
+      embedVideo: "Embed Video",
+      insertAsRichLink: "Insert as Rich Link",
+      insertAsSimpleLink: "Insert as Simple Link",
+      useHaxDefaultProcessing: "Use HAX Default Processing",
+      applyLinkToSelectedText: "Apply Link to Selected Text: \"{text}\"",
+      pasteUrlInSearchBoxAboveAndPressEnter:
+        "Paste URL in search box above and press Enter",
+      userMenuFor: "User menu for {name}",
+      toggleSoundEffectsOff: "Toggle sound effects off",
+      toggleSoundEffectsOn: "Toggle sound effects on",
+      soundEffects: "Sound effects",
+      soundOffToast: "Sound off.. hey.. HELLO!?!",
+      soundOnToast: "Can you hear me now? Good.",
+      adminSection: "Admin - {section}",
+      appearance: "Appearance",
+      themePreview: "Theme Preview",
+      details: "Details",
+      editor: "Editor",
+      features: "Features",
+      importExport: "Import / Export",
+      darkModeToggle: "Dark Mode Toggle",
+      soundToggle: "Sound Toggle",
+      loadComponentSchema: "Load component schema",
+      editThisPage: "Edit this page",
+      createANewPage: "Create a new page",
+      editSiteOutline: "Edit site outline",
+      changeSiteSettings: "Change site settings",
+      dontShowThisWelcomeAgain: "Don't show this welcome again",
+      showGettingStartedTasks: "Show getting started tasks",
+      previewAudienceMode: "Preview audience mode",
+      changePlatformAudienceDescription:
+        "Change platform audience just for the current browsing session",
+      haxLabs: "HAX Labs",
+      unlockAllThemes: "Unlock all themes",
+      pageDataFormats: "Page data formats",
+      switchToAnotherSite: "Switch to another site",
+      printOptions: "Print options",
+      exportThisPage: "Export this page",
+      exportThisSite: "Export this site",
+      viewOnlyMode: "View only mode",
+      viewOnlyModeDescription:
+        "Enable view only mode to hide all editing tools and experience the site as a visitor would see it",
+      renameThisPage: "Rename this page",
+      updatePageDescription: "Update page description",
+      updatePageUrlSlug: "Update page URL (slug)",
+      updatePageTags: "Update page tags",
+      updatePageIcon: "Update page icon",
+      viewPageRevisions: "View page revisions",
+      openAPageInThisSite: "Open a page in this site",
+      shareCurrentPageLink: "Share current page link",
+      insertALinkToAPage: "Insert a link to a page",
+      viewKeyboardShortcuts: "View keyboard shortcuts",
+      enterNewTitle: "Enter new title",
+      enterNewDescription: "Enter new description",
+      enterNewSlug: "Enter new slug (URL path)",
+      enterTagsSeparatedByCommas: "Enter tags separated by commas",
+      typeToSearchIconsByName: "Type to search icons by name",
+      openRevisionHistoryForCurrentPage:
+        "Open revision history for the current page",
+      noActivePageSelected: "No active page selected",
+      noActivePage: "No active page",
+      openRevisionsFor: "Open revisions for {title}",
+      currentPageLower: "current page",
+      allThemesUnlockedSpeech:
+        "All terrible, hidden and legacy themes unlocked. You must choose, but choose wisely.",
+      welcomeProgramDismissed:
+        "Welcome program dismissed. You can always access Merlin by pressing Alt+Shift or clicking the search bar.",
+      noActivePageFound: "No active page found",
+      noActivePageFoundToShare: "No active page found to share",
+      linkCopiedFor: "Link copied for {title}",
+      unableToCopyAutomatically:
+        "Unable to copy automatically. Open Merlin to view the share link.",
+      shortcutSavePageAndExitEditMode: "Save page and exit edit mode",
+      shortcutEnterEditMode: "Enter edit mode",
+      shortcutCancelEditing: "Cancel editing",
+      shortcutViewSourceOrEditPage: "View source (edit) / Edit page (view)",
+      shortcutPageStructureOrPageActions:
+        "Page structure (edit) / Page actions (view)",
+      shortcutBlocksBrowserOrAddPage: "Blocks browser (edit) / Add page (view)",
+      shortcutConfigurePanelOrOutlineActions:
+        "Configure panel (edit) / Site outline actions (view)",
+      shortcutOpenSiteOutlineDesigner: "Open site outline designer",
+      shortcutOpenSiteSettingsMenu: "Open site settings menu",
+      shortcutOpenUserMenu: "Open user menu",
+      shortcutJumpBetweenTextAndTray:
+        "Jump between text editing and tray options",
+      pageLockedCannotEdit:
+        "This page is locked. Click the lock button to unlock it before editing.",
+      saveBeforeLeavingSourceEditor: "Save before leaving source editor?",
+      admin: "Admin",
+      revisions: "Revisions",
+      pageRevisions: "Page revisions",
+      pageRevisionsFor: "Page revisions — {title}",
+      ok: "OK",
+      discardUnsavedChanges: "Discard unsaved changes?",
+      thisPage: "This page",
+      deletePageConfirmMessage:
+        "\"{title}\" will be removed from the outline but its content stays on the file system.",
+      permanentlyDeleteThisPage: "Permanently delete this page?",
+      enterTitleForDuplicatedPage: "Enter title for duplicated page:",
+      titleCopy: "{title} (copy)",
+      importLabel: "Import",
+      pasteUrlToImport: "Paste URL to import:",
+      cheatCodesUnlocked:
+        "🎮 Cheat codes unlocked! Check Merlin for new programs.",
+      failedToUnlockCheatCodes: "🎮 Failed to unlock cheat codes",
+      platformSettings: "Platform settings",
+      selectFileEllipsis: "Select file..",
+    };
     this._configureWasFocused = false; // Track toggle state for Ctrl+Shift+4
     this.__themePreviewReady = false;
     this.themePreviewOpen = false;
@@ -1750,7 +1956,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // nothing message so we can suggest a link to make a suggestion
     SuperDaemonInstance.noResultsSlot = () => {
       return html`<div class="no-results">
-          Expecting to see an option Merlin didn't provide?
+          ${this.t.expectingToSeeAnOptionMerlinDidntProvide}
         </div>
         <a
           @click="${(e) => {
@@ -1762,7 +1968,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 SuperDaemonInstance.value,
             );
           }}"
-          >Make a suggestion to improve results</a
+          >${this.t.makeASuggestionToImproveResults}</a
         >`;
     };
     SuperDaemonInstance.appendContext("CMS");
@@ -1771,7 +1977,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
     // Unified page creation program
     SuperDaemonInstance.defineOption({
-      title: "Create a page",
+      i18n: {
+        context: this,
+        title: "createAPage",
+        "value.placeholder": "typePageTitleToCreatePage",
+      },
+      title: this.t.createAPage,
       icon: "hax:add-page",
       priority: -2000,
       tags: ["page", "add", "create", "new", "CMS"],
@@ -1785,7 +1996,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         name: "create-page",
         machineName: "create-page",
-        placeholder: "Type page title to create page",
+        placeholder: this.t.typePageTitleToCreatePage,
         program: async (input, values) => {
           // Get reference to site editor UI regardless of how program was accessed
           const siteEditorUI =
@@ -1799,13 +2010,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           if (!input || input.trim() === "") {
             return [
               {
-                title: "Create New Page",
+                title: this.t.createNewPage,
                 icon: "hax:add-page",
                 tags: ["page", "blank", "create"],
                 value: {
                   target: siteEditorUI,
                   method: "createPageWithTitle",
-                  args: ["New Page", createType, templateContent],
+                  args: [this.t.newPageCapitalized, createType, templateContent],
                 },
                 eventName: "super-daemon-element-method",
                 path: "CMS/action/create/page",
@@ -1823,8 +2034,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             // Add blank page option first
             results.push({
               title: templateContent
-                ? `Create ${title} with view`
-                : `Create ${title}`,
+                ? this.t.createTitleWithView.replace("{title}", () => title)
+                : this.t.createTitle.replace("{title}", () => title),
               icon: "hax:add-page",
               tags: ["page", "blank", "create"],
               value: {
@@ -1840,7 +2051,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             if (pageTemplates && pageTemplates.length > 0) {
               pageTemplates.forEach((template, index) => {
                 results.push({
-                  title: `Create ${template.name} named ${title}`,
+                  title: this.t.createTemplateNamedTitle
+                    .replace("{template}", () => template.name)
+                    .replace("{title}", () => title),
                   icon: "hax:templates",
                   tags: ["template", "page", "create"],
                   value: {
@@ -1861,7 +2074,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             // Add duplicate current page option
             if (currentItem) {
               results.push({
-                title: `Duplicate as ${title}`,
+                title: this.t.duplicateAsTitle.replace("{title}", () => title),
                 icon: "hax:duplicate",
                 tags: ["page", "duplicate", "create"],
                 value: {
@@ -1879,7 +2092,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             console.error("Error in create-page program:", error);
             return [
               {
-                title: `Error: ${error.message}`,
+                title: this.t.errorMessage.replace("{error}", () => error.message),
                 icon: "icons:error",
                 tags: ["error"],
                 value: { disabled: true },
@@ -1894,7 +2107,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Move Page program
     SuperDaemonInstance.defineOption({
-      title: "Move Page",
+      i18n: {
+        context: this,
+        title: "movePage",
+        "value.placeholder": "typeToFilterPages",
+      },
+      title: this.t.movePage,
       icon: "icons:open-with",
       priority: 0,
       tags: ["page", "move", "relocate", "parent", "CMS"],
@@ -1904,7 +2122,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         name: "move-page",
         machineName: "move-page",
-        placeholder: "Type to filter pages",
+        placeholder: this.t.typeToFilterPages,
         program: async (input, values) => {
           // Get pageId from values or fall back to active item
           const pageId =
@@ -1912,7 +2130,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           if (!pageId) {
             return [
               {
-                title: "Error: No page selected to move",
+                title: this.t.errorNoPageSelectedToMove,
                 icon: "icons:error",
                 tags: ["error"],
                 value: { disabled: true },
@@ -1927,7 +2145,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           if (!pageToMove) {
             return [
               {
-                title: "Error: Page not found",
+                title: this.t.errorPageNotFound,
                 icon: "icons:error",
                 tags: ["error"],
                 value: { disabled: true },
@@ -1952,7 +2170,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             searchTerm.includes("level")
           ) {
             results.push({
-              title: "Move to Root Level",
+              title: this.t.moveToRootLevel,
               icon: "hax:site-map",
               tags: ["root", "top", "level"],
               value: {
@@ -2024,7 +2242,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           if (results.length === 0) {
             return [
               {
-                title: "No matching pages found",
+                title: this.t.noMatchingPagesFound,
                 icon: "icons:search",
                 tags: ["empty"],
                 value: { disabled: true },
@@ -2040,7 +2258,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     SuperDaemonInstance.defineOption({
-      title: "Upload a file",
+      i18n: {
+        context: this,
+        title: "uploadAFile",
+        "value.name": "uploadAFile",
+      },
+      title: this.t.uploadAFile,
       icon: "icons:file-upload",
       priority: -10000,
       tags: ["Agent", "help", "merlin"],
@@ -2049,7 +2272,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "uploadMedia",
       inline: true,
       value: {
-        name: "Upload a file",
+        name: this.t.uploadAFile,
         machineName: "hax-agent",
         program: async (input, values) => {
           const usAction = toJS(UserScaffoldInstance.action);
@@ -2070,7 +2293,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 // only show options to make new content if we are NOT in edit mode
                 if (!usMemory.editMode) {
                   results.push({
-                    title: `New Sibling Page from ${values.type}`,
+                    title: this.t.newSiblingPageFromType.replace("{type}", () => values.type),
                     icon: "hax:add-page",
                     tags: ["agent"],
                     value: {
@@ -2079,10 +2302,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                       args: [values, "create-sibling"],
                     },
                     eventName: "super-daemon-element-method",
-                    path: "Page created next to current",
+                    path: this.t.pageCreatedNextToCurrent,
                   });
                   results.push({
-                    title: `New Child Page from ${values.type}`,
+                    title: this.t.newChildPageFromType.replace("{type}", () => values.type),
                     icon: "hax:add-child-page",
                     tags: ["agent"],
                     value: {
@@ -2091,7 +2314,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                       args: [values, "create-child"],
                     },
                     eventName: "super-daemon-element-method",
-                    path: "Page created under current",
+                    path: this.t.pageCreatedUnderCurrent,
                   });
                   if (
                     ["docx", "doc", "pdf", "pptx", "html", "htm"].includes(
@@ -2099,7 +2322,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     )
                   ) {
                     results.push({
-                      title: `Create outline from ${values.type}`,
+                      title: this.t.createOutlineFromType.replace("{type}", () => values.type),
                       icon: "hax:site-map",
                       tags: ["agent"],
                       value: {
@@ -2108,12 +2331,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                         args: [values, "create-branch"],
                       },
                       eventName: "super-daemon-element-method",
-                      path: "H1,H2 tags create menu pages",
+                      path: this.t.h1H2TagsCreateMenuPages,
                     });
                   }
                 }
                 results.push({
-                  title: `Insert ${values.type} contents in Page`,
+                  title: this.t.insertTypeContentsInPage.replace("{type}", () => values.type),
                   icon: "hax:html-code",
                   tags: ["agent"],
                   value: {
@@ -2122,11 +2345,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [values, "insert-html"],
                   },
                   eventName: "super-daemon-element-method",
-                  path: "Content converted to HTML and inserted",
+                  path: this.t.contentConvertedToHtmlAndInserted,
                 });
                 if (values.type === "pdf") {
                   results.push({
-                    title: `Embed ${values.type} in page`,
+                    title: this.t.embedTypeInPage.replace("{type}", () => values.type),
                     icon: "hax:file-pdf",
                     tags: ["agent"],
                     value: {
@@ -2135,14 +2358,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                       args: [values, "insert-file", "pdf"],
                     },
                     eventName: "super-daemon-element-method",
-                    path: "PDF embedded in a frame element",
+                    path: this.t.pdfEmbeddedInAFrameElement,
                   });
                 }
                 if (values.type === "pptx") {
                   // surface this as the top option since it's the most
                   // common desire when uploading a pptx via Merlin
                   results.unshift({
-                    title: `Embed slide deck in page`,
+                    title: this.t.embedSlideDeckInPage,
                     icon: "image:slideshow",
                     tags: ["agent"],
                     value: {
@@ -2151,7 +2374,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                       args: [values, "insert-file", "pptx"],
                     },
                     eventName: "super-daemon-element-method",
-                    path: "PowerPoint converted to a slide-deck element",
+                    path: this.t.powerPointConvertedToSlideDeck,
                   });
                 }
                 break;
@@ -2160,7 +2383,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               case "gif":
               case "jpg":
                 results.push({
-                  title: `Insert ${values.type} in page`,
+                  title: this.t.insertTypeInPage.replace("{type}", () => values.type),
                   icon: "editor:insert-photo",
                   tags: ["agent"],
                   value: {
@@ -2169,10 +2392,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [values, "insert-file", "image"],
                   },
                   eventName: "super-daemon-element-method",
-                  path: "Image embedded in page",
+                  path: this.t.imageEmbeddedInPage,
                 });
                 results.push({
-                  title: `Set as the media for the active page`,
+                  title: this.t.setAsTheMediaForTheActivePage,
                   icon: "image:photo-library",
                   tags: ["agent"],
                   value: {
@@ -2181,12 +2404,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [values, "set-page-media", "image"],
                   },
                   eventName: "super-daemon-element-method",
-                  path: "Image set as page media",
+                  path: this.t.imageSetAsPageMedia,
                 });
                 break;
               case "mp4":
                 results.push({
-                  title: `Insert ${values.type} in page`,
+                  title: this.t.insertTypeInPage.replace("{type}", () => values.type),
                   icon: "av:play-circle-filled",
                   tags: ["agent"],
                   value: {
@@ -2195,14 +2418,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [values, "insert-file", "video"],
                   },
                   eventName: "super-daemon-element-method",
-                  path: "Video embedded in page",
+                  path: this.t.videoEmbeddedInPage,
                 });
                 break;
               case "midi":
               case "mid":
               case "mp3":
                 results.push({
-                  title: `Insert ${values.type} in page`,
+                  title: this.t.insertTypeInPage.replace("{type}", () => values.type),
                   icon: "av:volume-up",
                   tags: ["agent"],
                   value: {
@@ -2211,14 +2434,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [values, "insert-file", "audio"],
                   },
                   eventName: "super-daemon-element-method",
-                  path: "Audio embedded in page",
+                  path: this.t.audioEmbeddedInPage,
                 });
                 break;
               case "xlsx":
               case "xls":
               case "ods":
                 results.push({
-                  title: `Insert ${values.type} as table`,
+                  title: this.t.insertTypeAsTable.replace("{type}", () => values.type),
                   icon: "editor:border-all",
                   tags: ["agent"],
                   value: {
@@ -2227,10 +2450,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [values, "insert-table"],
                   },
                   eventName: "super-daemon-element-method",
-                  path: "Spreadsheet converted to HTML table",
+                  path: this.t.spreadsheetConvertedToHtmlTable,
                 });
                 results.push({
-                  title: `Insert ${values.type} as CSV text`,
+                  title: this.t.insertTypeAsCsvText.replace("{type}", () => values.type),
                   icon: "hax:code",
                   tags: ["agent"],
                   value: {
@@ -2239,7 +2462,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [values, "insert-csv"],
                   },
                   eventName: "super-daemon-element-method",
-                  path: "Spreadsheet converted to CSV text",
+                  path: this.t.spreadsheetConvertedToCsvText,
                 });
                 break;
               default:
@@ -2248,7 +2471,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 break;
             }
             results.push({
-              title: `Link to ${values.type} file`,
+              title: this.t.linkToTypeFile.replace("{type}", () => values.type),
               icon: "editor:insert-link",
               tags: ["agent"],
               value: {
@@ -2257,10 +2480,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 args: [values, "link", "link"],
               },
               eventName: "super-daemon-element-method",
-              path: "File uploaded and linked to",
+              path: this.t.fileUploadedAndLinkedTo,
             });
             results.push({
-              title: `Just Upload ${values.type} file`,
+              title: this.t.justUploadTypeFile.replace("{type}", () => values.type),
               icon: "file-upload",
               tags: ["agent"],
               value: {
@@ -2269,7 +2492,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 args: [values, "upload", "upload-only"],
               },
               eventName: "super-daemon-element-method",
-              path: "File uploaded for later use",
+              path: this.t.fileUploadedForLaterUse,
             });
           } else if (usAction.type === "drop" && values.type === "drop") {
             const file = usData.file;
@@ -2292,7 +2515,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   type: type,
                 },
                 "hax-agent",
-                "Upload a file",
+                this.t.uploadAFile,
               ],
               this.shadowRoot.querySelector("#merlin"),
               "coin2",
@@ -2302,7 +2525,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           else {
             results = [
               {
-                title: "Select file..",
+                title: this.t.selectFileEllipsis,
                 icon: "folder-open",
                 tags: ["agent"],
                 value: {
@@ -2311,7 +2534,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   args: [],
                 },
                 eventName: "super-daemon-element-method",
-                path: "Watch Merlin work his magic!",
+                path: this.t.watchMerlinWorkHisMagic,
               },
             ];
             // this forces it to just happen
@@ -2353,7 +2576,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Add Magic Link Wand program
     SuperDaemonInstance.defineOption({
-      title: "Create block from Link",
+      i18n: {
+        context: this,
+        title: "createBlockFromLink",
+        "value.name": "createBlockFromLink",
+      },
+      title: this.t.createBlockFromLink,
       icon: "editor:insert-link",
       priority: -9999,
       tags: ["Agent", "help", "merlin", "url", "link"],
@@ -2362,7 +2590,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       inline: true,
       value: {
-        name: "Create block from Link",
+        name: this.t.createBlockFromLink,
         machineName: "hax-link-agent",
         program: async (input, values) => {
           const usAction = toJS(UserScaffoldInstance.action);
@@ -2378,7 +2606,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             switch (urlType) {
               case "youtube":
                 results.push({
-                  title: `Embed YouTube Video`,
+                  title: this.t.embedYoutubeVideo,
                   icon: "av:play-circle-filled",
                   tags: ["agent", "video"],
                   value: {
@@ -2387,13 +2615,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [values, "embed-youtube"],
                   },
                   eventName: "super-daemon-element-method",
-                  path: "YouTube video embedded in page",
+                  path: this.t.youtubeVideoEmbeddedInPage,
                 });
                 break;
 
               case "kaltura":
                 results.push({
-                  title: `Embed Kaltura Media`,
+                  title: this.t.embedKalturaMedia,
                   icon: "av:play-circle-filled",
                   tags: ["agent", "video", "kaltura", "mediaspace"],
                   value: {
@@ -2402,13 +2630,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [values, "embed-kaltura"],
                   },
                   eventName: "super-daemon-element-method",
-                  path: "Kaltura media embedded in page",
+                  path: this.t.kalturaMediaEmbeddedInPage,
                 });
                 break;
 
               case "image":
                 results.push({
-                  title: `Insert Image from URL`,
+                  title: this.t.insertImageFromUrl,
                   icon: "editor:insert-photo",
                   tags: ["agent", "image"],
                   value: {
@@ -2417,13 +2645,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [values, "insert-image"],
                   },
                   eventName: "super-daemon-element-method",
-                  path: "Image from URL embedded in page",
+                  path: this.t.imageFromUrlEmbeddedInPage,
                 });
                 break;
 
               case "pdf":
                 results.push({
-                  title: `Embed PDF Document`,
+                  title: this.t.embedPdfDocument,
                   icon: "hax:file-pdf",
                   tags: ["agent", "document"],
                   value: {
@@ -2432,13 +2660,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [values, "embed-pdf"],
                   },
                   eventName: "super-daemon-element-method",
-                  path: "PDF document embedded in page",
+                  path: this.t.pdfDocumentEmbeddedInPage,
                 });
                 break;
 
               case "video":
                 results.push({
-                  title: `Embed Video`,
+                  title: this.t.embedVideo,
                   icon: "av:videocam",
                   tags: ["agent", "video"],
                   value: {
@@ -2447,14 +2675,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [values, "embed-video"],
                   },
                   eventName: "super-daemon-element-method",
-                  path: "Video embedded in page",
+                  path: this.t.videoEmbeddedInPage,
                 });
                 break;
 
               default:
                 // Generic URL handling
                 results.push({
-                  title: `Insert as Rich Link`,
+                  title: this.t.insertAsRichLink,
                   icon: "editor:insert-link",
                   tags: ["agent", "link"],
                   value: {
@@ -2463,14 +2691,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     args: [values, "insert-rich-link"],
                   },
                   eventName: "super-daemon-element-method",
-                  path: "Rich link with preview inserted",
+                  path: this.t.richLinkWithPreviewInserted,
                 });
                 break;
             }
 
             // Always provide option to insert as simple link
             results.push({
-              title: `Insert as Simple Link`,
+              title: this.t.insertAsSimpleLink,
               icon: "editor:insert-link",
               tags: ["agent", "link"],
               value: {
@@ -2479,12 +2707,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 args: [values, "insert-simple-link"],
               },
               eventName: "super-daemon-element-method",
-              path: "Simple hyperlink inserted",
+              path: this.t.simpleHyperlinkInserted,
             });
 
             // Add HAX default processing option for compatibility with existing behavior
             results.push({
-              title: `Use HAX Default Processing`,
+              title: this.t.useHaxDefaultProcessing,
               icon: "hax:hax2022",
               tags: ["agent", "hax", "auto"],
               value: {
@@ -2493,14 +2721,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 args: [values, "hax-default"],
               },
               eventName: "super-daemon-element-method",
-              path: "HAX automatically detects best element type",
+              path: this.t.haxAutomaticallyDetectsBestElementType,
             });
 
             // Add option to apply link to selected text if there's a selection
             const sel = globalThis.getSelection && globalThis.getSelection();
             if (sel && !sel.isCollapsed && sel.toString().trim()) {
               results.push({
-                title: `Apply Link to Selected Text: "${sel.toString().trim().substring(0, 30)}${sel.toString().trim().length > 30 ? "..." : ""}"`,
+                title: this.t.applyLinkToSelectedText.replace(
+                  "{text}",
+                  () => (`${sel.toString().trim().substring(0, 30)}${sel.toString().trim().length > 30 ? "..." : ""}`),
+                ),
                 icon: "editor:format-color-text",
                 tags: ["agent", "link", "selection"],
                 value: {
@@ -2509,7 +2740,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   args: [values, "apply-to-selected-text"],
                 },
                 eventName: "super-daemon-element-method",
-                path: "URL applied as link to selected text",
+                path: this.t.urlAppliedAsLinkToSelectedText,
               });
             }
           } else if (usAction.type === "paste" && values.type === "paste") {
@@ -2527,7 +2758,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     data: pastedText,
                   },
                   "hax-link-agent",
-                  "Create block from Link",
+                  this.t.createBlockFromLink,
                 ],
                 this.shadowRoot.querySelector("#merlin"),
                 "coin2",
@@ -2543,12 +2774,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             // Default actions when we have no context - just show instructions
             results = [
               {
-                title: "Paste URL in search box above and press Enter",
+                title: this.t.pasteUrlInSearchBoxAboveAndPressEnter,
                 icon: "editor:insert-link",
                 tags: ["agent", "link", "instruction"],
                 value: {},
                 eventName: "super-daemon-noop",
-                path: "Enter any URL to see processing options",
+                path: this.t.enterAnyUrlToSeeProcessingOptions,
               },
             ];
           }
@@ -2648,7 +2879,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       files: "Files",
       views: "Views",
     };
-    this.backText = "Sites Dashboard";
+    // falls back to this.t.siteDashboard in render so it can be translated
+    this.backText = null;
     this.painting = true;
     this.pageAllowed = false;
     this.editMode = false;
@@ -2732,7 +2964,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 "/",
                 {},
                 "hax-agent",
-                "Upload a file",
+                this.t.uploadAFile,
               ],
               null,
               "coin2",
@@ -2746,7 +2978,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           UserScaffoldInstance.data.architype == "url"
         ) {
           SuperDaemonInstance.waveWand(
-            [_mobx_val_2, "/", {}, "hax-agent", "Upload a file"],
+            [_mobx_val_2, "/", {}, "hax-agent", this.t.uploadAFile],
             null,
             "coin2",
           );
@@ -2862,9 +3094,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     store.soundStatus = status;
     localStorageSet("app-hax-soundStatus", status);
     if (!status) {
-      store.toast("Sound off.. hey.. HELLO!?!", 2000, { fire: true });
+      store.toast(this.t.soundOffToast, 2000, { fire: true });
     } else {
-      store.toast("Can you hear me now? Good.", 2000, { hat: "random" });
+      store.toast(this.t.soundOnToast, 2000, { hat: "random" });
       store.playSound("click");
     }
   }
@@ -2920,7 +3152,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               href="${this.backLink}"
               class="haxLogo"
               id="backtosites"
-              title="${this.backText}"
+              title="${this.backText || this.t.siteDashboard}"
               part="hax-logo"
               ?hidden="${this.editMode}"
             >
@@ -2931,7 +3163,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               position="bottom"
               ?hidden="${this.editMode}"
             >
-              >${this.backText}</simple-tooltip
+              >${this.backText || this.t.siteDashboard}</simple-tooltip
             >
             <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
           </span>
@@ -3160,7 +3392,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 height="68"
                 hat="${this.rpgHat}"
                 ?walking="${this.rpgWalk}"
-                aria-label="User menu for ${this.userName}"
+                aria-label="${this.t.userMenuFor.replace(
+                  "{name}",
+                  () => this.userName,
+                )}"
                 aria-expanded="${this.userMenuOpen}"
                 @mouseover="${this.rpgStartWalk}"
                 @focusin="${this.rpgStartWalk}"
@@ -3182,10 +3417,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               <button
                 class="soundToggle"
                 @click="${this.soundToggle}"
-                aria-label="Toggle sound effects ${this.soundIcon &&
+                aria-label="${this.soundIcon &&
                 this.soundIcon.indexOf("Full") !== -1
-                  ? "off"
-                  : "on"}"
+                  ? this.t.toggleSoundEffectsOff
+                  : this.t.toggleSoundEffectsOn}"
                 aria-pressed="${this.soundIcon &&
                 this.soundIcon.indexOf("Full") !== -1
                   ? "true"
@@ -3197,7 +3432,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   decoding="async"
                   aria-hidden="true"
                 ></simple-icon-lite>
-                <span class="sound-label">Sound effects</span>
+                <span class="sound-label">${this.t.soundEffects}</span>
               </button>
             </div>
             <slot
@@ -3338,7 +3573,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.activeDrag = false;
     this.activeType = null;
     SuperDaemonInstance.waveWand(
-      ["", "/", e, "hax-agent", "Upload a file"],
+      ["", "/", e, "hax-agent", this.t.uploadAFile],
       this.shadowRoot.querySelector("#merlin"),
     );
   }
@@ -3492,6 +3727,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.wandTarget = this.shadowRoot.querySelector("#merlin");
     // load up commands for daemon
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "save" },
       title: this.t.save,
       icon: "icons:save",
       tags: ["CMS", "save", "page", "operation", "command"],
@@ -3508,7 +3744,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     if (store.platformAllows("insights")) {
       SuperDaemonInstance.defineOption({
-        title: `Admin - ${this.t.reports}`,
+        title: this.t.adminSection.replace("{section}", () => this.t.reports),
         icon: "hax:graph",
         tags: ["CMS", "admin", "reports", "data", "operation"],
         value: {
@@ -3522,6 +3758,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
     }
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "edit" },
       title: this.t.edit,
       icon: "hax:page-edit",
       priority: -1500,
@@ -3538,7 +3775,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/action/edit",
     });
     SuperDaemonInstance.defineOption({
-      title: `Admin - ${this.t.siteSettings}`,
+      title: this.t.adminSection.replace("{section}", () => this.t.siteSettings),
       icon: "hax:site-settings",
       tags: ["CMS", "admin", "site", "settings", "operation", "command"],
       // Links this Merlin option to the Ctrl+Shift+6 binding registered in
@@ -3554,7 +3791,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/admin/dashboard",
     });
     SuperDaemonInstance.defineOption({
-      title: `Admin - ${this.t.about}`,
+      title: this.t.adminSection.replace("{section}", () => this.t.about),
       icon: "help",
       tags: ["CMS", "admin", "about", "help", "tutorials", "community"],
       value: {
@@ -3568,7 +3805,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     if (store.platformAllows("themeManifest")) {
       SuperDaemonInstance.defineOption({
-        title: "Admin - Appearance",
+        title: this.t.adminSection.replace("{section}", () => this.t.appearance),
         icon: "lrn:palette",
         tags: [
           "CMS",
@@ -3589,7 +3826,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/admin/appearance",
       });
       SuperDaemonInstance.defineOption({
-        title: "Admin - Theme Preview",
+        title: this.t.adminSection.replace("{section}", () => this.t.themePreview),
         icon: "image:style",
         tags: [
           "CMS",
@@ -3612,7 +3849,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     if (store.platformAllows("seoManifest")) {
       SuperDaemonInstance.defineOption({
-        title: `Admin - ${this.t.seoSettings}`,
+        title: this.t.adminSection.replace("{section}", () => this.t.seoSettings),
         icon: "icons:search",
         tags: [
           "CMS",
@@ -3636,7 +3873,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     if (store.platformAllows("authorManifest")) {
       SuperDaemonInstance.defineOption({
-        title: `Admin - ${this.t.authorSettings}`,
+        title: this.t.adminSection.replace("{section}", () => this.t.authorSettings),
         icon: "account-circle",
         tags: ["CMS", "admin", "author", "settings", "site settings"],
         value: {
@@ -3650,7 +3887,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
     }
     SuperDaemonInstance.defineOption({
-      title: `Admin - ${this.t.content}`,
+      title: this.t.adminSection.replace("{section}", () => this.t.content),
       icon: "editor:insert-drive-file",
       tags: ["CMS", "admin", "content", "site settings", "operation"],
       value: {
@@ -3663,7 +3900,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/admin/content",
     });
     SuperDaemonInstance.defineOption({
-      title: `Admin - ${this.t.views}`,
+      title: this.t.adminSection.replace("{section}", () => this.t.views),
       icon: "hax:view-gallery",
       tags: ["CMS", "admin", "views", "display", "query", "site settings"],
       value: {
@@ -3689,7 +3926,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     if (store.platformAllows("siteManifest")) {
       SuperDaemonInstance.defineOption({
-        title: "Admin - Details",
+        title: this.t.adminSection.replace("{section}", () => this.t.details),
         icon: "settings",
         tags: ["CMS", "admin", "details", "site", "settings", "metadata"],
         value: {
@@ -3702,7 +3939,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/admin/details",
       });
       SuperDaemonInstance.defineOption({
-        title: "Admin - Blocks",
+        title: this.t.adminSection.replace("{section}", () => this.t.blocks),
         icon: "hax:blocks",
         tags: ["CMS", "admin", "blocks", "settings", "site settings"],
         value: {
@@ -3715,7 +3952,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/admin/blocks",
       });
       SuperDaemonInstance.defineOption({
-        title: "Admin - Editor",
+        title: this.t.adminSection.replace("{section}", () => this.t.editor),
         icon: "hax:page-edit",
         tags: ["CMS", "admin", "editor", "settings", "site settings"],
         value: {
@@ -3729,7 +3966,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
     }
     SuperDaemonInstance.defineOption({
-      title: "Admin - Features",
+      title: this.t.adminSection.replace("{section}", () => this.t.features),
       icon: "hax:add-item",
       tags: ["CMS", "admin", "features", "platform", "settings"],
       value: {
@@ -3743,7 +3980,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     if (store.platformAllows("uploadMedia")) {
       SuperDaemonInstance.defineOption({
-        title: `Admin - ${this.t.files}`,
+        title: this.t.adminSection.replace("{section}", () => this.t.files),
         icon: "icons:folder",
         tags: ["CMS", "admin", "files", "media", "site settings"],
         value: {
@@ -3757,7 +3994,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
     }
     SuperDaemonInstance.defineOption({
-      title: "Admin - Import / Export",
+      title: this.t.adminSection.replace("{section}", () => this.t.importExport),
       icon: "icons:file-download",
       tags: ["CMS", "admin", "import", "export", "transfer", "site settings"],
       value: {
@@ -3771,7 +4008,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     if (store.platformAllows("styleGuide")) {
       SuperDaemonInstance.defineOption({
-        title: `Admin - ${this.t.styleGuide}`,
+        title: this.t.adminSection.replace("{section}", () => this.t.styleGuide),
         icon: "lrn:palette",
         tags: ["CMS", "admin", "theme", "style guide", "design"],
         value: {
@@ -3784,6 +4021,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
     }
     SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "logOut" },
       title: this.t.logOut,
       icon: "add",
       tags: ["CMS", "user", "logout"],
@@ -3797,7 +4035,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     SuperDaemonInstance.defineOption({
-      title: "Dark Mode Toggle",
+      i18n: { context: this, title: "darkModeToggle" },
+      title: this.t.darkModeToggle,
       icon: "device:brightness-medium",
       tags: ["CMS", "dark mode"],
       value: {
@@ -3811,7 +4050,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     SuperDaemonInstance.defineOption({
-      title: "Sound Toggle",
+      i18n: { context: this, title: "soundToggle" },
+      title: this.t.soundToggle,
       icon: "av:volume-up",
       tags: ["CMS", "sound"],
       value: {
@@ -3824,7 +4064,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     if (store.platformAllows("outlineDesigner")) {
       SuperDaemonInstance.defineOption({
-        title: `Admin - ${this.t.pageOutline}`,
+        title: this.t.adminSection.replace("{section}", () => this.t.pageOutline),
         icon: "hax:site-map",
         tags: [
           "CMS",
@@ -3851,14 +4091,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     // force item to load schema
     SuperDaemonInstance.defineOption({
-      title: "Load component schema",
+      i18n: {
+        context: this,
+        title: "loadComponentSchema",
+        "value.name": "loadComponentSchema",
+      },
+      title: this.t.loadComponentSchema,
       icon: "hax:hax2022",
       tags: ["Developer", "schema", "load", "demo", "testing"],
       eventName: "super-daemon-run-program",
       path: ">hax/loadElement",
       context: [">"],
       value: {
-        name: "Load component schema",
+        name: this.t.loadComponentSchema,
         context: ">",
         program: async (input, values) => {
           const reg = globalThis.WCAutoload.requestAvailability();
@@ -3899,7 +4144,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // Welcome to HAX program - shows 5 most common operations for new users
     const welcomeOps = [
       {
-        title: "Edit this page",
+        title: this.t.editThisPage,
         icon: "hax:page-edit",
         tags: ["welcome", "common", "operation"],
         shortcut: "cms-edit",
@@ -3913,7 +4158,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/welcome/edit-page",
       },
       {
-        title: "Upload a file",
+        title: this.t.uploadAFile,
         icon: "file-upload",
         tags: ["welcome", "common", "operation"],
         value: {
@@ -3926,7 +4171,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/welcome/upload-file",
       },
       {
-        title: "Create a new page",
+        title: this.t.createANewPage,
         icon: "hax:add-page",
         tags: ["welcome", "common", "operation"],
         shortcut: "cms-add-page",
@@ -3940,7 +4185,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/welcome/create-page",
       },
       {
-        title: "Edit site outline",
+        title: this.t.editSiteOutline,
         icon: "hax:site-map",
         tags: ["welcome", "common", "operation"],
         shortcut: "cms-outline",
@@ -3954,7 +4199,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/welcome/outline-designer",
       },
       {
-        title: "Change site settings",
+        title: this.t.changeSiteSettings,
         icon: "hax:site-settings",
         tags: ["welcome", "common", "operation"],
         shortcut: "cms-site-settings",
@@ -3968,7 +4213,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/welcome/site-settings",
       },
       {
-        title: "Don't show this welcome again",
+        title: this.t.dontShowThisWelcomeAgain,
         icon: "icons:visibility-off",
         tags: ["welcome", "dismiss", "settings"],
         value: {
@@ -4004,7 +4249,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         SuperDaemonInstance._resolveShortcutLabel(createPageOption.shortcut);
     }
     SuperDaemonInstance.defineOption({
-      title: "Show getting started tasks",
+      i18n: { context: this, title: "showGettingStartedTasks" },
+      title: this.t.showGettingStartedTasks,
       icon: "hax:hax2022",
       tags: [
         "welcome",
@@ -4035,18 +4281,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // change platform audience, only load if the site supports platformConfigs
     SuperDaemonInstance.defineOption({
-      title: "Preview audience mode",
+      i18n: {
+        context: this,
+        title: "previewAudienceMode",
+        "value.name": "previewAudienceMode",
+      },
+      title: this.t.previewAudienceMode,
       icon: "lrn:people",
       tags: ["Developer", "skeleton"],
       eventName: "super-daemon-run-program",
       path: ">settings/platformAudience",
       context: [">"],
-      more: html`<span
-        >Change platform audience just for the current browsing session</span
-      >`,
+      more: html`<span>${this.t.changePlatformAudienceDescription}</span>`,
       voice: "change audience (temporarily)",
       value: {
-        name: "Preview audience mode",
+        name: this.t.previewAudienceMode,
         context: ">",
         program: async (input, values) => {
           let results = [];
@@ -4080,7 +4329,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     SuperDaemonInstance.defineOption({
-      title: "HAX Labs",
+      i18n: { context: this, title: "haxLabs" },
+      title: this.t.haxLabs,
       icon: "hax:hax2022",
       tags: ["Developer", "labs", "experiments"],
       eventName: "super-daemon-element-method",
@@ -4093,7 +4343,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     SuperDaemonInstance.defineOption({
-      title: "Unlock all themes",
+      i18n: { context: this, title: "unlockAllThemes" },
+      title: this.t.unlockAllThemes,
       icon: "image:style",
       tags: ["Developer", "theme", "hidden", "terrible", "legacy"],
       eventName: "super-daemon-element-method",
@@ -4106,7 +4357,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     SuperDaemonInstance.defineOption({
-      title: "Page data formats",
+      i18n: {
+        context: this,
+        title: "pageDataFormats",
+        "value.name": "pageDataFormats",
+      },
+      title: this.t.pageDataFormats,
       icon: "hax:code-json",
       tags: [
         "Developer",
@@ -4125,7 +4381,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: [">"],
       voice: "page as data",
       value: {
-        name: "Page data formats",
+        name: this.t.pageDataFormats,
         machineName: "page-as-data",
         context: ">",
         program: async (input, values) => {
@@ -4138,7 +4394,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     SuperDaemonInstance.defineOption({
-      title: "View only mode",
+      i18n: { context: this, title: "viewOnlyMode" },
+      title: this.t.viewOnlyMode,
       icon: "visibility",
       tags: [
         "Developer",
@@ -4155,10 +4412,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       eventName: "super-daemon-element-method",
       path: ">settings/view-only",
       context: [">"],
-      more: html`<span
-        >Enable view only mode to hide all editing tools and experience the site
-        as a visitor would see it</span
-      >`,
+      more: html`<span>${this.t.viewOnlyModeDescription}</span>`,
       voice: "view only mode",
       value: {
         target: this,
@@ -4168,14 +4422,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // force item to load schema
     SuperDaemonInstance.defineOption({
-      title: "Switch to another site",
+      i18n: {
+        context: this,
+        title: "switchToAnotherSite",
+        "value.name": "switchToAnotherSite",
+      },
+      title: this.t.switchToAnotherSite,
       icon: "hax:hax2022",
       tags: ["Developer", "change", "sites", "administration"],
       eventName: "super-daemon-run-program",
       path: "/hax/changeSite",
       context: ["CMS"],
       value: {
-        name: "Switch to another site",
+        name: this.t.switchToAnotherSite,
         context: "CMS",
         program: async (input, values) => {
           let results = [];
@@ -4225,7 +4484,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Print Options Program
     SuperDaemonInstance.defineOption({
-      title: "Print options",
+      i18n: {
+        context: this,
+        title: "printOptions",
+        "value.name": "printOptions",
+      },
+      title: this.t.printOptions,
       icon: "icons:print",
       tags: ["CMS", "print", "page", "site", "pdf"],
       eventName: "super-daemon-run-program",
@@ -4233,7 +4497,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "print (options)",
       value: {
-        name: "Print options",
+        name: this.t.printOptions,
         machineName: "print-options",
         program: async (input, values) => {
           // Import the print program dynamically
@@ -4248,7 +4512,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Export Page Program
     SuperDaemonInstance.defineOption({
-      title: "Export this page",
+      i18n: {
+        context: this,
+        title: "exportThisPage",
+        "value.name": "exportThisPage",
+      },
+      title: this.t.exportThisPage,
       icon: "icons:file-download",
       tags: ["CMS", "export", "page"],
       eventName: "super-daemon-run-program",
@@ -4256,7 +4525,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS", "HAX"],
       voice: "export page",
       value: {
-        name: "Export this page",
+        name: this.t.exportThisPage,
         machineName: "export-page",
         program: async (input, values) => {
           const { createExportPageProgram } = await import(
@@ -4270,7 +4539,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Export Site Program
     SuperDaemonInstance.defineOption({
-      title: "Export this site",
+      i18n: {
+        context: this,
+        title: "exportThisSite",
+        "value.name": "exportThisSite",
+      },
+      title: this.t.exportThisSite,
       icon: "icons:file-download",
       tags: ["CMS", "export", "site"],
       eventName: "super-daemon-run-program",
@@ -4278,7 +4552,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "export site",
       value: {
-        name: "Export this site",
+        name: this.t.exportThisSite,
         machineName: "export-site",
         program: async (input, values) => {
           const { createExportSiteProgram } = await import(
@@ -4292,7 +4566,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Title Program
     SuperDaemonInstance.defineOption({
-      title: "Rename this page",
+      i18n: {
+        context: this,
+        title: "renameThisPage",
+        "value.name": "renameThisPage",
+        "value.placeholder": "enterNewTitle",
+      },
+      title: this.t.renameThisPage,
       icon: "editor:title",
       tags: ["CMS", "edit", "title", "metadata"],
       eventName: "super-daemon-run-program",
@@ -4300,9 +4580,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "edit title",
       value: {
-        name: "Rename this page",
+        name: this.t.renameThisPage,
         machineName: "edit-title",
-        placeholder: "Enter new title",
+        placeholder: this.t.enterNewTitle,
         program: async (input, values) => {
           const { createEditTitleProgram } = await import(
             "./utils/EditTitleProgram.js"
@@ -4315,7 +4595,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Description Program
     SuperDaemonInstance.defineOption({
-      title: "Update page description",
+      i18n: {
+        context: this,
+        title: "updatePageDescription",
+        "value.name": "updatePageDescription",
+        "value.placeholder": "enterNewDescription",
+      },
+      title: this.t.updatePageDescription,
       icon: "editor:format-quote",
       tags: ["CMS", "edit", "description", "metadata"],
       eventName: "super-daemon-run-program",
@@ -4323,9 +4609,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "edit description",
       value: {
-        name: "Update page description",
+        name: this.t.updatePageDescription,
         machineName: "edit-description",
-        placeholder: "Enter new description",
+        placeholder: this.t.enterNewDescription,
         program: async (input, values) => {
           const { createEditDescriptionProgram } = await import(
             "./utils/EditDescriptionProgram.js"
@@ -4338,7 +4624,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Slug Program
     SuperDaemonInstance.defineOption({
-      title: "Update page URL (slug)",
+      i18n: {
+        context: this,
+        title: "updatePageUrlSlug",
+        "value.name": "updatePageUrlSlug",
+        "value.placeholder": "enterNewSlug",
+      },
+      title: this.t.updatePageUrlSlug,
       icon: "editor:insert-link",
       tags: ["CMS", "edit", "slug", "url", "metadata"],
       eventName: "super-daemon-run-program",
@@ -4346,9 +4638,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "edit slug",
       value: {
-        name: "Update page URL (slug)",
+        name: this.t.updatePageUrlSlug,
         machineName: "edit-slug",
-        placeholder: "Enter new slug (URL path)",
+        placeholder: this.t.enterNewSlug,
         program: async (input, values) => {
           const { createEditSlugProgram } = await import(
             "./utils/EditSlugProgram.js"
@@ -4361,7 +4653,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Tags Program
     SuperDaemonInstance.defineOption({
-      title: "Update page tags",
+      i18n: {
+        context: this,
+        title: "updatePageTags",
+        "value.name": "updatePageTags",
+        "value.placeholder": "enterTagsSeparatedByCommas",
+      },
+      title: this.t.updatePageTags,
       icon: "icons:label",
       tags: ["CMS", "edit", "tags", "metadata"],
       eventName: "super-daemon-run-program",
@@ -4369,9 +4667,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "edit tags",
       value: {
-        name: "Update page tags",
+        name: this.t.updatePageTags,
         machineName: "edit-tags",
-        placeholder: "Enter tags separated by commas",
+        placeholder: this.t.enterTagsSeparatedByCommas,
         // Pre-fill the input with the active page's current tags so the
         // user can edit them in place when launched from Merlin search.
         initialValue: (values) => {
@@ -4393,7 +4691,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Icon Program
     SuperDaemonInstance.defineOption({
-      title: "Update page icon",
+      i18n: {
+        context: this,
+        title: "updatePageIcon",
+        "value.name": "updatePageIcon",
+        "value.placeholder": "typeToSearchIconsByName",
+      },
+      title: this.t.updatePageIcon,
       icon: "hax:hax2022",
       tags: ["CMS", "edit", "icon", "metadata"],
       eventName: "super-daemon-run-program",
@@ -4401,9 +4705,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "edit icon",
       value: {
-        name: "Update page icon",
+        name: this.t.updatePageIcon,
         machineName: "edit-icon",
-        placeholder: "Type to search icons by name",
+        placeholder: this.t.typeToSearchIconsByName,
         program: async (input, values) => {
           const { createEditIconProgram } = await import(
             "./utils/EditIconProgram.js"
@@ -4415,7 +4719,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     SuperDaemonInstance.defineOption({
-      title: "View page revisions",
+      i18n: {
+        context: this,
+        title: "viewPageRevisions",
+        "value.name": "viewPageRevisions",
+        "value.placeholder": "openRevisionHistoryForCurrentPage",
+      },
+      title: this.t.viewPageRevisions,
       icon: "icons:history",
       tags: ["CMS", "edit", "revisions", "history", "metadata"],
       eventName: "super-daemon-run-program",
@@ -4423,26 +4733,29 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "page revisions",
       value: {
-        name: "View page revisions",
+        name: this.t.viewPageRevisions,
         machineName: "page-revisions",
-        placeholder: "Open revision history for the current page",
+        placeholder: this.t.openRevisionHistoryForCurrentPage,
         program: async (input, values) => {
           const activeItem = toJS(store.activeItem);
           if (!activeItem || !activeItem.id) {
             return [
               {
-                title: "No active page selected",
+                title: this.t.noActivePageSelected,
                 icon: "icons:error",
                 tags: ["error"],
                 value: { disabled: true },
                 eventName: "disabled",
-                path: "No active page",
+                path: this.t.noActivePage,
               },
             ];
           }
           return [
             {
-              title: `Open revisions for ${activeItem.title || "current page"}`,
+              title: this.t.openRevisionsFor.replace(
+                "{title}",
+                () => (activeItem.title || this.t.currentPageLower),
+              ),
               icon: "icons:history",
               tags: ["revisions", "history", "page"],
               value: {
@@ -4460,14 +4773,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Core site navigation programs - available regardless of theme
     SuperDaemonInstance.defineOption({
-      title: "Open a page in this site",
+      i18n: {
+        context: this,
+        title: "openAPageInThisSite",
+        "value.name": "openAPageInThisSite",
+      },
+      title: this.t.openAPageInThisSite,
       icon: "link",
       tags: ["Site", "navigation"],
       eventName: "super-daemon-run-program",
       context: ["CMS"],
       path: "/site/navigation",
       value: {
-        name: "Open a page in this site",
+        name: this.t.openAPageInThisSite,
         context: "CMS",
         program: async (input, values) => {
           let results = [];
@@ -4500,7 +4818,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // Share current page program
     SuperDaemonInstance.defineOption({
-      title: "Share current page link",
+      i18n: {
+        context: this,
+        title: "shareCurrentPageLink",
+        "value.name": "shareCurrentPageLink",
+      },
+      title: this.t.shareCurrentPageLink,
       icon: "editor:insert-link",
       tags: ["CMS", "share", "link", "copy", "url", "page"],
       eventName: "super-daemon-run-program",
@@ -4508,7 +4831,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/action/share/page",
       voice: "share page",
       value: {
-        name: "Share current page link",
+        name: this.t.shareCurrentPageLink,
         machineName: "share-page-link",
         program: async (input, values) => {
           const { createSharePageProgram } = await import(
@@ -4522,7 +4845,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Core site page linking program - available in HAX editor for linking to pages
     SuperDaemonInstance.defineOption({
-      title: "Insert a link to a page",
+      i18n: {
+        context: this,
+        title: "insertALinkToAPage",
+        "value.name": "insertALinkToAPage",
+      },
+      title: this.t.insertALinkToAPage,
       icon: "hax:file-link-outline",
       tags: ["Search", "pages", "links"],
       eventName: "super-daemon-run-program",
@@ -4530,7 +4858,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["HAX", "/"],
       priority: -1,
       value: {
-        name: "Insert a link to a page",
+        name: this.t.insertALinkToAPage,
         context: "/",
         program: async (input, values) => {
           let results = [];
@@ -4570,14 +4898,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // markdown triggers) from the shared registry and executes the selected
     // one on click.
     SuperDaemonInstance.defineOption({
-      title: "View keyboard shortcuts",
+      i18n: {
+        context: this,
+        title: "viewKeyboardShortcuts",
+        "value.name": "viewKeyboardShortcuts",
+      },
+      title: this.t.viewKeyboardShortcuts,
       icon: "hardware:keyboard",
       tags: ["help", "shortcuts", "keyboard", "reference"],
       eventName: "super-daemon-run-program",
       path: "CMS/help/keyboard-shortcuts",
       context: ["CMS"],
       value: {
-        name: "View keyboard shortcuts",
+        name: this.t.viewKeyboardShortcuts,
         context: "CMS",
         program: async (input) => {
           const shortcuts = KeyboardShortcutManagerInstance.getForDisplay();
@@ -4720,9 +5053,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       SuperDaemonInstance &&
       typeof SuperDaemonInstance.merlinSpeak === "function"
     ) {
-      SuperDaemonInstance.merlinSpeak(
-        "All terrible, hidden and legacy themes unlocked. You must choose, but choose wisely.",
-      );
+      SuperDaemonInstance.merlinSpeak(this.t.allThemesUnlockedSpeech);
     }
   }
 
@@ -4783,7 +5114,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Show confirmation toast
     store.toast(
-      "Welcome program dismissed. You can always access Merlin by pressing Alt+Shift or clicking the search bar.",
+      this.t.welcomeProgramDismissed,
       5000,
       {
         hat: "good",
@@ -4815,7 +5146,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "/", // context for file operations
             { operation: "file-upload" },
             "hax-agent",
-            "Upload a file",
+            this.t.uploadAFile,
           ],
           this.shadowRoot.querySelector("#merlin"),
           "coin2",
@@ -4867,7 +5198,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     const activeItem = toJS(store.activeItem);
     if (!activeItem || !activeItem.id) {
-      HAXStore.toast("No active page found", 3000, "fit-bottom");
+      HAXStore.toast(this.t.noActivePageFound, 3000, "fit-bottom");
       return;
     }
     const baseElement = globalThis.document.querySelector("base");
@@ -4913,10 +5244,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     shareUrl.hash = "";
     return shareUrl.toString();
   }
-  async copyCurrentPageShareLink(link = null, pageTitle = "current page") {
+  async copyCurrentPageShareLink(link = null, pageTitle = null) {
+    if (!pageTitle) {
+      pageTitle = this.t.currentPageLower;
+    }
     const shareLink = link || this.getCurrentPageShareLink();
     if (!shareLink) {
-      HAXStore.toast("No active page found to share", 3000, "fit-bottom");
+      HAXStore.toast(this.t.noActivePageFoundToShare, 3000, "fit-bottom");
       return;
     }
 
@@ -4951,10 +5285,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
 
     if (copied) {
-      HAXStore.toast(`Link copied for ${pageTitle}`, 3000, "fit-bottom");
+      HAXStore.toast(
+        this.t.linkCopiedFor.replace("{title}", () => pageTitle),
+        3000,
+        "fit-bottom",
+      );
     } else {
       HAXStore.toast(
-        "Unable to copy automatically. Open Merlin to view the share link.",
+        this.t.unableToCopyAutomatically,
         4000,
         "fit-bottom",
       );
@@ -5705,7 +6043,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this._editButtonTap(e);
       },
       condition: () => store.isLoggedIn && this.pageAllowed && this.editMode,
-      description: "Save page and exit edit mode",
+      description: this.t.shortcutSavePageAndExitEditMode,
       context: "edit",
     });
 
@@ -5719,7 +6057,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this._editButtonTap(e);
       },
       condition: () => store.isLoggedIn && this.pageAllowed && !this.editMode,
-      description: "Enter edit mode",
+      description: this.t.shortcutEnterEditMode,
       context: "view",
     });
 
@@ -5732,7 +6070,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this._cancelButtonTap(e);
       },
       condition: () => store.isLoggedIn && this.editMode,
-      description: "Cancel editing",
+      description: this.t.shortcutCancelEditing,
       context: "edit",
     });
 
@@ -5762,7 +6100,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       },
       condition: () => store.isLoggedIn,
-      description: "View source (edit) / Edit page (view)",
+      description: this.t.shortcutViewSourceOrEditPage,
       context: "global",
     });
 
@@ -5790,7 +6128,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       },
       condition: () => store.isLoggedIn,
-      description: "Page structure (edit) / Page actions (view)",
+      description: this.t.shortcutPageStructureOrPageActions,
       context: "global",
     });
 
@@ -5822,7 +6160,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       },
       condition: () => store.isLoggedIn,
-      description: "Blocks browser (edit) / Add page (view)",
+      description: this.t.shortcutBlocksBrowserOrAddPage,
       context: "global",
     });
     // Ctrl+Shift+4 - Configure panel (edit) OR Site outline actions (non-edit)
@@ -5845,7 +6183,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       },
       condition: () => store.isLoggedIn,
-      description: "Configure panel (edit) / Site outline actions (view)",
+      description: this.t.shortcutConfigurePanelOrOutlineActions,
       context: "global",
     });
 
@@ -5862,7 +6200,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         store.isLoggedIn &&
         !this.editMode &&
         store.platformAllows("outlineDesigner"),
-      description: "Open site outline designer",
+      description: this.t.shortcutOpenSiteOutlineDesigner,
       context: "view",
     });
 
@@ -5880,7 +6218,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       },
       condition: () => store.isLoggedIn && !this.editMode,
-      description: "Open site settings menu",
+      description: this.t.shortcutOpenSiteSettingsMenu,
       context: "view",
     });
 
@@ -5896,7 +6234,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       },
       condition: () => store.isLoggedIn && !this.editMode,
-      description: "Open user menu",
+      description: this.t.shortcutOpenUserMenu,
       context: "view",
     });
 
@@ -5909,7 +6247,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this._triggerEditorTrayFocusShortcut();
       },
       condition: () => store.isLoggedIn && this.editMode,
-      description: "Jump between text editing and tray options",
+      description: this.t.shortcutJumpBetweenTextAndTray,
       context: "edit",
       allowInInput: true,
     });
@@ -5928,7 +6266,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       !this.editMode
     ) {
       store.toast(
-        "This page is locked. Click the lock button to unlock it before editing.",
+        this.t.pageLockedCannotEdit,
         3000,
         { hat: "error" },
       );
@@ -5959,7 +6297,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       composed: true,
       cancelable: false,
       detail: {
-        title: "Save before leaving source editor?",
+        title: this.t.saveBeforeLeavingSourceEditor,
         styles: {
           "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
@@ -6557,8 +6895,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     globalThis.dispatchEvent(evt);
   }
+  /**
+   * Section titles are passed around in English because routing logic
+   * compares them (see _platformSettingsRoute); translate only for display.
+   */
+  _sectionLabel(sectionTitle) {
+    const sectionKeys = {
+      Structure: "pageOutline",
+      Appearance: "appearance",
+      Details: "details",
+      Blocks: "blocks",
+      Editor: "editor",
+      Features: "features",
+      "Import / Export": "importExport",
+      About: "about",
+    };
+    const key = sectionKeys[sectionTitle];
+    return key && this.t[key] ? this.t[key] : sectionTitle;
+  }
   _siteSettingsTrailTitle(sectionTitle) {
-    return `${this.t.siteSettings} > ${sectionTitle}`;
+    return `${this.t.siteSettings} > ${this._sectionLabel(sectionTitle)}`;
   }
   _siteSettingsBreadcrumbMeta(sectionTitle, sectionIcon = "settings") {
     return {
@@ -6572,7 +6928,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           clickable: true,
         },
         {
-          label: sectionTitle,
+          label: this._sectionLabel(sectionTitle),
           icon: sectionIcon,
           clickable: false,
         },
@@ -6715,7 +7071,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           : this.shadowRoot.querySelector("#manifestbtn");
       const breadcrumbs = [
         {
-          label: "Admin",
+          label: this.t.admin,
           icon: "home",
           action: "site-settings-dashboard",
           clickable: true,
@@ -6727,7 +7083,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           clickable: true,
         },
         {
-          label: "Revisions",
+          label: this.t.revisions,
           icon: "icons:history",
           clickable: false,
         },
@@ -6738,7 +7094,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           composed: true,
           cancelable: false,
           detail: {
-            title: `Page revisions${resolvedNodeTitle ? ` — ${resolvedNodeTitle}` : ""}`,
+            title: resolvedNodeTitle
+              ? this.t.pageRevisionsFor.replace("{title}", () => resolvedNodeTitle)
+              : this.t.pageRevisions,
             titleIcon: "icons:history",
             breadcrumbs: breadcrumbs,
             styles: {
@@ -6898,7 +7256,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     let confirmDialog = globalThis.document.createElement("hax-confirm-dialog");
     confirmDialog.message =
       this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure;
-    confirmDialog.confirmLabel = "OK";
+    confirmDialog.confirmLabel = this.t.ok;
     confirmDialog.cancelLabel = this.t.cancel;
     confirmDialog.destructive = true;
     confirmDialog.closeOnConfirm = false;
@@ -6909,7 +7267,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       composed: true,
       cancelable: false,
       detail: {
-        title: "Discard unsaved changes?",
+        title: this.t.discardUnsavedChanges,
         styles: {
           "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
@@ -6961,11 +7319,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const activeTitle =
       store.activeItem && store.activeItem.title
         ? store.activeItem.title
-        : "This page";
+        : this.t.thisPage;
     let confirmDialog = globalThis.document.createElement("hax-confirm-dialog");
-    confirmDialog.message = `"${activeTitle}" will be removed from the outline but its content stays on the file system.`;
-    confirmDialog.confirmLabel = "Delete page";
-    confirmDialog.cancelLabel = "Cancel";
+    confirmDialog.message = this.t.deletePageConfirmMessage.replace(
+      "{title}",
+      () => activeTitle,
+    );
+    confirmDialog.confirmLabel = this.t.delete;
+    confirmDialog.cancelLabel = this.t.cancel;
     confirmDialog.destructive = true;
     confirmDialog.confirmCallback = this._deleteActive.bind(this);
     confirmDialog.cancelCallback = () => store.playSound("error");
@@ -6974,7 +7335,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       composed: true,
       cancelable: false,
       detail: {
-        title: "Permanently delete this page?",
+        title: this.t.permanentlyDeleteThisPage,
         styles: {
           "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
@@ -7028,7 +7389,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "/",
       {},
       "edit-title",
-      "Rename this page",
+      this.t.renameThisPage,
     ]);
   }
   /**
@@ -7048,7 +7409,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "/",
       {},
       "edit-description",
-      "Update page description",
+      this.t.updatePageDescription,
       "",
     ]);
   }
@@ -7082,8 +7443,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!activeItem || !activeItem.id) return;
 
     const newTitle = globalThis.prompt(
-      "Enter title for duplicated page:",
-      `${activeItem.title} (copy)`,
+      this.t.enterTitleForDuplicatedPage,
+      this.t.titleCopy.replace("{title}", () => activeItem.title),
     );
     if (newTitle && newTitle.trim() !== "") {
       store.playSound("click");
@@ -7095,7 +7456,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "/",
         {},
         "create-page",
-        "Create a page",
+        this.t.createAPage,
       ]);
     }
   }
@@ -7116,7 +7477,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "/",
       {},
       "edit-slug",
-      "Update page URL (slug)",
+      this.t.updatePageUrlSlug,
       "",
     ]);
   }
@@ -7136,7 +7497,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "/",
       { pageId: item.id },
       "move-page",
-      "Move Page",
+      this.t.movePage,
       "",
     ]);
   }
@@ -7265,7 +7626,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!routeOptions.silent) {
       store.playSound("click");
     }
-    let title = "Import";
+    let title = this.t.importLabel;
     let breadcrumbs = [];
     if (fromSiteSettings) {
       breadcrumbs = [
@@ -7276,13 +7637,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           clickable: true,
         },
         {
-          label: "Structure",
+          label: this.t.pageOutline,
           icon: "hax:site-map",
           action: "structure",
           clickable: true,
         },
         {
-          label: "Import",
+          label: this.t.importLabel,
           icon: "hax:site-map",
           clickable: false,
         },
@@ -7307,7 +7668,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     };
     const saveBtn = globalThis.document.createElement("button");
     saveBtn.classList.add("hax-modal-btn");
-    saveBtn.innerText = "Save";
+    saveBtn.innerText = this.t.save;
     saveBtn.addEventListener("click", async () => {
       const data = await c.getData();
       globalThis.dispatchEvent(
@@ -7331,7 +7692,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     const cancelBtn = globalThis.document.createElement("button");
     cancelBtn.classList.add("hax-modal-btn");
-    cancelBtn.innerText = "Cancel";
+    cancelBtn.innerText = this.t.cancel;
     cancelBtn.addEventListener("click", () => {
       globalThis.dispatchEvent(
         new CustomEvent("simple-modal-hide", {
@@ -7543,7 +7904,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         );
         let urlInput = "";
         setTimeout(() => {
-          urlInput = globalThis.prompt("Paste URL to import:", "");
+          urlInput = globalThis.prompt(this.t.pasteUrlToImport, "");
           if (typeof urlInput !== "string" || urlInput.trim() === "") {
             return;
           }
@@ -7551,7 +7912,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           if (this.isValidUrl(trimmedUrl)) {
             this.processUrlFromInput(trimmedUrl);
           } else {
-            store.toast("Invalid URL provided", 3000, {
+            store.toast(this.t.invalidUrlProvided, 3000, {
               hat: "construction",
             });
           }
@@ -7599,7 +7960,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "haxcms-site-import-export-action",
         this._importExportDashboardAction.bind(this),
       );
-      let title = sectionTitle || "Import / Export";
+      let title = this._sectionLabel(sectionTitle || "Import / Export");
       let breadcrumbs = [];
       if (fromSiteSettings) {
         const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
@@ -7880,7 +8241,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
       const previewSelection = this.__appearancePreviewSelection;
       this.__appearancePreviewSelection = null;
-      let title = sectionTitle || "Appearance";
+      let title = this._sectionLabel(sectionTitle || "Appearance");
       let breadcrumbs = [];
       if (fromSiteSettings) {
         const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
@@ -7949,7 +8310,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const dialog = globalThis.document.createElement(
         "haxcms-allowed-blocks-ui",
       );
-      let title = sectionTitle || "Blocks";
+      let title = this._sectionLabel(sectionTitle || "Blocks");
       let breadcrumbs = [];
       if (fromSiteSettings) {
         const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
@@ -8011,7 +8372,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const dialog = globalThis.document.createElement(
         "haxcms-editor-settings-dialog-ui",
       );
-      let title = sectionTitle || "Editor";
+      let title = this._sectionLabel(sectionTitle || "Editor");
       let breadcrumbs = [];
       if (fromSiteSettings) {
         const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
@@ -8073,7 +8434,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const dialog = globalThis.document.createElement(
         "haxcms-about-dialog-ui",
       );
-      let title = sectionTitle || this.t.about;
+      let title = this._sectionLabel(sectionTitle || this.t.about);
       let breadcrumbs = [];
       if (fromSiteSettings) {
         const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(title, "help");
@@ -8131,7 +8492,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       platformSettings: true,
       modalTitle: fromSiteSettings
         ? this._siteSettingsTrailTitle(sectionTitle)
-        : "Platform settings",
+        : this.t.platformSettings,
       modalTitleIcon: sectionIcon,
     };
     if (fromSiteSettings) {
@@ -8164,7 +8525,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const dialog = globalThis.document.createElement(
         "haxcms-site-details-dialog",
       );
-      let title = sectionTitle || "Details";
+      let title = this._sectionLabel(sectionTitle || "Details");
       let breadcrumbs = [];
       if (fromSiteSettings) {
         const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
@@ -8366,7 +8727,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
         // Show notification that cheat codes are now available
         HAXStore.toast(
-          "🎮 Cheat codes unlocked! Check Merlin for new programs.",
+          this.t.cheatCodesUnlocked,
         );
 
         // Close Merlin first to reset state, then reopen after delay
@@ -8387,7 +8748,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }, 100);
       } catch (error) {
         console.error("🎮 Failed to load cheat codes:", error);
-        HAXStore.toast("🎮 Failed to unlock cheat codes");
+        HAXStore.toast(this.t.failedToUnlockCheatCodes);
       }
     }
   }

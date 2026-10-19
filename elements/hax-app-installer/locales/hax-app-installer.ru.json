@@ -54,5 +54,6 @@
   "requirementUppercase": "Одна заглавная буква",
   "requirementLowercase": "Одна строчная буква",
   "requirementNumber": "Одна цифра",
-  "requirementSymbol": "Один символ"
+  "requirementSymbol": "Один символ",
+  "haxcmsMascotAlt": "Талисман HAXcms «Путешественник по миру»"
 }

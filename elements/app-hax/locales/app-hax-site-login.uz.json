@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Foydalanuvchi nomini kiriting",
+  "invalidUsernameOrPassword": "Foydalanuvchi nomi yoki parol notoʻgʻri",
+  "welcomeLetsGo": "Xush kelibsiz, {username}! Ketdik!",
+  "enterYourUsername": "Foydalanuvchi nomingizni kiriting",
+  "username": "Foydalanuvchi nomi",
+  "next": "Keyingi",
+  "welcomeBack": "Xush kelibsiz, {username}!",
+  "notYou": "Siz emasmisiz?",
+  "enterYourPassword": "Parolingizni kiriting",
+  "password": "Parol",
+  "togglePasswordDisplay": "Parolni koʻrsatish/yashirish",
+  "login": "Kirish"
+}

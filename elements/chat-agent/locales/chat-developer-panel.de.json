@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Benutzer-Chatprotokoll als Konsolentabelle",
+  "consoleTableUserText": "console.table() Benutzer-Chatprotokoll",
+  "consoleTableUserTooltip": "Benutzer-Chatprotokoll als Tabelle in der Konsole ausgeben",
+  "consoleTableMerlinLabel": "Merlin-Chatprotokoll als Konsolentabelle",
+  "consoleTableMerlinText": "console.table() Merlin-Chatprotokoll",
+  "consoleTableMerlinTooltip": "Merlin-Chatprotokoll als Tabelle in der Konsole ausgeben",
+  "consoleTableAllLabel": "Gesamtes Chatprotokoll als Konsolentabelle",
+  "consoleTableAllText": "console.table() gesamtes Chatprotokoll",
+  "consoleTableAllTooltip": "Gesamtes Chatprotokoll als Tabelle in der Konsole ausgeben",
+  "downloadChatLogJson": "Chatprotokoll als .json herunterladen",
+  "downloadChatLogJsonTooltip": "Chatprotokoll als .json herunterladen"
+}

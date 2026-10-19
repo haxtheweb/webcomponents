@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Elevinnlevering",
   "openInNewWindow": "Åpne i nytt vindu",
-  "submitted": "Levert"
+  "submitted": "Levert",
+  "previousStudent": "Forrige elev",
+  "nextStudent": "Neste elev",
+  "previousAssignment": "Forrige oppgave",
+  "nextAssignment": "Neste oppgave"
 }

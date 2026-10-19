@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "I-download ang Log bilang txt",
+  "downloadChatLog": "I-download ang Chat Log",
+  "resetChat": "I-reset ang Chat",
+  "toggleDataCollection": "I-toggle ang Pangongolekta ng Data",
+  "dataCollection": "Pangongolekta ng Data",
+  "toggleDeveloperMode": "I-toggle ang Developer Mode",
+  "exitFullView": "Lumabas sa Full View",
+  "enterFullView": "Pumasok sa Full View",
+  "hideInterface": "Itago ang Interface",
+  "resetChatConfirm": "I-reset ang chat?",
+  "downloadBeforeResetConfirm": "I-download ang chat log bago mag-reset?",
+  "dataCollectionOn": "Gagamitin ang iyong mga pag-uusap para sanayin ang aming mga AI model",
+  "dataCollectionOff": "Hindi gagamitin ang iyong mga pag-uusap para sanayin ang aming mga AI model"
+}

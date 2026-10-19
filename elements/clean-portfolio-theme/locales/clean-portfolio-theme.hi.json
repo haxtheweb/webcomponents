@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "एंकर लिंक कॉपी किया गया!",
+  "skipToContent": "सामग्री पर जाएँ",
+  "siteHome": "साइट होम",
+  "mainNavigation": "मुख्य नेविगेशन",
+  "toggleMenu": "मेनू टॉगल करें",
+  "changeTheme": "थीम बदलें",
+  "breadcrumb": "ब्रेडक्रम्ब",
+  "tagFilter": "टैग फ़िल्टर:",
+  "all": "सभी",
+  "pageNumberOfTotal": "पेज संख्या: {total} में से {current}",
+  "siteGenerated": "साइट जनरेट की गई: {date}",
+  "copyright": "कॉपीराइट: {year} {author}",
+  "viewContentByTag": "टैग के अनुसार सामग्री देखें",
+  "licenseGraphic": "{license} ग्राफ़िक"
+}

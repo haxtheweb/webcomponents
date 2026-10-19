@@ -1,3 +1,8 @@
 {
-  "title": "ເອກະສານອ້າງອີງ"
+  "title": "ເອກະສານອ້າງອີງ",
+  "export": "ສົ່ງອອກ",
+  "exportCitations": "ສົ່ງອອກການອ້າງອີງ",
+  "copy": "ສຳເນົາ",
+  "exportCitationFormat": "ຮູບແບບການອ້າງອີງທີ່ຈະສົ່ງອອກ",
+  "selectCitationFormatBelow": "ເລືອກຮູບແບບການອ້າງອີງຂ້າງລຸ່ມ"
 }

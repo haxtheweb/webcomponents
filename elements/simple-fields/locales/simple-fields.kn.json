@@ -9,5 +9,8 @@
   "record": "ರೆಕಾರ್ಡ್",
   "pause": "ರೆಕಾರ್ಡಿಂಗ್ ವಿರಾಮ",
   "stopSave": "ನಿಲ್ಲಿಸಿ ಮತ್ತು ಉಳಿಸಿ",
-  "clickToTakePhoto": "ಫೋಟೋ ತೆಗೆಯಲು ಕ್ಲಿಕ್ ಮಾಡಿ"
+  "clickToTakePhoto": "ಫೋಟೋ ತೆಗೆಯಲು ಕ್ಲಿಕ್ ಮಾಡಿ",
+  "url": "URL",
+  "open": "ತೆರೆಯಿರಿ",
+  "removeValue": "{value} ತೆಗೆದುಹಾಕಿ"
 }

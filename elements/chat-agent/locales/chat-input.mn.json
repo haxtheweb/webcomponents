@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Өмнө илгээсэн мессежийг харуулах (дээш)",
+  "displayPreviousMessageDown": "Өмнө илгээсэн мессежийг харуулах (доош)",
+  "sendPrompt": "Хүсэлт илгээх",
+  "sendPromptToMerlin": "Merlin руу хүсэлт илгээх",
+  "shortenPrompt": "Хүсэлтээ {limit} тэмдэгтээс хэтрэхгүйгээр богиносгоно уу."
+}

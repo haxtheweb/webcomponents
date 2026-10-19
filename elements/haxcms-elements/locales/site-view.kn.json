@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "ಯಾವುದೇ ಫಲಿತಾಂಶಗಳಿಲ್ಲ",
+  "viewsRecordHeading": "ರೆಕಾರ್ಡ್",
+  "viewsTitleImage": "{title} ಚಿತ್ರ",
+  "viewsTitlePreview": "{title} ಪೂರ್ವವೀಕ್ಷಣೆ",
+  "viewsNoTimelineRecords": "ಟೈಮ್‌ಲೈನ್ ಪ್ರದರ್ಶನಕ್ಕೆ ದಿನಾಂಕ ಆಧಾರಿತ ದಾಖಲೆಗಳು ಲಭ್ಯವಿಲ್ಲ.",
+  "viewsTimelineTitle": "{title} ಟೈಮ್‌ಲೈನ್",
+  "viewsNoChartField": "ಚಾರ್ಟ್ ಪ್ರದರ್ಶನಕ್ಕೆ ಯಾವುದೇ ಸಂಖ್ಯಾ ಕ್ಷೇತ್ರ ಪತ್ತೆಯಾಗಿಲ್ಲ.",
+  "viewsChartingValue": "{value} ಚಾರ್ಟ್ ಮಾಡಲಾಗುತ್ತಿದೆ",
+  "viewsChartingValueByLabel": "{label} ಪ್ರಕಾರ {value} ಚಾರ್ಟ್ ಮಾಡಲಾಗುತ್ತಿದೆ",
+  "viewsChartTitle": "{title} ಚಾರ್ಟ್",
+  "viewsNoTreeRecords": "ಟ್ರೀ ಪ್ರದರ್ಶನಕ್ಕೆ ಶ್ರೇಣೀಕೃತ ದಾಖಲೆಗಳು ಲಭ್ಯವಿಲ್ಲ.",
+  "viewsNoGalleryRecords": "ಗ್ಯಾಲರಿ ಪ್ರದರ್ಶನಕ್ಕೆ ಚಿತ್ರ ದಾಖಲೆಗಳು ಲಭ್ಯವಿಲ್ಲ.",
+  "viewsNoPlaylistRecords": "ಪ್ಲೇಲಿಸ್ಟ್ ಪ್ರದರ್ಶನಕ್ಕೆ ಮೀಡಿಯಾ ದಾಖಲೆಗಳು ಲಭ್ಯವಿಲ್ಲ.",
+  "fetchFailed": "ಪಡೆಯುವಿಕೆ ವಿಫಲವಾಗಿದೆ ({status})",
+  "unableToLoadViewData": "ವೀಕ್ಷಣೆಯ ಡೇಟಾವನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+  "noResultsFound": "ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬಂದಿಲ್ಲ.",
+  "refreshView": "ವೀಕ್ಷಣೆಯನ್ನು ರಿಫ್ರೆಶ್ ಮಾಡಿ",
+  "breakIntoStaticContent": "ಸ್ಥಿರ ವಿಷಯವಾಗಿ ಒಡೆಯಿರಿ",
+  "viewsOpenRecord": "ದಾಖಲೆ ತೆರೆಯಿರಿ"
+}

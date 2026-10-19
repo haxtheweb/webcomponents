@@ -7,5 +7,7 @@
   "userAccessGranted": "Akses panganggo kasil diwenehake!",
   "userNotFound": "Panganggo ora ketemu utawa ora duwe wewenang",
   "loadingAddingUser": "Lagi nambahake panganggo...",
-  "grantAccessTo": "Wenehi akses marang:"
+  "grantAccessTo": "Wenehi akses marang:",
+  "networkErrorTryAgain": "Ana kesalahan jaringan. Mangga coba maneh.",
+  "characterWillAppear": "Karakter bakal katon nalika sampeyan nglebokake jeneng pangguna"
 }

@@ -1,0 +1,11 @@
+{
+  "theme": "થીમ",
+  "active": "સક્રિય",
+  "selected": "પસંદ કરેલ",
+  "noPreview": "કોઈ પૂર્વાવલોકન નથી",
+  "currentlyActiveAndSelected": "હાલમાં સક્રિય અને પસંદ કરેલી થીમ",
+  "currentlyActive": "હાલમાં સક્રિય થીમ",
+  "selectedToApplyOnSave": "સાચવતી વખતે લાગુ કરવા માટે પસંદ કરેલી થીમ",
+  "themeSelection": "થીમ પસંદગી",
+  "noThemesAvailable": "કોઈ થીમ્સ ઉપલબ્ધ નથી."
+}

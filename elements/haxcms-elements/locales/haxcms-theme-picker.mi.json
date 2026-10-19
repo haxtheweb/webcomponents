@@ -1,0 +1,11 @@
+{
+  "theme": "Kaupapa",
+  "active": "Hohe",
+  "selected": "Kua tīpakohia",
+  "noPreview": "Kāore he arokite",
+  "currentlyActiveAndSelected": "Kaupapa āhua hohe, kua tīpakohia hoki",
+  "currentlyActive": "Kaupapa āhua hohe o nāianei",
+  "selectedToApplyOnSave": "Kaupapa āhua kua tīpakohia hei hāngai ina tiakina",
+  "themeSelection": "Tīpakonga kaupapa āhua",
+  "noThemesAvailable": "Kāore he kaupapa āhua e wātea ana."
+}

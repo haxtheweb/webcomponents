@@ -36,5 +36,7 @@
   "clickToDoAnything": "ਕੁਝ ਵੀ ਕਰਨ ਲਈ ਕਲਿੱਕ ਕਰੋ!",
   "moreDetails": "ਹੋਰ ਵੇਰਵੇ",
   "details": "ਵੇਰਵੇ",
-  "saved": "ਸੰਭਾਲਿਆ"
+  "saved": "ਸੰਭਾਲਿਆ",
+  "opensInNewWindow": "ਨਵੀਂ ਵਿੰਡੋ ਵਿੱਚ ਖੁੱਲ੍ਹਦਾ ਹੈ",
+  "resultsCount": "{count} ਨਤੀਜੇ"
 }

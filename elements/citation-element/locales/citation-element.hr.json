@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Imenovanje",
+  "licenseBySa": "Imenovanje-Dijeli pod istim uvjetima",
+  "licenseByNd": "Imenovanje-Bez prerada",
+  "licenseByNc": "Imenovanje-Nekomercijalno",
+  "licenseByNcSa": "Imenovanje-Nekomercijalno-Dijeli pod istim uvjetima",
+  "licenseByNcNd": "Imenovanje-Nekomercijalno-Bez prerada",
+  "citationWithLicense": "{title}, autor: {creator}, licencirano pod {license}. Pristupljeno {date}.",
+  "citationWithoutLicense": "{title}, autor: {creator}. Pristupljeno {date}.",
+  "licenseGraphic": "Grafika licencije {license}"
+}

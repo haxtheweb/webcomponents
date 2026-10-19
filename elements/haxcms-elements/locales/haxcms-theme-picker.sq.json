@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Aktive",
+  "selected": "E përzgjedhur",
+  "noPreview": "Pa pamje paraprake",
+  "currentlyActiveAndSelected": "Tema aktuale aktive dhe e përzgjedhur",
+  "currentlyActive": "Tema aktuale aktive",
+  "selectedToApplyOnSave": "Tema e përzgjedhur për t'u zbatuar gjatë ruajtjes",
+  "themeSelection": "Përzgjedhja e temës",
+  "noThemesAvailable": "Nuk ka tema të disponueshme."
+}

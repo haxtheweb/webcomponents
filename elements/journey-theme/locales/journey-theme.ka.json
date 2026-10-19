@@ -1,4 +1,11 @@
 {
   "readMore": "მეტის წაკითხვა",
-  "home": "მთავარი"
+  "home": "მთავარი",
+  "anchorLinkCopied": "ღუზის ბმული დაკოპირდა!",
+  "skipToContent": "შიგთავსზე გადასვლა",
+  "changeTheme": "თემის შეცვლა",
+  "siteSections": "საიტის განყოფილებები",
+  "pageOfTotal": "გვერდი {current} / {total}",
+  "siteGenerated": "საიტი გენერირებულია: {date}",
+  "licenseGraphic": "{license} — გრაფიკა"
 }

@@ -1,0 +1,11 @@
+{
+  "theme": "Þema",
+  "active": "Virkt",
+  "selected": "Valið",
+  "noPreview": "Engin forskoðun",
+  "currentlyActiveAndSelected": "Núverandi virkt og valið þema",
+  "currentlyActive": "Núverandi virkt þema",
+  "selectedToApplyOnSave": "Valið þema sem verður notað við vistun",
+  "themeSelection": "Val á þema",
+  "noThemesAvailable": "Engin þemu tiltæk."
+}

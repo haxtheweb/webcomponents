@@ -10,5 +10,9 @@
   "save": "محفوظ کرو",
   "noDescription": "کوئی تفصیل دستیاب نہیں۔",
   "details": "تفصیلاں",
-  "loadingInventory": "بلاکاں دی پوری فہرست لوڈ ہو رہی اے…"
+  "loadingInventory": "بلاکاں دی پوری فہرست لوڈ ہو رہی اے…",
+  "selectAllButton": "سارے چݨو",
+  "deselectAllButton": "سارے اَن چݨے کرو",
+  "selectedOfAvailable": "{selected} چݨے / {total} دستیاب",
+  "savingBlocksFailed": "بلاک سانبھݨ ناکام: {error}"
 }

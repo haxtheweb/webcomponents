@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "기능에서 비활성화됨",
+  "appearance": "모양",
+  "structure": "구조",
+  "content": "콘텐츠",
+  "reports": "보고서",
+  "about": "정보",
+  "files": "파일",
+  "views": "보기",
+  "features": "기능",
+  "editor": "편집기",
+  "blocks": "블록",
+  "importExport": "가져오기 / 내보내기",
+  "details": "세부 정보",
+  "advanced": "고급"
+}

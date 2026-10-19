@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Ghi công",
+  "licenseBySa": "Ghi công Chia sẻ tương tự",
+  "licenseByNd": "Ghi công Không phái sinh",
+  "licenseByNc": "Ghi công Phi thương mại",
+  "licenseByNcSa": "Ghi công Phi thương mại Chia sẻ tương tự",
+  "licenseByNcNd": "Ghi công Phi thương mại Không phái sinh",
+  "citationWithLicense": "{title} của {creator}, được cấp phép theo {license}. Truy cập ngày {date}.",
+  "citationWithoutLicense": "{title} của {creator}. Truy cập ngày {date}.",
+  "licenseGraphic": "Hình {license}"
+}

@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "थीम पूर्वावलोकन दिखाएँ",
+  "hideThemePreview": "थीम पूर्वावलोकन छिपाएँ",
+  "themePreviewPanel": "थीम पूर्वावलोकन पैनल",
+  "themePreview": "थीम पूर्वावलोकन",
+  "themePreviewDescription": "ब्राउज़ करते समय अस्थायी रूप से कोई थीम और पैलेट आज़माएँ। अपना मूल रूप-रंग वापस लाने के लिए रद्द करें का उपयोग करें।",
+  "loadingThemes": "थीम लोड हो रही हैं...",
+  "theme": "थीम",
+  "palette": "पैलेट",
+  "cancel": "रद्द करें",
+  "openAppearanceSettings": "रूप-रंग सेटिंग्स खोलें"
+}

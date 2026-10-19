@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Sinu vastus",
   "checkAnswer": "Kontrolli vastust",
-  "retry": "Proovi uuesti"
+  "retry": "Proovi uuesti",
+  "correct": "Õige!",
+  "incorrect": "Vale!",
+  "correctAnswer": "Õige vastus: {answer}"
 }

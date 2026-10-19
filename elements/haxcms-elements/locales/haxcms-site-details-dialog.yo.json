@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- lo ojú-ìwé àkọ́kọ́ --",
+  "details": "Àlàyé",
+  "title": "Àkọlé",
+  "titleDescription": "Orúkọ ojú òpó",
+  "homePage": "Ojú-ìwé ilé",
+  "homePageDescription": "Ojú-ìwé láti lò bí ojú-ìwé ìbalẹ̀ / ilé àkọ́kọ́",
+  "advanced": "Onípele gíga",
+  "serviceWorker": "Fi service worker kún ojú-ìwé alágbèéká",
+  "serviceWorkerDescription": "Pa èyí tí ó bá yẹ kí àwọn olùlò máa rí ìjáde sáfà tuntun jùlọ lẹ́sẹ̀kẹsẹ̀.",
+  "forceBrowserUpgrade": "Fi ipá mú ìmúdójúìwọ̀n aṣàwárí",
+  "forceBrowserUpgradeDescription": "Béèrè fún àwọn aṣàwárí tó ń ṣe ìmúdójúìwọ̀n ara wọn kí a tó gbé ìrírí ojú òpó wọlé.",
+  "unableToLoadSiteDetails": "Kò ṣeé ṣe láti gbé àwọn àlàyé ojú òpó wọlé.",
+  "noSiteDetails": "Kò sí àlàyé ojú òpó kankan.",
+  "save": "Fi pamọ́"
+}

@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Načtení motivů se nezdařilo: {error}",
+  "noThemesForView": "Pro toto zobrazení nejsou k dispozici žádné motivy.",
+  "active": "Aktivní",
+  "themeIsActive": "Motiv {name} je aktivní",
+  "applyTheme": "Použít motiv {name}",
+  "apply": "Použít",
+  "preview": "Náhled",
+  "name": "Jméno",
+  "element": "Prvek",
+  "description": "Popis",
+  "action": "Akce",
+  "loadingThemes": "Načítání motivů...",
+  "themesShown": "Zobrazené motivy: {count}",
+  "themesShownDefaults": "Zobrazené motivy: {count} (výchozí app-hax)",
+  "availableHaxcmsThemes": "Dostupné motivy HAXcms",
+  "gallery": "Galerie",
+  "table": "Tabulka"
+}

@@ -1,3 +1,8 @@
 {
-  "title": "Referencer"
+  "title": "Referencer",
+  "export": "Eksportér",
+  "exportCitations": "Eksportér kildehenvisninger",
+  "copy": "Kopiér",
+  "exportCitationFormat": "Format for eksport af kildehenvisninger",
+  "selectCitationFormatBelow": "Vælg et kildehenvisningsformat nedenfor"
 }

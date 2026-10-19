@@ -1,4 +1,11 @@
 {
   "readMore": "Đọc thêm",
-  "home": "Trang chủ"
+  "home": "Trang chủ",
+  "anchorLinkCopied": "Đã sao chép liên kết neo!",
+  "skipToContent": "Chuyển đến nội dung",
+  "changeTheme": "Đổi giao diện",
+  "siteSections": "Các mục của trang web",
+  "pageOfTotal": "Trang {current} / {total}",
+  "siteGenerated": "Trang web được tạo: {date}",
+  "licenseGraphic": "Hình {license}"
 }

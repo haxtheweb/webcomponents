@@ -1,0 +1,9 @@
+{
+  "palette": "Palette",
+  "paletteSelection": "Palette selection",
+  "active": "Active",
+  "selected": "Selected",
+  "currentlyActiveAndSelectedPalette": "Currently active and selected palette",
+  "currentlyActivePalette": "Currently active palette",
+  "selectedPaletteToApply": "Selected palette to apply"
+}

@@ -1,4 +1,11 @@
 {
   "readMore": "વધુ વાંચો",
-  "home": "હોમ"
+  "home": "હોમ",
+  "anchorLinkCopied": "એન્કર લિંક કૉપિ થઈ!",
+  "skipToContent": "સામગ્રી પર જાઓ",
+  "changeTheme": "થીમ બદલો",
+  "siteSections": "સાઇટ વિભાગો",
+  "pageOfTotal": "પેજ {total} માંથી {current}",
+  "siteGenerated": "સાઇટ જનરેટ કરી: {date}",
+  "licenseGraphic": "{license} ગ્રાફિક"
 }

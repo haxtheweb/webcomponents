@@ -7,5 +7,7 @@
   "userAccessGranted": "A felhasználói hozzáférés sikeresen megadva!",
   "userNotFound": "A felhasználó nem található vagy nincs jogosultsága",
   "loadingAddingUser": "Felhasználó hozzáadása...",
-  "grantAccessTo": "Hozzáférés megadása neki:"
+  "grantAccessTo": "Hozzáférés megadása neki:",
+  "networkErrorTryAgain": "Hálózati hiba történt. Próbáld újra.",
+  "characterWillAppear": "A karakter megjelenik, amikor megadsz egy felhasználónevet"
 }

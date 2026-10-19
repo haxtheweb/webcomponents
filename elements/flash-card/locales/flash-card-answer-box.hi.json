@@ -1,5 +1,8 @@
 {
   "yourAnswer": "आपका उत्तर",
   "checkAnswer": "उत्तर जाँचें",
-  "retry": "पुनः प्रयास करें"
+  "retry": "पुनः प्रयास करें",
+  "correct": "सही!",
+  "incorrect": "गलत!",
+  "correctAnswer": "सही उत्तर: {answer}"
 }

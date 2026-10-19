@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Günlüğü txt olarak indir",
+  "downloadChatLog": "Sohbet Günlüğünü İndir",
+  "resetChat": "Sohbeti Sıfırla",
+  "toggleDataCollection": "Veri Toplamayı Aç/Kapat",
+  "dataCollection": "Veri Toplama",
+  "toggleDeveloperMode": "Geliştirici Modunu Aç/Kapat",
+  "exitFullView": "Tam Görünümden Çık",
+  "enterFullView": "Tam Görünüme Geç",
+  "hideInterface": "Arayüzü Gizle",
+  "resetChatConfirm": "Sohbet sıfırlansın mı?",
+  "downloadBeforeResetConfirm": "Sıfırlamadan önce sohbet günlüğü indirilsin mi?",
+  "dataCollectionOn": "Konuşmalarınız AI modellerimizi eğitmek için kullanılacak",
+  "dataCollectionOff": "Konuşmalarınız AI modellerimizi eğitmek için kullanılmayacak"
+}

@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- ຄ່າເລີ່ມຕົ້ນເປັນໜ້າທຳອິດ --",
+  "details": "ລາຍລະອຽດ",
+  "title": "ຫົວຂໍ້",
+  "titleDescription": "ຊື່ຂອງເວັບໄຊ",
+  "homePage": "ໜ້າຫຼັກ",
+  "homePageDescription": "ໜ້າທີ່ໃຊ້ເປັນໜ້າເລີ່ມຕົ້ນ / ໜ້າຫຼັກ",
+  "advanced": "ຂັ້ນສູງ",
+  "serviceWorker": "ເພີ່ມ service worker ໃຫ້ໜ້າແບບໄດນາມິກ",
+  "serviceWorkerDescription": "ປິດອັນນີ້ ຖ້າຜູ້ໃຊ້ຄວນເຫັນຜົນລັບລ່າສຸດຈາກເຊີບເວີທັນທີສະເໝີ.",
+  "forceBrowserUpgrade": "ບັງຄັບອັບເກຣດບຣາວເຊີ",
+  "forceBrowserUpgradeDescription": "ຕ້ອງໃຊ້ບຣາວເຊີທີ່ອັບເດດຢູ່ສະເໝີກ່ອນໂຫຼດເວັບໄຊ.",
+  "unableToLoadSiteDetails": "ບໍ່ສາມາດໂຫຼດລາຍລະອຽດເວັບໄຊໄດ້.",
+  "noSiteDetails": "ບໍ່ມີລາຍລະອຽດເວັບໄຊ.",
+  "save": "ບັນທຶກ"
+}

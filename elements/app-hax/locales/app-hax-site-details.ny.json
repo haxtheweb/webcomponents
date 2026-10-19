@@ -1,0 +1,18 @@
+{
+  "copy": "Koperani",
+  "download": "Tsitsani",
+  "archive": "Sungani m'nkhokwe",
+  "copyOperation": "kopera",
+  "downloadOperation": "tsitsa",
+  "archiveOperation": "sunga m'nkhokwe",
+  "created": "yapangidwa",
+  "updated": "yasinthidwa",
+  "pages": "masamba",
+  "url": "URL",
+  "confirm": "Tsimikizani",
+  "cancel": "Letsani",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Mukutsimikiza kuti mukufuna {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName} {operation} kwatheka!",
+  "siteOperationFailed": "{siteName} {operation} kwalephera"
+}

@@ -1,0 +1,14 @@
+{
+  "licenseBy": "انتساب",
+  "licenseBySa": "انتساب - یکساں شراکت",
+  "licenseByNd": "انتساب - کوئی ماخوذ کام نہیں",
+  "licenseByNc": "انتساب - غیر تجارتی",
+  "licenseByNcSa": "انتساب - غیر تجارتی - یکساں شراکت",
+  "licenseByNcNd": "انتساب - غیر تجارتی - کوئی ماخوذ کام نہیں",
+  "licenseGraphic": "{license} گرافک",
+  "workByCreator": "{title} از {creator}",
+  "workByCreatorLicensed": "{title} از {creator}، {license} کے تحت لائسنس یافتہ ہے۔",
+  "permissionsBeyondScope": "اس لائسنس کے دائرے سے باہر اجازتیں {link} دستیاب ہیں۔",
+  "author": "(مصنف)",
+  "onTheLicensingDetailsPage": "لائسنس کی تفصیلات کے صفحے پر"
+}

@@ -10,5 +10,9 @@
   "save": "Сақтау",
   "noDescription": "Сипаттама жоқ.",
   "details": "Толығырақ",
-  "loadingInventory": "Блоктардың толық тізімі жүктелуде…"
+  "loadingInventory": "Блоктардың толық тізімі жүктелуде…",
+  "selectAllButton": "Барлығын таңдау",
+  "deselectAllButton": "Барлық таңдауды алу",
+  "selectedOfAvailable": "{selected} таңдалды / {total} қолжетімді",
+  "savingBlocksFailed": "Блоктарды сақтау сәтсіз аяқталды: {error}"
 }

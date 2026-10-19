@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "لاگ txt طور ڊائونلوڊ ڪريو",
+  "downloadChatLog": "چيٽ لاگ ڊائونلوڊ ڪريو",
+  "resetChat": "چيٽ ري سيٽ ڪريو",
+  "toggleDataCollection": "ڊيٽا گڏ ڪرڻ ٽوگل ڪريو",
+  "dataCollection": "ڊيٽا گڏ ڪرڻ",
+  "toggleDeveloperMode": "ڊولپر موڊ ٽوگل ڪريو",
+  "exitFullView": "مڪمل ڏيک مان نڪرو",
+  "enterFullView": "مڪمل ڏيک ۾ وڃو",
+  "hideInterface": "انٽرفيس لڪايو",
+  "resetChatConfirm": "چيٽ ري سيٽ ڪريو؟",
+  "downloadBeforeResetConfirm": "ري سيٽ ڪرڻ کان اڳ چيٽ لاگ ڊائونلوڊ ڪريو؟",
+  "dataCollectionOn": "توهان جون ڳالهيون اسان جي AI ماڊلن کي تربيت ڏيڻ لاءِ استعمال ٿينديون",
+  "dataCollectionOff": "توهان جون ڳالهيون اسان جي AI ماڊلن کي تربيت ڏيڻ لاءِ استعمال نه ٿينديون"
+}

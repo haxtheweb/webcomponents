@@ -22,6 +22,13 @@
   "unpublish": "Çap edilişini ýatyrmak",
   "savePage": "Sahypany ýatda saklamak",
   "cancel": "Ýatyrmak",
+  "delete": "Pozmak",
+  "editTitle": "Ady redaktirlemek",
+  "editIcon": "Nyşany redaktirle",
+  "agent": "Agent",
+  "pageLockedUnlockToEdit": "Bu sahypa gulplanan. Redaktirlemek üçin ilki ony açyň.",
+  "pageLockedUnlockToChangePublishStatus": "Bu sahypa gulplanan. Neşir ýagdaýyny üýtgetmek üçin ilki ony açyň.",
+  "pageLockedUnlockToDelete": "Bu sahypa gulplanan. Pozmak üçin ilki ony açyň.",
   "pageDetails": "Sahypanyň jikme-jiklikleri",
   "clickToUnlock": "Açmak üçin basyň"
 }

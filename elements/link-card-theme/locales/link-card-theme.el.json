@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ο σύνδεσμος αγκύρωσης αντιγράφηκε!",
+  "skipToContent": "Μετάβαση στο περιεχόμενο",
+  "changePalette": "Αλλαγή παλέτας",
+  "primaryLinks": "Κύριοι σύνδεσμοι",
+  "socialLinks": "Σύνδεσμοι κοινωνικών δικτύων",
+  "myProfile": "Το προφίλ μου",
+  "profileImageOf": "Εικόνα προφίλ του/της {name}",
+  "profileImage": "Εικόνα προφίλ",
+  "linkCardProfile": "Προφίλ κάρτας συνδέσμων",
+  "emptyStateLinks": "Προσθέστε στοιχεία μενού ανώτατου επιπέδου στο site.json για να εμφανιστούν κουμπιά συνδέσμων.",
+  "titleOnPlatform": "{title} στο {platform}",
+  "openPlatform": "Άνοιγμα {platform}",
+  "paletteUpdated": "Η χρωματική παλέτα ενημερώθηκε στην επιλογή {number}."
+}

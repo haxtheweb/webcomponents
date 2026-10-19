@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "مزید HAX عناصر کے لیے ویب کمپوننٹ رجسٹری اسکین ہو رہی ہے..",
+  "enabled": "فعال",
+  "disabled": "غیر فعال",
+  "details": "تفصیلات",
+  "tags": "ٹیگز:",
+  "tagName": "ٹیگ کا نام:",
+  "developerUsage": "ڈویلپر کے لیے استعمال:",
+  "demo": "ڈیمو",
+  "popUpDemo": "پاپ اپ ڈیمو",
+  "demoOf": "{tag} کا ڈیمو"
+}

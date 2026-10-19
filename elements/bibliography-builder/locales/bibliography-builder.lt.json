@@ -1,3 +1,8 @@
 {
-  "title": "Literatūra"
+  "title": "Literatūra",
+  "export": "Eksportuoti",
+  "exportCitations": "Eksportuoti citatas",
+  "copy": "Kopijuoti",
+  "exportCitationFormat": "Citatų eksportavimo formatas",
+  "selectCitationFormatBelow": "Žemiau pasirinkite citavimo formatą"
 }

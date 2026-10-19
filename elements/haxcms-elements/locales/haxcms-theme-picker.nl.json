@@ -1,0 +1,11 @@
+{
+  "theme": "Thema",
+  "active": "Actief",
+  "selected": "Geselecteerd",
+  "noPreview": "Geen voorbeeld",
+  "currentlyActiveAndSelected": "Momenteel actief en geselecteerd thema",
+  "currentlyActive": "Momenteel actief thema",
+  "selectedToApplyOnSave": "Geselecteerd thema om bij opslaan toe te passen",
+  "themeSelection": "Themaselectie",
+  "noThemesAvailable": "Geen thema's beschikbaar."
+}

@@ -36,5 +36,7 @@
   "clickToDoAnything": "Барои анҷоми ҳар чиз клик кунед!",
   "moreDetails": "Тафсилоти бештар",
   "details": "Тафсилот",
-  "saved": "Захира шуд"
+  "saved": "Захира шуд",
+  "opensInNewWindow": "Дар равзанаи нав кушода мешавад",
+  "resultsCount": "{count} натиҷа"
 }

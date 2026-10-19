@@ -1,0 +1,18 @@
+{
+  "copy": "Koobiyee",
+  "download": "Soo deji",
+  "archive": "Kaydi",
+  "copyOperation": "koobi",
+  "downloadOperation": "soo deji",
+  "archiveOperation": "kaydi",
+  "created": "la abuuray",
+  "updated": "la cusboonaysiiyay",
+  "pages": "bogag",
+  "url": "URL",
+  "confirm": "Xaqiiji",
+  "cancel": "Jooji",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Ma hubtaa inaad {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName} {operation} waa lagu guulaystay!",
+  "siteOperationFailed": "{siteName} {operation} way fashilantay"
+}

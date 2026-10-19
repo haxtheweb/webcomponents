@@ -1,0 +1,11 @@
+{
+  "roleTitle": "பதவித் தலைப்பு",
+  "describeYourRole": "உங்கள் பதவியை இங்கே விவரிக்கவும்...",
+  "present": "வழங்கு",
+  "skills": "திறன்கள்:",
+  "skillsAndMore": "{skills} மற்றும் +{count} மேலும்",
+  "yearShort": "{count} ஆண்டு",
+  "yearsShort": "{count} ஆண்டுகள்",
+  "monthShort": "{count} மாதம்",
+  "monthsShort": "{count} மாதங்கள்"
+}

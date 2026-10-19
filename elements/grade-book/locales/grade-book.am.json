@@ -43,5 +43,22 @@
   "emailAddress": "ለዚህ ተማሪ ኢሜይል ላክ",
   "notes": "ማስታወሻዎች",
   "interests": "ፍላጎቶች",
-  "profileImageFor": "የመገለጫ ምስል፦"
+  "profileImageFor": "የመገለጫ ምስል፦",
+  "fileSystem": "የፋይል ሥርዓት",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "የURL የመጨረሻ ነጥብ (JSON)",
+  "jsonDataBlob": "የJSON ውሂብ ስብስብ",
+  "additionalCriteriaFeedback": "ተጨማሪ የ{criteria} ግብረመልስ",
+  "outOfPoints": "/ {points} ነጥቦች",
+  "feedbackReport": "የግብረመልስ ሪፖርት",
+  "criteriaDetails": "የመስፈርት ዝርዝሮች",
+  "yourFeedback": "የእርስዎ ግብረመልስ",
+  "additionalCriteriaFeedbackHeading": "ተጨማሪ የመስፈርት ግብረመልስ",
+  "yourTotalScore": "የእርስዎ ጠቅላላ ውጤት",
+  "scoreOutOfPoints": "{score} / {points} ነጥቦች",
+  "studentAssignment": "የ{student} ምድብ ሥራ {assignment}",
+  "downloadPDF": "PDF አውርድ",
+  "displayMode1": "ሁነታ 1",
+  "displayMode2": "ሁነታ 2",
+  "twoWindows": "ሁለት መስኮቶች"
 }

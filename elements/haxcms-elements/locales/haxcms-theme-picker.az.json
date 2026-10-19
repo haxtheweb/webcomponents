@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Aktiv",
+  "selected": "Seçilib",
+  "noPreview": "Önizləmə yoxdur",
+  "currentlyActiveAndSelected": "Hazırda aktiv və seçilmiş mövzu",
+  "currentlyActive": "Hazırda aktiv mövzu",
+  "selectedToApplyOnSave": "Yadda saxladıqda tətbiq ediləcək seçilmiş mövzu",
+  "themeSelection": "Mövzu seçimi",
+  "noThemesAvailable": "Mövcud mövzu yoxdur."
+}

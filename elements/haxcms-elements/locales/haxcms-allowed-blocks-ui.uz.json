@@ -10,5 +10,9 @@
   "save": "Saqlash",
   "noDescription": "Tavsif mavjud emas.",
   "details": "Tafsilotlar",
-  "loadingInventory": "Bloklarning to‘liq ro‘yxati yuklanmoqda…"
+  "loadingInventory": "Bloklarning to‘liq ro‘yxati yuklanmoqda…",
+  "selectAllButton": "Hammasini tanlash",
+  "deselectAllButton": "Tanlovni bekor qilish",
+  "selectedOfAvailable": "{selected} ta tanlangan / {total} ta mavjud",
+  "savingBlocksFailed": "Bloklarni saqlab boʻlmadi: {error}"
 }

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Magac-u-sheeg",
+  "licenseBySa": "Magac-u-sheeg La-wadaag si la mid ah",
+  "licenseByNd": "Magac-u-sheeg Wax-ka-dhalasho ma leh",
+  "licenseByNc": "Magac-u-sheeg Aan ganacsi ahayn",
+  "licenseByNcSa": "Magac-u-sheeg Aan ganacsi ahayn La-wadaag si la mid ah",
+  "licenseByNcNd": "Magac-u-sheeg Aan ganacsi ahayn Wax-ka-dhalasho ma leh",
+  "citationWithLicense": "{title} waxaa sameeyay {creator}, waxaana lagu shatiyay {license}. La galay {date}.",
+  "citationWithoutLicense": "{title} waxaa sameeyay {creator}. La galay {date}.",
+  "licenseGraphic": "Sawirka {license}"
+}

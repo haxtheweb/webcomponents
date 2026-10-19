@@ -1,0 +1,18 @@
+{
+  "copy": "Kopiraj",
+  "download": "Preuzmi",
+  "archive": "Arhiviraj",
+  "copyOperation": "kopirati",
+  "downloadOperation": "preuzeti",
+  "archiveOperation": "arhivirati",
+  "created": "stvoreno",
+  "updated": "ažurirano",
+  "pages": "stranice",
+  "url": "URL",
+  "confirm": "Potvrdi",
+  "cancel": "Odustani",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Jeste li sigurni da želite {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} uspješno!",
+  "siteOperationFailed": "{siteName}: {operation} nije uspjelo"
+}

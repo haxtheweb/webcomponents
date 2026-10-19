@@ -9,5 +9,8 @@
   "record": "Rekhoda",
   "pause": "Nqumamisa ukurekhoda",
   "stopSave": "Yima kwaye ugcine",
-  "clickToTakePhoto": "Cofa ukuze uthathe ifoto"
+  "clickToTakePhoto": "Cofa ukuze uthathe ifoto",
+  "url": "URL",
+  "open": "vula",
+  "removeValue": "Susa {value}"
 }

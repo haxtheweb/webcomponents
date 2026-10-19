@@ -43,5 +43,22 @@
   "emailAddress": "给此学生发电子邮件",
   "notes": "备注",
   "interests": "兴趣",
-  "profileImageFor": "头像："
+  "profileImageFor": "头像：",
+  "fileSystem": "文件系统",
+  "googleDocs": "Google 文档",
+  "urlEndpointJSON": "URL 端点（JSON）",
+  "jsonDataBlob": "JSON 数据块",
+  "additionalCriteriaFeedback": "其他{criteria}反馈",
+  "outOfPoints": "/ {points} 分",
+  "feedbackReport": "反馈报告",
+  "criteriaDetails": "评分标准详情",
+  "yourFeedback": "你的反馈",
+  "additionalCriteriaFeedbackHeading": "其他评分标准反馈",
+  "yourTotalScore": "你的总分",
+  "scoreOutOfPoints": "{score} / {points} 分",
+  "studentAssignment": "{student} 的作业 {assignment}",
+  "downloadPDF": "下载 PDF",
+  "displayMode1": "模式 1",
+  "displayMode2": "模式 2",
+  "twoWindows": "双窗口"
 }

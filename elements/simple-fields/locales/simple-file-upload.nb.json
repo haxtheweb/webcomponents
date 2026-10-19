@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Slipp filer her",
+  "uploadQueue": "Opplastingskø",
+  "pending": "Venter",
+  "preparing": "Forbereder",
+  "uploading": "Laster opp",
+  "complete": "Fullført",
+  "aborted": "Avbrutt",
+  "cancelled": "Avbrutt",
+  "error": "Feil",
+  "errorWithStatus": "Feil: {status}",
+  "cancel": "Avbryt",
+  "cancelUploadOf": "Avbryt opplasting av {name}",
+  "retry": "Prøv igjen",
+  "retryUploadOf": "Prøv opplasting av {name} på nytt",
+  "remove": "Fjern",
+  "removeFromQueue": "Fjern {name} fra køen",
+  "fileTypeNotAccepted": "Filtypen godtas ikke: {name}",
+  "uploadFailed": "Opplasting mislyktes: {status}",
+  "networkError": "Nettverksfeil"
+}

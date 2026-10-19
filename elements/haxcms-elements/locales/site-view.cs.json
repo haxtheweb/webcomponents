@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Žádné výsledky",
+  "viewsRecordHeading": "Nahrát",
+  "viewsTitleImage": "Obrázek {title}",
+  "viewsTitlePreview": "Náhled {title}",
+  "viewsNoTimelineRecords": "Pro vykreslení časové osy nejsou k dispozici žádné záznamy s daty.",
+  "viewsTimelineTitle": "Časová osa {title}",
+  "viewsNoChartField": "Pro vykreslení grafu nebylo zjištěno žádné číselné pole.",
+  "viewsChartingValue": "Graf hodnoty {value}",
+  "viewsChartingValueByLabel": "Graf hodnoty {value} podle {label}",
+  "viewsChartTitle": "Graf {title}",
+  "viewsNoTreeRecords": "Pro vykreslení stromu nejsou k dispozici žádné hierarchické záznamy.",
+  "viewsNoGalleryRecords": "Pro vykreslení galerie nejsou k dispozici žádné záznamy obrázků.",
+  "viewsNoPlaylistRecords": "Pro vykreslení seznamu skladeb nejsou k dispozici žádné záznamy médií.",
+  "fetchFailed": "Načtení se nezdařilo ({status})",
+  "unableToLoadViewData": "Data zobrazení nelze načíst.",
+  "noResultsFound": "Nebyly nalezeny žádné výsledky.",
+  "refreshView": "Obnovit zobrazení",
+  "breakIntoStaticContent": "Rozdělit na statický obsah",
+  "viewsOpenRecord": "Otevřít záznam"
+}

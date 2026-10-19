@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tabela v konzoli: uporabnikov dnevnik klepeta",
+  "consoleTableUserText": "console.table() uporabnikov dnevnik klepeta",
+  "consoleTableUserTooltip": "Izpiši uporabnikov dnevnik klepeta kot tabelo v konzolo",
+  "consoleTableMerlinLabel": "Tabela v konzoli: Merlinov dnevnik klepeta",
+  "consoleTableMerlinText": "console.table() Merlinov dnevnik klepeta",
+  "consoleTableMerlinTooltip": "Izpiši Merlinov dnevnik klepeta kot tabelo v konzolo",
+  "consoleTableAllLabel": "Tabela v konzoli: celoten dnevnik klepeta",
+  "consoleTableAllText": "console.table() celoten dnevnik klepeta",
+  "consoleTableAllTooltip": "Izpiši celoten dnevnik klepeta kot tabelo v konzolo",
+  "downloadChatLogJson": "Prenesi dnevnik klepeta kot .json",
+  "downloadChatLogJsonTooltip": "Prenesi dnevnik klepeta kot .json"
+}

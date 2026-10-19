@@ -220,6 +220,69 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         "Disabling these options can remove major authoring and administration capabilities.",
       largeSiteWarning:
         "This site has many pages. Skeleton generation may take a while.",
+      novice: "Novice",
+      expert: "Expert",
+      toolbarPreviewAlt: "{audience} editing toolbar preview",
+      skeletonExportFailed: "Skeleton export failed: {error}",
+      savingPlatformSettingsFailed: "Saving platform settings failed: {error}",
+      // FEATURE_DEFS labels / descriptions, looked up by `${key}FeatureLabel`
+      // and `${key}FeatureDescription` in _featureText
+      addPageFeatureLabel: "Add pages",
+      addPageFeatureDescription:
+        "Allows creating new pages from the top bar, outline actions, and command search actions.",
+      deletePageFeatureLabel: "Delete pages",
+      deletePageFeatureDescription:
+        "Allows deleting pages from page actions, outline actions, and related admin flows.",
+      outlineDesignerFeatureLabel: "Outline designer",
+      outlineDesignerFeatureDescription:
+        "Enables site structure tools, including outline actions and Structure admin operations.",
+      styleGuideFeatureLabel: "Style guide",
+      styleGuideFeatureDescription:
+        "Shows Style Guide access in admin tools and command search shortcuts.",
+      insightsFeatureLabel: "Reports",
+      insightsFeatureDescription:
+        "Enables Reports in admin and command search so analytics and insights views are available.",
+      siteManifestFeatureLabel: "Site settings",
+      siteManifestFeatureDescription:
+        "Controls Site Settings sections for Details, Blocks, and Editor configuration.",
+      themeManifestFeatureLabel: "Theme settings",
+      themeManifestFeatureDescription:
+        "Enables the Appearance/Theme settings section in site administration.",
+      authorManifestFeatureLabel: "Author settings",
+      authorManifestFeatureDescription:
+        "Enables author profile and author metadata settings in site administration.",
+      seoManifestFeatureLabel: "SEO settings",
+      seoManifestFeatureDescription:
+        "Enables search engine and metadata optimization settings in site administration.",
+      pageBreakFeatureLabel: "Edit page details",
+      pageBreakFeatureDescription:
+        "Shows page-level metadata editing controls like title, icon, status, tags, and locking.",
+      addBlockFeatureLabel: "Add blocks",
+      addBlockFeatureDescription:
+        "Shows the blocks browser and allows adding new content blocks while editing.",
+      popularGizmosFeatureLabel: "Popular blocks section",
+      popularGizmosFeatureDescription:
+        "Shows the Popular blocks section inside the block picker.",
+      recentGizmosFeatureLabel: "Recent blocks section",
+      recentGizmosFeatureDescription:
+        "Shows the Recent blocks section inside the block picker.",
+      contentMapFeatureLabel: "Page content map",
+      contentMapFeatureDescription:
+        "Shows the page content map/structure panel while editing content.",
+      viewSourceFeatureLabel: "View source",
+      viewSourceFeatureDescription:
+        "Enables HTML source view for direct page markup editing.",
+      uploadMediaFeatureLabel: "Upload media",
+      uploadMediaFeatureDescription:
+        "Enables file upload workflows and related media/file management access.",
+      onlineMediaFeatureLabel: "Online media search",
+      onlineMediaFeatureDescription:
+        "Enables online media integrations and remote media search sources.",
+      communityFeatureLabel: "Community outreach",
+      communityFeatureDescription:
+        "Enables community-related command search context and outreach-oriented actions.",
+      skeletonLargeSiteConfirm:
+        "This site has {count} pages. Generating a skeleton may take a while and create a large file. Continue?",
     };
 
     this.registerLocalization({
@@ -878,7 +941,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                                 value="${opt.value}"
                                 ?selected=${this.audience === opt.value}
                               >
-                                ${opt.label}
+                                ${this.t[opt.value] || opt.label}
                               </option>`,
                           )}
                         </select>
@@ -886,7 +949,10 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                       <img
                         class="toolbar-img"
                         src=${toolbarImgPath}
-                        alt="${this.audience} editing toolbar preview"
+                        alt="${this.t.toolbarPreviewAlt.replace(
+                          "{audience}",
+                          () => this.audience,
+                        )}"
                       />
                     </div>
                     ${this.pageCount > 20
@@ -982,6 +1048,15 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     `;
   }
 
+  /**
+   * translated label / description for a FEATURE_DEFS item (module scope
+   * defs keep the English as the fallback)
+   */
+  _featureText(item, field) {
+    const suffix = field === "description" ? "Description" : "Label";
+    return this.t[`${item.key}Feature${suffix}`] || item[field];
+  }
+
   _renderFeatureRow(item) {
     const checked = this._isFeatureChecked(item.key);
     const inputId = `platform-feature-${item.group.toLowerCase()}-${item.key}`;
@@ -1000,9 +1075,11 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         <td>
           <label class="feature-title" for="${inputId}">
             <simple-icon-lite icon=${item.icon}></simple-icon-lite>
-            <span>${item.label}</span>
+            <span>${this._featureText(item, "label")}</span>
           </label>
-          <p class="feature-description">${item.description}</p>
+          <p class="feature-description">
+            ${this._featureText(item, "description")}
+          </p>
         </td>
       </tr>
     `;
@@ -1039,7 +1116,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
             @click="${this._stopCardToggle}"
           >
             <simple-icon-lite icon=${item.icon}></simple-icon-lite>
-            <span>${item.label}</span>
+            <span>${this._featureText(item, "label")}</span>
           </label>
         </div>
         <details
@@ -1048,7 +1125,9 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           @click="${this._stopCardToggle}"
         >
           <summary data-stop-toggle="true">${this.t.details}</summary>
-          <p class="feature-description">${item.description}</p>
+          <p class="feature-description">
+            ${this._featureText(item, "description")}
+          </p>
         </details>
       </div>
     `;
@@ -1228,7 +1307,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       );
 
       const skeleton =
-        await SiteSkeletonGenerator.generateFromCurrentSite(true);
+        await SiteSkeletonGenerator.generateFromCurrentSite(true, this.t);
 
       const platformConfig = this._platformConfigForExport();
       if (!skeleton.site) {
@@ -1252,7 +1331,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     } catch (error) {
       console.error("Skeleton export failed:", error);
       HAXStore.toast(
-        `Skeleton export failed: ${error.message}`,
+        this.t.skeletonExportFailed.replace("{error}", () => error.message),
         5000,
         {},
         "fit-bottom",
@@ -1289,7 +1368,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     } catch (error) {
       console.error("Saving platform settings failed:", error);
       HAXStore.toast(
-        `Saving platform settings failed: ${error.message}`,
+        this.t.savingPlatformSettingsFailed.replace("{error}", () => error.message),
         5000,
         {},
         "fit-bottom",

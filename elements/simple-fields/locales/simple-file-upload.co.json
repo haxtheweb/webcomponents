@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Lasciate i schedarii quì",
+  "uploadQueue": "Fila di caricamentu",
+  "pending": "In attesa",
+  "preparing": "Preparazione",
+  "uploading": "Caricamentu",
+  "complete": "Cumpiutu",
+  "aborted": "Interrottu",
+  "cancelled": "Annullatu",
+  "error": "Sbagliu",
+  "errorWithStatus": "Errore: {status}",
+  "cancel": "Abbandunà",
+  "cancelUploadOf": "Annullà u caricamentu di {name}",
+  "retry": "Torna à pruvà",
+  "retryUploadOf": "Riprovà u caricamentu di {name}",
+  "remove": "Caccià",
+  "removeFromQueue": "Caccià {name} da a fila",
+  "fileTypeNotAccepted": "Tipu di schedariu micca accettatu: {name}",
+  "uploadFailed": "Caricamentu fallitu: {status}",
+  "networkError": "Errore di reta"
+}

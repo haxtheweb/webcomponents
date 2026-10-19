@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Aitortu",
+  "licenseBySa": "Aitortu-PartekatuBerdin",
+  "licenseByNd": "Aitortu-LanEratorririkGabe",
+  "licenseByNc": "Aitortu-EzKomertziala",
+  "licenseByNcSa": "Aitortu-EzKomertziala-PartekatuBerdin",
+  "licenseByNcNd": "Aitortu-EzKomertziala-LanEratorririkGabe",
+  "citationWithLicense": "{title}, egilea: {creator}, {license} lizentziapean. Kontsultatua: {date}.",
+  "citationWithoutLicense": "{title}, egilea: {creator}. Kontsultatua: {date}.",
+  "licenseGraphic": "{license} grafikoa"
+}

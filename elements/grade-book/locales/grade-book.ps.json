@@ -43,5 +43,22 @@
   "emailAddress": "دې زده کوونکي ته برېښنالیک ولېږئ",
   "notes": "یادښتونه",
   "interests": "علاقې",
-  "profileImageFor": "د پروفایل انځور:"
+  "profileImageFor": "د پروفایل انځور:",
+  "fileSystem": "د فایل سیسټم",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "د URL پای ټکی (JSON)",
+  "jsonDataBlob": "د JSON معلوماتو بلاب",
+  "additionalCriteriaFeedback": "د {criteria} اضافي غبرګون",
+  "outOfPoints": "/ {points} نمرې",
+  "feedbackReport": "د غبرګون راپور",
+  "criteriaDetails": "د معیارونو جزیات",
+  "yourFeedback": "ستاسو غبرګون",
+  "additionalCriteriaFeedbackHeading": "د معیارونو اضافي غبرګون",
+  "yourTotalScore": "ستاسو ټوله نمره",
+  "scoreOutOfPoints": "{score} / {points} نمرې",
+  "studentAssignment": "د {student} دنده {assignment}",
+  "downloadPDF": "PDF ښکته کړئ",
+  "displayMode1": "حالت 1",
+  "displayMode2": "حالت 2",
+  "twoWindows": "دوه کړکۍ"
 }

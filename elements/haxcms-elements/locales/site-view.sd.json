@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "ڪو نتيجو ناهي",
+  "viewsRecordHeading": "رڪارڊ ڪريو",
+  "viewsTitleImage": "{title} تصوير",
+  "viewsTitlePreview": "{title} جو پيش منظر",
+  "viewsNoTimelineRecords": "ٽائيم لائن ڏيکارڻ لاءِ تاريخ وارا ڪي رڪارڊ موجود ناهن.",
+  "viewsTimelineTitle": "{title} ٽائيم لائن",
+  "viewsNoChartField": "چارٽ ڏيکارڻ لاءِ ڪو عددي فيلڊ نه مليو.",
+  "viewsChartingValue": "{value} جو چارٽ",
+  "viewsChartingValueByLabel": "{label} مطابق {value} جو چارٽ",
+  "viewsChartTitle": "{title} چارٽ",
+  "viewsNoTreeRecords": "وڻ ڏيکارڻ لاءِ درجيوار ڪي رڪارڊ موجود ناهن.",
+  "viewsNoGalleryRecords": "گيلري ڏيکارڻ لاءِ تصويرن جا ڪي رڪارڊ موجود ناهن.",
+  "viewsNoPlaylistRecords": "پلي لسٽ ڏيکارڻ لاءِ ميڊيا جا ڪي رڪارڊ موجود ناهن.",
+  "fetchFailed": "آڻڻ ناڪام ({status})",
+  "unableToLoadViewData": "ڏيک جي ڊيٽا لوڊ نه ٿي سگهي.",
+  "noResultsFound": "ڪو نتيجو نه مليو.",
+  "refreshView": "ڏيک ريفريش ڪريو",
+  "breakIntoStaticContent": "جامد مواد ۾ ٽوڙيو",
+  "viewsOpenRecord": "رڪارڊ کوليو"
+}
