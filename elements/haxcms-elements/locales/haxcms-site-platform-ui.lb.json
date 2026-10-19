@@ -1,0 +1,18 @@
+{
+  "title": "Plattformfunktiounen",
+  "experienceLevel": "Erfarungsniveau",
+  "cmsFeatures": "CMS-Funktiounen",
+  "editorFeatures": "Editor-Funktiounen",
+  "blocks": "Blocken",
+  "filterBlocks": "Blocken filteren",
+  "requiredTextNote": "Verschidden Text-Tags sinn erfuerderlech an ëmmer aktivéiert (deaktivéiert ugewisen).",
+  "download": "Skelett eroflueden",
+  "save": "Späicheren",
+  "generating": "Skelett gëtt generéiert…",
+  "generated": "Skelett erofgelueden",
+  "enabled": "Aktivéiert",
+  "feature": "Funktioun",
+  "details": "Detailer",
+  "featuresWarning": "Wann Dir dës Optiounen desaktivéiert, kënne wichteg Autoren- an Administratiounsfunktioune verschwannen.",
+  "largeSiteWarning": "Dëse Site huet vill Säiten. D'Generéiere vum Skelett kann eng Zäit daueren."
+}

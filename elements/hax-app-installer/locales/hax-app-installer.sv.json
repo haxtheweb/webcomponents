@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub-arkiv",
   "anErrorOccurred": "Ett fel uppstod",
-  "retry": "Försök igen"
+  "retry": "Försök igen",
+  "permissionRequired": "Behörighet krävs",
+  "passwordRequirements": "Lösenordskrav",
+  "requirementLength": "Minst 8 tecken",
+  "requirementUppercase": "En versal",
+  "requirementLowercase": "En gemen",
+  "requirementNumber": "En siffra",
+  "requirementSymbol": "En symbol"
 }

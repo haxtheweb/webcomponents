@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub களஞ்சியம்",
   "anErrorOccurred": "பிழை ஏற்பட்டது",
-  "retry": "மீண்டும் முயற்சிக்கவும்"
+  "retry": "மீண்டும் முயற்சிக்கவும்",
+  "permissionRequired": "அனுமதி தேவை",
+  "passwordRequirements": "கடவுச்சொல் தேவைகள்",
+  "requirementLength": "குறைந்தது 8 எழுத்துகள்",
+  "requirementUppercase": "ஒரு பெரிய எழுத்து",
+  "requirementLowercase": "ஒரு சிறிய எழுத்து",
+  "requirementNumber": "ஒரு எண்",
+  "requirementSymbol": "ஒரு குறியீடு"
 }

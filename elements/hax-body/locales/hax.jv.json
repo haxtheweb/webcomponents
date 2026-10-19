@@ -122,5 +122,21 @@
   "recent": "Anyar",
   "popular": "Populer",
   "copiedToClipboard": "Disalin menyang clipboard",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Info gambar",
+  "imageActions": "Tumindak gambar",
+  "imageRecommendations": "Saran gambar",
+  "compressImage": "Kompres gambar",
+  "resizeTo": "Ganti ukuran dadi",
+  "created": "Digawé",
+  "size": "Ukuran",
+  "dimensions": "Dimensi",
+  "type": "Jinis",
+  "done": "rampung",
+  "noFileUuid": "Rujukan berkas ora kasedhiya; unggah maneh supaya tumindak bisa digunakake.",
+  "fileOpsUnavailable": "Operasi berkas ora kasedhiya kanggo situs iki.",
+  "fileOpFailed": "Operasi berkas gagal.",
+  "fileExtensionNotAllowed": "Kolom iki mung nampa jinis berkas ing ngisor iki:",
+  "fileTypeNotAllowed": "Kolom iki mung nampa jinis media ing ngisor iki:",
+  "transformFailed": "Owahan sawisé unggah gagal; berkas asli tetep disimpen."
 }

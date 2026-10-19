@@ -1,5 +1,6 @@
 import { css, html } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 export const HAXCMSOperationButtons = function (SuperClass) {
   return class extends SuperClass {
@@ -13,6 +14,22 @@ export const HAXCMSOperationButtons = function (SuperClass) {
           ...this.t,
           editPage: "Edit page",
         };
+      }
+    }
+    firstUpdated(changedProperties) {
+      if (super.firstUpdated) {
+        super.firstUpdated(changedProperties);
+      }
+      // themes using these buttons usually have no i18n of their own; pick up
+      // the shared haxcms translations unless this element already registered
+      if (
+        !I18NManagerStore.elements.find((el) => el.context === this)
+      ) {
+        I18NManagerStore.registerLocalization({
+          context: this,
+          namespace: "haxcms",
+          localesPath: new URL("../../../locales/", import.meta.url).href,
+        });
       }
     }
     static get styles() {

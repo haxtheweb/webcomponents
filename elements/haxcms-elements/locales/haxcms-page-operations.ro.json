@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Acțiuni structură",
+  "editPage": "Editează pagina",
+  "addPage": "Adaugă pagină copil",
+  "moveUp": "Mută în sus",
+  "moveDown": "Mută în jos",
+  "indent": "Indentează",
+  "outdent": "Reduce indentarea",
+  "moveTo": "Mută la...",
+  "siteOutline": "Deschide structura site-ului",
+  "delete": "Șterge pagina",
+  "unlock": "Deblochează",
+  "lock": "Blochează"
+}

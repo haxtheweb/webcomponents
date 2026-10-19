@@ -1,0 +1,18 @@
+{
+  "title": "Značajke platforme",
+  "experienceLevel": "Razina iskustva",
+  "cmsFeatures": "CMS značajke",
+  "editorFeatures": "Značajke uređivača",
+  "blocks": "Blokovi",
+  "filterBlocks": "Filtriraj blokove",
+  "requiredTextNote": "Neke tekstne oznake su obavezne i uvijek omogućene (prikazane kao onemogućene).",
+  "download": "Preuzmi kostur",
+  "save": "Spremi",
+  "generating": "Generiranje kostura…",
+  "generated": "Kostur je preuzet",
+  "enabled": "Omogućeno",
+  "feature": "Značajka",
+  "details": "Pojedinosti",
+  "featuresWarning": "Onemogućavanje ovih opcija može ukloniti važne mogućnosti stvaranja sadržaja i administracije.",
+  "largeSiteWarning": "Ovo web-mjesto ima mnogo stranica. Generiranje kostura može potrajati."
+}

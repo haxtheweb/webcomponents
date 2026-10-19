@@ -1,0 +1,18 @@
+{
+  "title": "Funzioni di a piattaforma",
+  "experienceLevel": "Livellu d'esperienza",
+  "cmsFeatures": "Funzioni CMS",
+  "editorFeatures": "Funzioni di l'editore",
+  "blocks": "Blocchi",
+  "filterBlocks": "Filtrà i blocchi",
+  "requiredTextNote": "Certi tag di testu sò ubligatorii è sempre attivati (affissati disattivati).",
+  "download": "Scaricà u scheletru",
+  "save": "Salvà",
+  "generating": "Generazione di u scheletru…",
+  "generated": "Scheletru scaricatu",
+  "enabled": "Attivatu",
+  "feature": "Funzione",
+  "details": "Ditaglii",
+  "featuresWarning": "Disattivà st'opzioni pò caccià capacità impurtante di creazione è d'amministrazione.",
+  "largeSiteWarning": "Stu situ hà parechje pagine. A generazione di u scheletru pò piglià un pezzu."
+}

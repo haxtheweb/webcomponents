@@ -1,34 +1,37 @@
 {
   "gizmo": {
-    "title": "Memes",
-    "description": "Hacer un meme a partir de una imagen"
+    "title": "Meme",
+    "description": "Crea un meme a partir de una imagen."
   },
   "settings": {
     "configure": [
       {
-        "title": "Fuente",
-        "description": "La URL de origen del elemento que está citando"
+        "property": "imageUrl",
+        "title": "Origen",
+        "description": "URL de origen de la imagen del meme."
       },
       {
-        "title": "Cima Texto",
-        "description": "Texto cima del meme"
+        "property": "topText",
+        "title": "Texto superior",
+        "description": "Texto superior del meme."
       },
       {
-        "title": "Fondo Texto",
-        "description": "Texto fondo del meme"
-      }
-    ],
-    "advanced": [
+        "property": "bottomText",
+        "title": "Texto inferior",
+        "description": "Texto inferior del meme."
+      },
       {
-        "description": "Lista de ID separados por espacios para los elementos que describen la imagen"
+        "property": "alt",
+        "title": "Texto alternativo",
+        "description": "Texto que describe la imagen para usuarios con discapacidad visual."
       }
     ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "Gato acechando un juguete pequeño",
-        "topText": "te traigo",
+        "alt": "Gato acechando un pequeño juguete",
+        "topText": "Te traigo",
         "bottomText": "la muerte"
       }
     }

@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "مخزن GitHub",
   "anErrorOccurred": "خطایی رخ داد",
-  "retry": "تلاش مجدد"
+  "retry": "تلاش مجدد",
+  "permissionRequired": "مجوز لازم است",
+  "passwordRequirements": "الزامات رمز عبور",
+  "requirementLength": "دست‌کم ۸ نویسه",
+  "requirementUppercase": "یک حرف بزرگ",
+  "requirementLowercase": "یک حرف کوچک",
+  "requirementNumber": "یک عدد",
+  "requirementSymbol": "یک نماد"
 }

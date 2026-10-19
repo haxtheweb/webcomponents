@@ -1,0 +1,11 @@
+{
+  "userAccess": "Acceso de usuarios",
+  "enterUsername": "Introduce o nome de usuario para conceder acceso",
+  "usernamePlaceholder": "Nome de usuario",
+  "addUser": "Engadir usuario",
+  "cancel": "Cancelar",
+  "userAccessGranted": "Acceso de usuario concedido correctamente!",
+  "userNotFound": "Usuario non atopado ou non autorizado",
+  "loadingAddingUser": "Engadindo usuario...",
+  "grantAccessTo": "Conceder acceso a:"
+}

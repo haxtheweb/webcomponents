@@ -5,5 +5,9 @@
   "recordAudio": "Gravar audio",
   "recordScreen": "Gravar pantalla",
   "cancel": "Cancelar",
-  "uploadMedia": "Subir medios"
+  "uploadMedia": "Subir medios",
+  "record": "Gravar",
+  "pause": "Pausar gravación",
+  "stopSave": "Deter e gardar",
+  "clickToTakePhoto": "Fai clic para sacar unha foto"
 }

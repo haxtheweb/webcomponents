@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Sankhani kopita",
+  "importContentUnderThisPage": "Lowetsani zomwe zili pansi pa tsamba ili",
+  "importThisContent": "Lowetsani zomwe zili izi",
+  "thisPage": "tsamba ili",
+  "newPage": "Tsamba latsopano",
+  "copyOf": "Kope la",
+  "pageActions": "Zochita pa tsamba",
+  "editTitle": "Sinthani mutu",
+  "lock": "Tsekani ndi loko",
+  "unlock": "Tsegulani loko",
+  "moveUp": "Sunthirani mmwamba",
+  "moveDown": "Sunthirani pansi",
+  "makeChild": "Pangani tsamba laling'ono",
+  "moveToParentLevel": "Sunthirani ku mlingo wa kholo",
+  "addPage": "Onjezani tsamba",
+  "duplicate": "Pangani kope",
+  "delete": "Fufutani",
+  "restore": "Bwezeretsani",
+  "goToPage": "Pitani ku tsamba"
+}

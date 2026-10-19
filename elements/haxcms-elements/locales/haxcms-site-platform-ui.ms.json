@@ -1,0 +1,18 @@
+{
+  "title": "Ciri Platform",
+  "experienceLevel": "Tahap pengalaman",
+  "cmsFeatures": "Ciri CMS",
+  "editorFeatures": "Ciri editor",
+  "blocks": "Blok",
+  "filterBlocks": "Tapis blok",
+  "requiredTextNote": "Sesetengah tag teks diperlukan dan sentiasa didayakan (ditunjukkan sebagai dinyahdayakan).",
+  "download": "Muat turun rangka",
+  "save": "Simpan",
+  "generating": "Menjana rangka…",
+  "generated": "Rangka dimuat turun",
+  "enabled": "Didayakan",
+  "feature": "Ciri",
+  "details": "Butiran",
+  "featuresWarning": "Menyahdayakan pilihan ini boleh membuang keupayaan pengarangan dan pentadbiran utama.",
+  "largeSiteWarning": "Tapak ini mempunyai banyak halaman. Penjanaan rangka mungkin mengambil sedikit masa."
+}

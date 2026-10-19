@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Działania w konspekcie",
+  "editPage": "Edytuj stronę",
+  "addPage": "Dodaj stronę podrzędną",
+  "moveUp": "Przenieś w górę",
+  "moveDown": "Przenieś w dół",
+  "indent": "Zwiększ wcięcie",
+  "outdent": "Zmniejsz wcięcie",
+  "moveTo": "Przenieś do...",
+  "siteOutline": "Otwórz konspekt witryny",
+  "delete": "Usuń stronę",
+  "unlock": "Odblokuj",
+  "lock": "Zablokuj"
+}

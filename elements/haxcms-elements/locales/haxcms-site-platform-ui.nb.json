@@ -1,0 +1,18 @@
+{
+  "title": "Plattformfunksjoner",
+  "experienceLevel": "Erfaringsnivå",
+  "cmsFeatures": "CMS-funksjoner",
+  "editorFeatures": "Redigeringsfunksjoner",
+  "blocks": "Blokker",
+  "filterBlocks": "Filtrer blokker",
+  "requiredTextNote": "Noen teksttagger er påkrevd og alltid aktivert (vises deaktivert).",
+  "download": "Last ned skjelett",
+  "save": "Lagre",
+  "generating": "Genererer skjelett…",
+  "generated": "Skjelett lastet ned",
+  "enabled": "Aktivert",
+  "feature": "Funksjon",
+  "details": "Detaljer",
+  "featuresWarning": "Å deaktivere disse alternativene kan fjerne viktige muligheter for redigering og administrasjon.",
+  "largeSiteWarning": "Dette nettstedet har mange sider. Generering av skjelettet kan ta litt tid."
+}

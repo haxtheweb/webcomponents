@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Sarudza pekuendesa",
+  "importContentUnderThisPage": "Unza zviri mukati pasi pepeji iri",
+  "importThisContent": "Unza zviri mukati izvi",
+  "thisPage": "peji iri",
+  "newPage": "Peji idzva",
+  "copyOf": "Kopi ye",
+  "pageActions": "Zviito zvePeji",
+  "editTitle": "Gadzirisa musoro",
+  "lock": "Kiya",
+  "unlock": "Vhura kiyi",
+  "moveUp": "Kwidza",
+  "moveDown": "Burutsa",
+  "makeChild": "Ita peji remwana",
+  "moveToParentLevel": "Endesa kudanho remubereki",
+  "addPage": "Wedzera peji",
+  "duplicate": "Kopa",
+  "delete": "Dzima",
+  "restore": "Dzorera",
+  "goToPage": "Enda kupeji"
+}

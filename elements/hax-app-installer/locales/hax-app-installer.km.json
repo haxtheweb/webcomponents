@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "ឃ្លាំង GitHub",
   "anErrorOccurred": "មានកំហុសបានកើតឡើង",
-  "retry": "ព្យាយាមម្តងទៀត"
+  "retry": "ព្យាយាមម្តងទៀត",
+  "permissionRequired": "ត្រូវការការអនុញ្ញាត",
+  "passwordRequirements": "តម្រូវការពាក្យសម្ងាត់",
+  "requirementLength": "យ៉ាងហោចណាស់ 8 តួអក្សរ",
+  "requirementUppercase": "អក្សរធំមួយ",
+  "requirementLowercase": "អក្សរតូចមួយ",
+  "requirementNumber": "លេខមួយ",
+  "requirementSymbol": "និមិត្តសញ្ញាមួយ"
 }

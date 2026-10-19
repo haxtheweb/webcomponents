@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mem",
+    "description": "Vytvořte mem z obrázku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Zdroj",
+        "description": "Zdrojová URL obrázku memu."
+      },
+      {
+        "property": "topText",
+        "title": "Horní text",
+        "description": "Horní text memu."
+      },
+      {
+        "property": "bottomText",
+        "title": "Dolní text",
+        "description": "Dolní text memu."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativní text",
+        "description": "Text popisující obrázek pro nevidomé uživatele."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kočka se plíží k malé hračce",
+        "topText": "Přináším ti",
+        "bottomText": "smrt"
+      }
+    }
+  ]
+}

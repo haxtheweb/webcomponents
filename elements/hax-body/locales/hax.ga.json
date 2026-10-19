@@ -122,5 +122,21 @@
   "recent": "Le déanaí",
   "popular": "Coitianta",
   "copiedToClipboard": "Cóipeáladh chuig an ngearrthaisce",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Eolas faoin íomhá",
+  "imageActions": "Gníomhartha íomhá",
+  "imageRecommendations": "Moltaí íomhá",
+  "compressImage": "Comhbhrúigh an íomhá",
+  "resizeTo": "Athraigh méid go",
+  "created": "Cruthaithe",
+  "size": "Méid",
+  "dimensions": "Toisí",
+  "type": "Cineál",
+  "done": "déanta",
+  "noFileUuid": "Níl tagairt an chomhaid ar fáil; uaslódáil arís í chun gníomhartha a chumasú.",
+  "fileOpsUnavailable": "Níl oibríochtaí comhaid ar fáil don suíomh seo.",
+  "fileOpFailed": "Theip ar an oibríocht chomhaid.",
+  "fileExtensionNotAllowed": "Ní ghlacann an réimse seo ach leis na cineálacha comhaid seo a leanas:",
+  "fileTypeNotAllowed": "Ní ghlacann an réimse seo ach leis na cineálacha meán seo a leanas:",
+  "transformFailed": "Theip ar an gclaochlú tar éis uaslódála; coinníodh an comhad bunaidh."
 }

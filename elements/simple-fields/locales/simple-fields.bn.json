@@ -5,5 +5,9 @@
   "recordAudio": "অডিও রেকর্ড করুন",
   "recordScreen": "স্ক্রিন রেকর্ড করুন",
   "cancel": "বাতিল",
-  "uploadMedia": "মিডিয়া আপলোড করুন"
+  "uploadMedia": "মিডিয়া আপলোড করুন",
+  "record": "রেকর্ড করুন",
+  "pause": "রেকর্ডিং বিরতি দিন",
+  "stopSave": "থামান ও সংরক্ষণ করুন",
+  "clickToTakePhoto": "ছবি তুলতে ক্লিক করুন"
 }

@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 
 import { A11yMediaYoutube } from "../lib/a11y-media-youtube.js";
 import { installOfflineYouTubeStubs, FakeYTPlayer } from "./offline-stubs.js";
@@ -266,8 +266,14 @@ describe("a11y-media-youtube playback controls", () => {
 
   it("play() defers to the next frame and starts the timeupdate loop", async () => {
     el.play();
-    await sleep(60);
-    expect(el.__yt.playVideoCalls).to.be.above(0);
+    // startPlay is deferred to a paint frame (rAF), which only fires when the
+    // page produces one; under parallel test load that can land well after a
+    // fixed sleep, so poll for the call instead
+    await waitUntil(
+      () => el.__yt.playVideoCalls > 0,
+      "playVideo was never called after play()",
+      { interval: 20, timeout: 5000 },
+    );
     expect(el.__playQueued).to.equal(false);
     expect(el.__ytTimeupdateInterval).to.exist;
     el.pause();
@@ -280,9 +286,12 @@ describe("a11y-media-youtube playback controls", () => {
       configurable: true,
     });
     el.play();
-    await sleep(60);
+    await waitUntil(
+      () => el.__yt.playVideoCalls > 0,
+      "playVideo was never called after play() while hidden",
+      { interval: 20, timeout: 5000 },
+    );
     delete globalThis.document.hidden;
-    expect(el.__yt.playVideoCalls).to.be.above(0);
     el.pause();
   });
 
@@ -381,7 +390,13 @@ describe("a11y-media-youtube playback controls", () => {
     el.__yt.durationVal = 100;
     el.t = 5;
     el._autoMetadata();
-    await sleep(80);
+    // the preload loop polls on a 1ms interval, which the browser can delay
+    // under load; poll for the pause instead of a fixed sleep
+    await waitUntil(
+      () => el.__yt.pauseVideoCalls > 0,
+      "_autoMetadata preload loop never paused",
+      { interval: 20, timeout: 5000 },
+    );
     expect(el.__yt.mutedVal).to.equal(false);
     expect(el.__yt.pauseVideoCalls).to.be.above(0);
     expect(el.__yt.time).to.equal(5);
@@ -393,7 +408,11 @@ describe("a11y-media-youtube playback controls", () => {
     el.t = 2;
     el.autoplay = true;
     el._autoMetadata();
-    await sleep(100);
+    await waitUntil(
+      () => el.__yt.playVideoCalls > 0,
+      "_autoMetadata never resumed playback",
+      { interval: 20, timeout: 5000 },
+    );
     expect(el.__yt.playVideoCalls).to.be.above(0);
     el.pause();
   });

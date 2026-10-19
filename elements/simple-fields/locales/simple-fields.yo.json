@@ -5,5 +5,9 @@
   "recordAudio": "Ìghọ́ri ohùn",
   "recordScreen": "Ìghọ́ri ojú-ìkọ̀",
   "cancel": "Nù kúrò",
-  "uploadMedia": "Fi media sókè"
+  "uploadMedia": "Fi media sókè",
+  "record": "Gba sílẹ̀",
+  "pause": "Dá ìgbàsílẹ̀ dúró",
+  "stopSave": "Dúró & fi pamọ́",
+  "clickToTakePhoto": "Tẹ láti ya fọ́tò"
 }

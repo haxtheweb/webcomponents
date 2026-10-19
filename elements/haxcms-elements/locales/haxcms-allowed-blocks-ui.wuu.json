@@ -1,0 +1,14 @@
+{
+  "title": "区块",
+  "enabled": "已启用",
+  "block": "区块",
+  "preview": "预览",
+  "filterBlocks": "筛选区块",
+  "requiredTextNote": "有眼文字标签是必需个，一直启用（显示为禁用）。",
+  "selectAll": "全选",
+  "deselectAll": "全部取消",
+  "save": "保存",
+  "noDescription": "呒没描述。",
+  "details": "详情",
+  "loadingInventory": "正在加载全部区块清单…"
+}

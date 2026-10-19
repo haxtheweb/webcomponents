@@ -1,0 +1,14 @@
+{
+  "title": "Blokkok",
+  "enabled": "Engedélyezve",
+  "block": "Blokk",
+  "preview": "Előnézet",
+  "filterBlocks": "Blokkok szűrése",
+  "requiredTextNote": "Néhány szövegcímke kötelező és mindig engedélyezett (letiltottként jelenik meg).",
+  "selectAll": "Összes kijelölése",
+  "deselectAll": "Kijelölés megszüntetése",
+  "save": "Mentés",
+  "noDescription": "Nincs elérhető leírás.",
+  "details": "Részletek",
+  "loadingInventory": "A teljes blokkleltár betöltése…"
+}

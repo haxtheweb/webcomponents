@@ -1,38 +1,37 @@
 {
   "gizmo": {
     "title": "মিম",
-    "description": "একটি ছবি থেকে মিম তৈরি করুন"
+    "description": "একটি ছবি থেকে মিম তৈরি করুন।"
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "উৎস",
-        "description": "আপনার উদ্ধৃত উপাদানের জন্য উৎস URL"
+        "description": "মিম ছবির উৎস URL।"
       },
       {
-        "title": "উপরের টেক্সট",
-        "description": "মিমের উপরের টেক্সট"
+        "property": "topText",
+        "title": "উপরের লেখা",
+        "description": "মিমের উপরের লেখা।"
       },
       {
-        "title": "নিচের টেক্সট",
-        "description": "মিমের নিচের টেক্সট"
+        "property": "bottomText",
+        "title": "নিচের লেখা",
+        "description": "মিমের নিচের লেখা।"
       },
       {
-        "title": "বিকল্প টেক্সট",
-        "description": "দৃষ্টিহীন ব্যবহারকারীদের জন্য ছবির বর্ণনামূলক টেক্সট"
-      }
-    ],
-    "advanced": [
-      {
-        "description": "ছবি বর্ণনা করা উপাদানগুলির জন্য স্থান দ্বারা পৃথক ID-এর তালিকা"
+        "property": "alt",
+        "title": "বিকল্প লেখা",
+        "description": "দৃষ্টিহীন ব্যবহারকারীদের জন্য ছবিটি বর্ণনা করার লেখা।"
       }
     ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "বিড়াল একটি ছোট খেলনা তাড়া করছে",
-        "topText": "আমি তোমার জন্য নিয়ে এসেছি",
+        "alt": "একটি ছোট খেলনার দিকে ওত পেতে থাকা বিড়াল",
+        "topText": "তোমার জন্য এনেছি",
         "bottomText": "মৃত্যু"
       }
     }

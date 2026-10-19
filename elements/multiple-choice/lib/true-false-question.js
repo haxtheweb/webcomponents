@@ -11,6 +11,11 @@ class TrueFalseQuestion extends QuestionElement {
   }
   constructor() {
     super();
+    // QuestionElement's shared strings live in each question type's own namespace
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this._tfanswer = null;
     // force this to true and use can't set
     this.singleOption = true;

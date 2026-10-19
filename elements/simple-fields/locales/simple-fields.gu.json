@@ -5,5 +5,9 @@
   "recordAudio": "ઑડિયો રેકોર્ડ કરો",
   "recordScreen": "સ્ક્રીન રેકોર્ડ કરો",
   "cancel": "રદ કરો",
-  "uploadMedia": "મીડિયા અપલોડ કરો"
+  "uploadMedia": "મીડિયા અપલોડ કરો",
+  "record": "રેકોર્ડ કરો",
+  "pause": "રેકોર્ડિંગ થોભાવો",
+  "stopSave": "રોકો અને સાચવો",
+  "clickToTakePhoto": "ફોટો લેવા માટે ક્લિક કરો"
 }

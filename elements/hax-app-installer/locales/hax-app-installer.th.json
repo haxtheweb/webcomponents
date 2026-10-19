@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "พื้นที่เก็บ GitHub",
   "anErrorOccurred": "เกิดข้อผิดพลาดขึ้น",
-  "retry": "ลองอีกครั้ง"
+  "retry": "ลองอีกครั้ง",
+  "permissionRequired": "ต้องได้รับอนุญาต",
+  "passwordRequirements": "ข้อกำหนดของรหัสผ่าน",
+  "requirementLength": "อย่างน้อย 8 ตัวอักษร",
+  "requirementUppercase": "ตัวพิมพ์ใหญ่หนึ่งตัว",
+  "requirementLowercase": "ตัวพิมพ์เล็กหนึ่งตัว",
+  "requirementNumber": "ตัวเลขหนึ่งตัว",
+  "requirementSymbol": "สัญลักษณ์หนึ่งตัว"
 }

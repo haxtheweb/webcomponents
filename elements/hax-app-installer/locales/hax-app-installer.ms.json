@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Repositori GitHub",
   "anErrorOccurred": "Ralat berlaku",
-  "retry": "Cuba semula"
+  "retry": "Cuba semula",
+  "permissionRequired": "Kebenaran diperlukan",
+  "passwordRequirements": "Keperluan kata laluan",
+  "requirementLength": "Sekurang-kurangnya 8 aksara",
+  "requirementUppercase": "Satu huruf besar",
+  "requirementLowercase": "Satu huruf kecil",
+  "requirementNumber": "Satu nombor",
+  "requirementSymbol": "Satu simbol"
 }

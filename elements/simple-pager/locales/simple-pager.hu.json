@@ -1,0 +1,11 @@
+{
+  "pagination": "Lapozás",
+  "page": "Oldal",
+  "of": "/",
+  "first": "Első oldal",
+  "previous": "Előző oldal",
+  "next": "Következő oldal",
+  "last": "Utolsó oldal",
+  "showing": "Megjelenítve:",
+  "to": "–"
+}

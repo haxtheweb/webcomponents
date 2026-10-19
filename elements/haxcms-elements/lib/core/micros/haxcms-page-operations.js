@@ -117,7 +117,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
     };
     this.registerLocalization({
       context: this,
-      basePath: import.meta.url,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
     });
 
     // Watch for active item lock state

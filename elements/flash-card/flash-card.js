@@ -115,7 +115,7 @@ export class FlashCard extends SchemaBehaviors(DDD) {
         confetti-container {
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: stretch;
           transition: all 0.3s ease-in-out;
         }
 
@@ -125,10 +125,8 @@ export class FlashCard extends SchemaBehaviors(DDD) {
         }
 
         flash-card-answer-box {
+          display: block;
           width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
         }
       `,
     ];

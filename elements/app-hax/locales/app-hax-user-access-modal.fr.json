@@ -1,0 +1,11 @@
+{
+  "userAccess": "Accès utilisateur",
+  "enterUsername": "Saisissez un nom d'utilisateur pour accorder l'accès",
+  "usernamePlaceholder": "Nom d'utilisateur",
+  "addUser": "Ajouter un utilisateur",
+  "cancel": "Annuler",
+  "userAccessGranted": "Accès utilisateur accordé avec succès !",
+  "userNotFound": "Utilisateur introuvable ou non autorisé",
+  "loadingAddingUser": "Ajout de l'utilisateur...",
+  "grantAccessTo": "Accorder l'accès à :"
+}

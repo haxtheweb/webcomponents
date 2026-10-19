@@ -1,0 +1,14 @@
+{
+  "title": "Bloklar",
+  "enabled": "Etkin",
+  "block": "Blok",
+  "preview": "Önizleme",
+  "filterBlocks": "Blokları filtrele",
+  "requiredTextNote": "Bazı metin etiketleri zorunludur ve her zaman etkindir (devre dışı gösterilir).",
+  "selectAll": "Tümünü seç",
+  "deselectAll": "Tüm seçimi kaldır",
+  "save": "Kaydet",
+  "noDescription": "Açıklama yok.",
+  "details": "Ayrıntılar",
+  "loadingInventory": "Tüm blok envanteri yükleniyor…"
+}

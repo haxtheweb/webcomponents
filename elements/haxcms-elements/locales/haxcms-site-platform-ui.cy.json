@@ -1,0 +1,18 @@
+{
+  "title": "Nodweddion y platfform",
+  "experienceLevel": "Lefel profiad",
+  "cmsFeatures": "Nodweddion CMS",
+  "editorFeatures": "Nodweddion y golygydd",
+  "blocks": "Blociau",
+  "filterBlocks": "Hidlo blociau",
+  "requiredTextNote": "Mae rhai tagiau testun yn ofynnol ac wedi'u galluogi bob amser (dangosir yn analluog).",
+  "download": "Llwytho'r sgerbwd i lawr",
+  "save": "Cadw",
+  "generating": "Yn cynhyrchu'r sgerbwd…",
+  "generated": "Llwythwyd y sgerbwd i lawr",
+  "enabled": "Wedi'i alluogi",
+  "feature": "Nodwedd",
+  "details": "Manylion",
+  "featuresWarning": "Gall analluogi'r opsiynau hyn ddileu galluoedd awduro a gweinyddu pwysig.",
+  "largeSiteWarning": "Mae gan y wefan hon lawer o dudalennau. Gall cynhyrchu'r sgerbwd gymryd peth amser."
+}

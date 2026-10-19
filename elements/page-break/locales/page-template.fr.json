@@ -1,0 +1,6 @@
+{
+  "pageTemplate": "Modèle de page",
+  "templateId": "ID du modèle",
+  "defaultTemplate": "Modèle par défaut",
+  "namedTemplate": "Modèle nommé"
+}

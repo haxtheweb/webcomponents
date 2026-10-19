@@ -122,5 +122,21 @@
   "recent": "Nā tata",
   "popular": "Rongonui",
   "copiedToClipboard": "Kua tārua ki te papatopenga",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Mōhiohio whakaahua",
+  "imageActions": "Ngā mahi whakaahua",
+  "imageRecommendations": "Ngā tūtohu whakaahua",
+  "compressImage": "Kōpeke whakaahua",
+  "resizeTo": "Panoni rahi ki",
+  "created": "I hangaia",
+  "size": "Rahi",
+  "dimensions": "Ngā āhuatanga rahi",
+  "type": "Momo",
+  "done": "kua oti",
+  "noFileUuid": "Kāore e wātea ana te tohutoro kōnae; tukuatu anō kia taea ai ngā mahi.",
+  "fileOpsUnavailable": "Kāore e wātea ana ngā mahi kōnae mō tēnei pae.",
+  "fileOpFailed": "I rahua te mahi kōnae.",
+  "fileExtensionNotAllowed": "Ko ēnei momo kōnae anake e whakaaetia ana e tēnei āpure:",
+  "fileTypeNotAllowed": "Ko ēnei momo pāpāho anake e whakaaetia ana e tēnei āpure:",
+  "transformFailed": "I rahua te hurihanga i muri i te tukuatu; i puritia te kōnae taketake."
 }

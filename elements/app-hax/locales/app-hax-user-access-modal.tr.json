@@ -1,0 +1,11 @@
+{
+  "userAccess": "Kullanıcı erişimi",
+  "enterUsername": "Erişim vermek için kullanıcı adını girin",
+  "usernamePlaceholder": "Kullanıcı adı",
+  "addUser": "Kullanıcı ekle",
+  "cancel": "İptal",
+  "userAccessGranted": "Kullanıcı erişimi başarıyla verildi!",
+  "userNotFound": "Kullanıcı bulunamadı veya yetkisiz",
+  "loadingAddingUser": "Kullanıcı ekleniyor...",
+  "grantAccessTo": "Erişim verilecek kişi:"
+}

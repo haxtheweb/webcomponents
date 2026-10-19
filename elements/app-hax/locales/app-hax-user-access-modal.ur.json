@@ -1,0 +1,11 @@
+{
+  "userAccess": "صارف کی رسائی",
+  "enterUsername": "رسائی دینے کے لیے صارف نام درج کریں",
+  "usernamePlaceholder": "صارف نام",
+  "addUser": "صارف شامل کریں",
+  "cancel": "منسوخ کریں",
+  "userAccessGranted": "صارف کو کامیابی سے رسائی دے دی گئی!",
+  "userNotFound": "صارف نہیں ملا یا غیر مجاز ہے",
+  "loadingAddingUser": "صارف شامل کیا جا رہا ہے...",
+  "grantAccessTo": "رسائی دیں:"
+}

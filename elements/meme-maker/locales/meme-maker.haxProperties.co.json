@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Fate un meme à partesi d'una imagine."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Fonte",
+        "description": "URL di fonte di l'imagine di u meme."
+      },
+      {
+        "property": "topText",
+        "title": "Testu in cima",
+        "description": "Testu in cima di u meme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Testu in fondu",
+        "description": "Testu in fondu di u meme."
+      },
+      {
+        "property": "alt",
+        "title": "Testu alternativu",
+        "description": "Testu per discrive l'imagine à l'utilizatori chì ùn vedenu micca."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Ghjattu chì s'appiatta per chjappà un ghjoculu chjucu",
+        "topText": "Vi portu",
+        "bottomText": "a morte"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Sceglie a destinazione",
+  "importContentUnderThisPage": "Impurtà u cuntenutu sottu à sta pagina",
+  "importThisContent": "Impurtà stu cuntenutu",
+  "thisPage": "sta pagina",
+  "newPage": "Pagina nova",
+  "copyOf": "Copia di",
+  "pageActions": "Azzioni di a pagina",
+  "editTitle": "Mudificà u titulu",
+  "lock": "Bluccà",
+  "unlock": "Sbluccà",
+  "moveUp": "Move in sù",
+  "moveDown": "Move in ghjò",
+  "makeChild": "Fà ne una sottupagina",
+  "moveToParentLevel": "Move à u livellu superiore",
+  "addPage": "Aghjunghje una pagina",
+  "duplicate": "Duplicà",
+  "delete": "Squassà",
+  "restore": "Risturà",
+  "goToPage": "Andà à a pagina"
+}

@@ -1,0 +1,11 @@
+{
+  "userAccess": "Aðgangur notenda",
+  "enterUsername": "Sláðu inn notandanafn til að veita aðgang",
+  "usernamePlaceholder": "Notandanafn",
+  "addUser": "Bæta við notanda",
+  "cancel": "Hætta við",
+  "userAccessGranted": "Notanda var veittur aðgangur!",
+  "userNotFound": "Notandi fannst ekki eða hefur ekki heimild",
+  "loadingAddingUser": "Bætir við notanda...",
+  "grantAccessTo": "Veita aðgang að:"
+}

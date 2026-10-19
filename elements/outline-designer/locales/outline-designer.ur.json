@@ -1,0 +1,21 @@
+{
+  "selectTarget": "ہدف منتخب کریں",
+  "importContentUnderThisPage": "اس صفحے کے تحت مواد درآمد کریں",
+  "importThisContent": "یہ مواد درآمد کریں",
+  "thisPage": "یہ صفحہ",
+  "newPage": "نیا صفحہ",
+  "copyOf": "نقل از",
+  "pageActions": "صفحے کے اقدامات",
+  "editTitle": "عنوان میں ترمیم کریں",
+  "lock": "مقفل کریں",
+  "unlock": "غیر مقفل کریں",
+  "moveUp": "اوپر منتقل کریں",
+  "moveDown": "نیچے منتقل کریں",
+  "makeChild": "ذیلی صفحہ بنائیں",
+  "moveToParentLevel": "بالائی سطح پر منتقل کریں",
+  "addPage": "صفحہ شامل کریں",
+  "duplicate": "نقل بنائیں",
+  "delete": "حذف کریں",
+  "restore": "بحال کریں",
+  "goToPage": "صفحے پر جائیں"
+}

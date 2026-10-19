@@ -5,5 +5,9 @@
   "recordAudio": "Înregistrează audio",
   "recordScreen": "Înregistrează ecranul",
   "cancel": "Anulează",
-  "uploadMedia": "Încarcă media"
+  "uploadMedia": "Încarcă media",
+  "record": "Înregistrează",
+  "pause": "Întrerupe înregistrarea",
+  "stopSave": "Oprește și salvează",
+  "clickToTakePhoto": "Faceți clic pentru a face o fotografie"
 }

@@ -5,5 +5,9 @@
   "recordAudio": "Taka upp hljóð",
   "recordScreen": "Taka upp skjá",
   "cancel": "Hætta við",
-  "uploadMedia": "Hlaða upp miðlum"
+  "uploadMedia": "Hlaða upp miðlum",
+  "record": "Taka upp",
+  "pause": "Gera hlé á upptöku",
+  "stopSave": "Stöðva og vista",
+  "clickToTakePhoto": "Smelltu til að taka mynd"
 }

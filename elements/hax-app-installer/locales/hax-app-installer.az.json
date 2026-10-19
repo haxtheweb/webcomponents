@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub deposu",
   "anErrorOccurred": "Xəta baş verdi",
-  "retry": "Yenidən cəhd et"
+  "retry": "Yenidən cəhd et",
+  "permissionRequired": "İcazə tələb olunur",
+  "passwordRequirements": "Parol tələbləri",
+  "requirementLength": "Ən azı 8 simvol",
+  "requirementUppercase": "Bir böyük hərf",
+  "requirementLowercase": "Bir kiçik hərf",
+  "requirementNumber": "Bir rəqəm",
+  "requirementSymbol": "Bir simvol"
 }

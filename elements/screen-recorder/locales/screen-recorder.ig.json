@@ -5,5 +5,6 @@
   "systemAudio": "Tinye ụda sistem",
   "microphoneAudio": "Tinye maikrofon",
   "recordingStarted": "Ndekọ amalitela",
-  "recordingStopped": "Ndekọ akwụsịla"
+  "recordingStopped": "Ndekọ akwụsịla",
+  "audioOptions": "Nhọrọ ụda"
 }

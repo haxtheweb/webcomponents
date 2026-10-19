@@ -122,5 +122,21 @@
   "recent": "Onlangs",
   "popular": "Gewild",
   "copiedToClipboard": "Gekopieer na knipbord",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Beeldinligting",
+  "imageActions": "Beeldaksies",
+  "imageRecommendations": "Beeldaanbevelings",
+  "compressImage": "Kompakteer beeld",
+  "resizeTo": "Verander grootte na",
+  "created": "Geskep",
+  "size": "Grootte",
+  "dimensions": "Afmetings",
+  "type": "Tipe",
+  "done": "klaar",
+  "noFileUuid": "Lêerverwysing nie beskikbaar nie; laai weer op om aksies te aktiveer.",
+  "fileOpsUnavailable": "Lêerbewerkings is nie vir hierdie werf beskikbaar nie.",
+  "fileOpFailed": "Lêerbewerking het misluk.",
+  "fileExtensionNotAllowed": "Hierdie veld aanvaar slegs die volgende lêertipes:",
+  "fileTypeNotAllowed": "Hierdie veld aanvaar slegs die volgende mediatipes:",
+  "transformFailed": "Transformasie ná oplaai het misluk; die oorspronklike lêer is behou."
 }

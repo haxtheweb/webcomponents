@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub saugykla",
   "anErrorOccurred": "Įvyko klaida",
-  "retry": "Bandyti dar kartą"
+  "retry": "Bandyti dar kartą",
+  "permissionRequired": "Reikalingas leidimas",
+  "passwordRequirements": "Slaptažodžio reikalavimai",
+  "requirementLength": "Ne mažiau kaip 8 simboliai",
+  "requirementUppercase": "Viena didžioji raidė",
+  "requirementLowercase": "Viena mažoji raidė",
+  "requirementNumber": "Vienas skaitmuo",
+  "requirementSymbol": "Vienas specialusis simbolis"
 }

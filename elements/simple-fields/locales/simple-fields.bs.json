@@ -5,5 +5,9 @@
   "recordAudio": "Snimi zvuk",
   "recordScreen": "Snimi ekran",
   "cancel": "Otkaži",
-  "uploadMedia": "Učitaj mediju"
+  "uploadMedia": "Učitaj mediju",
+  "record": "Snimaj",
+  "pause": "Pauziraj snimanje",
+  "stopSave": "Zaustavi i sačuvaj",
+  "clickToTakePhoto": "Kliknite da napravite fotografiju"
 }

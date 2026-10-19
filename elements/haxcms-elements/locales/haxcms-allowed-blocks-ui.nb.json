@@ -1,0 +1,14 @@
+{
+  "title": "Blokker",
+  "enabled": "Aktivert",
+  "block": "Blokk",
+  "preview": "Forhåndsvisning",
+  "filterBlocks": "Filtrer blokker",
+  "requiredTextNote": "Noen teksttagger er påkrevd og alltid aktivert (vises deaktivert).",
+  "selectAll": "Velg alle",
+  "deselectAll": "Fjern alle valg",
+  "save": "Lagre",
+  "noDescription": "Ingen beskrivelse tilgjengelig.",
+  "details": "Detaljer",
+  "loadingInventory": "Laster inn fullstendig blokkoversikt…"
+}

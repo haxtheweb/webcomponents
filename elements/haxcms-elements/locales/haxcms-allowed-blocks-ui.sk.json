@@ -1,0 +1,14 @@
+{
+  "title": "Bloky",
+  "enabled": "Povolené",
+  "block": "Blok",
+  "preview": "Náhľad",
+  "filterBlocks": "Filtrovať bloky",
+  "requiredTextNote": "Niektoré textové značky sú povinné a vždy povolené (zobrazené ako zakázané).",
+  "selectAll": "Vybrať všetko",
+  "deselectAll": "Zrušiť výber všetkého",
+  "save": "Uložiť",
+  "noDescription": "Popis nie je k dispozícii.",
+  "details": "Podrobnosti",
+  "loadingInventory": "Načítava sa úplný zoznam blokov…"
+}

@@ -122,5 +122,21 @@
   "recent": "최근",
   "popular": "인기",
   "copiedToClipboard": "클립보드에 복사됨",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "이미지 정보",
+  "imageActions": "이미지 작업",
+  "imageRecommendations": "이미지 권장 사항",
+  "compressImage": "이미지 압축",
+  "resizeTo": "크기 조정",
+  "created": "생성일",
+  "size": "크기",
+  "dimensions": "해상도",
+  "type": "유형",
+  "done": "완료",
+  "noFileUuid": "파일 참조를 사용할 수 없습니다. 작업을 사용하려면 다시 업로드하세요.",
+  "fileOpsUnavailable": "이 사이트에서는 파일 작업을 사용할 수 없습니다.",
+  "fileOpFailed": "파일 작업에 실패했습니다.",
+  "fileExtensionNotAllowed": "이 필드는 다음 파일 형식만 허용합니다:",
+  "fileTypeNotAllowed": "이 필드는 다음 미디어 형식만 허용합니다:",
+  "transformFailed": "업로드 후 변환에 실패했습니다. 원본 파일은 유지되었습니다."
 }

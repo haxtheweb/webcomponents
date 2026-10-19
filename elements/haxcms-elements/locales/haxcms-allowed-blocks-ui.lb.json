@@ -1,0 +1,14 @@
+{
+  "title": "Blocken",
+  "enabled": "Aktivéiert",
+  "block": "Block",
+  "preview": "Virschau",
+  "filterBlocks": "Blocken filteren",
+  "requiredTextNote": "Verschidden Text-Tags sinn erfuerderlech an ëmmer aktivéiert (deaktivéiert ugewisen).",
+  "selectAll": "Alles auswielen",
+  "deselectAll": "Auswiel ophiewen",
+  "save": "Späicheren",
+  "noDescription": "Keng Beschreiwung disponibel.",
+  "details": "Detailer",
+  "loadingInventory": "Komplett Blockinventar gëtt gelueden…"
+}

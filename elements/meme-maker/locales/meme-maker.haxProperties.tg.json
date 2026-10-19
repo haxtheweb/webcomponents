@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Мем",
+    "description": "Аз тасвир мем созед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Манбаъ",
+        "description": "URL-и манбаи тасвири мем."
+      },
+      {
+        "property": "topText",
+        "title": "Матни боло",
+        "description": "Матни болои мем."
+      },
+      {
+        "property": "bottomText",
+        "title": "Матни поён",
+        "description": "Матни поёни мем."
+      },
+      {
+        "property": "alt",
+        "title": "Матни алтернативӣ",
+        "description": "Матн барои тавсифи тасвир ба корбарони нобино."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Гурба паси бозичаи хурд пинҳонӣ мегардад",
+        "topText": "Ман ба ту меорам",
+        "bottomText": "маргро"
+      }
+    }
+  ]
+}

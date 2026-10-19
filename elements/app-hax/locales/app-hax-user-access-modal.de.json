@@ -1,0 +1,11 @@
+{
+  "userAccess": "Benutzerzugriff",
+  "enterUsername": "Benutzernamen eingeben, um Zugriff zu gewähren",
+  "usernamePlaceholder": "Benutzername",
+  "addUser": "Benutzer hinzufügen",
+  "cancel": "Abbrechen",
+  "userAccessGranted": "Benutzerzugriff erfolgreich gewährt!",
+  "userNotFound": "Benutzer nicht gefunden oder nicht berechtigt",
+  "loadingAddingUser": "Benutzer wird hinzugefügt...",
+  "grantAccessTo": "Zugriff gewähren für:"
+}

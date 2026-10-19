@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Select target",
+  "importContentUnderThisPage": "Import content under this page",
+  "importThisContent": "Import this content",
+  "thisPage": "this page",
+  "newPage": "New page",
+  "copyOf": "Copy of",
+  "pageActions": "Page Actions",
+  "editTitle": "Edit title",
+  "lock": "Lock",
+  "unlock": "Unlock",
+  "moveUp": "Move up",
+  "moveDown": "Move down",
+  "makeChild": "Make child",
+  "moveToParentLevel": "Move to parent level",
+  "addPage": "Add page",
+  "duplicate": "Duplicate",
+  "delete": "Delete",
+  "restore": "Restore",
+  "goToPage": "Go to page"
+}

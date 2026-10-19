@@ -1,0 +1,18 @@
+{
+  "title": "Eiginleikar kerfisins",
+  "experienceLevel": "Reynslustig",
+  "cmsFeatures": "CMS eiginleikar",
+  "editorFeatures": "Eiginleikar ritils",
+  "blocks": "Kubbar",
+  "filterBlocks": "Sía kubba",
+  "requiredTextNote": "Sum textamerki eru nauðsynleg og alltaf virk (sýnd óvirk).",
+  "download": "Sækja grunnsnið",
+  "save": "Vista",
+  "generating": "Bý til grunnsnið…",
+  "generated": "Grunnsnið sótt",
+  "enabled": "Virkt",
+  "feature": "Eiginleiki",
+  "details": "Nánar",
+  "featuresWarning": "Ef slökkt er á þessum valkostum geta mikilvægir eiginleikar til efnisgerðar og stjórnunar horfið.",
+  "largeSiteWarning": "Þessi vefur hefur margar síður. Gerð grunnsniðs getur tekið nokkra stund."
+}

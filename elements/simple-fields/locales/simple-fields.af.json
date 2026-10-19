@@ -5,5 +5,9 @@
   "recordAudio": "Neem klank op",
   "recordScreen": "Neem skerm op",
   "cancel": "Kanselleer",
-  "uploadMedia": "Laai media op"
+  "uploadMedia": "Laai media op",
+  "record": "Neem op",
+  "pause": "Pouseer opname",
+  "stopSave": "Stop en stoor",
+  "clickToTakePhoto": "Klik om foto te neem"
 }

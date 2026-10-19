@@ -1,0 +1,14 @@
+{
+  "title": "Blöcke",
+  "enabled": "Aktiviert",
+  "block": "Block",
+  "preview": "Vorschau",
+  "filterBlocks": "Blöcke filtern",
+  "requiredTextNote": "Einige Text-Tags sind erforderlich und immer aktiviert (deaktiviert dargestellt).",
+  "selectAll": "Alle auswählen",
+  "deselectAll": "Alle abwählen",
+  "save": "Speichern",
+  "noDescription": "Keine Beschreibung verfügbar.",
+  "details": "Details",
+  "loadingInventory": "Vollständiges Blockverzeichnis wird geladen…"
+}

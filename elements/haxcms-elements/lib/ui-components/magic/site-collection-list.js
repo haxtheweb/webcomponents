@@ -3,6 +3,7 @@ import { CollectionList } from "@haxtheweb/collection-list/collection-list.js";
 import "@haxtheweb/collection-list/lib/collection-item.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 // site-collection-list that automatically renders based on criteria from the sitee.json
 export class SiteCollectionList extends CollectionList {
@@ -26,6 +27,12 @@ export class SiteCollectionList extends CollectionList {
       allItems: "All items",
       topLevelItems: "Top level items",
     };
+    // no I18NMixin in this class chain, so register with the store directly
+    I18NManagerStore.registerLocalization({
+      context: this,
+      namespace: "haxcms",
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
   }
   render() {
     return html`

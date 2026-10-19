@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Рэпазіторый GitHub",
   "anErrorOccurred": "Адбылася памылка",
-  "retry": "Паўтарыць"
+  "retry": "Паўтарыць",
+  "permissionRequired": "Патрабуецца дазвол",
+  "passwordRequirements": "Патрабаванні да пароля",
+  "requirementLength": "Не менш за 8 сімвалаў",
+  "requirementUppercase": "Адна вялікая літара",
+  "requirementLowercase": "Адна малая літара",
+  "requirementNumber": "Адна лічба",
+  "requirementSymbol": "Адзін спецыяльны сімвал"
 }

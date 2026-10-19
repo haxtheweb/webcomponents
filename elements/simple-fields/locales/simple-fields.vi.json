@@ -5,5 +5,9 @@
   "recordAudio": "Ghi âm",
   "recordScreen": "Ghi màn hình",
   "cancel": "Hủy",
-  "uploadMedia": "Tải lên phương tiện"
+  "uploadMedia": "Tải lên phương tiện",
+  "record": "Ghi",
+  "pause": "Tạm dừng ghi",
+  "stopSave": "Dừng & Lưu",
+  "clickToTakePhoto": "Nhấp để chụp ảnh"
 }

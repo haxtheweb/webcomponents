@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Sawir ka samee meme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Isha",
+        "description": "URL-ka isha sawirka meme-ka."
+      },
+      {
+        "property": "topText",
+        "title": "Qoraalka sare",
+        "description": "Qoraalka sare ee meme-ka."
+      },
+      {
+        "property": "bottomText",
+        "title": "Qoraalka hoose",
+        "description": "Qoraalka hoose ee meme-ka."
+      },
+      {
+        "property": "alt",
+        "title": "Qoraal beddel ah",
+        "description": "Qoraal sawirka u sharxaya isticmaalayaasha aan arki karin."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Bisad ugaarsanaysa ciyaar yar",
+        "topText": "Waxaan kuu keenay",
+        "bottomText": "geerida"
+      }
+    }
+  ]
+}

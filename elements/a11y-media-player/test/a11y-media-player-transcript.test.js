@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 
 import "../a11y-media-player.js";
 import { installOfflineYouTubeStubs } from "./offline-stubs.js";
@@ -17,7 +17,14 @@ async function loadCues(el, media) {
   const track = media.addTextTrack("subtitles", "English", "en");
   track.addCue(new VTTCue(1, 5, "Hello world"));
   track.addCue(new VTTCue(6, 10, "Second cue"));
-  await sleep(60);
+  // cue collection is asynchronous: the browser queues the addtrack event and
+  // _onAddTrack then polls track.cues on an interval, so wait for the cues
+  // array to fill instead of a fixed sleep that flakes under load
+  await waitUntil(
+    () => el.cues.length === 2,
+    "player never collected the track cues",
+    { interval: 20, timeout: 5000 },
+  );
   await el.updateComplete;
   return track;
 }

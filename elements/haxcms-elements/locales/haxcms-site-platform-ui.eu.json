@@ -1,0 +1,18 @@
+{
+  "title": "Plataformaren eginbideak",
+  "experienceLevel": "Esperientzia-maila",
+  "cmsFeatures": "CMS eginbideak",
+  "editorFeatures": "Editorearen eginbideak",
+  "blocks": "Blokeak",
+  "filterBlocks": "Iragazi blokeak",
+  "requiredTextNote": "Testu-etiketa batzuk derrigorrezkoak dira eta beti daude gaituta (desgaituta erakusten dira).",
+  "download": "Deskargatu eskeletoa",
+  "save": "Gorde",
+  "generating": "Eskeletoa sortzen…",
+  "generated": "Eskeletoa deskargatu da",
+  "enabled": "Gaituta",
+  "feature": "Eginbidea",
+  "details": "Xehetasunak",
+  "featuresWarning": "Aukera hauek desgaitzeak edukiak sortzeko eta administratzeko gaitasun garrantzitsuak ken ditzake.",
+  "largeSiteWarning": "Gune honek orri asko ditu. Eskeletoa sortzeak denbora behar izan dezake."
+}

@@ -122,5 +122,21 @@
   "recent": "Recent",
   "popular": "Popular",
   "copiedToClipboard": "Copied to clipboard",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Image info",
+  "imageActions": "Image actions",
+  "imageRecommendations": "Image recommendations",
+  "compressImage": "Compress image",
+  "resizeTo": "Resize to",
+  "created": "Created",
+  "size": "Size",
+  "dimensions": "Dimensions",
+  "type": "Type",
+  "done": "done",
+  "noFileUuid": "File reference unavailable; re-upload to enable actions.",
+  "fileOpsUnavailable": "File operations are not available for this site.",
+  "fileOpFailed": "File operation failed.",
+  "fileExtensionNotAllowed": "This field only accepts the following file types:",
+  "fileTypeNotAllowed": "This field only accepts the following media types:",
+  "transformFailed": "Post-upload transform failed; the original file was kept."
 }

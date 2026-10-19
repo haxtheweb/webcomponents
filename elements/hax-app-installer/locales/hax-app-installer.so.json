@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Kaydka GitHub",
   "anErrorOccurred": "Khalad ayaa dhacay",
-  "retry": "Dib u isku day"
+  "retry": "Dib u isku day",
+  "permissionRequired": "Ogolaansho ayaa loo baahan yahay",
+  "passwordRequirements": "Shuruudaha furaha sirta",
+  "requirementLength": "Ugu yaraan 8 xaraf",
+  "requirementUppercase": "Hal xaraf oo waaweyn",
+  "requirementLowercase": "Hal xaraf oo yar",
+  "requirementNumber": "Hal lambar",
+  "requirementSymbol": "Hal calaamad"
 }

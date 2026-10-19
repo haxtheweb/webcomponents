@@ -122,5 +122,21 @@
   "recent": "Nso nso a",
   "popular": "Ihe a ma ama",
   "copiedToClipboard": "Edepụtagha na clipboard",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Ozi foto",
+  "imageActions": "Omume foto",
+  "imageRecommendations": "Ndụmọdụ foto",
+  "compressImage": "Mpikọta foto",
+  "resizeTo": "Gbanwee nha ka ọ bụrụ",
+  "created": "E mepụtara",
+  "size": "Nha",
+  "dimensions": "Akụkụ",
+  "type": "Ụdị",
+  "done": "emechaala",
+  "noFileUuid": "Ntụaka faịlụ adịghị; bugoro ya ọzọ iji mee ka omume rụọ ọrụ.",
+  "fileOpsUnavailable": "Omume faịlụ adịghị maka saịtị a.",
+  "fileOpFailed": "Omume faịlụ dara.",
+  "fileExtensionNotAllowed": "Ebe a na-anabata naanị ụdị faịlụ ndị a:",
+  "fileTypeNotAllowed": "Ebe a na-anabata naanị ụdị mgbasa ozi ndị a:",
+  "transformFailed": "Mgbanwe mgbe mbugo dara; e debere faịlụ mbụ."
 }

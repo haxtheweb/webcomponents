@@ -122,5 +122,21 @@
   "recent": "මෑතකාලීන",
   "popular": "ජනප්‍රිය",
   "copiedToClipboard": "ක්ලිප්බෝඩ් එකට පිටපත් විය",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "රූප තොරතුරු",
+  "imageActions": "රූප ක්‍රියා",
+  "imageRecommendations": "රූප නිර්දේශ",
+  "compressImage": "රූපය සම්පීඩනය කරන්න",
+  "resizeTo": "ප්‍රමාණය වෙනස් කරන්න",
+  "created": "සාදන ලදී",
+  "size": "ප්‍රමාණය",
+  "dimensions": "මානයන්",
+  "type": "වර්ගය",
+  "done": "අවසන්",
+  "noFileUuid": "ගොනු යොමුව නොමැත; ක්‍රියා සක්‍රිය කිරීමට නැවත උඩුගත කරන්න.",
+  "fileOpsUnavailable": "මෙම අඩවිය සඳහා ගොනු මෙහෙයුම් ලබා ගත නොහැක.",
+  "fileOpFailed": "ගොනු මෙහෙයුම අසාර්ථක විය.",
+  "fileExtensionNotAllowed": "මෙම ක්ෂේත්‍රය පහත ගොනු වර්ග පමණක් පිළිගනී:",
+  "fileTypeNotAllowed": "මෙම ක්ෂේත්‍රය පහත මාධ්‍ය වර්ග පමණක් පිළිගනී:",
+  "transformFailed": "උඩුගත කිරීමෙන් පසු පරිවර්තනය අසාර්ථක විය; මුල් ගොනුව තබා ගන්නා ලදී."
 }

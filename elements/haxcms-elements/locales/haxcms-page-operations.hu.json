@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Vázlatműveletek",
+  "editPage": "Oldal szerkesztése",
+  "addPage": "Aloldal hozzáadása",
+  "moveUp": "Feljebb",
+  "moveDown": "Lejjebb",
+  "indent": "Behúzás",
+  "outdent": "Behúzás csökkentése",
+  "moveTo": "Áthelyezés ide...",
+  "siteOutline": "Webhelyvázlat megnyitása",
+  "delete": "Oldal törlése",
+  "unlock": "Feloldás",
+  "lock": "Zárolás"
+}

@@ -122,5 +122,21 @@
   "recent": "Zaposachedwa",
   "popular": "Zodziwikika",
   "copiedToClipboard": "Wokopedwa kuchipata",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Zambiri za chithunzi",
+  "imageActions": "Zochita pa chithunzi",
+  "imageRecommendations": "Malangizo a chithunzi",
+  "compressImage": "Chepetsani kukula kwa chithunzi",
+  "resizeTo": "Sinthani kukula kukhala",
+  "created": "Chinapangidwa",
+  "size": "Kukula",
+  "dimensions": "Miyeso",
+  "type": "Mtundu",
+  "done": "zatheka",
+  "noFileUuid": "Chizindikiro cha fayilo sichikupezeka; kwezaninso kuti mutsegule zochita.",
+  "fileOpsUnavailable": "Zochita pa mafayilo sizikupezeka pa tsamba ili.",
+  "fileOpFailed": "Zochita pa fayilo zalephera.",
+  "fileExtensionNotAllowed": "Malo awa amalandira mitundu ya mafayilo iyi yokha:",
+  "fileTypeNotAllowed": "Malo awa amalandira mitundu ya media iyi yokha:",
+  "transformFailed": "Kusintha pambuyo pokweza kwalephera; fayilo yoyambirira yasungidwa."
 }

@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Pilih sasaran",
+  "importContentUnderThisPage": "Import kandungan di bawah halaman ini",
+  "importThisContent": "Import kandungan ini",
+  "thisPage": "halaman ini",
+  "newPage": "Halaman baharu",
+  "copyOf": "Salinan",
+  "pageActions": "Tindakan Halaman",
+  "editTitle": "Edit tajuk",
+  "lock": "Kunci",
+  "unlock": "Buka kunci",
+  "moveUp": "Alih ke atas",
+  "moveDown": "Alih ke bawah",
+  "makeChild": "Jadikan anak",
+  "moveToParentLevel": "Alih ke tahap induk",
+  "addPage": "Tambah halaman",
+  "duplicate": "Pendua",
+  "delete": "Padam",
+  "restore": "Pulihkan",
+  "goToPage": "Pergi ke halaman"
+}

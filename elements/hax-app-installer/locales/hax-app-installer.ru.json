@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Репозиторий GitHub",
   "anErrorOccurred": "Произошла ошибка",
-  "retry": "Повторить"
+  "retry": "Повторить",
+  "permissionRequired": "Требуется разрешение",
+  "passwordRequirements": "Требования к паролю",
+  "requirementLength": "Не менее 8 символов",
+  "requirementUppercase": "Одна заглавная буква",
+  "requirementLowercase": "Одна строчная буква",
+  "requirementNumber": "Одна цифра",
+  "requirementSymbol": "Один символ"
 }

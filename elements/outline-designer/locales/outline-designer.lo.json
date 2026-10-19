@@ -1,0 +1,21 @@
+{
+  "selectTarget": "ເລືອກເປົ້າໝາຍ",
+  "importContentUnderThisPage": "ນຳເຂົ້າເນື້ອຫາໄວ້ພາຍໃຕ້ໜ້ານີ້",
+  "importThisContent": "ນຳເຂົ້າເນື້ອຫານີ້",
+  "thisPage": "ໜ້ານີ້",
+  "newPage": "ໜ້າໃໝ່",
+  "copyOf": "ສຳເນົາຂອງ",
+  "pageActions": "ການດຳເນີນການໜ້າ",
+  "editTitle": "ແກ້ໄຂຫົວຂໍ້",
+  "lock": "ລັອກ",
+  "unlock": "ປົດລັອກ",
+  "moveUp": "ຍ້າຍຂຶ້ນ",
+  "moveDown": "ຍ້າຍລົງ",
+  "makeChild": "ເຮັດເປັນໜ້າຍ່ອຍ",
+  "moveToParentLevel": "ຍ້າຍໄປລະດັບແມ່",
+  "addPage": "ເພີ່ມໜ້າ",
+  "duplicate": "ສຳເນົາຊ້ຳ",
+  "delete": "ລຶບ",
+  "restore": "ກູ້ຄືນ",
+  "goToPage": "ໄປຫາໜ້າ"
+}

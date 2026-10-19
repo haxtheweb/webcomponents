@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Максатны сайлагыз",
+  "importContentUnderThisPage": "Эчтәлекне бу бит астына импортлау",
+  "importThisContent": "Бу эчтәлекне импортлау",
+  "thisPage": "бу бит",
+  "newPage": "Яңа бит",
+  "copyOf": "Күчермәсе:",
+  "pageActions": "Бит гамәлләре",
+  "editTitle": "Исемне үзгәртү",
+  "lock": "Йозаклау",
+  "unlock": "Йозакны ачу",
+  "moveUp": "Өскә күчерү",
+  "moveDown": "Аска күчерү",
+  "makeChild": "Балалар бите итү",
+  "moveToParentLevel": "Ата-ана дәрәҗәсенә күчерү",
+  "addPage": "Бит өстәү",
+  "duplicate": "Кабатлау",
+  "delete": "Бетерү",
+  "restore": "Кайтару",
+  "goToPage": "Биткә күчү"
+}

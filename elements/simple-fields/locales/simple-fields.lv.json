@@ -5,5 +5,9 @@
   "recordAudio": "Ierakstīt audio",
   "recordScreen": "Ierakstīt ekrānu",
   "cancel": "Atcelt",
-  "uploadMedia": "Augšupielādēt multividi"
+  "uploadMedia": "Augšupielādēt multividi",
+  "record": "Ierakstīt",
+  "pause": "Pauzēt ierakstu",
+  "stopSave": "Apturēt un saglabāt",
+  "clickToTakePhoto": "Noklikšķiniet, lai uzņemtu foto"
 }

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Мем",
+    "description": "Зургаас мем бүтээх."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Эх сурвалж",
+        "description": "Мемийн зургийн эх URL."
+      },
+      {
+        "property": "topText",
+        "title": "Дээд текст",
+        "description": "Мемийн дээд талын текст."
+      },
+      {
+        "property": "bottomText",
+        "title": "Доод текст",
+        "description": "Мемийн доод талын текст."
+      },
+      {
+        "property": "alt",
+        "title": "Орлох текст",
+        "description": "Хараагүй хэрэглэгчдэд зургийг тайлбарлах текст."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Жижиг тоглоом руу сэм ойртож буй муур",
+        "topText": "Би чамд авчирлаа",
+        "bottomText": "үхлийг"
+      }
+    }
+  ]
+}

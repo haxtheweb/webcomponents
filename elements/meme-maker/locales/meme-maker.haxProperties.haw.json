@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mīma",
+    "description": "Hana i mīma mai kekahi kiʻi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Kumu",
+        "description": "URL kumu no ke kiʻi mīma."
+      },
+      {
+        "property": "topText",
+        "title": "Kikokikona luna",
+        "description": "Ke kikokikona ma luna o ka mīma."
+      },
+      {
+        "property": "bottomText",
+        "title": "Kikokikona lalo",
+        "description": "Ke kikokikona ma lalo o ka mīma."
+      },
+      {
+        "property": "alt",
+        "title": "Kikokikona ʻokoʻa",
+        "description": "Kikokikona e wehewehe ai i ke kiʻi no ka poʻe ʻike ʻole maka."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Pōpoki e hahai malū ana i kekahi mea pāʻani liʻiliʻi",
+        "topText": "Lawe mai au iā ʻoe",
+        "bottomText": "i ka make"
+      }
+    }
+  ]
+}

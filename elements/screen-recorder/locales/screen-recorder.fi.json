@@ -5,5 +5,6 @@
   "systemAudio": "Sisällytä järjestelmän ääni",
   "microphoneAudio": "Sisällytä mikrofoni",
   "recordingStarted": "Tallennus aloitettu",
-  "recordingStopped": "Tallennus lopetettu"
+  "recordingStopped": "Tallennus lopetettu",
+  "audioOptions": "Ääniasetukset"
 }

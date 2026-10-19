@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Accións do esquema",
+  "editPage": "Editar páxina",
+  "addPage": "Engadir páxina filla",
+  "moveUp": "Subir",
+  "moveDown": "Baixar",
+  "indent": "Sangrar",
+  "outdent": "Quitar sangría",
+  "moveTo": "Mover a...",
+  "siteOutline": "Abrir esquema do sitio",
+  "delete": "Eliminar páxina",
+  "unlock": "Desbloquear",
+  "lock": "Bloquear"
+}
