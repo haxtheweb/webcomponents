@@ -731,6 +731,71 @@ describe('AppHaxBackendAPI', () => {
       await el._validateConnection()
       expect(store.user.name).to.equal('testuser')
     })
+    describe('session request tokens (SEC-SESSION)', () => {
+      let savedGlobalSettings
+      let savedStoreSettings
+      beforeEach(() => {
+        savedGlobalSettings = globalThis.appSettings
+        savedStoreSettings = store.appSettings
+        globalThis.appSettings = { connectionTest: '/api/test' }
+        store.appSettings = { connectionTest: '/api/test' }
+      })
+      afterEach(() => {
+        globalThis.appSettings = savedGlobalSettings
+        store.appSettings = savedStoreSettings
+      })
+      it('stores tokens returned by an authenticated connection-test', async () => {
+        el.appSettings = { connectionTest: '/api/test' }
+        el.jwt = 'valid-jwt'
+        globalThis.fetch = async () => ({
+          ok: true,
+          json: async () => ({
+            authenticated: true,
+            jwt: 'new-jwt',
+            userToken: 'u-tok',
+            siteToken: 's-tok',
+          }),
+        })
+        const result = await el._validateConnection()
+        expect(result).to.be.true
+        expect(el.appSettings.userToken).to.equal('u-tok')
+        expect(el.appSettings.siteToken).to.equal('s-tok')
+        expect(store.appSettings.userToken).to.equal('u-tok')
+        expect(globalThis.appSettings.userToken).to.equal('u-tok')
+        expect(globalThis.appSettings.getUserDataHeaders['X-HAXCMS-User-Token']).to.equal('u-tok')
+        const auth = globalThis.__AppHaxSystemApiRegistryState.auth
+        expect(auth.userToken).to.equal('u-tok')
+        expect(auth.siteToken).to.equal('s-tok')
+      })
+      it('ignores tokens on a failed connection-test', async () => {
+        el.appSettings = { connectionTest: '/api/test' }
+        el.jwt = 'valid-jwt'
+        globalThis.fetch = async () => ({
+          ok: true,
+          json: async () => ({ authenticated: false, userToken: 'nope' }),
+        })
+        const result = await el._validateConnection()
+        expect(result).to.be.false
+        expect(el.appSettings.userToken).to.equal(undefined)
+        expect(globalThis.appSettings.userToken).to.equal(undefined)
+      })
+      it('sessionTokensReceived applies tokens re-broadcast by jwt-login', () => {
+        el.appSettings = { connectionTest: '/api/test' }
+        el.sessionTokensReceived({
+          detail: { userToken: 'login-u', context: 'login' },
+        })
+        expect(el.appSettings.userToken).to.equal('login-u')
+        expect(el.appSettings).to.not.have.property('siteToken')
+        expect(store.appSettings.userToken).to.equal('login-u')
+        expect(globalThis.__AppHaxSystemApiRegistryState.auth.userToken).to.equal('login-u')
+      })
+      it('_applySessionRequestTokens is a no-op without tokens', () => {
+        el.appSettings = { connectionTest: '/api/test' }
+        expect(el._applySessionRequestTokens({ jwt: 'x' })).to.be.false
+        expect(el._applySessionRequestTokens(null)).to.be.false
+        expect(el.appSettings).to.deep.equal({ connectionTest: '/api/test' })
+      })
+    })
     it('returns true when response has status 200 and jwt', async () => {
       el.appSettings = { connectionTest: '/api/test' }
       el.jwt = 'valid-jwt'

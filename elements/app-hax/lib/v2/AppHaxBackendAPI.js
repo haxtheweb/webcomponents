@@ -9,6 +9,12 @@ import {
   configureAppHAXSystemApiRegistry,
   waitForAppHAXSystemApiRegistryReady,
 } from "./app-hax-system-api-registry.js";
+import {
+  extractSessionRequestTokens,
+  hasSessionRequestTokens,
+  applySessionRequestTokens,
+  withSessionRequestTokens,
+} from "@haxtheweb/haxcms-elements/lib/core/utils/session-request-tokens.js";
 const SUPPORTED_SITE_LICENSES = Object.keys(new licenseList("select"));
 const APP_HAX_SYSTEM_CALL_ALIASES = {
   getUserDataPath: {
@@ -283,6 +289,43 @@ export class AppHaxBackendAPI extends LitElement {
       this.jwt,
     );
     return this.__systemApiRegistryReady;
+  }
+  /**
+   * Security (SEC-SESSION): store the request tokens (userToken / siteToken)
+   * that login, refresh and connection-test responses now carry, so an
+   * editor that loaded connection-settings anonymously can make
+   * token-protected calls without a page reload. Updates globalThis.appSettings
+   * in place, replaces store.appSettings / this.appSettings with a copy that
+   * has the tokens, and re-applies them to the system API registry.
+   * @param {Object} payload login / refresh / connection-test response body,
+   *   or an already-extracted { userToken, siteToken } object
+   * @returns {boolean} true when tokens were found and applied
+   */
+  _applySessionRequestTokens(payload) {
+    const tokens = extractSessionRequestTokens(payload);
+    if (!hasSessionRequestTokens(tokens)) {
+      return false;
+    }
+    if (globalThis.appSettings && typeof globalThis.appSettings === "object") {
+      applySessionRequestTokens(globalThis.appSettings, tokens);
+    }
+    const current = toJS(store.appSettings);
+    const next = withSessionRequestTokens(
+      current && typeof current === "object" ? current : this.appSettings,
+      tokens,
+    );
+    this.appSettings = withSessionRequestTokens(this.appSettings, tokens);
+    if (next !== current) {
+      store.appSettings = next;
+    }
+    this._configureSystemApiRegistry();
+    return true;
+  }
+  // jwt-login re-broadcasts tokens from login / refresh responses
+  sessionTokensReceived(e) {
+    if (e && e.detail) {
+      this._applySessionRequestTokens(e.detail);
+    }
   }
   _getSystemOperationAlias(call = "") {
     if (
@@ -675,6 +718,8 @@ export class AppHaxBackendAPI extends LitElement {
           }
         }
         if (isAuth && this._hasValidJWT(nextJWT)) {
+          // pick up request tokens before the jwt change fans out
+          this._applySessionRequestTokens(result);
           this.jwt = nextJWT;
           store.jwt = nextJWT;
           this.__validatedJwt = nextJWT;
@@ -816,6 +861,7 @@ export class AppHaxBackendAPI extends LitElement {
       id="jwt"
       @jwt-changed="${this.jwtChanged}"
       @jwt-login-login-failed="${this.jwtFailed}"
+      @jwt-login-session-tokens="${this.sessionTokensReceived}"
     ></jwt-login>`;
   }
 
