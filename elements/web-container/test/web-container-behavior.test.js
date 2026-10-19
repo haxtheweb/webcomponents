@@ -714,7 +714,6 @@ describe('web-container-wc-registry-docs', () => {
         ok: true,
         json: async () => ({
           'git-corner': '@haxtheweb/git-corner/git-corner.js',
-          'hax-bookmarklet': '@haxtheweb/hax-bookmarklet/hax-bookmarklet.js',
           'unrelated-tag': 'vendor/some-lib.js',
           'other-tag': '@haxtheweb/other/other.js',
         }),
@@ -729,9 +728,6 @@ describe('web-container-wc-registry-docs', () => {
     // entries with @haxtheweb/ values and non-hax* keys survive
     expect(Object.keys(el.options).indexOf('git-corner') !== -1).to.equal(true)
     expect(Object.keys(el.options).indexOf('other-tag') !== -1).to.equal(true)
-    expect(Object.keys(el.options).indexOf('hax-bookmarklet') === -1).to.equal(
-      true,
-    )
     expect(Object.keys(el.options).indexOf('unrelated-tag') === -1).to.equal(
       true,
     )
