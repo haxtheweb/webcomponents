@@ -1,7 +1,11 @@
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { autorun, toJS } from "mobx";
-import { localStorageGet, localStorageSet } from "@haxtheweb/utils/utils.js";
+import {
+  localStorageGet,
+  localStorageSet,
+  safeNavigateHref,
+} from "@haxtheweb/utils/utils.js";
 
 const HAXCMSRememberRoute = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {
@@ -56,9 +60,11 @@ const HAXCMSRememberRoute = function (SuperClass) {
             toJS(store.location.pathname)
         ) {
           let btn = globalThis.document.createElement("a");
+          // security (JS-STORAGE-001/JS-URL-002): validate scheme before wiring
+          // a persisted value into href (blocks javascript:/data: URL payloads)
           btn.setAttribute(
             "href",
-            localStorageGet(`HAXCMSlastRoute-${siteName}`),
+            safeNavigateHref(localStorageGet(`HAXCMSlastRoute-${siteName}`)),
           );
           btn.addEventListener("click", this.resumeLastRoute.bind(this));
           btn.innerHTML = `<button style="padding:4px;font-weight:bold;background-color: black; color: white; border: 4px solid black; border-radius:none;margin-left:4px;cursor: pointer;">${this.t.resume}</button>`;

@@ -66,6 +66,9 @@ globalThis.AnchorBehaviors.getTarget = (element = null) => {
       }
     }
     /** search for all combos of id and resource id */
+    // security: URL-derived params are interpolated into attribute selectors;
+    // strip quotes/backslashes so they can't break out or throw SyntaxError
+    const safeParam = (val) => (val ? String(val).replace(/["\\]/g, "") : val);
     globalThis.AnchorBehaviors.target =
       globalThis.document.getElementById(
         globalThis.AnchorBehaviors.params.id,
@@ -74,16 +77,16 @@ globalThis.AnchorBehaviors.getTarget = (element = null) => {
         `#${globalThis.AnchorBehaviors.params.id}`,
       ) ||
       globalThis.document.querySelector(
-        `[resource="#${
+        `[resource="#${safeParam(
           globalThis.AnchorBehaviors.params.id ||
-          globalThis.AnchorBehaviors.params.resource
-        }"]`,
+            globalThis.AnchorBehaviors.params.resource,
+        )}"]`,
       ) ||
       globalThis.document.querySelector(
-        `[resource="${
+        `[resource="${safeParam(
           globalThis.AnchorBehaviors.params.id ||
-          globalThis.AnchorBehaviors.params.resource
-        }"]`,
+            globalThis.AnchorBehaviors.params.resource,
+        )}"]`,
       ) ||
       testElement(element, globalThis.AnchorBehaviors.params) ||
       null;
