@@ -15,9 +15,11 @@ globalThis.DynamicImportRegistry.requestAvailability = () => {
   ) {
     globalThis.DynamicImportRegistry.instance =
       globalThis.document.createElement("dynamic-import-registry");
-    globalThis.document.body.appendChild(
-      globalThis.DynamicImportRegistry.instance,
-    );
+    if (globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.DynamicImportRegistry.instance,
+      );
+    }
   }
   return globalThis.DynamicImportRegistry.instance;
 };

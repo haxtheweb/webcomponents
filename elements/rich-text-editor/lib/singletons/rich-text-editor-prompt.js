@@ -423,9 +423,11 @@ globalThis.RichTextEditorPrompt.requestAvailability = () => {
   if (!globalThis.RichTextEditorPrompt.instance) {
     globalThis.RichTextEditorPrompt.instance =
       globalThis.document.createElement("rich-text-editor-prompt");
-    globalThis.document.body.appendChild(
-      globalThis.RichTextEditorPrompt.instance,
-    );
+    if (globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.RichTextEditorPrompt.instance,
+      );
+    }
   }
   return globalThis.RichTextEditorPrompt.instance;
 };

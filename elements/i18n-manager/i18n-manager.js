@@ -6,19 +6,22 @@ import { LitElement } from "lit";
 // register globally so we can make sure there is only one
 globalThis.I18NManagerStore = globalThis.I18NManagerStore || {};
 globalThis.I18NManagerStore.requestAvailability = () => {
-  if (
-    !globalThis.I18NManagerStore.instance &&
-    globalThis.document &&
-    globalThis.document.body
-  ) {
-    globalThis.I18NManagerStore.instance =
-      globalThis.document.createElement("i18n-manager");
-    globalThis.document.body.appendChild(globalThis.I18NManagerStore.instance);
+  if (!globalThis.I18NManagerStore.instance && globalThis.document) {
+    if (globalThis.document.body) {
+      globalThis.I18NManagerStore.instance =
+        globalThis.document.createElement("i18n-manager");
+      globalThis.document.body.appendChild(
+        globalThis.I18NManagerStore.instance,
+      );
+    } else {
+      // no body to attach to (server side render): a detached instance is
+      // inert, it only keeps the registration bookkeeping so importers that
+      // call I18NManagerStore.registerLocalization at import time don't throw
+      globalThis.I18NManagerStore.instance = new I18NManager();
+    }
   }
   return globalThis.I18NManagerStore.instance;
 };
-export const I18NManagerStore =
-  globalThis.I18NManagerStore.requestAvailability();
 const FALLBACK_LANG = "en";
 const FALLBACK_DIR = "ltr";
 /**
@@ -610,3 +613,6 @@ class I18NManager extends LitElement {
 }
 globalThis.customElements.define(I18NManager.tag, I18NManager);
 export { I18NManager };
+// created after the class exists so the no-body (SSR) path can construct it
+export const I18NManagerStore =
+  globalThis.I18NManagerStore.requestAvailability();

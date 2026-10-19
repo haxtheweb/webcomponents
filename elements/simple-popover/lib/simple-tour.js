@@ -328,7 +328,11 @@ globalThis.SimpleTourManager.requestAvailability = () => {
   if (!globalThis.SimpleTourManager.instance) {
     globalThis.SimpleTourManager.instance =
       globalThis.document.createElement("simple-tour");
-    globalThis.document.body.appendChild(globalThis.SimpleTourManager.instance);
+    if (globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.SimpleTourManager.instance,
+      );
+    }
   }
   return globalThis.SimpleTourManager.instance;
 };

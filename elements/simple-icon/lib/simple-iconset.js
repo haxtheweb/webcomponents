@@ -121,7 +121,9 @@ globalThis.SimpleIconset.requestAvailability = () => {
   ) {
     globalThis.SimpleIconset.instance =
       globalThis.document.createElement("simple-iconset");
-    globalThis.document.body.appendChild(globalThis.SimpleIconset.instance);
+    if (globalThis.document.body) {
+      globalThis.document.body.appendChild(globalThis.SimpleIconset.instance);
+    }
   }
   return globalThis.SimpleIconset.instance;
 };

@@ -167,7 +167,11 @@ globalThis.ResponsiveUtility.requestAvailability = () => {
   ) {
     globalThis.ResponsiveUtility.instance =
       globalThis.document.createElement("responsive-utility");
-    globalThis.document.body.appendChild(globalThis.ResponsiveUtility.instance);
+    if (globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.ResponsiveUtility.instance,
+      );
+    }
   }
   return globalThis.ResponsiveUtility.instance;
 };

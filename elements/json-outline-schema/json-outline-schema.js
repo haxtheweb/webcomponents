@@ -18,7 +18,11 @@ globalThis.JSONOutlineSchema.requestAvailability = () => {
     globalThis.JSONOutlineSchema.instance = globalThis.document.createElement(
       "json-outline-schema",
     );
-    globalThis.document.body.appendChild(globalThis.JSONOutlineSchema.instance);
+    if (globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.JSONOutlineSchema.instance,
+      );
+    }
   }
   return globalThis.JSONOutlineSchema.instance;
 };

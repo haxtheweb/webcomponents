@@ -5,16 +5,20 @@ globalThis.PerformanceDetectManager = globalThis.PerformanceDetectManager || {};
 // is rendered through the same modal
 globalThis.PerformanceDetectManager.requestAvailability = () => {
   if (!globalThis.PerformanceDetectManager.instance) {
-    globalThis.PerformanceDetectManager.instance =
-      globalThis.document.createElement("performance-detect");
-    globalThis.document.body.appendChild(
-      globalThis.PerformanceDetectManager.instance,
-    );
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.PerformanceDetectManager.instance =
+        globalThis.document.createElement("performance-detect");
+      globalThis.document.body.appendChild(
+        globalThis.PerformanceDetectManager.instance,
+      );
+    } else {
+      // no body (server side render): a detached instance still answers
+      // DeviceDetails questions for importers that read it at import time
+      globalThis.PerformanceDetectManager.instance = new PerformanceDetect();
+    }
   }
   return globalThis.PerformanceDetectManager.instance;
 };
-export const DeviceDetails =
-  globalThis.PerformanceDetectManager.requestAvailability();
 class PerformanceDetect extends HTMLElement {
   constructor() {
     super();
@@ -151,4 +155,7 @@ class PerformanceDetect extends HTMLElement {
   }
 }
 globalThis.customElements.define(PerformanceDetect.tag, PerformanceDetect);
+// created after the class exists so the no-body path can construct it
+export const DeviceDetails =
+  globalThis.PerformanceDetectManager.requestAvailability();
 export { PerformanceDetect };

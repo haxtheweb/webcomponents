@@ -1121,7 +1121,9 @@ globalThis.SimpleModal.requestAvailability = () => {
   ) {
     globalThis.SimpleModal.instance =
       globalThis.document.createElement("simple-modal");
-    globalThis.document.body.appendChild(globalThis.SimpleModal.instance);
+    if (globalThis.document.body) {
+      globalThis.document.body.appendChild(globalThis.SimpleModal.instance);
+    }
   }
   return globalThis.SimpleModal.instance;
 };

@@ -14,9 +14,11 @@ globalThis.RelativeHeadingStateManager.requestAvailability = () => {
   if (!globalThis.RelativeHeadingStateManager.instance) {
     globalThis.RelativeHeadingStateManager.instance =
       globalThis.document.createElement("relative-heading-state-manager");
-    globalThis.document.body.appendChild(
-      globalThis.RelativeHeadingStateManager.instance,
-    );
+    if (globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.RelativeHeadingStateManager.instance,
+      );
+    }
   }
   return globalThis.RelativeHeadingStateManager.instance;
 };

@@ -368,7 +368,11 @@ globalThis.FileSystemBroker.requestAvailability = () => {
   ) {
     globalThis.FileSystemBroker.instance =
       globalThis.document.createElement("file-system-broker");
-    globalThis.document.body.appendChild(globalThis.FileSystemBroker.instance);
+    if (globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.FileSystemBroker.instance,
+      );
+    }
   }
   return globalThis.FileSystemBroker.instance;
 };

@@ -1014,14 +1014,10 @@ class Store {
       }, 300);
     });
     // Show toast with button
-    store.toast(
-      this.t.viewOnlyModeMessage,
-      0,
-      {
-        hat: "coffee",
-        slot: exitButton,
-      },
-    );
+    store.toast(this.t.viewOnlyModeMessage, 0, {
+      hat: "coffee",
+      slot: exitButton,
+    });
   }
 
   get viewOnlyMode() {
@@ -1767,7 +1763,9 @@ globalThis.HAXCMS.requestAvailability = () => {
   if (!globalThis.HAXCMS.instance) {
     globalThis.HAXCMS.instance =
       globalThis.document.createElement("haxcms-site-store");
-    globalThis.document.body.appendChild(globalThis.HAXCMS.instance);
+    if (globalThis.document.body) {
+      globalThis.document.body.appendChild(globalThis.HAXCMS.instance);
+    }
   }
   return globalThis.HAXCMS.instance;
 };
