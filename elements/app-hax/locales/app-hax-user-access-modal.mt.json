@@ -1,0 +1,11 @@
+{
+  "userAccess": "Aċċess tal-Utent",
+  "enterUsername": "Daħħal l-isem tal-utent biex tagħti aċċess",
+  "usernamePlaceholder": "Isem l-utent",
+  "addUser": "Żid Utent",
+  "cancel": "Ikkanċella",
+  "userAccessGranted": "L-aċċess tal-utent ingħata b'suċċess!",
+  "userNotFound": "L-utent ma nstabx jew mhuwiex awtorizzat",
+  "loadingAddingUser": "Qed jiżdied l-utent...",
+  "grantAccessTo": "Agħti aċċess lil:"
+}

@@ -5,5 +5,6 @@
   "systemAudio": "Inkluzivi sistemsonon",
   "microphoneAudio": "Inkluzivi mikrofonon",
   "recordingStarted": "Registrado komenciĝis",
-  "recordingStopped": "Registrado haltiĝis"
+  "recordingStopped": "Registrado haltiĝis",
+  "audioOptions": "Sonaj opcioj"
 }

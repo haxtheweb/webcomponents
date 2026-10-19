@@ -1,0 +1,11 @@
+{
+  "userAccess": "Přístup uživatelů",
+  "enterUsername": "Zadejte uživatelské jméno pro udělení přístupu",
+  "usernamePlaceholder": "Uživatelské jméno",
+  "addUser": "Přidat uživatele",
+  "cancel": "Zrušit",
+  "userAccessGranted": "Přístup uživateli byl úspěšně udělen!",
+  "userNotFound": "Uživatel nebyl nalezen nebo nemá oprávnění",
+  "loadingAddingUser": "Přidávání uživatele...",
+  "grantAccessTo": "Udělit přístup:"
+}

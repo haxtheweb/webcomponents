@@ -5,5 +5,6 @@
   "systemAudio": "அமைப்பு ஒலியைச் சேர்க்கவும்",
   "microphoneAudio": "ஒலிவாங்கியைச் சேர்க்கவும்",
   "recordingStarted": "பதிவு தொடங்கியது",
-  "recordingStopped": "பதிவு நிறுத்தப்பட்டது"
+  "recordingStopped": "பதிவு நிறுத்தப்பட்டது",
+  "audioOptions": "ஒலி விருப்பங்கள்"
 }

@@ -1,6 +1,7 @@
 {
-  "question": "מיין את הדברים הבאים לפי הסדר",
   "numCorrectLeft": "יש לך",
   "numCorrectRight": "נכון.",
-  "checkAnswer": "שלח"
+  "checkAnswer": "שלח",
+  "tryAgain": "נסו שוב",
+  "question": "מיין את הדברים הבאים לפי הסדר"
 }

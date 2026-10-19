@@ -1,0 +1,11 @@
+{
+  "userAccess": "Uzanta aliro",
+  "enterUsername": "Enigu uzantnomon por doni aliron",
+  "usernamePlaceholder": "Uzantnomo",
+  "addUser": "Aldoni uzanton",
+  "cancel": "Nuligi",
+  "userAccessGranted": "Aliro sukcese donita al la uzanto!",
+  "userNotFound": "Uzanto ne trovita aŭ ne rajtigita",
+  "loadingAddingUser": "Aldonante uzanton...",
+  "grantAccessTo": "Doni aliron al:"
+}

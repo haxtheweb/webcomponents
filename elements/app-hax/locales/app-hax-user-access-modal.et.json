@@ -1,0 +1,11 @@
+{
+  "userAccess": "Kasutajate juurdepääs",
+  "enterUsername": "Sisesta kasutajanimi juurdepääsu andmiseks",
+  "usernamePlaceholder": "Kasutajanimi",
+  "addUser": "Lisa kasutaja",
+  "cancel": "Tühista",
+  "userAccessGranted": "Juurdepääs edukalt antud!",
+  "userNotFound": "Kasutajat ei leitud või puudub volitus",
+  "loadingAddingUser": "Kasutaja lisamine...",
+  "grantAccessTo": "Anna juurdepääs:"
+}

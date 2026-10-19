@@ -12,6 +12,10 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
       openInNewWindow: "Open in new window",
       submitted: "Submitted",
     };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     autorun(() => {
       const _mobx_val_0 = toJS(GradeBookStore.activeSubmission);
       Promise.resolve().then(() => {

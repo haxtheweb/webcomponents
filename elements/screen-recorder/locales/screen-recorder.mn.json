@@ -5,5 +5,6 @@
   "systemAudio": "Системийн дууг оруулах",
   "microphoneAudio": "Микрофоныг оруулах",
   "recordingStarted": "Бичлэг эхэлсэн",
-  "recordingStopped": "Бичлэг зогссон"
+  "recordingStopped": "Бичлэг зогссон",
+  "audioOptions": "Аудио сонголтууд"
 }

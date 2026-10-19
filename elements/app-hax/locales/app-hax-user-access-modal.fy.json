@@ -1,0 +1,11 @@
+{
+  "userAccess": "Brûkerstagong",
+  "enterUsername": "Fier in brûkersnamme yn om tagong te jaan",
+  "usernamePlaceholder": "Brûkersnamme",
+  "addUser": "Brûker tafoegje",
+  "cancel": "Annulearje",
+  "userAccessGranted": "Brûkerstagong mei sukses jûn!",
+  "userNotFound": "Brûker net fûn of net autorisearre",
+  "loadingAddingUser": "Brûker tafoegje...",
+  "grantAccessTo": "Tagong jaan oan:"
+}
