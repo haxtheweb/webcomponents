@@ -280,7 +280,7 @@ globalThis.RichTextEditorSource.requestAvailability = () => {
     globalThis.RichTextEditorSource.stylesheet =
       globalThis.document.createElement("style");
     globalThis.RichTextEditorSource.stylesheet.innerHTML = `rich-text-editor-source + [data-rich-text-editor-view-source-mode] { display: none }`;
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(
         globalThis.RichTextEditorSource.instance,
       );

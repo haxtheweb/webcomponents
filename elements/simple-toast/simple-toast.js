@@ -15,7 +15,7 @@ globalThis.SimpleToast.requestAvailability = () => {
   if (!globalThis.SimpleToast.instance && globalThis.document) {
     globalThis.SimpleToast.instance =
       globalThis.document.createElement("simple-toast");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(globalThis.SimpleToast.instance);
     }
   }

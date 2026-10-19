@@ -14,7 +14,7 @@ globalThis.WCAutoload.requestAvailability = () => {
   if (!globalThis.WCAutoload.instance) {
     globalThis.WCAutoload.instance =
       globalThis.document.createElement("wc-autoload");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(globalThis.WCAutoload.instance);
     }
   }

@@ -14,7 +14,7 @@ globalThis.RelativeHeadingStateManager.requestAvailability = () => {
   if (!globalThis.RelativeHeadingStateManager.instance) {
     globalThis.RelativeHeadingStateManager.instance =
       globalThis.document.createElement("relative-heading-state-manager");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(
         globalThis.RelativeHeadingStateManager.instance,
       );

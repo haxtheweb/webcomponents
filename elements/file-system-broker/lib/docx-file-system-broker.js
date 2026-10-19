@@ -133,7 +133,7 @@ globalThis.DOCXFileSystemBroker.requestAvailability = () => {
   if (!globalThis.DOCXFileSystemBroker.instance) {
     globalThis.DOCXFileSystemBroker.instance =
       globalThis.document.createElement("docx-file-system-broker");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(
         globalThis.DOCXFileSystemBroker.instance,
       );

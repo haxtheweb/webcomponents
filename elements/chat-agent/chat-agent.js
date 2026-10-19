@@ -210,7 +210,7 @@ globalThis.ChatAgentStore.requestAvailability = () => {
   if (!globalThis.ChatAgentStore.instance) {
     globalThis.ChatAgentStore.instance =
       globalThis.document.createElement("chat-agent");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(globalThis.ChatAgentStore.instance);
     }
   }
