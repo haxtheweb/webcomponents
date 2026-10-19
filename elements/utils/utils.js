@@ -166,6 +166,63 @@ export var badJSEventAttributes = [
   "onwheel",
 ];
 export var badIFrameAttributes = ["srcdoc"];
+// elements that never belong in authored / imported content
+export var badContentElements = ["base", "meta", "lrn-math-controller"];
+
+/**
+ * Is this attribute an inline event handler the browser will execute?
+ * security: the fixed badJSEventAttributes list goes stale as browsers add
+ * events (e.g. oncommand), so also ask the platform. Only base prototypes are
+ * checked so custom element attributes like "one-line" are left alone.
+ */
+export function isEventHandlerAttribute(attributeName) {
+  if (!attributeName || typeof attributeName !== "string") {
+    return false;
+  }
+  const name = attributeName.toLowerCase();
+  if (badJSEventAttributes.includes(name)) {
+    return true;
+  }
+  if (!/^on[a-z]+$/.test(name)) {
+    return false;
+  }
+  return (
+    (globalThis.HTMLElement && name in globalThis.HTMLElement.prototype) ||
+    (globalThis.SVGElement && name in globalThis.SVGElement.prototype) ||
+    (globalThis.Element && name in globalThis.Element.prototype) ||
+    (globalThis.Document && name in globalThis.Document.prototype) ||
+    name in globalThis
+  );
+}
+
+/**
+ * Remove elements that are unsafe in content: base / meta (URL hijack and
+ * refresh redirects), script-loading custom elements, and SVG animations
+ * that rewrite href (bypasses per-attribute URL checks).
+ */
+export function removeUnsafeElements(root) {
+  if (!root || !root.querySelectorAll) {
+    return root;
+  }
+  const bad = root.querySelectorAll(
+    badContentElements.join(",") + ",set,animate",
+  );
+  for (let i = 0; i < bad.length; i++) {
+    const tag = bad[i].tagName.toLowerCase();
+    if (tag === "set" || tag === "animate") {
+      const target = (bad[i].getAttribute("attributeName") || "")
+        .trim()
+        .toLowerCase();
+      if (target !== "href" && target !== "xlink:href") {
+        continue;
+      }
+    }
+    if (bad[i].parentNode) {
+      bad[i].parentNode.removeChild(bad[i]);
+    }
+  }
+  return root;
+}
 
 export function isURLAttribute(attributeName) {
   if (!attributeName || typeof attributeName !== "string") {
@@ -270,6 +327,25 @@ export function removeBadJSEventAttributes(el) {
           replacement[j].removeAttribute(badJSEventAttributes[i]);
         }
       }
+      // security: catch any remaining on* handler the browser supports
+      const all = [el];
+      if (el.querySelectorAll) {
+        const nested = el.querySelectorAll("*");
+        for (let i = 0; i < nested.length; i++) {
+          all.push(nested[i]);
+        }
+      }
+      for (let i = 0; i < all.length; i++) {
+        if (!all[i].attributes) {
+          continue;
+        }
+        for (let j = all[i].attributes.length - 1; j >= 0; j--) {
+          const attr = all[i].attributes.item(j);
+          if (attr && isEventHandlerAttribute(attr.name)) {
+            all[i].removeAttribute(attr.name);
+          }
+        }
+      }
     }
     removeUnsafeIframeAttributes(el);
     removeUnsafeURLAttributes(el);
@@ -283,6 +359,7 @@ export function sanitizeNodeTree(
   if (!root) {
     return root;
   }
+  removeUnsafeElements(root);
   if (root.nodeType === globalThis.Node.ELEMENT_NODE) {
     removeBadJSEventAttributes(root);
     if (

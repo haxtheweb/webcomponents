@@ -8,6 +8,7 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { HAXCMSI18NMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
 import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 
 /**
@@ -506,7 +507,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
         ${!this.loading && this.randomElement
           ? html`
               <div class="random-element">
-                ${unsafeHTML(this.randomElement.html)}
+                ${unsafeHTML(sanitizeHTMLString(this.randomElement.html))}
               </div>
             `
           : nothing}

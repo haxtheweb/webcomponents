@@ -20,6 +20,10 @@
     Cache-Control = "max-age=31536001"
     Cross-Origin-Opener-Policy = "same-origin"
     Cross-Origin-Embedder-Policy = "require-corp"
+    # security: report-only CSP (logs violations in the browser console, blocks
+    # nothing). Promote to Content-Security-Policy once demos run clean.
+    Content-Security-Policy-Report-Only = "script-src 'self' 'unsafe-inline' https://cdn.hax.cloud https://cdn.webcomponents.psu.edu https://cdnjs.cloudflare.com https://*.disqus.com https://badges.linkedin.com https://platform.twitter.com; object-src 'none'; base-uri 'self'"
+    X-Content-Type-Options = "nosniff"
 
 [[headers]]
   for = "/"

@@ -101,6 +101,17 @@
       if (!iframe) {
         return; // Cannot find sender
       }
+
+      // security: the message origin must match the origin the iframe was
+      // loaded from, so a navigated / hijacked frame can not drive resizes
+      // (JS-MSG-001)
+      try {
+        if (event.origin !== new URL(iframe.src, globalThis.location.href).origin) {
+          return;
+        }
+      } catch (e) {
+        return;
+      }
   
       // Find action handler handler
       // security: standard h5p resize messages require context === 'h5p' (JS-MSG-001)

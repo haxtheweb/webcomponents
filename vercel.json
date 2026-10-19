@@ -1,11 +1,16 @@
 {
   "buildCommand": "yarn install && yarn build-gallery && node scripts/prepare-vercel-deploy.js",
   "outputDirectory": ".",
-  "functions": {
-    "api/*.js": {
-      "memory": 3008,
-      "maxDuration": 300,
-      "excludeFiles": "{**/monaco-editor/**,api/node_modules/monaco-editor/**,node_modules/monaco-editor/**,api/node_modules/lunr/build/**,node_modules/lunr/build/**}"
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "script-src 'self' 'unsafe-inline' https://cdn.hax.cloud https://cdn.webcomponents.psu.edu https://cdnjs.cloudflare.com https://*.disqus.com https://badges.linkedin.com https://platform.twitter.com; object-src 'none'; base-uri 'self'"
+        },
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
     }
-  }
+  ]
 }

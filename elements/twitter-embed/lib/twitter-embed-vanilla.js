@@ -6,6 +6,31 @@
  * @element twitter-embed-vanilla
  */
 const FALLBACK_LANG = "en";
+const FALLBACK_WIDTH = "550px";
+// security: every value interpolated into the innerHTML template below is
+// validated against a strict pattern and then escaped, so author / imported
+// attribute values can not break out of the markup (DOM XSS)
+function escapeAttr(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+function safeTweetId(value) {
+  const match = String(value || "").match(/^\d+/);
+  return match ? match[0] : "";
+}
+function safeWidth(value) {
+  return /^\d+(\.\d+)?(px|%|em|rem|vw)?$/.test(String(value || ""))
+    ? String(value)
+    : FALLBACK_WIDTH;
+}
+function safeLang(value) {
+  return /^[a-zA-Z]{2,8}(-[a-zA-Z0-9]{1,8})*$/.test(String(value || ""))
+    ? String(value)
+    : FALLBACK_LANG;
+}
 class TwitterEmbedVanilla extends HTMLElement {
   static get tag() {
     return "twitter-embed-vanilla";
@@ -141,22 +166,27 @@ class TwitterEmbedVanilla extends HTMLElement {
     // origin check
     const credentialless =
       globalThis.crossOriginIsolated === true ? " credentialless" : "";
+    const width = escapeAttr(safeWidth(this.dataWidth));
+    const tweetId = escapeAttr(safeTweetId(this.tweetId));
+    const lang = escapeAttr(encodeURIComponent(safeLang(this.lang)));
+    const theme = this.dataTheme === "dark" ? "dark" : "light";
+    const popups = this.allowPopups === "allow-popups" ? "allow-popups" : "";
     return `
     <div
       class="twitter-tweet twitter-tweet-rendered"
-      style="display: flex; max-width: ${this.dataWidth}; width: 100%; margin-top: 10px; margin-bottom: 10px;">
+      style="display: flex; max-width: ${width}; width: 100%; margin-top: 10px; margin-bottom: 10px;">
       <iframe
-        sandbox="allow-same-origin allow-scripts ${this.allowPopups}"
+        sandbox="allow-same-origin allow-scripts ${popups}"
         scrolling="no"
         frameborder="0"
         loading="lazy"
         allowtransparency="true"
         allow="autoplay; encrypted-media; fullscreen"${credentialless}
         referrerpolicy="strict-origin-when-cross-origin"
-        style="position: static; visibility: visible; width: ${this.dataWidth}; height: 498px; display: block; flex-grow: 1;"
+        style="position: static; visibility: visible; width: ${width}; height: 498px; display: block; flex-grow: 1;"
         title="Twitter Tweet"
-        src="https://platform.twitter.com/embed/index.html?dnt=true&amp&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${this.tweetId}&amp;lang=${this.lang}&amp;theme=${this.dataTheme}&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${this.dataWidth}"
-        data-tweet-id="${this.tweetId}">
+        src="https://platform.twitter.com/embed/index.html?dnt=true&amp&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${tweetId}&amp;lang=${lang}&amp;theme=${theme}&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${escapeAttr(encodeURIComponent(safeWidth(this.dataWidth)))}"
+        data-tweet-id="${tweetId}">
       </iframe>
     </div>`;
   }

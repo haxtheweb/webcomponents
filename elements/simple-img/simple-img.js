@@ -183,16 +183,24 @@ export class SimpleImg extends HTMLElement {
   // render a given src as it will be calculated
   render(src) {
     this.innerHTML = null;
-    this.innerHTML = `
-    <img 
-      src="${src}" 
-      height="${this.height}" 
-      width="${this.width}" 
-      alt="${this.alt}" 
-      fetchpriority="${this.fetchpriority}"
-      decoding="${this.decoding}"
-      loading="${this.loading}"
-    />`;
+    // security: build the img with DOM APIs instead of an innerHTML template
+    // so a quote in alt / src can not break out of the attribute (DOM XSS)
+    const img = globalThis.document.createElement("img");
+    const attrs = {
+      src: src,
+      height: this.height,
+      width: this.width,
+      alt: this.alt,
+      fetchpriority: this.fetchpriority,
+      decoding: this.decoding,
+      loading: this.loading,
+    };
+    Object.keys(attrs).forEach((key) => {
+      if (attrs[key] !== null && typeof attrs[key] !== "undefined") {
+        img.setAttribute(key, String(attrs[key]));
+      }
+    });
+    this.appendChild(img);
     this.rendering = false;
   }
 

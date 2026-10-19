@@ -1,11 +1,14 @@
 // forked from https://github.com/janmarthedal/math-tex
 const document = globalThis.document,
   states = { start: 1, loading: 2, ready: 3, typesetting: 4, error: 5 };
+// security: the MathJax URL is a fixed constant and can not be overridden by
+// markup. A configurable src let any injected lrn-math-controller load an
+// arbitrary script, bypassing HTML sanitization (script gadget).
+const src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js";
 let mathjaxHub,
   typesets = [],
   state = states.start,
-  styleNode,
-  src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js";
+  styleNode;
 
 function getStyleNode() {
   const styleNodes = globalThis.document.querySelectorAll("style");
@@ -55,6 +58,8 @@ function flush_typesets() {
 }
 
 function load_library() {
+  // security: only ever inject the library once per page
+  if (state !== states.start) return;
   state = states.loading;
   globalThis.MathJax = {
     skipStartupTypeset: true,
@@ -90,7 +95,6 @@ function load_library() {
 
 class LrnMathController extends HTMLElement {
   connectedCallback() {
-    if (this.hasAttribute("src")) src = this.getAttribute("src");
     if (!this.hasAttribute("lazy")) load_library();
   }
 

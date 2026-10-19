@@ -115,6 +115,10 @@ class LinkedinEmbed extends I18NMixin(DDD) {
   }
 
   disconnectedCallback() {
+    if (this.__badgeSizeHandler) {
+      globalThis.removeEventListener("message", this.__badgeSizeHandler);
+      this.__badgeSizeHandler = null;
+    }
     if (this.__resizeObserver) {
       this.__resizeObserver.disconnect();
     }
@@ -349,23 +353,48 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     iframe.setAttribute("scrolling", "no");
     iframe.style.display = "block";
     iframe.style.maxWidth = "100%";
-    iframe.addEventListener("load", () => {
-      if (iframe.contentWindow && iframe.contentWindow.document) {
-        const iframeBody = iframe.contentWindow.document.body;
-        if (iframeBody) {
-          const height = iframeBody.scrollHeight
-            ? iframeBody.scrollHeight
-            : 300;
-          const width = iframeBody.scrollWidth ? iframeBody.scrollWidth : 330;
-          iframe.setAttribute("height", `${height}`);
-          iframe.setAttribute("width", `${width}`);
-        }
+    iframe.setAttribute("height", "300");
+    iframe.setAttribute("width", "330");
+    // security: the badge HTML is third-party content, so it runs in a
+    // sandboxed (opaque origin) frame with no access to this page's DOM,
+    // cookies or storage. Popups stay allowed so profile links still open.
+    iframe.setAttribute(
+      "sandbox",
+      "allow-scripts allow-popups allow-popups-to-escape-sandbox",
+    );
+    // sizing can no longer read the frame DOM, so the frame reports its own
+    // size; only messages from this exact frame with numeric sizes are used
+    if (this.__badgeSizeHandler) {
+      globalThis.removeEventListener("message", this.__badgeSizeHandler);
+    }
+    this.__badgeSizeHandler = (event) => {
+      if (!iframe.contentWindow || event.source !== iframe.contentWindow) {
+        return;
       }
-    });
+      const data = event.data;
+      if (
+        !data ||
+        data.type !== "linkedin-embed-size" ||
+        typeof data.height !== "number" ||
+        typeof data.width !== "number"
+      ) {
+        return;
+      }
+      const height = Math.max(1, Math.min(2000, Math.round(data.height)));
+      const width = Math.max(1, Math.min(2000, Math.round(data.width)));
+      iframe.setAttribute("height", `${height}`);
+      iframe.setAttribute("width", `${width}`);
+    };
+    globalThis.addEventListener("message", this.__badgeSizeHandler);
     badgeHost.appendChild(iframe);
+    const parentOrigin = JSON.stringify(
+      globalThis.location && globalThis.location.origin
+        ? globalThis.location.origin
+        : "*",
+    );
+    const sizeScript = `<script>(function(){function s(){var b=document.body;if(!b)return;parent.postMessage({type:"linkedin-embed-size",height:b.scrollHeight||300,width:b.scrollWidth||330},${parentOrigin});}window.addEventListener("load",s);setTimeout(s,500);setTimeout(s,2000);})();<\/script>`;
     // security: write badge via srcdoc instead of document.write (avoids JS-XSS-002 document.write sink)
-    iframe.srcdoc = `<!doctype html><html><head><style>html,body{margin:0;padding:0;overflow:hidden;background:transparent;line-height:0;}</style></head><body>${badgeHtml}</body></html>`;
-    // security follow-up: full iframe isolation (sandbox=allow-scripts) would break same-origin height measurement; deferred.
+    iframe.srcdoc = `<!doctype html><html><head><base target="_blank"><style>html,body{margin:0;padding:0;overflow:hidden;background:transparent;line-height:0;}</style></head><body>${badgeHtml}${sizeScript}</body></html>`;
   }
 
   get _effectiveTheme() {

@@ -54,7 +54,7 @@ describe("ESGlobalBridge test", () => {
   it("handles successful script loading", (done) => {
     const testName = "success-test";
     // Use a data URL for a successful load
-    const testLocation = "data:text/javascript,console.log('test loaded');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("test loaded"), import.meta.url).href;
     
     bridge.load(testName, testLocation).then((result) => {
       // the promise resolves with the location that was loaded
@@ -96,7 +96,7 @@ describe("ESGlobalBridge test", () => {
 
   it("prevents duplicate loading of same script", async () => {
     const testName = "duplicate-test";
-    const testLocation = "data:text/javascript,console.log('loaded');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("loaded"), import.meta.url).href;
     
     // Mark as already imported
     bridge.imports[testName] = true;
@@ -111,7 +111,7 @@ describe("ESGlobalBridge test", () => {
 
   it("fires custom events on successful load", (done) => {
     const testName = "event-test";
-    const testLocation = "data:text/javascript,console.log('event test');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("event test"), import.meta.url).href;
     
     // Listen for the custom event
     document.addEventListener(`es-bridge-${testName}-loaded`, (event) => {
@@ -136,7 +136,7 @@ describe("ESGlobalBridge test", () => {
   // Import alias tests
   it("import method works identically to load method", async () => {
     const testName = "import-alias-test";
-    const testLocation = "data:text/javascript,console.log('import test');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("import test"), import.meta.url).href;
     
     // Mark as already loaded to avoid actual loading
     bridge.imports[testName] = true;
@@ -150,7 +150,7 @@ describe("ESGlobalBridge test", () => {
   // Webpack integration tests
   it("handles webpack parameter", async () => {
     const testName = "webpack-test";
-    const testLocation = "data:text/javascript,console.log('webpack test');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("webpack test"), import.meta.url).href;
     
     // Test with webpack = true
     bridge.imports[testName] = true;
@@ -160,7 +160,7 @@ describe("ESGlobalBridge test", () => {
 
   it("prevents loading when webpack is handling it", async () => {
     const testName = "webpack-conflict-test";
-    const testLocation = "data:text/javascript,console.log('webpack conflict');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("webpack conflict"), import.meta.url).href;
     
     // Set up webpack conflict scenario
     bridge.webpack = { [testName]: true };
@@ -176,7 +176,7 @@ describe("ESGlobalBridge test", () => {
   // State management tests
   it("manages import state correctly during lifecycle", async () => {
     const testName = "state-test";
-    const testLocation = "data:text/javascript,console.log('state test');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("state test"), import.meta.url).href;
     
     // Initially should not be imported
     expect(bridge.imports[testName]).to.be.undefined;
@@ -212,7 +212,7 @@ describe("ESGlobalBridge test", () => {
 
   // Edge cases and error handling
   it("handles empty or invalid names gracefully", async () => {
-    const testLocation = "data:text/javascript,console.log('empty name test');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("empty name test"), import.meta.url).href;
     
     // Test with empty string
     bridge.imports[""] = true;
@@ -245,7 +245,7 @@ describe("ESGlobalBridge test", () => {
   // Performance and concurrency tests
   it("handles multiple simultaneous loads efficiently", async () => {
     const testNames = ["multi1", "multi2", "multi3"];
-    const testLocation = "data:text/javascript,console.log('multi test');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("multi test"), import.meta.url).href;
     
     // Mark all as already loaded for quick resolution
     testNames.forEach(name => {
@@ -262,7 +262,7 @@ describe("ESGlobalBridge test", () => {
 
   it("maintains consistent state under rapid operations", async () => {
     const testName = "rapid-test";
-    const testLocation = "data:text/javascript,console.log('rapid test');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("rapid test"), import.meta.url).href;
     
     // Mark as loaded first
     bridge.imports[testName] = true;
@@ -302,7 +302,7 @@ describe("ESGlobalBridge Global Registry", () => {
 
   it("maintains state across different access methods", async () => {
     const testName = "global-state-test";
-    const testLocation = "data:text/javascript,console.log('global test');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("global test"), import.meta.url).href;
     
     // Use store instance to load
     ESGlobalBridgeStore.imports[testName] = true;
@@ -325,7 +325,7 @@ describe("ESGlobalBridge A11y tests", () => {
     // Load a script and ensure it doesn't break accessibility
     const bridge = new ESGlobalBridge();
     bridge.imports["a11y-test"] = true;
-    await bridge.load("a11y-test", "data:text/javascript,console.log('a11y');");
+    await bridge.load("a11y-test", new URL("./fixture-noop.js?"+encodeURIComponent("a11y"), import.meta.url).href);
     
     // Should not affect DOM structure for accessibility
     expect(testElement.querySelector('[role="main"]')).to.exist;
@@ -348,7 +348,7 @@ describe("ESGlobalBridge additional behavior", () => {
 
   it("import alias actually loads a script and records it by name", async () => {
     const testName = "alias-load-test";
-    const testLocation = "data:text/javascript,console.log('alias load');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("alias load"), import.meta.url).href;
     const result = await bridge.import(testName, testLocation);
     expect(result).to.equal(testLocation);
     expect(bridge.imports[testName]).to.be.true;
@@ -358,7 +358,7 @@ describe("ESGlobalBridge additional behavior", () => {
 
   it("dispatches the loaded event with name and location detail", async () => {
     const testName = "alias-event-test";
-    const testLocation = "data:text/javascript,console.log('alias event');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("alias event"), import.meta.url).href;
     const fired = new Promise((resolve) => {
       document.addEventListener(`es-bridge-${testName}-loaded`, resolve, {
         once: true,
@@ -391,7 +391,7 @@ describe("ESGlobalBridge additional behavior", () => {
     });
     expect(bridge.imports[testName]).to.be.false;
     // a failed import does not block a new attempt with a good location
-    const goodLocation = "data:text/javascript,console.log('retry ok');";
+    const goodLocation = new URL("./fixture-noop.js?"+encodeURIComponent("retry ok"), import.meta.url).href;
     const result = await bridge.load(testName, goodLocation);
     expect(result).to.equal(goodLocation);
     expect(bridge.imports[testName]).to.be.true;
@@ -399,12 +399,34 @@ describe("ESGlobalBridge additional behavior", () => {
 
   it("shares state between import and load on the same instance", async () => {
     const testName = "shared-state-test";
-    const testLocation = "data:text/javascript,console.log('shared state');";
+    const testLocation = new URL("./fixture-noop.js?"+encodeURIComponent("shared state"), import.meta.url).href;
     const first = await bridge.import(testName, testLocation);
     const second = await bridge.load(testName, testLocation);
     // first call resolves with the location, second short-circuits with true
     expect(first).to.equal(testLocation);
     expect(second).to.be.true;
     expect(bridge.imports[testName]).to.be.true;
+  });
+});
+
+describe("ESGlobalBridge URL safety", () => {
+  it("refuses non-http(s) script locations without injecting a script", async () => {
+    const bridge = new ESGlobalBridge();
+    for (const bad of [
+      "data:text/javascript,globalThis.__esgbPwned=1",
+      "javascript:globalThis.__esgbPwned=1",
+    ]) {
+      let error = null;
+      try {
+        await bridge.load("unsafe-" + bad.slice(0, 4), bad);
+      } catch (e) {
+        error = e;
+      }
+      expect(error).to.be.an("error");
+      expect(
+        document.querySelector(`script[data-name="unsafe-${bad.slice(0, 4)}"]`),
+      ).to.be.null;
+    }
+    expect(globalThis.__esgbPwned).to.be.undefined;
   });
 });

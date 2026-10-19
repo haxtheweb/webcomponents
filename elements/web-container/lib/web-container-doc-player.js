@@ -8,6 +8,19 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
     return "web-container-doc-player";
   }
   __onFrameResizeMessage(e) {
+    // security: only accept resize messages from our own preview iframe
+    // (JS-MSG-001)
+    const wc = this.shadowRoot
+      ? this.shadowRoot.querySelector("web-container")
+      : null;
+    const frame =
+      wc && wc.shadowRoot ? wc.shadowRoot.querySelector("iframe") : null;
+    if (!frame || !frame.contentWindow || e.source !== frame.contentWindow) {
+      return;
+    }
+    if (typeof e.data !== "string") {
+      return;
+    }
     try {
       let message = JSON.parse(e.data);
       if (message.subject === "frameResize" && message.height && this.shadowRoot) {
@@ -139,7 +152,7 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
             const newHeight = entry.contentRect.height;
             parent.postMessage(
               '{"subject":"frameResize", "height":"' + entry.contentRect.height + '" }',
-              "*",
+              ${JSON.stringify(globalThis.location && globalThis.location.origin ? globalThis.location.origin : "*")},
             );
           }
         }

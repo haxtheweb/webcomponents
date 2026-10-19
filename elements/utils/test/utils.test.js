@@ -20,6 +20,8 @@ import {
   haxElementToNode,
   nodeToHaxElement,
   sanitizeHTMLForImport,
+  sanitizeHTMLString,
+  isEventHandlerAttribute,
   isURLAttribute,
   sanitizeURLValue,
   normalizeClipboardHTML,
@@ -190,6 +192,48 @@ describe("Utils test", () => {
       expect(isURLAttribute("link-url")).to.be.true;
       expect(isURLAttribute("data-src")).to.be.true;
       expect(isURLAttribute("nope")).to.be.false;
+    });
+
+    it("isEventHandlerAttribute catches platform handlers missing from the list", async () => {
+      expect(isEventHandlerAttribute("onclick")).to.be.true;
+      expect(isEventHandlerAttribute("ONCLICK")).to.be.true;
+      // any handler the running browser exposes is caught, listed or not
+      expect(isEventHandlerAttribute("onauxclick")).to.be.true;
+      // custom element attributes that merely start with "on" are kept
+      expect(isEventHandlerAttribute("one-line")).to.be.false;
+      expect(isEventHandlerAttribute("only")).to.be.false;
+      expect(isEventHandlerAttribute("data-onclick")).to.be.false;
+    });
+
+    it("removeBadJSEventAttributes strips oncommand (invoker commands)", async () => {
+      const div = document.createElement("div");
+      div.setAttribute("oncommand", "alert(1)");
+      div.setAttribute("one-line", "");
+      removeBadJSEventAttributes(div);
+      // only meaningful where the browser supports the command event
+      if ("oncommand" in HTMLElement.prototype) {
+        expect(div.hasAttribute("oncommand")).to.be.false;
+      }
+      expect(div.hasAttribute("one-line")).to.be.true;
+    });
+
+    it("sanitizeHTMLString removes base, meta and lrn-math-controller", async () => {
+      const out = sanitizeHTMLString(
+        '<base href="https://evil.example/"><meta http-equiv="refresh" content="0;url=https://evil.example"><lrn-math-controller src="https://evil.example/x.js"></lrn-math-controller><lrn-math>x</lrn-math><p>ok</p>',
+      );
+      expect(out).to.not.include("<base");
+      expect(out).to.not.include("<meta");
+      expect(out).to.not.include("lrn-math-controller");
+      expect(out).to.include("<lrn-math>x</lrn-math>");
+      expect(out).to.include("<p>ok</p>");
+    });
+
+    it("sanitizeHTMLString removes SVG animations that rewrite href", async () => {
+      const out = sanitizeHTMLString(
+        '<svg><a><set attributeName="href" to="javascript:alert(1)"></set><animate attributeName="opacity" values="0;1"></animate><text>x</text></a></svg>',
+      );
+      expect(out).to.not.include("javascript:");
+      expect(out).to.include("<animate");
     });
 
     it("sanitizeURLValue rejects unsafe protocols and preserves safe ones", async () => {

@@ -24,9 +24,27 @@ export class ESGlobalBridge {
       let imported = this.imports[name],
         importing = !webpack && this.webpack && this.webpack[name];
       if (!importing && !imported) {
+        // security: script.src executes code, so only http(s) URLs (relative
+        // ones resolve against the page) are accepted; javascript:, data: and
+        // other schemes are rejected (JS-URL-002)
+        let safeLocation = null;
+        try {
+          if (typeof location !== "string" || location.trim() === "") {
+            throw new Error("empty location");
+          }
+          const parsed = new URL(location, globalThis.location.href);
+          if (parsed.protocol === "https:" || parsed.protocol === "http:") {
+            safeLocation = parsed.href;
+          }
+        } catch (e) {}
+        if (!safeLocation) {
+          return Promise.reject(
+            new Error(`Refused to load ${name} script from ${location}.`),
+          );
+        }
         return new Promise((resolve, reject) => {
           const script = globalThis.document.createElement("script");
-          script.src = location;
+          script.src = safeLocation;
           script.setAttribute("data-name", name);
           this.imports[name] = location;
           script.onload = () => {

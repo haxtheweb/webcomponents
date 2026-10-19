@@ -613,22 +613,28 @@ describe('web-container-doc-player', () => {
     )
     await new Promise((r) => setTimeout(r, 250))
     const wc = el.shadowRoot.querySelector('web-container')
+    const frame = wc.shadowRoot.querySelector('iframe')
+    // messages are only honored when they come from the preview iframe
+    const fromFrame = (data) =>
+      globalThis.dispatchEvent(
+        new MessageEvent('message', { data, source: frame.contentWindow }),
+      )
+    // a message from any other window (here: this page) is ignored
     globalThis.postMessage(
-      JSON.stringify({ subject: 'frameResize', height: '460' }),
+      JSON.stringify({ subject: 'frameResize', height: '960' }),
       '*',
     )
-    // postMessage delivers the message event asynchronously
     await new Promise((r) => setTimeout(r, 50))
+    expect(
+      wc.style.getPropertyValue('--web-container-iframe-height'),
+    ).to.equal('')
+    fromFrame(JSON.stringify({ subject: 'frameResize', height: '460' }))
     expect(
       wc.style.getPropertyValue('--web-container-iframe-height'),
     ).to.equal('500px')
     // invalid payloads and other subjects are ignored
-    globalThis.postMessage('not json', '*')
-    globalThis.postMessage(
-      JSON.stringify({ subject: 'other', height: '100' }),
-      '*',
-    )
-    await new Promise((r) => setTimeout(r, 50))
+    fromFrame('not json')
+    fromFrame(JSON.stringify({ subject: 'other', height: '100' }))
     expect(
       wc.style.getPropertyValue('--web-container-iframe-height'),
     ).to.equal('500px')
@@ -643,12 +649,14 @@ describe('web-container-doc-player', () => {
     )
     await new Promise((r) => setTimeout(r, 250))
     const wc = el.shadowRoot.querySelector('web-container')
+    const frame = wc.shadowRoot.querySelector('iframe')
     el.disconnectedCallback()
-    globalThis.postMessage(
-      JSON.stringify({ subject: 'frameResize', height: '900' }),
-      '*',
+    globalThis.dispatchEvent(
+      new MessageEvent('message', {
+        data: JSON.stringify({ subject: 'frameResize', height: '900' }),
+        source: frame.contentWindow,
+      }),
     )
-    await new Promise((r) => setTimeout(r, 50))
     expect(
       wc.style.getPropertyValue('--web-container-iframe-height'),
     ).to.equal('')

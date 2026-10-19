@@ -440,7 +440,7 @@ globalThis.addEventListener("hax-store-ready", () => {
           protocol: "https",
           url: "poly.googleapis.com/v1",
           data: {
-            key: "AIzaSyDiSvloa49gHUJG0YAt3Ys_I6IEoiscPUM",
+            key: "YOUR_GOOGLE_API_KEY",
           },
           operations: {
             browse: {
