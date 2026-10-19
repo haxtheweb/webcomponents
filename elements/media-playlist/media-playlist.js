@@ -401,7 +401,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
   }
 
   _updateMediaItems() {
-    const items = Array.from(this.children).filter(
+    const items = Array.from(this.children || []).filter(
       (el) => el.tagName === "VIDEO-PLAYER" || el.tagName === "AUDIO-PLAYER",
     );
     if (this.activeIndex >= items.length) {

@@ -15,7 +15,9 @@ globalThis.SimpleToast.requestAvailability = () => {
   if (!globalThis.SimpleToast.instance && globalThis.document) {
     globalThis.SimpleToast.instance =
       globalThis.document.createElement("simple-toast");
-    globalThis.document.body.appendChild(globalThis.SimpleToast.instance);
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(globalThis.SimpleToast.instance);
+    }
   }
   return globalThis.SimpleToast.instance;
 };
@@ -207,7 +209,7 @@ class SimpleToast extends DDD {
     this.duration = 3000;
     this.eventCallback = null;
     this.closeButton = true;
-    while (this.firstChild !== null) {
+    while (this.firstChild && this.firstChild !== null) {
       this.removeChild(this.firstChild);
     }
   }

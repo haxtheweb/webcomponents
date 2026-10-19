@@ -369,7 +369,11 @@ globalThis.SuperDaemonToast.requestAvailability = () => {
     globalThis.SuperDaemonToast.instance = globalThis.document.createElement(
       SuperDaemonToast.tag,
     );
-    globalThis.document.body.appendChild(globalThis.SuperDaemonToast.instance);
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.SuperDaemonToast.instance,
+      );
+    }
   }
   return globalThis.SuperDaemonToast.instance;
 };

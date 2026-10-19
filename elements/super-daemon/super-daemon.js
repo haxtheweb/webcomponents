@@ -697,10 +697,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
             var(--ddd-theme-default-white)
           );
           border: 1px solid
-            var(
-              --simple-modal-border-color,
-              var(--ddd-theme-default-coalyGray)
-            );
+            var(--simple-modal-border-color, var(--ddd-theme-default-coalyGray));
           min-height: var(--simple-modal-min-height, unset);
           min-width: var(--simple-modal-min-width, unset);
           z-index: var(--simple-modal-z-index, 10000);
@@ -1704,9 +1701,11 @@ globalThis.SuperDaemonManager.requestAvailability = () => {
   if (!globalThis.SuperDaemonManager.instance) {
     globalThis.SuperDaemonManager.instance =
       globalThis.document.createElement("super-daemon");
-    globalThis.document.body.appendChild(
-      globalThis.SuperDaemonManager.instance,
-    );
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.SuperDaemonManager.instance,
+      );
+    }
   }
   return globalThis.SuperDaemonManager.instance;
 };

@@ -247,10 +247,12 @@ class RichTextEditorPrompt extends I18NMixin(
       localesPath: new URL("../../locales/", import.meta.url).href,
     });
     this.haxUIElement = true;
-    globalThis.addEventListener(
-      "rich-text-editor-prompt-open",
-      this.open.bind(this),
-    );
+    if (globalThis.addEventListener) {
+      globalThis.addEventListener(
+        "rich-text-editor-prompt-open",
+        this.open.bind(this),
+      );
+    }
     // sets instance to current instance
     if (!globalThis.RichTextEditorPrompt.instance) {
       globalThis.RichTextEditorPrompt.instance = this;
@@ -423,9 +425,11 @@ globalThis.RichTextEditorPrompt.requestAvailability = () => {
   if (!globalThis.RichTextEditorPrompt.instance) {
     globalThis.RichTextEditorPrompt.instance =
       globalThis.document.createElement("rich-text-editor-prompt");
-    globalThis.document.body.appendChild(
-      globalThis.RichTextEditorPrompt.instance,
-    );
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.RichTextEditorPrompt.instance,
+      );
+    }
   }
   return globalThis.RichTextEditorPrompt.instance;
 };

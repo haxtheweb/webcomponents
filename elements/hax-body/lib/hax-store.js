@@ -535,11 +535,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (status === 200) {
         let mapped = "";
         if (transform.valueMapping) {
-          mapped = transform.valueMapping
-            .split(".")
-            .reduce(function (prev, curr) {
-              return prev ? prev[curr] : null;
-            }, d);
+          mapped = transform.valueMapping.split(".").reduce(function (
+            prev,
+            curr,
+          ) {
+            return prev ? prev[curr] : null;
+          }, d);
         }
         if (typeof mapped === "string" && mapped) {
           urlEl.value = mapped;
@@ -645,8 +646,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // #3066: a <place-holder type="image"> stands in for an image, so it
     // counts as an image element for the purpose of in-place replace.
     if (tagName === "place-holder") {
-      const placeholderType = (element.getAttribute("type") || "")
-        .toLowerCase();
+      const placeholderType = (
+        element.getAttribute("type") || ""
+      ).toLowerCase();
       if (placeholderType === "image") {
         return true;
       }
@@ -6687,7 +6689,9 @@ globalThis.HaxStore.requestAvailability = function () {
   if (!globalThis.HaxStore.instance) {
     globalThis.HaxStore.instance =
       globalThis.document.createElement("hax-store");
-    globalThis.document.body.appendChild(globalThis.HaxStore.instance);
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(globalThis.HaxStore.instance);
+    }
   }
   return globalThis.HaxStore.instance;
 };

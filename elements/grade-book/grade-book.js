@@ -1829,8 +1829,10 @@ class GradeBook extends UIRenderPieces(
                         this.database.assignments[this.activeAssignment]
                           ? html`${this.t.outOfPoints.replace(
                                 "{points}",
-                                () => (this.database.assignments[this.activeAssignment]
-                                  .points),
+                                () =>
+                                  this.database.assignments[
+                                    this.activeAssignment
+                                  ].points,
                               )}
                               <letter-grade
                                 style="margin:-8px 0 0 16px;"
@@ -1985,8 +1987,10 @@ class GradeBook extends UIRenderPieces(
                               .replace("{score}", () => this.totalScore)
                               .replace(
                                 "{points}",
-                                () => (this.database.assignments[this.activeAssignment]
-                                  .points),
+                                () =>
+                                  this.database.assignments[
+                                    this.activeAssignment
+                                  ].points,
                               )}
                           </div>
                         </div>
@@ -2268,7 +2272,9 @@ globalThis.GradeBook.requestAvailability = () => {
     } else {
       globalThis.GradeBook.instance =
         globalThis.document.createElement("grade-book");
-      globalThis.document.body.appendChild(globalThis.GradeBook.instance);
+      if (globalThis.document && globalThis.document.body) {
+        globalThis.document.body.appendChild(globalThis.GradeBook.instance);
+      }
     }
   }
   return globalThis.GradeBook.instance;

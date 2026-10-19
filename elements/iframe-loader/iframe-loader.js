@@ -112,7 +112,7 @@ export class IframeLoader extends LitElement {
     // cache the bound callback once so listeners can actually be removed
     this.__iframeLoadingCallback = this.iframeLoadingCallback.bind(this);
     // if we have an initial iframe, go for it
-    if (this.querySelector("iframe")) {
+    if (this.querySelector && this.querySelector("iframe")) {
       this.__iframe = this.querySelector("iframe");
       this.__iframe.addEventListener(
         "load",

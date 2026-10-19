@@ -45,18 +45,20 @@ export class PostCard extends LitElement {
     ).href;
     this.postMarkLocations = "insert - locations - here";
 
-    globalThis.dispatchEvent(
-      new CustomEvent("i18n-manager-register-element", {
-        detail: {
-          context: this,
-          namespace: "post-card",
-          localesPath:
-            new URL("./locales/post-card.es.json", import.meta.url).href +
-            "/../",
-          updateCallback: "render",
-        },
-      }),
-    );
+    if (globalThis.dispatchEvent) {
+      globalThis.dispatchEvent(
+        new CustomEvent("i18n-manager-register-element", {
+          detail: {
+            context: this,
+            namespace: "post-card",
+            localesPath:
+              new URL("./locales/post-card.es.json", import.meta.url).href +
+              "/../",
+            updateCallback: "render",
+          },
+        }),
+      );
+    }
 
     setTimeout(() => {
       import("./lib/PostCardPhoto.js");

@@ -438,7 +438,7 @@ class MediaImage extends SchemaBehaviors(DDD) {
   _computeHasCaption() {
     this._hasCaption =
       this.caption.length > 0 ||
-      this.querySelector('[slot="caption"]') !== null;
+      (!!this.querySelector && this.querySelector('[slot="caption"]') !== null);
   }
   connectedCallback() {
     super.connectedCallback();

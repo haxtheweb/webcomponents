@@ -1958,7 +1958,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
     // global listeners for settings menu ESC and click-away behavior
     this._settingsKeydownHandler = this._onSettingsKeydown.bind(this);
     this._settingsClickHandler = this._onSettingsDocumentClick.bind(this);
-    globalThis.addEventListener("keydown", this._settingsKeydownHandler, true);
+    if (globalThis.addEventListener) {
+      globalThis.addEventListener("keydown", this._settingsKeydownHandler, true);
+    }
     globalThis.addEventListener("click", this._settingsClickHandler, true);
     this.querySelectorAll("video,audio").forEach((html5) => {
       html5.addEventListener("loadedmetadata", (e) => {

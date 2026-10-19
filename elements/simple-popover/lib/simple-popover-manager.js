@@ -234,9 +234,11 @@ globalThis.SimplePopoverManager.requestAvailability = () => {
   if (!globalThis.SimplePopoverManager.instance) {
     globalThis.SimplePopoverManager.instance =
       globalThis.document.createElement("simple-popover-manager");
-    globalThis.document.body.appendChild(
-      globalThis.SimplePopoverManager.instance,
-    );
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.SimplePopoverManager.instance,
+      );
+    }
   }
   return globalThis.SimplePopoverManager.instance;
 };

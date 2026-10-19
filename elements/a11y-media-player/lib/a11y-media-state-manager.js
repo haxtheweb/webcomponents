@@ -13,9 +13,11 @@ globalThis.A11yMediaStateManager.requestAvailability = () => {
   if (!globalThis.A11yMediaStateManager.instance && globalThis.document) {
     globalThis.A11yMediaStateManager.instance =
       globalThis.document.createElement("a11y-media-state-manager");
-    globalThis.document.body.appendChild(
-      globalThis.A11yMediaStateManager.instance,
-    );
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.A11yMediaStateManager.instance,
+      );
+    }
   }
   return globalThis.A11yMediaStateManager.instance;
 };

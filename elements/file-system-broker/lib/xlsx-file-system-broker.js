@@ -203,9 +203,11 @@ globalThis.XLSXFileSystemBroker.requestAvailability = () => {
   if (!globalThis.XLSXFileSystemBroker.instance) {
     globalThis.XLSXFileSystemBroker.instance =
       globalThis.document.createElement("xlsx-file-system-broker");
-    globalThis.document.body.appendChild(
-      globalThis.XLSXFileSystemBroker.instance,
-    );
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.XLSXFileSystemBroker.instance,
+      );
+    }
   }
   return globalThis.XLSXFileSystemBroker.instance;
 };

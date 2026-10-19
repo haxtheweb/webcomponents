@@ -31,7 +31,9 @@ globalThis.UserScaffold.requestAvailability = () => {
   ) {
     globalThis.UserScaffold.instance =
       globalThis.document.createElement("user-scaffold");
-    globalThis.document.body.appendChild(globalThis.UserScaffold.instance);
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(globalThis.UserScaffold.instance);
+    }
   }
   return globalThis.UserScaffold.instance;
 };

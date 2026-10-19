@@ -247,7 +247,11 @@ globalThis.PageBreakManager.requestAvailability = () => {
   if (!globalThis.PageBreakManager.instance) {
     globalThis.PageBreakManager.instance =
       globalThis.document.createElement("page-break-manager");
-    globalThis.document.body.appendChild(globalThis.PageBreakManager.instance);
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.PageBreakManager.instance,
+      );
+    }
   }
   return globalThis.PageBreakManager.instance;
 };

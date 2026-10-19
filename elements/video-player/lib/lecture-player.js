@@ -40,7 +40,9 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
   constructor() {
     super();
     this.associatedNodes = new Object();
-    this.videoPlayer = this.querySelector("video-player").outerHTML;
+    const embeddedPlayer =
+      this.querySelector && this.querySelector("video-player");
+    this.videoPlayer = embeddedPlayer ? embeddedPlayer.outerHTML : "";
     this.videoInterval = null;
     this.activeIndex = null;
     this.t = this.t || {};

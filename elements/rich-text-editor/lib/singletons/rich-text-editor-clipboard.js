@@ -94,9 +94,11 @@ globalThis.RichTextEditorClipboard.requestAvailability = () => {
   if (!globalThis.RichTextEditorClipboard.instance) {
     globalThis.RichTextEditorClipboard.instance =
       globalThis.document.createElement("rich-text-editor-clipboard");
-    globalThis.document.body.appendChild(
-      globalThis.RichTextEditorClipboard.instance,
-    );
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.RichTextEditorClipboard.instance,
+      );
+    }
   }
   return globalThis.RichTextEditorClipboard.instance;
 };

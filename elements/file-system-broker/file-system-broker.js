@@ -368,13 +368,20 @@ globalThis.FileSystemBroker.requestAvailability = () => {
   ) {
     globalThis.FileSystemBroker.instance =
       globalThis.document.createElement("file-system-broker");
-    globalThis.document.body.appendChild(globalThis.FileSystemBroker.instance);
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.FileSystemBroker.instance,
+      );
+    }
+  } else if (!globalThis.FileSystemBroker.instance && globalThis.document) {
+    // no body to attach to (server side render): a detached instance still
+    // answers importers that use the singleton at import time
+    globalThis.FileSystemBroker.instance = new FileSystemBroker();
   }
   return globalThis.FileSystemBroker.instance;
 };
-// forces appending
+globalThis.customElements.define(FileSystemBroker.tag, FileSystemBroker);
+// forces appending (after the define so the no-body path can construct it)
 const FileSystemBrokerSingleton =
   globalThis.FileSystemBroker.requestAvailability();
-
-globalThis.customElements.define(FileSystemBroker.tag, FileSystemBroker);
 export { FileSystemBroker, FileSystemBrokerSingleton };

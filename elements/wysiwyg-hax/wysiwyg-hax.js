@@ -55,7 +55,7 @@ class WysiwygHax extends LitElement {
     super();
     this.windowControllers = new AbortController();
     // import child nodes before things start deleting whats in there
-    let template = this.querySelector("template");
+    let template = this.querySelector ? this.querySelector("template") : null;
     if (template) {
       this.__importContent = template.cloneNode(true);
     }

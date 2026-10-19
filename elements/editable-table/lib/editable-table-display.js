@@ -460,7 +460,8 @@ class EditableTableDisplay extends I18NMixin(
    */
   _dataChanged(newValue, oldValue) {
     if (!newValue || newValue.length < 1 || newValue[0].length < 1) {
-      let table = this.children.item(0);
+      let table =
+        this.children && this.children.item ? this.children.item(0) : null;
       if (
         typeof table !== typeof undefined &&
         table !== null &&

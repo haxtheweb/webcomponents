@@ -15,9 +15,18 @@ globalThis.DynamicImportRegistry.requestAvailability = () => {
   ) {
     globalThis.DynamicImportRegistry.instance =
       globalThis.document.createElement("dynamic-import-registry");
-    globalThis.document.body.appendChild(
-      globalThis.DynamicImportRegistry.instance,
-    );
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        globalThis.DynamicImportRegistry.instance,
+      );
+    }
+  } else if (
+    !globalThis.DynamicImportRegistry.instance &&
+    globalThis.document
+  ) {
+    // no body to attach to (server side render): a detached instance still
+    // answers importers that use the singleton at import time
+    globalThis.DynamicImportRegistry.instance = new DynamicImportRegistry();
   }
   return globalThis.DynamicImportRegistry.instance;
 };

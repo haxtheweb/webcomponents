@@ -163,22 +163,24 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
     });
     if (globalThis.HaxStore) {
       globalThis.ModelViewerController = new AbortController();
-      globalThis.addEventListener(
-        "hax-insert-content",
-        (e) => {
-          if (e.detail.tag === "model-viewer") {
-            // import when something gets inserted that matches the model
-            // this is because the library is memory intense even for editing users
-            import("@google/model-viewer/dist/model-viewer.js");
-            globalThis.ModelViewerController.abort();
-          }
-        },
-        {
-          once: true,
-          passive: true,
-          signal: globalThis.ModelViewerController.signal,
-        },
-      );
+      if (globalThis.addEventListener) {
+        globalThis.addEventListener(
+          "hax-insert-content",
+          (e) => {
+            if (e.detail.tag === "model-viewer") {
+              // import when something gets inserted that matches the model
+              // this is because the library is memory intense even for editing users
+              import("@google/model-viewer/dist/model-viewer.js");
+              globalThis.ModelViewerController.abort();
+            }
+          },
+          {
+            once: true,
+            passive: true,
+            signal: globalThis.ModelViewerController.signal,
+          },
+        );
+      }
     }
     this.addEventListener("model-select", this._srcChanged);
   }

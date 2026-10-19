@@ -352,7 +352,9 @@ globalThis.Hal9000 = globalThis.Hal9000 || {};
 globalThis.Hal9000.requestAvailability = () => {
   if (!globalThis.Hal9000.instance) {
     const hal = globalThis.document.createElement("hal-9000");
-    globalThis.document.body.appendChild(hal);
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(hal);
+    }
     globalThis.Hal9000.instance = hal;
   }
   return globalThis.Hal9000.instance;

@@ -199,18 +199,25 @@ class SimplePopover extends AbsolutePositionBehavior {
     // the popover aligned with its target without a visible flash.
     // Setting top/left does not change border-box size, so there is no
     // feedback loop.
-    this.__popoverResizeObserver = new ResizeObserver(() => {
-      if (!this.hidden) {
-        this.updatePosition();
-      }
-    });
+    this.__popoverResizeObserver =
+      typeof ResizeObserver !== "undefined"
+        ? new ResizeObserver(() => {
+            if (!this.hidden) {
+              this.updatePosition();
+            }
+          })
+        : null;
   }
   connectedCallback() {
     super.connectedCallback();
-    this.__popoverResizeObserver.observe(this);
+    if (this.__popoverResizeObserver) {
+      this.__popoverResizeObserver.observe(this);
+    }
   }
   disconnectedCallback() {
-    this.__popoverResizeObserver.disconnect();
+    if (this.__popoverResizeObserver) {
+      this.__popoverResizeObserver.disconnect();
+    }
     super.disconnectedCallback();
   }
 

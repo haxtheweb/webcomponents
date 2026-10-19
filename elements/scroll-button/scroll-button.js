@@ -18,18 +18,20 @@ class ScrollButton extends LitElement {
     this.t = {
       backToTop: "Back to top",
     };
-    globalThis.dispatchEvent(
-      new CustomEvent("i18n-manager-register-element", {
-        detail: {
-          context: this,
-          namespace: "scroll-button",
-          localesPath:
-            new URL("./locales/scroll-button.es.json", import.meta.url).href +
-            "/../",
-          updateCallback: "render",
-        },
-      }),
-    );
+    if (globalThis.dispatchEvent) {
+      globalThis.dispatchEvent(
+        new CustomEvent("i18n-manager-register-element", {
+          detail: {
+            context: this,
+            namespace: "scroll-button",
+            localesPath:
+              new URL("./locales/scroll-button.es.json", import.meta.url).href +
+              "/../",
+            updateCallback: "render",
+          },
+        }),
+      );
+    }
     this._label = this.t.backToTop;
     this.label = "";
     this.position = "top";

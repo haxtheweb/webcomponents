@@ -29,7 +29,7 @@ export class LrnH5p extends I18NMixin(LitElement) {
       });
     });
     // remove script tags and work against light dom if there
-    if (this.querySelector("span")) {
+    if (this.querySelector && this.querySelector("span")) {
       this.querySelector("span").childNodes.forEach((el, index) => {
         if (el.nodeName === "#text" && el.textContent.includes("<script>")) {
           // strip only the script markup so surrounding text is preserved

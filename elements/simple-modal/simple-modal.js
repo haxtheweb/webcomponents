@@ -1121,7 +1121,13 @@ globalThis.SimpleModal.requestAvailability = () => {
   ) {
     globalThis.SimpleModal.instance =
       globalThis.document.createElement("simple-modal");
-    globalThis.document.body.appendChild(globalThis.SimpleModal.instance);
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(globalThis.SimpleModal.instance);
+    }
+  } else if (!globalThis.SimpleModal.instance && globalThis.document) {
+    // no body to attach to (server side render): a detached instance still
+    // answers importers that use the singleton at import time
+    globalThis.SimpleModal.instance = new SimpleModal();
   }
   return globalThis.SimpleModal.instance;
 };

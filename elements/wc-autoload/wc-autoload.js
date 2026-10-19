@@ -14,7 +14,9 @@ globalThis.WCAutoload.requestAvailability = () => {
   if (!globalThis.WCAutoload.instance) {
     globalThis.WCAutoload.instance =
       globalThis.document.createElement("wc-autoload");
-    globalThis.document.body.appendChild(globalThis.WCAutoload.instance);
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(globalThis.WCAutoload.instance);
+    }
   }
   return globalThis.WCAutoload.instance;
 };
@@ -160,11 +162,13 @@ if (
   });
 } else {
   // default: hydrate at DOMContentLoaded
-  globalThis.addEventListener(
-    "DOMContentLoaded",
-    globalThis.WCAutoload.initialProcess,
-    { once: true },
-  );
+  if (globalThis.addEventListener) {
+    globalThis.addEventListener(
+      "DOMContentLoaded",
+      globalThis.WCAutoload.initialProcess,
+      { once: true },
+    );
+  }
 }
 
 // edge case; definition to load comes in AFTER we have loaded the page
@@ -183,10 +187,12 @@ globalThis.WCAutoload.postLoaded = (e) => {
   }, 0);
 };
 // listen for new tags being registered
-globalThis.addEventListener(
-  "dynamic-import-registry--new-registration",
-  globalThis.WCAutoload.postLoaded,
-);
+if (globalThis.addEventListener) {
+  globalThis.addEventListener(
+    "dynamic-import-registry--new-registration",
+    globalThis.WCAutoload.postLoaded,
+  );
+}
 /**
  * `wc-registry`
  * `optionally build the registry from the innerHTML of an element`
