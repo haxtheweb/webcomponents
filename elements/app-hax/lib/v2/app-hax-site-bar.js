@@ -11,6 +11,7 @@ import { toJS } from "mobx";
 import { store } from "./AppHaxStore.js";
 import "./app-hax-user-access-modal.js";
 import "./app-hax-confirmation-modal.js";
+import { haxcmsApiMessage } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
 
 let appHaxSiteBarInstanceCount = 0;
 // EXPORT (so make available to other documents that reference this file) a class, that extends LitElement
@@ -539,12 +540,12 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
       typeof opResponse.status === "number" &&
       opResponse.status >= 400
     ) {
-      const errMsg =
-        typeof opResponse.message === "string" && opResponse.message
-          ? opResponse.message
-          : this.t.siteOperationFailed
-              .replace("{siteName}", () => site.metadata.site.name)
-              .replace("{operation}", () => (this._operationVerb(op)));
+      const errMsg = haxcmsApiMessage(
+        opResponse,
+        this.t.siteOperationFailed
+          .replace("{siteName}", () => site.metadata.site.name)
+          .replace("{operation}", () => this._operationVerb(op)),
+      );
       store.toast(errMsg, 3000, { hat: "random" });
     } else {
       store.toast(

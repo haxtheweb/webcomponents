@@ -14,6 +14,7 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
 import {
   configureHAXCMSSiteApiRegistry,
   waitForHAXCMSSiteApiRegistryReady,
@@ -547,25 +548,17 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!response || typeof response !== "object") {
       return fallbackMessage;
     }
+    // the backend's message (translated by its code when possible) is more
+    // useful than an HTTP reason phrase like "Bad Request" (issues#3157)
+    const apiText = haxcmsApiMessage(response, "");
+    if (apiText !== "") {
+      return apiText;
+    }
     if (
       typeof response.statusText === "string" &&
       response.statusText.trim() !== ""
     ) {
       return response.statusText.trim();
-    }
-    if (
-      typeof response.message === "string" &&
-      response.message.trim() !== ""
-    ) {
-      return response.message.trim();
-    }
-    if (
-      response.data &&
-      typeof response.data === "object" &&
-      typeof response.data.message === "string" &&
-      response.data.message.trim() !== ""
-    ) {
-      return response.data.message.trim();
     }
     return fallbackMessage;
   }
@@ -2529,10 +2522,10 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         });
         return;
       }
-      const message =
-        response && response.message
-          ? String(response.message)
-          : this.t.unableToCompleteOperationStatus.replace("{status}", () => status);
+      const message = haxcmsApiMessage(
+        response,
+        this.t.unableToCompleteOperationStatus.replace("{status}", () => status),
+      );
       store.toast(message, 4000, { fire: true });
       store.playSound("error");
     } catch (error) {

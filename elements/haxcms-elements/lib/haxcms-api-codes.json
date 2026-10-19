@@ -1,0 +1,1005 @@
+{
+  "$comment": "Shared HAXcms API message codes. Both backends add `code` and `params` next to the English `message` they already send; front ends and the CLI translate by code using locales/haxcms-api.<lang>.json and fall back to the English message. Source of truth: @haxtheweb/haxcms-elements/lib/haxcms-api-codes.json. Each `match` is a regular expression for the whole message, case-insensitive; named groups become params. Entries are tried in order. Messages on successful (2xx) responses only get a code when the entry has kind \"info\".",
+  "version": 1,
+  "codes": [
+    {
+      "code": "AUTH_RATE_LIMITED",
+      "en": "Too many failed sign-in attempts. Please try again later.",
+      "match": [
+        "too many (?:failed )?login attempts.*"
+      ]
+    },
+    {
+      "code": "AUTH_INVALID_CREDENTIALS",
+      "en": "Invalid username or password.",
+      "match": [
+        "invalid username or password",
+        "invalid basic authorization credentials"
+      ]
+    },
+    {
+      "code": "AUTH_TOKEN_INVALID",
+      "en": "Your sign-in has expired or is invalid. Please sign in again.",
+      "match": [
+        "invalid bearer token",
+        "invalid or expired token",
+        "invalid token",
+        "refresh token validation failed",
+        "haxcms_refresh_token:invalid",
+        "invalid_jwt",
+        "invalid_session"
+      ]
+    },
+    {
+      "code": "AUTH_REQUIRED_EXPORT",
+      "en": "Sign in to export as {format}.",
+      "match": [
+        "authentication required for (?<format>\\S+) (?:site )?exports"
+      ]
+    },
+    {
+      "code": "AUTH_REQUIRED",
+      "en": "You need to sign in to do this.",
+      "match": [
+        "authentication required",
+        "login is required",
+        "authenticated site access is required for this endpoint",
+        "authorization bearer token (?:or basic credentials )?(?:is|are) required(?: for this endpoint)?",
+        "missing_jwt"
+      ]
+    },
+    {
+      "code": "AUTH_FAILED",
+      "en": "Sign-in failed.",
+      "match": [
+        "authentication failed",
+        "unable to authenticate request",
+        "tenant identity validation failed"
+      ]
+    },
+    {
+      "code": "SESSION_NONE",
+      "en": "No active session.",
+      "match": [
+        "no active session",
+        "no_session"
+      ],
+      "kind": "info"
+    },
+    {
+      "code": "SESSION_STORE_UNAVAILABLE",
+      "en": "The session store is unavailable.",
+      "match": [
+        "session store unavailable",
+        "haxcms refresh session store unreadable",
+        "store_unavailable"
+      ]
+    },
+    {
+      "code": "LOGGED_OUT",
+      "en": "You have been signed out.",
+      "match": [
+        "loggedout"
+      ],
+      "kind": "info"
+    },
+    {
+      "code": "USER_TOKEN_REQUIRED",
+      "en": "A user token is required for this request.",
+      "match": [
+        "x-haxcms-user-token header is required for this endpoint"
+      ]
+    },
+    {
+      "code": "USER_TOKEN_INVALID",
+      "en": "Your request token is invalid. Reload the page and try again.",
+      "match": [
+        "invalid request token",
+        "invalid x-haxcms-user-token header",
+        "unable to resolve authenticated user context"
+      ]
+    },
+    {
+      "code": "SITE_TOKEN_REQUIRED",
+      "en": "A site token is required for this request.",
+      "match": [
+        "x-haxcms-site-token header is required for this endpoint",
+        "missing site token"
+      ]
+    },
+    {
+      "code": "SITE_TOKEN_INVALID",
+      "en": "The site token is invalid. Reload the page and try again.",
+      "match": [
+        "invalid site token",
+        "invalid x-haxcms-site-token header",
+        "unable to resolve site token context"
+      ]
+    },
+    {
+      "code": "INSTALL_TOKEN_INVALID",
+      "en": "The install token is invalid or missing.",
+      "match": [
+        "invalid or missing install token.*"
+      ]
+    },
+    {
+      "code": "NOT_INSTALLED",
+      "en": "HAXcms is not installed.",
+      "match": [
+        "haxcms is not installed"
+      ]
+    },
+    {
+      "code": "INSTALL_STEP_INVALID",
+      "en": "Invalid install step.",
+      "match": [
+        "invalid tostep.*"
+      ]
+    },
+    {
+      "code": "SITE_ACCESS_DENIED",
+      "en": "You don't have access to this site.",
+      "match": [
+        "access denied to site",
+        "you do not own this site or site does not exist",
+        "source site does not exist or is not owned by you"
+      ]
+    },
+    {
+      "code": "ACCESS_DENIED",
+      "en": "Access denied.",
+      "match": [
+        "access denied",
+        "cross-origin request denied",
+        "system admin route requires system dashboard access",
+        "admin access required",
+        "not_authorized",
+        "cross_origin"
+      ]
+    },
+    {
+      "code": "HAXIAM_DISABLED",
+      "en": "HAXIAM mode is not enabled.",
+      "match": [
+        "haxiam mode is not enabled"
+      ]
+    },
+    {
+      "code": "USER_NOT_SET_UP",
+      "en": "That user hasn't set up HAXIAM yet. They need to sign in first.",
+      "match": [
+        "user not found or has not set up haxiam yet",
+        "target user has not set up haxiam yet.*"
+      ]
+    },
+    {
+      "code": "USER_ALREADY_HAS_ACCESS",
+      "en": "That user already has access to this site.",
+      "match": [
+        "user already has access to this site"
+      ]
+    },
+    {
+      "code": "ACCESS_SELF_GRANT",
+      "en": "You can't grant access to yourself.",
+      "match": [
+        "cannot grant access to yourself"
+      ]
+    },
+    {
+      "code": "ACCESS_GRANTED",
+      "en": "Access granted.",
+      "match": [
+        "user access granted successfully"
+      ],
+      "kind": "info"
+    },
+    {
+      "code": "ACCESS_GRANT_FAILED",
+      "en": "Unable to grant access.",
+      "match": [
+        "failed to create user access",
+        "failed to create symlink.*"
+      ]
+    },
+    {
+      "code": "FEATURE_DISABLED_OUTLINE",
+      "en": "Changing the outline is disabled for this site.",
+      "match": [
+        "outline operations are disabled for this site"
+      ]
+    },
+    {
+      "code": "FEATURE_DISABLED_ADD_PAGE",
+      "en": "Adding pages is disabled for this site.",
+      "match": [
+        "adding pages is disabled for this site"
+      ]
+    },
+    {
+      "code": "FEATURE_DISABLED_PAGE_DETAILS",
+      "en": "Editing page details is disabled for this site.",
+      "match": [
+        "page details editing is disabled for this site"
+      ]
+    },
+    {
+      "code": "FEATURE_DISABLED_DELETE",
+      "en": "Deleting is disabled for this site.",
+      "match": [
+        "delete is disabled for this site"
+      ]
+    },
+    {
+      "code": "FEATURE_DISABLED_FILES",
+      "en": "File operations are disabled for this site.",
+      "match": [
+        "file operations are disabled for this site"
+      ]
+    },
+    {
+      "code": "FEATURE_DISABLED_UPLOAD",
+      "en": "Uploading media is disabled for this site.",
+      "match": [
+        "uploading media is disabled for this site"
+      ]
+    },
+    {
+      "code": "FEATURE_DISABLED_SETTINGS",
+      "en": "These settings are disabled for this site.",
+      "match": [
+        "(?<setting>allowed blocks|theme|editor|platform|seo) settings are disabled for this site",
+        "manifest editing is disabled for this site"
+      ]
+    },
+    {
+      "code": "FEATURE_DISABLED",
+      "en": "This operation is disabled for this site.",
+      "match": [
+        "this operation is disabled for this site",
+        "(?<feature>.+) (?:is|are) disabled for this site"
+      ]
+    },
+    {
+      "code": "METHOD_NOT_ALLOWED",
+      "en": "This request method is not allowed.",
+      "match": [
+        "method not allowed",
+        "unsupported method for (?<route>\\S+)"
+      ]
+    },
+    {
+      "code": "FORM_NOT_FOUND",
+      "en": "Form not found.",
+      "match": [
+        "unknown form",
+        "(?!site )(?<form>[\\w-]+) does not exist"
+      ]
+    },
+    {
+      "code": "ROUTE_NOT_FOUND",
+      "en": "This API route doesn't exist.",
+      "match": [
+        "not found",
+        "unknown (?:system |site )?(?:api |settings |session |lifecycle |integrations )route"
+      ]
+    },
+    {
+      "code": "API_HANDLER_MISSING",
+      "en": "The server can't handle this request.",
+      "match": [
+        "(?:site|system) api handler (?:file missing|is not callable)"
+      ]
+    },
+    {
+      "code": "OPENAPI_UNAVAILABLE",
+      "en": "Unable to load the API description.",
+      "match": [
+        "failed to load (?:site|system) openapi specification",
+        "invalid (?:site|system) openapi specification",
+        "unable to load system openapi specification: (?<detail>.+)"
+      ]
+    },
+    {
+      "code": "SERVER_ERROR",
+      "en": "Something went wrong on the server.",
+      "match": [
+        "server error",
+        "request failed",
+        "unable to evaluate site api access policy"
+      ]
+    },
+    {
+      "code": "REQUEST_TOO_LARGE",
+      "en": "The request is too large.",
+      "match": [
+        "file too large or too many files",
+        "request entity too large",
+        "payload too large"
+      ]
+    },
+    {
+      "code": "INPUT_TOO_LARGE",
+      "en": "The input is too large (maximum {maxBytes} bytes).",
+      "match": [
+        "yaml input exceeds the maximum size of (?<maxBytes>\\d+) bytes"
+      ]
+    },
+    {
+      "code": "FILE_RATE_LIMITED",
+      "en": "Too many file operations on this site. Try again in {retryAfter}.",
+      "match": [
+        "file operation rate limit reached: (?<max>\\d+) operations per (?<window>.+?) for this site\\. you can retry in (?<retryAfter>.+?)"
+      ]
+    },
+    {
+      "code": "SITE_NAME_INVALID",
+      "en": "Site names can only use letters, numbers, hyphens and underscores.",
+      "match": [
+        "invalid site name",
+        "sitename must be a valid machine name.*"
+      ]
+    },
+    {
+      "code": "USER_NAME_INVALID",
+      "en": "User names can only use letters, numbers, hyphens and underscores.",
+      "match": [
+        "username must be a valid machine name.*"
+      ]
+    },
+    {
+      "code": "SITE_NAME_REQUIRED",
+      "en": "A site name is required.",
+      "match": [
+        "missing site name",
+        "site\\.name is required",
+        "sitename is required",
+        "site is required"
+      ]
+    },
+    {
+      "code": "SITE_NOT_FOUND",
+      "en": "Site not found.",
+      "match": [
+        "site not found",
+        "site does not exist",
+        "invalid site",
+        "source site path could not be resolved",
+        "unable to resolve site path"
+      ]
+    },
+    {
+      "code": "SITE_CONTEXT_UNRESOLVED",
+      "en": "Unable to find the site for this request.",
+      "match": [
+        "unable to resolve site (?:context|name)(?: for (?<route>.+))?"
+      ]
+    },
+    {
+      "code": "SITE_CREATE_FAILED",
+      "en": "Unable to create the site.",
+      "match": [
+        "unable to create site"
+      ]
+    },
+    {
+      "code": "SITE_THEME_INVALID",
+      "en": "That theme can't be used for a new site.",
+      "match": [
+        "invalid theme supplied for site creation"
+      ]
+    },
+    {
+      "code": "SITE_CLONE_FAILED",
+      "en": "Unable to copy the site.",
+      "match": [
+        "unable to clone site"
+      ]
+    },
+    {
+      "code": "SITE_ARCHIVED",
+      "en": "Site archived.",
+      "match": [
+        "site archived"
+      ],
+      "kind": "info"
+    },
+    {
+      "code": "SITE_ARCHIVE_FAILED",
+      "en": "Unable to archive the site.",
+      "match": [
+        "unable to archive site"
+      ]
+    },
+    {
+      "code": "TEMPLATE_SAVE_FAILED",
+      "en": "Unable to save the site as a template.",
+      "match": [
+        "failed to save site template: (?<detail>.+)",
+        "unable to (?:save|encode|generate) site skeleton",
+        "failed to generate site skeleton: (?<detail>.+)",
+        "unable to create skeletons directory",
+        "skeletons directory is not writable"
+      ]
+    },
+    {
+      "code": "TEMPLATE_NOT_FOUND",
+      "en": "Template not found.",
+      "match": [
+        "skeleton not found",
+        "unable to resolve skeletonmachinename for from-skeleton build",
+        "invalid skeleton (?:name|json)"
+      ]
+    },
+    {
+      "code": "ITEM_COUNT_MISMATCH",
+      "en": "The number of pages changed unexpectedly, so nothing was saved.",
+      "match": [
+        "item count mismatch.*"
+      ]
+    },
+    {
+      "code": "ITEM_NOT_FOUND",
+      "en": "Page not found.",
+      "match": [
+        "(?:item|content) not found for idorslug \"(?<idOrSlug>.*)\"",
+        "node (?:file )?not found",
+        "invalid page reference",
+        "unable to resolve item page context for .+",
+        "unable to resolve page location for .+"
+      ]
+    },
+    {
+      "code": "ITEM_UPDATE_FAILED",
+      "en": "Unable to update the page.",
+      "match": [
+        "unable to update item",
+        "no pages could be updated",
+        "invalid page (?:contents|location)",
+        "invalid write target",
+        "invalid node (?:file )?location"
+      ]
+    },
+    {
+      "code": "OUTLINE_INVALID",
+      "en": "The outline is invalid.",
+      "match": [
+        "outline payload requires an items array",
+        "each outline item requires an id"
+      ]
+    },
+    {
+      "code": "PAGE_BREAK_REQUIRED",
+      "en": "The content must include a page break. Only content after it is saved.",
+      "match": [
+        "body must contain a <page-break> element.*"
+      ]
+    },
+    {
+      "code": "CONTENT_INVALID",
+      "en": "The page content is invalid.",
+      "match": [
+        "content must be a string",
+        "content cannot be empty",
+        "content must be valid html",
+        "empty html content",
+        "invalid duplicate (?:content|source)"
+      ]
+    },
+    {
+      "code": "REVISION_NOT_FOUND",
+      "en": "Revision not found.",
+      "match": [
+        "revision content for this page was not found",
+        "revision not found",
+        "invalid revision hash"
+      ]
+    },
+    {
+      "code": "REVISION_LOAD_FAILED",
+      "en": "Unable to load the page history.",
+      "match": [
+        "unable to load (?:item|node) revisions?(?: detail)?"
+      ]
+    },
+    {
+      "code": "REVISION_RESTORE_FAILED",
+      "en": "Unable to restore that version of the page.",
+      "match": [
+        "unable to restore (?:item|node) revision",
+        "failed writing restored revision"
+      ]
+    },
+    {
+      "code": "ALT_FORMATS_FAILED",
+      "en": "Unable to update alternative formats for this site.",
+      "match": [
+        "invalid format requested for alternative formats update",
+        "unable to update alternative formats for this site"
+      ]
+    },
+    {
+      "code": "BLOCK_NOT_FOUND",
+      "en": "Block not found.",
+      "match": [
+        "block \"(?<name>.+)\" not found",
+        "block not found"
+      ]
+    },
+    {
+      "code": "CUSTOM_ELEMENT_NOT_FOUND",
+      "en": "Custom element not found.",
+      "match": [
+        "custom element \"(?<name>.+)\" not found",
+        "custom element not found"
+      ]
+    },
+    {
+      "code": "VIEW_NOT_FOUND",
+      "en": "View not found.",
+      "match": [
+        "view \"(?<name>.+)\" not found",
+        "view not found"
+      ]
+    },
+    {
+      "code": "REGION_NOT_FOUND",
+      "en": "Region not found.",
+      "match": [
+        "region \"(?<name>.+)\" not found",
+        "region not found"
+      ]
+    },
+    {
+      "code": "THEME_NOT_FOUND",
+      "en": "Theme not found.",
+      "match": [
+        "theme \"(?<name>.+)\" not found",
+        "(?:active )?theme not found"
+      ]
+    },
+    {
+      "code": "REPORT_UNKNOWN",
+      "en": "Unknown report.",
+      "match": [
+        "unknown report \"(?<name>.+)\""
+      ]
+    },
+    {
+      "code": "FILE_UUID_INVALID",
+      "en": "A valid file ID is required.",
+      "match": [
+        "file uuid is required(?: and must be a valid uuid)?"
+      ]
+    },
+    {
+      "code": "FILE_NOT_FOUND",
+      "en": "File not found.",
+      "match": [
+        "requested file was not found",
+        "file not found(?: for fileuuid)?",
+        "requested file path is not a valid file",
+        "files directory was not found",
+        "unable to load file"
+      ]
+    },
+    {
+      "code": "FILE_EXISTS",
+      "en": "A file with this name already exists.",
+      "match": [
+        "(?:a )?file (?:with this name )?already exists"
+      ]
+    },
+    {
+      "code": "FILE_NAME_INVALID",
+      "en": "That file name can't be used.",
+      "match": [
+        "new file name is required",
+        "file name can only include one extension",
+        "new file name must include at least one alphanumeric character",
+        "requested extension is not allowed",
+        "extension cannot be changed during rename.*",
+        "current file extension is not allowed for rename",
+        "new (?:file )?name must be different(?: from current name)?",
+        "invalid (?:new|upload) name"
+      ]
+    },
+    {
+      "code": "FILE_PATH_INVALID",
+      "en": "Invalid file path.",
+      "match": [
+        "invalid (?:output )?file path",
+        "output path is not writable",
+        "(?:duplicated |renamed )?file path is outside of allowed files directory",
+        "files directory is outside of allowed site path",
+        "file path must start with files\\/",
+        "only a single file path is allowed per request",
+        "invalid bulk import (?:path|source)(?: path in build\\.files)?",
+        "bulk import source replaced with symlink",
+        "unable to verify bulk import source",
+        "invalid file name in build\\.files"
+      ]
+    },
+    {
+      "code": "FILE_OP_UNSUPPORTED",
+      "en": "Unsupported file operation.",
+      "match": [
+        "unsupported file operation",
+        "use delete .+ for file deletion",
+        "only (?:rename|delete) is allowed .+"
+      ]
+    },
+    {
+      "code": "FILE_OP_FAILED",
+      "en": "The file operation failed.",
+      "match": [
+        "failed to (?:write|delete|rename file|delete file|save uploaded file|prepare schema directory)",
+        "unable to (?:save file(?: to target location)?|complete file operation|delete file|rename file|duplicate file)",
+        "unable to generate a unique (?:duplicate|jpg output) file name"
+      ]
+    },
+    {
+      "code": "UPLOAD_MISSING",
+      "en": "No file was uploaded.",
+      "match": [
+        "no file uploaded",
+        "missing file upload",
+        "uploaded file is missing",
+        "empty file uploaded",
+        "uploaded file is empty(?: or unreadable)?",
+        "pptx file is empty",
+        "upload failed before processing",
+        "invalid file upload"
+      ]
+    },
+    {
+      "code": "UPLOAD_READ_FAILED",
+      "en": "Unable to read the uploaded file.",
+      "match": [
+        "unable to read uploaded file: (?<detail>.+)",
+        "unable to determine uploaded file mime type"
+      ]
+    },
+    {
+      "code": "UPLOAD_WRONG_TYPE",
+      "en": "Wrong file type. Expected {expected}.",
+      "match": [
+        "invalid file type\\. expected (?<expected>.+?), got: (?<filename>.*)",
+        "file must have a (?<expected>\\.\\w+) extension",
+        "invalid file type for schema .+; expected (?<expected>\\.\\w+)",
+        "detected mime type .+ does not match allowed type for (?<expected>\\.\\w+)",
+        "convert-pptx-deck requires a (?<expected>\\.pptx) file"
+      ]
+    },
+    {
+      "code": "UPLOAD_NOT_VALID",
+      "en": "The uploaded file isn't a valid {expected} file.",
+      "match": [
+        "(?:uploaded )?file is not a valid (?<expected>\\.?\\w+)(?: file)?.*",
+        "invalid image file content"
+      ]
+    },
+    {
+      "code": "UPLOAD_XLS_UNSUPPORTED",
+      "en": "Legacy .xls files aren't supported. Save the file as .xlsx and try again.",
+      "match": [
+        "legacy \\.xls files are not supported.*"
+      ]
+    },
+    {
+      "code": "UPLOAD_TYPE_NOT_ALLOWED",
+      "en": "This file type isn't allowed.",
+      "match": [
+        "file type not allowed",
+        "file rejected during build\\.files import",
+        "disallowed file extension in build\\.files",
+        "unexpected upload field name.*"
+      ]
+    },
+    {
+      "code": "UPLOAD_TOO_LARGE",
+      "en": "The file is larger than the {maxMb} MB upload limit.",
+      "match": [
+        "(?:downloaded )?file exceeds the maximum upload size of (?<maxMb>[\\d.]+) ?mb"
+      ]
+    },
+    {
+      "code": "DOWNLOAD_TOO_LARGE",
+      "en": "The downloaded file is too large.",
+      "match": [
+        "downloaded file exceeds the maximum allowed size"
+      ]
+    },
+    {
+      "code": "DOWNLOAD_FAILED",
+      "en": "Unable to download the remote file.",
+      "match": [
+        "failed to download remote file source",
+        "remote file could not be downloaded"
+      ]
+    },
+    {
+      "code": "URL_NOT_ALLOWED",
+      "en": "That URL isn't allowed.",
+      "match": [
+        "url target is not allowed",
+        "blocked upstream request: (?<detail>.+)"
+      ]
+    },
+    {
+      "code": "DECK_NAME_FAILED",
+      "en": "Unable to work out a deck name from the file name.",
+      "match": [
+        "unable to derive a deck name from the file name"
+      ]
+    },
+    {
+      "code": "IMAGE_RASTER_ONLY",
+      "en": "Only raster images (such as JPG or PNG) can be edited this way.",
+      "match": [
+        "only raster images can be .+"
+      ]
+    },
+    {
+      "code": "IMAGE_FORMAT_UNSUPPORTED",
+      "en": "This image format can't be edited in place.",
+      "match": [
+        "image format does not support in-place .+",
+        "unsupported (?:in-place )?transform(?: operation)?(?:: .*)?"
+      ]
+    },
+    {
+      "code": "IMAGE_SUPPORT_UNAVAILABLE",
+      "en": "Image editing isn't available on this server.",
+      "match": [
+        "image \\w+ support is unavailable on this server"
+      ]
+    },
+    {
+      "code": "IMAGE_OP_FAILED",
+      "en": "Unable to edit the image.",
+      "match": [
+        "unable to determine source image size",
+        "unable to prepare image .+",
+        "unable to (?:scale|compress|transform|rotate) image",
+        "unable to save (?:scaled|converted|compressed|transformed|rotated) image",
+        "unable to replace original image after .+"
+      ]
+    },
+    {
+      "code": "SEARCH_QUERY_TOO_LONG",
+      "en": "The search is too long (maximum {max} characters).",
+      "match": [
+        "search query is too long \\(max (?<max>\\d+) characters\\)",
+        "query parameter \"q\" exceeds (?<max>\\d+) characters"
+      ]
+    },
+    {
+      "code": "SELECTOR_INVALID",
+      "en": "Invalid selector.",
+      "match": [
+        "only simple selectors are supported.*",
+        "invalid selector (?:syntax|query)",
+        "selector must include at least a tag or attribute",
+        "selector groups cannot be empty"
+      ]
+    },
+    {
+      "code": "SEARCH_TEXT_TOO_SHORT",
+      "en": "Search text must be longer than one character to replace it.",
+      "match": [
+        "search text must be more than 1 character for replacement operations"
+      ]
+    },
+    {
+      "code": "REPLACE_TEXT_TOO_SHORT",
+      "en": "Replacement text must be empty or longer than one character.",
+      "match": [
+        "replacement text must be empty or more than 1 character"
+      ]
+    },
+    {
+      "code": "REPLACE_CONFIRM_REQUIRED",
+      "en": "Confirm the replacement to continue.",
+      "match": [
+        "replacement requires confirmation"
+      ]
+    },
+    {
+      "code": "REMOVE_CONFIRM_REQUIRED",
+      "en": "Removing the matched text needs a second confirmation.",
+      "match": [
+        "removing matched text requires a second confirmation"
+      ]
+    },
+    {
+      "code": "SEARCH_NO_MATCHES",
+      "en": "The search term wasn't found in the site content.",
+      "match": [
+        "search term not found in site content"
+      ]
+    },
+    {
+      "code": "STYLE_GUIDE_EXTERNAL",
+      "en": "The style guide comes from an external source and can't be edited in HAXcms.",
+      "match": [
+        "style guide is configured to use external source.*"
+      ]
+    },
+    {
+      "code": "STYLE_GUIDE_SAVED",
+      "en": "Style guide saved.",
+      "match": [
+        "style guide saved successfully"
+      ],
+      "kind": "info"
+    },
+    {
+      "code": "STYLE_GUIDE_SAVE_FAILED",
+      "en": "Unable to save the style guide.",
+      "match": [
+        "failed to write style guide file",
+        "failed to create theme directory"
+      ]
+    },
+    {
+      "code": "SETTINGS_LOAD_FAILED",
+      "en": "Unable to load settings.",
+      "match": [
+        "unable to load (?:api key|localization|media|theme) settings"
+      ]
+    },
+    {
+      "code": "SETTINGS_SAVE_FAILED",
+      "en": "Unable to save settings.",
+      "match": [
+        "unable to save (?:api key|enabled skeleton|enabled theme|localization|media) settings"
+      ]
+    },
+    {
+      "code": "PLATFORM_SETTINGS_MISSING",
+      "en": "Platform settings are missing.",
+      "match": [
+        "missing platform settings"
+      ]
+    },
+    {
+      "code": "API_KEY_MISSING",
+      "en": "An API key for {provider} is required.",
+      "match": [
+        "missing api key for (?<provider>.+)"
+      ]
+    },
+    {
+      "code": "PROVIDER_UNSUPPORTED",
+      "en": "Unsupported app store provider.",
+      "match": [
+        "unsupported app store provider"
+      ]
+    },
+    {
+      "code": "UPSTREAM_UNREACHABLE",
+      "en": "Unable to reach the provider.",
+      "match": [
+        "unable to reach upstream provider(?:: (?<detail>.+))?",
+        "upstream provider response was not valid json",
+        "curl is required for app store broker requests"
+      ]
+    },
+    {
+      "code": "IMPORT_EMPTY",
+      "en": "The import didn't find any pages.",
+      "match": [
+        ".+ (?:import )?produced no (?:pages to import|page-like content items)",
+        "no pages found at (?<url>.+)",
+        "the vitepress site has no pages to import",
+        ".+ import failed to produce content",
+        "no sheets found in excel file",
+        ".+ discovered but import failed to produce content",
+        "drupal json:api is available but .+"
+      ]
+    },
+    {
+      "code": "IMPORT_SOURCE_INVALID",
+      "en": "The import source couldn't be found or read.",
+      "match": [
+        "unable to discover .+",
+        "unable to resolve candidate plone base urls.*",
+        "plone rest .+",
+        "wordpress pages endpoint is not publicly accessible.*",
+        "drupal json:api discovered but .+",
+        "invalid (?:site\\.json structure|pressbooks toc response|plone search response|github repository contents|github repository url|repourl)(?:.*)",
+        "invalid `repourl` param.*",
+        "repourl must be a github\\.com repository url",
+        "repourl is missing the owner\\/repo path.*",
+        "could not find summary\\.md in .+",
+        "no \\.vitepress\\/config file found in .+",
+        "unable to parse .+",
+        "unsupported import platform .*",
+        "unknown adapter .*"
+      ]
+    },
+    {
+      "code": "IMPORT_FETCH_FAILED",
+      "en": "Unable to fetch the import source.",
+      "match": [
+        "unable to fetch (?:url|site\\.json|wordpress pages|pressbooks toc)(?: from (?<url>\\S+?))?(?:: (?<detail>.+))?",
+        "failed to fetch (?:or parse )?(?:json|yaml) from link(?:: (?<detail>.+))?",
+        "unable to access (?:github repository|worksheet)(?:: (?<detail>.+))?",
+        "unable to search plone site: (?<detail>.+)",
+        "plone search failed at .+",
+        "unable to reach (?<source>.+?): (?<detail>.+)",
+        "unable to read (?<path>\\S+)",
+        "http (?<status>\\d{3})"
+      ]
+    },
+    {
+      "code": "IMPORT_FAILED",
+      "en": "The import failed.",
+      "match": [
+        "error processing (?<format>.+?)(?: import| document)?: (?<detail>.+)",
+        "unable to import (?:site|the vitepress site|this openstax book)",
+        "error converting (?:elmsln|gitbook|notion): (?<detail>.+)"
+      ]
+    },
+    {
+      "code": "EXPORT_FORMAT_UNSUPPORTED",
+      "en": "Export format \"{format}\" isn't supported.",
+      "match": [
+        "unsupported (?:site |item )?(?:export|conversion) format \"(?<format>.+)\""
+      ]
+    },
+    {
+      "code": "EXPORT_FAILED",
+      "en": "The export failed.",
+      "match": [
+        "unable to build (?:site|item) export \\w+(?:: (?<detail>.+))?",
+        "export conversion (?:failed|returned empty output)",
+        "unable to complete (?:\\w+ )?export conversion"
+      ]
+    },
+    {
+      "code": "CONVERSION_FAILED",
+      "en": "The conversion failed.",
+      "match": [
+        "error converting .+?(?:: (?<detail>.+))?",
+        ".+ conversion failed(?:: (?<detail>.+))?",
+        ".+ pretty-print failed: (?<detail>.+)",
+        "invalid json string provided",
+        "invalid or empty yaml content"
+      ]
+    },
+    {
+      "code": "PARAM_REQUIRED",
+      "en": "A required value is missing: {param}.",
+      "match": [
+        "missing `(?<param>[^`]+)` param",
+        "missing required body fields: (?<param>.+)",
+        "query parameter \"(?<param>\\w+)\" is required",
+        "missing (?<param>.+?) payload",
+        "missing (?<param>node id)",
+        "(?<param>[\\w. ]+?) (?:is|are) required"
+      ]
+    },
+    {
+      "code": "INVALID_REQUEST",
+      "en": "Invalid request.",
+      "match": [
+        "invalid request(?: payload)?",
+        "invalid action"
+      ]
+    },
+    {
+      "code": "PARAM_INVALID",
+      "en": "Invalid value: {param}.",
+      "match": [
+        "invalid (?<param>[\\w.]+) (?:value|payload|param|entry)(?: .*)?",
+        "invalid tag name in (?<param>\\w+) .*",
+        "invalid feature (?:key|value for (?<param>.+))",
+        "unknown security level",
+        "invalid (?<param>.+)"
+      ]
+    }
+  ]
+}

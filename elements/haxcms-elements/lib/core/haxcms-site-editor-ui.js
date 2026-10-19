@@ -35,6 +35,7 @@ import "./haxcms-darkmode-toggle.js";
 import "../ui-components/site/site-remote-content.js";
 import "@haxtheweb/page-flag/page-flag.js";
 import { SiteView } from "../ui-components/magic/site-view.js";
+import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
 
 const ADMIN_ROUTE_QUERY_PATHS = {
   admin: "admin",
@@ -1151,7 +1152,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             store.toast(
               this.t.errorConvertingExcelFile.replace(
                 "{error}",
-                () => (excelResponse.data.error || this.t.unknownError),
+                () => haxcmsApiMessage(excelResponse, this.t.unknownError),
               ),
               4000,
               {
