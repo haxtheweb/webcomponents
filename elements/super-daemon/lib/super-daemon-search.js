@@ -516,7 +516,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         }
         .program {
           display: inline-flex;
-          font-family: "Roboto Mono", monospace;
+          font-family: var(--ddd-font-mono, "Roboto Mono", monospace);
           color: var(--simple-colors-default-theme-grey-1, white);
           background-color: var(--simple-colors-default-theme-grey-12, black);
           line-break: anywhere;

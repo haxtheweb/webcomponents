@@ -100,7 +100,7 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
           overflow: hidden;
           white-space: pre-wrap;
           text-overflow: ellipsis;
-          font-family: monospace;
+          font-family: var(--ddd-font-mono, monospace);
         }
         #codeeditor {
           flex: 1 1 auto;
