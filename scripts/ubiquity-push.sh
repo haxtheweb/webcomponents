@@ -214,6 +214,22 @@ git commit -m "ubiquity publish"
 ./node_modules/.bin/commit-and-tag-version --release-as $version
 git push --follow-tags origin master
 
+# STEP 5.5 SCHEMA / SPEC PACKAGES
+# validators used by `hax audit schema` (create) and by agents; versioned with
+# the ecosystem so every package shares one version number
+for spec in json-outline-schema:master hax-schema:main hax-element-schema:master merlin-schema:main appstore-spec:master; do
+  repo=${spec%%:*}
+  branch=${spec#*:}
+  cd ~/haxtheweb/$repo
+  git pull origin $branch
+  git add -A
+  git commit -m "ubiquity publish"
+  npm test
+  ./node_modules/.bin/commit-and-tag-version --release-as $version
+  git push --follow-tags origin $branch
+  npm publish
+done
+
 # STEP 6 THESE NEED THEIR PACKAGE UPDATED FOR NODEJS VERSION INTERNALLY
 
 cd ~/haxtheweb/open-apis
