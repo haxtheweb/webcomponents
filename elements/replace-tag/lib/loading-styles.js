@@ -69,6 +69,8 @@ const loadingStylesResizeEvent = function () {
   }, 100);
 };
 // resize function incase the screen changes shape while still loading (like phone rotating)
-globalThis.addEventListener("resize", loadingStylesResizeEvent, {
-  signal: windowControllers.signal,
-});
+if (globalThis.addEventListener) {
+  globalThis.addEventListener("resize", loadingStylesResizeEvent, {
+    signal: windowControllers.signal,
+  });
+}

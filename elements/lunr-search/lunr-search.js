@@ -141,11 +141,13 @@ class LunrSearch extends I18NMixin(LitElement) {
         new URL("./lunr-search.js", import.meta.url).href + "/../../../";
     }
     const location = `${this.basePath}lunr/lunr.js`;
-    globalThis.addEventListener(
-      "es-bridge-lunr-loaded",
-      this._lunrLoaded.bind(this),
-      { signal: this.windowControllers.signal },
-    );
+    if (globalThis.addEventListener) {
+      globalThis.addEventListener(
+        "es-bridge-lunr-loaded",
+        this._lunrLoaded.bind(this),
+        { signal: this.windowControllers.signal },
+      );
+    }
 
     globalThis.ESGlobalBridge.requestAvailability().load("lunr", location);
     if (

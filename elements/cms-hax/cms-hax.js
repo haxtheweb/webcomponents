@@ -247,15 +247,17 @@ class CmsHax extends LitElement {
     this.windowControllersLoaded = new AbortController();
 
     this.ready = false;
-    globalThis.addEventListener(
-      "hax-store-ready",
-      this._storeReady.bind(this),
-      {
-        once: true,
-        passive: true,
-        signal: this.windowControllersReady.signal,
-      },
-    );
+    if (globalThis.addEventListener) {
+      globalThis.addEventListener(
+        "hax-store-ready",
+        this._storeReady.bind(this),
+        {
+          once: true,
+          passive: true,
+          signal: this.windowControllersReady.signal,
+        },
+      );
+    }
 
     globalThis.addEventListener(
       "hax-store-app-store-loaded",

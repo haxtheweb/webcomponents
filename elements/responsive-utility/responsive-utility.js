@@ -129,7 +129,9 @@ class ResponsiveUtility extends LitElement {
     this.details = [];
     this.__resizeFallbackHandler = this.__handleResizeFallback.bind(this);
     if (typeof globalThis.ResizeObserver !== "function") {
-      globalThis.addEventListener("resize", this.__resizeFallbackHandler);
+      if (globalThis.addEventListener) {
+        globalThis.addEventListener("resize", this.__resizeFallbackHandler);
+      }
     }
     globalThis.addEventListener(
       "responsive-element",

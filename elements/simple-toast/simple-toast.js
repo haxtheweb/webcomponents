@@ -209,7 +209,7 @@ class SimpleToast extends DDD {
     this.duration = 3000;
     this.eventCallback = null;
     this.closeButton = true;
-    while (this.firstChild !== null) {
+    while (this.firstChild && this.firstChild !== null) {
       this.removeChild(this.firstChild);
     }
   }

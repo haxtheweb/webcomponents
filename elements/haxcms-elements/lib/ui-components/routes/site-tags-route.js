@@ -71,13 +71,15 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
         });
       }),
     );
-    globalThis.addEventListener(
-      "theme-ready-changed",
-      (e) => {
-        this._processCustomThemeRoutes();
-      },
-      { signal: this.windowControllers.signal },
-    );
+    if (globalThis.addEventListener) {
+      globalThis.addEventListener(
+        "theme-ready-changed",
+        (e) => {
+          this._processCustomThemeRoutes();
+        },
+        { signal: this.windowControllers.signal },
+      );
+    }
   }
 
   _processCustomThemeRoutes() {

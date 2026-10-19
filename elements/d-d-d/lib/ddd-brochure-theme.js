@@ -48,7 +48,9 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
     );
   }
   getSections() {
-    const sections = this.querySelectorAll("page-section");
+    const sections = this.querySelectorAll
+      ? this.querySelectorAll("page-section")
+      : [];
     let items = [];
     sections.forEach((section) => {
       items.push({

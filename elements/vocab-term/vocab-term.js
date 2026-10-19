@@ -58,10 +58,10 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
     this.detailsOpen = false;
     this.__boundDetailsFocusOut = this.detailsFocusOut.bind(this);
     this.__boundSummaryClick = this._handleSummaryClick.bind(this);
-    if (this.querySelector("summary")) {
+    if (this.querySelector && this.querySelector("summary")) {
       this.term = this.querySelector("summary").textContent;
     }
-    if (this.querySelector(`[slot="information"]`)) {
+    if (this.querySelector && this.querySelector(`[slot="information"]`)) {
       this.information = this.querySelector(`[slot="information"]`).textContent;
     }
     // progressive enhancement support; scan light DOM in the constructor so

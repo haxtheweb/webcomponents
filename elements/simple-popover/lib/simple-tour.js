@@ -27,10 +27,12 @@ class SimpleTour extends I18NMixin(LitElement) {
     this.tourInfo = {};
     this.activeElementDelay = 500;
     this.stop = -1;
-    globalThis.addEventListener(
-      "simple-tour-register",
-      this.registerNewTourEvent.bind(this),
-    );
+    if (globalThis.addEventListener) {
+      globalThis.addEventListener(
+        "simple-tour-register",
+        this.registerNewTourEvent.bind(this),
+      );
+    }
     globalThis.addEventListener(
       "simple-tour-create-tour-stop",
       this.createTourStopEvent.bind(this),

@@ -59,14 +59,16 @@ export class SimpleTag extends SimpleTagLiteSuper(DDD) {
     if (shade < 5) {
       contrastLevel = contrast.grey.pop();
     }
-    this.style.setProperty(
-      "--simple-fields-button-background-color",
-      `var(--simple-colors-default-theme-accent-${shade}, orange)`,
-    );
-    this.style.setProperty(
-      "--simple-fields-button-color",
-      `var(--simple-colors-fixed-theme-grey-${contrastLevel}, black)`,
-    );
+    if (this.style) {
+      this.style.setProperty(
+        "--simple-fields-button-background-color",
+        `var(--simple-colors-default-theme-accent-${shade}, orange)`,
+      );
+      this.style.setProperty(
+        "--simple-fields-button-color",
+        `var(--simple-colors-fixed-theme-grey-${contrastLevel}, black)`,
+      );
+    }
     // set accent color
     return colorName;
   }

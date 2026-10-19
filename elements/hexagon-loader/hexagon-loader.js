@@ -622,7 +622,9 @@ class HexagonLoader extends LitElement {
         }
       });
       offset = rownum > 3 ? 4 : rownum > 2 ? 3 : rownum > 1 ? 2 : 1;
-      this.style.setProperty("--hexagon-loader-height", `${height}px`);
+      if (this.style) {
+        this.style.setProperty("--hexagon-loader-height", `${height}px`);
+      }
     }
     // mirror the loading state onto aria-busy for the status region
     if (changedProperties.has("loading")) {

@@ -358,9 +358,10 @@ class A11yFigure extends A11yDetails {
    */
   get hasDetailContent() {
     return (
-      !!this.querySelector("summary") ||
-      !!this.querySelector("*[slot=summary]") ||
-      !!this.querySelector("*[slot=details]")
+      !!this.querySelector &&
+      (!!this.querySelector("summary") ||
+        !!this.querySelector("*[slot=summary]") ||
+        !!this.querySelector("*[slot=details]"))
     );
   }
   /**

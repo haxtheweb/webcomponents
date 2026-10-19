@@ -6,9 +6,13 @@ export class AppHAXDarkmodeToggle extends DarkmodeToggle {
   constructor() {
     super();
     // Create a media query to monitor platform color scheme changes
-    this.darkModeMediaQuery = globalThis.matchMedia(
-      "(prefers-color-scheme: dark)",
-    );
+    this.darkModeMediaQuery = globalThis.matchMedia
+      ? globalThis.matchMedia("(prefers-color-scheme: dark)")
+      : {
+          matches: false,
+          addEventListener() {},
+          removeEventListener() {},
+        };
 
     // Function to handle both autorun updates and media query changes
     this._updateToggleState = () => {

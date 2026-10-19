@@ -526,7 +526,7 @@ export class ImageGallery extends I18NMixin(DDD) {
   }
 
   _updateImages() {
-    const items = Array.from(this.children).filter(
+    const items = Array.from(this.children || []).filter(
       (el) => el.tagName === "MEDIA-IMAGE" || el.tagName === "IMG",
     );
     if (this.activeIndex >= items.length) {

@@ -8,8 +8,12 @@
  */
 import { LitElement, html, css } from "lit";
 
-globalThis.SimpleColorsSharedStyles = {};
-globalThis.SimpleColorsSharedStyles.instance = null;
+// keep the shared object if this module is evaluated twice (a second copy of the
+// package, e.g. a nested node_modules install): replacing it would drop
+// requestAvailability, because the second customElements.define below throws
+globalThis.SimpleColorsSharedStyles = globalThis.SimpleColorsSharedStyles || {};
+globalThis.SimpleColorsSharedStyles.instance =
+  globalThis.SimpleColorsSharedStyles.instance || null;
 
 class SimpleColorsSharedStyles extends LitElement {
   //styles function
@@ -1062,10 +1066,12 @@ class SimpleColorsSharedStyles extends LitElement {
     return 13 - parseInt(shade);
   }
 }
-globalThis.customElements.define(
-  SimpleColorsSharedStyles.tag,
-  SimpleColorsSharedStyles,
-);
+if (!globalThis.customElements.get(SimpleColorsSharedStyles.tag)) {
+  globalThis.customElements.define(
+    SimpleColorsSharedStyles.tag,
+    SimpleColorsSharedStyles,
+  );
+}
 export { SimpleColorsSharedStyles };
 /**
  * Checks to see if there is an instance available, and if not appends one
@@ -1081,9 +1087,11 @@ globalThis.SimpleColorsSharedStyles.requestAvailability = () => {
     globalThis.SimpleColorsSharedStyles.stylesheet =
       globalThis.document.createElement("style");
     globalThis.SimpleColorsSharedStyles.stylesheet.innerHTML = `${SimpleColorsSharedStyles.styles[0].cssText}`;
-    globalThis.document.head.appendChild(
-      globalThis.SimpleColorsSharedStyles.stylesheet,
-    );
+    if (globalThis.document && globalThis.document.head) {
+      globalThis.document.head.appendChild(
+        globalThis.SimpleColorsSharedStyles.stylesheet,
+      );
+    }
   }
   return globalThis.SimpleColorsSharedStyles.instance;
 };

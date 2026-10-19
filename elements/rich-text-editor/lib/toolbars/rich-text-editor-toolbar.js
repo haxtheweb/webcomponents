@@ -940,11 +940,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.breadcrumbsLabel = "Select";
       this.breadcrumbsSelectAllLabel = "All";
       this.__toolbar = this;
-      globalThis.document.addEventListener(
-        "selectionchange",
-        this._handleTargetSelection.bind(this.__toolbar),
-        { signal: this.windowControllers.signal },
-      );
+      if (globalThis.document.addEventListener) {
+        globalThis.document.addEventListener(
+          "selectionchange",
+          this._handleTargetSelection.bind(this.__toolbar),
+          { signal: this.windowControllers.signal },
+        );
+      }
 
       //stops mousedown from bubbling up and triggering HAX focus logic
       this.addEventListener("mousedown", (e) => {
