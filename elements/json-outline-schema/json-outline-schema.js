@@ -23,6 +23,10 @@ globalThis.JSONOutlineSchema.requestAvailability = () => {
         globalThis.JSONOutlineSchema.instance,
       );
     }
+  } else if (!globalThis.JSONOutlineSchema.instance && globalThis.document) {
+    // no body to attach to (server side render): a detached instance still
+    // answers importers that use the singleton at import time
+    globalThis.JSONOutlineSchema.instance = new JsonOutlineSchema();
   }
   return globalThis.JSONOutlineSchema.instance;
 };

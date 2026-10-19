@@ -124,6 +124,10 @@ globalThis.SimpleIconset.requestAvailability = () => {
     if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(globalThis.SimpleIconset.instance);
     }
+  } else if (!globalThis.SimpleIconset.instance && globalThis.document) {
+    // no body to attach to (server side render): a detached instance still
+    // answers importers that use the singleton at import time
+    globalThis.SimpleIconset.instance = new SimpleIconset();
   }
   return globalThis.SimpleIconset.instance;
 };

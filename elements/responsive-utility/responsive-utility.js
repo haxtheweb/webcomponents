@@ -133,10 +133,12 @@ class ResponsiveUtility extends LitElement {
         globalThis.addEventListener("resize", this.__resizeFallbackHandler);
       }
     }
-    globalThis.addEventListener(
-      "responsive-element",
-      this.responiveElementEvent.bind(this),
-    );
+    if (globalThis.addEventListener) {
+      globalThis.addEventListener(
+        "responsive-element",
+        this.responiveElementEvent.bind(this),
+      );
+    }
 
     /* handle element deregistration */
     globalThis.addEventListener(
@@ -174,6 +176,10 @@ globalThis.ResponsiveUtility.requestAvailability = () => {
         globalThis.ResponsiveUtility.instance,
       );
     }
+  } else if (!globalThis.ResponsiveUtility.instance && globalThis.document) {
+    // no body to attach to (server side render): a detached instance still
+    // answers importers that use the singleton at import time
+    globalThis.ResponsiveUtility.instance = new ResponsiveUtility();
   }
   return globalThis.ResponsiveUtility.instance;
 };
