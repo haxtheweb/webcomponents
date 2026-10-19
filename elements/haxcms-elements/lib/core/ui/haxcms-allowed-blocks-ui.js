@@ -300,7 +300,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         }
 
         .block-row.disabled {
-          opacity: 0.58;
+          opacity: var(--ddd-opacity-60, 0.58);
           background-color: light-dark(
             rgba(0, 0, 0, 0),
             rgba(255, 255, 255, 0.02)
@@ -426,7 +426,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         }
 
         .block-card.disabled {
-          opacity: 0.58;
+          opacity: var(--ddd-opacity-60, 0.58);
           background-color: light-dark(
             rgba(0, 0, 0, 0),
             rgba(255, 255, 255, 0.02)

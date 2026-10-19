@@ -236,7 +236,7 @@ export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
           --simple-icon-width: var(--ddd-icon-xs);
         }
         button[disabled]:not([correct]):not([incorrect]) {
-          opacity: 0.7;
+          opacity: var(--ddd-opacity-80, 0.7);
         }
         :host(:not([disabled])) {
           cursor: grab;

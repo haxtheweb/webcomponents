@@ -84,7 +84,7 @@ class SimpleContextMenu extends DDD {
         }
 
         ::slotted([disabled]) {
-          opacity: 0.5;
+          opacity: var(--ddd-state-disabled-opacity, 0.5);
           cursor: not-allowed;
           pointer-events: none;
         }

@@ -2162,7 +2162,7 @@ export const DDDReset = css`
   details[disabled] {
     cursor: not-allowed;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: var(--ddd-state-disabled-opacity, 0.5);
   }
   details[open] > summary::after {
     content: "-";

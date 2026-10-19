@@ -40,7 +40,7 @@ class ProductCard extends I18NMixin(SimpleColors) {
         }
         :host([disabled]) accent-card {
           cursor: not-allowed;
-          opacity: 0.5;
+          opacity: var(--ddd-state-disabled-opacity, 0.5);
         }
         :host([disabled]) accent-card:hover {
           cursor: not-allowed;

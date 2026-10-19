@@ -100,7 +100,7 @@ export class DarkmodeToggle extends LitElement {
       }
 
       :host([disabled]) .darkmode-toggle-btn {
-        opacity: 0.5;
+        opacity: var(--ddd-state-disabled-opacity, 0.5);
         pointer-events: none;
         cursor: not-allowed;
       }
