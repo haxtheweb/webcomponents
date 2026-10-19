@@ -38,6 +38,18 @@ jobs:
             ${{ runner.os }}-node-${{ matrix.node-version }}-yarn-
       - name: Install
         run: yarn install
+      - name: Prettier format check
+        run: npx prettier --check **/*.{js,json}
+      - name: Stylelint check
+        run: npx stylelint **/*.css
+      - name: ESLint (non-blocking)
+        # Non-blocking rollout: 2000+ pre-existing files have no prior ESLint
+        # history, so a blocking failure here would fail every PR on
+        # unrelated pre-existing issues. The default "stylish" formatter
+        # prints a total error/warning count summary at the end, so counts
+        # are still visible in the CI log for tracking.
+        continue-on-error: true
+        run: yarn lint
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Test all elements
