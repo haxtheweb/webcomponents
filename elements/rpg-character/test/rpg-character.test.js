@@ -127,12 +127,16 @@ describe("rpg-character", () => {
     });
 
     it("renders the inline responsive size style", () => {
-      const styles = Array.from(el.shadowRoot.querySelectorAll("style")).map(
-        (s) => s.textContent || "",
-      );
-      const joined = styles.join("\n");
-      expect(joined).to.include("width: 113px");
-      expect(joined).to.include("height: 142px");
+      const wrapper = el.shadowRoot.querySelector(".wrapper");
+      expect(wrapper.style.width).to.equal("113px");
+      expect(wrapper.style.height).to.equal("142px");
+    });
+
+    it("keeps any style element free of dynamic bindings (Lit SSR safe)", () => {
+      Array.from(el.shadowRoot.querySelectorAll("style")).forEach((s) => {
+        expect(s.textContent).to.not.include("113px");
+        expect(s.textContent).to.not.include("142px");
+      });
     });
 
     it("renders at least eight default pieces (skin, face, faceItem, shirt, pants, accessories, base, hatColor)", () => {
@@ -148,11 +152,9 @@ describe("rpg-character", () => {
       await settled(el);
       expect(el.width).to.equal(200);
       expect(el.height).to.equal(300);
-      const styles = Array.from(el.shadowRoot.querySelectorAll("style")).map(
-        (s) => s.textContent || "",
-      );
-      expect(styles.join("\n")).to.include("width: 200px");
-      expect(styles.join("\n")).to.include("height: 300px");
+      const wrapper = el.shadowRoot.querySelector(".wrapper");
+      expect(wrapper.style.width).to.equal("200px");
+      expect(wrapper.style.height).to.equal("300px");
     });
 
     it("renderPiece emits an svg>image with focusable=false and viewBox matching width/height", async () => {
@@ -508,11 +510,9 @@ describe("rpg-character", () => {
       await settled(el);
       el.accentColor = "purple";
       await settled(el);
-      const styles = Array.from(el.shadowRoot.querySelectorAll("style")).map(
-        (s) => s.textContent || "",
-      );
-      expect(styles.join("\n")).to.include(
-        "--simple-colors-default-theme-purple-8",
+      const wrapper = el.shadowRoot.querySelector(".wrapper");
+      expect(wrapper.getAttribute("style")).to.include(
+        "--rpg-character-accent: var(--simple-colors-default-theme-purple-8",
       );
     });
   });
