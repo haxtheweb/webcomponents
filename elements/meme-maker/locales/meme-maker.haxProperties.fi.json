@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meemi",
+    "description": "Tee kuvasta meemi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Lähde",
+        "description": "Meemikuvan lähde-URL."
+      },
+      {
+        "property": "topText",
+        "title": "Yläteksti",
+        "description": "Meemin yläteksti."
+      },
+      {
+        "property": "bottomText",
+        "title": "Alateksti",
+        "description": "Meemin alateksti."
+      },
+      {
+        "property": "alt",
+        "title": "Vaihtoehtoinen teksti",
+        "description": "Teksti, joka kuvailee kuvan näkövammaisille käyttäjille."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kissa vaanii pientä lelua",
+        "topText": "Tuon sinulle",
+        "bottomText": "kuoleman"
+      }
+    }
+  ]
+}

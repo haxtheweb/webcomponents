@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Мем",
+    "description": "Рәсемнән мем ясагыз."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Чыганак",
+        "description": "Мем рәсеменең чыганак URL'ы."
+      },
+      {
+        "property": "topText",
+        "title": "Өске текст",
+        "description": "Мемның өске тексты."
+      },
+      {
+        "property": "bottomText",
+        "title": "Аскы текст",
+        "description": "Мемның аскы тексты."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернатив текст",
+        "description": "Күрмәүче кулланучыларга рәсемне тасвирлаучы текст."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Кечкенә уенчыкка шыпырт якынлашучы мәче",
+        "topText": "Мин сезгә китердем",
+        "bottomText": "үлемне"
+      }
+    }
+  ]
+}

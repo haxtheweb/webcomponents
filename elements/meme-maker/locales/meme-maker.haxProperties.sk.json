@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mém",
+    "description": "Vytvorte z obrázka mém."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Zdroj",
+        "description": "Zdrojová URL obrázka mému."
+      },
+      {
+        "property": "topText",
+        "title": "Horný text",
+        "description": "Horný text mému."
+      },
+      {
+        "property": "bottomText",
+        "title": "Dolný text",
+        "description": "Dolný text mému."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatívny text",
+        "description": "Text, ktorý opisuje obrázok nevidiacim používateľom."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Mačka zakrádajúca sa k malej hračke",
+        "topText": "Prinášam vám",
+        "bottomText": "smrť"
+      }
+    }
+  ]
+}

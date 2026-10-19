@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mim",
+    "description": "Ƙirƙiri mim daga hoto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Tushe",
+        "description": "URL na tushen hoton mim."
+      },
+      {
+        "property": "topText",
+        "title": "Rubutun sama",
+        "description": "Rubutun saman mim."
+      },
+      {
+        "property": "bottomText",
+        "title": "Rubutun ƙasa",
+        "description": "Rubutun ƙasan mim."
+      },
+      {
+        "property": "alt",
+        "title": "Madadin rubutu",
+        "description": "Rubutu don bayyana hoton ga masu amfani da ba sa gani."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kyanwa tana farautar ƙaramin abin wasa",
+        "topText": "Na kawo maka",
+        "bottomText": "mutuwa"
+      }
+    }
+  ]
+}

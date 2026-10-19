@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Мем",
+    "description": "Зрабіце мем з выявы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Крыніца",
+        "description": "URL крыніцы выявы для мема."
+      },
+      {
+        "property": "topText",
+        "title": "Верхні тэкст",
+        "description": "Верхні тэкст мема."
+      },
+      {
+        "property": "bottomText",
+        "title": "Ніжні тэкст",
+        "description": "Ніжні тэкст мема."
+      },
+      {
+        "property": "alt",
+        "title": "Альтэрнатыўны тэкст",
+        "description": "Тэкст, які апісвае выяву для незрячых карыстальнікаў."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Кот падкрадаецца да маленькай цацкі",
+        "topText": "Я прынёс вам",
+        "bottomText": "смерць"
+      }
+    }
+  ]
+}

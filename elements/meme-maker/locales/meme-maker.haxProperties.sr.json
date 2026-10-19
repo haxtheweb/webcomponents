@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Мим",
+    "description": "Направите мим од слике."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Извор",
+        "description": "URL извора слике за мим."
+      },
+      {
+        "property": "topText",
+        "title": "Горњи текст",
+        "description": "Горњи текст мима."
+      },
+      {
+        "property": "bottomText",
+        "title": "Доњи текст",
+        "description": "Доњи текст мима."
+      },
+      {
+        "property": "alt",
+        "title": "Алтернативни текст",
+        "description": "Текст који описује слику корисницима са оштећеним видом."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Мачка вреба малу играчку",
+        "topText": "Доносим ти",
+        "bottomText": "смрт"
+      }
+    }
+  ]
+}

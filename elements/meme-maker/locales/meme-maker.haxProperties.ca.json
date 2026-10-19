@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mem",
+    "description": "Feu un mem a partir d'una imatge."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Origen",
+        "description": "URL d'origen de la imatge del mem."
+      },
+      {
+        "property": "topText",
+        "title": "Text superior",
+        "description": "Text superior del mem."
+      },
+      {
+        "property": "bottomText",
+        "title": "Text inferior",
+        "description": "Text inferior del mem."
+      },
+      {
+        "property": "alt",
+        "title": "Text alternatiu",
+        "description": "Text per descriure la imatge a usuaris amb discapacitat visual."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Gat aguaitant una joguina petita",
+        "topText": "Et porto",
+        "bottomText": "la mort"
+      }
+    }
+  ]
+}

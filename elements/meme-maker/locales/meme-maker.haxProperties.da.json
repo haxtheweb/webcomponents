@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Lav et meme ud fra et billede."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Kilde",
+        "description": "Kilde-URL til meme-billedet."
+      },
+      {
+        "property": "topText",
+        "title": "Øverste tekst",
+        "description": "Memets øverste tekst."
+      },
+      {
+        "property": "bottomText",
+        "title": "Nederste tekst",
+        "description": "Memets nederste tekst."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ tekst",
+        "description": "Tekst, der beskriver billedet for blinde og svagtseende brugere."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kat, der lurer på et lille stykke legetøj",
+        "topText": "Jeg bringer jer",
+        "bottomText": "døden"
+      }
+    }
+  ]
+}

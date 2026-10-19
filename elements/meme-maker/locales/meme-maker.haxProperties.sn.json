@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Gadzira meme kubva pamufananidzo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Kwakabva",
+        "description": "URL yemufananidzo wememe."
+      },
+      {
+        "property": "topText",
+        "title": "Mavara epamusoro",
+        "description": "Mavara ari pamusoro pememe."
+      },
+      {
+        "property": "bottomText",
+        "title": "Mavara epasi",
+        "description": "Mavara ari pasi pememe."
+      },
+      {
+        "property": "alt",
+        "title": "Mamwe mavara",
+        "description": "Mavara anotsanangura mufananidzo kuvashandisi vasingaoni."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Katsi ichivandira kachidhoyi kadiki",
+        "topText": "Ndakuunzira",
+        "bottomText": "rufu"
+      }
+    }
+  ]
+}

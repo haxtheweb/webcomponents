@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Fai un meme a partir dunha imaxe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Orixe",
+        "description": "URL de orixe da imaxe do meme."
+      },
+      {
+        "property": "topText",
+        "title": "Texto superior",
+        "description": "Texto superior do meme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Texto inferior",
+        "description": "Texto inferior do meme."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo",
+        "description": "Texto para describir a imaxe a usuarios con discapacidade visual."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Gato acechando un xoguete pequeno",
+        "topText": "Tráioche",
+        "bottomText": "a morte"
+      }
+    }
+  ]
+}

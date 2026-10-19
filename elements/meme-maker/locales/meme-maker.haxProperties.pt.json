@@ -1,38 +1,37 @@
 {
   "gizmo": {
     "title": "Meme",
-    "description": "Criar um meme a partir de uma imagem"
+    "description": "Crie um meme a partir de uma imagem."
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "Fonte",
-        "description": "A URL de origem do elemento que você está citando"
+        "description": "URL de origem da imagem do meme."
       },
       {
+        "property": "topText",
         "title": "Texto superior",
-        "description": "Texto superior do meme"
+        "description": "Texto superior do meme."
       },
       {
+        "property": "bottomText",
         "title": "Texto inferior",
-        "description": "Texto inferior do meme"
+        "description": "Texto inferior do meme."
       },
       {
+        "property": "alt",
         "title": "Texto alternativo",
-        "description": "Texto para descrever a imagem para usuários com deficiência visual"
-      }
-    ],
-    "advanced": [
-      {
-        "description": "Lista de IDs separados por espaços para elementos que descrevem a imagem"
+        "description": "Texto que descreve a imagem para usuários com deficiência visual."
       }
     ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "Gato perseguindo um brinquedo pequeno",
-        "topText": "Eu trago para você",
+        "alt": "Gato espreitando um pequeno brinquedo",
+        "topText": "Eu te trago",
         "bottomText": "a morte"
       }
     }

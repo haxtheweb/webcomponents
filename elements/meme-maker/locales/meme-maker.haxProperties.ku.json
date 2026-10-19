@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mîm",
+    "description": "Ji wêneyekê mîmekê çêke."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Çavkanî",
+        "description": "URL-a çavkaniyê ya wêneyê mîmê."
+      },
+      {
+        "property": "topText",
+        "title": "Nivîsa jorîn",
+        "description": "Nivîsa jorîn a mîmê."
+      },
+      {
+        "property": "bottomText",
+        "title": "Nivîsa jêrîn",
+        "description": "Nivîsa jêrîn a mîmê."
+      },
+      {
+        "property": "alt",
+        "title": "Nivîsa alternatîf",
+        "description": "Nivîs ji bo danasîna wêneyê ji bikarhênerên nabîna re."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Pisîk li pey lîstikeke biçûk e",
+        "topText": "Min ji te re anî",
+        "bottomText": "mirin"
+      }
+    }
+  ]
+}

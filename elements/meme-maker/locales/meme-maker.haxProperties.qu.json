@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Rikchaymanta meme ruway."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Pukyu",
+        "description": "Meme rikchaypa pukyu URL-nin."
+      },
+      {
+        "property": "topText",
+        "title": "Hanaq qillqa",
+        "description": "Memepa hanaq qillqan."
+      },
+      {
+        "property": "bottomText",
+        "title": "Uraq qillqa",
+        "description": "Memepa uraq qillqan."
+      },
+      {
+        "property": "alt",
+        "title": "Huk qillqa",
+        "description": "Mana rikuq ruraqkunapaq rikchayta willakuq qillqa."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Michi huk uchuy pukllanata watiqachkan",
+        "topText": "Qamman apamuyki",
+        "bottomText": "wañuyta"
+      }
+    }
+  ]
+}

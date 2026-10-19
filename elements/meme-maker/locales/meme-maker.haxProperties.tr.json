@@ -1,39 +1,38 @@
 {
   "gizmo": {
     "title": "Mim",
-    "description": "Bir resimden mim oluşturun"
+    "description": "Bir görselden mim yapın."
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "Kaynak",
-        "description": "Alıntıladığınız öğenin kaynak URL'si"
+        "description": "Mim görselinin kaynak URL'si."
       },
       {
+        "property": "topText",
         "title": "Üst metin",
-        "description": "Mimin üst metni"
+        "description": "Mimin üst metni."
       },
       {
+        "property": "bottomText",
         "title": "Alt metin",
-        "description": "Mimin alt metni"
+        "description": "Mimin alt metni."
       },
       {
+        "property": "alt",
         "title": "Alternatif metin",
-        "description": "Görme engelli kullanıcılar için resmi açıklayan metin"
-      }
-    ],
-    "advanced": [
-      {
-        "description": "Resmi açıklayan öğeler için boşlukla ayrılmış ID listesi"
+        "description": "Görseli görme engelli kullanıcılara tanımlayan metin."
       }
     ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "Küçük bir oyuncağı takip eden kedi",
+        "alt": "Küçük bir oyuncağa sinsice yaklaşan kedi",
         "topText": "Size getirdim",
-        "bottomText": "ölüm"
+        "bottomText": "ölümü"
       }
     }
   ]

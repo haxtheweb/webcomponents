@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Mee meme site na foto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Isi mmalite",
+        "description": "URL isi mmalite maka foto meme ahụ."
+      },
+      {
+        "property": "topText",
+        "title": "Ederede elu",
+        "description": "Ederede dị n'elu meme ahụ."
+      },
+      {
+        "property": "bottomText",
+        "title": "Ederede ala",
+        "description": "Ederede dị n'ala meme ahụ."
+      },
+      {
+        "property": "alt",
+        "title": "Ederede ọzọ",
+        "description": "Ederede na-akọwa foto ahụ nye ndị ọrụ na-adịghị ahụ ụzọ."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Nwamba na-achụso obere ihe egwuregwu",
+        "topText": "Ewetaara m gị",
+        "bottomText": "ọnwụ"
+      }
+    }
+  ]
+}

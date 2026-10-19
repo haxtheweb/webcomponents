@@ -1,34 +1,37 @@
 {
   "gizmo": {
-    "title": "Memă",
-    "description": "Creează o memă dintr-o imagine"
+    "title": "Meme",
+    "description": "Creați un meme dintr-o imagine."
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "Sursă",
-        "description": "URL-ul sursă pentru elementul care este citat"
+        "description": "URL-ul sursă pentru imaginea meme-ului."
       },
       {
-        "title": "Text de sus",
-        "description": "Textul de sus al memei"
+        "property": "topText",
+        "title": "Text sus",
+        "description": "Textul de sus al meme-ului."
       },
       {
-        "title": "Text de jos",
-        "description": "Textul de jos al memei"
+        "property": "bottomText",
+        "title": "Text jos",
+        "description": "Textul de jos al meme-ului."
       },
       {
+        "property": "alt",
         "title": "Text alternativ",
-        "description": "Text pentru a descrie imaginea utilizatorilor nevăzători"
+        "description": "Text care descrie imaginea pentru utilizatorii nevăzători."
       }
-    ],
-    "advanced": []
+    ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "Pisică urmărind o mică jucărie",
-        "topText": "Îți aduc",
+        "alt": "Pisică pândind o jucărie mică",
+        "topText": "Vă aduc",
         "bottomText": "moartea"
       }
     }

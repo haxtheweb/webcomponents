@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Agħmel meme minn immaġni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Sors",
+        "description": "URL tas-sors għall-immaġni tal-meme."
+      },
+      {
+        "property": "topText",
+        "title": "Test ta' fuq",
+        "description": "It-test ta' fuq tal-meme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Test t'isfel",
+        "description": "It-test t'isfel tal-meme."
+      },
+      {
+        "property": "alt",
+        "title": "Test alternattiv",
+        "description": "Test li jiddeskrivi l-immaġni lil utenti li ma jarawx."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Qattus jiġri wara ġugarell żgħir",
+        "topText": "Ġibtilkom",
+        "bottomText": "il-mewt"
+      }
+    }
+  ]
+}
