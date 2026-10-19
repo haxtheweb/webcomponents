@@ -1,5 +1,13 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../matching-question.js";
+import { render } from "lit";
+
+// directions text comes from this.t, so read what actually renders
+const directionsText = (tpl) => {
+  const div = document.createElement("div");
+  render(tpl, div);
+  return div.textContent.replace(/\s+/g, " ");
+};
 
 describe("MatchingQuestion test", () => {
   let element;
@@ -681,7 +689,7 @@ describe("MatchingQuestion test", () => {
   // Directions rendering test
   it("renders custom directions for matching questions", async () => {
     const directions = element.renderDirections();
-    const directionsString = directions.strings.join("");
+    const directionsString = directionsText(directions);
 
     expect(directionsString).to.include("Select all that apply");
     expect(directionsString).to.include("press");

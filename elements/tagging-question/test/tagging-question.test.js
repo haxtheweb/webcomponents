@@ -1,6 +1,14 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
 import { TaggingQuestion } from "../tagging-question.js";
+import { render } from "lit";
+
+// directions text comes from this.t, so read what actually renders
+const directionsText = (tpl) => {
+  const div = document.createElement("div");
+  render(tpl, div);
+  return div.textContent.replace(/\s+/g, " ");
+};
 
 describe("TaggingQuestion test", () => {
   let element;
@@ -437,7 +445,7 @@ describe("TaggingQuestion test", () => {
   // Directions rendering test
   it("renders custom directions for tagging questions", async () => {
     const directions = element.renderDirections();
-    const directionsString = directions.strings.join("");
+    const directionsString = directionsText(directions);
 
     expect(directionsString).to.include("Select all that apply");
     expect(directionsString).to.include("press");

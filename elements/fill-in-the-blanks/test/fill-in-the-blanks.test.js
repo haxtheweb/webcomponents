@@ -1,5 +1,13 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../fill-in-the-blanks.js";
+import { render } from "lit";
+
+// directions text comes from this.t, so read what actually renders
+const directionsText = (tpl) => {
+  const div = document.createElement("div");
+  render(tpl, div);
+  return div.textContent.replace(/\s+/g, " ");
+};
 
 describe("FillInTheBlanks test", () => {
   let element;
@@ -378,7 +386,7 @@ describe("FillInTheBlanks test", () => {
   it("renders custom directions for fill-in-the-blanks", async () => {
     const directions = element.renderDirections();
     // text spans multiple template chunks around the checkAnswer binding
-    const directionsString = directions.strings.join("");
+    const directionsString = directionsText(directions);
 
     expect(directionsString).to.include("Read the sentance");
     expect(directionsString).to.include("type or select the answer");

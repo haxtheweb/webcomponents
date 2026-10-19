@@ -1,5 +1,6 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import { MediaQuote } from "../media-quote.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 describe("MediaQuote test", () => {
   let element;
@@ -28,7 +29,8 @@ describe("MediaQuote test", () => {
 
   it("extends DDD correctly", async () => {
     expect(element.constructor.name).to.equal("MediaQuote");
-    expect(Object.getPrototypeOf(element.constructor).name).to.equal("DDD");
+    // I18NMixin wraps DDD, so DDD is further up the prototype chain
+    expect(element).to.be.instanceOf(DDD);
   });
 
   // Accessibility tests
