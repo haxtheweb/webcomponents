@@ -511,6 +511,8 @@ export const DDDVariables = css`
     --ddd-font-primary: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
     --ddd-font-secondary: "Roboto Slab", serif;
     --ddd-font-navigation: "Roboto Condensed", sans-serif; /* navigation font */
+    --ddd-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas,
+      "Liberation Mono", "Courier New", monospace; /* code, keyboard input, tabular data */
 
     /* font weights - generalized */
     --ddd-font-weight-light: 300;
@@ -863,6 +865,15 @@ export const DDDVariables = css`
       0.2,
       1
     ); /* Material design easing */
+    /* easing by intent: things arriving decelerate, things leaving
+       accelerate, emphasized is for larger moves that should feel deliberate */
+    --ddd-timing-enter: cubic-bezier(0, 0, 0.2, 1); /* decelerate, elements entering */
+    --ddd-timing-exit: cubic-bezier(0.4, 0, 1, 1); /* accelerate, elements leaving */
+    --ddd-timing-emphasized: cubic-bezier(0.2, 0, 0, 1); /* large or deliberate moves */
+    --ddd-timing-linear: linear; /* progress, spinners, continuous loops */
+    /* for prefers-reduced-motion: near-zero rather than 0ms so transitionend
+       still fires for code that waits on it */
+    --ddd-duration-reduced: 0.01ms;
 
     /* ===========================================
        FOCUS SYSTEM
@@ -881,6 +892,52 @@ export const DDDVariables = css`
     --ddd-textfield-height-sm: 40px; /* compact - clears the WCAG 2.5.8 AA 24px minimum */
     --ddd-textfield-height-md: 48px; /* default - 48px tap target, clears the WCAG 2.5.5 AAA 44px minimum */
     --ddd-textfield-height-lg: 56px; /* large - Material standard field height */
+
+    /* ===========================================
+       CONTROL SIZES AND TOUCH TARGETS
+       Heights for buttons and other single-line controls. sm/md/lg match the
+       text field heights so a button lines up with the field beside it.
+       Interactive targets should never be smaller than --ddd-target-min.
+       Usage: min-height: var(--ddd-control-height-md);
+              min-width: var(--ddd-target-min);
+       =========================================== */
+    --ddd-control-height-xs: 32px; /* dense toolbars only */
+    --ddd-control-height-sm: 40px; /* matches --ddd-textfield-height-sm */
+    --ddd-control-height-md: 48px; /* default, matches --ddd-textfield-height-md */
+    --ddd-control-height-lg: 56px; /* matches --ddd-textfield-height-lg */
+    --ddd-target-min: 24px; /* WCAG 2.5.8 AA minimum target size */
+    --ddd-target-comfortable: 44px; /* WCAG 2.5.5 AAA, preferred for touch */
+
+    /* ===========================================
+       INTERACTION STATES
+       Opacity of a state layer drawn over a control (usually currentColor)
+       for hover / focus / pressed / selected, plus the disabled opacity.
+       Disabled matches the 0.5 the monorepo already uses.
+       Usage: opacity: var(--ddd-state-disabled-opacity);
+       =========================================== */
+    --ddd-state-hover-opacity: 0.08;
+    --ddd-state-focus-opacity: 0.12;
+    --ddd-state-pressed-opacity: 0.12;
+    --ddd-state-selected-opacity: 0.16;
+    --ddd-state-disabled-opacity: 0.5;
+
+    /* ===========================================
+       READING MEASURE
+       Comfortable line lengths for running text, in characters.
+       Usage: max-width: var(--ddd-theme-measure);
+       =========================================== */
+    --ddd-measure-sm: 45ch;
+    --ddd-measure-md: 65ch; /* default for body copy */
+    --ddd-measure-lg: 80ch;
+    --ddd-theme-measure: var(--ddd-measure-md);
+
+    /* ===========================================
+       ASPECT RATIOS
+       Usage: aspect-ratio: var(--ddd-aspect-video);
+       =========================================== */
+    --ddd-aspect-video: 16 / 9;
+    --ddd-aspect-standard: 4 / 3;
+    --ddd-aspect-square: 1 / 1;
 
     --simple-modal-content-container-color: light-dark(
       var(--ddd-primary-4),
