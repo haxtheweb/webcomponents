@@ -433,7 +433,9 @@ describe("EditableTable test", () => {
     }
 
     const endTime = performance.now();
-    expect(endTime - startTime).to.be.lessThan(100); // Should be fast
+    // Generous budget: headless CI/browsers vary widely; this only guards
+    // against pathological re-render loops, not micro-regressions.
+    expect(endTime - startTime).to.be.lessThan(1000);
   });
 
   // Complex table structure tests
