@@ -62,6 +62,23 @@ const warnings = [];
 const warn = (m) => warnings.push(m);
 const log = (m) => console.log(m);
 
+// Resolve a node_modules-relative path. Most elements are published and
+// linked as @haxtheweb/<name>, but a few workspace packages use an unscoped
+// package name (e.g. "career-timeline"), so yarn links them without the
+// scope. Fall back to the unscoped link, then to the element's own folder.
+function resolveModule(rel) {
+  const candidates = [path.join(NM, rel)];
+  const m = /^@haxtheweb\/([^/]+)\/(.*)$/.exec(rel);
+  if (m) {
+    candidates.push(path.join(NM, m[1], m[2]));
+    candidates.push(path.join(REPO, "elements", m[1], m[2]));
+  }
+  for (const c of candidates) {
+    if (fs.existsSync(c)) return c;
+  }
+  return null;
+}
+
 function copyDir(from, to, filter = () => true) {
   if (!fs.existsSync(from)) return;
   for (const e of fs.readdirSync(from, { withFileTypes: true })) {
@@ -162,7 +179,7 @@ function stepTokens() {
     }
   }
   if (tokens.type && tokens.type.families) {
-    for (const f of ["primary", "secondary", "navigation"]) {
+    for (const f of ["primary", "secondary", "navigation", "mono"]) {
       const v = byName.get(`ddd-font-${f}`);
       if (v && tokens.type.families[f] !== v.value) {
         tokens.type.families[f] = v.value;
@@ -175,7 +192,7 @@ function stepTokens() {
       !seen.has(n) &&
       /^ddd-/.test(n) &&
       // these are documented by the type block (families, scale, h1-h6)
-      !/^ddd-(theme-(h\d|body)-font-size|font-size-|font-(primary|secondary|navigation)$)/.test(n),
+      !/^ddd-(theme-(h\d|body)-font-size|font-size-|font-(primary|secondary|navigation|mono)$)/.test(n),
   );
   for (const h of sc.hues) {
     for (let i = 1; i <= 12; i++) {
@@ -305,8 +322,8 @@ function stepNm() {
   const { files } = JSON.parse(fs.readFileSync(path.join(SRC, "runtime", "nm.json"), "utf8"));
   let n = 0;
   for (const rel of files) {
-    const a = path.join(NM, rel);
-    if (!fs.existsSync(a)) {
+    const a = resolveModule(rel);
+    if (!a) {
       warn(`runtime file missing from node_modules: ${rel}`);
       continue;
     }
@@ -428,7 +445,11 @@ async function stepBundles() {
   const prelude = JSON.stringify(path.join(B, "prelude.js"));
   const postlude = JSON.stringify(path.join(B, "postlude.js"));
   // bare specifiers resolve from NM; absolute paths keep them out of node resolution
-  const imp = (m) => `import ${JSON.stringify(path.join(NM, m))};\n`;
+  const imp = (m) => {
+    const file = resolveModule(m);
+    if (!file) throw new Error(`cannot resolve ${m} from ${NM} or elements/`);
+    return `import ${JSON.stringify(file)};\n`;
+  };
   const version = dddVersion();
   const out = {
     main: { file: "components/bundle.js", limit: LIMITS.bundle },
