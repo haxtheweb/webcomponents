@@ -298,7 +298,21 @@ describe('simple-icon-lite', () => {
       )
       el.src = '/icons/home.svg'
       expect(el.safariMask).to.equal(
-        'url(/icons/home.svg) no-repeat center / contain',
+        'url("/icons/home.svg") no-repeat center / contain',
+      )
+    })
+
+    it('quotes and escapes srcs with spaces, parens and quotes', async () => {
+      const el = await fixture(
+        html`<test-polyfill-icon-lite></test-polyfill-icon-lite>`,
+      )
+      el.src = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><path d="M3 18h18"/></svg>`
+      expect(el.safariMask).to.equal(
+        'url("data:image/svg+xml,<svg xmlns=\\"http://www.w3.org/2000/svg\\"><path d=\\"M3 18h18\\"/></svg>") no-repeat center / contain',
+      )
+      el.src = '/files/my icon (1).svg'
+      expect(el.safariMask).to.equal(
+        'url("/files/my icon (1).svg") no-repeat center / contain',
       )
     })
 
