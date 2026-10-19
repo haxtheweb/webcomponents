@@ -44,7 +44,10 @@ const path = require("path");
 const crypto = require("crypto");
 
 const root = process.cwd();
-const builtDir = path.resolve(root, process.argv[2] || "build/es6/node_modules");
+const builtDir = path.resolve(
+  root,
+  process.argv[2] || "build/es6/node_modules",
+);
 const sourceDir = path.resolve(root, process.argv[3] || "node_modules");
 
 // File names (case-insensitive) treated as license/attribution text to carry.
@@ -151,7 +154,11 @@ function resolveSource(relPkg) {
   const direct = path.join(sourceDir, relPkg);
   if (exists(direct)) return direct;
   if (relPkg.indexOf("@lrnwebcomponents/") === 0) {
-    const fallback = path.join(sourceDir, "@haxtheweb", relPkg.slice("@lrnwebcomponents/".length));
+    const fallback = path.join(
+      sourceDir,
+      "@haxtheweb",
+      relPkg.slice("@lrnwebcomponents/".length),
+    );
     if (exists(fallback)) return fallback;
   }
   return null;
@@ -179,18 +186,22 @@ function builtPackages() {
 
 function main() {
   if (!exists(builtDir)) {
-    console.error("copy-dep-licenses: built node_modules not found: " + builtDir);
+    console.error(
+      "copy-dep-licenses: built node_modules not found: " + builtDir,
+    );
     process.exit(1);
   }
   if (!exists(sourceDir)) {
-    console.error("copy-dep-licenses: source node_modules not found: " + sourceDir);
+    console.error(
+      "copy-dep-licenses: source node_modules not found: " + sourceDir,
+    );
     process.exit(1);
   }
 
   const pkgs = builtPackages();
   const buildRoot = path.resolve(builtDir, "..", "..");
   const outFile = path.resolve(
-    process.argv[4] || path.join(buildRoot, "THIRD_PARTY_LICENSES")
+    process.argv[4] || path.join(buildRoot, "THIRD_PARTY_LICENSES"),
   );
 
   // Dedup table: sha1(attribution text) -> { id, spdx, files, text, packages[] }.
@@ -295,27 +306,37 @@ function main() {
   console.log(
     "  missing source package: " +
       missing +
-      (missing > 0 ? " -> " + missingNames.join(", ") : "")
+      (missing > 0 ? " -> " + missingNames.join(", ") : ""),
   );
 }
 
 function buildOutput(records, textOrder) {
-  const sep = "================================================================================\n";
-  const subsep = "--------------------------------------------------------------------------------\n";
+  const sep =
+    "================================================================================\n";
+  const subsep =
+    "--------------------------------------------------------------------------------\n";
   let out = "";
 
   out += sep;
   out += "THIRD_PARTY_LICENSES\n";
   out += sep;
   out += "\n";
-  out += "This file consolidates the open-source license and copyright notices for\n";
-  out += "every package included in this build of the HAX web component distribution.\n";
-  out += "Each entry references the package by name and gives its location within the\n";
-  out += "build tree. License texts that are identical across multiple packages are\n";
-  out += "printed once in the LICENSE TEXTS section and shared by reference (see the\n";
-  out += "\"attribution\" line of each entry). Per-package package.json and LICENSE\n";
-  out += "files are intentionally NOT shipped with this build; this single file is the\n";
-  out += "attribution record. Each package remains under its own license as noted.\n";
+  out +=
+    "This file consolidates the open-source license and copyright notices for\n";
+  out +=
+    "every package included in this build of the HAX web component distribution.\n";
+  out +=
+    "Each entry references the package by name and gives its location within the\n";
+  out +=
+    "build tree. License texts that are identical across multiple packages are\n";
+  out +=
+    "printed once in the LICENSE TEXTS section and shared by reference (see the\n";
+  out +=
+    '"attribution" line of each entry). Per-package package.json and LICENSE\n';
+  out +=
+    "files are intentionally NOT shipped with this build; this single file is the\n";
+  out +=
+    "attribution record. Each package remains under its own license as noted.\n";
   out += "\n";
   out += sep;
   out += "PACKAGE INDEX\n";
@@ -344,14 +365,24 @@ function buildOutput(records, textOrder) {
     const count = entry.packages.length;
     const label = entry.spdx || "license text";
     if (count > 1) {
-      out += "#" + entry.id + " - " + label + " (shared by " + count + " packages)\n";
+      out +=
+        "#" +
+        entry.id +
+        " - " +
+        label +
+        " (shared by " +
+        count +
+        " packages)\n";
     } else {
       out += "#" + entry.id + " - " + label + " - " + entry.packages[0] + "\n";
     }
     out += "source files: " + entry.files.join(", ") + "\n";
     out += subsep;
     out += entry.text;
-    if (entry.text.length && entry.text.charAt(entry.text.length - 1) !== "\n") {
+    if (
+      entry.text.length &&
+      entry.text.charAt(entry.text.length - 1) !== "\n"
+    ) {
       out += "\n";
     }
     out += "\n";

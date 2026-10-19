@@ -1,31 +1,34 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const ELEMENTS_DIR = './elements';
-const OUTPUT_FILE = './index.html';
-const WC_REGISTRY_FILE = './wc-registry.json';
+const ELEMENTS_DIR = "./elements";
+const OUTPUT_FILE = "./index.html";
+const WC_REGISTRY_FILE = "./wc-registry.json";
 
 // Function to extract HAX demo schema from component files
 function extractHaxDemoSchema(elementPath, elementName) {
   const possibleFiles = [
     path.join(elementPath, `${elementName}.js`),
-    path.join(elementPath, 'lib', `${elementName}.haxProperties.json`)
+    path.join(elementPath, "lib", `${elementName}.haxProperties.json`),
   ];
 
   for (const filePath of possibleFiles) {
     if (fs.existsSync(filePath)) {
       try {
-        if (filePath.endsWith('.json')) {
+        if (filePath.endsWith(".json")) {
           // Try to load from separate JSON file
-          const haxPropsData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-          if (haxPropsData.demoSchema && Array.isArray(haxPropsData.demoSchema)) {
+          const haxPropsData = JSON.parse(fs.readFileSync(filePath, "utf8"));
+          if (
+            haxPropsData.demoSchema &&
+            Array.isArray(haxPropsData.demoSchema)
+          ) {
             return haxPropsData.demoSchema;
           }
         } else {
           // Try to extract from JS file
-          const fileContent = fs.readFileSync(filePath, 'utf8');
+          const fileContent = fs.readFileSync(filePath, "utf8");
           const demoSchema = extractDemoSchemaFromJS(fileContent);
           if (demoSchema) {
             return demoSchema;
@@ -37,7 +40,7 @@ function extractHaxDemoSchema(elementPath, elementName) {
       }
     }
   }
-  
+
   return null;
 }
 
@@ -50,13 +53,13 @@ function extractDemoSchemaFromJS(jsContent) {
     if (demoSchemaMatch) {
       try {
         // Attempt to parse the demoSchema as a JSON-like structure
-        const demoSchemaStr = '[' + demoSchemaMatch[1] + ']';
+        const demoSchemaStr = "[" + demoSchemaMatch[1] + "]";
         // Clean up the JavaScript syntax to make it JSON-parseable
         const cleanedStr = demoSchemaStr
           .replace(/([{,])\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*:/g, '$1"$2":') // Quote property names
           .replace(/'/g, '"') // Convert single quotes to double quotes
-          .replace(/,\s*}/g, '}') // Remove trailing commas
-          .replace(/,\s*]/g, ']'); // Remove trailing commas in arrays
+          .replace(/,\s*}/g, "}") // Remove trailing commas
+          .replace(/,\s*]/g, "]"); // Remove trailing commas in arrays
 
         return JSON.parse(cleanedStr);
       } catch (parseErr) {
@@ -77,12 +80,20 @@ function extractDemoSchemaFromJS(jsContent) {
 // or haxProperties / setHaxProperties usage in the main JS module.
 function isElementHaxCapable(elementPath, elementName, haxDemoSchema) {
   // If we already have a demo schema, we know it is HAX-capable.
-  if (haxDemoSchema && Array.isArray(haxDemoSchema) && haxDemoSchema.length > 0) {
+  if (
+    haxDemoSchema &&
+    Array.isArray(haxDemoSchema) &&
+    haxDemoSchema.length > 0
+  ) {
     return true;
   }
 
   // Presence of a .haxProperties.json file implies HAX wiring exists.
-  const haxJsonPath = path.join(elementPath, 'lib', `${elementName}.haxProperties.json`);
+  const haxJsonPath = path.join(
+    elementPath,
+    "lib",
+    `${elementName}.haxProperties.json`,
+  );
   if (fs.existsSync(haxJsonPath)) {
     return true;
   }
@@ -91,10 +102,12 @@ function isElementHaxCapable(elementPath, elementName, haxDemoSchema) {
   const jsPath = path.join(elementPath, `${elementName}.js`);
   if (fs.existsSync(jsPath)) {
     try {
-      const jsContent = fs.readFileSync(jsPath, 'utf8');
-      return /\bstatic\s+get\s+haxProperties\b/.test(jsContent) ||
-             /\bhaxProperties\s*\(/.test(jsContent) ||
-             /\bsetHaxProperties\s*\(/.test(jsContent);
+      const jsContent = fs.readFileSync(jsPath, "utf8");
+      return (
+        /\bstatic\s+get\s+haxProperties\b/.test(jsContent) ||
+        /\bhaxProperties\s*\(/.test(jsContent) ||
+        /\bsetHaxProperties\s*\(/.test(jsContent)
+      );
     } catch (e) {
       return false;
     }
@@ -105,84 +118,96 @@ function isElementHaxCapable(elementPath, elementName, haxDemoSchema) {
 
 // Function to generate HTML for a component demo using HAX schema
 function generateHaxDemoHTML(component) {
-  if (!component.haxDemoSchema || !Array.isArray(component.haxDemoSchema) || component.haxDemoSchema.length === 0) {
+  if (
+    !component.haxDemoSchema ||
+    !Array.isArray(component.haxDemoSchema) ||
+    component.haxDemoSchema.length === 0
+  ) {
     // Fallback to basic component if no HAX demo schema
     return `<${component.name}></${component.name}>`;
   }
 
   const demo = component.haxDemoSchema[0]; // Use first demo
   let html = `<${demo.tag || component.name}`;
-  
+
   // Add properties as attributes
-  if (demo.properties && typeof demo.properties === 'object') {
+  if (demo.properties && typeof demo.properties === "object") {
     for (const [key, value] of Object.entries(demo.properties)) {
-      if (typeof value === 'string') {
-        html += ` ${key}="${value.replace(/"/g, '&quot;')}"`;
-      } else if (typeof value === 'boolean' && value) {
+      if (typeof value === "string") {
+        html += ` ${key}="${value.replace(/"/g, "&quot;")}"`;
+      } else if (typeof value === "boolean" && value) {
         html += ` ${key}`;
-      } else if (typeof value === 'number') {
+      } else if (typeof value === "number") {
         html += ` ${key}="${value}"`;
       }
     }
   }
-  
-  html += '>';
-  
+
+  html += ">";
+
   // Add content
-  if (demo.content && typeof demo.content === 'string') {
+  if (demo.content && typeof demo.content === "string") {
     html += demo.content;
   }
-  
+
   html += `</${demo.tag || component.name}>`;
-  
+
   return html;
 }
 
 function getComponentInfo() {
   const components = [];
   let wcRegistry = {};
-  
+
   // Load wc-registry.json for import paths
   try {
     if (fs.existsSync(WC_REGISTRY_FILE)) {
-      wcRegistry = JSON.parse(fs.readFileSync(WC_REGISTRY_FILE, 'utf8'));
+      wcRegistry = JSON.parse(fs.readFileSync(WC_REGISTRY_FILE, "utf8"));
     }
   } catch (err) {
-    console.warn('Warning: Could not load wc-registry.json');
+    console.warn("Warning: Could not load wc-registry.json");
   }
-  
+
   try {
-    const elementDirs = fs.readdirSync(ELEMENTS_DIR, { withFileTypes: true })
-      .filter(dirent => dirent.isDirectory())
-      .map(dirent => dirent.name);
+    const elementDirs = fs
+      .readdirSync(ELEMENTS_DIR, { withFileTypes: true })
+      .filter((dirent) => dirent.isDirectory())
+      .map((dirent) => dirent.name);
 
     for (const elementName of elementDirs) {
       const elementPath = path.join(ELEMENTS_DIR, elementName);
-      const packageJsonPath = path.join(elementPath, 'package.json');
-      const demoPath = path.join(elementPath, 'demo');
-      const demoIndexPath = path.join(demoPath, 'index.html');
+      const packageJsonPath = path.join(elementPath, "package.json");
+      const demoPath = path.join(elementPath, "demo");
+      const demoIndexPath = path.join(demoPath, "index.html");
 
       if (fs.existsSync(packageJsonPath) && fs.existsSync(demoIndexPath)) {
         try {
-          const packageData = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-          const description = packageData.description || `${elementName} web component`;
-          const version = packageData.version || '1.0.0';
-          
+          const packageData = JSON.parse(
+            fs.readFileSync(packageJsonPath, "utf8"),
+          );
+          const description =
+            packageData.description || `${elementName} web component`;
+          const version = packageData.version || "1.0.0";
+
           // Get import path from wc-registry.json
           let importPath = wcRegistry[elementName];
           if (!importPath) {
             // Fallback to standard pattern
             importPath = `${packageData.name}/${elementName}.js`;
           }
-          
+
           // Check for additional demo files
-          const demoFiles = fs.existsSync(demoPath) 
-            ? fs.readdirSync(demoPath).filter(file => file.endsWith('.html'))
-            : ['index.html'];
+          const demoFiles = fs.existsSync(demoPath)
+            ? fs.readdirSync(demoPath).filter((file) => file.endsWith(".html"))
+            : ["index.html"];
 
           // Try to extract HAX demo schema from the main component file
           const haxDemoSchema = extractHaxDemoSchema(elementPath, elementName);
-          const isHaxCapable = isElementHaxCapable(elementPath, elementName, haxDemoSchema);
+          const isHaxCapable = isElementHaxCapable(
+            elementPath,
+            elementName,
+            haxDemoSchema,
+          );
 
           components.push({
             name: elementName,
@@ -193,10 +218,12 @@ function getComponentInfo() {
             importPath,
             haxDemoSchema,
             isHaxCapable,
-            additionalDemos: demoFiles.filter(f => f !== 'index.html').map(f => ({
-              name: f.replace('.html', ''),
-              path: `elements/${elementName}/demo/${f}`
-            }))
+            additionalDemos: demoFiles
+              .filter((f) => f !== "index.html")
+              .map((f) => ({
+                name: f.replace(".html", ""),
+                path: `elements/${elementName}/demo/${f}`,
+              })),
           });
         } catch (err) {
           console.warn(`Warning: Could not parse ${packageJsonPath}`);
@@ -206,7 +233,7 @@ function getComponentInfo() {
 
     return components.sort((a, b) => a.name.localeCompare(b.name));
   } catch (err) {
-    console.error('Error reading elements directory:', err);
+    console.error("Error reading elements directory:", err);
     return [];
   }
 }
@@ -621,10 +648,10 @@ function generateHTML(components) {
             🔍 All (${totalComponents})
           </button>
           <button class="filter-btn" data-filter="hax" title="Show only HAX-capable components">
-            🧱 HAX (${components.filter(c => c.isHaxCapable).length})
+            🧱 HAX (${components.filter((c) => c.isHaxCapable).length})
           </button>
           <button class="filter-btn" data-filter="hax-ecosystem" title="Show HAX ecosystem components">
-            ⚡ HAX-* (${components.filter(c => c.name.startsWith('hax-')).length})
+            ⚡ HAX-* (${components.filter((c) => c.name.startsWith("hax-")).length})
           </button>
         </div>
         
@@ -1060,17 +1087,19 @@ function generateHTML(components) {
 }
 
 // Generate the gallery
-console.log('🔍 Scanning components...');
+console.log("🔍 Scanning components...");
 const components = getComponentInfo();
 
 // Count components that are HAX-capable (have haxProperties wiring)
-const haxCapableCount = components.filter(c => c.isHaxCapable).length;
+const haxCapableCount = components.filter((c) => c.isHaxCapable).length;
 
 console.log(`✅ Found ${components.length} components with demos`);
 console.log(`🎭 ${haxCapableCount} components are HAX-capable`);
 
 if (components.length === 0) {
-  console.log('❌ No components found. Make sure you have elements with demo/index.html files.');
+  console.log(
+    "❌ No components found. Make sure you have elements with demo/index.html files.",
+  );
   process.exit(1);
 }
 

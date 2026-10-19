@@ -99,7 +99,8 @@ const USE_RE = new RegExp(`var\\(\\s*(${NAME})`, "g");
 // --ddd-border-xs…lg are full shorthands (width solid colour). Following one
 // with a style or colour ("var(--ddd-border-xs) solid navy") makes the whole
 // declaration invalid, so no border renders. Use --ddd-border-size-* there.
-const SHORTHAND_RE = /var\(\s*(--ddd-border-(?:xs|sm|md|lg))\s*\)\s+(?=(?:solid|dashed|dotted|double|groove|ridge|inset|outset|none)\b|var\(|light-dark\(|#[0-9a-fA-F]|rgba?\(|transparent\b|currentColor\b|black\b|white\b)/g;
+const SHORTHAND_RE =
+  /var\(\s*(--ddd-border-(?:xs|sm|md|lg))\s*\)\s+(?=(?:solid|dashed|dotted|double|groove|ridge|inset|outset|none)\b|var\(|light-dark\(|#[0-9a-fA-F]|rgba?\(|transparent\b|currentColor\b|black\b|white\b)/g;
 const shorthand = []; // { token, file, line }
 
 const files = [];
@@ -123,7 +124,11 @@ for (const file of files) {
   while ((m = TEMPLATE_DECL_RE.exec(text))) declaredPrefixes.add(m[1]);
   SHORTHAND_RE.lastIndex = 0;
   while ((m = SHORTHAND_RE.exec(text))) {
-    shorthand.push({ token: m[1], file: rel, line: text.slice(0, m.index).split("\n").length });
+    shorthand.push({
+      token: m[1],
+      file: rel,
+      line: text.slice(0, m.index).split("\n").length,
+    });
   }
   USE_RE.lastIndex = 0;
   while ((m = USE_RE.exec(text))) {
@@ -138,7 +143,14 @@ for (const file of files) {
 
 // The design system artifact declares its own role tokens (--ddd-scheme-*) from
 // its tokens.json, so its previews may use them.
-const ARTIFACT_TOKENS = path.join(ROOT, "elements", "d-d-d", "design-system", "source", "tokens.json");
+const ARTIFACT_TOKENS = path.join(
+  ROOT,
+  "elements",
+  "d-d-d",
+  "design-system",
+  "source",
+  "tokens.json",
+);
 if (fs.existsSync(ARTIFACT_TOKENS)) {
   const t = JSON.parse(fs.readFileSync(ARTIFACT_TOKENS, "utf8"));
   for (const family of Object.values(t)) {

@@ -73,7 +73,9 @@ async function run() {
       }
     } catch (err) {
       // Never block a commit on an optimization failure; just warn.
-      console.warn(`optimize-staged-images: skipped ${filePath} (${err.message})`);
+      console.warn(
+        `optimize-staged-images: skipped ${filePath} (${err.message})`,
+      );
     }
   }
 }

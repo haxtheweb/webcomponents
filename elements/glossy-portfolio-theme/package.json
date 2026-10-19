@@ -30,7 +30,6 @@
   "dependencies": {
     "@babel/core": "7.29.7",
     "@haxtheweb/bootstrap-theme": "^26.8.0",
-    "@haxtheweb/create": "26.8.1",
     "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/haxcms-elements": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
@@ -39,10 +38,6 @@
     "@haxtheweb/simple-icon": "^26.8.0",
     "@haxtheweb/simple-tooltip": "^26.8.0",
     "@haxtheweb/user-scaffold": "^26.8.0",
-    "@web/dev-server-esbuild": "1.0.5",
-    "gulp-sourcemaps": "2.6.5",
-    "lerna": "10.0.1",
-    "lint-staged": "15.5.2",
     "lit": "3.3.3",
     "mobx": "6.13.7"
   },
@@ -62,7 +57,12 @@
     "babel-plugin-transform-dynamic-import": "2.1.0",
     "commit-and-tag-version": "12.7.3",
     "rimraf": "5.0.7",
-    "rollup-plugin-esbuild": "6.2.1"
+    "rollup-plugin-esbuild": "6.2.1",
+    "lerna": "10.1.1",
+    "@haxtheweb/create": "26.8.1",
+    "gulp-sourcemaps": "2.6.5",
+    "@web/dev-server-esbuild": "1.0.5",
+    "lint-staged": "15.5.2"
   },
   "private": false,
   "publishConfig": {

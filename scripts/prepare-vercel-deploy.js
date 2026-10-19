@@ -26,36 +26,36 @@
  * build-environment copies.
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const CDN_BASE = 'https://cdn.hax.cloud/cdn/build/es6/node_modules/';
+const CDN_BASE = "https://cdn.hax.cloud/cdn/build/es6/node_modules/";
 
 // Import map covering all scopes present in wc-registry.json plus lit.
 // Trailing-slash entries act as prefix mappings per the import maps spec.
 const importMap = {
   imports: {
-    'lit': CDN_BASE + 'lit/index.js',
-    'lit/': CDN_BASE + 'lit/',
-    '@haxtheweb/': CDN_BASE + '@haxtheweb/',
-    '@a11y/': CDN_BASE + '@a11y/',
-    '@github/': CDN_BASE + '@github/',
-    '@google/': CDN_BASE + '@google/',
-    '@lit-labs/': CDN_BASE + '@lit-labs/',
-    'scrollable-component/': CDN_BASE + 'scrollable-component/',
-    'web-dialog/': CDN_BASE + 'web-dialog/',
+    lit: CDN_BASE + "lit/index.js",
+    "lit/": CDN_BASE + "lit/",
+    "@haxtheweb/": CDN_BASE + "@haxtheweb/",
+    "@a11y/": CDN_BASE + "@a11y/",
+    "@github/": CDN_BASE + "@github/",
+    "@google/": CDN_BASE + "@google/",
+    "@lit-labs/": CDN_BASE + "@lit-labs/",
+    "scrollable-component/": CDN_BASE + "scrollable-component/",
+    "web-dialog/": CDN_BASE + "web-dialog/",
   },
 };
 
 const importMapScript =
   '<script type="importmap">\n' +
   JSON.stringify(importMap, null, 2) +
-  '\n  </script>\n  ';
+  "\n  </script>\n  ";
 
 // Inject import map into an HTML file before the first <script> tag.
 // Returns true if the file was modified.
 function injectImportMap(filePath) {
-  let html = fs.readFileSync(filePath, 'utf8');
+  let html = fs.readFileSync(filePath, "utf8");
   if (html.includes('type="importmap"') || html.includes("type='importmap'")) {
     return false;
   }
@@ -81,7 +81,7 @@ function injectImportMap(filePath) {
 // Rewrite src="...node_modules/..." and href="...node_modules/..." to CDN URLs.
 // Returns true if the file was modified.
 function rewriteNodeModulesPaths(filePath) {
-  let html = fs.readFileSync(filePath, 'utf8');
+  let html = fs.readFileSync(filePath, "utf8");
   let changed = false;
 
   // Double-quoted attributes: src="...node_modules/path" / href="...node_modules/path"
@@ -90,7 +90,7 @@ function rewriteNodeModulesPaths(filePath) {
     function (match, attr, prefix, pkgPath) {
       changed = true;
       return attr + '="' + CDN_BASE + pkgPath + '"';
-    }
+    },
   );
 
   // Single-quoted attributes
@@ -99,7 +99,7 @@ function rewriteNodeModulesPaths(filePath) {
     function (match, attr, prefix, pkgPath) {
       changed = true;
       return attr + "='" + CDN_BASE + pkgPath + "'";
-    }
+    },
   );
 
   if (changed) {
@@ -109,16 +109,16 @@ function rewriteNodeModulesPaths(filePath) {
 }
 
 // --- Process the generated gallery HTML ---
-var galleryFile = './index.html';
+var galleryFile = "./index.html";
 if (fs.existsSync(galleryFile)) {
   injectImportMap(galleryFile);
-  console.log('Gallery: injected import map into index.html');
+  console.log("Gallery: injected import map into index.html");
 } else {
-  console.warn('Warning: index.html not found — run yarn build-gallery first');
+  console.warn("Warning: index.html not found — run yarn build-gallery first");
 }
 
 // --- Process all demo HTML files ---
-var elementsDir = './elements';
+var elementsDir = "./elements";
 var demoCount = 0;
 var rewriteCount = 0;
 
@@ -133,13 +133,11 @@ if (fs.existsSync(elementsDir)) {
     });
 
   for (var i = 0; i < elementDirs.length; i++) {
-    var demoPath = path.join(elementsDir, elementDirs[i], 'demo');
+    var demoPath = path.join(elementsDir, elementDirs[i], "demo");
     if (!fs.existsSync(demoPath)) continue;
-    var demoFiles = fs
-      .readdirSync(demoPath)
-      .filter(function (f) {
-        return f.endsWith('.html');
-      });
+    var demoFiles = fs.readdirSync(demoPath).filter(function (f) {
+      return f.endsWith(".html");
+    });
     for (var j = 0; j < demoFiles.length; j++) {
       var filePath = path.join(demoPath, demoFiles[j]);
       injectImportMap(filePath);
@@ -151,5 +149,11 @@ if (fs.existsSync(elementsDir)) {
   }
 }
 
-console.log('Demos: processed ' + demoCount + ' files (' + rewriteCount + ' had node_modules paths rewritten)');
-console.log('Done: Vercel deploy preparation complete');
+console.log(
+  "Demos: processed " +
+    demoCount +
+    " files (" +
+    rewriteCount +
+    " had node_modules paths rewritten)",
+);
+console.log("Done: Vercel deploy preparation complete");

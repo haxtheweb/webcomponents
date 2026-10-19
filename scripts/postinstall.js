@@ -8,7 +8,7 @@ try {
   const unameOut = execSync("uname -s", { stdio: "pipe" }).toString().trim();
   // Set to true if the uname includes CYGWIN or MINGW
   isWinBash = /CYGWIN|MINGW/.test(unameOut);
-} catch(e) {
+} catch (e) {
   // ignore otherwise
 }
 
@@ -38,7 +38,11 @@ for (const project of listDirs(".")) {
 
   remove("node_modules");
 
-  const symlinkRoot = path.resolve(sourcePath, "../../node_modules/@haxtheweb", p);
+  const symlinkRoot = path.resolve(
+    sourcePath,
+    "../../node_modules/@haxtheweb",
+    p,
+  );
   // drop symlink but NOT actual directories
   unlink(symlinkRoot);
   // if it was a folder, then this will just fail without an issue
@@ -68,10 +72,10 @@ for (const project of listDirs(".")) {
 }
 
 // ensure haxcms-elements/demo/node_modules symlink is valid
-process.chdir("..")
-const demoDir = path.resolve(dir, "../elements/haxcms-elements/demo/")
-unlink(`${demoDir}/node_modules`)
-symlinkDir("node_modules", demoDir)
+process.chdir("..");
+const demoDir = path.resolve(dir, "../elements/haxcms-elements/demo/");
+unlink(`${demoDir}/node_modules`);
+symlinkDir("node_modules", demoDir);
 
 // Helper functions
 function remove(target) {
@@ -105,7 +109,7 @@ function listDirs(dir) {
 }
 
 function symlinkFile(name, symlinkRoot) {
-  if(!fs.existsSync(name)) return;
+  if (!fs.existsSync(name)) return;
 
   const src = path.resolve(process.cwd(), name);
   const dest = path.join(symlinkRoot, name);
@@ -115,7 +119,9 @@ function symlinkFile(name, symlinkRoot) {
     if (!fs.existsSync(dest)) {
       // Node:FS still calls Windows-native symlinks when running in Git Bash/Cygwin
       // We override this because the Unix utility works without an Administrator shell
-      isWinBash ? execSync(`ln -s "${relativeSrc}" "${dest}"`) : fs.symlinkSync(relativeSrc, dest, "file");
+      isWinBash
+        ? execSync(`ln -s "${relativeSrc}" "${dest}"`)
+        : fs.symlinkSync(relativeSrc, dest, "file");
     }
   } catch (e) {
     console.warn("Symlink failed:", dest);
@@ -134,9 +140,11 @@ function symlinkDir(name, symlinkRoot) {
     if (!fs.existsSync(dest)) {
       // Node:FS still calls Windows-native symlinks when running in Git Bash/Cygwin
       // We override this because the Unix utility works without an Administrator shell
-      isWinBash ? execSync(`ln -s "${relativeSrc}" "${dest}"`) : fs.symlinkSync(relativeSrc, dest, "dir");
+      isWinBash
+        ? execSync(`ln -s "${relativeSrc}" "${dest}"`)
+        : fs.symlinkSync(relativeSrc, dest, "dir");
     }
   } catch (e) {
     console.warn("Symlink failed:", dest);
-  }  
+  }
 }

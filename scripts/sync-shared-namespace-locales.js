@@ -210,9 +210,7 @@ function main() {
   );
 
   // Only files that actually register this namespace contribute to it.
-  const nsPattern = new RegExp(
-    `namespace:\\s*["']${args.namespace}["']`,
-  );
+  const nsPattern = new RegExp(`namespace:\\s*["']${args.namespace}["']`);
   const contributors = [];
   const canonical = new Map();
   const reads = new Map();
@@ -226,7 +224,8 @@ function main() {
       if (!canonical.has(key)) canonical.set(key, value);
     }
     for (const { key, line } of extractReads(src)) {
-      if (!reads.has(key)) reads.set(key, `${path.relative(elementDir, file)}:${line}`);
+      if (!reads.has(key))
+        reads.set(key, `${path.relative(elementDir, file)}:${line}`);
     }
   }
 
@@ -264,7 +263,9 @@ function main() {
   // long: translated locales supplied it, English did not.
   const undeclaredReads = [...reads.keys()].filter((k) => !canonical.has(k));
   if (undeclaredReads.length) {
-    console.log(`\n  WARNING: ${undeclaredReads.length} key(s) read but never declared:`);
+    console.log(
+      `\n  WARNING: ${undeclaredReads.length} key(s) read but never declared:`,
+    );
     for (const k of undeclaredReads) {
       console.log(`    ${k}  (${reads.get(k)})`);
     }
@@ -283,9 +284,7 @@ function main() {
 
   const localeFiles = fs
     .readdirSync(localesDir)
-    .filter(
-      (f) => f.startsWith(`${args.namespace}.`) && f.endsWith(".json"),
-    )
+    .filter((f) => f.startsWith(`${args.namespace}.`) && f.endsWith(".json"))
     .sort();
 
   let filesChanged = 0;
@@ -303,7 +302,7 @@ function main() {
     const next = {};
     for (const k of orderedKeys) {
       if (k in current) next[k] = current[k];
-      else next[k] = isReference ? nextEn[k] : (canonical.get(k) ?? nextEn[k]);
+      else next[k] = isReference ? nextEn[k] : canonical.get(k) ?? nextEn[k];
     }
 
     const removed = Object.keys(current).filter((k) => !(k in next)).length;
