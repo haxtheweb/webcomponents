@@ -36,7 +36,7 @@ class JsonOutlineSchema extends HTMLElement {
   display: block;
 }
 :host([debug]) {
-  font-family: monospace;
+  font-family: var(--ddd-font-mono, monospace);
   white-space: pre;
   margin: 16px 0px;
 }

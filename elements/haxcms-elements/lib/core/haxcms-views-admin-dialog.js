@@ -457,7 +457,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         .query-code {
           display: block;
           margin-top: var(--ddd-spacing-2);
-          font-family: ui-monospace, "Courier New", monospace;
+          font-family: var(--ddd-font-mono, ui-monospace, "Courier New", monospace);
           font-size: var(--ddd-font-size-5xs);
           white-space: pre-wrap;
           overflow-wrap: anywhere;

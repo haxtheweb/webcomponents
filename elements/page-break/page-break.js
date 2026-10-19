@@ -698,7 +698,7 @@ export class PageBreak extends IntersectionObserverMixin(
           display: block;
         }
         .link-url {
-          font-family: monospace;
+          font-family: var(--ddd-font-mono, monospace);
           background-color: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-coalyGray)

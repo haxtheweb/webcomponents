@@ -141,7 +141,7 @@ class A11yMediaTranscriptCue extends LitElement {
           font-size: 80%;
           padding: 0 16px 0 0;
           white-space: nowrap;
-          font-family: monospace;
+          font-family: var(--ddd-font-mono, monospace);
         }
         :host([hide-timestamps]) #time {
           display: none;

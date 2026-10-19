@@ -2710,7 +2710,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
                font-size: 80%;
                padding: 0 16px;
                white-space: nowrap;
-               font-family: monospace;">
+               font-family: var(--ddd-font-mono, monospace);">
                ${this._getHHMMSS(cues[key].startTime)} - 
                ${this._getHHMMSS(cues[key].endTime)}:
              </span>`

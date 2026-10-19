@@ -43,7 +43,7 @@ class MdBlock extends DDD {
         /* tables and code blocks inherit sensible defaults as well */
         pre,
         code {
-          font-family: var(--ddd-font-primary, monospace);
+          font-family: var(--ddd-font-mono, monospace);
         }
 
         /* user-visible fallback when a remote source fails to load */

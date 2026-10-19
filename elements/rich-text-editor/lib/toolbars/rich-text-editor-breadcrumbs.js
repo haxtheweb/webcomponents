@@ -160,7 +160,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorRangeBehaviors(
           border-radius: var(--ddd-radius-xs);
         }
         .selectnode {
-          font-family: monospace;
+          font-family: var(--ddd-font-mono, monospace);
         }
       `,
     ];
