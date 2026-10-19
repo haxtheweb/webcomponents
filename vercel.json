@@ -5,7 +5,7 @@
     "api/*.js": {
       "memory": 3008,
       "maxDuration": 300,
-      "excludeFiles": "{api/node_modules/monaco-editor/**,node_modules/monaco-editor/**}"
+      "excludeFiles": "{api/node_modules/monaco-editor/**,node_modules/monaco-editor/**,api/node_modules/lunr/build/**,node_modules/lunr/build/**}"
     }
   }
 }

@@ -6,7 +6,7 @@
     "node": "24.x"
   },
   "scripts": {
-    "postinstall": "./node_modules/.bin/patch-package"
+    "postinstall": "./node_modules/.bin/patch-package && rm -rf node_modules/lunr/build"
   },
   "dependencies": {
     "patch-package": "8.0.1",
