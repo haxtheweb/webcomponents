@@ -1736,13 +1736,6 @@
   resolved "https://registry.yarnpkg.com/@hapi/bourne/-/bourne-3.0.0.tgz#f11fdf7dda62fe8e336fa7c6642d9041f30356d7"
   integrity sha512-Waj1cwPXJDucOib4a3bAISsKJVb15MKi9IvmTI/7ssVEm6sywXGjVJDhl6/umt1pK1ZS7PacXU3A1PmFKHEZ2w==
 
-"@haxtheweb/a11y-utils@^9.0.22":
-  version "9.0.22"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/a11y-utils/-/a11y-utils-9.0.22.tgz#558f6b02b5cd33b445f1954c46c13f3697167a8a"
-  integrity sha512-yIv8IcDTJcmzTuMmcdVCx+X66jNeVfg/KVyx3KVWmceQg8erIb7wXGqOADT843QiAeVDNjytQY1NaVgCPlwJfg==
-  dependencies:
-    lit "^3.2.1"
-
 "@haxtheweb/create@26.8.1", "@haxtheweb/create@^26.8.1":
   version "26.8.1"
   resolved "https://registry.yarnpkg.com/@haxtheweb/create/-/create-26.8.1.tgz#d26315f148bad4d9f00be8bd22540a755d8a010f"
@@ -1760,21 +1753,6 @@
     twig "3.0.0"
     winston "3.19.0"
 
-"@haxtheweb/d-d-d@^9.0.27":
-  version "9.0.27"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/d-d-d/-/d-d-d-9.0.27.tgz#5e8637e8b63480178f0924c87aa1ee0a1e298577"
-  integrity sha512-Z6Oox/wi89o4SOA/+1N2JmqjZ+ejMJmpTrws/2AZNzoX6PUcGoynALH/qBUM3w/1/Pd9oP45goDJx0Ga5Md6Vg==
-  dependencies:
-    "@haxtheweb/hax-iconset" "^9.0.27"
-    "@haxtheweb/simple-colors" "^9.0.27"
-    "@haxtheweb/simple-icon" "^9.0.27"
-    lit "^3.2.1"
-
-"@haxtheweb/dynamic-import-registry@^9.0.22":
-  version "9.0.22"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/dynamic-import-registry/-/dynamic-import-registry-9.0.22.tgz#c28b2a612886eaa5806185dc596d4e3eb2e0be42"
-  integrity sha512-uiUfzvL0QMwASD0gsDqMpToSpmi+BUYIF9xixKhe7A+aKmm8IoWMsAFyE25QdCJ485fA32U4W08GziNl/nQDPQ==
-
 "@haxtheweb/editable-outline@9.0.1":
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/@haxtheweb/editable-outline/-/editable-outline-9.0.1.tgz#4cb510589a7eb6e85c5149b1f38fce136b24980d"
@@ -1787,16 +1765,12 @@
     "@polymer/polymer" "^3.5.1"
 
 "@haxtheweb/es-global-bridge@^9.0.1":
-  version "9.0.22"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/es-global-bridge/-/es-global-bridge-9.0.22.tgz#2555483f2155baa629abf4aed9d3a56f871cb030"
-  integrity sha512-BpVVerd8q3lwQFBRpIqMDtXtlj+gDt7VCWf+/KVVs0RbN56gP0s04a7snhp4CCSVsa8txJ7JMS8LOtGt90a4ng==
+  version "26.8.0"
 
-"@haxtheweb/hax-iconset@^9.0.1", "@haxtheweb/hax-iconset@^9.0.27":
-  version "9.0.27"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/hax-iconset/-/hax-iconset-9.0.27.tgz#1d30c22438280358c06ce766a7bad0a58d7457cb"
-  integrity sha512-Yp2xwNCfTpVSCg35T7UXGDYinMgrllLQ0D4lYSbnIQNur/vu0mw4nCHIlUJ+xicvC3uHeyo4xsIt+BUuz/yAHw==
+"@haxtheweb/hax-iconset@^9.0.1":
+  version "26.8.0"
   dependencies:
-    "@haxtheweb/simple-icon" "^9.0.27"
+    "@haxtheweb/simple-icon" "^26.8.0"
 
 "@haxtheweb/haxcms-nodejs@^26.8.0":
   version "26.8.1"
@@ -1840,11 +1814,6 @@
     xml2js "^0.6.2"
     yaml "^2.9.0"
 
-"@haxtheweb/intersection-element@^9.0.22":
-  version "9.0.22"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/intersection-element/-/intersection-element-9.0.22.tgz#54e9012d68a6605895d0f332f2f8cfbc6ffa7199"
-  integrity sha512-XLoC3u3l5WeJwPacm6BOweoWi1Xr89xMwaSpjpLlbf4Jf3t1a1YrlaqY43tSPw3az//Xk5WnKXk4HOPiihkY8A==
-
 "@haxtheweb/json-editor@9.0.1":
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/@haxtheweb/json-editor/-/json-editor-9.0.1.tgz#3e3a599e228de0312a78ec992e32e6843b6665c1"
@@ -1854,12 +1823,11 @@
     lit "^3.1.4"
 
 "@haxtheweb/json-outline-schema@^9.0.1":
-  version "9.0.27"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/json-outline-schema/-/json-outline-schema-9.0.27.tgz#80002913b69a1e61d01ad31037a1868bf5e714b7"
-  integrity sha512-QXDhngE7IeSKBktmWnOoSTXrG+LmvR0Ja/ftybqTu5vLodW0MeaYM9OYjmsYFl7kDzfIOovGnLa8YKhv90iCAg==
+  version "26.8.0"
   dependencies:
-    "@haxtheweb/dynamic-import-registry" "^9.0.22"
-    lit "^3.2.1"
+    "@haxtheweb/dynamic-import-registry" "^26.8.0"
+    "@haxtheweb/utils" "^26.8.0"
+    lit "3.3.3"
 
 "@haxtheweb/lrn-icons@9.0.1":
   version "9.0.1"
@@ -1916,59 +1884,24 @@
     "@haxtheweb/simple-icon" "^9.0.1"
     lit "^3.1.4"
 
-"@haxtheweb/simple-colors-shared-styles@^9.0.22":
-  version "9.0.22"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/simple-colors-shared-styles/-/simple-colors-shared-styles-9.0.22.tgz#398d17d07f929dd4afa14ffaea2e5ef59a7c1d0d"
-  integrity sha512-mAAQMjsOUJZgSnCRF+aK338Pc8XVyM0YDJHXPykarX2BeJK1m0sG8rvjr9V/rrOaWQ4t+9n45KfU9On3wWrYCA==
+"@haxtheweb/simple-colors@^9.0.1":
+  version "26.8.0"
   dependencies:
-    lit "^3.2.1"
+    "@haxtheweb/simple-colors-shared-styles" "^26.8.0"
+    lit "3.3.3"
 
-"@haxtheweb/simple-colors@^9.0.1", "@haxtheweb/simple-colors@^9.0.27":
-  version "9.0.27"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/simple-colors/-/simple-colors-9.0.27.tgz#c9a0d0c44394dad68af9f38ada4943210310cc2c"
-  integrity sha512-mGRPHW/Uhdtg3+z80kdFeRVcJrAsN/JcASghPFV7YBGFiN1gPXZ3py/1W7jGai9USTtK6jcv1sGp4iNKnnI5fA==
+"@haxtheweb/simple-icon@^9.0.1":
+  version "26.8.0"
   dependencies:
-    "@haxtheweb/a11y-utils" "^9.0.22"
-    "@haxtheweb/simple-colors-shared-styles" "^9.0.22"
-    "@haxtheweb/simple-modal" "^9.0.27"
-    "@haxtheweb/simple-picker" "^9.0.27"
-    "@polymer/polymer" "^3.5.2"
-    lit "^3.2.1"
-
-"@haxtheweb/simple-icon@^9.0.1", "@haxtheweb/simple-icon@^9.0.27":
-  version "9.0.27"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/simple-icon/-/simple-icon-9.0.27.tgz#c8a7de0866e3dc962823534cb0e9c062dae33aa8"
-  integrity sha512-c+SewmFhlmSuiCFHCVu2q9dz7SIJNO113aSJwLxzls1wwsuENedeGmLLjEZ15rsBdbDCmbh99evorl0A2QO8wg==
-  dependencies:
-    "@haxtheweb/d-d-d" "^9.0.27"
-    "@haxtheweb/simple-colors" "^9.0.27"
+    "@haxtheweb/simple-colors" "^26.8.0"
     flag-icons "6.6.4"
-    lit "^3.2.1"
-
-"@haxtheweb/simple-modal@^9.0.27":
-  version "9.0.27"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/simple-modal/-/simple-modal-9.0.27.tgz#d2f18a1cade8aa57b1a013f7b569e2780c82fc8d"
-  integrity sha512-gUXsEwB4wE3aJjJCeSFsOH+xNCKiFhwGHomGGG+G8yhYATwqLaP8QBVhsBcDOIfxXo1JWcFFJ/9uoPVg+qQb/g==
-  dependencies:
-    "@haxtheweb/d-d-d" "^9.0.27"
-    "@haxtheweb/simple-icon" "^9.0.27"
-    lit "^3.2.1"
-    web-dialog "0.0.11"
-
-"@haxtheweb/simple-picker@^9.0.27":
-  version "9.0.27"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/simple-picker/-/simple-picker-9.0.27.tgz#d7219ebf76065a6e8f71d4c6265d15dce0a719c7"
-  integrity sha512-BPsYpcU0lm11JPdtKIuhRC91Ggov6zlAXibxRlTE7hFt4N+GAAMwAaD4SbwqWlLcc1lJsJCHl71Debr/dbFjQQ==
-  dependencies:
-    "@haxtheweb/intersection-element" "^9.0.22"
-    "@haxtheweb/simple-icon" "^9.0.27"
-    "@lit-labs/virtualizer" "^2.0.14"
-    lit "^3.2.1"
+    lit "3.3.3"
 
 "@haxtheweb/utils@^9.0.1":
-  version "9.0.22"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/utils/-/utils-9.0.22.tgz#b9ed7eeb0df703895feaa38e63376274b4454ef0"
-  integrity sha512-17trb46MhB8SPhePdx+4bIQQfVACamWj5dZoVGPOyrRY91RADbMh4+fkkgJiU06Jk0HwrvUSR1jNardB4+QdJg==
+  version "26.8.0"
+  dependencies:
+    "@babel/core" "7.29.7"
+    lit "3.3.3"
 
 "@humanfs/core@^0.19.2":
   version "0.19.2"
@@ -2654,7 +2587,7 @@
   resolved "https://registry.yarnpkg.com/@lit-labs/ssr-dom-shim/-/ssr-dom-shim-1.6.0.tgz#693e129b809741fd23e98fcb57e41fd3d082db1a"
   integrity sha512-VHb0ALPMTlgKjM6yIxxoQNnpKyUKLD04VzeQdsiXkMqkvYlAHxq9glGLmgbb889/1GsohSOAjvQYoiBppXFqrQ==
 
-"@lit-labs/virtualizer@2.1.1", "@lit-labs/virtualizer@^2.0.14":
+"@lit-labs/virtualizer@2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@lit-labs/virtualizer/-/virtualizer-2.1.1.tgz#efb87a384db105af43180295a64f8bbdc5275a97"
   integrity sha512-JWxMwnlouLdwpw8spLTuax53WMnSP3xt0dCyxAS7GJr5Otda9MGgR/ghAdfwhSY75TmjbE1T2TqChwoGCw3ggw==
@@ -3646,7 +3579,7 @@
     "@polymer/iron-flex-layout" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/polymer@^3.0.0", "@polymer/polymer@^3.5.1", "@polymer/polymer@^3.5.2":
+"@polymer/polymer@^3.0.0", "@polymer/polymer@^3.5.1":
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-3.5.2.tgz#af0e7e13976df53ace6728e841121c36aca351de"
   integrity sha512-fWwImY/UH4bb2534DVSaX+Azs2yKg8slkMBHOyGeU2kKx7Xmxp6Lee0jP8p6B3d7c1gFUPB2Z976dTUtX81pQA==
@@ -14326,10 +14259,10 @@ js-tokens@^3.0.2:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
   integrity sha512-RjTcuD4xjtthQkaWH7dFlH85L+QaVtSoOyGdZ3g6HFhS9dFNDfLyqgm2NFe2X6cQpeFmt0452FJjFG5UameExg==
 
-js-yaml@4.3.1, js-yaml@^4.1.0, js-yaml@^4.3.1, js-yaml@^4.3.2:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.3.2.tgz#8e44fb14a2643c59726bb15787b5f1512cb3d3fb"
-  integrity sha512-SFNOvSJ+Dgf/9An904Yx+CgSlIPCkIpao4qo51lpee25TIRejdH3rhR4EZMGoNx3/TP3O+wzWuiTFl4sqbltzA==
+js-yaml@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.3.1.tgz#01216c001d67f48e2cd560d708c7af21090a3848"
+  integrity sha512-CY6crGq313MX8GkwvB7tzgp99vjQxY1++5y10/BKN/GUfHqWaOGQMNZkBvqSzsZKWk/ijwHlWzzkLulsGHhjWQ==
   dependencies:
     argparse "^2.0.1"
 
@@ -14347,6 +14280,13 @@ js-yaml@^3.13.1, js-yaml@^3.14.1:
   dependencies:
     argparse "^1.0.7"
     esprima "^4.0.0"
+
+js-yaml@^4.1.0, js-yaml@^4.3.1, js-yaml@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.3.2.tgz#8e44fb14a2643c59726bb15787b5f1512cb3d3fb"
+  integrity sha512-SFNOvSJ+Dgf/9An904Yx+CgSlIPCkIpao4qo51lpee25TIRejdH3rhR4EZMGoNx3/TP3O+wzWuiTFl4sqbltzA==
+  dependencies:
+    argparse "^2.0.1"
 
 jsbn@~0.1.0:
   version "0.1.1"
