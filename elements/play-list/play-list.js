@@ -12,6 +12,7 @@ import {
   haxElementToNode,
   nodeToHaxElement,
   copyToClipboard,
+  sanitizeHTMLString,
 } from "@haxtheweb/utils/utils.js";
 
 /**
@@ -93,7 +94,8 @@ class PlayList extends I18NMixin(DDD) {
     if (item.properties && item.properties.innerHTML) {
       delete item.properties.innerHTML;
     }
-    return html`${unsafeHTML(haxElementToNode(item).outerHTML)}`;
+    // security (JS-XSS-001): items is a public property, so sanitize before the sink
+    return html`${unsafeHTML(sanitizeHTMLString(haxElementToNode(item).outerHTML))}`;
   }
 
   _getSlideTitle(item, index) {

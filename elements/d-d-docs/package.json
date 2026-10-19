@@ -33,6 +33,7 @@
     "@haxtheweb/accent-card": "^26.8.0",
     "@haxtheweb/course-design": "^26.8.0",
     "@haxtheweb/create": "26.8.1",
+    "@haxtheweb/utils": "^26.8.0",
     "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/deduping-fix": "^26.8.0",
     "@haxtheweb/figure-label": "^26.8.0",

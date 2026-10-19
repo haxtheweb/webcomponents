@@ -4,6 +4,7 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 
 class HAXCMSPageRevisionsDialog extends I18NMixin(DDD) {
   static get tag() {
@@ -691,8 +692,10 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(DDD) {
       return html`<div class="empty">${this.t.noRevisionContent}</div>`;
     }
     if (this.previewMode === "rendered") {
+      // security (JS-XSS-001): revision HTML is stored editor content, so it is
+      // sanitized before the unsafeHTML sink to block stored XSS between editors
       return html`<div class="preview-rendered">
-        ${unsafeHTML(this.previewContent)}
+        ${unsafeHTML(sanitizeHTMLString(this.previewContent))}
       </div>`;
     }
     return html`<pre>${this.previewContent}</pre>`;

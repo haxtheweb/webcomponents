@@ -6,6 +6,7 @@ import "@haxtheweb/accent-card/accent-card.js";
 import "@haxtheweb/course-design/lib/block-quote.js";
 import "@haxtheweb/course-design/lib/learning-component.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 import {
   DDDBreakpoints,
   DDDContentWidths,
@@ -3570,7 +3571,7 @@ class DDDocs extends I18NMixin(DDD) {
             </div>`
           : ``}
         <div class="pattern-preview">
-          ${unsafeHTML(pattern.html)}
+          ${unsafeHTML(sanitizeHTMLString(pattern.html))}
         </div>
         <div class="pattern-recipe-wrapper">
           <simple-icon-button-lite
@@ -3725,7 +3726,7 @@ class DDDocs extends I18NMixin(DDD) {
               ${c.example
                 ? html`<p class="contract-example-label">${this.t.example}</p>
                     <div class="contract-example">
-                      ${unsafeHTML(c.example)}
+                      ${unsafeHTML(sanitizeHTMLString(c.example))}
                       <div class="pattern-meta" style="margin-top: var(--ddd-spacing-3)">
                         <simple-cta
                           hide-icon

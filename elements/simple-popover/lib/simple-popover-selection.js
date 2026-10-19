@@ -1,5 +1,4 @@
 import { html, LitElement, render } from "lit";
-import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "./simple-popover-manager.js";
 
 class SimplePopoverSelection extends LitElement {
@@ -92,19 +91,21 @@ class SimplePopoverSelection extends LitElement {
         }
       }
       let content;
+      // security (JS-XSS-001): render the cloned nodes directly instead of
+      // serializing to a string and re-parsing it, which could activate
+      // previously inert markup inside the popover singleton.
+      const options = Array.from(div.childNodes);
       // support for slot injected styles
       // this allows you to inject a style local to the manager's pop up
       // which means you can style things that otherwise would be impossible
       // due to how shadowDOM + things at the app level / singleton would allow
       if (this.querySelector('[slot="style"]')) {
-        let styleData = this.querySelector('[slot="style"]').cloneNode(true);
+        let styleData = this.querySelector('[slot="style"]');
         let style = globalThis.document.createElement("style");
-        style.innerHTML = styleData.innerHTML;
-        content = html`${unsafeHTML(div.innerHTML)}${unsafeHTML(
-          style.outerHTML,
-        )}`;
+        style.textContent = styleData.textContent;
+        content = html`${options}${style}`;
       } else {
-        content = html`${unsafeHTML(div.innerHTML)}`;
+        content = html`${options}`;
       }
       let wrap = globalThis.document.createElement("div");
       wrap.setAttribute("slot", "body");

@@ -5,6 +5,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "./simple-popover-manager.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 
 class SimpleTour extends I18NMixin(LitElement) {
   constructor() {
@@ -247,16 +248,22 @@ class SimpleTour extends I18NMixin(LitElement) {
             ? el.querySelector("[data-stop-content]").innerHTML
             : "";
         }
+        // security (JS-XSS-001): title/description can come from DOM attributes
+        // in live mode, so sanitize before the unsafeHTML sink. Styles are set
+        // as text on a real node so they are never parsed as markup.
+        let tourStyle = "";
+        if (this.tourInfo[this.active].style) {
+          tourStyle = globalThis.document.createElement("style");
+          tourStyle.textContent = this.tourInfo[this.active].style;
+        }
         let content = html`${this.tourButtons()}
           <h2 class="subheading" slot="body">
-            ${unsafeHTML("<span>" + title + "</span>")}
+            <span>${unsafeHTML(sanitizeHTMLString(String(title || "")))}</span>
           </h2>
-          ${unsafeHTML('<p slot="body">' + description + "</p>")}${this
-            .tourInfo[this.active].style
-            ? unsafeHTML(
-                "<style>" + this.tourInfo[this.active].style + "</style>",
-              )
-            : ""}`;
+          <p slot="body">
+            ${unsafeHTML(sanitizeHTMLString(String(description || "")))}
+          </p>
+          ${tourStyle}`;
         render(content, globalThis.SimplePopoverManager.requestAvailability());
         globalThis.SimplePopoverManager.requestAvailability().setPopover(
           this,

@@ -19,8 +19,8 @@ import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import {
-  encapScript,
   haxElementToNode,
+  sanitizeHTMLString,
   isSafari,
 } from "@haxtheweb/utils/utils.js";
 /**
@@ -1212,8 +1212,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         for (let i = 0; i < div.childNodes.length; i++) {
           let node = div.childNodes[i];
           if (i === targetNodeIndex) {
-            // unsafe, but we encap script so should be.
-            return html`${unsafeHTML(encapScript(node.outerHTML))}`;
+            // security (JS-XSS-001): full sanitizer (also strips on* handlers
+            // and javascript: URLs), not just script encapsulation
+            return html`${unsafeHTML(sanitizeHTMLString(node.outerHTML))}`;
           }
         }
       }
