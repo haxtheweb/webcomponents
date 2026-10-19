@@ -38,8 +38,9 @@ describe('BibliographyBuilder test', () => {
       expect(element.exportMode).to.equal('')
       expect(element.forCourse).to.equal('')
       expect(Array.isArray(element.citationArr)).to.be.true
-      expect(element.citationArr.length).to.equal(1)
-      expect(element.citationArr[0]).to.equal(
+      // empty until a format is picked; the prompt is rendered from this.t
+      expect(element.citationArr.length).to.equal(0)
+      expect(element.t.selectCitationFormatBelow).to.equal(
         'Select a citation format below',
       )
     })

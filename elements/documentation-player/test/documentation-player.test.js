@@ -1,5 +1,5 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import { LitElement } from "lit";
+import { LitElement, render } from "lit";
 import { DocumentationPlayer } from "../documentation-player.js";
 import "../documentation-player.js";
 
@@ -407,11 +407,13 @@ describe("documentation-player cheap gap coverage", () => {
   });
 
   it("renders the HAX inject button markup", () => {
-    const result = element.renderHAXInjectButton();
-    const markup = result.strings.join("");
-    expect(markup).to.include("simple-icon-button-lite");
-    expect(markup).to.include('icon="settings"');
-    expect(markup).to.include("Insert into your site");
-    expect(markup).to.not.include("Insert into your side");
+    // the label comes from this.t, so check what actually renders
+    const div = document.createElement("div");
+    render(element.renderHAXInjectButton(), div);
+    const button = div.querySelector("simple-icon-button-lite");
+    expect(button).to.exist;
+    expect(button.getAttribute("icon")).to.equal("settings");
+    expect(button.textContent).to.include("Insert into your site");
+    expect(button.textContent).to.not.include("Insert into your side");
   });
 });

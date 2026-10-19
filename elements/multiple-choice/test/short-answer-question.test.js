@@ -1,6 +1,14 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../lib/short-answer-question.js";
 import { ShortAnswerQuestion } from "../lib/short-answer-question.js";
+import { render } from "lit";
+
+// directions text comes from this.t, so read what actually renders
+const directionsText = (tpl) => {
+  const div = document.createElement("div");
+  render(tpl, div);
+  return div.textContent.replace(/\s+/g, " ");
+};
 
 const flush = (ms = 60) => new Promise((r) => setTimeout(r, ms));
 
@@ -32,7 +40,7 @@ describe("short-answer-question", () => {
   it("renders its own directions and a textarea interaction", async () => {
     const el = await fixture(saFixture());
     await el.updateComplete;
-    expect(el.renderDirections().strings.join("")).to.include(
+    expect(directionsText(el.renderDirections())).to.include(
       "Type the answer",
     );
     const field = el.shadowRoot.querySelector(
