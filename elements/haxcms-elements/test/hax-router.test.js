@@ -101,6 +101,52 @@ describe('HaxRouter route matching', () => {
     expect(match.route.name).to.equal('404')
     expect(match.params).to.deep.equal(['foo/bar'])
   })
+
+  // static hosts serve page folders as slug/ or slug/index.html
+  describe('static host path forms', () => {
+    beforeEach(() => {
+      router.routes = [
+        { path: 'welcome', component: 'w', name: 'item-welcome' },
+        { path: 'unit-1/lesson-2', component: 'l', name: 'item-lesson' },
+        { path: '/', component: 'h', name: 'home' },
+        { path: '/(.*)', component: 'nf', name: '404' },
+      ]
+    })
+
+    it('matches a slug with a trailing slash', () => {
+      expect(router._matchRoute('/welcome/').route.name).to.equal('item-welcome')
+    })
+
+    it('matches a slug with a trailing index.html', () => {
+      expect(router._matchRoute('/welcome/index.html').route.name).to.equal(
+        'item-welcome',
+      )
+    })
+
+    it('matches a nested slug with a trailing slash or index.html', () => {
+      expect(router._matchRoute('/unit-1/lesson-2/').route.name).to.equal(
+        'item-lesson',
+      )
+      expect(
+        router._matchRoute('/unit-1/lesson-2/index.html').route.name,
+      ).to.equal('item-lesson')
+    })
+
+    it('treats /index.html as the root', () => {
+      expect(router._matchRoute('/index.html').route.name).to.equal('home')
+    })
+
+    it('still 404s unknown slugs with a trailing slash', () => {
+      const match = router._matchRoute('/missing/')
+      expect(match.route.name).to.equal('404')
+      expect(match.params).to.deep.equal(['missing'])
+    })
+
+    it('does not strip index.html that is part of a longer filename', () => {
+      const match = router._matchRoute('/welcome/myindex.html')
+      expect(match.route.name).to.equal('404')
+    })
+  })
 })
 
 describe('HaxRouter baseUrl cleaning', () => {
