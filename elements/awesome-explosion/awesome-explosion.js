@@ -401,9 +401,9 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
    */
   _checkUserPreferences() {
     // Check for reduced motion preference
-    const prefersReducedMotion = globalThis.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const prefersReducedMotion = globalThis.matchMedia
+      ? globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+      : false;
 
     // Check for user sound preference (could be stored in localStorage)
     const userSoundPref =

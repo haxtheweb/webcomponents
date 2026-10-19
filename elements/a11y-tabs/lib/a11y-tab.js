@@ -364,7 +364,8 @@ class A11yTab extends I18NMixin(LitElement) {
    */
   _labelChanged() {
     if (!this.label || this.label.trim() === "")
-      this.label = this.querySelector('*[slot="label"]')
+      this.label =
+        this.querySelector && this.querySelector('*[slot="label"]')
         ? this.querySelector('*[slot="label"]').innerHTML
         : `Tab ${this.order}`;
   }

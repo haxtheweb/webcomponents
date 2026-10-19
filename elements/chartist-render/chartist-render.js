@@ -1636,13 +1636,15 @@ const ChartistRenderSuper = function (SuperClass) {
       let basePath =
         new URL("./chartist-render.js", import.meta.url).href + "/../";
       let location = `${basePath}${path}`;
-      globalThis.addEventListener(
-        `es-bridge-${classname}-loaded`,
-        fnc.bind(this),
-        {
-          signal: this.windowControllers.signal,
-        },
-      );
+      if (globalThis.addEventListener) {
+        globalThis.addEventListener(
+          `es-bridge-${classname}-loaded`,
+          fnc.bind(this),
+          {
+            signal: this.windowControllers.signal,
+          },
+        );
+      }
 
       globalThis.ESGlobalBridge.requestAvailability().load(classname, location);
     }

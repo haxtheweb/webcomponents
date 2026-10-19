@@ -254,7 +254,9 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     getSelection() {
       return this.__toolbar
         ? this.__toolbar.getSelection()
-        : globalThis.getSelection();
+        : globalThis.getSelection
+          ? globalThis.getSelection()
+          : null;
     }
 
     /**

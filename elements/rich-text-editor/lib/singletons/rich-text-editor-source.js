@@ -285,9 +285,11 @@ globalThis.RichTextEditorSource.requestAvailability = () => {
         globalThis.RichTextEditorSource.instance,
       );
     }
-    globalThis.document.head.appendChild(
-      globalThis.RichTextEditorSource.stylesheet,
-    );
+    if (globalThis.document.head) {
+      globalThis.document.head.appendChild(
+        globalThis.RichTextEditorSource.stylesheet,
+      );
+    }
   }
   return globalThis.RichTextEditorSource.instance;
 };

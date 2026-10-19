@@ -415,11 +415,13 @@ class ImgPanZoom extends LitElement {
       "/",
     );
     let location = `${basePath}lib/openseadragon/openseadragon.min.js`;
-    globalThis.addEventListener(
-      "es-bridge-openseadragon-loaded",
-      this._openseadragonLoaded.bind(this),
-      { signal: this.windowControllers.signal },
-    );
+    if (globalThis.addEventListener) {
+      globalThis.addEventListener(
+        "es-bridge-openseadragon-loaded",
+        this._openseadragonLoaded.bind(this),
+        { signal: this.windowControllers.signal },
+      );
+    }
 
     globalThis.ESGlobalBridge.requestAvailability().load(
       "openseadragon",

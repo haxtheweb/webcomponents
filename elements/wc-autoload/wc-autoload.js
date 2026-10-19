@@ -162,11 +162,13 @@ if (
   });
 } else {
   // default: hydrate at DOMContentLoaded
-  globalThis.addEventListener(
-    "DOMContentLoaded",
-    globalThis.WCAutoload.initialProcess,
-    { once: true },
-  );
+  if (globalThis.addEventListener) {
+    globalThis.addEventListener(
+      "DOMContentLoaded",
+      globalThis.WCAutoload.initialProcess,
+      { once: true },
+    );
+  }
 }
 
 // edge case; definition to load comes in AFTER we have loaded the page

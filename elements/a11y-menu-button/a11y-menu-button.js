@@ -261,7 +261,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       // cache the bound per-item listeners keyed by item so removeItem
       // removes the exact functions addItem registered
       this._itemListeners = new WeakMap();
-      [...this.children]
+      [...(this.children || [])]
         .filter((n) => n.slot === "menuitem")
         .forEach((item) => this.addItem(item));
       this.addEventListener("keydown", this._handleKeydown);

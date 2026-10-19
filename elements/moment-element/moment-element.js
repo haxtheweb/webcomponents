@@ -62,11 +62,13 @@ class MomentElement extends LitElement {
     this.libraryLoaded = false;
     const location = new URL("./lib/moment/moment.min.js", import.meta.url)
       .href;
-    globalThis.addEventListener(
-      "es-bridge-moment-loaded",
-      this._momentLoaded.bind(this),
-      { signal: this.windowControllers.signal },
-    );
+    if (globalThis.addEventListener) {
+      globalThis.addEventListener(
+        "es-bridge-moment-loaded",
+        this._momentLoaded.bind(this),
+        { signal: this.windowControllers.signal },
+      );
+    }
     // once the bridge singleton has imported the library it resolves load()
     // with true WITHOUT re-dispatching the event, so late instances have to
     // learn the ready state from the resolution value itself

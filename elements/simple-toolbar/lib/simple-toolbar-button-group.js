@@ -37,7 +37,9 @@ class SimpleToolbarButtonGroup extends RadioBehaviors(LitElement) {
   constructor() {
     super();
     this.setAttribute("role", "radiogroup");
-    this.classList.add("group");
+    if (this.classList) {
+      this.classList.add("group");
+    }
     this.addEventListener("button-toggled", this._handleToggle);
   }
   connectedCallback() {

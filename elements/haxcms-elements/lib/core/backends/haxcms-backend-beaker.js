@@ -81,9 +81,11 @@ class HAXCMSBackendBeaker extends I18NMixin(LitElement) {
         });
       }),
     );
-    globalThis.addEventListener("jwt-token", this._jwtTokenFired.bind(this), {
-      signal: this.windowControllers.signal,
-    });
+    if (globalThis.addEventListener) {
+      globalThis.addEventListener("jwt-token", this._jwtTokenFired.bind(this), {
+        signal: this.windowControllers.signal,
+      });
+    }
 
     // HAX CMS events to intercept
     globalThis.addEventListener(

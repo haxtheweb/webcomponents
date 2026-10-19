@@ -90,11 +90,12 @@ class RelativeHeadingLite extends LitElement {
     this.parent = null;
     this.__observer = new MutationObserver(() => this.updateContents());
     this.checkId();
-    this.__level = this.querySelector("h1,h2,h3,h4,h5,h6")
-      ? parseInt(
-          this.querySelector("h1,h2,h3,h4,h5,h6").tagName.replace(/\D/, ""),
-        )
-      : 1;
+    this.__level =
+      this.querySelector && this.querySelector("h1,h2,h3,h4,h5,h6")
+        ? parseInt(
+            this.querySelector("h1,h2,h3,h4,h5,h6").tagName.replace(/\D/, ""),
+          )
+        : 1;
     // honor a default-level attribute authored before this element was
     // upgraded since attributeChangedCallback does not replay it, which
     // matters for elements that import this one dynamically
