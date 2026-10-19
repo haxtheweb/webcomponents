@@ -149,6 +149,9 @@ class RpgCharacter extends SimpleColors {
           padding: 0;
           text-align: initial;
         }
+        #cardcircle {
+          fill: var(--ddd-theme-accent, var(--rpg-character-accent, yellow));
+        }
         #demo {
           height: 30px;
           padding-top: 10px;
@@ -269,8 +272,14 @@ class RpgCharacter extends SimpleColors {
     ).href;
     const fire = new URL(`./lib/base/fire.svg`, import.meta.url).href;
     const circle = new URL(`./lib/circle.svg`, import.meta.url).href;
+    // Dynamic values go through style attribute bindings rather than a style
+    // element, because Lit SSR does not support bindings inside raw text
+    // elements. The accent color is exposed as a custom property so the static
+    // styles can consume it.
+    const sizeStyle = `width: ${this.width}px;`;
+    const wrapperStyle = `${sizeStyle} height: ${this.height}px; --rpg-character-accent: var(--simple-colors-default-theme-${this.accentColor}-8, var(--simple-colors-default-theme-accent-8, yellow));`;
     return html`
-      <div class="wrapper">
+      <div class="wrapper" style="${wrapperStyle}">
         ${this.renderPiece(skin)}
         ${this.base === 1 ? this.renderPiece(hair) : ``}
         ${this.renderPiece(face)} ${this.renderPiece(faceItem)}
@@ -281,24 +290,9 @@ class RpgCharacter extends SimpleColors {
         ${hatFileName !== "none" ? this.renderPiece(hat) : ``}
         ${this.circle ? this.renderPiece(circle) : ``}
       </div>
-      ${this.demo ? html`<div id="demo">${this.seed}</div>` : ``}
-      <style>
-        #cardcircle {
-          fill: var(
-            --ddd-theme-accent,
-            var(
-              --simple-colors-default-theme-${this.accentColor}-8,
-              var(--simple-colors-default-theme-accent-8, yellow)
-            )
-          );
-        }
-        div {
-          width: ${this.width + "px"};
-        }
-        .wrapper {
-          height: ${this.height + "px"};
-        }
-      </style>
+      ${this.demo
+        ? html`<div id="demo" style="${sizeStyle}">${this.seed}</div>`
+        : ``}
     `;
   }
 
