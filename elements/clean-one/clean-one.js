@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, unsafeCSS } from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
@@ -24,7 +24,17 @@ import {
   DDDVariables,
   DDDPaletteStyles,
 } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { DDDBreakpoints } from "@haxtheweb/d-d-d/lib/DDDLayout.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
+
+// CSS custom properties cannot be used inside media queries, so the DDD
+// breakpoint scale is interpolated as numbers. These are "max-width" values
+// (one px below each breakpoint), matching the "below this size" intent of the
+// previous hard-coded 640 / 900 / 1240 / 1400 queries.
+const bpBelowSm = unsafeCSS(DDDBreakpoints.sm - 1);
+const bpBelowMd = unsafeCSS(DDDBreakpoints.md - 1);
+const bpBelowLg = unsafeCSS(DDDBreakpoints.lg - 1);
+const bpBelowXl = unsafeCSS(DDDBreakpoints.xl - 1);
 
 /**
  * `Clean one`
@@ -236,11 +246,11 @@ class CleanOne extends LTIResizingMixin(
         .menu-outline {
           position: absolute;
           top: 0;
-          left: -300px;
+          left: calc(-1 * var(--ddd-theme-sidebar-width, 300px));
           bottom: 0;
           z-index: 1;
           overflow-y: hidden;
-          width: 300px;
+          width: var(--ddd-theme-sidebar-width, 300px);
           background-color: var(--ddd-lightDark-7);
           color: var(--ddd-lightDark-1);
           border-right: var(--ddd-border-xs);
@@ -307,7 +317,7 @@ class CleanOne extends LTIResizingMixin(
         }
 
         :host([menu-open]) .site-body {
-          left: 300px;
+          left: var(--ddd-theme-sidebar-width, 300px);
         }
         .site-body {
           position: absolute;
@@ -335,7 +345,7 @@ class CleanOne extends LTIResizingMixin(
           /* start (not left) so RTL languages lay out correctly */
           text-align: start;
         }
-        @media screen and (max-width: 640px) {
+        @media screen and (max-width: ${bpBelowSm}px) {
           .site-header {
             padding: 0px;
           }
@@ -434,7 +444,7 @@ class CleanOne extends LTIResizingMixin(
           contain: layout paint;
           min-height: 50px;
         }
-        @media (max-width: 1400px) {
+        @media (max-width: ${bpBelowXl}px) {
           .site-header {
             height: 50px;
             position: fixed;
@@ -447,7 +457,7 @@ class CleanOne extends LTIResizingMixin(
             padding: 0 4px;
           }
         }
-        @media (max-width: 900px) {
+        @media (max-width: ${bpBelowMd}px) {
           /* hide the top bar (print/PDF/QR/RSS/git controls and the desktop
              menu button) on mobile; the menu open/close control is relocated
              into the bottom nav tray so navigation stays reachable */
@@ -478,7 +488,7 @@ class CleanOne extends LTIResizingMixin(
             pointer-events: none;
           }
           :host([menu-open]) footer {
-            left: 300px;
+            left: var(--ddd-theme-sidebar-width, 300px);
           }
           footer nav {
             display: flex;
@@ -541,7 +551,7 @@ class CleanOne extends LTIResizingMixin(
           }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: ${bpBelowSm}px) {
           .link-actions {
             display: none;
           }
@@ -551,13 +561,13 @@ class CleanOne extends LTIResizingMixin(
             padding: 0;
           }
         }
-        @media (max-width: 1240px) {
+        @media (max-width: ${bpBelowLg}px) {
           .site-body .body-inner {
             position: static;
             min-height: calc(100% - 98px);
           }
         }
-        @media (max-width: 1240px) {
+        @media (max-width: ${bpBelowLg}px) {
           .site-body {
             padding-bottom: 20px;
           }
@@ -576,10 +586,11 @@ class CleanOne extends LTIResizingMixin(
         }
         .page-inner {
           position: relative;
-          max-width: 840px;
+          max-width: var(--ddd-theme-content-width, 840px);
           margin: 0 auto;
           min-height: 90vh;
-          padding: 40px 16px 40px 16px;
+          padding: 40px var(--ddd-theme-layout-gutter, 16px) 40px
+            var(--ddd-theme-layout-gutter, 16px);
         }
         .main-section {
           display: block;
@@ -597,7 +608,7 @@ class CleanOne extends LTIResizingMixin(
           --site-menu-button-icon-height: 100px;
         }
         :host([menu-open]) site-menu-button[type="prev"] {
-          left: 300px;
+          left: var(--ddd-theme-sidebar-width, 300px);
         }
         site-menu-button[type="prev"] {
           left: 0;
@@ -623,7 +634,7 @@ class CleanOne extends LTIResizingMixin(
           color: var(--ddd-lightDark-1);
           text-align: center;
         }
-        @media screen and (max-width: 640px) {
+        @media screen and (max-width: ${bpBelowSm}px) {
           .page-wrapper {
             width: 100vw;
           }
@@ -644,7 +655,7 @@ class CleanOne extends LTIResizingMixin(
             overflow: hidden;
           }
         }
-        @media (max-width: 1240px) {
+        @media (max-width: ${bpBelowLg}px) {
           .navigation {
             position: static;
             margin: 0 auto;
